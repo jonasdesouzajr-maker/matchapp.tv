@@ -1,10 +1,1531 @@
 {
-  "generated_at": "2026-10-12T13:28:12.771Z",
-  "feed_version": "aa4939a9",
+  "generated_at": "2026-10-12T16:01:40.762Z",
+  "feed_version": "93ca3d3a",
   "sports_updated_at": "2026-10-12T02:24:30.318Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "e90edfcd",
+      "title": "Declaração assinada por 60 países condena cobrança de pedágio em rotas marítimas",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/declaracao-assinada-por-60-paises-condena-cobranca-de-pedagio-em-rotas-maritimas.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T15:58:39.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/zsmfODQH5bmwVuFzpBJBlU2RTMY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/y/U/IueoH0RuiQRx5MJuKhcw/2026-08-17t134126z-1571278001-rc2c0naakvh3-rtrmadp-3-iran-crisis-oman-hormuz.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/declaracao-assinada-por-60-paises-condena-cobranca-de-pedagio-em-rotas-maritimas-e90edf/",
+      "landing_url": "https://matchapp.tv/?news=e90edfcd#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "declaracao",
+          "assinada",
+          "paises",
+          "condena",
+          "cobranca",
+          "pedagio"
+        ],
+        "long_tail": [
+          "Declaração assinada por 60 países condena cobrança de pedágio em rotas marítimas 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "declaracao",
+          "assinada",
+          "paises",
+          "condena",
+          "cobranca",
+          "pedagio"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Declaração assinada por 60 países condena cobrança de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "declaracao",
+          "assinada",
+          "paises",
+          "condena",
+          "cobranca",
+          "pedagio",
+          "Declaração assinada por 60 países condena cobrança de pedágio em rotas marítimas 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "b542daf1",
+      "title": "Nobel 2026: veja quem são os vencedores das seis categorias do prêmio",
+      "url": "https://g1.globo.com/ciencia/noticia/2026/10/12/nobel-2026-veja-quem-sao-os-vencedores-das-seis-categorias-do-premio.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T15:57:21.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Awards",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/8pNMbX91k4vIReHNqfQ3bzFVUGo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/1/XAjYbgSc6AtmW4xLBx4Q/2026-10-08t100306z-1893849061-rc2wynaq28ag-rtrmadp-3-nobel-prize-literature.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/nobel-2026-veja-quem-sao-os-vencedores-das-seis-categorias-do-premio-b542da/",
+      "landing_url": "https://matchapp.tv/?news=b542daf1#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "nobel",
+          "2026",
+          "veja",
+          "quem",
+          "sao",
+          "vencedores"
+        ],
+        "long_tail": [
+          "Nobel 2026: veja quem são os vencedores das seis categorias do prêmio 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "nobel",
+          "2026",
+          "veja",
+          "quem",
+          "sao",
+          "vencedores"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Nobel 2026: veja quem são os vencedores das seis…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "nobel",
+          "2026",
+          "veja",
+          "quem",
+          "sao",
+          "vencedores",
+          "Nobel 2026: veja quem são os vencedores das seis categorias do prêmio 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "34748351",
+      "title": "‘Beatles’ Films Release Details: A Mega-Month of Movie-Going, Producers Hope",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/beatles-movies-release-dates-april-2028-1236727787/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T15:53:19.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "",
+      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/FotoJet-2026-01-30T142418.127.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/beatles-films-release-details-a-mega-month-of-movie-going-producers-hope-347483/",
+      "landing_url": "https://matchapp.tv/?news=34748351#latest-news",
+      "seo": {
+        "primary_keyword": "beatles films release details latest news",
+        "short_tail": [
+          "beatles films release details",
+          "beatles films release details news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "beatles films release details latest news October 2026",
+          "beatles films release details release update 2026",
+          "beatles films release details news 2026-10-12",
+          "latest release news about beatles films release details",
+          "beatles films release details mega month latest update",
+          "The Hollywood Reporter beatles films release details release",
+          "latest news about beatles films release details October 2026",
+          "beatles films release details entertainment news 2026-10-12",
+          "what happened with beatles films release details"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "beatles",
+          "films",
+          "release",
+          "details",
+          "mega",
+          "month",
+          "movie",
+          "going"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "beatles films release details 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter beatles films release details",
+          "hollywoodreporter.com beatles films release details",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Beatles’ Films Release Details: A Mega-Month of…",
+        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "beatles films release details latest news",
+          "beatles films release details",
+          "beatles films release details news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "beatles films release details latest news October 2026",
+          "beatles films release details release update 2026",
+          "beatles films release details news 2026-10-12",
+          "latest release news about beatles films release details",
+          "beatles films release details mega month latest update",
+          "The Hollywood Reporter beatles films release details release",
+          "latest news about beatles films release details October 2026",
+          "beatles films release details entertainment news 2026-10-12",
+          "what happened with beatles films release details",
+          "beatles",
+          "films",
+          "details",
+          "mega",
+          "month",
+          "movie",
+          "going",
+          "October 2026",
+          "2026-10-12",
+          "beatles films release details 2026",
+          "The Hollywood Reporter beatles films release details",
+          "hollywoodreporter.com beatles films release details",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "92f27a66",
+      "title": "Watch: What could Trump's energy ceasefire mean for Ukraine?",
+      "url": "https://www.bbc.co.uk/news/videos/crd9321ygqw8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T15:51:30.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2677/live/9aef3f90-c650-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/watch-what-could-trump-s-energy-ceasefire-mean-for-ukraine-92f27a/",
+      "landing_url": "https://matchapp.tv/?news=92f27a66#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "watch",
+          "what",
+          "could",
+          "trump",
+          "energy",
+          "ceasefire"
+        ],
+        "long_tail": [
+          "Watch: What could Trump's energy ceasefire mean for Ukraine? 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "watch",
+          "what",
+          "could",
+          "trump",
+          "energy",
+          "ceasefire"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Watch: What could Trump's energy ceasefire mean for…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "watch",
+          "what",
+          "could",
+          "trump",
+          "energy",
+          "ceasefire",
+          "Watch: What could Trump's energy ceasefire mean for Ukraine? 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "41f1b1d5",
+      "title": "Immigration agents search Congresswoman Ilhan Omar's home",
+      "url": "https://www.bbc.co.uk/news/articles/cvp8glg97393o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T15:44:46.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bdbc/live/255fca30-c63f-11f1-abff-0d918239b2e3.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/immigration-agents-search-congresswoman-ilhan-omar-s-home-41f1b1/",
+      "landing_url": "https://matchapp.tv/?news=41f1b1d5#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "immigration",
+          "agents",
+          "search",
+          "congresswoman",
+          "ilhan",
+          "omar"
+        ],
+        "long_tail": [
+          "Immigration agents search Congresswoman Ilhan Omar's home 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "immigration",
+          "agents",
+          "search",
+          "congresswoman",
+          "ilhan",
+          "omar"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Immigration agents search Congresswoman Ilhan Omar's home…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "immigration",
+          "agents",
+          "search",
+          "congresswoman",
+          "ilhan",
+          "omar",
+          "Immigration agents search Congresswoman Ilhan Omar's home 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "683eac70",
+      "title": "Com produção de Ana Costa, Karinah vai de Ivone Lara a Jovelina Pérola Negra no álbum 'As damas do samba'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/12/com-producao-de-ana-costa-karinah-vai-de-ivone-lara-a-jovelina-perola-negra-no-album-as-damas-do-samba.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-12T15:23:13.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/XzRa2Xnlv8eizbIhHaTez4n2NU4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/e/2Q1CblREyOHKu37oCgwg/arthur-rodrigues-foto.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/com-producao-de-ana-costa-karinah-vai-de-ivone-lara-a-jovelina-perola-negra-no-a-683eac/",
+      "landing_url": "https://matchapp.tv/?news=683eac70#latest-news",
+      "seo": {
+        "primary_keyword": "producao ana costa karinah últimas notícias",
+        "short_tail": [
+          "producao ana costa karinah",
+          "producao ana costa karinah news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "producao ana costa karinah latest news October 2026",
+          "producao ana costa karinah entertainment update 2026",
+          "producao ana costa karinah news 2026-10-12",
+          "latest entertainment news about producao ana costa karinah",
+          "producao ana costa karinah vai ivone latest update",
+          "G1 producao ana costa karinah entertainment",
+          "últimas notícias sobre producao ana costa karinah outubro 2026",
+          "producao ana costa karinah notícia de 2026-10-12",
+          "o que aconteceu com producao ana costa karinah"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "producao",
+          "ana",
+          "costa",
+          "karinah",
+          "vai",
+          "ivone",
+          "lara",
+          "jovelina"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "producao ana costa karinah 2026"
+        ],
+        "source_keywords": [
+          "G1 producao ana costa karinah",
+          "g1.globo.com producao ana costa karinah",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Com produção de Ana Costa, Karinah vai de Ivone Lara a…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-12. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "producao ana costa karinah últimas notícias",
+          "producao ana costa karinah",
+          "producao ana costa karinah news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "producao ana costa karinah latest news October 2026",
+          "producao ana costa karinah entertainment update 2026",
+          "producao ana costa karinah news 2026-10-12",
+          "latest entertainment news about producao ana costa karinah",
+          "producao ana costa karinah vai ivone latest update",
+          "G1 producao ana costa karinah entertainment",
+          "últimas notícias sobre producao ana costa karinah outubro 2026",
+          "producao ana costa karinah notícia de 2026-10-12",
+          "o que aconteceu com producao ana costa karinah",
+          "producao",
+          "ana",
+          "costa",
+          "karinah",
+          "vai",
+          "ivone",
+          "lara",
+          "jovelina",
+          "October 2026",
+          "2026-10-12",
+          "outubro 2026",
+          "producao ana costa karinah 2026",
+          "G1 producao ana costa karinah",
+          "g1.globo.com producao ana costa karinah",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "2f0532d8",
+      "title": "Thousands march to Indian Supreme Court to demand election chief resign",
+      "url": "https://www.bbc.co.uk/news/articles/cwr5y2lgr4gdo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T15:19:17.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1774/live/1fce2710-c630-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/thousands-march-to-indian-supreme-court-to-demand-election-chief-resign-2f0532/",
+      "landing_url": "https://matchapp.tv/?news=2f0532d8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "thousands",
+          "march",
+          "indian",
+          "supreme",
+          "court",
+          "demand"
+        ],
+        "long_tail": [
+          "Thousands march to Indian Supreme Court to demand election chief resign 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "thousands",
+          "march",
+          "indian",
+          "supreme",
+          "court",
+          "demand"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Thousands march to Indian Supreme Court to demand election…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "thousands",
+          "march",
+          "indian",
+          "supreme",
+          "court",
+          "demand",
+          "Thousands march to Indian Supreme Court to demand election chief resign 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "d4d7b556",
+      "title": "New York Store Says Kelly Clarkson Spent “5 Minutes” Inside, Reached Out to “Clear the Air” Amid Star’s ‘Pretty Woman’ Claims",
+      "url": "https://www.hollywoodreporter.com/lifestyle/lifestyle-news/new-york-store-art-of-play-kelly-clarkson-pretty-woman-1236727764/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T15:17:31.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "New York Store Says",
+      "description": "New York Store Says: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/02/GettyImages-22626925951.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/new-york-store-says-kelly-clarkson-spent-5-minutes-inside-reached-out-to-clear-t-d4d7b5/",
+      "landing_url": "https://matchapp.tv/?news=d4d7b556#latest-news",
+      "seo": {
+        "primary_keyword": "New York Store Says latest news",
+        "short_tail": [
+          "New York Store Says",
+          "New York Store Says news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "New York Store Says latest news October 2026",
+          "New York Store Says entertainment update 2026",
+          "New York Store Says news 2026-10-12",
+          "latest entertainment news about New York Store Says",
+          "new york store says new york latest update",
+          "The Hollywood Reporter New York Store Says entertainment",
+          "latest news about New York Store Says October 2026",
+          "New York Store Says entertainment news 2026-10-12",
+          "what happened with New York Store Says"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "New York Store Says",
+          "new",
+          "york",
+          "store",
+          "says"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "New York Store Says 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter New York Store Says",
+          "hollywoodreporter.com New York Store Says",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "New York Store Says Kelly Clarkson Spent “5 Minutes”…",
+        "meta_description": "New York Store Says: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source…",
+        "keywords": [
+          "New York Store Says latest news",
+          "New York Store Says",
+          "New York Store Says news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "New York Store Says latest news October 2026",
+          "New York Store Says entertainment update 2026",
+          "New York Store Says news 2026-10-12",
+          "latest entertainment news about New York Store Says",
+          "new york store says new york latest update",
+          "The Hollywood Reporter New York Store Says entertainment",
+          "latest news about New York Store Says October 2026",
+          "New York Store Says entertainment news 2026-10-12",
+          "what happened with New York Store Says",
+          "new",
+          "york",
+          "store",
+          "says",
+          "October 2026",
+          "2026-10-12",
+          "New York Store Says 2026",
+          "The Hollywood Reporter New York Store Says",
+          "hollywoodreporter.com New York Store Says",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "46087bb9",
+      "title": "AI minister warns 'likely' UK's cyber defences will be breached",
+      "url": "https://www.bbc.co.uk/news/articles/cr78pe09y05xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T15:03:42.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dd68/live/6a2ab470-c646-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ai-minister-warns-likely-uk-s-cyber-defences-will-be-breached-46087b/",
+      "landing_url": "https://matchapp.tv/?news=46087bb9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "minister",
+          "warns",
+          "likely",
+          "cyber",
+          "defences",
+          "will"
+        ],
+        "long_tail": [
+          "AI minister warns 'likely' UK's cyber defences will be breached 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "minister",
+          "warns",
+          "likely",
+          "cyber",
+          "defences",
+          "will"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "AI minister warns 'likely' UK's cyber defences will be…",
+        "meta_description": "World report published by BBC Technology on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "minister",
+          "warns",
+          "likely",
+          "cyber",
+          "defences",
+          "will",
+          "AI minister warns 'likely' UK's cyber defences will be breached 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "955ff1d8",
+      "title": "Catholic School Dance Team Wreaks Havoc in First Trailer for Netflix’s Raunchy Psychodrama ‘The Body’",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/the-body-netflix-trailer-raunchy-catholic-psychodrama-1236727749/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T15:00:00.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "Catholic School Dance Team",
+      "description": "Catholic School Dance Team: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/The_Body_n_S1_E6_00_00_15_07RC2-e1791816785959.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/catholic-school-dance-team-wreaks-havoc-in-first-trailer-for-netflix-s-raunchy-p-955ff1/",
+      "landing_url": "https://matchapp.tv/?news=955ff1d8#latest-news",
+      "seo": {
+        "primary_keyword": "Catholic School Dance Team latest news",
+        "short_tail": [
+          "Catholic School Dance Team",
+          "Catholic School Dance Team news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Catholic School Dance Team latest news October 2026",
+          "Catholic School Dance Team release update 2026",
+          "Catholic School Dance Team news 2026-10-12",
+          "latest release news about Catholic School Dance Team",
+          "catholic school dance team catholic school latest update",
+          "The Hollywood Reporter Catholic School Dance Team release",
+          "latest news about Catholic School Dance Team October 2026",
+          "Catholic School Dance Team entertainment news 2026-10-12",
+          "what happened with Catholic School Dance Team"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Catholic School Dance Team",
+          "catholic",
+          "school",
+          "dance",
+          "team"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Catholic School Dance Team 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Catholic School Dance Team",
+          "hollywoodreporter.com Catholic School Dance Team",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Catholic School Dance Team Wreaks Havoc in First Trailer…",
+        "meta_description": "Catholic School Dance Team: Release update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source…",
+        "keywords": [
+          "Catholic School Dance Team latest news",
+          "Catholic School Dance Team",
+          "Catholic School Dance Team news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Catholic School Dance Team latest news October 2026",
+          "Catholic School Dance Team release update 2026",
+          "Catholic School Dance Team news 2026-10-12",
+          "latest release news about Catholic School Dance Team",
+          "catholic school dance team catholic school latest update",
+          "The Hollywood Reporter Catholic School Dance Team release",
+          "latest news about Catholic School Dance Team October 2026",
+          "Catholic School Dance Team entertainment news 2026-10-12",
+          "what happened with Catholic School Dance Team",
+          "catholic",
+          "school",
+          "dance",
+          "team",
+          "October 2026",
+          "2026-10-12",
+          "Catholic School Dance Team 2026",
+          "The Hollywood Reporter Catholic School Dance Team",
+          "hollywoodreporter.com Catholic School Dance Team",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "4021f586",
+      "title": "Austin Butler, Michael B. Jordan Suit Up as Crockett and Tubbs in ‘Miami Vice ’85’ First Look",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/miami-vice-85-austin-butler-michael-b-jordan-1236727734/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T14:56:57.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Austin Butler",
+      "description": "Austin Butler: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/6db032aa-dd06-415d-a840-fc72be72174d.png?crop=0px%2C3px%2C1672px%2C936px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/austin-butler-michael-b-jordan-suit-up-as-crockett-and-tubbs-in-miami-vice-85-fi-4021f5/",
+      "landing_url": "https://matchapp.tv/?news=4021f586#latest-news",
+      "seo": {
+        "primary_keyword": "Austin Butler latest news",
+        "short_tail": [
+          "Austin Butler",
+          "Austin Butler news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Austin Butler latest news October 2026",
+          "Austin Butler entertainment update 2026",
+          "Austin Butler news 2026-10-12",
+          "latest entertainment news about Austin Butler",
+          "austin butler austin butler michael jordan latest update",
+          "The Hollywood Reporter Austin Butler entertainment",
+          "latest news about Austin Butler October 2026",
+          "Austin Butler entertainment news 2026-10-12",
+          "what happened with Austin Butler"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Austin Butler",
+          "austin",
+          "butler",
+          "michael",
+          "jordan",
+          "suit",
+          "crockett"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Austin Butler 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Austin Butler",
+          "hollywoodreporter.com Austin Butler",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Austin Butler, Michael B. Jordan Suit Up as Crockett and…",
+        "meta_description": "Austin Butler: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Austin Butler latest news",
+          "Austin Butler",
+          "Austin Butler news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Austin Butler latest news October 2026",
+          "Austin Butler entertainment update 2026",
+          "Austin Butler news 2026-10-12",
+          "latest entertainment news about Austin Butler",
+          "austin butler austin butler michael jordan latest update",
+          "The Hollywood Reporter Austin Butler entertainment",
+          "latest news about Austin Butler October 2026",
+          "Austin Butler entertainment news 2026-10-12",
+          "what happened with Austin Butler",
+          "austin",
+          "butler",
+          "michael",
+          "jordan",
+          "suit",
+          "crockett",
+          "October 2026",
+          "2026-10-12",
+          "Austin Butler 2026",
+          "The Hollywood Reporter Austin Butler",
+          "hollywoodreporter.com Austin Butler",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "ce2e9881",
+      "title": "Why the US is bringing back firing squads",
+      "url": "https://www.bbc.co.uk/news/articles/cmpwg28vrexzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T14:56:43.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5ebc/live/216ece00-c64c-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/why-the-us-is-bringing-back-firing-squads-ce2e98/",
+      "landing_url": "https://matchapp.tv/?news=ce2e9881#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "why",
+          "bringing",
+          "back",
+          "firing",
+          "squads"
+        ],
+        "long_tail": [
+          "Why the US is bringing back firing squads 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "why",
+          "bringing",
+          "back",
+          "firing",
+          "squads"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Why the US is bringing back firing squads | World News |…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "why",
+          "bringing",
+          "back",
+          "firing",
+          "squads",
+          "Why the US is bringing back firing squads 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "385429b2",
+      "title": "Ava DuVernay Says That ‘14th’ Saved Her and “Hollywood Is Over”",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/ava-duvernay-hollywood-is-over-maga-14th-london-film-fest-1236726956/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T14:50:21.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Ava DuVernay Says That",
+      "description": "Ava DuVernay Says That: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/ava.jpeg?w=1280&h=720&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ava-duvernay-says-that-14th-saved-her-and-hollywood-is-over-385429/",
+      "landing_url": "https://matchapp.tv/?news=385429b2#latest-news",
+      "seo": {
+        "primary_keyword": "Ava DuVernay Says That latest news",
+        "short_tail": [
+          "Ava DuVernay Says That",
+          "Ava DuVernay Says That news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Ava DuVernay Says That latest news October 2026",
+          "Ava DuVernay Says That entertainment update 2026",
+          "Ava DuVernay Says That news 2026-10-12",
+          "latest entertainment news about Ava DuVernay Says That",
+          "ava duvernay says ava duvernay says latest update",
+          "The Hollywood Reporter Ava DuVernay Says That entertainment",
+          "latest news about Ava DuVernay Says That October 2026",
+          "Ava DuVernay Says That entertainment news 2026-10-12",
+          "what happened with Ava DuVernay Says That"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Ava DuVernay Says That",
+          "ava",
+          "duvernay",
+          "says",
+          "14th",
+          "saved"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Ava DuVernay Says That 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Ava DuVernay Says That",
+          "hollywoodreporter.com Ava DuVernay Says That",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Ava DuVernay Says That ‘14th’ Saved Her and “Hollywood Is…",
+        "meta_description": "Ava DuVernay Says That: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original…",
+        "keywords": [
+          "Ava DuVernay Says That latest news",
+          "Ava DuVernay Says That",
+          "Ava DuVernay Says That news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Ava DuVernay Says That latest news October 2026",
+          "Ava DuVernay Says That entertainment update 2026",
+          "Ava DuVernay Says That news 2026-10-12",
+          "latest entertainment news about Ava DuVernay Says That",
+          "ava duvernay says ava duvernay says latest update",
+          "The Hollywood Reporter Ava DuVernay Says That entertainment",
+          "latest news about Ava DuVernay Says That October 2026",
+          "Ava DuVernay Says That entertainment news 2026-10-12",
+          "what happened with Ava DuVernay Says That",
+          "ava",
+          "duvernay",
+          "says",
+          "14th",
+          "saved",
+          "October 2026",
+          "2026-10-12",
+          "Ava DuVernay Says That 2026",
+          "The Hollywood Reporter Ava DuVernay Says That",
+          "hollywoodreporter.com Ava DuVernay Says That",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "29e2d90f",
+      "title": "South Africa's deputy police chief resigns after being charged with sexual offences",
+      "url": "https://www.bbc.co.uk/news/articles/c8wy9d940pyko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T14:40:15.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "South Africa's",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/42c8/live/68991b20-c64a-11f1-b47f-e3f9cf703bc3.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/south-africa-s-deputy-police-chief-resigns-after-being-charged-with-sexual-offen-29e2d9/",
+      "landing_url": "https://matchapp.tv/?news=29e2d90f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "south",
+          "africa",
+          "deputy",
+          "police",
+          "chief",
+          "resigns"
+        ],
+        "long_tail": [
+          "South Africa's deputy police chief resigns after being charged with sexual offences 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "south",
+          "africa",
+          "deputy",
+          "police",
+          "chief",
+          "resigns"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "South Africa's deputy police chief resigns after being…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "south",
+          "africa",
+          "deputy",
+          "police",
+          "chief",
+          "resigns",
+          "South Africa's deputy police chief resigns after being charged with sexual offences 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "f01b2978",
+      "title": "Fridges in French supermarkets hit by cyber attack",
+      "url": "https://www.bbc.co.uk/news/articles/crq5nzxv9q4yo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T14:30:09.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cfaf/live/a3ced500-c63a-11f1-b99d-0127a94fa1d0.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/fridges-in-french-supermarkets-hit-by-cyber-attack-f01b29/",
+      "landing_url": "https://matchapp.tv/?news=f01b2978#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "fridges",
+          "french",
+          "supermarkets",
+          "hit",
+          "cyber",
+          "attack"
+        ],
+        "long_tail": [
+          "Fridges in French supermarkets hit by cyber attack 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fridges",
+          "french",
+          "supermarkets",
+          "hit",
+          "cyber",
+          "attack"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Fridges in French supermarkets hit by cyber attack | World…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "fridges",
+          "french",
+          "supermarkets",
+          "hit",
+          "cyber",
+          "attack",
+          "Fridges in French supermarkets hit by cyber attack 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "d8b2e2b8",
+      "title": "Pupil arrested after two teachers shot at French school",
+      "url": "https://www.bbc.co.uk/news/articles/cm2keg7910gvo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T14:13:16.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c65c/live/757924d0-c621-11f1-b048-6946f232cb95.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pupil-arrested-after-two-teachers-shot-at-french-school-d8b2e2/",
+      "landing_url": "https://matchapp.tv/?news=d8b2e2b8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot"
+        ],
+        "long_tail": [
+          "Pupil arrested after two teachers shot at French school 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pupil arrested after two teachers shot at French school |…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot",
+          "Pupil arrested after two teachers shot at French school 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "18bfcc93",
+      "title": "Tom Cruise film Digger forecast to become one of Hollywood's biggest flops",
+      "url": "https://www.bbc.co.uk/news/articles/cke8re5v1pgmo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-12T14:11:27.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Tom Cruise",
+      "description": "Tom Cruise: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ebd8/live/4d15b810-c648-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tom-cruise-film-digger-forecast-to-become-one-of-hollywood-s-biggest-flops-18bfcc/",
+      "landing_url": "https://matchapp.tv/?news=18bfcc93#latest-news",
+      "seo": {
+        "primary_keyword": "Tom Cruise latest news",
+        "short_tail": [
+          "Tom Cruise",
+          "Tom Cruise news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Tom Cruise latest news October 2026",
+          "Tom Cruise entertainment update 2026",
+          "Tom Cruise news 2026-10-12",
+          "latest entertainment news about Tom Cruise",
+          "tom cruise tom cruise film digger latest update",
+          "BBC Tom Cruise entertainment",
+          "latest news about Tom Cruise October 2026",
+          "Tom Cruise entertainment news 2026-10-12",
+          "what happened with Tom Cruise"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Tom Cruise",
+          "tom",
+          "cruise",
+          "film",
+          "digger",
+          "forecast",
+          "become"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Tom Cruise 2026"
+        ],
+        "source_keywords": [
+          "BBC Tom Cruise",
+          "bbc.co.uk Tom Cruise",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Tom Cruise film Digger forecast to become one of…",
+        "meta_description": "Tom Cruise: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Tom Cruise latest news",
+          "Tom Cruise",
+          "Tom Cruise news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Tom Cruise latest news October 2026",
+          "Tom Cruise entertainment update 2026",
+          "Tom Cruise news 2026-10-12",
+          "latest entertainment news about Tom Cruise",
+          "tom cruise tom cruise film digger latest update",
+          "BBC Tom Cruise entertainment",
+          "latest news about Tom Cruise October 2026",
+          "Tom Cruise entertainment news 2026-10-12",
+          "what happened with Tom Cruise",
+          "tom",
+          "cruise",
+          "film",
+          "digger",
+          "forecast",
+          "become",
+          "October 2026",
+          "2026-10-12",
+          "Tom Cruise 2026",
+          "BBC Tom Cruise",
+          "bbc.co.uk Tom Cruise",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "3156450c",
+      "title": "Rakuten TV Launching in U.S., Japan, Middle East (Exclusive)",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/rakuten-tv-launching-in-us-japan-mid-east-1236727647/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T14:00:00.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Rakuten TV Launching",
+      "description": "Rakuten TV Launching: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/CEDRIC-DUFOUR_GF26A29RTV.257_approved_reduced.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/rakuten-tv-launching-in-u-s-japan-middle-east-exclusive-315645/",
+      "landing_url": "https://matchapp.tv/?news=3156450c#latest-news",
+      "seo": {
+        "primary_keyword": "Rakuten TV Launching latest news",
+        "short_tail": [
+          "Rakuten TV Launching",
+          "Rakuten TV Launching news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Rakuten TV Launching latest news October 2026",
+          "Rakuten TV Launching entertainment update 2026",
+          "Rakuten TV Launching news 2026-10-12",
+          "latest entertainment news about Rakuten TV Launching",
+          "rakuten launching rakuten launching japan middle latest update",
+          "The Hollywood Reporter Rakuten TV Launching entertainment",
+          "latest news about Rakuten TV Launching October 2026",
+          "Rakuten TV Launching entertainment news 2026-10-12",
+          "what happened with Rakuten TV Launching"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Rakuten TV Launching",
+          "rakuten",
+          "launching",
+          "japan",
+          "middle",
+          "east",
+          "exclusive"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Rakuten TV Launching 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Rakuten TV Launching",
+          "hollywoodreporter.com Rakuten TV Launching",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Rakuten TV Launching in U.S., Japan, Middle East…",
+        "meta_description": "Rakuten TV Launching: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source…",
+        "keywords": [
+          "Rakuten TV Launching latest news",
+          "Rakuten TV Launching",
+          "Rakuten TV Launching news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Rakuten TV Launching latest news October 2026",
+          "Rakuten TV Launching entertainment update 2026",
+          "Rakuten TV Launching news 2026-10-12",
+          "latest entertainment news about Rakuten TV Launching",
+          "rakuten launching rakuten launching japan middle latest update",
+          "The Hollywood Reporter Rakuten TV Launching entertainment",
+          "latest news about Rakuten TV Launching October 2026",
+          "Rakuten TV Launching entertainment news 2026-10-12",
+          "what happened with Rakuten TV Launching",
+          "rakuten",
+          "launching",
+          "japan",
+          "middle",
+          "east",
+          "exclusive",
+          "October 2026",
+          "2026-10-12",
+          "Rakuten TV Launching 2026",
+          "The Hollywood Reporter Rakuten TV Launching",
+          "hollywoodreporter.com Rakuten TV Launching",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
+    {
+      "id": "709c54d3",
+      "title": "Arábia Saudita reage a ataques com drones e mísseis após prometer 'resposta firme' a bombardeio em aeroporto",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/arabia-saudita-reage-a-ataques-com-drones-e-misseis-apos-prometer-resposta-firme-a-bombardeio-em-aeroporto.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-12T13:55:37.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Arábia Saudita",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/BdliZqc0kd-_0ZdX7rELp2YTWtQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/F/h/LklzPYRseUoRrkoLzFWg/ap26282542738585.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/arabia-saudita-reage-a-ataques-com-drones-e-misseis-apos-prometer-resposta-firme-709c54/",
+      "landing_url": "https://matchapp.tv/?news=709c54d3#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-12",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "arabia",
+          "saudita",
+          "reage",
+          "ataques",
+          "drones",
+          "misseis"
+        ],
+        "long_tail": [
+          "Arábia Saudita reage a ataques com drones e mísseis após prometer 'resposta firme' a bombardeio em aeroporto 2026-10-12",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "arabia",
+          "saudita",
+          "reage",
+          "ataques",
+          "drones",
+          "misseis"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Arábia Saudita reage a ataques com drones e mísseis após…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "arabia",
+          "saudita",
+          "reage",
+          "ataques",
+          "drones",
+          "misseis",
+          "Arábia Saudita reage a ataques com drones e mísseis após prometer 'resposta firme' a bombardeio em aeroporto 2026-10-12",
+          "notícias mundiais outubro 2026",
+          "2026-10-12",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
+      }
+    },
     {
       "id": "d1b0e6e7",
       "title": "CoComelon Is Ready to Grow Up",
@@ -92,81 +1613,81 @@
           "hollywoodreporter.com CoComelon Is Ready",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
-      "id": "46087bb9",
-      "title": "AI minister warns 'likely' UK's cyber defences will be breached",
-      "url": "https://www.bbc.co.uk/news/articles/cr78pe09y05xo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
+      "id": "c3aa71db",
+      "title": "Explosão mata jovem de 15 anos e deixa 19 feridos no norte de Israel",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/explosao-deixa-cerca-de-20-feridos-incluindo-criancas-e-professores-no-norte-de-israel.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T13:06:18.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "language": "pt",
+      "published_at": "2026-10-12T13:21:09.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/02d7/live/ff638950-c62c-11f1-af2e-773141c7e84a.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ai-minister-warns-likely-uk-s-cyber-defences-will-be-breached-46087b/",
-      "landing_url": "https://matchapp.tv/?news=46087bb9#latest-news",
+      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/s4qgrSJvcn_PAbNJTYkwx1xepuU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/Q/Fvw9jbThALWvrTJGhicA/whatsapp-image-2026-10-12-at-15.45.08.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/explosao-mata-jovem-de-15-anos-e-deixa-19-feridos-no-norte-de-israel-c3aa71/",
+      "landing_url": "https://matchapp.tv/?news=c3aa71db#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-12",
+        "primary_keyword": "notícias do mundo 2026-10-12",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "minister",
-          "warns",
-          "likely",
-          "cyber",
-          "defences",
-          "will"
+          "notícias do mundo",
+          "notícias internacionais",
+          "explosao",
+          "mata",
+          "jovem",
+          "anos",
+          "deixa",
+          "feridos"
         ],
         "long_tail": [
-          "AI minister warns 'likely' UK's cyber defences will be breached 2026-10-12",
-          "world news October 2026"
+          "Explosão mata jovem de 15 anos e deixa 19 feridos no norte de Israel 2026-10-12",
+          "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "minister",
-          "warns",
-          "likely",
-          "cyber",
-          "defences",
-          "will"
+          "explosao",
+          "mata",
+          "jovem",
+          "anos",
+          "deixa",
+          "feridos"
         ],
         "freshness_keywords": [
           "2026-10-12"
         ],
         "source_keywords": [
-          "BBC Technology"
+          "G1 Mundo"
         ],
-        "meta_title": "AI minister warns 'likely' UK's cyber defences will be…",
-        "meta_description": "World report published by BBC Technology on 2026-10-12. Open the original report for full context.",
+        "meta_title": "Explosão mata jovem de 15 anos e deixa 19 feridos no norte…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
         "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "minister",
-          "warns",
-          "likely",
-          "cyber",
-          "defences",
-          "will",
-          "AI minister warns 'likely' UK's cyber defences will be breached 2026-10-12",
-          "world news October 2026",
+          "notícias do mundo 2026-10-12",
+          "notícias do mundo",
+          "notícias internacionais",
+          "explosao",
+          "mata",
+          "jovem",
+          "anos",
+          "deixa",
+          "feridos",
+          "Explosão mata jovem de 15 anos e deixa 19 feridos no norte de Israel 2026-10-12",
+          "notícias mundiais outubro 2026",
           "2026-10-12",
-          "BBC Technology"
+          "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
       "id": "fa63d9c2",
-      "title": "Brasileira é presa em Bali, na Indonésia, por transportar cocaína no xampu",
+      "title": "Brasileira é presa em Bali por transportar cocaína no xampu",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/12/brasileira-e-presa-na-indonesia-por-transportar-cocaina-no-xampu.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -179,8 +1700,8 @@
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://g1.globo.com/mundo/noticia/2026/10/12/None",
-      "matchapp_url": "https://matchapp.tv/news/articles/brasileira-e-presa-em-bali-na-indonesia-por-transportar-cocaina-no-xampu-fa63d9/",
+      "image": "https://s2-g1.glbimg.com/Sl82-opE_9PJz6KBQbBk0nMMHCE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/m/0/d7R5WlRNSAIaMyEzzQmA/sebastian-pena-lambarri-u-i6h9y50wq-unsplash.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/brasileira-e-presa-em-bali-por-transportar-cocaina-no-xampu-fa63d9/",
       "landing_url": "https://matchapp.tv/?news=fa63d9c2#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-12",
@@ -190,12 +1711,12 @@
           "brasileira",
           "presa",
           "bali",
-          "indonesia",
           "transportar",
-          "cocaina"
+          "cocaina",
+          "xampu"
         ],
         "long_tail": [
-          "Brasileira é presa em Bali, na Indonésia, por transportar cocaína no xampu 2026-10-12",
+          "Brasileira é presa em Bali por transportar cocaína no xampu 2026-10-12",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
@@ -203,9 +1724,9 @@
           "brasileira",
           "presa",
           "bali",
-          "indonesia",
           "transportar",
-          "cocaina"
+          "cocaina",
+          "xampu"
         ],
         "freshness_keywords": [
           "2026-10-12"
@@ -213,7 +1734,7 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Brasileira é presa em Bali, na Indonésia, por transportar…",
+        "meta_title": "Brasileira é presa em Bali por transportar cocaína no…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-12",
@@ -222,15 +1743,15 @@
           "brasileira",
           "presa",
           "bali",
-          "indonesia",
           "transportar",
           "cocaina",
-          "Brasileira é presa em Bali, na Indonésia, por transportar cocaína no xampu 2026-10-12",
+          "xampu",
+          "Brasileira é presa em Bali por transportar cocaína no xampu 2026-10-12",
           "notícias mundiais outubro 2026",
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -248,7 +1769,7 @@
       "category": "entertainment",
       "person": "Russell Brand",
       "description": "Russell Brand: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/014e/live/0c686930-c63d-11f1-b99d-0127a94fa1d0.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dc7b/live/3a15e5c0-c646-11f1-9a39-31b474234113.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/russell-brand-appears-in-court-for-start-of-rape-trial-5bc592/",
       "landing_url": "https://matchapp.tv/?news=5bc59241#latest-news",
       "seo": {
@@ -326,7 +1847,7 @@
           "bbc.co.uk Russell Brand",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -427,311 +1948,12 @@
           "g1.globo.com filha joelma natalia sarraff",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "d8b2e2b8",
-      "title": "Pupil arrested after two teachers shot at French school",
-      "url": "https://www.bbc.co.uk/news/articles/cm2keg7910gvo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T12:18:45.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c65c/live/757924d0-c621-11f1-b048-6946f232cb95.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pupil-arrested-after-two-teachers-shot-at-french-school-d8b2e2/",
-      "landing_url": "https://matchapp.tv/?news=d8b2e2b8#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pupil",
-          "arrested",
-          "after",
-          "two",
-          "teachers",
-          "shot"
-        ],
-        "long_tail": [
-          "Pupil arrested after two teachers shot at French school 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pupil",
-          "arrested",
-          "after",
-          "two",
-          "teachers",
-          "shot"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Pupil arrested after two teachers shot at French school |…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "pupil",
-          "arrested",
-          "after",
-          "two",
-          "teachers",
-          "shot",
-          "Pupil arrested after two teachers shot at French school 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "7b8e3bf8",
-      "title": "YouTube Making Nice with Legacy TV",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/youtube-on-working-with-legacy-tv-mipcom-1236727664/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-12T12:18:38.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "YouTube Making Nice",
-      "description": "YouTube Making Nice: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2025/10/FotoJet-2025-10-13T152034.706.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/youtube-making-nice-with-legacy-tv-7b8e3b/",
-      "landing_url": "https://matchapp.tv/?news=7b8e3bf8#latest-news",
-      "seo": {
-        "primary_keyword": "YouTube Making Nice latest news",
-        "short_tail": [
-          "YouTube Making Nice",
-          "YouTube Making Nice news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "YouTube Making Nice latest news October 2026",
-          "YouTube Making Nice entertainment update 2026",
-          "YouTube Making Nice news 2026-10-12",
-          "latest entertainment news about YouTube Making Nice",
-          "youtube making nice youtube making nice latest update",
-          "The Hollywood Reporter YouTube Making Nice entertainment",
-          "latest news about YouTube Making Nice October 2026",
-          "YouTube Making Nice entertainment news 2026-10-12",
-          "what happened with YouTube Making Nice"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "YouTube Making Nice",
-          "youtube",
-          "making",
-          "nice",
-          "legacy"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "YouTube Making Nice 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter YouTube Making Nice",
-          "hollywoodreporter.com YouTube Making Nice",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "YouTube Making Nice with Legacy TV | Entertainment News |…",
-        "meta_description": "YouTube Making Nice: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source…",
-        "keywords": [
-          "YouTube Making Nice latest news",
-          "YouTube Making Nice",
-          "YouTube Making Nice news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "YouTube Making Nice latest news October 2026",
-          "YouTube Making Nice entertainment update 2026",
-          "YouTube Making Nice news 2026-10-12",
-          "latest entertainment news about YouTube Making Nice",
-          "youtube making nice youtube making nice latest update",
-          "The Hollywood Reporter YouTube Making Nice entertainment",
-          "latest news about YouTube Making Nice October 2026",
-          "YouTube Making Nice entertainment news 2026-10-12",
-          "what happened with YouTube Making Nice",
-          "youtube",
-          "making",
-          "nice",
-          "legacy",
-          "October 2026",
-          "2026-10-12",
-          "YouTube Making Nice 2026",
-          "The Hollywood Reporter YouTube Making Nice",
-          "hollywoodreporter.com YouTube Making Nice",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "cc1852ad",
-      "title": "Who are the Houthis, and why are they so hard to fight?",
-      "url": "https://www.bbc.co.uk/news/videos/cmy56nzd6y69o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T12:15:01.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/242f/live/3aabb7c0-c633-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/who-are-the-houthis-and-why-are-they-so-hard-to-fight-cc1852/",
-      "landing_url": "https://matchapp.tv/?news=cc1852ad#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "who",
-          "houthis",
-          "why",
-          "they",
-          "hard",
-          "fight"
-        ],
-        "long_tail": [
-          "Who are the Houthis, and why are they so hard to fight? 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "who",
-          "houthis",
-          "why",
-          "they",
-          "hard",
-          "fight"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Who are the Houthis, and why are they so hard to fight? |…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "who",
-          "houthis",
-          "why",
-          "they",
-          "hard",
-          "fight",
-          "Who are the Houthis, and why are they so hard to fight? 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "bbb4e297",
-      "title": "Appeal for major energy storage system rejected",
-      "url": "https://www.bbc.co.uk/news/articles/cwvgdej69m2ro?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T12:10:34.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d706/live/71a87db0-c635-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/appeal-for-major-energy-storage-system-rejected-bbb4e2/",
-      "landing_url": "https://matchapp.tv/?news=bbb4e297#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "appeal",
-          "major",
-          "energy",
-          "storage",
-          "system",
-          "rejected"
-        ],
-        "long_tail": [
-          "Appeal for major energy storage system rejected 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "appeal",
-          "major",
-          "energy",
-          "storage",
-          "system",
-          "rejected"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Appeal for major energy storage system rejected | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "appeal",
-          "major",
-          "energy",
-          "storage",
-          "system",
-          "rejected",
-          "Appeal for major energy storage system rejected 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
       "id": "86f2acec",
-      "title": "Julie Hesmondhalgh left Celebrity Traitors 'with my head held high'",
+      "title": "Julie Hesmondhalgh left Celebrity Traitors 'with head held high'",
       "url": "https://www.bbc.co.uk/news/articles/c6lyen88dwdno?at_medium=RSS&at_campaign=rss",
       "source": "BBC",
       "source_domain": "bbc.co.uk",
@@ -744,8 +1966,8 @@
       "category": "entertainment",
       "person": "Julie Hesmondhalgh",
       "description": "Julie Hesmondhalgh: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a9b3/live/40d96f70-c624-11f1-b048-6946f232cb95.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/julie-hesmondhalgh-left-celebrity-traitors-with-my-head-held-high-86f2ac/",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/11f8/live/54582500-c642-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/julie-hesmondhalgh-left-celebrity-traitors-with-head-held-high-86f2ac/",
       "landing_url": "https://matchapp.tv/?news=86f2acec#latest-news",
       "seo": {
         "primary_keyword": "Julie Hesmondhalgh latest news",
@@ -789,7 +2011,7 @@
           "bbc.co.uk Julie Hesmondhalgh",
           "BBC entertainment news"
         ],
-        "meta_title": "Julie Hesmondhalgh left Celebrity Traitors 'with my head…",
+        "meta_title": "Julie Hesmondhalgh left Celebrity Traitors 'with head held…",
         "meta_description": "Julie Hesmondhalgh: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
           "Julie Hesmondhalgh latest news",
@@ -822,105 +2044,7 @@
           "bbc.co.uk Julie Hesmondhalgh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "18bfcc93",
-      "title": "Tom Cruise film Digger forecast to lose $245m at box office",
-      "url": "https://www.bbc.co.uk/news/articles/cke8re5v1pgmo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-12T11:29:18.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Tom Cruise",
-      "description": "Tom Cruise: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f0b2/live/e4909ea0-c637-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/tom-cruise-film-digger-forecast-to-lose-245m-at-box-office-18bfcc/",
-      "landing_url": "https://matchapp.tv/?news=18bfcc93#latest-news",
-      "seo": {
-        "primary_keyword": "digger",
-        "short_tail": [
-          "Tom Cruise",
-          "Tom Cruise news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "digger"
-        ],
-        "long_tail": [
-          "Tom Cruise latest news October 2026",
-          "Tom Cruise entertainment update 2026",
-          "Tom Cruise news 2026-10-12",
-          "latest entertainment news about Tom Cruise",
-          "tom cruise tom cruise film digger latest update",
-          "BBC Tom Cruise entertainment",
-          "latest news about Tom Cruise October 2026",
-          "Tom Cruise entertainment news 2026-10-12",
-          "what happened with Tom Cruise"
-        ],
-        "trend_keywords": [
-          "digger"
-        ],
-        "entity_keywords": [
-          "Tom Cruise",
-          "tom",
-          "cruise",
-          "film",
-          "digger",
-          "forecast",
-          "lose"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "Tom Cruise 2026"
-        ],
-        "source_keywords": [
-          "BBC Tom Cruise",
-          "bbc.co.uk Tom Cruise",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Tom Cruise film Digger forecast to lose $245m at box…",
-        "meta_description": "Tom Cruise: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "digger",
-          "Tom Cruise",
-          "Tom Cruise news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Tom Cruise latest news October 2026",
-          "Tom Cruise entertainment update 2026",
-          "Tom Cruise news 2026-10-12",
-          "latest entertainment news about Tom Cruise",
-          "tom cruise tom cruise film digger latest update",
-          "BBC Tom Cruise entertainment",
-          "latest news about Tom Cruise October 2026",
-          "Tom Cruise entertainment news 2026-10-12",
-          "what happened with Tom Cruise",
-          "tom",
-          "cruise",
-          "film",
-          "forecast",
-          "lose",
-          "October 2026",
-          "2026-10-12",
-          "Tom Cruise 2026",
-          "BBC Tom Cruise",
-          "bbc.co.uk Tom Cruise",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -989,7 +2113,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -1087,7 +2211,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -1156,308 +2280,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "0202ae2f",
-      "title": "Saudi minister vows 'serious response' to Houthi attacks on airports",
-      "url": "https://www.bbc.co.uk/news/articles/cjly0zqq27e4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T10:28:47.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b82e/live/50a18f00-c629-11f1-a509-ab6554d795a2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/saudi-minister-vows-serious-response-to-houthi-attacks-on-airports-0202ae/",
-      "landing_url": "https://matchapp.tv/?news=0202ae2f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "saudi",
-          "minister",
-          "vows",
-          "serious",
-          "response",
-          "houthi"
-        ],
-        "long_tail": [
-          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "saudi",
-          "minister",
-          "vows",
-          "serious",
-          "response",
-          "houthi"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Saudi minister vows 'serious response' to Houthi attacks…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "saudi",
-          "minister",
-          "vows",
-          "serious",
-          "response",
-          "houthi",
-          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "917d0d59",
-      "title": "Women's billion-dollar boom leaves players behind, says Fifpro",
-      "url": "https://www.bbc.co.uk/sport/football/articles/cmd7qn1g0xrxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T10:04:50.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/779a/live/b7058b10-c616-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/women-s-billion-dollar-boom-leaves-players-behind-says-fifpro-917d0d/",
-      "landing_url": "https://matchapp.tv/?news=917d0d59#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "women",
-          "billion",
-          "dollar",
-          "boom",
-          "leaves",
-          "players"
-        ],
-        "long_tail": [
-          "Women's billion-dollar boom leaves players behind, says Fifpro 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "women",
-          "billion",
-          "dollar",
-          "boom",
-          "leaves",
-          "players"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Women's billion-dollar boom leaves players behind, says…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "women",
-          "billion",
-          "dollar",
-          "boom",
-          "leaves",
-          "players",
-          "Women's billion-dollar boom leaves players behind, says Fifpro 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "2bf0b713",
-      "title": "Watch: CCTV shows people take cover as missile hits Riyadh airport",
-      "url": "https://www.bbc.co.uk/news/videos/cj4g17wz7gv0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T09:38:03.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/317e/live/50e05140-c61f-11f1-8c89-b96b8469b965.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-cctv-shows-people-take-cover-as-missile-hits-riyadh-airport-2bf0b7/",
-      "landing_url": "https://matchapp.tv/?news=2bf0b713#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "cctv",
-          "shows",
-          "people",
-          "take",
-          "cover"
-        ],
-        "long_tail": [
-          "Watch: CCTV shows people take cover as missile hits Riyadh airport 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "cctv",
-          "shows",
-          "people",
-          "take",
-          "cover"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: CCTV shows people take cover as missile hits Riyadh…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "watch",
-          "cctv",
-          "shows",
-          "people",
-          "take",
-          "cover",
-          "Watch: CCTV shows people take cover as missile hits Riyadh airport 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "36e3cae8",
-      "title": "Russell Brand Arrives at London Court for Start of Rape Trial",
-      "url": "https://www.hollywoodreporter.com/news/general-news/russell-brand-london-court-rape-sexual-assault-trial-1236727652/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-12T09:34:10.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Russell Brand Arrives",
-      "description": "Russell Brand Arrives: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-12T102853.152.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/russell-brand-arrives-at-london-court-for-start-of-rape-trial-36e3ca/",
-      "landing_url": "https://matchapp.tv/?news=36e3cae8#latest-news",
-      "seo": {
-        "primary_keyword": "Russell Brand Arrives latest news",
-        "short_tail": [
-          "Russell Brand Arrives",
-          "Russell Brand Arrives news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Russell Brand Arrives latest news October 2026",
-          "Russell Brand Arrives entertainment update 2026",
-          "Russell Brand Arrives news 2026-10-12",
-          "latest entertainment news about Russell Brand Arrives",
-          "russell brand arrives russell brand arrives latest update",
-          "The Hollywood Reporter Russell Brand Arrives entertainment",
-          "latest news about Russell Brand Arrives October 2026",
-          "Russell Brand Arrives entertainment news 2026-10-12",
-          "what happened with Russell Brand Arrives"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Russell Brand Arrives",
-          "russell",
-          "brand",
-          "arrives",
-          "london",
-          "court"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "Russell Brand Arrives 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Russell Brand Arrives",
-          "hollywoodreporter.com Russell Brand Arrives",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Russell Brand Arrives at London Court for Start of Rape…",
-        "meta_description": "Russell Brand Arrives: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source…",
-        "keywords": [
-          "Russell Brand Arrives latest news",
-          "Russell Brand Arrives",
-          "Russell Brand Arrives news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Russell Brand Arrives latest news October 2026",
-          "Russell Brand Arrives entertainment update 2026",
-          "Russell Brand Arrives news 2026-10-12",
-          "latest entertainment news about Russell Brand Arrives",
-          "russell brand arrives russell brand arrives latest update",
-          "The Hollywood Reporter Russell Brand Arrives entertainment",
-          "latest news about Russell Brand Arrives October 2026",
-          "Russell Brand Arrives entertainment news 2026-10-12",
-          "what happened with Russell Brand Arrives",
-          "russell",
-          "brand",
-          "arrives",
-          "london",
-          "court",
-          "October 2026",
-          "2026-10-12",
-          "Russell Brand Arrives 2026",
-          "The Hollywood Reporter Russell Brand Arrives",
-          "hollywoodreporter.com Russell Brand Arrives",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -1526,666 +2349,103 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
-      "id": "2660cb8f",
-      "title": "Ataque a tiros em escola na França deixa feridos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/ataque-a-tiros-escola-franca-feridos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T09:25:38.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/0DF8JvbZYk2dFXopn_3FZQ5R65w=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s04.video.glbimg.com/deo/vi/55/20/992055",
-      "matchapp_url": "https://matchapp.tv/news/articles/ataque-a-tiros-em-escola-na-franca-deixa-feridos-2660cb/",
-      "landing_url": "https://matchapp.tv/?news=2660cb8f#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ataque",
-          "tiros",
-          "escola",
-          "franca",
-          "deixa",
-          "feridos"
-        ],
-        "long_tail": [
-          "Ataque a tiros em escola na França deixa feridos 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ataque",
-          "tiros",
-          "escola",
-          "franca",
-          "deixa",
-          "feridos"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Ataque a tiros em escola na França deixa feridos |…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ataque",
-          "tiros",
-          "escola",
-          "franca",
-          "deixa",
-          "feridos",
-          "Ataque a tiros em escola na França deixa feridos 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "e660dc60",
-      "title": "‘Sumo: Spirit Weighs Nothing’ Takes Us Inside Rituals and Sacrifice to Make the “Normal Dudes” of Japan’s Ancient Sport Relatable (Exclusive Clip and Chat)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/sumo-spirit-weighs-nothing-doc-film-clip-lff-interview-1236727202/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-12T09:00:00.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Sumo-Spirit-Weighs-Nothing-film-still-BFI-London-Film-Festival-H-2026.jpeg?w=1280&h=720&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/sumo-spirit-weighs-nothing-takes-us-inside-rituals-and-sacrifice-to-make-the-nor-e660dc/",
-      "landing_url": "https://matchapp.tv/?news=e660dc60#latest-news",
-      "seo": {
-        "primary_keyword": "sumo spirit weighs nothing latest news",
-        "short_tail": [
-          "sumo spirit weighs nothing",
-          "sumo spirit weighs nothing news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "sumo spirit weighs nothing latest news October 2026",
-          "sumo spirit weighs nothing entertainment update 2026",
-          "sumo spirit weighs nothing news 2026-10-12",
-          "latest entertainment news about sumo spirit weighs nothing",
-          "sumo spirit weighs nothing takes inside latest update",
-          "The Hollywood Reporter sumo spirit weighs nothing entertainment",
-          "latest news about sumo spirit weighs nothing October 2026",
-          "sumo spirit weighs nothing entertainment news 2026-10-12",
-          "what happened with sumo spirit weighs nothing"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "sumo",
-          "spirit",
-          "weighs",
-          "nothing",
-          "takes",
-          "inside",
-          "rituals",
-          "sacrifice"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "sumo spirit weighs nothing 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter sumo spirit weighs nothing",
-          "hollywoodreporter.com sumo spirit weighs nothing",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Sumo: Spirit Weighs Nothing’ Takes Us Inside Rituals and…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "sumo spirit weighs nothing latest news",
-          "sumo spirit weighs nothing",
-          "sumo spirit weighs nothing news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "sumo spirit weighs nothing latest news October 2026",
-          "sumo spirit weighs nothing entertainment update 2026",
-          "sumo spirit weighs nothing news 2026-10-12",
-          "latest entertainment news about sumo spirit weighs nothing",
-          "sumo spirit weighs nothing takes inside latest update",
-          "The Hollywood Reporter sumo spirit weighs nothing entertainment",
-          "latest news about sumo spirit weighs nothing October 2026",
-          "sumo spirit weighs nothing entertainment news 2026-10-12",
-          "what happened with sumo spirit weighs nothing",
-          "sumo",
-          "spirit",
-          "weighs",
-          "nothing",
-          "takes",
-          "inside",
-          "rituals",
-          "sacrifice",
-          "October 2026",
-          "2026-10-12",
-          "sumo spirit weighs nothing 2026",
-          "The Hollywood Reporter sumo spirit weighs nothing",
-          "hollywoodreporter.com sumo spirit weighs nothing",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "eddad650",
-      "title": "Enchente deixa mais de 100 estrangeiros ilhados no Nepal",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/estrangeiros-ilhados-no-nepal.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T08:51:20.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/tjMfLpp_FV29x4he6oA834H47tY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/n/8eapWNS7q1rAni8YkJUQ/2026-10-11t091025z-707457390-rc2w0oa8m2dq-rtrmadp-3-nepal-flood.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/enchente-deixa-mais-de-100-estrangeiros-ilhados-no-nepal-eddad6/",
-      "landing_url": "https://matchapp.tv/?news=eddad650#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "enchente",
-          "deixa",
-          "mais",
-          "100",
-          "estrangeiros",
-          "ilhados"
-        ],
-        "long_tail": [
-          "Enchente deixa mais de 100 estrangeiros ilhados no Nepal 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "enchente",
-          "deixa",
-          "mais",
-          "100",
-          "estrangeiros",
-          "ilhados"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Enchente deixa mais de 100 estrangeiros ilhados no Nepal |…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "enchente",
-          "deixa",
-          "mais",
-          "100",
-          "estrangeiros",
-          "ilhados",
-          "Enchente deixa mais de 100 estrangeiros ilhados no Nepal 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "c367a35b",
-      "title": "Céu sobre a capital saudita Riade fica praticamente vazio após ataques dos Houthis a aeroporto",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/voos-aeroporto-riad.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T08:39:01.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/YEz5dFxt2mDaYFten9D6KLpu9_c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/5/WS6F32RxSmR5CBuZBZCQ/2026-10-11t133451z-158209492-rc211oahp5d3-rtrmadp-3-iran-crisis-saudi-airport.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ceu-sobre-a-capital-saudita-riade-fica-praticamente-vazio-apos-ataques-dos-houth-c367a3/",
-      "landing_url": "https://matchapp.tv/?news=c367a35b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ceu",
-          "sobre",
-          "capital",
-          "saudita",
-          "riade",
-          "fica"
-        ],
-        "long_tail": [
-          "Céu sobre a capital saudita Riade fica praticamente vazio após ataques dos Houthis a aeroporto 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ceu",
-          "sobre",
-          "capital",
-          "saudita",
-          "riade",
-          "fica"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Céu sobre a capital saudita Riade fica praticamente vazio…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ceu",
-          "sobre",
-          "capital",
-          "saudita",
-          "riade",
-          "fica",
-          "Céu sobre a capital saudita Riade fica praticamente vazio após ataques dos Houthis a aeroporto 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "947bbe40",
-      "title": "Quentin Tarantino’s West End Debut ‘The Popinjay Cavalier’ Sets Launch Date at Phoenix Theatre",
-      "url": "https://www.hollywoodreporter.com/lifestyle/arts/quentin-tarantino-popinjay-cavalier-sacha-tickets-phoenix-1236727624/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-12T08:24:19.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Release",
-      "category": "entertainment",
-      "person": "Quentin Tarantino’s West End",
-      "description": "Quentin Tarantino’s West End: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-12T091850.473.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/quentin-tarantino-s-west-end-debut-the-popinjay-cavalier-sets-launch-date-at-pho-947bbe/",
-      "landing_url": "https://matchapp.tv/?news=947bbe40#latest-news",
-      "seo": {
-        "primary_keyword": "Quentin Tarantino’s West End latest news",
-        "short_tail": [
-          "Quentin Tarantino’s West End",
-          "Quentin Tarantino’s West End news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Quentin Tarantino’s West End latest news October 2026",
-          "Quentin Tarantino’s West End release update 2026",
-          "Quentin Tarantino’s West End news 2026-10-12",
-          "latest release news about Quentin Tarantino’s West End",
-          "quentin tarantino west end quentin tarantino latest update",
-          "The Hollywood Reporter Quentin Tarantino’s West End release",
-          "latest news about Quentin Tarantino’s West End October 2026",
-          "Quentin Tarantino’s West End entertainment news 2026-10-12",
-          "what happened with Quentin Tarantino’s West End"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Quentin Tarantino’s West End",
-          "quentin",
-          "tarantino",
-          "west",
-          "end"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "Quentin Tarantino’s West End 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Quentin Tarantino’s West End",
-          "hollywoodreporter.com Quentin Tarantino’s West End",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Quentin Tarantino’s West End Debut ‘The Popinjay Cavalier’…",
-        "meta_description": "Quentin Tarantino’s West End: Release update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original…",
-        "keywords": [
-          "Quentin Tarantino’s West End latest news",
-          "Quentin Tarantino’s West End",
-          "Quentin Tarantino’s West End news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Quentin Tarantino’s West End latest news October 2026",
-          "Quentin Tarantino’s West End release update 2026",
-          "Quentin Tarantino’s West End news 2026-10-12",
-          "latest release news about Quentin Tarantino’s West End",
-          "quentin tarantino west end quentin tarantino latest update",
-          "The Hollywood Reporter Quentin Tarantino’s West End release",
-          "latest news about Quentin Tarantino’s West End October 2026",
-          "Quentin Tarantino’s West End entertainment news 2026-10-12",
-          "what happened with Quentin Tarantino’s West End",
-          "quentin",
-          "tarantino",
-          "west",
-          "end",
-          "October 2026",
-          "2026-10-12",
-          "Quentin Tarantino’s West End 2026",
-          "The Hollywood Reporter Quentin Tarantino’s West End",
-          "hollywoodreporter.com Quentin Tarantino’s West End",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "478bd11f",
-      "title": "What’s Selling at MIPCOM: Spy Thrillers, Royal Romances and a Zulu Epic",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/whats-selling-mipcom-spy-thrillers-royal-romances-1236723470/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-12T08:00:00.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "What’s Selling",
-      "description": "What’s Selling: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/18bob_Mipcom_main_w-SPLASH-2026.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-s-selling-at-mipcom-spy-thrillers-royal-romances-and-a-zulu-epic-478bd1/",
-      "landing_url": "https://matchapp.tv/?news=478bd11f#latest-news",
-      "seo": {
-        "primary_keyword": "What’s Selling latest news",
-        "short_tail": [
-          "What’s Selling",
-          "What’s Selling news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "What’s Selling latest news October 2026",
-          "What’s Selling entertainment update 2026",
-          "What’s Selling news 2026-10-12",
-          "latest entertainment news about What’s Selling",
-          "what selling what selling mipcom spy latest update",
-          "The Hollywood Reporter What’s Selling entertainment",
-          "latest news about What’s Selling October 2026",
-          "What’s Selling entertainment news 2026-10-12",
-          "what happened with What’s Selling"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "What’s Selling",
-          "what",
-          "selling",
-          "mipcom",
-          "spy",
-          "thrillers",
-          "royal"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "What’s Selling 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter What’s Selling",
-          "hollywoodreporter.com What’s Selling",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "What’s Selling at MIPCOM: Spy Thrillers, Royal Romances…",
-        "meta_description": "What’s Selling: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via…",
-        "keywords": [
-          "What’s Selling latest news",
-          "What’s Selling",
-          "What’s Selling news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "What’s Selling latest news October 2026",
-          "What’s Selling entertainment update 2026",
-          "What’s Selling news 2026-10-12",
-          "latest entertainment news about What’s Selling",
-          "what selling what selling mipcom spy latest update",
-          "The Hollywood Reporter What’s Selling entertainment",
-          "latest news about What’s Selling October 2026",
-          "What’s Selling entertainment news 2026-10-12",
-          "what happened with What’s Selling",
-          "what",
-          "selling",
-          "mipcom",
-          "spy",
-          "thrillers",
-          "royal",
-          "October 2026",
-          "2026-10-12",
-          "What’s Selling 2026",
-          "The Hollywood Reporter What’s Selling",
-          "hollywoodreporter.com What’s Selling",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "f7b5bc89",
-      "title": "Mirren Mack, CJ Beckford Hope to Find Themselves in Romantic Drama ‘Arthur & Clara’: Exclusive Austin First-Look Images",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/austin-arthur-and-clara-film-images-mirren-mack-cj-beckford-1236726941/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-12T08:00:00.000Z",
-      "discovered_at": "2026-10-12T10:08:35.166Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Mirren Mack",
-      "description": "Mirren Mack: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Arthur-Clara-film-still-Domizia-Salusest-H-2026.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/mirren-mack-cj-beckford-hope-to-find-themselves-in-romantic-drama-arthur-clara-e-f7b5bc/",
-      "landing_url": "https://matchapp.tv/?news=f7b5bc89#latest-news",
-      "seo": {
-        "primary_keyword": "Mirren Mack latest news",
-        "short_tail": [
-          "Mirren Mack",
-          "Mirren Mack news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Mirren Mack latest news October 2026",
-          "Mirren Mack entertainment update 2026",
-          "Mirren Mack news 2026-10-12",
-          "latest entertainment news about Mirren Mack",
-          "mirren mack mirren mack beckford hope latest update",
-          "The Hollywood Reporter Mirren Mack entertainment",
-          "latest news about Mirren Mack October 2026",
-          "Mirren Mack entertainment news 2026-10-12",
-          "what happened with Mirren Mack"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Mirren Mack",
-          "mirren",
-          "mack",
-          "beckford",
-          "hope",
-          "find",
-          "themselves"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "Mirren Mack 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Mirren Mack",
-          "hollywoodreporter.com Mirren Mack",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Mirren Mack, CJ Beckford Hope to Find Themselves in…",
-        "meta_description": "Mirren Mack: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Mirren Mack latest news",
-          "Mirren Mack",
-          "Mirren Mack news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Mirren Mack latest news October 2026",
-          "Mirren Mack entertainment update 2026",
-          "Mirren Mack news 2026-10-12",
-          "latest entertainment news about Mirren Mack",
-          "mirren mack mirren mack beckford hope latest update",
-          "The Hollywood Reporter Mirren Mack entertainment",
-          "latest news about Mirren Mack October 2026",
-          "Mirren Mack entertainment news 2026-10-12",
-          "what happened with Mirren Mack",
-          "mirren",
-          "mack",
-          "beckford",
-          "hope",
-          "find",
-          "themselves",
-          "October 2026",
-          "2026-10-12",
-          "Mirren Mack 2026",
-          "The Hollywood Reporter Mirren Mack",
-          "hollywoodreporter.com Mirren Mack",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "1aff4bf2",
-      "title": "AI is less regulated than milk, says Microsoft president",
-      "url": "https://www.bbc.co.uk/news/articles/c6rmy7zmvx3lo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
+      "id": "15ab7ecf",
+      "title": "Ray Quinn says baby boy was 'born sleeping'",
+      "url": "https://www.bbc.co.uk/news/articles/cwp8gyp51rqro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-12T07:47:37.000Z",
-      "discovered_at": "2026-10-11T23:56:08.840Z",
+      "published_at": "2026-10-12T07:59:33.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
       "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/da16/live/eacee500-c610-11f1-aae8-850c1751d51d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ai-is-less-regulated-than-milk-says-microsoft-president-1aff4b/",
-      "landing_url": "https://matchapp.tv/?news=1aff4bf2#latest-news",
+      "category": "entertainment",
+      "person": "Ray Quinn",
+      "description": "Ray Quinn: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/905a/live/42b11040-c611-11f1-aae8-850c1751d51d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ray-quinn-says-baby-boy-was-born-sleeping-15ab7e/",
+      "landing_url": "https://matchapp.tv/?news=15ab7ecf#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-12",
+        "primary_keyword": "Ray Quinn latest news",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "less",
-          "regulated",
-          "than",
-          "milk",
-          "says",
-          "microsoft"
+          "Ray Quinn",
+          "Ray Quinn news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
         ],
         "long_tail": [
-          "AI is less regulated than milk, says Microsoft president 2026-10-12",
-          "world news October 2026"
+          "Ray Quinn latest news October 2026",
+          "Ray Quinn entertainment update 2026",
+          "Ray Quinn news 2026-10-12",
+          "latest entertainment news about Ray Quinn",
+          "ray quinn ray quinn says baby latest update",
+          "BBC Ray Quinn entertainment",
+          "latest news about Ray Quinn October 2026",
+          "Ray Quinn entertainment news 2026-10-12",
+          "what happened with Ray Quinn"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "less",
-          "regulated",
-          "than",
-          "milk",
+          "Ray Quinn",
+          "ray",
+          "quinn",
           "says",
-          "microsoft"
+          "baby",
+          "boy",
+          "born"
         ],
         "freshness_keywords": [
-          "2026-10-12"
+          "October 2026",
+          "2026-10-12",
+          "Ray Quinn 2026"
         ],
         "source_keywords": [
-          "BBC Technology"
+          "BBC Ray Quinn",
+          "bbc.co.uk Ray Quinn",
+          "BBC entertainment news"
         ],
-        "meta_title": "AI is less regulated than milk, says Microsoft president |…",
-        "meta_description": "World report published by BBC Technology on 2026-10-12. Open the original report for full context.",
+        "meta_title": "Ray Quinn says baby boy was 'born sleeping' |…",
+        "meta_description": "Ray Quinn: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "less",
-          "regulated",
-          "than",
-          "milk",
+          "Ray Quinn latest news",
+          "Ray Quinn",
+          "Ray Quinn news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Ray Quinn latest news October 2026",
+          "Ray Quinn entertainment update 2026",
+          "Ray Quinn news 2026-10-12",
+          "latest entertainment news about Ray Quinn",
+          "ray quinn ray quinn says baby latest update",
+          "BBC Ray Quinn entertainment",
+          "latest news about Ray Quinn October 2026",
+          "Ray Quinn entertainment news 2026-10-12",
+          "what happened with Ray Quinn",
+          "ray",
+          "quinn",
           "says",
-          "microsoft",
-          "AI is less regulated than milk, says Microsoft president 2026-10-12",
-          "world news October 2026",
+          "baby",
+          "boy",
+          "born",
+          "October 2026",
           "2026-10-12",
-          "BBC Technology"
+          "Ray Quinn 2026",
+          "BBC Ray Quinn",
+          "bbc.co.uk Ray Quinn",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -2284,76 +2544,7 @@
           "bbc.co.uk teen who discovered her",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "b24c4566",
-      "title": "Cliente ou rival? Como a China pode passar de grande compradora a concorrente do frango brasileiro",
-      "url": "https://g1.globo.com/economia/agronegocios/noticia/2026/10/12/cliente-ou-rival-como-a-china-pode-passar-de-grande-compradora-a-concorrente-do-frango-brasileiro.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T07:00:00.000Z",
-      "discovered_at": "2026-10-12T07:34:51.016Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/hnN5lTLF54w2K2oAXGNpSnOO7FU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/r/Za3G7KQ0etExddLmXGFg/hayley-ryczek-l79delr51qm-unsplash-1-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/cliente-ou-rival-como-a-china-pode-passar-de-grande-compradora-a-concorrente-do--b24c45/",
-      "landing_url": "https://matchapp.tv/?news=b24c4566#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "cliente",
-          "rival",
-          "como",
-          "china",
-          "pode",
-          "passar"
-        ],
-        "long_tail": [
-          "Cliente ou rival? Como a China pode passar de grande compradora a concorrente do frango brasileiro 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "cliente",
-          "rival",
-          "como",
-          "china",
-          "pode",
-          "passar"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Cliente ou rival? Como a China pode passar de grande…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "cliente",
-          "rival",
-          "como",
-          "china",
-          "pode",
-          "passar",
-          "Cliente ou rival? Como a China pode passar de grande compradora a concorrente do frango brasileiro 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -2454,7 +2645,7 @@
           "g1.globo.com detonautas lanca dia criancas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -2550,7 +2741,7 @@
           "bbc.co.uk Robert Pattinson",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -2646,7 +2837,7 @@
           "g1.globo.com Morre Edson Silva",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -2740,7 +2931,7 @@
           "bbc.co.uk Sacha Baron Cohen",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -2836,7 +3027,7 @@
           "bbc.co.uk Dolly Parton's",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -2934,7 +3125,7 @@
           "g1.globo.com Maria Rita",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -3035,7 +3226,7 @@
           "g1.globo.com tom chega hoje aos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -3134,7 +3325,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -3232,206 +3423,7 @@
           "g1.globo.com Wagner Moura",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "e372853f",
-      "title": "Marisa Monte canta Julia Mestre, Mari Jasca e Mel Paranhos em álbum do violonista de flamenco Niño Josele",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/10/marisa-monte-canta-julia-mestre-mari-jasca-e-mel-paranhos-em-album-do-violonista-de-flamenco-nino-josele.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-10T13:41:15.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Marisa Monte",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/f0-yV-1POj18HBlA3Ic5AXZZiXo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/S/Z/LM7pphTpOM8f82T6yuaQ/marisanino.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/marisa-monte-canta-julia-mestre-mari-jasca-e-mel-paranhos-em-album-do-violonista-e37285/",
-      "landing_url": "https://matchapp.tv/?news=e372853f#latest-news",
-      "seo": {
-        "primary_keyword": "Marisa Monte últimas notícias",
-        "short_tail": [
-          "Marisa Monte",
-          "Marisa Monte news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Marisa Monte latest news October 2026",
-          "Marisa Monte entertainment update 2026",
-          "Marisa Monte news 2026-10-10",
-          "latest entertainment news about Marisa Monte",
-          "marisa monte marisa monte canta julia latest update",
-          "G1 Marisa Monte entertainment",
-          "últimas notícias sobre Marisa Monte outubro 2026",
-          "Marisa Monte notícia de 2026-10-10",
-          "o que aconteceu com Marisa Monte"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Marisa Monte",
-          "marisa",
-          "monte",
-          "canta",
-          "julia",
-          "mestre",
-          "mari"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "Marisa Monte 2026"
-        ],
-        "source_keywords": [
-          "G1 Marisa Monte",
-          "g1.globo.com Marisa Monte",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Marisa Monte canta Julia Mestre, Mari Jasca e Mel Paranhos…",
-        "meta_description": "Marisa Monte: Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Marisa Monte últimas notícias",
-          "Marisa Monte",
-          "Marisa Monte news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Marisa Monte latest news October 2026",
-          "Marisa Monte entertainment update 2026",
-          "Marisa Monte news 2026-10-10",
-          "latest entertainment news about Marisa Monte",
-          "marisa monte marisa monte canta julia latest update",
-          "G1 Marisa Monte entertainment",
-          "últimas notícias sobre Marisa Monte outubro 2026",
-          "Marisa Monte notícia de 2026-10-10",
-          "o que aconteceu com Marisa Monte",
-          "marisa",
-          "monte",
-          "canta",
-          "julia",
-          "mestre",
-          "mari",
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "Marisa Monte 2026",
-          "G1 Marisa Monte",
-          "g1.globo.com Marisa Monte",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "32ae938b",
-      "title": "'Minha TV Globinho tá viva': web reage à edição especial do programa infantil",
-      "url": "https://g1.globo.com/pop-arte/tv-e-series/noticia/2026/10/10/minha-tv-globinho-ta-viva-web-reage-a-edicao-especial-do-programa-infantil.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-10T12:18:59.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/Euh6MxnB30kflPy8_7bLIsVpfPw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/G/9ANb3AQhAeP8UzTSCZ3A/whatsapp-image-2026-10-01-at-14.43.17.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/minha-tv-globinho-ta-viva-web-reage-a-edicao-especial-do-programa-infantil-32ae93/",
-      "landing_url": "https://matchapp.tv/?news=32ae938b#latest-news",
-      "seo": {
-        "primary_keyword": "minha globinho viva web últimas notícias",
-        "short_tail": [
-          "minha globinho viva web",
-          "minha globinho viva web news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "minha globinho viva web latest news October 2026",
-          "minha globinho viva web entertainment update 2026",
-          "minha globinho viva web news 2026-10-10",
-          "latest entertainment news about minha globinho viva web",
-          "minha globinho viva web reage edicao latest update",
-          "G1 minha globinho viva web entertainment",
-          "últimas notícias sobre minha globinho viva web outubro 2026",
-          "minha globinho viva web notícia de 2026-10-10",
-          "o que aconteceu com minha globinho viva web"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "minha",
-          "globinho",
-          "viva",
-          "web",
-          "reage",
-          "edicao",
-          "especial",
-          "programa"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "minha globinho viva web 2026"
-        ],
-        "source_keywords": [
-          "G1 minha globinho viva web",
-          "g1.globo.com minha globinho viva web",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'Minha TV Globinho tá viva': web reage à edição especial…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "minha globinho viva web últimas notícias",
-          "minha globinho viva web",
-          "minha globinho viva web news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "minha globinho viva web latest news October 2026",
-          "minha globinho viva web entertainment update 2026",
-          "minha globinho viva web news 2026-10-10",
-          "latest entertainment news about minha globinho viva web",
-          "minha globinho viva web reage edicao latest update",
-          "G1 minha globinho viva web entertainment",
-          "últimas notícias sobre minha globinho viva web outubro 2026",
-          "minha globinho viva web notícia de 2026-10-10",
-          "o que aconteceu com minha globinho viva web",
-          "minha",
-          "globinho",
-          "viva",
-          "web",
-          "reage",
-          "edicao",
-          "especial",
-          "programa",
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "minha globinho viva web 2026",
-          "G1 minha globinho viva web",
-          "g1.globo.com minha globinho viva web",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     },
     {
@@ -3521,97 +3513,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
-      }
-    },
-    {
-      "id": "85bda206",
-      "title": "Voici comment un camp d’été a transformé l’éducation physique au Québec",
-      "url": "https://theconversation.com/voici-comment-un-camp-dete-a-transforme-leducation-physique-au-quebec-289434",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-08T14:07:32.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null,
-      "language": "en",
-      "discovered_at": "2026-10-08T17:52:59.456Z",
-      "person": "",
-      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
-      "matchapp_url": "https://matchapp.tv/news/articles/voici-comment-un-camp-d-ete-a-transforme-l-education-physique-au-quebec-85bda2/",
-      "landing_url": "https://matchapp.tv/?news=85bda206#latest-news",
-      "seo": {
-        "primary_keyword": "voici comment camp ete transforme sports news",
-        "short_tail": [
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "voici",
-          "comment",
-          "camp",
-          "ete",
-          "transforme",
-          "education"
-        ],
-        "long_tail": [
-          "voici comment camp ete transforme sports news 2026",
-          "voici comment camp ete transforme latest update 2026-10-08",
-          "Sports latest news October 2026",
-          "The Conversation sports news indexed 2026-10-08",
-          "voici comment camp ete transforme The Conversation original report"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "voici",
-          "comment",
-          "camp",
-          "ete",
-          "transforme",
-          "education",
-          "physique",
-          "quebec"
-        ],
-        "freshness_keywords": [
-          "2026-10-08",
-          "October 2026"
-        ],
-        "source_keywords": [
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines"
-        ],
-        "meta_title": "Voici comment un camp d’été a transformé l’éducation…",
-        "meta_description": "Sports reporting indexed 2026-10-08. Open the original publisher through MatchApp Latest News.",
-        "keywords": [
-          "voici comment camp ete transforme sports news",
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "voici",
-          "comment",
-          "camp",
-          "ete",
-          "transforme",
-          "education",
-          "voici comment camp ete transforme sports news 2026",
-          "voici comment camp ete transforme latest update 2026-10-08",
-          "Sports latest news October 2026",
-          "The Conversation sports news indexed 2026-10-08",
-          "voici comment camp ete transforme The Conversation original report",
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines",
-          "2026-10-08",
-          "October 2026"
-        ],
-        "seo_generated_at": "2026-10-12T13:28:12.771Z"
+        "seo_generated_at": "2026-10-12T16:01:40.762Z"
       }
     }
   ]
