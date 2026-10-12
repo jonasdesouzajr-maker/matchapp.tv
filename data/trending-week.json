@@ -1,237 +1,10 @@
 {
   "schemaVersion": 2,
-  "weekOf": "2026-10-05",
-  "updated": "2026-10-11T11:40:52.028Z",
+  "weekOf": "2026-10-12",
+  "updated": "2026-10-12T10:46:22.183Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
-    {
-      "title": "Animals",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "1236045",
-      "poster": "https://image.tmdb.org/t/p/w780/cyltXU1lAGhRFBuHQIMWBAPj8fI.jpg",
-      "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on his political campaign, they have to get their hands dirty and expose a side of their lives they never intended to see the light of day.",
-      "genre": [
-        "Thriller",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Ben Affleck",
-        "Kerry Washington",
-        "Gillian Anderson",
-        "Steven Yeun"
-      ],
-      "runtimeMinutes": 106,
-      "contentRating": "R",
-      "voteAverage": 7.44,
-      "previewUrl": "https://www.youtube.com/watch?v=ZkN2M4ODdys",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-10-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1236045"
-      },
-      "sourceRank": 1,
-      "keywords": [
-        "Animals",
-        "Animals 2026",
-        "where to watch Animals",
-        "Thriller movie",
-        "Drama movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Ben Affleck",
-        "Kerry Washington"
-      ],
-      "longTailKeywords": [
-        "where to watch Animals 2026",
-        "Animals streaming in Brazil and United States",
-        "Animals cast synopsis trailer and where to watch",
-        "what Thriller to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Animals (2026) | MatchApp Ai",
-        "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on",
-        "keywords": [
-          "Animals",
-          "Animals 2026",
-          "where to watch Animals",
-          "Thriller movie",
-          "Drama movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Ben Affleck",
-          "Kerry Washington",
-          "where to watch Animals 2026",
-          "Animals streaming in Brazil and United States",
-          "Animals cast synopsis trailer and where to watch",
-          "what Thriller to watch this week"
-        ],
-        "canonicalQuery": "Animals"
-      }
-    },
-    {
-      "title": "Matchbox the Movie",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Apple TV",
-      "platforms": [
-        "Apple TV",
-        "Apple TV Amazon Channel"
-      ],
-      "tmdbId": "1148365",
-      "poster": "https://image.tmdb.org/t/p/w780/lFKA4GMz36dImEy3DQPdPF7G4V9.jpg",
-      "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the world.",
-      "genre": [
-        "Action",
-        "Comedy",
-        "Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "John Cena",
-        "Jessica Biel",
-        "Sam Richardson",
-        "Arturo Castro"
-      ],
-      "runtimeMinutes": 127,
-      "contentRating": "PG-13",
-      "voteAverage": 7.82,
-      "previewUrl": "https://www.youtube.com/watch?v=7xfqITrMDcI",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1148365"
-      },
-      "sourceRank": 2,
-      "keywords": [
-        "Matchbox the Movie",
-        "Matchbox the Movie 2026",
-        "where to watch Matchbox the Movie",
-        "Action movie",
-        "Comedy movie",
-        "Adventure movie",
-        "Apple TV trending movie",
-        "Apple TV Amazon Channel trending movie",
-        "John Cena",
-        "Jessica Biel"
-      ],
-      "longTailKeywords": [
-        "where to watch Matchbox the Movie 2026",
-        "Matchbox the Movie streaming in Brazil and United States",
-        "Matchbox the Movie cast synopsis trailer and where to watch",
-        "what Action to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Matchbox the Movie (2026) | MatchApp Ai",
-        "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the worl",
-        "keywords": [
-          "Matchbox the Movie",
-          "Matchbox the Movie 2026",
-          "where to watch Matchbox the Movie",
-          "Action movie",
-          "Comedy movie",
-          "Adventure movie",
-          "Apple TV trending movie",
-          "Apple TV Amazon Channel trending movie",
-          "John Cena",
-          "Jessica Biel",
-          "where to watch Matchbox the Movie 2026",
-          "Matchbox the Movie streaming in Brazil and United States",
-          "Matchbox the Movie cast synopsis trailer and where to watch",
-          "what Action to watch this week"
-        ],
-        "canonicalQuery": "Matchbox the Movie"
-      }
-    },
     {
       "title": "LINK CLICK",
       "kind": "tv",
@@ -307,7 +80,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/123542"
       },
-      "sourceRank": 3,
+      "sourceRank": 1,
       "keywords": [
         "LINK CLICK",
         "LINK CLICK 2021",
@@ -346,6 +119,138 @@
           "what Animation to watch this week"
         ],
         "canonicalQuery": "LINK CLICK"
+      }
+    },
+    {
+      "title": "Dragon Ball Super: Beerus",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "312359",
+      "poster": "https://image.tmdb.org/t/p/w780/AojgldgsOlzZV8ahyOzaiAjJWvV.jpg",
+      "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemastered and re-edited version of Dragon Ball Super.",
+      "genre": [
+        "Animation",
+        "Action & Adventure",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Masako Nozawa",
+        "Ryo Horikawa",
+        "Naoko Watanabe",
+        "Unsho Ishizuka"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-Y7",
+      "voteAverage": 9.75,
+      "previewUrl": "https://www.youtube.com/watch?v=iCD3Lf7Jf9o",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/312359"
+      },
+      "sourceRank": 2,
+      "keywords": [
+        "Dragon Ball Super: Beerus",
+        "Dragon Ball Super: Beerus 2026",
+        "where to watch Dragon Ball Super: Beerus",
+        "Animation series",
+        "Action & Adventure series",
+        "Sci-Fi & Fantasy series",
+        "Masako Nozawa",
+        "Ryo Horikawa"
+      ],
+      "longTailKeywords": [
+        "where to watch Dragon Ball Super: Beerus 2026",
+        "Dragon Ball Super: Beerus streaming in Brazil and United States",
+        "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Dragon Ball Super: Beerus (2026) | MatchApp Ai",
+        "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemaste",
+        "keywords": [
+          "Dragon Ball Super: Beerus",
+          "Dragon Ball Super: Beerus 2026",
+          "where to watch Dragon Ball Super: Beerus",
+          "Animation series",
+          "Action & Adventure series",
+          "Sci-Fi & Fantasy series",
+          "Masako Nozawa",
+          "Ryo Horikawa",
+          "where to watch Dragon Ball Super: Beerus 2026",
+          "Dragon Ball Super: Beerus streaming in Brazil and United States",
+          "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Dragon Ball Super: Beerus"
+      }
+    },
+    {
+      "title": "Treasure Island",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "333101",
+      "poster": "https://image.tmdb.org/t/p/w780/xZQ5ABJF1iLjGq9xR4MthpgQEFF.jpg",
+      "description": "Young Jim Hawkins and his mother Bess come into possession of a legendary pirate’s treasure map and are drawn into a deadly voyage across the Atlantic, where Jim is forced to navigate mutiny, violence and betrayal, leaving him forever changed.",
+      "genre": [
+        "Action & Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "David Oyelowo",
+        "Hayley Atwell",
+        "Jack Huston",
+        "Tomer Capone"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-PG",
+      "voteAverage": 4.73,
+      "previewUrl": "https://www.youtube.com/watch?v=UsFVIvngwRA",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/333101"
+      },
+      "sourceRank": 3,
+      "keywords": [
+        "Treasure Island",
+        "Treasure Island 2026",
+        "where to watch Treasure Island",
+        "Action & Adventure series",
+        "David Oyelowo",
+        "Hayley Atwell"
+      ],
+      "longTailKeywords": [
+        "where to watch Treasure Island 2026",
+        "Treasure Island streaming in Brazil and United States",
+        "Treasure Island cast synopsis trailer and where to watch",
+        "what Action & Adventure to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Treasure Island (2026) | MatchApp Ai",
+        "description": "Young Jim Hawkins and his mother Bess come into possession of a legendary pirate’s treasure map and are drawn into a deadly voyage across the Atlantic, where ",
+        "keywords": [
+          "Treasure Island",
+          "Treasure Island 2026",
+          "where to watch Treasure Island",
+          "Action & Adventure series",
+          "David Oyelowo",
+          "Hayley Atwell",
+          "where to watch Treasure Island 2026",
+          "Treasure Island streaming in Brazil and United States",
+          "Treasure Island cast synopsis trailer and where to watch",
+          "what Action & Adventure to watch this week"
+        ],
+        "canonicalQuery": "Treasure Island"
       }
     },
     {
@@ -408,6 +313,215 @@
       "sourceRank": 1
     },
     {
+      "title": "Practical Magic 2",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1302904",
+      "poster": "https://image.tmdb.org/t/p/w780/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+      "description": "The Owens sisters must confront the dark curse that threatens to unravel their family once and for all.",
+      "genre": [
+        "Romance",
+        "Fantasy",
+        "Comedy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Sandra Bullock",
+        "Nicole Kidman",
+        "Joey King",
+        "Maisie Williams"
+      ],
+      "runtimeMinutes": 130,
+      "contentRating": "PG-13",
+      "voteAverage": 6.29,
+      "previewUrl": "https://www.youtube.com/watch?v=Ho10_4IX1jE",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-11"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-11"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1302904"
+      },
+      "sourceRank": 4,
+      "keywords": [
+        "Practical Magic 2",
+        "Practical Magic 2 2026",
+        "where to watch Practical Magic 2",
+        "Romance movie",
+        "Fantasy movie",
+        "Comedy movie",
+        "Sandra Bullock",
+        "Nicole Kidman"
+      ],
+      "longTailKeywords": [
+        "where to watch Practical Magic 2 2026",
+        "Practical Magic 2 streaming in Brazil and United States",
+        "Practical Magic 2 cast synopsis trailer and where to watch",
+        "what Romance to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Practical Magic 2 (2026) | MatchApp Ai",
+        "description": "The Owens sisters must confront the dark curse that threatens to unravel their family once and for all.",
+        "keywords": [
+          "Practical Magic 2",
+          "Practical Magic 2 2026",
+          "where to watch Practical Magic 2",
+          "Romance movie",
+          "Fantasy movie",
+          "Comedy movie",
+          "Sandra Bullock",
+          "Nicole Kidman",
+          "where to watch Practical Magic 2 2026",
+          "Practical Magic 2 streaming in Brazil and United States",
+          "Practical Magic 2 cast synopsis trailer and where to watch",
+          "what Romance to watch this week"
+        ],
+        "canonicalQuery": "Practical Magic 2"
+      }
+    },
+    {
+      "title": "Animals",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "1236045",
+      "poster": "https://image.tmdb.org/t/p/w780/cyltXU1lAGhRFBuHQIMWBAPj8fI.jpg",
+      "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on his political campaign, they have to get their hands dirty and expose a side of their lives they never intended to see the light of day.",
+      "genre": [
+        "Thriller",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Ben Affleck",
+        "Kerry Washington",
+        "Gillian Anderson",
+        "Steven Yeun"
+      ],
+      "runtimeMinutes": 106,
+      "contentRating": "R",
+      "voteAverage": 7.47,
+      "previewUrl": "https://www.youtube.com/watch?v=ZkN2M4ODdys",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": "2026-10-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1236045"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "Animals",
+        "Animals 2026",
+        "where to watch Animals",
+        "Thriller movie",
+        "Drama movie",
+        "Netflix trending movie",
+        "Netflix Standard with Ads trending movie",
+        "Ben Affleck",
+        "Kerry Washington"
+      ],
+      "longTailKeywords": [
+        "where to watch Animals 2026",
+        "Animals streaming in Brazil and United States",
+        "Animals cast synopsis trailer and where to watch",
+        "what Thriller to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Animals (2026) | MatchApp Ai",
+        "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on",
+        "keywords": [
+          "Animals",
+          "Animals 2026",
+          "where to watch Animals",
+          "Thriller movie",
+          "Drama movie",
+          "Netflix trending movie",
+          "Netflix Standard with Ads trending movie",
+          "Ben Affleck",
+          "Kerry Washington",
+          "where to watch Animals 2026",
+          "Animals streaming in Brazil and United States",
+          "Animals cast synopsis trailer and where to watch",
+          "what Thriller to watch this week"
+        ],
+        "canonicalQuery": "Animals"
+      }
+    },
+    {
       "title": "Carrie",
       "kind": "tv",
       "year": 2026,
@@ -437,7 +551,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-MA",
-      "voteAverage": 8.37,
+      "voteAverage": 8.41,
       "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
       "availability": {
         "BR": {
@@ -485,7 +599,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/288673"
       },
-      "sourceRank": 4,
+      "sourceRank": 6,
       "keywords": [
         "Carrie",
         "Carrie 2026",
@@ -527,6 +641,182 @@
       }
     },
     {
+      "title": "Taylor Swift — Patient Zero",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
+      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
+      "artist": "Taylor Swift",
+      "songTitle": "Patient Zero",
+      "publishedAt": "2026-09-29T22:00:19+00:00",
+      "viewCount": 18032193,
+      "viewCountCheckedAt": "2026-10-11",
+      "channel": "Taylor Swift",
+      "channelUrl": "https://www.youtube.com/@TaylorSwift",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "Taylor Swift",
+        "Patient Zero",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "Taylor Swift new music video",
+        "The Life of a Showgirl: The Encore",
+        "Taylor Swift Patient Zero official music video",
+        "Taylor Swift music videos",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "Taylor Swift Patient Zero official music video YouTube",
+        "where to watch Taylor Swift Patient Zero music video",
+        "new Taylor Swift music video 2026",
+        "Taylor Swift Patient Zero release date",
+        "Taylor Swift Patient Zero YouTube views"
+      ],
+      "seo": {
+        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
+        "keywords": [
+          "Taylor Swift",
+          "Patient Zero",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "The Life of a Showgirl: The Encore",
+          "Taylor Swift Patient Zero official music video",
+          "Taylor Swift music videos",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Taylor Swift Patient Zero official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 2
+    },
+    {
+      "title": "Matchbox the Movie",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Apple TV",
+      "platforms": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "tmdbId": "1148365",
+      "poster": "https://image.tmdb.org/t/p/w780/lFKA4GMz36dImEy3DQPdPF7G4V9.jpg",
+      "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the world.",
+      "genre": [
+        "Action",
+        "Comedy",
+        "Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "John Cena",
+        "Jessica Biel",
+        "Arturo Castro",
+        "Sam Richardson"
+      ],
+      "runtimeMinutes": 127,
+      "contentRating": "PG-13",
+      "voteAverage": 7.92,
+      "previewUrl": "https://www.youtube.com/watch?v=7xfqITrMDcI",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Apple TV"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1148365"
+      },
+      "sourceRank": 7,
+      "keywords": [
+        "Matchbox the Movie",
+        "Matchbox the Movie 2026",
+        "where to watch Matchbox the Movie",
+        "Action movie",
+        "Comedy movie",
+        "Adventure movie",
+        "Apple TV trending movie",
+        "Apple TV Amazon Channel trending movie",
+        "John Cena",
+        "Jessica Biel"
+      ],
+      "longTailKeywords": [
+        "where to watch Matchbox the Movie 2026",
+        "Matchbox the Movie streaming in Brazil and United States",
+        "Matchbox the Movie cast synopsis trailer and where to watch",
+        "what Action to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Matchbox the Movie (2026) | MatchApp Ai",
+        "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the worl",
+        "keywords": [
+          "Matchbox the Movie",
+          "Matchbox the Movie 2026",
+          "where to watch Matchbox the Movie",
+          "Action movie",
+          "Comedy movie",
+          "Adventure movie",
+          "Apple TV trending movie",
+          "Apple TV Amazon Channel trending movie",
+          "John Cena",
+          "Jessica Biel",
+          "where to watch Matchbox the Movie 2026",
+          "Matchbox the Movie streaming in Brazil and United States",
+          "Matchbox the Movie cast synopsis trailer and where to watch",
+          "what Action to watch this week"
+        ],
+        "canonicalQuery": "Matchbox the Movie"
+      }
+    },
+    {
       "title": "Spider-Man: Brand New Day",
       "kind": "movie",
       "year": 2026,
@@ -553,7 +843,7 @@
       ],
       "runtimeMinutes": 145,
       "contentRating": "PG-13",
-      "voteAverage": 8.41,
+      "voteAverage": 8.4,
       "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
       "availability": {
         "BR": {
@@ -626,7 +916,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/969681"
       },
-      "sourceRank": 5,
+      "sourceRank": 8,
       "keywords": [
         "Spider-Man: Brand New Day",
         "Spider-Man: Brand New Day 2026",
@@ -666,374 +956,96 @@
       }
     },
     {
-      "title": "Below",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "285322",
-      "poster": "https://image.tmdb.org/t/p/w780/vgLqqhMUbljp585qPp1EFCyJtcz.jpg",
-      "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
-      "genre": [
-        "Drama",
-        "Mystery"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Josh Hartnett",
-        "Mackenzie Davis",
-        "Charlie Heaton",
-        "Ruby Stokes"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=U57CNxSgoss",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/285322"
-      },
-      "sourceRank": 6,
-      "keywords": [
-        "Below",
-        "Below 2026",
-        "where to watch Below",
-        "Drama series",
-        "Mystery series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Josh Hartnett",
-        "Mackenzie Davis"
-      ],
-      "longTailKeywords": [
-        "where to watch Below 2026",
-        "Below streaming in Brazil and United States",
-        "Below cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Below (2026) | MatchApp Ai",
-        "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
-        "keywords": [
-          "Below",
-          "Below 2026",
-          "where to watch Below",
-          "Drama series",
-          "Mystery series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Josh Hartnett",
-          "Mackenzie Davis",
-          "where to watch Below 2026",
-          "Below streaming in Brazil and United States",
-          "Below cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Below"
-      }
-    },
-    {
-      "title": "Taylor Swift — Patient Zero",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
-      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
-      "artist": "Taylor Swift",
-      "songTitle": "Patient Zero",
-      "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 18032193,
-      "viewCountCheckedAt": "2026-10-11",
-      "channel": "Taylor Swift",
-      "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "Taylor Swift",
-        "Patient Zero",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "Taylor Swift new music video",
-        "The Life of a Showgirl: The Encore",
-        "Taylor Swift Patient Zero official music video",
-        "Taylor Swift music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "Taylor Swift Patient Zero official music video YouTube",
-        "where to watch Taylor Swift Patient Zero music video",
-        "new Taylor Swift music video 2026",
-        "Taylor Swift Patient Zero release date",
-        "Taylor Swift Patient Zero YouTube views"
-      ],
-      "seo": {
-        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,032,193 verified views at the latest daily check.",
-        "keywords": [
-          "Taylor Swift",
-          "Patient Zero",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "The Life of a Showgirl: The Encore",
-          "Taylor Swift Patient Zero official music video",
-          "Taylor Swift music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Taylor Swift Patient Zero official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 2
-    },
-    {
-      "title": "Doctor X: Mafia in White",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "293610",
-      "poster": "https://image.tmdb.org/t/p/w780/nDDVzQfv95PGwj9nV2fJvUrkcvU.jpg",
-      "description": "In a hospital dominated by ego and corruption, an enigmatic but brilliant surgeon arrives — taking on seemingly impossible cases amid fierce opposition.",
-      "genre": [
-        "Mystery",
-        "Drama",
-        "Crime"
-      ],
-      "inLanguage": "ko",
-      "cast": [
-        "Kim Ji-won",
-        "Lee Jung-eun",
-        "Son Hyun-joo",
-        "Kim Woo-seok"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.7,
-      "previewUrl": "https://www.youtube.com/watch?v=v6KNnhkLnnY",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/293610"
-      },
-      "sourceRank": 7,
-      "keywords": [
-        "Doctor X: Mafia in White",
-        "Doctor X: Mafia in White 2026",
-        "where to watch Doctor X: Mafia in White",
-        "Mystery series",
-        "Drama series",
-        "Crime series",
-        "Kim Ji-won",
-        "Lee Jung-eun"
-      ],
-      "longTailKeywords": [
-        "where to watch Doctor X: Mafia in White 2026",
-        "Doctor X: Mafia in White streaming in Brazil and United States",
-        "Doctor X: Mafia in White cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Doctor X: Mafia in White (2026) | MatchApp Ai",
-        "description": "In a hospital dominated by ego and corruption, an enigmatic but brilliant surgeon arrives — taking on seemingly impossible cases amid fierce opposition.",
-        "keywords": [
-          "Doctor X: Mafia in White",
-          "Doctor X: Mafia in White 2026",
-          "where to watch Doctor X: Mafia in White",
-          "Mystery series",
-          "Drama series",
-          "Crime series",
-          "Kim Ji-won",
-          "Lee Jung-eun",
-          "where to watch Doctor X: Mafia in White 2026",
-          "Doctor X: Mafia in White streaming in Brazil and United States",
-          "Doctor X: Mafia in White cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
-        ],
-        "canonicalQuery": "Doctor X: Mafia in White"
-      }
-    },
-    {
-      "title": "Treasure Island",
-      "kind": "tv",
+      "title": "Other Mommy",
+      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
+      "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "333101",
-      "poster": "https://image.tmdb.org/t/p/w780/o79kVEpMG6FSr5qyiBmVuc3IGWD.jpg",
-      "description": "When Jim Hawkins gets his hands on a legendary treasure map, his mother Bess's clever and decisive actions leave him holding valuable knowledge that puts both of their lives in danger. Sailing aboard The Hispaniola, Jim and Bess are caught between the charming, terrifying pirate Long John Silver, and the debonair, duplicitous British agent Aaron Graham. Jim has to grow up fast as he and his mother fight for survival on a voyage where alliances shift, secrets multiply and peril closes in from all sides.",
+      "tmdbId": "1400837",
+      "poster": "https://image.tmdb.org/t/p/w780/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
+      "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
       "genre": [
-        "Drama",
-        "Action & Adventure"
+        "Horror"
       ],
       "inLanguage": "en",
       "cast": [
-        "David Oyelowo",
-        "Hayley Atwell",
-        "Jack Huston",
-        "Tomer Capone"
+        "Jessica Chastain",
+        "Jay Duplass",
+        "Arabella Olivia Clark",
+        "Karen Allen"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 1,
-      "previewUrl": "https://www.youtube.com/watch?v=UsFVIvngwRA",
+      "runtimeMinutes": 93,
+      "contentRating": "R",
+      "voteAverage": 5.8,
+      "previewUrl": "https://www.youtube.com/watch?v=-mnTITqqiT0",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "US": {
+          "buy": [
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1400837-other-mommy/watch?locale=US",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/333101"
-      },
-      "sourceRank": 8,
-      "keywords": [
-        "Treasure Island",
-        "Treasure Island 2026",
-        "where to watch Treasure Island",
-        "Drama series",
-        "Action & Adventure series",
-        "David Oyelowo",
-        "Hayley Atwell"
-      ],
-      "longTailKeywords": [
-        "where to watch Treasure Island 2026",
-        "Treasure Island streaming in Brazil and United States",
-        "Treasure Island cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Treasure Island (2026) | MatchApp Ai",
-        "description": "When Jim Hawkins gets his hands on a legendary treasure map, his mother Bess's clever and decisive actions leave him holding valuable knowledge that puts both",
-        "keywords": [
-          "Treasure Island",
-          "Treasure Island 2026",
-          "where to watch Treasure Island",
-          "Drama series",
-          "Action & Adventure series",
-          "David Oyelowo",
-          "Hayley Atwell",
-          "where to watch Treasure Island 2026",
-          "Treasure Island streaming in Brazil and United States",
-          "Treasure Island cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Treasure Island"
-      }
-    },
-    {
-      "title": "100 Days of Deception",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "293607",
-      "poster": "https://image.tmdb.org/t/p/w780/bZHEU42QynnMrHUWK1Hhvj2cdPA.jpg",
-      "description": "Hoping for freedom, Gyeongseong's top pickpocket infiltrates the Japanese colonial government to steal secrets — only to fall for her target's son.",
-      "genre": [
-        "Action & Adventure"
-      ],
-      "inLanguage": "ko",
-      "cast": [
-        "Kim You-jung",
-        "Jinyoung",
-        "Kim Hyun-joo",
-        "Lee Mu-saeng"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=P0ElxnFyfXY",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/293607"
+        "source_page_url": "https://www.themoviedb.org/movie/1400837"
       },
       "sourceRank": 9,
       "keywords": [
-        "100 Days of Deception",
-        "100 Days of Deception 2026",
-        "where to watch 100 Days of Deception",
-        "Action & Adventure series",
-        "Kim You-jung",
-        "Jinyoung"
+        "Other Mommy",
+        "Other Mommy 2026",
+        "where to watch Other Mommy",
+        "Horror movie",
+        "Jessica Chastain",
+        "Jay Duplass"
       ],
       "longTailKeywords": [
-        "where to watch 100 Days of Deception 2026",
-        "100 Days of Deception streaming in Brazil and United States",
-        "100 Days of Deception cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
+        "where to watch Other Mommy 2026",
+        "Other Mommy streaming in Brazil and United States",
+        "Other Mommy cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
       ],
       "seo": {
-        "title": "Where to watch 100 Days of Deception (2026) | MatchApp Ai",
-        "description": "Hoping for freedom, Gyeongseong's top pickpocket infiltrates the Japanese colonial government to steal secrets — only to fall for her target's son.",
+        "title": "Where to watch Other Mommy (2026) | MatchApp Ai",
+        "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly da",
         "keywords": [
-          "100 Days of Deception",
-          "100 Days of Deception 2026",
-          "where to watch 100 Days of Deception",
-          "Action & Adventure series",
-          "Kim You-jung",
-          "Jinyoung",
-          "where to watch 100 Days of Deception 2026",
-          "100 Days of Deception streaming in Brazil and United States",
-          "100 Days of Deception cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
+          "Other Mommy",
+          "Other Mommy 2026",
+          "where to watch Other Mommy",
+          "Horror movie",
+          "Jessica Chastain",
+          "Jay Duplass",
+          "where to watch Other Mommy 2026",
+          "Other Mommy streaming in Brazil and United States",
+          "Other Mommy cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
         ],
-        "canonicalQuery": "100 Days of Deception"
+        "canonicalQuery": "Other Mommy"
       }
     },
     {
@@ -1096,69 +1108,515 @@
       "sourceRank": 3
     },
     {
-      "title": "Natural High",
+      "title": "Below",
       "kind": "tv",
-      "year": 2023,
-      "origin": "CN",
-      "originName": "China",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "231620",
-      "poster": "https://image.tmdb.org/t/p/w780/oC2MuEWxnLVTyYw70XoK2HFf7nW.jpg",
-      "description": "Come and join Shen Teng and his friends as they step away from the bustling crowded cities and reconnect with the beautiful wild nature.",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "285322",
+      "poster": "https://image.tmdb.org/t/p/w780/vgLqqhMUbljp585qPp1EFCyJtcz.jpg",
+      "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
       "genre": [
-        "Reality",
-        "Comedy"
+        "Drama",
+        "Mystery"
       ],
-      "inLanguage": "zh",
+      "inLanguage": "en",
       "cast": [
-        "Shen Teng",
-        "Bai Jingting",
-        "Jia Bing",
-        "Hu Xianxu"
+        "Josh Hartnett",
+        "Mackenzie Davis",
+        "Charlie Heaton",
+        "Ruby Stokes"
       ],
-      "runtimeMinutes": 75,
-      "contentRating": "",
-      "voteAverage": 7.5,
-      "previewUrl": "",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.27,
+      "previewUrl": "https://www.youtube.com/watch?v=U57CNxSgoss",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/231620"
+        "source_page_url": "https://www.themoviedb.org/tv/285322"
       },
       "sourceRank": 10,
       "keywords": [
-        "Natural High",
-        "Natural High 2023",
-        "where to watch Natural High",
-        "Reality series",
-        "Comedy series",
-        "Shen Teng",
-        "Bai Jingting"
+        "Below",
+        "Below 2026",
+        "where to watch Below",
+        "Drama series",
+        "Mystery series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Josh Hartnett",
+        "Mackenzie Davis"
       ],
       "longTailKeywords": [
-        "where to watch Natural High 2023",
-        "Natural High streaming in Brazil and United States",
-        "Natural High cast synopsis trailer and where to watch",
-        "what Reality to watch this week"
+        "where to watch Below 2026",
+        "Below streaming in Brazil and United States",
+        "Below cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Natural High (2023) | MatchApp Ai",
-        "description": "Come and join Shen Teng and his friends as they step away from the bustling crowded cities and reconnect with the beautiful wild nature.",
+        "title": "Where to watch Below (2026) | MatchApp Ai",
+        "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
         "keywords": [
-          "Natural High",
-          "Natural High 2023",
-          "where to watch Natural High",
-          "Reality series",
-          "Comedy series",
-          "Shen Teng",
-          "Bai Jingting",
-          "where to watch Natural High 2023",
-          "Natural High streaming in Brazil and United States",
-          "Natural High cast synopsis trailer and where to watch",
-          "what Reality to watch this week"
+          "Below",
+          "Below 2026",
+          "where to watch Below",
+          "Drama series",
+          "Mystery series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Josh Hartnett",
+          "Mackenzie Davis",
+          "where to watch Below 2026",
+          "Below streaming in Brazil and United States",
+          "Below cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "Natural High"
+        "canonicalQuery": "Below"
+      }
+    },
+    {
+      "title": "Digger",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1248832",
+      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
+      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Tom Cruise",
+        "Riz Ahmed",
+        "John Goodman",
+        "Sandra Hüller"
+      ],
+      "runtimeMinutes": 129,
+      "contentRating": "R",
+      "voteAverage": 7.53,
+      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Digger",
+        "Digger 2026",
+        "where to watch Digger",
+        "Comedy movie",
+        "Drama movie",
+        "Tom Cruise",
+        "Riz Ahmed"
+      ],
+      "longTailKeywords": [
+        "where to watch Digger 2026",
+        "Digger streaming in Brazil and United States",
+        "Digger cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Digger (2026) | MatchApp Ai",
+        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "keywords": [
+          "Digger",
+          "Digger 2026",
+          "where to watch Digger",
+          "Comedy movie",
+          "Drama movie",
+          "Tom Cruise",
+          "Riz Ahmed",
+          "where to watch Digger 2026",
+          "Digger streaming in Brazil and United States",
+          "Digger cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Digger"
+      }
+    },
+    {
+      "title": "Street Fighter",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1153576",
+      "poster": "https://image.tmdb.org/t/p/w780/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
+      "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tournament: a brutal clash of fists, fate, and fury. But behind this battle royale lies a deadly conspiracy that forces them to face off against each other and the demons of their past. And if they don't, it's GAME OVER!",
+      "genre": [
+        "Action",
+        "Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Andrew Koji",
+        "Noah Centineo",
+        "Callina Liang",
+        "Joe Anoa'i"
+      ],
+      "runtimeMinutes": 120,
+      "contentRating": "PG-13",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=U6sbm1OaJb8",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1153576"
+      },
+      "sourceRank": 12,
+      "keywords": [
+        "Street Fighter",
+        "Street Fighter 2026",
+        "where to watch Street Fighter",
+        "Action movie",
+        "Fantasy movie",
+        "Andrew Koji",
+        "Noah Centineo"
+      ],
+      "longTailKeywords": [
+        "where to watch Street Fighter 2026",
+        "Street Fighter streaming in Brazil and United States",
+        "Street Fighter cast synopsis trailer and where to watch",
+        "what Action to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Street Fighter (2026) | MatchApp Ai",
+        "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tourna",
+        "keywords": [
+          "Street Fighter",
+          "Street Fighter 2026",
+          "where to watch Street Fighter",
+          "Action movie",
+          "Fantasy movie",
+          "Andrew Koji",
+          "Noah Centineo",
+          "where to watch Street Fighter 2026",
+          "Street Fighter streaming in Brazil and United States",
+          "Street Fighter cast synopsis trailer and where to watch",
+          "what Action to watch this week"
+        ],
+        "canonicalQuery": "Street Fighter"
+      }
+    },
+    {
+      "title": "ROSÉ — new trick",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
+      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
+      "artist": "ROSÉ",
+      "songTitle": "new trick",
+      "publishedAt": "2026-09-17T23:00:06Z",
+      "viewCount": 50148189,
+      "viewCountCheckedAt": "2026-10-04",
+      "channel": "ROSÉ",
+      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
+      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "ROSÉ",
+        "new trick",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "ROSÉ new music video",
+        "Dave Meyers",
+        "Shot on iPhone 18 Pro",
+        "ROSÉ new trick official music video",
+        "ROSÉ music videos",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "ROSÉ new trick official music video YouTube",
+        "where to watch ROSÉ new trick music video",
+        "new ROSÉ music video 2026",
+        "ROSÉ new trick release date",
+        "ROSÉ new trick YouTube views"
+      ],
+      "seo": {
+        "title": "ROSÉ — new trick official music video | MatchApp Ai",
+        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+        "keywords": [
+          "ROSÉ",
+          "new trick",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "Dave Meyers",
+          "Shot on iPhone 18 Pro",
+          "ROSÉ new trick official music video",
+          "ROSÉ music videos",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "ROSÉ new trick official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 4
+    },
+    {
+      "title": "100 Days of Deception",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "KR",
+      "originName": "South Korea",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "293607",
+      "poster": "https://image.tmdb.org/t/p/w780/bZHEU42QynnMrHUWK1Hhvj2cdPA.jpg",
+      "description": "Hoping for freedom, Gyeongseong's top pickpocket infiltrates the Japanese colonial government to steal secrets — only to fall for her target's son.",
+      "genre": [
+        "Action & Adventure",
+        "Drama"
+      ],
+      "inLanguage": "ko",
+      "cast": [
+        "Kim You-jung",
+        "Jinyoung",
+        "Kim Hyun-joo",
+        "Lee Mu-saeng"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-14",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=P0ElxnFyfXY",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/293607"
+      },
+      "sourceRank": 13,
+      "keywords": [
+        "100 Days of Deception",
+        "100 Days of Deception 2026",
+        "where to watch 100 Days of Deception",
+        "Action & Adventure series",
+        "Drama series",
+        "Kim You-jung",
+        "Jinyoung"
+      ],
+      "longTailKeywords": [
+        "where to watch 100 Days of Deception 2026",
+        "100 Days of Deception streaming in Brazil and United States",
+        "100 Days of Deception cast synopsis trailer and where to watch",
+        "what Action & Adventure to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch 100 Days of Deception (2026) | MatchApp Ai",
+        "description": "Hoping for freedom, Gyeongseong's top pickpocket infiltrates the Japanese colonial government to steal secrets — only to fall for her target's son.",
+        "keywords": [
+          "100 Days of Deception",
+          "100 Days of Deception 2026",
+          "where to watch 100 Days of Deception",
+          "Action & Adventure series",
+          "Drama series",
+          "Kim You-jung",
+          "Jinyoung",
+          "where to watch 100 Days of Deception 2026",
+          "100 Days of Deception streaming in Brazil and United States",
+          "100 Days of Deception cast synopsis trailer and where to watch",
+          "what Action & Adventure to watch this week"
+        ],
+        "canonicalQuery": "100 Days of Deception"
+      }
+    },
+    {
+      "title": "Avengers: Doomsday",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1003596",
+      "poster": "https://image.tmdb.org/t/p/w780/jzPwsojjFStf5lR5Nm07w2hH56G.jpg",
+      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+      "genre": [
+        "Science Fiction",
+        "Action",
+        "Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Chris Hemsworth",
+        "Pedro Pascal"
+      ],
+      "runtimeMinutes": 165,
+      "contentRating": "",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=X1aFkAkFASk",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-18"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1003596"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "Avengers: Doomsday",
+        "Avengers: Doomsday 2026",
+        "where to watch Avengers: Doomsday",
+        "Science Fiction movie",
+        "Action movie",
+        "Adventure movie",
+        "Robert Downey Jr.",
+        "Chris Evans"
+      ],
+      "longTailKeywords": [
+        "where to watch Avengers: Doomsday 2026",
+        "Avengers: Doomsday streaming in Brazil and United States",
+        "Avengers: Doomsday cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
+        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+        "keywords": [
+          "Avengers: Doomsday",
+          "Avengers: Doomsday 2026",
+          "where to watch Avengers: Doomsday",
+          "Science Fiction movie",
+          "Action movie",
+          "Adventure movie",
+          "Robert Downey Jr.",
+          "Chris Evans",
+          "where to watch Avengers: Doomsday 2026",
+          "Avengers: Doomsday streaming in Brazil and United States",
+          "Avengers: Doomsday cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
+        ],
+        "canonicalQuery": "Avengers: Doomsday"
       }
     },
     {
@@ -1186,14 +1644,14 @@
       ],
       "runtimeMinutes": 24,
       "contentRating": "TV-14",
-      "voteAverage": 8.5,
+      "voteAverage": 8.51,
       "previewUrl": "https://www.youtube.com/watch?v=QwNWY6z93O4",
       "availability": {
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/73223"
       },
-      "sourceRank": 11,
+      "sourceRank": 15,
       "keywords": [
         "Black Clover",
         "Black Clover 2017",
@@ -1310,7 +1768,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/95350"
       },
-      "sourceRank": 12,
+      "sourceRank": 16,
       "keywords": [
         "Lanterns",
         "Lanterns 2026",
@@ -1349,494 +1807,6 @@
           "what Drama to watch this week"
         ],
         "canonicalQuery": "Lanterns"
-      }
-    },
-    {
-      "title": "ROSÉ — new trick",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
-      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
-      "artist": "ROSÉ",
-      "songTitle": "new trick",
-      "publishedAt": "2026-09-17T23:00:06Z",
-      "viewCount": 50148189,
-      "viewCountCheckedAt": "2026-10-04",
-      "channel": "ROSÉ",
-      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
-      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "ROSÉ",
-        "new trick",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "ROSÉ new music video",
-        "Dave Meyers",
-        "Shot on iPhone 18 Pro",
-        "ROSÉ new trick official music video",
-        "ROSÉ music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "ROSÉ new trick official music video YouTube",
-        "where to watch ROSÉ new trick music video",
-        "new ROSÉ music video 2026",
-        "ROSÉ new trick release date",
-        "ROSÉ new trick YouTube views"
-      ],
-      "seo": {
-        "title": "ROSÉ — new trick official music video | MatchApp Ai",
-        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
-        "keywords": [
-          "ROSÉ",
-          "new trick",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "Dave Meyers",
-          "Shot on iPhone 18 Pro",
-          "ROSÉ new trick official music video",
-          "ROSÉ music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "ROSÉ new trick official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 4
-    },
-    {
-      "title": "Digger",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1248832",
-      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
-      "genre": [
-        "Comedy",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Tom Cruise",
-        "Riz Ahmed",
-        "John Goodman",
-        "Sandra Hüller"
-      ],
-      "runtimeMinutes": 129,
-      "contentRating": "R",
-      "voteAverage": 7.53,
-      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1248832"
-      },
-      "sourceRank": 13,
-      "keywords": [
-        "Digger",
-        "Digger 2026",
-        "where to watch Digger",
-        "Comedy movie",
-        "Drama movie",
-        "Tom Cruise",
-        "Riz Ahmed"
-      ],
-      "longTailKeywords": [
-        "where to watch Digger 2026",
-        "Digger streaming in Brazil and United States",
-        "Digger cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Digger (2026) | MatchApp Ai",
-        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
-        "keywords": [
-          "Digger",
-          "Digger 2026",
-          "where to watch Digger",
-          "Comedy movie",
-          "Drama movie",
-          "Tom Cruise",
-          "Riz Ahmed",
-          "where to watch Digger 2026",
-          "Digger streaming in Brazil and United States",
-          "Digger cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Digger"
-      }
-    },
-    {
-      "title": "Resident Evil",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1423191",
-      "poster": "https://image.tmdb.org/t/p/w780/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg",
-      "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
-      "genre": [
-        "Horror",
-        "Science Fiction",
-        "Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Austin Abrams",
-        "Paul Walter Hauser",
-        "Kali Reis",
-        "Zach Cherry"
-      ],
-      "runtimeMinutes": 95,
-      "contentRating": "R",
-      "voteAverage": 7.3,
-      "previewUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1423191"
-      },
-      "sourceRank": 14,
-      "keywords": [
-        "Resident Evil",
-        "Resident Evil 2026",
-        "where to watch Resident Evil",
-        "Horror movie",
-        "Science Fiction movie",
-        "Adventure movie",
-        "Austin Abrams",
-        "Paul Walter Hauser"
-      ],
-      "longTailKeywords": [
-        "where to watch Resident Evil 2026",
-        "Resident Evil streaming in Brazil and United States",
-        "Resident Evil cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Resident Evil (2026) | MatchApp Ai",
-        "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
-        "keywords": [
-          "Resident Evil",
-          "Resident Evil 2026",
-          "where to watch Resident Evil",
-          "Horror movie",
-          "Science Fiction movie",
-          "Adventure movie",
-          "Austin Abrams",
-          "Paul Walter Hauser",
-          "where to watch Resident Evil 2026",
-          "Resident Evil streaming in Brazil and United States",
-          "Resident Evil cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
-        ],
-        "canonicalQuery": "Resident Evil"
-      }
-    },
-    {
-      "title": "Insidious: Out of the Further",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Claro tv+",
-      "platforms": [
-        "Claro tv+"
-      ],
-      "tmdbId": "1291595",
-      "poster": "https://image.tmdb.org/t/p/w780/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
-      "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, the purgatorial realm of lost souls at the heart of the Insidious universe. When something evil comes after her, Gemma discovers an ability that changes everything: she doesn't just enter The Further, she can bring what lives there back to the real world. Once the demons realize her power, our world becomes their playground.",
-      "genre": [
-        "Horror",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Amelia Eve",
-        "Island Austin",
-        "Brandon Perea",
-        "Lin Shaye"
-      ],
-      "runtimeMinutes": 106,
-      "contentRating": "PG-13",
-      "voteAverage": 7.64,
-      "previewUrl": "https://www.youtube.com/watch?v=gXjurDkYnEM",
-      "availability": {
-        "BR": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=BR",
-          "rent": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "stream": [
-            "Claro tv+"
-          ],
-          "cinema_release_date": "2026-08-20"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-08-21"
-        },
-        "PT": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=PT",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-08-20"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1291595-insidious-out-of-the-further/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-08-21"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1291595"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Insidious: Out of the Further",
-        "Insidious: Out of the Further 2026",
-        "where to watch Insidious: Out of the Further",
-        "Horror movie",
-        "Thriller movie",
-        "Claro tv+ trending movie",
-        "Amelia Eve",
-        "Island Austin"
-      ],
-      "longTailKeywords": [
-        "where to watch Insidious: Out of the Further 2026",
-        "Insidious: Out of the Further streaming in Brazil and United States",
-        "Insidious: Out of the Further cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Insidious: Out of the Further (2026) | MatchApp Ai",
-        "description": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, the purgatorial realm of lost souls at the ",
-        "keywords": [
-          "Insidious: Out of the Further",
-          "Insidious: Out of the Further 2026",
-          "where to watch Insidious: Out of the Further",
-          "Horror movie",
-          "Thriller movie",
-          "Claro tv+ trending movie",
-          "Amelia Eve",
-          "Island Austin",
-          "where to watch Insidious: Out of the Further 2026",
-          "Insidious: Out of the Further streaming in Brazil and United States",
-          "Insidious: Out of the Further cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
-        ],
-        "canonicalQuery": "Insidious: Out of the Further"
-      }
-    },
-    {
-      "title": "Take Charge of My Heart",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "289423",
-      "poster": "https://image.tmdb.org/t/p/w780/ecRrKGXfflZmDZBD4irdkybClT.jpg",
-      "description": "A corporate heir with an artificial heart meets a woman who's literally electric. They strike a deal that makes his heart beat — in more ways than one.",
-      "genre": [
-        "Sci-Fi & Fantasy",
-        "Comedy"
-      ],
-      "inLanguage": "ko",
-      "cast": [
-        "Kim Young-kwang",
-        "Chae Soo-bin",
-        "Cha Woo-min"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 6.6,
-      "previewUrl": "https://www.youtube.com/watch?v=z_D5uXaDsVU",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/289423/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/289423/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/289423/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/289423"
-      },
-      "sourceRank": 16,
-      "keywords": [
-        "Take Charge of My Heart",
-        "Take Charge of My Heart 2026",
-        "where to watch Take Charge of My Heart",
-        "Sci-Fi & Fantasy series",
-        "Comedy series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Kim Young-kwang",
-        "Chae Soo-bin"
-      ],
-      "longTailKeywords": [
-        "where to watch Take Charge of My Heart 2026",
-        "Take Charge of My Heart streaming in Brazil and United States",
-        "Take Charge of My Heart cast synopsis trailer and where to watch",
-        "what Sci-Fi & Fantasy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Take Charge of My Heart (2026) | MatchApp Ai",
-        "description": "A corporate heir with an artificial heart meets a woman who's literally electric. They strike a deal that makes his heart beat — in more ways than one.",
-        "keywords": [
-          "Take Charge of My Heart",
-          "Take Charge of My Heart 2026",
-          "where to watch Take Charge of My Heart",
-          "Sci-Fi & Fantasy series",
-          "Comedy series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Kim Young-kwang",
-          "Chae Soo-bin",
-          "where to watch Take Charge of My Heart 2026",
-          "Take Charge of My Heart streaming in Brazil and United States",
-          "Take Charge of My Heart cast synopsis trailer and where to watch",
-          "what Sci-Fi & Fantasy to watch this week"
-        ],
-        "canonicalQuery": "Take Charge of My Heart"
       }
     }
   ]
