@@ -1787,8 +1787,10 @@ window.eventMatch = function (query) {
         if(vp.id==='marquee-viewport'){
             const track=vp.querySelector('#marquee-track');
             if(track){
-                const MARQUEE_AUTO_MS=4200,HOLD_AFTER_TOUCH=7000;
+                const ANDROID_KINETIC=/MatchAppAiAndroid\//.test(navigator.userAgent);
+                const MARQUEE_AUTO_MS=4200,HOLD_AFTER_TOUCH=ANDROID_KINETIC?0:7000;
                 let loopWidth=0,autoTimer=0,settleTimer=0,holdUntil=0,hovering=false,visible=true,drag=null,swipeUntil=0;
+                let kineticFrame=0,kineticSpeed=.020,nativeMomentumUntil=0;
                 vp.dataset.matchappAutoplayActive='1';
                 vp.tabIndex=0;
                 track.classList.add('is-marquee-flowing');
@@ -1811,11 +1813,32 @@ window.eventMatch = function (query) {
                     if(vp.scrollLeft<=2)vp.scrollLeft=loopWidth;
                     else if(vp.scrollLeft>=max-2)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
                 };
-                const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}};
-                const paused=()=>hovering||drag||vp.contains(document.activeElement)||Date.now()<holdUntil;
+                const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}if(kineticFrame){cancelAnimationFrame(kineticFrame);kineticFrame=0;}};
+                const paused=()=>hovering||drag||(!ANDROID_KINETIC&&vp.contains(document.activeElement))||Date.now()<holdUntil;
                 const scheduleAuto=(delay=MARQUEE_AUTO_MS)=>{
                     stopAuto();
                     if(REDUCED||!visible||document.hidden||!loopWidth||vp.scrollWidth<=vp.clientWidth)return;
+                    if(ANDROID_KINETIC){
+                        // Native touch owns the active gesture; an independent single-frame
+                        // loop adds velocity-sensitive continuation after the OS fling.
+                        let last=0;
+                        const flow=now=>{
+                            if(!visible||document.hidden){kineticFrame=0;return}
+                            const dt=last?Math.min(48,now-last):16;last=now;
+                            if(!paused()&&now>=nativeMomentumUntil){
+                                const max=Math.max(0,vp.scrollWidth-vp.clientWidth);
+                                vp.scrollLeft+=kineticSpeed*dt;
+                                if(loopWidth&&vp.scrollLeft>=max-5)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
+                                else if(loopWidth&&vp.scrollLeft<=5)vp.scrollLeft=Math.min(max,vp.scrollLeft+loopWidth);
+                                // Strong flicks coast then gradually return to gentle continuous drift.
+                                if(kineticSpeed>.020)kineticSpeed=Math.max(.020,kineticSpeed*Math.exp(-dt/900));
+                                else if(kineticSpeed<-.020)kineticSpeed=Math.min(-.020,kineticSpeed*Math.exp(-dt/900));
+                                else kineticSpeed+=(.020-kineticSpeed)*Math.min(1,dt/420);
+                            }
+                            kineticFrame=requestAnimationFrame(flow);
+                        };
+                        kineticFrame=requestAnimationFrame(flow);return;
+                    }
                     autoTimer=setTimeout(()=>{
                         autoTimer=0;
                         if(!visible||document.hidden)return;
@@ -1832,16 +1855,28 @@ window.eventMatch = function (query) {
 
                 vp.addEventListener('pointerdown',e=>{
                     if(e.pointerType!=='touch'&&!e.pointerType.startsWith('pen')&&e.pointerType!=='mouse')return;
-                    drag={id:e.pointerId,x:e.clientX,scroll:vp.scrollLeft,moved:false};
+                    drag={id:e.pointerId,x:e.clientX,scroll:vp.scrollLeft,moved:false,lastX:e.clientX,lastTime:performance.now(),speed:0};
+                    if(ANDROID_KINETIC)kineticSpeed=0;
                     vp.classList.add('is-dragging');hold();
                 },{passive:true});
                 vp.addEventListener('pointermove',e=>{
                     if(!drag||e.pointerId!==drag.id)return;
                     if(Math.abs(e.clientX-drag.x)>11||Math.abs(vp.scrollLeft-drag.scroll)>9)drag.moved=true;
+                    if(ANDROID_KINETIC){const now=performance.now(),elapsed=Math.max(1,now-drag.lastTime);
+                        const velocity=Math.max(-1.9,Math.min(1.9,(drag.lastX-e.clientX)/elapsed));
+                        if(elapsed>=8)drag.speed=drag.speed*.40+velocity*.60;
+                        drag.lastX=e.clientX;drag.lastTime=now;
+                    }
                 },{passive:true});
                 const finishGesture=e=>{
                     if(!drag||e.pointerId!==drag.id)return;
                     if(drag.moved||Math.abs(vp.scrollLeft-drag.scroll)>9)swipeUntil=Date.now()+450;
+                    if(ANDROID_KINETIC&&drag.moved){
+                        // Preserve direction and force of the final gesture; a gentle
+                        // move barely glides, a decisive flick cruises longer.
+                        kineticSpeed=Math.max(-1.9,Math.min(1.9,drag.speed));
+                        nativeMomentumUntil=performance.now()+320;
+                    }
                     drag=null;vp.classList.remove('is-dragging');
                     clearTimeout(settleTimer);settleTimer=setTimeout(normalizeLoop,180);
                 };
