@@ -1,5 +1,11 @@
 # MatchApp Ai adult app â€” Play Console release checklist
 
+## October 12, 2026 Samsung M54 consent crash hotfix — 1.1.52 (code 52)
+- Reported: the Play Store app closes on Galaxy M54 immediately after cookie/consent acceptance; root stack trace is still needed.
+- UMP consent completion now gates native ad operations against Activity teardown; delayed banner work is invalidated, and AdMob failures fail closed with no advertising.
+- Do not weaken consent or VIP/ad-free entitlements. Test a production-signed release on Galaxy M54; the older 1.1.51 debug APK lacks the fix.
+- Preserve production package com.jonas.papercup and protected Play upload key. Never submit unsigned AAB.
+
 ## October 12, 2026 Android UI candidate — 1.1.51 (code 51)
 - Changes: approved metallic adaptive launcher icon; native TTS word-boundary timing for Jonas greeting; remote-editable Jonas composer, bubble drag, spoken avatar and Top Titles kinetic glide.
 - Keep the existing package `com.jonas.papercup`, AdMob consent and signing certificate. Never publish unsigned CI output.
