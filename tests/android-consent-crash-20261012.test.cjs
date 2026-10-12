@@ -1,0 +1,42 @@
+'use strict';
+const test=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.join(__dirname,'..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const controller=()=>read('android-studio/app/src/main/java/com/jonas/papercup/AdMobController.kt');
+test('Consent callbacks do not touch destroyed Galaxy M54 activities',()=>{
+ const src=controller();
+ assert.match(src,/private var destroyed = false/);
+ assert.match(src,/activity\.isFinishing && !activity\.isDestroyed/);
+ assert.match(src,/private fun withLiveActivity\(action: \(\) -> Unit\)/);
+ assert.match(src,/private fun startConsentFlow\(\)/);
+ assert.match(src,/withLiveActivity \{/);
+ assert.match(src,/fun destroy\(\) \{\s*if \(destroyed\) return\s*destroyed = true/);
+});
+test('Consent dismiss is deferred and native ads fail closed',()=>{
+ const src=controller();
+ assert.match(src,/loadAndShowConsentFormIfRequired\(activity\)/);
+ assert.match(src,/postDelayed\(\{[\s\S]*?maybeRequestAds\(\)[\s\S]*?350L\)/);
+ assert.match(src,/entitlementAdFree \|\| adsInitialized \|\| adInitFailed/);
+ assert.match(src,/private fun suppressAds\(error: Throwable\)/);
+ assert.match(src,/MobileAds\.initialize\(activity\.applicationContext\)/);
+ assert.match(src,/catch \(error: RuntimeException\)/);
+ assert.match(src,/catch \(error: LinkageError\)/);
+ assert.match(src,/private var bannerGeneration = 0/);
+ assert.match(src,/generation != bannerGeneration/);
+ assert.match(src,/bannerGeneration\+\+ \/\/ Invalidate delayed callbacks/);
+ assert.match(src,/privacyButton\.setOnClickListener\(null\)/);
+});
+test('Required native consent and Play monetization policies remain enabled',()=>{
+ const src=controller();
+ const gradle=read('android-studio/app/build.gradle.kts');
+ const manifest=read('android-studio/app/src/main/AndroidManifest.xml');
+ assert.match(src,/consentInformation\.canRequestAds\(\)/);
+ assert.match(src,/fun setAdFree\(adFree: Boolean\)/);
+ assert.match(src,/showPrivacyOptionsForm/);
+ assert.match(gradle,/ADMOB_ENABLED", "true"/);
+ assert.match(manifest,/MobileAdsInitProvider/);
+ assert.equal((manifest.match(/android:name="android\.permission\.RECORD_AUDIO"/g)||[]).length,1);
+});
