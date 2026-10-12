@@ -55,3 +55,33 @@ border:0;color:#251632;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 @media(prefers-reduced-motion:reduce){
  #jonas-voice-stage .jds-portrait{animation:none!important;transform:none!important}
 }
+
+/* 2026-10-12: speech-only continuity. Two mouth crops dissolve rather than
+   flashing different whole-face photos. Text mode stays completely still. */
+#jonas-voice-stage .jds-mouth{
+ clip-path:inset(53% 11% 24% 11%)!important;
+ transition:opacity 130ms ease-in-out!important;
+ will-change:opacity;
+}
+#jonas-voice-stage .jds-mouth-next{opacity:0}
+#jonas-voice-stage .jds-eyes{
+ clip-path:inset(27% 12% 55% 12%)!important;
+ transition:opacity 160ms ease-in-out!important;
+}
+#jonas-voice-stage .jds-portrait{
+ animation:none!important;
+ transform:none;
+}
+#jonas-voice-stage[data-state="speaking"] .jds-portrait{
+ animation:jds-speaking-breathe 4.1s ease-in-out infinite!important;
+ transform-origin:center 68%;
+}
+@keyframes jds-speaking-breathe{
+ 0%,100%{transform:translate3d(0,.4px,0) scale(1)}
+ 42%{transform:translate3d(0,-1px,0) scale(1.006)}
+ 65%{transform:translate3d(0,-.3px,0) scale(1.003)}
+}
+@media(prefers-reduced-motion:reduce){
+ #jonas-voice-stage .jds-portrait{animation:none!important;transform:none!important}
+ #jonas-voice-stage .jds-mouth,#jonas-voice-stage .jds-eyes{transition:none!important}
+}
