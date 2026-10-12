@@ -10,7 +10,7 @@
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__)return;
  window.__matchappAmbientJonas=true;
  var asset='/jonas/android-ambient-assistant-20261011.css?live='+Date.now(),frame=null,panel=null,root=null,bubble=null;
- var open=false,epoch=0,ready=false,drag=null,dragRaf=0,skipClick=false,activeTitle='',helloTimer=0;
+ var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0;
  var greetStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null;
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
@@ -35,6 +35,20 @@
  function setPosition(x,y){var v=viewport(),sz=76;root.style.left=clamp(x,8,Math.max(8,v.width-sz-8))+'px';root.style.top=clamp(y,8,Math.max(8,v.height-sz-8))+'px';root.style.right='auto';root.style.bottom='auto'}
  function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var v=viewport();var nx=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84)),ny=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
  function stopDragFrame(){if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}}
+ function stopFling(){if(flingRaf){cancelAnimationFrame(flingRaf);flingRaf=0;var rect=root.getBoundingClientRect();root.style.transform='';setPosition(rect.left,rect.top);}}
+ function coastBubble(fromX,fromY,toX,toY,ms,dragStartX,dragStartY){
+   var begin=0;
+   function coast(now){
+     if(!begin)begin=now;
+     var t=clamp((now-begin)/ms,0,1),ease=1-Math.pow(1-t,3);
+     root.style.transform='translate3d('+(fromX+(toX-fromX)*ease-dragStartX)+'px,'+(fromY+(toY-fromY)*ease-dragStartY)+'px,0)';
+     if(t<1)flingRaf=requestAnimationFrame(coast);
+     else{flingRaf=0;root.style.transform='';setPosition(toX,toY);store()}
+   }
+   // The original bubble can be positioned using right/bottom rather than
+   // left/top; always use the measured drag origin, never parseStyle(auto).
+   flingRaf=requestAnimationFrame(coast);
+ }
  function store(){try{var r=root.getBoundingClientRect(),v=viewport();localStorage.setItem(key,JSON.stringify({x:r.left/Math.max(1,v.width-76),y:r.top/Math.max(1,v.height-76)}))}catch(_){}}
  function restore(){try{var p=JSON.parse(localStorage.getItem(key)||'null');if(Number.isFinite(p?.x)&&Number.isFinite(p?.y)){var v=viewport();setPosition(p.x*(v.width-76),p.y*(v.height-76))}}catch(_){}}
  function visibleResult(){
@@ -295,14 +309,21 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   bubble.setAttribute('aria-label',locale().open);
   bubble.addEventListener('pointerdown',function(e){
     if(e.button!==0&&e.pointerType==='mouse')return;
-    stopDragFrame();
+    stopDragFrame();stopFling();
     var r=root.getBoundingClientRect();
-    drag={id:e.pointerId,startX:e.clientX,startY:e.clientY,x:r.left,y:r.top,dx:0,dy:0,moved:false};
+    drag={id:e.pointerId,startX:e.clientX,startY:e.clientY,x:r.left,y:r.top,dx:0,dy:0,moved:false,
+          lastX:e.clientX,lastY:e.clientY,lastTime:performance.now(),vx:0,vy:0};
     bubble.setPointerCapture?.(e.pointerId);
   });
   bubble.addEventListener('pointermove',function(e){
     if(!drag||drag.id!==e.pointerId)return;
     drag.dx=e.clientX-drag.startX;drag.dy=e.clientY-drag.startY;
+    var at=performance.now(),dt=Math.max(1,at-drag.lastTime);
+    if(dt>=8){
+      drag.vx=drag.vx*.35+clamp((e.clientX-drag.lastX)/dt,-2,2)*.65;
+      drag.vy=drag.vy*.35+clamp((e.clientY-drag.lastY)/dt,-2,2)*.65;
+    }
+    drag.lastX=e.clientX;drag.lastY=e.clientY;drag.lastTime=at;
     if(!drag.moved&&Math.hypot(drag.dx,drag.dy)<6)return;
     drag.moved=true;
     // GPU compositing follows the finger without changing layout or forcing
@@ -319,10 +340,16 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
       var v=viewport();
       var x=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84));
       var y=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));
-      // Clear the transient transform before committing one final layout position.
-      root.style.transform='';setPosition(x,y);
-      skipClick=true;store();
-      setTimeout(function(){skipClick=false},240);
+      // A soft fling preserves the last real swipe velocity, stops at the
+      // viewport's safe edges and never continues through a new pointerdown.
+      var impulse=Math.hypot(drag.vx,drag.vy);
+      var toX=clamp(x+drag.vx*155,8,Math.max(8,v.width-84));
+      var toY=clamp(y+drag.vy*155,8,Math.max(8,v.height-84));
+      if(impulse>.12&&Math.hypot(toX-x,toY-y)>4)
+        coastBubble(x,y,toX,toY,clamp(impulse*250,180,420),drag.x,drag.y);
+      else{root.style.transform='';setPosition(x,y);store();}
+      skipClick=true;
+      setTimeout(function(){skipClick=false},480);
     }else root.style.transform='';
     drag=null;
   }
