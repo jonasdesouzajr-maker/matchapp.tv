@@ -76,9 +76,26 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   if(document.querySelector('link[data-ma-ambient-style]'))return;
   var l=document.createElement('link');l.rel='stylesheet';l.href=asset;l.dataset.maAmbientStyle='1';(document.head||document.documentElement).appendChild(l);
  }
+ function faceSpeech(active){
+  if(!panel)return;
+  panel.dataset.speaking=active?'1':'0';
+  if(!active)panel.querySelectorAll('.ja-mouth').forEach(img=>{img.style.opacity='0'});
+ }
+ function faceWord(word){
+  if(!panel||panel.dataset.speaking!=='1')return;
+  var nextName=/[ou]/i.test(word)?'oh':/[ae]/i.test(word)?'aa':'ee';
+  var first=panel.querySelector('.ja-mouth-a'),second=panel.querySelector('.ja-mouth-b');
+  if(!first||!second)return;
+  var front=panel.dataset.mouthFront==='b'?second:first;
+  var next=front===first?second:first;
+  next.src='/jonas/faces/jonas/'+nextName+'.jpg';
+  next.style.opacity='1';front.style.opacity='0';
+  panel.dataset.mouthFront=next===first?'a':'b';
+ }
  function stopConversation(){
   clearTimeout(helloTimer);epoch++;pendingListen=0;pendingCloud=0;
-  if(restoreNativeState){window.matchAppNativeSpeechState=restoreNativeState.previous;restoreNativeState=null}
+  if(restoreNativeState){window.matchAppNativeSpeechState=restoreNativeState.previous;window.matchAppNativeSpeechWord=restoreNativeState.previousWord;restoreNativeState=null}
+  faceSpeech(false);
   try{window.MatchAppNativeVoice?.stopSpeaking?.()}catch(_){}
   try{frame?.contentWindow?.document?.activeElement?.blur?.()}catch(_){}
   try{frame?.contentWindow?.MatchAppVoiceControls?.stop?.()}catch(_){}
@@ -99,6 +116,8 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function restoreSpeakingCallback(){
   if(!restoreNativeState)return;
   window.matchAppNativeSpeechState=restoreNativeState.previous;
+  window.matchAppNativeSpeechWord=restoreNativeState.previousWord;
+  faceSpeech(false);
   restoreNativeState=null;
  }
  function finishGreeting(token){
@@ -131,13 +150,17 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   greetStarted=token;
   var bridge=window.MatchAppNativeVoice;
   if(!bridge?.speak){cloudGreeting(token);return}
-  var started=false,previous=window.matchAppNativeSpeechState;
-  restoreNativeState={previous:previous};
+  var started=false,previous=window.matchAppNativeSpeechState,previousWord=window.matchAppNativeSpeechWord;
+  restoreNativeState={previous:previous,previousWord:previousWord};
+  window.matchAppNativeSpeechWord=function(word){
+   if(typeof previousWord==='function')try{previousWord(word)}catch(_){}
+   if(open&&token===epoch)faceWord(String(word||''));
+  };
   window.matchAppNativeSpeechState=function(active){
    try{if(typeof previous==='function')previous(active)}catch(_){}
    if(!open||token!==epoch)return;
    if(active){
-    started=true;clearTimeout(helloTimer);
+    started=true;faceSpeech(true);clearTimeout(helloTimer);
     helloTimer=setTimeout(()=>{
      try{bridge.stopSpeaking?.()}catch(_){}
      finishGreeting(token);
@@ -264,7 +287,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   root.innerHTML='<button type="button" class="ja-bubble" aria-label="Talk to Jonas" aria-haspopup="dialog"><img src="/jonas/faces/jonas/rest.jpg" alt=""><span class="ja-live" aria-hidden="true"></span></button>';
   bubble=root.firstElementChild;
   panel=document.createElement('section');panel.id='ma-ambient-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Jonas conversation');
-  panel.innerHTML='<div class="ja-panel-head"><img class="ja-face" src="/jonas/faces/jonas/rest.jpg" alt=""><div class="ja-head-text"><strong>Jonas</strong><span></span></div><button type="button" class="ja-close" aria-label="Close Jonas conversation">×</button></div><p class="ja-hello"></p>';
+  panel.innerHTML='<div class="ja-panel-head"><div class="ja-face-wrap" aria-hidden="true"><img class="ja-face" src="/jonas/faces/jonas/rest.jpg" alt=""><img class="ja-mouth ja-mouth-a" alt=""><img class="ja-mouth ja-mouth-b" alt=""></div><div class="ja-head-text"><strong>Jonas</strong><span></span></div><button type="button" class="ja-close" aria-label="Close Jonas conversation">×</button></div><p class="ja-hello"></p>';
   (document.body||document.documentElement).append(root,panel);
   if(!document.body)document.addEventListener('DOMContentLoaded',function(){
     if(document.body){document.body.append(root,panel);removeLegacyJonas()}
