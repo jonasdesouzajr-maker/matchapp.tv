@@ -22,6 +22,14 @@ function files(dir){
   e.isDirectory()?files(path.join(dir,e.name)):
   /\.html$/.test(e.name)?[path.join(dir,e.name)]:[]);
 }
+function regionalBrand(brand){
+ if(!brand?.closest('.site-header'))return null;
+ const copy=brand.cloneNode(true),images=[...copy.querySelectorAll('img')].filter(img=>img.getAttribute('src')==='/assets/brand/matchapp-tv-ai-v2.svg');
+ if(!images.length)return null;
+ images[0].classList.add('matchapp-wordmark');
+ for(const duplicate of images.slice(1))duplicate.remove();
+ return copy.outerHTML;
+}
 function finalizeBrand(){
  let count=0;
  for(const file of files(ROOT)){
@@ -37,7 +45,9 @@ function finalizeBrand(){
   const dom=new JSDOM(html,{includeNodeLocations:true}),doc=dom.window.document,edits=[];
   const replace=(el,text)=>{const at=dom.nodeLocation(el);if(at)edits.push([at.startOffset,at.endOffset,text]);};
   const brand=doc.querySelector('body > header a[href="/"],body > header a[href="/kids/"],.kids-brand');
-  if(brand&&!brand.querySelector('.matchapp-wordmark,.ebook-text-wordmark')&&!brand.closest('#home-brand-lockup')){
+  const regional=regionalBrand(brand);
+  if(regional){replace(brand,regional)}
+  else if(brand&&!brand.querySelector('.matchapp-wordmark,.ebook-text-wordmark')&&!brand.closest('#home-brand-lockup')){
     const copy=brand.cloneNode(true);
     copy.removeAttribute('data-i18n');
     copy.setAttribute('aria-label',kids?KIDS:ADULT);
@@ -63,5 +73,5 @@ function finalizeBrand(){
  }
  return count;
 }
-module.exports={finalizeBrand,name,ADULT,KIDS};
+module.exports={finalizeBrand,regionalBrand,name,ADULT,KIDS};
 if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');
