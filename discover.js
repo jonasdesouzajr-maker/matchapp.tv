@@ -2058,9 +2058,14 @@ async function runAskAndRender(question, opts) {
     // No new AI prompt, quota debit, or invented viewing provider.
     if (!newItems.length && payload?._live === true && wantsTitleRecommendations &&
         !bookIntent && !cookingIntent && !musicPayload) {
-        const displayItem = await window.MatchAppJonasTitlePresentation?.fromAnswer?.(payload.answer);
-        if (displayItem && !isDiscoverDisliked(displayItem.title))
-            newItems = [enrichDiscoverItem(displayItem, question)];
+        const presenter = window.MatchAppJonasTitlePresentation;
+        const identified = presenter?.fromAnswers
+            ? await presenter.fromAnswers(payload.answer, 3)
+            : [await window.MatchAppJonasTitlePresentation?.fromAnswer?.(payload.answer)];
+        newItems = (identified || [])
+            .filter(item => item && !isDiscoverDisliked(item.title))
+            .map(item => enrichDiscoverItem(item, question))
+            .filter(Boolean);
     }
     if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
         !payload?._live && window.matchPolicy && !payload?._docVerified && typeof CONTENT_CATALOG !== 'undefined') {
@@ -2075,7 +2080,20 @@ async function runAskAndRender(question, opts) {
             .filter(Boolean);
     }
     DISCOVER_ITEMS = DISCOVER_ITEMS.concat(newItems);
-    if (bubble && newItems.length) await renderResultsInto(bubble.grid, newItems, baseIndex);
+    if (bubble && newItems.length) {
+        try {
+            await renderResultsInto(bubble.grid, newItems, baseIndex);
+        } catch (cardError) {
+            // A metadata/poster rendering failure is not an AI-answer failure.
+            // Keep the response and credit state; a later turn remains usable.
+            console.warn('[MatchApp Ai] Title card presentation interrupted:', cardError);
+            const note = document.createElement('p');
+            note.setAttribute('role', 'status');
+            note.className = 'discover-card-recovery';
+            note.textContent = 'Title details could not load. Please try again shortly.';
+            bubble.grid.replaceChildren(note);
+        }
+    }
 
     currentThread.turns.push({ role: 'assistant', text: payload.answer, results: newItems, ts: Date.now() });
     currentThread.updatedAt = Date.now();
@@ -2091,17 +2109,29 @@ async function runAskAndRender(question, opts) {
 let askInFlight = null;
 function askAndRender(question, opts) {
     if (askInFlight) return askInFlight;
+    const replyCount = document.querySelectorAll('#chat-log .chat-assistant').length;
     const markedVoice = opts?.voiceOrigin === true ||
         (!!window.MatchAppVoiceOrigin?.consume && window.MatchAppVoiceOrigin.consume(question));
     const running = Promise.resolve().then(() => runAskAndRender(question, { voiceOrigin: markedVoice })).catch(error => {
-        // Even the independent source fallback can fail. Restore the composer
-        // and stop its loader instead of leaving an unhandled rejection.
+        // Rendering and voice failures must not be misreported as a failed AI
+        // request after the answer has already appeared in the conversation.
         console.warn('[MatchApp Ai] Request interrupted:',error?.message||error);
         finishAiWorkflow();
         const loading=document.getElementById('discover-loading');
         if(loading)loading.style.display='none';
+        const replies=document.querySelectorAll('#chat-log .chat-assistant');
+        if(replies.length>replyCount){
+            const text=replies[replies.length-1]?.querySelector('.chat-answer-text')?.textContent?.trim();
+            if(text&&currentThread?.turns?.at(-1)?.role==='user'){
+                currentThread.turns.push({role:'assistant',text,results:[],ts:Date.now()});
+                currentThread.updatedAt=Date.now();
+                persistCurrentThread();
+            }
+            return null;
+        }
         const input=document.getElementById('discover-new-input');
         if(input && !input.value)input.value=question;
+        window.autoGrowComposer?.();
         window.showToast?.('Ask AI could not complete this request. Your question is ready to retry.',true,{recovery:true});
         return null;
     });

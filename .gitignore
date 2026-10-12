@@ -2,3 +2,7 @@ node_modules/
 .npm-cache/
 audit-results.json
 search-audit-results.json
+
+# Rebuildable Android Studio artifacts; retain native source and signing files.
+android-studio/.gradle/
+android-studio/**/build/
