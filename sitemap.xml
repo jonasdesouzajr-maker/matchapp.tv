@@ -14,7 +14,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-10-11T21:09:55+00:00</lastmod>
+        <lastmod>2026-10-12T07:35:32+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -206,7 +206,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events-archive.html</loc>
-        <lastmod>2026-10-11T09:38:27+00:00</lastmod>
+        <lastmod>2026-10-12T07:35:32+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1322,13 +1322,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/festival-do-rio-2026/</loc>
-        <lastmod>2026-10-03T08:53:33+00:00</lastmod>
+        <lastmod>2026-10-12T07:35:32+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/viff-2026/</loc>
-        <lastmod>2026-10-03T08:53:33+00:00</lastmod>
+        <lastmod>2026-10-12T07:35:32+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1340,7 +1340,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/new-york-comic-con-2026/</loc>
-        <lastmod>2026-10-08T09:53:56+00:00</lastmod>
+        <lastmod>2026-10-12T07:35:32+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1430,7 +1430,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/news/</loc>
-        <lastmod>2026-10-12T06:27:20+00:00</lastmod>
+        <lastmod>2026-10-12T07:34:51+00:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.8</priority>
     </url>
