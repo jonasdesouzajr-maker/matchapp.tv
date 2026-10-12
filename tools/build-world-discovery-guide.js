@@ -3,6 +3,7 @@
 // A single substantive multilingual guide, not 14 near-duplicate doorway URLs.
 // Verified local URLs and genuine translated search phrases; no fabricated hreflang.
 const fs=require('node:fs');
+const discoveryLinks=require('./search-guide-links.cjs').renderGuideLinks();
 const path=require('node:path');
 const LANGUAGES=[
   {
@@ -205,7 +206,8 @@ ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/even
 <h3>Can I find the exact audiobook edition?</h3><p>Where an exact title-and-author match is independently verified, MatchApp labels the edition accordingly. Otherwise, search links help you investigate without claiming the audiobook was verified.</p>
 <h3>Is every trending headline an original MatchApp report?</h3><p>No. The news hub organizes updates from named publishers and sends you to their original reporting. Standalone short source summaries are not treated as original reporting pages.</p>
 <p class="note">Language preference changes MatchApp’s interface; it does not create separate indexable translations of the same URL. Country-specific availability, catalogs and rankings can change at any time.</p>
-</section></main>
+</section>
+${discoveryLinks}</main>
 <footer>${link("/","MatchApp Ai")} · ${link("/discover.html","Ask AI")} · ${link("/ebooks/","Books & audiobooks")} · ${link("/pricing/pricing.html","Plans")}</footer>
 </body></html>
 `;
