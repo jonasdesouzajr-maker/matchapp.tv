@@ -1790,7 +1790,7 @@ window.eventMatch = function (query) {
                 const ANDROID_KINETIC=/MatchAppAiAndroid\//.test(navigator.userAgent);
                 const MARQUEE_AUTO_MS=4200,HOLD_AFTER_TOUCH=ANDROID_KINETIC?0:7000;
                 let loopWidth=0,autoTimer=0,settleTimer=0,holdUntil=0,hovering=false,visible=true,drag=null,swipeUntil=0;
-                let kineticFrame=0,kineticSpeed=.020,nativeMomentumUntil=0;
+                let kineticFrame=0,kineticSpeed=.020,nativeMomentumUntil=0,nativeTouch=false;
                 vp.dataset.matchappAutoplayActive='1';
                 vp.tabIndex=0;
                 track.classList.add('is-marquee-flowing');
@@ -1814,7 +1814,7 @@ window.eventMatch = function (query) {
                     else if(vp.scrollLeft>=max-2)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
                 };
                 const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}if(kineticFrame){cancelAnimationFrame(kineticFrame);kineticFrame=0;}};
-                const paused=()=>hovering||drag||(!ANDROID_KINETIC&&vp.contains(document.activeElement))||Date.now()<holdUntil;
+                const paused=()=>hovering||drag||nativeTouch||(!ANDROID_KINETIC&&vp.contains(document.activeElement))||Date.now()<holdUntil;
                 const scheduleAuto=(delay=MARQUEE_AUTO_MS)=>{
                     stopAuto();
                     if(REDUCED||!visible||document.hidden||!loopWidth||vp.scrollWidth<=vp.clientWidth)return;
@@ -1889,6 +1889,7 @@ window.eventMatch = function (query) {
                     let touchFling=null;
                     vp.addEventListener('touchstart',event=>{
                         const t=event.touches[0];if(!t)return;
+                        nativeTouch=true;
                         touchFling={x:t.clientX,y:t.clientY,lastX:t.clientX,at:performance.now(),speed:0,moved:false};
                     },{passive:true});
                     vp.addEventListener('touchmove',event=>{
@@ -1903,6 +1904,7 @@ window.eventMatch = function (query) {
                         touchFling.lastX=t.clientX;touchFling.at=now;
                     },{passive:true});
                     const endTouch=()=>{
+                        nativeTouch=false;
                         if(touchFling?.moved){
                             kineticSpeed=Math.max(-1.9,Math.min(1.9,touchFling.speed));
                             nativeMomentumUntil=performance.now()+320;
@@ -1911,7 +1913,7 @@ window.eventMatch = function (query) {
                         touchFling=null;
                     };
                     vp.addEventListener('touchend',endTouch,{passive:true});
-                    vp.addEventListener('touchcancel',()=>{touchFling=null},{passive:true});
+                    vp.addEventListener('touchcancel',()=>{nativeTouch=false;touchFling=null},{passive:true});
                 }
                 vp.addEventListener('click',e=>{
                     if(Date.now()<swipeUntil&&e.target.closest?.('.marquee-item')){
