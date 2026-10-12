@@ -616,7 +616,9 @@ function enrichDiscoverItem(item, question) {
     if (!item || !item.title) return null;
     if (item._musicVideoId || /music|song|album|single/i.test(item.type || '')) return item;
     const policy = window.matchPolicy;
-    if (policy && question && !policy.fitsQuestion(item, question)) return null;
+    const policyItem = item._catalogMedia && Array.isArray(item._catalogMedia.genres)
+        ? {...item, type:[item.type || '', ...item._catalogMedia.genres].join(' ')} : item;
+    if (policy && question && !policy.fitsQuestion(policyItem, question)) return null;
     try {
         if (typeof CONTENT_CATALOG !== 'undefined') {
             const k = policy ? policy.key(item.title) : String(item.title).toLowerCase();
@@ -675,10 +677,11 @@ async function enrichDiscoverMedia(item) {
         return item;
     }
     try {
+        const sourceYear = String(item.year || '').match(/^\d{4}/)?.[0] || '';
         const rawType = String(item.type || '').toLowerCase();
         const kind = /movie|film/.test(rawType) ? 'movie' : (/series|tv|show|drama|anime|novela|documentary/.test(rawType) ? 'tv' : '');
         let meta = await window.MatchAppCatalogMedia.lookup(item.title, {
-            year: item.year || '',
+            year: sourceYear,
             kind: kind || ''
         });
         if (meta && window.MatchAppCatalogMedia.refreshExact) {
@@ -686,7 +689,7 @@ async function enrichDiscoverMedia(item) {
         }
         if (!meta && window.MatchAppCatalogMedia.lookupLive) {
             meta = await window.MatchAppCatalogMedia.lookupLive(item.title, {
-                year: item.year || '',
+                year: sourceYear,
                 kind: kind || '',
                 cats: item.cats || []
             });
@@ -698,6 +701,7 @@ async function enrichDiscoverMedia(item) {
         if (meta.year) item.year = meta.year;
         if (meta.overview) { item.synopsis = meta.overview; item.synopsisLang='en'; }
         if (Array.isArray(meta.genres) && meta.genres.length) item.realGenres = meta.genres.slice(0, 8);
+        if (Array.isArray(meta.genres) && meta.genres.length) item.cats = [...new Set([...(item.cats || []), ...meta.genres])];
         if (!item.type || item.type === 'any') item.type = meta.media_kind === 'tv' ? 'series' : (meta.media_kind || item.type);
         item._viewing = window.MatchAppCatalogMedia.viewingTarget?.(meta, item.title) || null;
         const verifiedModes=new Set(['stream','rent','buy','cinema']);
@@ -1766,19 +1770,26 @@ async function renderResultsInto(grid, items, baseIndex) {
         for(const item of items)await window.MatchAppMusicReleases?.paintCard(item._musicVideoId,grid,true);
         return;
     }
-    items = (await Promise.all(items
-        .map(item => enrichDiscoverItem(item, lastDiscoverQuestion))
-        .filter(Boolean)
+    // Preserve action identity when source enrichment rejects another card.
+    const cardIndexes = new Map(items.map((item, i) => [item, baseIndex + i]));
+    // Paint known original art while the other identities resolve.
+    const known = items.filter(item => item?._catalogMedia && !isDiscoverDisliked(item.title) && enrichDiscoverItem(item, lastDiscoverQuestion));
+    if (known.length) {
+        grid.innerHTML = known.map(it => discoverCardHTML({...it, platform:'', _availabilityVerified:false, _viewing:null}, cardIndexes.get(it))).join('');
+        grid.style.display = 'grid';
+    }
+    items = (await Promise.all(items.filter(item => item && item.title)
         .map(item => enrichDiscoverMedia(item))))
+        .map(item => enrichDiscoverItem(item, lastDiscoverQuestion))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
     grid.replaceChildren();
     if (!items || !items.length) return;
-    grid.innerHTML = items.map((it, i) => discoverCardHTML(it, baseIndex + i)).join('');
+    grid.innerHTML = items.map((it, i) => discoverCardHTML(it, cardIndexes.get(it))).join('');
     grid.style.display = 'grid';
-    await Promise.all(items.map((it, i) => hydrateDiscoverCard(it, baseIndex + i)));
+    await Promise.all(items.map((it, i) => hydrateDiscoverCard(it, cardIndexes.get(it))));
     items.forEach((it, i) => {
         if (it.synopsis) return;
-        const syn = document.querySelector(`[data-discover-idx="${baseIndex + i}"] .discover-synopsis`);
+        const syn = document.querySelector(`[data-discover-idx="${cardIndexes.get(it)}"] .discover-synopsis`);
         if (syn && !syn.textContent.trim()) syn.textContent = it.synopsis || '';
     });
     await attachRelated(grid, items, baseIndex);
@@ -1968,6 +1979,12 @@ async function runAskAndRender(question, opts) {
     if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload || payload?._docVerified ? 'none' : 'inline-flex';
 
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
+    // Resolve title artwork concurrently with text narration, not after it.
+    const spokenTitles = payload?._live === true && wantsTitleRecommendations && !bookIntent && !cookingIntent && !musicPayload
+        ? Promise.resolve().then(() => window.MatchAppJonasTitlePresentation?.fromAnswers
+            ? window.MatchAppJonasTitlePresentation.fromAnswers(payload.answer, 3)
+            : Promise.resolve(window.MatchAppJonasTitlePresentation?.fromAnswer?.(payload.answer)).then(item => [item])).catch(() => [])
+        : Promise.resolve([]);
     if(payload?._live !== true && !musicPayload && !payload?._docVerified && bubble?.wrap){
         const notice=document.createElement('strong');
         notice.setAttribute('role','status');
@@ -2051,21 +2068,21 @@ async function runAskAndRender(question, opts) {
 
     const baseIndex = DISCOVER_ITEMS.length;
     let newItems = (bookIntent ? [] : (payload.results || []))
-        .map(item => enrichDiscoverItem(item, question))
         .filter(item => item && item.title && !isDiscoverDisliked(item.title));
     // Presentation-only: exact catalog identity mentioned in a prose-only
     // Jonas reply uses the existing card poster, synopsis and action controls.
     // No new AI prompt, quota debit, or invented viewing provider.
-    if (!newItems.length && payload?._live === true && wantsTitleRecommendations &&
+    if (payload?._live === true && wantsTitleRecommendations &&
         !bookIntent && !cookingIntent && !musicPayload) {
-        const presenter = window.MatchAppJonasTitlePresentation;
-        const identified = presenter?.fromAnswers
-            ? await presenter.fromAnswers(payload.answer, 3)
-            : [await window.MatchAppJonasTitlePresentation?.fromAnswer?.(payload.answer)];
-        newItems = (identified || [])
-            .filter(item => item && !isDiscoverDisliked(item.title))
-            .map(item => enrichDiscoverItem(item, question))
-            .filter(Boolean);
+        const identified = await spokenTitles;
+        // Prefer verified titles mentioned by Jonas while retaining structured results.
+        const merged = [...(identified || []), ...newItems], seenTitles = new Set();
+        newItems = merged.filter(item => {
+            if (!item || isDiscoverDisliked(item.title)) return false;
+            const key = titleKey(item.title);
+            if (seenTitles.has(key)) return false;
+            seenTitles.add(key); return true;
+        });
     }
     if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
         !payload?._live && window.matchPolicy && !payload?._docVerified && typeof CONTENT_CATALOG !== 'undefined') {

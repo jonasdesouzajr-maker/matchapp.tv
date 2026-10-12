@@ -47,7 +47,7 @@ export async function callOpenAIPrimary(args: OpenAIArgs): Promise<Response|null
   try { if (!(await reserve())) { console.warn("[gemini-proxy] OpenAI primary daily budget gate closed"); return null; } }
   catch (_) { console.warn("[gemini-proxy] OpenAI budget gate unavailable"); return null; }
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(),OPENAI_TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(),mode==="discover"?6_000:OPENAI_TIMEOUT_MS);
   try {
     const result = await fetch("https://api.openai.com/v1/responses",{
       method:"POST",signal:controller.signal,

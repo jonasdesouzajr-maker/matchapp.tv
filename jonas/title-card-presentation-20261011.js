@@ -17,7 +17,7 @@
   // Capture multiword names spoken without quotation marks (e.g. a TV
   // title containing a hyphen). Exact source identity is still required below.
   const capitalized=/\b([A-Z][\p{L}\d]*(?:[-’'][A-Z\d][\p{L}\d]*)?(?:\s+(?:[A-Z][\p{L}\d]*(?:[-’'][A-Z\d][\p{L}\d]*)?|and|of|the)){1,4})\b/gu;
-  for(const m of text.matchAll(capitalized)){add(m[1]);if(names.length>=10)break}
+  for(const m of text.matchAll(capitalized)){add(m[1]);for(const part of m[1].split(/\s+(?:and|or)\s+/))add(part);if(names.length>=10)break}
   // Conservative title-cased fallback for plain spoken prose: exact lookup
   // will reject phrases that aren't an actual movie or series identity.
   const named=/(?:\bThe|\bA|\bOs|\bAs|\bO|\bLa|\bEl|\bLe|\bLes|\bLos|\bLas)\s+(?:[A-ZÀ-Ý0-9][\p{L}\d'’-]*\s*){1,5}/gu;
@@ -35,28 +35,40 @@
   }catch(_){}
   return names.slice(0,9);
  }
+ async function withinBudget(work){
+  if(typeof setTimeout!=='function')return work;
+  let timer;
+  try{return await Promise.race([work,new Promise(resolve=>{timer=setTimeout(()=>resolve(null),5000)})]);}
+  finally{clearTimeout(timer);}
+ }
  async function fromAnswers(answer,limit=3){
   const api=window.MatchAppCatalogMedia;
   if(!api?.lookup)return [];
   const found=[],seen=new Set(),max=Math.max(1,Math.min(3,Number(limit)||1));
-  for(const name of candidates(answer)){
-   if(found.length>=max)break;
+  const resolved=await Promise.all(candidates(answer).map(async name=>{
+
    try{
     // Only show exact, source-identified titles; never infer regional streams.
-    let meta=await api.lookup(name,{});
-    if(!meta&&api.lookupLive)meta=await api.lookupLive(name,{});
-    if(!meta)continue;
+    let meta=await api.lookup(name,{priority:true});
+    if(!meta&&api.lookupLive)meta=await api.lookupLive(name,{priority:true});
+    if(!meta)return null;
     const title=String(meta.title||meta.original_title||'');
     const accepted=[title,meta.original_title,meta.original_name,meta.name].filter(Boolean);
-    if(!accepted.some(x=>key(x)===key(name)))continue;
-    if(!['movie','tv'].includes(meta.media_kind)||seen.has(key(title)))continue;
-    seen.add(key(title));
-    found.push({
+    if(!accepted.some(x=>key(x)===key(name)))return null;
+    if(!['movie','tv'].includes(meta.media_kind))return null;
+    return {
      title:title||name,year:meta.year||'',type:meta.media_kind==='tv'?'series':'movie',
      synopsis:meta.overview||'',synopsisLang:'en',platform:'',
+     cats:[meta.media_kind==='tv'?'series':'movie',...(Array.isArray(meta.genres)?meta.genres:[])],
+     realGenres:Array.isArray(meta.genres)?meta.genres:[],
      _catalogMedia:meta,_fromCatalog:true,_displayOnly:true
-    });
-   }catch(_){}
+    };
+   }catch(_){return null;}
+  }).map(withinBudget));
+  for(const item of resolved){
+   if(!item||seen.has(key(item.title)))continue;
+   seen.add(key(item.title));found.push(item);
+   if(found.length>=max)break;
   }
   return found;
  }
