@@ -125,6 +125,7 @@ function buildPage(title, info, entry, related, generated) {
 <meta property="og:title" content="Where to Watch ${esc(title)} | MatchApp">
 <meta property="og:description" content="${esc(metaDesc)}">
 <meta property="og:image" content="${SITE}/og-image.jpg?v=2">
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Where to Watch ${esc(title)} | MatchApp">
 <meta name="twitter:description" content="${esc(metaDesc)}">
@@ -228,6 +229,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 
 function buildIndex(titles) {
+    const schema={'@context':'https://schema.org','@type':'CollectionPage',
+        name:'Where to Watch Movies and TV Series by Country | MatchApp Ai',
+        url:SITE+'/where-to-watch/',
+        description:'Regional movie and TV streaming, rental and purchase discovery with original verification guidance.',
+        mainEntity:{'@type':'ItemList',numberOfItems:titles.length,
+            itemListElement:titles.map((name,i)=>({'@type':'ListItem',position:i+1,name,
+                url:SITE+'/where-to-watch/'+slug(name)+'/'
+            }))}};
+    const schemaJson=JSON.stringify(schema).replace(/</g,'\u003c');
     const links = titles.map(t =>
         `<a href="/where-to-watch/${slug(t)}/">${esc(t)}</a>`).join('\n                ');
     return `<!DOCTYPE html>
@@ -242,7 +252,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Where to Watch — Streaming Availability | MatchApp</title>
+<title>Where to Watch Movies & TV Shows by Country | MatchApp Ai</title>
 <meta name="description" content="Find where to stream, rent or buy ${titles.length} titles across Brazil, the US, the UK and Portugal. Availability data from TMDB, updated regularly.">
 <link rel="canonical" href="${SITE}/where-to-watch/">
 <meta name="robots" content="index, follow">
@@ -250,8 +260,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="/logo.jpeg?v=2" type="image/jpeg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${SITE}/where-to-watch/">
-<meta property="og:title" content="Where to Watch | MatchApp">
+<meta property="og:title" content="Where to Watch Movies & TV Shows by Country | MatchApp Ai">
 <meta property="og:image" content="${SITE}/og-image.jpg?v=2">
+<script type="application/ld+json">${schemaJson}</script>
 <link rel="stylesheet" href="/style.css?v=162">
 <style>
     .w2w-wrap { max-width: 880px; margin: 0 auto; padding: 30px 16px 80px; }
