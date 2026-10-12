@@ -3,6 +3,9 @@
 (function(){
  'use strict';
  if(!/\/discover\.html$/.test(location.pathname))return;
+ // The Android ambient iframe is sized by its floating panel, not the outer
+ // browser window. Recomputing a second workspace height clips chat/composer.
+ if(window.parent!==window&&new URLSearchParams(location.search).get('ambient')==='1')return;
  let raf=0;
  function fit(){
   if(raf)cancelAnimationFrame(raf);

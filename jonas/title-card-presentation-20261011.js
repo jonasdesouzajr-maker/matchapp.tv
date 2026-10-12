@@ -14,6 +14,10 @@
   for(const re of [/\*\*([^*\n]{4,75})\*\*/g,/[“"]([^“”"\n]{4,75})[”"]/g,/[«]([^«»\n]{4,75})[»]/g,/[‘']([^‘’'\n]{4,75})[’']/g]){
    for(const m of text.matchAll(re)){add(m[1]);if(names.length>=7)break}
   }
+  // Capture multiword names spoken without quotation marks (e.g. a TV
+  // title containing a hyphen). Exact source identity is still required below.
+  const capitalized=/\b([A-Z][\p{L}\d]*(?:[-’'][A-Z\d][\p{L}\d]*)?(?:\s+(?:[A-Z][\p{L}\d]*(?:[-’'][A-Z\d][\p{L}\d]*)?|and|of|the)){1,4})\b/gu;
+  for(const m of text.matchAll(capitalized)){add(m[1]);if(names.length>=10)break}
   // Conservative title-cased fallback for plain spoken prose: exact lookup
   // will reject phrases that aren't an actual movie or series identity.
   const named=/(?:\bThe|\bA|\bOs|\bAs|\bO|\bLa|\bEl|\bLe|\bLes|\bLos|\bLas)\s+(?:[A-ZÀ-Ý0-9][\p{L}\d'’-]*\s*){1,5}/gu;
@@ -31,28 +35,31 @@
   }catch(_){}
   return names.slice(0,9);
  }
- async function fromAnswer(answer){
+ async function fromAnswers(answer,limit=3){
   const api=window.MatchAppCatalogMedia;
-  if(!api?.lookup)return null;
+  if(!api?.lookup)return [];
+  const found=[],seen=new Set(),max=Math.max(1,Math.min(3,Number(limit)||1));
   for(const name of candidates(answer)){
+   if(found.length>=max)break;
    try{
-    // Only show a real identified title. Never treat fuzzy text similarity as
-    // proof, and never claim where it streams unless catalog verified it.
+    // Only show exact, source-identified titles; never infer regional streams.
     let meta=await api.lookup(name,{});
     if(!meta&&api.lookupLive)meta=await api.lookupLive(name,{});
     if(!meta)continue;
     const title=String(meta.title||meta.original_title||'');
     const accepted=[title,meta.original_title,meta.original_name,meta.name].filter(Boolean);
     if(!accepted.some(x=>key(x)===key(name)))continue;
-    if(!['movie','tv'].includes(meta.media_kind))continue;
-    return {
+    if(!['movie','tv'].includes(meta.media_kind)||seen.has(key(title)))continue;
+    seen.add(key(title));
+    found.push({
      title:title||name,year:meta.year||'',type:meta.media_kind==='tv'?'series':'movie',
      synopsis:meta.overview||'',synopsisLang:'en',platform:'',
      _catalogMedia:meta,_fromCatalog:true,_displayOnly:true
-    };
+    });
    }catch(_){}
   }
-  return null;
+  return found;
  }
- window.MatchAppJonasTitlePresentation=Object.freeze({fromAnswer,candidates});
+ async function fromAnswer(answer){return (await fromAnswers(answer,1))[0]||null}
+ window.MatchAppJonasTitlePresentation=Object.freeze({fromAnswer,fromAnswers,candidates});
 })();

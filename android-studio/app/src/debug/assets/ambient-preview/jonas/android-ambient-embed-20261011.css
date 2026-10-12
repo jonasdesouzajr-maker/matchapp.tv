@@ -24,3 +24,38 @@ html.matchapp-ambient-frame .chat-turn{max-width:100%!important}
 html.matchapp-ambient-frame .ai-sidebar.is-open{display:block!important;z-index:900!important;position:fixed!important;inset:0 auto 0 0!important}
 html.matchapp-ambient-frame body .ma-cookie{display:none!important}
 @media(prefers-reduced-motion:reduce){html.matchapp-ambient-frame *{scroll-behavior:auto!important}}
+
+/* The embedded workspace owns exactly one viewport-sized flex column.
+   Its conversation scrolls independently; the real composer stays below it.
+   The regular Ask AI page is explicitly outside this selector. */
+html.matchapp-ambient-frame body.ai-chat-page main.wrap .premium-card.discover-head{
+ height:100%!important;max-height:100%!important;min-height:0!important;
+ flex:1 1 0!important;overflow:hidden!important;box-sizing:border-box!important;
+}
+html.matchapp-ambient-frame body.ai-chat-page .discover-head #chat-log{
+ display:flex!important;flex:1 1 0!important;min-height:0!important;
+ width:100%!important;max-height:none!important;overflow-x:hidden!important;
+ overflow-y:auto!important;overscroll-behavior:contain!important;
+ scroll-padding-bottom:16px!important;box-sizing:border-box!important;
+}
+html.matchapp-ambient-frame body.ai-chat-page .discover-head>.newsearch-row{
+ position:relative!important;flex:0 0 auto!important;inset:auto!important;
+ z-index:1!important;max-height:42dvh!important;overflow-y:auto!important;
+ box-sizing:border-box!important;transform:none!important;
+}
+html.matchapp-ambient-frame body.ai-chat-page .discover-head #discover-new-input{
+ max-height:88px!important;min-height:42px!important;overflow-y:auto!important;
+}
+html.matchapp-ambient-frame body.ai-chat-page .discover-head #chat-log .chat-answer-text{
+ overflow-wrap:anywhere!important;white-space:pre-wrap!important;
+}
+html.matchapp-ambient-frame body.ai-chat-page .discover-head #chat-log .jonas-speech-line{
+ opacity:.84!important;
+}
+html.matchapp-ambient-frame body.ai-chat-page .discover-head #chat-log .jonas-unspoken-remainder{
+ display:block!important;opacity:1!important;color:#f3e9f5!important;
+}
+html.matchapp-ambient-frame body.ai-chat-page .discover-head #chat-log strong[role="status"]{
+ display:block;margin:0 0 8px;padding:6px 8px;border-radius:8px;
+ font:600 11px/1.4 system-ui,sans-serif;white-space:normal;
+}
