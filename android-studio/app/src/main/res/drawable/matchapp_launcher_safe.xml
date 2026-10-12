@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Approved launcher artwork already includes safe margins; keep the full premium icon visible. -->
+<!-- Approved metallic launcher artwork; safe inset protects the ring and star inside Samsung/Pixel masks. -->
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/ic_launcher_foreground"
-    android:inset="0%" />
+    android:drawable="@drawable/matchapp_launcher_premium"
+    android:inset="13%" />
