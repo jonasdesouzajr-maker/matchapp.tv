@@ -27,3 +27,31 @@ html.matchapp-ai-android #ma-jonas-inline-dock {display:none!important}
 @media(min-width:700px){#ma-ambient-panel{right:22px;left:auto;margin:0;height:min(78dvh,740px)}}
 @media(max-height:610px){#ma-ambient-panel{height:calc(100dvh - 20px);max-height:none;bottom:8px}#ma-ambient-panel .ja-hello{display:none}}
 @media(prefers-reduced-motion:reduce){#ma-ambient-panel{animation:none}}
+
+/* Native TTS word-boundary sync: one steady face, two softly blended mouth crops.
+   The portrait is completely still when speech has finished or the user types. */
+#ma-ambient-panel .ja-face-wrap{
+ position:relative;display:block;flex:0 0 42px;width:42px;height:42px;
+ border-radius:50%;overflow:hidden;isolation:isolate;
+}
+#ma-ambient-panel .ja-face-wrap .ja-face{
+ position:absolute;inset:0;width:100%;height:100%;
+ object-fit:cover;object-position:center 20%;border:2px solid #e3c47e;border-radius:50%;
+}
+#ma-ambient-panel .ja-face-wrap .ja-mouth{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ object-position:center 20%;border-radius:50%;pointer-events:none;
+ clip-path:inset(53% 11% 24% 11%);opacity:0;transition:opacity 130ms ease-in-out;
+}
+#ma-ambient-panel[data-speaking="1"] .ja-face-wrap{
+ animation:ja-natural-breathe 4.1s ease-in-out infinite;
+}
+@keyframes ja-natural-breathe{
+ 0%,100%{transform:translateY(.2px) scale(1)}
+ 44%{transform:translateY(-.8px) scale(1.012)}
+ 64%{transform:translateY(-.2px) scale(1.004)}
+}
+@media(prefers-reduced-motion:reduce){
+ #ma-ambient-panel[data-speaking="1"] .ja-face-wrap{animation:none!important}
+ #ma-ambient-panel .ja-face-wrap .ja-mouth{transition:none!important}
+}
