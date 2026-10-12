@@ -14,10 +14,10 @@ function videoIssues(object,label,issues){
  if(type==='VideoObject'||(Array.isArray(type)&&type.includes('VideoObject'))){
   const content=validUrl(object.contentUrl),embed=validUrl(object.embedUrl);
   if(!(content||embed))issues.push(label+': VideoObject missing valid contentUrl or embedUrl');
-  // A YouTube watch page is not a downloadable media file. If it is used as
-  // contentUrl, a proper embedUrl must also be available for Google to crawl.
-  if(typeof object.contentUrl==='string'&&/^https:\/\/(?:www\.)?(?:youtube\.com\/watch|youtu\.be\/)/i.test(object.contentUrl)&&!embed)
-   issues.push(label+': YouTube watch URL alone is not a video content file; provide embedUrl');
+  // contentUrl must be the actual media file, never a YouTube watch page.
+  // An available embedUrl does not make a misleading contentUrl valid.
+  if(typeof object.contentUrl==='string'&&/^https:\/\/(?:www\.)?(?:youtube\.com\/watch|youtu\.be\/)/i.test(object.contentUrl))
+   issues.push(label+': YouTube watch URL is not a video file; omit contentUrl and use embedUrl');
  }
  for(const [key,value] of Object.entries(object))if(value&&typeof value==='object')videoIssues(value,label+' '+key,issues);
 }

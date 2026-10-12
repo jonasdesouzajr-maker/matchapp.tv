@@ -15,16 +15,18 @@ test('video schemas require a real content URL or embeddable URL, even when nest
  guard.videoIssues({'@context':'https://schema.org','@type':'ItemList',itemListElement:[
   {item:{'@type':'VideoObject',name:'no source',url:'https://www.youtube.com/watch?v=abc'}},
   {item:{'@type':'VideoObject',name:'valid',embedUrl:'https://www.youtube.com/embed/abc'}},
-  {item:{'@type':'VideoObject',contentUrl:'https://www.youtube.com/watch?v=abc'}}
+  {item:{'@type':'VideoObject',contentUrl:'https://www.youtube.com/watch?v=abc'}},
+  {item:{'@type':'VideoObject',contentUrl:'https://www.youtube.com/watch?v=abc',embedUrl:'https://www.youtube.com/embed/abc'}}
  ]},'test',issues);
- assert.equal(issues.length,2);
+ assert.equal(issues.length,3);
  assert.match(issues[0],/missing valid contentUrl or embedUrl/);
- assert.match(issues[1],/YouTube watch URL alone/);
+ assert.match(issues[1],/YouTube watch URL is not a video file/);
+ assert.match(issues[2],/YouTube watch URL is not a video file/);
 });
 test('real external video preview with embedUrl is compliant',()=>{
  const issues=[];
  guard.inspectHtml('<html><head><script type="application/ld+json">'+JSON.stringify({
-  '@type':'VideoObject',name:'Trailer',contentUrl:'https://www.youtube.com/watch?v=abc',
+  '@type':'VideoObject',name:'Trailer',
   embedUrl:'https://www.youtube-nocookie.com/embed/abc'})+'</script></head></html>','test',issues);
  assert.deepEqual(issues,[]);
 });
