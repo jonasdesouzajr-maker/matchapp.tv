@@ -51,7 +51,9 @@ function parseDurationSeconds(html){
  const n=Number(iso[1]||0)*3600+Number(iso[2]||0)*60+Number(iso[3]||0);
  return Number.isSafeInteger(n)?n:null;
 }
-function isFullMusicVideoDuration(seconds){return seconds===null||seconds>=MIN_MUSIC_VIDEO_SECONDS;}
+function isFullMusicVideoDuration(seconds,hasVerifiedFullLength=false){
+ return seconds===null?hasVerifiedFullLength:seconds>=MIN_MUSIC_VIDEO_SECONDS;
+}
 function confirmExistingRelease(prior,row,artist,channelId,info,checkedAt){
  const author=String(info.author_url||'').replace(/\/$/,'').toLowerCase();
  if(![artist.channelUrl.toLowerCase(),'https://www.youtube.com/channel/'+channelId.toLowerCase()].includes(author)||info.title!==row.rawTitle)throw Error('Video author/title identity mismatch');
@@ -86,13 +88,15 @@ async function refresh(){
     const checkedAt=new Date().toISOString().slice(0,10);
     let viewCount=null,durationSeconds=null;
     try{const watchHtml=await request(url+'&hl=en');viewCount=parseViewCount(watchHtml);durationSeconds=parseDurationSeconds(watchHtml);}catch(_){/* Retain last verified metadata on a transient YouTube page failure. */}
-    if(!isFullMusicVideoDuration(durationSeconds)){
+    const prior=byId.get(row.id);
+    const hasVerifiedFullLength=Number.isSafeInteger(Number(prior?.durationSeconds))&&Number(prior.durationSeconds)>=MIN_MUSIC_VIDEO_SECONDS;
+    if(!isFullMusicVideoDuration(durationSeconds,hasVerifiedFullLength)){
      byId.delete(row.id);
      const rejectedPoster=path.join(ROOT,'assets/music-videos',row.id+'.jpg');
      if(fs.existsSync(rejectedPoster))fs.unlinkSync(rejectedPoster);
      continue;
     }
-    const existing=confirmExistingRelease(byId.get(row.id),row,artist,channelId,info,checkedAt);
+    const existing=confirmExistingRelease(prior,row,artist,channelId,info,checkedAt);
     if(existing){byId.set(row.id,{...existing,...(durationSeconds!==null?{durationSeconds}:{}),...(viewCount!==null?{viewCount,viewCountCheckedAt:checkedAt}:{})});continue;}
     const thumbnail='https://i.ytimg.com/vi/'+row.id+'/hqdefault.jpg';let image;
     // YouTube's alternate image hosts serve the same exact video artwork.

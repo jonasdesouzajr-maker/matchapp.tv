@@ -26,13 +26,14 @@ test('public YouTube page parsing captures exact numeric view counts without inv
  assert.equal(parseViewCount('{"videoDetails":{"viewCount":"7654321"}}'),7654321);
  assert.equal(parseViewCount('<html>no count</html>'),null);
 });
-test('public YouTube duration parsing identifies ultra-short promotional clips',()=>{
+test('public YouTube duration parsing rejects short and unverified new clips fail closed',()=>{
  assert.equal(parseDurationSeconds('{"videoDetails":{"lengthSeconds":"10"}}'),10);
  assert.equal(parseDurationSeconds('<meta itemprop="duration" content="PT3M12S">'),192);
  assert.equal(parseDurationSeconds('<html>no duration</html>'),null);
  assert.equal(isFullMusicVideoDuration(10),false);
  assert.equal(isFullMusicVideoDuration(30),true);
- assert.equal(isFullMusicVideoDuration(null),true);
+ assert.equal(isFullMusicVideoDuration(null),false);
+ assert.equal(isFullMusicVideoDuration(null,true),true);
 });
 test('official MV releases qualify only on the monitored owner channel, while behind-scenes and audio stay excluded',()=>{
  const rows=parseFeed(feed(entry('BTS ‘Song’ Official MV')+entry('BTS ‘Song’ Official MV Behind the Scenes')+entry('BTS Song (Official Audio)')+entry('BTS ‘Song’ Official MV','UCimpostor')),channel);
