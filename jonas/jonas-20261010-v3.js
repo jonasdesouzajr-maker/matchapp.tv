@@ -193,11 +193,15 @@
 
     if (window.MatchAppNativeVoice?.speak && !forceCloud) {
       const mine = ++epoch;
-      speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
+      speaking = true; uiStatus("Preparing voice…");
       let step = 0;
-      audioAnimation = setInterval(() => {
-        if (speaking && mine === epoch) setExpression(shapes[(step++) % shapes.length]);
-      }, 220);
+      const startNativeFace = () => {
+        if (mine !== epoch || audioAnimation) return;
+        bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
+        audioAnimation = setInterval(() => {
+          if (speaking && mine === epoch) setExpression(shapes[(step++) % shapes.length]);
+        }, 220);
+      };
       const finish = () => {
         if (mine !== epoch || !speaking) return;
         speaking = false; bubble.classList.remove("is-speaking");
@@ -216,7 +220,7 @@
         useVoice(text, onDone, true);
       };
       window.matchAppNativeSpeechState = (active) => {
-        if (active) nativeStarted = true;
+        if (active) { nativeStarted = true; startNativeFace(); }
         else if (nativeStarted) finish();
         else nativeUnavailable();
       };
