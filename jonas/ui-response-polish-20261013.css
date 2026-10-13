@@ -55,8 +55,36 @@ html body.page-home .spotlight-poster{width:120px!important;height:180px!importa
  clip-path:inset(50% 8% 12% 8%)!important;
  transition:opacity .16s ease!important;
 }
-#ma-jonas-home-panel{
- z-index:41;
+/* Realistic bubble: depth, soft rim, natural face framing. Face asset unchanged. */
+#ma-jonas-home .jh-bubble{
+ width:88px!important;height:88px!important;
+ border-radius:50%!important;
+ background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.18),transparent 42%),#1a0e24!important;
+ box-shadow:
+  0 14px 28px rgba(0,0,0,.55),
+  0 4px 10px rgba(0,0,0,.4),
+  inset 0 1px 0 rgba(255,255,255,.22),
+  inset 0 -8px 16px rgba(0,0,0,.35)!important;
+ overflow:hidden;
+}
+#ma-jonas-home .jh-medallion,
+#ma-jonas-home .jh-portrait{
+ width:100%!important;height:100%!important;
+ border-radius:50%!important;
+ border:1.5px solid rgba(230,195,106,.75)!important;
+ box-shadow:inset 0 0 0 1px rgba(0,0,0,.35)!important;
+ overflow:hidden;
+ background:#1a0e24!important;
+}
+#ma-jonas-home .jh-medallion img,
+#ma-jonas-home .jh-portrait img{
+ object-fit:cover!important;
+ object-position:center 22%!important;
+ filter:contrast(1.04) saturate(1.05)!important;
+}
+#ma-jonas-home .jh-bubble::after{
+ content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;
+ background:linear-gradient(145deg,rgba(255,255,255,.16) 0%,transparent 38%,rgba(0,0,0,.18) 100%);
 }
 /* Keep composer controls above any floating portrait on narrow viewports */
 @media (max-width:480px){
