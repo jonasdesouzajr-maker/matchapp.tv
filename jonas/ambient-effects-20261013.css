@@ -93,12 +93,30 @@ html body.page-home .home-h1,
   animation: ma-float 5.5s ease-in-out infinite;
 }
 
-/* Subtle card lift on Explore */
-.ex-card {
-  transition: transform .25s ease, box-shadow .25s ease;
+/* Smooth transitions everywhere */
+.gold-btn,
+.mh-explore-more,
+.ex-card,
+.premium-card,
+#trending-rail .marquee-item,
+#ma-jonas-home .jh-bubble,
+#ma-jonas-home .jh-popover,
+.marquee-wrapper,
+a, button {
+  transition: transform .28s cubic-bezier(.2,.8,.2,1),
+              box-shadow .28s ease,
+              opacity .22s ease,
+              border-color .22s ease,
+              background-color .22s ease !important;
 }
-.ex-card:active {
-  transform: scale(.98);
+.gold-btn:active,
+.mh-explore-more:active,
+.ex-card:active,
+#trending-rail .marquee-item:active {
+  transform: scale(.97);
+}
+#ma-jonas-home .jh-popover {
+  transition: opacity .3s ease, transform .3s cubic-bezier(.2,.8,.2,1) !important;
 }
 
 /* Reduce motion respect */
