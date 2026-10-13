@@ -187,5 +187,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </article></section>
 </main>
 <script src="/build-meta.js?v=203"></script>
+
+<link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css">
+<link rel="stylesheet" href="/jonas/ui-response-polish-20261013.css">
+<link rel="stylesheet" href="/jonas/ambient-effects-20261013.css">
+<aside id="ma-jonas-home" aria-label="Jonas floating companion">
+  <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
+    <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
+    <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
+    <form class="jh-form">
+      <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas">
+      <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input">🎤</button>
+    </form>
+  </section>
+  <button id="ma-jonas-home-bubble" class="jh-bubble" type="button" aria-label="Chat with Jonas" aria-controls="ma-jonas-home-panel" aria-expanded="false">
+    <img class="jh-medallion" src="/jonas/faces/jonas/rest.jpg" alt="Jonas" width="64" height="64">
+  </button>
+</aside>
+<script defer src="/jonas/floating-home-20261010-v3.js?v=20261013-drag"></script>
+<script defer src="/jonas/floating-voice-20261010-v5.js?v=20261013-human"></script>
+<script defer src="/jonas/ambient-effects-20261013.js"></script>
+<script defer src="/jonas/ambient-sounds-20261013.js"></script>
+
 </body>
 </html>
