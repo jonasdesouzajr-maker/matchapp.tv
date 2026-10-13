@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/brand.css?v=192">
 <link rel="stylesheet" href="/page-shell.css?v=20260926-ai-energy2">
 <link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css">
-<link rel="stylesheet" href="/jonas/ui-response-polish-20261013.css">
+<link rel="stylesheet" href="/jonas/ui-response-polish-20261013.css?v=20261013-homevisibility1">
 <link rel="stylesheet" href="/jonas/ambient-effects-20261013.css">
 <style>
 body.page-explore{margin:0;background:#14081C;color:#fff;min-height:100vh;font-family:system-ui,sans-serif}
@@ -61,11 +61,12 @@ body.page-explore{margin:0;background:#14081C;color:#fff;min-height:100vh;font-f
     <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
     <form class="jh-form" action="/discover.html" method="get"><input type="hidden" name="from" value="jonas"><input type="hidden" name="focus" value="start">
       <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas">
+      <button class="jh-send" type="submit" hidden style="display:none!important" aria-label="Send question to MatchApp Ai"></button>
       <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input">🎤</button>
     </form>
   </section>
   <button id="ma-jonas-home-bubble" class="jh-bubble" type="button" aria-label="Chat with Jonas" aria-controls="ma-jonas-home-panel" aria-expanded="false">
-    <img class="jh-medallion" src="/jonas/faces/jonas/rest.jpg" alt="Jonas" width="64" height="64">
+    <span class="jh-medallion"><img src="/jonas/faces/jonas/rest.jpg" alt="Jonas" width="64" height="64"></span>
   </button>
 </aside>
 <script defer src="/jonas/ambient-effects-20261013.js"></script>
