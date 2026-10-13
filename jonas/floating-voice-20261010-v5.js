@@ -207,7 +207,15 @@
    };
    r.onend=function(){if(token===session){root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false')}};
    r.start();
-   guard=setTimeout(function(){if(token===session&&mode==='voice'&&!input.value.trim())statusText('Speak now, or tap the microphone to retry.','Fale agora ou toque no microfone para tentar de novo.')},11000);
+   // Shorter listening window so the user is not left hanging. After ~4.5s of silence
+   // with no transcript, surface a clear retry prompt instead of staying stuck.
+   guard=setTimeout(function(){
+    if(token===session&&mode==='voice'&&!input.value.trim()){
+     statusText('Could not hear you. Tap the microphone to try again.','Não consegui ouvir. Toque no microfone para tentar novamente.');
+     root.classList.remove('jh-listening');
+     mic?.setAttribute('aria-pressed','false');
+    }
+   },4500);
   }catch(_){statusText('Automatic listening was blocked. Tap the microphone to retry.','A escuta automática foi bloqueada. Toque no microfone para tentar de novo.')}
  }
  function greet(token){
@@ -217,7 +225,8 @@
   function finish(){
    if(complete)return;complete=true;clearTimeout(timeout);resetMouth();
    root.classList.remove('jh-greeting');
-   if(token===session&&mode==='voice')listen(token);
+   // Brief pause after greeting so the user hears the welcome before the mic opens.
+   if(token===session&&mode==='voice')setTimeout(function(){if(token===session&&mode==='voice')listen(token)},420);
   }
   if(window.MatchAppJonasSpeech){
    window.MatchAppJonasSpeech.unlock();

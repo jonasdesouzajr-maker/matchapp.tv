@@ -1,0 +1,30 @@
+/* UI presentation polish for Jonas floating chat — adult only.
+   Does not alter matching, AdSense, Kids, or native Android. */
+#ma-jonas-home.jh-speaking .jh-medallion,
+#ma-jonas-home.jh-speaking .jh-portrait{
+ box-shadow:0 0 0 3px rgba(230,195,106,.85),0 0 18px rgba(230,195,106,.45)!important;
+}
+#ma-jonas-home.jh-listening .jh-mic{
+ outline:2px solid #68cdec;outline-offset:2px;
+}
+#ma-jonas-home.is-floating{
+ z-index:40;
+}
+#ma-jonas-home-panel{
+ z-index:41;
+}
+/* Keep composer controls above any floating portrait on narrow viewports */
+@media (max-width:480px){
+ #ma-jonas-home.is-floating .jh-medallion{
+  pointer-events:none;
+ }
+ #ma-jonas-home-panel .jh-form,
+ #ma-jonas-home-panel .jh-mic,
+ #ma-jonas-home-panel button[type="submit"]{
+  position:relative;z-index:2;
+ }
+}
+/* Compact thinking indicator on Ask AI (visual only) */
+.ai-chat-page .ai-progress-stages{
+ gap:6px!important;font-size:.78rem!important;
+}
