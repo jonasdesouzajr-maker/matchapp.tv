@@ -94,8 +94,9 @@
   if(event.button!==0 && event.pointerType==='mouse')return;
   var r=root.getBoundingClientRect();
   dragging={id:event.pointerId,x:event.clientX,y:event.clientY,left:r.left,top:r.top,moved:false};
-  // Start floating immediately so reparenting happens once, not mid-gesture.
-  if(!root.classList.contains('is-floating'))setFloating(r.left,r.top);
+  // Keep the DOM stable on pointerdown: relocating the bubble before the
+  // click can swallow a normal tap, especially in Chromium/WebView.
+  // Only detach it once a genuine drag clears the movement threshold.
   try{if(bubble.setPointerCapture)bubble.setPointerCapture(event.pointerId)}catch(_){}
   event.preventDefault?.();
  }
@@ -104,7 +105,9 @@
   var dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
   // Tiny threshold so a real drag starts on the first clear movement.
   if(!dragging.moved&&Math.hypot(dx,dy)<3)return;
-  if(!dragging.moved){dragging.moved=true;setOpen(false);root.classList.add('is-dragging')}
+  if(!dragging.moved){dragging.moved=true;setOpen(false);root.classList.add('is-dragging');
+   if(!root.classList.contains('is-floating'))setFloating(dragging.left,dragging.top);
+  }
   setFloating(dragging.left+dx,dragging.top+dy);
   event.preventDefault?.();
  }
