@@ -17,6 +17,6 @@ test('premium route aliases do not activate adult Ask UI on Kids pages',()=>{con
 
 const settings=fs.readFileSync(path.join(__dirname,'../settings.js'),'utf8');
 for(const route of ['/discover','/discover.html','/together','/together.html','/pricing/pricing','/pricing/pricing.html']){
- test('shared premium loader injects the versioned UI at '+route,()=>{const dom=new JSDOM(fixture,{url:'https://matchapp.tv'+route,runScripts:'outside-only'});try{dom.window.eval(settings);assert.match(dom.window.document.querySelector('script[data-matchapp-ia]')?.src||'',/\/matchapp-ia\.js\?v=20261013-cleanurl1$/);assert.ok(dom.window.document.querySelector('link[data-matchapp-ia]'));}finally{dom.window.close();}});
+ test('shared premium loader injects the versioned UI at '+route,()=>{const dom=new JSDOM(fixture,{url:'https://matchapp.tv'+route,runScripts:'outside-only'});try{dom.window.eval(settings);assert.match(dom.window.document.querySelector('script[data-matchapp-ia]')?.src||'',/\/matchapp-ia\.js\?v=20260919-ia24&cleanurl=20261013-1$/);assert.ok(dom.window.document.querySelector('link[data-matchapp-ia]'));}finally{dom.window.close();}});
 }
 test('shared premium loader does not include adult UI on Kids or lookalike routes',()=>{for(const route of ['/kids/','/discover-other','/pricing/pricing-other']){const dom=new JSDOM(fixture,{url:'https://matchapp.tv'+route,runScripts:'outside-only'});try{dom.window.eval(settings);assert.equal(dom.window.document.querySelector('script[data-matchapp-ia]'),null);}finally{dom.window.close();}}});
