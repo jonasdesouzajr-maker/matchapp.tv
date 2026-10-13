@@ -177,7 +177,9 @@
     } catch { return null; }
   }
   function useVoice(text, onDone) {
-    if(window.MatchAppJonasSpeech){
+    // Installed Android already provides policy-checked local male TTS. Avoid
+    // cloud synthesis latency when that native bridge is available.
+    if(window.MatchAppJonasSpeech && typeof window.MatchAppNativeVoice?.speak !== 'function'){
       const mine=++epoch;
       window.MatchAppJonasSpeech.unlock();
       speaking=true;
