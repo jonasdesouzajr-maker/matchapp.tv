@@ -334,6 +334,7 @@
 <link rel="stylesheet" href="/jonas/android-premium-composer-20261012.css?v=20261012-premium1">
 <script defer src="/jonas/chat-workspace-20261011.js?v=20261012-ambient-recovery1&amp;cleanurl=20261013-1"></script>
 <link rel="stylesheet" href="/premium-approved-redesign-20261013.css?v=20261013-mobile4">
+<link rel="stylesheet" href="/approved-design-surfaces-20261013.css?v=20261013-qa3">
 </head>
 <body class="ai-chat-page">
     <!-- Google Tag Manager (noscript) -->
@@ -382,7 +383,7 @@
             <div class="discover-title-row">
                 <img class="discover-ai-mark" src="/assets/brand/matchapp-ai-orbit-fullbleed.svg?v=1" alt="" width="46" height="46">
                 <div class="discover-title-copy">
-                    <h1 data-i18n="discover.title">Ask MatchApp Ai</h1>
+                    <h1 id="approved-page-title" data-i18n="discover.title" class="approved-design-title">Ask MatchApp Ai</h1>
                     <p class="concierge-tagline" data-i18n="discover.conciergeTagline">Your personal AI Concierge for entertainment — ask a question by typing or speaking, in any language.</p>
                 </div>
             </div>
@@ -395,6 +396,7 @@
 
             <!-- Multi-turn conversation. Each exchange appends here so a user
                  can keep asking follow-ups in the same thread. -->
+            <div class="approved-ask-starters" aria-label="Question ideas"><button type="button"><span aria-hidden="true">▷</span><span class="approved-starter-label">What to watch</span></button><button type="button"><span aria-hidden="true">▣</span><span class="approved-starter-label">Find a show</span></button><button type="button"><span aria-hidden="true">✦</span><span class="approved-starter-label">Live &amp; upcoming</span></button><button type="button"><span aria-hidden="true">◉</span><span class="approved-starter-label">Sports insights</span></button></div>
             <div id="chat-log" class="chat-log"></div>
 
             <button type="button" class="ma-ask-again" onclick="startNewChat()">Ask another question</button>
@@ -543,5 +545,6 @@
 <script defer src="/jonas/ambient-effects-20261013.js"></script>
 <script defer src="/jonas/ambient-sounds-20261013.js"></script>
 
+<script defer src="/approved-ask-starters-20261013.js?v=1"></script>
 </body>
 </html>

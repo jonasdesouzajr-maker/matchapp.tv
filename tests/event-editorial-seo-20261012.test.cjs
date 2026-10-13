@@ -48,7 +48,8 @@ test('archive search metadata is short and regenerated guides remain locked to t
  const desc=decode(html.match(/<meta name="description" content="([^"]+)"/)?.[1]||'');
  assert.ok(title.length<=60,title);
  assert.ok(desc.length<=155,desc);
- assert.match(html,/<h1>Recent and upcoming global entertainment events<\/h1>/);
+ assert.match(html,/<h1\b[^>]*>Events<\/h1>/);
+ assert.match(html,/"name":"Recent and upcoming global entertainment events"/);
  assert.match(html,/https:\/\/matchapp.tv\/events-archive.html/);
  assert.match(read('tools/build-global-events.js'),/eventSearchTitle\(e\)/);
  assert.match(read('tools/build-global-events.js'),/eventSearchDescription\(e\)/);
