@@ -15,14 +15,22 @@
  var mouthBoundary='rest',mouthBoundaryUntil=0;
  var reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
  ['rest','smile','aa','ee','oh'].forEach(function(name){var img=new Image();img.decoding='async';img.src=faceBase+name+'.jpg';frames[name]=img});
+ // Dual viseme layers: one fades out while the other fades in.
+ var visemeA=null,visemeB=null,visemeFront='a';
+ function makeViseme(cls){
+  var el=document.createElement('img');
+  el.className='jh-mouth-layer '+cls;el.alt='';el.setAttribute('aria-hidden','true');
+  el.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(54% 6% 8% 6%);opacity:0;pointer-events:none;border-radius:50%;z-index:2;transition:opacity .055s ease';
+  return el;
+ }
  if(portrait){
   // Never swap the whole head image: only the mouth moves, so eyes and face
   // remain stable without flashes during speech synthesis.
-  mouth=document.createElement('img');
-  mouth.className='jh-mouth-layer';mouth.alt='';mouth.setAttribute('aria-hidden','true');
-  mouth.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(54% 0 0 0);opacity:0;pointer-events:none;border-radius:50%';
   portrait.parentNode.style.position='relative';
-  portrait.parentNode.appendChild(mouth);
+  visemeA=makeViseme('jh-viseme-a');visemeB=makeViseme('jh-viseme-b');
+  portrait.parentNode.appendChild(visemeA);
+  portrait.parentNode.appendChild(visemeB);
+  mouth=visemeA; // compatibility handle
  }
  // Blink overlays affect only the upper face, not the full portrait/bubble.
  [root.querySelector('.jh-medallion'),root.querySelector('.jh-portrait')].forEach(function(parent){
@@ -30,25 +38,86 @@
   var eyes=document.createElement('img');
   eyes.className='jh-blink-layer';eyes.src=faceBase+'blink.jpg';eyes.alt='';
   eyes.setAttribute('aria-hidden','true');
-  eyes.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(0 0 50% 0);opacity:0;pointer-events:none;border-radius:50%;z-index:4';
+  // Eyes only — a narrow band, never the whole bubble.
+  eyes.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(26% 16% 58% 16%);opacity:0;pointer-events:none;border-radius:50%;z-index:4;transition:opacity .09s ease;max-height:28%;overflow:hidden';
   parent.appendChild(eyes);eyeLayers.push(eyes);
  });
  function scheduleBlink(){
   clearTimeout(blinkTimer);if(reduceMotion)return;
   blinkTimer=setTimeout(function(){
-   if(!document.hidden)eyeLayers.forEach(function(eyes){if(eyes.complete&&eyes.naturalWidth)eyes.style.opacity='1'});
-   clearTimeout(blinkClose);
-   blinkClose=setTimeout(function(){eyeLayers.forEach(function(e){e.style.opacity='0'})},150);
+   if(!document.hidden){
+    eyeLayers.forEach(function(eyes){if(eyes.complete&&eyes.naturalWidth)eyes.style.opacity='1'});
+    clearTimeout(blinkClose);
+    // Occasional double-blink; eyes only.
+    var double=!mouthRunning&&Math.random()<.32;
+    blinkClose=setTimeout(function(){
+     eyeLayers.forEach(function(e){e.style.opacity='0'});
+     if(double){
+      setTimeout(function(){
+       eyeLayers.forEach(function(e){e.style.opacity='.85'});
+       setTimeout(function(){eyeLayers.forEach(function(e){e.style.opacity='0'})},90);
+      },120);
+     }
+    },double?100:130);
+   }
    scheduleBlink();
-  },(mouthRunning?3450:2900)+Math.random()*2650);
+  },(mouthRunning?3100:2400)+Math.random()*2800);
  }
  scheduleBlink();
+ // Realistic idle micro-expressions: soft smile, breathing, natural blinks.
+ // Stays quiet while speaking so mouth frames remain the only face motion.
+ var microSmileTimer=0,microSmileClose=0,breathRaf=0,breathPhase=0;
+ var smileLayer=null;
+ if(portrait&&!reduceMotion){
+  smileLayer=document.createElement('img');
+  smileLayer.className='jh-micro-smile';smileLayer.alt='';smileLayer.setAttribute('aria-hidden','true');
+  smileLayer.src=faceBase+'smile.jpg';
+  smileLayer.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(50% 8% 12% 8%);opacity:0;pointer-events:none;border-radius:50%;z-index:3;transition:opacity .16s ease';
+  portrait.parentNode.appendChild(smileLayer);
+ }
+ function scheduleMicroSmile(){
+  clearTimeout(microSmileTimer);if(reduceMotion||!smileLayer)return;
+  microSmileTimer=setTimeout(function(){
+   if(!document.hidden&&!mouthRunning&&smileLayer.complete&&smileLayer.naturalWidth){
+    smileLayer.style.opacity='.72';
+    clearTimeout(microSmileClose);
+    microSmileClose=setTimeout(function(){smileLayer.style.opacity='0'},420+Math.random()*280);
+   }
+   scheduleMicroSmile();
+  },5200+Math.random()*6400);
+ }
+ scheduleMicroSmile();
+ function tickBreath(now){
+  if(reduceMotion||document.hidden){breathRaf=0;return}
+  breathPhase+=mouthRunning?.012:.007;
+  var scale=1+(Math.sin(breathPhase)*.007)+(mouthRunning?Math.sin(breathPhase*2.2)*.005:0);
+  var tilt=(Math.sin(breathPhase*.55)*.35)+(mouthRunning?Math.sin(breathPhase*1.1)*.5:0);
+  // Tiny idle settle so he never looks frozen.
+  var settle=mouthRunning?0:Math.sin(breathPhase*.25)*.15;
+  [root.querySelector('.jh-medallion'),root.querySelector('.jh-portrait')].forEach(function(el){
+   if(!el)return;
+   el.style.transform='scale('+scale.toFixed(4)+') rotate('+(tilt+settle).toFixed(2)+'deg)';
+  });
+  breathRaf=requestAnimationFrame(tickBreath);
+ }
+ if(!reduceMotion)breathRaf=requestAnimationFrame(tickBreath);
  try{window.speechSynthesis?.getVoices?.()}catch(_){}
  function face(name){
-  if(!mouth||name===mouthFrame)return;
-  if(name==='rest'){mouthFrame='rest';mouth.style.opacity='0';return}
+  if(!visemeA||!visemeB||name===mouthFrame)return;
+  mouthFrame=name;
+  if(name==='rest'){
+   visemeA.style.opacity='0';visemeB.style.opacity='0';
+   return;
+  }
   var image=frames[name];
-  if(image&&image.complete&&image.naturalWidth>0){mouthFrame=name;mouth.src=image.src;mouth.style.opacity='1'}
+  if(!(image&&image.complete&&image.naturalWidth>0))return;
+  // True crossfade: incoming layer fades up while the other fades down.
+  var incoming=visemeFront==='a'?visemeB:visemeA;
+  var outgoing=visemeFront==='a'?visemeA:visemeB;
+  incoming.src=image.src;
+  incoming.style.opacity='1';
+  outgoing.style.opacity='0';
+  visemeFront=visemeFront==='a'?'b':'a';
  }
  function voiceFor(lang){
   // Never fall back to the device's first/default voice, which may be female.
@@ -88,6 +157,7 @@
  }
  function animateMouth(){
   resetMouth();mouthRunning=true;root.classList.add('jh-speaking');
+  if(smileLayer)smileLayer.style.opacity='0';
   mouthTimer=requestAnimationFrame(tickMouth);
  }
  function resetMouth(){
@@ -207,7 +277,15 @@
    };
    r.onend=function(){if(token===session){root.classList.remove('jh-listening');mic?.setAttribute('aria-pressed','false')}};
    r.start();
-   guard=setTimeout(function(){if(token===session&&mode==='voice'&&!input.value.trim())statusText('Speak now, or tap the microphone to retry.','Fale agora ou toque no microfone para tentar de novo.')},11000);
+   // Shorter listening window so the user is not left hanging. After ~4.5s of silence
+   // with no transcript, surface a clear retry prompt instead of staying stuck.
+   guard=setTimeout(function(){
+    if(token===session&&mode==='voice'&&!input.value.trim()){
+     statusText('Could not hear you. Tap the microphone to try again.','Não consegui ouvir. Toque no microfone para tentar novamente.');
+     root.classList.remove('jh-listening');
+     mic?.setAttribute('aria-pressed','false');
+    }
+   },4500);
   }catch(_){statusText('Automatic listening was blocked. Tap the microphone to retry.','A escuta automática foi bloqueada. Toque no microfone para tentar de novo.')}
  }
  function greet(token){
@@ -217,7 +295,8 @@
   function finish(){
    if(complete)return;complete=true;clearTimeout(timeout);resetMouth();
    root.classList.remove('jh-greeting');
-   if(token===session&&mode==='voice')listen(token);
+   // Brief pause after greeting so the user hears the welcome before the mic opens.
+   if(token===session&&mode==='voice')setTimeout(function(){if(token===session&&mode==='voice')listen(token)},420);
   }
   if(window.MatchAppJonasSpeech){
    window.MatchAppJonasSpeech.unlock();

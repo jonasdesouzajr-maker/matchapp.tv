@@ -23,6 +23,7 @@ const CORE = [
     { loc: `${SITE}/guides/what-to-watch-october-9-12-2026/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/`,                         freq: 'daily',   pri: '1.0' },
     { loc: `${SITE}/trending/this-week/`,   freq: 'daily',   pri: '0.8' },
+    { loc: `${SITE}/explore.html`,             freq: 'daily',   pri: '0.7' },
     { loc: `${SITE}/discover.html`,            freq: 'daily',   pri: '0.9' },
     { loc: `${SITE}/jonas/`,                   freq: 'weekly',  pri: '0.9' },
     { loc: `${SITE}/anime.html`,                freq: 'daily',   pri: '0.8' },

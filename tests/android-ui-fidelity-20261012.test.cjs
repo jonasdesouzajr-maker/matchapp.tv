@@ -4,13 +4,13 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
-test('Android adaptive launcher references the approved premium icon with mask-safe inset',()=>{
+test('Android adaptive launcher references the owner-approved icon with 13 percent mask-safe inset',()=>{
  const adaptive=read('android-studio/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml');
  const fg=read('android-studio/app/src/main/res/drawable/matchapp_launcher_safe.xml');
  assert.match(adaptive,/matchapp_launcher_safe/);
- assert.match(fg,/matchapp_launcher_premium/);
+ assert.match(fg,/@drawable\/matchapp_approved_launcher/);
  assert.match(fg,/android:inset="13%"/);
- assert.ok(fs.statSync(path.join(root,'android-studio/app/src/main/res/drawable/matchapp_launcher_premium.webp')).size>10000);
+ assert.ok(fs.statSync(path.join(root,'android-studio/app/src/main/res/drawable-nodpi/matchapp_approved_launcher.png')).size>10000);
 });
 test('One live Android Jonas assistant greets directly and drags with GPU transforms',()=>{
  const js=read('jonas/android-ambient-assistant-20261011.js');

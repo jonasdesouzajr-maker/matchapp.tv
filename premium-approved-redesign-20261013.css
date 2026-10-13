@@ -1,0 +1,198 @@
+/* MatchApp Ai — Approved Premium Redesign 2026-10-13
+ * Visual refinements to match owner-approved reference screenshots.
+ * Presentation only. No changes to handlers, data, billing, or protected systems.
+ */
+
+:root {
+  --approved-bg: #0d0714;
+  --approved-glass: rgba(28, 16, 48, 0.85);
+  --approved-gold: #f6d38f;
+  --approved-gold-line: rgba(246, 211, 143, 0.4);
+  --approved-purple: #6b46c1;
+  --approved-text: #f8f4ff;
+  --approved-muted: #c4b5fd;
+}
+
+html body:not(.page-kids):not(.kids-body) {
+  background-color: var(--approved-bg) !important;
+  color: var(--approved-text);
+}
+
+/* Header refinement */
+html body.page-home .app-header,
+html body.page-shell .app-header {
+  background: linear-gradient(135deg, rgba(28,16,48,0.95), rgba(18,10,32,0.98)) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(20px) !important;
+}
+html body.page-shell .app-header {
+  border: 1px solid var(--approved-gold-line) !important;
+  border-radius: 24px !important;
+}
+
+/* Brand lockup */
+.matchapp-wordmark,
+.home-brand-home {
+  filter: drop-shadow(0 4px 12px rgba(246, 211, 143, 0.3));
+}
+
+/* Buttons and pills */
+.gold-btn, .premium-btn, .primary-action {
+  background: linear-gradient(135deg, #f6d38f, #d4a84b) !important;
+  color: #1a0f2e !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(246, 211, 143, 0.3) !important;
+}
+
+/* Cards */
+.premium-card, .match-result-card, .page-panel, .concierge-card {
+  background: var(--approved-glass) !important;
+  border: 1px solid var(--approved-gold-line) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3) !important;
+}
+
+/* Poster rails */
+.poster-rail img, .title-poster {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
+  object-fit: contain !important;
+}
+
+/* Jonas avatar refinement */
+.jonas-avatar, .floating-avatar {
+  border: 2px solid var(--approved-gold) !important;
+  box-shadow: 0 0 20px rgba(246, 211, 143, 0.5) !important;
+}
+
+/* Inputs */
+.premium-card :is(input, select, textarea),
+.page-panel :is(input, select, textarea),
+.concierge-card :is(input, select, textarea) {
+  background: rgba(20, 12, 36, 0.7) !important;
+  border: 1px solid var(--approved-gold-line) !important;
+  border-radius: 16px !important;
+  color: var(--approved-text) !important;
+}
+
+/* Responsive refinements */
+@media (max-width: 768px) {
+  html body.page-shell .app-header {
+    padding: 12px !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Further refinements for cinematic posters and hierarchy */
+/* Existing rail scripts own flex/scroll behavior; do not override them. */
+.top-titles-rail, .poster-carousel {
+  gap: 12px;
+}
+
+.top-titles-rail img {
+  height: 180px;
+  width: auto;
+  border-radius: 14px;
+  transition: transform 0.2s ease;
+}
+
+.top-titles-rail img:hover {
+  transform: scale(1.05);
+}
+
+/* Jonas companion card */
+.jonas-companion, .floating-home-card {
+  background: linear-gradient(145deg, rgba(40,20,70,0.9), rgba(20,10,40,0.95)) !important;
+  border: 1px solid var(--approved-gold-line) !important;
+  border-radius: 24px !important;
+}
+
+/* Filter section */
+.filters-section, .how-tonight {
+  background: var(--approved-glass);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+/* Jonas specific refinements */
+#ma-jonas-home .jh-bubble {
+  filter: drop-shadow(0 4px 12px rgba(246, 211, 143, 0.4));
+}
+
+#ma-jonas-home .jh-portrait {
+  border-color: var(--approved-gold) !important;
+  box-shadow: 0 0 0 4px rgba(246, 211, 143, 0.2), 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+#ma-jonas-home .jh-popover {
+  border-color: var(--approved-gold-line) !important;
+  background: linear-gradient(145deg, rgba(45,25,75,0.95), rgba(20,12,40,0.98)) !important;
+}
+
+/* Global consistency for all adult pages */
+html body:not(.page-kids):not(.kids-body) {
+  font-family: Outfit, Inter, system-ui, sans-serif;
+}
+
+/* Consistent page wrappers */
+/* Page shells already define their own widths, advertising rails and gutters.
+   A universal main/.container constraint clips full-bleed layouts. */
+
+/* Unified headers across pages */
+.app-header, .page-header {
+  background: linear-gradient(135deg, rgba(28,16,48,0.95), rgba(18,10,32,0.98)) !important;
+  border-bottom: 1px solid var(--approved-gold-line) !important;
+  color: var(--approved-text);
+}
+
+/* Consistent buttons everywhere */
+.btn, a.btn, .action-btn {
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Cards and panels on secondary pages */
+.result-card, .title-card {
+  background: var(--approved-glass) !important;
+  border: 1px solid var(--approved-gold-line) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
+  /* Preserve poster overlays and expanded content. */
+}
+
+/* Links */
+.adult-page-nav a, .page-panel a, .concierge-card a {
+  color: var(--approved-gold);
+  text-decoration: none;
+}
+.adult-page-nav a:hover, .page-panel a:hover, .concierge-card a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Footer consistency */
+footer {
+  background: rgba(13,7,20,0.9) !important;
+  border-top: 1px solid var(--approved-gold-line) !important;
+  color: var(--approved-muted);
+  padding: 24px 16px;
+}
+
+/* Mobile refinements for all pages */
+@media (max-width: 640px) {
+  .page-header {
+    padding: 12px !important;
+  }
+}

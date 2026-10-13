@@ -71,40 +71,23 @@ async function guarded(browser,label,fn){
   const sha=await fetchDeploymentMarker(BASE);
   record('production SHA available',/^[0-9a-f]{40}\s*$/i.test(sha),sha.trim().slice(0,12));
   browser=await chromium.launch({headless:true,args:['--no-sandbox']});
-  await guarded(browser,'Adult Spotify playlist match',async page=>{
-   await open(page,'/');await consent(page);
-   await page.waitForFunction(()=>typeof setMatchCriteria==='function',{timeout:12000});
-   const chosen=await page.evaluate(()=>{
-     setMatchCriteria({cat:['Spotify playlist'],plat:['Spotify'],mood:['cozy comfort watch']});
-     return getMatchCriteria();
-   });
-   assert(chosen.cat.includes('Spotify playlist')&&chosen.plat.includes('Spotify')&&chosen.mood.includes('cozy comfort watch'),'music form did not preserve choices');
-   await page.locator('.lazy-head[data-fold-key="concierge"]').click();
-   await page.locator('button[onclick="triggerMatch(false)"]').click();
-   await page.waitForFunction(()=>{
-    const box=document.querySelector('#result-box'),title=document.querySelector('#res-title')?.textContent?.trim();
-    // The title paints before metadata and the destination finish resolving.
-    return box&&getComputedStyle(box).display!=='none'&&title&&title!=='Title'&&
-     window.globalMatchTitle&&window.globalPlatform&&document.querySelector('#res-direct-link')?.getAttribute('href');
-   },null,{timeout:110000});
-   const match=await page.evaluate(()=>({title:document.querySelector('#res-title')?.textContent?.trim(),platform:String(globalPlatform||'').trim(),
-    cover:document.querySelector('#res-poster-img')?.currentSrc||document.querySelector('#res-poster-img')?.src,
-    href:document.querySelector('#res-direct-link')?.href||''}));
-   const official={
-    'Deep Focus':'https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ',
-    'Peaceful Meditation':'https://open.spotify.com/playlist/37i9dQZF1DWZqd5JICZI0u'
-   };
-   record('LIVE music respects Spotify and exact verified playlist deep link',
-    match.platform==='Spotify'&&!!official[match.title]&&match.href===official[match.title],
-    'title='+match.title+' platform='+match.platform+' direct='+match.href);
-   await page.waitForFunction(()=>document.querySelector('#res-poster-img')?.currentSrc?.startsWith('https://i.scdn.co/image/'),null,{timeout:15000}).catch(()=>{});
-   const hasArtwork=await page.locator('#res-poster-img').evaluate(img=>img.complete&&img.naturalWidth>0&&getComputedStyle(img).objectFit!=='fill'&&/^https:\/\/i\.scdn\.co\/image\//.test(img.currentSrc||img.src)).catch(()=>false);
-   record('LIVE music shows verified original undistorted Spotify artwork',hasArtwork,'source='+String(await page.locator('#res-poster-img').getAttribute('src')).slice(0,150));
+  // Spotify playlists are now reached through Explore, not the hidden Home concierge.
+  // Audit the actual user-visible route without equating a link check with stream verification.
+  await guarded(browser,'Adult Spotify Explore destination',async page=>{
+   await open(page,'/explore.html');await consent(page);
+   const target=page.locator('a.ex-card[href^="https://open.spotify.com/playlist/"]').first();
+   await target.waitFor({state:'visible',timeout:12000});
+   const href=await target.getAttribute('href');
+   const label=(await target.textContent()||'').trim();
+   const expected='https://open.spotify.com/playlist/37i9dQZF1DXe7fP0uj1s1D';
+   record('LIVE Explore exposes the intended Spotify music destination',
+     href===expected,'label='+label+' href='+href);
    await page.screenshot({path:path.join(out,'adult-spotify.png')}).catch(()=>{});
   });
   await guarded(browser,'Adult verified audiobook match',async page=>{
    await page.addInitScript(()=>localStorage.setItem('match_user_country','US'));
-   await open(page,'/');await consent(page);
+   // The reading matcher is a deliberate deep link; it is hidden on ordinary Home.
+   await open(page,'/?reading=ebook#ebook-matcher-root');await consent(page);
    // 1180px is the narrowest locked desktop breakpoint: audit *usable* ad
    // width before exercising the same audiobook path that exposed 116px.
    const rail=await page.evaluate(()=>({viewport:innerWidth,adsEmpty:document.documentElement.classList.contains('ads-empty'),

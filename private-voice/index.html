@@ -22,6 +22,7 @@ body{min-height:100svh;display:grid;place-items:center;padding:max(14px,env(safe
 @media(max-height:720px){.portrait{width:190px;margin:12px auto 8px}.status p{min-height:30px}.footer{margin-top:9px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
+<link rel="stylesheet" href="/premium-approved-redesign-20261013.css?v=20261013-2">
 </head>
 <body data-state="checking">
 <main class="panel" aria-live="polite">
@@ -58,5 +59,6 @@ const offer=await pc.createOffer();await pc.setLocalDescription(offer);await wai
 async function checkAccess(){const {data:{session}}=await sb.auth.getSession();if(!session){setView("signin","Private sign-in required","Sign in to your MatchApp account to continue.","Sign in securely","signin");return}const {data:{user},error}=await sb.auth.getUser();if(error||!user){setView("signin","Session needs refreshing","Sign in again to refresh private access.","Sign in securely","signin");return}if(isAndroid&&likelyEmbedded&&!location.search.includes("external=1")){setView("blocked","Use Chrome for voice","This in-app browser does not provide reliable microphone access.","Open in Chrome","chrome",{secondaryLabel:"Try here anyway",secondaryNext:"start",tip:"Chrome keeps the microphone permission under your control and is the reliable path for this private call."});return}try{const permission=await navigator.permissions?.query({name:"microphone"});if(permission?.state==="denied"){showMicBlocked();return}}catch{}setView("ready","Ready when you are","Cedar · private Realtime voice","Start private voice","start")}
 el.primary.addEventListener("click",()=>{if(action==="start")startVoice();else if(action==="stop"){cleanup();setView("ready","Private voice ended","Ready whenever you want another call.","Start private voice","start")}else if(action==="chrome")openChrome();else if(action==="signin")signIn();else if(action==="home")location.href="/"});el.secondary.addEventListener("click",()=>{if(secondaryAction==="start")startVoice()});window.addEventListener("pagehide",cleanup);document.addEventListener("visibilitychange",()=>{if(document.hidden&&pc?.connectionState!=="connected"&&document.body.dataset.state==="connecting")cleanup()});checkAccess();
 </script>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>
