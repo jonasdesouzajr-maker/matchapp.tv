@@ -33,7 +33,7 @@
   if(!voice||!window.SpeechSynthesisUtterance||token!==epoch)return Promise.resolve(false);
   return new Promise(function(resolve){
    var done=false,started=false,startGuard=0;
-   var finish=function(ok){if(done)return;done=true;clearTimeout(startGuard);if(token===epoch){if(ok)options.onProgress?.(1);if(ok||!preferringLocal)options.onEnd?.(ok)}resolve(ok)};
+   var finish=function(ok){if(done)return;done=true;clearTimeout(startGuard);if(token===epoch){if(ok)options.onProgress?.(1);if(ok)options.onEnd?.(true)}resolve(ok)};
    try{
     var utter=new SpeechSynthesisUtterance(text);
     utter.voice=voice;utter.lang=voice.lang;utter.pitch=1;utter.rate=1;
