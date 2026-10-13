@@ -25,13 +25,32 @@
  border-radius:50%!important;
  pointer-events:none!important;
 }
-#ma-jonas-home .jh-mouth-layer,
-#ma-jonas-home .jh-viseme-a,
-#ma-jonas-home .jh-viseme-b{
- clip-path:inset(54% 6% 8% 6%)!important;
- transition:opacity .055s ease!important;
- will-change:opacity;
+/* Home split: streaming only. Everything else moves to /explore.html */
+html body.page-home #ebook-matcher-root,
+html body.page-home #cooking-home,
+html body.page-home #premiere-disclosure,
+html body.page-home #spotify-videos,
+html body.page-home #swifties-spotify,
+html body.page-home #global-events,
+html body.page-home #billboard,
+html body.page-home #how-it-works,
+html body.page-home .ma-news,
+html body.page-home #latest-news,
+html body.page-home .ma-jonas-web-entry{
+ display:none!important;
 }
+html body.page-home .mh-explore-more{
+ display:inline-flex;align-items:center;gap:6px;
+ margin:8px 0 2px;padding:8px 14px;border-radius:999px;
+ background:linear-gradient(135deg,#E6C36A,#b88e29);color:#160e03;
+ font-weight:800;font-size:13px;text-decoration:none;
+ border:1px solid #f1d878;
+}
+/* Most Awaited and Week Top stay poster-only if they ever render */
+html body.page-home .spotlight-body,
+html body.page-home .spotlight-glow,
+html body.page-home .spotlight-ribbon{display:none!important;}
+html body.page-home .spotlight-poster{width:120px!important;height:180px!important;}
 #ma-jonas-home .jh-micro-smile{
  clip-path:inset(50% 8% 12% 8%)!important;
  transition:opacity .16s ease!important;

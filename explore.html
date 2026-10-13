@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Explore more | MatchApp.tv</title>
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://matchapp.tv/explore.html">
+<link rel="stylesheet" href="/style.css?v=187">
+<link rel="stylesheet" href="/themes.css?v=187">
+<link rel="stylesheet" href="/brand.css?v=192">
+<link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css">
+<link rel="stylesheet" href="/jonas/ui-response-polish-20261013.css">
+<style>
+body{margin:0;background:#14081C;color:#fff;min-height:100vh}
+.ex-wrap{max-width:860px;margin:0 auto;padding:22px 16px 80px}
+.ex-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.ex-top a.back{color:#E6C36A;text-decoration:none;font-weight:800}
+h1{margin:0 0 6px;font-size:28px;color:#E6C36A}
+.ex-lead{margin:0 0 18px;color:#d9c9a0}
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.ex-card{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(230,195,106,.25);text-decoration:none;color:#fff}
+.ex-card strong{color:#E6C36A;font-size:16px}
+.ex-card span{color:#cbbfa4;font-size:13px}
+.ex-posters{display:flex;gap:12px;margin:18px 0}
+.ex-posters a{display:block;width:120px}
+.ex-posters img{width:120px;height:180px;object-fit:cover;border-radius:12px;border:2px solid #E6C36A}
+.ex-posters small{display:block;margin-top:6px;color:#E6C36A;font-weight:800;font-size:12px}
+</style>
+</head>
+<body>
+<div class="ex-wrap">
+  <div class="ex-top"><a class="back" href="/">← Home</a><span>MatchApp.tv</span></div>
+  <h1>Explore more</h1>
+  <p class="ex-lead">Books, recipes, news, events, and more. Home stays focused on what to watch.</p>
+  <div class="ex-posters">
+    <a href="/#premiere-disclosure"><img src="/og-image.jpg?v=2" alt="Most Awaited"><small>Most Awaited</small></a>
+    <a href="/#trending-rail"><img src="/og-image.jpg?v=2" alt="Week Top Choice"><small>Week Top Choice</small></a>
+  </div>
+  <div class="ex-grid">
+    <a class="ex-card" href="/ebooks/"><strong>Books</strong><span>E-books, audiobooks and magazines</span></a>
+    <a class="ex-card" href="/cooking/"><strong>Recipes</strong><span>Cooking channels and dishes</span></a>
+    <a class="ex-card" href="/news/"><strong>News</strong><span>Entertainment headlines</span></a>
+    <a class="ex-card" href="/events/"><strong>Events</strong><span>Festivals, games and live dates</span></a>
+    <a class="ex-card" href="/#swifties-spotify"><strong>Taylor</strong><span>Spotify releases and videos</span></a>
+    <a class="ex-card" href="/discover.html"><strong>Ask AI</strong><span>Discover with Jonas</span></a>
+  </div>
+</div>
+<aside id="ma-jonas-home" aria-label="Jonas floating companion">
+  <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
+    <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
+    <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
+    <form class="jh-form">
+      <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas">
+      <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input">🎤</button>
+    </form>
+  </section>
+  <button id="ma-jonas-home-bubble" class="jh-bubble" type="button" aria-label="Chat with Jonas" aria-controls="ma-jonas-home-panel" aria-expanded="false">
+    <img class="jh-medallion" src="/jonas/faces/jonas/rest.jpg" alt="Jonas" width="64" height="64">
+  </button>
+</aside>
+<script defer src="/jonas/floating-home-20261010-v3.js?v=20261013-drag"></script>
+<script defer src="/jonas/floating-voice-20261010-v5.js?v=20261013-viseme"></script>
+</body>
+</html>
