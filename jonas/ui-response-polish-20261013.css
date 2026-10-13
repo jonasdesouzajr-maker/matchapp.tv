@@ -51,6 +51,11 @@ html body.page-home #latest-news,
 html body.page-home .ma-jonas-web-entry{
  display:none!important;
 }
+/* A Bookworms link from Explore or Ask Jonas may target the existing
+   matcher directly. Only restore it for that intentional deep link. */
+html body.page-home #ebook-matcher-root:target{
+ display:block!important;
+}
 html body.page-home .mh-explore-more{
  display:inline-flex;align-items:center;gap:6px;
  margin:8px 0 2px;padding:8px 14px;border-radius:999px;
