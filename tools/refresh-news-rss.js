@@ -468,6 +468,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </article>
 </main>
 <script src="/build-meta.js?v=203"></script>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>`;
 }
@@ -564,6 +565,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>`;
 }
