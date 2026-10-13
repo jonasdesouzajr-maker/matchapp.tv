@@ -5134,11 +5134,11 @@ async function hydrateTitleFacts(selected, hints) {
     if (!selected || !selected.title) return;
 
     hints = hints || {};
-    // Desktop results receive exact movie/TV identity and facts from the
+    // Screen results receive exact movie/TV identity and facts from the
     // catalogue media layer. TVMaze can describe a same-named show (or an
     // older work) and overwrite the verified film year, cast or synopsis.
     // Keep the selected title's immediate hints, then let verified media
-    // replace them. Phone, tablet and Android result hydration is unchanged.
+    // replace them on desktop, phone, tablet and Android alike.
     const desktopVerifiedFacts = window.matchMedia?.('(min-width: 1180px) and (hover: hover) and (pointer: fine)')?.matches
         && !document.documentElement.classList.contains('matchapp-android');
 
@@ -5163,10 +5163,12 @@ async function hydrateTitleFacts(selected, hints) {
         castEl.style.display = 'block';
     }
 
-    if (desktopVerifiedFacts) return;
+    const screenKind = hints.kind || window.tmdbKindForCats?.(hints.cats || selected.cats || []);
+    if (desktopVerifiedFacts || ['movie', 'tv'].includes(screenKind)) return;
 
     let meta = null;
     try { meta = await fetchTitleMeta(selected.title, hints); } catch (e) {}
+    if (window.globalMatchTitle !== selected.title) return;
     if (!meta) return;
 
     const merged = [];

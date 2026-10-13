@@ -132,7 +132,7 @@
     if(!meta||!Number.isSafeInteger(Number(meta.tmdb_id))||!['movie','tv'].includes(meta.media_kind)||typeof window.tmdbDetails!=='function')return meta;
     try{
       const d=await window.tmdbDetails(Number(meta.tmdb_id),meta.media_kind);
-      if(!d)return meta;
+      if(!d||d.adult===true||Number(d.tmdbId)!==Number(meta.tmdb_id)||d.kind!==meta.media_kind)return meta;
       return {
         ...meta,
         title:String(d.title||meta.title||''),
@@ -835,7 +835,7 @@
       if(!existing)badge.insertAdjacentElement('afterend',el);
     }else existing?.remove();
 
-    if(desktopResultInfo()){
+    if(['movie','tv'].includes(meta.media_kind)){
       const bar=document.getElementById('res-factbar');
       if(bar){
         // The exact TMDB identity wins over the matcher's interim hints.
@@ -852,6 +852,8 @@
         bar.style.display=facts.length?'flex':'none';
       }
     }
+    const legacyCast=document.getElementById('res-cast');
+    if(legacyCast){legacyCast.textContent='';legacyCast.style.display='none';}
     renderTitleFacts(meta);
   }
 

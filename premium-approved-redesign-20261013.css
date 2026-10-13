@@ -196,3 +196,33 @@ footer {
     padding: 12px !important;
   }
 }
+
+/* Narrow-phone QA finish: explicit adult surfaces only. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header {
+ background: radial-gradient(ellipse at 12% 0%,rgba(107,70,193,.20),transparent 60%),linear-gradient(135deg,#21132f,#120a20) !important;
+}
+html body.page-explore { padding-top:0 !important; }
+html body.page-explore > .matchapp-brand-bar {
+ margin:16px auto 0 !important;padding:12px 18px !important;
+ width:min(980px,calc(100% - 32px));box-sizing:border-box;
+ border:1px solid var(--approved-gold-line);border-radius:20px;
+ background:linear-gradient(135deg,#21132f,#120a20);
+}
+html body.page-explore > .matchapp-brand-bar .matchapp-wordmark {
+ display:block;width:min(100%,260px);height:auto;
+}
+html body.ai-chat-page .wrap .premium-card.discover-head:has(#chat-log:empty) {
+ height:clamp(350px,54dvh,480px) !important;
+}
+@media(max-width:420px) {
+ html body.page-home #ma-concierge.ma-watch-compact > .ma-watch-preview {
+  grid-template-columns:minmax(0,1fr) !important;
+ }
+ html body.page-home #ma-concierge .ma-watch-preview :is(#ma-compact-cat,#ma-compact-mood) {
+  width:100% !important;min-width:0 !important;font-size:14px !important;
+  padding-inline:12px !important;
+ }
+}
+
+/* Retain the header glimmer without washing out the midnight fill. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header::before { opacity:.18 !important; }

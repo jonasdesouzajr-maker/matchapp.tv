@@ -1090,6 +1090,8 @@ class MainActivity : AppCompatActivity() {
               window.MATCHAPP_ANDROID_KIDS_BLOCKED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
+              // Ready-document callbacks reapply the shell after early navigation.
+              if (!root) return;
               root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
 
               if (!document.getElementById('matchapp-android-shell')) {
