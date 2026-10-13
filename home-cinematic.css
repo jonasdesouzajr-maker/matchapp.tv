@@ -1,0 +1,88 @@
+/* MatchApp Ai - Home Page Cinematic Redesign
+   Scoped to body.page-home to avoid affecting other pages.
+   Design language: deep midnight purple, gold accents, premium cards, cinematic imagery, elegant typography.
+*/
+
+body.page-home {
+  background: #0a0614;
+  color: #f5f0e6;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body.page-home .home-hero {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(230, 195, 106, 0.4);
+  background: linear-gradient(180deg, rgba(20, 8, 28, 0.3), rgba(20, 8, 28, 0.85)), url('/assets/design/approved-twilight-atlas.png') center/cover no-repeat;
+  min-height: 280px;
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  margin: 16px auto;
+  max-width: 1200px;
+}
+
+body.page-home .home-hero h1,
+body.page-home .home-hero .hero-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #E6C36A;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+body.page-home .premium-card {
+  background: linear-gradient(160deg, rgba(20, 8, 28, 0.95), rgba(10, 6, 20, 0.98));
+  border: 1px solid rgba(230, 195, 106, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.page-home .premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(230, 195, 106, 0.15);
+  border-color: #E6C36A;
+}
+
+body.page-home .section-title {
+  font-family: "Playfair Display", Georgia, serif;
+  color: #E6C36A;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* Pill controls */
+body.page-home .pill-control,
+body.page-home button,
+body.page-home .btn {
+  border-radius: 999px;
+  border: 1px solid rgba(230, 195, 106, 0.5);
+  background: rgba(20, 8, 28, 0.6);
+  color: #E6C36A;
+  transition: all 0.25s ease;
+}
+
+body.page-home button:hover,
+body.page-home .btn:hover {
+  background: rgba(230, 195, 106, 0.15);
+  box-shadow: 0 0 20px rgba(230, 195, 106, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body.page-home .home-hero {
+    min-height: 200px;
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-home * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
