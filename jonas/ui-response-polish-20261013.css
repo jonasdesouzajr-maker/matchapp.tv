@@ -56,6 +56,10 @@ html body.page-home .ma-jonas-web-entry{
 html body.page-home #ebook-matcher-root:target{
  display:block!important;
 }
+/* Publisher/news deep links also target the original, verified News panel. */
+html body.page-home #latest-news:target{
+ display:block!important;
+}
 html body.page-home .mh-explore-more{
  display:inline-flex;align-items:center;gap:6px;
  margin:8px 0 2px;padding:8px 14px;border-radius:999px;
