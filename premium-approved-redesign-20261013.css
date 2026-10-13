@@ -56,7 +56,7 @@ html body.page-shell .app-header {
 .poster-rail img, .title-poster {
   border-radius: 12px !important;
   box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
 }
 
 /* Jonas avatar refinement */
