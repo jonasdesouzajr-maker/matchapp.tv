@@ -87,6 +87,9 @@ test('phone and Android keep their existing result host order', async () => {
     assert.equal(availability.parentElement.id, 'res-info-col');
     assert.equal(availability.previousElementSibling.id, 'res-media-meta');
     assert.equal(availability.previousElementSibling.previousElementSibling.id, 'res-platform-badge');
+    assert.match(d.getElementById('res-factbar').textContent, /2021.*Family.*Comedy/);
+    assert.doesNotMatch(d.getElementById('result-box').textContent, /2011|Drama|Wrong actor|Wrong work/);
+    assert.match(d.getElementById('res-title-facts').textContent, /Jennifer Garner/);
     dom.window.close();
   }
 });

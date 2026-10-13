@@ -27,6 +27,45 @@
     if(/\b(?:british)\b/i.test(q))return 'GB';
     return '';
   }
+  const fold=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  function viewingRegion(question,lang) {
+    // Viewing location is independent of production origin and provider order.
+    const names=new Map(Object.entries(COUNTRY));
+    try {
+      for(const locale of new Set(['en','pt','es',String(lang||'en').split('-')[0]])){
+        const display=new Intl.DisplayNames([locale],{type:'region'});
+        for(let a=65;a<=90;a++)for(let b=65;b<=90;b++){
+          const code=String.fromCharCode(a,b),name=display.of(code);
+          if(name&&name!==code)names.set(fold(name).replace(/[^\p{L}\p{N}]/gu,''),code==='UK'?'GB':code);
+        }
+      }
+    }catch(_){}
+    const places=String(question||'').matchAll(/(?=\b(?:in|no|na|em|en|au|aux|im)\s+(?:the\s+)?([^,;.?!]+))/gi);
+    for(const place of places){
+      const words=place[1].trim().split(/\s+/);
+      for(let n=Math.min(5,words.length);n>0;n--){
+        const value=words.slice(0,n).join(' '),key=fold(value).replace(/[^\p{L}\p{N}]/gu,'');
+        if(names.has(key))return names.get(key);
+        if(n===1&&/^[A-Z]{2}$/.test(value))return value==='UK'?'GB':value;
+      }
+    }
+    return '';
+  }
+  function providerKey(value) {
+    const name=fold(value).replace(/[^a-z0-9]+/g,' ').trim();
+    if(/\b(?:channel|bundle|add on)\b/.test(name))return 'channel:'+name;
+    if(/^(?:netflix|netflix standard with ads|netflix basic with ads)$/.test(name))return 'netflix';
+    if(/^(?:amazon prime video|prime video|amazon video)$/.test(name))return 'primevideo';
+    if(/^(?:max|hbo max)$/.test(name))return 'max';
+    if(/^(?:disney|disney plus)$/.test(name))return 'disney';
+    if(/^(?:apple tv|apple tv plus)$/.test(name))return 'appletv';
+    if(/^(?:paramount|paramount plus)$/.test(name))return 'paramount';
+    return name.replace(/ /g,'');
+  }
+  function requestedProvider(question) {
+    return String(question||'').match(/\b(?:netflix|(?:amazon\s+)?prime\s+video|hbo\s+max|disney\s*(?:\+|plus)|apple\s+tv\s*(?:\+|plus)?|paramount\s*(?:\+|plus)|hulu|globoplay|mubi|crunchyroll)(?=$|[\s.,!?])/i)?.[0]
+      || String(question||'').match(/\b(?:on|na|no|pela|pelo)\s+(max)\b/i)?.[1] || '';
+  }
   function localeText(lang,key,count,location) {
     const l=String(lang||'en').toLowerCase(), where=location==='BR'?'Brazil':location;
     if(key==='empty')return l.startsWith('pt')?'Não consegui confirmar séries documentais reais e disponíveis para assistir na região solicitada. Não vou substituir por filmes, ficção ou links não verificados. Tente novamente em instantes.':
@@ -39,16 +78,17 @@
   async function resolve(question,{lang='en',country=''}={}) {
     if(!matches(question))return null;
     const sb=window.supabaseClient,lookup=window.MatchAppCatalogMedia?.lookupLive;
-    const q=String(question||''),origin=originFilter(q);
-    const explicitStream=String(q).match(/\b(?:streaming|available|watch|assistir|dispon[ií]vel|ver)\s+(?:in|no|na|em|en)\s+([a-záéíóúç\s]{2,35})/i)?.[1]||'';
-    const storedRegion=window.localStorage?.getItem?.('match_user_region') || '';
+    const q=String(question||''),origin=originFilter(q),provider=requestedProvider(q);
+    let storedRegion='';
+    try{storedRegion=window.localStorage?.getItem?.('match_user_region')||'';}catch(_){}
     const languageRegion=String(window.MATCH_LANG||lang||'').match(/^[a-z]{2,3}[-_]([a-z]{2})$/i)?.[1]||'';
     // Origin is not viewing country: Brazilian productions may be watched in the US.
-    const requestedRegion=region(explicitStream) || region(storedRegion) || region(country) || region(languageRegion) || 'US';
+    const requestedRegion=viewingRegion(q,lang) || region(storedRegion) || region(country) || region(languageRegion) || 'US';
     const empty={answer:localeText(lang,'empty',0,requestedRegion),results:[],_live:false,_docVerified:true};
     if(!sb?.functions?.invoke || typeof lookup!=='function')return empty;
     try {
       const discover={kind:'tv',genre_ids:[99],pages:2};
+      if(provider){discover.provider=provider;discover.region=requestedRegion;}
       if(origin==='BR')discover.original_language='pt';
       const {data,error}=await sb.functions.invoke('tmdb-proxy',{body:{discover,lang}});
       if(error||!Array.isArray(data?.results))return empty;
@@ -64,16 +104,20 @@
           const streams=meta.availability?.[requestedRegion]?.stream;
           const direct=meta.availability?.[requestedRegion]?.link;
           if(!Array.isArray(streams)||!streams.length||!/^https:\/\//i.test(String(direct||'')))return null;
+          const eligible=provider?streams.filter(name=>providerKey(name)===providerKey(provider)):streams;
+          if(!eligible.length)return null;
           if(!/^https:\/\/image\.tmdb\.org\//i.test(String(meta.poster_url||'')))return null;
           return {title:meta.title,year:String(meta.year||''),type:'series',cats:['Documentary','series'],
             synopsis:String(meta.overview||'').trim(),posterUrl:meta.poster_large_url||meta.poster_url,
-            platform:streams[0],watchUrl:direct,_catalogMedia:{...meta,_verified_doc_region:requestedRegion},_verifiedDocRegion:requestedRegion};
+            platform:eligible[0],watchUrl:direct,_catalogMedia:{...meta,_verified_doc_region:requestedRegion,
+              availability:{...meta.availability,[requestedRegion]:{...meta.availability[requestedRegion],stream:eligible,
+                ...(provider?{rent:[],buy:[]}: {})}}},_verifiedDocRegion:requestedRegion};
         } catch (_) {return null;}
       }));
       const unique=new Set(),results=verified.filter(r=>{
         if(!r||unique.has(r.title.toLowerCase()))return false;
         unique.add(r.title.toLowerCase());return true;
-      }).slice(0,4);
+      }).slice(0,/\b(?:one|1|uma|una)\s+(?:documentary\s+)?s[eé]ri(?:e|es)\b/i.test(q)?1:4);
       return {answer:results.length?localeText(lang,'verified',results.length,requestedRegion):empty.answer,
         results,_live:false,_docVerified:true};
     }catch(_){return empty;}
