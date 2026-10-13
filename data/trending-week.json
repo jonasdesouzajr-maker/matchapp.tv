@@ -1,256 +1,323 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-12",
-  "updated": "2026-10-12T11:32:00.110Z",
+  "updated": "2026-10-13T10:33:30.893Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
     {
-      "title": "LINK CLICK",
-      "kind": "tv",
-      "year": 2021,
-      "origin": "CN",
-      "originName": "China",
-      "platform": "Crunchyroll",
-      "platforms": [
-        "Crunchyroll",
-        "Crunchyroll Amazon Channel"
-      ],
-      "tmdbId": "123542",
-      "poster": "https://image.tmdb.org/t/p/w780/wo9jwu5qMvXzhW2cyy5E6hOVs92.jpg",
-      "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photography shop set in the backdrop of a modern metropolis. Each job can be full of danger, but nothing is more important than fulfilling every order, no matter the scale…or peril involved!",
+      "title": "Practical Magic 2",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1302904",
+      "poster": "https://image.tmdb.org/t/p/w780/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
+      "description": "The Owens sisters must confront the dark curse that threatens to unravel their family once and for all.",
       "genre": [
-        "Animation",
-        "Sci-Fi & Fantasy",
-        "Mystery",
-        "Drama"
+        "Romance",
+        "Fantasy",
+        "Comedy"
       ],
-      "inLanguage": "zh",
+      "inLanguage": "en",
       "cast": [
-        "Su Shangqing",
-        "Yang Tianxiang",
-        "Li Shimeng"
+        "Sandra Bullock",
+        "Nicole Kidman",
+        "Joey King",
+        "Maisie Williams"
       ],
-      "runtimeMinutes": 23,
-      "contentRating": "14",
-      "voteAverage": 8.2,
-      "previewUrl": "https://www.youtube.com/watch?v=HxoR_7jVBCM",
+      "runtimeMinutes": 130,
+      "contentRating": "PG-13",
+      "voteAverage": 6.3,
+      "previewUrl": "https://www.youtube.com/watch?v=Ho10_4IX1jE",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=BR",
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1302904-practical-magic-2/watch?locale=GB",
+          "rent": [
+            "Amazon Video"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-09-11"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-11"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1302904"
+      },
+      "sourceRank": 1,
+      "keywords": [
+        "Practical Magic 2",
+        "Practical Magic 2 2026",
+        "where to watch Practical Magic 2",
+        "Romance movie",
+        "Fantasy movie",
+        "Comedy movie",
+        "Sandra Bullock",
+        "Nicole Kidman"
+      ],
+      "longTailKeywords": [
+        "where to watch Practical Magic 2 2026",
+        "Practical Magic 2 streaming in Brazil and United States",
+        "Practical Magic 2 cast synopsis trailer and where to watch",
+        "what Romance to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Practical Magic 2 (2026) | MatchApp Ai",
+        "description": "The Owens sisters must confront the dark curse that threatens to unravel their family once and for all.",
+        "keywords": [
+          "Practical Magic 2",
+          "Practical Magic 2 2026",
+          "where to watch Practical Magic 2",
+          "Romance movie",
+          "Fantasy movie",
+          "Comedy movie",
+          "Sandra Bullock",
+          "Nicole Kidman",
+          "where to watch Practical Magic 2 2026",
+          "Practical Magic 2 streaming in Brazil and United States",
+          "Practical Magic 2 cast synopsis trailer and where to watch",
+          "what Romance to watch this week"
+        ],
+        "canonicalQuery": "Practical Magic 2"
+      }
+    },
+    {
+      "title": "Hope",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "KR",
+      "originName": "South Korea",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1058424",
+      "poster": "https://image.tmdb.org/t/p/w780/1n37BJchWHLiSYQkuFxe5KjB951.jpg",
+      "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on the community. But all is not as it seems, and perceptions can be misleading. What begins as ignorance plants the seed of disaster, escalating through human conflict into a tragedy of cosmic proportions.",
+      "genre": [
+        "Science Fiction",
+        "Mystery",
+        "Action"
+      ],
+      "inLanguage": "ko",
+      "cast": [
+        "Hwang Jung-min",
+        "Zo In-sung",
+        "Hoyeon",
+        "Alicia Vikander"
+      ],
+      "runtimeMinutes": 157,
+      "contentRating": "R",
+      "voteAverage": 7.2,
+      "previewUrl": "https://www.youtube.com/watch?v=OFaJzL83y0Q",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-25"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1058424"
+      },
+      "sourceRank": 2,
+      "keywords": [
+        "Hope",
+        "Hope 2026",
+        "where to watch Hope",
+        "Science Fiction movie",
+        "Mystery movie",
+        "Action movie",
+        "Hwang Jung-min",
+        "Zo In-sung"
+      ],
+      "longTailKeywords": [
+        "where to watch Hope 2026",
+        "Hope streaming in Brazil and United States",
+        "Hope cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Hope (2026) | MatchApp Ai",
+        "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on",
+        "keywords": [
+          "Hope",
+          "Hope 2026",
+          "where to watch Hope",
+          "Science Fiction movie",
+          "Mystery movie",
+          "Action movie",
+          "Hwang Jung-min",
+          "Zo In-sung",
+          "where to watch Hope 2026",
+          "Hope streaming in Brazil and United States",
+          "Hope cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
+        ],
+        "canonicalQuery": "Hope"
+      }
+    },
+    {
+      "title": "Carrie",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
+      ],
+      "tmdbId": "288673",
+      "poster": "https://image.tmdb.org/t/p/w780/6mUMquPQBFJGqTACS3Azkwwrx8d.jpg",
+      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social‑media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
+      "genre": [
+        "Mystery",
+        "Drama",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Summer H. Howell",
+        "Samantha Sloyan",
+        "Siena Agudong",
+        "Alison Thornton"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.48,
+      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
           ],
           "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=PT",
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=PT",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Amazon Prime Video"
           ],
           "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=US",
           "rent": [],
           "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads",
+            "Amazon Prime Video Free with Ads",
+            "Amazon MX Player"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/123542"
-      },
-      "sourceRank": 1,
-      "keywords": [
-        "LINK CLICK",
-        "LINK CLICK 2021",
-        "where to watch LINK CLICK",
-        "Animation series",
-        "Sci-Fi & Fantasy series",
-        "Mystery series",
-        "Crunchyroll trending series",
-        "Crunchyroll Amazon Channel trending series",
-        "Su Shangqing",
-        "Yang Tianxiang"
-      ],
-      "longTailKeywords": [
-        "where to watch LINK CLICK 2021",
-        "LINK CLICK streaming in Brazil and United States",
-        "LINK CLICK cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch LINK CLICK (2021) | MatchApp Ai",
-        "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photograp",
-        "keywords": [
-          "LINK CLICK",
-          "LINK CLICK 2021",
-          "where to watch LINK CLICK",
-          "Animation series",
-          "Sci-Fi & Fantasy series",
-          "Mystery series",
-          "Crunchyroll trending series",
-          "Crunchyroll Amazon Channel trending series",
-          "Su Shangqing",
-          "Yang Tianxiang",
-          "where to watch LINK CLICK 2021",
-          "LINK CLICK streaming in Brazil and United States",
-          "LINK CLICK cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "LINK CLICK"
-      }
-    },
-    {
-      "title": "Dragon Ball Super: Beerus",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "312359",
-      "poster": "https://image.tmdb.org/t/p/w780/AojgldgsOlzZV8ahyOzaiAjJWvV.jpg",
-      "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemastered and re-edited version of Dragon Ball Super.",
-      "genre": [
-        "Animation",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Masako Nozawa",
-        "Ryo Horikawa",
-        "Naoko Watanabe",
-        "Unsho Ishizuka"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-Y7",
-      "voteAverage": 9.75,
-      "previewUrl": "https://www.youtube.com/watch?v=iCD3Lf7Jf9o",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/312359"
-      },
-      "sourceRank": 2,
-      "keywords": [
-        "Dragon Ball Super: Beerus",
-        "Dragon Ball Super: Beerus 2026",
-        "where to watch Dragon Ball Super: Beerus",
-        "Animation series",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Masako Nozawa",
-        "Ryo Horikawa"
-      ],
-      "longTailKeywords": [
-        "where to watch Dragon Ball Super: Beerus 2026",
-        "Dragon Ball Super: Beerus streaming in Brazil and United States",
-        "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Dragon Ball Super: Beerus (2026) | MatchApp Ai",
-        "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemaste",
-        "keywords": [
-          "Dragon Ball Super: Beerus",
-          "Dragon Ball Super: Beerus 2026",
-          "where to watch Dragon Ball Super: Beerus",
-          "Animation series",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Masako Nozawa",
-          "Ryo Horikawa",
-          "where to watch Dragon Ball Super: Beerus 2026",
-          "Dragon Ball Super: Beerus streaming in Brazil and United States",
-          "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Dragon Ball Super: Beerus"
-      }
-    },
-    {
-      "title": "Treasure Island",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "333101",
-      "poster": "https://image.tmdb.org/t/p/w780/xZQ5ABJF1iLjGq9xR4MthpgQEFF.jpg",
-      "description": "Young Jim Hawkins and his mother Bess come into possession of a legendary pirate’s treasure map and are drawn into a deadly voyage across the Atlantic, where Jim is forced to navigate mutiny, violence and betrayal, leaving him forever changed.",
-      "genre": [
-        "Action & Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "David Oyelowo",
-        "Hayley Atwell",
-        "Jack Huston",
-        "Tomer Capone"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-PG",
-      "voteAverage": 4.73,
-      "previewUrl": "https://www.youtube.com/watch?v=UsFVIvngwRA",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/333101"
+        "source_page_url": "https://www.themoviedb.org/tv/288673"
       },
       "sourceRank": 3,
       "keywords": [
-        "Treasure Island",
-        "Treasure Island 2026",
-        "where to watch Treasure Island",
-        "Action & Adventure series",
-        "David Oyelowo",
-        "Hayley Atwell"
+        "Carrie",
+        "Carrie 2026",
+        "where to watch Carrie",
+        "Mystery series",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
+        "Summer H. Howell",
+        "Samantha Sloyan"
       ],
       "longTailKeywords": [
-        "where to watch Treasure Island 2026",
-        "Treasure Island streaming in Brazil and United States",
-        "Treasure Island cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
+        "where to watch Carrie 2026",
+        "Carrie streaming in Brazil and United States",
+        "Carrie cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Treasure Island (2026) | MatchApp Ai",
-        "description": "Young Jim Hawkins and his mother Bess come into possession of a legendary pirate’s treasure map and are drawn into a deadly voyage across the Atlantic, where ",
+        "title": "Where to watch Carrie (2026) | MatchApp Ai",
+        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
         "keywords": [
-          "Treasure Island",
-          "Treasure Island 2026",
-          "where to watch Treasure Island",
-          "Action & Adventure series",
-          "David Oyelowo",
-          "Hayley Atwell",
-          "where to watch Treasure Island 2026",
-          "Treasure Island streaming in Brazil and United States",
-          "Treasure Island cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
+          "Carrie",
+          "Carrie 2026",
+          "where to watch Carrie",
+          "Mystery series",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
+          "Summer H. Howell",
+          "Samantha Sloyan",
+          "where to watch Carrie 2026",
+          "Carrie streaming in Brazil and United States",
+          "Carrie cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Treasure Island"
+        "canonicalQuery": "Carrie"
       }
     },
     {
@@ -313,103 +380,6 @@
       "sourceRank": 1
     },
     {
-      "title": "Practical Magic 2",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1302904",
-      "poster": "https://image.tmdb.org/t/p/w780/ogwQOLbCfncjvBhFb5l0OmQH8KC.jpg",
-      "description": "The Owens sisters must confront the dark curse that threatens to unravel their family once and for all.",
-      "genre": [
-        "Romance",
-        "Fantasy",
-        "Comedy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Sandra Bullock",
-        "Nicole Kidman",
-        "Joey King",
-        "Maisie Williams"
-      ],
-      "runtimeMinutes": 130,
-      "contentRating": "PG-13",
-      "voteAverage": 6.29,
-      "previewUrl": "https://www.youtube.com/watch?v=Ho10_4IX1jE",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-10"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-11"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-10"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-11"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1302904"
-      },
-      "sourceRank": 4,
-      "keywords": [
-        "Practical Magic 2",
-        "Practical Magic 2 2026",
-        "where to watch Practical Magic 2",
-        "Romance movie",
-        "Fantasy movie",
-        "Comedy movie",
-        "Sandra Bullock",
-        "Nicole Kidman"
-      ],
-      "longTailKeywords": [
-        "where to watch Practical Magic 2 2026",
-        "Practical Magic 2 streaming in Brazil and United States",
-        "Practical Magic 2 cast synopsis trailer and where to watch",
-        "what Romance to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Practical Magic 2 (2026) | MatchApp Ai",
-        "description": "The Owens sisters must confront the dark curse that threatens to unravel their family once and for all.",
-        "keywords": [
-          "Practical Magic 2",
-          "Practical Magic 2 2026",
-          "where to watch Practical Magic 2",
-          "Romance movie",
-          "Fantasy movie",
-          "Comedy movie",
-          "Sandra Bullock",
-          "Nicole Kidman",
-          "where to watch Practical Magic 2 2026",
-          "Practical Magic 2 streaming in Brazil and United States",
-          "Practical Magic 2 cast synopsis trailer and where to watch",
-          "what Romance to watch this week"
-        ],
-        "canonicalQuery": "Practical Magic 2"
-      }
-    },
-    {
       "title": "Animals",
       "kind": "movie",
       "year": 2026,
@@ -421,7 +391,7 @@
         "Netflix Standard with Ads"
       ],
       "tmdbId": "1236045",
-      "poster": "https://image.tmdb.org/t/p/w780/cyltXU1lAGhRFBuHQIMWBAPj8fI.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
       "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on his political campaign, they have to get their hands dirty and expose a side of their lives they never intended to see the light of day.",
       "genre": [
         "Thriller",
@@ -436,7 +406,7 @@
       ],
       "runtimeMinutes": 106,
       "contentRating": "R",
-      "voteAverage": 7.47,
+      "voteAverage": 7.42,
       "previewUrl": "https://www.youtube.com/watch?v=ZkN2M4ODdys",
       "availability": {
         "BR": {
@@ -482,7 +452,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1236045"
       },
-      "sourceRank": 5,
+      "sourceRank": 4,
       "keywords": [
         "Animals",
         "Animals 2026",
@@ -522,122 +492,234 @@
       }
     },
     {
-      "title": "Carrie",
-      "kind": "tv",
+      "title": "Matchbox the Movie",
+      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Amazon Prime Video",
+      "platform": "Apple TV",
       "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads",
-        "Amazon MX Player"
+        "Apple TV",
+        "Apple TV Amazon Channel"
       ],
-      "tmdbId": "288673",
-      "poster": "https://image.tmdb.org/t/p/w780/eXjk4W4robXs7l1YXwaXMv4f2qb.jpg",
-      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social‑media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
+      "tmdbId": "1148365",
+      "poster": "https://image.tmdb.org/t/p/w780/lFKA4GMz36dImEy3DQPdPF7G4V9.jpg",
+      "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the world.",
       "genre": [
-        "Mystery",
-        "Drama",
-        "Sci-Fi & Fantasy"
+        "Action",
+        "Comedy",
+        "Adventure"
       ],
       "inLanguage": "en",
       "cast": [
-        "Summer H. Howell",
-        "Samantha Sloyan",
-        "Siena Agudong",
-        "Alison Thornton"
+        "John Cena",
+        "Jessica Biel",
+        "Arturo Castro",
+        "Sam Richardson"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.41,
-      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "runtimeMinutes": 127,
+      "contentRating": "PG-13",
+      "voteAverage": 8,
+      "previewUrl": "https://www.youtube.com/watch?v=7xfqITrMDcI",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=BR",
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
+            "Apple TV",
+            "Apple TV Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=GB",
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
+            "Apple TV",
+            "Apple TV Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=PT",
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=PT",
           "rent": [],
           "stream": [
-            "Amazon Prime Video"
+            "Apple TV"
           ],
           "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=US",
+          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=US",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads",
-            "Amazon Prime Video Free with Ads",
-            "Amazon MX Player"
+            "Apple TV",
+            "Apple TV Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/288673"
+        "source_page_url": "https://www.themoviedb.org/movie/1148365"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "Matchbox the Movie",
+        "Matchbox the Movie 2026",
+        "where to watch Matchbox the Movie",
+        "Action movie",
+        "Comedy movie",
+        "Adventure movie",
+        "Apple TV trending movie",
+        "Apple TV Amazon Channel trending movie",
+        "John Cena",
+        "Jessica Biel"
+      ],
+      "longTailKeywords": [
+        "where to watch Matchbox the Movie 2026",
+        "Matchbox the Movie streaming in Brazil and United States",
+        "Matchbox the Movie cast synopsis trailer and where to watch",
+        "what Action to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Matchbox the Movie (2026) | MatchApp Ai",
+        "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the worl",
+        "keywords": [
+          "Matchbox the Movie",
+          "Matchbox the Movie 2026",
+          "where to watch Matchbox the Movie",
+          "Action movie",
+          "Comedy movie",
+          "Adventure movie",
+          "Apple TV trending movie",
+          "Apple TV Amazon Channel trending movie",
+          "John Cena",
+          "Jessica Biel",
+          "where to watch Matchbox the Movie 2026",
+          "Matchbox the Movie streaming in Brazil and United States",
+          "Matchbox the Movie cast synopsis trailer and where to watch",
+          "what Action to watch this week"
+        ],
+        "canonicalQuery": "Matchbox the Movie"
+      }
+    },
+    {
+      "title": "LINK CLICK",
+      "kind": "tv",
+      "year": 2021,
+      "origin": "CN",
+      "originName": "China",
+      "platform": "Crunchyroll",
+      "platforms": [
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel"
+      ],
+      "tmdbId": "123542",
+      "poster": "https://image.tmdb.org/t/p/w780/wo9jwu5qMvXzhW2cyy5E6hOVs92.jpg",
+      "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photography shop set in the backdrop of a modern metropolis. Each job can be full of danger, but nothing is more important than fulfilling every order, no matter the scale…or peril involved!",
+      "genre": [
+        "Animation",
+        "Sci-Fi & Fantasy",
+        "Mystery",
+        "Drama"
+      ],
+      "inLanguage": "zh",
+      "cast": [
+        "Su Shangqing",
+        "Yang Tianxiang",
+        "Li Shimeng"
+      ],
+      "runtimeMinutes": 23,
+      "contentRating": "14",
+      "voteAverage": 8.15,
+      "previewUrl": "https://www.youtube.com/watch?v=HxoR_7jVBCM",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/123542/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/123542"
       },
       "sourceRank": 6,
       "keywords": [
-        "Carrie",
-        "Carrie 2026",
-        "where to watch Carrie",
-        "Mystery series",
-        "Drama series",
+        "LINK CLICK",
+        "LINK CLICK 2021",
+        "where to watch LINK CLICK",
+        "Animation series",
         "Sci-Fi & Fantasy series",
-        "Amazon Prime Video trending series",
-        "Amazon Prime Video with Ads trending series",
-        "Summer H. Howell",
-        "Samantha Sloyan"
+        "Mystery series",
+        "Crunchyroll trending series",
+        "Crunchyroll Amazon Channel trending series",
+        "Su Shangqing",
+        "Yang Tianxiang"
       ],
       "longTailKeywords": [
-        "where to watch Carrie 2026",
-        "Carrie streaming in Brazil and United States",
-        "Carrie cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
+        "where to watch LINK CLICK 2021",
+        "LINK CLICK streaming in Brazil and United States",
+        "LINK CLICK cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Carrie (2026) | MatchApp Ai",
-        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
+        "title": "Where to watch LINK CLICK (2021) | MatchApp Ai",
+        "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photograp",
         "keywords": [
-          "Carrie",
-          "Carrie 2026",
-          "where to watch Carrie",
-          "Mystery series",
-          "Drama series",
+          "LINK CLICK",
+          "LINK CLICK 2021",
+          "where to watch LINK CLICK",
+          "Animation series",
           "Sci-Fi & Fantasy series",
-          "Amazon Prime Video trending series",
-          "Amazon Prime Video with Ads trending series",
-          "Summer H. Howell",
-          "Samantha Sloyan",
-          "where to watch Carrie 2026",
-          "Carrie streaming in Brazil and United States",
-          "Carrie cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
+          "Mystery series",
+          "Crunchyroll trending series",
+          "Crunchyroll Amazon Channel trending series",
+          "Su Shangqing",
+          "Yang Tianxiang",
+          "where to watch LINK CLICK 2021",
+          "LINK CLICK streaming in Brazil and United States",
+          "LINK CLICK cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "Carrie"
+        "canonicalQuery": "LINK CLICK"
       }
     },
     {
@@ -702,121 +784,6 @@
       "sourceRank": 2
     },
     {
-      "title": "Matchbox the Movie",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Apple TV",
-      "platforms": [
-        "Apple TV",
-        "Apple TV Amazon Channel"
-      ],
-      "tmdbId": "1148365",
-      "poster": "https://image.tmdb.org/t/p/w780/lFKA4GMz36dImEy3DQPdPF7G4V9.jpg",
-      "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the world.",
-      "genre": [
-        "Action",
-        "Comedy",
-        "Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "John Cena",
-        "Jessica Biel",
-        "Arturo Castro",
-        "Sam Richardson"
-      ],
-      "runtimeMinutes": 127,
-      "contentRating": "PG-13",
-      "voteAverage": 7.92,
-      "previewUrl": "https://www.youtube.com/watch?v=7xfqITrMDcI",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1148365-matchbox-the-movie/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1148365"
-      },
-      "sourceRank": 7,
-      "keywords": [
-        "Matchbox the Movie",
-        "Matchbox the Movie 2026",
-        "where to watch Matchbox the Movie",
-        "Action movie",
-        "Comedy movie",
-        "Adventure movie",
-        "Apple TV trending movie",
-        "Apple TV Amazon Channel trending movie",
-        "John Cena",
-        "Jessica Biel"
-      ],
-      "longTailKeywords": [
-        "where to watch Matchbox the Movie 2026",
-        "Matchbox the Movie streaming in Brazil and United States",
-        "Matchbox the Movie cast synopsis trailer and where to watch",
-        "what Action to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Matchbox the Movie (2026) | MatchApp Ai",
-        "description": "When a group of former childhood friends reconnect, their reunion takes a wild turn as they stumble upon a dangerous international plot—and must save the worl",
-        "keywords": [
-          "Matchbox the Movie",
-          "Matchbox the Movie 2026",
-          "where to watch Matchbox the Movie",
-          "Action movie",
-          "Comedy movie",
-          "Adventure movie",
-          "Apple TV trending movie",
-          "Apple TV Amazon Channel trending movie",
-          "John Cena",
-          "Jessica Biel",
-          "where to watch Matchbox the Movie 2026",
-          "Matchbox the Movie streaming in Brazil and United States",
-          "Matchbox the Movie cast synopsis trailer and where to watch",
-          "what Action to watch this week"
-        ],
-        "canonicalQuery": "Matchbox the Movie"
-      }
-    },
-    {
       "title": "Spider-Man: Brand New Day",
       "kind": "movie",
       "year": 2026,
@@ -843,7 +810,7 @@
       ],
       "runtimeMinutes": 145,
       "contentRating": "PG-13",
-      "voteAverage": 8.4,
+      "voteAverage": 8.45,
       "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
       "availability": {
         "BR": {
@@ -916,7 +883,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/969681"
       },
-      "sourceRank": 8,
+      "sourceRank": 7,
       "keywords": [
         "Spider-Man: Brand New Day",
         "Spider-Man: Brand New Day 2026",
@@ -956,96 +923,209 @@
       }
     },
     {
-      "title": "Other Mommy",
-      "kind": "movie",
+      "title": "Below",
+      "kind": "tv",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1400837",
-      "poster": "https://image.tmdb.org/t/p/w780/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-      "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "285322",
+      "poster": "https://image.tmdb.org/t/p/w780/vgLqqhMUbljp585qPp1EFCyJtcz.jpg",
+      "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
       "genre": [
-        "Horror"
+        "Drama",
+        "Mystery"
       ],
       "inLanguage": "en",
       "cast": [
-        "Jessica Chastain",
-        "Jay Duplass",
-        "Arabella Olivia Clark",
-        "Karen Allen"
+        "Josh Hartnett",
+        "Mackenzie Davis",
+        "Charlie Heaton",
+        "Ruby Stokes"
       ],
-      "runtimeMinutes": 93,
-      "contentRating": "R",
-      "voteAverage": 5.8,
-      "previewUrl": "https://www.youtube.com/watch?v=-mnTITqqiT0",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.34,
+      "previewUrl": "https://www.youtube.com/watch?v=U57CNxSgoss",
       "availability": {
         "BR": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=BR",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=GB",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=PT",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
         },
         "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1400837-other-mommy/watch?locale=US",
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=US",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1400837"
+        "source_page_url": "https://www.themoviedb.org/tv/285322"
+      },
+      "sourceRank": 8,
+      "keywords": [
+        "Below",
+        "Below 2026",
+        "where to watch Below",
+        "Drama series",
+        "Mystery series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Josh Hartnett",
+        "Mackenzie Davis"
+      ],
+      "longTailKeywords": [
+        "where to watch Below 2026",
+        "Below streaming in Brazil and United States",
+        "Below cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Below (2026) | MatchApp Ai",
+        "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
+        "keywords": [
+          "Below",
+          "Below 2026",
+          "where to watch Below",
+          "Drama series",
+          "Mystery series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Josh Hartnett",
+          "Mackenzie Davis",
+          "where to watch Below 2026",
+          "Below streaming in Brazil and United States",
+          "Below cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Below"
+      }
+    },
+    {
+      "title": "Treasure Island",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "MGM+ Apple TV Channel",
+      "platforms": [
+        "MGM+ Apple TV Channel",
+        "MGM Plus Amazon Channel",
+        "fuboTV",
+        "MGM+ Amazon Channel",
+        "Philo"
+      ],
+      "tmdbId": "333101",
+      "poster": "https://image.tmdb.org/t/p/w780/xZQ5ABJF1iLjGq9xR4MthpgQEFF.jpg",
+      "description": "Young Jim Hawkins and his mother Bess come into possession of a legendary pirate’s treasure map and are drawn into a deadly voyage across the Atlantic, where Jim is forced to navigate mutiny, violence and betrayal, leaving him forever changed.",
+      "genre": [
+        "Action & Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Tom Sweet",
+        "David Oyelowo",
+        "Hayley Atwell",
+        "Jack Huston"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-PG",
+      "voteAverage": 6.4,
+      "previewUrl": "https://www.youtube.com/watch?v=UsFVIvngwRA",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/333101-treasure-island/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "MGM+ Apple TV Channel",
+            "MGM Plus Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/333101-treasure-island/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "fuboTV",
+            "MGM+ Amazon Channel",
+            "Philo"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/333101"
       },
       "sourceRank": 9,
       "keywords": [
-        "Other Mommy",
-        "Other Mommy 2026",
-        "where to watch Other Mommy",
-        "Horror movie",
-        "Jessica Chastain",
-        "Jay Duplass"
+        "Treasure Island",
+        "Treasure Island 2026",
+        "where to watch Treasure Island",
+        "Action & Adventure series",
+        "MGM+ Apple TV Channel trending series",
+        "MGM Plus Amazon Channel trending series",
+        "Tom Sweet",
+        "David Oyelowo"
       ],
       "longTailKeywords": [
-        "where to watch Other Mommy 2026",
-        "Other Mommy streaming in Brazil and United States",
-        "Other Mommy cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
+        "where to watch Treasure Island 2026",
+        "Treasure Island streaming in Brazil and United States",
+        "Treasure Island cast synopsis trailer and where to watch",
+        "what Action & Adventure to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Other Mommy (2026) | MatchApp Ai",
-        "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly da",
+        "title": "Where to watch Treasure Island (2026) | MatchApp Ai",
+        "description": "Young Jim Hawkins and his mother Bess come into possession of a legendary pirate’s treasure map and are drawn into a deadly voyage across the Atlantic, where ",
         "keywords": [
-          "Other Mommy",
-          "Other Mommy 2026",
-          "where to watch Other Mommy",
-          "Horror movie",
-          "Jessica Chastain",
-          "Jay Duplass",
-          "where to watch Other Mommy 2026",
-          "Other Mommy streaming in Brazil and United States",
-          "Other Mommy cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
+          "Treasure Island",
+          "Treasure Island 2026",
+          "where to watch Treasure Island",
+          "Action & Adventure series",
+          "MGM+ Apple TV Channel trending series",
+          "MGM Plus Amazon Channel trending series",
+          "Tom Sweet",
+          "David Oyelowo",
+          "where to watch Treasure Island 2026",
+          "Treasure Island streaming in Brazil and United States",
+          "Treasure Island cast synopsis trailer and where to watch",
+          "what Action & Adventure to watch this week"
         ],
-        "canonicalQuery": "Other Mommy"
+        "canonicalQuery": "Treasure Island"
       }
     },
     {
@@ -1108,209 +1188,79 @@
       "sourceRank": 3
     },
     {
-      "title": "Below",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "285322",
-      "poster": "https://image.tmdb.org/t/p/w780/vgLqqhMUbljp585qPp1EFCyJtcz.jpg",
-      "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
-      "genre": [
-        "Drama",
-        "Mystery"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Josh Hartnett",
-        "Mackenzie Davis",
-        "Charlie Heaton",
-        "Ruby Stokes"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.27,
-      "previewUrl": "https://www.youtube.com/watch?v=U57CNxSgoss",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/285322-below/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/285322"
-      },
-      "sourceRank": 10,
-      "keywords": [
-        "Below",
-        "Below 2026",
-        "where to watch Below",
-        "Drama series",
-        "Mystery series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Josh Hartnett",
-        "Mackenzie Davis"
-      ],
-      "longTailKeywords": [
-        "where to watch Below 2026",
-        "Below streaming in Brazil and United States",
-        "Below cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Below (2026) | MatchApp Ai",
-        "description": "When a mysterious sea creature terrorizes a small Newfoundland town, a hard-bitten fisherman and his family fight to protect their close-knit community.",
-        "keywords": [
-          "Below",
-          "Below 2026",
-          "where to watch Below",
-          "Drama series",
-          "Mystery series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Josh Hartnett",
-          "Mackenzie Davis",
-          "where to watch Below 2026",
-          "Below streaming in Brazil and United States",
-          "Below cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Below"
-      }
-    },
-    {
-      "title": "Digger",
+      "title": "Buddy",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1248832",
-      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
-      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "tmdbId": "1514026",
+      "poster": "https://image.tmdb.org/t/p/w780/1BdZbNvl1SfrrX8J9X5tQzN6Ivu.jpg",
+      "description": "A magical, singing orange unicorn holds his cast hostage in a surreal TV-show dimension, as he becomes more and more demented.",
       "genre": [
+        "Horror",
         "Comedy",
-        "Drama"
+        "Fantasy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Tom Cruise",
-        "Riz Ahmed",
-        "John Goodman",
-        "Sandra Hüller"
+        "Keegan-Michael Key",
+        "Cristin Milioti",
+        "Delaney Quinn",
+        "Caleb Williams"
       ],
-      "runtimeMinutes": 129,
+      "runtimeMinutes": 95,
       "contentRating": "R",
-      "voteAverage": 7.53,
-      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
+      "voteAverage": 7.82,
+      "previewUrl": "https://www.youtube.com/watch?v=Pc9MbCNYn3k",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
-        },
         "US": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-02"
+          "cinema_release_date": "2026-08-28"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+        "source_page_url": "https://www.themoviedb.org/movie/1514026"
       },
-      "sourceRank": 11,
+      "sourceRank": 10,
       "keywords": [
-        "Digger",
-        "Digger 2026",
-        "where to watch Digger",
+        "Buddy",
+        "Buddy 2026",
+        "where to watch Buddy",
+        "Horror movie",
         "Comedy movie",
-        "Drama movie",
-        "Tom Cruise",
-        "Riz Ahmed"
+        "Fantasy movie",
+        "Keegan-Michael Key",
+        "Cristin Milioti"
       ],
       "longTailKeywords": [
-        "where to watch Digger 2026",
-        "Digger streaming in Brazil and United States",
-        "Digger cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
+        "where to watch Buddy 2026",
+        "Buddy streaming in Brazil and United States",
+        "Buddy cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Digger (2026) | MatchApp Ai",
-        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "title": "Where to watch Buddy (2026) | MatchApp Ai",
+        "description": "A magical, singing orange unicorn holds his cast hostage in a surreal TV-show dimension, as he becomes more and more demented.",
         "keywords": [
-          "Digger",
-          "Digger 2026",
-          "where to watch Digger",
+          "Buddy",
+          "Buddy 2026",
+          "where to watch Buddy",
+          "Horror movie",
           "Comedy movie",
-          "Drama movie",
-          "Tom Cruise",
-          "Riz Ahmed",
-          "where to watch Digger 2026",
-          "Digger streaming in Brazil and United States",
-          "Digger cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
+          "Fantasy movie",
+          "Keegan-Michael Key",
+          "Cristin Milioti",
+          "where to watch Buddy 2026",
+          "Buddy streaming in Brazil and United States",
+          "Buddy cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
         ],
-        "canonicalQuery": "Digger"
+        "canonicalQuery": "Buddy"
       }
     },
     {
@@ -1337,7 +1287,7 @@
       ],
       "runtimeMinutes": 120,
       "contentRating": "PG-13",
-      "voteAverage": 0,
+      "voteAverage": 6,
       "previewUrl": "https://www.youtube.com/watch?v=U6sbm1OaJb8",
       "availability": {
         "BR": {
@@ -1365,7 +1315,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1153576"
       },
-      "sourceRank": 12,
+      "sourceRank": 11,
       "keywords": [
         "Street Fighter",
         "Street Fighter 2026",
@@ -1398,6 +1348,88 @@
           "what Action to watch this week"
         ],
         "canonicalQuery": "Street Fighter"
+      }
+    },
+    {
+      "title": "Dragon Ball Super: Beerus",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Crunchyroll",
+      "platforms": [
+        "Crunchyroll"
+      ],
+      "tmdbId": "312359",
+      "poster": "https://image.tmdb.org/t/p/w780/AojgldgsOlzZV8ahyOzaiAjJWvV.jpg",
+      "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemastered and re-edited version of Dragon Ball Super.",
+      "genre": [
+        "Animation",
+        "Action & Adventure",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Masako Nozawa",
+        "Ryo Horikawa",
+        "Naoko Watanabe",
+        "Unsho Ishizuka"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-PG",
+      "voteAverage": 9.83,
+      "previewUrl": "https://www.youtube.com/watch?v=iCD3Lf7Jf9o",
+      "availability": {
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/312359/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Crunchyroll"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/312359"
+      },
+      "sourceRank": 12,
+      "keywords": [
+        "Dragon Ball Super: Beerus",
+        "Dragon Ball Super: Beerus 2026",
+        "where to watch Dragon Ball Super: Beerus",
+        "Animation series",
+        "Action & Adventure series",
+        "Sci-Fi & Fantasy series",
+        "Crunchyroll trending series",
+        "Masako Nozawa",
+        "Ryo Horikawa"
+      ],
+      "longTailKeywords": [
+        "where to watch Dragon Ball Super: Beerus 2026",
+        "Dragon Ball Super: Beerus streaming in Brazil and United States",
+        "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Dragon Ball Super: Beerus (2026) | MatchApp Ai",
+        "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemaste",
+        "keywords": [
+          "Dragon Ball Super: Beerus",
+          "Dragon Ball Super: Beerus 2026",
+          "where to watch Dragon Ball Super: Beerus",
+          "Animation series",
+          "Action & Adventure series",
+          "Sci-Fi & Fantasy series",
+          "Crunchyroll trending series",
+          "Masako Nozawa",
+          "Ryo Horikawa",
+          "where to watch Dragon Ball Super: Beerus 2026",
+          "Dragon Ball Super: Beerus streaming in Brazil and United States",
+          "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Dragon Ball Super: Beerus"
       }
     },
     {
@@ -1464,72 +1496,6 @@
       "sourceRank": 4
     },
     {
-      "title": "100 Days of Deception",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "293607",
-      "poster": "https://image.tmdb.org/t/p/w780/bZHEU42QynnMrHUWK1Hhvj2cdPA.jpg",
-      "description": "Hoping for freedom, Gyeongseong's top pickpocket infiltrates the Japanese colonial government to steal secrets — only to fall for her target's son.",
-      "genre": [
-        "Action & Adventure",
-        "Drama"
-      ],
-      "inLanguage": "ko",
-      "cast": [
-        "Kim You-jung",
-        "Jinyoung",
-        "Kim Hyun-joo",
-        "Lee Mu-saeng"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=P0ElxnFyfXY",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/293607"
-      },
-      "sourceRank": 13,
-      "keywords": [
-        "100 Days of Deception",
-        "100 Days of Deception 2026",
-        "where to watch 100 Days of Deception",
-        "Action & Adventure series",
-        "Drama series",
-        "Kim You-jung",
-        "Jinyoung"
-      ],
-      "longTailKeywords": [
-        "where to watch 100 Days of Deception 2026",
-        "100 Days of Deception streaming in Brazil and United States",
-        "100 Days of Deception cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch 100 Days of Deception (2026) | MatchApp Ai",
-        "description": "Hoping for freedom, Gyeongseong's top pickpocket infiltrates the Japanese colonial government to steal secrets — only to fall for her target's son.",
-        "keywords": [
-          "100 Days of Deception",
-          "100 Days of Deception 2026",
-          "where to watch 100 Days of Deception",
-          "Action & Adventure series",
-          "Drama series",
-          "Kim You-jung",
-          "Jinyoung",
-          "where to watch 100 Days of Deception 2026",
-          "100 Days of Deception streaming in Brazil and United States",
-          "100 Days of Deception cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
-        ],
-        "canonicalQuery": "100 Days of Deception"
-      }
-    },
-    {
       "title": "Avengers: Doomsday",
       "kind": "movie",
       "year": 2026,
@@ -1538,7 +1504,7 @@
       "platform": "Cinemas",
       "platforms": [],
       "tmdbId": "1003596",
-      "poster": "https://image.tmdb.org/t/p/w780/jzPwsojjFStf5lR5Nm07w2hH56G.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/sLYCyO58UvBuBtbHTQjPCCgJ4dG.jpg",
       "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
       "genre": [
         "Science Fiction",
@@ -1582,7 +1548,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1003596"
       },
-      "sourceRank": 14,
+      "sourceRank": 13,
       "keywords": [
         "Avengers: Doomsday",
         "Avengers: Doomsday 2026",
@@ -1620,193 +1586,253 @@
       }
     },
     {
-      "title": "Black Clover",
-      "kind": "tv",
-      "year": 2017,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "73223",
-      "poster": "https://image.tmdb.org/t/p/w780/kaMisKeOoTBPxPkbC3OW7Wgt6ON.jpg",
-      "description": "Asta and Yuno are two orphans who want the same thing: to become the Wizard King. Locked in a friendly rivalry, they work hard towards their goal. While Yuno excels at magic, Asta has a problem uncommon in this world: he has no powers! But, on the day they receive their grimoires, they surprise everyone. To reach their goal, they’ll each find their own path to greatness—with or without magic.",
-      "genre": [
-        "Animation",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Gakuto Kajiwara",
-        "Nobunaga Shimazaki",
-        "Kana Yuuki",
-        "Junichi Suwabe"
-      ],
-      "runtimeMinutes": 24,
-      "contentRating": "TV-14",
-      "voteAverage": 8.51,
-      "previewUrl": "https://www.youtube.com/watch?v=QwNWY6z93O4",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/73223"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Black Clover",
-        "Black Clover 2017",
-        "where to watch Black Clover",
-        "Animation series",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Gakuto Kajiwara",
-        "Nobunaga Shimazaki"
-      ],
-      "longTailKeywords": [
-        "where to watch Black Clover 2017",
-        "Black Clover streaming in Brazil and United States",
-        "Black Clover cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Black Clover (2017) | MatchApp Ai",
-        "description": "Asta and Yuno are two orphans who want the same thing: to become the Wizard King. Locked in a friendly rivalry, they work hard towards their goal. While Yuno ",
-        "keywords": [
-          "Black Clover",
-          "Black Clover 2017",
-          "where to watch Black Clover",
-          "Animation series",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Gakuto Kajiwara",
-          "Nobunaga Shimazaki",
-          "where to watch Black Clover 2017",
-          "Black Clover streaming in Brazil and United States",
-          "Black Clover cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Black Clover"
-      }
-    },
-    {
-      "title": "Lanterns",
+      "title": "VisionQuest",
       "kind": "tv",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "HBO Max",
-      "platforms": [
-        "HBO Max",
-        "Claro tv+",
-        "HBO Max Amazon Channel"
-      ],
-      "tmdbId": "95350",
-      "poster": "https://image.tmdb.org/t/p/w780/gpC7h43xPMEV3goYMQShfJbTtLq.jpg",
-      "description": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, Earth-based mystery as they investigate a murder in the American heartland.",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "213375",
+      "poster": "https://image.tmdb.org/t/p/w780/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+      "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
       "genre": [
-        "Drama",
-        "Mystery",
-        "Sci-Fi & Fantasy"
+        "Sci-Fi & Fantasy",
+        "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Kyle Chandler",
-        "Aaron Pierre",
-        "Kelly Macdonald"
+        "Paul Bettany",
+        "James Spader",
+        "Ruaridh Mollica",
+        "Todd Stashwick"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.3,
-      "previewUrl": "https://www.youtube.com/watch?v=7UIBOsuUwc4",
+      "contentRating": "TV-14",
+      "voteAverage": 10,
+      "previewUrl": "https://www.youtube.com/watch?v=sXKnmgmbkoE",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/213375"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "VisionQuest",
+        "VisionQuest 2026",
+        "where to watch VisionQuest",
+        "Sci-Fi & Fantasy series",
+        "Drama series",
+        "Paul Bettany",
+        "James Spader"
+      ],
+      "longTailKeywords": [
+        "where to watch VisionQuest 2026",
+        "VisionQuest streaming in Brazil and United States",
+        "VisionQuest cast synopsis trailer and where to watch",
+        "what Sci-Fi & Fantasy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch VisionQuest (2026) | MatchApp Ai",
+        "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+        "keywords": [
+          "VisionQuest",
+          "VisionQuest 2026",
+          "where to watch VisionQuest",
+          "Sci-Fi & Fantasy series",
+          "Drama series",
+          "Paul Bettany",
+          "James Spader",
+          "where to watch VisionQuest 2026",
+          "VisionQuest streaming in Brazil and United States",
+          "VisionQuest cast synopsis trailer and where to watch",
+          "what Sci-Fi & Fantasy to watch this week"
+        ],
+        "canonicalQuery": "VisionQuest"
+      }
+    },
+    {
+      "title": "Digger",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1248832",
+      "poster": "https://image.tmdb.org/t/p/w780/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg",
+      "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Tom Cruise",
+        "Riz Ahmed",
+        "John Goodman",
+        "Sandra Hüller"
+      ],
+      "runtimeMinutes": 129,
+      "contentRating": "R",
+      "voteAverage": 7.5,
+      "previewUrl": "https://www.youtube.com/watch?v=job8V254NAE",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=BR",
+          "link": null,
           "rent": [],
-          "stream": [
-            "HBO Max",
-            "Claro tv+",
-            "HBO Max Amazon Channel"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
         },
         "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=GB",
+          "buy": [],
+          "link": null,
           "rent": [],
-          "stream": [
-            "HBO Max Amazon Channel",
-            "HBO Max"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
         },
         "PT": {
-          "buy": [
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=PT",
+          "buy": [],
+          "link": null,
           "rent": [],
-          "stream": [
-            "HBO Max"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "HBO Max Amazon Channel",
-            "HBO Max"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/95350"
+        "source_page_url": "https://www.themoviedb.org/movie/1248832"
+      },
+      "sourceRank": 15,
+      "keywords": [
+        "Digger",
+        "Digger 2026",
+        "where to watch Digger",
+        "Comedy movie",
+        "Drama movie",
+        "Tom Cruise",
+        "Riz Ahmed"
+      ],
+      "longTailKeywords": [
+        "where to watch Digger 2026",
+        "Digger streaming in Brazil and United States",
+        "Digger cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Digger (2026) | MatchApp Ai",
+        "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+        "keywords": [
+          "Digger",
+          "Digger 2026",
+          "where to watch Digger",
+          "Comedy movie",
+          "Drama movie",
+          "Tom Cruise",
+          "Riz Ahmed",
+          "where to watch Digger 2026",
+          "Digger streaming in Brazil and United States",
+          "Digger cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Digger"
+      }
+    },
+    {
+      "title": "Tad and The Magic Lamp",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "ES",
+      "originName": "Spain",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1187326",
+      "poster": "https://image.tmdb.org/t/p/w780/AdDxZgNmRYgDuweY8899buyVqlr.jpg",
+      "description": "Tadeo, his girlfriend Sara, and his friends Momia, Jeff, and Belzoni embark on an adventure after Tadeo accidentally unleashes an ancient spell.",
+      "genre": [
+        "Animation",
+        "Comedy",
+        "Family"
+      ],
+      "inLanguage": "es",
+      "cast": [
+        "Óscar Barberán",
+        "Michelle Jenner",
+        "Luis Posada",
+        "Joseph Balderrama"
+      ],
+      "runtimeMinutes": 94,
+      "contentRating": "10",
+      "voteAverage": 6.6,
+      "previewUrl": "https://www.youtube.com/watch?v=8-Bjo_rXCkM",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-11"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-08-27"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1187326"
       },
       "sourceRank": 16,
       "keywords": [
-        "Lanterns",
-        "Lanterns 2026",
-        "where to watch Lanterns",
-        "Drama series",
-        "Mystery series",
-        "Sci-Fi & Fantasy series",
-        "HBO Max trending series",
-        "Claro tv+ trending series",
-        "Kyle Chandler",
-        "Aaron Pierre"
+        "Tad and The Magic Lamp",
+        "Tad and The Magic Lamp 2026",
+        "where to watch Tad and The Magic Lamp",
+        "Animation movie",
+        "Comedy movie",
+        "Family movie",
+        "Óscar Barberán",
+        "Michelle Jenner"
       ],
       "longTailKeywords": [
-        "where to watch Lanterns 2026",
-        "Lanterns streaming in Brazil and United States",
-        "Lanterns cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Tad and The Magic Lamp 2026",
+        "Tad and The Magic Lamp streaming in Brazil and United States",
+        "Tad and The Magic Lamp cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Lanterns (2026) | MatchApp Ai",
-        "description": "Two intergalactic cops, new recruit John Stewart and Lantern legend Hal Jordan, are drawn into a dark, Earth-based mystery as they investigate a murder in the",
+        "title": "Where to watch Tad and The Magic Lamp (2026) | MatchApp Ai",
+        "description": "Tadeo, his girlfriend Sara, and his friends Momia, Jeff, and Belzoni embark on an adventure after Tadeo accidentally unleashes an ancient spell.",
         "keywords": [
-          "Lanterns",
-          "Lanterns 2026",
-          "where to watch Lanterns",
-          "Drama series",
-          "Mystery series",
-          "Sci-Fi & Fantasy series",
-          "HBO Max trending series",
-          "Claro tv+ trending series",
-          "Kyle Chandler",
-          "Aaron Pierre",
-          "where to watch Lanterns 2026",
-          "Lanterns streaming in Brazil and United States",
-          "Lanterns cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Tad and The Magic Lamp",
+          "Tad and The Magic Lamp 2026",
+          "where to watch Tad and The Magic Lamp",
+          "Animation movie",
+          "Comedy movie",
+          "Family movie",
+          "Óscar Barberán",
+          "Michelle Jenner",
+          "where to watch Tad and The Magic Lamp 2026",
+          "Tad and The Magic Lamp streaming in Brazil and United States",
+          "Tad and The Magic Lamp cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "Lanterns"
+        "canonicalQuery": "Tad and The Magic Lamp"
       }
     }
   ]
