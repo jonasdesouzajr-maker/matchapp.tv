@@ -7,7 +7,18 @@
 #ma-jonas-home.jh-listening .jh-mic{
  outline:2px solid #68cdec;outline-offset:2px;
 }
-/* Eyes only — never the whole bubble. Smooth opacity so frame changes stay invisible. */
+/* Easy drag: browser must not steal the gesture as a scroll. */
+#ma-jonas-home .jh-bubble,
+#ma-jonas-home .jh-medallion{
+ touch-action:none!important;
+ user-select:none!important;
+ -webkit-user-select:none!important;
+ cursor:grab;
+}
+#ma-jonas-home.is-dragging .jh-bubble,
+#ma-jonas-home.is-dragging .jh-medallion{
+ cursor:grabbing;
+}
 #ma-jonas-home .jh-blink-layer{
  clip-path:inset(22% 12% 60% 12%)!important;
  transition:opacity .07s ease!important;

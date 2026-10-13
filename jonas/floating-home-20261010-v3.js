@@ -94,26 +94,45 @@
   if(event.button!==0 && event.pointerType==='mouse')return;
   var r=root.getBoundingClientRect();
   dragging={id:event.pointerId,x:event.clientX,y:event.clientY,left:r.left,top:r.top,moved:false};
-  if(bubble.setPointerCapture)bubble.setPointerCapture(event.pointerId);
+  // Start floating immediately so reparenting happens once, not mid-gesture.
+  if(!root.classList.contains('is-floating'))setFloating(r.left,r.top);
+  try{if(bubble.setPointerCapture)bubble.setPointerCapture(event.pointerId)}catch(_){}
+  event.preventDefault?.();
  }
  function moveDrag(event){
   if(!dragging||dragging.id!==event.pointerId)return;
   var dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
-  if(!dragging.moved&&Math.hypot(dx,dy)<9)return;
-  if(!dragging.moved){dragging.moved=true;setOpen(false);}
+  // Tiny threshold so a real drag starts on the first clear movement.
+  if(!dragging.moved&&Math.hypot(dx,dy)<3)return;
+  if(!dragging.moved){dragging.moved=true;setOpen(false);root.classList.add('is-dragging')}
   setFloating(dragging.left+dx,dragging.top+dy);
+  event.preventDefault?.();
  }
  function endDrag(event){
-  if(!dragging||dragging.id!==event.pointerId)return;
-  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},120);}
+  if(!dragging)return;
+  if(event&&event.pointerId!=null&&dragging.id!==event.pointerId)return;
+  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},140)}
+  root.classList.remove('is-dragging');
   dragging=null;
  }
- bubble.addEventListener('pointerdown',startDrag);
- // The root moves to document.body at drag-start; global listeners keep
- // tracking even when DOM reparenting releases native pointer capture.
- window.addEventListener('pointermove',moveDrag,{passive:true});
+ bubble.addEventListener('pointerdown',startDrag,{passive:false});
+ // Global listeners survive reparenting. pointercancel does not drop the drag
+ // until the finger is actually up, so Android does not kill the gesture.
+ window.addEventListener('pointermove',moveDrag,{passive:false});
  window.addEventListener('pointerup',endDrag);
- window.addEventListener('pointercancel',endDrag);
+ window.addEventListener('pointercancel',function(event){
+  // Keep tracking; only end if we never started moving.
+  if(!dragging||dragging.id!==event.pointerId)return;
+  if(!dragging.moved)endDrag(event);
+ });
+ // Touch fallback so a cancelled pointer still follows the finger.
+ window.addEventListener('touchmove',function(event){
+  if(!dragging||!event.touches||!event.touches.length)return;
+  var t=event.touches[0];
+  moveDrag({pointerId:dragging.id,clientX:t.clientX,clientY:t.clientY,preventDefault:function(){event.preventDefault()}});
+ },{passive:false});
+ window.addEventListener('touchend',function(){if(dragging)endDrag({pointerId:dragging.id})});
+ window.addEventListener('touchcancel',function(){if(dragging&&dragging.moved)endDrag({pointerId:dragging.id})});
  window.addEventListener('resize',function(){
   if(!root.classList.contains('is-floating'))return;
   var r=root.getBoundingClientRect();setFloating(r.left,r.top);if(opened)positionPanel();
