@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T12:57:53.519Z",
+  "generated": "2026-10-13T12:34:41.604Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -1065,6 +1065,7 @@
         "US": {
           "stream": [
             "Netflix",
+            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "link": "https://www.themoviedb.org/movie/801526/watch?locale=US"
@@ -2195,27 +2196,27 @@
             "Netflix",
             "Netflix Standard with Ads"
           ],
-          "link": "https://www.themoviedb.org/tv/276161/watch?locale=BR"
+          "link": "https://www.themoviedb.org/tv/276161-teach-you-a-lesson/watch?locale=BR"
         },
         "US": {
           "stream": [
             "Netflix",
             "Netflix Standard with Ads"
           ],
-          "link": "https://www.themoviedb.org/tv/276161/watch?locale=US"
+          "link": "https://www.themoviedb.org/tv/276161-teach-you-a-lesson/watch?locale=US"
         },
         "GB": {
           "stream": [
             "Netflix",
             "Netflix Standard with Ads"
           ],
-          "link": "https://www.themoviedb.org/tv/276161/watch?locale=GB"
+          "link": "https://www.themoviedb.org/tv/276161-teach-you-a-lesson/watch?locale=GB"
         },
         "PT": {
           "stream": [
             "Netflix"
           ],
-          "link": "https://www.themoviedb.org/tv/276161/watch?locale=PT"
+          "link": "https://www.themoviedb.org/tv/276161-teach-you-a-lesson/watch?locale=PT"
         }
       }
     },
