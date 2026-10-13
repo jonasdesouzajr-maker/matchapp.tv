@@ -22,10 +22,12 @@ html body:not(.page-kids):not(.kids-body) {
 html body.page-home .app-header,
 html body.page-shell .app-header {
   background: linear-gradient(135deg, rgba(28,16,48,0.95), rgba(18,10,32,0.98)) !important;
-  border: 1px solid var(--approved-gold-line) !important;
-  border-radius: 24px !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08) !important;
   backdrop-filter: blur(20px) !important;
+}
+html body.page-shell .app-header {
+  border: 1px solid var(--approved-gold-line) !important;
+  border-radius: 24px !important;
 }
 
 /* Brand lockup */
@@ -35,7 +37,7 @@ html body.page-shell .app-header {
 }
 
 /* Buttons and pills */
-.gold-btn, .premium-btn, .primary-action, button[type="submit"] {
+.gold-btn, .premium-btn, .primary-action {
   background: linear-gradient(135deg, #f6d38f, #d4a84b) !important;
   color: #1a0f2e !important;
   border: none !important;
@@ -66,7 +68,9 @@ html body.page-shell .app-header {
 }
 
 /* Inputs */
-input, select, textarea {
+.premium-card :is(input, select, textarea),
+.page-panel :is(input, select, textarea),
+.concierge-card :is(input, select, textarea) {
   background: rgba(20, 12, 36, 0.7) !important;
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 16px !important;
@@ -75,7 +79,7 @@ input, select, textarea {
 
 /* Responsive refinements */
 @media (max-width: 768px) {
-  .app-header {
+  html body.page-shell .app-header {
     padding: 12px !important;
     border-radius: 16px !important;
   }
@@ -90,12 +94,9 @@ input, select, textarea {
 }
 
 /* Further refinements for cinematic posters and hierarchy */
+/* Existing rail scripts own flex/scroll behavior; do not override them. */
 .top-titles-rail, .poster-carousel {
-  display: flex;
   gap: 12px;
-  overflow-x: auto;
-  padding: 16px 0;
-  scrollbar-width: thin;
 }
 
 .top-titles-rail img {
@@ -145,42 +146,38 @@ html body:not(.page-kids):not(.kids-body) {
 }
 
 /* Consistent page wrappers */
-.page-wrapper, main, .container, .content-shell {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
+/* Page shells already define their own widths, advertising rails and gutters.
+   A universal main/.container constraint clips full-bleed layouts. */
 
 /* Unified headers across pages */
-header, .app-header, .page-header {
+.app-header, .page-header {
   background: linear-gradient(135deg, rgba(28,16,48,0.95), rgba(18,10,32,0.98)) !important;
   border-bottom: 1px solid var(--approved-gold-line) !important;
   color: var(--approved-text);
 }
 
 /* Consistent buttons everywhere */
-button, .btn, a.btn, .action-btn {
+.btn, a.btn, .action-btn {
   border-radius: 999px !important;
   font-weight: 600 !important;
-  transition: all 0.2s ease !important;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 /* Cards and panels on secondary pages */
-article, .card, .panel, .result-card, .title-card {
+.result-card, .title-card {
   background: var(--approved-glass) !important;
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 16px !important;
   box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
-  overflow: hidden;
+  /* Preserve poster overlays and expanded content. */
 }
 
 /* Links */
-a {
+.adult-page-nav a, .page-panel a, .concierge-card a {
   color: var(--approved-gold);
   text-decoration: none;
 }
-a:hover {
+.adult-page-nav a:hover, .page-panel a:hover, .concierge-card a:hover {
   color: #fff;
   text-decoration: underline;
 }
@@ -195,10 +192,7 @@ footer {
 
 /* Mobile refinements for all pages */
 @media (max-width: 640px) {
-  .page-wrapper, main {
-    padding: 0 12px;
-  }
-  header {
+  .page-header {
     padding: 12px !important;
   }
 }
