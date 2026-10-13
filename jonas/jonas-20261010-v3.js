@@ -176,10 +176,10 @@
       ) || null;
     } catch { return null; }
   }
-  function useVoice(text, onDone) {
+  function useVoice(text, onDone, forceCloud = false) {
     // Installed Android already provides policy-checked local male TTS. Avoid
     // cloud synthesis latency when that native bridge is available.
-    if(window.MatchAppJonasSpeech && typeof window.MatchAppNativeVoice?.speak !== 'function'){
+    if(window.MatchAppJonasSpeech && (forceCloud || typeof window.MatchAppNativeVoice?.speak !== 'function')){
       const mine=++epoch;
       window.MatchAppJonasSpeech.unlock();
       speaking=true;
@@ -191,7 +191,7 @@
       return;
     }
 
-    if (window.MatchAppNativeVoice?.speak) {
+    if (window.MatchAppNativeVoice?.speak && !forceCloud) {
       const mine = ++epoch;
       speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
       let step = 0;
@@ -205,11 +205,25 @@
         setExpression("rest"); uiStatus("Ready when you are");
         if (typeof onDone === "function" && open) onDone();
       };
-      window.matchAppNativeSpeechState = (active) => { if (!active) finish(); };
-      document.addEventListener("matchapp:avatar-voice-unavailable", finish, { once: true });
-      window.setTimeout(finish, Math.min(60000, 3000 + text.length * 95));
+      // A native voice that cannot start must fall back to the existing approved
+      // cloud/browser voice, without double-playing on a late Android callback.
+      let nativeStarted = false;
+      const nativeUnavailable = () => {
+        if (mine !== epoch || !speaking) return;
+        speaking = false; bubble.classList.remove("is-speaking");
+        clearInterval(audioAnimation); audioAnimation = null;
+        setExpression("rest");
+        useVoice(text, onDone, true);
+      };
+      window.matchAppNativeSpeechState = (active) => {
+        if (active) nativeStarted = true;
+        else if (nativeStarted) finish();
+        else nativeUnavailable();
+      };
+      document.addEventListener("matchapp:avatar-voice-unavailable", nativeUnavailable, { once: true });
+      window.setTimeout(() => { if (nativeStarted) finish(); else nativeUnavailable(); }, Math.min(60000, 3000 + text.length * 95));
       try { window.MatchAppNativeVoice.speak(String(text).slice(0, 4000), voiceLanguage()); }
-      catch { finish(); uiStatus("Voice unavailable; the answer is still visible."); }
+      catch { nativeUnavailable(); }
       return;
     }
     if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
