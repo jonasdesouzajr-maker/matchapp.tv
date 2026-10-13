@@ -1,10 +1,106 @@
 {
-  "generated_at": "2026-10-13T03:34:51.228Z",
-  "feed_version": "134c99f2",
+  "generated_at": "2026-10-13T03:48:41.873Z",
+  "feed_version": "805b16cf",
   "sports_updated_at": "2026-10-13T03:34:51.170Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "16b45dda",
+      "title": "Breaking Bad actor RJ Mitte dies aged 34",
+      "url": "https://www.bbc.co.uk/news/articles/cmn045en7d88o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-13T03:44:40.000Z",
+      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Breaking Bad",
+      "description": "Breaking Bad: obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d701/live/f34aa090-c69f-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-actor-rj-mitte-dies-aged-34-16b45d/",
+      "landing_url": "https://matchapp.tv/?news=16b45dda#latest-news",
+      "seo": {
+        "primary_keyword": "Breaking Bad latest news",
+        "short_tail": [
+          "Breaking Bad",
+          "Breaking Bad news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Breaking Bad latest news October 2026",
+          "Breaking Bad obituary update 2026",
+          "Breaking Bad news 2026-10-13",
+          "latest obituary news about Breaking Bad",
+          "breaking bad breaking bad actor mitte latest update",
+          "BBC Breaking Bad obituary",
+          "latest news about Breaking Bad October 2026",
+          "Breaking Bad entertainment news 2026-10-13",
+          "what happened with Breaking Bad"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Breaking Bad",
+          "breaking",
+          "bad",
+          "actor",
+          "mitte",
+          "dies",
+          "aged"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-13",
+          "Breaking Bad 2026"
+        ],
+        "source_keywords": [
+          "BBC Breaking Bad",
+          "bbc.co.uk Breaking Bad",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Breaking Bad actor RJ Mitte dies aged 34 | Entertainment…",
+        "meta_description": "Breaking Bad: Obituary update reported by BBC on 2026-10-13. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Breaking Bad latest news",
+          "Breaking Bad",
+          "Breaking Bad news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Breaking Bad latest news October 2026",
+          "Breaking Bad obituary update 2026",
+          "Breaking Bad news 2026-10-13",
+          "latest obituary news about Breaking Bad",
+          "breaking bad breaking bad actor mitte latest update",
+          "BBC Breaking Bad obituary",
+          "latest news about Breaking Bad October 2026",
+          "Breaking Bad entertainment news 2026-10-13",
+          "what happened with Breaking Bad",
+          "breaking",
+          "bad",
+          "actor",
+          "mitte",
+          "dies",
+          "aged",
+          "October 2026",
+          "2026-10-13",
+          "Breaking Bad 2026",
+          "BBC Breaking Bad",
+          "bbc.co.uk Breaking Bad",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
+      }
+    },
     {
       "id": "ac2bd941",
       "title": "Papa Leão XIV será internado nesta terça para remover nódulo no pulmão; veja o que se sabe",
@@ -71,7 +167,7 @@
           "2026-10-13",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -140,7 +236,7 @@
           "2026-10-13",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -209,7 +305,7 @@
           "2026-10-13",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -278,7 +374,7 @@
           "2026-10-13",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -374,7 +470,7 @@
           "hollywoodreporter.com Linda Duncombe",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -470,7 +566,7 @@
           "hollywoodreporter.com EJAE Honored",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -569,103 +665,7 @@
           "hollywoodreporter.com high potential lands post",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
-      }
-    },
-    {
-      "id": "16b45dda",
-      "title": "Breaking Bad actor RJ Mitte dies aged 34",
-      "url": "https://www.bbc.co.uk/news/articles/cmn045en7d88o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-13T00:12:25.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Breaking Bad",
-      "description": "Breaking Bad: obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d701/live/f34aa090-c69f-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-actor-rj-mitte-dies-aged-34-16b45d/",
-      "landing_url": "https://matchapp.tv/?news=16b45dda#latest-news",
-      "seo": {
-        "primary_keyword": "Breaking Bad latest news",
-        "short_tail": [
-          "Breaking Bad",
-          "Breaking Bad news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Breaking Bad latest news October 2026",
-          "Breaking Bad obituary update 2026",
-          "Breaking Bad news 2026-10-13",
-          "latest obituary news about Breaking Bad",
-          "breaking bad breaking bad actor mitte latest update",
-          "BBC Breaking Bad obituary",
-          "latest news about Breaking Bad October 2026",
-          "Breaking Bad entertainment news 2026-10-13",
-          "what happened with Breaking Bad"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Breaking Bad",
-          "breaking",
-          "bad",
-          "actor",
-          "mitte",
-          "dies",
-          "aged"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-13",
-          "Breaking Bad 2026"
-        ],
-        "source_keywords": [
-          "BBC Breaking Bad",
-          "bbc.co.uk Breaking Bad",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Breaking Bad actor RJ Mitte dies aged 34 | Entertainment…",
-        "meta_description": "Breaking Bad: Obituary update reported by BBC on 2026-10-13. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Breaking Bad latest news",
-          "Breaking Bad",
-          "Breaking Bad news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Breaking Bad latest news October 2026",
-          "Breaking Bad obituary update 2026",
-          "Breaking Bad news 2026-10-13",
-          "latest obituary news about Breaking Bad",
-          "breaking bad breaking bad actor mitte latest update",
-          "BBC Breaking Bad obituary",
-          "latest news about Breaking Bad October 2026",
-          "Breaking Bad entertainment news 2026-10-13",
-          "what happened with Breaking Bad",
-          "breaking",
-          "bad",
-          "actor",
-          "mitte",
-          "dies",
-          "aged",
-          "October 2026",
-          "2026-10-13",
-          "Breaking Bad 2026",
-          "BBC Breaking Bad",
-          "bbc.co.uk Breaking Bad",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -734,7 +734,7 @@
           "2026-10-13",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -833,7 +833,7 @@
           "hollywoodreporter.com ink finally meets its",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -932,7 +932,7 @@
           "hollywoodreporter.com former snl star ego",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1031,12 +1031,12 @@
           "bbc.co.uk actress selma blair accused",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
       "id": "ba811728",
-      "title": "‘Breaking Bad’ Stars Pay Tribute to R.J. Mitte: “Sweetheart of a Young Man”",
+      "title": "‘Breaking Bad’ Stars Bryan Cranston, Aaron Paul, Others Remember R.J. Mitte: “Sweetheart of a Young Man”",
       "url": "https://www.hollywoodreporter.com/tv/tv-news/breaking-bad-stars-react-r-j-mitte-death-1236728237/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
@@ -1050,13 +1050,13 @@
       "person": "",
       "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
       "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/RJ-Mitte-Breaking-Bad-everett-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-stars-pay-tribute-to-r-j-mitte-sweetheart-of-a-young-man-ba8117/",
+      "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-stars-bryan-cranston-aaron-paul-others-remember-r-j-mitte-sweethear-ba8117/",
       "landing_url": "https://matchapp.tv/?news=ba811728#latest-news",
       "seo": {
-        "primary_keyword": "breaking bad stars pay latest news",
+        "primary_keyword": "breaking bad stars bryan latest news",
         "short_tail": [
-          "breaking bad stars pay",
-          "breaking bad stars pay news",
+          "breaking bad stars bryan",
+          "breaking bad stars bryan news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
@@ -1064,73 +1064,73 @@
           "entertainment updates"
         ],
         "long_tail": [
-          "breaking bad stars pay latest news October 2026",
-          "breaking bad stars pay entertainment update 2026",
-          "breaking bad stars pay news 2026-10-12",
-          "latest entertainment news about breaking bad stars pay",
-          "breaking bad stars pay tribute mitte latest update",
-          "The Hollywood Reporter breaking bad stars pay entertainment",
-          "latest news about breaking bad stars pay October 2026",
-          "breaking bad stars pay entertainment news 2026-10-12",
-          "what happened with breaking bad stars pay"
+          "breaking bad stars bryan latest news October 2026",
+          "breaking bad stars bryan entertainment update 2026",
+          "breaking bad stars bryan news 2026-10-12",
+          "latest entertainment news about breaking bad stars bryan",
+          "breaking bad stars bryan cranston aaron latest update",
+          "The Hollywood Reporter breaking bad stars bryan entertainment",
+          "latest news about breaking bad stars bryan October 2026",
+          "breaking bad stars bryan entertainment news 2026-10-12",
+          "what happened with breaking bad stars bryan"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "breaking",
           "bad",
           "stars",
-          "pay",
-          "tribute",
-          "mitte",
-          "sweetheart",
-          "young"
+          "bryan",
+          "cranston",
+          "aaron",
+          "paul",
+          "others"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-12",
-          "breaking bad stars pay 2026"
+          "breaking bad stars bryan 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter breaking bad stars pay",
-          "hollywoodreporter.com breaking bad stars pay",
+          "The Hollywood Reporter breaking bad stars bryan",
+          "hollywoodreporter.com breaking bad stars bryan",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "‘Breaking Bad’ Stars Pay Tribute to R.J. Mitte:…",
+        "meta_title": "‘Breaking Bad’ Stars Bryan Cranston, Aaron Paul, Others…",
         "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "breaking bad stars pay latest news",
-          "breaking bad stars pay",
-          "breaking bad stars pay news",
+          "breaking bad stars bryan latest news",
+          "breaking bad stars bryan",
+          "breaking bad stars bryan news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "breaking bad stars pay latest news October 2026",
-          "breaking bad stars pay entertainment update 2026",
-          "breaking bad stars pay news 2026-10-12",
-          "latest entertainment news about breaking bad stars pay",
-          "breaking bad stars pay tribute mitte latest update",
-          "The Hollywood Reporter breaking bad stars pay entertainment",
-          "latest news about breaking bad stars pay October 2026",
-          "breaking bad stars pay entertainment news 2026-10-12",
-          "what happened with breaking bad stars pay",
+          "breaking bad stars bryan latest news October 2026",
+          "breaking bad stars bryan entertainment update 2026",
+          "breaking bad stars bryan news 2026-10-12",
+          "latest entertainment news about breaking bad stars bryan",
+          "breaking bad stars bryan cranston aaron latest update",
+          "The Hollywood Reporter breaking bad stars bryan entertainment",
+          "latest news about breaking bad stars bryan October 2026",
+          "breaking bad stars bryan entertainment news 2026-10-12",
+          "what happened with breaking bad stars bryan",
           "breaking",
           "bad",
           "stars",
-          "pay",
-          "tribute",
-          "mitte",
-          "sweetheart",
-          "young",
+          "bryan",
+          "cranston",
+          "aaron",
+          "paul",
+          "others",
           "October 2026",
           "2026-10-12",
-          "breaking bad stars pay 2026",
-          "The Hollywood Reporter breaking bad stars pay",
-          "hollywoodreporter.com breaking bad stars pay",
+          "breaking bad stars bryan 2026",
+          "The Hollywood Reporter breaking bad stars bryan",
+          "hollywoodreporter.com breaking bad stars bryan",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1152,7 +1152,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/jack-johnson-brings-his-swell-season-to-the-hollywood-bowl-6c0c73/",
       "landing_url": "https://matchapp.tv/?news=6c0c7374#latest-news",
       "seo": {
-        "primary_keyword": "ty johnson",
+        "primary_keyword": "Jack Johnson Brings His latest news",
         "short_tail": [
           "Jack Johnson Brings His",
           "Jack Johnson Brings His news",
@@ -1160,8 +1160,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "ty johnson"
+          "entertainment updates"
         ],
         "long_tail": [
           "Jack Johnson Brings His latest news October 2026",
@@ -1174,9 +1173,7 @@
           "Jack Johnson Brings His entertainment news 2026-10-12",
           "what happened with Jack Johnson Brings His"
         ],
-        "trend_keywords": [
-          "ty johnson"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "Jack Johnson Brings His",
           "jack",
@@ -1197,7 +1194,7 @@
         "meta_title": "Jack Johnson Brings His Swell Season to the Hollywood Bowl…",
         "meta_description": "Jack Johnson Brings His: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original…",
         "keywords": [
-          "ty johnson",
+          "Jack Johnson Brings His latest news",
           "Jack Johnson Brings His",
           "Jack Johnson Brings His news",
           "entertainment",
@@ -1225,7 +1222,7 @@
           "hollywoodreporter.com Jack Johnson Brings His",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1294,7 +1291,7 @@
           "2026-10-12",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1363,7 +1360,7 @@
           "2026-10-12",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1432,7 +1429,7 @@
           "2026-10-12",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1501,7 +1498,7 @@
           "2026-10-12",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1570,7 +1567,7 @@
           "2026-10-12",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1639,7 +1636,7 @@
           "2026-10-12",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1737,7 +1734,7 @@
           "g1.globo.com Ator RJ Mitte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1806,7 +1803,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1875,7 +1872,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -1944,7 +1941,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2013,7 +2010,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2082,7 +2079,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2183,7 +2180,7 @@
           "g1.globo.com producao ana costa karinah",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2282,7 +2279,7 @@
           "bbc.co.uk Tom Cruise",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2378,7 +2375,7 @@
           "bbc.co.uk Russell Brand",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2479,7 +2476,7 @@
           "g1.globo.com filha joelma natalia sarraff",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2575,7 +2572,7 @@
           "bbc.co.uk Julie Hesmondhalgh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2673,7 +2670,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2769,7 +2766,7 @@
           "bbc.co.uk Ray Quinn",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2859,7 +2856,7 @@
           "2026-10-12",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -2960,7 +2957,7 @@
           "g1.globo.com detonautas lanca dia criancas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -3056,7 +3053,7 @@
           "bbc.co.uk Robert Pattinson",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -3152,7 +3149,7 @@
           "g1.globo.com Morre Edson Silva",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -3246,7 +3243,7 @@
           "bbc.co.uk Sacha Baron Cohen",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -3344,7 +3341,7 @@
           "g1.globo.com Maria Rita",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -3445,7 +3442,7 @@
           "g1.globo.com tom chega hoje aos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     },
     {
@@ -3544,97 +3541,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
-      }
-    },
-    {
-      "id": "535ff993",
-      "title": "What makes an Olympic emblem memorable – and does Brisbane’s new design fit the bill?",
-      "url": "https://theconversation.com/what-makes-an-olympic-emblem-memorable-and-does-brisbanes-new-design-fit-the-bill-293810",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-09T03:41:24.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null,
-      "language": "en",
-      "discovered_at": "2026-10-09T17:27:05.611Z",
-      "person": "",
-      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-makes-an-olympic-emblem-memorable-and-does-brisbane-s-new-design-fit-the-bi-535ff9/",
-      "landing_url": "https://matchapp.tv/?news=535ff993#latest-news",
-      "seo": {
-        "primary_keyword": "what makes olympic emblem memorable sports news",
-        "short_tail": [
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "what",
-          "makes",
-          "olympic",
-          "emblem",
-          "memorable",
-          "does"
-        ],
-        "long_tail": [
-          "what makes olympic emblem memorable sports news 2026",
-          "what makes olympic emblem memorable latest update 2026-10-09",
-          "Sports latest news October 2026",
-          "The Conversation sports news indexed 2026-10-09",
-          "what makes olympic emblem memorable The Conversation original report"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "what",
-          "makes",
-          "olympic",
-          "emblem",
-          "memorable",
-          "does",
-          "brisbane",
-          "new"
-        ],
-        "freshness_keywords": [
-          "2026-10-09",
-          "October 2026"
-        ],
-        "source_keywords": [
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines"
-        ],
-        "meta_title": "What makes an Olympic emblem memorable – and does…",
-        "meta_description": "Sports reporting indexed 2026-10-09. Open the original publisher through MatchApp Latest News.",
-        "keywords": [
-          "what makes olympic emblem memorable sports news",
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "what",
-          "makes",
-          "olympic",
-          "emblem",
-          "memorable",
-          "does",
-          "what makes olympic emblem memorable sports news 2026",
-          "what makes olympic emblem memorable latest update 2026-10-09",
-          "Sports latest news October 2026",
-          "The Conversation sports news indexed 2026-10-09",
-          "what makes olympic emblem memorable The Conversation original report",
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines",
-          "2026-10-09",
-          "October 2026"
-        ],
-        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+        "seo_generated_at": "2026-10-13T03:48:41.873Z"
       }
     }
   ]
