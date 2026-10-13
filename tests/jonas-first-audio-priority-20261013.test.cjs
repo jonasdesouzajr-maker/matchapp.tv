@@ -35,6 +35,7 @@ test('full-answer TTS tries approved male on-device speech before cloud synthesi
   assert.match(code, /localApproved=.*MatchAppJonasVoicePolicy\?\.select/);
   assert.match(code, /if\(localApproved\)\{/);
   assert.match(code, /approvedFallback\(text,chosen,opts,token,true\)/);
-  assert.match(code, /if\(ok\|\|!preferringLocal\)options\.onEnd/);
+  assert.match(code, /if\(ok\)options\.onEnd\?\.\(true\)/);
+  assert.match(code, /if\(!fallback&&token===epoch\)\{opts\.onError/);
   assert.match(code, /startGuard=setTimeout/);
 });
