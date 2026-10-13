@@ -324,3 +324,29 @@ html body.page-home #mh-topbox.app-header.ma-home-header .ma-brand-security{
   animation:maAiIntelligenceGlint 13s ease-in-out infinite!important;
  }
 }
+
+
+/* The brand-lock script groups MatchApp and Ai in .ma-brand-title-line.
+   The outer .ma-brand-copy gap DOES NOT separate these inner siblings.
+   Prevent the animated Ai glyph (including its glint) from overlapping "App"
+   on every adult header, including tablet and Android WebView. */
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .ma-brand-copy > .ma-brand-title-line {
+  display:inline-flex!important;
+  align-items:baseline!important;
+  justify-content:flex-start!important;
+  column-gap:clamp(10px,1.35vw,17px)!important;
+  white-space:nowrap!important;
+  min-width:0;
+  max-width:100%;
+  vertical-align:baseline;
+}
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .ma-brand-title-line > .ma-wordmark,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .ma-brand-title-line > .ma-word-ai {
+  flex:0 0 auto!important;
+  margin-inline-start:0!important;
+}
+@media (max-width:420px) {
+ html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .ma-brand-copy > .ma-brand-title-line {
+   column-gap:8px!important;
+ }
+}
