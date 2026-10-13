@@ -1788,9 +1788,14 @@ window.eventMatch = function (query) {
             const track=vp.querySelector('#marquee-track');
             if(track){
                 const ANDROID_KINETIC=/MatchAppAiAndroid\//.test(navigator.userAgent);
-                const MARQUEE_AUTO_MS=4200,HOLD_AFTER_TOUCH=ANDROID_KINETIC?0:7000;
+                // Continuous gentle drift for every surface. A human fling
+                // sets the direction and strength; the loop then coasts and
+                // settles back to a slow speed in that same direction.
+                // scrollLeft is never written while a finger is down.
+                const MARQUEE_AUTO_MS=4200,HOLD_AFTER_TOUCH=ANDROID_KINETIC?0:2800;
+                const BASE_SPEED=.032; // ~32 px/s — smooth and readable
                 let loopWidth=0,autoTimer=0,settleTimer=0,holdUntil=0,hovering=false,visible=true,drag=null,swipeUntil=0;
-                let kineticFrame=0,kineticSpeed=.020,nativeMomentumUntil=0,nativeTouch=false;
+                let kineticFrame=0,kineticSpeed=BASE_SPEED,nativeMomentumUntil=0,nativeTouch=false;
                 vp.dataset.matchappAutoplayActive='1';
                 vp.tabIndex=0;
                 track.classList.add('is-marquee-flowing');
@@ -1818,37 +1823,26 @@ window.eventMatch = function (query) {
                 const scheduleAuto=(delay=MARQUEE_AUTO_MS)=>{
                     stopAuto();
                     if(REDUCED||!visible||document.hidden||!loopWidth||vp.scrollWidth<=vp.clientWidth)return;
-                    if(ANDROID_KINETIC){
-                        // Native touch owns the active gesture; an independent single-frame
-                        // loop adds velocity-sensitive continuation after the OS fling.
-                        let last=0;
-                        const flow=now=>{
-                            if(!visible||document.hidden){kineticFrame=0;return}
-                            const dt=last?Math.min(48,now-last):16;last=now;
-                            if(!paused()&&now>=nativeMomentumUntil){
-                                const max=Math.max(0,vp.scrollWidth-vp.clientWidth);
-                                vp.scrollLeft+=kineticSpeed*dt;
-                                if(loopWidth&&vp.scrollLeft>=max-5)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
-                                else if(loopWidth&&vp.scrollLeft<=5)vp.scrollLeft=Math.min(max,vp.scrollLeft+loopWidth);
-                                // Strong flicks coast then gradually return to gentle continuous drift.
-                                if(kineticSpeed>.020)kineticSpeed=Math.max(.020,kineticSpeed*Math.exp(-dt/900));
-                                else if(kineticSpeed<-.020)kineticSpeed=Math.min(-.020,kineticSpeed*Math.exp(-dt/900));
-                                else kineticSpeed+=(.020-kineticSpeed)*Math.min(1,dt/420);
-                            }
-                            kineticFrame=requestAnimationFrame(flow);
-                        };
-                        kineticFrame=requestAnimationFrame(flow);return;
-                    }
-                    autoTimer=setTimeout(()=>{
-                        autoTimer=0;
-                        if(!visible||document.hidden)return;
-                        if(paused()){scheduleAuto(Math.max(650,holdUntil-Date.now()));return;}
-                        const step=stepSize(),max=Math.max(0,vp.scrollWidth-vp.clientWidth);
-                        if(vp.scrollLeft+step>=max-2)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
-                        vp.scrollBy({left:step,behavior:'smooth'});
-                        clearTimeout(settleTimer);
-                        settleTimer=setTimeout(()=>{normalizeLoop();scheduleAuto();},650);
-                    },delay);
+                    // Continuous flow on every platform. Native touch owns the
+                    // active gesture; the loop only writes scrollLeft after the
+                    // finger is up and any OS fling has settled.
+                    let last=0;
+                    const flow=now=>{
+                        if(!visible||document.hidden){kineticFrame=0;return}
+                        const dt=last?Math.min(48,now-last):16;last=now;
+                        if(!paused()&&now>=nativeMomentumUntil){
+                            const max=Math.max(0,vp.scrollWidth-vp.clientWidth);
+                            vp.scrollLeft+=kineticSpeed*dt;
+                            if(loopWidth&&vp.scrollLeft>=max-5)vp.scrollLeft=Math.max(0,vp.scrollLeft-loopWidth);
+                            else if(loopWidth&&vp.scrollLeft<=5)vp.scrollLeft=Math.min(max,vp.scrollLeft+loopWidth);
+                            // Strong flicks coast, then settle to a slow drift in the same direction.
+                            const target=kineticSpeed<0?-BASE_SPEED:BASE_SPEED;
+                            if(Math.abs(kineticSpeed)>BASE_SPEED+.004)kineticSpeed+=(target-kineticSpeed)*Math.min(1,dt/900);
+                            else kineticSpeed+=(target-kineticSpeed)*Math.min(1,dt/420);
+                        }
+                        kineticFrame=requestAnimationFrame(flow);
+                    };
+                    kineticFrame=requestAnimationFrame(flow);
                 };
                 const hold=()=>{holdUntil=Date.now()+HOLD_AFTER_TOUCH;scheduleAuto(HOLD_AFTER_TOUCH);};
                 vp.__railHold=hold;
