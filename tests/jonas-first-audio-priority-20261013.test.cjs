@@ -23,7 +23,18 @@ test('floating Jonas greeting tries only a policy-approved immediate device voic
 
 test('standalone Jonas uses native Android TTS before paid cloud synthesis', () => {
   const code = source('jonas-20261010-v3.js');
-  assert.match(code, /if\(window\.MatchAppJonasSpeech && typeof window\.MatchAppNativeVoice\?\.speak !== 'function'\)/);
-  assert.match(code, /if \(window\.MatchAppNativeVoice\?\.speak\)/);
+  assert.match(code, /if\(window\.MatchAppJonasSpeech && \(forceCloud \|\| typeof window\.MatchAppNativeVoice\?\.speak !== 'function'\)\)/);
+  assert.match(code, /if \(window\.MatchAppNativeVoice\?\.speak && !forceCloud\)/);
+  assert.match(code, /if \(active\) \{ nativeStarted = true; startNativeFace\(\); \}/);
+  assert.match(code, /const nativeUnavailable = \(\) =>/);
   assert.match(code, /window\.MatchAppJonasSpeech\.speak/);
+});
+
+test('full-answer TTS tries approved male on-device speech before cloud synthesis', () => {
+  const code = source('secure-speech-20261010.js');
+  assert.match(code, /localApproved=.*MatchAppJonasVoicePolicy\?\.select/);
+  assert.match(code, /if\(localApproved\)\{/);
+  assert.match(code, /approvedFallback\(text,chosen,opts,token,true\)/);
+  assert.match(code, /if\(ok\|\|!preferringLocal\)options\.onEnd/);
+  assert.match(code, /startGuard=setTimeout/);
 });
