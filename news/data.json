@@ -1,135 +1,405 @@
 {
-  "generated_at": "2026-10-12T23:11:14.169Z",
-  "feed_version": "c7749994",
-  "sports_updated_at": "2026-10-12T20:18:05.724Z",
+  "generated_at": "2026-10-13T03:34:51.228Z",
+  "feed_version": "134c99f2",
+  "sports_updated_at": "2026-10-13T03:34:51.170Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
-      "id": "ba811728",
-      "title": "‘Breaking Bad’ Stars Pay Tribute to R.J. Mitte: “Sweetheart of a Young Man”",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/breaking-bad-stars-react-r-j-mitte-death-1236728237/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-12T22:54:20.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "id": "ac2bd941",
+      "title": "Papa Leão XIV será internado nesta terça para remover nódulo no pulmão; veja o que se sabe",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/13/papa-leao-xiv-sera-internado-nesta-terca-para-remover-nodulo-no-pulmao-veja-o-que-se-sabe.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-13T03:00:01.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
       "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/RJ-Mitte-Breaking-Bad-everett-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-stars-pay-tribute-to-r-j-mitte-sweetheart-of-a-young-man-ba8117/",
-      "landing_url": "https://matchapp.tv/?news=ba811728#latest-news",
+      "category": "world",
+      "person": "Papa Leão XIV",
+      "description": "World news reported by G1 Mundo on 2026-10-13. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/krMjtdt5EbVYN-KlCM5CCWVXMBg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/6/8/ZA5tuORaAfvDEuAKI4Qg/afp-20261011-d2wa2zn-v1-highres-vaticanreligionpopeangelus.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-sera-internado-nesta-terca-para-remover-nodulo-no-pulmao-veja-o-qu-ac2bd9/",
+      "landing_url": "https://matchapp.tv/?news=ac2bd941#latest-news",
       "seo": {
-        "primary_keyword": "rj mitte",
+        "primary_keyword": "notícias do mundo 2026-10-13",
         "short_tail": [
-          "breaking bad stars pay",
-          "breaking bad stars pay news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "rj mitte"
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "sera",
+          "internado",
+          "nesta"
         ],
         "long_tail": [
-          "breaking bad stars pay latest news October 2026",
-          "breaking bad stars pay entertainment update 2026",
-          "breaking bad stars pay news 2026-10-12",
-          "latest entertainment news about breaking bad stars pay",
-          "breaking bad stars pay tribute mitte latest update",
-          "The Hollywood Reporter breaking bad stars pay entertainment",
-          "latest news about breaking bad stars pay October 2026",
-          "breaking bad stars pay entertainment news 2026-10-12",
-          "what happened with breaking bad stars pay"
+          "Papa Leão XIV será internado nesta terça para remover nódulo no pulmão; veja o que se sabe 2026-10-13",
+          "notícias mundiais outubro 2026"
         ],
-        "trend_keywords": [
-          "rj mitte"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
-          "breaking",
-          "bad",
-          "stars",
-          "pay",
-          "tribute",
-          "mitte",
-          "sweetheart",
-          "young"
+          "papa",
+          "leao",
+          "xiv",
+          "sera",
+          "internado",
+          "nesta"
         ],
         "freshness_keywords": [
-          "October 2026",
-          "2026-10-12",
-          "breaking bad stars pay 2026"
+          "2026-10-13"
         ],
         "source_keywords": [
-          "The Hollywood Reporter breaking bad stars pay",
-          "hollywoodreporter.com breaking bad stars pay",
-          "The Hollywood Reporter entertainment news"
+          "G1 Mundo"
         ],
-        "meta_title": "‘Breaking Bad’ Stars Pay Tribute to R.J. Mitte:…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_title": "Papa Leão XIV será internado nesta terça para remover…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-13. Abra a fonte original para o contexto completo.",
         "keywords": [
-          "rj mitte",
-          "breaking bad stars pay",
-          "breaking bad stars pay news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "breaking bad stars pay latest news October 2026",
-          "breaking bad stars pay entertainment update 2026",
-          "breaking bad stars pay news 2026-10-12",
-          "latest entertainment news about breaking bad stars pay",
-          "breaking bad stars pay tribute mitte latest update",
-          "The Hollywood Reporter breaking bad stars pay entertainment",
-          "latest news about breaking bad stars pay October 2026",
-          "breaking bad stars pay entertainment news 2026-10-12",
-          "what happened with breaking bad stars pay",
-          "breaking",
-          "bad",
-          "stars",
-          "pay",
-          "tribute",
-          "mitte",
-          "sweetheart",
-          "young",
-          "October 2026",
-          "2026-10-12",
-          "breaking bad stars pay 2026",
-          "The Hollywood Reporter breaking bad stars pay",
-          "hollywoodreporter.com breaking bad stars pay",
-          "The Hollywood Reporter entertainment news"
+          "notícias do mundo 2026-10-13",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "sera",
+          "internado",
+          "nesta",
+          "Papa Leão XIV será internado nesta terça para remover nódulo no pulmão; veja o que se sabe 2026-10-13",
+          "notícias mundiais outubro 2026",
+          "2026-10-13",
+          "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
-      "id": "6c0c7374",
-      "title": "Jack Johnson Brings His Swell Season to the Hollywood Bowl",
-      "url": "https://www.hollywoodreporter.com/music/music-news/jack-johnson-concert-review-hollywood-bowl-1236727347/",
+      "id": "db266b71",
+      "title": "Papa Leão XIV será internado nesta terça para operação de retirada de nódulo no pulmão",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/13/papa-leao-xiv-sera-internado-nesta-terca-para-operacao-de-retirada-de-nodulo-no-pulmao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-13T03:00:00.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Papa Leão XIV",
+      "description": "World news reported by G1 Mundo on 2026-10-13. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/FVjgY6TMlbwydIlO5KJLOskMXh4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/I/A/uem05ySx64L6CdDAunnw/ap26284370329754.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-sera-internado-nesta-terca-para-operacao-de-retirada-de-nodulo-no--db266b/",
+      "landing_url": "https://matchapp.tv/?news=db266b71#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-13",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "sera",
+          "internado",
+          "nesta"
+        ],
+        "long_tail": [
+          "Papa Leão XIV será internado nesta terça para operação de retirada de nódulo no pulmão 2026-10-13",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "papa",
+          "leao",
+          "xiv",
+          "sera",
+          "internado",
+          "nesta"
+        ],
+        "freshness_keywords": [
+          "2026-10-13"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Papa Leão XIV será internado nesta terça para operação de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-13. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-13",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "sera",
+          "internado",
+          "nesta",
+          "Papa Leão XIV será internado nesta terça para operação de retirada de nódulo no pulmão 2026-10-13",
+          "notícias mundiais outubro 2026",
+          "2026-10-13",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "0b28be72",
+      "title": "Bumble shares soar after report dating firm in $1bn takeover talks",
+      "url": "https://www.bbc.co.uk/news/articles/cm9qzwjgnjxlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-13T01:50:47.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-13. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4b3e/live/9d1f7420-c69f-11f1-8a85-c72eae042e5a.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/bumble-shares-soar-after-report-dating-firm-in-1bn-takeover-talks-0b28be/",
+      "landing_url": "https://matchapp.tv/?news=0b28be72#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-13",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "bumble",
+          "shares",
+          "soar",
+          "after",
+          "report",
+          "dating"
+        ],
+        "long_tail": [
+          "Bumble shares soar after report dating firm in $1bn takeover talks 2026-10-13",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "bumble",
+          "shares",
+          "soar",
+          "after",
+          "report",
+          "dating"
+        ],
+        "freshness_keywords": [
+          "2026-10-13"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Bumble shares soar after report dating firm in $1bn…",
+        "meta_description": "World report published by BBC Technology on 2026-10-13. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-13",
+          "world news",
+          "global headlines",
+          "bumble",
+          "shares",
+          "soar",
+          "after",
+          "report",
+          "dating",
+          "Bumble shares soar after report dating firm in $1bn takeover talks 2026-10-13",
+          "world news October 2026",
+          "2026-10-13",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "0202ae2f",
+      "title": "Saudi minister vows 'serious response' to Houthi attacks on airports",
+      "url": "https://www.bbc.co.uk/news/articles/cjly0zqq27e4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-13T01:26:02.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-13. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b82e/live/50a18f00-c629-11f1-a509-ab6554d795a2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/saudi-minister-vows-serious-response-to-houthi-attacks-on-airports-0202ae/",
+      "landing_url": "https://matchapp.tv/?news=0202ae2f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-13",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "saudi",
+          "minister",
+          "vows",
+          "serious",
+          "response",
+          "houthi"
+        ],
+        "long_tail": [
+          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-13",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "saudi",
+          "minister",
+          "vows",
+          "serious",
+          "response",
+          "houthi"
+        ],
+        "freshness_keywords": [
+          "2026-10-13"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Saudi minister vows 'serious response' to Houthi attacks…",
+        "meta_description": "World report published by BBC World on 2026-10-13. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-13",
+          "world news",
+          "global headlines",
+          "saudi",
+          "minister",
+          "vows",
+          "serious",
+          "response",
+          "houthi",
+          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-13",
+          "world news October 2026",
+          "2026-10-13",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "fa4aefd6",
+      "title": "Linda Duncombe, Banking Executive and Film Producer, Dies at 55",
+      "url": "https://www.hollywoodreporter.com/business/business-news/linda-duncombe-dead-banking-executive-film-producer-1236728404/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
       "language": "en",
-      "published_at": "2026-10-12T22:44:36.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "published_at": "2026-10-13T00:49:43.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Linda Duncombe",
+      "description": "Linda Duncombe: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Linda-Duncombe-obit-temp-getty-H-2026.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/linda-duncombe-banking-executive-and-film-producer-dies-at-55-fa4aef/",
+      "landing_url": "https://matchapp.tv/?news=fa4aefd6#latest-news",
+      "seo": {
+        "primary_keyword": "Linda Duncombe latest news",
+        "short_tail": [
+          "Linda Duncombe",
+          "Linda Duncombe news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Linda Duncombe latest news October 2026",
+          "Linda Duncombe obituary update 2026",
+          "Linda Duncombe news 2026-10-13",
+          "latest obituary news about Linda Duncombe",
+          "linda duncombe linda duncombe banking executive latest update",
+          "The Hollywood Reporter Linda Duncombe obituary",
+          "latest news about Linda Duncombe October 2026",
+          "Linda Duncombe entertainment news 2026-10-13",
+          "what happened with Linda Duncombe"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Linda Duncombe",
+          "linda",
+          "duncombe",
+          "banking",
+          "executive",
+          "film",
+          "producer"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-13",
+          "Linda Duncombe 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Linda Duncombe",
+          "hollywoodreporter.com Linda Duncombe",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Linda Duncombe, Banking Executive and Film Producer, Dies…",
+        "meta_description": "Linda Duncombe: Obituary update reported by The Hollywood Reporter on 2026-10-13. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Linda Duncombe latest news",
+          "Linda Duncombe",
+          "Linda Duncombe news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Linda Duncombe latest news October 2026",
+          "Linda Duncombe obituary update 2026",
+          "Linda Duncombe news 2026-10-13",
+          "latest obituary news about Linda Duncombe",
+          "linda duncombe linda duncombe banking executive latest update",
+          "The Hollywood Reporter Linda Duncombe obituary",
+          "latest news about Linda Duncombe October 2026",
+          "Linda Duncombe entertainment news 2026-10-13",
+          "what happened with Linda Duncombe",
+          "linda",
+          "duncombe",
+          "banking",
+          "executive",
+          "film",
+          "producer",
+          "October 2026",
+          "2026-10-13",
+          "Linda Duncombe 2026",
+          "The Hollywood Reporter Linda Duncombe",
+          "hollywoodreporter.com Linda Duncombe",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "26e24cf7",
+      "title": "EJAE Honored at Gyopo’s Chuseok Benefit: “I’m So Proud to Celebrate Where We Come From”",
+      "url": "https://www.hollywoodreporter.com/news/general-news/ejae-gyopo-chuseok-benefit-1236728401/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-13T00:44:09.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
       "event_type": "Entertainment",
       "category": "entertainment",
-      "person": "Jack Johnson Brings His",
-      "description": "Jack Johnson Brings His: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/L1131520.jpg?crop=0px%2C620px%2C1761px%2C987px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/jack-johnson-brings-his-swell-season-to-the-hollywood-bowl-6c0c73/",
-      "landing_url": "https://matchapp.tv/?news=6c0c7374#latest-news",
+      "person": "EJAE Honored",
+      "description": "EJAE Honored: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/BFA_56033_8219300-e1791849055810.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ejae-honored-at-gyopo-s-chuseok-benefit-i-m-so-proud-to-celebrate-where-we-come--26e24c/",
+      "landing_url": "https://matchapp.tv/?news=26e24cf7#latest-news",
       "seo": {
-        "primary_keyword": "Jack Johnson Brings His latest news",
+        "primary_keyword": "EJAE Honored latest news",
         "short_tail": [
-          "Jack Johnson Brings His",
-          "Jack Johnson Brings His news",
+          "EJAE Honored",
+          "EJAE Honored news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
@@ -137,161 +407,169 @@
           "entertainment updates"
         ],
         "long_tail": [
-          "Jack Johnson Brings His latest news October 2026",
-          "Jack Johnson Brings His entertainment update 2026",
-          "Jack Johnson Brings His news 2026-10-12",
-          "latest entertainment news about Jack Johnson Brings His",
-          "jack johnson brings his jack johnson latest update",
-          "The Hollywood Reporter Jack Johnson Brings His entertainment",
-          "latest news about Jack Johnson Brings His October 2026",
-          "Jack Johnson Brings His entertainment news 2026-10-12",
-          "what happened with Jack Johnson Brings His"
+          "EJAE Honored latest news October 2026",
+          "EJAE Honored entertainment update 2026",
+          "EJAE Honored news 2026-10-13",
+          "latest entertainment news about EJAE Honored",
+          "ejae honored ejae honored gyopo chuseok latest update",
+          "The Hollywood Reporter EJAE Honored entertainment",
+          "latest news about EJAE Honored October 2026",
+          "EJAE Honored entertainment news 2026-10-13",
+          "what happened with EJAE Honored"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "Jack Johnson Brings His",
-          "jack",
-          "johnson",
-          "brings",
-          "his"
+          "EJAE Honored",
+          "ejae",
+          "honored",
+          "gyopo",
+          "chuseok",
+          "benefit",
+          "proud"
         ],
         "freshness_keywords": [
           "October 2026",
-          "2026-10-12",
-          "Jack Johnson Brings His 2026"
+          "2026-10-13",
+          "EJAE Honored 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter Jack Johnson Brings His",
-          "hollywoodreporter.com Jack Johnson Brings His",
+          "The Hollywood Reporter EJAE Honored",
+          "hollywoodreporter.com EJAE Honored",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "Jack Johnson Brings His Swell Season to the Hollywood Bowl…",
-        "meta_description": "Jack Johnson Brings His: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original…",
+        "meta_title": "EJAE Honored at Gyopo’s Chuseok Benefit: “I’m So Proud to…",
+        "meta_description": "EJAE Honored: Entertainment update reported by The Hollywood Reporter on 2026-10-13. See verified context, publication time and the original source via…",
         "keywords": [
-          "Jack Johnson Brings His latest news",
-          "Jack Johnson Brings His",
-          "Jack Johnson Brings His news",
+          "EJAE Honored latest news",
+          "EJAE Honored",
+          "EJAE Honored news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "Jack Johnson Brings His latest news October 2026",
-          "Jack Johnson Brings His entertainment update 2026",
-          "Jack Johnson Brings His news 2026-10-12",
-          "latest entertainment news about Jack Johnson Brings His",
-          "jack johnson brings his jack johnson latest update",
-          "The Hollywood Reporter Jack Johnson Brings His entertainment",
-          "latest news about Jack Johnson Brings His October 2026",
-          "Jack Johnson Brings His entertainment news 2026-10-12",
-          "what happened with Jack Johnson Brings His",
-          "jack",
-          "johnson",
-          "brings",
-          "his",
+          "EJAE Honored latest news October 2026",
+          "EJAE Honored entertainment update 2026",
+          "EJAE Honored news 2026-10-13",
+          "latest entertainment news about EJAE Honored",
+          "ejae honored ejae honored gyopo chuseok latest update",
+          "The Hollywood Reporter EJAE Honored entertainment",
+          "latest news about EJAE Honored October 2026",
+          "EJAE Honored entertainment news 2026-10-13",
+          "what happened with EJAE Honored",
+          "ejae",
+          "honored",
+          "gyopo",
+          "chuseok",
+          "benefit",
+          "proud",
           "October 2026",
-          "2026-10-12",
-          "Jack Johnson Brings His 2026",
-          "The Hollywood Reporter Jack Johnson Brings His",
-          "hollywoodreporter.com Jack Johnson Brings His",
+          "2026-10-13",
+          "EJAE Honored 2026",
+          "The Hollywood Reporter EJAE Honored",
+          "hollywoodreporter.com EJAE Honored",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
-      "id": "84b17bbd",
-      "title": "Kacey Musgraves Claps Back at Kristi Noem With Dig About Killing Her Dog",
-      "url": "https://www.hollywoodreporter.com/news/politics-news/kacey-musgraves-kristi-noem-feud-james-talarico-texas-1236728299/",
+      "id": "7ca6229d",
+      "title": "‘High Potential’ Lands Post-Super Bowl Showcase on ABC and Disney+",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/high-potential-super-bowl-lxi-abc-1236728241/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
       "language": "en",
-      "published_at": "2026-10-12T22:26:57.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "published_at": "2026-10-13T00:30:00.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
       "event_type": "Entertainment",
       "category": "entertainment",
-      "person": "Kacey Musgraves Claps Back",
-      "description": "Kacey Musgraves Claps Back: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2293023865.jpg?crop=0px%2C205px%2C5000px%2C2798px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/kacey-musgraves-claps-back-at-kristi-noem-with-dig-about-killing-her-dog-84b17b/",
-      "landing_url": "https://matchapp.tv/?news=84b17bbd#latest-news",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/181199_1113.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/high-potential-lands-post-super-bowl-showcase-on-abc-and-disney-7ca622/",
+      "landing_url": "https://matchapp.tv/?news=7ca6229d#latest-news",
       "seo": {
-        "primary_keyword": "kristi noem",
+        "primary_keyword": "high potential lands post latest news",
         "short_tail": [
-          "Kacey Musgraves Claps Back",
-          "Kacey Musgraves Claps Back news",
+          "high potential lands post",
+          "high potential lands post news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "kristi noem"
+          "entertainment updates"
         ],
         "long_tail": [
-          "Kacey Musgraves Claps Back latest news October 2026",
-          "Kacey Musgraves Claps Back entertainment update 2026",
-          "Kacey Musgraves Claps Back news 2026-10-12",
-          "latest entertainment news about Kacey Musgraves Claps Back",
-          "kacey musgraves claps back kacey musgraves latest update",
-          "The Hollywood Reporter Kacey Musgraves Claps Back entertainment",
-          "latest news about Kacey Musgraves Claps Back October 2026",
-          "Kacey Musgraves Claps Back entertainment news 2026-10-12",
-          "what happened with Kacey Musgraves Claps Back"
+          "high potential lands post latest news October 2026",
+          "high potential lands post entertainment update 2026",
+          "high potential lands post news 2026-10-13",
+          "latest entertainment news about high potential lands post",
+          "high potential lands post super bowl latest update",
+          "The Hollywood Reporter high potential lands post entertainment",
+          "latest news about high potential lands post October 2026",
+          "high potential lands post entertainment news 2026-10-13",
+          "what happened with high potential lands post"
         ],
-        "trend_keywords": [
-          "kristi noem"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
-          "Kacey Musgraves Claps Back",
-          "kacey",
-          "musgraves",
-          "claps",
-          "back"
+          "high",
+          "potential",
+          "lands",
+          "post",
+          "super",
+          "bowl",
+          "showcase",
+          "abc"
         ],
         "freshness_keywords": [
           "October 2026",
-          "2026-10-12",
-          "Kacey Musgraves Claps Back 2026"
+          "2026-10-13",
+          "high potential lands post 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter Kacey Musgraves Claps Back",
-          "hollywoodreporter.com Kacey Musgraves Claps Back",
+          "The Hollywood Reporter high potential lands post",
+          "hollywoodreporter.com high potential lands post",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "Kacey Musgraves Claps Back at Kristi Noem With Dig About…",
-        "meta_description": "Kacey Musgraves Claps Back: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original…",
+        "meta_title": "‘High Potential’ Lands Post-Super Bowl Showcase on ABC and…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-13. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "kristi noem",
-          "Kacey Musgraves Claps Back",
-          "Kacey Musgraves Claps Back news",
+          "high potential lands post latest news",
+          "high potential lands post",
+          "high potential lands post news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "Kacey Musgraves Claps Back latest news October 2026",
-          "Kacey Musgraves Claps Back entertainment update 2026",
-          "Kacey Musgraves Claps Back news 2026-10-12",
-          "latest entertainment news about Kacey Musgraves Claps Back",
-          "kacey musgraves claps back kacey musgraves latest update",
-          "The Hollywood Reporter Kacey Musgraves Claps Back entertainment",
-          "latest news about Kacey Musgraves Claps Back October 2026",
-          "Kacey Musgraves Claps Back entertainment news 2026-10-12",
-          "what happened with Kacey Musgraves Claps Back",
-          "kacey",
-          "musgraves",
-          "claps",
-          "back",
+          "high potential lands post latest news October 2026",
+          "high potential lands post entertainment update 2026",
+          "high potential lands post news 2026-10-13",
+          "latest entertainment news about high potential lands post",
+          "high potential lands post super bowl latest update",
+          "The Hollywood Reporter high potential lands post entertainment",
+          "latest news about high potential lands post October 2026",
+          "high potential lands post entertainment news 2026-10-13",
+          "what happened with high potential lands post",
+          "high",
+          "potential",
+          "lands",
+          "post",
+          "super",
+          "bowl",
+          "showcase",
+          "abc",
           "October 2026",
-          "2026-10-12",
-          "Kacey Musgraves Claps Back 2026",
-          "The Hollywood Reporter Kacey Musgraves Claps Back",
-          "hollywoodreporter.com Kacey Musgraves Claps Back",
+          "2026-10-13",
+          "high potential lands post 2026",
+          "The Hollywood Reporter high potential lands post",
+          "hollywoodreporter.com high potential lands post",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -303,17 +581,17 @@
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
       "language": "en",
-      "published_at": "2026-10-12T22:24:11.000Z",
+      "published_at": "2026-10-13T00:12:25.000Z",
       "discovered_at": "2026-10-12T23:11:14.169Z",
       "event_type": "Obituary",
       "category": "entertainment",
       "person": "Breaking Bad",
       "description": "Breaking Bad: obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d722/live/ce8c0310-c67d-11f1-841c-2105a54cdb08.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d701/live/f34aa090-c69f-11f1-a64c-550be9e3c66b.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-actor-rj-mitte-dies-aged-34-16b45d/",
       "landing_url": "https://matchapp.tv/?news=16b45dda#latest-news",
       "seo": {
-        "primary_keyword": "rj mitte",
+        "primary_keyword": "Breaking Bad latest news",
         "short_tail": [
           "Breaking Bad",
           "Breaking Bad news",
@@ -321,23 +599,20 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "rj mitte"
+          "entertainment updates"
         ],
         "long_tail": [
           "Breaking Bad latest news October 2026",
           "Breaking Bad obituary update 2026",
-          "Breaking Bad news 2026-10-12",
+          "Breaking Bad news 2026-10-13",
           "latest obituary news about Breaking Bad",
           "breaking bad breaking bad actor mitte latest update",
           "BBC Breaking Bad obituary",
           "latest news about Breaking Bad October 2026",
-          "Breaking Bad entertainment news 2026-10-12",
+          "Breaking Bad entertainment news 2026-10-13",
           "what happened with Breaking Bad"
         ],
-        "trend_keywords": [
-          "rj mitte"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "Breaking Bad",
           "breaking",
@@ -349,7 +624,7 @@
         ],
         "freshness_keywords": [
           "October 2026",
-          "2026-10-12",
+          "2026-10-13",
           "Breaking Bad 2026"
         ],
         "source_keywords": [
@@ -358,9 +633,9 @@
           "BBC entertainment news"
         ],
         "meta_title": "Breaking Bad actor RJ Mitte dies aged 34 | Entertainment…",
-        "meta_description": "Breaking Bad: Obituary update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_description": "Breaking Bad: Obituary update reported by BBC on 2026-10-13. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "rj mitte",
+          "Breaking Bad latest news",
           "Breaking Bad",
           "Breaking Bad news",
           "obituary",
@@ -370,12 +645,12 @@
           "entertainment updates",
           "Breaking Bad latest news October 2026",
           "Breaking Bad obituary update 2026",
-          "Breaking Bad news 2026-10-12",
+          "Breaking Bad news 2026-10-13",
           "latest obituary news about Breaking Bad",
           "breaking bad breaking bad actor mitte latest update",
           "BBC Breaking Bad obituary",
           "latest news about Breaking Bad October 2026",
-          "Breaking Bad entertainment news 2026-10-12",
+          "Breaking Bad entertainment news 2026-10-13",
           "what happened with Breaking Bad",
           "breaking",
           "bad",
@@ -384,176 +659,107 @@
           "dies",
           "aged",
           "October 2026",
-          "2026-10-12",
+          "2026-10-13",
           "Breaking Bad 2026",
           "BBC Breaking Bad",
           "bbc.co.uk Breaking Bad",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
-      "id": "41f1b1d5",
-      "title": "Immigration agents search congresswoman Ilhan Omar's home",
-      "url": "https://www.bbc.co.uk/news/articles/cvp8glg97393o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
+      "id": "f43e365b",
+      "title": "Autoridades suspeitaram de ligação falsa e atrasaram socorro a Christa Pike após execução fracassada",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/autoridades-suspeitaram-de-ligacao-falsa-e-atrasaram-socorro-a-christa-pike-apos-execucao-fracassada.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T22:05:31.000Z",
-      "discovered_at": "2026-10-12T16:01:40.762Z",
+      "language": "pt",
+      "published_at": "2026-10-13T00:04:16.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dc45/live/01c4d970-c64f-11f1-b47f-e3f9cf703bc3.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/immigration-agents-search-congresswoman-ilhan-omar-s-home-41f1b1/",
-      "landing_url": "https://matchapp.tv/?news=41f1b1d5#latest-news",
+      "description": "World news reported by G1 Mundo on 2026-10-13. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/85umJZTyvKs7l5T2SvK5yps2VJg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/4/z/vV6TuCRR20M0XhMDJprw/copia-de-sem-nome-1200-x-900-px-10-.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/autoridades-suspeitaram-de-ligacao-falsa-e-atrasaram-socorro-a-christa-pike-apos-f43e36/",
+      "landing_url": "https://matchapp.tv/?news=f43e365b#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-12",
+        "primary_keyword": "notícias do mundo 2026-10-13",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "immigration",
-          "agents",
-          "search",
-          "congresswoman",
-          "ilhan",
-          "omar"
+          "notícias do mundo",
+          "notícias internacionais",
+          "autoridades",
+          "suspeitaram",
+          "ligacao",
+          "falsa",
+          "atrasaram",
+          "socorro"
         ],
         "long_tail": [
-          "Immigration agents search congresswoman Ilhan Omar's home 2026-10-12",
-          "world news October 2026"
+          "Autoridades suspeitaram de ligação falsa e atrasaram socorro a Christa Pike após execução fracassada 2026-10-13",
+          "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "immigration",
-          "agents",
-          "search",
-          "congresswoman",
-          "ilhan",
-          "omar"
+          "autoridades",
+          "suspeitaram",
+          "ligacao",
+          "falsa",
+          "atrasaram",
+          "socorro"
         ],
         "freshness_keywords": [
-          "2026-10-12"
+          "2026-10-13"
         ],
         "source_keywords": [
-          "BBC World"
+          "G1 Mundo"
         ],
-        "meta_title": "Immigration agents search congresswoman Ilhan Omar's home…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "meta_title": "Autoridades suspeitaram de ligação falsa e atrasaram…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-13. Abra a fonte original para o contexto completo.",
         "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "immigration",
-          "agents",
-          "search",
-          "congresswoman",
-          "ilhan",
-          "omar",
-          "Immigration agents search congresswoman Ilhan Omar's home 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
+          "notícias do mundo 2026-10-13",
+          "notícias do mundo",
+          "notícias internacionais",
+          "autoridades",
+          "suspeitaram",
+          "ligacao",
+          "falsa",
+          "atrasaram",
+          "socorro",
+          "Autoridades suspeitaram de ligação falsa e atrasaram socorro a Christa Pike após execução fracassada 2026-10-13",
+          "notícias mundiais outubro 2026",
+          "2026-10-13",
+          "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
-      "id": "36e6fe54",
-      "title": "Crew searching for Amelia Earhart arrives at crab-infested island",
-      "url": "https://www.bbc.co.uk/news/articles/c6pvgryp8yv0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T22:01:43.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fcb9/live/6e07c9f0-c67a-11f1-9bb5-01f2acfb45fc.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/crew-searching-for-amelia-earhart-arrives-at-crab-infested-island-36e6fe/",
-      "landing_url": "https://matchapp.tv/?news=36e6fe54#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "crew",
-          "searching",
-          "amelia",
-          "earhart",
-          "arrives",
-          "crab"
-        ],
-        "long_tail": [
-          "Crew searching for Amelia Earhart arrives at crab-infested island 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "crew",
-          "searching",
-          "amelia",
-          "earhart",
-          "arrives",
-          "crab"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Crew searching for Amelia Earhart arrives at crab-infested…",
-        "meta_description": "World report published by BBC Science on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "crew",
-          "searching",
-          "amelia",
-          "earhart",
-          "arrives",
-          "crab",
-          "Crew searching for Amelia Earhart arrives at crab-infested island 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "5ab466f4",
-      "title": "”James Gray Films Are a Safe Investment,” Says ‘Paper Tiger’ Producer",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/james-gray-films-safe-investment-paper-tiger-producer-1236728024/",
+      "id": "9d23307a",
+      "title": "‘Ink’ Finally Meets Its Native Audience at London Film Festival, and Jack O’Connell Has Thoughts",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/ink-bfi-london-film-festival-danny-boyle-jack-o-connell-1236727950/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
       "language": "en",
-      "published_at": "2026-10-12T21:25:32.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "published_at": "2026-10-12T23:49:38.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
       "event_type": "Entertainment",
       "category": "entertainment",
       "person": "",
       "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/07/Paper-Tiger.00_41_37_08.Still005_e_Retouched-11.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/james-gray-films-are-a-safe-investment-says-paper-tiger-producer-5ab466/",
-      "landing_url": "https://matchapp.tv/?news=5ab466f4#latest-news",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-13T003828.654.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ink-finally-meets-its-native-audience-at-london-film-festival-and-jack-o-connell-9d2330/",
+      "landing_url": "https://matchapp.tv/?news=9d23307a#latest-news",
       "seo": {
-        "primary_keyword": "james gray films safe latest news",
+        "primary_keyword": "ink finally meets its latest news",
         "short_tail": [
-          "james gray films safe",
-          "james gray films safe news",
+          "ink finally meets its",
+          "ink finally meets its news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
@@ -561,374 +767,98 @@
           "entertainment updates"
         ],
         "long_tail": [
-          "james gray films safe latest news October 2026",
-          "james gray films safe entertainment update 2026",
-          "james gray films safe news 2026-10-12",
-          "latest entertainment news about james gray films safe",
-          "james gray films safe investment says latest update",
-          "The Hollywood Reporter james gray films safe entertainment",
-          "latest news about james gray films safe October 2026",
-          "james gray films safe entertainment news 2026-10-12",
-          "what happened with james gray films safe"
+          "ink finally meets its latest news October 2026",
+          "ink finally meets its entertainment update 2026",
+          "ink finally meets its news 2026-10-12",
+          "latest entertainment news about ink finally meets its",
+          "ink finally meets its native audience latest update",
+          "The Hollywood Reporter ink finally meets its entertainment",
+          "latest news about ink finally meets its October 2026",
+          "ink finally meets its entertainment news 2026-10-12",
+          "what happened with ink finally meets its"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "james",
-          "gray",
-          "films",
-          "safe",
-          "investment",
-          "says",
-          "paper",
-          "tiger"
+          "ink",
+          "finally",
+          "meets",
+          "its",
+          "native",
+          "audience",
+          "london",
+          "film"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-12",
-          "james gray films safe 2026"
+          "ink finally meets its 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter james gray films safe",
-          "hollywoodreporter.com james gray films safe",
+          "The Hollywood Reporter ink finally meets its",
+          "hollywoodreporter.com ink finally meets its",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "”James Gray Films Are a Safe Investment,” Says ‘Paper…",
+        "meta_title": "‘Ink’ Finally Meets Its Native Audience at London Film…",
         "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "james gray films safe latest news",
-          "james gray films safe",
-          "james gray films safe news",
+          "ink finally meets its latest news",
+          "ink finally meets its",
+          "ink finally meets its news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "james gray films safe latest news October 2026",
-          "james gray films safe entertainment update 2026",
-          "james gray films safe news 2026-10-12",
-          "latest entertainment news about james gray films safe",
-          "james gray films safe investment says latest update",
-          "The Hollywood Reporter james gray films safe entertainment",
-          "latest news about james gray films safe October 2026",
-          "james gray films safe entertainment news 2026-10-12",
-          "what happened with james gray films safe",
-          "james",
-          "gray",
-          "films",
-          "safe",
-          "investment",
-          "says",
-          "paper",
-          "tiger",
+          "ink finally meets its latest news October 2026",
+          "ink finally meets its entertainment update 2026",
+          "ink finally meets its news 2026-10-12",
+          "latest entertainment news about ink finally meets its",
+          "ink finally meets its native audience latest update",
+          "The Hollywood Reporter ink finally meets its entertainment",
+          "latest news about ink finally meets its October 2026",
+          "ink finally meets its entertainment news 2026-10-12",
+          "what happened with ink finally meets its",
+          "ink",
+          "finally",
+          "meets",
+          "its",
+          "native",
+          "audience",
+          "london",
+          "film",
           "October 2026",
           "2026-10-12",
-          "james gray films safe 2026",
-          "The Hollywood Reporter james gray films safe",
-          "hollywoodreporter.com james gray films safe",
+          "ink finally meets its 2026",
+          "The Hollywood Reporter ink finally meets its",
+          "hollywoodreporter.com ink finally meets its",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
-      "id": "858a1451",
-      "title": "Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says",
-      "url": "https://www.bbc.co.uk/news/articles/cvlyd4pdlwkxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T21:20:51.000Z",
-      "discovered_at": "2026-10-12T20:18:05.873Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Six Ukrainian",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fbda/live/375348b0-c659-11f1-8600-efb62b613ab5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/six-ukrainian-energy-sites-hit-by-russia-since-trump-announced-ceasefire-zelensk-858a14/",
-      "landing_url": "https://matchapp.tv/?news=858a1451#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "six",
-          "ukrainian",
-          "energy",
-          "sites",
-          "hit",
-          "russia"
-        ],
-        "long_tail": [
-          "Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "six",
-          "ukrainian",
-          "energy",
-          "sites",
-          "hit",
-          "russia"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Six Ukrainian energy sites hit by Russia since Trump…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "six",
-          "ukrainian",
-          "energy",
-          "sites",
-          "hit",
-          "russia",
-          "Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "4725a39a",
-      "title": "Analysis: Trump's global headaches worsen weeks before crucial elections",
-      "url": "https://www.bbc.co.uk/news/articles/cqgm087rkze2o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T21:07:25.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b75f/live/3e394450-c680-11f1-841c-2105a54cdb08.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/analysis-trump-s-global-headaches-worsen-weeks-before-crucial-elections-4725a3/",
-      "landing_url": "https://matchapp.tv/?news=4725a39a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "analysis",
-          "trump",
-          "global",
-          "headaches",
-          "worsen",
-          "weeks"
-        ],
-        "long_tail": [
-          "Analysis: Trump's global headaches worsen weeks before crucial elections 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "analysis",
-          "trump",
-          "global",
-          "headaches",
-          "worsen",
-          "weeks"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Analysis: Trump's global headaches worsen weeks before…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "analysis",
-          "trump",
-          "global",
-          "headaches",
-          "worsen",
-          "weeks",
-          "Analysis: Trump's global headaches worsen weeks before crucial elections 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "50ecb1bc",
-      "title": "Qantas flight grounded after bedbug outbreak",
-      "url": "https://www.bbc.co.uk/news/articles/cr62yzypnw7no?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T21:01:45.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0319/live/802fd450-c644-11f1-b47f-e3f9cf703bc3.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/qantas-flight-grounded-after-bedbug-outbreak-50ecb1/",
-      "landing_url": "https://matchapp.tv/?news=50ecb1bc#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "qantas",
-          "flight",
-          "grounded",
-          "after",
-          "bedbug",
-          "outbreak"
-        ],
-        "long_tail": [
-          "Qantas flight grounded after bedbug outbreak 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "qantas",
-          "flight",
-          "grounded",
-          "after",
-          "bedbug",
-          "outbreak"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Qantas flight grounded after bedbug outbreak | World News…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "qantas",
-          "flight",
-          "grounded",
-          "after",
-          "bedbug",
-          "outbreak",
-          "Qantas flight grounded after bedbug outbreak 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "d8b2e2b8",
-      "title": "Pupil arrested after two teachers shot at French school",
-      "url": "https://www.bbc.co.uk/news/articles/cm2keg7910gvo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T21:01:28.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c65c/live/757924d0-c621-11f1-b048-6946f232cb95.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pupil-arrested-after-two-teachers-shot-at-french-school-d8b2e2/",
-      "landing_url": "https://matchapp.tv/?news=d8b2e2b8#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pupil",
-          "arrested",
-          "after",
-          "two",
-          "teachers",
-          "shot"
-        ],
-        "long_tail": [
-          "Pupil arrested after two teachers shot at French school 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pupil",
-          "arrested",
-          "after",
-          "two",
-          "teachers",
-          "shot"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Pupil arrested after two teachers shot at French school |…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "pupil",
-          "arrested",
-          "after",
-          "two",
-          "teachers",
-          "shot",
-          "Pupil arrested after two teachers shot at French school 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "c736b9fc",
-      "title": "Here’s Where to Watch ALCS 2026: Cleveland Guardians vs. Tampa Bay Rays Live Online",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/watch-stream-alcs-2026-guardians-rays-mlb-live-online-free-1236728125/",
+      "id": "f75f02fb",
+      "title": "Former ‘SNL’ Star Ego Nwodim Reacts to Shane Gillis’ Controversial Joke About Women",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/ego-nwodim-reacts-shane-gillis-controversial-joke-snl-1236728321/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
       "language": "en",
-      "published_at": "2026-10-12T21:00:00.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "published_at": "2026-10-12T23:37:06.000Z",
+      "discovered_at": "2026-10-13T03:34:51.228Z",
       "event_type": "Entertainment",
       "category": "entertainment",
-      "person": "Here’s Where",
-      "description": "Here’s Where: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/MLB-Cleveland-Guardians-Jose-Ramirez-GettyImages-2299594871-H-MAIN-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/here-s-where-to-watch-alcs-2026-cleveland-guardians-vs-tampa-bay-rays-live-onlin-c736b9/",
-      "landing_url": "https://matchapp.tv/?news=c736b9fc#latest-news",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2025/06/Ego-Nwodim-getty-H-2025.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/former-snl-star-ego-nwodim-reacts-to-shane-gillis-controversial-joke-about-women-f75f02/",
+      "landing_url": "https://matchapp.tv/?news=f75f02fb#latest-news",
       "seo": {
-        "primary_keyword": "Here’s Where latest news",
+        "primary_keyword": "former snl star ego latest news",
         "short_tail": [
-          "Here’s Where",
-          "Here’s Where news",
+          "former snl star ego",
+          "former snl star ego news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
@@ -936,70 +866,73 @@
           "entertainment updates"
         ],
         "long_tail": [
-          "Here’s Where latest news October 2026",
-          "Here’s Where entertainment update 2026",
-          "Here’s Where news 2026-10-12",
-          "latest entertainment news about Here’s Where",
-          "here where here where watch alcs latest update",
-          "The Hollywood Reporter Here’s Where entertainment",
-          "latest news about Here’s Where October 2026",
-          "Here’s Where entertainment news 2026-10-12",
-          "what happened with Here’s Where"
+          "former snl star ego latest news October 2026",
+          "former snl star ego entertainment update 2026",
+          "former snl star ego news 2026-10-12",
+          "latest entertainment news about former snl star ego",
+          "former snl star ego nwodim reacts latest update",
+          "The Hollywood Reporter former snl star ego entertainment",
+          "latest news about former snl star ego October 2026",
+          "former snl star ego entertainment news 2026-10-12",
+          "what happened with former snl star ego"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "Here’s Where",
-          "here",
-          "where",
-          "watch",
-          "alcs",
-          "2026",
-          "cleveland"
+          "former",
+          "snl",
+          "star",
+          "ego",
+          "nwodim",
+          "reacts",
+          "shane",
+          "gillis"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-12",
-          "Here’s Where 2026"
+          "former snl star ego 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter Here’s Where",
-          "hollywoodreporter.com Here’s Where",
+          "The Hollywood Reporter former snl star ego",
+          "hollywoodreporter.com former snl star ego",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "Here’s Where to Watch ALCS 2026: Cleveland Guardians vs.…",
-        "meta_description": "Here’s Where: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via…",
+        "meta_title": "Former ‘SNL’ Star Ego Nwodim Reacts to Shane Gillis’…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "Here’s Where latest news",
-          "Here’s Where",
-          "Here’s Where news",
+          "former snl star ego latest news",
+          "former snl star ego",
+          "former snl star ego news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "Here’s Where latest news October 2026",
-          "Here’s Where entertainment update 2026",
-          "Here’s Where news 2026-10-12",
-          "latest entertainment news about Here’s Where",
-          "here where here where watch alcs latest update",
-          "The Hollywood Reporter Here’s Where entertainment",
-          "latest news about Here’s Where October 2026",
-          "Here’s Where entertainment news 2026-10-12",
-          "what happened with Here’s Where",
-          "here",
-          "where",
-          "watch",
-          "alcs",
-          "2026",
-          "cleveland",
+          "former snl star ego latest news October 2026",
+          "former snl star ego entertainment update 2026",
+          "former snl star ego news 2026-10-12",
+          "latest entertainment news about former snl star ego",
+          "former snl star ego nwodim reacts latest update",
+          "The Hollywood Reporter former snl star ego entertainment",
+          "latest news about former snl star ego October 2026",
+          "former snl star ego entertainment news 2026-10-12",
+          "what happened with former snl star ego",
+          "former",
+          "snl",
+          "star",
+          "ego",
+          "nwodim",
+          "reacts",
+          "shane",
+          "gillis",
           "October 2026",
           "2026-10-12",
-          "Here’s Where 2026",
-          "The Hollywood Reporter Here’s Where",
-          "hollywoodreporter.com Here’s Where",
+          "former snl star ego 2026",
+          "The Hollywood Reporter former snl star ego",
+          "hollywoodreporter.com former snl star ego",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1011,7 +944,7 @@
       "source_home": "https://www.bbc.co.uk",
       "country": "GB",
       "language": "en",
-      "published_at": "2026-10-12T20:59:10.000Z",
+      "published_at": "2026-10-12T23:35:04.000Z",
       "discovered_at": "2026-10-12T23:11:14.169Z",
       "event_type": "Entertainment",
       "category": "entertainment",
@@ -1098,51 +1031,245 @@
           "bbc.co.uk actress selma blair accused",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
-      "id": "0202ae2f",
-      "title": "Saudi minister vows 'serious response' to Houthi attacks on airports",
-      "url": "https://www.bbc.co.uk/news/articles/cjly0zqq27e4o?at_medium=RSS&at_campaign=rss",
+      "id": "ba811728",
+      "title": "‘Breaking Bad’ Stars Pay Tribute to R.J. Mitte: “Sweetheart of a Young Man”",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/breaking-bad-stars-react-r-j-mitte-death-1236728237/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T22:54:20.000Z",
+      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/RJ-Mitte-Breaking-Bad-everett-H-2026.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-stars-pay-tribute-to-r-j-mitte-sweetheart-of-a-young-man-ba8117/",
+      "landing_url": "https://matchapp.tv/?news=ba811728#latest-news",
+      "seo": {
+        "primary_keyword": "breaking bad stars pay latest news",
+        "short_tail": [
+          "breaking bad stars pay",
+          "breaking bad stars pay news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "breaking bad stars pay latest news October 2026",
+          "breaking bad stars pay entertainment update 2026",
+          "breaking bad stars pay news 2026-10-12",
+          "latest entertainment news about breaking bad stars pay",
+          "breaking bad stars pay tribute mitte latest update",
+          "The Hollywood Reporter breaking bad stars pay entertainment",
+          "latest news about breaking bad stars pay October 2026",
+          "breaking bad stars pay entertainment news 2026-10-12",
+          "what happened with breaking bad stars pay"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "breaking",
+          "bad",
+          "stars",
+          "pay",
+          "tribute",
+          "mitte",
+          "sweetheart",
+          "young"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "breaking bad stars pay 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter breaking bad stars pay",
+          "hollywoodreporter.com breaking bad stars pay",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Breaking Bad’ Stars Pay Tribute to R.J. Mitte:…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "breaking bad stars pay latest news",
+          "breaking bad stars pay",
+          "breaking bad stars pay news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "breaking bad stars pay latest news October 2026",
+          "breaking bad stars pay entertainment update 2026",
+          "breaking bad stars pay news 2026-10-12",
+          "latest entertainment news about breaking bad stars pay",
+          "breaking bad stars pay tribute mitte latest update",
+          "The Hollywood Reporter breaking bad stars pay entertainment",
+          "latest news about breaking bad stars pay October 2026",
+          "breaking bad stars pay entertainment news 2026-10-12",
+          "what happened with breaking bad stars pay",
+          "breaking",
+          "bad",
+          "stars",
+          "pay",
+          "tribute",
+          "mitte",
+          "sweetheart",
+          "young",
+          "October 2026",
+          "2026-10-12",
+          "breaking bad stars pay 2026",
+          "The Hollywood Reporter breaking bad stars pay",
+          "hollywoodreporter.com breaking bad stars pay",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "6c0c7374",
+      "title": "Jack Johnson Brings His Swell Season to the Hollywood Bowl",
+      "url": "https://www.hollywoodreporter.com/music/music-news/jack-johnson-concert-review-hollywood-bowl-1236727347/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-12T22:44:36.000Z",
+      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Jack Johnson Brings His",
+      "description": "Jack Johnson Brings His: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/L1131520.jpg?crop=0px%2C620px%2C1761px%2C987px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/jack-johnson-brings-his-swell-season-to-the-hollywood-bowl-6c0c73/",
+      "landing_url": "https://matchapp.tv/?news=6c0c7374#latest-news",
+      "seo": {
+        "primary_keyword": "ty johnson",
+        "short_tail": [
+          "Jack Johnson Brings His",
+          "Jack Johnson Brings His news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "ty johnson"
+        ],
+        "long_tail": [
+          "Jack Johnson Brings His latest news October 2026",
+          "Jack Johnson Brings His entertainment update 2026",
+          "Jack Johnson Brings His news 2026-10-12",
+          "latest entertainment news about Jack Johnson Brings His",
+          "jack johnson brings his jack johnson latest update",
+          "The Hollywood Reporter Jack Johnson Brings His entertainment",
+          "latest news about Jack Johnson Brings His October 2026",
+          "Jack Johnson Brings His entertainment news 2026-10-12",
+          "what happened with Jack Johnson Brings His"
+        ],
+        "trend_keywords": [
+          "ty johnson"
+        ],
+        "entity_keywords": [
+          "Jack Johnson Brings His",
+          "jack",
+          "johnson",
+          "brings",
+          "his"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-12",
+          "Jack Johnson Brings His 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Jack Johnson Brings His",
+          "hollywoodreporter.com Jack Johnson Brings His",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Jack Johnson Brings His Swell Season to the Hollywood Bowl…",
+        "meta_description": "Jack Johnson Brings His: Entertainment update reported by The Hollywood Reporter on 2026-10-12. See verified context, publication time and the original…",
+        "keywords": [
+          "ty johnson",
+          "Jack Johnson Brings His",
+          "Jack Johnson Brings His news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Jack Johnson Brings His latest news October 2026",
+          "Jack Johnson Brings His entertainment update 2026",
+          "Jack Johnson Brings His news 2026-10-12",
+          "latest entertainment news about Jack Johnson Brings His",
+          "jack johnson brings his jack johnson latest update",
+          "The Hollywood Reporter Jack Johnson Brings His entertainment",
+          "latest news about Jack Johnson Brings His October 2026",
+          "Jack Johnson Brings His entertainment news 2026-10-12",
+          "what happened with Jack Johnson Brings His",
+          "jack",
+          "johnson",
+          "brings",
+          "his",
+          "October 2026",
+          "2026-10-12",
+          "Jack Johnson Brings His 2026",
+          "The Hollywood Reporter Jack Johnson Brings His",
+          "hollywoodreporter.com Jack Johnson Brings His",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "41f1b1d5",
+      "title": "Immigration agents search congresswoman Ilhan Omar's home",
+      "url": "https://www.bbc.co.uk/news/articles/cvp8glg97393o?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-12T20:54:09.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "published_at": "2026-10-12T22:05:31.000Z",
+      "discovered_at": "2026-10-12T16:01:40.762Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b82e/live/50a18f00-c629-11f1-a509-ab6554d795a2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/saudi-minister-vows-serious-response-to-houthi-attacks-on-airports-0202ae/",
-      "landing_url": "https://matchapp.tv/?news=0202ae2f#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dc45/live/01c4d970-c64f-11f1-b47f-e3f9cf703bc3.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/immigration-agents-search-congresswoman-ilhan-omar-s-home-41f1b1/",
+      "landing_url": "https://matchapp.tv/?news=41f1b1d5#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-12",
         "short_tail": [
           "world news",
           "global headlines",
-          "saudi",
-          "minister",
-          "vows",
-          "serious",
-          "response",
-          "houthi"
+          "immigration",
+          "agents",
+          "search",
+          "congresswoman",
+          "ilhan",
+          "omar"
         ],
         "long_tail": [
-          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-12",
+          "Immigration agents search congresswoman Ilhan Omar's home 2026-10-12",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "saudi",
-          "minister",
-          "vows",
-          "serious",
-          "response",
-          "houthi"
+          "immigration",
+          "agents",
+          "search",
+          "congresswoman",
+          "ilhan",
+          "omar"
         ],
         "freshness_keywords": [
           "2026-10-12"
@@ -1150,24 +1277,369 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Saudi minister vows 'serious response' to Houthi attacks…",
+        "meta_title": "Immigration agents search congresswoman Ilhan Omar's home…",
         "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-12",
           "world news",
           "global headlines",
-          "saudi",
-          "minister",
-          "vows",
-          "serious",
-          "response",
-          "houthi",
-          "Saudi minister vows 'serious response' to Houthi attacks on airports 2026-10-12",
+          "immigration",
+          "agents",
+          "search",
+          "congresswoman",
+          "ilhan",
+          "omar",
+          "Immigration agents search congresswoman Ilhan Omar's home 2026-10-12",
           "world news October 2026",
           "2026-10-12",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "36e6fe54",
+      "title": "Crew searching for Amelia Earhart arrives at crab-infested island",
+      "url": "https://www.bbc.co.uk/news/articles/c6pvgryp8yv0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T22:01:43.000Z",
+      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21e2/live/2c2cb300-c67b-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/crew-searching-for-amelia-earhart-arrives-at-crab-infested-island-36e6fe/",
+      "landing_url": "https://matchapp.tv/?news=36e6fe54#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "crew",
+          "searching",
+          "amelia",
+          "earhart",
+          "arrives",
+          "crab"
+        ],
+        "long_tail": [
+          "Crew searching for Amelia Earhart arrives at crab-infested island 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "crew",
+          "searching",
+          "amelia",
+          "earhart",
+          "arrives",
+          "crab"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Crew searching for Amelia Earhart arrives at crab-infested…",
+        "meta_description": "World report published by BBC Science on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "crew",
+          "searching",
+          "amelia",
+          "earhart",
+          "arrives",
+          "crab",
+          "Crew searching for Amelia Earhart arrives at crab-infested island 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "858a1451",
+      "title": "Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says",
+      "url": "https://www.bbc.co.uk/news/articles/cvlyd4pdlwkxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T21:20:51.000Z",
+      "discovered_at": "2026-10-12T20:18:05.873Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Six Ukrainian",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fbda/live/375348b0-c659-11f1-8600-efb62b613ab5.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/six-ukrainian-energy-sites-hit-by-russia-since-trump-announced-ceasefire-zelensk-858a14/",
+      "landing_url": "https://matchapp.tv/?news=858a1451#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "six",
+          "ukrainian",
+          "energy",
+          "sites",
+          "hit",
+          "russia"
+        ],
+        "long_tail": [
+          "Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "six",
+          "ukrainian",
+          "energy",
+          "sites",
+          "hit",
+          "russia"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Six Ukrainian energy sites hit by Russia since Trump…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "six",
+          "ukrainian",
+          "energy",
+          "sites",
+          "hit",
+          "russia",
+          "Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "4725a39a",
+      "title": "Analysis: Trump's global headaches worsen weeks before crucial elections",
+      "url": "https://www.bbc.co.uk/news/articles/cqgm087rkze2o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T21:07:25.000Z",
+      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b75f/live/3e394450-c680-11f1-841c-2105a54cdb08.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/analysis-trump-s-global-headaches-worsen-weeks-before-crucial-elections-4725a3/",
+      "landing_url": "https://matchapp.tv/?news=4725a39a#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "analysis",
+          "trump",
+          "global",
+          "headaches",
+          "worsen",
+          "weeks"
+        ],
+        "long_tail": [
+          "Analysis: Trump's global headaches worsen weeks before crucial elections 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "analysis",
+          "trump",
+          "global",
+          "headaches",
+          "worsen",
+          "weeks"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Analysis: Trump's global headaches worsen weeks before…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "analysis",
+          "trump",
+          "global",
+          "headaches",
+          "worsen",
+          "weeks",
+          "Analysis: Trump's global headaches worsen weeks before crucial elections 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "50ecb1bc",
+      "title": "Qantas flight grounded after bedbug outbreak",
+      "url": "https://www.bbc.co.uk/news/articles/cr62yzypnw7no?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T21:01:45.000Z",
+      "discovered_at": "2026-10-12T23:11:14.169Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0319/live/802fd450-c644-11f1-b47f-e3f9cf703bc3.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/qantas-flight-grounded-after-bedbug-outbreak-50ecb1/",
+      "landing_url": "https://matchapp.tv/?news=50ecb1bc#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "qantas",
+          "flight",
+          "grounded",
+          "after",
+          "bedbug",
+          "outbreak"
+        ],
+        "long_tail": [
+          "Qantas flight grounded after bedbug outbreak 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "qantas",
+          "flight",
+          "grounded",
+          "after",
+          "bedbug",
+          "outbreak"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Qantas flight grounded after bedbug outbreak | World News…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "qantas",
+          "flight",
+          "grounded",
+          "after",
+          "bedbug",
+          "outbreak",
+          "Qantas flight grounded after bedbug outbreak 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
+      }
+    },
+    {
+      "id": "d8b2e2b8",
+      "title": "Pupil arrested after two teachers shot at French school",
+      "url": "https://www.bbc.co.uk/news/articles/cm2keg7910gvo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-12T21:01:28.000Z",
+      "discovered_at": "2026-10-12T13:28:12.771Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c65c/live/757924d0-c621-11f1-b048-6946f232cb95.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pupil-arrested-after-two-teachers-shot-at-french-school-d8b2e2/",
+      "landing_url": "https://matchapp.tv/?news=d8b2e2b8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-12",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot"
+        ],
+        "long_tail": [
+          "Pupil arrested after two teachers shot at French school 2026-10-12",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot"
+        ],
+        "freshness_keywords": [
+          "2026-10-12"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pupil arrested after two teachers shot at French school |…",
+        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-12",
+          "world news",
+          "global headlines",
+          "pupil",
+          "arrested",
+          "after",
+          "two",
+          "teachers",
+          "shot",
+          "Pupil arrested after two teachers shot at French school 2026-10-12",
+          "world news October 2026",
+          "2026-10-12",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1189,7 +1661,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/ator-rj-mitte-de-breaking-bad-morre-aos-34-anos-b45858/",
       "landing_url": "https://matchapp.tv/?news=b45858a2#latest-news",
       "seo": {
-        "primary_keyword": "rj mitte",
+        "primary_keyword": "Ator RJ Mitte últimas notícias",
         "short_tail": [
           "Ator RJ Mitte",
           "Ator RJ Mitte news",
@@ -1197,8 +1669,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "rj mitte"
+          "notícias hoje"
         ],
         "long_tail": [
           "Ator RJ Mitte latest news October 2026",
@@ -1211,9 +1682,7 @@
           "Ator RJ Mitte notícia de 2026-10-12",
           "o que aconteceu com Ator RJ Mitte"
         ],
-        "trend_keywords": [
-          "rj mitte"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "Ator RJ Mitte",
           "ator",
@@ -1237,7 +1706,7 @@
         "meta_title": "Ator RJ Mitte, de 'Breaking Bad', morre aos 34 anos |…",
         "meta_description": "Ator RJ Mitte: Notícia publicada por G1 em 2026-10-12. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "rj mitte",
+          "Ator RJ Mitte últimas notícias",
           "Ator RJ Mitte",
           "Ator RJ Mitte news",
           "obituary",
@@ -1268,76 +1737,7 @@
           "g1.globo.com Ator RJ Mitte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "8e6d2a07",
-      "title": "Why Moscow is staying tight-lipped on Trump's energy ceasefire",
-      "url": "https://www.bbc.co.uk/news/articles/cjx2359qekrdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-12T20:17:37.000Z",
-      "discovered_at": "2026-10-12T23:11:14.169Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Why Moscow",
-      "description": "World news reported by BBC World on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6601/live/5861b070-c670-11f1-8c1b-356b863d8549.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/why-moscow-is-staying-tight-lipped-on-trump-s-energy-ceasefire-8e6d2a/",
-      "landing_url": "https://matchapp.tv/?news=8e6d2a07#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-12",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "why",
-          "moscow",
-          "staying",
-          "tight",
-          "lipped",
-          "trump"
-        ],
-        "long_tail": [
-          "Why Moscow is staying tight-lipped on Trump's energy ceasefire 2026-10-12",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "why",
-          "moscow",
-          "staying",
-          "tight",
-          "lipped",
-          "trump"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Why Moscow is staying tight-lipped on Trump's energy…",
-        "meta_description": "World report published by BBC World on 2026-10-12. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-12",
-          "world news",
-          "global headlines",
-          "why",
-          "moscow",
-          "staying",
-          "tight",
-          "lipped",
-          "trump",
-          "Why Moscow is staying tight-lipped on Trump's energy ceasefire 2026-10-12",
-          "world news October 2026",
-          "2026-10-12",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1406,7 +1806,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1475,7 +1875,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1544,7 +1944,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1613,7 +2013,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1682,7 +2082,7 @@
           "2026-10-12",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1783,7 +2183,7 @@
           "g1.globo.com producao ana costa karinah",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -1805,7 +2205,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/tom-cruise-film-digger-forecast-to-become-one-of-hollywood-s-biggest-flops-18bfcc/",
       "landing_url": "https://matchapp.tv/?news=18bfcc93#latest-news",
       "seo": {
-        "primary_keyword": "Tom Cruise latest news",
+        "primary_keyword": "digger tom cruise",
         "short_tail": [
           "Tom Cruise",
           "Tom Cruise news",
@@ -1813,7 +2213,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "digger tom cruise"
         ],
         "long_tail": [
           "Tom Cruise latest news October 2026",
@@ -1826,7 +2227,9 @@
           "Tom Cruise entertainment news 2026-10-12",
           "what happened with Tom Cruise"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "digger tom cruise"
+        ],
         "entity_keywords": [
           "Tom Cruise",
           "tom",
@@ -1849,7 +2252,7 @@
         "meta_title": "Tom Cruise film Digger forecast to become one of…",
         "meta_description": "Tom Cruise: Entertainment update reported by BBC on 2026-10-12. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "Tom Cruise latest news",
+          "digger tom cruise",
           "Tom Cruise",
           "Tom Cruise news",
           "entertainment",
@@ -1879,214 +2282,7 @@
           "bbc.co.uk Tom Cruise",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "709c54d3",
-      "title": "Arábia Saudita reage a ataques com drones e mísseis após prometer 'resposta firme' a bombardeio em aeroporto",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/arabia-saudita-reage-a-ataques-com-drones-e-misseis-apos-prometer-resposta-firme-a-bombardeio-em-aeroporto.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T13:55:37.000Z",
-      "discovered_at": "2026-10-12T16:01:40.762Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Arábia Saudita",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/BdliZqc0kd-_0ZdX7rELp2YTWtQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/F/h/LklzPYRseUoRrkoLzFWg/ap26282542738585.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/arabia-saudita-reage-a-ataques-com-drones-e-misseis-apos-prometer-resposta-firme-709c54/",
-      "landing_url": "https://matchapp.tv/?news=709c54d3#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "arabia",
-          "saudita",
-          "reage",
-          "ataques",
-          "drones",
-          "misseis"
-        ],
-        "long_tail": [
-          "Arábia Saudita reage a ataques com drones e mísseis após prometer 'resposta firme' a bombardeio em aeroporto 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "arabia",
-          "saudita",
-          "reage",
-          "ataques",
-          "drones",
-          "misseis"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Arábia Saudita reage a ataques com drones e mísseis após…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "arabia",
-          "saudita",
-          "reage",
-          "ataques",
-          "drones",
-          "misseis",
-          "Arábia Saudita reage a ataques com drones e mísseis após prometer 'resposta firme' a bombardeio em aeroporto 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "c3aa71db",
-      "title": "Explosão mata jovem de 15 anos e deixa 19 feridos no norte de Israel",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/explosao-deixa-cerca-de-20-feridos-incluindo-criancas-e-professores-no-norte-de-israel.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T13:21:09.000Z",
-      "discovered_at": "2026-10-12T16:01:40.762Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/s4qgrSJvcn_PAbNJTYkwx1xepuU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/Q/Fvw9jbThALWvrTJGhicA/whatsapp-image-2026-10-12-at-15.45.08.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/explosao-mata-jovem-de-15-anos-e-deixa-19-feridos-no-norte-de-israel-c3aa71/",
-      "landing_url": "https://matchapp.tv/?news=c3aa71db#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "explosao",
-          "mata",
-          "jovem",
-          "anos",
-          "deixa",
-          "feridos"
-        ],
-        "long_tail": [
-          "Explosão mata jovem de 15 anos e deixa 19 feridos no norte de Israel 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "explosao",
-          "mata",
-          "jovem",
-          "anos",
-          "deixa",
-          "feridos"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Explosão mata jovem de 15 anos e deixa 19 feridos no norte…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "explosao",
-          "mata",
-          "jovem",
-          "anos",
-          "deixa",
-          "feridos",
-          "Explosão mata jovem de 15 anos e deixa 19 feridos no norte de Israel 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "fa63d9c2",
-      "title": "Brasileira é presa em Bali por transportar cocaína no xampu",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/12/brasileira-e-presa-na-indonesia-por-transportar-cocaina-no-xampu.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-12T12:58:33.000Z",
-      "discovered_at": "2026-10-12T13:28:12.771Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-12. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Sl82-opE_9PJz6KBQbBk0nMMHCE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/m/0/d7R5WlRNSAIaMyEzzQmA/sebastian-pena-lambarri-u-i6h9y50wq-unsplash.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/brasileira-e-presa-em-bali-por-transportar-cocaina-no-xampu-fa63d9/",
-      "landing_url": "https://matchapp.tv/?news=fa63d9c2#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-12",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileira",
-          "presa",
-          "bali",
-          "transportar",
-          "cocaina",
-          "xampu"
-        ],
-        "long_tail": [
-          "Brasileira é presa em Bali por transportar cocaína no xampu 2026-10-12",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "brasileira",
-          "presa",
-          "bali",
-          "transportar",
-          "cocaina",
-          "xampu"
-        ],
-        "freshness_keywords": [
-          "2026-10-12"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Brasileira é presa em Bali por transportar cocaína no…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-12. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-12",
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileira",
-          "presa",
-          "bali",
-          "transportar",
-          "cocaina",
-          "xampu",
-          "Brasileira é presa em Bali por transportar cocaína no xampu 2026-10-12",
-          "notícias mundiais outubro 2026",
-          "2026-10-12",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2182,7 +2378,7 @@
           "bbc.co.uk Russell Brand",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2283,7 +2479,7 @@
           "g1.globo.com filha joelma natalia sarraff",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2379,7 +2575,7 @@
           "bbc.co.uk Julie Hesmondhalgh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2477,7 +2673,7 @@
           "g1.globo.com MC PH",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2573,7 +2769,7 @@
           "bbc.co.uk Ray Quinn",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2663,7 +2859,7 @@
           "2026-10-12",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2764,7 +2960,7 @@
           "g1.globo.com detonautas lanca dia criancas",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2860,7 +3056,7 @@
           "bbc.co.uk Robert Pattinson",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -2956,7 +3152,7 @@
           "g1.globo.com Morre Edson Silva",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -3050,7 +3246,7 @@
           "bbc.co.uk Sacha Baron Cohen",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -3148,7 +3344,7 @@
           "g1.globo.com Maria Rita",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -3249,7 +3445,7 @@
           "g1.globo.com tom chega hoje aos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -3271,7 +3467,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/inside-the-room-what-it-was-like-to-be-with-blackpink-s-lisa-as-race-scandal-eru-143d50/",
       "landing_url": "https://matchapp.tv/?news=143d505e#latest-news",
       "seo": {
-        "primary_keyword": "what",
+        "primary_keyword": "inside room what like latest news",
         "short_tail": [
           "inside room what like",
           "inside room what like news",
@@ -3279,8 +3475,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "what"
+          "entertainment updates"
         ],
         "long_tail": [
           "inside room what like latest news October 2026",
@@ -3293,9 +3488,7 @@
           "inside room what like entertainment news 2026-10-10",
           "what happened with inside room what like"
         ],
-        "trend_keywords": [
-          "what"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "inside",
           "room",
@@ -3319,7 +3512,7 @@
         "meta_title": "Inside the room: What it was like to be with Blackpink's…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-10. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "what",
+          "inside room what like latest news",
           "inside room what like",
           "inside room what like news",
           "entertainment",
@@ -3338,6 +3531,7 @@
           "what happened with inside room what like",
           "inside",
           "room",
+          "what",
           "like",
           "blackpink",
           "lisa",
@@ -3350,203 +3544,7 @@
           "bbc.co.uk inside room what like",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "e0a60a79",
-      "title": "Wagner Moura, Fernando Meirelles, Petra Costa e mais nomes do cinema divulgam carta aberta sobre eleições",
-      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/10/wagner-moura-fernando-meirelles-petra-costa-e-mais-nomes-do-cinema-divulgam-carta-sobre-eleicoes.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-10T16:40:14.000Z",
-      "discovered_at": "2026-10-10T19:29:13.776Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Wagner Moura",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/vRJ6aqMCXvxcm2Igc4TixN8JSmE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/H/T/wXKJLETbe2we4Y9YkAJQ/cartaaberta.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/wagner-moura-fernando-meirelles-petra-costa-e-mais-nomes-do-cinema-divulgam-cart-e0a60a/",
-      "landing_url": "https://matchapp.tv/?news=e0a60a79#latest-news",
-      "seo": {
-        "primary_keyword": "Wagner Moura últimas notícias",
-        "short_tail": [
-          "Wagner Moura",
-          "Wagner Moura news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Wagner Moura latest news October 2026",
-          "Wagner Moura entertainment update 2026",
-          "Wagner Moura news 2026-10-10",
-          "latest entertainment news about Wagner Moura",
-          "wagner moura wagner moura fernando meirelles latest update",
-          "G1 Wagner Moura entertainment",
-          "últimas notícias sobre Wagner Moura outubro 2026",
-          "Wagner Moura notícia de 2026-10-10",
-          "o que aconteceu com Wagner Moura"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Wagner Moura",
-          "wagner",
-          "moura",
-          "fernando",
-          "meirelles",
-          "petra",
-          "costa"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "Wagner Moura 2026"
-        ],
-        "source_keywords": [
-          "G1 Wagner Moura",
-          "g1.globo.com Wagner Moura",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Wagner Moura, Fernando Meirelles, Petra Costa e mais nomes…",
-        "meta_description": "Wagner Moura: Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Wagner Moura últimas notícias",
-          "Wagner Moura",
-          "Wagner Moura news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Wagner Moura latest news October 2026",
-          "Wagner Moura entertainment update 2026",
-          "Wagner Moura news 2026-10-10",
-          "latest entertainment news about Wagner Moura",
-          "wagner moura wagner moura fernando meirelles latest update",
-          "G1 Wagner Moura entertainment",
-          "últimas notícias sobre Wagner Moura outubro 2026",
-          "Wagner Moura notícia de 2026-10-10",
-          "o que aconteceu com Wagner Moura",
-          "wagner",
-          "moura",
-          "fernando",
-          "meirelles",
-          "petra",
-          "costa",
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "Wagner Moura 2026",
-          "G1 Wagner Moura",
-          "g1.globo.com Wagner Moura",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
-      }
-    },
-    {
-      "id": "e372853f",
-      "title": "Marisa Monte canta Julia Mestre, Mari Jasca e Mel Paranhos em álbum do violonista de flamenco Niño Josele",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/10/marisa-monte-canta-julia-mestre-mari-jasca-e-mel-paranhos-em-album-do-violonista-de-flamenco-nino-josele.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-10T13:41:15.000Z",
-      "discovered_at": "2026-10-10T14:40:56.970Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Marisa Monte",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/f0-yV-1POj18HBlA3Ic5AXZZiXo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/S/Z/LM7pphTpOM8f82T6yuaQ/marisanino.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/marisa-monte-canta-julia-mestre-mari-jasca-e-mel-paranhos-em-album-do-violonista-e37285/",
-      "landing_url": "https://matchapp.tv/?news=e372853f#latest-news",
-      "seo": {
-        "primary_keyword": "Marisa Monte últimas notícias",
-        "short_tail": [
-          "Marisa Monte",
-          "Marisa Monte news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Marisa Monte latest news October 2026",
-          "Marisa Monte entertainment update 2026",
-          "Marisa Monte news 2026-10-10",
-          "latest entertainment news about Marisa Monte",
-          "marisa monte marisa monte canta julia latest update",
-          "G1 Marisa Monte entertainment",
-          "últimas notícias sobre Marisa Monte outubro 2026",
-          "Marisa Monte notícia de 2026-10-10",
-          "o que aconteceu com Marisa Monte"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Marisa Monte",
-          "marisa",
-          "monte",
-          "canta",
-          "julia",
-          "mestre",
-          "mari"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "Marisa Monte 2026"
-        ],
-        "source_keywords": [
-          "G1 Marisa Monte",
-          "g1.globo.com Marisa Monte",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Marisa Monte canta Julia Mestre, Mari Jasca e Mel Paranhos…",
-        "meta_description": "Marisa Monte: Notícia publicada por G1 em 2026-10-10. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Marisa Monte últimas notícias",
-          "Marisa Monte",
-          "Marisa Monte news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Marisa Monte latest news October 2026",
-          "Marisa Monte entertainment update 2026",
-          "Marisa Monte news 2026-10-10",
-          "latest entertainment news about Marisa Monte",
-          "marisa monte marisa monte canta julia latest update",
-          "G1 Marisa Monte entertainment",
-          "últimas notícias sobre Marisa Monte outubro 2026",
-          "Marisa Monte notícia de 2026-10-10",
-          "o que aconteceu com Marisa Monte",
-          "marisa",
-          "monte",
-          "canta",
-          "julia",
-          "mestre",
-          "mari",
-          "October 2026",
-          "2026-10-10",
-          "outubro 2026",
-          "Marisa Monte 2026",
-          "G1 Marisa Monte",
-          "g1.globo.com Marisa Monte",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     },
     {
@@ -3636,7 +3634,7 @@
           "2026-10-09",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-12T23:11:14.169Z"
+        "seo_generated_at": "2026-10-13T03:34:51.228Z"
       }
     }
   ]
