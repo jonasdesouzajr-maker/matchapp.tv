@@ -7,11 +7,20 @@
 #ma-jonas-home.jh-listening .jh-mic{
  outline:2px solid #68cdec;outline-offset:2px;
 }
-/* Subtle breathing container — transform is applied by the micro-expression loop */
-#ma-jonas-home .jh-medallion,
-#ma-jonas-home .jh-portrait{
- transform-origin:center 60%;
- will-change:transform;
+/* Eyes only — never the whole bubble. Smooth opacity so frame changes stay invisible. */
+#ma-jonas-home .jh-blink-layer{
+ clip-path:inset(22% 12% 60% 12%)!important;
+ transition:opacity .07s ease!important;
+ border-radius:50%!important;
+ pointer-events:none!important;
+}
+#ma-jonas-home .jh-mouth-layer{
+ clip-path:inset(54% 6% 8% 6%)!important;
+ transition:opacity .09s ease!important;
+}
+#ma-jonas-home .jh-micro-smile{
+ clip-path:inset(50% 8% 12% 8%)!important;
+ transition:opacity .16s ease!important;
 }
 #ma-jonas-home-panel{
  z-index:41;

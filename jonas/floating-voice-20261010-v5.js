@@ -20,7 +20,7 @@
   // remain stable without flashes during speech synthesis.
   mouth=document.createElement('img');
   mouth.className='jh-mouth-layer';mouth.alt='';mouth.setAttribute('aria-hidden','true');
-  mouth.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(54% 0 0 0);opacity:0;pointer-events:none;border-radius:50%';
+  mouth.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(54% 6% 8% 6%);opacity:0;pointer-events:none;border-radius:50%;z-index:2;transition:opacity .09s ease';
   portrait.parentNode.style.position='relative';
   portrait.parentNode.appendChild(mouth);
  }
@@ -30,7 +30,8 @@
   var eyes=document.createElement('img');
   eyes.className='jh-blink-layer';eyes.src=faceBase+'blink.jpg';eyes.alt='';
   eyes.setAttribute('aria-hidden','true');
-  eyes.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(0 0 50% 0);opacity:0;pointer-events:none;border-radius:50%;z-index:4';
+  // Eyes only — a narrow band, never the whole bubble.
+  eyes.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(22% 12% 60% 12%);opacity:0;pointer-events:none;border-radius:50%;z-index:4;transition:opacity .07s ease';
   parent.appendChild(eyes);eyeLayers.push(eyes);
  });
  function scheduleBlink(){
@@ -63,7 +64,7 @@
   smileLayer=document.createElement('img');
   smileLayer.className='jh-micro-smile';smileLayer.alt='';smileLayer.setAttribute('aria-hidden','true');
   smileLayer.src=faceBase+'smile.jpg';
-  smileLayer.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(48% 0 0 0);opacity:0;pointer-events:none;border-radius:50%;z-index:3;transition:opacity .18s ease';
+  smileLayer.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(50% 8% 12% 8%);opacity:0;pointer-events:none;border-radius:50%;z-index:3;transition:opacity .16s ease';
   portrait.parentNode.appendChild(smileLayer);
  }
  function scheduleMicroSmile(){
@@ -93,9 +94,17 @@
  try{window.speechSynthesis?.getVoices?.()}catch(_){}
  function face(name){
   if(!mouth||name===mouthFrame)return;
-  if(name==='rest'){mouthFrame='rest';mouth.style.opacity='0';return}
+  mouthFrame=name;
+  if(name==='rest'){mouth.style.opacity='0';return}
   var image=frames[name];
-  if(image&&image.complete&&image.naturalWidth>0){mouthFrame=name;mouth.src=image.src;mouth.style.opacity='1'}
+  if(!(image&&image.complete&&image.naturalWidth>0))return;
+  // Brief fade so the src swap is not visible.
+  mouth.style.opacity='0';
+  setTimeout(function(){
+   if(mouthFrame!==name)return;
+   mouth.src=image.src;
+   mouth.style.opacity='1';
+  },42);
  }
  function voiceFor(lang){
   // Never fall back to the device's first/default voice, which may be female.
