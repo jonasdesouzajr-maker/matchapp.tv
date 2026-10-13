@@ -33,7 +33,7 @@ async function setup(page){
  for(const device of cases){
    const ctx=await browser.newContext({viewport:{width:device.width,height:device.height},deviceScaleFactor:2,isMobile:true,hasTouch:true,userAgent:device.ua,locale:'en-US'});
    const page=await ctx.newPage(),fatal=[];
-   page.on('pageerror',e=>fatal.push(String(e.message||e)));
+   page.on('pageerror',e=>fatal.push(String(e.stack||e.message||e)));
    try{
      await setup(page);
      await page.goto(BASE+'/?mobile_runtime_check=20260927-1',{waitUntil:'domcontentloaded',timeout:60000});
@@ -119,7 +119,7 @@ async function setup(page){
      await page.screenshot({path:path.join(DEST,device.name+'-match.png'),timeout:12000}).catch(()=>{});
      // Isolated Ask AI guest session, same real mobile engine/UA. Synthetic
      // backend response tests request parsing, composer, response rendering.
-     const chat=await ctx.newPage();chat.on('pageerror',e=>fatal.push(String(e.message||e)));
+     const chat=await ctx.newPage();chat.on('pageerror',e=>fatal.push(String(e.stack||e.message||e)));
      await setup(chat);
      await chat.goto(BASE+'/discover.html?mobile_runtime_check=20260927-1',{waitUntil:'domcontentloaded',timeout:60000});
      await chat.locator('#discover-new-input').waitFor({state:'visible',timeout:22000});
