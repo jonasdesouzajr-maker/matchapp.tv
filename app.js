@@ -4191,7 +4191,20 @@ const SURPRISE_ME_CATEGORIES = new Set([
 // only ONE surprise-eligible category: a film also tagged Classical Music is
 // still a film, and holding it back would quietly shrink the pool of real
 // movies over time as cross-tagging grows.
+// Only the adult Home matcher is restricted; specialist hubs keep their policy.
+function isStreamingHome() {
+    return typeof location !== 'undefined' && /^\/(?:index\.html)?$/.test(location.pathname);
+}
+const HOME_STREAMING_CATEGORIES = new Set(['movie','series','limited series','documentary','stand-up comedy special','reality show','vertical micro-drama','short film','K-drama','anime','novela brasileira','telenovela','C-drama','J-drama','Turkish dizi','Bollywood','Nollywood','European cinema']);
+function homeStreamingEntry(entry) {
+    if (!entry || /^(?:YouTube|YouTube Music|Spotify|Apple Music|Apple Podcasts|Audible|Cinemas?)$/i.test(entry.platform || '')) return false;
+    if (entry.inCinemas === true && !entry.streaming) return false;
+    const cats = Array.isArray(entry.cats) ? entry.cats : [];
+    return cats.some(cat => HOME_STREAMING_CATEGORIES.has(cat)) &&
+        !cats.some(cat => ['YouTube channel','YouTube Shorts','Cooking & Recipes','Fitness & Wellness','podcast','audiobook','music album','music artist','Music & Concerts','News','Sports'].includes(cat));
+}
 function isSurpriseEligible(entry) {
+    if (isStreamingHome() && !homeStreamingEntry(entry)) return false;
     if (!entry || !Array.isArray(entry.cats)) return false;
     if (typeof window !== 'undefined' && window.MatchAppTopicFocus)
         return window.MatchAppTopicFocus.allow(entry, []);
@@ -4200,6 +4213,7 @@ function isSurpriseEligible(entry) {
         entry.cats.some(c => c !== 'YouTube channel' && SURPRISE_ME_CATEGORIES.has(c));
 }
 function entryAllowedForSelection(entry, cat) {
+    if (isStreamingHome() && !homeStreamingEntry(entry)) return false;
     if (typeof window !== 'undefined' && window.MatchAppTopicFocus)
         return window.MatchAppTopicFocus.allow(entry, cat);
     // Unknown specialist topics never fall back to unrelated content.
@@ -4709,6 +4723,15 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     if(matchRunId!==window.__matchappMatchRunId)return;
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],genre:[document.getElementById('q-genre')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
+    if (isStreamingHome() && !isSpecificSearch) {
+        const chosen = normCriteria(requested.cat);
+        if (chosen.some(cat => !HOME_STREAMING_CATEGORIES.has(cat)) || normCriteria(requested.plat).some(p => /^(?:YouTube|YouTube Music|Spotify|Apple Music|Apple Podcasts|Audible|Cinemas?)$/i.test(p))) {
+            window.__matchappMatchPhase='idle';
+            window.showToast?.(window.MATCH_LANG === 'pt-BR' ? 'O Home encontra filmes e séries. Use Explore more para outros temas.' : 'Home finds streaming movies and series. Use Explore more for other topics.');
+            return false;
+        }
+        if (!chosen.length) requested.cat = [...HOME_STREAMING_CATEGORIES];
+    }
     const wantedGenres = normCriteria(requested.genre);
     window.__matchappGenreFilterActive = wantedGenres.length > 0;
     window.__matchappGenreKeys = null;
@@ -4973,6 +4996,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             matchResult.synopsisLang='en';
         }
     }
+    if (isStreamingHome() && matchResult && Array.isArray(matchResult.cats) && !homeStreamingEntry(matchResult)) matchResult = null;
     // An intentional exhaustion recovery is allowed to reuse an older exact
     // catalogue title. Only our internal recycle pickers can set this escape;
     // every ordinary result still obeys the permanent history boundary.

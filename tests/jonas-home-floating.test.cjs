@@ -83,10 +83,10 @@ test('Portuguese locale updates controls and suggestion questions',async()=>{
  assert.match(decodeURIComponent(d.querySelector('.jh-suggestion').href),/Recommend a documentary/);
  dom.window.close();
 });
-test('native Android shows the remote homepage Jonas but Kids and other routes stay isolated',()=>{
+test('approved adult routes show Jonas while Kids remains isolated',()=>{
  for(const options of [{url:'https://matchapp.tv/',native:true},{url:'https://matchapp.tv/kids/'},{url:'https://matchapp.tv/discover.html'}]){
   const dom=scene(options.url,{native:options.native});
-  assert.equal(dom.window.document.getElementById('ma-jonas-home').hidden,!!options.native===false);
+  assert.equal(dom.window.document.getElementById('ma-jonas-home').hidden,options.url.includes('/kids/'));
   dom.window.close();
  }
  assert.doesNotMatch(css,/html\.matchapp-ai-android #ma-jonas-home/);

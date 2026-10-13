@@ -209,6 +209,7 @@ ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/even
 </section>
 ${discoveryLinks}</main>
 <footer>${link("/","MatchApp Ai")} · ${link("/discover.html","Ask AI")} · ${link("/ebooks/","Books & audiobooks")} · ${link("/pricing/pricing.html","Plans")}</footer>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body></html>
 `;
 };

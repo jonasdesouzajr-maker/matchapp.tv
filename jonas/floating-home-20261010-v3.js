@@ -3,7 +3,7 @@
 (function(){
  'use strict';
  var root=document.getElementById('ma-jonas-home');
- if(!root||!/^\/(?:index\.html)?$/.test(location.pathname)){
+ if(!root||/^\/kids(?:\/|$)/i.test(location.pathname)){
   if(root)root.hidden=true;
   return;
  }

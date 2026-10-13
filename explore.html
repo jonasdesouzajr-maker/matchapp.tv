@@ -43,15 +43,15 @@ body.page-explore{margin:0;background:#14081C;color:#fff;min-height:100vh;font-f
     <p>Books, recipes, news, events, and music. Home stays focused on what to watch tonight.</p>
   </section>
   <div class="ex-posters">
-    <a href="/#premiere-disclosure"><img src="/og-image.jpg?v=2" alt="Most Awaited"><small>Most Awaited</small></a>
-    <a href="/#trending-rail"><img src="/og-image.jpg?v=2" alt="Week Top Choice"><small>Week Top Choice</small></a>
+    <a data-explore-pick="premiere" href="/discover.html?q=Tell%20me%20about%20the%202026%20Carrie%20series%20on%20Prime%20Video%20and%20how%20to%20watch%20it%20in%20my%20country&amp;focus=start"><img src="/ahs13-official.png?v=187" alt="Carrie — arrives October 7, 2026 on Prime Video"><small>Most Awaited</small></a>
+    <a data-explore-pick="weekly" href="/discover.html?q=Where%20can%20I%20watch%20the%20movie%20Animals%20%282026%2C%20United%20States%29%3F%20Give%20me%20current%20streaming%2C%20rent%20and%20buy%20options%20in%20my%20country%2C%20plus%20synopsis%2C%20cast%2C%20country%20of%20production%2C%20runtime%2C%20age%20rating%20and%20reception.&amp;focus=start"><img src="https://image.tmdb.org/t/p/w780/cyltXU1lAGhRFBuHQIMWBAPj8fI.jpg" alt="Animals (2026)"><small>Week Top Choice</small></a>
   </div>
   <div class="ex-grid">
     <a class="ex-card" href="/ebooks/"><strong>Books</strong><span>E-books, audiobooks and magazines</span></a>
     <a class="ex-card" href="/cooking/"><strong>Recipes</strong><span>Cooking channels and dishes</span></a>
     <a class="ex-card" href="/news/"><strong>News</strong><span>Entertainment headlines</span></a>
     <a class="ex-card" href="/events/"><strong>Events</strong><span>Festivals, games and live dates</span></a>
-    <a class="ex-card" href="/#swifties-spotify"><strong>Taylor</strong><span>Spotify releases and videos</span></a>
+    <a class="ex-card" href="https://open.spotify.com/playlist/37i9dQZF1DXe7fP0uj1s1D"><strong>Taylor</strong><span>Spotify releases and videos</span></a>
     <a class="ex-card" href="/discover.html"><strong>Ask AI</strong><span>Discover with Jonas</span></a>
   </div>
 </main>
@@ -59,7 +59,7 @@ body.page-explore{margin:0;background:#14081C;color:#fff;min-height:100vh;font-f
   <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
     <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
     <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
-    <form class="jh-form">
+    <form class="jh-form" action="/discover.html" method="get"><input type="hidden" name="from" value="jonas"><input type="hidden" name="focus" value="start">
       <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas">
       <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input">🎤</button>
     </form>
@@ -68,9 +68,9 @@ body.page-explore{margin:0;background:#14081C;color:#fff;min-height:100vh;font-f
     <img class="jh-medallion" src="/jonas/faces/jonas/rest.jpg" alt="Jonas" width="64" height="64">
   </button>
 </aside>
-<script defer src="/jonas/floating-home-20261010-v3.js?v=20261013-drag"></script>
-<script defer src="/jonas/floating-voice-20261010-v5.js?v=20261013-human"></script>
 <script defer src="/jonas/ambient-effects-20261013.js"></script>
 <script defer src="/jonas/ambient-sounds-20261013.js"></script>
+<script defer src="/explore-data-20261013.js?v=1"></script>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>

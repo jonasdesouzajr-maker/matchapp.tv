@@ -13,7 +13,7 @@ function matching(requested,excluded=[]){
  const context=vm.createContext({window:w,document:w.document,CustomEvent:w.CustomEvent,CONTENT_CATALOG:catalog,SESSION_SHOWN:new Set(),isVIP:false,Math,
   isBlockedEntry:()=>false,isSurpriseEligible:entry=>entry.cats.some(c=>['movie','series','limited series','K-drama','novela brasileira','telenovela'].includes(c)),
   tSafe:key=>key,matchAllowanceBeforeLookup:async()=>true,checkDailyLimit:async()=>{state.charges++;return true;},discoverFromITunes:async()=>null,discoverVerifiedExactTMDB:async()=>null,rememberShownTitle:()=>{},renderResult:result=>{state.rendered=result;},setInterval:()=>1,clearInterval:()=>{},setTimeout:fn=>{fn();return 1;},clearTimeout:()=>{},requestAnimationFrame:fn=>{fn();return 1;},cancelAnimationFrame:()=>{},console});
- vm.runInContext(functionSource('normCriteria')+functionSource('isSurpriseEligible')+functionSource('entryAllowedForSelection')+functionSource('regionAvailabilityFits')+functionSource('pickFromCatalog')+functionSource('pickRecycledCatalog')+functionSource('pickGuaranteedCatalog'),context);
+ vm.runInContext(source.slice(source.indexOf('function isStreamingHome()'),source.indexOf('function isSurpriseEligible(entry)'))+'\n'+functionSource('normCriteria')+functionSource('isSurpriseEligible')+functionSource('entryAllowedForSelection')+functionSource('regionAvailabilityFits')+functionSource('pickFromCatalog')+functionSource('pickRecycledCatalog')+functionSource('pickGuaranteedCatalog'),context);
  vm.runInContext(source.slice(source.indexOf('const MATCH_SOURCE_DEADLINES'),source.indexOf('// Non-spending preflight.'))+source.slice(source.indexOf('window.triggerMatch = async function'),source.indexOf('// THE RENDER ENGINE')),context);
  return {dom,w,context,state};
 }
