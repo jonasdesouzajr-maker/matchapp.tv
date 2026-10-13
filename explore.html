@@ -3,36 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Explore more | MatchApp.tv</title>
+<title>Explore more | MatchApp Ai</title>
+<meta name="description" content="Books, recipes, news, events, and more from MatchApp Ai.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://matchapp.tv/explore.html">
+<link rel="icon" href="/assets/brand/matchapp-official-icon-192.png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/themes.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=192">
+<link rel="stylesheet" href="/page-shell.css?v=20260926-ai-energy2">
 <link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css">
 <link rel="stylesheet" href="/jonas/ui-response-polish-20261013.css">
 <style>
-body{margin:0;background:#14081C;color:#fff;min-height:100vh}
-.ex-wrap{max-width:860px;margin:0 auto;padding:22px 16px 80px}
-.ex-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.ex-top a.back{color:#E6C36A;text-decoration:none;font-weight:800}
-h1{margin:0 0 6px;font-size:28px;color:#E6C36A}
-.ex-lead{margin:0 0 18px;color:#d9c9a0}
+body.page-explore{margin:0;background:#14081C;color:#fff;min-height:100vh;font-family:system-ui,sans-serif}
+.ex-wrap{max-width:980px;margin:0 auto;padding:8px 16px 100px}
+.ex-hero{background:linear-gradient(135deg,rgba(20,8,28,.9),rgba(40,16,48,.85)),url('/og-image.jpg') center/cover;border:1px solid rgba(230,195,106,.35);border-radius:18px;padding:22px 20px;margin:12px 0 18px}
+.ex-hero h1{margin:0 0 6px;font-size:28px;color:#E6C36A;letter-spacing:-.02em}
+.ex-hero p{margin:0;color:#ead8b0}
+.ex-posters{display:flex;gap:14px;margin:0 0 18px}
+.ex-posters a{text-decoration:none;color:#E6C36A;font-weight:800;font-size:12px}
+.ex-posters img{width:110px;height:164px;object-fit:cover;border-radius:12px;border:2px solid #E6C36A;display:block;margin-bottom:6px}
 .ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.ex-card{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(230,195,106,.25);text-decoration:none;color:#fff}
-.ex-card strong{color:#E6C36A;font-size:16px}
-.ex-card span{color:#cbbfa4;font-size:13px}
-.ex-posters{display:flex;gap:12px;margin:18px 0}
-.ex-posters a{display:block;width:120px}
-.ex-posters img{width:120px;height:180px;object-fit:cover;border-radius:12px;border:2px solid #E6C36A}
-.ex-posters small{display:block;margin-top:6px;color:#E6C36A;font-weight:800;font-size:12px}
+.ex-card{display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(230,195,106,.28);text-decoration:none;color:#fff}
+.ex-card:hover{border-color:#E6C36A}
+.ex-card strong{color:#E6C36A;font-size:17px}
+.ex-card span{color:#cbbfa4;font-size:13px;line-height:1.35}
 </style>
 </head>
-<body>
-<div class="ex-wrap">
-  <div class="ex-top"><a class="back" href="/">← Home</a><span>MatchApp.tv</span></div>
-  <h1>Explore more</h1>
-  <p class="ex-lead">Books, recipes, news, events, and more. Home stays focused on what to watch.</p>
+<body class="page-explore">
+<div class="matchapp-brand-bar">
+  <a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai">
+    <img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async">
+  </a>
+</div>
+<main class="ex-wrap">
+  <section class="ex-hero">
+    <h1>Explore more</h1>
+    <p>Books, recipes, news, events, and music. Home stays focused on what to watch tonight.</p>
+  </section>
   <div class="ex-posters">
     <a href="/#premiere-disclosure"><img src="/og-image.jpg?v=2" alt="Most Awaited"><small>Most Awaited</small></a>
     <a href="/#trending-rail"><img src="/og-image.jpg?v=2" alt="Week Top Choice"><small>Week Top Choice</small></a>
@@ -45,7 +53,7 @@ h1{margin:0 0 6px;font-size:28px;color:#E6C36A}
     <a class="ex-card" href="/#swifties-spotify"><strong>Taylor</strong><span>Spotify releases and videos</span></a>
     <a class="ex-card" href="/discover.html"><strong>Ask AI</strong><span>Discover with Jonas</span></a>
   </div>
-</div>
+</main>
 <aside id="ma-jonas-home" aria-label="Jonas floating companion">
   <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
     <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
