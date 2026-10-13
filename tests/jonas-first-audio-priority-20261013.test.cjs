@@ -39,3 +39,54 @@ test('full-answer TTS tries approved male on-device speech before cloud synthesi
   assert.match(code, /if\(!fallback&&token===epoch\)\{opts\.onError/);
   assert.match(code, /startGuard=setTimeout/);
 });
+
+
+async function simulatedSpeech(mode) {
+  const code = source('secure-speech-20261010.js');
+  const events = { fetched: 0, started: 0, ended: [], errors: 0 };
+  const male = { name: 'approved male voice', lang: 'en-US' };
+  function Utterance(text) { this.text = text; }
+  const window = {
+    MATCH_LANG: 'en',
+    SpeechSynthesisUtterance: Utterance,
+    speechSynthesis: {
+      cancel() {},
+      getVoices() { return mode === 'no-local-voice' ? [] : [male]; },
+      speak(utter) {
+        if (mode === 'local-succeeds') { utter.onstart?.(); utter.onend?.(); }
+        else utter.onerror?.({ error: 'unavailable' });
+      }
+    },
+    MatchAppJonasVoicePolicy: { select: voices => voices[0] || null }
+  };
+  const context = {
+    window, document: { addEventListener() {} }, SpeechSynthesisUtterance: Utterance,
+    fetch: async () => { events.fetched++; throw Error('simulated cloud outage'); },
+    setTimeout: () => 1, clearTimeout() {}, AbortController
+  };
+  new vm.Script(code).runInNewContext(context);
+  const result = await window.MatchAppJonasSpeech.speak('Hello, I am Jonas.', 'en', {
+    onStart: () => events.started++,
+    onEnd: value => events.ended.push(value),
+    onError: () => events.errors++
+  });
+  return { result, ...events };
+}
+
+test('local voice speaks immediately and does not invoke cloud TTS', async () => {
+  const state = await simulatedSpeech('local-succeeds');
+  assert.equal(state.result, true);
+  assert.equal(state.fetched, 0);
+  assert.equal(state.started, 1);
+  assert.deepEqual(state.ended, [true]);
+});
+
+test('local and cloud failures end once without duplicate microphone handoff', async () => {
+  for (const mode of ['local-fails', 'no-local-voice']) {
+    const state = await simulatedSpeech(mode);
+    assert.equal(state.result, false, mode);
+    assert.equal(state.fetched, 1, mode);
+    assert.deepEqual(state.ended, [false], mode);
+    assert.equal(state.errors, 1, mode);
+  }
+});
