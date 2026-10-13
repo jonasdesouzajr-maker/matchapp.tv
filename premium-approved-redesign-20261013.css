@@ -138,3 +138,67 @@ input, select, textarea {
   border-color: var(--approved-gold-line) !important;
   background: linear-gradient(145deg, rgba(45,25,75,0.95), rgba(20,12,40,0.98)) !important;
 }
+
+/* Global consistency for all adult pages */
+html body:not(.page-kids):not(.kids-body) {
+  font-family: Outfit, Inter, system-ui, sans-serif;
+}
+
+/* Consistent page wrappers */
+.page-wrapper, main, .container, .content-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* Unified headers across pages */
+header, .app-header, .page-header {
+  background: linear-gradient(135deg, rgba(28,16,48,0.95), rgba(18,10,32,0.98)) !important;
+  border-bottom: 1px solid var(--approved-gold-line) !important;
+  color: var(--approved-text);
+}
+
+/* Consistent buttons everywhere */
+button, .btn, a.btn, .action-btn {
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Cards and panels on secondary pages */
+article, .card, .panel, .result-card, .title-card {
+  background: var(--approved-glass) !important;
+  border: 1px solid var(--approved-gold-line) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
+  overflow: hidden;
+}
+
+/* Links */
+a {
+  color: var(--approved-gold);
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Footer consistency */
+footer {
+  background: rgba(13,7,20,0.9) !important;
+  border-top: 1px solid var(--approved-gold-line) !important;
+  color: var(--approved-muted);
+  padding: 24px 16px;
+}
+
+/* Mobile refinements for all pages */
+@media (max-width: 640px) {
+  .page-wrapper, main {
+    padding: 0 12px;
+  }
+  header {
+    padding: 12px !important;
+  }
+}
