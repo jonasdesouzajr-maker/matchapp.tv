@@ -1,0 +1,73 @@
+/* Premium ambient effects — adult pages only.
+   Additive. Does not touch Jonas logic, matching, AdSense, Kids, or Android shell. */
+@keyframes ma-shimmer {
+  0% { background-position: -120% 0; }
+  100% { background-position: 220% 0; }
+}
+@keyframes ma-soft-pulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+@keyframes ma-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Shimmer sweep on gold buttons and Explore more */
+.gold-btn,
+.mh-explore-more,
+.ex-card,
+#ma-jonas-home .jh-bubble {
+  position: relative;
+  overflow: hidden;
+}
+.gold-btn::before,
+.mh-explore-more::before,
+.ex-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.22) 48%, transparent 62%);
+  background-size: 200% 100%;
+  animation: ma-shimmer 3.6s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Soft gold rim pulse on Top Titles posters while idle */
+#trending-rail .marquee-item {
+  position: relative;
+}
+#trending-rail .marquee-item::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(230,195,106,.25);
+  animation: ma-soft-pulse 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Gentle float on Jonas bubble when idle */
+#ma-jonas-home:not(.jh-speaking):not(.is-dragging) .jh-bubble {
+  animation: ma-float 5.5s ease-in-out infinite;
+}
+
+/* Subtle card lift on Explore */
+.ex-card {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.ex-card:active {
+  transform: scale(.98);
+}
+
+/* Reduce motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .gold-btn::before,
+  .mh-explore-more::before,
+  .ex-card::before,
+  #trending-rail .marquee-item::after,
+  #ma-jonas-home .jh-bubble {
+    animation: none !important;
+  }
+}
