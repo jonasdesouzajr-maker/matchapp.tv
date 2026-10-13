@@ -223,3 +223,6 @@ html body.ai-chat-page .wrap .premium-card.discover-head:has(#chat-log:empty) {
   padding-inline:12px !important;
  }
 }
+
+/* Retain the header glimmer without washing out the midnight fill. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header::before { opacity:.18 !important; }
