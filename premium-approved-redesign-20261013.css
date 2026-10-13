@@ -123,3 +123,18 @@ input, select, textarea {
   padding: 20px;
   margin: 16px 0;
 }
+
+/* Jonas specific refinements */
+#ma-jonas-home .jh-bubble {
+  filter: drop-shadow(0 4px 12px rgba(246, 211, 143, 0.4));
+}
+
+#ma-jonas-home .jh-portrait {
+  border-color: var(--approved-gold) !important;
+  box-shadow: 0 0 0 4px rgba(246, 211, 143, 0.2), 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+#ma-jonas-home .jh-popover {
+  border-color: var(--approved-gold-line) !important;
+  background: linear-gradient(145deg, rgba(45,25,75,0.95), rgba(20,12,40,0.98)) !important;
+}
