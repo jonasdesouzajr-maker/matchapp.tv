@@ -39,7 +39,7 @@
   eyes.className='jh-blink-layer';eyes.src=faceBase+'blink.jpg';eyes.alt='';
   eyes.setAttribute('aria-hidden','true');
   // Eyes only — a narrow band, never the whole bubble.
-  eyes.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(22% 12% 60% 12%);opacity:0;pointer-events:none;border-radius:50%;z-index:4;transition:opacity .07s ease';
+  eyes.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(26% 16% 58% 16%);opacity:0;pointer-events:none;border-radius:50%;z-index:4;transition:opacity .09s ease;max-height:28%;overflow:hidden';
   parent.appendChild(eyes);eyeLayers.push(eyes);
  });
  function scheduleBlink(){
@@ -48,17 +48,17 @@
    if(!document.hidden){
     eyeLayers.forEach(function(eyes){if(eyes.complete&&eyes.naturalWidth)eyes.style.opacity='1'});
     clearTimeout(blinkClose);
-    // Occasional double-blink for a more natural idle face.
-    var double=!mouthRunning&&Math.random()<.28;
+    // Occasional double-blink; eyes only.
+    var double=!mouthRunning&&Math.random()<.32;
     blinkClose=setTimeout(function(){
      eyeLayers.forEach(function(e){e.style.opacity='0'});
      if(double){
       setTimeout(function(){
-       eyeLayers.forEach(function(e){e.style.opacity='1'});
-       setTimeout(function(){eyeLayers.forEach(function(e){e.style.opacity='0'})},110);
-      },140);
+       eyeLayers.forEach(function(e){e.style.opacity='.85'});
+       setTimeout(function(){eyeLayers.forEach(function(e){e.style.opacity='0'})},90);
+      },120);
      }
-    },double?120:150);
+    },double?100:130);
    }
    scheduleBlink();
   },(mouthRunning?3100:2400)+Math.random()*2800);
@@ -90,11 +90,13 @@
  function tickBreath(now){
   if(reduceMotion||document.hidden){breathRaf=0;return}
   breathPhase+=mouthRunning?.012:.007;
-  var scale=1+(Math.sin(breathPhase)*.008)+(mouthRunning?Math.sin(breathPhase*2.4)*.004:0);
-  var tilt=(Math.sin(breathPhase*.6)*.4)+(mouthRunning?Math.sin(breathPhase*1.3)*.6:0);
+  var scale=1+(Math.sin(breathPhase)*.007)+(mouthRunning?Math.sin(breathPhase*2.2)*.005:0);
+  var tilt=(Math.sin(breathPhase*.55)*.35)+(mouthRunning?Math.sin(breathPhase*1.1)*.5:0);
+  // Tiny idle settle so he never looks frozen.
+  var settle=mouthRunning?0:Math.sin(breathPhase*.25)*.15;
   [root.querySelector('.jh-medallion'),root.querySelector('.jh-portrait')].forEach(function(el){
    if(!el)return;
-   el.style.transform='scale('+scale.toFixed(4)+') rotate('+tilt.toFixed(2)+'deg)';
+   el.style.transform='scale('+scale.toFixed(4)+') rotate('+(tilt+settle).toFixed(2)+'deg)';
   });
   breathRaf=requestAnimationFrame(tickBreath);
  }

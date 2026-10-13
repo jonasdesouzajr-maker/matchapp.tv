@@ -20,10 +20,21 @@
  cursor:grabbing;
 }
 #ma-jonas-home .jh-blink-layer{
- clip-path:inset(22% 12% 60% 12%)!important;
- transition:opacity .07s ease!important;
+ clip-path:inset(26% 16% 58% 16%)!important;
+ transition:opacity .09s ease!important;
  border-radius:50%!important;
  pointer-events:none!important;
+ max-height:28%!important;
+ overflow:hidden!important;
+}
+/* Pulse the bubble circle only while active (speaking or listening) */
+#ma-jonas-home.jh-speaking .jh-bubble,
+#ma-jonas-home.jh-listening .jh-bubble{
+ animation:jonas-active-pulse 1.4s ease-in-out infinite!important;
+}
+@keyframes jonas-active-pulse{
+ 0%,100%{ box-shadow:0 0 0 2px rgba(230,195,106,.4), 0 12px 28px rgba(0,0,0,.45); }
+ 50%{ box-shadow:0 0 0 6px rgba(230,195,106,.55), 0 0 22px rgba(230,195,106,.35), 0 12px 28px rgba(0,0,0,.45); }
 }
 /* Home split: streaming only. Everything else moves to /explore.html */
 html body.page-home #ebook-matcher-root,
