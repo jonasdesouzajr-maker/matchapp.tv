@@ -36,13 +36,60 @@
  function scheduleBlink(){
   clearTimeout(blinkTimer);if(reduceMotion)return;
   blinkTimer=setTimeout(function(){
-   if(!document.hidden)eyeLayers.forEach(function(eyes){if(eyes.complete&&eyes.naturalWidth)eyes.style.opacity='1'});
-   clearTimeout(blinkClose);
-   blinkClose=setTimeout(function(){eyeLayers.forEach(function(e){e.style.opacity='0'})},150);
+   if(!document.hidden){
+    eyeLayers.forEach(function(eyes){if(eyes.complete&&eyes.naturalWidth)eyes.style.opacity='1'});
+    clearTimeout(blinkClose);
+    // Occasional double-blink for a more natural idle face.
+    var double=!mouthRunning&&Math.random()<.28;
+    blinkClose=setTimeout(function(){
+     eyeLayers.forEach(function(e){e.style.opacity='0'});
+     if(double){
+      setTimeout(function(){
+       eyeLayers.forEach(function(e){e.style.opacity='1'});
+       setTimeout(function(){eyeLayers.forEach(function(e){e.style.opacity='0'})},110);
+      },140);
+     }
+    },double?120:150);
+   }
    scheduleBlink();
-  },(mouthRunning?3450:2900)+Math.random()*2650);
+  },(mouthRunning?3100:2400)+Math.random()*2800);
  }
  scheduleBlink();
+ // Realistic idle micro-expressions: soft smile, breathing, natural blinks.
+ // Stays quiet while speaking so mouth frames remain the only face motion.
+ var microSmileTimer=0,microSmileClose=0,breathRaf=0,breathPhase=0;
+ var smileLayer=null;
+ if(portrait&&!reduceMotion){
+  smileLayer=document.createElement('img');
+  smileLayer.className='jh-micro-smile';smileLayer.alt='';smileLayer.setAttribute('aria-hidden','true');
+  smileLayer.src=faceBase+'smile.jpg';
+  smileLayer.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(48% 0 0 0);opacity:0;pointer-events:none;border-radius:50%;z-index:3;transition:opacity .18s ease';
+  portrait.parentNode.appendChild(smileLayer);
+ }
+ function scheduleMicroSmile(){
+  clearTimeout(microSmileTimer);if(reduceMotion||!smileLayer)return;
+  microSmileTimer=setTimeout(function(){
+   if(!document.hidden&&!mouthRunning&&smileLayer.complete&&smileLayer.naturalWidth){
+    smileLayer.style.opacity='.72';
+    clearTimeout(microSmileClose);
+    microSmileClose=setTimeout(function(){smileLayer.style.opacity='0'},420+Math.random()*280);
+   }
+   scheduleMicroSmile();
+  },5200+Math.random()*6400);
+ }
+ scheduleMicroSmile();
+ function tickBreath(now){
+  if(reduceMotion||document.hidden){breathRaf=0;return}
+  breathPhase+=mouthRunning?.012:.007;
+  var scale=1+(Math.sin(breathPhase)*.008)+(mouthRunning?Math.sin(breathPhase*2.4)*.004:0);
+  var tilt=(Math.sin(breathPhase*.6)*.4)+(mouthRunning?Math.sin(breathPhase*1.3)*.6:0);
+  [root.querySelector('.jh-medallion'),root.querySelector('.jh-portrait')].forEach(function(el){
+   if(!el)return;
+   el.style.transform='scale('+scale.toFixed(4)+') rotate('+tilt.toFixed(2)+'deg)';
+  });
+  breathRaf=requestAnimationFrame(tickBreath);
+ }
+ if(!reduceMotion)breathRaf=requestAnimationFrame(tickBreath);
  try{window.speechSynthesis?.getVoices?.()}catch(_){}
  function face(name){
   if(!mouth||name===mouthFrame)return;
@@ -88,6 +135,7 @@
  }
  function animateMouth(){
   resetMouth();mouthRunning=true;root.classList.add('jh-speaking');
+  if(smileLayer)smileLayer.style.opacity='0';
   mouthTimer=requestAnimationFrame(tickMouth);
  }
  function resetMouth(){

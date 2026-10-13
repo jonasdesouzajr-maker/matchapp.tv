@@ -7,8 +7,11 @@
 #ma-jonas-home.jh-listening .jh-mic{
  outline:2px solid #68cdec;outline-offset:2px;
 }
-#ma-jonas-home.is-floating{
- z-index:40;
+/* Subtle breathing container — transform is applied by the micro-expression loop */
+#ma-jonas-home .jh-medallion,
+#ma-jonas-home .jh-portrait{
+ transform-origin:center 60%;
+ will-change:transform;
 }
 #ma-jonas-home-panel{
  z-index:41;
