@@ -2,6 +2,7 @@
 """Static regression guards for the adult Play package. NOT device or AdMob QA."""
 from pathlib import Path
 import json
+import re
 import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[1]
@@ -21,7 +22,11 @@ assert 'applicationId = "com.jonas.papercup"' in gradle
 assert "targetSdk = 36" in gradle and "versionCode = 52" in gradle
 assert 'package="tv.matchapp.app"' not in manifest
 assert "package com.jonas.papercup" in activity
-assert "appBuild=42" in activity
+app_version_code = re.search(r"\bversionCode\s*=\s*(\d+)", gradle).group(1)
+app_version_name = re.search(r'\bversionName\s*=\s*"([^"]+)"', gradle).group(1)
+assert f"appBuild={app_version_code}" in activity
+assert f"MatchAppTVAndroid/{app_version_name}" in activity
+assert f"MatchAppAiAndroid/{app_version_name}" in activity
 assert "isKidsUri(target)" in activity
 assert "child.post { child.destroy() }" in activity
 assert 'applicationId = "tv.matchapp.kids"' in kids

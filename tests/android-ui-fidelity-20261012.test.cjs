@@ -9,7 +9,7 @@ test('Android adaptive launcher references the approved premium icon with mask-s
  const fg=read('android-studio/app/src/main/res/drawable/matchapp_launcher_safe.xml');
  assert.match(adaptive,/matchapp_launcher_safe/);
  assert.match(fg,/matchapp_launcher_premium/);
- assert.match(fg,/android:inset="13%"/);
+ assert.match(fg,/android:inset="6%"/);
  assert.ok(fs.statSync(path.join(root,'android-studio/app/src/main/res/drawable/matchapp_launcher_premium.webp')).size>10000);
 });
 test('One live Android Jonas assistant greets directly and drags with GPU transforms',()=>{
