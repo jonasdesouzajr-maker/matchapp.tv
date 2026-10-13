@@ -137,30 +137,35 @@ async function aiQuestion(page,question,expected,label){
     await page.locator('#q-category').waitFor({state:'attached',timeout:15000});
     await page.locator('#q-category').locator('xpath=..').locator('.crit-chips .crit-chip').first().waitFor({state:'attached',timeout:15000});
     await page.locator('#ebook-matcher-root [data-ebook-match]').waitFor({state:'attached',timeout:25000});
-    // Fresh Home opens Top Titles and Ask AI, with Watch in compact preview. Open News explicitly to verify its content.
+    // Home keeps the discontinued controls out of view; News is reached via Explore.
     try {
-      await page.locator('#latest-news > summary').waitFor({state:'visible',timeout:20000});
       const defaults=await page.evaluate(()=>({
         titles:!!document.getElementById('trending-rail')?.getClientRects().length,
         generic:[...document.querySelectorAll('.lazy-head[data-fold-key]')].every(n=>n.getAttribute('aria-expanded')===(n.dataset.foldKey==='askai'?'true':'false')),
         compact:document.querySelector('#ma-concierge')?.classList.contains('ma-watch-compact'),
-        native:['#latest-news','#premiere-disclosure','#weekly-pick-disclosure','#cooking-home','#ebook-matcher-root .ebook-fold','#global-events .global-events-fold'].every(s=>!document.querySelector(s)?.open),
-        music:document.querySelector('.swifties-fold')?.getAttribute('aria-expanded')==='false'
+        native:['#latest-news','#premiere-disclosure','#weekly-pick-disclosure','#cooking-home','#ebook-matcher-root .ebook-fold','#global-events .global-events-fold'].every(k=>!document.querySelector(k)?.open),
+        music:document.querySelector('.swifties-fold')?.getAttribute('aria-expanded')==='false',
+        newsHidden:!document.getElementById('latest-news')?.getClientRects().length,
+        readingHidden:!document.getElementById('ebook-matcher-root')?.getClientRects().length
       }));
-      record('Fresh Home opens Top Titles and Ask AI with compact Watch '+device.name,defaults.titles&&defaults.generic&&defaults.native&&defaults.music&&defaults.compact,JSON.stringify(defaults));
-      await page.locator('#latest-news > summary').click();
-      await page.waitForFunction(()=>document.querySelectorAll('#latest-news .ma-news-card-main[href^="https://"]').length>0,null,{timeout:20000});
-      const news=await page.evaluate(()=>{
-        const n=document.getElementById('latest-news');
-        const panel=n?.querySelector('.ma-news-panel');
-        return {open:!!n?.open,panelVisible:!!panel&&getComputedStyle(panel).display!=='none'&&panel.getClientRects().length>0,
-          outsideMatcher:!!n&&n.closest('#ma-concierge')===null,hasVerifiedCards:!!n?.querySelector('.ma-news-card-main[href^="https://"]')};
-      });
-      record('LIVE Latest News opens on request '+device.name,
-        news.open&&news.panelVisible&&news.outsideMatcher&&news.hasVerifiedCards,JSON.stringify(news));
-      await shot(page,device.name+'-latest-news-open');
+      record('Streaming-only Home folds '+device.name,
+        defaults.titles&&defaults.generic&&defaults.native&&defaults.music&&defaults.compact&&defaults.newsHidden&&defaults.readingHidden,
+        JSON.stringify(defaults));
+      const newsPage=await context.newPage();
+      try {
+        await observed(newsPage,'/explore.html');
+        await newsPage.locator('a.ex-card[href="/news/"]').click({timeout:15000});
+        await newsPage.waitForURL(/\/news\/?$/,{timeout:15000});
+        const news=await newsPage.evaluate(()=>({
+          heading:!!document.querySelector('main h1')?.textContent.includes('News'),
+          articles:document.querySelectorAll('main section[aria-label*="Latest verified"] article').length,
+          originals:document.querySelectorAll('main section[aria-label*="Latest verified"] article a[rel*="external"][href^="https://"]').length
+        }));
+        record('LIVE Explore News destination '+device.name,news.heading&&news.articles>0&&news.originals>0,JSON.stringify(news));
+        await shot(newsPage,device.name+'-explore-news');
+      } finally { await newsPage.close(); }
     } catch(error) {
-      record('LIVE Latest News opens on request '+device.name,false,String(error.message).slice(0,240));
+      record('LIVE Explore News destination '+device.name,false,String(error.message).slice(0,240));
     }
     assert(await page.locator('img[data-title]').count()>0,'no original-title poster elements');
     // On a 320px phone the trending rail starts below the opening hero and
@@ -266,27 +271,31 @@ async function aiQuestion(page,question,expected,label){
           motion.text==='none'&&motion.mote==='none'&&motion.star==='none',JSON.stringify(motion));
       }finally{await still.close();}
     }
-    const ebook=page.locator('#ebook-matcher-root');
-    const placement=await page.evaluate(()=>{
-      const form=document.getElementById('ma-concierge'),root=document.getElementById('ebook-matcher-root');
-      return !!(form&&root&&root.previousElementSibling===form&&!root.closest('#ma-concierge'));
-    });
-    record('Bookworms directly follows Find what to watch here '+device.name,placement,'independent of Ask AI');
-    const fold=ebook.locator('details.ebook-fold');
-    // Nested Bookworms top-picks and saved lists have their own summaries.
-    // Click the ONE direct fold summary, not three nested matches.
-    if(!await fold.evaluate(d=>d.open))await fold.locator(':scope > summary').click();
-    const format=ebook.locator('select[data-ebook-select="format"]');
-    await format.waitFor({state:'visible',timeout:12000});
-    for(const kind of ['audiobook','magazine','ebook']){
-      await format.selectOption(kind);
-      assert.equal(await format.inputValue(),kind,'real '+kind+' option was not selected');
-      const current=await page.evaluate(()=>JSON.parse(localStorage.getItem('match_ebook_criteria_v1')||'{}').format);
-      assert.equal(current,kind,'selected format must persist to the real Bookworms matcher');
-    }
-    const bookFields=await ebook.locator('select[data-ebook-select]').count();
-    record('real compact reading controls '+device.name,bookFields===7,
-      'seven live dropdowns preserve ebook, verified audio and magazine choices');
+    // Direct reading intent restores only the existing Bookworms matcher.
+    const readingPage=await context.newPage();
+    try {
+      await observed(readingPage,'/?reading=ebook#ebook-matcher-root');
+      const ebook=readingPage.locator('#ebook-matcher-root');
+      await ebook.waitFor({state:'visible',timeout:18000});
+      const placement=await readingPage.evaluate(()=>{
+        const form=document.getElementById('ma-concierge'),root=document.getElementById('ebook-matcher-root');
+        return !!(form&&root&&root.previousElementSibling===form&&!root.closest('#ma-concierge'));
+      });
+      record('Bookworms deep-link reaches original matcher '+device.name,placement,'independent of Ask AI');
+      const fold=ebook.locator('details.ebook-fold');
+      if(!await fold.evaluate(el=>el.open))await fold.locator(':scope > summary').click();
+      const format=ebook.locator('select[data-ebook-select="format"]');
+      await format.waitFor({state:'visible',timeout:12000});
+      for(const kind of ['audiobook','magazine','ebook']){
+        await format.selectOption(kind);
+        assert.equal(await format.inputValue(),kind,'real '+kind+' option was not selected');
+        const current=await readingPage.evaluate(()=>JSON.parse(localStorage.getItem('match_ebook_criteria_v1')||'{}').format);
+        assert.equal(current,kind,'selected format must persist to the real Bookworms matcher');
+      }
+      const bookFields=await ebook.locator('select[data-ebook-select]').count();
+      record('real deep-linked reading controls '+device.name,bookFields===7,
+        'seven live dropdowns preserve ebook, verified audio and magazine choices');
+    } finally { await readingPage.close(); }
     // Exercise the current Jonas launcher. The retired inline Home composer stays
     // hidden intentionally and must not be treated as the user-facing Ask surface.
     const askLauncher=page.locator('#ma-jonas-home-bubble'),homeInput=page.locator('#ma-jonas-home-input');
@@ -431,9 +440,10 @@ async function aiQuestion(page,question,expected,label){
   const booksContext=await browser.newContext({viewport:{width:1200,height:900},locale:'en-US'});
   const books=await booksContext.newPage();
   try{
-    await observed(books,'/');
+    await observed(books,'/?reading=ebook#ebook-matcher-root');
     await books.getByRole('button',{name:/Essential only/i}).first().click({timeout:1600}).catch(()=>{});
     const root=books.locator('#ebook-matcher-root');
+    await root.waitFor({state:'visible',timeout:18000});
     await root.locator('details.ebook-fold').waitFor({state:'attached',timeout:18000});
     await root.locator('details.ebook-fold').evaluate(el=>{el.open=true});
     const format=root.locator('select[data-ebook-select="format"]');
