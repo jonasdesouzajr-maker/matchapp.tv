@@ -14,7 +14,7 @@
 const SHARE_WINDOW_MS = 6 * 60 * 60 * 1000;  // 6 hours
 const SHARE_MAX_REWARDS = 3;
 const SHARE_TAGS = '#MatchAppAi #MatchAppTV #FindWhatToWatch #StreamingGuide #MovieNight';
-const SHARE_POSTER = '/assets/brand/matchapp-share-poster.png?v=20260926-selected1';
+const SHARE_POSTER = '/assets/brand/matchapp-share-poster.png?v=20261012-approved';
 const SHARE_URL = 'https://matchapp.tv/';
 
 /* ---------- Reward accounting ---------- */

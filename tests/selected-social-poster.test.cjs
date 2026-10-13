@@ -8,14 +8,14 @@ const root=path.resolve(__dirname,'..');
 const read=part=>fs.readFileSync(path.join(root,part),'utf8');
 const POSTER='/assets/brand/matchapp-share-poster.png';
 
-test('the committed share poster is the exact owner-selected 941x1672 PNG',()=>{
+test('the committed share poster is the exact owner-selected 1229x1536 PNG',()=>{
  const bytes=fs.readFileSync(path.join(root,POSTER));
  assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
- assert.equal(bytes.readUInt32BE(16),941);
- assert.equal(bytes.readUInt32BE(20),1672);
- assert.equal(bytes.length,2395539);
+ assert.equal(bytes.readUInt32BE(16),1229);
+ assert.equal(bytes.readUInt32BE(20),1536);
+ assert.equal(bytes.length,3396344);
  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),
-  '2061c598556c5e4be2dd49c5ee65941a31a1bce150de9fc5708597a9dc6ac630');
+  '15bb34af71f21653f969e7928ce5c5f90656e27de0a33f61b2e499843f494f6a');
 });
 
 test('normal share card uses the branded poster unchanged, never match artwork',async()=>{
@@ -24,7 +24,7 @@ test('normal share card uses the branded poster unchanged, never match artwork',
  });
  const win=dom.window,images=[],draws=[];
  win.Image=class{
-  constructor(){this.naturalWidth=941;this.naturalHeight=1672;}
+  constructor(){this.naturalWidth=1229;this.naturalHeight=1536;}
   set src(src){images.push(src);Promise.resolve().then(()=>this.onload?.());}
  };
  win.HTMLCanvasElement.prototype.getContext=function(){
@@ -32,9 +32,9 @@ test('normal share card uses the branded poster unchanged, never match artwork',
  };
  win.eval(read('share.js'));
  const card=await win.buildShareCard('A private title','https://elsewhere.invalid/private-film.jpg','Netflix','private synopsis');
- assert.equal(card.width,941);
- assert.equal(card.height,1672);
- assert.deepEqual(images,[POSTER+'?v=20260926-selected1']);
+ assert.equal(card.width,1229);
+ assert.equal(card.height,1536);
+ assert.deepEqual(images,[POSTER+'?v=20261012-approved']);
  assert.equal(draws.length,1);
  assert.equal(draws[0][1],0);
  assert.equal(draws[0][2],0);

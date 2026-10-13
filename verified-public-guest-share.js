@@ -6,7 +6,7 @@
 'use strict';
 const $=s=>document.querySelector(s);
 const guestKey='match_guestProofBrowser_v1';
-const POSTER='/assets/brand/matchapp-share-poster.png?v=20260926-selected1';
+const POSTER='/assets/brand/matchapp-share-poster.png?v=20261012-approved';
 let posterFilePending=null;
 function posterFile(){
  if(!posterFilePending){
