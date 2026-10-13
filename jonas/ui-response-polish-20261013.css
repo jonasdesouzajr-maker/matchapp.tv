@@ -25,9 +25,12 @@
  border-radius:50%!important;
  pointer-events:none!important;
 }
-#ma-jonas-home .jh-mouth-layer{
+#ma-jonas-home .jh-mouth-layer,
+#ma-jonas-home .jh-viseme-a,
+#ma-jonas-home .jh-viseme-b{
  clip-path:inset(54% 6% 8% 6%)!important;
- transition:opacity .09s ease!important;
+ transition:opacity .055s ease!important;
+ will-change:opacity;
 }
 #ma-jonas-home .jh-micro-smile{
  clip-path:inset(50% 8% 12% 8%)!important;

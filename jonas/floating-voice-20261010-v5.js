@@ -15,14 +15,22 @@
  var mouthBoundary='rest',mouthBoundaryUntil=0;
  var reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches||false;
  ['rest','smile','aa','ee','oh'].forEach(function(name){var img=new Image();img.decoding='async';img.src=faceBase+name+'.jpg';frames[name]=img});
+ // Dual viseme layers: one fades out while the other fades in.
+ var visemeA=null,visemeB=null,visemeFront='a';
+ function makeViseme(cls){
+  var el=document.createElement('img');
+  el.className='jh-mouth-layer '+cls;el.alt='';el.setAttribute('aria-hidden','true');
+  el.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(54% 6% 8% 6%);opacity:0;pointer-events:none;border-radius:50%;z-index:2;transition:opacity .055s ease';
+  return el;
+ }
  if(portrait){
   // Never swap the whole head image: only the mouth moves, so eyes and face
   // remain stable without flashes during speech synthesis.
-  mouth=document.createElement('img');
-  mouth.className='jh-mouth-layer';mouth.alt='';mouth.setAttribute('aria-hidden','true');
-  mouth.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 19%;clip-path:inset(54% 6% 8% 6%);opacity:0;pointer-events:none;border-radius:50%;z-index:2;transition:opacity .09s ease';
   portrait.parentNode.style.position='relative';
-  portrait.parentNode.appendChild(mouth);
+  visemeA=makeViseme('jh-viseme-a');visemeB=makeViseme('jh-viseme-b');
+  portrait.parentNode.appendChild(visemeA);
+  portrait.parentNode.appendChild(visemeB);
+  mouth=visemeA; // compatibility handle
  }
  // Blink overlays affect only the upper face, not the full portrait/bubble.
  [root.querySelector('.jh-medallion'),root.querySelector('.jh-portrait')].forEach(function(parent){
@@ -93,18 +101,21 @@
  if(!reduceMotion)breathRaf=requestAnimationFrame(tickBreath);
  try{window.speechSynthesis?.getVoices?.()}catch(_){}
  function face(name){
-  if(!mouth||name===mouthFrame)return;
+  if(!visemeA||!visemeB||name===mouthFrame)return;
   mouthFrame=name;
-  if(name==='rest'){mouth.style.opacity='0';return}
+  if(name==='rest'){
+   visemeA.style.opacity='0';visemeB.style.opacity='0';
+   return;
+  }
   var image=frames[name];
   if(!(image&&image.complete&&image.naturalWidth>0))return;
-  // Brief fade so the src swap is not visible.
-  mouth.style.opacity='0';
-  setTimeout(function(){
-   if(mouthFrame!==name)return;
-   mouth.src=image.src;
-   mouth.style.opacity='1';
-  },42);
+  // True crossfade: incoming layer fades up while the other fades down.
+  var incoming=visemeFront==='a'?visemeB:visemeA;
+  var outgoing=visemeFront==='a'?visemeA:visemeB;
+  incoming.src=image.src;
+  incoming.style.opacity='1';
+  outgoing.style.opacity='0';
+  visemeFront=visemeFront==='a'?'b':'a';
  }
  function voiceFor(lang){
   // Never fall back to the device's first/default voice, which may be female.
