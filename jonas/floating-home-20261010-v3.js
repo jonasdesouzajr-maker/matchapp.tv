@@ -160,8 +160,10 @@
   bubble.setAttribute('aria-label',pt?'Conversar com Jonas':'Chat with Jonas');
   close.setAttribute('aria-label',pt?'Fechar conversa':'Close conversation');
   input.setAttribute('aria-label',pt?'Sua pergunta para Jonas':'Your question for Jonas');
+  // The premium voice-first composer may omit its visual submit control.
+  // Never abort Jonas initialization when an optional button is absent.
   var send=root.querySelector('.jh-send');
-  send.setAttribute('aria-label',pt?'Enviar pergunta ao MatchApp Ai':'Send question to MatchApp Ai');
+  if(send)send.setAttribute('aria-label',pt?'Enviar pergunta ao MatchApp Ai':'Send question to MatchApp Ai');
   panel.setAttribute('aria-label',pt?'Converse com Jonas':'Chat with Jonas');
   // The top-box selector governs Jonas too: all fourteen existing locales.
   var locale=window.MatchAppJonasLocale;
@@ -179,7 +181,7 @@
    set('#ma-jonas-home .jh-footnote',window.MatchAppJonasLocale.lang()==='en'?d.companion:'MatchApp Ai');
    input.placeholder=d.placeholder;
    bubble.setAttribute('aria-label',d.mic);close.setAttribute('aria-label',d.close);
-   send.setAttribute('aria-label',d.send);
+   if(send)send.setAttribute('aria-label',d.send);
    panel.setAttribute('aria-label','Jonas — '+d.companion);
    var mic=root.querySelector('#ma-jonas-home-mic');if(mic){mic.setAttribute('aria-label',d.mic);mic.title=d.mic}
    root.querySelectorAll('.jh-suggestion').forEach(function(el,i){

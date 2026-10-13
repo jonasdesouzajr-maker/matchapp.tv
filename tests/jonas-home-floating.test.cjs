@@ -16,6 +16,7 @@ function scene(url='https://matchapp.tv/',options={}){
    {url,runScripts:'outside-only',pretendToBeVisual:true});
  if(options.native)dom.window.MATCHAPP_ANDROID=true;
  if(options.locale)dom.window.MATCH_LANG=options.locale;
+ if(options.removeSubmit)dom.window.document.querySelector('.jh-send')?.remove();
  dom.window.matchMedia=()=>({matches:false});
  dom.window.eval(js);
  return dom;
@@ -69,6 +70,21 @@ test('input and quick prompts use original authenticated AI discovery route',()=
  }
  assert.ok(d.querySelector('.jh-full[href="/jonas/"]'));
  assert.doesNotMatch(js,/\/api\/ask|OPENROUTER_API_KEY|STRIPE_SECRET_KEY/);
+ dom.window.close();
+});
+test('Jonas stays usable when the optional visual send button is absent',async()=>{
+ const dom=scene('https://matchapp.tv/',{locale:'pt-BR',removeSubmit:true});
+ const w=dom.window,d=w.document;
+ const bubble=d.getElementById('ma-jonas-home-bubble');
+ const input=d.getElementById('ma-jonas-home-input');
+ assert.equal(bubble.getAttribute('aria-label'),'Conversar com Jonas');
+ bubble.click();
+ assert.equal(d.getElementById('ma-jonas-home-panel').hidden,false);
+ input.value='Filmes de comédia';
+ assert.equal(new w.URLSearchParams(new w.FormData(d.querySelector('.jh-form'))).get('q'),'Filmes de comédia');
+ w.MATCH_LANG='en';d.dispatchEvent(new w.Event('change',{bubbles:true}));
+ await Promise.resolve();
+ assert.equal(bubble.getAttribute('aria-label'),'Chat with Jonas');
  dom.window.close();
 });
 test('Portuguese locale updates controls and suggestion questions',async()=>{
