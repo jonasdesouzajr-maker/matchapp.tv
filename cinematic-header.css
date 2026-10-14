@@ -1,7 +1,7 @@
 /* MatchApp Ai — Site-wide cinematic header
    Deep midnight purple surface, thin gold border, soft gold glow on logo,
    elegant title. High specificity to override earlier header styles.
-   Diagonal shimmer like sea waves, disabled for reduced motion.
+   Diagonal shimmer contained to the header only.
 */
 
 html body header.app-header,
@@ -17,7 +17,8 @@ html body .app-header {
     inset 0 1px 0 rgba(255,236,190,.16),
     inset 0 -18px 40px rgba(0,0,0,.35) !important;
   position: relative;
-  overflow: hidden;
+  overflow: hidden !important;
+  contain: paint;
 }
 
 html body header.app-header .brand-logo,
@@ -46,29 +47,28 @@ html body .app-header :is(.ma-word-app, .ma-word-ai) {
   color: #e6c36a !important;
 }
 
-/* Diagonal shimmer wave */
+/* Contained diagonal shimmer — inset so it never escapes the header */
 html body header.app-header::after,
 html body .app-header::after {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
   background: linear-gradient(
-    45deg,
+    120deg,
     transparent 30%,
-    rgba(230, 195, 106, 0.12) 50%,
+    rgba(230, 195, 106, 0.15) 50%,
     transparent 70%
   );
-  animation: header-shimmer 9s linear infinite;
+  background-size: 200% 100%;
+  animation: header-shimmer 8s linear infinite;
   pointer-events: none;
   z-index: 1;
+  contain: paint;
 }
 
 @keyframes header-shimmer {
-  0% { transform: translate(-30%, -30%) rotate(0deg); }
-  100% { transform: translate(30%, 30%) rotate(0deg); }
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
 }
 
 /* Controls in header: dark surfaces */
@@ -83,6 +83,6 @@ html body .app-header :is(a, button, select):not(.gold-btn):not([class*="signin"
   html body header.app-header::after,
   html body .app-header::after {
     animation: none !important;
-    opacity: 0.4;
+    opacity: 0.35;
   }
 }
