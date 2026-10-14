@@ -36,16 +36,14 @@ const STOP=new Set('the a an and or of for to in on with from at by as is are wa
 const clean=s=>String(s||'')
   .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1')
   .replace(/<[^>]*>/g,' ')
-  .replace(/&amp;/g,'&')
-  .replace(/&quot;/g,'"')
-  .replace(/&#39;|&apos;/g,"'")
-  // RSS headlines sometimes contain numeric curly quotes. Decode them once
-  // before escaping generated HTML to avoid visible double-escaped entities.
-  .replace(/&#x([a-f0-9]+);/gi,(_,n)=>String.fromCodePoint(parseInt(n,16)))
-  .replace(/&#([0-9]+);/g,(_,n)=>String.fromCodePoint(parseInt(n,10)))
-  .replace(/&nbsp;/g,' ')
-  .replace(/&lt;/g,'<')
-  .replace(/&gt;/g,'>')
+  // Decode source entities in one pass; encoded entities never decode twice.
+  .replace(/&(?:amp|quot|apos|nbsp|lt|gt|#39|#x[a-f0-9]+|#[0-9]+);/gi,entity=>{
+    const named={'&amp;':'&','&quot;':'"','&apos;':"'",'&#39;':"'",'&nbsp;':' ','&lt;':'<','&gt;':'>'};
+    const key=entity.toLowerCase();
+    if(Object.hasOwn(named,key))return named[key];
+    const value=key.startsWith('&#x')?parseInt(key.slice(3,-1),16):parseInt(key.slice(2,-1),10);
+    return value>0&&value<=0x10ffff&&!(value>=0xd800&&value<=0xdfff)?String.fromCodePoint(value):entity;
+  })
   .replace(/\s+/g,' ')
   .trim();
 
@@ -468,6 +466,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </article>
 </main>
 <script src="/build-meta.js?v=203"></script>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>`;
 }
@@ -475,6 +474,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 function hub(items,generated){
   const cards=items.slice(0,24).map(i=>`<article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
     <p style="font-size:12px;color:#E5C158">${esc(i.source)} · ${esc(i.event_type)} · ${esc(new Date(i.published_at).toLocaleDateString('en-US'))}</p>
+    ${String(i.image||'').startsWith('https://')&&!/sport/i.test(i.event_type||'')?`<img class="approved-news-image" src="${esc(i.image)}" alt="" width="680" height="420" loading="lazy" decoding="async">`: ""}
     <h2 style="font-size:19px"><a href="${esc(i.matchapp_url)}">${esc(i.title)}</a></h2>
     <p>${esc(i.description)}</p>
     <p><a href="${esc(i.landing_url)}">Open in Latest News →</a></p>
@@ -543,17 +543,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
+<link rel="stylesheet" href="/approved-design-surfaces-20261013.css?v=1">
 </head>
-<body>
+<body class="approved-news-page">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
+<header class="app-header" id="approved-news-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news">← MatchApp Latest News</a>
-  <h1>Latest Entertainment, World and Sports News</h1>
-  <p>Country-aware and language-aware entertainment and world news refreshed hourly plus trusted publisher sports links discovered twice daily. SEO freshness metadata is rebuilt with every news refresh. Each story opens its source.</p>
+  <h1 id="approved-page-title" class="approved-design-title">News</h1>
+  <p>Entertainment, world and sports headlines from named publishers. Open each story for its original source.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
     <p>MatchApp Latest News is an hourly entertainment and world-news index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
@@ -564,6 +565,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>`;
 }
@@ -602,8 +604,10 @@ function currentSlugDir(i){
 }
 
 function ensureArticleAnalyticsFile(file){
-  if(!fs.existsSync(file))return false;
-  let html=fs.readFileSync(file,'utf8');
+  let descriptor;
+  try{descriptor=fs.openSync(file,'r+');}catch(error){if(error.code==='ENOENT')return false;throw error;}
+  try{
+  let html=fs.readFileSync(descriptor,'utf8');
   let changed=false;
   if(!html.includes('GTM-M7J3NNBN')){
     const gtmHead=`<!-- Google Tag Manager -->
@@ -641,8 +645,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       changed=true;
     }
   }
-  if(changed)fs.writeFileSync(file,html);
+  if(changed){
+    const output=Buffer.from(html,'utf8');
+    let written=0;
+    while(written<output.length){
+      const count=fs.writeSync(descriptor,output,written,output.length-written,written);
+      if(!count)throw new Error('Article analytics write made no progress');
+      written+=count;
+    }
+    fs.ftruncateSync(descriptor,output.length);
+  }
   return changed;
+  }finally{fs.closeSync(descriptor);}
 }
 
 function enforceArticleAnalyticsOnDisk(){

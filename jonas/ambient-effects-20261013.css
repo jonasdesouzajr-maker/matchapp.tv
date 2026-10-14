@@ -1,0 +1,138 @@
+/* Premium ambient effects — adult pages only.
+   Additive. Does not touch Jonas logic, matching, AdSense, Kids, or Android shell. */
+@keyframes ma-shimmer {
+  0% { background-position: -120% 0; }
+  100% { background-position: 220% 0; }
+}
+@keyframes ma-soft-pulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+@keyframes ma-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Shimmer sweep on gold buttons and Explore more */
+.gold-btn,
+.mh-explore-more,
+.ex-card,
+#ma-jonas-home .jh-bubble {
+  position: relative;
+  overflow: hidden;
+}
+.gold-btn::before,
+.mh-explore-more::before,
+.ex-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.22) 48%, transparent 62%);
+  background-size: 200% 100%;
+  animation: ma-shimmer 3.6s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Extra shimmer layers — cards, top box, Explore hero, headings */
+html body.page-home .premium-card,
+html body.page-home #mh-topbox,
+.ex-hero,
+.ex-card,
+.marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+html body.page-home .premium-card::before,
+html body.page-home #mh-topbox::before,
+.ex-hero::before,
+.marquee-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(230,195,106,.12) 48%, rgba(255,255,255,.08) 52%, transparent 65%);
+  background-size: 220% 100%;
+  animation: ma-shimmer 5.2s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+html body.page-home .premium-card > *,
+html body.page-home #mh-topbox > *,
+.ex-hero > *,
+.marquee-wrapper > * {
+  position: relative;
+  z-index: 2;
+}
+/* Gold text shimmer on main headings */
+html body.page-home .mh-tagline,
+html body.page-home .home-h1,
+.ex-hero h1 {
+  background: linear-gradient(100deg, #E6C36A 20%, #fff8e0 45%, #E6C36A 70%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ma-shimmer 4.8s ease-in-out infinite;
+}
+#trending-rail .marquee-item {
+  position: relative;
+}
+#trending-rail .marquee-item::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(230,195,106,.25);
+  animation: ma-soft-pulse 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Gentle float on Jonas bubble when idle */
+#ma-jonas-home:not(.jh-speaking):not(.is-dragging) .jh-bubble {
+  animation: ma-float 5.5s ease-in-out infinite;
+}
+
+/* Smooth transitions everywhere */
+.gold-btn,
+.mh-explore-more,
+.ex-card,
+.premium-card,
+#trending-rail .marquee-item,
+#ma-jonas-home .jh-bubble,
+#ma-jonas-home .jh-popover,
+.marquee-wrapper,
+a, button {
+  transition: transform .28s cubic-bezier(.2,.8,.2,1),
+              box-shadow .28s ease,
+              opacity .22s ease,
+              border-color .22s ease,
+              background-color .22s ease !important;
+}
+.gold-btn:active,
+.mh-explore-more:active,
+.ex-card:active,
+#trending-rail .marquee-item:active {
+  transform: scale(.97);
+}
+#ma-jonas-home .jh-popover {
+  transition: opacity .3s ease, transform .3s cubic-bezier(.2,.8,.2,1) !important;
+}
+
+/* Reduce motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .gold-btn::before,
+  .mh-explore-more::before,
+  .ex-card::before,
+  html body.page-home .premium-card::before,
+  html body.page-home #mh-topbox::before,
+  .ex-hero::before,
+  .marquee-wrapper::before,
+  #trending-rail .marquee-item::after,
+  #ma-jonas-home .jh-bubble,
+  html body.page-home .mh-tagline,
+  html body.page-home .home-h1,
+  .ex-hero h1 {
+    animation: none !important;
+  }
+}

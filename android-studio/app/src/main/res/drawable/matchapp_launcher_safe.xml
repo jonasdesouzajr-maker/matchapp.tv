@@ -1,5 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Approved metallic launcher artwork; safe inset protects the ring and star inside Samsung/Pixel masks. -->
-<inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/matchapp_launcher_premium"
-    android:inset="13%" />
+<inset xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/matchapp_approved_launcher" android:inset="13%" />

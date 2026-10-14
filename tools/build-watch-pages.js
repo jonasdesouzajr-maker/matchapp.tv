@@ -223,6 +223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/">Home</a><a href="/discover.html">Ask AI</a><a href="/together.html">Match Together</a>
     </footer>
 </main>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>
 `;
@@ -237,7 +238,7 @@ function buildIndex(titles) {
             itemListElement:titles.map((name,i)=>({'@type':'ListItem',position:i+1,name,
                 url:SITE+'/where-to-watch/'+slug(name)+'/'
             }))}};
-    const schemaJson=JSON.stringify(schema).replace(/</g,'\u003c');
+    const schemaJson=JSON.stringify(schema).replace(/</g,'\\u003c');
     const links = titles.map(t =>
         `<a href="/where-to-watch/${slug(t)}/">${esc(t)}</a>`).join('\n                ');
     return `<!DOCTYPE html>
@@ -287,6 +288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 ${links}
     </nav>
 </main>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body>
 </html>
 `;

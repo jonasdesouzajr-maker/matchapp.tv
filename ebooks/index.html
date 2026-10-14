@@ -66,6 +66,8 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 <link rel="stylesheet" href="/ui-harmony.css?v=20261003-1">
 <link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-grid3">
 <link rel="stylesheet" href="/ebooks/ebook-page-mobile-finish-20261011.css?v=20261011-device2">
+<link rel="stylesheet" href="/premium-approved-redesign-20261013.css?v=20261013-1">
+<link rel="stylesheet" href="/approved-design-surfaces-20261013.css?v=20261013-qa3">
 </head>
 <body class="ebook-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -76,8 +78,9 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 <main>
 <section class="ebook-page-hero">
 <p class="ebook-page-eyebrow">BOOKWORMS · NEW MATCHAPP UNIVERSE</p>
-<h1>Match E-books, Audiobooks &amp; Magazines Ai</h1>
-<p>Movies have moods. Books do too. Match over 100 curated reading profiles by mood, genre, pace, length, era, legal access, and whether you want to read or listen. Select Magazine only for international or Brazilian magazines; ordinary e-book and audiobook matching never mixes in magazines. For verified audiobook editions, MatchApp checks the exact title and author against official source listings before presenting any edition as confirmed. Magazine covers are linked directly at publishers; free publisher articles are not free full issues.</p>
+<h1 id="approved-page-title" class="approved-design-title">Books</h1>
+<p class="approved-page-subtitle">E-books, audiobooks &amp; magazines</p>
+<details class="approved-page-intro"><summary>About book discovery</summary><p>Movies have moods. Books do too. Match over 100 curated reading profiles by mood, genre, pace, length, era, legal access, and whether you want to read or listen. Select Magazine only for international or Brazilian magazines; ordinary e-book and audiobook matching never mixes in magazines. For verified audiobook editions, MatchApp checks the exact title and author against official source listings before presenting any edition as confirmed. Magazine covers are linked directly at publishers; free publisher articles are not free full issues.</p></details>
 <a class="ebook-page-cta" href="/#ebook-matcher-root">📚🎧📰 Match a book, audiobook or magazine</a>
 </section>
 
@@ -216,5 +219,27 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 })();
 </script>
 <script defer src="/brand-lock-20261011.js?v=20261011-a1"></script>
+
+<link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css">
+<link rel="stylesheet" href="/jonas/ui-response-polish-20261013.css">
+<link rel="stylesheet" href="/jonas/ambient-effects-20261013.css">
+<aside id="ma-jonas-home" aria-label="Jonas floating companion">
+  <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
+    <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
+    <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
+    <form class="jh-form">
+      <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas">
+      <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input">🎤</button>
+    </form>
+  </section>
+  <button id="ma-jonas-home-bubble" class="jh-bubble" type="button" aria-label="Chat with Jonas" aria-controls="ma-jonas-home-panel" aria-expanded="false">
+    <img class="jh-medallion" src="/jonas/faces/jonas/rest.jpg" alt="Jonas" width="64" height="64">
+  </button>
+</aside>
+<script defer src="/jonas/floating-home-20261010-v3.js?v=20261013-drag&persistent=20261014-2"></script>
+<script defer src="/jonas/floating-voice-20261010-v5.js?v=20261013-human"></script>
+<script defer src="/jonas/ambient-effects-20261013.js"></script>
+<script defer src="/jonas/ambient-sounds-20261013.js"></script>
+
 </body>
 </html>

@@ -243,6 +243,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  }
  function openPanel(){
   if(open)return;
+  if(!history.state?.maAmbientJonasOpen)history.pushState(Object.assign({},history.state,{maAmbientJonasOpen:true}),'',location.href);
   open=true;epoch++;activeTitle=contextTitle();
   panel.hidden=false;panel.querySelector('.ja-hello').textContent=greeting();
   // Unfold visually from the actual draggable bubble, wherever it is parked.
@@ -266,6 +267,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function closePanel(){
   if(!open)return;
   open=false;stopConversation();
+  if(history.state?.maAmbientJonasOpen)history.back();
   panel.hidden=true;root.hidden=false;document.removeEventListener('keydown',escapeKey);
   bubble.focus({preventScroll:true});
  }
@@ -280,6 +282,24 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   return undefined;
  }
  function routeNative(){
+  // Kotlin emits TTS callbacks on the outer WebView. The metered chat lives
+  // in a same-origin iframe and must receive failures too, so its approved
+  // voice fallback can start immediately instead of waiting for a timeout.
+  ['State','Word'].forEach(function(kind){
+   var fn='matchAppNativeSpeech'+kind,prev=window[fn];
+   window[fn]=function(value){
+    if(open&&ready&&frame?.contentWindow){
+     try{
+      var w=frame.contentWindow;
+      if(w.location.origin===location.origin&&w.location.pathname==='/discover.html'){
+       var callback=w[fn];
+       if(typeof callback==='function')callback(value);
+      }
+     }catch(_){}
+    }
+    if(typeof prev==='function')return prev(value);
+   };
+  });
   ['Result','Partial','Error'].forEach(function(kind){
    var fn='matchAppNativeVoice'+kind,prev=window[fn];
    window[fn]=function(value){return handleNative(kind,value,prev)};
@@ -358,6 +378,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   panel.querySelector('.ja-close').addEventListener('click',closePanel);
   window.addEventListener('resize',function(){var r=root.getBoundingClientRect();if(root.style.left)setPosition(r.left,r.top)},{passive:true});
   window.addEventListener('pagehide',stopConversation);
+  window.addEventListener('popstate',function(){if(open&&!history.state?.maAmbientJonasOpen)closePanel()});
   window.addEventListener('matchapp:language-changed',function(){bubble.ariaLabel=locale().open});
   routeNative();restore();
   // Keep Jonas dormant/lightweight. Native greeting happens on tap while

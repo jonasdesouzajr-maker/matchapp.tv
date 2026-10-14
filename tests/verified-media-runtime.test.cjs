@@ -151,3 +151,30 @@ test('verified ebook cover sources overlap network work while preserving trusted
  await work;
  assert.deepEqual(shown,['google-exact']);
 });
+
+
+test('verified displayed movie identity reaches chat context without replacing a newer or pinned result',()=>{
+ const source=read('catalog-media.js');
+ const start=source.indexOf('    // Keep the chat/share context aligned');
+ const end=source.indexOf('    applyDetails(meta);',start);
+ assert(start>=0&&end>start);
+ const snippet=source.slice(start,end);
+ const original={title:'Business Proposal',cats:['series'],year:2022,tmdbId:null,artwork:''};
+ const run=(identity,meta={tmdb_id:154825,media_kind:'tv'})=>{
+  const window={currentMatchIdentity:identity};
+  vm.runInNewContext(snippet,{window,meta,title:'Business Proposal',resolved:{url:'https://image.tmdb.org/t/p/w342/original.jpg'},TRUSTED_POSTER:/^https:\/\/image\.tmdb\.org\//,normalise:t=>String(t).toLowerCase()});
+  return window.currentMatchIdentity;
+ };
+ const enriched=run(original);
+ assert.equal(enriched.tmdbId,154825);
+ assert.equal(enriched.kind,'tv');
+ assert.equal(enriched.artwork,'https://image.tmdb.org/t/p/w342/original.jpg');
+ assert.equal(enriched.year,original.year);
+ assert.equal(enriched.cats,original.cats);
+ const newer={...original,title:'Another Title'};
+ assert.equal(run(newer),newer);
+ const pinned={...original,tmdbId:123};
+ assert.equal(run(pinned),pinned);
+ assert.equal(run(original,{tmdb_id:0,media_kind:'tv'}),original);
+ assert.equal(run(original,{tmdb_id:154825,media_kind:'music'}),original);
+});

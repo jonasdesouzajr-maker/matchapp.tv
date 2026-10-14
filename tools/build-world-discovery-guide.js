@@ -123,7 +123,7 @@ const render=function render(data){
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const SITE="https://matchapp.tv",url=SITE+"/guides/worldwide-entertainment-discovery/";
 const link=(href,label)=>`<a href="${esc(href)}">${esc(label)}</a>`;
-const sections=data.map(r=>`<section class="lang-card" id="lang-${esc(r.code.toLowerCase().replace("-","-"))}" lang="${esc(r.code)}"${r.code==="ar"?' dir="rtl"':""}><h2>${esc(r.label)}</h2><p>${esc(r.description)}</p><h3>${esc(r.watch)}</h3><ul><li>${esc(r.mood)}</li><li>${esc(r.books)}</li></ul><p>${link("/?lang="+encodeURIComponent(r.code),r.code==="en"?"Explore MatchApp in English":r.watch+" →")}</p></section>`).join("\n");
+const sections=data.map(r=>`<section class="lang-card" id="lang-${esc(r.code.toLowerCase())}" lang="${esc(r.code)}"${r.code==="ar"?' dir="rtl"':""}><h2>${esc(r.label)}</h2><p>${esc(r.description)}</p><h3>${esc(r.watch)}</h3><ul><li>${esc(r.mood)}</li><li>${esc(r.books)}</li></ul><p>${link("/?lang="+encodeURIComponent(r.code),r.code==="en"?"Explore MatchApp in English":r.watch+" →")}</p></section>`).join("\n");
 const ld={"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Worldwide movie, series, e-book and audiobook discovery in 14 languages","description":"A practical guide to MatchApp's entertainment discovery categories, localized search prompts and regional publisher links.","url":url,"inLanguage":"en","about":[{"@type":"Thing","name":"Movies and TV by mood"},{"@type":"Thing","name":"E-books and verified audiobooks"},{"@type":"Thing","name":"Streaming availability by country"}],"isPartOf":{"@type":"WebSite","url":SITE+"/","name":"MatchApp Ai","alternateName":["MatchApp","MatchApp.tv"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MatchApp Ai","item":SITE+"/"},{"@type":"ListItem","position":2,"name":"Worldwide entertainment discovery","item":url}]}]};
 return `<!doctype html>
 <html lang="en"><head>
@@ -164,6 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 <!-- End Google Tag Manager -->
+<link rel="stylesheet" href="/premium-approved-redesign-20261013.css?v=20261013-2">
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
@@ -171,9 +172,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header><div class="brand"><a href="/" aria-label="MatchApp Ai" class="matchapp-brand-link"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></a></div><p class="eyebrow">A practical worldwide discovery guide</p>
 <h1>What to watch, read or listen to — in your language</h1>
-<p class="intro">Choose your mood and what you want to enjoy: a movie, a series, a book, an audiobook, a magazine, music or a podcast. MatchApp’s interface supports 14 languages and helps you explore entertainment from multiple countries. Content and store availability vary by region; always confirm with the linked publisher or provider.</p>
+<p class="intro">For movies and TV series, start on Home and choose your mood, format and streaming preferences. For books, audiobooks, cooking, music, events and news, open Explore more and choose the dedicated category. MatchApp Ai supports 14 interface languages and entertainment from multiple countries. Content and store availability vary by region; always confirm with the linked publisher or provider.</p>
 <nav class="links" aria-label="Jump to discovery categories">
-${link("/","Find what to watch")} ${link("/ebooks/","Match e-books and audiobooks")}
+${link("/","Movies and TV on Home")} ${link("/explore.html","Explore more categories")} ${link("/ebooks/","Match e-books and audiobooks")} ${link("/cooking/","Cooking and recipes")}
 ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/events-archive.html","Global events")}
 </nav></header>
 <main>
@@ -184,7 +185,7 @@ ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/even
 <article class="route"><h3>Books and audiobooks</h3><p>Match e-books by mood and genre. Audiobook links are checked against title and author where supported; search-only store suggestions are not proof that an exact audio edition exists.</p>
 <p>${link("/ebooks/","Find your next e-book or audiobook")} · ${link("/guides/books-september-2026/","September book guide")}</p></article>
 <article class="route"><h3>Music, podcasts and current stories</h3><p>Explore music and podcasts or browse the current news hub. Trending headlines link to named publishers; MatchApp does not replace the original article.</p>
-<p>${link("/platforms/spotify/","Music and podcasts")} · ${link("/guides/global-music-september-2026/","September global music guide")} · ${link("/news/","Latest sourced headlines")}</p></article>
+<p>${link("/explore.html","Explore entertainment categories")} · ${link("/platforms/spotify/","Music and podcasts")} · ${link("/guides/global-music-september-2026/","September global music guide")} · ${link("/news/","Latest sourced headlines")}</p></article>
 </div></section>
 <section aria-labelledby="regions"><h2 id="regions">Explore by region — and verify availability locally</h2>
 <p>These editorial routes introduce titles and cultural trends without promising every work is available on every platform or in every country. Your region determines which stores and streaming providers may be offered.</p>
@@ -202,13 +203,14 @@ ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/even
 <p>These are useful example searches, not separate translated copies of this page. Select your language and ask naturally; results depend on source coverage and regional availability.</p>
 <div class="lang-grid">${sections}</div></section>
 <section aria-labelledby="questions"><h2 id="questions">Before you choose a title</h2>
-<h3>Can I find what to watch tonight in my country?</h3><p>Start with a mood, format and streaming preference. When MatchApp offers a viewing link, check that the provider serves your location and that the title is still available.</p>
+<h3>Can I find what to watch tonight in my country?</h3><p>On Home, choose a mood, movie or series format, and streaming preference. Home stays focused on movies and TV. For books, recipes, music, live events and current news, open <a href="/explore.html">Explore more</a>. When MatchApp Ai offers a viewing link, check that the provider serves your location and that the title is still available.</p>
 <h3>Can I find the exact audiobook edition?</h3><p>Where an exact title-and-author match is independently verified, MatchApp labels the edition accordingly. Otherwise, search links help you investigate without claiming the audiobook was verified.</p>
 <h3>Is every trending headline an original MatchApp report?</h3><p>No. The news hub organizes updates from named publishers and sends you to their original reporting. Standalone short source summaries are not treated as original reporting pages.</p>
 <p class="note">Language preference changes MatchApp’s interface; it does not create separate indexable translations of the same URL. Country-specific availability, catalogs and rankings can change at any time.</p>
 </section>
 ${discoveryLinks}</main>
 <footer>${link("/","MatchApp Ai")} · ${link("/discover.html","Ask AI")} · ${link("/ebooks/","Books & audiobooks")} · ${link("/pricing/pricing.html","Plans")}</footer>
+<script defer src="/jonas/adult-page-bubble-20261013.js?v=1"></script>
 </body></html>
 `;
 };

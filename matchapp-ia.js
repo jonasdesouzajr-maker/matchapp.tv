@@ -7,9 +7,9 @@ const ICON='/assets/brand/matchapp-official-icon-512.webp?v=20260920-official1';
 const HOME_ICON='/assets/brand/matchapp-home-orb-transparent.webp?v=20260920-homebrand4';
 const path=(location.pathname||'/').replace(/\/+$/,'')||'/';
 const isHome=path==='/'||path==='/index.html';
-const isDiscover=path==='/discover.html';
-const isTogether=path==='/together.html';
-const isPricing=path==='/pricing'||path==='/pricing/pricing.html';
+const isDiscover=/^\/discover(?:\.html)?$/.test(path);
+const isTogether=/^\/together(?:\.html)?$/.test(path);
+const isPricing=path==='/pricing'||/^\/pricing\/pricing(?:\.html)?$/.test(path);
 
 const COPY={
  en:{title:'What should you watch tonight?',sub:'Pick a mood. Get one title and where it plays.',match:'🎯 Find My Perfect Match',ask:'✨ Ask MatchApp Ai',mood:'Mood',format:'Format',platform:'Platform',fine:'Fine-tune',find:'Find something to watch',together:'Watching with someone? Match Together',send:'Send',quota:'Included actions left today',askph:'Ask what to watch, where it plays, or anything about a title…',comfort:'Comfort',funny:'Funny',intense:'Intense',romance:'Romance',smart:'Smart',scary:'Scary',short:'Something short',surprise:'Surprise me',any:'Any',movie:'Movie',series:'Series',anime:'Anime',novela:'Novela',kids:'Kids',podcast:'Podcast',free:'Free',latest:'Latest titles',discover:'Ask MatchApp Ai',pricingTitle:'Watch with fewer limits.',pricingSub:'One daily action is either a Match or an Ask. Top-ups stay separate.',freePlan:'Free',account:'Account',vip:'VIP',daily:'included AI actions daily',monthly:'Monthly',annual:'Annual',start:'Start matching',join:'Create free account'},

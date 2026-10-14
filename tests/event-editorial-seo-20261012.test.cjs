@@ -6,7 +6,7 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const events=JSON.parse(fs.readFileSync(path.join(root,'tools/global-events.json'),'utf8'));
 const read=(name)=>fs.readFileSync(path.join(root,name),'utf8');
-const decode=(text)=>text.replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+const decode=(text)=>text.replace(/&(?:amp|#39|quot|lt|gt);/g,entity=>({'&amp;':'&','&#39;':"'",'&quot;':'"','&lt;':'<','&gt;':'>'}[entity]));
 test('all event guides use concise, unique and honest metadata',()=>{
   assert.equal(events.length,20);
   const descriptions=new Set();
@@ -48,7 +48,8 @@ test('archive search metadata is short and regenerated guides remain locked to t
  const desc=decode(html.match(/<meta name="description" content="([^"]+)"/)?.[1]||'');
  assert.ok(title.length<=60,title);
  assert.ok(desc.length<=155,desc);
- assert.match(html,/<h1>Recent and upcoming global entertainment events<\/h1>/);
+ assert.match(html,/<h1\b[^>]*>Events<\/h1>/);
+ assert.match(html,/"name":"Recent and upcoming global entertainment events"/);
  assert.match(html,/https:\/\/matchapp.tv\/events-archive.html/);
  assert.match(read('tools/build-global-events.js'),/eventSearchTitle\(e\)/);
  assert.match(read('tools/build-global-events.js'),/eventSearchDescription\(e\)/);
