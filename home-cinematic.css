@@ -1,0 +1,218 @@
+/* MatchApp Ai — Home Page Cinematic Redesign
+   Scoped strictly to body.page-home.
+   Unified with Explore: deep midnight purple, gold accents, premium framing, cinematic atmosphere.
+*/
+
+body.page-home {
+  background: radial-gradient(ellipse at top, #1a0a28 0%, #0a0614 60%, #05030c 100%);
+  color: #f8f4ea;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ===== PREMIUM LOGO / HEADER BOX =====
+   Recreated to match the cinematic card language:
+   deep purple surface, thin gold border, soft glow, refined spacing.
+*/
+body.page-home .app-header,
+body.page-home header.app-header {
+  background: linear-gradient(135deg, rgba(20, 8, 28, 0.97), rgba(10, 6, 20, 0.98));
+  border-bottom: 1px solid rgba(230, 195, 106, 0.45);
+  border-radius: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(20px);
+  padding: 12px 20px;
+}
+
+body.page-home .header-brand-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+body.page-home .brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid #E6C36A;
+  box-shadow: 0 0 18px rgba(230, 195, 106, 0.45);
+  background: rgba(20, 8, 28, 0.6);
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+}
+
+body.page-home .header-brand-area:hover .brand-logo {
+  transform: scale(1.06);
+  box-shadow: 0 0 28px rgba(230, 195, 106, 0.65);
+}
+
+body.page-home .app-title-main {
+  font-family: "Playfair Display", Georgia, serif;
+  color: #E6C36A;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: 1.35rem;
+}
+
+/* Cinematic hero — image-backed, elegant, gold border */
+body.page-home .home-hero {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(230, 195, 106, 0.45);
+  background:
+    linear-gradient(180deg, rgba(20, 8, 28, 0.25) 0%, rgba(10, 6, 20, 0.88) 100%),
+    url('/assets/design/approved-twilight-atlas.png') center/cover no-repeat;
+  min-height: 320px;
+  padding: 48px 32px 40px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65);
+  margin: 12px auto 24px;
+  max-width: 1240px;
+}
+
+body.page-home .home-hero h1,
+body.page-home .home-hero .hero-title {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  color: #E6C36A;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.85);
+  margin: 0 0 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* Premium cards — Most Awaited / Week Top Choice grammar */
+body.page-home .premium-card {
+  background: linear-gradient(165deg, rgba(26, 10, 40, 0.94), rgba(10, 6, 20, 0.98));
+  border: 1px solid rgba(230, 195, 106, 0.38);
+  border-radius: 22px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+body.page-home .premium-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 70px rgba(230, 195, 106, 0.18);
+  border-color: #E6C36A;
+}
+
+body.page-home .section-title,
+body.page-home h2,
+body.page-home h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: #E6C36A;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* Pill-shaped controls — refined, gold accent */
+body.page-home button,
+body.page-home .btn,
+body.page-home .pill-control,
+body.page-home summary {
+  border-radius: 999px;
+  border: 1px solid rgba(230, 195, 106, 0.55);
+  background: rgba(20, 8, 28, 0.55);
+  color: #E6C36A;
+  backdrop-filter: blur(8px);
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+body.page-home button:hover,
+body.page-home .btn:hover,
+body.page-home summary:hover {
+  background: rgba(230, 195, 106, 0.18);
+  box-shadow: 0 0 24px rgba(230, 195, 106, 0.35);
+  transform: translateY(-1px);
+}
+
+body.page-home button:focus-visible,
+body.page-home .btn:focus-visible {
+  outline: 2px solid #E6C36A;
+  outline-offset: 2px;
+}
+
+/* Responsive polish */
+@media (max-width: 768px) {
+  body.page-home .home-hero {
+    min-height: 220px;
+    padding: 28px 18px 24px;
+    border-radius: 18px;
+    margin: 8px 12px 16px;
+  }
+  body.page-home .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+  body.page-home .app-title-main {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body.page-home .home-hero {
+    min-height: 180px;
+    padding: 20px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-home *,
+  body.page-home *::before,
+  body.page-home *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===== Home header — deep midnight override (cinematic2) =====
+   Specificity raised (#mh-topbox x3) to beat premium-header-precision-20261010.css
+   and premium-finish-20261011.css. Header/logo/title scope only. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header{
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(230,195,106,.10), transparent 52%),
+    radial-gradient(ellipse at 90% 110%, rgba(88,42,140,.28), transparent 62%),
+    linear-gradient(150deg, #1a0f2e 0%, #140b24 48%, #0d0818 100%) !important;
+  border: 1px solid rgba(230,195,106,.55) !important;
+  box-shadow:
+    0 22px 50px rgba(0,0,0,.55),
+    0 0 0 1px rgba(230,195,106,.06),
+    inset 0 1px 0 rgba(255,236,190,.16),
+    inset 0 -18px 40px rgba(0,0,0,.35) !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb-stage{
+  border-radius: 50% !important;
+  box-shadow: 0 0 22px rgba(230,195,106,.38), 0 0 46px rgba(230,195,106,.14) !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-copy .ma-wordmark,
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-copy .ma-word-ai{
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
+  letter-spacing: .01em !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-word-match{
+  color: #f8f1e0 !important; -webkit-text-fill-color: #f8f1e0 !important;
+  background: none !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox :is(.ma-word-app,.ma-word-ai){
+  background: linear-gradient(180deg, #f6dc94 0%, #e6c36a 55%, #c99a3e 100%) !important;
+  -webkit-background-clip: text !important; background-clip: text !important;
+  -webkit-text-fill-color: transparent !important; color: #e6c36a !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-tagline{ color: rgba(248,241,224,.78) !important; }
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-security{ color: rgba(230,195,106,.8) !important; border-color: rgba(230,195,106,.35) !important; }
+/* Controls inside header: dark surfaces, ivory text, gold hairline (sign-in keeps its gold fill) */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox :is(a,button,select):not(.ma-brand-home-link):not([class*="signin"]):not([class*="sign-in"]):not([id*="signin"]):not([id*="sign-in"]):not([class*="login"]):not(.gold-btn){
+  background: linear-gradient(180deg, rgba(40,24,66,.85), rgba(22,13,38,.92)) !important;
+  border-color: rgba(230,195,106,.32) !important;
+  color: #f3ead6 !important;
+}
+/* Neutralise the lavender sheen overlay painted by earlier header CSS */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header::before{
+  background: linear-gradient(90deg, transparent, rgba(230,195,106,.10) 50%, transparent) !important;
+  opacity: .6 !important;
+}

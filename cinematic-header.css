@@ -1,0 +1,88 @@
+/* MatchApp Ai — Site-wide cinematic header
+   Deep midnight purple surface, thin gold border, soft gold glow on logo,
+   elegant title. High specificity to override earlier header styles.
+   Diagonal shimmer like sea waves, disabled for reduced motion.
+*/
+
+html body header.app-header,
+html body .app-header {
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(230,195,106,.10), transparent 52%),
+    radial-gradient(ellipse at 90% 110%, rgba(88,42,140,.28), transparent 62%),
+    linear-gradient(150deg, #1a0f2e 0%, #140b24 48%, #0d0818 100%) !important;
+  border-bottom: 1px solid rgba(230,195,106,.55) !important;
+  box-shadow:
+    0 22px 50px rgba(0,0,0,.55),
+    0 0 0 1px rgba(230,195,106,.06),
+    inset 0 1px 0 rgba(255,236,190,.16),
+    inset 0 -18px 40px rgba(0,0,0,.35) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+html body header.app-header .brand-logo,
+html body .app-header .brand-logo {
+  border: 1.5px solid #E6C36A !important;
+  box-shadow: 0 0 22px rgba(230,195,106,.38), 0 0 46px rgba(230,195,106,.14) !important;
+  border-radius: 50% !important;
+}
+
+html body header.app-header .app-title-main,
+html body .app-header .app-title-main,
+html body header.app-header .ma-wordmark,
+html body .app-header .ma-wordmark {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
+  color: #f8f1e0 !important;
+  -webkit-text-fill-color: #f8f1e0 !important;
+  background: none !important;
+}
+
+html body header.app-header :is(.ma-word-app, .ma-word-ai),
+html body .app-header :is(.ma-word-app, .ma-word-ai) {
+  background: linear-gradient(180deg, #f6dc94 0%, #e6c36a 55%, #c99a3e 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #e6c36a !important;
+}
+
+/* Diagonal shimmer wave */
+html body header.app-header::after,
+html body .app-header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(230, 195, 106, 0.12) 50%,
+    transparent 70%
+  );
+  animation: header-shimmer 9s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes header-shimmer {
+  0% { transform: translate(-30%, -30%) rotate(0deg); }
+  100% { transform: translate(30%, 30%) rotate(0deg); }
+}
+
+/* Controls in header: dark surfaces */
+html body header.app-header :is(a, button, select):not(.gold-btn):not([class*="signin"]):not([class*="sign-in"]),
+html body .app-header :is(a, button, select):not(.gold-btn):not([class*="signin"]):not([class*="sign-in"]) {
+  background: linear-gradient(180deg, rgba(40,24,66,.85), rgba(22,13,38,.92)) !important;
+  border-color: rgba(230,195,106,.32) !important;
+  color: #f3ead6 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body header.app-header::after,
+  html body .app-header::after {
+    animation: none !important;
+    opacity: 0.4;
+  }
+}
