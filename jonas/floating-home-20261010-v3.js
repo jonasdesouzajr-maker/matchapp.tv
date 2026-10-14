@@ -51,14 +51,16 @@
   return true;
  }
  function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
+ function edgeInset(){return (innerWidth>=700?4:3)+13}
+ function safeBounds(w,h){var inset=edgeInset(),v=window.visualViewport;var vx=v?.offsetLeft||0,vy=v?.offsetTop||0,vw=v?.width||innerWidth,vh=v?.height||innerHeight;return {minX:vx+inset,minY:vy+inset,maxX:Math.max(vx+inset,vx+vw-w-inset),maxY:Math.max(vy+inset,vy+vh-h-inset)}}
  function setFloating(x,y){
   if(root.parentElement!==document.body)document.body.appendChild(root);
   root.classList.add('is-floating');
   var size=bubble.getBoundingClientRect();
-  var w=Math.max(72,size.width||82),h=Math.max(72,size.height||82);
-  var maxX=Math.max(8,innerWidth-w-8),maxY=Math.max(8,innerHeight-h-8);
-  root.style.setProperty('left',Math.round(clamp(x,8,maxX))+'px','important');
-  root.style.setProperty('top',Math.round(clamp(y,8,maxY))+'px','important');
+  var w=Math.max(72,size.width||82,root.offsetWidth||0),h=Math.max(72,size.height||82,root.offsetHeight||0);
+  var bounds=safeBounds(w,h);
+  root.style.setProperty('left',Math.round(clamp(x,bounds.minX,bounds.maxX))+'px','important');
+  root.style.setProperty('top',Math.round(clamp(y,bounds.minY,bounds.maxY))+'px','important');
   root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important');
   if(returnButton)returnButton.hidden=false;
  }
@@ -105,7 +107,17 @@
  }
  function endDrag(event){
   if(!dragging||dragging.id!==event.pointerId)return;
-  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},120);}
+  if(dragging.moved){
+   var size=bubble.getBoundingClientRect(),bounds=safeBounds(Math.max(72,size.width||82,root.offsetWidth||0),Math.max(72,size.height||82,root.offsetHeight||0));
+   var x=clamp(dragging.left+event.clientX-dragging.x,bounds.minX,bounds.maxX);
+   var y=clamp(dragging.top+event.clientY-dragging.y,bounds.minY,bounds.maxY);
+   // A border collision triggers a small inward spring. Jonas never crosses
+   // the fixed gold perimeter, even while the drag is in progress.
+   var reboundX=x<=bounds.minX+2?Math.min(bounds.maxX,bounds.minX+16):x>=bounds.maxX-2?Math.max(bounds.minX,bounds.maxX-16):x;
+   var reboundY=y<=bounds.minY+2?Math.min(bounds.maxY,bounds.minY+16):y>=bounds.maxY-2?Math.max(bounds.minY,bounds.maxY-16):y;
+   if(reboundX!==x||reboundY!==y){root.classList.add('ma-jonas-rebound');setFloating(reboundX,reboundY);setTimeout(function(){root.classList.remove('ma-jonas-rebound')},280)}
+   savePosition();suppressClick=true;setTimeout(function(){suppressClick=false},120);
+  }
   dragging=null;
  }
  bubble.addEventListener('pointerdown',startDrag);

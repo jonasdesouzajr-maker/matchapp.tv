@@ -500,3 +500,113 @@ html body:not(.page-kids):not(.kids-body) .ma-brand-orb-stage {overflow:hidden!i
 html body:not(.page-kids):not(.kids-body) .ma-brand-orb {content:normal!important;object-fit:cover!important;object-position:center 47%!important;border-radius:12px!important;clip-path:none!important}
 html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb {transform:scale(1.65)!important}
 html body:not(.page-kids):not(.kids-body) .hub-brand img {object-fit:cover;object-position:center 47%;border-radius:12px}
+
+/* MATCHAPP PERIMETER FINISH | 2026-10-14
+ * One architectural frame, shared by adult destinations, Android WebView and
+ * Kids. CSS-only: fixed to the viewport, no hit testing, scrolling or JS.
+ * The verification file intentionally has no product styling.
+ * Protected advertising inventory is NOT selected here. */
+html {
+  --ma-screen-frame-width:3px;
+  --ma-screen-frame-gold:#e1bb70;
+  --ma-internal-stroke:1px;
+}
+html::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  box-sizing:border-box;
+  z-index:2147483646;
+  pointer-events:none!important;
+  border:var(--ma-screen-frame-width) solid var(--ma-screen-frame-gold);
+  border-radius:clamp(3px,.5vw,7px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,236,188,.36),
+    inset 0 0 12px rgba(210,157,69,.075);
+  background:transparent;
+  opacity:1;
+  transform:none;
+  animation:none!important;
+  transition:none!important;
+}
+@media (min-width:700px) {
+  html { --ma-screen-frame-width:4px; }
+}
+@media (forced-colors:active) {
+  html::after {border-color:CanvasText;box-shadow:none}
+}
+@media print {
+  html::after {display:none}
+}
+/* Interior frames are deliberately lighter than the perimeter. These known
+ * UI surfaces are separate from AdSense and AdMob placements. Keep source
+ * colors, elevations, radii and all functional geometry unchanged. */
+html body:not(.page-kids):not(.kids-body) :is(
+  #mh-topbox.app-header,
+  #trending-rail,
+  #questionnaire-box,
+  #result-box,
+  #loading-box,
+  .ma-luxe-shortcut,
+  .hub-header,
+  .explore-card,
+  .hub-links a,
+  .page-panel,
+  .hub-action
+) {
+  border-width:var(--ma-internal-stroke)!important;
+}
+/* Kids retains its existing cheerful colors while keeping its card edges
+ * lighter than the outer perimeter. Do not touch Kids matching or controls. */
+html.kids-mode body.page-kids :is(
+ .kids-card,.kids-panel,.kids-feature,.kids-source-card
+) {border-width:2px!important}
+
+/* PERMANENT DISPLAY INVARIANT: The viewport's gold frame is the final normal
+ * paint layer. No page component, card, video, Jonas panel, animation or ad may
+ * visually paint over this perimeter. Never lower the frame's stacking level.
+ * UI remains inside its inner edge; the frame never consumes pointer events. */
+html::after {
+ z-index:2147483647!important;
+ pointer-events:none!important;
+}
+/* Real modal top-layer content can appear above normal paint layers. Constrain
+ * native dialogs to leave an uninterrupted perimeter; do not restyle ads. */
+html dialog:modal {
+ box-sizing:border-box;
+ max-inline-size:calc(100vw - 2 * var(--ma-screen-frame-width));
+ max-block-size:calc(100dvh - 2 * var(--ma-screen-frame-width));
+}
+
+/* A native <dialog>.showModal() belongs to the top layer. Its backdrop must
+   not tint/occlude the four edges while the modal content is active. */
+html dialog:modal::backdrop {
+ clip-path:inset(var(--ma-screen-frame-width))!important;
+}
+
+/* Jonas stays completely inside the gold frame while moving. A touch release
+ * against any edge eases his original (single) bubble inward, never past it. */
+html body #ma-jonas-home.is-floating.ma-jonas-rebound:not(.is-chat-stage) {
+ transition:left .24s cubic-bezier(.22,1.35,.44,1),top .24s cubic-bezier(.22,1.35,.44,1)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html body #ma-jonas-home.is-floating.ma-jonas-rebound:not(.is-chat-stage){
+  transition:none!important;
+ }
+}
+
+/* Full-screen chats occupy the space INSIDE the gold perimeter, not underneath
+ * it. The actual visible viewport follows keyboard resizing via existing
+ * --ja-view-* values; no extra viewport listener or duplicate chat is added. */
+html body #ma-jonas-home#ma-jonas-home.is-chat-stage,
+html body #ma-ambient-panel#ma-ambient-panel:not([hidden]){
+ box-sizing:border-box!important;
+ position:fixed!important;
+ left:calc(var(--ja-view-left,0px) + var(--ma-screen-frame-width))!important;
+ top:calc(var(--ja-view-top,0px) + var(--ma-screen-frame-width))!important;
+ right:auto!important;bottom:auto!important;
+ width:calc(var(--ja-view-width,100vw) - 2 * var(--ma-screen-frame-width))!important;
+ height:calc(var(--ja-view-height,100dvh) - 2 * var(--ma-screen-frame-width))!important;
+ max-width:none!important;max-height:none!important;
+ overflow:hidden!important;
+}

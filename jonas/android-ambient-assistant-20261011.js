@@ -33,8 +33,9 @@
  function locale(){var s=String(selectedLanguage()).toLowerCase();return labels[s.split('-')[0]]||labels.en}
  function clamp(x,low,high){return Math.max(low,Math.min(high,x))}
  function viewport(){return {width:Math.max(1,window.innerWidth),height:Math.max(1,window.visualViewport?.height||window.innerHeight)}}
- function setPosition(x,y){var v=viewport(),sz=76;root.style.setProperty('left',clamp(x,8,Math.max(8,v.width-sz-8))+'px','important');root.style.setProperty('top',clamp(y,8,Math.max(8,v.height-sz-8))+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
- function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var v=viewport();var nx=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84)),ny=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
+ function safeBounds(){var v=viewport(),inset=(v.width>=700?4:3)+13;return {minX:inset,minY:inset,maxX:Math.max(inset,v.width-78-inset),maxY:Math.max(inset,v.height-78-inset)}}
+ function setPosition(x,y){var b=safeBounds();root.style.setProperty('left',clamp(x,b.minX,b.maxX)+'px','important');root.style.setProperty('top',clamp(y,b.minY,b.maxY)+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
+ function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var b=safeBounds();var nx=clamp(drag.x+drag.dx,b.minX,b.maxX),ny=clamp(drag.y+drag.dy,b.minY,b.maxY);root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
  function stopDragFrame(){if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}}
  function stopFling(){if(flingRaf){cancelAnimationFrame(flingRaf);flingRaf=0;var rect=root.getBoundingClientRect();root.style.transform='';setPosition(rect.left,rect.top);}}
  function coastBubble(fromX,fromY,toX,toY,ms,dragStartX,dragStartY){
@@ -363,15 +364,20 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
     }
     stopDragFrame();
     if(drag.moved){
-      var v=viewport();
-      var x=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84));
-      var y=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));
+      var b=safeBounds();
+      var x=clamp(drag.x+drag.dx,b.minX,b.maxX);
+      var y=clamp(drag.y+drag.dy,b.minY,b.maxY);
       // A soft fling preserves the last real swipe velocity, stops at the
       // viewport's safe edges and never continues through a new pointerdown.
       var impulse=Math.hypot(drag.vx,drag.vy);
-      var toX=clamp(x+drag.vx*155,8,Math.max(8,v.width-84));
-      var toY=clamp(y+drag.vy*155,8,Math.max(8,v.height-84));
-      if(impulse>.12&&Math.hypot(toX-x,toY-y)>4)
+      var toX=clamp(x+drag.vx*155,b.minX,b.maxX);
+      var toY=clamp(y+drag.vy*155,b.minY,b.maxY);
+      // Bounce inward whenever the finger or a fling collides with the frame.
+      if(x<=b.minX+2||toX<=b.minX+2)toX=Math.min(b.maxX,b.minX+16);
+      if(x>=b.maxX-2||toX>=b.maxX-2)toX=Math.max(b.minX,b.maxX-16);
+      if(y<=b.minY+2||toY<=b.minY+2)toY=Math.min(b.maxY,b.minY+16);
+      if(y>=b.maxY-2||toY>=b.maxY-2)toY=Math.max(b.minY,b.maxY-16);
+      if(Math.hypot(toX-x,toY-y)>4)
         coastBubble(x,y,toX,toY,clamp(impulse*250,180,420),drag.x,drag.y);
       else{root.style.transform='';setPosition(x,y);store();}
       skipClick=true;

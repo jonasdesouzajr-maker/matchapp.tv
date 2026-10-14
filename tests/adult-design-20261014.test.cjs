@@ -6,8 +6,8 @@ test('adult design stylesheet and routes are opt-in and do not alter protected a
  const home=read('index.html'),explore=read('explore.html'),music=read('music.html');
  const style=read('patches/adult-home-finish-20261014.css'),hub=read('patches/explore-hub.css');
  assert.match(home,/patches\/adult-home-finish-20261014\.css/);
- assert.match(explore,/patches\/explore-hub\.css\?v=design20261014-1/);
- assert.match(music,/patches\/explore-hub\.css\?v=design20261014-1/);
+ assert.match(explore,/patches\/explore-hub\.css\?v=design20261014-2/);
+ assert.match(music,/patches\/explore-hub\.css\?v=design20261014-2/);
  assert.match(style,/body\.page-home/);
  assert.doesNotMatch(style,/(?:\.adsbygoogle|\.premium-ad-frame|\.sidebar-ad-left|\.sidebar-ad-right|#ma-ambient-jonas|\.page-kids)/);
  assert.doesNotMatch(hub,/(?:\.adsbygoogle|\.sidebar-ad|\.page-kids)/);
