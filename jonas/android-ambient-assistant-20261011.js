@@ -67,7 +67,7 @@
   // Prepare only the small shared speech modules, never a hidden chat/frame
   // or a provider request. The first greeting can then start on the tap.
   if(!window.MatchAppJonasSpeech&&!document.getElementById('ma-ambient-speech-loader')){
-   var speech=document.createElement('script');speech.id='ma-ambient-speech-loader';speech.src='/jonas/secure-speech-20261010.js?v=20261014-fast1';
+   var speech=document.createElement('script');speech.id='ma-ambient-speech-loader';speech.src='/jonas/secure-speech-20261010.js?v=20261014-fast1&voicepair=20261014-1';
    if(window.MatchAppJonasVoicePolicy)document.head.appendChild(speech);
    else{var policy=document.createElement('script');policy.src='/jonas/male-voice-policy-20261010.js';policy.onload=function(){document.head.appendChild(speech)};document.head.appendChild(policy)}
   }
@@ -185,40 +185,8 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function spokenGreeting(token){
   if(!open||token!==epoch||greetStarted===token)return;
   greetStarted=token;
-  var bridge=window.MatchAppNativeVoice;
-  if(!bridge?.speak){cloudGreeting(token);return}
-  var started=false,previous=window.matchAppNativeSpeechState,previousWord=window.matchAppNativeSpeechWord;
-  restoreNativeState={previous:previous,previousWord:previousWord};
-  window.matchAppNativeSpeechWord=function(word){
-   if(typeof previousWord==='function')try{previousWord(word)}catch(_){}
-   if(open&&token===epoch)faceWord(String(word||''));
-  };
-  window.matchAppNativeSpeechState=function(active){
-   try{if(typeof previous==='function')previous(active)}catch(_){}
-   if(!open||token!==epoch)return;
-   if(active){
-    started=true;faceSpeech(true);clearTimeout(helloTimer);
-    helloTimer=setTimeout(()=>{
-     try{bridge.stopSpeaking?.()}catch(_){}
-     finishGreeting(token);
-    },5500);
-   }else if(started){
-    finishGreeting(token);
-   }else{
-    cloudGreeting(token);
-   }
-  };
-  try{
-   // Native Android TTS is local and starts without a remote synthesis roundtrip.
-   // Kotlin refuses any voice whose masculine identity cannot be verified.
-   bridge.speak(locale().hello,String(selectedLanguage()));
-  }catch(_){cloudGreeting(token);return}
-  helloTimer=setTimeout(()=>{
-   if(!started&&open&&token===epoch){
-    try{bridge.stopSpeaking?.()}catch(_){}
-    cloudGreeting(token);
-   }
-  },1150);
+  // The same provider voice pair owns greetings and replies on every device.
+  cloudGreeting(token);
  }
  function embedStyle(){
   if(!frame?.contentDocument)return;

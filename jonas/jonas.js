@@ -151,6 +151,7 @@
   }
   function stopVoice() {
     ++epoch;
+    window.MatchAppJonasSpeech?.stop?.();
     speaking = false;
     bubble.classList.remove("is-speaking");
     clearInterval(audioAnimation); audioAnimation = null;
@@ -166,78 +167,23 @@
   function voiceLanguage() {
     return window.MatchAppJonasLocale?.speech?.() || navigator.language || "en-US";
   }
-  function pickVoice(language) {
-    // The browser cannot expose reliable gender metadata. Use the reviewed
-    // allowlist only; never use the first available voice or the OS default.
-    try {
-      return window.MatchAppJonasVoicePolicy?.select?.(
-        speechSynthesis.getVoices?.() || [], language
-      ) || null;
-    } catch { return null; }
-  }
   function useVoice(text, onDone) {
-    if (window.MatchAppNativeVoice?.speak) {
-      const mine = ++epoch;
-      speaking = true; bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
-      let step = 0;
-      audioAnimation = setInterval(() => {
-        if (speaking && mine === epoch) setExpression(shapes[(step++) % shapes.length]);
-      }, 220);
-      const finish = () => {
-        if (mine !== epoch || !speaking) return;
-        speaking = false; bubble.classList.remove("is-speaking");
-        clearInterval(audioAnimation); audioAnimation = null;
-        setExpression("rest"); uiStatus("Ready when you are");
-        if (typeof onDone === "function" && open) onDone();
-      };
-      window.matchAppNativeSpeechState = (active) => { if (!active) finish(); };
-      document.addEventListener("matchapp:avatar-voice-unavailable", finish, { once: true });
-      window.setTimeout(finish, Math.min(60000, 3000 + text.length * 95));
-      try { window.MatchAppNativeVoice.speak(String(text).slice(0, 4000), voiceLanguage()); }
-      catch { finish(); uiStatus("Voice unavailable; the answer is still visible."); }
-      return;
-    }
-    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-      uiStatus("Voice unavailable. Text is always available."); return;
-    }
-    const myEpoch = ++epoch;
-    try { speechSynthesis.cancel(); } catch {}
-    const utter = new SpeechSynthesisUtterance(String(text).slice(0, 3000));
-    utter.lang = voiceLanguage();
-    utter.pitch = .89;
-    utter.rate = .97;
-    const approvedVoice = pickVoice(utter.lang);
-    if (!approvedVoice) {
-      uiStatus("No approved masculine voice installed. Jonas remains available by text.");
-      if (typeof onDone === "function" && open) onDone();
-      return;
-    }
-    utter.voice = approvedVoice;
-    utter.pitch = 1; utter.rate = .94; utter.volume = 1;
-    let speechStarted = false;
-    const done = () => {
-      if (myEpoch !== epoch || !speaking) return;
-      speaking = false; bubble.classList.remove("is-speaking");
-      clearInterval(audioAnimation); audioAnimation = null;
-      setExpression("rest"); uiStatus("Ready when you are");
-      if (typeof onDone === "function" && open) onDone();
+    const service=window.MatchAppJonasSpeech;
+    const mine=++epoch;
+    let finished=false;
+    const finish=()=>{
+      if(finished||mine!==epoch)return;
+      finished=true;speaking=false;bubble.classList.remove("is-speaking");
+      setExpression("rest");
+      if(typeof onDone==="function"&&open)onDone();
     };
-    utter.onstart = () => {
-      if (myEpoch !== epoch) return;
-      speechStarted = true;
-      bubble.classList.add("is-speaking"); uiStatus("Jonas is speaking…");
-      let i = 0;
-      audioAnimation = setInterval(() => { if (speaking) setExpression(shapes[(i++) % shapes.length]); }, 170);
-    };
-    utter.onboundary = e => {
-      if (myEpoch !== epoch || !speechStarted) return;
-      const next = String(text).charAt(e.charIndex || 0).toLowerCase();
-      setExpression(/[ou]/.test(next) ? "oh" : /[eiiy]/.test(next) ? "ee" : "aa");
-    };
-    utter.onend = done; utter.onerror = done;
-    speaking = true;
-    try { speechSynthesis.speak(utter); speechSynthesis.resume?.(); }
-    catch { done(); }
+    if(!service?.speak){finish();return;}
+    service.unlock?.();
+    service.speak(String(text).slice(0,650),voiceLanguage(),{
+      onStart:()=>{if(mine===epoch){speaking=true;bubble.classList.add("is-speaking");}},
+      onLevel:level=>{if(mine===epoch)setExpression(level>.23?"aa":level>.09?"oh":"rest");},
+      onEnd:finish,onError:finish
+    }).catch(finish);
   }
   // Production secrets never live here. The preview Android native bridge talks
   // to the already-metered MatchApp Ai Edge Function using a public anon JWT.

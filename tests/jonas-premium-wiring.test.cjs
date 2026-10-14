@@ -52,5 +52,5 @@ test('native drag persists a shared cross-page position and chat dimensions igno
  assert.match(js,/localStorage.setItem\('matchapp-jonas-position-v2',position\)/);
  assert.match(css,/height:var\(--ja-view-height,100dvh\)!important/);
  assert.match(css,/\.jh-content \{min-height:0!important;overflow-y:auto!important/);
- assert.match(js,/class="ja-blink"/);assert.match(js,/faceWord\(String\(word/);
+ assert.match(js,/class="ja-blink"/);assert.match(js,/onLevel:level=>\{if\(open&&token===epoch&&level>0\)faceWord\('a'\)/);
 });

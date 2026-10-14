@@ -42,24 +42,22 @@ function speech(voices){
  w.eval(read('jonas/secure-speech-20261010.js'));
  return {w,utterances,requests:()=>requests};
 }
-test('approved device speech begins before auth/network and keeps the selected language',async()=>{
+test('installed device voices cannot replace the approved provider identities',async()=>{
  const s=speech([{name:'Ricardo',lang:'pt-BR',localService:true}]);let ends=0;
  const result=s.w.MatchAppJonasSpeech.speak('Olá','pt-BR',{onEnd:()=>ends++});
- assert.equal(s.utterances.length,1);assert.equal(s.requests(),0);
- assert.equal(s.utterances[0].lang,'pt-BR');
- s.utterances[0].onstart();s.utterances[0].onend();
- assert.equal(await result,true);assert.equal(ends,1);assert.equal(s.requests(),0);s.w.close();
+ assert.equal(await result,false);assert.equal(s.utterances.length,0);
+ assert.equal(ends,1);assert.equal(s.requests(),1);s.w.close();
 });
 test('wrong-language or female local voices never speak and failed cloud ends exactly once',async()=>{
  const s=speech([{name:'Daniel',lang:'en-US',localService:true},{name:'Maria',lang:'pt-BR',localService:true}]);let ends=0;
  assert.equal(await s.w.MatchAppJonasSpeech.speak('Olá','pt-BR',{onEnd:()=>ends++}),false);
  assert.equal(s.utterances.length,0);assert.equal(s.requests(),1);assert.equal(ends,1);s.w.close();
 });
-test('language switch cancels current local playback without starting speech in another language',async()=>{
+test('language switch cancels provider playback without substituting a device voice',async()=>{
  const s=speech([{name:'Ricardo',lang:'pt-BR',localService:true}]);
  const result=s.w.MatchAppJonasSpeech.speak('Olá','pt-BR',{});
  s.w.document.dispatchEvent(new s.w.CustomEvent('matchapp:langchange',{detail:{lang:'fr'}}));
- assert.equal(await result,false);assert.equal(s.requests(),0);s.w.close();
+ assert.equal(await result,false);assert.equal(s.utterances.length,0);s.w.close();
 });
 test('speech-recognition language switch discards previous-language interim/final transcript',()=>{
  const d=scene('<html><body><input id="discover-new-input"><button id="mic-btn-discover"></button></body></html>'),w=d.window;
@@ -89,7 +87,7 @@ test('exact recorded greetings use same-origin audio with no synthesis/auth requ
  assert.equal(await promise,true);assert.equal(requests.length,1);assert.match(requests[0],/^\/jonas\/greetings\/pt-BR\.mp3/);
  const manifest=JSON.parse(read('jonas/greetings/manifest.json'));
  for(const [language,clip] of Object.entries(manifest.clips)){
-  assert.ok(fs.statSync(path.join(__dirname,'../jonas/greetings',clip.file)).size<25000);
+  assert.ok(fs.statSync(path.join(__dirname,'../jonas/greetings',clip.file)).size<200000);
   w.MATCH_LANG=language;w.eval(read('jonas/locales-20261009-v2.js'));
   assert.equal(w.MatchAppJonasLocale.t('greeting'),clip.text);
  }

@@ -229,28 +229,10 @@
    });
    return;
   }
-  // The greeting is visible even if the OS has no usable synthesized voice.
-  if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){finish();return;}
-  timeout=setTimeout(function(){if(token===session)finish()},11000);
-  try{
-   // stopVoice already cancelled the previous utterance; calling cancel twice
-   // in the same user activation can swallow Chrome/Android's first greeting.
-   var lang=locale()?.speech()||(isPt()?'pt-BR':'en-US');
-   var selected=voiceFor(lang);
-   if(!selected){
-    status.textContent=locale()?.t('unsupported')||'A verified masculine voice is unavailable. You can still type or talk.';
-    finish();return;
-   }
-   spoken=new SpeechSynthesisUtterance(message);spoken.lang=lang;
-   spoken.voice=selected;
-   spoken.rate=.94;spoken.pitch=.85;spoken.volume=1;
-   spoken.onstart=function(){if(token===session){started=true;animateMouth()}};
-   spoken.onboundary=function(e){if(token!==session||!started)return;var ch=message.charAt(e.charIndex||0).toLowerCase();onVoiceBoundary(ch)};
-   spoken.onend=finish;spoken.onerror=finish;
-   window.speechSynthesis.speak(spoken);
-   window.speechSynthesis.resume?.();
-  }catch(_){finish()}
+  // Keep the greeting visible; never substitute a different device voice.
+  finish();
  }
+
  function startVoice(automatic){
   ++session;var token=session;mode='voice';root.dataset.voiceMode='voice';stopVoice();
   if(panel.hidden)return;

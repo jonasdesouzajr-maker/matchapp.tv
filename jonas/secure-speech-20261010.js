@@ -1,22 +1,21 @@
 /* Jonas speech: verified male cloud synthesis, all 14 site languages.
-   No provider keys in the browser. Verified local male TTS starts immediately.
+   No provider keys in the browser. Only the approved Cedar/Charon provider voices may speak.
    Always fail silent rather than falling back to an arbitrary female voice. */
 (function(){
  'use strict';
  if(window.MatchAppJonasSpeech)return;
  var ENDPOINT='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/jonas-speech';
  var audioContext=null,source=null,htmlAudio=null,abort=null,epoch=0;
- var localFinish=null;
  var supported=new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
  // Fixed, provider-produced greetings contain no account or conversation data.
  // Reuse their exact recording instead of synthesizing the same sentence on
- // every opening. Other languages retain verified local/cloud speech.
+ // every opening. Other languages retain the same approved cloud voice pair.
  var greetings={en:"Hi, I'm Jonas. How can I help?",'pt-BR':'Olá, sou o Jonas. Como posso ajudar?'};
  var greetingAudio=new Map();
  function loadGreeting(language){
   if(!greetings[language])return Promise.resolve(null);
   if(greetingAudio.has(language))return greetingAudio.get(language);
-  var pending=fetch('/jonas/greetings/'+language+'.mp3?v=20261014-1',{cache:'force-cache',credentials:'same-origin',signal:AbortSignal.timeout(2500)})
+  var pending=fetch('/jonas/greetings/'+language+'.mp3?v=20261014-cedar1',{cache:'force-cache',credentials:'same-origin',signal:AbortSignal.timeout(2500)})
    .then(function(response){if(!response.ok)throw new Error('greeting_unavailable');return response.blob()})
    .then(function(blob){if(blob.size<100||blob.size>200000)throw new Error('invalid_greeting');return blob})
    .catch(function(){greetingAudio.delete(language);return null});
@@ -35,43 +34,10 @@
  },{capture:true,passive:true});
  function stop(){
   ++epoch;
-  if(localFinish){localFinish(false);localFinish=null}
   if(abort){abort.abort();abort=null}
   if(source){try{source.stop()}catch(_){}source=null}
   if(htmlAudio){try{htmlAudio.pause();htmlAudio.src=''}catch(_){}htmlAudio=null}
   try{window.speechSynthesis?.cancel?.()}catch(_){}
- }
- function approvedFallback(text,language,options,token){
-  var synthesis=window.speechSynthesis;
-  var voices=window.MatchAppJonasVoicePolicy;
-  var voice;
-  try{voice=voices?.select?.(synthesis?.getVoices?.()||[],language)}catch(_){}
-  if(!voice||!window.SpeechSynthesisUtterance||token!==epoch)return Promise.resolve(false);
-  return new Promise(function(resolve){
-   var done=false,startTimer=0;
-   var finish=function(ok){if(done)return;done=true;clearTimeout(startTimer);if(localFinish===finish)localFinish=null;if(token===epoch&&ok){options.onProgress?.(1);options.onEnd?.(true)}resolve(ok)};
-   localFinish=finish;
-   try{
-    var utter=new SpeechSynthesisUtterance(text);
-    utter.voice=voice;utter.lang=voice.lang;utter.pitch=1;utter.rate=1;
-    utter.onstart=function(){clearTimeout(startTimer);if(token===epoch)options.onStart?.()};
-    // Browser TTS has no decoded PCM meter. Word boundary events provide
-    // genuine speech timing for the existing avatar's mouth, without a timer
-    // that falsely animates when audio is muted or not actually speaking.
-    utter.onboundary=function(event){
-     if(token!==epoch||event.name==='sentence')return;
-     options.onLevel?.(.24);
-     if(Number.isFinite(event.charIndex)&&text.length)options.onProgress?.(Math.min(.99,event.charIndex/text.length));
-     setTimeout(function(){if(token===epoch)options.onLevel?.(0)},110);
-    };
-    utter.onend=function(){finish(true)};
-    utter.onerror=function(){finish(false)};
-    // Some engines accept a voice but never start. Bound that wait and cancel
-    // it before cloud recovery so there can never be overlapping utterances.
-    startTimer=setTimeout(function(){if(done)return;finish(false);try{synthesis.cancel()}catch(_){}},700);
-    synthesis.speak(utter);
-   }catch(_){finish(false)}
-  });
  }
  async function speak(input,language,options){
   var text=String(input||'').trim().slice(0,650),opts=options||{};
@@ -79,7 +45,6 @@
   stop();
   var token=epoch;
   var chosen=lang(language);
-  if(await approvedFallback(text,chosen,opts,token))return true;
   if(token!==epoch)return false;
   var controller=new AbortController();
   abort=controller;
@@ -95,6 +60,8 @@
    if(token!==epoch)return false;
    var response=await fetch(ENDPOINT,{method:'POST',headers:headers,body:JSON.stringify({text:text,lang:chosen}),signal:controller.signal,cache:'no-store'});
    if(!response.ok)throw new Error(response.status===429?'speech_limit_reached':'speech_provider_unavailable');
+   var identity=response.headers.get('X-Jonas-Voice');
+   if(identity!=='male-cedar'&&identity!=='male-charon')throw new Error('unapproved_voice');
    blob=await response.blob();
    }
    if(token!==epoch)return false;

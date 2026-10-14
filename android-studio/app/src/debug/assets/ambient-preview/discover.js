@@ -456,7 +456,7 @@ function pickVoiceForLang(voices, lang) {
 }
 
 window.readAloud = function(text, btn) {
-    // Only the verified Jonas cloud voice or approved male OS voice may play here.
+    // Only the approved Jonas provider voices may play here.
     // This also animates his face during manually requested read-aloud.
     if(window.MatchAppJonasStage?.speak) {
         if(btn?.classList.contains('speaking')) {
@@ -469,53 +469,16 @@ window.readAloud = function(text, btn) {
         window.MatchAppJonasStage.speak(text,{autoListen:false}).finally(()=>btn?.classList.remove('speaking'));
         return;
     }
-    const nativeTts = !!(window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.speak === 'function');
-    if (!nativeTts && !('speechSynthesis' in window)) {
-        if (window.showToast) showToast((typeof t === 'function' ? t('discover.noTts') : 'Voice playback is not supported in this browser.'), true);
-        return;
-    }
-    // Toggle off if this button is already speaking.
-    if (btn && btn.classList.contains('speaking')) {
-        if (nativeTts) { try { window.MatchAppNativeVoice.stopSpeaking?.(); } catch (_) {} }
-        else speechSynthesis.cancel();
-        btn.classList.remove('speaking');
-        return;
-    }
-    const uiLang = window.MATCH_LANG || 'en';
-    const targetLang = ttsTargetLang(uiLang);
-    document.querySelectorAll('.discover-speak.speaking').forEach(b => b.classList.remove('speaking'));
-    if (btn) btn.classList.add('speaking');
-    if (nativeTts) {
-        window.matchAppNativeSpeechState = active => { if (!active && btn) btn.classList.remove('speaking'); };
-        try { window.MatchAppNativeVoice.speak(String(text || ''), targetLang); return; }
-        catch (_) { if (btn) btn.classList.remove('speaking'); }
-    }
-    speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    const voices = speechSynthesis.getVoices();
-
-    // Honour the user's choices from Profile > Settings. resolveVoice falls
-    // back to language matching when they have not picked one, or when the
-    // voice they picked is no longer installed on this device — an OS voice
-    // can be removed, and a stale voiceURI would otherwise silently mute
-    // playback rather than degrade to a sensible default.
-    const S = window.MatchSettings;
-    // Discovery is the continuation of Jonas: never read his answer with
-    // an unknown or female system voice, even if Settings picked one earlier.
-    const voice = window.MatchAppJonasVoicePolicy?.select?.(voices, targetLang) || null;
-    if (!voice) {
-        if (btn) btn.classList.remove('speaking');
-        window.showToast?.('An approved masculine voice is not installed. The answer remains readable.', true);
-        return;
-    }
-    utter.voice = voice;
-    utter.lang = voice.lang;
-    utter.rate = S ? S.get('voiceRate') : 1;
-    utter.pitch = 1;
-
-    utter.onend = () => { if (btn) btn.classList.remove('speaking'); };
-    utter.onerror = () => { if (btn) btn.classList.remove('speaking'); };
-    speechSynthesis.speak(utter);
+    const service=window.MatchAppJonasSpeech;
+    if(!service?.speak)return;
+    if(btn?.classList.contains('speaking')){service.stop();btn.classList.remove('speaking');return;}
+    service.unlock?.();
+    document.querySelectorAll('.discover-speak.speaking').forEach(b=>b.classList.remove('speaking'));
+    service.speak(String(text||'').slice(0,650),window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{
+      onStart:()=>btn?.classList.add('speaking'),
+      onEnd:()=>btn?.classList.remove('speaking'),
+      onError:()=>btn?.classList.remove('speaking')
+    }).catch(()=>btn?.classList.remove('speaking'));
 };
 
 /* ---------- Rendering ---------- */

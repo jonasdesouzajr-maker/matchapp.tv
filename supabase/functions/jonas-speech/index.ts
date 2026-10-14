@@ -88,5 +88,5 @@ Deno.serve(async(req:Request)=>{
  if(limitError||allowed!==true)return result({error:"speech_limit_reached"},429,origin);
  const speech=await synth(text,localeMap[language]);
  if(!speech)return result({error:"speech_provider_unavailable"},503,origin);
- return new Response(speech.audio,{status:200,headers:{...headers,"Content-Type":speech.mime,"X-Jonas-Voice":"male-cedar","Cache-Control":"private,no-store","Content-Length":String(speech.audio.length)}});
+ return new Response(speech.audio,{status:200,headers:{...headers,"Content-Type":speech.mime,"X-Jonas-Voice":speech.provider==="openai"?"male-cedar":"male-charon","Access-Control-Expose-Headers":"X-Jonas-Voice","Cache-Control":"private,no-store","Content-Length":String(speech.audio.length)}});
 });
