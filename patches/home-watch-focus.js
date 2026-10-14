@@ -19,7 +19,7 @@
    '#swifties-spotify':'/music.html#swifties-spotify',
    '#premiere-disclosure':'/featured/american-horror-story-13/',
    '#awareness-spotlight':'/awareness/breast-cancer-awareness-month-2026/',
-   '#how-it-works':'/explore.html#how-it-works',
+   '#how-it-works':'/how-it-works.html',
    '#ai-concierge-section':'/discover.html',
    '#search-box':'/discover.html',
    '#ma-ai-entry':'/discover.html'
