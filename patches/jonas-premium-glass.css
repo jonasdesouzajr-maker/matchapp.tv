@@ -81,3 +81,11 @@ html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > .mh-deck {g
 #ma-ambient-jonas .ja-bubble {animation:ja-bubble-unfold .24s ease-out}
 @keyframes ja-bubble-unfold{from{transform:scale(.75);opacity:0}to{transform:scale(1);opacity:1}}
 @media(prefers-reduced-motion:reduce){#ma-ambient-jonas .ja-bubble{animation:none!important}}
+/* Keep the approved product mark and its complete name clear of the companion. */
+@media(max-width:600px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-wordmark,
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-word-ai {font-size:clamp(18px,5vw,25px)!important;letter-spacing:-.5px!important;min-width:0!important;width:auto!important;padding:0!important}
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-copy {min-width:0!important;max-width:100%!important}
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-tagline,
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-security {font-size:8px!important;max-width:100%!important}
+}
