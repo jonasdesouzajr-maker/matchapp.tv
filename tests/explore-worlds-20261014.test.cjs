@@ -15,6 +15,7 @@ function setup(){
   dom.window.playMatchAppSound = ()=>{};
   dom.window.MATCH_LANG = 'en';
   dom.window.eval(code);
+  dom.window.eval(fs.readFileSync(path.join(root,'patches/match-first-experience-20261014.js'),'utf8'));
   dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
   return dom;
 }
@@ -57,7 +58,7 @@ test('Explore Worlds opens, traps semantic dialog, closes on Escape and translat
   assert.equal(overlay.querySelector('[role="dialog"]').getAttribute('aria-modal'),'true');
   dom.window.MATCH_LANG='pt-BR';
   document.dispatchEvent(new Event('matchapp:langchange'));
-  assert.match(overlay.querySelector('h2').textContent,/Explore mais/i);
+  assert.match(overlay.querySelector('h2').textContent,/Encontre Seu Próximo Match/i);
   document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
   assert.equal(overlay.hidden,true);
   assert.equal(trigger.getAttribute('aria-expanded'),'false');
