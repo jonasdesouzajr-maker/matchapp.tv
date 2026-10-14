@@ -29,11 +29,13 @@ const server=http.createServer((req,res)=>{
    const box=s=>{let e=document.querySelector(s),r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right}};
    return {nav:getComputedStyle(document.querySelector('#mh-topbox .ma-luxe-shortcuts')).display,
     profile:box('nav.ma-luxe-shortcuts a[data-ma-nav="4"]'),button:box('#ma-worlds-trigger'),
+    headline:box('[data-match-experience-heading]'),utilities:box('#mh-topbox nav.mh-deck'),
     width:innerWidth,premiere:getComputedStyle(document.querySelector('#premiere-disclosure')).display,
     open:document.querySelector('#premiere-disclosure').open,
     together:getComputedStyle(document.querySelector('.tg-entry')).display};
   });
   assert.equal(state.nav,'grid',width+' nav not grid');
+  assert.ok(state.headline.y+state.headline.h<=state.utilities.y+1,width+' headline overlaps controls '+JSON.stringify(state));
   assert.ok(state.button.right<=width+1,width+' button offscreen '+JSON.stringify(state));
   assert.ok(state.button.w<width*.75,width+' trigger incorrectly full width '+JSON.stringify(state));
   assert.ok(state.button.x>state.profile.x,width+' trigger not beside Profile');
