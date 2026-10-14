@@ -121,6 +121,9 @@ body.page-journey{
 .journey-control:disabled{opacity:.35;cursor:not-allowed}
 .journey-next{background:#dfae7b2a;border-color:#efcf9a99}
 #journey-hint{font-size:.8rem;color:#bfb4d0;text-align:center;max-width:25ch}
+.journey-finish[hidden],.journey-next[hidden]{display:none!important}
+.journey-chapter[data-guide-step="13"]{min-height:420px}
+.journey-chapter[data-guide-step="13"] .journey-visit{display:none}
 .journey-finish{position:relative;overflow:hidden;text-align:center;margin:clamp(18px,4vw,55px) 0 12px;padding:clamp(24px,5vw,65px) 16px;
  border:1px solid #eec78960;border-radius:30px;background:radial-gradient(ellipse at 50% -10%,#a677b047,transparent 80%),#281a36d9;
  box-shadow:0 15px 55px #0006}
