@@ -4,7 +4,7 @@ html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"]){
  --ma-type-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
  --ma-type-display:"Outfit","Inter",system-ui,sans-serif;
  --ma-type-ui:"Space Grotesk","Inter",system-ui,sans-serif;
- font-family:var(--ma-type-body);
+ font-family:var(--ma-type-body)!important;
  font-synthesis:none;
  -webkit-font-smoothing:antialiased;
  text-rendering:optimizeLegibility;
