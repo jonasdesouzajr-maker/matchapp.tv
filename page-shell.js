@@ -13,7 +13,7 @@
 (function () {
   'use strict';
 
-  var HOME_ORB = '/assets/brand/matchapp-home-orb-transparent.webp?v=20260920-homebrand4';
+  var HOME_ORB = '/assets/brand/matchapp-icon-approved.png?v=20261013-approved1';
 
   function path() {
     return (location.pathname || '/').replace(/\/+$/, '') || '/';
@@ -206,13 +206,6 @@
     var orb = head.querySelector('.ma-brand-orb');
     if (orb && orb.getAttribute('src') !== HOME_ORB) orb.setAttribute('src', HOME_ORB);
 
-    /* Reuse the existing ambient conversation shell on adult destinations. */
-    if(window.top===window&&!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__matchappAmbientJonas){
-      window.__MATCHAPP_AMBIENT_WEB__=true;
-      var companion=document.createElement('script');companion.defer=true;
-      companion.src='/jonas/android-ambient-assistant-20261011.js?v=20261014-dock2';
-      document.head.appendChild(companion);
-    }
     /* --- deck: one row of controls, HOME first --- */
     var nav = header.querySelector('nav');
     if (!nav) {

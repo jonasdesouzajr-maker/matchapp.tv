@@ -77,10 +77,6 @@ html body #ma-ambient-panel iframe {flex:1 1 auto!important;min-height:0!importa
 html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > .mh-head {grid-column:1 / -1!important;grid-row:1!important}
 html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > .mh-deck {grid-column:1 / -1!important;grid-row:2!important}
 @media(max-width:600px){html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-home-link{gap:8px!important;padding:0!important}html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb-stage{width:48px!important;height:48px!important;min-width:48px!important;max-width:48px!important}html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-wordmark{font-size:clamp(24px,7vw,36px)!important}html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-word-ai{font-size:clamp(21px,6vw,30px)!important}}
-/* The live companion is the only header portrait; retire the old decorative orb. */
-html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb-stage,
-html body.page-shell header .ma-brand-orb-stage,
-html body:not(.page-kids) .ebook-page-top .ma-brand-orb {display:none!important}
 
 #ma-ambient-jonas .ja-bubble {animation:ja-bubble-unfold .24s ease-out}
 @keyframes ja-bubble-unfold{from{transform:scale(.75);opacity:0}to{transform:scale(1);opacity:1}}

@@ -281,3 +281,6 @@ Adult Home is reserved for the movie/series and related watch matcher, Top Title
 
 ### OWNER JONAS PLACEMENT AND CHAT BOUNDS — 2026-10-14
 Home defaults Jonas to a reserved, non-overlapping top-right corner of the top box. Other adult pages default to the top-right of the screen. A deliberate drag is saved across pages and reloads, clamped to the viewport. The conversation fits the entire visible device screen independently of bubble coordinates, including keyboard and safe areas. Preserve the single existing speech/chat implementation, native greeting and word-boundary lips; retain blinking/breathing and reduced-motion support. Kids remains isolated.
+
+### OWNER CURRENT BRAND LOCK — 2026-10-14
+The most recent approved brand artwork is assets/brand/matchapp-icon-approved.png (approved-matchapp-brand-artwork, 2026-10-13). Home and all adult page branding must use this same source, with the exact MatchApp Ai name. Remove obsolete decorative brand logos from visible page headers. Jonas remains a separate human assistant; do not substitute his face for the product logo. Keep Kids' distinct branding and native resources isolated unless explicitly requested. The shared brand finalizer preserves this lock on generated pages.
