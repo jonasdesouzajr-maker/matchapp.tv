@@ -30,7 +30,7 @@ const server=http.createServer((req,res)=>{
   await page.close();
  }
  const kid=await browser.newPage({viewport:{width:390,height:844}});
- await kid.route(/^https?:\/\/(?!127\.0\.1)/,r=>r.abort());
+ await kid.route(/^https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());
  await kid.goto(base+'/kids/',{waitUntil:'domcontentloaded'});
  const family=await kid.evaluate(()=>getComputedStyle(document.body).fontFamily);
  assert.doesNotMatch(family,/Space Grotesk/, 'Kids mode must not acquire adult UI font');
