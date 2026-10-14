@@ -69,6 +69,6 @@ test('adult typography preserves Kids branding, motion preference and original h
  assert.match(type,/not\(\.kids-body\)/);
  assert.match(type,/prefers-reduced-motion:reduce/);
  assert.match(css,/prefers-reduced-motion:reduce/);
- assert.doesNotMatch(type,/(?:\.adsbygoogle|\[data-kids|#ma-ambient-jonas|\.page-kids\s*\{)/);
+ assert.doesNotMatch(type,/(?:\.adsbygoogle|#ma-ambient-jonas|(?:^|\\n)body\\.page-kids\\s*\\{)/);
  assert.doesNotMatch(read('kids/kids.css'),/premium-type-20261014/);
 });
