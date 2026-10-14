@@ -61,6 +61,7 @@ try{
     report.push({phase,width,route,...check,errors:errors.length});
     if((width===390||width===1366)&&['/','/explore.html','/music.html'].includes(route)){
       const slug=route==='/'?'home':route.slice(1,-5);
+      await page.evaluate(()=>window.scrollTo(0,0));await page.waitForTimeout(100);
       await page.screenshot({path:path.join(screens,phase+'-'+slug+'-'+width+'.png'),fullPage:false,animations:'disabled'});
     }
    }

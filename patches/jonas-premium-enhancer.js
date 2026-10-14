@@ -17,7 +17,7 @@
  function positionHome(){
   var slot=document.getElementById('ma-jonas-header-slot');
   var root=document.getElementById('ma-ambient-jonas')||document.getElementById('ma-jonas-home');
-  if(!root||!docked||root.classList.contains('is-chat-stage'))return;
+  if(!root||!docked||root.classList.contains('is-chat-stage')||root.dataset.jonasPositionHeld==='1')return;
   var size=slot?(slot.offsetWidth||76):76;
   var at=slot?slot.getBoundingClientRect():{left:innerWidth-size-16,top:16};
   root.style.setProperty('left',Math.max(8,Math.min(innerWidth-size-8,at.left))+'px','important');

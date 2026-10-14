@@ -270,3 +270,6 @@ html body.ma-jonas-inline #ma-jonas-home#ma-jonas-home.is-chat-stage .jh-header{
  padding:12px max(12px,env(safe-area-inset-right)) 12px calc(max(18px,env(safe-area-inset-left)) + clamp(52px,9vh,76px) + 20px)!important;
 }
 @media(max-height:500px){html body.ma-jonas-inline #ma-jonas-home#ma-jonas-home.is-chat-stage .jh-header{min-height:70px!important}}
+
+/* Prevent background-page scroll while the one existing conversation is fullscreen. */
+body.ma-jonas-modal-open,body.ma-jonas-chat-open{overflow:hidden!important;overscroll-behavior:contain}

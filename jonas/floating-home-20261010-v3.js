@@ -150,6 +150,9 @@
    var d=locale.get(),set=function(selector,value){var el=document.querySelector(selector);if(el&&value)el.textContent=value};
    set('#ma-jonas-home .jh-title small',d.companion);
    set('#ma-jonas-home .jh-greeting',d.greeting);
+   // Keep the visible microphone hint in the user's selected language too.
+   if(!root.classList.contains('jh-listening')&&!root.classList.contains('jh-speaking'))
+    set('#ma-jonas-home-status',d.ready);
    set('#ma-jonas-inline-dock .jh-inline-eyebrow',d.eyebrow);
    set('#ma-jonas-inline-dock .jh-inline-copy small',d.hint);
    set('#ma-jonas-inline-dock .jh-launch-label',d.mic);

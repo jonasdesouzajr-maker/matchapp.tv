@@ -1,0 +1,156 @@
+{
+  "method": "production JS/CSS on isolated local fixture; not physical device/IME/AI speech testing",
+  "count": 10,
+  "results": [
+    {
+      "kind": "home",
+      "width": 320,
+      "height": 740,
+      "modal": "true",
+      "origin": {
+        "x": 222,
+        "y": 645
+      },
+      "restored": {
+        "x": 222,
+        "y": 645
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "home",
+      "width": 390,
+      "height": 844,
+      "modal": "true",
+      "origin": {
+        "x": 292,
+        "y": 749
+      },
+      "restored": {
+        "x": 292,
+        "y": 749
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "home",
+      "width": 820,
+      "height": 1180,
+      "modal": "true",
+      "origin": {
+        "x": 700,
+        "y": 1074
+      },
+      "restored": {
+        "x": 700,
+        "y": 1074
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "home",
+      "width": 1366,
+      "height": 900,
+      "modal": "true",
+      "origin": {
+        "x": 1230,
+        "y": 782
+      },
+      "restored": {
+        "x": 1230,
+        "y": 782
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "home",
+      "width": 1920,
+      "height": 1080,
+      "modal": "true",
+      "origin": {
+        "x": 1784,
+        "y": 962
+      },
+      "restored": {
+        "x": 1784,
+        "y": 962
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "android-webview",
+      "width": 320,
+      "height": 740,
+      "modal": "true",
+      "origin": {
+        "x": 232,
+        "y": 652
+      },
+      "restored": {
+        "x": 232,
+        "y": 652
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "android-webview",
+      "width": 390,
+      "height": 844,
+      "modal": "true",
+      "origin": {
+        "x": 302,
+        "y": 756
+      },
+      "restored": {
+        "x": 302,
+        "y": 756
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "android-webview",
+      "width": 820,
+      "height": 450,
+      "modal": "true",
+      "origin": {
+        "x": 732,
+        "y": 362
+      },
+      "restored": {
+        "x": 732,
+        "y": 362
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "android-webview",
+      "width": 1366,
+      "height": 900,
+      "modal": "true",
+      "origin": {
+        "x": 1278,
+        "y": 812
+      },
+      "restored": {
+        "x": 1278,
+        "y": 812
+      },
+      "composedInViewport": true
+    },
+    {
+      "kind": "android-webview",
+      "width": 1920,
+      "height": 1080,
+      "modal": "true",
+      "origin": {
+        "x": 1832,
+        "y": 992
+      },
+      "restored": {
+        "x": 1832,
+        "y": 992
+      },
+      "composedInViewport": true
+    }
+  ]
+}

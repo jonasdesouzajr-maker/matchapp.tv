@@ -10,7 +10,7 @@
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
  var asset='/jonas/android-ambient-assistant-20261011.css?v=20261014-fullscreen1',frame=null,panel=null,root=null,bubble=null;
- var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0;
+ var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0,parkedBeforeChat=null;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
@@ -260,6 +260,9 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  window.visualViewport?.addEventListener('scroll',syncPanelViewport,{passive:true});
  function openPanel(){
   if(open)return;
+  var parked=root.getBoundingClientRect();
+  parkedBeforeChat={x:parked.left,y:parked.top};
+  root.dataset.jonasPositionHeld='1';
   open=true;epoch++;activeTitle=contextTitle();
   document.body?.classList.add('ma-jonas-modal-open');
   panel.hidden=false;syncPanelViewport();panel.querySelector('.ja-hello').textContent=greeting();
@@ -286,6 +289,8 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   open=false;stopConversation();
   document.body?.classList.remove('ma-jonas-modal-open');
   panel.hidden=true;root.hidden=false;
+  var resume=parkedBeforeChat;parkedBeforeChat=null;
+  if(resume){setPosition(resume.x,resume.y);requestAnimationFrame(function(){if(!open)setPosition(resume.x,resume.y)})}
   ['--ja-view-left','--ja-view-top','--ja-view-width','--ja-view-height'].forEach(function(key){panel.style.removeProperty(key)});
   document.removeEventListener('keydown',escapeKey);
   bubble.focus({preventScroll:true});

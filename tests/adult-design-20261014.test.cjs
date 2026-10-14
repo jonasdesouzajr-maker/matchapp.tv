@@ -83,3 +83,22 @@ test('Jonas open conversation fills viewport and restores parked position',()=>{
  assert.match(ambient,/panel\.hidden=true;root\.hidden=false/);
  assert.doesNotMatch(ambient,/panel\.style\.setProperty\('--ja-origin-x'/);
 });
+
+test('Jonas ready/microphone hint respects all fourteen explicitly selected languages',()=>{
+ const home=read('jonas/floating-home-20261010-v3.js');
+ assert.match(home,/set\('#ma-jonas-home-status',d\.ready\)/);
+ const dom=new JSDOM('<!doctype html><html lang="en"><body></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ const w=dom.window;
+ w.eval(read('jonas/locales-20261009-v2.js'));
+ const hint=new Set();
+ for(const language of supported){
+  w.MATCH_LANG=language;
+  assert.equal(w.MatchAppJonasLocale.lang(),language);
+  const text=w.MatchAppJonasLocale.get().ready;
+  assert.ok(typeof text==='string'&&text.length>=5,language+' has no usable voice hint');
+  if(language!=='en')assert.notEqual(text,w.MatchAppJonasLocale.catalog.en.ready,language+' must not silently substitute English');
+  hint.add(text);
+ }
+ assert.equal(hint.size,supported.length,'each language has its own authored status');
+ w.close();
+});

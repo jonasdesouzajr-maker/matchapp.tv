@@ -21,13 +21,13 @@ Captured from identical **local** integration/design worktrees at 390px and 1366
 ## Verification (evidence, not a release claim)
 
 - Static site build completed successfully; targeted original AdSense and language/speech regressions passed **16/16**.
-- Focused adult design regressions: **6/6 passed**, including anchor route/query preservation, all fourteen authored Home Explore and Music CTA translations, single avatar/voice hooks, and untouched five protected ad elements.
+- Focused frontend, Android-preview and release-gate regressions: **15/15 passed**, including anchor route/query preservation, fourteen authored Home Explore and Music CTA translations, one companion/voice source, and protected advertising constraints.
 - Local Chromium before/after check recorded **37 layout/route cases** on Home, Explore, Music, Discover, Profile and Pricing at 320, 390, 820, 1366 and 1920px; see [browser-report.json](browser-report.json). It includes English, pt-BR, Spanish, French, German, Italian, Turkish, Russian, Arabic, Hindi, Indonesian, Japanese, Korean and Chinese Explore switching and Back-navigation. A simulated short-height viewport is *not* proof of physical IME compatibility.
-- Separate open/close Jonas modal checks are tracked in `tools/qa-jonas-fullscreen-20261014.cjs`; see `jonas-chat-qa.json` only when that tool completes cleanly. Preserve failures in the report—do not skip them.
+- Isolated Chromium tests passed **10/10 viewport combinations** (Home: 320, 390, 820, 1366 and 1920px; simulated Android WebView: 320, 390, 820px landscape, 1366 and 1920px) against **production Jonas JS and CSS** with a controlled local HTML fixture: fullscreen sizing, top-left portrait, visible conversation frame/microphone region, modal semantics, close and original parked position restoration. The fourteen-language ready/microphone status also has a focused regression. See [Jonas interaction report](jonas-chat-qa.json) and [Home screenshot](screenshots/after-home-chat-390.png) / [Android WebView simulation](screenshots/after-android-webview-chat-390.png). The fixture does not simulate real speech responses or Android IME.
 
 ## Still needed before a release
 
-- Inspect passing CI for the **exact design PR head**, including repository regression, AdSense, Android compile, SEO/URL and security gates.
+- At revision `4b5c32bb`, GitHub Actions **Validate website**, **Matching and AI Audit**, and **AdSense Immutable Lock** all passed. After any new PR commit, reconfirm those workflows on its exact SHA. Android debug-preview parity passes its dedicated regression; a physical Android install and OS microphone test remain separate.
 - Physically verify Android WebView keyboard, microphone, greeting and top-left/restore chat positioning on the connected test device. Browser simulations cannot prove OS speech behavior.
 - Full-site legacy/editorial localization audit remains necessary: translated dictionaries do not establish that every dynamic sentence and page has authored localization.
 - The present PR is a reviewable design change, **not** approval to merge PR #240 or publish an AAB to Play.
