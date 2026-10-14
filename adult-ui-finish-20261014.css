@@ -1,0 +1,52 @@
+/* Explore's restrained champagne / twilight family. Adult chrome only.
+   No ad, poster, matching, auth or credit rules. */
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) :is(header.app-header,.ebook-page-top,.matchapp-brand-bar){
+ --finish-line:#d3ac685e;
+ background:radial-gradient(ellipse at 90% 0%,#71479624,transparent 65%),linear-gradient(135deg,#21132f,#120a20)!important;
+ border-color:var(--finish-line)!important;
+ box-shadow:0 12px 36px #05020955,inset 0 1px 0 #fff5e70d!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header{
+ background:radial-gradient(ellipse at 90% 0%,#71479624,transparent 65%),linear-gradient(135deg,#21132f,#120a20)!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header::before{opacity:.08!important}
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) :is(.mh-deck,.ma-luxe-shortcuts) :is(a,button){
+ min-height:44px!important;box-sizing:border-box;line-height:1.3!important;
+ box-shadow:inset 0 1px 0 #fff5e712,0 3px 12px #0003!important;
+}
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) :is(.mh-deck,.ma-luxe-shortcuts) :is(a,button):focus-visible{
+ outline:2px solid #f4d997!important;outline-offset:3px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-explore-more{
+ max-width:100%;white-space:normal;text-align:center;line-height:1.4;
+ color:#24132d!important;background:linear-gradient(115deg,#f4d997,#cda14d)!important;
+ border:1px solid #edcc91!important;min-height:44px;box-sizing:border-box;
+ font:600 13px/1.4 system-ui,sans-serif!important;padding:10px 18px!important;
+}
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .ma-brand-copy > .ma-brand-title-line{
+ padding-inline-end:3px;box-sizing:border-box;
+}
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .ma-brand-title-line > .ma-word-ai{
+ padding-inline-end:.3em!important;
+}
+html body.page-home #ma-jonas-inline-dock[hidden]{display:none!important}
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) #ma-jonas-home .jh-popover{
+ background:radial-gradient(ellipse at 90% 0%,#71479630,transparent 65%),linear-gradient(135deg,#21132f,#120a20)!important;
+ border-color:#d3ac687a!important;box-shadow:0 18px 50px #0008,inset 0 1px 0 #fff5e712!important;
+}
+html body.page-shell :is(.page-panel,.discover-head),
+html body.page-home #ma-concierge{
+ border-color:#d3ac685e!important;background:linear-gradient(135deg,#21132ff2,#120a20fa)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html:not(.kids-mode) body:not(.page-kids):not(.kids-body) :is(.mh-explore-more,.jh-bubble){transition:none!important}
+}
+
+/* The precision sheet reserves explicit utility columns; change height only. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox :is(.mh-deck,.ma-luxe-shortcuts) :is(a,button){min-height:44px!important;height:auto!important}
+html body.page-shell header.app-header.mh-topbox .mh-deck :is(a,button){min-height:44px!important;height:auto!important}
+html body.page-home #how-it-works:target{display:block!important}
+html body.page-home #mh-topbox .ma-brand-title-line > .ma-word-ai,
+html body.page-shell header.app-header.mh-topbox .ma-brand-title-line > .ma-word-ai{padding-right:.3em!important}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck.ma-header-actions{grid-auto-rows:44px!important;gap:8px!important}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck.ma-header-actions > *{min-height:44px!important;height:auto!important}

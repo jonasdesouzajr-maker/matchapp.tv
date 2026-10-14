@@ -2,8 +2,7 @@
  * Visual refinements to match owner-approved reference screenshots.
  * Presentation only. No changes to handlers, data, billing, or protected systems.
  */
-
-:root {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) {
   --approved-bg: #0d0714;
   --approved-glass: rgba(28, 16, 48, 0.85);
   --approved-gold: #f6d38f;
@@ -13,31 +12,34 @@
   --approved-muted: #c4b5fd;
 }
 
-html body:not(.page-kids):not(.kids-body) {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) {
   background-color: var(--approved-bg) !important;
   color: var(--approved-text);
 }
 
 /* Header refinement */
-html body.page-home .app-header,
-html body.page-shell .app-header {
+html:not(.kids-mode) body.page-home .app-header,
+html:not(.kids-mode) body.page-shell .app-header {
   background: linear-gradient(135deg, rgba(28,16,48,0.95), rgba(18,10,32,0.98)) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08) !important;
   backdrop-filter: blur(20px) !important;
 }
-html body.page-shell .app-header {
+
+html:not(.kids-mode) body.page-shell .app-header {
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 24px !important;
 }
 
 /* Brand lockup */
-.matchapp-wordmark,
-.home-brand-home {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .matchapp-wordmark,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .home-brand-home {
   filter: drop-shadow(0 4px 12px rgba(246, 211, 143, 0.3));
 }
 
 /* Buttons and pills */
-.gold-btn, .premium-btn, .primary-action {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .gold-btn,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .premium-btn,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .primary-action {
   background: linear-gradient(135deg, #f6d38f, #d4a84b) !important;
   color: #1a0f2e !important;
   border: none !important;
@@ -47,7 +49,10 @@ html body.page-shell .app-header {
 }
 
 /* Cards */
-.premium-card, .match-result-card, .page-panel, .concierge-card {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .premium-card,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .match-result-card,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-panel,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .concierge-card {
   background: var(--approved-glass) !important;
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 20px !important;
@@ -55,22 +60,30 @@ html body.page-shell .app-header {
 }
 
 /* Poster rails */
-.poster-rail img, .title-poster {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .poster-rail img,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .title-poster {
   border-radius: 12px !important;
   box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
   object-fit: contain !important;
 }
 
 /* Jonas avatar refinement */
-.jonas-avatar, .floating-avatar {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .jonas-avatar,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .floating-avatar {
   border: 2px solid var(--approved-gold) !important;
   box-shadow: 0 0 20px rgba(246, 211, 143, 0.5) !important;
 }
 
 /* Inputs */
-.premium-card :is(input, select, textarea),
-.page-panel :is(input, select, textarea),
-.concierge-card :is(input, select, textarea) {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .premium-card :is(input,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) select,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) textarea),
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-panel :is(input,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) select,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) textarea),
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .concierge-card :is(input,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) select,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) textarea) {
   background: rgba(20, 12, 36, 0.7) !important;
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 16px !important;
@@ -79,7 +92,8 @@ html body.page-shell .app-header {
 
 /* Responsive refinements */
 @media (max-width: 768px) {
-  html body.page-shell .app-header {
+
+html:not(.kids-mode) body.page-shell .app-header {
     padding: 12px !important;
     border-radius: 16px !important;
   }
@@ -87,7 +101,8 @@ html body.page-shell .app-header {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  * {
+
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
@@ -95,30 +110,33 @@ html body.page-shell .app-header {
 
 /* Further refinements for cinematic posters and hierarchy */
 /* Existing rail scripts own flex/scroll behavior; do not override them. */
-.top-titles-rail, .poster-carousel {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .top-titles-rail,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .poster-carousel {
   gap: 12px;
 }
 
-.top-titles-rail img {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .top-titles-rail img {
   height: 180px;
   width: auto;
   border-radius: 14px;
   transition: transform 0.2s ease;
 }
 
-.top-titles-rail img:hover {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .top-titles-rail img:hover {
   transform: scale(1.05);
 }
 
 /* Jonas companion card */
-.jonas-companion, .floating-home-card {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .jonas-companion,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .floating-home-card {
   background: linear-gradient(145deg, rgba(40,20,70,0.9), rgba(20,10,40,0.95)) !important;
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 24px !important;
 }
 
 /* Filter section */
-.filters-section, .how-tonight {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .filters-section,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .how-tonight {
   background: var(--approved-glass);
   border-radius: 20px;
   padding: 20px;
@@ -126,22 +144,22 @@ html body.page-shell .app-header {
 }
 
 /* Jonas specific refinements */
-#ma-jonas-home .jh-bubble {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) #ma-jonas-home .jh-bubble {
   filter: drop-shadow(0 4px 12px rgba(246, 211, 143, 0.4));
 }
 
-#ma-jonas-home .jh-portrait {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) #ma-jonas-home .jh-portrait {
   border-color: var(--approved-gold) !important;
   box-shadow: 0 0 0 4px rgba(246, 211, 143, 0.2), 0 8px 24px rgba(0,0,0,0.4) !important;
 }
 
-#ma-jonas-home .jh-popover {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) #ma-jonas-home .jh-popover {
   border-color: var(--approved-gold-line) !important;
   background: linear-gradient(145deg, rgba(45,25,75,0.95), rgba(20,12,40,0.98)) !important;
 }
 
 /* Global consistency for all adult pages */
-html body:not(.page-kids):not(.kids-body) {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) {
   font-family: Outfit, Inter, system-ui, sans-serif;
 }
 
@@ -150,21 +168,25 @@ html body:not(.page-kids):not(.kids-body) {
    A universal main/.container constraint clips full-bleed layouts. */
 
 /* Unified headers across pages */
-.app-header, .page-header {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .app-header,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-header {
   background: linear-gradient(135deg, rgba(28,16,48,0.95), rgba(18,10,32,0.98)) !important;
   border-bottom: 1px solid var(--approved-gold-line) !important;
   color: var(--approved-text);
 }
 
 /* Consistent buttons everywhere */
-.btn, a.btn, .action-btn {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .btn,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) a.btn,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .action-btn {
   border-radius: 999px !important;
   font-weight: 600 !important;
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 /* Cards and panels on secondary pages */
-.result-card, .title-card {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .result-card,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .title-card {
   background: var(--approved-glass) !important;
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 16px !important;
@@ -173,17 +195,22 @@ html body:not(.page-kids):not(.kids-body) {
 }
 
 /* Links */
-.adult-page-nav a, .page-panel a, .concierge-card a {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .adult-page-nav a,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-panel a,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .concierge-card a {
   color: var(--approved-gold);
   text-decoration: none;
 }
-.adult-page-nav a:hover, .page-panel a:hover, .concierge-card a:hover {
+
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .adult-page-nav a:hover,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-panel a:hover,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .concierge-card a:hover {
   color: #fff;
   text-decoration: underline;
 }
 
 /* Footer consistency */
-footer {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) footer {
   background: rgba(13,7,20,0.9) !important;
   border-top: 1px solid var(--approved-gold-line) !important;
   color: var(--approved-muted);
@@ -192,37 +219,45 @@ footer {
 
 /* Mobile refinements for all pages */
 @media (max-width: 640px) {
-  .page-header {
+
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-header {
     padding: 12px !important;
   }
 }
 
 /* Narrow-phone QA finish: explicit adult surfaces only. */
-html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header {
+html:not(.kids-mode) body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header {
  background: radial-gradient(ellipse at 12% 0%,rgba(107,70,193,.20),transparent 60%),linear-gradient(135deg,#21132f,#120a20) !important;
 }
-html body.page-explore { padding-top:0 !important; }
-html body.page-explore > .matchapp-brand-bar {
+
+html:not(.kids-mode) body.page-explore { padding-top:0 !important; }
+
+html:not(.kids-mode) body.page-explore > .matchapp-brand-bar {
  margin:16px auto 0 !important;padding:12px 18px !important;
  width:min(980px,calc(100% - 32px));box-sizing:border-box;
  border:1px solid var(--approved-gold-line);border-radius:20px;
  background:linear-gradient(135deg,#21132f,#120a20);
 }
-html body.page-explore > .matchapp-brand-bar .matchapp-wordmark {
+
+html:not(.kids-mode) body.page-explore > .matchapp-brand-bar .matchapp-wordmark {
  display:block;width:min(100%,260px);height:auto;
 }
-html body.ai-chat-page .wrap .premium-card.discover-head:has(#chat-log:empty) {
+
+html:not(.kids-mode) body.ai-chat-page .wrap .premium-card.discover-head:has(#chat-log:empty) {
  height:clamp(350px,54dvh,480px) !important;
 }
 @media(max-width:420px) {
- html body.page-home #ma-concierge.ma-watch-compact > .ma-watch-preview {
+
+html:not(.kids-mode) body.page-home #ma-concierge.ma-watch-compact > .ma-watch-preview {
   grid-template-columns:minmax(0,1fr) !important;
  }
- html body.page-home #ma-concierge .ma-watch-preview :is(#ma-compact-cat,#ma-compact-mood) {
+
+html:not(.kids-mode) body.page-home #ma-concierge .ma-watch-preview :is(#ma-compact-cat,
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) #ma-compact-mood) {
   width:100% !important;min-width:0 !important;font-size:14px !important;
   padding-inline:12px !important;
  }
 }
 
 /* Retain the header glimmer without washing out the midnight fill. */
-html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header::before { opacity:.18 !important; }
+html:not(.kids-mode) body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header::before { opacity:.18 !important; }

@@ -16,6 +16,12 @@
  var opened=false,dragging=null,suppressClick=false,stageFloating=false,stagePosition=null,lastAppliedLang=null;
  var storageKey='matchapp-jonas-inline-position-v1';
  var dock=null,returnButton=null;
+ var persistentBubble=document.body.classList.contains('page-home');
+ function defaultPosition(){
+  var size=bubble.getBoundingClientRect();
+  var right=innerWidth>=1180?Math.max(205,(innerWidth-980)/2):24;
+  setFloating(innerWidth-right-size.width,innerHeight-size.height-(innerWidth<700?100:24));
+ }
  function homeEntry(){return document?.getElementById?.('ma-ai-entry')||null}
  function mountInline(){
   var entry=homeEntry();
@@ -73,7 +79,8 @@
   setOpen(false);
   if(clear)try{localStorage.removeItem(storageKey)}catch(_){}
   root.classList.remove('is-floating');
-  mountInline();translate();
+  if(persistentBubble)defaultPosition();else mountInline();
+  translate();
  }
  function savePosition(){
   try{
@@ -272,6 +279,10 @@
  setTimeout(hideLateAskHeading,1100);
  document.addEventListener('matchapp:langchange',hideLateAskHeading);
  document.addEventListener('matchapp:langchange',translate);
+ if(persistentBubble){
+  defaultPosition();
+  if(dock)dock.hidden=true;
+ }
  restorePosition();
  translate();
 })();

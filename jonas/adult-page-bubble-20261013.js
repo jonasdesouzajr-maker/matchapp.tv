@@ -18,6 +18,8 @@
     });
   }
   async function mount() {
+    css('/adult-ui-finish-20261014.css?v=1');
+    await script('/adult-ui-finish-20261014.js?v=1');
     if (document.documentElement.hasAttribute('data-kids-mode') || document.body.matches('.page-kids,.kids-body,.kids-mode')) return;
     var root = document.getElementById('ma-jonas-home');
     var home = /^\/(?:index\.html)?$/.test(location.pathname);
@@ -42,7 +44,7 @@
     await script('/jonas/locales-20261009-v2.js');
     await script('/jonas/male-voice-policy-20261010.js');
     await script('/jonas/secure-speech-20261010.js?v=20261011-final3');
-    await script('/jonas/floating-home-20261010-v3.js?v=20261013-adult1');
+    await script('/jonas/floating-home-20261010-v3.js?v=20261013-adult1&persistent=20261014-1');
     await script('/jonas/floating-voice-20261010-v5.js?v=20261013-human');
     await script('/jonas/ambient-effects-20261013.js');
     await script('/jonas/ambient-sounds-20261013.js');
