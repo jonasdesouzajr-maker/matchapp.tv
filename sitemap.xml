@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://matchapp.tv/explore.html</loc>
-        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
+        <lastmod>2026-10-14T09:08:28+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/music.html</loc>
-        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
+        <lastmod>2026-10-14T09:08:28+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -32,7 +32,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
+        <lastmod>2026-10-14T09:13:35+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -62,7 +62,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/ebooks/</loc>
-        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
+        <lastmod>2026-10-14T09:08:28+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -1460,12 +1460,6 @@
     </url>
     <url>
         <loc>https://matchapp.tv/awareness/world-diabetes-day-2026/</loc>
-        <lastmod>2026-10-06T18:42:04+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://matchapp.tv/awareness/world-mental-health-day-2026/</loc>
         <lastmod>2026-10-06T18:42:04+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
