@@ -4,7 +4,7 @@ npm warn Unknown env config "http-proxy". This will stop working in the next maj
 > node tools/audit-site.js && node tools/audit-search.js && node tools/search-readiness.js && node tools/gsc-index-video-guard-20261012.cjs
 
 {
-  "files": 2415,
+  "files": 2474,
   "html": 1346,
   "js": 476,
   "externalUrls": 1897,

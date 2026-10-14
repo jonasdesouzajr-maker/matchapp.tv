@@ -1012,6 +1012,19 @@
       renderPreview(host,null,{title});
       return;
     }
+    // Keep the chat/share context aligned with the exact source record that
+    // now owns the visible facts and poster. Curated matches can begin with
+    // title/year only; never replace another result or a pinned TMDB identity.
+    const currentIdentity=window.currentMatchIdentity;
+    const verifiedId=Number(meta.tmdb_id);
+    if(currentIdentity&&normalise(currentIdentity.title)===normalise(title)&&
+       Number.isSafeInteger(verifiedId)&&verifiedId>0&&
+       ['movie','tv'].includes(meta.media_kind)&&
+       (!currentIdentity.tmdbId||Number(currentIdentity.tmdbId)===verifiedId)){
+      window.currentMatchIdentity={...currentIdentity,tmdbId:verifiedId,
+        kind:meta.media_kind,
+        artwork:TRUSTED_POSTER.test(resolved.url||'')?resolved.url:currentIdentity.artwork||''};
+    }
     applyDetails(meta);
     renderAvailability(availabilityHost,meta,{title});
     renderPreview(host,meta,{title});
