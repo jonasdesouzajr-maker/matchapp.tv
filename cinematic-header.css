@@ -5,7 +5,8 @@
 */
 
 html body header.app-header,
-html body .app-header {
+html body .app-header,
+html body header#mh-topbox.app-header {
   background:
     radial-gradient(ellipse at 12% 0%, rgba(230,195,106,.10), transparent 52%),
     radial-gradient(ellipse at 90% 110%, rgba(88,42,140,.28), transparent 62%),
@@ -16,8 +17,10 @@ html body .app-header {
     0 0 0 1px rgba(230,195,106,.06),
     inset 0 1px 0 rgba(255,236,190,.16),
     inset 0 -18px 40px rgba(0,0,0,.35) !important;
-  position: relative;
-  overflow: hidden;
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  contain: paint !important;
 }
 
 html body header.app-header .brand-logo,
@@ -48,27 +51,29 @@ html body .app-header :is(.ma-word-app, .ma-word-ai) {
 
 /* Diagonal shimmer wave */
 html body header.app-header::after,
-html body .app-header::after {
+html body .app-header::after,
+html body header#mh-topbox.app-header::after {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(230, 195, 106, 0.12) 50%,
-    transparent 70%
+    115deg,
+    transparent 40%,
+    rgba(230, 195, 106, 0.18) 50%,
+    transparent 60%
   );
-  animation: header-shimmer 9s linear infinite;
+  background-size: 220% 220%;
+  animation: header-shimmer 8s linear infinite;
   pointer-events: none;
   z-index: 1;
+  mix-blend-mode: soft-light;
 }
 
 @keyframes header-shimmer {
-  0% { transform: translate(-30%, -30%) rotate(0deg); }
-  100% { transform: translate(30%, 30%) rotate(0deg); }
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 
 /* Controls in header: dark surfaces */
