@@ -8,9 +8,9 @@ const realHtml=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const match=realHtml.match(/<aside id="ma-jonas-home"[\s\S]*?<\/aside>/);
 assert.ok(match,'production Home Jonas markup must be present');
 const homeHtml='<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'+
- '<link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css"><link rel="stylesheet" href="/patches/jonas-premium-glass.css"></head>'+
+ '<link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css"><link rel="stylesheet" href="/patches/jonas-premium-glass.css"></head>'+
  '<body class="page-home ma-jonas-inline">'+match[0]+'<script src="/jonas/locales-20261009-v2.js"></script><script src="/jonas/floating-home-20261010-v3.js"></script></body></html>';
-const androidHtml='<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head>'+
+const androidHtml='<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="/brand.css"></head>'+
  '<body class="page-explore"><script>window.__MATCHAPP_AMBIENT_QA__=true;window.MATCH_LANG="pt-BR";</script>'+
  '<script src="/jonas/android-ambient-assistant-20261011.js"></script></body></html>';
 const mime={'.html':'text/html','.css':'text/css','.js':'application/javascript','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.mp3':'audio/mpeg'};
@@ -36,11 +36,37 @@ const app=http.createServer((req,res)=>{const u=new URL(req.url,'http://localhos
    await page.evaluate(({rSel,width,height})=>{
     const r=document.querySelector(rSel),w=Math.max(74,r.getBoundingClientRect().width),h=Math.max(74,r.getBoundingClientRect().height);
     if(r.id==='ma-jonas-home')r.classList.add('is-floating');
-    r.style.setProperty('left',Math.max(8,width-w-10)+'px','important');
-    r.style.setProperty('top',Math.max(8,height-h-10)+'px','important');
+    r.style.setProperty('left',Math.max(20,width-w-24)+'px','important');
+    r.style.setProperty('top',Math.max(20,height-h-24)+'px','important');
     r.style.setProperty('right','auto','important');r.style.setProperty('bottom','auto','important');
    },{rSel,width,height});
-   const parked=await page.locator(rSel).boundingBox();
+   let parked=await page.locator(rSel).boundingBox();
+   const dragTrace=[];
+   for(const [edge,targetX,targetY] of [
+    ['left',1,Math.floor(height/2)],['top',Math.floor(width/2),1],
+    ['right',width-1,Math.floor(height/2)],['bottom',Math.floor(width/2),height-1],
+    ['corner',width-1,height-1]
+   ]){
+    const start=await page.locator(bSel).boundingBox();
+    assert.ok(start&&start.width>32,kind+' launcher must be draggable');
+    await page.mouse.move(start.x+start.width/2,start.y+start.height/2);
+    await page.mouse.down();
+    await page.mouse.move(targetX,targetY,{steps:8});
+    await page.waitForTimeout(75);
+    const during=await page.locator(rSel).boundingBox();
+    const inset=(width>=700?4:3)+12;
+    assert.ok(during.x>=inset-1&&during.y>=inset-1&&during.x+during.width<=width-inset+1&&during.y+during.height<=height-inset+1,kind+' '+width+' '+edge+' drag crossed gold border '+JSON.stringify(during));
+    await page.mouse.up();
+    await page.waitForTimeout(580);
+    const end=await page.locator(rSel).boundingBox();
+    assert.ok(end.x>=inset-1&&end.y>=inset-1&&end.x+end.width<=width-inset+1&&end.y+end.height<=height-inset+1,kind+' '+width+' '+edge+' release crossed border '+JSON.stringify(end));
+    if(edge==='left')assert.ok(end.x>during.x+5,kind+' left edge did not bounce inward '+JSON.stringify({during,end}));
+    if(edge==='right')assert.ok(end.x<during.x-5,kind+' right edge did not bounce inward '+JSON.stringify({during,end}));
+    if(edge==='top')assert.ok(end.y>during.y+5,kind+' top edge did not bounce inward '+JSON.stringify({during,end}));
+    if(edge==='bottom')assert.ok(end.y<during.y-5,kind+' bottom edge did not bounce inward '+JSON.stringify({during,end}));
+    dragTrace.push({edge,during:{x:during.x,y:during.y},released:{x:end.x,y:end.y}});
+   }
+   parked=await page.locator(rSel).boundingBox();
    await page.locator(bSel).click();
    await page.locator(pSel).waitFor({state:'visible',timeout:10000});
    await page.waitForTimeout(180);

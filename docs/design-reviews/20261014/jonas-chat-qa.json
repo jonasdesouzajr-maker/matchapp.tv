@@ -8,12 +8,12 @@
       "height": 740,
       "modal": "true",
       "origin": {
-        "x": 222,
-        "y": 645
+        "x": 206,
+        "y": 626
       },
       "restored": {
-        "x": 222,
-        "y": 645
+        "x": 206,
+        "y": 626
       },
       "composedInViewport": true
     },
@@ -23,12 +23,12 @@
       "height": 844,
       "modal": "true",
       "origin": {
-        "x": 292,
-        "y": 749
+        "x": 276,
+        "y": 730
       },
       "restored": {
-        "x": 292,
-        "y": 749
+        "x": 276,
+        "y": 730
       },
       "composedInViewport": true
     },
@@ -38,12 +38,12 @@
       "height": 1180,
       "modal": "true",
       "origin": {
-        "x": 700,
-        "y": 1074
+        "x": 705,
+        "y": 1065
       },
       "restored": {
-        "x": 700,
-        "y": 1074
+        "x": 705,
+        "y": 1065
       },
       "composedInViewport": true
     },
@@ -53,12 +53,12 @@
       "height": 900,
       "modal": "true",
       "origin": {
-        "x": 1230,
-        "y": 782
+        "x": 1251,
+        "y": 785
       },
       "restored": {
-        "x": 1230,
-        "y": 782
+        "x": 1251,
+        "y": 785
       },
       "composedInViewport": true
     },
@@ -68,12 +68,12 @@
       "height": 1080,
       "modal": "true",
       "origin": {
-        "x": 1784,
-        "y": 962
+        "x": 1805,
+        "y": 965
       },
       "restored": {
-        "x": 1784,
-        "y": 962
+        "x": 1805,
+        "y": 965
       },
       "composedInViewport": true
     },
@@ -83,12 +83,12 @@
       "height": 740,
       "modal": "true",
       "origin": {
-        "x": 232,
-        "y": 652
+        "x": 210,
+        "y": 630
       },
       "restored": {
-        "x": 232,
-        "y": 652
+        "x": 210,
+        "y": 630
       },
       "composedInViewport": true
     },
@@ -98,12 +98,12 @@
       "height": 844,
       "modal": "true",
       "origin": {
-        "x": 302,
-        "y": 756
+        "x": 280,
+        "y": 734
       },
       "restored": {
-        "x": 302,
-        "y": 756
+        "x": 280,
+        "y": 734
       },
       "composedInViewport": true
     },
@@ -113,12 +113,12 @@
       "height": 450,
       "modal": "true",
       "origin": {
-        "x": 732,
-        "y": 362
+        "x": 709,
+        "y": 339
       },
       "restored": {
-        "x": 732,
-        "y": 362
+        "x": 709,
+        "y": 339
       },
       "composedInViewport": true
     },
@@ -128,12 +128,12 @@
       "height": 900,
       "modal": "true",
       "origin": {
-        "x": 1278,
-        "y": 812
+        "x": 1255,
+        "y": 789
       },
       "restored": {
-        "x": 1278,
-        "y": 812
+        "x": 1255,
+        "y": 789
       },
       "composedInViewport": true
     },
@@ -143,12 +143,12 @@
       "height": 1080,
       "modal": "true",
       "origin": {
-        "x": 1832,
-        "y": 992
+        "x": 1809,
+        "y": 969
       },
       "restored": {
-        "x": 1832,
-        "y": 992
+        "x": 1809,
+        "y": 969
       },
       "composedInViewport": true
     }
