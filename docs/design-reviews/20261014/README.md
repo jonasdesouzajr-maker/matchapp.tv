@@ -27,7 +27,18 @@ Captured from identical **local** integration/design worktrees at 390px and 1366
 
 ## Still needed before a release
 
-- At revision `4b5c32bb`, GitHub Actions **Validate website**, **Matching and AI Audit**, and **AdSense Immutable Lock** all passed. After any new PR commit, reconfirm those workflows on its exact SHA. Android debug-preview parity passes its dedicated regression; a physical Android install and OS microphone test remain separate.
+- At the previously checked draft SHA `1291ead1`, GitHub Actions **Validate website**, **Matching and AI Audit**, and **AdSense Immutable Lock** passed. Reconfirm those workflows on the final new commit. Android debug-preview parity passes its dedicated regression; the debug APK is now installed on the tablet, but approved real-device microphone/voice tests remain outstanding.
 - Physically verify Android WebView keyboard, microphone, greeting and top-left/restore chat positioning on the connected test device. Browser simulations cannot prove OS speech behavior.
 - Full-site legacy/editorial localization audit remains necessary: translated dictionaries do not establish that every dynamic sentence and page has authored localization.
 - The present PR is a reviewable design change, **not** approval to merge PR #240 or publish an AAB to Play.
+
+## Extended QA: design, native tablet and live results (14 October)
+
+- Five responsive Home sizes (320, 390, 820, 1366, 1920px) confirmed the moved reading, cooking, news, events, awareness and music panels are excluded from Home without deletion. The highlighted gold Explore More entry retains its destination. See [responsive audit](home-focus-audit.json) and [820px](screenshots/after-home-focus-cta-820.png) / [1366px](screenshots/after-home-focus-cta-1366.png) visual evidence.
+- A screenshot detected an actual desktop header overlap; the utility and shortcut rows were separated. [Header collision QA](../../../tools/qa-header-geometry.cjs) covers 320, 390, 820, 1024, 1100, 1200, 1366 and 1920px.
+- Trending cards now have a restrained gold/violet background while official artwork decodes, without cropping/replacing posters or adding render-blocking dependencies.
+- On the connected Samsung tablet, the debug APK was installed separately from production. The native app loads the existing LIVE website, not this unpublished PR. The live Home had 74 distinct linked internal paths answering HTTP successfully; this is not equivalent to verified individual click behavior.
+- Repeated real-device swipes entered the live old Home books area and ceased to advance page scroll near Y=1321. This PR keeps books behind Explore. No completed visible poster was conclusively found broken during the sampled swipes; still-loading imagery is not counted as verified.
+- A live guest Comfort + Movie + Netflix match returned The Little Prince with decoded official TMDB poster, streaming actions and metadata in approximately ten seconds. It also exposed a synopsis-watch-guide placeholder defect. The isolated frontend fallback exposes the verified original synopsis with an explicit untranslated label only when the approved localized synopsis has not arrived; any genuine translation wins. The fourteen-language test is in tests/result-synopsis-presentation-20261014.test.cjs.
+- A second Funny + Series + Prime guest attempt could not yield a result after the guest allowance fell to zero. Do not count this as a passing result; do not bypass quotas.
+- Pending release gates: real speech and microphone/IME, full localized-content audit, Android launcher alignment with the approved October 13 artwork, exact-head CI after final changes and real-device evaluation of this PR through a controlled preview. No backend deployment, release merge or Play publication took place.
