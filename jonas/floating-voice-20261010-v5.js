@@ -298,7 +298,11 @@
    // Brief pause after greeting so the user hears the welcome before the mic opens.
    if(token===session&&mode==='voice')setTimeout(function(){if(token===session&&mode==='voice')listen(token)},420);
   }
-  if(window.MatchAppJonasSpeech){
+  // A policy-approved device voice can start immediately; cloud is the fallback.
+  // Do not add a remote synthesis roundtrip just to greet the user.
+  var speechLocale=locale()?.speech()||(isPt()?'pt-BR':'en-US');
+  var immediateMaleVoice=('speechSynthesis' in window)&&('SpeechSynthesisUtterance' in window)&&voiceFor(speechLocale);
+  if(window.MatchAppJonasSpeech&&!immediateMaleVoice){
    window.MatchAppJonasSpeech.unlock();
    window.MatchAppJonasSpeech.speak(message,locale()?.speech()||window.MATCH_LANG||'en',{
     onStart:function(){if(token===session&&mode==='voice')animateMouth()},
@@ -315,7 +319,7 @@
    // stopVoice already cancelled the previous utterance; calling cancel twice
    // in the same user activation can swallow Chrome/Android's first greeting.
    var lang=locale()?.speech()||(isPt()?'pt-BR':'en-US');
-   var selected=voiceFor(lang);
+   var selected=immediateMaleVoice||voiceFor(lang);
    if(!selected){
     status.textContent=locale()?.t('unsupported')||'A verified masculine voice is unavailable. You can still type or talk.';
     finish();return;

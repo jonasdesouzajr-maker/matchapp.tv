@@ -25,19 +25,19 @@
   if(htmlAudio){try{htmlAudio.pause();htmlAudio.src=''}catch(_){}htmlAudio=null}
   try{window.speechSynthesis?.cancel?.()}catch(_){}
  }
- function approvedFallback(text,language,options,token){
+ function approvedFallback(text,language,options,token,preferringLocal){
   var synthesis=window.speechSynthesis;
   var voices=window.MatchAppJonasVoicePolicy;
   var voice;
   try{voice=voices?.select?.(synthesis?.getVoices?.()||[],language)}catch(_){}
   if(!voice||!window.SpeechSynthesisUtterance||token!==epoch)return Promise.resolve(false);
   return new Promise(function(resolve){
-   var done=false;
-   var finish=function(ok){if(done)return;done=true;if(token===epoch){if(ok)options.onProgress?.(1);options.onEnd?.(ok)}resolve(ok)};
+   var done=false,started=false,startGuard=0;
+   var finish=function(ok){if(done)return;done=true;clearTimeout(startGuard);if(token===epoch){if(ok)options.onProgress?.(1);if(ok)options.onEnd?.(true)}resolve(ok)};
    try{
     var utter=new SpeechSynthesisUtterance(text);
     utter.voice=voice;utter.lang=voice.lang;utter.pitch=1;utter.rate=1;
-    utter.onstart=function(){if(token===epoch)options.onStart?.()};
+    utter.onstart=function(){started=true;clearTimeout(startGuard);if(token===epoch)options.onStart?.()};
     // Browser TTS has no decoded PCM meter. Word boundary events provide
     // genuine speech timing for the existing avatar's mouth, without a timer
     // that falsely animates when audio is muted or not actually speaking.
@@ -50,6 +50,8 @@
     utter.onend=function(){finish(true)};
     utter.onerror=function(){finish(false)};
     synthesis.speak(utter);
+    // Android WebViews may never fire onstart: fall back rather than stall.
+    if(preferringLocal)startGuard=setTimeout(function(){if(!started){try{synthesis.cancel()}catch(_){}finish(false)}},2200);
    }catch(_){finish(false)}
   });
  }
@@ -59,6 +61,14 @@
   stop();
   var token=epoch;
   var chosen=lang(language);
+  // Prefer an already installed, explicitly approved male voice when available.
+  // This avoids waiting for a full cloud audio synthesis before the first word.
+  var localApproved=false;
+  try{localApproved=!!window.MatchAppJonasVoicePolicy?.select?.(window.speechSynthesis?.getVoices?.()||[],chosen)}catch(_){}
+  if(localApproved){
+   var spoken=await approvedFallback(text,chosen,opts,token,true);
+   if(spoken||token!==epoch)return spoken;
+  }
   var controller=new AbortController();
   abort=controller;
   var timeout=setTimeout(function(){controller.abort()},12000);
