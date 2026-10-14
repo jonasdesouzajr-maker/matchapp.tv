@@ -133,3 +133,26 @@ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts
   grid-column:1 / -1!important;
  }
 }
+
+/* A useful discovery promise replaces the retired redundant watch-question headline.
+   Remains inside the existing top box (no new Home section or extra nav tile). */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head > .mh-tagline[data-match-experience-heading]{
+ display:block!important;position:relative!important;
+ width:100%!important;max-width:100%!important;min-height:0!important;
+ margin:6px auto 0!important;padding:0 4px!important;
+ font-size:clamp(13px,2.3vw,20px)!important;line-height:1.25!important;
+ font-weight:800!important;letter-spacing:-.01em!important;
+ text-align:center!important;text-transform:none!important;
+ color:#ffe4aa!important;text-wrap:balance!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head{
+ height:auto!important;max-height:none!important;min-height:0!important;overflow:visible!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox{
+ grid-template-rows:auto auto auto!important;max-height:none!important;
+}
+@media(max-width:400px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head > .mh-tagline[data-match-experience-heading]{
+  font-size:13px!important;margin-top:4px!important;
+ }
+}
