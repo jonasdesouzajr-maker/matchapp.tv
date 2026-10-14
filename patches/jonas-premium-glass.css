@@ -1,0 +1,46 @@
+/* Adult Jonas presentation only. Never transform the draggable host. */
+#ma-jonas-home .jh-bubble,#ma-ambient-jonas .ja-bubble {
+ background:rgba(29,19,43,.88)!important;border-color:#e9cd8b!important;
+ box-shadow:0 8px 26px #0006,0 0 0 3px #e9cd8b22!important;
+ -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+}
+#ma-jonas-home-panel,#ma-ambient-panel {
+ background:rgba(26,17,39,.94)!important;border:1px solid #e9cd8b80!important;
+ box-shadow:0 18px 55px #0008!important;
+ -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+}
+#ma-ambient-panel .ja-panel-head {background:rgba(55,34,74,.85)!important}
+#ma-jonas-home .jh-portrait,#ma-ambient-jonas .ja-premium-face {
+ position:relative;overflow:hidden;border-radius:50%;display:block;
+ transform-origin:center;animation:ja-premium-breathe 4.8s ease-in-out infinite;
+}
+#ma-ambient-jonas .ja-premium-face {width:100%;height:100%;pointer-events:none}
+#ma-ambient-jonas .ja-premium-face img {display:block}
+#ma-jonas-home .ja-premium-smile,#ma-ambient-jonas .ja-premium-smile {
+ position:absolute!important;inset:0;width:100%;height:100%;object-fit:cover;
+ object-position:center 18%;border-radius:50%;opacity:0;transition:opacity 140ms ease;
+ pointer-events:none;
+}
+@media(hover:hover) {
+ #ma-jonas-home .jh-bubble:hover .ja-premium-smile,
+ #ma-ambient-jonas .ja-bubble:hover .ja-premium-smile {opacity:1}
+}
+#ma-ambient-jonas[data-speaking="1"] .ja-premium-face,
+#ma-jonas-home.jh-speaking .jh-portrait {animation:ja-premium-talk 3.8s ease-in-out infinite}
+#ma-ambient-panel .ja-mouth,#ma-jonas-home .jh-mouth-layer {transition:opacity 140ms ease}
+#ma-jonas-home::before,#ma-ambient-jonas::before {animation:none!important;opacity:.35!important}
+#ma-jonas-home .jh-aura,#ma-ambient-jonas .ja-aura {animation:none!important}
+/* Opt-in widget size; preserve the existing position and drag controller. */
+#ma-jonas-home.is-widget .jh-bubble {width:68px;height:68px}
+@keyframes ja-premium-breathe {0%,100%{transform:scale(1)}50%{transform:scale(1.012)}}
+@keyframes ja-premium-talk {0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+@media(prefers-reduced-motion:reduce) {
+ #ma-jonas-home .jh-portrait,#ma-ambient-jonas .ja-premium-face,
+ #ma-jonas-home.jh-speaking .jh-portrait,#ma-ambient-jonas[data-speaking="1"] .ja-premium-face {animation:none!important}
+ #ma-jonas-home .ja-premium-smile,#ma-ambient-jonas .ja-premium-smile,
+ #ma-ambient-panel .ja-mouth,#ma-jonas-home .jh-mouth-layer {transition:none!important}
+}
+html.reduce-motion #ma-jonas-home .jh-portrait,
+html.reduce-motion #ma-ambient-jonas .ja-premium-face {animation:none!important}
+
+#ma-ambient-jonas .ja-bubble {width:76px!important;height:76px!important}

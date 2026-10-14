@@ -32,7 +32,7 @@
  function locale(){var s=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();return labels[s.split('-')[0]]||labels.en}
  function clamp(x,low,high){return Math.max(low,Math.min(high,x))}
  function viewport(){return {width:Math.max(1,window.innerWidth),height:Math.max(1,window.visualViewport?.height||window.innerHeight)}}
- function setPosition(x,y){var v=viewport(),sz=76;root.style.left=clamp(x,8,Math.max(8,v.width-sz-8))+'px';root.style.top=clamp(y,8,Math.max(8,v.height-sz-8))+'px';root.style.right='auto';root.style.bottom='auto'}
+ function setPosition(x,y){var v=viewport(),sz=76;root.style.setProperty('left',clamp(x,8,Math.max(8,v.width-sz-8))+'px','important');root.style.setProperty('top',clamp(y,8,Math.max(8,v.height-sz-8))+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
  function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var v=viewport();var nx=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84)),ny=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
  function stopDragFrame(){if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}}
  function stopFling(){if(flingRaf){cancelAnimationFrame(flingRaf);flingRaf=0;var rect=root.getBoundingClientRect();root.style.transform='';setPosition(rect.left,rect.top);}}
@@ -63,6 +63,9 @@
   return '';
  }
  function css(){
+  if(!document.getElementById('ma-jonas-premium-script')){
+   var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=premium1';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
+  }
   // Critical first-paint styling is deliberately inline. Synchronous head
   // scripts may delay external CSS but the Jonas bubble cannot appear square
   // or expand to full page width while that stylesheet is loading.
@@ -304,7 +307,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   panel.innerHTML='<div class="ja-panel-head"><div class="ja-face-wrap" aria-hidden="true"><img class="ja-face" src="/jonas/faces/jonas/rest.jpg" alt=""><img class="ja-mouth ja-mouth-a" alt=""><img class="ja-mouth ja-mouth-b" alt=""></div><div class="ja-head-text"><strong>Jonas</strong><span></span></div><button type="button" class="ja-close" aria-label="Close Jonas conversation">×</button></div><p class="ja-hello"></p>';
   (document.body||document.documentElement).append(root,panel);
   if(!document.body)document.addEventListener('DOMContentLoaded',function(){
-    if(document.body){document.body.append(root,panel);removeLegacyJonas()}
+    if(document.body){document.body.append(root,panel);removeLegacyJonas();document.dispatchEvent(new Event('matchapp:jonas-mounted'))}
   },{once:true});
   bubble.setAttribute('aria-label',locale().open);
   bubble.addEventListener('pointerdown',function(e){
