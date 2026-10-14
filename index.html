@@ -1696,13 +1696,14 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <link rel="stylesheet" href="/home-cinematic.css?v=cinematic2">
 <link rel="stylesheet" href="/cinematic-header.css?v=cinematic-shimmer1">
 <link rel="stylesheet" href="/patches/header-and-jonas-fixes.css?v=fix1">
-<link rel="stylesheet" href="/patches/jonas-premium-glass.css?v=premium2">
+<link rel="stylesheet" href="/patches/jonas-premium-glass.css?v=20261014-fullscreen1">
 <link rel="stylesheet" href="/patches/home-watch-focus.css?v=watch1">
-<script defer src="/patches/home-watch-focus.js?v=watch1"></script>
+<link rel="stylesheet" href="/patches/adult-home-finish-20261014.css?v=design20261014-1">
+<script defer src="/patches/home-watch-focus.js?v=design20261014-1"></script>
 <script defer src="/patches/jonas-premium-enhancer.js?v=premium2"></script>
 <script defer src="/patches/jonas-swipe-velocity.js?v=swipe1"></script>
 <script defer src="/patches/jonas-intro-audio.js?v=intro1"></script>
-<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
+<script defer src="/patches/jonas-adult-page.js?v=20261014-fullscreen1"></script>
 </head>
 <body class="page-home ma-watch-focused">
     <!-- Google Tag Manager (noscript) -->
@@ -3237,9 +3238,9 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 
 <!-- Explore more hub CTA — cleaner home, other topics live on dedicated pages -->
 <section class="premium-card" style="text-align:center; padding: 28px 24px; margin: 24px auto; max-width: 720px;">
-  <h2 style="margin:0 0 12px; color:#E6C36A; font-family: 'Playfair Display', Georgia, serif; font-size: 28px;">Explore more</h2>
-  <p style="margin:0 0 20px; color:#cfc7e0; line-height:1.6;">Cooking, music, latest news, books, events and more — all with the same premium cinematic design.</p>
-  <a class="gold-btn" href="/explore.html" style="display:inline-block; padding:16px 32px; font-size:17px; text-decoration:none;">Explore more →</a>
+  <h2 data-explore-more-label style="margin:0 0 12px; color:#E6C36A; font-family: 'Playfair Display', Georgia, serif; font-size: 28px;">Explore more</h2>
+  <p data-home-explore-description style="margin:0 0 20px; color:#cfc7e0; line-height:1.6;">Cooking, music, latest news, books, events and more — all with the same premium cinematic design.</p>
+  <a class="gold-btn" href="/explore.html" data-explore-more-label style="display:inline-block; padding:16px 32px; font-size:17px; text-decoration:none;">Explore more</a>
 </section>
 
 <!-- ADSENSE RESPONSIVE BANNER 2 -->
@@ -3912,7 +3913,7 @@ const footerYearEl = document.getElementById('footer-year');
     </div>
     <!-- Persistent first-party Jonas bubble, Home only. AI requests remain on /discover.html. -->
     <aside id="ma-jonas-home" aria-label="Jonas floating companion">
-        <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
+        <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="true" aria-label="Chat with Jonas" hidden>
             <header class="jh-header">
                 <span class="jh-medallion" aria-hidden="true"><img src="/jonas/faces/jonas/rest.jpg" alt="" decoding="async"/></span>
                 <span class="jh-title"><strong>Jonas</strong><small data-jh-en="Your entertainment companion" data-jh-pt="Seu companheiro de entretenimento">Your entertainment companion</small></span>
@@ -3941,7 +3942,7 @@ const footerYearEl = document.getElementById('footer-year');
         </button>
     </aside>
     <script defer src="/jonas/locales-20261009-v2.js?v=20261014-fastlang1"></script>
-    <script defer src="/jonas/floating-home-20261010-v3.js?v=20261014-dock2"></script>
+    <script defer src="/jonas/floating-home-20261010-v3.js?v=fullscreen20261014-1"></script>
 <script>
 document.addEventListener('click',function(event){
   var a=event.target&&event.target.closest&&event.target.closest('#ma-jonas-home .jh-suggestion');

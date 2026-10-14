@@ -173,6 +173,17 @@
    }
   }
  }
+ function syncConversationViewport(){
+  if(!opened&&!root.classList.contains('is-chat-stage'))return;
+  var v=window.visualViewport;
+  root.style.setProperty('--ja-view-left',Math.round(v?.offsetLeft||0)+'px');
+  root.style.setProperty('--ja-view-top',Math.round(v?.offsetTop||0)+'px');
+  root.style.setProperty('--ja-view-width',Math.round(v?.width||window.innerWidth)+'px');
+  root.style.setProperty('--ja-view-height',Math.round(v?.height||window.innerHeight)+'px');
+ }
+ window.addEventListener('resize',syncConversationViewport,{passive:true});
+ window.visualViewport?.addEventListener('resize',syncConversationViewport,{passive:true});
+ window.visualViewport?.addEventListener('scroll',syncConversationViewport,{passive:true});
  function setOpen(next){
   if(opened===next)return;
   if(next){
@@ -180,6 +191,8 @@
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
    if(root.parentElement!==document.body)document.body.appendChild(root);
    root.classList.add('is-chat-stage');
+   panel.setAttribute('aria-modal','true');
+   syncConversationViewport();
    ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
    ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
    document.body.classList.add('ma-jonas-chat-open');
@@ -191,6 +204,8 @@
   if(!next){
    root.dispatchEvent(new CustomEvent('matchapp:jonas-close'));
    root.classList.remove('is-chat-stage');
+   panel.setAttribute('aria-modal','false');
+   ['--ja-view-left','--ja-view-top','--ja-view-width','--ja-view-height'].forEach(function(key){root.style.removeProperty(key)});
    document.body.classList.remove('ma-jonas-chat-open');
    if(stageFloating&&stagePosition)setFloating(stagePosition.left,stagePosition.top);
    else {root.classList.remove('is-floating');mountInline();}
@@ -250,5 +265,13 @@
  document.addEventListener('matchapp:langchange',hideLateAskHeading);
  document.addEventListener('matchapp:langchange',translate);
  restorePosition();
+ // Focused Home retires the old inline Ask area. A first-time visitor must
+ // still see the single companion in the empty header corner immediately.
+ // Never replace a saved user drag position.
+ if(document.body.classList.contains('ma-watch-focused')&&!root.classList.contains('is-floating')){
+  var slot=document.getElementById('ma-jonas-header-slot');
+  var at=slot?.getBoundingClientRect();
+  setFloating(at?.left??Math.max(8,innerWidth-100),at?.top??16);
+ }
  translate();
 })();
