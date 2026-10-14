@@ -141,10 +141,40 @@ async function aiQuestion(page,question,expected,label){
     // Auxiliary topics now have dedicated destinations behind Explore More.
     const focused=await page.evaluate(()=>({
       titles:!!document.getElementById('trending-rail')?.getClientRects().length,
-      explore:!!document.querySelector('.ma-luxe-shortcuts a[href="/explore.html"]'),
+      explore:(()=>{
+        const direct=document.querySelector('.ma-luxe-shortcuts a[href="/explore.html"]');
+        if(direct?.getClientRects().length)return true;
+        const trigger=document.querySelector('#ma-worlds-trigger');
+        const panel=document.querySelector('#ma-explore-worlds-panel');
+        const hub=panel?.querySelector('a[href="/explore.html"]');
+        return !!(trigger?.getClientRects().length&&trigger.getAttribute('aria-controls')===panel?.id&&hub);
+      })(),
       hidden:['ebook-matcher-root','cooking-home','latest-news','global-events','billboard','spotify-videos','swifties-spotify','awareness-spotlight'].every(id=>!document.getElementById(id)?.getClientRects().length)
     }));
     record('Focused Home and Explore destinations '+device.name,focused.titles&&focused.explore&&focused.hidden,JSON.stringify(focused));
+    // The newer release replaces a direct Explore anchor with an intentional
+    // inline Worlds selector. Verify that actual click -> region -> dedicated
+    // Explore hub works, rather than merely counting a legacy DOM anchor.
+    if(await page.locator('#ma-worlds-trigger').count()){
+      try{
+        const trigger=page.locator('#ma-worlds-trigger');
+        await trigger.click();
+        const inline=page.locator('#ma-explore-worlds-panel');
+        await inline.waitFor({state:'visible',timeout:5000});
+        const expanded=await trigger.getAttribute('aria-expanded');
+        const topics=await inline.locator('a.ma-world-card[href]').count();
+        await inline.locator('a.ma-worlds-see-all[href="/explore.html"]').click();
+        await page.waitForURL(/\/explore\.html(?:\?|$)/,{timeout:15000});
+        const destination=await page.locator('.explore-grid a.explore-card[href]').count();
+        record('Explore More opens nine topics then navigates to Explore '+device.name,
+          expanded==='true'&&topics===9&&destination>=8,
+          JSON.stringify({expanded,topics,destination,path:new URL(page.url()).pathname}));
+      }catch(error){
+        record('Explore More opens and navigates '+device.name,false,String(error.message||error).slice(0,280));
+      }finally{
+        await observed(page,'/');
+      }
+    }
     try {
       await observed(page,'/news/');
       const publishers=await page.locator('main a[href^="https://"]').count();
@@ -395,8 +425,16 @@ async function aiQuestion(page,question,expected,label){
       resultHidden:getComputedStyle(document.getElementById('result-box')).display==='none',
       formRestored:document.getElementById('questionnaire-box').style.display!=='none',
       homeVisible:!!document.getElementById('trending-rail')?.getClientRects().length&&
-        !!document.querySelector('#mh-topbox a[href="/explore.html"]')?.getClientRects().length&&
-        !!document.getElementById('ma-concierge')?.getClientRects().length,
+        !!document.getElementById('ma-concierge')?.getClientRects().length&&
+        (()=>{
+          const direct=document.querySelector('#mh-topbox a[href="/explore.html"]');
+          if(direct?.getClientRects().length)return true;
+          const trigger=document.querySelector('#ma-worlds-trigger');
+          const panel=document.querySelector('#ma-explore-worlds-panel');
+          return !!(trigger?.getClientRects().length &&
+            trigger.getAttribute('aria-controls')===panel?.id &&
+            panel?.querySelector('a[href="/explore.html"]'));
+        })(),
       titlesRemainUnfolded:!document.querySelector('.lazy-head[data-fold-key="trending"]')&&
         !!document.getElementById('trending-rail')?.getClientRects().length,
       manualAds:document.querySelectorAll('ins.adsbygoogle[data-ad-slot="2595698117"]').length
