@@ -11,7 +11,7 @@
  window.__matchappAmbientJonas=true;
  var asset='/jonas/android-ambient-assistant-20261011.css?live='+Date.now(),frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0;
- var greetStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null;
+ var greetStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
   en:{hello:"Hi, I'm Jonas. How can I help?",subject:'I can tell you more about this title.',close:'Close Jonas chat',open:'Talk to Jonas',state:'Your conversation stays over this page'},
@@ -223,9 +223,23 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
    }
   }catch(_){}
  }
+ function mirrorConversationFace(){
+  if(faceObserver){faceObserver.disconnect();faceObserver=null}
+  var stage=frame?.contentDocument?.getElementById('jonas-voice-stage');
+  if(!stage)return;
+  function sync(){
+   if(!open||greetingFinished!==epoch)return;
+   faceSpeech(stage.dataset.state==='speaking');
+   var source=stage.querySelectorAll('.jds-mouth'),target=panel.querySelectorAll('.ja-mouth');
+   source.forEach(function(image,i){if(!target[i])return;if(image.getAttribute('src'))target[i].src=image.src;target[i].style.opacity=stage.dataset.state==='speaking'?(image.style.opacity||'0'):'0'});
+  }
+  faceObserver=new MutationObserver(sync);
+  faceObserver.observe(stage,{subtree:true,attributes:true,attributeFilter:['data-state','src','style']});
+  sync();
+ }
  function onFrameLoad(){
   try{if(frame.contentWindow.location.origin!==location.origin||frame.contentWindow.location.pathname!=='/discover.html')return}catch(_){return}
-  ready=true;embedStyle();panel.querySelector('.ja-hello').textContent=greeting();
+  ready=true;embedStyle();mirrorConversationFace();panel.querySelector('.ja-hello').textContent=greeting();
   if(!open)return;
   if(pendingCloud===epoch){cloudGreeting(epoch);return}
   if(pendingListen===epoch){pendingListen=0;listen();return}
@@ -237,6 +251,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   return u.pathname+u.search;
  }
  function createFrame(title){
+  if(faceObserver){faceObserver.disconnect();faceObserver=null}
   if(frame){frame.remove();frame=null}
   ready=false;
   frame=document.createElement('iframe');frame.id='ma-ambient-chat-frame';

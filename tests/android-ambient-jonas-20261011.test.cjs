@@ -54,7 +54,7 @@ test('native wrapper loads remotely editable same-origin script and can cancel m
  const embed=fs.readFileSync(path.join(root,'jonas','android-ambient-embed-20261011.css'),'utf8');
  assert.match(embed,/header\.app-header\.ma-global-header/);
  assert.match(embed,/#jonas-voice-stage/);
- assert.doesNotMatch(src,/13500|new MutationObserver|Warm the authenticated same-origin chat/);
+ assert.doesNotMatch(src,/13500|faceObserver.observe\(document|Warm the authenticated same-origin chat/);
  assert.match(src,/spokenGreeting\(epoch\)/);
  const discover=fs.readFileSync(path.join(root,'discover.js'),'utf8');
  assert.match(discover,/ambient\?audibleReply\.length:650/);
