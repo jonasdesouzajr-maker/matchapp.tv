@@ -7,7 +7,8 @@ test('focused Home keeps the watch controller and routes other topics through Ex
  for(const id of ['ebook-matcher-root','cooking-home','latest-news','global-events','awareness-spotlight','billboard','spotify-videos','swifties-spotify'])assert.ok(css.includes('#'+id));
  for(const id of ['trending-rail','weekly-pick-disclosure','questionnaire-box','result-box'])assert.ok(!css.includes('#'+id));
  const doc=new JSDOM(fs.readFileSync('index.html','utf8')).window.document;
- assert.ok(doc.querySelector('.ma-luxe-shortcuts a[href="/explore.html"]'));
+ assert.ok(doc.querySelector('#ma-worlds-trigger[aria-controls="ma-explore-worlds-panel"]'));
+ assert.ok(doc.querySelector('#ma-explore-worlds-panel a[href="/explore.html"]'));
  assert.ok(doc.querySelector('link[href*="home-watch-focus.css"]'));
 });
 test('reading hub uses the original matcher and shared credit controller',()=>{
