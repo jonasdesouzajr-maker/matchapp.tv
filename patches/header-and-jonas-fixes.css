@@ -1,0 +1,37 @@
+/* Surgical fixes: contain residual wave, prevent full-screen black overlays,
+   and keep the floating Jonas avatar from permanently covering primary content. */
+
+html body header.app-header,
+html body #mh-topbox.app-header {
+  overflow: hidden !important;
+  isolation: isolate !important;
+  contain: paint !important;
+}
+
+#ma-jonas-home,
+.jonas-bubble,
+#ma-ambient-jonas {
+  z-index: 900 !important;
+}
+#ma-jonas-home.is-dragging,
+.jonas-bubble.is-dragging {
+  z-index: 950 !important;
+}
+
+.jonas-chat-panel,
+#ma-jonas-chat,
+.floating-chat-shell {
+  background: transparent !important;
+}
+.jonas-chat-panel[hidden],
+#ma-jonas-chat[hidden] {
+  display: none !important;
+}
+
+.youtube-card,
+.premium-card,
+.media-tile,
+[class*="video-card"] {
+  background: linear-gradient(165deg, rgba(26,10,40,.94), rgba(10,6,20,.98)) !important;
+  min-height: 120px;
+}
