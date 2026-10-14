@@ -1,0 +1,41 @@
+/* Surgical fixes: contain residual wave, prevent full-screen black overlays,
+   and keep the floating Jonas avatar from permanently covering primary content. */
+
+/* Ensure header clips its own effects */
+html body header.app-header,
+html body #mh-topbox.app-header {
+  overflow: hidden !important;
+  isolation: isolate !important;
+  contain: paint !important;
+}
+
+/* Floating Jonas: stay usable but do not sit above the header or create black layers */
+#ma-jonas-home,
+.jonas-bubble,
+#ma-ambient-jonas {
+  z-index: 900 !important;
+}
+#ma-jonas-home.is-dragging,
+.jonas-bubble.is-dragging {
+  z-index: 950 !important;
+}
+
+/* Prevent accidental full-viewport black from chat shells */
+.jonas-chat-panel,
+#ma-jonas-chat,
+.floating-chat-shell {
+  background: transparent !important;
+}
+.jonas-chat-panel[hidden],
+#ma-jonas-chat[hidden] {
+  display: none !important;
+}
+
+/* Media cards: never pure black when thumbnail fails */
+.youtube-card,
+.premium-card,
+.media-tile,
+[class*="video-card"] {
+  background: linear-gradient(165deg, rgba(26,10,40,.94), rgba(10,6,20,.98)) !important;
+  min-height: 120px;
+}
