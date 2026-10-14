@@ -98,6 +98,12 @@ body.page-journey{
 .journey-note{display:flex;gap:10px;align-items:flex-start;max-width:76ch;color:#d4c4de;
  font-size:.9rem;line-height:1.65;border-left:2px solid #e4be8488;padding-left:14px;margin:0 0 23px}
 .journey-note span{color:#f6d29b}
+.journey-related{display:flex;flex-wrap:wrap;gap:9px;margin:2px 0 20px}
+.journey-related a{display:inline-flex;align-items:center;min-height:39px;padding:8px 13px;
+ border:1px solid #d7b99170;border-radius:13px;color:#fce8ba;text-decoration:none;
+ background:rgba(198,138,187,.13);font:700 .78rem/1.35 "Space Grotesk",system-ui,sans-serif;
+ transition:background-color .2s,border-color .2s}
+.journey-related a:hover{background:rgba(230,178,120,.21);border-color:#f2d59d}
 .journey-visit,.journey-home{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:49px;
  text-decoration:none!important;text-align:center;padding:12px 23px;border-radius:16px;border:1px solid #fde9ba;
  background:linear-gradient(126deg,#ffe6b2,#d9ad69 63%,#bd92ba);color:#28182e!important;
