@@ -93,6 +93,9 @@ function go(index,interactive){
  back.disabled=n===0;
  var d=dictionary[locale]||en;
  next.textContent=n===sections.length-1?d.home+' ↗':d.next;
+ var finalStep=n===sections.length-1;
+ next.hidden=finalStep;
+ var finish=document.querySelector('.journey-finish');if(finish)finish.hidden=!finalStep;
  count.textContent=String(n+1).padStart(2,'0')+' / '+String(sections.length).padStart(2,'0');
  progress.style.width=((n+1)*100/sections.length)+'%';
  if(interactive){
