@@ -4,6 +4,8 @@
  if(location.pathname.startsWith('/kids')||window.__maJonasPremium)return;
  window.__maJonasPremium=true;
  function enhance(){
+  var root=document.getElementById("ma-jonas-home");
+  if(root&&document.body.classList.contains("page-home")){root.classList.add("is-floating");if(root.parentNode!==document.body)document.body.appendChild(root)}
   document.querySelectorAll('#ma-jonas-home .jh-portrait,#ma-ambient-jonas .ja-bubble').forEach(function(host){
    if(host.dataset.jonasPremium==='1')return;
    var image=host.querySelector('img');if(!image)return;

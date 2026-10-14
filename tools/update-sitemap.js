@@ -18,6 +18,8 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
 
 const CORE = [
+    { loc: `${SITE}/explore.html`, freq: 'weekly', pri: '0.8' },
+    { loc: `${SITE}/music.html`, freq: 'daily', pri: '0.8' },
     { loc: `${SITE}/guides/coffee-music-tv-trends-september-30-2026/`, freq: 'monthly', pri: '0.7' },
     { loc: `${SITE}/guides/streaming-music-books-october-2026/`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/guides/what-to-watch-october-9-12-2026/`, freq: 'weekly', pri: '0.8' },

@@ -1,4 +1,6 @@
 /* Adult Jonas presentation only. Never transform the draggable host. */
+#ma-ambient-jonas,#ma-jonas-home.is-floating {position:fixed!important}
+#ma-ambient-jonas {width:78px!important;height:78px!important}
 #ma-jonas-home .jh-bubble,#ma-ambient-jonas .ja-bubble {
  background:rgba(29,19,43,.88)!important;border-color:#e9cd8b!important;
  box-shadow:0 8px 26px #0006,0 0 0 3px #e9cd8b22!important;

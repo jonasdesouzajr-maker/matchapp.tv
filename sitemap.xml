@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://matchapp.tv/explore.html</loc>
+        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/music.html</loc>
+        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/guides/coffee-music-tv-trends-september-30-2026/</loc>
         <lastmod>2026-10-02T11:24:46+00:00</lastmod>
         <changefreq>monthly</changefreq>
@@ -20,7 +32,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-10-14T07:45:30+00:00</lastmod>
+        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -50,7 +62,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/ebooks/</loc>
-        <lastmod>2026-10-11T21:09:55+00:00</lastmod>
+        <lastmod>2026-10-14T09:07:02+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
