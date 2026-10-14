@@ -14,10 +14,10 @@ test('adult design stylesheet and routes are opt-in and do not alter protected a
  assert.equal((home.match(/<ins class="adsbygoogle"/g)||[]).length,5);
  assert.ok(fs.existsSync(path.join(root,'assets/brand/matchapp-icon-approved.png')));
 });
-test('Explore keeps all eight original destinations and exposes the translated How it works panel',()=>{
+test('Explore keeps all secondary destinations, with Together and Friends replacing the Home premiere duplicate',()=>{
  const d=new JSDOM(read('explore.html'),{url:'https://matchapp.tv/explore.html'});
  const links=[...d.window.document.querySelectorAll('.explore-grid a')].map(n=>n.getAttribute('href'));
- assert.deepEqual(links,['/cooking/','/music.html','/news/','/ebooks/#ebook-matcher-root','/events-archive.html','/featured/american-horror-story-13/','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/']);
+ assert.deepEqual(links,['/cooking/','/music.html','/news/','/ebooks/#ebook-matcher-root','/events-archive.html','/together.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/friends.html']);
  assert.ok(d.window.document.querySelector('#how-it-works summary[data-i18n="how.title"]'));
  assert.equal(d.window.document.querySelector('[href="/explore.html"]').getAttribute('aria-current'),'page');
  d.window.close();
@@ -50,7 +50,7 @@ test('Music authored CTA is translated without altering its query context',()=>{
 test('retired Home anchors reach their dedicated routes without dropping query context',()=>{
  const vm=require('node:vm'),script=read('patches/home-watch-focus.js');
  const cases={
-  '#how-it-works':'/explore.html#how-it-works','#cooking-home':'/cooking/','#latest-news':'/news/',
+  '#how-it-works':'/how-it-works.html','#cooking-home':'/cooking/','#latest-news':'/news/',
   '#global-events':'/events-archive.html','#billboard':'/music.html#billboard',
   '#spotify-videos':'/music.html#spotify-videos','#premiere-disclosure':'/featured/american-horror-story-13/',
   '#ebook-matcher-root':'/ebooks/#ebook-matcher-root'

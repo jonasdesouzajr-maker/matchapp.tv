@@ -18,7 +18,7 @@ test('compact mobile header is enabled in the canonical page without changing ot
 test('only top-box how-it-works button opens the current translated guide',()=>{
  const js=read('matchapp-ia.js'),css=read('mobile-header-compact.css');
  assert.match(js,/if\(isHome&&!qs\('\.ma-how-button',nav\)\)/);
- assert.ok(js.includes("location.href='/explore.html#how-it-works'"));
+ assert.ok(js.includes("location.href='/how-it-works.html'"));
  assert.doesNotMatch(js,/if\(!qs\('\.ma-how-link',hero\)\)/);
  assert.match(css,/\.home-hero > \.ma-how-link \{display:none!important\}/);
 });

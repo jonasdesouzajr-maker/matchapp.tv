@@ -1,0 +1,158 @@
+/* Adult Explore Worlds: scoped presentation only; no matcher, quotas, ads or Kids changes. */
+html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important;
+ align-items:stretch!important;overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger{
+ appearance:none;-webkit-appearance:none;cursor:pointer;min-width:0;min-height:48px;
+ display:flex!important;align-items:center;justify-content:center;gap:7px;
+ padding:10px 9px!important;border-radius:15px!important;color:#28142c!important;
+ border:1px solid #ffe6b1!important;background:linear-gradient(120deg,#fff0be,#e4b771 56%,#bd84a7)!important;
+ box-shadow:inset 0 1px #fff9,0 5px 20px #b079b344!important;
+ font-weight:900!important;letter-spacing:.015em;position:relative;isolation:isolate;
+ transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger::before{
+ content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+ background:linear-gradient(115deg,transparent 26%,#fff9 46%,transparent 61%);
+ background-size:220% 100%;animation:maWorldsGlimmer 7s ease-in-out infinite;opacity:.55;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger svg{
+ width:20px;height:20px;flex:none;stroke:#3b1c47!important;fill:none!important;stroke-width:2;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger:hover,
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger[aria-expanded="true"]{
+ transform:translateY(-2px)!important;filter:brightness(1.04);
+ box-shadow:0 7px 24px #d1a05066,inset 0 1px #fff9!important;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger:focus-visible{
+ outline:3px solid #fff5d1!important;outline-offset:3px!important;
+}
+@keyframes maWorldsGlimmer{0%,55%{background-position:190% 0}95%,100%{background-position:-140% 0}}
+@media(max-width:900px){
+ html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > :is(a.ma-luxe-shortcut,button.ma-worlds-trigger){
+  min-width:0!important;width:100%!important;max-width:none!important;grid-column:auto!important;
+  flex:none!important;box-sizing:border-box!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > a.ma-browser-kids:last-child{
+  grid-column:1 / -1!important;
+ }
+}
+.ma-worlds-overlay[hidden]{display:none!important}
+.ma-worlds-overlay{
+ position:fixed;inset:0;z-index:2147480000;display:grid;place-items:center;
+ padding:clamp(12px,3vw,28px);padding-top:max(12px,env(safe-area-inset-top));
+ padding-bottom:max(12px,env(safe-area-inset-bottom));box-sizing:border-box;
+}
+.ma-worlds-shade{position:absolute;inset:0;background:rgba(8,4,15,.79);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px)}
+.ma-worlds-panel{
+ --world-gold:#ffe0a4;position:relative;isolation:isolate;
+ width:min(100%,940px);max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;
+ color:#fff3e5;background:radial-gradient(ellipse at 90% 0%,#4b2866 0,transparent 42%),
+ radial-gradient(ellipse at 0% 90%,#21364c 0,transparent 55%),#160e25;
+ border:1px solid #f1c98285;border-radius:clamp(20px,3vw,32px);
+ box-shadow:0 30px 100px #000b,0 0 35px #dbaf6338,inset 0 1px #fff3;
+ padding:clamp(18px,3vw,32px);box-sizing:border-box;
+ animation:maWorldsEnter .36s cubic-bezier(.2,.8,.2,1) both;
+}
+.ma-worlds-panel::before{
+ content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.25;
+ background:radial-gradient(circle at 12% 16%,#ffdb8a 1px,transparent 2px),
+ radial-gradient(circle at 72% 27%,#c8b0f4 1px,transparent 2px);
+ background-size:125px 117px,156px 159px;
+}
+.ma-worlds-heading{position:relative;display:flex;gap:14px;align-items:flex-start;justify-content:space-between;margin:0 0 18px}
+.ma-worlds-eyebrow{text-transform:uppercase;letter-spacing:.22em;color:#f1c984;font:800 .7rem/1.5 system-ui,sans-serif}
+.ma-worlds-heading h2{margin:2px 0 4px;font:700 clamp(1.65rem,4.4vw,2.75rem)/1.12 Georgia,serif;color:var(--world-gold)}
+.ma-worlds-heading p{margin:0;color:#d6c7dd;font-size:.95rem}
+.ma-worlds-close{position:relative;flex:none;min-width:45px;min-height:45px;border:1px solid #e6bf8180;border-radius:14px;background:#ffffff14;color:#f6e8ce;font-size:1.4rem;cursor:pointer}
+.ma-worlds-grid{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ma-world-card{
+ --world-accent:#8861bf;position:relative;min-width:0;min-height:154px;display:flex;
+ flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:7px;overflow:hidden;
+ padding:18px;border-radius:20px;color:#fef7eb;text-decoration:none;
+ border:1px solid #e2c69059;
+ background:radial-gradient(ellipse at 90% 0%,color-mix(in srgb,var(--world-accent) 57%,transparent),transparent 75%),
+ linear-gradient(150deg,#352444,#1d142d);
+ box-shadow:inset 0 1px #ffffff13,0 7px 18px #0004;
+ transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.ma-world-card::after{content:"↗";position:absolute;inset-inline-end:18px;top:14px;color:#f5dcadbd;font-size:1.12rem}
+.ma-world-card:hover,.ma-world-card:focus-visible{transform:translateY(-4px);border-color:#ffe2a7;box-shadow:0 12px 25px #0008}
+.ma-world-card:focus-visible,.ma-worlds-close:focus-visible,.ma-worlds-see-all:focus-visible{outline:3px solid #ffe9ad;outline-offset:3px}
+.ma-world-icon{font-size:1.7rem;line-height:1;display:block;margin-bottom:auto;filter:drop-shadow(0 1px 6px #0006)}
+.ma-world-card strong{font:800 clamp(.96rem,1.6vw,1.14rem)/1.3 system-ui,sans-serif;text-wrap:balance}
+.ma-world-card small{font:.85rem/1.35 system-ui,sans-serif;color:#ddcfe4}
+.ma-worlds-see-all{position:relative;display:flex;justify-content:center;align-items:center;gap:8px;padding:13px 20px;
+ min-height:46px;margin-top:18px;border-radius:15px;background:linear-gradient(120deg,#f4dca9,#c99b66);
+ color:#2d1e37;text-decoration:none;font-weight:850;box-shadow:0 5px 15px #0004}
+body.ma-worlds-open{overflow:hidden}
+@keyframes maWorldsEnter{from{opacity:0;transform:translateY(22px) scale(.975)}to{opacity:1;transform:none}}
+@media(max-width:660px){
+ .ma-worlds-overlay{align-items:end;padding:0}
+ .ma-worlds-panel{border-radius:24px 24px 0 0;max-height:calc(100dvh - env(safe-area-inset-top) - 8px);
+  padding:20px 16px max(22px,env(safe-area-inset-bottom));}
+ .ma-worlds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .ma-world-card{min-height:132px;padding:14px;border-radius:17px}
+ .ma-world-card small{font-size:.76rem}
+}
+@media(max-width:365px){.ma-worlds-grid{grid-template-columns:1fr}.ma-world-card{min-height:100px}}
+@media(prefers-reduced-motion:reduce){
+ .ma-worlds-panel{animation:none}.ma-world-card,.ma-worlds-close,.ma-worlds-see-all,
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger{transition:none!important}
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger::before{animation:none}
+ .ma-world-card:hover{transform:none}
+}
+/* Only five editorial Home areas: hero, Top Titles, watch matcher,
+   premiere and weekly AI choice. Match Together remains at /together.html.
+   The AdSense slot that follows its old entry is legally preserved unchanged. */
+html body.page-home.ma-watch-focused .tg-entry{display:none!important}
+html body.page-home.ma-watch-focused #premiere-disclosure{display:block!important;max-width:min(100% - 20px,900px);margin:16px auto!important;overflow:visible}
+html body.page-home.ma-watch-focused #premiere-disclosure > summary{display:list-item;cursor:pointer;color:#f4d7a0;font-weight:850;padding:12px 16px;border:1px solid #e5c5896b;border-radius:14px;background:#291b34}
+html body.page-home.ma-watch-focused #premiere-disclosure[open] > summary{margin-bottom:10px}
+html body.page-home.ma-watch-focused #spotlight-ahs13{width:100%!important;max-width:100%!important;margin:0 auto!important}
+
+/* Override inherited two-row flex shortcut styling with a dedicated grid.
+   The existing precision header uses doubled selectors; match their specificity. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ align-items:stretch!important;justify-content:stretch!important;gap:8px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > :is(a.ma-luxe-shortcut,button.ma-worlds-trigger){
+ flex:none!important;min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;
+ grid-column:auto!important;align-self:stretch!important;
+}
+@media(max-width:900px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > a.ma-browser-kids:last-child{
+  grid-column:1 / -1!important;
+ }
+}
+
+/* A useful discovery promise replaces the retired redundant watch-question headline.
+   Remains inside the existing top box (no new Home section or extra nav tile). */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head > .mh-tagline[data-match-experience-heading]{
+ display:block!important;position:relative!important;
+ width:100%!important;max-width:100%!important;min-height:0!important;
+ margin:6px auto 0!important;padding:0 4px!important;
+ font-size:clamp(13px,2.3vw,20px)!important;line-height:1.25!important;
+ font-weight:800!important;letter-spacing:-.01em!important;
+ text-align:center!important;text-transform:none!important;
+ color:#ffe4aa!important;text-wrap:balance!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head{
+ height:auto!important;max-height:none!important;min-height:0!important;overflow:visible!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox{
+ grid-template-rows:auto auto auto!important;max-height:none!important;
+}
+@media(max-width:400px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head > .mh-tagline[data-match-experience-heading]{
+  font-size:13px!important;margin-top:4px!important;
+ }
+}

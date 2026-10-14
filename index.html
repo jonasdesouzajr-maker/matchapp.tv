@@ -1699,7 +1699,10 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <link rel="stylesheet" href="/patches/jonas-premium-glass.css?v=20261014-fullscreen1">
 <link rel="stylesheet" href="/patches/home-watch-focus.css?v=watch1">
 <link rel="stylesheet" href="/patches/adult-home-finish-20261014.css?v=design20261014-4">
+<link rel="stylesheet" href="/patches/explore-worlds-20261014.css?v=worlds20261014-3">
 <script defer src="/patches/home-watch-focus.js?v=design20261014-1"></script>
+<script defer src="/patches/explore-worlds-20261014.js?v=worlds20261014-1"></script>
+<script defer src="/patches/match-first-experience-20261014.js?v=matchfirst20261014-1"></script>
 <script defer src="/patches/result-synopsis-visible-20261014.js?v=20261014-1"></script>
 <script defer src="/patches/jonas-premium-enhancer.js?v=premium2"></script>
 <script defer src="/patches/jonas-swipe-velocity.js?v=swipe1"></script>
@@ -2170,12 +2173,12 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                     </span>
                     <span class="ma-brand-copy" translate="no">
                         <span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span>
-                        <span class="ma-word-ai" data-ma-brand-ai>Ai</span><span class="ma-brand-caption"><span class="ma-brand-tagline">Your new Entertainment Ai</span><span class="ma-brand-security" title="Connection encrypted over HTTPS and served through Cloudflare"><svg width="8" height="9" viewBox="0 0 12 14" aria-hidden="true" fill="none" stroke="currentColor"><path d="M6 1 11 3v4c0 3-5 6-5 6S1 10 1 7V3z"/><path d="m3.5 7 1.5 1.5 3.5-3.5"/></svg> Cloudflare · HTTPS</span></span>
+                        <span class="ma-word-ai" data-ma-brand-ai>Ai</span><span class="ma-brand-caption"><span class="ma-brand-tagline" data-match-brand-story>Your entertainment, matched.</span><span class="ma-brand-security" title="Connection encrypted over HTTPS and served through Cloudflare"><svg width="8" height="9" viewBox="0 0 12 14" aria-hidden="true" fill="none" stroke="currentColor"><path d="M6 1 11 3v4c0 3-5 6-5 6S1 10 1 7V3z"/><path d="m3.5 7 1.5 1.5 3.5-3.5"/></svg> Cloudflare · HTTPS</span></span>
                     </span>
                 </a>
             </div>
         </div>
-            <p class="mh-tagline" data-i18n="home.h1">What Should I Watch Tonight?</p>
+            <p class="mh-tagline" data-match-experience-heading>Find Your Next Experience</p>
         </div>
         <nav class="mh-deck" aria-label="Account and app controls">
             <button class="sound-toggle-btn" onclick="toggleSound()" aria-label="Toggle sound">🔊</button>
@@ -2209,13 +2212,75 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         </nav>
         <nav class="ma-luxe-shortcuts" aria-label="Explore MatchApp Ai">
         <a href="/" class="ma-luxe-shortcut" data-ma-nav="0" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span class="ma-luxe-text">Home</span></a>
-        <a href="/discover.html" class="ma-luxe-shortcut" data-ma-nav="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7a7.9 7.9 0 0 1-8 7.8c-1.9 0-3.5-.5-4.8-1.4L3 20l1.4-4.6A8 8 0 1 1 20 11.7z"/><path d="M8 11.5h8"/></svg><span class="ma-luxe-text">Talk to Jonas</span></a>
+        <a href="/discover.html" class="ma-luxe-shortcut" data-ma-nav="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7a7.9 7.9 0 0 1-8 7.8c-1.9 0-3.5-.5-4.8-1.4L3 20l1.4-4.6A8 8 0 1 1 20 11.7z"/><path d="M8 11.5h8"/></svg><span class="ma-luxe-text" data-match-experience-nav>Discover with Jonas</span></a>
         <a href="/#trending-rail" class="ma-luxe-shortcut" data-ma-nav="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 5 13h7l-1 9 8-12h-7z"/></svg><span class="ma-luxe-text">Trending</span></a>
-        <a href="/together.html" class="ma-luxe-shortcut" data-ma-nav="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 4.9-8.5 10.8-8.5 10.8S3.5 13.5 3.5 8.6a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/></svg><span class="ma-luxe-text">Together</span></a>
         <a href="/profile/profile.html" class="ma-luxe-shortcut" data-ma-nav="4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 21c.2-4 3-6.2 7.5-6.2s7.3 2.2 7.5 6.2"/></svg><span class="ma-luxe-text">Profile</span></a>
+        <button type="button" id="ma-worlds-trigger" class="ma-luxe-shortcut ma-discovery-cta ma-worlds-trigger"
+  aria-haspopup="dialog" aria-controls="ma-explore-worlds-panel" aria-expanded="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8z"/><circle cx="12" cy="12" r="2.4"/></svg>
+  <span class="ma-luxe-text" data-explore-more-label>Explore more</span>
+ </button>
         <a href="/kids/" class="ma-luxe-shortcut ma-browser-kids" data-ma-nav="5" data-matchapp-kids-entry="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/><path d="m19 17 .8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8z"/></svg><span class="ma-luxe-text">Kids</span></a>
-        <a href="/explore.html" class="ma-luxe-shortcut ma-discovery-cta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span class="ma-luxe-text" data-explore-more-label>Explore more</span></a>
         </nav>
+ <div id="ma-explore-worlds-panel" class="ma-worlds-overlay" hidden>
+  <div class="ma-worlds-shade" data-worlds-dismiss="shade"></div>
+  <section class="ma-worlds-panel" role="dialog" aria-modal="true" aria-label="Explore more experiences" tabindex="-1">
+   <header class="ma-worlds-heading">
+    <div><span class="ma-worlds-eyebrow" data-match-experience-eyebrow>YOUR MATCH UNIVERSE</span>
+     <h2 data-match-experience-dialog>Find Your Next Match</h2>
+     <p data-world-copy="1">Choose your next experience. Each topic has its own page.</p></div>
+    <button type="button" class="ma-worlds-close" data-worlds-dismiss="close" aria-label="Close Explore Worlds">×</button>
+   </header>
+   <nav class="ma-worlds-grid" aria-label="Explore topics">
+   <a class="ma-world-card" href="/cooking/" style="--world-accent:#a16b47">
+ <span class="ma-world-icon" aria-hidden="true">🍳</span>
+ <strong data-world-copy="2">Explore</strong>
+ <small data-world-copy="3">Discover more</small>
+ </a>
+<a class="ma-world-card" href="/music.html" style="--world-accent:#8e5ad6">
+ <span class="ma-world-icon" aria-hidden="true">🎵</span>
+ <strong data-world-copy="4">Explore</strong>
+ <small data-world-copy="5">Discover more</small>
+ </a>
+<a class="ma-world-card" href="/ebooks/#ebook-matcher-root" style="--world-accent:#bb765c">
+ <span class="ma-world-icon" aria-hidden="true">📚</span>
+ <strong data-world-copy="6">Explore</strong>
+ <small data-world-copy="7">Discover more</small>
+ </a>
+<a class="ma-world-card" href="/news/" style="--world-accent:#4290b2">
+ <span class="ma-world-icon" aria-hidden="true">📰</span>
+ <strong data-world-copy="8">Explore</strong>
+ <small data-world-copy="9">Discover more</small>
+ </a>
+<a class="ma-world-card" href="/events-archive.html" style="--world-accent:#4b9f83">
+ <span class="ma-world-icon" aria-hidden="true">🌎</span>
+ <strong data-world-copy="10">Explore</strong>
+ <small data-world-copy="11">Discover more</small>
+ </a>
+<a class="ma-world-card" href="/together.html" style="--world-accent:#cf718d">
+ <span class="ma-world-icon" aria-hidden="true">💞</span>
+ <strong data-world-local="tg.eyebrow">Match Together</strong>
+ <small >Find a title together</small>
+ </a>
+<a class="ma-world-card" href="/awareness/breast-cancer-awareness-month-2026/" style="--world-accent:#a97ac7">
+ <span class="ma-world-icon" aria-hidden="true">🎗️</span>
+ <strong data-world-copy="12">Explore</strong>
+ <small data-world-copy="13">Discover more</small>
+ </a>
+<a class="ma-world-card" href="/friends.html" style="--world-accent:#5f91d5">
+ <span class="ma-world-icon" aria-hidden="true">🫂</span>
+ <strong data-world-local="polish.friends">Friends</strong>
+ <small >Connect and discover</small>
+ </a>
+<a class="ma-world-card" href="/guides/worldwide-entertainment-discovery/" style="--world-accent:#8b7db5">
+ <span class="ma-world-icon" aria-hidden="true">✨</span>
+ <strong data-world-copy="14">Explore</strong>
+ <small data-world-copy="15">Discover more</small>
+ </a>
+   </nav>
+   <a class="ma-worlds-see-all" href="/explore.html"><span aria-hidden="true">✦</span><span data-world-copy="0">Explore more</span><span aria-hidden="true">→</span></a>
+  </section>
+ </div>
     </header>
     <aside id="matchapp-growth-disclosure" class="matchapp-growth-disclosure" role="note" aria-label="MatchApp is constantly expanding">
       <span class="matchapp-growth-orb" aria-hidden="true">✦</span>
@@ -2924,7 +2989,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 
                 </div>
 
-<details id="premiere-disclosure" class="premiere-disclosure"><summary><span data-i18n="spotlight.eyebrow">Most anticipated premiere</span></summary><article id="spotlight-ahs13" class="premium-card spotlight-card">
+<details id="premiere-disclosure" class="premiere-disclosure" open><summary><span data-i18n="spotlight.eyebrow">Most anticipated premiere</span></summary><article id="spotlight-ahs13" class="premium-card spotlight-card">
                     <div class="spotlight-glow" aria-hidden="true"></div>
                     <div class="spotlight-inner">
                         <div class="spotlight-poster" onclick="saveSpotlightTitle()" role="button" tabindex="0"

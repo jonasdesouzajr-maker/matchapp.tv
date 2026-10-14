@@ -7,6 +7,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/how-it-works.html</loc>
+        <lastmod>2026-10-14T19:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/music.html</loc>
         <lastmod>2026-10-14T09:08:28+00:00</lastmod>
         <changefreq>daily</changefreq>
