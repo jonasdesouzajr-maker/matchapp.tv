@@ -6,4 +6,5 @@ document.querySelectorAll('[data-hub-copy]').forEach(function(el){el.textContent
 document.title=row[document.body.classList.contains('page-music')?6:1]+' | MatchApp Ai';}
 document.addEventListener('matchapp:langchange',paint);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',paint,{once:true});else paint();
+if(location.hash==='#how-it-works'){const how=document.getElementById('how-it-works');if(how)how.open=true;}
 })();

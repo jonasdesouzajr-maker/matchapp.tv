@@ -1644,7 +1644,7 @@ window.startNewChat = function () {
     const input = document.getElementById('discover-new-input');
     if (input) { input.value = ''; window.autoGrowComposer?.(); }
     history.replaceState(null, '', '/discover.html');
-    document.title = 'Talk to Our AI Concierge — MatchApp';
+    document.title = window.t?.('page.askTitle') || 'Talk to Jonas | MatchApp Ai';
     renderThreadList();
     refreshAiWorkspaceStatus();
     if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);

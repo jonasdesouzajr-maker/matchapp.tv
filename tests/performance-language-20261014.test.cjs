@@ -95,3 +95,17 @@ test('exact recorded greetings use same-origin audio with no synthesis/auth requ
  }
  w.close();
 });
+test('late-inserted cookie controls are not dropped behind another queued localization paint',async()=>{
+ const d=scene('<html><body class="page-home"><div></div></body></html>'),w=d.window,frames=[];
+ w.requestAnimationFrame=fn=>{frames.push(fn);return frames.length};
+ w.MATCH_LANG='pt-BR';w.eval(read('i18n.js'));w.setLanguage('pt-BR');w.eval(read('ai-composer.js'));
+ w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+ w.document.body.appendChild(w.document.createElement('section'));
+ await Promise.resolve();
+ const cookie=w.document.createElement('div');cookie.className='ma-cookie';
+ cookie.innerHTML='<p>We use essential cookies to run MatchApp. Analytics and Google AdSense may use cookies to measure visits and fund the free service. <a href="/cookies.html">Details</a>.</p><button>Accept</button><button>Essential only</button>';
+ w.document.body.appendChild(cookie);await Promise.resolve();
+ for(const fn of frames.splice(0))fn();
+ assert.match(cookie.querySelector('p').textContent,/Usamos cookies essenciais/);
+ assert.equal(cookie.querySelector('button').textContent,'Aceitar');assert.equal(cookie.querySelector('a').getAttribute('href'),'/cookies.html');w.close();
+});

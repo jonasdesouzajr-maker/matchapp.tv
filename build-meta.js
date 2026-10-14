@@ -73,7 +73,7 @@ window.MATCHAPP_BUILD = '2026.10.07.6';
     const path = location.pathname;
     ensureKidsEntry();
     if (path === '/' || path === '/index.html') {
-      document.title = 'MatchApp Ai — What to Watch Tonight & Where to Stream';
+      document.title = window.t?.('page.homeTitle') || 'MatchApp Ai — What to Watch Tonight & Where to Stream';
       upsertMeta('description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get picks by mood, regional availability, and share a match with friends.');
       upsertPropertyMeta('og:title', 'MatchApp Ai — What to Watch Tonight & Where to Stream');
       upsertPropertyMeta('og:description', 'Find what to watch tonight and where to stream it with MatchApp Ai. Get picks by mood, regional availability, and share a match with friends.');
@@ -92,7 +92,7 @@ window.MATCHAPP_BUILD = '2026.10.07.6';
       });
     }
     if (path === '/discover.html') {
-      document.title = 'Ask AI What to Watch, Read or Listen To | MatchApp Ai';
+      document.title = window.t?.('page.askTitle') || 'Ask AI What to Watch, Read or Listen To | MatchApp Ai';
       upsertMeta('description', 'Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.');
       upsertPropertyMeta('og:title', 'Ask AI What to Watch, Read or Listen To | MatchApp Ai');
       upsertPropertyMeta('og:description', 'Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.');

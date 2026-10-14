@@ -134,7 +134,7 @@ function brandHeader(){
  if(isHome&&!qs('.ma-how-button',nav)){
    const how=el('button','ma-how-button','✨ How it works');how.type='button';
    how.setAttribute('aria-label','Open MatchApp guide');
-   how.addEventListener('click',()=>window.MatchAppOnboarding?.start?.());
+   how.addEventListener('click',()=>{location.href='/explore.html#how-it-works'});
    nav.appendChild(how);
  }
  if(!qs('.ma-menu-wrap',nav)){
