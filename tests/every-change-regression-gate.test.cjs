@@ -35,7 +35,13 @@ test('Live smoke code parses and exercises separate genuine normal, Bookworms, m
  ])assert.ok(js.includes(term),term+' must run after every deployment');
  assert.match(js,/covers\\.openlibrary\\.org/);
  assert.match(js,/books\\.google\\.com/);
- assert.match(js,/image\.naturalWidth>0/);
+ // The image decoding predicate lives in the shared fallback-aware helper.
+ // Assert both its real use in production smoke and its full visible-pixel guard.
+ const cover=read('tools/cover-load-check.cjs');
+ assert.match(js,/waitForUsableCover/);
+ assert.match(cover,/image\.complete&&image\.naturalWidth>0&&!image\.hidden/);
+ assert.match(cover,/image\.isConnected===false/);
+ assert.match(cover,/Date\.now\(\)-started>=timeoutMs/);
  assert.match(js,/fold\.locator\(':scope > summary'\)\.click\(\)/,'Tour and Bookworms have nested summaries; smoke must use direct child');
  assert.match(js,/record\('browser fatal JS exceptions'/);
  assert.doesNotMatch(js,/checkDailyLimit\s*=|mockGemini|fakePoster|bypassQuota/i);
