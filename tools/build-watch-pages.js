@@ -238,7 +238,7 @@ function buildIndex(titles) {
             itemListElement:titles.map((name,i)=>({'@type':'ListItem',position:i+1,name,
                 url:SITE+'/where-to-watch/'+slug(name)+'/'
             }))}};
-    const schemaJson=JSON.stringify(schema).replace(/</g,'\u003c');
+    const schemaJson=JSON.stringify(schema).replace(/</g,'\\u003c');
     const links = titles.map(t =>
         `<a href="/where-to-watch/${slug(t)}/">${esc(t)}</a>`).join('\n                ');
     return `<!DOCTYPE html>

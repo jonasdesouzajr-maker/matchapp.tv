@@ -24,8 +24,7 @@ const errors=[];
 function isSpotifyIframeTransportDisconnect(error){
  const stack=String(error?.stack||error?.message||'');
  return stack.includes('TransportError: Cannot authenticate disconnected transport') &&
-   /https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack) &&
-   /at (?:_authenticate|authenticate) \(https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack);
+   /^\s*at (?:_authenticate|authenticate) \(https:\/\/embed-cdn\.spotifycdn\.com\/[^\s)]+\)\s*$/m.test(stack);
 }
 function isGoogleAdTelemetryInt64(error){
  const stack=String(error?.stack||'');

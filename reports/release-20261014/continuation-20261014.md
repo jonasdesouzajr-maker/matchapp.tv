@@ -1,0 +1,13 @@
+# Continuation checkpoint — 2026-10-14
+
+Resumed from PR #239, b56b3115b987ec68ca24306eb7efe000ef75f56b. Original Windows checkouts and their uncommitted changes preserved. Reused previously completed release builds, signature/bundle validation, browser checks and backend audit. No new AAB built or submitted.
+
+Saved owner continuation triggers in AGENTS.md: Go on, Focus, Continue and Continue please mean resume only outstanding work from the last verified stopping point. No purchases or new paid services.
+
+Scoped repairs for nine annotated defects: single-pass entity decoding in the RSS tool and event test; exact Spotify playlist host/protocol validation; anchored transport stack provenance; disjoint translation regex alternatives; correct literal JSON-LD Unicode escape; removed no-op language slug replacement; reuse one opened article file descriptor for analytics repairs with bounded partial writes and guaranteed close. New runtime tests cover nested/malformed entities, hostile host lookalikes, regex adversarial input, script termination in JSON-LD and file descriptor identity/error handling. No workflow YAML, editorial locks, AdSense, matching, auth, quotas, native Android or Kids payload edited.
+
+Focused revised-code verification: 19 tests passed, zero failures (security-targeted-fixed-20261014.log on Windows Documents). git diff --check passed. Previous candidate broad checks remain recorded in verification.md; revised-code full CI and CodeQL must be checked on the new SHA before merge.
+
+Three existing network/file audit annotations remain for explicit review: tools/live-production-smoke.cjs writes its fixed-path JSON QA report containing network-derived results; tools/refresh-trending.mjs writes HTML at its fixed owned output path from remote editorial metadata; tools/refresh-news-rss.js fetches publisher article URLs loaded from public archive records. CodeQL query help js/http-to-file-access and js/file-access-to-http recommends examination of intent; no alert dismissed or guard weakened. These annotations are not automatically resolved by the nine repairs and the security gate must stay visible.
+
+Remaining release holds carried forward: missing Twilio account SID (SMS /otp 500), no physical speech first-audio validation, Google/account and subscription/credit lifecycle checks, Play maximum uploaded version code/access unconfirmed. Samsung SM-X236B, RXGL200HCRW, still connected via ADB on this continuation. Previous automatic approval review rejected Play Console browser action; no repeat attempted and no submission claimed. Candidate code 52 remains DO-NOT-UPLOAD until gates are cleared.

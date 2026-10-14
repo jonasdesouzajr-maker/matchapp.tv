@@ -36,16 +36,14 @@ const STOP=new Set('the a an and or of for to in on with from at by as is are wa
 const clean=s=>String(s||'')
   .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1')
   .replace(/<[^>]*>/g,' ')
-  .replace(/&amp;/g,'&')
-  .replace(/&quot;/g,'"')
-  .replace(/&#39;|&apos;/g,"'")
-  // RSS headlines sometimes contain numeric curly quotes. Decode them once
-  // before escaping generated HTML to avoid visible double-escaped entities.
-  .replace(/&#x([a-f0-9]+);/gi,(_,n)=>String.fromCodePoint(parseInt(n,16)))
-  .replace(/&#([0-9]+);/g,(_,n)=>String.fromCodePoint(parseInt(n,10)))
-  .replace(/&nbsp;/g,' ')
-  .replace(/&lt;/g,'<')
-  .replace(/&gt;/g,'>')
+  // Decode source entities in one pass; encoded entities never decode twice.
+  .replace(/&(?:amp|quot|apos|nbsp|lt|gt|#39|#x[a-f0-9]+|#[0-9]+);/gi,entity=>{
+    const named={'&amp;':'&','&quot;':'"','&apos;':"'",'&#39;':"'",'&nbsp;':' ','&lt;':'<','&gt;':'>'};
+    const key=entity.toLowerCase();
+    if(Object.hasOwn(named,key))return named[key];
+    const value=key.startsWith('&#x')?parseInt(key.slice(3,-1),16):parseInt(key.slice(2,-1),10);
+    return value>0&&value<=0x10ffff&&!(value>=0xd800&&value<=0xdfff)?String.fromCodePoint(value):entity;
+  })
   .replace(/\s+/g,' ')
   .trim();
 
@@ -606,8 +604,10 @@ function currentSlugDir(i){
 }
 
 function ensureArticleAnalyticsFile(file){
-  if(!fs.existsSync(file))return false;
-  let html=fs.readFileSync(file,'utf8');
+  let descriptor;
+  try{descriptor=fs.openSync(file,'r+');}catch(error){if(error.code==='ENOENT')return false;throw error;}
+  try{
+  let html=fs.readFileSync(descriptor,'utf8');
   let changed=false;
   if(!html.includes('GTM-M7J3NNBN')){
     const gtmHead=`<!-- Google Tag Manager -->
@@ -645,8 +645,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       changed=true;
     }
   }
-  if(changed)fs.writeFileSync(file,html);
+  if(changed){
+    const output=Buffer.from(html,'utf8');
+    let written=0;
+    while(written<output.length){
+      const count=fs.writeSync(descriptor,output,written,output.length-written,written);
+      if(!count)throw new Error('Article analytics write made no progress');
+      written+=count;
+    }
+    fs.ftruncateSync(descriptor,output.length);
+  }
   return changed;
+  }finally{fs.closeSync(descriptor);}
 }
 
 function enforceArticleAnalyticsOnDisk(){

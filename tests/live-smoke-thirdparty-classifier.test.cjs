@@ -30,3 +30,12 @@ test('Google telemetry warning requires exact int64 error and exclusively proven
  assert.equal(fn({stack:external.replace(/pagead2\.googlesyndication\.com/g,'pagead2.googlesyndication.com.evil.example')}),false);
  assert.equal(fn({message:'Error: int64'}),false);
 });
+
+test('Spotify transport classifier rejects host lookalikes and injected URL prefixes',()=>{
+ const start=smoke.indexOf('function isSpotifyIframeTransportDisconnect(error){'),end=smoke.indexOf('\nfunction capturePageError(',start);
+ const fn=vm.runInNewContext(smoke.slice(start,end)+'; isSpotifyIframeTransportDisconnect',{});
+ const header='TransportError: Cannot authenticate disconnected transport.\n';
+ for(const url of ['https://embed-cdn.spotifycdn.com.evil.example/player.js','https://evil.example/https://embed-cdn.spotifycdn.com/player.js','https://embed-cdn.spotifycdn.com@evil.example/player.js'])
+  assert.equal(fn({stack:header+'    at _authenticate ('+url+':1:1)'}),false,url);
+ assert.equal(fn({stack:header+'prefix at _authenticate (https://embed-cdn.spotifycdn.com/player.js:1:1)'}),false);
+});

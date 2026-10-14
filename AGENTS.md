@@ -279,3 +279,7 @@ When the owner says “go on”, resume from the most recent verifiable checkpoi
 ### PRIMARY PHYSICAL TEST DEVICE — OWNER INSTRUCTION (2026-10-13)
 
 The owner designated his Samsung Galaxy Tab as the primary physical device for ongoing browser and adult Android app testing and explicitly authorized using it for those tests, including Google account sign-in flows. Confirm its connected model and ADB serial before testing; do not mistake the previously tested SM-S918B phone for the tablet. Maintain smartphone, tablet and desktop parity and the existing no-emulator directive. Record actual test outcomes and connection limitations honestly.
+
+
+### CONTINUATION TRIGGERS — OWNER INSTRUCTION (2026-10-14)
+When Jonas says “Go on”, “Focus”, “Continue”, “Continue please”, or similar, resume strictly from the last verified stopping point. Read current checkpoints and prior outputs, preserve completed work and successful evidence, and perform only outstanding tasks. NEVER repeat completed edits, builds, tests, scans, deployments, or submissions. Recheck only evidence invalidated by an actual code/state change; record the reason. Never purchase credits, increase spending limits, or initiate paid services.

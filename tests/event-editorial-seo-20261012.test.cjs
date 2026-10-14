@@ -6,7 +6,7 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const events=JSON.parse(fs.readFileSync(path.join(root,'tools/global-events.json'),'utf8'));
 const read=(name)=>fs.readFileSync(path.join(root,name),'utf8');
-const decode=(text)=>text.replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+const decode=(text)=>text.replace(/&(?:amp|#39|quot|lt|gt);/g,entity=>({'&amp;':'&','&#39;':"'",'&quot;':'"','&lt;':'<','&gt;':'>'}[entity]));
 test('all event guides use concise, unique and honest metadata',()=>{
   assert.equal(events.length,20);
   const descriptions=new Set();

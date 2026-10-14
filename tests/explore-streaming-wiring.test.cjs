@@ -4,7 +4,8 @@ const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 test('Explore uses real hubs and exact editorial posters, with unchanged layout CSS',()=>{
  const doc=new JSDOM(read('explore.html')).window.document;
  for(const route of ['/ebooks/','/cooking/','/news/','/events/'])assert.ok(doc.querySelector(`.ex-card[href="${route}"]`));
- assert.match(doc.querySelector('.ex-card[href*="open.spotify.com"]').href,/open\.spotify\.com\/playlist\//);
+ const playlist=new URL(doc.querySelector('.ex-card[href*="open.spotify.com"]').href);
+ assert.equal(playlist.protocol,'https:');assert.equal(playlist.hostname,'open.spotify.com');assert.match(playlist.pathname,/^\/playlist\/[^/]+$/);
  const posters=doc.querySelectorAll('.ex-posters a');assert.equal(posters.length,2);
  for(const p of posters){assert.match(p.href,/\/discover\.html\?q=/);assert.doesNotMatch(p.querySelector('img').src,/og-image/);}
  assert.equal(doc.querySelectorAll('#ma-jonas-home').length,1);
