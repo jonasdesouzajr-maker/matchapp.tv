@@ -21,10 +21,10 @@ const server=http.createServer((req,res)=>{
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/,route=>route.abort());
   await page.goto(base+'/',{waitUntil:'domcontentloaded'});
   await page.locator('#ma-worlds-trigger').waitFor({state:'visible'});
-  assert.equal((await page.locator('[data-match-experience-heading]').textContent()).trim(),'Find Your Next Experience');
+  assert.match((await page.locator('[data-match-experience-heading]').textContent()).trim(),/^(Find Your Next Experience|Encontre Sua Próxima Experiência)$/);
   assert.ok(await page.locator('[data-match-experience-heading]').isVisible(),width+' experience headline hidden');
   assert.ok(await page.locator('[data-match-brand-story]').isVisible(),width+' brand story hidden');
-  assert.equal((await page.locator('[data-match-experience-nav]').textContent()).trim(),'Discover with Jonas');
+  assert.match((await page.locator('[data-match-experience-nav]').textContent()).trim(),/^(Discover with Jonas|Descubra com Jonas)$/);
   const state=await page.evaluate(()=>{
    const box=s=>{let e=document.querySelector(s),r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right}};
    return {nav:getComputedStyle(document.querySelector('#mh-topbox .ma-luxe-shortcuts')).display,
@@ -44,7 +44,7 @@ const server=http.createServer((req,res)=>{
   await page.locator('#ma-worlds-trigger').click();
   await page.locator('#ma-explore-worlds-panel:not([hidden])').waitFor();
   assert.equal(await page.locator('.ma-world-card').count(),9);
-  assert.equal((await page.locator('[data-match-experience-dialog]').textContent()).trim(),'Find Your Next Match');
+  assert.match((await page.locator('[data-match-experience-dialog]').textContent()).trim(),/^(Find Your Next Match|Encontre Seu Próximo Match)$/);
   const dialog=await page.locator('.ma-worlds-panel').boundingBox();
   assert.ok(dialog.x>=-1 && dialog.x+dialog.width<=width+1,width+' overlay horizontal overflow');
   await page.keyboard.press('Escape');
