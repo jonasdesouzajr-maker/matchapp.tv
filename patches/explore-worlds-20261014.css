@@ -106,3 +106,11 @@ body.ma-worlds-open{overflow:hidden}
  html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger::before{animation:none}
  .ma-world-card:hover{transform:none}
 }
+/* Only five editorial Home areas: hero, Top Titles, watch matcher,
+   premiere and weekly AI choice. Match Together remains at /together.html.
+   The AdSense slot that follows its old entry is legally preserved unchanged. */
+html body.page-home.ma-watch-focused .tg-entry{display:none!important}
+html body.page-home.ma-watch-focused #premiere-disclosure{display:block!important;max-width:min(100% - 20px,900px);margin:16px auto!important;overflow:visible}
+html body.page-home.ma-watch-focused #premiere-disclosure > summary{display:list-item;cursor:pointer;color:#f4d7a0;font-weight:850;padding:12px 16px;border:1px solid #e5c5896b;border-radius:14px;background:#291b34}
+html body.page-home.ma-watch-focused #premiere-disclosure[open] > summary{margin-bottom:10px}
+html body.page-home.ma-watch-focused #spotlight-ahs13{width:100%!important;max-width:100%!important;margin:0 auto!important}
