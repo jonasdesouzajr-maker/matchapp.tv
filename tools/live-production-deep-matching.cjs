@@ -119,11 +119,12 @@ async function guarded(browser,label,fn){
      record('LIVE narrow desktop side rails provide Google-safe usable width',
        rail.viewport===1180&&rail.units.length===2&&rail.units.every(x=>x.usableWidth>=120),JSON.stringify(rail));
    }else warn('LIVE narrow desktop rail inventory unavailable',JSON.stringify(rail));
+   await open(page,'/ebooks/#ebook-matcher-root');
    const root=page.locator('#ebook-matcher-root');
    const fold=root.locator('details.ebook-fold');await fold.waitFor({state:'attached',timeout:23000});
    await fold.evaluate(node=>{node.open=true});
-   await root.locator('select[data-ebook-select="format"]').selectOption('audiobook');
-   await root.locator('select[data-ebook-select="access"]').selectOption('paid');
+   await root.locator('[data-ebook-field="format"][data-ebook-value="audiobook"]').click();
+   await root.locator('[data-ebook-field="access"][data-ebook-value="paid"]').click();
    const quotaBefore=await page.evaluate(()=>localStorage.getItem('match_dailyCount'));
    await root.locator('[data-ebook-match]').first().click();
    await page.waitForFunction(()=>{
