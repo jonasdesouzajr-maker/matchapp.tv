@@ -50,7 +50,7 @@ test('Music authored CTA is translated without altering its query context',()=>{
 test('retired Home anchors reach their dedicated routes without dropping query context',()=>{
  const vm=require('node:vm'),script=read('patches/home-watch-focus.js');
  const cases={
-  '#how-it-works':'/explore.html#how-it-works','#cooking-home':'/cooking/','#latest-news':'/news/',
+  '#how-it-works':'/how-it-works.html','#cooking-home':'/cooking/','#latest-news':'/news/',
   '#global-events':'/events-archive.html','#billboard':'/music.html#billboard',
   '#spotify-videos':'/music.html#spotify-videos','#premiere-disclosure':'/featured/american-horror-story-13/',
   '#ebook-matcher-root':'/ebooks/#ebook-matcher-root'
