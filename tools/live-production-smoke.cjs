@@ -169,7 +169,7 @@ async function aiQuestion(page,question,expected,label){
     record('home responsive and original visible posters '+device.name,
       home.scrollWidth<=home.width+16 && !home.wrongFit && home.artworks>0 && home.valid>0,
       JSON.stringify(home));
-    // The brand is genuine, translated text beside the existing transparent orb.
+    // The brand uses the owner's October 13 approved artwork beside the wordmark.
     // Check actual production computed layout on every viewport, including 320px.
     const identity=await page.evaluate(()=>{
       const h=document.getElementById('mh-topbox'),brand=h?.querySelector('.ma-brand-lockup');
@@ -178,7 +178,7 @@ async function aiQuestion(page,question,expected,label){
       return {
         label:brand?.getAttribute('aria-label')||'',ai:ai?.textContent||'',
         tv:!!brand?.querySelector('.ma-tv'),detached:!!brand?.querySelector('.ma-ai-brand-button'),
-        logo:!!brand?.querySelector('.ma-brand-orb[src*="matchapp-home-orb-transparent.webp"]'),
+        logo:!!brand?.querySelector('.ma-brand-orb[src^="/assets/brand/matchapp-icon-approved.png"]'),
         gradient:!!ai&&getComputedStyle(ai).backgroundImage.includes('linear-gradient'),
         weight:name?getComputedStyle(name.querySelector('.ma-wordmark')).fontWeight:'0',
         textInside:!!rect&&!!box&&rect.right<=box.right+3&&rect.left>=box.left-3,
