@@ -169,3 +169,50 @@ body.page-home .btn:focus-visible {
     animation: none !important;
   }
 }
+
+/* ===== Home header — deep midnight override (cinematic2) =====
+   Specificity raised (#mh-topbox x3) to beat premium-header-precision-20261010.css
+   and premium-finish-20261011.css. Header/logo/title scope only. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header{
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(230,195,106,.10), transparent 52%),
+    radial-gradient(ellipse at 90% 110%, rgba(88,42,140,.28), transparent 62%),
+    linear-gradient(150deg, #1a0f2e 0%, #140b24 48%, #0d0818 100%) !important;
+  border: 1px solid rgba(230,195,106,.55) !important;
+  box-shadow:
+    0 22px 50px rgba(0,0,0,.55),
+    0 0 0 1px rgba(230,195,106,.06),
+    inset 0 1px 0 rgba(255,236,190,.16),
+    inset 0 -18px 40px rgba(0,0,0,.35) !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb-stage{
+  border-radius: 50% !important;
+  box-shadow: 0 0 22px rgba(230,195,106,.38), 0 0 46px rgba(230,195,106,.14) !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-copy .ma-wordmark,
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-copy .ma-word-ai{
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
+  letter-spacing: .01em !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-word-match{
+  color: #f8f1e0 !important; -webkit-text-fill-color: #f8f1e0 !important;
+  background: none !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox :is(.ma-word-app,.ma-word-ai){
+  background: linear-gradient(180deg, #f6dc94 0%, #e6c36a 55%, #c99a3e 100%) !important;
+  -webkit-background-clip: text !important; background-clip: text !important;
+  -webkit-text-fill-color: transparent !important; color: #e6c36a !important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-tagline{ color: rgba(248,241,224,.78) !important; }
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .ma-brand-security{ color: rgba(230,195,106,.8) !important; border-color: rgba(230,195,106,.35) !important; }
+/* Controls inside header: dark surfaces, ivory text, gold hairline (sign-in keeps its gold fill) */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox :is(a,button,select):not(.ma-brand-home-link):not([class*="signin"]):not([class*="sign-in"]):not([id*="signin"]):not([id*="sign-in"]):not([class*="login"]):not(.gold-btn){
+  background: linear-gradient(180deg, rgba(40,24,66,.85), rgba(22,13,38,.92)) !important;
+  border-color: rgba(230,195,106,.32) !important;
+  color: #f3ead6 !important;
+}
+/* Neutralise the lavender sheen overlay painted by earlier header CSS */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header::before{
+  background: linear-gradient(90deg, transparent, rgba(230,195,106,.10) 50%, transparent) !important;
+  opacity: .6 !important;
+}
