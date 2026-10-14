@@ -15,7 +15,7 @@ test('fresh Home opens Top Titles and Ask AI with a compact Watch preview',async
  assert.equal(d.querySelector('.lazy-head[data-fold-key="trending"]'),null);
  assert.ok(d.querySelector('#trending-rail').classList.contains('lazy-open'));
  assert.equal(d.querySelector('.lazy-head[data-fold-key="together"]').getAttribute('aria-expanded'),'false');
- assert.equal(d.querySelector('#premiere-disclosure').open,false);
+ assert.equal(d.querySelector('#premiere-disclosure').open,true);
  assert.equal(d.querySelector('#ma-ai-entry').classList.contains('lazy-open'),true);
  assert.equal(d.querySelector('#cooking-home').open,false);
  assert.equal(d.querySelector('.ebook-fold').open,false);
