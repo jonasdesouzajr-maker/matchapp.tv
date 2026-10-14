@@ -21,7 +21,7 @@ const NATIVE=[
 ];
 let foldState=loadFoldState(), syncing=false, observerQueued=false;
 // Fresh Home opens Top Titles and Ask AI; Watch starts with its compact preview.
-function loadFoldState(){return {askai:true}}
+function loadFoldState(){return {askai:true,premiere:true}}
 function saveFoldState(){try{localStorage.setItem(FOLD_KEY,JSON.stringify(foldState))}catch(_){}}
 function lazyOn(){return document.body.classList.contains('lazy-mode')}
 function storedOpen(key){return foldState[key]===true}
