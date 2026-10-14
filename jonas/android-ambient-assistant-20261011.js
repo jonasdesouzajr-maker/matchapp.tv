@@ -282,6 +282,24 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   return undefined;
  }
  function routeNative(){
+  // Kotlin emits TTS callbacks on the outer WebView. The metered chat lives
+  // in a same-origin iframe and must receive failures too, so its approved
+  // voice fallback can start immediately instead of waiting for a timeout.
+  ['State','Word'].forEach(function(kind){
+   var fn='matchAppNativeSpeech'+kind,prev=window[fn];
+   window[fn]=function(value){
+    if(open&&ready&&frame?.contentWindow){
+     try{
+      var w=frame.contentWindow;
+      if(w.location.origin===location.origin&&w.location.pathname==='/discover.html'){
+       var callback=w[fn];
+       if(typeof callback==='function')callback(value);
+      }
+     }catch(_){}
+    }
+    if(typeof prev==='function')return prev(value);
+   };
+  });
   ['Result','Partial','Error'].forEach(function(kind){
    var fn='matchAppNativeVoice'+kind,prev=window[fn];
    window[fn]=function(value){return handleNative(kind,value,prev)};

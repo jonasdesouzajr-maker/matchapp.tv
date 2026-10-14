@@ -75,3 +75,18 @@ test('first-paint bubble is mounted and styled before the main document has a bo
  assert.match(critical.textContent,/#ma-ambient-panel\{position:fixed!important/);
  dom.window.close();
 });
+
+test('outer native TTS failure and word callbacks reach only the active same-origin metered frame',()=>{
+ const vm=require('node:vm');
+ const start=src.indexOf(' function routeNative(){'),end=src.indexOf(' function removeLegacyJonas()',start);
+ const forwarded=[],previous=[];
+ const window={matchAppNativeSpeechState:v=>previous.push(v)};
+ const frame={contentWindow:{location:{origin:'https://matchapp.tv',pathname:'/discover.html'},matchAppNativeSpeechState:v=>forwarded.push(['state',v]),matchAppNativeSpeechWord:v=>forwarded.push(['word',v])}};
+ const context=vm.createContext({window,frame,open:true,ready:true,location:{origin:'https://matchapp.tv'},handleNative(){}});
+ vm.runInContext(src.slice(start,end)+'\nrouteNative();',context);
+ window.matchAppNativeSpeechState(false);window.matchAppNativeSpeechWord('hello');
+ assert.deepEqual(forwarded,[['state',false],['word','hello']]);assert.deepEqual(previous,[false]);
+ context.open=false;window.matchAppNativeSpeechState(true);assert.equal(forwarded.length,2);
+ context.open=true;frame.contentWindow.location.origin='https://other.example';window.matchAppNativeSpeechState(false);assert.equal(forwarded.length,2);
+ frame.contentWindow.location.origin='https://matchapp.tv';frame.contentWindow.location.pathname='/profile/';window.matchAppNativeSpeechWord('ignored');assert.equal(forwarded.length,2);
+});
