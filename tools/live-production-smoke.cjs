@@ -394,7 +394,7 @@ async function aiQuestion(page,question,expected,label){
       resultHidden:getComputedStyle(document.getElementById('result-box')).display==='none',
       formRestored:document.getElementById('questionnaire-box').style.display!=='none',
       homeVisible:!!document.getElementById('trending-rail')?.getClientRects().length&&
-        !!document.getElementById('ma-ai-entry')?.getClientRects().length&&
+        !!document.querySelector('#mh-topbox a[href="/explore.html"]')?.getClientRects().length&&
         !!document.getElementById('ma-concierge')?.getClientRects().length,
       titlesRemainUnfolded:!document.querySelector('.lazy-head[data-fold-key="trending"]')&&
         !!document.getElementById('trending-rail')?.getClientRects().length,
