@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "sourceUnchanged": true,
+  "styles": {
+    "background": "none",
+    "shadow": "none",
+    "mask": "url(\"http://127.0.0.1:65469/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1\")"
+  },
+  "transparentExteriorSamples": 5,
+  "visibleMark": true
+}

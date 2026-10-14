@@ -613,3 +613,32 @@ html body #ma-ambient-panel#ma-ambient-panel:not([hidden]){
  max-width:none!important;max-height:none!important;
  overflow:hidden!important;
 }
+
+/* Permanent asset containment: discard the approved image's opaque outer
+ * canvas, preserving the actual rounded violet/gold mark and source pixels.
+ * Specificity covers native/header overrides without changing box geometry. */
+html body:not(.page-kids):not(.kids-body) :is(
+ .ma-brand-orb,.auth-brand-orb,.hub-brand img[src*="matchapp-icon-approved"],
+ img.brand-logo[src*="matchapp-icon-approved"]
+) {
+ -webkit-mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ -webkit-mask-size:100% 100%!important;mask-size:100% 100%!important;
+ -webkit-mask-repeat:no-repeat!important;mask-repeat:no-repeat!important;
+ background:transparent!important;
+}
+
+/* Brand links are wordmark lockups, not filled button cards. Keep generic
+ * depth/button gradients from introducing a rectangular matte behind them. */
+@layer ma-depth {
+ html body .ma-brand-home-link.ma-brand-home-link {
+  background:transparent!important;box-shadow:none!important;
+ }
+}
+html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage))::before {
+ -webkit-mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ -webkit-mask-size:165% auto!important;mask-size:165% auto!important;
+ -webkit-mask-position:center 47%!important;mask-position:center 47%!important;
+ -webkit-mask-repeat:no-repeat!important;mask-repeat:no-repeat!important;
+}
