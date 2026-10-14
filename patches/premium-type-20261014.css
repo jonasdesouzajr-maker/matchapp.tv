@@ -1,0 +1,46 @@
+/* MatchApp Ai adult typography contract.
+   Systematic type only: never override dimensions, icon glyphs, media artwork or Kids. */
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"]){
+ --ma-type-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+ --ma-type-display:"Outfit","Inter",system-ui,sans-serif;
+ --ma-type-ui:"Space Grotesk","Inter",system-ui,sans-serif;
+ font-family:var(--ma-type-body);
+ font-synthesis:none;
+ -webkit-font-smoothing:antialiased;
+ text-rendering:optimizeLegibility;
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"]) :is(h1,h2,h3,.hub-title,.spotlight-title,.matchapp-section-title){
+ font-family:var(--ma-type-display)!important;
+ font-optical-sizing:auto;
+ font-synthesis:none;
+ letter-spacing:-.025em;
+ text-wrap:balance;
+ transition:color .22s ease,text-shadow .22s ease;
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"]) :is(p,li,dd,dt,blockquote){
+ font-family:var(--ma-type-body);
+ overflow-wrap:break-word;
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"]) :is(button,select,input,textarea,.hub-links,.ma-luxe-shortcut,.hub-action){
+ font-family:var(--ma-type-ui);
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"]) :is(.hub-title,.spotlight-title):hover{
+ text-shadow:0 0 26px rgba(242,198,120,.18);
+}
+/* Respect the actual glyph systems for Arabic, Indic and CJK languages. */
+html:lang(ar) body:not(.page-kids):not(.kids-body),
+html:lang(ar) body:not(.page-kids):not(.kids-body) :is(h1,h2,h3,p,li,button){
+ font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+ letter-spacing:normal!important;
+}
+html:lang(hi) body:not(.page-kids):not(.kids-body),
+html:lang(hi) body:not(.page-kids):not(.kids-body) :is(h1,h2,h3,p,li,button){
+ font-family:"Noto Sans Devanagari",system-ui,sans-serif!important;
+ letter-spacing:normal!important;
+}
+html:lang(ja) body:not(.page-kids):not(.kids-body),
+html:lang(ko) body:not(.page-kids):not(.kids-body),
+html:lang(zh) body:not(.page-kids):not(.kids-body){font-family:system-ui,"Noto Sans CJK SC",sans-serif}
+@media(prefers-reduced-motion:reduce){
+ html body:not(.page-kids):not(.kids-body) :is(h1,h2,h3,.hub-title,.spotlight-title){transition:none!important}
+}
