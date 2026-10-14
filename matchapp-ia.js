@@ -484,6 +484,7 @@ function maTone(freq,duration,type='sine',gain=.008,delay=0,endFreq=0){
 function maUISound(kind){
   if(!maSoundEnabled())return;
   if(typeof window.playMatchAppSound==='function'){window.playMatchAppSound(kind);return}
+  if(kind==='mic'){maTone(493.88,.07,'sine',.005);maTone(698.46,.09,'sine',.0035,.048);return}
   if(kind==='primary'){maTone(440,.075,'triangle',.008);maTone(659.25,.105,'sine',.006,.04);return}
   if(kind==='select'){maTone(560,.055,'sine',.007);maTone(720,.065,'triangle',.0045,.028);return}
   if(kind==='tab'){maTone(320,.06,'triangle',.006);maTone(480,.07,'sine',.0045,.035);return}
@@ -499,7 +500,8 @@ document.addEventListener('click',e=>{
   const target=e.target.closest('button,a,[role="button"],summary');
   if(!target||target.matches('.sound-toggle-btn')||target.closest('.app-header'))return;
   let kind='tap';
-  if(target.matches('.share-cta,[id*="share"],[data-action="share"]'))kind='share';
+  if(target.matches('.mic-btn,.jh-mic,#mic-btn-discover,#mic-button,[data-action="mic"]'))kind='mic';
+  else if(target.matches('.share-cta,[id*="share"],[data-action="share"]'))kind='share';
   else if(target.matches('#btn-loved-it,[data-action="like"]'))kind='like';
   else if(target.matches('#btn-watch-later,#btn-seen-it,[data-action="save"]'))kind='save';
   else if(target.matches('#btn-not-for-me,.rematch-btn,[data-action="back"]'))kind='back';

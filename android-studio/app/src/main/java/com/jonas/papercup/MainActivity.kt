@@ -406,7 +406,9 @@ class MainActivity : AppCompatActivity() {
         root.addView(host, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         root.postDelayed(introDeadline, 8000L)
         video.setOnPreparedListener { player ->
-            player.setVolume(0f, 0f)
+            // Preserve the original video soundtrack at a restrained volume.
+            // The OS media-volume/mute setting remains authoritative.
+            player.setVolume(0.55f, 0.55f)
             player.isLooping = false
             markIntroSeen()
             root.removeCallbacks(introDeadline)
