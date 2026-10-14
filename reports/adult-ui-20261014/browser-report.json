@@ -1,0 +1,1601 @@
+{
+  "coverage": "Chromium headless, local aliases, external requests blocked; no backend or Safari claim",
+  "checks": [
+    {
+      "name": "home",
+      "width": 320,
+      "height": 900,
+      "viewport": [
+        320,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 12,
+        "right": 308,
+        "top": 12,
+        "bottom": 395,
+        "width": 296,
+        "height": 383
+      },
+      "word": {
+        "left": 105,
+        "right": 244.390625,
+        "top": 28.515625,
+        "bottom": 56.59375,
+        "width": 139.390625,
+        "height": 28.078125
+      },
+      "ai": {
+        "left": 252.390625,
+        "right": 283.1875,
+        "top": 27.515625,
+        "bottom": 56.625,
+        "width": 30.796875,
+        "height": 29.109375
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 157,
+        "right": 245,
+        "top": 661,
+        "bottom": 749,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-home ma-guest ma-ia-home ma-match-tab ma-ia-ready ma-jonas-inline",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "explore",
+      "width": 320,
+      "height": 900,
+      "viewport": [
+        320,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 19,
+        "right": 301,
+        "top": 16,
+        "bottom": 109,
+        "width": 282,
+        "height": 93
+      },
+      "word": {
+        "left": 71,
+        "right": 195.875,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 203.875,
+        "right": 233.9375,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 220,
+        "right": 308,
+        "top": 724,
+        "bottom": 812,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-explore page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "ask",
+      "width": 320,
+      "height": 900,
+      "viewport": [
+        320,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 10,
+        "right": 310,
+        "top": 8,
+        "bottom": 134.703125,
+        "width": 300,
+        "height": 126.703125
+      },
+      "word": {
+        "left": 88,
+        "right": 216.140625,
+        "top": 15,
+        "bottom": 40.90625,
+        "width": 128.140625,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 224.140625,
+        "right": 256.21875,
+        "top": 15,
+        "bottom": 40.90625,
+        "width": 32.078125,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 220,
+        "right": 308,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ai-chat-page ma-guest ma-ia-discover page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "together",
+      "width": 320,
+      "height": 900,
+      "viewport": [
+        320,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 19,
+        "right": 301,
+        "top": 48,
+        "bottom": 235.25,
+        "width": 282,
+        "height": 187.25
+      },
+      "word": {
+        "left": 73,
+        "right": 197.875,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 205.875,
+        "right": 235.9375,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 220,
+        "right": 308,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-together page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "pricing",
+      "width": 320,
+      "height": 900,
+      "viewport": [
+        320,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 19,
+        "right": 301,
+        "top": 48,
+        "bottom": 243.25,
+        "width": 282,
+        "height": 195.25
+      },
+      "word": {
+        "left": 73,
+        "right": 197.875,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 205.875,
+        "right": 235.9375,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 220,
+        "right": 308,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-pricing page-shell page-pricing",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "books",
+      "width": 320,
+      "height": 900,
+      "viewport": [
+        320,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 298,
+        "top": 50,
+        "bottom": 124,
+        "width": 276,
+        "height": 74
+      },
+      "brandGap": null,
+      "bubble": {
+        "left": 220,
+        "right": 308,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ebook-page",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "height": 900,
+      "viewport": [
+        390,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 12,
+        "right": 378,
+        "top": 12,
+        "bottom": 396.09375,
+        "width": 366,
+        "height": 384.09375
+      },
+      "word": {
+        "left": 121,
+        "right": 282,
+        "top": 26,
+        "bottom": 58.4375,
+        "width": 161,
+        "height": 32.4375
+      },
+      "ai": {
+        "left": 290,
+        "right": 325.171875,
+        "top": 26,
+        "bottom": 59.25,
+        "width": 35.171875,
+        "height": 33.25
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 227,
+        "right": 315,
+        "top": 661,
+        "bottom": 749,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-home ma-guest ma-ia-home ma-match-tab ma-ia-ready ma-jonas-inline",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "explore",
+      "width": 390,
+      "height": 900,
+      "viewport": [
+        390,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 19,
+        "right": 371,
+        "top": 16,
+        "bottom": 109,
+        "width": 352,
+        "height": 93
+      },
+      "word": {
+        "left": 71,
+        "right": 195.875,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 203.875,
+        "right": 233.9375,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 287,
+        "right": 375,
+        "top": 724,
+        "bottom": 812,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-explore page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "ask",
+      "width": 390,
+      "height": 900,
+      "viewport": [
+        390,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 10,
+        "right": 380,
+        "top": 8,
+        "bottom": 134.703125,
+        "width": 370,
+        "height": 126.703125
+      },
+      "word": {
+        "left": 88,
+        "right": 216.140625,
+        "top": 15,
+        "bottom": 40.90625,
+        "width": 128.140625,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 224.140625,
+        "right": 256.21875,
+        "top": 15,
+        "bottom": 40.90625,
+        "width": 32.078125,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 287,
+        "right": 375,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ai-chat-page ma-guest ma-ia-discover page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "together",
+      "width": 390,
+      "height": 900,
+      "viewport": [
+        390,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 19,
+        "right": 371,
+        "top": 48,
+        "bottom": 235.25,
+        "width": 352,
+        "height": 187.25
+      },
+      "word": {
+        "left": 73,
+        "right": 197.875,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 205.875,
+        "right": 235.9375,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 287,
+        "right": 375,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-together page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "pricing",
+      "width": 390,
+      "height": 900,
+      "viewport": [
+        390,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 19,
+        "right": 371,
+        "top": 48,
+        "bottom": 243.25,
+        "width": 352,
+        "height": 195.25
+      },
+      "word": {
+        "left": 73,
+        "right": 197.875,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 205.875,
+        "right": 235.9375,
+        "top": 55,
+        "bottom": 80.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 8,
+      "bubble": {
+        "left": 287,
+        "right": 375,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-pricing page-shell page-pricing",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "books",
+      "width": 390,
+      "height": 900,
+      "viewport": [
+        390,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 368,
+        "top": 50,
+        "bottom": 124,
+        "width": 346,
+        "height": 74
+      },
+      "brandGap": null,
+      "bubble": {
+        "left": 287,
+        "right": 375,
+        "top": 721,
+        "bottom": 809,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ebook-page",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "home",
+      "width": 800,
+      "height": 1180,
+      "viewport": [
+        800,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 12,
+        "right": 788,
+        "top": 12,
+        "bottom": 428.59375,
+        "width": 776,
+        "height": 416.59375
+      },
+      "word": {
+        "left": 138.1875,
+        "right": 344.703125,
+        "top": 38.703125,
+        "bottom": 80.296875,
+        "width": 206.515625,
+        "height": 41.59375
+      },
+      "ai": {
+        "left": 355.5,
+        "right": 400.375,
+        "top": 37.703125,
+        "bottom": 80.125,
+        "width": 44.875,
+        "height": 42.421875
+      },
+      "brandGap": 10.796875,
+      "bubble": {
+        "left": 618,
+        "right": 706,
+        "top": 998,
+        "bottom": 1086,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-home ma-guest ma-ia-home ma-match-tab ma-ia-ready ma-jonas-inline",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "explore",
+      "width": 800,
+      "height": 1180,
+      "viewport": [
+        800,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 20,
+        "right": 780,
+        "top": 16,
+        "bottom": 83.25,
+        "width": 760,
+        "height": 67.25
+      },
+      "word": {
+        "left": 72,
+        "right": 196.875,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 207.671875,
+        "right": 237.734375,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 10.796875,
+      "bubble": {
+        "left": 688,
+        "right": 776,
+        "top": 1068,
+        "bottom": 1156,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-explore page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "ask",
+      "width": 800,
+      "height": 1180,
+      "viewport": [
+        800,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 10,
+        "right": 790,
+        "top": 8,
+        "bottom": 134.703125,
+        "width": 780,
+        "height": 126.703125
+      },
+      "word": {
+        "left": 88,
+        "right": 216.140625,
+        "top": 15,
+        "bottom": 40.90625,
+        "width": 128.140625,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 226.9375,
+        "right": 259.015625,
+        "top": 15,
+        "bottom": 40.90625,
+        "width": 32.078125,
+        "height": 25.90625
+      },
+      "brandGap": 10.796875,
+      "bubble": {
+        "left": 688,
+        "right": 776,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ai-chat-page ma-guest ma-ia-discover page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "together",
+      "width": 800,
+      "height": 1180,
+      "viewport": [
+        800,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 20,
+        "right": 780,
+        "top": 62,
+        "bottom": 165.765625,
+        "width": 760,
+        "height": 103.765625
+      },
+      "word": {
+        "left": 72,
+        "right": 196.875,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 207.671875,
+        "right": 237.734375,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 10.796875,
+      "bubble": {
+        "left": 688,
+        "right": 776,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-together page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "pricing",
+      "width": 800,
+      "height": 1180,
+      "viewport": [
+        800,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 20,
+        "right": 780,
+        "top": 62,
+        "bottom": 180.609375,
+        "width": 760,
+        "height": 118.609375
+      },
+      "word": {
+        "left": 72,
+        "right": 196.875,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 207.671875,
+        "right": 237.734375,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 10.796875,
+      "bubble": {
+        "left": 688,
+        "right": 776,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-pricing page-shell page-pricing",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "books",
+      "width": 800,
+      "height": 1180,
+      "viewport": [
+        800,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 778,
+        "top": 60,
+        "bottom": 136,
+        "width": 756,
+        "height": 76
+      },
+      "brandGap": null,
+      "bubble": {
+        "left": 688,
+        "right": 776,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ebook-page",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "home",
+      "width": 820,
+      "height": 1180,
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 12,
+        "right": 808,
+        "top": 12,
+        "bottom": 430,
+        "width": 796,
+        "height": 418
+      },
+      "word": {
+        "left": 139.453125,
+        "right": 351.125,
+        "top": 38.578125,
+        "bottom": 81.203125,
+        "width": 211.671875,
+        "height": 42.625
+      },
+      "ai": {
+        "left": 362.1875,
+        "right": 408.1875,
+        "top": 37.578125,
+        "bottom": 81.0625,
+        "width": 46,
+        "height": 43.484375
+      },
+      "brandGap": 11.0625,
+      "bubble": {
+        "left": 638,
+        "right": 726,
+        "top": 998,
+        "bottom": 1086,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-home ma-guest ma-ia-home ma-match-tab ma-ia-ready ma-jonas-inline",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "explore",
+      "width": 820,
+      "height": 1180,
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 20,
+        "right": 800,
+        "top": 16,
+        "bottom": 83.25,
+        "width": 780,
+        "height": 67.25
+      },
+      "word": {
+        "left": 72,
+        "right": 196.875,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 207.9375,
+        "right": 238,
+        "top": 30.046875,
+        "bottom": 55.953125,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 11.0625,
+      "bubble": {
+        "left": 708,
+        "right": 796,
+        "top": 1068,
+        "bottom": 1156,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-explore page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "ask",
+      "width": 820,
+      "height": 1180,
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 16.40625,
+        "right": 803.59375,
+        "top": 12,
+        "bottom": 110,
+        "width": 787.1875,
+        "height": 98
+      },
+      "word": {
+        "left": 127.109375,
+        "right": 255.25,
+        "top": 19,
+        "bottom": 44.90625,
+        "width": 128.140625,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 266.3125,
+        "right": 298.390625,
+        "top": 19,
+        "bottom": 44.90625,
+        "width": 32.078125,
+        "height": 25.90625
+      },
+      "brandGap": 11.0625,
+      "bubble": {
+        "left": 708,
+        "right": 796,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ai-chat-page ma-guest ma-ia-discover page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "together",
+      "width": 820,
+      "height": 1180,
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 20,
+        "right": 800,
+        "top": 62,
+        "bottom": 165.765625,
+        "width": 780,
+        "height": 103.765625
+      },
+      "word": {
+        "left": 72,
+        "right": 196.875,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 207.9375,
+        "right": 238,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 11.0625,
+      "bubble": {
+        "left": 708,
+        "right": 796,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-together page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "pricing",
+      "width": 820,
+      "height": 1180,
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 20,
+        "right": 800,
+        "top": 62,
+        "bottom": 193.109375,
+        "width": 780,
+        "height": 131.109375
+      },
+      "word": {
+        "left": 72,
+        "right": 196.875,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 124.875,
+        "height": 25.90625
+      },
+      "ai": {
+        "left": 207.9375,
+        "right": 238,
+        "top": 69,
+        "bottom": 94.90625,
+        "width": 30.0625,
+        "height": 25.90625
+      },
+      "brandGap": 11.0625,
+      "bubble": {
+        "left": 708,
+        "right": 796,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-pricing page-shell page-pricing",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "books",
+      "width": 820,
+      "height": 1180,
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 798,
+        "top": 60,
+        "bottom": 136,
+        "width": 776,
+        "height": 76
+      },
+      "brandGap": null,
+      "bubble": {
+        "left": 708,
+        "right": 796,
+        "top": 1065,
+        "bottom": 1153,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ebook-page",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "home",
+      "width": 1366,
+      "height": 900,
+      "viewport": [
+        1366,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 23,
+        "right": 1343,
+        "top": 12,
+        "bottom": 295,
+        "width": 1320,
+        "height": 283
+      },
+      "word": {
+        "left": 206,
+        "right": 495.109375,
+        "top": 43.875,
+        "bottom": 102.109375,
+        "width": 289.109375,
+        "height": 58.234375
+      },
+      "ai": {
+        "left": 512.109375,
+        "right": 575.203125,
+        "top": 42.875,
+        "bottom": 102.53125,
+        "width": 63.09375,
+        "height": 59.65625
+      },
+      "brandGap": 17,
+      "bubble": {
+        "left": 1003,
+        "right": 1091,
+        "top": 718,
+        "bottom": 806,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-home ma-guest ma-ia-home ma-match-tab ma-ia-ready ma-jonas-inline",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "explore",
+      "width": 1366,
+      "height": 900,
+      "viewport": [
+        1366,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 93,
+        "right": 1273,
+        "top": 16,
+        "bottom": 111.25,
+        "width": 1180,
+        "height": 95.25
+      },
+      "word": {
+        "left": 168,
+        "right": 317.171875,
+        "top": 42.671875,
+        "bottom": 73.640625,
+        "width": 149.171875,
+        "height": 30.96875
+      },
+      "ai": {
+        "left": 334.171875,
+        "right": 374.375,
+        "top": 39.671875,
+        "bottom": 74.328125,
+        "width": 40.203125,
+        "height": 34.65625
+      },
+      "brandGap": 17,
+      "bubble": {
+        "left": 1073,
+        "right": 1161,
+        "top": 788,
+        "bottom": 876,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-explore page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "ask",
+      "width": 1366,
+      "height": 900,
+      "viewport": [
+        1366,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 63,
+        "right": 1303,
+        "top": 44,
+        "bottom": 163.5625,
+        "width": 1240,
+        "height": 119.5625
+      },
+      "word": {
+        "left": 348.4375,
+        "right": 513.9375,
+        "top": 58,
+        "bottom": 91.46875,
+        "width": 165.5,
+        "height": 33.46875
+      },
+      "ai": {
+        "left": 530.9375,
+        "right": 572.375,
+        "top": 58,
+        "bottom": 91.46875,
+        "width": 41.4375,
+        "height": 33.46875
+      },
+      "brandGap": 17,
+      "bubble": {
+        "left": 1073,
+        "right": 1161,
+        "top": 785,
+        "bottom": 873,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ai-chat-page ma-guest ma-ia-discover page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "together",
+      "width": 1366,
+      "height": 900,
+      "viewport": [
+        1366,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 93,
+        "right": 1273,
+        "top": 62,
+        "bottom": 189.921875,
+        "width": 1180,
+        "height": 127.921875
+      },
+      "word": {
+        "left": 186,
+        "right": 362.890625,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 176.890625,
+        "height": 36.71875
+      },
+      "ai": {
+        "left": 379.890625,
+        "right": 422.484375,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 42.59375,
+        "height": 36.71875
+      },
+      "brandGap": 17,
+      "bubble": {
+        "left": 1073,
+        "right": 1161,
+        "top": 785,
+        "bottom": 873,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-together page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "pricing",
+      "width": 1366,
+      "height": 900,
+      "viewport": [
+        1366,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 93,
+        "right": 1273,
+        "top": 62,
+        "bottom": 189.921875,
+        "width": 1180,
+        "height": 127.921875
+      },
+      "word": {
+        "left": 186,
+        "right": 362.890625,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 176.890625,
+        "height": 36.71875
+      },
+      "ai": {
+        "left": 379.890625,
+        "right": 422.484375,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 42.59375,
+        "height": 36.71875
+      },
+      "brandGap": 17,
+      "bubble": {
+        "left": 1073,
+        "right": 1161,
+        "top": 785,
+        "bottom": 873,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-pricing page-shell page-pricing",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "books",
+      "width": 1366,
+      "height": 900,
+      "viewport": [
+        1366,
+        900
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 103,
+        "right": 1263,
+        "top": 60,
+        "bottom": 136,
+        "width": 1160,
+        "height": 76
+      },
+      "brandGap": null,
+      "bubble": {
+        "left": 1073,
+        "right": 1161,
+        "top": 785,
+        "bottom": 873,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ebook-page",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "home",
+      "width": 1180,
+      "height": 820,
+      "viewport": [
+        1180,
+        820
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 12,
+        "right": 1168,
+        "top": 12,
+        "bottom": 288.4375,
+        "width": 1156,
+        "height": 276.4375
+      },
+      "word": {
+        "left": 177.25,
+        "right": 426.984375,
+        "top": 33,
+        "bottom": 83.296875,
+        "width": 249.734375,
+        "height": 50.296875
+      },
+      "ai": {
+        "left": 442.90625,
+        "right": 497.421875,
+        "top": 33,
+        "bottom": 84.53125,
+        "width": 54.515625,
+        "height": 51.53125
+      },
+      "brandGap": 15.921875,
+      "bubble": {
+        "left": 817,
+        "right": 905,
+        "top": 638,
+        "bottom": 726,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-home ma-guest ma-ia-home ma-match-tab ma-ia-ready ma-jonas-inline",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "explore",
+      "width": 1180,
+      "height": 820,
+      "viewport": [
+        1180,
+        820
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 1158,
+        "top": 16,
+        "bottom": 111.25,
+        "width": 1136,
+        "height": 95.25
+      },
+      "word": {
+        "left": 97,
+        "right": 225.84375,
+        "top": 45.015625,
+        "bottom": 71.765625,
+        "width": 128.84375,
+        "height": 26.75
+      },
+      "ai": {
+        "left": 241.765625,
+        "right": 276.484375,
+        "top": 42.015625,
+        "bottom": 71.96875,
+        "width": 34.71875,
+        "height": 29.953125
+      },
+      "brandGap": 15.921875,
+      "bubble": {
+        "left": 887,
+        "right": 975,
+        "top": 708,
+        "bottom": 796,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "page-explore page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "ask",
+      "width": 1180,
+      "height": 820,
+      "viewport": [
+        1180,
+        820
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 23.59375,
+        "right": 1156.390625,
+        "top": 44,
+        "bottom": 163.5625,
+        "width": 1132.796875,
+        "height": 119.5625
+      },
+      "word": {
+        "left": 255.96875,
+        "right": 421.46875,
+        "top": 58,
+        "bottom": 91.46875,
+        "width": 165.5,
+        "height": 33.46875
+      },
+      "ai": {
+        "left": 437.390625,
+        "right": 478.828125,
+        "top": 58,
+        "bottom": 91.46875,
+        "width": 41.4375,
+        "height": 33.46875
+      },
+      "brandGap": 15.921875,
+      "bubble": {
+        "left": 887,
+        "right": 975,
+        "top": 705,
+        "bottom": 793,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ai-chat-page ma-guest ma-ia-discover page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "together",
+      "width": 1180,
+      "height": 820,
+      "viewport": [
+        1180,
+        820
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 1158,
+        "top": 62,
+        "bottom": 189.921875,
+        "width": 1136,
+        "height": 127.921875
+      },
+      "word": {
+        "left": 115,
+        "right": 291.890625,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 176.890625,
+        "height": 36.71875
+      },
+      "ai": {
+        "left": 307.8125,
+        "right": 350.40625,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 42.59375,
+        "height": 36.71875
+      },
+      "brandGap": 15.921875,
+      "bubble": {
+        "left": 887,
+        "right": 975,
+        "top": 705,
+        "bottom": 793,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-together page-shell",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "pricing",
+      "width": 1180,
+      "height": 820,
+      "viewport": [
+        1180,
+        820
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 1158,
+        "top": 62,
+        "bottom": 189.921875,
+        "width": 1136,
+        "height": 127.921875
+      },
+      "word": {
+        "left": 115,
+        "right": 291.890625,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 176.890625,
+        "height": 36.71875
+      },
+      "ai": {
+        "left": 307.8125,
+        "right": 350.40625,
+        "top": 73,
+        "bottom": 109.71875,
+        "width": 42.59375,
+        "height": 36.71875
+      },
+      "brandGap": 15.921875,
+      "bubble": {
+        "left": 887,
+        "right": 975,
+        "top": 705,
+        "bottom": 793,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ma-guest ma-ia-pricing page-shell page-pricing",
+      "visibleDiscovery": [],
+      "errors": []
+    },
+    {
+      "name": "books",
+      "width": 1180,
+      "height": 820,
+      "viewport": [
+        1180,
+        820
+      ],
+      "overflow": 0,
+      "header": {
+        "left": 22,
+        "right": 1158,
+        "top": 60,
+        "bottom": 136,
+        "width": 1136,
+        "height": 76
+      },
+      "brandGap": null,
+      "bubble": {
+        "left": 887,
+        "right": 975,
+        "top": 705,
+        "bottom": 793,
+        "width": 88,
+        "height": 88
+      },
+      "bubbleCount": 1,
+      "body": "ebook-page",
+      "visibleDiscovery": [],
+      "errors": []
+    }
+  ]
+}

@@ -75,15 +75,9 @@ html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .floating-avatar {
 }
 
 /* Inputs */
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .premium-card :is(input,
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) select,
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) textarea),
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-panel :is(input,
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) select,
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) textarea),
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .concierge-card :is(input,
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) select,
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) textarea) {
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .premium-card :is(input, select, textarea),
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .page-panel :is(input, select, textarea),
+html:not(.kids-mode) body:not(.page-kids):not(.kids-body) .concierge-card :is(input, select, textarea) {
   background: rgba(20, 12, 36, 0.7) !important;
   border: 1px solid var(--approved-gold-line) !important;
   border-radius: 16px !important;
@@ -252,8 +246,7 @@ html:not(.kids-mode) body.page-home #ma-concierge.ma-watch-compact > .ma-watch-p
   grid-template-columns:minmax(0,1fr) !important;
  }
 
-html:not(.kids-mode) body.page-home #ma-concierge .ma-watch-preview :is(#ma-compact-cat,
-html:not(.kids-mode) body:not(.page-kids):not(.kids-body) #ma-compact-mood) {
+html:not(.kids-mode) body.page-home #ma-concierge .ma-watch-preview :is(#ma-compact-cat,#ma-compact-mood) {
   width:100% !important;min-width:0 !important;font-size:14px !important;
   padding-inline:12px !important;
  }

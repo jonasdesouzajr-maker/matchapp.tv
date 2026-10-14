@@ -207,9 +207,16 @@
  function setOpen(next){
   if(opened===next)return;
   if(next){
+   // One same-document entry lets Android/browser Back minimize the chat.
+   if(!history.state?.maJonasOpen)history.pushState(Object.assign({},history.state,{maJonasOpen:true}),'',location.href);
    stageFloating=root.classList.contains('is-floating');
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
    if(root.parentElement!==document.body)document.body.appendChild(root);
+   // Saved drag coordinates belong to the closed bubble, not the chat stage.
+   if(document.body.classList.contains('ma-jonas-inline')){
+    root.classList.remove('is-floating');
+    ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
+   }
    root.classList.add('is-chat-stage');
    ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
    document.body.classList.add('ma-jonas-chat-open');
@@ -219,6 +226,7 @@
   bubble.setAttribute('aria-expanded',String(next));
   root.classList.toggle('is-open',next);
   if(!next){
+   if(history.state?.maJonasOpen)history.back();
    root.dispatchEvent(new CustomEvent('matchapp:jonas-close'));
    root.classList.remove('is-chat-stage');
    document.body.classList.remove('ma-jonas-chat-open');
@@ -243,6 +251,7 @@
    bubble.focus({preventScroll:true});
   }
  }
+ window.addEventListener('popstate',function(){if(opened&&!history.state?.maJonasOpen)setOpen(false)});
  bubble.addEventListener('click',function(){
   if(suppressClick){suppressClick=false;return;}
   setOpen(!opened);
