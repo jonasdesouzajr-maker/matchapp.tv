@@ -180,6 +180,7 @@
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
    if(root.parentElement!==document.body)document.body.appendChild(root);
    root.classList.add('is-chat-stage');
+   ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
    ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
    document.body.classList.add('ma-jonas-chat-open');
   }

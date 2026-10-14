@@ -39,7 +39,7 @@
  }
  function enhance(){
   var root=document.getElementById("ma-jonas-home");
-  if(root&&document.body.classList.contains("page-home")){root.classList.add("is-floating");if(root.parentNode!==document.body)document.body.appendChild(root)}
+  if(root&&document.body.classList.contains("page-home")){root.classList.add("is-floating");document.body.classList.add("ma-jonas-inline");if(root.parentNode!==document.body)document.body.appendChild(root)}
   var active=document.getElementById('ma-ambient-jonas')||root;if(active)dockHome(active);
   document.querySelectorAll('#ma-jonas-home .jh-portrait,#ma-ambient-jonas .ja-bubble').forEach(function(host){
    if(host.dataset.jonasPremium==='1')return;
@@ -49,6 +49,7 @@
    if(host.classList.contains('ja-bubble')){
     layer=document.createElement('span');layer.className='ja-premium-face';
     image.before(layer);layer.appendChild(image);
+    var eyes=document.createElement('img');eyes.className='ja-blink';eyes.alt='';eyes.setAttribute('aria-hidden','true');eyes.src='/jonas/faces/jonas/blink.jpg';layer.appendChild(eyes);
    }
    var smile=document.createElement('img');smile.className='ja-premium-smile';
    smile.alt='';smile.setAttribute('aria-hidden','true');smile.decoding='async';
