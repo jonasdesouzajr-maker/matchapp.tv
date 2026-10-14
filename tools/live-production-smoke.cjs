@@ -6,6 +6,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const {chromium}=require('playwright');
 const {fetchDeploymentMarker}=require('./deployment-marker.cjs');
 const {auditLiveSearch}=require('./live-search-readiness.cjs');
+const {waitForUsableCover}=require('./cover-load-check.cjs');
 const base=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const dir=path.resolve('artifacts/live-smoke');fs.mkdirSync(dir,{recursive:true});
 const report={base,started:new Date().toISOString(),screens:[],checks:[],errors:[],warnings:[],liveAnswers:[],runtimeErrorSources:[]};
@@ -426,14 +427,7 @@ async function aiQuestion(page,question,expected,label){
     // fallback in production but FAIL this verification; do not invent art.
     const im=result.locator('img[data-ebook-cover]');
     await im.waitFor({state:'attached',timeout:10000});
-    const loaded=await im.evaluate(async image=>{
-      if(image.complete&&image.naturalWidth>0)return true;
-      return await new Promise(resolve=>{
-        let timer=setTimeout(()=>resolve(false),28000);
-        image.addEventListener('load',()=>{clearTimeout(timer);resolve(image.naturalWidth>0)},{once:true});
-        image.addEventListener('error',()=>{clearTimeout(timer);resolve(false)},{once:true});
-      });
-    });
+    const loaded=await im.evaluate(waitForUsableCover);
     const cover=await im.evaluate(img=>({src:img.currentSrc||img.src,loaded:img.complete&&img.naturalWidth>0,
       fit:getComputedStyle(img).objectFit}));
     // The matcher accepts source-verified Apple Books as the third ORIGINAL
