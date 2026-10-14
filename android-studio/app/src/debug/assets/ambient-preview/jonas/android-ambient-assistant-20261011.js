@@ -9,8 +9,8 @@
  // Only the Android app launches this script; explicit local QA opt-in never affects website users.
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
- var asset='/jonas/android-ambient-assistant-20261011.css?v=20261014-dock2',frame=null,panel=null,root=null,bubble=null;
- var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0;
+ var asset='/jonas/android-ambient-assistant-20261011.css?v=20261014-fullscreen1',frame=null,panel=null,root=null,bubble=null;
+ var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0,parkedBeforeChat=null;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
@@ -33,8 +33,9 @@
  function locale(){var s=String(selectedLanguage()).toLowerCase();return labels[s.split('-')[0]]||labels.en}
  function clamp(x,low,high){return Math.max(low,Math.min(high,x))}
  function viewport(){return {width:Math.max(1,window.innerWidth),height:Math.max(1,window.visualViewport?.height||window.innerHeight)}}
- function setPosition(x,y){var v=viewport(),sz=76;root.style.setProperty('left',clamp(x,8,Math.max(8,v.width-sz-8))+'px','important');root.style.setProperty('top',clamp(y,8,Math.max(8,v.height-sz-8))+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
- function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var v=viewport();var nx=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84)),ny=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
+ function safeBounds(){var v=viewport(),inset=(v.width>=700?4:3)+13;return {minX:inset,minY:inset,maxX:Math.max(inset,v.width-78-inset),maxY:Math.max(inset,v.height-78-inset)}}
+ function setPosition(x,y){var b=safeBounds();root.style.setProperty('left',clamp(x,b.minX,b.maxX)+'px','important');root.style.setProperty('top',clamp(y,b.minY,b.maxY)+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
+ function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var b=safeBounds();var nx=clamp(drag.x+drag.dx,b.minX,b.maxX),ny=clamp(drag.y+drag.dy,b.minY,b.maxY);root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
  function stopDragFrame(){if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}}
  function stopFling(){if(flingRaf){cancelAnimationFrame(flingRaf);flingRaf=0;var rect=root.getBoundingClientRect();root.style.transform='';setPosition(rect.left,rect.top);}}
  function coastBubble(fromX,fromY,toX,toY,ms,dragStartX,dragStartY){
@@ -247,14 +248,29 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   frame.src=frameUrl(title);frame.addEventListener('load',onFrameLoad);
   panel.appendChild(frame);
  }
+ function syncPanelViewport(){
+  if(!panel||!open)return;
+  var v=window.visualViewport;
+  panel.style.setProperty('--ja-view-left',Math.round(v?.offsetLeft||0)+'px');
+  panel.style.setProperty('--ja-view-top',Math.round(v?.offsetTop||0)+'px');
+  panel.style.setProperty('--ja-view-width',Math.round(v?.width||window.innerWidth)+'px');
+  panel.style.setProperty('--ja-view-height',Math.round(v?.height||window.innerHeight)+'px');
+ }
+ window.addEventListener('resize',syncPanelViewport,{passive:true});
+ window.visualViewport?.addEventListener('resize',syncPanelViewport,{passive:true});
+ window.visualViewport?.addEventListener('scroll',syncPanelViewport,{passive:true});
  function openPanel(){
   if(open)return;
+  var parked=root.getBoundingClientRect();
+  parkedBeforeChat={x:parked.left,y:parked.top};
+  root.dataset.jonasPositionHeld='1';
   open=true;epoch++;activeTitle=contextTitle();
-  panel.hidden=false;panel.querySelector('.ja-hello').textContent=greeting();
-  // Unfold visually from the actual draggable bubble, wherever it is parked.
-  var at=bubble.getBoundingClientRect(),box=panel.getBoundingClientRect();
-  panel.style.setProperty('--ja-origin-x',Math.round(at.left+at.width/2-box.left)+'px');
-  panel.style.setProperty('--ja-origin-y',Math.round(at.top+at.height/2-box.top)+'px');
+  document.body?.classList.add('ma-jonas-modal-open');
+  panel.hidden=false;syncPanelViewport();panel.querySelector('.ja-hello').textContent=greeting();
+  // Full-screen conversation is viewport-anchored, not positioned or scaled
+  // from the movable bubble. Closing restores the original saved placement.
+  panel.style.removeProperty('--ja-origin-x');
+  panel.style.removeProperty('--ja-origin-y');
   panel.querySelector('.ja-head-text span').textContent=locale().state;
   panel.querySelector('.ja-close').ariaLabel=locale().close;
   panel.querySelector('.ja-close').focus({preventScroll:true});
@@ -272,7 +288,12 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function closePanel(){
   if(!open)return;
   open=false;stopConversation();
-  panel.hidden=true;root.hidden=false;document.removeEventListener('keydown',escapeKey);
+  document.body?.classList.remove('ma-jonas-modal-open');
+  panel.hidden=true;root.hidden=false;
+  var resume=parkedBeforeChat;parkedBeforeChat=null;
+  if(resume){setPosition(resume.x,resume.y);requestAnimationFrame(function(){if(!open)setPosition(resume.x,resume.y)})}
+  ['--ja-view-left','--ja-view-top','--ja-view-width','--ja-view-height'].forEach(function(key){panel.style.removeProperty(key)});
+  document.removeEventListener('keydown',escapeKey);
   bubble.focus({preventScroll:true});
  }
  function escapeKey(event){if(event.key==='Escape'){event.preventDefault();closePanel()}}
@@ -306,7 +327,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   root=document.createElement('div');root.id='ma-ambient-jonas';
   root.innerHTML='<button type="button" class="ja-bubble" aria-label="Talk to Jonas" aria-haspopup="dialog"><img src="/jonas/faces/jonas/rest.jpg" alt=""><span class="ja-live" aria-hidden="true"></span></button>';
   bubble=root.firstElementChild;
-  panel=document.createElement('section');panel.id='ma-ambient-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Jonas conversation');
+  panel=document.createElement('section');panel.id='ma-ambient-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Jonas conversation');panel.setAttribute('aria-modal','true');
   panel.innerHTML='<div class="ja-panel-head"><div class="ja-face-wrap" aria-hidden="true"><img class="ja-face" src="/jonas/faces/jonas/rest.jpg" alt=""><img class="ja-blink" src="/jonas/faces/jonas/blink.jpg" alt="" aria-hidden="true"><img class="ja-mouth ja-mouth-a" alt=""><img class="ja-mouth ja-mouth-b" alt=""></div><div class="ja-head-text"><strong>Jonas</strong><span></span></div><button type="button" class="ja-close" aria-label="Close Jonas conversation">×</button></div><p class="ja-hello"></p>';
   (document.body||document.documentElement).append(root,panel);
   if(!document.body)document.addEventListener('DOMContentLoaded',function(){
@@ -343,15 +364,20 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
     }
     stopDragFrame();
     if(drag.moved){
-      var v=viewport();
-      var x=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84));
-      var y=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));
+      var b=safeBounds();
+      var x=clamp(drag.x+drag.dx,b.minX,b.maxX);
+      var y=clamp(drag.y+drag.dy,b.minY,b.maxY);
       // A soft fling preserves the last real swipe velocity, stops at the
       // viewport's safe edges and never continues through a new pointerdown.
       var impulse=Math.hypot(drag.vx,drag.vy);
-      var toX=clamp(x+drag.vx*155,8,Math.max(8,v.width-84));
-      var toY=clamp(y+drag.vy*155,8,Math.max(8,v.height-84));
-      if(impulse>.12&&Math.hypot(toX-x,toY-y)>4)
+      var toX=clamp(x+drag.vx*155,b.minX,b.maxX);
+      var toY=clamp(y+drag.vy*155,b.minY,b.maxY);
+      // Bounce inward whenever the finger or a fling collides with the frame.
+      if(x<=b.minX+2||toX<=b.minX+2)toX=Math.min(b.maxX,b.minX+16);
+      if(x>=b.maxX-2||toX>=b.maxX-2)toX=Math.max(b.minX,b.maxX-16);
+      if(y<=b.minY+2||toY<=b.minY+2)toY=Math.min(b.maxY,b.minY+16);
+      if(y>=b.maxY-2||toY>=b.maxY-2)toY=Math.max(b.minY,b.maxY-16);
+      if(Math.hypot(toX-x,toY-y)>4)
         coastBubble(x,y,toX,toY,clamp(impulse*250,180,420),drag.x,drag.y);
       else{root.style.transform='';setPosition(x,y);store();}
       skipClick=true;

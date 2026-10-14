@@ -51,14 +51,16 @@
   return true;
  }
  function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
+ function edgeInset(){return (innerWidth>=700?4:3)+13}
+ function safeBounds(w,h){var inset=edgeInset(),v=window.visualViewport;var vx=v?.offsetLeft||0,vy=v?.offsetTop||0,vw=v?.width||innerWidth,vh=v?.height||innerHeight;return {minX:vx+inset,minY:vy+inset,maxX:Math.max(vx+inset,vx+vw-w-inset),maxY:Math.max(vy+inset,vy+vh-h-inset)}}
  function setFloating(x,y){
   if(root.parentElement!==document.body)document.body.appendChild(root);
   root.classList.add('is-floating');
   var size=bubble.getBoundingClientRect();
-  var w=Math.max(72,size.width||82),h=Math.max(72,size.height||82);
-  var maxX=Math.max(8,innerWidth-w-8),maxY=Math.max(8,innerHeight-h-8);
-  root.style.setProperty('left',Math.round(clamp(x,8,maxX))+'px','important');
-  root.style.setProperty('top',Math.round(clamp(y,8,maxY))+'px','important');
+  var w=Math.max(72,size.width||82,root.offsetWidth||0),h=Math.max(72,size.height||82,root.offsetHeight||0);
+  var bounds=safeBounds(w,h);
+  root.style.setProperty('left',Math.round(clamp(x,bounds.minX,bounds.maxX))+'px','important');
+  root.style.setProperty('top',Math.round(clamp(y,bounds.minY,bounds.maxY))+'px','important');
   root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important');
   if(returnButton)returnButton.hidden=false;
  }
@@ -105,7 +107,17 @@
  }
  function endDrag(event){
   if(!dragging||dragging.id!==event.pointerId)return;
-  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},120);}
+  if(dragging.moved){
+   var size=bubble.getBoundingClientRect(),bounds=safeBounds(Math.max(72,size.width||82,root.offsetWidth||0),Math.max(72,size.height||82,root.offsetHeight||0));
+   var x=clamp(dragging.left+event.clientX-dragging.x,bounds.minX,bounds.maxX);
+   var y=clamp(dragging.top+event.clientY-dragging.y,bounds.minY,bounds.maxY);
+   // A border collision triggers a small inward spring. Jonas never crosses
+   // the fixed gold perimeter, even while the drag is in progress.
+   var reboundX=x<=bounds.minX+2?Math.min(bounds.maxX,bounds.minX+16):x>=bounds.maxX-2?Math.max(bounds.minX,bounds.maxX-16):x;
+   var reboundY=y<=bounds.minY+2?Math.min(bounds.maxY,bounds.minY+16):y>=bounds.maxY-2?Math.max(bounds.minY,bounds.maxY-16):y;
+   if(reboundX!==x||reboundY!==y){root.classList.add('ma-jonas-rebound');setFloating(reboundX,reboundY);setTimeout(function(){root.classList.remove('ma-jonas-rebound')},280)}
+   savePosition();suppressClick=true;setTimeout(function(){suppressClick=false},120);
+  }
   dragging=null;
  }
  bubble.addEventListener('pointerdown',startDrag);
@@ -150,6 +162,9 @@
    var d=locale.get(),set=function(selector,value){var el=document.querySelector(selector);if(el&&value)el.textContent=value};
    set('#ma-jonas-home .jh-title small',d.companion);
    set('#ma-jonas-home .jh-greeting',d.greeting);
+   // Keep the visible microphone hint in the user's selected language too.
+   if(!root.classList.contains('jh-listening')&&!root.classList.contains('jh-speaking'))
+    set('#ma-jonas-home-status',d.ready);
    set('#ma-jonas-inline-dock .jh-inline-eyebrow',d.eyebrow);
    set('#ma-jonas-inline-dock .jh-inline-copy small',d.hint);
    set('#ma-jonas-inline-dock .jh-launch-label',d.mic);
@@ -173,6 +188,17 @@
    }
   }
  }
+ function syncConversationViewport(){
+  if(!opened&&!root.classList.contains('is-chat-stage'))return;
+  var v=window.visualViewport;
+  root.style.setProperty('--ja-view-left',Math.round(v?.offsetLeft||0)+'px');
+  root.style.setProperty('--ja-view-top',Math.round(v?.offsetTop||0)+'px');
+  root.style.setProperty('--ja-view-width',Math.round(v?.width||window.innerWidth)+'px');
+  root.style.setProperty('--ja-view-height',Math.round(v?.height||window.innerHeight)+'px');
+ }
+ window.addEventListener('resize',syncConversationViewport,{passive:true});
+ window.visualViewport?.addEventListener('resize',syncConversationViewport,{passive:true});
+ window.visualViewport?.addEventListener('scroll',syncConversationViewport,{passive:true});
  function setOpen(next){
   if(opened===next)return;
   if(next){
@@ -180,6 +206,8 @@
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
    if(root.parentElement!==document.body)document.body.appendChild(root);
    root.classList.add('is-chat-stage');
+   panel.setAttribute('aria-modal','true');
+   syncConversationViewport();
    ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
    ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
    document.body.classList.add('ma-jonas-chat-open');
@@ -191,6 +219,8 @@
   if(!next){
    root.dispatchEvent(new CustomEvent('matchapp:jonas-close'));
    root.classList.remove('is-chat-stage');
+   panel.setAttribute('aria-modal','false');
+   ['--ja-view-left','--ja-view-top','--ja-view-width','--ja-view-height'].forEach(function(key){root.style.removeProperty(key)});
    document.body.classList.remove('ma-jonas-chat-open');
    if(stageFloating&&stagePosition)setFloating(stagePosition.left,stagePosition.top);
    else {root.classList.remove('is-floating');mountInline();}
@@ -250,5 +280,13 @@
  document.addEventListener('matchapp:langchange',hideLateAskHeading);
  document.addEventListener('matchapp:langchange',translate);
  restorePosition();
+ // Focused Home retires the old inline Ask area. A first-time visitor must
+ // still see the single companion in the empty header corner immediately.
+ // Never replace a saved user drag position.
+ if(document.body.classList.contains('ma-watch-focused')&&!root.classList.contains('is-floating')){
+  var slot=document.getElementById('ma-jonas-header-slot');
+  var at=slot?.getBoundingClientRect();
+  setFloating(at?.left??Math.max(8,innerWidth-100),at?.top??16);
+ }
  translate();
 })();

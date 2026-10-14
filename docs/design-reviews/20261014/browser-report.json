@@ -1,0 +1,317 @@
+{
+  "generated": "2026-10-14",
+  "checks": 31,
+  "notes": [
+    "Local browser only; no production AI, speech or physical keyboard verification",
+    "Screenshots show viewport, not full loaded external media"
+  ],
+  "checksPerformed": [
+    {
+      "phase": "after",
+      "width": 320,
+      "route": "/",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Encontre o que assistir | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 320,
+      "route": "/explore.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Explore mais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 320,
+      "route": "/music.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Música e vídeos oficiais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 320,
+      "route": "/discover.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Converse com Jonas | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 320,
+      "route": "/profile/profile.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai | Meu Perfil",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 320,
+      "route": "/pricing/pricing.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 390,
+      "route": "/",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Encontre o que assistir | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 390,
+      "route": "/explore.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Explore mais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 390,
+      "route": "/music.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Música e vídeos oficiais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 390,
+      "route": "/discover.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Converse com Jonas | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 390,
+      "route": "/profile/profile.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai | Meu Perfil",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 390,
+      "route": "/pricing/pricing.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 390,
+      "route": "/discover.html",
+      "scenario": "keyboard-sized-viewport",
+      "status": "checked (not physical IME)"
+    },
+    {
+      "phase": "after",
+      "width": 820,
+      "route": "/",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Encontre o que assistir | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 820,
+      "route": "/explore.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Explore mais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 820,
+      "route": "/music.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Música e vídeos oficiais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 820,
+      "route": "/discover.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Converse com Jonas | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 820,
+      "route": "/profile/profile.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai | Meu Perfil",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 820,
+      "route": "/pricing/pricing.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1366,
+      "route": "/",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Encontre o que assistir | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1366,
+      "route": "/explore.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Explore mais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1366,
+      "route": "/music.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Música e vídeos oficiais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1366,
+      "route": "/discover.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Converse com Jonas | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1366,
+      "route": "/profile/profile.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai | Meu Perfil",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1366,
+      "route": "/pricing/pricing.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1920,
+      "route": "/",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Encontre o que assistir | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1920,
+      "route": "/explore.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Explore mais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1920,
+      "route": "/music.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Música e vídeos oficiais | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1920,
+      "route": "/discover.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "Converse com Jonas | MatchApp Ai",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1920,
+      "route": "/profile/profile.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai | Meu Perfil",
+      "docDir": "ltr",
+      "errors": 0
+    },
+    {
+      "phase": "after",
+      "width": 1920,
+      "route": "/pricing/pricing.html",
+      "lang": "pt-BR",
+      "overflow": 0,
+      "title": "MatchApp Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass",
+      "docDir": "ltr",
+      "errors": 0
+    }
+  ]
+}

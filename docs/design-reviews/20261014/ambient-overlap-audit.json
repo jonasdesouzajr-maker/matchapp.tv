@@ -1,0 +1,244 @@
+{
+  "results": [
+    {
+      "route": "/explore.html",
+      "width": 320,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 228,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 320,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 228,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/explore.html",
+      "width": 320,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 230,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 320,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 230,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/explore.html",
+      "width": 390,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 298,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 390,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 298,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/explore.html",
+      "width": 390,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 300,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 390,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 300,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/explore.html",
+      "width": 800,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 708,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 800,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 708,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/explore.html",
+      "width": 800,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 710,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 800,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 710,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/explore.html",
+      "width": 1366,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 1274,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 1366,
+      "locale": "pt-BR",
+      "lang": "pt-BR",
+      "dir": "ltr",
+      "overflow": 0,
+      "bubble": {
+        "x": 1274,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/explore.html",
+      "width": 1366,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 1276,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    },
+    {
+      "route": "/music.html",
+      "width": 1366,
+      "locale": "ar",
+      "lang": "ar",
+      "dir": "rtl",
+      "overflow": 0,
+      "bubble": {
+        "x": 1276,
+        "y": 16,
+        "w": 76,
+        "h": 76
+      },
+      "overlaps": []
+    }
+  ]
+}

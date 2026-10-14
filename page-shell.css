@@ -396,3 +396,34 @@ body.page-shell .tg-friends-link{
   line-height:1.35;overflow-wrap:break-word;
 }
 body.page-shell .tg-friends-link:hover{border-color:var(--ma-gold);color:#fff0c4}
+
+/* Adult destination polish: preserve routes, ad exclusions, established header geometry. */
+body.page-shell{
+ font-family:system-ui,-apple-system,"Segoe UI","Noto Sans","Noto Sans CJK SC","Noto Sans Devanagari","Noto Naskh Arabic",sans-serif;
+ -webkit-font-smoothing:antialiased;
+}
+body.page-shell main{min-width:0}
+body.page-shell main :is(h1,h2,h3){line-height:1.25;text-wrap:balance;overflow-wrap:break-word}
+body.page-shell main :is(p,li,blockquote){line-height:1.65;overflow-wrap:break-word}
+body.page-shell :is(.page-panel,.discover-head,.profile-panel,.profile-card,.pricing-card,.auth-card):not([hidden]){
+ border-color:rgba(244,207,149,.27);
+ box-shadow:0 16px 42px rgba(4,1,11,.3),inset 0 1px rgba(255,247,227,.045);
+}
+body.page-shell :is(a,button,input,select,textarea,summary,[role="button"]):focus-visible{
+ outline:3px solid #f6d998!important;outline-offset:3px!important;
+}
+body.page-shell main :is(input,select,textarea){max-width:100%;box-sizing:border-box}
+body.page-shell main :is(button,.gold-btn,.tg-btn,.hub-action){
+ white-space:normal;overflow-wrap:break-word;line-height:1.4;
+}
+body.page-shell main :is(img,video){max-width:100%}
+body.page-shell main :is(.result-poster,.book-cover,.music-cover,.tg-result-poster){object-fit:contain;height:auto}
+html:lang(ar) body.page-shell {font-family:system-ui,"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif}
+html:lang(hi) body.page-shell {font-family:system-ui,"Noto Sans Devanagari",Mangal,sans-serif}
+@media(max-width:600px){
+ body.page-shell main :is(h1,h2){hyphens:auto;overflow-wrap:break-word}
+ body.page-shell main :is(button,.gold-btn,.tg-btn){max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ body.page-shell main :is(.page-panel,.discover-head,.profile-panel,.profile-card,.pricing-card,.auth-card){transition:none!important}
+}
