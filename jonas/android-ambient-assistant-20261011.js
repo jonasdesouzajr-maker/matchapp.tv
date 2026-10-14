@@ -9,7 +9,7 @@
  // Only the Android app launches this script; explicit local QA opt-in never affects website users.
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
- var asset='/jonas/android-ambient-assistant-20261011.css?v=20261014-fullscreen1',frame=null,panel=null,root=null,bubble=null;
+ var asset='/jonas/android-ambient-assistant-20261011.css?v=20261014-dock1',frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0,parkedBeforeChat=null;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
@@ -51,7 +51,22 @@
    flingRaf=requestAnimationFrame(coast);
  }
  function store(){try{var r=root.getBoundingClientRect(),v=viewport();var position=JSON.stringify({x:r.left/Math.max(1,v.width-76),y:r.top/Math.max(1,v.height-76)});localStorage.setItem(key,position);localStorage.setItem('matchapp-jonas-position-v2',position)}catch(_){}}
- function restore(){try{var p=JSON.parse(localStorage.getItem('matchapp-jonas-position-v2')||localStorage.getItem(key)||'null');if(Number.isFinite(p?.x)&&Number.isFinite(p?.y)){var v=viewport();setPosition(p.x*(v.width-76),p.y*(v.height-76))}}catch(_){}}
+ function defaultPosition(){
+  var v=viewport(),right=v.width>=1100?28:(v.width>=700?22:14);
+  var bottom=v.width>=1100?120:(v.width>=700?118:Math.max(104,Math.min(150,v.height*.17)));
+  setPosition(v.width-76-right,v.height-76-bottom);
+  root.dataset.jonasDefaultDock='1';
+ }
+ function restore(){
+  try{
+   var p=JSON.parse(localStorage.getItem('matchapp-jonas-position-v2')||localStorage.getItem(key)||'null');
+   if(Number.isFinite(p?.x)&&Number.isFinite(p?.y)){
+    var v=viewport();setPosition(p.x*(v.width-76),p.y*(v.height-76));
+    root.dataset.jonasDefaultDock='0';return;
+   }
+  }catch(_){}
+  defaultPosition();
+ }
  function visibleResult(){
   var box=document.getElementById('result-box')||document.getElementById('result-card');
   if(!box||box.hidden||getComputedStyle(box).display==='none')return '';
@@ -72,7 +87,7 @@
    else{var policy=document.createElement('script');policy.src='/jonas/male-voice-policy-20261010.js';policy.onload=function(){document.head.appendChild(speech)};document.head.appendChild(policy)}
   }
   if(!document.getElementById('ma-jonas-premium-script')){
-   var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=premium2';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
+   var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=motiondock1';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
   }
   // Critical first-paint styling is deliberately inline. Synchronous head
   // scripts may delay external CSS but the Jonas bubble cannot appear square
@@ -363,6 +378,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
     }
     stopDragFrame();
     if(drag.moved){
+      root.dataset.jonasDefaultDock='0';
       var v=viewport();
       var x=clamp(drag.x+drag.dx,8,Math.max(8,v.width-84));
       var y=clamp(drag.y+drag.dy,8,Math.max(8,v.height-84));
@@ -382,7 +398,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   bubble.addEventListener('pointerup',end);bubble.addEventListener('pointercancel',end);
   bubble.addEventListener('click',function(){if(skipClick){skipClick=false;return}openPanel()});
   panel.querySelector('.ja-close').addEventListener('click',closePanel);
-  window.addEventListener('resize',function(){var r=root.getBoundingClientRect();if(root.style.left)setPosition(r.left,r.top)},{passive:true});
+  window.addEventListener('resize',function(){if(root.dataset.jonasDefaultDock==='1'){defaultPosition();return}var r=root.getBoundingClientRect();if(root.style.left)setPosition(r.left,r.top)},{passive:true});
   window.addEventListener('pagehide',stopConversation);
   document.addEventListener('matchapp:langchange',function(){
    // The same-origin chat must use the same explicit language immediately.

@@ -169,3 +169,11 @@ body.page-journey{
  .journey-ambient span,.journey-stage-art>i,.journey-chapter::before,.journey-ready .journey-chapter.is-active{animation:none!important}
  .page-journey :is(*, *::before, *::after){transition:none!important}
 }
+/* Guide chapters never truncate translated titles inside the existing swipeable nav. */
+@media(max-width:880px){
+ .journey-nav-item{height:auto!important;min-height:54px!important;align-items:center;white-space:normal!important}
+ .journey-nav-item .journey-nav-text{
+  max-width:126px!important;white-space:normal!important;overflow:visible!important;
+  text-overflow:clip!important;overflow-wrap:anywhere!important;line-height:1.2!important;
+ }
+}

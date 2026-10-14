@@ -105,7 +105,7 @@
  }
  function endDrag(event){
   if(!dragging||dragging.id!==event.pointerId)return;
-  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},120);}
+  if(dragging.moved){root.dataset.jonasDefaultDock='0';suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},120);}
   dragging=null;
  }
  bubble.addEventListener('pointerdown',startDrag);
@@ -268,13 +268,14 @@
  document.addEventListener('matchapp:langchange',hideLateAskHeading);
  document.addEventListener('matchapp:langchange',translate);
  restorePosition();
- // Focused Home retires the old inline Ask area. A first-time visitor must
- // still see the single companion in the empty header corner immediately.
- // Never replace a saved user drag position.
+ // Start in a consistent safe lower-right dock instead of covering the top-box
+ // navigation. Existing user-saved drag placements always win.
  if(document.body.classList.contains('ma-watch-focused')&&!root.classList.contains('is-floating')){
-  var slot=document.getElementById('ma-jonas-header-slot');
-  var at=slot?.getBoundingClientRect();
-  setFloating(at?.left??Math.max(8,innerWidth-100),at?.top??16);
+  var width=bubble.getBoundingClientRect().width||82;
+  var bottomGap=innerWidth>=1100?120:(innerWidth>=700?118:Math.max(104,Math.min(150,innerHeight*.17)));
+  var rightGap=innerWidth>=1100?28:(innerWidth>=700?22:14);
+  setFloating(innerWidth-width-rightGap,innerHeight-width-bottomGap);
+  root.dataset.jonasDefaultDock='1';
  }
  translate();
 })();

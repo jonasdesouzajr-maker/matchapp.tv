@@ -1,0 +1,63 @@
+/* MatchApp Ai — tactile motion and compact multilingual control fit (adult only).
+   No endless compositor animations or second scroll writers. */
+:root{--ma-touch-quick:160ms;--ma-touch-normal:250ms;--ma-touch-ease:cubic-bezier(.22,.75,.25,1)}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"]){
+ -webkit-tap-highlight-color:transparent;
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+:is(.ma-luxe-shortcuts,.hub-links,.journey-header-links,.ma-worlds-grid,.journey-controls)
+:is(a,button),
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+:is(.explore-card,.ma-world-card,.journey-nav-item,.journey-visit,.journey-home){
+ transition:background-color var(--ma-touch-quick) ease,border-color var(--ma-touch-quick) ease,
+ color var(--ma-touch-quick) ease,box-shadow var(--ma-touch-normal) var(--ma-touch-ease),
+ transform var(--ma-touch-normal) var(--ma-touch-ease)!important;
+}
+@media(hover:hover){
+ html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+ :is(.ma-luxe-shortcuts,.hub-links,.journey-header-links,.ma-worlds-grid,.journey-controls)
+ :is(a,button):hover{transform:translateY(-1px)}
+}
+@media(pointer:coarse){
+ html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+ :is(.ma-luxe-shortcuts,.hub-links,.journey-header-links,.ma-worlds-grid,.journey-controls)
+ :is(a,button):active{transform:scale(.985)}
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+ :is(button,.hub-action,.journey-control,.journey-visit,.journey-home,.ma-luxe-shortcut,.ma-worlds-see-all){
+ overflow-wrap:anywhere;hyphens:auto;text-wrap:pretty;
+}
+html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+ :is(.hub-links,.journey-header-links,.journey-controls) :is(button,a){
+ min-width:0;white-space:normal!important;line-height:1.22;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > :is(a.ma-luxe-shortcut,button.ma-worlds-trigger){
+ height:auto!important;min-height:52px!important;max-height:none!important;
+ padding:8px 6px!important;white-space:normal!important;overflow:visible!important;
+ line-height:1.18!important;font-size:clamp(.69rem,.9vw,.88rem)!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts .ma-luxe-text{
+ flex:1 1 auto;min-width:0;white-space:normal!important;overflow:visible!important;
+ text-overflow:clip!important;overflow-wrap:anywhere!important;hyphens:auto;line-height:1.2!important;
+}
+@media(max-width:900px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > :is(a.ma-luxe-shortcut,button.ma-worlds-trigger){
+ font-size:clamp(.73rem,2.7vw,.86rem)!important;
+ }
+}
+:is(#marquee-viewport,#events-viewport,.ma-news-viewport,.ma-news-carousel-viewport,
+ .billboard-grid,.spotify-video-grid,.swifties-track){
+ -webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;
+}
+#marquee-viewport{scroll-snap-type:none!important;scroll-behavior:auto!important;touch-action:pan-x pan-y}
+/* Non-looping manually scrolled collections settle gently; never snap the continuously looping marquee. */
+:is(.swifties-track,.billboard-grid):not(#marquee-viewport){scroll-snap-type:x proximity}
+:is(.swifties-track,.billboard-grid)>*{scroll-snap-align:start}
+@media(prefers-reduced-motion:reduce){
+ html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+ :is(a,button,.ma-world-card,.journey-nav-item,.journey-visit,.journey-home){transition:none!important;animation:none!important}
+ html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+ :is(a,button):hover,html body:not(.page-kids):not(.kids-body):not([data-kids-mode="true"])
+ :is(a,button):active{transform:none!important}
+ :is(.swifties-track,.billboard-grid){scroll-behavior:auto!important;scroll-snap-type:none!important}
+}

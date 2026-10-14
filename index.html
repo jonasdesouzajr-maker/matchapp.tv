@@ -1696,15 +1696,15 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <link rel="stylesheet" href="/home-cinematic.css?v=cinematic2">
 <link rel="stylesheet" href="/cinematic-header.css?v=cinematic-shimmer1">
 <link rel="stylesheet" href="/patches/header-and-jonas-fixes.css?v=fix1">
-<link rel="stylesheet" href="/patches/jonas-premium-glass.css?v=20261014-fullscreen1">
+<link rel="stylesheet" href="/patches/jonas-premium-glass.css?v=20261014-dock2">
 <link rel="stylesheet" href="/patches/home-watch-focus.css?v=watch1">
 <link rel="stylesheet" href="/patches/adult-home-finish-20261014.css?v=design20261014-4">
-<link rel="stylesheet" href="/patches/explore-worlds-20261014.css?v=worlds20261014-3">
+<link rel="stylesheet" href="/patches/explore-worlds-20261014.css?v=worlds20261014-inline1">
 <script defer src="/patches/home-watch-focus.js?v=design20261014-1"></script>
-<script defer src="/patches/explore-worlds-20261014.js?v=worlds20261014-1"></script>
+<script defer src="/patches/explore-worlds-20261014.js?v=worlds20261014-inline1"></script>
 <script defer src="/patches/match-first-experience-20261014.js?v=matchfirst20261014-1"></script>
 <script defer src="/patches/result-synopsis-visible-20261014.js?v=20261014-1"></script>
-<script defer src="/patches/jonas-premium-enhancer.js?v=premium2"></script>
+<script defer src="/patches/jonas-premium-enhancer.js?v=motiondock1"></script>
 <script defer src="/patches/jonas-swipe-velocity.js?v=swipe1"></script>
 <script defer src="/patches/jonas-intro-audio.js?v=intro1"></script>
 <script defer src="/patches/jonas-adult-page.js?v=20261014-fullscreen1"></script>
@@ -2216,15 +2216,14 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         <a href="/#trending-rail" class="ma-luxe-shortcut" data-ma-nav="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 5 13h7l-1 9 8-12h-7z"/></svg><span class="ma-luxe-text">Trending</span></a>
         <a href="/profile/profile.html" class="ma-luxe-shortcut" data-ma-nav="4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 21c.2-4 3-6.2 7.5-6.2s7.3 2.2 7.5 6.2"/></svg><span class="ma-luxe-text">Profile</span></a>
         <button type="button" id="ma-worlds-trigger" class="ma-luxe-shortcut ma-discovery-cta ma-worlds-trigger"
-  aria-haspopup="dialog" aria-controls="ma-explore-worlds-panel" aria-expanded="false">
+  aria-controls="ma-explore-worlds-panel" aria-expanded="false">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8z"/><circle cx="12" cy="12" r="2.4"/></svg>
   <span class="ma-luxe-text" data-explore-more-label>Explore more</span>
  </button>
         <a href="/kids/" class="ma-luxe-shortcut ma-browser-kids" data-ma-nav="5" data-matchapp-kids-entry="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/><path d="m19 17 .8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8z"/></svg><span class="ma-luxe-text">Kids</span></a>
         </nav>
- <div id="ma-explore-worlds-panel" class="ma-worlds-overlay" hidden>
-  <div class="ma-worlds-shade" data-worlds-dismiss="shade"></div>
-  <section class="ma-worlds-panel" role="dialog" aria-modal="true" aria-label="Explore more experiences" tabindex="-1">
+ <div id="ma-explore-worlds-panel" class="ma-worlds-inline" hidden>
+  <section class="ma-worlds-panel" role="region" aria-label="Explore more experiences" tabindex="-1">
    <header class="ma-worlds-heading">
     <div><span class="ma-worlds-eyebrow" data-match-experience-eyebrow>YOUR MATCH UNIVERSE</span>
      <h2 data-match-experience-dialog>Find Your Next Match</h2>
@@ -4008,7 +4007,7 @@ const footerYearEl = document.getElementById('footer-year');
         </button>
     </aside>
     <script defer src="/jonas/locales-20261009-v2.js?v=20261014-fastlang1"></script>
-    <script defer src="/jonas/floating-home-20261010-v3.js?v=fullscreen20261014-2"></script>
+    <script defer src="/jonas/floating-home-20261010-v3.js?v=motiondock20261014-1"></script>
 <script>
 document.addEventListener('click',function(event){
   var a=event.target&&event.target.closest&&event.target.closest('#ma-jonas-home .jh-suggestion');

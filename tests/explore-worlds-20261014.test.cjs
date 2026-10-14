@@ -46,7 +46,7 @@ test('all nine Worlds routes resolve to the existing site files', ()=>{
   }
   dom.window.close();
 });
-test('Explore Worlds opens, traps semantic dialog, closes on Escape and translates', ()=>{
+test('Explore Worlds expands inline without a modal, closes on Escape and translates', ()=>{
   const dom=setup(), {document,Event,KeyboardEvent}=dom.window;
   const trigger=document.querySelector('#ma-worlds-trigger');
   const overlay=document.querySelector('#ma-explore-worlds-panel');
@@ -54,8 +54,10 @@ test('Explore Worlds opens, traps semantic dialog, closes on Escape and translat
   trigger.click();
   assert.equal(overlay.hidden,false);
   assert.equal(trigger.getAttribute('aria-expanded'),'true');
-  assert.equal(overlay.parentNode,document.body);
-  assert.equal(overlay.querySelector('[role="dialog"]').getAttribute('aria-modal'),'true');
+  assert.equal(overlay.parentNode,document.querySelector('#mh-topbox'));
+  assert.ok(overlay.querySelector('[role="region"]'));
+  assert.equal(overlay.querySelector('[aria-modal="true"]'),null);
+  assert.equal(document.body.classList.contains('ma-worlds-open'),false);
   dom.window.MATCH_LANG='pt-BR';
   document.dispatchEvent(new Event('matchapp:langchange'));
   assert.match(overlay.querySelector('h2').textContent,/Encontre Seu Próximo Match/i);
