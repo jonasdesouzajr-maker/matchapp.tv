@@ -90,7 +90,7 @@ test('signature metallic type stays bold, bounded, responsive and accessible on 
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
  assert.match(css,/html\.reduce-motion body\.page-home/);
  assert.match(css,/html body\.page-shell header\.app-header\.mh-topbox/);
- assert.match(read('page-shell.css'),/^@import url\("\/brand-headline\.css\?v=20260926-ai-energy2"\);/);
+ assert.match(read('page-shell.css'),/^@import url\("\/brand-headline\.css\?v=20260926-ai-energy2&wordgap=20261013-1"\);/);
 });
 
 test('normal submitted Android package inherits web typography; Kids remains separate',()=>{

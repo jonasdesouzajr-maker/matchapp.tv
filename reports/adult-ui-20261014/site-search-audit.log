@@ -1,0 +1,75 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> audit:site
+> node tools/audit-site.js && node tools/audit-search.js && node tools/search-readiness.js && node tools/gsc-index-video-guard-20261012.cjs
+
+{
+  "files": 2450,
+  "html": 1340,
+  "js": 476,
+  "externalUrls": 1914,
+  "issues": []
+}
+{
+  "publicUrls": 244,
+  "issues": [],
+  "warnings": [
+    {
+      "url": "https://matchapp.tv/guides/what-to-watch-october-9-12-2026/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/trending/this-week/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/discover.html",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/jonas/",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/android/",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/featured/this-week/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/together.html",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/about.html",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/contact.html",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/platforms/plus-sbt/",
+      "detail": "Existing analytics container missing"
+    }
+  ]
+}
+{
+  "checkedUrls": 244,
+  "errors": []
+}
+{
+  "sitemapUrls": 244,
+  "sitemapMissing": 0,
+  "noindexInSitemap": 0,
+  "filesWithVideoMarkup": 4,
+  "errors": [],
+  "site": "https://matchapp.tv/",
+  "examplePrivateExcluded": true
+}
