@@ -1,0 +1,105 @@
+{
+  "candidate": "ffdf1813539225f6d793a3612c9dce64b7c16959",
+  "physicalDevice": "Samsung SM-X236B",
+  "backendMocked": false,
+  "results": [
+    {
+      "test": "physical language and frame",
+      "lang": "en",
+      "selected": "en",
+      "width": 800,
+      "height": 1250,
+      "frame": "4px",
+      "overflow": 0,
+      "bubbles": 1
+    },
+    {
+      "test": "physical language and frame",
+      "lang": "pt-BR",
+      "selected": "pt-BR",
+      "width": 800,
+      "height": 1250,
+      "frame": "4px",
+      "overflow": 0,
+      "bubbles": 1
+    },
+    {
+      "test": "physical language and frame",
+      "lang": "ja",
+      "selected": "ja",
+      "width": 800,
+      "height": 1250,
+      "frame": "4px",
+      "overflow": 0,
+      "bubbles": 1
+    },
+    {
+      "test": "physical language and frame",
+      "lang": "zh",
+      "selected": "zh",
+      "width": 800,
+      "height": 1250,
+      "frame": "4px",
+      "overflow": 0,
+      "bubbles": 1
+    },
+    {
+      "test": "physical language and frame",
+      "lang": "ko",
+      "selected": "ko",
+      "width": 800,
+      "height": 1250,
+      "frame": "4px",
+      "overflow": 0,
+      "bubbles": 1
+    },
+    {
+      "test": "physical language and frame",
+      "lang": "hi",
+      "selected": "hi",
+      "width": 800,
+      "height": 1250,
+      "frame": "4px",
+      "overflow": 0,
+      "bubbles": 1
+    },
+    {
+      "test": "physical language and frame",
+      "lang": "ar",
+      "selected": "ar",
+      "width": 800,
+      "height": 1250,
+      "frame": "4px",
+      "overflow": 0,
+      "bubbles": 1
+    },
+    {
+      "test": "physical swipe",
+      "before": 8913.3330078125,
+      "after": 9357.3330078125
+    },
+    {
+      "test": "physical explore navigation and back",
+      "pass": true
+    },
+    {
+      "test": "physical fullscreen",
+      "panels": [
+        {
+          "id": "ma-ambient-panel",
+          "x": 4,
+          "y": 4,
+          "width": 792,
+          "height": 1242
+        }
+      ],
+      "width": 800,
+      "height": 1250
+    },
+    {
+      "test": "physical close",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
