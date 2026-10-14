@@ -11,7 +11,7 @@
  window.__matchappAmbientJonas=true;
  var asset='/jonas/android-ambient-assistant-20261011.css?live='+Date.now(),frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0;
- var greetStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
+ var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
   en:{hello:"Hi, I'm Jonas. How can I help?",subject:'I can tell you more about this title.',close:'Close Jonas chat',open:'Talk to Jonas',state:'Your conversation stays over this page'},
@@ -145,10 +145,10 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   pendingListen=0;listen();
  }
  function cloudGreeting(token){
-  if(!open||token!==epoch)return;
+  if(!open||token!==epoch||cloudGreetingStarted===token)return;
   clearTimeout(helloTimer);restoreSpeakingCallback();
   if(!ready){pendingCloud=token;helloTimer=setTimeout(()=>finishGreeting(token),3600);return}
-  pendingCloud=0;
+  pendingCloud=0;cloudGreetingStarted=token;
   var voice;
   try{
    var w=frame.contentWindow;

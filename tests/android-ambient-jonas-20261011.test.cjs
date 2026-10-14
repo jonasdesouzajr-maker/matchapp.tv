@@ -75,3 +75,11 @@ test('first-paint bubble is mounted and styled before the main document has a bo
  assert.match(critical.textContent,/#ma-ambient-panel\{position:fixed!important/);
  dom.window.close();
 });
+test('repeated native failure cannot restart and abort an already-started cloud greeting',()=>{
+ const {w,dom}=scene();w.document.querySelector('.ja-bubble').click();
+ const nativeCallback=w.matchAppNativeSpeechState,frame=w.document.querySelector('#ma-ambient-chat-frame');let calls=0;
+ const fake={location:{origin:w.location.origin,pathname:'/discover.html'},MatchAppJonasSpeech:{unlock(){}},MatchAppJonasStage:{speak(){calls++;return new Promise(()=>{})}},document:frame.contentDocument};
+ Object.defineProperty(frame,'contentWindow',{configurable:true,value:fake});frame.dispatchEvent(new w.Event('load'));
+ nativeCallback(false);nativeCallback(false);
+ assert.equal(calls,1,'the first synthesis must stay alive when a stale failure arrives');dom.window.close();
+});
