@@ -1,4 +1,4 @@
-@import url("/patches/jonas-premium-glass.css?v=premium1");
+@import url("/patches/jonas-premium-glass.css?v=premium2");
 /* Android-only ambient Jonas. All colors, sizing and motion are server-editable.
    Never touches Kids, AdSense, Matching or the native Play Billing entitlement. */
 html.matchapp-ai-android #ma-jonas-home,
@@ -6,7 +6,7 @@ html.matchapp-ai-android #matchapp-android-avatar-launcher,
 html.matchapp-ai-android #matchapp-android-avatar-spacer,
 html.matchapp-ai-android body.ma-jonas-inline #ma-ai-entry,
 html.matchapp-ai-android #ma-jonas-inline-dock {display:none!important}
-#ma-ambient-jonas{--ja-gold:#f5d38f;--ja-ink:#1a1128;position:fixed;z-index:2147483200;left:auto;top:auto;right:16px;bottom:max(90px,env(safe-area-inset-bottom));width:78px;height:78px;pointer-events:auto;touch-action:none;isolation:isolate}
+#ma-ambient-jonas{--ja-gold:#f5d38f;--ja-ink:#1a1128;position:fixed;z-index:2147483200;left:auto;top:max(16px,env(safe-area-inset-top));right:16px;bottom:auto;width:78px;height:78px;pointer-events:auto;touch-action:none;isolation:isolate}
 #ma-ambient-jonas[hidden],#ma-ambient-panel[hidden]{display:none!important}
 #ma-ambient-jonas *{box-sizing:border-box}
 #ma-ambient-jonas .ja-bubble{width:76px;height:76px;position:relative;display:block;padding:2px;border:2px solid var(--ja-gold);border-radius:50%;background:radial-gradient(circle,#573570 0%,#20132c 75%);box-shadow:0 5px 22px #000a,0 0 0 4px #dbbd7340,0 0 24px #b16be04b;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}

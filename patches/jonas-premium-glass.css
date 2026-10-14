@@ -46,3 +46,30 @@ html.reduce-motion #ma-jonas-home .jh-portrait,
 html.reduce-motion #ma-ambient-jonas .ja-premium-face {animation:none!important}
 
 #ma-ambient-jonas .ja-bubble {width:76px!important;height:76px!important}
+
+/* Reserve the header corner before scripts run; account controls keep their row. */
+body.page-home #mh-topbox .mh-head {position:relative!important;padding-right:104px!important;min-height:100px!important;box-sizing:border-box!important}
+#ma-jonas-header-slot {position:absolute;right:8px;top:8px;width:92px;height:92px;pointer-events:none}
+#ma-jonas-home.ja-header-default:not(.is-chat-stage) .jh-bubble {width:92px!important;height:92px!important}
+#ma-jonas-home.is-chat-stage .jh-bubble {transform:scale(1.1)!important;transform-origin:center}
+#ma-ambient-panel .ja-panel-head {height:112px!important;padding:10px 14px!important}
+#ma-ambient-panel .ja-face-wrap {width:92px!important;height:92px!important;flex-basis:92px!important;animation:ja-premium-breathe 4.8s ease-in-out infinite}
+#ma-ambient-panel .ja-blink {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;border-radius:50%;clip-path:inset(20% 8% 48%);opacity:0;pointer-events:none;animation:ja-premium-blink 5.6s infinite}
+@keyframes ja-premium-blink {0%,45%,49%,100%{opacity:0}46%,48%{opacity:1}}
+@media(max-width:600px){body.page-home #mh-topbox .mh-head{padding-right:88px!important;min-height:88px!important}#ma-jonas-header-slot{width:76px;height:76px}#ma-jonas-home.ja-header-default:not(.is-chat-stage) .jh-bubble{width:76px!important;height:76px!important}}
+@media(prefers-reduced-motion:reduce){#ma-ambient-panel .ja-face-wrap,#ma-ambient-panel .ja-blink{animation:none!important}#ma-jonas-home.is-chat-stage .jh-bubble{transition:none!important}}
+
+/* Chat bounds follow the visible screen, never the saved launcher coordinates. */
+html body #ma-jonas-home.is-chat-stage,html body #ma-ambient-panel {
+ position:fixed!important;left:var(--ja-view-left,0px)!important;top:var(--ja-view-top,0px)!important;right:auto!important;bottom:auto!important;
+ width:var(--ja-view-width,100vw)!important;height:var(--ja-view-height,100dvh)!important;max-width:none!important;max-height:none!important;min-height:0!important;
+ margin:0!important;box-sizing:border-box!important;transform:none!important;
+ padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))!important;
+}
+html body #ma-jonas-home.is-chat-stage .jh-popover {width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;min-height:0!important;display:flex!important;flex-direction:column!important}
+html body #ma-jonas-home.is-chat-stage .jh-content {min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain}
+html body #ma-jonas-home.is-chat-stage .jh-medallion {width:96px!important;height:96px!important;animation:ja-premium-breathe 4.8s ease-in-out infinite}
+html body #ma-ambient-panel {border-radius:18px!important}
+html body #ma-ambient-panel iframe {flex:1 1 auto!important;min-height:0!important}
+@media(max-height:500px){html body #ma-ambient-panel .ja-panel-head{height:68px!important}html body #ma-ambient-panel .ja-face-wrap{width:52px!important;height:52px!important;flex-basis:52px!important}html body #ma-jonas-home.is-chat-stage .jh-medallion{width:52px!important;height:52px!important}html body #ma-jonas-home.is-chat-stage .jh-header{padding:6px 52px!important;gap:2px!important}}
+@media(prefers-reduced-motion:reduce){html body #ma-jonas-home.is-chat-stage .jh-medallion{animation:none!important}}

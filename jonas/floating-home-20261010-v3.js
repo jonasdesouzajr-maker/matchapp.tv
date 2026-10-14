@@ -64,21 +64,21 @@
  }
  function restorePosition(){
   try{
-   var pos=JSON.parse(localStorage.getItem(storageKey)||'null');
+   var pos=JSON.parse(localStorage.getItem('matchapp-jonas-position-v2')||localStorage.getItem(storageKey)||'null');
    if(!pos||!Number.isFinite(pos.x)||!Number.isFinite(pos.y))return;
    setFloating(pos.x*Math.max(1,innerWidth-bubble.offsetWidth),pos.y*Math.max(1,innerHeight-bubble.offsetHeight));
   }catch(_){/* Unavailable storage simply leaves Jonas in his section. */}
  }
  function returnHome(clear){
   setOpen(false);
-  if(clear)try{localStorage.removeItem(storageKey)}catch(_){}
+  if(clear)try{localStorage.removeItem(storageKey);localStorage.removeItem('matchapp-jonas-position-v2')}catch(_){}
   root.classList.remove('is-floating');
   mountInline();translate();
  }
  function savePosition(){
   try{
    var r=root.getBoundingClientRect();
-   localStorage.setItem(storageKey,JSON.stringify({x:r.left/Math.max(1,innerWidth-r.width),y:r.top/Math.max(1,innerHeight-r.height)}));
+   var position=JSON.stringify({x:r.left/Math.max(1,innerWidth-r.width),y:r.top/Math.max(1,innerHeight-r.height)});localStorage.setItem(storageKey,position);localStorage.setItem('matchapp-jonas-position-v2',position);
   }catch(_){/* optional preference */}
  }
  function positionPanel(){

@@ -31,3 +31,6 @@ PR: https://github.com/jonasdesouzajr-maker/matchapp.tv/pull/240
 4. Remove only confirmed superseded/unreferenced design files. Retain speech, auth, quotas, core matching, original source art, locked ads and serialized publisher workflows.
 5. Once the exact PR head passes all gates, merge normally; wait for deployment-sha.txt to match and run the existing release smoke once for that deployed SHA. No force push or duplicate engines.
 6. These changes do not require another AAB. The old store/native version and existing code52 release candidate remain a separate native publication task. No Play release was submitted by this handoff.
+
+## Owner refinements on continuation
+Home reserves a top-right corner for Jonas; other adult pages use the screen top-right default. The original drag controllers now also persist one shared position across pages/reloads. Chat bounds use visualViewport and safe-area insets independently of the bubble. The existing ambient shell is reused on adult page-shell destinations; embedded frames and Kids do not mount another assistant. The original native greeting/word-boundary speech path remains, with a larger conversation face and eye-only blink layer. Verify final-head CI and real-device bounds before claiming release.
