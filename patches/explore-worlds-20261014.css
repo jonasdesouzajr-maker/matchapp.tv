@@ -41,70 +41,56 @@ html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger:foc
   grid-column:1 / -1!important;
  }
 }
-.ma-worlds-overlay[hidden]{display:none!important}
-.ma-worlds-overlay{
- position:fixed;inset:0;z-index:2147480000;display:grid;place-items:center;
- padding:clamp(12px,3vw,28px);padding-top:max(12px,env(safe-area-inset-top));
- padding-bottom:max(12px,env(safe-area-inset-bottom));box-sizing:border-box;
+/* Inline discovery: a real region expanding inside Home, never a modal/backdrop. */
+.ma-worlds-inline[hidden]{display:none!important}
+html body.page-home #mh-topbox .ma-worlds-inline{
+ position:relative!important;display:block;width:100%;min-width:0;
+ grid-column:1 / -1;max-width:100%;margin:9px auto 0;order:30;
+ z-index:auto!important;box-sizing:border-box;isolation:isolate;
 }
-.ma-worlds-shade{position:absolute;inset:0;background:rgba(8,4,15,.79);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px)}
-.ma-worlds-panel{
- --world-gold:#ffe0a4;position:relative;isolation:isolate;
- width:min(100%,940px);max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;
- color:#fff3e5;background:radial-gradient(ellipse at 90% 0%,#4b2866 0,transparent 42%),
- radial-gradient(ellipse at 0% 90%,#21364c 0,transparent 55%),#160e25;
- border:1px solid #f1c98285;border-radius:clamp(20px,3vw,32px);
- box-shadow:0 30px 100px #000b,0 0 35px #dbaf6338,inset 0 1px #fff3;
- padding:clamp(18px,3vw,32px);box-sizing:border-box;
- animation:maWorldsEnter .36s cubic-bezier(.2,.8,.2,1) both;
+html body.page-home #mh-topbox .ma-worlds-panel{
+ position:relative;max-width:100%;width:100%;padding:clamp(15px,2vw,24px);
+ background:linear-gradient(145deg,#2b203d,#1a152a);
+ border:1px solid rgba(241,204,137,.4);border-radius:20px;
+ color:#f5e8d5;box-shadow:0 10px 24px rgba(0,0,0,.24);overflow:visible;
 }
-.ma-worlds-panel::before{
- content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.25;
- background:radial-gradient(circle at 12% 16%,#ffdb8a 1px,transparent 2px),
- radial-gradient(circle at 72% 27%,#c8b0f4 1px,transparent 2px);
- background-size:125px 117px,156px 159px;
-}
-.ma-worlds-heading{position:relative;display:flex;gap:14px;align-items:flex-start;justify-content:space-between;margin:0 0 18px}
-.ma-worlds-eyebrow{text-transform:uppercase;letter-spacing:.22em;color:#f1c984;font:800 .7rem/1.5 system-ui,sans-serif}
-.ma-worlds-heading h2{margin:2px 0 4px;font:700 clamp(1.65rem,4.4vw,2.75rem)/1.12 Georgia,serif;color:var(--world-gold)}
-.ma-worlds-heading p{margin:0;color:#d6c7dd;font-size:.95rem}
-.ma-worlds-close{position:relative;flex:none;min-width:45px;min-height:45px;border:1px solid #e6bf8180;border-radius:14px;background:#ffffff14;color:#f6e8ce;font-size:1.4rem;cursor:pointer}
-.ma-worlds-grid{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.ma-world-card{
- --world-accent:#8861bf;position:relative;min-width:0;min-height:154px;display:flex;
- flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:7px;overflow:hidden;
- padding:18px;border-radius:20px;color:#fef7eb;text-decoration:none;
- border:1px solid #e2c69059;
- background:radial-gradient(ellipse at 90% 0%,color-mix(in srgb,var(--world-accent) 57%,transparent),transparent 75%),
- linear-gradient(150deg,#352444,#1d142d);
- box-shadow:inset 0 1px #ffffff13,0 7px 18px #0004;
- transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
-}
-.ma-world-card::after{content:"↗";position:absolute;inset-inline-end:18px;top:14px;color:#f5dcadbd;font-size:1.12rem}
-.ma-world-card:hover,.ma-world-card:focus-visible{transform:translateY(-4px);border-color:#ffe2a7;box-shadow:0 12px 25px #0008}
-.ma-world-card:focus-visible,.ma-worlds-close:focus-visible,.ma-worlds-see-all:focus-visible{outline:3px solid #ffe9ad;outline-offset:3px}
-.ma-world-icon{font-size:1.7rem;line-height:1;display:block;margin-bottom:auto;filter:drop-shadow(0 1px 6px #0006)}
-.ma-world-card strong{font:800 clamp(.96rem,1.6vw,1.14rem)/1.3 system-ui,sans-serif;text-wrap:balance}
-.ma-world-card small{font:.85rem/1.35 system-ui,sans-serif;color:#ddcfe4}
-.ma-worlds-see-all{position:relative;display:flex;justify-content:center;align-items:center;gap:8px;padding:13px 20px;
- min-height:46px;margin-top:18px;border-radius:15px;background:linear-gradient(120deg,#f4dca9,#c99b66);
- color:#2d1e37;text-decoration:none;font-weight:850;box-shadow:0 5px 15px #0004}
-body.ma-worlds-open{overflow:hidden}
-@keyframes maWorldsEnter{from{opacity:0;transform:translateY(22px) scale(.975)}to{opacity:1;transform:none}}
+.ma-worlds-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 16px}
+.ma-worlds-eyebrow{font:750 .69rem/1.5 "Space Grotesk",system-ui,sans-serif;
+ color:#e6c88f;letter-spacing:.12em}
+.ma-worlds-heading h2{font:800 clamp(1.38rem,3vw,2rem)/1.18 "Outfit",system-ui,sans-serif;
+ margin:3px 0 5px;color:#f6dca5}
+.ma-worlds-heading p{font:400 .91rem/1.5 "Inter",system-ui,sans-serif;color:#d6c9e0;margin:0}
+.ma-worlds-close{appearance:none;cursor:pointer;flex:none;min-width:42px;min-height:42px;
+ padding:6px;border:1px solid #d8c08a66;border-radius:13px;
+ background:transparent;color:#f5e6cb;font-size:1.4rem}
+.ma-worlds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ma-world-card{position:relative;display:flex;flex-direction:column;gap:6px;min-height:119px;min-width:0;
+ padding:15px;border:1px solid #bfaeaa39;border-radius:15px;
+ background:rgba(207,177,215,.055);color:#f8ead9;text-decoration:none;
+ transition:border-color .2s ease,background-color .2s ease,transform .23s ease}
+.ma-world-card::after{content:"↗";position:absolute;right:13px;top:10px;color:#f5dfacaa}
+.ma-world-card:hover,.ma-world-card:focus-visible{border-color:#efc98b88;background:rgba(198,167,221,.12);transform:translateY(-2px)}
+.ma-world-card:focus-visible,.ma-worlds-close:focus-visible,.ma-worlds-see-all:focus-visible{
+ outline:3px solid #ffe5a6;outline-offset:3px}
+.ma-world-icon{font-size:1.65rem;line-height:1.1}
+.ma-world-card strong{font:760 clamp(.89rem,1.4vw,1.04rem)/1.3 "Outfit",system-ui,sans-serif;
+ overflow-wrap:anywhere;hyphens:auto}
+.ma-world-card small{font:400 .82rem/1.4 "Inter",system-ui,sans-serif;color:#d4c6df;
+ overflow-wrap:anywhere;hyphens:auto}
+.ma-worlds-see-all{display:flex;justify-content:center;align-items:center;gap:8px;
+ margin:14px auto 0;min-height:44px;padding:9px 14px;border-radius:14px;
+ width:max-content;max-width:100%;color:#281d32!important;
+ background:#f2d49a;text-decoration:none;font:760 .89rem/1.2 "Space Grotesk",system-ui,sans-serif;
+ text-align:center;overflow-wrap:anywhere}
 @media(max-width:660px){
- .ma-worlds-overlay{align-items:end;padding:0}
- .ma-worlds-panel{border-radius:24px 24px 0 0;max-height:calc(100dvh - env(safe-area-inset-top) - 8px);
-  padding:20px 16px max(22px,env(safe-area-inset-bottom));}
- .ma-worlds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .ma-world-card{min-height:132px;padding:14px;border-radius:17px}
- .ma-world-card small{font-size:.76rem}
+ .ma-worlds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .ma-world-card{min-height:112px;padding:12px}
+ .ma-world-card small{font-size:.77rem}
 }
-@media(max-width:365px){.ma-worlds-grid{grid-template-columns:1fr}.ma-world-card{min-height:100px}}
+@media(max-width:355px){.ma-worlds-grid{grid-template-columns:repeat(1,minmax(0,1fr))}.ma-world-card{min-height:90px}}
 @media(prefers-reduced-motion:reduce){
- .ma-worlds-panel{animation:none}.ma-world-card,.ma-worlds-close,.ma-worlds-see-all,
- html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger{transition:none!important}
- html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger::before{animation:none}
- .ma-world-card:hover{transform:none}
+ .ma-world-card{transition:none!important}
+ .ma-world-card:hover{transform:none!important}
 }
 /* Only five editorial Home areas: hero, Top Titles, watch matcher,
    premiere and weekly AI choice. Match Together remains at /together.html.

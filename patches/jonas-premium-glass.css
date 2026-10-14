@@ -273,3 +273,10 @@ html body.ma-jonas-inline #ma-jonas-home#ma-jonas-home.is-chat-stage .jh-header{
 
 /* Prevent background-page scroll while the one existing conversation is fullscreen. */
 body.ma-jonas-modal-open,body.ma-jonas-chat-open{overflow:hidden!important;overscroll-behavior:contain}
+/* The companion now docks at a safe lower corner; do not reserve a blank header tile. */
+@media(max-width:600px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > .mh-head{
+  padding-right:clamp(8px,2vw,12px)!important;
+ }
+ html body.page-home #ma-jonas-header-slot{display:none!important;width:0!important;height:0!important}
+}

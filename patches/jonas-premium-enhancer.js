@@ -18,11 +18,13 @@
   var slot=document.getElementById('ma-jonas-header-slot');
   var root=document.getElementById('ma-ambient-jonas')||document.getElementById('ma-jonas-home');
   if(!root||!docked||root.classList.contains('is-chat-stage')||root.dataset.jonasPositionHeld==='1')return;
-  var size=slot?(slot.offsetWidth||76):76;
-  var at=slot?slot.getBoundingClientRect():{left:innerWidth-size-16,top:16};
-  root.style.setProperty('left',Math.max(8,Math.min(innerWidth-size-8,at.left))+'px','important');
-  root.style.setProperty('top',Math.max(8,at.top)+'px','important');
+  var size=root.offsetWidth||76,vw=Math.max(1,innerWidth),vh=Math.max(1,innerHeight);
+  var right=vw>=1100?28:(vw>=700?22:14);
+  var bottom=vw>=1100?120:(vw>=700?118:Math.max(104,Math.min(150,vh*.17)));
+  root.style.setProperty('left',Math.max(8,vw-size-right)+'px','important');
+  root.style.setProperty('top',Math.max(8,vh-size-bottom)+'px','important');
   root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important');
+  root.dataset.jonasDefaultDock='1';
  }
  function dockHome(root){
   if(placed)return;
@@ -33,7 +35,6 @@
   root.addEventListener('pointerup',function(){dragStart=null});
   root.addEventListener('pointercancel',function(){dragStart=null});
   new MutationObserver(positionHome).observe(root,{attributes:true,attributeFilter:['class','hidden']});
-  window.addEventListener('scroll',positionHome,{passive:true});
   window.addEventListener('resize',positionHome,{passive:true});
   positionHome();requestAnimationFrame(positionHome);
  }

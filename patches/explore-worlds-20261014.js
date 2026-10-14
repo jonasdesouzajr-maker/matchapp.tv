@@ -23,35 +23,32 @@ function cue(){
 }
 function init(){
  var trigger=document.getElementById('ma-worlds-trigger');
- var overlay=document.getElementById('ma-explore-worlds-panel');
- if(!trigger||!overlay)return;
- if(overlay.parentElement!==document.body)document.body.appendChild(overlay);
- var dialog=overlay.querySelector('[role="dialog"]');var previous=null;
- function visible(){return !overlay.hidden;}
- function close(focus){
-  overlay.hidden=true;document.body.classList.remove('ma-worlds-open');
+ var region=document.getElementById('ma-explore-worlds-panel');
+ if(!trigger||!region)return;
+ var focusTarget=region.querySelector('.ma-worlds-panel');
+ function close(){
+  region.hidden=true;
   trigger.setAttribute('aria-expanded','false');
-  if(focus!==false&&(previous||trigger).isConnected)(previous||trigger).focus({preventScroll:true});
+  trigger.focus({preventScroll:true});
  }
  function open(){
-  previous=document.activeElement;overlay.hidden=false;document.body.classList.add('ma-worlds-open');
+  region.hidden=false;
   trigger.setAttribute('aria-expanded','true');paint();
-  if(dialog)dialog.focus({preventScroll:true});
+  try{
+   if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&focusTarget.animate){
+    focusTarget.animate([{opacity:0,transform:'translateY(-7px)'},{opacity:1,transform:'translateY(0)'}],
+      {duration:240,easing:'cubic-bezier(.2,.75,.25,1)'});
+   }
+  }catch(_){}
+  focusTarget.focus({preventScroll:true});
  }
- trigger.addEventListener('click',function(){cue();visible()?close():open();});
- overlay.addEventListener('click',function(ev){
-  if(ev.target.closest('[data-worlds-dismiss]')){cue();close();return;}
-  if(ev.target.closest('a'))cue();
+ trigger.addEventListener('click',function(){cue();region.hidden?open():close();});
+ region.addEventListener('click',function(event){
+  if(event.target.closest('[data-worlds-dismiss]')){cue();close()}
+  else if(event.target.closest('a'))cue();
  });
- document.addEventListener('keydown',function(ev){
-  if(!visible())return;
-  if(ev.key==='Escape'){ev.preventDefault();close();return;}
-  if(ev.key!=='Tab')return;
-  var elements=Array.from(overlay.querySelectorAll('a[href],button:not([disabled])')).filter(function(el){return el.getClientRects().length;});
-  if(!elements.length){ev.preventDefault();dialog.focus();return;}
-  var first=elements[0],last=elements[elements.length-1];
-  if(ev.shiftKey&&(document.activeElement===first||document.activeElement===dialog)){ev.preventDefault();last.focus();}
-  else if(!ev.shiftKey&&document.activeElement===last){ev.preventDefault();first.focus();}
+ document.addEventListener('keydown',function(event){
+  if(!region.hidden&&event.key==='Escape'){event.preventDefault();close()}
  });
  paint();
 }
