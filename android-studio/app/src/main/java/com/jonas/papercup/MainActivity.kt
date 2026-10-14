@@ -1092,6 +1092,9 @@ class MainActivity : AppCompatActivity() {
               window.MATCHAPP_ANDROID_KIDS_BLOCKED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
+              // onPageStarted can run before the new document has a root.
+              // Commit/finish injections retry normally once parsing begins.
+              if (!root) return;
               root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
 
               if (!document.getElementById('matchapp-android-shell')) {
