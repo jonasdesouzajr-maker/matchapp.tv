@@ -274,3 +274,8 @@ If recovery cannot complete a request, show an accessible, visibly **bold tempor
 
 ### 9. CONTINUATION PROTOCOL — “GO ON”
 When the owner says “go on”, resume from the most recent verifiable checkpoint rather than redoing completed tasks. Inspect the current branch, working tree, test/build logs, and previous run outputs first. Preserve passing changes, run only checks that remain unfinished or are invalidated by newer edits, repair blockers, and finish deployment/artifact verification. State clearly what is already completed versus still blocked. Do not republish Google Play releases without explicit approval.
+
+
+### PRIMARY PHYSICAL TEST DEVICE — OWNER INSTRUCTION (2026-10-13)
+
+The owner designated his Samsung Galaxy Tab as the primary physical device for ongoing browser and adult Android app testing and explicitly authorized using it for those tests, including Google account sign-in flows. Confirm its connected model and ADB serial before testing; do not mistake the previously tested SM-S918B phone for the tablet. Maintain smartphone, tablet and desktop parity and the existing no-emulator directive. Record actual test outcomes and connection limitations honestly.

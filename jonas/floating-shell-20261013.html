@@ -1,0 +1,29 @@
+<aside id="ma-jonas-home" aria-label="Jonas floating companion">
+        <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="false" aria-label="Chat with Jonas" hidden>
+            <header class="jh-header">
+                <span class="jh-medallion" aria-hidden="true"><img src="/jonas/faces/jonas/rest.jpg" alt="" decoding="async"/></span>
+                <span class="jh-title"><strong>Jonas</strong><small data-jh-en="Your entertainment companion" data-jh-pt="Seu companheiro de entretenimento">Your entertainment companion</small></span>
+                <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
+            </header>
+            <div class="jh-content">
+                <p class="jh-greeting" data-jh-en="Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring." data-jh-pt="Olá! Sou o Jonas. O que vamos descobrir? Pergunte sobre filmes, séries, livros, música e muito mais.">Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring.</p>
+                <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
+                <form class="jh-form" action="/discover.html" method="get"><input type="hidden" name="from" value="jonas">
+                    <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas" data-jh-placeholder-en="Ask Jonas anything…" data-jh-placeholder-pt="Pergunte qualquer coisa ao Jonas…"/>
+                    <input type="hidden" name="focus" value="start"/>
+                    <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 10.5a7 7 0 0 0 14 0M12 17.5V22M8 22h8"/></svg></button>
+                    <button class="jh-send" type="submit" aria-label="Send question to MatchApp Ai" title="Send question">➤</button>
+                </form>
+                <div class="jh-suggestions" aria-label="Conversation suggestions">
+                    <a class="jh-suggestion" href="/discover.html?q=Recommend%20a%20documentary%20series%20available%20in%20Brazil&amp;focus=start" data-jh-query-en="Recommend a documentary series available in Brazil" data-jh-query-pt="Recomende uma série documental disponível no Brasil" data-jh-en="Discover documentaries" data-jh-pt="Descobrir documentários">Discover documentaries</a>
+                    <a class="jh-suggestion" href="/discover.html?q=Find%20a%20great%20movie%20for%20tonight&amp;focus=start" data-jh-query-en="Find a great movie for tonight" data-jh-query-pt="Encontre um ótimo filme para hoje à noite" data-jh-en="Surprise my mood" data-jh-pt="Surpreenda meu humor">Surprise my mood</a>
+                </div>
+            </div>
+            <footer class="jh-footer"><a class="jh-full" href="/jonas/" data-jh-en="Explore Jonas ↗" data-jh-pt="Explorar Jonas ↗">Explore Jonas ↗</a><span class="jh-footnote" data-jh-en="Powered by MatchApp Ai" data-jh-pt="Tecnologia MatchApp Ai">Powered by MatchApp Ai</span></footer>
+        </section>
+        <button id="ma-jonas-home-bubble" class="jh-bubble" type="button" aria-label="Chat with Jonas" aria-controls="ma-jonas-home-panel" aria-expanded="false">
+            <span class="jh-halo" aria-hidden="true"></span>
+            <span class="jh-portrait"><img src="/jonas/faces/jonas/rest.jpg" alt="" width="96" height="96" decoding="async" fetchpriority="low"/></span>
+            <span class="jh-online" aria-hidden="true"></span>
+        </button>
+    </aside>

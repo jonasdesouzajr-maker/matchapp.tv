@@ -1077,8 +1077,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=42"
-        const val APP_UA = "MatchAppTVAndroid/1.1.50 MatchAppAiAndroid/1.1.50 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=52"
+        const val APP_UA = "MatchAppTVAndroid/1.1.52 MatchAppAiAndroid/1.1.52 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_REGISTERED = "registered_v1"
@@ -1090,6 +1090,8 @@ class MainActivity : AppCompatActivity() {
               window.MATCHAPP_ANDROID_KIDS_BLOCKED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
+              // Ready-document callbacks reapply the shell after early navigation.
+              if (!root) return;
               root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
 
               if (!document.getElementById('matchapp-android-shell')) {

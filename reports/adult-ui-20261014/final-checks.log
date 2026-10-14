@@ -1,0 +1,22 @@
+✔ AdSense publisher, engine and exact manual inventory are immutable (4.145ms)
+✔ desktop AdSense rails remain a locked matched pair before content (2.116567ms)
+✔ Match Together full-width sponsored unit is immutable (3.046531ms)
+✔ manual AdSense initializer is byte-for-byte locked (0.215739ms)
+✔ desktop/tablet/mobile AdSense responsive rules are locked (2.899665ms)
+✔ Match Together desktop AdSense canvas dimensions are locked (0.2703ms)
+✔ repository instructions keep Auto ads on and forbid automated AdSense rewrites (0.274266ms)
+✔ Home Explore entry localizes without replacing navigation or credit handlers (57.290329ms)
+✔ adult finish does not initialize on Kids and contains no recommendation or billing request (8.021202ms)
+✔ Explore has one shared adult topbox and bubble; Home default floats existing Jonas (29.379075ms)
+✔ floating Home opens a viewport stage and Back closes it without leaving Home (45.3993ms)
+✔ native ambient Back minimizes the existing metered frame and retains title context (52.118047ms)
+✔ debug preview and deployed adult ambient controller remain identical (0.444206ms)
+✔ news bookmarks focus only the matching verified article (9.963983ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 497.949674

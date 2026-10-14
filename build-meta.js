@@ -124,3 +124,9 @@ window.MATCHAPP_BUILD = '2026.10.07.6';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();
+/* Adult bubble wiring; Kids remains on its existing isolated runtime. */
+(function(){
+  if(/^\/kids(?:\/|$)/i.test(location.pathname))return;
+  if(document.querySelector('script[src^="/jonas/adult-page-bubble-20261013.js"]'))return;
+  var s=document.createElement('script');s.src='/jonas/adult-page-bubble-20261013.js?v=1';s.async=false;document.head.appendChild(s);
+})();

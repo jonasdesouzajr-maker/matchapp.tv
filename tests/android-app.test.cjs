@@ -22,8 +22,13 @@ test('main Android launcher uses official icon and consent-safe production nativ
  for(const marker of ['setAdFree(adFree: Boolean)','syncNativeAdEntitlement','is_vip,is_business,is_ad_free'])assert.match(main,new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
  assert.match(launcher,/@drawable\/matchapp_launcher_safe/);
  const safe=read('android-studio/app/src/main/res/drawable/matchapp_launcher_safe.xml');
- assert.match(safe,/@drawable\/matchapp_launcher_premium/);assert.match(safe,/android:inset="13%"/);
- assert.ok(fs.statSync(path.join(root,"android-studio/app/src/main/res/drawable/matchapp_launcher_premium.webp")).size>10000);
+ assert.match(safe,/@drawable\/matchapp_approved_launcher/);assert.match(safe,/android:inset="13%"/);
+ assert.ok(fs.statSync(path.join(root,"android-studio/app/src/main/res/drawable-nodpi/matchapp_approved_launcher.png")).size>10000);
+ for(const density of ["mdpi","hdpi","xhdpi","xxhdpi","xxxhdpi"]){
+  for(const icon of ["ic_launcher.png","ic_launcher_round.png"]){
+   assert.ok(fs.statSync(path.join(root,`android-studio/app/src/main/res/mipmap-${density}/${icon}`)).size>1000);
+  }
+ }
 });
 
 

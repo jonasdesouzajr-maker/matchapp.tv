@@ -90,6 +90,6 @@ test('grown-up Android build is advanced for the E-books release',()=>{
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  assert.match(gradle,/versionCode = 52/);
  assert.match(gradle,/versionName = "1\.1\.52"/);
- assert.match(main,/appBuild=42/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.50/);
+ assert.ok(main.includes('appBuild='+(gradle.match(/versionCode = (\d+)/)||[])[1]),'Android build marker must match Gradle versionCode');
+ assert.ok(main.includes('MatchAppAiAndroid/'+(gradle.match(/versionName = "([^"]+)"/)||[])[1]),'Android user agent must match Gradle versionName');
 });

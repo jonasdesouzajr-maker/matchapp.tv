@@ -3,7 +3,7 @@
 (function(){
  'use strict';
  var root=document.getElementById('ma-jonas-home');
- if(!root||!/^\/(?:index\.html)?$/.test(location.pathname)){
+ if(!root||/^\/kids(?:\/|$)/i.test(location.pathname)){
   if(root)root.hidden=true;
   return;
  }
@@ -16,6 +16,12 @@
  var opened=false,dragging=null,suppressClick=false,stageFloating=false,stagePosition=null,lastAppliedLang=null;
  var storageKey='matchapp-jonas-inline-position-v1';
  var dock=null,returnButton=null;
+ var persistentBubble=document.body.classList.contains('page-home');
+ function defaultPosition(){
+  var size=bubble.getBoundingClientRect();
+  var right=innerWidth>=1180?Math.max(205,(innerWidth-980)/2):24;
+  setFloating(innerWidth-right-size.width,innerHeight-size.height-(innerWidth<700?100:24));
+ }
  function homeEntry(){return document?.getElementById?.('ma-ai-entry')||null}
  function mountInline(){
   var entry=homeEntry();
@@ -73,7 +79,8 @@
   setOpen(false);
   if(clear)try{localStorage.removeItem(storageKey)}catch(_){}
   root.classList.remove('is-floating');
-  mountInline();translate();
+  if(persistentBubble)defaultPosition();else mountInline();
+  translate();
  }
  function savePosition(){
   try{
@@ -94,26 +101,48 @@
   if(event.button!==0 && event.pointerType==='mouse')return;
   var r=root.getBoundingClientRect();
   dragging={id:event.pointerId,x:event.clientX,y:event.clientY,left:r.left,top:r.top,moved:false};
-  if(bubble.setPointerCapture)bubble.setPointerCapture(event.pointerId);
+  // Keep the DOM stable on pointerdown: relocating the bubble before the
+  // click can swallow a normal tap, especially in Chromium/WebView.
+  // Only detach it once a genuine drag clears the movement threshold.
+  try{if(bubble.setPointerCapture)bubble.setPointerCapture(event.pointerId)}catch(_){}
+  event.preventDefault?.();
  }
  function moveDrag(event){
   if(!dragging||dragging.id!==event.pointerId)return;
   var dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
-  if(!dragging.moved&&Math.hypot(dx,dy)<9)return;
-  if(!dragging.moved){dragging.moved=true;setOpen(false);}
+  // Tiny threshold so a real drag starts on the first clear movement.
+  if(!dragging.moved&&Math.hypot(dx,dy)<3)return;
+  if(!dragging.moved){dragging.moved=true;setOpen(false);root.classList.add('is-dragging');
+   if(!root.classList.contains('is-floating'))setFloating(dragging.left,dragging.top);
+  }
   setFloating(dragging.left+dx,dragging.top+dy);
+  event.preventDefault?.();
  }
  function endDrag(event){
-  if(!dragging||dragging.id!==event.pointerId)return;
-  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},120);}
+  if(!dragging)return;
+  if(event&&event.pointerId!=null&&dragging.id!==event.pointerId)return;
+  if(dragging.moved){suppressClick=true;savePosition();setTimeout(function(){suppressClick=false},140)}
+  root.classList.remove('is-dragging');
   dragging=null;
  }
- bubble.addEventListener('pointerdown',startDrag);
- // The root moves to document.body at drag-start; global listeners keep
- // tracking even when DOM reparenting releases native pointer capture.
- window.addEventListener('pointermove',moveDrag,{passive:true});
+ bubble.addEventListener('pointerdown',startDrag,{passive:false});
+ // Global listeners survive reparenting. pointercancel does not drop the drag
+ // until the finger is actually up, so Android does not kill the gesture.
+ window.addEventListener('pointermove',moveDrag,{passive:false});
  window.addEventListener('pointerup',endDrag);
- window.addEventListener('pointercancel',endDrag);
+ window.addEventListener('pointercancel',function(event){
+  // Keep tracking; only end if we never started moving.
+  if(!dragging||dragging.id!==event.pointerId)return;
+  if(!dragging.moved)endDrag(event);
+ });
+ // Touch fallback so a cancelled pointer still follows the finger.
+ window.addEventListener('touchmove',function(event){
+  if(!dragging||!event.touches||!event.touches.length)return;
+  var t=event.touches[0];
+  moveDrag({pointerId:dragging.id,clientX:t.clientX,clientY:t.clientY,preventDefault:function(){event.preventDefault()}});
+ },{passive:false});
+ window.addEventListener('touchend',function(){if(dragging)endDrag({pointerId:dragging.id})});
+ window.addEventListener('touchcancel',function(){if(dragging&&dragging.moved)endDrag({pointerId:dragging.id})});
  window.addEventListener('resize',function(){
   if(!root.classList.contains('is-floating'))return;
   var r=root.getBoundingClientRect();setFloating(r.left,r.top);if(opened)positionPanel();
@@ -141,8 +170,10 @@
   bubble.setAttribute('aria-label',pt?'Conversar com Jonas':'Chat with Jonas');
   close.setAttribute('aria-label',pt?'Fechar conversa':'Close conversation');
   input.setAttribute('aria-label',pt?'Sua pergunta para Jonas':'Your question for Jonas');
+  // The premium voice-first composer may omit its visual submit control.
+  // Never abort Jonas initialization when an optional button is absent.
   var send=root.querySelector('.jh-send');
-  send.setAttribute('aria-label',pt?'Enviar pergunta ao MatchApp Ai':'Send question to MatchApp Ai');
+  if(send)send.setAttribute('aria-label',pt?'Enviar pergunta ao MatchApp Ai':'Send question to MatchApp Ai');
   panel.setAttribute('aria-label',pt?'Converse com Jonas':'Chat with Jonas');
   // The top-box selector governs Jonas too: all fourteen existing locales.
   var locale=window.MatchAppJonasLocale;
@@ -160,7 +191,7 @@
    set('#ma-jonas-home .jh-footnote',window.MatchAppJonasLocale.lang()==='en'?d.companion:'MatchApp Ai');
    input.placeholder=d.placeholder;
    bubble.setAttribute('aria-label',d.mic);close.setAttribute('aria-label',d.close);
-   send.setAttribute('aria-label',d.send);
+   if(send)send.setAttribute('aria-label',d.send);
    panel.setAttribute('aria-label','Jonas — '+d.companion);
    var mic=root.querySelector('#ma-jonas-home-mic');if(mic){mic.setAttribute('aria-label',d.mic);mic.title=d.mic}
    root.querySelectorAll('.jh-suggestion').forEach(function(el,i){
@@ -176,9 +207,16 @@
  function setOpen(next){
   if(opened===next)return;
   if(next){
+   // One same-document entry lets Android/browser Back minimize the chat.
+   if(!history.state?.maJonasOpen)history.pushState(Object.assign({},history.state,{maJonasOpen:true}),'',location.href);
    stageFloating=root.classList.contains('is-floating');
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
    if(root.parentElement!==document.body)document.body.appendChild(root);
+   // Saved drag coordinates belong to the closed bubble, not the chat stage.
+   if(document.body.classList.contains('ma-jonas-inline')){
+    root.classList.remove('is-floating');
+    ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
+   }
    root.classList.add('is-chat-stage');
    ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
    document.body.classList.add('ma-jonas-chat-open');
@@ -188,6 +226,7 @@
   bubble.setAttribute('aria-expanded',String(next));
   root.classList.toggle('is-open',next);
   if(!next){
+   if(history.state?.maJonasOpen)history.back();
    root.dispatchEvent(new CustomEvent('matchapp:jonas-close'));
    root.classList.remove('is-chat-stage');
    document.body.classList.remove('ma-jonas-chat-open');
@@ -212,6 +251,7 @@
    bubble.focus({preventScroll:true});
   }
  }
+ window.addEventListener('popstate',function(){if(opened&&!history.state?.maJonasOpen)setOpen(false)});
  bubble.addEventListener('click',function(){
   if(suppressClick){suppressClick=false;return;}
   setOpen(!opened);
@@ -248,6 +288,10 @@
  setTimeout(hideLateAskHeading,1100);
  document.addEventListener('matchapp:langchange',hideLateAskHeading);
  document.addEventListener('matchapp:langchange',translate);
+ if(persistentBubble){
+  defaultPosition();
+  if(dock)dock.hidden=true;
+ }
  restorePosition();
  translate();
 })();

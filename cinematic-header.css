@@ -51,24 +51,23 @@ html body header.app-header::after,
 html body .app-header::after {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
+  border-radius: inherit;
   background: linear-gradient(
     45deg,
     transparent 30%,
     rgba(230, 195, 106, 0.12) 50%,
     transparent 70%
   );
+  background-size: 240% 240%;
   animation: header-shimmer 9s linear infinite;
   pointer-events: none;
   z-index: 1;
 }
 
 @keyframes header-shimmer {
-  0% { transform: translate(-30%, -30%) rotate(0deg); }
-  100% { transform: translate(30%, 30%) rotate(0deg); }
+  0% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
 /* Controls in header: dark surfaces */
