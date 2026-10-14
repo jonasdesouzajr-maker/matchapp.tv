@@ -13,5 +13,6 @@
    block.querySelectorAll('iframe').forEach(function(frame){frame.loading='lazy'});
    var current=host.querySelector('#'+block.id);if(current)current.replaceWith(block);
   });
+  document.dispatchEvent(new Event('matchapp:music-rendered'));
  }catch(_){/* Keep the dated, verified committed sections during source outages. */}
 })();

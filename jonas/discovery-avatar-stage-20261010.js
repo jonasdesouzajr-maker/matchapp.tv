@@ -150,7 +150,7 @@ document.addEventListener('visibilitychange',()=>{
  else {if(el.dataset.state==='speaking')change('idle');scheduleBlink()}
 });
 window.addEventListener('matchapp:languagechange',()=>change(el.dataset.state||'idle'));
-document.addEventListener('matchapp:langchange',()=>change(el.dataset.state||'idle'));
+document.addEventListener('matchapp:langchange',()=>{voiceTurn=false;clearTimeout(timer);window.MatchAppJonasSpeech?.stop?.();endSpeaking(false)});
 document.addEventListener('matchapp:languagechange',()=>change(el.dataset.state||'idle'));
 window.MatchAppJonasStage={speak,stop:()=>{clearTimeout(timer);window.MatchAppJonasSpeech?.stop?.();endSpeaking(false)},activateVoice:()=>{voiceTurn=true},el};
 change('idle');

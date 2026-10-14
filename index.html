@@ -115,7 +115,7 @@
 
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
-    <script defer src="/i18n.js?v=20261001-canonicalai-profilept1"></script>
+    <script defer src="/i18n.js?v=20261001-canonicalai-profilept1&amp;fastlang=20261014-1"></script>
 <script defer src="/polish-i18n.js?v=191"></script>
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
@@ -156,7 +156,7 @@
     <!-- Smart TV stylesheet. Entirely scoped under body.tv-mode, so a
          non-TV visitor pays one small file and sees no change. -->
     <link rel="stylesheet" href="/tv.css?v=187">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
+    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js">
     <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <script type="text/javascript">
@@ -1683,7 +1683,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 
 <link rel="stylesheet" href="/ui-harmony.css?v=20261003-1">
 <link rel="stylesheet" href="/billboard-music.css?v=20261006-1">
-<script defer src="/billboard-music.js?v=20261006-1"></script>
+<script defer src="/billboard-music.js?v=20261006-1&amp;fastlang=20261014-1"></script>
     <link rel="stylesheet" href="/jonas/entry.css?v=20261009"/>
     <link rel="stylesheet" href="/jonas/floating-home-20261010-v3.css"/>
     <link rel="stylesheet" href="/jonas/floating-chat.css?v=20261009-chat3"/>
@@ -1702,7 +1702,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <script defer src="/patches/jonas-premium-enhancer.js?v=premium2"></script>
 <script defer src="/patches/jonas-swipe-velocity.js?v=swipe1"></script>
 <script defer src="/patches/jonas-intro-audio.js?v=intro1"></script>
-<script defer src="/patches/jonas-adult-page.js?v=20261014-brand1"></script>
+<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
 </head>
 <body class="page-home ma-watch-focused">
     <!-- Google Tag Manager (noscript) -->
@@ -3189,25 +3189,23 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 <!-- ============================================ -->
 
 <section id="how-it-works" class="premium-card" style="text-align:center; padding: 30px 28px;">
-                    <h2 style="margin:0 0 10px 0; font-size:26px; color:var(--gold); font-weight:900; text-transform:uppercase; letter-spacing:1px;" data-i18n="how.title">How MatchApp Works</h2>
-                    <p data-i18n-html="how.intro" style="color:#cfc7e0; font-size:16px; line-height:1.7; margin:0 auto 26px auto; max-width:680px;">
-                        MatchApp is your <strong style="color:var(--gold-glow);">premium AI streaming concierge</strong>. Instead of scrolling three apps for forty minutes, tell us what you're in the mood for and our AI finds the one title worth your night — plus exactly where to watch it. Explore the recommendation, then choose an available viewing option in your country.
-                    </p>
+                    <h2 style="margin:0 0 10px 0; font-size:26px; color:var(--gold); font-weight:900; text-transform:uppercase; letter-spacing:1px;" data-i18n="how.title">How MatchApp Ai works</h2>
+                    <p data-i18n-html="how.intro" style="color:#cfc7e0; font-size:16px; line-height:1.7; margin:0 auto 26px auto; max-width:680px;">Choose what to watch on Home, talk to Jonas, or open Explore more for music, reading, cooking, news and events. Your selected language controls the interface and voice.</p>
                     <div class="how-steps">
                         <div class="how-step">
                             <div class="how-num">1</div>
                             <h3 data-i18n="how.s1.title">Set Your Mood</h3>
-                            <p data-i18n-html="how.s1.body">Pick a format, platform, mood, era and age rating. Choosing one narrows the rest automatically — or hit <em>Surprise Me</em> and let the AI decide everything.</p>
+                            <p data-i18n-html="how.s1.body">Choose your mood, format, platform and era, or use Surprise Me for entertainment to watch. Other topics have their own destinations in Explore more.</p>
                         </div>
                         <div class="how-step">
                             <div class="how-num">2</div>
                             <h3 data-i18n="how.s2.title">Get Your Match</h3>
-                            <p data-i18n-html="how.s2.body">Our AI returns one perfect pick with its real cover art, a playable trailer, and a synopsis — drawn from movies, series, K-dramas, anime, novelas, micro-dramas, podcasts and Spotify.</p>
+                            <p data-i18n-html="how.s2.body">Review your recommendation, original poster, synopsis and available title details. Official previews and viewing options appear when verified.</p>
                         </div>
                         <div class="how-step">
                             <div class="how-num">3</div>
                             <h3 data-i18n="how.s3.title">Watch It Instantly</h3>
-                            <p data-i18n-html="how.s3.body">One tap opens it on Netflix, Prime, Max, Disney+, Spotify or wherever it lives. Save it to Watch Later, or hit <em>Not For Me</em> and we'll instantly find another.</p>
+                            <p data-i18n-html="how.s3.body">Open a verified viewing option for your country. Save for later, dismiss a suggestion, or share it. Availability and subscriptions depend on the provider.</p>
                         </div>
                     </div>
                     <button onclick="scrollToQuestionnaire()" class="gold-btn" style="margin-top:28px; max-width:420px; font-size:17px; padding:18px;" data-i18n="how.cta">⚡ Find My Match — It's Free</button>
@@ -3810,6 +3808,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         </div>
     </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
     <script src="/settings.js?v=20261006-installbell1&amp;matching=20260928-session1"></script>
     <script src="/topic-focus.js?v=20260928-1"></script>
     <script src="/matching-policy.js?v=20260926-conflicts2"></script>
@@ -3857,7 +3856,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     <script defer src="/match-fun-share.js?v=20260928-1"></script>
     <script src="/pricing.js?v=20260918-billing2"></script>
     <script src="/credits-ui.js?v=198"></script>
-    <script src="/voice-input.js?v=20261005-voiceorigin1"></script>
+    <script src="/voice-input.js?v=20261005-voiceorigin1&amp;fastlang=20261014-1"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initVoiceInput('specific-search-input', 'mic-btn-index', () => {
@@ -3941,7 +3940,7 @@ const footerYearEl = document.getElementById('footer-year');
             <span class="jh-online" aria-hidden="true"></span>
         </button>
     </aside>
-    <script defer src="/jonas/locales-20261009-v2.js"></script>
+    <script defer src="/jonas/locales-20261009-v2.js?v=20261014-fastlang1"></script>
     <script defer src="/jonas/floating-home-20261010-v3.js?v=20261014-dock2"></script>
 <script>
 document.addEventListener('click',function(event){
@@ -3951,7 +3950,7 @@ document.addEventListener('click',function(event){
 },true);
 </script>
     <script defer src="/jonas/male-voice-policy-20261010.js"></script>
-    <script defer src="/jonas/secure-speech-20261010.js"></script>
+    <script defer src="/jonas/secure-speech-20261010.js?v=20261014-fastlang1"></script>
     <script defer src="/jonas/floating-voice-20261010-v5.js?v=20261011-live2"></script>
 <script src="/passkeys.js?v=187"></script>
 <script src="/app-updates.js?v=20260927-mobilefresh1&amp;installfix=20260930-1&amp;brand=20261001-canonicalai1"></script>

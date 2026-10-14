@@ -1569,19 +1569,19 @@ function setAiWorkflow(progress, label, activeStep) {
 function startAiWorkflow() {
     if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
     let p = 7;
-    setAiWorkflow(p, 'Understanding your request…', 'understand');
+    setAiWorkflow(p, window.t?.('ai.understand') || 'Understanding your request…', 'understand');
     aiWorkflowTimer = setInterval(() => {
         p = Math.min(91, p + (p < 40 ? 7 : p < 72 ? 4 : 2));
-        if (p < 40) setAiWorkflow(p, 'Understanding your request…', 'understand');
-        else if (p < 74) setAiWorkflow(p, 'Matching titles and sources…', 'match');
-        else setAiWorkflow(p, 'Composing your answer…', 'answer');
+        if (p < 40) setAiWorkflow(p, window.t?.('ai.understand') || 'Understanding your request…', 'understand');
+        else if (p < 74) setAiWorkflow(p, window.t?.('ai.match') || 'Matching titles and sources…', 'match');
+        else setAiWorkflow(p, window.t?.('ai.answer') || 'Composing your answer…', 'answer');
     }, 520);
 }
 
 function finishAiWorkflow() {
     if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
     aiWorkflowTimer = null;
-    setAiWorkflow(100, 'Answer ready', 'answer');
+    setAiWorkflow(100, window.t?.('ai.ready') || 'Answer ready', 'answer');
 }
 window.startAiWorkflow = startAiWorkflow;
 window.finishAiWorkflow = finishAiWorkflow;
@@ -1799,6 +1799,7 @@ async function renderResultsInto(grid, items, baseIndex) {
 async function runAskAndRender(question, opts) {
     if (!question || !question.trim()) return;
     const voiceOrigin = !!opts?.voiceOrigin;
+    const responseLanguage = window.MATCH_LANG || 'en';
     question = question.trim();
     // Short greetings are conversation, not an entertainment title query.
     // Respond immediately, do not consume credits or query provider catalogues.
@@ -1931,6 +1932,17 @@ async function runAskAndRender(question, opts) {
         payload.answer = window.sanitizeDisplayText(payload.answer, ['answer', 'synopsis', 'text']);
     }
 
+    // A completed old-language response must not be shown, spoken or charged
+    // after the person changes the app language while the request is pending.
+    if (responseLanguage !== (window.MATCH_LANG || 'en')) {
+        finishAiWorkflow();
+        if (loadEl) loadEl.style.display = 'none';
+        appendAssistantBubble(window.t('ai.languageChanged'), [], {instant:true});
+        const field=document.getElementById('discover-new-input');
+        if(field&&!field.value)field.value=question;
+        return;
+    }
+
     // Only a verified, successful live answer earns a debit. Offline source
     // fallbacks and transport/JSON failures remain free.
     if (payload?._live === true && String(payload.answer || '').trim() &&
@@ -1941,7 +1953,9 @@ async function runAskAndRender(question, opts) {
             'Your allowance changed while the answer was generated. No result was charged; try again.', [], { instant:true });
         return;
     }
-    await refreshAiWorkspaceStatus();
+    // The successful debit above remains authoritative. Repainting the badge
+    // must not add another quota network roundtrip before showing/speaking it.
+    void refreshAiWorkspaceStatus();
 
     // Routed through the shared track() helper so this reaches GTM's
     // dataLayer — a direct gtag() call is a no-op under a GTM container.
@@ -2107,7 +2121,7 @@ async function runAskAndRender(question, opts) {
             const note = document.createElement('p');
             note.setAttribute('role', 'status');
             note.className = 'discover-card-recovery';
-            note.textContent = 'Title details could not load. Please try again shortly.';
+            note.textContent = window.t?.('ai.detailsRetry') || 'Title details could not load. Please try again shortly.';
             bubble.grid.replaceChildren(note);
         }
     }

@@ -9,7 +9,7 @@
  // Only the Android app launches this script; explicit local QA opt-in never affects website users.
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
- var asset='/jonas/android-ambient-assistant-20261011.css?live='+Date.now(),frame=null,panel=null,root=null,bubble=null;
+ var asset='/jonas/android-ambient-assistant-20261011.css?v=20261014-dock2',frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
@@ -29,7 +29,8 @@
   ko:{hello:'안녕하세요, 조나스입니다. 무엇을 도와드릴까요?',subject:'이 작품에 대해 더 자세히 알려드릴게요.',close:'채팅 닫기',open:'조나스와 대화',state:'현재 페이지는 그대로 유지됩니다'},
   zh:{hello:'你好，我是乔纳斯。有什么可以帮你？',subject:'我可以进一步介绍这部作品。',close:'关闭聊天',open:'与乔纳斯交谈',state:'当前页面将保持打开'}
  };
- function locale(){var s=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();return labels[s.split('-')[0]]||labels.en}
+ function selectedLanguage(){var saved='';try{saved=localStorage.getItem('match_lang')||''}catch(_){}return window.MATCH_LANG||saved||document.documentElement.lang||'en'}
+ function locale(){var s=String(selectedLanguage()).toLowerCase();return labels[s.split('-')[0]]||labels.en}
  function clamp(x,low,high){return Math.max(low,Math.min(high,x))}
  function viewport(){return {width:Math.max(1,window.innerWidth),height:Math.max(1,window.visualViewport?.height||window.innerHeight)}}
  function setPosition(x,y){var v=viewport(),sz=76;root.style.setProperty('left',clamp(x,8,Math.max(8,v.width-sz-8))+'px','important');root.style.setProperty('top',clamp(y,8,Math.max(8,v.height-sz-8))+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
@@ -63,6 +64,13 @@
   return '';
  }
  function css(){
+  // Prepare only the small shared speech modules, never a hidden chat/frame
+  // or a provider request. The first greeting can then start on the tap.
+  if(!window.MatchAppJonasSpeech&&!document.getElementById('ma-ambient-speech-loader')){
+   var speech=document.createElement('script');speech.id='ma-ambient-speech-loader';speech.src='/jonas/secure-speech-20261010.js?v=20261014-fast1';
+   if(window.MatchAppJonasVoicePolicy)document.head.appendChild(speech);
+   else{var policy=document.createElement('script');policy.src='/jonas/male-voice-policy-20261010.js';policy.onload=function(){document.head.appendChild(speech)};document.head.appendChild(policy)}
+  }
   if(!document.getElementById('ma-jonas-premium-script')){
    var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=premium2';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
   }
@@ -114,6 +122,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   if(restoreNativeState){window.matchAppNativeSpeechState=restoreNativeState.previous;window.matchAppNativeSpeechWord=restoreNativeState.previousWord;restoreNativeState=null}
   faceSpeech(false);
   try{window.MatchAppNativeVoice?.stopSpeaking?.()}catch(_){}
+  try{window.MatchAppJonasSpeech?.stop?.()}catch(_){}
   try{frame?.contentWindow?.document?.activeElement?.blur?.()}catch(_){}
   try{frame?.contentWindow?.MatchAppVoiceControls?.stop?.()}catch(_){}
   try{frame?.contentWindow?.MatchAppJonasStage?.stop?.()}catch(_){}
@@ -147,6 +156,17 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function cloudGreeting(token){
   if(!open||token!==epoch||cloudGreetingStarted===token)return;
   clearTimeout(helloTimer);restoreSpeakingCallback();
+  if(window.MatchAppJonasSpeech){
+   cloudGreetingStarted=token;pendingCloud=0;
+   window.MatchAppJonasSpeech.unlock?.();
+   window.MatchAppJonasSpeech.speak(locale().hello,selectedLanguage(),{
+    onStart:()=>{if(open&&token===epoch)faceSpeech(true)},
+    onLevel:level=>{if(open&&token===epoch&&level>0)faceWord('a')},
+    onEnd:()=>finishGreeting(token)
+   }).catch(()=>finishGreeting(token));
+   helloTimer=setTimeout(()=>{window.MatchAppJonasSpeech.stop();finishGreeting(token)},5500);
+   return;
+  }
   if(!ready){pendingCloud=token;helloTimer=setTimeout(()=>finishGreeting(token),3600);return}
   pendingCloud=0;cloudGreetingStarted=token;
   var voice;
@@ -191,7 +211,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   try{
    // Native Android TTS is local and starts without a remote synthesis roundtrip.
    // Kotlin refuses any voice whose masculine identity cannot be verified.
-   bridge.speak(locale().hello,String(window.MATCH_LANG||document.documentElement.lang||'en-US'));
+   bridge.speak(locale().hello,String(selectedLanguage()));
   }catch(_){cloudGreeting(token);return}
   helloTimer=setTimeout(()=>{
    if(!started&&open&&token===epoch){
@@ -376,7 +396,16 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   panel.querySelector('.ja-close').addEventListener('click',closePanel);
   window.addEventListener('resize',function(){var r=root.getBoundingClientRect();if(root.style.left)setPosition(r.left,r.top)},{passive:true});
   window.addEventListener('pagehide',stopConversation);
-  window.addEventListener('matchapp:language-changed',function(){bubble.ariaLabel=locale().open});
+  document.addEventListener('matchapp:langchange',function(){
+   // The same-origin chat must use the same explicit language immediately.
+   // Cancel any prior-language turn before accepting another microphone turn.
+   if(open)stopConversation();
+   bubble.ariaLabel=locale().open;
+   panel.querySelector('.ja-hello').textContent=locale().hello;
+   panel.querySelector('.ja-head-text span').textContent=locale().state;
+   panel.querySelector('.ja-close').ariaLabel=locale().close;
+   try{frame?.contentWindow?.setLanguage?.(selectedLanguage())}catch(_){}
+  });
   routeNative();restore();
   // Keep Jonas dormant/lightweight. Native greeting happens on tap while
   // the single conversation frame initializes only when the user opens it.

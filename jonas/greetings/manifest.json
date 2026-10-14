@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-10-14",
+  "source": "Existing production jonas-speech endpoint; audio/wav provider response transcoded to MP3.",
+  "privateContent": false,
+  "clips": {
+    "en": {
+      "text": "Hi, I'm Jonas. How can I help?",
+      "file": "en.mp3"
+    },
+    "pt-BR": {
+      "text": "Olá, sou o Jonas. Como posso ajudar?",
+      "file": "pt-BR.mp3"
+    }
+  }
+}

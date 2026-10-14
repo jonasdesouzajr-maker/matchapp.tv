@@ -73,7 +73,7 @@ function finalizeBrand(){
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
     });
   }
-  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=20261014-brand1"></script>\n</head>');
+  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>\n</head>');
   html=name(html,kids);
   const original=fs.readFileSync(file,'utf8');
   if(html!==original){fs.writeFileSync(file,html);count++;}

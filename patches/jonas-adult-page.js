@@ -5,6 +5,6 @@
  if(window.__matchappAmbientJonas||document.getElementById('matchapp-ambient-jonas-script'))return;
  window.__MATCHAPP_AMBIENT_WEB__=true;
  var script=document.createElement('script');script.id='matchapp-ambient-jonas-script';script.defer=true;
- script.src='/jonas/android-ambient-assistant-20261011.js?v=20261014-dock2';
+ script.src='/jonas/android-ambient-assistant-20261011.js?v=20261014-fastlang1';
  document.head.appendChild(script);
 })();
