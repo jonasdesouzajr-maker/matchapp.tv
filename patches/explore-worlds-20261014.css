@@ -114,3 +114,22 @@ html body.page-home.ma-watch-focused #premiere-disclosure{display:block!importan
 html body.page-home.ma-watch-focused #premiere-disclosure > summary{display:list-item;cursor:pointer;color:#f4d7a0;font-weight:850;padding:12px 16px;border:1px solid #e5c5896b;border-radius:14px;background:#291b34}
 html body.page-home.ma-watch-focused #premiere-disclosure[open] > summary{margin-bottom:10px}
 html body.page-home.ma-watch-focused #spotlight-ahs13{width:100%!important;max-width:100%!important;margin:0 auto!important}
+
+/* Override inherited two-row flex shortcut styling with a dedicated grid.
+   The existing precision header uses doubled selectors; match their specificity. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ align-items:stretch!important;justify-content:stretch!important;gap:8px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > :is(a.ma-luxe-shortcut,button.ma-worlds-trigger){
+ flex:none!important;min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;
+ grid-column:auto!important;align-self:stretch!important;
+}
+@media(max-width:900px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > a.ma-browser-kids:last-child{
+  grid-column:1 / -1!important;
+ }
+}
