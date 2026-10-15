@@ -1,0 +1,39 @@
+/* Keep the real language label readable; existing navigation handlers stay intact. */
+@layer ma-screen-fit {
+  body.ai-chat-page .jonas-top-actions {
+    display: grid !important;
+    grid-template-columns: 42px minmax(0,1fr) minmax(0,1fr) 42px !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+  }
+  body.ai-chat-page .jonas-top-actions > #mh-home-btn { grid-column: 1 !important; grid-row: 1 !important; }
+  body.ai-chat-page .jonas-top-actions > .jonas-top-new { grid-column: 2 !important; grid-row: 1 !important; }
+  body.ai-chat-page .jonas-top-actions > .jonas-top-history { grid-column: 3 !important; grid-row: 1 !important; }
+  body.ai-chat-page .jonas-top-actions > .ma-menu-wrap { grid-column: 4 !important; grid-row: 1 !important; }
+  body.ai-chat-page .jonas-top-actions > #lang-switcher-host {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+  body.ai-chat-page #lang-switcher-host #lang-switcher {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 42px !important;
+    padding-inline: 12px 32px !important;
+    text-overflow: clip !important;
+  }
+  body.ai-chat-page .jonas-top-actions > .jonas-top-new,
+  body.ai-chat-page .jonas-top-actions > .jonas-top-history {
+    width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+@layer ma-screen-fit {
+  body.ai-chat-page .jonas-top-actions .mh-home-label { display: none !important; }
+}
