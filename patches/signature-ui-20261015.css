@@ -1,0 +1,259 @@
+/* MatchApp Ai Orbit: original vector navigation and restrained adult surfaces.
+   This first-declared layer outranks the older depth layer only on these controls.
+   No ad selectors, media artwork, matching state or Kids product surfaces. */
+@layer ma-signature {
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]){
+  --ma-symbol:url('/assets/brand/symbols/explore.svg');
+ }
+ /* A consistent symbol follows the destination, independently of its language. */
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/cooking"]{--ma-symbol:url("/assets/brand/symbols/cooking.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/music"]{--ma-symbol:url("/assets/brand/symbols/music.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/ebooks"]{--ma-symbol:url("/assets/brand/symbols/books.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/news"]{--ma-symbol:url("/assets/brand/symbols/news.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/events"]{--ma-symbol:url("/assets/brand/symbols/events.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/together"]{--ma-symbol:url("/assets/brand/symbols/together.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/awareness"]{--ma-symbol:url("/assets/brand/symbols/awareness.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/friends"]{--ma-symbol:url("/assets/brand/symbols/friends.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/guides"]{--ma-symbol:url("/assets/brand/symbols/guides.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/discover"]{--ma-symbol:url("/assets/brand/symbols/discover.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/profile"]{--ma-symbol:url("/assets/brand/symbols/profile.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/explore"]{--ma-symbol:url("/assets/brand/symbols/explore.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/kids"]{--ma-symbol:url("/assets/brand/symbols/kids.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/#trending"]{--ma-symbol:url("/assets/brand/symbols/trending.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href^="/how-it-works"]{--ma-symbol:url("/assets/brand/symbols/how.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) :is(.ma-world-card,.explore-grid > a.explore-card,.ma-luxe-shortcut,.hub-links > a,.journey-nav-item,.journey-header-links > a)[href="/"]{--ma-symbol:url("/assets/brand/symbols/home.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .ma-worlds-trigger{--ma-symbol:url("/assets/brand/symbols/explore.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .ma-menu-button{--ma-symbol:url("/assets/brand/symbols/settings.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .ma-how-button{--ma-symbol:url("/assets/brand/symbols/how.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .mh-home-btn{--ma-symbol:url("/assets/brand/symbols/home.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .sound-toggle-btn{--ma-symbol:url("/assets/brand/symbols/sound.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .matchapp-notification-button{--ma-symbol:url("/assets/brand/symbols/notifications.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .lazy-head[data-fold-key="concierge"]{--ma-fold-icon:url("/assets/brand/symbols/watch.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .lazy-head[data-fold-key="trending"]{--ma-fold-icon:url("/assets/brand/symbols/trending.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .lazy-head[data-fold-key="together"]{--ma-fold-icon:url("/assets/brand/symbols/together.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) #premiere-disclosure>summary{--ma-fold-icon:url("/assets/brand/symbols/premiere.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) #weekly-pick-disclosure>summary{--ma-fold-icon:url("/assets/brand/symbols/weekly.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) #latest-news>summary{--ma-fold-icon:url("/assets/brand/symbols/news.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .global-events-summary{--ma-fold-icon:url("/assets/brand/symbols/events.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .swifties-fold{--ma-fold-icon:url("/assets/brand/symbols/music.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .match-more-filters>summary{--ma-fold-icon:url("/assets/brand/symbols/filters.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .seo-fold-summary{--ma-fold-icon:url("/assets/brand/symbols/guides.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .ebook-home-picks>summary{--ma-fold-icon:url("/assets/brand/symbols/books.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .ebook-saved>summary{--ma-fold-icon:url("/assets/brand/symbols/saved.svg")!important}
+ html body:not(.kids-body):not(.page-kids):not([data-kids-mode="true"]) .share-how>summary{--ma-fold-icon:url("/assets/brand/symbols/share.svg")!important}
+ /* Shared adult navigation: no emoji, icon-font or per-platform rendering. */
+ html body:not(.kids-body):not(.page-kids) :is(.ma-luxe-shortcut,.mh-home-btn,.ma-menu-button,.ma-how-button,.sound-toggle-btn,.matchapp-notification-button) > svg,
+ html body:not(.kids-body):not(.page-kids) .mh-home-btn > .mh-home-ico{display:none!important}
+ html body:not(.kids-body):not(.page-kids) :is(.ma-luxe-shortcut,.mh-home-btn,.ma-menu-button,.ma-how-button,.sound-toggle-btn,.matchapp-notification-button)::before,
+ html body:not(.kids-body):not(.page-kids) :is(.hub-links,.journey-header-links) > a::before{
+  content:""!important;position:static!important;inset:auto!important;display:block!important;
+  width:26px!important;height:26px!important;min-width:26px!important;flex:0 0 26px!important;
+  margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  background:var(--ma-symbol) center / contain no-repeat!important;
+  opacity:1!important;transform:none!important;animation:none!important;pointer-events:none!important;
+ }
+ html body:not(.kids-body):not(.page-kids) :is(.hub-links,.journey-header-links) > a{
+  display:inline-flex!important;align-items:center!important;gap:8px!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut{
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  gap:10px!important;padding:12px 14px!important;min-height:54px!important;
+  border:1px solid #c9ad7a42!important;border-radius:14px!important;
+  background:linear-gradient(125deg,#2a2037,#21192d)!important;
+  box-shadow:inset 0 1px #ffffff09!important;color:#f4e7d1!important;
+  font-weight:650!important;text-shadow:none!important;letter-spacing:0!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-worlds-trigger{
+  border-color:#e7c687a1!important;background:linear-gradient(120deg,#4c3945,#332338)!important;
+  color:#ffe7b3!important;filter:none!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcut .ma-luxe-text{
+  flex:1!important;min-width:0!important;text-align:start!important;
+  font:650 clamp(11px,1.1vw,14px)/1.35 "Inter",system-ui,sans-serif!important;
+  white-space:normal!important;overflow-wrap:anywhere!important;
+ }
+ html body.page-home #mh-topbox .ma-worlds-trigger[aria-expanded="true"]{
+  border-color:#f1d29d!important;background:linear-gradient(120deg,#563c51,#35263f)!important;
+ }
+ /* The nine topics occupy complete rows, not inherited header flex lanes. */
+ html body.page-home #mh-topbox .ma-worlds-panel{
+  padding:clamp(16px,2vw,24px)!important;min-height:0!important;height:auto!important;
+  border:1px solid #d7bc854d!important;border-radius:18px!important;
+  background:linear-gradient(140deg,#241b30,#18121f)!important;
+  box-shadow:inset 0 1px #fff7e508!important;
+ }
+ html body.page-home #mh-topbox .ma-worlds-heading{margin-bottom:18px!important;gap:14px!important}
+ html body.page-home #mh-topbox .ma-worlds-heading h2{
+  font:650 clamp(21px,2.2vw,28px)/1.2 "Outfit",system-ui,sans-serif!important;
+  letter-spacing:-.025em!important;color:#f5e6ce!important;margin:4px 0 6px!important;
+ }
+ html body.page-home #mh-topbox .ma-worlds-heading p{font-size:13px!important;line-height:1.5!important}
+ html body.page-home #mh-topbox .ma-worlds-heading .ma-worlds-close{
+  width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;
+  border:1px solid #e0c59a35!important;border-radius:11px!important;background:#ffffff04!important;
+  padding:0!important;box-shadow:none!important;font-size:23px!important;
+ }
+ html body.page-home #mh-topbox .ma-worlds-panel > nav.ma-worlds-grid,
+ html body.page-explore .explore-grid{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:10px!important;align-items:stretch!important;justify-content:stretch!important;
+  width:100%!important;max-width:100%!important;padding:0!important;margin:0!important;
+ }
+ html body.page-home #mh-topbox .ma-worlds-grid > a.ma-world-card,
+ html body.page-explore .explore-grid > a.explore-card{
+  display:grid!important;grid-template-columns:42px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;align-content:center!important;align-items:start!important;
+  column-gap:13px!important;row-gap:5px!important;min-width:0!important;width:100%!important;
+  min-height:116px!important;height:auto!important;max-width:100%!important;
+  padding:17px 25px 17px 16px!important;margin:0!important;
+  border:1px solid #cdb58f38!important;border-radius:13px!important;
+  background:linear-gradient(120deg,#30243899,#211a2d)!important;
+  box-shadow:inset 0 1px #ffffff06!important;transform:none!important;
+  text-decoration:none!important;box-sizing:border-box!important;
+ }
+ html body.page-home #mh-topbox .ma-world-card .ma-world-icon,
+ html body.page-explore .explore-grid > a.explore-card::before{
+  content:""!important;display:block!important;position:static!important;inset:auto!important;
+  grid-column:1!important;grid-row:1 / 3!important;align-self:center!important;
+  width:42px!important;height:42px!important;min-width:42px!important;
+  margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+  font-size:0!important;line-height:0!important;filter:none!important;opacity:1!important;
+  background:var(--ma-symbol) center / contain no-repeat!important;box-shadow:none!important;
+ }
+ html body.page-home #mh-topbox .ma-world-card > strong,
+ html body.page-explore .explore-grid > a.explore-card > h2{
+  grid-column:2!important;grid-row:1!important;align-self:end!important;
+  font:650 clamp(13px,1.2vw,16px)/1.35 "Inter",system-ui,sans-serif!important;
+  color:#f7ecdb!important;min-width:0!important;margin:0!important;letter-spacing:-.015em!important;
+  text-transform:none!important;white-space:normal!important;overflow-wrap:anywhere!important;
+ }
+ html body.page-home #mh-topbox .ma-world-card > small,
+ html body.page-explore .explore-grid > a.explore-card > p{
+  grid-column:2!important;grid-row:2!important;align-self:start!important;min-width:0!important;
+  font:400 12px/1.5 "Inter",system-ui,sans-serif!important;
+  color:#c7bbd0!important;margin:0!important;white-space:normal!important;overflow-wrap:anywhere!important;
+ }
+ html body.page-home #mh-topbox .ma-world-card::after,
+ html body.page-explore .explore-grid > a.explore-card::after{
+  content:"↗"!important;position:absolute!important;inset:auto!important;top:11px!important;
+  right:10px!important;width:12px!important;height:12px!important;
+  font:400 13px/1 system-ui,sans-serif!important;color:#c5af8d!important;
+  background:none!important;border:0!important;transform:none!important;
+ }
+ html body.page-home #mh-topbox .ma-worlds-see-all{
+  width:100%!important;min-height:44px!important;margin-top:12px!important;
+  border-radius:11px!important;border:1px solid #cfb68a40!important;
+  background:#ffffff04!important;color:#f3dbac!important;box-shadow:none!important;
+  font-weight:600!important;
+ }
+ /* Same architectural pill and original icon on secondary adult folds. */
+ html body:not(.kids-body):not(.page-kids) :is(
+  .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="trending"],.lazy-head[data-fold-key="together"],
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary,#latest-news>summary,
+  .global-events-summary,.swifties-fold,.match-more-filters>summary,.seo-fold-summary,
+  .ebook-home-picks>summary,.ebook-saved>summary,.share-how>summary
+ ){
+  border:1px solid #cfb18366!important;border-radius:15px!important;
+  background:linear-gradient(115deg,#302337,#1c1727 72%)!important;
+  box-shadow:inset 0 1px #ffffff09!important;color:#f3e5cd!important;
+  text-shadow:none!important;min-height:64px!important;height:auto!important;
+  padding:11px 60px 11px 16px!important;gap:13px!important;
+  font:650 clamp(14px,1.5vw,18px)/1.35 "Inter",system-ui,sans-serif!important;
+ }
+ html body:not(.kids-body):not(.page-kids) :is(
+  .lazy-head[data-fold-key="concierge"],.lazy-head[data-fold-key="trending"],.lazy-head[data-fold-key="together"],
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary,#latest-news>summary,
+  .global-events-summary,.swifties-fold,.match-more-filters>summary,.seo-fold-summary,
+  .ebook-home-picks>summary,.share-how>summary
+ )::before,
+ html body:not(.kids-body):not(.page-kids) .ebook-saved>summary .ebook-saved-crest{
+  content:""!important;display:block!important;position:static!important;inset:auto!important;
+  width:38px!important;height:38px!important;min-width:38px!important;flex:0 0 38px!important;
+  border:0!important;border-radius:0!important;margin:0!important;box-shadow:none!important;
+  background:var(--ma-fold-icon) center / contain no-repeat!important;filter:none!important;
+ }
+ html body:not(.kids-body):not(.page-kids) .ebook-saved>summary .ebook-saved-crest{
+  content:var(--ma-fold-icon)!important;
+ }
+ html body:not(.kids-body):not(.page-kids) .lazy-head[data-fold-key] .lazy-head-label{
+  font:650 clamp(14px,1.5vw,18px)/1.35 "Inter",system-ui,sans-serif!important;
+ }
+ html body:not(.kids-body):not(.page-kids) :is(
+  .lazy-head,.swifties-fold,.match-more-filters>summary,.seo-fold-summary,.share-how>summary
+ )::after{
+  width:28px!important;height:28px!important;min-width:28px!important;right:15px!important;
+  border:1px solid #c5ad8240!important;border-radius:9px!important;background-color:#ffffff04!important;
+  box-shadow:none!important;color:#dfc79d!important;font-size:19px!important;
+ }
+ html body:not(.kids-body):not(.page-kids) :is(
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary
+ )::marker{color:#d3bb8f!important;font-size:12px!important}
+ @media(hover:hover){
+  html body.page-home #mh-topbox .ma-worlds-grid > a.ma-world-card:hover,
+  html body.page-explore .explore-grid > a.explore-card:hover,
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:hover{
+   background:linear-gradient(120deg,#3b2c43,#2a2034)!important;
+   border-color:#e8cb9699!important;transform:translateY(-1px)!important;
+   box-shadow:inset 0 1px #ffffff0a!important;filter:none!important;
+  }
+ }
+ html body:not(.kids-body):not(.page-kids) :is(.ma-world-card,.explore-card,.ma-luxe-shortcut):focus-visible{
+  outline:2px solid #f4dba8!important;outline-offset:3px!important;
+ }
+ @media(max-width:660px){
+  html body.page-home #mh-topbox .ma-worlds-panel > nav.ma-worlds-grid,
+  html body.page-explore .explore-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  html body.page-home #mh-topbox .ma-worlds-grid > a.ma-world-card,
+  html body.page-explore .explore-grid > a.explore-card{
+   grid-template-columns:32px minmax(0,1fr)!important;column-gap:8px!important;
+   min-height:128px!important;padding:13px 12px!important;
+  }
+  html body.page-home #mh-topbox .ma-world-card .ma-world-icon,
+  html body.page-explore .explore-grid > a.explore-card::before{
+   width:32px!important;height:32px!important;min-width:32px!important;grid-row:1!important;
+   align-self:start!important;
+  }
+  html body.page-home #mh-topbox .ma-world-card > small,
+  html body.page-explore .explore-grid > a.explore-card > p{grid-column:1 / -1!important;font-size:11px!important}
+  html body.page-home #mh-topbox .ma-worlds-grid > a.ma-world-card:last-child,
+  html body.page-explore .explore-grid > a.explore-card:last-child{
+   grid-column:1 / -1!important;min-height:80px!important;
+   grid-template-columns:32px minmax(0,1fr)!important;
+  }
+  html body.page-home #mh-topbox .ma-worlds-grid > a.ma-world-card:last-child > small,
+  html body.page-explore .explore-grid > a.explore-card:last-child > p{grid-column:2!important}
+  html body.page-home #mh-topbox .ma-worlds-heading p{font-size:12px!important}
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut{
+   padding:10px!important;gap:8px!important;min-height:51px!important;
+  }
+ }
+ @media(max-width:355px){
+  html body.page-home #mh-topbox .ma-worlds-panel > nav.ma-worlds-grid,
+  html body.page-explore .explore-grid{grid-template-columns:minmax(0,1fr)!important}
+  html body.page-home #mh-topbox .ma-worlds-grid > a.ma-world-card,
+  html body.page-explore .explore-grid > a.explore-card{min-height:82px!important}
+  html body.page-home #mh-topbox .ma-world-card > small,
+  html body.page-explore .explore-grid > a.explore-card > p{grid-column:2!important}
+ }
+ @media(prefers-reduced-motion:reduce){
+  html body:not(.kids-body):not(.page-kids) :is(.ma-world-card,.explore-card,.ma-luxe-shortcut),
+  html body:not(.kids-body):not(.page-kids) :is(.ma-world-card,.explore-card,.ma-luxe-shortcut)::before{
+   transition:none!important;animation:none!important;transform:none!important;
+  }
+ }
+ @media(forced-colors:active){
+  html body:not(.kids-body):not(.page-kids) :is(.ma-world-card,.explore-card,.ma-luxe-shortcut){border-color:CanvasText!important}
+  .ma-world-icon{forced-color-adjust:none}
+ }
+ html[dir="rtl"] body.page-home #mh-topbox .ma-world-card::after,
+ html[dir="rtl"] body.page-explore .explore-grid > a.explore-card::after{right:auto!important;left:10px!important}
+
+ html body:not(.kids-body):not(.page-kids) .sound-toggle-btn > .sound-state-icon{display:none!important}
+ html body:not(.kids-body):not(.page-kids) .sound-toggle-btn.is-muted{--ma-symbol:url('/assets/brand/symbols/sound-muted.svg')!important}
+ html body:not(.kids-body):not(.page-kids) #nav-reg-btn{--ma-symbol:url('/assets/brand/symbols/profile.svg')!important}
+ html body:not(.kids-body):not(.page-kids) #nav-reg-btn::before{
+  content:""!important;display:inline-block!important;width:23px!important;height:23px!important;
+  flex:0 0 23px!important;background:var(--ma-symbol) center / contain no-repeat!important;
+  margin-inline-end:7px!important;vertical-align:middle!important;filter:brightness(.42) sepia(.4)!important;
+ }
+}

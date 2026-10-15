@@ -116,7 +116,7 @@ function paintHeader(){
  };
  label('.ma-how-button',c[0]);label('.ma-kids-mode-entry',c[1],'span');label('.ma-menu-button',c[2],'span');
  const signIn={en:'Sign in','pt-BR':'Entrar',es:'Entrar',fr:'Connexion',de:'Anmelden',it:'Accedi',tr:'Giriş',ru:'Войти',ar:'دخول',hi:'साइन इन',id:'Masuk',ja:'ログイン',ko:'로그인',zh:'登录'};
- label('#nav-reg-btn','👤 '+(signIn[language()]||signIn.en));
+ label('#nav-reg-btn',signIn[language()]||signIn.en);
  h.querySelectorAll('.ma-menu>[role="menuitem"]').forEach((n,i)=>{
   const text=c[i+3];if(!text)return;
   if(!n.dataset.maMenuIcon)n.dataset.maMenuIcon=n.textContent.trim().split(' ')[0];
