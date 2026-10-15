@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="960" viewBox="0 0 720 960" role="img" aria-labelledby="title desc">
+<title id="title">International Day of Rural Women 2026, women farmers nurturing the land</title>
+<desc id="desc">Original editorial illustration of two rural women planting and harvesting crops beside terraced green fields under a golden sun.</desc>
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2=".2" y2="1"><stop stop-color="#142b46"/><stop offset=".6" stop-color="#326c78"/><stop offset="1" stop-color="#bcb879"/></linearGradient>
+<radialGradient id="sun"><stop stop-color="#ffe6a0"/><stop offset=".75" stop-color="#e9ab68"/><stop offset="1" stop-color="#e7a267" stop-opacity="0"/></radialGradient>
+<linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#79a467"/><stop offset="1" stop-color="#234c44"/></linearGradient>
+<linearGradient id="vest" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9995e"/><stop offset="1" stop-color="#a94753"/></linearGradient>
+<linearGradient id="scarf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d4aede"/><stop offset="1" stop-color="#7661a7"/></linearGradient>
+<clipPath id="frame"><rect x="16" y="16" width="688" height="928" rx="28"/></clipPath>
+</defs>
+<g clip-path="url(#frame)">
+<rect width="720" height="960" fill="url(#sky)"/>
+<circle cx="555" cy="400" r="189" fill="url(#sun)"/><circle cx="555" cy="400" r="95" fill="#f7d89a" opacity=".9"/>
+<path d="M0 566 Q125 465 249 529 Q361 435 485 522 Q613 470 720 544 V720H0Z" fill="#557c68"/>
+<path d="M0 637 Q124 575 233 615 Q386 530 498 609 Q612 570 720 617 V845H0Z" fill="url(#ground)"/>
+<path d="M0 741Q175 666 351 736Q531 664 720 722M0 804Q173 718 351 794Q532 726 720 785M0 860Q190 770 358 851Q543 783 720 854" fill="none" stroke="#abc679" stroke-width="18" stroke-linecap="round" opacity=".62"/>
+<g fill="#1d534a" opacity=".9"><path d="M24 700l17-55 18 58z"/><path d="M69 697l16-60 20 63z"/><path d="M610 678l18-56 19 58z"/><path d="M655 689l18-65 22 67z"/></g>
+<g stroke="#245b43" stroke-width="5" stroke-linecap="round">
+<path d="M80 800l-5-75m5 40l-19-17m19-3l19-18M131 754l4-52m-4 28l-15-17m19 7l17-16M603 774l-2-65m2 27l-17-18m17 7l20-16"/>
+</g>
+<g fill="#95cb75"><ellipse cx="61" cy="746" rx="18" ry="9" transform="rotate(-30 61 746)"/><ellipse cx="97" cy="723" rx="20" ry="10" transform="rotate(-32 97 723)"/><ellipse cx="119" cy="712" rx="15" ry="9" transform="rotate(27 119 712)"/><ellipse cx="153" cy="704" rx="17" ry="9" transform="rotate(-29 153 704)"/><ellipse cx="586" cy="718" rx="17" ry="9" transform="rotate(31 586 718)"/><ellipse cx="623" cy="712" rx="18" ry="10" transform="rotate(-29 623 712)"/></g>
+<!-- Farmer at left: embroidered headscarf, sleeves and harvest basket -->
+<g transform="translate(175 445)">
+<ellipse cx="70" cy="314" rx="100" ry="20" fill="#1c463e" opacity=".3"/>
+<path d="M55 77Q33 102 22 142L7 268Q63 298 133 274L110 143Q100 94 83 76Z" fill="url(#scarf)"/>
+<path d="M30 163Q21 224 4 297Q64 316 141 296L104 166Z" fill="#a15c8d"/>
+<path d="M38 161l-17 103M106 163l23 103" stroke="#d8adc7" stroke-width="5"/>
+<path d="M48 80Q55 113 72 128Q92 113 99 79V36H47Z" fill="#9b583e"/>
+<ellipse cx="73" cy="40" rx="39" ry="48" fill="#a66c4a"/>
+<path d="M32 55Q34 4 72 -1Q114 8 111 59L99 42Q86 25 56 32Z" fill="#433238"/>
+<path d="M33 42Q17 63 19 116L41 150L48 99Z" fill="#c6a0d4"/>
+<path d="M106 41Q127 62 126 114L105 138L99 95Z" fill="#b68dcc"/>
+<path d="M38 142Q14 180 1 215L-20 242" fill="none" stroke="#a66c4a" stroke-width="19" stroke-linecap="round"/>
+<path d="M106 144Q130 173 143 212L161 240" fill="none" stroke="#a66c4a" stroke-width="19" stroke-linecap="round"/>
+<path d="M-20 239Q65 269 160 240L146 290Q65 322 -4 289Z" fill="#9a693b" stroke="#e5c98b" stroke-width="6"/>
+<path d="M0 259Q70 282 143 260" stroke="#e8c989" stroke-width="5" fill="none"/>
+<g fill="#d6b967"><path d="M17 246l-17-39 26 23 3-41 24 49z"/><path d="M60 255l-18-40 29 27 2-43 24 47z"/><path d="M106 250l-14-34 26 25 7-44 19 50z"/></g>
+</g>
+<!-- Farmer at right: straw hat, sleeves and seedling -->
+<g transform="translate(431 492)">
+<ellipse cx="67" cy="280" rx="110" ry="20" fill="#19483e" opacity=".3"/>
+<path d="M25 111Q66 86 119 115L153 257Q70 289 -12 263Z" fill="url(#vest)"/>
+<path d="M34 130L5 201-9 234M116 128L139 183 114 221" fill="none" stroke="#a76949" stroke-width="20" stroke-linecap="round"/>
+<path d="M-9 233Q19 244 50 214M113 222L96 241" fill="none" stroke="#c07c58" stroke-width="15" stroke-linecap="round"/>
+<rect x="53" y="72" width="29" height="41" rx="12" fill="#9f6443"/>
+<ellipse cx="68" cy="49" rx="39" ry="46" fill="#b57955"/>
+<path d="M31 44Q29 -1 67 -4Q108 -3 105 43Q86 17 54 27Z" fill="#302c2e"/>
+<path d="M14 19Q66 -23 117 18L112 33Q67 20 19 34Z" fill="#c5a15d"/>
+<ellipse cx="68" cy="34" rx="83" ry="16" fill="#e2be79"/>
+<path d="M-3 232L14 249M111 232L92 249" stroke="#774a34" stroke-width="5"/>
+<path d="M49 237L69 205l6 37" fill="none" stroke="#2f704b" stroke-width="6"/>
+<path d="M65 214q-43-5-32-31q39-9 32 31zM72 225q32-41 52-25q-9 35-52 25z" fill="#8fc973" stroke="#3a8254" stroke-width="3"/>
+</g>
+<path d="M0 787Q170 757 359 797Q540 760 720 786V960H0Z" fill="#132b3b" opacity=".97"/>
+<path d="M38 790H682" stroke="#e1b76c" stroke-width="3" opacity=".8"/>
+<text x="42" y="78" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" letter-spacing="4" fill="#f9deb0">15 OCTOBER 2026  •  WORLDWIDE</text>
+<text x="40" y="133" font-family="Arial,Helvetica,sans-serif" font-size="48" font-weight="900" fill="#ffffff">RURAL WOMEN</text>
+<text x="42" y="169" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" letter-spacing="1.5" fill="#ffe5ae">FARMERS CARING FOR NATURE</text>
+<text x="42" y="840" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#ffdfad">INTERNATIONAL DAY</text>
+<text x="42" y="877" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" fill="#ffdfad">OF RURAL WOMEN</text>
+<text x="42" y="920" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="2" fill="#e4dfd6">MatchApp Ai  •  ORIGINAL EDITORIAL ART</text>
+</g>
+<rect x="16" y="16" width="688" height="928" rx="28" fill="none" stroke="#e9c987" stroke-width="5"/>
+</svg>
