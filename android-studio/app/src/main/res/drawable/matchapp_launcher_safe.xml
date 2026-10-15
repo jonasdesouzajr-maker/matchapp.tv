@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Approved metallic launcher artwork; safe inset protects the ring and star inside Samsung/Pixel masks. -->
-<inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/matchapp_launcher_premium"
-    android:inset="13%" />
+<!-- Artwork has its own 66dp safe region; no baked square plate or second inset. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/matchapp_launcher_orbit" android:inset="0%" />

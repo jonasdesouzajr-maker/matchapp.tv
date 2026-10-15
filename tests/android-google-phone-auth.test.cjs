@@ -70,8 +70,8 @@ test('Sign-in, sign-up and SMS share premium styling and verified OTP',()=>{
 });
 test('Release is Android adult v52 with unchanged native AdMob and UMP gates',()=>{
   const gradle=read('android-studio/app/build.gradle.kts');
-  assert.match(gradle,/versionCode = 52/);
-  assert.match(gradle,/versionName = "1\.1\.52"/);
+  assert.match(gradle,/versionCode = 53/);
+  assert.match(gradle,/versionName = "1\.1\.53"/);
   assert.match(gradle,/ca-app-pub-9541435081010948\/4843348278/);
   const admob=read('android-studio/app/src/main/java/com/jonas/papercup/AdMobController.kt');
   assert.match(admob,/canRequestAds\(\)/);

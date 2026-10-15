@@ -1,0 +1,72 @@
+/* Adult screen fit. Presentation only: no content, source, ad or interaction state. */
+@layer ma-screen-fit {
+ html body:not(.kids-body):not(.page-kids):not(.kids-guide-page):not([data-kids-mode]) .matchapp-brand-bar .matchapp-brand-link{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+ html body:not(.kids-body):not(.page-kids):not(.kids-guide-page):not([data-kids-mode]) .matchapp-brand-bar .matchapp-wordmark{min-width:0!important;max-width:100%!important;flex:0 1 auto!important}
+ body.page-journey>.matchapp-brand-bar{display:none!important}
+ html body.page-home #mh-topbox .ma-how-button{box-sizing:border-box!important;min-width:0!important;max-width:100%!important;overflow:visible!important}
+ html body.page-home #mh-topbox .ma-how-button::after{display:none!important}
+ html body.page-home #mh-topbox #nav-reg-btn{display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:76px!important;white-space:nowrap!important;overflow-wrap:normal!important;hyphens:none!important;padding:8px!important}
+ html body.page-home #mh-topbox #nav-reg-btn::before{width:19px!important;height:19px!important;flex-basis:19px!important;margin:0!important}
+ html body.ai-chat-page .composer-send{width:auto!important;min-width:76px!important;max-width:100%!important;height:auto!important;min-height:44px!important;padding:10px 12px!important;gap:6px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;white-space:normal!important;overflow-wrap:normal!important}
+ html body.ai-chat-page .composer-send svg{width:18px!important;height:18px!important;flex:0 0 18px!important}
+ html body.ai-chat-page .composer-send-label{display:inline!important;max-width:12ch!important;line-height:1.2!important;white-space:normal!important;overflow-wrap:anywhere!important;font-size:11px!important}
+ html body.ebook-page :is(.ebook-provider,.ebook-top-source){height:auto!important;min-height:40px!important;white-space:normal!important;text-overflow:clip!important;overflow-wrap:anywhere!important;line-height:1.4!important;padding:9px 11px!important}
+ html body.ebook-page .ebook-top-source{display:flex!important;align-items:center!important;justify-content:center!important;border:1px solid #d9bd8540!important;border-radius:14px!important;background:#ffffff08!important;text-decoration:none!important}
+ html body:has(.cooking-shell) .cooking-card h3>a{display:inline-flex!important;align-items:center!important;min-height:40px!important;padding:7px 12px!important;border:1px solid #dac18b55!important;border-radius:13px!important;background:linear-gradient(120deg,#70519a25,#d3ad6920)!important;text-decoration:none!important;white-space:normal!important;overflow-wrap:anywhere!important;box-sizing:border-box!important;max-width:100%!important}
+ html body:has(.cooking-shell) .cooking-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))!important;gap:14px!important}
+ html body.page-journey .journey-nav-index{white-space:nowrap!important;min-width:2ch!important;flex:0 0 2ch!important;letter-spacing:0!important}
+ html body.page-journey .journey-nav-item{border:1px solid #d9bd8530!important;background:#ffffff04!important}
+ @media(max-width:880px){
+  html body.page-journey .journey-chapter-links{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;overflow:visible!important;gap:7px!important;padding:0!important}
+  html body.page-journey .journey-nav-item{width:100%!important;max-width:none!important;min-width:0!important;min-height:58px!important;padding:9px!important;gap:7px!important;white-space:normal!important;align-items:center!important}
+  html body.page-journey .journey-nav-text{min-width:0!important;max-width:none!important;overflow:visible!important;text-overflow:clip!important;font-size:11px!important;line-height:1.35!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ }
+ @media(min-width:600px) and (max-width:880px){html body.page-journey .journey-chapter-links{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+ @media(max-width:600px){
+  html body.page-home #mh-topbox > nav.ma-header-actions{grid-template-columns:minmax(0,1fr) 38px 38px 78px!important;gap:6px!important}
+  html body.page-home #mh-topbox #lang-switcher-host,html body.page-home #mh-topbox #lang-switcher-host select{min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+  html body.page-home #mh-topbox #nav-reg-btn{font-size:11px!important}
+ }
+ html body:not(.kids-body):not(.page-kids):not(.kids-guide-page):not([data-kids-mode]) :is(.adult-page-nav,.cooking-links,.hub-links,.journey-footer nav){display:flex;flex-wrap:wrap;gap:8px}
+ html body:not(.kids-body):not(.page-kids):not(.kids-guide-page):not([data-kids-mode]) :is(.adult-page-nav,.cooking-links,.journey-footer nav)>a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;max-width:100%!important;padding:8px 13px!important;border:1px solid #d6bd8840!important;border-radius:14px!important;background:#ffffff06!important;text-decoration:none!important;white-space:normal!important;overflow-wrap:anywhere!important;box-sizing:border-box!important}
+ @media(hover:hover){html body:not(.kids-body):not(.page-kids) :is(.cooking-card h3>a,.ebook-top-source,.adult-page-nav>a,.cooking-links>a):hover{border-color:#e9cb90!important;background-color:#d9bc8520!important;transform:translateY(-1px)}}
+ @media(prefers-reduced-motion:reduce){html body:not(.kids-body):not(.page-kids) :is(.cooking-card h3>a,.ebook-top-source,.adult-page-nav>a,.cooking-links>a){transition:none!important;transform:none!important}}
+}
+
+@layer ma-screen-fit {
+ body:has(#ma-ambient-jonas.ja-header-default):not(.page-home) .app-header .mh-head{padding-inline-end:96px!important;min-height:104px!important;box-sizing:border-box!important}
+ body:has(#ma-ambient-jonas.ja-header-default) .journey-brand{width:100%!important;padding-inline-end:88px!important;min-height:80px!important;box-sizing:border-box!important}
+ body:has(#ma-ambient-jonas.ja-header-default):not(.page-home)>.matchapp-brand-bar{padding-inline-end:106px!important;min-height:98px!important;box-sizing:border-box!important}
+ @media(max-width:1099px){html.matchapp-ai-android body.page-home #mh-topbox>.mh-head{padding-inline-end:96px!important;min-height:110px!important;box-sizing:border-box!important}}
+}
+
+@layer ma-screen-fit {
+ html body.ai-chat-page .composer{grid-template-columns:minmax(0,1fr) 42px minmax(76px,max-content)!important;gap:6px!important;min-width:0!important;max-width:100%!important}
+ html body.ai-chat-page .composer>textarea{min-width:0!important;max-width:100%!important;width:100%!important}
+ html body.ai-chat-page .composer-send{font-size:11px!important;line-height:1.25!important;overflow:visible!important;flex-basis:auto!important}
+ @media(max-width:600px){
+  html body.page-home #mh-topbox>nav.ma-header-actions{grid-template-columns:minmax(0,1fr) 42px 42px 78px!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>*{grid-column:auto!important;grid-row:auto!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>#lang-switcher-host{grid-column:1!important;grid-row:1!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.sound-toggle-btn{grid-column:2!important;grid-row:1!important;padding:6px!important;width:100%!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.matchapp-notification-button{grid-column:3!important;grid-row:1!important;padding:6px!important;width:100%!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>:is(#nav-reg-btn,#profile-link-tab){grid-column:4!important;grid-row:1!important;width:100%!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.ma-how-button{grid-column:1 / 4!important;grid-row:2!important;width:100%!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.ma-menu-wrap{grid-column:4!important;grid-row:2!important;width:100%!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>#quota-badge{grid-column:1 / 3!important;grid-row:3!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>#nav-logout-btn{grid-column:3 / 5!important;grid-row:3!important}
+  html body.page-home #mh-topbox>.mh-head{min-height:128px!important;padding-inline-end:92px!important;box-sizing:border-box!important}
+  html body.page-home #mh-topbox>.mh-head .mh-tagline{max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ }
+ @media(max-width:360px){
+  html body.page-home #mh-topbox>nav.ma-header-actions{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>#lang-switcher-host{grid-column:1 / -1!important;grid-row:1!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.sound-toggle-btn{grid-column:1!important;grid-row:2!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.matchapp-notification-button{grid-column:2!important;grid-row:2!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>:is(#nav-reg-btn,#profile-link-tab){grid-column:3 / 5!important;grid-row:2!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.ma-how-button{grid-row:3!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>.ma-menu-wrap{grid-row:3!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>#quota-badge{grid-row:4!important}
+  html body.page-home #mh-topbox>nav.ma-header-actions>#nav-logout-btn{grid-row:4!important}
+ }
+}
