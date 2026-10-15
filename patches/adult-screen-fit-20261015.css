@@ -33,6 +33,7 @@
  @media(prefers-reduced-motion:reduce){html body:not(.kids-body):not(.page-kids) :is(.cooking-card h3>a,.ebook-top-source,.adult-page-nav>a,.cooking-links>a){transition:none!important;transform:none!important}}
 }
 
+
 @layer ma-screen-fit {
  body:has(#ma-ambient-jonas.ja-header-default):not(.page-home) .app-header .mh-head{padding-inline-end:96px!important;min-height:104px!important;box-sizing:border-box!important}
  body:has(#ma-ambient-jonas.ja-header-default) .journey-brand{width:100%!important;padding-inline-end:88px!important;min-height:80px!important;box-sizing:border-box!important}
@@ -68,5 +69,265 @@
   html body.page-home #mh-topbox>nav.ma-header-actions>.ma-menu-wrap{grid-row:3!important}
   html body.page-home #mh-topbox>nav.ma-header-actions>#quota-badge{grid-row:4!important}
   html body.page-home #mh-topbox>nav.ma-header-actions>#nav-logout-btn{grid-row:4!important}
+ }
+}
+
+/* Video review: one edge per control, real row clearance, balanced navigation.
+   Keep this in the first shared layer so older !important depth rules cannot
+   make a 44px control spill out of a 38px row. Native uses this same stylesheet. */
+@layer ma-screen-fit {
+ html body:not(.page-kids):not(.kids-body) .app-header {
+  --ma-control-gap:8px;
+ }
+ html body.page-home #mh-topbox > nav.ma-header-actions {
+  grid-auto-rows:minmax(44px,auto)!important;
+  gap:var(--ma-control-gap)!important;
+  align-items:stretch!important;
+ }
+ html body.page-home #mh-topbox .mh-tagline[data-match-experience-heading] {
+  font-family:"Inter",system-ui,sans-serif!important;font-stretch:normal!important;
+  transform:none!important;letter-spacing:0!important;line-height:1.4!important;
+ }
+ html body:not(.page-kids):not(.kids-body) .app-header :is(
+  .sound-toggle-btn,.matchapp-notification-button,.ma-how-button,.ma-menu-button,
+  .mh-home-btn,.install-btn,.ma-kids-mode-entry,#nav-reg-btn,#nav-logout-btn,
+  #quota-badge,#lang-switcher-host,#lang-switcher-host select,.ma-support-shortcut
+ ) {
+  box-sizing:border-box!important;
+  min-height:44px!important;height:auto!important;
+  border-radius:14px!important;
+  box-shadow:inset 0 1px 0 #ffffff0e!important;
+  background-clip:padding-box!important;
+  margin-block:0!important;
+ }
+ html body.page-home #mh-topbox > nav.ma-header-actions > * {
+  align-self:stretch!important;height:auto!important;min-height:44px!important;
+ }
+ html body:not(.page-kids):not(.kids-body) .app-header .ma-menu-wrap {
+  padding:0!important;border:0!important;background:none!important;box-shadow:none!important;
+  height:auto!important;min-height:44px!important;align-self:stretch!important;
+ }
+ html body:not(.page-kids):not(.kids-body) .app-header .ma-menu-wrap > .ma-menu-button {
+  width:100%!important;height:100%!important;min-height:44px!important;padding:8px!important;
+ }
+ html body:not(.page-kids):not(.kids-body) .app-header #lang-switcher-host {
+  padding:0!important;overflow:visible!important;
+ }
+ html body:not(.page-kids):not(.kids-body) .app-header #lang-switcher-host select {
+  border:0!important;box-shadow:none!important;width:100%!important;height:100%!important;
+ }
+ html body.page-home #mh-topbox > nav.ma-luxe-shortcuts {
+  display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  gap:var(--ma-control-gap)!important;align-items:stretch!important;
+  padding-block:12px 0!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut {
+  grid-column:span 3!important;min-width:0!important;width:100%!important;
+  min-height:54px!important;height:auto!important;padding:9px 8px!important;
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  align-items:center!important;gap:5px!important;
+  border:1px solid #c9ad7a66!important;border-radius:14px!important;
+  overflow:visible!important;background-clip:padding-box!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(n+5) {
+  grid-column:span 4!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts .ma-luxe-text,
+ html body.page-home #mh-topbox .ma-luxe-shortcuts #ma-donate-shortcut > span {
+  flex:0 1 auto!important;width:100%!important;max-width:100%!important;
+  text-align:center!important;white-space:normal!important;word-break:normal!important;
+  overflow-wrap:anywhere!important;hyphens:auto!important;
+  font-size:12px!important;line-height:1.3!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut::before {
+  width:22px!important;height:22px!important;min-width:22px!important;flex-basis:22px!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-worlds-trigger {border-color:#e7c687!important}
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > #ma-donate-shortcut {border-color:#e5c15899!important}
+ /* Six native destinations form two complete rows; Kids remains browser-only. */
+ html.matchapp-ai-android body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut {grid-column:span 4!important}
+ html body.page-shell header.app-header > nav.mh-deck {
+  gap:var(--ma-control-gap)!important;align-items:stretch!important;
+ }
+ html body.page-shell header.app-header > nav.mh-deck > * {align-self:stretch!important}
+ html body.page-shell header.app-header > nav.mh-deck > :is(a,button,.install-wrap) {
+  flex:1 1 76px!important;min-width:0!important;max-width:100%!important;
+  min-height:44px!important;height:auto!important;padding:8px 10px!important;
+  align-items:center!important;justify-content:center!important;
+  white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important;line-height:1.3!important;
+  border-radius:14px!important;box-shadow:inset 0 1px 0 #ffffff0e!important;
+ }
+ html body.page-shell header.app-header > nav.mh-deck > :is(.sound-toggle-btn,.matchapp-notification-button,.ma-kids-mode-entry,.ma-menu-wrap) {
+  flex:0 0 44px!important;width:44px!important;min-width:44px!important;padding:8px!important;
+ }
+ html body.page-shell header.app-header > nav.mh-deck > .ma-menu-wrap {padding:0!important}
+ /* Keep the existing compact Kids icon inside its 44px secondary control. */
+ html body.page-shell header.app-header > nav.mh-deck > .ma-kids-mode-entry > span {display:none!important}
+ html body.page-shell header.app-header > nav.mh-deck > .mh-home-btn {min-width:94px!important;flex-basis:94px!important}
+ html body.page-shell header.app-header > nav.mh-deck > .install-btn {flex-basis:105px!important;min-width:105px!important;letter-spacing:0!important;text-transform:none!important;font-size:12px!important}
+ html body.page-shell header.app-header > nav.mh-deck > #ma-donate-shortcut {min-width:max-content!important}
+ html body.page-shell header.app-header > nav.mh-deck > .secondary-btn[href="/pricing/pricing.html"] {
+  flex-basis:50px!important;min-width:min-content!important;padding-inline:8px!important;
+  font-size:12px!important;letter-spacing:0!important;
+ }
+ html body.page-shell header.app-header > nav.mh-deck > #ma-donate-shortcut {padding-inline:8px!important;flex-basis:76px!important}
+ html body:not(.page-kids):not(.kids-body) header.app-header .event-nav-pill {min-height:44px!important}
+ html body.page-shell header.app-header .mh-home-label {white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important;text-transform:none!important}
+ html body.page-shell header.app-header > nav.mh-deck:has(>.mh-home-btn) > a.home-btn[href="/"] {display:none!important}
+ html body.page-shell header.app-header > nav.mh-deck > .install-wrap {padding:0!important}
+ html body.page-shell header.app-header > nav.mh-deck > .install-wrap > .install-btn {
+  width:100%!important;height:100%!important;white-space:normal!important;line-height:1.3!important;
+ }
+ html body.ai-chat-page .jonas-top-actions {grid-template-columns:44px minmax(0,1fr) minmax(0,1fr) 44px!important;grid-auto-rows:minmax(44px,auto)!important}
+ html body.ai-chat-page .jonas-top-actions > #mh-home-btn {min-width:44px!important;width:44px!important;flex-basis:44px!important;padding:8px!important}
+ html body.ai-chat-page .jonas-top-actions > #lang-switcher-host {grid-column:1 / 3!important;grid-row:2!important}
+ html body.ai-chat-page .jonas-top-actions > #ma-donate-shortcut {grid-column:3 / 5!important;grid-row:2!important}
+ /* A decorative bevel was drawing a second rim below the true pill border. */
+ html body:not(.page-kids):not(.kids-body) :is(
+  .crit-chip,.crit-toggle,.match-quick-chip,.match-quick-link,.res-btn,.spotlight-btn,
+  .weekly-pick-btn,.pill,.filter-chip,.spotlight-save,.spotlight-ask,
+  .weekly-save,.weekly-pick-primary,.weekly-pick-dislike,#res-direct-link,.res-action-grid>button
+ ) {background-clip:padding-box!important;box-shadow:inset 0 1px #ffffff12!important}
+ html body:not(.page-kids):not(.kids-body) :is(.crit-chips,.match-quick-links,.res-action-grid,.spotlight-actions,.weekly-pick-actions) {gap:8px!important}
+ /* The portrait in an open chat is the visual anchor. Hide only the redundant
+    bubble; the existing close control and conversation handlers are unchanged. */
+ html body #ma-jonas-home.is-chat-stage > .jh-bubble,
+ html body:has(#ma-jonas-home.is-chat-stage) #ma-ambient-jonas,
+ html body.ma-jonas-modal-open #ma-ambient-jonas {visibility:hidden!important;pointer-events:none!important}
+ @media(max-width:600px) {
+  html body.page-home #mh-topbox > .mh-head {min-height:100px!important}
+  html body.page-home #mh-topbox > nav.ma-header-actions {grid-template-columns:minmax(0,1fr) 44px 44px minmax(78px,max-content)!important}
+ }
+ @media(max-width:599px) {
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(-n+4) {grid-column:span 6!important;flex-direction:row!important;min-height:44px!important}
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(-n+4) .ma-luxe-text {text-align:start!important}
+ }
+ @media(min-width:380px) and (max-width:599px) {
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(n+5) {flex-direction:row!important;min-height:44px!important}
+  html.matchapp-ai-android body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(n) {grid-column:span 4!important;flex-direction:column!important}
+ }
+ @media(max-width:379px) {
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(-n+4) {grid-column:span 6!important;flex-direction:row!important;min-height:44px!important}
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(-n+4) .ma-luxe-text {text-align:start!important}
+  html.matchapp-ai-android body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(n) {grid-column:span 6!important;flex-direction:row!important}
+ }
+ @media(max-width:360px) {
+  html body.page-home #mh-topbox > nav.ma-header-actions {grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ }
+ @media(min-width:1100px) {
+  html body.page-home #mh-topbox > nav.ma-luxe-shortcuts {grid-template-columns:repeat(7,minmax(0,1fr))!important}
+  html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-luxe-shortcut:nth-child(n) {grid-column:auto!important;flex-direction:row!important;gap:8px!important;min-height:48px!important}
+  html body.page-home #mh-topbox .ma-luxe-shortcuts .ma-luxe-text {width:auto!important;text-align:start!important;font-size:13px!important}
+  html.matchapp-ai-android body.page-home #mh-topbox > nav.ma-luxe-shortcuts {grid-template-columns:repeat(6,minmax(0,1fr))!important}
+ }
+}
+
+/* Secondary-page review: give full labels and the shared portrait their own
+   space. These are existing destinations and controls, with unchanged actions. */
+@layer ma-screen-fit {
+ html body.page-shell:has(#ma-ambient-jonas.ja-header-default) .app-header .mh-head {padding-inline:0!important;padding-right:96px!important}
+ html body.page-shell .app-header :is(.ma-brand-home-link,.ma-brand-title-line) {direction:ltr!important}
+ html body.page-shell header.app-header > nav.mh-deck > #ma-donate-shortcut {min-width:0!important}
+ html body:not(.page-home):not(.page-kids):not(.kids-body) .ma-support-shortcut > span {
+  min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  word-break:normal!important;hyphens:auto!important;font-size:12px!important;line-height:1.3!important;
+ }
+ html body.page-shell .app-header .mh-home-label {
+  min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  font-size:12px!important;line-height:1.3!important;
+ }
+ html body.page-shell .app-header .mh-home-btn::before {
+  width:20px!important;height:20px!important;min-width:20px!important;flex-basis:20px!important;
+ }
+ html body.page-shell:has(.tg-wrap) header.app-header > nav.mh-deck {
+  display:grid!important;grid-template-columns:minmax(76px,1fr) minmax(100px,1.2fr) 44px minmax(50px,.6fr) 44px 44px minmax(100px,1fr)!important;
+ }
+ html body.page-shell:has(.tg-wrap) header.app-header > nav.mh-deck > * {width:100%!important;min-width:0!important;max-width:100%!important}
+ html.matchapp-ai-android body.page-shell:has(.tg-wrap) header.app-header > nav.mh-deck {grid-template-columns:minmax(76px,1fr) minmax(100px,1.2fr) 44px minmax(50px,.6fr) 44px minmax(100px,1fr)!important}
+ html body.page-explore .hub-header {gap:12px!important}
+ html body.page-explore .hub-links {
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;
+  width:100%!important;min-width:0!important;
+ }
+ html body.page-explore .hub-links > a {
+  width:100%!important;min-width:0!important;min-height:44px!important;height:auto!important;
+  padding:8px!important;border-radius:14px!important;box-sizing:border-box!important;
+  justify-content:center!important;gap:6px!important;font-size:12px!important;line-height:1.3!important;
+  white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;
+  box-shadow:inset 0 1px #ffffff0e!important;
+ }
+ html body.page-explore .hub-links > a::before {
+  width:20px!important;height:20px!important;min-width:20px!important;flex-basis:20px!important;
+ }
+ html body.page-explore #lang-switcher-host {min-height:44px!important;min-width:0!important}
+ html body.page-explore #lang-switcher-host select {
+  width:100%!important;min-height:44px!important;border:1px solid #c9ad7a66!important;
+  border-radius:14px!important;padding:8px 10px!important;background:#21192d!important;color:#fff5dc!important;
+ }
+ html body.event-guide-page .event-top-nav {
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:8px!important;align-items:stretch!important;
+ }
+ html body.event-guide-page .event-top-nav > :is(a,button) {
+  min-width:0!important;width:100%!important;min-height:44px!important;height:auto!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:6px!important;padding:8px!important;box-sizing:border-box!important;
+  font-size:12px!important;line-height:1.3!important;white-space:normal!important;
+  border-radius:14px!important;box-shadow:inset 0 1px #ffffff0e!important;
+ }
+ html body.event-guide-page .event-top-nav:has(>.event-nav-kids) > .ma-kids-mode-entry {display:none!important}
+ html body.event-guide-page .event-top-nav > #ma-donate-shortcut {grid-column:span 2!important}
+ html body.event-guide-page .app-header > .header-brand-area .app-title-main {display:block!important;min-width:0!important}
+ html body.event-guide-page .app-header > .header-brand-area .matchapp-live-wordmark {display:none!important}
+ html body.event-guide-page .app-header > .header-brand-area .matchapp-wordmark-source {display:block!important;max-width:100%!important;min-width:0!important;width:150px!important;height:auto!important}
+ @media(max-width:600px) {
+  html body.page-shell:has(#ma-ambient-jonas.ja-header-default) .app-header .mh-head {
+   padding-inline:0!important;padding-right:86px!important;min-height:96px!important;
+  }
+  html body.page-shell .app-header :is(.ma-brand-stage,.ma-brand-lockup) {
+   width:100%!important;min-width:0!important;max-width:100%!important;
+  }
+  html body.page-shell .app-header .ma-brand-home-link {
+   display:flex!important;align-items:center!important;gap:6px!important;
+   width:100%!important;min-width:0!important;max-width:100%!important;padding:0!important;direction:ltr!important;
+  }
+  html body.page-shell .app-header .ma-brand-orb-stage {
+   width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;flex:0 0 28px!important;
+  }
+  html body.page-shell .app-header .ma-brand-copy {min-width:0!important;max-width:100%!important}
+  html body.page-shell .app-header .ma-brand-title-line {white-space:nowrap!important;gap:0!important;direction:ltr!important}
+  html body.page-shell .app-header :is(.ma-wordmark,.ma-word-ai) {font-size:clamp(15px,4.8vw,24px)!important;line-height:1.15!important;letter-spacing:0!important}
+  html body.page-shell .app-header .ma-brand-caption {font-size:10px!important;line-height:1.3!important}
+  html body.page-shell .app-header .ma-brand-tagline {font-size:10px!important;line-height:1.3!important;white-space:normal!important}
+  html body.page-shell:has(.tg-wrap) header.app-header > nav.mh-deck {
+   display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  }
+  html.matchapp-ai-android body.page-shell:has(.tg-wrap) header.app-header > nav.mh-deck {grid-template-columns:repeat(5,minmax(0,1fr))!important}
+  html body.page-shell:has(.tg-wrap) header.app-header > nav.mh-deck > * {
+   width:100%!important;min-width:0!important;max-width:100%!important;grid-column:span 1!important;
+  }
+  html body.page-shell:has(.tg-wrap) .app-header > nav.mh-deck > :is(.mh-home-btn,.install-btn,#ma-donate-shortcut) {grid-column:span 2!important}
+  html body.page-shell:has(.tg-wrap) .app-header > nav.mh-deck > #ma-donate-shortcut {flex-direction:column!important;gap:4px!important}
+  html.matchapp-ai-android body.page-shell:has(.tg-wrap) header.app-header > nav.mh-deck > #ma-donate-shortcut {grid-column:span 3!important}
+  html body.page-pricing .app-header > nav.mh-deck {display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html body.page-pricing header.app-header > nav#header-auth-area.mh-deck > * {width:100%!important;min-width:0!important;max-width:100%!important;grid-column:auto!important;grid-row:auto!important}
+  html body.page-pricing .app-header > nav.mh-deck > :is(.mh-home-btn,#ma-donate-shortcut) {flex-direction:column!important;gap:4px!important}
+  html body.page-explore .hub-header {display:flex!important;flex-direction:column!important;align-items:stretch!important}
+  html body.page-explore .hub-links {grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body.page-explore .hub-brand {max-width:calc(100% - 88px)!important;min-height:88px!important;gap:8px!important}
+  html body.page-explore .hub-brand > img:first-child {width:30px!important;height:30px!important;flex:0 0 30px!important}
+  html body.page-explore .hub-brand > .matchapp-wordmark {min-width:0!important;max-width:100%!important;flex:1 1 auto!important}
+  html body:has(#ma-ambient-jonas.ja-header-default) > header:not(.app-header) > .matchapp-brand-link {
+   display:flex!important;max-width:calc(100% - 92px)!important;min-height:88px!important;gap:8px!important;
+  }
+  html body:has(#ma-ambient-jonas.ja-header-default) > header:not(.app-header) > .matchapp-brand-link > .matchapp-wordmark {
+   width:auto!important;min-width:0!important;max-width:100%!important;height:auto!important;flex:1 1 0!important;
+  }
+  html body:has(#ma-ambient-jonas.ja-header-default) > header:not(.app-header) > .matchapp-brand-link::before {width:32px!important;height:32px!important;flex:0 0 32px!important}
+  html body.event-guide-page .app-header > .header-brand-area {width:calc(100% - 86px)!important;max-width:calc(100% - 86px)!important;min-height:88px!important;gap:6px!important;justify-content:flex-start!important;flex-direction:row!important;margin-inline:0!important;padding:0!important}
+  html body.event-guide-page .app-header > .header-brand-area > .brand-logo {width:28px!important;height:28px!important;min-width:28px!important;flex:0 0 28px!important}
+  html body.event-guide-page .app-header > .header-brand-area::before {width:28px!important;height:28px!important;flex:0 0 28px!important}
+  html body.event-guide-page .app-header > .header-brand-area .app-title-main {flex:1 1 0!important}
+  html body.event-guide-page .app-header > .header-brand-area .matchapp-wordmark-source {width:100%!important}
  }
 }

@@ -156,7 +156,7 @@ nav{margin:20px 0 34px}.links{display:flex;flex-wrap:wrap;gap:13px}
 section{margin:25px 0}.note{border-left:3px solid #d1ae67;padding-left:15px;color:#cec4da}
 footer{border-top:1px solid #453551;margin-top:35px;font-size:.9rem}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
-</style><link rel="stylesheet" href="/brand.css?v=20261015-orbit3">
+</style><link rel="stylesheet" href="/brand.css?v=20261015-spacing1">
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
