@@ -67,7 +67,7 @@ function finalizeBrand(){
   edits.sort((a,b)=>b[0]-a[0]).forEach(([start,end,text])=>html=html.slice(0,start)+text+html.slice(end));
   if(!doc.querySelector('link[href^="/brand.css"]'))html=html.replace('</head>','<link rel="stylesheet" href="/brand.css?v=195">\n</head>');
   if(!kids){
-    html=html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,'$1?v=20261015-orbit3$2');
+    html=html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,'$1?v=20261015-spacing1$2');
     html=html.replace(/(src=["']\/(?:page-shell|matchapp-ia|avatar-builder|daily-checkin)\.js)(?:\?([^"']*))?(["'])/g,function(all,prefix,query,end){
       if((query||'').includes('approvedlogo=20261014'))return all;
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
