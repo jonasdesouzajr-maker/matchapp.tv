@@ -1,10 +1,1037 @@
 {
-  "generated_at": "2026-10-15T00:49:45.718Z",
-  "feed_version": "cba10613",
+  "generated_at": "2026-10-15T06:22:45.438Z",
+  "feed_version": "07e730d3",
   "sports_updated_at": "2026-10-14T01:54:55.284Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "e0dd14d7",
+      "title": "Iranian Filmmaker Majid Majidi Denounces U.S. War as ‘Midday Meal’ Emerges as Busan Fest Standout",
+      "url": "https://www.hollywoodreporter.com/news/general-news/iran-war-majid-majidi-busan-film-festival-midday-meal-1236730603/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-15T05:40:48.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Iranian Filmmaker Majid Majidi",
+      "description": "Iranian Filmmaker Majid Majidi: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/midday-meal-copy.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/iranian-filmmaker-majid-majidi-denounces-u-s-war-as-midday-meal-emerges-as-busan-e0dd14/",
+      "landing_url": "https://matchapp.tv/?news=e0dd14d7#latest-news",
+      "seo": {
+        "primary_keyword": "Iranian Filmmaker Majid Majidi latest news",
+        "short_tail": [
+          "Iranian Filmmaker Majid Majidi",
+          "Iranian Filmmaker Majid Majidi news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Iranian Filmmaker Majid Majidi latest news October 2026",
+          "Iranian Filmmaker Majid Majidi entertainment update 2026",
+          "Iranian Filmmaker Majid Majidi news 2026-10-15",
+          "latest entertainment news about Iranian Filmmaker Majid Majidi",
+          "iranian filmmaker majid majidi iranian filmmaker latest update",
+          "The Hollywood Reporter Iranian Filmmaker Majid Majidi entertainment",
+          "latest news about Iranian Filmmaker Majid Majidi October 2026",
+          "Iranian Filmmaker Majid Majidi entertainment news 2026-10-15",
+          "what happened with Iranian Filmmaker Majid Majidi"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Iranian Filmmaker Majid Majidi",
+          "iranian",
+          "filmmaker",
+          "majid",
+          "majidi"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "Iranian Filmmaker Majid Majidi 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Iranian Filmmaker Majid Majidi",
+          "hollywoodreporter.com Iranian Filmmaker Majid Majidi",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Iranian Filmmaker Majid Majidi Denounces U.S. War as…",
+        "meta_description": "Iranian Filmmaker Majid Majidi: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the…",
+        "keywords": [
+          "Iranian Filmmaker Majid Majidi latest news",
+          "Iranian Filmmaker Majid Majidi",
+          "Iranian Filmmaker Majid Majidi news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Iranian Filmmaker Majid Majidi latest news October 2026",
+          "Iranian Filmmaker Majid Majidi entertainment update 2026",
+          "Iranian Filmmaker Majid Majidi news 2026-10-15",
+          "latest entertainment news about Iranian Filmmaker Majid Majidi",
+          "iranian filmmaker majid majidi iranian filmmaker latest update",
+          "The Hollywood Reporter Iranian Filmmaker Majid Majidi entertainment",
+          "latest news about Iranian Filmmaker Majid Majidi October 2026",
+          "Iranian Filmmaker Majid Majidi entertainment news 2026-10-15",
+          "what happened with Iranian Filmmaker Majid Majidi",
+          "iranian",
+          "filmmaker",
+          "majid",
+          "majidi",
+          "October 2026",
+          "2026-10-15",
+          "Iranian Filmmaker Majid Majidi 2026",
+          "The Hollywood Reporter Iranian Filmmaker Majid Majidi",
+          "hollywoodreporter.com Iranian Filmmaker Majid Majidi",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "e0ab0469",
+      "title": "Little tern colony has worst breeding season",
+      "url": "https://www.bbc.co.uk/news/articles/cjy56e4v6exzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T05:19:45.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5498/live/7d69b6b0-c7c9-11f1-9e10-4dcbd31d4273.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/little-tern-colony-has-worst-breeding-season-e0ab04/",
+      "landing_url": "https://matchapp.tv/?news=e0ab0469#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "little",
+          "tern",
+          "colony",
+          "has",
+          "worst",
+          "breeding"
+        ],
+        "long_tail": [
+          "Little tern colony has worst breeding season 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "little",
+          "tern",
+          "colony",
+          "has",
+          "worst",
+          "breeding"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Little tern colony has worst breeding season | World News…",
+        "meta_description": "World report published by BBC Science on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "little",
+          "tern",
+          "colony",
+          "has",
+          "worst",
+          "breeding",
+          "Little tern colony has worst breeding season 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "eabcd42a",
+      "title": "Musk says US government may be behind slowdown of Ukraine drone speeds",
+      "url": "https://www.bbc.co.uk/news/articles/c8wy9veedgygo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T04:30:08.000Z",
+      "discovered_at": "2026-10-14T22:34:54.464Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9f7e/live/76dbc1b0-c848-11f1-94ec-7f952cae1636.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/musk-says-us-government-may-be-behind-slowdown-of-ukraine-drone-speeds-eabcd4/",
+      "landing_url": "https://matchapp.tv/?news=eabcd42a#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "musk",
+          "says",
+          "government",
+          "may",
+          "behind",
+          "slowdown"
+        ],
+        "long_tail": [
+          "Musk says US government may be behind slowdown of Ukraine drone speeds 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "musk",
+          "says",
+          "government",
+          "may",
+          "behind",
+          "slowdown"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Musk says US government may be behind slowdown of Ukraine…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "musk",
+          "says",
+          "government",
+          "may",
+          "behind",
+          "slowdown",
+          "Musk says US government may be behind slowdown of Ukraine drone speeds 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "0b7274ba",
+      "title": "Anthropic flags revenue surge to investors ahead of stock market debut",
+      "url": "https://www.bbc.co.uk/news/articles/cqzjx448vxkgo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T04:19:17.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Release",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/91e4/live/ef62d030-c82d-11f1-949e-ffe1bf7985f3.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/anthropic-flags-revenue-surge-to-investors-ahead-of-stock-market-debut-0b7274/",
+      "landing_url": "https://matchapp.tv/?news=0b7274ba#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "anthropic",
+          "flags",
+          "revenue",
+          "surge",
+          "investors",
+          "ahead"
+        ],
+        "long_tail": [
+          "Anthropic flags revenue surge to investors ahead of stock market debut 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "anthropic",
+          "flags",
+          "revenue",
+          "surge",
+          "investors",
+          "ahead"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Anthropic flags revenue surge to investors ahead of stock…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "anthropic",
+          "flags",
+          "revenue",
+          "surge",
+          "investors",
+          "ahead",
+          "Anthropic flags revenue surge to investors ahead of stock market debut 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "859bb261",
+      "title": "'Nowhere to escape' - Indonesians share footage of orange haze blanketing towns",
+      "url": "https://www.bbc.co.uk/news/videos/c63dj4p4k5dlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T03:26:36.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dc6b/live/96412140-c847-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/nowhere-to-escape-indonesians-share-footage-of-orange-haze-blanketing-towns-859bb2/",
+      "landing_url": "https://matchapp.tv/?news=859bb261#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "nowhere",
+          "escape",
+          "indonesians",
+          "share",
+          "footage",
+          "orange"
+        ],
+        "long_tail": [
+          "'Nowhere to escape' - Indonesians share footage of orange haze blanketing towns 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "nowhere",
+          "escape",
+          "indonesians",
+          "share",
+          "footage",
+          "orange"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "'Nowhere to escape' - Indonesians share footage of orange…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "nowhere",
+          "escape",
+          "indonesians",
+          "share",
+          "footage",
+          "orange",
+          "'Nowhere to escape' - Indonesians share footage of orange haze blanketing towns 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "89fb512b",
+      "title": "‘The Lowdown’ Brings a New Case and New Problems for Ethan Hawke’s Lee in Season 2 Premiere",
+      "url": "https://www.hollywoodreporter.com/tv/tv-features/the-lowdown-season-2-premiere-ethan-hawke-tommy-lee-jones-1236730446/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-15T03:20:00.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "",
+      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/08/FXs-The-Lowdown-L-R-Tommy-Lee-Jones-and-Ethan-Hawke-photo-credit-Share-Brown.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-lowdown-brings-a-new-case-and-new-problems-for-ethan-hawke-s-lee-in-season-2-89fb51/",
+      "landing_url": "https://matchapp.tv/?news=89fb512b#latest-news",
+      "seo": {
+        "primary_keyword": "lowdown brings new case latest news",
+        "short_tail": [
+          "lowdown brings new case",
+          "lowdown brings new case news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "lowdown brings new case latest news October 2026",
+          "lowdown brings new case release update 2026",
+          "lowdown brings new case news 2026-10-15",
+          "latest release news about lowdown brings new case",
+          "lowdown brings new case new problems latest update",
+          "The Hollywood Reporter lowdown brings new case release",
+          "latest news about lowdown brings new case October 2026",
+          "lowdown brings new case entertainment news 2026-10-15",
+          "what happened with lowdown brings new case"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "lowdown",
+          "brings",
+          "new",
+          "case",
+          "problems",
+          "ethan",
+          "hawke"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "lowdown brings new case 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter lowdown brings new case",
+          "hollywoodreporter.com lowdown brings new case",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘The Lowdown’ Brings a New Case and New Problems for Ethan…",
+        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "lowdown brings new case latest news",
+          "lowdown brings new case",
+          "lowdown brings new case news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "lowdown brings new case latest news October 2026",
+          "lowdown brings new case release update 2026",
+          "lowdown brings new case news 2026-10-15",
+          "latest release news about lowdown brings new case",
+          "lowdown brings new case new problems latest update",
+          "The Hollywood Reporter lowdown brings new case release",
+          "latest news about lowdown brings new case October 2026",
+          "lowdown brings new case entertainment news 2026-10-15",
+          "what happened with lowdown brings new case",
+          "lowdown",
+          "brings",
+          "new",
+          "case",
+          "problems",
+          "ethan",
+          "hawke",
+          "October 2026",
+          "2026-10-15",
+          "lowdown brings new case 2026",
+          "The Hollywood Reporter lowdown brings new case",
+          "hollywoodreporter.com lowdown brings new case",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "4ed1aa2b",
+      "title": "White House defends new press secretary amid questions about her legal credentials",
+      "url": "https://www.bbc.co.uk/news/articles/ckqxne2evqreo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T03:03:16.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "White House",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c7f/live/f7333c90-c838-11f1-b2e8-93da8301514e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/white-house-defends-new-press-secretary-amid-questions-about-her-legal-credentia-4ed1aa/",
+      "landing_url": "https://matchapp.tv/?news=4ed1aa2b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "white",
+          "house",
+          "defends",
+          "new",
+          "press",
+          "secretary"
+        ],
+        "long_tail": [
+          "White House defends new press secretary amid questions about her legal credentials 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "white",
+          "house",
+          "defends",
+          "new",
+          "press",
+          "secretary"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "White House defends new press secretary amid questions…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "white",
+          "house",
+          "defends",
+          "new",
+          "press",
+          "secretary",
+          "White House defends new press secretary amid questions about her legal credentials 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "33273791",
+      "title": "Cézar Mendes reúne Alice Caymmi, Adriana Calcanhotto, Marisa Monte e Sophie Charlotte no álbum 'Itapuano'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/15/cezar-mendes-reune-alice-caymmi-adriana-calcanhotto-marisa-monte-e-sophie-charlotte-no-album-itapuano.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-15T03:01:01.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Cézar Mendes",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/0Hv7IYUB_MctnN5cli3LEFFcgis=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/v/x/lQQGh3Rnu0CMVpVrhggw/cezarmendesbobwolfenson.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/cezar-mendes-reune-alice-caymmi-adriana-calcanhotto-marisa-monte-e-sophie-charlo-332737/",
+      "landing_url": "https://matchapp.tv/?news=33273791#latest-news",
+      "seo": {
+        "primary_keyword": "Cézar Mendes últimas notícias",
+        "short_tail": [
+          "Cézar Mendes",
+          "Cézar Mendes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Cézar Mendes latest news October 2026",
+          "Cézar Mendes entertainment update 2026",
+          "Cézar Mendes news 2026-10-15",
+          "latest entertainment news about Cézar Mendes",
+          "cezar mendes cezar mendes reune alice latest update",
+          "G1 Cézar Mendes entertainment",
+          "últimas notícias sobre Cézar Mendes outubro 2026",
+          "Cézar Mendes notícia de 2026-10-15",
+          "o que aconteceu com Cézar Mendes"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Cézar Mendes",
+          "cezar",
+          "mendes",
+          "reune",
+          "alice",
+          "caymmi",
+          "adriana"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "outubro 2026",
+          "Cézar Mendes 2026"
+        ],
+        "source_keywords": [
+          "G1 Cézar Mendes",
+          "g1.globo.com Cézar Mendes",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Cézar Mendes reúne Alice Caymmi, Adriana Calcanhotto,…",
+        "meta_description": "Cézar Mendes: Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Cézar Mendes últimas notícias",
+          "Cézar Mendes",
+          "Cézar Mendes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Cézar Mendes latest news October 2026",
+          "Cézar Mendes entertainment update 2026",
+          "Cézar Mendes news 2026-10-15",
+          "latest entertainment news about Cézar Mendes",
+          "cezar mendes cezar mendes reune alice latest update",
+          "G1 Cézar Mendes entertainment",
+          "últimas notícias sobre Cézar Mendes outubro 2026",
+          "Cézar Mendes notícia de 2026-10-15",
+          "o que aconteceu com Cézar Mendes",
+          "cezar",
+          "mendes",
+          "reune",
+          "alice",
+          "caymmi",
+          "adriana",
+          "October 2026",
+          "2026-10-15",
+          "outubro 2026",
+          "Cézar Mendes 2026",
+          "G1 Cézar Mendes",
+          "g1.globo.com Cézar Mendes",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "af670c62",
+      "title": "Quem comanda a Igreja Católica durante a recuperação do papa Leão 14 após a cirurgia contra câncer?",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/quem-comanda-a-igreja-catolica-durante-a-recuperacao-do-papa-leao-14-apos-a-cirurgia-contra-cancer.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-15T03:00:01.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/nKa8CneYt6y4IH6c2-_6HO2HP-M=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/I/A/6kcHsoTBiMRpNGIXwuGQ/2026-10-11t113936z-1778731203-rc2y0oan69c9-rtrmadp-3-pope-health.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/quem-comanda-a-igreja-catolica-durante-a-recuperacao-do-papa-leao-14-apos-a-ciru-af670c/",
+      "landing_url": "https://matchapp.tv/?news=af670c62#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-15",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "quem",
+          "comanda",
+          "igreja",
+          "catolica",
+          "durante",
+          "recuperacao"
+        ],
+        "long_tail": [
+          "Quem comanda a Igreja Católica durante a recuperação do papa Leão 14 após a cirurgia contra câncer? 2026-10-15",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "quem",
+          "comanda",
+          "igreja",
+          "catolica",
+          "durante",
+          "recuperacao"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Quem comanda a Igreja Católica durante a recuperação do…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-15",
+          "notícias do mundo",
+          "notícias internacionais",
+          "quem",
+          "comanda",
+          "igreja",
+          "catolica",
+          "durante",
+          "recuperacao",
+          "Quem comanda a Igreja Católica durante a recuperação do papa Leão 14 após a cirurgia contra câncer? 2026-10-15",
+          "notícias mundiais outubro 2026",
+          "2026-10-15",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "a31fb323",
+      "title": "Christy Carlson Romano Says She Was Paid Half of Shia LaBeouf’s Salary on ‘Even Stevens’",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/christy-carlson-romano-paid-half-shia-labeouf-even-stevens-1236730514/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-15T02:54:25.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Christy Carlson Romano Says",
+      "description": "Christy Carlson Romano Says: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Even-Stevens-everett-H-2026.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/christy-carlson-romano-says-she-was-paid-half-of-shia-labeouf-s-salary-on-even-s-a31fb3/",
+      "landing_url": "https://matchapp.tv/?news=a31fb323#latest-news",
+      "seo": {
+        "primary_keyword": "Christy Carlson Romano Says latest news",
+        "short_tail": [
+          "Christy Carlson Romano Says",
+          "Christy Carlson Romano Says news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Christy Carlson Romano Says latest news October 2026",
+          "Christy Carlson Romano Says entertainment update 2026",
+          "Christy Carlson Romano Says news 2026-10-15",
+          "latest entertainment news about Christy Carlson Romano Says",
+          "christy carlson romano says christy carlson latest update",
+          "The Hollywood Reporter Christy Carlson Romano Says entertainment",
+          "latest news about Christy Carlson Romano Says October 2026",
+          "Christy Carlson Romano Says entertainment news 2026-10-15",
+          "what happened with Christy Carlson Romano Says"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Christy Carlson Romano Says",
+          "christy",
+          "carlson",
+          "romano",
+          "says"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "Christy Carlson Romano Says 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Christy Carlson Romano Says",
+          "hollywoodreporter.com Christy Carlson Romano Says",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Christy Carlson Romano Says She Was Paid Half of Shia…",
+        "meta_description": "Christy Carlson Romano Says: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original…",
+        "keywords": [
+          "Christy Carlson Romano Says latest news",
+          "Christy Carlson Romano Says",
+          "Christy Carlson Romano Says news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Christy Carlson Romano Says latest news October 2026",
+          "Christy Carlson Romano Says entertainment update 2026",
+          "Christy Carlson Romano Says news 2026-10-15",
+          "latest entertainment news about Christy Carlson Romano Says",
+          "christy carlson romano says christy carlson latest update",
+          "The Hollywood Reporter Christy Carlson Romano Says entertainment",
+          "latest news about Christy Carlson Romano Says October 2026",
+          "Christy Carlson Romano Says entertainment news 2026-10-15",
+          "what happened with Christy Carlson Romano Says",
+          "christy",
+          "carlson",
+          "romano",
+          "says",
+          "October 2026",
+          "2026-10-15",
+          "Christy Carlson Romano Says 2026",
+          "The Hollywood Reporter Christy Carlson Romano Says",
+          "hollywoodreporter.com Christy Carlson Romano Says",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "97f74a07",
+      "title": "R.J. Mitte Remembered by ‘Breaking Bad’ Casting Director Sharon Bialy",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/rj-mitte-tribute-breaking-bad-casting-director-sharon-bialy-1236730103/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-15T02:33:54.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "R.J. Mitte Remembered",
+      "description": "R.J. Mitte Remembered: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-128348933-1.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/r-j-mitte-remembered-by-breaking-bad-casting-director-sharon-bialy-97f74a/",
+      "landing_url": "https://matchapp.tv/?news=97f74a07#latest-news",
+      "seo": {
+        "primary_keyword": "R.J. Mitte Remembered latest news",
+        "short_tail": [
+          "R.J. Mitte Remembered",
+          "R.J. Mitte Remembered news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "R.J. Mitte Remembered latest news October 2026",
+          "R.J. Mitte Remembered entertainment update 2026",
+          "R.J. Mitte Remembered news 2026-10-15",
+          "latest entertainment news about R.J. Mitte Remembered",
+          "mitte remembered mitte remembered breaking bad latest update",
+          "The Hollywood Reporter R.J. Mitte Remembered entertainment",
+          "latest news about R.J. Mitte Remembered October 2026",
+          "R.J. Mitte Remembered entertainment news 2026-10-15",
+          "what happened with R.J. Mitte Remembered"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "R.J. Mitte Remembered",
+          "mitte",
+          "remembered",
+          "breaking",
+          "bad",
+          "casting",
+          "director"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "R.J. Mitte Remembered 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter R.J. Mitte Remembered",
+          "hollywoodreporter.com R.J. Mitte Remembered",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "R.J. Mitte Remembered by ‘Breaking Bad’ Casting Director…",
+        "meta_description": "R.J. Mitte Remembered: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source…",
+        "keywords": [
+          "R.J. Mitte Remembered latest news",
+          "R.J. Mitte Remembered",
+          "R.J. Mitte Remembered news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "R.J. Mitte Remembered latest news October 2026",
+          "R.J. Mitte Remembered entertainment update 2026",
+          "R.J. Mitte Remembered news 2026-10-15",
+          "latest entertainment news about R.J. Mitte Remembered",
+          "mitte remembered mitte remembered breaking bad latest update",
+          "The Hollywood Reporter R.J. Mitte Remembered entertainment",
+          "latest news about R.J. Mitte Remembered October 2026",
+          "R.J. Mitte Remembered entertainment news 2026-10-15",
+          "what happened with R.J. Mitte Remembered",
+          "mitte",
+          "remembered",
+          "breaking",
+          "bad",
+          "casting",
+          "director",
+          "October 2026",
+          "2026-10-15",
+          "R.J. Mitte Remembered 2026",
+          "The Hollywood Reporter R.J. Mitte Remembered",
+          "hollywoodreporter.com R.J. Mitte Remembered",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "4b22ffd1",
+      "title": "Retired US generals call on Pentagon to cancel 'barbaric' execution livestream",
+      "url": "https://www.bbc.co.uk/news/articles/cmp3gnngv3e9o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T02:26:07.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Retired US",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/491e/live/40de5ca0-c841-11f1-afe1-c9348bd7f501.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/retired-us-generals-call-on-pentagon-to-cancel-barbaric-execution-livestream-4b22ff/",
+      "landing_url": "https://matchapp.tv/?news=4b22ffd1#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "retired",
+          "generals",
+          "call",
+          "pentagon",
+          "cancel",
+          "barbaric"
+        ],
+        "long_tail": [
+          "Retired US generals call on Pentagon to cancel 'barbaric' execution livestream 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "retired",
+          "generals",
+          "call",
+          "pentagon",
+          "cancel",
+          "barbaric"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Retired US generals call on Pentagon to cancel 'barbaric'…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "retired",
+          "generals",
+          "call",
+          "pentagon",
+          "cancel",
+          "barbaric",
+          "Retired US generals call on Pentagon to cancel 'barbaric' execution livestream 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
+    {
+      "id": "e934e440",
+      "title": "Fim da escala 6x1: como é a jornada de trabalho em outros países?",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/14/fim-da-escala-6x1-como-e-a-jornada-de-trabalho-em-outros-paises.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-15T00:50:16.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/AdCFos0WclcZXmrTBNqI7juAmWM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/G/n/ksQ8gVSDCGro1UPxWCRA/china.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/fim-da-escala-6x1-como-e-a-jornada-de-trabalho-em-outros-paises-e934e4/",
+      "landing_url": "https://matchapp.tv/?news=e934e440#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-15",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "fim",
+          "escala",
+          "6x1",
+          "como",
+          "jornada",
+          "trabalho"
+        ],
+        "long_tail": [
+          "Fim da escala 6x1: como é a jornada de trabalho em outros países? 2026-10-15",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fim",
+          "escala",
+          "6x1",
+          "como",
+          "jornada",
+          "trabalho"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Fim da escala 6x1: como é a jornada de trabalho em outros…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-15",
+          "notícias do mundo",
+          "notícias internacionais",
+          "fim",
+          "escala",
+          "6x1",
+          "como",
+          "jornada",
+          "trabalho",
+          "Fim da escala 6x1: como é a jornada de trabalho em outros países? 2026-10-15",
+          "notícias mundiais outubro 2026",
+          "2026-10-15",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
+      }
+    },
     {
       "id": "e5fd3f56",
       "title": "Alan Mandell, Esteemed Actor and Interpreter of Samuel Beckett Plays, Dies at 98",
@@ -98,7 +1125,7 @@
           "hollywoodreporter.com Alan Mandell",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -190,7 +1217,7 @@
           "hollywoodreporter.com Blake Griffin Really Wants",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -289,7 +1316,7 @@
           "hollywoodreporter.com eager skip wait phil",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -358,7 +1385,7 @@
           "2026-10-14",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -427,7 +1454,7 @@
           "2026-10-14",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -496,7 +1523,7 @@
           "2026-10-14",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -588,32 +1615,32 @@
           "hollywoodreporter.com Hilary Swank Reveals She’s",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
-      "id": "c03a398c",
-      "title": "‘Breaking Bad’s’ Dean Norris, Anna Gunn Mourn R.J. Mitte: “We’re All Just Shocked and in Deep Despair”",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/rj-mitte-breaking-bad-dean-norris-anna-gunn-tribute-1236730350/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
+      "id": "8ba3bd46",
+      "title": "Inside Brooklyn novelty shop at centre of 'surreal' row with Kelly Clarkson over mechanical bird",
+      "url": "https://www.bbc.co.uk/news/articles/cxvgdneplgzeo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-14T21:25:39.000Z",
-      "discovered_at": "2026-10-14T22:34:54.464Z",
+      "published_at": "2026-10-14T22:19:13.000Z",
+      "discovered_at": "2026-10-15T06:22:45.438Z",
       "event_type": "Entertainment",
       "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2013/10/dean_norris_a_p.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/breaking-bad-s-dean-norris-anna-gunn-mourn-r-j-mitte-we-re-all-just-shocked-and--c03a39/",
-      "landing_url": "https://matchapp.tv/?news=c03a398c#latest-news",
+      "person": "Inside Brooklyn",
+      "description": "Inside Brooklyn: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b225/live/c443afc0-c85d-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/inside-brooklyn-novelty-shop-at-centre-of-surreal-row-with-kelly-clarkson-over-m-8ba3bd/",
+      "landing_url": "https://matchapp.tv/?news=8ba3bd46#latest-news",
       "seo": {
-        "primary_keyword": "breaking bad dean norris latest news",
+        "primary_keyword": "Inside Brooklyn latest news",
         "short_tail": [
-          "breaking bad dean norris",
-          "breaking bad dean norris news",
+          "Inside Brooklyn",
+          "Inside Brooklyn news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
@@ -621,369 +1648,70 @@
           "entertainment updates"
         ],
         "long_tail": [
-          "breaking bad dean norris latest news October 2026",
-          "breaking bad dean norris entertainment update 2026",
-          "breaking bad dean norris news 2026-10-14",
-          "latest entertainment news about breaking bad dean norris",
-          "breaking bad dean norris anna gunn latest update",
-          "The Hollywood Reporter breaking bad dean norris entertainment",
-          "latest news about breaking bad dean norris October 2026",
-          "breaking bad dean norris entertainment news 2026-10-14",
-          "what happened with breaking bad dean norris"
+          "Inside Brooklyn latest news October 2026",
+          "Inside Brooklyn entertainment update 2026",
+          "Inside Brooklyn news 2026-10-14",
+          "latest entertainment news about Inside Brooklyn",
+          "inside brooklyn inside brooklyn novelty shop latest update",
+          "BBC Inside Brooklyn entertainment",
+          "latest news about Inside Brooklyn October 2026",
+          "Inside Brooklyn entertainment news 2026-10-14",
+          "what happened with Inside Brooklyn"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "breaking",
-          "bad",
-          "dean",
-          "norris",
-          "anna",
-          "gunn",
-          "mourn",
-          "mitte"
+          "Inside Brooklyn",
+          "inside",
+          "brooklyn",
+          "novelty",
+          "shop",
+          "centre",
+          "surreal"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-14",
-          "breaking bad dean norris 2026"
+          "Inside Brooklyn 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter breaking bad dean norris",
-          "hollywoodreporter.com breaking bad dean norris",
-          "The Hollywood Reporter entertainment news"
+          "BBC Inside Brooklyn",
+          "bbc.co.uk Inside Brooklyn",
+          "BBC entertainment news"
         ],
-        "meta_title": "‘Breaking Bad’s’ Dean Norris, Anna Gunn Mourn R.J. Mitte:…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_title": "Inside Brooklyn novelty shop at centre of 'surreal' row…",
+        "meta_description": "Inside Brooklyn: Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "breaking bad dean norris latest news",
-          "breaking bad dean norris",
-          "breaking bad dean norris news",
+          "Inside Brooklyn latest news",
+          "Inside Brooklyn",
+          "Inside Brooklyn news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "breaking bad dean norris latest news October 2026",
-          "breaking bad dean norris entertainment update 2026",
-          "breaking bad dean norris news 2026-10-14",
-          "latest entertainment news about breaking bad dean norris",
-          "breaking bad dean norris anna gunn latest update",
-          "The Hollywood Reporter breaking bad dean norris entertainment",
-          "latest news about breaking bad dean norris October 2026",
-          "breaking bad dean norris entertainment news 2026-10-14",
-          "what happened with breaking bad dean norris",
-          "breaking",
-          "bad",
-          "dean",
-          "norris",
-          "anna",
-          "gunn",
-          "mourn",
-          "mitte",
+          "Inside Brooklyn latest news October 2026",
+          "Inside Brooklyn entertainment update 2026",
+          "Inside Brooklyn news 2026-10-14",
+          "latest entertainment news about Inside Brooklyn",
+          "inside brooklyn inside brooklyn novelty shop latest update",
+          "BBC Inside Brooklyn entertainment",
+          "latest news about Inside Brooklyn October 2026",
+          "Inside Brooklyn entertainment news 2026-10-14",
+          "what happened with Inside Brooklyn",
+          "inside",
+          "brooklyn",
+          "novelty",
+          "shop",
+          "centre",
+          "surreal",
           "October 2026",
           "2026-10-14",
-          "breaking bad dean norris 2026",
-          "The Hollywood Reporter breaking bad dean norris",
-          "hollywoodreporter.com breaking bad dean norris",
-          "The Hollywood Reporter entertainment news"
+          "Inside Brooklyn 2026",
+          "BBC Inside Brooklyn",
+          "bbc.co.uk Inside Brooklyn",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "e16e6583",
-      "title": "CNN Targets Cord-Cutters In Canada With Streaming Launch",
-      "url": "https://www.hollywoodreporter.com/business/business-news/cnn-targets-cord-cutters-mobile-canada-1236730337/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-14T20:55:41.000Z",
-      "discovered_at": "2026-10-14T22:34:54.464Z",
-      "event_type": "Release",
-      "category": "entertainment",
-      "person": "CNN Targets Cord-Cutters In",
-      "description": "CNN Targets Cord-Cutters In: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2025/05/GettyImages-2153092202.jpg?crop=0px%2C391px%2C5000px%2C2797px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/cnn-targets-cord-cutters-in-canada-with-streaming-launch-e16e65/",
-      "landing_url": "https://matchapp.tv/?news=e16e6583#latest-news",
-      "seo": {
-        "primary_keyword": "CNN Targets Cord-Cutters In latest news",
-        "short_tail": [
-          "CNN Targets Cord-Cutters In",
-          "CNN Targets Cord-Cutters In news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "CNN Targets Cord-Cutters In latest news October 2026",
-          "CNN Targets Cord-Cutters In release update 2026",
-          "CNN Targets Cord-Cutters In news 2026-10-14",
-          "latest release news about CNN Targets Cord-Cutters In",
-          "cnn targets cord cutters cnn targets latest update",
-          "The Hollywood Reporter CNN Targets Cord-Cutters In release",
-          "latest news about CNN Targets Cord-Cutters In October 2026",
-          "CNN Targets Cord-Cutters In entertainment news 2026-10-14",
-          "what happened with CNN Targets Cord-Cutters In"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "CNN Targets Cord-Cutters In",
-          "cnn",
-          "targets",
-          "cord",
-          "cutters"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "CNN Targets Cord-Cutters In 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter CNN Targets Cord-Cutters In",
-          "hollywoodreporter.com CNN Targets Cord-Cutters In",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "CNN Targets Cord-Cutters In Canada With Streaming Launch |…",
-        "meta_description": "CNN Targets Cord-Cutters In: Release update reported by The Hollywood Reporter on 2026-10-14. See verified context, publication time and the original source…",
-        "keywords": [
-          "CNN Targets Cord-Cutters In latest news",
-          "CNN Targets Cord-Cutters In",
-          "CNN Targets Cord-Cutters In news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "CNN Targets Cord-Cutters In latest news October 2026",
-          "CNN Targets Cord-Cutters In release update 2026",
-          "CNN Targets Cord-Cutters In news 2026-10-14",
-          "latest release news about CNN Targets Cord-Cutters In",
-          "cnn targets cord cutters cnn targets latest update",
-          "The Hollywood Reporter CNN Targets Cord-Cutters In release",
-          "latest news about CNN Targets Cord-Cutters In October 2026",
-          "CNN Targets Cord-Cutters In entertainment news 2026-10-14",
-          "what happened with CNN Targets Cord-Cutters In",
-          "cnn",
-          "targets",
-          "cord",
-          "cutters",
-          "October 2026",
-          "2026-10-14",
-          "CNN Targets Cord-Cutters In 2026",
-          "The Hollywood Reporter CNN Targets Cord-Cutters In",
-          "hollywoodreporter.com CNN Targets Cord-Cutters In",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "eabcd42a",
-      "title": "Musk says US government may be behind slowdown of Ukraine drone speeds",
-      "url": "https://www.bbc.co.uk/news/articles/c8wy9veedgygo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-14T20:55:24.000Z",
-      "discovered_at": "2026-10-14T22:34:54.464Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a29b/live/2b9027f0-c807-11f1-aff0-65f8bbf884f7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/musk-says-us-government-may-be-behind-slowdown-of-ukraine-drone-speeds-eabcd4/",
-      "landing_url": "https://matchapp.tv/?news=eabcd42a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-14",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "musk",
-          "says",
-          "government",
-          "may",
-          "behind",
-          "slowdown"
-        ],
-        "long_tail": [
-          "Musk says US government may be behind slowdown of Ukraine drone speeds 2026-10-14",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "musk",
-          "says",
-          "government",
-          "may",
-          "behind",
-          "slowdown"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Musk says US government may be behind slowdown of Ukraine…",
-        "meta_description": "World report published by BBC World on 2026-10-14. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-14",
-          "world news",
-          "global headlines",
-          "musk",
-          "says",
-          "government",
-          "may",
-          "behind",
-          "slowdown",
-          "Musk says US government may be behind slowdown of Ukraine drone speeds 2026-10-14",
-          "world news October 2026",
-          "2026-10-14",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "11709b8f",
-      "title": "Why Zelensky's meeting with Burnham matters",
-      "url": "https://www.bbc.co.uk/news/videos/c65yngxdzdd5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-14T20:41:03.000Z",
-      "discovered_at": "2026-10-14T22:34:54.464Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Why Zelensky's",
-      "description": "World news reported by BBC World on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/069c/live/567fb8d0-c817-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/why-zelensky-s-meeting-with-burnham-matters-11709b/",
-      "landing_url": "https://matchapp.tv/?news=11709b8f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-14",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "why",
-          "zelensky",
-          "meeting",
-          "burnham",
-          "matters"
-        ],
-        "long_tail": [
-          "Why Zelensky's meeting with Burnham matters 2026-10-14",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "why",
-          "zelensky",
-          "meeting",
-          "burnham",
-          "matters"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Why Zelensky's meeting with Burnham matters | World News |…",
-        "meta_description": "World report published by BBC World on 2026-10-14. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-14",
-          "world news",
-          "global headlines",
-          "why",
-          "zelensky",
-          "meeting",
-          "burnham",
-          "matters",
-          "Why Zelensky's meeting with Burnham matters 2026-10-14",
-          "world news October 2026",
-          "2026-10-14",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "056f4bac",
-      "title": "Student protesters attack government buildings in Albania",
-      "url": "https://www.bbc.co.uk/news/articles/cq80zk5k2ep4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-14T20:29:05.000Z",
-      "discovered_at": "2026-10-14T22:34:54.464Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4571/live/704a3630-c7f6-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/student-protesters-attack-government-buildings-in-albania-056f4b/",
-      "landing_url": "https://matchapp.tv/?news=056f4bac#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-14",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "student",
-          "protesters",
-          "attack",
-          "government",
-          "buildings",
-          "albania"
-        ],
-        "long_tail": [
-          "Student protesters attack government buildings in Albania 2026-10-14",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "student",
-          "protesters",
-          "attack",
-          "government",
-          "buildings",
-          "albania"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Student protesters attack government buildings in Albania…",
-        "meta_description": "World report published by BBC World on 2026-10-14. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-14",
-          "world news",
-          "global headlines",
-          "student",
-          "protesters",
-          "attack",
-          "government",
-          "buildings",
-          "albania",
-          "Student protesters attack government buildings in Albania 2026-10-14",
-          "world news October 2026",
-          "2026-10-14",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1052,76 +1780,7 @@
           "2026-10-14",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "6dbdbd10",
-      "title": "Why is Starlink internet so important on the battlefield in Ukraine?",
-      "url": "https://www.bbc.co.uk/news/articles/cqkgk4zg54reo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-14T19:52:04.000Z",
-      "discovered_at": "2026-10-14T22:34:54.464Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/109c/live/7b3da5c0-c807-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/why-is-starlink-internet-so-important-on-the-battlefield-in-ukraine-6dbdbd/",
-      "landing_url": "https://matchapp.tv/?news=6dbdbd10#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-14",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "why",
-          "starlink",
-          "internet",
-          "important",
-          "battlefield",
-          "ukraine"
-        ],
-        "long_tail": [
-          "Why is Starlink internet so important on the battlefield in Ukraine? 2026-10-14",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "why",
-          "starlink",
-          "internet",
-          "important",
-          "battlefield",
-          "ukraine"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Why is Starlink internet so important on the battlefield…",
-        "meta_description": "World report published by BBC World on 2026-10-14. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-14",
-          "world news",
-          "global headlines",
-          "why",
-          "starlink",
-          "internet",
-          "important",
-          "battlefield",
-          "ukraine",
-          "Why is Starlink internet so important on the battlefield in Ukraine? 2026-10-14",
-          "world news October 2026",
-          "2026-10-14",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1190,7 +1849,7 @@
           "2026-10-14",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1259,7 +1918,7 @@
           "2026-10-14",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1360,7 +2019,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1429,76 +2088,7 @@
           "2026-10-14",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "392291d3",
-      "title": "What if you could turn off your algorithm? Australia is about to try",
-      "url": "https://www.bbc.co.uk/news/videos/ck78pj2qy42po?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-14T18:00:54.000Z",
-      "discovered_at": "2026-10-14T18:51:00.301Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2835/live/1c61d100-c7fa-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-if-you-could-turn-off-your-algorithm-australia-is-about-to-try-392291/",
-      "landing_url": "https://matchapp.tv/?news=392291d3#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-14",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "what",
-          "you",
-          "could",
-          "turn",
-          "off",
-          "your"
-        ],
-        "long_tail": [
-          "What if you could turn off your algorithm? Australia is about to try 2026-10-14",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "what",
-          "you",
-          "could",
-          "turn",
-          "off",
-          "your"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "What if you could turn off your algorithm? Australia is…",
-        "meta_description": "World report published by BBC World on 2026-10-14. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-14",
-          "world news",
-          "global headlines",
-          "what",
-          "you",
-          "could",
-          "turn",
-          "off",
-          "your",
-          "What if you could turn off your algorithm? Australia is about to try 2026-10-14",
-          "world news October 2026",
-          "2026-10-14",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1594,7 +2184,7 @@
           "bbc.co.uk Russell Brand",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1663,76 +2253,7 @@
           "2026-10-14",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "c64af765",
-      "title": "Papa Leão XIV pede orações por sua saúde após cirurgia para retirar tumor no pulmão; leia íntegra da carta",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/14/papa-leao-xiv-divulga-nova-mensagem-apos-diagnostico-de-cancer.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-14T17:24:53.000Z",
-      "discovered_at": "2026-10-14T18:51:00.301Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Papa Leão XIV",
-      "description": "World news reported by G1 Mundo on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/3Wf2y2a9FcFxHjq5OOohm1usPDg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/g/x/3lw138ShisGDAenZvOMg/2026-10-14t090528z-60123531-rc2u2oa4omfp-rtrmadp-3-pope-health-mass.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-pede-oracoes-por-sua-saude-apos-cirurgia-para-retirar-tumor-no-pul-c64af7/",
-      "landing_url": "https://matchapp.tv/?news=c64af765#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-14",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "leao",
-          "xiv",
-          "pede",
-          "oracoes",
-          "sua"
-        ],
-        "long_tail": [
-          "Papa Leão XIV pede orações por sua saúde após cirurgia para retirar tumor no pulmão; leia íntegra da carta 2026-10-14",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "papa",
-          "leao",
-          "xiv",
-          "pede",
-          "oracoes",
-          "sua"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Papa Leão XIV pede orações por sua saúde após cirurgia…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-14. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-14",
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "leao",
-          "xiv",
-          "pede",
-          "oracoes",
-          "sua",
-          "Papa Leão XIV pede orações por sua saúde após cirurgia para retirar tumor no pulmão; leia íntegra da carta 2026-10-14",
-          "notícias mundiais outubro 2026",
-          "2026-10-14",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1830,76 +2351,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "2e3f8fb7",
-      "title": "Kenya confirms second Ebola case - a relative of the first victim",
-      "url": "https://www.bbc.co.uk/news/articles/cw5yn8rn04ljo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-14T17:23:01.000Z",
-      "discovered_at": "2026-10-14T18:51:00.301Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/aa15/live/cb6ea3e0-c7e5-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/kenya-confirms-second-ebola-case-a-relative-of-the-first-victim-2e3f8f/",
-      "landing_url": "https://matchapp.tv/?news=2e3f8fb7#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-14",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "kenya",
-          "confirms",
-          "second",
-          "ebola",
-          "case",
-          "relative"
-        ],
-        "long_tail": [
-          "Kenya confirms second Ebola case - a relative of the first victim 2026-10-14",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "kenya",
-          "confirms",
-          "second",
-          "ebola",
-          "case",
-          "relative"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Kenya confirms second Ebola case - a relative of the first…",
-        "meta_description": "World report published by BBC World on 2026-10-14. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-14",
-          "world news",
-          "global headlines",
-          "kenya",
-          "confirms",
-          "second",
-          "ebola",
-          "case",
-          "relative",
-          "Kenya confirms second Ebola case - a relative of the first victim 2026-10-14",
-          "world news October 2026",
-          "2026-10-14",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -1998,7 +2450,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2020,7 +2472,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/bbc-director-general-defends-plan-to-shelve-new-archers-studio-cba1af/",
       "landing_url": "https://matchapp.tv/?news=cba1af16#latest-news",
       "seo": {
-        "primary_keyword": "bbc director general defends latest news",
+        "primary_keyword": "the archers",
         "short_tail": [
           "bbc director general defends",
           "bbc director general defends news",
@@ -2028,7 +2480,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "the archers"
         ],
         "long_tail": [
           "bbc director general defends latest news October 2026",
@@ -2041,7 +2494,9 @@
           "bbc director general defends entertainment news 2026-10-14",
           "what happened with bbc director general defends"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "the archers"
+        ],
         "entity_keywords": [
           "bbc",
           "director",
@@ -2065,7 +2520,7 @@
         "meta_title": "BBC director general defends plan to shelve new Archers…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "bbc director general defends latest news",
+          "the archers",
           "bbc director general defends",
           "bbc director general defends news",
           "entertainment",
@@ -2097,7 +2552,7 @@
           "bbc.co.uk bbc director general defends",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2195,76 +2650,7 @@
           "g1.globo.com Caetano Veloso",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "aa36152a",
-      "title": "Polícia da Turquia toma o controle de TV de oposição e prende 11 funcionários",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/14/policia-da-turquia-toma-o-controle-de-tv-de-oposicao-e-prende-11-funcionarios.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-14T15:42:30.000Z",
-      "discovered_at": "2026-10-14T18:51:00.301Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-14. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/8SjzZaJtciAur2oYQwZjpjq7tmw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/d/t/SLSXXOSBe9EQjPdLRyrA/2026-10-14t140657z-1126628445-rc2z2oa0wtcd-rtrmadp-3-turkey-media.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/policia-da-turquia-toma-o-controle-de-tv-de-oposicao-e-prende-11-funcionarios-aa3615/",
-      "landing_url": "https://matchapp.tv/?news=aa36152a#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-14",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "policia",
-          "turquia",
-          "toma",
-          "controle",
-          "oposicao",
-          "prende"
-        ],
-        "long_tail": [
-          "Polícia da Turquia toma o controle de TV de oposição e prende 11 funcionários 2026-10-14",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "policia",
-          "turquia",
-          "toma",
-          "controle",
-          "oposicao",
-          "prende"
-        ],
-        "freshness_keywords": [
-          "2026-10-14"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Polícia da Turquia toma o controle de TV de oposição e…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-14. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-14",
-          "notícias do mundo",
-          "notícias internacionais",
-          "policia",
-          "turquia",
-          "toma",
-          "controle",
-          "oposicao",
-          "prende",
-          "Polícia da Turquia toma o controle de TV de oposição e prende 11 funcionários 2026-10-14",
-          "notícias mundiais outubro 2026",
-          "2026-10-14",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2365,7 +2751,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2466,7 +2852,7 @@
           "g1.globo.com milla existiu nao relembre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2565,7 +2951,7 @@
           "g1.globo.com sobrinho borges rodrigo borges",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2663,7 +3049,7 @@
           "g1.globo.com Rodrigo Campos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2760,7 +3146,7 @@
           "bbc.co.uk racial bias london music",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2859,7 +3245,7 @@
           "bbc.co.uk turkish police raid opposition",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -2955,7 +3341,7 @@
           "bbc.co.uk Davina McCall",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -3053,402 +3439,7 @@
           "bbc.co.uk The Gentlemen",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "3f3f49b9",
-      "title": "Como 'Breaking Bad' e RJ Mitte mudaram a percepção sobre a paralisia cerebral",
-      "url": "https://g1.globo.com/saude/noticia/2026/10/14/como-breaking-bad-e-rj-mitte-mudaram-a-percepcao-sobre-a-paralisia-cerebral.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T08:57:06.000Z",
-      "discovered_at": "2026-10-14T13:59:28.698Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/aPncpcao312Wyge2cOnPqqFMlx4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Y/6/KWecJOQbiUCxI0SwMssg/3c99aeef-e29a-4be3-87c7-0c2255bafc05.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/como-breaking-bad-e-rj-mitte-mudaram-a-percepcao-sobre-a-paralisia-cerebral-3f3f49/",
-      "landing_url": "https://matchapp.tv/?news=3f3f49b9#latest-news",
-      "seo": {
-        "primary_keyword": "como breaking bad mitte últimas notícias",
-        "short_tail": [
-          "como breaking bad mitte",
-          "como breaking bad mitte news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "como breaking bad mitte latest news October 2026",
-          "como breaking bad mitte entertainment update 2026",
-          "como breaking bad mitte news 2026-10-14",
-          "latest entertainment news about como breaking bad mitte",
-          "como breaking bad mitte mudaram percepcao latest update",
-          "G1 como breaking bad mitte entertainment",
-          "últimas notícias sobre como breaking bad mitte outubro 2026",
-          "como breaking bad mitte notícia de 2026-10-14",
-          "o que aconteceu com como breaking bad mitte"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "como",
-          "breaking",
-          "bad",
-          "mitte",
-          "mudaram",
-          "percepcao",
-          "sobre",
-          "paralisia"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "como breaking bad mitte 2026"
-        ],
-        "source_keywords": [
-          "G1 como breaking bad mitte",
-          "g1.globo.com como breaking bad mitte",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Como 'Breaking Bad' e RJ Mitte mudaram a percepção sobre a…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "como breaking bad mitte últimas notícias",
-          "como breaking bad mitte",
-          "como breaking bad mitte news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "como breaking bad mitte latest news October 2026",
-          "como breaking bad mitte entertainment update 2026",
-          "como breaking bad mitte news 2026-10-14",
-          "latest entertainment news about como breaking bad mitte",
-          "como breaking bad mitte mudaram percepcao latest update",
-          "G1 como breaking bad mitte entertainment",
-          "últimas notícias sobre como breaking bad mitte outubro 2026",
-          "como breaking bad mitte notícia de 2026-10-14",
-          "o que aconteceu com como breaking bad mitte",
-          "como",
-          "breaking",
-          "bad",
-          "mitte",
-          "mudaram",
-          "percepcao",
-          "sobre",
-          "paralisia",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "como breaking bad mitte 2026",
-          "G1 como breaking bad mitte",
-          "g1.globo.com como breaking bad mitte",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "58a09775",
-      "title": "'VisionQuest': Atraído por algo 'estranho e maravilhoso', James Spader volta a vilão de 'Vingadores'",
-      "url": "https://g1.globo.com/pop-arte/tv-e-series/noticia/2026/10/14/visionquest-atraido-por-algo-estranho-e-maravilhoso-james-spader-volta-a-vilao-de-vingadores.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T07:00:00.000Z",
-      "discovered_at": "2026-10-14T07:59:10.010Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/trs4FpiYepV0Ff_QMthw1WXVe-4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/b/i/7BcdZcR9G2QoBXnjoN6Q/visionquest-paul-bettany-james-spader.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/visionquest-atraido-por-algo-estranho-e-maravilhoso-james-spader-volta-a-vilao-d-58a097/",
-      "landing_url": "https://matchapp.tv/?news=58a09775#latest-news",
-      "seo": {
-        "primary_keyword": "visionquest atraido algo estranho últimas notícias",
-        "short_tail": [
-          "visionquest atraido algo estranho",
-          "visionquest atraido algo estranho news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "visionquest atraido algo estranho latest news October 2026",
-          "visionquest atraido algo estranho entertainment update 2026",
-          "visionquest atraido algo estranho news 2026-10-14",
-          "latest entertainment news about visionquest atraido algo estranho",
-          "visionquest atraido algo estranho maravilhoso james latest update",
-          "G1 visionquest atraido algo estranho entertainment",
-          "últimas notícias sobre visionquest atraido algo estranho outubro 2026",
-          "visionquest atraido algo estranho notícia de 2026-10-14",
-          "o que aconteceu com visionquest atraido algo estranho"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "visionquest",
-          "atraido",
-          "algo",
-          "estranho",
-          "maravilhoso",
-          "james",
-          "spader",
-          "volta"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "visionquest atraido algo estranho 2026"
-        ],
-        "source_keywords": [
-          "G1 visionquest atraido algo estranho",
-          "g1.globo.com visionquest atraido algo estranho",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'VisionQuest': Atraído por algo 'estranho e maravilhoso',…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "visionquest atraido algo estranho últimas notícias",
-          "visionquest atraido algo estranho",
-          "visionquest atraido algo estranho news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "visionquest atraido algo estranho latest news October 2026",
-          "visionquest atraido algo estranho entertainment update 2026",
-          "visionquest atraido algo estranho news 2026-10-14",
-          "latest entertainment news about visionquest atraido algo estranho",
-          "visionquest atraido algo estranho maravilhoso james latest update",
-          "G1 visionquest atraido algo estranho entertainment",
-          "últimas notícias sobre visionquest atraido algo estranho outubro 2026",
-          "visionquest atraido algo estranho notícia de 2026-10-14",
-          "o que aconteceu com visionquest atraido algo estranho",
-          "visionquest",
-          "atraido",
-          "algo",
-          "estranho",
-          "maravilhoso",
-          "james",
-          "spader",
-          "volta",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "visionquest atraido algo estranho 2026",
-          "G1 visionquest atraido algo estranho",
-          "g1.globo.com visionquest atraido algo estranho",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "7f5cabf3",
-      "title": "Russell T Davies criticises BBC boss's 'clumsy' AI Doctor Who comments",
-      "url": "https://www.bbc.co.uk/news/articles/c8040531w45eo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-14T04:58:47.000Z",
-      "discovered_at": "2026-10-14T07:59:10.010Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cd57/live/99daefe0-c741-11f1-9085-f95bdc648acc.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/russell-t-davies-criticises-bbc-boss-s-clumsy-ai-doctor-who-comments-7f5cab/",
-      "landing_url": "https://matchapp.tv/?news=7f5cabf3#latest-news",
-      "seo": {
-        "primary_keyword": "russell davies criticises bbc latest news",
-        "short_tail": [
-          "russell davies criticises bbc",
-          "russell davies criticises bbc news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "russell davies criticises bbc latest news October 2026",
-          "russell davies criticises bbc entertainment update 2026",
-          "russell davies criticises bbc news 2026-10-14",
-          "latest entertainment news about russell davies criticises bbc",
-          "russell davies criticises bbc boss clumsy latest update",
-          "BBC russell davies criticises bbc entertainment",
-          "latest news about russell davies criticises bbc October 2026",
-          "russell davies criticises bbc entertainment news 2026-10-14",
-          "what happened with russell davies criticises bbc"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "russell",
-          "davies",
-          "criticises",
-          "bbc",
-          "boss",
-          "clumsy",
-          "doctor",
-          "who"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "russell davies criticises bbc 2026"
-        ],
-        "source_keywords": [
-          "BBC russell davies criticises bbc",
-          "bbc.co.uk russell davies criticises bbc",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Russell T Davies criticises BBC boss's 'clumsy' AI Doctor…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "russell davies criticises bbc latest news",
-          "russell davies criticises bbc",
-          "russell davies criticises bbc news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "russell davies criticises bbc latest news October 2026",
-          "russell davies criticises bbc entertainment update 2026",
-          "russell davies criticises bbc news 2026-10-14",
-          "latest entertainment news about russell davies criticises bbc",
-          "russell davies criticises bbc boss clumsy latest update",
-          "BBC russell davies criticises bbc entertainment",
-          "latest news about russell davies criticises bbc October 2026",
-          "russell davies criticises bbc entertainment news 2026-10-14",
-          "what happened with russell davies criticises bbc",
-          "russell",
-          "davies",
-          "criticises",
-          "bbc",
-          "boss",
-          "clumsy",
-          "doctor",
-          "who",
-          "October 2026",
-          "2026-10-14",
-          "russell davies criticises bbc 2026",
-          "BBC russell davies criticises bbc",
-          "bbc.co.uk russell davies criticises bbc",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
-      }
-    },
-    {
-      "id": "e4e389ca",
-      "title": "Lena Dunham's Girls to return for limited HBO run",
-      "url": "https://www.bbc.co.uk/news/articles/c9m26xp4zp8jo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-14T02:09:30.000Z",
-      "discovered_at": "2026-10-14T07:59:10.010Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Lena Dunham's Girls",
-      "description": "Lena Dunham's Girls: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/243d/live/cb0a4af0-c770-11f1-ab87-2bb7c0d2443c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/lena-dunham-s-girls-to-return-for-limited-hbo-run-e4e389/",
-      "landing_url": "https://matchapp.tv/?news=e4e389ca#latest-news",
-      "seo": {
-        "primary_keyword": "Lena Dunham's Girls latest news",
-        "short_tail": [
-          "Lena Dunham's Girls",
-          "Lena Dunham's Girls news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Lena Dunham's Girls latest news October 2026",
-          "Lena Dunham's Girls entertainment update 2026",
-          "Lena Dunham's Girls news 2026-10-14",
-          "latest entertainment news about Lena Dunham's Girls",
-          "lena dunham girls lena dunham girls latest update",
-          "BBC Lena Dunham's Girls entertainment",
-          "latest news about Lena Dunham's Girls October 2026",
-          "Lena Dunham's Girls entertainment news 2026-10-14",
-          "what happened with Lena Dunham's Girls"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Lena Dunham's Girls",
-          "lena",
-          "dunham",
-          "girls",
-          "return",
-          "limited"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "Lena Dunham's Girls 2026"
-        ],
-        "source_keywords": [
-          "BBC Lena Dunham's Girls",
-          "bbc.co.uk Lena Dunham's Girls",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Lena Dunham's Girls to return for limited HBO run |…",
-        "meta_description": "Lena Dunham's Girls: Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Lena Dunham's Girls latest news",
-          "Lena Dunham's Girls",
-          "Lena Dunham's Girls news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Lena Dunham's Girls latest news October 2026",
-          "Lena Dunham's Girls entertainment update 2026",
-          "Lena Dunham's Girls news 2026-10-14",
-          "latest entertainment news about Lena Dunham's Girls",
-          "lena dunham girls lena dunham girls latest update",
-          "BBC Lena Dunham's Girls entertainment",
-          "latest news about Lena Dunham's Girls October 2026",
-          "Lena Dunham's Girls entertainment news 2026-10-14",
-          "what happened with Lena Dunham's Girls",
-          "lena",
-          "dunham",
-          "girls",
-          "return",
-          "limited",
-          "October 2026",
-          "2026-10-14",
-          "Lena Dunham's Girls 2026",
-          "BBC Lena Dunham's Girls",
-          "bbc.co.uk Lena Dunham's Girls",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     },
     {
@@ -3538,7 +3529,7 @@
           "2026-10-12",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-15T00:49:45.718Z"
+        "seo_generated_at": "2026-10-15T06:22:45.438Z"
       }
     }
   ]
