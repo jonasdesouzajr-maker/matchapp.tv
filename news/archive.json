@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T19:27:59.616Z",
+  "generated_at": "2026-10-15T19:57:05.046Z",
   "limit": 1000,
   "items": [
     {
@@ -98,7 +98,7 @@
           "hollywoodreporter.com all hunger games movies",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -197,7 +197,7 @@
           "hollywoodreporter.com prepare fall love sense",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -215,7 +215,7 @@
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://g1.globo.com/mundo/noticia/2026/10/15/None",
+      "image": "https://s2-g1.glbimg.com/shgTu9ZhIEW7bwjw2P6CDjoM8VU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/H/L/4T5IepRN6bfjv896f8Rg/tgv-tmst-3011-2-sortie-tunnel-sous-la-manche-a-coquelles.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/batida-entre-trem-e-onibus-na-entrada-do-eurotunel-deixa-19-feridos-na-franca-7b3e5e/",
       "landing_url": "https://matchapp.tv/?news=7b3e5e9f#latest-news",
       "seo": {
@@ -266,7 +266,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -365,7 +365,7 @@
           "hollywoodreporter.com lupin nearly back star",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -434,7 +434,97 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
+      }
+    },
+    {
+      "id": "81a6363a",
+      "title": "Jeux olympiques de Montréal : cinquante ans après, les correspondances inédites",
+      "url": "https://theconversation.com/jeux-olympiques-de-montreal-cinquante-ans-apres-les-correspondances-inedites-291012",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-15T19:02:17.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null,
+      "language": "en",
+      "discovered_at": "2026-10-15T19:57:04.982Z",
+      "person": "",
+      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
+      "matchapp_url": "https://matchapp.tv/news/articles/jeux-olympiques-de-montreal-cinquante-ans-apres-les-correspondances-inedites-81a636/",
+      "landing_url": "https://matchapp.tv/?news=81a6363a#latest-news",
+      "seo": {
+        "primary_keyword": "jeux olympiques montreal cinquante ans sports news",
+        "short_tail": [
+          "Sports",
+          "sports news",
+          "latest sports news",
+          "today sports headlines",
+          "jeux",
+          "olympiques",
+          "montreal",
+          "cinquante",
+          "ans",
+          "apres"
+        ],
+        "long_tail": [
+          "jeux olympiques montreal cinquante ans sports news 2026",
+          "jeux olympiques montreal cinquante ans latest update 2026-10-15",
+          "Sports latest news October 2026",
+          "The Conversation sports news indexed 2026-10-15",
+          "jeux olympiques montreal cinquante ans The Conversation original report"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "jeux",
+          "olympiques",
+          "montreal",
+          "cinquante",
+          "ans",
+          "apres",
+          "les",
+          "correspondances"
+        ],
+        "freshness_keywords": [
+          "2026-10-15",
+          "October 2026"
+        ],
+        "source_keywords": [
+          "The Conversation",
+          "Sports The Conversation",
+          "The Conversation sports headlines"
+        ],
+        "meta_title": "Jeux olympiques de Montréal : cinquante ans après, les…",
+        "meta_description": "Sports reporting indexed 2026-10-15. Open the original publisher through MatchApp Latest News.",
+        "keywords": [
+          "jeux olympiques montreal cinquante ans sports news",
+          "Sports",
+          "sports news",
+          "latest sports news",
+          "today sports headlines",
+          "jeux",
+          "olympiques",
+          "montreal",
+          "cinquante",
+          "ans",
+          "apres",
+          "jeux olympiques montreal cinquante ans sports news 2026",
+          "jeux olympiques montreal cinquante ans latest update 2026-10-15",
+          "Sports latest news October 2026",
+          "The Conversation sports news indexed 2026-10-15",
+          "jeux olympiques montreal cinquante ans The Conversation original report",
+          "The Conversation",
+          "Sports The Conversation",
+          "The Conversation sports headlines",
+          "2026-10-15",
+          "October 2026"
+        ],
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -531,7 +621,7 @@
           "hollywoodreporter.com love lucy treasures acquired",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -600,7 +690,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -697,7 +787,7 @@
           "hollywoodreporter.com nbc newlyweds names bruce",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -766,7 +856,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -966,7 +1056,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1035,7 +1125,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1134,7 +1224,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1203,7 +1293,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1272,7 +1362,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1814,7 +1904,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1883,7 +1973,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2044,7 +2134,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2139,7 +2229,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2208,7 +2298,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2277,7 +2367,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2780,7 +2870,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2849,7 +2939,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2947,7 +3037,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3016,7 +3106,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3085,7 +3175,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3183,7 +3273,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -4398,7 +4488,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -4499,7 +4589,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -5197,7 +5287,7 @@
           "g1.globo.com Cézar Mendes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -6277,7 +6367,7 @@
           "bbc.co.uk brooklyn shop surreal row",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -7295,7 +7385,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -7955,7 +8045,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -8123,7 +8213,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -8222,7 +8312,7 @@
           "bbc.co.uk bbc director general defends",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -8389,7 +8479,7 @@
           "g1.globo.com Caetano Veloso",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -9099,7 +9189,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -10107,7 +10197,7 @@
           "g1.globo.com milla existiu nao relembre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -10206,7 +10296,7 @@
           "g1.globo.com sobrinho borges rodrigo borges",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -10373,7 +10463,7 @@
           "g1.globo.com Rodrigo Campos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -10608,7 +10698,7 @@
           "bbc.co.uk racial bias london music",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T17:18:45.344Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -85237,71 +85327,6 @@
           "BBC World"
         ],
         "seo_generated_at": "2026-09-30T09:15:20.764Z"
-      }
-    },
-    {
-      "id": "0b10a0cc",
-      "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
-      "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "published_at": "2026-09-30T05:18:13.000Z",
-      "discovered_at": "2026-09-30T00:44:22.303Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-09-30. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/181a/live/455d3af0-bc41-11f1-bc1f-3f186ca4140c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/openai-unveils-ai-assistant-dots-while-safety-worries-delay-new-model-0b10a0/",
-      "landing_url": "https://matchapp.tv/?news=0b10a0cc#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-09-29",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "openai",
-          "unveils",
-          "assistant",
-          "dots",
-          "while",
-          "safety"
-        ],
-        "long_tail": [
-          "OpenAI unveils AI assistant 'dots' while safety worries delay new model 2026-09-29",
-          "world news September 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "openai",
-          "unveils",
-          "assistant",
-          "dots",
-          "while",
-          "safety"
-        ],
-        "freshness_keywords": [
-          "2026-09-29"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "OpenAI unveils AI assistant 'dots' while safety worries…",
-        "meta_description": "World report published by BBC Technology on 2026-09-29. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "openai",
-          "unveils",
-          "assistant",
-          "dots",
-          "while",
-          "safety",
-          "2026-09-29",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-09-30T00:44:22.303Z"
       }
     }
   ]

@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-14T01:54:55.284Z",
+  "updated_at": "2026-10-15T19:57:04.982Z",
   "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
-      "id": "46154106",
-      "title": "What’s in a name? Enough to ensnare Australia, NZ and PNG in a legal battle over the rugby team name ‘Chiefs’",
-      "url": "https://theconversation.com/whats-in-a-name-enough-to-ensnare-australia-nz-and-png-in-a-legal-battle-over-the-rugby-team-name-chiefs-294045",
+      "id": "81a6363a",
+      "title": "Jeux olympiques de Montréal : cinquante ans après, les correspondances inédites",
+      "url": "https://theconversation.com/jeux-olympiques-de-montreal-cinquante-ans-apres-les-correspondances-inedites-291012",
       "source": "The Conversation",
       "source_domain": "theconversation.com",
       "source_home": "https://theconversation.com",
@@ -13,7 +13,7 @@
       "category": "sports",
       "sport": "Sports",
       "event_type": "Sports",
-      "published_at": "2026-10-12T03:16:50.000Z",
+      "published_at": "2026-10-15T19:02:17.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null

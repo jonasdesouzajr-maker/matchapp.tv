@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-15T19:27:59.616Z",
-  "feed_version": "ea7f1647",
-  "sports_updated_at": "2026-10-14T01:54:55.284Z",
+  "generated_at": "2026-10-15T19:57:05.046Z",
+  "feed_version": "ffc6efc8",
+  "sports_updated_at": "2026-10-15T19:57:04.982Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
@@ -101,7 +101,7 @@
           "hollywoodreporter.com all hunger games movies",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -200,7 +200,7 @@
           "hollywoodreporter.com prepare fall love sense",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -218,7 +218,7 @@
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://g1.globo.com/mundo/noticia/2026/10/15/None",
+      "image": "https://s2-g1.glbimg.com/shgTu9ZhIEW7bwjw2P6CDjoM8VU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/H/L/4T5IepRN6bfjv896f8Rg/tgv-tmst-3011-2-sortie-tunnel-sous-la-manche-a-coquelles.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/batida-entre-trem-e-onibus-na-entrada-do-eurotunel-deixa-19-feridos-na-franca-7b3e5e/",
       "landing_url": "https://matchapp.tv/?news=7b3e5e9f#latest-news",
       "seo": {
@@ -269,7 +269,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -368,7 +368,7 @@
           "hollywoodreporter.com lupin nearly back star",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -437,7 +437,97 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
+      }
+    },
+    {
+      "id": "81a6363a",
+      "title": "Jeux olympiques de Montréal : cinquante ans après, les correspondances inédites",
+      "url": "https://theconversation.com/jeux-olympiques-de-montreal-cinquante-ans-apres-les-correspondances-inedites-291012",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-15T19:02:17.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null,
+      "language": "en",
+      "discovered_at": "2026-10-15T19:57:04.982Z",
+      "person": "",
+      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
+      "matchapp_url": "https://matchapp.tv/news/articles/jeux-olympiques-de-montreal-cinquante-ans-apres-les-correspondances-inedites-81a636/",
+      "landing_url": "https://matchapp.tv/?news=81a6363a#latest-news",
+      "seo": {
+        "primary_keyword": "jeux olympiques montreal cinquante ans sports news",
+        "short_tail": [
+          "Sports",
+          "sports news",
+          "latest sports news",
+          "today sports headlines",
+          "jeux",
+          "olympiques",
+          "montreal",
+          "cinquante",
+          "ans",
+          "apres"
+        ],
+        "long_tail": [
+          "jeux olympiques montreal cinquante ans sports news 2026",
+          "jeux olympiques montreal cinquante ans latest update 2026-10-15",
+          "Sports latest news October 2026",
+          "The Conversation sports news indexed 2026-10-15",
+          "jeux olympiques montreal cinquante ans The Conversation original report"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "jeux",
+          "olympiques",
+          "montreal",
+          "cinquante",
+          "ans",
+          "apres",
+          "les",
+          "correspondances"
+        ],
+        "freshness_keywords": [
+          "2026-10-15",
+          "October 2026"
+        ],
+        "source_keywords": [
+          "The Conversation",
+          "Sports The Conversation",
+          "The Conversation sports headlines"
+        ],
+        "meta_title": "Jeux olympiques de Montréal : cinquante ans après, les…",
+        "meta_description": "Sports reporting indexed 2026-10-15. Open the original publisher through MatchApp Latest News.",
+        "keywords": [
+          "jeux olympiques montreal cinquante ans sports news",
+          "Sports",
+          "sports news",
+          "latest sports news",
+          "today sports headlines",
+          "jeux",
+          "olympiques",
+          "montreal",
+          "cinquante",
+          "ans",
+          "apres",
+          "jeux olympiques montreal cinquante ans sports news 2026",
+          "jeux olympiques montreal cinquante ans latest update 2026-10-15",
+          "Sports latest news October 2026",
+          "The Conversation sports news indexed 2026-10-15",
+          "jeux olympiques montreal cinquante ans The Conversation original report",
+          "The Conversation",
+          "Sports The Conversation",
+          "The Conversation sports headlines",
+          "2026-10-15",
+          "October 2026"
+        ],
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -534,7 +624,7 @@
           "hollywoodreporter.com love lucy treasures acquired",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -603,7 +693,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -700,7 +790,7 @@
           "hollywoodreporter.com nbc newlyweds names bruce",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -769,106 +859,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
-      }
-    },
-    {
-      "id": "bb5aefd8",
-      "title": "‘The Beekeeper 2’ Trailer: Jason Statham Uses Machine Gun, Flamethrower to Battle Rogue Intelligence Organization",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/beekeeper-2-trailer-jason-statham-1236732977/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T17:46:24.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Release",
-      "category": "entertainment",
-      "person": "",
-      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/01/MCDBEEK_MG003.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-beekeeper-2-trailer-jason-statham-uses-machine-gun-flamethrower-to-battle-ro-bb5aef/",
-      "landing_url": "https://matchapp.tv/?news=bb5aefd8#latest-news",
-      "seo": {
-        "primary_keyword": "beekeeper trailer jason statham latest news",
-        "short_tail": [
-          "beekeeper trailer jason statham",
-          "beekeeper trailer jason statham news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "beekeeper trailer jason statham latest news October 2026",
-          "beekeeper trailer jason statham release update 2026",
-          "beekeeper trailer jason statham news 2026-10-15",
-          "latest release news about beekeeper trailer jason statham",
-          "beekeeper trailer jason statham uses machine latest update",
-          "The Hollywood Reporter beekeeper trailer jason statham release",
-          "latest news about beekeeper trailer jason statham October 2026",
-          "beekeeper trailer jason statham entertainment news 2026-10-15",
-          "what happened with beekeeper trailer jason statham"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "beekeeper",
-          "trailer",
-          "jason",
-          "statham",
-          "uses",
-          "machine",
-          "gun",
-          "flamethrower"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "beekeeper trailer jason statham 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter beekeeper trailer jason statham",
-          "hollywoodreporter.com beekeeper trailer jason statham",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘The Beekeeper 2’ Trailer: Jason Statham Uses Machine Gun,…",
-        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "beekeeper trailer jason statham latest news",
-          "beekeeper trailer jason statham",
-          "beekeeper trailer jason statham news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "beekeeper trailer jason statham latest news October 2026",
-          "beekeeper trailer jason statham release update 2026",
-          "beekeeper trailer jason statham news 2026-10-15",
-          "latest release news about beekeeper trailer jason statham",
-          "beekeeper trailer jason statham uses machine latest update",
-          "The Hollywood Reporter beekeeper trailer jason statham release",
-          "latest news about beekeeper trailer jason statham October 2026",
-          "beekeeper trailer jason statham entertainment news 2026-10-15",
-          "what happened with beekeeper trailer jason statham",
-          "beekeeper",
-          "trailer",
-          "jason",
-          "statham",
-          "uses",
-          "machine",
-          "gun",
-          "flamethrower",
-          "October 2026",
-          "2026-10-15",
-          "beekeeper trailer jason statham 2026",
-          "The Hollywood Reporter beekeeper trailer jason statham",
-          "hollywoodreporter.com beekeeper trailer jason statham",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -969,7 +960,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1038,7 +1029,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1137,7 +1128,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1206,7 +1197,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1275,7 +1266,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1344,7 +1335,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1413,7 +1404,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1482,7 +1473,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1577,7 +1568,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1646,7 +1637,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1715,7 +1706,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1784,7 +1775,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1853,7 +1844,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -1951,7 +1942,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2020,7 +2011,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2089,7 +2080,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2187,7 +2178,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2285,7 +2276,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2386,7 +2377,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2484,7 +2475,7 @@
           "g1.globo.com Cézar Mendes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2583,7 +2574,7 @@
           "bbc.co.uk brooklyn shop surreal row",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2684,7 +2675,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2782,7 +2773,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2881,7 +2872,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -2980,7 +2971,7 @@
           "bbc.co.uk bbc director general defends",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3078,7 +3069,7 @@
           "g1.globo.com Caetano Veloso",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3179,7 +3170,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3280,7 +3271,7 @@
           "g1.globo.com milla existiu nao relembre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3379,7 +3370,7 @@
           "g1.globo.com sobrinho borges rodrigo borges",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     },
     {
@@ -3477,7 +3468,104 @@
           "g1.globo.com Rodrigo Campos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T19:27:59.616Z"
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
+      }
+    },
+    {
+      "id": "7a9d35d7",
+      "title": "Racial bias in London music licensing, report says",
+      "url": "https://www.bbc.co.uk/news/articles/c80405r93w42o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-14T11:16:50.000Z",
+      "discovered_at": "2026-10-14T13:59:28.698Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6df2/live/284604e0-c729-11f1-b881-4391ac746e04.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/racial-bias-in-london-music-licensing-report-says-7a9d35/",
+      "landing_url": "https://matchapp.tv/?news=7a9d35d7#latest-news",
+      "seo": {
+        "primary_keyword": "racial bias london music latest news",
+        "short_tail": [
+          "racial bias london music",
+          "racial bias london music news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "racial bias london music latest news October 2026",
+          "racial bias london music entertainment update 2026",
+          "racial bias london music news 2026-10-14",
+          "latest entertainment news about racial bias london music",
+          "racial bias london music licensing report latest update",
+          "BBC racial bias london music entertainment",
+          "latest news about racial bias london music October 2026",
+          "racial bias london music entertainment news 2026-10-14",
+          "what happened with racial bias london music"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "racial",
+          "bias",
+          "london",
+          "music",
+          "licensing",
+          "report",
+          "says"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-14",
+          "racial bias london music 2026"
+        ],
+        "source_keywords": [
+          "BBC racial bias london music",
+          "bbc.co.uk racial bias london music",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Racial bias in London music licensing, report says |…",
+        "meta_description": "Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "racial bias london music latest news",
+          "racial bias london music",
+          "racial bias london music news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "racial bias london music latest news October 2026",
+          "racial bias london music entertainment update 2026",
+          "racial bias london music news 2026-10-14",
+          "latest entertainment news about racial bias london music",
+          "racial bias london music licensing report latest update",
+          "BBC racial bias london music entertainment",
+          "latest news about racial bias london music October 2026",
+          "racial bias london music entertainment news 2026-10-14",
+          "what happened with racial bias london music",
+          "racial",
+          "bias",
+          "london",
+          "music",
+          "licensing",
+          "report",
+          "says",
+          "October 2026",
+          "2026-10-14",
+          "racial bias london music 2026",
+          "BBC racial bias london music",
+          "bbc.co.uk racial bias london music",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T19:57:05.046Z"
       }
     }
   ]
