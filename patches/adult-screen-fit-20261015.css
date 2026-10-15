@@ -149,6 +149,7 @@
  html body.page-shell header.app-header > nav.mh-deck {
   gap:var(--ma-control-gap)!important;align-items:stretch!important;
  }
+ html body.page-shell header.app-header > nav.mh-deck > * {align-self:stretch!important}
  html body.page-shell header.app-header > nav.mh-deck > :is(a,button,.install-wrap) {
   flex:1 1 76px!important;min-width:0!important;max-width:100%!important;
   min-height:44px!important;height:auto!important;padding:8px 10px!important;
@@ -163,6 +164,11 @@
  html body.page-shell header.app-header > nav.mh-deck > .mh-home-btn {min-width:94px!important;flex-basis:94px!important}
  html body.page-shell header.app-header > nav.mh-deck > .install-btn {flex-basis:105px!important;min-width:105px!important;letter-spacing:0!important;text-transform:none!important;font-size:12px!important}
  html body.page-shell header.app-header > nav.mh-deck > #ma-donate-shortcut {min-width:max-content!important}
+ html body.page-shell header.app-header > nav.mh-deck > .secondary-btn[href="/pricing/pricing.html"] {
+  flex-basis:50px!important;min-width:min-content!important;padding-inline:8px!important;
+  font-size:12px!important;letter-spacing:0!important;
+ }
+ html body.page-shell header.app-header > nav.mh-deck > #ma-donate-shortcut {padding-inline:8px!important;flex-basis:76px!important}
  html body:not(.page-kids):not(.kids-body) header.app-header .event-nav-pill {min-height:44px!important}
  html body.page-shell header.app-header .mh-home-label {white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important;text-transform:none!important}
  html body.page-shell header.app-header > nav.mh-deck:has(>.mh-home-btn) > a.home-btn[href="/"] {display:none!important}

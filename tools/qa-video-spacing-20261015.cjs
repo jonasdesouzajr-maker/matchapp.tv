@@ -19,13 +19,13 @@ async function geometry(page){return page.evaluate(()=>{
    if(e.matches('.ma-luxe-shortcut')){const text=e.querySelector('span');if(text){const t=text.getBoundingClientRect();if(t.left<r.left||t.right>r.right+.5||t.bottom>r.bottom-.5||text.scrollWidth>text.clientWidth+1)problems.push('clipped label: '+text.textContent)}}
   }
   for(let i=0;i<controls.length;i++)for(let j=i+1;j<controls.length;j++){const a=controls[i].getBoundingClientRect(),b=controls[j].getBoundingClientRect();const overlapX=Math.min(a.right,b.right)-Math.max(a.left,b.left),overlapY=Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top);if(overlapX>1&&overlapY>1)problems.push('overlapping controls');}
-  if(nav.classList.contains('ma-luxe-shortcuts')){const count={};controls.forEach(e=>{const y=Math.round(e.getBoundingClientRect().top);count[y]=(count[y]||0)+1});rows.push(...Object.values(count));if(controls.length>2&&Object.values(count).includes(1))problems.push('orphan shortcut row')}
+  if(nav.classList.contains('ma-luxe-shortcuts')||location.pathname==='/together.html'){const count={};controls.forEach(e=>{const y=Math.round(e.getBoundingClientRect().top);count[y]=(count[y]||0)+1});rows.push(...Object.values(count));if(controls.length>2&&Object.values(count).includes(1))problems.push('orphan shortcut row')}
  }
  return{overflow:document.documentElement.scrollWidth-innerWidth,problems,rows,headerHeight:document.querySelector('header.app-header')?.getBoundingClientRect().height};
 })}
 (async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
  const browser=await chromium.launch({headless:true,...(process.env.MATCHAPP_BROWSER_CHANNEL?{channel:process.env.MATCHAPP_BROWSER_CHANNEL}:{})});const report=[];
- try{for(const width of (process.env.QUICK?[390]:[320,390,432,820,1440])){
+ try{for(const width of (process.env.MATCHAPP_QA_WIDTHS?process.env.MATCHAPP_QA_WIDTHS.split(',').map(Number):process.env.QUICK?[390]:[320,390,432,820,1440])){
   const context=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
   await context.addInitScript(()=>{localStorage.setItem('match_lang','en');localStorage.setItem('match_soundEnabled','false');localStorage.setItem('match_cookie_choice','essential')});
   await context.route(/^https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());
@@ -45,6 +45,10 @@ async function geometry(page){return page.evaluate(()=>{
     await page.locator('.ma-menu-button').click();
     const sound=page.locator('.sound-toggle-btn').first(),state=await sound.getAttribute('aria-pressed');await sound.click();if(await sound.getAttribute('aria-pressed')===state)throw Error('Sound control no longer toggles');await sound.click();
     await page.locator('#ma-worlds-trigger').click();if(!await page.locator('.ma-worlds-panel').isVisible())throw Error('Explore no longer opens');await page.locator('[data-worlds-dismiss="close"]').click();
+   }
+   if(route==='/together.html'){
+    for(const lang of langs){await page.evaluate(lang=>window.setLanguage(lang),lang);await page.waitForTimeout(150);result=await geometry(page);report.push({width,route,lang,...result})}
+    await page.evaluate(()=>window.setLanguage('en'));
    }
   }await context.close();console.log('CHECKED',width);
  }
