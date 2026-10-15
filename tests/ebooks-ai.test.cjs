@@ -91,5 +91,5 @@ test('grown-up Android build is advanced for the E-books release',()=>{
  assert.match(gradle,/versionCode = 53/);
  assert.match(gradle,/versionName = "1\.1\.53"/);
  assert.match(main,/appBuild=53/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.50/);
+ assert.match(main,/MatchAppAiAndroid\/1\.1\.53/);
 });
