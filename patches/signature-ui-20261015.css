@@ -384,7 +384,7 @@
   animation:ma-support-aura 5s ease-in-out infinite!important;
  }
  @keyframes ma-support-aura {0%,100%{opacity:.12}50%{opacity:.65}}
- @media(prefers-reduced-motion:reduce) {html body #ma-donate-shortcut.ma-luxe-shortcut::after {animation:none!important;opacity:.2!important}}
- html.reduce-motion body #ma-donate-shortcut.ma-luxe-shortcut::after,.reduce-motion #ma-donate-shortcut.ma-luxe-shortcut::after {animation:none!important;opacity:.2!important}
- @media(forced-colors:active) {html body #ma-donate-shortcut.ma-luxe-shortcut::after {display:none!important}}
+ @media(prefers-reduced-motion:reduce) {html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {animation:none!important;opacity:.2!important}}
+ html.reduce-motion body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after,html body.reduce-motion:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {animation:none!important;opacity:.2!important}
+ @media(forced-colors:active) {html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {display:none!important}}
 }
