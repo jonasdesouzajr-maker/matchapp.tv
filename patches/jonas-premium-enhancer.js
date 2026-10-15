@@ -21,8 +21,13 @@
   var size=root.offsetWidth||76,vw=Math.max(1,innerWidth),vh=Math.max(1,innerHeight);
   var right=vw>=1100?28:(vw>=700?22:14);
   var bottom=vw>=1100?120:(vw>=700?118:Math.max(104,Math.min(150,vh*.17)));
-  root.style.setProperty('left',Math.max(8,vw-size-right)+'px','important');
-  root.style.setProperty('top',Math.max(8,vh-size-bottom)+'px','important');
+  var x=Math.max(8,vw-size-right),y=Math.max(8,vh-size-bottom);
+  if(slot&&document.body.classList.contains('page-home')&&vw>=1100&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+   var box=slot.getBoundingClientRect();
+   if(box.width&&box.height){x=Math.max(17,Math.min(vw-size-17,box.left+(box.width-size)/2));y=Math.max(17,Math.min(vh-size-17,box.top+(box.height-size)/2))}
+  }
+  root.style.setProperty('left',x+'px','important');
+  root.style.setProperty('top',y+'px','important');
   root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important');
   root.dataset.jonasDefaultDock='1';
  }
@@ -36,6 +41,8 @@
   root.addEventListener('pointercancel',function(){dragStart=null});
   new MutationObserver(positionHome).observe(root,{attributes:true,attributeFilter:['class','hidden']});
   window.addEventListener('resize',positionHome,{passive:true});
+  var slot=document.getElementById('ma-jonas-header-slot');
+  if(slot&&window.ResizeObserver)new ResizeObserver(positionHome).observe(slot.parentElement);
   positionHome();requestAnimationFrame(positionHome);
  }
  function enhance(){

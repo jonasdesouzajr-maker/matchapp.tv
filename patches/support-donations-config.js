@@ -1,7 +1,7 @@
 window.MATCHAPP_SUPPORT_CONFIG = Object.freeze({
-  // Set to an account-verified public PayPal.Me link, e.g. https://paypal.me/VerifiedHandle.
-  // Never use or commit an account login email here. PayPal may show its account-holder
-  // identity to donors on PayPal itself.
+  // Recipient explicitly supplied by the owner; public PayPal checkout checked in Chrome.
+  paypalBusinessEmail: 'jonasdesouzajr@outlook.com',
+  recipientConfirmed: true,
   paypalMeUrl: '',
   verified: false
 });

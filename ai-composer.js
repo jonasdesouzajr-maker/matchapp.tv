@@ -116,11 +116,21 @@ function paintHeader(){
  };
  label('.ma-how-button',c[0]);label('.ma-kids-mode-entry',c[1],'span');label('.ma-menu-button',c[2],'span');
  const signIn={en:'Sign in','pt-BR':'Entrar',es:'Entrar',fr:'Connexion',de:'Anmelden',it:'Accedi',tr:'Giriş',ru:'Войти',ar:'دخول',hi:'साइन इन',id:'Masuk',ja:'ログイン',ko:'로그인',zh:'登录'};
- label('#nav-reg-btn','👤 '+(signIn[language()]||signIn.en));
+ label('#nav-reg-btn',signIn[language()]||signIn.en);
  h.querySelectorAll('.ma-menu>[role="menuitem"]').forEach((n,i)=>{
-  const text=c[i+3];if(!text)return;
+  // Jonas is a named destination inserted between check-in and pricing.
+  const text=i===6?'Jonas':c[i+3-(i>6?1:0)];if(!text)return;
   if(!n.dataset.maMenuIcon)n.dataset.maMenuIcon=n.textContent.trim().split(' ')[0];
-  const value=n.dataset.maMenuIcon+' '+text;if(n.textContent!==value)n.textContent=value;n.setAttribute('aria-label',text);
+  const symbol=['country','language','sound','theme','comfort','checkin','discover','pricing','install','settings','updates'][i];
+  n.dataset.maMenuSymbol=symbol;
+  let legacy=n.querySelector('.ma-menu-legacy-symbol'),caption=n.querySelector('.ma-menu-caption');
+  if(!caption){
+   legacy=document.createElement('span');legacy.className='ma-menu-legacy-symbol';legacy.setAttribute('aria-hidden','true');
+   caption=document.createElement('span');caption.className='ma-menu-caption';
+   n.replaceChildren(legacy,caption);
+  }
+  if(legacy.textContent!==n.dataset.maMenuIcon+' ')legacy.textContent=n.dataset.maMenuIcon+' ';
+  if(caption.textContent!==text)caption.textContent=text;n.setAttribute('aria-label',text);
  });
  const logout=h.querySelector('#nav-logout-btn');if(logout){const text=window.t?.('nav.logout')||'Logout';logout.setAttribute('aria-label',text);logout.setAttribute('title',text);}
 }

@@ -54,3 +54,15 @@ test('native drag persists a shared cross-page position and chat dimensions igno
  assert.match(css,/\.jh-content \{min-height:0!important;overflow-y:auto!important/);
  assert.match(js,/class="ja-blink"/);assert.match(js,/onLevel:level=>\{if\(open&&token===epoch&&level>0\)faceWord\('a'\)/);
 });
+
+test('desktop Home docks inside its reserved header slot without overwriting a saved drag',()=>{
+ for(const saved of [false,true]){
+  const d=new JSDOM('<body class="page-home"><header><div><span id="ma-jonas-header-slot"></span></div></header><aside id="ma-jonas-home"></aside></body>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true});
+  const w=d.window,root=w.document.querySelector('aside');w.innerWidth=1440;w.matchMedia=()=>({matches:true});
+  w.document.getElementById('ma-jonas-header-slot').getBoundingClientRect=()=>({left:1200,top:60,width:92,height:92});
+  if(saved)w.localStorage.setItem('matchapp-jonas-position-v2',JSON.stringify({x:.3,y:.5}));
+  w.eval(load('patches/jonas-premium-enhancer.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+  assert.equal(root.style.left,saved?'':'1208px');assert.equal(root.style.top,saved?'':'68px');
+  assert.equal(w.localStorage.getItem('matchapp-jonas-position-v2')!==null,saved);w.close();
+ }
+});
