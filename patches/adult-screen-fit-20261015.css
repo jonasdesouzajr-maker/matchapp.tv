@@ -331,3 +331,120 @@
   html body.event-guide-page .app-header > .header-brand-area .matchapp-wordmark-source {width:100%!important}
  }
 }
+
+/* Consistency pass: one rhythm for existing adult controls and feature cards.
+   Keep destination colors, saved/disabled state, media, ads and handlers intact. */
+@layer ma-screen-fit {
+ html body:not(.page-kids):not(.kids-body):not(.kids-guide-page):not([data-kids-mode]) {
+  --ma-detail-gap:8px;
+  --ma-detail-section-gap:16px;
+  --ma-detail-ease:cubic-bezier(.22,.75,.25,1);
+ }
+ html body.page-home #mh-topbox > nav.ma-luxe-shortcuts {
+  grid-auto-rows:1fr!important;
+ }
+ html body:not(.page-kids):not(.kids-body) .app-header :is(
+  .ma-how-button,.ma-menu-button,#nav-reg-btn,#nav-logout-btn,.ma-luxe-shortcut,
+  .ma-luxe-text,#ma-donate-shortcut > span,.ma-support-shortcut
+ ) {
+  font-family:var(--ma-type-body,Inter,system-ui,sans-serif)!important;
+  font-weight:600!important;line-height:1.35!important;letter-spacing:0!important;
+  text-shadow:none!important;
+ }
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > #ma-donate-shortcut > svg {
+  width:22px!important;height:22px!important;flex:0 0 22px!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(.spotlight-actions,.weekly-pick-actions) {
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-auto-rows:1fr!important;align-items:stretch!important;
+  gap:var(--ma-detail-gap)!important;
+ }
+ html body:not(.page-kids):not(.kids-body) .weekly-pick-actions > .weekly-pick-primary {
+  grid-column:1 / -1!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(.spotlight-actions,.weekly-pick-actions) > :is(button,a) {
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;min-width:0!important;max-width:100%!important;
+  height:auto!important;min-height:48px!important;box-sizing:border-box!important;
+  margin:0!important;padding:10px 14px!important;gap:var(--ma-detail-gap)!important;
+  border-width:1px!important;border-style:solid!important;border-radius:14px!important;
+  font-family:var(--ma-type-body,Inter,system-ui,sans-serif)!important;
+  font-size:clamp(12px,1.15vw,14px)!important;font-weight:600!important;line-height:1.4!important;
+  text-transform:none!important;letter-spacing:0!important;text-shadow:none!important;
+  white-space:normal!important;word-break:normal!important;overflow-wrap:anywhere!important;
+  text-align:center!important;text-decoration:none!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) .spotlight-body {
+  display:flex!important;flex-direction:column!important;align-items:stretch!important;
+  gap:var(--ma-detail-section-gap)!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) .spotlight-body > * {
+  margin-block:0!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) :is(.spotlight-title,.spotlight-desc) {
+  text-align:start!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) .spotlight-title {
+  font-weight:700!important;line-height:1.2!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) .spotlight-desc {
+  line-height:1.6!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) .spotlight-meta {
+  gap:var(--ma-detail-gap)!important;align-items:stretch!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) .spotlight-chip {
+  display:inline-flex!important;align-items:center!important;gap:5px!important;
+  min-height:32px!important;box-sizing:border-box!important;padding:6px 10px!important;
+  font-family:var(--ma-type-body,Inter,system-ui,sans-serif)!important;
+  font-weight:500!important;line-height:1.4!important;
+  border:1px solid #cdb58f45!important;border-radius:10px!important;
+  background:#302438!important;color:#e8dced!important;box-shadow:none!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(#spotlight-ahs13,#weekly-pick) .spotlight-chip strong {
+  font-weight:600!important;color:inherit!important;
+ }
+}
+
+/* The legacy depth layer is declared in style.css first; own these motion
+   properties within that layer so reduced motion wins its important cascade. */
+@layer ma-depth {
+ html body:not(.page-kids):not(.kids-body) :is(.spotlight-actions,.weekly-pick-actions) > :is(button,a) {
+  box-shadow:inset 0 1px #ffffff12!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(.spotlight-actions,.weekly-pick-actions) > .gold-btn::after {
+  content:none!important;animation:none!important;
+ }
+
+ html body:not(.page-kids):not(.kids-body) :is(
+  .ma-luxe-shortcut,.ma-world-card,.explore-card,.journey-nav-item,.hub-links>a,
+  .ma-how-button,.ma-menu-button,.spotlight-actions>button,.weekly-pick-actions>button,.weekly-pick-actions>a
+ ) {
+  transition:color 160ms ease,background-color 160ms ease,border-color 160ms ease,
+   box-shadow 220ms var(--ma-detail-ease),transform 220ms var(--ma-detail-ease)!important;
+ }
+ html body:not(.page-kids):not(.kids-body) :is(.spotlight-actions,.weekly-pick-actions) > :is(button,a):focus-visible {
+  outline:2px solid #f3d79c!important;outline-offset:-4px!important;
+ }
+ @media(max-width:379px) {
+  html body:not(.page-kids):not(.kids-body) .spotlight-actions {grid-template-columns:minmax(0,1fr)!important}
+ }
+ @media(prefers-reduced-motion:reduce) {
+  html body:not(.page-kids):not(.kids-body) :is(
+   .ma-luxe-shortcut,.ma-world-card,.explore-card,.journey-nav-item,.hub-links>a,
+   .ma-how-button,.ma-menu-button,.spotlight-actions>button,.weekly-pick-actions>button,.weekly-pick-actions>a
+  ) {transition:none!important;transform:none!important}
+ }
+ html.reduce-motion body:not(.page-kids):not(.kids-body) :is(
+  .ma-luxe-shortcut,.ma-world-card,.explore-card,.journey-nav-item,.hub-links>a,
+  .ma-how-button,.ma-menu-button,.spotlight-actions>button,.weekly-pick-actions>button,.weekly-pick-actions>a
+ ),html body.reduce-motion:not(.page-kids):not(.kids-body) :is(
+  .ma-luxe-shortcut,.ma-world-card,.explore-card,.journey-nav-item,.hub-links>a,
+  .ma-how-button,.ma-menu-button,.spotlight-actions>button,.weekly-pick-actions>button,.weekly-pick-actions>a
+ ) {transition:none!important;transform:none!important}
+ @media(forced-colors:active) {
+  html body:not(.page-kids):not(.kids-body) :is(.spotlight-actions,.weekly-pick-actions) > :is(button,a):focus-visible {
+   outline-color:Highlight!important;
+  }
+ }
+}
