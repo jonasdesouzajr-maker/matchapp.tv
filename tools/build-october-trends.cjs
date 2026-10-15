@@ -49,6 +49,7 @@ let html=fs.readFileSync(monthly,'utf8');
 if(html.includes('<!-- october-trends:start -->'))html=html.replace(/<!-- october-trends:start -->[\s\S]*?<!-- october-trends:end -->/,section);
 else html=html.replace('<h2>Streaming: Netflix global movies</h2>',section+'\n<h2>Streaming: Netflix global movies</h2>');
 if(!html.includes(script))html=html.replace('</head>',script+'\n</head>');
+if(!html.includes('id="october-trends-anchor-style"'))html=html.replace('</head>','<style id="october-trends-anchor-style">#october-15-trends{scroll-margin-top:112px}</style>\n</head>');
 html=html.replace('"dateModified":"2026-10-05"','"dateModified":"2026-10-15"');
 const title='October 2026: Halloween Movies, Books & Music | MatchApp Ai';
 const desc='Halloween classics, Passenger (2026), East of Eden and upcoming Narnia: dated US search-interest context, official sources and country-specific viewing checks.';
