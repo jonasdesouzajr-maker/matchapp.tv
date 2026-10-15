@@ -13,6 +13,7 @@ try{
   const context=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
   const page=await context.newPage();
   await page.goto(base+'/',{waitUntil:'domcontentloaded'});await page.waitForTimeout(1800);
+  const essential=page.locator('.ma-cookie .no');if(await essential.isVisible())await essential.click();
   await page.locator('#ma-worlds-trigger').click();
   const audit=async()=>page.evaluate(()=>{
    const grid=document.querySelector('.ma-worlds-grid'),cards=[...grid.querySelectorAll('.ma-world-card')];
@@ -36,6 +37,13 @@ try{
     assert(state.overflow<=2&&state.cards.every(c=>c.inside&&c.labelFits),lang+' '+width+' '+JSON.stringify(state));
    }
    await select.selectOption('en');
+   await page.locator('.ma-menu-button').click();
+   const menu=await page.locator('.ma-menu > [data-ma-menu-symbol]').evaluateAll(es=>es.map(e=>({icon:getComputedStyle(e,'::before').backgroundImage,legacy:getComputedStyle(e.querySelector('.ma-menu-legacy-symbol')).display,captions:e.querySelectorAll('.ma-menu-caption').length})));
+   assert.equal(menu.length,11);assert(menu.every(e=>e.icon.includes('/symbols/')&&e.legacy==='none'&&e.captions===1));
+   await page.locator('.ma-menu-button').click();
+   const sound=page.locator('.sound-toggle-btn').first();
+   const before=await sound.getAttribute('aria-pressed');await sound.click();assert.notEqual(await sound.getAttribute('aria-pressed'),before);await sound.click();assert.equal(await sound.getAttribute('aria-pressed'),before);
+
   }
   await page.locator('[data-worlds-dismiss="close"]').click();assert.equal(await page.locator('#ma-worlds-trigger').getAttribute('aria-expanded'),'false');
   await page.locator('#ma-worlds-trigger').click();await page.locator('.ma-world-card[href="/together.html"]').click();await page.waitForURL('**/together.html');
