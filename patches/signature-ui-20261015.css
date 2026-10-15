@@ -388,3 +388,7 @@
  html.reduce-motion body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after,html body.reduce-motion:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {animation:none!important;opacity:.2!important}
  @media(forced-colors:active) {html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {display:none!important}}
 }
+
+@layer ma-screen-fit {
+ html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut {min-height:44px!important;height:auto!important}
+}
