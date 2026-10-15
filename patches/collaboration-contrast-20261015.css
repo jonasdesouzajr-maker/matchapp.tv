@@ -1,0 +1,32 @@
+/* Video QA 2026-10-15: private collaboration pages only.
+   Restore legibility without altering the global poster wall, Home or Kids. */
+html body:not(.kids-body):has(#tg-step-start) .poster-wall-grid,
+html body:not(.kids-body):has(#friends-sign-in) .poster-wall-grid {
+  opacity: .16 !important;
+}
+html body:not(.kids-body):has(#tg-step-start) .poster-wall::after,
+html body:not(.kids-body):has(#friends-sign-in) .poster-wall::after {
+  background: linear-gradient(180deg, rgba(8,6,23,.56), rgba(8,6,23,.64)) !important;
+}
+html body:has(#tg-step-start) .tg-lede,
+html body:has(#tg-step-start) .tg-how-text,
+html body:has(#tg-step-start) .tg-card .tg-sub {
+  color: #f0eafc;
+}
+html body:has(#tg-step-start) .tg-how-step {
+  background: rgba(17,13,35,.96);
+  border-color: rgba(229,193,88,.34);
+}
+html body:has(#tg-step-start) .tg-card {
+  background: rgba(20,15,38,.97);
+}
+html body:has(#friends-sign-in) main > h1 + p {
+  color: #f0eafc;
+  text-shadow: 0 1px 5px rgba(0,0,0,.6);
+}
+html body:has(#friends-sign-in) .friend-panel {
+  background: linear-gradient(145deg,rgba(41,32,62,.98),rgba(26,25,48,.98));
+}
+@media (max-width:700px) {
+  html body:has(#tg-step-start) .tg-how-step { background:rgba(17,13,35,.98); }
+}
