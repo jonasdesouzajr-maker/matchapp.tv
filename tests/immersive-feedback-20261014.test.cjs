@@ -14,6 +14,14 @@ test('18 main adult routes enable lightweight sensory feedback, Kids is excluded
  }
  assert.doesNotMatch(read('kids/index.html'),/immersive-feedback-20261014\.js/);
 });
+test('hourly news hub regeneration preserves its approved adult presentation assets',()=>{
+ const source=read('tools/refresh-news-rss.js');
+ const hub=source.split('function hub(items,generated){')[1]?.split('function readSports()')[0];
+ assert.ok(hub,'news hub template must exist');
+ assert.match(hub,/<link rel="stylesheet" href="\/brand\.css\?v=20261015-spacing1">/);
+ assert.match(hub,/<script defer src="\/patches\/jonas-adult-page\.js\?v=20261014-fastlang1"><\/script>/);
+ assert.match(hub,/<script defer src="\/patches\/immersive-feedback-20261014\.js\?v=immersive1"><\/script>/);
+});
 test('original bundled video keeps its soundtrack, with media volume below full scale',()=>{
  const src=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  assert.match(src,/player\.setVolume\(0\.55f, 0\.55f\)/);
