@@ -2139,7 +2139,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         var start = lede ? lede.nextElementSibling : inner.firstElementChild;
         var legal = inner.querySelector('.seo-footer-legal');
         var move = [];
-        for (var n = start; n && n !== legal; n = n.nextElementSibling) move.push(n);
+        for (var n = start; n && n !== legal; n = n.nextElementSibling) { if (n.id !== 'ma-donate-support') move.push(n); }
         if (!move.length) return;
         var d = document.createElement('details');
         d.className = 'seo-fold';
@@ -2150,7 +2150,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
           : 'Browse all streaming guides';
         d.appendChild(sum);
         move.forEach(function (el) { d.appendChild(el); });
-        inner.insertBefore(d, legal);
+        inner.insertBefore(d, inner.querySelector('#ma-donate-support') || legal);
       }
       if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fold, { once: true });
       else fold();

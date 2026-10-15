@@ -42,3 +42,10 @@ test('owner-confirmed email opens only PayPal donation checkout with the chosen 
 });
 
 test('support action has authored copy for every supported app language',()=>{const d=page({});const w=d.window;const labels=new Set();for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){w.document.documentElement.lang=lang;w.document.dispatchEvent(new w.Event('matchapp:langchange'));labels.add(w.document.getElementById('ma-donate-title').textContent);}assert.equal(labels.size,14);w.close();});
+
+test('support call to action stays outside the collapsed streaming guides',()=>{
+ const begin=html.indexOf('<footer class="seo-footer">'),end=html.indexOf('</footer>',begin)+9;
+ const dom=new JSDOM(html.slice(begin,end),{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ const script=html.match(/<script id="mh-footer-fold">([\s\S]*?)<\/script>/)[1];dom.window.eval(script);dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+ const card=dom.window.document.getElementById('ma-donate-support');assert.equal(card.closest('details'),null);assert.equal(card.previousElementSibling.className,'seo-fold');dom.window.close();
+});
