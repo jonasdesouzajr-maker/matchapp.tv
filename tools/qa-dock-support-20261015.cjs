@@ -10,6 +10,7 @@ const server=http.createServer((req,res)=>{try{let f=path.resolve(root,'.'+decod
 try{for(const width of [320,390,820,1100,1440,1920]){
  const context=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});const page=await context.newPage();await page.goto(base+'/',{waitUntil:'domcontentloaded'});await page.waitForTimeout(1600);
  const cookie=page.locator('.ma-cookie .no');if(await cookie.isVisible())await cookie.click();
+ const labels=await page.locator('#mh-topbox .ma-how-button').evaluateAll(es=>es.map(e=>{const b=e.getBoundingClientRect(),r=document.createRange();r.selectNodeContents(e);return {height:b.height,text:r.getBoundingClientRect().height,display:getComputedStyle(e).display}}));assert(labels.every(x=>x.height>=44&&x.display==='flex'&&x.text<=x.height));
  if(width>=1100){
   for(const lang of ['en','pt-BR','de','ar']){
    await page.locator('#lang-switcher-host select').first().selectOption(lang);await page.waitForTimeout(200);
