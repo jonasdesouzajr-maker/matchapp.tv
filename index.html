@@ -1709,6 +1709,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <script defer src="/patches/jonas-intro-audio.js?v=intro1"></script>
 <script defer src="/patches/jonas-adult-page.js?v=20261014-fullscreen1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+<link rel="stylesheet" href="/patches/support-donations.css?v=20261015-a1">
 </head>
 <body class="page-home ma-watch-focused">
     <!-- Google Tag Manager (noscript) -->
@@ -3656,6 +3657,30 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             </nav>
             <p class="contact-blurb" data-i18n="footer.contactBlurb">Questions, feedback, or a title you think we're missing? Email us or say hello on Instagram — a real person reads every message.</p>
 
+            <section id="ma-donate-support" class="ma-donate-card" aria-labelledby="ma-donate-title">
+                <div class="ma-donate-copy">
+                    <span class="ma-donate-kicker" id="ma-donate-kicker">Built with your support</span>
+                    <h3 id="ma-donate-title">Help MatchApp Ai grow</h3>
+                    <p class="ma-donate-desc" id="ma-donate-desc">We're expanding into new entertainment experiences. Voluntary support helps improve speed, cover hosting, and keep building MatchApp Ai.</p>
+                </div>
+                <button type="button" class="ma-donate-pill" id="ma-donate-pill" aria-controls="ma-donate-panel" aria-expanded="false">♥ Support our next chapter · US$5+</button>
+                <div class="ma-donate-panel" id="ma-donate-panel" hidden>
+                    <p id="ma-donate-choose">Choose an amount</p>
+                    <div class="ma-donate-values" role="group" aria-label="Suggested support amounts">
+                        <button type="button" class="ma-donate-value" data-donate-value="5" aria-pressed="true">US$5</button>
+                        <button type="button" class="ma-donate-value" data-donate-value="10" aria-pressed="false">US$10</button>
+                        <button type="button" class="ma-donate-value" data-donate-value="25" aria-pressed="false">US$25</button>
+                    </div>
+                    <label class="ma-donate-amount-label" for="ma-donate-amount">
+                        <span id="ma-donate-amount-label">Custom amount (USD, minimum $5)</span>
+                        <input type="number" id="ma-donate-amount" min="5" step="0.01" inputmode="decimal" value="5" required>
+                    </label>
+                    <button type="button" class="ma-donate-checkout" id="ma-donate-checkout" disabled>Continue securely with PayPal</button>
+                    <p class="ma-donate-status" id="ma-donate-status" role="status" aria-live="polite">PayPal checkout is being connected. No payment has been initiated.</p>
+                </div>
+                <p class="ma-donate-footnote" id="ma-donate-footnote">Optional support for this independent app, not a tax-deductible charitable gift. No extra features are unlocked. Checkout is handled by PayPal.</p>
+            </section>
+
             <p class="seo-footer-legal">
                 © <span id="footer-year"></span> MatchApp.tv — All Rights Reserved. Your AI Concierge for Entertainment. Unauthorized reproduction of this software or its AI systems is prohibited. Support: support@matchapp.tv<br>
                 MatchApp is an independent discovery service and is not affiliated with, endorsed by, or sponsored by
@@ -4029,5 +4054,7 @@ document.addEventListener('click',function(event){
 <script defer src="/match-insights.js?v=20260922-insights1"></script>
 <script defer src="/premium-nav-20261010.js?v=20261010-luxe1"></script>
 <script defer src="/brand-lock-20261011.js?v=20261011-a1"></script>
+<script src="/patches/support-donations-config.js?v=20261015-a1"></script>
+<script defer src="/patches/support-donations.js?v=20261015-a1"></script>
 </body>
 </html>
