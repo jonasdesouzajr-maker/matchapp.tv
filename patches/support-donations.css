@@ -81,3 +81,10 @@ body.page-home #ma-donate-support .ma-donate-footnote{
 @media(prefers-reduced-motion:reduce){
   body.page-home #ma-donate-support .ma-donate-pill{transition:none;}
 }
+
+/* A signature orbit crest keeps the support action in the adult icon family. */
+body.page-home #ma-donate-support .ma-donate-pill{border-radius:14px;flex-wrap:wrap;}
+body.page-home #ma-donate-support .ma-donate-pill::before{
+ content:"";width:27px;height:27px;flex:0 0 27px;background:url('/assets/brand/symbols/support.svg') center/contain no-repeat;filter:brightness(.35);
+}
+body.page-home #ma-donate-support .ma-donate-checkout{border-radius:13px;min-height:48px;background:linear-gradient(120deg,#ffe69c,#edbb4b 65%,#ffd573);}

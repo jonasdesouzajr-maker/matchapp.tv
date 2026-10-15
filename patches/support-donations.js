@@ -1,4 +1,4 @@
-/* MatchApp Ai voluntary support. No payment credentials or recipient email in client code. */
+/* MatchApp Ai voluntary support. PayPal owns checkout; no payment credentials collected. */
 (function () {
   'use strict';
   if (!/^\/(?:index\.html)?$/.test(location.pathname)) return;
@@ -20,6 +20,7 @@
     de:['Mit Ihrer Unterstützung','Unterstützen Sie MatchApp Ai','Wir entwickeln neue Entertainment-Erlebnisse. Freiwillige Beiträge helfen uns, Ladezeiten zu verbessern, Hosting zu finanzieren und neue Funktionen zu entwickeln.','Unsere Zukunft unterstützen · ab 5 USD','Betrag wählen','Eigener Betrag (USD, mindestens 5)','Sicher zu PayPal','PayPal ist noch nicht verbunden. Es wurde nichts bezahlt.','Mindestens 5 USD eingeben.','Sie prüfen und bestätigen den Betrag auf PayPal.','Freiwillige Unterstützung für diese unabhängige App, keine steuerbegünstigte Spende. Kein Freischalten von Funktionen; Zahlung über PayPal.'],
     it:['Cresciamo insieme','Aiuta MatchApp Ai a crescere','Stiamo ampliando le esperienze di intrattenimento. Un contributo facoltativo ci aiuta a migliorare la velocità, sostenere l’hosting e sviluppare nuove funzioni.','Sostieni il futuro · da 5 USD','Scegli un importo','Altro importo (USD, minimo 5)','Continua in sicurezza su PayPal','PayPal non è ancora collegato. Nessun pagamento avviato.','Minimo 5 USD.','Su PayPal potrai verificare e confermare il contributo.','Sostegno facoltativo a questa app indipendente, non donazione di beneficenza detraibile. Non sblocca funzioni; pagamento gestito da PayPal.']
   };
+  Object.assign(L,{"tr": ["Desteğinizle büyüyoruz", "MatchApp Ai’ı destekleyin", "Gönüllü katkınız barındırma giderlerine ve yeni eğlence deneyimleri geliştirmemize yardımcı olur.", "Geleceğimizi destekleyin · 5 USD+", "Tutar seçin", "Özel tutar (USD, en az 5)", "PayPal ile güvenle devam edin", "PayPal bağlantısı henüz hazır değil. Ödeme başlatılmadı.", "En az 5 USD seçin.", "Katkınızı inceleyip onaylamak için PayPal’a yönlendirileceksiniz.", "Bağımsız uygulamanın geliştirilmesi için isteğe bağlı destek; vergiden düşülebilen hayır bağışı değildir. Özellik açmaz. Ödemeyi PayPal işler."], "ru": ["Создано с вашей поддержкой", "Поддержите развитие MatchApp Ai", "Добровольный взнос помогает оплачивать хостинг, ускорять приложение и создавать новые возможности для развлечений.", "Поддержать развитие · от 5 USD", "Выберите сумму", "Своя сумма (USD, минимум 5)", "Безопасно продолжить в PayPal", "PayPal ещё не подключён. Платёж не начат.", "Выберите не менее 5 USD.", "Вы перейдёте в PayPal для проверки и подтверждения взноса.", "Добровольная поддержка независимого приложения, не благотворительное пожертвование с налоговым вычетом. Функции не разблокируются. Платёж обрабатывает PayPal."], "ar": ["بدعمكم نواصل التطوير", "ساهم في تطوير MatchApp Ai", "تساعد مساهمتك الاختيارية في تغطية الاستضافة وتحسين السرعة وتطوير تجارب ترفيهية جديدة.", "ادعم خطوتنا القادمة · 5 دولارات أمريكية فأكثر", "اختر المبلغ", "مبلغ مخصص (دولار أمريكي، الحد الأدنى 5)", "المتابعة بأمان عبر PayPal", "لم يتم ربط PayPal بعد. لم تبدأ أي عملية دفع.", "اختر 5 دولارات أمريكية على الأقل.", "ستنتقل إلى PayPal لمراجعة مساهمتك وتأكيدها.", "دعم اختياري لتطوير هذا التطبيق المستقل، وليس تبرعًا خيريًا معفى من الضرائب. لا يفتح ميزات. يعالج PayPal الدفع."], "hi": ["आपके सहयोग से आगे बढ़ते हैं", "MatchApp Ai को आगे बढ़ाएँ", "आपका स्वैच्छिक योगदान होस्टिंग, बेहतर गति और मनोरंजन के नए अनुभव बनाने में मदद करता है।", "हमारे अगले कदम में सहयोग करें · US$5+", "राशि चुनें", "अपनी राशि (USD, न्यूनतम 5)", "PayPal पर सुरक्षित रूप से जारी रखें", "PayPal अभी जुड़ा नहीं है। कोई भुगतान शुरू नहीं हुआ है।", "कम से कम US$5 चुनें।", "योगदान की समीक्षा और पुष्टि के लिए आप PayPal पर जाएँगे।", "इस स्वतंत्र ऐप के विकास के लिए वैकल्पिक सहयोग; यह कर कटौती वाला धर्मार्थ दान नहीं है। इससे सुविधाएँ अनलॉक नहीं होतीं। भुगतान PayPal संभालता है।"], "id": ["Dibangun dengan dukungan Anda", "Bantu MatchApp Ai berkembang", "Kontribusi sukarela Anda membantu membayar hosting, meningkatkan kecepatan, dan membangun pengalaman hiburan baru.", "Dukung langkah berikutnya · US$5+", "Pilih jumlah", "Jumlah lain (USD, minimal 5)", "Lanjutkan dengan aman ke PayPal", "PayPal belum terhubung. Belum ada pembayaran dimulai.", "Pilih minimal US$5.", "Anda akan beralih ke PayPal untuk meninjau dan mengonfirmasi kontribusi.", "Dukungan opsional untuk pengembangan aplikasi independen ini, bukan sumbangan amal yang mengurangi pajak. Tidak membuka fitur. PayPal memproses pembayaran."], "ja": ["皆さまのご支援とともに", "MatchApp Aiの成長を応援", "任意のご支援は、ホスティング費用、速度改善、新しいエンターテインメント体験の開発に役立ちます。", "次の一歩を応援 · 5米ドルから", "金額を選択", "金額を指定（USD、最低5ドル）", "PayPalで安全に続行", "PayPalはまだ接続されていません。支払いは開始されていません。", "5米ドル以上を選択してください。", "PayPalに移動し、支援内容を確認して確定します。", "独立したアプリの開発への任意の支援です。税控除の対象となる慈善寄付ではなく、機能の追加解除もありません。決済はPayPalが処理します。"], "ko": ["여러분의 후원으로 만듭니다", "MatchApp Ai의 성장을 응원해 주세요", "자발적인 후원은 호스팅 비용, 속도 개선, 새로운 엔터테인먼트 경험 개발에 도움이 됩니다.", "다음 단계를 응원하기 · US$5 이상", "금액 선택", "직접 입력 (USD, 최소 5달러)", "PayPal에서 안전하게 계속", "아직 PayPal이 연결되지 않았습니다. 결제가 시작되지 않았습니다.", "US$5 이상을 선택해 주세요.", "PayPal로 이동하여 후원 내용을 검토하고 확인합니다.", "독립 앱 개발을 위한 선택적 후원이며 세금 공제 대상 자선 기부가 아닙니다. 기능이 추가로 잠금 해제되지 않습니다. 결제는 PayPal이 처리합니다."], "zh": ["由您的支持成就", "支持 MatchApp Ai 成长", "您的自愿支持将帮助支付托管费用、提升速度并开发更多娱乐体验。", "支持我们的下一步 · 5美元起", "选择金额", "自定金额（USD，最低5美元）", "通过 PayPal 安全继续", "PayPal 尚未连接。尚未发起付款。", "请选择至少5美元。", "您将前往 PayPal 核对并确认支持金额。", "这是对独立应用开发的自愿支持，不属于可抵税的慈善捐赠，也不会解锁功能。付款由 PayPal 处理。"]});
   function lang() {
     const raw=String(document.documentElement.lang||'en').toLowerCase().split('-')[0];
     return L[raw]||L.en;
@@ -36,8 +37,14 @@
   }
   function amount() { const n=Number(input.value); return Number.isFinite(n)&&n>=5 ? Math.round(n*100)/100 : null; }
   function paymentUrl() {
-    const n=amount(), base=meBase();
-    return (base&&n!==null)?base+'/'+n.toFixed(2)+'USD':'';
+    const n=amount();if(n===null)return '';
+    const email=String(cfg.paypalBusinessEmail||'').trim();
+    if(cfg.recipientConfirmed===true&&/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)){
+      const url=new URL('https://www.paypal.com/donate/');
+      url.search=new URLSearchParams({business:email,item_name:'Support MatchApp Ai',currency_code:'USD',amount:n.toFixed(2)}).toString();
+      return url.href;
+    }
+    const base=meBase();return base?base+'/'+n.toFixed(2)+'USD':'';
   }
   function refresh() {
     const n=amount(), url=paymentUrl(), copy=lang();
@@ -66,7 +73,7 @@
   checkout.addEventListener('click',()=>{
     const url=paymentUrl();
     if(!url){refresh();return;}
-    // A direct user gesture, no pop-up until the verified recipient is configured.
+    // A direct user gesture, no pop-up until an owner-confirmed recipient is configured.
     window.open(url,'_blank','noopener,noreferrer');
   });
   document.addEventListener('matchapp:langchange',translate);

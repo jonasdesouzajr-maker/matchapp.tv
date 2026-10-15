@@ -287,4 +287,10 @@
  @media(hover:hover){html body.page-home #mh-topbox .ma-luxe-shortcuts > .ma-worlds-trigger:hover{
   background:linear-gradient(120deg,#f7e6c4,#d4af76)!important;color:#291a33!important;
  }}
+ @media(min-width:1100px) and (hover:hover) and (pointer:fine){
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > .mh-head{
+   padding-right:132px!important;min-height:124px!important;
+  }
+  html body.page-home #ma-jonas-header-slot{right:18px!important;top:16px!important;width:92px!important;height:92px!important}
+ }
 }
