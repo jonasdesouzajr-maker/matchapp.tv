@@ -1,6 +1,22 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const guard=require('../tools/gsc-index-video-guard-20261012.cjs');
+test('breadcrumbs cannot advertise missing section roots, including nested graphs',()=>{
+ const os=require('node:os'),root=fs.mkdtempSync(path.join(os.tmpdir(),'matchapp-breadcrumb-'));
+ try{
+  fs.writeFileSync(path.join(root,'index.html'),'Home');
+  fs.mkdirSync(path.join(root,'collections','movie'),{recursive:true});
+  fs.writeFileSync(path.join(root,'collections','movie','index.html'),'Movies');
+  const issues=[];
+  guard.breadcrumbIssues({'@graph':[{'@type':'BreadcrumbList',itemListElement:[
+   {item:'https://matchapp.tv/'},
+   {item:'https://matchapp.tv/collections/'},
+   {item:{'@id':'https://matchapp.tv/collections/movie/'}},
+   {name:'Current page'}
+  ]}]},'fixture',issues,root);
+  assert.deepEqual(issues,['fixture: Breadcrumb target missing: https://matchapp.tv/collections/']);
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});
 test('all submitted pages remain indexable and dynamic video markup stays valid',()=>{
  const r=guard.audit();
  assert.ok(r.sitemapUrls>=100);
