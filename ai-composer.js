@@ -118,7 +118,8 @@ function paintHeader(){
  const signIn={en:'Sign in','pt-BR':'Entrar',es:'Entrar',fr:'Connexion',de:'Anmelden',it:'Accedi',tr:'Giriş',ru:'Войти',ar:'دخول',hi:'साइन इन',id:'Masuk',ja:'ログイン',ko:'로그인',zh:'登录'};
  label('#nav-reg-btn',signIn[language()]||signIn.en);
  h.querySelectorAll('.ma-menu>[role="menuitem"]').forEach((n,i)=>{
-  const text=c[i+3];if(!text)return;
+  // Jonas is a named destination inserted between check-in and pricing.
+  const text=i===6?'Jonas':c[i+3-(i>6?1:0)];if(!text)return;
   if(!n.dataset.maMenuIcon)n.dataset.maMenuIcon=n.textContent.trim().split(' ')[0];
   const symbol=['country','language','sound','theme','comfort','checkin','discover','pricing','install','settings','updates'][i];
   n.dataset.maMenuSymbol=symbol;

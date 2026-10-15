@@ -18,3 +18,20 @@ test('header labels switch languages reversibly while preserving guide, menu and
  }
  assert.equal(clicks,15);assert.equal(guide.textContent,'How it works');assert.equal(h.querySelector('.ma-menu a').textContent,'🌍 Country');w.close();
 });
+
+test('all eleven translated settings rows keep their own action and exactly one custom icon caption',()=>{
+ const dom=setup(),w=dom.window;w.document.body.className='page-home';
+ const h=w.document.createElement('header');h.id='mh-topbox';h.className='ma-home-header';
+ const menu=w.document.createElement('div');menu.className='ma-menu';h.append(menu);w.document.body.append(h);
+ let clicks=0;
+ for(let i=0;i<11;i++){const a=w.document.createElement('a');a.setAttribute('role','menuitem');a.href='/original/'+i;a.textContent='• Row '+i;a.addEventListener('click',e=>{e.preventDefault();clicks++});menu.append(a)}
+ for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','en']){
+  w.MATCH_LANG=lang;w.document.dispatchEvent(new w.Event('matchapp:langchange'));
+  const rows=[...menu.children];assert.equal(rows.length,11);
+  rows.forEach((row,i)=>{assert.equal(row.getAttribute('href'),'/original/'+i);assert.equal(row.querySelectorAll('.ma-menu-caption').length,1);assert.equal(row.querySelectorAll('.ma-menu-legacy-symbol').length,1);assert.ok(row.dataset.maMenuSymbol);row.click()});
+  assert.equal(rows[6].querySelector('.ma-menu-caption').textContent,'Jonas');
+ }
+ assert.equal(menu.querySelector('[data-ma-menu-symbol="pricing"] .ma-menu-caption').textContent,'Pricing');
+ assert.equal(menu.querySelector('[data-ma-menu-symbol="updates"] .ma-menu-caption').textContent,"What's new");
+ assert.equal(clicks,165);w.close();
+});
