@@ -256,4 +256,30 @@
   flex:0 0 23px!important;background:var(--ma-symbol) center / contain no-repeat!important;
   margin-inline-end:7px!important;vertical-align:middle!important;filter:brightness(.42) sepia(.4)!important;
  }
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="theme"]{--ma-symbol:url("/assets/brand/symbols/theme.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="country"]{--ma-symbol:url("/assets/brand/symbols/country.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="install"]{--ma-symbol:url("/assets/brand/symbols/install.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="comfort"]{--ma-symbol:url("/assets/brand/symbols/comfort.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="updates"]{--ma-symbol:url("/assets/brand/symbols/updates.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="settings"]{--ma-symbol:url("/assets/brand/symbols/settings.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="discover"]{--ma-symbol:url("/assets/brand/symbols/discover.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="sound"]{--ma-symbol:url("/assets/brand/symbols/sound.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="pricing"]{--ma-symbol:url("/assets/brand/symbols/pricing.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="language"]{--ma-symbol:url("/assets/brand/symbols/language.svg")!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol="checkin"]{--ma-symbol:url("/assets/brand/symbols/checkin.svg")!important}
+
+ html body:not(.kids-body):not(.page-kids) .ma-menu-legacy-symbol{display:none!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol]{display:flex!important;align-items:center!important;gap:10px!important}
+ html body:not(.kids-body):not(.page-kids) .ma-menu > [data-ma-menu-symbol]::before{
+  content:""!important;display:block!important;flex:0 0 25px!important;width:25px!important;height:25px!important;
+  background:var(--ma-symbol) center / contain no-repeat!important;
+ }
+ html body:not(.kids-body):not(.page-kids) .ma-menu-caption{white-space:normal!important;min-width:0!important}
+ html body:not(.kids-body):not(.page-kids) #journey-sound{--ma-symbol:url('/assets/brand/symbols/sound-muted.svg')!important;display:inline-flex!important;align-items:center!important;gap:8px!important}
+ html body:not(.kids-body):not(.page-kids) #journey-sound[aria-pressed="true"]{--ma-symbol:url('/assets/brand/symbols/sound.svg')!important}
+ html body:not(.kids-body):not(.page-kids) #journey-sound > span[aria-hidden="true"]{display:none!important}
+ html body:not(.kids-body):not(.page-kids) #journey-sound::before{
+  content:""!important;display:block!important;width:26px!important;height:26px!important;flex:0 0 26px!important;
+  background:var(--ma-symbol) center / contain no-repeat!important;
+ }
 }
