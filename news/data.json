@@ -1,107 +1,339 @@
 {
-  "generated_at": "2026-10-15T21:42:12.434Z",
-  "feed_version": "a88be08c",
+  "generated_at": "2026-10-15T23:15:03.438Z",
+  "feed_version": "7bb8370b",
   "sports_updated_at": "2026-10-15T19:57:04.982Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
-      "id": "935f9435",
-      "title": "‘Fourth Wing’ Series: Esther McGregor and Emilio Sakraya Cast as Violet and Xaden",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/fourth-wing-violet-xaden-esther-mcgregor-emilio-sakraya-1236733258/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
+      "id": "48c788b2",
+      "title": "Sparks fly at the Celebrity Traitors round table and a 'terrifying' death march",
+      "url": "https://www.bbc.co.uk/news/articles/cq4g17j1ej95o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-15T21:37:59.000Z",
-      "discovered_at": "2026-10-15T21:42:12.434Z",
-      "event_type": "Casting",
+      "published_at": "2026-10-15T23:01:49.000Z",
+      "discovered_at": "2026-10-15T23:15:03.438Z",
+      "event_type": "Obituary",
       "category": "entertainment",
       "person": "",
-      "description": "casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Esther-McGregor-and-Emilio-Sakraya-Split-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/fourth-wing-series-esther-mcgregor-and-emilio-sakraya-cast-as-violet-and-xaden-935f94/",
-      "landing_url": "https://matchapp.tv/?news=935f9435#latest-news",
+      "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/718c/live/00b0e6b0-c8e7-11f1-8fce-870ed9afa8a0.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/sparks-fly-at-the-celebrity-traitors-round-table-and-a-terrifying-death-march-48c788/",
+      "landing_url": "https://matchapp.tv/?news=48c788b2#latest-news",
       "seo": {
-        "primary_keyword": "fourth wing series esther latest news",
+        "primary_keyword": "sparks fly celebrity traitors latest news",
         "short_tail": [
-          "fourth wing series esther",
-          "fourth wing series esther news",
-          "casting",
+          "sparks fly celebrity traitors",
+          "sparks fly celebrity traitors news",
+          "obituary",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates"
         ],
         "long_tail": [
-          "fourth wing series esther latest news October 2026",
-          "fourth wing series esther casting update 2026",
-          "fourth wing series esther news 2026-10-15",
-          "latest casting news about fourth wing series esther",
-          "fourth wing series esther mcgregor emilio latest update",
-          "The Hollywood Reporter fourth wing series esther casting",
-          "latest news about fourth wing series esther October 2026",
-          "fourth wing series esther entertainment news 2026-10-15",
-          "what happened with fourth wing series esther"
+          "sparks fly celebrity traitors latest news October 2026",
+          "sparks fly celebrity traitors obituary update 2026",
+          "sparks fly celebrity traitors news 2026-10-15",
+          "latest obituary news about sparks fly celebrity traitors",
+          "sparks fly celebrity traitors round table latest update",
+          "BBC sparks fly celebrity traitors obituary",
+          "latest news about sparks fly celebrity traitors October 2026",
+          "sparks fly celebrity traitors entertainment news 2026-10-15",
+          "what happened with sparks fly celebrity traitors"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "fourth",
-          "wing",
-          "series",
-          "esther",
-          "mcgregor",
-          "emilio",
-          "sakraya",
-          "cast"
+          "sparks",
+          "fly",
+          "celebrity",
+          "traitors",
+          "round",
+          "table",
+          "terrifying",
+          "death"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-15",
-          "fourth wing series esther 2026"
+          "sparks fly celebrity traitors 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter fourth wing series esther",
-          "hollywoodreporter.com fourth wing series esther",
-          "The Hollywood Reporter entertainment news"
+          "BBC sparks fly celebrity traitors",
+          "bbc.co.uk sparks fly celebrity traitors",
+          "BBC entertainment news"
         ],
-        "meta_title": "‘Fourth Wing’ Series: Esther McGregor and Emilio Sakraya…",
-        "meta_description": "Casting update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_title": "Sparks fly at the Celebrity Traitors round table and a…",
+        "meta_description": "Obituary update reported by BBC on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "fourth wing series esther latest news",
-          "fourth wing series esther",
-          "fourth wing series esther news",
-          "casting",
+          "sparks fly celebrity traitors latest news",
+          "sparks fly celebrity traitors",
+          "sparks fly celebrity traitors news",
+          "obituary",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "fourth wing series esther latest news October 2026",
-          "fourth wing series esther casting update 2026",
-          "fourth wing series esther news 2026-10-15",
-          "latest casting news about fourth wing series esther",
-          "fourth wing series esther mcgregor emilio latest update",
-          "The Hollywood Reporter fourth wing series esther casting",
-          "latest news about fourth wing series esther October 2026",
-          "fourth wing series esther entertainment news 2026-10-15",
-          "what happened with fourth wing series esther",
-          "fourth",
-          "wing",
-          "series",
-          "esther",
-          "mcgregor",
-          "emilio",
-          "sakraya",
-          "cast",
+          "sparks fly celebrity traitors latest news October 2026",
+          "sparks fly celebrity traitors obituary update 2026",
+          "sparks fly celebrity traitors news 2026-10-15",
+          "latest obituary news about sparks fly celebrity traitors",
+          "sparks fly celebrity traitors round table latest update",
+          "BBC sparks fly celebrity traitors obituary",
+          "latest news about sparks fly celebrity traitors October 2026",
+          "sparks fly celebrity traitors entertainment news 2026-10-15",
+          "what happened with sparks fly celebrity traitors",
+          "sparks",
+          "fly",
+          "celebrity",
+          "traitors",
+          "round",
+          "table",
+          "terrifying",
+          "death",
           "October 2026",
           "2026-10-15",
-          "fourth wing series esther 2026",
-          "The Hollywood Reporter fourth wing series esther",
-          "hollywoodreporter.com fourth wing series esther",
+          "sparks fly celebrity traitors 2026",
+          "BBC sparks fly celebrity traitors",
+          "bbc.co.uk sparks fly celebrity traitors",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "dfedcc94",
+      "title": "Allison Williams Talks ‘Girls’ (Before That Big Reveal), Eczema and Acting With Quentin Tarantino",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/alison-williams-girls-reboot-hbo-quentin-tarantino-1236733181/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-15T22:54:33.000Z",
+      "discovered_at": "2026-10-15T23:15:03.438Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Allison Williams Talks",
+      "description": "Allison Williams Talks: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Allison-Williams_Dupixent-2.jpg?crop=0px%2C856px%2C8192px%2C4584px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/allison-williams-talks-girls-before-that-big-reveal-eczema-and-acting-with-quent-dfedcc/",
+      "landing_url": "https://matchapp.tv/?news=dfedcc94#latest-news",
+      "seo": {
+        "primary_keyword": "Allison Williams Talks latest news",
+        "short_tail": [
+          "Allison Williams Talks",
+          "Allison Williams Talks news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Allison Williams Talks latest news October 2026",
+          "Allison Williams Talks entertainment update 2026",
+          "Allison Williams Talks news 2026-10-15",
+          "latest entertainment news about Allison Williams Talks",
+          "allison williams talks allison williams talks latest update",
+          "The Hollywood Reporter Allison Williams Talks entertainment",
+          "latest news about Allison Williams Talks October 2026",
+          "Allison Williams Talks entertainment news 2026-10-15",
+          "what happened with Allison Williams Talks"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Allison Williams Talks",
+          "allison",
+          "williams",
+          "talks",
+          "girls",
+          "before"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "Allison Williams Talks 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Allison Williams Talks",
+          "hollywoodreporter.com Allison Williams Talks",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "meta_title": "Allison Williams Talks ‘Girls’ (Before That Big Reveal),…",
+        "meta_description": "Allison Williams Talks: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original…",
+        "keywords": [
+          "Allison Williams Talks latest news",
+          "Allison Williams Talks",
+          "Allison Williams Talks news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Allison Williams Talks latest news October 2026",
+          "Allison Williams Talks entertainment update 2026",
+          "Allison Williams Talks news 2026-10-15",
+          "latest entertainment news about Allison Williams Talks",
+          "allison williams talks allison williams talks latest update",
+          "The Hollywood Reporter Allison Williams Talks entertainment",
+          "latest news about Allison Williams Talks October 2026",
+          "Allison Williams Talks entertainment news 2026-10-15",
+          "what happened with Allison Williams Talks",
+          "allison",
+          "williams",
+          "talks",
+          "girls",
+          "before",
+          "October 2026",
+          "2026-10-15",
+          "Allison Williams Talks 2026",
+          "The Hollywood Reporter Allison Williams Talks",
+          "hollywoodreporter.com Allison Williams Talks",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "b6036c97",
+      "title": "Letters with 'suspicious substances' sent to US senators and election offices",
+      "url": "https://www.bbc.co.uk/news/articles/cmq8n513x523o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T22:46:49.000Z",
+      "discovered_at": "2026-10-15T19:27:59.616Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9974/live/7783af20-c8c4-11f1-95b2-9f12d414946d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/letters-with-suspicious-substances-sent-to-us-senators-and-election-offices-b6036c/",
+      "landing_url": "https://matchapp.tv/?news=b6036c97#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "letters",
+          "suspicious",
+          "substances",
+          "sent",
+          "senators",
+          "election"
+        ],
+        "long_tail": [
+          "Letters with 'suspicious substances' sent to US senators and election offices 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "letters",
+          "suspicious",
+          "substances",
+          "sent",
+          "senators",
+          "election"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Letters with 'suspicious substances' sent to US senators…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "letters",
+          "suspicious",
+          "substances",
+          "sent",
+          "senators",
+          "election",
+          "Letters with 'suspicious substances' sent to US senators and election offices 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "8b75cf0d",
+      "title": "Governo Trump processa Califórnia para barrar voto de 20 mil pessoas que alega não serem cidadãos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/governo-dos-eua-processa-california-por-nao-verificar-registro-de-eleitores.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-15T22:41:37.000Z",
+      "discovered_at": "2026-10-15T23:15:03.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Governo Trump",
+      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/qlunGE6IDt9-xacE-FdxYE3dURw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/r/r/LenAIoQ4Ay5zSq3hhPkw/ap26246568730455.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/governo-trump-processa-california-para-barrar-voto-de-20-mil-pessoas-que-alega-n-8b75cf/",
+      "landing_url": "https://matchapp.tv/?news=8b75cf0d#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-15",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "governo",
+          "trump",
+          "processa",
+          "california",
+          "barrar",
+          "voto"
+        ],
+        "long_tail": [
+          "Governo Trump processa Califórnia para barrar voto de 20 mil pessoas que alega não serem cidadãos 2026-10-15",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "governo",
+          "trump",
+          "processa",
+          "california",
+          "barrar",
+          "voto"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Governo Trump processa Califórnia para barrar voto de 20…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-15",
+          "notícias do mundo",
+          "notícias internacionais",
+          "governo",
+          "trump",
+          "processa",
+          "california",
+          "barrar",
+          "voto",
+          "Governo Trump processa Califórnia para barrar voto de 20 mil pessoas que alega não serem cidadãos 2026-10-15",
+          "notícias mundiais outubro 2026",
+          "2026-10-15",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -113,13 +345,13 @@
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-15T21:12:14.000Z",
+      "published_at": "2026-10-15T22:37:21.000Z",
       "discovered_at": "2026-10-15T21:42:12.434Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c978/live/dfe9a6d0-c8df-11f1-9a39-31b474234113.png",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4526/live/ca62a180-c8ea-11f1-8e7c-9b1d04b5a9dd.png",
       "matchapp_url": "https://matchapp.tv/news/articles/bus-hits-train-stopped-on-french-side-of-channel-tunnel-with-19-injured-52215f/",
       "landing_url": "https://matchapp.tv/?news=52215fea#latest-news",
       "seo": {
@@ -170,7 +402,380 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "4663b6da",
+      "title": "'Batman 2': Steven Soderbergh assume direção em fim das filmagens 'para ajudar' Matt Reeves",
+      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/15/batman-2-troca-de-diretores-steven-soderbergh-assume-funcao-de-matt-reeves-no-resto-das-filmagens.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-15T22:32:32.000Z",
+      "discovered_at": "2026-10-15T23:15:03.438Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/d7PxmtxDi4uiJj5W7Rg8qWIEMMc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/m/U/1UvLUASZAevRCb1TBygQ/the-batman-robert-pattinson.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/batman-2-steven-soderbergh-assume-direcao-em-fim-das-filmagens-para-ajudar-matt--4663b6/",
+      "landing_url": "https://matchapp.tv/?news=4663b6da#latest-news",
+      "seo": {
+        "primary_keyword": "steven soderbergh",
+        "short_tail": [
+          "batman steven soderbergh assume",
+          "batman steven soderbergh assume news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "steven soderbergh"
+        ],
+        "long_tail": [
+          "batman steven soderbergh assume latest news October 2026",
+          "batman steven soderbergh assume entertainment update 2026",
+          "batman steven soderbergh assume news 2026-10-15",
+          "latest entertainment news about batman steven soderbergh assume",
+          "batman steven soderbergh assume direcao fim latest update",
+          "G1 batman steven soderbergh assume entertainment",
+          "últimas notícias sobre batman steven soderbergh assume outubro 2026",
+          "batman steven soderbergh assume notícia de 2026-10-15",
+          "o que aconteceu com batman steven soderbergh assume"
+        ],
+        "trend_keywords": [
+          "steven soderbergh",
+          "steven soderbergh",
+          "steven soderbergh"
+        ],
+        "entity_keywords": [
+          "batman",
+          "steven",
+          "soderbergh",
+          "assume",
+          "direcao",
+          "fim",
+          "filmagens",
+          "ajudar"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "outubro 2026",
+          "batman steven soderbergh assume 2026"
+        ],
+        "source_keywords": [
+          "G1 batman steven soderbergh assume",
+          "g1.globo.com batman steven soderbergh assume",
+          "G1 entertainment news"
+        ],
+        "meta_title": "'Batman 2': Steven Soderbergh assume direção em fim das…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "steven soderbergh",
+          "batman steven soderbergh assume",
+          "batman steven soderbergh assume news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "batman steven soderbergh assume latest news October 2026",
+          "batman steven soderbergh assume entertainment update 2026",
+          "batman steven soderbergh assume news 2026-10-15",
+          "latest entertainment news about batman steven soderbergh assume",
+          "batman steven soderbergh assume direcao fim latest update",
+          "G1 batman steven soderbergh assume entertainment",
+          "últimas notícias sobre batman steven soderbergh assume outubro 2026",
+          "batman steven soderbergh assume notícia de 2026-10-15",
+          "o que aconteceu com batman steven soderbergh assume",
+          "batman",
+          "steven",
+          "soderbergh",
+          "assume",
+          "direcao",
+          "fim",
+          "filmagens",
+          "ajudar",
+          "October 2026",
+          "2026-10-15",
+          "outubro 2026",
+          "batman steven soderbergh assume 2026",
+          "G1 batman steven soderbergh assume",
+          "g1.globo.com batman steven soderbergh assume",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "af81e886",
+      "title": "Streaming Ratings: ‘Wonka’s The Golden Ticket’ Claims Top Spot",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/streaming-ratings-sept-28-oct-4-2026-1236733201/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-15T22:23:05.000Z",
+      "discovered_at": "2026-10-15T23:15:03.438Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Streaming Ratings",
+      "description": "Streaming Ratings: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Wonkas_The_Golden_Ticket_n_S1_E8_00_29_55_00_R-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/streaming-ratings-wonka-s-the-golden-ticket-claims-top-spot-af81e8/",
+      "landing_url": "https://matchapp.tv/?news=af81e886#latest-news",
+      "seo": {
+        "primary_keyword": "Streaming Ratings latest news",
+        "short_tail": [
+          "Streaming Ratings",
+          "Streaming Ratings news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Streaming Ratings latest news October 2026",
+          "Streaming Ratings entertainment update 2026",
+          "Streaming Ratings news 2026-10-15",
+          "latest entertainment news about Streaming Ratings",
+          "streaming ratings streaming ratings wonka golden latest update",
+          "The Hollywood Reporter Streaming Ratings entertainment",
+          "latest news about Streaming Ratings October 2026",
+          "Streaming Ratings entertainment news 2026-10-15",
+          "what happened with Streaming Ratings"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Streaming Ratings",
+          "streaming",
+          "ratings",
+          "wonka",
+          "golden",
+          "ticket",
+          "claims"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "Streaming Ratings 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Streaming Ratings",
+          "hollywoodreporter.com Streaming Ratings",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Streaming Ratings: ‘Wonka’s The Golden Ticket’ Claims Top…",
+        "meta_description": "Streaming Ratings: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Streaming Ratings latest news",
+          "Streaming Ratings",
+          "Streaming Ratings news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Streaming Ratings latest news October 2026",
+          "Streaming Ratings entertainment update 2026",
+          "Streaming Ratings news 2026-10-15",
+          "latest entertainment news about Streaming Ratings",
+          "streaming ratings streaming ratings wonka golden latest update",
+          "The Hollywood Reporter Streaming Ratings entertainment",
+          "latest news about Streaming Ratings October 2026",
+          "Streaming Ratings entertainment news 2026-10-15",
+          "what happened with Streaming Ratings",
+          "streaming",
+          "ratings",
+          "wonka",
+          "golden",
+          "ticket",
+          "claims",
+          "October 2026",
+          "2026-10-15",
+          "Streaming Ratings 2026",
+          "The Hollywood Reporter Streaming Ratings",
+          "hollywoodreporter.com Streaming Ratings",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "d80a2eeb",
+      "title": "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz imprensa americana; atirador também morreu",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/tiroteio-em-escola-de-ensino-fundamental-nos-eua-deixa-ao-menos-dois-hospitalizados-atirador-morre.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-15T21:46:06.000Z",
+      "discovered_at": "2026-10-15T23:15:03.438Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/u0LbQuTSkNBRLnt3W0CZCJLS9Ic=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/z/J/RnNirtQyKgYFFTfvPqXw/ap26288796036302.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tiroteio-em-escola-nos-eua-mata-3-criancas-e-1-adulto-diz-imprensa-americana-ati-d80a2e/",
+      "landing_url": "https://matchapp.tv/?news=d80a2eeb#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-15",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "tiroteio",
+          "escola",
+          "eua",
+          "mata",
+          "criancas",
+          "adulto"
+        ],
+        "long_tail": [
+          "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz imprensa americana; atirador também morreu 2026-10-15",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "tiroteio",
+          "escola",
+          "eua",
+          "mata",
+          "criancas",
+          "adulto"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-15",
+          "notícias do mundo",
+          "notícias internacionais",
+          "tiroteio",
+          "escola",
+          "eua",
+          "mata",
+          "criancas",
+          "adulto",
+          "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz imprensa americana; atirador também morreu 2026-10-15",
+          "notícias mundiais outubro 2026",
+          "2026-10-15",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "935f9435",
+      "title": "‘Fourth Wing’ Series: Esther McGregor and Emilio Sakraya Cast as Violet and Xaden",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/fourth-wing-violet-xaden-esther-mcgregor-emilio-sakraya-1236733258/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-15T21:37:59.000Z",
+      "discovered_at": "2026-10-15T21:42:12.434Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "",
+      "description": "casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Esther-McGregor-and-Emilio-Sakraya-Split-Getty-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/fourth-wing-series-esther-mcgregor-and-emilio-sakraya-cast-as-violet-and-xaden-935f94/",
+      "landing_url": "https://matchapp.tv/?news=935f9435#latest-news",
+      "seo": {
+        "primary_keyword": "fourth wing",
+        "short_tail": [
+          "fourth wing series esther",
+          "fourth wing series esther news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "fourth wing"
+        ],
+        "long_tail": [
+          "fourth wing series esther latest news October 2026",
+          "fourth wing series esther casting update 2026",
+          "fourth wing series esther news 2026-10-15",
+          "latest casting news about fourth wing series esther",
+          "fourth wing series esther mcgregor emilio latest update",
+          "The Hollywood Reporter fourth wing series esther casting",
+          "latest news about fourth wing series esther October 2026",
+          "fourth wing series esther entertainment news 2026-10-15",
+          "what happened with fourth wing series esther"
+        ],
+        "trend_keywords": [
+          "fourth wing"
+        ],
+        "entity_keywords": [
+          "fourth",
+          "wing",
+          "series",
+          "esther",
+          "mcgregor",
+          "emilio",
+          "sakraya",
+          "cast"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-15",
+          "fourth wing series esther 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter fourth wing series esther",
+          "hollywoodreporter.com fourth wing series esther",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Fourth Wing’ Series: Esther McGregor and Emilio Sakraya…",
+        "meta_description": "Casting update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "fourth wing",
+          "fourth wing series esther",
+          "fourth wing series esther news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "fourth wing series esther latest news October 2026",
+          "fourth wing series esther casting update 2026",
+          "fourth wing series esther news 2026-10-15",
+          "latest casting news about fourth wing series esther",
+          "fourth wing series esther mcgregor emilio latest update",
+          "The Hollywood Reporter fourth wing series esther casting",
+          "latest news about fourth wing series esther October 2026",
+          "fourth wing series esther entertainment news 2026-10-15",
+          "what happened with fourth wing series esther",
+          "fourth",
+          "wing",
+          "series",
+          "esther",
+          "mcgregor",
+          "emilio",
+          "sakraya",
+          "cast",
+          "October 2026",
+          "2026-10-15",
+          "fourth wing series esther 2026",
+          "The Hollywood Reporter fourth wing series esther",
+          "hollywoodreporter.com fourth wing series esther",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -264,76 +869,7 @@
           "hollywoodreporter.com Selma Blair Is Accused",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "b6036c97",
-      "title": "Letters with 'suspicious substances' sent to US election offices",
-      "url": "https://www.bbc.co.uk/news/articles/cmq8n513x523o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T20:52:13.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9974/live/7783af20-c8c4-11f1-95b2-9f12d414946d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/letters-with-suspicious-substances-sent-to-us-election-offices-b6036c/",
-      "landing_url": "https://matchapp.tv/?news=b6036c97#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "letters",
-          "suspicious",
-          "substances",
-          "sent",
-          "election",
-          "offices"
-        ],
-        "long_tail": [
-          "Letters with 'suspicious substances' sent to US election offices 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "letters",
-          "suspicious",
-          "substances",
-          "sent",
-          "election",
-          "offices"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Letters with 'suspicious substances' sent to US election…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "letters",
-          "suspicious",
-          "substances",
-          "sent",
-          "election",
-          "offices",
-          "Letters with 'suspicious substances' sent to US election offices 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -402,7 +938,73 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+      }
+    },
+    {
+      "id": "e0f9481f",
+      "title": "At the scene of a school roof collapse in Pakistan",
+      "url": "https://www.bbc.co.uk/news/videos/cr5yn5wel153o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T20:31:02.000Z",
+      "discovered_at": "2026-10-15T23:15:03.438Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3de6/live/4303b8f0-c8d6-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/at-the-scene-of-a-school-roof-collapse-in-pakistan-e0f948/",
+      "landing_url": "https://matchapp.tv/?news=e0f9481f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "scene",
+          "school",
+          "roof",
+          "collapse",
+          "pakistan"
+        ],
+        "long_tail": [
+          "At the scene of a school roof collapse in Pakistan 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "scene",
+          "school",
+          "roof",
+          "collapse",
+          "pakistan"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "At the scene of a school roof collapse in Pakistan | World…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "scene",
+          "school",
+          "roof",
+          "collapse",
+          "pakistan",
+          "At the scene of a school roof collapse in Pakistan 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -462,7 +1064,7 @@
           "2026-10-15",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -558,7 +1160,7 @@
           "hollywoodreporter.com Bullying Book",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -657,106 +1259,7 @@
           "hollywoodreporter.com all hunger games movies",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "1c49df82",
-      "title": "Prepare to Fall in Love With ‘Sense and Sensibility’ Star Herbert Nordrum",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/sense-and-sensibility-colonel-brandon-herbert-nordrum-film-1236732939/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T19:22:03.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-15T182421.814.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/prepare-to-fall-in-love-with-sense-and-sensibility-star-herbert-nordrum-1c49df/",
-      "landing_url": "https://matchapp.tv/?news=1c49df82#latest-news",
-      "seo": {
-        "primary_keyword": "prepare fall love sense latest news",
-        "short_tail": [
-          "prepare fall love sense",
-          "prepare fall love sense news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "prepare fall love sense latest news October 2026",
-          "prepare fall love sense entertainment update 2026",
-          "prepare fall love sense news 2026-10-15",
-          "latest entertainment news about prepare fall love sense",
-          "prepare fall love sense sensibility star latest update",
-          "The Hollywood Reporter prepare fall love sense entertainment",
-          "latest news about prepare fall love sense October 2026",
-          "prepare fall love sense entertainment news 2026-10-15",
-          "what happened with prepare fall love sense"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "prepare",
-          "fall",
-          "love",
-          "sense",
-          "sensibility",
-          "star",
-          "herbert",
-          "nordrum"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "prepare fall love sense 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter prepare fall love sense",
-          "hollywoodreporter.com prepare fall love sense",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Prepare to Fall in Love With ‘Sense and Sensibility’ Star…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "prepare fall love sense latest news",
-          "prepare fall love sense",
-          "prepare fall love sense news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "prepare fall love sense latest news October 2026",
-          "prepare fall love sense entertainment update 2026",
-          "prepare fall love sense news 2026-10-15",
-          "latest entertainment news about prepare fall love sense",
-          "prepare fall love sense sensibility star latest update",
-          "The Hollywood Reporter prepare fall love sense entertainment",
-          "latest news about prepare fall love sense October 2026",
-          "prepare fall love sense entertainment news 2026-10-15",
-          "what happened with prepare fall love sense",
-          "prepare",
-          "fall",
-          "love",
-          "sense",
-          "sensibility",
-          "star",
-          "herbert",
-          "nordrum",
-          "October 2026",
-          "2026-10-15",
-          "prepare fall love sense 2026",
-          "The Hollywood Reporter prepare fall love sense",
-          "hollywoodreporter.com prepare fall love sense",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -825,106 +1328,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "2c22720b",
-      "title": "‘Lupin’ Is (Nearly) Back! Star Omar Sy Shares How Season 4 Is Bigger and Bolder",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/lupin-season-4-netflix-omar-sy-interview-star-producer-1236730730/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T19:16:30.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Lupin-Part-4-Netflix-H-2026.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/lupin-is-nearly-back-star-omar-sy-shares-how-season-4-is-bigger-and-bolder-2c2272/",
-      "landing_url": "https://matchapp.tv/?news=2c22720b#latest-news",
-      "seo": {
-        "primary_keyword": "lupin nearly back star latest news",
-        "short_tail": [
-          "lupin nearly back star",
-          "lupin nearly back star news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "lupin nearly back star latest news October 2026",
-          "lupin nearly back star entertainment update 2026",
-          "lupin nearly back star news 2026-10-15",
-          "latest entertainment news about lupin nearly back star",
-          "lupin nearly back star omar shares latest update",
-          "The Hollywood Reporter lupin nearly back star entertainment",
-          "latest news about lupin nearly back star October 2026",
-          "lupin nearly back star entertainment news 2026-10-15",
-          "what happened with lupin nearly back star"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "lupin",
-          "nearly",
-          "back",
-          "star",
-          "omar",
-          "shares",
-          "how",
-          "season"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "lupin nearly back star 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter lupin nearly back star",
-          "hollywoodreporter.com lupin nearly back star",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Lupin’ Is (Nearly) Back! Star Omar Sy Shares How Season 4…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "lupin nearly back star latest news",
-          "lupin nearly back star",
-          "lupin nearly back star news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "lupin nearly back star latest news October 2026",
-          "lupin nearly back star entertainment update 2026",
-          "lupin nearly back star news 2026-10-15",
-          "latest entertainment news about lupin nearly back star",
-          "lupin nearly back star omar shares latest update",
-          "The Hollywood Reporter lupin nearly back star entertainment",
-          "latest news about lupin nearly back star October 2026",
-          "lupin nearly back star entertainment news 2026-10-15",
-          "what happened with lupin nearly back star",
-          "lupin",
-          "nearly",
-          "back",
-          "star",
-          "omar",
-          "shares",
-          "how",
-          "season",
-          "October 2026",
-          "2026-10-15",
-          "lupin nearly back star 2026",
-          "The Hollywood Reporter lupin nearly back star",
-          "hollywoodreporter.com lupin nearly back star",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1014,104 +1418,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "0a67aaa9",
-      "title": "‘I Love Lucy’ Treasures Acquired by the National Comedy Center",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/i-love-lucy-treasures-national-comedy-center-1236733094/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T18:42:35.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/3-Lucille-Ball-backstage-during-a-live-filming-of-I-Love-Lucy-1-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/i-love-lucy-treasures-acquired-by-the-national-comedy-center-0a67aa/",
-      "landing_url": "https://matchapp.tv/?news=0a67aaa9#latest-news",
-      "seo": {
-        "primary_keyword": "love lucy treasures acquired latest news",
-        "short_tail": [
-          "love lucy treasures acquired",
-          "love lucy treasures acquired news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "love lucy treasures acquired latest news October 2026",
-          "love lucy treasures acquired entertainment update 2026",
-          "love lucy treasures acquired news 2026-10-15",
-          "latest entertainment news about love lucy treasures acquired",
-          "love lucy treasures acquired national comedy latest update",
-          "The Hollywood Reporter love lucy treasures acquired entertainment",
-          "latest news about love lucy treasures acquired October 2026",
-          "love lucy treasures acquired entertainment news 2026-10-15",
-          "what happened with love lucy treasures acquired"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "love",
-          "lucy",
-          "treasures",
-          "acquired",
-          "national",
-          "comedy",
-          "center"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "love lucy treasures acquired 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter love lucy treasures acquired",
-          "hollywoodreporter.com love lucy treasures acquired",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘I Love Lucy’ Treasures Acquired by the National Comedy…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "love lucy treasures acquired latest news",
-          "love lucy treasures acquired",
-          "love lucy treasures acquired news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "love lucy treasures acquired latest news October 2026",
-          "love lucy treasures acquired entertainment update 2026",
-          "love lucy treasures acquired news 2026-10-15",
-          "latest entertainment news about love lucy treasures acquired",
-          "love lucy treasures acquired national comedy latest update",
-          "The Hollywood Reporter love lucy treasures acquired entertainment",
-          "latest news about love lucy treasures acquired October 2026",
-          "love lucy treasures acquired entertainment news 2026-10-15",
-          "what happened with love lucy treasures acquired",
-          "love",
-          "lucy",
-          "treasures",
-          "acquired",
-          "national",
-          "comedy",
-          "center",
-          "October 2026",
-          "2026-10-15",
-          "love lucy treasures acquired 2026",
-          "The Hollywood Reporter love lucy treasures acquired",
-          "hollywoodreporter.com love lucy treasures acquired",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1180,7 +1487,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1249,7 +1556,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1350,7 +1657,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1419,7 +1726,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1518,7 +1825,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1587,7 +1894,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1656,76 +1963,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "fd2f4943",
-      "title": "Maduro pleads not guilty to new torture-related charges in New York",
-      "url": "https://www.bbc.co.uk/news/articles/cqwyrn1l74zro?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T16:52:44.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d1ed/live/681f85b0-c8b8-11f1-bdfb-e3788aeae9ec.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/maduro-pleads-not-guilty-to-new-torture-related-charges-in-new-york-fd2f49/",
-      "landing_url": "https://matchapp.tv/?news=fd2f4943#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "maduro",
-          "pleads",
-          "not",
-          "guilty",
-          "new",
-          "torture"
-        ],
-        "long_tail": [
-          "Maduro pleads not guilty to new torture-related charges in New York 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "maduro",
-          "pleads",
-          "not",
-          "guilty",
-          "new",
-          "torture"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Maduro pleads not guilty to new torture-related charges in…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "maduro",
-          "pleads",
-          "not",
-          "guilty",
-          "new",
-          "torture",
-          "Maduro pleads not guilty to new torture-related charges in New York 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1794,7 +2032,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1889,7 +2127,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -1958,7 +2196,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2027,76 +2265,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "4c0e74fc",
-      "title": "Trump recua e diz que execução por fuzilamento de ex-militar não será transmitida ao vivo",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/trump-diz-que-execucao-por-fuzilamento-nao-sera-transmitida-ao-vivo.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-15T14:10:34.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/kdoxkPU3NOd6RfZxJHaqACl7gzg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/A/P9J2u0S2qlMQ9qkV62oA/2026-10-13t154604z-775478900-rc2f2oaif0hr-rtrmadp-3-usa-trump.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-recua-e-diz-que-execucao-por-fuzilamento-de-ex-militar-nao-sera-transmitid-4c0e74/",
-      "landing_url": "https://matchapp.tv/?news=4c0e74fc#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-15",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "recua",
-          "diz",
-          "que",
-          "execucao",
-          "fuzilamento"
-        ],
-        "long_tail": [
-          "Trump recua e diz que execução por fuzilamento de ex-militar não será transmitida ao vivo 2026-10-15",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "recua",
-          "diz",
-          "que",
-          "execucao",
-          "fuzilamento"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Trump recua e diz que execução por fuzilamento de…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-15",
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "recua",
-          "diz",
-          "que",
-          "execucao",
-          "fuzilamento",
-          "Trump recua e diz que execução por fuzilamento de ex-militar não será transmitida ao vivo 2026-10-15",
-          "notícias mundiais outubro 2026",
-          "2026-10-15",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2194,76 +2363,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "93df55b6",
-      "title": "Ponte entre China e Coreia do Norte é inaugurada 12 anos após sua construção",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/ponte-entre-china-e-coreia-do-norte-e-inaugurada.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-15T12:50:06.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/jIH6jdu2dWAEDpKMLe0OfKHmUMQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/L/R98fFGRH2uqYCdxfSzSA/afp-20261015-d3c26g3-v2-highres-chinankoreadiplomacyeconomytrade.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ponte-entre-china-e-coreia-do-norte-e-inaugurada-12-anos-apos-sua-construcao-93df55/",
-      "landing_url": "https://matchapp.tv/?news=93df55b6#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-15",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ponte",
-          "entre",
-          "china",
-          "coreia",
-          "norte",
-          "inaugurada"
-        ],
-        "long_tail": [
-          "Ponte entre China e Coreia do Norte é inaugurada 12 anos após sua construção 2026-10-15",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ponte",
-          "entre",
-          "china",
-          "coreia",
-          "norte",
-          "inaugurada"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Ponte entre China e Coreia do Norte é inaugurada 12 anos…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-15",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ponte",
-          "entre",
-          "china",
-          "coreia",
-          "norte",
-          "inaugurada",
-          "Ponte entre China e Coreia do Norte é inaugurada 12 anos após sua construção 2026-10-15",
-          "notícias mundiais outubro 2026",
-          "2026-10-15",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2361,7 +2461,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2459,7 +2559,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2560,7 +2660,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2658,7 +2758,7 @@
           "g1.globo.com Cézar Mendes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2757,7 +2857,7 @@
           "bbc.co.uk brooklyn shop surreal row",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2858,7 +2958,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -2956,7 +3056,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -3055,7 +3155,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -3154,7 +3254,7 @@
           "bbc.co.uk bbc director general defends",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -3176,7 +3276,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/caetano-veloso-reforca-lacos-com-obra-dos-beatles-ao-gravar-cancao-because-no-al-764e3b/",
       "landing_url": "https://matchapp.tv/?news=764e3bdb#latest-news",
       "seo": {
-        "primary_keyword": "Caetano Veloso últimas notícias",
+        "primary_keyword": "caetano veloso",
         "short_tail": [
           "Caetano Veloso",
           "Caetano Veloso news",
@@ -3184,7 +3284,8 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje"
+          "notícias hoje",
+          "caetano veloso"
         ],
         "long_tail": [
           "Caetano Veloso latest news October 2026",
@@ -3197,7 +3298,9 @@
           "Caetano Veloso notícia de 2026-10-14",
           "o que aconteceu com Caetano Veloso"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "caetano veloso"
+        ],
         "entity_keywords": [
           "Caetano Veloso",
           "caetano",
@@ -3221,7 +3324,7 @@
         "meta_title": "Caetano Veloso reforça laços com obra dos Beatles ao…",
         "meta_description": "Caetano Veloso: Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "Caetano Veloso últimas notícias",
+          "caetano veloso",
           "Caetano Veloso",
           "Caetano Veloso news",
           "entertainment",
@@ -3252,7 +3355,7 @@
           "g1.globo.com Caetano Veloso",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -3353,7 +3456,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     },
     {
@@ -3454,106 +3557,7 @@
           "g1.globo.com milla existiu nao relembre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
-      }
-    },
-    {
-      "id": "8bffede2",
-      "title": "Sobrinho de Lô Borges, Rodrigo Borges persegue 'sonho real' do tio no terceiro álbum, 'Transverso'",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/14/sobrinho-de-lo-borges-rodrigo-borges-persegue-sonho-real-do-tio-no-terceiro-album-transverso.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T12:21:27.000Z",
-      "discovered_at": "2026-10-14T13:59:28.698Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/_f9xyB4uCS9UCpRKVt6fq5a5A54=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/i/F/aAB5UsQdmmlMsbpP2cqA/rodrigo-borges-por-weber-padua15393.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/sobrinho-de-lo-borges-rodrigo-borges-persegue-sonho-real-do-tio-no-terceiro-albu-8bffed/",
-      "landing_url": "https://matchapp.tv/?news=8bffede2#latest-news",
-      "seo": {
-        "primary_keyword": "sobrinho borges rodrigo borges últimas notícias",
-        "short_tail": [
-          "sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "sobrinho borges rodrigo borges latest news October 2026",
-          "sobrinho borges rodrigo borges entertainment update 2026",
-          "sobrinho borges rodrigo borges news 2026-10-14",
-          "latest entertainment news about sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges persegue sonho latest update",
-          "G1 sobrinho borges rodrigo borges entertainment",
-          "últimas notícias sobre sobrinho borges rodrigo borges outubro 2026",
-          "sobrinho borges rodrigo borges notícia de 2026-10-14",
-          "o que aconteceu com sobrinho borges rodrigo borges"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "sobrinho",
-          "borges",
-          "rodrigo",
-          "persegue",
-          "sonho",
-          "real",
-          "tio"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "sobrinho borges rodrigo borges 2026"
-        ],
-        "source_keywords": [
-          "G1 sobrinho borges rodrigo borges",
-          "g1.globo.com sobrinho borges rodrigo borges",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Sobrinho de Lô Borges, Rodrigo Borges persegue 'sonho…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "sobrinho borges rodrigo borges últimas notícias",
-          "sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "sobrinho borges rodrigo borges latest news October 2026",
-          "sobrinho borges rodrigo borges entertainment update 2026",
-          "sobrinho borges rodrigo borges news 2026-10-14",
-          "latest entertainment news about sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges persegue sonho latest update",
-          "G1 sobrinho borges rodrigo borges entertainment",
-          "últimas notícias sobre sobrinho borges rodrigo borges outubro 2026",
-          "sobrinho borges rodrigo borges notícia de 2026-10-14",
-          "o que aconteceu com sobrinho borges rodrigo borges",
-          "sobrinho",
-          "borges",
-          "rodrigo",
-          "persegue",
-          "sonho",
-          "real",
-          "tio",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "sobrinho borges rodrigo borges 2026",
-          "G1 sobrinho borges rodrigo borges",
-          "g1.globo.com sobrinho borges rodrigo borges",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T21:42:12.434Z"
+        "seo_generated_at": "2026-10-15T23:15:03.438Z"
       }
     }
   ]
