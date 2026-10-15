@@ -225,6 +225,8 @@
 /* Secondary-page review: give full labels and the shared portrait their own
    space. These are existing destinations and controls, with unchanged actions. */
 @layer ma-screen-fit {
+ html body.page-shell:has(#ma-ambient-jonas.ja-header-default) .app-header .mh-head {padding-inline:0!important;padding-right:96px!important}
+ html body.page-shell .app-header :is(.ma-brand-home-link,.ma-brand-title-line) {direction:ltr!important}
  html body.page-shell header.app-header > nav.mh-deck > #ma-donate-shortcut {min-width:0!important}
  html body:not(.page-home):not(.page-kids):not(.kids-body) .ma-support-shortcut > span {
   min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important;
