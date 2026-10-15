@@ -55,3 +55,9 @@ Do not start another blanket 404 validation merely to make this report green. Si
 - https://support.google.com/adsense/answer/10502938?hl=en
 - https://support.google.com/adsense/answer/13554116?hl=en
 - https://support.google.com/adsense/announcements/9189068?hl=en
+
+## AdSense follow-up in this change set
+
+The English and Portuguese privacy notices now explicitly disclose that Google/third parties may place and read cookies or use web beacons, IP addresses and other identifiers as a result of ad serving, with Google's official partner-sites data-use link. The notices retain conditional language tied to consent and existing settings. No consent preference, ad placement or account setting is changed.
+
+The existing original editorial guidance prepared in PR #222 is incorporated into the October streaming/music/books guide. It explains how dated rankings differ from individual preferences, why regional availability and exact title/edition identity must be checked, and how to choose book formats. This is a scoped content-quality improvement, not proof that the low-value-content rejection is resolved.
