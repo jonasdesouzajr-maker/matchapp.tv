@@ -67,13 +67,14 @@ function finalizeBrand(){
   edits.sort((a,b)=>b[0]-a[0]).forEach(([start,end,text])=>html=html.slice(0,start)+text+html.slice(end));
   if(!doc.querySelector('link[href^="/brand.css"]'))html=html.replace('</head>','<link rel="stylesheet" href="/brand.css?v=195">\n</head>');
   if(!kids){
-    html=html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,'$1?v=20261014-matte1$2');
+    html=html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,'$1?v=20261015-fit1$2');
     html=html.replace(/(src=["']\/(?:page-shell|matchapp-ia|avatar-builder|daily-checkin)\.js)(?:\?([^"']*))?(["'])/g,function(all,prefix,query,end){
       if((query||'').includes('approvedlogo=20261014'))return all;
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
     });
   }
   if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>\n</head>');
+  if(!kids&&!html.includes('/patches/immersive-feedback-20261014.js'))html=html.replace('</head>','<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>\n</head>');
   html=name(html,kids);
   const original=fs.readFileSync(file,'utf8');
   if(html!==original){fs.writeFileSync(file,html);count++;}

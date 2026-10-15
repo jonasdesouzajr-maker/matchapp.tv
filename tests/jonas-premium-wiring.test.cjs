@@ -36,13 +36,13 @@ test('browser and remotely editable Android shell load premium presentation with
  assert.match(android,/setProperty\('left',[^;]+,'important'\)/);
  assert.ok(fs.statSync('assets/brand/matchapp-intro-audio.mp3').size>1000);
 });
-test('Jonas defaults to a safe lower-right dock and honors existing dragged positions',()=>{
+test('Jonas defaults to a reserved upper corner and honors existing dragged positions',()=>{
  for(const saved of [null,{x:.2,y:.4}]){
   const d=new JSDOM('<body><aside id="ma-ambient-jonas"><button class="ja-bubble"><img></button></aside></body>',{url:'https://matchapp.tv/ebooks/',runScripts:'outside-only',pretendToBeVisual:true});
   const w=d.window,root=w.document.querySelector('aside');if(saved)w.localStorage.setItem('matchapp-jonas-position-v2',JSON.stringify(saved));
   w.eval(load('patches/jonas-premium-enhancer.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
   if(saved){assert.equal(root.style.left,'');assert.equal(root.classList.contains('ja-header-default'),false)}
-  else{assert.equal(root.style.left,(w.innerWidth-76-22)+'px');assert.equal(root.style.top,(w.innerHeight-76-118)+'px')}
+  else{assert.equal(root.style.left,(w.innerWidth-76-22)+'px');assert.equal(root.style.top,'20px')}
   assert.equal(w.document.documentElement.style.getPropertyValue('--ja-view-height'),w.innerHeight+'px');d.window.close();
  }
  assert.match(load('index.html'),/id="ma-jonas-header-slot"/);

@@ -52,7 +52,7 @@ Both Android modules remain WebView shells over live production:
 
 - Standard app (`:app`) release version: **1.1.38**
 - Standard app version code: **42**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=42`
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=53`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.
 - Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
 - Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`

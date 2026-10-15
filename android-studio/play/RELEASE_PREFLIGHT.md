@@ -1,3 +1,7 @@
+## October 15, 2026 adult visual release — 1.1.53 (code 53)
+
+New original gold Orbit launcher artwork uses a true-alpha foreground with safe spacing and platform-owned adaptive masking. Adult web layouts inherit the live responsive presentation. Package, account, matching, speech, consent and advertising mechanisms are preserved. Play Console latest-bundles review on October 15 showed code 50 as the highest uploaded build; code 53 is reserved for this candidate. Recheck before upload. Build, exact upload-certificate verification, physical QA and store processing remain required; a generated unsigned bundle is not publishable.
+
 # MatchApp Ai adult app â€” Play Console release checklist
 
 ## October 12, 2026 Samsung M54 consent crash hotfix — 1.1.52 (code 52)
