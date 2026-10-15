@@ -31,8 +31,25 @@ function inspectHtml(html,label,issues){
   }
   const before=issues.length;
   videoIssues(data,label,issues);checked+=issues.length-before>=0?1:0;
+  breadcrumbIssues(data,label,issues);
  }
  return checked;
+}
+function breadcrumbIssues(object,label,issues,root=ROOT){
+ if(!object||typeof object!=='object')return;
+ if(Array.isArray(object)){for(const item of object)breadcrumbIssues(item,label,issues,root);return}
+ const types=[object['@type']].flat();
+ if(types.includes('BreadcrumbList'))for(const crumb of object.itemListElement||[]){
+  const value=typeof crumb.item==='string'?crumb.item:crumb.item&&crumb.item['@id'];
+  if(!value)continue; // The final breadcrumb may omit its URL.
+  let url;try{url=new URL(value)}catch(_){issues.push(label+': Invalid breadcrumb URL: '+value);continue}
+  if(url.origin!=='https://matchapp.tv')continue;
+  let file;try{file=path.resolve(root,'.'+decodeURIComponent(url.pathname))}catch(_){issues.push(label+': Invalid breadcrumb path: '+value);continue}
+  if(file!==root&&!file.startsWith(root+path.sep)){issues.push(label+': Unsafe breadcrumb URL: '+value);continue}
+  if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');
+  if(!fs.existsSync(file))issues.push(label+': Breadcrumb target missing: '+value);
+ }
+ for(const value of Object.values(object))if(value&&typeof value==='object')breadcrumbIssues(value,label,issues,root);
 }
 function sitemapHtmlPath(u){
  const url=new URL(u);
@@ -66,7 +83,8 @@ function audit(){
    if(!ent.isFile()||!ent.name.endsWith('.html'))continue;
    const html=fs.readFileSync(file,'utf8');
    const name=path.relative(ROOT,file);
-   if(/VideoObject/.test(html)){videoCount++;inspectHtml(html,name,errors)}
+   if(/VideoObject/.test(html))videoCount++;
+   inspectHtml(html,name,errors);
   }
  }
  walk(ROOT);
@@ -76,4 +94,4 @@ if(require.main===module){
  const report=audit();console.log(JSON.stringify(report,null,2));
  if(report.errors.length)process.exitCode=1;
 }
-module.exports={audit,videoIssues,inspectHtml,sitemapHtmlPath};
+module.exports={audit,videoIssues,breadcrumbIssues,inspectHtml,sitemapHtmlPath};

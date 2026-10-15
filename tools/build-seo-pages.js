@@ -146,8 +146,7 @@ function buildPage({ kind, key, title, lede, items, related }) {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": BRAND, "item": `${SITE}/` },
-            { "@type": "ListItem", "position": 2, "name": kind === 'moods' ? 'Moods' : kind === 'platforms' ? 'Platforms' : 'Collections', "item": `${SITE}/${kind}/` },
-            { "@type": "ListItem", "position": 3, "name": title, "item": url }
+            { "@type": "ListItem", "position": 2, "name": title, "item": url }
         ]
     };
 
