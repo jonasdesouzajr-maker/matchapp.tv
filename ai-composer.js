@@ -128,7 +128,8 @@ function paintHeader(){
    caption=document.createElement('span');caption.className='ma-menu-caption';
    n.replaceChildren(legacy,caption);
   }
-  legacy.textContent=n.dataset.maMenuIcon+' ';caption.textContent=text;n.setAttribute('aria-label',text);
+  if(legacy.textContent!==n.dataset.maMenuIcon+' ')legacy.textContent=n.dataset.maMenuIcon+' ';
+  if(caption.textContent!==text)caption.textContent=text;n.setAttribute('aria-label',text);
  });
  const logout=h.querySelector('#nav-logout-btn');if(logout){const text=window.t?.('nav.logout')||'Logout';logout.setAttribute('aria-label',text);logout.setAttribute('title',text);}
 }
