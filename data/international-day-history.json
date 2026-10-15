@@ -1,5 +1,7 @@
 [
   {
+    "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
+    "_note": "Rewritten once per day by the MatchApp day-of bot. Replace the whole object; never append. Keep every key below.",
     "updated": "2026-09-24T22:40:00Z",
     "date": "2026-09-24",
     "id": "world-maritime-day-2026-09-24",
