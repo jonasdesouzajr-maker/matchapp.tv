@@ -37,8 +37,8 @@ test('public quota copy matches the shared included-action architecture',()=>{
   const home=read('index.html'),locale=read('i18n.js'),app=read('app.js');
   assert.match(home,/3 included AI actions daily · Register free for 5/);
   assert.doesNotMatch(home,/3 free matches daily/i);
-  const free=[...locale.matchAll(/'how\.freeline':\s*'((?:\\.|[^'])*)'/g)].map(m=>m[1]);
-  const checking=[...locale.matchAll(/'quota\.checking':\s*'((?:\\.|[^'])*)'/g)].map(m=>m[1]);
+  const free=[...locale.matchAll(/'how\.freeline':\s*'((?:\\.|[^'\\])*)'/g)].map(m=>m[1]);
+  const checking=[...locale.matchAll(/'quota\.checking':\s*'((?:\\.|[^'\\])*)'/g)].map(m=>m[1]);
   assert.equal(free.length,14);
   assert.equal(checking.length,14);
   assert(free.every(v=>!/free matches daily|matches grátis por dia|matches gratis al día|matchs gratuits par jour/i.test(v)));

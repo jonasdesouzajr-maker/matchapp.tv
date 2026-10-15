@@ -10,7 +10,7 @@ function server(openStatus=200,geminiStatus=200){
   Deno:{env:{get:name=>env[name]},serve:fn=>handler=fn},
   fetch:async(url,options)=>{
    calls.push({url,body:JSON.parse(options.body)});
-   if(url.includes('api.openai.com'))return new Response(openStatus===200?new Uint8Array(400):'',{status:openStatus});
+   if(new URL(url).origin==='https://api.openai.com')return new Response(openStatus===200?new Uint8Array(400):'',{status:openStatus});
    return new Response(JSON.stringify({candidates:[{content:{parts:[{inlineData:{data:btoa('a'.repeat(400))}}]}}]}),{status:geminiStatus});
   }});
  vm.runInContext(stripTypeScriptTypes(source.replace(/^import .*;\s*$/gm,'')),context);

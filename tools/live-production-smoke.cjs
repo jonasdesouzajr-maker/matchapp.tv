@@ -24,9 +24,18 @@ const errors=[];
 // as a successful Spotify embed: preserve the warning in the QA report.
 function isSpotifyIframeTransportDisconnect(error){
  const stack=String(error?.stack||error?.message||'');
- return stack.includes('TransportError: Cannot authenticate disconnected transport') &&
-   /https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack) &&
-   /at (?:_authenticate|authenticate) \(https:\/\/embed-cdn\.spotifycdn\.com\//.test(stack);
+ if(!stack.startsWith('TransportError: Cannot authenticate disconnected transport'))return false;
+ const frames=stack.split('\n').slice(1).filter(line=>line.trim());
+ let authenticated=false;
+ if(!frames.length)return false;
+ for(const frame of frames){
+   const match=/^\s*at ([^\s(]+) \((https:\/\/[^\s)]+):\d+:\d+\)\s*$/.exec(frame);
+   if(!match)return false;
+   let url;try{url=new URL(match[2])}catch{return false}
+   if(url.origin!=='https://embed-cdn.spotifycdn.com')return false;
+   if(match[1]==='_authenticate'||match[1]==='authenticate')authenticated=true;
+ }
+ return authenticated;
 }
 function isGoogleAdTelemetryInt64(error){
  const stack=String(error?.stack||'');
