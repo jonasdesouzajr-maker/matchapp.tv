@@ -368,3 +368,27 @@
   html body:not(.kids-body):not(.page-kids) :is(.ma-world-card,.explore-card,.ma-luxe-shortcut,.hub-links>a,.journey-nav-item,.ma-menu-button,.ma-how-button):focus-visible {outline-color:Highlight!important;box-shadow:none!important}
  }
 }
+
+/* Donate owns one hand symbol; never inherit the generic Explore crest. */
+@layer ma-signature {
+ html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::before {content:none!important;display:none!important}
+ html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut > svg {display:block!important;width:20px!important;height:20px!important;flex:0 0 20px!important}
+ html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut,
+ html body.page-home #mh-topbox .ma-luxe-shortcuts > #ma-donate-shortcut.ma-luxe-shortcut {
+  position:relative!important;border-color:#e5c15899!important;background:linear-gradient(125deg,#42264f,#271a32)!important;color:#ffe6a0!important;
+ }
+ html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {
+  content:''!important;display:block!important;position:absolute!important;inset:3px!important;
+  width:auto!important;height:auto!important;border-radius:inherit!important;pointer-events:none!important;
+  box-shadow:inset 0 0 14px #e5c15840!important;background:none!important;
+  animation:ma-support-aura 5s ease-in-out infinite!important;
+ }
+ @keyframes ma-support-aura {0%,100%{opacity:.12}50%{opacity:.65}}
+ @media(prefers-reduced-motion:reduce) {html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {animation:none!important;opacity:.2!important}}
+ html.reduce-motion body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after,html body.reduce-motion:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {animation:none!important;opacity:.2!important}
+ @media(forced-colors:active) {html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut::after {display:none!important}}
+}
+
+@layer ma-screen-fit {
+ html body:not(.kids-body):not(.page-kids) #ma-donate-shortcut.ma-luxe-shortcut {min-height:44px!important;height:auto!important}
+}
