@@ -20,6 +20,14 @@ test('only dated, directly linked, trusted HTTPS sports articles qualify',()=>{
  assert.deepEqual(selected.map(x=>x.source),['G1 Esportes','Reuters','AP News']);
  assert(selected.every(x=>x.category==='sports'&&x.image===null&&x.url.startsWith('https://')));
 });
+test('GDELT gets a bounded window for slow HTTPS responses without insecure downgrade',()=>{
+ const src=read('tools/refresh-sports-discovery.js');
+ assert.match(src,/controller\.abort\(\),45000/);
+ assert.match(src,/--connect-timeout','12','--max-time','45'/);
+ assert.match(src,/timeout:50000/);
+ assert.match(src,/--fail/);
+ assert.doesNotMatch(src,/rejectUnauthorized:\s*false|--insecure|https?:\/\/api\.gdeltproject\.org\/api\/v2\/doc\/doc.*http:/);
+});
 test('a GDELT first-seen timestamp is parsed exactly; no fabricated publication date',()=>{
  const v=discover.normalizeArticles([article('Football cup tournament: new verified report','https://www.theguardian.com/football/2026/sep/25/example')],now);
  assert.equal(v[0].published_at,'2026-09-25T10:00:00.000Z');

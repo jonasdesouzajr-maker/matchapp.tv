@@ -86,13 +86,13 @@ function mergeVerifiedSourceRows(discovered=[],partner=[]){
  return rows.sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,12);
 }
 
-// GitHub runner DNS can favor broken IPv6 routes to GDELT. Use a strictly
-// URL-pinned IPv4 curl fallback after bounded native fetch, preserving HTTPS
-// certificate validation and JSON-only parsing. Never silently replace real
+// GDELT DOC queries can legitimately take over 30s. Allow a bounded 45s
+// HTTPS response window, then retry over IPv4 with certificate verification.
+// Never downgrade to HTTP or bypass server identity checks. Never silently replace real
 // headline data with guessed stories on network failure.
 async function fetchGdelt(url){
  const controller=new AbortController();
- const timer=setTimeout(()=>controller.abort(),8500);
+ const timer=setTimeout(()=>controller.abort(),45000);
  try{
   const response=await fetch(url,{signal:controller.signal,headers:{
    accept:'application/json','user-agent':'MatchAppSportsDiscovery/1.0 (+https://matchapp.tv/)'
@@ -109,9 +109,9 @@ async function fetchGdelt(url){
    raw=execFileSync('curl',[
     '-4','--fail','--location','--silent','--show-error',
     '--retry','1','--retry-all-errors','--retry-delay','1',
-    '--connect-timeout','6','--max-time','13',
+    '--connect-timeout','12','--max-time','45',
     '--header','Accept: application/json',url
-   ],{encoding:'utf8',timeout:17000,maxBuffer:8*1024*1024});
+   ],{encoding:'utf8',timeout:50000,maxBuffer:8*1024*1024});
   }catch(curlError){
    console.error('[sports] GDELT IPv4 fallback failed: '+
     String(curlError?.message||curlError).slice(0,750));
