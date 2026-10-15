@@ -49,3 +49,5 @@ test('support call to action stays outside the collapsed streaming guides',()=>{
  const script=html.match(/<script id="mh-footer-fold">([\s\S]*?)<\/script>/)[1];dom.window.eval(script);dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
  const card=dom.window.document.getElementById('ma-donate-support');assert.equal(card.closest('details'),null);assert.equal(card.previousElementSibling.className,'seo-fold');dom.window.close();
 });
+
+test('support copy explains reliable servers, improvements and participation in growth',()=>{const d=page({});const copy=d.window.document.getElementById('ma-donate-desc').textContent;assert.match(copy,/part of MatchApp Ai’s growth/);assert.match(copy,/servers running reliably/);assert.match(copy,/improve speed, build better features/);assert.doesNotMatch(copy,/equity|dividend|financial return/i);d.window.close();});
