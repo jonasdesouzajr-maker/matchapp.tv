@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:02:14.104Z",
+  "generated": "2026-10-15T09:43:59.507Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -81,13 +81,11 @@
           ],
           "rent": [
             "Apple TV Store",
-            "Amazon Video",
-            "Google Play Movies"
+            "Amazon Video"
           ],
           "buy": [
             "Apple TV Store",
-            "Amazon Video",
-            "Google Play Movies"
+            "Amazon Video"
           ],
           "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=BR"
         },
@@ -132,7 +130,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -145,14 +142,12 @@
           ],
           "rent": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
           ],
           "buy": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
@@ -200,14 +195,12 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "YouTube"
           ],
           "buy": [
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -219,14 +212,12 @@
           ],
           "rent": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
           ],
           "buy": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
@@ -634,7 +625,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -642,7 +632,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -654,14 +643,12 @@
           ],
           "rent": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
           ],
           "buy": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
@@ -815,7 +802,6 @@
         "US": {
           "stream": [
             "Netflix",
-            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "link": "https://www.themoviedb.org/movie/579974/watch?locale=US"
@@ -959,12 +945,10 @@
           ],
           "rent": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube"
           ],
           "buy": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube"
           ],
           "link": "https://www.themoviedb.org/movie/872906/watch?locale=GB"
@@ -1240,11 +1224,9 @@
         },
         "GB": {
           "rent": [
-            "Google Play Movies",
             "YouTube"
           ],
           "buy": [
-            "Google Play Movies",
             "YouTube"
           ],
           "link": "https://www.themoviedb.org/movie/20453-3-idiots/watch?locale=GB"
@@ -1330,12 +1312,10 @@
           ],
           "rent": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube"
           ],
           "buy": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube"
           ],
           "link": "https://www.themoviedb.org/movie/534780/watch?locale=GB"
@@ -1375,12 +1355,10 @@
             "Amazon Prime Video with Ads"
           ],
           "rent": [
-            "Google Play Movies",
             "YouTube"
           ],
           "buy": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube"
           ],
           "link": "https://www.themoviedb.org/movie/247645-queen/watch?locale=GB"
@@ -2701,13 +2679,11 @@
           "rent": [
             "Claro video",
             "Apple TV Store",
-            "Amazon Video",
-            "Google Play Movies"
+            "Amazon Video"
           ],
           "buy": [
             "Apple TV Store",
-            "Amazon Video",
-            "Google Play Movies"
+            "Amazon Video"
           ],
           "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=BR"
         },
@@ -2737,7 +2713,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -2745,7 +2720,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -2754,14 +2728,12 @@
         "PT": {
           "rent": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
           ],
           "buy": [
             "Apple TV Store",
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
@@ -2818,8 +2790,7 @@
           ],
           "buy": [
             "Apple TV Store",
-            "Amazon Video",
-            "Google Play Movies"
+            "Amazon Video"
           ],
           "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=BR"
         },
@@ -2846,7 +2817,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -2857,7 +2827,6 @@
             "Filmin"
           ],
           "buy": [
-            "Google Play Movies",
             "YouTube",
             "Rakuten TV",
             "Amazon Video"
@@ -2901,7 +2870,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -2909,7 +2877,6 @@
             "Apple TV Store",
             "Rakuten TV",
             "Amazon Video",
-            "Google Play Movies",
             "Sky Store",
             "YouTube"
           ],
@@ -2981,7 +2948,6 @@
         "US": {
           "stream": [
             "Netflix",
-            "Philo",
             "Netflix Standard with Ads"
           ],
           "link": "https://www.themoviedb.org/tv/215916-martha-cooks/watch?locale=US"
