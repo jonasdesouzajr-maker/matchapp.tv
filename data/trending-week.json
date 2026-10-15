@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-12",
-  "updated": "2026-10-15T17:51:32.929Z",
+  "updated": "2026-10-15T20:25:17.568Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -333,7 +333,7 @@
       ],
       "runtimeMinutes": 157,
       "contentRating": "R",
-      "voteAverage": 7.2,
+      "voteAverage": 7.1,
       "previewUrl": "https://www.youtube.com/watch?v=OFaJzL83y0Q",
       "availability": {
         "BR": {
@@ -509,133 +509,6 @@
       }
     },
     {
-      "title": "The Storm",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "SE",
-      "originName": "SE",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "1623256",
-      "poster": "https://image.tmdb.org/t/p/w780/5YNjTi5AhbSM4hDOynJcgFfvKRn.jpg",
-      "description": "Filip is turning 45, and has invited his closest friends for dinner at his and his wife's lavish and newly bought farm estate up north in Sweden. What they don't know is that a ferocious storm is on its way and that they'll be trapped together. Their polished acts fall, and an unfiltered meltdown starts. When the panic starts to creep in and they all realise the seriousness of the situation, the farm starts to shrink, secrets spill out, and unexpected feelings take shape.",
-      "genre": [
-        "Comedy",
-        "Drama"
-      ],
-      "inLanguage": "sv",
-      "cast": [
-        "Gustaf Skarsgård",
-        "Aliette Opheim",
-        "Filip Berg",
-        "Josephine Bornebusch"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "18",
-      "voteAverage": 8.8,
-      "previewUrl": "https://www.youtube.com/watch?v=Zfb-62tjT_Y",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1623256"
-      },
-      "sourceRank": 6,
-      "keywords": [
-        "The Storm",
-        "The Storm 2026",
-        "where to watch The Storm",
-        "Comedy movie",
-        "Drama movie",
-        "Gustaf Skarsgård",
-        "Aliette Opheim"
-      ],
-      "longTailKeywords": [
-        "where to watch The Storm 2026",
-        "The Storm streaming in Brazil and United States",
-        "The Storm cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Storm (2026) | MatchApp Ai",
-        "description": "Filip is turning 45, and has invited his closest friends for dinner at his and his wife's lavish and newly bought farm estate up north in Sweden. What they do",
-        "keywords": [
-          "The Storm",
-          "The Storm 2026",
-          "where to watch The Storm",
-          "Comedy movie",
-          "Drama movie",
-          "Gustaf Skarsgård",
-          "Aliette Opheim",
-          "where to watch The Storm 2026",
-          "The Storm streaming in Brazil and United States",
-          "The Storm cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "The Storm"
-      }
-    },
-    {
-      "title": "Taylor Swift — Patient Zero",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
-      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
-      "artist": "Taylor Swift",
-      "songTitle": "Patient Zero",
-      "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 18638188,
-      "viewCountCheckedAt": "2026-10-12",
-      "channel": "Taylor Swift",
-      "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "Taylor Swift",
-        "Patient Zero",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "Taylor Swift new music video",
-        "The Life of a Showgirl: The Encore",
-        "Taylor Swift Patient Zero official music video",
-        "Taylor Swift music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "Taylor Swift Patient Zero official music video YouTube",
-        "where to watch Taylor Swift Patient Zero music video",
-        "new Taylor Swift music video 2026",
-        "Taylor Swift Patient Zero release date",
-        "Taylor Swift Patient Zero YouTube views"
-      ],
-      "seo": {
-        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
-        "keywords": [
-          "Taylor Swift",
-          "Patient Zero",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "The Life of a Showgirl: The Encore",
-          "Taylor Swift Patient Zero official music video",
-          "Taylor Swift music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Taylor Swift Patient Zero official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 2
-    },
-    {
       "title": "The Diplomat",
       "kind": "tv",
       "year": 2023,
@@ -708,7 +581,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/203857"
       },
-      "sourceRank": 7,
+      "sourceRank": 6,
       "keywords": [
         "The Diplomat",
         "The Diplomat 2023",
@@ -745,6 +618,224 @@
           "what Drama to watch this week"
         ],
         "canonicalQuery": "The Diplomat"
+      }
+    },
+    {
+      "title": "Taylor Swift — Patient Zero",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
+      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
+      "artist": "Taylor Swift",
+      "songTitle": "Patient Zero",
+      "publishedAt": "2026-09-29T22:00:19+00:00",
+      "viewCount": 18638188,
+      "viewCountCheckedAt": "2026-10-12",
+      "channel": "Taylor Swift",
+      "channelUrl": "https://www.youtube.com/@TaylorSwift",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "Taylor Swift",
+        "Patient Zero",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "Taylor Swift new music video",
+        "The Life of a Showgirl: The Encore",
+        "Taylor Swift Patient Zero official music video",
+        "Taylor Swift music videos",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "Taylor Swift Patient Zero official music video YouTube",
+        "where to watch Taylor Swift Patient Zero music video",
+        "new Taylor Swift music video 2026",
+        "Taylor Swift Patient Zero release date",
+        "Taylor Swift Patient Zero YouTube views"
+      ],
+      "seo": {
+        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
+        "keywords": [
+          "Taylor Swift",
+          "Patient Zero",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "The Life of a Showgirl: The Encore",
+          "Taylor Swift Patient Zero official music video",
+          "Taylor Swift music videos",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Taylor Swift Patient Zero official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 2
+    },
+    {
+      "title": "Whalefall",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1255833",
+      "poster": "https://image.tmdb.org/t/p/w780/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
+      "description": "Following the death of his father, Jay Gardiner goes diving off the central Coast of California in search of his remains, but is swallowed by a massive sperm whale. While trapped inside its belly with only one hour of oxygen left, Jay comes to realize that the hard-earned lessons his father imparted may be the key to his escape.",
+      "genre": [
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Austin Abrams",
+        "Josh Brolin",
+        "Elisabeth Shue",
+        "John Ortiz"
+      ],
+      "runtimeMinutes": 106,
+      "contentRating": "PG-13",
+      "voteAverage": 7.5,
+      "previewUrl": "https://www.youtube.com/watch?v=Dw-5ZGapGTQ",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1255833"
+      },
+      "sourceRank": 7,
+      "keywords": [
+        "Whalefall",
+        "Whalefall 2026",
+        "where to watch Whalefall",
+        "Thriller movie",
+        "Austin Abrams",
+        "Josh Brolin"
+      ],
+      "longTailKeywords": [
+        "where to watch Whalefall 2026",
+        "Whalefall streaming in Brazil and United States",
+        "Whalefall cast synopsis trailer and where to watch",
+        "what Thriller to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Whalefall (2026) | MatchApp Ai",
+        "description": "Following the death of his father, Jay Gardiner goes diving off the central Coast of California in search of his remains, but is swallowed by a massive sperm ",
+        "keywords": [
+          "Whalefall",
+          "Whalefall 2026",
+          "where to watch Whalefall",
+          "Thriller movie",
+          "Austin Abrams",
+          "Josh Brolin",
+          "where to watch Whalefall 2026",
+          "Whalefall streaming in Brazil and United States",
+          "Whalefall cast synopsis trailer and where to watch",
+          "what Thriller to watch this week"
+        ],
+        "canonicalQuery": "Whalefall"
+      }
+    },
+    {
+      "title": "The Storm",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "SE",
+      "originName": "SE",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "1623256",
+      "poster": "https://image.tmdb.org/t/p/w780/5YNjTi5AhbSM4hDOynJcgFfvKRn.jpg",
+      "description": "Filip is turning 45, and has invited his closest friends for dinner at his and his wife's lavish and newly bought farm estate up north in Sweden. What they don't know is that a ferocious storm is on its way and that they'll be trapped together. Their polished acts fall, and an unfiltered meltdown starts. When the panic starts to creep in and they all realise the seriousness of the situation, the farm starts to shrink, secrets spill out, and unexpected feelings take shape.",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "inLanguage": "sv",
+      "cast": [
+        "Gustaf Skarsgård",
+        "Aliette Opheim",
+        "Filip Berg",
+        "Josephine Bornebusch"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "18",
+      "voteAverage": 8.8,
+      "previewUrl": "https://www.youtube.com/watch?v=Zfb-62tjT_Y",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1623256"
+      },
+      "sourceRank": 8,
+      "keywords": [
+        "The Storm",
+        "The Storm 2026",
+        "where to watch The Storm",
+        "Comedy movie",
+        "Drama movie",
+        "Gustaf Skarsgård",
+        "Aliette Opheim"
+      ],
+      "longTailKeywords": [
+        "where to watch The Storm 2026",
+        "The Storm streaming in Brazil and United States",
+        "The Storm cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Storm (2026) | MatchApp Ai",
+        "description": "Filip is turning 45, and has invited his closest friends for dinner at his and his wife's lavish and newly bought farm estate up north in Sweden. What they do",
+        "keywords": [
+          "The Storm",
+          "The Storm 2026",
+          "where to watch The Storm",
+          "Comedy movie",
+          "Drama movie",
+          "Gustaf Skarsgård",
+          "Aliette Opheim",
+          "where to watch The Storm 2026",
+          "The Storm streaming in Brazil and United States",
+          "The Storm cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "The Storm"
       }
     },
     {
@@ -847,7 +938,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/969681"
       },
-      "sourceRank": 8,
+      "sourceRank": 9,
       "keywords": [
         "Spider-Man: Brand New Day",
         "Spider-Man: Brand New Day 2026",
@@ -884,97 +975,6 @@
           "what Science Fiction to watch this week"
         ],
         "canonicalQuery": "Spider-Man: Brand New Day"
-      }
-    },
-    {
-      "title": "Whalefall",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1255833",
-      "poster": "https://image.tmdb.org/t/p/w780/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-      "description": "Following the death of his father, Jay Gardiner goes diving off the central Coast of California in search of his remains, but is swallowed by a massive sperm whale. While trapped inside its belly with only one hour of oxygen left, Jay comes to realize that the hard-earned lessons his father imparted may be the key to his escape.",
-      "genre": [
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Austin Abrams",
-        "Josh Brolin",
-        "Elisabeth Shue",
-        "John Ortiz"
-      ],
-      "runtimeMinutes": 106,
-      "contentRating": "PG-13",
-      "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=Dw-5ZGapGTQ",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-15"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-16"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-15"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-16"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1255833"
-      },
-      "sourceRank": 9,
-      "keywords": [
-        "Whalefall",
-        "Whalefall 2026",
-        "where to watch Whalefall",
-        "Thriller movie",
-        "Austin Abrams",
-        "Josh Brolin"
-      ],
-      "longTailKeywords": [
-        "where to watch Whalefall 2026",
-        "Whalefall streaming in Brazil and United States",
-        "Whalefall cast synopsis trailer and where to watch",
-        "what Thriller to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Whalefall (2026) | MatchApp Ai",
-        "description": "Following the death of his father, Jay Gardiner goes diving off the central Coast of California in search of his remains, but is swallowed by a massive sperm ",
-        "keywords": [
-          "Whalefall",
-          "Whalefall 2026",
-          "where to watch Whalefall",
-          "Thriller movie",
-          "Austin Abrams",
-          "Josh Brolin",
-          "where to watch Whalefall 2026",
-          "Whalefall streaming in Brazil and United States",
-          "Whalefall cast synopsis trailer and where to watch",
-          "what Thriller to watch this week"
-        ],
-        "canonicalQuery": "Whalefall"
       }
     },
     {
@@ -1035,6 +1035,207 @@
       },
       "source": "verified-official-music-video",
       "sourceRank": 3
+    },
+    {
+      "title": "Carrie",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
+      ],
+      "tmdbId": "288673",
+      "poster": "https://image.tmdb.org/t/p/w780/6mUMquPQBFJGqTACS3Azkwwrx8d.jpg",
+      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social‑media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
+      "genre": [
+        "Mystery",
+        "Drama",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Summer H. Howell",
+        "Samantha Sloyan",
+        "Siena Agudong",
+        "Alison Thornton"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.44,
+      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads",
+            "Amazon Prime Video Free with Ads",
+            "Amazon MX Player"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/288673"
+      },
+      "sourceRank": 10,
+      "keywords": [
+        "Carrie",
+        "Carrie 2026",
+        "where to watch Carrie",
+        "Mystery series",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
+        "Summer H. Howell",
+        "Samantha Sloyan"
+      ],
+      "longTailKeywords": [
+        "where to watch Carrie 2026",
+        "Carrie streaming in Brazil and United States",
+        "Carrie cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Carrie (2026) | MatchApp Ai",
+        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
+        "keywords": [
+          "Carrie",
+          "Carrie 2026",
+          "where to watch Carrie",
+          "Mystery series",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
+          "Summer H. Howell",
+          "Samantha Sloyan",
+          "where to watch Carrie 2026",
+          "Carrie streaming in Brazil and United States",
+          "Carrie cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
+        ],
+        "canonicalQuery": "Carrie"
+      }
+    },
+    {
+      "title": "Buddy",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1514026",
+      "poster": "https://image.tmdb.org/t/p/w780/1BdZbNvl1SfrrX8J9X5tQzN6Ivu.jpg",
+      "description": "A magical, singing orange unicorn holds his cast hostage in a surreal TV-show dimension, as he becomes more and more demented.",
+      "genre": [
+        "Horror",
+        "Comedy",
+        "Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Keegan-Michael Key",
+        "Cristin Milioti",
+        "Delaney Quinn",
+        "Caleb Williams"
+      ],
+      "runtimeMinutes": 95,
+      "contentRating": "R",
+      "voteAverage": 7.29,
+      "previewUrl": "https://www.youtube.com/watch?v=Pc9MbCNYn3k",
+      "availability": {
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1514026-buddy/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-28"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1514026"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Buddy",
+        "Buddy 2026",
+        "where to watch Buddy",
+        "Horror movie",
+        "Comedy movie",
+        "Fantasy movie",
+        "Keegan-Michael Key",
+        "Cristin Milioti"
+      ],
+      "longTailKeywords": [
+        "where to watch Buddy 2026",
+        "Buddy streaming in Brazil and United States",
+        "Buddy cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Buddy (2026) | MatchApp Ai",
+        "description": "A magical, singing orange unicorn holds his cast hostage in a surreal TV-show dimension, as he becomes more and more demented.",
+        "keywords": [
+          "Buddy",
+          "Buddy 2026",
+          "where to watch Buddy",
+          "Horror movie",
+          "Comedy movie",
+          "Fantasy movie",
+          "Keegan-Michael Key",
+          "Cristin Milioti",
+          "where to watch Buddy 2026",
+          "Buddy streaming in Brazil and United States",
+          "Buddy cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
+        ],
+        "canonicalQuery": "Buddy"
+      }
     },
     {
       "title": "Practical Magic 2",
@@ -1119,7 +1320,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1302904"
       },
-      "sourceRank": 10,
+      "sourceRank": 12,
       "keywords": [
         "Practical Magic 2",
         "Practical Magic 2 2026",
@@ -1154,209 +1355,6 @@
           "what Romance to watch this week"
         ],
         "canonicalQuery": "Practical Magic 2"
-      }
-    },
-    {
-      "title": "Carrie",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Amazon Prime Video",
-      "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads",
-        "Amazon MX Player"
-      ],
-      "tmdbId": "288673",
-      "poster": "https://image.tmdb.org/t/p/w780/6mUMquPQBFJGqTACS3Azkwwrx8d.jpg",
-      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social‑media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
-      "genre": [
-        "Mystery",
-        "Drama",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Summer H. Howell",
-        "Samantha Sloyan",
-        "Siena Agudong",
-        "Alison Thornton"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.44,
-      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads",
-            "Amazon Prime Video Free with Ads",
-            "Amazon MX Player"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/288673"
-      },
-      "sourceRank": 11,
-      "keywords": [
-        "Carrie",
-        "Carrie 2026",
-        "where to watch Carrie",
-        "Mystery series",
-        "Drama series",
-        "Sci-Fi & Fantasy series",
-        "Amazon Prime Video trending series",
-        "Amazon Prime Video with Ads trending series",
-        "Summer H. Howell",
-        "Samantha Sloyan"
-      ],
-      "longTailKeywords": [
-        "where to watch Carrie 2026",
-        "Carrie streaming in Brazil and United States",
-        "Carrie cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Carrie (2026) | MatchApp Ai",
-        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
-        "keywords": [
-          "Carrie",
-          "Carrie 2026",
-          "where to watch Carrie",
-          "Mystery series",
-          "Drama series",
-          "Sci-Fi & Fantasy series",
-          "Amazon Prime Video trending series",
-          "Amazon Prime Video with Ads trending series",
-          "Summer H. Howell",
-          "Samantha Sloyan",
-          "where to watch Carrie 2026",
-          "Carrie streaming in Brazil and United States",
-          "Carrie cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
-        ],
-        "canonicalQuery": "Carrie"
-      }
-    },
-    {
-      "title": "Jailer 2",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "IN",
-      "originName": "India",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1234139",
-      "poster": "https://image.tmdb.org/t/p/w780/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
-      "description": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
-      "genre": [
-        "Action",
-        "Comedy",
-        "Crime",
-        "Drama"
-      ],
-      "inLanguage": "ta",
-      "cast": [
-        "Rajinikanth",
-        "S. J. Suryah",
-        "Mithun Chakraborty",
-        "Suraj Venjaramoodu"
-      ],
-      "runtimeMinutes": 163,
-      "contentRating": "NR",
-      "voteAverage": 6,
-      "previewUrl": "",
-      "availability": {
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-14"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-14"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1234139"
-      },
-      "sourceRank": 12,
-      "keywords": [
-        "Jailer 2",
-        "Jailer 2 2026",
-        "where to watch Jailer 2",
-        "Action movie",
-        "Comedy movie",
-        "Crime movie",
-        "Rajinikanth",
-        "S. J. Suryah"
-      ],
-      "longTailKeywords": [
-        "where to watch Jailer 2 2026",
-        "Jailer 2 streaming in Brazil and United States",
-        "Jailer 2 cast synopsis trailer and where to watch",
-        "what Action to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Jailer 2 (2026) | MatchApp Ai",
-        "description": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from",
-        "keywords": [
-          "Jailer 2",
-          "Jailer 2 2026",
-          "where to watch Jailer 2",
-          "Action movie",
-          "Comedy movie",
-          "Crime movie",
-          "Rajinikanth",
-          "S. J. Suryah",
-          "where to watch Jailer 2 2026",
-          "Jailer 2 streaming in Brazil and United States",
-          "Jailer 2 cast synopsis trailer and where to watch",
-          "what Action to watch this week"
-        ],
-        "canonicalQuery": "Jailer 2"
       }
     },
     {
@@ -1423,85 +1421,169 @@
       "sourceRank": 4
     },
     {
-      "title": "Buddy",
+      "title": "Clayface",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1514026",
-      "poster": "https://image.tmdb.org/t/p/w780/1BdZbNvl1SfrrX8J9X5tQzN6Ivu.jpg",
-      "description": "A magical, singing orange unicorn holds his cast hostage in a surreal TV-show dimension, as he becomes more and more demented.",
+      "tmdbId": "1400940",
+      "poster": "https://image.tmdb.org/t/p/w780/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
+      "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfigured. Abandoned by his team and with nothing left, Matt seeks out a cutting edge treatment that miraculously returns him to his former self… but also unexpectedly affects his grip on reality, spiraling him down a destructive path of all-consuming revenge.",
       "genre": [
         "Horror",
-        "Comedy",
-        "Fantasy"
+        "Thriller",
+        "Science Fiction"
       ],
       "inLanguage": "en",
       "cast": [
-        "Keegan-Michael Key",
-        "Cristin Milioti",
-        "Delaney Quinn",
-        "Caleb Williams"
+        "Tom Rhys Harries",
+        "Naomi Ackie",
+        "Eddie Marsan",
+        "Max Minghella"
       ],
-      "runtimeMinutes": 95,
+      "runtimeMinutes": 108,
       "contentRating": "R",
-      "voteAverage": 7.29,
-      "previewUrl": "https://www.youtube.com/watch?v=Pc9MbCNYn3k",
+      "voteAverage": 8.2,
+      "previewUrl": "https://www.youtube.com/watch?v=KCR-rz0YfD4",
       "availability": {
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1514026-buddy/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store"
-          ],
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-08-28"
+          "cinema_release_date": "2026-10-22"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-23"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-22"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-23"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1514026"
+        "source_page_url": "https://www.themoviedb.org/movie/1400940"
       },
       "sourceRank": 13,
       "keywords": [
-        "Buddy",
-        "Buddy 2026",
-        "where to watch Buddy",
+        "Clayface",
+        "Clayface 2026",
+        "where to watch Clayface",
         "Horror movie",
-        "Comedy movie",
-        "Fantasy movie",
-        "Keegan-Michael Key",
-        "Cristin Milioti"
+        "Thriller movie",
+        "Science Fiction movie",
+        "Tom Rhys Harries",
+        "Naomi Ackie"
       ],
       "longTailKeywords": [
-        "where to watch Buddy 2026",
-        "Buddy streaming in Brazil and United States",
-        "Buddy cast synopsis trailer and where to watch",
+        "where to watch Clayface 2026",
+        "Clayface streaming in Brazil and United States",
+        "Clayface cast synopsis trailer and where to watch",
         "what Horror to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Buddy (2026) | MatchApp Ai",
-        "description": "A magical, singing orange unicorn holds his cast hostage in a surreal TV-show dimension, as he becomes more and more demented.",
+        "title": "Where to watch Clayface (2026) | MatchApp Ai",
+        "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfig",
         "keywords": [
-          "Buddy",
-          "Buddy 2026",
-          "where to watch Buddy",
+          "Clayface",
+          "Clayface 2026",
+          "where to watch Clayface",
           "Horror movie",
-          "Comedy movie",
-          "Fantasy movie",
-          "Keegan-Michael Key",
-          "Cristin Milioti",
-          "where to watch Buddy 2026",
-          "Buddy streaming in Brazil and United States",
-          "Buddy cast synopsis trailer and where to watch",
+          "Thriller movie",
+          "Science Fiction movie",
+          "Tom Rhys Harries",
+          "Naomi Ackie",
+          "where to watch Clayface 2026",
+          "Clayface streaming in Brazil and United States",
+          "Clayface cast synopsis trailer and where to watch",
           "what Horror to watch this week"
         ],
-        "canonicalQuery": "Buddy"
+        "canonicalQuery": "Clayface"
+      }
+    },
+    {
+      "title": "Hollywood Arts",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "286183",
+      "poster": "https://image.tmdb.org/t/p/w780/uVL8tV8z9br3XGsA9DDEY743sRE.jpg",
+      "description": "Struggling actress Trina Vega returns to her former high school, Hollywood Arts, as an unqualified substitute teacher, quickly finding herself both clashing with and unexpectedly inspiring a new generation of ambitious and talented students as they learn to find their true path at Hollywood's most elite performing arts school.",
+      "genre": [
+        "Comedy",
+        "Drama",
+        "Family"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Daniella Monet",
+        "Yvette Nicole Brown",
+        "Alyssa Miles",
+        "Emmy Liu-Wang"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=IXQP43JjY4Q",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/286183"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "Hollywood Arts",
+        "Hollywood Arts 2026",
+        "where to watch Hollywood Arts",
+        "Comedy series",
+        "Drama series",
+        "Family series",
+        "Daniella Monet",
+        "Yvette Nicole Brown"
+      ],
+      "longTailKeywords": [
+        "where to watch Hollywood Arts 2026",
+        "Hollywood Arts streaming in Brazil and United States",
+        "Hollywood Arts cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Hollywood Arts (2026) | MatchApp Ai",
+        "description": "Struggling actress Trina Vega returns to her former high school, Hollywood Arts, as an unqualified substitute teacher, quickly finding herself both clashing w",
+        "keywords": [
+          "Hollywood Arts",
+          "Hollywood Arts 2026",
+          "where to watch Hollywood Arts",
+          "Comedy series",
+          "Drama series",
+          "Family series",
+          "Daniella Monet",
+          "Yvette Nicole Brown",
+          "where to watch Hollywood Arts 2026",
+          "Hollywood Arts streaming in Brazil and United States",
+          "Hollywood Arts cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Hollywood Arts"
       }
     },
     {
@@ -1583,7 +1665,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/289892"
       },
-      "sourceRank": 14,
+      "sourceRank": 15,
       "keywords": [
         "Helluva Boss",
         "Helluva Boss 2020",
@@ -1625,184 +1707,87 @@
       }
     },
     {
-      "title": "Hollywood Arts",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "286183",
-      "poster": "https://image.tmdb.org/t/p/w780/uVL8tV8z9br3XGsA9DDEY743sRE.jpg",
-      "description": "Struggling actress Trina Vega returns to her former high school, Hollywood Arts, as an unqualified substitute teacher, quickly finding herself both clashing with and unexpectedly inspiring a new generation of ambitious and talented students as they learn to find their true path at Hollywood's most elite performing arts school.",
-      "genre": [
-        "Comedy",
-        "Drama",
-        "Family"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Daniella Monet",
-        "Yvette Nicole Brown",
-        "Alyssa Miles",
-        "Emmy Liu-Wang"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=IXQP43JjY4Q",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/286183"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Hollywood Arts",
-        "Hollywood Arts 2026",
-        "where to watch Hollywood Arts",
-        "Comedy series",
-        "Drama series",
-        "Family series",
-        "Daniella Monet",
-        "Yvette Nicole Brown"
-      ],
-      "longTailKeywords": [
-        "where to watch Hollywood Arts 2026",
-        "Hollywood Arts streaming in Brazil and United States",
-        "Hollywood Arts cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Hollywood Arts (2026) | MatchApp Ai",
-        "description": "Struggling actress Trina Vega returns to her former high school, Hollywood Arts, as an unqualified substitute teacher, quickly finding herself both clashing w",
-        "keywords": [
-          "Hollywood Arts",
-          "Hollywood Arts 2026",
-          "where to watch Hollywood Arts",
-          "Comedy series",
-          "Drama series",
-          "Family series",
-          "Daniella Monet",
-          "Yvette Nicole Brown",
-          "where to watch Hollywood Arts 2026",
-          "Hollywood Arts streaming in Brazil and United States",
-          "Hollywood Arts cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Hollywood Arts"
-      }
-    },
-    {
-      "title": "Animals",
+      "title": "Jailer 2",
       "kind": "movie",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "1236045",
-      "poster": "https://image.tmdb.org/t/p/w780/iISM36voS1E8gX9BM0DVK0kgi3E.jpg",
-      "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on his political campaign, they have to get their hands dirty and expose a side of their lives they never intended to see the light of day.",
+      "origin": "IN",
+      "originName": "India",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1234139",
+      "poster": "https://image.tmdb.org/t/p/w780/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+      "description": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
       "genre": [
-        "Thriller",
+        "Action",
+        "Comedy",
+        "Crime",
         "Drama"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ta",
       "cast": [
-        "Ben Affleck",
-        "Kerry Washington",
-        "Gillian Anderson",
-        "Steven Yeun"
+        "Rajinikanth",
+        "S. J. Suryah",
+        "Mithun Chakraborty",
+        "Suraj Venjaramoodu"
       ],
-      "runtimeMinutes": 106,
-      "contentRating": "R",
-      "voteAverage": 7.24,
-      "previewUrl": "https://www.youtube.com/watch?v=ZkN2M4ODdys",
+      "runtimeMinutes": 163,
+      "contentRating": "NR",
+      "voteAverage": 6,
+      "previewUrl": "",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=GB",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-14"
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1236045-animals/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-10-09"
+          "stream": [],
+          "cinema_release_date": "2026-10-14"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1236045"
+        "source_page_url": "https://www.themoviedb.org/movie/1234139"
       },
       "sourceRank": 16,
       "keywords": [
-        "Animals",
-        "Animals 2026",
-        "where to watch Animals",
-        "Thriller movie",
-        "Drama movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Ben Affleck",
-        "Kerry Washington"
+        "Jailer 2",
+        "Jailer 2 2026",
+        "where to watch Jailer 2",
+        "Action movie",
+        "Comedy movie",
+        "Crime movie",
+        "Rajinikanth",
+        "S. J. Suryah"
       ],
       "longTailKeywords": [
-        "where to watch Animals 2026",
-        "Animals streaming in Brazil and United States",
-        "Animals cast synopsis trailer and where to watch",
-        "what Thriller to watch this week"
+        "where to watch Jailer 2 2026",
+        "Jailer 2 streaming in Brazil and United States",
+        "Jailer 2 cast synopsis trailer and where to watch",
+        "what Action to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Animals (2026) | MatchApp Ai",
-        "description": "When the son of an L.A. mayoral candidate is kidnapped, he and his wife have a few hours to come up with the ransom payment. With most of their money spent on",
+        "title": "Where to watch Jailer 2 (2026) | MatchApp Ai",
+        "description": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from",
         "keywords": [
-          "Animals",
-          "Animals 2026",
-          "where to watch Animals",
-          "Thriller movie",
-          "Drama movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Ben Affleck",
-          "Kerry Washington",
-          "where to watch Animals 2026",
-          "Animals streaming in Brazil and United States",
-          "Animals cast synopsis trailer and where to watch",
-          "what Thriller to watch this week"
+          "Jailer 2",
+          "Jailer 2 2026",
+          "where to watch Jailer 2",
+          "Action movie",
+          "Comedy movie",
+          "Crime movie",
+          "Rajinikanth",
+          "S. J. Suryah",
+          "where to watch Jailer 2 2026",
+          "Jailer 2 streaming in Brazil and United States",
+          "Jailer 2 cast synopsis trailer and where to watch",
+          "what Action to watch this week"
         ],
-        "canonicalQuery": "Animals"
+        "canonicalQuery": "Jailer 2"
       }
     }
   ]
