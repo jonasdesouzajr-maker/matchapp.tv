@@ -1,0 +1,37 @@
+{
+  "checks": 4,
+  "tests": [
+    {
+      "width": 320,
+      "click": true,
+      "worlds": 9,
+      "hub": 9,
+      "language": "pt-BR",
+      "escape": true
+    },
+    {
+      "width": 390,
+      "click": true,
+      "worlds": 9,
+      "hub": 9,
+      "language": "pt-BR",
+      "escape": true
+    },
+    {
+      "width": 820,
+      "click": true,
+      "worlds": 9,
+      "hub": 9,
+      "language": "pt-BR",
+      "escape": true
+    },
+    {
+      "width": 1440,
+      "click": true,
+      "worlds": 9,
+      "hub": 9,
+      "language": "pt-BR",
+      "escape": true
+    }
+  ]
+}

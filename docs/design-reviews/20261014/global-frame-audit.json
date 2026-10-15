@@ -1,0 +1,930 @@
+{
+  "checks": 50,
+  "results": [
+    {
+      "route": "/",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "mh-topbox",
+          "border": "1px"
+        },
+        {
+          "selector": "trending-rail",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/explore.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "how-it-works",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/music.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/about.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/discover.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/pricing/pricing.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/kids/",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": true,
+      "isRTL": false
+    },
+    {
+      "route": "/privacy.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/register.html",
+      "width": 320,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "mh-topbox",
+          "border": "1px"
+        },
+        {
+          "selector": "trending-rail",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/explore.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "how-it-works",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/music.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/about.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/discover.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/pricing/pricing.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/kids/",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": true,
+      "isRTL": false
+    },
+    {
+      "route": "/privacy.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/register.html",
+      "width": 390,
+      "frame": 3,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "mh-topbox",
+          "border": "1px"
+        },
+        {
+          "selector": "trending-rail",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/explore.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "how-it-works",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/music.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/about.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/discover.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/pricing/pricing.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/kids/",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": true,
+      "isRTL": false
+    },
+    {
+      "route": "/privacy.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/register.html",
+      "width": 820,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "mh-topbox",
+          "border": "1px"
+        },
+        {
+          "selector": "trending-rail",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/explore.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "how-it-works",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/music.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/about.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/discover.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/pricing/pricing.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/kids/",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": true,
+      "isRTL": false
+    },
+    {
+      "route": "/privacy.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/register.html",
+      "width": 1366,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "mh-topbox",
+          "border": "1px"
+        },
+        {
+          "selector": "trending-rail",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/explore.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "explore-card",
+          "border": "1px"
+        },
+        {
+          "selector": "how-it-works",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/music.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [
+        {
+          "selector": "hub-header",
+          "border": "1px"
+        }
+      ],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/about.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/discover.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/pricing/pricing.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/kids/",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": true,
+      "isRTL": false
+    },
+    {
+      "route": "/privacy.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    },
+    {
+      "route": "/register.html",
+      "width": 1920,
+      "frame": 4,
+      "position": "fixed",
+      "hitTest": "none",
+      "color": "rgb(225, 187, 112)",
+      "shadow": "rgba(255, 236, 188, 0.36) 0px 0px 0px 1px inset, rgba(210, 157, 69, 0.075) 0px 0px 12px 0px inset",
+      "overflow": 0,
+      "seen": [],
+      "isKids": false,
+      "isRTL": false
+    }
+  ]
+}

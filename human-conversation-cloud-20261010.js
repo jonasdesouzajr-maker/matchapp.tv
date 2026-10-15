@@ -78,36 +78,8 @@
       });
       return;
     }
-    if (!('speechSynthesis' in window)) {
-      window.showToast?.(typeof window.t === 'function' ? window.t('discover.noTts') : 'Voice playback is not supported in this browser.', true);
-      return;
-    }
-    if (btn?.classList.contains('speaking')) {
-      speechSynthesis.cancel(); btn.classList.remove('speaking'); return;
-    }
-    speechSynthesis.cancel();
-    const S = window.MatchSettings;
-    let voices = [];
-    try { voices = S?.listVoices ? await S.listVoices() : speechSynthesis.getVoices(); } catch (_) { voices = speechSynthesis.getVoices(); }
-    const utter = new SpeechSynthesisUtterance(String(textValue || ''));
-    // Never let account voice preferences or OS defaults switch Jonas female.
-    const v = window.MatchAppJonasVoicePolicy?.select?.(voices, lang()) || null;
-    if (!v) {
-      window.showToast?.('An approved masculine voice is not installed. The answer remains readable.', true);
-      return;
-    }
-    utter.voice = v;
-    utter.lang = v.lang;
-    const configuredRate = Number(S?.get?.('voiceRate'));
-    const configuredPitch = Number(S?.get?.('voicePitch'));
-    utter.rate = Number.isFinite(configuredRate) && configuredRate > 0 ? configuredRate : .96;
-    utter.pitch = 1; // Do not morph Jonas's selected natural voice.
-    utter.volume = 1;
-    document.querySelectorAll('.discover-speak.speaking').forEach(b => b.classList.remove('speaking'));
-    if (btn) btn.classList.add('speaking');
-    utter.onend = () => btn?.classList.remove('speaking');
-    utter.onerror = () => btn?.classList.remove('speaking');
-    speechSynthesis.speak(utter);
+    // Never substitute an OS voice if the approved provider player is unavailable.
+    btn?.classList.remove('speaking');
   }
 
   function patchReadAloud(){

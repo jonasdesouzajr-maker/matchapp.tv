@@ -55,7 +55,9 @@ test('directory stubs stop /pricing/ and /profile/ from 404ing',()=>{
  assert.match(profile,/noindex/i);
  assert.equal(fs.existsSync(path.join(root,'_redirects')),false);
  assert.equal(fs.existsSync(path.join(root,'_headers')),false);
- assert.equal(fs.existsSync(path.join(root,'vercel.json')),false);
+ const preview=JSON.parse(read('vercel.json'));
+ assert.equal(preview.outputDirectory,'.');
+ assert.equal('redirects' in preview,false);
 });
 test('legacy .cc host is bounced to the canonical .tv host',()=>{
  const settings=read('settings.js'),i18n=read('i18n.js'),four=read('404.html');

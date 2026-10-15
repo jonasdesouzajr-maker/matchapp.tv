@@ -53,6 +53,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { callOpenAIPrimary } from "./openai-primary.ts";
 import { callOpenRouterFirst } from "./openrouter-backup.ts";
 import { callGroqBackup } from "./groq-backup.ts";
+import { withGeminiLatency, uniqueGeminiRoutes } from "./latency-config.mjs";
 
 // Service-role client, used ONLY to meter requests (migration 008). The key
 // lives in Edge Function secrets and never leaves the server.
@@ -732,7 +733,7 @@ Deno.serve(async (req: Request) => {
     let freeProjectBlocked = false;
     // If a whole project is capped or its key is invalid, skip its other models.
     const blockedPaidKeys = new Set<string>();
-    for (const route of routes) {
+    for (const route of uniqueGeminiRoutes(routes,body?.kidsMode === true)) {
       // Preserve a final Groq attempt when the preceding Gemini models stall.
       if (Date.now() >= providerDeadline - groqReserveMs) break;
       if (route.tier === "free" && freeProjectBlocked) continue;
@@ -759,7 +760,7 @@ Deno.serve(async (req: Request) => {
               },
               body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: buildGenerationConfig(isDiscoverMode,isProposalMode,isRankMode),
+                generationConfig: withGeminiLatency(buildGenerationConfig(isDiscoverMode,isProposalMode,isRankMode),model,body?.kidsMode === true),
               }),
             }
           );

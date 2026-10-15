@@ -1,0 +1,25 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path');
+const {JSDOM}=require('jsdom');
+const source=fs.readFileSync(path.join(__dirname,'../android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt'),'utf8');
+const script=source.match(/private const val APP_MODE_JS = """([\s\S]*?)"""/)?.[1];
+assert.ok(script,'native shell script must be present');
+test('native page-start injection tolerates an absent root and later installs one shell',()=>{
+ const dom=new JSDOM('<!doctype html><html><head></head><body></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+ const {window}=dom,document=window.document,root=document.documentElement;
+ Object.defineProperty(document,'documentElement',{configurable:true,get:()=>null});
+ assert.doesNotThrow(()=>window.eval(script),'onPageStarted can precede the document root');
+ assert.equal(window.MATCHAPP_ANDROID,true);
+ assert.equal(document.getElementById('matchapp-android-shell'),null);
+ delete document.documentElement;
+ assert.equal(document.documentElement,root);
+ assert.doesNotThrow(()=>window.eval(script),'commit-visible injection must retry normally');
+ assert.equal(root.classList.contains('matchapp-ai-android'),true);
+ assert.equal(root.classList.contains('ads-empty'),true);
+ assert.equal(document.querySelectorAll('#matchapp-android-shell').length,1);
+ assert.doesNotThrow(()=>window.eval(script),'page-finished retry must remain safe');
+ assert.equal(document.querySelectorAll('#matchapp-android-shell').length,1);
+ window.close();
+});

@@ -15,10 +15,10 @@ test('compact mobile header is enabled in the canonical page without changing ot
  assert.match(css,/\.ma-menu-wrap[\s\S]*?grid-column:11\/13/);
  assert.match(css,/@media \(max-width:345px\)/);
 });
-test('only top-box how-it-works button is created and existing onboarding handler is retained',()=>{
+test('only top-box how-it-works button opens the current translated guide',()=>{
  const js=read('matchapp-ia.js'),css=read('mobile-header-compact.css');
  assert.match(js,/if\(isHome&&!qs\('\.ma-how-button',nav\)\)/);
- assert.match(js,/how\.addEventListener\('click',\(\)=>window\.MatchAppOnboarding\?\.start\?\.\(\)\)/);
+ assert.ok(js.includes("location.href='/how-it-works.html'"));
  assert.doesNotMatch(js,/if\(!qs\('\.ma-how-link',hero\)\)/);
  assert.match(css,/\.home-hero > \.ma-how-link \{display:none!important\}/);
 });

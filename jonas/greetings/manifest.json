@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-10-14",
+  "source": "OpenAI Cedar via production jonas-speech; voice identity and audio/mpeg verified before saving.",
+  "privateContent": false,
+  "clips": {
+    "en": {
+      "text": "Hi, I'm Jonas. How can I help?",
+      "file": "en.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "3ea6193d60a57c28dc05ead8cb89ffde5285fc2d2d301ace47cc90e2339b7f6f"
+    },
+    "pt-BR": {
+      "text": "Olá, sou o Jonas. Como posso ajudar?",
+      "file": "pt-BR.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "cf1f4beb1dc9c21d3b285c818f508fb81458ebb4029303144fe2644460da86bd"
+    }
+  }
+}

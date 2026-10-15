@@ -112,15 +112,25 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     }});
   }
   function begin(){
+    cancelled=false;
     if(enhanced){prefix=input.value.trim();finalText='';interimText='';cancelled=false;}
     listening=true;
     micBtn.classList.add('mic-listening');
     input.placeholder=tr('voice.listening','🎙️ Listening... speak now');
     voiceEvent('matchapp:voice-state',{state:'listening'});
   }
+  document.addEventListener('matchapp:langchange',()=>{
+    if(!listening)return;
+    // Do not submit a transcript captured under the previous recognition locale.
+    cancelled=true;
+    try{recognition?.abort()}catch(_){}
+    try{if(nativeVoiceAvailable())window.MatchAppNativeVoice.stop?.()}catch(_){}
+    recognition=null;finish();
+    input.placeholder=tr('voice.placeholder',originalPlaceholder);
+  });
   function acceptTranscript(value){
     const raw=String(value||'').trim();
-    if(!raw||(enhanced&&cancelled)){finish();return;}
+    if(!raw||cancelled){finish();return;}
     const spoken=enhanced?punctuateSpeech(raw,window.MATCH_LANG||'en'):raw;
     const transcript=enhanced&&spoken?[prefix,spoken].filter(Boolean).join(' '):spoken;
     if(!transcript){finish();return;}
@@ -183,17 +193,20 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     }
 
     recognition=new SR();
+    const activeRecognizer=recognition;
     recognition.lang=activeSpeechLang();
     recognition.interimResults=true;
     recognition.continuous=false;
     recognition.maxAlternatives=1;
 
     recognition.onstart=()=>{
+      if(recognition!==activeRecognizer)return;
       begin();
       if(!enhanced)input.value='';
       grow();
     };
     recognition.onresult=e=>{
+      if(cancelled||recognition!==activeRecognizer)return;
       if(enhanced){
         if(cancelled)return;
         const finals=[],interims=[];
@@ -215,8 +228,9 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
         if(final.trim())acceptTranscript(final);
       }
     };
-    recognition.onerror=e=>showError(e.error||'unavailable');
+    recognition.onerror=e=>{if(recognition===activeRecognizer&&!cancelled)showError(e.error||'unavailable')};
     recognition.onend=()=>{
+      if(recognition!==activeRecognizer)return;
       if(enhanced&&listening&&!cancelled&&finalText.trim())acceptTranscript(finalText);
       else if(listening)finish();
     };

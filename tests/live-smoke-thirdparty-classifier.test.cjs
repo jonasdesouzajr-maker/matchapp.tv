@@ -6,11 +6,16 @@ test('only a precisely identified cross-origin Spotify transport error becomes a
  const start=smoke.indexOf('function isSpotifyIframeTransportDisconnect(error){');
  const end=smoke.indexOf('\nfunction capturePageError(',start);
  assert.ok(start>0&&end>start,'Isolated external iframe classifier exists');
- const fn=vm.runInNewContext(smoke.slice(start,end)+'; isSpotifyIframeTransportDisconnect',{});
+ const fn=vm.runInNewContext(smoke.slice(start,end)+'; isSpotifyIframeTransportDisconnect',{URL});
  assert.equal(fn({stack:'TransportError: Cannot authenticate disconnected transport.\n    at _authenticate (https://embed-cdn.spotifycdn.com/_next/static/pages/player.js:1:1)'}),true);
  assert.equal(fn({stack:'TransportError: Cannot authenticate disconnected transport.\n    at _authenticate (https://matchapp.tv/app.js:1:1)'}),false,'a first-party exception must still fail QA');
  assert.equal(fn({stack:'TypeError: App failed\n    at _authenticate (https://embed-cdn.spotifycdn.com/_next/static/pages/player.js:1:1)'}),false,'a different external exception is not suppressed');
  assert.equal(fn({message:'TransportError: Cannot authenticate disconnected transport.'}),false,'missing proven external stack stays fatal');
+ const external='TransportError: Cannot authenticate disconnected transport.\n    at _authenticate (https://embed-cdn.spotifycdn.com/_next/static/pages/player.js:1:1)';
+ for(const host of ['embed-cdn.spotifycdn.com.evil.example','evil.example/https://embed-cdn.spotifycdn.com','embed-cdn.spotifycdn.com@evil.example']){
+   assert.equal(fn({stack:external.replace('embed-cdn.spotifycdn.com',host)}),false,'untrusted URL provenance stays fatal');
+ }
+ assert.equal(fn({stack:external+'\n    at app (https://matchapp.tv/app.js:1:1)'}),false,'mixed first-party stack stays fatal');
 });
 test('cross-origin iframe warning is reported, while the browser error audit remains strict',()=>{
  assert.match(smoke,/report\.warnings\.push\(warning\)/);

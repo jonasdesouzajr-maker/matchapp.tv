@@ -4,7 +4,7 @@ function setup({prefix='',path='/',native=false}={}){
  const handlers={},input={value:prefix,scrollHeight:200,style:{},getAttribute:()=>'',dispatchEvent(){},addEventListener(k,f){handlers[k]=f}},mic={style:{},classList:{add(){},remove(){}},setAttribute(){},addEventListener(k,f){handlers['mic:'+k]=f}};
  let sr;class SR{constructor(){sr=this}start(){this.onstart()}stop(){this.onend()}abort(){this.onend()}}
  const win={MATCH_LANG:'pt-BR',SpeechRecognition:SR};if(native)win.MatchAppNativeVoice={start(){}};
- const ctx={window:win,location:{pathname:path},document:{getElementById:id=>id==='specific-search-input'?input:mic},Event:class Event{constructor(){this.isTrusted=false}}};
+ const ctx={window:win,location:{pathname:path},document:{addEventListener(k,f){handlers['document:'+k]=f},getElementById:id=>id==='specific-search-input'?input:mic},Event:class Event{constructor(){this.isTrusted=false}}};
  vm.runInNewContext(source,ctx);let calls=[];
  win.initVoiceInput('specific-search-input','mic-btn-index',text=>calls.push(text));
  const result=(final,text)=>Object.assign([{transcript:text}],{isFinal:final});

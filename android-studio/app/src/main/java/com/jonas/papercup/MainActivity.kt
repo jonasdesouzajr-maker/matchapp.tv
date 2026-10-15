@@ -406,7 +406,9 @@ class MainActivity : AppCompatActivity() {
         root.addView(host, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         root.postDelayed(introDeadline, 8000L)
         video.setOnPreparedListener { player ->
-            player.setVolume(0f, 0f)
+            // Preserve the original video soundtrack at a restrained volume.
+            // The OS media-volume/mute setting remains authoritative.
+            player.setVolume(0.55f, 0.55f)
             player.isLooping = false
             markIntroSeen()
             root.removeCallbacks(introDeadline)
@@ -1090,6 +1092,9 @@ class MainActivity : AppCompatActivity() {
               window.MATCHAPP_ANDROID_KIDS_BLOCKED = true;
               try { localStorage.setItem('match_ad_free','true'); } catch (e) {}
               var root = document.documentElement;
+              // onPageStarted can run before the new document has a root.
+              // Commit/finish injections retry normally once parsing begins.
+              if (!root) return;
               root.classList.add('ads-empty','matchapp-android','matchapp-ai-android','is-chrome');
 
               if (!document.getElementById('matchapp-android-shell')) {

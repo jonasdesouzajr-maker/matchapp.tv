@@ -175,9 +175,18 @@ async function localizeResponses(){
 }
 function boot(){
  paint();buildLabels();labels();rememberResponses();
+ const pendingNodes=new Set();
  const observer=new MutationObserver(records=>{
-  if(queued||!records.some(r=>r.addedNodes.length))return;
-  queued=true;requestAnimationFrame(()=>{queued=false;paintFoldLabels();paintHeader();records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.matches?.('button,[role="button"],a,[role="link"]'))localizeControl(n);labels(n);}}));rememberResponses();});
+  // Keep every inserted element while a paint is queued. Dropping later
+  // records left delayed cookie controls and other chrome in English.
+  records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1)pendingNodes.add(n)}));
+  if(queued||!pendingNodes.size)return;
+  queued=true;requestAnimationFrame(()=>{
+   queued=false;const nodes=Array.from(pendingNodes);pendingNodes.clear();
+   paintFoldLabels();paintHeader();
+   nodes.forEach(n=>{if(!n.isConnected)return;if(n.matches?.('button,[role="button"],a,[role="link"]'))localizeControl(n);labels(n)});
+   rememberResponses();
+  });
  });
  observer.observe(document.body,{childList:true,subtree:true});
  document.addEventListener('matchapp:langchange',()=>{buildLabels();paint();labels();localizeResponses();requestAnimationFrame(paint);});

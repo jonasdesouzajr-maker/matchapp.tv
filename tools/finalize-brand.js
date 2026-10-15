@@ -24,7 +24,7 @@ function files(dir){
 }
 function regionalBrand(brand){
  if(!brand?.closest('.site-header'))return null;
- const copy=brand.cloneNode(true),images=[...copy.querySelectorAll('img')].filter(img=>img.getAttribute('src')==='/assets/brand/matchapp-tv-ai-v2.svg');
+ const copy=brand.cloneNode(true);copy.classList.add('matchapp-brand-link');const images=[...copy.querySelectorAll('img')].filter(img=>img.getAttribute('src')==='/assets/brand/matchapp-tv-ai-v2.svg');
  if(!images.length)return null;
  images[0].classList.add('matchapp-wordmark');
  for(const duplicate of images.slice(1))duplicate.remove();
@@ -36,7 +36,7 @@ function finalizeBrand(){
   let html=fs.readFileSync(file,'utf8');
   if(!/<body[\s>]/i.test(html)||file.includes('yandex_'))continue;
   const rel=path.relative(ROOT,file).replace(/\\/g,'/');
-  if(rel.startsWith('private-voice/'))continue;
+  if(rel.startsWith('private-voice/')||rel.startsWith('android-studio/')||rel.startsWith('tests/')||rel.startsWith('artifacts/')||rel.startsWith('reports/'))continue;
   const kids=rel==='kids/index.html'||rel.startsWith('kids/');
   html=name(html,kids);
   if(kids){
@@ -44,7 +44,7 @@ function finalizeBrand(){
   }
   const dom=new JSDOM(html,{includeNodeLocations:true}),doc=dom.window.document,edits=[];
   const replace=(el,text)=>{const at=dom.nodeLocation(el);if(at)edits.push([at.startOffset,at.endOffset,text]);};
-  const brand=doc.querySelector('body > header a[href="/"],body > header a[href="/kids/"],.kids-brand');
+  const brand=doc.querySelector('body > header a[href="/"],body > header a[href="/kids/"],.hub-header .hub-brand,.kids-brand');
   const regional=regionalBrand(brand);
   if(regional){replace(brand,regional)}
   else if(brand&&!brand.querySelector('.matchapp-wordmark,.ebook-text-wordmark')&&!brand.closest('#home-brand-lockup')){
@@ -66,6 +66,14 @@ function finalizeBrand(){
   }
   edits.sort((a,b)=>b[0]-a[0]).forEach(([start,end,text])=>html=html.slice(0,start)+text+html.slice(end));
   if(!doc.querySelector('link[href^="/brand.css"]'))html=html.replace('</head>','<link rel="stylesheet" href="/brand.css?v=195">\n</head>');
+  if(!kids){
+    html=html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,'$1?v=20261014-matte1$2');
+    html=html.replace(/(src=["']\/(?:page-shell|matchapp-ia|avatar-builder|daily-checkin)\.js)(?:\?([^"']*))?(["'])/g,function(all,prefix,query,end){
+      if((query||'').includes('approvedlogo=20261014'))return all;
+      return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
+    });
+  }
+  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>\n</head>');
   html=name(html,kids);
   const original=fs.readFileSync(file,'utf8');
   if(html!==original){fs.writeFileSync(file,html);count++;}

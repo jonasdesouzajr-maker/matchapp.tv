@@ -18,7 +18,10 @@ test('legacy domain stays out of canonical search files and GitHub Pages has no 
   assert.doesNotMatch(sitemap, /https?:\/\/(?:www\.)?matchapp\.cc/i);
   assert.equal(fs.existsSync(path.join(root,'_redirects')), false);
   assert.equal(fs.existsSync(path.join(root,'_headers')), false);
-  assert.equal(fs.existsSync(path.join(root,'vercel.json')), false);
+  const preview = JSON.parse(read('vercel.json'));
+  assert.equal(preview.outputDirectory,'.');
+  assert.equal('redirects' in preview,false);
+  assert.equal('rewrites' in preview,false);
 });
 
 test('VIP copy remediation stays tied to the established 10/day entitlement', () => {

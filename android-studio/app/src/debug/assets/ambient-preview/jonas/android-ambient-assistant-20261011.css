@@ -1,3 +1,4 @@
+@import url("/patches/jonas-premium-glass.css?v=20261014-dock2");
 /* Android-only ambient Jonas. All colors, sizing and motion are server-editable.
    Never touches Kids, AdSense, Matching or the native Play Billing entitlement. */
 html.matchapp-ai-android #ma-jonas-home,
@@ -5,7 +6,7 @@ html.matchapp-ai-android #matchapp-android-avatar-launcher,
 html.matchapp-ai-android #matchapp-android-avatar-spacer,
 html.matchapp-ai-android body.ma-jonas-inline #ma-ai-entry,
 html.matchapp-ai-android #ma-jonas-inline-dock {display:none!important}
-#ma-ambient-jonas{--ja-gold:#f5d38f;--ja-ink:#1a1128;position:fixed;z-index:2147483200;left:auto;top:auto;right:16px;bottom:max(90px,env(safe-area-inset-bottom));width:78px;height:78px;pointer-events:auto;touch-action:none;isolation:isolate}
+#ma-ambient-jonas{--ja-gold:#f5d38f;--ja-ink:#1a1128;position:fixed;z-index:2147483200;left:auto;top:max(16px,env(safe-area-inset-top));right:16px;bottom:auto;width:78px;height:78px;pointer-events:auto;touch-action:none;isolation:isolate}
 #ma-ambient-jonas[hidden],#ma-ambient-panel[hidden]{display:none!important}
 #ma-ambient-jonas *{box-sizing:border-box}
 #ma-ambient-jonas .ja-bubble{width:76px;height:76px;position:relative;display:block;padding:2px;border:2px solid var(--ja-gold);border-radius:50%;background:radial-gradient(circle,#573570 0%,#20132c 75%);box-shadow:0 5px 22px #000a,0 0 0 4px #dbbd7340,0 0 24px #b16be04b;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
@@ -13,7 +14,7 @@ html.matchapp-ai-android #ma-jonas-inline-dock {display:none!important}
 #ma-ambient-jonas .ja-bubble img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 18%;pointer-events:none}
 #ma-ambient-jonas .ja-live{position:absolute;right:3px;bottom:4px;width:15px;height:15px;border-radius:50%;border:2px solid #281834;background:#65dfaa;box-shadow:0 0 10px #3ca978;pointer-events:none}
 #ma-ambient-jonas button:focus-visible,#ma-ambient-panel button:focus-visible{outline:2px solid white;outline-offset:3px}
-#ma-ambient-panel{position:fixed!important;z-index:2147483300!important;left:12px;right:12px;bottom:max(13px,env(safe-area-inset-bottom));width:min(444px,calc(100vw - 24px));height:min(73dvh,680px);max-height:calc(100dvh - 52px);margin:0 auto;display:flex;flex-direction:column;border:1px solid #eac984b0;border-radius:25px;background:#21162f;box-shadow:0 20px 62px #000b,0 0 0 9999px #08040f45;overflow:hidden;transform-origin:var(--ja-origin-x,95%) var(--ja-origin-y,100%);animation:ja-rise .29s cubic-bezier(.15,.85,.2,1)}
+#ma-ambient-panel{position:fixed!important;z-index:2147483300!important;left:12px;right:12px;bottom:max(13px,env(safe-area-inset-bottom));width:min(444px,calc(100vw - 24px));height:min(73dvh,680px);max-height:calc(100dvh - 52px);margin:0 auto;display:flex;flex-direction:column;border:1px solid #eac984b0;border-radius:25px;background:#21162f;box-shadow:0 16px 42px #0009;overflow:hidden;transform-origin:var(--ja-origin-x,95%) var(--ja-origin-y,100%);animation:ja-rise .29s cubic-bezier(.15,.85,.2,1)}
 #ma-ambient-panel .ja-panel-head{height:61px;flex:none;display:flex;gap:12px;align-items:center;padding:8px 11px 8px 14px;border-bottom:1px solid #f6d79938;background:linear-gradient(110deg,#47305e,#241630)}
 #ma-ambient-panel .ja-face{width:42px;height:42px;border:2px solid #e3c47e;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none}
 #ma-ambient-panel .ja-head-text{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.25}
@@ -54,4 +55,56 @@ html.matchapp-ai-android #ma-jonas-inline-dock {display:none!important}
 @media(prefers-reduced-motion:reduce){
  #ma-ambient-panel[data-speaking="1"] .ja-face-wrap{animation:none!important}
  #ma-ambient-panel .ja-face-wrap .ja-mouth{transition:none!important}
+}
+
+/* Full-viewport Android/WebView Jonas chat: top-start face, close to saved bubble.
+   Use visualViewport custom properties from the existing presentation enhancer so
+   keyboard resize never strands the microphone or composer offscreen. */
+html body #ma-ambient-panel{
+ position:fixed!important;z-index:2147483300!important;isolation:isolate;
+ left:var(--ja-view-left,0px)!important;top:var(--ja-view-top,0px)!important;
+ right:auto!important;bottom:auto!important;margin:0!important;
+ box-sizing:border-box!important;
+ width:var(--ja-view-width,100vw)!important;height:var(--ja-view-height,100dvh)!important;
+ max-width:none!important;max-height:none!important;min-height:0!important;
+ padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))!important;
+ border-radius:0!important;transform:none!important;transform-origin:center!important;
+ animation:ja-fullscreen-enter .18s ease-out!important;
+ display:flex!important;flex-direction:column!important;
+ background:linear-gradient(140deg,#261735,#110a20)!important;
+}
+html body #ma-ambient-panel[hidden]{display:none!important}
+html body #ma-ambient-panel .ja-panel-head{
+ flex:0 0 auto!important;min-height:clamp(60px,11vh,114px)!important;
+ max-height:26%!important;height:auto!important;
+ display:flex;gap:clamp(8px,2vw,20px);align-items:center;
+ padding:clamp(8px,2vw,16px)!important;border-radius:14px 14px 0 0;
+}
+html body #ma-ambient-panel .ja-face-wrap{
+ flex:0 0 auto!important;width:clamp(52px,10vw,92px)!important;height:clamp(52px,10vw,92px)!important;
+ max-width:25vw!important;max-height:20vh!important;
+}
+html body #ma-ambient-panel .ja-head-text{min-width:0!important;overflow-wrap:break-word}
+html body #ma-ambient-panel .ja-head-text span{
+ white-space:normal!important;line-height:1.4;max-height:4lh;overflow:hidden;
+}
+html body #ma-ambient-panel .ja-close{
+ margin-inline-start:auto;min-width:44px!important;min-height:44px!important;flex:0 0 44px!important;
+}
+html body #ma-ambient-panel .ja-hello{
+ flex:0 0 auto!important;max-height:22%!important;min-height:0!important;
+ padding:8px 14px!important;overflow:auto!important;line-height:1.55!important;white-space:normal!important;
+}
+html body #ma-ambient-panel iframe{
+ display:block!important;flex:1 1 auto!important;min-height:0!important;width:100%!important;
+ border:0!important;position:relative!important;
+}
+@keyframes ja-fullscreen-enter{from{opacity:.75}to{opacity:1}}
+@media(max-height:480px){
+ html body #ma-ambient-panel .ja-panel-head{min-height:52px!important;padding:5px 12px!important}
+ html body #ma-ambient-panel .ja-face-wrap{width:44px!important;height:44px!important}
+ html body #ma-ambient-panel .ja-hello{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html body #ma-ambient-panel{animation:none!important}
 }

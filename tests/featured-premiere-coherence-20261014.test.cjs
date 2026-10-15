@@ -1,0 +1,30 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
+const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8');
+const html=read('index.html'),translations=read('i18n.js'),app=read('app.js');
+test('Premiere poster, visible title, translated details, and saved title refer to the same series',()=>{
+ const d=new JSDOM(html),card=d.window.document.querySelector('#spotlight-ahs13');
+ assert.ok(card);
+ const title=card.querySelector('.spotlight-title').textContent;
+ assert.equal(title,'American Horror Story: 13');
+ assert.match(card.querySelector('.spotlight-desc').textContent,/American Horror Story season 13/);
+ assert.match(card.querySelector('#spotlight-poster-img').getAttribute('alt'),/American Horror Story: 13/);
+ assert.match(card.querySelector('#spotlight-poster-img').getAttribute('src'),/ahs13-official\.png/);
+ assert.ok(fs.existsSync(path.join(root,'ahs13-official.png')));
+ assert.match(card.querySelector('.spotlight-poster').getAttribute('aria-label'),/American Horror Story: 13/);
+ assert.match(card.querySelector('.spotlight-ask').getAttribute('onclick'),/American Horror Story season 13/);
+ assert.doesNotMatch(card.textContent,/Carrie|Prime Video|October 7/);
+ assert.match(app,/title:\s*'American Horror Story: 13'/);
+ const eyebrow=card.querySelector('.spotlight-eyebrow');
+ assert.equal(eyebrow.getAttribute('data-i18n'),'spotlight.eyebrow');
+ d.window.close();
+});
+test('All 14 locales describe a released featured title instead of a future unrelated premiere',()=>{
+ const chunks=translations.match(/'spotlight\.desc':\s*"[^"]+"/g)||[];
+ assert.equal(chunks.length,14);
+ for(const chunk of chunks)assert.ok(chunk.includes('American Horror Story'),chunk);
+ assert.equal((translations.match(/'spotlight\.eyebrow':/g)||[]).length,14);
+ assert.equal((translations.match(/'spotlight\.ribbon':/g)||[]).length,14);
+ assert.doesNotMatch(translations,/Most Anticipated Premiere|Estreia Mais Aguardada/);
+});

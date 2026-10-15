@@ -19,8 +19,8 @@ test('Jonas changes expression and speech visemes only from speech-level and pla
  assert.match(avatar,/smile\.jpg/);
  assert.match(avatar,/meterLevel>=\.23\?'aa'/);
  assert.match(avatar,/if\(active&&meterAt-lastFrameAt>=FRAME_HOLD_MS\)/);
- assert.match(speech,/utter\.onboundary=function/);
- assert.match(speech,/options\.onLevel\?\.\(\.24\)/);
+ assert.match(speech,/decoded\.getChannelData\(0\)/);
+ assert.match(speech,/opts\.onLevel\(Math\.min/);
 });
 test('cookie notice never obscures Jonas composer and no code path scrolls the whole document on replies',()=>{
  const workspace=read('jonas/chat-workspace-20261011.js');

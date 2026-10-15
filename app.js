@@ -409,7 +409,8 @@ const MATCH_SOUND_PALETTE = Object.freeze({
     /* Result reveal: deliberately quieter than the old 600→1200 Hz alarm-like sweep. */
     result:   [{freq:392,duration:.11,gain:.007,type:'sine'},{freq:587.33,duration:.14,delay:.055,gain:.005,type:'sine'},{freq:783.99,duration:.17,delay:.115,gain:.0035,type:'sine'}],
     together: [{freq:392,duration:.09,gain:.006,type:'sine'},{freq:523.25,duration:.12,delay:.06,gain:.0045,type:'sine'},{freq:659.25,duration:.14,delay:.12,gain:.0035,type:'sine'}],
-    soundOn:  [{freq:440,duration:.06,gain:.006,type:'sine'},{freq:659.25,duration:.09,delay:.04,gain:.004,type:'sine'}]
+    soundOn:  [{freq:440,duration:.06,gain:.006,type:'sine'},{freq:659.25,duration:.09,delay:.04,gain:.004,type:'sine'}],
+    mic:      [{freq:493.88,duration:.07,gain:.005,type:'sine'},{freq:698.46,duration:.09,delay:.048,gain:.0035,type:'sine'}]
 });
 window.playMatchAppSound = function(kind='tap') {
     if (!soundEnabled()) return;

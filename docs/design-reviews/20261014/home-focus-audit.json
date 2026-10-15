@@ -1,0 +1,494 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "ctaBackground": "linear-gradient(130deg, rgb(255, 231, 176) 0%, rgb(232, 187, 114) 57%, rgb(188, 136, 81) 100%)",
+      "ctaColor": "rgb(41, 26, 51)",
+      "inviteVisible": false,
+      "lang": "pt-BR",
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "nav": [
+        {
+          "href": "/discover.html",
+          "text": "Falar com Jonas",
+          "rect": {
+            "x": 28,
+            "y": 232,
+            "w": 84,
+            "h": 38
+          }
+        },
+        {
+          "href": "/#trending-rail",
+          "text": "Em alta",
+          "rect": {
+            "x": 118,
+            "y": 232,
+            "w": 84,
+            "h": 38
+          }
+        },
+        {
+          "href": "/together.html",
+          "text": "Juntos",
+          "rect": {
+            "x": 208,
+            "y": 232,
+            "w": 84,
+            "h": 38
+          }
+        },
+        {
+          "href": "/profile/profile.html",
+          "text": "Perfil",
+          "rect": {
+            "x": 28,
+            "y": 276,
+            "w": 84,
+            "h": 38
+          }
+        },
+        {
+          "href": "/kids/",
+          "text": "Crianças",
+          "rect": {
+            "x": 118,
+            "y": 276,
+            "w": 84,
+            "h": 38
+          }
+        },
+        {
+          "href": "/explore.html",
+          "text": "Explore mais",
+          "rect": {
+            "x": 208,
+            "y": 276,
+            "w": 84,
+            "h": 38
+          }
+        }
+      ],
+      "focusVisible": [],
+      "retained": [
+        {
+          "id": "trending-rail",
+          "exists": true,
+          "visible": true
+        },
+        {
+          "id": "questionnaire-box",
+          "exists": true,
+          "visible": false
+        },
+        {
+          "id": "result-box",
+          "exists": true,
+          "visible": false
+        }
+      ],
+      "topLabels": [],
+      "buttonText": "Explore mais",
+      "posterCount": 74,
+      "bottom": {
+        "scrollY": 1242,
+        "scrollHeight": 2002,
+        "viewport": 760,
+        "footer": 88.671875
+      }
+    },
+    {
+      "width": 390,
+      "ctaBackground": "linear-gradient(130deg, rgb(255, 231, 176) 0%, rgb(232, 187, 114) 57%, rgb(188, 136, 81) 100%)",
+      "ctaColor": "rgb(41, 26, 51)",
+      "inviteVisible": false,
+      "lang": "pt-BR",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "nav": [
+        {
+          "href": "/discover.html",
+          "text": "Falar com Jonas",
+          "rect": {
+            "x": 28,
+            "y": 232,
+            "w": 107,
+            "h": 38
+          }
+        },
+        {
+          "href": "/#trending-rail",
+          "text": "Em alta",
+          "rect": {
+            "x": 141,
+            "y": 232,
+            "w": 107,
+            "h": 38
+          }
+        },
+        {
+          "href": "/together.html",
+          "text": "Juntos",
+          "rect": {
+            "x": 255,
+            "y": 232,
+            "w": 107,
+            "h": 38
+          }
+        },
+        {
+          "href": "/profile/profile.html",
+          "text": "Perfil",
+          "rect": {
+            "x": 28,
+            "y": 276,
+            "w": 107,
+            "h": 38
+          }
+        },
+        {
+          "href": "/kids/",
+          "text": "Crianças",
+          "rect": {
+            "x": 141,
+            "y": 276,
+            "w": 107,
+            "h": 38
+          }
+        },
+        {
+          "href": "/explore.html",
+          "text": "Explore mais",
+          "rect": {
+            "x": 255,
+            "y": 276,
+            "w": 107,
+            "h": 38
+          }
+        }
+      ],
+      "focusVisible": [],
+      "retained": [
+        {
+          "id": "trending-rail",
+          "exists": true,
+          "visible": true
+        },
+        {
+          "id": "questionnaire-box",
+          "exists": true,
+          "visible": false
+        },
+        {
+          "id": "result-box",
+          "exists": true,
+          "visible": false
+        }
+      ],
+      "topLabels": [],
+      "buttonText": "Explore mais",
+      "posterCount": 74,
+      "bottom": {
+        "scrollY": 1153,
+        "scrollHeight": 1913,
+        "viewport": 760,
+        "footer": 158.28125
+      }
+    },
+    {
+      "width": 820,
+      "ctaBackground": "linear-gradient(130deg, rgb(255, 231, 176) 0%, rgb(232, 187, 114) 57%, rgb(188, 136, 81) 100%)",
+      "ctaColor": "rgb(41, 26, 51)",
+      "inviteVisible": false,
+      "lang": "pt-BR",
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "nav": [
+        {
+          "href": "/discover.html",
+          "text": "Falar com Jonas",
+          "rect": {
+            "x": 29,
+            "y": 272,
+            "w": 248,
+            "h": 42
+          }
+        },
+        {
+          "href": "/#trending-rail",
+          "text": "Em alta",
+          "rect": {
+            "x": 286,
+            "y": 272,
+            "w": 248,
+            "h": 42
+          }
+        },
+        {
+          "href": "/together.html",
+          "text": "Juntos",
+          "rect": {
+            "x": 543,
+            "y": 272,
+            "w": 248,
+            "h": 42
+          }
+        },
+        {
+          "href": "/profile/profile.html",
+          "text": "Perfil",
+          "rect": {
+            "x": 29,
+            "y": 323,
+            "w": 248,
+            "h": 42
+          }
+        },
+        {
+          "href": "/kids/",
+          "text": "Crianças",
+          "rect": {
+            "x": 286,
+            "y": 323,
+            "w": 248,
+            "h": 42
+          }
+        },
+        {
+          "href": "/explore.html",
+          "text": "Explore mais",
+          "rect": {
+            "x": 543,
+            "y": 323,
+            "w": 248,
+            "h": 42
+          }
+        }
+      ],
+      "focusVisible": [],
+      "retained": [
+        {
+          "id": "trending-rail",
+          "exists": true,
+          "visible": true
+        },
+        {
+          "id": "questionnaire-box",
+          "exists": true,
+          "visible": false
+        },
+        {
+          "id": "result-box",
+          "exists": true,
+          "visible": false
+        }
+      ],
+      "topLabels": [],
+      "buttonText": "Explore mais",
+      "posterCount": 74,
+      "bottom": {
+        "scrollY": 843,
+        "scrollHeight": 1943,
+        "viewport": 1100,
+        "footer": 683.296875
+      }
+    },
+    {
+      "width": 1366,
+      "ctaBackground": "linear-gradient(130deg, rgb(255, 231, 176) 0%, rgb(232, 187, 114) 57%, rgb(188, 136, 81) 100%)",
+      "ctaColor": "rgb(41, 26, 51)",
+      "inviteVisible": false,
+      "lang": "pt-BR",
+      "scrollWidth": 1366,
+      "innerWidth": 1366,
+      "nav": [
+        {
+          "href": "/discover.html",
+          "text": "Falar com Jonas",
+          "rect": {
+            "x": 50,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/#trending-rail",
+          "text": "Em alta",
+          "rect": {
+            "x": 232,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/together.html",
+          "text": "Juntos",
+          "rect": {
+            "x": 415,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/profile/profile.html",
+          "text": "Perfil",
+          "rect": {
+            "x": 597,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/kids/",
+          "text": "Crianças",
+          "rect": {
+            "x": 780,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/explore.html",
+          "text": "Explore mais",
+          "rect": {
+            "x": 962,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        }
+      ],
+      "focusVisible": [],
+      "retained": [
+        {
+          "id": "trending-rail",
+          "exists": true,
+          "visible": true
+        },
+        {
+          "id": "questionnaire-box",
+          "exists": true,
+          "visible": false
+        },
+        {
+          "id": "result-box",
+          "exists": true,
+          "visible": false
+        }
+      ],
+      "topLabels": [],
+      "buttonText": "Explore mais",
+      "posterCount": 74,
+      "bottom": {
+        "scrollY": 769,
+        "scrollHeight": 1669,
+        "viewport": 900,
+        "footer": 473.6875
+      }
+    },
+    {
+      "width": 1920,
+      "ctaBackground": "linear-gradient(130deg, rgb(255, 231, 176) 0%, rgb(232, 187, 114) 57%, rgb(188, 136, 81) 100%)",
+      "ctaColor": "rgb(41, 26, 51)",
+      "inviteVisible": false,
+      "lang": "pt-BR",
+      "scrollWidth": 1920,
+      "innerWidth": 1920,
+      "nav": [
+        {
+          "href": "/discover.html",
+          "text": "Falar com Jonas",
+          "rect": {
+            "x": 327,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/#trending-rail",
+          "text": "Em alta",
+          "rect": {
+            "x": 509,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/together.html",
+          "text": "Juntos",
+          "rect": {
+            "x": 692,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/profile/profile.html",
+          "text": "Perfil",
+          "rect": {
+            "x": 874,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/kids/",
+          "text": "Crianças",
+          "rect": {
+            "x": 1057,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        },
+        {
+          "href": "/explore.html",
+          "text": "Explore mais",
+          "rect": {
+            "x": 1239,
+            "y": 274,
+            "w": 171,
+            "h": 43
+          }
+        }
+      ],
+      "focusVisible": [],
+      "retained": [
+        {
+          "id": "trending-rail",
+          "exists": true,
+          "visible": true
+        },
+        {
+          "id": "questionnaire-box",
+          "exists": true,
+          "visible": false
+        },
+        {
+          "id": "result-box",
+          "exists": true,
+          "visible": false
+        }
+      ],
+      "topLabels": [],
+      "buttonText": "Explore mais",
+      "posterCount": 74,
+      "bottom": {
+        "scrollY": 943,
+        "scrollHeight": 1843,
+        "viewport": 900,
+        "footer": 299.6875
+      }
+    }
+  ]
+}

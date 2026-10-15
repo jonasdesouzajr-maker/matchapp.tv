@@ -1,0 +1,144 @@
+/* Adult Explore Worlds: scoped presentation only; no matcher, quotas, ads or Kids changes. */
+html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important;
+ align-items:stretch!important;overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger{
+ appearance:none;-webkit-appearance:none;cursor:pointer;min-width:0;min-height:48px;
+ display:flex!important;align-items:center;justify-content:center;gap:7px;
+ padding:10px 9px!important;border-radius:15px!important;color:#28142c!important;
+ border:1px solid #ffe6b1!important;background:linear-gradient(120deg,#fff0be,#e4b771 56%,#bd84a7)!important;
+ box-shadow:inset 0 1px #fff9,0 5px 20px #b079b344!important;
+ font-weight:900!important;letter-spacing:.015em;position:relative;isolation:isolate;
+ transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger::before{
+ content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+ background:linear-gradient(115deg,transparent 26%,#fff9 46%,transparent 61%);
+ background-size:220% 100%;animation:maWorldsGlimmer 7s ease-in-out infinite;opacity:.55;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger svg{
+ width:20px;height:20px;flex:none;stroke:#3b1c47!important;fill:none!important;stroke-width:2;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger:hover,
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger[aria-expanded="true"]{
+ transform:translateY(-2px)!important;filter:brightness(1.04);
+ box-shadow:0 7px 24px #d1a05066,inset 0 1px #fff9!important;
+}
+html body.page-home #mh-topbox .ma-luxe-shortcuts > button.ma-worlds-trigger:focus-visible{
+ outline:3px solid #fff5d1!important;outline-offset:3px!important;
+}
+@keyframes maWorldsGlimmer{0%,55%{background-position:190% 0}95%,100%{background-position:-140% 0}}
+@media(max-width:900px){
+ html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > :is(a.ma-luxe-shortcut,button.ma-worlds-trigger){
+  min-width:0!important;width:100%!important;max-width:none!important;grid-column:auto!important;
+  flex:none!important;box-sizing:border-box!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > a.ma-browser-kids:last-child{
+  grid-column:1 / -1!important;
+ }
+}
+/* Inline discovery: a real region expanding inside Home, never a modal/backdrop. */
+.ma-worlds-inline[hidden]{display:none!important}
+html body.page-home #mh-topbox .ma-worlds-inline{
+ position:relative!important;display:block;width:100%;min-width:0;
+ grid-column:1 / -1;max-width:100%;margin:9px auto 0;order:30;
+ z-index:auto!important;box-sizing:border-box;isolation:isolate;
+}
+html body.page-home #mh-topbox .ma-worlds-panel{
+ position:relative;max-width:100%;width:100%;padding:clamp(15px,2vw,24px);
+ background:linear-gradient(145deg,#2b203d,#1a152a);
+ border:1px solid rgba(241,204,137,.4);border-radius:20px;
+ color:#f5e8d5;box-shadow:0 10px 24px rgba(0,0,0,.24);overflow:visible;
+}
+.ma-worlds-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 16px}
+.ma-worlds-eyebrow{font:750 .69rem/1.5 "Space Grotesk",system-ui,sans-serif;
+ color:#e6c88f;letter-spacing:.12em}
+.ma-worlds-heading h2{font:800 clamp(1.38rem,3vw,2rem)/1.18 "Outfit",system-ui,sans-serif;
+ margin:3px 0 5px;color:#f6dca5}
+.ma-worlds-heading p{font:400 .91rem/1.5 "Inter",system-ui,sans-serif;color:#d6c9e0;margin:0}
+.ma-worlds-close{appearance:none;cursor:pointer;flex:none;min-width:42px;min-height:42px;
+ padding:6px;border:1px solid #d8c08a66;border-radius:13px;
+ background:transparent;color:#f5e6cb;font-size:1.4rem}
+.ma-worlds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ma-world-card{position:relative;display:flex;flex-direction:column;gap:6px;min-height:119px;min-width:0;
+ padding:15px;border:1px solid #bfaeaa39;border-radius:15px;
+ background:rgba(207,177,215,.055);color:#f8ead9;text-decoration:none;
+ transition:border-color .2s ease,background-color .2s ease,transform .23s ease}
+.ma-world-card::after{content:"↗";position:absolute;right:13px;top:10px;color:#f5dfacaa}
+.ma-world-card:hover,.ma-world-card:focus-visible{border-color:#efc98b88;background:rgba(198,167,221,.12);transform:translateY(-2px)}
+.ma-world-card:focus-visible,.ma-worlds-close:focus-visible,.ma-worlds-see-all:focus-visible{
+ outline:3px solid #ffe5a6;outline-offset:3px}
+.ma-world-icon{font-size:1.65rem;line-height:1.1}
+.ma-world-card strong{font:760 clamp(.89rem,1.4vw,1.04rem)/1.3 "Outfit",system-ui,sans-serif;
+ overflow-wrap:anywhere;hyphens:auto}
+.ma-world-card small{font:400 .82rem/1.4 "Inter",system-ui,sans-serif;color:#d4c6df;
+ overflow-wrap:anywhere;hyphens:auto}
+.ma-worlds-see-all{display:flex;justify-content:center;align-items:center;gap:8px;
+ margin:14px auto 0;min-height:44px;padding:9px 14px;border-radius:14px;
+ width:max-content;max-width:100%;color:#281d32!important;
+ background:#f2d49a;text-decoration:none;font:760 .89rem/1.2 "Space Grotesk",system-ui,sans-serif;
+ text-align:center;overflow-wrap:anywhere}
+@media(max-width:660px){
+ .ma-worlds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .ma-world-card{min-height:112px;padding:12px}
+ .ma-world-card small{font-size:.77rem}
+}
+@media(max-width:355px){.ma-worlds-grid{grid-template-columns:repeat(1,minmax(0,1fr))}.ma-world-card{min-height:90px}}
+@media(prefers-reduced-motion:reduce){
+ .ma-world-card{transition:none!important}
+ .ma-world-card:hover{transform:none!important}
+}
+/* Only five editorial Home areas: hero, Top Titles, watch matcher,
+   premiere and weekly AI choice. Match Together remains at /together.html.
+   The AdSense slot that follows its old entry is legally preserved unchanged. */
+html body.page-home.ma-watch-focused .tg-entry{display:none!important}
+html body.page-home.ma-watch-focused #premiere-disclosure{display:block!important;max-width:min(100% - 20px,900px);margin:16px auto!important;overflow:visible}
+html body.page-home.ma-watch-focused #premiere-disclosure > summary{display:list-item;cursor:pointer;color:#f4d7a0;font-weight:850;padding:12px 16px;border:1px solid #e5c5896b;border-radius:14px;background:#291b34}
+html body.page-home.ma-watch-focused #premiere-disclosure[open] > summary{margin-bottom:10px}
+html body.page-home.ma-watch-focused #spotlight-ahs13{width:100%!important;max-width:100%!important;margin:0 auto!important}
+
+/* Override inherited two-row flex shortcut styling with a dedicated grid.
+   The existing precision header uses doubled selectors; match their specificity. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ align-items:stretch!important;justify-content:stretch!important;gap:8px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > :is(a.ma-luxe-shortcut,button.ma-worlds-trigger){
+ flex:none!important;min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;
+ grid-column:auto!important;align-self:stretch!important;
+}
+@media(max-width:900px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;
+ }
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts > a.ma-browser-kids:last-child{
+  grid-column:1 / -1!important;
+ }
+}
+
+/* A useful discovery promise replaces the retired redundant watch-question headline.
+   Remains inside the existing top box (no new Home section or extra nav tile). */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head > .mh-tagline[data-match-experience-heading]{
+ display:block!important;position:relative!important;
+ width:100%!important;max-width:100%!important;min-height:0!important;
+ margin:6px auto 0!important;padding:0 4px!important;
+ font-size:clamp(13px,2.3vw,20px)!important;line-height:1.25!important;
+ font-weight:800!important;letter-spacing:-.01em!important;
+ text-align:center!important;text-transform:none!important;
+ color:#ffe4aa!important;text-wrap:balance!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head{
+ height:auto!important;max-height:none!important;min-height:0!important;overflow:visible!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox{
+ grid-template-rows:auto auto auto!important;max-height:none!important;
+}
+@media(max-width:400px){
+ html body.page-home header#mh-topbox#mh-topbox#mh-topbox .mh-head > .mh-tagline[data-match-experience-heading]{
+  font-size:13px!important;margin-top:4px!important;
+ }
+}

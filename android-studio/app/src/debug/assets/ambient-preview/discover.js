@@ -456,7 +456,7 @@ function pickVoiceForLang(voices, lang) {
 }
 
 window.readAloud = function(text, btn) {
-    // Only the verified Jonas cloud voice or approved male OS voice may play here.
+    // Only the approved Jonas provider voices may play here.
     // This also animates his face during manually requested read-aloud.
     if(window.MatchAppJonasStage?.speak) {
         if(btn?.classList.contains('speaking')) {
@@ -469,53 +469,16 @@ window.readAloud = function(text, btn) {
         window.MatchAppJonasStage.speak(text,{autoListen:false}).finally(()=>btn?.classList.remove('speaking'));
         return;
     }
-    const nativeTts = !!(window.MatchAppNativeVoice && typeof window.MatchAppNativeVoice.speak === 'function');
-    if (!nativeTts && !('speechSynthesis' in window)) {
-        if (window.showToast) showToast((typeof t === 'function' ? t('discover.noTts') : 'Voice playback is not supported in this browser.'), true);
-        return;
-    }
-    // Toggle off if this button is already speaking.
-    if (btn && btn.classList.contains('speaking')) {
-        if (nativeTts) { try { window.MatchAppNativeVoice.stopSpeaking?.(); } catch (_) {} }
-        else speechSynthesis.cancel();
-        btn.classList.remove('speaking');
-        return;
-    }
-    const uiLang = window.MATCH_LANG || 'en';
-    const targetLang = ttsTargetLang(uiLang);
-    document.querySelectorAll('.discover-speak.speaking').forEach(b => b.classList.remove('speaking'));
-    if (btn) btn.classList.add('speaking');
-    if (nativeTts) {
-        window.matchAppNativeSpeechState = active => { if (!active && btn) btn.classList.remove('speaking'); };
-        try { window.MatchAppNativeVoice.speak(String(text || ''), targetLang); return; }
-        catch (_) { if (btn) btn.classList.remove('speaking'); }
-    }
-    speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    const voices = speechSynthesis.getVoices();
-
-    // Honour the user's choices from Profile > Settings. resolveVoice falls
-    // back to language matching when they have not picked one, or when the
-    // voice they picked is no longer installed on this device — an OS voice
-    // can be removed, and a stale voiceURI would otherwise silently mute
-    // playback rather than degrade to a sensible default.
-    const S = window.MatchSettings;
-    // Discovery is the continuation of Jonas: never read his answer with
-    // an unknown or female system voice, even if Settings picked one earlier.
-    const voice = window.MatchAppJonasVoicePolicy?.select?.(voices, targetLang) || null;
-    if (!voice) {
-        if (btn) btn.classList.remove('speaking');
-        window.showToast?.('An approved masculine voice is not installed. The answer remains readable.', true);
-        return;
-    }
-    utter.voice = voice;
-    utter.lang = voice.lang;
-    utter.rate = S ? S.get('voiceRate') : 1;
-    utter.pitch = 1;
-
-    utter.onend = () => { if (btn) btn.classList.remove('speaking'); };
-    utter.onerror = () => { if (btn) btn.classList.remove('speaking'); };
-    speechSynthesis.speak(utter);
+    const service=window.MatchAppJonasSpeech;
+    if(!service?.speak)return;
+    if(btn?.classList.contains('speaking')){service.stop();btn.classList.remove('speaking');return;}
+    service.unlock?.();
+    document.querySelectorAll('.discover-speak.speaking').forEach(b=>b.classList.remove('speaking'));
+    service.speak(String(text||'').slice(0,650),window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{
+      onStart:()=>btn?.classList.add('speaking'),
+      onEnd:()=>btn?.classList.remove('speaking'),
+      onError:()=>btn?.classList.remove('speaking')
+    }).catch(()=>btn?.classList.remove('speaking'));
 };
 
 /* ---------- Rendering ---------- */
@@ -1569,19 +1532,19 @@ function setAiWorkflow(progress, label, activeStep) {
 function startAiWorkflow() {
     if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
     let p = 7;
-    setAiWorkflow(p, 'Understanding your request…', 'understand');
+    setAiWorkflow(p, window.t?.('ai.understand') || 'Understanding your request…', 'understand');
     aiWorkflowTimer = setInterval(() => {
         p = Math.min(91, p + (p < 40 ? 7 : p < 72 ? 4 : 2));
-        if (p < 40) setAiWorkflow(p, 'Understanding your request…', 'understand');
-        else if (p < 74) setAiWorkflow(p, 'Matching titles and sources…', 'match');
-        else setAiWorkflow(p, 'Composing your answer…', 'answer');
+        if (p < 40) setAiWorkflow(p, window.t?.('ai.understand') || 'Understanding your request…', 'understand');
+        else if (p < 74) setAiWorkflow(p, window.t?.('ai.match') || 'Matching titles and sources…', 'match');
+        else setAiWorkflow(p, window.t?.('ai.answer') || 'Composing your answer…', 'answer');
     }, 520);
 }
 
 function finishAiWorkflow() {
     if (aiWorkflowTimer) clearInterval(aiWorkflowTimer);
     aiWorkflowTimer = null;
-    setAiWorkflow(100, 'Answer ready', 'answer');
+    setAiWorkflow(100, window.t?.('ai.ready') || 'Answer ready', 'answer');
 }
 window.startAiWorkflow = startAiWorkflow;
 window.finishAiWorkflow = finishAiWorkflow;
@@ -1644,7 +1607,7 @@ window.startNewChat = function () {
     const input = document.getElementById('discover-new-input');
     if (input) { input.value = ''; window.autoGrowComposer?.(); }
     history.replaceState(null, '', '/discover.html');
-    document.title = 'Talk to Our AI Concierge — MatchApp';
+    document.title = window.t?.('page.askTitle') || 'Talk to Jonas | MatchApp Ai';
     renderThreadList();
     refreshAiWorkspaceStatus();
     if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);
@@ -1799,6 +1762,7 @@ async function renderResultsInto(grid, items, baseIndex) {
 async function runAskAndRender(question, opts) {
     if (!question || !question.trim()) return;
     const voiceOrigin = !!opts?.voiceOrigin;
+    const responseLanguage = window.MATCH_LANG || 'en';
     question = question.trim();
     // Short greetings are conversation, not an entertainment title query.
     // Respond immediately, do not consume credits or query provider catalogues.
@@ -1931,6 +1895,17 @@ async function runAskAndRender(question, opts) {
         payload.answer = window.sanitizeDisplayText(payload.answer, ['answer', 'synopsis', 'text']);
     }
 
+    // A completed old-language response must not be shown, spoken or charged
+    // after the person changes the app language while the request is pending.
+    if (responseLanguage !== (window.MATCH_LANG || 'en')) {
+        finishAiWorkflow();
+        if (loadEl) loadEl.style.display = 'none';
+        appendAssistantBubble(window.t('ai.languageChanged'), [], {instant:true});
+        const field=document.getElementById('discover-new-input');
+        if(field&&!field.value)field.value=question;
+        return;
+    }
+
     // Only a verified, successful live answer earns a debit. Offline source
     // fallbacks and transport/JSON failures remain free.
     if (payload?._live === true && String(payload.answer || '').trim() &&
@@ -1941,7 +1916,9 @@ async function runAskAndRender(question, opts) {
             'Your allowance changed while the answer was generated. No result was charged; try again.', [], { instant:true });
         return;
     }
-    await refreshAiWorkspaceStatus();
+    // The successful debit above remains authoritative. Repainting the badge
+    // must not add another quota network roundtrip before showing/speaking it.
+    void refreshAiWorkspaceStatus();
 
     // Routed through the shared track() helper so this reaches GTM's
     // dataLayer — a direct gtag() call is a no-op under a GTM container.
@@ -2107,7 +2084,7 @@ async function runAskAndRender(question, opts) {
             const note = document.createElement('p');
             note.setAttribute('role', 'status');
             note.className = 'discover-card-recovery';
-            note.textContent = 'Title details could not load. Please try again shortly.';
+            note.textContent = window.t?.('ai.detailsRetry') || 'Title details could not load. Please try again shortly.';
             bubble.grid.replaceChildren(note);
         }
     }

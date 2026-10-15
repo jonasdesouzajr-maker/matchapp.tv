@@ -1,5 +1,8 @@
 @import url("/adult-page-compact.css?v=20260929-1");
 @import url("/premium-unified-20261010.css?v=20261010-luxe1");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import url("/patches/premium-type-20261014.css?v=type3");
+@import url("/patches/premium-touch-motion-20261014.css?v=touch1");
 /* MatchApp brand system — crisp from phones through 8K. */
 .matchapp-wordmark{display:block!important;width:clamp(14rem,26vw,22rem)!important;max-width:100%!important;height:auto!important;aspect-ratio:600/104;object-fit:contain!important;border:0!important;border-radius:0!important;box-shadow:none!important;flex:none;transform-origin:left center;filter:drop-shadow(0 5px 15px rgba(0,0,0,.3)) drop-shadow(0 0 9px rgba(229,193,88,.08));animation:brandReveal .7s cubic-bezier(.2,.8,.2,1) both;transition:transform .25s ease,filter .25s ease!important}
 .matchapp-brand-link:hover .matchapp-wordmark,.matchapp-brand-link:focus-visible .matchapp-wordmark{transform:translateY(-2px) scale(1.025);filter:drop-shadow(0 7px 18px rgba(0,0,0,.32)) drop-shadow(0 0 13px rgba(229,193,88,.14))}
@@ -89,13 +92,13 @@ html[data-kids-mode] :where(button,.kids-btn,.kids-chip):not(:disabled):active{t
 html:not(.kids-mode) .matchapp-brand-link>img:not(.matchapp-wordmark):not([src^="/kids/"]):not([src*="/kids/"]),
 html:not(.kids-mode) .matchapp-brand-link picture>img:not([src^="/kids/"]):not([src*="/kids/"]),
 html:not(.kids-mode) .brand-logo:not(.kids-mascot):not([src*="/kids/"]){
-  content:url("/assets/brand/matchapp-logo-new.avif?v=20260918-logo-news2")!important;
+  content:url("/assets/brand/matchapp-icon-approved.png?v=20261013-approved1")!important;
   object-fit:cover!important;object-position:center!important;
   border:0!important;border-radius:50%!important;clip-path:circle(49.2% at 50% 50%)!important;
   background:transparent!important;box-shadow:none!important;
 }
 html:not(.kids-mode) .brand-logo-placeholder{
-  background:transparent url("/assets/brand/matchapp-logo-new.avif?v=20260918-logo-news2") center/cover no-repeat!important;
+  background:transparent url("/assets/brand/matchapp-icon-approved.png?v=20261013-approved1") center/cover no-repeat!important;
   border:0!important;border-radius:50%!important;clip-path:circle(49.2% at 50% 50%)!important;
   box-shadow:none!important;
 }
@@ -487,4 +490,155 @@ html[data-kids-mode] .kids-brand-copy .kids-wordmark,
   letter-spacing:.01em!important;
   text-shadow:0 2px 0 #6f3d8f,0 0 14px #83e7ff66!important;
   white-space:nowrap;
+}
+
+/* Owner-approved 2026-10-13 mark: one source on every adult brand surface. */
+html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage))::before {
+ content:""!important;position:relative!important;inset:auto!important;flex:0 0 48px!important;width:48px!important;height:48px!important;
+ background: url('/assets/brand/matchapp-icon-approved.png?v=20261013-approved1') center 47% / 165% auto no-repeat!important;
+ border-radius:12px!important;filter:none!important;transform:none!important;animation:none!important;opacity:1!important;z-index:auto!important;
+}
+html body:not(.page-kids):not(.kids-body) .matchapp-brand-link>img:not(.matchapp-wordmark):not(.ma-brand-orb):not([src*='/kids/']){display:none!important}
+html body:not(.page-kids):not(.kids-body) .ma-brand-orb-stage {overflow:hidden!important;border-radius:16px!important}
+html body:not(.page-kids):not(.kids-body) .ma-brand-orb {content:normal!important;object-fit:cover!important;object-position:center 47%!important;border-radius:12px!important;clip-path:none!important}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb {transform:scale(1.65)!important}
+html body:not(.page-kids):not(.kids-body) .hub-brand img {object-fit:cover;object-position:center 47%;border-radius:12px}
+
+/* MATCHAPP PERIMETER FINISH | 2026-10-14
+ * One architectural frame, shared by adult destinations, Android WebView and
+ * Kids. CSS-only: fixed to the viewport, no hit testing, scrolling or JS.
+ * The verification file intentionally has no product styling.
+ * Protected advertising inventory is NOT selected here. */
+html {
+  --ma-screen-frame-width:3px;
+  --ma-screen-frame-gold:#e1bb70;
+  --ma-internal-stroke:1px;
+}
+html::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  box-sizing:border-box;
+  z-index:2147483646;
+  pointer-events:none!important;
+  border:var(--ma-screen-frame-width) solid var(--ma-screen-frame-gold);
+  border-radius:clamp(3px,.5vw,7px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,236,188,.36),
+    inset 0 0 12px rgba(210,157,69,.075);
+  background:transparent;
+  opacity:1;
+  transform:none;
+  animation:none!important;
+  transition:none!important;
+}
+@media (min-width:700px) {
+  html { --ma-screen-frame-width:4px; }
+}
+@media (forced-colors:active) {
+  html::after {border-color:CanvasText;box-shadow:none}
+}
+@media print {
+  html::after {display:none}
+}
+/* Interior frames are deliberately lighter than the perimeter. These known
+ * UI surfaces are separate from AdSense and AdMob placements. Keep source
+ * colors, elevations, radii and all functional geometry unchanged. */
+html body:not(.page-kids):not(.kids-body) :is(
+  #mh-topbox.app-header,
+  #trending-rail,
+  #questionnaire-box,
+  #result-box,
+  #loading-box,
+  .ma-luxe-shortcut,
+  .hub-header,
+  .explore-card,
+  .hub-links a,
+  .page-panel,
+  .hub-action
+) {
+  border-width:var(--ma-internal-stroke)!important;
+}
+/* Kids retains its existing cheerful colors while keeping its card edges
+ * lighter than the outer perimeter. Do not touch Kids matching or controls. */
+html.kids-mode body.page-kids :is(
+ .kids-card,.kids-panel,.kids-feature,.kids-source-card
+) {border-width:2px!important}
+
+/* PERMANENT DISPLAY INVARIANT: The viewport's gold frame is the final normal
+ * paint layer. No page component, card, video, Jonas panel, animation or ad may
+ * visually paint over this perimeter. Never lower the frame's stacking level.
+ * UI remains inside its inner edge; the frame never consumes pointer events. */
+html::after {
+ z-index:2147483647!important;
+ pointer-events:none!important;
+}
+/* Real modal top-layer content can appear above normal paint layers. Constrain
+ * native dialogs to leave an uninterrupted perimeter; do not restyle ads. */
+html dialog:modal {
+ box-sizing:border-box;
+ max-inline-size:calc(100vw - 2 * var(--ma-screen-frame-width));
+ max-block-size:calc(100dvh - 2 * var(--ma-screen-frame-width));
+}
+
+/* A native <dialog>.showModal() belongs to the top layer. Its backdrop must
+   not tint/occlude the four edges while the modal content is active. */
+html dialog:modal::backdrop {
+ clip-path:inset(var(--ma-screen-frame-width))!important;
+}
+
+/* Jonas stays completely inside the gold frame while moving. A touch release
+ * against any edge eases his original (single) bubble inward, never past it. */
+html body #ma-jonas-home.is-floating.ma-jonas-rebound:not(.is-chat-stage) {
+ transition:left .24s cubic-bezier(.22,1.35,.44,1),top .24s cubic-bezier(.22,1.35,.44,1)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html body #ma-jonas-home.is-floating.ma-jonas-rebound:not(.is-chat-stage){
+  transition:none!important;
+ }
+}
+
+/* Full-screen chats occupy the space INSIDE the gold perimeter, not underneath
+ * it. The actual visible viewport follows keyboard resizing via existing
+ * --ja-view-* values; no extra viewport listener or duplicate chat is added. */
+html body #ma-jonas-home#ma-jonas-home.is-chat-stage,
+html body #ma-ambient-panel#ma-ambient-panel:not([hidden]){
+ box-sizing:border-box!important;
+ position:fixed!important;
+ left:calc(var(--ja-view-left,0px) + var(--ma-screen-frame-width))!important;
+ top:calc(var(--ja-view-top,0px) + var(--ma-screen-frame-width))!important;
+ right:auto!important;bottom:auto!important;
+ width:calc(var(--ja-view-width,100vw) - 2 * var(--ma-screen-frame-width))!important;
+ height:calc(var(--ja-view-height,100dvh) - 2 * var(--ma-screen-frame-width))!important;
+ max-width:none!important;max-height:none!important;
+ overflow:hidden!important;
+}
+
+/* Permanent asset containment: discard the approved image's opaque outer
+ * canvas, preserving the actual rounded violet/gold mark and source pixels.
+ * Specificity covers native/header overrides without changing box geometry. */
+html body:not(.page-kids):not(.kids-body) :is(
+ .ma-brand-orb,.auth-brand-orb,.hub-brand img[src*="matchapp-icon-approved"],
+ img.brand-logo[src*="matchapp-icon-approved"]
+) {
+ -webkit-mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ -webkit-mask-size:100% 100%!important;mask-size:100% 100%!important;
+ -webkit-mask-repeat:no-repeat!important;mask-repeat:no-repeat!important;
+ background:transparent!important;
+}
+
+/* Brand links are wordmark lockups, not filled button cards. Keep generic
+ * depth/button gradients from introducing a rectangular matte behind them. */
+@layer ma-depth {
+ html body .ma-brand-home-link.ma-brand-home-link {
+  background:transparent!important;box-shadow:none!important;
+ }
+}
+html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage))::before {
+ -webkit-mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
+ -webkit-mask-size:165% auto!important;mask-size:165% auto!important;
+ -webkit-mask-position:center 47%!important;mask-position:center 47%!important;
+ -webkit-mask-repeat:no-repeat!important;mask-repeat:no-repeat!important;
 }
