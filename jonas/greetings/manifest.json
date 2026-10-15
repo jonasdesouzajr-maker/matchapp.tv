@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14",
+  "generatedAt": "2026-10-15",
   "source": "OpenAI Cedar via production jonas-speech; voice identity and audio/mpeg verified before saving.",
   "privateContent": false,
   "clips": {
@@ -8,14 +8,126 @@
       "file": "en.mp3",
       "provider": "openai",
       "voice": "cedar",
-      "sha256": "3ea6193d60a57c28dc05ead8cb89ffde5285fc2d2d301ace47cc90e2339b7f6f"
+      "sha256": "1d5f7c7317178a426c1a37bc2a36d4a97299c8f95a8aa94d8a25fb0e260252cd",
+      "sourceSha256": "3ea6193d60a57c28dc05ead8cb89ffde5285fc2d2d301ace47cc90e2339b7f6f",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
     },
     "pt-BR": {
       "text": "Olá, sou o Jonas. Como posso ajudar?",
       "file": "pt-BR.mp3",
       "provider": "openai",
       "voice": "cedar",
-      "sha256": "cf1f4beb1dc9c21d3b285c818f508fb81458ebb4029303144fe2644460da86bd"
+      "sha256": "d1c8eda8caffb9b90ecf64cd55f20fa49b7f9be4ef339365004187f2becc3f9b",
+      "sourceSha256": "cf1f4beb1dc9c21d3b285c818f508fb81458ebb4029303144fe2644460da86bd",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "es": {
+      "text": "¡Hola! Soy Jonas. ¿Qué te gustaría descubrir?",
+      "file": "es.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "c39dfefae24bdcbacd30ccb1e1e2a914abe079e6349b3c2e2ecfd8fa9a2fe69a",
+      "sourceSha256": "6e5950c653d37714a4c545646234d5b02fb35c59a64474815daea0ad8f94d5ea",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "fr": {
+      "text": "Bonjour, je suis Jonas. Que souhaitez-vous découvrir ?",
+      "file": "fr.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "5c76a779e52dafe583dc42fae5e593cc22d2c8aad457657ed2f7711d0b610318",
+      "sourceSha256": "0e3951be3807b1f9e114bddfc86b03dfb5d89827af58af0143837c77f03f00ac",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "de": {
+      "text": "Hallo, ich bin Jonas. Was möchtest du entdecken?",
+      "file": "de.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "a3f97ee3312ab8fdbdd0307735258668eee4f28b7e4a9b3b2c0e666817d05847",
+      "sourceSha256": "c0a4a316e971dc01ceb0563ad4488713c39e84c697df13240fb6f13389099e42",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "it": {
+      "text": "Ciao, sono Jonas. Cosa ti piacerebbe scoprire?",
+      "file": "it.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "c01ae3cdfcd75d97dfc2a70c9e06681ea8a8868d73a093503d5f5760abcf3f96",
+      "sourceSha256": "352a617188d43eeb696e797061030cb52effa076432ff8a04ee6efb98aa7ae38",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "tr": {
+      "text": "Merhaba, ben Jonas. Ne keşfetmek istersin?",
+      "file": "tr.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "9dafb205aeafb439206dfd6685f9de0afad15616066919f05db32303c23d8b6e",
+      "sourceSha256": "375d5fca1331dbb7df2a95764ee01440bfeea780f1950e40c30a9ade21bf17b6",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "ru": {
+      "text": "Привет, я Йонас. Что хочешь открыть для себя?",
+      "file": "ru.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "3f84193b8fbc485ac14f1b7d948f22ab969e764979362b83df071a843d17b76b",
+      "sourceSha256": "54d96376d7f126b8314e3c04fdaef9c91b4dcdf08795e34e3dc3ba4e3a2e4f4f",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "ar": {
+      "text": "مرحبًا، أنا جوناس. ماذا تود أن تكتشف؟",
+      "file": "ar.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "ea3f03739d1436166e59f95cbbb3d96ee0cd0b776c8aa64011a78c48c5f67e86",
+      "sourceSha256": "eed28db9cb992d4cab1a527d96222b913ca9054c6e70b543287c3f362b7cef80",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "hi": {
+      "text": "नमस्ते, मैं जोनास हूँ। आप क्या खोजना चाहेंगे?",
+      "file": "hi.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "2b30c0a9129876d2eb2d0fa3d97c6b16132eff0378caa844b99531bc43667a53",
+      "sourceSha256": "b9ab87ce1d665ff62c0848d9eec02b6b1e3d87b184986b6ddb410b0ce9eceacf",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "id": {
+      "text": "Halo, saya Jonas. Apa yang ingin kamu temukan?",
+      "file": "id.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "0561be3d2c7a93cc829527ed90ca03a20e38ae468c60204ca2ddf0efaab94478",
+      "sourceSha256": "bbe4f70ca2d84db7904f303f97523c4728fb8c76dd72dd2197c520b6f981e0bc",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "ja": {
+      "text": "こんにちは、ジョナスです。今日は何を見つけましょうか？",
+      "file": "ja.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "327cacf62bb61a600003ca7bfc5d84f179651dfa698061fa48b4aacbabe70d95",
+      "sourceSha256": "6009706ec6360aa588700378be759ea6fc91e2ae56f728786961bdc54f34f8c1",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "ko": {
+      "text": "안녕하세요, 저는 조나스예요. 무엇을 찾아볼까요?",
+      "file": "ko.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "bdc0da4e1af0caeef7baffc3eed0d7d72d34150d8d5ca3c1b5bcf0f364466ca1",
+      "sourceSha256": "5b6a0ef6d498ad14542402cab37488efb42ea002a222c530fad2658f3174fd88",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
+    },
+    "zh": {
+      "text": "你好，我是乔纳斯。今天想发现什么？",
+      "file": "zh.mp3",
+      "provider": "openai",
+      "voice": "cedar",
+      "sha256": "1b323005e82450f7f1cea8f543a1e67d47109e7b857a441b901a05ba8323fcba",
+      "sourceSha256": "3f9a33cef739ddfe9987623baea23e612eb90802969c0a777e699e9621c3bfdc",
+      "processing": "Leading silence trimmed; original speech and voice preserved."
     }
   }
 }
