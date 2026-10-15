@@ -16,6 +16,7 @@ async function geometry(page){return page.evaluate(()=>{
   for(const e of controls){const r=e.getBoundingClientRect(),n=nav.getBoundingClientRect();
    if(r.left<n.left-1||r.right>n.right+1||r.bottom>n.bottom+1)problems.push('outside nav: '+(e.id||e.className));
    if(!e.classList.contains('ma-menu-wrap')&&r.height<43.5)problems.push('short control: '+(e.id||e.className)+' '+r.height);
+   for(const child of e.querySelectorAll(':scope > span,:scope > img,:scope > svg')){if(!visible(child))continue;const c=child.getBoundingClientRect();if(c.left<r.left-1||c.right>r.right+1||c.top<r.top-1||c.bottom>r.bottom+1)problems.push('control content outside border: '+(e.id||e.className))}
    if(e.matches('.ma-luxe-shortcut')){const text=e.querySelector('span');if(text){const t=text.getBoundingClientRect();if(t.left<r.left||t.right>r.right+.5||t.bottom>r.bottom-.5||text.scrollWidth>text.clientWidth+1)problems.push('clipped label: '+text.textContent)}}
   }
   for(let i=0;i<controls.length;i++)for(let j=i+1;j<controls.length;j++){const a=controls[i].getBoundingClientRect(),b=controls[j].getBoundingClientRect();const overlapX=Math.min(a.right,b.right)-Math.max(a.left,b.left),overlapY=Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top);if(overlapX>1&&overlapY>1)problems.push('overlapping controls');}
@@ -35,7 +36,7 @@ async function geometry(page){return page.evaluate(()=>{
    await page.goto(base+route,{waitUntil:'domcontentloaded'});await page.waitForTimeout(1300);
    console.log('ROUTE',width,route);
    let result=await geometry(page);report.push({width,route,lang:'en',...result});fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));
-   if(route==='/'||route==='/together.html'||result.problems.length)await page.screenshot({path:path.join(out,(route==='/'?'home':route.replace(/[^a-z0-9]/gi,'_'))+'-'+width+'.png'),animations:'disabled'});
+   if(route==='/'||route==='/together.html'||width===320||width===1440||result.problems.length)await page.screenshot({path:path.join(out,(route==='/'?'home':route.replace(/[^a-z0-9]/gi,'_'))+'-'+width+'.png'),animations:'disabled'});
    if(route==='/'&&!process.env.QUICK){
     const select=page.locator('#lang-switcher-host select').first();
     for(const lang of langs){await select.selectOption(lang);await page.waitForTimeout(120);result=await geometry(page);report.push({width,route,lang,...result})}
