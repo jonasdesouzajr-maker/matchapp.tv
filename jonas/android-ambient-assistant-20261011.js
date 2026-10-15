@@ -15,19 +15,19 @@
  var key='matchapp_jonas_ambient_position_v1';
  var labels={
   en:{hello:"Hi, I'm Jonas. How can I help?",subject:'I can tell you more about this title.',close:'Close Jonas chat',open:'Talk to Jonas',state:'Your conversation stays over this page'},
-  pt:{hello:'Olá, sou o Jonas. Como posso ajudar?',subject:'Posso contar mais sobre este título.',close:'Fechar conversa com Jonas',open:'Conversar com Jonas',state:'Sua conversa fica sobre esta página'},
-  es:{hello:'¡Hola! Soy Jonas. ¿Cómo puedo ayudarte?',subject:'Puedo darte más detalles de este título.',close:'Cerrar chat con Jonas',open:'Hablar con Jonas',state:'Tu conversación sigue sobre esta página'},
-  fr:{hello:'Bonjour, je suis Jonas. Comment puis-je vous aider ?',subject:'Je peux vous en dire plus sur ce titre.',close:'Fermer la conversation',open:'Parler à Jonas',state:'Votre page reste ouverte'},
-  de:{hello:'Hallo, ich bin Jonas. Wie kann ich helfen?',subject:'Ich kann mehr über diesen Titel erzählen.',close:'Chat schließen',open:'Mit Jonas sprechen',state:'Diese Seite bleibt geöffnet'},
-  it:{hello:'Ciao, sono Jonas. Come posso aiutarti?',subject:'Posso raccontarti di più su questo titolo.',close:'Chiudi la chat',open:'Parla con Jonas',state:'Questa pagina rimane aperta'},
-  tr:{hello:'Merhaba, ben Jonas. Nasıl yardımcı olabilirim?',subject:'Bu yapım hakkında daha fazla bilgi verebilirim.',close:'Sohbeti kapat',open:'Jonas ile konuş',state:'Sayfanız açık kalır'},
-  ru:{hello:'Привет, я Йонас. Чем помочь?',subject:'Могу рассказать больше об этом произведении.',close:'Закрыть чат',open:'Поговорить с Йонасом',state:'Страница остаётся открытой'},
-  ar:{hello:'مرحباً، أنا جوناس. كيف يمكنني مساعدتك؟',subject:'يمكنني تقديم تفاصيل عن هذا العنوان.',close:'إغلاق المحادثة',open:'تحدث إلى جوناس',state:'ستبقى الصفحة مفتوحة'},
-  hi:{hello:'नमस्ते, मैं जोनास हूँ। कैसे मदद करूँ?',subject:'मैं इस शीर्षक के बारे में और बता सकता हूँ।',close:'चैट बंद करें',open:'जोनास से बात करें',state:'आपका पेज खुला रहेगा'},
-  id:{hello:'Halo, saya Jonas. Ada yang bisa saya bantu?',subject:'Saya bisa menjelaskan judul ini lebih lanjut.',close:'Tutup obrolan',open:'Bicara dengan Jonas',state:'Halaman Anda tetap terbuka'},
-  ja:{hello:'こんにちは、ジョナスです。何をお手伝いしましょうか？',subject:'この作品について詳しく説明できます。',close:'チャットを閉じる',open:'ジョナスと話す',state:'元のページは開いたままです'},
-  ko:{hello:'안녕하세요, 조나스입니다. 무엇을 도와드릴까요?',subject:'이 작품에 대해 더 자세히 알려드릴게요.',close:'채팅 닫기',open:'조나스와 대화',state:'현재 페이지는 그대로 유지됩니다'},
-  zh:{hello:'你好，我是乔纳斯。有什么可以帮你？',subject:'我可以进一步介绍这部作品。',close:'关闭聊天',open:'与乔纳斯交谈',state:'当前页面将保持打开'}
+  pt:{hello:"Olá, sou o Jonas. Como posso ajudar?",subject:'Posso contar mais sobre este título.',close:'Fechar conversa com Jonas',open:'Conversar com Jonas',state:'Sua conversa fica sobre esta página'},
+  es:{hello:"¡Hola! Soy Jonas. ¿Qué te gustaría descubrir?",subject:'Puedo darte más detalles de este título.',close:'Cerrar chat con Jonas',open:'Hablar con Jonas',state:'Tu conversación sigue sobre esta página'},
+  fr:{hello:"Bonjour, je suis Jonas. Que souhaitez-vous découvrir ?",subject:'Je peux vous en dire plus sur ce titre.',close:'Fermer la conversation',open:'Parler à Jonas',state:'Votre page reste ouverte'},
+  de:{hello:"Hallo, ich bin Jonas. Was möchtest du entdecken?",subject:'Ich kann mehr über diesen Titel erzählen.',close:'Chat schließen',open:'Mit Jonas sprechen',state:'Diese Seite bleibt geöffnet'},
+  it:{hello:"Ciao, sono Jonas. Cosa ti piacerebbe scoprire?",subject:'Posso raccontarti di più su questo titolo.',close:'Chiudi la chat',open:'Parla con Jonas',state:'Questa pagina rimane aperta'},
+  tr:{hello:"Merhaba, ben Jonas. Ne keşfetmek istersin?",subject:'Bu yapım hakkında daha fazla bilgi verebilirim.',close:'Sohbeti kapat',open:'Jonas ile konuş',state:'Sayfanız açık kalır'},
+  ru:{hello:"Привет, я Йонас. Что хочешь открыть для себя?",subject:'Могу рассказать больше об этом произведении.',close:'Закрыть чат',open:'Поговорить с Йонасом',state:'Страница остаётся открытой'},
+  ar:{hello:"مرحبًا، أنا جوناس. ماذا تود أن تكتشف؟",subject:'يمكنني تقديم تفاصيل عن هذا العنوان.',close:'إغلاق المحادثة',open:'تحدث إلى جوناس',state:'ستبقى الصفحة مفتوحة'},
+  hi:{hello:"नमस्ते, मैं जोनास हूँ। आप क्या खोजना चाहेंगे?",subject:'मैं इस शीर्षक के बारे में और बता सकता हूँ।',close:'चैट बंद करें',open:'जोनास से बात करें',state:'आपका पेज खुला रहेगा'},
+  id:{hello:"Halo, saya Jonas. Apa yang ingin kamu temukan?",subject:'Saya bisa menjelaskan judul ini lebih lanjut.',close:'Tutup obrolan',open:'Bicara dengan Jonas',state:'Halaman Anda tetap terbuka'},
+  ja:{hello:"こんにちは、ジョナスです。今日は何を見つけましょうか？",subject:'この作品について詳しく説明できます。',close:'チャットを閉じる',open:'ジョナスと話す',state:'元のページは開いたままです'},
+  ko:{hello:"안녕하세요, 저는 조나스예요. 무엇을 찾아볼까요?",subject:'이 작품에 대해 더 자세히 알려드릴게요.',close:'채팅 닫기',open:'조나스와 대화',state:'현재 페이지는 그대로 유지됩니다'},
+  zh:{hello:"你好，我是乔纳斯。今天想发现什么？",subject:'我可以进一步介绍这部作品。',close:'关闭聊天',open:'与乔纳斯交谈',state:'当前页面将保持打开'}
  };
  function selectedLanguage(){var saved='';try{saved=localStorage.getItem('match_lang')||''}catch(_){}return window.MATCH_LANG||saved||document.documentElement.lang||'en'}
  function locale(){var s=String(selectedLanguage()).toLowerCase();return labels[s.split('-')[0]]||labels.en}
@@ -83,7 +83,10 @@
   // Prepare only the small shared speech modules, never a hidden chat/frame
   // or a provider request. The first greeting can then start on the tap.
   if(!window.MatchAppJonasSpeech&&!document.getElementById('ma-ambient-speech-loader')){
-   var speech=document.createElement('script');speech.id='ma-ambient-speech-loader';speech.src='/jonas/secure-speech-20261010.js?v=20261014-fast1&voicepair=20261014-1';
+   var speech=document.createElement('script');speech.id='ma-ambient-speech-loader';speech.src='/jonas/secure-speech-20261010.js?v=20261014-fast1&voicepair=20261014-1&instant=20261015-1';
+   // A tap during module loading must resume as soon as speech is ready,
+   // without waiting for the much heavier conversation iframe's load event.
+   speech.onload=function(){if(open&&pendingCloud===epoch)cloudGreeting(epoch)};
    if(window.MatchAppJonasVoicePolicy)document.head.appendChild(speech);
    else{var policy=document.createElement('script');policy.src='/jonas/male-voice-policy-20261010.js';policy.onload=function(){document.head.appendChild(speech)};document.head.appendChild(policy)}
   }
@@ -290,7 +293,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   panel.querySelector('.ja-close').ariaLabel=locale().close;
   panel.querySelector('.ja-close').focus({preventScroll:true});
   root.hidden=true;
-  // Start the local TTS immediately on the actual click. Iframe parsing/network
+  // Start the prepared recording on the actual click. Iframe parsing/network
   // must not sit on the critical path to the spoken greeting.
   spokenGreeting(epoch);
   // A fresh title selection starts its own source-backed information card.

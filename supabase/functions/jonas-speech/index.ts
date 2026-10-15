@@ -12,7 +12,9 @@ async function fingerprint(value:string){
  const raw=new TextEncoder().encode(secret+":"+value);
  return Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",raw))).map(b=>b.toString(16).padStart(2,"0")).join("");
 }
-async function synth(text:string,locale:string):Promise<{audio:Uint8Array,provider:string,mime:string}|null>{
+// Keep the existing buffered contract for older clients. New clients can play
+// Cedar's 24 kHz signed little-endian PCM as it arrives, before synthesis ends.
+async function synth(text:string,locale:string,stream=false):Promise<{audio:Uint8Array|ReadableStream<Uint8Array>,provider:string,mime:string}|null>{
  const openai=Deno.env.get("OPENAI_API_KEY")?.trim();
  if(openai){
   try{
@@ -20,12 +22,36 @@ async function synth(text:string,locale:string):Promise<{audio:Uint8Array,provid
     method:"POST",headers:{"Authorization":"Bearer "+openai,"Content-Type":"application/json"},
     signal:AbortSignal.timeout(18000),
     body:JSON.stringify({
-     model:"gpt-4o-mini-tts",voice:"cedar",response_format:"mp3",speed:1,
+     model:"gpt-4o-mini-tts",voice:"cedar",response_format:stream?"pcm":"mp3",speed:1,
      input:text,
      instructions:"Speak ONLY the supplied text in its original language ("+locale+"). A warm, confident, distinctly masculine, mid-low baritone voice for Jonas, an adult entertainment concierge. Clear, naturally paced, articulate, not robotic. Never change the meaning, add speech or switch language."
     })
    });
-   if(resp.ok){const data=new Uint8Array(await resp.arrayBuffer());if(data.length>100&&data.length<4_000_000)return {audio:data,provider:"openai",mime:"audio/mpeg"};}
+   if(resp.ok){
+    if(stream&&resp.body){
+     const reader=resp.body.getReader();
+     // Validate the start before committing headers, so empty/error responses
+     // still reach the approved Charon fallback. Never buffer the full reply.
+     const first=await reader.read();
+     if(!first.done&&first.value.length){
+      let size=first.value.length;
+      const audio=new ReadableStream<Uint8Array>({
+       start(controller){controller.enqueue(first.value)},
+       async pull(controller){
+        try{
+         const next=await reader.read();
+         if(next.done){controller.close();return}
+         size+=next.value.length;
+         if(size>=4_000_000)throw new Error("invalid_audio");
+         controller.enqueue(next.value);
+        }catch(error){await reader.cancel().catch(()=>{});controller.error(error)}
+       },
+       cancel(reason){return reader.cancel(reason)}
+      });
+      return {audio,provider:"openai",mime:"audio/pcm;rate=24000"};
+     }
+    }else{const data=new Uint8Array(await resp.arrayBuffer());if(data.length>100&&data.length<4_000_000)return {audio:data,provider:"openai",mime:"audio/mpeg"};}
+   }
    else console.error("[jonas-speech] OpenAI HTTP",resp.status);
   }catch(error){console.error("[jonas-speech] OpenAI unavailable",String(error).slice(0,80));}
  }
@@ -86,7 +112,7 @@ Deno.serve(async(req:Request)=>{
  const bucket=await fingerprint(userId?"user:"+userId:"guest:"+trustedIp);
  const {data:allowed,error:limitError}=await admin.rpc("jonas_speech_reserve",{p_bucket:bucket,p_limit:userId?35:12,p_global_limit:700});
  if(limitError||allowed!==true)return result({error:"speech_limit_reached"},429,origin);
- const speech=await synth(text,localeMap[language]);
+ const speech=await synth(text,localeMap[language],body?.stream===true);
  if(!speech)return result({error:"speech_provider_unavailable"},503,origin);
- return new Response(speech.audio,{status:200,headers:{...headers,"Content-Type":speech.mime,"X-Jonas-Voice":speech.provider==="openai"?"male-cedar":"male-charon","Access-Control-Expose-Headers":"X-Jonas-Voice","Cache-Control":"private,no-store","Content-Length":String(speech.audio.length)}});
+ return new Response(speech.audio,{status:200,headers:{...headers,"Content-Type":speech.mime,"X-Jonas-Voice":speech.provider==="openai"?"male-cedar":"male-charon","Access-Control-Expose-Headers":"X-Jonas-Voice","Cache-Control":"private,no-store",...(speech.audio instanceof Uint8Array?{"Content-Length":String(speech.audio.length)}:{})}});
 });

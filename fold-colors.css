@@ -307,3 +307,16 @@ html body.page-home #trending-rail.lazy-foldable:not(.lazy-open){display:none!im
 html body.page-home #ma-concierge #questionnaire-box .match-more-filters + button[data-i18n="q.submit"]{
  margin-top:18px!important;position:relative!important;bottom:auto!important;
 }
+
+/* Match the watch selector's 14px opening gap on every adult surface.
+   Scope to fold content: never change sponsored units or their geometry. */
+html body.page-home{--ma-fold-content-gap:14px}
+html body.page-home :is(#premiere-disclosure,#weekly-pick-disclosure)[open] > .spotlight-card,
+html body.page-home #global-events .global-events-fold[open] > .global-events-body,
+html body.page-home #latest-news[open] > .ma-news-panel{
+ margin-top:var(--ma-fold-content-gap)!important;
+}
+html body.page-home :is(.match-more-filters,.ebook-home-picks,.ebook-saved,.share-how)[open] > summary,
+html body.page-home details[open] > .seo-fold-summary{
+ margin-bottom:var(--ma-fold-content-gap)!important;
+}
