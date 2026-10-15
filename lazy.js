@@ -46,10 +46,16 @@ function mountGeneric(cfg,section){
  if(!section)return;
  if(section.dataset.lazyFoldMounted==='1'){alignGenericHead(section);return;}
  section.dataset.lazyFoldMounted='1';section.dataset.foldKey=cfg.key;section.classList.add('lazy-foldable');
- const head=document.createElement('button');head.type='button';head.className='lazy-head';head.dataset.foldKey=cfg.key;
- head.innerHTML='<span class="lazy-head-label"></span><span class="lazy-head-chevron" aria-hidden="true">⌄</span>';
+ // Match Together is a destination, not a collapsible panel. The legacy card
+ // is hidden by the Home IA, so folding it makes this action a dead end.
+ const togetherLink=cfg.key==='together';
+ const head=document.createElement(togetherLink?'a':'button');
+ if(togetherLink){head.href='/together.html';head.style.textDecoration='none';}
+ else head.type='button';
+ head.className='lazy-head';head.dataset.foldKey=cfg.key;
+ head.innerHTML='<span class="lazy-head-label"></span><span class="lazy-head-chevron" aria-hidden="true">'+(togetherLink?'↗':'⌄')+'</span>';
  head.querySelector('.lazy-head-label').textContent=labelFor(cfg,section);
- head.addEventListener('click',()=>{const open=!section.classList.contains('lazy-open');setGeneric(section,open);if(open&&cfg.key==='askai')document.querySelector('#ma-install-offer .ma-offer-close')?.click();if(!lazyOn())remember(cfg.key,open)});
+ if(!togetherLink)head.addEventListener('click',()=>{const open=!section.classList.contains('lazy-open');setGeneric(section,open);if(open&&cfg.key==='askai')document.querySelector('#ma-install-offer .ma-offer-close')?.click();if(!lazyOn())remember(cfg.key,open)});
  section.parentNode.insertBefore(head,section);
  if(cfg.key==='concierge')mountWatchPreview(section);
  if(cfg.key==='trending'){const title=section.querySelector(':scope > h4');if(title)title.hidden=true;}
