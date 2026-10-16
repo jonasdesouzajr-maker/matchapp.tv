@@ -21,7 +21,7 @@ test('a single shared frame always paints last while preserving input and scroll
 });
 test('native modal backdrop preserves the edge and interior borders are thinner',()=>{
  const css=read('brand.css');
- assert.match(css,/html dialog:modal::backdrop\s*\{\s*clip-path:inset\(var\(--ma-screen-frame-width\)\)!important/);
+ assert.match(css,/html dialog:modal::backdrop\s*\{\s*clip-path:inset\(var\(--ma-screen-frame-width\) round calc\(var\(--ma-screen-frame-radius\) - var\(--ma-screen-frame-width\)\)\)!important/);
  assert.match(css,/html dialog:modal\s*\{[\s\S]*?max-inline-size:calc\(100vw - 2 \* var\(--ma-screen-frame-width\)\)/);
  assert.match(css,/--ma-internal-stroke:1px/);
  assert.match(css,/html\.kids-mode body\.page-kids[\s\S]*?border-width:2px!important/);

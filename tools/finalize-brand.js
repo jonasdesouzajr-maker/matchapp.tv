@@ -36,6 +36,16 @@ function versionBrandStylesheet(html,home=false){
  return html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,
   '$1?v=20261015-spacing1'+(home?'&amp;headerauth=20261016-1':'')+'$2');
 }
+// Refresh only the shared frame stylesheet, preserving route-specific cache keys.
+// This runs for both adult and Kids pages after their existing brand normalization.
+function versionFrameStylesheet(html){
+ return html.replace(/(\bhref=["'](?:\/|(?:\.\.\/)+)?brand\.css)(?:\?([^"']*))?(["'])/g,
+  (all,prefix,query,end)=>{
+   const params=new URLSearchParams((query||'').replace(/&amp;/g,'&'));
+   params.set('frame','20261016-rounded1');
+   return prefix+'?'+params.toString().replace(/&/g,'&amp;')+end;
+  });
+}
 function finalizeBrand(){
  let count=0;
  for(const file of files(ROOT)){
@@ -81,6 +91,7 @@ function finalizeBrand(){
   }
   if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>\n</head>');
   if(!kids&&!html.includes('/patches/immersive-feedback-20261014.js'))html=html.replace('</head>','<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>\n</head>');
+  html=versionFrameStylesheet(html);
   html=name(html,kids);
   const original=fs.readFileSync(file,'utf8');
   if(html!==original){fs.writeFileSync(file,html);count++;}
@@ -88,5 +99,5 @@ function finalizeBrand(){
  }
  return count;
 }
-module.exports={finalizeBrand,regionalBrand,versionBrandStylesheet,name,ADULT,KIDS};
+module.exports={finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
 if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');
