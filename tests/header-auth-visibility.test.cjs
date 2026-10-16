@@ -33,5 +33,17 @@ test('shared stylesheet refresh is versioned without changing authentication han
 });
 
 test('homepage versions the parent stylesheet so the shared fix cannot be held by an old cache key', () => {
- assert.ok(read('index.html').includes('/brand.css?v=20261015-spacing1&headerauth=20261016-1'));
+ // Editorial generators may serialize '&' as '&amp;'. Verify the actual
+ // browser URL, not the equivalent HTML spelling of the query separator.
+ const { JSDOM } = require('jsdom');
+ const dom = new JSDOM(read('index.html'), { url: 'https://matchapp.tv/' });
+ try {
+  const links = [...dom.window.document.querySelectorAll('link[rel="stylesheet"]')]
+   .filter(link => new URL(link.href).pathname === '/brand.css');
+  assert.equal(links.length, 1);
+  const url = new URL(links[0].href);
+  assert.equal(url.origin, 'https://matchapp.tv');
+  assert.equal(url.searchParams.get('v'), '20261015-spacing1');
+  assert.equal(url.searchParams.get('headerauth'), '20261016-1');
+ } finally { dom.window.close(); }
 });
