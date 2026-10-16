@@ -15,36 +15,117 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 concurrency:
-  group: brand-normalize-main
-  cancel-in-progress: true
+  group: matchapp-content-publish
+  cancel-in-progress: false
 jobs:
   normalize:
-    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[brand-normalized]')
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[brand-normalized]'))
     runs-on: ubuntu-24.04
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
         with:
           ref: main
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
           cache: npm
-      - run: npm ci --ignore-scripts
-      - name: Normalize every public page to the canonical Adult/Kids brand
-        run: node tools/finalize-brand.js
-      - name: Verify brand normalizer contract
-        run: node --test tests/finalize-brand.test.cjs
-      - name: Commit normalized public pages when needed
+      - name: Normalize, validate and publish from a fresh main snapshot
+        id: publish
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- '*.html'; then
-            echo 'Brand already normalized.'
-            exit 0
-          fi
           git config user.name 'MatchApp Brand Bot'
           git config user.email 'bot@matchapp.tv'
-          git add -- '*.html'
-          git commit -m 'Normalize public MatchApp branding [brand-normalized]'
-          git push origin HEAD:main
+          evidence="${RUNNER_TEMP}/brand-normalization"
+          mkdir -p "$evidence"
+          for attempt in 1 2 3; do
+            # This is the disposable Actions checkout, never a user's worktree.
+            # Rebuild rather than rebase an obsolete generated-page commit.
+            git fetch --no-tags origin main
+            git reset --hard origin/main
+            base="$(git rev-parse HEAD)"
+            printf '%s\n' "$base" > "$evidence/base-sha.txt"
+            npm ci --ignore-scripts
+            node tools/finalize-brand.js
+            git diff --binary > "$evidence/candidate.patch"
+            news_owned=()
+            while IFS= read -r -d '' file; do
+              case "$file" in
+                kids/*|android-studio/*|private-voice/*|tests/*|artifacts/*|reports/*)
+                  echo "::error::Brand publication requires separate ownership review for $file"
+                  exit 1 ;;
+                news/articles/*/index.html) news_owned+=("$file") ;;
+                *.html) ;;
+                *) echo "::error::Unexpected Brand Bot output: $file"; exit 1 ;;
+              esac
+            done < <(git diff --name-only -z)
+            if ! git diff --quiet --diff-filter=ADRT; then
+              echo '::error::Brand normalization may only update existing HTML files.'
+              exit 1
+            fi
+            # The news generator owns article HTML. Never publish an older
+            # article template while its corrected owner refresh is queued.
+            if [ "${#news_owned[@]}" -gt 0 ]; then
+              git restore --worktree -- "${news_owned[@]}"
+              echo "::notice::Deferred ${#news_owned[@]} source-owned article changes to the existing news refresh owner."
+            fi
+            echo "deferred_news=${#news_owned[@]}" >> "$GITHUB_OUTPUT"
+            git diff --binary > "$evidence/candidate.patch"
+            if git diff --quiet; then
+              echo 'No Brand-owned changes to publish; no commit or deployment needed.'
+              echo 'changed=0' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git diff --check
+            node --test --test-isolation=none tests/adsense-lock.test.cjs
+            VERSION="$(node -p "require('./release.json').version")"
+            grep -Fq "window.MATCHAPP_BUILD = '$VERSION';" build-meta.js
+            node tools/check-content-rotation.js
+            npm test
+            npm run audit:site
+            npm run build
+            # Tests must not silently extend the reviewed normalization output.
+            if ! git diff --binary | cmp -s "$evidence/candidate.patch" -; then
+              echo '::error::Validation changed the candidate; refusing publication.'
+              exit 1
+            fi
+            git add --update -- '*.html'
+            git commit -m 'Normalize public MatchApp branding [brand-normalized]'
+            published="$(git rev-parse HEAD)"
+            if git push origin HEAD:main; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              echo "commit_sha=$published" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git fetch --no-tags origin main
+            # A lost push acknowledgement is not permission to publish twice.
+            if git merge-base --is-ancestor "$published" origin/main; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              echo "commit_sha=$published" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$(git rev-parse origin/main)" = "$base" ]; then
+              echo '::error::Push failed without a newer main; do not blindly retry.'
+              exit 1
+            fi
+            echo "Main advanced; regenerate and rerun all gates on attempt $((attempt+1))."
+          done
+          echo '::error::Brand normalization did not safely publish after 3 attempts.'
+          exit 1
+      - name: Request the existing validated Pages owner once for changed content
+        if: steps.publish.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --ref main
+      - name: Preserve the candidate and its base for a failed-run review
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brand-normalization-review
+          path: ${{ runner.temp }}/brand-normalization/
+          if-no-files-found: ignore
+          retention-days: 14
