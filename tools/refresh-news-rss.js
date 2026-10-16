@@ -543,7 +543,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
-<link rel="stylesheet" href="/brand.css?v=20261015-spacing1">
+<link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
 <script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 </head>
