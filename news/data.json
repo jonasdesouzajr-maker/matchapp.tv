@@ -1,10 +1,109 @@
 {
-  "generated_at": "2026-10-16T01:21:21.805Z",
-  "feed_version": "ae234fd1",
+  "generated_at": "2026-10-16T01:37:20.293Z",
+  "feed_version": "ed147884",
   "sports_updated_at": "2026-10-16T01:21:21.751Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "1372f882",
+      "title": "‘SNL’ Star Michael Che Reacts to Shane Gillis’ Controversial Monologue: “That’s Comedy”",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/snl-michael-che-reacts-shane-gillis-controversial-monologue-1236733370/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T01:27:19.000Z",
+      "discovered_at": "2026-10-16T01:37:20.293Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/09/GettyImages-1458921634-H-2024.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/snl-star-michael-che-reacts-to-shane-gillis-controversial-monologue-that-s-comed-1372f8/",
+      "landing_url": "https://matchapp.tv/?news=1372f882#latest-news",
+      "seo": {
+        "primary_keyword": "snl star michael che latest news",
+        "short_tail": [
+          "snl star michael che",
+          "snl star michael che news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "snl star michael che latest news October 2026",
+          "snl star michael che entertainment update 2026",
+          "snl star michael che news 2026-10-16",
+          "latest entertainment news about snl star michael che",
+          "snl star michael che reacts shane latest update",
+          "The Hollywood Reporter snl star michael che entertainment",
+          "latest news about snl star michael che October 2026",
+          "snl star michael che entertainment news 2026-10-16",
+          "what happened with snl star michael che"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "snl",
+          "star",
+          "michael",
+          "che",
+          "reacts",
+          "shane",
+          "gillis",
+          "controversial"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "snl star michael che 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter snl star michael che",
+          "hollywoodreporter.com snl star michael che",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘SNL’ Star Michael Che Reacts to Shane Gillis’…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "snl star michael che latest news",
+          "snl star michael che",
+          "snl star michael che news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "snl star michael che latest news October 2026",
+          "snl star michael che entertainment update 2026",
+          "snl star michael che news 2026-10-16",
+          "latest entertainment news about snl star michael che",
+          "snl star michael che reacts shane latest update",
+          "The Hollywood Reporter snl star michael che entertainment",
+          "latest news about snl star michael che October 2026",
+          "snl star michael che entertainment news 2026-10-16",
+          "what happened with snl star michael che",
+          "snl",
+          "star",
+          "michael",
+          "che",
+          "reacts",
+          "shane",
+          "gillis",
+          "controversial",
+          "October 2026",
+          "2026-10-16",
+          "snl star michael che 2026",
+          "The Hollywood Reporter snl star michael che",
+          "hollywoodreporter.com snl star michael che",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+      }
+    },
     {
       "id": "f81e8b6e",
       "title": "Ben Affleck Warns ‘Digger’ Box Office Bomb Will Lead to “A Bunch of Sh***y Homogenized Movies”",
@@ -96,7 +195,7 @@
           "hollywoodreporter.com Ben Affleck Warns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -165,7 +264,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -234,7 +333,7 @@
           "2026-10-15",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -303,7 +402,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -372,7 +471,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -441,7 +540,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -507,7 +606,7 @@
           "2026-10-15",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -525,7 +624,7 @@
       "category": "entertainment",
       "person": "",
       "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/718c/live/00b0e6b0-c8e7-11f1-8fce-870ed9afa8a0.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e2f9/live/eadcb880-c901-11f1-9943-e1428cb923d3.png",
       "matchapp_url": "https://matchapp.tv/news/articles/sparks-fly-at-the-celebrity-traitors-round-table-and-a-terrifying-death-march-48c788/",
       "landing_url": "https://matchapp.tv/?news=48c788b2#latest-news",
       "seo": {
@@ -606,7 +705,7 @@
           "bbc.co.uk sparks fly celebrity traitors",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -700,7 +799,7 @@
           "hollywoodreporter.com Allison Williams Talks",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -769,7 +868,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -838,7 +937,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -907,7 +1006,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -952,7 +1051,6 @@
           "o que aconteceu com batman steven soderbergh assume"
         ],
         "trend_keywords": [
-          "steven soderbergh",
           "steven soderbergh"
         ],
         "entity_keywords": [
@@ -1012,7 +1110,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1108,7 +1206,7 @@
           "hollywoodreporter.com Streaming Ratings",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1177,7 +1275,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1246,7 +1344,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1312,7 +1410,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1381,7 +1479,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1471,7 +1569,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1572,7 +1670,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1671,7 +1769,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1740,7 +1838,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1809,7 +1907,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1904,7 +2002,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -1973,7 +2071,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2071,7 +2169,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2169,7 +2267,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2267,7 +2365,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2371,7 +2469,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2469,7 +2567,7 @@
           "g1.globo.com Cézar Mendes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2568,7 +2666,7 @@
           "bbc.co.uk brooklyn shop surreal row",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2669,7 +2767,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2767,7 +2865,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2866,7 +2964,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -2965,7 +3063,7 @@
           "bbc.co.uk bbc director general defends",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -3063,7 +3161,7 @@
           "g1.globo.com Caetano Veloso",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -3164,7 +3262,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -3265,7 +3363,7 @@
           "g1.globo.com milla existiu nao relembre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -3364,7 +3462,7 @@
           "g1.globo.com sobrinho borges rodrigo borges",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     },
     {
@@ -3462,104 +3560,7 @@
           "g1.globo.com Rodrigo Campos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
-      }
-    },
-    {
-      "id": "7a9d35d7",
-      "title": "Racial bias in London music licensing, report says",
-      "url": "https://www.bbc.co.uk/news/articles/c80405r93w42o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-14T11:16:50.000Z",
-      "discovered_at": "2026-10-14T13:59:28.698Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6df2/live/284604e0-c729-11f1-b881-4391ac746e04.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/racial-bias-in-london-music-licensing-report-says-7a9d35/",
-      "landing_url": "https://matchapp.tv/?news=7a9d35d7#latest-news",
-      "seo": {
-        "primary_keyword": "racial bias london music latest news",
-        "short_tail": [
-          "racial bias london music",
-          "racial bias london music news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "racial bias london music latest news October 2026",
-          "racial bias london music entertainment update 2026",
-          "racial bias london music news 2026-10-14",
-          "latest entertainment news about racial bias london music",
-          "racial bias london music licensing report latest update",
-          "BBC racial bias london music entertainment",
-          "latest news about racial bias london music October 2026",
-          "racial bias london music entertainment news 2026-10-14",
-          "what happened with racial bias london music"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "racial",
-          "bias",
-          "london",
-          "music",
-          "licensing",
-          "report",
-          "says"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "racial bias london music 2026"
-        ],
-        "source_keywords": [
-          "BBC racial bias london music",
-          "bbc.co.uk racial bias london music",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Racial bias in London music licensing, report says |…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "racial bias london music latest news",
-          "racial bias london music",
-          "racial bias london music news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "racial bias london music latest news October 2026",
-          "racial bias london music entertainment update 2026",
-          "racial bias london music news 2026-10-14",
-          "latest entertainment news about racial bias london music",
-          "racial bias london music licensing report latest update",
-          "BBC racial bias london music entertainment",
-          "latest news about racial bias london music October 2026",
-          "racial bias london music entertainment news 2026-10-14",
-          "what happened with racial bias london music",
-          "racial",
-          "bias",
-          "london",
-          "music",
-          "licensing",
-          "report",
-          "says",
-          "October 2026",
-          "2026-10-14",
-          "racial bias london music 2026",
-          "BBC racial bias london music",
-          "bbc.co.uk racial bias london music",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+        "seo_generated_at": "2026-10-16T01:37:20.293Z"
       }
     }
   ]
