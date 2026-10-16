@@ -189,7 +189,14 @@
       "Start with the format and tone you want, then check the shortlisted title in your own Netflix account. A catalog association does not confirm availability in every country, every season or every plan. A title’s original release year also differs from the date it arrives on a service.",
       "Compare the central conflict in the synopsis rather than selecting only a familiar poster. If you are watching with someone else, agree on runtime, language and themes to avoid. For a series, check the available seasons and episode order before committing to a long story.",
       "If a title does not appear locally, ask for another suggestion with the same qualities and your country specified. Do not assume that an absent result means your account is broken. Regional viewing guides can help distinguish subscription, rental and purchase offers elsewhere when a verified source is available."
-    ]
+    ],
+    "sourceNote": {
+      "heading": "Netflix Top 10 snapshot: 5–11 October 2026",
+      "text": "Netflix’s global English-language film chart for 5–11 October 2026 lists Animals first, Doing Life second and Ice Age third. This dated chart is a starting point for discovery, not a promise that the same titles lead today or are available in your country. Compare the kind of story you want with the regional provider links before choosing.",
+      "source": "https://www.netflix.com/tudum/top10",
+      "label": "Netflix’s official Top 10 and chart methodology",
+      "checked": "2026-10-16"
+    }
   },
   "platforms/spotify": {
     "heading": "Choose between music, episodes and video",

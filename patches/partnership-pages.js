@@ -7,7 +7,10 @@
   function lang(){let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}return [window.MATCH_LANG,saved,new URLSearchParams(location.search).get('lang'),document.documentElement.lang,'en'].map(x=>String(x||'').toLowerCase().split('-')[0]).find(x=>supported.includes(x));}
   function translate(){current=lang();const t=copy[current];document.documentElement.lang=current==='pt'?'pt-BR':current;document.documentElement.dir=current==='ar'?'rtl':'ltr';select.value=current;
     document.querySelectorAll('[data-mp]').forEach(n=>{const value=t[n.dataset.mp];if(value!==undefined)n.textContent=value;});
-    const title=root.dataset.mpPage==='sponsor'?t.sponsor:t.directory;document.title=title+' | MatchApp Ai';
+    const type=root.dataset.mpPage,title=type==='sponsor'?t.sponsor:t.directory;document.title=t[type+'SeoTitle']||title+' | MatchApp Ai';
+    const description=t[type+'SeoDescription'];if(description){document.querySelectorAll('meta[name="description"],meta[property="og:description"],meta[name="twitter:description"]').forEach(n=>n.content=description);}
+    document.querySelectorAll('meta[property="og:title"],meta[name="twitter:title"]').forEach(n=>n.content=document.title);
+    const schema=document.getElementById('partnership-schema');if(schema){const data=JSON.parse(schema.textContent);data['@graph'][0].name=title;if(description)data['@graph'][0].description=description;data['@graph'][0].inLanguage=document.documentElement.lang;data['@graph'][1].itemListElement[1].name=title;schema.textContent=JSON.stringify(data);}
     const label=document.querySelector('.mh-tagline');if(label)label.textContent=title;const home=document.querySelector('.mh-home-label');if(home){home.textContent=t.home;home.closest('a').setAttribute('aria-label',t.home);home.closest('a').title=t.home;}const manual=document.getElementById('mp-manual');if(manual)manual.setAttribute('aria-label',t.brief);
     document.querySelectorAll('[data-market-code]').forEach(n=>{try{n.textContent=new Intl.DisplayNames([current],{type:'region'}).of(n.dataset.marketCode);}catch(_){}});
     const status=document.getElementById('mp-status');if(status)status.textContent='';
