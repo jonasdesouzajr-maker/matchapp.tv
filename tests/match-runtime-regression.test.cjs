@@ -20,7 +20,7 @@ function matching(requested,excluded=[]){
 
 test('exact catalogue choices satisfy their selected category, mood, platform, rating and decade',()=>{
  const {dom,w,context}=matching({});let cases=0;
- try{for(const entry of catalog){w.__testRegion=entry.countryCode||'BR';for(const cat of entry.cats){if(!topic.allow(entry,[cat]))continue;const criteria={cat:[cat],plat:[entry.platform],mood:entry.moods.filter(x=>x!=='any').slice(0,1),vibe:entry.vibes.filter(x=>x!=='any').slice(0,1),rating:entry.ratings.filter(x=>x!=='any').slice(0,1),decade:entry.year?[Math.floor(entry.year/10)*10+'s']:[]};
+ try{for(const entry of catalog){w.__testRegion=entry.availabilityRegions?.[0]||entry.countryCode||'BR';for(const cat of entry.cats){if(!topic.allow(entry,[cat]))continue;const criteria={cat:[cat],plat:[entry.platform],mood:entry.moods.filter(x=>x!=='any').slice(0,1),vibe:entry.vibes.filter(x=>x!=='any').slice(0,1),rating:entry.ratings.filter(x=>x!=='any').slice(0,1),decade:entry.year?[Math.floor(entry.year/10)*10+'s']:[]};
  const pick=context.pickFromCatalog(criteria.cat,criteria.plat,criteria.mood,criteria.vibe,criteria.rating,criteria.decade);
  if(cat!=='Gospel & Faith'&&entry.cats.includes('Gospel & Faith'))continue;
  assert(pick,entry.title+' must remain findable');assert(w.matchPolicy.matches(catalog.find(item=>item.title===pick.title),criteria));cases++;
