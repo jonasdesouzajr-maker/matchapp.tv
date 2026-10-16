@@ -4,6 +4,12 @@ const fs=require('fs'),path=require('path'),vm=require('vm');
 const root=path.join(__dirname,'..');
 const SITE='https://matchapp.tv';
 const SEO_REVISION='2026-09-28';
+const guideEditorial=JSON.parse(fs.readFileSync(path.join(root,'tools/kids-guide-editorial.json'),'utf8'));
+function editorialHtml(id){
+  const entry=guideEditorial[id];
+  if(!entry)return '';
+  return '<section class="kids-editorial-guidance" aria-label="Family viewing guidance">'+entry.sections.map(section=>'<h2>'+escape(section.heading)+'</h2>'+section.paragraphs.map(text=>'<p>'+escape(text)+'</p>').join('')).join('')+'<p class="source-note">Programme context: <a href="'+escape(entry.source.url)+'" rel="noopener noreferrer">'+escape(entry.source.label)+'</a>. Selection advice is original MatchApp Ai editorial guidance, not a provider rating.</p></section>';
+}
 const src=fs.readFileSync(path.join(root,'kids/kids.js'),'utf8'),a=src.indexOf('  const LIBRARY = [')+'  const LIBRARY = '.length,b=src.indexOf('\n  ];',a)+4;
 const titles=vm.runInNewContext(src.slice(a,b));
 const links=JSON.parse(fs.readFileSync(path.join(root,'kids/watch-links.json'),'utf8')).titles;
@@ -77,7 +83,8 @@ for(const i of titles){
   const id=slug(i.title),url=`${SITE}/kids/titles/${id}/`,dir=path.join(root,'kids/titles',id);
   fs.mkdirSync(dir,{recursive:true});
   urls.push(url);
-  sitemapMeta[url]=`${SEO_REVISION}T00:00:00Z`;
+  const revision=guideEditorial[id]?.updatedAt||SEO_REVISION;
+  sitemapMeta[url]=`${revision}T00:00:00Z`;
   const fallback='https://www.google.com/search?q='+encodeURIComponent(i.title+' '+i.year+' where to watch');
   const regions=links[id]?.regions||{};
   const woody=i.title.includes('Woody Woodpecker')?'<p><strong>Woody Woodpecker / Pica-Pau / El Pájaro Loco</strong></p><p>Prefer dubbed cartoons? Choose the official language channel:</p><a class="watch" data-woody="pt" href="https://www.youtube.com/channel/UCiFg-2CjsG_xcSsHNjDeLpw">Português · Pica-Pau</a><a class="watch" data-woody="es" href="https://www.youtube.com/channel/UCHtZ2_7hd1zy9aCqrrcaqcQ">Español · El Pájaro Loco</a><a class="watch" data-woody="en" href="https://www.youtube.com/channel/UCB2aeGGPNj7l5Z71bYNqX-Q">English · Woody Woodpecker</a>':'';
@@ -105,7 +112,7 @@ for(const i of titles){
         url,
         image,
         keywords:keywords.join(', '),
-        dateModified:SEO_REVISION,
+        dateModified:revision,
         isPartOf:{'@type':'WebSite',name:'MatchApp Ai KIDS',url:`${SITE}/`},
         about:creative,
         mainEntity:creative,
@@ -122,7 +129,7 @@ for(const i of titles){
       }
     ]
   };
-  fs.writeFileSync(path.join(dir,'index.html'),page(titleName(i),desc,url,body,data,keywords,image));
+  fs.writeFileSync(path.join(dir,'index.html'),page(titleName(i),desc,url,body+editorialHtml(id),data,keywords,image));
 }
 
 const classics=titles.filter(i=>i.year&&Number(i.year)<2010),hub=`${SITE}/kids/nostalgia/`;

@@ -32,7 +32,8 @@ test('five source-specific guides explain practical attendance or viewing limits
   const slugs=['asian-games-2026','worlds-2026','pax-aus-2026','brasil-game-show-2026','mexico-day-of-dead-2026'];
   for(const slug of slugs){
     const event=events.find(item=>item.slug===slug);
-    assert.equal(event?.visitorNotes?.length,3,slug);
+    assert.ok(event?.visitorNotes?.length>=3,slug+' needs at least three original notes');
+    assert.equal(new Set(event.visitorNotes).size,event.visitorNotes.length,slug+' duplicate note');
     const html=read('events/'+slug+'/index.html');
     assert.match(html,/Before visiting or looking for coverage/);
     for(const note of event.visitorNotes){
