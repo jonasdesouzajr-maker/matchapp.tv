@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T07:29:28.440Z",
+  "generated_at": "2026-10-16T07:51:11.176Z",
   "limit": 1000,
   "items": [
     {
@@ -96,7 +96,7 @@
           "hollywoodreporter.com norm tale norm macdonald",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -197,7 +197,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -298,7 +298,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -399,7 +399,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -468,7 +468,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -537,7 +537,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -600,12 +600,12 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
       "id": "ef941beb",
-      "title": "Three children and teacher killed in US primary school shooting",
+      "title": "Children aged 5, 8 and 11 killed in US school shooting before suspect shot by bystander",
       "url": "https://www.bbc.co.uk/news/articles/cm89zp48k4kzo?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
@@ -619,32 +619,32 @@
       "person": "",
       "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ff29/live/cc0232d0-c90d-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/three-children-and-teacher-killed-in-us-primary-school-shooting-ef941b/",
+      "matchapp_url": "https://matchapp.tv/news/articles/children-aged-5-8-and-11-killed-in-us-school-shooting-before-suspect-shot-by-bys-ef941b/",
       "landing_url": "https://matchapp.tv/?news=ef941beb#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-16",
         "short_tail": [
           "world news",
           "global headlines",
-          "three",
           "children",
-          "teacher",
+          "aged",
           "killed",
-          "primary",
-          "school"
+          "school",
+          "shooting",
+          "before"
         ],
         "long_tail": [
-          "Three children and teacher killed in US primary school shooting 2026-10-16",
+          "Children aged 5, 8 and 11 killed in US school shooting before suspect shot by bystander 2026-10-16",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "three",
           "children",
-          "teacher",
+          "aged",
           "killed",
-          "primary",
-          "school"
+          "school",
+          "shooting",
+          "before"
         ],
         "freshness_keywords": [
           "2026-10-16"
@@ -652,24 +652,24 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Three children and teacher killed in US primary school…",
+        "meta_title": "Children aged 5, 8 and 11 killed in US school shooting…",
         "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-16",
           "world news",
           "global headlines",
-          "three",
           "children",
-          "teacher",
+          "aged",
           "killed",
-          "primary",
           "school",
-          "Three children and teacher killed in US primary school shooting 2026-10-16",
+          "shooting",
+          "before",
+          "Children aged 5, 8 and 11 killed in US school shooting before suspect shot by bystander 2026-10-16",
           "world news October 2026",
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -691,7 +691,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/james-mcavoy-reveals-which-film-paid-him-bonkers-residuals-eac529/",
       "landing_url": "https://matchapp.tv/?news=eac52921#latest-news",
       "seo": {
-        "primary_keyword": "james mcavoy",
+        "primary_keyword": "James McAvoy Reveals Which latest news",
         "short_tail": [
           "James McAvoy Reveals Which",
           "James McAvoy Reveals Which news",
@@ -699,8 +699,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "james mcavoy"
+          "entertainment updates"
         ],
         "long_tail": [
           "James McAvoy Reveals Which latest news October 2026",
@@ -713,9 +712,7 @@
           "James McAvoy Reveals Which entertainment news 2026-10-16",
           "what happened with James McAvoy Reveals Which"
         ],
-        "trend_keywords": [
-          "james mcavoy"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "James McAvoy Reveals Which",
           "james",
@@ -736,7 +733,7 @@
         "meta_title": "James McAvoy Reveals Which Film Paid Him “Bonkers”…",
         "meta_description": "James McAvoy Reveals Which: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original…",
         "keywords": [
-          "james mcavoy",
+          "James McAvoy Reveals Which latest news",
           "James McAvoy Reveals Which",
           "James McAvoy Reveals Which news",
           "entertainment",
@@ -764,7 +761,7 @@
           "hollywoodreporter.com James McAvoy Reveals Which",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -833,7 +830,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -934,7 +931,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1033,7 +1030,7 @@
           "hollywoodreporter.com grey anatomy boss meg",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1102,7 +1099,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1201,7 +1198,7 @@
           "hollywoodreporter.com snl star michael che",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1295,7 +1292,7 @@
           "hollywoodreporter.com Ben Affleck Warns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1364,7 +1361,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1433,7 +1430,7 @@
           "2026-10-15",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1502,7 +1499,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1571,7 +1568,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1640,7 +1637,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -1805,7 +1802,7 @@
           "bbc.co.uk sparks fly celebrity traitors",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -2037,7 +2034,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -2207,7 +2204,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -2372,7 +2369,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -2637,7 +2634,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -2734,7 +2731,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -3223,7 +3220,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -3412,7 +3409,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -3944,7 +3941,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -4112,7 +4109,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -4181,7 +4178,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -4975,7 +4972,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/u2-anuncia-shows-em-sao-paulo-em-2027-2d833f/",
       "landing_url": "https://matchapp.tv/?news=2d833f01#latest-news",
       "seo": {
-        "primary_keyword": "previsao do tempo são paulo",
+        "primary_keyword": "anuncia shows sao paulo últimas notícias",
         "short_tail": [
           "anuncia shows sao paulo",
           "anuncia shows sao paulo news",
@@ -4983,8 +4980,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "previsao do tempo são paulo"
+          "notícias hoje"
         ],
         "long_tail": [
           "anuncia shows sao paulo latest news October 2026",
@@ -4997,9 +4993,7 @@
           "anuncia shows sao paulo notícia de 2026-10-15",
           "o que aconteceu com anuncia shows sao paulo"
         ],
-        "trend_keywords": [
-          "previsao do tempo são paulo"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "anuncia",
           "shows",
@@ -5021,7 +5015,7 @@
         "meta_title": "U2 anuncia shows em São Paulo em 2027 | Notícias de…",
         "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "previsao do tempo são paulo",
+          "anuncia shows sao paulo últimas notícias",
           "anuncia shows sao paulo",
           "anuncia shows sao paulo news",
           "entertainment",
@@ -5051,7 +5045,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -5799,7 +5793,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -6038,7 +6032,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -7253,7 +7247,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -7354,7 +7348,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -8052,7 +8046,7 @@
           "g1.globo.com Cézar Mendes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -9132,7 +9126,7 @@
           "bbc.co.uk brooklyn shop surreal row",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -10150,7 +10144,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -10810,7 +10804,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {
@@ -10978,7 +10972,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+        "seo_generated_at": "2026-10-16T07:51:11.176Z"
       }
     },
     {

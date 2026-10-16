@@ -1,5 +1,51 @@
 [
   {
+    "updated": "2026-10-16T04:45:08.627Z",
+    "date": "2026-10-16",
+    "id": "world-food-day-2026-10-16",
+    "emoji": "🌾",
+    "title": "World Food Day",
+    "kicker": "International day",
+    "place": "Worldwide",
+    "summary": "The UN Food and Agriculture Organization marks World Food Day on 16 October, the anniversary of FAO's founding. Its official 2026 theme, 'Innovate today. Nourish tomorrow.', highlights how new ideas, traditional knowledge and inclusive approaches can improve food access while protecting the planet.",
+    "prompt": "Today is World Food Day, 16 October 2026. Explain the FAO observance and its verified 2026 theme, 'Innovate today. Nourish tomorrow.' Share practical respectful ways to participate, and recommend accurate documentaries, films and series about food systems, farming innovation, culture and food security, checking where each can be watched in my country.",
+    "officialUrl": "https://www.fao.org/world-food-day/en",
+    "image": "/event-posters/world-food-day-2026.svg",
+    "keywords": [
+      "World Food Day",
+      "World Food Day 2026",
+      "16 October World Food Day",
+      "FAO World Food Day",
+      "Innovate today Nourish tomorrow",
+      "World Food Day theme 2026",
+      "food systems documentaries",
+      "sustainable farming films",
+      "food security documentaries",
+      "World Food Day activities",
+      "what to watch on World Food Day",
+      "Dia Mundial da Alimentação 2026",
+      "Día Mundial de la Alimentación 2026"
+    ],
+    "i18n": {
+      "pt-BR": {
+        "title": "Dia Mundial da Alimentação",
+        "kicker": "Data internacional",
+        "place": "No mundo todo",
+        "summary": "A Organização das Nações Unidas para a Alimentação e a Agricultura (FAO) celebra o Dia Mundial da Alimentação em 16 de outubro, aniversário de sua fundação. O tema oficial de 2026, 'Inovar hoje para nutrir o amanhã', destaca como novas ideias, saberes tradicionais e iniciativas inclusivas podem ampliar o acesso à alimentação e proteger o planeta.",
+        "prompt": "Hoje é 16 de outubro de 2026, Dia Mundial da Alimentação. Explique a data da FAO e o tema oficial 'Inovar hoje para nutrir o amanhã', sugira formas responsáveis de participar e recomende documentários, filmes e séries sobre sistemas alimentares, inovação agrícola, culturas alimentares e segurança alimentar, verificando onde assistir no meu país."
+      },
+      "es": {
+        "title": "Día Mundial de la Alimentación",
+        "kicker": "Día internacional",
+        "place": "En todo el mundo",
+        "summary": "La Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) celebra el Día Mundial de la Alimentación el 16 de octubre, aniversario de su fundación. El lema oficial de 2026, 'Innovar hoy para nutrir mañana', destaca las ideas nuevas, los conocimientos tradicionales y los enfoques inclusivos para mejorar el acceso a los alimentos y proteger el planeta.",
+        "prompt": "Hoy es 16 de octubre de 2026, Día Mundial de la Alimentación. Explica la conmemoración de la FAO y el lema oficial 'Innovar hoy para nutrir mañana', propone maneras respetuosas de participar y recomienda documentales, películas y series sobre sistemas alimentarios, innovación agrícola, cultura gastronómica y seguridad alimentaria, comprobando dónde verlos en mi país."
+      }
+    },
+    "imageAlt": "Original illustrated World Food Day 2026 poster showing growers sharing vegetables, solar irrigation, a greenhouse and terraced fields",
+    "sourceName": "Food and Agriculture Organization of the United Nations"
+  },
+  {
     "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
     "_note": "Rewritten once per day by the MatchApp day-of bot. Replace the whole object; never append. Keep every key below.",
     "updated": "2026-10-15T22:04:37.817Z",
