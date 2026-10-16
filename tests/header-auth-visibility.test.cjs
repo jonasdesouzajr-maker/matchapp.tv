@@ -31,3 +31,7 @@ test('shared stylesheet refresh is versioned without changing authentication han
  assert.ok(app.includes("if (regBtn) regBtn.style.display = 'inline-flex';"));
  assert.ok(app.includes("if (outBtn) outBtn.style.display = 'none';"));
 });
+
+test('homepage versions the parent stylesheet so the shared fix cannot be held by an old cache key', () => {
+ assert.ok(read('index.html').includes('/brand.css?v=20261015-spacing1&headerauth=20261016-1'));
+});
