@@ -1,10 +1,610 @@
 {
-  "generated_at": "2026-10-16T14:24:12.034Z",
-  "feed_version": "b554a937",
-  "sports_updated_at": "2026-10-16T01:21:21.751Z",
+  "generated_at": "2026-10-16T15:23:19.831Z",
+  "feed_version": "b191d7e1",
+  "sports_updated_at": "2026-10-16T15:23:19.782Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "3ef08d15",
+      "title": "Zelensky says Ukraine has right to defend itself after Trump calls latest strikes a 'disgrace'",
+      "url": "https://www.bbc.co.uk/news/articles/c58jz174w89ro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T15:22:12.000Z",
+      "discovered_at": "2026-10-16T12:42:01.195Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/32ee/live/b7238230-c96a-11f1-a6e6-417671ef62cb.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-says-ukraine-has-right-to-defend-itself-after-trump-calls-latest-strike-3ef08d/",
+      "landing_url": "https://matchapp.tv/?news=3ef08d15#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "zelensky",
+          "says",
+          "ukraine",
+          "has",
+          "right",
+          "defend"
+        ],
+        "long_tail": [
+          "Zelensky says Ukraine has right to defend itself after Trump calls latest strikes a 'disgrace' 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "zelensky",
+          "says",
+          "ukraine",
+          "has",
+          "right",
+          "defend"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Zelensky says Ukraine has right to defend itself after…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "zelensky",
+          "says",
+          "ukraine",
+          "has",
+          "right",
+          "defend",
+          "Zelensky says Ukraine has right to defend itself after Trump calls latest strikes a 'disgrace' 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
+    {
+      "id": "c396e4b0",
+      "title": "Veronica Roth Revives ‘Divergent’ in ‘The Sixth Faction'(and Talks the Movie That Never Happened)",
+      "url": "https://www.hollywoodreporter.com/movies/movie-features/divergent-veronica-roth-interview-sixth-faction-ascendant-1236713925/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T15:15:00.000Z",
+      "discovered_at": "2026-10-16T15:23:19.831Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Veronica Roth Revives",
+      "description": "Veronica Roth Revives: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/VeronicaRothSixthFactionColumnArt.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/veronica-roth-revives-divergent-in-the-sixth-faction-and-talks-the-movie-that-ne-c396e4/",
+      "landing_url": "https://matchapp.tv/?news=c396e4b0#latest-news",
+      "seo": {
+        "primary_keyword": "Veronica Roth Revives latest news",
+        "short_tail": [
+          "Veronica Roth Revives",
+          "Veronica Roth Revives news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Veronica Roth Revives latest news October 2026",
+          "Veronica Roth Revives entertainment update 2026",
+          "Veronica Roth Revives news 2026-10-16",
+          "latest entertainment news about Veronica Roth Revives",
+          "veronica roth revives veronica roth revives latest update",
+          "The Hollywood Reporter Veronica Roth Revives entertainment",
+          "latest news about Veronica Roth Revives October 2026",
+          "Veronica Roth Revives entertainment news 2026-10-16",
+          "what happened with Veronica Roth Revives"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Veronica Roth Revives",
+          "veronica",
+          "roth",
+          "revives",
+          "divergent",
+          "sixth"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "Veronica Roth Revives 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Veronica Roth Revives",
+          "hollywoodreporter.com Veronica Roth Revives",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Veronica Roth Revives ‘Divergent’ in ‘The Sixth…",
+        "meta_description": "Veronica Roth Revives: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source…",
+        "keywords": [
+          "Veronica Roth Revives latest news",
+          "Veronica Roth Revives",
+          "Veronica Roth Revives news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Veronica Roth Revives latest news October 2026",
+          "Veronica Roth Revives entertainment update 2026",
+          "Veronica Roth Revives news 2026-10-16",
+          "latest entertainment news about Veronica Roth Revives",
+          "veronica roth revives veronica roth revives latest update",
+          "The Hollywood Reporter Veronica Roth Revives entertainment",
+          "latest news about Veronica Roth Revives October 2026",
+          "Veronica Roth Revives entertainment news 2026-10-16",
+          "what happened with Veronica Roth Revives",
+          "veronica",
+          "roth",
+          "revives",
+          "divergent",
+          "sixth",
+          "October 2026",
+          "2026-10-16",
+          "Veronica Roth Revives 2026",
+          "The Hollywood Reporter Veronica Roth Revives",
+          "hollywoodreporter.com Veronica Roth Revives",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
+    {
+      "id": "83a5e864",
+      "title": "Midterms nos EUA: democratas superam republicanos na arrecadação de fundos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/midterms-nos-eua-democratas-superam-republicanos-na-arrecadacao-de-fundos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-16T15:06:41.000Z",
+      "discovered_at": "2026-10-16T15:23:19.831Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/xEFF-Xfbvp8GscCYLTxV4MLzV9g=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/w/O/PFSfA1TvyVd6BjHnOczg/2022-11-08t131839z-2077520762-rc2nhx94yqte-rtrmadp-3-usa-election-pennsylvania.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/midterms-nos-eua-democratas-superam-republicanos-na-arrecadacao-de-fundos-83a5e8/",
+      "landing_url": "https://matchapp.tv/?news=83a5e864#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-16",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "midterms",
+          "eua",
+          "democratas",
+          "superam",
+          "republicanos",
+          "arrecadacao"
+        ],
+        "long_tail": [
+          "Midterms nos EUA: democratas superam republicanos na arrecadação de fundos 2026-10-16",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "midterms",
+          "eua",
+          "democratas",
+          "superam",
+          "republicanos",
+          "arrecadacao"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Midterms nos EUA: democratas superam republicanos na…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-16",
+          "notícias do mundo",
+          "notícias internacionais",
+          "midterms",
+          "eua",
+          "democratas",
+          "superam",
+          "republicanos",
+          "arrecadacao",
+          "Midterms nos EUA: democratas superam republicanos na arrecadação de fundos 2026-10-16",
+          "notícias mundiais outubro 2026",
+          "2026-10-16",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
+    {
+      "id": "64cd8626",
+      "title": "Patients in chains rescued from suspected illegal rehab centre in South Africa",
+      "url": "https://www.bbc.co.uk/news/articles/cmwyvxj49gpwo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T14:57:51.000Z",
+      "discovered_at": "2026-10-16T14:24:12.034Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6ae2/live/aea9db50-c950-11f1-8879-9d9deeb686e1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/patients-in-chains-rescued-from-suspected-illegal-rehab-centre-in-south-africa-64cd86/",
+      "landing_url": "https://matchapp.tv/?news=64cd8626#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "patients",
+          "chains",
+          "rescued",
+          "suspected",
+          "illegal",
+          "rehab"
+        ],
+        "long_tail": [
+          "Patients in chains rescued from suspected illegal rehab centre in South Africa 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "patients",
+          "chains",
+          "rescued",
+          "suspected",
+          "illegal",
+          "rehab"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Patients in chains rescued from suspected illegal rehab…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "patients",
+          "chains",
+          "rescued",
+          "suspected",
+          "illegal",
+          "rehab",
+          "Patients in chains rescued from suspected illegal rehab centre in South Africa 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
+    {
+      "id": "dfa7748b",
+      "title": "Role Model’s Next Move? He’ll Figure It Out Onstage",
+      "url": "https://www.hollywoodreporter.com/music/music-features/role-model-chuck-timely-album-tour-good-sex-interview-1236725892/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T14:45:00.000Z",
+      "discovered_at": "2026-10-16T15:23:19.831Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "Role Model’s Next Move",
+      "description": "Role Model’s Next Move: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Role-Model-NBT-temp-publicity-H-2026.png?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/role-model-s-next-move-he-ll-figure-it-out-onstage-dfa774/",
+      "landing_url": "https://matchapp.tv/?news=dfa7748b#latest-news",
+      "seo": {
+        "primary_keyword": "Role Model’s Next Move latest news",
+        "short_tail": [
+          "Role Model’s Next Move",
+          "Role Model’s Next Move news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Role Model’s Next Move latest news October 2026",
+          "Role Model’s Next Move casting update 2026",
+          "Role Model’s Next Move news 2026-10-16",
+          "latest casting news about Role Model’s Next Move",
+          "role model next move role model latest update",
+          "The Hollywood Reporter Role Model’s Next Move casting",
+          "latest news about Role Model’s Next Move October 2026",
+          "Role Model’s Next Move entertainment news 2026-10-16",
+          "what happened with Role Model’s Next Move"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Role Model’s Next Move",
+          "role",
+          "model",
+          "next",
+          "move"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "Role Model’s Next Move 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Role Model’s Next Move",
+          "hollywoodreporter.com Role Model’s Next Move",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Role Model’s Next Move? He’ll Figure It Out Onstage |…",
+        "meta_description": "Role Model’s Next Move: Casting update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Role Model’s Next Move latest news",
+          "Role Model’s Next Move",
+          "Role Model’s Next Move news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Role Model’s Next Move latest news October 2026",
+          "Role Model’s Next Move casting update 2026",
+          "Role Model’s Next Move news 2026-10-16",
+          "latest casting news about Role Model’s Next Move",
+          "role model next move role model latest update",
+          "The Hollywood Reporter Role Model’s Next Move casting",
+          "latest news about Role Model’s Next Move October 2026",
+          "Role Model’s Next Move entertainment news 2026-10-16",
+          "what happened with Role Model’s Next Move",
+          "role",
+          "model",
+          "next",
+          "move",
+          "October 2026",
+          "2026-10-16",
+          "Role Model’s Next Move 2026",
+          "The Hollywood Reporter Role Model’s Next Move",
+          "hollywoodreporter.com Role Model’s Next Move",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
+    {
+      "id": "044b4bea",
+      "title": "Pope pictured for first time since surgery and cancer diagnosis",
+      "url": "https://www.bbc.co.uk/news/articles/cw146ej00yn7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T14:36:39.000Z",
+      "discovered_at": "2026-10-16T15:23:19.831Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9e15/live/049ac9a0-c96c-11f1-a6e6-417671ef62cb.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pope-pictured-for-first-time-since-surgery-and-cancer-diagnosis-044b4b/",
+      "landing_url": "https://matchapp.tv/?news=044b4bea#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pope",
+          "pictured",
+          "first",
+          "time",
+          "since",
+          "surgery"
+        ],
+        "long_tail": [
+          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pope",
+          "pictured",
+          "first",
+          "time",
+          "since",
+          "surgery"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pope pictured for first time since surgery and cancer…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "pope",
+          "pictured",
+          "first",
+          "time",
+          "since",
+          "surgery",
+          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
+    {
+      "id": "7078f178",
+      "title": "Albanian protests turn violent: What we know",
+      "url": "https://www.bbc.co.uk/news/articles/cqdjv90d1jpko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T14:33:32.000Z",
+      "discovered_at": "2026-10-16T14:24:12.034Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/62ad/live/a3f113b0-c953-11f1-8879-9d9deeb686e1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/albanian-protests-turn-violent-what-we-know-7078f1/",
+      "landing_url": "https://matchapp.tv/?news=7078f178#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "albanian",
+          "protests",
+          "turn",
+          "violent",
+          "what",
+          "know"
+        ],
+        "long_tail": [
+          "Albanian protests turn violent: What we know 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "albanian",
+          "protests",
+          "turn",
+          "violent",
+          "what",
+          "know"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Albanian protests turn violent: What we know | World News…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "albanian",
+          "protests",
+          "turn",
+          "violent",
+          "what",
+          "know",
+          "Albanian protests turn violent: What we know 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
+    {
+      "id": "b41684a8",
+      "title": "Palestinians and US journalist injured by Israeli settlers in West Bank harvest attack",
+      "url": "https://www.bbc.co.uk/news/articles/c65ynk7212vqo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T14:31:04.000Z",
+      "discovered_at": "2026-10-16T15:23:19.831Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cc2e/live/1a3bde40-c96f-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/palestinians-and-us-journalist-injured-by-israeli-settlers-in-west-bank-harvest--b41684/",
+      "landing_url": "https://matchapp.tv/?news=b41684a8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "palestinians",
+          "journalist",
+          "injured",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "long_tail": [
+          "Palestinians and US journalist injured by Israeli settlers in West Bank harvest attack 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "palestinians",
+          "journalist",
+          "injured",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Palestinians and US journalist injured by Israeli settlers…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "palestinians",
+          "journalist",
+          "injured",
+          "israeli",
+          "settlers",
+          "west",
+          "Palestinians and US journalist injured by Israeli settlers in West Bank harvest attack 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
+      }
+    },
     {
       "id": "bbfd72c7",
       "title": "Dad fined after son, 2, died in Cyprus hotel fall",
@@ -71,7 +671,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -140,7 +740,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -241,145 +841,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "64cd8626",
-      "title": "Patients in chains rescued from suspected illegal rehab centre in South Africa",
-      "url": "https://www.bbc.co.uk/news/articles/cmwyvxj49gpwo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T14:02:24.000Z",
-      "discovered_at": "2026-10-16T14:24:12.034Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6ae2/live/aea9db50-c950-11f1-8879-9d9deeb686e1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/patients-in-chains-rescued-from-suspected-illegal-rehab-centre-in-south-africa-64cd86/",
-      "landing_url": "https://matchapp.tv/?news=64cd8626#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "patients",
-          "chains",
-          "rescued",
-          "suspected",
-          "illegal",
-          "rehab"
-        ],
-        "long_tail": [
-          "Patients in chains rescued from suspected illegal rehab centre in South Africa 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "patients",
-          "chains",
-          "rescued",
-          "suspected",
-          "illegal",
-          "rehab"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Patients in chains rescued from suspected illegal rehab…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "patients",
-          "chains",
-          "rescued",
-          "suspected",
-          "illegal",
-          "rehab",
-          "Patients in chains rescued from suspected illegal rehab centre in South Africa 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "3ef08d15",
-      "title": "Zelensky says Ukraine has right to defend itself after Trump criticism",
-      "url": "https://www.bbc.co.uk/news/articles/c58jz174w89ro?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T13:25:48.000Z",
-      "discovered_at": "2026-10-16T12:42:01.195Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cd15/live/93347340-c954-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-says-ukraine-has-right-to-defend-itself-after-trump-criticism-3ef08d/",
-      "landing_url": "https://matchapp.tv/?news=3ef08d15#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "zelensky",
-          "says",
-          "ukraine",
-          "has",
-          "right",
-          "defend"
-        ],
-        "long_tail": [
-          "Zelensky says Ukraine has right to defend itself after Trump criticism 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "zelensky",
-          "says",
-          "ukraine",
-          "has",
-          "right",
-          "defend"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Zelensky says Ukraine has right to defend itself after…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "zelensky",
-          "says",
-          "ukraine",
-          "has",
-          "right",
-          "defend",
-          "Zelensky says Ukraine has right to defend itself after Trump criticism 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -448,7 +910,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -546,7 +1008,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -645,7 +1107,7 @@
           "hollywoodreporter.com clayface director james watkins",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -714,76 +1176,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "7078f178",
-      "title": "Albanian protests turn violent: What we know",
-      "url": "https://www.bbc.co.uk/news/articles/cqdjv90d1jpko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T12:26:15.000Z",
-      "discovered_at": "2026-10-16T14:24:12.034Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/62ad/live/a3f113b0-c953-11f1-8879-9d9deeb686e1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/albanian-protests-turn-violent-what-we-know-7078f1/",
-      "landing_url": "https://matchapp.tv/?news=7078f178#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "albanian",
-          "protests",
-          "turn",
-          "violent",
-          "what",
-          "know"
-        ],
-        "long_tail": [
-          "Albanian protests turn violent: What we know 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "albanian",
-          "protests",
-          "turn",
-          "violent",
-          "what",
-          "know"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Albanian protests turn violent: What we know | World News…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "albanian",
-          "protests",
-          "turn",
-          "violent",
-          "what",
-          "know",
-          "Albanian protests turn violent: What we know 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -884,7 +1277,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -953,7 +1346,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1022,7 +1415,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1091,76 +1484,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "42ceb737",
-      "title": "Israeli settlers attack Palestinians in West Bank during olive harvest",
-      "url": "https://www.bbc.co.uk/news/videos/cqn06zx2r15jo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T11:40:41.000Z",
-      "discovered_at": "2026-10-16T12:42:01.195Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0345/live/69e10530-c94f-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/israeli-settlers-attack-palestinians-in-west-bank-during-olive-harvest-42ceb7/",
-      "landing_url": "https://matchapp.tv/?news=42ceb737#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "israeli",
-          "settlers",
-          "attack",
-          "palestinians",
-          "west",
-          "bank"
-        ],
-        "long_tail": [
-          "Israeli settlers attack Palestinians in West Bank during olive harvest 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "israeli",
-          "settlers",
-          "attack",
-          "palestinians",
-          "west",
-          "bank"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Israeli settlers attack Palestinians in West Bank during…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "israeli",
-          "settlers",
-          "attack",
-          "palestinians",
-          "west",
-          "bank",
-          "Israeli settlers attack Palestinians in West Bank during olive harvest 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1229,7 +1553,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1298,7 +1622,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1367,145 +1691,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "37d969c7",
-      "title": "What is behind the success of dark skies festival?",
-      "url": "https://www.bbc.co.uk/news/articles/c68xzg941x5vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T10:13:14.000Z",
-      "discovered_at": "2026-10-16T12:42:01.195Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1057/live/886d03b0-c8a9-11f1-9c75-6ff1271de385.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-is-behind-the-success-of-dark-skies-festival-37d969/",
-      "landing_url": "https://matchapp.tv/?news=37d969c7#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "what",
-          "behind",
-          "success",
-          "dark",
-          "skies",
-          "festival"
-        ],
-        "long_tail": [
-          "What is behind the success of dark skies festival? 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "what",
-          "behind",
-          "success",
-          "dark",
-          "skies",
-          "festival"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "What is behind the success of dark skies festival? | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "what",
-          "behind",
-          "success",
-          "dark",
-          "skies",
-          "festival",
-          "What is behind the success of dark skies festival? 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "af9b8827",
-      "title": "Nova secretária de imprensa de Trump minimiza potencial da China por falta de 'banheiros adequados'",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/nova-secretaria-de-imprensa-de-trump-china-falta-banheiros-adequados.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T09:42:05.000Z",
-      "discovered_at": "2026-10-16T12:42:01.195Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/3iu_ejPK5KHBbcnWBFE0iofSGTA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/M/B/C65W8OQzu1EbzbM0lbGA/2026-10-13t134516z-528014761-rc2d2oakls8u-rtrmadp-3-usa-trump-zacharia.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/nova-secretaria-de-imprensa-de-trump-minimiza-potencial-da-china-por-falta-de-ba-af9b88/",
-      "landing_url": "https://matchapp.tv/?news=af9b8827#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "nova",
-          "secretaria",
-          "imprensa",
-          "trump",
-          "minimiza",
-          "potencial"
-        ],
-        "long_tail": [
-          "Nova secretária de imprensa de Trump minimiza potencial da China por falta de 'banheiros adequados' 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nova",
-          "secretaria",
-          "imprensa",
-          "trump",
-          "minimiza",
-          "potencial"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Nova secretária de imprensa de Trump minimiza potencial da…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "nova",
-          "secretaria",
-          "imprensa",
-          "trump",
-          "minimiza",
-          "potencial",
-          "Nova secretária de imprensa de Trump minimiza potencial da China por falta de 'banheiros adequados' 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1602,7 +1788,7 @@
           "hollywoodreporter.com norm tale norm macdonald",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1703,7 +1889,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1804,7 +1990,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1905,7 +2091,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -1997,7 +2183,7 @@
           "hollywoodreporter.com James McAvoy Reveals Which",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2098,7 +2284,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2197,7 +2383,7 @@
           "hollywoodreporter.com grey anatomy boss meg",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2296,101 +2482,7 @@
           "hollywoodreporter.com snl star michael che",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "f81e8b6e",
-      "title": "Ben Affleck Warns ‘Digger’ Box Office Bomb Will Lead to “A Bunch of Sh***y Homogenized Movies”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/ben-affleck-digger-box-office-shitty-homogenized-movies-1236733419/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-16T00:18:29.000Z",
-      "discovered_at": "2026-10-16T01:21:21.805Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Ben Affleck Warns",
-      "description": "Ben Affleck Warns: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2298067377-e1792109458340.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/ben-affleck-warns-digger-box-office-bomb-will-lead-to-a-bunch-of-sh-y-homogenize-f81e8b/",
-      "landing_url": "https://matchapp.tv/?news=f81e8b6e#latest-news",
-      "seo": {
-        "primary_keyword": "Ben Affleck Warns latest news",
-        "short_tail": [
-          "Ben Affleck Warns",
-          "Ben Affleck Warns news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Ben Affleck Warns latest news October 2026",
-          "Ben Affleck Warns entertainment update 2026",
-          "Ben Affleck Warns news 2026-10-16",
-          "latest entertainment news about Ben Affleck Warns",
-          "ben affleck warns ben affleck warns latest update",
-          "The Hollywood Reporter Ben Affleck Warns entertainment",
-          "latest news about Ben Affleck Warns October 2026",
-          "Ben Affleck Warns entertainment news 2026-10-16",
-          "what happened with Ben Affleck Warns"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Ben Affleck Warns",
-          "ben",
-          "affleck",
-          "warns",
-          "digger",
-          "box"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "Ben Affleck Warns 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Ben Affleck Warns",
-          "hollywoodreporter.com Ben Affleck Warns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Ben Affleck Warns ‘Digger’ Box Office Bomb Will Lead to “A…",
-        "meta_description": "Ben Affleck Warns: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Ben Affleck Warns latest news",
-          "Ben Affleck Warns",
-          "Ben Affleck Warns news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Ben Affleck Warns latest news October 2026",
-          "Ben Affleck Warns entertainment update 2026",
-          "Ben Affleck Warns news 2026-10-16",
-          "latest entertainment news about Ben Affleck Warns",
-          "ben affleck warns ben affleck warns latest update",
-          "The Hollywood Reporter Ben Affleck Warns entertainment",
-          "latest news about Ben Affleck Warns October 2026",
-          "Ben Affleck Warns entertainment news 2026-10-16",
-          "what happened with Ben Affleck Warns",
-          "ben",
-          "affleck",
-          "warns",
-          "digger",
-          "box",
-          "October 2026",
-          "2026-10-16",
-          "Ben Affleck Warns 2026",
-          "The Hollywood Reporter Ben Affleck Warns",
-          "hollywoodreporter.com Ben Affleck Warns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2489,7 +2581,7 @@
           "bbc.co.uk sparks fly celebrity traitors",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2590,7 +2682,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2687,7 +2779,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2777,7 +2869,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2878,7 +2970,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -2977,7 +3069,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -3072,7 +3164,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -3170,7 +3262,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -3268,7 +3360,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -3366,7 +3458,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     },
     {
@@ -3467,105 +3559,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
-      }
-    },
-    {
-      "id": "33273791",
-      "title": "Cézar Mendes reúne Alice Caymmi, Adriana Calcanhotto, Marisa Monte e Sophie Charlotte no álbum 'Itapuano'",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/15/cezar-mendes-reune-alice-caymmi-adriana-calcanhotto-marisa-monte-e-sophie-charlotte-no-album-itapuano.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-15T03:01:01.000Z",
-      "discovered_at": "2026-10-15T06:22:45.438Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Cézar Mendes",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/0Hv7IYUB_MctnN5cli3LEFFcgis=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/v/x/lQQGh3Rnu0CMVpVrhggw/cezarmendesbobwolfenson.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/cezar-mendes-reune-alice-caymmi-adriana-calcanhotto-marisa-monte-e-sophie-charlo-332737/",
-      "landing_url": "https://matchapp.tv/?news=33273791#latest-news",
-      "seo": {
-        "primary_keyword": "Cézar Mendes últimas notícias",
-        "short_tail": [
-          "Cézar Mendes",
-          "Cézar Mendes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Cézar Mendes latest news October 2026",
-          "Cézar Mendes entertainment update 2026",
-          "Cézar Mendes news 2026-10-15",
-          "latest entertainment news about Cézar Mendes",
-          "cezar mendes cezar mendes reune alice latest update",
-          "G1 Cézar Mendes entertainment",
-          "últimas notícias sobre Cézar Mendes outubro 2026",
-          "Cézar Mendes notícia de 2026-10-15",
-          "o que aconteceu com Cézar Mendes"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Cézar Mendes",
-          "cezar",
-          "mendes",
-          "reune",
-          "alice",
-          "caymmi",
-          "adriana"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "Cézar Mendes 2026"
-        ],
-        "source_keywords": [
-          "G1 Cézar Mendes",
-          "g1.globo.com Cézar Mendes",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Cézar Mendes reúne Alice Caymmi, Adriana Calcanhotto,…",
-        "meta_description": "Cézar Mendes: Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Cézar Mendes últimas notícias",
-          "Cézar Mendes",
-          "Cézar Mendes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Cézar Mendes latest news October 2026",
-          "Cézar Mendes entertainment update 2026",
-          "Cézar Mendes news 2026-10-15",
-          "latest entertainment news about Cézar Mendes",
-          "cezar mendes cezar mendes reune alice latest update",
-          "G1 Cézar Mendes entertainment",
-          "últimas notícias sobre Cézar Mendes outubro 2026",
-          "Cézar Mendes notícia de 2026-10-15",
-          "o que aconteceu com Cézar Mendes",
-          "cezar",
-          "mendes",
-          "reune",
-          "alice",
-          "caymmi",
-          "adriana",
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "Cézar Mendes 2026",
-          "G1 Cézar Mendes",
-          "g1.globo.com Cézar Mendes",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T14:24:12.034Z"
+        "seo_generated_at": "2026-10-16T15:23:19.831Z"
       }
     }
   ]
