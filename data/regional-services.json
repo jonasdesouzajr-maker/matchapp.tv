@@ -1,0 +1,195 @@
+[
+  {
+    "name": "Mercado Play",
+    "markets": [
+      "BR",
+      "MX",
+      "AR"
+    ],
+    "kind": "films",
+    "url": "https://play.mercadolivre.com.br/",
+    "destinations": {
+      "BR": "https://play.mercadolivre.com.br/",
+      "MX": "https://play.mercadolibre.com.mx/",
+      "AR": "https://play.mercadolibre.com.ar/"
+    }
+  },
+  {
+    "name": "BBC iPlayer",
+    "markets": [
+      "GB"
+    ],
+    "kind": "public",
+    "url": "https://www.bbc.co.uk/iplayer"
+  },
+  {
+    "name": "ITVX",
+    "markets": [
+      "GB"
+    ],
+    "kind": "regional",
+    "url": "https://www.itv.com/"
+  },
+  {
+    "name": "CBC Gem",
+    "markets": [
+      "CA"
+    ],
+    "kind": "public",
+    "url": "https://gem.cbc.ca/"
+  },
+  {
+    "name": "ABC iview",
+    "markets": [
+      "AU"
+    ],
+    "kind": "public",
+    "url": "https://iview.abc.net.au/"
+  },
+  {
+    "name": "SBS On Demand",
+    "markets": [
+      "AU"
+    ],
+    "kind": "public",
+    "url": "https://www.sbs.com.au/ondemand/"
+  },
+  {
+    "name": "TVNZ+",
+    "markets": [
+      "NZ"
+    ],
+    "kind": "regional",
+    "url": "https://www.tvnz.co.nz/movies"
+  },
+  {
+    "name": "RaiPlay",
+    "markets": [
+      "IT"
+    ],
+    "kind": "public",
+    "url": "https://www.raiplay.it/serieitaliane"
+  },
+  {
+    "name": "RTP Play",
+    "markets": [
+      "PT"
+    ],
+    "kind": "public",
+    "url": "https://www.rtp.pt/play/"
+  },
+  {
+    "name": "RTVE Play",
+    "markets": [
+      "ES"
+    ],
+    "kind": "public",
+    "url": "https://www.rtve.es/play/"
+  },
+  {
+    "name": "ARTE",
+    "markets": [
+      "FR",
+      "DE"
+    ],
+    "kind": "culture",
+    "url": "https://www.arte.tv/en/"
+  },
+  {
+    "name": "ZDF",
+    "markets": [
+      "DE"
+    ],
+    "kind": "public",
+    "url": "https://www.zdf.de/"
+  },
+  {
+    "name": "France.tv",
+    "markets": [
+      "FR"
+    ],
+    "kind": "public",
+    "url": "https://www.france.tv/documentaires/"
+  },
+  {
+    "name": "TVer",
+    "markets": [
+      "JP"
+    ],
+    "kind": "regional",
+    "url": "https://tver.jp/"
+  },
+  {
+    "name": "Vidio",
+    "markets": [
+      "ID"
+    ],
+    "kind": "regional",
+    "url": "https://m.vidio.com/"
+  },
+  {
+    "name": "tabii",
+    "markets": [
+      "TR"
+    ],
+    "kind": "regional",
+    "url": "https://www.tabii.com/tr"
+  },
+  {
+    "name": "Shahid",
+    "markets": [
+      "SA"
+    ],
+    "kind": "regional",
+    "url": "https://shahid.mbc.net/en"
+  },
+  {
+    "name": "PBS",
+    "markets": [
+      "US"
+    ],
+    "kind": "public",
+    "url": "https://www.pbs.org/"
+  },
+  {
+    "name": "SABC+",
+    "markets": [
+      "ZA"
+    ],
+    "kind": "public",
+    "url": "https://sabc-plus.com/"
+  },
+  {
+    "name": "JioHotstar",
+    "markets": [
+      "IN"
+    ],
+    "kind": "regional",
+    "url": "https://www.hotstar.com/",
+    "source": "https://www.jiostar.com/mediatoolkit/all-press-releases/"
+  },
+  {
+    "name": "KBS WORLD",
+    "markets": [
+      "KR"
+    ],
+    "kind": "regional",
+    "url": "https://kbsworld.kbs.co.kr/program/list.php"
+  },
+  {
+    "name": "YOUKU",
+    "markets": [
+      "CN"
+    ],
+    "kind": "regional",
+    "url": "https://www.youku.com/channel/webtv/list"
+  },
+  {
+    "name": "Смотрим",
+    "markets": [
+      "RU"
+    ],
+    "kind": "regional",
+    "url": "https://smotrim.ru/serials"
+  }
+]
