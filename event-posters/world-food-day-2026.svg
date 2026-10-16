@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="960" viewBox="0 0 720 960" role="img" aria-labelledby="title desc">
+<title id="title">World Food Day 2026 — Innovate today, nourish tomorrow</title>
+<desc id="desc">Original editorial illustration of two growers sharing a basket of fresh food beside a greenhouse, a solar-powered irrigation system and cultivated fields.</desc>
+<defs><linearGradient id="sky" x2="1" y2="1"><stop stop-color="#102c3e"/><stop offset=".52" stop-color="#21675e"/><stop offset="1" stop-color="#97a569"/></linearGradient>
+<linearGradient id="earth" x2="0" y2="1"><stop stop-color="#789856"/><stop offset="1" stop-color="#1b493e"/></linearGradient>
+<linearGradient id="field" x2="1" y2="1"><stop stop-color="#e1b169"/><stop offset=".45" stop-color="#a9783b"/><stop offset="1" stop-color="#4c693e"/></linearGradient>
+<radialGradient id="light"><stop stop-color="#f9dda1"/><stop offset=".4" stop-color="#efbb7a" stop-opacity=".76"/><stop offset="1" stop-color="#d3a46b" stop-opacity="0"/></radialGradient>
+<linearGradient id="glass" x2="1" y2="1"><stop stop-color="#bce9d5" stop-opacity=".78"/><stop offset="1" stop-color="#5fbbad" stop-opacity=".18"/></linearGradient>
+<clipPath id="edge"><rect width="688" height="928" x="16" y="16" rx="26"/></clipPath></defs>
+<g clip-path="url(#edge)"><rect width="720" height="960" fill="url(#sky)"/>
+<circle cx="564" cy="365" r="190" fill="url(#light)"/><circle cx="563" cy="367" r="79" fill="#f2ca83" opacity=".83"/>
+<g fill="none" stroke="#f7e6bb" stroke-opacity=".18"><circle cx="561" cy="368" r="112"/><circle cx="561" cy="368" r="144"/><path d="M416 368h292M561 223v290"/></g>
+<path d="M52 74h70" stroke="#edc887" stroke-width="3" stroke-linecap="round"/>
+<text x="52" y="109" fill="#f3deaf" font-family="Arial,Helvetica,sans-serif" font-size="21" letter-spacing="4" font-weight="700">16 OCTOBER 2026</text>
+<text x="48" y="180" fill="#fff7dc" font-family="Georgia,serif" font-size="57" font-weight="700">WORLD</text>
+<text x="48" y="248" fill="#fff7dc" font-family="Georgia,serif" font-size="72" font-weight="700">FOOD DAY</text>
+<text x="53" y="292" fill="#f4e4bd" font-family="Arial,Helvetica,sans-serif" font-size="22" letter-spacing=".5">Innovate today. Nourish tomorrow.</text>
+<path d="M0 551Q160 482 319 550Q488 481 720 541v180H0Z" fill="#4c846f" opacity=".83"/>
+<path d="M0 622Q130 565 300 623Q514 549 720 603v280H0Z" fill="url(#earth)"/>
+<g transform="translate(398 485)"><path d="M0 106l91-77 91 77v88H0Z" fill="url(#glass)" stroke="#b9dfbb" stroke-width="5"/>
+<path d="M0 106h182M91 29v165M0 153h182" stroke="#cff0d9" stroke-width="3" opacity=".87"/>
+<path d="M16 192v-59h150v59" fill="none" stroke="#4c9a72" stroke-width="9"/>
+<g stroke="#27755a" stroke-width="4" fill="#91b96e"><path d="M34 184v-39m0 14l-18-13m18 8l19-14M72 184v-31m0 12l-13-14m13 9l15-15M121 184v-44m0 24l-17-14m17 10l16-21"/></g></g>
+<path d="M0 715Q181 635 359 708Q552 634 720 699V960H0Z" fill="url(#field)"/>
+<g fill="none" stroke="#edd69d" stroke-width="15" stroke-opacity=".43" stroke-linecap="round"><path d="M-45 774Q187 688 387 780Q535 720 761 781"/><path d="M-40 848Q177 764 369 846Q561 774 750 844"/><path d="M-42 924Q176 845 368 926Q558 853 744 925"/></g>
+<g transform="translate(67 528)"><path d="M88 136l44-80 112 13-45 80Z" fill="#1c5368" stroke="#b6d3c9" stroke-width="6"/>
+<path d="M109 105l112 13m-75-57l-44 81m82-77l-43 83m33-85l-44 84" stroke="#8fc3ca" stroke-width="2.5"/>
+<path d="M171 144l-8 59M120 141l-7 56m-14 6h103" stroke="#465a4f" stroke-width="7" stroke-linecap="round"/>
+<path d="M27 178q28-43 60 0v51" fill="none" stroke="#82c5c3" stroke-width="9" stroke-linecap="round"/>
+<path d="M88 229q6 30-15 35" fill="none" stroke="#82c5c3" stroke-width="5" stroke-dasharray="1 14" stroke-linecap="round"/></g>
+<g stroke="#254b36" stroke-width="6" stroke-linecap="round" fill="none"><path d="M39 838q29-115 11-201M61 848q32-132 38-212M652 858q-12-122 9-221M674 845q-22-128-10-198"/></g>
+<g fill="#eec982"><path d="M50 667q-30-40-27-65q31 10 32 54zm10 49q-39-28-40-53q35 3 43 44zm35-52q-2-48 18-65q16 30-11 63zm-8 65q-3-42 19-56q13 30-13 55zm560-63q31-46 58-51q-2 35-52 61zm-5 51q-9-45-34-54q-9 35 29 64zm24-46q35-36 57-31q-9 32-51 44z"/></g>
+<g transform="translate(176 591)"><ellipse cx="177" cy="269" rx="230" ry="28" fill="#18473e" opacity=".28"/>
+<path d="M0 242l32-157 98-1 39 162Z" fill="#e0a56b" stroke="#c17f4c" stroke-width="4"/>
+<path d="M26 108Q3 149-1 181l47 36M118 105q30 32 36 78l-53 35" fill="none" stroke="#935d42" stroke-width="20" stroke-linecap="round"/>
+<path d="M45 91v-39h54v42" fill="#a56c4d"/><ellipse cx="72" cy="47" rx="36" ry="44" fill="#a56c4d"/>
+<path d="M34 46q-1-50 41-52q48 4 35 56l-12-28q-22-17-49 0z" fill="#2d2f39"/>
+<path d="M28 17q25-36 73-4" fill="none" stroke="#e8ce92" stroke-width="16" stroke-linecap="round"/>
+<path d="M29 230l4 35m91-37l-4 35" stroke="#4d4c48" stroke-width="20" stroke-linecap="round"/>
+<path d="M221 245l26-155 95-4 42 159Z" fill="#c7b3dc" stroke="#947ba6" stroke-width="4"/>
+<path d="M249 107q-28 31-33 70l39 37M338 105q24 33 34 69l-48 38" fill="none" stroke="#755042" stroke-width="19" stroke-linecap="round"/>
+<path d="M261 96V57h62v38" fill="#79503f"/><ellipse cx="292" cy="52" rx="37" ry="44" fill="#865945"/>
+<path d="M252 50q0-49 44-50q39 0 41 52l-15-27q-27-17-53 2z" fill="#2b3435"/>
+<path d="M254 23q40-20 79 0" fill="none" stroke="#d7d1af" stroke-width="13" stroke-linecap="round"/>
+<path d="M254 230l-3 35m101-37l7 35" stroke="#495350" stroke-width="20" stroke-linecap="round"/>
+<path d="M115 194q66 15 129 0l-16 66q-46 20-96 0Z" fill="#9c683c" stroke="#f1d09a" stroke-width="6"/>
+<path d="M125 211q54 10 109 0" fill="none" stroke="#e6bb7b" stroke-width="5"/>
+<g fill="#db5e3c"><circle cx="146" cy="186" r="18"/><circle cx="177" cy="185" r="16"/></g>
+<g fill="#eed168"><ellipse cx="204" cy="186" rx="18" ry="21"/><ellipse cx="229" cy="182" rx="12" ry="18"/></g>
+<g fill="#72ad5e"><path d="M136 171q-8-19 8-30q16 12 5 32M178 169q-13-26-1-38q17 15 8 39M208 170q-4-21 16-27q11 20-9 29"/></g></g>
+<path d="M47 903h627" stroke="#fff0ce" stroke-opacity=".44" stroke-width="2"/>
+<text x="360" y="932" fill="#f5e6bd" font-family="Arial,Helvetica,sans-serif" font-size="15" text-anchor="middle" letter-spacing="2.5">FOOD • INNOVATION • COMMUNITY</text></g>
+<rect x="16" y="16" width="688" height="928" rx="26" fill="none" stroke="#f6deaf" stroke-opacity=".82" stroke-width="3"/></svg>
