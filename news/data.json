@@ -1,10 +1,515 @@
 {
-  "generated_at": "2026-10-15T23:15:03.438Z",
-  "feed_version": "7bb8370b",
-  "sports_updated_at": "2026-10-15T19:57:04.982Z",
+  "generated_at": "2026-10-16T01:21:21.805Z",
+  "feed_version": "ae234fd1",
+  "sports_updated_at": "2026-10-16T01:21:21.751Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "f81e8b6e",
+      "title": "Ben Affleck Warns ‘Digger’ Box Office Bomb Will Lead to “A Bunch of Sh***y Homogenized Movies”",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/ben-affleck-digger-box-office-shitty-homogenized-movies-1236733419/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T00:18:29.000Z",
+      "discovered_at": "2026-10-16T01:21:21.805Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Ben Affleck Warns",
+      "description": "Ben Affleck Warns: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2298067377-e1792109458340.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ben-affleck-warns-digger-box-office-bomb-will-lead-to-a-bunch-of-sh-y-homogenize-f81e8b/",
+      "landing_url": "https://matchapp.tv/?news=f81e8b6e#latest-news",
+      "seo": {
+        "primary_keyword": "Ben Affleck Warns latest news",
+        "short_tail": [
+          "Ben Affleck Warns",
+          "Ben Affleck Warns news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Ben Affleck Warns latest news October 2026",
+          "Ben Affleck Warns entertainment update 2026",
+          "Ben Affleck Warns news 2026-10-16",
+          "latest entertainment news about Ben Affleck Warns",
+          "ben affleck warns ben affleck warns latest update",
+          "The Hollywood Reporter Ben Affleck Warns entertainment",
+          "latest news about Ben Affleck Warns October 2026",
+          "Ben Affleck Warns entertainment news 2026-10-16",
+          "what happened with Ben Affleck Warns"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Ben Affleck Warns",
+          "ben",
+          "affleck",
+          "warns",
+          "digger",
+          "box"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "Ben Affleck Warns 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Ben Affleck Warns",
+          "hollywoodreporter.com Ben Affleck Warns",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Ben Affleck Warns ‘Digger’ Box Office Bomb Will Lead to “A…",
+        "meta_description": "Ben Affleck Warns: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Ben Affleck Warns latest news",
+          "Ben Affleck Warns",
+          "Ben Affleck Warns news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Ben Affleck Warns latest news October 2026",
+          "Ben Affleck Warns entertainment update 2026",
+          "Ben Affleck Warns news 2026-10-16",
+          "latest entertainment news about Ben Affleck Warns",
+          "ben affleck warns ben affleck warns latest update",
+          "The Hollywood Reporter Ben Affleck Warns entertainment",
+          "latest news about Ben Affleck Warns October 2026",
+          "Ben Affleck Warns entertainment news 2026-10-16",
+          "what happened with Ben Affleck Warns",
+          "ben",
+          "affleck",
+          "warns",
+          "digger",
+          "box",
+          "October 2026",
+          "2026-10-16",
+          "Ben Affleck Warns 2026",
+          "The Hollywood Reporter Ben Affleck Warns",
+          "hollywoodreporter.com Ben Affleck Warns",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "d5218889",
+      "title": "Houthi missile attack on Yemeni presidential palace kills five, minister says",
+      "url": "https://www.bbc.co.uk/news/articles/cm62y6lp73zdo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T23:38:46.000Z",
+      "discovered_at": "2026-10-15T19:27:59.616Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/16df/live/2fc36f20-c8bc-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/houthi-missile-attack-on-yemeni-presidential-palace-kills-five-minister-says-d52188/",
+      "landing_url": "https://matchapp.tv/?news=d5218889#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "houthi",
+          "missile",
+          "attack",
+          "yemeni",
+          "presidential",
+          "palace"
+        ],
+        "long_tail": [
+          "Houthi missile attack on Yemeni presidential palace kills five, minister says 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "houthi",
+          "missile",
+          "attack",
+          "yemeni",
+          "presidential",
+          "palace"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Houthi missile attack on Yemeni presidential palace kills…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "houthi",
+          "missile",
+          "attack",
+          "yemeni",
+          "presidential",
+          "palace",
+          "Houthi missile attack on Yemeni presidential palace kills five, minister says 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "4ef4b8a4",
+      "title": "Porn showing choking or incest to be banned from early November, government says",
+      "url": "https://www.bbc.co.uk/news/articles/cmpqgepejr2ro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T23:27:57.000Z",
+      "discovered_at": "2026-10-16T01:21:21.805Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ee76/live/db556ac0-c8b5-11f1-bdfb-e3788aeae9ec.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/porn-showing-choking-or-incest-to-be-banned-from-early-november-government-says-4ef4b8/",
+      "landing_url": "https://matchapp.tv/?news=4ef4b8a4#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "porn",
+          "showing",
+          "choking",
+          "incest",
+          "banned",
+          "early"
+        ],
+        "long_tail": [
+          "Porn showing choking or incest to be banned from early November, government says 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "porn",
+          "showing",
+          "choking",
+          "incest",
+          "banned",
+          "early"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Porn showing choking or incest to be banned from early…",
+        "meta_description": "World report published by BBC Technology on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "porn",
+          "showing",
+          "choking",
+          "incest",
+          "banned",
+          "early",
+          "Porn showing choking or incest to be banned from early November, government says 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "5e877225",
+      "title": "Tip-off foiled US teen suspect's plot to attack Hindu temple, police say",
+      "url": "https://www.bbc.co.uk/news/articles/cqgm0j4kjvevo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T23:27:21.000Z",
+      "discovered_at": "2026-10-16T01:21:21.805Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/316e/live/9caab030-c88a-11f1-a2e8-f71844f8002e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tip-off-foiled-us-teen-suspect-s-plot-to-attack-hindu-temple-police-say-5e8772/",
+      "landing_url": "https://matchapp.tv/?news=5e877225#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "tip",
+          "off",
+          "foiled",
+          "teen",
+          "suspect",
+          "plot"
+        ],
+        "long_tail": [
+          "Tip-off foiled US teen suspect's plot to attack Hindu temple, police say 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "tip",
+          "off",
+          "foiled",
+          "teen",
+          "suspect",
+          "plot"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Tip-off foiled US teen suspect's plot to attack Hindu…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "tip",
+          "off",
+          "foiled",
+          "teen",
+          "suspect",
+          "plot",
+          "Tip-off foiled US teen suspect's plot to attack Hindu temple, police say 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "fd23cb2b",
+      "title": "Are student protests being manipulated ahead of France's presidential election?",
+      "url": "https://www.bbc.co.uk/news/articles/c8zxlyg965r3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T23:25:06.000Z",
+      "discovered_at": "2026-10-16T01:21:21.805Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/00d9/live/2e460170-c8bd-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/are-student-protests-being-manipulated-ahead-of-france-s-presidential-election-fd23cb/",
+      "landing_url": "https://matchapp.tv/?news=fd23cb2b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "student",
+          "protests",
+          "being",
+          "manipulated",
+          "ahead",
+          "france"
+        ],
+        "long_tail": [
+          "Are student protests being manipulated ahead of France's presidential election? 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "student",
+          "protests",
+          "being",
+          "manipulated",
+          "ahead",
+          "france"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Are student protests being manipulated ahead of France's…",
+        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "student",
+          "protests",
+          "being",
+          "manipulated",
+          "ahead",
+          "france",
+          "Are student protests being manipulated ahead of France's presidential election? 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "743cf8ab",
+      "title": "Ordem para limitar sistema de satélites usado pela Ucrânia na guerra partiu da Casa Branca, diz agência",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/ordem-para-limitar-sistema-de-satelites-usado-pela-ucrania-na-guerra-partiu-da-casa-branca-diz-agencia.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-15T23:21:11.000Z",
+      "discovered_at": "2026-10-16T01:21:21.805Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/9lXi2SMYvBigiYI5KgHfldlWUQA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/A/G/toVFKBTzAkGvGI0iBsAw/2025-08-18t175855z-1199898741-rc2t9ga1ofld-rtrmadp-3-ukraine-crisis-summit.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ordem-para-limitar-sistema-de-satelites-usado-pela-ucrania-na-guerra-partiu-da-c-743cf8/",
+      "landing_url": "https://matchapp.tv/?news=743cf8ab#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-15",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "ordem",
+          "limitar",
+          "sistema",
+          "satelites",
+          "usado",
+          "pela"
+        ],
+        "long_tail": [
+          "Ordem para limitar sistema de satélites usado pela Ucrânia na guerra partiu da Casa Branca, diz agência 2026-10-15",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ordem",
+          "limitar",
+          "sistema",
+          "satelites",
+          "usado",
+          "pela"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Ordem para limitar sistema de satélites usado pela Ucrânia…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-15",
+          "notícias do mundo",
+          "notícias internacionais",
+          "ordem",
+          "limitar",
+          "sistema",
+          "satelites",
+          "usado",
+          "pela",
+          "Ordem para limitar sistema de satélites usado pela Ucrânia na guerra partiu da Casa Branca, diz agência 2026-10-15",
+          "notícias mundiais outubro 2026",
+          "2026-10-15",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "2554deac",
+      "title": "Living with a stink? Technology might help",
+      "url": "https://www.bbc.co.uk/news/articles/cr6240q1w136o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-15T23:18:21.000Z",
+      "discovered_at": "2026-10-16T01:21:21.805Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/80ac/live/fbba3b20-c652-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/living-with-a-stink-technology-might-help-2554de/",
+      "landing_url": "https://matchapp.tv/?news=2554deac#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-15",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "living",
+          "stink",
+          "technology",
+          "might",
+          "help"
+        ],
+        "long_tail": [
+          "Living with a stink? Technology might help 2026-10-15",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "living",
+          "stink",
+          "technology",
+          "might",
+          "help"
+        ],
+        "freshness_keywords": [
+          "2026-10-15"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Living with a stink? Technology might help | World News |…",
+        "meta_description": "World report published by BBC Technology on 2026-10-15. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-15",
+          "world news",
+          "global headlines",
+          "living",
+          "stink",
+          "technology",
+          "might",
+          "help",
+          "Living with a stink? Technology might help 2026-10-15",
+          "world news October 2026",
+          "2026-10-15",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
     {
       "id": "48c788b2",
       "title": "Sparks fly at the Celebrity Traitors round table and a 'terrifying' death march",
@@ -101,7 +606,7 @@
           "bbc.co.uk sparks fly celebrity traitors",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -195,7 +700,7 @@
           "hollywoodreporter.com Allison Williams Talks",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -264,7 +769,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -282,7 +787,7 @@
       "category": "world",
       "person": "Governo Trump",
       "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/qlunGE6IDt9-xacE-FdxYE3dURw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/r/r/LenAIoQ4Ay5zSq3hhPkw/ap26246568730455.jpg",
+      "image": "https://s2-g1.glbimg.com/xEFF-Xfbvp8GscCYLTxV4MLzV9g=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/w/O/PFSfA1TvyVd6BjHnOczg/2022-11-08t131839z-2077520762-rc2nhx94yqte-rtrmadp-3-usa-election-pennsylvania.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/governo-trump-processa-california-para-barrar-voto-de-20-mil-pessoas-que-alega-n-8b75cf/",
       "landing_url": "https://matchapp.tv/?news=8b75cf0d#latest-news",
       "seo": {
@@ -333,7 +838,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -402,7 +907,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -447,7 +952,6 @@
           "o que aconteceu com batman steven soderbergh assume"
         ],
         "trend_keywords": [
-          "steven soderbergh",
           "steven soderbergh",
           "steven soderbergh"
         ],
@@ -508,7 +1012,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -604,12 +1108,12 @@
           "hollywoodreporter.com Streaming Ratings",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
       "id": "d80a2eeb",
-      "title": "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz imprensa americana; atirador também morreu",
+      "title": "Tiroteio em escola nos EUA mata 3 crianças e professor; atirador também morreu",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/15/tiroteio-em-escola-de-ensino-fundamental-nos-eua-deixa-ao-menos-dois-hospitalizados-atirador-morre.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -623,7 +1127,7 @@
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://s2-g1.glbimg.com/u0LbQuTSkNBRLnt3W0CZCJLS9Ic=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/z/J/RnNirtQyKgYFFTfvPqXw/ap26288796036302.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/tiroteio-em-escola-nos-eua-mata-3-criancas-e-1-adulto-diz-imprensa-americana-ati-d80a2e/",
+      "matchapp_url": "https://matchapp.tv/news/articles/tiroteio-em-escola-nos-eua-mata-3-criancas-e-professor-atirador-tambem-morreu-d80a2e/",
       "landing_url": "https://matchapp.tv/?news=d80a2eeb#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-15",
@@ -635,10 +1139,10 @@
           "eua",
           "mata",
           "criancas",
-          "adulto"
+          "professor"
         ],
         "long_tail": [
-          "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz imprensa americana; atirador também morreu 2026-10-15",
+          "Tiroteio em escola nos EUA mata 3 crianças e professor; atirador também morreu 2026-10-15",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
@@ -648,7 +1152,7 @@
           "eua",
           "mata",
           "criancas",
-          "adulto"
+          "professor"
         ],
         "freshness_keywords": [
           "2026-10-15"
@@ -656,7 +1160,7 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz…",
+        "meta_title": "Tiroteio em escola nos EUA mata 3 crianças e professor;…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-15",
@@ -667,209 +1171,13 @@
           "eua",
           "mata",
           "criancas",
-          "adulto",
-          "Tiroteio em escola nos EUA mata 3 crianças e 1 adulto, diz imprensa americana; atirador também morreu 2026-10-15",
+          "professor",
+          "Tiroteio em escola nos EUA mata 3 crianças e professor; atirador também morreu 2026-10-15",
           "notícias mundiais outubro 2026",
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "935f9435",
-      "title": "‘Fourth Wing’ Series: Esther McGregor and Emilio Sakraya Cast as Violet and Xaden",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/fourth-wing-violet-xaden-esther-mcgregor-emilio-sakraya-1236733258/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T21:37:59.000Z",
-      "discovered_at": "2026-10-15T21:42:12.434Z",
-      "event_type": "Casting",
-      "category": "entertainment",
-      "person": "",
-      "description": "casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Esther-McGregor-and-Emilio-Sakraya-Split-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/fourth-wing-series-esther-mcgregor-and-emilio-sakraya-cast-as-violet-and-xaden-935f94/",
-      "landing_url": "https://matchapp.tv/?news=935f9435#latest-news",
-      "seo": {
-        "primary_keyword": "fourth wing",
-        "short_tail": [
-          "fourth wing series esther",
-          "fourth wing series esther news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "fourth wing"
-        ],
-        "long_tail": [
-          "fourth wing series esther latest news October 2026",
-          "fourth wing series esther casting update 2026",
-          "fourth wing series esther news 2026-10-15",
-          "latest casting news about fourth wing series esther",
-          "fourth wing series esther mcgregor emilio latest update",
-          "The Hollywood Reporter fourth wing series esther casting",
-          "latest news about fourth wing series esther October 2026",
-          "fourth wing series esther entertainment news 2026-10-15",
-          "what happened with fourth wing series esther"
-        ],
-        "trend_keywords": [
-          "fourth wing"
-        ],
-        "entity_keywords": [
-          "fourth",
-          "wing",
-          "series",
-          "esther",
-          "mcgregor",
-          "emilio",
-          "sakraya",
-          "cast"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "fourth wing series esther 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter fourth wing series esther",
-          "hollywoodreporter.com fourth wing series esther",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Fourth Wing’ Series: Esther McGregor and Emilio Sakraya…",
-        "meta_description": "Casting update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "fourth wing",
-          "fourth wing series esther",
-          "fourth wing series esther news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "fourth wing series esther latest news October 2026",
-          "fourth wing series esther casting update 2026",
-          "fourth wing series esther news 2026-10-15",
-          "latest casting news about fourth wing series esther",
-          "fourth wing series esther mcgregor emilio latest update",
-          "The Hollywood Reporter fourth wing series esther casting",
-          "latest news about fourth wing series esther October 2026",
-          "fourth wing series esther entertainment news 2026-10-15",
-          "what happened with fourth wing series esther",
-          "fourth",
-          "wing",
-          "series",
-          "esther",
-          "mcgregor",
-          "emilio",
-          "sakraya",
-          "cast",
-          "October 2026",
-          "2026-10-15",
-          "fourth wing series esther 2026",
-          "The Hollywood Reporter fourth wing series esther",
-          "hollywoodreporter.com fourth wing series esther",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "02b2aedb",
-      "title": "Selma Blair Is Accused of Assaulting Four People. Can Her Career Survive Another Scandal?",
-      "url": "https://www.hollywoodreporter.com/news/general-news/selma-blair-airplane-assault-case-history-apology-career-1236730613/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T20:56:09.000Z",
-      "discovered_at": "2026-10-15T21:42:12.434Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Selma Blair Is Accused",
-      "description": "Selma Blair Is Accused: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2282544167.jpg?crop=0px%2C52px%2C3552px%2C1988px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/selma-blair-is-accused-of-assaulting-four-people-can-her-career-survive-another--02b2ae/",
-      "landing_url": "https://matchapp.tv/?news=02b2aedb#latest-news",
-      "seo": {
-        "primary_keyword": "Selma Blair Is Accused latest news",
-        "short_tail": [
-          "Selma Blair Is Accused",
-          "Selma Blair Is Accused news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Selma Blair Is Accused latest news October 2026",
-          "Selma Blair Is Accused entertainment update 2026",
-          "Selma Blair Is Accused news 2026-10-15",
-          "latest entertainment news about Selma Blair Is Accused",
-          "selma blair accused selma blair accused latest update",
-          "The Hollywood Reporter Selma Blair Is Accused entertainment",
-          "latest news about Selma Blair Is Accused October 2026",
-          "Selma Blair Is Accused entertainment news 2026-10-15",
-          "what happened with Selma Blair Is Accused"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Selma Blair Is Accused",
-          "selma",
-          "blair",
-          "accused",
-          "assaulting",
-          "four"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "Selma Blair Is Accused 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Selma Blair Is Accused",
-          "hollywoodreporter.com Selma Blair Is Accused",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Selma Blair Is Accused of Assaulting Four People. Can Her…",
-        "meta_description": "Selma Blair Is Accused: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original…",
-        "keywords": [
-          "Selma Blair Is Accused latest news",
-          "Selma Blair Is Accused",
-          "Selma Blair Is Accused news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Selma Blair Is Accused latest news October 2026",
-          "Selma Blair Is Accused entertainment update 2026",
-          "Selma Blair Is Accused news 2026-10-15",
-          "latest entertainment news about Selma Blair Is Accused",
-          "selma blair accused selma blair accused latest update",
-          "The Hollywood Reporter Selma Blair Is Accused entertainment",
-          "latest news about Selma Blair Is Accused October 2026",
-          "Selma Blair Is Accused entertainment news 2026-10-15",
-          "what happened with Selma Blair Is Accused",
-          "selma",
-          "blair",
-          "accused",
-          "assaulting",
-          "four",
-          "October 2026",
-          "2026-10-15",
-          "Selma Blair Is Accused 2026",
-          "The Hollywood Reporter Selma Blair Is Accused",
-          "hollywoodreporter.com Selma Blair Is Accused",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -938,7 +1246,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -1004,262 +1312,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "c38ef049",
-      "title": "BBC Inside Science",
-      "url": "https://www.bbc.co.uk/sounds/play/w3ct9789?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T20:00:00.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "BBC Inside Science",
-      "description": "World news reported by BBC Science on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/images/ic/240x135/p0m1ww2j.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/bbc-inside-science-c38ef0/",
-      "landing_url": "https://matchapp.tv/?news=c38ef049#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "bbc",
-          "inside",
-          "science"
-        ],
-        "long_tail": [
-          "BBC Inside Science 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "bbc",
-          "inside",
-          "science"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "BBC Inside Science | World News | MatchApp Ai",
-        "meta_description": "World report published by BBC Science on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "bbc",
-          "inside",
-          "science",
-          "BBC Inside Science 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "754adfed",
-      "title": "Bullying Book ‘The One We Left Behind’ Optioned by ‘Henry Danger’ Director Mike Caron (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/the-one-we-left-behind-movie-1236733142/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T19:58:38.000Z",
-      "discovered_at": "2026-10-15T20:30:55.207Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Bullying Book",
-      "description": "Bullying Book: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Mike-Caron-book-cover-to-The-One-We-Left-Behind-Split-Publicity-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/bullying-book-the-one-we-left-behind-optioned-by-henry-danger-director-mike-caro-754adf/",
-      "landing_url": "https://matchapp.tv/?news=754adfed#latest-news",
-      "seo": {
-        "primary_keyword": "Bullying Book latest news",
-        "short_tail": [
-          "Bullying Book",
-          "Bullying Book news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Bullying Book latest news October 2026",
-          "Bullying Book entertainment update 2026",
-          "Bullying Book news 2026-10-15",
-          "latest entertainment news about Bullying Book",
-          "bullying book bullying book one left latest update",
-          "The Hollywood Reporter Bullying Book entertainment",
-          "latest news about Bullying Book October 2026",
-          "Bullying Book entertainment news 2026-10-15",
-          "what happened with Bullying Book"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Bullying Book",
-          "bullying",
-          "book",
-          "one",
-          "left",
-          "behind",
-          "optioned"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "Bullying Book 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Bullying Book",
-          "hollywoodreporter.com Bullying Book",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Bullying Book ‘The One We Left Behind’ Optioned by ‘Henry…",
-        "meta_description": "Bullying Book: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Bullying Book latest news",
-          "Bullying Book",
-          "Bullying Book news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Bullying Book latest news October 2026",
-          "Bullying Book entertainment update 2026",
-          "Bullying Book news 2026-10-15",
-          "latest entertainment news about Bullying Book",
-          "bullying book bullying book one left latest update",
-          "The Hollywood Reporter Bullying Book entertainment",
-          "latest news about Bullying Book October 2026",
-          "Bullying Book entertainment news 2026-10-15",
-          "what happened with Bullying Book",
-          "bullying",
-          "book",
-          "one",
-          "left",
-          "behind",
-          "optioned",
-          "October 2026",
-          "2026-10-15",
-          "Bullying Book 2026",
-          "The Hollywood Reporter Bullying Book",
-          "hollywoodreporter.com Bullying Book",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "d3d50586",
-      "title": "All 5 ‘Hunger Games’ Movies to Be Free on Streaming for First Time",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/hunger-games-movies-free-streaming-1236733126/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T19:26:00.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2022/03/MCDHUGA_EC015.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/all-5-hunger-games-movies-to-be-free-on-streaming-for-first-time-d3d505/",
-      "landing_url": "https://matchapp.tv/?news=d3d50586#latest-news",
-      "seo": {
-        "primary_keyword": "all hunger games movies latest news",
-        "short_tail": [
-          "all hunger games movies",
-          "all hunger games movies news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "all hunger games movies latest news October 2026",
-          "all hunger games movies entertainment update 2026",
-          "all hunger games movies news 2026-10-15",
-          "latest entertainment news about all hunger games movies",
-          "all hunger games movies free streaming latest update",
-          "The Hollywood Reporter all hunger games movies entertainment",
-          "latest news about all hunger games movies October 2026",
-          "all hunger games movies entertainment news 2026-10-15",
-          "what happened with all hunger games movies"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "all",
-          "hunger",
-          "games",
-          "movies",
-          "free",
-          "streaming",
-          "first",
-          "time"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "all hunger games movies 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter all hunger games movies",
-          "hollywoodreporter.com all hunger games movies",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "All 5 ‘Hunger Games’ Movies to Be Free on Streaming for…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "all hunger games movies latest news",
-          "all hunger games movies",
-          "all hunger games movies news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "all hunger games movies latest news October 2026",
-          "all hunger games movies entertainment update 2026",
-          "all hunger games movies news 2026-10-15",
-          "latest entertainment news about all hunger games movies",
-          "all hunger games movies free streaming latest update",
-          "The Hollywood Reporter all hunger games movies entertainment",
-          "latest news about all hunger games movies October 2026",
-          "all hunger games movies entertainment news 2026-10-15",
-          "what happened with all hunger games movies",
-          "all",
-          "hunger",
-          "games",
-          "movies",
-          "free",
-          "streaming",
-          "first",
-          "time",
-          "October 2026",
-          "2026-10-15",
-          "all hunger games movies 2026",
-          "The Hollywood Reporter all hunger games movies",
-          "hollywoodreporter.com all hunger games movies",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -1328,7 +1381,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -1418,145 +1471,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "f59222ca",
-      "title": "An Australian band’s ‘unreal’ journey to break a gig world record",
-      "url": "https://www.bbc.co.uk/news/videos/c62keqn7wpwdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T18:09:58.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "An Australian",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/14fd/live/123f85f0-c85e-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/an-australian-band-s-unreal-journey-to-break-a-gig-world-record-f59222/",
-      "landing_url": "https://matchapp.tv/?news=f59222ca#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "australian",
-          "band",
-          "unreal",
-          "journey",
-          "break",
-          "gig"
-        ],
-        "long_tail": [
-          "An Australian band’s ‘unreal’ journey to break a gig world record 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "australian",
-          "band",
-          "unreal",
-          "journey",
-          "break",
-          "gig"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "An Australian band’s ‘unreal’ journey to break a gig world…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "australian",
-          "band",
-          "unreal",
-          "journey",
-          "break",
-          "gig",
-          "An Australian band’s ‘unreal’ journey to break a gig world record 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "89e7ce0e",
-      "title": "Trump calls off livestream of Fort Hood attacker's execution by firing squad",
-      "url": "https://www.bbc.co.uk/news/articles/crx23qlnj27qo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T17:47:22.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/81e4/live/8ba6bbd0-c8b2-11f1-ba4a-9b4af5820384.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-calls-off-livestream-of-fort-hood-attacker-s-execution-by-firing-squad-89e7ce/",
-      "landing_url": "https://matchapp.tv/?news=89e7ce0e#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "calls",
-          "off",
-          "livestream",
-          "fort",
-          "hood"
-        ],
-        "long_tail": [
-          "Trump calls off livestream of Fort Hood attacker's execution by firing squad 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "calls",
-          "off",
-          "livestream",
-          "fort",
-          "hood"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump calls off livestream of Fort Hood attacker's…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "trump",
-          "calls",
-          "off",
-          "livestream",
-          "fort",
-          "hood",
-          "Trump calls off livestream of Fort Hood attacker's execution by firing squad 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -1657,76 +1572,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "f03ed81c",
-      "title": "Watch: What does Starlink have to do with the Ukraine-Russia war?",
-      "url": "https://www.bbc.co.uk/news/videos/cqr7yzpxm083o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T17:31:37.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/717d/live/c5e33180-c8b6-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-what-does-starlink-have-to-do-with-the-ukraine-russia-war-f03ed8/",
-      "landing_url": "https://matchapp.tv/?news=f03ed81c#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "what",
-          "does",
-          "starlink",
-          "have",
-          "ukraine"
-        ],
-        "long_tail": [
-          "Watch: What does Starlink have to do with the Ukraine-Russia war? 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "what",
-          "does",
-          "starlink",
-          "have",
-          "ukraine"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: What does Starlink have to do with the…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "watch",
-          "what",
-          "does",
-          "starlink",
-          "have",
-          "ukraine",
-          "Watch: What does Starlink have to do with the Ukraine-Russia war? 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -1825,7 +1671,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -1894,76 +1740,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "d5218889",
-      "title": "Houthi missile attack on Yemeni presidential palace kills two, minister says",
-      "url": "https://www.bbc.co.uk/news/articles/cm62y6lp73zdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T17:18:49.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/16df/live/2fc36f20-c8bc-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/houthi-missile-attack-on-yemeni-presidential-palace-kills-two-minister-says-d52188/",
-      "landing_url": "https://matchapp.tv/?news=d5218889#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "houthi",
-          "missile",
-          "attack",
-          "yemeni",
-          "presidential",
-          "palace"
-        ],
-        "long_tail": [
-          "Houthi missile attack on Yemeni presidential palace kills two, minister says 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "houthi",
-          "missile",
-          "attack",
-          "yemeni",
-          "presidential",
-          "palace"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Houthi missile attack on Yemeni presidential palace kills…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "houthi",
-          "missile",
-          "attack",
-          "yemeni",
-          "presidential",
-          "palace",
-          "Houthi missile attack on Yemeni presidential palace kills two, minister says 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2032,7 +1809,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2127,7 +1904,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2196,76 +1973,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
-      }
-    },
-    {
-      "id": "28162f7f",
-      "title": "Governo Trump envia centenas de soldados para a América Latina, diz 'New York Times'",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/governo-trump-envia-centenas-de-soldados-para-a-america-latina-diz-nyt.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-15T14:34:13.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Governo Trump",
-      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/lAPuH9Z_VL8MEfVu2a5-EX7YmsY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/O/BMmXphRIC8aKnfy6c3LQ/2026-03-07t214844z-1630073216-rc2wzjaqhfpl-rtrmadp-3-iran-crisis-transfer-usa.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/governo-trump-envia-centenas-de-soldados-para-a-america-latina-diz-new-york-time-28162f/",
-      "landing_url": "https://matchapp.tv/?news=28162f7f#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-15",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "governo",
-          "trump",
-          "envia",
-          "centenas",
-          "soldados",
-          "america"
-        ],
-        "long_tail": [
-          "Governo Trump envia centenas de soldados para a América Latina, diz 'New York Times' 2026-10-15",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "governo",
-          "trump",
-          "envia",
-          "centenas",
-          "soldados",
-          "america"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Governo Trump envia centenas de soldados para a América…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-15",
-          "notícias do mundo",
-          "notícias internacionais",
-          "governo",
-          "trump",
-          "envia",
-          "centenas",
-          "soldados",
-          "america",
-          "Governo Trump envia centenas de soldados para a América Latina, diz 'New York Times' 2026-10-15",
-          "notícias mundiais outubro 2026",
-          "2026-10-15",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2363,7 +2071,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2461,7 +2169,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2559,7 +2267,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2581,7 +2289,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/street-fighter-galhofa-criativa-nao-salva-filme-de-lutas-fracas-e-sem-foco-g1-ja-4e6590/",
       "landing_url": "https://matchapp.tv/?news=4e659005#latest-news",
       "seo": {
-        "primary_keyword": "street fighter galhofa criativa últimas notícias",
+        "primary_keyword": "street fighter 2026",
         "short_tail": [
           "street fighter galhofa criativa",
           "street fighter galhofa criativa news",
@@ -2589,7 +2297,8 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje"
+          "notícias hoje",
+          "street fighter 2026"
         ],
         "long_tail": [
           "street fighter galhofa criativa latest news October 2026",
@@ -2602,7 +2311,9 @@
           "street fighter galhofa criativa notícia de 2026-10-15",
           "o que aconteceu com street fighter galhofa criativa"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "street fighter 2026"
+        ],
         "entity_keywords": [
           "street",
           "fighter",
@@ -2627,7 +2338,7 @@
         "meta_title": "'Street Fighter': Galhofa criativa não salva filme de…",
         "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "street fighter galhofa criativa últimas notícias",
+          "street fighter 2026",
           "street fighter galhofa criativa",
           "street fighter galhofa criativa news",
           "entertainment",
@@ -2660,7 +2371,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2758,7 +2469,7 @@
           "g1.globo.com Cézar Mendes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2857,7 +2568,7 @@
           "bbc.co.uk brooklyn shop surreal row",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -2958,7 +2669,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -3056,7 +2767,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -3155,7 +2866,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -3254,7 +2965,7 @@
           "bbc.co.uk bbc director general defends",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -3276,7 +2987,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/caetano-veloso-reforca-lacos-com-obra-dos-beatles-ao-gravar-cancao-because-no-al-764e3b/",
       "landing_url": "https://matchapp.tv/?news=764e3bdb#latest-news",
       "seo": {
-        "primary_keyword": "caetano veloso",
+        "primary_keyword": "Caetano Veloso últimas notícias",
         "short_tail": [
           "Caetano Veloso",
           "Caetano Veloso news",
@@ -3284,8 +2995,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "caetano veloso"
+          "notícias hoje"
         ],
         "long_tail": [
           "Caetano Veloso latest news October 2026",
@@ -3298,9 +3008,7 @@
           "Caetano Veloso notícia de 2026-10-14",
           "o que aconteceu com Caetano Veloso"
         ],
-        "trend_keywords": [
-          "caetano veloso"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "Caetano Veloso",
           "caetano",
@@ -3324,7 +3032,7 @@
         "meta_title": "Caetano Veloso reforça laços com obra dos Beatles ao…",
         "meta_description": "Caetano Veloso: Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "caetano veloso",
+          "Caetano Veloso últimas notícias",
           "Caetano Veloso",
           "Caetano Veloso news",
           "entertainment",
@@ -3355,7 +3063,7 @@
           "g1.globo.com Caetano Veloso",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -3456,7 +3164,7 @@
           "g1.globo.com lollapalooza 2027 anuncia line",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     },
     {
@@ -3557,7 +3265,301 @@
           "g1.globo.com milla existiu nao relembre",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-15T23:15:03.438Z"
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "8bffede2",
+      "title": "Sobrinho de Lô Borges, Rodrigo Borges persegue 'sonho real' do tio no terceiro álbum, 'Transverso'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/14/sobrinho-de-lo-borges-rodrigo-borges-persegue-sonho-real-do-tio-no-terceiro-album-transverso.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-14T12:21:27.000Z",
+      "discovered_at": "2026-10-14T13:59:28.698Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/_f9xyB4uCS9UCpRKVt6fq5a5A54=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/i/F/aAB5UsQdmmlMsbpP2cqA/rodrigo-borges-por-weber-padua15393.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/sobrinho-de-lo-borges-rodrigo-borges-persegue-sonho-real-do-tio-no-terceiro-albu-8bffed/",
+      "landing_url": "https://matchapp.tv/?news=8bffede2#latest-news",
+      "seo": {
+        "primary_keyword": "sobrinho borges rodrigo borges últimas notícias",
+        "short_tail": [
+          "sobrinho borges rodrigo borges",
+          "sobrinho borges rodrigo borges news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "sobrinho borges rodrigo borges latest news October 2026",
+          "sobrinho borges rodrigo borges entertainment update 2026",
+          "sobrinho borges rodrigo borges news 2026-10-14",
+          "latest entertainment news about sobrinho borges rodrigo borges",
+          "sobrinho borges rodrigo borges persegue sonho latest update",
+          "G1 sobrinho borges rodrigo borges entertainment",
+          "últimas notícias sobre sobrinho borges rodrigo borges outubro 2026",
+          "sobrinho borges rodrigo borges notícia de 2026-10-14",
+          "o que aconteceu com sobrinho borges rodrigo borges"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "sobrinho",
+          "borges",
+          "rodrigo",
+          "persegue",
+          "sonho",
+          "real",
+          "tio"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-14",
+          "outubro 2026",
+          "sobrinho borges rodrigo borges 2026"
+        ],
+        "source_keywords": [
+          "G1 sobrinho borges rodrigo borges",
+          "g1.globo.com sobrinho borges rodrigo borges",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Sobrinho de Lô Borges, Rodrigo Borges persegue 'sonho…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "sobrinho borges rodrigo borges últimas notícias",
+          "sobrinho borges rodrigo borges",
+          "sobrinho borges rodrigo borges news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "sobrinho borges rodrigo borges latest news October 2026",
+          "sobrinho borges rodrigo borges entertainment update 2026",
+          "sobrinho borges rodrigo borges news 2026-10-14",
+          "latest entertainment news about sobrinho borges rodrigo borges",
+          "sobrinho borges rodrigo borges persegue sonho latest update",
+          "G1 sobrinho borges rodrigo borges entertainment",
+          "últimas notícias sobre sobrinho borges rodrigo borges outubro 2026",
+          "sobrinho borges rodrigo borges notícia de 2026-10-14",
+          "o que aconteceu com sobrinho borges rodrigo borges",
+          "sobrinho",
+          "borges",
+          "rodrigo",
+          "persegue",
+          "sonho",
+          "real",
+          "tio",
+          "October 2026",
+          "2026-10-14",
+          "outubro 2026",
+          "sobrinho borges rodrigo borges 2026",
+          "G1 sobrinho borges rodrigo borges",
+          "g1.globo.com sobrinho borges rodrigo borges",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "8863ba43",
+      "title": "Rodrigo Campos, Romulo Fróes e Thiago França arriscam outro salto conjunto no álbum '03 na ribanceira'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/14/rodrigo-campos-romulo-froes-e-thiago-franca-arriscam-outro-salto-conjunto-no-album-03-na-ribanceira.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-14T11:28:32.000Z",
+      "discovered_at": "2026-10-14T13:59:28.698Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Rodrigo Campos",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/JQNhZBdl2MRkBDvtDQAuq1zUKPg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/V/H4gwJlQTuZKQ7oIiD1bA/3ribanceira.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/rodrigo-campos-romulo-froes-e-thiago-franca-arriscam-outro-salto-conjunto-no-alb-8863ba/",
+      "landing_url": "https://matchapp.tv/?news=8863ba43#latest-news",
+      "seo": {
+        "primary_keyword": "Rodrigo Campos últimas notícias",
+        "short_tail": [
+          "Rodrigo Campos",
+          "Rodrigo Campos news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Rodrigo Campos latest news October 2026",
+          "Rodrigo Campos entertainment update 2026",
+          "Rodrigo Campos news 2026-10-14",
+          "latest entertainment news about Rodrigo Campos",
+          "rodrigo campos rodrigo campos romulo froes latest update",
+          "G1 Rodrigo Campos entertainment",
+          "últimas notícias sobre Rodrigo Campos outubro 2026",
+          "Rodrigo Campos notícia de 2026-10-14",
+          "o que aconteceu com Rodrigo Campos"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Rodrigo Campos",
+          "rodrigo",
+          "campos",
+          "romulo",
+          "froes",
+          "thiago",
+          "franca"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-14",
+          "outubro 2026",
+          "Rodrigo Campos 2026"
+        ],
+        "source_keywords": [
+          "G1 Rodrigo Campos",
+          "g1.globo.com Rodrigo Campos",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Rodrigo Campos, Romulo Fróes e Thiago França arriscam…",
+        "meta_description": "Rodrigo Campos: Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Rodrigo Campos últimas notícias",
+          "Rodrigo Campos",
+          "Rodrigo Campos news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Rodrigo Campos latest news October 2026",
+          "Rodrigo Campos entertainment update 2026",
+          "Rodrigo Campos news 2026-10-14",
+          "latest entertainment news about Rodrigo Campos",
+          "rodrigo campos rodrigo campos romulo froes latest update",
+          "G1 Rodrigo Campos entertainment",
+          "últimas notícias sobre Rodrigo Campos outubro 2026",
+          "Rodrigo Campos notícia de 2026-10-14",
+          "o que aconteceu com Rodrigo Campos",
+          "rodrigo",
+          "campos",
+          "romulo",
+          "froes",
+          "thiago",
+          "franca",
+          "October 2026",
+          "2026-10-14",
+          "outubro 2026",
+          "Rodrigo Campos 2026",
+          "G1 Rodrigo Campos",
+          "g1.globo.com Rodrigo Campos",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
+      }
+    },
+    {
+      "id": "7a9d35d7",
+      "title": "Racial bias in London music licensing, report says",
+      "url": "https://www.bbc.co.uk/news/articles/c80405r93w42o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-14T11:16:50.000Z",
+      "discovered_at": "2026-10-14T13:59:28.698Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6df2/live/284604e0-c729-11f1-b881-4391ac746e04.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/racial-bias-in-london-music-licensing-report-says-7a9d35/",
+      "landing_url": "https://matchapp.tv/?news=7a9d35d7#latest-news",
+      "seo": {
+        "primary_keyword": "racial bias london music latest news",
+        "short_tail": [
+          "racial bias london music",
+          "racial bias london music news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "racial bias london music latest news October 2026",
+          "racial bias london music entertainment update 2026",
+          "racial bias london music news 2026-10-14",
+          "latest entertainment news about racial bias london music",
+          "racial bias london music licensing report latest update",
+          "BBC racial bias london music entertainment",
+          "latest news about racial bias london music October 2026",
+          "racial bias london music entertainment news 2026-10-14",
+          "what happened with racial bias london music"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "racial",
+          "bias",
+          "london",
+          "music",
+          "licensing",
+          "report",
+          "says"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-14",
+          "racial bias london music 2026"
+        ],
+        "source_keywords": [
+          "BBC racial bias london music",
+          "bbc.co.uk racial bias london music",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Racial bias in London music licensing, report says |…",
+        "meta_description": "Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "racial bias london music latest news",
+          "racial bias london music",
+          "racial bias london music news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "racial bias london music latest news October 2026",
+          "racial bias london music entertainment update 2026",
+          "racial bias london music news 2026-10-14",
+          "latest entertainment news about racial bias london music",
+          "racial bias london music licensing report latest update",
+          "BBC racial bias london music entertainment",
+          "latest news about racial bias london music October 2026",
+          "racial bias london music entertainment news 2026-10-14",
+          "what happened with racial bias london music",
+          "racial",
+          "bias",
+          "london",
+          "music",
+          "licensing",
+          "report",
+          "says",
+          "October 2026",
+          "2026-10-14",
+          "racial bias london music 2026",
+          "BBC racial bias london music",
+          "bbc.co.uk racial bias london music",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T01:21:21.805Z"
       }
     }
   ]
