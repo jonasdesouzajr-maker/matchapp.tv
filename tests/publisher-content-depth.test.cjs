@@ -49,7 +49,8 @@ test('empty offers stay accessible but outside search until real providers exist
 
 test('every current event guide retains its original planning notes in generator-owned data', () => {
   for (const e of require('../tools/global-events.json')) {
-    assert.equal(e.visitorNotes?.length, 3, e.slug);
+    assert.ok(e.visitorNotes?.length >= 3, e.slug+' needs at least three original notes');
+    assert.equal(new Set(e.visitorNotes).size, e.visitorNotes.length, e.slug+' duplicate note');
     const dom = new JSDOM(fs.readFileSync('events/'+e.slug+'/index.html','utf8'));
     for (const note of e.visitorNotes) assert.ok(dom.window.document.body.textContent.includes(note), e.slug);
     dom.window.close();
