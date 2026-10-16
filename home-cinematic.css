@@ -111,10 +111,8 @@ body.page-home h3 {
 }
 
 /* Pill-shaped controls — refined, gold accent */
-body.page-home button,
-body.page-home .btn,
-body.page-home .pill-control,
-body.page-home summary {
+/* Only explicit compact controls are pills; cards, dialogs and disclosures own their geometry. */
+body.page-home :is(.btn,.pill-control,.gold-btn,.secondary-btn) {
   border-radius: 999px;
   border: 1px solid rgba(230, 195, 106, 0.55);
   background: rgba(20, 8, 28, 0.55);
@@ -123,9 +121,7 @@ body.page-home summary {
   transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-body.page-home button:hover,
-body.page-home .btn:hover,
-body.page-home summary:hover {
+body.page-home :is(.btn,.pill-control,.gold-btn,.secondary-btn):hover {
   background: rgba(230, 195, 106, 0.18);
   box-shadow: 0 0 24px rgba(230, 195, 106, 0.35);
   transform: translateY(-1px);

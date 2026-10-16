@@ -1,6 +1,6 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
-const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8'),seo=require('../data/search-page-copy.json');
+const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8').replace(/\r\n/g,'\n'),seo=require('../data/search-page-copy.json');
 const {metadata,enrichWatchHead}=require('../tools/watch-search-metadata.cjs');
 for(const [lang,copy]of Object.entries(seo))for(const route of ['founder','sponsor','streaming'])test(`${route} metadata follows ${lang} without changing the canonical destination`,()=>{
  assert.equal(copy.length,5);const dom=new JSDOM(read(route+'/index.html'),{url:`https://matchapp.tv/${route}/`,runScripts:'outside-only'}),w=dom.window,d=w.document;

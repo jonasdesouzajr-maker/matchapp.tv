@@ -166,3 +166,92 @@
   .matchapp-notification-button.notification-arrived,
   .matchapp-notification-button.notification-arrived svg{animation:none!important}
 }
+
+/* Notification surface contract — 2026-10-16. Component-owned geometry, not global pills.
+   Header and toolbar never share the content scroller. Native dialog owns the top layer. */
+body.matchapp-notifications-open{overflow:hidden!important}
+#matchapp-notifications.matchapp-notification-panel{
+  --notification-gutter: max(12px,env(safe-area-inset-top),env(safe-area-inset-bottom));
+  box-sizing:border-box;position:fixed;inset:var(--notification-gutter) max(12px,env(safe-area-inset-right)) auto auto;
+  display:flex;flex-direction:column;width:min(480px,calc(100vw - 24px));min-width:0;
+  max-width:calc(100vw - 24px);max-height:calc(100vh - 2 * var(--notification-gutter));
+  max-height:calc(100dvh - 2 * var(--notification-gutter));margin:0;padding:0;
+  overflow:hidden;isolation:isolate;border:1px solid rgba(229,193,88,.46);border-radius:22px;
+  background:#191122;color:#f8f2ff;box-shadow:0 24px 80px #0009;backdrop-filter:none;
+  font:400 14px/1.5 Inter,system-ui,sans-serif;text-align:start;
+}
+#matchapp-notifications[hidden]{display:none!important}
+#matchapp-notifications::backdrop,.matchapp-notification-backdrop{background:rgba(6,3,12,.82);backdrop-filter:blur(6px)}
+.matchapp-notification-backdrop{position:fixed;inset:0;z-index:4999}
+#matchapp-notifications :is(.matchapp-notification-header,.matchapp-notification-toolbar,.matchapp-notification-scroll,.matchapp-notification-list,.matchapp-notification-item,.matchapp-notification-open,.matchapp-notification-delete,.matchapp-notification-settings){box-sizing:border-box;min-width:0;max-width:100%;}
+#matchapp-notifications .matchapp-notification-header{
+  position:relative;inset:auto;flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:16px;background:#21172e;border:0;border-bottom:1px solid #ffffff12;border-radius:0;
+}
+#matchapp-notifications .matchapp-notification-header>div{min-width:0}
+#matchapp-notifications .matchapp-notification-header small{display:block;color:#e5c158;font:800 10px/1.5 Inter,system-ui,sans-serif;letter-spacing:.13em;overflow-wrap:anywhere}
+#matchapp-notifications h2{margin:3px 0 0;color:#fff;font:750 clamp(20px,5vw,25px)/1.25 Outfit,Inter,system-ui,sans-serif;letter-spacing:-.02em;overflow-wrap:anywhere}
+#matchapp-notifications .matchapp-notification-close,
+#matchapp-notifications .matchapp-notification-delete{
+  position:relative!important;inset:auto!important;display:grid!important;place-items:center;flex:0 0 44px;
+  width:44px!important;min-width:44px!important;max-width:44px!important;height:44px!important;min-height:44px!important;
+  margin:0!important;padding:0!important;border:1px solid #e5c15845!important;border-radius:12px!important;
+  background:#2b2037!important;color:#f4d884!important;box-shadow:none!important;transform:none!important;
+  line-height:1!important;cursor:pointer;backdrop-filter:none!important;
+}
+#matchapp-notifications .matchapp-notification-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+#matchapp-notifications .matchapp-notification-toolbar{
+  position:relative;flex:0 0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch;gap:8px;padding:12px 16px;background:#191122;border-bottom:1px solid #ffffff12;
+}
+#matchapp-notifications .matchapp-notification-toolbar :is(button,a){
+  box-sizing:border-box;display:flex!important;align-items:center;justify-content:center;
+  min-width:0;max-width:100%;min-height:44px;height:auto;margin:0!important;padding:8px 10px!important;
+  border:1px solid #e5c15840!important;border-radius:12px!important;background:#2b2037!important;color:#f4e5b9!important;
+  font:650 12px/1.35 Inter,system-ui,sans-serif!important;white-space:normal!important;overflow-wrap:anywhere;
+  text-align:center;text-decoration:none;box-shadow:none!important;transform:none!important;backdrop-filter:none!important;
+}
+#matchapp-notifications .matchapp-notification-toolbar a{grid-column:1/-1;min-height:44px;background:transparent!important;border-color:transparent!important;color:#d2c0ea!important}
+#matchapp-notifications .matchapp-notification-toolbar [data-notify-delete-all]{color:#ffc0c6!important}
+#matchapp-notifications .matchapp-notification-toolbar button:disabled{opacity:.45;cursor:not-allowed}
+#matchapp-notifications .matchapp-notification-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:12px;scroll-padding-block:12px;background:#191122}
+#matchapp-notifications .matchapp-notification-list{display:grid;gap:12px;padding:0;background:none}
+#matchapp-notifications .matchapp-notification-item{
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:start;gap:8px;
+  padding:12px;width:100%;border:1px solid #e5c1582b;border-radius:16px;background:#21172e;overflow:hidden;isolation:isolate;
+}
+#matchapp-notifications .matchapp-notification-item.is-unread{background:linear-gradient(115deg,#302338,#21172e);border-color:#e5c15852}
+#matchapp-notifications .matchapp-notification-open{
+  position:relative;display:grid!important;grid-template-columns:32px minmax(0,1fr);align-items:start;gap:10px;
+  width:100%!important;min-height:44px;height:auto!important;margin:0!important;padding:0!important;border:0!important;
+  border-radius:0!important;background:transparent!important;color:inherit!important;text-align:start!important;
+  white-space:normal!important;font:inherit;box-shadow:none!important;transform:none!important;backdrop-filter:none!important;cursor:pointer;
+}
+#matchapp-notifications .is-suggestion .matchapp-notification-open{grid-template-columns:48px minmax(0,1fr)}
+#matchapp-notifications .matchapp-notification-open::before,
+#matchapp-notifications .matchapp-notification-open::after,
+#matchapp-notifications .matchapp-notification-item::before,
+#matchapp-notifications .matchapp-notification-item::after{content:none!important}
+#matchapp-notifications .matchapp-notification-copy{display:flex;flex-direction:column;gap:6px;min-width:0;overflow-wrap:anywhere}
+#matchapp-notifications .matchapp-notification-copy strong{font:700 14px/1.4 Inter,system-ui,sans-serif;color:#fff}
+#matchapp-notifications .matchapp-notification-copy>span{font:400 13px/1.5 Inter,system-ui,sans-serif;color:#d3c9df}
+#matchapp-notifications .matchapp-notification-copy small{font:400 11px/1.45 Inter,system-ui,sans-serif;color:#b5a8c3}
+#matchapp-notifications .matchapp-notification-copy .matchapp-notification-taste{font:750 10px/1.4 Inter,system-ui,sans-serif!important;letter-spacing:.055em;color:#ebcb77!important}
+#matchapp-notifications .matchapp-notification-poster{width:48px;height:72px;object-fit:contain;border-radius:8px;box-shadow:none}
+#matchapp-notifications .matchapp-notification-kind{width:30px;height:30px;line-height:1}
+#matchapp-notifications .matchapp-notification-settings{margin-top:12px;padding:0;border:1px solid #e5c1582b;border-radius:16px;background:#21172e;overflow:hidden}
+#matchapp-notifications .matchapp-notification-settings summary{box-sizing:border-box;min-height:48px;margin:0;padding:13px 14px;border:0!important;border-radius:0!important;background:transparent!important;color:#f2dfa8;font:700 13px/1.5 Inter,system-ui,sans-serif;white-space:normal;overflow-wrap:anywhere;box-shadow:none!important;transform:none!important;backdrop-filter:none!important}
+#matchapp-notifications .matchapp-notification-prefs{padding:0 14px 14px}
+#matchapp-notifications .matchapp-notification-prefs>label{min-height:48px;padding:10px 0;font-size:13px;line-height:1.45}
+#matchapp-notifications .matchapp-notification-prefs input{flex:0 0 24px;width:24px;height:24px;margin:0}
+#matchapp-notifications .matchapp-notification-delivery{grid-template-columns:minmax(0,1fr);gap:10px}
+#matchapp-notifications .matchapp-notification-delivery button{min-height:48px;height:auto;padding:10px 12px;border-radius:12px!important;white-space:normal;overflow-wrap:anywhere;font:650 12px/1.4 Inter,system-ui,sans-serif;background:#30213e;color:#f2dfa8;transform:none!important}
+#matchapp-notifications .matchapp-notification-delivery small{grid-column:1;color:#b5a8c3}
+#matchapp-notifications .matchapp-notification-help{font-size:12px;color:#bfb1cd}
+#matchapp-notifications .matchapp-notification-empty{margin:0;padding:24px 16px;font-size:14px;line-height:1.5;color:#d3c9df}
+#matchapp-notifications :is(button,a,input,summary):focus-visible{outline:2px solid #ffe8a5!important;outline-offset:-3px!important}
+#matchapp-notifications h2:focus{outline:none!important;box-shadow:none!important}
+@media(hover:hover){#matchapp-notifications :is(.matchapp-notification-close,.matchapp-notification-delete):hover{background:#3d2c49!important;border-color:#f4d884!important}#matchapp-notifications .matchapp-notification-item:hover{border-color:#e5c15870}}
+@media(max-width:360px){#matchapp-notifications .matchapp-notification-scroll{padding:8px}#matchapp-notifications .matchapp-notification-item{padding:10px;gap:6px}#matchapp-notifications .is-suggestion .matchapp-notification-open{grid-template-columns:40px minmax(0,1fr);gap:8px}#matchapp-notifications .matchapp-notification-poster{width:40px;height:60px}}
+@media(max-height:500px){#matchapp-notifications .matchapp-notification-header{padding:10px 12px}#matchapp-notifications .matchapp-notification-toolbar{padding:8px 12px;grid-template-columns:repeat(3,minmax(0,1fr))}#matchapp-notifications .matchapp-notification-toolbar a{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){#matchapp-notifications,#matchapp-notifications *,#matchapp-notifications::backdrop{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

@@ -6,6 +6,7 @@ window.__MATCHAPP_NOTIFICATIONS_V2=true;
 const VAPID_PUBLIC='BKGucCWkS-YsS6g4HnM9DYTmm1Thj-PxxVkz9hM09tGs29uABDXQgYbnF0Zooi7AnHFv7KlbPSbPErE4J76MOZs';
 let state={notifications:[],unread:0,preferences:{inApp:true,device:false,email:false,releases:true,purchases:true,friends:true,availability:true,suggestions:true,timezone:'UTC'},watches:[]};
 let button=null,panel=null,poll=null,busy=false,markingRead=false,deletingAll=false,localItems=[];
+let notificationReturnFocus=null,notificationFallbackBackdrop=null,notificationInert=[];
 let notificationAudio=null,notificationSoundUnlocked=false,knownUnreadKeys=null,arrivalPulseTimer=null;
 const desktopHover=()=>!!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
 const $=s=>document.querySelector(s);
@@ -109,9 +110,24 @@ function mount(){
   if(!button){button=document.createElement('button');button.type='button';button.className='matchapp-notification-button';button.setAttribute('aria-label','Notifications');button.setAttribute('aria-expanded','false');button.innerHTML=iconSvg();
     const before=document.getElementById('profile-link-tab')||document.getElementById('nav-reg-btn')||null;nav.insertBefore(button,before);
   }else if(!button.querySelector('svg')){button.innerHTML=iconSvg();}
-  panel=document.createElement('aside');panel.className='matchapp-notification-panel';panel.hidden=true;panel.setAttribute('aria-label','Notifications');
-  panel.innerHTML='<header><div><small>YOUR MATCHAPP</small><h2>Notifications</h2></div><button type="button" class="matchapp-notification-close" aria-label="Close">×</button></header><div class="matchapp-notification-toolbar"><button type="button" data-notify-read-all>Mark all read</button><button type="button" data-notify-delete-all>Delete all</button><a href="/updates.html">What’s new</a></div><div class="matchapp-notification-list"></div><details class="matchapp-notification-settings"><summary>Notification settings</summary><div class="matchapp-notification-prefs"></div></details>';
+  panel=document.createElement('dialog');panel.id='matchapp-notifications';panel.className='matchapp-notification-panel';panel.hidden=true;
+  panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-labelledby','matchapp-notifications-title');
+  panel.innerHTML='<div class="matchapp-notification-header"><div><small>YOUR MATCHAPP</small><h2 id="matchapp-notifications-title" tabindex="-1">Notifications</h2></div><button type="button" class="matchapp-notification-close" aria-label="Close notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="matchapp-notification-toolbar"><button type="button" data-notify-read-all>Mark all read</button><button type="button" data-notify-delete-all>Delete all</button><a href="/updates.html">What&#39;s new</a></div><div class="matchapp-notification-scroll"><div class="matchapp-notification-list"></div><details class="matchapp-notification-settings"><summary>Notification settings</summary><div class="matchapp-notification-prefs"></div></details></div>';
+  button.setAttribute('aria-controls',panel.id);button.setAttribute('aria-haspopup','dialog');
   document.body.appendChild(panel);
+  panel.addEventListener('cancel',e=>{e.preventDefault();close();});
+  panel.addEventListener('close',()=>{if(!panel.open&&!panel.hidden)finishNotificationClose();});
+  panel.addEventListener('click',e=>{if(e.target!==panel)return;const r=panel.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)close();});
+  document.addEventListener('keydown',e=>{
+    if(panel.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key!=='Tab')return;
+    const controls=[...panel.querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),summary,[tabindex="0"]')].filter(el=>el.getClientRects().length);
+    const first=controls[0],last=controls[controls.length-1];
+    if(!first){e.preventDefault();panel.querySelector('h2').focus();return;}
+    if(e.shiftKey&&(document.activeElement===first||!controls.includes(document.activeElement))){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&(document.activeElement===last||!controls.includes(document.activeElement))){e.preventDefault();first.focus();}
+  });
   button.addEventListener('click',()=>toggle());
   button.addEventListener('pointerenter',()=>{if(desktopHover()&&state.unread>0)void markAllRead();});
   panel.querySelector('.matchapp-notification-close').addEventListener('click',()=>close());
@@ -122,8 +138,30 @@ function mount(){
   document.addEventListener('keydown',unlockNotificationSound,{once:true,capture:true});
   render();
 }
-function open(){if(!panel)return;panel.hidden=false;button?.setAttribute('aria-expanded','true');render();}
-function close(){if(!panel)return;panel.hidden=true;button?.setAttribute('aria-expanded','false');}
+function open(){
+ if(!panel||!panel.hidden)return;
+ notificationReturnFocus=document.activeElement;panel.hidden=false;render();
+ if(typeof panel.showModal==='function')panel.showModal();
+ else{
+   panel.setAttribute('open','');
+   notificationFallbackBackdrop=document.createElement('div');notificationFallbackBackdrop.className='matchapp-notification-backdrop';
+   notificationFallbackBackdrop.addEventListener('click',close);document.body.appendChild(notificationFallbackBackdrop);
+   notificationInert=[...document.body.children].filter(el=>el!==panel&&el!==notificationFallbackBackdrop&&!el.inert&&!['SCRIPT','STYLE','LINK'].includes(el.tagName));
+   notificationInert.forEach(el=>{el.inert=true;});
+ }
+ document.body.classList.add('matchapp-notifications-open');button?.setAttribute('aria-expanded','true');
+ const scroll=panel.querySelector('.matchapp-notification-scroll');if(scroll)scroll.scrollTop=0;
+ panel.querySelector('h2')?.focus({preventScroll:true});
+}
+function finishNotificationClose(){
+ panel.hidden=true;panel.removeAttribute('open');button?.setAttribute('aria-expanded','false');
+ document.body.classList.remove('matchapp-notifications-open');
+ notificationFallbackBackdrop?.remove();notificationFallbackBackdrop=null;
+ notificationInert.forEach(el=>{el.inert=false;});notificationInert=[];
+ const target=notificationReturnFocus;notificationReturnFocus=null;
+ if(target?.isConnected&&target!==document.body)target.focus({preventScroll:true});
+}
+function close(){if(!panel||panel.hidden)return;if(typeof panel.close==='function'&&panel.open)panel.close();finishNotificationClose();}
 function toggle(){panel?.hidden?open():close();}
 function categoryEnabled(kind){
  if(kind==='purchase')return state.preferences.purchases!==false;
@@ -240,6 +278,12 @@ async function deleteAll(){
 }
 function render(){
  if(!button||!panel)return;
+ const previousFocus=document.activeElement;
+ const focusRow=previousFocus?.closest?.('.matchapp-notification-item');
+ const focusIndex=focusRow?[...panel.querySelectorAll('.matchapp-notification-item')].indexOf(focusRow):-1;
+ const focusKey=focusRow?.dataset.notificationKey;
+ const focusAction=previousFocus?.classList?.contains('matchapp-notification-delete')?'delete':'open';
+ const focusPref=previousFocus?.dataset?.notifyPref;
  const visible=visibleNotifications();
  const unread=visible.filter(n=>(n.localRelease||n.localKey)?!localSeen(n):!n.readAt).length;
  state.unread=unread;
@@ -253,7 +297,7 @@ function render(){
  const list=panel.querySelector('.matchapp-notification-list');list.replaceChildren();
  if(!visible.length){const empty=document.createElement('p');empty.className='matchapp-notification-empty';empty.textContent=signed()?'You’re all caught up.':'Sign in to follow titles, purchases and Match Together invitations.';list.appendChild(empty);}
  visible.forEach(item=>{
-   const row=document.createElement('article');
+   const row=document.createElement('article');row.dataset.notificationKey=notificationKey(item);
    row.className='matchapp-notification-item'+(((item.localRelease||item.localKey)?!localSeen(item):!item.readAt)?' is-unread':'')+(item.kind==='suggestion'?' is-suggestion':'');
    const openBtn=document.createElement('button');openBtn.type='button';openBtn.className='matchapp-notification-open';
    const icons={availability:'▶',purchase:'✓',friend_request:'♡',match_together:'✦',system:'★',account:'●',suggestion:'✦',install:'↓'};
@@ -272,6 +316,13 @@ function render(){
    row.querySelector('.matchapp-notification-poster')?.addEventListener('error',e=>{e.currentTarget.style.display='none';});
  });
  renderPrefs();
+ if(!panel.hidden&&previousFocus&&!previousFocus.isConnected){
+   const rows=[...list.querySelectorAll('.matchapp-notification-item')];
+   const row=rows.find(el=>el.dataset.notificationKey===focusKey)||rows[Math.min(focusIndex,rows.length-1)];
+   const pref=focusPref?[...panel.querySelectorAll('[data-notify-pref]')].find(el=>el.dataset.notifyPref===focusPref):null;
+   const target=pref||row?.querySelector('.matchapp-notification-'+focusAction)||panel.querySelector('h2');
+   target?.focus({preventScroll:true});
+ }
 }
 function prefRow(label,key,checked,disabled=false){
  return '<label><span>'+esc(label)+'</span><input type="checkbox" data-notify-pref="'+key+'" '+(checked?'checked ':'')+(disabled?'disabled ':'')+'></label>';
@@ -294,13 +345,13 @@ function renderPrefs(){
  host.querySelector('[data-enable-email]')?.addEventListener('click',enableEmail);
 }
 async function savePrefs(patch){
- if(!signed()){window.openAuthModal?.();return false;}
+ if(!signed()){close();window.openAuthModal?.();return false;}
  try{await change('preferences',patch);return true}catch(_){window.showToast?.('Notification preference could not be saved.',true);return false;}
 }
 function b64(bytes){let s='';for(const b of new Uint8Array(bytes))s+=String.fromCharCode(b);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
 function vapidBytes(base64){const p='='.repeat((4-base64.length%4)%4),raw=atob((base64+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)));}
 async function enableDevice(){
- if(!signed()){window.openAuthModal?.();return;}
+ if(!signed()){close();window.openAuthModal?.();return;}
  if(!('Notification'in window)||!('serviceWorker'in navigator)||!('PushManager'in window)){window.showToast?.('Device notifications are not supported in this browser.',true);return;}
  try{
    const permission=await Notification.requestPermission();
@@ -315,7 +366,7 @@ async function enableDevice(){
  }catch(e){window.showToast?.('Could not enable device notifications on this device.',true);}
 }
 async function enableEmail(){
- if(!signed()){window.openAuthModal?.();return;}
+ if(!signed()){close();window.openAuthModal?.();return;}
  const email=await authEmail();if(!email){window.showToast?.('No verified account email is available.',true);return;}
  const ok=confirm('Allow MatchApp to email notification alerts to '+email+'? You can turn this off here later.');
  if(!ok)return;
@@ -351,7 +402,7 @@ async function refresh(){
  if(knownUnreadKeys===null)knownUnreadKeys=unreadKeys();
 }
 async function followTitle(meta,region){
- if(!signed()){window.openAuthModal?.();window.showToast?.('Sign in to follow this title.');return false;}
+ if(!signed()){close();window.openAuthModal?.();window.showToast?.('Sign in to follow this title.');return false;}
  const id=Number(meta?.tmdb_id),kind=String(meta?.media_kind||'');
  if(!Number.isSafeInteger(id)||!['movie','tv'].includes(kind))return false;
  const code=String(region||window.MatchAppCatalogMedia?.regionCode?.()||'').toUpperCase();
