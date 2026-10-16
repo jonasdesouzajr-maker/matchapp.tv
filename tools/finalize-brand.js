@@ -30,6 +30,12 @@ function regionalBrand(brand){
  for(const duplicate of images.slice(1))duplicate.remove();
  return copy.outerHTML;
 }
+// The homepage cache key must survive every editorial normalization pass.
+// Other routes retain their existing stylesheet version; Kids never enters this path.
+function versionBrandStylesheet(html,home=false){
+ return html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,
+  '$1?v=20261015-spacing1'+(home?'&amp;headerauth=20261016-1':'')+'$2');
+}
 function finalizeBrand(){
  let count=0;
  for(const file of files(ROOT)){
@@ -67,7 +73,7 @@ function finalizeBrand(){
   edits.sort((a,b)=>b[0]-a[0]).forEach(([start,end,text])=>html=html.slice(0,start)+text+html.slice(end));
   if(!doc.querySelector('link[href^="/brand.css"]'))html=html.replace('</head>','<link rel="stylesheet" href="/brand.css?v=195">\n</head>');
   if(!kids){
-    html=html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,'$1?v=20261015-spacing1$2');
+    html=versionBrandStylesheet(html,rel==='index.html');
     html=html.replace(/(src=["']\/(?:page-shell|matchapp-ia|avatar-builder|daily-checkin)\.js)(?:\?([^"']*))?(["'])/g,function(all,prefix,query,end){
       if((query||'').includes('approvedlogo=20261014'))return all;
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
@@ -82,5 +88,5 @@ function finalizeBrand(){
  }
  return count;
 }
-module.exports={finalizeBrand,regionalBrand,name,ADULT,KIDS};
+module.exports={finalizeBrand,regionalBrand,versionBrandStylesheet,name,ADULT,KIDS};
 if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');
