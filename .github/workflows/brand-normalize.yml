@@ -52,11 +52,13 @@ jobs:
             npm ci --ignore-scripts
             node tools/finalize-brand.js
             git diff --binary > "$evidence/candidate.patch"
+            news_owned=()
             while IFS= read -r -d '' file; do
               case "$file" in
                 kids/*|android-studio/*|private-voice/*|tests/*|artifacts/*|reports/*)
                   echo "::error::Brand publication requires separate ownership review for $file"
                   exit 1 ;;
+                news/articles/*/index.html) news_owned+=("$file") ;;
                 *.html) ;;
                 *) echo "::error::Unexpected Brand Bot output: $file"; exit 1 ;;
               esac
@@ -65,8 +67,16 @@ jobs:
               echo '::error::Brand normalization may only update existing HTML files.'
               exit 1
             fi
+            # The news generator owns article HTML. Never publish an older
+            # article template while its corrected owner refresh is queued.
+            if [ "${#news_owned[@]}" -gt 0 ]; then
+              git restore --worktree -- "${news_owned[@]}"
+              echo "::notice::Deferred ${#news_owned[@]} source-owned article changes to the existing news refresh owner."
+            fi
+            echo "deferred_news=${#news_owned[@]}" >> "$GITHUB_OUTPUT"
+            git diff --binary > "$evidence/candidate.patch"
             if git diff --quiet; then
-              echo 'Brand already normalized; no commit or deployment needed.'
+              echo 'No Brand-owned changes to publish; no commit or deployment needed.'
               echo 'changed=0' >> "$GITHUB_OUTPUT"
               exit 0
             fi

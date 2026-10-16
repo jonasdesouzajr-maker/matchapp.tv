@@ -137,3 +137,13 @@ test('article navigation stays out of the fixed top-right companion area without
   assert.equal(dom.window.document.querySelector('header a').getAttribute('href'),'/');
  }finally{dom.window.close();}
 });
+
+test('Brand Bot defers source-owned news articles instead of publishing stale generator output',()=>{
+ assert.match(workflow,/news\/articles\/\*\/index\.html\) news_owned\+=/);
+ const restore=workflow.indexOf('git restore --worktree -- "\$'+'{news_owned[@]}"');
+ const noop=workflow.indexOf('if git diff --quiet; then');
+ const gates=workflow.indexOf('node --test --test-isolation=none tests/adsense-lock.test.cjs');
+ assert.ok(restore>0&&restore<noop&&noop<gates,'delegation precedes no-op and publication gates');
+ assert.match(workflow,/deferred_news=/);
+ assert.doesNotMatch(workflow,/node tools\/refresh-news-rss\.js/,'Brand Bot cannot run a competing news generator');
+});
