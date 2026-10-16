@@ -61,7 +61,13 @@
     },
     "poster": "https://media.formula1.com/image/upload/c_lfill%2Cw_3392/q_auto/v1740000001/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Azerbaijan.webp",
     "posterCredit": "Official Azerbaijan Grand Prix event artwork — Formula 1",
-    "featuredTitles": []
+    "featuredTitles": [],
+    "visitorNotes": [
+      "For this Baku weekend, decide whether you want a race replay, qualifying or highlights before opening a broadcaster. Those are different programmes. The broad event dates above do not identify the start time of an individual session; use the official Formula 1 timetable and convert its displayed timezone to your own.",
+      "A full-session replay preserves strategy and the development of the race, while highlights give a shorter account and can reveal the result immediately. If you want to avoid spoilers, inspect the destination cautiously: thumbnails, titles and news panels may name the winner.",
+      "Use the official country-by-country broadcaster information to check access. An F1 TV link does not establish that a particular subscription includes live coverage where you live. For attendance questions, consult the circuit or organiser; this discovery page does not confirm remaining seats, transport or admission conditions."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "calgary-international-film-festival-2026",
@@ -90,7 +96,13 @@
     },
     "poster": "https://www.ciffcalgary.ca/assets/Poster-Final.jpg",
     "posterCredit": "Official CIFF 2026 poster — Calgary International Film Festival",
-    "featuredTitles": []
+    "featuredTitles": [],
+    "visitorNotes": [
+      "Use the Calgary festival archive to build a film shortlist even after the event ends. Record each film’s original title, director and year from its programme entry. Those details help distinguish a later theatrical or streaming release from another film with a similar translated title.",
+      "When comparing a feature with a shorts programme, check the full session description. A shorts ticket may cover several works, and the session’s total running time can include introductions or discussion. Do not assume a trailer represents everything included in the programme.",
+      "For a future screening or any digital access, return to CIFF’s current programme and box-office guidance. Festival selection does not establish a Canadian streaming release, much less worldwide availability. A saved title is a discovery lead; it is not a reservation or a guarantee that the festival recording is available online."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "new-york-film-festival-2026",
@@ -124,7 +136,13 @@
       "Godzilla Minus Zero",
       "Fatherland",
       "Possible Love"
-    ]
+    ],
+    "visitorNotes": [
+      "The New York Film Festival programme can help you discover a film before its wider release. Start with a subject or filmmaker that interests you, then read the individual programme entry for the premise, original title and credits. A festival selection is not itself a recommendation for every viewer.",
+      "Keep the screening and any filmmaker conversation distinct when planning your time. An event listing may include contextual discussion in addition to the film. Check the official session page for the venue, time, access arrangements and whether an appearance is confirmed.",
+      "After the festival, look for official interviews or discussions separately from the film. A public Q&A video does not mean the feature is free to stream. Use the exact title and release year when checking regional providers, and keep a watch-later note if no current offer is confirmed."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "festival-do-rio-2026",
@@ -156,7 +174,13 @@
     "featuredTitles": [
       "Rosebush Pruning",
       "Feito Pipa"
-    ]
+    ],
+    "visitorNotes": [
+      "For Festival do Rio discovery, compare the Portuguese programme title with the film’s original title and director. This is particularly useful when looking for the same work later on a service that uses a different local title. Save the identity, not just a poster screenshot.",
+      "A citywide festival requires planning by session. Choose a manageable number of screenings, then check the official venue and timetable for each rather than treating the overall festival dates as a single booking. Leave room to verify transport and any venue-specific accessibility needs with the organiser.",
+      "The festival archive can remain useful after screenings finish: use it to find filmmakers and themes to explore next. A premiere, a debate or an industry event does not establish a public online screening. Confirm each later release through the distributor or a current regional listing before purchasing access."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "viff-2026",
@@ -187,7 +211,13 @@
     "posterCredit": "Official VIFF 2026 artwork — Vancouver International Film Festival",
     "featuredTitles": [
       "The Debut"
-    ]
+    ],
+    "visitorNotes": [
+      "VIFF discovery can include films, conversations and live events. Decide which kind of experience you want, then read the full programme entry before booking. A festival event associated with a film may be a discussion or performance rather than a complete screening of that work.",
+      "For a film shortlist, compare subject, length and language rather than choosing only by a familiar director. Check subtitles and the exact session’s venue on the organiser’s page. If you plan consecutive events, confirm the finish time and travel between locations yourself.",
+      "When using the archive afterward, separate an official recording of a talk from a viewing offer for the film it discusses. Save the original film title, year and director for later discovery. The festival listing does not establish an ongoing streaming licence or access outside the territory named by the provider."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "bfi-london-film-festival-2026",
@@ -220,7 +250,13 @@
       "The Debut",
       "Artificial",
       "Cameron Winter at Carnegie Hall"
-    ]
+    ],
+    "visitorNotes": [
+      "Build a London Film Festival shortlist around the experience you want: a feature, a shorts programme, a series presentation or an immersive work. These formats have different time and access requirements. Read the programme description rather than assuming every listing is a conventional cinema screening.",
+      "Check the location on the individual session page. A title in the festival programme is not automatically showing at every partner venue, and an in-person listing does not confirm an online option. Verify subtitles, access information and the time displayed by the organiser before arranging your visit.",
+      "If a session is unavailable, use the programme for discovery rather than searching for an unofficial copy. Record the title and filmmaker, check any alternative official sessions and look for a later authorised release. An official trailer or recorded conversation can provide context without being the full work."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "new-york-comic-con-2026",
@@ -253,7 +289,13 @@
     "featuredTitles": [
       "Crystal Lake",
       "NCIS: New York"
-    ]
+    ],
+    "visitorNotes": [
+      "Choose your New York Comic Con priorities before comparing sessions: a panel, a screening, comics discovery or a guest appearance. A convention admission and a particular activity can have different access arrangements. Verify the individual listing and current organiser rules instead of assuming a badge guarantees every experience.",
+      "For a film or television announcement, distinguish confirmed release information from an on-stage discussion or teaser. Record the exact title and the studio’s own announcement so you can follow the work after the convention. A premiere shown to an audience is not evidence of an immediate streaming release.",
+      "For remote viewing, use only streams or recordings announced by the organiser or rights holder. Some convention footage may be a short recap rather than the whole panel. After the event, check the recording date and panel name to avoid mistaking an older appearance for this edition."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "pax-aus-2026",
@@ -367,7 +409,13 @@
       "Memory of Princess Mumbi",
       "On Wild Horse Plains",
       "Maŋutji"
-    ]
+    ],
+    "visitorNotes": [
+      "Choose an Adelaide festival session by both the work and the kind of event. A gala, a documentary screening, a shorts programme and a filmmaker conversation can offer very different evenings. Read the session description for what is actually included instead of relying only on its poster.",
+      "Build a shortlist that balances familiar interests with a discovery: for example, compare a subject you already follow with a film from a filmmaker you do not know. Check each work’s language, runtime and content information in the programme, especially when choosing for a group.",
+      "Before booking, confirm the individual venue, session time and ticket conditions with the official festival. A listed premiere does not establish a later Australian streaming date. If you cannot attend, save the exact film title and credits, then check official distribution or regional viewing sources when an authorised release appears."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "toronto-after-dark-2026",
@@ -398,7 +446,13 @@
     "posterCredit": "Official Toronto After Dark 2026 artwork by Trevor Henderson — Toronto After Dark",
     "featuredTitles": [
       "I Love Paris"
-    ]
+    ],
+    "visitorNotes": [
+      "For Toronto After Dark, decide which part of genre cinema interests you: suspense, science fiction, action or horror. A genre label alone does not tell you how graphic or intense a film is. Read the programme’s description and classification information before selecting a session.",
+      "Compare individual screening entries and venues before building a multi-film evening. Check whether a session includes additional material, introductions or discussion, and allow time between bookings. The festival’s overall date range is not a timetable for every film.",
+      "If you are browsing after a screening, use the programme to identify the film and its creators, then check later authorised release information. A festival trailer, a short clip and a complete online film are different offers. MatchApp’s discovery links do not confirm that a festival title is already on your subscription."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "mostra-sao-paulo-2026",
@@ -429,7 +483,13 @@
     "posterCredit": "Official 50th Mostra 2026 poster by James Gray — Mostra Internacional de Cinema",
     "featuredTitles": [
       "Paper Tiger"
-    ]
+    ],
+    "visitorNotes": [
+      "Use the São Paulo Mostra programme to compare original titles, directors and countries of production. Translated titles can differ between a festival and a later release, so keeping both names makes your watch-later list more useful than saving only a local title.",
+      "When planning attendance, select the particular screening first and verify its venue, time, language and access information. A citywide programme can offer several sessions of one work, but the presence of a film in the catalogue does not guarantee a seat at your preferred session.",
+      "For online viewing, look for an explicit official digital session and its territorial conditions. Do not infer streaming access from a festival selection. After the event, the programme remains a discovery resource: follow the film’s official distributor or regional listing for later cinema and home-viewing options."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "worlds-2026",
@@ -530,7 +590,13 @@
     },
     "poster": "https://pbs.twimg.com/media/G7F_jZ9WsAA1C4f.jpg",
     "posterCredit": "Official MCM London Comic Con 2026 date artwork — MCM Comic Con",
-    "featuredTitles": []
+    "featuredTitles": [],
+    "visitorNotes": [
+      "Plan MCM London around the activities that matter to you rather than trying to follow every announcement. Panels, screenings, creator areas and guest activities can require different amounts of time. Check the official entry for the day you intend to attend.",
+      "A named guest on a convention page does not establish that every appearance is included with every admission type. Consult the organiser’s current schedule and booking conditions for the specific activity, and recheck before travelling because programmes can change.",
+      "For entertainment discovery, note the exact film, series, comic or game discussed and follow its original publisher afterward. A panel reveal is not the same as a release date or an available streaming offer. If you cannot attend, use officially announced recordings without assuming that every session will be broadcast."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "tokyo-international-film-festival-2026",
@@ -563,7 +629,13 @@
       "Sukiyaki",
       "Colony",
       "Godzilla Minus Zero"
-    ]
+    ],
+    "visitorNotes": [
+      "When exploring the Tokyo festival, keep the original film title beside its international or translated name. This helps you find the correct work on a later regional service. Compare the director and production year as well when several films share a similar English title.",
+      "Choose the individual programme entry before planning your day. Check its venue, start time, running time and language or subtitle information through the official festival. An English-language festival website does not by itself establish English subtitles for every screening or conversation.",
+      "A festival appearance can be a useful starting point for discovering Japanese and international filmmakers, but it does not promise a worldwide release. If no local offer is confirmed, save the title and consult the official distributor later. Treat trailers and recorded press events as context, not substitutes for an authorised full-film listing."
+    ],
+    "updatedAt": "2026-10-16"
   },
   {
     "slug": "mexico-day-of-dead-2026",
@@ -627,7 +699,12 @@
     "poster": "/assets/events/mexico-city-race-weekend-2026.svg",
     "posterCredit": "Original independent MatchApp editorial illustration; not official Formula 1 imagery and no organizer affiliation implied.",
     "featuredTitles": [],
-    "updatedAt": "2026-09-27"
+    "updatedAt": "2026-10-16",
+    "visitorNotes": [
+      "Choose the session you want to follow before setting a reminder for the Mexico City weekend. Practice, qualifying and the race have separate timetable entries. Convert the official start time to your own timezone; the event’s broad date range is not enough to plan a live watch.",
+      "Confirm the rights holder for your country before buying a subscription. A service may offer highlights, delayed coverage or full live sessions under different conditions. The organiser’s broadcast information and the provider’s current plan details are more reliable than a generic search result saying watch live.",
+      "If you prefer a replay, check the session name and recording date before opening it. A results headline or thumbnail can spoil the race. For an in-person visit, use the official circuit and ticketing information to verify admission and logistics; this page does not confirm seat availability or travel arrangements."
+    ]
   },
   {
     "slug": "ccxp-2026",
@@ -659,6 +736,12 @@
     "posterCredit": "Official CCXP26 date artwork — CCXP",
     "featuredTitles": [
       "The Lord of the Rings: The Fellowship of the Ring"
-    ]
+    ],
+    "visitorNotes": [
+      "Build your CCXP26 plan around a small number of priorities: a studio presentation, comics discovery, a creator appearance or another announced activity. Check the official programme for the specific day; a multi-day convention listing does not mean the same guests or sessions appear throughout.",
+      "Distinguish general admission from any separately described activity or reservation. Read the organiser’s current access rules, session information and venue guidance before committing to travel. MatchApp is a discovery guide and does not issue tickets or confirm admission to a panel.",
+      "For films, series and games announced at the event, follow the studio or publisher’s original statement afterward. A teaser or stage presentation does not prove that the work is released or available in your country. Remote viewers should look for officially announced streams and recaps rather than assuming every presentation has a full public recording."
+    ],
+    "updatedAt": "2026-10-16"
   }
 ]

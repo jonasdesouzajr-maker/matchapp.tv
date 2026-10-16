@@ -22,6 +22,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const {hasConfirmedOffer} = require('./availability-page-policy.cjs');
 
 const REGION_NAMES = { BR: 'Brazil', US: 'United States', GB: 'United Kingdom', PT: 'Portugal' };
 
@@ -115,7 +116,7 @@ function buildPage(title, info, entry, related, generated) {
 <title>Where to Watch ${esc(title)}${esc(yr)} | MatchApp</title>
 <meta name="description" content="${esc(metaDesc)}">
 <link rel="canonical" href="${url}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="${hasConfirmedOffer(info) ? 'index, follow, max-image-preview:large' : 'noindex,follow'}">
 <meta name="theme-color" content="#101010">
 <link rel="icon" href="/logo.jpeg?v=2" type="image/jpeg">
 <link rel="manifest" href="/manifest.json">
@@ -324,7 +325,7 @@ function main() {
         const dir = path.join(ROOT, 'where-to-watch', slug(title));
         fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(path.join(dir, 'index.html'), buildPage(title, info, entry, related, generated), 'utf8');
-        urls.push(`${SITE}/where-to-watch/${slug(title)}/`);
+        if (hasConfirmedOffer(info)) urls.push(`${SITE}/where-to-watch/${slug(title)}/`);
     });
 
     fs.writeFileSync(path.join(ROOT, 'where-to-watch', 'index.html'), buildIndex(names), 'utf8');
