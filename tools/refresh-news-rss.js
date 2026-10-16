@@ -448,13 +448,18 @@ ${imageMeta}
 <link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
 <script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+<style>
+/* Keep article navigation clear of the existing top-right Jonas companion. */
+.news-article-header{justify-content:left!important;gap:12px!important}
+.news-article-header #matchapp-kids-entry{margin-inline-start:0!important}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
+<header class="app-header news-article-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:780px;margin:40px auto;padding:20px">
   <article class="premium-card" style="padding:24px">
     <p style="color:#E5C158;font-weight:800">LATEST NEWS · ${esc(i.event_type)}</p>

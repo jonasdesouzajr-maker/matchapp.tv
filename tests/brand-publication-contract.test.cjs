@@ -126,3 +126,14 @@ test('Brand Bot hands off Pages once only after a changed commit and preserves f
  assert.match(workflow,/candidate\.patch/);
  assert.match(workflow,/base-sha\.txt/);
 });
+
+test('article navigation stays out of the fixed top-right companion area without changing shared UI',()=>{
+ const dom=new JSDOM(render.page(fixture()));
+ try{
+  assert.ok(dom.window.document.querySelector('header.app-header.news-article-header'));
+  const css=[...dom.window.document.querySelectorAll('style')].map(s=>s.textContent).join('\n');
+  assert.match(css,/\.news-article-header\{justify-content:left!important;gap:12px!important\}/);
+  assert.match(css,/\.news-article-header #matchapp-kids-entry\{margin-inline-start:0!important\}/);
+  assert.equal(dom.window.document.querySelector('header a').getAttribute('href'),'/');
+ }finally{dom.window.close();}
+});
