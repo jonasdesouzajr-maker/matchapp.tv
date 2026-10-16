@@ -16,7 +16,7 @@ ${analytics}
 <meta property="og:type" content="profile"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="${esc(t.heading)}"><meta property="og:description" content="${esc(t.pageDesc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${portrait}"><meta property="og:image:width" content="960"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="${esc(t.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.heading)}"><meta name="twitter:description" content="${esc(t.pageDesc)}"><meta name="twitter:image" content="${portrait}"><meta name="author" content="Jonas Junior">
 <link rel="icon" href="/assets/brand/matchapp-official-icon-192.png" type="image/png">
 ${shared}
-<link rel="stylesheet" href="/patches/founder-page.css?v=20261016-3">
+<link rel="stylesheet" href="/patches/founder-page.css?v=20261016-4">
 <script type="application/ld+json" id="founder-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <script src="/i18n.js?v=20261016-founder1"></script>
 </head><body class="ma-founder-page">

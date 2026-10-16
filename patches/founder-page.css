@@ -24,7 +24,11 @@ body.ma-founder-page .mf-wrap{box-sizing:border-box;width:min(calc(100% - 28px),
 @media(prefers-reduced-motion:reduce){.mf-wrap *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
 body.ma-founder-page header.app-header .mh-deck{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end;gap:8px!important}
-body.ma-founder-page #ma-donate-shortcut#ma-donate-shortcut#ma-donate-shortcut span{white-space:nowrap!important}
+/* Use the existing screen-fit layer: its important declarations outrank unlayered rules. */
+@layer ma-screen-fit {
+ html body.ma-founder-page #ma-founder-header #ma-donate-shortcut{flex:0 0 auto!important;width:auto!important;min-width:max-content!important}
+ html body.ma-founder-page #ma-founder-header #ma-donate-shortcut span{flex:0 0 auto!important;white-space:nowrap!important;text-wrap:nowrap!important;word-break:normal!important;overflow-wrap:normal!important}
+}
 /* Keep the shared companion's default tablet corner clear without changing its drag/voice owner. */
 @media(min-width:700px) and (max-width:1399px){html body.ma-founder-page #ma-founder-header.mh-topbox{padding-inline-end:110px!important}}
 body.ma-founder-page #ma-ambient-jonas .ja-premium-face{display:block;position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden}
