@@ -1,10 +1,1113 @@
 {
-  "generated_at": "2026-10-16T01:37:20.293Z",
-  "feed_version": "ed147884",
+  "generated_at": "2026-10-16T07:29:28.440Z",
+  "feed_version": "e22e8b2e",
   "sports_updated_at": "2026-10-16T01:21:21.751Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "34135b2a",
+      "title": "‘Norm: The Tale of Norm Macdonald’ Review: Judd Apatow’s Latest Comedy Doc Sends Viewers Down a Laugh-Filled Rabbit Hole",
+      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/norm-the-tale-of-norm-macdonald-review-judd-apatow-netflix-1236733208/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T07:01:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Norm__The_Tale_of_Norm_Macdonald_n_00_03_38_04-2.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/norm-the-tale-of-norm-macdonald-review-judd-apatow-s-latest-comedy-doc-sends-vie-34135b/",
+      "landing_url": "https://matchapp.tv/?news=34135b2a#latest-news",
+      "seo": {
+        "primary_keyword": "norm tale norm macdonald latest news",
+        "short_tail": [
+          "norm tale norm macdonald",
+          "norm tale norm macdonald news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "norm tale norm macdonald latest news October 2026",
+          "norm tale norm macdonald entertainment update 2026",
+          "norm tale norm macdonald news 2026-10-16",
+          "latest entertainment news about norm tale norm macdonald",
+          "norm tale norm macdonald review judd latest update",
+          "The Hollywood Reporter norm tale norm macdonald entertainment",
+          "latest news about norm tale norm macdonald October 2026",
+          "norm tale norm macdonald entertainment news 2026-10-16",
+          "what happened with norm tale norm macdonald"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "norm",
+          "tale",
+          "macdonald",
+          "review",
+          "judd",
+          "apatow",
+          "latest"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "norm tale norm macdonald 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter norm tale norm macdonald",
+          "hollywoodreporter.com norm tale norm macdonald",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Norm: The Tale of Norm Macdonald’ Review: Judd Apatow’s…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "norm tale norm macdonald latest news",
+          "norm tale norm macdonald",
+          "norm tale norm macdonald news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "norm tale norm macdonald latest news October 2026",
+          "norm tale norm macdonald entertainment update 2026",
+          "norm tale norm macdonald news 2026-10-16",
+          "latest entertainment news about norm tale norm macdonald",
+          "norm tale norm macdonald review judd latest update",
+          "The Hollywood Reporter norm tale norm macdonald entertainment",
+          "latest news about norm tale norm macdonald October 2026",
+          "norm tale norm macdonald entertainment news 2026-10-16",
+          "what happened with norm tale norm macdonald",
+          "norm",
+          "tale",
+          "macdonald",
+          "review",
+          "judd",
+          "apatow",
+          "latest",
+          "October 2026",
+          "2026-10-16",
+          "norm tale norm macdonald 2026",
+          "The Hollywood Reporter norm tale norm macdonald",
+          "hollywoodreporter.com norm tale norm macdonald",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "cad4d821",
+      "title": "'Wannabe', das Spice Girls, faz 30 anos; clipe parece plano-sequência, mas tem corte escondido",
+      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/10/16/wannabe-das-spice-girls-faz-30-anos-clipe-parece-plano-sequencia-mas-tem-corte-escondido.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T07:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/UPPCD8vGXbrtLcB3ADk8j1mG7lI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/T/w/bLdKZKSj2BExvnm6sbkQ/spice2.webp",
+      "matchapp_url": "https://matchapp.tv/news/articles/wannabe-das-spice-girls-faz-30-anos-clipe-parece-plano-sequencia-mas-tem-corte-e-cad4d8/",
+      "landing_url": "https://matchapp.tv/?news=cad4d821#latest-news",
+      "seo": {
+        "primary_keyword": "wannabe spice girls faz últimas notícias",
+        "short_tail": [
+          "wannabe spice girls faz",
+          "wannabe spice girls faz news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "wannabe spice girls faz latest news October 2026",
+          "wannabe spice girls faz entertainment update 2026",
+          "wannabe spice girls faz news 2026-10-16",
+          "latest entertainment news about wannabe spice girls faz",
+          "wannabe spice girls faz anos clipe latest update",
+          "G1 wannabe spice girls faz entertainment",
+          "últimas notícias sobre wannabe spice girls faz outubro 2026",
+          "wannabe spice girls faz notícia de 2026-10-16",
+          "o que aconteceu com wannabe spice girls faz"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "wannabe",
+          "spice",
+          "girls",
+          "faz",
+          "anos",
+          "clipe",
+          "parece",
+          "plano"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "wannabe spice girls faz 2026"
+        ],
+        "source_keywords": [
+          "G1 wannabe spice girls faz",
+          "g1.globo.com wannabe spice girls faz",
+          "G1 entertainment news"
+        ],
+        "meta_title": "'Wannabe', das Spice Girls, faz 30 anos; clipe parece…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "wannabe spice girls faz últimas notícias",
+          "wannabe spice girls faz",
+          "wannabe spice girls faz news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "wannabe spice girls faz latest news October 2026",
+          "wannabe spice girls faz entertainment update 2026",
+          "wannabe spice girls faz news 2026-10-16",
+          "latest entertainment news about wannabe spice girls faz",
+          "wannabe spice girls faz anos clipe latest update",
+          "G1 wannabe spice girls faz entertainment",
+          "últimas notícias sobre wannabe spice girls faz outubro 2026",
+          "wannabe spice girls faz notícia de 2026-10-16",
+          "o que aconteceu com wannabe spice girls faz",
+          "wannabe",
+          "spice",
+          "girls",
+          "faz",
+          "anos",
+          "clipe",
+          "parece",
+          "plano",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "wannabe spice girls faz 2026",
+          "G1 wannabe spice girls faz",
+          "g1.globo.com wannabe spice girls faz",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "c199d597",
+      "title": "O que Renato Russo estaria fazendo hoje? Companheiros de Legião Urbana falam do amigo, 30 anos depois de sua morte",
+      "url": "https://g1.globo.com/fantastico/noticia/2026/10/16/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-amigo-30-anos-depois-de-sua-morte.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T07:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/3-G6neI8hcQGr5TG2KC2_5t9XOU=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s02.video.glbimg.com/deo/vi/05/90/15049005",
+      "matchapp_url": "https://matchapp.tv/news/articles/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-a-c199d5/",
+      "landing_url": "https://matchapp.tv/?news=c199d597#latest-news",
+      "seo": {
+        "primary_keyword": "que renato russo estaria últimas notícias",
+        "short_tail": [
+          "que renato russo estaria",
+          "que renato russo estaria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "que renato russo estaria latest news October 2026",
+          "que renato russo estaria entertainment update 2026",
+          "que renato russo estaria news 2026-10-16",
+          "latest entertainment news about que renato russo estaria",
+          "que renato russo estaria fazendo hoje latest update",
+          "G1 que renato russo estaria entertainment",
+          "últimas notícias sobre que renato russo estaria outubro 2026",
+          "que renato russo estaria notícia de 2026-10-16",
+          "o que aconteceu com que renato russo estaria"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "que",
+          "renato",
+          "russo",
+          "estaria",
+          "fazendo",
+          "hoje",
+          "companheiros",
+          "legiao"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "que renato russo estaria 2026"
+        ],
+        "source_keywords": [
+          "G1 que renato russo estaria",
+          "g1.globo.com que renato russo estaria",
+          "G1 entertainment news"
+        ],
+        "meta_title": "O que Renato Russo estaria fazendo hoje? Companheiros de…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "que renato russo estaria últimas notícias",
+          "que renato russo estaria",
+          "que renato russo estaria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "que renato russo estaria latest news October 2026",
+          "que renato russo estaria entertainment update 2026",
+          "que renato russo estaria news 2026-10-16",
+          "latest entertainment news about que renato russo estaria",
+          "que renato russo estaria fazendo hoje latest update",
+          "G1 que renato russo estaria entertainment",
+          "últimas notícias sobre que renato russo estaria outubro 2026",
+          "que renato russo estaria notícia de 2026-10-16",
+          "o que aconteceu com que renato russo estaria",
+          "que",
+          "renato",
+          "russo",
+          "estaria",
+          "fazendo",
+          "hoje",
+          "companheiros",
+          "legiao",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "que renato russo estaria 2026",
+          "G1 que renato russo estaria",
+          "g1.globo.com que renato russo estaria",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "b5d0a730",
+      "title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa persegue personagens brasileiros? 'Coloquei no meu contrato'",
+      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/16/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasileiros-coloquei-no-meu-contrato.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T07:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/uBXwT3aJmsMBlC8E_8P5XymXOZg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/m/09HrNOTAA88ygtdksUtg/street-fighter-jason-momoa.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasil-b5d0a7/",
+      "landing_url": "https://matchapp.tv/?news=b5d0a730#latest-news",
+      "seo": {
+        "primary_keyword": "apos street fighter velozes últimas notícias",
+        "short_tail": [
+          "apos street fighter velozes",
+          "apos street fighter velozes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "apos street fighter velozes latest news October 2026",
+          "apos street fighter velozes entertainment update 2026",
+          "apos street fighter velozes news 2026-10-16",
+          "latest entertainment news about apos street fighter velozes",
+          "apos street fighter velozes furiosos jason latest update",
+          "G1 apos street fighter velozes entertainment",
+          "últimas notícias sobre apos street fighter velozes outubro 2026",
+          "apos street fighter velozes notícia de 2026-10-16",
+          "o que aconteceu com apos street fighter velozes"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "apos",
+          "street",
+          "fighter",
+          "velozes",
+          "furiosos",
+          "jason",
+          "momoa",
+          "persegue"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "apos street fighter velozes 2026"
+        ],
+        "source_keywords": [
+          "G1 apos street fighter velozes",
+          "g1.globo.com apos street fighter velozes",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "apos street fighter velozes últimas notícias",
+          "apos street fighter velozes",
+          "apos street fighter velozes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "apos street fighter velozes latest news October 2026",
+          "apos street fighter velozes entertainment update 2026",
+          "apos street fighter velozes news 2026-10-16",
+          "latest entertainment news about apos street fighter velozes",
+          "apos street fighter velozes furiosos jason latest update",
+          "G1 apos street fighter velozes entertainment",
+          "últimas notícias sobre apos street fighter velozes outubro 2026",
+          "apos street fighter velozes notícia de 2026-10-16",
+          "o que aconteceu com apos street fighter velozes",
+          "apos",
+          "street",
+          "fighter",
+          "velozes",
+          "furiosos",
+          "jason",
+          "momoa",
+          "persegue",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "apos street fighter velozes 2026",
+          "G1 apos street fighter velozes",
+          "g1.globo.com apos street fighter velozes",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "a06797f3",
+      "title": "Ship attack reports near Hormuz reach record high as oil exports slow",
+      "url": "https://www.bbc.co.uk/news/articles/cmde8dpg8g0no?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T05:00:17.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/139a/live/0f24b0c0-c8b3-11f1-bc2e-018d645d8d21.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/ship-attack-reports-near-hormuz-reach-record-high-as-oil-exports-slow-a06797/",
+      "landing_url": "https://matchapp.tv/?news=a06797f3#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "ship",
+          "attack",
+          "reports",
+          "near",
+          "hormuz",
+          "reach"
+        ],
+        "long_tail": [
+          "Ship attack reports near Hormuz reach record high as oil exports slow 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ship",
+          "attack",
+          "reports",
+          "near",
+          "hormuz",
+          "reach"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Ship attack reports near Hormuz reach record high as oil…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "ship",
+          "attack",
+          "reports",
+          "near",
+          "hormuz",
+          "reach",
+          "Ship attack reports near Hormuz reach record high as oil exports slow 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "21783060",
+      "title": "They fled Russia, but the West sent them back",
+      "url": "https://www.bbc.co.uk/news/articles/c6x23qpzjklwo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T04:57:28.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0473/live/14048a40-c929-11f1-bcc7-a3638a736ce9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/they-fled-russia-but-the-west-sent-them-back-217830/",
+      "landing_url": "https://matchapp.tv/?news=21783060#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "they",
+          "fled",
+          "russia",
+          "but",
+          "west",
+          "sent"
+        ],
+        "long_tail": [
+          "They fled Russia, but the West sent them back 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "they",
+          "fled",
+          "russia",
+          "but",
+          "west",
+          "sent"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "They fled Russia, but the West sent them back | World News…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "they",
+          "fled",
+          "russia",
+          "but",
+          "west",
+          "sent",
+          "They fled Russia, but the West sent them back 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "885ccdd1",
+      "title": "Rússia é atingida por terremoto de magnitude 7",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/russia-terremoto.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-16T03:54:53.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0DF8JvbZYk2dFXopn_3FZQ5R65w=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s04.video.glbimg.com/deo/vi/55/20/992055",
+      "matchapp_url": "https://matchapp.tv/news/articles/russia-e-atingida-por-terremoto-de-magnitude-7-885ccd/",
+      "landing_url": "https://matchapp.tv/?news=885ccdd1#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-16",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "russia",
+          "atingida",
+          "terremoto",
+          "magnitude"
+        ],
+        "long_tail": [
+          "Rússia é atingida por terremoto de magnitude 7 2026-10-16",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "russia",
+          "atingida",
+          "terremoto",
+          "magnitude"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Rússia é atingida por terremoto de magnitude 7 | Notícias…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-16",
+          "notícias do mundo",
+          "notícias internacionais",
+          "russia",
+          "atingida",
+          "terremoto",
+          "magnitude",
+          "Rússia é atingida por terremoto de magnitude 7 2026-10-16",
+          "notícias mundiais outubro 2026",
+          "2026-10-16",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "ef941beb",
+      "title": "Three children and teacher killed in US primary school shooting",
+      "url": "https://www.bbc.co.uk/news/articles/cm89zp48k4kzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T03:45:09.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ff29/live/cc0232d0-c90d-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/three-children-and-teacher-killed-in-us-primary-school-shooting-ef941b/",
+      "landing_url": "https://matchapp.tv/?news=ef941beb#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "three",
+          "children",
+          "teacher",
+          "killed",
+          "primary",
+          "school"
+        ],
+        "long_tail": [
+          "Three children and teacher killed in US primary school shooting 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "three",
+          "children",
+          "teacher",
+          "killed",
+          "primary",
+          "school"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Three children and teacher killed in US primary school…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "three",
+          "children",
+          "teacher",
+          "killed",
+          "primary",
+          "school",
+          "Three children and teacher killed in US primary school shooting 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "eac52921",
+      "title": "James McAvoy Reveals Which Film Paid Him “Bonkers” Residuals",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/james-mcavoy-film-split-paid-bonkers-residuals-1236733475/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T03:12:39.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "James McAvoy Reveals Which",
+      "description": "James McAvoy Reveals Which: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/James-McAvoy-Split-everett-H-2026.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/james-mcavoy-reveals-which-film-paid-him-bonkers-residuals-eac529/",
+      "landing_url": "https://matchapp.tv/?news=eac52921#latest-news",
+      "seo": {
+        "primary_keyword": "james mcavoy",
+        "short_tail": [
+          "James McAvoy Reveals Which",
+          "James McAvoy Reveals Which news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "james mcavoy"
+        ],
+        "long_tail": [
+          "James McAvoy Reveals Which latest news October 2026",
+          "James McAvoy Reveals Which entertainment update 2026",
+          "James McAvoy Reveals Which news 2026-10-16",
+          "latest entertainment news about James McAvoy Reveals Which",
+          "james mcavoy reveals which james mcavoy latest update",
+          "The Hollywood Reporter James McAvoy Reveals Which entertainment",
+          "latest news about James McAvoy Reveals Which October 2026",
+          "James McAvoy Reveals Which entertainment news 2026-10-16",
+          "what happened with James McAvoy Reveals Which"
+        ],
+        "trend_keywords": [
+          "james mcavoy"
+        ],
+        "entity_keywords": [
+          "James McAvoy Reveals Which",
+          "james",
+          "mcavoy",
+          "reveals",
+          "which"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "James McAvoy Reveals Which 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter James McAvoy Reveals Which",
+          "hollywoodreporter.com James McAvoy Reveals Which",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "James McAvoy Reveals Which Film Paid Him “Bonkers”…",
+        "meta_description": "James McAvoy Reveals Which: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original…",
+        "keywords": [
+          "james mcavoy",
+          "James McAvoy Reveals Which",
+          "James McAvoy Reveals Which news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "James McAvoy Reveals Which latest news October 2026",
+          "James McAvoy Reveals Which entertainment update 2026",
+          "James McAvoy Reveals Which news 2026-10-16",
+          "latest entertainment news about James McAvoy Reveals Which",
+          "james mcavoy reveals which james mcavoy latest update",
+          "The Hollywood Reporter James McAvoy Reveals Which entertainment",
+          "latest news about James McAvoy Reveals Which October 2026",
+          "James McAvoy Reveals Which entertainment news 2026-10-16",
+          "what happened with James McAvoy Reveals Which",
+          "james",
+          "mcavoy",
+          "reveals",
+          "which",
+          "October 2026",
+          "2026-10-16",
+          "James McAvoy Reveals Which 2026",
+          "The Hollywood Reporter James McAvoy Reveals Which",
+          "hollywoodreporter.com James McAvoy Reveals Which",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "458bf2e6",
+      "title": "'Mãe de todas as bombas': como é a GBU-43/B, arma poderosa que os EUA planejam usar contra o Irã",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/mae-de-todas-as-bombas-como-e-a-gbu-43b-arma-poderosa-que-os-eua-planejam-usar-contra-o-ira.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-16T03:00:01.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/aJChQPJZLVrzZerxEPnHzKuGgoQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/N/3/zurtIPS2OhCbmX9gDmwA/moab.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/mae-de-todas-as-bombas-como-e-a-gbu-43-b-arma-poderosa-que-os-eua-planejam-usar--458bf2/",
+      "landing_url": "https://matchapp.tv/?news=458bf2e6#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-16",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "mae",
+          "todas",
+          "bombas",
+          "como",
+          "gbu",
+          "arma"
+        ],
+        "long_tail": [
+          "'Mãe de todas as bombas': como é a GBU-43/B, arma poderosa que os EUA planejam usar contra o Irã 2026-10-16",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "mae",
+          "todas",
+          "bombas",
+          "como",
+          "gbu",
+          "arma"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "'Mãe de todas as bombas': como é a GBU-43/B, arma poderosa…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-16",
+          "notícias do mundo",
+          "notícias internacionais",
+          "mae",
+          "todas",
+          "bombas",
+          "como",
+          "gbu",
+          "arma",
+          "'Mãe de todas as bombas': como é a GBU-43/B, arma poderosa que os EUA planejam usar contra o Irã 2026-10-16",
+          "notícias mundiais outubro 2026",
+          "2026-10-16",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "29856982",
+      "title": "‘Se Eu Fosse Você 3’: Fantástico conversa com o elenco do novo filme que retoma sucesso do cinema nacional",
+      "url": "https://g1.globo.com/fantastico/noticia/2026/10/16/se-eu-fosse-voce-3-fantastico-conversa-com-o-elenco-do-novo-filme-que-retoma-sucesso-do-cinema-nacional.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T03:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/ZWMrReCaU2ihCQzRUnUl31NVNAk=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s03.video.glbimg.com/deo/vi/10/90/15049010",
+      "matchapp_url": "https://matchapp.tv/news/articles/se-eu-fosse-voce-3-fantastico-conversa-com-o-elenco-do-novo-filme-que-retoma-suc-298569/",
+      "landing_url": "https://matchapp.tv/?news=29856982#latest-news",
+      "seo": {
+        "primary_keyword": "fosse voce fantastico conversa últimas notícias",
+        "short_tail": [
+          "fosse voce fantastico conversa",
+          "fosse voce fantastico conversa news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "fosse voce fantastico conversa latest news October 2026",
+          "fosse voce fantastico conversa casting update 2026",
+          "fosse voce fantastico conversa news 2026-10-16",
+          "latest casting news about fosse voce fantastico conversa",
+          "fosse voce fantastico conversa elenco novo latest update",
+          "G1 fosse voce fantastico conversa casting",
+          "últimas notícias sobre fosse voce fantastico conversa outubro 2026",
+          "fosse voce fantastico conversa notícia de 2026-10-16",
+          "o que aconteceu com fosse voce fantastico conversa"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fosse",
+          "voce",
+          "fantastico",
+          "conversa",
+          "elenco",
+          "novo",
+          "filme",
+          "que"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "fosse voce fantastico conversa 2026"
+        ],
+        "source_keywords": [
+          "G1 fosse voce fantastico conversa",
+          "g1.globo.com fosse voce fantastico conversa",
+          "G1 entertainment news"
+        ],
+        "meta_title": "‘Se Eu Fosse Você 3’: Fantástico conversa com o elenco do…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "fosse voce fantastico conversa últimas notícias",
+          "fosse voce fantastico conversa",
+          "fosse voce fantastico conversa news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "fosse voce fantastico conversa latest news October 2026",
+          "fosse voce fantastico conversa casting update 2026",
+          "fosse voce fantastico conversa news 2026-10-16",
+          "latest casting news about fosse voce fantastico conversa",
+          "fosse voce fantastico conversa elenco novo latest update",
+          "G1 fosse voce fantastico conversa casting",
+          "últimas notícias sobre fosse voce fantastico conversa outubro 2026",
+          "fosse voce fantastico conversa notícia de 2026-10-16",
+          "o que aconteceu com fosse voce fantastico conversa",
+          "fosse",
+          "voce",
+          "fantastico",
+          "conversa",
+          "elenco",
+          "novo",
+          "filme",
+          "que",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "fosse voce fantastico conversa 2026",
+          "G1 fosse voce fantastico conversa",
+          "g1.globo.com fosse voce fantastico conversa",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "92395433",
+      "title": "‘Grey’s Anatomy’ Boss Meg Marinis on Texas Spinoff, Ellen Pompeo and Season 23 Premiere Cliffhangers",
+      "url": "https://www.hollywoodreporter.com/tv/tv-features/greys-anatomy-premiere-season-23-texas-spinoff-ellen-pompeo-1236733218/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T03:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "",
+      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/183058_0316-e1792100808995.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/grey-s-anatomy-boss-meg-marinis-on-texas-spinoff-ellen-pompeo-and-season-23-prem-923954/",
+      "landing_url": "https://matchapp.tv/?news=92395433#latest-news",
+      "seo": {
+        "primary_keyword": "grey anatomy boss meg latest news",
+        "short_tail": [
+          "grey anatomy boss meg",
+          "grey anatomy boss meg news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "grey anatomy boss meg latest news October 2026",
+          "grey anatomy boss meg release update 2026",
+          "grey anatomy boss meg news 2026-10-16",
+          "latest release news about grey anatomy boss meg",
+          "grey anatomy boss meg marinis texas latest update",
+          "The Hollywood Reporter grey anatomy boss meg release",
+          "latest news about grey anatomy boss meg October 2026",
+          "grey anatomy boss meg entertainment news 2026-10-16",
+          "what happened with grey anatomy boss meg"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "grey",
+          "anatomy",
+          "boss",
+          "meg",
+          "marinis",
+          "texas",
+          "spinoff",
+          "ellen"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "grey anatomy boss meg 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter grey anatomy boss meg",
+          "hollywoodreporter.com grey anatomy boss meg",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Grey’s Anatomy’ Boss Meg Marinis on Texas Spinoff, Ellen…",
+        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "grey anatomy boss meg latest news",
+          "grey anatomy boss meg",
+          "grey anatomy boss meg news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "grey anatomy boss meg latest news October 2026",
+          "grey anatomy boss meg release update 2026",
+          "grey anatomy boss meg news 2026-10-16",
+          "latest release news about grey anatomy boss meg",
+          "grey anatomy boss meg marinis texas latest update",
+          "The Hollywood Reporter grey anatomy boss meg release",
+          "latest news about grey anatomy boss meg October 2026",
+          "grey anatomy boss meg entertainment news 2026-10-16",
+          "what happened with grey anatomy boss meg",
+          "grey",
+          "anatomy",
+          "boss",
+          "meg",
+          "marinis",
+          "texas",
+          "spinoff",
+          "ellen",
+          "October 2026",
+          "2026-10-16",
+          "grey anatomy boss meg 2026",
+          "The Hollywood Reporter grey anatomy boss meg",
+          "hollywoodreporter.com grey anatomy boss meg",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
+    {
+      "id": "fae22863",
+      "title": "'It's really hard to believe' - How Oregon primary school shooting unfolded",
+      "url": "https://www.bbc.co.uk/news/videos/cwe8r29mjd05o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T01:36:45.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/28d2/live/c1615dd0-c901-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/it-s-really-hard-to-believe-how-oregon-primary-school-shooting-unfolded-fae228/",
+      "landing_url": "https://matchapp.tv/?news=fae22863#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "really",
+          "hard",
+          "believe",
+          "how",
+          "oregon",
+          "primary"
+        ],
+        "long_tail": [
+          "'It's really hard to believe' - How Oregon primary school shooting unfolded 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "really",
+          "hard",
+          "believe",
+          "how",
+          "oregon",
+          "primary"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "'It's really hard to believe' - How Oregon primary school…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "really",
+          "hard",
+          "believe",
+          "how",
+          "oregon",
+          "primary",
+          "'It's really hard to believe' - How Oregon primary school shooting unfolded 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
+      }
+    },
     {
       "id": "1372f882",
       "title": "‘SNL’ Star Michael Che Reacts to Shane Gillis’ Controversial Monologue: “That’s Comedy”",
@@ -101,7 +1204,7 @@
           "hollywoodreporter.com snl star michael che",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -195,7 +1298,7 @@
           "hollywoodreporter.com Ben Affleck Warns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -264,7 +1367,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -333,7 +1436,7 @@
           "2026-10-15",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -402,7 +1505,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -471,7 +1574,7 @@
           "2026-10-15",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -540,73 +1643,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "2554deac",
-      "title": "Living with a stink? Technology might help",
-      "url": "https://www.bbc.co.uk/news/articles/cr6240q1w136o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T23:18:21.000Z",
-      "discovered_at": "2026-10-16T01:21:21.805Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/80ac/live/fbba3b20-c652-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/living-with-a-stink-technology-might-help-2554de/",
-      "landing_url": "https://matchapp.tv/?news=2554deac#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "living",
-          "stink",
-          "technology",
-          "might",
-          "help"
-        ],
-        "long_tail": [
-          "Living with a stink? Technology might help 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "living",
-          "stink",
-          "technology",
-          "might",
-          "help"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "Living with a stink? Technology might help | World News |…",
-        "meta_description": "World report published by BBC Technology on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "living",
-          "stink",
-          "technology",
-          "might",
-          "help",
-          "Living with a stink? Technology might help 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -624,7 +1661,7 @@
       "category": "entertainment",
       "person": "",
       "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e2f9/live/eadcb880-c901-11f1-9943-e1428cb923d3.png",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0c1b/live/6b9db080-c927-11f1-a64c-550be9e3c66b.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/sparks-fly-at-the-celebrity-traitors-round-table-and-a-terrifying-death-march-48c788/",
       "landing_url": "https://matchapp.tv/?news=48c788b2#latest-news",
       "seo": {
@@ -705,170 +1742,7 @@
           "bbc.co.uk sparks fly celebrity traitors",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "dfedcc94",
-      "title": "Allison Williams Talks ‘Girls’ (Before That Big Reveal), Eczema and Acting With Quentin Tarantino",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/alison-williams-girls-reboot-hbo-quentin-tarantino-1236733181/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T22:54:33.000Z",
-      "discovered_at": "2026-10-15T23:15:03.438Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Allison Williams Talks",
-      "description": "Allison Williams Talks: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Allison-Williams_Dupixent-2.jpg?crop=0px%2C856px%2C8192px%2C4584px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/allison-williams-talks-girls-before-that-big-reveal-eczema-and-acting-with-quent-dfedcc/",
-      "landing_url": "https://matchapp.tv/?news=dfedcc94#latest-news",
-      "seo": {
-        "primary_keyword": "Allison Williams Talks latest news",
-        "short_tail": [
-          "Allison Williams Talks",
-          "Allison Williams Talks news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Allison Williams Talks latest news October 2026",
-          "Allison Williams Talks entertainment update 2026",
-          "Allison Williams Talks news 2026-10-15",
-          "latest entertainment news about Allison Williams Talks",
-          "allison williams talks allison williams talks latest update",
-          "The Hollywood Reporter Allison Williams Talks entertainment",
-          "latest news about Allison Williams Talks October 2026",
-          "Allison Williams Talks entertainment news 2026-10-15",
-          "what happened with Allison Williams Talks"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Allison Williams Talks",
-          "allison",
-          "williams",
-          "talks",
-          "girls",
-          "before"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "Allison Williams Talks 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Allison Williams Talks",
-          "hollywoodreporter.com Allison Williams Talks",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Allison Williams Talks ‘Girls’ (Before That Big Reveal),…",
-        "meta_description": "Allison Williams Talks: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original…",
-        "keywords": [
-          "Allison Williams Talks latest news",
-          "Allison Williams Talks",
-          "Allison Williams Talks news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Allison Williams Talks latest news October 2026",
-          "Allison Williams Talks entertainment update 2026",
-          "Allison Williams Talks news 2026-10-15",
-          "latest entertainment news about Allison Williams Talks",
-          "allison williams talks allison williams talks latest update",
-          "The Hollywood Reporter Allison Williams Talks entertainment",
-          "latest news about Allison Williams Talks October 2026",
-          "Allison Williams Talks entertainment news 2026-10-15",
-          "what happened with Allison Williams Talks",
-          "allison",
-          "williams",
-          "talks",
-          "girls",
-          "before",
-          "October 2026",
-          "2026-10-15",
-          "Allison Williams Talks 2026",
-          "The Hollywood Reporter Allison Williams Talks",
-          "hollywoodreporter.com Allison Williams Talks",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "b6036c97",
-      "title": "Letters with 'suspicious substances' sent to US senators and election offices",
-      "url": "https://www.bbc.co.uk/news/articles/cmq8n513x523o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T22:46:49.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9974/live/7783af20-c8c4-11f1-95b2-9f12d414946d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/letters-with-suspicious-substances-sent-to-us-senators-and-election-offices-b6036c/",
-      "landing_url": "https://matchapp.tv/?news=b6036c97#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "letters",
-          "suspicious",
-          "substances",
-          "sent",
-          "senators",
-          "election"
-        ],
-        "long_tail": [
-          "Letters with 'suspicious substances' sent to US senators and election offices 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "letters",
-          "suspicious",
-          "substances",
-          "sent",
-          "senators",
-          "election"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Letters with 'suspicious substances' sent to US senators…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "letters",
-          "suspicious",
-          "substances",
-          "sent",
-          "senators",
-          "election",
-          "Letters with 'suspicious substances' sent to US senators and election offices 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -937,76 +1811,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "52215fea",
-      "title": "Bus hits train stopped on French side of Channel Tunnel, with 19 injured",
-      "url": "https://www.bbc.co.uk/news/articles/c6wyrnmgzn01o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-15T22:37:21.000Z",
-      "discovered_at": "2026-10-15T21:42:12.434Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4526/live/ca62a180-c8ea-11f1-8e7c-9b1d04b5a9dd.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/bus-hits-train-stopped-on-french-side-of-channel-tunnel-with-19-injured-52215f/",
-      "landing_url": "https://matchapp.tv/?news=52215fea#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-15",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "bus",
-          "hits",
-          "train",
-          "stopped",
-          "french",
-          "side"
-        ],
-        "long_tail": [
-          "Bus hits train stopped on French side of Channel Tunnel, with 19 injured 2026-10-15",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "bus",
-          "hits",
-          "train",
-          "stopped",
-          "french",
-          "side"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Bus hits train stopped on French side of Channel Tunnel,…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "bus",
-          "hits",
-          "train",
-          "stopped",
-          "french",
-          "side",
-          "Bus hits train stopped on French side of Channel Tunnel, with 19 injured 2026-10-15",
-          "world news October 2026",
-          "2026-10-15",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1028,7 +1833,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/batman-2-steven-soderbergh-assume-direcao-em-fim-das-filmagens-para-ajudar-matt--4663b6/",
       "landing_url": "https://matchapp.tv/?news=4663b6da#latest-news",
       "seo": {
-        "primary_keyword": "steven soderbergh",
+        "primary_keyword": "batman steven soderbergh assume últimas notícias",
         "short_tail": [
           "batman steven soderbergh assume",
           "batman steven soderbergh assume news",
@@ -1036,8 +1841,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "steven soderbergh"
+          "notícias hoje"
         ],
         "long_tail": [
           "batman steven soderbergh assume latest news October 2026",
@@ -1050,9 +1854,7 @@
           "batman steven soderbergh assume notícia de 2026-10-15",
           "o que aconteceu com batman steven soderbergh assume"
         ],
-        "trend_keywords": [
-          "steven soderbergh"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "batman",
           "steven",
@@ -1077,7 +1879,7 @@
         "meta_title": "'Batman 2': Steven Soderbergh assume direção em fim das…",
         "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "steven soderbergh",
+          "batman steven soderbergh assume últimas notícias",
           "batman steven soderbergh assume",
           "batman steven soderbergh assume news",
           "entertainment",
@@ -1110,103 +1912,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "af81e886",
-      "title": "Streaming Ratings: ‘Wonka’s The Golden Ticket’ Claims Top Spot",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/streaming-ratings-sept-28-oct-4-2026-1236733201/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-15T22:23:05.000Z",
-      "discovered_at": "2026-10-15T23:15:03.438Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Streaming Ratings",
-      "description": "Streaming Ratings: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Wonkas_The_Golden_Ticket_n_S1_E8_00_29_55_00_R-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/streaming-ratings-wonka-s-the-golden-ticket-claims-top-spot-af81e8/",
-      "landing_url": "https://matchapp.tv/?news=af81e886#latest-news",
-      "seo": {
-        "primary_keyword": "Streaming Ratings latest news",
-        "short_tail": [
-          "Streaming Ratings",
-          "Streaming Ratings news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Streaming Ratings latest news October 2026",
-          "Streaming Ratings entertainment update 2026",
-          "Streaming Ratings news 2026-10-15",
-          "latest entertainment news about Streaming Ratings",
-          "streaming ratings streaming ratings wonka golden latest update",
-          "The Hollywood Reporter Streaming Ratings entertainment",
-          "latest news about Streaming Ratings October 2026",
-          "Streaming Ratings entertainment news 2026-10-15",
-          "what happened with Streaming Ratings"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Streaming Ratings",
-          "streaming",
-          "ratings",
-          "wonka",
-          "golden",
-          "ticket",
-          "claims"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "Streaming Ratings 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Streaming Ratings",
-          "hollywoodreporter.com Streaming Ratings",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Streaming Ratings: ‘Wonka’s The Golden Ticket’ Claims Top…",
-        "meta_description": "Streaming Ratings: Entertainment update reported by The Hollywood Reporter on 2026-10-15. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Streaming Ratings latest news",
-          "Streaming Ratings",
-          "Streaming Ratings news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Streaming Ratings latest news October 2026",
-          "Streaming Ratings entertainment update 2026",
-          "Streaming Ratings news 2026-10-15",
-          "latest entertainment news about Streaming Ratings",
-          "streaming ratings streaming ratings wonka golden latest update",
-          "The Hollywood Reporter Streaming Ratings entertainment",
-          "latest news about Streaming Ratings October 2026",
-          "Streaming Ratings entertainment news 2026-10-15",
-          "what happened with Streaming Ratings",
-          "streaming",
-          "ratings",
-          "wonka",
-          "golden",
-          "ticket",
-          "claims",
-          "October 2026",
-          "2026-10-15",
-          "Streaming Ratings 2026",
-          "The Hollywood Reporter Streaming Ratings",
-          "hollywoodreporter.com Streaming Ratings",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1275,7 +1981,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1344,73 +2050,104 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
-      "id": "e0f9481f",
-      "title": "At the scene of a school roof collapse in Pakistan",
-      "url": "https://www.bbc.co.uk/news/videos/cr5yn5wel153o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "id": "138d2464",
+      "title": "London housing project wins top architecture award",
+      "url": "https://www.bbc.co.uk/news/articles/cq8jzgl7zz9po?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-15T20:31:02.000Z",
-      "discovered_at": "2026-10-15T23:15:03.438Z",
-      "event_type": "Entertainment",
-      "category": "world",
+      "published_at": "2026-10-15T20:36:32.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Awards",
+      "category": "entertainment",
       "person": "",
-      "description": "World news reported by BBC World on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3de6/live/4303b8f0-c8d6-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/at-the-scene-of-a-school-roof-collapse-in-pakistan-e0f948/",
-      "landing_url": "https://matchapp.tv/?news=e0f9481f#latest-news",
+      "description": "awards headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/036f/live/a0a66fe0-c87f-11f1-a2e8-f71844f8002e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/london-housing-project-wins-top-architecture-award-138d24/",
+      "landing_url": "https://matchapp.tv/?news=138d2464#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-15",
+        "primary_keyword": "london housing project wins latest news",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "scene",
-          "school",
-          "roof",
-          "collapse",
-          "pakistan"
+          "london housing project wins",
+          "london housing project wins news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
         ],
         "long_tail": [
-          "At the scene of a school roof collapse in Pakistan 2026-10-15",
-          "world news October 2026"
+          "london housing project wins latest news October 2026",
+          "london housing project wins awards update 2026",
+          "london housing project wins news 2026-10-15",
+          "latest awards news about london housing project wins",
+          "london housing project wins top architecture latest update",
+          "BBC london housing project wins awards",
+          "latest news about london housing project wins October 2026",
+          "london housing project wins entertainment news 2026-10-15",
+          "what happened with london housing project wins"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "scene",
-          "school",
-          "roof",
-          "collapse",
-          "pakistan"
+          "london",
+          "housing",
+          "project",
+          "wins",
+          "top",
+          "architecture",
+          "award"
         ],
         "freshness_keywords": [
-          "2026-10-15"
+          "October 2026",
+          "2026-10-15",
+          "london housing project wins 2026"
         ],
         "source_keywords": [
-          "BBC World"
+          "BBC london housing project wins",
+          "bbc.co.uk london housing project wins",
+          "BBC entertainment news"
         ],
-        "meta_title": "At the scene of a school roof collapse in Pakistan | World…",
-        "meta_description": "World report published by BBC World on 2026-10-15. Open the original report for full context.",
+        "meta_title": "London housing project wins top architecture award |…",
+        "meta_description": "Awards update reported by BBC on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "world news 2026-10-15",
-          "world news",
-          "global headlines",
-          "scene",
-          "school",
-          "roof",
-          "collapse",
-          "pakistan",
-          "At the scene of a school roof collapse in Pakistan 2026-10-15",
-          "world news October 2026",
+          "london housing project wins latest news",
+          "london housing project wins",
+          "london housing project wins news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "london housing project wins latest news October 2026",
+          "london housing project wins awards update 2026",
+          "london housing project wins news 2026-10-15",
+          "latest awards news about london housing project wins",
+          "london housing project wins top architecture latest update",
+          "BBC london housing project wins awards",
+          "latest news about london housing project wins October 2026",
+          "london housing project wins entertainment news 2026-10-15",
+          "what happened with london housing project wins",
+          "london",
+          "housing",
+          "project",
+          "wins",
+          "top",
+          "architecture",
+          "award",
+          "October 2026",
           "2026-10-15",
-          "BBC World"
+          "london housing project wins 2026",
+          "BBC london housing project wins",
+          "bbc.co.uk london housing project wins",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1479,7 +2216,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1569,7 +2306,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1670,7 +2407,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1769,7 +2506,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1838,76 +2575,7 @@
           "2026-10-15",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "dd865505",
-      "title": "Houthis bombardeiam área do palácio presidencial no Iêmen; governo diz que há mortos, mas premiê está seguro",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/houthis-bombardeiam-complexo-palacio-presidencial-iemen-deixa-mortos-premie-esta-seguro.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-15T16:29:43.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/0DF8JvbZYk2dFXopn_3FZQ5R65w=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s04.video.glbimg.com/deo/vi/55/20/992055",
-      "matchapp_url": "https://matchapp.tv/news/articles/houthis-bombardeiam-area-do-palacio-presidencial-no-iemen-governo-diz-que-ha-mor-dd8655/",
-      "landing_url": "https://matchapp.tv/?news=dd865505#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-15",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "houthis",
-          "bombardeiam",
-          "area",
-          "palacio",
-          "presidencial",
-          "iemen"
-        ],
-        "long_tail": [
-          "Houthis bombardeiam área do palácio presidencial no Iêmen; governo diz que há mortos, mas premiê está seguro 2026-10-15",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "houthis",
-          "bombardeiam",
-          "area",
-          "palacio",
-          "presidencial",
-          "iemen"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Houthis bombardeiam área do palácio presidencial no Iêmen;…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-15",
-          "notícias do mundo",
-          "notícias internacionais",
-          "houthis",
-          "bombardeiam",
-          "area",
-          "palacio",
-          "presidencial",
-          "iemen",
-          "Houthis bombardeiam área do palácio presidencial no Iêmen; governo diz que há mortos, mas premiê está seguro 2026-10-15",
-          "notícias mundiais outubro 2026",
-          "2026-10-15",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -1929,7 +2597,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/u2-anuncia-shows-em-sao-paulo-em-2027-2d833f/",
       "landing_url": "https://matchapp.tv/?news=2d833f01#latest-news",
       "seo": {
-        "primary_keyword": "anuncia shows sao paulo últimas notícias",
+        "primary_keyword": "previsao do tempo são paulo",
         "short_tail": [
           "anuncia shows sao paulo",
           "anuncia shows sao paulo news",
@@ -1937,7 +2605,8 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje"
+          "notícias hoje",
+          "previsao do tempo são paulo"
         ],
         "long_tail": [
           "anuncia shows sao paulo latest news October 2026",
@@ -1950,7 +2619,9 @@
           "anuncia shows sao paulo notícia de 2026-10-15",
           "o que aconteceu com anuncia shows sao paulo"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "previsao do tempo são paulo"
+        ],
         "entity_keywords": [
           "anuncia",
           "shows",
@@ -1972,7 +2643,7 @@
         "meta_title": "U2 anuncia shows em São Paulo em 2027 | Notícias de…",
         "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "anuncia shows sao paulo últimas notícias",
+          "previsao do tempo são paulo",
           "anuncia shows sao paulo",
           "anuncia shows sao paulo news",
           "entertainment",
@@ -2002,76 +2673,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "2f24dfff",
-      "title": "Trump publica vídeo de IA em que aparece brincando com tigre após ataque fatal na Inglaterra",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/15/trump-publica-video-de-ia-em-que-aparece-brincando-com-tigre-apos-ataque-fatal-na-inglaterra.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-15T16:22:05.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-15. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/q9In1cswGgoOBBkMiPCiDb6O_BI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/l/R/9HfXJ1SHKNY90xICiBzA/mixcollage-15-oct-2026-01-09-pm-4963.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-publica-video-de-ia-em-que-aparece-brincando-com-tigre-apos-ataque-fatal-n-2f24df/",
-      "landing_url": "https://matchapp.tv/?news=2f24dfff#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-15",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "publica",
-          "video",
-          "que",
-          "aparece",
-          "brincando"
-        ],
-        "long_tail": [
-          "Trump publica vídeo de IA em que aparece brincando com tigre após ataque fatal na Inglaterra 2026-10-15",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "publica",
-          "video",
-          "que",
-          "aparece",
-          "brincando"
-        ],
-        "freshness_keywords": [
-          "2026-10-15"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Trump publica vídeo de IA em que aparece brincando com…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-15. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-15",
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "publica",
-          "video",
-          "que",
-          "aparece",
-          "brincando",
-          "Trump publica vídeo de IA em que aparece brincando com tigre após ataque fatal na Inglaterra 2026-10-15",
-          "notícias mundiais outubro 2026",
-          "2026-10-15",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2169,7 +2771,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2191,7 +2793,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/hilary-swank-anuncia-gravidez-aos-52-anos-10661d/",
       "landing_url": "https://matchapp.tv/?news=10661d0e#latest-news",
       "seo": {
-        "primary_keyword": "Hilary Swank últimas notícias",
+        "primary_keyword": "hilary swank",
         "short_tail": [
           "Hilary Swank",
           "Hilary Swank news",
@@ -2199,7 +2801,8 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje"
+          "notícias hoje",
+          "hilary swank"
         ],
         "long_tail": [
           "Hilary Swank latest news October 2026",
@@ -2212,7 +2815,9 @@
           "Hilary Swank notícia de 2026-10-15",
           "o que aconteceu com Hilary Swank"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "hilary swank"
+        ],
         "entity_keywords": [
           "Hilary Swank",
           "hilary",
@@ -2236,7 +2841,7 @@
         "meta_title": "Hilary Swank anuncia gravidez aos 52 anos | Notícias de…",
         "meta_description": "Hilary Swank: Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "Hilary Swank últimas notícias",
+          "hilary swank",
           "Hilary Swank",
           "Hilary Swank news",
           "entertainment",
@@ -2267,7 +2872,7 @@
           "g1.globo.com Hilary Swank",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2365,7 +2970,7 @@
           "g1.globo.com Gillian Anderson",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2387,7 +2992,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/street-fighter-galhofa-criativa-nao-salva-filme-de-lutas-fracas-e-sem-foco-g1-ja-4e6590/",
       "landing_url": "https://matchapp.tv/?news=4e659005#latest-news",
       "seo": {
-        "primary_keyword": "street fighter 2026",
+        "primary_keyword": "street fighter galhofa criativa últimas notícias",
         "short_tail": [
           "street fighter galhofa criativa",
           "street fighter galhofa criativa news",
@@ -2395,8 +3000,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "street fighter 2026"
+          "notícias hoje"
         ],
         "long_tail": [
           "street fighter galhofa criativa latest news October 2026",
@@ -2409,9 +3013,7 @@
           "street fighter galhofa criativa notícia de 2026-10-15",
           "o que aconteceu com street fighter galhofa criativa"
         ],
-        "trend_keywords": [
-          "street fighter 2026"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "street",
           "fighter",
@@ -2436,7 +3038,7 @@
         "meta_title": "'Street Fighter': Galhofa criativa não salva filme de…",
         "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "street fighter 2026",
+          "street fighter galhofa criativa últimas notícias",
           "street fighter galhofa criativa",
           "street fighter galhofa criativa news",
           "entertainment",
@@ -2469,7 +3071,7 @@
           "g1.globo.com street fighter galhofa criativa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2567,7 +3169,7 @@
           "g1.globo.com Cézar Mendes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2666,7 +3268,7 @@
           "bbc.co.uk brooklyn shop surreal row",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2767,7 +3369,7 @@
           "g1.globo.com netinho falou 2010 fantastico",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2865,7 +3467,7 @@
           "g1.globo.com Sally Rooney",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     },
     {
@@ -2964,603 +3566,7 @@
           "bbc.co.uk netflix shed 000 jobs",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "cba1af16",
-      "title": "BBC director general defends plan to shelve new Archers studio",
-      "url": "https://www.bbc.co.uk/news/articles/c9gkvgkgzlmdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-14T16:46:07.000Z",
-      "discovered_at": "2026-10-14T13:59:28.698Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/67e1/live/59b60440-c7cd-11f1-9e10-4dcbd31d4273.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/bbc-director-general-defends-plan-to-shelve-new-archers-studio-cba1af/",
-      "landing_url": "https://matchapp.tv/?news=cba1af16#latest-news",
-      "seo": {
-        "primary_keyword": "bbc director general defends latest news",
-        "short_tail": [
-          "bbc director general defends",
-          "bbc director general defends news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "bbc director general defends latest news October 2026",
-          "bbc director general defends entertainment update 2026",
-          "bbc director general defends news 2026-10-14",
-          "latest entertainment news about bbc director general defends",
-          "bbc director general defends plan shelve latest update",
-          "BBC bbc director general defends entertainment",
-          "latest news about bbc director general defends October 2026",
-          "bbc director general defends entertainment news 2026-10-14",
-          "what happened with bbc director general defends"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "bbc",
-          "director",
-          "general",
-          "defends",
-          "plan",
-          "shelve",
-          "new",
-          "archers"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "bbc director general defends 2026"
-        ],
-        "source_keywords": [
-          "BBC bbc director general defends",
-          "bbc.co.uk bbc director general defends",
-          "BBC entertainment news"
-        ],
-        "meta_title": "BBC director general defends plan to shelve new Archers…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-14. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "bbc director general defends latest news",
-          "bbc director general defends",
-          "bbc director general defends news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "bbc director general defends latest news October 2026",
-          "bbc director general defends entertainment update 2026",
-          "bbc director general defends news 2026-10-14",
-          "latest entertainment news about bbc director general defends",
-          "bbc director general defends plan shelve latest update",
-          "BBC bbc director general defends entertainment",
-          "latest news about bbc director general defends October 2026",
-          "bbc director general defends entertainment news 2026-10-14",
-          "what happened with bbc director general defends",
-          "bbc",
-          "director",
-          "general",
-          "defends",
-          "plan",
-          "shelve",
-          "new",
-          "archers",
-          "October 2026",
-          "2026-10-14",
-          "bbc director general defends 2026",
-          "BBC bbc director general defends",
-          "bbc.co.uk bbc director general defends",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "764e3bdb",
-      "title": "Caetano Veloso reforça laços com obra dos Beatles ao gravar canção 'Because' no álbum do violonista Niño Josele",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/14/caetano-veloso-reforca-lacos-com-obra-dos-beatles-ao-gravar-cancao-because-no-album-do-violonista-nino-josele.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T16:13:22.000Z",
-      "discovered_at": "2026-10-14T18:51:00.301Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Caetano Veloso",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/zeq0M0zjFmAOMkBdSzav-CIzMYI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/r/bbXAeSRQ6KwoAPHsWeAA/caetanoveloso-roncca.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/caetano-veloso-reforca-lacos-com-obra-dos-beatles-ao-gravar-cancao-because-no-al-764e3b/",
-      "landing_url": "https://matchapp.tv/?news=764e3bdb#latest-news",
-      "seo": {
-        "primary_keyword": "Caetano Veloso últimas notícias",
-        "short_tail": [
-          "Caetano Veloso",
-          "Caetano Veloso news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Caetano Veloso latest news October 2026",
-          "Caetano Veloso entertainment update 2026",
-          "Caetano Veloso news 2026-10-14",
-          "latest entertainment news about Caetano Veloso",
-          "caetano veloso caetano veloso reforca lacos latest update",
-          "G1 Caetano Veloso entertainment",
-          "últimas notícias sobre Caetano Veloso outubro 2026",
-          "Caetano Veloso notícia de 2026-10-14",
-          "o que aconteceu com Caetano Veloso"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Caetano Veloso",
-          "caetano",
-          "veloso",
-          "reforca",
-          "lacos",
-          "obra",
-          "beatles"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "Caetano Veloso 2026"
-        ],
-        "source_keywords": [
-          "G1 Caetano Veloso",
-          "g1.globo.com Caetano Veloso",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Caetano Veloso reforça laços com obra dos Beatles ao…",
-        "meta_description": "Caetano Veloso: Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Caetano Veloso últimas notícias",
-          "Caetano Veloso",
-          "Caetano Veloso news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Caetano Veloso latest news October 2026",
-          "Caetano Veloso entertainment update 2026",
-          "Caetano Veloso news 2026-10-14",
-          "latest entertainment news about Caetano Veloso",
-          "caetano veloso caetano veloso reforca lacos latest update",
-          "G1 Caetano Veloso entertainment",
-          "últimas notícias sobre Caetano Veloso outubro 2026",
-          "Caetano Veloso notícia de 2026-10-14",
-          "o que aconteceu com Caetano Veloso",
-          "caetano",
-          "veloso",
-          "reforca",
-          "lacos",
-          "obra",
-          "beatles",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "Caetano Veloso 2026",
-          "G1 Caetano Veloso",
-          "g1.globo.com Caetano Veloso",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "65d59bb5",
-      "title": "Lollapalooza 2027 anuncia line-up por dia e início da venda de ingressos diários para festival",
-      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/10/14/lollapalooza-2027-anuncia-line-up-por-dia-e-inicio-da-venda-de-ingressos-diarios-para-festival.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T15:10:23.000Z",
-      "discovered_at": "2026-10-14T18:51:00.301Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/QDGO_O3VChHVEQbJKzGL1iuew3c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/f/C/DKrSVyQcONbwmV8BhW3Q/novo-projeto-42-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/lollapalooza-2027-anuncia-line-up-por-dia-e-inicio-da-venda-de-ingressos-diarios-65d59b/",
-      "landing_url": "https://matchapp.tv/?news=65d59bb5#latest-news",
-      "seo": {
-        "primary_keyword": "lollapalooza 2027 anuncia line últimas notícias",
-        "short_tail": [
-          "lollapalooza 2027 anuncia line",
-          "lollapalooza 2027 anuncia line news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "lollapalooza 2027 anuncia line latest news October 2026",
-          "lollapalooza 2027 anuncia line entertainment update 2026",
-          "lollapalooza 2027 anuncia line news 2026-10-14",
-          "latest entertainment news about lollapalooza 2027 anuncia line",
-          "lollapalooza 2027 anuncia line dia inicio latest update",
-          "G1 lollapalooza 2027 anuncia line entertainment",
-          "últimas notícias sobre lollapalooza 2027 anuncia line outubro 2026",
-          "lollapalooza 2027 anuncia line notícia de 2026-10-14",
-          "o que aconteceu com lollapalooza 2027 anuncia line"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "lollapalooza",
-          "2027",
-          "anuncia",
-          "line",
-          "dia",
-          "inicio",
-          "venda",
-          "ingressos"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "lollapalooza 2027 anuncia line 2026"
-        ],
-        "source_keywords": [
-          "G1 lollapalooza 2027 anuncia line",
-          "g1.globo.com lollapalooza 2027 anuncia line",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Lollapalooza 2027 anuncia line-up por dia e início da…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "lollapalooza 2027 anuncia line últimas notícias",
-          "lollapalooza 2027 anuncia line",
-          "lollapalooza 2027 anuncia line news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "lollapalooza 2027 anuncia line latest news October 2026",
-          "lollapalooza 2027 anuncia line entertainment update 2026",
-          "lollapalooza 2027 anuncia line news 2026-10-14",
-          "latest entertainment news about lollapalooza 2027 anuncia line",
-          "lollapalooza 2027 anuncia line dia inicio latest update",
-          "G1 lollapalooza 2027 anuncia line entertainment",
-          "últimas notícias sobre lollapalooza 2027 anuncia line outubro 2026",
-          "lollapalooza 2027 anuncia line notícia de 2026-10-14",
-          "o que aconteceu com lollapalooza 2027 anuncia line",
-          "lollapalooza",
-          "2027",
-          "anuncia",
-          "line",
-          "dia",
-          "inicio",
-          "venda",
-          "ingressos",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "lollapalooza 2027 anuncia line 2026",
-          "G1 lollapalooza 2027 anuncia line",
-          "g1.globo.com lollapalooza 2027 anuncia line",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "dfea7fad",
-      "title": "‘Milla’ existiu ou não? Relembre a história por trás de um dos maiores sucessos de Netinho",
-      "url": "https://g1.globo.com/fantastico/noticia/2026/10/14/milla-existiu-fantastico-investigou-a-historia-por-tras-de-um-dos-maiores-sucessos-de-netinho-relembre.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T12:24:24.000Z",
-      "discovered_at": "2026-10-14T13:59:28.698Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/JUsrapDvIphw23CpzKCJTQC_hOg=/s.glbimg.com/jo/g1/f/original/2013/05/10/15._carnaval_1995.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/milla-existiu-ou-nao-relembre-a-historia-por-tras-de-um-dos-maiores-sucessos-de--dfea7f/",
-      "landing_url": "https://matchapp.tv/?news=dfea7fad#latest-news",
-      "seo": {
-        "primary_keyword": "milla existiu nao relembre últimas notícias",
-        "short_tail": [
-          "milla existiu nao relembre",
-          "milla existiu nao relembre news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "milla existiu nao relembre latest news October 2026",
-          "milla existiu nao relembre entertainment update 2026",
-          "milla existiu nao relembre news 2026-10-14",
-          "latest entertainment news about milla existiu nao relembre",
-          "milla existiu nao relembre historia tras latest update",
-          "G1 milla existiu nao relembre entertainment",
-          "últimas notícias sobre milla existiu nao relembre outubro 2026",
-          "milla existiu nao relembre notícia de 2026-10-14",
-          "o que aconteceu com milla existiu nao relembre"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "milla",
-          "existiu",
-          "nao",
-          "relembre",
-          "historia",
-          "tras",
-          "maiores",
-          "sucessos"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "milla existiu nao relembre 2026"
-        ],
-        "source_keywords": [
-          "G1 milla existiu nao relembre",
-          "g1.globo.com milla existiu nao relembre",
-          "G1 entertainment news"
-        ],
-        "meta_title": "‘Milla’ existiu ou não? Relembre a história por trás de um…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "milla existiu nao relembre últimas notícias",
-          "milla existiu nao relembre",
-          "milla existiu nao relembre news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "milla existiu nao relembre latest news October 2026",
-          "milla existiu nao relembre entertainment update 2026",
-          "milla existiu nao relembre news 2026-10-14",
-          "latest entertainment news about milla existiu nao relembre",
-          "milla existiu nao relembre historia tras latest update",
-          "G1 milla existiu nao relembre entertainment",
-          "últimas notícias sobre milla existiu nao relembre outubro 2026",
-          "milla existiu nao relembre notícia de 2026-10-14",
-          "o que aconteceu com milla existiu nao relembre",
-          "milla",
-          "existiu",
-          "nao",
-          "relembre",
-          "historia",
-          "tras",
-          "maiores",
-          "sucessos",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "milla existiu nao relembre 2026",
-          "G1 milla existiu nao relembre",
-          "g1.globo.com milla existiu nao relembre",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "8bffede2",
-      "title": "Sobrinho de Lô Borges, Rodrigo Borges persegue 'sonho real' do tio no terceiro álbum, 'Transverso'",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/14/sobrinho-de-lo-borges-rodrigo-borges-persegue-sonho-real-do-tio-no-terceiro-album-transverso.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T12:21:27.000Z",
-      "discovered_at": "2026-10-14T13:59:28.698Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/_f9xyB4uCS9UCpRKVt6fq5a5A54=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/i/F/aAB5UsQdmmlMsbpP2cqA/rodrigo-borges-por-weber-padua15393.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/sobrinho-de-lo-borges-rodrigo-borges-persegue-sonho-real-do-tio-no-terceiro-albu-8bffed/",
-      "landing_url": "https://matchapp.tv/?news=8bffede2#latest-news",
-      "seo": {
-        "primary_keyword": "sobrinho borges rodrigo borges últimas notícias",
-        "short_tail": [
-          "sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "sobrinho borges rodrigo borges latest news October 2026",
-          "sobrinho borges rodrigo borges entertainment update 2026",
-          "sobrinho borges rodrigo borges news 2026-10-14",
-          "latest entertainment news about sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges persegue sonho latest update",
-          "G1 sobrinho borges rodrigo borges entertainment",
-          "últimas notícias sobre sobrinho borges rodrigo borges outubro 2026",
-          "sobrinho borges rodrigo borges notícia de 2026-10-14",
-          "o que aconteceu com sobrinho borges rodrigo borges"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "sobrinho",
-          "borges",
-          "rodrigo",
-          "persegue",
-          "sonho",
-          "real",
-          "tio"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "sobrinho borges rodrigo borges 2026"
-        ],
-        "source_keywords": [
-          "G1 sobrinho borges rodrigo borges",
-          "g1.globo.com sobrinho borges rodrigo borges",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Sobrinho de Lô Borges, Rodrigo Borges persegue 'sonho…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "sobrinho borges rodrigo borges últimas notícias",
-          "sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "sobrinho borges rodrigo borges latest news October 2026",
-          "sobrinho borges rodrigo borges entertainment update 2026",
-          "sobrinho borges rodrigo borges news 2026-10-14",
-          "latest entertainment news about sobrinho borges rodrigo borges",
-          "sobrinho borges rodrigo borges persegue sonho latest update",
-          "G1 sobrinho borges rodrigo borges entertainment",
-          "últimas notícias sobre sobrinho borges rodrigo borges outubro 2026",
-          "sobrinho borges rodrigo borges notícia de 2026-10-14",
-          "o que aconteceu com sobrinho borges rodrigo borges",
-          "sobrinho",
-          "borges",
-          "rodrigo",
-          "persegue",
-          "sonho",
-          "real",
-          "tio",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "sobrinho borges rodrigo borges 2026",
-          "G1 sobrinho borges rodrigo borges",
-          "g1.globo.com sobrinho borges rodrigo borges",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
-      }
-    },
-    {
-      "id": "8863ba43",
-      "title": "Rodrigo Campos, Romulo Fróes e Thiago França arriscam outro salto conjunto no álbum '03 na ribanceira'",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/14/rodrigo-campos-romulo-froes-e-thiago-franca-arriscam-outro-salto-conjunto-no-album-03-na-ribanceira.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-14T11:28:32.000Z",
-      "discovered_at": "2026-10-14T13:59:28.698Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Rodrigo Campos",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/JQNhZBdl2MRkBDvtDQAuq1zUKPg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/V/H4gwJlQTuZKQ7oIiD1bA/3ribanceira.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/rodrigo-campos-romulo-froes-e-thiago-franca-arriscam-outro-salto-conjunto-no-alb-8863ba/",
-      "landing_url": "https://matchapp.tv/?news=8863ba43#latest-news",
-      "seo": {
-        "primary_keyword": "Rodrigo Campos últimas notícias",
-        "short_tail": [
-          "Rodrigo Campos",
-          "Rodrigo Campos news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Rodrigo Campos latest news October 2026",
-          "Rodrigo Campos entertainment update 2026",
-          "Rodrigo Campos news 2026-10-14",
-          "latest entertainment news about Rodrigo Campos",
-          "rodrigo campos rodrigo campos romulo froes latest update",
-          "G1 Rodrigo Campos entertainment",
-          "últimas notícias sobre Rodrigo Campos outubro 2026",
-          "Rodrigo Campos notícia de 2026-10-14",
-          "o que aconteceu com Rodrigo Campos"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Rodrigo Campos",
-          "rodrigo",
-          "campos",
-          "romulo",
-          "froes",
-          "thiago",
-          "franca"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "Rodrigo Campos 2026"
-        ],
-        "source_keywords": [
-          "G1 Rodrigo Campos",
-          "g1.globo.com Rodrigo Campos",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Rodrigo Campos, Romulo Fróes e Thiago França arriscam…",
-        "meta_description": "Rodrigo Campos: Notícia publicada por G1 em 2026-10-14. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Rodrigo Campos últimas notícias",
-          "Rodrigo Campos",
-          "Rodrigo Campos news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Rodrigo Campos latest news October 2026",
-          "Rodrigo Campos entertainment update 2026",
-          "Rodrigo Campos news 2026-10-14",
-          "latest entertainment news about Rodrigo Campos",
-          "rodrigo campos rodrigo campos romulo froes latest update",
-          "G1 Rodrigo Campos entertainment",
-          "últimas notícias sobre Rodrigo Campos outubro 2026",
-          "Rodrigo Campos notícia de 2026-10-14",
-          "o que aconteceu com Rodrigo Campos",
-          "rodrigo",
-          "campos",
-          "romulo",
-          "froes",
-          "thiago",
-          "franca",
-          "October 2026",
-          "2026-10-14",
-          "outubro 2026",
-          "Rodrigo Campos 2026",
-          "G1 Rodrigo Campos",
-          "g1.globo.com Rodrigo Campos",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T01:37:20.293Z"
+        "seo_generated_at": "2026-10-16T07:29:28.440Z"
       }
     }
   ]
