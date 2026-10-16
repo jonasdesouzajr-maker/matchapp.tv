@@ -16,13 +16,13 @@ ${analytics}
 <meta property="og:type" content="profile"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="${esc(t.heading)}"><meta property="og:description" content="${esc(t.pageDesc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${portrait}"><meta property="og:image:width" content="960"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="${esc(t.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.heading)}"><meta name="twitter:description" content="${esc(t.pageDesc)}"><meta name="twitter:image" content="${portrait}"><meta name="author" content="Jonas Junior">
 <link rel="icon" href="/assets/brand/matchapp-official-icon-192.png" type="image/png">
 ${shared}
-<link rel="stylesheet" href="/patches/founder-page.css?v=20261016-2">
+<link rel="stylesheet" href="/patches/founder-page.css?v=20261016-3">
 <script type="application/ld+json" id="founder-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <script src="/i18n.js?v=20261016-founder1"></script>
 </head><body class="ma-founder-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="mf-skip" href="#founder-story" data-founder="skip">${esc(t.skip)}</a>
-<header class="app-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img src="/assets/brand/matchapp-icon-approved.png" width="50" height="50" alt="MatchApp Ai" class="ma-brand-orb"></a></header>
+<header class="app-header" id="ma-founder-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img src="/assets/brand/matchapp-icon-approved.png" width="50" height="50" alt="MatchApp Ai" class="ma-brand-orb"></a></header>
 <main class="mf-wrap" id="founder-story">
 <div class="mf-utility"><nav aria-label="MatchApp Ai"><a href="/" data-founder="home">${t.home}</a><span aria-hidden="true">/</span><span data-founder="title" aria-current="page">${t.title}</span></nav><div id="lang-switcher-host"></div></div>
 <article>
