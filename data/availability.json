@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-15T09:43:59.507Z",
+  "generated": "2026-10-16T09:37:51.803Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
@@ -1050,7 +1050,6 @@
         "US": {
           "stream": [
             "Netflix",
-            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "link": "https://www.themoviedb.org/movie/801526/watch?locale=US"
