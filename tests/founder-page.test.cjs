@@ -28,3 +28,11 @@ test('founder page preserves voluntary support and image identity disclosures',(
  const d=new JSDOM(read('founder/index.html')).window.document,img=d.querySelector('#founder-portrait');assert.equal(img.width/img.height,.8);assert.equal(d.querySelectorAll('form').length,0);
  assert.ok(!d.querySelector('[src*="adsbygoogle"],ins.adsbygoogle'));assert.match(read('patches/founder-page.css'),/object-fit:contain/);
 });
+
+test('founder header keeps translated support labels intact with a synchronized cache key',()=>{
+ const css=read('patches/founder-page.css');
+ assert.match(css,/@layer ma-screen-fit \{\s*html body\.ma-founder-page #ma-founder-header #ma-donate-shortcut\{flex:0 0 auto!important;width:auto!important;min-width:max-content!important\}/);
+ assert.match(css,/html body\.ma-founder-page #ma-founder-header #ma-donate-shortcut span\{flex:0 0 auto!important;white-space:nowrap!important;text-wrap:nowrap!important;word-break:normal!important;overflow-wrap:normal!important\}/);
+ const dom=new JSDOM(read('founder/index.html')),href=dom.window.document.querySelector('link[href*="founder-page.css"]').getAttribute('href');
+ assert.equal(href,'/patches/founder-page.css?v=20261016-4');assert.ok(read('tools/build-founder-page.cjs').includes(href));dom.window.close();
+});
