@@ -15,6 +15,9 @@
   select.addEventListener('change',()=>{window.MATCH_LANG=select.value;try{localStorage.setItem('match_lang',select.value);}catch(_){}document.dispatchEvent(new CustomEvent('matchapp:langchange',{detail:{lang:select.value}}));translate();});
   document.addEventListener('matchapp:langchange',translate);window.addEventListener('matchapp:langchange',translate);window.addEventListener('storage',e=>{if(e.key==='match_lang'){window.MATCH_LANG=e.newValue;translate();}});translate();
   const filter=document.getElementById('mp-market');if(filter){filter.addEventListener('change',()=>{document.querySelectorAll('.mp-service').forEach(n=>n.hidden=!!filter.value&&!n.dataset.markets.split(' ').includes(filter.value));});}
+  // Official image hosts can deny requests outside their licensed market. Keep the
+  // verified title and official destination usable without a broken-image panel.
+  document.querySelectorAll('.mp-title img').forEach(img=>{const unavailable=()=>{img.hidden=true;};img.addEventListener('error',unavailable,{once:true});if(img.complete&&!img.naturalWidth)unavailable();});
   const form=document.getElementById('mp-brief');if(!form)return;
   const fields=['company','market','goal','budget'];
   function brief(){return fields.map(k=>copy[current][k]+': '+String(form.elements[k].value).replace(/[\r\n]+/g,' ').trim()).join('\n\n');}

@@ -27,6 +27,7 @@ test('sponsor inquiry encodes untrusted input, does not send requests, and prese
 });
 test('regional filtering retains official links and works independently of matching',()=>{
  const dom=new JSDOM(read('streaming/index.html'),{url:'https://matchapp.tv/streaming/',runScripts:'outside-only'}),w=dom.window;w.MATCHAPP_PARTNERSHIP_COPY=copy;w.eval(read('patches/partnership-pages.js'));
+ const cover=w.document.querySelector('.mp-title img');cover.dispatchEvent(new w.Event('error'));assert.equal(cover.hidden,true);assert(w.document.querySelector('.mp-title a').href.startsWith('https://play.mercadolivre.com.br/'));
  const filter=w.document.getElementById('mp-market');filter.value='BR';filter.dispatchEvent(new w.Event('change'));
  const visible=[...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden);assert.equal(visible.length,1);assert.match(visible[0].textContent,/Mercado Play/);
  filter.value='GB';filter.dispatchEvent(new w.Event('change'));assert.equal([...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden).length,2);
