@@ -20,9 +20,9 @@
    useful even with a short blurb per title, and useful to a human who
    arrived without Google. That is the bar this generator enforces.
 
-   MIN_TITLES is the whole quality gate: a facet with fewer than this many
-   entries does not become a page at all. As the catalog grows, more facets
-   cross the line and more pages appear, automatically and only when earned.
+   MIN_TITLES is a catalog-size floor, not a content-quality certificate.
+   Every published facet also requires distinct original selection guidance.
+   New facets must earn that guidance before becoming public pages.
 
    Run: node tools/build-seo-pages.js
    ============================================================ */
@@ -35,6 +35,7 @@ const MIN_TITLES = 8;
 const SITE = 'https://matchapp.tv';
 const BRAND = 'MatchApp Ai';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const {validateEditorial, renderEditorial} = require('./discovery-editorial.cjs');
 
 /* ---------- load the catalog straight out of app.js ---------- */
 function loadCatalog() {
@@ -109,7 +110,7 @@ const PLAT_COPY = {
 function buildPage({ kind, key, title, lede, items, related }) {
     const s = slug(key);
     const url = `${SITE}/${kind}/${s}/`;
-    const suffix = ` Browse ${items.length} hand-picked titles on ${BRAND}.`;
+    const suffix = ` Explore ${items.length} catalog ideas on ${BRAND}.`;
     let metaLead = String(lede || '').replace(/\s+/g, ' ').trim();
     if (metaLead.length + suffix.length > 155) {
         const maxLead = Math.max(48, 155 - suffix.length - 1);
@@ -128,6 +129,7 @@ function buildPage({ kind, key, title, lede, items, related }) {
                             <span class="seo-chip">${esc(e.platform)}</span>
                             ${(e.cats || []).slice(0, 2).map(c => `<span class="seo-chip seo-chip-quiet">${esc(c)}</span>`).join('')}
                         </p>
+                        <a class="seo-title-link" href="/discover.html?title=${encodeURIComponent(e.title)}&amp;focus=start">Explore this title with MatchApp Ai</a>
                     </div>
                 </li>`).join('');
 
@@ -220,6 +222,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .seo-chip-quiet { background: rgba(255,255,255,0.06); color: #9a9384; }
     .seo-section { margin-top: 46px; }
     .seo-section h2 { font-size: 21px; color: var(--gold-core); margin: 0 0 16px; }
+    .seo-editorial p { color: #C9C2B4; line-height: 1.7; overflow-wrap: anywhere; }
+    .seo-editorial a, .seo-title-link { color: var(--gold-mid); }
+    .seo-title-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-size: 14px; }
+    .seo-title-link:focus-visible, .seo-editorial a:focus-visible { outline: 2px solid var(--gold-core); outline-offset: 4px; }
     .seo-related { display: flex; flex-wrap: wrap; gap: 10px; }
     .seo-related a { background: rgba(31,30,28,0.82); border: 1px solid var(--edge); color: #C9C2B4;
                      padding: 11px 17px; border-radius: 11px; text-decoration: none; font-size: 14px; font-weight: 600;
@@ -244,10 +250,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1>${esc(title)}</h1>
         <p class="seo-lede">${esc(lede)}</p>
         <a class="seo-cta" href="/discover.html">Ask the AI Concierge →</a>
-        <p class="seo-count">${items.length} titles, hand-picked and kept current.</p>
+        <p class="seo-count">${items.length} catalog ideas. List order is not a popularity or review ranking.</p>
     </header>
 
+    ${renderEditorial(kind + '/' + s)}
+
     <section aria-label="Recommended titles">
+        <h2>Titles and creators to explore</h2>
+        <p class="seo-lede">Read the format and synopsis together. Platform tags describe catalog associations, not a confirmed offer in your country. Check the exact title, edition and regional provider before paying.</p>
         <ol class="seo-list">${cards}
         </ol>
     </section>
@@ -267,6 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <footer class="seo-foot">
         <a href="/">Home</a><a href="/discover.html">Ask AI</a><a href="/together.html">Match Together</a><a href="/pricing/pricing.html">Pricing</a>
+        <p><a href="/about.html">About and sources</a><a href="/contact.html">Corrections and support</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></p>
     </footer>
 </main>
 </body>
@@ -292,6 +303,10 @@ function main() {
     collect('moods',       MOOD_COPY, e => e.moods || []);
     collect('collections', CAT_COPY,  e => e.cats  || []);
     collect('platforms',   PLAT_COPY, e => [e.platform]);
+
+    // Validate the complete set before writing any output, so a new facet
+    // cannot silently publish another catalog-only landing page.
+    validateEditorial(facets.map(f => f.kind + '/' + slug(f.key)));
 
     let written = 0;
     const urls = [];
