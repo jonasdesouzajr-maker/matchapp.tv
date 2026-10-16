@@ -2,6 +2,53 @@
   {
     "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
     "_note": "Rewritten once per day by the MatchApp day-of bot. Replace the whole object; never append. Keep every key below.",
+    "updated": "2026-10-15T22:04:37.817Z",
+    "date": "2026-10-15",
+    "id": "international-day-rural-women-2026-10-15",
+    "emoji": "🌾",
+    "title": "International Day of Rural Women",
+    "kicker": "International day",
+    "place": "Worldwide",
+    "summary": "The United Nations observes the International Day of Rural Women on 15 October, recognizing rural women's contributions to farming, food security and local communities. Its 2026 focus highlights women farmers' work to protect biodiversity, care for soil and water, and support resilient food systems.",
+    "prompt": "Today is the International Day of Rural Women, 15 October 2026. Explain the UN observance and its focus on rural women farmers caring for nature, share practical respectful ways to recognize the day, and recommend relevant documentaries, films and series about women in agriculture and rural life; verify where each can be watched in my country.",
+    "officialUrl": "https://www.un.org/observances/rural-women-day",
+    "image": "/event-posters/international-day-rural-women-2026.svg",
+    "keywords": [
+      "International Day of Rural Women",
+      "International Day of Rural Women 2026",
+      "October 15 rural women",
+      "rural women farmers caring for mother nature",
+      "UN rural women day",
+      "rural women environmental stewardship",
+      "rural women documentaries",
+      "women farmers documentary streaming",
+      "what to watch on rural women day",
+      "how to celebrate International Day of Rural Women",
+      "dia internacional da mulher rural",
+      "día internacional de las mujeres rurales"
+    ],
+    "i18n": {
+      "pt-BR": {
+        "title": "Dia Internacional das Mulheres Rurais",
+        "kicker": "Data internacional",
+        "place": "No mundo todo",
+        "summary": "A ONU celebra o Dia Internacional das Mulheres Rurais em 15 de outubro, reconhecendo a contribuição dessas mulheres para a agricultura, a segurança alimentar e as comunidades. Em 2026, a data destaca o cuidado das agricultoras com a biodiversidade, o solo e a água.",
+        "prompt": "Hoje é 15 de outubro de 2026, Dia Internacional das Mulheres Rurais. Explique a data oficial da ONU e o papel das agricultoras na preservação da natureza, sugira formas de valorizá-las e recomende documentários, filmes e séries relevantes sobre mulheres na agricultura e na vida rural, verificando onde assistir no meu país."
+      },
+      "es": {
+        "title": "Día Internacional de las Mujeres Rurales",
+        "kicker": "Día internacional",
+        "place": "En todo el mundo",
+        "summary": "La ONU conmemora el Día Internacional de las Mujeres Rurales el 15 de octubre, reconociendo su aporte a la agricultura, la seguridad alimentaria y sus comunidades. En 2026 destaca su labor en la protección de la biodiversidad, el suelo y el agua.",
+        "prompt": "Hoy es el 15 de octubre de 2026, Día Internacional de las Mujeres Rurales. Explica esta conmemoración de la ONU y la labor de las agricultoras en el cuidado de la naturaleza, propone maneras de reconocerlas y recomienda documentales, películas y series sobre mujeres en la agricultura y la vida rural, verificando dónde verlos en mi país."
+      }
+    },
+    "imageAlt": "Original editorial illustration of rural women tending crops, with green fields and a warm harvest sun",
+    "sourceName": "United Nations"
+  },
+  {
+    "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
+    "_note": "Rewritten once per day by the MatchApp day-of bot. Replace the whole object; never append. Keep every key below.",
     "updated": "2026-09-24T22:40:00Z",
     "date": "2026-09-24",
     "id": "world-maritime-day-2026-09-24",
