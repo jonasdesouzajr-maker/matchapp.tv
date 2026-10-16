@@ -47,3 +47,24 @@ test('homepage versions the parent stylesheet so the shared fix cannot be held b
   assert.equal(url.searchParams.get('headerauth'), '20261016-1');
  } finally { dom.window.close(); }
 });
+
+
+test('editorial brand normalization retains the homepage cache key and is idempotent', () => {
+ const { versionBrandStylesheet } = require('../tools/finalize-brand');
+ const { JSDOM } = require('jsdom');
+ for (const query of ['', '?v=195', '?v=20261015-spacing1', '?v=20261015-spacing1&headerauth=20261016-1', '?v=20261015-spacing1&amp;headerauth=20261016-1']) {
+  const input='<link rel="stylesheet" href="/brand.css'+query+'"><script src="/app.js?v=unchanged"></script>';
+  const output=versionBrandStylesheet(input,true);
+  assert.equal(versionBrandStylesheet(output,true),output);
+  assert.ok(output.endsWith('<script src="/app.js?v=unchanged"></script>'));
+  const dom=new JSDOM(output,{url:'https://matchapp.tv/'});
+  try { const url=new URL(dom.window.document.querySelector('link').href);
+   assert.equal(url.searchParams.get('headerauth'),'20261016-1');
+   assert.equal(url.searchParams.getAll('headerauth').length,1);
+   assert.equal(url.searchParams.get('v'),'20261015-spacing1');
+  } finally { dom.window.close(); }
+ }
+ const other='<link rel="stylesheet" href="/brand.css?v=20261015-spacing1">';
+ assert.equal(versionBrandStylesheet(other,false),other);
+ assert.ok(read('tools/finalize-brand.js').includes("html=versionBrandStylesheet(html,rel==='index.html');"));
+});
