@@ -1,47 +1,48 @@
 {
   "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
   "_note": "Rewritten once per day by the MatchApp day-of bot. Replace the whole object; never append. Keep every key below.",
-  "updated": "2026-10-15T22:04:37.817Z",
-  "date": "2026-10-15",
-  "id": "international-day-rural-women-2026-10-15",
+  "updated": "2026-10-16T04:45:08.627Z",
+  "date": "2026-10-16",
+  "id": "world-food-day-2026-10-16",
   "emoji": "🌾",
-  "title": "International Day of Rural Women",
+  "title": "World Food Day",
   "kicker": "International day",
   "place": "Worldwide",
-  "summary": "The United Nations observes the International Day of Rural Women on 15 October, recognizing rural women's contributions to farming, food security and local communities. Its 2026 focus highlights women farmers' work to protect biodiversity, care for soil and water, and support resilient food systems.",
-  "prompt": "Today is the International Day of Rural Women, 15 October 2026. Explain the UN observance and its focus on rural women farmers caring for nature, share practical respectful ways to recognize the day, and recommend relevant documentaries, films and series about women in agriculture and rural life; verify where each can be watched in my country.",
-  "officialUrl": "https://www.un.org/observances/rural-women-day",
-  "image": "/event-posters/international-day-rural-women-2026.svg",
+  "summary": "The UN Food and Agriculture Organization marks World Food Day on 16 October, the anniversary of FAO's founding. Its official 2026 theme, 'Innovate today. Nourish tomorrow.', highlights how new ideas, traditional knowledge and inclusive approaches can improve food access while protecting the planet.",
+  "prompt": "Today is World Food Day, 16 October 2026. Explain the FAO observance and its verified 2026 theme, 'Innovate today. Nourish tomorrow.' Share practical respectful ways to participate, and recommend accurate documentaries, films and series about food systems, farming innovation, culture and food security, checking where each can be watched in my country.",
+  "officialUrl": "https://www.fao.org/world-food-day/en",
+  "image": "/event-posters/world-food-day-2026.svg",
   "keywords": [
-    "International Day of Rural Women",
-    "International Day of Rural Women 2026",
-    "October 15 rural women",
-    "rural women farmers caring for mother nature",
-    "UN rural women day",
-    "rural women environmental stewardship",
-    "rural women documentaries",
-    "women farmers documentary streaming",
-    "what to watch on rural women day",
-    "how to celebrate International Day of Rural Women",
-    "dia internacional da mulher rural",
-    "día internacional de las mujeres rurales"
+    "World Food Day",
+    "World Food Day 2026",
+    "16 October World Food Day",
+    "FAO World Food Day",
+    "Innovate today Nourish tomorrow",
+    "World Food Day theme 2026",
+    "food systems documentaries",
+    "sustainable farming films",
+    "food security documentaries",
+    "World Food Day activities",
+    "what to watch on World Food Day",
+    "Dia Mundial da Alimentação 2026",
+    "Día Mundial de la Alimentación 2026"
   ],
   "i18n": {
     "pt-BR": {
-      "title": "Dia Internacional das Mulheres Rurais",
+      "title": "Dia Mundial da Alimentação",
       "kicker": "Data internacional",
       "place": "No mundo todo",
-      "summary": "A ONU celebra o Dia Internacional das Mulheres Rurais em 15 de outubro, reconhecendo a contribuição dessas mulheres para a agricultura, a segurança alimentar e as comunidades. Em 2026, a data destaca o cuidado das agricultoras com a biodiversidade, o solo e a água.",
-      "prompt": "Hoje é 15 de outubro de 2026, Dia Internacional das Mulheres Rurais. Explique a data oficial da ONU e o papel das agricultoras na preservação da natureza, sugira formas de valorizá-las e recomende documentários, filmes e séries relevantes sobre mulheres na agricultura e na vida rural, verificando onde assistir no meu país."
+      "summary": "A Organização das Nações Unidas para a Alimentação e a Agricultura (FAO) celebra o Dia Mundial da Alimentação em 16 de outubro, aniversário de sua fundação. O tema oficial de 2026, 'Inovar hoje para nutrir o amanhã', destaca como novas ideias, saberes tradicionais e iniciativas inclusivas podem ampliar o acesso à alimentação e proteger o planeta.",
+      "prompt": "Hoje é 16 de outubro de 2026, Dia Mundial da Alimentação. Explique a data da FAO e o tema oficial 'Inovar hoje para nutrir o amanhã', sugira formas responsáveis de participar e recomende documentários, filmes e séries sobre sistemas alimentares, inovação agrícola, culturas alimentares e segurança alimentar, verificando onde assistir no meu país."
     },
     "es": {
-      "title": "Día Internacional de las Mujeres Rurales",
+      "title": "Día Mundial de la Alimentación",
       "kicker": "Día internacional",
       "place": "En todo el mundo",
-      "summary": "La ONU conmemora el Día Internacional de las Mujeres Rurales el 15 de octubre, reconociendo su aporte a la agricultura, la seguridad alimentaria y sus comunidades. En 2026 destaca su labor en la protección de la biodiversidad, el suelo y el agua.",
-      "prompt": "Hoy es el 15 de octubre de 2026, Día Internacional de las Mujeres Rurales. Explica esta conmemoración de la ONU y la labor de las agricultoras en el cuidado de la naturaleza, propone maneras de reconocerlas y recomienda documentales, películas y series sobre mujeres en la agricultura y la vida rural, verificando dónde verlos en mi país."
+      "summary": "La Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) celebra el Día Mundial de la Alimentación el 16 de octubre, aniversario de su fundación. El lema oficial de 2026, 'Innovar hoy para nutrir mañana', destaca las ideas nuevas, los conocimientos tradicionales y los enfoques inclusivos para mejorar el acceso a los alimentos y proteger el planeta.",
+      "prompt": "Hoy es 16 de octubre de 2026, Día Mundial de la Alimentación. Explica la conmemoración de la FAO y el lema oficial 'Innovar hoy para nutrir mañana', propone maneras respetuosas de participar y recomienda documentales, películas y series sobre sistemas alimentarios, innovación agrícola, cultura gastronómica y seguridad alimentaria, comprobando dónde verlos en mi país."
     }
   },
-  "imageAlt": "Original editorial illustration of rural women tending crops, with green fields and a warm harvest sun",
-  "sourceName": "United Nations"
+  "imageAlt": "Original illustrated World Food Day 2026 poster showing growers sharing vegetables, solar irrigation, a greenhouse and terraced fields",
+  "sourceName": "Food and Agriculture Organization of the United Nations"
 }
