@@ -15,7 +15,7 @@ function page(file, title, description, keywords) {
 }
 page('index.html', 'MatchApp Ai — What to Watch Tonight & Where to Stream',
   'Find what to watch tonight and where to stream it with MatchApp Ai. Get picks by mood, regional availability, and share a match with friends.',
-  'what to watch tonight, where to watch, where to stream, what to stream tonight, find what to watch now, AI streaming concierge, latest streaming releases, movie recommendations, TV show recommendations, AI movie recommendations, movies by mood, TV shows by mood, Netflix recommendations, Netflix top 10, new on Netflix October 2026, streaming guide, Match Together, what to watch together, date night movies, anime recommendations, K-drama recommendations, where to watch anime, vertical micro-drama recommendations, AI magazine recommendations, cinema showtimes, streaming watchlist, listen to Spotify, listen to Apple Music, o que assistir hoje, onde assistir, filmes em alta Netflix Brasil, séries em alta Netflix Brasil, recomendações de filmes por humor');
+  'what to watch tonight, where to watch, where to stream, what to stream tonight, find what to watch now, AI streaming concierge, latest streaming releases, movie recommendations, TV show recommendations, AI movie recommendations, movies by mood, TV shows by mood, Netflix recommendations, Netflix top 10, new on Netflix, streaming guide, Match Together, what to watch together, date night movies, anime recommendations, K-drama recommendations, where to watch anime, vertical micro-drama recommendations, AI magazine recommendations, cinema showtimes, streaming watchlist, listen to Spotify, listen to Apple Music, o que assistir hoje, onde assistir, filmes em alta Netflix Brasil, séries em alta Netflix Brasil, recomendações de filmes por humor');
 page('discover.html', 'Ask AI What to Watch, Read or Listen To | MatchApp Ai',
   'Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.',
   'ask AI what to watch, AI movie recommendations, AI TV recommendations, where to watch a movie, where to stream a title, movies by mood, shows like my favorites, voice entertainment search, anime recommendation AI, K-drama finder, micro-drama finder, book recommendation AI, audiobook recommendations, AI magazine finder, podcast discovery, perguntar à IA o que assistir');
@@ -34,12 +34,12 @@ page('cooking/index.html', 'Cooking Channels & Recipe Videos with AI | MatchApp 
 page('anime.html', 'Anime Recommendations by Mood & Where to Watch | MatchApp Ai',
   'Find anime recommendations by mood and genre, compare movies and series, and check where anime streams by country with MatchApp Ai.',
   'what anime should I watch, anime recommendations, where to watch anime, anime finder, Japanese animation, anime para assistir, onde assistir anime');
-page('together.html', 'Match Together by MatchApp Ai | Pick What to Watch Together',
-  'Match Together by MatchApp Ai combines two people’s moods and tastes to pick one movie, series, anime or K-drama through a private shared match link.',
+page('together.html', 'Match Together: What to Watch Tonight | MatchApp Ai',
+  'Decide what to watch together with MatchApp Ai. Combine two people’s moods and tastes through a private shared match link for your next movie or series night.',
   'Match Together, what to watch together, what should we watch tonight, movie night decider, movies for couples, date night movies, what to watch with friends, pick a movie together, shared movie recommendations, o que assistir em casal');
-page('platforms/netflix/index.html', 'What to Watch on Netflix: Top Picks by Mood | MatchApp Ai',
-  'Find what to watch on Netflix by mood and genre, including current 2026 picks and regional viewing links. Explore movies, series and recent Top 10 titles.',
-  'what to watch on Netflix, Netflix recommendations, Netflix movie recommendations, Netflix series recommendations, Netflix recommendations by mood, Netflix top 10, new on Netflix October 2026, Monster The Lizzie Borden Story, Why Did I Get Married Again, The Gentlemen, A Different World, o que assistir na Netflix');
+page('platforms/netflix/index.html', 'Netflix Top 10 & Recommendations by Mood | MatchApp Ai',
+  'Explore Netflix Top 10 sources and movie or series recommendations by mood. Compare a dated chart snapshot with your preferences and regional viewing options.',
+  'what to watch on Netflix, Netflix Top 10, Netflix recommendations by mood, Netflix movie recommendations, Netflix series recommendations, o que assistir na Netflix');
 page('platforms/plus-sbt/index.html', '+SBT: Catálogo, Novelas, Séries e Filmes Grátis | MatchApp Ai',
   'Explore o catálogo atual do +SBT com novelas, séries, animes, infantis, programas e filmes grátis. Abra títulos no streaming oficial e descubra o que assistir.',
   '+SBT, catálogo +SBT, SBT streaming, streaming grátis Brasil, onde assistir SBT online, novelas SBT online, séries +SBT, filmes +SBT, desenhos +SBT, anime +SBT, assistir +SBT grátis, o que assistir no +SBT, catálogo de novelas +SBT, onde assistir A Usurpadora online, onde assistir Chiquititas 2013, A Caverna Encantada streaming, Doctor Who +SBT, Kamisama Kiss +SBT, Guerreiras Mágicas de Rayearth +SBT, Silvio Santos streaming, Geração Chiquititas +SBT');
@@ -120,6 +120,13 @@ function enrichMetadata(html, file) {
       meta('og:description', config.description, true);
       meta('twitter:description', config.description);
     }
+    if(config.title){
+      meta('og:site_name','MatchApp Ai',true);
+      const image=head.match(/<meta property="og:image" content="([^"]*)"/)?.[1]||'https://matchapp.tv/og-image.jpg?v=20260928-brand-preview1';
+      meta('og:image',image,true);
+      meta('og:image:width','1200',true);meta('og:image:height','630',true);
+      meta('og:image:alt','MatchApp Ai',true);if(!head.includes('name="twitter:image"'))meta('twitter:image',image);meta('twitter:image:alt','MatchApp Ai');
+    }
     const existing = head.match(/<meta\s+name="keywords"\s+content="([^"]*)"/i)?.[1] || '';
     // Keep the homepage concise; preserve legacy intents on topic pages. Terms are focused
     // on each page's actual content; never insert invisible body text.
@@ -133,7 +140,7 @@ function enrichMetadata(html, file) {
           if (config.title) node.name = config.title;
           if (config.description) node.description = config.description;
           node.keywords = config.keywords;
-          node.dateModified = '2026-10-05';
+          // Preserve the actual editorial modification date; metadata refresh must not backdate it.
         }
         if (file === 'index.html' && ['WebSite', 'SoftwareApplication'].includes(node['@type'])) {
           node.keywords = config.keywords;

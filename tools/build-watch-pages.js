@@ -23,6 +23,7 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 const {hasConfirmedOffer} = require('./availability-page-policy.cjs');
+const {enrichWatchHead} = require('./watch-search-metadata.cjs');
 
 const REGION_NAMES = { BR: 'Brazil', US: 'United States', GB: 'United Kingdom', PT: 'Portugal' };
 
@@ -324,7 +325,7 @@ function main() {
 
         const dir = path.join(ROOT, 'where-to-watch', slug(title));
         fs.mkdirSync(dir, { recursive: true });
-        fs.writeFileSync(path.join(dir, 'index.html'), buildPage(title, info, entry, related, generated), 'utf8');
+        fs.writeFileSync(path.join(dir, 'index.html'), enrichWatchHead(buildPage(title, info, entry, related, generated),title,info), 'utf8');
         if (hasConfirmedOffer(info)) urls.push(`${SITE}/where-to-watch/${slug(title)}/`);
     });
 

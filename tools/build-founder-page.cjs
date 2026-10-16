@@ -1,6 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path');
-const root=path.resolve(__dirname,'..'),copy=require('../data/founder-copy.json'),t=copy.en;
+const root=path.resolve(__dirname,'..'),source=require('../data/founder-copy.json'),seo=require('../data/search-page-copy.json');
+const copy=Object.fromEntries(Object.entries(source).map(([lang,t])=>[lang,{...t,seoTitle:seo[lang][0]}])),t=copy.en;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text=(tag,key,cls='')=>`<${tag}${cls?` class="${cls}"`:''} data-founder="${key}">${esc(t[key])}</${tag}>`;
 const url='https://matchapp.tv/founder/',portrait='https://matchapp.tv/assets/founder/jonas-junior-office-960.webp';
@@ -12,8 +13,8 @@ const body=`<!doctype html>
 <html lang="en"><head>
 ${analytics}
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(t.title)} | Jonas Junior · MatchApp Ai</title><meta name="description" content="${esc(t.pageDesc)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}">
-<meta property="og:type" content="profile"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="${esc(t.heading)}"><meta property="og:description" content="${esc(t.pageDesc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${portrait}"><meta property="og:image:width" content="960"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="${esc(t.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.heading)}"><meta name="twitter:description" content="${esc(t.pageDesc)}"><meta name="twitter:image" content="${portrait}"><meta name="author" content="Jonas Junior">
+<title>${esc(t.seoTitle)}</title><meta name="description" content="${esc(t.pageDesc)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}">
+<meta property="og:type" content="profile"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="${esc(t.seoTitle)}"><meta property="og:description" content="${esc(t.pageDesc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${portrait}"><meta property="og:image:width" content="960"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="${esc(t.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.seoTitle)}"><meta name="twitter:description" content="${esc(t.pageDesc)}"><meta name="twitter:image" content="${portrait}"><meta name="twitter:image:alt" content="${esc(t.alt)}"><meta name="author" content="Jonas Junior">
 <link rel="icon" href="/assets/brand/matchapp-official-icon-192.png" type="image/png">
 ${shared}
 <link rel="stylesheet" href="/patches/founder-page.css?v=20261016-4">
@@ -34,7 +35,7 @@ ${[['originHeading','origin','spark'],['learningHeading','learning','craft'],['b
 </article>
 <footer class="mf-footer ma-legal-bar"><nav aria-label="MatchApp Ai">${Object.entries({home:'/',about:'/about.html',contact:'/contact.html',privacy:'/privacy.html',terms:'/terms.html',cookies:'/cookies.html',copyright:'/copyright.html'}).map(([k,href])=>`<a href="${href}" data-founder="${k}">${esc(t[k])}</a>`).join('')}</nav><p>© 2026 MatchApp Ai</p>${text('p','rights','mf-note')}</footer>
 </main>
-<script src="/settings.js?v=20260924-runtime1"></script><script defer src="/poster-wall.js?v=20260922-global1" data-page-shell="wall"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script><script defer src="/brand-lock-20261011.js?v=20261011-a1"></script><script defer src="/patches/donate-shortcut.js?v=20261015-1"></script><script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script><script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script><script src="/patches/founder-copy.js?v=20261016-1"></script><script defer src="/patches/founder-page.js?v=20261016-1"></script>
+<script src="/settings.js?v=20260924-runtime1"></script><script defer src="/poster-wall.js?v=20260922-global1" data-page-shell="wall"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script><script defer src="/brand-lock-20261011.js?v=20261011-a1"></script><script defer src="/patches/donate-shortcut.js?v=20261015-1"></script><script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script><script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script><script src="/patches/founder-copy.js?v=20261016-seo2"></script><script defer src="/patches/founder-page.js?v=20261016-seo2"></script>
 </body></html>\n`;
 fs.mkdirSync(path.join(root,'founder'),{recursive:true});fs.writeFileSync(path.join(root,'founder/index.html'),body);
 fs.writeFileSync(path.join(root,'patches/founder-copy.js'),'/* Authored translations. Source: data/founder-copy.json. */\nwindow.MATCHAPP_FOUNDER_COPY='+JSON.stringify(copy).replace(/</g,'\\u003c')+';\n');
