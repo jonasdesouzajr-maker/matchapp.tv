@@ -85,6 +85,7 @@ test('dedicated guide keeps responsive UI scoped and original ads untouched',()=
  assert.match(css,/#sd-article \.card/);
  assert.match(css,/#sd-article \.panel/);
  assert.match(css,/@media\(max-width:520px\)/);
+ assert.match(css,/#sd-article footer\{[^}]*flex-wrap:wrap/,'Narrow-phone footer must wrap');
  assert.match(css,/prefers-reduced-motion/);
  assert.ok(!html.includes('adsbygoogle'),'No advertising inventory on editorial page');
  assert.ok(html.includes('GTM-M7J3NNBN'),'Reuse existing analytics container');
