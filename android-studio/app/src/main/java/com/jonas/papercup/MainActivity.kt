@@ -72,6 +72,8 @@ class MainActivity : AppCompatActivity() {
     private var startupHost: FrameLayout? = null
     private val startupDeadline = Runnable { finishStartupTransition() }
     private val startupPrefs by lazy { getSharedPreferences(STARTUP_PREFS, MODE_PRIVATE) }
+    private var growthReferrer: GrowthInstallReferrer? = null
+    private var growthCanRestore = false
     private var lastUrl = HOME
     private var voiceTts: TextToSpeech? = null
     private var voiceTtsReady = false
@@ -239,6 +241,17 @@ class MainActivity : AppCompatActivity() {
             splashKeep = false
             showOffline(true)
         }
+        // Resolve a recent, explicitly requested web-to-app handoff without delaying normal startup.
+        growthCanRestore = savedInstanceState == null && intent.data == null
+        if (growthCanRestore) {
+            growthReferrer = GrowthInstallReferrer(this) { destination ->
+                if (growthCanRestore && !isFinishing && !isDestroyed && lastUrl == launch) {
+                    growthCanRestore = false
+                    lastUrl = destination
+                    web.loadUrl(destination)
+                }
+            }.also { it.start() }
+        }
     }
 
     private fun applySafeInsets() {
@@ -262,6 +275,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onNewIntent(intent: Intent) {
+        growthCanRestore = false
+        growthReferrer?.close()
         super.onNewIntent(intent)
         setIntent(intent)
         val url = resolveLaunchUrl(intent)
@@ -289,7 +304,14 @@ class MainActivity : AppCompatActivity() {
         injectAppMode(web)
     }
 
+    override fun onUserInteraction() {
+        growthCanRestore = false
+        super.onUserInteraction()
+    }
+
     override fun onDestroy() {
+        growthReferrer?.close()
+        growthReferrer = null
         finishIntro()
         finishStartupTransition(immediate = true)
         adMobController?.destroy()
@@ -1079,8 +1101,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=53"
-        const val APP_UA = "MatchAppTVAndroid/1.1.53 MatchAppAiAndroid/1.1.53 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=54"
+        const val APP_UA = "MatchAppTVAndroid/1.1.54 MatchAppAiAndroid/1.1.54 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_REGISTERED = "registered_v1"

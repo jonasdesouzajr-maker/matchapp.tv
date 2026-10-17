@@ -61,6 +61,8 @@ test('source-renamed catalog titles keep exact numeric TMDB aliases without weak
  }
  // The special case must stay a tiny exact-ID override. General discovery still
  // rejects a fuzzy title mismatch rather than borrowing another work's identity.
- assert.match(availability,/const hit = data\.results\.find\(r => norm\(r\.title \|\| r\.name\) === wanted\)/);
+ assert.match(availability,/const hit = selectExactIdentity\(entry, data\.results, kind\)/);
+ assert.match(availability,/name === wanted/);
+ assert.match(availability,/String\(entry\.year\) === year/);
  assert.match(availability,/if \(!hit\) return null/);
 });
