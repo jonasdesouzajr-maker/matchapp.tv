@@ -27,7 +27,7 @@ function names(value) {
   return Array.isArray(value) ? [...new Set(value.filter(v=>typeof v==='string' && v.trim()).map(v=>v.trim().slice(0,120)))] : [];
 }
 function regionEvidence(info, code, generated, now = Date.now()) {
-  const raw = info?.regions?.[code];
+  const raw = info?.regions?.[code] || info?.regionObservations?.[code];
   const checkedAt = observationTime(raw?.checkedAt,info?.checkedAt,generated);
   const checkedMs = Date.parse(checkedAt);
   const currentMs = typeof now === 'number' ? now : Date.parse(now);
@@ -77,7 +77,7 @@ function buildAvailabilityGraph({title,info,entry,url,generated,now=Date.now(),r
   const parsed=canonical?new URL(canonical):null;
   if(!parsed||parsed.origin!==SITE||parsed.search||parsed.hash||!require('../growth-core.js').titlePath(parsed.pathname))throw new Error('Invalid availability canonical');
   if(!['movie','tv'].includes(info?.kind) || !Number.isSafeInteger(info?.tmdbId) || info.tmdbId<=0)throw new Error('Resolved title identity required');
-  const codes=regionCode ? [regionCode] : Object.keys(info.regions||{});
+  const codes=regionCode ? [regionCode] : [...new Set([...Object.keys(info.regions||{}),...Object.keys(info.regionObservations||{})])];
   const evidence=codes.filter(code=>/^[A-Z]{2}$/.test(code)).map(code=>regionEvidence(info,code,generated,now));
   const entityId=`${SITE}/#tmdb-${info.kind}-${info.tmdbId}`;
   const source=`https://www.themoviedb.org/${info.kind}/${info.tmdbId}`;
