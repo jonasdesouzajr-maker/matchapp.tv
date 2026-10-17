@@ -95,7 +95,7 @@ function buildPage(title, info, entry, related, generated) {
     const checked = evidence.map(e=>e.checkedAt).filter(Boolean).sort().at(-1) || '';
     const compiled = observationTime(generated);
     const comparisons = regions.map(([code,r])=>{
-        const options = [['subscription',r.stream],['rental',r.rent],['purchase',r.buy]].filter(([,names])=>names?.length);
+        const options = [['subscription',r.stream],['rental',r.rent],['purchase',r.buy],['free access',r.free],['free with ads',r.ads]].filter(([,names])=>names?.length);
         return `<li><strong>${esc(REGION_NAMES[code]||code)}:</strong> ${options.length ? options.map(([kind,names])=>`${kind} via ${names.map(esc).join(', ')}`).join('; ') : 'no confirmed provider listing in this snapshot'}.</li>`;
     }).join('');
     const context = entry ? [entry.cats?.length ? `Catalog categories: ${entry.cats.map(esc).join(', ')}.` : '', entry.moods?.length ? `Discovery moods: ${entry.moods.map(esc).join(', ')}.` : ''].filter(Boolean).join(' ') : '';

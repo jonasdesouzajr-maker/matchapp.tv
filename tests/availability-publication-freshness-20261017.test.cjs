@@ -33,3 +33,10 @@ test('later dataset compilation does not freshen retained source observations',(
 test('free and ad-supported offers are retained and not confused with paid subscriptions',()=>{
  const record=info();record.regions.BR={checkedAt:checked,status:'available',ads:['Verified free-with-ads provider'],link:source};const d=new JSDOM(buildPage('Vale Tudo',record,{},[],generated)).window.document;const region=d.querySelector('#availability-br');assert.match(region.textContent,/Free with ads/);assert.match(region.textContent,/No subscription, rental or purchase provider is confirmed/);assert.match(region.textContent,/Verified free-with-ads provider/);
 });
+
+test('comparison summaries retain free and ad-supported source listings',()=>{
+ const record=info();record.regions.BR={checkedAt:checked,status:'available',free:['Verified free provider'],ads:['Verified ad-supported provider'],link:source};
+ const d=new JSDOM(buildPage('Vale Tudo',record,{},[],generated)).window.document;
+ const summary=d.querySelector('[aria-label="Source context and comparison"] li').textContent;
+ assert.match(summary,/free access via Verified free provider/);assert.match(summary,/free with ads via Verified ad-supported provider/);assert.doesNotMatch(summary,/no confirmed provider listing/);
+});
