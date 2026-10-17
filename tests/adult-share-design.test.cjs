@@ -9,7 +9,7 @@ test('adult result invitation uses the original share button',()=>{
   assert.equal((html.match(/id="btn-share-match"/g)||[]).length,1);
   const dom=new JSDOM('<button id="btn-share-match"></button><div class="match-fun-share__copy"><strong></strong><span></span></div>',{runScripts:'outside-only',url:'https://matchapp.tv/'});
   dom.window.eval(fs.readFileSync('match-fun-share.js','utf8'));
-  assert.match(dom.window.document.querySelector('.match-fun-share__copy span').textContent,/3 different match results/);
+  assert.equal(dom.window.document.querySelector('.match-fun-share__copy span').textContent,'Share this recommendation with friends.');
   dom.window.close();
 });
 
@@ -44,4 +44,73 @@ test('guest Watch rewards only on a server-confirmed third verified post',async(
   assert.equal(w.MatchAppGuestShare.finalizeVerified({kind:'watch_match',token:'watch:3',proof:proof(0,true)}),false);
   assert.equal(w.MatchAppGuestShare.matchBalance(),1);
   dom.window.close();
+});
+
+
+test('token-policy sharing copy is authored in all 14 selected languages and restores the disabled-policy button',async()=>{
+  const dom=new JSDOM('<aside class="match-fun-share"><button id="btn-share-match">Original share action</button><div class="match-fun-share__copy"><strong></strong><span></span></div></aside>',{runScripts:'outside-only',url:'https://matchapp.tv/'});
+  const w=dom.window,button=w.document.getElementById('btn-share-match');
+  const labels=new Set(),hints=new Set();let shares=0;
+  const handler=()=>shares++;button.onclick=handler;
+  w.localStorage.setItem('match_guestBonusMatches','10');w.localStorage.setItem('match_guestBonusAiPrompts_v1','7');
+  try{
+    w.MatchAppTokens={retireLegacyPromotions:false};
+    w.eval(fs.readFileSync('match-fun-share.js','utf8'));
+    assert.equal(button.textContent,'Original share action');
+    w.MatchAppTokens.retireLegacyPromotions=true;
+    w.document.dispatchEvent(new w.CustomEvent('matchapp:tokenpolicy'));
+    for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
+      w.MATCH_LANG=lang;w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange'));
+      const hint=w.document.querySelector('.match-fun-share__copy span').textContent;
+      assert.ok(hint.trim().length>0,lang);assert.doesNotMatch(hint,/\d|\+/);
+      assert.doesNotMatch(button.textContent,/\d|\+/);assert.equal(button.onclick,handler);
+      assert.equal(w.document.querySelector('aside').getAttribute('aria-label'),button.textContent.replace(/^📢\s*/,''));
+      hints.add(hint);labels.add(button.textContent);
+    }
+    assert.equal(hints.size,14);assert.equal(labels.size,14);
+    button.click();assert.equal(shares,1);
+    w.MATCH_LANG='pt-BR';w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange'));
+    assert.equal(w.document.querySelector('.match-fun-share__copy span').textContent,'Compartilhe esta indicação com amigos.');
+    w.MATCH_LANG='';w.localStorage.setItem('match_lang','it-IT');w.document.documentElement.lang='en';
+    w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange'));
+    assert.equal(button.textContent,'📢 Condividi questo Match');
+    w.t=()=> 'Original localized sharing';w.MatchAppTokens.retireLegacyPromotions=false;
+    w.document.dispatchEvent(new w.CustomEvent('matchapp:tokenpolicy'));
+    await new Promise(resolve=>w.setTimeout(resolve,0));
+    assert.equal(button.textContent,'Original localized sharing');assert.equal(button.onclick,handler);
+    assert.equal(w.localStorage.getItem('match_guestBonusMatches'),'10');
+    assert.equal(w.localStorage.getItem('match_guestBonusAiPrompts_v1'),'7');
+  }finally{w.close();}
+});
+
+test('later result renders cannot restore a retired reward label or override the original restricted-title action',async()=>{
+  const dom=new JSDOM('<aside class="match-fun-share"><button id="btn-share-match">Share 3 results</button><div class="match-fun-share__copy"><strong></strong><span></span></div></aside><a id="watch" href="https://www.netflix.com/">Watch</a>',{runScripts:'outside-only',url:'https://matchapp.tv/'});
+  const w=dom.window,button=w.document.getElementById('btn-share-match');
+  let shares=0,replacements=0;
+  w.openShareSheet=()=>shares++;w.getAnotherMatchInstead=()=>replacements++;
+  w.t=key=>key==='share.restricted'?'Not shareable — choose another Match':'Share 3 results · Get +1 Match';
+  const app=fs.readFileSync('app.js','utf8');
+  const end='window.updateShareButtonState = updateShareButtonState;';
+  try{
+    w.eval(app.slice(app.indexOf('function updateShareButtonState()'),app.indexOf(end)+end.length));
+    w.MatchAppTokens={retireLegacyPromotions:true};w.updateShareButtonState();
+    const originalShare=button.onclick;
+    w.eval(fs.readFileSync('match-fun-share.js','utf8'));
+    await new Promise(resolve=>w.setTimeout(resolve,0));
+    assert.equal(button.onclick,originalShare);assert.equal(button.textContent,'📢 Share this Match');
+    w.updateShareButtonState();const renderedShare=button.onclick;
+    await new Promise(resolve=>w.setTimeout(resolve,0));
+    assert.equal(button.textContent,'📢 Share this Match');assert.equal(button.onclick,renderedShare);
+    button.click();assert.equal(shares,1);
+    w.currentMatchShareRestricted=true;w.updateShareButtonState();const restricted=button.onclick;
+    await new Promise(resolve=>w.setTimeout(resolve,0));
+    assert.equal(button.textContent,'Not shareable — choose another Match');assert.equal(button.onclick,restricted);
+    w.document.dispatchEvent(new w.CustomEvent('matchapp:tokenpolicy'));w.document.dispatchEvent(new w.CustomEvent('matchapp:newmatch'));
+    assert.equal(button.textContent,'Not shareable — choose another Match');button.click();
+    assert.equal(replacements,1);assert.equal(shares,1);
+    w.currentMatchShareRestricted=false;w.updateShareButtonState();
+    await new Promise(resolve=>w.setTimeout(resolve,0));
+    assert.equal(button.textContent,'📢 Share this Match');button.click();assert.equal(shares,2);
+    assert.equal(w.document.getElementById('watch').href,'https://www.netflix.com/');
+  }finally{w.close();}
 });
