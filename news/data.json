@@ -1,10 +1,244 @@
 {
-  "generated_at": "2026-10-17T00:44:40.118Z",
-  "feed_version": "2ca66368",
-  "sports_updated_at": "2026-10-16T15:23:19.782Z",
+  "generated_at": "2026-10-17T01:20:23.706Z",
+  "feed_version": "cb985ba9",
+  "sports_updated_at": "2026-10-17T01:20:23.657Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "2c850312",
+      "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
+      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T01:19:04.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/oregon-teacher-fought-school-attacker-before-armed-dad-shot-suspect-multiple-tim-2c8503/",
+      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before"
+        ],
+        "long_tail": [
+          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Oregon teacher fought school attacker before armed dad…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before",
+          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+      }
+    },
+    {
+      "id": "880a0eaf",
+      "title": "The uncertain future of Canada's 30 rescued belugas",
+      "url": "https://www.bbc.co.uk/news/articles/c623dnn3xvpko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T01:18:08.000Z",
+      "discovered_at": "2026-10-17T01:20:23.706Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a7e9/live/0fd9b790-c971-11f1-80fc-ab418b149008.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-uncertain-future-of-canada-s-30-rescued-belugas-880a0e/",
+      "landing_url": "https://matchapp.tv/?news=880a0eaf#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "uncertain",
+          "future",
+          "canada",
+          "rescued",
+          "belugas"
+        ],
+        "long_tail": [
+          "The uncertain future of Canada's 30 rescued belugas 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "uncertain",
+          "future",
+          "canada",
+          "rescued",
+          "belugas"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "The uncertain future of Canada's 30 rescued belugas |…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "uncertain",
+          "future",
+          "canada",
+          "rescued",
+          "belugas",
+          "The uncertain future of Canada's 30 rescued belugas 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+      }
+    },
+    {
+      "id": "7380c158",
+      "title": "Judge throws out child sex abuse charges against actor Timothy Busfield",
+      "url": "https://www.bbc.co.uk/news/articles/c8vgxwq4q5r2o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-17T00:38:34.000Z",
+      "discovered_at": "2026-10-17T01:20:23.706Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d9d2/live/ddd16cc0-c9b1-11f1-a04a-83cd2533e4f9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/judge-throws-out-child-sex-abuse-charges-against-actor-timothy-busfield-7380c1/",
+      "landing_url": "https://matchapp.tv/?news=7380c158#latest-news",
+      "seo": {
+        "primary_keyword": "judge throws out child latest news",
+        "short_tail": [
+          "judge throws out child",
+          "judge throws out child news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "judge throws out child latest news October 2026",
+          "judge throws out child entertainment update 2026",
+          "judge throws out child news 2026-10-17",
+          "latest entertainment news about judge throws out child",
+          "judge throws out child sex abuse latest update",
+          "BBC judge throws out child entertainment",
+          "latest news about judge throws out child October 2026",
+          "judge throws out child entertainment news 2026-10-17",
+          "what happened with judge throws out child"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "judge",
+          "throws",
+          "out",
+          "child",
+          "sex",
+          "abuse",
+          "charges",
+          "against"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "judge throws out child 2026"
+        ],
+        "source_keywords": [
+          "BBC judge throws out child",
+          "bbc.co.uk judge throws out child",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Judge throws out child sex abuse charges against actor…",
+        "meta_description": "Entertainment update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "judge throws out child latest news",
+          "judge throws out child",
+          "judge throws out child news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "judge throws out child latest news October 2026",
+          "judge throws out child entertainment update 2026",
+          "judge throws out child news 2026-10-17",
+          "latest entertainment news about judge throws out child",
+          "judge throws out child sex abuse latest update",
+          "BBC judge throws out child entertainment",
+          "latest news about judge throws out child October 2026",
+          "judge throws out child entertainment news 2026-10-17",
+          "what happened with judge throws out child",
+          "judge",
+          "throws",
+          "out",
+          "child",
+          "sex",
+          "abuse",
+          "charges",
+          "against",
+          "October 2026",
+          "2026-10-17",
+          "judge throws out child 2026",
+          "BBC judge throws out child",
+          "bbc.co.uk judge throws out child",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+      }
+    },
     {
       "id": "206ad307",
       "title": "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC",
@@ -71,7 +305,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -140,7 +374,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -209,76 +443,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
-      }
-    },
-    {
-      "id": "2c850312",
-      "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
-      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T23:07:38.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/oregon-teacher-fought-school-attacker-before-armed-dad-shot-suspect-multiple-tim-2c8503/",
-      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before"
-        ],
-        "long_tail": [
-          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Oregon teacher fought school attacker before armed dad…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before",
-          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -347,7 +512,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -416,7 +581,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -508,7 +673,7 @@
           "hollywoodreporter.com John Amos’ Daughter Sues",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -600,7 +765,7 @@
           "hollywoodreporter.com Austin Abrams Still Won’t",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -694,7 +859,7 @@
           "hollywoodreporter.com Kim Kardashian Wants",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -788,7 +953,7 @@
           "hollywoodreporter.com Hallmark’s Christmas Workshop",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -886,7 +1051,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -982,7 +1147,7 @@
           "hollywoodreporter.com The Hollywood Reporter",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1081,7 +1246,7 @@
           "hollywoodreporter.com Francis Lawrence",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1150,7 +1315,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1219,7 +1384,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1288,7 +1453,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1357,7 +1522,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1458,7 +1623,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1527,76 +1692,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
-      }
-    },
-    {
-      "id": "6a78c527",
-      "title": "Toxic algorithms wouldn't let them go - now Australia wants an off switch",
-      "url": "https://www.bbc.co.uk/news/articles/cwr7y8er1n8vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T18:11:29.000Z",
-      "discovered_at": "2026-10-16T18:28:43.226Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21ca/live/8f226840-c966-11f1-a64c-550be9e3c66b.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/toxic-algorithms-wouldn-t-let-them-go-now-australia-wants-an-off-switch-6a78c5/",
-      "landing_url": "https://matchapp.tv/?news=6a78c527#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "toxic",
-          "algorithms",
-          "wouldn",
-          "let",
-          "them",
-          "now"
-        ],
-        "long_tail": [
-          "Toxic algorithms wouldn't let them go - now Australia wants an off switch 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "toxic",
-          "algorithms",
-          "wouldn",
-          "let",
-          "them",
-          "now"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Toxic algorithms wouldn't let them go - now Australia…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "toxic",
-          "algorithms",
-          "wouldn",
-          "let",
-          "them",
-          "now",
-          "Toxic algorithms wouldn't let them go - now Australia wants an off switch 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1665,7 +1761,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1734,7 +1830,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1803,7 +1899,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1899,7 +1995,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -1968,7 +2064,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2069,7 +2165,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2167,7 +2263,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2268,7 +2364,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2362,7 +2458,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2463,7 +2559,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2564,7 +2660,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2665,7 +2761,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2766,106 +2862,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
-      }
-    },
-    {
-      "id": "48c788b2",
-      "title": "Sparks fly at the Celebrity Traitors round table and a 'terrifying' death parade",
-      "url": "https://www.bbc.co.uk/news/articles/cq4g17j1ej95o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-15T23:01:49.000Z",
-      "discovered_at": "2026-10-15T23:15:03.438Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "",
-      "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fe0d/live/61dbffd0-c93a-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/sparks-fly-at-the-celebrity-traitors-round-table-and-a-terrifying-death-parade-48c788/",
-      "landing_url": "https://matchapp.tv/?news=48c788b2#latest-news",
-      "seo": {
-        "primary_keyword": "sparks fly celebrity traitors latest news",
-        "short_tail": [
-          "sparks fly celebrity traitors",
-          "sparks fly celebrity traitors news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "sparks fly celebrity traitors latest news October 2026",
-          "sparks fly celebrity traitors obituary update 2026",
-          "sparks fly celebrity traitors news 2026-10-15",
-          "latest obituary news about sparks fly celebrity traitors",
-          "sparks fly celebrity traitors round table latest update",
-          "BBC sparks fly celebrity traitors obituary",
-          "latest news about sparks fly celebrity traitors October 2026",
-          "sparks fly celebrity traitors entertainment news 2026-10-15",
-          "what happened with sparks fly celebrity traitors"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "sparks",
-          "fly",
-          "celebrity",
-          "traitors",
-          "round",
-          "table",
-          "terrifying",
-          "death"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "sparks fly celebrity traitors 2026"
-        ],
-        "source_keywords": [
-          "BBC sparks fly celebrity traitors",
-          "bbc.co.uk sparks fly celebrity traitors",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Sparks fly at the Celebrity Traitors round table and a…",
-        "meta_description": "Obituary update reported by BBC on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "sparks fly celebrity traitors latest news",
-          "sparks fly celebrity traitors",
-          "sparks fly celebrity traitors news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "sparks fly celebrity traitors latest news October 2026",
-          "sparks fly celebrity traitors obituary update 2026",
-          "sparks fly celebrity traitors news 2026-10-15",
-          "latest obituary news about sparks fly celebrity traitors",
-          "sparks fly celebrity traitors round table latest update",
-          "BBC sparks fly celebrity traitors obituary",
-          "latest news about sparks fly celebrity traitors October 2026",
-          "sparks fly celebrity traitors entertainment news 2026-10-15",
-          "what happened with sparks fly celebrity traitors",
-          "sparks",
-          "fly",
-          "celebrity",
-          "traitors",
-          "round",
-          "table",
-          "terrifying",
-          "death",
-          "October 2026",
-          "2026-10-15",
-          "sparks fly celebrity traitors 2026",
-          "BBC sparks fly celebrity traitors",
-          "bbc.co.uk sparks fly celebrity traitors",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -2966,7 +2963,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -3063,7 +3060,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -3153,7 +3150,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -3254,7 +3251,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -3353,7 +3350,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -3448,7 +3445,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     },
     {
@@ -3546,7 +3543,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+        "seo_generated_at": "2026-10-17T01:20:23.706Z"
       }
     }
   ]
