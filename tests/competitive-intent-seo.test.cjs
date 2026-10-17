@@ -19,7 +19,7 @@ test('new cross-platform editorial guide has original visible crawlable content'
  const text=d.body.textContent.replace(/\s+/g,' ').trim();
  assert.ok(text.length>3500,'substantive editorial content required');
  assert.match(text,/not affiliated with Netflix, Disney\+/i);
- assert.match(text,/vary by country/i);
+ assert.match(text,/(?:change|vary) by country/i);
 });
 test('editorial guide points only to existing on-site routes',()=>{
  const d=document();
