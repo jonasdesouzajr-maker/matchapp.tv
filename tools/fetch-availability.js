@@ -28,7 +28,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const {observationTime} = require('./availability-evidence.cjs');
+const {observationTime,httpsUrl} = require('./availability-evidence.cjs');
 
 const ROOT = path.join(__dirname, '..');
 const API = 'https://api.themoviedb.org/3';
@@ -162,13 +162,31 @@ async function getProviders(id, kind) {
     return providersFromResponse(data,new Date().toISOString());
 }
 
+// Absent regions are genuine observations, not source-backed offer records.
+// Preserve them separately instead of inventing a regional source URL.
+function partitionProviderObservations(providers) {
+    const regions={},regionObservations={};
+    for(const [code,raw] of Object.entries(providers||{})) {
+        if(!REGIONS.includes(code)||!raw||typeof raw!=='object')throw new Error('Invalid provider observation');
+        const record=structuredClone(raw),link=httpsUrl(record.link);
+        const regional=link&&new URL(link).searchParams.get('locale')===code;
+        const hasOffers=['stream','rent','buy','free','ads'].some(k=>Array.isArray(record[k])&&record[k].length);
+        if(regional) { regions[code]=record; continue; }
+        if(hasOffers||record.status!=='not_reported')throw new Error('Provider options require their original region-qualified source link');
+        delete record.link;
+        regionObservations[code]=record;
+    }
+    if(!Object.keys(regions).length)throw new Error('No source-backed regional record; preserve the last good title');
+    return {regions,regionObservations};
+}
+
 function carryPrevious(previous) {
     const result={};
     for(const [title,info] of Object.entries(previous?.titles||{})) {
         if(!info || !['movie','tv'].includes(info.kind) || !Number.isSafeInteger(info.tmdbId))continue;
         const copy=structuredClone(info);
         copy.checkedAt=observationTime(copy.checkedAt,previous.generated);
-        for(const region of Object.values(copy.regions||{})) {
+        for(const region of [...Object.values(copy.regions||{}),...Object.values(copy.regionObservations||{})]) {
             region.checkedAt=observationTime(region.checkedAt,copy.checkedAt);
         }
         result[title]=copy;
@@ -203,17 +221,20 @@ async function main() {
             const providers = await getProviders(found.id, found.kind);
             await sleep(DELAY_MS);
             if (!providers) { failed(entry.title); continue; }
-            sourceChecks++;
+
             const hasOptions=Object.values(providers).some(r=>r.status==='available');
             if(!hasOptions && !availability[entry.title])continue;
 
+            const {regions,regionObservations}=partitionProviderObservations(providers);
+            sourceChecks++;
             availability[entry.title] = {
                 tmdbId: found.id,
                 kind: found.kind,
                 year: entry.year || null,
                 checkedAt: Object.values(providers)[0].checkedAt,
                 refreshStatus: 'confirmed',
-                regions: providers
+                regions,
+                ...(Object.keys(regionObservations).length?{regionObservations}:{})
             };
             withProviders++;
             console.log(`  ✓ ${entry.title} — ${Object.keys(providers).join(', ')}`);
@@ -236,4 +257,4 @@ async function main() {
 }
 
 if(require.main===module)main().catch(()=>{console.error('Availability refresh failed; inspect the source status. No credentials are logged.');process.exitCode=1;});
-module.exports={providersFromResponse,carryPrevious,selectExactIdentity};
+module.exports={providersFromResponse,partitionProviderObservations,carryPrevious,selectExactIdentity};

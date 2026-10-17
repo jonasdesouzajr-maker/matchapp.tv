@@ -572,7 +572,9 @@
             "Tubi TV"
           ],
           "link": "https://www.themoviedb.org/tv/46161-vale-tudo/watch?locale=US"
-        },
+        }
+      },
+      "regionObservations": {
         "GB": {
           "checkedAt": "2026-10-17T09:08:27.804Z",
           "status": "not_reported"
@@ -1510,10 +1512,6 @@
       "checkedAt": "2026-10-17T09:08:35.558Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:35.558Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:35.558Z",
           "status": "available",
@@ -1537,6 +1535,12 @@
             "YouTube"
           ],
           "link": "https://www.themoviedb.org/movie/20453-3-idiots/watch?locale=GB"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:35.558Z",
+          "status": "not_reported"
         },
         "PT": {
           "checkedAt": "2026-10-17T09:08:35.558Z",
@@ -1618,10 +1622,6 @@
       "checkedAt": "2026-10-17T09:08:36.349Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:36.349Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:36.349Z",
           "status": "available",
@@ -1665,6 +1665,12 @@
           ],
           "link": "https://www.themoviedb.org/movie/534780/watch?locale=PT"
         }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:36.349Z",
+          "status": "not_reported"
+        }
       }
     },
     "Queen": {
@@ -1674,10 +1680,6 @@
       "checkedAt": "2026-10-17T09:08:36.747Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:36.747Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:36.747Z",
           "status": "available",
@@ -1716,6 +1718,12 @@
             "Apple TV Store"
           ],
           "link": "https://www.themoviedb.org/movie/247645-queen/watch?locale=PT"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:36.747Z",
+          "status": "not_reported"
         }
       }
     },
@@ -1858,10 +1866,6 @@
       "checkedAt": "2026-10-17T09:08:39.535Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:39.535Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:39.535Z",
           "status": "available",
@@ -1872,6 +1876,12 @@
             "VIX "
           ],
           "link": "https://www.themoviedb.org/tv/12961-rubi/watch?locale=US"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:39.535Z",
+          "status": "not_reported"
         },
         "GB": {
           "checkedAt": "2026-10-17T09:08:39.535Z",
@@ -1890,10 +1900,6 @@
       "checkedAt": "2026-10-17T09:08:39.932Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:39.932Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:39.932Z",
           "status": "available",
@@ -1904,6 +1910,12 @@
             "VIX "
           ],
           "link": "https://www.themoviedb.org/tv/12926-teresa/watch?locale=US"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:39.932Z",
+          "status": "not_reported"
         },
         "GB": {
           "checkedAt": "2026-10-17T09:08:39.932Z",
@@ -2581,10 +2593,6 @@
       "checkedAt": "2026-10-17T09:08:49.152Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:49.152Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:49.152Z",
           "status": "available",
@@ -2600,6 +2608,12 @@
             "Tubi TV"
           ],
           "link": "https://www.themoviedb.org/tv/132057-kings-and-generals/watch?locale=GB"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:49.152Z",
+          "status": "not_reported"
         },
         "PT": {
           "checkedAt": "2026-10-17T09:08:49.152Z",
@@ -3335,10 +3349,6 @@
       "checkedAt": "2026-10-17T09:08:57.322Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:57.322Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:57.322Z",
           "status": "available",
@@ -3348,6 +3358,12 @@
             "FXNow"
           ],
           "link": "https://www.themoviedb.org/tv/304842-the-drop-a-snowfall-saga/watch?locale=US"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:57.322Z",
+          "status": "not_reported"
         },
         "GB": {
           "checkedAt": "2026-10-17T09:08:57.322Z",
@@ -3635,10 +3651,6 @@
       "checkedAt": "2026-10-17T09:08:59.326Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:59.326Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:59.326Z",
           "status": "available",
@@ -3690,6 +3702,12 @@
             "YouTube"
           ],
           "link": "https://www.themoviedb.org/movie/928344-weird-the-al-yankovic-story/watch?locale=GB"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:59.326Z",
+          "status": "not_reported"
         },
         "PT": {
           "checkedAt": "2026-10-17T09:08:59.326Z",
@@ -3704,10 +3722,6 @@
       "checkedAt": "2026-10-17T09:08:59.721Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:08:59.721Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:08:59.721Z",
           "status": "available",
@@ -3715,6 +3729,12 @@
             "The Roku Channel"
           ],
           "link": "https://www.themoviedb.org/tv/99072-die-hart/watch?locale=US"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:08:59.721Z",
+          "status": "not_reported"
         },
         "GB": {
           "checkedAt": "2026-10-17T09:08:59.721Z",
@@ -3733,10 +3753,6 @@
       "checkedAt": "2026-10-17T09:09:00.122Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:09:00.122Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:09:00.122Z",
           "status": "available",
@@ -3748,6 +3764,12 @@
             "The Roku Channel"
           ],
           "link": "https://www.themoviedb.org/tv/214665-the-great-american-baking-show/watch?locale=US"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:09:00.122Z",
+          "status": "not_reported"
         },
         "GB": {
           "checkedAt": "2026-10-17T09:09:00.122Z",
@@ -3766,10 +3788,6 @@
       "checkedAt": "2026-10-17T09:09:00.528Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:09:00.528Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:09:00.528Z",
           "status": "available",
@@ -3789,6 +3807,12 @@
             "UKTV Play"
           ],
           "link": "https://www.themoviedb.org/tv/233010-honest-renovations/watch?locale=GB"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:09:00.528Z",
+          "status": "not_reported"
         },
         "PT": {
           "checkedAt": "2026-10-17T09:09:00.528Z",
@@ -3803,10 +3827,6 @@
       "checkedAt": "2026-10-17T09:09:00.921Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:09:00.921Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:09:00.921Z",
           "status": "available",
@@ -3826,6 +3846,12 @@
             "UKTV Play"
           ],
           "link": "https://www.themoviedb.org/tv/248782-side-hustlers/watch?locale=GB"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:09:00.921Z",
+          "status": "not_reported"
         },
         "PT": {
           "checkedAt": "2026-10-17T09:09:00.921Z",
@@ -3840,10 +3866,6 @@
       "checkedAt": "2026-10-17T09:09:01.322Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:09:01.322Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:09:01.322Z",
           "status": "available",
@@ -3858,6 +3880,12 @@
             "Plex Channel"
           ],
           "link": "https://www.themoviedb.org/tv/215916-martha-cooks/watch?locale=US"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:09:01.322Z",
+          "status": "not_reported"
         },
         "GB": {
           "checkedAt": "2026-10-17T09:09:01.322Z",
@@ -3876,10 +3904,6 @@
       "checkedAt": "2026-10-17T09:09:01.729Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:09:01.729Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:09:01.729Z",
           "status": "available",
@@ -3916,6 +3940,12 @@
             "Amazon Video"
           ],
           "link": "https://www.themoviedb.org/tv/2394-this-old-house/watch?locale=GB"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:09:01.729Z",
+          "status": "not_reported"
         },
         "PT": {
           "checkedAt": "2026-10-17T09:09:01.729Z",
@@ -3930,10 +3960,6 @@
       "checkedAt": "2026-10-17T09:09:02.136Z",
       "refreshStatus": "confirmed",
       "regions": {
-        "BR": {
-          "checkedAt": "2026-10-17T09:09:02.136Z",
-          "status": "not_reported"
-        },
         "US": {
           "checkedAt": "2026-10-17T09:09:02.136Z",
           "status": "available",
@@ -3966,6 +3992,12 @@
             "Apple TV Store"
           ],
           "link": "https://www.themoviedb.org/tv/23545-ask-this-old-house/watch?locale=GB"
+        }
+      },
+      "regionObservations": {
+        "BR": {
+          "checkedAt": "2026-10-17T09:09:02.136Z",
+          "status": "not_reported"
         },
         "PT": {
           "checkedAt": "2026-10-17T09:09:02.136Z",
