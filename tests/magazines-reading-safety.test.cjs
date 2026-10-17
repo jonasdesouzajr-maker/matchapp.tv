@@ -48,13 +48,31 @@ test('magazine-only selection respects topics, exclusions, and source priority w
  assert.match(match,/\['magazine','📰','Magazine only'\]/);
  assert.match(match,/p\.format==='magazine'\)pick=await chooseMagazine\(p\)/);
  assert.match(match,/if\(magazine\)\{renderMagazineResult\(root,book,p,pick\);return;\}/);
- assert.match(match,/const allowed=await window\.checkDailyLimit\(\)/);
+ assert.match(match,/const allowed=await window\.checkDailyLimit\('match',tokenContext\)/);
+ assert.match(match,/if\(!allowed\)return;/);
  assert.match(match,/data-ebook-save/);
  assert.match(match,/function consumeReadingDeepLink\(\)/);
  assert.match(match,/url\.searchParams\.get\('reading'\)/);
  assert.match(match,/p\.format=format;savePrefs\(p\)/);
  assert.match(read('discover.js'),/route\.href = '\/\?reading='/);
 
+});
+test('magazine matching retains the original shared allowance when the actual token policy is disabled',async()=>{
+ const w=new JSDOM('<html><body><section id="reading"><button data-ebook-match></button><div data-ebook-note></div><div data-ebook-result></div></section></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true}).window;
+ const calls=[],order=[],rootNode=w.document.getElementById('reading');let allowed=true,found=true;
+ w.supabaseClient={auth:{getSession:async()=>({data:{session:null}})},rpc:async name=>{calls.push(name);return{data:{ok:true,enabled:false,policy_version:'match-tokens-v1',authenticated:false}};}};
+ w.eval(read('match-tokens.js'));await w.MatchAppTokens.refresh();
+ const quota=async(action,context)=>{order.push('quota');assert.equal(action,'match');assert.equal(context.surface,'ebook');return allowed;};w.checkDailyLimit=quota;
+ const magazine=setup().MatchAppMagazines.items[0];
+ const context={window:w,console,prefs:()=>({format:'magazine',access:'free'}),chooseMagazine:async()=>{order.push('source');return found?{book:magazine,magazine:true}:null;},matchNote:()=>'',uniq:values=>[...new Set(values)],read:()=>[],write:()=>order.push('history'),K:{seen:'existing-seen'},renderResult:()=>order.push('reveal'),renderReadingDiscovery:()=>order.push('source-fallback')};
+ const match=read('ebooks/ebook-matcher.js'),start=match.indexOf('async function doMatch(root){'),end=match.indexOf('\nfunction syncBookControls',start);
+ vm.createContext(context);vm.runInContext(match.slice(start,end)+'\nthis.matchMagazine=doMatch;',context);
+ try{
+  await context.matchMagazine(rootNode);assert.deepEqual(order,['source','quota','history','reveal']);assert.equal(w.checkDailyLimit,quota);assert.equal(w.MatchAppTokens.enabled,false);
+  order.length=0;allowed=false;await context.matchMagazine(rootNode);assert.deepEqual(order,['source','quota'],'denied shared allowance never changes history or reveals');
+  order.length=0;found=false;await context.matchMagazine(rootNode);assert.deepEqual(order,['source','source-fallback'],'failed source resolution never reaches the shared debit');
+  assert.ok(calls.every(name=>name==='match_token_status'),'disabled token policy never consumes an additional token');assert.equal(rootNode.dataset.audioBusy,'0');assert.equal(rootNode.querySelector('button').disabled,false);
+ }finally{w.close();}
 });
 test('Amazon BR is the first magazine search on approved web, other stores and unapproved Android remain untagged',()=>{
  const web=setup(),mag=web.MatchAppMagazines.items[0];
@@ -115,9 +133,9 @@ test('publisher original source pages and magazine SEO are indexable on the exis
 });
 test('adult native Android WebView receives magazine-only update, Kids binaries stay isolated',()=>{
  const gradle=read('android-studio/app/build.gradle.kts'),main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
- assert.match(gradle,/versionCode = 54/);assert.match(gradle,/versionName = "1\.1\.54"/);
+ assert.match(gradle,/versionCode = 55/);assert.match(gradle,/versionName = "1\.1\.55"/);
  assert.match(main,/adult-mobile-match-ai-runtime-20260927-1/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.54/);
+ assert.match(main,/MatchAppAiAndroid\/1\.1\.55/);
  assert.match(main,/MATCHAPP_ANDROID_KIDS_BLOCKED/);
  assert.doesNotMatch(read('android-studio/kidsapp/src/main/java/tv/matchapp/kids/MainActivity.kt'),/adult-reading-magazines/);
 });

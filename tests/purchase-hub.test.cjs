@@ -57,7 +57,7 @@ function loadPricing(sb, extras={}){
   const listeners={};
   const el={disabled:false,textContent:'Buy',setAttribute(){},removeAttribute(){}};
   const ctx={
-    console, Set, Map, URL, URLSearchParams,
+    console, Set, Map, URL, URLSearchParams, setTimeout, clearTimeout,
     matchMedia:()=>({matches:false,addEventListener(){},removeEventListener(){}}),
     location:{pathname:'/pricing/pricing.html',href:'https://matchapp.tv/pricing/pricing.html',hash:'',search:'',assign:u=>assigned.push(String(u))},
     sessionStorage:{getItem:k=>Object.prototype.hasOwnProperty.call(stored,k)?stored[k]:null,setItem:(k,v)=>{stored[k]=String(v)},removeItem:k=>{delete stored[k]}},
@@ -82,18 +82,29 @@ function loadPricing(sb, extras={}){
   return {ctx, assigned, stored, el};
 }
 
-test('Buy Matches opens Stripe Checkout, falling back to the Payment Link',async()=>{
+test('Buy Matches opens Stripe Checkout and falls back only after the same authenticated account has policy OFF',async()=>{
   const user={id:'00000000-0000-4000-8000-000000000021',email:'buyer@matchapp.tv'};
-  const sb={auth:{getSession:async()=>({data:{session:{user}}})},functions:{invoke:async()=>({data:null,error:{message:'down'}})}};
+  const observers=new Set();let walletReads=0;
+  const sb={auth:{
+    getSession:async()=>({data:{session:{user,access_token:'fixture-access-token'}}}),
+    getUser:async token=>{assert.equal(token,'fixture-access-token');return {data:{user}}},
+    onAuthStateChange:callback=>{observers.add(callback);return {data:{subscription:{unsubscribe(){observers.delete(callback)}}}}}
+  },rpc:async(name,...args)=>{
+    assert.equal(name,'match_token_status');assert.equal(args.length,0);walletReads++;
+    return {data:{ok:true,authenticated:true,enabled:false,policy_version:'match-tokens-v1'}};
+  },functions:{invoke:async()=>({data:null,error:{message:'down'}})}};
   const {ctx, assigned}=loadPricing(sb);
   await ctx.buyMatches('matches_5');
   assert.equal(assigned.length,1);
+  assert.equal(walletReads,1);assert.equal(observers.size,0);
   assert.match(assigned[0],/^https:\/\/buy\.stripe\.com\/eVq6oH2FX6hg1BIbolcfK0g/);
   assert.match(assigned[0],/client_reference_id=00000000-0000-4000-8000-000000000021/);
   assigned.length=0;
   sb.functions.invoke=async()=>({data:{url:'https://checkout.stripe.com/c/pay/cs_live_test'},error:null});
   await ctx.processCheckout('vip_monthly');
   assert.equal(assigned[0],'https://checkout.stripe.com/c/pay/cs_live_test');
+  assert.equal(walletReads,1,'hosted Checkout success does not enter the Payment Link fallback');
+  assert.equal(observers.size,0);
 });
 
 test('signed-out Buy Matches opens sign-in instead of a dead click',async()=>{

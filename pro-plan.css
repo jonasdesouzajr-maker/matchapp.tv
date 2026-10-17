@@ -1,0 +1,107 @@
+/* MatchApp Ai Pro: owned controls only; existing ads and purchase handlers keep their geometry. */
+.ma-pro-scrim { position: fixed; inset: 5px; z-index: 10019; background: #08050bd6; }
+.ma-pro-scrim[hidden] { display: none; }
+.ma-pro-dialog {
+  box-sizing: border-box;
+  position: fixed;
+  inset: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  z-index: 10020;
+  width: min(640px, calc(100% - 24px));
+  max-width: 640px;
+  max-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: auto;
+  padding: 24px;
+  border: 1px solid #dfbd6f;
+  border-radius: 24px;
+  background: #211632;
+  color: #fff8e8;
+  box-shadow: 0 22px 64px #09040c80;
+  font: 400 16px/1.5 var(--font-main, "Inter", system-ui, sans-serif);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  text-align: start;
+}
+.ma-pro-dialog:not([open]) { display: none; }
+.ma-pro-dialog *, .ma-pro-entry * { box-sizing: border-box; }
+.ma-pro-heading { display: flex; align-items: start; gap: 12px; justify-content: space-between; }
+.ma-pro-dialog .ma-pro-title { margin: 0; color: #f6d789; font-size: clamp(24px, 6vw, 30px); line-height: 1.2; font-weight: 800; overflow-wrap: anywhere; }
+.ma-pro-dialog .ma-pro-summary { margin: 14px 0; color: #e3d8ef; }
+.ma-pro-dialog .ma-pro-state { min-height: 6rem; margin: 0 0 16px; padding: 14px; border: 1px solid #ad93d64d; border-radius: 16px; background: #ffffff06; overflow-wrap: anywhere; }
+.ma-pro-dialog .ma-pro-state p { margin: 0; }
+.ma-pro-dialog .ma-pro-state p + p { margin-top: 8px; }
+.ma-pro-dialog .ma-pro-price { font-size: 24px; line-height: 1.35; font-weight: 800; color: #f6d789; }
+.ma-pro-dialog .ma-pro-market { color: #d0bddf; font-size: 14px; }
+.ma-pro-dialog .ma-pro-terms { color: #d4c6df; font-size: 14px; margin: 12px 0; }
+.ma-pro-dialog .ma-pro-country { display: grid; gap: 8px; font-size: 14px; margin: 12px 0; }
+.ma-pro-dialog .ma-pro-country select { width: 100%; min-height: 48px; border: 1px solid #a78abf; border-radius: 12px; padding: 10px 12px; background: #30223f; color: #fff8e8; font: inherit; }
+.ma-pro-dialog .ma-pro-actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.ma-pro-dialog .ma-pro-button, .ma-pro-entry .ma-pro-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid #eacb83;
+  border-radius: 16px;
+  background: linear-gradient(115deg, #f4da94, #cda446);
+  color: #261336;
+  font: 750 16px/1.35 var(--font-main, "Inter", system-ui, sans-serif);
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  box-shadow: none;
+  transform: none;
+}
+.ma-pro-dialog .ma-pro-button::before, .ma-pro-dialog .ma-pro-button::after,
+.ma-pro-entry .ma-pro-button::before, .ma-pro-entry .ma-pro-button::after { content: none; }
+.ma-pro-dialog .ma-pro-button--quiet { background: transparent; border-color: #a68ac35c; color: #e7d5f6; }
+.ma-pro-dialog .ma-pro-close { flex: 0 0 48px; width: 48px; padding: 10px; min-height: 48px; border-radius: 14px; font-size: 24px; }
+.ma-pro-dialog .ma-pro-button:disabled { opacity: .58; cursor: default; }
+.ma-pro-dialog .ma-pro-button:focus-visible, .ma-pro-entry .ma-pro-button:focus-visible,
+.ma-pro-dialog select:focus-visible, .ma-pro-dialog input:focus-visible { outline: 3px solid #fce3a0; outline-offset: 3px; }
+.ma-pro-dialog .ma-pro-offers { border: 0; margin: 12px 0 16px; padding: 0; min-width: 0; }
+.ma-pro-dialog .ma-pro-offers legend { color: #f0d692; margin-bottom: 8px; font-weight: 750; }
+.ma-pro-dialog .ma-pro-offer { font: 400 15px/1.5 var(--font-main, "Inter", system-ui, sans-serif); color: #f5edf9; display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; padding: 12px; margin-top: 8px; border: 1px solid #a68ac36b; border-radius: 16px; cursor: pointer; }
+.ma-pro-dialog .ma-pro-offer:has(input:checked) { border-color: #eacb83; background: #eacb8310; }
+.ma-pro-dialog .ma-pro-offer input { margin: 5px 0 0; accent-color: #eacb83; width: 18px; height: 18px; }
+.ma-pro-dialog .ma-pro-offer ul { margin: 0; padding: 0; list-style: none; }
+.ma-pro-dialog .ma-pro-offer li { font: inherit; color: inherit; }
+.ma-pro-dialog .ma-pro-offer li + li { margin-top: 6px; }
+.ma-pro-entry { margin: 16px 0; padding: 24px; min-height: 184px; border: 1px solid #d8b86b; border-radius: 24px; background: #211632; color: #fff8e8; }
+.ma-pro-entry :is(h1, h2) { margin: 0 0 8px; font-size: 24px; line-height: 1.25; color: #f6d789; }
+.ma-pro-entry p { margin: 0 0 16px; color: #dfd0ea; }
+@media (min-width: 640px) { .ma-pro-dialog { padding: 32px; } }
+@media (max-width: 359px) { .ma-pro-dialog { padding: 18px; } .ma-pro-dialog .ma-pro-state { min-height: 8rem; } }
+@media (prefers-reduced-motion: reduce) { .ma-pro-dialog *, .ma-pro-entry * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media (forced-colors: active) { .ma-pro-dialog, .ma-pro-entry, .ma-pro-dialog .ma-pro-button, .ma-pro-entry .ma-pro-button { border-color: ButtonText; box-shadow: none; } }
+
+.ma-pro-entry[hidden] { display: none; }
+
+.ma-pro-dialog .ma-pro-offers--native { height: 240px; min-height: 240px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.ma-pro-dialog.ma-pro-native-retention .ma-pro-state { height: 12rem; min-height: 12rem; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.ma-pro-dialog .ma-pro-management-escape:empty { display: none; }
+.ma-pro-dialog .ma-pro-management-escape { margin-block: 8px 12px; }
+.ma-pro-dialog .ma-pro-retention-date { margin: 0 0 12px; font: 500 15px/1.5 var(--font-main, "Inter", system-ui, sans-serif); color: #e3d8ef; overflow-wrap: anywhere; }
+
+/* Pricing uses the same live offer as its schema. The quote's fixed height
+ * reserves loading, unavailable and localized price states before the fetch. */
+.ma-pro-entry.ma-pro-pricing { max-width: 980px; margin: 20px auto; text-align: start; }
+.ma-pro-pricing > h1 { font-size: clamp(25px, 4vw, 34px); overflow-wrap: anywhere; margin-bottom: 20px; }
+.ma-pro-pricing .ma-pro-pricing-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.ma-pro-pricing .ma-pro-pricing-card { min-width: 0; padding: 20px; border: 1px solid #a68ac35c; border-radius: 20px; background: #ffffff04; overflow-wrap: anywhere; }
+.ma-pro-pricing .ma-pro-pricing-card h2 { color: #f6d789; font-size: 23px; line-height: 1.3; margin: 0 0 14px; }
+.ma-pro-pricing .ma-pro-pricing-card p { color: #dfd0ea; font: 400 15px/1.6 var(--font-main, "Inter", system-ui, sans-serif); margin: 0 0 16px; }
+.ma-pro-pricing .ma-pro-pricing-card .ma-pro-pricing-lead { color: #f6d789; font-size: 21px; font-weight: 750; line-height: 1.4; }
+.ma-pro-pricing .ma-pro-pricing-quote { height: 12rem; min-height: 12rem; padding: 14px; margin-bottom: 16px; border: 1px solid #a68ac35c; border-radius: 16px; overflow-y: auto; scrollbar-gutter: stable; overscroll-behavior: contain; }
+.ma-pro-pricing .ma-pro-pricing-card .ma-pro-pricing-price { color: #f6d789; font-size: 24px; font-weight: 800; line-height: 1.35; }
+.ma-pro-pricing .ma-pro-pricing-card .ma-pro-pricing-market { color: #d2bfdf; font-size: 14px; margin: 0; }
+.ma-pro-pricing .ma-pro-pricing-card .ma-pro-pricing-terms { color: #d2bfdf; font-size: 14px; }
+.ma-pro-pricing .ma-pro-pricing-card .ma-pro-button { margin-bottom: 16px; }
+.ma-pro-pricing .ma-pro-pricing-existing { margin: 20px 0 0; font-size: 14px; line-height: 1.6; color: #d2bfdf; }
+@media (min-width: 760px) { .ma-pro-pricing .ma-pro-pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .ma-pro-entry.ma-pro-pricing { padding: 16px; } .ma-pro-pricing .ma-pro-pricing-card { padding: 16px; } }

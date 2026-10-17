@@ -81,7 +81,8 @@ test('only the adult reader/listener matcher loads audiobook logic, preserving K
  assert.match(match,/format:\[\['any'/);
  assert.match(match,/chooseVerifiedAudio/);
  assert.match(match,/if\(!pick\)[\s\S]*?return;/);
- assert(match.indexOf('const allowed=await window.checkDailyLimit()')>match.indexOf('if(!pick)'));
+ const debit=match.indexOf("const allowed=await window.checkDailyLimit('match',tokenContext)");
+ assert(debit>=0&&match.indexOf('if(!pick)')>=0&&debit>match.indexOf('if(!pick)'));
  assert.match(match,/data-ebook-check-audio/);
  assert.match(match,/paintAudio/);
  assert(match.includes('audio.free'));

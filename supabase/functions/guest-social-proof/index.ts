@@ -1,13 +1,14 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import {createClient} from "npm:@supabase/supabase-js@2.105.0";
 import {verifyPublicSocialPost} from "./verification-core.mjs";
+import {adultPromotionPolicy} from "../_shared/adult-promotion-policy.mjs";
 
 // Public visitors cannot have an authenticated MatchApp JWT. We apply a
 // browser-origin + publishable-key request gate and isolate every DB mutation
 // inside service-role-only private SQL procedures. Public platform metadata
 // (never client confirmation) decides whether a share can earn a reward.
 const ORIGINS=new Set(["https://matchapp.tv","https://www.matchapp.tv","http://localhost:3000","http://localhost:8080"]);
-const uuid=v=>typeof v==="string"&&/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v);
+const uuid=(v:unknown)=>typeof v==="string"&&/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v);
 const SUPABASE_URL=Deno.env.get("SUPABASE_URL")||"";
 function envValues(name:string){
  try{
@@ -54,6 +55,10 @@ Deno.serve(async(req:Request)=>{
   if(action==="start"){
    const kind=body.kind;
    if(kind!=="match"&&kind!=="watch_match"&&kind!=="ask_ai")return response({ok:false,reason:"invalid_request"},400,origin);
+   // Retire new issuance only; already issued 90-minute proofs still verify below.
+   const policy=await adultPromotionPolicy(db);
+   if(!policy.known)return response({ok:false,reason:"service_unavailable"},503,origin);
+   if(policy.retired)return response({ok:false,granted:false,reason:"monetization_policy_changed"},409,origin);
    const {data,error}=await db.rpc("verified_guest_social_gateway",{p_action:"start",p_guest_id:guestId,p_kind:kind});
    if(error){console.error("Guest proof issue failed:",error.code);return response({ok:false,reason:"server_error"},503,origin);}
    return response(data,200,origin);

@@ -66,3 +66,21 @@ rp_origins = ["https://matchapp.tv", "https://www.matchapp.tv"]
 # Public provider webhooks authenticate Resend/Meta signatures inside the function.
 [functions.support-agent]
 verify_jwt = false
+
+# Play purchase requests validate the current user with Auth getUser; the RTDN
+# route validates Google Pub/Sub OIDC before any privileged database operation.
+# This project uses ES256 sessions, so the legacy gateway JWT check stays off.
+[functions.play-billing]
+verify_jwt = false
+
+# Authenticated reward requests validate the current JWT using Auth getUser.
+[functions.reward-session]
+verify_jwt = false
+
+# Google SSV validates its raw-query ECDSA signature before any reward grant.
+[functions.reward-ssv]
+verify_jwt = false
+
+# Public Pro catalog; private operations validate the current JWT with Auth getUser.
+[functions.pro-billing]
+verify_jwt = false

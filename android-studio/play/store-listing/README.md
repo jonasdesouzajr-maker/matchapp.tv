@@ -1,6 +1,6 @@
 # MatchApp Ai Google Play store presence
 
-This directory is the repository source of truth for the released adult Android app's Play Store metadata. It does not publish changes by itself.
+This directory is the repository source for the adult Android app's intended Play Store metadata. Local edits do not publish changes or establish which text is currently live in Console.
 
 Package: com.jonas.papercup
 
@@ -26,3 +26,9 @@ For experiments, change one meaningful variable at a time. Start with the short 
 For custom store listings, prioritize Brazil, the United States and Australia using localized screenshots and copy that remain truthful to features available in those markets.
 
 Google Play metadata must not claim rankings, awards, prices, guaranteed availability or unsupported relationships with streaming providers.
+
+## 2026-10-17 local CRO checkpoint
+
+The English and Brazilian Portuguese short descriptions now lead with movie/TV recommendations and where-to-watch intent. The full descriptions make a narrow, version-independent correction to optional purchase terms, preserving existing subscription management without promoting retired VIP/Business/pack sales or a not-yet-enabled Pro product. The exact title remains **MatchApp Ai** in both locales.
+
+See [CRO_REVIEW_20261017.md](CRO_REVIEW_20261017.md) for the authored three-screen narrative, current UI capture anchors, exact text lengths and the local screenshot audit. The older PNGs were inspected and remain unchanged; they are not ready to re-upload as current product evidence. Final current-device captures and the published/default/custom listing review belong to the release owner.

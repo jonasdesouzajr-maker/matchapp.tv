@@ -31,6 +31,7 @@ function browserId(){
  return id;
 }
 async function request(body){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)throw new Error('offer_retired');
  const client=window.supabaseClient;
  if(!client?.functions?.invoke)throw new Error('service_unavailable');
  const {data,error}=await client.functions.invoke('guest-social-proof',{body:{...body,guest_id:browserId()}});
@@ -110,6 +111,7 @@ function explanation(reason){
  return (pt()?br:en)[reason]||(pt()?'Não foi possível verificar esta publicação. Nenhum bônus foi concedido.':'Could not verify that post. No bonus has been granted.');
 }
 function open({kind,title,token,message,url,onNext}){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return window.MatchAppTokens.ordinaryShare({title,message,url});
  if(window.isUserLoggedIn)return;
  if(kind!=='watch_match'&&window.MatchAppGuestShare?.remainingShares?.()===0)return window.MatchAppRegistrationWelcome?.openOffer?.()||window.location.assign('/?registrationOffer=1');
  const modal=create();modal.hidden=false;

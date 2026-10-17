@@ -33,9 +33,10 @@ test('reading remains independent of the watch and Ask AI panels',async()=>{
  assert.equal(root.previousElementSibling.id,'ma-concierge');assert.equal(root.closest('#ma-concierge'),null);assert.equal(root.querySelector('.ebook-fold').open,false);w.close();
 });
 
-test('Together heading is a real navigation link and preserves its sponsored slot',async()=>{
+test('Together heading is a real navigation link and preserves its sponsored slot',{timeout:3000},async()=>{
  const w=new JSDOM('<body class="page-home"><main><div class="tg-entry"></div><div class="ma-together-ad"><ins class="adsbygoogle"></ins></div><details id="premiere-disclosure"></details></main></body>',{url:'https://matchapp.tv/',runScripts:'outside-only'}).window;
- w.eval(read('lazy.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));await new Promise(r=>setTimeout(r,10));
+ const opened=new Promise(resolve=>w.document.getElementById('premiere-disclosure').addEventListener('toggle',resolve,{once:true}));
+ w.eval(read('lazy.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));await opened;
  const d=w.document,card=d.querySelector('.tg-entry'),ad=d.querySelector('.ma-together-ad'),head=d.querySelector('.lazy-head[data-fold-key="together"]');
  assert.equal(head.tagName,'A');assert.equal(head.getAttribute('href'),'/together.html');
  assert.equal(head.nextElementSibling,card);assert.equal(card.nextElementSibling,ad);assert.equal(ad.nextElementSibling.id,'premiere-disclosure');

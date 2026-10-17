@@ -4,6 +4,7 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const crypto=require('node:crypto');
+const newsCommerce=require('../news-monetization.js');
 
 const ROOT=path.join(__dirname,'..');
 const NEWS=path.join(ROOT,'news');
@@ -364,7 +365,21 @@ const LEGACY_BRAND_SUFFIXES=['TV Ai','TV','AI','iA','IA'];
 const LEGACY_BRAND_RE=new RegExp('MatchApp (?:'+LEGACY_BRAND_SUFFIXES.join('|')+')','g');
 function canonicalBrand(s){return String(s??'').replace(LEGACY_BRAND_RE,'MatchApp Ai');}
 
+const NEWS_COMMERCE_ASSETS='<link rel="stylesheet" href="/news-monetization.css?v=20261017-2">\n<script defer src="/news-monetization.js?v=20261017-2"></script>\n';
+const NEWS_NATIVE_ASSETS='<link rel="stylesheet" href="/native-news-slot.css?v=20261017-1">\n<script defer src="/native-news-slot.js?v=20261017-2"></script>\n';
+function commerceAttributes(item){
+  if(!newsCommerce.eligibleArticle(item))return '';
+  return ' data-news-commerce-card data-news-category="'+esc(item.category)+'" data-news-title="'+esc(item.title)+'" data-news-event="'+esc(item.event_type)+'" data-news-description="'+esc(item.description)+'" data-news-source-url="'+esc(item.url)+'"';
+}
+function commerceSlot(item,language){
+  if(!newsCommerce.eligibleArticle(item))return '';
+  // A publisher's country/language is not the visitor's country. Hydration
+  // may read a real user choice; generated links start with no region claim.
+  return '<div class="ma-news-commerce-slot" data-news-commerce-slot lang="'+esc(language)+'" dir="'+(language==='ar'?'rtl':'ltr')+'">'+newsCommerce.contextMarkup(item,'',language)+'</div>';
+}
+
 function page(i){
+  const language=i.language==='pt'?'pt-BR':(i.language||'en');
   const t=esc(i.title);
   const metaTitle=canonicalBrand(i.seo.meta_title);
   const metaDescription=canonicalBrand(i.seo.meta_description);
@@ -446,7 +461,7 @@ ${imageMeta}
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
-<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
+${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 <style>
 /* Keep article navigation clear of the existing top-right Jonas companion. */
@@ -461,10 +476,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <header class="app-header news-article-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
 <main style="max-width:780px;margin:40px auto;padding:20px">
-  <article class="premium-card" style="padding:24px">
+  <article class="premium-card" style="padding:24px"${commerceAttributes(i)}>
     <p style="color:#E5C158;font-weight:800">LATEST NEWS · ${esc(i.event_type)}</p>
     <h1>${t}</h1>
-    <p>${esc(i.description)}</p>
+    <p>${esc(i.description)}</p>${commerceSlot(i,language)}
     <div style="margin:18px 0;padding:14px;border:1px solid rgba(229,193,88,.25);border-radius:12px">
       <strong>Verified source:</strong> ${src} (${sourceDomain})<br>
       <span>${esc(publishedTitle)}: <time datetime="${esc(i.published_at)}">${esc(publishedLabel)}</time></span>
@@ -481,10 +496,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 
 function hub(items,generated){
-  const cards=items.slice(0,24).map(i=>`<article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+  const options=newsCommerce.offersMarkup(newsCommerce.offers,'','en');
+  const cards=items.slice(0,24).map(i=>`<article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px"${commerceAttributes(i)}>
     <p style="font-size:12px;color:#E5C158">${esc(i.source)} · ${esc(i.event_type)} · ${esc(new Date(i.published_at).toLocaleDateString('en-US'))}</p>
     <h2 style="font-size:19px"><a href="${esc(i.matchapp_url)}">${esc(i.title)}</a></h2>
-    <p>${esc(i.description)}</p>
+    <p>${esc(i.description)}</p>${commerceSlot(i,'en')}
     <p><a href="${esc(i.landing_url)}">Open in Latest News →</a></p>
     <a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
   </article>`).join('');
@@ -552,7 +568,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
-<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
+${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 </head>
 <body>
@@ -572,7 +588,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>When a story points you toward a movie, series, performer or release, continue with <a href="/">MatchApp's entertainment matcher</a>, <a href="/discover.html?focus=start">Ask MatchApp Ai</a>, or check <a href="/where-to-watch/">where to watch</a> for streaming and cinema availability.</p>
   <p>For deeper discovery beyond headlines, use the <a href="/guides/streaming-music-books-october-2026/">October 2026 streaming, music and books guide</a>, the <a href="/guides/coffee-music-tv-trends-september-30-2026/">September 30 trends guide</a>, or the <a href="/anime.html">Anime Finder</a>.</p>
   </section>
-  <section aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
+  ${options?'<div data-news-local-offers>'+options+'</div>\n  ':''}<section data-native-news-feed aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>

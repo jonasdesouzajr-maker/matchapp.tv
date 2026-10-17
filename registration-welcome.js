@@ -41,6 +41,7 @@ function showSignup(){
  target?.focus({preventScroll:true});
 }
 function openOffer(){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return false;
  // A signed-in user must never be shown a guest registration prompt.
  if(window.isUserLoggedIn)return false;
  const modal=el('main-auth-modal'),offer=el('ma-welcome-offer');

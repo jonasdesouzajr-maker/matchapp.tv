@@ -22,6 +22,7 @@ import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.view.View
 import android.view.ViewGroup
+import android.view.MotionEvent
 import android.view.HapticFeedbackConstants
 import android.webkit.CookieManager
 import android.webkit.JavascriptInterface
@@ -61,6 +62,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var offline: View
     private lateinit var fullscreenHost: FrameLayout
     private var adMobController: AdMobController? = null
+    private var nativeRewardedBridge: NativeRewardedBridge? = null
+    private var nativePlayBillingBridge: NativePlayBillingBridge? = null
+    private var nativeNewsBridge: NativeNewsBridge? = null
 
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var customView: View? = null
@@ -118,7 +122,10 @@ class MainActivity : AppCompatActivity() {
         // Keep the native shell immersive, but never place the interactive WebView
         // underneath a status bar, punch-hole camera, or display cutout.
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        // Preserve the current edge-to-edge shell on older supported Android releases.
+        @Suppress("DEPRECATION")
         window.statusBarColor = Color.TRANSPARENT
+        @Suppress("DEPRECATION")
         window.navigationBarColor = ContextCompat.getColor(this, R.color.ink)
 
         web = findViewById(R.id.web)
@@ -173,6 +180,8 @@ class MainActivity : AppCompatActivity() {
                     WebSettingsCompat.WEB_AUTHENTICATION_SUPPORT_FOR_APP
                 )
             }
+            // Preserve the existing WebView storage compatibility behavior.
+            @Suppress("DEPRECATION")
             databaseEnabled = true
             loadsImagesAutomatically = true
             mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
@@ -200,6 +209,17 @@ class MainActivity : AppCompatActivity() {
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
         web.addJavascriptInterface(NativeAuthBridge(), "MatchAppNativeAuth")
+        nativeRewardedBridge = NativeRewardedBridge(
+            this, web,
+            { adMobController?.canRequestRewarded() == true },
+            RewardedClaimClient::verify
+        ).also { it.install() }
+        nativePlayBillingBridge = NativePlayBillingBridge(this, web).also { it.install() }
+        if (BuildConfig.ADMOB_NATIVE_NEWS_ENABLED) {
+            nativeNewsBridge = NativeNewsBridge(this, web, findViewById(R.id.root)) {
+                adMobController?.canRequestRewarded() == true
+            }.also { it.install() }
+        }
         web.setDownloadListener { url, _, contentDisposition, mime, _ ->
             val name = URLUtil.guessFileName(url, contentDisposition, mime)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -289,6 +309,9 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         finishIntro()
         finishStartupTransition(immediate = true)
+        nativeRewardedBridge?.onPause()
+        nativePlayBillingBridge?.onPause()
+        nativeNewsBridge?.onPause()
         adMobController?.pause()
         super.onPause()
         web.onPause()
@@ -299,6 +322,9 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         web.onResume()
         adMobController?.resume()
+        nativeRewardedBridge?.onResume()
+        nativePlayBillingBridge?.onResume()
+        nativeNewsBridge?.onResume()
         // Re-resolve account entitlement after returning from browser/payment/account
         // changes. APP_MODE_JS is idempotent and keeps paid users fail-closed.
         injectAppMode(web)
@@ -306,7 +332,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onUserInteraction() {
         growthCanRestore = false
+        nativeRewardedBridge?.recordUserInteraction()
+        nativePlayBillingBridge?.recordUserInteraction()
         super.onUserInteraction()
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        nativeNewsBridge?.onActivityTouch(event)
+        return super.dispatchTouchEvent(event)
     }
 
     override fun onDestroy() {
@@ -314,6 +347,12 @@ class MainActivity : AppCompatActivity() {
         growthReferrer = null
         finishIntro()
         finishStartupTransition(immediate = true)
+        nativeRewardedBridge?.destroy()
+        nativeRewardedBridge = null
+        nativePlayBillingBridge?.destroy()
+        nativePlayBillingBridge = null
+        nativeNewsBridge?.destroy()
+        nativeNewsBridge = null
         adMobController?.destroy()
         adMobController = null
         inlineVoiceRecognizer?.destroy()
@@ -636,6 +675,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            nativeRewardedBridge?.onNavigation()
+            nativePlayBillingBridge?.onNavigation()
+            nativeNewsBridge?.onNavigation()
             val uri = url?.let { runCatching { Uri.parse(it) }.getOrNull() }
             if (uri != null && isKidsUri(uri)) {
                 view.stopLoading()
@@ -934,6 +976,17 @@ class MainActivity : AppCompatActivity() {
                 val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
                 if (current == null || !isMatchAppHost(current.host.orEmpty())) return@runOnUiThread
                 adMobController?.setAdFree(adFree)
+                if (adFree) nativeRewardedBridge?.onAdFreeEntitlement()
+                nativeNewsBridge?.onEntitlementChanged()
+            }
+        }
+
+        @JavascriptInterface
+        fun setNewsAccountContext(account: String) {
+            if (account.length > 36) return
+            runOnUiThread {
+                if (!NativeNewsPolicy.isReporterDocument(web.url.orEmpty())) return@runOnUiThread
+                nativeNewsBridge?.onAccountContext(account)
             }
         }
 
@@ -1101,8 +1154,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=54"
-        const val APP_UA = "MatchAppTVAndroid/1.1.54 MatchAppAiAndroid/1.1.54 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=55"
+        const val APP_UA = "MatchAppTVAndroid/1.1.55 MatchAppAiAndroid/1.1.55 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_REGISTERED = "registered_v1"
@@ -1155,9 +1208,12 @@ class MainActivity : AppCompatActivity() {
               function syncNativeAdEntitlement() {
                 var bridge = window.MatchAppNativeExperience;
                 if (!bridge || typeof bridge.setAdFree !== 'function') return;
+                var generation = (window.__matchAppNativeAdEntitlementGeneration || 0) + 1;
+                window.__matchAppNativeAdEntitlementGeneration = generation;
 
                 var state = window.matchProfileState && window.matchProfileState.status;
                 if (state === 'signedout') {
+                  try { if (typeof bridge.setNewsAccountContext === 'function') bridge.setNewsAccountContext('guest'); } catch (_) {}
                   try { bridge.setAdFree(false); } catch (_) {}
                   return;
                 }
@@ -1167,12 +1223,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 // Authenticated accounts remain ad-free while the authoritative profile
-                // row is resolved. VIP, Business and one-time Ad-Free entitlements all win.
+                // row and verified Pro status resolve. Existing ad-free entitlements all win.
                 try { bridge.setAdFree(true); } catch (_) {}
                 var client = window.supabaseClient;
-                if (!client || !client.from) return;
+                if (!client || !client.from || !client.rpc) return;
 
                 var sessionPromise;
+                var newsAccountContext = '';
                 try {
                   sessionPromise = typeof window.ensureCompactMatchSession === 'function'
                     ? window.ensureCompactMatchSession()
@@ -1182,16 +1239,28 @@ class MainActivity : AppCompatActivity() {
                 Promise.resolve(sessionPromise).then(function(sessionResult){
                   var user = sessionResult && sessionResult.data && sessionResult.data.session && sessionResult.data.session.user;
                   if (!user || !user.id) return;
-                  return client.from('profiles')
-                    .select('is_vip,is_business,is_ad_free')
-                    .eq('id', user.id)
-                    .maybeSingle();
-                }).then(function(result){
-                  if (!result || result.error || !result.data) return;
-                  var profile = result.data;
+                  newsAccountContext = user.id;
+                  return Promise.all([
+                    client.from('profiles')
+                      .select('is_vip,is_business,is_ad_free')
+                      .eq('id', user.id)
+                      .maybeSingle(),
+                    client.rpc('pro_status')
+                  ]);
+                }).then(function(results){
+                  if (generation !== window.__matchAppNativeAdEntitlementGeneration ||
+                      window.isUserLoggedIn !== true || !results) return;
+                  var result = results[0], proResult = results[1];
+                  if (!result || result.error || !result.data ||
+                      !proResult || proResult.error || !proResult.data) return;
+                  var profile = result.data, pro = proResult.data;
+                  if (typeof pro.active !== 'boolean' || typeof pro.adFree !== 'boolean' ||
+                      (pro.active && (typeof pro.expiresAt !== 'number' ||
+                        !isFinite(pro.expiresAt) || pro.expiresAt <= Date.now()))) return;
                   var adFree = profile.is_vip === true ||
                     profile.is_business === true ||
-                    profile.is_ad_free === true;
+                    profile.is_ad_free === true || pro.active === true || pro.adFree === true;
+                  try { if (typeof bridge.setNewsAccountContext === 'function') bridge.setNewsAccountContext(newsAccountContext); } catch (_) {}
                   try { bridge.setAdFree(adFree); } catch (_) {}
                 }).catch(function(){
                   // Keep the safe ad-free default on entitlement/network errors.
@@ -1201,9 +1270,14 @@ class MainActivity : AppCompatActivity() {
               if (!window.__matchAppNativeAdEntitlementBound) {
                 window.__matchAppNativeAdEntitlementBound = true;
                 document.addEventListener('matchapp:authchange', function(){
+                  try { if (window.MatchAppNativeExperience && typeof window.MatchAppNativeExperience.setNewsAccountContext === 'function') window.MatchAppNativeExperience.setNewsAccountContext(''); } catch (_) {}
+                  window.__matchAppNativeAdEntitlementGeneration = (window.__matchAppNativeAdEntitlementGeneration || 0) + 1;
                   setTimeout(syncNativeAdEntitlement, 0);
                 });
                 document.addEventListener('matchapp:profilehydrated', function(){
+                  setTimeout(syncNativeAdEntitlement, 0);
+                });
+                document.addEventListener('matchapp:prostatus', function(){
                   setTimeout(syncNativeAdEntitlement, 0);
                 });
               }

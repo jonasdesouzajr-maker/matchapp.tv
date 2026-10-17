@@ -1,5 +1,5 @@
 // Functional release identifier must match release.json.
-window.MATCHAPP_BUILD = '2026.10.16.1';
+window.MATCHAPP_BUILD = '2026.10.17.1';
 
 
 /* Search freshness + truthfulness layer. */
@@ -39,6 +39,8 @@ window.MATCHAPP_BUILD = '2026.10.16.1';
     if (path !== '/pricing' && path !== '/pricing/pricing.html') return;
 
     const vipDaily = 10;
+    const proPricing = window.MatchAppPro?.syncPricingMetadata?.() === true;
+    if (!proPricing) {
     document.title = 'MatchApp Ai VIP | 10 Included AI Actions Daily & Ad-Free Pass';
     upsertMeta('description', 'MatchApp VIP includes 10 AI actions per day and Business includes 50. Included actions can be Matches or Ask AI; Extra Matches and Ask AI credits are separate top-ups.');
     upsertPropertyMeta('og:title', 'MatchApp VIP — 10 Included AI Actions Daily');
@@ -50,6 +52,7 @@ window.MATCHAPP_BUILD = '2026.10.16.1';
     if (subtitle) subtitle.textContent = 'VIP includes 10 AI actions per day; Business includes 50. Use the included allowance for Matches or Ask AI, then top up each separately.';
     const monthly = document.querySelector('[data-i18n-html="pricing.vipm.f1"]');
     if (monthly) monthly.innerHTML = '✔️ <strong>'+vipDaily+'</strong> included AI actions daily';
+    }
 
     // MatchApp plans are digital services, not shippable merchant products.
     // Remove any legacy Product JSON-LD left by an older cached/template release so

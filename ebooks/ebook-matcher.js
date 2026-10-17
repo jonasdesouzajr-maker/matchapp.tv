@@ -582,7 +582,10 @@ async function doMatch(root){
  root.dataset.audioBusy='1';
  root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);
  const p=prefs(),note=root.querySelector('[data-ebook-note]');
+ const tokenContext=window.MatchAppTokens?.createContext?.('ebook');
  try{
+  const tokenPreflight=await window.MatchAppTokens?.beforeLookup?.('match',tokenContext);
+  if(tokenPreflight===false)return;
   let pick;
   if(p.format==='audiobook'){
    if(note){note.hidden=false;note.textContent=tr('audioWaiting')}
@@ -609,12 +612,14 @@ async function doMatch(root){
    if(window.showToast)window.showToast('E-book matching is available from the main MatchApp experience.',true);
    return;
   }
-  const allowed=await window.checkDailyLimit();
+  const allowed=await window.checkDailyLimit('match',tokenContext);
   if(!allowed)return;
   if(note){const message=matchNote(p,pick);note.hidden=!message;note.textContent=message;}
   const seen=uniq(read(K.seen).concat(pick.book.id)).slice(-300);write(K.seen,seen);
   renderResult(root,pick.book,p,pick.relaxed,pick.audio||null,pick.magazine===true,pick);
+  try{window.MatchAppTokens?.confirmResult?.('ebook',root.querySelector('[data-ebook-result]'),tokenContext?.runId);}catch(_){}
  }catch(e){
+  await window.MatchAppTokens?.noteUnconfirmed?.('ebook',tokenContext?.runId);
   console.warn('[MatchApp E-books] Match/source error:',e);
   window.showToast?.('Reading sources are temporarily unavailable. You can explore the source links below or retry shortly.',true,{recovery:true});
   // Upstream/source faults still offer a usable, uncharged discovery route.
