@@ -27,6 +27,13 @@
    var head=document.querySelector('#mh-topbox .mh-head,.app-header .mh-head,.journey-header,.matchapp-brand-bar');
    var headerBox=head?head.getBoundingClientRect():null;
    x=Math.max(17,vw-size-22);y=Math.max(17,Math.min(vh-size-17,headerBox?headerBox.top+14:20));
+   if(document.body.classList.contains('page-shell')&&headerBox)x=Math.max(17,Math.min(vw-size-17,headerBox.right-size));
+   // The quick quiz keeps its closed launcher in document flow, not fixed over
+   // the answers. Convert viewport geometry to document coordinates when it scrolls.
+   if(root.id==='ma-ambient-jonas'&&document.documentElement.dataset.growthMode==='quick'&&headerBox){
+    x=Math.max(17,Math.min(vw-size-17,headerBox.right-size));
+    y=Math.max(0,headerBox.top+window.scrollY+Math.max(0,(headerBox.height-size)/2));
+   }
   }
   if(slot&&document.body.classList.contains('page-home')&&vw>=1100&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
    var box=slot.getBoundingClientRect();

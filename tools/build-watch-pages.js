@@ -23,7 +23,9 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 const {hasConfirmedOffer} = require('./availability-page-policy.cjs');
+const {buildPilot} = require('./build-growth-watch-pilot.cjs');
 const {enrichWatchHead} = require('./watch-search-metadata.cjs');
+const {regionEvidence,buildAvailabilityGraph,safeJson,httpsUrl} = require('./availability-evidence.cjs');
 
 const REGION_NAMES = { BR: 'Brazil', US: 'United States', GB: 'United Kingdom', PT: 'Portugal' };
 
@@ -53,44 +55,42 @@ function buildPage(title, info, entry, related, generated) {
 
     // The description states only what the data supports.
     const metaDesc = allStream.length
-        ? `Where to watch ${title}${yr}: streaming on ${allStream.slice(0, 3).join(', ')}. Availability by region, updated from TMDB.`
+        ? `Where to watch ${title}${yr}: compare reported regional streaming options, source links and the date of the last availability check.`
         : `Where to watch ${title}${yr}: reported provider listings by region, with source links and a dated TMDB snapshot.`;
 
+    const evidence = regions.map(([code]) => regionEvidence(info,code,generated));
     const regionBlocks = regions.map(([code, r]) => {
+        const observed = evidence.find(e => e.code === code);
         const rows = [];
         if (r.stream?.length) rows.push(`<div class="w2w-row"><span class="w2w-kind w2w-stream">Included with subscription</span><div class="w2w-provs">${r.stream.map(p => `<span class="w2w-prov">${esc(p)}</span>`).join('')}</div></div>`);
         if (r.rent?.length)   rows.push(`<div class="w2w-row"><span class="w2w-kind">Rent</span><div class="w2w-provs">${r.rent.map(p => `<span class="w2w-prov w2w-prov-quiet">${esc(p)}</span>`).join('')}</div></div>`);
         if (r.buy?.length)    rows.push(`<div class="w2w-row"><span class="w2w-kind">Buy</span><div class="w2w-provs">${r.buy.map(p => `<span class="w2w-prov w2w-prov-quiet">${esc(p)}</span>`).join('')}</div></div>`);
+        for(const [field,label] of [['free','Free access'],['ads','Free with ads']]) {
+            if(r[field]?.length) rows.push(`<div class="w2w-row"><span class="w2w-kind">${label}</span><div class="w2w-provs">${r[field].map(p=>`<span class="w2w-prov">${esc(p)}</span>`).join('')}</div></div>`);
+        }
         if (!rows.length) rows.push(`<p>No subscription, rental or purchase provider is confirmed in this snapshot for ${esc(REGION_NAMES[code] || code)}. This is not proof that the title is unavailable everywhere; check the linked source.</p>`);
         return `
-            <article class="w2w-region">
-                <h3>${esc(REGION_NAMES[code] || code)}</h3>
+            <article class="w2w-region" id="availability-${code.toLowerCase()}" data-availability-state="${observed.state}">
+                <h3>Where to watch in ${esc(REGION_NAMES[code] || code)}</h3>
+                <p class="w2w-source-status">${esc(observed.answer)}</p>
                 ${rows.join('\n                ')}
-                ${r.link ? `<a class="w2w-link" href="${esc(r.link)}" target="_blank" rel="noopener nofollow">See full options for ${esc(REGION_NAMES[code] || code)} →</a>` : ''}
+                ${httpsUrl(r.link) ? `<a class="w2w-link" href="${esc(httpsUrl(r.link))}" target="_blank" rel="noopener nofollow">See full options for ${esc(REGION_NAMES[code] || code)} →</a>` : ''}
             </article>`;
     }).join('');
 
-    // Schema describes only what is on the page. No ratings, no reviews, no
-    // price — none of that is in the data and inventing it would be exactly
-    // the kind of structured-data abuse that earns a manual action.
-    const ld = {
-        "@context": "https://schema.org",
-        "@type": info.kind === 'movie' ? 'Movie' : 'TVSeries',
-        "name": title,
-        "url": url,
-        ...(info.year ? { "datePublished": String(info.year) } : {}),
-        ...(entry && entry.synopsis ? { "description": entry.synopsis } : {})
-    };
+    // Direct WatchActions are emitted only for independently verified provider-title URLs.
+    // Existing TMDB regional source pages remain citations, never fictional playback links.
+    const ld = buildAvailabilityGraph({title,info,entry,url,generated});
     const crumbs = {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "MatchApp", "item": `${SITE}/` },
+            { "@type": "ListItem", "position": 1, "name": "MatchApp Ai", "item": `${SITE}/` },
             { "@type": "ListItem", "position": 2, "name": "Where to Watch", "item": `${SITE}/where-to-watch/` },
             { "@type": "ListItem", "position": 3, "name": title, "item": url }
         ]
     };
 
-    const checked = Number.isFinite(Date.parse(generated)) ? new Date(generated).toISOString() : '';
+    const checked = evidence.map(e=>e.checkedAt).filter(Boolean).sort().at(-1) || '';
     const comparisons = regions.map(([code,r])=>{
         const options = [['subscription',r.stream],['rental',r.rent],['purchase',r.buy]].filter(([,names])=>names?.length);
         return `<li><strong>${esc(REGION_NAMES[code]||code)}:</strong> ${options.length ? options.map(([kind,names])=>`${kind} via ${names.map(esc).join(', ')}`).join('; ') : 'no confirmed provider listing in this snapshot'}.</li>`;
@@ -113,7 +113,7 @@ function buildPage(title, info, entry, related, generated) {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Where to Watch ${esc(title)}${esc(yr)} | MatchApp</title>
 <meta name="description" content="${esc(metaDesc)}">
 <link rel="canonical" href="${url}">
@@ -136,8 +136,8 @@ function buildPage(title, info, entry, related, generated) {
 <link rel="alternate" hreflang="x-default" href="${url}">
 <link rel="alternate" hreflang="en" href="${url}">
 
-<script type="application/ld+json">${JSON.stringify(ld)}</script>
-<script type="application/ld+json">${JSON.stringify(crumbs)}</script>
+<script type="application/ld+json">${safeJson(ld)}</script>
+<script type="application/ld+json">${safeJson(crumbs)}</script>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -156,7 +156,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .w2w-syn { color: #C9C2B4; font-size: 15.5px; line-height: 1.65; max-width: 600px; margin: 0 auto 22px; }
     .w2w-region { background: rgba(31,30,28,0.82); border: 1px solid var(--edge); border-radius: 14px;
                   padding: 18px 20px; margin-bottom: 13px; text-align: left; }
-    .w2w-region h3 { margin: 0 0 14px; font-size: 16px; color: #fff; }
+    .w2w-region h3 { margin: 0 0 14px; font-size: 18px; color: #fff; }
+    .w2w-region { scroll-margin-top: 24px; min-width: 0; overflow-wrap: anywhere; }
+    .w2w-source-status { color: #ddd5e7; line-height: 1.65; margin: 0 0 18px; }
+    .w2w-countries { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 18px 0; }
+    .w2w-countries a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--edge); border-radius: 14px; color: var(--gold-core); text-decoration: none; }
+    .w2w-countries a:focus-visible,.w2w-link:focus-visible { outline: 2px solid var(--gold-core); outline-offset: 4px; }
+    .w2w-region[data-availability-state="unknown"],.w2w-region[data-availability-state="stale"] { border-style: dashed; }
     .w2w-row { display: flex; gap: 13px; align-items: flex-start; margin-bottom: 11px; flex-wrap: wrap; }
     .w2w-kind { flex-shrink: 0; font-size: 11.5px; font-weight: 800; text-transform: uppercase;
                 letter-spacing: 0.5px; color: #8f8877; padding-top: 5px; min-width: 92px; }
@@ -165,7 +171,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .w2w-prov { background: rgba(228,192,108,0.14); color: var(--gold-core); font-size: 13px;
                 font-weight: 700; padding: 6px 13px; border-radius: 999px; }
     .w2w-prov-quiet { background: rgba(255,255,255,0.06); color: #b3ad9e; font-weight: 600; }
-    .w2w-link { display: inline-block; margin-top: 6px; color: var(--gold-mid); font-size: 13px; text-decoration: none; }
+    .w2w-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; color: var(--gold-mid); font-size: 13px; text-decoration: none; }
     .w2w-link:hover { text-decoration: underline; }
     .w2w-cta { display: inline-flex; align-items: center; gap: 9px; background: linear-gradient(135deg, #E4C06C, #C0843C);
                color: #101010; padding: 15px 28px; border-radius: 14px; font-weight: 800; text-decoration: none; font-size: 15.5px; }
@@ -193,6 +199,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <header class="w2w-hero">
         <h1>Where to Watch ${esc(title)}${esc(yr)}</h1>
+        <p class="w2w-syn">Choose your viewing country for the dated source answer. Subscription, rental and purchase options are shown separately.</p>
+        <nav class="w2w-countries" aria-label="Choose viewing country">${regions.map(([code])=>`<a href="#availability-${code.toLowerCase()}">${esc(REGION_NAMES[code]||code)}</a>`).join('')}</nav>
         ${entry && entry.synopsis ? `<p class="w2w-syn">${esc(entry.synopsis)}</p>` : ''}
     </header>
 
@@ -200,22 +208,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ${regionBlocks}
     </section>
 
+    <div data-growth-app-slot data-growth-source="title_after_aha" data-title-name="${esc(title)}"></div>
+
     ${guidance}
 
     <div class="w2w-note">
         Availability is sourced from TMDB and JustWatch and can change without notice.
         Options shown are those reported for each region listed — a service missing here
         may still carry the title in a country we do not yet cover.
+        <a href="/where-to-watch/availability-methodology/">How we verify and date availability</a>.
     </div>
 
     <section class="w2w-section" style="text-align:center;">
         <h2>Want something like this?</h2>
-        <p class="w2w-syn">Tell MatchApp what you are in the mood for and the AI concierge will find it — free, no account needed.</p>
+        <p class="w2w-syn">Tell MatchApp Ai what you are in the mood for and explore a recommendation. Current guest and account allowances apply.</p>
         <a class="w2w-cta" href="/discover.html">Ask the AI Concierge →</a>
     </section>
 
     ${related.length ? `<section class="w2w-section">
-        <h2>Also available to stream</h2>
+        <h2>Explore related title guides</h2>
         <nav class="w2w-related">
                 ${relatedLinks}
         </nav>
@@ -225,6 +236,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/">Home</a><a href="/discover.html">Ask AI</a><a href="/together.html">Match Together</a>
     </footer>
 </main>
+<link rel="stylesheet" href="/growth-together.css?v=20261016-1">
+<script src="/growth-core.js?v=20261017-1"></script>
+<script src="/growth-copy.js?v=20261016-1"></script>
+<script src="/growth-install.js?v=20261017-1"></script>
 </body>
 </html>
 `;
@@ -239,7 +254,7 @@ function buildIndex(titles) {
             itemListElement:titles.map((name,i)=>({'@type':'ListItem',position:i+1,name,
                 url:SITE+'/where-to-watch/'+slug(name)+'/'
             }))}};
-    const schemaJson=JSON.stringify(schema).replace(/</g,'\u003c');
+    const schemaJson=safeJson(schema);
     const links = titles.map(t =>
         `<a href="/where-to-watch/${slug(t)}/">${esc(t)}</a>`).join('\n                ');
     return `<!DOCTYPE html>
@@ -331,16 +346,19 @@ function main() {
 
     fs.writeFileSync(path.join(ROOT, 'where-to-watch', 'index.html'), buildIndex(names), 'utf8');
     urls.unshift(`${SITE}/where-to-watch/`);
+    const pilot=buildPilot({root:ROOT,origin:SITE,catalog,data:{titles,generated}});
+    urls.push(...pilot.urls);
+    console.log(`${pilot.pages} evidence-backed country/language pages + ${pilot.hubs} regional hubs written`);
 
     fs.writeFileSync(path.join(ROOT, 'tools', 'watch-urls.json'), JSON.stringify(urls, null, 2));
     console.log(`${names.length} availability pages + 1 index written`);
     console.log('-> tools/watch-urls.json');
 }
 
-main();
-
-// Preserve the shared brand on regenerated guides.
-require('./finalize-brand.js').finalizeBrand();
-
-// Retain approved page-specific metadata after catalog regeneration.
-require('./discovery-metadata.js').applyFiles('where-to-watch/');
+if(require.main===module){
+  main();
+  // Preserve existing approved branding and metadata after regeneration.
+  require('./finalize-brand.js').finalizeBrand();
+  require('./discovery-metadata.js').applyFiles('where-to-watch/');
+}
+module.exports={buildPage,buildIndex};

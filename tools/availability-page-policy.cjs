@@ -5,7 +5,7 @@
 // search until the existing availability owner supplies a genuine offer.
 function hasConfirmedOffer(info) {
   return Object.values(info?.regions || {}).some(region =>
-    ['stream', 'rent', 'buy'].some(kind =>
+    ['stream', 'rent', 'buy', 'free', 'ads'].some(kind =>
       Array.isArray(region?.[kind]) && region[kind].some(name => typeof name === 'string' && name.trim())
     )
   );

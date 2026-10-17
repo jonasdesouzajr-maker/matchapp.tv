@@ -28,6 +28,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const {observationTime} = require('./availability-evidence.cjs');
 
 const ROOT = path.join(__dirname, '..');
 const API = 'https://api.themoviedb.org/3';
@@ -71,7 +72,11 @@ async function tmdb(pathname) {
         url += `${sep}api_key=${KEY}`;
     }
 
-    const res = await fetch(url, { headers });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    let res;
+    try { res = await fetch(url, { headers, signal: controller.signal }); }
+    finally { clearTimeout(timeout); }
     if (!res.ok) {
         // 401 here almost always means a v3 key was supplied where a v4 read
         // token is expected, or vice versa — worth saying so rather than
@@ -95,7 +100,7 @@ const isEligible = e => (e.cats || []).some(c => ELIGIBLE.has(c));
    its first result unchecked is how a page ends up claiming the wrong film is
    on Netflix. */
 const norm = s => String(s).toLowerCase().normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    .replace(/[\u0300-\u036f]/g, '').replace(/[^\p{L}\p{N}]/gu, '');
 
 // Source-confirmed numeric identities for catalog titles whose current TMDB
 // display name intentionally differs from MatchApp's original/source title.
@@ -105,6 +110,17 @@ const norm = s => String(s).toLowerCase().normalize('NFD')
 const EXACT_TMDB_IDENTITIES = new Map([
     ['laapataaladies', { id: 1163194, kind: 'movie', year: 2024 }]
 ]);
+
+function selectExactIdentity(entry, results, kind) {
+    const wanted = norm(entry.title);
+    if (!wanted || !Array.isArray(results)) return null;
+    return results.find(r => {
+        if (!r || !Number.isSafeInteger(r.id) || r.id <= 0 || r.adult === true) return false;
+        const name = norm(kind === 'movie' ? r.title : r.name);
+        const year = String(kind === 'movie' ? r.release_date || '' : r.first_air_date || '').slice(0,4);
+        return name === wanted && (!entry.year || (String(entry.year) === year && /^\d{4}$/.test(year)));
+    }) || null;
+}
 
 async function findId(entry) {
     const kind = (entry.cats || []).includes('movie') ? 'movie' : 'tv';
@@ -120,31 +136,44 @@ async function findId(entry) {
     const data = await tmdb(`/search/${kind}?query=${q}${yearParam}&include_adult=false`);
     if (!data || !data.results || !data.results.length) return null;
 
-    const wanted = norm(entry.title);
-    const hit = data.results.find(r => norm(r.title || r.name) === wanted);
+    const hit = selectExactIdentity(entry, data.results, kind);
     if (!hit) return null;                       // no confident match -> skip
     return { id: hit.id, kind, tmdbTitle: hit.title || hit.name };
 }
 
-async function getProviders(id, kind) {
-    const data = await tmdb(`/${kind}/${id}/watch/providers`);
-    if (!data || !data.results) return null;
-
+function providersFromResponse(data, checkedAt) {
+    if (!data || !data.results || typeof data.results !== 'object' || Array.isArray(data.results)) return null;
     const out = {};
     for (const region of REGIONS) {
-        const r = data.results[region];
-        if (!r) continue;
-        const pack = {};
-        // flatrate = included with a subscription; rent/buy = transactional.
-        // Kept separate because "on Netflix" and "£3.49 to rent" are very
-        // different answers to "where can I watch this".
-        if (r.flatrate && r.flatrate.length) pack.stream = r.flatrate.map(p => p.provider_name);
-        if (r.rent && r.rent.length)         pack.rent   = r.rent.map(p => p.provider_name);
-        if (r.buy && r.buy.length)           pack.buy    = r.buy.map(p => p.provider_name);
-        if (r.link) pack.link = r.link;       // JustWatch deep link for the region
-        if (Object.keys(pack).length) out[region] = pack;
+        const r = data.results[region] || {};
+        const pack = { checkedAt, status: 'not_reported' };
+        for (const [source,target] of [['flatrate','stream'],['rent','rent'],['buy','buy'],['free','free'],['ads','ads']]) {
+            const values = Array.isArray(r[source]) ? [...new Set(r[source].map(p=>p?.provider_name).filter(n=>typeof n==='string'&&n.trim()))] : [];
+            if(values.length) { pack[target]=values; pack.status='available'; }
+        }
+        if (typeof r.link==='string') pack.link=r.link;
+        out[region]=pack;
     }
-    return Object.keys(out).length ? out : null;
+    return out;
+}
+
+async function getProviders(id, kind) {
+    const data = await tmdb(`/${kind}/${id}/watch/providers`);
+    return providersFromResponse(data,new Date().toISOString());
+}
+
+function carryPrevious(previous) {
+    const result={};
+    for(const [title,info] of Object.entries(previous?.titles||{})) {
+        if(!info || !['movie','tv'].includes(info.kind) || !Number.isSafeInteger(info.tmdbId))continue;
+        const copy=structuredClone(info);
+        copy.checkedAt=observationTime(copy.checkedAt,previous.generated);
+        for(const region of Object.values(copy.regions||{})) {
+            region.checkedAt=observationTime(region.checkedAt,copy.checkedAt);
+        }
+        result[title]=copy;
+    }
+    return result;
 }
 
 async function main() {
@@ -157,42 +186,54 @@ async function main() {
     const catalog = loadCatalog().filter(isEligible);
     console.log(`${catalog.length} eligible titles (of ${loadCatalog().length} total)`);
 
-    const availability = {};
-    let matched = 0, withProviders = 0, skipped = 0;
+    const dataFile=path.join(ROOT,'data','availability.json');
+    let previous={};
+    if(fs.existsSync(dataFile))previous=JSON.parse(fs.readFileSync(dataFile,'utf8'));
+    const availability=carryPrevious(previous);
+    let matched = 0, withProviders = 0, skipped = 0, sourceChecks = 0;
+    const failed=(title)=>{if(availability[title])availability[title]={...availability[title],refreshStatus:'failed',refreshAttemptedAt:new Date().toISOString()};};
 
     for (const entry of catalog) {
         try {
             const found = await findId(entry);
             await sleep(DELAY_MS);
-            if (!found) { skipped++; continue; }
+            if (!found) { failed(entry.title); skipped++; continue; }
             matched++;
 
             const providers = await getProviders(found.id, found.kind);
             await sleep(DELAY_MS);
-            if (!providers) continue;
+            if (!providers) { failed(entry.title); continue; }
+            sourceChecks++;
+            const hasOptions=Object.values(providers).some(r=>r.status==='available');
+            if(!hasOptions && !availability[entry.title])continue;
 
             availability[entry.title] = {
                 tmdbId: found.id,
                 kind: found.kind,
                 year: entry.year || null,
+                checkedAt: Object.values(providers)[0].checkedAt,
+                refreshStatus: 'confirmed',
                 regions: providers
             };
             withProviders++;
             console.log(`  ✓ ${entry.title} — ${Object.keys(providers).join(', ')}`);
         } catch (e) {
-            console.log(`  ! ${entry.title}: ${e.message}`);
+            failed(entry.title);
+            console.log(`  ! ${entry.title}: source request could not be confirmed; prior observation retained`);
             skipped++;
         }
     }
 
+    if (!sourceChecks) throw new Error('No provider responses were confirmed; the existing availability file has been preserved.');
     fs.mkdirSync(path.join(ROOT, 'data'), { recursive: true });
     fs.writeFileSync(
         path.join(ROOT, 'data', 'availability.json'),
-        JSON.stringify({ generated: new Date().toISOString(), source: 'TMDB / JustWatch', titles: availability }, null, 2)
+        JSON.stringify({ schemaVersion: 2, generated: new Date().toISOString(), source: 'TMDB / JustWatch', titles: availability }, null, 2)
     );
 
     console.log(`\nmatched: ${matched} | with provider data: ${withProviders} | skipped: ${skipped}`);
     console.log('-> data/availability.json');
 }
 
-main();
+if(require.main===module)main().catch(()=>{console.error('Availability refresh failed; inspect the source status. No credentials are logged.');process.exitCode=1;});
+module.exports={providersFromResponse,carryPrevious,selectExactIdentity};
