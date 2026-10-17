@@ -1,5 +1,60 @@
 [
   {
+    "updated": "2026-10-17T07:57:23.332Z",
+    "date": "2026-10-17",
+    "id": "international-day-eradication-poverty-2026-10-17",
+    "emoji": "🏘️",
+    "title": "International Day for the Eradication of Poverty",
+    "kicker": "International day",
+    "place": "Worldwide",
+    "summary": "Observed by the United Nations on 17 October, this day connects ending poverty with dignity and human rights. The 2026 focus, 'Safe Homes for All', highlights adequate housing. Explore documentaries and films about housing, community and inclusion.",
+    "prompt": "On the International Day for the Eradication of Poverty, 17 October 2026, explain the UN focus 'Safe Homes for All' within 'United for Peace and Human Rights'. Suggest respectful ways to learn and participate, then recommend verified documentaries, films and series about adequate housing, inequality and community, checking where to watch in my country without inventing availability.",
+    "officialUrl": "https://www.un.org/en/observances/day-for-eradicating-poverty",
+    "image": "/event-posters/poverty-eradication-safe-homes-2026.svg",
+    "keywords": [
+      "International Day for the Eradication of Poverty",
+      "International Day for the Eradication of Poverty 2026",
+      "17 October international day",
+      "Safe Homes for All",
+      "United for Peace and Human Rights",
+      "poverty eradication day activities",
+      "adequate housing documentaries",
+      "housing and community films",
+      "what to watch on poverty eradication day",
+      "Dia Internacional para a Erradicação da Pobreza 2026",
+      "Día Internacional para la Erradicación de la Pobreza 2026",
+      "documentários sobre moradia e inclusão"
+    ],
+    "i18n": {
+      "pt-BR": {
+        "title": "Dia Internacional para a Erradicação da Pobreza",
+        "kicker": "Data internacional",
+        "place": "No mundo todo",
+        "summary": "Celebrada pela ONU em 17 de outubro, a data relaciona o fim da pobreza à dignidade e aos direitos humanos. O foco de 2026, 'Moradias seguras para todos', destaca a moradia adequada. Conheça documentários e filmes sobre habitação, comunidade e inclusão.",
+        "prompt": "No Dia Internacional para a Erradicação da Pobreza, 17 de outubro de 2026, explique o foco da ONU 'Moradias seguras para todos', no tema 'Unidos pela paz e pelos direitos humanos'. Sugira formas respeitosas de aprender e participar e recomende documentários, filmes e séries verificados sobre moradia adequada, desigualdade e comunidade, conferindo onde assistir no meu país, sem inventar disponibilidade.",
+        "imageAlt": "Ilustração original para o foco Moradias seguras para todos: casas acolhedoras, acesso por rampa, água e vizinhos planejando uma comunidade inclusiva",
+        "sourceName": "Nações Unidas"
+      },
+      "es": {
+        "title": "Día Internacional para la Erradicación de la Pobreza",
+        "kicker": "Día internacional",
+        "place": "En todo el mundo",
+        "summary": "La ONU conmemora esta fecha el 17 de octubre para vincular el fin de la pobreza con la dignidad y los derechos humanos. El enfoque de 2026, 'Hogares seguros para todos', destaca la vivienda adecuada. Descubre documentales y películas sobre vivienda, comunidad e inclusión.",
+        "prompt": "En el Día Internacional para la Erradicación de la Pobreza, 17 de octubre de 2026, explica el enfoque de la ONU 'Hogares seguros para todos', dentro de 'Unidos por la paz y los derechos humanos'. Sugiere formas respetuosas de aprender y participar y recomienda documentales, películas y series verificadas sobre vivienda adecuada, desigualdad y comunidad, comprobando dónde verlas en mi país sin inventar disponibilidad.",
+        "imageAlt": "Ilustración original para Hogares seguros para todos: viviendas acogedoras, una rampa accesible, agua y vecinos que planifican una comunidad inclusiva",
+        "sourceName": "Naciones Unidas"
+      }
+    },
+    "imageAlt": "Original Safe Homes for All illustration: welcoming homes, accessible ramp, water and neighbours planning an inclusive community",
+    "imageCredit": "Original vector illustration created for MatchApp Ai for this 2026 observance; no third-party images or logos. Not an official UN poster or documentary photograph.",
+    "sourceName": "United Nations",
+    "sourceUrls": [
+      "https://www.un.org/en/observances/day-for-eradicating-poverty",
+      "https://www.un.org/en/desa/3-reasons-safe-homes-matter-in-the-fight-against-poverty",
+      "https://www.atd-fourthworld.org/safe-homes-for-all/"
+    ]
+  },
+  {
     "updated": "2026-10-16T04:45:08.627Z",
     "date": "2026-10-16",
     "id": "world-food-day-2026-10-16",
