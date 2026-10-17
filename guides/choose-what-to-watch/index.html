@@ -41,8 +41,28 @@ small,.gh-muted{color:#cabfd3}.gh-meta{color:#cebfdc;font-size:.88rem}.gh-note{b
 footer{border-top:1px solid #4a3b5f;padding:22px 0 35px;color:#c5b8d0;font-size:.9rem}footer a{margin-right:14px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gh-cta{transition:none}}
 </style>
+<!-- Preserve site-standard regional consent defaults before loading analytics. -->
+<script>
+window.dataLayer=window.dataLayer||[];
+window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+window.gtag('consent','default',{
+  ad_storage:'denied',
+  analytics_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:2000,
+  region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+});
+</script>
+<!-- Existing site analytics container; does not add AdSense inventory. -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden" title="Analytics"></iframe></noscript>
 <header>
 <a href="/" class="gh-brand matchapp-brand-link" aria-label="MatchApp Ai home"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" width="330" height="58" alt="MatchApp Ai"></a>
 <p class="gh-eyebrow">Independent streaming discovery guide · updated 17 October 2026</p>
