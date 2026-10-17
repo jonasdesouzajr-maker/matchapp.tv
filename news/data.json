@@ -1,10 +1,756 @@
 {
-  "generated_at": "2026-10-17T08:25:54.866Z",
-  "feed_version": "b14557f7",
-  "sports_updated_at": "2026-10-17T01:20:23.657Z",
+  "generated_at": "2026-10-17T14:23:07.781Z",
+  "feed_version": "e930a1d9",
+  "sports_updated_at": "2026-10-17T14:13:22.971Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "8e2aa409",
+      "title": "Pope discharged from hospital days after lung cancer surgery",
+      "url": "https://www.bbc.co.uk/news/articles/c5x2vkddrkrko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T13:51:36.000Z",
+      "discovered_at": "2026-10-17T14:13:23.031Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8c6c/live/9aad8f70-ca31-11f1-9ab2-b325ce61f9d2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pope-discharged-from-hospital-days-after-lung-cancer-surgery-8e2aa4/",
+      "landing_url": "https://matchapp.tv/?news=8e2aa409#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pope",
+          "discharged",
+          "hospital",
+          "days",
+          "after",
+          "lung"
+        ],
+        "long_tail": [
+          "Pope discharged from hospital days after lung cancer surgery 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pope",
+          "discharged",
+          "hospital",
+          "days",
+          "after",
+          "lung"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pope discharged from hospital days after lung cancer…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "pope",
+          "discharged",
+          "hospital",
+          "days",
+          "after",
+          "lung",
+          "Pope discharged from hospital days after lung cancer surgery 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "d80dc2fb",
+      "title": "Grupo Clareou grava álbum audiovisual em show na favela da Rocinha, com o cantor Mumuzinho entre os convidados",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/17/grupo-clareou-grava-album-audiovisual-em-show-na-favela-da-rocinha-com-o-cantor-mumuzinho-entre-os-convidados.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-17T13:23:32.000Z",
+      "discovered_at": "2026-10-17T14:13:23.031Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Grupo Clareou",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/l-VR4n1VUgY-xxb2EiKUQwa0Im8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/q/C/hcwkouRwysbIfoPcGnrA/raphaurjais-103.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/grupo-clareou-grava-album-audiovisual-em-show-na-favela-da-rocinha-com-o-cantor--d80dc2/",
+      "landing_url": "https://matchapp.tv/?news=d80dc2fb#latest-news",
+      "seo": {
+        "primary_keyword": "Grupo Clareou últimas notícias",
+        "short_tail": [
+          "Grupo Clareou",
+          "Grupo Clareou news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Grupo Clareou latest news October 2026",
+          "Grupo Clareou music update 2026",
+          "Grupo Clareou news 2026-10-17",
+          "latest music news about Grupo Clareou",
+          "grupo clareou grupo clareou grava album latest update",
+          "G1 Grupo Clareou music",
+          "últimas notícias sobre Grupo Clareou outubro 2026",
+          "Grupo Clareou notícia de 2026-10-17",
+          "o que aconteceu com Grupo Clareou"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Grupo Clareou",
+          "grupo",
+          "clareou",
+          "grava",
+          "album",
+          "audiovisual",
+          "show"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "outubro 2026",
+          "Grupo Clareou 2026"
+        ],
+        "source_keywords": [
+          "G1 Grupo Clareou",
+          "g1.globo.com Grupo Clareou",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Grupo Clareou grava álbum audiovisual em show na favela da…",
+        "meta_description": "Grupo Clareou: Notícia publicada por G1 em 2026-10-17. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Grupo Clareou últimas notícias",
+          "Grupo Clareou",
+          "Grupo Clareou news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Grupo Clareou latest news October 2026",
+          "Grupo Clareou music update 2026",
+          "Grupo Clareou news 2026-10-17",
+          "latest music news about Grupo Clareou",
+          "grupo clareou grupo clareou grava album latest update",
+          "G1 Grupo Clareou music",
+          "últimas notícias sobre Grupo Clareou outubro 2026",
+          "Grupo Clareou notícia de 2026-10-17",
+          "o que aconteceu com Grupo Clareou",
+          "grupo",
+          "clareou",
+          "grava",
+          "album",
+          "audiovisual",
+          "show",
+          "October 2026",
+          "2026-10-17",
+          "outubro 2026",
+          "Grupo Clareou 2026",
+          "G1 Grupo Clareou",
+          "g1.globo.com Grupo Clareou",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "1ae3d23f",
+      "title": "Joe Keery on Making His Broadway Debut and Balancing Music and Acting Post-‘Stranger Things’",
+      "url": "https://www.hollywoodreporter.com/lifestyle/arts/joe-keery-broadway-debut-stranger-things-1236733706/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-17T12:45:00.000Z",
+      "discovered_at": "2026-10-17T14:13:23.031Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "Joe Keery",
+      "description": "Joe Keery: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Joe-Keery-Main-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/joe-keery-on-making-his-broadway-debut-and-balancing-music-and-acting-post-stran-1ae3d2/",
+      "landing_url": "https://matchapp.tv/?news=1ae3d23f#latest-news",
+      "seo": {
+        "primary_keyword": "Joe Keery latest news",
+        "short_tail": [
+          "Joe Keery",
+          "Joe Keery news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Joe Keery latest news October 2026",
+          "Joe Keery release update 2026",
+          "Joe Keery news 2026-10-17",
+          "latest release news about Joe Keery",
+          "joe keery joe keery making his latest update",
+          "The Hollywood Reporter Joe Keery release",
+          "latest news about Joe Keery October 2026",
+          "Joe Keery entertainment news 2026-10-17",
+          "what happened with Joe Keery"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Joe Keery",
+          "joe",
+          "keery",
+          "making",
+          "his",
+          "broadway",
+          "debut"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "Joe Keery 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Joe Keery",
+          "hollywoodreporter.com Joe Keery",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Joe Keery on Making His Broadway Debut and Balancing Music…",
+        "meta_description": "Joe Keery: Release update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Joe Keery latest news",
+          "Joe Keery",
+          "Joe Keery news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Joe Keery latest news October 2026",
+          "Joe Keery release update 2026",
+          "Joe Keery news 2026-10-17",
+          "latest release news about Joe Keery",
+          "joe keery joe keery making his latest update",
+          "The Hollywood Reporter Joe Keery release",
+          "latest news about Joe Keery October 2026",
+          "Joe Keery entertainment news 2026-10-17",
+          "what happened with Joe Keery",
+          "joe",
+          "keery",
+          "making",
+          "his",
+          "broadway",
+          "debut",
+          "October 2026",
+          "2026-10-17",
+          "Joe Keery 2026",
+          "The Hollywood Reporter Joe Keery",
+          "hollywoodreporter.com Joe Keery",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "d4ac80b6",
+      "title": "Polícia usa gás lacrimogêneo e entra em confronto com manifestantes em protestos contra o custo de vida na França",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/policia-usa-gas-lacrimogeneo-e-entra-em-confronto-com-manifestantes-em-protestos-contra-o-custo-de-vida-na-franca.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T12:33:36.000Z",
+      "discovered_at": "2026-10-17T14:13:23.031Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/AeO_o6MseC-laHh1LDHD5a-L9VA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/V/c/OHnOhWSEWL6kHAmzIMkQ/2026-10-17t122157z-387985953-rc2z4oake9wn-rtrmadp-3-france-protest.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/policia-usa-gas-lacrimogeneo-e-entra-em-confronto-com-manifestantes-em-protestos-d4ac80/",
+      "landing_url": "https://matchapp.tv/?news=d4ac80b6#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "policia",
+          "usa",
+          "gas",
+          "lacrimogeneo",
+          "entra",
+          "confronto"
+        ],
+        "long_tail": [
+          "Polícia usa gás lacrimogêneo e entra em confronto com manifestantes em protestos contra o custo de vida na França 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "policia",
+          "usa",
+          "gas",
+          "lacrimogeneo",
+          "entra",
+          "confronto"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Polícia usa gás lacrimogêneo e entra em confronto com…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "policia",
+          "usa",
+          "gas",
+          "lacrimogeneo",
+          "entra",
+          "confronto",
+          "Polícia usa gás lacrimogêneo e entra em confronto com manifestantes em protestos contra o custo de vida na França 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "20938e43",
+      "title": "Nursery owner in China jailed for life after hundreds of children poisoned",
+      "url": "https://www.bbc.co.uk/news/articles/cqe9lx54g7x9o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T12:11:58.000Z",
+      "discovered_at": "2026-10-17T14:13:23.031Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5bff/live/9df7c880-ca1d-11f1-a64c-550be9e3c66b.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/nursery-owner-in-china-jailed-for-life-after-hundreds-of-children-poisoned-20938e/",
+      "landing_url": "https://matchapp.tv/?news=20938e43#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "nursery",
+          "owner",
+          "china",
+          "jailed",
+          "life",
+          "after"
+        ],
+        "long_tail": [
+          "Nursery owner in China jailed for life after hundreds of children poisoned 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "nursery",
+          "owner",
+          "china",
+          "jailed",
+          "life",
+          "after"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Nursery owner in China jailed for life after hundreds of…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "nursery",
+          "owner",
+          "china",
+          "jailed",
+          "life",
+          "after",
+          "Nursery owner in China jailed for life after hundreds of children poisoned 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "b677fded",
+      "title": "Trump waives several Russia sanctions as row with Zelensky intensifies",
+      "url": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T11:56:06.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c147/live/f608c860-c9cf-11f1-84c1-fd3c3266bb86.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-waives-several-russia-sanctions-as-row-with-zelensky-intensifies-b677fd/",
+      "landing_url": "https://matchapp.tv/?news=b677fded#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "row"
+        ],
+        "long_tail": [
+          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "row"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump waives several Russia sanctions as row with Zelensky…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "row",
+          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "77b386c3",
+      "title": "Rare pink diamond goes on display in France 100 years after amateur heist",
+      "url": "https://www.bbc.co.uk/news/articles/c61m4zkx47vlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T10:46:41.000Z",
+      "discovered_at": "2026-10-17T11:08:18.978Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/37cc/live/14013ec0-ca01-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/rare-pink-diamond-goes-on-display-in-france-100-years-after-amateur-heist-77b386/",
+      "landing_url": "https://matchapp.tv/?news=77b386c3#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "rare",
+          "pink",
+          "diamond",
+          "goes",
+          "display",
+          "france"
+        ],
+        "long_tail": [
+          "Rare pink diamond goes on display in France 100 years after amateur heist 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "rare",
+          "pink",
+          "diamond",
+          "goes",
+          "display",
+          "france"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Rare pink diamond goes on display in France 100 years…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "rare",
+          "pink",
+          "diamond",
+          "goes",
+          "display",
+          "france",
+          "Rare pink diamond goes on display in France 100 years after amateur heist 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "2c850312",
+      "title": "Teacher fought US school attacker before armed dad shot suspect 'multiple times'",
+      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T09:58:17.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/teacher-fought-us-school-attacker-before-armed-dad-shot-suspect-multiple-times-2c8503/",
+      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before",
+          "armed"
+        ],
+        "long_tail": [
+          "Teacher fought US school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before",
+          "armed"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Teacher fought US school attacker before armed dad shot…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before",
+          "armed",
+          "Teacher fought US school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "ae1263a4",
+      "title": "Papa Leão XIV recebe alta após cirurgia para tratar câncer de pulmão",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/papa-leao-xiv-alta.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T09:49:59.000Z",
+      "discovered_at": "2026-10-17T11:08:18.978Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Papa Leão XIV",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/pAM-YqSB6HFaBAj5iwwjJErlfHU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/q/nP0xeWRvA2ARwwGbyWog/2026-10-17t135755z-648602198-rc215oaw47pj-rtrmadp-3-pope-health.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-recebe-alta-apos-cirurgia-para-tratar-cancer-de-pulmao-ae1263/",
+      "landing_url": "https://matchapp.tv/?news=ae1263a4#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "recebe",
+          "alta",
+          "apos"
+        ],
+        "long_tail": [
+          "Papa Leão XIV recebe alta após cirurgia para tratar câncer de pulmão 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "papa",
+          "leao",
+          "xiv",
+          "recebe",
+          "alta",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Papa Leão XIV recebe alta após cirurgia para tratar câncer…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "recebe",
+          "alta",
+          "apos",
+          "Papa Leão XIV recebe alta após cirurgia para tratar câncer de pulmão 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
+    {
+      "id": "94eab1f0",
+      "title": "Katie Zacharia leaving White House role less than five days into job",
+      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T09:14:10.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Casting",
+      "category": "world",
+      "person": "Katie Zacharia",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-white-house-role-less-than-five-days-into-job-94eab1/",
+      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role"
+        ],
+        "long_tail": [
+          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Katie Zacharia leaving White House role less than five…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role",
+          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
+      }
+    },
     {
       "id": "f6d50f2f",
       "title": "‘Perfect Road’ Is a Doc That Follows a Nomadic Cyclist Pursuing Grueling Challenges – and Freedom",
@@ -101,7 +847,7 @@
           "hollywoodreporter.com perfect road doc follows",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -170,7 +916,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -239,76 +985,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "b677fded",
-      "title": "Trump waives several Russia sanctions as row with Zelensky intensifies",
-      "url": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T07:41:01.000Z",
-      "discovered_at": "2026-10-17T06:06:08.689Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c147/live/f608c860-c9cf-11f1-84c1-fd3c3266bb86.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-waives-several-russia-sanctions-as-row-with-zelensky-intensifies-b677fd/",
-      "landing_url": "https://matchapp.tv/?news=b677fded#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "waives",
-          "several",
-          "russia",
-          "sanctions",
-          "row"
-        ],
-        "long_tail": [
-          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "waives",
-          "several",
-          "russia",
-          "sanctions",
-          "row"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump waives several Russia sanctions as row with Zelensky…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "trump",
-          "waives",
-          "several",
-          "russia",
-          "sanctions",
-          "row",
-          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -409,7 +1086,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -478,76 +1155,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "2c850312",
-      "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
-      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T06:49:48.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/oregon-teacher-fought-school-attacker-before-armed-dad-shot-suspect-multiple-tim-2c8503/",
-      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before"
-        ],
-        "long_tail": [
-          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Oregon teacher fought school attacker before armed dad…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before",
-          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -616,7 +1224,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -685,76 +1293,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "94eab1f0",
-      "title": "Katie Zacharia leaving White House role less than five days into job",
-      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T05:20:40.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Casting",
-      "category": "world",
-      "person": "Katie Zacharia",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-white-house-role-less-than-five-days-into-job-94eab1/",
-      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role"
-        ],
-        "long_tail": [
-          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Katie Zacharia leaving White House role less than five…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role",
-          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -823,76 +1362,7 @@
           "2026-10-17",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "7d17f90d",
-      "title": "Pope's health should not be taken 'for granted', says top Vatican diplomat",
-      "url": "https://www.bbc.co.uk/news/articles/c6kg53zrexdeo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T05:01:40.000Z",
-      "discovered_at": "2026-10-17T08:25:54.866Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2e95/live/6651a140-c96d-11f1-a6e6-417671ef62cb.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pope-s-health-should-not-be-taken-for-granted-says-top-vatican-diplomat-7d17f9/",
-      "landing_url": "https://matchapp.tv/?news=7d17f90d#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pope",
-          "health",
-          "should",
-          "not",
-          "taken",
-          "granted"
-        ],
-        "long_tail": [
-          "Pope's health should not be taken 'for granted', says top Vatican diplomat 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pope",
-          "health",
-          "should",
-          "not",
-          "taken",
-          "granted"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Pope's health should not be taken 'for granted', says top…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "pope",
-          "health",
-          "should",
-          "not",
-          "taken",
-          "granted",
-          "Pope's health should not be taken 'for granted', says top Vatican diplomat 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -961,7 +1431,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1053,7 +1523,7 @@
           "hollywoodreporter.com Miley Cyrus Tearfully Pays",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1122,76 +1592,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "a1365c50",
-      "title": "Brazil sees record fall in Amazon deforestation as key election looms",
-      "url": "https://www.bbc.co.uk/news/articles/cqe8rzg6zl00o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T02:33:09.000Z",
-      "discovered_at": "2026-10-17T06:06:08.689Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/43ab/live/8511edf0-c9be-11f1-ae9f-bf0ab88aba90.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/brazil-sees-record-fall-in-amazon-deforestation-as-key-election-looms-a1365c/",
-      "landing_url": "https://matchapp.tv/?news=a1365c50#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "brazil",
-          "sees",
-          "record",
-          "fall",
-          "amazon",
-          "deforestation"
-        ],
-        "long_tail": [
-          "Brazil sees record fall in Amazon deforestation as key election looms 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "brazil",
-          "sees",
-          "record",
-          "fall",
-          "amazon",
-          "deforestation"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Brazil sees record fall in Amazon deforestation as key…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "brazil",
-          "sees",
-          "record",
-          "fall",
-          "amazon",
-          "deforestation",
-          "Brazil sees record fall in Amazon deforestation as key election looms 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1285,7 +1686,7 @@
           "hollywoodreporter.com Jacob Elordi Thought He",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1303,7 +1704,7 @@
       "category": "entertainment",
       "person": "Actress Selma Blair",
       "description": "Actress Selma Blair: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e8c2/live/c6c2a840-c9b7-11f1-b40d-b9452c3ce66c.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7e65/live/90ff56a0-ca0b-11f1-bc2e-018d645d8d21.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/actress-selma-blair-says-she-did-not-intend-to-harm-anyone-in-plane-altercation-642c34/",
       "landing_url": "https://matchapp.tv/?news=642c34e7#latest-news",
       "seo": {
@@ -1379,76 +1780,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "f3a72496",
-      "title": "Why hasn't the UK had any named storms yet?",
-      "url": "https://www.bbc.co.uk/weather/articles/ck5yn68mj88vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T01:53:34.000Z",
-      "discovered_at": "2026-10-17T06:06:08.689Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e3e5/live/af595230-c971-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/why-hasn-t-the-uk-had-any-named-storms-yet-f3a724/",
-      "landing_url": "https://matchapp.tv/?news=f3a72496#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "why",
-          "hasn",
-          "had",
-          "any",
-          "named",
-          "storms"
-        ],
-        "long_tail": [
-          "Why hasn't the UK had any named storms yet? 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "why",
-          "hasn",
-          "had",
-          "any",
-          "named",
-          "storms"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Why hasn't the UK had any named storms yet? | World News |…",
-        "meta_description": "World report published by BBC Science on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "why",
-          "hasn",
-          "had",
-          "any",
-          "named",
-          "storms",
-          "Why hasn't the UK had any named storms yet? 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1547,7 +1879,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1646,145 +1978,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "1780969c",
-      "title": "Coreia do Norte testa torpedo que usa inteligência artificial para detectar alvos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/coreia-do-norte-testa-torpedo-que-usa-inteligencia-artificial-para-detectar-alvos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T23:24:32.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/8ECjPCFdyX1DsHsXUUrYX7TrdHs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/7/v/7SOcgxStmExA0sJEhcSg/2023-05-31t124457z-1479767491-rc2n91a28rdy-rtrmadp-3-northkorea-politics.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/coreia-do-norte-testa-torpedo-que-usa-inteligencia-artificial-para-detectar-alvo-178096/",
-      "landing_url": "https://matchapp.tv/?news=1780969c#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "coreia",
-          "norte",
-          "testa",
-          "torpedo",
-          "que",
-          "usa"
-        ],
-        "long_tail": [
-          "Coreia do Norte testa torpedo que usa inteligência artificial para detectar alvos 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "coreia",
-          "norte",
-          "testa",
-          "torpedo",
-          "que",
-          "usa"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Coreia do Norte testa torpedo que usa inteligência…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "coreia",
-          "norte",
-          "testa",
-          "torpedo",
-          "que",
-          "usa",
-          "Coreia do Norte testa torpedo que usa inteligência artificial para detectar alvos 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "2409b97b",
-      "title": "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/todos-os-7-candidatos-a-chefia-da-onu-enfrentam-veto-e-impasse-abre-espaco-para-novos-nomes.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T23:01:00.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/pLBeeDIO5ooyE2GLFx9SoQdfkcs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/T/bxKHDoQQq6N3zw3MdsAA/2026-04-07t160942z-1133200094-rc2fkkafvt3r-rtrmadp-3-iran-crisis-un-bahrain.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/todos-os-7-candidatos-a-chefia-da-onu-enfrentam-veto-e-impasse-abre-espaco-para--2409b9/",
-      "landing_url": "https://matchapp.tv/?news=2409b97b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "todos",
-          "candidatos",
-          "chefia",
-          "onu",
-          "enfrentam",
-          "veto"
-        ],
-        "long_tail": [
-          "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "todos",
-          "candidatos",
-          "chefia",
-          "onu",
-          "enfrentam",
-          "veto"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Todos os 7 candidatos à chefia da ONU enfrentam veto, e…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "todos",
-          "candidatos",
-          "chefia",
-          "onu",
-          "enfrentam",
-          "veto",
-          "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1876,7 +2070,7 @@
           "hollywoodreporter.com John Amos’ Daughter Sues",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -1968,101 +2162,7 @@
           "hollywoodreporter.com Austin Abrams Still Won’t",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "3895afad",
-      "title": "Kim Kardashian Wants to Compete on ‘Dancing With the Stars’ Again: “I’d Do It”",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/kim-kardashian-dancing-with-the-stars-all-stars-return-1236734062/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-16T22:36:59.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Kim Kardashian Wants",
-      "description": "Kim Kardashian Wants: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/114124_8368-e1792189449585.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/kim-kardashian-wants-to-compete-on-dancing-with-the-stars-again-i-d-do-it-3895af/",
-      "landing_url": "https://matchapp.tv/?news=3895afad#latest-news",
-      "seo": {
-        "primary_keyword": "Kim Kardashian Wants latest news",
-        "short_tail": [
-          "Kim Kardashian Wants",
-          "Kim Kardashian Wants news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Kim Kardashian Wants latest news October 2026",
-          "Kim Kardashian Wants entertainment update 2026",
-          "Kim Kardashian Wants news 2026-10-16",
-          "latest entertainment news about Kim Kardashian Wants",
-          "kim kardashian wants kim kardashian wants latest update",
-          "The Hollywood Reporter Kim Kardashian Wants entertainment",
-          "latest news about Kim Kardashian Wants October 2026",
-          "Kim Kardashian Wants entertainment news 2026-10-16",
-          "what happened with Kim Kardashian Wants"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Kim Kardashian Wants",
-          "kim",
-          "kardashian",
-          "wants",
-          "compete",
-          "dancing"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "Kim Kardashian Wants 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Kim Kardashian Wants",
-          "hollywoodreporter.com Kim Kardashian Wants",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Kim Kardashian Wants to Compete on ‘Dancing With the…",
-        "meta_description": "Kim Kardashian Wants: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source…",
-        "keywords": [
-          "Kim Kardashian Wants latest news",
-          "Kim Kardashian Wants",
-          "Kim Kardashian Wants news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Kim Kardashian Wants latest news October 2026",
-          "Kim Kardashian Wants entertainment update 2026",
-          "Kim Kardashian Wants news 2026-10-16",
-          "latest entertainment news about Kim Kardashian Wants",
-          "kim kardashian wants kim kardashian wants latest update",
-          "The Hollywood Reporter Kim Kardashian Wants entertainment",
-          "latest news about Kim Kardashian Wants October 2026",
-          "Kim Kardashian Wants entertainment news 2026-10-16",
-          "what happened with Kim Kardashian Wants",
-          "kim",
-          "kardashian",
-          "wants",
-          "compete",
-          "dancing",
-          "October 2026",
-          "2026-10-16",
-          "Kim Kardashian Wants 2026",
-          "The Hollywood Reporter Kim Kardashian Wants",
-          "hollywoodreporter.com Kim Kardashian Wants",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2160,7 +2260,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2261,7 +2361,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2357,7 +2457,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2458,7 +2558,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2556,7 +2656,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2657,7 +2757,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2751,7 +2851,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2852,7 +2952,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -2953,7 +3053,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -3054,7 +3154,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -3155,7 +3255,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -3256,7 +3356,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -3353,7 +3453,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     },
     {
@@ -3443,108 +3543,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "992e899c",
-      "title": "Netflix reajusta preços dos planos no Brasil; veja novos valores",
-      "url": "https://g1.globo.com/tecnologia/noticia/2026/10/15/netflix-reajusta-precos-dos-planos-no-brasil.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-15T17:39:08.000Z",
-      "discovered_at": "2026-10-15T19:27:59.616Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/tMYjE8jNuLgRFMUlcPperHKn2j8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/f/2q3wG1SZGww70WDXfPWg/2026-10-14t133503z-405461333-rc27c6a0rdqj-rtrmadp-3-netflix-layoffs.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/netflix-reajusta-precos-dos-planos-no-brasil-veja-novos-valores-992e89/",
-      "landing_url": "https://matchapp.tv/?news=992e899c#latest-news",
-      "seo": {
-        "primary_keyword": "netflix reajusta precos planos últimas notícias",
-        "short_tail": [
-          "netflix reajusta precos planos",
-          "netflix reajusta precos planos news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "netflix reajusta precos planos latest news October 2026",
-          "netflix reajusta precos planos entertainment update 2026",
-          "netflix reajusta precos planos news 2026-10-15",
-          "latest entertainment news about netflix reajusta precos planos",
-          "netflix reajusta precos planos brasil veja latest update",
-          "G1 netflix reajusta precos planos entertainment",
-          "últimas notícias sobre netflix reajusta precos planos outubro 2026",
-          "netflix reajusta precos planos notícia de 2026-10-15",
-          "o que aconteceu com netflix reajusta precos planos"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "netflix",
-          "reajusta",
-          "precos",
-          "planos",
-          "brasil",
-          "veja",
-          "novos",
-          "valores"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "netflix reajusta precos planos 2026"
-        ],
-        "source_keywords": [
-          "G1 netflix reajusta precos planos",
-          "g1.globo.com netflix reajusta precos planos",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Netflix reajusta preços dos planos no Brasil; veja novos…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "netflix reajusta precos planos últimas notícias",
-          "netflix reajusta precos planos",
-          "netflix reajusta precos planos news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "netflix reajusta precos planos latest news October 2026",
-          "netflix reajusta precos planos entertainment update 2026",
-          "netflix reajusta precos planos news 2026-10-15",
-          "latest entertainment news about netflix reajusta precos planos",
-          "netflix reajusta precos planos brasil veja latest update",
-          "G1 netflix reajusta precos planos entertainment",
-          "últimas notícias sobre netflix reajusta precos planos outubro 2026",
-          "netflix reajusta precos planos notícia de 2026-10-15",
-          "o que aconteceu com netflix reajusta precos planos",
-          "netflix",
-          "reajusta",
-          "precos",
-          "planos",
-          "brasil",
-          "veja",
-          "novos",
-          "valores",
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "netflix reajusta precos planos 2026",
-          "G1 netflix reajusta precos planos",
-          "g1.globo.com netflix reajusta precos planos",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T14:23:07.781Z"
       }
     }
   ]

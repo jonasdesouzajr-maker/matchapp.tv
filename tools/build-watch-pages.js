@@ -25,7 +25,7 @@ const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','k
 const {hasConfirmedOffer} = require('./availability-page-policy.cjs');
 const {buildPilot} = require('./build-growth-watch-pilot.cjs');
 const {enrichWatchHead} = require('./watch-search-metadata.cjs');
-const {regionEvidence,buildAvailabilityGraph,safeJson,httpsUrl} = require('./availability-evidence.cjs');
+const {regionEvidence,buildAvailabilityGraph,safeJson,httpsUrl,observationTime} = require('./availability-evidence.cjs');
 
 const REGION_NAMES = { BR: 'Brazil', US: 'United States', GB: 'United Kingdom', PT: 'Portugal' };
 
@@ -50,7 +50,9 @@ function buildPage(title, info, entry, related, generated) {
     const url = `${SITE}/where-to-watch/${s}/`;
     const yr = info.year ? ` (${info.year})` : '';
 
-    const regions = Object.entries(info.regions);
+    const regionalRecords={...info.regionObservations,...info.regions};
+    const regions=[...new Set([...Object.keys(REGION_NAMES),...Object.keys(regionalRecords)])]
+        .filter(code=>regionalRecords[code]).map(code=>[code,regionalRecords[code]]);
     const allStream = [...new Set(regions.flatMap(([, r]) => r.stream || []))];
 
     // The description states only what the data supports.
@@ -68,7 +70,7 @@ function buildPage(title, info, entry, related, generated) {
         for(const [field,label] of [['free','Free access'],['ads','Free with ads']]) {
             if(r[field]?.length) rows.push(`<div class="w2w-row"><span class="w2w-kind">${label}</span><div class="w2w-provs">${r[field].map(p=>`<span class="w2w-prov">${esc(p)}</span>`).join('')}</div></div>`);
         }
-        if (!rows.length) rows.push(`<p>No subscription, rental or purchase provider is confirmed in this snapshot for ${esc(REGION_NAMES[code] || code)}. This is not proof that the title is unavailable everywhere; check the linked source.</p>`);
+        if (!['stream','rent','buy'].some(key=>r[key]?.length)) rows.push(`<p>No subscription, rental or purchase provider is confirmed in this snapshot for ${esc(REGION_NAMES[code] || code)}. This is not proof that the title is unavailable everywhere; check the linked source.</p>`);
         return `
             <article class="w2w-region" id="availability-${code.toLowerCase()}" data-availability-state="${observed.state}">
                 <h3>Where to watch in ${esc(REGION_NAMES[code] || code)}</h3>
@@ -91,8 +93,9 @@ function buildPage(title, info, entry, related, generated) {
     };
 
     const checked = evidence.map(e=>e.checkedAt).filter(Boolean).sort().at(-1) || '';
+    const compiled = observationTime(generated);
     const comparisons = regions.map(([code,r])=>{
-        const options = [['subscription',r.stream],['rental',r.rent],['purchase',r.buy]].filter(([,names])=>names?.length);
+        const options = [['subscription',r.stream],['rental',r.rent],['purchase',r.buy],['free access',r.free],['free with ads',r.ads]].filter(([,names])=>names?.length);
         return `<li><strong>${esc(REGION_NAMES[code]||code)}:</strong> ${options.length ? options.map(([kind,names])=>`${kind} via ${names.map(esc).join(', ')}`).join('; ') : 'no confirmed provider listing in this snapshot'}.</li>`;
     }).join('');
     const context = entry ? [entry.cats?.length ? `Catalog categories: ${entry.cats.map(esc).join(', ')}.` : '', entry.moods?.length ? `Discovery moods: ${entry.moods.map(esc).join(', ')}.` : ''].filter(Boolean).join(' ') : '';
@@ -100,6 +103,7 @@ function buildPage(title, info, entry, related, generated) {
     const guidance = `<section class="w2w-section" aria-label="Source context and comparison">
         <h2>Choosing the right ${info.kind==='movie'?'film':'series'} and viewing option</h2>
         <p>${esc(title)}${esc(yr)} is the ${info.kind==='movie'?'movie':'TV title'} identified by this page. ${context} These are MatchApp discovery tags, not an age classification or a review score. Compare the synopsis above with the mood and format you want before choosing a provider.</p>
+        ${compiled ? `<p><strong>Dataset compiled:</strong> <time datetime="${compiled}">${esc(compiled.replace('T',' ').replace('Z',' UTC'))}</time>. Compilation does not recheck older observations; individual source-check times are shown separately.</p>` : ''}
         <p><strong>Provider data checked:</strong> ${checked ? `<time datetime="${checked}">${esc(checked.replace('T',' ').replace('.000Z',' UTC').replace('Z',' UTC'))}</time>` : 'check the linked source for its reporting date'}. This is a stored source snapshot, not a real-time guarantee. The same title can have different providers or no reported listing in neighboring countries.</p>
         <ul>${comparisons}</ul>
         <p>Subscription, rental and purchase are separate offers. A service listed for a rental does not mean its subscribers can watch for free. A marketplace channel may require an additional subscription. Before paying, open the listing for your country and check the exact title, year, season or edition, price, language and subtitle options. Those details are not supplied by this provider snapshot.</p>
