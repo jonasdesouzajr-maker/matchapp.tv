@@ -14,7 +14,7 @@ async function fingerprint(value:string){
 }
 // Keep the existing buffered contract for older clients. New clients can play
 // Cedar's 24 kHz signed little-endian PCM as it arrives, before synthesis ends.
-async function synth(text:string,locale:string,stream=false):Promise<{audio:Uint8Array|ReadableStream<Uint8Array>,provider:string,mime:string}|null>{
+async function synth(text:string,locale:string,stream=false,allowElevenLabs=false):Promise<{audio:Uint8Array|ReadableStream<Uint8Array>,provider:string,mime:string}|null>{
  const openai=Deno.env.get("OPENAI_API_KEY")?.trim();
  if(openai){
   try{
@@ -60,7 +60,7 @@ async function synth(text:string,locale:string,stream=false):Promise<{audio:Uint
  // Those clients already decode non-PCM responses using WebAudio.
  const elevenKey=Deno.env.get("ELEVENLABS_API_KEY")?.trim();
  const elevenVoice=Deno.env.get("ELEVENLABS_VOICE_ID")?.trim()||"JBFqnCBsd6RMkjVDRZzb";
- if(elevenKey){
+ if(elevenKey&&allowElevenLabs){
   try{
    const response=await fetch("https://api.elevenlabs.io/v1/text-to-speech/"+encodeURIComponent(elevenVoice)+"?output_format=mp3_44100_128",{
     method:"POST",signal:AbortSignal.timeout(9000),
@@ -130,7 +130,7 @@ Deno.serve(async(req:Request)=>{
  const bucket=await fingerprint(userId?"user:"+userId:"guest:"+trustedIp);
  const {data:allowed,error:limitError}=await admin.rpc("jonas_speech_reserve",{p_bucket:bucket,p_limit:userId?35:12,p_global_limit:700});
  if(limitError||allowed!==true)return result({error:"speech_limit_reached"},429,origin);
- const speech=await synth(text,localeMap[language],body?.stream===true);
+ const speech=await synth(text,localeMap[language],body?.stream===true,body?.voiceVersion===2);
  if(!speech)return result({error:"speech_provider_unavailable"},503,origin);
  return new Response(speech.audio,{status:200,headers:{...headers,"Content-Type":speech.mime,"X-Jonas-Voice":speech.provider==="openai"?"male-cedar":speech.provider==="elevenlabs"?"male-elevenlabs":"male-charon","Access-Control-Expose-Headers":"X-Jonas-Voice","Cache-Control":"private,no-store",...(speech.audio instanceof Uint8Array?{"Content-Length":String(speech.audio.length)}:{})}});
 });
