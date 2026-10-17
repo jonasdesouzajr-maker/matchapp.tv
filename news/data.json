@@ -1,10 +1,355 @@
 {
-  "generated_at": "2026-10-17T08:25:54.866Z",
-  "feed_version": "b14557f7",
+  "generated_at": "2026-10-17T11:08:18.978Z",
+  "feed_version": "0dbf57dc",
   "sports_updated_at": "2026-10-17T01:20:23.657Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "77b386c3",
+      "title": "Rare pink diamond goes on display in France 100 years after amateur heist",
+      "url": "https://www.bbc.co.uk/news/articles/c61m4zkx47vlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T10:46:41.000Z",
+      "discovered_at": "2026-10-17T11:08:18.978Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/37cc/live/14013ec0-ca01-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/rare-pink-diamond-goes-on-display-in-france-100-years-after-amateur-heist-77b386/",
+      "landing_url": "https://matchapp.tv/?news=77b386c3#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "rare",
+          "pink",
+          "diamond",
+          "goes",
+          "display",
+          "france"
+        ],
+        "long_tail": [
+          "Rare pink diamond goes on display in France 100 years after amateur heist 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "rare",
+          "pink",
+          "diamond",
+          "goes",
+          "display",
+          "france"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Rare pink diamond goes on display in France 100 years…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "rare",
+          "pink",
+          "diamond",
+          "goes",
+          "display",
+          "france",
+          "Rare pink diamond goes on display in France 100 years after amateur heist 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
+      }
+    },
+    {
+      "id": "2c850312",
+      "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
+      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T09:58:17.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/oregon-teacher-fought-school-attacker-before-armed-dad-shot-suspect-multiple-tim-2c8503/",
+      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before"
+        ],
+        "long_tail": [
+          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Oregon teacher fought school attacker before armed dad…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before",
+          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
+      }
+    },
+    {
+      "id": "ae1263a4",
+      "title": "Papa Leão XIV deve receber alta do hospital neste sábado, diz Vaticano",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/papa-leao-xiv-alta.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T09:49:59.000Z",
+      "discovered_at": "2026-10-17T11:08:18.978Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Papa Leão XIV",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/q1RwUj2uzvLd2BIvs2H8MbmnkDk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/S/5ZN0KET5GM1kOLmZ0Eig/2026-10-17t082729z-791539069-rc2w4oakp22u-rtrmadp-3-pope-health.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-deve-receber-alta-do-hospital-neste-sabado-diz-vaticano-ae1263/",
+      "landing_url": "https://matchapp.tv/?news=ae1263a4#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "deve",
+          "receber",
+          "alta"
+        ],
+        "long_tail": [
+          "Papa Leão XIV deve receber alta do hospital neste sábado, diz Vaticano 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "papa",
+          "leao",
+          "xiv",
+          "deve",
+          "receber",
+          "alta"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Papa Leão XIV deve receber alta do hospital neste sábado,…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "leao",
+          "xiv",
+          "deve",
+          "receber",
+          "alta",
+          "Papa Leão XIV deve receber alta do hospital neste sábado, diz Vaticano 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
+      }
+    },
+    {
+      "id": "b677fded",
+      "title": "Trump waives several Russia sanctions as row with Zelensky intensifies",
+      "url": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T09:42:13.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c147/live/f608c860-c9cf-11f1-84c1-fd3c3266bb86.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-waives-several-russia-sanctions-as-row-with-zelensky-intensifies-b677fd/",
+      "landing_url": "https://matchapp.tv/?news=b677fded#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "row"
+        ],
+        "long_tail": [
+          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "row"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump waives several Russia sanctions as row with Zelensky…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "row",
+          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
+      }
+    },
+    {
+      "id": "94eab1f0",
+      "title": "Katie Zacharia leaving White House role less than five days into job",
+      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T09:14:10.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Casting",
+      "category": "world",
+      "person": "Katie Zacharia",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-white-house-role-less-than-five-days-into-job-94eab1/",
+      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role"
+        ],
+        "long_tail": [
+          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Katie Zacharia leaving White House role less than five…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role",
+          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
+      }
+    },
     {
       "id": "f6d50f2f",
       "title": "‘Perfect Road’ Is a Doc That Follows a Nomadic Cyclist Pursuing Grueling Challenges – and Freedom",
@@ -101,7 +446,7 @@
           "hollywoodreporter.com perfect road doc follows",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -170,7 +515,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -239,76 +584,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "b677fded",
-      "title": "Trump waives several Russia sanctions as row with Zelensky intensifies",
-      "url": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T07:41:01.000Z",
-      "discovered_at": "2026-10-17T06:06:08.689Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c147/live/f608c860-c9cf-11f1-84c1-fd3c3266bb86.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-waives-several-russia-sanctions-as-row-with-zelensky-intensifies-b677fd/",
-      "landing_url": "https://matchapp.tv/?news=b677fded#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "waives",
-          "several",
-          "russia",
-          "sanctions",
-          "row"
-        ],
-        "long_tail": [
-          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "waives",
-          "several",
-          "russia",
-          "sanctions",
-          "row"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump waives several Russia sanctions as row with Zelensky…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "trump",
-          "waives",
-          "several",
-          "russia",
-          "sanctions",
-          "row",
-          "Trump waives several Russia sanctions as row with Zelensky intensifies 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -409,7 +685,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -478,76 +754,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "2c850312",
-      "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
-      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T06:49:48.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/oregon-teacher-fought-school-attacker-before-armed-dad-shot-suspect-multiple-tim-2c8503/",
-      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before"
-        ],
-        "long_tail": [
-          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Oregon teacher fought school attacker before armed dad…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "oregon",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before",
-          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -616,7 +823,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -685,76 +892,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "94eab1f0",
-      "title": "Katie Zacharia leaving White House role less than five days into job",
-      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T05:20:40.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Casting",
-      "category": "world",
-      "person": "Katie Zacharia",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-white-house-role-less-than-five-days-into-job-94eab1/",
-      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role"
-        ],
-        "long_tail": [
-          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Katie Zacharia leaving White House role less than five…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role",
-          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -823,7 +961,7 @@
           "2026-10-17",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -892,7 +1030,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -961,7 +1099,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1053,7 +1191,7 @@
           "hollywoodreporter.com Miley Cyrus Tearfully Pays",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1122,7 +1260,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1191,7 +1329,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1285,7 +1423,7 @@
           "hollywoodreporter.com Jacob Elordi Thought He",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1303,7 +1441,7 @@
       "category": "entertainment",
       "person": "Actress Selma Blair",
       "description": "Actress Selma Blair: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e8c2/live/c6c2a840-c9b7-11f1-b40d-b9452c3ce66c.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7e65/live/90ff56a0-ca0b-11f1-bc2e-018d645d8d21.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/actress-selma-blair-says-she-did-not-intend-to-harm-anyone-in-plane-altercation-642c34/",
       "landing_url": "https://matchapp.tv/?news=642c34e7#latest-news",
       "seo": {
@@ -1379,76 +1517,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "f3a72496",
-      "title": "Why hasn't the UK had any named storms yet?",
-      "url": "https://www.bbc.co.uk/weather/articles/ck5yn68mj88vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T01:53:34.000Z",
-      "discovered_at": "2026-10-17T06:06:08.689Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e3e5/live/af595230-c971-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/why-hasn-t-the-uk-had-any-named-storms-yet-f3a724/",
-      "landing_url": "https://matchapp.tv/?news=f3a72496#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "why",
-          "hasn",
-          "had",
-          "any",
-          "named",
-          "storms"
-        ],
-        "long_tail": [
-          "Why hasn't the UK had any named storms yet? 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "why",
-          "hasn",
-          "had",
-          "any",
-          "named",
-          "storms"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Why hasn't the UK had any named storms yet? | World News |…",
-        "meta_description": "World report published by BBC Science on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "why",
-          "hasn",
-          "had",
-          "any",
-          "named",
-          "storms",
-          "Why hasn't the UK had any named storms yet? 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1547,7 +1616,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1646,7 +1715,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1715,76 +1784,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
-      }
-    },
-    {
-      "id": "2409b97b",
-      "title": "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/todos-os-7-candidatos-a-chefia-da-onu-enfrentam-veto-e-impasse-abre-espaco-para-novos-nomes.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T23:01:00.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/pLBeeDIO5ooyE2GLFx9SoQdfkcs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/T/bxKHDoQQq6N3zw3MdsAA/2026-04-07t160942z-1133200094-rc2fkkafvt3r-rtrmadp-3-iran-crisis-un-bahrain.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/todos-os-7-candidatos-a-chefia-da-onu-enfrentam-veto-e-impasse-abre-espaco-para--2409b9/",
-      "landing_url": "https://matchapp.tv/?news=2409b97b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "todos",
-          "candidatos",
-          "chefia",
-          "onu",
-          "enfrentam",
-          "veto"
-        ],
-        "long_tail": [
-          "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "todos",
-          "candidatos",
-          "chefia",
-          "onu",
-          "enfrentam",
-          "veto"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Todos os 7 candidatos à chefia da ONU enfrentam veto, e…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "todos",
-          "candidatos",
-          "chefia",
-          "onu",
-          "enfrentam",
-          "veto",
-          "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1876,7 +1876,7 @@
           "hollywoodreporter.com John Amos’ Daughter Sues",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -1968,7 +1968,7 @@
           "hollywoodreporter.com Austin Abrams Still Won’t",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2062,7 +2062,7 @@
           "hollywoodreporter.com Kim Kardashian Wants",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2160,7 +2160,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2261,7 +2261,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2357,7 +2357,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2458,7 +2458,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2556,7 +2556,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2657,7 +2657,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2751,7 +2751,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2852,7 +2852,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -2953,7 +2953,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -3054,7 +3054,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -3155,7 +3155,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -3256,7 +3256,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -3353,7 +3353,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -3443,7 +3443,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     },
     {
@@ -3544,7 +3544,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T08:25:54.866Z"
+        "seo_generated_at": "2026-10-17T11:08:18.978Z"
       }
     }
   ]
