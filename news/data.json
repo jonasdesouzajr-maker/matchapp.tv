@@ -1,10 +1,916 @@
 {
-  "generated_at": "2026-10-17T01:20:23.706Z",
-  "feed_version": "cb985ba9",
+  "generated_at": "2026-10-17T06:06:08.689Z",
+  "feed_version": "c36dcd7d",
   "sports_updated_at": "2026-10-17T01:20:23.657Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "6aa04833",
+      "title": "Primeira-dama da Colômbia nega irregularidades em doações de US$ 17 milhões após terremoto",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/primeira-dama-da-colombia-nega-irregularidades-em-doacoes-de-us-17-milhoes-apos-terremoto.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T05:51:47.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/L33FOHK9HuSGs1WSm-cKG7MunLw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/n/d/GjNxYlTXCYu5Hz3fKOYg/2026-09-22t204148z-1382439997-rc2tyk93efo9-rtrmadp-3-colombia-costa-rica.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/primeira-dama-da-colombia-nega-irregularidades-em-doacoes-de-us-17-milhoes-apos--6aa048/",
+      "landing_url": "https://matchapp.tv/?news=6aa04833#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "primeira",
+          "dama",
+          "colombia",
+          "nega",
+          "irregularidades",
+          "doacoes"
+        ],
+        "long_tail": [
+          "Primeira-dama da Colômbia nega irregularidades em doações de US$ 17 milhões após terremoto 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "primeira",
+          "dama",
+          "colombia",
+          "nega",
+          "irregularidades",
+          "doacoes"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Primeira-dama da Colômbia nega irregularidades em doações…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "primeira",
+          "dama",
+          "colombia",
+          "nega",
+          "irregularidades",
+          "doacoes",
+          "Primeira-dama da Colômbia nega irregularidades em doações de US$ 17 milhões após terremoto 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "94eab1f0",
+      "title": "Katie Zacharia leaving White House role less than five days into job",
+      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T05:20:40.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Casting",
+      "category": "world",
+      "person": "Katie Zacharia",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-white-house-role-less-than-five-days-into-job-94eab1/",
+      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role"
+        ],
+        "long_tail": [
+          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Katie Zacharia leaving White House role less than five…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "white",
+          "house",
+          "role",
+          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "5026d19b",
+      "title": "Avian flu and costs among reasons for loss of captive birds at Castle Espie",
+      "url": "https://www.bbc.co.uk/news/articles/c6m24e1ln130o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T05:10:33.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f584/live/ad66ed10-c9ea-11f1-bb2b-7517a3677781.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/avian-flu-and-costs-among-reasons-for-loss-of-captive-birds-at-castle-espie-5026d1/",
+      "landing_url": "https://matchapp.tv/?news=5026d19b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "avian",
+          "flu",
+          "costs",
+          "among",
+          "reasons",
+          "loss"
+        ],
+        "long_tail": [
+          "Avian flu and costs among reasons for loss of captive birds at Castle Espie 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "avian",
+          "flu",
+          "costs",
+          "among",
+          "reasons",
+          "loss"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Avian flu and costs among reasons for loss of captive…",
+        "meta_description": "World report published by BBC Science on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "avian",
+          "flu",
+          "costs",
+          "among",
+          "reasons",
+          "loss",
+          "Avian flu and costs among reasons for loss of captive birds at Castle Espie 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "b677fded",
+      "title": "Trump waives several Russia sanctions as new US law takes effect",
+      "url": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T05:02:50.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c147/live/f608c860-c9cf-11f1-84c1-fd3c3266bb86.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-waives-several-russia-sanctions-as-new-us-law-takes-effect-b677fd/",
+      "landing_url": "https://matchapp.tv/?news=b677fded#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "new"
+        ],
+        "long_tail": [
+          "Trump waives several Russia sanctions as new US law takes effect 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "new"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump waives several Russia sanctions as new US law takes…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "trump",
+          "waives",
+          "several",
+          "russia",
+          "sanctions",
+          "new",
+          "Trump waives several Russia sanctions as new US law takes effect 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "dfa628c8",
+      "title": "Brasileiros no exterior se mobilizam para reverter abstenção no 2º turno",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/brasileiros-no-exterior-se-mobilizam-para-reverter-abstencao-no-2o-turno.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T05:00:00.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/EfJ0tWB3bwdhwnzXhSd4bclFl3A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/h/a/IR0jWyRhC8wbDuToIDUA/2026-10-04t100847z-1203711936-rc29wnamjrxe-rtrmadp-3-brazil-election-portugal.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/brasileiros-no-exterior-se-mobilizam-para-reverter-abstencao-no-2-turno-dfa628/",
+      "landing_url": "https://matchapp.tv/?news=dfa628c8#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "brasileiros",
+          "exterior",
+          "mobilizam",
+          "reverter",
+          "abstencao",
+          "turno"
+        ],
+        "long_tail": [
+          "Brasileiros no exterior se mobilizam para reverter abstenção no 2º turno 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "brasileiros",
+          "exterior",
+          "mobilizam",
+          "reverter",
+          "abstencao",
+          "turno"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Brasileiros no exterior se mobilizam para reverter…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "brasileiros",
+          "exterior",
+          "mobilizam",
+          "reverter",
+          "abstencao",
+          "turno",
+          "Brasileiros no exterior se mobilizam para reverter abstenção no 2º turno 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "ad68c3d8",
+      "title": "Miley Cyrus Tearfully Pays Tribute to Dolly Parton With “Jolene” Performance at Hollywood Bowl: “Me and Dolly, We Are Eternal”",
+      "url": "https://www.hollywoodreporter.com/music/music-news/miley-cyrus-dolly-parton-hollywood-bowl-jolene-watch-1236734264/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-17T04:48:51.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Miley Cyrus Tearfully Pays",
+      "description": "Miley Cyrus Tearfully Pays: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-1097621938-e1792212040672.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/miley-cyrus-tearfully-pays-tribute-to-dolly-parton-with-jolene-performance-at-ho-ad68c3/",
+      "landing_url": "https://matchapp.tv/?news=ad68c3d8#latest-news",
+      "seo": {
+        "primary_keyword": "Miley Cyrus Tearfully Pays latest news",
+        "short_tail": [
+          "Miley Cyrus Tearfully Pays",
+          "Miley Cyrus Tearfully Pays news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Miley Cyrus Tearfully Pays latest news October 2026",
+          "Miley Cyrus Tearfully Pays entertainment update 2026",
+          "Miley Cyrus Tearfully Pays news 2026-10-17",
+          "latest entertainment news about Miley Cyrus Tearfully Pays",
+          "miley cyrus tearfully pays miley cyrus latest update",
+          "The Hollywood Reporter Miley Cyrus Tearfully Pays entertainment",
+          "latest news about Miley Cyrus Tearfully Pays October 2026",
+          "Miley Cyrus Tearfully Pays entertainment news 2026-10-17",
+          "what happened with Miley Cyrus Tearfully Pays"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Miley Cyrus Tearfully Pays",
+          "miley",
+          "cyrus",
+          "tearfully",
+          "pays"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "Miley Cyrus Tearfully Pays 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Miley Cyrus Tearfully Pays",
+          "hollywoodreporter.com Miley Cyrus Tearfully Pays",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Miley Cyrus Tearfully Pays Tribute to Dolly Parton With…",
+        "meta_description": "Miley Cyrus Tearfully Pays: Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original…",
+        "keywords": [
+          "Miley Cyrus Tearfully Pays latest news",
+          "Miley Cyrus Tearfully Pays",
+          "Miley Cyrus Tearfully Pays news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Miley Cyrus Tearfully Pays latest news October 2026",
+          "Miley Cyrus Tearfully Pays entertainment update 2026",
+          "Miley Cyrus Tearfully Pays news 2026-10-17",
+          "latest entertainment news about Miley Cyrus Tearfully Pays",
+          "miley cyrus tearfully pays miley cyrus latest update",
+          "The Hollywood Reporter Miley Cyrus Tearfully Pays entertainment",
+          "latest news about Miley Cyrus Tearfully Pays October 2026",
+          "Miley Cyrus Tearfully Pays entertainment news 2026-10-17",
+          "what happened with Miley Cyrus Tearfully Pays",
+          "miley",
+          "cyrus",
+          "tearfully",
+          "pays",
+          "October 2026",
+          "2026-10-17",
+          "Miley Cyrus Tearfully Pays 2026",
+          "The Hollywood Reporter Miley Cyrus Tearfully Pays",
+          "hollywoodreporter.com Miley Cyrus Tearfully Pays",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "244ffc3b",
+      "title": "Three men jailed for 158 years each for murdering Australian and US surfers in Mexico",
+      "url": "https://www.bbc.co.uk/news/articles/c3kgqjkzw29wo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T03:11:10.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9ab9/live/138578c0-c453-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/three-men-jailed-for-158-years-each-for-murdering-australian-and-us-surfers-in-m-244ffc/",
+      "landing_url": "https://matchapp.tv/?news=244ffc3b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "three",
+          "men",
+          "jailed",
+          "158",
+          "years",
+          "each"
+        ],
+        "long_tail": [
+          "Three men jailed for 158 years each for murdering Australian and US surfers in Mexico 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "three",
+          "men",
+          "jailed",
+          "158",
+          "years",
+          "each"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Three men jailed for 158 years each for murdering…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "three",
+          "men",
+          "jailed",
+          "158",
+          "years",
+          "each",
+          "Three men jailed for 158 years each for murdering Australian and US surfers in Mexico 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "a1365c50",
+      "title": "Brazil sees record fall in Amazon deforestation as key election looms",
+      "url": "https://www.bbc.co.uk/news/articles/cqe8rzg6zl00o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T02:33:09.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/43ab/live/8511edf0-c9be-11f1-ae9f-bf0ab88aba90.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/brazil-sees-record-fall-in-amazon-deforestation-as-key-election-looms-a1365c/",
+      "landing_url": "https://matchapp.tv/?news=a1365c50#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "brazil",
+          "sees",
+          "record",
+          "fall",
+          "amazon",
+          "deforestation"
+        ],
+        "long_tail": [
+          "Brazil sees record fall in Amazon deforestation as key election looms 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "brazil",
+          "sees",
+          "record",
+          "fall",
+          "amazon",
+          "deforestation"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Brazil sees record fall in Amazon deforestation as key…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "brazil",
+          "sees",
+          "record",
+          "fall",
+          "amazon",
+          "deforestation",
+          "Brazil sees record fall in Amazon deforestation as key election looms 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "916c6bc2",
+      "title": "Jacob Elordi Thought He Was Having a Mental Breakdown Until He Saw a John Cassavetes Film: “Made Me Feel a Lot Less Insane and Alone”",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/jacob-elordi-interview-cartier-john-cassavetes-film-sean-baker-1236734149/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-17T01:56:04.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Jacob Elordi Thought He",
+      "description": "Jacob Elordi Thought He: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2291321732.jpg?crop=0px%2C141px%2C6026px%2C3372px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/jacob-elordi-thought-he-was-having-a-mental-breakdown-until-he-saw-a-john-cassav-916c6b/",
+      "landing_url": "https://matchapp.tv/?news=916c6bc2#latest-news",
+      "seo": {
+        "primary_keyword": "Jacob Elordi Thought He latest news",
+        "short_tail": [
+          "Jacob Elordi Thought He",
+          "Jacob Elordi Thought He news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Jacob Elordi Thought He latest news October 2026",
+          "Jacob Elordi Thought He entertainment update 2026",
+          "Jacob Elordi Thought He news 2026-10-17",
+          "latest entertainment news about Jacob Elordi Thought He",
+          "jacob elordi thought jacob elordi thought latest update",
+          "The Hollywood Reporter Jacob Elordi Thought He entertainment",
+          "latest news about Jacob Elordi Thought He October 2026",
+          "Jacob Elordi Thought He entertainment news 2026-10-17",
+          "what happened with Jacob Elordi Thought He"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Jacob Elordi Thought He",
+          "jacob",
+          "elordi",
+          "thought",
+          "having",
+          "mental"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "Jacob Elordi Thought He 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Jacob Elordi Thought He",
+          "hollywoodreporter.com Jacob Elordi Thought He",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Jacob Elordi Thought He Was Having a Mental Breakdown…",
+        "meta_description": "Jacob Elordi Thought He: Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original…",
+        "keywords": [
+          "Jacob Elordi Thought He latest news",
+          "Jacob Elordi Thought He",
+          "Jacob Elordi Thought He news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Jacob Elordi Thought He latest news October 2026",
+          "Jacob Elordi Thought He entertainment update 2026",
+          "Jacob Elordi Thought He news 2026-10-17",
+          "latest entertainment news about Jacob Elordi Thought He",
+          "jacob elordi thought jacob elordi thought latest update",
+          "The Hollywood Reporter Jacob Elordi Thought He entertainment",
+          "latest news about Jacob Elordi Thought He October 2026",
+          "Jacob Elordi Thought He entertainment news 2026-10-17",
+          "what happened with Jacob Elordi Thought He",
+          "jacob",
+          "elordi",
+          "thought",
+          "having",
+          "mental",
+          "October 2026",
+          "2026-10-17",
+          "Jacob Elordi Thought He 2026",
+          "The Hollywood Reporter Jacob Elordi Thought He",
+          "hollywoodreporter.com Jacob Elordi Thought He",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "f3a72496",
+      "title": "Why hasn't the UK had any named storms yet?",
+      "url": "https://www.bbc.co.uk/weather/articles/ck5yn68mj88vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T01:53:34.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e3e5/live/af595230-c971-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/why-hasn-t-the-uk-had-any-named-storms-yet-f3a724/",
+      "landing_url": "https://matchapp.tv/?news=f3a72496#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "why",
+          "hasn",
+          "had",
+          "any",
+          "named",
+          "storms"
+        ],
+        "long_tail": [
+          "Why hasn't the UK had any named storms yet? 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "why",
+          "hasn",
+          "had",
+          "any",
+          "named",
+          "storms"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Why hasn't the UK had any named storms yet? | World News |…",
+        "meta_description": "World report published by BBC Science on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "why",
+          "hasn",
+          "had",
+          "any",
+          "named",
+          "storms",
+          "Why hasn't the UK had any named storms yet? 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "64ca98c3",
+      "title": "Evacuation orders as fast-moving California wildfire burns homes",
+      "url": "https://www.bbc.co.uk/news/articles/c6vgjnk8nw2wo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T01:36:39.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/67d1/live/5c4e9f00-c9c6-11f1-9624-cbdaf8e49de5.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/evacuation-orders-as-fast-moving-california-wildfire-burns-homes-64ca98/",
+      "landing_url": "https://matchapp.tv/?news=64ca98c3#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "evacuation",
+          "orders",
+          "fast",
+          "moving",
+          "california",
+          "wildfire"
+        ],
+        "long_tail": [
+          "Evacuation orders as fast-moving California wildfire burns homes 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "evacuation",
+          "orders",
+          "fast",
+          "moving",
+          "california",
+          "wildfire"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Evacuation orders as fast-moving California wildfire burns…",
+        "meta_description": "World report published by BBC Science on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "evacuation",
+          "orders",
+          "fast",
+          "moving",
+          "california",
+          "wildfire",
+          "Evacuation orders as fast-moving California wildfire burns homes 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
+    {
+      "id": "6c2b5fd8",
+      "title": "Miranda's tears, joy and dance moves steal show as deadly boredom sets in on The Celebrity Traitors",
+      "url": "https://www.bbc.co.uk/news/articles/cq70pre80gwko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-17T01:34:52.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e183/live/2c8eab40-c9bf-11f1-ae9f-bf0ab88aba90.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/miranda-s-tears-joy-and-dance-moves-steal-show-as-deadly-boredom-sets-in-on-the--6c2b5f/",
+      "landing_url": "https://matchapp.tv/?news=6c2b5fd8#latest-news",
+      "seo": {
+        "primary_keyword": "miranda tears joy dance latest news",
+        "short_tail": [
+          "miranda tears joy dance",
+          "miranda tears joy dance news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "miranda tears joy dance latest news October 2026",
+          "miranda tears joy dance music update 2026",
+          "miranda tears joy dance news 2026-10-17",
+          "latest music news about miranda tears joy dance",
+          "miranda tears joy dance moves steal latest update",
+          "BBC miranda tears joy dance music",
+          "latest news about miranda tears joy dance October 2026",
+          "miranda tears joy dance entertainment news 2026-10-17",
+          "what happened with miranda tears joy dance"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "miranda",
+          "tears",
+          "joy",
+          "dance",
+          "moves",
+          "steal",
+          "show",
+          "deadly"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "miranda tears joy dance 2026"
+        ],
+        "source_keywords": [
+          "BBC miranda tears joy dance",
+          "bbc.co.uk miranda tears joy dance",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Miranda's tears, joy and dance moves steal show as deadly…",
+        "meta_description": "Music update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "miranda tears joy dance latest news",
+          "miranda tears joy dance",
+          "miranda tears joy dance news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "miranda tears joy dance latest news October 2026",
+          "miranda tears joy dance music update 2026",
+          "miranda tears joy dance news 2026-10-17",
+          "latest music news about miranda tears joy dance",
+          "miranda tears joy dance moves steal latest update",
+          "BBC miranda tears joy dance music",
+          "latest news about miranda tears joy dance October 2026",
+          "miranda tears joy dance entertainment news 2026-10-17",
+          "what happened with miranda tears joy dance",
+          "miranda",
+          "tears",
+          "joy",
+          "dance",
+          "moves",
+          "steal",
+          "show",
+          "deadly",
+          "October 2026",
+          "2026-10-17",
+          "miranda tears joy dance 2026",
+          "BBC miranda tears joy dance",
+          "bbc.co.uk miranda tears joy dance",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
+      }
+    },
     {
       "id": "2c850312",
       "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
@@ -71,73 +977,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "880a0eaf",
-      "title": "The uncertain future of Canada's 30 rescued belugas",
-      "url": "https://www.bbc.co.uk/news/articles/c623dnn3xvpko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T01:18:08.000Z",
-      "discovered_at": "2026-10-17T01:20:23.706Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a7e9/live/0fd9b790-c971-11f1-80fc-ab418b149008.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-uncertain-future-of-canada-s-30-rescued-belugas-880a0e/",
-      "landing_url": "https://matchapp.tv/?news=880a0eaf#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "uncertain",
-          "future",
-          "canada",
-          "rescued",
-          "belugas"
-        ],
-        "long_tail": [
-          "The uncertain future of Canada's 30 rescued belugas 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "uncertain",
-          "future",
-          "canada",
-          "rescued",
-          "belugas"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "The uncertain future of Canada's 30 rescued belugas |…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "uncertain",
-          "future",
-          "canada",
-          "rescued",
-          "belugas",
-          "The uncertain future of Canada's 30 rescued belugas 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -236,76 +1076,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "206ad307",
-      "title": "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC",
-      "url": "https://www.bbc.co.uk/news/articles/c64g18ljjd8do?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T23:54:35.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dddb/live/6a9aa9b0-c97a-11f1-a64c-550be9e3c66b.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-completely-wrong-to-restrict-support-for-ukraine-italian-minister-tells-bb-206ad3/",
-      "landing_url": "https://matchapp.tv/?news=206ad307#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "completely",
-          "wrong",
-          "restrict",
-          "support",
-          "ukraine"
-        ],
-        "long_tail": [
-          "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "completely",
-          "wrong",
-          "restrict",
-          "support",
-          "ukraine"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump 'completely wrong' to restrict support for Ukraine,…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "trump",
-          "completely",
-          "wrong",
-          "restrict",
-          "support",
-          "ukraine",
-          "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -374,145 +1145,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "044b4bea",
-      "title": "Pope pictured for first time since surgery and cancer diagnosis",
-      "url": "https://www.bbc.co.uk/news/articles/cw146ej00yn7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T23:20:37.000Z",
-      "discovered_at": "2026-10-16T15:23:19.831Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b711/live/6c3028b0-c978-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pope-pictured-for-first-time-since-surgery-and-cancer-diagnosis-044b4b/",
-      "landing_url": "https://matchapp.tv/?news=044b4bea#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pope",
-          "pictured",
-          "first",
-          "time",
-          "since",
-          "surgery"
-        ],
-        "long_tail": [
-          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pope",
-          "pictured",
-          "first",
-          "time",
-          "since",
-          "surgery"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Pope pictured for first time since surgery and cancer…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "pope",
-          "pictured",
-          "first",
-          "time",
-          "since",
-          "surgery",
-          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "00f30d32",
-      "title": "Trial of German steakhouse heiress that sparked a huge spy scandal",
-      "url": "https://www.bbc.co.uk/news/articles/cwvgdn3d656vo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T23:07:18.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3f50/live/e57d8d50-c8c1-11f1-bdfb-e3788aeae9ec.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trial-of-german-steakhouse-heiress-that-sparked-a-huge-spy-scandal-00f30d/",
-      "landing_url": "https://matchapp.tv/?news=00f30d32#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trial",
-          "german",
-          "steakhouse",
-          "heiress",
-          "sparked",
-          "huge"
-        ],
-        "long_tail": [
-          "Trial of German steakhouse heiress that sparked a huge spy scandal 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trial",
-          "german",
-          "steakhouse",
-          "heiress",
-          "sparked",
-          "huge"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trial of German steakhouse heiress that sparked a huge spy…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "trial",
-          "german",
-          "steakhouse",
-          "heiress",
-          "sparked",
-          "huge",
-          "Trial of German steakhouse heiress that sparked a huge spy scandal 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -581,7 +1214,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -673,7 +1306,7 @@
           "hollywoodreporter.com John Amos’ Daughter Sues",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -765,7 +1398,7 @@
           "hollywoodreporter.com Austin Abrams Still Won’t",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -859,7 +1492,7 @@
           "hollywoodreporter.com Kim Kardashian Wants",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -953,7 +1586,7 @@
           "hollywoodreporter.com Hallmark’s Christmas Workshop",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -1051,271 +1684,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "2a7241f2",
-      "title": "The Hollywood Reporter, Animation Is Film Festival Partner on Live Animation Roundtable With Bill Hader, Travis Knight, More",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/bill-hader-travis-knight-live-animation-roundtable-1236733998/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-16T21:18:44.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "The Hollywood Reporter",
-      "description": "The Hollywood Reporter: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Bill-Hader-Leah-Nelson-Fawn-Veerasunthorn-Travis-Knight.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-hollywood-reporter-animation-is-film-festival-partner-on-live-animation-roun-2a7241/",
-      "landing_url": "https://matchapp.tv/?news=2a7241f2#latest-news",
-      "seo": {
-        "primary_keyword": "The Hollywood Reporter latest news",
-        "short_tail": [
-          "The Hollywood Reporter",
-          "The Hollywood Reporter news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "The Hollywood Reporter latest news October 2026",
-          "The Hollywood Reporter entertainment update 2026",
-          "The Hollywood Reporter news 2026-10-16",
-          "latest entertainment news about The Hollywood Reporter",
-          "hollywood reporter hollywood reporter animation film latest update",
-          "The Hollywood Reporter The Hollywood Reporter entertainment",
-          "latest news about The Hollywood Reporter October 2026",
-          "The Hollywood Reporter entertainment news 2026-10-16",
-          "what happened with The Hollywood Reporter"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "The Hollywood Reporter",
-          "hollywood",
-          "reporter",
-          "animation",
-          "film",
-          "festival",
-          "partner"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "The Hollywood Reporter 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter The Hollywood Reporter",
-          "hollywoodreporter.com The Hollywood Reporter",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "The Hollywood Reporter, Animation Is Film Festival Partner…",
-        "meta_description": "The Hollywood Reporter: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original…",
-        "keywords": [
-          "The Hollywood Reporter latest news",
-          "The Hollywood Reporter",
-          "The Hollywood Reporter news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "The Hollywood Reporter latest news October 2026",
-          "The Hollywood Reporter entertainment update 2026",
-          "The Hollywood Reporter news 2026-10-16",
-          "latest entertainment news about The Hollywood Reporter",
-          "hollywood reporter hollywood reporter animation film latest update",
-          "The Hollywood Reporter The Hollywood Reporter entertainment",
-          "latest news about The Hollywood Reporter October 2026",
-          "The Hollywood Reporter entertainment news 2026-10-16",
-          "what happened with The Hollywood Reporter",
-          "hollywood",
-          "reporter",
-          "animation",
-          "film",
-          "festival",
-          "partner",
-          "October 2026",
-          "2026-10-16",
-          "The Hollywood Reporter 2026",
-          "The Hollywood Reporter The Hollywood Reporter",
-          "hollywoodreporter.com The Hollywood Reporter",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "b6aa4bea",
-      "title": "Francis Lawrence, Paramount Team for ‘Red Rising’ Movie Adaptation (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/red-rising-movie-francis-lawrence-1236733658/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-16T21:11:30.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Francis Lawrence",
-      "description": "Francis Lawrence: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Francis-Lawrence-Justin-Rhodes-Red-Rising-Split-Main-v2-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/francis-lawrence-paramount-team-for-red-rising-movie-adaptation-exclusive-b6aa4b/",
-      "landing_url": "https://matchapp.tv/?news=b6aa4bea#latest-news",
-      "seo": {
-        "primary_keyword": "red rising",
-        "short_tail": [
-          "Francis Lawrence",
-          "Francis Lawrence news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "red rising"
-        ],
-        "long_tail": [
-          "Francis Lawrence latest news October 2026",
-          "Francis Lawrence entertainment update 2026",
-          "Francis Lawrence news 2026-10-16",
-          "latest entertainment news about Francis Lawrence",
-          "francis lawrence francis lawrence paramount team latest update",
-          "The Hollywood Reporter Francis Lawrence entertainment",
-          "latest news about Francis Lawrence October 2026",
-          "Francis Lawrence entertainment news 2026-10-16",
-          "what happened with Francis Lawrence"
-        ],
-        "trend_keywords": [
-          "red rising"
-        ],
-        "entity_keywords": [
-          "Francis Lawrence",
-          "francis",
-          "lawrence",
-          "paramount",
-          "team",
-          "red",
-          "rising"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "Francis Lawrence 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Francis Lawrence",
-          "hollywoodreporter.com Francis Lawrence",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Francis Lawrence, Paramount Team for ‘Red Rising’ Movie…",
-        "meta_description": "Francis Lawrence: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via…",
-        "keywords": [
-          "red rising",
-          "Francis Lawrence",
-          "Francis Lawrence news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Francis Lawrence latest news October 2026",
-          "Francis Lawrence entertainment update 2026",
-          "Francis Lawrence news 2026-10-16",
-          "latest entertainment news about Francis Lawrence",
-          "francis lawrence francis lawrence paramount team latest update",
-          "The Hollywood Reporter Francis Lawrence entertainment",
-          "latest news about Francis Lawrence October 2026",
-          "Francis Lawrence entertainment news 2026-10-16",
-          "what happened with Francis Lawrence",
-          "francis",
-          "lawrence",
-          "paramount",
-          "team",
-          "red",
-          "rising",
-          "October 2026",
-          "2026-10-16",
-          "Francis Lawrence 2026",
-          "The Hollywood Reporter Francis Lawrence",
-          "hollywoodreporter.com Francis Lawrence",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "94eab1f0",
-      "title": "Katie Zacharia leaving her White House role less than five days on the job",
-      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T21:05:05.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Casting",
-      "category": "world",
-      "person": "Katie Zacharia",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-her-white-house-role-less-than-five-days-on-the-job-94eab1/",
-      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "her",
-          "white",
-          "house"
-        ],
-        "long_tail": [
-          "Katie Zacharia leaving her White House role less than five days on the job 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "katie",
-          "zacharia",
-          "leaving",
-          "her",
-          "white",
-          "house"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Katie Zacharia leaving her White House role less than five…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "her",
-          "white",
-          "house",
-          "Katie Zacharia leaving her White House role less than five days on the job 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -1384,145 +1753,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "74e8f5bb",
-      "title": "Trump denies limiting Ukraine access to Starlink network",
-      "url": "https://www.bbc.co.uk/news/articles/ckz65g34wyd8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T19:33:48.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8a95/live/08a3c460-c990-11f1-adc3-01d8629f0470.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-denies-limiting-ukraine-access-to-starlink-network-74e8f5/",
-      "landing_url": "https://matchapp.tv/?news=74e8f5bb#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "denies",
-          "limiting",
-          "ukraine",
-          "access",
-          "starlink"
-        ],
-        "long_tail": [
-          "Trump denies limiting Ukraine access to Starlink network 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "denies",
-          "limiting",
-          "ukraine",
-          "access",
-          "starlink"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump denies limiting Ukraine access to Starlink network |…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "trump",
-          "denies",
-          "limiting",
-          "ukraine",
-          "access",
-          "starlink",
-          "Trump denies limiting Ukraine access to Starlink network 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "271cee95",
-      "title": "What we learned from heated US midterm Senate debates",
-      "url": "https://www.bbc.co.uk/news/articles/cqly03y3zg7lo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T19:09:37.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7468/live/37bdc2e0-c991-11f1-adc3-01d8629f0470.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-we-learned-from-heated-us-midterm-senate-debates-271cee/",
-      "landing_url": "https://matchapp.tv/?news=271cee95#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "what",
-          "learned",
-          "heated",
-          "midterm",
-          "senate",
-          "debates"
-        ],
-        "long_tail": [
-          "What we learned from heated US midterm Senate debates 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "what",
-          "learned",
-          "heated",
-          "midterm",
-          "senate",
-          "debates"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "What we learned from heated US midterm Senate debates |…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "what",
-          "learned",
-          "heated",
-          "midterm",
-          "senate",
-          "debates",
-          "What we learned from heated US midterm Senate debates 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -1623,7 +1854,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -1692,7 +1923,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -1761,7 +1992,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -1830,76 +2061,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "d86426be",
-      "title": "Nova secretária de imprensa de Trump é demitida do cargo após 5 dias",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/trump-disse-que-nova-secretaria-de-imprensa-deveria-reconsiderar-seu-trabalho.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T17:12:58.000Z",
-      "discovered_at": "2026-10-16T17:40:23.043Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/uhDY2IUmXu0bquTsRAkE1YUzCeU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/h/7/RmkOJoSvCAXEBFTIiQHQ/2026-10-16t175004z-783479373-rc2f2oaq1a0d-rtrmadp-3-usa-trump-whitehouse.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/nova-secretaria-de-imprensa-de-trump-e-demitida-do-cargo-apos-5-dias-d86426/",
-      "landing_url": "https://matchapp.tv/?news=d86426be#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "nova",
-          "secretaria",
-          "imprensa",
-          "trump",
-          "demitida",
-          "cargo"
-        ],
-        "long_tail": [
-          "Nova secretária de imprensa de Trump é demitida do cargo após 5 dias 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nova",
-          "secretaria",
-          "imprensa",
-          "trump",
-          "demitida",
-          "cargo"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Nova secretária de imprensa de Trump é demitida do cargo…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "nova",
-          "secretaria",
-          "imprensa",
-          "trump",
-          "demitida",
-          "cargo",
-          "Nova secretária de imprensa de Trump é demitida do cargo após 5 dias 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -1995,76 +2157,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "ae120811",
-      "title": "Mexicano é preso em aeroporto na Alemanha com 37 cobras venenosas na bagagem",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/mexicano-e-preso-em-aeroporto-na-alemanha-com-37-cobras-venenosas-na-bagagem.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T16:03:53.000Z",
-      "discovered_at": "2026-10-16T17:40:23.043Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/fF6Mp0VvE7vqCvL7az6aHjs2X50=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/D/f/HPZbGtQAKz7EnvIl6E1w/42290411-1004.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/mexicano-e-preso-em-aeroporto-na-alemanha-com-37-cobras-venenosas-na-bagagem-ae1208/",
-      "landing_url": "https://matchapp.tv/?news=ae120811#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "mexicano",
-          "preso",
-          "aeroporto",
-          "alemanha",
-          "cobras",
-          "venenosas"
-        ],
-        "long_tail": [
-          "Mexicano é preso em aeroporto na Alemanha com 37 cobras venenosas na bagagem 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "mexicano",
-          "preso",
-          "aeroporto",
-          "alemanha",
-          "cobras",
-          "venenosas"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Mexicano é preso em aeroporto na Alemanha com 37 cobras…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "mexicano",
-          "preso",
-          "aeroporto",
-          "alemanha",
-          "cobras",
-          "venenosas",
-          "Mexicano é preso em aeroporto na Alemanha com 37 cobras venenosas na bagagem 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2165,7 +2258,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2263,7 +2356,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2364,7 +2457,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2458,7 +2551,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2559,7 +2652,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2660,7 +2753,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2761,7 +2854,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2862,7 +2955,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -2963,7 +3056,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -3060,7 +3153,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -3150,7 +3243,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -3251,7 +3344,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -3350,7 +3443,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     },
     {
@@ -3445,105 +3538,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
-      }
-    },
-    {
-      "id": "d51595a9",
-      "title": "Laila Garin é fenômeno em cena como Edith Piaf com atuação sobrenatural que equilibra drama e música na corda bamba da vida da cantora francesa",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/15/laila-garin-e-fenomeno-em-cena-como-edith-piaf-com-atuacao-sobrenatural-que-equilibra-drama-e-musica-na-corda-bamba-da-vida-da-cantora-francesa.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-15T13:00:13.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Laila Garin",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/w1pqaf2MwNZ5UVFPJUcc-ZKFlGw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/m/e/Sb9gkeTV63YeN7y6g64g/piafcaiogallucci.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/laila-garin-e-fenomeno-em-cena-como-edith-piaf-com-atuacao-sobrenatural-que-equi-d51595/",
-      "landing_url": "https://matchapp.tv/?news=d51595a9#latest-news",
-      "seo": {
-        "primary_keyword": "Laila Garin últimas notícias",
-        "short_tail": [
-          "Laila Garin",
-          "Laila Garin news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Laila Garin latest news October 2026",
-          "Laila Garin music update 2026",
-          "Laila Garin news 2026-10-15",
-          "latest music news about Laila Garin",
-          "laila garin laila garin fenomeno cena latest update",
-          "G1 Laila Garin music",
-          "últimas notícias sobre Laila Garin outubro 2026",
-          "Laila Garin notícia de 2026-10-15",
-          "o que aconteceu com Laila Garin"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Laila Garin",
-          "laila",
-          "garin",
-          "fenomeno",
-          "cena",
-          "como",
-          "edith"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "Laila Garin 2026"
-        ],
-        "source_keywords": [
-          "G1 Laila Garin",
-          "g1.globo.com Laila Garin",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Laila Garin é fenômeno em cena como Edith Piaf com atuação…",
-        "meta_description": "Laila Garin: Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Laila Garin últimas notícias",
-          "Laila Garin",
-          "Laila Garin news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Laila Garin latest news October 2026",
-          "Laila Garin music update 2026",
-          "Laila Garin news 2026-10-15",
-          "latest music news about Laila Garin",
-          "laila garin laila garin fenomeno cena latest update",
-          "G1 Laila Garin music",
-          "últimas notícias sobre Laila Garin outubro 2026",
-          "Laila Garin notícia de 2026-10-15",
-          "o que aconteceu com Laila Garin",
-          "laila",
-          "garin",
-          "fenomeno",
-          "cena",
-          "como",
-          "edith",
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "Laila Garin 2026",
-          "G1 Laila Garin",
-          "g1.globo.com Laila Garin",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T01:20:23.706Z"
+        "seo_generated_at": "2026-10-17T06:06:08.689Z"
       }
     }
   ]
