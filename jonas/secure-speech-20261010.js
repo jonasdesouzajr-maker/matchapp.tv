@@ -126,7 +126,7 @@
     if(session?.data?.session?.access_token)headers.Authorization='Bearer '+session.data.session.access_token;
    }catch(_){}
    if(token!==epoch)return false;
-   var response=await fetch(ENDPOINT,{method:'POST',headers:headers,body:JSON.stringify({text:text,lang:chosen,stream:!!audioContext&&typeof TransformStream==='function'}),signal:controller.signal,cache:'no-store'});
+   var response=await fetch(ENDPOINT,{method:'POST',headers:headers,body:JSON.stringify({text:text,lang:chosen,stream:!!audioContext&&typeof TransformStream==='function',voiceVersion:2}),signal:controller.signal,cache:'no-store'});
    if(!response.ok)throw new Error(response.status===429?'speech_limit_reached':'speech_provider_unavailable');
    var identity=response.headers.get('X-Jonas-Voice');
    if(identity!=='male-cedar'&&identity!=='male-charon'&&identity!=='male-elevenlabs')throw new Error('unapproved_voice');
