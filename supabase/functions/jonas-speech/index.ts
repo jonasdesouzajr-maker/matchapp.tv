@@ -55,6 +55,24 @@ async function synth(text:string,locale:string,stream=false):Promise<{audio:Uint
    else console.error("[jonas-speech] OpenAI HTTP",resp.status);
   }catch(error){console.error("[jonas-speech] OpenAI unavailable",String(error).slice(0,80));}
  }
+ // ElevenLabs is an opt-in, server-side fallback: never expose its key to browsers.
+ // MP3 is returned as buffered audio, including to clients that requested PCM.
+ // Those clients already decode non-PCM responses using WebAudio.
+ const elevenKey=Deno.env.get("ELEVENLABS_API_KEY")?.trim();
+ const elevenVoice=Deno.env.get("ELEVENLABS_VOICE_ID")?.trim()||"JBFqnCBsd6RMkjVDRZzb";
+ if(elevenKey){
+  try{
+   const response=await fetch("https://api.elevenlabs.io/v1/text-to-speech/"+encodeURIComponent(elevenVoice)+"?output_format=mp3_44100_128",{
+    method:"POST",signal:AbortSignal.timeout(9000),
+    headers:{"xi-api-key":elevenKey,"Content-Type":"application/json"},
+    body:JSON.stringify({text,model_id:"eleven_flash_v2_5",voice_settings:{stability:0.55,similarity_boost:0.75,speed:0.95}})
+   });
+   if(response.ok){
+    const data=new Uint8Array(await response.arrayBuffer());
+    if(data.length>100&&data.length<4_000_000)return {audio:data,provider:"elevenlabs",mime:"audio/mpeg"};
+   }else console.error("[jonas-speech] ElevenLabs HTTP",response.status);
+  }catch(error){console.error("[jonas-speech] ElevenLabs unavailable",String(error).slice(0,90));}
+ }
  const google=Deno.env.get("GEMINI_API_KEY")?.trim()||Deno.env.get("GEMINI_FREE_API_KEY")?.trim();
  if(google){
   try{
@@ -114,5 +132,5 @@ Deno.serve(async(req:Request)=>{
  if(limitError||allowed!==true)return result({error:"speech_limit_reached"},429,origin);
  const speech=await synth(text,localeMap[language],body?.stream===true);
  if(!speech)return result({error:"speech_provider_unavailable"},503,origin);
- return new Response(speech.audio,{status:200,headers:{...headers,"Content-Type":speech.mime,"X-Jonas-Voice":speech.provider==="openai"?"male-cedar":"male-charon","Access-Control-Expose-Headers":"X-Jonas-Voice","Cache-Control":"private,no-store",...(speech.audio instanceof Uint8Array?{"Content-Length":String(speech.audio.length)}:{})}});
+ return new Response(speech.audio,{status:200,headers:{...headers,"Content-Type":speech.mime,"X-Jonas-Voice":speech.provider==="openai"?"male-cedar":speech.provider==="elevenlabs"?"male-elevenlabs":"male-charon","Access-Control-Expose-Headers":"X-Jonas-Voice","Cache-Control":"private,no-store",...(speech.audio instanceof Uint8Array?{"Content-Length":String(speech.audio.length)}:{})}});
 });
