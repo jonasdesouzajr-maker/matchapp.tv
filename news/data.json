@@ -1,10 +1,894 @@
 {
-  "generated_at": "2026-10-16T21:38:39.912Z",
-  "feed_version": "c865ed8d",
+  "generated_at": "2026-10-17T00:44:40.118Z",
+  "feed_version": "2ca66368",
   "sports_updated_at": "2026-10-16T15:23:19.782Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "206ad307",
+      "title": "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC",
+      "url": "https://www.bbc.co.uk/news/articles/c64g18ljjd8do?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T23:54:35.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dddb/live/6a9aa9b0-c97a-11f1-a64c-550be9e3c66b.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-completely-wrong-to-restrict-support-for-ukraine-italian-minister-tells-bb-206ad3/",
+      "landing_url": "https://matchapp.tv/?news=206ad307#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "completely",
+          "wrong",
+          "restrict",
+          "support",
+          "ukraine"
+        ],
+        "long_tail": [
+          "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "completely",
+          "wrong",
+          "restrict",
+          "support",
+          "ukraine"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump 'completely wrong' to restrict support for Ukraine,…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "trump",
+          "completely",
+          "wrong",
+          "restrict",
+          "support",
+          "ukraine",
+          "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "1780969c",
+      "title": "Coreia do Norte testa torpedo que usa inteligência artificial para detectar alvos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/coreia-do-norte-testa-torpedo-que-usa-inteligencia-artificial-para-detectar-alvos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-16T23:24:32.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/8ECjPCFdyX1DsHsXUUrYX7TrdHs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/7/v/7SOcgxStmExA0sJEhcSg/2023-05-31t124457z-1479767491-rc2n91a28rdy-rtrmadp-3-northkorea-politics.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/coreia-do-norte-testa-torpedo-que-usa-inteligencia-artificial-para-detectar-alvo-178096/",
+      "landing_url": "https://matchapp.tv/?news=1780969c#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-16",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "coreia",
+          "norte",
+          "testa",
+          "torpedo",
+          "que",
+          "usa"
+        ],
+        "long_tail": [
+          "Coreia do Norte testa torpedo que usa inteligência artificial para detectar alvos 2026-10-16",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "coreia",
+          "norte",
+          "testa",
+          "torpedo",
+          "que",
+          "usa"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Coreia do Norte testa torpedo que usa inteligência…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-16",
+          "notícias do mundo",
+          "notícias internacionais",
+          "coreia",
+          "norte",
+          "testa",
+          "torpedo",
+          "que",
+          "usa",
+          "Coreia do Norte testa torpedo que usa inteligência artificial para detectar alvos 2026-10-16",
+          "notícias mundiais outubro 2026",
+          "2026-10-16",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "044b4bea",
+      "title": "Pope pictured for first time since surgery and cancer diagnosis",
+      "url": "https://www.bbc.co.uk/news/articles/cw146ej00yn7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T23:20:37.000Z",
+      "discovered_at": "2026-10-16T15:23:19.831Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b711/live/6c3028b0-c978-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pope-pictured-for-first-time-since-surgery-and-cancer-diagnosis-044b4b/",
+      "landing_url": "https://matchapp.tv/?news=044b4bea#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pope",
+          "pictured",
+          "first",
+          "time",
+          "since",
+          "surgery"
+        ],
+        "long_tail": [
+          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pope",
+          "pictured",
+          "first",
+          "time",
+          "since",
+          "surgery"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pope pictured for first time since surgery and cancer…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "pope",
+          "pictured",
+          "first",
+          "time",
+          "since",
+          "surgery",
+          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "2c850312",
+      "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
+      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T23:07:38.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/oregon-teacher-fought-school-attacker-before-armed-dad-shot-suspect-multiple-tim-2c8503/",
+      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before"
+        ],
+        "long_tail": [
+          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Oregon teacher fought school attacker before armed dad…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "oregon",
+          "teacher",
+          "fought",
+          "school",
+          "attacker",
+          "before",
+          "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times' 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "00f30d32",
+      "title": "Trial of German steakhouse heiress that sparked a huge spy scandal",
+      "url": "https://www.bbc.co.uk/news/articles/cwvgdn3d656vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-16T23:07:18.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3f50/live/e57d8d50-c8c1-11f1-bdfb-e3788aeae9ec.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trial-of-german-steakhouse-heiress-that-sparked-a-huge-spy-scandal-00f30d/",
+      "landing_url": "https://matchapp.tv/?news=00f30d32#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-16",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trial",
+          "german",
+          "steakhouse",
+          "heiress",
+          "sparked",
+          "huge"
+        ],
+        "long_tail": [
+          "Trial of German steakhouse heiress that sparked a huge spy scandal 2026-10-16",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trial",
+          "german",
+          "steakhouse",
+          "heiress",
+          "sparked",
+          "huge"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trial of German steakhouse heiress that sparked a huge spy…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "trial",
+          "german",
+          "steakhouse",
+          "heiress",
+          "sparked",
+          "huge",
+          "Trial of German steakhouse heiress that sparked a huge spy scandal 2026-10-16",
+          "world news October 2026",
+          "2026-10-16",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "2409b97b",
+      "title": "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/todos-os-7-candidatos-a-chefia-da-onu-enfrentam-veto-e-impasse-abre-espaco-para-novos-nomes.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-16T23:01:00.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/pLBeeDIO5ooyE2GLFx9SoQdfkcs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/T/bxKHDoQQq6N3zw3MdsAA/2026-04-07t160942z-1133200094-rc2fkkafvt3r-rtrmadp-3-iran-crisis-un-bahrain.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/todos-os-7-candidatos-a-chefia-da-onu-enfrentam-veto-e-impasse-abre-espaco-para--2409b9/",
+      "landing_url": "https://matchapp.tv/?news=2409b97b#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-16",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "todos",
+          "candidatos",
+          "chefia",
+          "onu",
+          "enfrentam",
+          "veto"
+        ],
+        "long_tail": [
+          "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes 2026-10-16",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "todos",
+          "candidatos",
+          "chefia",
+          "onu",
+          "enfrentam",
+          "veto"
+        ],
+        "freshness_keywords": [
+          "2026-10-16"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Todos os 7 candidatos à chefia da ONU enfrentam veto, e…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-16",
+          "notícias do mundo",
+          "notícias internacionais",
+          "todos",
+          "candidatos",
+          "chefia",
+          "onu",
+          "enfrentam",
+          "veto",
+          "Todos os 7 candidatos à chefia da ONU enfrentam veto, e impasse abre espaço para novos nomes 2026-10-16",
+          "notícias mundiais outubro 2026",
+          "2026-10-16",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "6e210459",
+      "title": "John Amos’ Daughter Sues Brother for Wrongful Death Over Actor’s Death",
+      "url": "https://www.hollywoodreporter.com/news/general-news/john-amos-daughter-sues-brother-for-wrongful-death-over-actors-death-1236733965/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T23:00:00.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "John Amos’ Daughter Sues",
+      "description": "John Amos’ Daughter Sues: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2025/08/GettyImages-470969996.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/john-amos-daughter-sues-brother-for-wrongful-death-over-actor-s-death-6e2104/",
+      "landing_url": "https://matchapp.tv/?news=6e210459#latest-news",
+      "seo": {
+        "primary_keyword": "John Amos’ Daughter Sues latest news",
+        "short_tail": [
+          "John Amos’ Daughter Sues",
+          "John Amos’ Daughter Sues news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "John Amos’ Daughter Sues latest news October 2026",
+          "John Amos’ Daughter Sues obituary update 2026",
+          "John Amos’ Daughter Sues news 2026-10-16",
+          "latest obituary news about John Amos’ Daughter Sues",
+          "john amos daughter sues john amos latest update",
+          "The Hollywood Reporter John Amos’ Daughter Sues obituary",
+          "latest news about John Amos’ Daughter Sues October 2026",
+          "John Amos’ Daughter Sues entertainment news 2026-10-16",
+          "what happened with John Amos’ Daughter Sues"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "John Amos’ Daughter Sues",
+          "john",
+          "amos",
+          "daughter",
+          "sues"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "John Amos’ Daughter Sues 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter John Amos’ Daughter Sues",
+          "hollywoodreporter.com John Amos’ Daughter Sues",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "John Amos’ Daughter Sues Brother for Wrongful Death Over…",
+        "meta_description": "John Amos’ Daughter Sues: Obituary update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source…",
+        "keywords": [
+          "John Amos’ Daughter Sues latest news",
+          "John Amos’ Daughter Sues",
+          "John Amos’ Daughter Sues news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "John Amos’ Daughter Sues latest news October 2026",
+          "John Amos’ Daughter Sues obituary update 2026",
+          "John Amos’ Daughter Sues news 2026-10-16",
+          "latest obituary news about John Amos’ Daughter Sues",
+          "john amos daughter sues john amos latest update",
+          "The Hollywood Reporter John Amos’ Daughter Sues obituary",
+          "latest news about John Amos’ Daughter Sues October 2026",
+          "John Amos’ Daughter Sues entertainment news 2026-10-16",
+          "what happened with John Amos’ Daughter Sues",
+          "john",
+          "amos",
+          "daughter",
+          "sues",
+          "October 2026",
+          "2026-10-16",
+          "John Amos’ Daughter Sues 2026",
+          "The Hollywood Reporter John Amos’ Daughter Sues",
+          "hollywoodreporter.com John Amos’ Daughter Sues",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "a096afa6",
+      "title": "Austin Abrams Still Won’t Admit Which Was Tougher to Shoot, ‘Whalefall’ or ‘Resident Evil’",
+      "url": "https://www.hollywoodreporter.com/movies/movie-features/whalefall-austin-abrams-resident-evil-1236733923/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T22:48:07.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Austin Abrams Still Won’t",
+      "description": "Austin Abrams Still Won’t: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Austin-Abrams-Main-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/austin-abrams-still-won-t-admit-which-was-tougher-to-shoot-whalefall-or-resident-a096af/",
+      "landing_url": "https://matchapp.tv/?news=a096afa6#latest-news",
+      "seo": {
+        "primary_keyword": "Austin Abrams Still Won’t latest news",
+        "short_tail": [
+          "Austin Abrams Still Won’t",
+          "Austin Abrams Still Won’t news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Austin Abrams Still Won’t latest news October 2026",
+          "Austin Abrams Still Won’t entertainment update 2026",
+          "Austin Abrams Still Won’t news 2026-10-16",
+          "latest entertainment news about Austin Abrams Still Won’t",
+          "austin abrams still won austin abrams latest update",
+          "The Hollywood Reporter Austin Abrams Still Won’t entertainment",
+          "latest news about Austin Abrams Still Won’t October 2026",
+          "Austin Abrams Still Won’t entertainment news 2026-10-16",
+          "what happened with Austin Abrams Still Won’t"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Austin Abrams Still Won’t",
+          "austin",
+          "abrams",
+          "still",
+          "won"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "Austin Abrams Still Won’t 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Austin Abrams Still Won’t",
+          "hollywoodreporter.com Austin Abrams Still Won’t",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Austin Abrams Still Won’t Admit Which Was Tougher to…",
+        "meta_description": "Austin Abrams Still Won’t: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original…",
+        "keywords": [
+          "Austin Abrams Still Won’t latest news",
+          "Austin Abrams Still Won’t",
+          "Austin Abrams Still Won’t news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Austin Abrams Still Won’t latest news October 2026",
+          "Austin Abrams Still Won’t entertainment update 2026",
+          "Austin Abrams Still Won’t news 2026-10-16",
+          "latest entertainment news about Austin Abrams Still Won’t",
+          "austin abrams still won austin abrams latest update",
+          "The Hollywood Reporter Austin Abrams Still Won’t entertainment",
+          "latest news about Austin Abrams Still Won’t October 2026",
+          "Austin Abrams Still Won’t entertainment news 2026-10-16",
+          "what happened with Austin Abrams Still Won’t",
+          "austin",
+          "abrams",
+          "still",
+          "won",
+          "October 2026",
+          "2026-10-16",
+          "Austin Abrams Still Won’t 2026",
+          "The Hollywood Reporter Austin Abrams Still Won’t",
+          "hollywoodreporter.com Austin Abrams Still Won’t",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "3895afad",
+      "title": "Kim Kardashian Wants to Compete on ‘Dancing With the Stars’ Again: “I’d Do It”",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/kim-kardashian-dancing-with-the-stars-all-stars-return-1236734062/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T22:36:59.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Kim Kardashian Wants",
+      "description": "Kim Kardashian Wants: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/114124_8368-e1792189449585.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/kim-kardashian-wants-to-compete-on-dancing-with-the-stars-again-i-d-do-it-3895af/",
+      "landing_url": "https://matchapp.tv/?news=3895afad#latest-news",
+      "seo": {
+        "primary_keyword": "Kim Kardashian Wants latest news",
+        "short_tail": [
+          "Kim Kardashian Wants",
+          "Kim Kardashian Wants news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Kim Kardashian Wants latest news October 2026",
+          "Kim Kardashian Wants entertainment update 2026",
+          "Kim Kardashian Wants news 2026-10-16",
+          "latest entertainment news about Kim Kardashian Wants",
+          "kim kardashian wants kim kardashian wants latest update",
+          "The Hollywood Reporter Kim Kardashian Wants entertainment",
+          "latest news about Kim Kardashian Wants October 2026",
+          "Kim Kardashian Wants entertainment news 2026-10-16",
+          "what happened with Kim Kardashian Wants"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Kim Kardashian Wants",
+          "kim",
+          "kardashian",
+          "wants",
+          "compete",
+          "dancing"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "Kim Kardashian Wants 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Kim Kardashian Wants",
+          "hollywoodreporter.com Kim Kardashian Wants",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Kim Kardashian Wants to Compete on ‘Dancing With the…",
+        "meta_description": "Kim Kardashian Wants: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source…",
+        "keywords": [
+          "Kim Kardashian Wants latest news",
+          "Kim Kardashian Wants",
+          "Kim Kardashian Wants news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Kim Kardashian Wants latest news October 2026",
+          "Kim Kardashian Wants entertainment update 2026",
+          "Kim Kardashian Wants news 2026-10-16",
+          "latest entertainment news about Kim Kardashian Wants",
+          "kim kardashian wants kim kardashian wants latest update",
+          "The Hollywood Reporter Kim Kardashian Wants entertainment",
+          "latest news about Kim Kardashian Wants October 2026",
+          "Kim Kardashian Wants entertainment news 2026-10-16",
+          "what happened with Kim Kardashian Wants",
+          "kim",
+          "kardashian",
+          "wants",
+          "compete",
+          "dancing",
+          "October 2026",
+          "2026-10-16",
+          "Kim Kardashian Wants 2026",
+          "The Hollywood Reporter Kim Kardashian Wants",
+          "hollywoodreporter.com Kim Kardashian Wants",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "c97a2463",
+      "title": "Hallmark’s Christmas Workshop: On the Set of ‘Holiday Touchdown: A Bears Love Story’",
+      "url": "https://www.hollywoodreporter.com/tv/tv-features/hallmark-nfl-christmas-movie-bears-love-story-1236734057/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-16T22:12:49.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Hallmark’s Christmas Workshop",
+      "description": "Hallmark’s Christmas Workshop: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Holiday-Touchdown-Main-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/hallmark-s-christmas-workshop-on-the-set-of-holiday-touchdown-a-bears-love-story-c97a24/",
+      "landing_url": "https://matchapp.tv/?news=c97a2463#latest-news",
+      "seo": {
+        "primary_keyword": "Hallmark’s Christmas Workshop latest news",
+        "short_tail": [
+          "Hallmark’s Christmas Workshop",
+          "Hallmark’s Christmas Workshop news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Hallmark’s Christmas Workshop latest news October 2026",
+          "Hallmark’s Christmas Workshop entertainment update 2026",
+          "Hallmark’s Christmas Workshop news 2026-10-16",
+          "latest entertainment news about Hallmark’s Christmas Workshop",
+          "hallmark christmas workshop hallmark christmas workshop latest update",
+          "The Hollywood Reporter Hallmark’s Christmas Workshop entertainment",
+          "latest news about Hallmark’s Christmas Workshop October 2026",
+          "Hallmark’s Christmas Workshop entertainment news 2026-10-16",
+          "what happened with Hallmark’s Christmas Workshop"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Hallmark’s Christmas Workshop",
+          "hallmark",
+          "christmas",
+          "workshop",
+          "set",
+          "holiday"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "Hallmark’s Christmas Workshop 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Hallmark’s Christmas Workshop",
+          "hollywoodreporter.com Hallmark’s Christmas Workshop",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Hallmark’s Christmas Workshop: On the Set of ‘Holiday…",
+        "meta_description": "Hallmark’s Christmas Workshop: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the…",
+        "keywords": [
+          "Hallmark’s Christmas Workshop latest news",
+          "Hallmark’s Christmas Workshop",
+          "Hallmark’s Christmas Workshop news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Hallmark’s Christmas Workshop latest news October 2026",
+          "Hallmark’s Christmas Workshop entertainment update 2026",
+          "Hallmark’s Christmas Workshop news 2026-10-16",
+          "latest entertainment news about Hallmark’s Christmas Workshop",
+          "hallmark christmas workshop hallmark christmas workshop latest update",
+          "The Hollywood Reporter Hallmark’s Christmas Workshop entertainment",
+          "latest news about Hallmark’s Christmas Workshop October 2026",
+          "Hallmark’s Christmas Workshop entertainment news 2026-10-16",
+          "what happened with Hallmark’s Christmas Workshop",
+          "hallmark",
+          "christmas",
+          "workshop",
+          "set",
+          "holiday",
+          "October 2026",
+          "2026-10-16",
+          "Hallmark’s Christmas Workshop 2026",
+          "The Hollywood Reporter Hallmark’s Christmas Workshop",
+          "hollywoodreporter.com Hallmark’s Christmas Workshop",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
+    {
+      "id": "0ccbb098",
+      "title": "Aretuza Lovi mistura sabores da 'farofa' pop brasileira no álbum 'Calor nacional'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/16/aretuza-lovi-mistura-sabores-da-farofa-pop-brasileira-no-album-calor-nacional.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T22:09:01.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Aretuza Lovi",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/bYFi1WhgkKtgL4V5e-uvZKKXiE0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/S/Z/Cb4N5uSPONv0DfedNCBQ/aretuzafoto.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/aretuza-lovi-mistura-sabores-da-farofa-pop-brasileira-no-album-calor-nacional-0ccbb0/",
+      "landing_url": "https://matchapp.tv/?news=0ccbb098#latest-news",
+      "seo": {
+        "primary_keyword": "Aretuza Lovi últimas notícias",
+        "short_tail": [
+          "Aretuza Lovi",
+          "Aretuza Lovi news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Aretuza Lovi latest news October 2026",
+          "Aretuza Lovi entertainment update 2026",
+          "Aretuza Lovi news 2026-10-16",
+          "latest entertainment news about Aretuza Lovi",
+          "aretuza lovi aretuza lovi mistura sabores latest update",
+          "G1 Aretuza Lovi entertainment",
+          "últimas notícias sobre Aretuza Lovi outubro 2026",
+          "Aretuza Lovi notícia de 2026-10-16",
+          "o que aconteceu com Aretuza Lovi"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Aretuza Lovi",
+          "aretuza",
+          "lovi",
+          "mistura",
+          "sabores",
+          "farofa",
+          "pop"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "Aretuza Lovi 2026"
+        ],
+        "source_keywords": [
+          "G1 Aretuza Lovi",
+          "g1.globo.com Aretuza Lovi",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Aretuza Lovi mistura sabores da 'farofa' pop brasileira no…",
+        "meta_description": "Aretuza Lovi: Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Aretuza Lovi últimas notícias",
+          "Aretuza Lovi",
+          "Aretuza Lovi news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Aretuza Lovi latest news October 2026",
+          "Aretuza Lovi entertainment update 2026",
+          "Aretuza Lovi news 2026-10-16",
+          "latest entertainment news about Aretuza Lovi",
+          "aretuza lovi aretuza lovi mistura sabores latest update",
+          "G1 Aretuza Lovi entertainment",
+          "últimas notícias sobre Aretuza Lovi outubro 2026",
+          "Aretuza Lovi notícia de 2026-10-16",
+          "o que aconteceu com Aretuza Lovi",
+          "aretuza",
+          "lovi",
+          "mistura",
+          "sabores",
+          "farofa",
+          "pop",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "Aretuza Lovi 2026",
+          "G1 Aretuza Lovi",
+          "g1.globo.com Aretuza Lovi",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
+      }
+    },
     {
       "id": "2a7241f2",
       "title": "The Hollywood Reporter, Animation Is Film Festival Partner on Live Animation Roundtable With Bill Hader, Travis Knight, More",
@@ -98,7 +982,7 @@
           "hollywoodreporter.com The Hollywood Reporter",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -120,7 +1004,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/francis-lawrence-paramount-team-for-red-rising-movie-adaptation-exclusive-b6aa4b/",
       "landing_url": "https://matchapp.tv/?news=b6aa4bea#latest-news",
       "seo": {
-        "primary_keyword": "Francis Lawrence latest news",
+        "primary_keyword": "red rising",
         "short_tail": [
           "Francis Lawrence",
           "Francis Lawrence news",
@@ -128,7 +1012,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "red rising"
         ],
         "long_tail": [
           "Francis Lawrence latest news October 2026",
@@ -141,7 +1026,9 @@
           "Francis Lawrence entertainment news 2026-10-16",
           "what happened with Francis Lawrence"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "red rising"
+        ],
         "entity_keywords": [
           "Francis Lawrence",
           "francis",
@@ -164,7 +1051,7 @@
         "meta_title": "Francis Lawrence, Paramount Team for ‘Red Rising’ Movie…",
         "meta_description": "Francis Lawrence: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via…",
         "keywords": [
-          "Francis Lawrence latest news",
+          "red rising",
           "Francis Lawrence",
           "Francis Lawrence news",
           "entertainment",
@@ -194,195 +1081,76 @@
           "hollywoodreporter.com Francis Lawrence",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
-      "id": "467bca76",
-      "title": "London Film Festival’s Surprise Movie Is… ‘I Play Rocky’",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/london-film-festival-surprise-movie-i-play-rocky-ippolito-1236733561/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
+      "id": "94eab1f0",
+      "title": "Katie Zacharia leaving her White House role less than five days on the job",
+      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-16T20:47:52.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "London Film Festival’s Surprise",
-      "description": "London Film Festival’s Surprise: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/IPR-08784_RC1_rgb-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/london-film-festival-s-surprise-movie-is-i-play-rocky-467bca/",
-      "landing_url": "https://matchapp.tv/?news=467bca76#latest-news",
+      "published_at": "2026-10-16T21:05:05.000Z",
+      "discovered_at": "2026-10-17T00:44:40.118Z",
+      "event_type": "Casting",
+      "category": "world",
+      "person": "Katie Zacharia",
+      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-her-white-house-role-less-than-five-days-on-the-job-94eab1/",
+      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
       "seo": {
-        "primary_keyword": "London Film Festival’s Surprise latest news",
+        "primary_keyword": "world news 2026-10-16",
         "short_tail": [
-          "London Film Festival’s Surprise",
-          "London Film Festival’s Surprise news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "her",
+          "white",
+          "house"
         ],
         "long_tail": [
-          "London Film Festival’s Surprise latest news October 2026",
-          "London Film Festival’s Surprise entertainment update 2026",
-          "London Film Festival’s Surprise news 2026-10-16",
-          "latest entertainment news about London Film Festival’s Surprise",
-          "london film festival surprise london film latest update",
-          "The Hollywood Reporter London Film Festival’s Surprise entertainment",
-          "latest news about London Film Festival’s Surprise October 2026",
-          "London Film Festival’s Surprise entertainment news 2026-10-16",
-          "what happened with London Film Festival’s Surprise"
+          "Katie Zacharia leaving her White House role less than five days on the job 2026-10-16",
+          "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "London Film Festival’s Surprise",
-          "london",
-          "film",
-          "festival",
-          "surprise"
+          "katie",
+          "zacharia",
+          "leaving",
+          "her",
+          "white",
+          "house"
         ],
         "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "London Film Festival’s Surprise 2026"
+          "2026-10-16"
         ],
         "source_keywords": [
-          "The Hollywood Reporter London Film Festival’s Surprise",
-          "hollywoodreporter.com London Film Festival’s Surprise",
-          "The Hollywood Reporter entertainment news"
+          "BBC World"
         ],
-        "meta_title": "London Film Festival’s Surprise Movie Is… ‘I Play Rocky’ |…",
-        "meta_description": "London Film Festival’s Surprise: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the…",
+        "meta_title": "Katie Zacharia leaving her White House role less than five…",
+        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
         "keywords": [
-          "London Film Festival’s Surprise latest news",
-          "London Film Festival’s Surprise",
-          "London Film Festival’s Surprise news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "London Film Festival’s Surprise latest news October 2026",
-          "London Film Festival’s Surprise entertainment update 2026",
-          "London Film Festival’s Surprise news 2026-10-16",
-          "latest entertainment news about London Film Festival’s Surprise",
-          "london film festival surprise london film latest update",
-          "The Hollywood Reporter London Film Festival’s Surprise entertainment",
-          "latest news about London Film Festival’s Surprise October 2026",
-          "London Film Festival’s Surprise entertainment news 2026-10-16",
-          "what happened with London Film Festival’s Surprise",
-          "london",
-          "film",
-          "festival",
-          "surprise",
-          "October 2026",
+          "world news 2026-10-16",
+          "world news",
+          "global headlines",
+          "katie",
+          "zacharia",
+          "leaving",
+          "her",
+          "white",
+          "house",
+          "Katie Zacharia leaving her White House role less than five days on the job 2026-10-16",
+          "world news October 2026",
           "2026-10-16",
-          "London Film Festival’s Surprise 2026",
-          "The Hollywood Reporter London Film Festival’s Surprise",
-          "hollywoodreporter.com London Film Festival’s Surprise",
-          "The Hollywood Reporter entertainment news"
+          "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "98952dc3",
-      "title": "Michael Forest, Actor in Roger Corman Movies and ‘Star Trek,’ Dies at 97",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/michael-forest-dead-roger-corman-star-trek-dick-van-dyke-1236733987/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-16T20:47:48.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Michael Forest",
-      "description": "Michael Forest: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Michael-Forest-Obit-Main-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/michael-forest-actor-in-roger-corman-movies-and-star-trek-dies-at-97-98952d/",
-      "landing_url": "https://matchapp.tv/?news=98952dc3#latest-news",
-      "seo": {
-        "primary_keyword": "Michael Forest latest news",
-        "short_tail": [
-          "Michael Forest",
-          "Michael Forest news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Michael Forest latest news October 2026",
-          "Michael Forest obituary update 2026",
-          "Michael Forest news 2026-10-16",
-          "latest obituary news about Michael Forest",
-          "michael forest michael forest actor roger latest update",
-          "The Hollywood Reporter Michael Forest obituary",
-          "latest news about Michael Forest October 2026",
-          "Michael Forest entertainment news 2026-10-16",
-          "what happened with Michael Forest"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Michael Forest",
-          "michael",
-          "forest",
-          "actor",
-          "roger",
-          "corman",
-          "movies"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "Michael Forest 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Michael Forest",
-          "hollywoodreporter.com Michael Forest",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Michael Forest, Actor in Roger Corman Movies and ‘Star…",
-        "meta_description": "Michael Forest: Obituary update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Michael Forest latest news",
-          "Michael Forest",
-          "Michael Forest news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Michael Forest latest news October 2026",
-          "Michael Forest obituary update 2026",
-          "Michael Forest news 2026-10-16",
-          "latest obituary news about Michael Forest",
-          "michael forest michael forest actor roger latest update",
-          "The Hollywood Reporter Michael Forest obituary",
-          "latest news about Michael Forest October 2026",
-          "Michael Forest entertainment news 2026-10-16",
-          "what happened with Michael Forest",
-          "michael",
-          "forest",
-          "actor",
-          "roger",
-          "corman",
-          "movies",
-          "October 2026",
-          "2026-10-16",
-          "Michael Forest 2026",
-          "The Hollywood Reporter Michael Forest",
-          "hollywoodreporter.com Michael Forest",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -451,7 +1219,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -520,106 +1288,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "ef2d39b0",
-      "title": "‘True Detective’ Season 5 Officially Casts Nicolas Cage — and Antonio Banderas",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/true-detective-season-5-nicolas-cage-antonio-banderas-1236733868/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-16T19:30:00.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Nicolas-Cage-Antonio-Banderas-Split-Main-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/true-detective-season-5-officially-casts-nicolas-cage-and-antonio-banderas-ef2d39/",
-      "landing_url": "https://matchapp.tv/?news=ef2d39b0#latest-news",
-      "seo": {
-        "primary_keyword": "true detective season officially latest news",
-        "short_tail": [
-          "true detective season officially",
-          "true detective season officially news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "true detective season officially latest news October 2026",
-          "true detective season officially entertainment update 2026",
-          "true detective season officially news 2026-10-16",
-          "latest entertainment news about true detective season officially",
-          "true detective season officially casts nicolas latest update",
-          "The Hollywood Reporter true detective season officially entertainment",
-          "latest news about true detective season officially October 2026",
-          "true detective season officially entertainment news 2026-10-16",
-          "what happened with true detective season officially"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "true",
-          "detective",
-          "season",
-          "officially",
-          "casts",
-          "nicolas",
-          "cage",
-          "antonio"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "true detective season officially 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter true detective season officially",
-          "hollywoodreporter.com true detective season officially",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘True Detective’ Season 5 Officially Casts Nicolas Cage —…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "true detective season officially latest news",
-          "true detective season officially",
-          "true detective season officially news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "true detective season officially latest news October 2026",
-          "true detective season officially entertainment update 2026",
-          "true detective season officially news 2026-10-16",
-          "latest entertainment news about true detective season officially",
-          "true detective season officially casts nicolas latest update",
-          "The Hollywood Reporter true detective season officially entertainment",
-          "latest news about true detective season officially October 2026",
-          "true detective season officially entertainment news 2026-10-16",
-          "what happened with true detective season officially",
-          "true",
-          "detective",
-          "season",
-          "officially",
-          "casts",
-          "nicolas",
-          "cage",
-          "antonio",
-          "October 2026",
-          "2026-10-16",
-          "true detective season officially 2026",
-          "The Hollywood Reporter true detective season officially",
-          "hollywoodreporter.com true detective season officially",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -688,101 +1357,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "c980b5fd",
-      "title": "Josh Brolin Talks the Personal Side of ‘Whalefall’ and the “Undeniable” Script for ‘Sicario 3’",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/josh-brolin-whalefall-sicario-3-1236733418/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-16T19:05:59.000Z",
-      "discovered_at": "2026-10-16T21:38:39.912Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Josh Brolin Talks",
-      "description": "Josh Brolin Talks: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2300092065-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/josh-brolin-talks-the-personal-side-of-whalefall-and-the-undeniable-script-for-s-c980b5/",
-      "landing_url": "https://matchapp.tv/?news=c980b5fd#latest-news",
-      "seo": {
-        "primary_keyword": "Josh Brolin Talks latest news",
-        "short_tail": [
-          "Josh Brolin Talks",
-          "Josh Brolin Talks news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Josh Brolin Talks latest news October 2026",
-          "Josh Brolin Talks entertainment update 2026",
-          "Josh Brolin Talks news 2026-10-16",
-          "latest entertainment news about Josh Brolin Talks",
-          "josh brolin talks josh brolin talks latest update",
-          "The Hollywood Reporter Josh Brolin Talks entertainment",
-          "latest news about Josh Brolin Talks October 2026",
-          "Josh Brolin Talks entertainment news 2026-10-16",
-          "what happened with Josh Brolin Talks"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Josh Brolin Talks",
-          "josh",
-          "brolin",
-          "talks",
-          "personal",
-          "side"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "Josh Brolin Talks 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Josh Brolin Talks",
-          "hollywoodreporter.com Josh Brolin Talks",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Josh Brolin Talks the Personal Side of ‘Whalefall’ and the…",
-        "meta_description": "Josh Brolin Talks: Entertainment update reported by The Hollywood Reporter on 2026-10-16. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Josh Brolin Talks latest news",
-          "Josh Brolin Talks",
-          "Josh Brolin Talks news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Josh Brolin Talks latest news October 2026",
-          "Josh Brolin Talks entertainment update 2026",
-          "Josh Brolin Talks news 2026-10-16",
-          "latest entertainment news about Josh Brolin Talks",
-          "josh brolin talks josh brolin talks latest update",
-          "The Hollywood Reporter Josh Brolin Talks entertainment",
-          "latest news about Josh Brolin Talks October 2026",
-          "Josh Brolin Talks entertainment news 2026-10-16",
-          "what happened with Josh Brolin Talks",
-          "josh",
-          "brolin",
-          "talks",
-          "personal",
-          "side",
-          "October 2026",
-          "2026-10-16",
-          "Josh Brolin Talks 2026",
-          "The Hollywood Reporter Josh Brolin Talks",
-          "hollywoodreporter.com Josh Brolin Talks",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -883,7 +1458,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -952,7 +1527,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -1021,7 +1596,7 @@
           "2026-10-16",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -1090,7 +1665,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -1159,7 +1734,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -1228,7 +1803,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -1324,7 +1899,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -1393,490 +1968,7 @@
           "2026-10-16",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "76ac965f",
-      "title": "Inside Ukrainian offensive pushing Russia back - with Starlink playing a key role",
-      "url": "https://www.bbc.co.uk/news/articles/cvx284w16z1po?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T16:00:30.000Z",
-      "discovered_at": "2026-10-16T17:40:23.043Z",
-      "event_type": "Casting",
-      "category": "world",
-      "person": "Inside Ukrainian",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1e40/live/404f3fb0-c978-11f1-80fc-ab418b149008.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/inside-ukrainian-offensive-pushing-russia-back-with-starlink-playing-a-key-role-76ac96/",
-      "landing_url": "https://matchapp.tv/?news=76ac965f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "inside",
-          "ukrainian",
-          "offensive",
-          "pushing",
-          "russia",
-          "back"
-        ],
-        "long_tail": [
-          "Inside Ukrainian offensive pushing Russia back - with Starlink playing a key role 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "inside",
-          "ukrainian",
-          "offensive",
-          "pushing",
-          "russia",
-          "back"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Inside Ukrainian offensive pushing Russia back - with…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "inside",
-          "ukrainian",
-          "offensive",
-          "pushing",
-          "russia",
-          "back",
-          "Inside Ukrainian offensive pushing Russia back - with Starlink playing a key role 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "e689e5ff",
-      "title": "Watch: Will Ukraine get the support needed as tensions with US rise?",
-      "url": "https://www.bbc.co.uk/news/videos/cm2ke1v8e4geo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T15:45:10.000Z",
-      "discovered_at": "2026-10-16T17:40:23.043Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d887/live/549b5300-c978-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-will-ukraine-get-the-support-needed-as-tensions-with-us-rise-e689e5/",
-      "landing_url": "https://matchapp.tv/?news=e689e5ff#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "will",
-          "ukraine",
-          "get",
-          "support",
-          "needed"
-        ],
-        "long_tail": [
-          "Watch: Will Ukraine get the support needed as tensions with US rise? 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "will",
-          "ukraine",
-          "get",
-          "support",
-          "needed"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: Will Ukraine get the support needed as tensions…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "watch",
-          "will",
-          "ukraine",
-          "get",
-          "support",
-          "needed",
-          "Watch: Will Ukraine get the support needed as tensions with US rise? 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "ada7cc41",
-      "title": "Papa fala ao telefone com Putin, oferece mediação na guerra e pede corredor humanitário",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/papa-fala-ao-telefone-com-putin-oferece-mediacao-na-guerra-e-pede-corretor-humanitario.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T15:32:20.000Z",
-      "discovered_at": "2026-10-16T17:40:23.043Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/9jE_iqMHbbVvVUpI625ik8Dfpls=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/k/MmF1fLSi65IVl2nOtMFg/papa-2.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/papa-fala-ao-telefone-com-putin-oferece-mediacao-na-guerra-e-pede-corredor-human-ada7cc/",
-      "landing_url": "https://matchapp.tv/?news=ada7cc41#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "fala",
-          "telefone",
-          "putin",
-          "oferece",
-          "mediacao"
-        ],
-        "long_tail": [
-          "Papa fala ao telefone com Putin, oferece mediação na guerra e pede corredor humanitário 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "papa",
-          "fala",
-          "telefone",
-          "putin",
-          "oferece",
-          "mediacao"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Papa fala ao telefone com Putin, oferece mediação na…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "fala",
-          "telefone",
-          "putin",
-          "oferece",
-          "mediacao",
-          "Papa fala ao telefone com Putin, oferece mediação na guerra e pede corredor humanitário 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "f1315209",
-      "title": "Russian man linked to deadly London hospitals hack arrested",
-      "url": "https://www.bbc.co.uk/news/articles/c9vgr61kml3mo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T15:31:33.000Z",
-      "discovered_at": "2026-10-16T17:40:23.043Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/215f/live/0e7d2e70-c969-11f1-9a39-31b474234113.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/russian-man-linked-to-deadly-london-hospitals-hack-arrested-f13152/",
-      "landing_url": "https://matchapp.tv/?news=f1315209#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "russian",
-          "man",
-          "linked",
-          "deadly",
-          "london",
-          "hospitals"
-        ],
-        "long_tail": [
-          "Russian man linked to deadly London hospitals hack arrested 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "russian",
-          "man",
-          "linked",
-          "deadly",
-          "london",
-          "hospitals"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "Russian man linked to deadly London hospitals hack…",
-        "meta_description": "World report published by BBC Technology on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "russian",
-          "man",
-          "linked",
-          "deadly",
-          "london",
-          "hospitals",
-          "Russian man linked to deadly London hospitals hack arrested 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "83a5e864",
-      "title": "Eleições nos EUA: democratas superam republicanos na arrecadação de fundos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/16/midterms-nos-eua-democratas-superam-republicanos-na-arrecadacao-de-fundos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-16T15:06:41.000Z",
-      "discovered_at": "2026-10-16T15:23:19.831Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/xEFF-Xfbvp8GscCYLTxV4MLzV9g=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/w/O/PFSfA1TvyVd6BjHnOczg/2022-11-08t131839z-2077520762-rc2nhx94yqte-rtrmadp-3-usa-election-pennsylvania.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/eleicoes-nos-eua-democratas-superam-republicanos-na-arrecadacao-de-fundos-83a5e8/",
-      "landing_url": "https://matchapp.tv/?news=83a5e864#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-16",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "eleicoes",
-          "eua",
-          "democratas",
-          "superam",
-          "republicanos",
-          "arrecadacao"
-        ],
-        "long_tail": [
-          "Eleições nos EUA: democratas superam republicanos na arrecadação de fundos 2026-10-16",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "eleicoes",
-          "eua",
-          "democratas",
-          "superam",
-          "republicanos",
-          "arrecadacao"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Eleições nos EUA: democratas superam republicanos na…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-16. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-16",
-          "notícias do mundo",
-          "notícias internacionais",
-          "eleicoes",
-          "eua",
-          "democratas",
-          "superam",
-          "republicanos",
-          "arrecadacao",
-          "Eleições nos EUA: democratas superam republicanos na arrecadação de fundos 2026-10-16",
-          "notícias mundiais outubro 2026",
-          "2026-10-16",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "64cd8626",
-      "title": "Patients in chains rescued from suspected illegal rehab centre in South Africa",
-      "url": "https://www.bbc.co.uk/news/articles/cmwyvxj49gpwo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T14:57:51.000Z",
-      "discovered_at": "2026-10-16T14:24:12.034Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6ae2/live/aea9db50-c950-11f1-8879-9d9deeb686e1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/patients-in-chains-rescued-from-suspected-illegal-rehab-centre-in-south-africa-64cd86/",
-      "landing_url": "https://matchapp.tv/?news=64cd8626#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "patients",
-          "chains",
-          "rescued",
-          "suspected",
-          "illegal",
-          "rehab"
-        ],
-        "long_tail": [
-          "Patients in chains rescued from suspected illegal rehab centre in South Africa 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "patients",
-          "chains",
-          "rescued",
-          "suspected",
-          "illegal",
-          "rehab"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Patients in chains rescued from suspected illegal rehab…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "patients",
-          "chains",
-          "rescued",
-          "suspected",
-          "illegal",
-          "rehab",
-          "Patients in chains rescued from suspected illegal rehab centre in South Africa 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "044b4bea",
-      "title": "Pope pictured for first time since surgery and cancer diagnosis",
-      "url": "https://www.bbc.co.uk/news/articles/cw146ej00yn7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-16T14:36:39.000Z",
-      "discovered_at": "2026-10-16T15:23:19.831Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-16. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b711/live/6c3028b0-c978-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pope-pictured-for-first-time-since-surgery-and-cancer-diagnosis-044b4b/",
-      "landing_url": "https://matchapp.tv/?news=044b4bea#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-16",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pope",
-          "pictured",
-          "first",
-          "time",
-          "since",
-          "surgery"
-        ],
-        "long_tail": [
-          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pope",
-          "pictured",
-          "first",
-          "time",
-          "since",
-          "surgery"
-        ],
-        "freshness_keywords": [
-          "2026-10-16"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Pope pictured for first time since surgery and cancer…",
-        "meta_description": "World report published by BBC World on 2026-10-16. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-16",
-          "world news",
-          "global headlines",
-          "pope",
-          "pictured",
-          "first",
-          "time",
-          "since",
-          "surgery",
-          "Pope pictured for first time since surgery and cancer diagnosis 2026-10-16",
-          "world news October 2026",
-          "2026-10-16",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -1977,7 +2069,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2075,7 +2167,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2176,7 +2268,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2270,7 +2362,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2371,7 +2463,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2472,7 +2564,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2573,7 +2665,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2674,7 +2766,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2773,7 +2865,7 @@
           "bbc.co.uk sparks fly celebrity traitors",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2874,7 +2966,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -2971,7 +3063,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -3061,7 +3153,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -3162,7 +3254,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -3261,7 +3353,7 @@
           "bbc.co.uk marvel fans meet welsh",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -3356,7 +3448,7 @@
           "g1.globo.com anuncia shows sao paulo",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     },
     {
@@ -3454,105 +3546,7 @@
           "g1.globo.com Laila Garin",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
-      }
-    },
-    {
-      "id": "10661d0e",
-      "title": "Hilary Swank anuncia gravidez aos 52 anos",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/15/hilary-swank-anuncia-gravidez-aos-52-anos.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-15T12:15:38.000Z",
-      "discovered_at": "2026-10-15T17:18:45.344Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Hilary Swank",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/w2aAqkpzb2ZaF74qxU0Q6_VcQao=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/k/j/Ufy4i8QiyusSZydaKhxQ/hillary.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/hilary-swank-anuncia-gravidez-aos-52-anos-10661d/",
-      "landing_url": "https://matchapp.tv/?news=10661d0e#latest-news",
-      "seo": {
-        "primary_keyword": "Hilary Swank últimas notícias",
-        "short_tail": [
-          "Hilary Swank",
-          "Hilary Swank news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Hilary Swank latest news October 2026",
-          "Hilary Swank entertainment update 2026",
-          "Hilary Swank news 2026-10-15",
-          "latest entertainment news about Hilary Swank",
-          "hilary swank hilary swank anuncia gravidez latest update",
-          "G1 Hilary Swank entertainment",
-          "últimas notícias sobre Hilary Swank outubro 2026",
-          "Hilary Swank notícia de 2026-10-15",
-          "o que aconteceu com Hilary Swank"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Hilary Swank",
-          "hilary",
-          "swank",
-          "anuncia",
-          "gravidez",
-          "aos",
-          "anos"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "Hilary Swank 2026"
-        ],
-        "source_keywords": [
-          "G1 Hilary Swank",
-          "g1.globo.com Hilary Swank",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Hilary Swank anuncia gravidez aos 52 anos | Notícias de…",
-        "meta_description": "Hilary Swank: Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Hilary Swank últimas notícias",
-          "Hilary Swank",
-          "Hilary Swank news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Hilary Swank latest news October 2026",
-          "Hilary Swank entertainment update 2026",
-          "Hilary Swank news 2026-10-15",
-          "latest entertainment news about Hilary Swank",
-          "hilary swank hilary swank anuncia gravidez latest update",
-          "G1 Hilary Swank entertainment",
-          "últimas notícias sobre Hilary Swank outubro 2026",
-          "Hilary Swank notícia de 2026-10-15",
-          "o que aconteceu com Hilary Swank",
-          "hilary",
-          "swank",
-          "anuncia",
-          "gravidez",
-          "aos",
-          "anos",
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "Hilary Swank 2026",
-          "G1 Hilary Swank",
-          "g1.globo.com Hilary Swank",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-16T21:38:39.912Z"
+        "seo_generated_at": "2026-10-17T00:44:40.118Z"
       }
     }
   ]
