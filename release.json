@@ -1,6 +1,6 @@
 {
-  "version": "2026.10.16.1",
-  "date": "2026-10-16",
+  "version": "2026.10.17.1",
+  "date": "2026-10-17",
   "functional": true,
   "notes": {
     "en": "Match Together now starts with three quick choices and reveals a complete shared recommendation before optional sign-in to save. Country-specific discovery pages show dated viewing sources. This update also improves spacing, language selection and optional Android handoff without forcing visitors away from the web.",

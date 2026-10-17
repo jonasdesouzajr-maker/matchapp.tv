@@ -1019,6 +1019,9 @@
       document.dispatchEvent(new CustomEvent('matchapp:adult-metadata',{detail:{
         title,tmdbId:Number(meta.tmdb_id),kind:meta.media_kind,country:regionCode()
       }}));
+    // Read-only result presentation consumes the same resolved source record;
+    // it performs no lookup and cannot interrupt media or matching behavior.
+    try { window.MatchAppResultExperience?.setAvailability?.(title,meta,regionCode()); } catch (_) {}
   }
 
   let kidsSerial=0,kidsEnrichTimer=0;

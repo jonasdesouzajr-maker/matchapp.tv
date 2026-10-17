@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/pro-plan.js?v=20261017-3"></script>
 <title>Your MatchApp profile | MatchApp Ai</title>
 <meta name="description" content="Your MatchApp profile, saved matches and preferences.">
 <link rel="canonical" href="https://matchapp.tv/profile/">
@@ -338,6 +339,8 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 <link rel="stylesheet" href="/profile-security-20261011.css?v=20261011-security1">
 <script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+<link rel="stylesheet" href="/match-tokens.css?v=20261017-2">
+<link rel="stylesheet" href="/pro-plan.css?v=20261017-3">
 </head>
 <body class="matchapp-profile">
     <!-- Google Tag Manager (noscript) -->
@@ -367,6 +370,7 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 <a class="profile-hub-row" href="#passkey-title"><span>♜</span><span><strong data-i18n="profile.privacyTitle">Privacy &amp; Security</strong><small data-i18n="profile.privacySummary">Keep your account safe</small></span><b>›</b></a>
 <a class="profile-hub-row" href="mailto:support@matchapp.tv"><span>?</span><span><strong data-i18n="profile.helpTitle">Help &amp; Support</strong><small data-i18n="profile.helpSummary">FAQs and contact us</small></span><b>›</b></a>
 </nav></section>
+            <section data-matchapp-pro-entry hidden></section>
             <article class="premium-card core-identity-card profile-hub-target" id="account-details" hidden><h3 data-i18n="profile.detailsTitle">My details</h3><p class="pf-card-sub" data-i18n="profile.savedDetails">Your saved account details.</p><div class="input-grid" id="editable-fields-section"><div class="input-group"><label for="profile-name" data-i18n="profile.name">Name</label><input id="profile-name" type="text"></div><div class="input-group"><label for="profile-dob" data-i18n="profile.dob">Date of birth</label><input id="profile-dob" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" maxlength="10"></div><div class="input-group"><label for="profile-country" data-i18n="profile.country">Country</label><select id="profile-country" autocomplete="country-name" required aria-required="true"><option value="" data-i18n="profile.selectCountry">Select your country</option></select></div><div class="input-group"><label for="profile-starsign" data-i18n="profile.starSign">Star sign</label><select id="profile-starsign" required><option value="" data-i18n="profile.chooseStarSign">Choose your star sign</option><option value="Aries">Aries</option><option value="Taurus">Taurus</option><option value="Gemini">Gemini</option><option value="Cancer">Cancer</option><option value="Leo">Leo</option><option value="Virgo">Virgo</option><option value="Libra">Libra</option><option value="Scorpio">Scorpio</option><option value="Sagittarius">Sagittarius</option><option value="Capricorn">Capricorn</option><option value="Aquarius">Aquarius</option><option value="Pisces">Pisces</option></select></div><div class="input-group"><label for="profile-gender" data-i18n="profile.gender">Gender</label><select id="profile-gender"><option value="" data-i18n="profile.genderPrefer">Prefer not to say</option><option value="Male" data-i18n="profile.genderMale">Male</option><option value="Female" data-i18n="profile.genderFemale">Female</option><option value="Non-binary" data-i18n="profile.genderNonBinary">Non-binary</option></select></div></div><div id="locked-info-card" class="pf-locked-summary" style="display:none" aria-live="polite"><p class="pf-card-sub" data-i18n="profile.lockedIdentity">Your identity is saved securely and cannot be edited.</p><div class="input-grid"><div class="input-group"><label data-i18n="profile.name">Name</label><strong id="lock-val-name"></strong></div><div class="input-group"><label data-i18n="profile.country">Country</label><strong id="lock-val-country"></strong></div><div class="input-group"><label data-i18n="profile.region">State / region</label><strong id="lock-val-region"></strong></div><div class="input-group"><label data-i18n="profile.dob">Date of birth</label><strong id="lock-val-dob"></strong></div><div class="input-group"><label data-i18n="profile.starSign">Star sign</label><strong id="lock-val-sign"></strong></div><div class="input-group"><label data-i18n="profile.age">Age</label><strong id="lock-val-age"></strong></div></div><span id="lock-val-sign-trait" class="pf-card-sub"></span><span id="lock-val-email" hidden></span></div><span id="profile-age-display" style="display:none"></span><p id="identity-load-status" class="setting-note" hidden></p><button id="identity-load-retry" class="secondary-btn" hidden type="button" data-i18n="profile.retry">Try again</button><button id="save-profile-btn" class="gold-btn" type="button" onclick="saveProfileData()" data-i18n="profile.saveCreate">Save &amp; create profile</button></article>
                 <!-- ============================================== -->
                 <!-- SETTINGS — every preference in one place.      -->
@@ -593,7 +597,8 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
     <script src="/matching-policy.js?v=20260926-conflicts2"></script>
     <script src="/match-localization.js?v=20260925-matchrestore2"></script>
 <script src="/match-ai-rank.js?v=20260927-ranked1"></script>
-<script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;regional=20261016-1"></script>
+<script src="/match-tokens.js?v=20261017-2"></script>
+<script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;tokens=20261017-1&amp;regional=20261016-1"></script>
     <script src="/install-progress.js?v=20260930-install-recovery1&amp;brand=20261001-canonicalai1"></script>
     <script src="/taste.js?v=187"></script>
 <script src="/notifications.js?v=20261016-surface1"></script>

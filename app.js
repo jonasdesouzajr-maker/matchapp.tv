@@ -119,6 +119,7 @@ function anonLimitCheck(action = 'match') {
 }
 
 function showQuotaMessage(kind, status, action = 'match') {
+    if (window.MatchAppTokens?.handleLimit?.(kind, status, action) === true) return;
     if (kind === 'anon') {
         // Guests may still have one of their two free social-share rewards.
         // Keep their latest result visible until they have tried it.
@@ -220,8 +221,12 @@ window.ensureCompactMatchSession = async function () {
     finally { compactSessionFlight = null; }
 };
 
-async function checkDailyLimit(action = 'match') {
+async function checkDailyLimit(action = 'match', tokenContext) {
     if (!['match','ask_ai'].includes(action)) return false;
+    // The server flag selects the new post-validation Match debit. Ask AI,
+    // legacy paid balances and the disabled-flag path keep their own mechanism.
+    const tokenDecision = await window.MatchAppTokens?.consume?.(action, tokenContext);
+    if (typeof tokenDecision === 'boolean') return tokenDecision;
     if (!supabaseClient) return anonLimitCheck(action);
     try {
         // Wait for the SDK to restore the session before treating a new page as logged out.
@@ -259,6 +264,7 @@ window.checkDailyLimit = checkDailyLimit;
 
 // Live included-actions-left pill in the header.
 function updateQuotaBadge(status) {
+    if (window.MatchAppTokens?.updateStatus?.(status) === true) return;
     const el = document.getElementById('quota-badge');
     if (!el || !status || typeof status.remaining !== 'number') return;
     const included = Math.max(0, Number(status.remaining) || 0);
@@ -2841,6 +2847,7 @@ function promptProfileCompletion(missing) {
 // Supabase RPC. The browser never selects reward amounts or eligible user IDs.
 const registrationWelcomeAttempted = new Set();
 async function claimRegistrationWelcomeBonus(user) {
+    if (window.MatchAppTokens?.retireLegacyPromotions === true) return;
     if (!user?.id || registrationWelcomeAttempted.has(user.id) || !supabaseClient?.rpc) return;
     registrationWelcomeAttempted.add(user.id);
     try {
@@ -4648,6 +4655,8 @@ async function withMatchSourceDeadline(work,ms){
 // Non-spending preflight. The server's atomic consume step still runs only
 // once a real result has passed source and history validation.
 async function matchAllowanceBeforeLookup(action='match') {
+    const tokenDecision = await window.MatchAppTokens?.beforeLookup?.(action);
+    if (typeof tokenDecision === 'boolean') return tokenDecision;
     const guestStatus=()=>{
         const used=localStorage.getItem('match_lastDate')===new Date().toLocaleDateString()
             ? Math.max(0,parseInt(localStorage.getItem('match_dailyCount')||'0',10)||0) : 0;
@@ -5004,9 +5013,11 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     // Charge only after a usable title has passed validation. Reused titles
     // and explicit retrieval of a saved, verified title are free.
+    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
     window.__matchappMatchPhase='quota';
-    if (!intentionalHistoryFallback && !freeSavedSpecific && !(await checkDailyLimit())) {
+    if (!intentionalHistoryFallback && !freeSavedSpecific && !(await checkDailyLimit('match', {runId:matchRunId}))) {
         clearInterval(timerInterval);
+        if(matchRunId!==window.__matchappMatchRunId)return;
         document.body.classList.remove('match-searching');
         if (loadBox) loadBox.style.display='none';
         if (resultBox) resultBox.style.display='none';
@@ -5015,7 +5026,11 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         } else if (qBox) qBox.style.display='block';
         return;
     }
-    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
+    if(matchRunId!==window.__matchappMatchRunId){
+        clearInterval(timerInterval);
+        await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
+        return;
+    }
     // Do not remember the title or fire matchapp:newmatch until the result
     // card is actually on screen. rememberShownTitle writes match_recentTitles,
     // which known() reads, and a premature newmatch lets other modules hide
@@ -5025,9 +5040,21 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (pctLabel) pctLabel.innerText = '100%';
     clearInterval(timerInterval);
     
-    if(matchRunId!==window.__matchappMatchRunId)return;
+    if(matchRunId!==window.__matchappMatchRunId){
+        await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
+        return;
+    }
     window.__matchappMatchPhase='result';
-    await renderResult(matchResult, isSpecificSearch);
+    try {
+        await renderResult(matchResult, isSpecificSearch);
+        if(matchRunId===window.__matchappMatchRunId&&resultBox&&!resultBox.hidden&&resultBox.style.display!=='none'&&window.globalMatchTitle===matchResult.title) {
+            try { window.MatchAppTokens?.confirmResult?.('one_match',null,matchRunId); } catch (_) {}
+        } else await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
+    }
+    catch (error) {
+        await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
+        throw error;
+    }
 };
 
 // ----------------------------------------------------
@@ -5040,6 +5067,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
 // works for first-time traffic rather than only for accounts.
 // ----------------------------------------------------
 function renderQuotaCorner() {
+    if (window.MatchAppTokens?.renderCorner?.() === true) return;
     const el = document.getElementById('result-quota-corner');
     const numEl = document.getElementById('result-quota-num');
     const labelEl = document.getElementById('result-quota-label');
@@ -5294,6 +5322,7 @@ async function renderResult(selected, isSpecificSearch) {
     delete resultBox.dataset.resultClosing;
     resultBox.classList.remove('ma-result-closing', 'ma-result-arriving');
     resultBox.removeAttribute('aria-hidden');
+    try { window.MatchAppSponsoredMatch?.present?.(); } catch (_) {}
     resultBox.hidden = false;
     resultBox.style.display = 'block';
     resultBox.classList.add('is-revealed', 'ma-result-arriving');
@@ -5599,6 +5628,10 @@ async function renderResult(selected, isSpecificSearch) {
             }
         } catch (e) { /* clipboard blocked; the link still opens normally */ }
     } : null;
+
+    // Optional presentation reads the completed route; the existing href,
+    // clipboard handoff and all portfolio/rematch handlers stay authoritative.
+    try { window.MatchAppResultExperience?.present?.(selected, {audioPick}); } catch (_) {}
 
     // Keep the save/seen buttons worded for the medium being shown.
     applyAudioModeLabels(audioPick);

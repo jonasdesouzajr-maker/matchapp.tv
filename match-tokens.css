@@ -1,0 +1,107 @@
+/* Server-enabled adult token UI. Never targets an ad slot or a Kids/Jonas control. */
+.ma-token-balance {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid #a58cb347;
+  border-radius: 14px;
+  background: transparent;
+  color: #dfcdea;
+  font: 650 14px/1.4 var(--font-main, "Inter", system-ui, sans-serif);
+  white-space: normal;
+  text-align: start;
+  overflow-wrap: anywhere;
+  box-shadow: none;
+  cursor: pointer;
+}
+.ma-token-balance::before, .ma-token-balance::after { content: none !important; }
+.ma-token-balance[hidden] { display: none; }
+.ma-token-balance:focus-visible { outline: 3px solid #f4d58f; outline-offset: 3px; }
+.ma-token-corner { flex: 1 1 0; min-width: 0; align-self: stretch; display: flex; align-items: center; }
+.ma-token-corner[hidden] { display: none; }
+.ma-token-active-toolbar { min-height: 72px; }
+.ma-token-corner .ma-token-balance { max-width: min(100%, 380px); }
+html body.page-home #result-box .ma-token-corner .ma-token-balance { min-height: 48px; }
+html body.page-home #result-box .match-result-toolbar.ma-token-active-toolbar { min-height: 72px !important; }
+.ma-token-scrim { position: fixed; inset: 5px; z-index: 10017; background: #08050bd6; }
+.ma-token-scrim[hidden] { display: none; }
+.ma-token-dialog {
+  box-sizing: border-box;
+  position: fixed;
+  inset: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  z-index: 10018;
+  width: min(560px, calc(100% - 24px));
+  max-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: auto;
+  padding: 24px;
+  border: 1px solid #d9b76a;
+  border-radius: 24px;
+  background: #211632;
+  color: #fff8e8;
+  box-shadow: 0 22px 64px #09040c80;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  text-align: start;
+  font: 400 16px/1.5 var(--font-main, "Inter", system-ui, sans-serif);
+}
+.ma-token-dialog * { box-sizing: border-box; }
+.ma-token-dialog .ma-token-heading { display: flex; gap: 12px; align-items: start; justify-content: space-between; }
+.ma-token-dialog h2 { min-width: 0; margin: 0; font-size: clamp(23px, 5vw, 28px); line-height: 1.25; color: #f2d590; font-weight: 800; overflow-wrap: anywhere; }
+.ma-token-dialog .ma-token-intro { margin: 14px 0; color: #e5d7ef; }
+.ma-token-dialog .ma-token-ledger { display: grid; gap: 6px; min-height: 6rem; border: 1px solid #a98ac347; border-radius: 16px; padding: 14px; margin: 14px 0; color: #e5d7ef; background: #ffffff05; }
+.ma-token-dialog .ma-token-ledger p { margin: 0; }
+.ma-token-dialog .ma-token-ledger strong { color: #f2d590; }
+.ma-token-dialog .ma-token-notice { min-height: 4.5rem; margin: 12px 0; padding: 10px 0; color: #dccde8; }
+.ma-token-dialog .ma-token-actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.ma-token-dialog .ma-token-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid #e5c681;
+  border-radius: 16px;
+  background: linear-gradient(115deg, #f4da94, #cda446);
+  color: #261336;
+  font: 750 16px/1.35 var(--font-main, "Inter", system-ui, sans-serif);
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+  box-shadow: none;
+  transform: none;
+  cursor: pointer;
+}
+.ma-token-dialog .ma-token-button::before, .ma-token-dialog .ma-token-button::after { content: none; }
+.ma-token-dialog .ma-token-button--quiet { color: #e4d0f1; border-color: #a68ac35c; background: transparent; }
+.ma-token-dialog .ma-token-button--close { width: 48px; min-height: 48px; flex: 0 0 48px; padding: 10px; border-radius: 14px; font-size: 24px; }
+.ma-token-dialog .ma-token-button:focus-visible { outline: 3px solid #f6d991; outline-offset: 3px; }
+.ma-token-dialog .ma-token-button:disabled { opacity: .6; cursor: default; }
+.ma-token-dialog .ma-token-footnote { margin: 14px 0 0; font-size: 13px; color: #c5b2d1; }
+.ma-token-reading-status { min-height: 64px; padding-top: 8px; }
+/* Existing promotion mechanisms remain intact while the server flag is off.
+ * These selectors retire only the explicitly superseded adult offers. */
+html[data-match-token-policy="match-tokens-v1"] :is(.ma-guest-trial-bar, #ma-welcome-offer, .profile-nudge,
+  #out-of-matches-modal, .credits-inline-cta, #match-packs-section, #share-reward-status,
+  #share-confirm-external, #share-reward-screen, #ma-official-social-proof, .ma-public-proof-overlay) { display: none !important; }
+html[data-match-token-policy="match-tokens-v1"] #quota-badge { visibility: hidden !important; pointer-events: none !important; }
+html[data-match-token-policy="match-tokens-v1"] #result-quota-corner { display: none !important; }
+html[data-match-token-policy="match-tokens-v1"] :is([data-ma-retired-offer], [data-ma-retired-upsell], [data-i18n="pricing.title"], [data-i18n="pricing.subtitle"],
+  #purchase-tab-matches, #purchase-tab-credits, #ask-ai-credits, #credits-grid, #purchase-hub > p) { display: none !important; }
+@media (min-width: 640px) { .ma-token-dialog { padding: 32px; } }
+@media (max-width: 359px) { .ma-token-dialog { padding: 18px; } .ma-token-dialog .ma-token-notice { min-height: 6rem; } }
+@media (prefers-reduced-motion: reduce) { .ma-token-dialog *, .ma-token-balance { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media (forced-colors: active) { .ma-token-dialog, .ma-token-dialog .ma-token-button, .ma-token-balance { border-color: ButtonText; box-shadow: none; } }
+
+html[data-match-token-policy="match-tokens-v1"] #purchase-hub > .purchase-tabs { grid-template-columns: minmax(0, 1fr); }
+
+.ma-token-reward-actions { display: grid; gap: 10px; }
+.ma-token-dialog .ma-token-reward { min-height: 80px; }
+.ma-token-reward-cancel { min-height: 56px; }

@@ -52,6 +52,7 @@ function broadcast(){
 }
 let claiming=false;
 function claim(kind,token){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return {ok:false,left:0,reason:'retired'};
  if(!guest()||!['match','ask_ai'].includes(kind)||claiming)return {ok:false,left:sharesLeft()};
  claiming=true;
  try{
@@ -71,6 +72,7 @@ function claim(kind,token){
  finally{claiming=false;}
 }
 function openRegistration(){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return;
  if(window.MatchAppRegistrationWelcome?.openOffer?.())return;
  window.location.assign('/?registrationOffer=1');
 }
@@ -112,6 +114,7 @@ function status(bar,kind,button){
  }else{button.hidden=true;button.dataset.offer='';}
 }
 function decorateMatchResult(){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return;
  const result=$('#result-box');if(!result||!guest())return;
  let bar=result.querySelector(':scope > .ma-guest-trial-bar');
  let button;
@@ -133,6 +136,7 @@ function decorateMatchResult(){
  bar.hidden=false;status(bar,'watch_match',button);
 }
 function decorateBookResult(host,title,format){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return;
  if(!guest()||!host||host.hidden)return;
  let bar=host.querySelector(':scope > .ma-guest-trial-bar');
  let button;
@@ -153,6 +157,7 @@ function decorateBookResult(host,title,format){
  button=bar.querySelector('button');status(bar,'match',button);
 }
 function decorateAiBubble(wrap){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return;
  if(!guest()||!wrap||wrap.dataset.guestShareEligible==='0')return;
  let bar=wrap.querySelector(':scope > .ma-guest-trial-bar');
  let button;
@@ -183,6 +188,10 @@ function decorateAiBubble(wrap){
  button=bar.querySelector('button');status(bar,'ask_ai',button);
 }
 function refreshVisible(){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true){
+  document.querySelectorAll('.ma-guest-trial-bar').forEach(e=>e.hidden=true);
+  return;
+ }
  if(!guest()){
   document.querySelectorAll('.ma-guest-trial-bar').forEach(e=>e.hidden=true);
   return;
@@ -203,6 +212,7 @@ async function matchReward(){
  },window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?0:270);
 }
 function offerPending(kind){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return false;
  if(kind==='ask_ai'&&sharesLeft()<=0)return false;
  const target=kind==='ask_ai'
   ?$('#chat-log > .chat-assistant:last-of-type .ma-guest-trial-bar')
@@ -218,6 +228,7 @@ function offerPending(kind){
 // native share handoff, opened social tab, copied text or self-confirmation
 // can redeem a MatchApp guest reward.
 function finalizeVerified({kind,title,token,proof,onNext}){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return false;
  if(!guest()||!proof?.verified||proof.kind!==kind||
     typeof proof.proof_id!=='string'||proof.proof_id.length<30||
     !['tiktok','bluesky'].includes(proof.platform)||
@@ -259,6 +270,7 @@ function finalizeVerified({kind,title,token,proof,onNext}){
  return true;
 }
 function open({kind,title,token,message,url,onNext}){
+ if(window.MatchAppTokens?.retireLegacyPromotions===true)return window.MatchAppTokens.ordinaryShare({title,message,url});
  if(!guest())return;
  if(kind==='watch_match'){
   try{
@@ -279,6 +291,7 @@ function open({kind,title,token,message,url,onNext}){
   :'Post verification is temporarily unavailable. No bonus was used.',true);
 }
 function init(){
+ document.addEventListener('matchapp:tokenpolicy',refreshVisible);
  document.addEventListener('matchapp:authchange',refreshVisible);
  document.addEventListener('matchapp:newmatch',()=>window.setTimeout(refreshVisible,0));
  document.addEventListener('matchapp:langchange',refreshVisible);

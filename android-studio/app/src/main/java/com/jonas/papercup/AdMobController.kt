@@ -33,6 +33,7 @@ class AdMobController(
     private val consentInformation = UserMessagingPlatform.getConsentInformation(activity)
     private var adView: AdView? = null
     private var adsInitialized = false
+    private var adsInitializationCompleted = false
     private var consentFlowStarted = false
     private var entitlementAdFree = true
     private var bannerRequestStarted = false
@@ -170,6 +171,7 @@ class AdMobController(
                 // Google recommends background initialization to avoid ANRs.
                 MobileAds.initialize(activity.applicationContext) {
                     withLiveActivity {
+                        adsInitializationCompleted = true
                         if (!entitlementAdFree && consentInformation.canRequestAds()) loadBanner()
                     }
                 }
@@ -200,6 +202,8 @@ class AdMobController(
                 val widthPixels = bannerContainer.width.takeIf { it > 0 }
                     ?: activity.resources.displayMetrics.widthPixels
                 val widthDp = (widthPixels / density).toInt().coerceAtLeast(1)
+                // Retain the established reserved banner geometry across supported devices.
+                @Suppress("DEPRECATION")
                 val adaptiveSize =
                     AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, widthDp)
 
@@ -268,6 +272,12 @@ class AdMobController(
         shell.visibility =
             if (bannerLoaded || privacyButton.visibility == View.VISIBLE) View.VISIBLE else View.GONE
     }
+
+    /** Read-only access for separately requested rewarded ads; never starts or changes banner work. */
+    fun canRequestRewarded(): Boolean =
+        Looper.myLooper() == Looper.getMainLooper() && isConsentUiAvailable() &&
+            BuildConfig.ADMOB_ENABLED && adsInitializationCompleted && !adInitFailed &&
+            !entitlementAdFree && runCatching { consentInformation.canRequestAds() }.getOrDefault(false)
 
     fun pause() {
         if (!destroyed) runCatching { adView?.pause() }.onFailure { suppressAds(it) }

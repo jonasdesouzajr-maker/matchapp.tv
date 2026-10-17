@@ -50,7 +50,7 @@ test('Kids Mode stays isolated from E-books Ai',()=>{
 test('E-book matching uses the shared Match allowance and cannot silently run unmetered',()=>{
  const js=read('ebooks/ebook-matcher.js');
  assert.match(js,/typeof window\.checkDailyLimit!=='function'/);
- assert.match(js,/const allowed=await window\.checkDailyLimit\(\)/);
+ assert.match(js,/const allowed=await window\.checkDailyLimit\('match',tokenContext\)/);
  assert.match(js,/if\(!allowed\)return/);
  assert.match(js,/match_ebook_saved_v1/);
  assert.match(js,/match_ebook_disliked_v1/);
@@ -88,8 +88,8 @@ test('E-books hub is indexable and preserved by the sitemap generator',()=>{
 test('grown-up Android build is advanced for the E-books release',()=>{
  const gradle=read('android-studio/app/build.gradle.kts');
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
- assert.match(gradle,/versionCode = 54/);
- assert.match(gradle,/versionName = "1\.1\.54"/);
- assert.match(main,/appBuild=54/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.54/);
+ assert.match(gradle,/versionCode = 55/);
+ assert.match(gradle,/versionName = "1\.1\.55"/);
+ assert.match(main,/appBuild=55/);
+ assert.match(main,/MatchAppAiAndroid\/1\.1\.55/);
 });

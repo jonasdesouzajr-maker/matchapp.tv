@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Explicit page-language labels ship together; Android device locale never selects a fallback. -->
+    <string name="native_news_sponsored_en" translatable="false">Sponsored</string>
+    <string name="native_news_sponsored_pt" translatable="false">Patrocinado</string>
+    <string name="native_news_sponsored_es" translatable="false">Patrocinado</string>
+    <string name="native_news_sponsored_fr" translatable="false">Sponsorisé</string>
+    <string name="native_news_sponsored_de" translatable="false">Gesponsert</string>
+    <string name="native_news_sponsored_it" translatable="false">Sponsorizzato</string>
+    <string name="native_news_sponsored_tr" translatable="false">Sponsorlu</string>
+    <string name="native_news_sponsored_ru" translatable="false">Реклама</string>
+    <string name="native_news_sponsored_ar" translatable="false">إعلان مدفوع</string>
+    <string name="native_news_sponsored_hi" translatable="false">प्रायोजित</string>
+    <string name="native_news_sponsored_id" translatable="false">Bersponsor</string>
+    <string name="native_news_sponsored_ja" translatable="false">スポンサー</string>
+    <string name="native_news_sponsored_ko" translatable="false">스폰서</string>
+    <string name="native_news_sponsored_zh" translatable="false">赞助内容</string>
+</resources>

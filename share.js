@@ -40,6 +40,7 @@ function nextRewardResetText() {
 // Server-enforced when signed in (claim_match_result_share RPC), local otherwise.
 // A reward is real Match currency: it accumulates and stays until a Match uses it.
 async function grantShareReward(sharedTitle = window.globalMatchTitle) {
+    if (window.MatchAppTokens?.retireLegacyPromotions === true) return {ok:false,left:0,reason:'retired'};
     if (window.isUserLoggedIn && window.supabaseClient) {
         try {
             // A result must reach the signed-in owner's server history before
@@ -131,7 +132,7 @@ window.openShareSheet = async function() {
 
     // Adult guest sharing uses a fresh server-issued code and an actual
     // public-post check. Member rewards keep their original server RPC.
-    if (!window.isUserLoggedIn) {
+    if (!window.isUserLoggedIn && window.MatchAppTokens?.retireLegacyPromotions !== true) {
         if (window.MatchAppGuestShare?.open) {
             window.MatchAppGuestShare.open({
                 kind:'watch_match',title,
@@ -214,7 +215,7 @@ function shareText() {
 
 // Native share sheet (mobile) — attaches the generated image when supported.
 window.shareNative = async function() {
-    if (!window.isUserLoggedIn) return window.openShareSheet();
+    if (!window.isUserLoggedIn && window.MatchAppTokens?.retireLegacyPromotions !== true) return window.openShareSheet();
     const sharedTitle = shareSessionTitle || window.globalMatchTitle;
     const canvas = window._shareCanvas;
     const text = shareText();
@@ -261,6 +262,7 @@ window.copyShareText = async function(silent) {
 
 let pendingExternalShare = null;
 function externalShareStatus(network) {
+    if (window.MatchAppTokens?.retireLegacyPromotions === true) return;
     const statusEl = document.getElementById('share-reward-status');
     const name = network === 'x' ? 'X' : network.charAt(0).toUpperCase() + network.slice(1);
     if (statusEl) statusEl.innerHTML = `↗ Finish sharing on <strong>${name}</strong>, then return and confirm your progress toward 3 shares. MatchApp cannot read your activity inside another social network.`;
@@ -301,7 +303,7 @@ function markExternalShareStarted(network) {
 // Web intents therefore require an explicit confirmation after the visitor
 // returns instead of silently awarding a Match for opening a tab or copying text.
 window.shareTo = function(network) {
-    if (!window.isUserLoggedIn) return window.openShareSheet();
+    if (!window.isUserLoggedIn && window.MatchAppTokens?.retireLegacyPromotions !== true) return window.openShareSheet();
     const text = encodeURIComponent(shareText());
     const url = encodeURIComponent(SHARE_URL);
     const map = {
@@ -477,6 +479,7 @@ window.matchAgainFromShare = function() {
 
 async function afterShare(network, sharedTitle = shareSessionTitle || window.globalMatchTitle) {
     if (typeof window.track === 'function') window.track('share', { method: network, content_type: 'match', item_id: window.globalMatchTitle || '' });
+    if (window.MatchAppTokens?.retireLegacyPromotions === true) return;
     if (_rewardedThisCard) return;
 
     const result = await grantShareReward(sharedTitle);

@@ -167,6 +167,23 @@
     a.append(img,body);
     article.append(a);
 
+    // Optional discovery owns only this reserved sibling slot. The existing
+    // source anchor, artwork, click listener and real article category stay intact.
+    const commerce=window.MatchAppNewsMonetization;
+    if(commerce?.eligibleArticle?.(item)){
+      article.dataset.newsCommerceCard='';
+      article.dataset.newsCategory=item.category;
+      article.dataset.newsTitle=title;
+      article.dataset.newsEvent=decodeEntities(item.event_type||'');
+      article.dataset.newsDescription=decodeEntities(item.description||'');
+      article.dataset.newsSourceUrl=original;
+      const slot=document.createElement('div');
+      slot.className='ma-news-commerce-slot';slot.dataset.newsCommerceSlot='';
+      slot.lang=selectedLanguage();slot.dir=slot.lang==='ar'?'rtl':'ltr';
+      slot.innerHTML=commerce.contextMarkup(item,'',slot.lang);
+      article.append(slot);
+    }
+
     a.addEventListener('click',()=>track('latest_news_click',{
       news_id:item.id||'',news_source:sourceName,news_country:item.country||'GLOBAL',news_scope:scope,news_keyword:decodeEntities(seo.primary_keyword||'')
     }));

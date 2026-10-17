@@ -11,12 +11,17 @@ android {
         applicationId = "com.jonas.papercup"
         minSdk = 24
         targetSdk = 36
-        versionCode = 54
-        versionName = "1.1.54"
+        versionCode = 55
+        versionName = "1.1.55"
         // Production banner is enabled only after the native entitlement + UMP consent gates allow it.
         buildConfigField("Boolean", "ADMOB_ENABLED", "true")
-        buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/4843348278\"")
-        buildConfigField("String", "ADMOB_REWARDED_ID", "\"\"")
+        buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/5523667258\"")
+        buildConfigField("String", "ADMOB_REWARDED_ID", "\"ca-app-pub-9541435081010948/2802190985\"")
+        // Enable release news inventory only after physical-device placement/SDK-click QA.
+        buildConfigField("Boolean", "ADMOB_NATIVE_NEWS_ENABLED", "false")
+        buildConfigField("String", "ADMOB_NATIVE_NEWS_ID", "\"ca-app-pub-9541435081010948/4843348278\"")
+        // Account-confirmed draft SKU. The server separately gates actual sales readiness.
+        buildConfigField("String", "PLAY_PRO_PRODUCT_ID", "\"matchapp_pro\"")
     }
 
     buildTypes {
@@ -36,6 +41,8 @@ android {
             buildConfigField("Boolean", "ADMOB_ENABLED", "true")
             buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-3940256099942544/9214589741\"")
             buildConfigField("String", "ADMOB_REWARDED_ID", "\"ca-app-pub-3940256099942544/5224354917\"")
+            buildConfigField("Boolean", "ADMOB_NATIVE_NEWS_ENABLED", "true")
+            buildConfigField("String", "ADMOB_NATIVE_NEWS_ID", "\"ca-app-pub-3940256099942544/2247696110\"")
         }
     }
 

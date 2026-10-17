@@ -1,0 +1,174 @@
+# MatchApp Ai Android monetization implementation
+
+Reviewed 17 October 2026. This is an implementation and activation record, not an AdMob approval or Play publication confirmation.
+
+## Audited production architecture
+
+The adult package is `com.jonas.papercup`. Its existing Kotlin application renders the live `https://matchapp.tv/` experience in a hardened WebView; it is not a separate Compose recommendation or news feed. The coordinated 17 October Play Console check found code 54 in production review and code 53 live; all-track bundle history contained no code above 54. The new native source is therefore code 55 / version 1.1.55, with matching Home `appBuild` and user-agent markers. The existing code 54 review is preserved; it must not be rebuilt or resubmitted as this release.
+
+Result presentation, article context links and any eligible regional offer cards should use the same deployed adult web components in this shell. Do not create a second matching model, news data source, entitlement store or recommendation listener in Kotlin. The separate `:kidsapp` module remains unchanged and ad-free.
+
+The source has one native adaptive-banner renderer, controlled by `AdMobController.kt`:
+
+| Configuration | Audited value / behavior |
+| --- | --- |
+| AdMob App ID | `ca-app-pub-9541435081010948~6998171073` |
+| Release banner unit | `ca-app-pub-9541435081010948/5523667258`; corrected to the account-confirmed banner format with owner approval, preserving the existing banner geometry and handlers |
+| Production rewarded unit | `ca-app-pub-9541435081010948/2802190985`, created and confirmed in AdMob as "MatchApp Ai - Match Tokens Rewarded"; three Match Tokens, ad pods disabled |
+| Native feed unit | Account-confirmed `ca-app-pub-9541435081010948/4843348278`; the new SDK view exists, but release `ADMOB_NATIVE_NEWS_ENABLED` remains false until physical QA |
+| Debug native feed unit | Google's native test unit `ca-app-pub-3940256099942544/2247696110`; debug enables the bridge but retains real first-value, account, consent and geometry gates |
+| Mobile Ads dependency | `com.google.android.gms:play-services-ads:25.5.0` |
+| Consent dependency | `com.google.android.ump:user-messaging-platform:4.0.0` |
+| Website advertising in app | Blocked by `AdBlocker.kt` and app-mode injection |
+| Native entitlement | Off until guest/free status is resolved; verified Pro plus all existing VIP, Business and Ad-Free entitlements suppress ads |
+| Consent | UMP refresh, `canRequestAds()`, and a required privacy-options entry point |
+| Lifecycle | Pause/resume/destroy handling, generation invalidation, deferred consent dismissal and fail-closed SDK errors |
+
+The reward and news delegates do not alter banner placement, reserved geometry, consent defaults or existing handlers. The only banner-ID change is the separately approved format correction above. The app has no new location permission requirement: use the person's selected country for title/offer eligibility, never request precise device location solely for ads. Google treats ads and associated offers as part of the app and restricts disruptive placements and advertising-only location permission requests. [Google Play advertising policy](https://support.google.com/googleplay/android-developer/answer/9857753?hl=en).
+
+For a signed-in adult account, the existing profile entitlement read is now joined with the authenticated, argument-free `pro_status()` RPC. Only a strictly valid status is applied, including a future numeric expiry for active Pro. The union preserves existing ad-free purchases; an authenticated lookup failure remains ad-free. An auth-generation guard rejects late results from the previous account. A `matchapp:prostatus` notification triggers another authoritative read, without trusting entitlement flags in the page event.
+
+## One Match on Android
+
+The installed WebView inherits the centered result container, aspect-ratio-reserved original poster, brief reduced-motion-aware reveal and full-width primary platform action from the web deployment. The new presentation must preserve existing action targets and handlers. Keep accessibility labels and selected language intact, including Arabic RTL.
+
+Availability is evidence-dependent. A green regional check requires the exact title identity, current country, current provider evidence and applicable access type. Search-only or stale availability must retain honest checking copy. A provider mention in news does not verify that a particular title streams there. Never convert official viewing links into unapproved native affiliate purchase links, and never append the Amazon BR e-book tracking ID to unrelated/native purchases.
+
+## Placement and activation map
+
+| Surface | Current release behavior | Additional format design |
+| --- | --- | --- |
+| Adult browsing | Existing native adaptive banner under current consent/entitlement gates | Preserve the single existing slot and SDK refresh behavior |
+| Single result | Same live web result and existing outbound actions | No fullscreen ad between reveal and the requested provider action |
+| News feed | Shared publisher-source news and web UI; release news ad switch currently off | New genuine `NativeAdView` in one fixed, measured reservation after six substantive articles; SDK-owned assets and clicks |
+| After the free token allowance is exhausted | Existing content remains visible; the owned web token controller presents the choice | Explicitly opted-in rewarded video for three server-verified tokens, or the separately integrated Pro offer; no automatic ad |
+| Optional deep recap | Existing summary/AI paths remain usable | Any extra token-backed recap must disclose its cost and be fulfilled through the authorized server contract |
+| Account, payment, microphone, startup/exit | Existing flows remain unchanged | No newly introduced ad trigger |
+| Verified Pro, VIP, Business, Ad-Free; Kids | Verified Pro joins existing suppression; Kids remains isolated | No new inventory |
+
+The implemented initial frequency is one unit after six substantive articles, with at most one load attempt per native news-document navigation and no refresh loop. This is a conservative product choice, not a Google policy limit or an earnings guarantee. Compare retention, recap completion and revenue per engaged session by country before increasing density. Do not optimize eCPM alone by repeatedly interrupting users.
+
+### Native feed rendering contract
+
+Google's native SDK expects all registered native ad assets inside `NativeAdView`. It owns ad click/impression handling; mandatory visible advertising attribution and the AdChoices overlay remain accessible. A native ad cannot be recreated from a headline and an HTML button while claiming the SDK is tracking its native view. [Native ad rendering documentation](https://developers.google.com/admob/android/native/advanced).
+
+`NativeNewsBridge.kt`, `NativeNewsAdView.kt`, `NativeNewsHost.kt` and `NativeNewsPolicy.kt` add a presentation boundary without introducing another feed model. The frontend's native-only adapter inserts a 480 CSS-pixel reservation after the sixth original article, only while that insertion point is still below the viewport. It accepts widths 280–640; the actual 320px phone layout is too narrow and retains its normal feed. The native card matches the existing news cards' 14dp corners and 16dp total padding. Media keeps a 16:9 reserved rectangle; required video dimensions, full headline, provided icon and CTA must fit at the user's font scale or the ad is discarded. Optional body copy is omitted rather than truncated. Fourteen authored native attribution resources follow the explicit page language, including Arabic RTL. They ship together under explicit resource IDs, so device locale or Play language splits cannot override the person's page language.
+
+All advertiser assets, advertising attribution and SDK AdChoices live inside `NativeAdView`. The native view is inset 8dp within its decorative outer card so AdChoices stays inside the rounded edge, with a clear 24dp-or-larger logical-end area. There are no custom ad click or impression handlers. Only a real vertical drag beyond Android touch slop is handed from the non-clickable outer host to the underlying empty WebView slot; Android cancels the SDK child gesture first. Taps and AdChoices remain SDK-owned. This hybrid drag handoff and accessibility traversal require physical-device QA before release activation.
+
+The new `MatchAppNativeNews.postMessage` bridge accepts only the canonical first-party main frame, a fresh per-document UUID, sequence, language and bounded viewport/rectangle metadata. `hello`, `slot`, `hide`, `dispose` and `reset` never carry ad copy, outbound URLs, credentials or account identifiers. Native corroborates the document UUID through the current page, checks actual WebView bounds and density, requires scale 1, an 8px gold-safe inset, the entire 480px card visible, two stable samples and metadata no older than 750ms. Web scrolling/touch, page overlays, native overlays, clipping, keyboard/viewport changes and stale geometry hide the creative. It is never automatically scrolled into view. `ready` means the native creative is actually visible; hidden/no-fill/failed states restore neutral fallback copy without collapsing the reservation.
+
+An actual successful, visibly rendered result supplies only a presentation eligibility signal, independent of token rollout. It does not grant tokens or bypass quota. Native keeps that signal only for the current account/session, requires known free entitlement and UMP consent, and resets on auth changes. Account context comes from the existing profile/Pro read; no second authentication request is introduced. Navigation, pause, consent/ad-free changes, explicit disposal and stale load callbacks destroy SDK resources. A request times out after 20 seconds; no-fill or failure is terminal for that document, and cached creative expires after 10 minutes. The protected web AdSense boundary and existing native banner remain intact.
+
+### Voluntary three-token reward implementation
+
+The owner's later instruction authorizes three free daily tokens, then a voluntary "Watch an ad for 3 tokens" or Pro choice. The first successful result precedes monetization gates. The server owns the allowance and reward; the native module neither creates another wallet nor changes matching/auth state. Describe the exact reward before showing the ad and preserve cancellation. Do not consume a token for loading, failing, dismissing or declining an ad, require an ad click, or display a surprise interstitial when someone selects an article. Google's Play policy prohibits unexpected fullscreen ads before requested content; expressly opted-in rewarded content has separate treatment. [Play advertising policy](https://support.google.com/googleplay/android-developer/answer/9857753?hl=en).
+
+`NativeRewardedBridge.kt`, `RewardedClaimClient.kt` and the read-only `AdMobController.canRequestRewarded()` gate implement the native side. `MainActivity.kt` adds lifecycle delegation without replacing its current navigation, speech, auth, banner or other listeners. Activation still requires the real unit and compatible live backend/web controller:
+
+1. A production rewarded ad unit belonging to the current adult AdMob app. The account-confirmed unit is now configured in release; Google's sample rewarded ID remains debug-only. The server's availability flag must remain off until the SSV callback is configured and verified. No valid server claim means no ad load. [Rewarded SDK integration and testing](https://developers.google.com/admob/android/rewarded).
+2. A reward-session service that issues a short-lived, unpredictable 64-character hexadecimal nonce for the authenticated eligible account. Native validates it again with an authenticated HTTPS request. The response binds nonce, account UUID, expiry, the production unit and exactly three tokens. The backend must atomically prevent a nonce from being used for multiple separate ad presentations, while safely handling transport retries.
+3. A server verification endpoint that validates Google's SSV signature, expected unit, timestamp and reward type; binds custom data to that nonce and account; rejects replayed transaction IDs; and idempotently grants the three tokens. The native SDK receives only the opaque nonce in `custom_data` and the validated account UUID in `user_id`. Never send an auth token, article text, email or private search query in ad custom data. [SSV callback verification](https://developers.google.com/admob/android/ssv).
+4. A first-party-only bridge using AndroidX `WebViewCompat.addWebMessageListener`, restricted to `https://matchapp.tv` and the main frame. Native independently checks the actual source origin and current document. Eligible documents are adult Home, E-books and News; account, pricing, support, Ask, Together and Kids cannot trigger this inventory. Before loading/showing it also requires the current free entitlement, UMP permission, completed SDK initialization, a live visible foreground Activity and one pending request. [AndroidX message listener API](https://developer.android.com/reference/androidx/webkit/WebViewCompat.WebMessageListener).
+5. Bounded loading and cancellation. Claim validation uses HTTPS with no redirects, six-second connect/read timeouts, a twelve-second response-read budget and a 16KiB cap. The total native preparation has a twenty-second timeout. Backgrounding, navigation and ad-free entitlement invalidate a pending load; stale callbacks cannot change a newer request. Readiness does not auto-show. Showing requires the separately activated web action plus native/browser interaction evidence. The owned web controller must require its button's trusted user activation; a page-supplied Boolean is not a security boundary.
+6. Server reconciliation on earned, dismissal and resume. An SDK callback reports state only; every event explicitly says `serverVerified: false`. The web controller must check authoritative reward status even when a dismissal has `rewardEarned: false`, because mediation callback order and delivery may differ. It must also ignore unmatched events after a reload by using a fresh cryptographic request ID for each document/request. The loaded ad is single-use and is never automatically shown on return from the background. [Rewarded callbacks](https://developers.google.com/admob/android/rewarded).
+
+The authorized three-token reward is separate from daily free allowance refresh. Reward frequency limits and replay protection belong to the server; no local timer can grant or reset a reward. The existing result CTA and content remain usable when ads have no fill or verification is delayed. Pro's separately authorized Play Billing integration is described below; legacy VIP flags must never be reinterpreted as the new unlimited Pro entitlement.
+
+#### Native/web contract
+
+Call `window.MatchAppNativeRewards.postMessage(JSON.stringify(payload))` only when that object exists. It is absent if the release unit is blank or the WebView lacks the supported origin-aware messaging feature.
+
+| Message | Required fields | Result |
+| --- | --- | --- |
+| `prepare` | `type`, fresh `requestId`, `claimNonce`, authenticated `accessToken` | Validates the issued claim and loads, without showing |
+| `show` | `type`, same `requestId` | Shows the ready ad only after an explicit owned-button activation and current eligibility checks |
+| `cancel` | `type`, same `requestId` | Cancels preparation/readiness; it does not dismiss an already showing SDK ad |
+| `status` | `type`, `requestId` | Reports native availability or matching pending state; it is not wallet status |
+
+The JWT is held only by the bounded verification task, is sent only to the fixed first-party Supabase project and is never stored or logged. Native posts to `https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/reward-session` with `Authorization: Bearer <user JWT>` and `{ "action": "native_validate", "claimNonce": "…" }`. The successful response contract is `{ "ok": true, "claimNonce": "…", "userId": "<UUID>", "expiresAt": <epoch milliseconds>, "adUnitId": "<real unit>", "rewardAmount": 3 }`. Expiry must leave between 90 seconds and 30 minutes at validation/show. This is the agreed integration shape to implement, not evidence that the endpoint has been deployed.
+
+State arrives as the window event `matchapp:rewarded` with `detail: { requestId, status, reason, rewardEarned, serverVerified: false }`. Statuses include `loading`, `ready`, `showing`, `earned`, `dismissed`, `cancelled`, `unavailable` and `failed`; a `status` query can also return `available` or `checking_gesture`. The event contains no JWT, claim nonce or account UUID. Preserve a visible cancel/fallback path during loading and server verification. No event is proof that three tokens have been credited.
+
+## Native Google Play subscriptions
+
+The previously unused Billing 9.1.0 dependency now has a separate `NativePlayBillingBridge.kt` delegate. It uses one `BillingClient`, automatic service reconnection, purchase queries on successful connection and Activity resume, pending-payment handling, and a bounded authenticated `PlayBillingBackendClient.kt`. It never starts a Stripe checkout or writes local unlimited/credit state. Google recommends verifying and granting on the backend, then acknowledging the subscription there; the implementation requires the backend's bound acknowledgement response before reporting a verified purchase. [Play Billing integration](https://developer.android.com/google/play/billing/integrate) and [purchase verification guidance](https://developer.android.com/google/play/billing/security).
+
+`PLAY_PRO_PRODUCT_ID` is the account-confirmed `matchapp_pro`. The coordinated Console review saved its `monthly` auto-renewing base plan as a draft; a saved draft does not establish sales availability. Native still requires Play ProductDetails and a server session with `purchasesEnabled: true`. New sales require enabled server flags, authenticated RTDN configuration, the database's enabled/product allowlist and a verified check for an existing legacy recurring subscription. A failed legacy-provider lookup pauses new sales. The origin-bound management action remains present and opens Google's fixed subscription-management destination, so access to cancellation is not tied to ad availability or active Pro status. Restores and receipt verification remain usable when new sales are paused. No private purchase token is exposed to page JavaScript, logs, URLs or persistent native storage.
+
+### Native/web purchase messages
+
+The object is `window.MatchAppNativeBilling`, using `postMessage(JSON.stringify(payload))`. The allowed origin is exactly `https://matchapp.tv`; only the main frame and adult Home, E-books, News, Pricing or Profile documents may call it. Every request ID should be a new cryptographically random ID associated with the current document/account.
+
+| Message | Fields | Behavior |
+| --- | --- | --- |
+| `prepare` | `type`, `requestId`, `accessToken` | Authenticates a server billing session, checks existing Play purchases and fetches eligible product details |
+| `prepare_retention` | `type`, `requestId`, `accessToken` | Separately verifies the current paid Play purchase and requests a server-authorized retention quote; never starts checkout |
+| `restore` | `type`, `requestId`, `accessToken` | Queries Play and verifies a completed subscription against the server; never starts checkout |
+| `launch` | `type`, same `requestId`, `offerKey` | Starts the previously displayed eligible offer after trusted owned-button activation and a current native/browser gesture check |
+| `manage` | `type`, `requestId` | Opens Google's subscription-management page after explicit activation, without depending on active entitlement |
+| `clear` | `type`, `requestId` | Drops the document/account's pending context and in-memory JWT; call on auth changes |
+| `status` | `type`, `requestId` | Reports bridge context and `purchaseAvailable`; product/offer availability still requires `prepare` |
+
+Events use `matchapp:billing`, with `detail: { requestId, status, reason, serverVerified, ... }`. A `ready` event additionally contains `productId` and `offers`. Each offer contains an opaque native `offerKey`, its Play `basePlanId`/`offerId` and every pricing phase: `formattedPrice`, `priceAmountMicros`, `currencyCode`, `billingPeriod`, `billingCycleCount` and `recurrenceMode`. Display the real formatted price, introductory duration, recurring price and cancellation terms before enabling checkout. Never recompute a display price from geolocation, silently convert currencies, or promise a returning-customer offer that Play/the server did not return.
+
+Only base plans allowed by the server are listed. A discounted offer must also be in the server's eligible offer set and Play's returned eligible offers. This supports region-specific Console pricing and the separately configured 50%-for-three-months returning-customer offer without hardcoded price claims. Installment plans are excluded because this UI does not yet disclose their separate commitment terms. ProductDetails are kept in memory for at most 60 seconds; an expired quote requires refresh and a fresh purchase action.
+
+The native state distinguishes `launching`, `pending`, `verifying`, `verified`, `verification_pending`, `already_entitled`, `restored_none`, `cancelled` and `unavailable`. `PENDING` never grants or acknowledges; it is re-queried on resume. `verified` requires the backend's purchase/account/token-hash binding, active entitlement and acknowledged status. `already_entitled` comes from the authenticated Pro session, not a legacy VIP flag. The owned web controller must refresh the current account's authoritative status before changing its unlimited UI. The generic `requestId: "native-resume", status: "restore_required"` event asks the controller to restore with fresh authentication; it never grants access itself.
+
+For `prepare_retention`, a successful `ready` event adds `purpose: "retention"` and epoch-millisecond `chargeAt`. Its single discount comes from actual Google ProductDetails and the server's configured offer, with an issued one-use ledger reservation. The person reviews every price phase and that billing date before a separate trusted `launch`. The same-SKU/monthly flow uses the Console's verified **Charge at the next billing date** default; Google owns the final confirmation. Direct cancellation/management stays reachable during quote loading or failure.
+
+The native source, server session, current owned-token hash and 60-second quote are checked again inside the asynchronous activation callback, immediately before launch. A delayed callback cannot use an expired date. After a retention launch, the old purchase token, a temporarily empty query or cached existing Pro does not confirm the discount: the bridge reports `verification_pending` until a different server-verified token has the exact eligible offer/base plan and actual linked source hash. Pending payment stays pending. The web UI also preserves current-account and request-ID checks.
+
+### Server purchase contract
+
+Fixed endpoint: `https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/play-billing`, with the authenticated user's bearer JWT. Native requests never contain a developer/service credential.
+
+- `{ "action": "session" }` returns `{ "ok": true, "userId": "<UUID>", "obfuscatedAccountId": "<64 lowercase hexadecimal characters>", "expiresAt": <epoch milliseconds>, "productId": "matchapp_pro", "basePlanIds": ["<allowed plan>"], "offerIds": ["<eligible discounted offer>"], "hasActiveEntitlement": false, "purchasesEnabled": false }`. Session lifetime must leave between one and thirty minutes. A missing `purchasesEnabled` value defaults to false in native. The obfuscated account ID is issued by the authenticated server and is attached to the Google Play billing flow.
+- `{ "action": "verify", "productId": "<configured SKU>", "purchaseToken": "<SDK purchase token>" }` returns `{ "ok": true, "userId": "<same UUID>", "productId": "<same SKU>", "purchaseTokenHash": "<SHA-256>", "entitled": true, "acknowledged": true, "entitlementExpiresAt": <future epoch milliseconds> }` only after the server has verified, persisted and acknowledged the purchase.
+
+The new server implementation is `supabase/functions/play-billing/`; its activation record and environment contract are in that directory's README. It queries the Play Developer API for the fixed adult package, verifies product/base plan, subscription state, expiry and obfuscated account binding, prevents token reuse across app accounts, and reconciles linked/voided purchase notifications. Stored access additionally requires `product_verified`, `paid`, status `active` or `canceled`, and future expiry. A legacy restore without a Play obfuscated identifier requires an existing authoritative ownership binding. Real-time developer notifications use verified Google Pub/Sub OIDC and then query the current Play receipt. A client Boolean, a local receipt signature, a cached SKU or a legacy VIP profile alone cannot establish Pro.
+
+The server persists a verified entitlement before acknowledging it. If acknowledgement times out, it re-reads Play and persists the newer state before answering, including a concurrent expiry or revocation. The private database stores only a SHA-256 purchase-token hash, immutable account mapping and verified subscription metadata. The actual receipt token is used only in the bounded request to Google. New-sales pause switches do not disable existing purchase verification or RTDN reconciliation.
+
+The session and verification clients use bounded HTTPS, no redirects, a 16KiB response cap and no credential logging. A failed network or verification request returns a retry/restore state while preserving the app screen; it never opens another payment provider or marks an unverified purchase as unlimited. Google account/subscription-management UI remains available separately.
+
+## Web-to-app continuity
+
+`GrowthReferrerParser.kt` and `GrowthInstallReferrer.kt` already consume the Google Play Install Referrer API for a recent, explicit MatchApp web handoff. The pinned package is `com.jonas.papercup`; verified App Links use only the canonical `matchapp.tv` host.
+
+Accepted payloads use `utm_source=matchapp_tv`, `utm_medium=web_to_app` and one of:
+
+- `utm_campaign=title_after_aha`: an allowlisted public title path, optional uppercase country and selected supported language.
+- `utm_campaign=together_after_aha`: a 64-character hexadecimal read-only result capability and selected supported language.
+- `utm_campaign=one_match_after_aha`: a bounded `criteria` string and selected supported language. This new parser branch returns only `https://matchapp.tv/?lang=…&app_resume=1#ma-continue=…`, leaving the live web adapter to offer an explicit restore confirmation.
+
+The parser rejects duplicate keys, malformed encoding, oversized input, unknown campaigns and arbitrary redirect destinations. It cannot restore a login session or silently change account identity. The fetch is bounded to 2.5 seconds, retries across at most three launches, and accepts a click no older than 24 hours. It restores only on a fresh launch without an explicit intent and before user interaction; a delayed response cannot redirect an actively used screen.
+
+The single-match schema is URLSearchParams with only `category`, `mood`, `platform`, `genre`, `vibe`, `decade` and `rating` keys. Each decoded field is either an empty string for Any, or up to 40 unique choices separated by `|`. Each choice must match `^[A-Za-z0-9 &+./_-]{1,64}$`. Duplicate/unknown keys, duplicate/invalid choices, malformed encoding, more than seven fields, inner criteria above 2,400 characters or an outer referrer above 4,096 characters reject the entire transfer. No silent truncation, country override, account data, access token or free-text query is permitted. The validated inner string is preserved exactly inside a percent-encoded fragment.
+
+The website must consume this schema only through the existing public `getMatchCriteria()`/`setMatchCriteria()` mechanism and an affirmative restore action; it must not automatically generate or charge for a match. Multiple categories/providers and explicit Any selections must survive intact. An over-limit selection set must not promise full transfer. Existing public title/Together branches remain unchanged. Test direct installed-app links and first install separately.
+
+## Verification and publication evidence
+
+The adult module's actual Android SDK compilation and unit tests pass with the pinned Kotlin 2.3.21, AGP 8.13.2 and Gradle 8.13 toolchain, using JDK 17 and the official Android 36 platform. All 26 JUnit tests pass: 11 handoff tests, five reward-policy tests, five Play Billing-policy tests and five native-news policy tests. These cover existing title/Together behavior, multi-select/Any, duplicate/injection boundaries, allowed origins/documents, bounded credentials, claim/session expiry, retained-source/receipt identity, news geometry and purchase-token hash binding. The new delegates compile against the actual declared SDK dependencies, not substitutes.
+
+Compiler warnings from intentionally retained legacy APIs were addressed only at the exact compatibility calls, with explanatory `@Suppress("DEPRECATION")` annotations. Banner geometry, WebView storage behavior, system-bar colors and voice behavior did not change. The completed Android source/resource compilation emits no Kotlin, Java or AAPT warnings.
+
+`:app:lintDebug` succeeds with zero errors and **zero warnings in the ten new native implementation classes**. The completed offline report contains **41 existing advisory warnings**: two inlined haptic API constants, one existing orientation rule, one debug-only network configuration, one existing overdraw suggestion, three unused resources, three bitmap resource-location suggestions, five existing icon duplicates and 25 KTX style suggestions. The earlier network-enabled report additionally listed one Gradle and nine dependency-update suggestions, for 51 total. They are recorded, not hidden by a global suppression or an unrelated dependency/artwork rewrite. Therefore this checkpoint does not claim that the entire project's historical lint report is warning-free.
+
+The five existing Node test files for native app behavior, native consent crash guards, App Links, growth handoff and Kids advertising isolation also pass. Physical-device purchase/reward verification and signed release publication remain separate gates.
+
+The additional native Pro ad-entitlement adapter has five passing executable JavaScript cases. The Play server has 25 passing executable cases covering ownership, configured-product status, sales pause and legacy-check failures, receipt state, linked replacement, one-use returning/retention offers, test purchases, persistence ordering, acknowledgement reconciliation and RTDN envelope bounds. The Play, Pro and Stripe webhook entrypoints pass a cached Deno 2.9.7 typecheck with their existing pinned dependencies; the changed retention endpoint passed again after its additions. These are local checks. The release lead separately confirmed the live initial RTDN Console test and Publisher catalog access; an actual license-tester purchase remains separate evidence.
+
+### Existing upload signing route
+
+Read-only laptop inspection located the protected upload keystore and separate password file in `C:\Users\jonas\matchapp-secrets\`. The verified prior helper is `C:\Users\jonas\matchapp-sign-verified53.cjs`; it uses alias `upload`, `keytool` and `jarsigner` from the installed Microsoft JDK 17, passing the password file through `-storepass:file` / `-keypass:file`. It checks the upload certificate, signs a separate output, verifies the JAR/certificate and confirms the source hash is unchanged. Its version-53 paths and assertions must not be reused unchanged for a later release. The older `matchapp-sign-existing53.ps1` explicitly declares itself superseded and must not be run. No password/private-key contents were read or printed in this inspection.
+
+The repository validation workflow itself produces an unsigned bundle and does not contain a Play publishing/signing action. Its protected artifact label still contains historical version 53 text; identify the artifact by the exact new CI run/SHA and inspect the actual bundle metadata before naming/signing version 55. A verified upload signature is still needed before upload; the Play-distributed app certificate is a different role from the upload certificate. The release lead confirmed that the connected tablet has the Play-delivered production package at code 53 / version 1.1.53 and no debug package. Use the existing signing lineage and internal Play delivery for production-SKU testing, preserving its data. The `.debug` package can test Google sample ads but cannot query the production subscription catalog.
+
+No rewarded AdMob unit has been fabricated. The coordinated account review identified the existing native and banner units, but this document does not establish ad fill or earnings. Source configuration is not proof of the installed Play build.
+
+For a native change, compile the adult module, run `:app:testDebugUnitTest` and the existing Android isolation/consent regression checks. Verify signing with the existing protected upload certificate and the highest Play version code before preparing the AAB. Use real phone/tablet QA with test ads: consent accept/decline/privacy options, account switches, ad-free subscriptions, rotation, back navigation, offline recovery, result CTA, selected language and current-search handoff. Do not click live ads during testing. Preserve the owner's no-emulator preference.
+
+Confirm Play's "Contains ads" declaration, current Data safety answers, privacy/support URLs, developer website, `app-ads.txt` and AdMob app/readiness status in the actual accounts. Google decides review and approval independently. A successful web deploy alone does not publish an Android bundle or prove native ad serving.
