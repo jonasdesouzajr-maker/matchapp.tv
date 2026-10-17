@@ -23,6 +23,7 @@
    const product=key?.matchPack||key?.creditPack||'';
    el.textContent=/^(matches_25|credits_75)$/.test(product)?text[13]:text[14];
   });
+  window.MatchBillingPresentation?.refresh?.();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
  document.addEventListener('matchapp:langchange',render);

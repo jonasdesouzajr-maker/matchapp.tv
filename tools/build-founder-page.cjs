@@ -19,7 +19,7 @@ ${analytics}
 ${shared}
 <link rel="stylesheet" href="/patches/founder-page.css?v=20261016-4">
 <script type="application/ld+json" id="founder-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
-<script src="/i18n.js?v=20261016-founder1&amp;billing=20261017-1"></script>
+<script src="/i18n.js?v=20261016-founder1&amp;billing=20261017-2"></script>
 </head><body class="ma-founder-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="mf-skip" href="#founder-story" data-founder="skip">${esc(t.skip)}</a>
