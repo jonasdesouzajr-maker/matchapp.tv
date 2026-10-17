@@ -1,5 +1,5 @@
 /* Jonas speech: verified male cloud synthesis, all 14 site languages.
-   No provider keys in the browser. Only the approved Cedar/Charon provider voices may speak.
+   No provider keys in the browser. Only approved Cedar, ElevenLabs and Charon voices may speak.
    Always fail silent rather than falling back to an arbitrary female voice. */
 (function(){
  'use strict';
@@ -129,7 +129,7 @@
    var response=await fetch(ENDPOINT,{method:'POST',headers:headers,body:JSON.stringify({text:text,lang:chosen,stream:!!audioContext&&typeof TransformStream==='function'}),signal:controller.signal,cache:'no-store'});
    if(!response.ok)throw new Error(response.status===429?'speech_limit_reached':'speech_provider_unavailable');
    var identity=response.headers.get('X-Jonas-Voice');
-   if(identity!=='male-cedar'&&identity!=='male-charon')throw new Error('unapproved_voice');
+   if(identity!=='male-cedar'&&identity!=='male-charon'&&identity!=='male-elevenlabs')throw new Error('unapproved_voice');
    if(token!==epoch)return false;
    if(audioContext&&response.headers.get('Content-Type')?.startsWith('audio/pcm')&&response.body){
     // Fetch has a finite budget, but playing a successfully received response
