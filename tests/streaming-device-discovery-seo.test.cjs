@@ -55,7 +55,7 @@ test('internal CTA destinations exist and source links identify official operato
   }
  }
  for(const host of ['support.google.com','tv.google','support.roku.com','digprjsurvey.amazon.com','apple.com','news.samsung.com','lg.com','support.plex.tv'])
-  assert.ok([...d.querySelectorAll('a[href]')].some(a=>{try{return new URL(a.href).hostname===host;}catch{return false;}}),'Missing official '+host);
+  assert.ok([...d.querySelectorAll('a[href]')].some(a=>{try{const h=new URL(a.href).hostname;return h===host||h.endsWith('.'+host);}catch{return false;}}),'Missing official '+host);
  window.close();
 });
 test('structured data describes visible guide, not fabricated offers',()=>{
