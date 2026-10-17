@@ -6,13 +6,21 @@ const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 function renderGuideLinks(root=ROOT){
  const groups=[
   {prefix:'/featured/',id:'featured-guides',name:'Featured title guides',note:'Read the exact title guide before checking regional viewing options.'},
-  {prefix:'/kids/titles/',id:'family-guides',name:'Reviewed Kids title guides',note:'For families using the web or dedicated Kids app. Review age bands and title guidance with a grown-up before choosing a viewing service.'},
-  {prefix:'/awareness/',id:'awareness-guides',name:'Awareness resources',note:'Explore dated observance guides and their official resources.'}
+  {prefix:'/kids/titles/',manifest:'kids-urls.json',id:'family-guides',name:'Reviewed Kids title guides',note:'For families using the web or dedicated Kids app. Review age bands and title guidance with a grown-up before choosing a viewing service.'},
+  {prefix:'/awareness/',manifest:'awareness-urls.json',id:'awareness-guides',name:'Awareness resources',note:'Explore dated observance guides and their official resources.'}
  ];
  const dom=new JSDOM(fs.readFileSync(path.join(root,'sitemap.xml'),'utf8'),{contentType:'text/xml'});
  const urls=[...dom.window.document.querySelectorAll('loc')].map(n=>n.textContent.trim());dom.window.close();
  return groups.map(g=>{
-  const links=urls.filter(u=>new URL(u).origin==='https://matchapp.tv'&&new URL(u).pathname.startsWith(g.prefix)).map(u=>{
+  // Owners finish their manifests before the final nightly sitemap rebuild.
+  const manifest=g.manifest&&path.join(root,'tools',g.manifest);
+  let source=urls;
+  if(manifest&&fs.existsSync(manifest)){
+   source=JSON.parse(fs.readFileSync(manifest,'utf8'));
+   if(!Array.isArray(source)||source.some(u=>typeof u!=='string'))throw Error('Invalid guide URL manifest: '+g.manifest);
+  }
+  const selected=[...new Set(source)].filter(u=>new URL(u).origin==='https://matchapp.tv'&&new URL(u).pathname.startsWith(g.prefix)).sort();
+  const links=selected.map(u=>{
    const pathname=new URL(u).pathname,file=path.join(root,pathname,'index.html');
    const page=new JSDOM(fs.readFileSync(file,'utf8')),d=page.window.document;
    const excluded=[...d.querySelectorAll('meta[name="robots"],meta[name="googlebot"]')].some(n=>/noindex|\bnone\b/i.test(n.content));
