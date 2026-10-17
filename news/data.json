@@ -1,10 +1,654 @@
 {
-  "generated_at": "2026-10-17T19:41:31.888Z",
-  "feed_version": "ab272b9e",
+  "generated_at": "2026-10-17T22:37:01.302Z",
+  "feed_version": "a98a4ea5",
   "sports_updated_at": "2026-10-17T14:13:22.971Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "15dda46e",
+      "title": "Photos show luxury boat with 50m pool and water slides near Kim Jong Un's summer retreat",
+      "url": "https://www.bbc.co.uk/news/articles/cmy4xnyyg1lyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T22:09:50.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Music",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a208/live/829d3600-c861-11f1-9a39-31b474234113.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/photos-show-luxury-boat-with-50m-pool-and-water-slides-near-kim-jong-un-s-summer-15dda4/",
+      "landing_url": "https://matchapp.tv/?news=15dda46e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "photos",
+          "show",
+          "luxury",
+          "boat",
+          "50m",
+          "pool"
+        ],
+        "long_tail": [
+          "Photos show luxury boat with 50m pool and water slides near Kim Jong Un's summer retreat 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "photos",
+          "show",
+          "luxury",
+          "boat",
+          "50m",
+          "pool"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Photos show luxury boat with 50m pool and water slides…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "photos",
+          "show",
+          "luxury",
+          "boat",
+          "50m",
+          "pool",
+          "Photos show luxury boat with 50m pool and water slides near Kim Jong Un's summer retreat 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "724f4245",
+      "title": "Incêndio atinge prefeitura de Limoges e derruba telhado do prédio de 1883",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/incendio-prefeitura-limoges-franca.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T21:52:46.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/kiapMxL4sKnT9kPF_DiXXZNFNcE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/K/vA6S8ZSPGco3U6DbOEBw/afp-20261017-d3lp3wf-v1-midres-francesocialdemo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/incendio-atinge-prefeitura-de-limoges-e-derruba-telhado-do-predio-de-1883-724f42/",
+      "landing_url": "https://matchapp.tv/?news=724f4245#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "incendio",
+          "atinge",
+          "prefeitura",
+          "limoges",
+          "derruba",
+          "telhado"
+        ],
+        "long_tail": [
+          "Incêndio atinge prefeitura de Limoges e derruba telhado do prédio de 1883 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "incendio",
+          "atinge",
+          "prefeitura",
+          "limoges",
+          "derruba",
+          "telhado"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Incêndio atinge prefeitura de Limoges e derruba telhado do…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "incendio",
+          "atinge",
+          "prefeitura",
+          "limoges",
+          "derruba",
+          "telhado",
+          "Incêndio atinge prefeitura de Limoges e derruba telhado do prédio de 1883 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "cd1eb742",
+      "title": "How day of protests unfolded as disorder breaks out across France",
+      "url": "https://www.bbc.co.uk/news/videos/cwz0vy770gpzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T21:33:17.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/087d/live/01edc4a0-ca75-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/how-day-of-protests-unfolded-as-disorder-breaks-out-across-france-cd1eb7/",
+      "landing_url": "https://matchapp.tv/?news=cd1eb742#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "how",
+          "day",
+          "protests",
+          "unfolded",
+          "disorder",
+          "breaks"
+        ],
+        "long_tail": [
+          "How day of protests unfolded as disorder breaks out across France 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "how",
+          "day",
+          "protests",
+          "unfolded",
+          "disorder",
+          "breaks"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "How day of protests unfolded as disorder breaks out across…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "how",
+          "day",
+          "protests",
+          "unfolded",
+          "disorder",
+          "breaks",
+          "How day of protests unfolded as disorder breaks out across France 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "ed322257",
+      "title": "Harry Styles Debuts Unreleased Song at MSG to Honor Liam Payne on Second Death Anniversary",
+      "url": "https://www.hollywoodreporter.com/music/music-news/harry-styles-unreleased-song-honor-liam-payne-anniversary-1236734395/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-17T21:07:57.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Harry Styles Debuts Unreleased",
+      "description": "Harry Styles Debuts Unreleased: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/03/GettyImages-451850431-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/harry-styles-debuts-unreleased-song-at-msg-to-honor-liam-payne-on-second-death-a-ed3222/",
+      "landing_url": "https://matchapp.tv/?news=ed322257#latest-news",
+      "seo": {
+        "primary_keyword": "Harry Styles Debuts Unreleased latest news",
+        "short_tail": [
+          "Harry Styles Debuts Unreleased",
+          "Harry Styles Debuts Unreleased news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Harry Styles Debuts Unreleased latest news October 2026",
+          "Harry Styles Debuts Unreleased obituary update 2026",
+          "Harry Styles Debuts Unreleased news 2026-10-17",
+          "latest obituary news about Harry Styles Debuts Unreleased",
+          "harry styles debuts unreleased harry styles latest update",
+          "The Hollywood Reporter Harry Styles Debuts Unreleased obituary",
+          "latest news about Harry Styles Debuts Unreleased October 2026",
+          "Harry Styles Debuts Unreleased entertainment news 2026-10-17",
+          "what happened with Harry Styles Debuts Unreleased"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Harry Styles Debuts Unreleased",
+          "harry",
+          "styles",
+          "debuts",
+          "unreleased"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "Harry Styles Debuts Unreleased 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Harry Styles Debuts Unreleased",
+          "hollywoodreporter.com Harry Styles Debuts Unreleased",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Harry Styles Debuts Unreleased Song at MSG to Honor Liam…",
+        "meta_description": "Harry Styles Debuts Unreleased: Obituary update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original…",
+        "keywords": [
+          "Harry Styles Debuts Unreleased latest news",
+          "Harry Styles Debuts Unreleased",
+          "Harry Styles Debuts Unreleased news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Harry Styles Debuts Unreleased latest news October 2026",
+          "Harry Styles Debuts Unreleased obituary update 2026",
+          "Harry Styles Debuts Unreleased news 2026-10-17",
+          "latest obituary news about Harry Styles Debuts Unreleased",
+          "harry styles debuts unreleased harry styles latest update",
+          "The Hollywood Reporter Harry Styles Debuts Unreleased obituary",
+          "latest news about Harry Styles Debuts Unreleased October 2026",
+          "Harry Styles Debuts Unreleased entertainment news 2026-10-17",
+          "what happened with Harry Styles Debuts Unreleased",
+          "harry",
+          "styles",
+          "debuts",
+          "unreleased",
+          "October 2026",
+          "2026-10-17",
+          "Harry Styles Debuts Unreleased 2026",
+          "The Hollywood Reporter Harry Styles Debuts Unreleased",
+          "hollywoodreporter.com Harry Styles Debuts Unreleased",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "b115629f",
+      "title": "Por que os EUA estão retomando o pelotão de fuzilamento como método de execução",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/por-que-os-eua-estao-retomando-o-pelotao-de-fuzilamento-como-metodo-de-execucao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T21:02:24.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/7jVyZqgR1-lPCiP6lA4Lp4vHySg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/c/4/MlJZOlTj60u7AKXeHcug/fotojet-35-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/por-que-os-eua-estao-retomando-o-pelotao-de-fuzilamento-como-metodo-de-execucao-b11562/",
+      "landing_url": "https://matchapp.tv/?news=b115629f#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "que",
+          "eua",
+          "estao",
+          "retomando",
+          "pelotao",
+          "fuzilamento"
+        ],
+        "long_tail": [
+          "Por que os EUA estão retomando o pelotão de fuzilamento como método de execução 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "que",
+          "eua",
+          "estao",
+          "retomando",
+          "pelotao",
+          "fuzilamento"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Por que os EUA estão retomando o pelotão de fuzilamento…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "que",
+          "eua",
+          "estao",
+          "retomando",
+          "pelotao",
+          "fuzilamento",
+          "Por que os EUA estão retomando o pelotão de fuzilamento como método de execução 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "6d1497d2",
+      "title": "Anti-government protesters battle with police in Albania",
+      "url": "https://www.bbc.co.uk/news/articles/crwydey50xeno?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T20:53:00.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9b85/live/bbc9c4f0-ca6b-11f1-b2e2-233efb1fd43c.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/anti-government-protesters-battle-with-police-in-albania-6d1497/",
+      "landing_url": "https://matchapp.tv/?news=6d1497d2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "anti",
+          "government",
+          "protesters",
+          "battle",
+          "police",
+          "albania"
+        ],
+        "long_tail": [
+          "Anti-government protesters battle with police in Albania 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "anti",
+          "government",
+          "protesters",
+          "battle",
+          "police",
+          "albania"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Anti-government protesters battle with police in Albania |…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "anti",
+          "government",
+          "protesters",
+          "battle",
+          "police",
+          "albania",
+          "Anti-government protesters battle with police in Albania 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "a2a6b621",
+      "title": "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests",
+      "url": "https://www.bbc.co.uk/news/articles/c6d937wedj7jo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T20:52:17.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8264/live/a6715ba0-ca74-11f1-9ef8-9dedd6ab697d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/violent-clashes-looting-and-buildings-ablaze-in-france-as-over-1-000-arrested-af-a2a6b6/",
+      "landing_url": "https://matchapp.tv/?news=a2a6b621#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "violent",
+          "clashes",
+          "looting",
+          "buildings",
+          "ablaze",
+          "france"
+        ],
+        "long_tail": [
+          "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "violent",
+          "clashes",
+          "looting",
+          "buildings",
+          "ablaze",
+          "france"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Violent clashes, looting and buildings ablaze in France as…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "violent",
+          "clashes",
+          "looting",
+          "buildings",
+          "ablaze",
+          "france",
+          "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "56e18574",
+      "title": "No further action against government adviser's wife over Palestine Action post, police say",
+      "url": "https://www.bbc.co.uk/news/articles/cv8ez40yz950o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T20:24:32.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8a4d/live/defb13e0-ca5a-11f1-852c-2b93a8fc4799.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/no-further-action-against-government-adviser-s-wife-over-palestine-action-post-p-56e185/",
+      "landing_url": "https://matchapp.tv/?news=56e18574#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "further",
+          "action",
+          "against",
+          "government",
+          "adviser",
+          "wife"
+        ],
+        "long_tail": [
+          "No further action against government adviser's wife over Palestine Action post, police say 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "further",
+          "action",
+          "against",
+          "government",
+          "adviser",
+          "wife"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "No further action against government adviser's wife over…",
+        "meta_description": "World report published by BBC Technology on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "further",
+          "action",
+          "against",
+          "government",
+          "adviser",
+          "wife",
+          "No further action against government adviser's wife over Palestine Action post, police say 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "3099b380",
+      "title": "Homem é morto a tiros em plataforma de metrô de Manhattan, em Nova York",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/tiros-metro-manhattan.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T19:42:02.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/HgfcB-oUEss7O4WGlitFpIan8G4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/o/N/BHAG44Qsql9W5foDaInw/ap26290695794369.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/homem-e-morto-a-tiros-em-plataforma-de-metro-de-manhattan-em-nova-york-3099b3/",
+      "landing_url": "https://matchapp.tv/?news=3099b380#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "homem",
+          "morto",
+          "tiros",
+          "plataforma",
+          "metro",
+          "manhattan"
+        ],
+        "long_tail": [
+          "Homem é morto a tiros em plataforma de metrô de Manhattan, em Nova York 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "homem",
+          "morto",
+          "tiros",
+          "plataforma",
+          "metro",
+          "manhattan"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Homem é morto a tiros em plataforma de metrô de Manhattan,…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "homem",
+          "morto",
+          "tiros",
+          "plataforma",
+          "metro",
+          "manhattan",
+          "Homem é morto a tiros em plataforma de metrô de Manhattan, em Nova York 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
     {
       "id": "e61fa9a5",
       "title": "Por que Trump suspendeu várias sanções contra a Rússia em meio a tensões com Ucrânia",
@@ -71,7 +715,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -140,7 +784,76 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+      }
+    },
+    {
+      "id": "6d09bb27",
+      "title": "At least 17 dead in crush at Hindu festival event in India",
+      "url": "https://www.bbc.co.uk/news/articles/c820vwq7qg2ko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T19:19:16.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/60d0/live/caaed220-ca5d-11f1-852c-2b93a8fc4799.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/at-least-17-dead-in-crush-at-hindu-festival-event-in-india-6d09bb/",
+      "landing_url": "https://matchapp.tv/?news=6d09bb27#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "least",
+          "dead",
+          "crush",
+          "hindu",
+          "festival",
+          "event"
+        ],
+        "long_tail": [
+          "At least 17 dead in crush at Hindu festival event in India 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "least",
+          "dead",
+          "crush",
+          "hindu",
+          "festival",
+          "event"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "At least 17 dead in crush at Hindu festival event in India…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "least",
+          "dead",
+          "crush",
+          "hindu",
+          "festival",
+          "event",
+          "At least 17 dead in crush at Hindu festival event in India 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -209,7 +922,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -278,7 +991,7 @@
           "2026-10-17",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -377,7 +1090,7 @@
           "hollywoodreporter.com nashville pays tribute chad",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -446,7 +1159,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -545,7 +1258,7 @@
           "hollywoodreporter.com american horror story actor",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -641,7 +1354,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -663,7 +1376,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/wnba-finals-2026-where-to-watch-atlanta-dream-vs-golden-state-valkyries-games-li-5b52eb/",
       "landing_url": "https://matchapp.tv/?news=5b52ebaa#latest-news",
       "seo": {
-        "primary_keyword": "WNBA Finals latest news",
+        "primary_keyword": "wnba finals",
         "short_tail": [
           "WNBA Finals",
           "WNBA Finals news",
@@ -671,7 +1384,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "wnba finals"
         ],
         "long_tail": [
           "WNBA Finals latest news October 2026",
@@ -684,7 +1398,9 @@
           "WNBA Finals entertainment news 2026-10-17",
           "what happened with WNBA Finals"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "wnba finals"
+        ],
         "entity_keywords": [
           "WNBA Finals",
           "wnba",
@@ -707,7 +1423,7 @@
         "meta_title": "WNBA Finals 2026: Where to Watch Atlanta Dream vs. Golden…",
         "meta_description": "WNBA Finals: Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via…",
         "keywords": [
-          "WNBA Finals latest news",
+          "wnba finals",
           "WNBA Finals",
           "WNBA Finals news",
           "entertainment",
@@ -737,12 +1453,12 @@
           "hollywoodreporter.com WNBA Finals",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
       "id": "b929d2da",
-      "title": "TikTok “Permanently Suspends” the ‘Musk’ Film Account, Raising Suppression Fears (Exclusive)",
+      "title": "TikTok “Permanently Suspends” the ‘Musk’ Film Ad Account, Raising Suppression Fears (Exclusive)",
       "url": "https://www.hollywoodreporter.com/news/politics-news/musk-movie-tiktok-banned-theaters-showtimes-1236734308/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
@@ -756,10 +1472,10 @@
       "person": "",
       "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
       "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/musktrump.jpg?crop=0px%2C63px%2C4961px%2C2779px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/tiktok-permanently-suspends-the-musk-film-account-raising-suppression-fears-excl-b929d2/",
+      "matchapp_url": "https://matchapp.tv/news/articles/tiktok-permanently-suspends-the-musk-film-ad-account-raising-suppression-fears-e-b929d2/",
       "landing_url": "https://matchapp.tv/?news=b929d2da#latest-news",
       "seo": {
-        "primary_keyword": "tiktok permanently suspends musk latest news",
+        "primary_keyword": "tiktok",
         "short_tail": [
           "tiktok permanently suspends musk",
           "tiktok permanently suspends musk news",
@@ -767,7 +1483,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "tiktok"
         ],
         "long_tail": [
           "tiktok permanently suspends musk latest news October 2026",
@@ -780,7 +1497,9 @@
           "tiktok permanently suspends musk entertainment news 2026-10-17",
           "what happened with tiktok permanently suspends musk"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "tiktok"
+        ],
         "entity_keywords": [
           "tiktok",
           "permanently",
@@ -801,10 +1520,10 @@
           "hollywoodreporter.com tiktok permanently suspends musk",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "TikTok “Permanently Suspends” the ‘Musk’ Film Account,…",
+        "meta_title": "TikTok “Permanently Suspends” the ‘Musk’ Film Ad Account,…",
         "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "tiktok permanently suspends musk latest news",
+          "tiktok",
           "tiktok permanently suspends musk",
           "tiktok permanently suspends musk news",
           "entertainment",
@@ -821,7 +1540,6 @@
           "latest news about tiktok permanently suspends musk October 2026",
           "tiktok permanently suspends musk entertainment news 2026-10-17",
           "what happened with tiktok permanently suspends musk",
-          "tiktok",
           "permanently",
           "suspends",
           "musk",
@@ -836,170 +1554,7 @@
           "hollywoodreporter.com tiktok permanently suspends musk",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "a176c28e",
-      "title": "Patrick Brammall Is Poised to Join the Ranks of Australia’s Great Exports",
-      "url": "https://www.hollywoodreporter.com/tv/tv-features/patrick-brammall-interview-ending-colin-from-accounts-1236734137/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-17T15:00:00.000Z",
-      "discovered_at": "2026-10-17T17:31:01.200Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Patrick Brammall Is Poised",
-      "description": "Patrick Brammall Is Poised: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/07/Patrick-Brammall-Headshot-Announcement-Publicity-H-2024.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/patrick-brammall-is-poised-to-join-the-ranks-of-australia-s-great-exports-a176c2/",
-      "landing_url": "https://matchapp.tv/?news=a176c28e#latest-news",
-      "seo": {
-        "primary_keyword": "Patrick Brammall Is Poised latest news",
-        "short_tail": [
-          "Patrick Brammall Is Poised",
-          "Patrick Brammall Is Poised news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Patrick Brammall Is Poised latest news October 2026",
-          "Patrick Brammall Is Poised entertainment update 2026",
-          "Patrick Brammall Is Poised news 2026-10-17",
-          "latest entertainment news about Patrick Brammall Is Poised",
-          "patrick brammall poised patrick brammall poised latest update",
-          "The Hollywood Reporter Patrick Brammall Is Poised entertainment",
-          "latest news about Patrick Brammall Is Poised October 2026",
-          "Patrick Brammall Is Poised entertainment news 2026-10-17",
-          "what happened with Patrick Brammall Is Poised"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Patrick Brammall Is Poised",
-          "patrick",
-          "brammall",
-          "poised",
-          "join",
-          "ranks"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "Patrick Brammall Is Poised 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Patrick Brammall Is Poised",
-          "hollywoodreporter.com Patrick Brammall Is Poised",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Patrick Brammall Is Poised to Join the Ranks of…",
-        "meta_description": "Patrick Brammall Is Poised: Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original…",
-        "keywords": [
-          "Patrick Brammall Is Poised latest news",
-          "Patrick Brammall Is Poised",
-          "Patrick Brammall Is Poised news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Patrick Brammall Is Poised latest news October 2026",
-          "Patrick Brammall Is Poised entertainment update 2026",
-          "Patrick Brammall Is Poised news 2026-10-17",
-          "latest entertainment news about Patrick Brammall Is Poised",
-          "patrick brammall poised patrick brammall poised latest update",
-          "The Hollywood Reporter Patrick Brammall Is Poised entertainment",
-          "latest news about Patrick Brammall Is Poised October 2026",
-          "Patrick Brammall Is Poised entertainment news 2026-10-17",
-          "what happened with Patrick Brammall Is Poised",
-          "patrick",
-          "brammall",
-          "poised",
-          "join",
-          "ranks",
-          "October 2026",
-          "2026-10-17",
-          "Patrick Brammall Is Poised 2026",
-          "The Hollywood Reporter Patrick Brammall Is Poised",
-          "hollywoodreporter.com Patrick Brammall Is Poised",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "8e2aa409",
-      "title": "Pope discharged from hospital days after lung cancer surgery",
-      "url": "https://www.bbc.co.uk/news/articles/c5x2vkddrkrko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T13:51:36.000Z",
-      "discovered_at": "2026-10-17T14:13:23.031Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8c6c/live/9aad8f70-ca31-11f1-9ab2-b325ce61f9d2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pope-discharged-from-hospital-days-after-lung-cancer-surgery-8e2aa4/",
-      "landing_url": "https://matchapp.tv/?news=8e2aa409#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pope",
-          "discharged",
-          "hospital",
-          "days",
-          "after",
-          "lung"
-        ],
-        "long_tail": [
-          "Pope discharged from hospital days after lung cancer surgery 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pope",
-          "discharged",
-          "hospital",
-          "days",
-          "after",
-          "lung"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Pope discharged from hospital days after lung cancer…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "pope",
-          "discharged",
-          "hospital",
-          "days",
-          "after",
-          "lung",
-          "Pope discharged from hospital days after lung cancer surgery 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -1097,7 +1652,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -1166,214 +1721,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "20938e43",
-      "title": "Nursery owner in China jailed for life after hundreds of children poisoned",
-      "url": "https://www.bbc.co.uk/news/articles/cqe9lx54g7x9o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T12:11:58.000Z",
-      "discovered_at": "2026-10-17T14:13:23.031Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5bff/live/9df7c880-ca1d-11f1-a64c-550be9e3c66b.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/nursery-owner-in-china-jailed-for-life-after-hundreds-of-children-poisoned-20938e/",
-      "landing_url": "https://matchapp.tv/?news=20938e43#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "nursery",
-          "owner",
-          "china",
-          "jailed",
-          "life",
-          "after"
-        ],
-        "long_tail": [
-          "Nursery owner in China jailed for life after hundreds of children poisoned 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nursery",
-          "owner",
-          "china",
-          "jailed",
-          "life",
-          "after"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Nursery owner in China jailed for life after hundreds of…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "nursery",
-          "owner",
-          "china",
-          "jailed",
-          "life",
-          "after",
-          "Nursery owner in China jailed for life after hundreds of children poisoned 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "77b386c3",
-      "title": "Rare pink diamond goes on display in France 100 years after amateur heist",
-      "url": "https://www.bbc.co.uk/news/articles/c61m4zkx47vlo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T10:46:41.000Z",
-      "discovered_at": "2026-10-17T11:08:18.978Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/37cc/live/14013ec0-ca01-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/rare-pink-diamond-goes-on-display-in-france-100-years-after-amateur-heist-77b386/",
-      "landing_url": "https://matchapp.tv/?news=77b386c3#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "rare",
-          "pink",
-          "diamond",
-          "goes",
-          "display",
-          "france"
-        ],
-        "long_tail": [
-          "Rare pink diamond goes on display in France 100 years after amateur heist 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "rare",
-          "pink",
-          "diamond",
-          "goes",
-          "display",
-          "france"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Rare pink diamond goes on display in France 100 years…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "rare",
-          "pink",
-          "diamond",
-          "goes",
-          "display",
-          "france",
-          "Rare pink diamond goes on display in France 100 years after amateur heist 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "2c850312",
-      "title": "Teacher fought US school attacker before armed dad shot suspect 'multiple times'",
-      "url": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T09:58:17.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c80/live/72894110-c9b4-11f1-9409-01a8c77950d7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/teacher-fought-us-school-attacker-before-armed-dad-shot-suspect-multiple-times-2c8503/",
-      "landing_url": "https://matchapp.tv/?news=2c850312#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before",
-          "armed"
-        ],
-        "long_tail": [
-          "Teacher fought US school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before",
-          "armed"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Teacher fought US school attacker before armed dad shot…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "teacher",
-          "fought",
-          "school",
-          "attacker",
-          "before",
-          "armed",
-          "Teacher fought US school attacker before armed dad shot suspect 'multiple times' 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -1442,214 +1790,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "94eab1f0",
-      "title": "Katie Zacharia leaving White House role less than five days into job",
-      "url": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T09:14:10.000Z",
-      "discovered_at": "2026-10-17T00:44:40.118Z",
-      "event_type": "Casting",
-      "category": "world",
-      "person": "Katie Zacharia",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8455/live/c34abe60-c99d-11f1-8844-b58b162b44d4.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/katie-zacharia-leaving-white-house-role-less-than-five-days-into-job-94eab1/",
-      "landing_url": "https://matchapp.tv/?news=94eab1f0#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role"
-        ],
-        "long_tail": [
-          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Katie Zacharia leaving White House role less than five…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "katie",
-          "zacharia",
-          "leaving",
-          "white",
-          "house",
-          "role",
-          "Katie Zacharia leaving White House role less than five days into job 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "7361ca05",
-      "title": "Você pagaria R$ 2.000 por um quilo de café? Grão de MG bate recorde em leilão no Japão",
-      "url": "https://g1.globo.com/economia/agronegocios/noticia/2026/10/17/voce-pagaria-r-2000-por-um-quilo-de-cafe-grao-de-mg-bate-recorde-em-leilao-no-japao.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T08:00:00.000Z",
-      "discovered_at": "2026-10-17T08:25:54.866Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/QVKyXWGGdRQ5L33MnX2X4Bv13Qg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/r/j/gAzcUVQhyGky3L5A37Vw/imagem-4.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/voce-pagaria-r-2-000-por-um-quilo-de-cafe-grao-de-mg-bate-recorde-em-leilao-no-j-7361ca/",
-      "landing_url": "https://matchapp.tv/?news=7361ca05#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "voce",
-          "pagaria",
-          "000",
-          "quilo",
-          "cafe",
-          "grao"
-        ],
-        "long_tail": [
-          "Você pagaria R$ 2.000 por um quilo de café? Grão de MG bate recorde em leilão no Japão 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "voce",
-          "pagaria",
-          "000",
-          "quilo",
-          "cafe",
-          "grao"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Você pagaria R$ 2.000 por um quilo de café? Grão de MG…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "voce",
-          "pagaria",
-          "000",
-          "quilo",
-          "cafe",
-          "grao",
-          "Você pagaria R$ 2.000 por um quilo de café? Grão de MG bate recorde em leilão no Japão 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "333620df",
-      "title": "Uma geração em protesto: 'gen Z' usa redes sociais para tomar as ruas ao redor do mundo",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/uma-geracao-em-protesto-gen-z-usa-redes-sociais-para-tomar-as-ruas-ao-redor-do-mundo.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T08:00:00.000Z",
-      "discovered_at": "2026-10-17T08:25:54.866Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/D7mAtZSAIQjUkkdGnLnH1cXK76c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/A/eVSBsBQAWdIBBXj96gzA/2026-10-08t160841z-1346267210-rc23znawgurk-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/uma-geracao-em-protesto-gen-z-usa-redes-sociais-para-tomar-as-ruas-ao-redor-do-m-333620/",
-      "landing_url": "https://matchapp.tv/?news=333620df#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "geracao",
-          "protesto",
-          "gen",
-          "usa",
-          "redes",
-          "sociais"
-        ],
-        "long_tail": [
-          "Uma geração em protesto: 'gen Z' usa redes sociais para tomar as ruas ao redor do mundo 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "geracao",
-          "protesto",
-          "gen",
-          "usa",
-          "redes",
-          "sociais"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Uma geração em protesto: 'gen Z' usa redes sociais para…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "geracao",
-          "protesto",
-          "gen",
-          "usa",
-          "redes",
-          "sociais",
-          "Uma geração em protesto: 'gen Z' usa redes sociais para tomar as ruas ao redor do mundo 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -1750,145 +1891,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "73ee454e",
-      "title": "Drones 'assassinos' e tropas: o que está por trás do avanço militar dos EUA na América Latina",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/drones-assassinos-e-tropas-o-que-esta-por-tras-do-avanco-militar-dos-eua-na-america-latina.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T07:00:00.000Z",
-      "discovered_at": "2026-10-17T08:25:54.866Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/zoOLvqaRkwyy-aKMyzW2cg0UtKw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/2/SxErBkRbmXA6mpvWuPrg/2026-07-22t162303z-1929189347-rc20jma7a55g-rtrmadp-3-iran-crisis-transfer-usa.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/drones-assassinos-e-tropas-o-que-esta-por-tras-do-avanco-militar-dos-eua-na-amer-73ee45/",
-      "landing_url": "https://matchapp.tv/?news=73ee454e#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "drones",
-          "assassinos",
-          "tropas",
-          "que",
-          "esta",
-          "tras"
-        ],
-        "long_tail": [
-          "Drones 'assassinos' e tropas: o que está por trás do avanço militar dos EUA na América Latina 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "drones",
-          "assassinos",
-          "tropas",
-          "que",
-          "esta",
-          "tras"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Drones 'assassinos' e tropas: o que está por trás do…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "drones",
-          "assassinos",
-          "tropas",
-          "que",
-          "esta",
-          "tras",
-          "Drones 'assassinos' e tropas: o que está por trás do avanço militar dos EUA na América Latina 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
-      }
-    },
-    {
-      "id": "5026d19b",
-      "title": "Avian flu and costs among reasons for loss of captive birds at Castle Espie",
-      "url": "https://www.bbc.co.uk/news/articles/c6m24e1ln130o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T05:10:33.000Z",
-      "discovered_at": "2026-10-17T06:06:08.689Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f584/live/ad66ed10-c9ea-11f1-bb2b-7517a3677781.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/avian-flu-and-costs-among-reasons-for-loss-of-captive-birds-at-castle-espie-5026d1/",
-      "landing_url": "https://matchapp.tv/?news=5026d19b#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "avian",
-          "flu",
-          "costs",
-          "among",
-          "reasons",
-          "loss"
-        ],
-        "long_tail": [
-          "Avian flu and costs among reasons for loss of captive birds at Castle Espie 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "avian",
-          "flu",
-          "costs",
-          "among",
-          "reasons",
-          "loss"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Avian flu and costs among reasons for loss of captive…",
-        "meta_description": "World report published by BBC Science on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "avian",
-          "flu",
-          "costs",
-          "among",
-          "reasons",
-          "loss",
-          "Avian flu and costs among reasons for loss of captive birds at Castle Espie 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -1982,7 +1985,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2081,7 +2084,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2180,7 +2183,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2278,7 +2281,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2379,7 +2382,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2480,7 +2483,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2578,7 +2581,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2679,7 +2682,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2773,7 +2776,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2874,7 +2877,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -2975,7 +2978,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -3076,7 +3079,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -3177,7 +3180,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -3278,7 +3281,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -3375,7 +3378,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -3465,7 +3468,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     },
     {
@@ -3566,7 +3569,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T19:41:31.888Z"
+        "seo_generated_at": "2026-10-17T22:37:01.302Z"
       }
     }
   ]
