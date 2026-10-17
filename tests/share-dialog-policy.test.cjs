@@ -77,15 +77,16 @@ test('active-policy sharing dialog uses all 14 selected languages with original 
 
 test('canonical selected locale wins over stale global English and late quota rendering stays neutral', async () => {
     const { w, sheet } = setup();
-    let releaseQuota;
+    let releaseQuota, markQuotaStarted;
+    const quotaStarted = new Promise(resolve => { markQuotaStarted = resolve; });
     w.MATCH_LANG = 'en';
     w.matchResultLanguage = () => 'pt-BR';
-    w.refreshQuotaStatus = () => new Promise(resolve => { releaseQuota = resolve; });
+    w.refreshQuotaStatus = () => new Promise(resolve => { releaseQuota = resolve; markQuotaStarted(); });
     try {
         const opening = w.openShareSheet();
         assert.equal(sheet.querySelector('.share-title').textContent, '📢 Compartilhar MatchApp Ai');
         assertRetiredHidden(sheet);
-        await Promise.resolve();
+        await quotaStarted;
         assert.equal(typeof releaseQuota, 'function');
         w.matchResultLanguage = () => 'ar';
         event(w, 'matchapp:langchange');
