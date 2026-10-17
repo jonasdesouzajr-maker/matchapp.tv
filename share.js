@@ -17,6 +17,93 @@ const SHARE_TAGS = '#MatchAppAi #MatchAppTV #FindWhatToWatch #StreamingGuide #Mo
 const SHARE_POSTER = '/assets/brand/matchapp-share-poster.png?v=20261012-approved';
 const SHARE_URL = 'https://matchapp.tv/';
 
+/* ---------- Active token-policy dialog presentation only ---------- */
+const SHARE_DIALOG_COPY = {"en":["📢 Share MatchApp Ai","Share this recommendation with friends using the official poster, a social app or a direct message.","📲 Share Now","⬇️ Save Image","📋 Copy Caption","Or send it to someone","Your message and link are ready — choose a recipient.","Saved contacts","How to send","Who to send to","Send →","Save them for next time","Name (optional)","Contact name","Close"],
+    "pt-BR":["📢 Compartilhar MatchApp Ai","Compartilhe esta indicação com amigos usando o pôster oficial, uma rede social ou uma mensagem direta.","📲 Compartilhar agora","⬇️ Salvar imagem","📋 Copiar legenda","Ou envie para alguém","A mensagem e o link estão prontos — escolha o destinatário.","Contatos salvos","Como enviar","Para quem enviar","Enviar →","Salvar para a próxima vez","Nome (opcional)","Nome do contato","Fechar"],
+    "es":["📢 Compartir MatchApp Ai","Comparte esta recomendación con amigos usando el póster oficial, una red social o un mensaje directo.","📲 Compartir ahora","⬇️ Guardar imagen","📋 Copiar texto","O envíasela a alguien","El mensaje y el enlace están listos: elige a quién enviarlos.","Contactos guardados","Cómo enviar","A quién enviar","Enviar →","Guardar para la próxima vez","Nombre (opcional)","Nombre del contacto","Cerrar"],
+    "fr":["📢 Partager MatchApp Ai","Partagez cette recommandation avec vos amis grâce à l’affiche officielle, un réseau social ou un message direct.","📲 Partager maintenant","⬇️ Enregistrer l’image","📋 Copier le texte","Ou envoyez-la à quelqu’un","Votre message et votre lien sont prêts : choisissez le destinataire.","Contacts enregistrés","Mode d’envoi","Destinataire","Envoyer →","Enregistrer pour la prochaine fois","Nom (facultatif)","Nom du contact","Fermer"],
+    "de":["📢 MatchApp Ai teilen","Teile diese Empfehlung mit Freunden über das offizielle Poster, soziale Medien oder eine Direktnachricht.","📲 Jetzt teilen","⬇️ Bild speichern","📋 Text kopieren","Oder sende sie jemandem","Nachricht und Link sind bereit — wähle einen Empfänger.","Gespeicherte Kontakte","Versandart","Empfänger","Senden →","Für das nächste Mal speichern","Name (optional)","Kontaktname","Schließen"],
+    "it":["📢 Condividi MatchApp Ai","Condividi questo consiglio con gli amici usando il poster ufficiale, un social o un messaggio diretto.","📲 Condividi ora","⬇️ Salva immagine","📋 Copia didascalia","Oppure invialo a qualcuno","Il messaggio e il link sono pronti: scegli il destinatario.","Contatti salvati","Come inviare","Destinatario","Invia →","Salva per la prossima volta","Nome (facoltativo)","Nome del contatto","Chiudi"],
+    "tr":["📢 MatchApp Ai’ı paylaş","Bu öneriyi resmî posterle, bir sosyal uygulamayla veya doğrudan mesajla arkadaşlarınla paylaş.","📲 Şimdi paylaş","⬇️ Görseli kaydet","📋 Açıklamayı kopyala","Veya birine gönder","Mesajın ve bağlantın hazır — alıcıyı seç.","Kayıtlı kişiler","Gönderme yöntemi","Alıcı","Gönder →","Sonraki sefer için kaydet","Ad (isteğe bağlı)","Kişi adı","Kapat"],
+    "ru":["📢 Поделиться MatchApp Ai","Поделитесь рекомендацией с друзьями: используйте официальный постер, соцсеть или личное сообщение.","📲 Поделиться сейчас","⬇️ Сохранить изображение","📋 Скопировать подпись","Или отправьте кому-нибудь","Сообщение и ссылка готовы — выберите получателя.","Сохранённые контакты","Способ отправки","Получатель","Отправить →","Сохранить на следующий раз","Имя (необязательно)","Имя контакта","Закрыть"],
+    "ar":["📢 مشاركة MatchApp Ai","شارك هذه التوصية مع أصدقائك باستخدام الملصق الرسمي أو تطبيق اجتماعي أو رسالة مباشرة.","📲 شارك الآن","⬇️ احفظ الصورة","📋 انسخ النص","أو أرسلها إلى شخص","رسالتك والرابط جاهزان — اختر المستلم.","جهات الاتصال المحفوظة","طريقة الإرسال","المستلم","إرسال ←","احفظه للمرة القادمة","الاسم (اختياري)","اسم جهة الاتصال","إغلاق"],
+    "hi":["📢 MatchApp Ai साझा करें","आधिकारिक पोस्टर, किसी सोशल ऐप या सीधे संदेश के ज़रिए यह सुझाव दोस्तों के साथ साझा करें।","📲 अभी साझा करें","⬇️ तस्वीर सहेजें","📋 कैप्शन कॉपी करें","या किसी को भेजें","आपका संदेश और लिंक तैयार हैं — पाने वाले को चुनें।","सहेजे गए संपर्क","भेजने का तरीका","किसे भेजें","भेजें →","अगली बार के लिए सहेजें","नाम (वैकल्पिक)","संपर्क का नाम","बंद करें"],
+    "id":["📢 Bagikan MatchApp Ai","Bagikan rekomendasi ini kepada teman melalui poster resmi, aplikasi sosial, atau pesan langsung.","📲 Bagikan sekarang","⬇️ Simpan gambar","📋 Salin keterangan","Atau kirimkan kepada seseorang","Pesan dan tautan sudah siap — pilih penerimanya.","Kontak tersimpan","Cara mengirim","Penerima","Kirim →","Simpan untuk lain kali","Nama (opsional)","Nama kontak","Tutup"],
+    "ja":["📢 MatchApp Aiを共有","公式ポスターやSNS、ダイレクトメッセージで、このおすすめを友達に紹介しましょう。","📲 今すぐ共有","⬇️ 画像を保存","📋 キャプションをコピー","または誰かに送る","メッセージとリンクは準備済みです。送信先を選んでください。","保存済みの連絡先","送信方法","送信先","送信 →","次回のために保存","名前（任意）","連絡先の名前","閉じる"],
+    "ko":["📢 MatchApp Ai 공유하기","공식 포스터, 소셜 앱 또는 다이렉트 메시지로 이 추천을 친구들과 공유하세요.","📲 지금 공유하기","⬇️ 이미지 저장","📋 문구 복사","또는 누군가에게 보내기","메시지와 링크가 준비되었어요. 받는 사람을 선택하세요.","저장된 연락처","보내는 방법","받는 사람","보내기 →","다음에 사용할 수 있도록 저장","이름 (선택 사항)","연락처 이름","닫기"],
+    "zh":["📢 分享MatchApp Ai","通过官方海报、社交应用或私信，与朋友分享这个推荐。","📲 立即分享","⬇️ 保存图片","📋 复制文案","或发送给某个人","消息和链接已准备好，请选择收件人。","已保存的联系人","发送方式","收件人","发送 →","保存以便下次使用","姓名（选填）","联系人姓名","关闭"]};
+const shareDialogOriginals = new Map();
+
+function shareDialogLocale() {
+    let selected = '', saved = '';
+    try { selected = window.matchResultLanguage?.() || ''; } catch (_) {}
+    try { saved = localStorage.getItem('match_lang') || ''; } catch (_) {}
+    for (const value of [selected, window.MATCH_LANG, saved, document.documentElement.lang]) {
+        const lang = String(value || '').toLowerCase().split(/[-_]/)[0];
+        const key = lang === 'pt' ? 'pt-BR' : lang;
+        if (SHARE_DIALOG_COPY[key]) return key;
+    }
+    return 'en';
+}
+function shareDialogRead(el, key) {
+    return key === 'text' ? el.textContent : key === 'display' ? el.style.display
+        : key === 'hidden' ? el.hidden : el.getAttribute(key);
+}
+function shareDialogWrite(el, key, value) {
+    if (key === 'text') el.textContent = value;
+    else if (key === 'display') el.style.display = value;
+    else if (key === 'hidden') el.hidden = value;
+    else if (value === null) el.removeAttribute(key);
+    else el.setAttribute(key, value);
+}
+function shareDialogSet(el, key, value) {
+    if (!el) return;
+    if (!shareDialogOriginals.has(el)) shareDialogOriginals.set(el, new Map());
+    const props = shareDialogOriginals.get(el);
+    const current = shareDialogRead(el, key);
+    if (!props.has(key)) props.set(key, { original: current, applied: value });
+    else if (current !== props.get(key).applied) props.get(key).original = current;
+    props.get(key).applied = value;
+    if (current !== value) shareDialogWrite(el, key, value);
+}
+function applyShareDialogPresentation() {
+    if (window.MatchAppTokens?.retireLegacyPromotions !== true) {
+        for (const [el, props] of shareDialogOriginals) {
+            for (const [key, state] of props) {
+                if (shareDialogRead(el, key) === state.applied) shareDialogWrite(el, key, state.original);
+            }
+        }
+        shareDialogOriginals.clear();
+        return;
+    }
+    const sheet = document.querySelector('#share-modal .share-sheet');
+    if (!sheet) return;
+    const lang = shareDialogLocale(), row = SHARE_DIALOG_COPY[lang];
+    shareDialogSet(sheet, 'lang', lang);
+    shareDialogSet(sheet, 'dir', lang === 'ar' ? 'rtl' : 'ltr');
+    const textTargets = [
+        '.share-title', '.share-sub', '.share-native',
+        '[onclick="downloadShareCard()"]', '[onclick="copyShareText()"]',
+        '.share-direct .tg-send-head strong', '.share-direct .tg-send-head small'
+    ];
+    textTargets.forEach((selector, i) => shareDialogSet(sheet.querySelector(selector), 'text', row[i]));
+    [
+        ['#share-contacts', 'aria-label', 7], ['#share-channel-picker', 'aria-label', 8],
+        ['#share-send-value', 'aria-label', 9], ['.tg-send-btn', 'text', 10],
+        ['.tg-save-check span', 'text', 11], ['#share-save-name', 'placeholder', 12],
+        ['#share-save-name', 'aria-label', 13], ['.share-close', 'aria-label', 14]
+    ].forEach(([selector, key, i]) => shareDialogSet(sheet.querySelector(selector), key, row[i]));
+    // Keep every original action node/handler and the approved exported poster.
+    sheet.querySelectorAll('.share-native, .share-grid, .share-utils, .share-sub, #share-preview')
+        .forEach(el => shareDialogSet(el, 'display', ''));
+    sheet.querySelectorAll('.share-how, #share-reward-status, #share-claim-note, #share-confirm-external, #share-reward-screen')
+        .forEach(el => { shareDialogSet(el, 'display', 'none'); shareDialogSet(el, 'hidden', true); });
+}
+document.addEventListener('DOMContentLoaded', applyShareDialogPresentation);
+document.addEventListener('matchapp:langchange', applyShareDialogPresentation);
+document.addEventListener('matchapp:tokenpolicy', applyShareDialogPresentation);
+applyShareDialogPresentation();
+
 /* ---------- Reward accounting ---------- */
 function getShareLog() {
     try {
@@ -161,6 +248,7 @@ window.openShareSheet = async function() {
     if (preview) preview.style.display = '';
     if (statusEl) statusEl.style.display = '';
 
+    applyShareDialogPresentation();
     if (modal) modal.style.display = 'flex';
     if (preview) preview.innerHTML = '<div class="share-spinner"></div>';
 
@@ -201,6 +289,7 @@ window.openShareSheet = async function() {
                 ? `Verify 3 new public result posts to unlock +1 Match.`
                 : `⏳ You've claimed all ${SHARE_MAX_REWARDS} bonus matches for now. Next one unlocks in <strong>${nextRewardResetText()}</strong>. You can still share!`;
     }
+    applyShareDialogPresentation();
 };
 
 window.closeShareSheet = function() {
@@ -465,6 +554,7 @@ function showRewardScreen(left) {
         <button onclick="closeShareSheet()" class="srs-secondary">Maybe later</button>
     `;
     panel.style.display = 'block';
+    applyShareDialogPresentation();
 }
 
 // Closes the sheet and immediately runs the bonus match the user just earned.
