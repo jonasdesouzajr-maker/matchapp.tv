@@ -21,6 +21,7 @@ const CORE = [
     { loc: `${SITE}/founder/`, freq: 'monthly', pri: '0.6' },
     { loc: `${SITE}/sponsor/`, freq: "monthly", pri: "0.5" },
     { loc: `${SITE}/streaming/`, freq: "monthly", pri: "0.7" },
+    { loc: `${SITE}/guides/choose-what-to-watch/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/explore.html`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/how-it-works.html`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/music.html`, freq: 'daily', pri: '0.8' },
