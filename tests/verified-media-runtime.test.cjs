@@ -53,27 +53,30 @@ test('an exact numeric TMDB identity cannot fall through to unrelated same-name 
  assert.equal(await lookupLive('The Bear',{tmdbId:136315,kind:'tv'}),null);
  assert.equal(fuzzy,0);
 });
-test('two rapid e-book matching requests can debit the shared quota only once',async()=>{
+test('two rapid e-book matching requests can debit the shared quota only once',{timeout:3000},async()=>{
  const dom=new JSDOM('<main><div id="search-box"></div></main>',{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window;
  w.MATCHAPP_EBOOK_CATALOG=[{id:'one',title:'Pride and Prejudice',author:'Jane Austen',year:1813,genres:['romance'],moods:['romantic'],pace:'balanced',length:'long',era:'classic',access:['free','paid'],summary:'A novel'}];
  w.MATCHAPP_TOP_EBOOKS=[];w.MatchAppBookCoverIdentity=covers;w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};
  w.fetch=async()=>{throw Error('offline')};
- let charges=0,release;
- w.checkDailyLimit=()=>{charges++;return new Promise(resolve=>{release=resolve})};
+ let charges=0,release,enteredQuota;
+ const quotaStarted=new Promise(resolve=>{enteredQuota=resolve});
+ w.checkDailyLimit=(action)=>{assert.equal(action,'match');charges++;enteredQuota();return new Promise(resolve=>{release=resolve})};
  w.eval(read('ebooks/ebook-matcher.js'));w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  await new Promise(resolve=>setTimeout(resolve,0));
- const first=w.MatchAppEbooks.match(),second=w.MatchAppEbooks.match();
- assert.equal(charges,1);assert.equal(w.document.querySelector('[data-ebook-match]').disabled,true);
- release(true);await Promise.all([first,second]);
- assert.equal(charges,1);assert.equal(w.document.querySelector('[data-ebook-match]').disabled,false);
- assert.match(w.document.querySelector('[data-ebook-result]').textContent,/Pride and Prejudice/);
- dom.window.close();
+ try{
+  const first=w.MatchAppEbooks.match(),second=w.MatchAppEbooks.match();
+  await quotaStarted;
+  assert.equal(charges,1);assert.equal(w.document.querySelector('[data-ebook-match]').disabled,true);
+  release(true);await Promise.all([first,second]);
+  assert.equal(charges,1);assert.equal(w.document.querySelector('[data-ebook-match]').disabled,false);
+  assert.match(w.document.querySelector('[data-ebook-result]').textContent,/Pride and Prejudice/);
+ }finally{dom.window.close();}
 });
 test('normal matching, audiobook matching and conversational AI retain separate safe routes',()=>{
  const app=read('app.js'),book=read('ebooks/ebook-matcher.js'),chat=read('discover.js'),home=read('index.html'),kids=read('kids/index.html');
  assert.match(app,/window\.triggerMatch = async function/);
  assert.match(book,/chooseVerifiedAudio\(p,/);
- assert.match(book,/const allowed=await window\.checkDailyLimit\(\)/);
+ assert.match(book,/const allowed=await window\.checkDailyLimit\('match',tokenContext\)/);
  assert.match(chat,/async function askAIConversational/);
  assert(home.includes('/ebooks/cover-identity.js?v=20261001-coverquality1'));
  assert(!kids.includes('/ebooks/audiobooks.js')&&!kids.includes('/ebooks/ebook-matcher.js'));

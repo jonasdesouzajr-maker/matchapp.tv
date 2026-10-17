@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{randomUUID}=require('node:crypto');
 const {JSDOM}=require('jsdom'),{PGlite}=require('@electric-sql/pglite');
 const root=path.join(__dirname,'..'),read=name=>fs.readFileSync(path.join(root,name),'utf8');
-const base='supabase/migrations/20261017105237_match_tokens_pro_verified_rewards.sql',followup='supabase/migrations/20261017134014_match_tokens_first_core_value.sql';
+const base='supabase/migrations/20261017120448_match_tokens_pro_verified_rewards.sql',followup='supabase/migrations/20261017134408_match_tokens_first_core_value.sql';
 let db;
 const rpc=async(name,args=[])=> (await db.query(`select public.${name}(${args.map((_,i)=>'$'+(i+1)).join(',')}) as value`,args)).rows[0].value;
 test.before(async()=>{

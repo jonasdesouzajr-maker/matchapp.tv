@@ -9,7 +9,6 @@ function make({standalone=true,remote='2026.09.20.1',installed='2026.09.19.9'}={
  const d=new JSDOM('<button class="install-btn">Install</button>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true});
  const w=d.window;w.matchMedia=()=>({matches:standalone});w.localStorage.setItem('match_app_installed_build',installed);
  w.fetch=async()=>({ok:true,json:async()=>({version:remote})});
- w.location={reload(){w.__reloaded=true;}};
  w.eval(source);return {d,w};
 }
 test('browser update behavior is non-blocking and has no legacy modal/query reload',()=>{

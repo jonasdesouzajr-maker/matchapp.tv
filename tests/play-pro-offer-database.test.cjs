@@ -29,8 +29,8 @@ describe('one-use verified Play Pro offer ledger',()=>{
    create table public.profiles(id uuid primary key,is_vip bool default false,is_business bool default false,is_ad_free bool default false,ad_free_purchased bool default false,daily_match_count int default 2,daily_match_date date default current_date,purchased_matches int default 8,credits int default 19,kids_purchased_matches int default 4,kids_credits int default 7,kids_daily_action_count int default 1);
    create table public.match_pack_ledger(user_id uuid,delta int,balance int,pack text,created_at timestamptz default now());
    create table public.credit_ledger(user_id uuid,delta int,balance int,reason text,pack text,created_at timestamptz default now());`);
-  await db.exec(fs.readFileSync(path.join(root,'supabase/migrations/20261017105237_match_tokens_pro_verified_rewards.sql'),'utf8'));
-  await db.exec(fs.readFileSync(path.join(root,'supabase/migrations/20261017134349_play_pro_offer_once.sql'),'utf8'));
+  await db.exec(fs.readFileSync(path.join(root,'supabase/migrations/20261017120448_match_tokens_pro_verified_rewards.sql'),'utf8'));
+  await db.exec(fs.readFileSync(path.join(root,'supabase/migrations/20261017134958_play_pro_offer_once.sql'),'utf8'));
  });
  after(async()=>{if(db)await db.close();});
  beforeEach(async()=>{await db.exec('reset role');await config();});

@@ -4,7 +4,7 @@ Status on 2026-10-17: implementation and local verification are complete. The re
 
 ## Scope and preservation
 
-The additive migration is `supabase/migrations/20261017105237_match_tokens_pro_verified_rewards.sql`, generated with the Supabase CLI. All new balances, entitlements, checkout reservations and reward transactions use the new `matchapp_private` schema. Tables have RLS, no browser grants, and no public write policies. New service functions are explicitly revoked from PUBLIC, anon and authenticated. Public wallet calls bind to `auth.uid()`; callers never supply their own account ID.
+The additive migration is `supabase/migrations/20261017120448_match_tokens_pro_verified_rewards.sql`, generated with the Supabase CLI. All new balances, entitlements, checkout reservations and reward transactions use the new `matchapp_private` schema. Tables have RLS, no browser grants, and no public write policies. New service functions are explicitly revoked from PUBLIC, anon and authenticated. Public wallet calls bind to `auth.uid()`; callers never supply their own account ID.
 
 The migration does not replace `consume_match`, `match_status`, `consume_ai_action`, `daily_match_checkin`, or any Kids function. The tested baseline uses the deployed `consume_match`/`match_status` definitions from migration 012 and the September 21 check-in delta repair. The deployment coordinator also saved live schema/function evidence in a local temporary review file before implementation. The test suite compares the three loaded original function definitions before and after the new migration.
 
@@ -54,7 +54,7 @@ An authenticated wallet returns:
 
 Base users receive three daily Matches in the new independent free counter. Legacy VIP and Business retain their existing 10/50 daily benefits by using the existing profile daily counter shared with Ask AI; they do not also receive a second three-token allowance. Legacy VIP flags never become unlimited Pro.
 
-Consumption occurs after the existing provider/source/history validation and immediately before the existing stable result reveal. Lookup failures therefore do not call this function. The follow-up migration `20261017134014_match_tokens_first_core_value.sql` records the first successful adult core result from either One Match or the e-book matcher, including a verified unlimited Pro result. It uses the normal daily allowance if available, and guarantees a zero-debit first core result once if the existing legacy shared allowance was already exhausted. After three ebook-only successes, `first_match_pending` is false and a fourth ebook or One Match is denied before another lookup or debit. The first successful reveal itself stays quiet; the client opens the depleted gate on a later attempt. Existing non-refunded ebook history is backfilled without touching any balance. A trusted service can reverse an exact verified render failure; the browser cannot self-report a failure to gain credits. The refund marker retains any other non-refunded successful adult core result.
+Consumption occurs after the existing provider/source/history validation and immediately before the existing stable result reveal. Lookup failures therefore do not call this function. The follow-up migration `20261017134408_match_tokens_first_core_value.sql` records the first successful adult core result from either One Match or the e-book matcher, including a verified unlimited Pro result. It uses the normal daily allowance if available, and guarantees a zero-debit first core result once if the existing legacy shared allowance was already exhausted. After three ebook-only successes, `first_match_pending` is false and a fourth ebook or One Match is denied before another lookup or debit. The first successful reveal itself stays quiet; the client opens the depleted gate on a later attempt. Existing non-refunded ebook history is backfilled without touching any balance. A trusted service can reverse an exact verified render failure; the browser cannot self-report a failure to gain credits. The refund marker retains any other non-refunded successful adult core result.
 
 Debit order is verified Pro, remaining daily benefit, the guaranteed first core-result exception if needed, rewarded tokens, then the existing purchased/earned pool. Request replays return the original recorded decision without an additional charge. Failed requests have no debit record.
 
@@ -205,7 +205,7 @@ Do not delete the new schema after a verified entitlement, checkout intent or re
 
 ## One-use Play Pro offer authorization
 
-`20261017134349_play_pro_offer_once.sql` adds only two private RLS tables and two service-only RPCs. It preserves the deployed Pro upsert, wallet, purchased balances, daily check-in and Kids APIs. The reviewed allowlist is the actual `matchapp_pro` product, `monthly` base plan and `retain-50-3m` developer-determined offer. The account owner subsequently confirmed the exact Console/API offer as 50% for three monthly billing cycles; its availability is still controlled independently by the Play endpoint's actual offer configuration and purchase flags.
+`20261017134958_play_pro_offer_once.sql` adds only two private RLS tables and two service-only RPCs. It preserves the deployed Pro upsert, wallet, purchased balances, daily check-in and Kids APIs. The reviewed allowlist is the actual `matchapp_pro` product, `monthly` base plan and `retain-50-3m` developer-determined offer. The account owner subsequently confirmed the exact Console/API offer as 50% for three monthly billing cycles; its availability is still controlled independently by the Play endpoint's actual offer configuration and purchase flags.
 
 | Service RPC | Request | Response |
 | --- | --- | --- |
@@ -239,9 +239,9 @@ The release owner independently reconciled current live hashes before each deplo
 
 | Applied migration | Reviewed local SHA-256 | Verification |
 | --- | --- | --- |
-| `20261017105237_match_tokens_pro_verified_rewards.sql` | `1974b536e22b23851520d0d6428d28490d738e7391745bf4861c1a99418d81cf` | Original additive wallet/Pro/SSV schema and strict role grants retained. |
-| `20261017134014_match_tokens_first_core_value.sql` | `55ac3792dd4b24e4d21072ff4f1031fe700ba6e65652b233e9ffd1f55feebea4` | Applied first-core-value semantics; existing balances and ACLs checked, public policy off. |
-| `20261017134349_play_pro_offer_once.sql` | `c73cd1e3f961090cbcdc2397c781faa56c3f7af61a34d4c2d7613a8e116f6f46` | Applied service-only offer functions/tables; role checks passed and no issuance/redemption test rows created live. |
+| `20261017120448_match_tokens_pro_verified_rewards.sql` | `1974b536e22b23851520d0d6428d28490d738e7391745bf4861c1a99418d81cf` | Original additive wallet/Pro/SSV schema and strict role grants retained. |
+| `20261017134408_match_tokens_first_core_value.sql` | `55ac3792dd4b24e4d21072ff4f1031fe700ba6e65652b233e9ffd1f55feebea4` | Applied first-core-value semantics; existing balances and ACLs checked, public policy off. |
+| `20261017134958_play_pro_offer_once.sql` | `c73cd1e3f961090cbcdc2397c781faa56c3f7af61a34d4c2d7613a8e116f6f46` | Applied service-only offer functions/tables; role checks passed and no issuance/redemption test rows created live. |
 
 | Function | Confirmed deployed version | Deployed bundle SHA-256 |
 | --- | --- | --- |
@@ -257,3 +257,26 @@ Full Deno checks pass for the shared SSV implementation and its entrypoint. Soci
 The shared reward-session request validator now explicitly rejects the reserved all-zero diagnostic nonce. The previously deployed reward-session bundle predates that extra defense; its existing server-created nonce/owner checks still prohibit arbitrary client claims. A release owner refreshing that function should bundle the current shared verifier and retain its internal Auth `getUser` requirement and `verify_jwt:false`. The diagnostic itself already prevents reserved/mixed fields from reaching any ledger operation in the deployed SSV endpoint.
 
 No source or deployed migration is changed further until the release owner approves the separate, expiring license-test cohort proposal. Existing prepared genuine SSV claims and verified paid receipts must continue to reconcile even when a rollout/test cohort later expires. Public catalog flags, guest routes and unrelated Stripe/Kids billing must not be enabled merely to run a native test.
+
+## Subsequent purchase-scope correction — 2026-10-17
+
+The owner clarified that Donate and other independent revenue remain available. Only overlapping Match purchase choices are superseded when the effective Match token policy is enabled. This correction changes no balances, quota functions, receipt fulfillment, account benefits, PayPal destination or advertising runtime.
+
+| Products | New-sale rule |
+| --- | --- |
+| `vip_monthly`, `vip_annual`, `business`, `matches_5`, `matches_25`, `matches_50` | Retired for an authenticated account whose owned `match_token_status()` reports enabled policy. A missing or malformed policy denies these new purchases. Known-OFF accounts retain the original checkout. |
+| `ad_free` | Independent one-time pass remains available unless the same account already has literal `ad_free_purchased:true`. Temporary VIP, Business or Pro ad-free access does not establish permanent pass ownership. Unknown permanent ownership cannot authorize checkout or fallback. |
+| `credits_25`, `credits_75`, `credits_200`, `credits_500` | Independent Ask AI top-ups retain their original purchase and credit fulfillment paths. |
+| All Kids products, Jonas, Donate, affiliates and sponsorship | Existing independent routes retained. |
+
+Public availability continues to use the service-owned global configuration. Actual purchases of the six overlapping Match products use the existing authenticated Supabase client after `auth.getUser` has verified the caller; its owned wallet includes effective private QA and verified Pro. A public OFF flag cannot override an authenticated enabled, missing or invalid wallet. Receipt/status delivery and the original Jonas management path remain above the new-sales guard.
+
+`adult_product_retired`, `purchase_policy_unavailable`, `purchase_ownership_unavailable` and `product_already_owned` are terminal checkout responses. The web adapter also treats a provider function's explicit HTTP 4xx denial as terminal. It reads structured errors in direct data, `FunctionsHttpError.context` and thrown responses. None can reopen an old Payment Link. An ambiguous provider failure may use the original Match Payment Link only after a fresh `getUser`-verified, exact same-account/token `match_token_status` read proves authenticated policy OFF. Ad-free fallback instead requires a fresh same-owner permanent-pass check proving false. An auth observer covers the entire read, including switching away and back; it is unsubscribed after completion. Independent Ask/Kids fallback retains its original behavior.
+
+Each in-flight checkout also observes account changes. A delayed denial or checkout URL belonging to the previous account cannot mark the new account as an owner or navigate it to the previous account's checkout. Permanently owned passes receive a disabled, localized already-purchased label. Existing temporary benefits and receipt records are not changed.
+
+The pricing presentation now keeps the ad-free card and Ask AI/Kids purchase panels visible, hides only the six superseded Match cards/packs, and preserves keyboard navigation between the two remaining tabs. Restoring policy OFF restores the original three-tab behavior. All 14 authored ad-free descriptions now identify Android native ads, explicitly exclude web ad removal, and describe a one-time purchase linked to the account. The old four-second routing and profile-unlock claims were removed because the pass receipt does not grant them. Existing price and receipt benefits are unchanged. The Android digital-goods purchase guard remains unchanged; this correction does not create new Play SKUs for legacy ad-free or Ask-credit products.
+
+Verification: 48 focused Node cases passed across `legacy-sales-policy`, `match-tokens`, `purchase-policy-adapter` and `purchase-hub`, including actual pricing DOM and keyboard behavior, owned-policy failures, account switches, denial bodies, duplicate ownership and preserved legacy receipt source. The final `stripe-checkout` entrypoint passes Deno checking with cached SDK dependencies. All unrelated i18n bytes and protected Donate/AdSense/receipt source files remain identical to the pre-correction commit. HTML line endings and existing language/query suffixes are preserved. No live customer, checkout, payment, refund or policy flag was mutated by these tests.
+
+The release owner must publish the changed `stripe-checkout/index.ts` and `_shared/legacy-sales-policy.mjs` together with unchanged relative dependencies `_shared/billing.ts` and `_shared/jonas-billing.ts`. This correction requires no database migration and no Stripe product/price change. Local entrypoint SHA-256: `5e1b585b3d56ecf31446346ec1ba5501bb30f9ed87d547f58c8ea0ffc90c18c1`; local sales helper SHA-256: `24e032aa7f5eea6f0d00fa4ebcd9a7dcd4eea1fdbeb8f60fb1131364b893e125`. These are source hashes, not a claim of deployment.

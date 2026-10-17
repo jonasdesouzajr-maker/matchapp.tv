@@ -2,7 +2,7 @@ import Stripe from 'https://esm.sh/stripe@17.7.0?target=deno';
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2.105.0';
 import {catalog,PRODUCTS,verifiedCheckout,deliver} from '../_shared/billing.ts';
 import {deliverJonasCheckout} from '../_shared/jonas-billing.ts';
-import {adultSalesPolicy,legacySaleAllowed} from '../_shared/legacy-sales-policy.mjs';
+import {adultSalesPolicy,legacySaleAllowed,adFreePurchaseState} from '../_shared/legacy-sales-policy.mjs';
 const stripe=new Stripe(Deno.env.get('STRIPE_SECRET_KEY')??'',{apiVersion:'2025-09-30.clover',httpClient:Stripe.createFetchHttpClient()});
 const url=Deno.env.get('SUPABASE_URL')??'',anon=Deno.env.get('SUPABASE_ANON_KEY')??'';const admin=createClient(url,Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')??'');
 const origins=new Set(['https://matchapp.tv','https://www.matchapp.tv','http://127.0.0.1:8899','http://localhost:8899']);const langs=new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
@@ -28,10 +28,15 @@ Deno.serve(async(req:Request)=>{const origin=req.headers.get('origin')||'';const
   }
   if(body.action==='status'){if(typeof body.session_id!=='string'||!/^cs_(test_|live_)?[A-Za-z0-9]+$/.test(body.session_id))return reply({error:'Invalid checkout'},400);const receipt=await auth.rpc('purchase_status',{p_session_id:body.session_id});if(!receipt.error&&receipt.data?.delivered===true)return reply({...receipt.data,state:'delivered'});const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before checking again'},429);const session=await stripe.checkout.sessions.retrieve(body.session_id);if(session.client_reference_id!==user.id)return reply({error:'Checkout unavailable'},404);if(session.payment_status!=='paid')return reply({delivered:false,state:session.status==='expired'?'failed':'pending'});const verified=await verifiedCheckout(stripe,session);if(!verified)return reply({delivered:false,state:'pending'});const delivery=verified.product.key==='jonas_chat_monthly'?await deliverJonasCheckout(admin,stripe,session,verified.user):await deliver(admin,session,verified);return reply({...delivery,state:'delivered'});}
   const product=PRODUCTS[body.product];if(!product)return reply({error:'Unknown product'},400);
-  // Adult token-policy sales guard: receipts and independent products are above this gate.
-  const policy=await adultSalesPolicy(admin,[body.product]);
-  if(!policy.known)return reply({error:'Payment temporarily unavailable'},503);
+  // Match token-policy sales guard: original receipts remain above this gate.
+  const policy=await adultSalesPolicy(admin,[body.product],auth);
+  if(!policy.known)return reply({error:'Payment temporarily unavailable',code:'purchase_policy_unavailable'},503);
   if(!legacySaleAllowed(body.product,policy))return reply({error:'This product is no longer offered',code:'adult_product_retired'},409);
+  if(body.product==='ad_free'){
+   const ownership=await adFreePurchaseState(admin,user.id);
+   if(!ownership.known)return reply({error:'Payment temporarily unavailable',code:'purchase_ownership_unavailable'},503);
+   if(ownership.owned)return reply({error:'This account already owns the Ad-Free Pass',code:'product_already_owned'},409);
+  }
   const limit=await admin.rpc('reserve_stripe_request',{p_user_id:user.id});if(limit.error||limit.data!==true)return reply({error:'Please wait before starting checkout'},429);
   const wantsBR=body.market==='BR'&&body.currency==='brl';const currency=wantsBR?'brl':'usd';const entry=(await catalog(stripe)).find(p=>p.key===body.product&&p.currency===currency&&p.active);if(!entry)return reply({error:wantsBR?'Brazil payment setup is not active yet':'Product temporarily unavailable'},503);
   const lang=langs.has(body.lang)?body.lang:'en';const params:any={mode:product.mode,line_items:[{price:entry.price,quantity:1}],client_reference_id:user.id,metadata:{matchapp_product:entry.key,matchapp_user:user.id,matchapp_market:wantsBR?'BR':'INTL'},success_url:'https://matchapp.tv/purchase.html?session_id={CHECKOUT_SESSION_ID}&lang='+encodeURIComponent(lang),cancel_url:'https://matchapp.tv/pricing/pricing.html?lang='+encodeURIComponent(lang),locale:wantsBR?'pt-BR':(['ar','hi'].includes(lang)?'auto':lang),billing_address_collection:'auto',phone_number_collection:{enabled:false},automatic_tax:{enabled:false},tax_id_collection:{enabled:false,required:'never'},name_collection:{business:{enabled:false},individual:{enabled:false}}};

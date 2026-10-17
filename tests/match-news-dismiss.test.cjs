@@ -49,7 +49,7 @@ test('trash only hides the match after its fade; a new match cannot be hidden by
  dom.window.close();
 });
 
-test('News initializes directly on the homepage and its original-source cards live inside an interactive details fold',async()=>{
+test('News initializes directly on the homepage and its original-source cards live inside an interactive details fold',{timeout:3000},async()=>{
  const html=read('index.html'),news=read('latest-news.js'),colors=read('fold-colors.css');
  assert.match(html,/\/latest-news\.js\?v=20261012-static-first1/,'must not rely on deferred editorial intersection trigger');
  assert.match(html,/\/live-news-loader\.js\?v=20260926-newsfold1/);
@@ -84,7 +84,8 @@ test('News initializes directly on the homepage and its original-source cards li
  summary.click();assert.equal(section.open,false,'second summary activation closes News');
  await new Promise(r=>setTimeout(r,10));
  assert.equal(section.open,false,'queued fold work must preserve the second explicit close');
- section.open=true;assert.equal(section.open,true);
+ const reopened=new Promise(resolve=>section.addEventListener('toggle',resolve,{once:true}));
+ section.open=true;await reopened;assert.equal(section.open,true);
  w.close();
 });
 

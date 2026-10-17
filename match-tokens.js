@@ -74,7 +74,7 @@
       knownPolicy=true;enabled=data.enabled;d.documentElement.toggleAttribute('data-match-tokens-enabled',enabled);
       if(enabled)d.documentElement.dataset.matchTokenPolicy=VERSION;else delete d.documentElement.dataset.matchTokenPolicy;
       const oldBadge=d.getElementById('quota-badge');if(oldBadge)oldBadge.inert=enabled;
-      for(const id of ['btn-ad_free','btn-vip_monthly','btn-vip_annual','btn-business']){
+      for(const id of ['btn-vip_monthly','btn-vip_annual','btn-business']){
         const card=d.getElementById(id)?.closest('article');if(card)card.setAttribute('data-ma-retired-offer','');
       }
       d.dispatchEvent(new w.CustomEvent('matchapp:tokenpolicy',{detail:{enabled,version:VERSION}}));
@@ -86,9 +86,11 @@
           if(enabled){if(!legacyLabels.has(link))legacyLabels.set(link,link.textContent);link.textContent='Pro';}
           else if(legacyLabels.has(link)){const translated=w.t?.('nav.vip');link.textContent=translated&&translated!=='nav.vip'?translated:legacyLabels.get(link);legacyLabels.delete(link);}
         }
+        const selectedTab=d.getElementById('purchase-tab-kids')?.getAttribute('aria-selected')==='true'
+          ? 'purchase-tab-kids':'purchase-tab-credits';
         for(const id of ['purchase-tab-matches','purchase-tab-credits','purchase-tab-kids']){
           const tab=d.getElementById(id);if(!tab)continue;
-          if(enabled){if(!legacyTabs.has(tab))legacyTabs.set(tab,{tabIndex:tab.tabIndex,selected:tab.getAttribute('aria-selected')});const selected=id==='purchase-tab-kids';tab.tabIndex=selected?0:-1;tab.setAttribute('aria-selected',String(selected));}
+          if(enabled){if(!legacyTabs.has(tab))legacyTabs.set(tab,{tabIndex:tab.tabIndex,selected:tab.getAttribute('aria-selected')});const selected=id===selectedTab;tab.tabIndex=selected?0:-1;tab.setAttribute('aria-selected',String(selected));}
           else if(legacyTabs.has(tab)){const old=legacyTabs.get(tab);tab.tabIndex=old.tabIndex;if(old.selected===null)tab.removeAttribute('aria-selected');else tab.setAttribute('aria-selected',old.selected);legacyTabs.delete(tab);}
         }
       }catch(_){}

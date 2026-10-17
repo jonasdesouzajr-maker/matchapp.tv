@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {randomUUID,randomBytes}=require('node:crypto');
 const {PGlite}=require('@electric-sql/pglite');
 const root=path.join(__dirname,'..'),read=name=>fs.readFileSync(path.join(root,name),'utf8');
-const QA='supabase/migrations/20261017141115_monetization_qa_cohort.sql';
+const QA='supabase/migrations/20261017142620_monetization_qa_cohort.sql';
 const product='prod_VSP0LagMpQQHIj',playProduct='matchapp_pro';
 const unit='ca-app-pub-9541435081010948/2802190985';
 describe('private expiring monetization QA cohort',()=>{
@@ -63,7 +63,7 @@ describe('private expiring monetization QA cohort',()=>{
   await db.exec(read('supabase/migrations/20260921181338_repair_daily_checkin_reward_delta.sql').split('do $backfill$')[0]);
   await db.exec(read('supabase/security/registration-welcome-bonus.sql'));
   await db.exec(read('supabase/migrations/20260929120000_canonicalize_match_share_reward_keys.sql'));
-  for(const file of ['20261017105237_match_tokens_pro_verified_rewards.sql','20261017134014_match_tokens_first_core_value.sql','20261017134349_play_pro_offer_once.sql'])await db.exec(read('supabase/migrations/'+file));
+  for(const file of ['20261017120448_match_tokens_pro_verified_rewards.sql','20261017134408_match_tokens_first_core_value.sql','20261017134958_play_pro_offer_once.sql'])await db.exec(read('supabase/migrations/'+file));
   // Existing successful/credited/paid history is created through real procedures.
   await config(true,true);const uid=await user({purchased_matches:4,credits:9,kids_credits:7,kids_purchased_matches:3});
   for(let n=0;n<7;n++)assert.equal((await use(n===0?'ebook':'one_match')).allowed,true);

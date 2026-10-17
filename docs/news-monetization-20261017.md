@@ -110,7 +110,7 @@ The release review observed the AdSense site as **Getting ready**, with ads.txt 
 
 Before a future news ad placement is activated, it needs all of: appropriate approved account/site status; a genuine dedicated unit and format configuration; an explicit change to any applicable owner lock; consent/age eligibility; reviewed placement geometry; and original content of sufficient value. A feed of brief replicated headlines does not gain AdSense eligibility merely by adding advertising around it.
 
-### Actual native news placement: implemented, release-disabled pending device validation
+### Actual native news placement: enabled in the unpublished release candidate, awaiting device validation
 
 The authorized Android addition uses a genuine SDK `NativeAdView`, with registered assets, a readable sponsored label and AdChoices. It does not insert HTML that imitates a native advertisement. The JavaScript adapter owns only an empty, fixed-size reservation and a neutral localized no-fill message. There is no Google web ad loader or new AdSense unit in this work.
 
@@ -124,7 +124,7 @@ The hub generator marks its existing grid with `data-native-news-feed`. After an
 
 The adapter hides inventory immediately during scroll, pointer gestures, modal/fullscreen coverage, account/visibility changes or overlap with fixed/sticky UI. It then waits for settled, unobstructed geometry and sends a bounded heartbeat. Native also independently expires stale geometry. `ready` means the creative is actually visible; loaded-but-hidden uses `hidden`. The localized neutral fallback remains until a real `ready` event and returns on hidden/no-fill. Once mounted, the reservation remains for the current document to avoid collapsing content. A no-fill result stops further loading attempts for that document. The shared gold perimeter and original article typography, padding, border radius, source links and listeners remain unchanged.
 
-Release activation and physical SDK asset/click/consent/ad-free tests remain pending. Local bridge fixtures demonstrate DOM and geometry behavior; they are not evidence that a live ad was served or that device lifecycle validation passed. See `android-studio/play/MONETIZATION_IMPLEMENTATION_20261017.md` for the matching native contract and activation state.
+The existing release flag is now enabled in the still-unpublished version 55 candidate; debug retains its existing enabled flag and sample unit. Global token/sales switches and QA-cohort membership do not control this placement. The Production draft's actual Google-signed APK must pass physical testing on the registered AdMob test tablet before that same bundle is submitted to Production. SDK assets, AdChoices, scrolling/obstruction, consent, ad-free/account transitions and lifecycle remain required checks. Local bridge fixtures and the source flag are not evidence that an ad was served or that physical validation passed. See `android-studio/play/MONETIZATION_IMPLEMENTATION_20261017.md` for the matching native contract and activation state.
 
 Google's AdSense placement rules allow publisher labels such as **Advertisements** or **Sponsored Links** and prohibit misleading presentation or directing attention to ads. “Sponsored Match” must not replace a required Google ad label. Keep article CTAs, sparkle effects and navigation clear of any actual ad area. AdMob native creative needs an actual native view, readable ad attribution and unobstructed AdChoices; a low-opacity badge that becomes hard to read is inappropriate. Official references:
 

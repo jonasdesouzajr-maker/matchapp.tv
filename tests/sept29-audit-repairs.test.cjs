@@ -50,7 +50,7 @@ test('Ask AI checks read-only entitlement before work and consumes only after li
 test('both unsuccessful and recycled adult matching remain free',()=>{
   const app=source('app.js');
   const resultGuard=app.indexOf('const resultWasKnown');
-  const debit=app.indexOf('!intentionalHistoryFallback && !freeSavedSpecific && !(await checkDailyLimit())',resultGuard);
+  const debit=app.indexOf("!intentionalHistoryFallback && !freeSavedSpecific && !(await checkDailyLimit('match', {runId:matchRunId}))",resultGuard);
   assert(resultGuard>=0&&debit>resultGuard);
   assert.match(app,/matchResult = null;[\s\S]*?catch/); 
 });

@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'..');
 const src=fs.readFileSync(path.join(root,'jonas','android-ambient-assistant-20261011.js'),'utf8');
 const kotlin=fs.readFileSync(path.join(root,'android-studio','app','src','main','java','com','jonas','papercup','MainActivity.kt'),'utf8');
 function scene(route='/',enabled=true){
- const dom=new JSDOM('<!doctype html><html lang="en"><head></head><body><main><div id="result-box" style="display:block"><h2 id="res-title">Some Documentary</h2></div><section id="original-page">Original page stays visible</section></main></body></html>',{url:'https://matchapp.tv'+route,runScripts:'outside-only'});
+ const dom=new JSDOM('<!doctype html><html lang="en"><head></head><body><main><div id="result-box" style="display:block"><h2 id="res-title">Some Documentary</h2></div><section id="original-page">Original page stays visible</section></main></body></html>',{url:'https://matchapp.tv'+route,runScripts:'outside-only',pretendToBeVisual:true});
  const w=dom.window;w.__MATCHAPP_AMBIENT_QA__=enabled;w.currentMatchIdentity={title:'Some Documentary'};
  w.innerWidth=384;w.innerHeight=780;
  let stopped=0,spoken=[];w.MatchAppNativeVoice={stop(){stopped++},stopSpeaking(){},speak(text,lang){spoken.push({text,lang})}};

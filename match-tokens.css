@@ -94,13 +94,13 @@ html[data-match-token-policy="match-tokens-v1"] :is(.ma-guest-trial-bar, #ma-wel
 html[data-match-token-policy="match-tokens-v1"] #quota-badge { visibility: hidden !important; pointer-events: none !important; }
 html[data-match-token-policy="match-tokens-v1"] #result-quota-corner { display: none !important; }
 html[data-match-token-policy="match-tokens-v1"] :is([data-ma-retired-offer], [data-ma-retired-upsell], [data-i18n="pricing.title"], [data-i18n="pricing.subtitle"],
-  #purchase-tab-matches, #purchase-tab-credits, #ask-ai-credits, #credits-grid, #purchase-hub > p) { display: none !important; }
+  #purchase-tab-matches, #purchase-hub > p) { display: none !important; }
 @media (min-width: 640px) { .ma-token-dialog { padding: 32px; } }
 @media (max-width: 359px) { .ma-token-dialog { padding: 18px; } .ma-token-dialog .ma-token-notice { min-height: 6rem; } }
 @media (prefers-reduced-motion: reduce) { .ma-token-dialog *, .ma-token-balance { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 @media (forced-colors: active) { .ma-token-dialog, .ma-token-dialog .ma-token-button, .ma-token-balance { border-color: ButtonText; box-shadow: none; } }
 
-html[data-match-token-policy="match-tokens-v1"] #purchase-hub > .purchase-tabs { grid-template-columns: minmax(0, 1fr); }
+html[data-match-token-policy="match-tokens-v1"] #purchase-hub > .purchase-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .ma-token-reward-actions { display: grid; gap: 10px; }
 .ma-token-dialog .ma-token-reward { min-height: 80px; }

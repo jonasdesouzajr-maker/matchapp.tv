@@ -235,15 +235,16 @@ test('enabled retirement stops new guest/member/signup awards and leaves ordinar
   }finally{f.w.close();}
 });
 
-test('adult old plan and pack entry points retire together while Kids still uses its original checkout function',async()=>{
+test('only overlapping Match checkout entry points retire; ad-free, Ask AI and Kids retain their original sign-in flow',async()=>{
   const f=await fixture({signedIn:false,initial:publicPolicy});
   try{
     const w=f.w;let authPrompts=0;w.openAuthModal=()=>{authPrompts++;};
     w.eval(fs.readFileSync(path.join(__dirname,'../pricing.js'),'utf8'));await settle();
     const checkout=w.startVerifiedCheckout,kids=w.buyKidsMatches;
-    for(const key of ['ad_free','vip_monthly','vip_annual','business','credits_25','matches_5'])await checkout(key);
+    for(const key of ['vip_monthly','vip_annual','business','matches_5','matches_25','matches_50'])await checkout(key);
     assert.equal(authPrompts,0);assert.equal(w.sessionStorage.getItem('match_pending_checkout'),null);
-    await kids('kids_matches_5');assert.equal(authPrompts,1);assert.equal(w.sessionStorage.getItem('match_pending_checkout'),'kids_matches_5');
+    for(const key of ['ad_free','credits_25','credits_75','credits_200','credits_500']){await checkout(key);assert.equal(w.sessionStorage.getItem('match_pending_checkout'),key);}
+    await kids('kids_matches_5');assert.equal(authPrompts,6);assert.equal(w.sessionStorage.getItem('match_pending_checkout'),'kids_matches_5');
     assert.equal(w.startVerifiedCheckout,checkout);assert.equal(w.buyKidsMatches,kids);
     assert.ok(!f.calls.some(c=>c.name==='stripe-checkout'));
   }finally{f.w.close();}

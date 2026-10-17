@@ -17,8 +17,8 @@ android {
         buildConfigField("Boolean", "ADMOB_ENABLED", "true")
         buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/5523667258\"")
         buildConfigField("String", "ADMOB_REWARDED_ID", "\"ca-app-pub-9541435081010948/2802190985\"")
-        // Enable release news inventory only after physical-device placement/SDK-click QA.
-        buildConfigField("Boolean", "ADMOB_NATIVE_NEWS_ENABLED", "false")
+        // Candidate news inventory requires physical test-device QA before Production submission.
+        buildConfigField("Boolean", "ADMOB_NATIVE_NEWS_ENABLED", "true")
         buildConfigField("String", "ADMOB_NATIVE_NEWS_ID", "\"ca-app-pub-9541435081010948/4843348278\"")
         // Account-confirmed draft SKU. The server separately gates actual sales readiness.
         buildConfigField("String", "PLAY_PRO_PRODUCT_ID", "\"matchapp_pro\"")
