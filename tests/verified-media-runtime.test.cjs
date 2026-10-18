@@ -126,7 +126,7 @@ test('fresh rich artwork is reused while pinned source art retains priority',asy
  const source=read('app.js'),start=source.indexOf('    let realCover;'),end=source.indexOf('    // Track the current match globally',start);
  let calls=0;
  const context=vm.createContext({selected:{title:'Exact Movie'},meta:{artwork:'https://official.example/exact.jpg'},verified:null,skipLiveLookup:false,matchHints:{},
-  exactSpotifyPlaylistCover:()=>null,getRealCoverImage:async()=>{calls++;return 'https://other.example/cover.jpg'},generatedCover:()=>null});
+  currentRender:()=>true,exactSpotifyPlaylistCover:()=>null,getRealCoverImage:async()=>{calls++;return 'https://other.example/cover.jpg'},generatedCover:()=>null});
  const run=()=>vm.runInContext('(async()=>{'+source.slice(start,end)+'return realCover})()',context);
  assert.equal(await run(),'https://official.example/exact.jpg');assert.equal(calls,0);
  context.verified='https://pinned.example/exact.jpg';assert.equal(await run(),context.verified);assert.equal(calls,0);

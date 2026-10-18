@@ -1,7 +1,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{JSDOM}=require('jsdom');
 const root=path.join(__dirname,'..'),app=fs.readFileSync(path.join(root,'app.js'),'utf8');
 const bootstrap=app.slice(app.indexOf('const SUPABASE_URL'),app.indexOf('// INCLUDED DAILY AI ACTIONS'));
-function start(entries){const saved=new Map(entries),context=vm.createContext({window:{},localStorage:{getItem:key=>saved.get(key)??null},console});vm.runInContext(bootstrap+'\nwindow.lists={seenList,savedList,dislikedList,userRatings,recentTitles};',context);return {lists:JSON.parse(JSON.stringify(context.window.lists)),saved};}
+function start(entries){const saved=new Map(entries),context=vm.createContext({window:{},document:{addEventListener(){}},localStorage:{getItem:key=>saved.get(key)??null},console});vm.runInContext(bootstrap+'\nwindow.lists={seenList,savedList,dislikedList,userRatings,recentTitles};',context);return {lists:JSON.parse(JSON.stringify(context.window.lists)),saved};}
 
 test('a broken optional cache cannot stop startup or discard valid saved and seen titles',()=>{
  const entries=[['match_seenList','["A Classic",{"title":"A New Film","posterUrl":"/cover.jpg"}]'],['match_savedList','[{"title":"For Later"}]'],['match_dislikedList','{broken'],['match_userRatings','null'],['match_recentTitles','"wrong shape"']];

@@ -28,24 +28,32 @@ test('opaque ranking returns only a byte-identical input candidate and fails gra
  assert.strictEqual(await w.MatchAppAIRank.rank([a,b],{mood:'funny'}),null);
 });
 
-test('all adult match formats keep hard filters and no unrequested recycles',()=>{
+test('all adult match formats keep hard filters and exclude every previously suggested work',()=>{
  assert.match(app,/rankVerifiedCuratedMatch\(requested\)/);
  const rank=app.indexOf('preflight=await withMatchSourceDeadline(()=>rankVerifiedCuratedMatch(requested)');
  const catalog=app.indexOf('preflight=pickFromCatalog(requested.cat');
  assert(rank>=0&&catalog>rank);
  assert.match(app,/regionAvailabilityFits\(e,criteria\)/);
  assert.match(app,/!isSpecificSearch && !preflight && typeof pickRecycledCatalog/);
- assert.doesNotMatch(app,/matchappAllowSeenAgain === true && typeof pickRecycledCatalog/);
- assert.match(app,/Previously suggested · matches all your choices/);
- assert.match(app,/pickGuaranteedCatalog\(requested\.cat,requested\.plat,requested\.mood,requested\.vibe,requested\.rating,requested\.decade,window\.matchappAllowSeenAgain !== true\)/);
+ const recovery=app.match(/function pickRecycledCatalog\([\s\S]*?\n}/)[0];
+ assert.match(recovery,/return pickFromCatalog\(cat, plat, mood, vibe, rating, decade\)/);
+ assert.doesNotMatch(app,/matchappAllowSeenAgain/);
+ assert.match(app,/pickGuaranteedCatalog\(requested\.cat,requested\.plat,requested\.mood,requested\.vibe,requested\.rating,requested\.decade,true\)/);
+ assert.match(app,/hardExcluded\.has\(k\) \|\| \(policy\.excludes \? policy\.excludes\(entry\)/);
+ assert(app.indexOf('titleClaimed=await window.matchPolicy?.claim?.(matchResult)')<app.indexOf("await checkDailyLimit('match', {runId:matchRunId})"),'reserve the exact identity before charging');
  assert.match(app,/const ranked=await window\.MatchAppAIRank\.rank\(rows/);
  assert.match(books,/async function rankBooks\(approved,p\)/);
- // User-approved reading fallback may recycle previously seen profiles only
- // after fresh source profiles run out. Saved and disliked remain excluded.
- assert.match(books,/const unseen=bookCandidates\(p,false\)/);
- assert.match(books,/const ranked=unseen.length\?unseen:bookCandidates\(p,true\)/);
- assert.match(books,/for\(const allowSeen of \[false,true\]\)/);
+ // Exhaustion is an empty, uncharged search; neither source ranking nor a
+ // different reading format may silently resurrect previous suggestions.
+ const bestBookChoices=books.match(/function bestBookChoices\([\s\S]*?\n}/)[0];
+ const requestedModes=[];
+ const choose=vm.runInNewContext(bestBookChoices+';bestBookChoices',{bookCandidates:(_p,allowSeen)=>{requestedModes.push(allowSeen);return allowSeen?[{book:{id:'old'},weight:1}]:[];}});
+ assert.equal(choose({}).length,0);assert.deepEqual(requestedModes,[false]);
+ assert.doesNotMatch(books,/bookCandidates\(p,true\)|for\(const allowSeen of \[false,true\]\)/);
+ assert.equal((books.match(/for\(const allowSeen of \[false\]\)/g)||[]).length,2,'audio and magazines search only fresh records');
  assert.match(books,/excluded=new Set\(\[\.\.\.read\(K.saved\),\.\.\.read\(K.disliked\)\]\)/);
+ assert.match(books,/write\(pendingKey\(readingOwner\),read\(pendingKey\(readingOwner\)\)\.concat\(event\)\)/,'explicit actions remain queued durably');
+ assert(books.indexOf('await claimReading(pick.book.id)')<books.indexOf("await window.checkDailyLimit('match',tokenContext)"),'reading reserves an unseen ID before charging');
  assert.match(books,/async function chooseMagazine\(p\)/);
  assert.match(books,/if\(verified.length\)return/);
 });

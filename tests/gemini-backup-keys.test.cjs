@@ -44,6 +44,6 @@ test('OpenAI daily ceiling is independent; Gemini is available if preceding tier
   const route=source.indexOf('const routes = [');
   assert.ok(router>=0&&primary>router&&route>primary&&groq>route);
   assert.match(source.slice(primary,route),/claim_openai_primary_slot/);
-  assert.match(source.slice(primary,route),/if \(answer\) return answer/);
+  assert.match(source.slice(primary,route),/if \(answer\) return guardedDiscover\(answer\)/);
   assert.match(source,/body\?\.kidsMode !== true/);
 });

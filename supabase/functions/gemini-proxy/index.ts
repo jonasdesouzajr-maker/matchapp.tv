@@ -54,6 +54,7 @@ import { callOpenAIPrimary } from "./openai-primary.ts";
 import { callOpenRouterFirst } from "./openrouter-backup.ts";
 import { callGroqBackup } from "./groq-backup.ts";
 import { withGeminiLatency, uniqueGeminiRoutes } from "./latency-config.mjs";
+import { excludedTitleList, exclusionPrompt, guardDiscoverResponse } from "./discover-exclusions.mjs";
 
 // Service-role client, used ONLY to meter requests (migration 008). The key
 // lives in Edge Function secrets and never leaves the server.
@@ -664,6 +665,16 @@ Deno.serve(async (req: Request) => {
     }
 
     let lastError: string | null = null;
+    // Explicit title/factual lookups retain their existing behavior. Only
+    // adult requests labelled as recommendations receive no-repeat history.
+    const recommendationGuard={
+      recommendationsOnly:isDiscoverMode&&body?.kidsMode!==true&&body?.recommendationsOnly===true,
+      kidsMode:body?.kidsMode===true,
+      excludedTitles:excludedTitleList(body?.excludedTitles),
+      language:typeof body?.lang==='string'?body.lang.slice(0,8):'en'
+    };
+    if(recommendationGuard.recommendationsOnly)prompt+=exclusionPrompt(recommendationGuard.excludedTitles);
+    const guardedDiscover=(response:Response)=>guardDiscoverResponse(response,recommendationGuard);
 
     // Only adult Ask AI and explicitly tagged adult matches use the new routes.
     // Kids and untagged legacy calls retain their original Gemini routing.
@@ -682,7 +693,7 @@ Deno.serve(async (req: Request) => {
         blockXXX:hasBlockedXXXDestination,
         explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
       });
-      if (answer) return answer;
+      if (answer) return guardedDiscover(answer);
     }
     if (openAiEligible && openAiApiKey && Date.now() < providerDeadline) {
       const desiredLimit = Number(Deno.env.get("OPENAI_DAILY_CALL_LIMIT") || "100");
@@ -704,7 +715,7 @@ Deno.serve(async (req: Request) => {
         blockXXX:hasBlockedXXXDestination,
         explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
       });
-      if (answer) return answer;
+      if (answer) return guardedDiscover(answer);
     }
 
     // OpenRouter, Groq and OpenAI were unavailable or at their separate limits.
@@ -726,7 +737,7 @@ Deno.serve(async (req: Request) => {
         blockXXX:hasBlockedXXXDestination,
         explicitXXX:(text:string) => EXPLICIT_XXX.test(text)
       });
-      if (answer) return answer;
+      if (answer) return guardedDiscover(answer);
       }
       return null;
     };
@@ -837,14 +848,14 @@ Deno.serve(async (req: Request) => {
           }
           // Surface which model answered and how it finished, so the browser
           // console can show this without needing Supabase log access.
-          return new Response(JSON.stringify({
+          return guardedDiscover(new Response(JSON.stringify({
             ...data,
             _servedByModel: model,
             _servedByTier: route.tier,
             _finishReason: finish,
           }), {
             headers: { ...corsHeaders(req), "Content-Type": "application/json" },
-          });
+          }));
         }
 
         // 404 = model retired/unknown; try the next one in the chain.

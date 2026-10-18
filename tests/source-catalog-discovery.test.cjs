@@ -19,7 +19,7 @@ test('iTunes music and podcast expansion uses legal exact media, country, explic
  assert.match(app,/entity=cat==='music album'\?'album'/);
  assert.match(app,/cat==='podcast'\?'podcast'/);
  assert.match(app,/limit=\$\{limit\}\$\{countryParam\}&explicit=No/);
- assert.match(app,/const browserCountry=countryMatch\?countryMatch\[1\]\.toUpperCase\(\):''/);
+ assert.match(app,/const region=countryResolver\?\.regionCode\?\.\(\)\|\|''/);
  assert.match(app,/selected\.source==='itunes-live'/);
  assert.match(media,/if\(identity\.itunesAudio===true\)/);
  assert.match(media,/audio-ssl\\\.itunes\\\.apple\\\.com/);

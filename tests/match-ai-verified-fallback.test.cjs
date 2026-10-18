@@ -72,6 +72,15 @@ test('cozy live verification rejects heavy romance/drama and accepts genuine com
 });
 
 test('shown results are promoted into shared match history for cross-device repeat prevention',()=>{
-  const block=source.match(/function rememberShownTitle\(title\)[\s\S]*?\n}/)?.[0]||'';
-  assert.match(block,/matchPolicy\?\.remember\?\.\(\{title\}, 'shown'\)/);
+  const recorded=[],session=new Set();
+  const context=vm.createContext({SESSION_SHOWN:session,recentTitles:[],persistSessionShown:()=>{},
+    localStorage:{setItem:()=>{}},window:{matchPolicy:{remember:(item,action)=>recorded.push({item,action})}}});
+  vm.runInContext(fn('rememberShownTitle'),context);
+  const exact={title:'Localized Film',originalTitle:'Original Film',_tmdbId:731,_tmdbKind:'movie'};
+  context.rememberShownTitle(exact);
+  assert.strictEqual(recorded[0].item,exact,'keep the full source identity across devices');
+  assert.equal(recorded[0].action,'shown');
+  assert(session.has(exact.title));
+  context.rememberShownTitle('Legacy Caller');
+  assert.equal(recorded[1].item.title,'Legacy Caller','older title-only callers remain supported');
 });

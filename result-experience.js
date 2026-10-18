@@ -109,6 +109,7 @@
   }
   function region() {
     try {
+      if (typeof window.MatchAppCatalogMedia?.regionCode === 'function') return window.MatchAppCatalogMedia.regionCode() || '';
       const pinned = String(localStorage.getItem('match_user_region') || '').trim();
       if (/^[a-z]{2}$/i.test(pinned)) return pinned.toUpperCase();
       const country = String(localStorage.getItem('match_user_country') || '').trim();

@@ -64,12 +64,14 @@ test('magazine matching retains the original shared allowance when the actual to
  w.eval(read('match-tokens.js'));await w.MatchAppTokens.refresh();
  const quota=async(action,context)=>{order.push('quota');assert.equal(action,'match');assert.equal(context.surface,'ebook');return allowed;};w.checkDailyLimit=quota;
  const magazine=setup().MatchAppMagazines.items[0];
- const context={window:w,console,prefs:()=>({format:'magazine',access:'free'}),chooseMagazine:async()=>{order.push('source');return found?{book:magazine,magazine:true}:null;},matchNote:()=>'',uniq:values=>[...new Set(values)],read:()=>[],write:()=>order.push('history'),K:{seen:'existing-seen'},renderResult:()=>order.push('reveal'),renderReadingDiscovery:()=>order.push('source-fallback')};
+ const context={window:w,console,prefs:()=>({format:'magazine',access:'free'}),chooseMagazine:async()=>{order.push('source');return found?{book:magazine,magazine:true}:null;},matchNote:()=>'',read:()=>[],K:{saved:'saved',disliked:'disliked',seen:'existing-seen'},renderResult:()=>order.push('reveal'),renderReadingDiscovery:()=>order.push('source-fallback'),
+  readingOwner:'guest',readingEpoch:0,readingClaims:new Map(),cloudHydrate:async()=>true,cloudSync:async()=>{},readingHistoryNotice:()=>{throw Error('history unexpectedly unavailable');},
+  claimReading:async()=>{order.push('claim');return true;},releaseReading:async()=>order.push('release'),queueReading:()=>order.push('history')};
  const match=read('ebooks/ebook-matcher.js'),start=match.indexOf('async function doMatch(root){'),end=match.indexOf('\nfunction syncBookControls',start);
  vm.createContext(context);vm.runInContext(match.slice(start,end)+'\nthis.matchMagazine=doMatch;',context);
  try{
-  await context.matchMagazine(rootNode);assert.deepEqual(order,['source','quota','history','reveal']);assert.equal(w.checkDailyLimit,quota);assert.equal(w.MatchAppTokens.enabled,false);
-  order.length=0;allowed=false;await context.matchMagazine(rootNode);assert.deepEqual(order,['source','quota'],'denied shared allowance never changes history or reveals');
+  await context.matchMagazine(rootNode);assert.deepEqual(order,['source','claim','quota','history','reveal']);assert.equal(w.checkDailyLimit,quota);assert.equal(w.MatchAppTokens.enabled,false);
+  order.length=0;allowed=false;await context.matchMagazine(rootNode);assert.deepEqual(order,['source','claim','quota','release'],'denied shared allowance releases the unused claim without history or reveal');
   order.length=0;found=false;await context.matchMagazine(rootNode);assert.deepEqual(order,['source','source-fallback'],'failed source resolution never reaches the shared debit');
   assert.ok(calls.every(name=>name==='match_token_status'),'disabled token policy never consumes an additional token');assert.equal(rootNode.dataset.audioBusy,'0');assert.equal(rootNode.querySelector('button').disabled,false);
  }finally{w.close();}
@@ -109,7 +111,7 @@ test('adult Home, magazine hub and Ask AI wire publisher data while Kids cannot 
 test('Ask AI never substitutes film matches for requested e-books, audiobooks or magazines',()=>{
  const js=read('discover.js'),server=read('supabase/functions/gemini-proxy/index.ts');
  assert.match(js,/const bookIntent = detectBookIntent\(question\)/);
- assert.match(js,/if \(!bookIntent && wantsTitleRecommendations &&/);
+ assert.match(js,/if \(preparedRecommendations===null && !bookIntent && wantsTitleRecommendations &&/);
  assert.match(js,/!payload\?\._live \|\| !String\(payload\.answer \|\| ''\)\.trim\(\)/,'live AI replies without title cards must remain intact');
  assert.match(js,/MatchAppReadingAI\?\.render/);
  assert.match(js,/MatchAppContentSafety\?\.safeEntries/);

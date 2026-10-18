@@ -9,10 +9,21 @@
     italy:'IT',spain:'ES',japan:'JP',southkorea:'KR',india:'IN',australia:'AU'
   });
   function region(value) {
+    if(typeof window.MatchAppCatalogMedia?.resolveCountryCode==='function')return window.MatchAppCatalogMedia.resolveCountryCode(value);
     const raw=String(value||'').trim();
     if(/^[A-Za-z]{2}$/.test(raw))return raw.toUpperCase();
     const compact=raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z]/g,'');
     return COUNTRY[compact]||'';
+  }
+  function explicitRegion(value){
+    // A trailing service or sentence must not hide an explicitly named
+    // viewing country ("in Norway on Netflix" / "in the United States").
+    const words=String(value||'').trim().replace(/^the\s+/i,'').split(/\s+/);
+    for(let length=words.length;length>0;length--){
+      const found=region(words.slice(0,length).join(' '));
+      if(found)return found;
+    }
+    return '';
   }
   function matches(question) {
     const q=String(question||'').toLowerCase();
@@ -41,12 +52,10 @@
     const sb=window.supabaseClient,lookup=window.MatchAppCatalogMedia?.lookupLive;
     const q=String(question||''),origin=originFilter(q);
     const explicitStream=String(q).match(/\b(?:streaming|available|watch|assistir|dispon[ií]vel|ver)\s+(?:in|no|na|em|en)\s+([a-záéíóúç\s]{2,35})/i)?.[1]||'';
-    const storedRegion=window.localStorage?.getItem?.('match_user_region') || '';
-    const languageRegion=String(window.MATCH_LANG||lang||'').match(/^[a-z]{2,3}[-_]([a-z]{2})$/i)?.[1]||'';
     // Origin is not viewing country: Brazilian productions may be watched in the US.
-    const requestedRegion=region(explicitStream) || region(storedRegion) || region(country) || region(languageRegion) || 'US';
+    const requestedRegion=explicitRegion(explicitStream) || window.MatchAppCatalogMedia?.regionCode?.() || region(country) || '';
     const empty={answer:localeText(lang,'empty',0,requestedRegion),results:[],_live:false,_docVerified:true};
-    if(!sb?.functions?.invoke || typeof lookup!=='function')return empty;
+    if(!requestedRegion || !sb?.functions?.invoke || typeof lookup!=='function')return empty;
     try {
       const discover={kind:'tv',genre_ids:[99],pages:2};
       if(origin==='BR')discover.original_language='pt';

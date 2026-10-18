@@ -15,7 +15,7 @@ function boot(){
   };
   window.window=window;
   const ctx=vm.createContext({
-    window, document:{dispatchEvent(){}}, localStorage, CONTENT_CATALOG:catalog,
+    window, document:{dispatchEvent(){},addEventListener(){}}, localStorage, CONTENT_CATALOG:catalog,
     Set, Map, JSON, Object, Array, Number, String, Promise, setTimeout, console
   });
   vm.runInContext(read('matching-policy.js'), ctx);

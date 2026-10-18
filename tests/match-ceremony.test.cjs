@@ -19,14 +19,15 @@ test('match click paints progress immediately and never delays a verified result
 
 test('result card is not skipped as already-seen after the title is remembered',()=>{
   const trigger=app.slice(app.indexOf('window.triggerMatch'),app.indexOf('async function renderResult'));
-  const renderStart=app.indexOf('async function renderResult');
-  const render=app.slice(renderStart, renderStart+6500);
-  assert.doesNotMatch(trigger,/rememberShownTitle\(matchResult\.title\)[\s\S]{0,80}matchapp:newmatch/);
-  assert.match(render,/rememberShownTitle\(selected\.title\)/);
+  const render=app.match(/async function renderResult\([\s\S]*?\n}\n/)[0];
+  assert.doesNotMatch(trigger,/rememberShownTitle\(matchResult(?:\.title)?\)[\s\S]{0,80}matchapp:newmatch/);
+  const shown=render.indexOf("resultBox.style.display = 'block';"),remembered=render.indexOf('rememberShownTitle(selected);');
+  assert(shown>=0&&remembered>shown,'remember the full identity only after the result is visible');
   assert.match(render,/matchapp:newmatch/);
   assert.match(render,/confetti/);
   assert.match(render,/is-revealed/);
   assert.doesNotMatch(render,/known\(\)\.has\(window\.matchPolicy\.key\(selected\.title\)\)/);
+  assert.doesNotMatch(render,/matchPolicy\?\.excludes\?\.\(selected\)/,'the owned reservation must not hide its own result');
 });
 
 test('integrity repair never hides a revealed match',()=>{

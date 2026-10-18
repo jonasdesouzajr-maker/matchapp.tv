@@ -1,7 +1,8 @@
 import { matchesCriteria } from './matching-policy.mjs';
 
 export const LANGUAGES=Object.freeze(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
-export const COUNTRIES=Object.freeze(['BR','US','GB','PT','CA','AU','JP','KR','IN','DE','FR','ES','IT','TR','ID','MX','AR','CL','CO','PE','RU','CN','SA','AE','ZA','NZ','NL','BE','IE','AT','CH','SE','DK','NO','FI','PL','CZ','GR','IL','TH','MY','SG','PH','VN','TW','HK','EG']);
+// Country validation follows registration; countryOptions independently verifies availability.
+export const COUNTRIES=Object.freeze('AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI KH CM CA CV KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR XK KW KG LA LV LB LS LR LY LI LT LU MO MK MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SZ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW'.split(' '));
 export const MOODS=Object.freeze(['any','funny','intense and thrilling','cozy comfort watch','mind-bending','romantic']);
 export const RATINGS=Object.freeze(['all ages family friendly','tween PG','teen PG-13']);
 export const MAX_SOURCE_AGE=72*60*60*1000;
@@ -14,7 +15,7 @@ export function validatePrefs(input){
   if(!input||typeof input!=='object'||Array.isArray(input))throw new Error('invalid_prefs');
   const cat=input.cat||'any',mood=input.mood||'any',rating=input.rating||RATINGS[0];
   if(!['any','movie','series'].includes(cat)||!MOODS.includes(mood)||!RATINGS.includes(rating))throw new Error('invalid_prefs');
-  const country=String(input.country||'').toUpperCase();
+  const country=String(input.country||'').trim().toUpperCase();
   if(!COUNTRIES.includes(country))throw new Error('country_required');
   const providers=input.providers===undefined?[]:input.providers;
   if(!Array.isArray(providers)||providers.length>12||providers.some(p=>typeof p!=='string'||!p.trim()||p.length>100))throw new Error('invalid_prefs');
@@ -24,7 +25,7 @@ export function validatePrefs(input){
 }
 export function cleanExclusions(value){
   if(!Array.isArray(value)||value.length>1000)throw new Error('invalid_exclusions');
-  return [...new Set(value.filter(v=>typeof v==='string'&&v.length<=300).map(titleKey).filter(Boolean))];
+  return [...new Set(value.filter(v=>typeof v==='string'&&v.length<=300).map(v=>/^tmdb:(?:movie|tv):[1-9]\d*$/.test(v)?v:titleKey(v)).filter(Boolean))];
 }
 function validTime(value,now){const n=typeof value==='string'?Date.parse(value):NaN;return Number.isFinite(n)&&n<=now+300000&&now-n<=MAX_SOURCE_AGE;}
 function sourceLink(value,id,kind,country){

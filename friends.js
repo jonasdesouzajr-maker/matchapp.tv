@@ -1,7 +1,7 @@
 (function(){
  'use strict';
  const avatars={fox:['#ffbd74','🦊'],bear:['#d9a972','🐻'],cat:['#c4a5ff','🐱'],frog:['#92dda0','🐸'],panda:['#d6e7ed','🐼'],rabbit:['#ffc3df','🐰'],owl:['#d6b089','🦉'],rocket:['#8ce3f5','🚀'],planet:['#b7acff','🪐'],star:['#ffda73','⭐'],whale:['#99caff','🐳'],robot:['#a9e2dd','🤖']};
- let state=null,timer=null,matchTimer=null,inviteFriend=null,currentCode=null,busy=false;
+ let state=null,timer=null,matchTimer=null,inviteFriend=null,currentCode=null,busy=false,friendResultVersion=0;
  const $=id=>document.getElementById(id);
  const isPt=()=>String(window.MATCH_LANG||navigator.language).startsWith('pt');
  const tr=(en,pt)=>isPt()?pt:en;
@@ -63,6 +63,8 @@
  }
  async function refresh(){if(!window.isUserLoggedIn)return;render(await rpc('list'));}
  function showMatchForm(){
+  friendResultVersion++;
+  $('friend-result-poster')?.__matchappFriendPoster?.cancel?.();
   $('friend-match').hidden=false;$('friend-match-result').hidden=true;$('friend-match-form').hidden=false;
   for(const [field,prop]of Object.entries({cat:'cats',plat:'platform',mood:'moods',vibe:'vibes',rating:'ratings'})){
    const sel=$('friend-match-'+field);if(sel.options.length>1)continue;
@@ -72,23 +74,68 @@
   $('friend-match').scrollIntoView({behavior:'smooth',block:'start'});
  }
  function prefs(){const p={};['cat','plat','mood','vibe','rating'].forEach(k=>p[k]=[$('friend-match-'+k).value].filter(v=>v!=='any'));return p;}
+ function hydrateFriendResultMedia(result,version,code){
+  const image=$('friend-result-poster'),link=$('friend-result-watch');
+  if(!image||!link)return;
+  image.__matchappFriendPoster?.cancel?.();
+  const token={},current=()=>version===friendResultVersion&&code===currentCode&&window.isUserLoggedIn===true&&image.isConnected&&image.__matchappFriendPoster===token;
+  image.__matchappFriendPoster=token;
+  const fallback=generateLocalPosterSVG(result.title,result);
+  image.alt=result.title;image.src=fallback;
+  let probe=null,timer=null;
+  const clear=()=>{if(timer!==null)clearTimeout(timer);timer=null;if(probe){probe.onload=null;probe.onerror=null;probe=null;}};
+  token.cancel=clear;
+  const applyViewing=meta=>{
+   if(!current())return;
+   const region=window.MatchAppCatalogMedia?.regionCode?.()||window.MatchAppViewerCountry?.regionCode?.()||'';
+   const target=meta?window.MatchAppCatalogMedia?.viewingTarget?.(meta,result.title,region):null;
+   const verified=!!region&&target?.mode==='stream'&&!!target.href;
+   link.href=verified?target.href:region?'https://www.justwatch.com/'+region.toLowerCase()+'/search?q='+encodeURIComponent(result.title):'https://www.justwatch.com/';
+   link.textContent=verified?(window.t?.('discover.watchNow')||tr('Watch Now','Assistir agora'))+(target.provider?' · '+target.provider:''):(window.t?.('discover.whereToWatch')||tr('Find where to watch','Onde assistir'));
+   link.target='_blank';link.rel='noopener noreferrer';
+  };
+  const remember=(meta,posterUrl)=>{
+   if(current())window.matchPolicy?.remember?.({...result,_catalogMedia:meta||result._catalogMedia,posterUrl:posterUrl||fallback,streamUrl:link.href},'matched');
+  };
+  applyViewing(null);remember(null,fallback);
+  const promote=(url,meta)=>{
+   if(!url||!current())return;
+   const variants=window.MatchAppCatalogMedia?.posterVariants?.(url)||[];
+   const urls=[...new Set(variants.length?variants:[url])];let index=0;const started=Date.now();
+   const next=()=>{
+    clear();if(!current())return;if(index>=urls.length||Date.now()-started>=12000){image.onerror=null;return;}
+    const source=urls[index++],pending=new Image();probe=pending;
+    timer=setTimeout(()=>{if(probe===pending)next();},Math.min(3000,12000-(Date.now()-started)));
+    pending.onload=()=>{if(!current()||probe!==pending)return;if(!pending.naturalWidth){next();return;}clear();image.src=source;remember(meta,source);};
+    pending.onerror=()=>{if(probe===pending)next();};pending.src=source;
+   };
+   image.onerror=()=>{if(!current())return;image.src=fallback;next();};next();
+  };
+  const tmdbId=Number(result.tmdbId||result.tmdb_id||result._tmdbId||result._catalogMedia?.tmdb_id)||null;
+  const kind=result.kind||result.media_kind||result._tmdbKind||result._catalogMedia?.media_kind||window.tmdbKindForCats?.(result.cats||[])||'';
+  const recover=()=>{if(current()&&!tmdbId&&typeof getRealCoverImage==='function')getRealCoverImage(result.title,{...result,kind}).then(url=>promote(url,null)).catch(()=>{});};
+  if(window.MatchAppCatalogMedia?.resolvePoster)window.MatchAppCatalogMedia.resolvePoster(result.title,{year:result.year||'',cats:result.cats||[],kind,tmdbId,priority:true})
+   .then(row=>{if(!current())return;applyViewing(row?.meta);remember(row?.meta,fallback);if(row?.url)promote(row.url,row.meta);else recover();}).catch(recover);
+  else recover();
+ }
  async function pollMatch(){
   if(!currentCode || document.hidden || !window.isUserLoggedIn)return;
-  const data=await rpc('match',{code:currentCode});
+  const code=currentCode,version=friendResultVersion;
+  const data=await rpc('match',{code});
+  if(code!==currentCode||version!==friendResultVersion||!window.isUserLoggedIn)return;
   if(data.result){
    clearInterval(matchTimer);matchTimer=null;
    const r=data.result;$('friend-match-form').hidden=true;$('friend-match-result').hidden=false;
    $('friend-result-title').textContent=r.title;const synopsis=$('friend-result-synopsis');synopsis.dataset.resultDescription='1';synopsis.dataset.sourceLang='en';synopsis.dataset.resultTitle=r.title;synopsis.dataset.resultYear=r.year||'';synopsis.dataset.resultKind=r.kind||(/movie|film/i.test(r.cats?.[0]||'')?'movie':/series|tv/i.test(r.cats?.[0]||'')?'tv':'');synopsis.textContent=r.synopsis||'';
    window.MatchAppTitleIdentity?.paint($('friend-result-title'),{...r,kind:synopsis.dataset.resultKind||r.cats?.[0]||''});
-   const image=$('friend-result-poster'),fallback=()=>generateLocalPosterSVG(r.title,r);image.src=fallback();image.onerror=()=>{image.onerror=null;image.src=fallback();};
-   getRealCoverImage(r.title,r).then(url=>{if(url)image.src=url;}).catch(()=>{});
-   const link=$('friend-result-watch');link.href=r.watchUrl || platformSearchUrl(r.platform,r.title);link.textContent=tr('Find where to watch','Onde assistir');
-   window.matchPolicy?.remember({title:r.title,posterUrl:fallback(),streamUrl:link.href},'matched');
+   hydrateFriendResultMedia(r,++friendResultVersion,code);
    window.matchShareCard?.mount($('friend-result-share'),r.title,state?.settings?.token);
    note(tr('You both have the same match. Each of you can share your own card below.','Vocês têm o mesmo match. Cada um pode compartilhar seu próprio cartão abaixo.'));
   }else{note(data.ready?tr('No fresh title fits both sets of criteria. Adjust your choices together. No filters or history exclusions were relaxed.','Nenhum título novo atende às escolhas de ambos. Ajustem os critérios juntos.'):tr('Choose your criteria, then wait for your friend to choose theirs.','Escolha seus critérios e aguarde as escolhas do seu amigo.'));}
  }
  async function auth(){
+  friendResultVersion++;
+  $('friend-result-poster')?.__matchappFriendPoster?.cancel?.();
   const signed=window.isUserLoggedIn===true;$('friends-signed-in').hidden=!signed;$('friends-sign-in').hidden=signed;
   clearInterval(timer);clearInterval(matchTimer);timer=null;matchTimer=null;
   if(!signed){state=null;$('friends-list').replaceChildren();return;}

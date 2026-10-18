@@ -4,10 +4,19 @@
 (function(){
 'use strict';
 if((location.pathname||'').toLowerCase().startsWith('/kids'))return;
+const stateOnly=document.currentScript?.dataset?.readingStateOnly==='1';
+if(stateOnly&&window.MatchAppEbooks?.ready)return;
 
 const CAT=()=>window.MatchAppContentSafety?.safeEntries?.(window.MATCHAPP_EBOOK_CATALOG)|| (Array.isArray(window.MATCHAPP_EBOOK_CATALOG)?window.MATCHAPP_EBOOK_CATALOG:[]);
 const MAG=()=>window.MatchAppContentSafety?.safeEntries?.(window.MatchAppMagazines?.items)||window.MatchAppMagazines?.items||[];
 const K={saved:'match_ebook_saved_v1',disliked:'match_ebook_disliked_v1',seen:'match_ebook_seen_v1',prefs:'match_ebook_criteria_v1'};
+const READING_OWNER='match_ebook_owner_v1';
+let readingOwner='guest';
+try{readingOwner=localStorage.getItem(READING_OWNER)||localStorage.getItem('match_portfolio_owner')||'guest';}catch(_){}
+let readingEpoch=0,readingHydrating=null,readingFlushing=null;
+const readingClaims=new Map();
+const readingMemory=new Map(),unwritableReading=new Set(),importedOwners=new Set();
+const pendingKey=owner=>'match_ebook_pending_v2_'+owner;
 const FIELDS={
  mood:[
   ['any','✨','Any mood'],['cozy','☕','Cozy'],['funny','😄','Funny'],['witty','💬','Witty'],['romantic','💘','Romantic'],
@@ -62,15 +71,17 @@ function matchNote(p,pick){
 }
 function discoverySearches(p,book){
  const term=book?book.title+' '+book.author:[p.genre,p.mood].filter(x=>x&&x!=='any').join(' ')||'books';
- const q=encodeURIComponent(term),audio=p.format==='audiobook';
+ const q=encodeURIComponent(term),audio=p.format==='audiobook',region=market();
  if(audio&&p.access==='free')return[
    ['LibriVox (US rights; check locally)','https://librivox.org/search?q='+q],
    ['WorldCat (check local library audio)','https://search.worldcat.org/search?q='+q]
  ];
- if(audio)return[
-   ['Audible','https://www.'+(market()==='BR'?'audible.com.br':'audible.com')+'/search?keywords='+q],
-   ['Apple Books','https://books.apple.com/'+market().toLowerCase()+'/search?term='+q]
- ];
+ if(audio){
+  const storefront=window.MatchAppAudiobooks?.appleStorefront?.(region)||'';
+  const sources=window.MatchAppAudiobooks?.sourceSearches?.(book||{title:term,author:''},region)||[];
+  return sources.map(s=>[s.label,s.url]).concat(storefront?
+    [['Apple Books','https://books.apple.com/'+storefront+'/search?term='+q]]:[]);
+ }
  if(p.format==='magazine')return[
    ['Search official magazine publishers','https://www.google.com/search?q='+encodeURIComponent(term+' magazine official publisher')],
    ['WorldCat magazine catalogues','https://search.worldcat.org/search?q='+encodeURIComponent(term+' magazine')]
@@ -82,7 +93,7 @@ function discoverySearches(p,book){
  ];
  return[
    ['Google Books','https://books.google.com/books?q='+q],
-   ['Apple Books','https://books.apple.com/'+market().toLowerCase()+'/search?term='+q]
+   ['Apple Books',appleBookSearch(region,q)]
  ];
 }
 function renderReadingDiscovery(root,p){
@@ -91,6 +102,7 @@ function renderReadingDiscovery(root,p){
  host.hidden=false;
  host.innerHTML='<div class="ebook-result-copy ebook-audio-discovery"><h3>📚 '+esc(fallbackCopy('sourceCheck'))+'</h3>'+
    '<p class="ebook-audio-note">'+esc(fallbackCopy('browse'))+'</p>'+
+   chooseCountryLink()+
    '<div class="ebook-provider-row">'+links.map(([name,url])=>'<a class="ebook-provider" href="'+esc(url)+
       '" target="_blank" rel="noopener noreferrer">'+esc(name)+' ↗</a>').join('')+'</div>'+
    '<p class="ebook-rights">'+esc(tr('rights'))+'</p></div>';
@@ -98,8 +110,33 @@ function renderReadingDiscovery(root,p){
 }
 function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');if(/^pt/i.test(raw))return'pt-BR';if(/^es/i.test(raw))return'es';if(/^ja/i.test(raw))return'ja';return'en';}
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
-function read(key){try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch(_){return[]}}
-function write(key,v){try{localStorage.setItem(key,JSON.stringify(v))}catch(_){}}
+function read(key){try{if(!unwritableReading.has(key)){const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}}catch(_){}return readingMemory.get(key)||[];}
+function write(key,v){
+ const put=name=>{readingMemory.set(name,v);try{localStorage.setItem(name,JSON.stringify(v));unwritableReading.delete(name);}catch(_){unwritableReading.add(name);}};
+ put(key);if([K.saved,K.disliked,K.seen].includes(key))put(key+'_owner_'+readingOwner);
+}
+function switchReadingOwner(next){
+ next=next||'guest';
+ if(next===readingOwner)return;
+ const previous=readingOwner;
+ const guestPending=previous==='guest'?read(pendingKey(previous)):[];
+ const current=Object.fromEntries([K.saved,K.disliked,K.seen].map(k=>[k,read(k)]));
+ for(const k of Object.keys(current))try{localStorage.setItem(k+'_owner_'+previous,JSON.stringify(current[k]))}catch(_){}
+ readingOwner=next;
+ readingEpoch++;
+ for(const k of Object.keys(current)){
+  const owned=read(k+'_owner_'+next);
+  // The first signed-in account may adopt this browser's guest choices;
+  // later accounts must never inherit another member's reading portfolio.
+  write(k,uniq(owned.concat(previous==='guest'&&next!=='guest'?current[k]:[])));
+ }
+ try{localStorage.setItem(READING_OWNER,next)}catch(_){}
+ if(previous==='guest'&&next!=='guest'&&guestPending.length){
+  write(pendingKey(next),read(pendingKey(next)).concat(guestPending));
+  try{localStorage.removeItem(pendingKey(previous))}catch(_){}
+ }
+ if(previous==='guest'&&next!=='guest')for(const k of Object.keys(current))try{localStorage.removeItem(k+'_owner_guest')}catch(_){}
+}
 const BOOK_CONFLICTS={cozy:['thriller','horror','true-crime','dystopian'],funny:['thriller','horror','true-crime'],hopeful:['horror','true-crime']};
 function bookIncompatible(field,value,p){
  const mood=field==='mood'?value:p.mood,genre=field==='genre'?value:p.genre;
@@ -111,31 +148,35 @@ function savePrefs(v){normalizeBookPrefs(v);try{localStorage.setItem(K.prefs,JSO
 function uniq(v){return [...new Set(v.filter(Boolean))]}
 function idset(key){return new Set(read(key))}
 function market(){
+ const country=window.MatchAppCountry||window.MatchAppCatalogMedia;
+ if(typeof country?.regionCode==='function')return country.regionCode()||'';
  let saved='';
- try{saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase()}catch(_){}
- // Incognito/storage-denied mobile WebViews must not crash the matcher.
- const nav=String(navigator.language||'').toLowerCase();
- if(saved==='brazil'||saved==='brasil'||saved==='br'||nav.endsWith('-br'))return'BR';
- if(saved==='united kingdom'||saved==='uk'||saved==='gb'||nav.endsWith('-gb'))return'GB';
- if(saved==='canada'||saved==='ca'||nav.endsWith('-ca'))return'CA';
- if(saved==='australia'||saved==='au'||nav.endsWith('-au'))return'AU';
- if(saved==='japan'||saved==='jp'||nav.endsWith('-jp'))return'JP';
- if(saved==='portugal'||saved==='pt'||nav.endsWith('-pt'))return'PT';
- return'US';
+ try{saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase()}catch(_){return ''}
+ // A chosen country is independent of app language and book origin.
+ return {br:'BR',brazil:'BR',brasil:'BR',gb:'GB',uk:'GB','united kingdom':'GB',
+  ca:'CA',canada:'CA',au:'AU',australia:'AU',jp:'JP',japan:'JP',
+  pt:'PT',portugal:'PT',us:'US','united states':'US',usa:'US'}[saved]||'';
+}
+const APPLE_BOOK_MARKETS=new Set('AT AU BE BR CA CH DE DK ES FI FR GB GR IE IT JP LU NL NO NZ PT SE US'.split(' '));
+function appleBookSearch(region,query){return APPLE_BOOK_MARKETS.has(region)?'https://books.apple.com/'+region.toLowerCase()+'/search?term='+query:'https://books.apple.com/';}
+function chooseCountryLink(){
+ if(market())return '';
+ const label=window.MatchAppCountry?.chooseCountryMessage?.(window.MATCH_LANG||document.documentElement.lang||'en')||
+  window.t?.('profile.selectCountry')||'Choose your country';
+ return '<p class="ebook-audio-note"><a class="ebook-provider" data-ebook-choose-country href="/profile/profile.html">'+esc(label)+'</a></p>';
 }
 function q(book){return encodeURIComponent(book.title+' '+book.author);}
 function storeLinks(book){
  const m=market(), query=q(book);
- const amazon={BR:'amazon.com.br',GB:'amazon.co.uk',CA:'amazon.ca',AU:'amazon.com.au',JP:'amazon.co.jp',PT:'amazon.es',US:'amazon.com'}[m]||'amazon.com';
+ const amazon={BR:'amazon.com.br',GB:'amazon.co.uk',CA:'amazon.ca',AU:'amazon.com.au',JP:'amazon.co.jp',PT:'amazon.es',US:'amazon.com'}[m];
  const affiliate=window.MatchAppEbookAffiliate;
- const kindle=affiliate?affiliate.amazonSearchUrl(book,m):'https://www.'+amazon+'/s?k='+query+'&i=digital-text';
- const apple={BR:'br',GB:'gb',CA:'ca',AU:'au',JP:'jp',PT:'pt',US:'us'}[m]||'us';
- const kobo={BR:'br/pt',GB:'gb/en',CA:'ca/en',AU:'au/en',JP:'jp/ja',PT:'pt/pt',US:'us/en'}[m]||'us/en';
+ const kindle=amazon?(affiliate?affiliate.amazonSearchUrl(book,m):'https://www.'+amazon+'/s?k='+query+'&i=digital-text'):'';
+ const kobo={BR:'br/pt',GB:'gb/en',CA:'ca/en',AU:'au/en',JP:'jp/ja',PT:'pt/pt',US:'us/en'}[m];
  const links=[
-  ['Kindle',kindle],
-  ['Apple Books','https://books.apple.com/'+apple+'/search?term='+query],
+  ...(kindle?[['Kindle',kindle]]:[]),
+  ['Apple Books',appleBookSearch(m,query)],
   ['Google Play Books','https://play.google.com/store/search?q='+query+'&c=books'],
-  ['Kobo','https://www.kobo.com/'+kobo+'/search?query='+query]
+  ['Kobo','https://www.kobo.com/'+(kobo?kobo+'/':'')+'search?query='+query]
  ];
  if(m==='US')links.push(['NOOK','https://www.barnesandnoble.com/s/'+query+'?keyword='+query]);
  return links;
@@ -205,10 +246,9 @@ function bookCandidates(p,allowSeen){
  }).sort((a,b)=>b.weight-a.weight);
 }
 function bestBookChoices(p){
- // Fresh approximate results precede previously suggested exact results.
- // Saved and disliked items are excluded even when the seen list is recycled.
- const unseen=bookCandidates(p,false);
- const ranked=unseen.length?unseen:bookCandidates(p,true);
+ // An exhausted catalogue is an uncharged source-search state. A request
+ // for another match must never quietly recycle a previously shown work.
+ const ranked=bookCandidates(p,false);
  if(!ranked.length)return [];
  const best=ranked[0].weight;
  return ranked.filter(row=>row.weight===best).slice(0,12);
@@ -227,10 +267,9 @@ async function chooseVerifiedAudio(p,onProgress){
  // Do not label US public-domain audio "verified free" abroad without rights.
  if(p.access==='free'&&country!=='US')return null;
  const tested=new Set(),started=Date.now(),limit=24;
- // Search fresh compatible source records in preference order, then seen
- // records only when fresh options have been exhausted. A verified edition
+ // Search fresh compatible source records in preference order. A verified edition
  // in the selected country and access tier is mandatory before spending quota.
- for(const allowSeen of [false,true]){
+ for(const allowSeen of [false]){
    const options=bookCandidates(p,allowSeen).filter(row=>!tested.has(row.book.id));
    for(let offset=0;offset<options.length;offset+=4){
      if(tested.size>=limit||Date.now()-started>55000)return null;
@@ -255,7 +294,7 @@ async function chooseMagazine(p){
  const safe=MAG(),excluded=new Set([...read(K.saved),...read(K.disliked)]);
  // Magazine publisher profiles have topics and moods, but do not establish
  // issue pace, length or era. Unsupported criteria are disclosed in the note.
- for(const allowSeen of [false,true]){
+ for(const allowSeen of [false]){
   const seen=idset(K.seen);
   const candidates=safe.filter(m=>!excluded.has(m.id)&&(allowSeen||!seen.has(m.id))&&
     (p.access==='any'||m.access.includes(p.access)));
@@ -328,13 +367,14 @@ async function sourceCover(book,source){
   if(source==='apple'){
    // Apple is a late, bounded last resort only after the established work-level
    // sources failed. It is never used for guessed music/audio edition art.
+   const region=market();if(!APPLE_BOOK_MARKETS.has(region))return null;
    const u=new URL('https://itunes.apple.com/search');
    u.searchParams.set('term',book.title+' '+book.author);
    u.searchParams.set('media','ebook');u.searchParams.set('entity','ebook');
-   u.searchParams.set('country',market().toLowerCase());
+   u.searchParams.set('country',region.toLowerCase());
    u.searchParams.set('limit','10');u.searchParams.set('explicit','No');
    const d=await coverJSON(u.href);
-   return window.MatchAppBookCoverIdentity?.verifiedAppleBookCoverUrl(book,d?.results,market())||null;
+   return window.MatchAppBookCoverIdentity?.verifiedAppleBookCoverUrl(book,d?.results,region)||null;
   }
   return null;
  })().then(url=>{if(url)BOOK_COVER_IDENTITY.set(key,url);return url})
@@ -377,21 +417,132 @@ async function hydrateCover(book,img,fall,audio){
  }
  img.hidden=true;if(fall)fall.hidden=false;
 }
+function boundedReading(job,ms=6500){
+ return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Reading history unavailable')),ms);Promise.resolve(job).then(resolve,reject).finally(()=>clearTimeout(timer));});
+}
+async function readingRPC(action,payload,owner){
+ const sb=window.supabaseClient;if(typeof sb?.rpc!=='function')throw Error('Reading history unavailable');
+ const {data,error}=await boundedReading(sb.rpc('portfolio_action',{p_action:'reading_'+action,p_payload:{...payload,ownerId:owner}}));
+ if(error||!data||!['saved','disliked','seen','reserved','restored'].every(k=>Array.isArray(data[k])))throw Error('Reading history unavailable');
+ return data;
+}
+function applyReadingAction(event){
+ const {id,action}=event;
+ if(action==='forget')for(const key of [K.saved,K.disliked,K.seen])write(key,read(key).filter(x=>x!==id));
+ else{
+  const key=action==='save'?K.saved:action==='dislike'?K.disliked:K.seen;
+  write(key,uniq(read(key).concat(id)));
+  if(action==='save')write(K.disliked,read(K.disliked).filter(x=>x!==id));
+  if(action==='dislike')write(K.saved,read(K.saved).filter(x=>x!==id));
+ }
+}
+function queueReading(id,action,legacy=false){
+ const event={id,action,legacy,token:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)};
+ write(pendingKey(readingOwner),read(pendingKey(readingOwner)).concat(event));
+ applyReadingAction(event);
+ return event;
+}
+function applyReadingCloud(data){
+ write(K.saved,uniq(data.saved));write(K.disliked,uniq(data.disliked));write(K.seen,uniq(data.seen.concat(data.reserved)));
+ const restored=new Set(data.restored);
+ for(const event of read(pendingKey(readingOwner)))if(!event.legacy||!restored.has(event.id))applyReadingAction(event);
+}
 async function cloudSync(){
- const sb=window.supabaseClient;if(!sb)return;
- try{
-  const a=await sb.auth.getUser(),u=a&&a.data&&a.data.user;if(!u)return;
-  await sb.auth.updateUser({data:{match_ebook_saved:read(K.saved).slice(-120),match_ebook_disliked:read(K.disliked).slice(-240)}});
- }catch(_){}
+ if(readingOwner==='guest')return true;
+ const owner=readingOwner,epoch=readingEpoch;
+ if(readingFlushing?.owner===owner&&readingFlushing.epoch===epoch)return readingFlushing.promise;
+ const job=(async()=>{
+  try{
+   while(owner===readingOwner&&epoch===readingEpoch){
+    const queued=read(pendingKey(owner));if(!queued.length)return true;
+    const first=queued[0],batch=first.action==='forget'?[first]:queued.slice(0,500).filter((event,index,all)=>event.action!=='forget'&&!all.slice(0,index).some(e=>e.action==='forget'));
+    const data=await readingRPC(first.action==='forget'?'forget':'remember',first.action==='forget'?{id:first.id}:{items:batch.map(({id,action,legacy})=>({id,action,legacy}))},owner);
+    if(owner!==readingOwner||epoch!==readingEpoch)return false;
+    const sent=new Set(batch.map(event=>event.token));write(pendingKey(owner),read(pendingKey(owner)).filter(event=>!sent.has(event.token)));
+    applyReadingCloud(data);
+   }
+  }catch(_){}
+  return false;
+ })();
+ readingFlushing={owner,epoch,promise:job};
+ try{return await job}finally{if(readingFlushing?.promise===job)readingFlushing=null;}
 }
 async function cloudHydrate(){
- const sb=window.supabaseClient;if(!sb)return;
- try{
-  const a=await sb.auth.getUser(),u=a&&a.data&&a.data.user;if(!u)return;
-  const m=u.user_metadata||{};
-  if(Array.isArray(m.match_ebook_saved))write(K.saved,uniq(read(K.saved).concat(m.match_ebook_saved)));
-  if(Array.isArray(m.match_ebook_disliked))write(K.disliked,uniq(read(K.disliked).concat(m.match_ebook_disliked)));
- }catch(_){}
+ const sb=window.supabaseClient;if(!sb)return true;
+ const initialEpoch=readingEpoch;
+ if(readingHydrating?.epoch===initialEpoch)return readingHydrating.promise;
+ const job=(async()=>{
+  try{
+   // The SDK reports getUser() without a session as AuthSessionMissingError.
+   // A confirmed empty restored session is a guest, not a history outage.
+   if(typeof sb.auth?.getSession==='function'){
+    const session=await boundedReading(sb.auth.getSession());
+    if(initialEpoch!==readingEpoch||session?.error)return false;
+    if(session?.data?.session===null){switchReadingOwner('guest');return true;}
+   }
+   const a=await boundedReading(sb.auth.getUser());if(initialEpoch!==readingEpoch||a?.error)return false;
+   const u=a?.data?.user;switchReadingOwner(u&&!u.is_anonymous?u.id:'guest');
+   if(!u||u.is_anonymous)return true;
+   const owner=readingOwner,epoch=readingEpoch,data=await readingRPC('list',{},owner);
+   if(owner!==readingOwner||epoch!==readingEpoch)return false;
+   const imported='match_ebook_imported_v2_'+owner;
+   let alreadyImported=importedOwners.has(owner);try{alreadyImported=alreadyImported||!!localStorage.getItem(imported)}catch(_){}
+   if(!alreadyImported){
+    const restored=new Set(data.restored),hard=new Set(data.saved.concat(data.disliked));
+    for(const [key,action,remote] of [[K.seen,'seen',data.seen.concat(data.reserved)],[K.saved,'save',data.saved],[K.disliked,'dislike',data.disliked]]){
+     const known=new Set(remote);
+     for(const id of read(key))if(!restored.has(id)&&!known.has(id)&&!hard.has(id))queueReading(id,action,true);
+    }
+    importedOwners.add(owner);try{localStorage.setItem(imported,'1')}catch(_){}
+   }
+   applyReadingCloud(data);
+   return await cloudSync();
+  }catch(_){return false;}
+ })();
+ readingHydrating={epoch:initialEpoch,promise:job};
+ try{return await job}finally{if(readingHydrating?.promise===job)readingHydrating=null;}
+}
+async function claimReading(id){
+ const owner=readingOwner,epoch=readingEpoch;
+ const token=window.crypto?.randomUUID?.().replace(/-/g,'')||Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
+ if(owner!=='guest'){
+  // Retain the token before the request so an uncertain network reply can
+  // release this unused reservation without touching a newer device's claim.
+  readingClaims.set(owner+':'+id,token);
+  let data;
+  try{data=await readingRPC('claim',{id,token},owner);}
+  catch(error){await releaseReading(id,owner,epoch,token);throw error;}
+  if(owner!==readingOwner||epoch!==readingEpoch)return false;
+  applyReadingCloud(data);if(data.claimed!==true)readingClaims.delete(owner+':'+id);return data.claimed===true;
+ }
+ const reserve=()=>{
+  if(owner!==readingOwner||epoch!==readingEpoch||[K.saved,K.disliked,K.seen].some(k=>read(k).includes(id)))return false;
+  write(K.seen,uniq(read(K.seen).concat(id)));readingClaims.set(owner+':'+id,token);return true;
+ };
+ return navigator.locks?.request?navigator.locks.request('matchapp-reading-claim-guest',reserve):reserve();
+}
+async function releaseReading(id,owner,epoch,token){
+ if(owner!==readingOwner||epoch!==readingEpoch||readingClaims.get(owner+':'+id)!==token)return;
+ if(owner==='guest'){write(K.seen,read(K.seen).filter(x=>x!==id));readingClaims.delete(owner+':'+id);return;}
+ try{const data=await readingRPC('release',{id,token},owner);if(owner===readingOwner&&epoch===readingEpoch){applyReadingCloud(data);readingClaims.delete(owner+':'+id);}}catch(_){}
+}
+function readingHistoryNotice(root){
+ const messages={en:'We could not sync your match history. Please try again.',
+  pt:'Não foi possível sincronizar seu histórico de matches. Tente novamente.',
+  es:'No pudimos sincronizar tu historial de matches. Inténtalo de nuevo.',
+  fr:'Impossible de synchroniser votre historique de recommandations. Veuillez réessayer.',
+  de:'Dein Empfehlungsverlauf konnte nicht synchronisiert werden. Bitte versuche es erneut.',
+  it:'Non è stato possibile sincronizzare la cronologia dei consigli. Riprova.',
+  tr:'Öneri geçmişiniz eşitlenemedi. Lütfen tekrar deneyin.',
+  ru:'Не удалось синхронизировать историю рекомендаций. Попробуйте ещё раз.',
+  ar:'تعذّرت مزامنة سجل توصياتك. يُرجى المحاولة مرة أخرى.',
+  hi:'आपकी सुझाव सूची सिंक नहीं हो सकी। कृपया फिर से कोशिश करें।',
+  id:'Riwayat rekomendasi tidak dapat disinkronkan. Silakan coba lagi.',
+  ja:'おすすめ履歴を同期できませんでした。もう一度お試しください。',
+  ko:'추천 기록을 동기화하지 못했습니다. 다시 시도해 주세요.',
+  zh:'无法同步你的推荐记录，请重试。'};
+ const selected=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0];
+ const note=root.querySelector('[data-ebook-note]');if(note){note.hidden=false;note.textContent=messages[selected]||messages.en;}
 }
 function optionButtons(field,current,p){
  return FIELDS[field].map(([value,icon,label])=>'<button type="button" class="ebook-chip'+(current===value?' is-on':'')+'" data-ebook-field="'+field+'" data-ebook-value="'+esc(value)+'" aria-pressed="'+(current===value?'true':'false')+'"'+(value!==current&&bookIncompatible(field,value,p)?' disabled aria-disabled="true" title="Conflicts with your mood or genre"':'')+'><span aria-hidden="true">'+icon+'</span>'+esc(label)+'</button>').join('');
@@ -526,6 +677,7 @@ function renderResult(root,book,p,relaxed,audio,magazine,pick){
   (pick&&matchNote(p,pick)?'<p class="ebook-rights ebook-match-disclosure">'+esc(matchNote(p,pick))+'</p>':'')+
   '<div class="ebook-meta"><span>'+esc(book.length)+' read</span><span>'+esc(book.pace)+' pace</span><span>'+(book.access.includes('free')?'free option + stores':'paid stores')+'</span></div>'+
   '<div class="ebook-source-groups">'+
+   chooseCountryLink()+
    (free.length?'<div><h4>'+esc(tr('free'))+'</h4><div class="ebook-provider-row">'+free.map(([n,u])=>'<a class="ebook-provider ebook-free" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="'+esc(n)+'">'+esc(n)+' ↗</a>').join('')+'</div><p class="ebook-rights">'+esc(fallbackCopy('freeCheck'))+'</p></div>':'')+
    '<div><h4>'+esc(tr('stores'))+'</h4><div class="ebook-provider-row">'+stores.map(([n,u])=>{const tagged=!!(aff&&aff.isAffiliateLink(u));return '<a class="ebook-provider" href="'+esc(u)+'" target="_blank" rel="'+(tagged?'sponsored ':'')+'noopener noreferrer" data-ebook-provider="'+esc(n)+'"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>'+esc(n)+(tagged?' · '+esc(aff.paidLabel(lang())):'')+' ↗</a>'}).join('')+'</div>'+(paid?'<p class="ebook-rights">'+esc(aff.disclosure(lang()))+'</p>':'')+'</div>'+
    '<a class="ebook-preview-link" href="'+esc(bookInfo(book))+'" target="_blank" rel="noopener noreferrer" data-ebook-provider="Google Books">'+esc(tr('preview'))+' ↗</a>'+
@@ -562,6 +714,7 @@ function renderAudioDiscovery(root,p){
  host.hidden=false;
  host.innerHTML='<div class="ebook-result-copy ebook-audio-discovery"><h3>🎧 '+esc(tr('audioTitle'))+'</h3>'+
    '<p class="ebook-audio-note">'+esc(reason)+'</p>'+
+   chooseCountryLink()+
    (disclosure?'<p class="ebook-audio-note">'+esc(disclosure)+'</p>':'')+
    (book?'<h3>'+esc(book.title)+'</h3><p class="ebook-author">'+esc(book.author)+'</p><p>'+esc(book.summary)+'</p>':'')+
    (book?'<p class="ebook-rights">'+esc(fallbackCopy('bookProfile'))+'</p>':'')+
@@ -583,10 +736,16 @@ async function doMatch(root){
  root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);
  const p=prefs(),note=root.querySelector('[data-ebook-note]');
  const tokenContext=window.MatchAppTokens?.createContext?.('ebook');
+ let matchOwner,matchEpoch,reservedId='',reservedToken='';
  try{
+  // Auth/profile restoration may finish after the first paint. Read account
+  // exclusions before choosing, so an early tap cannot replay a saved book.
+  if(!await cloudHydrate()){readingHistoryNotice(root);return;}
+  matchOwner=readingOwner;matchEpoch=readingEpoch;
   const tokenPreflight=await window.MatchAppTokens?.beforeLookup?.('match',tokenContext);
-  if(tokenPreflight===false)return;
+  if(tokenPreflight===false||matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
   let pick;
+  for(let attempt=0;attempt<3;attempt++){
   if(p.format==='audiobook'){
    if(note){note.hidden=false;note.textContent=tr('audioWaiting')}
    pick=await chooseVerifiedAudio(p,(tried,total)=>{
@@ -601,22 +760,36 @@ async function doMatch(root){
      (window.MatchAppAIRank?.rank?(await rankBooks(shortlist,p)||choose(p)):choose(p));}
    catch(_){pick=choose(p);}
   }
+  if(matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
+  if(!pick)break;
+  // Recheck after ranking/source awaits, then reserve before spending quota.
+  if([K.saved,K.disliked,K.seen].some(k=>read(k).includes(pick.book.id))){pick=null;continue;}
+  try{
+   if(await claimReading(pick.book.id)){reservedId=pick.book.id;reservedToken=readingClaims.get(matchOwner+':'+reservedId)||'';break;}
+  }catch(_){readingHistoryNotice(root);return;}
+  pick=null;
+  }
   if(!pick){
    if(p.format==='audiobook')renderAudioDiscovery(root,p);
    else renderReadingDiscovery(root,p);
    if(note){note.hidden=true;note.textContent='';}
    return; // No curated title or verified audio: never spend quota.
   }
+  if(matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
   // If no authentic source was found, spend nothing.
   if(typeof window.checkDailyLimit!=='function'){
+   await releaseReading(reservedId,matchOwner,matchEpoch,reservedToken);reservedId='';
    if(window.showToast)window.showToast('E-book matching is available from the main MatchApp experience.',true);
    return;
   }
   const allowed=await window.checkDailyLimit('match',tokenContext);
+  if(!allowed){await releaseReading(reservedId,matchOwner,matchEpoch,reservedToken);reservedId='';}
   if(!allowed)return;
+  if(matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
   if(note){const message=matchNote(p,pick);note.hidden=!message;note.textContent=message;}
-  const seen=uniq(read(K.seen).concat(pick.book.id)).slice(-300);write(K.seen,seen);
+  queueReading(pick.book.id,'seen');readingClaims.delete(matchOwner+':'+pick.book.id);reservedId='';
   renderResult(root,pick.book,p,pick.relaxed,pick.audio||null,pick.magazine===true,pick);
+  void cloudSync();
   try{window.MatchAppTokens?.confirmResult?.('ebook',root.querySelector('[data-ebook-result]'),tokenContext?.runId);}catch(_){}
  }catch(e){
   await window.MatchAppTokens?.noteUnconfirmed?.('ebook',tokenContext?.runId);
@@ -627,6 +800,7 @@ async function doMatch(root){
   else renderReadingDiscovery(root,p);
   if(note){note.hidden=true;note.textContent='';}
  }finally{
+  if(reservedId)await releaseReading(reservedId,matchOwner,matchEpoch,reservedToken);
   root.dataset.audioBusy='0';
   root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=false);
  }
@@ -695,11 +869,11 @@ function bind(root){
    return;
   }
   const save=e.target.closest('[data-ebook-save]');
-  if(save){const id=save.dataset.ebookSave;write(K.saved,uniq(read(K.saved).concat(id)));save.textContent='★ '+tr('saved');save.disabled=true;renderSaved(root);cloudSync();analytics('ebook_save',{ebook_id:id});return;}
+  if(save){const id=save.dataset.ebookSave;queueReading(id,'save');save.textContent='★ '+tr('saved');save.disabled=true;renderSaved(root);void cloudSync();analytics('ebook_save',{ebook_id:id});return;}
   const nope=e.target.closest('[data-ebook-nope]');
-  if(nope){const id=nope.dataset.ebookNope;write(K.disliked,uniq(read(K.disliked).concat(id)));cloudSync();analytics('ebook_not_for_me',{ebook_id:id});await doMatch(root);return;}
+  if(nope){const id=nope.dataset.ebookNope;queueReading(id,'dislike');const result=root.querySelector('[data-ebook-result]');if(result)result.hidden=true;renderSaved(root);void cloudSync();analytics('ebook_not_for_me',{ebook_id:id});await doMatch(root);return;}
   const rm=e.target.closest('[data-ebook-remove]');
-  if(rm){write(K.saved,read(K.saved).filter(x=>x!==rm.dataset.ebookRemove));renderSaved(root);cloudSync();return;}
+  if(rm){queueReading(rm.dataset.ebookRemove,'forget');renderSaved(root);void cloudSync();return;}
   const provider=e.target.closest('[data-ebook-provider]');
   if(provider){
    analytics('ebook_provider_click',{provider:provider.dataset.ebookProvider});
@@ -761,6 +935,14 @@ async function mount(){
  window.addEventListener('hashchange',()=>{if(location.hash!=='#ebook-matcher-root')return;const fold=root.querySelector('.ebook-fold');if(fold)fold.open=true;root.scrollIntoView({behavior:'auto',block:'start'});});
  document.addEventListener('matchapp:langchange',()=>{const open=root.querySelector('.ebook-fold')?.open;root.innerHTML=markup();/* root delegated click handler already installed: re-binding duplicated network lookups and Match credits after language changes. */renderTop(root);renderSaved(root);syncBookControls(root,prefs());const fold=root.querySelector('.ebook-fold');if(fold)fold.open=open!==false;if(root.dataset.audioBusy==='1')root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);});
 }
-window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice()};
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+document.addEventListener('matchapp:authchange',()=>{readingEpoch++;const root=document.getElementById('ebook-matcher-root'),result=root?.querySelector('[data-ebook-result]');if(result)result.hidden=true;void cloudHydrate().then(()=>{if(root)renderSaved(root);});});
+window.addEventListener('online',()=>{void cloudHydrate().then(()=>{const root=document.getElementById('ebook-matcher-root');if(root)renderSaved(root);});});
+window.addEventListener('storage',event=>{const root=document.getElementById('ebook-matcher-root');if(root&&[K.saved,K.disliked,K.seen].includes(event.key))renderSaved(root);});
+window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice(),
+ ready:cloudHydrate,
+ async claimSuggestion(id){const owner=readingOwner,epoch=readingEpoch;if(!await claimReading(id))return null;return {id,owner,epoch,token:readingClaims.get(owner+':'+id)};},
+ finishSuggestion(claim){if(!claim||claim.owner!==readingOwner||claim.epoch!==readingEpoch||readingClaims.get(claim.owner+':'+claim.id)!==claim.token||[K.saved,K.disliked].some(k=>read(k).includes(claim.id)))return false;queueReading(claim.id,'seen');readingClaims.delete(claim.owner+':'+claim.id);void cloudSync();return true;},
+ releaseSuggestion:claim=>claim?releaseReading(claim.id,claim.owner,claim.epoch,claim.token):Promise.resolve()
+};
+if(!stateOnly){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();}
 })();

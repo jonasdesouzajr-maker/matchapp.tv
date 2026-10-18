@@ -6,13 +6,29 @@
  * of a specific title's availability or an affiliate commission. */
 (function(root,build){
  'use strict';
- const service=build();
+ const service=build(root);
  if(typeof module==='object'&&module.exports)module.exports=service;
  if(root)root.MatchAppAudiobooks=service;
-})(typeof window!=='undefined'?window:null,function(){
+})(typeof window!=='undefined'?window:null,function(root){
  'use strict';
  const CACHE=new Map(),INFLIGHT=new Map(),CACHE_LIMIT=160,TTL=6*3600000,EMPTY_TTL=75000,QUERY_TIMEOUT=6500;
- const REGION={BR:'br',GB:'gb',CA:'ca',AU:'au',JP:'jp',PT:'pt',US:'us'};
+ // Apple lists audiobook purchases in these 22 storefronts. A store that
+ // sells e-books alone (for example Brazil) is not an audiobook source.
+ // Source checked 2026-10-18: https://support.apple.com/en-us/118205
+ // The Search API defaults to US if country is omitted, so never guess it:
+ // https://performance-partners.apple.com/search-api
+ const APPLE_AUDIO_REGIONS=new Set('AT AU BE CA CH DE DK ES FI FR GB GR IE IT JP LU NL NO NZ PT SE US'.split(' '));
+ const AUDIBLE_DOMAINS={BR:'audible.com.br',GB:'audible.co.uk',CA:'audible.ca',AU:'audible.com.au',JP:'audible.co.jp',DE:'audible.de',FR:'audible.fr',IT:'audible.it',ES:'audible.es',IN:'audible.in',US:'audible.com'};
+ const KOBO_LOCALES={BR:'br/pt',GB:'gb/en',CA:'ca/en',AU:'au/en',JP:'jp/ja',PT:'pt/pt',US:'us/en'};
+ function countryCode(market){
+  if(typeof root?.MatchAppCountry?.resolveCountryCode==='function')return root.MatchAppCountry.resolveCountryCode(market)||'';
+  const code=String(market||'').trim().toUpperCase();
+  return /^[A-Z]{2}$/.test(code)?code:'';
+ }
+ function appleStorefront(market){
+  const code=countryCode(market);
+  return APPLE_AUDIO_REGIONS.has(code)?code.toLowerCase():'';
+ }
  function normalized(s){
   return String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
    .toLowerCase().replace(/(?:\s*[:(]\s*(?:unabridged|abridged|audiobook|livro\s+audio|audio\s+edition).*?)\s*$/i,'')
@@ -62,7 +78,8 @@
   }catch(_){return null}
  }
  function verifyApple(book,results,market){
-  const iso=String(market||'US').toUpperCase();
+  const iso=countryCode(market),storefront=appleStorefront(iso);
+  if(!storefront)return null;
   for(const row of Array.isArray(results)?results:[]){
    const name=String(row.collectionName||row.trackName||'');
    const url=String(row.collectionViewUrl||row.trackViewUrl||'');
@@ -70,7 +87,7 @@
       !safeAppleUrl(url)||row.trackExplicitness==='explicit'||row.collectionExplicitness==='explicit')continue;
    try{
     const u=new URL(url);
-    if(!u.pathname.toLowerCase().startsWith('/'+(REGION[iso]||'us')+'/'))continue;
+    if(!u.pathname.toLowerCase().startsWith('/'+storefront+'/'))continue;
    }catch(_){continue}
    return Object.freeze({provider:'Apple Books',url,title:name,
     author:String(row.artistName||''),verified:true,kind:'paid',region:iso,
@@ -104,15 +121,13 @@
  function sourceSearches(book,market){
   const title=String(book.title||'').trim(),author=String(book.author||'').trim(),
    term=encodeURIComponent(title+' '+author);
-  const region=String(market||'US').toUpperCase(),locale=REGION[region]||'us';
+  const region=countryCode(market),audible=AUDIBLE_DOMAINS[region],kobo=KOBO_LOCALES[region];
   const suggestions=[
-   {provider:'Google Play Books',url:'https://play.google.com/store/search?q='+term+'&c=books',label:'Search Google Play audio editions'},
-   {provider:'Audible',url:'https://www.'+(region==='BR'?'audible.com.br':'audible.com')+'/search?keywords='+term,label:'Search Audible audio editions'},
-   {provider:'Kobo',url:'https://www.kobo.com/'+
-     ({BR:'br/pt',GB:'gb/en',CA:'ca/en',AU:'au/en',JP:'jp/ja',PT:'pt/pt',US:'us/en'}[region]||'us/en')+
-     '/search?query='+term,label:'Search Kobo audio editions'}
+   {provider:'Google Play Books',url:'https://play.google.com/store/search?q='+term+'&c=books',label:'Search Google Play audio editions',region:''},
+   {provider:'Audible',url:audible?'https://www.'+audible+'/search?keywords='+term:'https://www.audible.com/',label:'Search Audible audio editions',region:audible?region:''},
+   {provider:'Kobo',url:'https://www.kobo.com/'+(kobo?kobo+'/':'')+'search?query='+term,label:'Search Kobo audio editions',region:kobo?region:''}
   ];
-  return suggestions.map(x=>Object.freeze({...x,verified:false,kind:'search-only',region:locale}));
+  return suggestions.map(x=>Object.freeze({...x,verified:false,kind:'search-only'}));
  }
  // Aborting is not always reliable in an embedded WebView: the deadline
  // must also reject the in-flight Promise when the network never resolves.
@@ -125,9 +140,11 @@
    .finally(()=>clearTimeout(timer));
  };
  async function appleSearch(book,market,fetchFn){
+  const storefront=appleStorefront(market);
+  if(!storefront)return null;
   const u=new URL('https://itunes.apple.com/search');
   u.searchParams.set('term',String(book.title||'')+' '+String(book.author||''));
-  u.searchParams.set('country',REGION[String(market||'US').toUpperCase()]||'us');
+  u.searchParams.set('country',storefront);
   u.searchParams.set('media','audiobook');u.searchParams.set('entity','audiobook');
   // Expand results PER SEARCH without multiplying Apple's published request budget.
   u.searchParams.set('limit','40');u.searchParams.set('explicit','No');
@@ -148,7 +165,7 @@
  }
  async function verify(book,market,access,fetchImpl){
   const fetchFn=fetchImpl||(typeof fetch==='function'?fetch.bind(globalThis):null);
-  const wanted=String(access||'any'),region=String(market||'US').toUpperCase();
+  const wanted=String(access||'any'),region=countryCode(market);
   if(!fetchFn||!book?.title||!book?.author)return {apple:null,free:null,searches:sourceSearches(book||{},region)};
   const key=region+'|'+wanted+'|'+normalized(book.title)+'|'+normalized(book.author);
   const old=CACHE.get(key);
@@ -160,7 +177,7 @@
    // Avoid duplicate simultaneous lookups for this exact work + storefront.
    // An independent source still runs if another store fails or times out.
    const checks=[];
-   if(wanted!=='free'){
+   if(wanted!=='free'&&appleStorefront(region)){
     expected++;checks.push(appleSearch(book,region,fetchFn)
      .then(hit=>{result.apple=hit;completed++}).catch(()=>{}));
    }
@@ -182,6 +199,6 @@
   INFLIGHT.set(key,job);
   return job;
  }
- return Object.freeze({verify,verifyApple,verifyLibriVox,sourceSearches,
+ return Object.freeze({verify,verifyApple,verifyLibriVox,sourceSearches,appleStorefront,
   titleMatches,authorMatches,safeAppleUrl,safeAppleArtwork,safeApplePreview,safeLibriVoxUrl});
 });

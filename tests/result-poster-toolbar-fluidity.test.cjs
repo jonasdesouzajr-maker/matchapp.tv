@@ -38,7 +38,7 @@ test('scoped CSS reserves original cover size on phones without cropping or extr
 test('match paints a title-labelled image before revealing and scrolling, without layout thrash', () => {
   const app = read('app.js');
   const start = app.indexOf('async function renderResult(');
-  const end = app.indexOf('rememberShownTitle(selected.title);', start);
+  const end = app.indexOf('rememberShownTitle(selected);', start);
   assert.ok(start > 0 && end > start);
   const reveal = app.slice(start, end);
   const firstPaint = reveal.indexOf('firstPoster.src = firstCover;');
@@ -48,6 +48,6 @@ test('match paints a title-labelled image before revealing and scrolling, withou
     'cover must be assigned before reveal and its reserved-layout scroll');
   assert.doesNotMatch(reveal, /offsetWidth|offsetHeight/, 'do not force a synchronous layout');
   assert.match(reveal, /requestAnimationFrame\(\(\) => requestAnimationFrame/);
-  // No Kids mode implementation, matching criteria or live poster recovery changed.
-  assert.match(app, /void getCuratedPoster\(selected.title\)\.then\(url =>/);
+  // A title-only catalogue lookup remains available only without pinned source art.
+  assert.match(app, /if\(!pinnedSourceIdentity\)void getCuratedPoster\(selected.title\)\.then\(url =>/);
 });

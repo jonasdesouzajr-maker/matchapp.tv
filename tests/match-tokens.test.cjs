@@ -250,13 +250,13 @@ test('only overlapping Match checkout entry points retire; ad-free, Ask AI and K
   }finally{f.w.close();}
 });
 
-test('HTML includes use early private-return capture, before-app token hooks and unchanged final cache suffixes',()=>{
+test('HTML includes use early private-return capture, before-app token hooks and preserve prior cache pins',()=>{
   for(const file of ['index.html','ebooks/index.html','pricing/pricing.html','profile/profile.html','discover.html']){
     const html=fs.readFileSync(path.join(__dirname,'..',file),'utf8');const d=new JSDOM(html).window.document;
     const scripts=[...d.querySelectorAll('script')],pro=scripts.find(s=>s.src.includes('/pro-plan.js?')),tokens=scripts.find(s=>s.src.includes('/match-tokens.js?')),legacy=scripts.find(s=>s.src.includes('/app.js?'));
     assert.ok(pro&&tokens&&legacy,file);assert.equal(pro.hasAttribute('defer'),false);assert.equal(pro.hasAttribute('async'),false);
     assert.ok(scripts.indexOf(pro)<scripts.findIndex(s=>s.textContent.includes('gtm.start')),file+' captures private receipt before analytics');
-    assert.ok(scripts.indexOf(tokens)<scripts.indexOf(legacy));assert.ok(legacy.src.endsWith('&regional=20261016-1'));
+    assert.ok(scripts.indexOf(tokens)<scripts.indexOf(legacy));assert.ok(legacy.src.endsWith('&regional=20261016-1&reliability=20261018-1'));
     assert.ok(d.querySelector('link[href^="/match-tokens.css?"]'));assert.ok(d.querySelector('link[href^="/pro-plan.css?"]'));
     d.defaultView.close();
   }

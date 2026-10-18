@@ -457,9 +457,15 @@ async function aiQuestion(page,question,expected,label){
   // image is fetched from an identity-verified Open Library / Google Books
   // edition, never a synthetic text-only replacement falsely called a cover.
   const booksContext=await browser.newContext({viewport:{width:1200,height:900},locale:'en-US'});
+  // Country is an explicit user preference, independent of browser language.
+  // Source and quota calls remain real. Unknown-country behavior has separate
+  // regression coverage and must never silently become the US storefront.
+  await booksContext.addInitScript(()=>localStorage.setItem('match_user_country','United Kingdom'));
   const books=await booksContext.newPage();
   try{
     await observed(books,'/ebooks/#ebook-matcher-root');
+    const readingCountry=await books.evaluate(()=>window.MatchAppCountry?.regionCode());
+    record('LIVE reading uses explicitly chosen country',readingCountry==='GB','browser=en-US selected='+readingCountry);
     await books.getByRole('button',{name:/Essential only/i}).first().click({timeout:1600}).catch(()=>{});
     const root=books.locator('#ebook-matcher-root');
     await root.locator('details.ebook-fold').waitFor({state:'attached',timeout:18000});
@@ -495,7 +501,8 @@ async function aiQuestion(page,question,expected,label){
       links:[...el.querySelectorAll('.ebook-audio-verified')].map(a=>({url:a.href,label:a.textContent}))}));
     const audioSources=audioEdition.links.every(a=>{
       const u=new URL(a.url);
-      return u.protocol==='https:'&&((['books.apple.com','itunes.apple.com'].includes(u.hostname)&&u.pathname.includes('/audiobook/'))||u.hostname==='librivox.org');
+      return u.protocol==='https:'&&['books.apple.com','itunes.apple.com'].includes(u.hostname)&&
+        u.pathname.startsWith('/gb/')&&u.pathname.includes('/audiobook/');
     });
     record('LIVE verified audiobook matching',!!audioEdition.title&&!!audioEdition.author&&audioEdition.links.length>0&&audioSources,JSON.stringify(audioEdition));
     await shot(books,'live-audiobook-matched');
@@ -543,20 +550,26 @@ async function aiQuestion(page,question,expected,label){
 
   // Run genuine proxy-backed AI questions only AFTER normal/book matching.
   const aiContext=await browser.newContext({viewport:{width:1360,height:900},locale:'en-US'});
+  await aiContext.addInitScript(()=>localStorage.setItem('match_user_country','Norway'));
   const pageAi=await aiContext.newPage();
   try{
     await observed(pageAi,'/discover.html');
+    const aiCountry=await pageAi.evaluate(()=>window.MatchAppCountry?.regionCode());
+    record('LIVE AI country differs correctly from browser language',aiCountry==='NO','browser=en-US selected='+aiCountry);
     await pageAi.locator('#discover-new-input').waitFor({state:'visible',timeout:20000});
     const page=pageAi;
       await aiQuestion(page,
        'Name the director and the release year of the 2001 animated film Spirited Away. Do not recommend books or music.',
        /(?:miyazaki)/i,'movie-fact');
       await aiQuestion(page,
-       'How can I find a legitimate audiobook edition of Pride and Prejudice by Jane Austen? Include the book title and author in your answer. Please do not recommend any films or TV shows.',
+       'How can I find a legitimate audiobook edition of Pride and Prejudice by Jane Austen in Norway? Include the book title and author in your answer. Please do not recommend any films or TV shows.',
        /pride\s+(?:and|&)\s+prejudice|jane\s+austen/i,'audiobook-intent');
       const bookRoute=page.locator('#chat-log .discover-book-matcher-link').last();
       const href=await bookRoute.getAttribute('href').catch(()=>null);
       record('Ask AI audio-specific route',!!href&&href.includes('reading=audiobook'),href||'missing');
+      const localAudio=await page.locator('#chat-log .reading-ai-card a[href^="https://books.apple.com/no/"]').count();
+      const wrongAudio=await page.locator('#chat-log .reading-ai-card a[href^="https://books.apple.com/us/"]').count();
+      record('LIVE Ask AI reading sources use Norway',localAudio>0&&wrongAudio===0,'Norway links='+localAudio+' US links='+wrongAudio);
 
   }catch(error){
     record('LIVE Ask AI movie and audiobook intents',false,String(error.stack||error).slice(0,500));

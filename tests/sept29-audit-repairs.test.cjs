@@ -47,11 +47,16 @@ test('Ask AI checks read-only entitlement before work and consumes only after li
   assert(app.indexOf('matchAllowanceBeforeLookup(\'match\')')>=0);
 });
 
-test('both unsuccessful and recycled adult matching remain free',()=>{
+test('adult matching charges only after a fresh title is atomically claimed',()=>{
   const app=source('app.js');
   const resultGuard=app.indexOf('const resultWasKnown');
-  const debit=app.indexOf("!intentionalHistoryFallback && !freeSavedSpecific && !(await checkDailyLimit('match', {runId:matchRunId}))",resultGuard);
-  assert(resultGuard>=0&&debit>resultGuard);
+  const claim=app.indexOf('titleClaimed=await window.matchPolicy?.claim?.(matchResult)===true;',resultGuard);
+  const denied=app.indexOf('if(!titleClaimed){',claim);
+  const debit=app.indexOf("!freeSavedSpecific && !(await checkDailyLimit('match', {runId:matchRunId}))",denied);
+  assert(resultGuard>=0&&claim>resultGuard&&denied>claim&&debit>denied);
+  assert.match(app.slice(denied,debit),/return;/,'a failed claim returns before the paid debit');
+  assert.doesNotMatch(app,/intentionalHistoryFallback/,'catalogue flags cannot authorize repeat results');
+  assert.match(app.slice(debit,debit+250),/releaseClaim\?\.\(matchResult\)/,'a quota refusal releases the unused owned reservation');
   assert.match(app,/matchResult = null;[\s\S]*?catch/); 
 });
 

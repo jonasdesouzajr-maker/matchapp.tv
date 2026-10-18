@@ -35,6 +35,21 @@
     'use strict';
 
     const CACHE = Object.create(null);
+    const EMPTY_UNTIL = Object.create(null), EMPTY_TTL = 75000;
+    function hasCached(key) {
+        if (!(key in CACHE)) return false;
+        if (EMPTY_UNTIL[key] && Date.now() >= EMPTY_UNTIL[key]) {
+            delete CACHE[key]; delete EMPTY_UNTIL[key]; return false;
+        }
+        return true;
+    }
+    function cacheAnswer(key, value, empty) {
+        CACHE[key] = value;
+        // A confirmed source miss needs only a short cooldown, not a blank
+        // title/details panel for the rest of the visit after source recovery.
+        if (empty) EMPTY_UNTIL[key] = Date.now() + EMPTY_TTL;
+        else delete EMPTY_UNTIL[key];
+    }
     // Share a browser-side budget between covers and localized captions.
     // The server's independent rate limit remains authoritative.
     const requests = [], pendingRequests = new Map();
@@ -123,7 +138,7 @@
         const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN'};
         const lang = hints.lang === 'en-US' ? 'en-US' : (locales[window.MATCH_LANG] || 'en-US');
         const cacheKey = `${title}::${hints.year || ''}::${kind}::${lang}`;
-        if (cacheKey in CACHE) return CACHE[cacheKey];
+        if (hasCached(cacheKey)) return CACHE[cacheKey];
 
         let best = null;
         try {
@@ -160,7 +175,7 @@
             return null;
         }
 
-        CACHE[cacheKey] = best;
+        cacheAnswer(cacheKey, best, !best);
         return best;
     };
 
@@ -173,7 +188,7 @@
         if (!window.supabaseClient) return [];
         criteria = criteria || {};
         const key='discover::'+JSON.stringify(criteria);
-        if (key in CACHE) return CACHE[key];
+        if (hasCached(key)) return CACHE[key];
         let out=[];
         try {
             const body={discover:criteria,lang:'en-US'};
@@ -185,7 +200,7 @@
         } catch (_) { return []; }
         // An empty success can mask a transient upstream outage. Let the
         // next user Match retry rather than poisoning the entire browser tab.
-        if(out.length)CACHE[key]=out;
+        if(out.length)cacheAnswer(key,out,false);
         return out;
     };
 
@@ -245,7 +260,7 @@
     window.tmdbDetails = async function (tmdbId, kind, opts) {
         if (!Number.isSafeInteger(tmdbId) || tmdbId <= 0 || !['movie','tv'].includes(kind) || !window.supabaseClient) return null;
         const cacheKey = `details::${tmdbId}::${kind}`;
-        if (cacheKey in CACHE) return CACHE[cacheKey];
+        if (hasCached(cacheKey)) return CACHE[cacheKey];
         let out = null;
         try {
             const body = { tmdb_id: tmdbId, kind, lang: 'en-US', details: true };
@@ -254,7 +269,7 @@
             const r = data?.results?.[0];
             if (r && r.tmdbId === tmdbId && r.kind === kind && r.adult !== true) out = r;
         } catch (_) { return null; }
-        CACHE[cacheKey] = out;
+        cacheAnswer(cacheKey, out, !out);
         return out;
     };
 
@@ -278,11 +293,11 @@
         const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN'};
         const lang = locales[window.MATCH_LANG] || 'en-US';
         const cacheKey = `related::${tmdbId}::${kind}::${lang}`;
-        if (cacheKey in CACHE) return CACHE[cacheKey];
+        if (hasCached(cacheKey)) return CACHE[cacheKey];
         let out = empty;
         try {
             const { data, error } = await window.requestTMDB({ tmdb_id: tmdbId, kind, lang, related: true });
-            if (error || !data) { CACHE[cacheKey] = empty; return empty; }
+            if (error || !data) return empty;
             const director = data.director && Number.isSafeInteger(data.director.id) && data.director.id > 0
                 ? { id: data.director.id, name: String(data.director.name || '') }
                 : null;
@@ -304,9 +319,9 @@
                 }));
             out = { director, related };
         } catch (e) {
-            out = empty;
+            return empty;
         }
-        CACHE[cacheKey] = out;
+        cacheAnswer(cacheKey, out, !out.director && !out.related.length);
         return out;
     };
 })();

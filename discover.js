@@ -123,6 +123,70 @@ function parseAIResponse(data) {
     return parsed;
 }
 
+function discoverRecommendationRequest(question) {
+    const q=typeof mediaIntentQuestion==='function'?mediaIntentQuestion(question):String(question||'');
+    if(window.MatchCooking?.isCooking?.(q))return false;
+    const explicit=/\b(?:recommend\w*|suggest\w*|similar|another|next pick|what should i watch|find me|recomend\w*|sugir\w*|sugest\w*|indiqu\w*|sugier\w*|recomiend\w*|recommand\w*|sugg[eè]r\w*|empfehl\w*|consigli\w*|sugger\w*|tavsiye|[oö]ner\w*|rekomendas\w*|sarankan)\b|порекоменду|посоветуй|اقترح|رشح|أوصي|सुझाओ|सुझाव|おすすめ|推薦|추천|推荐/iu;
+    if(explicit.test(q))return true;
+    // A named-title/source question is intentional reference, even if it
+    // contains "movie", "series" or "watch". Do not hide its answer as a repeat.
+    if(/\b(?:who|when|where|director|release date|release year|tell me about|information about|how (?:can|do|to)|quem|quando|onde|diretor|fale sobre|c[oó]mo|d[oó]nde|cu[aá]ndo|qui|quand|o[uù]|wer|wann|wo|chi|quando|dove)\b|谁|哪[里裡]|いつ|どこ|누가|언제|어디|кто|когда|где/iu.test(q))return false;
+    const intent=typeof mediaIntentQuestion==='function'?mediaIntentQuestion(q):q;
+    return /\b(?:watch|stream|movies?|films?|series|shows?|podcasts?|playlists?|music|listen|books?|ebooks?|audiobooks?|magazines?|comedy|horror|romance|assistir|filmes?|séries?|películas?|livros?|libros?)\b/i.test(intent);
+}
+
+function discoverExcludedTitles(limit=160,charBudget=6000,options={}) {
+    const readingTitles=options.reading?window.MatchAppReadingAI?.excludedTitles?.():null;
+    const rows=options.reading?(Array.isArray(readingTitles)?readingTitles.slice():[]):[...(window.matchPolicy?.history?.()||[])];
+    for(const name of options.reading?[]:['match_savedList','match_dislikedList','match_seenList','match_recentTitles']){
+        try{const list=JSON.parse(localStorage.getItem(name)||'[]');if(Array.isArray(list))rows.push(...list);}catch(_){}
+    }
+    const seen=new Set(),titles=[];
+    const add=value=>{
+        if(typeof value!=='string')return;
+        const title=value.replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim().slice(0,300);
+        const key=title.normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
+        if(!key||seen.has(key)||titles.length>=limit||title.length>charBudget)return;
+        seen.add(key);titles.push(title);charBudget-=title.length;
+    };
+    rows.forEach(row=>{
+        if(typeof row==='string'){add(row);return;}
+        if(!row)return;
+        [row.title,row.originalTitle,row.original_title,...(Array.isArray(row.titleAliases)?row.titleAliases:[])].forEach(add);
+        [row._tmdb,row._catalogMedia,row._meta].filter(Boolean).forEach(meta=>[meta.title,meta.originalTitle,meta.original_title,meta.original_name].forEach(add));
+    });
+    return titles;
+}
+
+function discoverAnswerContainsExcludedTitle(answer,knownKeys) {
+    const normalise=window.matchPolicy?.key||titleKey;
+    const text=normalise(answer);
+    return [...(knownKeys||[])].some(key=>typeof key==='string'&&!key.includes(':')&&key.length>1&&text.includes(key));
+}
+
+function discoverRecommendationSummary(results,language){
+    const RECOMMENDATION_COPY=Object.freeze({
+  en:{fresh:'New options to explore: {titles}. Open their details to check availability.',empty:'No new titles remain in this response after applying your saved and excluded choices. Try another request.'},
+  'pt-BR':{fresh:'Novas opções para explorar: {titles}. Abra os detalhes para consultar a disponibilidade.',empty:'Não restaram títulos novos nesta resposta após aplicar suas escolhas salvas e excluídas. Tente outro pedido.'},
+  es:{fresh:'Nuevas opciones para explorar: {titles}. Abre los detalles para consultar la disponibilidad.',empty:'No quedan títulos nuevos en esta respuesta tras aplicar tus opciones guardadas y excluidas. Prueba otra solicitud.'},
+  fr:{fresh:'De nouvelles options à découvrir : {titles}. Ouvrez les détails pour vérifier leur disponibilité.',empty:'Il ne reste aucun nouveau titre dans cette réponse après prise en compte de vos choix enregistrés et exclus. Essayez une autre demande.'},
+  de:{fresh:'Neue Vorschläge zum Entdecken: {titles}. Öffne die Details, um die Verfügbarkeit zu prüfen.',empty:'Nach Berücksichtigung deiner gespeicherten und ausgeschlossenen Titel enthält diese Antwort keine neuen Titel mehr. Versuche eine andere Anfrage.'},
+  it:{fresh:'Nuove opzioni da esplorare: {titles}. Apri i dettagli per verificare la disponibilità.',empty:'Dopo aver applicato le tue scelte salvate ed escluse, in questa risposta non restano nuovi titoli. Prova un’altra richiesta.'},
+  tr:{fresh:'Keşfedebileceğiniz yeni seçenekler: {titles}. Erişilebilirliği kontrol etmek için ayrıntıları açın.',empty:'Kaydettiğiniz ve hariç tuttuğunuz seçimler uygulandıktan sonra bu yanıtta yeni bir yapım kalmadı. Başka bir istek deneyin.'},
+  ru:{fresh:'Новые варианты для знакомства: {titles}. Откройте подробности, чтобы проверить доступность.',empty:'После учёта сохранённых и исключённых вариантов в этом ответе не осталось новых произведений. Попробуйте другой запрос.'},
+  ar:{fresh:'خيارات جديدة لاستكشافها: {titles}. افتح التفاصيل للتحقق من التوفر.',empty:'لم تتبقَّ عناوين جديدة في هذه الإجابة بعد مراعاة اختياراتك المحفوظة والمستبعدة. جرّب طلبًا آخر.'},
+  hi:{fresh:'नई चीज़ें देखें: {titles}। उपलब्धता जाँचने के लिए विवरण खोलें।',empty:'आपके सहेजे और बाहर रखे गए विकल्प लागू करने के बाद इस उत्तर में कोई नया शीर्षक नहीं बचा। कोई दूसरा अनुरोध आज़माएँ।'},
+  id:{fresh:'Pilihan baru untuk dijelajahi: {titles}. Buka detail untuk memeriksa ketersediaan.',empty:'Tidak ada judul baru dalam jawaban ini setelah menerapkan pilihan yang Anda simpan dan kecualikan. Coba permintaan lain.'},
+  ja:{fresh:'新しい候補：{titles}。詳細を開いて利用可否を確認してください。',empty:'保存済み・除外済みの選択を反映した結果、この回答には新しい作品が残りませんでした。別のリクエストを試してください。'},
+  ko:{fresh:'새로 살펴볼 후보: {titles}. 상세 정보를 열어 이용 가능 여부를 확인하세요.',empty:'저장하거나 제외한 선택을 반영한 결과, 이 답변에는 새로운 작품이 남아 있지 않습니다. 다른 요청을 시도해 보세요.'},
+  zh:{fresh:'可以探索的新选择：{titles}。打开详情查看可用情况。',empty:'应用你已保存和排除的选择后，此回答中没有剩余的新作品。请尝试其他请求。'}
+});
+  const base=String(language||'en').toLowerCase().split(/[-_]/)[0];
+  const copy=RECOMMENDATION_COPY[base==='pt'?'pt-BR':base]||RECOMMENDATION_COPY.en;
+  const titles=(Array.isArray(results)?results:[]).map(row=>typeof row?.title==='string'?row.title.trim():'').filter(Boolean).slice(0,6);
+  return titles.length?copy.fresh.replace('{titles}',titles.join(' · ')):copy.empty;
+}
+
 async function askAIConversational(question, history) {
     if (!window.supabaseClient) {
         const err = new Error('No backend');
@@ -132,14 +196,16 @@ async function askAIConversational(question, history) {
 
     // The prompt engineering lives in the gemini-proxy Edge Function, so the
     // client sends structured params rather than a pre-built prompt string.
-    const country = localStorage.getItem('match_user_country') || '';
+    const country = window.MatchAppCatalogMedia?.regionCode?.() || localStorage.getItem('match_user_country') || '';
     const age = localStorage.getItem('match_user_age') || '';
     const lang = window.MATCH_LANG || 'en';
     // Nickname so the AI can address the user by name. Optional by design —
     // an empty string simply means the AI stays neutral rather than guessing.
     const nickname = (typeof window.getUserNickname === 'function') ? window.getUserNickname() : '';
     const displayQuestion=question+'\n\nResponse language: '+lang+'. Use this selected language for the answer and every result description, regardless of the question language.';
-    const body = { mode: 'discover', question:displayQuestion, lang, country, age, nickname, history: history || [] };
+    const recommendationsOnly=discoverRecommendationRequest(question);
+    const excludedTitles=recommendationsOnly?discoverExcludedTitles(160,6000,{reading:typeof detectBookIntent==='function'&&detectBookIntent(question)}):[];
+    const body = { mode: 'discover', question:displayQuestion, lang, country, age, nickname, history: history || [], recommendationsOnly, excludedTitles };
 
     // The proxy can try four models, each with a 20-second upstream deadline.
     // An 8-second browser timeout discarded healthy answers and retried live
@@ -297,7 +363,7 @@ async function fallbackSearch(question, aiWasDown) {
         // The real Bookworms source cards provide official Apple/Audible searches,
         // and the dedicated matcher independently checks an EXACT audio edition.
         const lang=window.MATCH_LANG||'en';
-        const listed=window.MatchAppReadingAI?.selectBooks?.(question)||[];
+        const listed=window.MatchAppReadingAI?.selectBooks?.(question,{allowKnown:!discoverRecommendationRequest(question)})||[];
         const norm=x=>String(x||'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
         const q=norm(question);
         const named=listed.find(x=>x?.title&&q.includes(norm(x.title))&&norm(x.title).length>4);
@@ -382,7 +448,7 @@ function catalogFallbackForQuestion(question) {
     const policy = window.matchPolicy;
     return CONTENT_CATALOG
         .filter(e => {
-            if (!e || !e.title || isDiscoverDisliked(e.title) || policy?.known?.().has(policy.key(e.title))) return false;
+            if (!e || !e.title || isDiscoverDisliked(e, true)) return false;
             if (typeof window.tasteAllowsEntry === 'function' && !window.tasteAllowsEntry(e)) return false;
             return !policy || policy.fitsQuestion(e, question);
         })
@@ -496,17 +562,10 @@ function discoverLabel(key, fallback) {
 }
 
 function justWatchLocale() {
-    const country = (typeof localStorage !== 'undefined' && (localStorage.getItem('match_user_country') || '').trim()) || '';
-    const named = {
-        Brazil: 'br', Brasil: 'br', 'United States': 'us', USA: 'us', 'United Kingdom': 'gb', UK: 'gb',
-        Mexico: 'mx', Spain: 'es', France: 'fr', Germany: 'de', Italy: 'it', Turkey: 'tr', Russia: 'ru',
-        India: 'in', Indonesia: 'id', Japan: 'jp', 'South Korea': 'kr', China: 'cn', Portugal: 'pt',
-        Argentina: 'ar', Canada: 'ca', Australia: 'au'
-    };
-    if (named[country]) return named[country];
-    if (/^[A-Za-z]{2}$/.test(country)) return country.toLowerCase();
-    const lang = window.MATCH_LANG || 'en';
-    return ({ 'pt-BR': 'br', es: 'mx', fr: 'fr', de: 'de', it: 'it', tr: 'tr', ru: 'ru', ar: 'eg', hi: 'in', id: 'id', ja: 'jp', ko: 'kr', zh: 'cn' })[lang] || 'us';
+    if (window.MatchAppCatalogMedia?.regionCode) return window.MatchAppCatalogMedia.regionCode().toLowerCase();
+    let country = '';
+    try { country = (localStorage.getItem('match_user_country') || '').trim(); } catch (_) {}
+    return /^[A-Za-z]{2}$/.test(country) ? country.toLowerCase() : '';
 }
 
 function discoverWatchUrl(item) {
@@ -520,7 +579,8 @@ function discoverWatchUrl(item) {
     // users to a guessed streaming service, including stale catalogue links.
     // A country-specific title search is accurate without claiming availability.
     if (item?._availabilityVerified === false && !isAudio) {
-        return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
+        const region = justWatchLocale();
+        return region ? `https://www.justwatch.com/${region}/search?q=${encodeURIComponent(title)}` : 'https://www.justwatch.com/';
     }
     if (item && item._viewing && item._viewing.href) return item._viewing.href;
     if (item && item.watchUrl) return item.watchUrl;
@@ -540,7 +600,8 @@ function discoverWatchUrl(item) {
     } catch (err) {}
     if (/audiobook/i.test((item && item.type) || '')) return '/#ebook-matcher-root';
     if (isAudio) return `https://open.spotify.com/search/${encodeURIComponent(title)}`;
-    return `https://www.justwatch.com/${justWatchLocale()}/search?q=${encodeURIComponent(title)}`;
+    const region = justWatchLocale();
+    return region ? `https://www.justwatch.com/${region}/search?q=${encodeURIComponent(title)}` : 'https://www.justwatch.com/';
 }
 
 // Hard exclusions for titles MatchApp knows (blocked categories and blocked
@@ -556,11 +617,19 @@ function discoverCatalogEntry(title) {
     return discoverCatalogIndex.get(String(title).toLowerCase()) || null;
 }
 
-function isDiscoverDisliked(title) {
+function isDiscoverDisliked(value, fresh = false) {
+    const item = typeof value === 'string' ? { title: value } : value;
+    const title = item?.title;
     if (!title) return false;
+    const policy = window.matchPolicy;
+    if (policy?.excludes?.(item, { hardOnly: !fresh })) return true;
     try {
-        const list = JSON.parse(localStorage.getItem('match_dislikedList') || '[]');
-        if (list.some(i => (i.title || i) === title)) return true;
+        const normalise = policy?.key || titleKey;
+        for (const name of ['match_dislikedList', 'match_savedList']) {
+            const list = JSON.parse(localStorage.getItem(name) || '[]');
+            if (Array.isArray(list) && list.some(i => normalise(i?.title || i) === normalise(title))) return true;
+        }
+        if (fresh && !policy?.excludes && policy?.known?.().has(normalise(title))) return true;
     } catch (e) {}
     try {
         if ((window.MATCH_TASTE?.exclude || []).some(x => String(x).toLowerCase() === String(title).toLowerCase())) return true;
@@ -776,7 +845,7 @@ function catalogCousins(item, take) {
     const platform = self?.platform || item.platform;
     const FORMAT_CATS = new Set(['movie','series','limited series','short film','YouTube channel','YouTube Shorts','podcast']);
     return CONTENT_CATALOG
-        .filter(e => e && e.title && e.title !== item.title && !isDiscoverDisliked(e.title))
+        .filter(e => e && e.title && e.title !== item.title && !isDiscoverDisliked(e, true))
         .filter(e => !window.matchPolicy || window.matchPolicy.sameFamily(self || item, e))
         .map(e => {
             let s = 0;
@@ -807,21 +876,86 @@ function discoverPosterUrl(item) {
     let pinned='';
     try{pinned=typeof getVerifiedPoster==='function'?getVerifiedPoster(item.title)||'':'';}catch(_){}
     const cm=item._catalogMedia||{};
-    return [pinned,item._meta?.artwork,cm.poster_original_url,cm.poster_large_url,cm.poster_url,item._resolved?.artwork]
+    const exactCatalog=Number(cm.tmdb_id)>0&&['movie','tv'].includes(cm.media_kind);
+    const exactLive=Number(item._meta?.tmdbId||item._tmdb?.tmdbId)>0&&
+        ['movie','tv'].includes(item._meta?.kind||item._tmdb?.kind);
+    // A title-only registry entry can name a different remake or TV adaptation.
+    // Artwork carried by this exact numeric source identity takes precedence.
+    const sources=exactCatalog
+        ?[cm.poster_large_url,cm.poster_url,cm.poster_original_url]
+        :exactLive?[item._meta?.artwork,item._tmdb?.posterLarge,item._tmdb?.poster]
+        :[pinned,item._meta?.artwork,cm.poster_large_url,cm.poster_url,cm.poster_original_url,item._resolved?.artwork];
+    return sources
       .find(url=>/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com)\//i.test(String(url||'')))||'';
 }
 function setDiscoverPoster(img,item,url,fallback) {
-    if(!url)return;
+    if(!img||!url)return;
+    const previous=img.__matchappDiscoverPoster;
+    if(previous?.item===item&&previous.url===url&&!previous.exhausted)return;
+    previous?.cancel?.();
+    const variants=window.MatchAppCatalogMedia?.posterVariants?.(url)||[];
+    const candidates=[...new Set(variants.length?variants:[url])];
+    const state={item,url,loadedUrl:'',exhausted:false,cancel:null};
+    img.__matchappDiscoverPoster=state;
     item._posterExhausted=false;
-    const variants=window.MatchAppCatalogMedia?.posterVariants?.(url)||[url];
-    let index=0;
-    img.onerror=()=>{
-        if(!img.isConnected)return;
-        index++;
-        img.src=variants[index]||fallback;
-        if(index>=variants.length){img.onerror=null;item._posterExhausted=true;item._resolved={...(item._resolved||{}),artwork:fallback};}
+    let index=0,timer=null,probe=null;
+    const started=Date.now();
+    const active=()=>img.isConnected&&img.__matchappDiscoverPoster===state;
+    const cleanup=()=>{
+        if(timer!==null)clearTimeout(timer);
+        timer=null;
+        if(probe){probe.onload=null;probe.onerror=null;probe=null;}
     };
-    img.src=variants[0]||url;
+    state.cancel=cleanup;
+    const rememberArtwork=artwork=>{item._resolved={...(item._resolved||{}),artwork};};
+    const useFallback=()=>{
+        cleanup();
+        if(!active())return;
+        state.exhausted=true;
+        item._posterExhausted=true;
+        img.onerror=null;
+        if(fallback)img.src=fallback;
+        rememberArtwork(fallback||'');
+    };
+    const next=()=>{
+        cleanup();
+        if(!active())return;
+        if(index>=candidates.length||Date.now()-started>=12000){useFallback();return;}
+        const candidate=candidates[index++];
+        probe=new Image();
+        const pending=probe;
+        timer=setTimeout(()=>{
+            if(probe===pending)next();
+        },Math.min(3000,12000-(Date.now()-started)));
+        pending.onload=()=>{
+            if(!active()||probe!==pending){cleanup();return;}
+            if(!pending.naturalWidth){next();return;}
+            cleanup();
+            state.loadedUrl=candidate;
+            img.src=candidate;
+            rememberArtwork(candidate);
+        };
+        pending.onerror=()=>{if(probe===pending)next();};
+        pending.src=candidate;
+    };
+    const current=img.currentSrc||img.src||'';
+    img.onerror=()=>{
+        if(!active())return;
+        state.loadedUrl='';
+        if(fallback&&img.src!==fallback)img.src=fallback;
+        next();
+    };
+    if(img.complete&&img.naturalWidth>0&&candidates.includes(current)){
+        state.loadedUrl=current;
+        index=candidates.indexOf(current)+1;
+        rememberArtwork(current);
+        return;
+    }
+    // Keep a usable title-labelled cover visible while a bounded probe decodes
+    // the real original. Stalled mobile CDN requests must not leave blank art.
+    if(fallback)img.src=fallback;
+    rememberArtwork(fallback||'');
+    next();
 }
 let discoverComposerNode=null;
 function parkDiscoverComposer() {
@@ -966,16 +1100,19 @@ async function hydrateDiscoverCard(item, idx) {
     const img = document.getElementById('dp-' + idx);
     const link = document.getElementById('dl-' + idx);
     if (!img) return;
+    img.__matchappDiscoverItem=item;
+    const current=()=>img.isConnected&&document.getElementById('dp-'+idx)===img&&img.__matchappDiscoverItem===item;
 
     const fallbackArtwork = discoverFallbackPoster(item);
     const readyArtwork=discoverPosterUrl(item);
-    img.src = fallbackArtwork;
     if(readyArtwork)setDiscoverPoster(img,item,readyArtwork,fallbackArtwork);
+    else img.src = fallbackArtwork;
     item._fallbackArtwork = fallbackArtwork;
 
     // Hand-verified art (parity with app.js's render path) always wins —
     // no lookup can beat a known-correct image.
-    const verified = !/music|song|album|single/i.test(rawType) && (typeof getVerifiedPoster === 'function') ? getVerifiedPoster(item.title) : null;
+    const exactId=Number(item._catalogMedia?.tmdb_id||item._meta?.tmdbId||item._tmdb?.tmdbId);
+    const verified = !exactId && !/music|song|album|single/i.test(rawType) && (typeof getVerifiedPoster === 'function') ? getVerifiedPoster(item.title) : null;
 
     // AI-chat titles come from Gemini's free-form knowledge, not our curated
     // catalog, so they're inherently less trustworthy than a match-engine
@@ -1014,6 +1151,7 @@ async function hydrateDiscoverCard(item, idx) {
                 year:item.year||'',kind:identity.media_kind||meta?.kind||kind,
                 tmdbId:identity.tmdb_id||meta?.tmdbId||null,cats:item.cats||[]
             });
+            if(!current())return;
             if(resolved?.url){
                 const cm=resolved.meta||{};
                 meta={...(meta||{}),artwork:resolved.url,year:cm.year||item.year,
@@ -1026,6 +1164,7 @@ async function hydrateDiscoverCard(item, idx) {
     if ((!meta || !meta.artwork) && !skipLiveLookup && !verified && visualType && typeof window.tmdbLookup === 'function') {
         const kind = /movie|film/i.test(item.type || '') ? 'movie' : /series|tv|drama|anime|novela|show|documentary/i.test(item.type || '') ? 'tv' : '';
         const tmdb = await window.tmdbLookup(item.title, { year: item.year || '', kind });
+        if(!current())return;
         if (tmdb && (tmdb.posterLarge || tmdb.poster)) {
             meta = { artwork: tmdb.posterLarge || tmdb.poster, year: tmdb.year || item.year || '', overview: tmdb.overview || '', tmdbId: tmdb.tmdbId, kind: tmdb.kind, source: 'tmdb', title: tmdb.title, genres: Array.isArray(tmdb.genres) ? tmdb.genres.slice(0,8) : [] };
             item._tmdb = tmdb;
@@ -1047,6 +1186,7 @@ async function hydrateDiscoverCard(item, idx) {
             }
         } catch (err) {}
         richMeta = await getRichMetadata(item.title, item.type || '', chatHints);
+        if(!current())return;
         if (!meta && !verified && richMeta) meta = richMeta;
     }
     // The TVMaze secondary attempt is deliberately NOT used for AI-chat
@@ -1068,14 +1208,14 @@ async function hydrateDiscoverCard(item, idx) {
                !/movie|film/i.test(rawType) && !skipLiveLookup) {
         try {
             const tvMeta = await fetchTitleMeta(item.title, { year: item.year || '' });
+            if(!current())return;
             if (Array.isArray(tvMeta?.genres) && tvMeta.genres.length) item.realGenres = tvMeta.genres.slice(0, 8);
         } catch (_) {}
     }
+    if(!current())return;
     paintDiscoverGenres(item, idx);
 
-    let resolvedArtwork = item._posterExhausted ? fallbackArtwork : (verified || meta?.artwork || readyArtwork || fallbackArtwork);
-    if(resolvedArtwork!==fallbackArtwork && img.getAttribute('src')===fallbackArtwork)
-        setDiscoverPoster(img,item,resolvedArtwork,fallbackArtwork);
+    const resolvedArtwork = img.__matchappDiscoverPoster?.loadedUrl || fallbackArtwork;
     // If no external artwork survives the verified lookup chain, keep the
     // synopsis-aware MatchApp poster and persist that same artwork into
     // history / Watch Later instead of saving a blank poster URL.
@@ -1108,24 +1248,31 @@ async function hydrateDiscoverCard(item, idx) {
         const isAudio = /podcast|album|music|audiobook/i.test(item.type || '');
         const cinemaOnly = item?._viewing?.mode === 'cinema';
         const verifiedStream = item?._viewing?.mode === 'stream';
-        const url = verifiedStream ? discoverWatchUrl(item) : '';
-        link.href = url || '#discover-availability-' + idx;
+        const panelAvailable=!!item._catalogMedia&&!!window.MatchAppCatalogMedia?.renderAvailability&&
+            !!document.getElementById('discover-availability-'+idx);
+        const direct=verifiedStream||isAudio||!panelAvailable;
+        const url = discoverWatchUrl(item);
+        link.href = direct ? url : '#discover-availability-' + idx;
         link.textContent = cinemaOnly
             ? discoverLabel('discover.cinemaShowtimes', '🎟️ Cinemas & showtimes')
             : (verifiedStream
                 ? (isAudio ? discoverLabel('res.listennow', '🎧 Listen Now') : discoverLabel('discover.watchNow', '▶ Watch Now'))
                 : discoverLabel('discover.whereToWatch', 'Where to Watch'));
         link.classList.toggle('is-cinema', cinemaOnly);
-        if (!verifiedStream) {
+        link.onclick=null;
+        if (!direct) {
             link.removeAttribute('target');
             link.removeAttribute('rel');
-            link.addEventListener('click', e => {
+            link.onclick = e => {
                 e.preventDefault();
                 const host=document.getElementById('discover-availability-' + idx);
                 if(host) revealJonasTurn(host);
                 host?.classList.add('is-highlighted');
                 setTimeout(()=>host?.classList.remove('is-highlighted'),1400);
-            });
+            };
+        } else {
+            link.target='_blank';
+            link.rel='noopener noreferrer';
         }
         item._url = url || '';
     }
@@ -1174,54 +1321,58 @@ async function hydrateDiscoverCard(item, idx) {
     paintDiscoverFacts(item, idx);
 }
 
+function saveDiscoverPreference(item, action) {
+    const entry={...item,posterUrl:item._resolved?.artwork||discoverFallbackPoster(item),
+        streamUrl:item._url||discoverWatchUrl(item),
+        isAudio:/podcast|album|music/i.test(item.type||''),addedAt:Date.now(),reason:'Ask AI'};
+    if(window.matchPolicy?.savePreference)return window.matchPolicy.savePreference(entry,action);
+    // A stale cached policy still keeps the choice locally until the shared
+    // policy refreshes; storage failures never produce a false success toast.
+    try {
+        const name=action==='dislike'?'match_dislikedList':'match_savedList';
+        const raw=JSON.parse(localStorage.getItem(name)||'[]');
+        const list=Array.isArray(raw)?raw.filter(row=>row&&(typeof row==='string'||row.title)):[];
+        const key=window.matchPolicy?.key||titleKey;
+        const next=list.filter(row=>key(row.title||row)!==key(item.title));
+        next.unshift(entry);
+        localStorage.setItem(name,JSON.stringify(next));
+        if(action==='dislike'){
+            const saved=JSON.parse(localStorage.getItem('match_savedList')||'[]');
+            localStorage.setItem('match_savedList',JSON.stringify(Array.isArray(saved)?saved.filter(row=>key(row?.title||row)!==key(item.title)):[]));
+        }
+        window.matchPolicy?.remember?.(entry,action);
+        return true;
+    } catch (_) { return false; }
+}
+
 window.saveDiscoverItem = function (idx) {
     const item = DISCOVER_ITEMS[idx];
     if (!item) return;
-    let list = [];
-    try { list = JSON.parse(localStorage.getItem('match_savedList') || '[]'); } catch (e) {}
-    if (list.some(i => (i.title || i) === item.title)) {
-        if (window.showToast) showToast(`"${item.title}" ${typeof t === 'function' ? t('discover.alreadySaved') : 'is already saved.'}`);
+    if(!saveDiscoverPreference(item,'save')){
+        window.showToast?.(discoverLabel('ai.detailsRetry','Title details could not load. Please try again shortly.'));
         return;
     }
-    list.unshift({
-        title: item.title,
-        posterUrl: (item._resolved && item._resolved.artwork) || '',
-        platform: item.platform && item.platform !== 'any' ? item.platform : '',
-        streamUrl: item._url || '',
-        isAudio: /podcast|album|music/i.test(item.type || ''),
-        addedAt: Date.now()
-    });
-    localStorage.setItem('match_savedList', JSON.stringify(list));
     const btn = document.getElementById('ds-' + idx);
-    if (btn) { btn.textContent = '✓'; btn.classList.add('saved'); }
+    if (btn) { btn.textContent = '✓ '+discoverLabel('polish.savedLater','Saved'); btn.classList.add('saved'); btn.setAttribute('aria-pressed','true'); btn.disabled=true; }
     if (window.showToast) showToast(`⭐ "${item.title}" ${typeof t === 'function' ? t('discover.savedToast') : 'saved to Watch Later'}`);
 };
 
 window.notForMeDiscoverItem = function (idx) {
     const item = DISCOVER_ITEMS[idx];
     if (!item || !item.title) return;
-    let list = [];
-    try { list = JSON.parse(localStorage.getItem('match_dislikedList') || '[]'); } catch (e) {}
-    if (!list.some(i => (i.title || i) === item.title)) {
-        list.unshift({
-            title: item.title,
-            posterUrl: (item._resolved && item._resolved.artwork) || '',
-            platform: item.platform && item.platform !== 'any' ? item.platform : '',
-            streamUrl: item._url || '',
-            addedAt: Date.now()
-        });
-        localStorage.setItem('match_dislikedList', JSON.stringify(list));
+    if(!saveDiscoverPreference(item,'dislike')){
+        window.showToast?.(discoverLabel('ai.detailsRetry','Title details could not load. Please try again shortly.'));
+        return;
     }
-    try {
-        window.matchPolicy?.remember?.({
-            title: item.title,
-            posterUrl: (item._resolved && item._resolved.artwork) || '',
-            streamUrl: item._url || '',
-            reason: 'Ask AI'
-        }, 'dislike');
-    } catch (e) {}
-    const card = document.querySelector(`[data-discover-idx="${idx}"]`);
-    if (card) card.classList.add('is-hidden');
+    const keys=window.matchPolicy?.identityKeys?.(item)||new Set([titleKey(item.title)]);
+    DISCOVER_ITEMS.forEach((candidate,index)=>{
+        const candidateKeys=window.matchPolicy?.identityKeys?.(candidate)||new Set([titleKey(candidate.title)]);
+        if(![...candidateKeys].some(key=>keys.has(key)))return;
+        const card = document.querySelector(`[data-discover-idx="${index}"]`);
+        if (card) { card.classList.add('is-hidden'); card.hidden=true; }
+        const img=document.getElementById('dp-'+index);
+        if(img){img.__matchappDiscoverPoster?.cancel?.();img.__matchappDiscoverItem=null;}
+    });
     if (window.showToast) showToast(discoverLabel('discover.hiddenToast', 'Hidden. You can restore it from History.'));
 };
 
@@ -1262,7 +1413,8 @@ function relatedFromTmdb(pack, source) {
 
 async function attachRelated(grid, seedItems, baseIndex) {
     if (!grid || !seedItems || !seedItems.length) return;
-    const seen = new Set(DISCOVER_ITEMS.map(i => titleKey(i.title)));
+    const identityKeys=item=>window.matchPolicy?.identityKeys?.(item)||new Set([titleKey(item.title)]);
+    const seen = new Set(DISCOVER_ITEMS.flatMap(item => [...identityKeys(item)]));
     const collected = [];
 
     const tmdbSeeds = seedItems.filter(i => i && i._tmdb && Number.isSafeInteger(i._tmdb.tmdbId)).slice(0, 2);
@@ -1277,21 +1429,24 @@ async function attachRelated(grid, seedItems, baseIndex) {
         catalogCousins(item, 3).forEach(row => collected.push(row));
     });
 
-    const unique = [];
+    let unique = [];
     for (const row of collected) {
-        const k = titleKey(row.title);
-        if (!k || seen.has(k) || isDiscoverDisliked(row.title)) continue;
+        const keys = identityKeys(row);
+        if (!row.title || [...keys].some(key=>seen.has(key)) || isDiscoverDisliked(row, true)) continue;
         if (window.matchPolicy) {
             if (lastDiscoverQuestion && !window.matchPolicy.fitsQuestion(row, lastDiscoverQuestion)) continue;
             if (seedItems.some(s => s && !window.matchPolicy.sameFamily(s, row))) continue;
         }
-        seen.add(k);
+        keys.forEach(key=>seen.add(key));
         unique.push(row);
         if (unique.length >= 6) break;
     }
     if (!unique.length) return;
 
     for (const row of unique) await localizeRelatedItem(row);
+    if(grid.isConnected===false)return;
+    unique=await prepareDiscoverRecommendations(unique,lastDiscoverQuestion,()=>grid.isConnected!==false);
+    if(!unique.length||grid.isConnected===false)return;
 
     const heading = document.createElement('h3');
     heading.className = 'discover-related-head';
@@ -1305,6 +1460,8 @@ async function attachRelated(grid, seedItems, baseIndex) {
         wrap.innerHTML = discoverCardHTML(row, start + i).trim();
         const card = wrap.firstElementChild;
         if (card) grid.appendChild(card);
+        window.matchPolicy?.remember?.({...row,posterUrl:discoverPosterUrl(row)||discoverFallbackPoster(row),
+            streamUrl:discoverWatchUrl(row),reason:'Ask AI related'},'ai');
     });
     await Promise.all(unique.map((row, i) => hydrateDiscoverCard(row, start + i)));
 }
@@ -1574,6 +1731,7 @@ const CHAT_STORE_KEY = 'match_chatThreads';
 const CHAT_MAX_THREADS = 20;
 
 let currentThread = null;   // { id, title, turns: [{role, text, results, ts}], createdAt, updatedAt }
+let discoverThreadVersion = 0;
 
 function loadThreads() {
     try { return JSON.parse(localStorage.getItem(CHAT_STORE_KEY) || '[]'); }
@@ -1599,6 +1757,7 @@ window.startNewChat = function () {
         window.location.href = '/pricing/pricing.html?from=ask-ai#credits';
         return;
     }
+    discoverThreadVersion++;
     currentThread = null;
     const log = document.getElementById('chat-log');
     if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
@@ -1616,6 +1775,7 @@ window.startNewChat = function () {
 window.openThread = function (id) {
     const t = loadThreads().find(x => x.id === id);
     if (!t) return;
+    discoverThreadVersion++;
     currentThread = t;
     const log = document.getElementById('chat-log');
     if (log) { parkDiscoverComposer(); log.innerHTML = ''; }
@@ -1631,7 +1791,7 @@ window.openThread = function (id) {
                 bubble.wrap.dataset.musicVideoId = turn.musicVideoId;
                 window.MatchAppMusicReleases?.paintCard(turn.musicVideoId, bubble.grid);
             }
-            const visible = (turn.results || []).filter(item => item && item.title && !isDiscoverDisliked(item.title));
+            const visible = (turn.results || []).filter(item => item && item.title && !isDiscoverDisliked(item));
             if (bubble && visible.length) {
                 const baseIndex = DISCOVER_ITEMS.length;
                 DISCOVER_ITEMS = DISCOVER_ITEMS.concat(visible);
@@ -1725,30 +1885,46 @@ function appendAssistantBubble(text, results, opts) {
     return { wrap, textEl: p, grid, speakBtn: speak };
 }
 
-async function renderResultsInto(grid, items, baseIndex) {
+async function renderResultsInto(grid, items, baseIndex, options = {}) {
     await window.matchPolicy?.ready();
-    if (!Array.isArray(items)) return;
+    if (!Array.isArray(items)||grid.isConnected===false) return [];
     if(items.length && items.every(item=>item._musicVideoId)) {
         grid.replaceChildren();
         for(const item of items)await window.MatchAppMusicReleases?.paintCard(item._musicVideoId,grid,true);
-        return;
+        return items;
     }
     // Preserve action identity when source enrichment rejects another card.
     const cardIndexes = new Map(items.map((item, i) => [item, baseIndex + i]));
-    // Paint known original art while the other identities resolve.
-    const known = items.filter(item => item?._catalogMedia && !isDiscoverDisliked(item.title) && enrichDiscoverItem(item, lastDiscoverQuestion));
+    // History and explicit lookups can paint known original art immediately.
+    // Automatic recommendations must reserve the resolved identity first.
+    const known = options.fresh===true ? [] : items.filter(item => item?._catalogMedia && (options.allowKnown===true||!isDiscoverDisliked(item)) && enrichDiscoverItem(item, lastDiscoverQuestion));
     if (known.length) {
         grid.innerHTML = known.map(it => discoverCardHTML({...it, platform:'', _availabilityVerified:false, _viewing:null}, cardIndexes.get(it))).join('');
         grid.style.display = 'grid';
     }
-    items = (await Promise.all(items.filter(item => item && item.title)
+    if(options.prepared===true)items=items.filter(item=>item&&item.title&&!isDiscoverDisliked(item));
+    else if(options.fresh===true)items=await prepareDiscoverRecommendations(items,lastDiscoverQuestion,()=>grid.isConnected!==false);
+    else items = (await Promise.all(items.filter(item => item && item.title)
         .map(item => enrichDiscoverMedia(item))))
         .map(item => enrichDiscoverItem(item, lastDiscoverQuestion))
-        .filter(item => item && item.title && !isDiscoverDisliked(item.title));
+        .filter(item => item && item.title && (options.allowKnown===true||!isDiscoverDisliked(item)));
+    if(grid.isConnected===false)return [];
+    const seen=new Set();
+    items=items.filter(item=>{
+        const keys=window.matchPolicy?.identityKeys?.(item)||new Set([titleKey(item.title)]);
+        if([...keys].some(key=>seen.has(key)))return false;
+        keys.forEach(key=>seen.add(key));return true;
+    });
     grid.replaceChildren();
-    if (!items || !items.length) return;
+    if (!items || !items.length) return [];
     grid.innerHTML = items.map((it, i) => discoverCardHTML(it, cardIndexes.get(it))).join('');
     grid.style.display = 'grid';
+    if(options.fresh===true)items.forEach(item=>{
+        const identity={...item,posterUrl:discoverPosterUrl(item)||discoverFallbackPoster(item),
+            streamUrl:discoverWatchUrl(item),reason:'Ask AI'};
+        window.MatchActivity?.log?.('ai',item.title,{source:'ask-ai',posterUrl:identity.posterUrl});
+        window.matchPolicy?.remember?.(identity,'ai');
+    });
     await Promise.all(items.map((it, i) => hydrateDiscoverCard(it, cardIndexes.get(it))));
     items.forEach((it, i) => {
         if (it.synopsis) return;
@@ -1756,6 +1932,33 @@ async function renderResultsInto(grid, items, baseIndex) {
         if (syn && !syn.textContent.trim()) syn.textContent = it.synopsis || '';
     });
     await attachRelated(grid, items, baseIndex);
+    return items;
+}
+
+async function releaseDiscoverClaims(items) {
+    await Promise.allSettled((items||[]).map(item=>window.matchPolicy?.releaseClaim?.(item)));
+}
+
+async function prepareDiscoverRecommendations(items,question,active=()=>true) {
+    await window.matchPolicy?.ready?.();
+    if(!active())return [];
+    const sourceRows=await Promise.all((items||[]).filter(item=>item&&item.title&&!isDiscoverDisliked(item,true))
+        .map(item=>Promise.resolve().then(()=>enrichDiscoverMedia(item)).catch(()=>null)));
+    if(!active())return [];
+    const seen=new Set(),eligible=sourceRows.map(item=>enrichDiscoverItem(item,question)).filter(item=>{
+        if(!item||!item.title||isDiscoverDisliked(item,true))return false;
+        const keys=window.matchPolicy?.identityKeys?.(item)||new Set([titleKey(item.title)]);
+        if([...keys].some(key=>seen.has(key)))return false;
+        keys.forEach(key=>seen.add(key));return true;
+    });
+    const accepted=[];
+    for(const item of eligible){
+        if(!active()){await releaseDiscoverClaims(accepted);return [];}
+        const won=window.matchPolicy?.claim?await window.matchPolicy.claim(item):!isDiscoverDisliked(item,true);
+        if(won)accepted.push(item);
+        if(!active()){await releaseDiscoverClaims(accepted);return [];}
+    }
+    return accepted;
 }
 
 /* ---------- The main ask flow ---------- */
@@ -1763,6 +1966,7 @@ async function runAskAndRender(question, opts) {
     if (!question || !question.trim()) return;
     const voiceOrigin = !!opts?.voiceOrigin;
     const responseLanguage = window.MATCH_LANG || 'en';
+    const requestVersion = discoverThreadVersion;
     question = question.trim();
     // Short greetings are conversation, not an entertainment title query.
     // Respond immediately, do not consume credits or query provider catalogues.
@@ -1806,11 +2010,21 @@ async function runAskAndRender(question, opts) {
         refreshAiWorkspaceStatus();
         return;
     }
+    if(requestVersion!==discoverThreadVersion)return;
     refreshAiWorkspaceStatus();
 
     if (!currentThread) {
         currentThread = { id: newThreadId(), title: question.slice(0, 60), turns: [], createdAt: Date.now(), updatedAt: Date.now() };
     }
+    const requestThread=currentThread;
+    const currentRequest=()=>requestVersion===discoverThreadVersion&&currentThread===requestThread;
+    let preparedRecommendations=null;
+    let responseRevealed=false;
+    const abandon=async()=>{
+        if(!responseRevealed)await releaseDiscoverClaims(preparedRecommendations);
+        finishAiWorkflow();
+        if(loadEl)loadEl.style.display='none';
+    };
 
     const userBubble=appendUserBubble(question);
     currentThread.turns.push({ role: 'user', text: question, ts: Date.now() });
@@ -1833,6 +2047,19 @@ async function runAskAndRender(question, opts) {
 
     const bookIntent = detectBookIntent(question);
     const cookingIntent = !!window.MatchCooking?.isCooking(question);
+    const wantsTitleRecommendations = discoverRecommendationRequest(question);
+    if(bookIntent&&wantsTitleRecommendations&&window.MatchAppReadingAI?.prepare){
+        const prepared=await window.MatchAppReadingAI.prepare();
+        if(!currentRequest()){await abandon();return;}
+        if(prepared===false){
+            await abandon();
+            const message=window.t?.('ai.detailsRetry')||'Title details could not load. Please try again shortly.';
+            appendAssistantBubble(message,[],{instant:true});
+            requestThread.turns.push({role:'assistant',text:message,results:[],ts:Date.now()});
+            requestThread.updatedAt=Date.now();persistCurrentThread();
+            return;
+        }
+    }
     let payload, musicPayload, source = 'ai';
     try {
         // Documentary television-series requests require a real TV genre and
@@ -1841,7 +2068,7 @@ async function runAskAndRender(question, opts) {
         if (window.MatchAppVerifiedDocumentaries?.matches?.(question)) {
             payload = await window.MatchAppVerifiedDocumentaries.resolve(question, {
                 lang: window.MATCH_LANG || 'en',
-                country: localStorage.getItem('match_user_country') || ''
+                country: window.MatchAppCatalogMedia?.regionCode?.() || localStorage.getItem('match_user_country') || ''
             });
             source = 'verified-documentary-series';
         } else {
@@ -1851,6 +2078,7 @@ async function runAskAndRender(question, opts) {
         }
     }
     catch (e) { payload = cookingIntent ? {answer: /^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.', results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+    if(!currentRequest()){await abandon();return;}
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
     // provider returns nothing, reuse the reviewed local catalogue under the
@@ -1858,8 +2086,6 @@ async function runAskAndRender(question, opts) {
     // user's genre/taste exclusions.
     // A perfectly good conversational AI reply may have zero title cards.
     // Never overwrite its answer with an unrelated film-catalogue fallback.
-    const wantsTitleRecommendations = !isFactualMediaQuestion(question) &&
-        /\b(?:watch|recommend|suggest|stream|movie|movies|film|films|series|shows?|podcast|playlist|music|listen|similar|comedy|horror|romance|recommendation|assistir|filmes?|séries?|recomendar|recomende|indique|películas?)\b/i.test(mediaIntentQuestion(question));
     if (!bookIntent && !cookingIntent && wantsTitleRecommendations && !musicPayload &&
         !payload?._docVerified &&
         (!payload?._live || !String(payload.answer || '').trim()) &&
@@ -1898,24 +2124,60 @@ async function runAskAndRender(question, opts) {
     // A completed old-language response must not be shown, spoken or charged
     // after the person changes the app language while the request is pending.
     if (responseLanguage !== (window.MATCH_LANG || 'en')) {
-        finishAiWorkflow();
-        if (loadEl) loadEl.style.display = 'none';
+        await abandon();
         appendAssistantBubble(window.t('ai.languageChanged'), [], {instant:true});
         const field=document.getElementById('discover-new-input');
         if(field&&!field.value)field.value=question;
         return;
     }
 
+    // Resolve and reserve automatic title recommendations before charging,
+    // displaying their prose or starting speech. Deliberate source lookups,
+    // editorial videos and the separate reading/cooking flows remain usable.
+    if(wantsTitleRecommendations&&!bookIntent&&!cookingIntent&&!musicPayload){
+        await window.matchPolicy?.ready?.();
+        if(!currentRequest()){await abandon();return;}
+        const priorKeys=new Set(window.matchPolicy?.known?.()||[]);
+        discoverExcludedTitles(Infinity,Infinity).forEach(title=>priorKeys.add((window.matchPolicy?.key||titleKey)(title)));
+        let candidates=(payload.results||[]).filter(item=>item&&item.title);
+        if(payload?._live===true){
+            const identified=await Promise.resolve().then(()=>window.MatchAppJonasTitlePresentation?.fromAnswers
+                ?window.MatchAppJonasTitlePresentation.fromAnswers(payload.answer,3)
+                :Promise.resolve(window.MatchAppJonasTitlePresentation?.fromAnswer?.(payload.answer)).then(item=>[item])).catch(()=>[]);
+            if(!currentRequest()){await abandon();return;}
+            const seen=new Set();
+            candidates=[...(identified||[]),...candidates].filter(item=>{
+                if(!item?.title)return false;
+                const key=titleKey(item.title);if(seen.has(key))return false;seen.add(key);return true;
+            });
+        }
+        preparedRecommendations=await prepareDiscoverRecommendations(candidates,question,currentRequest);
+        if(!currentRequest()){await abandon();return;}
+        const blockedProse=discoverAnswerContainsExcludedTitle(payload.answer,priorKeys);
+        if(preparedRecommendations.length!==candidates.length||blockedProse){
+            payload.answer=discoverRecommendationSummary(preparedRecommendations,responseLanguage);
+            payload._preferenceFiltered=true;
+        }
+        payload.results=preparedRecommendations;
+        // A response with no fresh title should not consume a recommendation
+        // credit just because another device won its identity reservation.
+        payload._noNewRecommendations=preparedRecommendations.length===0;
+    }
+    if(!currentRequest()){await abandon();return;}
+    if(responseLanguage!==(window.MATCH_LANG||'en')){await abandon();return;}
+
     // Only a verified, successful live answer earns a debit. Offline source
     // fallbacks and transport/JSON failures remain free.
-    if (payload?._live === true && String(payload.answer || '').trim() &&
+    if (payload?._live === true && !payload._noNewRecommendations && String(payload.answer || '').trim() &&
         typeof checkDailyLimit === 'function' && !(await checkDailyLimit('ask_ai'))) {
-        if (loadEl) { finishAiWorkflow(); loadEl.style.display = 'none'; }
+        await abandon();
+        if(!currentRequest())return;
         await refreshAiWorkspaceStatus();
         appendAssistantBubble((typeof window.t === 'function' ? window.t('credits.retry') : '') ||
             'Your allowance changed while the answer was generated. No result was charged; try again.', [], { instant:true });
         return;
     }
+    if(!currentRequest()||responseLanguage!==(window.MATCH_LANG||'en')){await abandon();return;}
     // The successful debit above remains authoritative. Repainting the badge
     // must not add another quota network roundtrip before showing/speaking it.
     void refreshAiWorkspaceStatus();
@@ -1928,23 +2190,6 @@ async function runAskAndRender(question, opts) {
 
     try {
         window.MatchActivity?.log?.('ai', question);
-        (payload.results || []).forEach(item => {
-            if (!item || !item.title || !/^(movie|film|series|tv|tvshow|documentary|anime|stand-up comedy special|k-drama|telenovela|short film|show)$/i.test(String(item.type || ''))) return;
-            const title = (typeof window.sanitizeDisplayText === 'function')
-                ? window.sanitizeDisplayText(String(item.title), ['title'])
-                : String(item.title);
-            if (!title || /^\s*[{\[]/.test(title)) return;
-            window.MatchActivity?.log?.('ai', title, {
-                source: 'ask-ai',
-                posterUrl: item.posterUrl || item.artwork || ''
-            });
-            window.matchPolicy?.remember?.({
-                title: title,
-                posterUrl: item.posterUrl || item.artwork || '',
-                streamUrl: item.watchUrl || item.url || '',
-                reason: 'Ask AI'
-            }, 'ai');
-        });
     } catch (_) {}
 
     if (loadEl) {
@@ -1956,12 +2201,8 @@ async function runAskAndRender(question, opts) {
     if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload || payload?._docVerified ? 'none' : 'inline-flex';
 
     const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
-    // Resolve title artwork concurrently with text narration, not after it.
-    const spokenTitles = payload?._live === true && wantsTitleRecommendations && !bookIntent && !cookingIntent && !musicPayload
-        ? Promise.resolve().then(() => window.MatchAppJonasTitlePresentation?.fromAnswers
-            ? window.MatchAppJonasTitlePresentation.fromAnswers(payload.answer, 3)
-            : Promise.resolve(window.MatchAppJonasTitlePresentation?.fromAnswer?.(payload.answer)).then(item => [item])).catch(() => [])
-        : Promise.resolve([]);
+    responseRevealed=!!bubble;
+    if(responseRevealed)preparedRecommendations?.forEach(item=>window.matchPolicy?.remember?.({...item,reason:'Ask AI'},'ai'));
     if(payload?._live !== true && !musicPayload && !payload?._docVerified && bubble?.wrap){
         const notice=document.createElement('strong');
         notice.setAttribute('role','status');
@@ -1997,7 +2238,16 @@ async function runAskAndRender(question, opts) {
             : '📚🎧📰 Verify e-books, audiobooks and magazines';
         route.setAttribute('aria-label', route.textContent);
         bubble.wrap.appendChild(route);
-        window.MatchAppReadingAI?.render?.(question, bubble.wrap);
+        if(wantsTitleRecommendations&&window.MatchAppReadingAI?.renderFresh){
+            await window.MatchAppReadingAI.renderFresh(question,bubble.wrap,{current:()=>currentRequest()&&responseLanguage===(window.MATCH_LANG||'en')});
+            if(!currentRequest()||responseLanguage!==(window.MATCH_LANG||'en')){await abandon();return;}
+            // Reading claims may be won by another device after the prompt was
+            // sent. Narrate only the source cards this response actually owns.
+            const accepted=[...bubble.wrap.querySelectorAll('.reading-ai-card h4')].map(heading=>({title:heading.textContent.trim()}));
+            payload.answer=discoverRecommendationSummary(accepted,responseLanguage);
+            bubble.textEl.textContent=payload.answer;
+            bubble.speakBtn.onclick=()=>window.readAloud(payload.answer,bubble.speakBtn);
+        }else window.MatchAppReadingAI?.render?.(question,bubble.wrap,{allowKnown:true});
     }
 
     // Reveal the beginning of the response inside the chat pane once.
@@ -2043,28 +2293,14 @@ async function runAskAndRender(question, opts) {
         }
     }
 
+    if(!currentRequest()){await abandon();return;}
     const baseIndex = DISCOVER_ITEMS.length;
-    let newItems = (bookIntent ? [] : (payload.results || []))
-        .filter(item => item && item.title && !isDiscoverDisliked(item.title));
-    // Presentation-only: exact catalog identity mentioned in a prose-only
-    // Jonas reply uses the existing card poster, synopsis and action controls.
-    // No new AI prompt, quota debit, or invented viewing provider.
-    if (payload?._live === true && wantsTitleRecommendations &&
-        !bookIntent && !cookingIntent && !musicPayload) {
-        const identified = await spokenTitles;
-        // Prefer verified titles mentioned by Jonas while retaining structured results.
-        const merged = [...(identified || []), ...newItems], seenTitles = new Set();
-        newItems = merged.filter(item => {
-            if (!item || isDiscoverDisliked(item.title)) return false;
-            const key = titleKey(item.title);
-            if (seenTitles.has(key)) return false;
-            seenTitles.add(key); return true;
-        });
-    }
-    if (!bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
+    let newItems = preparedRecommendations!==null?preparedRecommendations:(bookIntent ? [] : (payload.results || []))
+        .filter(item => item && item.title && (!wantsTitleRecommendations||!isDiscoverDisliked(item, true)));
+    if (preparedRecommendations===null && !bookIntent && wantsTitleRecommendations && !newItems.length && !musicPayload &&
         !payload?._live && window.matchPolicy && !payload?._docVerified && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
-            .filter(e => e && e.title && !isDiscoverDisliked(e.title) && window.matchPolicy.fitsQuestion(e, question))
+            .filter(e => e && e.title && !isDiscoverDisliked(e, true) && window.matchPolicy.fitsQuestion(e, question))
             .slice(0, 6)
             .map(e => enrichDiscoverItem({
                 title: e.title, year: e.year || '', type: (e.cats && e.cats[0]) || '',
@@ -2076,7 +2312,7 @@ async function runAskAndRender(question, opts) {
     DISCOVER_ITEMS = DISCOVER_ITEMS.concat(newItems);
     if (bubble && newItems.length) {
         try {
-            await renderResultsInto(bubble.grid, newItems, baseIndex);
+            newItems=await renderResultsInto(bubble.grid, newItems, baseIndex, {fresh:wantsTitleRecommendations,prepared:preparedRecommendations!==null,allowKnown:!wantsTitleRecommendations})||[];
         } catch (cardError) {
             // A metadata/poster rendering failure is not an AI-answer failure.
             // Keep the response and credit state; a later turn remains usable.
@@ -2089,8 +2325,9 @@ async function runAskAndRender(question, opts) {
         }
     }
 
-    currentThread.turns.push({ role: 'assistant', text: payload.answer, results: newItems, ts: Date.now() });
-    currentThread.updatedAt = Date.now();
+    if(!currentRequest()){await abandon();return;}
+    requestThread.turns.push({ role: 'assistant', text: payload.answer, results: newItems, ts: Date.now() });
+    requestThread.updatedAt = Date.now();
     persistCurrentThread();
     refreshAiWorkspaceStatus();
 
@@ -2103,10 +2340,12 @@ async function runAskAndRender(question, opts) {
 let askInFlight = null;
 function askAndRender(question, opts) {
     if (askInFlight) return askInFlight;
+    const requestVersion=discoverThreadVersion;
     const replyCount = document.querySelectorAll('#chat-log .chat-assistant').length;
     const markedVoice = opts?.voiceOrigin === true ||
         (!!window.MatchAppVoiceOrigin?.consume && window.MatchAppVoiceOrigin.consume(question));
     const running = Promise.resolve().then(() => runAskAndRender(question, { voiceOrigin: markedVoice })).catch(error => {
+        if(requestVersion!==discoverThreadVersion){finishAiWorkflow();return null;}
         // Rendering and voice failures must not be misreported as a failed AI
         // request after the answer has already appeared in the conversation.
         console.warn('[MatchApp Ai] Request interrupted:',error?.message||error);
