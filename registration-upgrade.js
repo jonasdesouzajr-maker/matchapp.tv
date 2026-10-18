@@ -5,6 +5,27 @@
   const $ = id => document.getElementById(id);
   const toast = (message, isError) => window.showToast?.(message, Boolean(isError));
   const geo = () => window.MatchAppGeography;
+  const copy = (key, fallback) => window.MatchProfileDetailsI18n?.text(key) || fallback;
+  function bindText(node, key, fallback = node?.textContent || '') {
+    if (!node) return;
+    const render = () => { node.textContent = copy(key, fallback); };
+    if (window.MatchProfileDetailsI18n) window.MatchProfileDetailsI18n.bind(node, render);
+    else render();
+  }
+  function bindCopy(root) {
+    root.querySelectorAll('[data-registration-copy]').forEach(node => bindText(node, node.dataset.registrationCopy));
+    root.querySelectorAll('[data-registration-consent]').forEach(node => {
+      const link = node.querySelector('a'), before = link?.previousSibling, after = link?.nextSibling;
+      if (!before || !after) return;
+      const fallback = before.nodeValue + '{link}' + after.nodeValue;
+      const render = () => {
+        const parts = copy(node.dataset.registrationConsent, fallback).split('{link}');
+        before.nodeValue = parts[0]; after.nodeValue = parts[1];
+      };
+      if (window.MatchProfileDetailsI18n) window.MatchProfileDetailsI18n.bind(node, render);
+      else render();
+    });
+  }
   const value = id => ($(id)?.value || '').trim();
   let saving = false;
   let regionTouched = false;
@@ -24,16 +45,16 @@
   function errorMessage(error) {
     const raw = String(error?.message || '');
     if (/birthdate|date\/time field value out of range|invalid input syntax for type date/i.test(raw))
-      return 'Enter a valid date of birth as DD/MM/YYYY.';
+      return copy('errBirthdate', 'Enter a valid date of birth as DD/MM/YYYY.');
     if (/identity field|full name|country|star sign/i.test(raw))
-      return 'Check your name, country, birth date and star sign.';
+      return copy('errIdentity', 'Check your name, country, birth date and star sign.');
     if (/sign in first|jwt|session|not authenticated/i.test(raw))
-      return 'Your session expired. Sign in again before saving.';
+      return copy('errSession', 'Your session expired. Sign in again before saving.');
     if (/terms|privacy/i.test(raw))
-      return 'Accept the Terms and Privacy Policy before saving.';
+      return copy('errTerms', 'Accept the Terms and Privacy Policy before saving.');
     if (/timeout|network|fetch|unavailable/i.test(raw))
-      return 'Connection interrupted. Check your saved profile before retrying.';
-    return 'Registration could not be saved. Your entries remain editable; please retry.';
+      return copy('errConnection', 'Connection interrupted. Check your saved profile before retrying.');
+    return copy('errRegistration', 'Registration could not be saved. Your entries remain editable; please retry.');
   }
 
   // A server-confirmed registration is important enough to be seen before
@@ -48,12 +69,13 @@
     overlay.style.cssText = 'position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;background:rgba(5,6,13,.86);backdrop-filter:blur(10px)';
     overlay.innerHTML = '<div style="width:min(440px,100%);padding:32px 26px;border:2px solid #e5c158;border-radius:24px;background:linear-gradient(150deg,#302519,#11131d);box-shadow:0 0 56px rgba(229,193,88,.33),0 24px 80px #000;text-align:center;color:#fff">' +
       '<div aria-hidden="true" style="font-size:50px;color:#e5c158;margin-bottom:12px">✓</div>' +
-      '<h2 id="registration-save-success-title" style="margin:0 0 14px;font-size:clamp(24px,6vw,32px);color:#ffde83">Profile saved successfully!</h2>' +
-      '<p style="font-size:17px;line-height:1.55;margin:0 0 20px">Your saved details will personalize your future MatchApp selections. Your account is ready!</p>' +
-      '<p style="font-size:13px;opacity:.85;margin-bottom:16px">Opening your homepage automatically…</p>' +
-      '<button type="button" id="registration-success-home" style="width:100%;padding:14px;border:0;border-radius:13px;background:#e5c158;color:#1a1410;font-weight:800;font-size:16px;cursor:pointer">Go to my homepage now →</button>' +
+      '<h2 id="registration-save-success-title" data-registration-copy="successTitle" style="margin:0 0 14px;font-size:clamp(24px,6vw,32px);color:#ffde83">Profile saved successfully!</h2>' +
+      '<p data-registration-copy="successBody" style="font-size:17px;line-height:1.55;margin:0 0 20px">Your saved details will personalize your future MatchApp selections. Your account is ready!</p>' +
+      '<p data-registration-copy="successOpening" style="font-size:13px;opacity:.85;margin-bottom:16px">Opening your homepage automatically…</p>' +
+      '<button type="button" id="registration-success-home" data-registration-copy="successHome" style="width:100%;padding:14px;border:0;border-radius:13px;background:#e5c158;color:#1a1410;font-weight:800;font-size:16px;cursor:pointer">Go to my homepage now →</button>' +
       '</div>';
     document.body.appendChild(overlay);
+    bindCopy(overlay);
     const goHome = () => window.location.assign('/');
     overlay.querySelector('#registration-success-home').addEventListener('click', goHome);
     overlay.querySelector('#registration-success-home').focus({preventScroll:true});
@@ -71,30 +93,32 @@
     const regionField = document.createElement('div');
     regionField.className = 'input-group';
     regionField.id = 'registration-region-group';
-    regionField.innerHTML = '<label for="registration-region">State / region</label><select id="registration-region" required autocomplete="address-level1"><option value="">Select your state or region</option></select>';
+    regionField.innerHTML = '<label for="registration-region" data-registration-copy="regionLabel">State / region</label><select id="registration-region" required autocomplete="address-level1"><option value="">Select your state or region</option></select>';
     country.closest('.input-group')?.after(regionField);
 
     const box = document.createElement('div');
     box.id = 'registration-account-fields';
     box.className = 'registration-account-fields';
     box.innerHTML = `
-      <div class="registration-divider"><strong>Account preferences &amp; privacy</strong>
-        <small>Identity fields above lock permanently after registration. These preferences can be changed later.</small></div>
-      <label for="registration-language">Preferred language
+      <div class="registration-divider"><strong data-registration-copy="preferencesTitle">Account preferences &amp; privacy</strong>
+        <small data-registration-copy="preferencesHelp">Identity fields above lock permanently after registration. These preferences can be changed later.</small></div>
+      <label for="registration-language"><span data-registration-copy="languageLabel">Preferred language</span>
         <select id="registration-language"><option value="en">English</option><option value="pt-BR">Português (Brasil)</option>
         <option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option>
         <option value="it">Italiano</option><option value="tr">Türkçe</option><option value="ru">Русский</option>
         <option value="ar">العربية</option><option value="hi">हिन्दी</option><option value="id">Bahasa Indonesia</option>
         <option value="ja">日本語</option><option value="ko">한국어</option><option value="zh">中文</option></select></label>
       <label class="registration-check"><input type="checkbox" id="registration-terms" required>
-        <span>I agree to the <a href="/terms.html" target="_blank" rel="noopener">Terms</a>. Required.</span></label>
+        <span data-registration-consent="termsConsent">I agree to the <a href="/terms.html" target="_blank" rel="noopener" data-registration-copy="termsLink">Terms</a>. Required.</span></label>
       <label class="registration-check"><input type="checkbox" id="registration-privacy" required>
-        <span>I have read the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>. Required.</span></label>
+        <span data-registration-consent="privacyConsent">I have read the <a href="/privacy.html" target="_blank" rel="noopener" data-registration-copy="privacyLink">Privacy Policy</a>. Required.</span></label>
       <label class="registration-check"><input type="checkbox" id="registration-marketing">
-        <span>Send me optional MatchApp product/news updates. I can change this later.</span></label>
-      <p class="registration-lock-note">🔒 Name, country, birth date and star sign become permanently locked to this account only after a confirmed save.</p>
+        <span data-registration-copy="marketing">Send me optional MatchApp product/news updates. I can change this later.</span></label>
+      <p class="registration-lock-note" data-registration-copy="lockNote">🔒 Name, country, birth date and star sign become permanently locked to this account only after a confirmed save.</p>
     `;
     section.appendChild(box);
+    bindCopy(regionField); bindCopy(box);
+    [regionField, box].forEach(node => window.MatchProfileDetailsI18n?.bind(node, () => { node.style.textAlign = 'start'; }));
 
     const lang = $('registration-language');
     const desired = localStorage.getItem('match_lang') || document.documentElement.lang || 'en';
@@ -116,26 +140,26 @@
       const dob = value('profile-dob');
       const sign = value('profile-starsign');
 
-      if (!name || name.length > 200) { toast('Enter your full name (up to 200 characters).', true); $('profile-name')?.focus(); return; }
-      if (!geo()?.isCountry(selectedCountry)) { toast('Select your country from the list.', true); country.focus(); return; }
-      if (!geo()?.isRegion(selectedCountry, region)) { toast('Select a state or region for your chosen country.', true); $('registration-region')?.focus(); return; }
-      if (!validateBirthdate(dob)) { toast('Enter a valid birth date in DD/MM/YYYY format.', true); $('profile-dob')?.focus(); return; }
+      if (!name || name.length > 200) { toast(copy('nameRequired', 'Enter your full name (up to 200 characters).'), true); $('profile-name')?.focus(); return; }
+      if (!geo()?.isCountry(selectedCountry)) { toast(copy('countryRequired', 'Select your country from the list.'), true); country.focus(); return; }
+      if (!geo()?.isRegion(selectedCountry, region)) { toast(copy('regionRequired', 'Select a state or region for your chosen country.'), true); $('registration-region')?.focus(); return; }
+      if (!validateBirthdate(dob)) { toast(copy('birthdateRequired', 'Enter a valid birth date in DD/MM/YYYY format.'), true); $('profile-dob')?.focus(); return; }
       if (!['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'].includes(sign)) {
-        toast('Select your star sign.', true); $('profile-starsign')?.focus(); return;
+        toast(copy('signRequired', 'Select your star sign.'), true); $('profile-starsign')?.focus(); return;
       }
       if (!$('registration-terms').checked || !$('registration-privacy').checked) {
-        toast('Accept the Terms and Privacy Policy to complete registration.', true); return;
+        toast(copy('consentRequired', 'Accept the Terms and Privacy Policy to complete registration.'), true); return;
       }
 
       const sb = window.supabaseClient;
-      if (!sb) { toast('Account connection unavailable. Your entries are safe.', true); return; }
+      if (!sb) { toast(copy('accountUnavailable', 'Account connection unavailable. Your entries are safe.'), true); return; }
       const button = $('save-profile-btn');
       saving = true;
       if (button) button.disabled = true;
       try {
         const { data: auth, error: authError } = await sb.auth.getUser();
         const user = auth?.user;
-        if (authError || !user) { toast('Sign in before saving your registration.', true); window.openAuthModal?.(); return; }
+        if (authError || !user) { toast(copy('signInRequired', 'Sign in before saving your registration.'), true); window.openAuthModal?.(); return; }
         const parameters = {
           p_name: name, p_country: selectedCountry, p_dob: dob, p_sign: sign,
           p_language: value('registration-language'), p_region: region,
@@ -189,7 +213,7 @@
         try { await window.hydrateProfileFromAuth?.(user); } catch (_) { /* Server save already confirmed. */ }
         window.checkAndRenderProfileState?.();
         document.dispatchEvent(new CustomEvent('matchapp:historychange'));
-        toast('Registration saved. Your profile is locked and available on your account.');
+        toast(copy('registrationSaved', 'Registration saved. Your profile is locked and available on your account.'));
         showRegistrationSuccess();
       } catch (error) {
         console.warn('Registration save failed',error?.code||error?.message||'unknown');

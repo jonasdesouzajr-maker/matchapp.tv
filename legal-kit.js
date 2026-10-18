@@ -121,24 +121,37 @@
   }
 
   function deletionPanel() {
+    const copy = (key, fallback) => window.MatchProfileDetailsI18n?.text(key) || fallback;
+    const bind = (node, render) => {
+      if (window.MatchProfileDetailsI18n) window.MatchProfileDetailsI18n.bind(node, render);
+      else render();
+    };
+    const setCopy = (node, key, fallback = node.textContent) => bind(node, () => { node.textContent = copy(key, fallback); });
     const host = document.getElementById('locked-info-card') || document.getElementById('editable-fields-section');
     if (!host || document.querySelector('.ma-delete-box')) return;
     const box = document.createElement('div');
     box.className = 'ma-delete-box';
     box.innerHTML = '<h3>Delete this account</h3><p>This removes your identity, history and purchases from MatchApp. The same email can register again 72 hours later.</p><button type="button" class="secondary-btn" id="ma-delete-btn">Request deletion</button><p id="ma-delete-msg" style="font-size:13px;color:#cbb;"></p>';
     host.parentNode.appendChild(box);
+    setCopy(box.querySelector('h3'), 'deleteTitle');
+    setCopy(box.querySelector('p'), 'deleteBody');
+    setCopy(box.querySelector('#ma-delete-btn'), 'deleteRequest');
+    bind(box, () => { box.style.textAlign = 'start'; });
     box.querySelector('#ma-delete-btn').addEventListener('click', async function () {
       const msg = box.querySelector('#ma-delete-msg');
-      if (!confirm('Delete your MatchApp account? You can recreate it with the same email after 72 hours.')) return;
+      if (!confirm(copy('deleteConfirm', 'Delete your MatchApp account? You can recreate it with the same email after 72 hours.'))) return;
       const sb = window.supabaseClient;
-      if (!sb) { msg.textContent = 'Sign in first.'; return; }
+      if (!sb) { setCopy(msg, 'deleteSignIn', 'Sign in first.'); return; }
       try {
         const { data, error } = await sb.rpc('request_account_deletion');
         if (error) throw error;
-        msg.textContent = (data && data.message) || 'Deletion scheduled. The same email can return after 72 hours.';
+        const message = data && data.message;
+        if (message && message !== 'Deletion scheduled. The same email can return after 72 hours.') {
+          bind(msg, () => { msg.textContent = message; msg.dir = 'auto'; });
+        } else setCopy(msg, 'deleteScheduled', 'Deletion scheduled. The same email can return after 72 hours.');
         try { await sb.auth.signOut(); } catch (_) {}
       } catch (err) {
-        msg.textContent = 'Could not complete deletion automatically. Email support@matchapp.tv and we will close the account.';
+        setCopy(msg, 'deleteFailed', 'Could not complete deletion automatically. Email support@matchapp.tv and we will close the account.');
       }
     });
   }
