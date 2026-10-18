@@ -5,16 +5,30 @@ if(!bootstrap||bootstrap.classic||!core||!copy)return;
 const root=d.getElementById('growth-root');if(!root)return;
 const MOODS=['funny','intense and thrilling','cozy comfort watch','mind-bending','romantic','any'];
 const CATS=['movie','series','any'],TIMES=[30,60,120,0],RATINGS=['all ages family friendly','tween PG','teen PG-13'];
-const COUNTRIES=['BR','US','GB','PT','CA','AU','JP','KR','IN','DE','FR','ES','IT','TR','ID','MX','AR','CL','CO','PE','RU','CN','SA','AE','ZA','NZ','NL','BE','IE','AT','CH','SE','DK','NO','FI','PL','CZ','GR','IL','TH','MY','SG','PH','VN','TW','HK','EG'];
+// Same country codes as registration; a selection still needs actual regional source evidence.
+const COUNTRIES=Object.freeze('AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI KH CM CA CV KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR XK KW KG LA LV LB LS LR LY LI LT LU MO MK MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SZ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW'.split(' '));
 const PROVIDERS=['Netflix','Amazon Prime Video','Disney Plus','HBO Max','Apple TV Plus','Paramount Plus','Hulu','Globoplay','Peacock','Crunchyroll'];
 const PENDING='matchapp_growth_pending_v1',TTL=24*60*60*1000;
 let model=bootstrap.state||{kind:'host',expiresAt:Date.now()+TTL};
 model.prefs=Object.assign({cat:'any',mood:'any',rating:RATINGS[0],country:initialCountry(),providers:[],maxMinutes:0,includeRentals:false,viewingMode:'shared'},model.prefs||{});
-let view=model.result&&core.resultValid(model.result)?'result':model.status==='waiting'?'waiting':model.kind==='host'?'intro':model.kind==='resume'?'loading':'invite';
+let view=model.result&&core.resultValid(model.result)?'loading':model.status==='waiting'?'waiting':model.kind==='host'?'intro':model.kind==='resume'?'loading':'invite';
 let step=Number.isInteger(model.step)&&model.step>=1&&model.step<=3?model.step:1;
-let busy=false,gate=false,errorKey='',pollTimer=null,pollDeadline=0,request=null,generation=0,accepted=false,saved=false,inviteUrl='';
+let busy=false,gate=false,errorKey='',pollTimer=null,pollDeadline=0,request=null,generation=0,resultGeneration=0,accepted=false,saved=false,inviteUrl='';
 const text=copy.text;
-function initialCountry(){try{const explicit=new URLSearchParams(w.location.search).get('country');if(COUNTRIES.includes(explicit))return explicit;const saved=w.localStorage.getItem('match_user_region')||w.localStorage.getItem('match_user_country');if(COUNTRIES.includes(saved))return saved;if(saved&&w.MatchAppCatalogMedia?.regionCode){const resolved=w.MatchAppCatalogMedia.regionCode();if(COUNTRIES.includes(resolved))return resolved;}return '';}catch(_){return '';}}
+function initialCountry(){
+ try{
+  const resolver=w.MatchAppCountry||w.MatchAppCatalogMedia;
+  const requested=new URLSearchParams(w.location.search).get('country');
+  const explicit=resolver?.resolveCountryCode?.(requested)||String(requested||'').trim().toUpperCase();
+  if(COUNTRIES.includes(explicit))return explicit;
+  // Resolve the profile before inspecting legacy subdivision storage (for example Fiji's Ba).
+  if(typeof resolver?.regionCode==='function'){
+   const resolved=resolver.regionCode();return COUNTRIES.includes(resolved)?resolved:'';
+  }
+  const saved=w.localStorage.getItem('match_user_region')||w.localStorage.getItem('match_user_country');
+  return COUNTRIES.includes(saved)?saved:'';
+ }catch(_){return '';}
+}
 function node(tag,label,cls){const n=d.createElement(tag);if(label!==undefined)n.textContent=label;if(cls)n.className=cls;return n;}
 function button(label,fn,primary=false){const b=node('button',label,primary?'growth-primary':'');b.type='button';b.disabled=busy;b.addEventListener('click',fn);return b;}
 function paragraph(label,cls){return node('p',label,cls);}
@@ -32,9 +46,19 @@ function show(next,focus=true){view=next;render();if(focus)alignStep();}
 function noteError(code){errorKey=/expired/.test(code)?'expired':/already_joined/.test(code)?'used':/sign_in_required|different_viewer_required/.test(code)?'needAccount':/limit|try_later/.test(code)?'limitReached':'error';}
 function countryLabel(country){try{return new Intl.DisplayNames([copy.lang()],{type:'region'}).of(country)||country;}catch(_){return country;}}
 function date(value){try{return new Intl.DateTimeFormat(copy.lang(),{dateStyle:'medium',timeStyle:'long'}).format(new Date(value));}catch(_){return '';}}
-function exclusions(){const all=[];for(const key of ['match_savedList','match_dislikedList']){try{const rows=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(rows))for(const item of rows)if(typeof(item?.title||item)==='string')all.push(item.title||item);}catch(_){}}return Array.from(new Set(all)).slice(0,1000);}
+async function exclusions(){
+ await w.matchPolicy?.ready?.();
+ const all=[...(w.matchPolicy?.known?.()||[])],rows=[...(w.matchPolicy?.history?.()||[])];
+ for(const key of ['match_savedList','match_dislikedList','match_seenList','match_recentTitles']){try{const list=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(list))rows.push(...list);}catch(_){}}
+ for(const item of rows){if(typeof item==='string')all.push(item);else if(item){all.push(item.title,item.originalTitle,...(item.titleAliases||[]),...(w.matchPolicy?.identityKeys?.(item)||[]));}}
+ return Array.from(new Set(all.filter(value=>typeof value==='string'&&value.trim()&&value.length<=300))).slice(0,1000);
+}
+function sameIdentity(a,b){const keys=w.matchPolicy?.identityKeys?.(a)||new Set([a?.kind+':'+a?.tmdbId]);return [...(w.matchPolicy?.identityKeys?.(b)||new Set([b?.kind+':'+b?.tmdbId]))].some(key=>keys.has(key));}
+function dismissed(item){const rows=(w.matchPolicy?.history?.()||[]).filter(row=>row.action==='dislike');try{const list=JSON.parse(localStorage.getItem('match_dislikedList')||'[]');if(Array.isArray(list))rows.push(...list.map(row=>typeof row==='string'?{title:row}:row));}catch(_){}return rows.some(row=>sameIdentity(row,item));}
+function sourceItem(result){const own=result.viewing.find(x=>x.role==='shared'||x.role===(model.role||'guest'))||result.viewing[0];return {...result,posterUrl:core.poster(result.posterUrl),streamUrl:core.safeSource(own.sourceUrl,result.tmdbId,result.kind,own.country),reason:result.matchScope||'Together shared result'};}
 async function registeredUser(){try{const sb=w.supabaseClient;if(!sb)return null;const {data,error}=await sb.auth.getUser();return !error&&data?.user&&!data.user.is_anonymous?data.user:null;}catch(_){return null;}}
 async function api(action,extra={}){
+ const target=model;
  const sb=w.supabaseClient;if(!sb)throw Error('service_unavailable');
  const publicKey=typeof SUPABASE_ANON_KEY==='string'?SUPABASE_ANON_KEY:sb.supabaseKey;
  const base=typeof SUPABASE_URL==='string'?SUPABASE_URL:sb.supabaseUrl;
@@ -43,7 +67,7 @@ async function api(action,extra={}){
  try{
   const {data}=await sb.auth.getSession();const headers={'Content-Type':'application/json',apikey:publicKey};
   if(data?.session?.access_token)headers.Authorization='Bearer '+data.session.access_token;
-  const body={action,token:model.token,...(model.guestKey?{guestKey:model.guestKey}:{}),...extra};
+  const body={action,token:target.token,...(target.guestKey?{guestKey:target.guestKey}:{}),...extra};
   const response=await fetch(base+'/functions/v1/growth-together',{method:'POST',headers,body:JSON.stringify(body),signal:controller.signal,referrerPolicy:'no-referrer'});
   const answer=await response.json();if(!response.ok||!answer?.ok)throw Error(String(answer?.error||'service_unavailable'));
   return answer;
@@ -60,17 +84,36 @@ function armPoll(){
  if(d.hidden||Date.now()>pollDeadline||!['waiting','resolving','ready'].includes(model.status))return;
  pollTimer=setTimeout(async()=>{
   if(busy){armPoll();return;}
-  try{const answer=await api('status');apply(answer);if(['ready','resolving'].includes(answer.status)){const resolved=await api('resolve');apply(resolved);}}
+  try{const target=model,answer=await api('status');if(target!==model)return;await apply(answer);if(['ready','resolving'].includes(answer.status)){const resolved=await api('resolve');if(target!==model)return;await apply(resolved);}}
   catch(e){noteError(e?.message||'');render();return;}
   armPoll();
  },4000);
 }
-function apply(answer){
+async function apply(answer,options={}){
+ const target=model,version=++resultGeneration,current=()=>model===target&&version===resultGeneration;
  const previousView=view;
  if(answer.role)model.role=answer.role;if(answer.viewerRole)model.role=answer.viewerRole;
  if(answer.expiresAt)model.expiresAt=Math.min(Date.now()+TTL,Date.parse(answer.expiresAt)||Date.now()+TTL);
  if(answer.status)model.status=answer.status;
- if(answer.result){if(!core.resultValid(answer.result))throw Error('invalid_result');model.result=answer.result;model.status='matched';model.readOnly=answer.readOnly===true;view='result';expireTimer();event('shared_result_revealed');}
+ if(answer.result){
+  if(!core.resultValid(answer.result))throw Error('invalid_result');
+  await w.matchPolicy?.ready?.();if(!current())return;
+  const item=sourceItem(answer.result),user=await registeredUser();if(!current())return;
+  if(user)await w.matchPolicy?.refresh?.(true);if(!current())return;
+  const owner=user?.id||'',returning=(model.presentedOwner===owner&&sameIdentity(model.presentedResult,item))||options.restore===true;
+  if(w.matchPolicy?.excludes?.(item,{hardOnly:true})&&(!returning||dismissed(item))){
+   model.result=null;model.status='no_match';view='no_match';expireTimer();persist();render();return;
+  }
+  const scoped=!!user&&!!answer.result.matchScope&&(w.matchPolicy?.history?.()||[]).some(row=>row.reason===answer.result.matchScope&&sameIdentity(row,item));
+  if(!returning&&!scoped){
+   const won=!!(await w.matchPolicy?.claim?.(item));
+   if(!current()){if(won)await w.matchPolicy?.releaseClaim?.(item);return;}
+   if(!won){model.result=null;model.status='no_match';view='no_match';expireTimer();persist();render();return;}
+  }
+  w.matchPolicy?.remember?.(item,'matched');
+  model.presentedOwner=owner;model.presentedResult=item;
+  model.result=answer.result;model.status='matched';model.readOnly=answer.readOnly===true;view='result';expireTimer();event('shared_result_revealed');
+ }
  else if(['no_match','unavailable'].includes(answer.status)){view='no_match';expireTimer();}
  else view='waiting';persist();render();if(previousView!==view&&['result','no_match'].includes(view))alignStep();
 }
@@ -82,12 +125,12 @@ async function submit(){
    const user=await registeredUser();if(!user){askSignIn('create');return;}
    if(!model.token)model.token=core.randomToken(w.crypto);
    model.role='host';persist();
-   const answer=await api('create',{prefs:model.prefs,exclusions:exclusions(),name:model.name||text('friend')});
-   model.status=answer.status;clearPending();delete model.pending;gate=false;apply(answer.status==='matched'?await api('status'):answer);
+   const answer=await api('create',{prefs:model.prefs,exclusions:await exclusions(),name:model.name||text('friend')});
+   model.status=answer.status;clearPending();delete model.pending;gate=false;await apply(answer.status==='matched'?await api('status'):answer);
    inviteUrl=w.location.origin+'/together.html#invite='+model.token;pollDeadline=0;armPoll();event('invite_created');
   }else{
    if(!model.guestKey)model.guestKey=core.randomToken(w.crypto);persist();
-   const answer=await api(model.joined?'update':'join',{prefs:model.prefs,exclusions:exclusions()});model.joined=true;model.role='guest';apply(answer);armPoll();event('quiz_completed');
+   const answer=await api(model.joined?'update':'join',{prefs:model.prefs,exclusions:await exclusions()});model.joined=true;model.role='guest';await apply(answer);armPoll();event('quiz_completed');
   }
  });
 }
@@ -100,9 +143,9 @@ async function save(){
  await perform(async()=>{
   if(!model.result)return;const user=await registeredUser();if(!user){askSignIn('save');return;}
   const result=model.result,own=result.viewing.find(x=>x.role==='shared'||x.role===(model.role||'guest'))||result.viewing[0];
-  const item={title:result.title,action:'save',posterUrl:core.poster(result.posterUrl),streamUrl:core.safeSource(own.sourceUrl,result.tmdbId,result.kind,own.country),addedAt:Date.now()};
+  const item={...sourceItem(result),action:'save',addedAt:Date.now()};
   const {error}=await w.supabaseClient.rpc('portfolio_action',{p_action:'remember',p_payload:{items:[item]}});if(error)throw Error('service_unavailable');
-  try{w.matchPolicy?.remember(item,'save');}catch(_){}
+  try{if(w.matchPolicy?.savePreference)w.matchPolicy.savePreference(item,'save');else w.matchPolicy?.remember(item,'save');}catch(_){}
   saved=true;gate=false;delete model.pending;clearPending();persist();event('shared_match_saved');
  });
 }
@@ -153,7 +196,7 @@ function render(){
    panel.append(paragraph(text('waitingHelp')),actions(button(text('copy'),()=>share(false),true),button(text('share'),()=>share(true))));
    const input=node('input');input.id='growth-invite-link';input.type='text';input.readOnly=true;input.hidden=true;input.setAttribute('aria-label',text('copy'));panel.append(input);
   }
-  panel.append(actions(button(text('retry'),()=>perform(async()=>{const answer=await api(model.kind==='host'?'status':'resolve');apply(answer);pollDeadline=0;armPoll();}))));
+  panel.append(actions(button(text('retry'),()=>perform(async()=>{const answer=await api(model.kind==='host'?'status':'resolve');await apply(answer);pollDeadline=0;armPoll();}))));
  }else if(view==='no_match'){
   panel.append(heading(text('review')),paragraph(text('noMatch')),actions(button(text('edit'),()=>{step=1;show('quiz');},true),button(text('retry'),()=>perform(async()=>apply(await api('resolve'))))));
  }else if(view==='result')renderResult(panel,turn);
@@ -204,13 +247,15 @@ async function initialize(){
  if(bootstrap.invalid){view='invite';render();return;}
  // Restore only this user-initiated, unexpired operation after the existing OAuth flow.
  try{const pending=JSON.parse(sessionStorage.getItem(PENDING)||localStorage.getItem(PENDING)||'null');if(!bootstrap.state&&pending?.expiresAt>Date.now()&&pending.context){model=pending.context;model.prefs=model.prefs||{};step=model.step||3;view=model.result?'result':'quiz';persist();}}catch(_){}
+ await w.matchPolicy?.ready?.();
+ if(model.result&&core.resultValid(model.result)&&model.kind!=='resume'&&model.kind!=='invite')await apply({result:model.result,status:'matched'},{restore:true});
  render();
- if(model.kind==='resume'&&model.token){await perform(async()=>{const answer=await api('resume');model.role=answer.viewerRole||'guest';apply(answer);});}
+ if(model.kind==='resume'&&model.token){await perform(async()=>{const answer=await api('resume');model.role=answer.viewerRole||'guest';await apply(answer,{restore:true});});}
  else if(model.kind==='invite'&&model.token){
   await perform(async()=>{
    const preview=await api('preview');model.hostName=preview.hostName;model.hostMode=preview.viewingMode;model.hostCountry=preview.viewingCountry;
    if(model.hostMode==='shared'&&COUNTRIES.includes(model.hostCountry))model.prefs.country=model.hostCountry;
-   if(preview.joined&&model.guestKey){const state=await api('status');apply(state);armPoll();}
+   if(preview.joined&&model.guestKey){const state=await api('status');await apply(state,{restore:!!model.result});armPoll();}
    else if(preview.joined){noteError('already_joined');view='invite';}
    else view=model.result?'result':'invite';persist();
   });

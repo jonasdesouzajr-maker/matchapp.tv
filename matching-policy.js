@@ -45,17 +45,200 @@
   const bucket = () => owner || GUEST_ID;
   const exclusionStore = id => 'match_exclusions_' + (id || GUEST_ID);
   const historyStore = id => 'match_history_' + (id || GUEST_ID);
-  function known() {
-    const titles = new Set(permanent);
-    ['match_seenList','match_savedList','match_dislikedList'].forEach(name => stored(name, []).forEach(i => titles.add(key(i.title || i))));
-    stored('match_recentTitles', [], item => typeof item === 'string' && !!item.trim()).forEach(t => titles.add(key(t)));
-    Object.keys(stored('match_userRatings', {})).forEach(t => titles.add(key(t)));
+  const pendingStore = id => 'match_history_pending_' + (id || GUEST_ID);
+  const cloudStore = id => 'match_history_cloud_' + (id || GUEST_ID);
+  let historySnapshot='',historyRevision=0;
+  let refreshing=null,lastRefresh=0;
+  const exclusionCache=new Map();
+  const activeClaims=new Map();
+  const HARD_ACTIONS = new Set(['save','saved','watchlater','dislike','declined','notforme']);
+  const passive = action => !HARD_ACTIONS.has(String(action || '').toLowerCase().replace(/[^a-z]/g,''));
+  // Retain source identity as well as every verified title spelling. TMDB IDs
+  // are namespaced: movie 123 and television 123 are different works.
+  function identityKeys(item) {
+    const row = typeof item === 'string' ? {title:item} : item || {};
+    const keys = new Set();
+    const addTitle = title => { if (typeof title === 'string' && title.trim()) keys.add(key(title)); };
+    [row.title,row.originalTitle,row.original_title,row.original_name].forEach(addTitle);
+    [row._tmdb,row._catalogMedia,row._meta].filter(Boolean).forEach(source => {
+      [source.title,source.originalTitle,source.original_title,source.original_name].forEach(addTitle);
+    });
+    (Array.isArray(row.titleAliases) ? row.titleAliases : []).slice(0,30).forEach(addTitle);
+    (Array.isArray(row.identityKeys) ? row.identityKeys : []).slice(0,1000).forEach(value => {
+      if (typeof value === 'string' && (/^[\p{L}\p{N}]{1,300}$/u.test(value) || /^(?:tmdb:(?:movie|tv):[1-9]\d*|imdb:tt\d{5,})$/.test(value))) keys.add(value);
+    });
+    for (const source of [row,row._tmdb,row._catalogMedia,row._meta].filter(Boolean)) {
+      const id = Number(source.tmdbId || source.tmdb_id || source._tmdbId);
+      const kind = source.kind || source.media_kind || source.media_type || source._tmdbKind || row._tmdbKind || row.kind;
+      if (Number.isSafeInteger(id) && id > 0 && ['movie','tv'].includes(kind)) keys.add('tmdb:'+kind+':'+id);
+      const imdb = source.imdbId || source.imdb_id;
+      if (/^tt\d{5,}$/.test(String(imdb || ''))) keys.add('imdb:'+imdb);
+    }
+    return keys;
+  }
+  const intersects = (a,b) => [...a].some(value => b.has(value));
+  const boundedIdentityKeys=keys=>[...keys].sort((a,b)=>Number(b.includes(':'))-Number(a.includes(':'))).slice(0,40);
+  function cleanItem(item, action) {
+    const source=typeof item==='string'?{title:item}:item;
+    if(!source || !key(source.title))return null;
+    const aliases=[...new Set([source.originalTitle,source.original_title,source.original_name,
+      ...[source._tmdb,source._catalogMedia,source._meta].filter(Boolean).flatMap(meta=>[meta.title,meta.originalTitle,meta.original_title,meta.original_name]),
+      ...(Array.isArray(source.titleAliases)?source.titleAliases:[])].filter(value=>typeof value==='string'&&value.trim()).map(value=>value.slice(0,300)))].slice(0,30);
+    return {title:String(source.title).slice(0,300),action:String(action||source.action||'shown').slice(0,20),addedAt:Number(source.addedAt)||Date.now(),posterUrl:String(source.posterUrl||'').slice(0,1500),streamUrl:String(source.streamUrl||'').slice(0,1500),reason:String(source.reason||'').slice(0,300),identityKeys:boundedIdentityKeys(identityKeys(source)),originalTitle:String(source.originalTitle||source.original_title||source._tmdb?.originalTitle||source._catalogMedia?.originalTitle||source._meta?.originalTitle||'').slice(0,300),titleAliases:aliases,...(source.claimToken?{claimToken:String(source.claimToken).slice(0,100)}:{})};
+  }
+  function mergeItem(previous, incoming) {
+    if(!previous)return incoming;
+    // Poster enrichment and history scanning are passive. They must never
+    // turn an explicit Not For Me / Watch Later choice back into "shown".
+    const preserveAction=!passive(previous.action)&&(passive(incoming.action)||Number(previous.addedAt)>Number(incoming.addedAt));
+    const next={...previous,...incoming,identityKeys:[...new Set([...identityKeys(previous),...identityKeys(incoming)])],titleAliases:[...new Set([previous.title,incoming.title,...(previous.titleAliases||[]),...(incoming.titleAliases||[])].filter(Boolean))].slice(0,30)};
+    if(!incoming.posterUrl)next.posterUrl=previous.posterUrl||'';
+    if(!incoming.streamUrl)next.streamUrl=previous.streamUrl||'';
+    if(!incoming.originalTitle)next.originalTitle=previous.originalTitle||'';
+    if(!incoming.reason)next.reason=previous.reason||'';
+    if(preserveAction){next.action=previous.action;next.addedAt=previous.addedAt;}
+    return next;
+  }
+  function exclusions(hardOnly) {
+    const names=[exclusionStore(bucket()),historyStore(bucket()),'match_savedList','match_dislikedList','match_seenList','match_recentTitles','match_userRatings'];
+    const snapshots=names.map(name=>{try{return localStorage.getItem(name);}catch(_){return null;}});
+    const cached=exclusionCache.get(!!hardOnly);
+    if(cached&&cached.owner===bucket()&&cached.revision===historyRevision&&snapshots.every((value,index)=>value===cached.snapshots[index]))return cached.titles;
+    const titles = new Set(hardOnly ? [] : permanent);
+    if(!hardOnly)stored(exclusionStore(bucket()), [], item=>typeof item==='string').forEach(k=>titles.add(k));
+    const add=item=>identityKeys(item).forEach(k=>titles.add(k));
+    ['match_savedList','match_dislikedList',...(hardOnly?[]:['match_seenList'])].forEach(name=>stored(name,[]).forEach(add));
+    // Read the account-scoped history too: another tab may have saved a title
+    // since this document attached its session.
+    [...history,...stored(historyStore(bucket()),[])].forEach(item=>{if(!hardOnly||!passive(item.action))add(item);});
+    if(!hardOnly){
+      stored('match_recentTitles', [], item=>typeof item==='string').forEach(add);
+      Object.keys(stored('match_userRatings', {})).forEach(add);
+    }
+    exclusionCache.set(!!hardOnly,{owner:bucket(),revision:historyRevision,snapshots,titles});
     return titles;
   }
+  function excludes(item, options = {}) { return intersects(identityKeys(item),exclusions(!!options.hardOnly)); }
+  function known() {
+    return new Set(exclusions(false));
+  }
+  async function historyRpc(action,payload) {
+    let timer;
+    try{
+      return await Promise.race([
+        window.supabaseClient.rpc('portfolio_action',{p_action:action,p_payload:{...payload,...(owner&&!payload.ownerId?{ownerId:owner}:{})}}),
+        new Promise(resolve=>{timer=setTimeout(()=>resolve({error:{message:'History connection timed out'}}),7000);})
+      ]);
+    }finally{clearTimeout(timer);}
+  }
+  // Reserve before a debit or reveal. The database serializes all identities
+  // for one account, so two devices cannot both accept the same fresh title.
+  // Reservations have no automatic expiry: a lost response must not permit a
+  // title that was actually displayed elsewhere to be selected again.
+  async function claim(item) {
+    await ready;
+    const clean=cleanItem(item,'reserved');
+    if(!clean||excludes(clean))return false;
+    const account=owner;
+    const token=window.crypto?.randomUUID?.()||('claim_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2));
+    clean.claimToken=token;
+    const accept=record=>{
+      remember(record,record.action||'reserved',false,false);
+      activeClaims.set(token,{account,item:record});
+      return true;
+    };
+    if(!account){
+      const reserve=()=>{
+        if(owner!==account||excludes(clean))return false;
+        return accept(clean);
+      };
+      try{return window.navigator?.locks?.request
+        ? await window.navigator.locks.request('matchapp-guest-title-claim',reserve)
+        : reserve();}catch(_){return false;}
+    }
+    if(!window.supabaseClient)return false;
+    try{
+      const {data,error}=await historyRpc('claim',{items:[clean],token});
+      if(error||owner!==account||!data)return false;
+      if(data.claimed===true){
+        if(excludes(clean,{hardOnly:true})){
+          activeClaims.set(token,{account,item:data.item||clean});await releaseClaim(clean);return false;
+        }
+        return accept(data.item||clean);
+      }
+      if(data.item?.title)remember(data.item,data.item.action||'shown',false,false);
+      return false;
+    }catch(_){return false;}
+  }
+  async function releaseClaim(item) {
+    const keys=identityKeys(item);
+    const found=[...activeClaims].find(([,record])=>record.account===owner&&intersects(identityKeys(record.item),keys));
+    if(!found)return false;
+    const [token,record]=found;
+    if(owner){
+      try{const {data,error}=await historyRpc('release_claim',{token});if(error||data?.released!==true)return false;}catch(_){return false;}
+    }
+    activeClaims.delete(token);
+    const removable=history.filter(row=>row.action==='reserved'&&row.claimToken===token);
+    const removed=new Set(removable.flatMap(row=>[...identityKeys(row)]));
+    history=history.filter(row=>!removable.includes(row));
+    for(const value of removed)if(!history.some(row=>identityKeys(row).has(value)))permanent.delete(value);
+    persist();
+    document.dispatchEvent(new CustomEvent('matchapp:historychange'));
+    return true;
+  }
+  function mergeCloud(data) {
+    const remote=(Array.isArray(data.history)?data.history:[]).filter(titleItem);
+    const remoteKeys=new Set((Array.isArray(data.keys)?data.keys:[]).filter(k=>typeof k==='string'));
+    remote.forEach(item=>identityKeys(item).forEach(k=>remoteKeys.add(k)));
+    const localPending=new Set([...pending,...stored(pendingStore(bucket()),[])].flatMap(item=>[...identityKeys(item)]));
+    const removed=new Set(stored(cloudStore(bucket()),[],item=>typeof item==='string').filter(k=>!remoteKeys.has(k)&&!localPending.has(k)));
+    const retained=item=>{const keys=identityKeys(item);return !intersects(keys,removed)||intersects(keys,remoteKeys)||intersects(keys,localPending);};
+    removed.forEach(k=>permanent.delete(k));
+    history=history.filter(retained);
+    if(removed.size){
+      try{
+        for(const name of ['match_savedList','match_seenList','match_dislikedList','match_recentTitles'])localStorage.setItem(name,JSON.stringify(stored(name,[]).filter(retained)));
+        const ratings=stored('match_userRatings',{});Object.keys(ratings).forEach(t=>{if(removed.has(key(t)))delete ratings[t];});localStorage.setItem('match_userRatings',JSON.stringify(ratings));
+        const session=JSON.parse(sessionStorage.getItem('match_sessionShown')||'[]');sessionStorage.setItem('match_sessionShown',JSON.stringify((Array.isArray(session)?session:[]).filter(t=>!removed.has(key(t)))));
+        if(typeof SESSION_SHOWN!=='undefined')for(const t of SESSION_SHOWN){if(removed.has(key(t)))SESSION_SHOWN.delete(t);}
+      }catch(_){}
+    }
+    // Source aliases coalesce into one record without repeatedly scanning
+    // the whole portfolio on large returning accounts.
+    const rows=[],byIdentity=new Map();
+    for(const item of [...history,...remote]){
+      const keys=identityKeys(item),matches=[...new Set([...keys].map(k=>byIdentity.get(k)).filter(index=>index!==undefined))];
+      const at=matches.length?matches[0]:rows.length;
+      let combined=item;
+      const mergedKeys=new Set(keys);
+      for(const index of matches){if(rows[index]){identityKeys(rows[index]).forEach(k=>mergedKeys.add(k));combined=mergeItem(rows[index],combined);}if(index!==at)rows[index]=null;}
+      rows[at]=combined;mergedKeys.forEach(k=>byIdentity.set(k,at));
+    }
+    history=rows.filter(Boolean).sort((a,b)=>Number(b.addedAt)-Number(a.addedAt));
+    remoteKeys.forEach(k=>permanent.add(k));
+    try{localStorage.setItem(cloudStore(bucket()),JSON.stringify([...remoteKeys]));}catch(_){}
+  }
+  async function refresh(force=false) {
+    if(!owner||!window.supabaseClient||(!force&&Date.now()-lastRefresh<2000))return;
+    if(refreshing)return refreshing;
+    const account=owner;lastRefresh=Date.now();
+    refreshing=(async()=>{
+      const {data,error}=await historyRpc('list',{});
+      if(error||!data||owner!==account)return;
+      mergeCloud(data);persist();
+      document.dispatchEvent(new CustomEvent('matchapp:historychange'));
+      document.dispatchEvent(new CustomEvent('matchapp:portfoliochange',{detail:{action:'refresh',owner}}));
+    })();
+    try{await refreshing;}catch(_){}finally{refreshing=null;}
+  }
   function persist() {
+    historyRevision++;
     try {
       localStorage.setItem(exclusionStore(bucket()), JSON.stringify([...permanent]));
-      localStorage.setItem(historyStore(bucket()), JSON.stringify(history));
+      historySnapshot=JSON.stringify(history);
+      localStorage.setItem(historyStore(bucket()), historySnapshot);
+      localStorage.setItem(pendingStore(bucket()), JSON.stringify(pending));
     } catch (_) {}
   }
   async function flush() {
@@ -65,22 +248,24 @@
     flushing=(async()=>{
       while(pending.length && owner===account){
         const batch=pending.slice(0,500);
-        const {error}=await window.supabaseClient.rpc('portfolio_action',{p_action:'remember',p_payload:{items:batch}});
+        const {error}=await historyRpc('remember',{items:batch.map(item=>cleanItem(item,item.action))});
         if(error)break;
-        if(owner===account)pending.splice(0,batch.length);
+        if(owner===account){const sent=new Set(batch);pending=pending.filter(item=>!sent.has(item));persist();}
       }
     })();
     try{await flushing;}finally{flushing=null;}
   }
   async function attach(user) {
+    const previousOwner=owner;
+    if(owner)persist();
     owner = user ? user.id : null;
     const guestKeys = new Set(stored(exclusionStore(GUEST_ID), [], item => typeof item === 'string' && !!item));
     const guestHistory = stored(historyStore(GUEST_ID), [], item => item && typeof item.title === 'string' && !!item.title.trim());
     permanent = new Set(stored(exclusionStore(owner || GUEST_ID), [], item => typeof item === 'string' && !!item));
     history = stored(historyStore(owner || GUEST_ID), [], item => item && typeof item.title === 'string' && !!item.title.trim());
-    pending = [];
+    pending = stored(pendingStore(owner || GUEST_ID), [], item=>item&&typeof item.title==='string');
 
-    if (owner) {
+    if (owner && (!previousOwner || previousOwner===owner)) {
       guestKeys.forEach(k => permanent.add(k));
       const merged = new Map(history.map(i => [key(i.title),i]));
       guestHistory.forEach(i => { if(!merged.has(key(i.title))) merged.set(key(i.title),i); });
@@ -97,13 +282,11 @@
       history=[...old.values()];
     }
     const account=owner;
-    const {data,error} = await window.supabaseClient.rpc('portfolio_action', {p_action:'list',p_payload:{}});
+    const {data,error} = await historyRpc('list',{});
     if(owner!==account)return;
     if (!error && data) {
-      (data.keys || []).forEach(k => permanent.add(k));
-      const byKey = new Map(history.map(i => [key(i.title),i]));
-      (data.history || []).forEach(i => { const old = byKey.get(key(i.title)); if (!old || i.addedAt > old.addedAt) byKey.set(key(i.title),i); });
-      history = [...byKey.values()].sort((a,b) => b.addedAt-a.addedAt);
+      mergeCloud(data);lastRefresh=Date.now();
+      history.forEach(item=>identityKeys(item).forEach(k=>permanent.add(k)));
     }
     // Account restoration can contain hundreds of titles. Calling remember()
     // for each one used to rewrite the complete history to localStorage and
@@ -116,47 +299,88 @@
     const stageRestored=(item,action)=>{
       const source=typeof item==='string'?{title:item}:item;
       const itemKey=key(source&&source.title);if(!itemKey)return;
-      const clean={title:String(source.title).slice(0,300),action:String(action||'shown').slice(0,20),addedAt:Number(source.addedAt)||Date.now(),posterUrl:String(source.posterUrl||'').slice(0,1500),streamUrl:String(source.streamUrl||'').slice(0,1500),reason:String(source.reason||'').slice(0,300)};
-      permanent.add(itemKey);
+      const clean=cleanItem(source,action);
+      identityKeys(clean).forEach(k=>permanent.add(k));
       if(!restoredByKey.has(itemKey)){
         restoredByKey.set(itemKey,clean);restoredNewKeys.unshift(itemKey);restoredNewSet.add(itemKey);
       }else if(clean.action!=='rated'){
-        restoredByKey.set(itemKey,clean);
+        restoredByKey.set(itemKey,mergeItem(restoredByKey.get(itemKey),clean));
       }
-      pending.push(clean);
+      pending.push(restoredByKey.get(itemKey));
     };
     ['match_savedList','match_seenList','match_dislikedList'].forEach((name,n)=>stored(name,[]).forEach(i=>stageRestored(i,['save','seen','dislike'][n])));
     Object.keys(stored('match_userRatings',{})).forEach(title=>stageRestored({title},'rated'));
-    guestHistory.forEach(i=>{if(i&&i.title)stageRestored(i,'shown');});
+    if(!previousOwner||previousOwner===owner)guestHistory.forEach(i=>{if(i&&i.title)stageRestored(i,i.action||'shown');});
     history=[
       ...restoredNewKeys.map(k=>restoredByKey.get(k)).filter(Boolean),
       ...restoredBaseKeys.filter(k=>!restoredNewSet.has(k)).map(k=>restoredByKey.get(k)).filter(Boolean)
     ];
     persist();
+    // Once migrated, guest choices belong to this account, not every account
+    // subsequently opened on the same browser.
+    if(owner){try{localStorage.removeItem(exclusionStore(GUEST_ID));localStorage.removeItem(historyStore(GUEST_ID));localStorage.removeItem(pendingStore(GUEST_ID));}catch(_){}}
     await flush();
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
   }
-  function remember(item, action, sync = true) {
+  function remember(item, action, sync = true, enqueue = true) {
     if (!item || !key(item.title)) return;
-    const clean = {title:String(item.title).slice(0,300),action:String(action||'shown').slice(0,20),addedAt:Number(item.addedAt)||Date.now(),posterUrl:String(item.posterUrl||'').slice(0,1500),streamUrl:String(item.streamUrl||'').slice(0,1500),reason:String(item.reason||'').slice(0,300)};
-    permanent.add(key(clean.title));
-    const old = history.findIndex(i => key(i.title) === key(clean.title));
-    if (old < 0) history.unshift(clean); else if (clean.action !== 'rated') history[old] = clean;
-    if(owner) pending.push(clean);
+    // Merge another tab's latest writes before persisting this tab's choice.
+    let externalSnapshot='';try{externalSnapshot=localStorage.getItem(historyStore(bucket()))||'';}catch(_){}
+    for(const row of externalSnapshot!==historySnapshot?stored(historyStore(bucket()),[]):[]){
+      const rowKeys=identityKeys(row),index=history.findIndex(i=>intersects(identityKeys(i),rowKeys));
+      if(index<0)history.push(row);else history[index]=mergeItem(history[index],row);
+      rowKeys.forEach(k=>permanent.add(k));
+    }
+    let clean=cleanItem(item,action);
+    const keys=identityKeys(clean);
+    const old = history.findIndex(i => intersects(identityKeys(i),keys));
+    if(old>=0)clean=mergeItem(history[old],clean);
+    identityKeys(clean).forEach(k=>permanent.add(k));
+    if (old < 0) history.unshift(clean); else history[old] = clean;
+    if(clean.action!=='reserved')for(const [token,record] of activeClaims)if(record.account===owner&&intersects(identityKeys(record.item),keys))activeClaims.delete(token);
+    if(owner&&enqueue){pending=pending.filter(i=>!intersects(identityKeys(i),identityKeys(clean)));pending.push(clean);}
     persist();
     if (sync && owner) flush().catch(() => {});
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
   }
+  function savePreference(item, action) {
+    if(!item?.title||!['save','dislike','seen'].includes(action))return false;
+    const clean={...item,...cleanItem(item,action)},keys=identityKeys(clean);
+    const name=action==='save'?'match_savedList':action==='dislike'?'match_dislikedList':'match_seenList';
+    const list=stored(name,[]).filter(row=>!intersects(identityKeys(row),keys));list.unshift(clean);
+    try{
+      localStorage.setItem(name,JSON.stringify(list));
+      if(action==='dislike')localStorage.setItem('match_savedList',JSON.stringify(stored('match_savedList',[]).filter(row=>!intersects(identityKeys(row),keys))));
+    }catch(_){}
+    remember(clean,action);
+    document.dispatchEvent(new CustomEvent('matchapp:portfoliochange',{detail:{action,item:clean,owner}}));
+    return true;
+  }
   async function forget(title) {
+    const account=owner;
     const titleKey=key(title); if(!titleKey)return false;
-    permanent.delete(titleKey);
-    history=history.filter(i=>key(i.title)!==titleKey);
-    pending=pending.filter(i=>key(i.title)!==titleKey);
+    const removed=new Set([titleKey]);
+    history.filter(i=>identityKeys(i).has(titleKey)).forEach(i=>identityKeys(i).forEach(k=>removed.add(k)));
+    removed.forEach(k=>permanent.delete(k));
+    history=history.filter(i=>!intersects(identityKeys(i),removed));
+    pending=pending.filter(i=>!intersects(identityKeys(i),removed));
+    try{
+      for(const name of ['match_savedList','match_seenList','match_dislikedList','match_recentTitles']){
+        localStorage.setItem(name,JSON.stringify(stored(name,[]).filter(i=>!intersects(identityKeys(i),removed))));
+      }
+      const ratings=stored('match_userRatings',{});
+      Object.keys(ratings).forEach(t=>{if(removed.has(key(t)))delete ratings[t];});
+      localStorage.setItem('match_userRatings',JSON.stringify(ratings));
+      const shown=JSON.parse(sessionStorage.getItem('match_sessionShown')||'[]');
+      sessionStorage.setItem('match_sessionShown',JSON.stringify((Array.isArray(shown)?shown:[]).filter(t=>!removed.has(key(t)))));
+      if(typeof SESSION_SHOWN!=='undefined')for(const t of SESSION_SHOWN){if(removed.has(key(t)))SESSION_SHOWN.delete(t);}
+    }catch(_){}
     persist();
     if(owner&&window.supabaseClient){
-      try{const {error}=await window.supabaseClient.rpc('portfolio_action',{p_action:'forget',p_payload:{title:String(title).slice(0,300)}});if(error)throw error;}catch(_){return false;}
+      try{if(flushing)await flushing;if(owner!==account)return false;const {error}=await historyRpc('forget',{title:String(title).slice(0,300),ownerId:account});if(error)throw error;}catch(_){return false;}
     }
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
+    document.dispatchEvent(new CustomEvent('matchapp:portfoliochange',{detail:{action:'forget',owner}}));
     return true;
   }
   function catalogList() {
@@ -384,11 +608,12 @@
     return true;
   }
   function matches(entry, criteria, extra = []) {
-    if (!entry || !entry.title || known().has(key(entry.title)) || extra.includes(key(entry.title))) return false;
+    if (!entry || !entry.title || excludes(entry) || [...identityKeys(entry)].some(k=>extra.includes(k))) return false;
     return matchesCriteria(entry, criteria);
   }
-  window.matchPolicy = Object.freeze({key,values,matches,matchesCriteria,remember,forget,known,history:()=>history.slice(),ready:()=>ready,incompatible,genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
-  window.addEventListener('online', () => flush().catch(() => {}));
+  window.matchPolicy = Object.freeze({key,values,identityKeys,excludes,savePreference,claim,releaseClaim,matches,matchesCriteria,remember,forget,known,history:()=>history.slice(),ready:async()=>{await ready;await refresh();},refresh,incompatible,genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
+  window.addEventListener('online', () => {flush().catch(() => {});refresh(true);});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
   setTimeout(() => {
     const client = window.supabaseClient;
     if (!client || typeof client.rpc !== 'function' || client.__matchQuotaSeparated) return;

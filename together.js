@@ -183,8 +183,10 @@ async function tgPoll() {
 
     const sb = tgSupabase();
     if (!sb) return;
+    const session=tgState,code=session.code;
     try {
-        const { data, error } = await sb.rpc('get_match_session', { p_code: tgState.code });
+        const { data, error } = await sb.rpc('get_match_session', { p_code: code });
+        if(tgState!==session||session.code!==code)return;
         if (error || !data || !data.ok) return;
 
         tgRenderParticipants(data.participants || []);
@@ -192,7 +194,7 @@ async function tgPoll() {
         if (data.status === 'matched' && data.result) {
             tgState.resolved = true;
             tgStopPolling();
-            tgRenderResult(data.result, data.participants || []);
+            await tgReceiveResult(data.result, data.participants || []);
             return;
         }
         tgTryResolve(data.participants || []);
@@ -216,10 +218,14 @@ async function tgTryResolve(participants) {
     // One in-flight rank/RPC per shared session, even during frequent polls.
     if(tgState.resolving)return;
     tgState.resolving=true;
+    const session=tgState,code=session.code;
+    const current=()=>tgState===session&&session.code===code&&!session.resolved;
+    let claimed=null,published=false;
     try {
 
     const merged = tgResolvePrefs(participants);
     await window.matchPolicy?.ready();
+    if(!current())return;
     const candidates = typeof CONTENT_CATALOG!=='undefined' ? CONTENT_CATALOG.filter(e=>participants.every(p=>window.matchPolicy?.matches(e,p.prefs||{}) && (typeof regionAvailabilityFits!=='function'||regionAvailabilityFits(e,p.prefs||{}))) && !isBlockedEntry(e) && !SESSION_SHOWN.has(e.title)) : [];
     // Every participant's explicit criteria have ALREADY been intersected.
     // OpenAI may only reorder these actual jointly approved catalog entries.
@@ -242,15 +248,36 @@ async function tgTryResolve(participants) {
             if(candidate&&candidates.includes(candidate))pick=candidate;
         }
     }
+    if(!current())return;
     if(!pick)pick=candidates[Math.floor(Math.random()*candidates.length)];
+    const ordered=[pick,...candidates.filter(item=>item!==pick)].filter(Boolean).slice(0,20);
+    pick=null;
+    for(const candidate of ordered){
+        const exact=await tgSourceIdentity(candidate);
+        if(!current())return;
+        if(!exact||window.matchPolicy?.excludes(exact))continue;
+        if(typeof verifyCuratedPlatform==='function'){
+            let verified={...exact,source:'catalog-together'};
+            for(const participant of participants){verified=await verifyCuratedPlatform(verified,participant.prefs||{});if(!verified)break;}
+            if(!verified||!current())continue;
+            Object.assign(exact,verified);
+        }
+        if(!window.matchPolicy?.claim||!(await window.matchPolicy.claim(exact)))continue;
+        claimed=exact;
+        if(!current())return;
+        pick=exact;break;
+    }
     if(!pick){const note=tgEl('tg-waiting-note');if(note)note.textContent='No fresh title fits everyone’s exact choices. Start a new match with different criteria, or use private Friends for account-wide exclusions for both users.';return;}
+    const reserved=window.matchPolicy?.history?.().find(item=>item.action==='reserved'&&tgSameIdentity(item,pick));
     const payload = {
+        ...pick,
         title: pick.title,
         synopsis: pick.synopsis,
         platform: pick.platform,
-        platformVerified: pick.platform!=='any'&&pick.platformVerified!==false,
+        platformVerified: pick.platformVerified===true,
         watchUrl: pick.watchUrl || null,
-        merged: merged
+        merged: merged,
+        claimToken: reserved?.claimToken
     };
 
     const sb = tgSupabase();
@@ -259,14 +286,71 @@ async function tgTryResolve(participants) {
         // First write wins server-side, so if both devices resolve at once they
         // still converge on one title instead of showing different picks.
         const { data, error } = await sb.rpc('set_match_session_result', {
-            p_code: tgState.code, p_result: payload
+            p_code: code, p_result: payload
         });
         if (error || !data || !data.ok) return;
+        published=tgSameIdentity(data.result,pick);
+        if(!current())return;
         tgState.resolved = true;
         tgStopPolling();
-        tgRenderResult(data.result, participants);
+        await tgReceiveResult(data.result, participants,{claimed:published});
     } catch (e) { /* next poll retries */ }
-    }finally{tgState.resolving=false;}
+    }finally{if(claimed&&!published)await window.matchPolicy?.releaseClaim?.(claimed);session.resolving=false;}
+}
+
+function tgSameIdentity(a,b){
+    const keys=window.matchPolicy?.identityKeys?.(a)||new Set([String(a?.title||'').toLowerCase()]);
+    return [...(window.matchPolicy?.identityKeys?.(b)||new Set([String(b?.title||'').toLowerCase()]))].some(key=>keys.has(key));
+}
+
+function tgDismissed(item){
+    const rows=(window.matchPolicy?.history?.()||[]).filter(row=>row.action==='dislike');
+    try{const local=JSON.parse(localStorage.getItem('match_dislikedList')||'[]');if(Array.isArray(local))rows.push(...local.map(row=>typeof row==='string'?{title:row}:row));}catch(_){}
+    return rows.some(row=>tgSameIdentity(row,item));
+}
+
+async function tgSourceIdentity(result){
+    if(!result?.title)return null;
+    const catalog=typeof CONTENT_CATALOG==='undefined'?null:CONTENT_CATALOG.find(item=>item.title===result.title);
+    const item={...catalog,...result,cats:result.cats?.length?result.cats:catalog?.cats||[]};
+    const kind=item.kind||item._tmdbKind||window.tmdbKindForCats?.(item.cats)||'';
+    if(!['movie','tv'].includes(kind))return item;
+    const tmdbId=Number(item.tmdbId||item._tmdbId||item._catalogMedia?.tmdb_id)||null;
+    if(!window.MatchAppCatalogMedia?.resolvePoster)return null;
+    let resolved;try{resolved=await window.MatchAppCatalogMedia.resolvePoster(item.title,{kind,tmdbId,year:item.year||'',cats:item.cats,priority:true});}catch(_){return null;}
+    const meta=resolved?.meta,id=Number(meta?.tmdb_id||meta?.tmdbId),sourceKind=meta?.media_kind||meta?.kind;
+    if(!Number.isSafeInteger(id)||id<=0||sourceKind!==kind||(tmdbId&&tmdbId!==id))return null;
+    return {...item,kind,tmdbId:id,_tmdbId:id,_tmdbKind:kind,_catalogMedia:meta,year:item.year||meta.year||'',
+        originalTitle:meta.original_title||meta.originalTitle||item.originalTitle||'',posterUrl:resolved.url||item.posterUrl||''};
+}
+
+async function tgReceiveResult(result,participants,options={}){
+    const session=tgState,code=session.code,version=(session.resultVersion||0)+1;session.resultVersion=version;
+    const current=()=>tgState===session&&session.code===code&&session.resultVersion===version;
+    await window.matchPolicy?.ready?.();
+    const exact=await tgSourceIdentity(result);
+    if(!current())return false;
+    if(!exact){tgError('The original source for this shared title could not be verified. Please try again shortly.');return false;}
+    const {data}=await tgSupabase()?.auth?.getUser?.()||{};
+    if(!current())return false;
+    const owner=data?.user&&!data.user.is_anonymous?data.user.id:'';
+    if(owner)await window.matchPolicy?.refresh?.(true);
+    if(!current())return false;
+    const receiptKey='match_together_result:'+code;
+    let receipt=null;try{receipt=JSON.parse(sessionStorage.getItem(receiptKey)||'null');}catch(_){}
+    const returning=receipt?.owner===owner&&tgSameIdentity(receipt.item,exact);
+    if(window.matchPolicy?.excludes(exact,{hardOnly:true})&&(!returning||tgDismissed(exact))){tgError('This shared title is excluded from your new matches. Start another session with different choices.');return false;}
+    const scoped=!!owner&&!!result.matchScope&&(window.matchPolicy?.history?.()||[]).some(item=>item.reason===result.matchScope&&tgSameIdentity(item,exact));
+    let won=false;
+    if(!scoped&&!returning&&!options.claimed){
+        won=!!(await window.matchPolicy?.claim?.(exact));
+        if(!current()){if(won)await window.matchPolicy?.releaseClaim?.(exact);return false;}
+        if(!won){tgError('This shared title is already in your history. Start another session with different choices.');return false;}
+    }
+    window.matchPolicy?.remember?.({...exact,reason:result.matchScope||'Together '+code},'matched');
+    try{sessionStorage.setItem(receiptKey,JSON.stringify({owner,item:exact}));}catch(_){}
+    if(typeof SESSION_SHOWN!=='undefined')SESSION_SHOWN.add(exact.title);
+    tgRenderResult(exact,participants,{allowSaved:returning});return true;
 }
 
 /* ---------- rendering ---------- */
@@ -433,9 +517,27 @@ function tgRenderParticipants(list) {
     if (count) count.textContent = list.length;
 }
 
-function tgRenderResult(result, participants) {
-    if(window.matchPolicy?.known().has(window.matchPolicy.key(result.title))){tgError('This shared title is already in your history. Use private Friends for a shared match that excludes both users’ previous titles.');return;}
+function tgRenderResult(result, participants, options={}) {
+    if(window.matchPolicy?.excludes?.(result,{hardOnly:true})&&(!options.allowSaved||tgDismissed(result))){tgError('This shared title is excluded from your new matches. Start another session with different choices.');return;}
+    const resultIdentity={};
+    tgRenderResult.current=resultIdentity;
+    const currentResult=()=>tgRenderResult.current===resultIdentity;
+    const applyViewing=meta=>{
+        if(!currentResult())return;
+        const link=tgEl('tg-result-link');if(!link)return;
+        const region=window.MatchAppCatalogMedia?.regionCode?.()||'';
+        const target=meta?window.MatchAppCatalogMedia?.viewingTarget?.(meta,result.title,region):null;
+        const confirmed=target?.mode==='stream'&&!!target.href&&!!region;
+        link.href=confirmed?target.href:region
+            ?'https://www.justwatch.com/'+region.toLowerCase()+'/search?q='+encodeURIComponent(result.title)
+            :'https://www.justwatch.com/';
+        link.textContent=confirmed
+            ?(window.t?.('discover.watchNow')||'Watch Now')+(target.provider?' · '+target.provider:'')
+            :(window.t?.('discover.whereToWatch')||'Find where to watch');
+        const badge=tgEl('tg-result-platform');if(badge){badge.textContent=confirmed?target.provider||'':'';badge.style.display=badge.textContent?'inline-block':'none';}
+    };
     tgShow('tg-step-result');
+    applyViewing(null);
 
     const names = (participants || []).map(p => p.name || 'Guest');
     const who = tgEl('tg-result-who');
@@ -453,8 +555,8 @@ function tgRenderResult(result, participants) {
 
     const badge = tgEl('tg-result-platform');
     if (badge) {
-        badge.textContent = result.platform || '';
-        badge.style.display = result.platform ? 'inline-block' : 'none';
+        badge.textContent = '';
+        badge.style.display = 'none';
     }
 
     // Show what everyone actually agreed on — makes the pick feel reasoned
@@ -480,9 +582,13 @@ function tgRenderResult(result, participants) {
     // was being looked up as if neither existed.
     const img = tgEl('tg-result-poster');
     if (img && result.title) {
+        const posterIdentity={title:result.title};
+        img.__matchappTogetherPoster=posterIdentity;
+        const currentPoster=()=>currentResult()&&img.isConnected&&img.__matchappTogetherPoster===posterIdentity;
+        img.alt=result.title;
         img.src = generateLocalPosterSVG(result.title,result);
-        img.onerror=()=>{img.onerror=null;img.src=generateLocalPosterSVG(result.title,result);};
-        let posterHints = {};
+        img.onerror=()=>{if(!currentPoster())return;img.onerror=null;img.src=generateLocalPosterSVG(result.title,result);};
+        let posterHints = {year:result.year||'',cats:result.cats||[]};
         try {
             if (typeof CONTENT_CATALOG !== 'undefined') {
                 const e = CONTENT_CATALOG.find(x => x.title === result.title);
@@ -490,22 +596,23 @@ function tgRenderResult(result, participants) {
             }
         } catch (err) {}
         const promote = url => {
-            if (!url) return;
+            if (!url||!currentPoster()) return;
             const probe = new Image();
-            probe.onload = () => { if (img.isConnected) img.src = url; };
+            probe.onload = () => { if (currentPoster()&&probe.naturalWidth>0) img.src = url; };
             probe.onerror = () => {};
             probe.src = url;
         };
         if (window.MatchAppCatalogMedia?.resolvePoster) {
-            const cat = result?.merged?.cat && result.merged.cat !== 'any' ? [result.merged.cat] : [];
-            const kind = window.tmdbKindForCats?.(cat) || '';
+            const cat = result.cats?.length?result.cats:result?.merged?.cat && result.merged.cat !== 'any' ? [result.merged.cat] : posterHints.cats||[];
+            const kind = result.kind||result._tmdbKind||result._meta?.kind||window.tmdbKindForCats?.(cat) || '';
+            const tmdbId=Number(result.tmdbId||result._tmdbId||result._meta?.tmdbId)||null;
+            const recover=()=>{
+                if(!currentPoster()||tmdbId||typeof getRealCoverImage!=='function')return;
+                getRealCoverImage(result.title,posterHints).then(promote).catch(()=>{});
+            };
             window.MatchAppCatalogMedia.resolvePoster(result.title,{
-                year:result.year||'',cats:cat,kind,priority:true
-            }).then(r => promote(r?.url)).catch(() => {
-                if (typeof getRealCoverImage === 'function') {
-                    getRealCoverImage(result.title, posterHints).then(promote).catch(() => {});
-                }
-            });
+                year:result.year||posterHints.year||'',cats:cat,kind,tmdbId,priority:true
+            }).then(r => {applyViewing(r?.meta);return r?.url?promote(r.url):recover();}).catch(recover);
         } else if (typeof getRealCoverImage === 'function') {
             getRealCoverImage(result.title, posterHints).then(promote).catch(() => {});
         }
@@ -515,18 +622,8 @@ function tgRenderResult(result, participants) {
     document.getElementById('tg-social-card')?.remove();
     tgEl('tg-step-result')?.append(shareHost);
     window.matchShareCard?.mount(shareHost,result.title);
-    // Watch link — verified deep link if we have one, else platform search.
-    const link = tgEl('tg-result-link');
-    if (link) {
-        if (result.watchUrl) {
-            link.href = result.watchUrl;
-        } else if (result.platform && typeof platformSearchUrl === 'function') {
-            link.href = platformSearchUrl(result.platform, result.title);
-        } else {
-            link.href = `https://www.justwatch.com/us/search?q=${encodeURIComponent(result.title)}`;
-        }
-        link.textContent = result.platform ? `▶ Watch on ${result.platform}` : '▶ Find Where To Stream';
-    }
+    // The shared exact source lookup above upgrades the viewing link only
+    // after confirming availability in this viewer's country.
 
     if (typeof confetti === 'function') {
         confetti({ particleCount: 150, spread: 95, origin: { y: 0.6 },

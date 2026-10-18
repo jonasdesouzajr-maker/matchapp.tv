@@ -43,6 +43,18 @@ let dislikedList = readPortfolioCache('match_dislikedList', []);
 let userRatings = readPortfolioCache('match_userRatings', {});
 // Titles shown recently, so the same result never repeats back-to-back.
 let recentTitles = readPortfolioCache('match_recentTitles', [], item => typeof item === 'string' && !!item.trim());
+// Shared Ask AI and Home actions write one local preference store. Keep the
+// legacy in-memory lists current before a later Home save syncs the account.
+document.addEventListener('matchapp:portfoliochange', event => {
+    seenList=readPortfolioCache('match_seenList',[]);
+    savedList=readPortfolioCache('match_savedList',[]);
+    dislikedList=readPortfolioCache('match_dislikedList',[]);
+    if(['refresh','forget'].includes(event.detail?.action)){
+        userRatings=readPortfolioCache('match_userRatings',{});
+        recentTitles=readPortfolioCache('match_recentTitles',[],item=>typeof item==='string');
+    }
+    if(typeof updateActionButtonStates==='function')updateActionButtonStates();
+});
 
 // ----------------------------------------------------
 // INCLUDED DAILY AI ACTIONS (3 Guest, 5 Registered, 10 VIP, 50 Business)
@@ -3328,6 +3340,8 @@ function isAudioCategory(cat) { return AUDIO_CATEGORIES.includes(cat); }
 
 // Country the user locked into their profile; drives availability filtering.
 function getUserCountry() {
+    const resolver=window.MatchAppCountry?.regionCode||window.MatchAppCatalogMedia?.regionCode;
+    if(typeof resolver==='function')return resolver()||null;
     const c = (localStorage.getItem('match_user_country') || '').trim();
     return c || null;
 }
@@ -3335,6 +3349,11 @@ function getUserCountry() {
 function platformServesCountry(pf, country) {
     if (!country) return true;
     if (pf.countries.includes('*')) return true;
+    const resolve=window.MatchAppCountry?.resolveCountryCode||window.MatchAppCatalogMedia?.resolveCountryCode;
+    if(typeof resolve==='function'){
+        const code=resolve(country);
+        return !!code&&pf.countries.some(c=>resolve(c)===code);
+    }
     const norm = country.toLowerCase();
     return pf.countries.some(c => c.toLowerCase() === norm);
 }
@@ -3374,7 +3393,9 @@ function platformsFor(cat, country) {
 function platformSearchUrl(platformName, title) {
     const pf = PLATFORMS[platformName];
     if (pf && typeof pf.search === 'function') return pf.search(title);
-    return `https://www.justwatch.com/us/search?q=${encodeURIComponent(title)}`;
+    const countryResolver=window.MatchAppCountry||window.MatchAppCatalogMedia;
+    const region=countryResolver?.regionCode?.()||'';
+    return region ? `https://www.justwatch.com/${region.toLowerCase()}/search?q=${encodeURIComponent(title)}` : 'https://www.justwatch.com/';
 }
 
 // ----------------------------------------------------
@@ -3654,14 +3675,12 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
 
     const term = parts.join(' ');
     const media = mediaForCategory(cat);
-    // Use a saved country when supplied, otherwise only a browser locale
-    // with an actual country suffix; never assume unknown users are Brazilian.
-    const chosenCountry=String(window.localStorage?.getItem('match_user_region')||window.localStorage?.getItem('match_user_country')||'').trim();
-    const locale=String(window.navigator?.language||'').replace('_','-');
-    const countryMatch=/-([A-Za-z]{2})(?:$|-)/.exec(locale);
-    const browserCountry=countryMatch?countryMatch[1].toUpperCase():'';
-    const region=chosenCountry?(window.MatchAppCatalogMedia?.regionCode?.()||browserCountry):browserCountry;
-    const countryParam=region?'&country='+encodeURIComponent(region):'';
+    // Apple defaults an omitted country to the US. Only an explicit viewing
+    // country may select this source; language never chooses its storefront.
+    const countryResolver=window.MatchAppCountry||window.MatchAppCatalogMedia;
+    const region=countryResolver?.regionCode?.()||'';
+    if(!/^[A-Z]{2}$/.test(region))return null;
+    const countryParam='&country='+encodeURIComponent(region);
     const entity=cat==='music album'?'album':cat==='Spotify single'?'song':
       cat==='podcast'?'podcast':cat==='audiobook'?'audiobook':'';
     const limit=['music','podcast','audiobook'].includes(media)?80:40;
@@ -3954,8 +3973,9 @@ async function discoverVerifiedExactTMDB(requested){
         genreIds=[...new Set(sourceGenres.flatMap(g=>g==='Horror'?[9648,10765,18]:[TMDB_GENRE_ID_BY_NAME[g]]).filter(Boolean))];
     }
     const start=decade.length===1?Number(String(decade[0]).match(/\d{4}/)?.[0]):0;
-    const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    const region=window.MatchAppCatalogMedia?.regionCode?.()||'';
     const provider=platform.length===1?platform[0]:'';
+    if(platform.length&&!region)return null;
     // Escalate to later source pages only when the earlier verified batch has
     // no exact fit. Keep source calls and UI wait bounded by the match deadline.
     const sourceStarted=Date.now(),MAX_EXACT_DETAILS=14;
@@ -3983,7 +4003,7 @@ async function discoverVerifiedExactTMDB(requested){
     for(const base of orderedCandidates){
       if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)return null;
       const key=window.matchPolicy?.key?.(base.title)||'';
-      if(!key||known.has(key)||SESSION_SHOWN.has(base.title))continue;
+      if(!key||known.has(key)||window.matchPolicy?.excludes?.(base)||SESSION_SHOWN.has(base.title))continue;
       // Skip unrelated popular dramas before spending the bounded detail
       // budget. Both discovery and detail overviews belong to this TMDB ID.
       if(base.kind==='tv'&&mood.length===1&&mood[0]==='scary'&&
@@ -4020,9 +4040,10 @@ async function discoverVerifiedExactTMDB(requested){
         verifiedPlatform=hit||platform[0];
       }
       const finalTitle=String(d?.title||base.title);
-      if(known.has(window.matchPolicy?.key?.(finalTitle))||SESSION_SHOWN.has(finalTitle))continue;
+      if(known.has(window.matchPolicy?.key?.(finalTitle))||window.matchPolicy?.excludes?.({...base,...d,title:finalTitle})||SESSION_SHOWN.has(finalTitle))continue;
       return {
         title:String(d?.title||base.title),year:Number(d?.year||base.year)||null,
+        originalTitle:d?.originalTitle||base.originalTitle||'',
         countryCode:countries[0]||'',country:countries[0]||'',
         synopsis:String(d?.overview||base.overview||'').trim(),
         platform:verifiedPlatform,platformVerified:platform.length>0,
@@ -4060,7 +4081,8 @@ async function aiProposedVerifiedExact(requested){
           realGenres=normCriteria(requested.genre);
     // Same boundary as discoverVerifiedExactTMDB: TMDB can only verify film and TV.
     if(cat.some(x=>['limited series','vertical micro-drama','YouTube channel','YouTube Shorts','podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith','Classical Music','News','Sports'].includes(x)))return null;
-    const region=window.MatchAppCatalogMedia?.regionCode?.()||'BR';
+    const region=window.MatchAppCatalogMedia?.regionCode?.()||'';
+    if(platform.length&&!region)return null;
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
     const wants=[];
     if(cat.length)wants.push('format: '+cat.join(' or '));
@@ -4086,7 +4108,7 @@ async function aiProposedVerifiedExact(requested){
         if(!base||!Number.isSafeInteger(base.tmdbId)||!['movie','tv'].includes(base.kind))continue;
         const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});if(!d)continue;
         const finalKey=window.matchPolicy?.key?.(d.title||base.title)||key;
-        if(known.has(finalKey)||SESSION_SHOWN.has(String(d.title||base.title)))continue;
+        if(known.has(finalKey)||window.matchPolicy?.excludes?.({...base,...d})||SESSION_SHOWN.has(String(d.title||base.title)))continue;
         const genres=Array.isArray(d.genres)?d.genres:[],countries=Array.isArray(d.originCountries)?d.originCountries:[];
         if(countries.some(x=>prefs.countries.has(String(x).toUpperCase())))continue;
         if(genres.some(g=>prefs.genres.has(String(g).toLowerCase())))continue;
@@ -4106,6 +4128,7 @@ async function aiProposedVerifiedExact(requested){
         }
         return {
             title:String(d.title||base.title),year:Number(d.year||base.year)||null,
+            originalTitle:d.originalTitle||base.originalTitle||'',
             countryCode:countries[0]||'',country:countries[0]||'',
             synopsis:String(d.overview||base.overview||'').trim(),
             platform:verifiedPlatform,platformVerified:platform.length>0,
@@ -4158,7 +4181,8 @@ function persistSessionShown() {
     } catch (e) { /* private mode or quota — in-memory still works */ }
 }
 
-function rememberShownTitle(title) {
+function rememberShownTitle(item) {
+    const title=typeof item==='string'?item:item?.title;
     if (!title) return;
     SESSION_SHOWN.add(title);
     persistSessionShown();
@@ -4172,7 +4196,7 @@ function rememberShownTitle(title) {
     // browser; matchPolicy.remember persists signed-in history so the same
     // live-discovered title is excluded on desktop, phone, tablet and Android
     // WebView instead of becoming "fresh" again on every device.
-    try { window.matchPolicy?.remember?.({title}, 'shown'); } catch (_) {}
+    try { window.matchPolicy?.remember?.(typeof item==='string'?{title}:item, 'shown'); } catch (_) {}
 }
 
 // ----------------------------------------------------
@@ -4291,6 +4315,42 @@ function regionAvailabilityFits(entry,criteria) {
     const current=window.MatchAppCatalogMedia?.regionCode?.()||'';
     return limited.includes(current);
 }
+async function verifyCuratedPlatform(selected,requested) {
+    if(!selected||!String(selected.source||'').startsWith('catalog'))return selected;
+    const platforms=normCriteria(requested?.plat);
+    const region=window.MatchAppCountry?.regionCode?.()||window.MatchAppCatalogMedia?.regionCode?.()||'';
+    let identity=null;
+    try{if(typeof getCatalogTmdbIdentity==='function')identity=await getCatalogTmdbIdentity(selected.title);}catch(_){}
+    let result={...selected,platformVerified:false};
+    if(identity){
+        result={...result,_tmdbId:identity.tmdbId,_tmdbKind:identity.kind,year:result.year||identity.year};
+        let art=null;try{if(typeof getCuratedPoster==='function')art=await getCuratedPoster(selected.title);}catch(_){}
+        result._meta={...(result._meta||{}),tmdbId:identity.tmdbId,kind:identity.kind,...(art?{artwork:art}:{})};
+    }
+    // These links identify the work on the provider's own service. A bare
+    // catalogue platform label does not establish country availability.
+    if((!platforms.length||platforms.includes('Mercado Play'))&&selected.platform==='Mercado Play'&&region==='BR'&&
+       selected.availabilityRegions?.includes('BR')&&/^https:\/\/play\.mercadolivre\.com\.br\/assistir\//.test(selected.watchUrl||''))return {...result,platformVerified:true};
+    if((!platforms.length||platforms.includes('Spotify'))&&typeof exactSpotifyPlaylistCover==='function'&&exactSpotifyPlaylistCover(selected))return {...result,platformVerified:true};
+    if(!platforms.length)return result;
+    const kind=identity?.kind||selected._tmdbKind||window.tmdbKindForCats?.(selected.cats||[])||'';
+    const screenTitle=!!kind||(selected.cats||[]).some(cat=>['movie','series','documentary','stand-up comedy special','Gospel & Faith'].includes(cat));
+    if(!screenTitle)return result;
+    if(!region||typeof window.MatchAppCatalogMedia?.lookupLive!=='function')return null;
+    let meta;
+    try{meta=await window.MatchAppCatalogMedia.lookupLive(selected.title,{tmdbId:identity?.tmdbId||selected._tmdbId,kind,year:selected.year||identity?.year||'',cats:selected.cats||[],priority:true});}catch(_){return null;}
+    if(!meta||!Number.isSafeInteger(Number(meta.tmdb_id))||!['movie','tv'].includes(meta.media_kind))return null;
+    if(identity&&(Number(meta.tmdb_id)!==Number(identity.tmdbId)||meta.media_kind!==identity.kind))return null;
+    const row=meta.availability?.[region]||{};
+    const providers=[...(Array.isArray(row.stream)?row.stream:[]),...(Array.isArray(row.free)?row.free:[])];
+    const wanted=new Set(platforms.map(canonicalProviderName));
+    const hit=providers.find(name=>wanted.has(canonicalProviderName(name)));
+    if(!hit)return null;
+    return {...result,platform:hit,platformVerified:true,originalTitle:meta.originalTitle||meta.original_title||result.originalTitle||'',
+        _tmdbId:Number(meta.tmdb_id),_tmdbKind:meta.media_kind,_catalogMedia:meta,
+        _meta:{...(result._meta||{}),tmdbId:Number(meta.tmdb_id),kind:meta.media_kind,
+            artwork:meta.poster_large_url||meta.poster_original_url||meta.poster_url||result._meta?.artwork||null}};
+}
 async function rankVerifiedCuratedMatch(requested) {
     const policy=window.matchPolicy,ranker=window.MatchAppAIRank?.rank;
     if(!policy||typeof ranker!=='function')return null;
@@ -4338,7 +4398,7 @@ async function rankVerifiedCuratedMatch(requested) {
     const index=ranked?.id && /^c\d+$/.test(ranked.id)?Number(ranked.id.slice(1)):-1;
     const hit=shortlist[index];
     if(!hit||!eligible.includes(hit))return null;
-    return {...hit,platformVerified:hit.platform!=='any'&&hit.platformVerified!==false,source:'catalog-ai-ranked'};
+    return {...hit,platformVerified:hit.platform!=='any'&&hit.platformVerified===true,source:'catalog-ai-ranked'};
 }
 
 // Source-backed curation runs before generative title proposals: the AI only
@@ -4357,16 +4417,8 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         && (wantsFaith || !e.cats.includes('Gospel & Faith'))
         && entryAllowedForSelection(e,cat);
 
-    // recentTitles has been persisted to localStorage all along and never
-    // consulted here, which is why the same title could come back straight
-    // after a reload. It is a PREFERENCE rather than a hard exclusion: if
-    // honouring it empties the pool, a repeat is better than telling someone
-    // nothing matches.
-    //
-    // Read defensively: the matching tests evaluate this function in isolation
-    // without app.js's module scope, so a bare reference to recentTitles
-    // throws ReferenceError there. Falling back to localStorage keeps the
-    // function self-sufficient and testable.
+    // The shared policy keeps history hard. This secondary snapshot also
+    // supports older documents that populated only the recent-title list.
     let recentSource = [];
     try {
         recentSource = (typeof recentTitles !== 'undefined' && Array.isArray(recentTitles))
@@ -4392,98 +4444,13 @@ function pickFromCatalog(cat, plat, mood, vibe, rating, decade) {
         }
     } catch (_) {}
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:pick.platform!=='any'&&pick.platformVerified!==false,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
+    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:pick.platform!=='any'&&pick.platformVerified===true,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog'};
 }
 
-// Exhaustion recovery: if every exact match has already appeared, recycle the
-// least-recently shown exact match instead of dead-ending. Criteria, age/rating,
-// blocked categories and faith opt-in remain mandatory. This is deliberately a
-// second-tier picker: normal unseen matching and live discovery always win.
+// Kept for callers using the former recovery name. Exhaustion never grants
+// permission to return a title already shown, saved or declined.
 function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
-    const criteria = {cat, plat, mood, vibe, rating, decade: decade || window.getMatchCriteria?.().decade || []};
-    const policy = window.matchPolicy;
-    if (!policy || typeof policy.matchesCriteria !== 'function') return null;
-    const wantsFaith = normCriteria(cat).includes('Gospel & Faith') || normCriteria(plat).some(p => ['Pure Flix','Angel Studios'].includes(p));
-    const eligible = e => policy.matchesCriteria(e, criteria)
-        && (typeof titlePassesRealGenre!=='function'||titlePassesRealGenre(e))
-        && (typeof entryPassesPreferenceExclusions!=='function'||entryPassesPreferenceExclusions(e))
-        && regionAvailabilityFits(e,criteria) && !isBlockedEntry(e)
-        && (wantsFaith || !e.cats.includes('Gospel & Faith'))
-        && entryAllowedForSelection(e,cat);
-
-    // Watch Later and Not For Me are deliberate user choices, not ordinary
-    // match history. They stay hard exclusions even when we recycle older
-    // shown/seen titles after exhausting unseen exact matches.
-    const hardExcluded = new Set();
-    const addHard = item => {
-        const k = policy.key(item && item.title ? item.title : item);
-        if (k) hardExcluded.add(k);
-    };
-    try {
-        if (typeof savedList !== 'undefined' && Array.isArray(savedList)) savedList.forEach(addHard);
-        if (typeof dislikedList !== 'undefined' && Array.isArray(dislikedList)) dislikedList.forEach(addHard);
-    } catch (_) {}
-    for (const storageKey of ['match_savedList','match_dislikedList']) {
-        try {
-            const rows = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
-            (Array.isArray(rows) ? rows : []).forEach(addHard);
-        } catch (_) {}
-    }
-    try {
-        const hardActions = new Set(['save','saved','watchlater','dislike','declined','notforme']);
-        for (const item of policy.history?.() || []) {
-            const action = String(item && item.action || '').toLowerCase().replace(/[^a-z]/g,'');
-            if (hardActions.has(action)) addHard(item);
-        }
-    } catch (_) {}
-
-    let pool = CONTENT_CATALOG.filter(e => eligible(e) && !hardExcluded.has(policy.key(e.title)));
-    if (!pool.length) return null;
-
-    // Never immediately repeat the card on screen when another exact option exists.
-    let currentTitle = '';
-    try { currentTitle = (typeof globalMatchTitle !== 'undefined' && globalMatchTitle) || window.globalMatchTitle || ''; } catch (_) {}
-    const currentKey = policy.key(currentTitle);
-    const notCurrent = currentKey ? pool.filter(e => policy.key(e.title) !== currentKey) : pool;
-    if (notCurrent.length) pool = notCurrent;
-
-    // Prefer something not yet used in this tab. Only recycle a session title
-    // once every exact alternative has also been used.
-    const outsideSession = pool.filter(e => !SESSION_SHOWN.has(e.title));
-    if (outsideSession.length) pool = outsideSession;
-
-    let recentSource = [];
-    try {
-        recentSource = (typeof recentTitles !== 'undefined' && Array.isArray(recentTitles))
-            ? recentTitles
-            : JSON.parse(window.localStorage.getItem('match_recentTitles') || '[]');
-    } catch (_) { recentSource = []; }
-    const recentKeys = new Set(recentSource.map(t => policy.key(t)));
-    const outsideRecent = pool.filter(e => !recentKeys.has(policy.key(e.title)));
-    if (outsideRecent.length) pool = outsideRecent;
-
-    // Oldest history first, maximising distance between two appearances.
-    const shownAt = new Map();
-    try {
-        for (const item of policy.history?.() || []) {
-            const k = policy.key(item && item.title);
-            const at = Number(item && item.addedAt) || 0;
-            if (k && (!shownAt.has(k) || shownAt.get(k) < at)) shownAt.set(k, at);
-        }
-    } catch (_) {}
-    const recentOrder = new Map(recentSource.map((title,index) => [policy.key(title), index]));
-    pool.sort((a,b) => {
-        const ak=policy.key(a.title), bk=policy.key(b.title);
-        const aa=shownAt.get(ak)||0, ba=shownAt.get(bk)||0;
-        if (aa !== ba) return aa - ba;
-        const ar=recentOrder.has(ak)?recentOrder.get(ak):Number.MAX_SAFE_INTEGER;
-        const br=recentOrder.has(bk)?recentOrder.get(bk):Number.MAX_SAFE_INTEGER;
-        if (ar !== br) return br - ar;
-        return String(a.title).localeCompare(String(b.title));
-    });
-
-    const pick = pool[0];
-    return {...pick,title:pick.title,synopsis:pick.synopsis,platform:pick.platform,platformVerified:pick.platform!=='any'&&pick.platformVerified!==false,watchUrl:pick.watchUrl||(pick.platform==='Roku Channel'?pick.url:null)||null,source:'catalog-recycle',_historyFallback:true};
+    return pickFromCatalog(cat, plat, mood, vibe, rating, decade);
 }
 
 // Guaranteed recovery for ordinary matching. Exact user choices win first.
@@ -4491,7 +4458,7 @@ function pickRecycledCatalog(cat, plat, mood, vibe, rating, decade) {
 // in a predictable order while keeping the selected category anchored as long
 // as the catalogue has an eligible title in that category. Watch Later and
 // Not For Me are always hard exclusions, including cloud-restored history.
-function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade, freshOnly = false) {
+function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade, freshOnly = true) {
     const policy = window.matchPolicy;
     if (!policy || typeof policy.matchesCriteria !== 'function') return null;
     const requested = {
@@ -4523,20 +4490,13 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade, freshOnly 
     } catch (_) {}
 
     const wantsFaith = requested.cat.includes('Gospel & Faith') || requested.plat.some(p => ['Pure Flix','Angel Studios'].includes(p));
-    const currentTitle = (() => { try { return typeof globalMatchTitle !== 'undefined' ? globalMatchTitle : window.globalMatchTitle; } catch (_) { return ''; } })();
-    const currentKey = policy.key(currentTitle || '');
-    const historyRank = new Map();
-    try {
-        (policy.history?.() || []).forEach((item,index) => { const k=policy.key(item?.title); if(k&&!historyRank.has(k)) historyRank.set(k,index); });
-    } catch (_) {}
-
     const allowed = entry => {
         if (!entry || !entry.title) return false;
         if (!entryAllowedForSelection(entry,requested.cat)) return false;
         if (typeof titlePassesRealGenre==='function' && !titlePassesRealGenre(entry)) return false;
         if (typeof entryPassesPreferenceExclusions==='function' && !entryPassesPreferenceExclusions(entry)) return false;
         const k = policy.key(entry.title);
-        if (!k || hardExcluded.has(k)) return false;
+        if (!k || hardExcluded.has(k) || (policy.excludes ? policy.excludes(entry) : policy.known().has(k))) return false;
         try { if (typeof isBlockedEntry === 'function' && isBlockedEntry(entry)) return false; } catch (_) {}
         if (!wantsFaith && Array.isArray(entry.cats) && entry.cats.includes('Gospel & Faith')) return false;
         return true;
@@ -4546,7 +4506,7 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade, freshOnly 
         title: pick.title,
         synopsis: pick.synopsis,
         platform: pick.platform,
-        platformVerified: pick.platform !== 'any' && pick.platformVerified !== false,
+        platformVerified: pick.platform !== 'any' && pick.platformVerified === true,
         watchUrl: pick.watchUrl || (pick.platform === 'Roku Channel' ? pick.url : null) || null,
         source: recycled ? 'catalog-guaranteed-recycle' : 'catalog-guaranteed',
         _historyFallback: !!recycled,
@@ -4562,16 +4522,9 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade, freshOnly 
             return !policy.known().has(k) && !sessionShown;
         });
         if (fresh.length) return shape(fresh[Math.floor(Math.random()*fresh.length)], stage, false);
-        if (freshOnly) return null;
-        const notCurrent = candidates.filter(entry => policy.key(entry.title) !== currentKey);
-        if (notCurrent.length) candidates = notCurrent;
-        candidates.sort((a,b) => {
-            const ar = historyRank.has(policy.key(a.title)) ? historyRank.get(policy.key(a.title)) : -1;
-            const br = historyRank.has(policy.key(b.title)) ? historyRank.get(policy.key(b.title)) : -1;
-            if (ar !== br) return br - ar;
-            return String(a.title).localeCompare(String(b.title));
-        });
-        return shape(candidates[0], stage, true);
+        // A finite shelf can be exhausted. Keep the request retryable and
+        // uncharged instead of silently recycling an old recommendation.
+        return null;
     };
 
     // Exact always wins. If the combination is over-specific, broaden only
@@ -4821,6 +4774,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if(!isSpecificSearch && !preflight){
         preflight=pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
     }
+    if(preflight)preflight=await withMatchSourceDeadline(()=>verifyCuratedPlatform(preflight,requested),sourceMs(10000,35000));
     // Never recycle a previously shown title. If the curated exact pool is
     // exhausted, ask the verified source layer for a genuinely fresh title.
     // If the curated shelf is exhausted, request OpenAI-led proposals first;
@@ -4841,20 +4795,19 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     // An external result never gets to override a topic picked by the user.
     if (!isSpecificSearch && preflight && !entryAllowedForSelection(preflight,requested.cat)) preflight=null;
-    // Never dead-end ordinary matching because every fresh exact candidate has
-    // already been shown or a live source is temporarily unavailable. Recycle
-    // an exact eligible catalogue title first; only then use the existing
-    // guaranteed recovery ladder. User-saved / Not For Me titles remain hard
-    // exclusions in both helpers.
+    // Legacy recovery entry points now obey the same fresh-title boundary.
+    // Exhaustion must not silently repeat the card the viewer just dismissed.
     if (!isSpecificSearch && !preflight && typeof pickRecycledCatalog === 'function') {
         try { preflight = pickRecycledCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade); } catch (_) { preflight = null; }
+        if(preflight)preflight=await withMatchSourceDeadline(()=>verifyCuratedPlatform(preflight,requested),sourceMs(8000));
     }
     // Recover a fresh, verified catalogue title under the hard category,
     // mood, rating, genre and exclusion boundaries before showing an outage.
     // Do not turn on previously-seen recycling without the user's opt-in.
     if (!isSpecificSearch && !preflight && typeof pickGuaranteedCatalog === 'function') {
         try {
-            preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade,window.matchappAllowSeenAgain !== true);
+            preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade,true);
+            if(preflight)preflight=await withMatchSourceDeadline(()=>verifyCuratedPlatform(preflight,requested),sourceMs(8000));
             if (preflight?._relaxedStage) window.lastMatchRelaxation = preflight._relaxedStage;
         } catch (_) { preflight = null; }
     }
@@ -4932,7 +4885,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (!catalogHit) catalogHit = CONTENT_CATALOG.find(e => isRelevantMatch(typedTitle, e.title));
 
         if (catalogHit) {
-            matchResult = { ...catalogHit, title: catalogHit.title, synopsis: catalogHit.synopsis, platform: catalogHit.platform, platformVerified: true, watchUrl:catalogHit.watchUrl||(catalogHit.platform==='Roku Channel'?catalogHit.url:null) };
+            matchResult = await withMatchSourceDeadline(()=>verifyCuratedPlatform({ ...catalogHit, title: catalogHit.title, synopsis: catalogHit.synopsis, platform: catalogHit.platform, platformVerified: false, source:'catalog-specific', watchUrl:catalogHit.watchUrl||(catalogHit.platform==='Roku Channel'?catalogHit.url:null) },{plat:[]}),sourceMs(8000));
+            if(matchResult&&!matchResult.platformVerified)matchResult.platform='any';
         } else {
             try {
                 matchResult = await fetchGeminiData(promptText);
@@ -4993,15 +4947,11 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             matchResult.synopsisLang='en';
         }
     }
-    // An intentional exhaustion recovery is allowed to reuse an older exact
-    // catalogue title. Only our internal recycle pickers can set this escape;
-    // every ordinary result still obeys the permanent history boundary.
-    const intentionalHistoryFallback = !!(matchResult
-        && matchResult._historyFallback === true
-        && (matchResult.source === 'catalog-recycle' || matchResult.source === 'catalog-guaranteed-recycle'));
-    const resultWasKnown = !!(matchResult
-        && !intentionalHistoryFallback && !freeSavedSpecific
-        && window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title)));
+    // Source flags cannot bypass user history. Only the existing explicit
+    // saved-title retrieval path may reopen a title the user asked to view.
+    const resultWasKnown = !!(matchResult && !freeSavedSpecific &&
+        (window.matchPolicy?.excludes ? window.matchPolicy.excludes(matchResult) :
+            window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title))));
     if (!matchResult || resultWasKnown) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
@@ -5011,11 +4961,37 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         window.showToast(!matchResult && isSpecificSearch ? "Couldn't verify this title. No Match was used." : tSafe('polish.inHistory'));
         return;
     }
-    // Charge only after a usable title has passed validation. Reused titles
-    // and explicit retrieval of a saved, verified title are free.
-    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);return;}
+    // A refresh is only a snapshot. Reserve the complete identity atomically
+    // before spending or revealing it, including when another device is
+    // matching at the same time. A collision gets bounded fresh alternatives.
+    let titleClaimed=freeSavedSpecific;
+    for(let attempt=0;!titleClaimed&&attempt<3;attempt++){
+        if(matchRunId!==window.__matchappMatchRunId)break;
+        titleClaimed=await window.matchPolicy?.claim?.(matchResult)===true;
+        if(titleClaimed)break;
+        if(isSpecificSearch||!window.matchPolicy?.excludes?.(matchResult)||Date.now()>=sourceDeadline)break;
+        matchResult=pickFromCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade);
+        if(matchResult)matchResult=await withMatchSourceDeadline(()=>verifyCuratedPlatform(matchResult,requested),sourceMs(8000));
+        if(!matchResult)break;
+        if(!matchResult.platformVerified)matchResult.platform='any';
+        matchResult.originalSynopsis=matchResult.synopsis;matchResult.synopsisLang='en';
+    }
+    if(!titleClaimed){
+        clearInterval(timerInterval);
+        if(matchRunId!==window.__matchappMatchRunId)return;
+        document.body.classList.remove('match-searching');
+        window.__matchappMatchPhase='idle';
+        if(loadBox)loadBox.style.display='none';
+        if(typeof window.goToQuestionnaire==='function')window.goToQuestionnaire();else if(qBox)qBox.style.display='block';
+        window.showToast?.(tSafe('polish.noFresh'),true);
+        return;
+    }
+    // Charge only after a fresh usable title has passed validation. Explicit
+    // retrieval of a saved, verified title keeps its existing free behavior.
+    if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);await window.matchPolicy?.releaseClaim?.(matchResult);return;}
     window.__matchappMatchPhase='quota';
-    if (!intentionalHistoryFallback && !freeSavedSpecific && !(await checkDailyLimit('match', {runId:matchRunId}))) {
+    if (!freeSavedSpecific && !(await checkDailyLimit('match', {runId:matchRunId}))) {
+        await window.matchPolicy?.releaseClaim?.(matchResult);
         clearInterval(timerInterval);
         if(matchRunId!==window.__matchappMatchRunId)return;
         document.body.classList.remove('match-searching');
@@ -5028,6 +5004,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     if(matchRunId!==window.__matchappMatchRunId){
         clearInterval(timerInterval);
+        await window.matchPolicy?.releaseClaim?.(matchResult);
         await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
         return;
     }
@@ -5041,6 +5018,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     clearInterval(timerInterval);
     
     if(matchRunId!==window.__matchappMatchRunId){
+        await window.matchPolicy?.releaseClaim?.(matchResult);
         await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
         return;
     }
@@ -5049,9 +5027,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         await renderResult(matchResult, isSpecificSearch);
         if(matchRunId===window.__matchappMatchRunId&&resultBox&&!resultBox.hidden&&resultBox.style.display!=='none'&&window.globalMatchTitle===matchResult.title) {
             try { window.MatchAppTokens?.confirmResult?.('one_match',null,matchRunId); } catch (_) {}
-        } else await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
+        } else {await window.matchPolicy?.releaseClaim?.(matchResult);await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);}
     }
     catch (error) {
+        await window.matchPolicy?.releaseClaim?.(matchResult);
         await window.MatchAppTokens?.noteUnconfirmed?.('one_match',matchRunId);
         throw error;
     }
@@ -5272,7 +5251,13 @@ function exactSpotifyPlaylistCover(selected) {
 }
 
 async function renderResult(selected, isSpecificSearch) {
+    const renderGeneration=(Number(window.__matchappResultRenderGeneration)||0)+1;
+    window.__matchappResultRenderGeneration=renderGeneration;
+    const renderRunId=Number(window.__matchappMatchRunId)||0;
+    const currentRender=()=>window.__matchappResultRenderGeneration===renderGeneration &&
+        (Number(window.__matchappMatchRunId)||0)===renderRunId;
     await window.matchPolicy?.ready();
+    if(!currentRender())return;
     if(window.MatchAppContentSafety?.isExplicit?.(selected)){
         document.body.classList.remove('match-searching');
         const load=document.getElementById('loading-box');
@@ -5295,8 +5280,7 @@ async function renderResult(selected, isSpecificSearch) {
         else if (form) form.style.display='block';
         return;
     }
-    window.lastMatchHistoryFallback = selected._historyFallback === true &&
-        (selected.source === 'catalog-recycle' || selected.source === 'catalog-guaranteed-recycle');
+    window.lastMatchHistoryFallback = false;
     // This title was already proven fresh in triggerMatch. known() also
     // contains match_recentTitles, so re-checking here after a remember
     // skipped the result card, confetti, and left the premiere poster in view.
@@ -5307,6 +5291,8 @@ async function renderResult(selected, isSpecificSearch) {
     // layout/scroll race on Android and mobile browsers.
     globalMatchTitle = selected.title;
     window.globalMatchTitle = selected.title;
+    globalPlatform=selected.platform||'';
+    window.globalPlatform=globalPlatform;
     const titleEl = document.getElementById('res-title');
     if (titleEl) titleEl.innerText = sanitizeDisplayText(selected.title, ['title']);
     const firstPoster = document.getElementById('res-poster-img');
@@ -5340,7 +5326,7 @@ async function renderResult(selected, isSpecificSearch) {
             block: 'start'
         });
     }));
-    rememberShownTitle(selected.title);
+    rememberShownTitle(selected);
 
     // Keep the exact identity beside the rendered title. Media enrichment runs
     // in a separate shared module and previously received only title text, so a
@@ -5349,6 +5335,9 @@ async function renderResult(selected, isSpecificSearch) {
     // fell back to branded placeholders even though TMDB had the artwork.
     window.currentMatchIdentity = {
         title:selected.title,
+        originalTitle:selected.originalTitle||selected._meta?.originalTitle||'',
+        identityKeys:[...(window.matchPolicy?.identityKeys?.(selected)||[])],
+        streamUrl:selected.watchUrl||'',
         year:selected.year||'',
         country:selected.country||'',
         countryCode:selected.countryCode||'',
@@ -5372,8 +5361,12 @@ async function renderResult(selected, isSpecificSearch) {
     // Verify the exact curated poster in parallel with optional rich metadata.
     // A slow metadata service must never leave a known original as an SVG.
     const originalMatchRun = Number(window.__matchappMatchRunId) || 0;
-    void getCuratedPoster(selected.title).then(url => {
-        const current = () => window.globalMatchTitle === selected.title &&
+    const pinnedSourceIdentity=Number.isSafeInteger(Number(selected._tmdbId||selected._meta?.tmdbId)) &&
+        Number(selected._tmdbId||selected._meta?.tmdbId)>0 && ['movie','tv'].includes(selected._tmdbKind||selected._meta?.kind);
+    // A title-only registry cannot distinguish a film from a same-name series
+    // or remake. Exact source identity always owns its poster.
+    if(!pinnedSourceIdentity)void getCuratedPoster(selected.title).then(url => {
+        const current = () => currentRender() && window.globalMatchTitle === selected.title &&
             (Number(window.__matchappMatchRunId) || 0) === originalMatchRun &&
             firstPoster && firstPoster.isConnected;
         if (!url || !current()) return;
@@ -5478,12 +5471,13 @@ async function renderResult(selected, isSpecificSearch) {
     // Hand-verified art wins over everything — no lookup can beat a known-correct
     // image, and for unreleased/app-exclusive titles a lookup actively returns
     // the wrong one.
-    const verified = window.currentMatchIdentity?.itunesAudio?null:getVerifiedPoster(selected.title);
+    const verified = window.currentMatchIdentity?.itunesAudio||pinnedSourceIdentity?null:getVerifiedPoster(selected.title);
 
     // The discovery engine already carries artwork/preview/store data — reuse it
     // instead of making a second network round-trip for the same title.
     let meta = selected._meta || null;
     if (!meta && !skipLiveLookup && !verified) meta = await getRichMetadata(selected.title, categoryHint, matchHints);
+    if(!currentRender())return;
 
     let realCover;
     // Spotify originals outrank fuzzy title searches and generated placeholders.
@@ -5496,6 +5490,7 @@ async function renderResult(selected, isSpecificSearch) {
     } else {
         realCover = meta?.artwork || await getRealCoverImage(selected.title, matchHints);
     }
+    if(!currentRender())return;
     if (!realCover) realCover = generatedCover(selected.title, matchHints);
 
     // Track the current match globally so Watch Later / Seen It can record it.
@@ -5517,6 +5512,7 @@ async function renderResult(selected, isSpecificSearch) {
     // Guests keep it locally; signed-in users also sync it through portfolio_action,
     // so the same result is excluded across devices.
     window.matchPolicy?.remember({
+        ...selected,
         title: selected.title,
         posterUrl: realCover,
         streamUrl: selected.watchUrl || ''
@@ -5567,7 +5563,7 @@ async function renderResult(selected, isSpecificSearch) {
     } else if (realCover && realCover !== localCover) {
         const probe = new Image();
         probe.onload = function() {
-            if (window.globalMatchTitle === selected.title) {
+            if (currentRender() && window.globalMatchTitle === selected.title) {
                 posterEl.src = realCover;
                 globalMatchPoster = realCover;
                 window.globalMatchPoster = realCover;
@@ -5576,7 +5572,7 @@ async function renderResult(selected, isSpecificSearch) {
         probe.onerror = function() {
             // If the provider fails, keep the already-painted local cover
             // visible while recovering only this exact title's saved original.
-            window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
+            if(currentRender())window.MatchAppCatalogMedia?.recoverAdultPoster?.(posterEl, selected.title);
         };
         probe.src = realCover;
     }
@@ -5600,7 +5596,9 @@ async function renderResult(selected, isSpecificSearch) {
     } else if (audioPick) {
         directBtn.href = `https://open.spotify.com/search/${encodeURIComponent(selected.title)}`;
     } else {
-        directBtn.href = `https://www.justwatch.com/us/search?q=${encodeURIComponent(selected.title)}`;
+        const countryResolver=window.MatchAppCountry||window.MatchAppCatalogMedia;
+        const region=countryResolver?.regionCode?.()||'';
+        directBtn.href = region ? `https://www.justwatch.com/${region.toLowerCase()}/search?q=${encodeURIComponent(selected.title)}` : 'https://www.justwatch.com/';
     }
 
     if (audioPick) directBtn.innerText = window.t ? t('res.listennow') : '🎧 Listen Now';
@@ -5810,7 +5808,7 @@ document.addEventListener('DOMContentLoaded', hydrateSpotlightPoster);
 // ----------------------------------------------------
 // WATCH LATER / SEEN IT ENGINE
 // ----------------------------------------------------
-const inList = (list, title) => list.some(i => (i.title || i) === title);
+const inList = (list, title) => list.some(i => window.matchPolicy?.key ? window.matchPolicy.key(i.title || i)===window.matchPolicy.key(title) : (i.title || i)===title);
 
 function updateActionButtonStates() {
     const saveBtn = document.getElementById('btn-watch-later');
@@ -5901,7 +5899,7 @@ window.notForMeBlockCategories = function() {
 
 window.recordAction = async function(type) {
     if (!globalMatchTitle) return;
-    if (!isUserLoggedIn) {
+    if (!isUserLoggedIn && type !== 'dislike') {
         alert("💎 Join for FREE!\n\nTo save titles to your Portfolio, please create a free account.");
         window.openAuthModal();
         return;
@@ -5911,10 +5909,11 @@ window.recordAction = async function(type) {
     // deep-link straight to where the title actually plays.
     const catNow = document.getElementById('q-category')?.value || '';
     const itemObj = {
+        ...(window.currentMatchIdentity?.title===globalMatchTitle?window.currentMatchIdentity:{}),
         title: globalMatchTitle,
         posterUrl: globalMatchPoster,
         platform: globalPlatform,
-        streamUrl: (document.getElementById('res-direct-link') || {}).href || platformSearchUrl(globalPlatform, globalMatchTitle),
+        streamUrl: (window.currentMatchIdentity?.title===globalMatchTitle&&window.currentMatchIdentity.streamUrl) || platformSearchUrl(globalPlatform, globalMatchTitle),
         isAudio: isAudioCategory(catNow) || (PLATFORMS[globalPlatform] && PLATFORMS[globalPlatform].audio) || false,
         addedAt: Date.now()
     };
@@ -5943,15 +5942,25 @@ window.recordAction = async function(type) {
         userRatings[globalMatchTitle] = 1;
         if (!inList(dislikedList, globalMatchTitle)) dislikedList.push(itemObj);
         // Drop it from Watch Later too — they don't want to see it again anywhere.
-        savedList = savedList.filter(i => (i.title || i) !== globalMatchTitle);
-        window.matchPolicy?.remember({...itemObj,reason:(getBlockedCategories() || []).join(', ')},'dislike');
+        savedList = savedList.filter(i => !inList([i],globalMatchTitle));
+        window.matchPolicy?.savePreference({...itemObj,reason:(getBlockedCategories() || []).join(', ')},'dislike');
+        // Cancel late poster/metadata completion for the dismissed card.
+        window.__matchappResultRenderGeneration=(Number(window.__matchappResultRenderGeneration)||0)+1;
+        if(!isUserLoggedIn){
+            syncListsToDatabase();
+            window.goToQuestionnaire?.();
+            const box=document.getElementById('result-box');if(box)box.style.display='none';
+            showToast(tSafe('discover.hiddenToast','Hidden. You can restore it from History.'));
+            return;
+        }
         await Promise.race([syncListsToDatabase(),new Promise(resolve=>setTimeout(resolve,6000))]);
         localStorage.setItem('match_rematch_criteria',JSON.stringify(window.getMatchCriteria?.() || window.lastMatchCriteria || {}));
         window.location.href='/profile/profile.html?tab=history&rematch=1';
         return;
     }
 
-    window.matchPolicy?.remember(itemObj,type);
+    if(['save','seen'].includes(type))window.matchPolicy?.savePreference(itemObj,type);
+    else window.matchPolicy?.remember(itemObj,type);
     syncListsToDatabase();
     updateActionButtonStates();
 };

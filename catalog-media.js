@@ -32,20 +32,20 @@
   // Authored adult result labels. Source records, provider names and action
   // handlers stay canonical; a language switch only repaints existing text.
   const RESULT_COPY=Object.freeze({
-    "en":{"genres":"Genres","streamingNow":"Streaming in {region} now.","cinemaNoStream":"In cinemas in {region}. Streaming is not listed there yet.","notStreaming":"Not currently listed for streaming in {region}.","watchOptions":"Watch options in {region}","rent":"Rent","buy":"Buy","watch":"Watch","availability":"Availability","cinemaNow":"In cinemas{date}","cinemaRelease":"Cinema release · {date}","nearby":"Cinemas & showtimes near me","showtimes":"Cinema release & showtimes","elsewhere":"Streaming in other countries","notify":"🔔 Notify me when it streams in {region}","signIn":"Sign in to follow streaming availability.","following":"✓ You’ll be notified in {region}","titleDetails":"Title details","country":"Country","countries":"Countries","cast":"Cast","rated":"Rated {rating}","minutes":"{n} min","movie":"Movie","series":"TV series"},
-    "pt-BR":{"genres":"Gêneros","streamingNow":"Em streaming agora · {region}","cinemaNoStream":"Nos cinemas · {region}. O streaming ainda não está listado nessa região.","notStreaming":"Ainda não há streaming listado · {region}.","watchOptions":"Onde assistir · {region}","rent":"Alugar","buy":"Comprar","watch":"Assistir","availability":"Disponibilidade","cinemaNow":"Nos cinemas{date}","cinemaRelease":"Estreia nos cinemas · {date}","nearby":"Cinemas e sessões perto de mim","showtimes":"Estreia e sessões de cinema","elsewhere":"Em streaming em outros países","notify":"🔔 Avise-me quando chegar ao streaming · {region}","signIn":"Entre na sua conta para acompanhar a disponibilidade em streaming.","following":"✓ Você será avisado · {region}","titleDetails":"Detalhes do título","country":"País","countries":"Países","cast":"Elenco","rated":"Classificação {rating}","minutes":"{n} min","movie":"Filme","series":"Série"},
-    "es":{"genres":"Géneros","streamingNow":"En streaming ahora · {region}","cinemaNoStream":"En cines · {region}. Aún no se ha listado streaming en esta región.","notStreaming":"Actualmente no se ha listado streaming · {region}.","watchOptions":"Dónde ver · {region}","rent":"Alquilar","buy":"Comprar","watch":"Ver","availability":"Disponibilidad","cinemaNow":"En cines{date}","cinemaRelease":"Estreno en cines · {date}","nearby":"Cines y horarios cerca de mí","showtimes":"Estreno y horarios de cine","elsewhere":"En streaming en otros países","notify":"🔔 Avísame cuando esté en streaming · {region}","signIn":"Inicia sesión para seguir la disponibilidad en streaming.","following":"✓ Recibirás un aviso · {region}","titleDetails":"Detalles del título","country":"País","countries":"Países","cast":"Reparto","rated":"Clasificación {rating}","minutes":"{n} min","movie":"Película","series":"Serie"},
-    "fr":{"genres":"Genres","streamingNow":"En streaming maintenant · {region}","cinemaNoStream":"Au cinéma · {region}. Aucun streaming n’est encore répertorié dans cette région.","notStreaming":"Aucun streaming actuellement répertorié · {region}.","watchOptions":"Où regarder · {region}","rent":"Louer","buy":"Acheter","watch":"Regarder","availability":"Disponibilité","cinemaNow":"Au cinéma{date}","cinemaRelease":"Sortie au cinéma · {date}","nearby":"Cinémas et séances près de moi","showtimes":"Sortie et séances au cinéma","elsewhere":"En streaming dans d’autres pays","notify":"🔔 M’avertir de la disponibilité en streaming · {region}","signIn":"Connectez-vous pour suivre la disponibilité en streaming.","following":"✓ Vous recevrez une notification · {region}","titleDetails":"Détails du titre","country":"Pays","countries":"Pays","cast":"Distribution","rated":"Classification {rating}","minutes":"{n} min","movie":"Film","series":"Série"},
-    "de":{"genres":"Genres","streamingNow":"Jetzt im Streaming · {region}","cinemaNoStream":"Im Kino · {region}. Streaming ist dort noch nicht gelistet.","notStreaming":"Derzeit kein Streaming gelistet · {region}.","watchOptions":"Ansehoptionen · {region}","rent":"Leihen","buy":"Kaufen","watch":"Ansehen","availability":"Verfügbarkeit","cinemaNow":"Im Kino{date}","cinemaRelease":"Kinostart · {date}","nearby":"Kinos und Spielzeiten in meiner Nähe","showtimes":"Kinostart und Spielzeiten","elsewhere":"Streaming in anderen Ländern","notify":"🔔 Bei Streaming-Verfügbarkeit benachrichtigen · {region}","signIn":"Melde dich an, um die Streaming-Verfügbarkeit zu verfolgen.","following":"✓ Du wirst benachrichtigt · {region}","titleDetails":"Details zum Titel","country":"Land","countries":"Länder","cast":"Besetzung","rated":"Altersfreigabe {rating}","minutes":"{n} Min.","movie":"Film","series":"Serie"},
-    "it":{"genres":"Generi","streamingNow":"Ora in streaming · {region}","cinemaNoStream":"Al cinema · {region}. Lo streaming non è ancora segnalato in questa regione.","notStreaming":"Nessuno streaming attualmente segnalato · {region}.","watchOptions":"Dove guardare · {region}","rent":"Noleggia","buy":"Acquista","watch":"Guarda","availability":"Disponibilità","cinemaNow":"Al cinema{date}","cinemaRelease":"Uscita al cinema · {date}","nearby":"Cinema e spettacoli vicino a me","showtimes":"Uscita e orari al cinema","elsewhere":"In streaming in altri paesi","notify":"🔔 Avvisami quando arriva in streaming · {region}","signIn":"Accedi per seguire la disponibilità in streaming.","following":"✓ Riceverai una notifica · {region}","titleDetails":"Dettagli del titolo","country":"Paese","countries":"Paesi","cast":"Cast","rated":"Classificazione {rating}","minutes":"{n} min","movie":"Film","series":"Serie"},
-    "tr":{"genres":"Türler","streamingNow":"Şimdi çevrim içi yayında · {region}","cinemaNoStream":"Sinemalarda · {region}. Bu bölgede henüz çevrim içi yayın listelenmiyor.","notStreaming":"Şu anda çevrim içi yayın listelenmiyor · {region}.","watchOptions":"İzleme seçenekleri · {region}","rent":"Kirala","buy":"Satın al","watch":"İzle","availability":"Erişilebilirlik","cinemaNow":"Sinemalarda{date}","cinemaRelease":"Vizyon tarihi · {date}","nearby":"Yakınımdaki sinemalar ve seanslar","showtimes":"Vizyon tarihi ve seanslar","elsewhere":"Diğer ülkelerde çevrim içi yayında","notify":"🔔 Çevrim içi yayına geldiğinde bildir · {region}","signIn":"Çevrim içi yayın durumunu takip etmek için oturum açın.","following":"✓ Bildirim alacaksınız · {region}","titleDetails":"Yapım ayrıntıları","country":"Ülke","countries":"Ülkeler","cast":"Oyuncular","rated":"Yaş sınıflandırması {rating}","minutes":"{n} dk","movie":"Film","series":"Dizi"},
-    "ru":{"genres":"Жанры","streamingNow":"Сейчас доступно онлайн · {region}","cinemaNoStream":"В кинотеатрах · {region}. Онлайн-показ здесь пока не указан.","notStreaming":"Онлайн-показ сейчас не указан · {region}.","watchOptions":"Где смотреть · {region}","rent":"Арендовать","buy":"Купить","watch":"Смотреть","availability":"Доступность","cinemaNow":"В кинотеатрах{date}","cinemaRelease":"Премьера в кино · {date}","nearby":"Кинотеатры и сеансы рядом","showtimes":"Премьера и сеансы в кино","elsewhere":"Доступно онлайн в других странах","notify":"🔔 Уведомить о появлении онлайн · {region}","signIn":"Войдите, чтобы следить за доступностью онлайн.","following":"✓ Вы получите уведомление · {region}","titleDetails":"Подробнее о произведении","country":"Страна","countries":"Страны","cast":"В ролях","rated":"Возрастной рейтинг {rating}","minutes":"{n} мин","movie":"Фильм","series":"Сериал"},
-    "ar":{"genres":"الأنواع","streamingNow":"متاح للبث الآن · {region}","cinemaNoStream":"في دور السينما · {region}. لم يُدرج البث في هذه المنطقة بعد.","notStreaming":"البث غير مدرج حاليًا · {region}.","watchOptions":"خيارات المشاهدة · {region}","rent":"استئجار","buy":"شراء","watch":"مشاهدة","availability":"التوفر","cinemaNow":"في دور السينما{date}","cinemaRelease":"الإصدار السينمائي · {date}","nearby":"دور السينما ومواعيد العرض بالقرب مني","showtimes":"الإصدار السينمائي ومواعيد العرض","elsewhere":"متاح للبث في دول أخرى","notify":"🔔 أبلغني عند توفره للبث · {region}","signIn":"سجّل الدخول لمتابعة توفر البث.","following":"✓ ستتلقى إشعارًا · {region}","titleDetails":"تفاصيل العمل","country":"البلد","countries":"البلدان","cast":"طاقم التمثيل","rated":"التصنيف العمري {rating}","minutes":"{n} دقيقة","movie":"فيلم","series":"مسلسل"},
-    "hi":{"genres":"शैलियाँ","streamingNow":"अभी स्ट्रीमिंग पर · {region}","cinemaNoStream":"सिनेमाघरों में · {region}। इस क्षेत्र में स्ट्रीमिंग अभी सूचीबद्ध नहीं है।","notStreaming":"अभी स्ट्रीमिंग सूचीबद्ध नहीं है · {region}।","watchOptions":"देखने के विकल्प · {region}","rent":"किराये पर लें","buy":"खरीदें","watch":"देखें","availability":"उपलब्धता","cinemaNow":"सिनेमाघरों में{date}","cinemaRelease":"सिनेमाघरों में रिलीज़ · {date}","nearby":"मेरे पास के सिनेमाघर और शो का समय","showtimes":"सिनेमा रिलीज़ और शो का समय","elsewhere":"अन्य देशों में स्ट्रीमिंग पर","notify":"🔔 स्ट्रीमिंग पर आने पर सूचित करें · {region}","signIn":"स्ट्रीमिंग की उपलब्धता पर नज़र रखने के लिए साइन इन करें।","following":"✓ आपको सूचना मिलेगी · {region}","titleDetails":"शीर्षक का विवरण","country":"देश","countries":"देश","cast":"कलाकार","rated":"आयु रेटिंग {rating}","minutes":"{n} मिनट","movie":"फ़िल्म","series":"सीरीज़"},
-    "id":{"genres":"Genre","streamingNow":"Streaming sekarang · {region}","cinemaNoStream":"Di bioskop · {region}. Streaming belum tercantum di wilayah ini.","notStreaming":"Streaming saat ini belum tercantum · {region}.","watchOptions":"Pilihan menonton · {region}","rent":"Sewa","buy":"Beli","watch":"Tonton","availability":"Ketersediaan","cinemaNow":"Di bioskop{date}","cinemaRelease":"Rilis bioskop · {date}","nearby":"Bioskop dan jadwal tayang di dekat saya","showtimes":"Rilis bioskop dan jadwal tayang","elsewhere":"Streaming di negara lain","notify":"🔔 Beri tahu saat tersedia untuk streaming · {region}","signIn":"Masuk untuk mengikuti ketersediaan streaming.","following":"✓ Anda akan diberi tahu · {region}","titleDetails":"Detail judul","country":"Negara","countries":"Negara","cast":"Pemeran","rated":"Rating usia {rating}","minutes":"{n} mnt","movie":"Film","series":"Serial"},
-    "ja":{"genres":"ジャンル","streamingNow":"配信中 · {region}","cinemaNoStream":"劇場公開中 · {region}。この地域では配信情報がまだありません。","notStreaming":"現在の配信情報はありません · {region}。","watchOptions":"視聴方法 · {region}","rent":"レンタル","buy":"購入","watch":"視聴","availability":"配信状況","cinemaNow":"劇場公開中{date}","cinemaRelease":"劇場公開日 · {date}","nearby":"近くの映画館と上映時間","showtimes":"劇場公開日と上映時間","elsewhere":"ほかの国で配信中","notify":"🔔 配信開始時に通知する · {region}","signIn":"配信状況をフォローするにはログインしてください。","following":"✓ 通知をお送りします · {region}","titleDetails":"作品の詳細","country":"製作国","countries":"製作国","cast":"キャスト","rated":"年齢区分 {rating}","minutes":"{n}分","movie":"映画","series":"シリーズ"},
-    "ko":{"genres":"장르","streamingNow":"현재 스트리밍 중 · {region}","cinemaNoStream":"극장 상영 중 · {region}. 이 지역의 스트리밍 정보는 아직 없습니다.","notStreaming":"현재 스트리밍 정보가 없습니다 · {region}.","watchOptions":"시청 방법 · {region}","rent":"대여","buy":"구매","watch":"시청","availability":"이용 가능 여부","cinemaNow":"극장 상영 중{date}","cinemaRelease":"극장 개봉일 · {date}","nearby":"내 주변 영화관 및 상영 시간","showtimes":"극장 개봉일 및 상영 시간","elsewhere":"다른 국가에서 스트리밍 중","notify":"🔔 스트리밍 시작 시 알림 받기 · {region}","signIn":"스트리밍 이용 가능 여부를 확인하려면 로그인하세요.","following":"✓ 알림을 보내드립니다 · {region}","titleDetails":"작품 상세 정보","country":"제작 국가","countries":"제작 국가","cast":"출연진","rated":"연령 등급 {rating}","minutes":"{n}분","movie":"영화","series":"시리즈"},
-    "zh":{"genres":"类型","streamingNow":"正在流媒体播放 · {region}","cinemaNoStream":"院线上映中 · {region}。该地区尚未列出流媒体播放信息。","notStreaming":"目前尚未列出流媒体播放信息 · {region}。","watchOptions":"观看方式 · {region}","rent":"租借","buy":"购买","watch":"观看","availability":"播放情况","cinemaNow":"院线上映中{date}","cinemaRelease":"院线上映日期 · {date}","nearby":"附近的电影院和场次","showtimes":"院线上映日期和场次","elsewhere":"其他国家的流媒体播放情况","notify":"🔔 流媒体上线时通知我 · {region}","signIn":"请登录以关注流媒体播放情况。","following":"✓ 届时将通知你 · {region}","titleDetails":"作品详情","country":"制作国家","countries":"制作国家","cast":"演员","rated":"年龄分级 {rating}","minutes":"{n}分钟","movie":"电影","series":"剧集"}
+    "en":{"genres":"Genres","streamingNow":"Streaming in {region} now.","cinemaNoStream":"In cinemas in {region}. Streaming is not listed there yet.","notStreaming":"Not currently listed for streaming in {region}.","watchOptions":"Watch options in {region}","rent":"Rent","buy":"Buy","watch":"Watch","availability":"Availability","cinemaNow":"In cinemas{date}","cinemaRelease":"Cinema release · {date}","nearby":"Cinemas & showtimes near me","showtimes":"Cinema release & showtimes","elsewhere":"Streaming in other countries","notify":"🔔 Notify me when it streams in {region}","signIn":"Sign in to follow streaming availability.","following":"✓ You’ll be notified in {region}","titleDetails":"Title details","country":"Country","countries":"Countries","cast":"Cast","rated":"Rated {rating}","minutes":"{n} min","movie":"Movie","series":"TV series","chooseCountry":"Choose your country in your profile to check local viewing options."},
+    "pt-BR":{"genres":"Gêneros","streamingNow":"Em streaming agora · {region}","cinemaNoStream":"Nos cinemas · {region}. O streaming ainda não está listado nessa região.","notStreaming":"Ainda não há streaming listado · {region}.","watchOptions":"Onde assistir · {region}","rent":"Alugar","buy":"Comprar","watch":"Assistir","availability":"Disponibilidade","cinemaNow":"Nos cinemas{date}","cinemaRelease":"Estreia nos cinemas · {date}","nearby":"Cinemas e sessões perto de mim","showtimes":"Estreia e sessões de cinema","elsewhere":"Em streaming em outros países","notify":"🔔 Avise-me quando chegar ao streaming · {region}","signIn":"Entre na sua conta para acompanhar a disponibilidade em streaming.","following":"✓ Você será avisado · {region}","titleDetails":"Detalhes do título","country":"País","countries":"Países","cast":"Elenco","rated":"Classificação {rating}","minutes":"{n} min","movie":"Filme","series":"Série","chooseCountry":"Escolha seu país no perfil para consultar onde assistir na sua região."},
+    "es":{"genres":"Géneros","streamingNow":"En streaming ahora · {region}","cinemaNoStream":"En cines · {region}. Aún no se ha listado streaming en esta región.","notStreaming":"Actualmente no se ha listado streaming · {region}.","watchOptions":"Dónde ver · {region}","rent":"Alquilar","buy":"Comprar","watch":"Ver","availability":"Disponibilidad","cinemaNow":"En cines{date}","cinemaRelease":"Estreno en cines · {date}","nearby":"Cines y horarios cerca de mí","showtimes":"Estreno y horarios de cine","elsewhere":"En streaming en otros países","notify":"🔔 Avísame cuando esté en streaming · {region}","signIn":"Inicia sesión para seguir la disponibilidad en streaming.","following":"✓ Recibirás un aviso · {region}","titleDetails":"Detalles del título","country":"País","countries":"Países","cast":"Reparto","rated":"Clasificación {rating}","minutes":"{n} min","movie":"Película","series":"Serie","chooseCountry":"Elige tu país en el perfil para consultar dónde ver en tu región."},
+    "fr":{"genres":"Genres","streamingNow":"En streaming maintenant · {region}","cinemaNoStream":"Au cinéma · {region}. Aucun streaming n’est encore répertorié dans cette région.","notStreaming":"Aucun streaming actuellement répertorié · {region}.","watchOptions":"Où regarder · {region}","rent":"Louer","buy":"Acheter","watch":"Regarder","availability":"Disponibilité","cinemaNow":"Au cinéma{date}","cinemaRelease":"Sortie au cinéma · {date}","nearby":"Cinémas et séances près de moi","showtimes":"Sortie et séances au cinéma","elsewhere":"En streaming dans d’autres pays","notify":"🔔 M’avertir de la disponibilité en streaming · {region}","signIn":"Connectez-vous pour suivre la disponibilité en streaming.","following":"✓ Vous recevrez une notification · {region}","titleDetails":"Détails du titre","country":"Pays","countries":"Pays","cast":"Distribution","rated":"Classification {rating}","minutes":"{n} min","movie":"Film","series":"Série","chooseCountry":"Choisissez votre pays dans votre profil pour consulter les options de visionnage locales."},
+    "de":{"genres":"Genres","streamingNow":"Jetzt im Streaming · {region}","cinemaNoStream":"Im Kino · {region}. Streaming ist dort noch nicht gelistet.","notStreaming":"Derzeit kein Streaming gelistet · {region}.","watchOptions":"Ansehoptionen · {region}","rent":"Leihen","buy":"Kaufen","watch":"Ansehen","availability":"Verfügbarkeit","cinemaNow":"Im Kino{date}","cinemaRelease":"Kinostart · {date}","nearby":"Kinos und Spielzeiten in meiner Nähe","showtimes":"Kinostart und Spielzeiten","elsewhere":"Streaming in anderen Ländern","notify":"🔔 Bei Streaming-Verfügbarkeit benachrichtigen · {region}","signIn":"Melde dich an, um die Streaming-Verfügbarkeit zu verfolgen.","following":"✓ Du wirst benachrichtigt · {region}","titleDetails":"Details zum Titel","country":"Land","countries":"Länder","cast":"Besetzung","rated":"Altersfreigabe {rating}","minutes":"{n} Min.","movie":"Film","series":"Serie","chooseCountry":"Wähle dein Land im Profil, um die verfügbaren Angebote vor Ort zu prüfen."},
+    "it":{"genres":"Generi","streamingNow":"Ora in streaming · {region}","cinemaNoStream":"Al cinema · {region}. Lo streaming non è ancora segnalato in questa regione.","notStreaming":"Nessuno streaming attualmente segnalato · {region}.","watchOptions":"Dove guardare · {region}","rent":"Noleggia","buy":"Acquista","watch":"Guarda","availability":"Disponibilità","cinemaNow":"Al cinema{date}","cinemaRelease":"Uscita al cinema · {date}","nearby":"Cinema e spettacoli vicino a me","showtimes":"Uscita e orari al cinema","elsewhere":"In streaming in altri paesi","notify":"🔔 Avvisami quando arriva in streaming · {region}","signIn":"Accedi per seguire la disponibilità in streaming.","following":"✓ Riceverai una notifica · {region}","titleDetails":"Dettagli del titolo","country":"Paese","countries":"Paesi","cast":"Cast","rated":"Classificazione {rating}","minutes":"{n} min","movie":"Film","series":"Serie","chooseCountry":"Scegli il tuo paese nel profilo per verificare le opzioni di visione locali."},
+    "tr":{"genres":"Türler","streamingNow":"Şimdi çevrim içi yayında · {region}","cinemaNoStream":"Sinemalarda · {region}. Bu bölgede henüz çevrim içi yayın listelenmiyor.","notStreaming":"Şu anda çevrim içi yayın listelenmiyor · {region}.","watchOptions":"İzleme seçenekleri · {region}","rent":"Kirala","buy":"Satın al","watch":"İzle","availability":"Erişilebilirlik","cinemaNow":"Sinemalarda{date}","cinemaRelease":"Vizyon tarihi · {date}","nearby":"Yakınımdaki sinemalar ve seanslar","showtimes":"Vizyon tarihi ve seanslar","elsewhere":"Diğer ülkelerde çevrim içi yayında","notify":"🔔 Çevrim içi yayına geldiğinde bildir · {region}","signIn":"Çevrim içi yayın durumunu takip etmek için oturum açın.","following":"✓ Bildirim alacaksınız · {region}","titleDetails":"Yapım ayrıntıları","country":"Ülke","countries":"Ülkeler","cast":"Oyuncular","rated":"Yaş sınıflandırması {rating}","minutes":"{n} dk","movie":"Film","series":"Dizi","chooseCountry":"Yerel izleme seçeneklerini görmek için profilinizde ülkenizi seçin."},
+    "ru":{"genres":"Жанры","streamingNow":"Сейчас доступно онлайн · {region}","cinemaNoStream":"В кинотеатрах · {region}. Онлайн-показ здесь пока не указан.","notStreaming":"Онлайн-показ сейчас не указан · {region}.","watchOptions":"Где смотреть · {region}","rent":"Арендовать","buy":"Купить","watch":"Смотреть","availability":"Доступность","cinemaNow":"В кинотеатрах{date}","cinemaRelease":"Премьера в кино · {date}","nearby":"Кинотеатры и сеансы рядом","showtimes":"Премьера и сеансы в кино","elsewhere":"Доступно онлайн в других странах","notify":"🔔 Уведомить о появлении онлайн · {region}","signIn":"Войдите, чтобы следить за доступностью онлайн.","following":"✓ Вы получите уведомление · {region}","titleDetails":"Подробнее о произведении","country":"Страна","countries":"Страны","cast":"В ролях","rated":"Возрастной рейтинг {rating}","minutes":"{n} мин","movie":"Фильм","series":"Сериал","chooseCountry":"Выберите страну в профиле, чтобы проверить доступные варианты просмотра."},
+    "ar":{"genres":"الأنواع","streamingNow":"متاح للبث الآن · {region}","cinemaNoStream":"في دور السينما · {region}. لم يُدرج البث في هذه المنطقة بعد.","notStreaming":"البث غير مدرج حاليًا · {region}.","watchOptions":"خيارات المشاهدة · {region}","rent":"استئجار","buy":"شراء","watch":"مشاهدة","availability":"التوفر","cinemaNow":"في دور السينما{date}","cinemaRelease":"الإصدار السينمائي · {date}","nearby":"دور السينما ومواعيد العرض بالقرب مني","showtimes":"الإصدار السينمائي ومواعيد العرض","elsewhere":"متاح للبث في دول أخرى","notify":"🔔 أبلغني عند توفره للبث · {region}","signIn":"سجّل الدخول لمتابعة توفر البث.","following":"✓ ستتلقى إشعارًا · {region}","titleDetails":"تفاصيل العمل","country":"البلد","countries":"البلدان","cast":"طاقم التمثيل","rated":"التصنيف العمري {rating}","minutes":"{n} دقيقة","movie":"فيلم","series":"مسلسل","chooseCountry":"اختر بلدك في ملفك الشخصي للاطلاع على خيارات المشاهدة المحلية."},
+    "hi":{"genres":"शैलियाँ","streamingNow":"अभी स्ट्रीमिंग पर · {region}","cinemaNoStream":"सिनेमाघरों में · {region}। इस क्षेत्र में स्ट्रीमिंग अभी सूचीबद्ध नहीं है।","notStreaming":"अभी स्ट्रीमिंग सूचीबद्ध नहीं है · {region}।","watchOptions":"देखने के विकल्प · {region}","rent":"किराये पर लें","buy":"खरीदें","watch":"देखें","availability":"उपलब्धता","cinemaNow":"सिनेमाघरों में{date}","cinemaRelease":"सिनेमाघरों में रिलीज़ · {date}","nearby":"मेरे पास के सिनेमाघर और शो का समय","showtimes":"सिनेमा रिलीज़ और शो का समय","elsewhere":"अन्य देशों में स्ट्रीमिंग पर","notify":"🔔 स्ट्रीमिंग पर आने पर सूचित करें · {region}","signIn":"स्ट्रीमिंग की उपलब्धता पर नज़र रखने के लिए साइन इन करें।","following":"✓ आपको सूचना मिलेगी · {region}","titleDetails":"शीर्षक का विवरण","country":"देश","countries":"देश","cast":"कलाकार","rated":"आयु रेटिंग {rating}","minutes":"{n} मिनट","movie":"फ़िल्म","series":"सीरीज़","chooseCountry":"स्थानीय देखने के विकल्प जाँचने के लिए अपनी प्रोफ़ाइल में देश चुनें।"},
+    "id":{"genres":"Genre","streamingNow":"Streaming sekarang · {region}","cinemaNoStream":"Di bioskop · {region}. Streaming belum tercantum di wilayah ini.","notStreaming":"Streaming saat ini belum tercantum · {region}.","watchOptions":"Pilihan menonton · {region}","rent":"Sewa","buy":"Beli","watch":"Tonton","availability":"Ketersediaan","cinemaNow":"Di bioskop{date}","cinemaRelease":"Rilis bioskop · {date}","nearby":"Bioskop dan jadwal tayang di dekat saya","showtimes":"Rilis bioskop dan jadwal tayang","elsewhere":"Streaming di negara lain","notify":"🔔 Beri tahu saat tersedia untuk streaming · {region}","signIn":"Masuk untuk mengikuti ketersediaan streaming.","following":"✓ Anda akan diberi tahu · {region}","titleDetails":"Detail judul","country":"Negara","countries":"Negara","cast":"Pemeran","rated":"Rating usia {rating}","minutes":"{n} mnt","movie":"Film","series":"Serial","chooseCountry":"Pilih negara di profil untuk memeriksa pilihan menonton setempat."},
+    "ja":{"genres":"ジャンル","streamingNow":"配信中 · {region}","cinemaNoStream":"劇場公開中 · {region}。この地域では配信情報がまだありません。","notStreaming":"現在の配信情報はありません · {region}。","watchOptions":"視聴方法 · {region}","rent":"レンタル","buy":"購入","watch":"視聴","availability":"配信状況","cinemaNow":"劇場公開中{date}","cinemaRelease":"劇場公開日 · {date}","nearby":"近くの映画館と上映時間","showtimes":"劇場公開日と上映時間","elsewhere":"ほかの国で配信中","notify":"🔔 配信開始時に通知する · {region}","signIn":"配信状況をフォローするにはログインしてください。","following":"✓ 通知をお送りします · {region}","titleDetails":"作品の詳細","country":"製作国","countries":"製作国","cast":"キャスト","rated":"年齢区分 {rating}","minutes":"{n}分","movie":"映画","series":"シリーズ","chooseCountry":"地域の視聴方法を確認するには、プロフィールで国を選択してください。"},
+    "ko":{"genres":"장르","streamingNow":"현재 스트리밍 중 · {region}","cinemaNoStream":"극장 상영 중 · {region}. 이 지역의 스트리밍 정보는 아직 없습니다.","notStreaming":"현재 스트리밍 정보가 없습니다 · {region}.","watchOptions":"시청 방법 · {region}","rent":"대여","buy":"구매","watch":"시청","availability":"이용 가능 여부","cinemaNow":"극장 상영 중{date}","cinemaRelease":"극장 개봉일 · {date}","nearby":"내 주변 영화관 및 상영 시간","showtimes":"극장 개봉일 및 상영 시간","elsewhere":"다른 국가에서 스트리밍 중","notify":"🔔 스트리밍 시작 시 알림 받기 · {region}","signIn":"스트리밍 이용 가능 여부를 확인하려면 로그인하세요.","following":"✓ 알림을 보내드립니다 · {region}","titleDetails":"작품 상세 정보","country":"제작 국가","countries":"제작 국가","cast":"출연진","rated":"연령 등급 {rating}","minutes":"{n}분","movie":"영화","series":"시리즈","chooseCountry":"지역별 시청 방법을 확인하려면 프로필에서 국가를 선택하세요."},
+    "zh":{"genres":"类型","streamingNow":"正在流媒体播放 · {region}","cinemaNoStream":"院线上映中 · {region}。该地区尚未列出流媒体播放信息。","notStreaming":"目前尚未列出流媒体播放信息 · {region}。","watchOptions":"观看方式 · {region}","rent":"租借","buy":"购买","watch":"观看","availability":"播放情况","cinemaNow":"院线上映中{date}","cinemaRelease":"院线上映日期 · {date}","nearby":"附近的电影院和场次","showtimes":"院线上映日期和场次","elsewhere":"其他国家的流媒体播放情况","notify":"🔔 流媒体上线时通知我 · {region}","signIn":"请登录以关注流媒体播放情况。","following":"✓ 届时将通知你 · {region}","titleDetails":"作品详情","country":"制作国家","countries":"制作国家","cast":"演员","rated":"年龄分级 {rating}","minutes":"{n}分钟","movie":"电影","series":"剧集","chooseCountry":"请在个人资料中选择国家，以查看当地的观看选项。"}
   });
   const RESULT_GENRES=Object.freeze({
     "en":["Action","Adventure","Animation","Comedy","Crime","Documentary","Drama","Family","Fantasy","History","Horror","Music","Mystery","Romance","Science Fiction","TV Movie","Thriller","War","Western","Action & Adventure","Kids","News","Reality","Sci-Fi & Fantasy","Soap","Talk","War & Politics"],
@@ -283,7 +283,41 @@
     nigeria:'NG',norway:'NO',philippines:'PH',poland:'PL',portugal:'PT',russia:'RU','south africa':'ZA',spain:'ES',sweden:'SE',
     switzerland:'CH',taiwan:'TW',thailand:'TH',turkey:'TR',ukraine:'UA','united kingdom':'GB',uk:'GB','united states':'US',usa:'US',vietnam:'VN'
   };
+  // Standalone compatibility for older cached shells and focused consumers.
+  // Current adult pages load the shared compact 249-country resolver first.
+  const FALLBACK_COUNTRY_IDS=new Set('AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI KH CM CA CV KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR XK KW KG LA LV LB LS LR LY LI LT LU MO MK MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SZ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW'.split(' '));
+  function resolveCountryCode(value){
+    if(typeof window.MatchAppCountry?.resolveCountryCode==='function')
+      return window.MatchAppCountry.resolveCountryCode(value)||'';
+    const raw=String(value||'').trim(),code=raw.toUpperCase();
+    if(FALLBACK_COUNTRY_IDS.has(code))return code;
+    try{
+      const registered=window.MatchAppGeography?.resolveCountry?.(raw)?.[1];
+      if(FALLBACK_COUNTRY_IDS.has(registered))return registered;
+    }catch(_){}
+    return COUNTRY_CODES[raw.toLowerCase()]||'';
+  }
+  function viewerRegionCode(){
+    if(typeof window.MatchAppCountry?.regionCode==='function')
+      return window.MatchAppCountry.regionCode()||'';
+    let saved='',preferred='';
+    try{
+      saved=String(localStorage.getItem('match_user_country')||'').trim();
+      preferred=String(localStorage.getItem('match_user_region')||'').trim();
+    }catch(_){return '';}
+    const country=resolveCountryCode(saved);
+    const subdivision=(country==='FJ'&&/^(?:ba|ra)$/i.test(preferred))||
+      (country==='SI'&&/^ig$/i.test(preferred));
+    if(/^[A-Za-z]{2}$/.test(preferred)&&!subdivision){
+      const explicit=resolveCountryCode(preferred);
+      if(explicit)return explicit;
+    }
+    return country;
+  }
   function regionCode(){
+    // Keep the separately owned Kids location behavior unchanged. Adult
+    // availability never infers a country from the selected interface language.
+    if(!/^\/kids(?:\/|$)/.test(String(window.location?.pathname||'')))return viewerRegionCode();
     const preferred=String(localStorage.getItem('match_user_region')||'').trim().toUpperCase();
     if(/^[A-Z]{2}$/.test(preferred))return preferred;
     const saved=String(localStorage.getItem('match_user_country')||'').trim();
@@ -477,6 +511,11 @@
     let registry='';
     try{registry=typeof window.getVerifiedPoster==='function'?window.getVerifiedPoster(state.title):'';}catch(_){}
     const meta=state.meta||{};
+    const exactArt=[state.preferred,meta.poster_large_url,meta.poster_url,meta.poster_original_url].filter(Boolean);
+    // A title-only registry can describe a same-name remake or TV series.
+    // Once an exact numeric identity owns this card, registry art is eligible
+    // only when it is another size of that identity's proven original.
+    if(state.tmdbId>0&&!exactArt.some(url=>sameOriginalArtwork(url,registry)))registry='';
     // A proven ID for the curated Home row lets fresh exact-source metadata
     // correct a cached poster identity; matches preserve their chosen artwork.
     const sources=state.isRail&&state.meta
@@ -616,23 +655,29 @@
       if(img.src!==liveIdentity.spotifyArtwork)img.src=liveIdentity.spotifyArtwork;
       return;
     }
-    let state=img.__matchappAdultPoster;
-    if(!state||state.title!==name){
-      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false,needsRepair:false,isRail:false,
-        tmdbId:0,kind:'',year:0,lastAttemptAt:Date.now()};
-      img.__matchappAdultPoster=state;
-    }
-    state.isRail=!!img.closest?.('#marquee-track');
-    const currentIdentity=!state.isRail&&window.currentMatchIdentity&&
+    const isRail=!!img.closest?.('#marquee-track');
+    const currentIdentity=!isRail&&window.currentMatchIdentity&&
       normalise(window.currentMatchIdentity.title)===normalise(name)
       ?window.currentMatchIdentity:{};
-    const rawId=state.isRail?img.dataset.tmdbId:currentIdentity.tmdbId;
+    const rawId=isRail?img.dataset.tmdbId:currentIdentity.tmdbId||meta?.tmdb_id;
     const tmdbId=Number(rawId);
+    const incomingId=Number.isSafeInteger(tmdbId)&&tmdbId>0?tmdbId:0;
+    const incomingKind=isRail?img.dataset.tmdbKind:currentIdentity.kind||meta?.media_kind;
+    const generation=isRail?0:Number(window.__matchappMatchRunId)||0;
+    let state=img.__matchappAdultPoster;
+    if(!state||state.title!==name||state.generation!==generation||
+       (incomingId&&state.tmdbId!==incomingId)||
+       (incomingKind&&state.kind&&incomingKind!==state.kind)){
+      state={title:name,meta:null,preferred:'',failed:new Set(),repairing:false,needsRepair:false,isRail:false,
+        tmdbId:0,kind:'',year:0,generation,lastAttemptAt:Date.now()};
+      img.__matchappAdultPoster=state;
+    }
+    state.isRail=isRail;
     if(Number.isSafeInteger(tmdbId)&&tmdbId>0){
       state.tmdbId=tmdbId;
-      const kind=state.isRail?img.dataset.tmdbKind:currentIdentity.kind;
+      const kind=incomingKind;
       if(['movie','tv'].includes(kind))state.kind=kind;
-      const year=Number(state.isRail?img.dataset.tmdbYear:currentIdentity.year);
+      const year=Number(state.isRail?img.dataset.tmdbYear:currentIdentity.year||meta?.year);
       if(Number.isSafeInteger(year)&&year>=1880&&year<=2200)state.year=year;
     }
     const previousMeta=state.meta,previousPreferred=state.preferred;
@@ -822,7 +867,11 @@
       wrap.appendChild(row);
     }
     const status=document.createElement('div');status.className='matchapp-availability-status';
-    if(a.streams.length)paintResultCopy(status,'streamingNow',{region:a.region},kids);
+    if(!a.region&&!kids){
+      const choose=document.createElement('a');choose.href='/profile/profile.html';
+      paintResultCopy(choose,'chooseCountry');status.appendChild(choose);
+    }
+    else if(a.streams.length)paintResultCopy(status,'streamingNow',{region:a.region},kids);
     else if(a.inCinemas)paintResultCopy(status,'cinemaNoStream',{region:a.region},kids);
     else paintResultCopy(status,'notStreaming',{region:a.region},kids);
     wrap.appendChild(status);
@@ -855,7 +904,7 @@
         });
         wrap.appendChild(row);
       }
-      if(Number.isSafeInteger(Number(meta.tmdb_id))&&['movie','tv'].includes(meta.media_kind)){
+      if(a.region&&Number.isSafeInteger(Number(meta.tmdb_id))&&['movie','tv'].includes(meta.media_kind)){
         const follow=document.createElement('button');follow.type='button';follow.className='matchapp-follow-availability';
         paintResultCopy(follow,'notify',{region:a.region},kids);
         follow.addEventListener('click',async()=>{
@@ -1052,6 +1101,10 @@
     const title=String(window.globalMatchTitle||titleEl.textContent||'').trim();
     if(!title||title==='Title')return;
     const serial=++mainSerial;
+    const matchRun=Number(window.__matchappMatchRunId)||0;
+    const current=()=>serial===mainSerial&&(Number(window.__matchappMatchRunId)||0)===matchRun&&
+      normalise(window.globalMatchTitle||titleEl.textContent)===normalise(title)&&
+      !resultRoot.hidden&&resultRoot.style.display!=='none';
     // On desktop the title, ratings and synopsis must precede lengthy
     // streaming and preview panels. Keep the established compact order on
     // phone, tablet and Android WebView.
@@ -1112,9 +1165,36 @@
       if(image&&identity.artwork)recoverAdultPoster(image,title,null,identity.artwork);
       return;
     }
+    // The repository snapshot can already pin this curated work. Resolve its
+    // ID once before enriching, avoiding a redundant title search when a
+    // same-named remake exists or the source search endpoint is throttled.
+    if(!opts.tmdbId&&typeof window.getCatalogTmdbIdentity==='function'){
+      try{
+        const exact=await window.getCatalogTmdbIdentity(title);
+        if(!current())return;
+        if(Number.isSafeInteger(Number(exact?.tmdbId))&&Number(exact.tmdbId)>0&&
+           ['movie','tv'].includes(exact.kind)&&(!opts.kind||opts.kind===exact.kind)&&
+           (!opts.year||!exact.year||Math.abs(Number(opts.year)-Number(exact.year))<=1))
+          opts={...opts,tmdbId:Number(exact.tmdbId),kind:exact.kind,year:opts.year||exact.year||''};
+      }catch(_){}
+    }
     const resolved=await resolvePoster(title,opts);
-    if(serial!==mainSerial)return;
+    if(!current())return;
     const meta=resolved.meta;
+    if(meta&&!safeSameTitleMedia(meta,{title,tmdbId:Number(opts.tmdbId)||0,kind:opts.kind,
+      // A known numeric identity owns corrected source facts, including an
+      // old catalogue year that live exact details can legitimately repair.
+      year:opts.tmdbId?0:Number(opts.year)||0}))return;
+    if(meta&&Number.isSafeInteger(Number(meta.tmdb_id))&&Number(meta.tmdb_id)>0&&['movie','tv'].includes(meta.media_kind)){
+      const originalTitle=String(meta.original_title||meta.title||identity.originalTitle||'');
+      window.currentMatchIdentity={...identity,title,originalTitle,tmdbId:Number(meta.tmdb_id),
+        kind:meta.media_kind,year:meta.year||identity.year||'',artwork:resolved.url||identity.artwork||''};
+      // Record verified aliases and source identity after enrichment. The
+      // policy preserves an explicit Save/Not For Me action during this
+      // passive update, so a localized spelling cannot reappear as new.
+      try{window.matchPolicy?.remember?.({...meta,...window.currentMatchIdentity,
+        posterUrl:resolved.url||'',streamUrl:identity.streamUrl||''},'shown');}catch(_){}
+    }
     const poster=document.getElementById('res-poster-img');
 
     if(poster){
@@ -1222,6 +1302,6 @@
       queueKidsEnrich();
     });
   }
-  window.MatchAppCatalogMedia=Object.freeze({localizeResultFacts,localizeResultLabels,resultFact,recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({localizeResultFacts,localizeResultLabels,resultFact,recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,resolveCountryCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

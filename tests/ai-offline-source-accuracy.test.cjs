@@ -1,6 +1,7 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),
  path=require('node:path'),vm=require('node:vm');
+const {JSDOM}=require('jsdom');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const discover=read('discover.js'),proxy=read('supabase/functions/gemini-proxy/index.ts');
 function part(name){
@@ -11,7 +12,7 @@ function part(name){
 }
 const block=[
  'const DISCOVER_MAX=12;',
- part('mediaIntentQuestion'),part('detectBookIntent'),part('detectAudioIntent'),
+ part('mediaIntentQuestion'),part('detectBookIntent'),part('detectAudioIntent'),part('discoverRecommendationRequest'),
  part('isFactualMediaQuestion'),part('requestedMovieTitle'),
  discover.slice(discover.indexOf('const EDITORIAL_FILM_CREDITS='),
   discover.indexOf('\n]);',discover.indexOf('const EDITORIAL_FILM_CREDITS='))+4),
@@ -48,6 +49,7 @@ test('Google quota offline: exact original Studio Ghibli credits survive unrelat
  const h=setup({tmdbLookup:async()=>{throw Error('TMDB offline');},tmdbRelated:async()=>{throw Error('TMDB offline');}});
  const q='Name the director and release year of the 2001 animated film Spirited Away. Do not recommend books or music.';
  assert.equal(h.ctx.detectBookIntent(q),false);
+ assert.equal(h.ctx.discoverRecommendationRequest(q),false,'an explicit request to avoid recommendations is still factual source lookup');
  assert.equal(h.ctx.isFactualMediaQuestion(q),true);
  const got=await h.ctx.fallbackSearch(q,true);
  assert.match(got.answer,/Spirited Away.*2001.*Hayao Miyazaki/);
@@ -61,14 +63,26 @@ test('Google quota offline: exact original Studio Ghibli credits survive unrelat
 test('unavailable live model: audiobook request identifies actual author and directs to official searches, without claiming a verified edition',async()=>{
  const h=setup(),q='How can I find a legitimate audiobook edition of Pride and Prejudice by Jane Austen? Please do not recommend any films or TV shows.';
  assert.equal(h.ctx.detectBookIntent(q),true);
+ assert.equal(h.ctx.discoverRecommendationRequest(q),false,'negative media exclusions cannot turn a named edition lookup into recommendations');
  const got=await h.ctx.fallbackSearch(q,true);
  assert.match(got.answer,/Pride and Prejudice by Jane Austen/);
  assert.match(got.answer,/Apple Books and Audible/);
  assert.match(got.answer,/do not by themselves verify an edition/i);
  assert.equal(got.results.length,0);
  assert.equal(got._live,false);
- assert.match(read('ebooks/reading-ai.js'),/Apple Books audio search \(unverified\)/);
- assert.match(read('ebooks/reading-ai.js'),/Audible audio search \(unverified\)/);
+ const dom=new JSDOM('<main id="sources"></main>',{url:'https://matchapp.tv/discover.html',runScripts:'outside-only'});
+ try{
+  const w=dom.window;w.MATCH_LANG='en';
+  w.localStorage.setItem('match_user_country','United States');
+  w.MATCHAPP_EBOOK_CATALOG=[{id:'pride-prejudice',title:'Pride and Prejudice',author:'Jane Austen',access:['paid','free'],genres:['romance']}];
+  for(const file of ['viewer-country.js','ebooks/audiobooks.js','ebooks/reading-ai.js'])w.eval(read(file));
+  const host=w.document.querySelector('#sources');
+  assert.equal(w.MatchAppReadingAI.render(q,host),1);
+  const apple=host.querySelector('a[href^="https://books.apple.com/us/"]');
+  const audible=host.querySelector('a[href^="https://www.audible.com/"]');
+  assert.match(apple?.textContent||'',/Apple Books audio search \(unverified\)/);
+  assert.match(audible?.textContent||'',/Audible.*\(unverified\)/);
+ }finally{dom.window.close();}
 });
 test('ordinary films continue to use exact TMDB identity and verified crew',async()=>{
  const h=setup({

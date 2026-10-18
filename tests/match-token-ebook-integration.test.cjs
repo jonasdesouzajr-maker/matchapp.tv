@@ -31,13 +31,20 @@ async function client(id,{found=true,route='/ebooks/'}={}){
     return {data:await rpc(name,name==='consume_match_token'?[args.p_request_id,args.p_surface]:[])};
   }};
   await db.exec('set role authenticated');w.eval(read('match-tokens.js'));await w.MatchAppTokens.refresh();w.eval(read('ebooks/catalog.js'));
-  const book=w.MATCHAPP_EBOOK_CATALOG.find(item=>item.id==='pride-prejudice'),bookPick={book,relaxed:false};
-  assert.ok(book);
+  const books=w.MATCHAPP_EBOOK_CATALOG.filter(item=>item.access?.includes('free')).slice(0,4),seen=new Set(),claims=new Map();
+  assert.equal(books.length,4);
+  const nextPick=()=>{const book=books.find(item=>!seen.has(item.id));return sourceFound&&book?{book,relaxed:false}:null;};
   const shared={window:w,console,supabaseClient:w.supabaseClient,anonLimitCheck:()=>{throw Error('signed-in policy must not use a guest debit');},updateQuotaBadge:()=>{},showQuotaMessage:()=>{},lastQuotaStatus:null,isUserLoggedIn:false};
   const app=read('app.js'),quotaStart=app.indexOf("async function checkDailyLimit(action = 'match', tokenContext) {"),quotaEnd=app.indexOf('window.checkDailyLimit = checkDailyLimit;',quotaStart)+'window.checkDailyLimit = checkDailyLimit;'.length;
   assert.ok(quotaStart>=0&&quotaEnd>quotaStart);vm.createContext(shared);vm.runInContext(app.slice(quotaStart,quotaEnd),shared);const originalQuota=w.checkDailyLimit;
-  const context={window:w,console,prefs:()=>({format:'ebook',access:'free'}),bestBookChoices:()=>{order.push('source');return sourceFound?[bookPick]:[];},choose:()=>sourceFound?bookPick:null,matchNote:()=>'',uniq:values=>[...new Set(values)],read:()=>[],write:()=>order.push('history'),K:{seen:'existing-seen'},
-    renderResult:(host,chosen)=>{order.push('reveal');rendered++;assert.equal(chosen,book);const result=host.querySelector('[data-ebook-result]');result.hidden=false;result.innerHTML='<h3></h3><a data-original-book-source href="https://www.gutenberg.org/ebooks/1342">Project Gutenberg</a>';result.querySelector('h3').textContent=chosen.title;},
+  // The history seam supplies fresh curated works; token status and debit still
+  // execute the real shared client and PostgreSQL policy below.
+  const context={window:w,console,prefs:()=>({format:'ebook',access:'free'}),bestBookChoices:()=>{order.push('source');const pick=nextPick();return pick?[pick]:[];},choose:nextPick,matchNote:()=>'',read:key=>key==='existing-seen'?[...seen]:[],K:{saved:'saved',disliked:'disliked',seen:'existing-seen'},
+    readingOwner:id,readingEpoch:0,readingClaims:claims,cloudHydrate:async()=>true,cloudSync:async()=>{},readingHistoryNotice:()=>{throw Error('history unexpectedly unavailable');},
+    claimReading:async bookId=>{order.push('claim');if(seen.has(bookId))return false;claims.set(id+':'+bookId,'fixture-reservation-token');return true;},
+    releaseReading:async bookId=>{order.push('release');claims.delete(id+':'+bookId);},
+    queueReading:(bookId,action)=>{assert.equal(action,'seen');assert.ok(!seen.has(bookId),'a repeat cannot debit');seen.add(bookId);order.push('history');},
+    renderResult:(host,chosen)=>{order.push('reveal');rendered++;assert.ok(books.includes(chosen));const result=host.querySelector('[data-ebook-result]');result.hidden=false;result.innerHTML='<h3></h3><a data-original-book-source>Search Project Gutenberg</a>';result.querySelector('a').href='https://www.gutenberg.org/ebooks/search/?query='+encodeURIComponent(chosen.title+' '+chosen.author);result.querySelector('h3').textContent=chosen.title;},
     renderReadingDiscovery:()=>order.push('source-fallback')};
   const match=read('ebooks/ebook-matcher.js'),start=match.indexOf('async function doMatch(root){'),end=match.indexOf('\nfunction syncBookControls',start);
   assert.ok(start>=0&&end>start);vm.createContext(context);vm.runInContext(match.slice(start,end)+'\nthis.runMatch=doMatch;',context);
@@ -49,7 +56,7 @@ test('actual Bookworms orchestration and shared quota use SQL first-value state,
   try{
     assert.equal(f.w.MatchAppTokens.hasValue,false);assert.equal((await rpc('match_token_status')).first_match_pending,true);
     for(let count=1;count<=3;count++){
-      f.order.length=0;await f.run();assert.deepEqual(f.order,['source','debit','history','reveal']);assert.equal(f.rendered(),count);
+      f.order.length=0;await f.run();assert.deepEqual(f.order,['source','claim','debit','history','reveal']);assert.equal(f.rendered(),count);
       const wallet=await rpc('match_token_status');assert.equal(wallet.first_match_pending,false);assert.equal(wallet.daily_remaining,3-count);assert.equal(wallet.available_total,3-count);
       assert.equal(f.w.MatchAppTokens.hasValue,true);assert.equal(f.w.document.querySelector('.ma-token-scrim'),null,'a successful result never opens the depletion panel by itself');assert.equal(f.rootNode.querySelectorAll('[data-match-token-balance]').length,1);
     }

@@ -17,7 +17,7 @@ test('Ask AI restores its composer and permits a new attempt when all fallback w
  const dom=new JSDOM('<div id="discover-loading"></div><input id="discover-new-input">'),w=dom.window;
  let calls=0,stops=0;const messages=[];
  w.showToast=(...args)=>messages.push(args);
- const ctx=vm.createContext({window:w,document:w.document,console:{warn(){}},finishAiWorkflow:()=>stops++,runAskAndRender:async()=>{calls++;throw Error('source failed');}});
+ const ctx=vm.createContext({window:w,document:w.document,discoverThreadVersion:0,console:{warn(){}},finishAiWorkflow:()=>stops++,runAskAndRender:async()=>{calls++;throw Error('source failed');}});
  vm.runInContext(discover.slice(discover.indexOf('let askInFlight = null;'),discover.indexOf('/* ---------- Auto-growing composer')),ctx);
  try{
   const first=ctx.askAndRender('Recommend a film');assert.equal(first,ctx.askAndRender('duplicate'));

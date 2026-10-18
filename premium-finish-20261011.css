@@ -218,18 +218,28 @@ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover
 html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-actions .discover-share{
  grid-column:1 / -1!important;
 }
+/* Shared compact button rules must not shrink result controls below their
+ * intended touch target when the runtime page shell is active. */
+html body.ai-chat-page #chat-log .discover-actions > :is(a,button){min-height:42px!important}
 @media(max-width:620px){
  html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid{grid-template-columns:minmax(0,1fr)!important}
  html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-card{
   grid-template-columns:minmax(116px,35%) minmax(0,1fr)!important;
  }
 }
-@media(max-width:350px){
+/* Phone conversation cards have several nested insets. Keep full action labels
+ * below the poster instead of squeezing two controls beside a fixed art column. */
+@media(max-width:480px){
  html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-card{
   display:flex!important;flex-direction:column!important;
  }
  html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-poster{
   width:min(190px,60%)!important;margin-inline:auto!important;
+ }
+}
+@media(max-width:350px){
+ html body.ai-chat-page.ma-ia-discover:not(.tv-mode) .chat-results-grid .discover-actions{
+  grid-template-columns:minmax(0,1fr)!important;
  }
 }
 
