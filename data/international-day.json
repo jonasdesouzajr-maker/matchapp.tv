@@ -1,57 +1,55 @@
 {
   "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
   "_note": "Source-verified day-of record maintained by the single MatchApp Ai coordinator. The existing archive owner preserves ended history.",
-  "updated": "2026-10-17T07:57:23.332Z",
-  "date": "2026-10-17",
-  "id": "international-day-eradication-poverty-2026-10-17",
-  "emoji": "🏘️",
-  "title": "International Day for the Eradication of Poverty",
+  "date": "2026-10-18",
+  "id": "world-menopause-day-2026-10-18",
+  "emoji": "🌿",
+  "title": "World Menopause Day",
   "kicker": "International day",
   "place": "Worldwide",
-  "summary": "Observed by the United Nations on 17 October, this day connects ending poverty with dignity and human rights. The 2026 focus, 'Safe Homes for All', highlights adequate housing. Explore documentaries and films about housing, community and inclusion.",
-  "prompt": "On the International Day for the Eradication of Poverty, 17 October 2026, explain the UN focus 'Safe Homes for All' within 'United for Peace and Human Rights'. Suggest respectful ways to learn and participate, then recommend verified documentaries, films and series about adequate housing, inequality and community, checking where to watch in my country without inventing availability.",
-  "officialUrl": "https://www.un.org/en/observances/day-for-eradicating-poverty",
-  "image": "/event-posters/poverty-eradication-safe-homes-2026.svg",
+  "summary": "World Menopause Day falls on 18 October. The International Menopause Society's 2026 theme is 'Chronic Pain at Midlife'. Explore respectful documentaries and conversations about midlife, listening and community support.",
+  "prompt": "Explain World Menopause Day on 18 October 2026 and the International Menopause Society's theme 'Chronic Pain at Midlife', using the official source. Suggest respectful ways to learn and support others, then recommend verified documentaries or films about midlife and lived experiences, checking where to watch in my country. Distinguish personal stories from medical evidence; do not diagnose, recommend treatments or invent availability.",
+  "officialUrl": "https://www.imsociety.org/education/world-menopause-day-2026/",
+  "image": "/event-posters/world-menopause-chronic-pain-2026.svg",
   "keywords": [
-    "International Day for the Eradication of Poverty",
-    "International Day for the Eradication of Poverty 2026",
-    "17 October international day",
-    "Safe Homes for All",
-    "United for Peace and Human Rights",
-    "poverty eradication day activities",
-    "adequate housing documentaries",
-    "housing and community films",
-    "what to watch on poverty eradication day",
-    "Dia Internacional para a Erradicação da Pobreza 2026",
-    "Día Internacional para la Erradicación de la Pobreza 2026",
-    "documentários sobre moradia e inclusão"
+    "World Menopause Day 2026",
+    "18 October international day",
+    "Chronic Pain at Midlife",
+    "International Menopause Society",
+    "World Menopause Day activities",
+    "midlife documentaries",
+    "menopause awareness films",
+    "what to watch on World Menopause Day",
+    "Dia Mundial da Menopausa 2026",
+    "Día Mundial de la Menopausia 2026",
+    "documentários sobre a meia-idade",
+    "conversations about midlife and community support"
   ],
   "i18n": {
     "pt-BR": {
-      "title": "Dia Internacional para a Erradicação da Pobreza",
+      "title": "Dia Mundial da Menopausa",
       "kicker": "Data internacional",
       "place": "No mundo todo",
-      "summary": "Celebrada pela ONU em 17 de outubro, a data relaciona o fim da pobreza à dignidade e aos direitos humanos. O foco de 2026, 'Moradias seguras para todos', destaca a moradia adequada. Conheça documentários e filmes sobre habitação, comunidade e inclusão.",
-      "prompt": "No Dia Internacional para a Erradicação da Pobreza, 17 de outubro de 2026, explique o foco da ONU 'Moradias seguras para todos', no tema 'Unidos pela paz e pelos direitos humanos'. Sugira formas respeitosas de aprender e participar e recomende documentários, filmes e séries verificados sobre moradia adequada, desigualdade e comunidade, conferindo onde assistir no meu país, sem inventar disponibilidade.",
-      "imageAlt": "Ilustração original para o foco Moradias seguras para todos: casas acolhedoras, acesso por rampa, água e vizinhos planejando uma comunidade inclusiva",
-      "sourceName": "Nações Unidas"
+      "summary": "O Dia Mundial da Menopausa é celebrado em 18 de outubro. O tema de 2026 da Sociedade Internacional de Menopausa é 'Dor crônica na meia-idade'. Conheça documentários e conversas respeitosas sobre a meia-idade, a escuta e o apoio da comunidade.",
+      "prompt": "Explique o Dia Mundial da Menopausa em 18 de outubro de 2026 e o tema da Sociedade Internacional de Menopausa 'Dor crônica na meia-idade', usando a fonte oficial. Sugira maneiras respeitosas de aprender e apoiar outras pessoas, depois recomende documentários ou filmes verificados sobre a meia-idade e experiências pessoais, conferindo onde assistir no meu país. Diferencie relatos pessoais de evidências médicas; não faça diagnósticos, não recomende tratamentos nem invente disponibilidade.",
+      "imageAlt": "Ilustração original de uma mulher na meia-idade com uma mão próxima ao ombro, em um ambiente acolhedor que simboliza escuta e apoio",
+      "sourceName": "Sociedade Internacional de Menopausa"
     },
     "es": {
-      "title": "Día Internacional para la Erradicación de la Pobreza",
+      "title": "Día Mundial de la Menopausia",
       "kicker": "Día internacional",
       "place": "En todo el mundo",
-      "summary": "La ONU conmemora esta fecha el 17 de octubre para vincular el fin de la pobreza con la dignidad y los derechos humanos. El enfoque de 2026, 'Hogares seguros para todos', destaca la vivienda adecuada. Descubre documentales y películas sobre vivienda, comunidad e inclusión.",
-      "prompt": "En el Día Internacional para la Erradicación de la Pobreza, 17 de octubre de 2026, explica el enfoque de la ONU 'Hogares seguros para todos', dentro de 'Unidos por la paz y los derechos humanos'. Sugiere formas respetuosas de aprender y participar y recomienda documentales, películas y series verificadas sobre vivienda adecuada, desigualdad y comunidad, comprobando dónde verlas en mi país sin inventar disponibilidad.",
-      "imageAlt": "Ilustración original para Hogares seguros para todos: viviendas acogedoras, una rampa accesible, agua y vecinos que planifican una comunidad inclusiva",
-      "sourceName": "Naciones Unidas"
+      "summary": "El Día Mundial de la Menopausia se celebra el 18 de octubre. El tema de 2026 de la Sociedad Internacional de Menopausia es 'Dolor crónico en la mediana edad'. Descubre documentales y conversaciones respetuosas sobre la mediana edad, la escucha y el apoyo comunitario.",
+      "prompt": "Explica el Día Mundial de la Menopausia del 18 de octubre de 2026 y el tema de la Sociedad Internacional de Menopausia 'Dolor crónico en la mediana edad', utilizando la fuente oficial. Sugiere formas respetuosas de aprender y apoyar a otras personas y recomienda documentales o películas verificados sobre la mediana edad y experiencias personales, comprobando dónde verlos en mi país. Distingue los relatos personales de la evidencia médica; no diagnostiques, no recomiendes tratamientos ni inventes disponibilidad.",
+      "imageAlt": "Ilustración original de una mujer de mediana edad con una mano cerca del hombro, en un entorno acogedor que representa la escucha y el apoyo",
+      "sourceName": "Sociedad Internacional de Menopausia"
     }
   },
-  "imageAlt": "Original Safe Homes for All illustration: welcoming homes, accessible ramp, water and neighbours planning an inclusive community",
-  "imageCredit": "Original vector illustration created for MatchApp Ai for this 2026 observance; no third-party images or logos. Not an official UN poster or documentary photograph.",
-  "sourceName": "United Nations",
+  "imageAlt": "Original illustration of a midlife woman resting a hand near her shoulder in a welcoming setting representing listening and support",
+  "imageCredit": "Original vector illustration created for MatchApp Ai for this observance. No third-party images or logos. Not an official International Menopause Society poster or a documentary photograph.",
+  "sourceName": "International Menopause Society",
   "sourceUrls": [
-    "https://www.un.org/en/observances/day-for-eradicating-poverty",
-    "https://www.un.org/en/desa/3-reasons-safe-homes-matter-in-the-fight-against-poverty",
-    "https://www.atd-fourthworld.org/safe-homes-for-all/"
-  ]
+    "https://www.imsociety.org/education/world-menopause-day-2026/"
+  ],
+  "updated": "2026-10-18T16:34:34.745Z"
 }
