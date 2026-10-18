@@ -3,7 +3,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const sql=fs.readFileSync(path.join(__dirname,'..','supabase/migrations/20260929120000_canonicalize_match_share_reward_keys.sql'),'utf8');
+const sql=fs.readFileSync(path.join(__dirname,'..','supabase/migrations-archive/legacy-local/20260929120000_canonicalize_match_share_reward_keys.sql'),'utf8');
 
 test('three distinct result shares use the same canonical title identity as match history',()=>{
   // The old whitespace-only key let \"Star Wars\" and \"Star-Wars\" count twice.

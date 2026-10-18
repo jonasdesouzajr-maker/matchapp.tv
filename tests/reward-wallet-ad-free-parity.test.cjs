@@ -46,6 +46,8 @@ describe('reward wallet parity with existing native ad-free eligibility',()=>{
 
  before(async()=>{
   db=new PGlite();
+  // Keep fixture dates and legacy check-ins on the wallet's UTC day, independent of the host timezone.
+  await db.exec("set time zone 'UTC'");
   await db.exec(`create role anon;create role authenticated;create role service_role;create schema auth;
    create table auth.users(id uuid primary key,created_at timestamptz default now(),email_confirmed_at timestamptz default now(),phone_confirmed_at timestamptz,is_anonymous boolean default false);
    create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
@@ -59,10 +61,10 @@ describe('reward wallet parity with existing native ad-free eligibility',()=>{
    create table public.daily_match_checkins(user_id uuid primary key references auth.users(id),streak int not null default 0,last_checkin date,total_checkins int not null default 0,completed_weeks int not null default 0,updated_at timestamptz default now());
    create function public.profile_is_complete(public.profiles) returns boolean language sql immutable as $$select true$$;
    create function public.match_daily_limit_v2(boolean,boolean,boolean) returns int language sql immutable as $$select case when $2 then 50 when $1 then 10 else 5 end$$;`);
-  await db.exec(read('supabase/migrations/012_standardize_vip_daily_limit.sql'));
+  await db.exec(read('supabase/migrations-archive/legacy-local/012_standardize_vip_daily_limit.sql'));
   await db.exec(read('supabase/migrations/20260921181338_repair_daily_checkin_reward_delta.sql').split('do $backfill$')[0]);
   await db.exec(read('supabase/security/registration-welcome-bonus.sql'));
-  await db.exec(read('supabase/migrations/20260929120000_canonicalize_match_share_reward_keys.sql'));
+  await db.exec(read('supabase/migrations-archive/legacy-local/20260929120000_canonicalize_match_share_reward_keys.sql'));
   for(const file of ['20261017120448_match_tokens_pro_verified_rewards.sql','20261017134408_match_tokens_first_core_value.sql','20261017134958_play_pro_offer_once.sql','20261017142620_monetization_qa_cohort.sql'])await db.exec(read('supabase/migrations/'+file));
   await config();
   history=await user({credits:17,kids_credits:7,kids_purchased_matches:4});

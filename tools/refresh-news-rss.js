@@ -366,7 +366,7 @@ const LEGACY_BRAND_RE=new RegExp('MatchApp (?:'+LEGACY_BRAND_SUFFIXES.join('|')+
 function canonicalBrand(s){return String(s??'').replace(LEGACY_BRAND_RE,'MatchApp Ai');}
 
 const NEWS_COMMERCE_ASSETS='<link rel="stylesheet" href="/news-monetization.css?v=20261017-2">\n<script defer src="/news-monetization.js?v=20261017-2"></script>\n';
-const NEWS_NATIVE_ASSETS='<link rel="stylesheet" href="/native-news-slot.css?v=20261017-1">\n<script defer src="/native-news-slot.js?v=20261017-2"></script>\n';
+const NEWS_NATIVE_ASSETS='<link rel="stylesheet" href="/native-news-slot.css?v=20261017-1">\n<script defer src="/native-news-slot.js?v=20261018-1"></script>\n';
 function commerceAttributes(item){
   if(!newsCommerce.eligibleArticle(item))return '';
   return ' data-news-commerce-card data-news-category="'+esc(item.category)+'" data-news-title="'+esc(item.title)+'" data-news-event="'+esc(item.event_type)+'" data-news-description="'+esc(item.description)+'" data-news-source-url="'+esc(item.url)+'"';

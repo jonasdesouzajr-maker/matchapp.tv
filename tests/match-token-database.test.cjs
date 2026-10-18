@@ -34,6 +34,8 @@ async function entitlement(uid,changes={}) {
 }
 before(async()=>{
  db=new PGlite();
+ // Keep fixture dates and legacy check-ins on the wallet's UTC day, independent of the host timezone.
+ await db.exec("set time zone 'UTC'");
  await db.exec(`create role anon;create role authenticated;create role service_role;create schema auth;
  create table auth.users(id uuid primary key,created_at timestamptz default now(),email_confirmed_at timestamptz default now(),phone_confirmed_at timestamptz,is_anonymous boolean default false);
  create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
@@ -48,10 +50,10 @@ before(async()=>{
  create function public.profile_is_complete(public.profiles) returns boolean language sql immutable as $$select true$$;
  create function public.match_daily_limit_v2(boolean,boolean,boolean) returns int language sql immutable as $$select case when $2 then 50 when $1 then 10 else 5 end$$;
  `);
- await db.exec(fs.readFileSync(path.join(ROOT,'supabase/migrations/012_standardize_vip_daily_limit.sql'),'utf8'));
+ await db.exec(fs.readFileSync(path.join(ROOT,'supabase/migrations-archive/legacy-local/012_standardize_vip_daily_limit.sql'),'utf8'));
  await db.exec(fs.readFileSync(path.join(ROOT,'supabase/migrations/20260921181338_repair_daily_checkin_reward_delta.sql'),'utf8').split('do $backfill$')[0]);
  await db.exec(fs.readFileSync(path.join(ROOT,'supabase/security/registration-welcome-bonus.sql'),'utf8'));
- await db.exec(fs.readFileSync(path.join(ROOT,'supabase/migrations/20260929120000_canonicalize_match_share_reward_keys.sql'),'utf8'));
+ await db.exec(fs.readFileSync(path.join(ROOT,'supabase/migrations-archive/legacy-local/20260929120000_canonicalize_match_share_reward_keys.sql'),'utf8'));
  promoBaseline=(await db.query("select proname,prosrc from pg_proc where proname in('claim_registration_welcome_bonus','claim_match_result_share') order by proname")).rows;
  baseline=(await db.query("select proname,pg_get_functiondef(oid) definition from pg_proc where proname in('consume_match','match_status','daily_match_checkin') order by proname")).rows;
  const sql=fs.readFileSync(path.join(ROOT,MIGRATION),'utf8');

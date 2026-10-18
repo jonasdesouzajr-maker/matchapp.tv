@@ -1,0 +1,1 @@
+alter policy credit_ledger_select_own on public.credit_ledger using ((select auth.uid()) = user_id);
