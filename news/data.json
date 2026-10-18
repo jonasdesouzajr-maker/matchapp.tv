@@ -1,10 +1,548 @@
 {
-  "generated_at": "2026-10-17T22:37:01.302Z",
-  "feed_version": "a98a4ea5",
-  "sports_updated_at": "2026-10-17T14:13:22.971Z",
+  "generated_at": "2026-10-18T01:03:22.667Z",
+  "feed_version": "4600aa2c",
+  "sports_updated_at": "2026-10-18T01:03:22.602Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "c9122684",
+      "title": "Protestos contra o aumento do custo vida se espalham pela Europa",
+      "url": "https://g1.globo.com/jornal-nacional/noticia/2026/10/17/protestos-contra-o-aumento-do-custo-vida-se-espalham-pela-europa.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T00:48:37.000Z",
+      "discovered_at": "2026-10-18T01:03:22.667Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/azKDdYEUIlqyIIwJ5QkN1kOyp_A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/Q/tdIXtySKm6fqXYLHMscQ/captura-de-tela-2026-10-17-212736.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/protestos-contra-o-aumento-do-custo-vida-se-espalham-pela-europa-c91226/",
+      "landing_url": "https://matchapp.tv/?news=c9122684#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "contra",
+          "aumento",
+          "custo",
+          "vida",
+          "espalham"
+        ],
+        "long_tail": [
+          "Protestos contra o aumento do custo vida se espalham pela Europa 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "protestos",
+          "contra",
+          "aumento",
+          "custo",
+          "vida",
+          "espalham"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Protestos contra o aumento do custo vida se espalham pela…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "contra",
+          "aumento",
+          "custo",
+          "vida",
+          "espalham",
+          "Protestos contra o aumento do custo vida se espalham pela Europa 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
+    {
+      "id": "f2136f26",
+      "title": "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão",
+      "url": "https://g1.globo.com/jornal-nacional/noticia/2026/10/17/papa-recebe-alta-do-hospital-depois-de-cirurgia-para-remover-cancer-no-pulmao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T00:37:37.000Z",
+      "discovered_at": "2026-10-18T01:03:22.667Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/IGGi94tpi8DKDOhcLHexTNYgW20=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/7/t/L7eN5fTAWC3zOKnIl6hg/captura-de-tela-2026-10-17-211436.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-recebe-alta-do-hospital-depois-de-cirurgia-para-remover-cancer-no-pulmao-f2136f/",
+      "landing_url": "https://matchapp.tv/?news=f2136f26#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "recebe",
+          "alta",
+          "hospital",
+          "depois",
+          "cirurgia"
+        ],
+        "long_tail": [
+          "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "papa",
+          "recebe",
+          "alta",
+          "hospital",
+          "depois",
+          "cirurgia"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Papa recebe alta do hospital depois de cirurgia para…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "recebe",
+          "alta",
+          "hospital",
+          "depois",
+          "cirurgia",
+          "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
+    {
+      "id": "0bd6429c",
+      "title": "European diplomats attacked by Israeli settlers in West Bank",
+      "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-17T23:52:38.000Z",
+      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/european-diplomats-attacked-by-israeli-settlers-in-west-bank-0bd642/",
+      "landing_url": "https://matchapp.tv/?news=0bd6429c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-17",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "long_tail": [
+          "European diplomats attacked by Israeli settlers in West Bank 2026-10-17",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "European diplomats attacked by Israeli settlers in West…",
+        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-17",
+          "world news",
+          "global headlines",
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west",
+          "European diplomats attacked by Israeli settlers in West Bank 2026-10-17",
+          "world news October 2026",
+          "2026-10-17",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
+    {
+      "id": "62b2242a",
+      "title": "Protestos na França terminam com mais de 1 mil presos; atos contra o custo de vida se espalham pela Europa",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/protestos-franca-presos-europa.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T23:48:49.000Z",
+      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/GRTbWUlC8MSjCf6zupIQX4HGmVI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/a/kFA7N6TBe0e1w4t0aEhQ/afp-20261017-d3lp3wg-v4-midres-francesocialdemo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-terminam-com-mais-de-1-mil-presos-atos-contra-o-custo-de-vid-62b224/",
+      "landing_url": "https://matchapp.tv/?news=62b2242a#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "franca",
+          "terminam",
+          "mais",
+          "mil",
+          "presos"
+        ],
+        "long_tail": [
+          "Protestos na França terminam com mais de 1 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "protestos",
+          "franca",
+          "terminam",
+          "mais",
+          "mil",
+          "presos"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Protestos na França terminam com mais de 1 mil presos;…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "franca",
+          "terminam",
+          "mais",
+          "mil",
+          "presos",
+          "Protestos na França terminam com mais de 1 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
+    {
+      "id": "0f9d21ba",
+      "title": "Miley Cyrus Returns to the Stage With Emotional and Cathartic Hollywood Bowl Show",
+      "url": "https://www.hollywoodreporter.com/music/music-news/miley-cyrus-live-hollywood-bowl-2026-night-1-highlights-1236734276/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-17T23:17:39.000Z",
+      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Miley Cyrus Returns",
+      "description": "Miley Cyrus Returns: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/KM_13103_PI0K3hf3-e1792278347831.jpeg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/miley-cyrus-returns-to-the-stage-with-emotional-and-cathartic-hollywood-bowl-sho-0f9d21/",
+      "landing_url": "https://matchapp.tv/?news=0f9d21ba#latest-news",
+      "seo": {
+        "primary_keyword": "Miley Cyrus Returns latest news",
+        "short_tail": [
+          "Miley Cyrus Returns",
+          "Miley Cyrus Returns news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Miley Cyrus Returns latest news October 2026",
+          "Miley Cyrus Returns music update 2026",
+          "Miley Cyrus Returns news 2026-10-17",
+          "latest music news about Miley Cyrus Returns",
+          "miley cyrus returns miley cyrus returns latest update",
+          "The Hollywood Reporter Miley Cyrus Returns music",
+          "latest news about Miley Cyrus Returns October 2026",
+          "Miley Cyrus Returns entertainment news 2026-10-17",
+          "what happened with Miley Cyrus Returns"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Miley Cyrus Returns",
+          "miley",
+          "cyrus",
+          "returns",
+          "stage",
+          "emotional"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "Miley Cyrus Returns 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Miley Cyrus Returns",
+          "hollywoodreporter.com Miley Cyrus Returns",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Miley Cyrus Returns to the Stage With Emotional and…",
+        "meta_description": "Miley Cyrus Returns: Music update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Miley Cyrus Returns latest news",
+          "Miley Cyrus Returns",
+          "Miley Cyrus Returns news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Miley Cyrus Returns latest news October 2026",
+          "Miley Cyrus Returns music update 2026",
+          "Miley Cyrus Returns news 2026-10-17",
+          "latest music news about Miley Cyrus Returns",
+          "miley cyrus returns miley cyrus returns latest update",
+          "The Hollywood Reporter Miley Cyrus Returns music",
+          "latest news about Miley Cyrus Returns October 2026",
+          "Miley Cyrus Returns entertainment news 2026-10-17",
+          "what happened with Miley Cyrus Returns",
+          "miley",
+          "cyrus",
+          "returns",
+          "stage",
+          "emotional",
+          "October 2026",
+          "2026-10-17",
+          "Miley Cyrus Returns 2026",
+          "The Hollywood Reporter Miley Cyrus Returns",
+          "hollywoodreporter.com Miley Cyrus Returns",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
+    {
+      "id": "ebd6ab48",
+      "title": "‘The Diplomat’ U.K. Prime Minister on the Operatic Way He Learned of His “Shocking” Season 4 Storyline",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/the-diplomat-trowbridge-resigns-rory-kinnear-interview-1236734442/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-17T23:11:46.000Z",
+      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/DIPLO_404_Unit_03130RC.jpg?crop=0px%2C380px%2C3600px%2C2014px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-diplomat-u-k-prime-minister-on-the-operatic-way-he-learned-of-his-shocking-s-ebd6ab/",
+      "landing_url": "https://matchapp.tv/?news=ebd6ab48#latest-news",
+      "seo": {
+        "primary_keyword": "diplomat prime minister operatic latest news",
+        "short_tail": [
+          "diplomat prime minister operatic",
+          "diplomat prime minister operatic news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "diplomat prime minister operatic latest news October 2026",
+          "diplomat prime minister operatic entertainment update 2026",
+          "diplomat prime minister operatic news 2026-10-17",
+          "latest entertainment news about diplomat prime minister operatic",
+          "diplomat prime minister operatic way learned latest update",
+          "The Hollywood Reporter diplomat prime minister operatic entertainment",
+          "latest news about diplomat prime minister operatic October 2026",
+          "diplomat prime minister operatic entertainment news 2026-10-17",
+          "what happened with diplomat prime minister operatic"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "diplomat",
+          "prime",
+          "minister",
+          "operatic",
+          "way",
+          "learned",
+          "his",
+          "shocking"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "diplomat prime minister operatic 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter diplomat prime minister operatic",
+          "hollywoodreporter.com diplomat prime minister operatic",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘The Diplomat’ U.K. Prime Minister on the Operatic Way He…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "diplomat prime minister operatic latest news",
+          "diplomat prime minister operatic",
+          "diplomat prime minister operatic news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "diplomat prime minister operatic latest news October 2026",
+          "diplomat prime minister operatic entertainment update 2026",
+          "diplomat prime minister operatic news 2026-10-17",
+          "latest entertainment news about diplomat prime minister operatic",
+          "diplomat prime minister operatic way learned latest update",
+          "The Hollywood Reporter diplomat prime minister operatic entertainment",
+          "latest news about diplomat prime minister operatic October 2026",
+          "diplomat prime minister operatic entertainment news 2026-10-17",
+          "what happened with diplomat prime minister operatic",
+          "diplomat",
+          "prime",
+          "minister",
+          "operatic",
+          "way",
+          "learned",
+          "his",
+          "shocking",
+          "October 2026",
+          "2026-10-17",
+          "diplomat prime minister operatic 2026",
+          "The Hollywood Reporter diplomat prime minister operatic",
+          "hollywoodreporter.com diplomat prime minister operatic",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
+    {
+      "id": "536434a4",
+      "title": "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/carro-invade-jogo-futebol-kansas-mortos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-17T22:55:37.000Z",
+      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0DF8JvbZYk2dFXopn_3FZQ5R65w=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s04.video.glbimg.com/deo/vi/55/20/992055",
+      "matchapp_url": "https://matchapp.tv/news/articles/carro-invade-jogo-de-futebol-no-kansas-e-mata-menino-de-6-anos-e-um-adulto-536434/",
+      "landing_url": "https://matchapp.tv/?news=536434a4#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-17",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "carro",
+          "invade",
+          "jogo",
+          "futebol",
+          "kansas",
+          "mata"
+        ],
+        "long_tail": [
+          "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto 2026-10-17",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "carro",
+          "invade",
+          "jogo",
+          "futebol",
+          "kansas",
+          "mata"
+        ],
+        "freshness_keywords": [
+          "2026-10-17"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Carro invade jogo de futebol no Kansas e mata menino de 6…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-17",
+          "notícias do mundo",
+          "notícias internacionais",
+          "carro",
+          "invade",
+          "jogo",
+          "futebol",
+          "kansas",
+          "mata",
+          "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto 2026-10-17",
+          "notícias mundiais outubro 2026",
+          "2026-10-17",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
     {
       "id": "15dda46e",
       "title": "Photos show luxury boat with 50m pool and water slides near Kim Jong Un's summer retreat",
@@ -71,7 +609,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -140,7 +678,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -209,7 +747,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -301,7 +839,7 @@
           "hollywoodreporter.com Harry Styles Debuts Unreleased",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -370,7 +908,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -439,7 +977,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -508,7 +1046,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -577,7 +1115,7 @@
           "2026-10-17",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -646,7 +1184,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -715,7 +1253,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -784,7 +1322,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -853,145 +1391,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
-      }
-    },
-    {
-      "id": "fdfeb3cc",
-      "title": "'Não há regras': a nova estratégia de Putin que pretende impossibilitar a vida nas cidades ucranianas",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/a-nova-estrategia-de-putin-que-pretende-impossibilitar-a-vida-nas-cidades-ucranianas.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T19:18:13.000Z",
-      "discovered_at": "2026-10-17T19:41:31.888Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/ZivtmgBSyAvCNvqr5btGebvB2n8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/A/1YWkGZR8y4dVQZlwV7lQ/fotojet-34-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/nao-ha-regras-a-nova-estrategia-de-putin-que-pretende-impossibilitar-a-vida-nas--fdfeb3/",
-      "landing_url": "https://matchapp.tv/?news=fdfeb3cc#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "nao",
-          "regras",
-          "nova",
-          "estrategia",
-          "putin",
-          "que"
-        ],
-        "long_tail": [
-          "'Não há regras': a nova estratégia de Putin que pretende impossibilitar a vida nas cidades ucranianas 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nao",
-          "regras",
-          "nova",
-          "estrategia",
-          "putin",
-          "que"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "'Não há regras': a nova estratégia de Putin que pretende…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "nao",
-          "regras",
-          "nova",
-          "estrategia",
-          "putin",
-          "que",
-          "'Não há regras': a nova estratégia de Putin que pretende impossibilitar a vida nas cidades ucranianas 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
-      }
-    },
-    {
-      "id": "64ca98c3",
-      "title": "Fast-moving California wildfire burns homes as people are ordered to leave",
-      "url": "https://www.bbc.co.uk/news/articles/c6vgjnk8nw2wo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T19:13:21.000Z",
-      "discovered_at": "2026-10-17T06:06:08.689Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Fast-moving California",
-      "description": "World news reported by BBC Science on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/67d1/live/5c4e9f00-c9c6-11f1-9624-cbdaf8e49de5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/fast-moving-california-wildfire-burns-homes-as-people-are-ordered-to-leave-64ca98/",
-      "landing_url": "https://matchapp.tv/?news=64ca98c3#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "fast",
-          "moving",
-          "california",
-          "wildfire",
-          "burns",
-          "homes"
-        ],
-        "long_tail": [
-          "Fast-moving California wildfire burns homes as people are ordered to leave 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "fast",
-          "moving",
-          "california",
-          "wildfire",
-          "burns",
-          "homes"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Fast-moving California wildfire burns homes as people are…",
-        "meta_description": "World report published by BBC Science on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "fast",
-          "moving",
-          "california",
-          "wildfire",
-          "burns",
-          "homes",
-          "Fast-moving California wildfire burns homes as people are ordered to leave 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1090,76 +1490,7 @@
           "hollywoodreporter.com nashville pays tribute chad",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
-      }
-    },
-    {
-      "id": "330ebd18",
-      "title": "Zelensky diz que decisão de Trump de suspender sanções à Rússia 'ajuda apenas os russos'",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/zelensky-critica-trump-sancoes-russia.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T18:31:29.000Z",
-      "discovered_at": "2026-10-17T19:41:31.888Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/NTn9aNpnpXwFoNy_KjF1VIHS1Es=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/A/oVvtAoSZK3vJZYCgkexw/2026-10-17t130823z-833036998-rc2c4oat4p98-rtrmadp-3-ukraine-crisis-ze-enskiy-trilateral.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-diz-que-decisao-de-trump-de-suspender-sancoes-a-russia-ajuda-apenas-os--330ebd/",
-      "landing_url": "https://matchapp.tv/?news=330ebd18#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "zelensky",
-          "diz",
-          "que",
-          "decisao",
-          "trump",
-          "suspender"
-        ],
-        "long_tail": [
-          "Zelensky diz que decisão de Trump de suspender sanções à Rússia 'ajuda apenas os russos' 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "zelensky",
-          "diz",
-          "que",
-          "decisao",
-          "trump",
-          "suspender"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Zelensky diz que decisão de Trump de suspender sanções à…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "zelensky",
-          "diz",
-          "que",
-          "decisao",
-          "trump",
-          "suspender",
-          "Zelensky diz que decisão de Trump de suspender sanções à Rússia 'ajuda apenas os russos' 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1258,7 +1589,7 @@
           "hollywoodreporter.com american horror story actor",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1354,207 +1685,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
-      }
-    },
-    {
-      "id": "5b52ebaa",
-      "title": "WNBA Finals 2026: Where to Watch Atlanta Dream vs. Golden State Valkyries Games Live Online",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/watch-strema-wnba-finals-2026-basketball-live-online-free-1236730144/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-17T16:30:00.000Z",
-      "discovered_at": "2026-10-17T17:31:01.200Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "WNBA Finals",
-      "description": "WNBA Finals: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/WNBA-Atlanta-Dream-vs.-Golden-State-Valkyries-GettyImages-2283518497-H-MAIN-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/wnba-finals-2026-where-to-watch-atlanta-dream-vs-golden-state-valkyries-games-li-5b52eb/",
-      "landing_url": "https://matchapp.tv/?news=5b52ebaa#latest-news",
-      "seo": {
-        "primary_keyword": "wnba finals",
-        "short_tail": [
-          "WNBA Finals",
-          "WNBA Finals news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "wnba finals"
-        ],
-        "long_tail": [
-          "WNBA Finals latest news October 2026",
-          "WNBA Finals entertainment update 2026",
-          "WNBA Finals news 2026-10-17",
-          "latest entertainment news about WNBA Finals",
-          "wnba finals wnba finals 2026 where latest update",
-          "The Hollywood Reporter WNBA Finals entertainment",
-          "latest news about WNBA Finals October 2026",
-          "WNBA Finals entertainment news 2026-10-17",
-          "what happened with WNBA Finals"
-        ],
-        "trend_keywords": [
-          "wnba finals"
-        ],
-        "entity_keywords": [
-          "WNBA Finals",
-          "wnba",
-          "finals",
-          "2026",
-          "where",
-          "watch",
-          "atlanta"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "WNBA Finals 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter WNBA Finals",
-          "hollywoodreporter.com WNBA Finals",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "WNBA Finals 2026: Where to Watch Atlanta Dream vs. Golden…",
-        "meta_description": "WNBA Finals: Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via…",
-        "keywords": [
-          "wnba finals",
-          "WNBA Finals",
-          "WNBA Finals news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "WNBA Finals latest news October 2026",
-          "WNBA Finals entertainment update 2026",
-          "WNBA Finals news 2026-10-17",
-          "latest entertainment news about WNBA Finals",
-          "wnba finals wnba finals 2026 where latest update",
-          "The Hollywood Reporter WNBA Finals entertainment",
-          "latest news about WNBA Finals October 2026",
-          "WNBA Finals entertainment news 2026-10-17",
-          "what happened with WNBA Finals",
-          "wnba",
-          "finals",
-          "2026",
-          "where",
-          "watch",
-          "atlanta",
-          "October 2026",
-          "2026-10-17",
-          "WNBA Finals 2026",
-          "The Hollywood Reporter WNBA Finals",
-          "hollywoodreporter.com WNBA Finals",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
-      }
-    },
-    {
-      "id": "b929d2da",
-      "title": "TikTok “Permanently Suspends” the ‘Musk’ Film Ad Account, Raising Suppression Fears (Exclusive)",
-      "url": "https://www.hollywoodreporter.com/news/politics-news/musk-movie-tiktok-banned-theaters-showtimes-1236734308/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-17T15:02:09.000Z",
-      "discovered_at": "2026-10-17T17:31:01.200Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/musktrump.jpg?crop=0px%2C63px%2C4961px%2C2779px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/tiktok-permanently-suspends-the-musk-film-ad-account-raising-suppression-fears-e-b929d2/",
-      "landing_url": "https://matchapp.tv/?news=b929d2da#latest-news",
-      "seo": {
-        "primary_keyword": "tiktok",
-        "short_tail": [
-          "tiktok permanently suspends musk",
-          "tiktok permanently suspends musk news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "tiktok"
-        ],
-        "long_tail": [
-          "tiktok permanently suspends musk latest news October 2026",
-          "tiktok permanently suspends musk entertainment update 2026",
-          "tiktok permanently suspends musk news 2026-10-17",
-          "latest entertainment news about tiktok permanently suspends musk",
-          "tiktok permanently suspends musk film account latest update",
-          "The Hollywood Reporter tiktok permanently suspends musk entertainment",
-          "latest news about tiktok permanently suspends musk October 2026",
-          "tiktok permanently suspends musk entertainment news 2026-10-17",
-          "what happened with tiktok permanently suspends musk"
-        ],
-        "trend_keywords": [
-          "tiktok"
-        ],
-        "entity_keywords": [
-          "tiktok",
-          "permanently",
-          "suspends",
-          "musk",
-          "film",
-          "account",
-          "raising",
-          "suppression"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "tiktok permanently suspends musk 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter tiktok permanently suspends musk",
-          "hollywoodreporter.com tiktok permanently suspends musk",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "TikTok “Permanently Suspends” the ‘Musk’ Film Ad Account,…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "tiktok",
-          "tiktok permanently suspends musk",
-          "tiktok permanently suspends musk news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "tiktok permanently suspends musk latest news October 2026",
-          "tiktok permanently suspends musk entertainment update 2026",
-          "tiktok permanently suspends musk news 2026-10-17",
-          "latest entertainment news about tiktok permanently suspends musk",
-          "tiktok permanently suspends musk film account latest update",
-          "The Hollywood Reporter tiktok permanently suspends musk entertainment",
-          "latest news about tiktok permanently suspends musk October 2026",
-          "tiktok permanently suspends musk entertainment news 2026-10-17",
-          "what happened with tiktok permanently suspends musk",
-          "permanently",
-          "suspends",
-          "musk",
-          "film",
-          "account",
-          "raising",
-          "suppression",
-          "October 2026",
-          "2026-10-17",
-          "tiktok permanently suspends musk 2026",
-          "The Hollywood Reporter tiktok permanently suspends musk",
-          "hollywoodreporter.com tiktok permanently suspends musk",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1652,145 +1783,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
-      }
-    },
-    {
-      "id": "d4ac80b6",
-      "title": "Protestos contra o custo de vida na França reúnem 550 mil pessoas e têm cerca de 400 presos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/policia-usa-gas-lacrimogeneo-e-entra-em-confronto-com-manifestantes-em-protestos-contra-o-custo-de-vida-na-franca.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T12:33:36.000Z",
-      "discovered_at": "2026-10-17T14:13:23.031Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/uh7DA612oCl39xsow6nfFBC0FG4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/p/B/8zQAv9RkqBfz4ATZBlqQ/2026-10-17t185302z-1191745382-rc205oab087i-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/protestos-contra-o-custo-de-vida-na-franca-reunem-550-mil-pessoas-e-tem-cerca-de-d4ac80/",
-      "landing_url": "https://matchapp.tv/?news=d4ac80b6#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "contra",
-          "custo",
-          "vida",
-          "franca",
-          "reunem"
-        ],
-        "long_tail": [
-          "Protestos contra o custo de vida na França reúnem 550 mil pessoas e têm cerca de 400 presos 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "protestos",
-          "contra",
-          "custo",
-          "vida",
-          "franca",
-          "reunem"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Protestos contra o custo de vida na França reúnem 550 mil…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "contra",
-          "custo",
-          "vida",
-          "franca",
-          "reunem",
-          "Protestos contra o custo de vida na França reúnem 550 mil pessoas e têm cerca de 400 presos 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
-      }
-    },
-    {
-      "id": "ae1263a4",
-      "title": "Papa Leão XIV recebe alta após cirurgia para tratar câncer de pulmão",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/papa-leao-xiv-alta.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T09:49:59.000Z",
-      "discovered_at": "2026-10-17T11:08:18.978Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Papa Leão XIV",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/pAM-YqSB6HFaBAj5iwwjJErlfHU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/q/nP0xeWRvA2ARwwGbyWog/2026-10-17t135755z-648602198-rc215oaw47pj-rtrmadp-3-pope-health.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/papa-leao-xiv-recebe-alta-apos-cirurgia-para-tratar-cancer-de-pulmao-ae1263/",
-      "landing_url": "https://matchapp.tv/?news=ae1263a4#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "leao",
-          "xiv",
-          "recebe",
-          "alta",
-          "apos"
-        ],
-        "long_tail": [
-          "Papa Leão XIV recebe alta após cirurgia para tratar câncer de pulmão 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "papa",
-          "leao",
-          "xiv",
-          "recebe",
-          "alta",
-          "apos"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Papa Leão XIV recebe alta após cirurgia para tratar câncer…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "leao",
-          "xiv",
-          "recebe",
-          "alta",
-          "apos",
-          "Papa Leão XIV recebe alta após cirurgia para tratar câncer de pulmão 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1891,7 +1884,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1985,7 +1978,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2084,7 +2077,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2183,7 +2176,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2281,7 +2274,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2382,7 +2375,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2483,7 +2476,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2581,7 +2574,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2682,7 +2675,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2776,7 +2769,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2877,7 +2870,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2978,7 +2971,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3079,7 +3072,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3180,7 +3173,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3281,7 +3274,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3378,7 +3371,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3468,7 +3461,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3569,7 +3562,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-17T22:37:01.302Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     }
   ]
