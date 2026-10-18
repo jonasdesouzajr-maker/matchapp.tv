@@ -72,7 +72,7 @@ test('transient OMDb outages are retried and missing configuration is the only 5
 });
 
 test('member share claims demand server history while keeping existing window limits',()=>{
-  const sql=source('supabase/migrations/20260929110000_require_match_history_for_rewards.sql');
+  const sql=source('supabase/migrations-archive/legacy-local/20260929110000_require_match_history_for_rewards.sql');
   assert.match(sql,/match_private\.title_exclusions h/);
   assert.match(sql,/h\.user_id=v_uid/);
   assert.match(sql,/match_private\.title_key\(p_title\)/);

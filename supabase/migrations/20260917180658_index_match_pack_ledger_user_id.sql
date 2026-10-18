@@ -1,0 +1,1 @@
+create index if not exists match_pack_ledger_user_id_idx on public.match_pack_ledger (user_id);

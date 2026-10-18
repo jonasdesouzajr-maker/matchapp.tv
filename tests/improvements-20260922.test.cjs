@@ -35,7 +35,7 @@ test('Kids guardian gates adult exits, keeps the timer off by default and syncs 
   assert.match(g,/kids_favorites/);assert.match(g,/const requestFrame = window\.requestAnimationFrame/);assert.match(g,/if \(progress >= 1\)/);assert.match(g,/cancelFrame\(holdFrame\)/);assert.doesNotMatch(g,/MutationObserver\(\(\)/);
   assert.match(kids,/allowed\.has\(key\)/);assert.match(kids,/window\.KidsFavorites=Object\.freeze/);
   for(const l of LANGS)assert.ok(g.includes("'"+l+"':"),l);
-  const sql=read('supabase/migrations/20260922100000_kids_favorites_sync.sql');
+  const sql=read('supabase/migrations-archive/legacy-local/20260922100000_kids_favorites_sync.sql');
   assert.match(sql,/jsonb_array_length\(kids_favorites\) <= 100/);assert.match(sql,/grant select \(kids_favorites\), update \(kids_favorites\)/);
 });
 test('Ask AI shows its cost and honours hard exclusions for known titles',()=>{
