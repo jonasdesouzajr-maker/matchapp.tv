@@ -1,77 +1,169 @@
 {
-  "generated_at": "2026-10-18T14:08:17.407Z",
-  "feed_version": "d7755cb7",
-  "sports_updated_at": "2026-10-18T01:03:22.602Z",
+  "generated_at": "2026-10-18T14:34:48.175Z",
+  "feed_version": "3b9ae450",
+  "sports_updated_at": "2026-10-18T14:34:48.110Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
-      "id": "6bd483fb",
-      "title": "Several dead or injured in major fire at Canada military base",
-      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
+      "id": "573bd881",
+      "title": "Jesse Eisenberg Relives Kieran Culkin Woes Making ‘A Real Pain’ and Says His Next Project is a TV Show",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-kieran-culkin-real-pain-debut-film-london-1236734749/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
       "language": "en",
-      "published_at": "2026-10-18T14:07:20.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/951a/live/d1508b70-cac9-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
-      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
+      "published_at": "2026-10-18T14:28:44.000Z",
+      "discovered_at": "2026-10-18T14:34:48.175Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Jesse Eisenberg Relives Kieran",
+      "description": "Jesse Eisenberg Relives Kieran: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-18T152415.580.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/jesse-eisenberg-relives-kieran-culkin-woes-making-a-real-pain-and-says-his-next--573bd8/",
+      "landing_url": "https://matchapp.tv/?news=573bd881#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-18",
+        "primary_keyword": "Jesse Eisenberg Relives Kieran latest news",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
+          "Jesse Eisenberg Relives Kieran",
+          "Jesse Eisenberg Relives Kieran news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
         ],
         "long_tail": [
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026"
+          "Jesse Eisenberg Relives Kieran latest news October 2026",
+          "Jesse Eisenberg Relives Kieran music update 2026",
+          "Jesse Eisenberg Relives Kieran news 2026-10-18",
+          "latest music news about Jesse Eisenberg Relives Kieran",
+          "jesse eisenberg relives kieran jesse eisenberg latest update",
+          "The Hollywood Reporter Jesse Eisenberg Relives Kieran music",
+          "latest news about Jesse Eisenberg Relives Kieran October 2026",
+          "Jesse Eisenberg Relives Kieran entertainment news 2026-10-18",
+          "what happened with Jesse Eisenberg Relives Kieran"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
+          "Jesse Eisenberg Relives Kieran",
+          "jesse",
+          "eisenberg",
+          "relives",
+          "kieran"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Jesse Eisenberg Relives Kieran 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Jesse Eisenberg Relives Kieran",
+          "hollywoodreporter.com Jesse Eisenberg Relives Kieran",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Jesse Eisenberg Relives Kieran Culkin Woes Making ‘A Real…",
+        "meta_description": "Jesse Eisenberg Relives Kieran: Music update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original…",
+        "keywords": [
+          "Jesse Eisenberg Relives Kieran latest news",
+          "Jesse Eisenberg Relives Kieran",
+          "Jesse Eisenberg Relives Kieran news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Jesse Eisenberg Relives Kieran latest news October 2026",
+          "Jesse Eisenberg Relives Kieran music update 2026",
+          "Jesse Eisenberg Relives Kieran news 2026-10-18",
+          "latest music news about Jesse Eisenberg Relives Kieran",
+          "jesse eisenberg relives kieran jesse eisenberg latest update",
+          "The Hollywood Reporter Jesse Eisenberg Relives Kieran music",
+          "latest news about Jesse Eisenberg Relives Kieran October 2026",
+          "Jesse Eisenberg Relives Kieran entertainment news 2026-10-18",
+          "what happened with Jesse Eisenberg Relives Kieran",
+          "jesse",
+          "eisenberg",
+          "relives",
+          "kieran",
+          "October 2026",
+          "2026-10-18",
+          "Jesse Eisenberg Relives Kieran 2026",
+          "The Hollywood Reporter Jesse Eisenberg Relives Kieran",
+          "hollywoodreporter.com Jesse Eisenberg Relives Kieran",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+      }
+    },
+    {
+      "id": "5f0a3f18",
+      "title": "Ucrânia volta a receber dados dos EUA para barrar mísseis russos, diz Zelensky",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/ucrania-volta-a-receber-dados-dos-eua-para-barrar-misseis-russos-diz-zelensky.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T14:13:14.000Z",
+      "discovered_at": "2026-10-18T14:34:48.175Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/NTn9aNpnpXwFoNy_KjF1VIHS1Es=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/A/oVvtAoSZK3vJZYCgkexw/2026-10-17t130823z-833036998-rc2c4oat4p98-rtrmadp-3-ukraine-crisis-ze-enskiy-trilateral.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ucrania-volta-a-receber-dados-dos-eua-para-barrar-misseis-russos-diz-zelensky-5f0a3f/",
+      "landing_url": "https://matchapp.tv/?news=5f0a3f18#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "ucrania",
+          "volta",
+          "receber",
+          "dados",
+          "eua",
+          "barrar"
+        ],
+        "long_tail": [
+          "Ucrânia volta a receber dados dos EUA para barrar mísseis russos, diz Zelensky 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ucrania",
+          "volta",
+          "receber",
+          "dados",
+          "eua",
+          "barrar"
         ],
         "freshness_keywords": [
           "2026-10-18"
         ],
         "source_keywords": [
-          "BBC World"
+          "G1 Mundo"
         ],
-        "meta_title": "Several dead or injured in major fire at Canada military…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "meta_title": "Ucrânia volta a receber dados dos EUA para barrar mísseis…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
         "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada",
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026",
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "ucrania",
+          "volta",
+          "receber",
+          "dados",
+          "eua",
+          "barrar",
+          "Ucrânia volta a receber dados dos EUA para barrar mísseis russos, diz Zelensky 2026-10-18",
+          "notícias mundiais outubro 2026",
           "2026-10-18",
-          "BBC World"
+          "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -140,7 +232,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -209,7 +301,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -278,7 +370,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -377,7 +469,7 @@
           "hollywoodreporter.com imperium concrete land temples",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -446,7 +538,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -515,7 +607,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -616,7 +708,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -685,7 +777,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -754,7 +846,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -823,7 +915,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -892,7 +984,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -961,7 +1053,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1027,7 +1119,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1096,7 +1188,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1165,7 +1257,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1234,76 +1326,76 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
-      "id": "86bc4dac",
-      "title": "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/protestos-na-franca-mortos-feridos-presos-outubro.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
+      "id": "5175770b",
+      "title": "Pony herd gathering raises money for air ambulance",
+      "url": "https://www.bbc.co.uk/news/articles/cqe9lx01ynj8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T10:58:14.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "language": "en",
+      "published_at": "2026-10-18T10:25:13.000Z",
+      "discovered_at": "2026-10-18T14:34:48.175Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/KxNJHx6oC353mRccD5qHQnKKKeE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/l/v/7qROsdTfesd9NDWZppzQ/afp-20261018-d3md7t3-v1-highres-francesocialdemo.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-levam-mais-de-500-mil-as-ruas-e-deixam-1-morto-500-policiais-86bc4d/",
-      "landing_url": "https://matchapp.tv/?news=86bc4dac#latest-news",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/705b/live/f5421410-c96e-11f1-a6e6-417671ef62cb.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pony-herd-gathering-raises-money-for-air-ambulance-517577/",
+      "landing_url": "https://matchapp.tv/?news=5175770b#latest-news",
       "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
+        "primary_keyword": "world news 2026-10-18",
         "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "levam",
-          "mais",
-          "500",
-          "mil"
+          "world news",
+          "global headlines",
+          "pony",
+          "herd",
+          "gathering",
+          "raises",
+          "money",
+          "air"
         ],
         "long_tail": [
-          "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos 2026-10-18",
-          "notícias mundiais outubro 2026"
+          "Pony herd gathering raises money for air ambulance 2026-10-18",
+          "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "protestos",
-          "franca",
-          "levam",
-          "mais",
-          "500",
-          "mil"
+          "pony",
+          "herd",
+          "gathering",
+          "raises",
+          "money",
+          "air"
         ],
         "freshness_keywords": [
           "2026-10-18"
         ],
         "source_keywords": [
-          "G1 Mundo"
+          "BBC Science"
         ],
-        "meta_title": "Protestos na França levam mais de 500 mil às ruas e deixam…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "meta_title": "Pony herd gathering raises money for air ambulance | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
         "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "levam",
-          "mais",
-          "500",
-          "mil",
-          "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos 2026-10-18",
-          "notícias mundiais outubro 2026",
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "pony",
+          "herd",
+          "gathering",
+          "raises",
+          "money",
+          "air",
+          "Pony herd gathering raises money for air ambulance 2026-10-18",
+          "world news October 2026",
           "2026-10-18",
-          "G1 Mundo"
+          "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1402,7 +1494,7 @@
           "hollywoodreporter.com what belongs others wins",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1494,7 +1586,7 @@
           "hollywoodreporter.com South Africa’s Oscar Entry",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1592,7 +1684,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1686,7 +1778,7 @@
           "hollywoodreporter.com Academy Museum Gala",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1780,7 +1872,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1874,7 +1966,7 @@
           "hollywoodreporter.com Miley Cyrus Returns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -1973,7 +2065,7 @@
           "hollywoodreporter.com diplomat prime minister operatic",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2070,7 +2162,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2162,7 +2254,7 @@
           "hollywoodreporter.com Harry Styles Debuts Unreleased",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2258,7 +2350,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2356,7 +2448,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2457,7 +2549,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2551,7 +2643,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2650,7 +2742,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2672,7 +2764,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/judge-throws-out-child-sex-abuse-charges-against-actor-timothy-busfield-7380c1/",
       "landing_url": "https://matchapp.tv/?news=7380c158#latest-news",
       "seo": {
-        "primary_keyword": "child",
+        "primary_keyword": "judge throws out child latest news",
         "short_tail": [
           "judge throws out child",
           "judge throws out child news",
@@ -2680,8 +2772,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "child"
+          "entertainment updates"
         ],
         "long_tail": [
           "judge throws out child latest news October 2026",
@@ -2694,9 +2785,7 @@
           "judge throws out child entertainment news 2026-10-17",
           "what happened with judge throws out child"
         ],
-        "trend_keywords": [
-          "child"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "judge",
           "throws",
@@ -2720,7 +2809,7 @@
         "meta_title": "Judge throws out child sex abuse charges against actor…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "child",
+          "judge throws out child latest news",
           "judge throws out child",
           "judge throws out child news",
           "entertainment",
@@ -2740,6 +2829,7 @@
           "judge",
           "throws",
           "out",
+          "child",
           "sex",
           "abuse",
           "charges",
@@ -2751,7 +2841,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2849,7 +2939,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -2950,7 +3040,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -3051,7 +3141,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -3082,8 +3172,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "como",
-          "como vs"
+          "como"
         ],
         "long_tail": [
           "Karim Aïnouz latest news October 2026",
@@ -3097,8 +3186,7 @@
           "o que aconteceu com Karim Aïnouz"
         ],
         "trend_keywords": [
-          "como",
-          "como vs"
+          "como"
         ],
         "entity_keywords": [
           "Karim Aïnouz",
@@ -3131,7 +3219,6 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
-          "como vs",
           "Karim Aïnouz latest news October 2026",
           "Karim Aïnouz entertainment update 2026",
           "Karim Aïnouz news 2026-10-16",
@@ -3154,7 +3241,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -3255,7 +3342,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -3349,108 +3436,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
-      }
-    },
-    {
-      "id": "cad4d821",
-      "title": "'Wannabe', das Spice Girls, faz 30 anos; clipe parece plano-sequência, mas tem corte escondido",
-      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/10/16/wannabe-das-spice-girls-faz-30-anos-clipe-parece-plano-sequencia-mas-tem-corte-escondido.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-16T07:00:00.000Z",
-      "discovered_at": "2026-10-16T07:29:28.440Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/UPPCD8vGXbrtLcB3ADk8j1mG7lI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/T/w/bLdKZKSj2BExvnm6sbkQ/spice2.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/wannabe-das-spice-girls-faz-30-anos-clipe-parece-plano-sequencia-mas-tem-corte-e-cad4d8/",
-      "landing_url": "https://matchapp.tv/?news=cad4d821#latest-news",
-      "seo": {
-        "primary_keyword": "wannabe spice girls faz últimas notícias",
-        "short_tail": [
-          "wannabe spice girls faz",
-          "wannabe spice girls faz news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "wannabe spice girls faz latest news October 2026",
-          "wannabe spice girls faz entertainment update 2026",
-          "wannabe spice girls faz news 2026-10-16",
-          "latest entertainment news about wannabe spice girls faz",
-          "wannabe spice girls faz anos clipe latest update",
-          "G1 wannabe spice girls faz entertainment",
-          "últimas notícias sobre wannabe spice girls faz outubro 2026",
-          "wannabe spice girls faz notícia de 2026-10-16",
-          "o que aconteceu com wannabe spice girls faz"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "wannabe",
-          "spice",
-          "girls",
-          "faz",
-          "anos",
-          "clipe",
-          "parece",
-          "plano"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "wannabe spice girls faz 2026"
-        ],
-        "source_keywords": [
-          "G1 wannabe spice girls faz",
-          "g1.globo.com wannabe spice girls faz",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'Wannabe', das Spice Girls, faz 30 anos; clipe parece…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "wannabe spice girls faz últimas notícias",
-          "wannabe spice girls faz",
-          "wannabe spice girls faz news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "wannabe spice girls faz latest news October 2026",
-          "wannabe spice girls faz entertainment update 2026",
-          "wannabe spice girls faz news 2026-10-16",
-          "latest entertainment news about wannabe spice girls faz",
-          "wannabe spice girls faz anos clipe latest update",
-          "G1 wannabe spice girls faz entertainment",
-          "últimas notícias sobre wannabe spice girls faz outubro 2026",
-          "wannabe spice girls faz notícia de 2026-10-16",
-          "o que aconteceu com wannabe spice girls faz",
-          "wannabe",
-          "spice",
-          "girls",
-          "faz",
-          "anos",
-          "clipe",
-          "parece",
-          "plano",
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "wannabe spice girls faz 2026",
-          "G1 wannabe spice girls faz",
-          "g1.globo.com wannabe spice girls faz",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     },
     {
@@ -3540,7 +3526,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+        "seo_generated_at": "2026-10-18T14:34:48.175Z"
       }
     }
   ]
