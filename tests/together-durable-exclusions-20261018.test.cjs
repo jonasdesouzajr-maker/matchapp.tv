@@ -19,7 +19,7 @@ async function setup(){
   create table public.profiles(id uuid primary key,saved_list jsonb default '[]',seen_list jsonb default '[]',disliked_list jsonb default '[]',user_ratings jsonb default '{}');
   insert into auth.users(id) values('${ALICE}'),('${BOB}'),('${CAROL}');
   insert into public.profiles(id) values('${ALICE}'),('${BOB}'),('${CAROL}');`);
- for(const file of ['supabase/security/private-friends-and-history.sql','supabase/security/compact-portfolio-auth.sql','supabase/migrations/005_match_together.sql','supabase/migrations/20261016223445_growth_guest_sessions_20261016.sql','supabase/migrations/20261018113624_durable_match_exclusions.sql'])await db.exec(read(file));
+ for(const file of ['supabase/security/private-friends-and-history.sql','supabase/security/compact-portfolio-auth.sql','supabase/migrations/005_match_together.sql','supabase/migrations/20261016223445_growth_guest_sessions_20261016.sql','supabase/migrations/20261018145723_durable_match_exclusions.sql','supabase/migrations/20261018145959_align_durable_exclusion_source.sql'])await db.exec(read(file));
  return db;
 }
 async function as(db,id){await db.exec(`set role ${id?'authenticated':'anon'}`);await db.query("select set_config('request.jwt.claim.sub',$1,false)",[id||'']);}

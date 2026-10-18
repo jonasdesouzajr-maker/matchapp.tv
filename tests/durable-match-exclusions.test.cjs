@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const {JSDOM}=require('jsdom');
 const root=path.join(__dirname,'..');
 const policy=fs.readFileSync(path.join(root,'matching-policy.js'),'utf8');
-const migration=fs.readFileSync(path.join(root,'supabase/migrations/20261018113624_durable_match_exclusions.sql'),'utf8');
+const migration=fs.readFileSync(path.join(root,'supabase/migrations/20261018145723_durable_match_exclusions.sql'),'utf8');
 function browser(rpc){
  const dom=new JSDOM('<body></body>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  dom.window.supabaseClient={rpc:rpc||(async()=>({data:{keys:[],history:[]}}))};
@@ -177,6 +177,11 @@ test('Postgres preserves exclusion identities and explicit choices without expos
   await db.exec(fs.readFileSync(path.join(root,'supabase/migrations/005_match_together.sql'),'utf8'));
   await db.exec(fs.readFileSync(path.join(root,'supabase/migrations/20261016223445_growth_guest_sessions_20261016.sql'),'utf8'));
   await db.exec(migration);
+  const beforeAlignment=(await db.query("select md5(prosrc) digest from pg_proc where oid='public.growth_together_service(text,jsonb)'::regprocedure")).rows[0].digest;
+  assert.equal(beforeAlignment,'06cd4c0c3f3dfc8dca47b873b60d0650','reviewed initial migration is already canonical');
+  const alignment=fs.readFileSync(path.join(root,'supabase/migrations/20261018145959_align_durable_exclusion_source.sql'),'utf8');
+  await db.exec(alignment);await db.exec(alignment);
+  assert.equal((await db.query("select md5(prosrc) digest from pg_proc where oid='public.growth_together_service(text,jsonb)'::regprocedure")).rows[0].digest,beforeAlignment,'recorded alignment remains idempotent without changing fresh installations');
   const as=async id=>db.exec(`set role authenticated;select set_config('request.jwt.claim.sub','${id}',false)`);
   const call=async(action,payload={})=>(await db.query('select public.portfolio_action($1,$2::jsonb) as result',[action,JSON.stringify(payload)])).rows[0].result;
   await as(alice);
