@@ -473,6 +473,13 @@ async function cloudHydrate(){
  if(readingHydrating?.epoch===initialEpoch)return readingHydrating.promise;
  const job=(async()=>{
   try{
+   // The SDK reports getUser() without a session as AuthSessionMissingError.
+   // A confirmed empty restored session is a guest, not a history outage.
+   if(typeof sb.auth?.getSession==='function'){
+    const session=await boundedReading(sb.auth.getSession());
+    if(initialEpoch!==readingEpoch||session?.error)return false;
+    if(session?.data?.session===null){switchReadingOwner('guest');return true;}
+   }
    const a=await boundedReading(sb.auth.getUser());if(initialEpoch!==readingEpoch||a?.error)return false;
    const u=a?.data?.user;switchReadingOwner(u&&!u.is_anonymous?u.id:'guest');
    if(!u||u.is_anonymous)return true;
