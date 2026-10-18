@@ -605,13 +605,14 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
     <script src="/profile-geography.js?v=20260926-geo1"></script>
     <script src="/profile.js?v=20260924-ui2&amp;sbt=20261004-1"></script>
     <script data-registration-upgrade="1" src="/registration-upgrade.js?v=20260927-confirm1"></script>
-    <script src="/portfolio-history.js?v=20260924-ui2"></script>
+    <script src="/profile-portfolio-i18n.js?v=20261018-1"></script>
+    <script src="/portfolio-history.js?v=20260924-ui2&amp;portfolio=20261018-1"></script>
     <script src="/tv.js?v=187"></script>
 <script src="/passkeys.js?v=20261011-session1"></script>
 <script src="/libphonenumber-max-1.12.25.js?v=1"></script>
 <script defer src="/profile-phone-20261011.js?v=20261011-phone1"></script>
 <script src="/app-updates.js?v=202&amp;installfix=20260930-1&amp;brand=20261001-canonicalai1"></script>
-<script src="/title-captions.js?v=20260929-avatar1&amp;profilelang=20261018-1"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script>
+<script src="/title-captions.js?v=20260929-avatar1&amp;profilelang=20261018-1&amp;portfolio=20261018-1"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script>
 <script id="profile-hub-actions">document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('[data-profile-target]').forEach(btn=>btn.addEventListener('click',()=>{const el=document.getElementById(btn.dataset.profileTarget);if(!el)return;const opening=el.hidden;document.querySelectorAll('.profile-hub-target').forEach(x=>{x.hidden=true;x.classList.remove('profile-hub-open')});if(opening){el.hidden=false;el.classList.add('profile-hub-open');requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}))}}));});</script><script id="verified-email-profile-entry">
 document.addEventListener('DOMContentLoaded', async () => {
     // A URL marker alone grants no access: server-validate email or phone confirmation.
