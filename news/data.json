@@ -1,10 +1,590 @@
 {
-  "generated_at": "2026-10-18T19:37:24.272Z",
-  "feed_version": "46d8f721",
+  "generated_at": "2026-10-18T22:34:17.346Z",
+  "feed_version": "c358188d",
   "sports_updated_at": "2026-10-18T14:34:48.110Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "c45b8468",
+      "title": "Jesse Eisenberg Reveals TV Show Details as ‘The Debut’ Closes a Star-Studded London Film Festival",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-tv-show-debut-london-film-festival-julianne-1236734918/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T22:24:36.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Jesse Eisenberg Reveals TV",
+      "description": "Jesse Eisenberg Reveals TV: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-18T231602.645.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/jesse-eisenberg-reveals-tv-show-details-as-the-debut-closes-a-star-studded-londo-c45b84/",
+      "landing_url": "https://matchapp.tv/?news=c45b8468#latest-news",
+      "seo": {
+        "primary_keyword": "jesse eisenberg",
+        "short_tail": [
+          "Jesse Eisenberg Reveals TV",
+          "Jesse Eisenberg Reveals TV news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "jesse eisenberg"
+        ],
+        "long_tail": [
+          "Jesse Eisenberg Reveals TV latest news October 2026",
+          "Jesse Eisenberg Reveals TV music update 2026",
+          "Jesse Eisenberg Reveals TV news 2026-10-18",
+          "latest music news about Jesse Eisenberg Reveals TV",
+          "jesse eisenberg reveals jesse eisenberg reveals latest update",
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV music",
+          "latest news about Jesse Eisenberg Reveals TV October 2026",
+          "Jesse Eisenberg Reveals TV entertainment news 2026-10-18",
+          "what happened with Jesse Eisenberg Reveals TV"
+        ],
+        "trend_keywords": [
+          "jesse eisenberg"
+        ],
+        "entity_keywords": [
+          "Jesse Eisenberg Reveals TV",
+          "jesse",
+          "eisenberg",
+          "reveals",
+          "show",
+          "details"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Jesse Eisenberg Reveals TV 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV",
+          "hollywoodreporter.com Jesse Eisenberg Reveals TV",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Jesse Eisenberg Reveals TV Show Details as ‘The Debut’…",
+        "meta_description": "Jesse Eisenberg Reveals TV: Music update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
+        "keywords": [
+          "jesse eisenberg",
+          "Jesse Eisenberg Reveals TV",
+          "Jesse Eisenberg Reveals TV news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Jesse Eisenberg Reveals TV latest news October 2026",
+          "Jesse Eisenberg Reveals TV music update 2026",
+          "Jesse Eisenberg Reveals TV news 2026-10-18",
+          "latest music news about Jesse Eisenberg Reveals TV",
+          "jesse eisenberg reveals jesse eisenberg reveals latest update",
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV music",
+          "latest news about Jesse Eisenberg Reveals TV October 2026",
+          "Jesse Eisenberg Reveals TV entertainment news 2026-10-18",
+          "what happened with Jesse Eisenberg Reveals TV",
+          "jesse",
+          "eisenberg",
+          "reveals",
+          "show",
+          "details",
+          "October 2026",
+          "2026-10-18",
+          "Jesse Eisenberg Reveals TV 2026",
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV",
+          "hollywoodreporter.com Jesse Eisenberg Reveals TV",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "96a1d05f",
+      "title": "Trump says suspension of Russia sanctions is to keep peace negotiations going",
+      "url": "https://www.bbc.co.uk/news/articles/c9p8gz7zx4peo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T22:10:45.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4644/live/461bcc30-cb38-11f1-8a27-2de4c72fadc2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-says-suspension-of-russia-sanctions-is-to-keep-peace-negotiations-going-96a1d0/",
+      "landing_url": "https://matchapp.tv/?news=96a1d05f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "trump",
+          "says",
+          "suspension",
+          "russia",
+          "sanctions",
+          "keep"
+        ],
+        "long_tail": [
+          "Trump says suspension of Russia sanctions is to keep peace negotiations going 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "says",
+          "suspension",
+          "russia",
+          "sanctions",
+          "keep"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Trump says suspension of Russia sanctions is to keep peace…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "trump",
+          "says",
+          "suspension",
+          "russia",
+          "sanctions",
+          "keep",
+          "Trump says suspension of Russia sanctions is to keep peace negotiations going 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "670c82a8",
+      "title": "What we know so far about deadly fire at Canadian military base",
+      "url": "https://www.bbc.co.uk/news/articles/cmgelrq8x92do?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T21:37:56.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4d82/live/7fedb8b0-cb1a-11f1-a9ef-8b4e735f71f0.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/what-we-know-so-far-about-deadly-fire-at-canadian-military-base-670c82/",
+      "landing_url": "https://matchapp.tv/?news=670c82a8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "what",
+          "know",
+          "far",
+          "about",
+          "deadly",
+          "fire"
+        ],
+        "long_tail": [
+          "What we know so far about deadly fire at Canadian military base 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "what",
+          "know",
+          "far",
+          "about",
+          "deadly",
+          "fire"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "What we know so far about deadly fire at Canadian military…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "what",
+          "know",
+          "far",
+          "about",
+          "deadly",
+          "fire",
+          "What we know so far about deadly fire at Canadian military base 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "d54fc759",
+      "title": "Inside Chicago's battle against the synthetic drugs flooding the US",
+      "url": "https://www.bbc.co.uk/news/videos/c84g166kz003o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T21:00:22.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Inside Chicago's",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2040/live/43727360-cb12-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/inside-chicago-s-battle-against-the-synthetic-drugs-flooding-the-us-d54fc7/",
+      "landing_url": "https://matchapp.tv/?news=d54fc759#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "inside",
+          "chicago",
+          "battle",
+          "against",
+          "synthetic",
+          "drugs"
+        ],
+        "long_tail": [
+          "Inside Chicago's battle against the synthetic drugs flooding the US 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "inside",
+          "chicago",
+          "battle",
+          "against",
+          "synthetic",
+          "drugs"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Inside Chicago's battle against the synthetic drugs…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "inside",
+          "chicago",
+          "battle",
+          "against",
+          "synthetic",
+          "drugs",
+          "Inside Chicago's battle against the synthetic drugs flooding the US 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "d035abcb",
+      "title": "Trump diz que não quer afastar Rússia de negociações e acusa Zelensky de prolongar guerra",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/trump-diz-que-nao-quer-afastar-russia-de-negociacoes-e-acusa-zelensky-de-prolongar-guerra.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T20:50:50.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/6WiFTDgj_hsPlN7g032DknLdUEQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/V/TU9mmuQJAOyfA9n9rZNQ/design-sem-nome-2026-10-10t093927.952.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-diz-que-nao-quer-afastar-russia-de-negociacoes-e-acusa-zelensky-de-prolong-d035ab/",
+      "landing_url": "https://matchapp.tv/?news=d035abcb#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "nao",
+          "quer",
+          "afastar"
+        ],
+        "long_tail": [
+          "Trump diz que não quer afastar Rússia de negociações e acusa Zelensky de prolongar guerra 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "diz",
+          "que",
+          "nao",
+          "quer",
+          "afastar"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Trump diz que não quer afastar Rússia de negociações e…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "nao",
+          "quer",
+          "afastar",
+          "Trump diz que não quer afastar Rússia de negociações e acusa Zelensky de prolongar guerra 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "e5394eb9",
+      "title": "Macron calls for 'calm and order' after riots across France",
+      "url": "https://www.bbc.co.uk/news/articles/cw240zl08dm5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T20:33:21.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3671/live/56f97410-cb35-11f1-9e57-a506a0943bb2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/macron-calls-for-calm-and-order-after-riots-across-france-e5394e/",
+      "landing_url": "https://matchapp.tv/?news=e5394eb9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots"
+        ],
+        "long_tail": [
+          "Macron calls for 'calm and order' after riots across France 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Macron calls for 'calm and order' after riots across…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots",
+          "Macron calls for 'calm and order' after riots across France 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "1c783917",
+      "title": "Quênia confirma oitavo caso de ebola enquanto surto avança no Congo",
+      "url": "https://g1.globo.com/saude/noticia/2026/10/18/quenia-confirma-oitavo-caso-de-ebola-enquanto-surto-avanca-no-congo.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T20:23:13.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/rECtLoBCooMAD7_bgNkGi-qHW6M=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/Y/oEGxC7QtW7noPKthD3Yg/ap26280829521367-1-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/quenia-confirma-oitavo-caso-de-ebola-enquanto-surto-avanca-no-congo-1c7839/",
+      "landing_url": "https://matchapp.tv/?news=1c783917#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "quenia",
+          "confirma",
+          "oitavo",
+          "caso",
+          "ebola",
+          "enquanto"
+        ],
+        "long_tail": [
+          "Quênia confirma oitavo caso de ebola enquanto surto avança no Congo 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "quenia",
+          "confirma",
+          "oitavo",
+          "caso",
+          "ebola",
+          "enquanto"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Quênia confirma oitavo caso de ebola enquanto surto avança…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "quenia",
+          "confirma",
+          "oitavo",
+          "caso",
+          "ebola",
+          "enquanto",
+          "Quênia confirma oitavo caso de ebola enquanto surto avança no Congo 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "a8335421",
+      "title": "Cindy Crawford 'beyond heartbroken' after death of son Presley at 27",
+      "url": "https://www.bbc.co.uk/news/articles/cwzrd6123jyyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T19:53:27.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "Cindy Crawford",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9e6f/live/104d6ec0-cb23-11f1-862d-eb45b1209086.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/cindy-crawford-beyond-heartbroken-after-death-of-son-presley-at-27-a83354/",
+      "landing_url": "https://matchapp.tv/?news=a8335421#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "cindy",
+          "crawford",
+          "beyond",
+          "heartbroken",
+          "after",
+          "death"
+        ],
+        "long_tail": [
+          "Cindy Crawford 'beyond heartbroken' after death of son Presley at 27 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "cindy",
+          "crawford",
+          "beyond",
+          "heartbroken",
+          "after",
+          "death"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Cindy Crawford 'beyond heartbroken' after death of son…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "cindy",
+          "crawford",
+          "beyond",
+          "heartbroken",
+          "after",
+          "death",
+          "Cindy Crawford 'beyond heartbroken' after death of son Presley at 27 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
     {
       "id": "6b33c2f2",
       "title": "Young Miko Gets Flirty With L.A. During Her Late Checkout Tour",
@@ -94,7 +674,7 @@
           "hollywoodreporter.com Young Miko Gets Flirty",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -163,7 +743,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -232,7 +812,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -301,7 +881,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -398,7 +978,7 @@
           "g1.globo.com integrantes rebelde lamentam morte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -467,7 +1047,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -563,7 +1143,7 @@
           "hollywoodreporter.com Betty McGuire",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -632,7 +1212,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -701,7 +1281,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -770,7 +1350,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -866,7 +1446,7 @@
           "hollywoodreporter.com Georgina Cates",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -935,7 +1515,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -1031,7 +1611,7 @@
           "hollywoodreporter.com Taylor Swift",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -1127,237 +1707,7 @@
           "hollywoodreporter.com Tim O’Donnell",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "573bd881",
-      "title": "Jesse Eisenberg Relives Kieran Culkin Woes Making ‘A Real Pain’ and Says His Next Project Is a TV Show",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-kieran-culkin-real-pain-debut-film-london-1236734749/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-18T14:28:44.000Z",
-      "discovered_at": "2026-10-18T14:34:48.175Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Jesse Eisenberg Relives Kieran",
-      "description": "Jesse Eisenberg Relives Kieran: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-18T155641.488.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/jesse-eisenberg-relives-kieran-culkin-woes-making-a-real-pain-and-says-his-next--573bd8/",
-      "landing_url": "https://matchapp.tv/?news=573bd881#latest-news",
-      "seo": {
-        "primary_keyword": "Jesse Eisenberg Relives Kieran latest news",
-        "short_tail": [
-          "Jesse Eisenberg Relives Kieran",
-          "Jesse Eisenberg Relives Kieran news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Jesse Eisenberg Relives Kieran latest news October 2026",
-          "Jesse Eisenberg Relives Kieran music update 2026",
-          "Jesse Eisenberg Relives Kieran news 2026-10-18",
-          "latest music news about Jesse Eisenberg Relives Kieran",
-          "jesse eisenberg relives kieran jesse eisenberg latest update",
-          "The Hollywood Reporter Jesse Eisenberg Relives Kieran music",
-          "latest news about Jesse Eisenberg Relives Kieran October 2026",
-          "Jesse Eisenberg Relives Kieran entertainment news 2026-10-18",
-          "what happened with Jesse Eisenberg Relives Kieran"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Jesse Eisenberg Relives Kieran",
-          "jesse",
-          "eisenberg",
-          "relives",
-          "kieran"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-18",
-          "Jesse Eisenberg Relives Kieran 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Jesse Eisenberg Relives Kieran",
-          "hollywoodreporter.com Jesse Eisenberg Relives Kieran",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Jesse Eisenberg Relives Kieran Culkin Woes Making ‘A Real…",
-        "meta_description": "Jesse Eisenberg Relives Kieran: Music update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original…",
-        "keywords": [
-          "Jesse Eisenberg Relives Kieran latest news",
-          "Jesse Eisenberg Relives Kieran",
-          "Jesse Eisenberg Relives Kieran news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Jesse Eisenberg Relives Kieran latest news October 2026",
-          "Jesse Eisenberg Relives Kieran music update 2026",
-          "Jesse Eisenberg Relives Kieran news 2026-10-18",
-          "latest music news about Jesse Eisenberg Relives Kieran",
-          "jesse eisenberg relives kieran jesse eisenberg latest update",
-          "The Hollywood Reporter Jesse Eisenberg Relives Kieran music",
-          "latest news about Jesse Eisenberg Relives Kieran October 2026",
-          "Jesse Eisenberg Relives Kieran entertainment news 2026-10-18",
-          "what happened with Jesse Eisenberg Relives Kieran",
-          "jesse",
-          "eisenberg",
-          "relives",
-          "kieran",
-          "October 2026",
-          "2026-10-18",
-          "Jesse Eisenberg Relives Kieran 2026",
-          "The Hollywood Reporter Jesse Eisenberg Relives Kieran",
-          "hollywoodreporter.com Jesse Eisenberg Relives Kieran",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "5f0a3f18",
-      "title": "Ucrânia volta a receber dados dos EUA para barrar mísseis russos, diz Zelensky",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/ucrania-volta-a-receber-dados-dos-eua-para-barrar-misseis-russos-diz-zelensky.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T14:13:14.000Z",
-      "discovered_at": "2026-10-18T14:34:48.175Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/NTn9aNpnpXwFoNy_KjF1VIHS1Es=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/A/oVvtAoSZK3vJZYCgkexw/2026-10-17t130823z-833036998-rc2c4oat4p98-rtrmadp-3-ukraine-crisis-ze-enskiy-trilateral.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ucrania-volta-a-receber-dados-dos-eua-para-barrar-misseis-russos-diz-zelensky-5f0a3f/",
-      "landing_url": "https://matchapp.tv/?news=5f0a3f18#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ucrania",
-          "volta",
-          "receber",
-          "dados",
-          "eua",
-          "barrar"
-        ],
-        "long_tail": [
-          "Ucrânia volta a receber dados dos EUA para barrar mísseis russos, diz Zelensky 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ucrania",
-          "volta",
-          "receber",
-          "dados",
-          "eua",
-          "barrar"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Ucrânia volta a receber dados dos EUA para barrar mísseis…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ucrania",
-          "volta",
-          "receber",
-          "dados",
-          "eua",
-          "barrar",
-          "Ucrânia volta a receber dados dos EUA para barrar mísseis russos, diz Zelensky 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "bccd3756",
-      "title": "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/militar-da-forca-aerea-dos-eua-morre-apos-cair-de-rapel-em-jogo-de-futebol-americano-no-texas.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T13:53:49.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/0Im2IDlU1RAdHR_H7bmmIlBX9_w=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/5/YFV4rBQZCVXXz8LCbo5A/captura-de-tela-2026-10-18-104553.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/militar-da-forca-aerea-dos-eua-morre-apos-cair-de-rapel-em-jogo-de-futebol-ameri-bccd37/",
-      "landing_url": "https://matchapp.tv/?news=bccd3756#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "militar",
-          "forca",
-          "aerea",
-          "eua",
-          "morre",
-          "apos"
-        ],
-        "long_tail": [
-          "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "militar",
-          "forca",
-          "aerea",
-          "eua",
-          "morre",
-          "apos"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Militar da Força Aérea dos EUA morre após cair de rapel em…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "militar",
-          "forca",
-          "aerea",
-          "eua",
-          "morre",
-          "apos",
-          "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -1426,7 +1776,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -1527,352 +1877,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "0bd6429c",
-      "title": "European diplomats attacked by Israeli settlers in West Bank",
-      "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T12:16:14.000Z",
-      "discovered_at": "2026-10-18T00:17:51.077Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/european-diplomats-attacked-by-israeli-settlers-in-west-bank-0bd642/",
-      "landing_url": "https://matchapp.tv/?news=0bd6429c#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west"
-        ],
-        "long_tail": [
-          "European diplomats attacked by Israeli settlers in West Bank 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "European diplomats attacked by Israeli settlers in West…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west",
-          "European diplomats attacked by Israeli settlers in West Bank 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "3371ebd7",
-      "title": "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting",
-      "url": "https://www.bbc.co.uk/news/articles/c574pdzl0k4no?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T12:07:31.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/55f7/live/7d8c1210-cb06-11f1-93db-7509e20aa39a.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/burnt-out-cars-and-shattered-glass-on-paris-streets-after-protests-turn-to-riots-3371eb/",
-      "landing_url": "https://matchapp.tv/?news=3371ebd7#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "burnt",
-          "out",
-          "cars",
-          "shattered",
-          "glass",
-          "paris"
-        ],
-        "long_tail": [
-          "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "burnt",
-          "out",
-          "cars",
-          "shattered",
-          "glass",
-          "paris"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Burnt out cars and shattered glass on Paris streets after…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "burnt",
-          "out",
-          "cars",
-          "shattered",
-          "glass",
-          "paris",
-          "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "885bf00b",
-      "title": "Pope Leo XIV thanks wellwishers in first event after cancer surgery",
-      "url": "https://www.bbc.co.uk/news/videos/cq70px6pjkg5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T11:09:32.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Pope Leo XIV",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21f0/live/4a3b0720-cae5-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pope-leo-xiv-thanks-wellwishers-in-first-event-after-cancer-surgery-885bf0/",
-      "landing_url": "https://matchapp.tv/?news=885bf00b#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pope",
-          "leo",
-          "xiv",
-          "thanks",
-          "wellwishers",
-          "first"
-        ],
-        "long_tail": [
-          "Pope Leo XIV thanks wellwishers in first event after cancer surgery 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pope",
-          "leo",
-          "xiv",
-          "thanks",
-          "wellwishers",
-          "first"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Pope Leo XIV thanks wellwishers in first event after…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "pope",
-          "leo",
-          "xiv",
-          "thanks",
-          "wellwishers",
-          "first",
-          "Pope Leo XIV thanks wellwishers in first event after cancer surgery 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "7509a302",
-      "title": "Free clear-up has big engagement on social media",
-      "url": "https://www.bbc.co.uk/news/articles/cly8q2rryejo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T10:59:32.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8df8/live/09afa010-699e-11f1-8546-8f19e4fe30f4.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/free-clear-up-has-big-engagement-on-social-media-7509a3/",
-      "landing_url": "https://matchapp.tv/?news=7509a302#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "free",
-          "clear",
-          "has",
-          "big",
-          "engagement",
-          "social"
-        ],
-        "long_tail": [
-          "Free clear-up has big engagement on social media 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "free",
-          "clear",
-          "has",
-          "big",
-          "engagement",
-          "social"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Free clear-up has big engagement on social media | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "free",
-          "clear",
-          "has",
-          "big",
-          "engagement",
-          "social",
-          "Free clear-up has big engagement on social media 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "b7cab3ee",
-      "title": "Parisians wake up to protest damage and looted shops",
-      "url": "https://www.bbc.co.uk/news/videos/cmn5vey19q3go?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T10:58:39.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8791/live/7abdd380-cadd-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/parisians-wake-up-to-protest-damage-and-looted-shops-b7cab3/",
-      "landing_url": "https://matchapp.tv/?news=b7cab3ee#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "parisians",
-          "wake",
-          "protest",
-          "damage",
-          "looted",
-          "shops"
-        ],
-        "long_tail": [
-          "Parisians wake up to protest damage and looted shops 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "parisians",
-          "wake",
-          "protest",
-          "damage",
-          "looted",
-          "shops"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Parisians wake up to protest damage and looted shops |…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "parisians",
-          "wake",
-          "protest",
-          "damage",
-          "looted",
-          "shops",
-          "Parisians wake up to protest damage and looted shops 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -1970,7 +1975,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2064,7 +2069,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2161,7 +2166,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2257,7 +2262,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2355,7 +2360,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2456,7 +2461,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2550,7 +2555,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2649,106 +2654,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
-      }
-    },
-    {
-      "id": "7380c158",
-      "title": "Judge throws out child sex abuse charges against actor Timothy Busfield",
-      "url": "https://www.bbc.co.uk/news/articles/c8vgxwq4q5r2o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-17T00:38:34.000Z",
-      "discovered_at": "2026-10-17T01:20:23.706Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d9d2/live/ddd16cc0-c9b1-11f1-a04a-83cd2533e4f9.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/judge-throws-out-child-sex-abuse-charges-against-actor-timothy-busfield-7380c1/",
-      "landing_url": "https://matchapp.tv/?news=7380c158#latest-news",
-      "seo": {
-        "primary_keyword": "judge throws out child latest news",
-        "short_tail": [
-          "judge throws out child",
-          "judge throws out child news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "judge throws out child latest news October 2026",
-          "judge throws out child entertainment update 2026",
-          "judge throws out child news 2026-10-17",
-          "latest entertainment news about judge throws out child",
-          "judge throws out child sex abuse latest update",
-          "BBC judge throws out child entertainment",
-          "latest news about judge throws out child October 2026",
-          "judge throws out child entertainment news 2026-10-17",
-          "what happened with judge throws out child"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "judge",
-          "throws",
-          "out",
-          "child",
-          "sex",
-          "abuse",
-          "charges",
-          "against"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "judge throws out child 2026"
-        ],
-        "source_keywords": [
-          "BBC judge throws out child",
-          "bbc.co.uk judge throws out child",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Judge throws out child sex abuse charges against actor…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "judge throws out child latest news",
-          "judge throws out child",
-          "judge throws out child news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "judge throws out child latest news October 2026",
-          "judge throws out child entertainment update 2026",
-          "judge throws out child news 2026-10-17",
-          "latest entertainment news about judge throws out child",
-          "judge throws out child sex abuse latest update",
-          "BBC judge throws out child entertainment",
-          "latest news about judge throws out child October 2026",
-          "judge throws out child entertainment news 2026-10-17",
-          "what happened with judge throws out child",
-          "judge",
-          "throws",
-          "out",
-          "child",
-          "sex",
-          "abuse",
-          "charges",
-          "against",
-          "October 2026",
-          "2026-10-17",
-          "judge throws out child 2026",
-          "BBC judge throws out child",
-          "bbc.co.uk judge throws out child",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2846,7 +2752,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -2947,7 +2853,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -3048,7 +2954,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -3146,7 +3052,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -3247,7 +3153,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -3341,7 +3247,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -3442,7 +3348,108 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+      }
+    },
+    {
+      "id": "c199d597",
+      "title": "O que Renato Russo estaria fazendo hoje? Companheiros de Legião Urbana falam do amigo, 30 anos depois de sua morte",
+      "url": "https://g1.globo.com/fantastico/noticia/2026/10/16/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-amigo-30-anos-depois-de-sua-morte.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T07:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/i4xEw0qzoPIfqBLXOLegf0n8uyI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/0/X/oR4KJMQGOqmMBFV42QOQ/renato-russo-divulgacao.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-a-c199d5/",
+      "landing_url": "https://matchapp.tv/?news=c199d597#latest-news",
+      "seo": {
+        "primary_keyword": "que renato russo estaria últimas notícias",
+        "short_tail": [
+          "que renato russo estaria",
+          "que renato russo estaria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "que renato russo estaria latest news October 2026",
+          "que renato russo estaria entertainment update 2026",
+          "que renato russo estaria news 2026-10-16",
+          "latest entertainment news about que renato russo estaria",
+          "que renato russo estaria fazendo hoje latest update",
+          "G1 que renato russo estaria entertainment",
+          "últimas notícias sobre que renato russo estaria outubro 2026",
+          "que renato russo estaria notícia de 2026-10-16",
+          "o que aconteceu com que renato russo estaria"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "que",
+          "renato",
+          "russo",
+          "estaria",
+          "fazendo",
+          "hoje",
+          "companheiros",
+          "legiao"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "que renato russo estaria 2026"
+        ],
+        "source_keywords": [
+          "G1 que renato russo estaria",
+          "g1.globo.com que renato russo estaria",
+          "G1 entertainment news"
+        ],
+        "meta_title": "O que Renato Russo estaria fazendo hoje? Companheiros de…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "que renato russo estaria últimas notícias",
+          "que renato russo estaria",
+          "que renato russo estaria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "que renato russo estaria latest news October 2026",
+          "que renato russo estaria entertainment update 2026",
+          "que renato russo estaria news 2026-10-16",
+          "latest entertainment news about que renato russo estaria",
+          "que renato russo estaria fazendo hoje latest update",
+          "G1 que renato russo estaria entertainment",
+          "últimas notícias sobre que renato russo estaria outubro 2026",
+          "que renato russo estaria notícia de 2026-10-16",
+          "o que aconteceu com que renato russo estaria",
+          "que",
+          "renato",
+          "russo",
+          "estaria",
+          "fazendo",
+          "hoje",
+          "companheiros",
+          "legiao",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "que renato russo estaria 2026",
+          "G1 que renato russo estaria",
+          "g1.globo.com que renato russo estaria",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     },
     {
@@ -3532,7 +3539,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T19:37:24.272Z"
+        "seo_generated_at": "2026-10-18T22:34:17.346Z"
       }
     }
   ]
