@@ -2,6 +2,18 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
+const sourceRoute=(value,hosts,prefix='/')=>{
+ const url=new URL(value,'https://matchapp.tv/');
+ return hosts.includes(url.hostname)&&url.pathname.startsWith(prefix);
+};
+test('reading source assertions compare parsed hosts and paths, not deceptive URL substrings',()=>{
+ assert(sourceRoute('https://itunes.apple.com/search',['itunes.apple.com']));
+ assert(!sourceRoute('https://itunes.apple.com.evil.invalid/search',['itunes.apple.com']));
+ assert(!sourceRoute('https://example.invalid/itunes.apple.com/search',['itunes.apple.com']));
+ assert(!sourceRoute('https://example.invalid/?url=https://books.apple.com/us/book',['books.apple.com'],'/us/'));
+ assert(sourceRoute('https://books.apple.com/us/book',['books.apple.com'],'/us/'));
+ assert(!sourceRoute('https://books.apple.com/gb/book',['books.apple.com'],'/us/'));
+});
 const base={mood:'any',genre:'any',pace:'any',length:'any',era:'any',format:'ebook',access:'any'};
 const book=(id,genres,moods,access=['free','paid'])=>({
  id,title:id,author:'Known Writer',year:1885,genres,moods,pace:'balanced',
@@ -75,8 +87,8 @@ test('an unknown country offers a profile choice and never requests a US cover s
   await h.w.MatchAppEbooks.match();
   await new Promise(resolve=>setTimeout(resolve,0));
   assert.equal(h.result().querySelector('[data-ebook-choose-country]')?.getAttribute('href'),'/profile/profile.html');
-  assert(!calls.some(url=>url.includes('itunes.apple.com')));
-  assert(![...h.result().querySelectorAll('a')].some(a=>/books\.apple\.com\/us\/|amazon\.com\/s|kobo\.com\/us\//.test(a.href)));
+  assert(!calls.some(url=>sourceRoute(url,['itunes.apple.com'])));
+  assert(![...h.result().querySelectorAll('a')].some(a=>sourceRoute(a.href,['books.apple.com'],'/us/')||sourceRoute(a.href,['amazon.com','www.amazon.com'],'/s')||sourceRoute(a.href,['kobo.com','www.kobo.com'],'/us/')));
   assert(h.result().querySelector('a[href^="https://books.google.com/"]'));
   assert.equal(h.credits(),1,'the actual book remains matchable without inventing local stock');
  }finally{h.dom.window.close()}

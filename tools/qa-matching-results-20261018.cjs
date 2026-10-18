@@ -3,6 +3,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
+const {matchingFixtureHtml}=require('./qa-matching-fixture-html.cjs');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'artifacts','matching-results-20261018');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8'),source=read('discover.js');
 const functionSource=name=>{const a=source.indexOf('function '+name+'('),b=source.indexOf('\n}',a)+2;assert(a>=0&&b>a);return source.slice(a,b);};
@@ -44,7 +45,7 @@ async function metrics(page,cardSelector,imageSelector,buttons){
       await context.route('**/*',route=>route.request().url().startsWith(base)?route.continue():route.abort());
       const page=await context.newPage();
       for(const surface of ['discover','home']){
-        const html=read(surface==='discover'?'discover.html':'index.html').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace('<head>','<head><base href="'+base+'/">');
+        const html=matchingFixtureHtml(read(surface==='discover'?'discover.html':'index.html'),base);
         await page.setContent(html,{waitUntil:'load'});
         if(surface==='discover'){
           await page.addScriptTag({content:sourceFunctions});
