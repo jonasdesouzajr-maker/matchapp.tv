@@ -243,7 +243,13 @@ test('expired or no-longer-eligible claims cannot prepare an ad, and cancelled p
  const last={requestId:randomUUID(),nonce:randomBytes(32).toString('hex')};assert.equal((await reward('create',f.id,last)).ok,true);await rpc('daily_match_checkin');assert.equal((await reward('native_validate',f.id,last)).reason,'reward_unavailable');
 });
 test('reward-session request limiting is isolated and no client-created earned action is accepted',async()=>{
- const id=await user();for(let i=0;i<60;i++)assert.equal((await reward('wallet',id)).ok,true);assert.equal((await reward('wallet',id)).reason,'rate_limited');assert.equal(await rpc('reserve_pro_billing_request',[id]),true);assert.equal(await rpc('reserve_play_billing_request',[id]),true);assert.equal((await reward('earned',id)).reason,'invalid_request');
+ // PostgreSQL now() is transaction-stable: all requests must share one rate-limit minute.
+ await db.exec('begin');
+ try {
+  const id=await user();for(let i=0;i<60;i++)assert.equal((await reward('wallet',id)).ok,true);assert.equal((await reward('wallet',id)).reason,'rate_limited');assert.equal(await rpc('reserve_pro_billing_request',[id]),true);assert.equal(await rpc('reserve_play_billing_request',[id]),true);assert.equal((await reward('earned',id)).reason,'invalid_request');
+ } finally {
+  await db.exec('rollback');
+ }
 });
 
 test('new adult signup and share grants retire together without rewriting preserved bodies or balances',async()=>{

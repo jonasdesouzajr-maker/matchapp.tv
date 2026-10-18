@@ -2,7 +2,7 @@
 const {chromium}=require('playwright');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),os=require('node:os'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
-const out=process.env.QA_SEO_OUTPUT_DIR||path.join(os.tmpdir(),'matchapp-seo-language-qa');
+const out=process.env.QA_SEO_OUTPUT_DIR||fs.mkdtempSync(path.join(os.tmpdir(),'matchapp-seo-language-qa-'));
 const guides=['choose-what-to-watch','streaming-device-discovery'];
 const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 const mime={'.html':'text/html;charset=utf-8','.css':'text/css;charset=utf-8','.js':'application/javascript;charset=utf-8','.json':'application/json;charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2'};
