@@ -1,10 +1,148 @@
 {
-  "generated_at": "2026-10-18T00:17:51.077Z",
-  "feed_version": "395a020f",
-  "sports_updated_at": "2026-10-17T14:13:22.971Z",
+  "generated_at": "2026-10-18T01:03:22.667Z",
+  "feed_version": "4600aa2c",
+  "sports_updated_at": "2026-10-18T01:03:22.602Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "c9122684",
+      "title": "Protestos contra o aumento do custo vida se espalham pela Europa",
+      "url": "https://g1.globo.com/jornal-nacional/noticia/2026/10/17/protestos-contra-o-aumento-do-custo-vida-se-espalham-pela-europa.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T00:48:37.000Z",
+      "discovered_at": "2026-10-18T01:03:22.667Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/azKDdYEUIlqyIIwJ5QkN1kOyp_A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/Q/tdIXtySKm6fqXYLHMscQ/captura-de-tela-2026-10-17-212736.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/protestos-contra-o-aumento-do-custo-vida-se-espalham-pela-europa-c91226/",
+      "landing_url": "https://matchapp.tv/?news=c9122684#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "contra",
+          "aumento",
+          "custo",
+          "vida",
+          "espalham"
+        ],
+        "long_tail": [
+          "Protestos contra o aumento do custo vida se espalham pela Europa 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "protestos",
+          "contra",
+          "aumento",
+          "custo",
+          "vida",
+          "espalham"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Protestos contra o aumento do custo vida se espalham pela…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "contra",
+          "aumento",
+          "custo",
+          "vida",
+          "espalham",
+          "Protestos contra o aumento do custo vida se espalham pela Europa 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
+    {
+      "id": "f2136f26",
+      "title": "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão",
+      "url": "https://g1.globo.com/jornal-nacional/noticia/2026/10/17/papa-recebe-alta-do-hospital-depois-de-cirurgia-para-remover-cancer-no-pulmao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T00:37:37.000Z",
+      "discovered_at": "2026-10-18T01:03:22.667Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/IGGi94tpi8DKDOhcLHexTNYgW20=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/7/t/L7eN5fTAWC3zOKnIl6hg/captura-de-tela-2026-10-17-211436.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-recebe-alta-do-hospital-depois-de-cirurgia-para-remover-cancer-no-pulmao-f2136f/",
+      "landing_url": "https://matchapp.tv/?news=f2136f26#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "recebe",
+          "alta",
+          "hospital",
+          "depois",
+          "cirurgia"
+        ],
+        "long_tail": [
+          "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "papa",
+          "recebe",
+          "alta",
+          "hospital",
+          "depois",
+          "cirurgia"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Papa recebe alta do hospital depois de cirurgia para…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "recebe",
+          "alta",
+          "hospital",
+          "depois",
+          "cirurgia",
+          "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
+      }
+    },
     {
       "id": "0bd6429c",
       "title": "European diplomats attacked by Israeli settlers in West Bank",
@@ -71,7 +209,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -140,7 +278,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -234,7 +372,7 @@
           "hollywoodreporter.com Miley Cyrus Returns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -333,12 +471,12 @@
           "hollywoodreporter.com diplomat prime minister operatic",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
       "id": "536434a4",
-      "title": "Carro invade jogo de futebol no Kansas e deixa dois mortos, entre eles uma criança",
+      "title": "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/17/carro-invade-jogo-futebol-kansas-mortos.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -352,7 +490,7 @@
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://s2-g1.glbimg.com/0DF8JvbZYk2dFXopn_3FZQ5R65w=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s04.video.glbimg.com/deo/vi/55/20/992055",
-      "matchapp_url": "https://matchapp.tv/news/articles/carro-invade-jogo-de-futebol-no-kansas-e-deixa-dois-mortos-entre-eles-uma-crianc-536434/",
+      "matchapp_url": "https://matchapp.tv/news/articles/carro-invade-jogo-de-futebol-no-kansas-e-mata-menino-de-6-anos-e-um-adulto-536434/",
       "landing_url": "https://matchapp.tv/?news=536434a4#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-17",
@@ -364,10 +502,10 @@
           "jogo",
           "futebol",
           "kansas",
-          "deixa"
+          "mata"
         ],
         "long_tail": [
-          "Carro invade jogo de futebol no Kansas e deixa dois mortos, entre eles uma criança 2026-10-17",
+          "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto 2026-10-17",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
@@ -377,7 +515,7 @@
           "jogo",
           "futebol",
           "kansas",
-          "deixa"
+          "mata"
         ],
         "freshness_keywords": [
           "2026-10-17"
@@ -385,7 +523,7 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Carro invade jogo de futebol no Kansas e deixa dois…",
+        "meta_title": "Carro invade jogo de futebol no Kansas e mata menino de 6…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-17",
@@ -396,13 +534,13 @@
           "jogo",
           "futebol",
           "kansas",
-          "deixa",
-          "Carro invade jogo de futebol no Kansas e deixa dois mortos, entre eles uma criança 2026-10-17",
+          "mata",
+          "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto 2026-10-17",
           "notícias mundiais outubro 2026",
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -471,7 +609,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -540,7 +678,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -609,7 +747,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -701,7 +839,7 @@
           "hollywoodreporter.com Harry Styles Debuts Unreleased",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -770,7 +908,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -839,7 +977,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -908,7 +1046,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -977,7 +1115,7 @@
           "2026-10-17",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1046,7 +1184,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1115,7 +1253,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1184,7 +1322,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1253,76 +1391,7 @@
           "2026-10-17",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
-      }
-    },
-    {
-      "id": "fdfeb3cc",
-      "title": "'Não há regras': a nova estratégia de Putin que pretende impossibilitar a vida nas cidades ucranianas",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/a-nova-estrategia-de-putin-que-pretende-impossibilitar-a-vida-nas-cidades-ucranianas.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T19:18:13.000Z",
-      "discovered_at": "2026-10-17T19:41:31.888Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/ZivtmgBSyAvCNvqr5btGebvB2n8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/A/1YWkGZR8y4dVQZlwV7lQ/fotojet-34-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/nao-ha-regras-a-nova-estrategia-de-putin-que-pretende-impossibilitar-a-vida-nas--fdfeb3/",
-      "landing_url": "https://matchapp.tv/?news=fdfeb3cc#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "nao",
-          "regras",
-          "nova",
-          "estrategia",
-          "putin",
-          "que"
-        ],
-        "long_tail": [
-          "'Não há regras': a nova estratégia de Putin que pretende impossibilitar a vida nas cidades ucranianas 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nao",
-          "regras",
-          "nova",
-          "estrategia",
-          "putin",
-          "que"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "'Não há regras': a nova estratégia de Putin que pretende…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "nao",
-          "regras",
-          "nova",
-          "estrategia",
-          "putin",
-          "que",
-          "'Não há regras': a nova estratégia de Putin que pretende impossibilitar a vida nas cidades ucranianas 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1421,76 +1490,7 @@
           "hollywoodreporter.com nashville pays tribute chad",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
-      }
-    },
-    {
-      "id": "330ebd18",
-      "title": "Zelensky diz que decisão de Trump de suspender sanções à Rússia 'ajuda apenas os russos'",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/zelensky-critica-trump-sancoes-russia.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T18:31:29.000Z",
-      "discovered_at": "2026-10-17T19:41:31.888Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/NTn9aNpnpXwFoNy_KjF1VIHS1Es=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/A/oVvtAoSZK3vJZYCgkexw/2026-10-17t130823z-833036998-rc2c4oat4p98-rtrmadp-3-ukraine-crisis-ze-enskiy-trilateral.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-diz-que-decisao-de-trump-de-suspender-sancoes-a-russia-ajuda-apenas-os--330ebd/",
-      "landing_url": "https://matchapp.tv/?news=330ebd18#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "zelensky",
-          "diz",
-          "que",
-          "decisao",
-          "trump",
-          "suspender"
-        ],
-        "long_tail": [
-          "Zelensky diz que decisão de Trump de suspender sanções à Rússia 'ajuda apenas os russos' 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "zelensky",
-          "diz",
-          "que",
-          "decisao",
-          "trump",
-          "suspender"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Zelensky diz que decisão de Trump de suspender sanções à…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "zelensky",
-          "diz",
-          "que",
-          "decisao",
-          "trump",
-          "suspender",
-          "Zelensky diz que decisão de Trump de suspender sanções à Rússia 'ajuda apenas os russos' 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1589,7 +1589,7 @@
           "hollywoodreporter.com american horror story actor",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1685,7 +1685,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1783,7 +1783,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1884,7 +1884,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -1978,7 +1978,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2077,7 +2077,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2176,7 +2176,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2274,7 +2274,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2375,7 +2375,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2476,7 +2476,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2574,7 +2574,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2675,7 +2675,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2769,7 +2769,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2870,7 +2870,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -2892,7 +2892,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-a-c199d5/",
       "landing_url": "https://matchapp.tv/?news=c199d597#latest-news",
       "seo": {
-        "primary_keyword": "que horas começa a novela quem ama cuida hoje",
+        "primary_keyword": "que renato russo estaria últimas notícias",
         "short_tail": [
           "que renato russo estaria",
           "que renato russo estaria news",
@@ -2900,8 +2900,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "que horas começa a novela quem ama cuida hoje"
+          "notícias hoje"
         ],
         "long_tail": [
           "que renato russo estaria latest news October 2026",
@@ -2914,9 +2913,7 @@
           "que renato russo estaria notícia de 2026-10-16",
           "o que aconteceu com que renato russo estaria"
         ],
-        "trend_keywords": [
-          "que horas começa a novela quem ama cuida hoje"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "que",
           "renato",
@@ -2941,7 +2938,7 @@
         "meta_title": "O que Renato Russo estaria fazendo hoje? Companheiros de…",
         "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "que horas começa a novela quem ama cuida hoje",
+          "que renato russo estaria últimas notícias",
           "que renato russo estaria",
           "que renato russo estaria news",
           "entertainment",
@@ -2974,7 +2971,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3075,7 +3072,7 @@
           "g1.globo.com apos street fighter velozes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3176,7 +3173,7 @@
           "g1.globo.com fosse voce fantastico conversa",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3277,7 +3274,7 @@
           "g1.globo.com batman steven soderbergh assume",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3374,7 +3371,7 @@
           "bbc.co.uk london housing project wins",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3464,7 +3461,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     },
     {
@@ -3565,7 +3562,7 @@
           "g1.globo.com netflix reajusta precos planos",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T00:17:51.077Z"
+        "seo_generated_at": "2026-10-18T01:03:22.667Z"
       }
     }
   ]
