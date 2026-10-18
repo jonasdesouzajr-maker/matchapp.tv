@@ -64,3 +64,15 @@ test('Dated US book-to-screen discovery is responsive, linked and does not inven
  assert.equal(section.querySelectorAll('a[href^="/discover.html?q="]').length,2);
  assert.ok(d.querySelector('meta[name="viewport"]'));
 });
+
+test('Founder ProfilePage dates are real, chronological ISO 8601 timestamps matching its generator',()=>{
+ const founder=schema(read('founder/index.html')).flatMap(row=>row['@graph']||[row]).find(row=>row['@type']==='ProfilePage');
+ assert.ok(founder,'missing founder ProfilePage');
+ for(const key of ['dateCreated','dateModified']){
+  assert.match(founder[key],/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/,key+' must have ISO 8601 date and time');
+  assert.ok(Number.isFinite(Date.parse(founder[key])),key+' must be parseable');
+ }
+ assert.ok(Date.parse(founder.dateCreated)<=Date.parse(founder.dateModified));
+ const generator=read('tools/build-founder-page.cjs');
+ for(const key of ['dateCreated','dateModified'])assert.ok(generator.includes(key+':'+"'"+founder[key]+"'"),'generator and output disagree: '+key);
+});
