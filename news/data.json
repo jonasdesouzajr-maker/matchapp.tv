@@ -1,10 +1,657 @@
 {
-  "generated_at": "2026-10-18T05:03:57.093Z",
-  "feed_version": "59ad8f03",
+  "generated_at": "2026-10-18T07:43:24.320Z",
+  "feed_version": "7315d517",
   "sports_updated_at": "2026-10-18T01:03:22.602Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "e55abcfb",
+      "title": "South Africa’s Oscar Entry ‘Variations on a Theme’ Was Written With Microsoft Excel",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/oscars-2027-south-africa-film-variations-on-a-theme-excel-1236734314/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T07:30:00.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Awards",
+      "category": "entertainment",
+      "person": "South Africa’s Oscar Entry",
+      "description": "South Africa’s Oscar Entry: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/02/Variations-on-a-Theme-film-still.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/south-africa-s-oscar-entry-variations-on-a-theme-was-written-with-microsoft-exce-e55abc/",
+      "landing_url": "https://matchapp.tv/?news=e55abcfb#latest-news",
+      "seo": {
+        "primary_keyword": "south africa vs australia",
+        "short_tail": [
+          "South Africa’s Oscar Entry",
+          "South Africa’s Oscar Entry news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "south africa vs australia"
+        ],
+        "long_tail": [
+          "South Africa’s Oscar Entry latest news October 2026",
+          "South Africa’s Oscar Entry awards update 2026",
+          "South Africa’s Oscar Entry news 2026-10-18",
+          "latest awards news about South Africa’s Oscar Entry",
+          "south africa oscar entry south africa latest update",
+          "The Hollywood Reporter South Africa’s Oscar Entry awards",
+          "latest news about South Africa’s Oscar Entry October 2026",
+          "South Africa’s Oscar Entry entertainment news 2026-10-18",
+          "what happened with South Africa’s Oscar Entry"
+        ],
+        "trend_keywords": [
+          "south africa vs australia"
+        ],
+        "entity_keywords": [
+          "South Africa’s Oscar Entry",
+          "south",
+          "africa",
+          "oscar",
+          "entry"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "South Africa’s Oscar Entry 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter South Africa’s Oscar Entry",
+          "hollywoodreporter.com South Africa’s Oscar Entry",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "South Africa’s Oscar Entry ‘Variations on a Theme’ Was…",
+        "meta_description": "South Africa’s Oscar Entry: Awards update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
+        "keywords": [
+          "south africa vs australia",
+          "South Africa’s Oscar Entry",
+          "South Africa’s Oscar Entry news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "South Africa’s Oscar Entry latest news October 2026",
+          "South Africa’s Oscar Entry awards update 2026",
+          "South Africa’s Oscar Entry news 2026-10-18",
+          "latest awards news about South Africa’s Oscar Entry",
+          "south africa oscar entry south africa latest update",
+          "The Hollywood Reporter South Africa’s Oscar Entry awards",
+          "latest news about South Africa’s Oscar Entry October 2026",
+          "South Africa’s Oscar Entry entertainment news 2026-10-18",
+          "what happened with South Africa’s Oscar Entry",
+          "south",
+          "africa",
+          "oscar",
+          "entry",
+          "October 2026",
+          "2026-10-18",
+          "South Africa’s Oscar Entry 2026",
+          "The Hollywood Reporter South Africa’s Oscar Entry",
+          "hollywoodreporter.com South Africa’s Oscar Entry",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "6bd483fb",
+      "title": "Several dead or injured in major fire at Canada military base",
+      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T07:09:23.000Z",
+      "discovered_at": "2026-10-18T05:03:57.093Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c25c/live/fabd7e50-cab5-11f1-a64c-550be9e3c66b.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
+      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "long_tail": [
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Several dead or injured in major fire at Canada military…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada",
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "cb84c0f7",
+      "title": "O que se sabe sobre o envio de tropas dos EUA à América Latina para combater o narcotráfico",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/o-que-se-sabe-sobre-o-envio-de-tropas-dos-eua-a-america-latina-para-combater-o-narcotrafico.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T07:00:01.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/59gdNQ7foGLufwwNfHVgn8DLgNI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/A/VLimeJQfOBndvLbc2QMw/design-sem-nome-2026-10-16t131000.665.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/o-que-se-sabe-sobre-o-envio-de-tropas-dos-eua-a-america-latina-para-combater-o-n-cb84c0/",
+      "landing_url": "https://matchapp.tv/?news=cb84c0f7#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "que",
+          "sabe",
+          "sobre",
+          "envio",
+          "tropas",
+          "eua"
+        ],
+        "long_tail": [
+          "O que se sabe sobre o envio de tropas dos EUA à América Latina para combater o narcotráfico 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "que",
+          "sabe",
+          "sobre",
+          "envio",
+          "tropas",
+          "eua"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "O que se sabe sobre o envio de tropas dos EUA à América…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "que",
+          "sabe",
+          "sobre",
+          "envio",
+          "tropas",
+          "eua",
+          "O que se sabe sobre o envio de tropas dos EUA à América Latina para combater o narcotráfico 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "d754e289",
+      "title": "Seal pups spotted at nature reserve for 12th year",
+      "url": "https://www.bbc.co.uk/news/articles/c6jrwnzyv528o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T06:20:04.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1960/live/ebe42590-c881-11f1-a2e8-f71844f8002e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/seal-pups-spotted-at-nature-reserve-for-12th-year-d754e2/",
+      "landing_url": "https://matchapp.tv/?news=d754e289#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "seal",
+          "pups",
+          "spotted",
+          "nature",
+          "reserve",
+          "12th"
+        ],
+        "long_tail": [
+          "Seal pups spotted at nature reserve for 12th year 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "seal",
+          "pups",
+          "spotted",
+          "nature",
+          "reserve",
+          "12th"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Seal pups spotted at nature reserve for 12th year | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "seal",
+          "pups",
+          "spotted",
+          "nature",
+          "reserve",
+          "12th",
+          "Seal pups spotted at nature reserve for 12th year 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "a2a6b621",
+      "title": "Violent clashes, looting and buildings ablaze in France as over 1,200 arrested after protests",
+      "url": "https://www.bbc.co.uk/news/articles/c6d937wedj7jo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T05:56:20.000Z",
+      "discovered_at": "2026-10-17T22:37:01.302Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/287a/live/339305e0-ca4a-11f1-81dd-07b2258f847d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/violent-clashes-looting-and-buildings-ablaze-in-france-as-over-1-200-arrested-af-a2a6b6/",
+      "landing_url": "https://matchapp.tv/?news=a2a6b621#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "violent",
+          "clashes",
+          "looting",
+          "buildings",
+          "ablaze",
+          "france"
+        ],
+        "long_tail": [
+          "Violent clashes, looting and buildings ablaze in France as over 1,200 arrested after protests 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "violent",
+          "clashes",
+          "looting",
+          "buildings",
+          "ablaze",
+          "france"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Violent clashes, looting and buildings ablaze in France as…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "violent",
+          "clashes",
+          "looting",
+          "buildings",
+          "ablaze",
+          "france",
+          "Violent clashes, looting and buildings ablaze in France as over 1,200 arrested after protests 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "3e8b1b46",
+      "title": "Corby metal pollution may harm people, says study",
+      "url": "https://www.bbc.co.uk/news/articles/ckx2dgl087lzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T05:37:52.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1dbd/live/16972b10-ca31-11f1-9ab2-b325ce61f9d2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/corby-metal-pollution-may-harm-people-says-study-3e8b1b/",
+      "landing_url": "https://matchapp.tv/?news=3e8b1b46#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "corby",
+          "metal",
+          "pollution",
+          "may",
+          "harm",
+          "people"
+        ],
+        "long_tail": [
+          "Corby metal pollution may harm people, says study 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "corby",
+          "metal",
+          "pollution",
+          "may",
+          "harm",
+          "people"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Corby metal pollution may harm people, says study | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "corby",
+          "metal",
+          "pollution",
+          "may",
+          "harm",
+          "people",
+          "Corby metal pollution may harm people, says study 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "c402fa65",
+      "title": "Two damselfly species return to restored woodland",
+      "url": "https://www.bbc.co.uk/news/articles/cwg5jvnqv28go?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T05:16:16.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f498/live/7ed85640-c897-11f1-b0a4-81e564f1cfaa.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/two-damselfly-species-return-to-restored-woodland-c402fa/",
+      "landing_url": "https://matchapp.tv/?news=c402fa65#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "two",
+          "damselfly",
+          "species",
+          "return",
+          "restored",
+          "woodland"
+        ],
+        "long_tail": [
+          "Two damselfly species return to restored woodland 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "two",
+          "damselfly",
+          "species",
+          "return",
+          "restored",
+          "woodland"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Two damselfly species return to restored woodland | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "two",
+          "damselfly",
+          "species",
+          "return",
+          "restored",
+          "woodland",
+          "Two damselfly species return to restored woodland 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "39200832",
+      "title": "Church makes sainthood case for 'WW1 hero' priest",
+      "url": "https://www.bbc.co.uk/news/articles/cmg47rwddpxko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T05:15:53.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9889/live/84cf90b0-ca61-11f1-8a78-59dd7000461f.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/church-makes-sainthood-case-for-ww1-hero-priest-392008/",
+      "landing_url": "https://matchapp.tv/?news=39200832#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "church",
+          "makes",
+          "sainthood",
+          "case",
+          "ww1",
+          "hero"
+        ],
+        "long_tail": [
+          "Church makes sainthood case for 'WW1 hero' priest 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "church",
+          "makes",
+          "sainthood",
+          "case",
+          "ww1",
+          "hero"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Church makes sainthood case for 'WW1 hero' priest | World…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "church",
+          "makes",
+          "sainthood",
+          "case",
+          "ww1",
+          "hero",
+          "Church makes sainthood case for 'WW1 hero' priest 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "0e4e8818",
+      "title": "A wave of homemade, synthetic drugs sweeps US and deepens crisis",
+      "url": "https://www.bbc.co.uk/news/articles/cmx2wvyv5j17o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T05:04:31.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6a90/live/cf7329e0-ca0e-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/a-wave-of-homemade-synthetic-drugs-sweeps-us-and-deepens-crisis-0e4e88/",
+      "landing_url": "https://matchapp.tv/?news=0e4e8818#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "wave",
+          "homemade",
+          "synthetic",
+          "drugs",
+          "sweeps",
+          "deepens"
+        ],
+        "long_tail": [
+          "A wave of homemade, synthetic drugs sweeps US and deepens crisis 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "wave",
+          "homemade",
+          "synthetic",
+          "drugs",
+          "sweeps",
+          "deepens"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "A wave of homemade, synthetic drugs sweeps US and deepens…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "wave",
+          "homemade",
+          "synthetic",
+          "drugs",
+          "sweeps",
+          "deepens",
+          "A wave of homemade, synthetic drugs sweeps US and deepens crisis 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
     {
       "id": "10982585",
       "title": "Chefe do Exército britânico diz que governo deve preparar população para tempos de guerra",
@@ -71,76 +718,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "6bd483fb",
-      "title": "Deaths confirmed in major fire at Canada military base",
-      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T04:00:50.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/16b9/live/88b2a660-caa5-11f1-9f95-1db69c12ee59.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/deaths-confirmed-in-major-fire-at-canada-military-base-6bd483/",
-      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "deaths",
-          "confirmed",
-          "major",
-          "fire",
-          "canada",
-          "military"
-        ],
-        "long_tail": [
-          "Deaths confirmed in major fire at Canada military base 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "deaths",
-          "confirmed",
-          "major",
-          "fire",
-          "canada",
-          "military"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Deaths confirmed in major fire at Canada military base |…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "deaths",
-          "confirmed",
-          "major",
-          "fire",
-          "canada",
-          "military",
-          "Deaths confirmed in major fire at Canada military base 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -238,12 +816,12 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
       "id": "b1140748",
-      "title": "Incêndio em base militar no Canadá deixa mortos e feridos",
+      "title": "Incêndio em base militar no Canadá deixa mortos e feridos; hospitais ficam sobrecarregados",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/17/incendio-em-base-militar-no-canada-deixa-mortos-e-feridos.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -256,8 +834,8 @@
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/qAHlU33KHd6RtH5PT-W1iavPMlU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/T/C/UcVp8KTAWAtHbvmWE4Aw/foto-1.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/incendio-em-base-militar-no-canada-deixa-mortos-e-feridos-b11407/",
+      "image": "https://s2-g1.glbimg.com/kKNIBsDYeVlbJKyvzeQsCTQ7bY0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/c/3/jb1yBgRnCUG4XypUVVRQ/captura-de-tela-2026-10-18-031502.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/incendio-em-base-militar-no-canada-deixa-mortos-e-feridos-hospitais-ficam-sobrec-b11407/",
       "landing_url": "https://matchapp.tv/?news=b1140748#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-18",
@@ -272,7 +850,7 @@
           "mortos"
         ],
         "long_tail": [
-          "Incêndio em base militar no Canadá deixa mortos e feridos 2026-10-18",
+          "Incêndio em base militar no Canadá deixa mortos e feridos; hospitais ficam sobrecarregados 2026-10-18",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
@@ -290,7 +868,7 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Incêndio em base militar no Canadá deixa mortos e feridos…",
+        "meta_title": "Incêndio em base militar no Canadá deixa mortos e feridos;…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-18",
@@ -302,12 +880,12 @@
           "canada",
           "deixa",
           "mortos",
-          "Incêndio em base militar no Canadá deixa mortos e feridos 2026-10-18",
+          "Incêndio em base militar no Canadá deixa mortos e feridos; hospitais ficam sobrecarregados 2026-10-18",
           "notícias mundiais outubro 2026",
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -329,7 +907,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/academy-museum-gala-taylor-swift-sabrina-carpenter-jennifer-hudson-connor-storri-f2276c/",
       "landing_url": "https://matchapp.tv/?news=f2276c73#latest-news",
       "seo": {
-        "primary_keyword": "sabrina carpenter",
+        "primary_keyword": "Academy Museum Gala latest news",
         "short_tail": [
           "Academy Museum Gala",
           "Academy Museum Gala news",
@@ -337,8 +915,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "sabrina carpenter"
+          "entertainment updates"
         ],
         "long_tail": [
           "Academy Museum Gala latest news October 2026",
@@ -351,9 +928,7 @@
           "Academy Museum Gala entertainment news 2026-10-18",
           "what happened with Academy Museum Gala"
         ],
-        "trend_keywords": [
-          "sabrina carpenter"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "Academy Museum Gala",
           "academy",
@@ -375,7 +950,7 @@
         "meta_title": "Academy Museum Gala: Taylor Swift, Sabrina Carpenter,…",
         "meta_description": "Academy Museum Gala: Entertainment update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
         "keywords": [
-          "sabrina carpenter",
+          "Academy Museum Gala latest news",
           "Academy Museum Gala",
           "Academy Museum Gala news",
           "entertainment",
@@ -404,7 +979,7 @@
           "hollywoodreporter.com Academy Museum Gala",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -473,7 +1048,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -542,7 +1117,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -611,7 +1186,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -680,76 +1255,197 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
-      "id": "0bd6429c",
-      "title": "European diplomats attacked by Israeli settlers in West Bank",
-      "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "id": "70a3143d",
+      "title": "How The Traitors' music plays with your emotions",
+      "url": "https://www.bbc.co.uk/news/articles/crwyq75117z4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-17T23:52:38.000Z",
-      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "published_at": "2026-10-18T00:29:58.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
       "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/european-diplomats-attacked-by-israeli-settlers-in-west-bank-0bd642/",
-      "landing_url": "https://matchapp.tv/?news=0bd6429c#latest-news",
+      "category": "entertainment",
+      "person": "How The Traitors",
+      "description": "How The Traitors: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0053/live/4d5e5df0-c976-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/how-the-traitors-music-plays-with-your-emotions-70a314/",
+      "landing_url": "https://matchapp.tv/?news=70a3143d#latest-news",
       "seo": {
-        "primary_keyword": "world news 2026-10-17",
+        "primary_keyword": "How The Traitors latest news",
         "short_tail": [
-          "world news",
-          "global headlines",
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west"
+          "How The Traitors",
+          "How The Traitors news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
         ],
         "long_tail": [
-          "European diplomats attacked by Israeli settlers in West Bank 2026-10-17",
-          "world news October 2026"
+          "How The Traitors latest news October 2026",
+          "How The Traitors entertainment update 2026",
+          "How The Traitors news 2026-10-18",
+          "latest entertainment news about How The Traitors",
+          "how traitors how traitors music plays latest update",
+          "BBC How The Traitors entertainment",
+          "latest news about How The Traitors October 2026",
+          "How The Traitors entertainment news 2026-10-18",
+          "what happened with How The Traitors"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west"
+          "How The Traitors",
+          "how",
+          "traitors",
+          "music",
+          "plays",
+          "your",
+          "emotions"
         ],
         "freshness_keywords": [
-          "2026-10-17"
+          "October 2026",
+          "2026-10-18",
+          "How The Traitors 2026"
         ],
         "source_keywords": [
-          "BBC World"
+          "BBC How The Traitors",
+          "bbc.co.uk How The Traitors",
+          "BBC entertainment news"
         ],
-        "meta_title": "European diplomats attacked by Israeli settlers in West…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
+        "meta_title": "How The Traitors' music plays with your emotions |…",
+        "meta_description": "How The Traitors: Entertainment update reported by BBC on 2026-10-18. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west",
-          "European diplomats attacked by Israeli settlers in West Bank 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
+          "How The Traitors latest news",
+          "How The Traitors",
+          "How The Traitors news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "How The Traitors latest news October 2026",
+          "How The Traitors entertainment update 2026",
+          "How The Traitors news 2026-10-18",
+          "latest entertainment news about How The Traitors",
+          "how traitors how traitors music plays latest update",
+          "BBC How The Traitors entertainment",
+          "latest news about How The Traitors October 2026",
+          "How The Traitors entertainment news 2026-10-18",
+          "what happened with How The Traitors",
+          "how",
+          "traitors",
+          "music",
+          "plays",
+          "your",
+          "emotions",
+          "October 2026",
+          "2026-10-18",
+          "How The Traitors 2026",
+          "BBC How The Traitors",
+          "bbc.co.uk How The Traitors",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "2b7ba610",
+      "title": "Comedian Paul Whitehouse mugged at London cash machine",
+      "url": "https://www.bbc.co.uk/news/articles/cmd6dnq2j4v3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-18T00:06:36.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Comedian Paul Whitehouse",
+      "description": "Comedian Paul Whitehouse: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b3f9/live/3b471730-ca82-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/comedian-paul-whitehouse-mugged-at-london-cash-machine-2b7ba6/",
+      "landing_url": "https://matchapp.tv/?news=2b7ba610#latest-news",
+      "seo": {
+        "primary_keyword": "Comedian Paul Whitehouse latest news",
+        "short_tail": [
+          "Comedian Paul Whitehouse",
+          "Comedian Paul Whitehouse news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Comedian Paul Whitehouse latest news October 2026",
+          "Comedian Paul Whitehouse entertainment update 2026",
+          "Comedian Paul Whitehouse news 2026-10-18",
+          "latest entertainment news about Comedian Paul Whitehouse",
+          "comedian paul whitehouse comedian paul whitehouse latest update",
+          "BBC Comedian Paul Whitehouse entertainment",
+          "latest news about Comedian Paul Whitehouse October 2026",
+          "Comedian Paul Whitehouse entertainment news 2026-10-18",
+          "what happened with Comedian Paul Whitehouse"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Comedian Paul Whitehouse",
+          "comedian",
+          "paul",
+          "whitehouse",
+          "mugged",
+          "london"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Comedian Paul Whitehouse 2026"
+        ],
+        "source_keywords": [
+          "BBC Comedian Paul Whitehouse",
+          "bbc.co.uk Comedian Paul Whitehouse",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Comedian Paul Whitehouse mugged at London cash machine |…",
+        "meta_description": "Comedian Paul Whitehouse: Entertainment update reported by BBC on 2026-10-18. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Comedian Paul Whitehouse latest news",
+          "Comedian Paul Whitehouse",
+          "Comedian Paul Whitehouse news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Comedian Paul Whitehouse latest news October 2026",
+          "Comedian Paul Whitehouse entertainment update 2026",
+          "Comedian Paul Whitehouse news 2026-10-18",
+          "latest entertainment news about Comedian Paul Whitehouse",
+          "comedian paul whitehouse comedian paul whitehouse latest update",
+          "BBC Comedian Paul Whitehouse entertainment",
+          "latest news about Comedian Paul Whitehouse October 2026",
+          "Comedian Paul Whitehouse entertainment news 2026-10-18",
+          "what happened with Comedian Paul Whitehouse",
+          "comedian",
+          "paul",
+          "whitehouse",
+          "mugged",
+          "london",
+          "October 2026",
+          "2026-10-18",
+          "Comedian Paul Whitehouse 2026",
+          "BBC Comedian Paul Whitehouse",
+          "bbc.co.uk Comedian Paul Whitehouse",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -818,7 +1514,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -912,7 +1608,7 @@
           "hollywoodreporter.com Miley Cyrus Returns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -1011,7 +1707,104 @@
           "hollywoodreporter.com diplomat prime minister operatic",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
+      }
+    },
+    {
+      "id": "24fc5221",
+      "title": "Manifest: From reality TV to Wembley Arena in one turbulent year",
+      "url": "https://www.bbc.co.uk/news/articles/cqrky2rkd5n1o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-17T23:07:57.000Z",
+      "discovered_at": "2026-10-18T07:43:24.320Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1182/live/ee2b5bb0-ca1c-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/manifest-from-reality-tv-to-wembley-arena-in-one-turbulent-year-24fc52/",
+      "landing_url": "https://matchapp.tv/?news=24fc5221#latest-news",
+      "seo": {
+        "primary_keyword": "manifest reality wembley arena latest news",
+        "short_tail": [
+          "manifest reality wembley arena",
+          "manifest reality wembley arena news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "manifest reality wembley arena latest news October 2026",
+          "manifest reality wembley arena entertainment update 2026",
+          "manifest reality wembley arena news 2026-10-17",
+          "latest entertainment news about manifest reality wembley arena",
+          "manifest reality wembley arena one turbulent latest update",
+          "BBC manifest reality wembley arena entertainment",
+          "latest news about manifest reality wembley arena October 2026",
+          "manifest reality wembley arena entertainment news 2026-10-17",
+          "what happened with manifest reality wembley arena"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "manifest",
+          "reality",
+          "wembley",
+          "arena",
+          "one",
+          "turbulent",
+          "year"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "manifest reality wembley arena 2026"
+        ],
+        "source_keywords": [
+          "BBC manifest reality wembley arena",
+          "bbc.co.uk manifest reality wembley arena",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Manifest: From reality TV to Wembley Arena in one…",
+        "meta_description": "Entertainment update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "manifest reality wembley arena latest news",
+          "manifest reality wembley arena",
+          "manifest reality wembley arena news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "manifest reality wembley arena latest news October 2026",
+          "manifest reality wembley arena entertainment update 2026",
+          "manifest reality wembley arena news 2026-10-17",
+          "latest entertainment news about manifest reality wembley arena",
+          "manifest reality wembley arena one turbulent latest update",
+          "BBC manifest reality wembley arena entertainment",
+          "latest news about manifest reality wembley arena October 2026",
+          "manifest reality wembley arena entertainment news 2026-10-17",
+          "what happened with manifest reality wembley arena",
+          "manifest",
+          "reality",
+          "wembley",
+          "arena",
+          "one",
+          "turbulent",
+          "year",
+          "October 2026",
+          "2026-10-17",
+          "manifest reality wembley arena 2026",
+          "BBC manifest reality wembley arena",
+          "bbc.co.uk manifest reality wembley arena",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -1080,214 +1873,7 @@
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "15dda46e",
-      "title": "Photos show luxury boat with 50m pool and water slides near Kim Jong Un's summer retreat",
-      "url": "https://www.bbc.co.uk/news/articles/cmy4xnyyg1lyo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T22:09:50.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Music",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a208/live/829d3600-c861-11f1-9a39-31b474234113.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/photos-show-luxury-boat-with-50m-pool-and-water-slides-near-kim-jong-un-s-summer-15dda4/",
-      "landing_url": "https://matchapp.tv/?news=15dda46e#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "photos",
-          "show",
-          "luxury",
-          "boat",
-          "50m",
-          "pool"
-        ],
-        "long_tail": [
-          "Photos show luxury boat with 50m pool and water slides near Kim Jong Un's summer retreat 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "photos",
-          "show",
-          "luxury",
-          "boat",
-          "50m",
-          "pool"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Photos show luxury boat with 50m pool and water slides…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "photos",
-          "show",
-          "luxury",
-          "boat",
-          "50m",
-          "pool",
-          "Photos show luxury boat with 50m pool and water slides near Kim Jong Un's summer retreat 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "724f4245",
-      "title": "Incêndio atinge prefeitura de Limoges e derruba telhado do prédio de 1883",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/incendio-prefeitura-limoges-franca.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T21:52:46.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/kiapMxL4sKnT9kPF_DiXXZNFNcE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/K/vA6S8ZSPGco3U6DbOEBw/afp-20261017-d3lp3wf-v1-midres-francesocialdemo.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/incendio-atinge-prefeitura-de-limoges-e-derruba-telhado-do-predio-de-1883-724f42/",
-      "landing_url": "https://matchapp.tv/?news=724f4245#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "incendio",
-          "atinge",
-          "prefeitura",
-          "limoges",
-          "derruba",
-          "telhado"
-        ],
-        "long_tail": [
-          "Incêndio atinge prefeitura de Limoges e derruba telhado do prédio de 1883 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "incendio",
-          "atinge",
-          "prefeitura",
-          "limoges",
-          "derruba",
-          "telhado"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Incêndio atinge prefeitura de Limoges e derruba telhado do…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "incendio",
-          "atinge",
-          "prefeitura",
-          "limoges",
-          "derruba",
-          "telhado",
-          "Incêndio atinge prefeitura de Limoges e derruba telhado do prédio de 1883 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "cd1eb742",
-      "title": "How day of protests unfolded as disorder breaks out across France",
-      "url": "https://www.bbc.co.uk/news/videos/cwz0vy770gpzo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T21:33:17.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/087d/live/01edc4a0-ca75-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/how-day-of-protests-unfolded-as-disorder-breaks-out-across-france-cd1eb7/",
-      "landing_url": "https://matchapp.tv/?news=cd1eb742#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "how",
-          "day",
-          "protests",
-          "unfolded",
-          "disorder",
-          "breaks"
-        ],
-        "long_tail": [
-          "How day of protests unfolded as disorder breaks out across France 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "how",
-          "day",
-          "protests",
-          "unfolded",
-          "disorder",
-          "breaks"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "How day of protests unfolded as disorder breaks out across…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "how",
-          "day",
-          "protests",
-          "unfolded",
-          "disorder",
-          "breaks",
-          "How day of protests unfolded as disorder breaks out across France 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -1379,214 +1965,7 @@
           "hollywoodreporter.com Harry Styles Debuts Unreleased",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "6d1497d2",
-      "title": "Anti-government protesters battle with police in Albania",
-      "url": "https://www.bbc.co.uk/news/articles/crwydey50xeno?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T20:53:00.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9b85/live/bbc9c4f0-ca6b-11f1-b2e2-233efb1fd43c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/anti-government-protesters-battle-with-police-in-albania-6d1497/",
-      "landing_url": "https://matchapp.tv/?news=6d1497d2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "anti",
-          "government",
-          "protesters",
-          "battle",
-          "police",
-          "albania"
-        ],
-        "long_tail": [
-          "Anti-government protesters battle with police in Albania 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "anti",
-          "government",
-          "protesters",
-          "battle",
-          "police",
-          "albania"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Anti-government protesters battle with police in Albania |…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "anti",
-          "government",
-          "protesters",
-          "battle",
-          "police",
-          "albania",
-          "Anti-government protesters battle with police in Albania 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "a2a6b621",
-      "title": "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests",
-      "url": "https://www.bbc.co.uk/news/articles/c6d937wedj7jo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T20:52:17.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/287a/live/339305e0-ca4a-11f1-81dd-07b2258f847d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/violent-clashes-looting-and-buildings-ablaze-in-france-as-over-1-000-arrested-af-a2a6b6/",
-      "landing_url": "https://matchapp.tv/?news=a2a6b621#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "violent",
-          "clashes",
-          "looting",
-          "buildings",
-          "ablaze",
-          "france"
-        ],
-        "long_tail": [
-          "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "violent",
-          "clashes",
-          "looting",
-          "buildings",
-          "ablaze",
-          "france"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Violent clashes, looting and buildings ablaze in France as…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "violent",
-          "clashes",
-          "looting",
-          "buildings",
-          "ablaze",
-          "france",
-          "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "56e18574",
-      "title": "No further action against government adviser's wife over Palestine Action post, police say",
-      "url": "https://www.bbc.co.uk/news/articles/cv8ez40yz950o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T20:24:32.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8a4d/live/defb13e0-ca5a-11f1-852c-2b93a8fc4799.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/no-further-action-against-government-adviser-s-wife-over-palestine-action-post-p-56e185/",
-      "landing_url": "https://matchapp.tv/?news=56e18574#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "further",
-          "action",
-          "against",
-          "government",
-          "adviser",
-          "wife"
-        ],
-        "long_tail": [
-          "No further action against government adviser's wife over Palestine Action post, police say 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "further",
-          "action",
-          "against",
-          "government",
-          "adviser",
-          "wife"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "No further action against government adviser's wife over…",
-        "meta_description": "World report published by BBC Technology on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "further",
-          "action",
-          "against",
-          "government",
-          "adviser",
-          "wife",
-          "No further action against government adviser's wife over Palestine Action post, police say 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -1608,7 +1987,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/9-1-1-nashville-pays-tribute-to-chad-lowe-s-daughter-fiona-after-her-death-at-13-525c62/",
       "landing_url": "https://matchapp.tv/?news=525c62d5#latest-news",
       "seo": {
-        "primary_keyword": "nashville sc",
+        "primary_keyword": "nashville pays tribute chad latest news",
         "short_tail": [
           "nashville pays tribute chad",
           "nashville pays tribute chad news",
@@ -1616,9 +1995,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "nashville sc",
-          "nashville vs"
+          "entertainment updates"
         ],
         "long_tail": [
           "nashville pays tribute chad latest news October 2026",
@@ -1631,10 +2008,7 @@
           "nashville pays tribute chad entertainment news 2026-10-17",
           "what happened with nashville pays tribute chad"
         ],
-        "trend_keywords": [
-          "nashville sc",
-          "nashville vs"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "nashville",
           "pays",
@@ -1658,7 +2032,7 @@
         "meta_title": "‘9-1-1: Nashville’ Pays Tribute to Chad Lowe’s Daughter…",
         "meta_description": "Obituary update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "nashville sc",
+          "nashville pays tribute chad latest news",
           "nashville pays tribute chad",
           "nashville pays tribute chad news",
           "obituary",
@@ -1666,7 +2040,6 @@
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "nashville vs",
           "nashville pays tribute chad latest news October 2026",
           "nashville pays tribute chad obituary update 2026",
           "nashville pays tribute chad news 2026-10-17",
@@ -1691,7 +2064,7 @@
           "hollywoodreporter.com nashville pays tribute chad",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -1787,7 +2160,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -1885,7 +2258,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -1986,7 +2359,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2080,7 +2453,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2179,7 +2552,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2278,7 +2651,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2376,7 +2749,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2477,7 +2850,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2578,7 +2951,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2676,7 +3049,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2698,7 +3071,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/pitty-reprocessa-chip-do-punk-rock-em-album-que-tambem-acena-para-a-pista-do-pop-d2b9ff/",
       "landing_url": "https://matchapp.tv/?news=d2b9ff93#latest-news",
       "seo": {
-        "primary_keyword": "pitty",
+        "primary_keyword": "pitty reprocessa chip punk últimas notícias",
         "short_tail": [
           "pitty reprocessa chip punk",
           "pitty reprocessa chip punk news",
@@ -2706,8 +3079,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "pitty"
+          "notícias hoje"
         ],
         "long_tail": [
           "pitty reprocessa chip punk latest news October 2026",
@@ -2720,9 +3092,7 @@
           "pitty reprocessa chip punk notícia de 2026-10-16",
           "o que aconteceu com pitty reprocessa chip punk"
         ],
-        "trend_keywords": [
-          "pitty"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "pitty",
           "reprocessa",
@@ -2747,7 +3117,7 @@
         "meta_title": "Pitty reprocessa chip do punk rock em álbum que também…",
         "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "pitty",
+          "pitty reprocessa chip punk últimas notícias",
           "pitty reprocessa chip punk",
           "pitty reprocessa chip punk news",
           "entertainment",
@@ -2764,6 +3134,7 @@
           "últimas notícias sobre pitty reprocessa chip punk outubro 2026",
           "pitty reprocessa chip punk notícia de 2026-10-16",
           "o que aconteceu com pitty reprocessa chip punk",
+          "pitty",
           "reprocessa",
           "chip",
           "punk",
@@ -2779,7 +3150,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2873,7 +3244,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -2974,7 +3345,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -3075,407 +3446,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "b5d0a730",
-      "title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa persegue personagens brasileiros? 'Coloquei no meu contrato'",
-      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/16/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasileiros-coloquei-no-meu-contrato.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-16T07:00:00.000Z",
-      "discovered_at": "2026-10-16T07:29:28.440Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/uBXwT3aJmsMBlC8E_8P5XymXOZg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/m/09HrNOTAA88ygtdksUtg/street-fighter-jason-momoa.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasil-b5d0a7/",
-      "landing_url": "https://matchapp.tv/?news=b5d0a730#latest-news",
-      "seo": {
-        "primary_keyword": "apos street fighter velozes últimas notícias",
-        "short_tail": [
-          "apos street fighter velozes",
-          "apos street fighter velozes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "apos street fighter velozes latest news October 2026",
-          "apos street fighter velozes entertainment update 2026",
-          "apos street fighter velozes news 2026-10-16",
-          "latest entertainment news about apos street fighter velozes",
-          "apos street fighter velozes furiosos jason latest update",
-          "G1 apos street fighter velozes entertainment",
-          "últimas notícias sobre apos street fighter velozes outubro 2026",
-          "apos street fighter velozes notícia de 2026-10-16",
-          "o que aconteceu com apos street fighter velozes"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "apos",
-          "street",
-          "fighter",
-          "velozes",
-          "furiosos",
-          "jason",
-          "momoa",
-          "persegue"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "apos street fighter velozes 2026"
-        ],
-        "source_keywords": [
-          "G1 apos street fighter velozes",
-          "g1.globo.com apos street fighter velozes",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "apos street fighter velozes últimas notícias",
-          "apos street fighter velozes",
-          "apos street fighter velozes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "apos street fighter velozes latest news October 2026",
-          "apos street fighter velozes entertainment update 2026",
-          "apos street fighter velozes news 2026-10-16",
-          "latest entertainment news about apos street fighter velozes",
-          "apos street fighter velozes furiosos jason latest update",
-          "G1 apos street fighter velozes entertainment",
-          "últimas notícias sobre apos street fighter velozes outubro 2026",
-          "apos street fighter velozes notícia de 2026-10-16",
-          "o que aconteceu com apos street fighter velozes",
-          "apos",
-          "street",
-          "fighter",
-          "velozes",
-          "furiosos",
-          "jason",
-          "momoa",
-          "persegue",
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "apos street fighter velozes 2026",
-          "G1 apos street fighter velozes",
-          "g1.globo.com apos street fighter velozes",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "29856982",
-      "title": "‘Se Eu Fosse Você 3’: Fantástico conversa com o elenco do novo filme que retoma sucesso do cinema nacional",
-      "url": "https://g1.globo.com/fantastico/noticia/2026/10/16/se-eu-fosse-voce-3-fantastico-conversa-com-o-elenco-do-novo-filme-que-retoma-sucesso-do-cinema-nacional.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-16T03:00:00.000Z",
-      "discovered_at": "2026-10-16T07:29:28.440Z",
-      "event_type": "Casting",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/ZWMrReCaU2ihCQzRUnUl31NVNAk=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s03.video.glbimg.com/deo/vi/10/90/15049010",
-      "matchapp_url": "https://matchapp.tv/news/articles/se-eu-fosse-voce-3-fantastico-conversa-com-o-elenco-do-novo-filme-que-retoma-suc-298569/",
-      "landing_url": "https://matchapp.tv/?news=29856982#latest-news",
-      "seo": {
-        "primary_keyword": "fosse voce fantastico conversa últimas notícias",
-        "short_tail": [
-          "fosse voce fantastico conversa",
-          "fosse voce fantastico conversa news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "fosse voce fantastico conversa latest news October 2026",
-          "fosse voce fantastico conversa casting update 2026",
-          "fosse voce fantastico conversa news 2026-10-16",
-          "latest casting news about fosse voce fantastico conversa",
-          "fosse voce fantastico conversa elenco novo latest update",
-          "G1 fosse voce fantastico conversa casting",
-          "últimas notícias sobre fosse voce fantastico conversa outubro 2026",
-          "fosse voce fantastico conversa notícia de 2026-10-16",
-          "o que aconteceu com fosse voce fantastico conversa"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "fosse",
-          "voce",
-          "fantastico",
-          "conversa",
-          "elenco",
-          "novo",
-          "filme",
-          "que"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "fosse voce fantastico conversa 2026"
-        ],
-        "source_keywords": [
-          "G1 fosse voce fantastico conversa",
-          "g1.globo.com fosse voce fantastico conversa",
-          "G1 entertainment news"
-        ],
-        "meta_title": "‘Se Eu Fosse Você 3’: Fantástico conversa com o elenco do…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "fosse voce fantastico conversa últimas notícias",
-          "fosse voce fantastico conversa",
-          "fosse voce fantastico conversa news",
-          "casting",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "fosse voce fantastico conversa latest news October 2026",
-          "fosse voce fantastico conversa casting update 2026",
-          "fosse voce fantastico conversa news 2026-10-16",
-          "latest casting news about fosse voce fantastico conversa",
-          "fosse voce fantastico conversa elenco novo latest update",
-          "G1 fosse voce fantastico conversa casting",
-          "últimas notícias sobre fosse voce fantastico conversa outubro 2026",
-          "fosse voce fantastico conversa notícia de 2026-10-16",
-          "o que aconteceu com fosse voce fantastico conversa",
-          "fosse",
-          "voce",
-          "fantastico",
-          "conversa",
-          "elenco",
-          "novo",
-          "filme",
-          "que",
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "fosse voce fantastico conversa 2026",
-          "G1 fosse voce fantastico conversa",
-          "g1.globo.com fosse voce fantastico conversa",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "4663b6da",
-      "title": "'Batman 2': Steven Soderbergh assume direção em fim das filmagens 'para ajudar' Matt Reeves",
-      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/15/batman-2-troca-de-diretores-steven-soderbergh-assume-funcao-de-matt-reeves-no-resto-das-filmagens.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-15T22:32:32.000Z",
-      "discovered_at": "2026-10-15T23:15:03.438Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/d7PxmtxDi4uiJj5W7Rg8qWIEMMc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/m/U/1UvLUASZAevRCb1TBygQ/the-batman-robert-pattinson.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/batman-2-steven-soderbergh-assume-direcao-em-fim-das-filmagens-para-ajudar-matt--4663b6/",
-      "landing_url": "https://matchapp.tv/?news=4663b6da#latest-news",
-      "seo": {
-        "primary_keyword": "batman steven soderbergh assume últimas notícias",
-        "short_tail": [
-          "batman steven soderbergh assume",
-          "batman steven soderbergh assume news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "batman steven soderbergh assume latest news October 2026",
-          "batman steven soderbergh assume entertainment update 2026",
-          "batman steven soderbergh assume news 2026-10-15",
-          "latest entertainment news about batman steven soderbergh assume",
-          "batman steven soderbergh assume direcao fim latest update",
-          "G1 batman steven soderbergh assume entertainment",
-          "últimas notícias sobre batman steven soderbergh assume outubro 2026",
-          "batman steven soderbergh assume notícia de 2026-10-15",
-          "o que aconteceu com batman steven soderbergh assume"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "batman",
-          "steven",
-          "soderbergh",
-          "assume",
-          "direcao",
-          "fim",
-          "filmagens",
-          "ajudar"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "batman steven soderbergh assume 2026"
-        ],
-        "source_keywords": [
-          "G1 batman steven soderbergh assume",
-          "g1.globo.com batman steven soderbergh assume",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'Batman 2': Steven Soderbergh assume direção em fim das…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-15. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "batman steven soderbergh assume últimas notícias",
-          "batman steven soderbergh assume",
-          "batman steven soderbergh assume news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "batman steven soderbergh assume latest news October 2026",
-          "batman steven soderbergh assume entertainment update 2026",
-          "batman steven soderbergh assume news 2026-10-15",
-          "latest entertainment news about batman steven soderbergh assume",
-          "batman steven soderbergh assume direcao fim latest update",
-          "G1 batman steven soderbergh assume entertainment",
-          "últimas notícias sobre batman steven soderbergh assume outubro 2026",
-          "batman steven soderbergh assume notícia de 2026-10-15",
-          "o que aconteceu com batman steven soderbergh assume",
-          "batman",
-          "steven",
-          "soderbergh",
-          "assume",
-          "direcao",
-          "fim",
-          "filmagens",
-          "ajudar",
-          "October 2026",
-          "2026-10-15",
-          "outubro 2026",
-          "batman steven soderbergh assume 2026",
-          "G1 batman steven soderbergh assume",
-          "g1.globo.com batman steven soderbergh assume",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
-      }
-    },
-    {
-      "id": "138d2464",
-      "title": "London housing project wins top architecture award",
-      "url": "https://www.bbc.co.uk/news/articles/cq8jzgl7zz9po?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-15T20:36:32.000Z",
-      "discovered_at": "2026-10-16T07:29:28.440Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "",
-      "description": "awards headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/036f/live/a0a66fe0-c87f-11f1-a2e8-f71844f8002e.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/london-housing-project-wins-top-architecture-award-138d24/",
-      "landing_url": "https://matchapp.tv/?news=138d2464#latest-news",
-      "seo": {
-        "primary_keyword": "london housing project wins latest news",
-        "short_tail": [
-          "london housing project wins",
-          "london housing project wins news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "london housing project wins latest news October 2026",
-          "london housing project wins awards update 2026",
-          "london housing project wins news 2026-10-15",
-          "latest awards news about london housing project wins",
-          "london housing project wins top architecture latest update",
-          "BBC london housing project wins awards",
-          "latest news about london housing project wins October 2026",
-          "london housing project wins entertainment news 2026-10-15",
-          "what happened with london housing project wins"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "london",
-          "housing",
-          "project",
-          "wins",
-          "top",
-          "architecture",
-          "award"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-15",
-          "london housing project wins 2026"
-        ],
-        "source_keywords": [
-          "BBC london housing project wins",
-          "bbc.co.uk london housing project wins",
-          "BBC entertainment news"
-        ],
-        "meta_title": "London housing project wins top architecture award |…",
-        "meta_description": "Awards update reported by BBC on 2026-10-15. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "london housing project wins latest news",
-          "london housing project wins",
-          "london housing project wins news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "london housing project wins latest news October 2026",
-          "london housing project wins awards update 2026",
-          "london housing project wins news 2026-10-15",
-          "latest awards news about london housing project wins",
-          "london housing project wins top architecture latest update",
-          "BBC london housing project wins awards",
-          "latest news about london housing project wins October 2026",
-          "london housing project wins entertainment news 2026-10-15",
-          "what happened with london housing project wins",
-          "london",
-          "housing",
-          "project",
-          "wins",
-          "top",
-          "architecture",
-          "award",
-          "October 2026",
-          "2026-10-15",
-          "london housing project wins 2026",
-          "BBC london housing project wins",
-          "bbc.co.uk london housing project wins",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     },
     {
@@ -3565,7 +3536,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T07:43:24.320Z"
       }
     }
   ]
