@@ -60,12 +60,140 @@
   function dimensions(value) {
     return value?.heightCss === HEIGHT && value.minWidthCss === MIN_WIDTH && value.maxWidthCss === MAX_WIDTH;
   }
+
+  // Standalone native News needs session context, not app.js's account/quota boot.
+  // Keep the shared project's pinned SDK and default persistent session storage.
+  const NEWS_AUTH_SDK = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js';
+  const NEWS_AUTH_URL = 'https://zkymvqrmbabngsqblyye.supabase.co';
+  const NEWS_AUTH_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q';
+  function bootNewsAccount(w) {
+    if (scope(w) !== 'news' || typeof w.MatchAppNativeNews?.postMessage !== 'function' ||
+        typeof w.MatchAppNativeExperience?.setAdFree !== 'function' ||
+        typeof w.MatchAppNativeExperience?.setNewsAccountContext !== 'function') return null;
+    // A page that already has the shared app account publisher needs no second one.
+    if (typeof w.ensureCompactMatchSession === 'function') return null;
+    if (w.MatchAppNativeNewsAccount) return w.MatchAppNativeNewsAccount;
+    const d = w.document, timers = new Set();
+    let client = null, subscription = null, disposed = false, starting = false, revision = 0, readTimer = null;
+    let owner, observedOwner, resetPending = false; // undefined = unhydrated; null = verified signed-out.
+    function later(fn, ms) {
+      const id = w.setTimeout(() => { timers.delete(id); fn(); }, ms);
+      timers.add(id); return id;
+    }
+    function cancel(id) { w.clearTimeout(id); timers.delete(id); }
+    function notify(name) {
+      d.dispatchEvent(new w.CustomEvent(name, { detail: { source: 'native-news-session' } }));
+    }
+    function unknown(status = 'loading', reset = false) {
+      w.isUserLoggedIn = false;
+      w.matchProfileState = { status, userId: null, error: status === 'error' ? 'session_unavailable' : null };
+      // The new document's native listeners may not be bound before its first hello.
+      // Deny synchronously; only the native authoritative sync may enable ads.
+      try { w.MatchAppNativeExperience.setAdFree(true); } catch (_) {}
+      notify(reset ? 'matchapp:authchange' : 'matchapp:profilehydrated');
+    }
+    function identity(session) {
+      if (session === null) return null;
+      const id = session?.user?.id;
+      return typeof session?.access_token === 'string' && session.access_token.length > 0 &&
+        typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id) ? id : undefined;
+    }
+    function bounded(promise) {
+      return new Promise((resolve, reject) => {
+        const timeout = later(() => reject(new Error('session_timeout')), 8000);
+        Promise.resolve(promise).then(value => { cancel(timeout); resolve(value); }, error => { cancel(timeout); reject(error); });
+      });
+    }
+    function schedule(event, session) {
+      if (disposed || !client) return;
+      const current = ++revision, next = identity(session);
+      if (readTimer !== null) cancel(readTimer);
+      const previous = observedOwner === undefined ? owner : observedOwner;
+      const reset = event === 'SIGNED_OUT' || (previous !== undefined && next !== undefined && previous !== next);
+      // SDK callbacks can deny old proof immediately, but never enable identity/ads.
+      if (next !== undefined) observedOwner = next;
+      if (reset) resetPending = true;
+      unknown('loading', reset);
+      // Supabase callbacks run under its session lock. Read only after they return.
+      readTimer = later(async () => {
+        readTimer = null;
+        try {
+          const result = await bounded(client.auth.getSession());
+          if (disposed || current !== revision) return;
+          if (!result || result.error || !result.data || !Object.prototype.hasOwnProperty.call(result.data, 'session')) throw new Error('session_unavailable');
+          const nextOwner = identity(result.data.session);
+          if (nextOwner === undefined) throw new Error('invalid_session');
+          const changed = owner !== undefined && owner !== nextOwner;
+          owner = nextOwner; observedOwner = owner;
+          w.isUserLoggedIn = owner !== null;
+          // This publishes identity only. Native still verifies profiles + pro_status.
+          w.matchProfileState = { status: owner === null ? 'signedout' : 'loading', userId: owner, error: null };
+          notify(changed && !resetPending ? 'matchapp:authchange' : 'matchapp:profilehydrated');
+          resetPending = false;
+        } catch (_) {
+          if (!disposed && current === revision) unknown('error');
+        }
+      }, 0);
+    }
+    function loadSdk() {
+      if (typeof w.supabase?.createClient === 'function') return Promise.resolve();
+      return new Promise((resolve, reject) => {
+        const existing = Array.from(d.scripts).find(script => script.src === NEWS_AUTH_SDK);
+        const script = existing || d.createElement('script');
+        let timeout;
+        function finish(error) {
+          cancel(timeout); script.removeEventListener('load', loaded); script.removeEventListener('error', failed);
+          if (error) reject(error); else resolve();
+        }
+        function loaded() { finish(typeof w.supabase?.createClient === 'function' ? null : new Error('sdk_unavailable')); }
+        function failed() { finish(new Error('sdk_unavailable')); }
+        script.addEventListener('load', loaded, { once: true }); script.addEventListener('error', failed, { once: true });
+        timeout = later(failed, 8000);
+        if (!existing) { script.src = NEWS_AUTH_SDK; script.async = true; (d.head || d.documentElement).appendChild(script); }
+      });
+    }
+    async function start() {
+      if (disposed || starting) return;
+      starting = true;
+      try {
+        client = w.supabaseClient;
+        if (!client) {
+          await loadSdk();
+          if (disposed) return;
+          client = w.supabaseClient || w.supabase.createClient(NEWS_AUTH_URL, NEWS_AUTH_KEY, { auth: { detectSessionInUrl: false } });
+        }
+        if (typeof client?.auth?.getSession !== 'function' || typeof client.auth.onAuthStateChange !== 'function' ||
+            typeof client.from !== 'function' || typeof client.rpc !== 'function') throw new Error('client_unavailable');
+        w.supabaseClient = client;
+        subscription = client.auth.onAuthStateChange(schedule)?.data?.subscription;
+        schedule();
+      } catch (_) {
+        if (!disposed) unknown('error');
+      } finally {
+        starting = false;
+      }
+    }
+    function resume() {
+      if (client) schedule();
+      else if (typeof w.supabase?.createClient === 'function') start();
+    }
+    const controller = Object.freeze({ dispose() {
+      if (disposed) return;
+      disposed = true; ++revision;
+      timers.forEach(id => w.clearTimeout(id)); timers.clear();
+      subscription?.unsubscribe(); w.removeEventListener('pageshow', resume);
+    } });
+    w.MatchAppNativeNewsAccount = controller;
+    w.addEventListener('pageshow', resume);
+    unknown(); start(); return controller;
+  }
   function boot(w) {
     const surface = w?.document && scope(w);
     if (!surface || typeof w.MatchAppNativeNews?.postMessage !== 'function') return null;
     if (w.MatchAppNativeNewsSlot) return w.MatchAppNativeNewsSlot;
     let requestId = uuid(w);
     if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(requestId)) return null;
+    const newsAccount = surface === 'news' ? bootNewsAccount(w) : null;
     const d = w.document, listeners = [], pointers = new Set();
     let eligible = false, stopped = false, suspended = false, destroyed = false, seq = 0;
     let slot = null, fallback = null, frame = null, timer = null, previous = '', stableFrames = 0;
@@ -277,7 +405,7 @@
     }
     function dispose() {
       if (destroyed) return;
-      suspend(); destroyed = true; observer?.disconnect(); listeners.splice(0).forEach(remove => remove());
+      suspend(); destroyed = true; observer?.disconnect(); newsAccount?.dispose(); listeners.splice(0).forEach(remove => remove());
     }
     listen(w, 'matchapp:nativenews', nativeEvent);
     listen(d, 'matchapp:authchange', resetAccount);
@@ -307,5 +435,5 @@
     const controller = Object.freeze({ refresh: () => queueHello(true), confirmValue, dispose, get requestId() { return requestId; } });
     w.MatchAppNativeNewsSlot = controller; hello(); return controller;
   }
-  return Object.freeze({ boot, scope, language, viewport, languages: Object.freeze(Object.keys(FALLBACK)), fallback: FALLBACK, height: HEIGHT, minWidth: MIN_WIDTH, maxWidth: MAX_WIDTH });
+  return Object.freeze({ boot, bootNewsAccount, scope, language, viewport, languages: Object.freeze(Object.keys(FALLBACK)), fallback: FALLBACK, height: HEIGHT, minWidth: MIN_WIDTH, maxWidth: MAX_WIDTH });
 });

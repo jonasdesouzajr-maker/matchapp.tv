@@ -17,7 +17,7 @@ test('adult share design and promotion preserve homepage SEO',()=>{
   const html=fs.readFileSync('index.html','utf8');
   assert.match(html,/name="description" content="[^"]*share a match with friends/);
   const js=fs.readFileSync('share.js','utf8');
-  const sql=fs.readFileSync('supabase/migrations/20260928095000_three_match_shares_one_reward.sql','utf8');
+  const sql=fs.readFileSync('supabase/migrations-archive/legacy-local/20260928095000_three_match_shares_one_reward.sql','utf8');
   assert.match(js,/claim_match_result_share.*p_title: sharedTitle/);
   assert.match(js,/SHARE_TAGS = '#MatchAppAi #MatchAppTV/);
   assert.match(js,/Try it free: \$\{SHARE_URL\}/);

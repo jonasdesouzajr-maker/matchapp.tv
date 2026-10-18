@@ -67,7 +67,7 @@ test('catalog extraction dry run parses the existing general and Kids catalogues
 });
 
 test('catalog metadata schema is public-read and server-write only',()=>{
-  const sql=read('supabase/migrations/011_catalog_media_metadata.sql');
+  const sql=read('supabase/migrations-archive/legacy-local/011_catalog_media_metadata.sql');
   assert.match(sql,/enable row level security/);
   assert.match(sql,/revoke all on table public\.catalog_media_metadata from anon, authenticated/);
   assert.match(sql,/grant select on table public\.catalog_media_metadata to anon, authenticated/);

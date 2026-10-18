@@ -19,7 +19,7 @@ test('database grants one Match on shares 3 and 6; duplicates, guests and legacy
  `);
  const guest=fs.readFileSync('supabase/security/verified-public-guest-social-proof.sql','utf8');
  await db.exec(guest);
- await db.exec(fs.readFileSync('supabase/migrations/20260928095000_three_match_shares_one_reward.sql','utf8'));
+ await db.exec(fs.readFileSync('supabase/migrations-archive/legacy-local/20260928095000_three_match_shares_one_reward.sql','utf8'));
  const uid='11111111-1111-4111-8111-111111111111';
  await db.query('insert into public.profiles(id) values($1)',[uid]);
  await db.query("select set_config('request.jwt.claim.sub',$1,false)",[uid]);
