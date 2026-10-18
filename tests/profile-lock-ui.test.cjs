@@ -1,10 +1,10 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('fs'),path=require('path'),{JSDOM}=require('jsdom');
-const root=path.join(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8'),extract=(s,a,b)=>s.slice(s.indexOf(a),s.indexOf(b,s.indexOf(a))),tick=()=>new Promise(r=>setTimeout(r,20));
+const root=path.join(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8'),extract=(s,a,b)=>{const start=s.indexOf(a);assert(start>=0,'Missing extraction start: '+a);const end=s.indexOf(b,start);assert(end>start,'Missing extraction end: '+b);return s.slice(start,end)},tick=()=>new Promise(r=>setTimeout(r,20));
 function boot(result){const d=new JSDOM('<p id="identity-load-status"></p><button id="identity-load-retry"></button><div id="editable-fields-section"><input id="profile-name" value="Typed name"><input id="profile-country"><input id="profile-dob"><select id="profile-starsign"></select></div><div id="locked-info-card"><span id="lock-val-name"></span></div><button id="save-profile-btn"></button>',{url:'https://matchapp.tv/profile/profile.html',runScripts:'outside-only'}),w=d.window;
  w.supabaseClient={auth:{getSession:async()=>({data:{session:{user:{id:'u'}}}})},from:()=>({select:()=>({eq:()=>({maybeSingle:result})})})};
  w.eval('var supabaseClient=window.supabaseClient,seenList=[],savedList=[],dislikedList=[],userRatings={},titleNotes={},recentTitles=[];var SESSION_SHOWN=new Set();var STAR_SIGN_TRAITS={};function formatSign(v){return v}function populateEmail(){}function promptProfileCompletion(){}');
  w.eval(extract(read('app.js'),'const REQUIRED_PROFILE_FIELDS =','// Non-blocking nudge'));
- w.eval(extract(read('profile.js'),'function checkAndRenderProfileState()','window.handleAvatar ='));
+ w.eval(extract(read('profile.js'),'function checkAndRenderProfileState(','window.handleAvatar ='));
  return {d,w};}
 test('a fresh sign-in keeps identity fields closed until the saved server lock has loaded',async()=>{
  let release;const {d,w}=boot(()=>new Promise(r=>release=r));const loading=w.hydrateProfileFromAuth({id:'u',user_metadata:{}});await tick();assert.equal(w.document.getElementById('editable-fields-section').style.display,'none');assert(w.document.getElementById('save-profile-btn').disabled);

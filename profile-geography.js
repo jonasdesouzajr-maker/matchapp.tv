@@ -38,8 +38,10 @@ function resolveCountry(value){
 }
 function getRegions(country){return resolveCountry(country)?.[2]||[];}
 function isRegion(country,region){return getRegions(country).some(name=>name===region);}
-function setOptions(select,items,prompt,preserved){
- select.replaceChildren(new Option(prompt,''));
+function setOptions(select,items,prompt,preserved,copyKey){
+ const placeholder=new Option(prompt,'');
+ select.replaceChildren(placeholder);
+ if(copyKey&&window.MatchProfileDetailsI18n)window.MatchProfileDetailsI18n.bind(placeholder,()=>{placeholder.textContent=window.MatchProfileDetailsI18n.text(copyKey);});
  for(const [label,value] of items) select.add(new Option(label,value));
  if(preserved && items.some(([,value])=>value===preserved))select.value=preserved;
  else select.value='';
@@ -57,7 +59,7 @@ function initCountries(){
  const names=DATA.map(row=>[localCountryLabel(row),row[0]]);
  names.sort((a,b)=>a[0].localeCompare(b[0]));
  const portuguese=(localStorage.getItem('match_lang')||document.documentElement.lang||'').toLowerCase().startsWith('pt');
- setOptions(select,names,portuguese?'Selecione seu país':'Select your country',old);
+ setOptions(select,names,portuguese?'Selecione seu país':'Select your country',old,'countryPrompt');
 }
 function bindRegionSelect(region,initialRegion){
  const country=countryElement();
@@ -66,7 +68,7 @@ function bindRegionSelect(region,initialRegion){
   const portuguese=(localStorage.getItem('match_lang')||document.documentElement.lang||'').toLowerCase().startsWith('pt');
   const options=getRegions(country.value).map(name=>[name,name]);
   options.sort((a,b)=>a[0].localeCompare(b[0]));
-  setOptions(region,options,portuguese?'Selecione seu estado ou região':'Select your state or region',desired||'');
+  setOptions(region,options,portuguese?'Selecione seu estado ou região':'Select your state or region',desired||'','regionPrompt');
   region.disabled=!country.value;
  };
  render(initialRegion||'');

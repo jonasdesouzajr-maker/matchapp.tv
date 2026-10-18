@@ -81,6 +81,13 @@ function calculateAgeFromDOB(value) {
     return age>=0 && age<=120 ? age : null;
 }
 
+function renderProfileAgeLabel(node, age) {
+    if (!node) return;
+    const render = () => { node.innerText = window.MatchProfileDetailsI18n?.text('ageSummary', {age}) || `AI Profile: ${age} Years Old`; };
+    if (window.MatchProfileDetailsI18n) window.MatchProfileDetailsI18n.bind(node, render);
+    else render();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const dobInput = document.getElementById('profile-dob');
     const ageDisplay = document.getElementById('profile-age-display');
@@ -94,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedAge = localStorage.getItem('match_user_age');
     if (savedAge && ageDisplay) {
         ageDisplay.style.display = 'inline-block';
-        ageDisplay.innerText = `AI Profile: ${savedAge} Years Old`;
+        renderProfileAgeLabel(ageDisplay, savedAge);
     }
 
     if(dobInput) {
@@ -108,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let calculatedAge = calculateAgeFromDOB(this.value);
                 if (calculatedAge && ageDisplay) {
                     ageDisplay.style.display = 'inline-block';
-                    ageDisplay.innerText = `AI Profile: ${calculatedAge} Years Old`;
+                    renderProfileAgeLabel(ageDisplay, calculatedAge);
                 }
             }
         });
@@ -118,17 +125,23 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProfileGrids();
 });
 
-function checkAndRenderProfileState() {
+function checkAndRenderProfileState(event) {
     const state=window.matchProfileState || {status:'loading'};
     const pending=state.status!=='ready';
+    // A language repaint must not hydrate over edits or unlock a pending save.
+    const languageRefresh=event?.type==='matchapp:langchange' && !pending && localStorage.getItem('match_profile_locked')!=='true';
     const notice=document.getElementById('identity-load-status');
     const retry=document.getElementById('identity-load-retry');
     const messages=localStorage.getItem('match_lang')==='pt-BR'
         ? {loading:'Carregando sua identidade salva…',error:'Não foi possível verificar sua identidade. Seus dados continuam protegidos. Tente novamente.',signedout:'Entre na sua conta para recuperar sua identidade salva.',retry:'Tentar novamente',signin:'Entrar'}
         : {loading:'Loading your saved identity…',error:'Could not verify your saved identity. Your details remain protected. Please retry.',signedout:'Sign in to restore your saved identity.',retry:'Try again',signin:'Sign in'};
+    if(window.MatchProfileDetailsI18n){
+        const keys={loading:'identityLoading',error:'identityUnavailable',signedout:'identitySignIn',retry:'identityRetry',signin:'identityEnter'};
+        for(const [stateKey,copyKey] of Object.entries(keys))messages[stateKey]=window.MatchProfileDetailsI18n.text(copyKey);
+    }
     if(notice){notice.hidden=!pending;notice.textContent=messages[state.status]||messages.loading;}
     if(retry){retry.hidden=!['error','signedout'].includes(state.status);retry.textContent=messages[state.status==='signedout'?'signin':'retry'];}
-    document.querySelectorAll('#editable-fields-section input,#editable-fields-section select').forEach(el=>el.disabled=pending);
+    if(!languageRefresh)document.querySelectorAll('#editable-fields-section input,#editable-fields-section select').forEach(el=>el.disabled=pending);
     if(pending){
         const form=document.getElementById('editable-fields-section'),card=document.getElementById('locked-info-card'),save=document.getElementById('save-profile-btn');
         if(form)form.style.display='none';if(card)card.style.display='none';if(save){save.disabled=true;save.hidden=true;}
@@ -157,11 +170,11 @@ function checkAndRenderProfileState() {
             setVal('lock-val-region', localStorage.getItem('match_user_region') || 'N/A');
             setVal('lock-val-dob', savedDob || "N/A");
             setVal('lock-val-sign', formatSign(savedSign));
-            setVal('lock-val-age', localStorage.getItem('match_user_age') ? `${localStorage.getItem('match_user_age')} years old` : "N/A");
+            setVal('lock-val-age', localStorage.getItem('match_user_age') ? (window.MatchProfileDetailsI18n?.text('ageValue', {age:localStorage.getItem('match_user_age')}) || `${localStorage.getItem('match_user_age')} years old`) : "N/A");
             setVal('lock-val-sign-trait', STAR_SIGN_TRAITS[savedSign] || "Shapes your recommended themes");
             populateEmail();
         }
-        if (instructionsText) instructionsText.innerHTML = "Your core identity is locked and permanently guiding your AI Matches.";
+        if (instructionsText) instructionsText.innerHTML = window.MatchProfileDetailsI18n?.text('identityLockedHelp') || "Your core identity is locked and permanently guiding your AI Matches.";
         if (changeBadge) changeBadge.innerText = window.t?.('identity.avatarEditable') || 'Change avatar';
         
         if (saveBtn) {
@@ -171,16 +184,16 @@ function checkAndRenderProfileState() {
             saveBtn.style.background = "#555";
             saveBtn.style.borderColor = "#555";
             saveBtn.style.boxShadow = "none";
-            saveBtn.onclick = () => alert("Core identity fields are permanently locked to maintain consistent AI matching.");
+            saveBtn.onclick = () => alert(window.MatchProfileDetailsI18n?.text('identityLockedAlert') || "Core identity fields are permanently locked to maintain consistent AI matching.");
         }
     } else {
         if (editableSection) editableSection.style.display='';
         if (lockedCard) lockedCard.style.display='none';
-        if (saveBtn) { saveBtn.disabled=false; saveBtn.onclick=window.saveProfileData; saveBtn.setAttribute('data-i18n','profile.saveIdentity'); saveBtn.innerText=window.t?.('profile.saveIdentity') || 'Save & Lock Identity'; }
-        if (savedName) document.getElementById('profile-name').value = savedName;
-        if (savedCountry) document.getElementById('profile-country').value = savedCountry;
-        if (savedDob) document.getElementById('profile-dob').value = savedDob;
-        if (savedSign) document.getElementById('profile-starsign').value = savedSign;
+        if (saveBtn) { if(!languageRefresh){saveBtn.disabled=false;saveBtn.onclick=window.saveProfileData;} saveBtn.setAttribute('data-i18n','profile.saveIdentity'); saveBtn.innerText=window.t?.('profile.saveIdentity') || 'Save & Lock Identity'; }
+        if (!languageRefresh && savedName) document.getElementById('profile-name').value = savedName;
+        if (!languageRefresh && savedCountry) document.getElementById('profile-country').value = savedCountry;
+        if (!languageRefresh && savedDob) document.getElementById('profile-dob').value = savedDob;
+        if (!languageRefresh && savedSign) document.getElementById('profile-starsign').value = savedSign;
     }
 }
 
