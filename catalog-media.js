@@ -29,6 +29,122 @@
 
   function normalise(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');}
   function esc(value){return String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  // Authored adult result labels. Source records, provider names and action
+  // handlers stay canonical; a language switch only repaints existing text.
+  const RESULT_COPY=Object.freeze({
+    "en":{"genres":"Genres","streamingNow":"Streaming in {region} now.","cinemaNoStream":"In cinemas in {region}. Streaming is not listed there yet.","notStreaming":"Not currently listed for streaming in {region}.","watchOptions":"Watch options in {region}","rent":"Rent","buy":"Buy","watch":"Watch","availability":"Availability","cinemaNow":"In cinemas{date}","cinemaRelease":"Cinema release · {date}","nearby":"Cinemas & showtimes near me","showtimes":"Cinema release & showtimes","elsewhere":"Streaming in other countries","notify":"🔔 Notify me when it streams in {region}","signIn":"Sign in to follow streaming availability.","following":"✓ You’ll be notified in {region}","titleDetails":"Title details","country":"Country","countries":"Countries","cast":"Cast","rated":"Rated {rating}","minutes":"{n} min","movie":"Movie","series":"TV series"},
+    "pt-BR":{"genres":"Gêneros","streamingNow":"Em streaming agora · {region}","cinemaNoStream":"Nos cinemas · {region}. O streaming ainda não está listado nessa região.","notStreaming":"Ainda não há streaming listado · {region}.","watchOptions":"Onde assistir · {region}","rent":"Alugar","buy":"Comprar","watch":"Assistir","availability":"Disponibilidade","cinemaNow":"Nos cinemas{date}","cinemaRelease":"Estreia nos cinemas · {date}","nearby":"Cinemas e sessões perto de mim","showtimes":"Estreia e sessões de cinema","elsewhere":"Em streaming em outros países","notify":"🔔 Avise-me quando chegar ao streaming · {region}","signIn":"Entre na sua conta para acompanhar a disponibilidade em streaming.","following":"✓ Você será avisado · {region}","titleDetails":"Detalhes do título","country":"País","countries":"Países","cast":"Elenco","rated":"Classificação {rating}","minutes":"{n} min","movie":"Filme","series":"Série"},
+    "es":{"genres":"Géneros","streamingNow":"En streaming ahora · {region}","cinemaNoStream":"En cines · {region}. Aún no se ha listado streaming en esta región.","notStreaming":"Actualmente no se ha listado streaming · {region}.","watchOptions":"Dónde ver · {region}","rent":"Alquilar","buy":"Comprar","watch":"Ver","availability":"Disponibilidad","cinemaNow":"En cines{date}","cinemaRelease":"Estreno en cines · {date}","nearby":"Cines y horarios cerca de mí","showtimes":"Estreno y horarios de cine","elsewhere":"En streaming en otros países","notify":"🔔 Avísame cuando esté en streaming · {region}","signIn":"Inicia sesión para seguir la disponibilidad en streaming.","following":"✓ Recibirás un aviso · {region}","titleDetails":"Detalles del título","country":"País","countries":"Países","cast":"Reparto","rated":"Clasificación {rating}","minutes":"{n} min","movie":"Película","series":"Serie"},
+    "fr":{"genres":"Genres","streamingNow":"En streaming maintenant · {region}","cinemaNoStream":"Au cinéma · {region}. Aucun streaming n’est encore répertorié dans cette région.","notStreaming":"Aucun streaming actuellement répertorié · {region}.","watchOptions":"Où regarder · {region}","rent":"Louer","buy":"Acheter","watch":"Regarder","availability":"Disponibilité","cinemaNow":"Au cinéma{date}","cinemaRelease":"Sortie au cinéma · {date}","nearby":"Cinémas et séances près de moi","showtimes":"Sortie et séances au cinéma","elsewhere":"En streaming dans d’autres pays","notify":"🔔 M’avertir de la disponibilité en streaming · {region}","signIn":"Connectez-vous pour suivre la disponibilité en streaming.","following":"✓ Vous recevrez une notification · {region}","titleDetails":"Détails du titre","country":"Pays","countries":"Pays","cast":"Distribution","rated":"Classification {rating}","minutes":"{n} min","movie":"Film","series":"Série"},
+    "de":{"genres":"Genres","streamingNow":"Jetzt im Streaming · {region}","cinemaNoStream":"Im Kino · {region}. Streaming ist dort noch nicht gelistet.","notStreaming":"Derzeit kein Streaming gelistet · {region}.","watchOptions":"Ansehoptionen · {region}","rent":"Leihen","buy":"Kaufen","watch":"Ansehen","availability":"Verfügbarkeit","cinemaNow":"Im Kino{date}","cinemaRelease":"Kinostart · {date}","nearby":"Kinos und Spielzeiten in meiner Nähe","showtimes":"Kinostart und Spielzeiten","elsewhere":"Streaming in anderen Ländern","notify":"🔔 Bei Streaming-Verfügbarkeit benachrichtigen · {region}","signIn":"Melde dich an, um die Streaming-Verfügbarkeit zu verfolgen.","following":"✓ Du wirst benachrichtigt · {region}","titleDetails":"Details zum Titel","country":"Land","countries":"Länder","cast":"Besetzung","rated":"Altersfreigabe {rating}","minutes":"{n} Min.","movie":"Film","series":"Serie"},
+    "it":{"genres":"Generi","streamingNow":"Ora in streaming · {region}","cinemaNoStream":"Al cinema · {region}. Lo streaming non è ancora segnalato in questa regione.","notStreaming":"Nessuno streaming attualmente segnalato · {region}.","watchOptions":"Dove guardare · {region}","rent":"Noleggia","buy":"Acquista","watch":"Guarda","availability":"Disponibilità","cinemaNow":"Al cinema{date}","cinemaRelease":"Uscita al cinema · {date}","nearby":"Cinema e spettacoli vicino a me","showtimes":"Uscita e orari al cinema","elsewhere":"In streaming in altri paesi","notify":"🔔 Avvisami quando arriva in streaming · {region}","signIn":"Accedi per seguire la disponibilità in streaming.","following":"✓ Riceverai una notifica · {region}","titleDetails":"Dettagli del titolo","country":"Paese","countries":"Paesi","cast":"Cast","rated":"Classificazione {rating}","minutes":"{n} min","movie":"Film","series":"Serie"},
+    "tr":{"genres":"Türler","streamingNow":"Şimdi çevrim içi yayında · {region}","cinemaNoStream":"Sinemalarda · {region}. Bu bölgede henüz çevrim içi yayın listelenmiyor.","notStreaming":"Şu anda çevrim içi yayın listelenmiyor · {region}.","watchOptions":"İzleme seçenekleri · {region}","rent":"Kirala","buy":"Satın al","watch":"İzle","availability":"Erişilebilirlik","cinemaNow":"Sinemalarda{date}","cinemaRelease":"Vizyon tarihi · {date}","nearby":"Yakınımdaki sinemalar ve seanslar","showtimes":"Vizyon tarihi ve seanslar","elsewhere":"Diğer ülkelerde çevrim içi yayında","notify":"🔔 Çevrim içi yayına geldiğinde bildir · {region}","signIn":"Çevrim içi yayın durumunu takip etmek için oturum açın.","following":"✓ Bildirim alacaksınız · {region}","titleDetails":"Yapım ayrıntıları","country":"Ülke","countries":"Ülkeler","cast":"Oyuncular","rated":"Yaş sınıflandırması {rating}","minutes":"{n} dk","movie":"Film","series":"Dizi"},
+    "ru":{"genres":"Жанры","streamingNow":"Сейчас доступно онлайн · {region}","cinemaNoStream":"В кинотеатрах · {region}. Онлайн-показ здесь пока не указан.","notStreaming":"Онлайн-показ сейчас не указан · {region}.","watchOptions":"Где смотреть · {region}","rent":"Арендовать","buy":"Купить","watch":"Смотреть","availability":"Доступность","cinemaNow":"В кинотеатрах{date}","cinemaRelease":"Премьера в кино · {date}","nearby":"Кинотеатры и сеансы рядом","showtimes":"Премьера и сеансы в кино","elsewhere":"Доступно онлайн в других странах","notify":"🔔 Уведомить о появлении онлайн · {region}","signIn":"Войдите, чтобы следить за доступностью онлайн.","following":"✓ Вы получите уведомление · {region}","titleDetails":"Подробнее о произведении","country":"Страна","countries":"Страны","cast":"В ролях","rated":"Возрастной рейтинг {rating}","minutes":"{n} мин","movie":"Фильм","series":"Сериал"},
+    "ar":{"genres":"الأنواع","streamingNow":"متاح للبث الآن · {region}","cinemaNoStream":"في دور السينما · {region}. لم يُدرج البث في هذه المنطقة بعد.","notStreaming":"البث غير مدرج حاليًا · {region}.","watchOptions":"خيارات المشاهدة · {region}","rent":"استئجار","buy":"شراء","watch":"مشاهدة","availability":"التوفر","cinemaNow":"في دور السينما{date}","cinemaRelease":"الإصدار السينمائي · {date}","nearby":"دور السينما ومواعيد العرض بالقرب مني","showtimes":"الإصدار السينمائي ومواعيد العرض","elsewhere":"متاح للبث في دول أخرى","notify":"🔔 أبلغني عند توفره للبث · {region}","signIn":"سجّل الدخول لمتابعة توفر البث.","following":"✓ ستتلقى إشعارًا · {region}","titleDetails":"تفاصيل العمل","country":"البلد","countries":"البلدان","cast":"طاقم التمثيل","rated":"التصنيف العمري {rating}","minutes":"{n} دقيقة","movie":"فيلم","series":"مسلسل"},
+    "hi":{"genres":"शैलियाँ","streamingNow":"अभी स्ट्रीमिंग पर · {region}","cinemaNoStream":"सिनेमाघरों में · {region}। इस क्षेत्र में स्ट्रीमिंग अभी सूचीबद्ध नहीं है।","notStreaming":"अभी स्ट्रीमिंग सूचीबद्ध नहीं है · {region}।","watchOptions":"देखने के विकल्प · {region}","rent":"किराये पर लें","buy":"खरीदें","watch":"देखें","availability":"उपलब्धता","cinemaNow":"सिनेमाघरों में{date}","cinemaRelease":"सिनेमाघरों में रिलीज़ · {date}","nearby":"मेरे पास के सिनेमाघर और शो का समय","showtimes":"सिनेमा रिलीज़ और शो का समय","elsewhere":"अन्य देशों में स्ट्रीमिंग पर","notify":"🔔 स्ट्रीमिंग पर आने पर सूचित करें · {region}","signIn":"स्ट्रीमिंग की उपलब्धता पर नज़र रखने के लिए साइन इन करें।","following":"✓ आपको सूचना मिलेगी · {region}","titleDetails":"शीर्षक का विवरण","country":"देश","countries":"देश","cast":"कलाकार","rated":"आयु रेटिंग {rating}","minutes":"{n} मिनट","movie":"फ़िल्म","series":"सीरीज़"},
+    "id":{"genres":"Genre","streamingNow":"Streaming sekarang · {region}","cinemaNoStream":"Di bioskop · {region}. Streaming belum tercantum di wilayah ini.","notStreaming":"Streaming saat ini belum tercantum · {region}.","watchOptions":"Pilihan menonton · {region}","rent":"Sewa","buy":"Beli","watch":"Tonton","availability":"Ketersediaan","cinemaNow":"Di bioskop{date}","cinemaRelease":"Rilis bioskop · {date}","nearby":"Bioskop dan jadwal tayang di dekat saya","showtimes":"Rilis bioskop dan jadwal tayang","elsewhere":"Streaming di negara lain","notify":"🔔 Beri tahu saat tersedia untuk streaming · {region}","signIn":"Masuk untuk mengikuti ketersediaan streaming.","following":"✓ Anda akan diberi tahu · {region}","titleDetails":"Detail judul","country":"Negara","countries":"Negara","cast":"Pemeran","rated":"Rating usia {rating}","minutes":"{n} mnt","movie":"Film","series":"Serial"},
+    "ja":{"genres":"ジャンル","streamingNow":"配信中 · {region}","cinemaNoStream":"劇場公開中 · {region}。この地域では配信情報がまだありません。","notStreaming":"現在の配信情報はありません · {region}。","watchOptions":"視聴方法 · {region}","rent":"レンタル","buy":"購入","watch":"視聴","availability":"配信状況","cinemaNow":"劇場公開中{date}","cinemaRelease":"劇場公開日 · {date}","nearby":"近くの映画館と上映時間","showtimes":"劇場公開日と上映時間","elsewhere":"ほかの国で配信中","notify":"🔔 配信開始時に通知する · {region}","signIn":"配信状況をフォローするにはログインしてください。","following":"✓ 通知をお送りします · {region}","titleDetails":"作品の詳細","country":"製作国","countries":"製作国","cast":"キャスト","rated":"年齢区分 {rating}","minutes":"{n}分","movie":"映画","series":"シリーズ"},
+    "ko":{"genres":"장르","streamingNow":"현재 스트리밍 중 · {region}","cinemaNoStream":"극장 상영 중 · {region}. 이 지역의 스트리밍 정보는 아직 없습니다.","notStreaming":"현재 스트리밍 정보가 없습니다 · {region}.","watchOptions":"시청 방법 · {region}","rent":"대여","buy":"구매","watch":"시청","availability":"이용 가능 여부","cinemaNow":"극장 상영 중{date}","cinemaRelease":"극장 개봉일 · {date}","nearby":"내 주변 영화관 및 상영 시간","showtimes":"극장 개봉일 및 상영 시간","elsewhere":"다른 국가에서 스트리밍 중","notify":"🔔 스트리밍 시작 시 알림 받기 · {region}","signIn":"스트리밍 이용 가능 여부를 확인하려면 로그인하세요.","following":"✓ 알림을 보내드립니다 · {region}","titleDetails":"작품 상세 정보","country":"제작 국가","countries":"제작 국가","cast":"출연진","rated":"연령 등급 {rating}","minutes":"{n}분","movie":"영화","series":"시리즈"},
+    "zh":{"genres":"类型","streamingNow":"正在流媒体播放 · {region}","cinemaNoStream":"院线上映中 · {region}。该地区尚未列出流媒体播放信息。","notStreaming":"目前尚未列出流媒体播放信息 · {region}。","watchOptions":"观看方式 · {region}","rent":"租借","buy":"购买","watch":"观看","availability":"播放情况","cinemaNow":"院线上映中{date}","cinemaRelease":"院线上映日期 · {date}","nearby":"附近的电影院和场次","showtimes":"院线上映日期和场次","elsewhere":"其他国家的流媒体播放情况","notify":"🔔 流媒体上线时通知我 · {region}","signIn":"请登录以关注流媒体播放情况。","following":"✓ 届时将通知你 · {region}","titleDetails":"作品详情","country":"制作国家","countries":"制作国家","cast":"演员","rated":"年龄分级 {rating}","minutes":"{n}分钟","movie":"电影","series":"剧集"}
+  });
+  const RESULT_GENRES=Object.freeze({
+    "en":["Action","Adventure","Animation","Comedy","Crime","Documentary","Drama","Family","Fantasy","History","Horror","Music","Mystery","Romance","Science Fiction","TV Movie","Thriller","War","Western","Action & Adventure","Kids","News","Reality","Sci-Fi & Fantasy","Soap","Talk","War & Politics"],
+    "pt-BR":["Ação","Aventura","Animação","Comédia","Crime","Documentário","Drama","Família","Fantasia","História","Terror","Música","Mistério","Romance","Ficção científica","Filme para TV","Suspense","Guerra","Faroeste","Ação e aventura","Infantil","Notícias","Reality show","Ficção científica e fantasia","Novela","Programa de entrevistas","Guerra e política"],
+    "es":["Acción","Aventura","Animación","Comedia","Crimen","Documental","Drama","Familia","Fantasía","Historia","Terror","Música","Misterio","Romance","Ciencia ficción","Película para TV","Suspenso","Guerra","Wéstern","Acción y aventura","Infantil","Noticias","Reality show","Ciencia ficción y fantasía","Telenovela","Programa de entrevistas","Guerra y política"],
+    "fr":["Action","Aventure","Animation","Comédie","Crime","Documentaire","Drame","Familial","Fantastique","Histoire","Horreur","Musique","Mystère","Romance","Science-fiction","Téléfilm","Thriller","Guerre","Western","Action et aventure","Jeunesse","Actualités","Téléréalité","Science-fiction et fantastique","Feuilleton","Émission d’entretiens","Guerre et politique"],
+    "de":["Action","Abenteuer","Animation","Komödie","Krimi","Dokumentarfilm","Drama","Familie","Fantasy","Geschichte","Horror","Musik","Mystery","Romanze","Science-Fiction","Fernsehfilm","Thriller","Krieg","Western","Action und Abenteuer","Kinder","Nachrichten","Reality-TV","Science-Fiction und Fantasy","Seifenoper","Talkshow","Krieg und Politik"],
+    "it":["Azione","Avventura","Animazione","Commedia","Crime","Documentario","Dramma","Famiglia","Fantasy","Storia","Horror","Musica","Mistero","Romantico","Fantascienza","Film TV","Thriller","Guerra","Western","Azione e avventura","Bambini","Notizie","Reality","Fantascienza e fantasy","Soap opera","Talk show","Guerra e politica"],
+    "tr":["Aksiyon","Macera","Animasyon","Komedi","Suç","Belgesel","Dram","Aile","Fantastik","Tarih","Korku","Müzik","Gizem","Romantik","Bilim kurgu","TV filmi","Gerilim","Savaş","Vahşi Batı","Aksiyon ve macera","Çocuk","Haber","Gerçeklik programı","Bilim kurgu ve fantastik","Pembe dizi","Söyleşi programı","Savaş ve politika"],
+    "ru":["Боевик","Приключения","Мультфильм","Комедия","Криминал","Документальный","Драма","Семейный","Фэнтези","История","Ужасы","Музыка","Детектив","Мелодрама","Фантастика","Телефильм","Триллер","Военный","Вестерн","Боевик и приключения","Детский","Новости","Реалити-шоу","Фантастика и фэнтези","Мыльная опера","Ток-шоу","Война и политика"],
+    "ar":["أكشن","مغامرة","رسوم متحركة","كوميديا","جريمة","وثائقي","دراما","عائلي","فانتازيا","تاريخ","رعب","موسيقى","غموض","رومانسية","خيال علمي","فيلم تلفزيوني","إثارة","حرب","أفلام الغرب الأمريكي","أكشن ومغامرة","أطفال","أخبار","تلفزيون الواقع","خيال علمي وفانتازيا","مسلسل يومي","برنامج حواري","حرب وسياسة"],
+    "hi":["एक्शन","रोमांच","एनीमेशन","कॉमेडी","अपराध","डॉक्यूमेंट्री","ड्रामा","पारिवारिक","फ़ैंटेसी","इतिहास","हॉरर","संगीत","रहस्य","रोमांस","विज्ञान कथा","टीवी फ़िल्म","थ्रिलर","युद्ध","वेस्टर्न","एक्शन और रोमांच","बच्चों के लिए","समाचार","रियलिटी शो","विज्ञान कथा और फ़ैंटेसी","धारावाहिक","टॉक शो","युद्ध और राजनीति"],
+    "id":["Aksi","Petualangan","Animasi","Komedi","Kejahatan","Dokumenter","Drama","Keluarga","Fantasi","Sejarah","Horor","Musik","Misteri","Romansa","Fiksi ilmiah","Film TV","Cerita seru","Perang","Koboi","Aksi dan petualangan","Anak-anak","Berita","Acara realitas","Fiksi ilmiah dan fantasi","Sinetron","Gelar wicara","Perang dan politik"],
+    "ja":["アクション","アドベンチャー","アニメーション","コメディ","犯罪","ドキュメンタリー","ドラマ","ファミリー","ファンタジー","歴史","ホラー","音楽","ミステリー","ロマンス","SF","テレビ映画","スリラー","戦争","西部劇","アクション＆アドベンチャー","キッズ","ニュース","リアリティ","SF＆ファンタジー","連続ドラマ","トーク番組","戦争＆政治"],
+    "ko":["액션","모험","애니메이션","코미디","범죄","다큐멘터리","드라마","가족","판타지","역사","공포","음악","미스터리","로맨스","SF","TV 영화","스릴러","전쟁","서부극","액션 및 모험","어린이","뉴스","리얼리티","SF 및 판타지","연속극","토크쇼","전쟁 및 정치"],
+    "zh":["动作","冒险","动画","喜剧","犯罪","纪录片","剧情","家庭","奇幻","历史","恐怖","音乐","悬疑","爱情","科幻","电视电影","惊悚","战争","西部","动作与冒险","儿童","新闻","真人秀","科幻与奇幻","肥皂剧","脱口秀","战争与政治"]
+  });
+
+  const RESULT_GENRE_INDEX=new Map();
+  Object.values(RESULT_GENRES).forEach(labels=>labels.forEach((label,index)=>RESULT_GENRE_INDEX.set(normalise(label),index)));
+  ['Science-Fiction','Sci-Fi'].forEach(label=>RESULT_GENRE_INDEX.set(normalise(label),14));
+  const RESULT_TEXT_RECORDS=new WeakMap(),RESULT_FACT_RECORDS=new WeakMap();
+  function resultLanguage(){
+    let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}
+    // setLanguage persists the explicit choice before painting. A stale
+    // result locale or ambient MATCH_LANG must not override that choice.
+    for(const value of [saved,window.MATCH_LANG,document.documentElement.lang]){
+      const raw=String(value||'').replace(/_/g,'-');
+      const lang=/^pt(?:-|$)/i.test(raw)?'pt-BR':raw.split('-')[0].toLowerCase();
+      if(Object.hasOwn(RESULT_COPY,lang))return lang;
+    }
+    return 'en';
+  }
+  function resultCountry(value){
+    const raw=String(value||'').trim(),code=/^[A-Za-z]{2}$/.test(raw)?raw.toUpperCase():COUNTRY_CODES[raw.toLowerCase()];
+    if(!code)return raw;
+    try{return new Intl.DisplayNames([resultLanguage()],{type:'region'}).of(code)||code;}catch(_){return code;}
+  }
+  function resultCopy(key,params={},kids=false){
+    const copy=RESULT_COPY[kids?'en':resultLanguage()];
+    return String(copy[key]||'').replace(/\{(\w+)\}/g,(_,name)=>name==='region'?(kids?countryName(params[name]):resultCountry(params[name])):String(params[name]??''));
+  }
+  function paintResultCopy(node,key,params={},kids=false,suffix=''){
+    node.textContent=resultCopy(key,params,kids)+suffix;
+    if(!kids){node.dataset.maResultCopy=key;RESULT_TEXT_RECORDS.set(node,{key,params,suffix});}
+    return node;
+  }
+  function resultGenre(value){
+    const raw=String(value||'').trim(),index=RESULT_GENRE_INDEX.get(normalise(raw));
+    return index===undefined?raw:RESULT_GENRES[resultLanguage()][index];
+  }
+  function resultMetadata(meta){
+    const bits=[];
+    if(meta.year)bits.push(meta.year);
+    if(meta.runtime_minutes)bits.push(resultCopy('minutes',{n:meta.runtime_minutes}));
+    if(meta.content_rating)bits.push(resultCopy('rated',{rating:meta.content_rating}));
+    if(meta.vote_average)bits.push('TMDB ★ '+Number(meta.vote_average).toFixed(1));
+    (Array.isArray(meta.genres)?meta.genres:[]).slice(0,5).forEach(g=>bits.push(resultGenre(g)));
+    return bits.join(' · ');
+  }
+  function resultFact(value,kind='auto'){
+    if(kind==='metadata')return resultMetadata(value);
+    if(kind==='countries')return value.map(resultCountry).filter(Boolean).join(', ');
+    const raw=String(value||'').trim();
+    if(kind==='country'||(kind==='auto'&&COUNTRY_CODES[raw.toLowerCase()]))return resultCountry(raw);
+    if(kind==='genre')return resultGenre(raw);
+    const key=raw.toLowerCase();
+    if(key==='movie'||key==='film')return resultCopy('movie');
+    if(key==='series'||key==='tv'||key==='tv series')return resultCopy('series');
+    const option=[...(document.getElementById('q-category')?.options||[])].find(item=>String(item.value).toLowerCase()===key);
+    const i18nKey=option?.getAttribute('data-i18n');let translated='';
+    try{if(i18nKey&&typeof window.t==='function')translated=window.t(i18nKey,resultLanguage());}catch(_){}
+    if(translated&&translated!==i18nKey)return translated;
+    return resultGenre(raw);
+  }
+  function paintResultFact(node,value,kind='auto'){
+    const painted=resultFact(value,kind);
+    node.textContent=painted;node.dataset.maResultFact=kind;
+    RESULT_FACT_RECORDS.set(node,{value,kind,painted});
+    return node;
+  }
+  function localizeResultFacts(root=document){
+    if(document.documentElement.classList.contains('kids-mode')||location.pathname.startsWith('/kids/'))return;
+    root.querySelectorAll('#res-factbar > span,[data-ma-result-fact]').forEach(node=>{
+      const record=RESULT_FACT_RECORDS.get(node);
+      if(!record){paintResultFact(node,node.textContent);return;}
+      const value=node.textContent===record.painted||typeof record.value!=='string'?record.value:node.textContent;
+      paintResultFact(node,value,record.kind);
+    });
+  }
+  function localizeResultLabels(){
+    if(document.documentElement.classList.contains('kids-mode')||location.pathname.startsWith('/kids/'))return;
+    document.querySelectorAll('[data-ma-result-copy]').forEach(node=>{
+      const record=RESULT_TEXT_RECORDS.get(node);
+      if(record)node.textContent=resultCopy(record.key,record.params)+record.suffix;
+    });
+    localizeResultFacts();
+  }
+
   function localPoster(title){
     try{if(typeof window.generateLocalPosterSVG==='function'){const result=window.generateLocalPosterSVG(title,{cats:[]});if(typeof result==='string'&&result)return result;}}catch(_){}
     const t=esc(String(title||'MatchApp').slice(0,52));
@@ -701,55 +817,56 @@
     const wrap=document.createElement('div');wrap.className='matchapp-title-availability';
     if(genres.length){
       const row=document.createElement('div');row.className='matchapp-real-genres';
-      const label=document.createElement('strong');label.textContent='Genres';row.appendChild(label);
-      genres.slice(0,8).forEach(g=>{const chip=document.createElement('span');chip.textContent=g;row.appendChild(chip);});
+      const label=document.createElement('strong');paintResultCopy(label,'genres',{},kids);row.appendChild(label);
+      genres.slice(0,8).forEach(g=>{const chip=document.createElement('span');if(kids)chip.textContent=g;else paintResultFact(chip,g,'genre');row.appendChild(chip);});
       wrap.appendChild(row);
     }
     const status=document.createElement('div');status.className='matchapp-availability-status';
-    const regionLabel=countryName(a.region);
-    if(a.streams.length)status.textContent='Streaming in '+regionLabel+' now.';
-    else if(a.inCinemas)status.textContent='In cinemas in '+regionLabel+'. Streaming is not listed there yet.';
-    else status.textContent='Not currently listed for streaming in '+regionLabel+'.';
+    if(a.streams.length)paintResultCopy(status,'streamingNow',{region:a.region},kids);
+    else if(a.inCinemas)paintResultCopy(status,'cinemaNoStream',{region:a.region},kids);
+    else paintResultCopy(status,'notStreaming',{region:a.region},kids);
     wrap.appendChild(status);
     if(links.length){
       const row=document.createElement('div');row.className='matchapp-provider-actions';
-      const label=document.createElement('strong');label.textContent='Watch options in '+regionLabel;row.appendChild(label);
+      const label=document.createElement('strong');paintResultCopy(label,'watchOptions',{region:a.region},kids);row.appendChild(label);
       links.slice(0,16).forEach(link=>{
         const aEl=document.createElement('a');aEl.href=link.href;aEl.target='_blank';aEl.rel='noopener noreferrer';
-        const prefix=link.direct?(link.mode==='rent'?'Rent · ':link.mode==='buy'?'Buy · ':'Watch · '):'Availability · ';
-        aEl.textContent=prefix+link.provider;row.appendChild(aEl);
+        const key=link.direct?(link.mode==='rent'?'rent':link.mode==='buy'?'buy':'watch'):'availability';
+        paintResultCopy(aEl,key,{},kids,' · '+link.provider);row.appendChild(aEl);
       });
       wrap.appendChild(row);
     }
     if(a.cinemaDate||a.inCinemas){
       const row=document.createElement('div');row.className='matchapp-cinema-actions';
-      const when=document.createElement('span');when.textContent=(a.inCinemas?'In cinemas'+(a.cinemaDate?' · '+a.cinemaDate:''):'Cinema release · '+a.cinemaDate);row.appendChild(when);
-      const nearby=document.createElement('a');nearby.href=showtimesUrl(actualTitle);nearby.target='_blank';nearby.rel='noopener noreferrer';nearby.textContent=a.inCinemas?'Cinemas & showtimes near me':'Cinema release & showtimes';row.appendChild(nearby);
+      const when=document.createElement('span');paintResultCopy(when,a.inCinemas?'cinemaNow':'cinemaRelease',{date:a.inCinemas?(a.cinemaDate?' · '+a.cinemaDate:''):a.cinemaDate},kids);row.appendChild(when);
+      const nearby=document.createElement('a');nearby.href=showtimesUrl(actualTitle);nearby.target='_blank';nearby.rel='noopener noreferrer';paintResultCopy(nearby,a.inCinemas?'nearby':'showtimes',{},kids);row.appendChild(nearby);
       wrap.appendChild(row);
     }
     if(!a.streams.length){
       const elsewhere=streamingElsewhere(meta,a.region);
       if(elsewhere.length){
         const row=document.createElement('div');row.className='matchapp-other-countries';
-        const label=document.createElement('strong');label.textContent='Streaming in other countries';row.appendChild(label);
+        const label=document.createElement('strong');paintResultCopy(label,'elsewhere',{},kids);row.appendChild(label);
         elsewhere.slice(0,18).forEach(item=>{
           const line=document.createElement('span');line.className='matchapp-country-availability';
-          line.textContent=item.country+' · '+item.providers.join(', ');row.appendChild(line);
+          if(kids)line.textContent=item.country+' · '+item.providers.join(', ');
+          else {const country=document.createElement('span');paintResultFact(country,item.region,'country');line.append(country,document.createTextNode(' · '+item.providers.join(', ')));}
+          row.appendChild(line);
         });
         wrap.appendChild(row);
       }
       if(Number.isSafeInteger(Number(meta.tmdb_id))&&['movie','tv'].includes(meta.media_kind)){
         const follow=document.createElement('button');follow.type='button';follow.className='matchapp-follow-availability';
-        follow.textContent='🔔 Notify me when it streams in '+regionLabel;
+        paintResultCopy(follow,'notify',{region:a.region},kids);
         follow.addEventListener('click',async()=>{
           if(!window.MatchNotifications?.followTitle){
-            window.showToast?.('Sign in to follow streaming availability.');
+            window.showToast?.(resultCopy('signIn',{},kids));
             window.openAuthModal?.();return;
           }
           follow.disabled=true;
           const ok=await window.MatchNotifications.followTitle(meta,a.region).catch(()=>false);
           follow.disabled=false;
-          if(ok){follow.textContent='✓ You’ll be notified in '+regionLabel;follow.classList.add('is-following');}
+          if(ok){paintResultCopy(follow,'following',{region:a.region},kids);follow.classList.add('is-following');}
         });
         wrap.appendChild(follow);
       }
@@ -757,7 +874,7 @@
     const page=a.sourcePage;
     if(page){
       const row=document.createElement('div');row.className='matchapp-title-page-row';
-      const pageLink=document.createElement('a');pageLink.href=page;pageLink.target='_blank';pageLink.rel='noopener noreferrer';pageLink.textContent='Title details';row.appendChild(pageLink);wrap.appendChild(row);
+      const pageLink=document.createElement('a');pageLink.href=page;pageLink.target='_blank';pageLink.rel='noopener noreferrer';paintResultCopy(pageLink,'titleDetails',{},kids);row.appendChild(pageLink);wrap.appendChild(row);
     }
     if(wrap.childElementCount){host.appendChild(wrap);host.hidden=false;}
   }
@@ -795,9 +912,9 @@
       const row=document.createElement('div');
       row.className='matchapp-title-fact-row';
       const label=document.createElement('strong');
-      label.textContent=countries.length>1?'Countries':'Country';
+      paintResultCopy(label,countries.length>1?'countries':'country',{},kids);
       const value=document.createElement('span');
-      value.textContent=countries.join(', ');
+      if(kids)value.textContent=countries.join(', ');else paintResultFact(value,(meta.origin_countries||[]).slice(0,6),'countries');
       row.append(label,value);
       host.appendChild(row);
     }
@@ -805,7 +922,7 @@
       const row=document.createElement('div');
       row.className='matchapp-title-fact-row';
       const label=document.createElement('strong');
-      label.textContent='Cast';
+      paintResultCopy(label,'cast',{},kids);
       const value=document.createElement('span');
       value.textContent=cast.map(x=>x.character?x.name+' · '+x.character:x.name).join('  •  ');
       row.append(label,value);
@@ -831,7 +948,7 @@
       const el=existing||document.createElement('span');
       el.id='res-media-meta';
       el.className='matchapp-media-meta';
-      el.textContent=bits.join(' · ');
+      paintResultFact(el,meta,'metadata');
       if(!existing)badge.insertAdjacentElement('afterend',el);
     }else existing?.remove();
 
@@ -841,14 +958,13 @@
         // The exact TMDB identity wins over the matcher's interim hints.
         // A same-named TVMaze result must never leave a conflicting year here.
         const facts=[];
-        if(Number(meta.year)>1880)facts.push(String(meta.year));
+        if(Number(meta.year)>1880)facts.push({value:String(meta.year),kind:'auto'});
         (Array.isArray(meta.origin_countries)?meta.origin_countries:[])
-          .map(countryName).filter(Boolean).forEach(value=>facts.push(value));
+          .filter(Boolean).forEach(value=>facts.push({value,kind:'country'}));
         (Array.isArray(meta.genres)?meta.genres:[])
-          .map(value=>String(value||'').trim()).filter(Boolean).forEach(value=>facts.push(value));
-        bar.replaceChildren(...[...new Set(facts)].map(value=>{
-          const chip=document.createElement('span');chip.textContent=value;return chip;
-        }));
+          .map(value=>String(value||'').trim()).filter(Boolean).forEach(value=>facts.push({value,kind:'genre'}));
+        const unique=[...new Map(facts.map(fact=>[fact.kind+'|'+fact.value,fact])).values()];
+        bar.replaceChildren(...unique.map(fact=>paintResultFact(document.createElement('span'),fact.value,fact.kind)));
         bar.style.display=facts.length?'flex':'none';
       }
     }
@@ -1064,7 +1180,7 @@
     });
   }
   function boot(){
-    installStyle();syncGenreFilter();hardenWithin(document);
+    installStyle();syncGenreFilter();hardenWithin(document);localizeResultLabels();
     const result=document.getElementById('result-card')||document.getElementById('result-box');
     const kids=document.getElementById('kids-watch-dialog');
     // Result enrichment is event-driven on BOTH main and Kids surfaces.
@@ -1099,12 +1215,13 @@
     document.addEventListener('matchapp:newmatch',()=>{hardenWithin(result||document);enrichMain();});
     document.addEventListener('matchapp:kids-result',queueKidsEnrich);
     document.addEventListener('matchapp:langchange',()=>{
+      localizeResultLabels();
       enrichTrendingRail();
       const host=document.getElementById('matchapp-kids-preview');
       if(host)delete host.dataset.matchappPreviewSignature;
       queueKidsEnrich();
     });
   }
-  window.MatchAppCatalogMedia=Object.freeze({recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({localizeResultFacts,localizeResultLabels,resultFact,recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

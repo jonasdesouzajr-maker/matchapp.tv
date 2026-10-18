@@ -5170,6 +5170,7 @@ async function hydrateTitleFacts(selected, hints) {
         .forEach(cat => addFact(String(cat).replace(/\b\w/g, ch => ch.toUpperCase())));
     if (bar && facts.length) {
         bar.innerHTML = facts.map(f => `<span>${sanitizeDisplayText(f)}</span>`).join('');
+        try { window.MatchAppCatalogMedia?.localizeResultFacts?.(bar); } catch (_) { /* Display labels cannot interrupt result hydration. */ }
         bar.style.display = 'flex';
     }
     if (castEl && Array.isArray(hints.cast) && hints.cast.length) {
@@ -5190,6 +5191,7 @@ async function hydrateTitleFacts(selected, hints) {
     (meta.genres || []).forEach(g => merged.push(g));
     if (bar && merged.length) {
         bar.innerHTML = merged.map(f => `<span>${sanitizeDisplayText(f)}</span>`).join('');
+        try { window.MatchAppCatalogMedia?.localizeResultFacts?.(bar); } catch (_) { /* Display labels cannot interrupt result hydration. */ }
         bar.style.display = 'flex';
     }
 
