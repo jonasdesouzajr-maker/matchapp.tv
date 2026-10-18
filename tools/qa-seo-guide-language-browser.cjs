@@ -28,22 +28,30 @@ const server=http.createServer((req,res)=>{
     const result=await page.goto(base+'/guides/'+guide+'/',{waitUntil:'domcontentloaded',timeout:35000});
     assert.equal(result.status(),200);
     await page.waitForFunction(language=>document.documentElement.dataset.seoLocaleState==='ready'&&document.documentElement.lang===language,lang,{timeout:15000});
+    await page.waitForLoadState('load',{timeout:15000});
+    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
     const state=await page.evaluate(()=>{
      const css=getComputedStyle(document.documentElement,'::after');
      const h1=document.querySelector('h1').getBoundingClientRect();
      const labels=[...document.querySelectorAll('[data-seo-copy]')];
+     const selector=document.querySelector('#seo-guide-language'),rect=selector.getBoundingClientRect(),y=rect.top+rect.height/2;
+     const selectorHits=[{name:'center',x:rect.left+rect.width/2},{name:'right',x:rect.right-Math.min(8,rect.width/4)}].map(point=>{
+      const hit=document.elementFromPoint(point.x,y);
+      return {...point,y,reachable:hit===selector||selector.contains(hit),topElement:hit?hit.tagName.toLowerCase()+(hit.id?'#'+hit.id:''):null};
+     });
      return {language:document.documentElement.lang,dir:document.documentElement.dir,overflow:document.documentElement.scrollWidth-innerWidth,
       frame:parseFloat(css.borderTopWidth),framePosition:css.position,frameHitTest:css.pointerEvents,
       heading:{x:h1.x,right:h1.right,width:h1.width},title:document.title,
       hiddenCopy:labels.filter(n=>n.closest('body')&&getComputedStyle(n).visibility==='hidden').length,
       inertContent:document.querySelectorAll('main[inert],footer[inert]').length,
-      selectorValue:document.querySelector('#seo-guide-language').value};
+      selectorValue:selector.value,selectorHits};
     });
     assert.ok(state.overflow<=2,guide+' '+lang+' '+width+' horizontal overflow '+state.overflow);
     assert.equal(state.frame,width>=700?4:3);assert.equal(state.framePosition,'fixed');assert.equal(state.frameHitTest,'none');
     assert.ok(state.heading.x>=4&&state.heading.right<=width-4,'Heading crosses frame');
     assert.equal(state.hiddenCopy,0);assert.equal(state.inertContent,0);
     assert.equal(state.selectorValue,lang);assert.equal(state.dir,lang==='ar'?'rtl':'ltr');
+    for(const hit of state.selectorHits)assert.ok(hit.reachable,guide+' '+lang+' '+width+' language selector '+hit.name+' is covered at '+hit.x+','+hit.y+' by '+hit.topElement);
     assert.equal(errors.length,0,errors.join('\n'));
     cases.push({guide,width,...state});
     console.log('PASS',width,lang,guide);

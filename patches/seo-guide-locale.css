@@ -4,9 +4,10 @@ html[data-seo-guide] :is(header, main, footer) { overflow-wrap: anywhere; }
 html[data-seo-guide] :is(.gh-grid, .sd-grid) > * { min-width: 0; }
 html[data-seo-guide][data-seo-locale-state="loading"] [data-seo-copy],
 html[data-seo-guide][data-seo-locale-state="error"] [data-seo-copy] { visibility: hidden; }
-.seo-guide-locale { display: flex; justify-content: flex-end; align-items: center; gap: 10px; flex-wrap: wrap; margin-block: 2px 16px; font-size: .9rem; color: #e9daef; }
+/* Reserve physical right space for the existing fixed companion in both text directions. */
+.seo-guide-locale { padding-right: 100px; display: flex; justify-content: flex-end; align-items: center; gap: 10px; flex-wrap: wrap; margin-block: 2px 16px; font-size: .9rem; color: #e9daef; }
 .seo-guide-locale label { cursor: pointer; }
-.seo-guide-locale select { font: inherit; color: #f6dcaf; background: #24192f; border: 1px solid #9c8058; border-radius: 10px; min-height: 44px; max-width: 100%; padding: 9px 30px 9px 12px; }
+.seo-guide-locale select { box-sizing: border-box; min-width: 0; font: inherit; color: #f6dcaf; background: #24192f; border: 1px solid #9c8058; border-radius: 10px; min-height: 44px; max-width: 100%; padding: 9px 30px 9px 12px; }
 .seo-guide-locale select:focus-visible, .seo-guide-locale-status button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 .seo-guide-locale-status { border: 1px solid #9c8058; border-radius: 14px; padding: 16px; margin-block: 12px; background: #24192f; color: #f6e5c5; }
 .seo-guide-locale-status[hidden], .seo-guide-locale-status button[hidden] { display: none; }
