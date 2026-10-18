@@ -1,13 +1,742 @@
 {
-  "generated_at": "2026-10-18T14:34:48.175Z",
-  "feed_version": "3b9ae450",
+  "generated_at": "2026-10-18T17:31:30.245Z",
+  "feed_version": "d3e950b8",
   "sports_updated_at": "2026-10-18T14:34:48.110Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
+      "id": "1a1e480c",
+      "title": "Betty McGuire, Actress on Broadway and ‘Growing Pains,’ Dies at 100",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/betty-mcguire-dead-growing-pains-broadway-1236734856/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T17:20:25.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Betty McGuire",
+      "description": "Betty McGuire: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Betty-McGuire-obit-temp-publicity-H-2026.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/betty-mcguire-actress-on-broadway-and-growing-pains-dies-at-100-1a1e48/",
+      "landing_url": "https://matchapp.tv/?news=1a1e480c#latest-news",
+      "seo": {
+        "primary_keyword": "Betty McGuire latest news",
+        "short_tail": [
+          "Betty McGuire",
+          "Betty McGuire news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Betty McGuire latest news October 2026",
+          "Betty McGuire obituary update 2026",
+          "Betty McGuire news 2026-10-18",
+          "latest obituary news about Betty McGuire",
+          "betty mcguire betty mcguire actress broadway latest update",
+          "The Hollywood Reporter Betty McGuire obituary",
+          "latest news about Betty McGuire October 2026",
+          "Betty McGuire entertainment news 2026-10-18",
+          "what happened with Betty McGuire"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Betty McGuire",
+          "betty",
+          "mcguire",
+          "actress",
+          "broadway",
+          "growing",
+          "pains"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Betty McGuire 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Betty McGuire",
+          "hollywoodreporter.com Betty McGuire",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Betty McGuire, Actress on Broadway and ‘Growing Pains,’…",
+        "meta_description": "Betty McGuire: Obituary update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via MatchApp…",
+        "keywords": [
+          "Betty McGuire latest news",
+          "Betty McGuire",
+          "Betty McGuire news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Betty McGuire latest news October 2026",
+          "Betty McGuire obituary update 2026",
+          "Betty McGuire news 2026-10-18",
+          "latest obituary news about Betty McGuire",
+          "betty mcguire betty mcguire actress broadway latest update",
+          "The Hollywood Reporter Betty McGuire obituary",
+          "latest news about Betty McGuire October 2026",
+          "Betty McGuire entertainment news 2026-10-18",
+          "what happened with Betty McGuire",
+          "betty",
+          "mcguire",
+          "actress",
+          "broadway",
+          "growing",
+          "pains",
+          "October 2026",
+          "2026-10-18",
+          "Betty McGuire 2026",
+          "The Hollywood Reporter Betty McGuire",
+          "hollywoodreporter.com Betty McGuire",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "943dfb5e",
+      "title": "França registra novos confrontos em Paris após dia de protestos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/franca-registra-novos-confrontos-em-paris-apos-dia-de-protestos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T16:53:23.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/9XA5cJkyT3eptdHwOyxpN0cRSFo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/o/T/8dkAyVRlOvPVIhVPW3kg/2026-10-18t162830z-1582667973-rc2r5oaerroy-rtrmadp-3-france-protest.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/franca-registra-novos-confrontos-em-paris-apos-dia-de-protestos-943dfb/",
+      "landing_url": "https://matchapp.tv/?news=943dfb5e#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "franca",
+          "registra",
+          "novos",
+          "confrontos",
+          "paris",
+          "apos"
+        ],
+        "long_tail": [
+          "França registra novos confrontos em Paris após dia de protestos 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "franca",
+          "registra",
+          "novos",
+          "confrontos",
+          "paris",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "França registra novos confrontos em Paris após dia de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "franca",
+          "registra",
+          "novos",
+          "confrontos",
+          "paris",
+          "apos",
+          "França registra novos confrontos em Paris após dia de protestos 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "d8cba1f0",
+      "title": "Incêndio em base militar no Canadá deixa 4 mortos; governo descarta terrorismo",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/incendio-em-base-militar-no-canada-deixa-diz-tv.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T16:19:45.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/kKNIBsDYeVlbJKyvzeQsCTQ7bY0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/c/3/jb1yBgRnCUG4XypUVVRQ/captura-de-tela-2026-10-18-031502.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/incendio-em-base-militar-no-canada-deixa-4-mortos-governo-descarta-terrorismo-d8cba1/",
+      "landing_url": "https://matchapp.tv/?news=d8cba1f0#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "incendio",
+          "base",
+          "militar",
+          "canada",
+          "deixa",
+          "mortos"
+        ],
+        "long_tail": [
+          "Incêndio em base militar no Canadá deixa 4 mortos; governo descarta terrorismo 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "incendio",
+          "base",
+          "militar",
+          "canada",
+          "deixa",
+          "mortos"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Incêndio em base militar no Canadá deixa 4 mortos; governo…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "incendio",
+          "base",
+          "militar",
+          "canada",
+          "deixa",
+          "mortos",
+          "Incêndio em base militar no Canadá deixa 4 mortos; governo descarta terrorismo 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "f3f03914",
+      "title": "Donald Trump declara apoio a Netanyahu na eleição de Israel",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/donald-trump-declara-apoio-a-netanyahu-na-eleicao-de-israel.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T15:57:55.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Donald Trump",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/Tl1zwF6d-dmujeZiw5-nceXeyvE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/a/k/c3ySPqSNCM86IQuw9lAw/hou7rvfxuaadhql.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/donald-trump-declara-apoio-a-netanyahu-na-eleicao-de-israel-f3f039/",
+      "landing_url": "https://matchapp.tv/?news=f3f03914#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "donald",
+          "trump",
+          "declara",
+          "apoio",
+          "netanyahu",
+          "eleicao"
+        ],
+        "long_tail": [
+          "Donald Trump declara apoio a Netanyahu na eleição de Israel 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "donald",
+          "trump",
+          "declara",
+          "apoio",
+          "netanyahu",
+          "eleicao"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Donald Trump declara apoio a Netanyahu na eleição de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "donald",
+          "trump",
+          "declara",
+          "apoio",
+          "netanyahu",
+          "eleicao",
+          "Donald Trump declara apoio a Netanyahu na eleição de Israel 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "a42d52f9",
+      "title": "Georgina Cates, ‘An Awfully Big Adventure’ and ‘Clay Pigeons’ Actress, Dies at 51",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/georgina-cates-dead-awfully-big-adventure-skeet-ulrich-1236734334/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T15:48:31.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Georgina Cates",
+      "description": "Georgina Cates: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/obit-Georgina-Cates.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/georgina-cates-an-awfully-big-adventure-and-clay-pigeons-actress-dies-at-51-a42d52/",
+      "landing_url": "https://matchapp.tv/?news=a42d52f9#latest-news",
+      "seo": {
+        "primary_keyword": "Georgina Cates latest news",
+        "short_tail": [
+          "Georgina Cates",
+          "Georgina Cates news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Georgina Cates latest news October 2026",
+          "Georgina Cates obituary update 2026",
+          "Georgina Cates news 2026-10-18",
+          "latest obituary news about Georgina Cates",
+          "georgina cates georgina cates awfully big latest update",
+          "The Hollywood Reporter Georgina Cates obituary",
+          "latest news about Georgina Cates October 2026",
+          "Georgina Cates entertainment news 2026-10-18",
+          "what happened with Georgina Cates"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Georgina Cates",
+          "georgina",
+          "cates",
+          "awfully",
+          "big",
+          "adventure",
+          "clay"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Georgina Cates 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Georgina Cates",
+          "hollywoodreporter.com Georgina Cates",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Georgina Cates, ‘An Awfully Big Adventure’ and ‘Clay…",
+        "meta_description": "Georgina Cates: Obituary update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Georgina Cates latest news",
+          "Georgina Cates",
+          "Georgina Cates news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Georgina Cates latest news October 2026",
+          "Georgina Cates obituary update 2026",
+          "Georgina Cates news 2026-10-18",
+          "latest obituary news about Georgina Cates",
+          "georgina cates georgina cates awfully big latest update",
+          "The Hollywood Reporter Georgina Cates obituary",
+          "latest news about Georgina Cates October 2026",
+          "Georgina Cates entertainment news 2026-10-18",
+          "what happened with Georgina Cates",
+          "georgina",
+          "cates",
+          "awfully",
+          "big",
+          "adventure",
+          "clay",
+          "October 2026",
+          "2026-10-18",
+          "Georgina Cates 2026",
+          "The Hollywood Reporter Georgina Cates",
+          "hollywoodreporter.com Georgina Cates",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "cae4297e",
+      "title": "Oil facilities hit in deadly overnight attack on St Petersburg",
+      "url": "https://www.bbc.co.uk/news/articles/c3eweygrjzd7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T15:46:10.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4966/live/70482900-cad8-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/oil-facilities-hit-in-deadly-overnight-attack-on-st-petersburg-cae429/",
+      "landing_url": "https://matchapp.tv/?news=cae4297e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack"
+        ],
+        "long_tail": [
+          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Oil facilities hit in deadly overnight attack on St…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack",
+          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "c22196f0",
+      "title": "Taylor Swift, Charlize Theron, Colman Domingo and Many More Stars Help Academy Museum Gala Raise Over $14M",
+      "url": "https://www.hollywoodreporter.com/lifestyle/lifestyle-news/taylor-swift-stars-academy-museum-gala-raise-14m-1236734684/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T15:31:15.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Taylor Swift",
+      "description": "Taylor Swift: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/2300772254.jpg?crop=0px%2C981px%2C3173px%2C1776px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/taylor-swift-charlize-theron-colman-domingo-and-many-more-stars-help-academy-mus-c22196/",
+      "landing_url": "https://matchapp.tv/?news=c22196f0#latest-news",
+      "seo": {
+        "primary_keyword": "Taylor Swift latest news",
+        "short_tail": [
+          "Taylor Swift",
+          "Taylor Swift news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Taylor Swift latest news October 2026",
+          "Taylor Swift entertainment update 2026",
+          "Taylor Swift news 2026-10-18",
+          "latest entertainment news about Taylor Swift",
+          "taylor swift taylor swift charlize theron latest update",
+          "The Hollywood Reporter Taylor Swift entertainment",
+          "latest news about Taylor Swift October 2026",
+          "Taylor Swift entertainment news 2026-10-18",
+          "what happened with Taylor Swift"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Taylor Swift",
+          "taylor",
+          "swift",
+          "charlize",
+          "theron",
+          "colman",
+          "domingo"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Taylor Swift 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Taylor Swift",
+          "hollywoodreporter.com Taylor Swift",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Taylor Swift, Charlize Theron, Colman Domingo and Many…",
+        "meta_description": "Taylor Swift: Entertainment update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via…",
+        "keywords": [
+          "Taylor Swift latest news",
+          "Taylor Swift",
+          "Taylor Swift news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Taylor Swift latest news October 2026",
+          "Taylor Swift entertainment update 2026",
+          "Taylor Swift news 2026-10-18",
+          "latest entertainment news about Taylor Swift",
+          "taylor swift taylor swift charlize theron latest update",
+          "The Hollywood Reporter Taylor Swift entertainment",
+          "latest news about Taylor Swift October 2026",
+          "Taylor Swift entertainment news 2026-10-18",
+          "what happened with Taylor Swift",
+          "taylor",
+          "swift",
+          "charlize",
+          "theron",
+          "colman",
+          "domingo",
+          "October 2026",
+          "2026-10-18",
+          "Taylor Swift 2026",
+          "The Hollywood Reporter Taylor Swift",
+          "hollywoodreporter.com Taylor Swift",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "649397c4",
+      "title": "Tim O’Donnell, Veteran Sitcom Writer, Producer and Director, Dies at 77",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/tim-odonnell-dead-growing-pains-clueless-daves-world-1236734794/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T15:28:52.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Tim O’Donnell",
+      "description": "Tim O’Donnell: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Tim-ODonnell-obit-temp-publicity-H-2026.png?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/tim-o-donnell-veteran-sitcom-writer-producer-and-director-dies-at-77-649397/",
+      "landing_url": "https://matchapp.tv/?news=649397c4#latest-news",
+      "seo": {
+        "primary_keyword": "Tim O’Donnell latest news",
+        "short_tail": [
+          "Tim O’Donnell",
+          "Tim O’Donnell news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Tim O’Donnell latest news October 2026",
+          "Tim O’Donnell obituary update 2026",
+          "Tim O’Donnell news 2026-10-18",
+          "latest obituary news about Tim O’Donnell",
+          "tim donnell tim donnell veteran sitcom latest update",
+          "The Hollywood Reporter Tim O’Donnell obituary",
+          "latest news about Tim O’Donnell October 2026",
+          "Tim O’Donnell entertainment news 2026-10-18",
+          "what happened with Tim O’Donnell"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Tim O’Donnell",
+          "tim",
+          "donnell",
+          "veteran",
+          "sitcom",
+          "writer",
+          "producer"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Tim O’Donnell 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Tim O’Donnell",
+          "hollywoodreporter.com Tim O’Donnell",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Tim O’Donnell, Veteran Sitcom Writer, Producer and…",
+        "meta_description": "Tim O’Donnell: Obituary update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via MatchApp…",
+        "keywords": [
+          "Tim O’Donnell latest news",
+          "Tim O’Donnell",
+          "Tim O’Donnell news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Tim O’Donnell latest news October 2026",
+          "Tim O’Donnell obituary update 2026",
+          "Tim O’Donnell news 2026-10-18",
+          "latest obituary news about Tim O’Donnell",
+          "tim donnell tim donnell veteran sitcom latest update",
+          "The Hollywood Reporter Tim O’Donnell obituary",
+          "latest news about Tim O’Donnell October 2026",
+          "Tim O’Donnell entertainment news 2026-10-18",
+          "what happened with Tim O’Donnell",
+          "tim",
+          "donnell",
+          "veteran",
+          "sitcom",
+          "writer",
+          "producer",
+          "October 2026",
+          "2026-10-18",
+          "Tim O’Donnell 2026",
+          "The Hollywood Reporter Tim O’Donnell",
+          "hollywoodreporter.com Tim O’Donnell",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "34038bb7",
+      "title": "Fuel leak spreads more than two miles along River Taff",
+      "url": "https://www.bbc.co.uk/news/articles/c8vgxnp5w6vzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T15:11:09.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e744/live/ac9b0fb0-cae9-11f1-bc2e-018d645d8d21.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/fuel-leak-spreads-more-than-two-miles-along-river-taff-34038b/",
+      "landing_url": "https://matchapp.tv/?news=34038bb7#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two"
+        ],
+        "long_tail": [
+          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Fuel leak spreads more than two miles along River Taff |…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two",
+          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
       "id": "573bd881",
-      "title": "Jesse Eisenberg Relives Kieran Culkin Woes Making ‘A Real Pain’ and Says His Next Project is a TV Show",
+      "title": "Jesse Eisenberg Relives Kieran Culkin Woes Making ‘A Real Pain’ and Says His Next Project Is a TV Show",
       "url": "https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-kieran-culkin-real-pain-debut-film-london-1236734749/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
@@ -20,7 +749,7 @@
       "category": "entertainment",
       "person": "Jesse Eisenberg Relives Kieran",
       "description": "Jesse Eisenberg Relives Kieran: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-18T152415.580.jpg?w=1440&h=810&crop=1",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-18T155641.488.jpg?w=1440&h=810&crop=1",
       "matchapp_url": "https://matchapp.tv/news/articles/jesse-eisenberg-relives-kieran-culkin-woes-making-a-real-pain-and-says-his-next--573bd8/",
       "landing_url": "https://matchapp.tv/?news=573bd881#latest-news",
       "seo": {
@@ -94,7 +823,7 @@
           "hollywoodreporter.com Jesse Eisenberg Relives Kieran",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -163,76 +892,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "34038bb7",
-      "title": "Fuel leak spreads more than two miles along River Taff",
-      "url": "https://www.bbc.co.uk/news/articles/c8vgxnp5w6vzo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T13:59:31.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e744/live/ac9b0fb0-cae9-11f1-bc2e-018d645d8d21.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/fuel-leak-spreads-more-than-two-miles-along-river-taff-34038b/",
-      "landing_url": "https://matchapp.tv/?news=34038bb7#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "fuel",
-          "leak",
-          "spreads",
-          "more",
-          "than",
-          "two"
-        ],
-        "long_tail": [
-          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "fuel",
-          "leak",
-          "spreads",
-          "more",
-          "than",
-          "two"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Fuel leak spreads more than two miles along River Taff |…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "fuel",
-          "leak",
-          "spreads",
-          "more",
-          "than",
-          "two",
-          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -301,7 +961,76 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "de7a52e6",
+      "title": "Search for Amelia Earhart's plane resumes after stormy weather",
+      "url": "https://www.bbc.co.uk/news/articles/cv70pxe5j90eo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T13:47:07.000Z",
+      "discovered_at": "2026-10-18T17:31:30.245Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f795/live/26bf0220-cacb-11f1-b5ff-6fb710f59c84.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/search-for-amelia-earhart-s-plane-resumes-after-stormy-weather-de7a52/",
+      "landing_url": "https://matchapp.tv/?news=de7a52e6#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "search",
+          "amelia",
+          "earhart",
+          "plane",
+          "resumes",
+          "after"
+        ],
+        "long_tail": [
+          "Search for Amelia Earhart's plane resumes after stormy weather 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "search",
+          "amelia",
+          "earhart",
+          "plane",
+          "resumes",
+          "after"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Search for Amelia Earhart's plane resumes after stormy…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "search",
+          "amelia",
+          "earhart",
+          "plane",
+          "resumes",
+          "after",
+          "Search for Amelia Earhart's plane resumes after stormy weather 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -370,7 +1099,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -469,7 +1198,7 @@
           "hollywoodreporter.com imperium concrete land temples",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -538,7 +1267,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -607,7 +1336,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -708,7 +1437,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -777,76 +1506,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "a6dd3a0a",
-      "title": "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/predio-que-sobreviveu-a-2-guerras-mundiais-e-destruido-em-protestos-na-franca.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T12:09:51.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/35LGoNQ0zvYCGH5inz0NlWRx80o=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/a/o/BBoPHxRXedquPiyd5XAA/afp-20261018-d3mc7wk-v1-midres-francesocialdemo.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/predio-que-sobreviveu-a-2-guerras-mundiais-e-destruido-em-protestos-na-franca-a6dd3a/",
-      "landing_url": "https://matchapp.tv/?news=a6dd3a0a#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "predio",
-          "que",
-          "sobreviveu",
-          "guerras",
-          "mundiais",
-          "destruido"
-        ],
-        "long_tail": [
-          "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "predio",
-          "que",
-          "sobreviveu",
-          "guerras",
-          "mundiais",
-          "destruido"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Prédio que sobreviveu a 2 guerras mundiais é destruído em…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "predio",
-          "que",
-          "sobreviveu",
-          "guerras",
-          "mundiais",
-          "destruido",
-          "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -864,7 +1524,7 @@
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d285/live/4704a830-cacd-11f1-b5ff-6fb710f59c84.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/55f7/live/7d8c1210-cb06-11f1-93db-7509e20aa39a.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/burnt-out-cars-and-shattered-glass-on-paris-streets-after-protests-turn-to-riots-3371eb/",
       "landing_url": "https://matchapp.tv/?news=3371ebd7#latest-news",
       "seo": {
@@ -915,211 +1575,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "cae4297e",
-      "title": "Oil facilities hit in deadly overnight attack on St Petersburg",
-      "url": "https://www.bbc.co.uk/news/articles/c3eweygrjzd7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T11:57:49.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4966/live/70482900-cad8-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/oil-facilities-hit-in-deadly-overnight-attack-on-st-petersburg-cae429/",
-      "landing_url": "https://matchapp.tv/?news=cae4297e#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "oil",
-          "facilities",
-          "hit",
-          "deadly",
-          "overnight",
-          "attack"
-        ],
-        "long_tail": [
-          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "oil",
-          "facilities",
-          "hit",
-          "deadly",
-          "overnight",
-          "attack"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Oil facilities hit in deadly overnight attack on St…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "oil",
-          "facilities",
-          "hit",
-          "deadly",
-          "overnight",
-          "attack",
-          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "b21d1b35",
-      "title": "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/padre-morre-apos-cruz-cair-sobre-sua-cabeca-durante-transmissao-ao-vivo-de-uma-missa-no-equador-video.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T11:47:15.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/TtUAdV0Mea_gS1ZAyglNu_XyfM4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/o/L/21AkQ3TW2vH8MEQDqfbQ/diptico-do-crucifixo-em-queda.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/padre-morre-apos-cruz-cair-sobre-sua-cabeca-durante-transmissao-ao-vivo-de-uma-m-b21d1b/",
-      "landing_url": "https://matchapp.tv/?news=b21d1b35#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "padre",
-          "morre",
-          "apos",
-          "cruz",
-          "cair",
-          "sobre"
-        ],
-        "long_tail": [
-          "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "padre",
-          "morre",
-          "apos",
-          "cruz",
-          "cair",
-          "sobre"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Padre morre após cruz cair sobre sua cabeça durante…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "padre",
-          "morre",
-          "apos",
-          "cruz",
-          "cair",
-          "sobre",
-          "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "35906d7f",
-      "title": "Hungria desmonta o legado autoritário de Orbán",
-      "url": "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/10/18/hungria-desmonta-o-legado-autoritario-de-orban.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T11:40:22.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/-QuR_o_FSlYLb1VyZ5vUvPhz-NM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/X/eYLBuuSQeeR2vawGj9vQ/fotojet-2026-04-11t095535.705.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/hungria-desmonta-o-legado-autoritario-de-orban-35906d/",
-      "landing_url": "https://matchapp.tv/?news=35906d7f#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "hungria",
-          "desmonta",
-          "legado",
-          "autoritario",
-          "orban"
-        ],
-        "long_tail": [
-          "Hungria desmonta o legado autoritário de Orbán 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "hungria",
-          "desmonta",
-          "legado",
-          "autoritario",
-          "orban"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Hungria desmonta o legado autoritário de Orbán | Notícias…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "hungria",
-          "desmonta",
-          "legado",
-          "autoritario",
-          "orban",
-          "Hungria desmonta o legado autoritário de Orbán 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -1188,7 +1644,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -1257,7 +1713,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -1326,267 +1782,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "5175770b",
-      "title": "Pony herd gathering raises money for air ambulance",
-      "url": "https://www.bbc.co.uk/news/articles/cqe9lx01ynj8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T10:25:13.000Z",
-      "discovered_at": "2026-10-18T14:34:48.175Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/705b/live/f5421410-c96e-11f1-a6e6-417671ef62cb.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pony-herd-gathering-raises-money-for-air-ambulance-517577/",
-      "landing_url": "https://matchapp.tv/?news=5175770b#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pony",
-          "herd",
-          "gathering",
-          "raises",
-          "money",
-          "air"
-        ],
-        "long_tail": [
-          "Pony herd gathering raises money for air ambulance 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pony",
-          "herd",
-          "gathering",
-          "raises",
-          "money",
-          "air"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Pony herd gathering raises money for air ambulance | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "pony",
-          "herd",
-          "gathering",
-          "raises",
-          "money",
-          "air",
-          "Pony herd gathering raises money for air ambulance 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "92acb4d9",
-      "title": "‘What Belongs to Others’ Wins Top Warsaw Film Festival Award",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/warsaw-film-festival-2026-awards-winners-what-belongs-to-others-1236734712/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-18T09:10:02.000Z",
-      "discovered_at": "2026-10-18T09:51:24.257Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "",
-      "description": "awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/1792314431085.jpeg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-belongs-to-others-wins-top-warsaw-film-festival-award-92acb4/",
-      "landing_url": "https://matchapp.tv/?news=92acb4d9#latest-news",
-      "seo": {
-        "primary_keyword": "what belongs others wins latest news",
-        "short_tail": [
-          "what belongs others wins",
-          "what belongs others wins news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "what belongs others wins latest news October 2026",
-          "what belongs others wins awards update 2026",
-          "what belongs others wins news 2026-10-18",
-          "latest awards news about what belongs others wins",
-          "what belongs others wins top warsaw latest update",
-          "The Hollywood Reporter what belongs others wins awards",
-          "latest news about what belongs others wins October 2026",
-          "what belongs others wins entertainment news 2026-10-18",
-          "what happened with what belongs others wins"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "what",
-          "belongs",
-          "others",
-          "wins",
-          "top",
-          "warsaw",
-          "film",
-          "festival"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-18",
-          "what belongs others wins 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter what belongs others wins",
-          "hollywoodreporter.com what belongs others wins",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘What Belongs to Others’ Wins Top Warsaw Film Festival…",
-        "meta_description": "Awards update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "what belongs others wins latest news",
-          "what belongs others wins",
-          "what belongs others wins news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "what belongs others wins latest news October 2026",
-          "what belongs others wins awards update 2026",
-          "what belongs others wins news 2026-10-18",
-          "latest awards news about what belongs others wins",
-          "what belongs others wins top warsaw latest update",
-          "The Hollywood Reporter what belongs others wins awards",
-          "latest news about what belongs others wins October 2026",
-          "what belongs others wins entertainment news 2026-10-18",
-          "what happened with what belongs others wins",
-          "what",
-          "belongs",
-          "others",
-          "wins",
-          "top",
-          "warsaw",
-          "film",
-          "festival",
-          "October 2026",
-          "2026-10-18",
-          "what belongs others wins 2026",
-          "The Hollywood Reporter what belongs others wins",
-          "hollywoodreporter.com what belongs others wins",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "e55abcfb",
-      "title": "South Africa’s Oscar Entry ‘Variations on a Theme’ Was Written With Microsoft Excel",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/oscars-2027-south-africa-film-variations-on-a-theme-excel-1236734314/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-18T07:30:00.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "South Africa’s Oscar Entry",
-      "description": "South Africa’s Oscar Entry: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/02/Variations-on-a-Theme-film-still.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/south-africa-s-oscar-entry-variations-on-a-theme-was-written-with-microsoft-exce-e55abc/",
-      "landing_url": "https://matchapp.tv/?news=e55abcfb#latest-news",
-      "seo": {
-        "primary_keyword": "South Africa’s Oscar Entry latest news",
-        "short_tail": [
-          "South Africa’s Oscar Entry",
-          "South Africa’s Oscar Entry news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "South Africa’s Oscar Entry latest news October 2026",
-          "South Africa’s Oscar Entry awards update 2026",
-          "South Africa’s Oscar Entry news 2026-10-18",
-          "latest awards news about South Africa’s Oscar Entry",
-          "south africa oscar entry south africa latest update",
-          "The Hollywood Reporter South Africa’s Oscar Entry awards",
-          "latest news about South Africa’s Oscar Entry October 2026",
-          "South Africa’s Oscar Entry entertainment news 2026-10-18",
-          "what happened with South Africa’s Oscar Entry"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "South Africa’s Oscar Entry",
-          "south",
-          "africa",
-          "oscar",
-          "entry"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-18",
-          "South Africa’s Oscar Entry 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter South Africa’s Oscar Entry",
-          "hollywoodreporter.com South Africa’s Oscar Entry",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "South Africa’s Oscar Entry ‘Variations on a Theme’ Was…",
-        "meta_description": "South Africa’s Oscar Entry: Awards update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
-        "keywords": [
-          "South Africa’s Oscar Entry latest news",
-          "South Africa’s Oscar Entry",
-          "South Africa’s Oscar Entry news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "South Africa’s Oscar Entry latest news October 2026",
-          "South Africa’s Oscar Entry awards update 2026",
-          "South Africa’s Oscar Entry news 2026-10-18",
-          "latest awards news about South Africa’s Oscar Entry",
-          "south africa oscar entry south africa latest update",
-          "The Hollywood Reporter South Africa’s Oscar Entry awards",
-          "latest news about South Africa’s Oscar Entry October 2026",
-          "South Africa’s Oscar Entry entertainment news 2026-10-18",
-          "what happened with South Africa’s Oscar Entry",
-          "south",
-          "africa",
-          "oscar",
-          "entry",
-          "October 2026",
-          "2026-10-18",
-          "South Africa’s Oscar Entry 2026",
-          "The Hollywood Reporter South Africa’s Oscar Entry",
-          "hollywoodreporter.com South Africa’s Oscar Entry",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -1684,101 +1880,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "f2276c73",
-      "title": "Academy Museum Gala: Taylor Swift, Sabrina Carpenter, Jennifer Hudson, Connor Storrie, More Stars Walk the Carpet",
-      "url": "https://www.hollywoodreporter.com/gallery/taylor-swift-anna-kendrick-photos-academy-museum-gala-2026-1236734470/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-18T01:59:54.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Academy Museum Gala",
-      "description": "Academy Museum Gala: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Sabrina-Carpenter-Taylor-Swift-Jennifer-Hudson-Split-Main-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/academy-museum-gala-taylor-swift-sabrina-carpenter-jennifer-hudson-connor-storri-f2276c/",
-      "landing_url": "https://matchapp.tv/?news=f2276c73#latest-news",
-      "seo": {
-        "primary_keyword": "Academy Museum Gala latest news",
-        "short_tail": [
-          "Academy Museum Gala",
-          "Academy Museum Gala news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Academy Museum Gala latest news October 2026",
-          "Academy Museum Gala entertainment update 2026",
-          "Academy Museum Gala news 2026-10-18",
-          "latest entertainment news about Academy Museum Gala",
-          "academy museum gala academy museum gala latest update",
-          "The Hollywood Reporter Academy Museum Gala entertainment",
-          "latest news about Academy Museum Gala October 2026",
-          "Academy Museum Gala entertainment news 2026-10-18",
-          "what happened with Academy Museum Gala"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Academy Museum Gala",
-          "academy",
-          "museum",
-          "gala",
-          "taylor",
-          "swift"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-18",
-          "Academy Museum Gala 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Academy Museum Gala",
-          "hollywoodreporter.com Academy Museum Gala",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Academy Museum Gala: Taylor Swift, Sabrina Carpenter,…",
-        "meta_description": "Academy Museum Gala: Entertainment update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
-        "keywords": [
-          "Academy Museum Gala latest news",
-          "Academy Museum Gala",
-          "Academy Museum Gala news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Academy Museum Gala latest news October 2026",
-          "Academy Museum Gala entertainment update 2026",
-          "Academy Museum Gala news 2026-10-18",
-          "latest entertainment news about Academy Museum Gala",
-          "academy museum gala academy museum gala latest update",
-          "The Hollywood Reporter Academy Museum Gala entertainment",
-          "latest news about Academy Museum Gala October 2026",
-          "Academy Museum Gala entertainment news 2026-10-18",
-          "what happened with Academy Museum Gala",
-          "academy",
-          "museum",
-          "gala",
-          "taylor",
-          "swift",
-          "October 2026",
-          "2026-10-18",
-          "Academy Museum Gala 2026",
-          "The Hollywood Reporter Academy Museum Gala",
-          "hollywoodreporter.com Academy Museum Gala",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -1872,200 +1974,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "0f9d21ba",
-      "title": "Miley Cyrus Returns to the Stage With Emotional and Cathartic Hollywood Bowl Show",
-      "url": "https://www.hollywoodreporter.com/music/music-news/miley-cyrus-live-hollywood-bowl-2026-night-1-highlights-1236734276/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-17T23:17:39.000Z",
-      "discovered_at": "2026-10-18T00:17:51.077Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Miley Cyrus Returns",
-      "description": "Miley Cyrus Returns: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/KM_13103_PI0K3hf3-e1792278347831.jpeg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/miley-cyrus-returns-to-the-stage-with-emotional-and-cathartic-hollywood-bowl-sho-0f9d21/",
-      "landing_url": "https://matchapp.tv/?news=0f9d21ba#latest-news",
-      "seo": {
-        "primary_keyword": "Miley Cyrus Returns latest news",
-        "short_tail": [
-          "Miley Cyrus Returns",
-          "Miley Cyrus Returns news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Miley Cyrus Returns latest news October 2026",
-          "Miley Cyrus Returns music update 2026",
-          "Miley Cyrus Returns news 2026-10-17",
-          "latest music news about Miley Cyrus Returns",
-          "miley cyrus returns miley cyrus returns latest update",
-          "The Hollywood Reporter Miley Cyrus Returns music",
-          "latest news about Miley Cyrus Returns October 2026",
-          "Miley Cyrus Returns entertainment news 2026-10-17",
-          "what happened with Miley Cyrus Returns"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Miley Cyrus Returns",
-          "miley",
-          "cyrus",
-          "returns",
-          "stage",
-          "emotional"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "Miley Cyrus Returns 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Miley Cyrus Returns",
-          "hollywoodreporter.com Miley Cyrus Returns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Miley Cyrus Returns to the Stage With Emotional and…",
-        "meta_description": "Miley Cyrus Returns: Music update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Miley Cyrus Returns latest news",
-          "Miley Cyrus Returns",
-          "Miley Cyrus Returns news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Miley Cyrus Returns latest news October 2026",
-          "Miley Cyrus Returns music update 2026",
-          "Miley Cyrus Returns news 2026-10-17",
-          "latest music news about Miley Cyrus Returns",
-          "miley cyrus returns miley cyrus returns latest update",
-          "The Hollywood Reporter Miley Cyrus Returns music",
-          "latest news about Miley Cyrus Returns October 2026",
-          "Miley Cyrus Returns entertainment news 2026-10-17",
-          "what happened with Miley Cyrus Returns",
-          "miley",
-          "cyrus",
-          "returns",
-          "stage",
-          "emotional",
-          "October 2026",
-          "2026-10-17",
-          "Miley Cyrus Returns 2026",
-          "The Hollywood Reporter Miley Cyrus Returns",
-          "hollywoodreporter.com Miley Cyrus Returns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "ebd6ab48",
-      "title": "‘The Diplomat’ U.K. Prime Minister on the Operatic Way He Learned of His “Shocking” Season 4 Storyline",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/the-diplomat-trowbridge-resigns-rory-kinnear-interview-1236734442/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-17T23:11:46.000Z",
-      "discovered_at": "2026-10-18T00:17:51.077Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/DIPLO_404_Unit_03130RC.jpg?crop=0px%2C380px%2C3600px%2C2014px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-diplomat-u-k-prime-minister-on-the-operatic-way-he-learned-of-his-shocking-s-ebd6ab/",
-      "landing_url": "https://matchapp.tv/?news=ebd6ab48#latest-news",
-      "seo": {
-        "primary_keyword": "diplomat prime minister operatic latest news",
-        "short_tail": [
-          "diplomat prime minister operatic",
-          "diplomat prime minister operatic news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "diplomat prime minister operatic latest news October 2026",
-          "diplomat prime minister operatic entertainment update 2026",
-          "diplomat prime minister operatic news 2026-10-17",
-          "latest entertainment news about diplomat prime minister operatic",
-          "diplomat prime minister operatic way learned latest update",
-          "The Hollywood Reporter diplomat prime minister operatic entertainment",
-          "latest news about diplomat prime minister operatic October 2026",
-          "diplomat prime minister operatic entertainment news 2026-10-17",
-          "what happened with diplomat prime minister operatic"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "diplomat",
-          "prime",
-          "minister",
-          "operatic",
-          "way",
-          "learned",
-          "his",
-          "shocking"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "diplomat prime minister operatic 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter diplomat prime minister operatic",
-          "hollywoodreporter.com diplomat prime minister operatic",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘The Diplomat’ U.K. Prime Minister on the Operatic Way He…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "diplomat prime minister operatic latest news",
-          "diplomat prime minister operatic",
-          "diplomat prime minister operatic news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "diplomat prime minister operatic latest news October 2026",
-          "diplomat prime minister operatic entertainment update 2026",
-          "diplomat prime minister operatic news 2026-10-17",
-          "latest entertainment news about diplomat prime minister operatic",
-          "diplomat prime minister operatic way learned latest update",
-          "The Hollywood Reporter diplomat prime minister operatic entertainment",
-          "latest news about diplomat prime minister operatic October 2026",
-          "diplomat prime minister operatic entertainment news 2026-10-17",
-          "what happened with diplomat prime minister operatic",
-          "diplomat",
-          "prime",
-          "minister",
-          "operatic",
-          "way",
-          "learned",
-          "his",
-          "shocking",
-          "October 2026",
-          "2026-10-17",
-          "diplomat prime minister operatic 2026",
-          "The Hollywood Reporter diplomat prime minister operatic",
-          "hollywoodreporter.com diplomat prime minister operatic",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2162,99 +2071,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
-      }
-    },
-    {
-      "id": "ed322257",
-      "title": "Harry Styles Debuts Unreleased Song at MSG to Honor Liam Payne on Second Death Anniversary",
-      "url": "https://www.hollywoodreporter.com/music/music-news/harry-styles-unreleased-song-honor-liam-payne-anniversary-1236734395/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-17T21:07:57.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Harry Styles Debuts Unreleased",
-      "description": "Harry Styles Debuts Unreleased: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/03/GettyImages-451850431-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/harry-styles-debuts-unreleased-song-at-msg-to-honor-liam-payne-on-second-death-a-ed3222/",
-      "landing_url": "https://matchapp.tv/?news=ed322257#latest-news",
-      "seo": {
-        "primary_keyword": "Harry Styles Debuts Unreleased latest news",
-        "short_tail": [
-          "Harry Styles Debuts Unreleased",
-          "Harry Styles Debuts Unreleased news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Harry Styles Debuts Unreleased latest news October 2026",
-          "Harry Styles Debuts Unreleased obituary update 2026",
-          "Harry Styles Debuts Unreleased news 2026-10-17",
-          "latest obituary news about Harry Styles Debuts Unreleased",
-          "harry styles debuts unreleased harry styles latest update",
-          "The Hollywood Reporter Harry Styles Debuts Unreleased obituary",
-          "latest news about Harry Styles Debuts Unreleased October 2026",
-          "Harry Styles Debuts Unreleased entertainment news 2026-10-17",
-          "what happened with Harry Styles Debuts Unreleased"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Harry Styles Debuts Unreleased",
-          "harry",
-          "styles",
-          "debuts",
-          "unreleased"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "Harry Styles Debuts Unreleased 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Harry Styles Debuts Unreleased",
-          "hollywoodreporter.com Harry Styles Debuts Unreleased",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Harry Styles Debuts Unreleased Song at MSG to Honor Liam…",
-        "meta_description": "Harry Styles Debuts Unreleased: Obituary update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original…",
-        "keywords": [
-          "Harry Styles Debuts Unreleased latest news",
-          "Harry Styles Debuts Unreleased",
-          "Harry Styles Debuts Unreleased news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Harry Styles Debuts Unreleased latest news October 2026",
-          "Harry Styles Debuts Unreleased obituary update 2026",
-          "Harry Styles Debuts Unreleased news 2026-10-17",
-          "latest obituary news about Harry Styles Debuts Unreleased",
-          "harry styles debuts unreleased harry styles latest update",
-          "The Hollywood Reporter Harry Styles Debuts Unreleased obituary",
-          "latest news about Harry Styles Debuts Unreleased October 2026",
-          "Harry Styles Debuts Unreleased entertainment news 2026-10-17",
-          "what happened with Harry Styles Debuts Unreleased",
-          "harry",
-          "styles",
-          "debuts",
-          "unreleased",
-          "October 2026",
-          "2026-10-17",
-          "Harry Styles Debuts Unreleased 2026",
-          "The Hollywood Reporter Harry Styles Debuts Unreleased",
-          "hollywoodreporter.com Harry Styles Debuts Unreleased",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2350,7 +2167,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2448,7 +2265,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2549,7 +2366,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2643,7 +2460,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2742,7 +2559,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2841,7 +2658,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -2939,7 +2756,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -3040,7 +2857,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -3141,7 +2958,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -3163,7 +2980,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/karim-ainouz-conta-como-atraiu-elle-fanning-e-callum-turner-para-seu-novo-filme--86e336/",
       "landing_url": "https://matchapp.tv/?news=86e33602#latest-news",
       "seo": {
-        "primary_keyword": "como",
+        "primary_keyword": "Karim Aïnouz últimas notícias",
         "short_tail": [
           "Karim Aïnouz",
           "Karim Aïnouz news",
@@ -3171,8 +2988,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "como"
+          "notícias hoje"
         ],
         "long_tail": [
           "Karim Aïnouz latest news October 2026",
@@ -3185,9 +3001,7 @@
           "Karim Aïnouz notícia de 2026-10-16",
           "o que aconteceu com Karim Aïnouz"
         ],
-        "trend_keywords": [
-          "como"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "Karim Aïnouz",
           "karim",
@@ -3211,7 +3025,7 @@
         "meta_title": "Karim Aïnouz conta como atraiu Elle Fanning e Callum…",
         "meta_description": "Karim Aïnouz: Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "como",
+          "Karim Aïnouz últimas notícias",
           "Karim Aïnouz",
           "Karim Aïnouz news",
           "entertainment",
@@ -3231,6 +3045,7 @@
           "karim",
           "ainouz",
           "conta",
+          "como",
           "atraiu",
           "elle",
           "October 2026",
@@ -3241,7 +3056,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -3342,7 +3157,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -3436,7 +3251,209 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "cad4d821",
+      "title": "'Wannabe', das Spice Girls, faz 30 anos; clipe parece plano-sequência, mas tem corte escondido",
+      "url": "https://g1.globo.com/pop-arte/musica/noticia/2026/10/16/wannabe-das-spice-girls-faz-30-anos-clipe-parece-plano-sequencia-mas-tem-corte-escondido.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T07:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/UPPCD8vGXbrtLcB3ADk8j1mG7lI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/T/w/bLdKZKSj2BExvnm6sbkQ/spice2.webp",
+      "matchapp_url": "https://matchapp.tv/news/articles/wannabe-das-spice-girls-faz-30-anos-clipe-parece-plano-sequencia-mas-tem-corte-e-cad4d8/",
+      "landing_url": "https://matchapp.tv/?news=cad4d821#latest-news",
+      "seo": {
+        "primary_keyword": "wannabe spice girls faz últimas notícias",
+        "short_tail": [
+          "wannabe spice girls faz",
+          "wannabe spice girls faz news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "wannabe spice girls faz latest news October 2026",
+          "wannabe spice girls faz entertainment update 2026",
+          "wannabe spice girls faz news 2026-10-16",
+          "latest entertainment news about wannabe spice girls faz",
+          "wannabe spice girls faz anos clipe latest update",
+          "G1 wannabe spice girls faz entertainment",
+          "últimas notícias sobre wannabe spice girls faz outubro 2026",
+          "wannabe spice girls faz notícia de 2026-10-16",
+          "o que aconteceu com wannabe spice girls faz"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "wannabe",
+          "spice",
+          "girls",
+          "faz",
+          "anos",
+          "clipe",
+          "parece",
+          "plano"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "wannabe spice girls faz 2026"
+        ],
+        "source_keywords": [
+          "G1 wannabe spice girls faz",
+          "g1.globo.com wannabe spice girls faz",
+          "G1 entertainment news"
+        ],
+        "meta_title": "'Wannabe', das Spice Girls, faz 30 anos; clipe parece…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "wannabe spice girls faz últimas notícias",
+          "wannabe spice girls faz",
+          "wannabe spice girls faz news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "wannabe spice girls faz latest news October 2026",
+          "wannabe spice girls faz entertainment update 2026",
+          "wannabe spice girls faz news 2026-10-16",
+          "latest entertainment news about wannabe spice girls faz",
+          "wannabe spice girls faz anos clipe latest update",
+          "G1 wannabe spice girls faz entertainment",
+          "últimas notícias sobre wannabe spice girls faz outubro 2026",
+          "wannabe spice girls faz notícia de 2026-10-16",
+          "o que aconteceu com wannabe spice girls faz",
+          "wannabe",
+          "spice",
+          "girls",
+          "faz",
+          "anos",
+          "clipe",
+          "parece",
+          "plano",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "wannabe spice girls faz 2026",
+          "G1 wannabe spice girls faz",
+          "g1.globo.com wannabe spice girls faz",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
+      }
+    },
+    {
+      "id": "c199d597",
+      "title": "O que Renato Russo estaria fazendo hoje? Companheiros de Legião Urbana falam do amigo, 30 anos depois de sua morte",
+      "url": "https://g1.globo.com/fantastico/noticia/2026/10/16/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-amigo-30-anos-depois-de-sua-morte.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T07:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/i4xEw0qzoPIfqBLXOLegf0n8uyI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/0/X/oR4KJMQGOqmMBFV42QOQ/renato-russo-divulgacao.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-a-c199d5/",
+      "landing_url": "https://matchapp.tv/?news=c199d597#latest-news",
+      "seo": {
+        "primary_keyword": "que renato russo estaria últimas notícias",
+        "short_tail": [
+          "que renato russo estaria",
+          "que renato russo estaria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "que renato russo estaria latest news October 2026",
+          "que renato russo estaria entertainment update 2026",
+          "que renato russo estaria news 2026-10-16",
+          "latest entertainment news about que renato russo estaria",
+          "que renato russo estaria fazendo hoje latest update",
+          "G1 que renato russo estaria entertainment",
+          "últimas notícias sobre que renato russo estaria outubro 2026",
+          "que renato russo estaria notícia de 2026-10-16",
+          "o que aconteceu com que renato russo estaria"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "que",
+          "renato",
+          "russo",
+          "estaria",
+          "fazendo",
+          "hoje",
+          "companheiros",
+          "legiao"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "que renato russo estaria 2026"
+        ],
+        "source_keywords": [
+          "G1 que renato russo estaria",
+          "g1.globo.com que renato russo estaria",
+          "G1 entertainment news"
+        ],
+        "meta_title": "O que Renato Russo estaria fazendo hoje? Companheiros de…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "que renato russo estaria últimas notícias",
+          "que renato russo estaria",
+          "que renato russo estaria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "que renato russo estaria latest news October 2026",
+          "que renato russo estaria entertainment update 2026",
+          "que renato russo estaria news 2026-10-16",
+          "latest entertainment news about que renato russo estaria",
+          "que renato russo estaria fazendo hoje latest update",
+          "G1 que renato russo estaria entertainment",
+          "últimas notícias sobre que renato russo estaria outubro 2026",
+          "que renato russo estaria notícia de 2026-10-16",
+          "o que aconteceu com que renato russo estaria",
+          "que",
+          "renato",
+          "russo",
+          "estaria",
+          "fazendo",
+          "hoje",
+          "companheiros",
+          "legiao",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "que renato russo estaria 2026",
+          "G1 que renato russo estaria",
+          "g1.globo.com que renato russo estaria",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     },
     {
@@ -3526,7 +3543,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T14:34:48.175Z"
+        "seo_generated_at": "2026-10-18T17:31:30.245Z"
       }
     }
   ]
