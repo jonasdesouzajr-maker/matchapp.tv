@@ -1,7 +1,1308 @@
 {
-  "generated_at": "2026-10-18T09:51:24.257Z",
+  "generated_at": "2026-10-18T14:08:17.407Z",
   "limit": 1000,
   "items": [
+    {
+      "id": "6bd483fb",
+      "title": "Several dead or injured in major fire at Canada military base",
+      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T14:07:20.000Z",
+      "discovered_at": "2026-10-18T05:03:57.093Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/951a/live/d1508b70-cac9-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
+      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "long_tail": [
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Several dead or injured in major fire at Canada military…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada",
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "34038bb7",
+      "title": "Fuel leak spreads more than two miles along River Taff",
+      "url": "https://www.bbc.co.uk/news/articles/c8vgxnp5w6vzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T13:59:31.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e744/live/ac9b0fb0-cae9-11f1-bc2e-018d645d8d21.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/fuel-leak-spreads-more-than-two-miles-along-river-taff-34038b/",
+      "landing_url": "https://matchapp.tv/?news=34038bb7#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two"
+        ],
+        "long_tail": [
+          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Fuel leak spreads more than two miles along River Taff |…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two",
+          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "bccd3756",
+      "title": "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/militar-da-forca-aerea-dos-eua-morre-apos-cair-de-rapel-em-jogo-de-futebol-americano-no-texas.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T13:53:49.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0Im2IDlU1RAdHR_H7bmmIlBX9_w=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/5/YFV4rBQZCVXXz8LCbo5A/captura-de-tela-2026-10-18-104553.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/militar-da-forca-aerea-dos-eua-morre-apos-cair-de-rapel-em-jogo-de-futebol-ameri-bccd37/",
+      "landing_url": "https://matchapp.tv/?news=bccd3756#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "militar",
+          "forca",
+          "aerea",
+          "eua",
+          "morre",
+          "apos"
+        ],
+        "long_tail": [
+          "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "militar",
+          "forca",
+          "aerea",
+          "eua",
+          "morre",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Militar da Força Aérea dos EUA morre após cair de rapel em…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "militar",
+          "forca",
+          "aerea",
+          "eua",
+          "morre",
+          "apos",
+          "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "4666303d",
+      "title": "Trump diz que a França 'está em chamas' e 'destruída' pela imigração",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/trump-diz-que-a-franca-esta-em-chamas-e-destruida-pela-imigracao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T13:18:25.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/-ps8myZGs90cad9OK3Sp0oBb4Sg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/D/u/z4qBCSSL2uYdZ067CisA/2026-10-16t203723z-549741652-rc2k4oaux5cf-rtrmadp-3-usa-trump-georgia.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-diz-que-a-franca-esta-em-chamas-e-destruida-pela-imigracao-466630/",
+      "landing_url": "https://matchapp.tv/?news=4666303d#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "franca",
+          "esta",
+          "chamas"
+        ],
+        "long_tail": [
+          "Trump diz que a França 'está em chamas' e 'destruída' pela imigração 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "diz",
+          "que",
+          "franca",
+          "esta",
+          "chamas"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Trump diz que a França 'está em chamas' e 'destruída' pela…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "franca",
+          "esta",
+          "chamas",
+          "Trump diz que a França 'está em chamas' e 'destruída' pela imigração 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "2288d14c",
+      "title": "‘Imperium,’ ‘Concrete Land’ and ‘9 Temples to Heaven’ Win BFI London Film Festival Awards",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/bfi-lff-2026-awards-winners-imperium-concrete-land-1236734344/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T13:00:00.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Imperium-film-still.jpg?w=1280&h=720&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/imperium-concrete-land-and-9-temples-to-heaven-win-bfi-london-film-festival-awar-2288d1/",
+      "landing_url": "https://matchapp.tv/?news=2288d14c#latest-news",
+      "seo": {
+        "primary_keyword": "imperium concrete land temples latest news",
+        "short_tail": [
+          "imperium concrete land temples",
+          "imperium concrete land temples news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "imperium concrete land temples latest news October 2026",
+          "imperium concrete land temples entertainment update 2026",
+          "imperium concrete land temples news 2026-10-18",
+          "latest entertainment news about imperium concrete land temples",
+          "imperium concrete land temples heaven win latest update",
+          "The Hollywood Reporter imperium concrete land temples entertainment",
+          "latest news about imperium concrete land temples October 2026",
+          "imperium concrete land temples entertainment news 2026-10-18",
+          "what happened with imperium concrete land temples"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "imperium",
+          "concrete",
+          "land",
+          "temples",
+          "heaven",
+          "win",
+          "bfi",
+          "london"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "imperium concrete land temples 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter imperium concrete land temples",
+          "hollywoodreporter.com imperium concrete land temples",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Imperium,’ ‘Concrete Land’ and ‘9 Temples to Heaven’ Win…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "imperium concrete land temples latest news",
+          "imperium concrete land temples",
+          "imperium concrete land temples news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "imperium concrete land temples latest news October 2026",
+          "imperium concrete land temples entertainment update 2026",
+          "imperium concrete land temples news 2026-10-18",
+          "latest entertainment news about imperium concrete land temples",
+          "imperium concrete land temples heaven win latest update",
+          "The Hollywood Reporter imperium concrete land temples entertainment",
+          "latest news about imperium concrete land temples October 2026",
+          "imperium concrete land temples entertainment news 2026-10-18",
+          "what happened with imperium concrete land temples",
+          "imperium",
+          "concrete",
+          "land",
+          "temples",
+          "heaven",
+          "win",
+          "bfi",
+          "london",
+          "October 2026",
+          "2026-10-18",
+          "imperium concrete land temples 2026",
+          "The Hollywood Reporter imperium concrete land temples",
+          "hollywoodreporter.com imperium concrete land temples",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "e3a917bc",
+      "title": "Veja VÍDEO do momento que torre de prefeitura na França desaba durante incêndio causado em protestos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/veja-video-do-momento-que-torre-de-prefeitura-na-franca-desaba-durante-incendio-causado-em-protestos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T12:53:43.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Veja VÍDEO",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/5D8xSUiPuvMOIj0rWWVF808usW8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/u/e3Ry9VQqAfopGhseUKZg/limoges-mairie.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/veja-video-do-momento-que-torre-de-prefeitura-na-franca-desaba-durante-incendio--e3a917/",
+      "landing_url": "https://matchapp.tv/?news=e3a917bc#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "veja",
+          "video",
+          "momento",
+          "que",
+          "torre",
+          "prefeitura"
+        ],
+        "long_tail": [
+          "Veja VÍDEO do momento que torre de prefeitura na França desaba durante incêndio causado em protestos 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "veja",
+          "video",
+          "momento",
+          "que",
+          "torre",
+          "prefeitura"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Veja VÍDEO do momento que torre de prefeitura na França…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "veja",
+          "video",
+          "momento",
+          "que",
+          "torre",
+          "prefeitura",
+          "Veja VÍDEO do momento que torre de prefeitura na França desaba durante incêndio causado em protestos 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "573f4ea7",
+      "title": "Iate com piscina de 50 metros e toboáguas: imagens de satélite revelam o centro de lazer secreto de Kim Jong Un",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/iate-com-piscina-de-50-metros-e-toboaguas-imagens-de-satelite-revelam-o-centro-de-lazer-secreto-de-kim-jong-un.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T12:23:51.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/qpuQFgXSLKV12Cr-QvzaGONbzic=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/y/7/PR2hLqSXCGGk5sxRB7zQ/2026-06-22t215458z-251174769-rc29zlatwnm8-rtrmadp-3-northkorea-politics.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/iate-com-piscina-de-50-metros-e-toboaguas-imagens-de-satelite-revelam-o-centro-d-573f4e/",
+      "landing_url": "https://matchapp.tv/?news=573f4ea7#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "iate",
+          "piscina",
+          "metros",
+          "toboaguas",
+          "imagens",
+          "satelite"
+        ],
+        "long_tail": [
+          "Iate com piscina de 50 metros e toboáguas: imagens de satélite revelam o centro de lazer secreto de Kim Jong Un 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "iate",
+          "piscina",
+          "metros",
+          "toboaguas",
+          "imagens",
+          "satelite"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Iate com piscina de 50 metros e toboáguas: imagens de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "iate",
+          "piscina",
+          "metros",
+          "toboaguas",
+          "imagens",
+          "satelite",
+          "Iate com piscina de 50 metros e toboáguas: imagens de satélite revelam o centro de lazer secreto de Kim Jong Un 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "f064e4f8",
+      "title": "'Aquarelas' de Ary Barroso e Tom Jobim colorem com a bossa brasileira o show de Dionne Warwick no Rio de Janeiro",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/18/aquarelas-de-ary-barroso-e-tom-jobim-colorem-com-a-bossa-brasileira-o-show-de-dionne-warwick-no-rio-de-janeiro.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-18T12:21:37.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/RfoDeeBEX0TK231UaO7qOYZuVx0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/s/n/8oKMm3SxqH2JjX9V0PbA/dionne2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/aquarelas-de-ary-barroso-e-tom-jobim-colorem-com-a-bossa-brasileira-o-show-de-di-f064e4/",
+      "landing_url": "https://matchapp.tv/?news=f064e4f8#latest-news",
+      "seo": {
+        "primary_keyword": "aquarelas ary barroso tom últimas notícias",
+        "short_tail": [
+          "aquarelas ary barroso tom",
+          "aquarelas ary barroso tom news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "aquarelas ary barroso tom latest news October 2026",
+          "aquarelas ary barroso tom music update 2026",
+          "aquarelas ary barroso tom news 2026-10-18",
+          "latest music news about aquarelas ary barroso tom",
+          "aquarelas ary barroso tom jobim colorem latest update",
+          "G1 aquarelas ary barroso tom music",
+          "últimas notícias sobre aquarelas ary barroso tom outubro 2026",
+          "aquarelas ary barroso tom notícia de 2026-10-18",
+          "o que aconteceu com aquarelas ary barroso tom"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "aquarelas",
+          "ary",
+          "barroso",
+          "tom",
+          "jobim",
+          "colorem",
+          "bossa",
+          "brasileira"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "outubro 2026",
+          "aquarelas ary barroso tom 2026"
+        ],
+        "source_keywords": [
+          "G1 aquarelas ary barroso tom",
+          "g1.globo.com aquarelas ary barroso tom",
+          "G1 entertainment news"
+        ],
+        "meta_title": "'Aquarelas' de Ary Barroso e Tom Jobim colorem com a bossa…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-18. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "aquarelas ary barroso tom últimas notícias",
+          "aquarelas ary barroso tom",
+          "aquarelas ary barroso tom news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "aquarelas ary barroso tom latest news October 2026",
+          "aquarelas ary barroso tom music update 2026",
+          "aquarelas ary barroso tom news 2026-10-18",
+          "latest music news about aquarelas ary barroso tom",
+          "aquarelas ary barroso tom jobim colorem latest update",
+          "G1 aquarelas ary barroso tom music",
+          "últimas notícias sobre aquarelas ary barroso tom outubro 2026",
+          "aquarelas ary barroso tom notícia de 2026-10-18",
+          "o que aconteceu com aquarelas ary barroso tom",
+          "aquarelas",
+          "ary",
+          "barroso",
+          "tom",
+          "jobim",
+          "colorem",
+          "bossa",
+          "brasileira",
+          "October 2026",
+          "2026-10-18",
+          "outubro 2026",
+          "aquarelas ary barroso tom 2026",
+          "G1 aquarelas ary barroso tom",
+          "g1.globo.com aquarelas ary barroso tom",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "0bd6429c",
+      "title": "European diplomats attacked by Israeli settlers in West Bank",
+      "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T12:16:14.000Z",
+      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/european-diplomats-attacked-by-israeli-settlers-in-west-bank-0bd642/",
+      "landing_url": "https://matchapp.tv/?news=0bd6429c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "long_tail": [
+          "European diplomats attacked by Israeli settlers in West Bank 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "European diplomats attacked by Israeli settlers in West…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west",
+          "European diplomats attacked by Israeli settlers in West Bank 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "a6dd3a0a",
+      "title": "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/predio-que-sobreviveu-a-2-guerras-mundiais-e-destruido-em-protestos-na-franca.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T12:09:51.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/35LGoNQ0zvYCGH5inz0NlWRx80o=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/a/o/BBoPHxRXedquPiyd5XAA/afp-20261018-d3mc7wk-v1-midres-francesocialdemo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/predio-que-sobreviveu-a-2-guerras-mundiais-e-destruido-em-protestos-na-franca-a6dd3a/",
+      "landing_url": "https://matchapp.tv/?news=a6dd3a0a#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "predio",
+          "que",
+          "sobreviveu",
+          "guerras",
+          "mundiais",
+          "destruido"
+        ],
+        "long_tail": [
+          "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "predio",
+          "que",
+          "sobreviveu",
+          "guerras",
+          "mundiais",
+          "destruido"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Prédio que sobreviveu a 2 guerras mundiais é destruído em…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "predio",
+          "que",
+          "sobreviveu",
+          "guerras",
+          "mundiais",
+          "destruido",
+          "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "3371ebd7",
+      "title": "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting",
+      "url": "https://www.bbc.co.uk/news/articles/c574pdzl0k4no?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T12:07:31.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d285/live/4704a830-cacd-11f1-b5ff-6fb710f59c84.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/burnt-out-cars-and-shattered-glass-on-paris-streets-after-protests-turn-to-riots-3371eb/",
+      "landing_url": "https://matchapp.tv/?news=3371ebd7#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "burnt",
+          "out",
+          "cars",
+          "shattered",
+          "glass",
+          "paris"
+        ],
+        "long_tail": [
+          "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "burnt",
+          "out",
+          "cars",
+          "shattered",
+          "glass",
+          "paris"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Burnt out cars and shattered glass on Paris streets after…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "burnt",
+          "out",
+          "cars",
+          "shattered",
+          "glass",
+          "paris",
+          "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "cae4297e",
+      "title": "Oil facilities hit in deadly overnight attack on St Petersburg",
+      "url": "https://www.bbc.co.uk/news/articles/c3eweygrjzd7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T11:57:49.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4966/live/70482900-cad8-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/oil-facilities-hit-in-deadly-overnight-attack-on-st-petersburg-cae429/",
+      "landing_url": "https://matchapp.tv/?news=cae4297e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack"
+        ],
+        "long_tail": [
+          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Oil facilities hit in deadly overnight attack on St…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack",
+          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "b21d1b35",
+      "title": "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/padre-morre-apos-cruz-cair-sobre-sua-cabeca-durante-transmissao-ao-vivo-de-uma-missa-no-equador-video.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T11:47:15.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/TtUAdV0Mea_gS1ZAyglNu_XyfM4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/o/L/21AkQ3TW2vH8MEQDqfbQ/diptico-do-crucifixo-em-queda.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/padre-morre-apos-cruz-cair-sobre-sua-cabeca-durante-transmissao-ao-vivo-de-uma-m-b21d1b/",
+      "landing_url": "https://matchapp.tv/?news=b21d1b35#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "padre",
+          "morre",
+          "apos",
+          "cruz",
+          "cair",
+          "sobre"
+        ],
+        "long_tail": [
+          "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "padre",
+          "morre",
+          "apos",
+          "cruz",
+          "cair",
+          "sobre"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Padre morre após cruz cair sobre sua cabeça durante…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "padre",
+          "morre",
+          "apos",
+          "cruz",
+          "cair",
+          "sobre",
+          "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "35906d7f",
+      "title": "Hungria desmonta o legado autoritário de Orbán",
+      "url": "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/10/18/hungria-desmonta-o-legado-autoritario-de-orban.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T11:40:22.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/-QuR_o_FSlYLb1VyZ5vUvPhz-NM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/X/eYLBuuSQeeR2vawGj9vQ/fotojet-2026-04-11t095535.705.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/hungria-desmonta-o-legado-autoritario-de-orban-35906d/",
+      "landing_url": "https://matchapp.tv/?news=35906d7f#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "hungria",
+          "desmonta",
+          "legado",
+          "autoritario",
+          "orban"
+        ],
+        "long_tail": [
+          "Hungria desmonta o legado autoritário de Orbán 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "hungria",
+          "desmonta",
+          "legado",
+          "autoritario",
+          "orban"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Hungria desmonta o legado autoritário de Orbán | Notícias…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "hungria",
+          "desmonta",
+          "legado",
+          "autoritario",
+          "orban",
+          "Hungria desmonta o legado autoritário de Orbán 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "885bf00b",
+      "title": "Pope Leo XIV thanks wellwishers in first event after cancer surgery",
+      "url": "https://www.bbc.co.uk/news/videos/cq70px6pjkg5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T11:09:32.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Pope Leo XIV",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21f0/live/4a3b0720-cae5-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pope-leo-xiv-thanks-wellwishers-in-first-event-after-cancer-surgery-885bf0/",
+      "landing_url": "https://matchapp.tv/?news=885bf00b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pope",
+          "leo",
+          "xiv",
+          "thanks",
+          "wellwishers",
+          "first"
+        ],
+        "long_tail": [
+          "Pope Leo XIV thanks wellwishers in first event after cancer surgery 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pope",
+          "leo",
+          "xiv",
+          "thanks",
+          "wellwishers",
+          "first"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pope Leo XIV thanks wellwishers in first event after…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "pope",
+          "leo",
+          "xiv",
+          "thanks",
+          "wellwishers",
+          "first",
+          "Pope Leo XIV thanks wellwishers in first event after cancer surgery 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "7509a302",
+      "title": "Free clear-up has big engagement on social media",
+      "url": "https://www.bbc.co.uk/news/articles/cly8q2rryejo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T10:59:32.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8df8/live/09afa010-699e-11f1-8546-8f19e4fe30f4.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/free-clear-up-has-big-engagement-on-social-media-7509a3/",
+      "landing_url": "https://matchapp.tv/?news=7509a302#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "free",
+          "clear",
+          "has",
+          "big",
+          "engagement",
+          "social"
+        ],
+        "long_tail": [
+          "Free clear-up has big engagement on social media 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "free",
+          "clear",
+          "has",
+          "big",
+          "engagement",
+          "social"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Free clear-up has big engagement on social media | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "free",
+          "clear",
+          "has",
+          "big",
+          "engagement",
+          "social",
+          "Free clear-up has big engagement on social media 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "b7cab3ee",
+      "title": "Parisians wake up to protest damage and looted shops",
+      "url": "https://www.bbc.co.uk/news/videos/cmn5vey19q3go?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T10:58:39.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8791/live/7abdd380-cadd-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/parisians-wake-up-to-protest-damage-and-looted-shops-b7cab3/",
+      "landing_url": "https://matchapp.tv/?news=b7cab3ee#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "parisians",
+          "wake",
+          "protest",
+          "damage",
+          "looted",
+          "shops"
+        ],
+        "long_tail": [
+          "Parisians wake up to protest damage and looted shops 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "parisians",
+          "wake",
+          "protest",
+          "damage",
+          "looted",
+          "shops"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Parisians wake up to protest damage and looted shops |…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "parisians",
+          "wake",
+          "protest",
+          "damage",
+          "looted",
+          "shops",
+          "Parisians wake up to protest damage and looted shops 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "86bc4dac",
+      "title": "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/protestos-na-franca-mortos-feridos-presos-outubro.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T10:58:14.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/KxNJHx6oC353mRccD5qHQnKKKeE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/l/v/7qROsdTfesd9NDWZppzQ/afp-20261018-d3md7t3-v1-highres-francesocialdemo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-levam-mais-de-500-mil-as-ruas-e-deixam-1-morto-500-policiais-86bc4d/",
+      "landing_url": "https://matchapp.tv/?news=86bc4dac#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "franca",
+          "levam",
+          "mais",
+          "500",
+          "mil"
+        ],
+        "long_tail": [
+          "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "protestos",
+          "franca",
+          "levam",
+          "mais",
+          "500",
+          "mil"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Protestos na França levam mais de 500 mil às ruas e deixam…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "franca",
+          "levam",
+          "mais",
+          "500",
+          "mil",
+          "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
     {
       "id": "92acb4d9",
       "title": "‘What Belongs to Others’ Wins Top Warsaw Film Festival Award",
@@ -98,7 +1399,7 @@
           "hollywoodreporter.com what belongs others wins",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -237,75 +1538,6 @@
       }
     },
     {
-      "id": "6bd483fb",
-      "title": "Several dead or injured in major fire at Canada military base",
-      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T08:52:41.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/951a/live/d1508b70-cac9-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
-      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
-        ],
-        "long_tail": [
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Several dead or injured in major fire at Canada military…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada",
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
       "id": "7033b3f8",
       "title": "Turning the tides: Could hidden sea power energise our coastal towns?",
       "url": "https://www.bbc.co.uk/news/articles/c8y56y6xg9n9o?at_medium=RSS&at_campaign=rss",
@@ -393,7 +1625,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/south-africa-s-oscar-entry-variations-on-a-theme-was-written-with-microsoft-exce-e55abc/",
       "landing_url": "https://matchapp.tv/?news=e55abcfb#latest-news",
       "seo": {
-        "primary_keyword": "south africa vs australia",
+        "primary_keyword": "South Africa’s Oscar Entry latest news",
         "short_tail": [
           "South Africa’s Oscar Entry",
           "South Africa’s Oscar Entry news",
@@ -401,8 +1633,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "south africa vs australia"
+          "entertainment updates"
         ],
         "long_tail": [
           "South Africa’s Oscar Entry latest news October 2026",
@@ -415,9 +1646,7 @@
           "South Africa’s Oscar Entry entertainment news 2026-10-18",
           "what happened with South Africa’s Oscar Entry"
         ],
-        "trend_keywords": [
-          "south africa vs australia"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "South Africa’s Oscar Entry",
           "south",
@@ -438,7 +1667,7 @@
         "meta_title": "South Africa’s Oscar Entry ‘Variations on a Theme’ Was…",
         "meta_description": "South Africa’s Oscar Entry: Awards update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
         "keywords": [
-          "south africa vs australia",
+          "South Africa’s Oscar Entry latest news",
           "South Africa’s Oscar Entry",
           "South Africa’s Oscar Entry news",
           "awards",
@@ -466,7 +1695,7 @@
           "hollywoodreporter.com South Africa’s Oscar Entry",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1116,7 +2345,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1279,7 +2508,7 @@
           "hollywoodreporter.com Academy Museum Gala",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1745,76 +2974,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "0bd6429c",
-      "title": "European diplomats attacked by Israeli settlers in West Bank",
-      "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-17T23:52:38.000Z",
-      "discovered_at": "2026-10-18T00:17:51.077Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/european-diplomats-attacked-by-israeli-settlers-in-west-bank-0bd642/",
-      "landing_url": "https://matchapp.tv/?news=0bd6429c#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-17",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west"
-        ],
-        "long_tail": [
-          "European diplomats attacked by Israeli settlers in West Bank 2026-10-17",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "European diplomats attacked by Israeli settlers in West…",
-        "meta_description": "World report published by BBC World on 2026-10-17. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-17",
-          "world news",
-          "global headlines",
-          "european",
-          "diplomats",
-          "attacked",
-          "israeli",
-          "settlers",
-          "west",
-          "European diplomats attacked by Israeli settlers in West Bank 2026-10-17",
-          "world news October 2026",
-          "2026-10-17",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T05:03:57.093Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1977,7 +3137,7 @@
           "hollywoodreporter.com Miley Cyrus Returns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2076,7 +3236,7 @@
           "hollywoodreporter.com diplomat prime minister operatic",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2094,7 +3254,7 @@
       "category": "entertainment",
       "person": "",
       "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1182/live/ee2b5bb0-ca1c-11f1-bc2e-018d645d8d21.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fcca/live/9692e3c0-c894-11f1-b0a4-81e564f1cfaa.png",
       "matchapp_url": "https://matchapp.tv/news/articles/manifest-from-reality-tv-to-wembley-arena-in-one-turbulent-year-24fc52/",
       "landing_url": "https://matchapp.tv/?news=24fc5221#latest-news",
       "seo": {
@@ -2173,7 +3333,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2541,7 +3701,7 @@
           "hollywoodreporter.com Harry Styles Debuts Unreleased",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -3456,7 +4616,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -4009,7 +5169,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -4857,7 +6017,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -5689,7 +6849,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -5857,7 +7017,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -5945,7 +7105,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/judge-throws-out-child-sex-abuse-charges-against-actor-timothy-busfield-7380c1/",
       "landing_url": "https://matchapp.tv/?news=7380c158#latest-news",
       "seo": {
-        "primary_keyword": "judge throws out child latest news",
+        "primary_keyword": "child",
         "short_tail": [
           "judge throws out child",
           "judge throws out child news",
@@ -5953,7 +7113,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "child"
         ],
         "long_tail": [
           "judge throws out child latest news October 2026",
@@ -5966,7 +7127,9 @@
           "judge throws out child entertainment news 2026-10-17",
           "what happened with judge throws out child"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "child"
+        ],
         "entity_keywords": [
           "judge",
           "throws",
@@ -5990,7 +7153,7 @@
         "meta_title": "Judge throws out child sex abuse charges against actor…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "judge throws out child latest news",
+          "child",
           "judge throws out child",
           "judge throws out child news",
           "entertainment",
@@ -6010,7 +7173,6 @@
           "judge",
           "throws",
           "out",
-          "child",
           "sex",
           "abuse",
           "charges",
@@ -6022,7 +7184,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -6837,7 +7999,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -7721,7 +8883,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -10038,7 +11200,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -10129,7 +11291,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/karim-ainouz-conta-como-atraiu-elle-fanning-e-callum-turner-para-seu-novo-filme--86e336/",
       "landing_url": "https://matchapp.tv/?news=86e33602#latest-news",
       "seo": {
-        "primary_keyword": "Karim Aïnouz últimas notícias",
+        "primary_keyword": "como",
         "short_tail": [
           "Karim Aïnouz",
           "Karim Aïnouz news",
@@ -10137,7 +11299,9 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje"
+          "notícias hoje",
+          "como",
+          "como vs"
         ],
         "long_tail": [
           "Karim Aïnouz latest news October 2026",
@@ -10150,7 +11314,10 @@
           "Karim Aïnouz notícia de 2026-10-16",
           "o que aconteceu com Karim Aïnouz"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "como",
+          "como vs"
+        ],
         "entity_keywords": [
           "Karim Aïnouz",
           "karim",
@@ -10174,7 +11341,7 @@
         "meta_title": "Karim Aïnouz conta como atraiu Elle Fanning e Callum…",
         "meta_description": "Karim Aïnouz: Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "Karim Aïnouz últimas notícias",
+          "como",
           "Karim Aïnouz",
           "Karim Aïnouz news",
           "entertainment",
@@ -10182,6 +11349,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
+          "como vs",
           "Karim Aïnouz latest news October 2026",
           "Karim Aïnouz entertainment update 2026",
           "Karim Aïnouz news 2026-10-16",
@@ -10194,7 +11362,6 @@
           "karim",
           "ainouz",
           "conta",
-          "como",
           "atraiu",
           "elle",
           "October 2026",
@@ -10205,7 +11372,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -10474,7 +11641,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -10637,7 +11804,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -11594,7 +12761,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -14737,7 +15904,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -80210,1660 +81377,6 @@
           "The Hollywood Reporter SCAD Savannah Film Fest",
           "hollywoodreporter.com SCAD Savannah Film Fest",
           "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "9e6bf417",
-      "title": "It's A Sin star 'keeps you guessing' in Wales-set thriller",
-      "url": "https://www.bbc.co.uk/news/articles/ckm2q20nqdnqo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-10-05T17:01:29.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f8bc/live/05df1e20-bdb3-11f1-b7d8-31573a2bd831.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/it-s-a-sin-star-keeps-you-guessing-in-wales-set-thriller-9e6bf4/",
-      "landing_url": "https://matchapp.tv/?news=9e6bf417#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "sin star keeps you",
-          "sin star keeps you news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "sin star keeps you latest news October 2026",
-          "sin star keeps you entertainment update 2026",
-          "sin star keeps you news 2026-10-05",
-          "latest entertainment news about sin star keeps you",
-          "sin star keeps you guessing wales latest update",
-          "BBC sin star keeps you entertainment",
-          "latest news about sin star keeps you October 2026",
-          "sin star keeps you entertainment news 2026-10-05",
-          "what happened with sin star keeps you"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "sin",
-          "star",
-          "keeps",
-          "you",
-          "guessing",
-          "wales",
-          "set",
-          "thriller"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "sin star keeps you 2026"
-        ],
-        "source_keywords": [
-          "BBC sin star keeps you",
-          "bbc.co.uk sin star keeps you",
-          "BBC entertainment news"
-        ],
-        "meta_title": "It's A Sin star 'keeps you guessing' in Wales-set thriller…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "sin star keeps you",
-          "sin star keeps you news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "sin star keeps you latest news October 2026",
-          "sin star keeps you entertainment update 2026",
-          "sin star keeps you news 2026-10-05",
-          "latest entertainment news about sin star keeps you",
-          "sin star keeps you guessing wales latest update",
-          "BBC sin star keeps you entertainment",
-          "latest news about sin star keeps you October 2026",
-          "sin star keeps you entertainment news 2026-10-05",
-          "what happened with sin star keeps you",
-          "sin",
-          "star",
-          "keeps",
-          "you",
-          "guessing",
-          "wales",
-          "set",
-          "thriller",
-          "October 2026",
-          "2026-10-05",
-          "sin star keeps you 2026",
-          "BBC sin star keeps you"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "285f295a",
-      "title": "Marisa Tomei, Rob Morrow, Rosanna Arquette, Lois Smith and Rudy Pankow to Headline ‘This is Crazy!’ Benefit for NAMI in Honor of Chris Huvane",
-      "url": "https://www.hollywoodreporter.com/lifestyle/arts/marisa-tomei-rudy-pankow-headline-this-is-crazy-play-1236721438/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-05T17:00:00.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Marisa Tomei",
-      "description": "Marisa Tomei: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Marisa-Tomei-Rosanna-Arquette-Lois-Smith-Rudy-Pankow-And-Rob-Morrow-Split-Getty-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/marisa-tomei-rob-morrow-rosanna-arquette-lois-smith-and-rudy-pankow-to-headline--285f29/",
-      "landing_url": "https://matchapp.tv/?news=285f295a#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "Marisa Tomei",
-          "Marisa Tomei news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "Marisa Tomei latest news October 2026",
-          "Marisa Tomei entertainment update 2026",
-          "Marisa Tomei news 2026-10-05",
-          "latest entertainment news about Marisa Tomei",
-          "marisa tomei marisa tomei rob morrow latest update",
-          "The Hollywood Reporter Marisa Tomei entertainment",
-          "latest news about Marisa Tomei October 2026",
-          "Marisa Tomei entertainment news 2026-10-05",
-          "what happened with Marisa Tomei"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "Marisa Tomei",
-          "marisa",
-          "tomei",
-          "rob",
-          "morrow",
-          "rosanna",
-          "arquette"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "Marisa Tomei 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Marisa Tomei",
-          "hollywoodreporter.com Marisa Tomei",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Marisa Tomei, Rob Morrow, Rosanna Arquette, Lois Smith and…",
-        "meta_description": "Marisa Tomei: Entertainment update reported by The Hollywood Reporter on 2026-10-05. See verified context, publication time and the original source via…",
-        "keywords": [
-          "g1 rj",
-          "Marisa Tomei",
-          "Marisa Tomei news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "Marisa Tomei latest news October 2026",
-          "Marisa Tomei entertainment update 2026",
-          "Marisa Tomei news 2026-10-05",
-          "latest entertainment news about Marisa Tomei",
-          "marisa tomei marisa tomei rob morrow latest update",
-          "The Hollywood Reporter Marisa Tomei entertainment",
-          "latest news about Marisa Tomei October 2026",
-          "Marisa Tomei entertainment news 2026-10-05",
-          "what happened with Marisa Tomei",
-          "marisa",
-          "tomei",
-          "rob",
-          "morrow",
-          "rosanna",
-          "arquette",
-          "October 2026",
-          "2026-10-05",
-          "Marisa Tomei 2026",
-          "The Hollywood Reporter Marisa Tomei",
-          "hollywoodreporter.com Marisa Tomei",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "b6db85fe",
-      "title": "Gaza Documentary ‘NAZA’ Sparks IDF Counter Film to Rebut Venice Winner",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/naza-sparks-idf-counter-film-1236722408/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-05T16:54:56.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Gaza Documentary",
-      "description": "Gaza Documentary: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/naza-cover-youtube.jpg?crop=0px%2C5px%2C2560px%2C1433px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/gaza-documentary-naza-sparks-idf-counter-film-to-rebut-venice-winner-b6db85/",
-      "landing_url": "https://matchapp.tv/?news=b6db85fe#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "Gaza Documentary",
-          "Gaza Documentary news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "Gaza Documentary latest news October 2026",
-          "Gaza Documentary entertainment update 2026",
-          "Gaza Documentary news 2026-10-05",
-          "latest entertainment news about Gaza Documentary",
-          "gaza documentary gaza documentary naza sparks latest update",
-          "The Hollywood Reporter Gaza Documentary entertainment",
-          "latest news about Gaza Documentary October 2026",
-          "Gaza Documentary entertainment news 2026-10-05",
-          "what happened with Gaza Documentary"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "Gaza Documentary",
-          "gaza",
-          "documentary",
-          "naza",
-          "sparks",
-          "idf",
-          "counter"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "Gaza Documentary 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Gaza Documentary",
-          "hollywoodreporter.com Gaza Documentary",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Gaza Documentary ‘NAZA’ Sparks IDF Counter Film to Rebut…",
-        "meta_description": "Gaza Documentary: Entertainment update reported by The Hollywood Reporter on 2026-10-05. See verified context, publication time and the original source via…",
-        "keywords": [
-          "g1 rj",
-          "Gaza Documentary",
-          "Gaza Documentary news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "Gaza Documentary latest news October 2026",
-          "Gaza Documentary entertainment update 2026",
-          "Gaza Documentary news 2026-10-05",
-          "latest entertainment news about Gaza Documentary",
-          "gaza documentary gaza documentary naza sparks latest update",
-          "The Hollywood Reporter Gaza Documentary entertainment",
-          "latest news about Gaza Documentary October 2026",
-          "Gaza Documentary entertainment news 2026-10-05",
-          "what happened with Gaza Documentary",
-          "gaza",
-          "documentary",
-          "naza",
-          "sparks",
-          "idf",
-          "counter",
-          "October 2026",
-          "2026-10-05",
-          "Gaza Documentary 2026",
-          "The Hollywood Reporter Gaza Documentary",
-          "hollywoodreporter.com Gaza Documentary",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "0f2cc519",
-      "title": "Inside the ‘Verity’ Adaptation: Crafting a Mystery Where Nothing Is Certain",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/inside-verity-adaptation-michael-showalter-colleen-hoover-1236713900/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-05T16:30:00.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/VerityColumnArtFinal.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/inside-the-verity-adaptation-crafting-a-mystery-where-nothing-is-certain-0f2cc5/",
-      "landing_url": "https://matchapp.tv/?news=0f2cc519#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "inside verity adaptation crafting",
-          "inside verity adaptation crafting news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "inside verity adaptation crafting latest news October 2026",
-          "inside verity adaptation crafting entertainment update 2026",
-          "inside verity adaptation crafting news 2026-10-05",
-          "latest entertainment news about inside verity adaptation crafting",
-          "inside verity adaptation crafting mystery where latest update",
-          "The Hollywood Reporter inside verity adaptation crafting entertainment",
-          "latest news about inside verity adaptation crafting October 2026",
-          "inside verity adaptation crafting entertainment news 2026-10-05",
-          "what happened with inside verity adaptation crafting"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "inside",
-          "verity",
-          "adaptation",
-          "crafting",
-          "mystery",
-          "where",
-          "nothing",
-          "certain"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "inside verity adaptation crafting 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter inside verity adaptation crafting",
-          "hollywoodreporter.com inside verity adaptation crafting",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Inside the ‘Verity’ Adaptation: Crafting a Mystery Where…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "inside verity adaptation crafting",
-          "inside verity adaptation crafting news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "inside verity adaptation crafting latest news October 2026",
-          "inside verity adaptation crafting entertainment update 2026",
-          "inside verity adaptation crafting news 2026-10-05",
-          "latest entertainment news about inside verity adaptation crafting",
-          "inside verity adaptation crafting mystery where latest update",
-          "The Hollywood Reporter inside verity adaptation crafting entertainment",
-          "latest news about inside verity adaptation crafting October 2026",
-          "inside verity adaptation crafting entertainment news 2026-10-05",
-          "what happened with inside verity adaptation crafting",
-          "inside",
-          "verity",
-          "adaptation",
-          "crafting",
-          "mystery",
-          "where",
-          "nothing",
-          "certain",
-          "October 2026",
-          "2026-10-05",
-          "inside verity adaptation crafting 2026",
-          "The Hollywood Reporter inside verity adaptation crafting"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "143400a2",
-      "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
-      "url": "https://www.bbc.co.uk/news/articles/c5j9x9pr0240o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-05T16:13:21.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-05. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c06c/live/0ca3aea0-c0c5-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/pentagon-stops-using-anthropic-ai-tools-after-blacklisting-company-bbc-told-143400/",
-      "landing_url": "https://matchapp.tv/?news=143400a2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-05",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pentagon",
-          "stops",
-          "using",
-          "anthropic",
-          "tools",
-          "after"
-        ],
-        "long_tail": [
-          "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told 2026-10-05",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pentagon",
-          "stops",
-          "using",
-          "anthropic",
-          "tools",
-          "after"
-        ],
-        "freshness_keywords": [
-          "2026-10-05"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "Pentagon stops using Anthropic AI tools after blacklisting…",
-        "meta_description": "World report published by BBC Technology on 2026-10-05. Open the original report for full context.",
-        "keywords": [
-          "world news",
-          "global headlines",
-          "pentagon",
-          "stops",
-          "using",
-          "anthropic",
-          "tools",
-          "after",
-          "2026-10-05",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-06T20:50:09.235Z"
-      }
-    },
-    {
-      "id": "9464a149",
-      "title": "Ron Howard to be Honored at 2026 Critics Choice Documentary Awards",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/ron-howard-2026-critics-choice-documentary-awards-honor-1236722378/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-05T16:00:00.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Ron Howard",
-      "description": "Ron Howard: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Ron-Howard-Headshot-credit-Jeff-Lipsky6.jpg?crop=0px%2C19px%2C960px%2C537px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/ron-howard-to-be-honored-at-2026-critics-choice-documentary-awards-9464a1/",
-      "landing_url": "https://matchapp.tv/?news=9464a149#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "Ron Howard",
-          "Ron Howard news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "Ron Howard latest news October 2026",
-          "Ron Howard entertainment update 2026",
-          "Ron Howard news 2026-10-05",
-          "latest entertainment news about Ron Howard",
-          "ron howard ron howard honored 2026 latest update",
-          "The Hollywood Reporter Ron Howard entertainment",
-          "latest news about Ron Howard October 2026",
-          "Ron Howard entertainment news 2026-10-05",
-          "what happened with Ron Howard"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "Ron Howard",
-          "ron",
-          "howard",
-          "honored",
-          "2026",
-          "critics",
-          "choice"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "Ron Howard 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Ron Howard",
-          "hollywoodreporter.com Ron Howard",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Ron Howard to be Honored at 2026 Critics Choice…",
-        "meta_description": "Ron Howard: Entertainment update reported by The Hollywood Reporter on 2026-10-05. See verified context, publication time and the original source via…",
-        "keywords": [
-          "g1 rj",
-          "Ron Howard",
-          "Ron Howard news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "Ron Howard latest news October 2026",
-          "Ron Howard entertainment update 2026",
-          "Ron Howard news 2026-10-05",
-          "latest entertainment news about Ron Howard",
-          "ron howard ron howard honored 2026 latest update",
-          "The Hollywood Reporter Ron Howard entertainment",
-          "latest news about Ron Howard October 2026",
-          "Ron Howard entertainment news 2026-10-05",
-          "what happened with Ron Howard",
-          "ron",
-          "howard",
-          "honored",
-          "2026",
-          "critics",
-          "choice",
-          "October 2026",
-          "2026-10-05",
-          "Ron Howard 2026",
-          "The Hollywood Reporter Ron Howard",
-          "hollywoodreporter.com Ron Howard",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "e64fd9dc",
-      "title": "Luke Grimes Wasn’t Sure If ‘Marshals’ Would Be a Hit. Now He’s Prepping for a ‘Yellowstone’ Kind of Run",
-      "url": "https://www.hollywoodreporter.com/tv/tv-features/marshals-season-2-yellowstone-luke-grimes-interview-1236722080/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-05T15:47:02.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Luke Grimes Wasn’t Sure",
-      "description": "Luke Grimes Wasn’t Sure: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/3220767_YMAR_S2_3965bc.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/luke-grimes-wasn-t-sure-if-marshals-would-be-a-hit-now-he-s-prepping-for-a-yello-e64fd9/",
-      "landing_url": "https://matchapp.tv/?news=e64fd9dc#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "Luke Grimes Wasn’t Sure",
-          "Luke Grimes Wasn’t Sure news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "Luke Grimes Wasn’t Sure latest news October 2026",
-          "Luke Grimes Wasn’t Sure entertainment update 2026",
-          "Luke Grimes Wasn’t Sure news 2026-10-05",
-          "latest entertainment news about Luke Grimes Wasn’t Sure",
-          "luke grimes wasn sure luke grimes latest update",
-          "The Hollywood Reporter Luke Grimes Wasn’t Sure entertainment",
-          "latest news about Luke Grimes Wasn’t Sure October 2026",
-          "Luke Grimes Wasn’t Sure entertainment news 2026-10-05",
-          "what happened with Luke Grimes Wasn’t Sure"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "Luke Grimes Wasn’t Sure",
-          "luke",
-          "grimes",
-          "wasn",
-          "sure"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "Luke Grimes Wasn’t Sure 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Luke Grimes Wasn’t Sure",
-          "hollywoodreporter.com Luke Grimes Wasn’t Sure",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Luke Grimes Wasn’t Sure If ‘Marshals’ Would Be a Hit. Now…",
-        "meta_description": "Luke Grimes Wasn’t Sure: Entertainment update reported by The Hollywood Reporter on 2026-10-05. See verified context, publication time and the original…",
-        "keywords": [
-          "g1 rj",
-          "Luke Grimes Wasn’t Sure",
-          "Luke Grimes Wasn’t Sure news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "Luke Grimes Wasn’t Sure latest news October 2026",
-          "Luke Grimes Wasn’t Sure entertainment update 2026",
-          "Luke Grimes Wasn’t Sure news 2026-10-05",
-          "latest entertainment news about Luke Grimes Wasn’t Sure",
-          "luke grimes wasn sure luke grimes latest update",
-          "The Hollywood Reporter Luke Grimes Wasn’t Sure entertainment",
-          "latest news about Luke Grimes Wasn’t Sure October 2026",
-          "Luke Grimes Wasn’t Sure entertainment news 2026-10-05",
-          "what happened with Luke Grimes Wasn’t Sure",
-          "luke",
-          "grimes",
-          "wasn",
-          "sure",
-          "October 2026",
-          "2026-10-05",
-          "Luke Grimes Wasn’t Sure 2026",
-          "The Hollywood Reporter Luke Grimes Wasn’t Sure",
-          "hollywoodreporter.com Luke Grimes Wasn’t Sure",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "c6047438",
-      "title": "Maestro dos sons eruditos, falecido aos 72 anos, Roberto Tibiriçá deixa legado que inclui atuação na área fonográfica",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/05/maestro-dos-sons-eruditos-falecido-aos-72-anos-roberto-tibirica-deixa-legado-que-inclui-atuacao-na-area-fonografica.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-05T14:56:49.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/cjXKCP6_ar9xTVIbXZwVFC_YpMo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/r/70mcdBRmaqYTJwwlBkPA/robertotibirica1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/maestro-dos-sons-eruditos-falecido-aos-72-anos-roberto-tibirica-deixa-legado-que-c60474/",
-      "landing_url": "https://matchapp.tv/?news=c6047438#latest-news",
-      "seo": {
-        "primary_keyword": "maestro sons eruditos falecido últimas notícias",
-        "short_tail": [
-          "maestro sons eruditos falecido",
-          "maestro sons eruditos falecido news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "maestro sons eruditos falecido latest news October 2026",
-          "maestro sons eruditos falecido entertainment update 2026",
-          "maestro sons eruditos falecido news 2026-10-05",
-          "latest entertainment news about maestro sons eruditos falecido",
-          "maestro sons eruditos falecido aos anos latest update",
-          "G1 maestro sons eruditos falecido entertainment",
-          "últimas notícias sobre maestro sons eruditos falecido outubro 2026",
-          "maestro sons eruditos falecido notícia de 2026-10-05",
-          "o que aconteceu com maestro sons eruditos falecido"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "maestro",
-          "sons",
-          "eruditos",
-          "falecido",
-          "aos",
-          "anos",
-          "roberto",
-          "tibirica"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "maestro sons eruditos falecido 2026"
-        ],
-        "source_keywords": [
-          "G1 maestro sons eruditos falecido",
-          "g1.globo.com maestro sons eruditos falecido",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Maestro dos sons eruditos, falecido aos 72 anos, Roberto…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-05. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "maestro sons eruditos falecido últimas notícias",
-          "maestro sons eruditos falecido",
-          "maestro sons eruditos falecido news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "maestro sons eruditos falecido latest news October 2026",
-          "maestro sons eruditos falecido entertainment update 2026",
-          "maestro sons eruditos falecido news 2026-10-05",
-          "latest entertainment news about maestro sons eruditos falecido",
-          "maestro sons eruditos falecido aos anos latest update",
-          "G1 maestro sons eruditos falecido entertainment",
-          "últimas notícias sobre maestro sons eruditos falecido outubro 2026",
-          "maestro sons eruditos falecido notícia de 2026-10-05",
-          "o que aconteceu com maestro sons eruditos falecido",
-          "maestro",
-          "sons",
-          "eruditos",
-          "falecido",
-          "aos",
-          "anos",
-          "roberto",
-          "tibirica",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "maestro sons eruditos falecido 2026",
-          "G1 maestro sons eruditos falecido",
-          "g1.globo.com maestro sons eruditos falecido",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T02:24:02.254Z"
-      }
-    },
-    {
-      "id": "d939ffaf",
-      "title": "Rachel Jupp is a bold choice for BBC News chief, says Katie Razzall",
-      "url": "https://www.bbc.co.uk/news/articles/cqwy79l7d78yo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-05T14:16:06.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Rachel Jupp",
-      "description": "Rachel Jupp: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/efe1/live/f56baee0-c0d8-11f1-bdc6-179ac8d394b5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/rachel-jupp-is-a-bold-choice-for-bbc-news-chief-says-katie-razzall-d939ff/",
-      "landing_url": "https://matchapp.tv/?news=d939ffaf#latest-news",
-      "seo": {
-        "primary_keyword": "Rachel Jupp latest news",
-        "short_tail": [
-          "Rachel Jupp",
-          "Rachel Jupp news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Rachel Jupp latest news October 2026",
-          "Rachel Jupp entertainment update 2026",
-          "Rachel Jupp news 2026-10-05",
-          "latest entertainment news about Rachel Jupp",
-          "rachel jupp rachel jupp bold choice latest update",
-          "BBC Rachel Jupp entertainment",
-          "latest news about Rachel Jupp October 2026",
-          "Rachel Jupp entertainment news 2026-10-05",
-          "what happened with Rachel Jupp"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Rachel Jupp",
-          "rachel",
-          "jupp",
-          "bold",
-          "choice",
-          "bbc",
-          "news"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "Rachel Jupp 2026"
-        ],
-        "source_keywords": [
-          "BBC Rachel Jupp",
-          "bbc.co.uk Rachel Jupp",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Rachel Jupp is a bold choice for BBC News chief, says…",
-        "meta_description": "Rachel Jupp: Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Rachel Jupp latest news",
-          "Rachel Jupp",
-          "Rachel Jupp news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Rachel Jupp latest news October 2026",
-          "Rachel Jupp entertainment update 2026",
-          "Rachel Jupp news 2026-10-05",
-          "latest entertainment news about Rachel Jupp",
-          "rachel jupp rachel jupp bold choice latest update",
-          "BBC Rachel Jupp entertainment",
-          "latest news about Rachel Jupp October 2026",
-          "Rachel Jupp entertainment news 2026-10-05",
-          "what happened with Rachel Jupp",
-          "rachel",
-          "jupp",
-          "bold",
-          "choice",
-          "bbc",
-          "news",
-          "October 2026",
-          "2026-10-05",
-          "Rachel Jupp 2026",
-          "BBC Rachel Jupp",
-          "bbc.co.uk Rachel Jupp",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T02:24:02.254Z"
-      }
-    },
-    {
-      "id": "5f15390c",
-      "title": "'O Outro Lado das Redes': Aaron Sorkin volta a focar no Facebook e mira em Zuckerberg em novo filme",
-      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/05/o-outro-lado-das-redes-aaron-sorkin-volta-a-focar-no-facebook-e-mira-em-zuckerberg-em-novo-filme.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-05T14:01:09.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/9giAHc9sNO5HhH-4ezZKiaRVUiA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/7/D/fMeCN7RCiBayRjgOYhrA/filme-o-outro-lado-das-redes.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/o-outro-lado-das-redes-aaron-sorkin-volta-a-focar-no-facebook-e-mira-em-zuckerbe-5f1539/",
-      "landing_url": "https://matchapp.tv/?news=5f15390c#latest-news",
-      "seo": {
-        "primary_keyword": "outro lado redes aaron últimas notícias",
-        "short_tail": [
-          "outro lado redes aaron",
-          "outro lado redes aaron news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "outro lado redes aaron latest news October 2026",
-          "outro lado redes aaron entertainment update 2026",
-          "outro lado redes aaron news 2026-10-05",
-          "latest entertainment news about outro lado redes aaron",
-          "outro lado redes aaron sorkin volta latest update",
-          "G1 outro lado redes aaron entertainment",
-          "últimas notícias sobre outro lado redes aaron outubro 2026",
-          "outro lado redes aaron notícia de 2026-10-05",
-          "o que aconteceu com outro lado redes aaron"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "outro",
-          "lado",
-          "redes",
-          "aaron",
-          "sorkin",
-          "volta",
-          "focar",
-          "facebook"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "outro lado redes aaron 2026"
-        ],
-        "source_keywords": [
-          "G1 outro lado redes aaron",
-          "g1.globo.com outro lado redes aaron",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'O Outro Lado das Redes': Aaron Sorkin volta a focar no…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-05. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "outro lado redes aaron últimas notícias",
-          "outro lado redes aaron",
-          "outro lado redes aaron news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "outro lado redes aaron latest news October 2026",
-          "outro lado redes aaron entertainment update 2026",
-          "outro lado redes aaron news 2026-10-05",
-          "latest entertainment news about outro lado redes aaron",
-          "outro lado redes aaron sorkin volta latest update",
-          "G1 outro lado redes aaron entertainment",
-          "últimas notícias sobre outro lado redes aaron outubro 2026",
-          "outro lado redes aaron notícia de 2026-10-05",
-          "o que aconteceu com outro lado redes aaron",
-          "outro",
-          "lado",
-          "redes",
-          "aaron",
-          "sorkin",
-          "volta",
-          "focar",
-          "facebook",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "outro lado redes aaron 2026",
-          "G1 outro lado redes aaron",
-          "g1.globo.com outro lado redes aaron",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T01:46:51.899Z"
-      }
-    },
-    {
-      "id": "bec29e17",
-      "title": "'Below': suspense da Netflix tem monstro marinho, alerta climático e astro de 'Stranger Things'",
-      "url": "https://g1.globo.com/pop-arte/tv-e-series/noticia/2026/10/05/below-suspense-da-netflix-mistura-monstro-marinho-alerta-climatico-e-astro-de-stranger-things.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-10-05T13:52:03.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/0izq8xDKIfGeCRLyuDa-SyG_qhc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/0/glslnyRAKwNy60ZdAQSQ/below2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/below-suspense-da-netflix-tem-monstro-marinho-alerta-climatico-e-astro-de-strang-bec29e/",
-      "landing_url": "https://matchapp.tv/?news=bec29e17#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "below suspense netflix tem",
-          "below suspense netflix tem news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "below suspense netflix tem latest news October 2026",
-          "below suspense netflix tem entertainment update 2026",
-          "below suspense netflix tem news 2026-10-05",
-          "latest entertainment news about below suspense netflix tem",
-          "below suspense netflix tem monstro marinho latest update",
-          "G1 below suspense netflix tem entertainment",
-          "últimas notícias sobre below suspense netflix tem outubro 2026",
-          "below suspense netflix tem notícia de 2026-10-05",
-          "o que aconteceu com below suspense netflix tem"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "below",
-          "suspense",
-          "netflix",
-          "tem",
-          "monstro",
-          "marinho",
-          "alerta",
-          "climatico"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "below suspense netflix tem 2026"
-        ],
-        "source_keywords": [
-          "G1 below suspense netflix tem",
-          "g1.globo.com below suspense netflix tem",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'Below': suspense da Netflix tem monstro marinho, alerta…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "below suspense netflix tem",
-          "below suspense netflix tem news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "below suspense netflix tem latest news October 2026",
-          "below suspense netflix tem entertainment update 2026",
-          "below suspense netflix tem news 2026-10-05",
-          "latest entertainment news about below suspense netflix tem",
-          "below suspense netflix tem monstro marinho latest update",
-          "G1 below suspense netflix tem entertainment",
-          "últimas notícias sobre below suspense netflix tem outubro 2026",
-          "below suspense netflix tem notícia de 2026-10-05",
-          "o que aconteceu com below suspense netflix tem",
-          "below",
-          "suspense",
-          "netflix",
-          "tem",
-          "monstro",
-          "marinho",
-          "alerta",
-          "climatico",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "below suspense netflix tem 2026"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "4fcccc0c",
-      "title": "Eleições 2026: influenciadores e apresentadores que tentaram vagas e não se elegeram",
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/05/famosos-fora-da-lista-de-eleitos-veja-quem-nao-conseguiu-uma-vaga-em-2026-1.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-10-05T13:30:36.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/kKTUIhhZu6rXqJJrHyA3Xf9eQw0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/y/H/mh2JMPSbK37Hhfa6MLrg/design-sem-nome-9-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/eleicoes-2026-influenciadores-e-apresentadores-que-tentaram-vagas-e-nao-se-elege-4fcccc/",
-      "landing_url": "https://matchapp.tv/?news=4fcccc0c#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "eleicoes 2026 influenciadores apresentadores",
-          "eleicoes 2026 influenciadores apresentadores news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "eleicoes 2026 influenciadores apresentadores latest news October 2026",
-          "eleicoes 2026 influenciadores apresentadores entertainment update 2026",
-          "eleicoes 2026 influenciadores apresentadores news 2026-10-05",
-          "latest entertainment news about eleicoes 2026 influenciadores apresentadores",
-          "eleicoes 2026 influenciadores apresentadores que tentaram latest update",
-          "G1 eleicoes 2026 influenciadores apresentadores entertainment",
-          "últimas notícias sobre eleicoes 2026 influenciadores apresentadores outubro 2026",
-          "eleicoes 2026 influenciadores apresentadores notícia de 2026-10-05",
-          "o que aconteceu com eleicoes 2026 influenciadores apresentadores"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "eleicoes",
-          "2026",
-          "influenciadores",
-          "apresentadores",
-          "que",
-          "tentaram",
-          "vagas",
-          "nao"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "eleicoes 2026 influenciadores apresentadores 2026"
-        ],
-        "source_keywords": [
-          "G1 eleicoes 2026 influenciadores apresentadores",
-          "g1.globo.com eleicoes 2026 influenciadores apresentadores",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Eleições 2026: influenciadores e apresentadores que…",
-        "meta_description": "Entertainment update reported by G1 on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "eleicoes 2026 influenciadores apresentadores",
-          "eleicoes 2026 influenciadores apresentadores news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "eleicoes 2026 influenciadores apresentadores latest news October 2026",
-          "eleicoes 2026 influenciadores apresentadores entertainment update 2026",
-          "eleicoes 2026 influenciadores apresentadores news 2026-10-05",
-          "latest entertainment news about eleicoes 2026 influenciadores apresentadores",
-          "eleicoes 2026 influenciadores apresentadores que tentaram latest update",
-          "G1 eleicoes 2026 influenciadores apresentadores entertainment",
-          "últimas notícias sobre eleicoes 2026 influenciadores apresentadores outubro 2026",
-          "eleicoes 2026 influenciadores apresentadores notícia de 2026-10-05",
-          "o que aconteceu com eleicoes 2026 influenciadores apresentadores",
-          "eleicoes",
-          "2026",
-          "influenciadores",
-          "apresentadores",
-          "que",
-          "tentaram",
-          "vagas",
-          "nao",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "eleicoes 2026 influenciadores apresentadores 2026"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "a68033e5",
-      "title": "Mariene de Castro se desloca, sem sair do eixo nordestino, com balaio de amor, xotes e baiões do show 'Cantadeira'",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/05/mariene-de-castro-se-desloca-sem-sair-do-eixo-nordestino-com-balaio-de-amor-xotes-e-baioes-do-show-cantadeira.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-10-05T13:08:14.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "",
-      "description": "music headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/xkeZf_5wQIZaYTYjBV6RK5RpDAs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/z/XOOjTpQyWVIqBUaSrqMw/marienepati1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/mariene-de-castro-se-desloca-sem-sair-do-eixo-nordestino-com-balaio-de-amor-xote-a68033/",
-      "landing_url": "https://matchapp.tv/?news=a68033e5#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "mariene castro desloca sem",
-          "mariene castro desloca sem news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "mariene castro desloca sem latest news October 2026",
-          "mariene castro desloca sem music update 2026",
-          "mariene castro desloca sem news 2026-10-05",
-          "latest music news about mariene castro desloca sem",
-          "mariene castro desloca sem sair eixo latest update",
-          "G1 mariene castro desloca sem music",
-          "últimas notícias sobre mariene castro desloca sem outubro 2026",
-          "mariene castro desloca sem notícia de 2026-10-05",
-          "o que aconteceu com mariene castro desloca sem"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "mariene",
-          "castro",
-          "desloca",
-          "sem",
-          "sair",
-          "eixo",
-          "nordestino",
-          "balaio"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "mariene castro desloca sem 2026"
-        ],
-        "source_keywords": [
-          "G1 mariene castro desloca sem",
-          "g1.globo.com mariene castro desloca sem",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Mariene de Castro se desloca, sem sair do eixo nordestino,…",
-        "meta_description": "Music update reported by G1 on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "mariene castro desloca sem",
-          "mariene castro desloca sem news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "mariene castro desloca sem latest news October 2026",
-          "mariene castro desloca sem music update 2026",
-          "mariene castro desloca sem news 2026-10-05",
-          "latest music news about mariene castro desloca sem",
-          "mariene castro desloca sem sair eixo latest update",
-          "G1 mariene castro desloca sem music",
-          "últimas notícias sobre mariene castro desloca sem outubro 2026",
-          "mariene castro desloca sem notícia de 2026-10-05",
-          "o que aconteceu com mariene castro desloca sem",
-          "mariene",
-          "castro",
-          "desloca",
-          "sem",
-          "sair",
-          "eixo",
-          "nordestino",
-          "balaio",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "mariene castro desloca sem 2026"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "9cc4092d",
-      "title": "BBC appoints Rachel Jupp as new director of news",
-      "url": "https://www.bbc.co.uk/news/articles/cjrvl8n82wvo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-10-05T13:05:13.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7baf/live/193c1640-c0c3-11f1-885f-4f9e8c6dce17.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/bbc-appoints-rachel-jupp-as-new-director-of-news-9cc409/",
-      "landing_url": "https://matchapp.tv/?news=9cc4092d#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "bbc appoints rachel jupp",
-          "bbc appoints rachel jupp news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "bbc appoints rachel jupp latest news October 2026",
-          "bbc appoints rachel jupp entertainment update 2026",
-          "bbc appoints rachel jupp news 2026-10-05",
-          "latest entertainment news about bbc appoints rachel jupp",
-          "bbc appoints rachel jupp new director latest update",
-          "BBC bbc appoints rachel jupp entertainment",
-          "latest news about bbc appoints rachel jupp October 2026",
-          "bbc appoints rachel jupp entertainment news 2026-10-05",
-          "what happened with bbc appoints rachel jupp"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "bbc",
-          "appoints",
-          "rachel",
-          "jupp",
-          "new",
-          "director",
-          "news"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "bbc appoints rachel jupp 2026"
-        ],
-        "source_keywords": [
-          "BBC bbc appoints rachel jupp",
-          "bbc.co.uk bbc appoints rachel jupp",
-          "BBC entertainment news"
-        ],
-        "meta_title": "BBC appoints Rachel Jupp as new director of news |…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "bbc appoints rachel jupp",
-          "bbc appoints rachel jupp news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "bbc appoints rachel jupp latest news October 2026",
-          "bbc appoints rachel jupp entertainment update 2026",
-          "bbc appoints rachel jupp news 2026-10-05",
-          "latest entertainment news about bbc appoints rachel jupp",
-          "bbc appoints rachel jupp new director latest update",
-          "BBC bbc appoints rachel jupp entertainment",
-          "latest news about bbc appoints rachel jupp October 2026",
-          "bbc appoints rachel jupp entertainment news 2026-10-05",
-          "what happened with bbc appoints rachel jupp",
-          "bbc",
-          "appoints",
-          "rachel",
-          "jupp",
-          "new",
-          "director",
-          "news",
-          "October 2026",
-          "2026-10-05",
-          "bbc appoints rachel jupp 2026",
-          "BBC bbc appoints rachel jupp",
-          "bbc.co.uk bbc appoints rachel jupp"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "2b64c2a6",
-      "title": "Humberto Martins, Inês Brasil, MC Gui... os artistas que não conseguiram se eleger em 2026",
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/05/humberto-martins-ines-brasil-mc-gui-os-artistas-que-nao-conseguiram-se-eleger-em-2026.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "published_at": "2026-10-05T13:05:02.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Humberto Martins",
-      "description": "Humberto Martins: entertainment headline reported by G1. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://s2-g1.glbimg.com/zbtzBVxrAF34jx3t9pO5U0qV8Vk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/V/AUptkFSEKL0QMx1wYOfw/montagem-celular-lado-a-lado-1-.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/humberto-martins-ines-brasil-mc-gui-os-artistas-que-nao-conseguiram-se-eleger-em-2b64c2/",
-      "landing_url": "https://matchapp.tv/?news=2b64c2a6#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "Humberto Martins",
-          "Humberto Martins news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "Humberto Martins latest news October 2026",
-          "Humberto Martins entertainment update 2026",
-          "Humberto Martins news 2026-10-05",
-          "latest entertainment news about Humberto Martins",
-          "humberto martins humberto martins ines brasil latest update",
-          "G1 Humberto Martins entertainment",
-          "últimas notícias sobre Humberto Martins outubro 2026",
-          "Humberto Martins notícia de 2026-10-05",
-          "o que aconteceu com Humberto Martins"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "Humberto Martins",
-          "humberto",
-          "martins",
-          "ines",
-          "brasil",
-          "gui",
-          "artistas"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "Humberto Martins 2026"
-        ],
-        "source_keywords": [
-          "G1 Humberto Martins",
-          "g1.globo.com Humberto Martins",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Humberto Martins, Inês Brasil, MC Gui... os artistas que…",
-        "meta_description": "Humberto Martins: Entertainment update reported by G1 on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "Humberto Martins",
-          "Humberto Martins news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "Humberto Martins latest news October 2026",
-          "Humberto Martins entertainment update 2026",
-          "Humberto Martins news 2026-10-05",
-          "latest entertainment news about Humberto Martins",
-          "humberto martins humberto martins ines brasil latest update",
-          "G1 Humberto Martins entertainment",
-          "últimas notícias sobre Humberto Martins outubro 2026",
-          "Humberto Martins notícia de 2026-10-05",
-          "o que aconteceu com Humberto Martins",
-          "humberto",
-          "martins",
-          "ines",
-          "brasil",
-          "gui",
-          "artistas",
-          "October 2026",
-          "2026-10-05",
-          "outubro 2026",
-          "Humberto Martins 2026",
-          "G1 Humberto Martins",
-          "g1.globo.com Humberto Martins"
-        ],
-        "seo_generated_at": "2026-10-05T17:22:19.239Z"
-      }
-    },
-    {
-      "id": "00aefe19",
-      "title": "Indian singer Anuv Jain on finding success without the Bollywood boost",
-      "url": "https://www.bbc.co.uk/news/articles/c933xnneg2zvo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "published_at": "2026-10-05T11:10:28.000Z",
-      "discovered_at": "2026-10-05T17:22:19.239Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0820/live/19d2f4b0-be76-11f1-8a45-cd59664d243b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/indian-singer-anuv-jain-on-finding-success-without-the-bollywood-boost-00aefe/",
-      "landing_url": "https://matchapp.tv/?news=00aefe19#latest-news",
-      "seo": {
-        "primary_keyword": "g1 rj",
-        "short_tail": [
-          "indian singer anuv jain",
-          "indian singer anuv jain news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "long_tail": [
-          "indian singer anuv jain latest news October 2026",
-          "indian singer anuv jain entertainment update 2026",
-          "indian singer anuv jain news 2026-10-05",
-          "latest entertainment news about indian singer anuv jain",
-          "indian singer anuv jain finding success latest update",
-          "BBC indian singer anuv jain entertainment",
-          "latest news about indian singer anuv jain October 2026",
-          "indian singer anuv jain entertainment news 2026-10-05",
-          "what happened with indian singer anuv jain"
-        ],
-        "trend_keywords": [
-          "g1 rj",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা"
-        ],
-        "entity_keywords": [
-          "indian",
-          "singer",
-          "anuv",
-          "jain",
-          "finding",
-          "success",
-          "without",
-          "bollywood"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-05",
-          "indian singer anuv jain 2026"
-        ],
-        "source_keywords": [
-          "BBC indian singer anuv jain",
-          "bbc.co.uk indian singer anuv jain",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Indian singer Anuv Jain on finding success without the…",
-        "meta_description": "Entertainment update reported by BBC on 2026-10-05. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "g1 rj",
-          "indian singer anuv jain",
-          "indian singer anuv jain news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "ચાંદી",
-          "ஜேசன் சஞ்சய்",
-          "কর্মকর্তা",
-          "indian singer anuv jain latest news October 2026",
-          "indian singer anuv jain entertainment update 2026",
-          "indian singer anuv jain news 2026-10-05",
-          "latest entertainment news about indian singer anuv jain",
-          "indian singer anuv jain finding success latest update",
-          "BBC indian singer anuv jain entertainment",
-          "latest news about indian singer anuv jain October 2026",
-          "indian singer anuv jain entertainment news 2026-10-05",
-          "what happened with indian singer anuv jain",
-          "indian",
-          "singer",
-          "anuv",
-          "jain",
-          "finding",
-          "success",
-          "without",
-          "bollywood",
-          "October 2026",
-          "2026-10-05",
-          "indian singer anuv jain 2026",
-          "BBC indian singer anuv jain"
         ],
         "seo_generated_at": "2026-10-05T17:22:19.239Z"
       }

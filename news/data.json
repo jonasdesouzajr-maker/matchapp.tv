@@ -1,10 +1,1311 @@
 {
-  "generated_at": "2026-10-18T09:51:24.257Z",
-  "feed_version": "847e15cc",
+  "generated_at": "2026-10-18T14:08:17.407Z",
+  "feed_version": "d7755cb7",
   "sports_updated_at": "2026-10-18T01:03:22.602Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "6bd483fb",
+      "title": "Several dead or injured in major fire at Canada military base",
+      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T14:07:20.000Z",
+      "discovered_at": "2026-10-18T05:03:57.093Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/951a/live/d1508b70-cac9-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
+      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "long_tail": [
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Several dead or injured in major fire at Canada military…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada",
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "34038bb7",
+      "title": "Fuel leak spreads more than two miles along River Taff",
+      "url": "https://www.bbc.co.uk/news/articles/c8vgxnp5w6vzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T13:59:31.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e744/live/ac9b0fb0-cae9-11f1-bc2e-018d645d8d21.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/fuel-leak-spreads-more-than-two-miles-along-river-taff-34038b/",
+      "landing_url": "https://matchapp.tv/?news=34038bb7#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two"
+        ],
+        "long_tail": [
+          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Fuel leak spreads more than two miles along River Taff |…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "fuel",
+          "leak",
+          "spreads",
+          "more",
+          "than",
+          "two",
+          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "bccd3756",
+      "title": "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/militar-da-forca-aerea-dos-eua-morre-apos-cair-de-rapel-em-jogo-de-futebol-americano-no-texas.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T13:53:49.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0Im2IDlU1RAdHR_H7bmmIlBX9_w=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/5/YFV4rBQZCVXXz8LCbo5A/captura-de-tela-2026-10-18-104553.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/militar-da-forca-aerea-dos-eua-morre-apos-cair-de-rapel-em-jogo-de-futebol-ameri-bccd37/",
+      "landing_url": "https://matchapp.tv/?news=bccd3756#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "militar",
+          "forca",
+          "aerea",
+          "eua",
+          "morre",
+          "apos"
+        ],
+        "long_tail": [
+          "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "militar",
+          "forca",
+          "aerea",
+          "eua",
+          "morre",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Militar da Força Aérea dos EUA morre após cair de rapel em…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "militar",
+          "forca",
+          "aerea",
+          "eua",
+          "morre",
+          "apos",
+          "Militar da Força Aérea dos EUA morre após cair de rapel em jogo de futebol americano no Texas 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "4666303d",
+      "title": "Trump diz que a França 'está em chamas' e 'destruída' pela imigração",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/trump-diz-que-a-franca-esta-em-chamas-e-destruida-pela-imigracao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T13:18:25.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/-ps8myZGs90cad9OK3Sp0oBb4Sg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/D/u/z4qBCSSL2uYdZ067CisA/2026-10-16t203723z-549741652-rc2k4oaux5cf-rtrmadp-3-usa-trump-georgia.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-diz-que-a-franca-esta-em-chamas-e-destruida-pela-imigracao-466630/",
+      "landing_url": "https://matchapp.tv/?news=4666303d#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "franca",
+          "esta",
+          "chamas"
+        ],
+        "long_tail": [
+          "Trump diz que a França 'está em chamas' e 'destruída' pela imigração 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "diz",
+          "que",
+          "franca",
+          "esta",
+          "chamas"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Trump diz que a França 'está em chamas' e 'destruída' pela…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "diz",
+          "que",
+          "franca",
+          "esta",
+          "chamas",
+          "Trump diz que a França 'está em chamas' e 'destruída' pela imigração 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "2288d14c",
+      "title": "‘Imperium,’ ‘Concrete Land’ and ‘9 Temples to Heaven’ Win BFI London Film Festival Awards",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/bfi-lff-2026-awards-winners-imperium-concrete-land-1236734344/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T13:00:00.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Imperium-film-still.jpg?w=1280&h=720&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/imperium-concrete-land-and-9-temples-to-heaven-win-bfi-london-film-festival-awar-2288d1/",
+      "landing_url": "https://matchapp.tv/?news=2288d14c#latest-news",
+      "seo": {
+        "primary_keyword": "imperium concrete land temples latest news",
+        "short_tail": [
+          "imperium concrete land temples",
+          "imperium concrete land temples news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "imperium concrete land temples latest news October 2026",
+          "imperium concrete land temples entertainment update 2026",
+          "imperium concrete land temples news 2026-10-18",
+          "latest entertainment news about imperium concrete land temples",
+          "imperium concrete land temples heaven win latest update",
+          "The Hollywood Reporter imperium concrete land temples entertainment",
+          "latest news about imperium concrete land temples October 2026",
+          "imperium concrete land temples entertainment news 2026-10-18",
+          "what happened with imperium concrete land temples"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "imperium",
+          "concrete",
+          "land",
+          "temples",
+          "heaven",
+          "win",
+          "bfi",
+          "london"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "imperium concrete land temples 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter imperium concrete land temples",
+          "hollywoodreporter.com imperium concrete land temples",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Imperium,’ ‘Concrete Land’ and ‘9 Temples to Heaven’ Win…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "imperium concrete land temples latest news",
+          "imperium concrete land temples",
+          "imperium concrete land temples news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "imperium concrete land temples latest news October 2026",
+          "imperium concrete land temples entertainment update 2026",
+          "imperium concrete land temples news 2026-10-18",
+          "latest entertainment news about imperium concrete land temples",
+          "imperium concrete land temples heaven win latest update",
+          "The Hollywood Reporter imperium concrete land temples entertainment",
+          "latest news about imperium concrete land temples October 2026",
+          "imperium concrete land temples entertainment news 2026-10-18",
+          "what happened with imperium concrete land temples",
+          "imperium",
+          "concrete",
+          "land",
+          "temples",
+          "heaven",
+          "win",
+          "bfi",
+          "london",
+          "October 2026",
+          "2026-10-18",
+          "imperium concrete land temples 2026",
+          "The Hollywood Reporter imperium concrete land temples",
+          "hollywoodreporter.com imperium concrete land temples",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "e3a917bc",
+      "title": "Veja VÍDEO do momento que torre de prefeitura na França desaba durante incêndio causado em protestos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/veja-video-do-momento-que-torre-de-prefeitura-na-franca-desaba-durante-incendio-causado-em-protestos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T12:53:43.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Veja VÍDEO",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/5D8xSUiPuvMOIj0rWWVF808usW8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/u/e3Ry9VQqAfopGhseUKZg/limoges-mairie.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/veja-video-do-momento-que-torre-de-prefeitura-na-franca-desaba-durante-incendio--e3a917/",
+      "landing_url": "https://matchapp.tv/?news=e3a917bc#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "veja",
+          "video",
+          "momento",
+          "que",
+          "torre",
+          "prefeitura"
+        ],
+        "long_tail": [
+          "Veja VÍDEO do momento que torre de prefeitura na França desaba durante incêndio causado em protestos 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "veja",
+          "video",
+          "momento",
+          "que",
+          "torre",
+          "prefeitura"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Veja VÍDEO do momento que torre de prefeitura na França…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "veja",
+          "video",
+          "momento",
+          "que",
+          "torre",
+          "prefeitura",
+          "Veja VÍDEO do momento que torre de prefeitura na França desaba durante incêndio causado em protestos 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "573f4ea7",
+      "title": "Iate com piscina de 50 metros e toboáguas: imagens de satélite revelam o centro de lazer secreto de Kim Jong Un",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/iate-com-piscina-de-50-metros-e-toboaguas-imagens-de-satelite-revelam-o-centro-de-lazer-secreto-de-kim-jong-un.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T12:23:51.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/qpuQFgXSLKV12Cr-QvzaGONbzic=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/y/7/PR2hLqSXCGGk5sxRB7zQ/2026-06-22t215458z-251174769-rc29zlatwnm8-rtrmadp-3-northkorea-politics.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/iate-com-piscina-de-50-metros-e-toboaguas-imagens-de-satelite-revelam-o-centro-d-573f4e/",
+      "landing_url": "https://matchapp.tv/?news=573f4ea7#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "iate",
+          "piscina",
+          "metros",
+          "toboaguas",
+          "imagens",
+          "satelite"
+        ],
+        "long_tail": [
+          "Iate com piscina de 50 metros e toboáguas: imagens de satélite revelam o centro de lazer secreto de Kim Jong Un 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "iate",
+          "piscina",
+          "metros",
+          "toboaguas",
+          "imagens",
+          "satelite"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Iate com piscina de 50 metros e toboáguas: imagens de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "iate",
+          "piscina",
+          "metros",
+          "toboaguas",
+          "imagens",
+          "satelite",
+          "Iate com piscina de 50 metros e toboáguas: imagens de satélite revelam o centro de lazer secreto de Kim Jong Un 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "f064e4f8",
+      "title": "'Aquarelas' de Ary Barroso e Tom Jobim colorem com a bossa brasileira o show de Dionne Warwick no Rio de Janeiro",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/18/aquarelas-de-ary-barroso-e-tom-jobim-colorem-com-a-bossa-brasileira-o-show-de-dionne-warwick-no-rio-de-janeiro.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-18T12:21:37.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/RfoDeeBEX0TK231UaO7qOYZuVx0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/s/n/8oKMm3SxqH2JjX9V0PbA/dionne2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/aquarelas-de-ary-barroso-e-tom-jobim-colorem-com-a-bossa-brasileira-o-show-de-di-f064e4/",
+      "landing_url": "https://matchapp.tv/?news=f064e4f8#latest-news",
+      "seo": {
+        "primary_keyword": "aquarelas ary barroso tom últimas notícias",
+        "short_tail": [
+          "aquarelas ary barroso tom",
+          "aquarelas ary barroso tom news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "aquarelas ary barroso tom latest news October 2026",
+          "aquarelas ary barroso tom music update 2026",
+          "aquarelas ary barroso tom news 2026-10-18",
+          "latest music news about aquarelas ary barroso tom",
+          "aquarelas ary barroso tom jobim colorem latest update",
+          "G1 aquarelas ary barroso tom music",
+          "últimas notícias sobre aquarelas ary barroso tom outubro 2026",
+          "aquarelas ary barroso tom notícia de 2026-10-18",
+          "o que aconteceu com aquarelas ary barroso tom"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "aquarelas",
+          "ary",
+          "barroso",
+          "tom",
+          "jobim",
+          "colorem",
+          "bossa",
+          "brasileira"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "outubro 2026",
+          "aquarelas ary barroso tom 2026"
+        ],
+        "source_keywords": [
+          "G1 aquarelas ary barroso tom",
+          "g1.globo.com aquarelas ary barroso tom",
+          "G1 entertainment news"
+        ],
+        "meta_title": "'Aquarelas' de Ary Barroso e Tom Jobim colorem com a bossa…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-18. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "aquarelas ary barroso tom últimas notícias",
+          "aquarelas ary barroso tom",
+          "aquarelas ary barroso tom news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "aquarelas ary barroso tom latest news October 2026",
+          "aquarelas ary barroso tom music update 2026",
+          "aquarelas ary barroso tom news 2026-10-18",
+          "latest music news about aquarelas ary barroso tom",
+          "aquarelas ary barroso tom jobim colorem latest update",
+          "G1 aquarelas ary barroso tom music",
+          "últimas notícias sobre aquarelas ary barroso tom outubro 2026",
+          "aquarelas ary barroso tom notícia de 2026-10-18",
+          "o que aconteceu com aquarelas ary barroso tom",
+          "aquarelas",
+          "ary",
+          "barroso",
+          "tom",
+          "jobim",
+          "colorem",
+          "bossa",
+          "brasileira",
+          "October 2026",
+          "2026-10-18",
+          "outubro 2026",
+          "aquarelas ary barroso tom 2026",
+          "G1 aquarelas ary barroso tom",
+          "g1.globo.com aquarelas ary barroso tom",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "0bd6429c",
+      "title": "European diplomats attacked by Israeli settlers in West Bank",
+      "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T12:16:14.000Z",
+      "discovered_at": "2026-10-18T00:17:51.077Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/european-diplomats-attacked-by-israeli-settlers-in-west-bank-0bd642/",
+      "landing_url": "https://matchapp.tv/?news=0bd6429c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "long_tail": [
+          "European diplomats attacked by Israeli settlers in West Bank 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "European diplomats attacked by Israeli settlers in West…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "european",
+          "diplomats",
+          "attacked",
+          "israeli",
+          "settlers",
+          "west",
+          "European diplomats attacked by Israeli settlers in West Bank 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "a6dd3a0a",
+      "title": "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/predio-que-sobreviveu-a-2-guerras-mundiais-e-destruido-em-protestos-na-franca.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T12:09:51.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/35LGoNQ0zvYCGH5inz0NlWRx80o=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/a/o/BBoPHxRXedquPiyd5XAA/afp-20261018-d3mc7wk-v1-midres-francesocialdemo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/predio-que-sobreviveu-a-2-guerras-mundiais-e-destruido-em-protestos-na-franca-a6dd3a/",
+      "landing_url": "https://matchapp.tv/?news=a6dd3a0a#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "predio",
+          "que",
+          "sobreviveu",
+          "guerras",
+          "mundiais",
+          "destruido"
+        ],
+        "long_tail": [
+          "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "predio",
+          "que",
+          "sobreviveu",
+          "guerras",
+          "mundiais",
+          "destruido"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Prédio que sobreviveu a 2 guerras mundiais é destruído em…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "predio",
+          "que",
+          "sobreviveu",
+          "guerras",
+          "mundiais",
+          "destruido",
+          "Prédio que sobreviveu a 2 guerras mundiais é destruído em protestos na França 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "3371ebd7",
+      "title": "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting",
+      "url": "https://www.bbc.co.uk/news/articles/c574pdzl0k4no?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T12:07:31.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d285/live/4704a830-cacd-11f1-b5ff-6fb710f59c84.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/burnt-out-cars-and-shattered-glass-on-paris-streets-after-protests-turn-to-riots-3371eb/",
+      "landing_url": "https://matchapp.tv/?news=3371ebd7#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "burnt",
+          "out",
+          "cars",
+          "shattered",
+          "glass",
+          "paris"
+        ],
+        "long_tail": [
+          "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "burnt",
+          "out",
+          "cars",
+          "shattered",
+          "glass",
+          "paris"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Burnt out cars and shattered glass on Paris streets after…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "burnt",
+          "out",
+          "cars",
+          "shattered",
+          "glass",
+          "paris",
+          "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "cae4297e",
+      "title": "Oil facilities hit in deadly overnight attack on St Petersburg",
+      "url": "https://www.bbc.co.uk/news/articles/c3eweygrjzd7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T11:57:49.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4966/live/70482900-cad8-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/oil-facilities-hit-in-deadly-overnight-attack-on-st-petersburg-cae429/",
+      "landing_url": "https://matchapp.tv/?news=cae4297e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack"
+        ],
+        "long_tail": [
+          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Oil facilities hit in deadly overnight attack on St…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "oil",
+          "facilities",
+          "hit",
+          "deadly",
+          "overnight",
+          "attack",
+          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "b21d1b35",
+      "title": "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/padre-morre-apos-cruz-cair-sobre-sua-cabeca-durante-transmissao-ao-vivo-de-uma-missa-no-equador-video.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T11:47:15.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/TtUAdV0Mea_gS1ZAyglNu_XyfM4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/o/L/21AkQ3TW2vH8MEQDqfbQ/diptico-do-crucifixo-em-queda.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/padre-morre-apos-cruz-cair-sobre-sua-cabeca-durante-transmissao-ao-vivo-de-uma-m-b21d1b/",
+      "landing_url": "https://matchapp.tv/?news=b21d1b35#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "padre",
+          "morre",
+          "apos",
+          "cruz",
+          "cair",
+          "sobre"
+        ],
+        "long_tail": [
+          "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "padre",
+          "morre",
+          "apos",
+          "cruz",
+          "cair",
+          "sobre"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Padre morre após cruz cair sobre sua cabeça durante…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "padre",
+          "morre",
+          "apos",
+          "cruz",
+          "cair",
+          "sobre",
+          "Padre morre após cruz cair sobre sua cabeça durante transmissão ao vivo de uma missa no Equador; VÍDEO 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "35906d7f",
+      "title": "Hungria desmonta o legado autoritário de Orbán",
+      "url": "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/10/18/hungria-desmonta-o-legado-autoritario-de-orban.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T11:40:22.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/-QuR_o_FSlYLb1VyZ5vUvPhz-NM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/N/X/eYLBuuSQeeR2vawGj9vQ/fotojet-2026-04-11t095535.705.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/hungria-desmonta-o-legado-autoritario-de-orban-35906d/",
+      "landing_url": "https://matchapp.tv/?news=35906d7f#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "hungria",
+          "desmonta",
+          "legado",
+          "autoritario",
+          "orban"
+        ],
+        "long_tail": [
+          "Hungria desmonta o legado autoritário de Orbán 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "hungria",
+          "desmonta",
+          "legado",
+          "autoritario",
+          "orban"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Hungria desmonta o legado autoritário de Orbán | Notícias…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "hungria",
+          "desmonta",
+          "legado",
+          "autoritario",
+          "orban",
+          "Hungria desmonta o legado autoritário de Orbán 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "885bf00b",
+      "title": "Pope Leo XIV thanks wellwishers in first event after cancer surgery",
+      "url": "https://www.bbc.co.uk/news/videos/cq70px6pjkg5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T11:09:32.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Pope Leo XIV",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/21f0/live/4a3b0720-cae5-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/pope-leo-xiv-thanks-wellwishers-in-first-event-after-cancer-surgery-885bf0/",
+      "landing_url": "https://matchapp.tv/?news=885bf00b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pope",
+          "leo",
+          "xiv",
+          "thanks",
+          "wellwishers",
+          "first"
+        ],
+        "long_tail": [
+          "Pope Leo XIV thanks wellwishers in first event after cancer surgery 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pope",
+          "leo",
+          "xiv",
+          "thanks",
+          "wellwishers",
+          "first"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Pope Leo XIV thanks wellwishers in first event after…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "pope",
+          "leo",
+          "xiv",
+          "thanks",
+          "wellwishers",
+          "first",
+          "Pope Leo XIV thanks wellwishers in first event after cancer surgery 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "7509a302",
+      "title": "Free clear-up has big engagement on social media",
+      "url": "https://www.bbc.co.uk/news/articles/cly8q2rryejo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T10:59:32.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8df8/live/09afa010-699e-11f1-8546-8f19e4fe30f4.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/free-clear-up-has-big-engagement-on-social-media-7509a3/",
+      "landing_url": "https://matchapp.tv/?news=7509a302#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "free",
+          "clear",
+          "has",
+          "big",
+          "engagement",
+          "social"
+        ],
+        "long_tail": [
+          "Free clear-up has big engagement on social media 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "free",
+          "clear",
+          "has",
+          "big",
+          "engagement",
+          "social"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Free clear-up has big engagement on social media | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "free",
+          "clear",
+          "has",
+          "big",
+          "engagement",
+          "social",
+          "Free clear-up has big engagement on social media 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "b7cab3ee",
+      "title": "Parisians wake up to protest damage and looted shops",
+      "url": "https://www.bbc.co.uk/news/videos/cmn5vey19q3go?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T10:58:39.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8791/live/7abdd380-cadd-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/parisians-wake-up-to-protest-damage-and-looted-shops-b7cab3/",
+      "landing_url": "https://matchapp.tv/?news=b7cab3ee#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "parisians",
+          "wake",
+          "protest",
+          "damage",
+          "looted",
+          "shops"
+        ],
+        "long_tail": [
+          "Parisians wake up to protest damage and looted shops 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "parisians",
+          "wake",
+          "protest",
+          "damage",
+          "looted",
+          "shops"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Parisians wake up to protest damage and looted shops |…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "parisians",
+          "wake",
+          "protest",
+          "damage",
+          "looted",
+          "shops",
+          "Parisians wake up to protest damage and looted shops 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
+    {
+      "id": "86bc4dac",
+      "title": "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/protestos-na-franca-mortos-feridos-presos-outubro.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T10:58:14.000Z",
+      "discovered_at": "2026-10-18T14:08:17.407Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/KxNJHx6oC353mRccD5qHQnKKKeE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/l/v/7qROsdTfesd9NDWZppzQ/afp-20261018-d3md7t3-v1-highres-francesocialdemo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-levam-mais-de-500-mil-as-ruas-e-deixam-1-morto-500-policiais-86bc4d/",
+      "landing_url": "https://matchapp.tv/?news=86bc4dac#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "franca",
+          "levam",
+          "mais",
+          "500",
+          "mil"
+        ],
+        "long_tail": [
+          "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "protestos",
+          "franca",
+          "levam",
+          "mais",
+          "500",
+          "mil"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Protestos na França levam mais de 500 mil às ruas e deixam…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "protestos",
+          "franca",
+          "levam",
+          "mais",
+          "500",
+          "mil",
+          "Protestos na França levam mais de 500 mil às ruas e deixam 1 morto, 500 policiais feridos e 1.800 presos 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
+      }
+    },
     {
       "id": "92acb4d9",
       "title": "‘What Belongs to Others’ Wins Top Warsaw Film Festival Award",
@@ -101,280 +1402,7 @@
           "hollywoodreporter.com what belongs others wins",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "0efd6fe7",
-      "title": "Brasileiros vão ao exterior para realizar sonho de ter filhos; investimento pode chegar até R$ 1 milhão",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/brasileiros-vao-ao-exterior-para-realizar-sonho-de-ter-filhos-investimento-pode-chegar-ate-r-1-milhao.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T09:00:00.000Z",
-      "discovered_at": "2026-10-18T09:51:24.257Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/fP5LfRFtrpeMp5B5MN8qfaPdVus=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/x/a/kgIY9QSe2aBNzQIDoABg/famosos.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/brasileiros-vao-ao-exterior-para-realizar-sonho-de-ter-filhos-investimento-pode--0efd6f/",
-      "landing_url": "https://matchapp.tv/?news=0efd6fe7#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileiros",
-          "vao",
-          "exterior",
-          "realizar",
-          "sonho",
-          "ter"
-        ],
-        "long_tail": [
-          "Brasileiros vão ao exterior para realizar sonho de ter filhos; investimento pode chegar até R$ 1 milhão 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "brasileiros",
-          "vao",
-          "exterior",
-          "realizar",
-          "sonho",
-          "ter"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Brasileiros vão ao exterior para realizar sonho de ter…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileiros",
-          "vao",
-          "exterior",
-          "realizar",
-          "sonho",
-          "ter",
-          "Brasileiros vão ao exterior para realizar sonho de ter filhos; investimento pode chegar até R$ 1 milhão 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "ba4921a2",
-      "title": "How to see the Orionid meteor shower",
-      "url": "https://www.bbc.co.uk/weather/articles/c64gr18jrvx3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T08:54:07.000Z",
-      "discovered_at": "2026-10-18T09:51:24.257Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f995/live/ae683a90-be30-11f1-883b-cfbfbf424e7e.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/how-to-see-the-orionid-meteor-shower-ba4921/",
-      "landing_url": "https://matchapp.tv/?news=ba4921a2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "how",
-          "see",
-          "orionid",
-          "meteor",
-          "shower"
-        ],
-        "long_tail": [
-          "How to see the Orionid meteor shower 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "how",
-          "see",
-          "orionid",
-          "meteor",
-          "shower"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "How to see the Orionid meteor shower | World News |…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "how",
-          "see",
-          "orionid",
-          "meteor",
-          "shower",
-          "How to see the Orionid meteor shower 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "6bd483fb",
-      "title": "Several dead or injured in major fire at Canada military base",
-      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T08:52:41.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/951a/live/d1508b70-cac9-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
-      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
-        ],
-        "long_tail": [
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Several dead or injured in major fire at Canada military…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada",
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "7033b3f8",
-      "title": "Turning the tides: Could hidden sea power energise our coastal towns?",
-      "url": "https://www.bbc.co.uk/news/articles/c8y56y6xg9n9o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T08:12:24.000Z",
-      "discovered_at": "2026-10-18T08:18:36.085Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cb7f/live/223a12e0-c0de-11f1-8cf3-7dbc6a5861dd.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/turning-the-tides-could-hidden-sea-power-energise-our-coastal-towns-7033b3/",
-      "landing_url": "https://matchapp.tv/?news=7033b3f8#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "turning",
-          "tides",
-          "could",
-          "hidden",
-          "sea",
-          "power"
-        ],
-        "long_tail": [
-          "Turning the tides: Could hidden sea power energise our coastal towns? 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "turning",
-          "tides",
-          "could",
-          "hidden",
-          "sea",
-          "power"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Turning the tides: Could hidden sea power energise our…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "turning",
-          "tides",
-          "could",
-          "hidden",
-          "sea",
-          "power",
-          "Turning the tides: Could hidden sea power energise our coastal towns? 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -396,7 +1424,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/south-africa-s-oscar-entry-variations-on-a-theme-was-written-with-microsoft-exce-e55abc/",
       "landing_url": "https://matchapp.tv/?news=e55abcfb#latest-news",
       "seo": {
-        "primary_keyword": "south africa vs australia",
+        "primary_keyword": "South Africa’s Oscar Entry latest news",
         "short_tail": [
           "South Africa’s Oscar Entry",
           "South Africa’s Oscar Entry news",
@@ -404,8 +1432,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "south africa vs australia"
+          "entertainment updates"
         ],
         "long_tail": [
           "South Africa’s Oscar Entry latest news October 2026",
@@ -418,9 +1445,7 @@
           "South Africa’s Oscar Entry entertainment news 2026-10-18",
           "what happened with South Africa’s Oscar Entry"
         ],
-        "trend_keywords": [
-          "south africa vs australia"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "South Africa’s Oscar Entry",
           "south",
@@ -441,7 +1466,7 @@
         "meta_title": "South Africa’s Oscar Entry ‘Variations on a Theme’ Was…",
         "meta_description": "South Africa’s Oscar Entry: Awards update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
         "keywords": [
-          "south africa vs australia",
+          "South Africa’s Oscar Entry latest news",
           "South Africa’s Oscar Entry",
           "South Africa’s Oscar Entry news",
           "awards",
@@ -469,490 +1494,7 @@
           "hollywoodreporter.com South Africa’s Oscar Entry",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "cb84c0f7",
-      "title": "O que se sabe sobre o envio de tropas dos EUA à América Latina para combater o narcotráfico",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/o-que-se-sabe-sobre-o-envio-de-tropas-dos-eua-a-america-latina-para-combater-o-narcotrafico.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T07:00:01.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/59gdNQ7foGLufwwNfHVgn8DLgNI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/O/A/VLimeJQfOBndvLbc2QMw/design-sem-nome-2026-10-16t131000.665.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/o-que-se-sabe-sobre-o-envio-de-tropas-dos-eua-a-america-latina-para-combater-o-n-cb84c0/",
-      "landing_url": "https://matchapp.tv/?news=cb84c0f7#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "que",
-          "sabe",
-          "sobre",
-          "envio",
-          "tropas",
-          "eua"
-        ],
-        "long_tail": [
-          "O que se sabe sobre o envio de tropas dos EUA à América Latina para combater o narcotráfico 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "que",
-          "sabe",
-          "sobre",
-          "envio",
-          "tropas",
-          "eua"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "O que se sabe sobre o envio de tropas dos EUA à América…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "que",
-          "sabe",
-          "sobre",
-          "envio",
-          "tropas",
-          "eua",
-          "O que se sabe sobre o envio de tropas dos EUA à América Latina para combater o narcotráfico 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "d754e289",
-      "title": "Seal pups spotted at nature reserve for 12th year",
-      "url": "https://www.bbc.co.uk/news/articles/c6jrwnzyv528o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T06:20:04.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1960/live/ebe42590-c881-11f1-a2e8-f71844f8002e.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/seal-pups-spotted-at-nature-reserve-for-12th-year-d754e2/",
-      "landing_url": "https://matchapp.tv/?news=d754e289#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "seal",
-          "pups",
-          "spotted",
-          "nature",
-          "reserve",
-          "12th"
-        ],
-        "long_tail": [
-          "Seal pups spotted at nature reserve for 12th year 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "seal",
-          "pups",
-          "spotted",
-          "nature",
-          "reserve",
-          "12th"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Seal pups spotted at nature reserve for 12th year | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "seal",
-          "pups",
-          "spotted",
-          "nature",
-          "reserve",
-          "12th",
-          "Seal pups spotted at nature reserve for 12th year 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "a2a6b621",
-      "title": "Violent clashes, looting and buildings ablaze in France as more than 1,200 arrested after protests",
-      "url": "https://www.bbc.co.uk/news/articles/c6d937wedj7jo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T05:56:20.000Z",
-      "discovered_at": "2026-10-17T22:37:01.302Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/287a/live/339305e0-ca4a-11f1-81dd-07b2258f847d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/violent-clashes-looting-and-buildings-ablaze-in-france-as-more-than-1-200-arrest-a2a6b6/",
-      "landing_url": "https://matchapp.tv/?news=a2a6b621#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "violent",
-          "clashes",
-          "looting",
-          "buildings",
-          "ablaze",
-          "france"
-        ],
-        "long_tail": [
-          "Violent clashes, looting and buildings ablaze in France as more than 1,200 arrested after protests 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "violent",
-          "clashes",
-          "looting",
-          "buildings",
-          "ablaze",
-          "france"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Violent clashes, looting and buildings ablaze in France as…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "violent",
-          "clashes",
-          "looting",
-          "buildings",
-          "ablaze",
-          "france",
-          "Violent clashes, looting and buildings ablaze in France as more than 1,200 arrested after protests 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "3e8b1b46",
-      "title": "Corby metal pollution may harm people, says study",
-      "url": "https://www.bbc.co.uk/news/articles/ckx2dgl087lzo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T05:37:52.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1dbd/live/16972b10-ca31-11f1-9ab2-b325ce61f9d2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/corby-metal-pollution-may-harm-people-says-study-3e8b1b/",
-      "landing_url": "https://matchapp.tv/?news=3e8b1b46#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "corby",
-          "metal",
-          "pollution",
-          "may",
-          "harm",
-          "people"
-        ],
-        "long_tail": [
-          "Corby metal pollution may harm people, says study 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "corby",
-          "metal",
-          "pollution",
-          "may",
-          "harm",
-          "people"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Corby metal pollution may harm people, says study | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "corby",
-          "metal",
-          "pollution",
-          "may",
-          "harm",
-          "people",
-          "Corby metal pollution may harm people, says study 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "c402fa65",
-      "title": "Two damselfly species return to restored woodland",
-      "url": "https://www.bbc.co.uk/news/articles/cwg5jvnqv28go?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T05:16:16.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f498/live/7ed85640-c897-11f1-b0a4-81e564f1cfaa.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/two-damselfly-species-return-to-restored-woodland-c402fa/",
-      "landing_url": "https://matchapp.tv/?news=c402fa65#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "two",
-          "damselfly",
-          "species",
-          "return",
-          "restored",
-          "woodland"
-        ],
-        "long_tail": [
-          "Two damselfly species return to restored woodland 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "two",
-          "damselfly",
-          "species",
-          "return",
-          "restored",
-          "woodland"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Two damselfly species return to restored woodland | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "two",
-          "damselfly",
-          "species",
-          "return",
-          "restored",
-          "woodland",
-          "Two damselfly species return to restored woodland 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "0e4e8818",
-      "title": "A wave of homemade, synthetic drugs sweeps US and deepens crisis",
-      "url": "https://www.bbc.co.uk/news/articles/cmx2wvyv5j17o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T05:04:31.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6a90/live/cf7329e0-ca0e-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/a-wave-of-homemade-synthetic-drugs-sweeps-us-and-deepens-crisis-0e4e88/",
-      "landing_url": "https://matchapp.tv/?news=0e4e8818#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "wave",
-          "homemade",
-          "synthetic",
-          "drugs",
-          "sweeps",
-          "deepens"
-        ],
-        "long_tail": [
-          "A wave of homemade, synthetic drugs sweeps US and deepens crisis 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "wave",
-          "homemade",
-          "synthetic",
-          "drugs",
-          "sweeps",
-          "deepens"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "A wave of homemade, synthetic drugs sweeps US and deepens…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "wave",
-          "homemade",
-          "synthetic",
-          "drugs",
-          "sweeps",
-          "deepens",
-          "A wave of homemade, synthetic drugs sweeps US and deepens crisis 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "10982585",
-      "title": "Chefe do Exército britânico diz que governo deve preparar população para tempos de guerra",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/chefe-do-exercito-britanico-diz-que-governo-deve-preparar-populacao-para-tempos-de-guerra.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T04:23:37.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Ejq6Vcfm5m8DLaOOp53FyJYwQgY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/Z/BCBBrXT6WAQJbFFkK8gg/ap24024549527169.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/chefe-do-exercito-britanico-diz-que-governo-deve-preparar-populacao-para-tempos--109825/",
-      "landing_url": "https://matchapp.tv/?news=10982585#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "chefe",
-          "exercito",
-          "britanico",
-          "diz",
-          "que",
-          "governo"
-        ],
-        "long_tail": [
-          "Chefe do Exército britânico diz que governo deve preparar população para tempos de guerra 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "chefe",
-          "exercito",
-          "britanico",
-          "diz",
-          "que",
-          "governo"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Chefe do Exército britânico diz que governo deve preparar…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "chefe",
-          "exercito",
-          "britanico",
-          "diz",
-          "que",
-          "governo",
-          "Chefe do Exército britânico diz que governo deve preparar população para tempos de guerra 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1050,76 +1592,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "b1140748",
-      "title": "Incêndio em base militar no Canadá deixa mortos e feridos; hospitais ficam sobrecarregados",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/incendio-em-base-militar-no-canada-deixa-mortos-e-feridos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T02:49:46.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/kKNIBsDYeVlbJKyvzeQsCTQ7bY0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/c/3/jb1yBgRnCUG4XypUVVRQ/captura-de-tela-2026-10-18-031502.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/incendio-em-base-militar-no-canada-deixa-mortos-e-feridos-hospitais-ficam-sobrec-b11407/",
-      "landing_url": "https://matchapp.tv/?news=b1140748#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "incendio",
-          "base",
-          "militar",
-          "canada",
-          "deixa",
-          "mortos"
-        ],
-        "long_tail": [
-          "Incêndio em base militar no Canadá deixa mortos e feridos; hospitais ficam sobrecarregados 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "incendio",
-          "base",
-          "militar",
-          "canada",
-          "deixa",
-          "mortos"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Incêndio em base militar no Canadá deixa mortos e feridos;…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "incendio",
-          "base",
-          "militar",
-          "canada",
-          "deixa",
-          "mortos",
-          "Incêndio em base militar no Canadá deixa mortos e feridos; hospitais ficam sobrecarregados 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1213,214 +1686,7 @@
           "hollywoodreporter.com Academy Museum Gala",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "483916e0",
-      "title": "Donald Trump suspende sanções previstas contra parceiros comerciais da Rússia",
-      "url": "https://g1.globo.com/jornal-nacional/noticia/2026/10/17/donald-trump-suspende-sancoes-previstas-contra-parceiros-comerciais-da-russia.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T01:42:36.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Donald Trump",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/4ErsNx_gXtLACrYGO3QKZoRxD5Y=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Q/i/s15ecUSzKpi6hIeRgJOA/captura-de-tela-2026-10-17-224057.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/donald-trump-suspende-sancoes-previstas-contra-parceiros-comerciais-da-russia-483916/",
-      "landing_url": "https://matchapp.tv/?news=483916e0#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "donald",
-          "trump",
-          "suspende",
-          "sancoes",
-          "previstas",
-          "contra"
-        ],
-        "long_tail": [
-          "Donald Trump suspende sanções previstas contra parceiros comerciais da Rússia 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "donald",
-          "trump",
-          "suspende",
-          "sancoes",
-          "previstas",
-          "contra"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Donald Trump suspende sanções previstas contra parceiros…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "donald",
-          "trump",
-          "suspende",
-          "sancoes",
-          "previstas",
-          "contra",
-          "Donald Trump suspende sanções previstas contra parceiros comerciais da Rússia 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "c9122684",
-      "title": "Protestos contra o aumento do custo vida se espalham pela Europa",
-      "url": "https://g1.globo.com/jornal-nacional/noticia/2026/10/17/protestos-contra-o-aumento-do-custo-vida-se-espalham-pela-europa.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T00:48:37.000Z",
-      "discovered_at": "2026-10-18T01:03:22.667Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/azKDdYEUIlqyIIwJ5QkN1kOyp_A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/Q/tdIXtySKm6fqXYLHMscQ/captura-de-tela-2026-10-17-212736.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/protestos-contra-o-aumento-do-custo-vida-se-espalham-pela-europa-c91226/",
-      "landing_url": "https://matchapp.tv/?news=c9122684#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "contra",
-          "aumento",
-          "custo",
-          "vida",
-          "espalham"
-        ],
-        "long_tail": [
-          "Protestos contra o aumento do custo vida se espalham pela Europa 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "protestos",
-          "contra",
-          "aumento",
-          "custo",
-          "vida",
-          "espalham"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Protestos contra o aumento do custo vida se espalham pela…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "contra",
-          "aumento",
-          "custo",
-          "vida",
-          "espalham",
-          "Protestos contra o aumento do custo vida se espalham pela Europa 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "f2136f26",
-      "title": "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão",
-      "url": "https://g1.globo.com/jornal-nacional/noticia/2026/10/17/papa-recebe-alta-do-hospital-depois-de-cirurgia-para-remover-cancer-no-pulmao.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T00:37:37.000Z",
-      "discovered_at": "2026-10-18T01:03:22.667Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/IGGi94tpi8DKDOhcLHexTNYgW20=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/7/t/L7eN5fTAWC3zOKnIl6hg/captura-de-tela-2026-10-17-211436.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/papa-recebe-alta-do-hospital-depois-de-cirurgia-para-remover-cancer-no-pulmao-f2136f/",
-      "landing_url": "https://matchapp.tv/?news=f2136f26#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "recebe",
-          "alta",
-          "hospital",
-          "depois",
-          "cirurgia"
-        ],
-        "long_tail": [
-          "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "papa",
-          "recebe",
-          "alta",
-          "hospital",
-          "depois",
-          "cirurgia"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Papa recebe alta do hospital depois de cirurgia para…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "recebe",
-          "alta",
-          "hospital",
-          "depois",
-          "cirurgia",
-          "Papa recebe alta do hospital depois de cirurgia para remover câncer no pulmão 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1514,76 +1780,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "62b2242a",
-      "title": "Protestos na França terminam com mais de 1,8 mil presos; atos contra o custo de vida se espalham pela Europa",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/protestos-franca-presos-europa.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T23:48:49.000Z",
-      "discovered_at": "2026-10-18T00:17:51.077Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/GRTbWUlC8MSjCf6zupIQX4HGmVI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/a/kFA7N6TBe0e1w4t0aEhQ/afp-20261017-d3lp3wg-v4-midres-francesocialdemo.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-terminam-com-mais-de-1-8-mil-presos-atos-contra-o-custo-de-v-62b224/",
-      "landing_url": "https://matchapp.tv/?news=62b2242a#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "terminam",
-          "mais",
-          "mil",
-          "presos"
-        ],
-        "long_tail": [
-          "Protestos na França terminam com mais de 1,8 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "protestos",
-          "franca",
-          "terminam",
-          "mais",
-          "mil",
-          "presos"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Protestos na França terminam com mais de 1,8 mil presos;…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "terminam",
-          "mais",
-          "mil",
-          "presos",
-          "Protestos na França terminam com mais de 1,8 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1677,7 +1874,7 @@
           "hollywoodreporter.com Miley Cyrus Returns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1776,7 +1973,7 @@
           "hollywoodreporter.com diplomat prime minister operatic",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1794,7 +1991,7 @@
       "category": "entertainment",
       "person": "",
       "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1182/live/ee2b5bb0-ca1c-11f1-bc2e-018d645d8d21.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fcca/live/9692e3c0-c894-11f1-b0a4-81e564f1cfaa.png",
       "matchapp_url": "https://matchapp.tv/news/articles/manifest-from-reality-tv-to-wembley-arena-in-one-turbulent-year-24fc52/",
       "landing_url": "https://matchapp.tv/?news=24fc5221#latest-news",
       "seo": {
@@ -1873,7 +2070,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -1965,7 +2162,7 @@
           "hollywoodreporter.com Harry Styles Debuts Unreleased",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2061,7 +2258,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2159,7 +2356,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2260,7 +2457,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2354,7 +2551,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2453,7 +2650,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2475,7 +2672,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/judge-throws-out-child-sex-abuse-charges-against-actor-timothy-busfield-7380c1/",
       "landing_url": "https://matchapp.tv/?news=7380c158#latest-news",
       "seo": {
-        "primary_keyword": "judge throws out child latest news",
+        "primary_keyword": "child",
         "short_tail": [
           "judge throws out child",
           "judge throws out child news",
@@ -2483,7 +2680,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "child"
         ],
         "long_tail": [
           "judge throws out child latest news October 2026",
@@ -2496,7 +2694,9 @@
           "judge throws out child entertainment news 2026-10-17",
           "what happened with judge throws out child"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "child"
+        ],
         "entity_keywords": [
           "judge",
           "throws",
@@ -2520,7 +2720,7 @@
         "meta_title": "Judge throws out child sex abuse charges against actor…",
         "meta_description": "Entertainment update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "judge throws out child latest news",
+          "child",
           "judge throws out child",
           "judge throws out child news",
           "entertainment",
@@ -2540,7 +2740,6 @@
           "judge",
           "throws",
           "out",
-          "child",
           "sex",
           "abuse",
           "charges",
@@ -2552,7 +2751,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2650,7 +2849,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2751,7 +2950,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2852,7 +3051,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -2874,7 +3073,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/karim-ainouz-conta-como-atraiu-elle-fanning-e-callum-turner-para-seu-novo-filme--86e336/",
       "landing_url": "https://matchapp.tv/?news=86e33602#latest-news",
       "seo": {
-        "primary_keyword": "Karim Aïnouz últimas notícias",
+        "primary_keyword": "como",
         "short_tail": [
           "Karim Aïnouz",
           "Karim Aïnouz news",
@@ -2882,7 +3081,9 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje"
+          "notícias hoje",
+          "como",
+          "como vs"
         ],
         "long_tail": [
           "Karim Aïnouz latest news October 2026",
@@ -2895,7 +3096,10 @@
           "Karim Aïnouz notícia de 2026-10-16",
           "o que aconteceu com Karim Aïnouz"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "como",
+          "como vs"
+        ],
         "entity_keywords": [
           "Karim Aïnouz",
           "karim",
@@ -2919,7 +3123,7 @@
         "meta_title": "Karim Aïnouz conta como atraiu Elle Fanning e Callum…",
         "meta_description": "Karim Aïnouz: Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "Karim Aïnouz últimas notícias",
+          "como",
           "Karim Aïnouz",
           "Karim Aïnouz news",
           "entertainment",
@@ -2927,6 +3131,7 @@
           "entertainment news",
           "notícias de entretenimento",
           "notícias hoje",
+          "como vs",
           "Karim Aïnouz latest news October 2026",
           "Karim Aïnouz entertainment update 2026",
           "Karim Aïnouz news 2026-10-16",
@@ -2939,7 +3144,6 @@
           "karim",
           "ainouz",
           "conta",
-          "como",
           "atraiu",
           "elle",
           "October 2026",
@@ -2950,7 +3154,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -3051,7 +3255,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -3145,7 +3349,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -3246,209 +3450,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "c199d597",
-      "title": "O que Renato Russo estaria fazendo hoje? Companheiros de Legião Urbana falam do amigo, 30 anos depois de sua morte",
-      "url": "https://g1.globo.com/fantastico/noticia/2026/10/16/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-amigo-30-anos-depois-de-sua-morte.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-16T07:00:00.000Z",
-      "discovered_at": "2026-10-16T07:29:28.440Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/i4xEw0qzoPIfqBLXOLegf0n8uyI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/0/X/oR4KJMQGOqmMBFV42QOQ/renato-russo-divulgacao.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/o-que-renato-russo-estaria-fazendo-hoje-companheiros-de-legiao-urbana-falam-do-a-c199d5/",
-      "landing_url": "https://matchapp.tv/?news=c199d597#latest-news",
-      "seo": {
-        "primary_keyword": "que renato russo estaria últimas notícias",
-        "short_tail": [
-          "que renato russo estaria",
-          "que renato russo estaria news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "que renato russo estaria latest news October 2026",
-          "que renato russo estaria entertainment update 2026",
-          "que renato russo estaria news 2026-10-16",
-          "latest entertainment news about que renato russo estaria",
-          "que renato russo estaria fazendo hoje latest update",
-          "G1 que renato russo estaria entertainment",
-          "últimas notícias sobre que renato russo estaria outubro 2026",
-          "que renato russo estaria notícia de 2026-10-16",
-          "o que aconteceu com que renato russo estaria"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "que",
-          "renato",
-          "russo",
-          "estaria",
-          "fazendo",
-          "hoje",
-          "companheiros",
-          "legiao"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "que renato russo estaria 2026"
-        ],
-        "source_keywords": [
-          "G1 que renato russo estaria",
-          "g1.globo.com que renato russo estaria",
-          "G1 entertainment news"
-        ],
-        "meta_title": "O que Renato Russo estaria fazendo hoje? Companheiros de…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "que renato russo estaria últimas notícias",
-          "que renato russo estaria",
-          "que renato russo estaria news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "que renato russo estaria latest news October 2026",
-          "que renato russo estaria entertainment update 2026",
-          "que renato russo estaria news 2026-10-16",
-          "latest entertainment news about que renato russo estaria",
-          "que renato russo estaria fazendo hoje latest update",
-          "G1 que renato russo estaria entertainment",
-          "últimas notícias sobre que renato russo estaria outubro 2026",
-          "que renato russo estaria notícia de 2026-10-16",
-          "o que aconteceu com que renato russo estaria",
-          "que",
-          "renato",
-          "russo",
-          "estaria",
-          "fazendo",
-          "hoje",
-          "companheiros",
-          "legiao",
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "que renato russo estaria 2026",
-          "G1 que renato russo estaria",
-          "g1.globo.com que renato russo estaria",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
-      }
-    },
-    {
-      "id": "b5d0a730",
-      "title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa persegue personagens brasileiros? 'Coloquei no meu contrato'",
-      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/16/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasileiros-coloquei-no-meu-contrato.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-16T07:00:00.000Z",
-      "discovered_at": "2026-10-16T07:29:28.440Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/uBXwT3aJmsMBlC8E_8P5XymXOZg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/m/09HrNOTAA88ygtdksUtg/street-fighter-jason-momoa.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasil-b5d0a7/",
-      "landing_url": "https://matchapp.tv/?news=b5d0a730#latest-news",
-      "seo": {
-        "primary_keyword": "apos street fighter velozes últimas notícias",
-        "short_tail": [
-          "apos street fighter velozes",
-          "apos street fighter velozes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "apos street fighter velozes latest news October 2026",
-          "apos street fighter velozes entertainment update 2026",
-          "apos street fighter velozes news 2026-10-16",
-          "latest entertainment news about apos street fighter velozes",
-          "apos street fighter velozes furiosos jason latest update",
-          "G1 apos street fighter velozes entertainment",
-          "últimas notícias sobre apos street fighter velozes outubro 2026",
-          "apos street fighter velozes notícia de 2026-10-16",
-          "o que aconteceu com apos street fighter velozes"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "apos",
-          "street",
-          "fighter",
-          "velozes",
-          "furiosos",
-          "jason",
-          "momoa",
-          "persegue"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "apos street fighter velozes 2026"
-        ],
-        "source_keywords": [
-          "G1 apos street fighter velozes",
-          "g1.globo.com apos street fighter velozes",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "apos street fighter velozes últimas notícias",
-          "apos street fighter velozes",
-          "apos street fighter velozes news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "apos street fighter velozes latest news October 2026",
-          "apos street fighter velozes entertainment update 2026",
-          "apos street fighter velozes news 2026-10-16",
-          "latest entertainment news about apos street fighter velozes",
-          "apos street fighter velozes furiosos jason latest update",
-          "G1 apos street fighter velozes entertainment",
-          "últimas notícias sobre apos street fighter velozes outubro 2026",
-          "apos street fighter velozes notícia de 2026-10-16",
-          "o que aconteceu com apos street fighter velozes",
-          "apos",
-          "street",
-          "fighter",
-          "velozes",
-          "furiosos",
-          "jason",
-          "momoa",
-          "persegue",
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "apos street fighter velozes 2026",
-          "G1 apos street fighter velozes",
-          "g1.globo.com apos street fighter velozes",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     },
     {
@@ -3538,7 +3540,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+        "seo_generated_at": "2026-10-18T14:08:17.407Z"
       }
     }
   ]
