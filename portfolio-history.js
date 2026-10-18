@@ -1,5 +1,6 @@
 (function(){
   'use strict';
+  const portfolioText=(key,fallback,values)=>window.MatchProfilePortfolioI18n?.text(key,values)||fallback;
   const safeLink = value => {try {const u=new URL(value,location.origin);return u.protocol==='https:' || (u.origin===location.origin) ? u.href : '#';}catch(_){return '#';}};
   const cleanTitle = value => {
     const raw=String(value||'').trim();
@@ -42,6 +43,12 @@
 
       actions.append(cancel,remove);
       dialog.append(title,copy,actions);
+      window.MatchProfilePortfolioI18n?.bind(dialog,()=>{
+        const ui=window.MatchProfilePortfolioI18n;
+        title.textContent=ui.text('confirmTitle');copy.textContent=ui.text('confirmCopy',{title:label||ui.text('thisTitle')});
+        cancel.textContent=ui.text('cancel');remove.textContent=ui.text('remove');
+        title.style.textAlign='start';copy.style.textAlign='start';
+      });
       overlay.append(dialog);
       document.body.append(overlay);
 
@@ -86,10 +93,21 @@
     const remove=document.createElement('button');remove.type='button';remove.className='history-forget-btn';remove.setAttribute('aria-label','Remove '+(i.title||'')+' from history');remove.title='Remove from history';remove.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m-8 0 1 13h8l1-13M10 11v5m4-5v5"/></svg><span>Remove</span>';
     remove.addEventListener('click',async()=>{if(remove.disabled)return;const ok=await confirmHistoryRemoval(i.title||i.detail,remove);if(!ok)return;remove.disabled=true;
       if(i.ts) window.MatchActivity?.removeAt?.(i.ts);
-      if(i.title){const success=window.MatchAudit?.forgetEverywhere?await window.MatchAudit.forgetEverywhere(i.title):await window.matchPolicy?.forget?.(i.title);if(success===false){remove.disabled=false;window.showToast?.('Could not update your history. Please try again.',true);return;}}
-      window.showToast?.('Removed from your private history.');render();
+      if(i.title){const success=window.MatchAudit?.forgetEverywhere?await window.MatchAudit.forgetEverywhere(i.title):await window.matchPolicy?.forget?.(i.title);if(success===false){remove.disabled=false;window.showToast?.(portfolioText('removeFailed','Could not update your history. Please try again.'),true);return;}}
+      window.showToast?.(portfolioText('removed','Removed from your private history.'));render();
     });
-    actions.append(link,remove);body.append(title,note,actions);card.append(img,body);return card;
+    actions.append(link,remove);body.append(title,note,actions);card.append(img,body);
+    title.dir='auto';title.style.textAlign='start';note.style.textAlign='start';
+    window.MatchProfilePortfolioI18n?.bind(card,()=>{
+      const ui=window.MatchProfilePortfolioI18n;
+      const keys={save:'saved',seen:'seen',like:'loved',loved:'loved',dislike:'notForMe',rated:'rated',shown:'matched',ai:'askAI',match:'matched'};
+      if(!i.title&&!i.detail)title.textContent=ui.text('untitled');
+      note.textContent=ui.text(keys[i.action]||keys[i.type]||'inHistory');
+      if(i.reason)note.textContent+=' · '+ui.reason(i.reason);
+      link.textContent=ui.text('findWatch');remove.querySelector('span').textContent=ui.text('remove');
+      remove.setAttribute('aria-label',ui.text('removeAria',{title:i.title||''}));remove.title=ui.text('removeHistory');
+    });
+    return card;
   }
   function render(){
     const host=document.getElementById('history-list');if(!host)return;
@@ -111,7 +129,8 @@
     merged.sort((a,b)=>(Number(b.addedAt||b.ts||0)-Number(a.addedAt||a.ts||0)));
     const count=document.getElementById('count-history');
     if(count) count.textContent=String(merged.length);
-    if(!merged.length){host.innerHTML='<div class="history-empty"><strong>Your private history is clear.</strong><span>Matches, Ask AI titles, saves and seen titles stay here until you remove them.</span></div>';return;}
+    if(!merged.length){host.innerHTML='<div class="history-empty"><strong>Your private history is clear.</strong><span>Matches, Ask AI titles, saves and seen titles stay here until you remove them.</span></div>';
+      const empty=host.firstElementChild;window.MatchProfilePortfolioI18n?.bind(empty,()=>{const ui=window.MatchProfilePortfolioI18n;empty.querySelector('strong').textContent=ui.text('historyEmptyTitle');empty.querySelector('span').textContent=ui.text('historyEmptyCopy');empty.style.textAlign='start';});return;}
     merged.forEach(i=>host.append(cardFor(i)));
   }
   function init(){
@@ -121,7 +140,8 @@
     window.switchPortfolioTab?.(tab);
     if(query.get('rematch')==='1'){
       const host=document.getElementById('history-rematch');
-      if(host){host.innerHTML='<p>This title is saved to history. Ready for a rematch?</p><a class="portfolio-tab" href="/?rematch=same#questionnaire-box">Same criteria</a> <a class="portfolio-tab" href="/?rematch=new#questionnaire-box">New criteria</a>';}
+      if(host){host.innerHTML='<p>This title is saved to history. Ready for a rematch?</p><a class="portfolio-tab" href="/?rematch=same#questionnaire-box">Same criteria</a> <a class="portfolio-tab" href="/?rematch=new#questionnaire-box">New criteria</a>';
+        window.MatchProfilePortfolioI18n?.bind(host,()=>{const ui=window.MatchProfilePortfolioI18n;host.querySelector('p').textContent=ui.text('rematchPrompt');host.querySelector('p').style.textAlign='start';const links=host.querySelectorAll('a');links[0].textContent=ui.text('sameCriteria');links[1].textContent=ui.text('newCriteria');});}
     }
   }
   document.addEventListener('matchapp:historychange',render);

@@ -107,12 +107,33 @@
     wrapped.__auditWrapped=true;window.removeFromList=wrapped;
   }
 
+  const portfolioText=(key,fallback,values)=>window.MatchProfilePortfolioI18n?.text(key,values)||fallback;
+  function bindPortfolioTab(button,key,countId){
+    window.MatchProfilePortfolioI18n?.bind(button,()=>{
+      const ui=window.MatchProfilePortfolioI18n,label=ui.text(key),span=button.querySelector('.audit-tab-text')||button.querySelector('span');
+      if(span&&span.textContent!==label)span.textContent=label;
+      const count=countId?document.getElementById(countId)?.textContent||'0':null;
+      button.setAttribute('aria-label',label+(countId?' — '+ui.text('itemCount',{count}):''));
+    });
+  }
+  function watchPortfolioCounts(){
+    const tabs=$('.portfolio-tabs');if(!tabs||tabs.dataset.portfolioCopyCounts||!window.MutationObserver)return;
+    tabs.dataset.portfolioCopyCounts='1';
+    new MutationObserver(records=>{
+      const buttons=new Set();
+      records.forEach(record=>{const target=record.target.nodeType===1?record.target:record.target.parentElement;if(target?.closest('.tab-count')){const button=target.closest('.portfolio-tab');if(button)buttons.add(button);}});
+      buttons.forEach(button=>window.MatchProfilePortfolioI18n?.refresh(button));
+    }).observe(tabs,{childList:true,characterData:true,subtree:true});
+  }
+
   function installNotForMeTab(){
     const tabs=$('.portfolio-tabs');if(!tabs||$('#tab-notforme'))return;
     const audio=$('#tab-audio');const button=document.createElement('button');button.id='tab-notforme';button.className='portfolio-tab';button.innerHTML=icon('dislike')+'<span>Not For Me</span> <span id="count-notforme" class="tab-count">0</span>';
     button.addEventListener('click',()=>switchAuditTab('notforme'));tabs.insertBefore(button,audio||null);
+    bindPortfolioTab(button,'notForMe','count-notforme');
     const panel=document.createElement('div');panel.id='panel-notforme';panel.className='portfolio-panel audit-notforme-panel';panel.style.display='none';panel.innerHTML='<div class="audit-panel-head"><div><h3>Not For Me</h3><p>Titles you declined. They stay excluded on every signed-in device until you explicitly allow them again.</p></div>'+icon('dislike')+'</div><div id="notforme-grid" class="audit-notforme-grid"></div>';
     const audioPanel=$('#panel-audio');(audioPanel?.parentElement||tabs.parentElement).insertBefore(panel,audioPanel||null);
+    window.MatchProfilePortfolioI18n?.bind(panel.querySelector('.audit-panel-head'),()=>{const ui=window.MatchProfilePortfolioI18n;const h=panel.querySelector('h3'),p=panel.querySelector('p');h.textContent=ui.text('notForMe');p.textContent=ui.text('notForMeIntro');h.style.textAlign='start';p.style.textAlign='start';});
     renderNotForMe();
   }
   function switchAuditTab(name){
@@ -121,25 +142,30 @@
   }
   function renderNotForMe(){
     const host=$('#notforme-grid');if(!host)return;const items=readArray('match_dislikedList');$('#count-notforme')&&($('#count-notforme').textContent=String(items.length));
-    if(!items.length){host.innerHTML='<div class="history-empty"><strong>Nothing here.</strong><span>Titles you mark “Not For Me” will stay out of future matches and appear here.</span></div>';return;}
+    if(!items.length){host.innerHTML='<div class="history-empty"><strong>Nothing here.</strong><span>Titles you mark “Not For Me” will stay out of future matches and appear here.</span></div>';
+      const empty=host.firstElementChild;window.MatchProfilePortfolioI18n?.bind(empty,()=>{const ui=window.MatchProfilePortfolioI18n;empty.querySelector('strong').textContent=ui.text('notForMeEmptyTitle');empty.querySelector('span').textContent=ui.text('notForMeEmptyCopy');empty.style.textAlign='start';});return;}
     host.innerHTML='';items.forEach(item=>{const title=typeof item==='string'?item:item?.title;if(!title)return;const card=document.createElement('article');card.className='audit-notforme-card';const poster=typeof item==='object'?item.posterUrl:'';card.innerHTML=(poster?'<img src="'+esc(poster)+'" alt="'+esc(title)+'" loading="lazy">':'<div class="audit-fallback">'+esc(title)+'</div>')+'<div><strong>'+esc(title)+'</strong><span>Excluded from future matches</span></div>';
-      const allow=document.createElement('button');allow.type='button';allow.className='history-forget-btn';allow.innerHTML='<span>Allow again</span>';allow.addEventListener('click',async()=>{allow.disabled=true;const ok=await forgetEverywhere(title);if(ok){window.showToast?.('“'+title+'” can be recommended again.');renderNotForMe();}else{allow.disabled=false;window.showToast?.('Could not update this item. Please try again.',true);}});card.appendChild(allow);host.appendChild(card);});
+      const allow=document.createElement('button');allow.type='button';allow.className='history-forget-btn';allow.innerHTML='<span>Allow again</span>';allow.addEventListener('click',async()=>{allow.disabled=true;const ok=await forgetEverywhere(title);if(ok){window.showToast?.(portfolioText('allowedAgain','“'+title+'” can be recommended again.',{title}));renderNotForMe();}else{allow.disabled=false;window.showToast?.(portfolioText('allowFailed','Could not update this item. Please try again.'),true);}});card.appendChild(allow);
+      window.MatchProfilePortfolioI18n?.bind(card,()=>{const ui=window.MatchProfilePortfolioI18n;card.querySelector('div>span').textContent=ui.text('excluded');allow.querySelector('span').textContent=ui.text('allowAgain');const name=card.querySelector('strong');if(name){name.dir='auto';name.style.textAlign='start';}});
+      host.appendChild(card);});
   }
 
   function organizeProfileIcons(){
     const config=[
-      ['#tab-history','history','History',null],
-      ['#tab-watchlater','saved','Watch Later','count-watchlater'],
-      ['#tab-seenit','seen','Seen It','count-seenit'],
-      ['#tab-audio','audio','Audio Library','count-audio']
+      ['#tab-history','history','History',null,'historyTab'],
+      ['#tab-watchlater','saved','Watch Later','count-watchlater','watchLaterTab'],
+      ['#tab-seenit','seen','Seen It','count-seenit','seenTab'],
+      ['#tab-audio','audio','Audio Library','count-audio','audioTab']
     ];
-    config.forEach(([sel,name,label,countId])=>{
+    config.forEach(([sel,name,label,countId,copyKey])=>{
       const el=$(sel);if(!el||el.dataset.auditIcon)return;
       const count=countId?document.getElementById(countId)?.textContent||'0':null;
       el.dataset.auditIcon='1';
       el.innerHTML=icon(name)+'<span class="audit-tab-text">'+label+'</span>'+(countId?' <span id="'+countId+'" class="tab-count">'+esc(count)+'</span>':'');
       el.setAttribute('aria-label',label+(countId?' — '+count+' items':''));
+      bindPortfolioTab(el,copyKey,countId);
     });
+    watchPortfolioCounts();
     const tileIcons=$$('.identity-icon');['user','mail','globe','cake','star','calendar'].forEach((name,i)=>{if(tileIcons[i])tileIcons[i].innerHTML=icon(name);});
     $$('.icon-btn,.install-btn,.sound-toggle-btn').forEach(el=>{const label=el.getAttribute('aria-label')||el.title||el.textContent.trim();if(label&&!el.title)el.title=label;el.classList.add('audit-action-icon');});
   }
