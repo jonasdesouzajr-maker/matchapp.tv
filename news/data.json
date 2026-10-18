@@ -1,10 +1,313 @@
 {
-  "generated_at": "2026-10-18T08:18:36.085Z",
-  "feed_version": "a82b5a9e",
+  "generated_at": "2026-10-18T09:51:24.257Z",
+  "feed_version": "847e15cc",
   "sports_updated_at": "2026-10-18T01:03:22.602Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
+    {
+      "id": "92acb4d9",
+      "title": "‘What Belongs to Others’ Wins Top Warsaw Film Festival Award",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/warsaw-film-festival-2026-awards-winners-what-belongs-to-others-1236734712/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T09:10:02.000Z",
+      "discovered_at": "2026-10-18T09:51:24.257Z",
+      "event_type": "Awards",
+      "category": "entertainment",
+      "person": "",
+      "description": "awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/1792314431085.jpeg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/what-belongs-to-others-wins-top-warsaw-film-festival-award-92acb4/",
+      "landing_url": "https://matchapp.tv/?news=92acb4d9#latest-news",
+      "seo": {
+        "primary_keyword": "what belongs others wins latest news",
+        "short_tail": [
+          "what belongs others wins",
+          "what belongs others wins news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "what belongs others wins latest news October 2026",
+          "what belongs others wins awards update 2026",
+          "what belongs others wins news 2026-10-18",
+          "latest awards news about what belongs others wins",
+          "what belongs others wins top warsaw latest update",
+          "The Hollywood Reporter what belongs others wins awards",
+          "latest news about what belongs others wins October 2026",
+          "what belongs others wins entertainment news 2026-10-18",
+          "what happened with what belongs others wins"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "what",
+          "belongs",
+          "others",
+          "wins",
+          "top",
+          "warsaw",
+          "film",
+          "festival"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "what belongs others wins 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter what belongs others wins",
+          "hollywoodreporter.com what belongs others wins",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘What Belongs to Others’ Wins Top Warsaw Film Festival…",
+        "meta_description": "Awards update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "what belongs others wins latest news",
+          "what belongs others wins",
+          "what belongs others wins news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "what belongs others wins latest news October 2026",
+          "what belongs others wins awards update 2026",
+          "what belongs others wins news 2026-10-18",
+          "latest awards news about what belongs others wins",
+          "what belongs others wins top warsaw latest update",
+          "The Hollywood Reporter what belongs others wins awards",
+          "latest news about what belongs others wins October 2026",
+          "what belongs others wins entertainment news 2026-10-18",
+          "what happened with what belongs others wins",
+          "what",
+          "belongs",
+          "others",
+          "wins",
+          "top",
+          "warsaw",
+          "film",
+          "festival",
+          "October 2026",
+          "2026-10-18",
+          "what belongs others wins 2026",
+          "The Hollywood Reporter what belongs others wins",
+          "hollywoodreporter.com what belongs others wins",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+      }
+    },
+    {
+      "id": "0efd6fe7",
+      "title": "Brasileiros vão ao exterior para realizar sonho de ter filhos; investimento pode chegar até R$ 1 milhão",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/brasileiros-vao-ao-exterior-para-realizar-sonho-de-ter-filhos-investimento-pode-chegar-ate-r-1-milhao.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-18T09:00:00.000Z",
+      "discovered_at": "2026-10-18T09:51:24.257Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/fP5LfRFtrpeMp5B5MN8qfaPdVus=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/x/a/kgIY9QSe2aBNzQIDoABg/famosos.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/brasileiros-vao-ao-exterior-para-realizar-sonho-de-ter-filhos-investimento-pode--0efd6f/",
+      "landing_url": "https://matchapp.tv/?news=0efd6fe7#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-18",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "brasileiros",
+          "vao",
+          "exterior",
+          "realizar",
+          "sonho",
+          "ter"
+        ],
+        "long_tail": [
+          "Brasileiros vão ao exterior para realizar sonho de ter filhos; investimento pode chegar até R$ 1 milhão 2026-10-18",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "brasileiros",
+          "vao",
+          "exterior",
+          "realizar",
+          "sonho",
+          "ter"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Brasileiros vão ao exterior para realizar sonho de ter…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-18",
+          "notícias do mundo",
+          "notícias internacionais",
+          "brasileiros",
+          "vao",
+          "exterior",
+          "realizar",
+          "sonho",
+          "ter",
+          "Brasileiros vão ao exterior para realizar sonho de ter filhos; investimento pode chegar até R$ 1 milhão 2026-10-18",
+          "notícias mundiais outubro 2026",
+          "2026-10-18",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+      }
+    },
+    {
+      "id": "ba4921a2",
+      "title": "How to see the Orionid meteor shower",
+      "url": "https://www.bbc.co.uk/weather/articles/c64gr18jrvx3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T08:54:07.000Z",
+      "discovered_at": "2026-10-18T09:51:24.257Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f995/live/ae683a90-be30-11f1-883b-cfbfbf424e7e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/how-to-see-the-orionid-meteor-shower-ba4921/",
+      "landing_url": "https://matchapp.tv/?news=ba4921a2#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "how",
+          "see",
+          "orionid",
+          "meteor",
+          "shower"
+        ],
+        "long_tail": [
+          "How to see the Orionid meteor shower 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "how",
+          "see",
+          "orionid",
+          "meteor",
+          "shower"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "How to see the Orionid meteor shower | World News |…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "how",
+          "see",
+          "orionid",
+          "meteor",
+          "shower",
+          "How to see the Orionid meteor shower 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+      }
+    },
+    {
+      "id": "6bd483fb",
+      "title": "Several dead or injured in major fire at Canada military base",
+      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T08:52:41.000Z",
+      "discovered_at": "2026-10-18T05:03:57.093Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/951a/live/d1508b70-cac9-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
+      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "long_tail": [
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Several dead or injured in major fire at Canada military…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "several",
+          "dead",
+          "injured",
+          "major",
+          "fire",
+          "canada",
+          "Several dead or injured in major fire at Canada military base 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+      }
+    },
     {
       "id": "7033b3f8",
       "title": "Turning the tides: Could hidden sea power energise our coastal towns?",
@@ -71,76 +374,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
-      }
-    },
-    {
-      "id": "6bd483fb",
-      "title": "Several dead or injured in major fire at Canada military base",
-      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T08:05:49.000Z",
-      "discovered_at": "2026-10-18T05:03:57.093Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/951a/live/d1508b70-cac9-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/several-dead-or-injured-in-major-fire-at-canada-military-base-6bd483/",
-      "landing_url": "https://matchapp.tv/?news=6bd483fb#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
-        ],
-        "long_tail": [
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Several dead or injured in major fire at Canada military…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "several",
-          "dead",
-          "injured",
-          "major",
-          "fire",
-          "canada",
-          "Several dead or injured in major fire at Canada military base 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -162,7 +396,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/south-africa-s-oscar-entry-variations-on-a-theme-was-written-with-microsoft-exce-e55abc/",
       "landing_url": "https://matchapp.tv/?news=e55abcfb#latest-news",
       "seo": {
-        "primary_keyword": "South Africa’s Oscar Entry latest news",
+        "primary_keyword": "south africa vs australia",
         "short_tail": [
           "South Africa’s Oscar Entry",
           "South Africa’s Oscar Entry news",
@@ -170,7 +404,8 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates"
+          "entertainment updates",
+          "south africa vs australia"
         ],
         "long_tail": [
           "South Africa’s Oscar Entry latest news October 2026",
@@ -183,7 +418,9 @@
           "South Africa’s Oscar Entry entertainment news 2026-10-18",
           "what happened with South Africa’s Oscar Entry"
         ],
-        "trend_keywords": [],
+        "trend_keywords": [
+          "south africa vs australia"
+        ],
         "entity_keywords": [
           "South Africa’s Oscar Entry",
           "south",
@@ -204,7 +441,7 @@
         "meta_title": "South Africa’s Oscar Entry ‘Variations on a Theme’ Was…",
         "meta_description": "South Africa’s Oscar Entry: Awards update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
         "keywords": [
-          "South Africa’s Oscar Entry latest news",
+          "south africa vs australia",
           "South Africa’s Oscar Entry",
           "South Africa’s Oscar Entry news",
           "awards",
@@ -232,7 +469,7 @@
           "hollywoodreporter.com South Africa’s Oscar Entry",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -301,7 +538,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -370,7 +607,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -439,7 +676,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -508,7 +745,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -577,76 +814,7 @@
           "2026-10-18",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
-      }
-    },
-    {
-      "id": "39200832",
-      "title": "Church makes sainthood case for 'WW1 hero' priest",
-      "url": "https://www.bbc.co.uk/news/articles/cmg47rwddpxko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T05:15:53.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9889/live/84cf90b0-ca61-11f1-8a78-59dd7000461f.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/church-makes-sainthood-case-for-ww1-hero-priest-392008/",
-      "landing_url": "https://matchapp.tv/?news=39200832#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "church",
-          "makes",
-          "sainthood",
-          "case",
-          "ww1",
-          "hero"
-        ],
-        "long_tail": [
-          "Church makes sainthood case for 'WW1 hero' priest 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "church",
-          "makes",
-          "sainthood",
-          "case",
-          "ww1",
-          "hero"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Church makes sainthood case for 'WW1 hero' priest | World…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "church",
-          "makes",
-          "sainthood",
-          "case",
-          "ww1",
-          "hero",
-          "Church makes sainthood case for 'WW1 hero' priest 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -715,7 +883,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -784,7 +952,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -882,7 +1050,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -951,7 +1119,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1045,7 +1213,7 @@
           "hollywoodreporter.com Academy Museum Gala",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1114,7 +1282,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1183,7 +1351,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1252,103 +1420,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
-      }
-    },
-    {
-      "id": "70a3143d",
-      "title": "How The Traitors' music plays with your emotions",
-      "url": "https://www.bbc.co.uk/news/articles/crwyq75117z4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-18T00:29:58.000Z",
-      "discovered_at": "2026-10-18T07:43:24.320Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "How The Traitors",
-      "description": "How The Traitors: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0053/live/4d5e5df0-c976-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/how-the-traitors-music-plays-with-your-emotions-70a314/",
-      "landing_url": "https://matchapp.tv/?news=70a3143d#latest-news",
-      "seo": {
-        "primary_keyword": "How The Traitors latest news",
-        "short_tail": [
-          "How The Traitors",
-          "How The Traitors news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "How The Traitors latest news October 2026",
-          "How The Traitors entertainment update 2026",
-          "How The Traitors news 2026-10-18",
-          "latest entertainment news about How The Traitors",
-          "how traitors how traitors music plays latest update",
-          "BBC How The Traitors entertainment",
-          "latest news about How The Traitors October 2026",
-          "How The Traitors entertainment news 2026-10-18",
-          "what happened with How The Traitors"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "How The Traitors",
-          "how",
-          "traitors",
-          "music",
-          "plays",
-          "your",
-          "emotions"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-18",
-          "How The Traitors 2026"
-        ],
-        "source_keywords": [
-          "BBC How The Traitors",
-          "bbc.co.uk How The Traitors",
-          "BBC entertainment news"
-        ],
-        "meta_title": "How The Traitors' music plays with your emotions |…",
-        "meta_description": "How The Traitors: Entertainment update reported by BBC on 2026-10-18. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "How The Traitors latest news",
-          "How The Traitors",
-          "How The Traitors news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "How The Traitors latest news October 2026",
-          "How The Traitors entertainment update 2026",
-          "How The Traitors news 2026-10-18",
-          "latest entertainment news about How The Traitors",
-          "how traitors how traitors music plays latest update",
-          "BBC How The Traitors entertainment",
-          "latest news about How The Traitors October 2026",
-          "How The Traitors entertainment news 2026-10-18",
-          "what happened with How The Traitors",
-          "how",
-          "traitors",
-          "music",
-          "plays",
-          "your",
-          "emotions",
-          "October 2026",
-          "2026-10-18",
-          "How The Traitors 2026",
-          "BBC How The Traitors",
-          "bbc.co.uk How The Traitors",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1442,12 +1514,12 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
       "id": "62b2242a",
-      "title": "Protestos na França terminam com mais de 1 mil presos; atos contra o custo de vida se espalham pela Europa",
+      "title": "Protestos na França terminam com mais de 1,8 mil presos; atos contra o custo de vida se espalham pela Europa",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/17/protestos-franca-presos-europa.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -1461,7 +1533,7 @@
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://s2-g1.glbimg.com/GRTbWUlC8MSjCf6zupIQX4HGmVI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/a/kFA7N6TBe0e1w4t0aEhQ/afp-20261017-d3lp3wg-v4-midres-francesocialdemo.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-terminam-com-mais-de-1-mil-presos-atos-contra-o-custo-de-vid-62b224/",
+      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-terminam-com-mais-de-1-8-mil-presos-atos-contra-o-custo-de-v-62b224/",
       "landing_url": "https://matchapp.tv/?news=62b2242a#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-17",
@@ -1476,7 +1548,7 @@
           "presos"
         ],
         "long_tail": [
-          "Protestos na França terminam com mais de 1 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
+          "Protestos na França terminam com mais de 1,8 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
@@ -1494,7 +1566,7 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Protestos na França terminam com mais de 1 mil presos;…",
+        "meta_title": "Protestos na França terminam com mais de 1,8 mil presos;…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-17",
@@ -1506,12 +1578,12 @@
           "mais",
           "mil",
           "presos",
-          "Protestos na França terminam com mais de 1 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
+          "Protestos na França terminam com mais de 1,8 mil presos; atos contra o custo de vida se espalham pela Europa 2026-10-17",
           "notícias mundiais outubro 2026",
           "2026-10-17",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1605,7 +1677,7 @@
           "hollywoodreporter.com Miley Cyrus Returns",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1704,7 +1776,7 @@
           "hollywoodreporter.com diplomat prime minister operatic",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1801,76 +1873,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
-      }
-    },
-    {
-      "id": "536434a4",
-      "title": "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/17/carro-invade-jogo-futebol-kansas-mortos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-17T22:55:37.000Z",
-      "discovered_at": "2026-10-18T00:17:51.077Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-17. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/uNP3ceVRVq0yi9ZBcaSZemW1IBE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/d/lyiEw6ThW5DFjttFJLRw/2026-10-18t010808z-707927452-rc255oa5pcn1-rtrmadp-3-usa-crash-wichita.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/carro-invade-jogo-de-futebol-no-kansas-e-mata-menino-de-6-anos-e-um-adulto-536434/",
-      "landing_url": "https://matchapp.tv/?news=536434a4#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-17",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "carro",
-          "invade",
-          "jogo",
-          "futebol",
-          "kansas",
-          "mata"
-        ],
-        "long_tail": [
-          "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto 2026-10-17",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "carro",
-          "invade",
-          "jogo",
-          "futebol",
-          "kansas",
-          "mata"
-        ],
-        "freshness_keywords": [
-          "2026-10-17"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Carro invade jogo de futebol no Kansas e mata menino de 6…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-17. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-17",
-          "notícias do mundo",
-          "notícias internacionais",
-          "carro",
-          "invade",
-          "jogo",
-          "futebol",
-          "kansas",
-          "mata",
-          "Carro invade jogo de futebol no Kansas e mata menino de 6 anos e um adulto 2026-10-17",
-          "notícias mundiais outubro 2026",
-          "2026-10-17",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -1962,106 +1965,7 @@
           "hollywoodreporter.com Harry Styles Debuts Unreleased",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
-      }
-    },
-    {
-      "id": "525c62d5",
-      "title": "‘9-1-1: Nashville’ Pays Tribute to Chad Lowe’s Daughter Fiona After Her Death at 13",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/9-1-1-nashville-tribute-chad-lowe-daughter-death-1236734354/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-17T18:51:27.000Z",
-      "discovered_at": "2026-10-17T19:41:31.888Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "",
-      "description": "obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/Chad-Lowe-and-Kim-Painter-family-getty-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/9-1-1-nashville-pays-tribute-to-chad-lowe-s-daughter-fiona-after-her-death-at-13-525c62/",
-      "landing_url": "https://matchapp.tv/?news=525c62d5#latest-news",
-      "seo": {
-        "primary_keyword": "nashville pays tribute chad latest news",
-        "short_tail": [
-          "nashville pays tribute chad",
-          "nashville pays tribute chad news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "nashville pays tribute chad latest news October 2026",
-          "nashville pays tribute chad obituary update 2026",
-          "nashville pays tribute chad news 2026-10-17",
-          "latest obituary news about nashville pays tribute chad",
-          "nashville pays tribute chad lowe daughter latest update",
-          "The Hollywood Reporter nashville pays tribute chad obituary",
-          "latest news about nashville pays tribute chad October 2026",
-          "nashville pays tribute chad entertainment news 2026-10-17",
-          "what happened with nashville pays tribute chad"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nashville",
-          "pays",
-          "tribute",
-          "chad",
-          "lowe",
-          "daughter",
-          "fiona",
-          "after"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "nashville pays tribute chad 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter nashville pays tribute chad",
-          "hollywoodreporter.com nashville pays tribute chad",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘9-1-1: Nashville’ Pays Tribute to Chad Lowe’s Daughter…",
-        "meta_description": "Obituary update reported by The Hollywood Reporter on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "nashville pays tribute chad latest news",
-          "nashville pays tribute chad",
-          "nashville pays tribute chad news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "nashville pays tribute chad latest news October 2026",
-          "nashville pays tribute chad obituary update 2026",
-          "nashville pays tribute chad news 2026-10-17",
-          "latest obituary news about nashville pays tribute chad",
-          "nashville pays tribute chad lowe daughter latest update",
-          "The Hollywood Reporter nashville pays tribute chad obituary",
-          "latest news about nashville pays tribute chad October 2026",
-          "nashville pays tribute chad entertainment news 2026-10-17",
-          "what happened with nashville pays tribute chad",
-          "nashville",
-          "pays",
-          "tribute",
-          "chad",
-          "lowe",
-          "daughter",
-          "fiona",
-          "after",
-          "October 2026",
-          "2026-10-17",
-          "nashville pays tribute chad 2026",
-          "The Hollywood Reporter nashville pays tribute chad",
-          "hollywoodreporter.com nashville pays tribute chad",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2157,7 +2061,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2255,7 +2159,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2356,7 +2260,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2450,7 +2354,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2549,7 +2453,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2648,7 +2552,7 @@
           "bbc.co.uk judge throws out child",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2746,7 +2650,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2847,7 +2751,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -2948,7 +2852,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -3046,7 +2950,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -3147,7 +3051,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -3241,7 +3145,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -3342,7 +3246,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -3443,7 +3347,108 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
+      }
+    },
+    {
+      "id": "b5d0a730",
+      "title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa persegue personagens brasileiros? 'Coloquei no meu contrato'",
+      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/16/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasileiros-coloquei-no-meu-contrato.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T07:00:00.000Z",
+      "discovered_at": "2026-10-16T07:29:28.440Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/uBXwT3aJmsMBlC8E_8P5XymXOZg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/m/09HrNOTAA88ygtdksUtg/street-fighter-jason-momoa.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/apos-street-fighter-e-velozes-e-furiosos-jason-momoa-persegue-personagens-brasil-b5d0a7/",
+      "landing_url": "https://matchapp.tv/?news=b5d0a730#latest-news",
+      "seo": {
+        "primary_keyword": "apos street fighter velozes últimas notícias",
+        "short_tail": [
+          "apos street fighter velozes",
+          "apos street fighter velozes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "apos street fighter velozes latest news October 2026",
+          "apos street fighter velozes entertainment update 2026",
+          "apos street fighter velozes news 2026-10-16",
+          "latest entertainment news about apos street fighter velozes",
+          "apos street fighter velozes furiosos jason latest update",
+          "G1 apos street fighter velozes entertainment",
+          "últimas notícias sobre apos street fighter velozes outubro 2026",
+          "apos street fighter velozes notícia de 2026-10-16",
+          "o que aconteceu com apos street fighter velozes"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "apos",
+          "street",
+          "fighter",
+          "velozes",
+          "furiosos",
+          "jason",
+          "momoa",
+          "persegue"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "apos street fighter velozes 2026"
+        ],
+        "source_keywords": [
+          "G1 apos street fighter velozes",
+          "g1.globo.com apos street fighter velozes",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Após 'Street Fighter' e 'Velozes e Furiosos', Jason Momoa…",
+        "meta_description": "Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "apos street fighter velozes últimas notícias",
+          "apos street fighter velozes",
+          "apos street fighter velozes news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "apos street fighter velozes latest news October 2026",
+          "apos street fighter velozes entertainment update 2026",
+          "apos street fighter velozes news 2026-10-16",
+          "latest entertainment news about apos street fighter velozes",
+          "apos street fighter velozes furiosos jason latest update",
+          "G1 apos street fighter velozes entertainment",
+          "últimas notícias sobre apos street fighter velozes outubro 2026",
+          "apos street fighter velozes notícia de 2026-10-16",
+          "o que aconteceu com apos street fighter velozes",
+          "apos",
+          "street",
+          "fighter",
+          "velozes",
+          "furiosos",
+          "jason",
+          "momoa",
+          "persegue",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "apos street fighter velozes 2026",
+          "G1 apos street fighter velozes",
+          "g1.globo.com apos street fighter velozes",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     },
     {
@@ -3533,7 +3538,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T08:18:36.085Z"
+        "seo_generated_at": "2026-10-18T09:51:24.257Z"
       }
     }
   ]
