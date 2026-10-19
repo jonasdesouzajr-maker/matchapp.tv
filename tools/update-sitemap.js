@@ -132,10 +132,15 @@ function gitLastmodForUrl(loc, fallback, publishedLastmod, sitemapRevision) {
     try {
         const dirty = execFileSync('git', ['status', '--porcelain', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim();
         if (dirty) return fallback;
-        const [revision, iso] = execFileSync('git', ['log', '-1', '--format=%H%x00%cI', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim().split('\0');
-        // A page and its sitemap published together already have a truthful
-        // generation date; their later commit time must not cause another write.
-        if (publishedLastmod && revision === sitemapRevision) return validLastmod(publishedLastmod, fallback);
+        // Keep the real published render date when this page's contents did not
+        // change since that sitemap, including later updates to unrelated URLs.
+        if (publishedLastmod && sitemapRevision) {
+            try {
+                execFileSync('git', ['diff', '--quiet', sitemapRevision, 'HEAD', '--', rel], {cwd:ROOT, stdio:'ignore'});
+                return validLastmod(publishedLastmod, fallback);
+            } catch (error) { if (error.status !== 1) throw error; }
+        }
+        const iso = execFileSync('git', ['log', '-1', '--format=%cI', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim();
         return validLastmod(iso, fallback);
     } catch (_) {
         return fallback;

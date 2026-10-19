@@ -98,6 +98,16 @@ test('a co-published page and sitemap keep their real render date instead of cre
   assert.deepEqual([f.read('sitemap.xml'),f.read('sitemaps.xml')],saved);assert.equal(f.git('status','--porcelain'),'');
  }finally{f.close();}
 });
+test('a later unrelated URL publication cannot retimestamp an unchanged previously published page',()=>{
+ const f=sitemapFixture();try{
+  fs.appendFileSync(path.join(f.dir,'index.html'),'<!-- Genuine first update -->');f.run('2026-10-19T12:10:00Z');f.git('add','.');
+  function commitAt(time,message){const r=spawnSync('git',['commit','-m',message],{cwd:f.dir,encoding:'utf8',env:{...process.env,GIT_AUTHOR_DATE:time,GIT_COMMITTER_DATE:time}});assert.equal(r.status,0,r.stderr);}
+  commitAt('2026-10-19T12:15:00Z','first page publication');
+  const page=path.join(f.dir,'collections/second/index.html');fs.mkdirSync(path.dirname(page),{recursive:true});fs.writeFileSync(page,'<!doctype html><title>Second source</title>');
+  fs.writeFileSync(path.join(f.dir,'tools/seo-urls.json'),JSON.stringify(['https://matchapp.tv/collections/second/']));f.run('2026-10-19T12:20:00Z');f.git('add','.');commitAt('2026-10-19T12:25:00Z','unrelated URL publication');
+  const saved=[f.read('sitemap.xml'),f.read('sitemaps.xml')];f.run('2026-10-20T12:00:00Z');assert.deepEqual([f.read('sitemap.xml'),f.read('sitemaps.xml')],saved);assert.equal(f.git('status','--porcelain'),'');
+ }finally{f.close();}
+});
 function brandFixture(){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'brand-owner-scope-'));fs.mkdirSync(path.join(dir,'tools'));
  const initial='<!doctype html><html><head><title>Owned fixture</title><link rel="stylesheet" href="/brand.css?v=fixture"></head><body><header><a href="/">MatchApp Ai</a></header><main>Existing content</main></body></html>';
