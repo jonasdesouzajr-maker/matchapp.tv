@@ -1,105 +1,383 @@
 {
-  "generated_at": "2026-10-18T22:34:17.346Z",
-  "feed_version": "c358188d",
+  "generated_at": "2026-10-19T00:27:21.855Z",
+  "feed_version": "37ce84bb",
   "sports_updated_at": "2026-10-18T14:34:48.110Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
-      "id": "c45b8468",
-      "title": "Jesse Eisenberg Reveals TV Show Details as ‘The Debut’ Closes a Star-Studded London Film Festival",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-tv-show-debut-london-film-festival-julianne-1236734918/",
+      "id": "c63942bc",
+      "title": "Avião que saiu de Israel faz pouso de emergência após ameaça de bomba",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/aviao-que-saiu-de-israel-faz-pouso-de-emergencia-apos-ameaca-de-bomba.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T00:12:00.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/HLmdZQk4BcAyuvHJUgCJnUytQ7c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/r/A9EfAYSZuMer02I59rSg/captura-de-tela-2026-10-18-211026-1-.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/aviao-que-saiu-de-israel-faz-pouso-de-emergencia-apos-ameaca-de-bomba-c63942/",
+      "landing_url": "https://matchapp.tv/?news=c63942bc#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "aviao",
+          "que",
+          "saiu",
+          "israel",
+          "faz",
+          "pouso"
+        ],
+        "long_tail": [
+          "Avião que saiu de Israel faz pouso de emergência após ameaça de bomba 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "aviao",
+          "que",
+          "saiu",
+          "israel",
+          "faz",
+          "pouso"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Avião que saiu de Israel faz pouso de emergência após…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "aviao",
+          "que",
+          "saiu",
+          "israel",
+          "faz",
+          "pouso",
+          "Avião que saiu de Israel faz pouso de emergência após ameaça de bomba 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
+      }
+    },
+    {
+      "id": "9da4344a",
+      "title": "Inside the shadowy world of anti-Putin sabotage from within Russia",
+      "url": "https://www.bbc.co.uk/news/articles/c6pwgzkj8zzgo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T00:06:25.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b9f8/live/f9937b60-c943-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/inside-the-shadowy-world-of-anti-putin-sabotage-from-within-russia-9da434/",
+      "landing_url": "https://matchapp.tv/?news=9da4344a#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "inside",
+          "shadowy",
+          "world",
+          "anti",
+          "putin",
+          "sabotage"
+        ],
+        "long_tail": [
+          "Inside the shadowy world of anti-Putin sabotage from within Russia 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "inside",
+          "shadowy",
+          "world",
+          "anti",
+          "putin",
+          "sabotage"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Inside the shadowy world of anti-Putin sabotage from…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "inside",
+          "shadowy",
+          "world",
+          "anti",
+          "putin",
+          "sabotage",
+          "Inside the shadowy world of anti-Putin sabotage from within Russia 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
+      }
+    },
+    {
+      "id": "a78cc00e",
+      "title": "“Less Red Carpet, More Love of Cinema”: The Warsaw Film Festival Wants to Be a Destination for Discovery",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/warsaw-film-festival-wiff-focus-on-cinema-love-discovery-1236733189/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
       "language": "en",
-      "published_at": "2026-10-18T22:24:36.000Z",
-      "discovered_at": "2026-10-18T22:34:17.346Z",
-      "event_type": "Music",
+      "published_at": "2026-10-19T00:03:18.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Entertainment",
       "category": "entertainment",
-      "person": "Jesse Eisenberg Reveals TV",
-      "description": "Jesse Eisenberg Reveals TV: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-18T231602.645.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/jesse-eisenberg-reveals-tv-show-details-as-the-debut-closes-a-star-studded-londo-c45b84/",
-      "landing_url": "https://matchapp.tv/?news=c45b8468#latest-news",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Warsaw-Film-Festival-director-Joanna-Szymanska-Szczesniak-and-program-director-Bartek-Pulcyn-WIFF-H-2026.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/less-red-carpet-more-love-of-cinema-the-warsaw-film-festival-wants-to-be-a-desti-a78cc0/",
+      "landing_url": "https://matchapp.tv/?news=a78cc00e#latest-news",
       "seo": {
-        "primary_keyword": "jesse eisenberg",
+        "primary_keyword": "less red carpet more latest news",
         "short_tail": [
-          "Jesse Eisenberg Reveals TV",
-          "Jesse Eisenberg Reveals TV news",
-          "music",
+          "less red carpet more",
+          "less red carpet more news",
+          "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "jesse eisenberg"
+          "entertainment updates"
         ],
         "long_tail": [
-          "Jesse Eisenberg Reveals TV latest news October 2026",
-          "Jesse Eisenberg Reveals TV music update 2026",
-          "Jesse Eisenberg Reveals TV news 2026-10-18",
-          "latest music news about Jesse Eisenberg Reveals TV",
-          "jesse eisenberg reveals jesse eisenberg reveals latest update",
-          "The Hollywood Reporter Jesse Eisenberg Reveals TV music",
-          "latest news about Jesse Eisenberg Reveals TV October 2026",
-          "Jesse Eisenberg Reveals TV entertainment news 2026-10-18",
-          "what happened with Jesse Eisenberg Reveals TV"
+          "less red carpet more latest news October 2026",
+          "less red carpet more entertainment update 2026",
+          "less red carpet more news 2026-10-19",
+          "latest entertainment news about less red carpet more",
+          "less red carpet more love cinema latest update",
+          "The Hollywood Reporter less red carpet more entertainment",
+          "latest news about less red carpet more October 2026",
+          "less red carpet more entertainment news 2026-10-19",
+          "what happened with less red carpet more"
         ],
-        "trend_keywords": [
-          "jesse eisenberg"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
-          "Jesse Eisenberg Reveals TV",
-          "jesse",
-          "eisenberg",
-          "reveals",
-          "show",
-          "details"
+          "less",
+          "red",
+          "carpet",
+          "more",
+          "love",
+          "cinema",
+          "warsaw",
+          "film"
         ],
         "freshness_keywords": [
           "October 2026",
-          "2026-10-18",
-          "Jesse Eisenberg Reveals TV 2026"
+          "2026-10-19",
+          "less red carpet more 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter Jesse Eisenberg Reveals TV",
-          "hollywoodreporter.com Jesse Eisenberg Reveals TV",
+          "The Hollywood Reporter less red carpet more",
+          "hollywoodreporter.com less red carpet more",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "Jesse Eisenberg Reveals TV Show Details as ‘The Debut’…",
-        "meta_description": "Jesse Eisenberg Reveals TV: Music update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
+        "meta_title": "“Less Red Carpet, More Love of Cinema”: The Warsaw Film…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "jesse eisenberg",
-          "Jesse Eisenberg Reveals TV",
-          "Jesse Eisenberg Reveals TV news",
-          "music",
+          "less red carpet more latest news",
+          "less red carpet more",
+          "less red carpet more news",
+          "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "Jesse Eisenberg Reveals TV latest news October 2026",
-          "Jesse Eisenberg Reveals TV music update 2026",
-          "Jesse Eisenberg Reveals TV news 2026-10-18",
-          "latest music news about Jesse Eisenberg Reveals TV",
-          "jesse eisenberg reveals jesse eisenberg reveals latest update",
-          "The Hollywood Reporter Jesse Eisenberg Reveals TV music",
-          "latest news about Jesse Eisenberg Reveals TV October 2026",
-          "Jesse Eisenberg Reveals TV entertainment news 2026-10-18",
-          "what happened with Jesse Eisenberg Reveals TV",
-          "jesse",
-          "eisenberg",
-          "reveals",
-          "show",
-          "details",
+          "less red carpet more latest news October 2026",
+          "less red carpet more entertainment update 2026",
+          "less red carpet more news 2026-10-19",
+          "latest entertainment news about less red carpet more",
+          "less red carpet more love cinema latest update",
+          "The Hollywood Reporter less red carpet more entertainment",
+          "latest news about less red carpet more October 2026",
+          "less red carpet more entertainment news 2026-10-19",
+          "what happened with less red carpet more",
+          "less",
+          "red",
+          "carpet",
+          "more",
+          "love",
+          "cinema",
+          "warsaw",
+          "film",
           "October 2026",
-          "2026-10-18",
-          "Jesse Eisenberg Reveals TV 2026",
-          "The Hollywood Reporter Jesse Eisenberg Reveals TV",
-          "hollywoodreporter.com Jesse Eisenberg Reveals TV",
+          "2026-10-19",
+          "less red carpet more 2026",
+          "The Hollywood Reporter less red carpet more",
+          "hollywoodreporter.com less red carpet more",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
+      }
+    },
+    {
+      "id": "2064d808",
+      "title": "EU tariffs aimed at China hitting Ukraine, steel boss says",
+      "url": "https://www.bbc.co.uk/news/articles/cwdd8z6gyy96o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T23:28:45.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/29eb/live/c667f2d0-c96f-11f1-80fc-ab418b149008.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/eu-tariffs-aimed-at-china-hitting-ukraine-steel-boss-says-2064d8/",
+      "landing_url": "https://matchapp.tv/?news=2064d808#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "tariffs",
+          "aimed",
+          "china",
+          "hitting",
+          "ukraine",
+          "steel"
+        ],
+        "long_tail": [
+          "EU tariffs aimed at China hitting Ukraine, steel boss says 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "tariffs",
+          "aimed",
+          "china",
+          "hitting",
+          "ukraine",
+          "steel"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "EU tariffs aimed at China hitting Ukraine, steel boss says…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "tariffs",
+          "aimed",
+          "china",
+          "hitting",
+          "ukraine",
+          "steel",
+          "EU tariffs aimed at China hitting Ukraine, steel boss says 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
+      }
+    },
+    {
+      "id": "022ad756",
+      "title": "Don't fall for this - how to protect yourself from AI scams",
+      "url": "https://www.bbc.co.uk/news/articles/c60rl1xvjv89o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T23:24:59.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8f70/live/9a6f8400-c98c-11f1-adc3-01d8629f0470.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/don-t-fall-for-this-how-to-protect-yourself-from-ai-scams-022ad7/",
+      "landing_url": "https://matchapp.tv/?news=022ad756#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "don",
+          "fall",
+          "how",
+          "protect",
+          "yourself",
+          "scams"
+        ],
+        "long_tail": [
+          "Don't fall for this - how to protect yourself from AI scams 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "don",
+          "fall",
+          "how",
+          "protect",
+          "yourself",
+          "scams"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "Don't fall for this - how to protect yourself from AI…",
+        "meta_description": "World report published by BBC Technology on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "don",
+          "fall",
+          "how",
+          "protect",
+          "yourself",
+          "scams",
+          "Don't fall for this - how to protect yourself from AI scams 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -111,7 +389,7 @@
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-18T22:10:45.000Z",
+      "published_at": "2026-10-18T23:20:15.000Z",
       "discovered_at": "2026-10-18T22:34:17.346Z",
       "event_type": "Entertainment",
       "category": "world",
@@ -168,51 +446,51 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
-      "id": "670c82a8",
-      "title": "What we know so far about deadly fire at Canadian military base",
-      "url": "https://www.bbc.co.uk/news/articles/cmgelrq8x92do?at_medium=RSS&at_campaign=rss",
+      "id": "dbb88397",
+      "title": "Major fire at Canada military base leaves four dead, dozens injured",
+      "url": "https://www.bbc.co.uk/news/articles/cxj0ly1m3q81o?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-18T21:37:56.000Z",
-      "discovered_at": "2026-10-18T22:34:17.346Z",
-      "event_type": "Entertainment",
+      "published_at": "2026-10-18T23:06:09.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Obituary",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4d82/live/7fedb8b0-cb1a-11f1-a9ef-8b4e735f71f0.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-we-know-so-far-about-deadly-fire-at-canadian-military-base-670c82/",
-      "landing_url": "https://matchapp.tv/?news=670c82a8#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e891/live/86ce21f0-cb34-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/major-fire-at-canada-military-base-leaves-four-dead-dozens-injured-dbb883/",
+      "landing_url": "https://matchapp.tv/?news=dbb88397#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-18",
         "short_tail": [
           "world news",
           "global headlines",
-          "what",
-          "know",
-          "far",
-          "about",
-          "deadly",
-          "fire"
+          "major",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "leaves"
         ],
         "long_tail": [
-          "What we know so far about deadly fire at Canadian military base 2026-10-18",
+          "Major fire at Canada military base leaves four dead, dozens injured 2026-10-18",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "what",
-          "know",
-          "far",
-          "about",
-          "deadly",
-          "fire"
+          "major",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "leaves"
         ],
         "freshness_keywords": [
           "2026-10-18"
@@ -220,24 +498,256 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "What we know so far about deadly fire at Canadian military…",
+        "meta_title": "Major fire at Canada military base leaves four dead,…",
         "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-18",
           "world news",
           "global headlines",
-          "what",
-          "know",
-          "far",
-          "about",
-          "deadly",
+          "major",
           "fire",
-          "What we know so far about deadly fire at Canadian military base 2026-10-18",
+          "canada",
+          "military",
+          "base",
+          "leaves",
+          "Major fire at Canada military base leaves four dead, dozens injured 2026-10-18",
           "world news October 2026",
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
+      }
+    },
+    {
+      "id": "e76126b0",
+      "title": "Mission set to blast off for Mars to grab a piece of its moon",
+      "url": "https://www.bbc.co.uk/news/articles/cmvgxvkv54w1o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T23:00:48.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/43e5/live/791ac150-c8ad-11f1-9c75-6ff1271de385.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/mission-set-to-blast-off-for-mars-to-grab-a-piece-of-its-moon-e76126/",
+      "landing_url": "https://matchapp.tv/?news=e76126b0#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "mission",
+          "set",
+          "blast",
+          "off",
+          "mars",
+          "grab"
+        ],
+        "long_tail": [
+          "Mission set to blast off for Mars to grab a piece of its moon 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "mission",
+          "set",
+          "blast",
+          "off",
+          "mars",
+          "grab"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Mission set to blast off for Mars to grab a piece of its…",
+        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "mission",
+          "set",
+          "blast",
+          "off",
+          "mars",
+          "grab",
+          "Mission set to blast off for Mars to grab a piece of its moon 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
+      }
+    },
+    {
+      "id": "c45b8468",
+      "title": "Jesse Eisenberg Reveals TV Show Details as ‘The Debut’ Closes a Star-Studded London Film Festival",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-tv-show-debut-london-film-festival-julianne-1236734918/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-18T22:24:36.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Jesse Eisenberg Reveals TV",
+      "description": "Jesse Eisenberg Reveals TV: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-18T231602.645.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/jesse-eisenberg-reveals-tv-show-details-as-the-debut-closes-a-star-studded-londo-c45b84/",
+      "landing_url": "https://matchapp.tv/?news=c45b8468#latest-news",
+      "seo": {
+        "primary_keyword": "Jesse Eisenberg Reveals TV latest news",
+        "short_tail": [
+          "Jesse Eisenberg Reveals TV",
+          "Jesse Eisenberg Reveals TV news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Jesse Eisenberg Reveals TV latest news October 2026",
+          "Jesse Eisenberg Reveals TV music update 2026",
+          "Jesse Eisenberg Reveals TV news 2026-10-18",
+          "latest music news about Jesse Eisenberg Reveals TV",
+          "jesse eisenberg reveals jesse eisenberg reveals latest update",
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV music",
+          "latest news about Jesse Eisenberg Reveals TV October 2026",
+          "Jesse Eisenberg Reveals TV entertainment news 2026-10-18",
+          "what happened with Jesse Eisenberg Reveals TV"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Jesse Eisenberg Reveals TV",
+          "jesse",
+          "eisenberg",
+          "reveals",
+          "show",
+          "details"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-18",
+          "Jesse Eisenberg Reveals TV 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV",
+          "hollywoodreporter.com Jesse Eisenberg Reveals TV",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Jesse Eisenberg Reveals TV Show Details as ‘The Debut’…",
+        "meta_description": "Jesse Eisenberg Reveals TV: Music update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source…",
+        "keywords": [
+          "Jesse Eisenberg Reveals TV latest news",
+          "Jesse Eisenberg Reveals TV",
+          "Jesse Eisenberg Reveals TV news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Jesse Eisenberg Reveals TV latest news October 2026",
+          "Jesse Eisenberg Reveals TV music update 2026",
+          "Jesse Eisenberg Reveals TV news 2026-10-18",
+          "latest music news about Jesse Eisenberg Reveals TV",
+          "jesse eisenberg reveals jesse eisenberg reveals latest update",
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV music",
+          "latest news about Jesse Eisenberg Reveals TV October 2026",
+          "Jesse Eisenberg Reveals TV entertainment news 2026-10-18",
+          "what happened with Jesse Eisenberg Reveals TV",
+          "jesse",
+          "eisenberg",
+          "reveals",
+          "show",
+          "details",
+          "October 2026",
+          "2026-10-18",
+          "Jesse Eisenberg Reveals TV 2026",
+          "The Hollywood Reporter Jesse Eisenberg Reveals TV",
+          "hollywoodreporter.com Jesse Eisenberg Reveals TV",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
+      }
+    },
+    {
+      "id": "6ef5628d",
+      "title": "'Very upsetting': Residents in shock after historic French town hall set alight",
+      "url": "https://www.bbc.co.uk/news/videos/c9dr8kem27zeo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-18T22:22:51.000Z",
+      "discovered_at": "2026-10-19T00:27:21.855Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/185e/live/26c3d1c0-cb47-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/very-upsetting-residents-in-shock-after-historic-french-town-hall-set-alight-6ef562/",
+      "landing_url": "https://matchapp.tv/?news=6ef5628d#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-18",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "very",
+          "upsetting",
+          "residents",
+          "shock",
+          "after",
+          "historic"
+        ],
+        "long_tail": [
+          "'Very upsetting': Residents in shock after historic French town hall set alight 2026-10-18",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "very",
+          "upsetting",
+          "residents",
+          "shock",
+          "after",
+          "historic"
+        ],
+        "freshness_keywords": [
+          "2026-10-18"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "'Very upsetting': Residents in shock after historic French…",
+        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-18",
+          "world news",
+          "global headlines",
+          "very",
+          "upsetting",
+          "residents",
+          "shock",
+          "after",
+          "historic",
+          "'Very upsetting': Residents in shock after historic French town hall set alight 2026-10-18",
+          "world news October 2026",
+          "2026-10-18",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -306,7 +816,7 @@
           "2026-10-18",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -375,76 +885,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
-      }
-    },
-    {
-      "id": "e5394eb9",
-      "title": "Macron calls for 'calm and order' after riots across France",
-      "url": "https://www.bbc.co.uk/news/articles/cw240zl08dm5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T20:33:21.000Z",
-      "discovered_at": "2026-10-18T22:34:17.346Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3671/live/56f97410-cb35-11f1-9e57-a506a0943bb2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/macron-calls-for-calm-and-order-after-riots-across-france-e5394e/",
-      "landing_url": "https://matchapp.tv/?news=e5394eb9#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "macron",
-          "calls",
-          "calm",
-          "order",
-          "after",
-          "riots"
-        ],
-        "long_tail": [
-          "Macron calls for 'calm and order' after riots across France 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "macron",
-          "calls",
-          "calm",
-          "order",
-          "after",
-          "riots"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Macron calls for 'calm and order' after riots across…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "macron",
-          "calls",
-          "calm",
-          "order",
-          "after",
-          "riots",
-          "Macron calls for 'calm and order' after riots across France 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -513,76 +954,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
-      }
-    },
-    {
-      "id": "a8335421",
-      "title": "Cindy Crawford 'beyond heartbroken' after death of son Presley at 27",
-      "url": "https://www.bbc.co.uk/news/articles/cwzrd6123jyyo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T19:53:27.000Z",
-      "discovered_at": "2026-10-18T22:34:17.346Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "Cindy Crawford",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9e6f/live/104d6ec0-cb23-11f1-862d-eb45b1209086.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/cindy-crawford-beyond-heartbroken-after-death-of-son-presley-at-27-a83354/",
-      "landing_url": "https://matchapp.tv/?news=a8335421#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "cindy",
-          "crawford",
-          "beyond",
-          "heartbroken",
-          "after",
-          "death"
-        ],
-        "long_tail": [
-          "Cindy Crawford 'beyond heartbroken' after death of son Presley at 27 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "cindy",
-          "crawford",
-          "beyond",
-          "heartbroken",
-          "after",
-          "death"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Cindy Crawford 'beyond heartbroken' after death of son…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "cindy",
-          "crawford",
-          "beyond",
-          "heartbroken",
-          "after",
-          "death",
-          "Cindy Crawford 'beyond heartbroken' after death of son Presley at 27 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -674,7 +1046,7 @@
           "hollywoodreporter.com Young Miko Gets Flirty",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -743,76 +1115,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
-      }
-    },
-    {
-      "id": "34038bb7",
-      "title": "Fuel leak spreads more than two miles along River Taff",
-      "url": "https://www.bbc.co.uk/news/articles/c8vgxnp5w6vzo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T19:20:57.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e744/live/ac9b0fb0-cae9-11f1-bc2e-018d645d8d21.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/fuel-leak-spreads-more-than-two-miles-along-river-taff-34038b/",
-      "landing_url": "https://matchapp.tv/?news=34038bb7#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "fuel",
-          "leak",
-          "spreads",
-          "more",
-          "than",
-          "two"
-        ],
-        "long_tail": [
-          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "fuel",
-          "leak",
-          "spreads",
-          "more",
-          "than",
-          "two"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Fuel leak spreads more than two miles along River Taff |…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "fuel",
-          "leak",
-          "spreads",
-          "more",
-          "than",
-          "two",
-          "Fuel leak spreads more than two miles along River Taff 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -881,7 +1184,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -978,7 +1281,7 @@
           "g1.globo.com integrantes rebelde lamentam morte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1047,7 +1350,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1143,7 +1446,7 @@
           "hollywoodreporter.com Betty McGuire",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1212,7 +1515,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1281,76 +1584,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
-      }
-    },
-    {
-      "id": "f3f03914",
-      "title": "Donald Trump declara apoio a Netanyahu na eleição de Israel",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/donald-trump-declara-apoio-a-netanyahu-na-eleicao-de-israel.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T15:57:55.000Z",
-      "discovered_at": "2026-10-18T17:31:30.245Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Donald Trump",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Tl1zwF6d-dmujeZiw5-nceXeyvE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/a/k/c3ySPqSNCM86IQuw9lAw/hou7rvfxuaadhql.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/donald-trump-declara-apoio-a-netanyahu-na-eleicao-de-israel-f3f039/",
-      "landing_url": "https://matchapp.tv/?news=f3f03914#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "donald",
-          "trump",
-          "declara",
-          "apoio",
-          "netanyahu",
-          "eleicao"
-        ],
-        "long_tail": [
-          "Donald Trump declara apoio a Netanyahu na eleição de Israel 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "donald",
-          "trump",
-          "declara",
-          "apoio",
-          "netanyahu",
-          "eleicao"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Donald Trump declara apoio a Netanyahu na eleição de…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "donald",
-          "trump",
-          "declara",
-          "apoio",
-          "netanyahu",
-          "eleicao",
-          "Donald Trump declara apoio a Netanyahu na eleição de Israel 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1446,76 +1680,7 @@
           "hollywoodreporter.com Georgina Cates",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
-      }
-    },
-    {
-      "id": "cae4297e",
-      "title": "Oil facilities hit in deadly overnight attack on St Petersburg",
-      "url": "https://www.bbc.co.uk/news/articles/c3eweygrjzd7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T15:46:10.000Z",
-      "discovered_at": "2026-10-18T14:08:17.407Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4966/live/70482900-cad8-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/oil-facilities-hit-in-deadly-overnight-attack-on-st-petersburg-cae429/",
-      "landing_url": "https://matchapp.tv/?news=cae4297e#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "oil",
-          "facilities",
-          "hit",
-          "deadly",
-          "overnight",
-          "attack"
-        ],
-        "long_tail": [
-          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "oil",
-          "facilities",
-          "hit",
-          "deadly",
-          "overnight",
-          "attack"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Oil facilities hit in deadly overnight attack on St…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "oil",
-          "facilities",
-          "hit",
-          "deadly",
-          "overnight",
-          "attack",
-          "Oil facilities hit in deadly overnight attack on St Petersburg 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1611,172 +1776,7 @@
           "hollywoodreporter.com Taylor Swift",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
-      }
-    },
-    {
-      "id": "649397c4",
-      "title": "Tim O’Donnell, Veteran Sitcom Writer, Producer and Director, Dies at 77",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/tim-odonnell-dead-growing-pains-clueless-daves-world-1236734794/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-18T15:28:52.000Z",
-      "discovered_at": "2026-10-18T17:31:30.245Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Tim O’Donnell",
-      "description": "Tim O’Donnell: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Tim-ODonnell-obit-temp-publicity-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/tim-o-donnell-veteran-sitcom-writer-producer-and-director-dies-at-77-649397/",
-      "landing_url": "https://matchapp.tv/?news=649397c4#latest-news",
-      "seo": {
-        "primary_keyword": "Tim O’Donnell latest news",
-        "short_tail": [
-          "Tim O’Donnell",
-          "Tim O’Donnell news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Tim O’Donnell latest news October 2026",
-          "Tim O’Donnell obituary update 2026",
-          "Tim O’Donnell news 2026-10-18",
-          "latest obituary news about Tim O’Donnell",
-          "tim donnell tim donnell veteran sitcom latest update",
-          "The Hollywood Reporter Tim O’Donnell obituary",
-          "latest news about Tim O’Donnell October 2026",
-          "Tim O’Donnell entertainment news 2026-10-18",
-          "what happened with Tim O’Donnell"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Tim O’Donnell",
-          "tim",
-          "donnell",
-          "veteran",
-          "sitcom",
-          "writer",
-          "producer"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-18",
-          "Tim O’Donnell 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Tim O’Donnell",
-          "hollywoodreporter.com Tim O’Donnell",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Tim O’Donnell, Veteran Sitcom Writer, Producer and…",
-        "meta_description": "Tim O’Donnell: Obituary update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via MatchApp…",
-        "keywords": [
-          "Tim O’Donnell latest news",
-          "Tim O’Donnell",
-          "Tim O’Donnell news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Tim O’Donnell latest news October 2026",
-          "Tim O’Donnell obituary update 2026",
-          "Tim O’Donnell news 2026-10-18",
-          "latest obituary news about Tim O’Donnell",
-          "tim donnell tim donnell veteran sitcom latest update",
-          "The Hollywood Reporter Tim O’Donnell obituary",
-          "latest news about Tim O’Donnell October 2026",
-          "Tim O’Donnell entertainment news 2026-10-18",
-          "what happened with Tim O’Donnell",
-          "tim",
-          "donnell",
-          "veteran",
-          "sitcom",
-          "writer",
-          "producer",
-          "October 2026",
-          "2026-10-18",
-          "Tim O’Donnell 2026",
-          "The Hollywood Reporter Tim O’Donnell",
-          "hollywoodreporter.com Tim O’Donnell",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
-      }
-    },
-    {
-      "id": "de7a52e6",
-      "title": "Search for Amelia Earhart's plane resumes after stormy weather",
-      "url": "https://www.bbc.co.uk/news/articles/cv70pxe5j90eo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T13:47:07.000Z",
-      "discovered_at": "2026-10-18T17:31:30.245Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f795/live/26bf0220-cacb-11f1-b5ff-6fb710f59c84.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/search-for-amelia-earhart-s-plane-resumes-after-stormy-weather-de7a52/",
-      "landing_url": "https://matchapp.tv/?news=de7a52e6#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "search",
-          "amelia",
-          "earhart",
-          "plane",
-          "resumes",
-          "after"
-        ],
-        "long_tail": [
-          "Search for Amelia Earhart's plane resumes after stormy weather 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "search",
-          "amelia",
-          "earhart",
-          "plane",
-          "resumes",
-          "after"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Search for Amelia Earhart's plane resumes after stormy…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "search",
-          "amelia",
-          "earhart",
-          "plane",
-          "resumes",
-          "after",
-          "Search for Amelia Earhart's plane resumes after stormy weather 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1877,7 +1877,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -1975,7 +1975,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2069,7 +2069,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2166,7 +2166,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2262,7 +2262,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2360,7 +2360,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2461,7 +2461,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2555,7 +2555,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2654,7 +2654,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2752,7 +2752,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2853,7 +2853,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -2954,7 +2954,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -3052,7 +3052,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -3153,7 +3153,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -3247,7 +3247,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -3348,7 +3348,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -3449,7 +3449,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     },
     {
@@ -3539,7 +3539,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T00:27:21.855Z"
       }
     }
   ]
