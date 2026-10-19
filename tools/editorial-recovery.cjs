@@ -22,7 +22,7 @@ const SOURCES={
 function repairRevision(owner,root=ROOT){
  if(!OWNERS.includes(owner))throw Error('Unknown recurring owner');
  const hash=crypto.createHash('sha256');
- for(const file of ['.github/workflows/'+owner,...SOURCES[owner]])hash.update(file+'\0').update(fs.readFileSync(path.join(root,file))).update('\0');
+ for(const file of ['.github/workflows/'+owner,...SOURCES[owner]])hash.update(file+'\0').update(fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n/g,'\n')).update('\0');
  return hash.digest('hex');
 }
 function localDate(now){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(now));}

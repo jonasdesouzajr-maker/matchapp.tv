@@ -122,3 +122,12 @@ test('a known unsubmitted reservation closes safely when a late owner wins; unce
   assert.throws(()=>recovery.reserve(f.file,evidence()),/attempt-already-recorded/);
  }finally{f.close();}
 });
+test('Windows and Linux checkouts share the same repaired-code retry budget',()=>{
+ const f=fixture();try{
+  const root=path.join(path.dirname(f.file),'windows-checkout');
+  for(const file of ['.github/workflows/sports-refresh.yml',...recovery.SOURCES['sports-refresh.yml']]){
+   const target=path.join(root,file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,fs.readFileSync(path.join(__dirname,'..',file),'utf8').replace(/\r?\n/g,'\r\n'));
+  }
+  assert.equal(recovery.repairRevision('sports-refresh.yml',root),recovery.repairRevision('sports-refresh.yml'));
+ }finally{f.close();}
+});
