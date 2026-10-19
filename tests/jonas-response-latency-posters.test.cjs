@@ -67,3 +67,18 @@ test('non-Latin title verification never equates unrelated source names or their
   assert.equal(exact[0]?.title,requested);
  }
 });
+
+test('localized spoken titles use exact regional source identity before loading their original poster',async()=>{
+ const source={title:'Superbad: É Hoje',originalTitle:'Superbad',tmdbId:8363,kind:'movie',adult:false};
+ for(const mismatch of [false,true]){
+  const calls=[],window={MATCH_LANG:'pt-BR',requestTMDB:async body=>{calls.push(body);return {data:{results:[source]}};},MatchAppCatalogMedia:{
+   lookup:async()=>null,
+   lookupLive:async(name,opts)=>opts.tmdbId?{title:'Superbad',tmdb_id:mismatch?1:8363,media_kind:'movie',genres:['Comedy'],poster_url:'https://image.tmdb.org/t/p/w500/exact.jpg'}:null
+  }};
+  vm.runInNewContext(read('jonas/title-card-presentation-20261011.js'),{window});
+  const cards=await window.MatchAppJonasTitlePresentation.fromAnswers("I recommend 'Superbad - É Hoje'.");
+  assert.equal(cards.length,mismatch?0:1,'regional lookup and poster must identify the same numeric work');
+  assert.equal(calls.length,1);assert.equal(calls[0].lang,'pt-BR');
+  if(!mismatch){assert.equal(cards[0].title,'Superbad');assert.equal(cards[0]._catalogMedia.tmdb_id,8363);}
+ }
+});
