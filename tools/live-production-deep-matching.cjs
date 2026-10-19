@@ -114,6 +114,10 @@ async function guarded(browser,label,fn){
    await page.screenshot({path:path.join(out,'adult-spotify.png')}).catch(()=>{});
   });
   await guarded(browser,'Adult verified audiobook match',async page=>{
+   const network=[];
+   const imageSource=raw=>{try{const u=new URL(raw);return /(^|\.)mzstatic\.com$|^(covers\.openlibrary\.org|books\.google\.com|books\.googleusercontent\.com)$/.test(u.hostname)?u.origin+u.pathname:null;}catch{return null}};
+   page.on('response',response=>{const url=imageSource(response.url());if(url&&response.request().resourceType()==='image')network.push({url,status:response.status()});});
+   page.on('requestfailed',request=>{const url=imageSource(request.url());if(url&&request.resourceType()==='image')network.push({url,error:request.failure()?.errorText});});
    await page.addInitScript(()=>localStorage.setItem('match_user_country','US'));
    await open(page,'/');await consent(page);
    // 1180px is the narrowest locked desktop breakpoint: audit *usable* ad
@@ -162,9 +166,16 @@ async function guarded(browser,label,fn){
      // but an unavailable/incorrect cover still fails this audit.
      await page.waitForFunction(()=>{
        const img=document.querySelector('#ebook-matcher-root [data-ebook-result] img[data-ebook-cover]');
-       return img&&img.complete&&img.naturalWidth>0;
+       return img&&img.complete&&img.naturalWidth>0&&!img.hidden&&getComputedStyle(img).display!=='none'&&getComputedStyle(img).opacity!=='0';
      },null,{timeout:18000}).catch(()=>{});
-     const cover=await root.locator('[data-ebook-result] img[data-ebook-cover]').first().evaluate(im=>im.complete&&im.naturalWidth>0).catch(()=>false);
+     const image=await root.locator('[data-ebook-result] img[data-ebook-cover]').first().evaluate(im=>{
+       const clean=raw=>{if(!raw)return null;try{const u=new URL(raw,document.baseURI);return /^https?:$/.test(u.protocol)?u.origin+u.pathname:u.protocol;}catch{return null}};
+       const css=getComputedStyle(im);return {src:clean(im.src),currentSrc:clean(im.currentSrc),loading:im.loading,hidden:im.hidden,complete:im.complete,naturalWidth:im.naturalWidth,display:css.display,opacity:css.opacity};
+     }).catch(()=>null);
+     const cover=!!image&&image.complete&&image.naturalWidth>0&&!image.hidden&&image.display!=='none'&&image.opacity!=='0';
+     const evidence={image,network};
+     fs.writeFileSync(path.join(out,'audiobook-cover-evidence.json'),JSON.stringify(evidence,null,2)+'\n');
+     console.log('AUDIOBOOK COVER EVIDENCE '+JSON.stringify(evidence));
      record('LIVE audiobook original edition cover',cover,result.title);
    }
    await page.screenshot({path:path.join(out,'adult-audiobook.png')}).catch(()=>{});

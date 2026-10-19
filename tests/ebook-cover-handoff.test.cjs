@@ -24,7 +24,7 @@ function fixture({cached=[]}={}){
  class ImageNode extends EventTarget{
   constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.writes=[];this.listeners=[];this.handlers={};this._src=''}
   addEventListener(type,fn,options){this.listeners.push({type,once:!!options?.once});super.addEventListener(type,fn,options)}
-  set src(value){this._src=String(value);this.writes.push(this._src);this.complete=cached.includes(this._src);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
+  set src(value){this._src=String(value);this.writes.push(this._src);this.complete=cached.includes(this._src)&&!(this.loading==='lazy'&&this.hidden);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
   get src(){return this._src}
   setHandler(type,fn){if(this.handlers[type])this.removeEventListener(type,this.handlers[type]);this.handlers[type]=fn;if(fn)this.addEventListener(type,fn)}
   set onload(fn){this.setHandler('load',fn)}get onload(){return this.handlers.load||null}
@@ -146,10 +146,33 @@ test('late sources cannot write to a disconnected result and still settle within
  assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
 });
 
+test('verified audio cover starts eagerly when inherited lazy loading would leave a hidden image unfetched',async()=>{
+ const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100';
+ const sharp=original.replace('/100x100','/600x600bb.jpg'),f=fixture({cached:[sharp]});
+ f.img.loading='lazy';await f.start({apple:{coverUrl:original}});
+ assert.equal(f.img.loading,'eager');assert.equal(f.img.decoding,'async');
+ f.ready();assert.equal(f.img.style.opacity,'1');
+ await f.reply('detailsOL',{docs:[row(220)]});await f.done();
+ assert.deepEqual(f.img.writes,[sharp],'verified audio identity retains priority');
+});
+
+test('pending verified audio pixels stay transparent with fallback visible and real image errors still fail closed',async()=>{
+ const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100',f=fixture();
+ f.img.loading='lazy';await f.start({apple:{coverUrl:original}});
+ assert.equal(f.img.hidden,false,'the image must be renderable to start its request');
+ assert.equal(f.img.style.opacity,'0');assert.equal(f.fallback.hidden,false);
+ f.img.fail();await flush();assert.equal(f.img.src,original);
+ f.img.fail();await flush();await f.reply('detailsOL',{docs:[row(220)]});
+ await f.emptyMatcher();await f.done();
+ assert.equal(f.img.hidden,true);assert.equal(f.img.style.opacity,'0');
+ assert.equal(f.img.naturalWidth,0);assert.equal(f.fallback.hidden,false);
+});
+
 test('both rendering pages request the handoff repair without changing earlier loader query contracts',()=>{
  const pin='/ebooks/ebook-matcher.js?v=20261011-meta1&amp;tokens=20261017-1&amp;reliability=20261018-1&amp;cover=20261019-handoff1';
  for(const page of ['index.html','ebooks/index.html']){
   const html=read(page);assert.equal(html.split(pin).length-1,1,page);
   assert(html.indexOf('/ebooks/book-details-20261011.js')<html.indexOf(pin),page+' retains the real metadata owner before matching');
+  assert(html.includes(pin+'&amp;lifetime=20261019-1&amp;coverload=20261019-eager1'),page+' invalidates the repaired cover loader while retaining lifetime exclusion');
  }
 });

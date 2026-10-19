@@ -254,3 +254,18 @@ It preserves the same playback-ready predicate and all geometry, duration,
 trusted natural-ended, full-duration, Skip and same-session checks. Owned media
 errors fail the audit; disappearance or synthetic events never count as proof.
 The production intro and application behavior are unchanged.
+
+## Verified artwork loading boundary
+
+The final production audit twice found a genuinely missing audiobook cover.
+An isolated real Chromium check reproduces one loading defect: a hidden lazy
+image never requests its source, so an image-load timeout cannot resolve it.
+The matcher cover loader now follows the existing metadata owner's handoff:
+request eagerly, keep pending pixels transparent and the original fallback
+visible, and reveal only successfully decoded source pixels. Errors retain
+the fallback and remain failing original-art checks. Selection, reservations,
+quotas, identity verification, source priority and all timeouts are unchanged.
+Both existing matcher entry points receive a new asset query parameter.
+The existing deep audit retains sanitized image/load evidence and now requires
+the decoded image to be visible, making this assertion stricter. The two old
+failed attempts remain evidence; no additional blind retry is authorized.
