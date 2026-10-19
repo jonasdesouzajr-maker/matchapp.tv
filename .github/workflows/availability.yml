@@ -82,8 +82,8 @@ jobs:
             node tools/check-content-rotation.js
             npm test
             npm run audit:site
-            git add -A -- data/availability.json where-to-watch tools/watch-urls.json tools/seo-urls.json sitemap.xml sitemaps.xml
-            for directory in moods collections platforms languages decades en/br/watch en/us/watch en/gb/watch en/pt/watch pt/br/watch; do
+            git add -A -- data/availability.json where-to-watch en/br/watch en/us/watch en/gb/watch en/pt/watch pt/br/watch tools/watch-urls.json tools/seo-urls.json sitemap.xml sitemaps.xml
+            for directory in moods collections platforms languages decades; do
               if [ -e "$directory" ]; then git add -A -- "$directory"; fi
             done
             if git diff --staged --quiet; then

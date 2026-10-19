@@ -26,29 +26,68 @@ function bashPath(value){
 const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/trending-refresh.yml'),'utf8').replace(/\r\n/g,'\n');
 const section=workflow.split('      - name: Publish verified daily editorial refresh')[1].split('      - name: Validate and deploy')[0];
 const script=section.split('        run: |\n')[1].split('\n').map(line=>line.slice(10)).join('\n');
-function simulate({conflicts=1,failGate='',noop=false}={}){
+function simulate({conflicts=1,failGate='',noop=false,lostAck='',remoteUnchanged=false}={}){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'daily-publish-'));
  try{
   const binary=path.join(dir,'binary');fs.mkdirSync(binary);
+  const state=path.join(dir,'git-state');fs.mkdirSync(state);
+  const initial='0000000000000000000000000000000000000001';
+  for(const name of ['head','remote','tracking'])fs.writeFileSync(path.join(state,name),initial+'\n');
+  fs.writeFileSync(path.join(state,'graph'),initial+' \n');
   const fake=`#!/bin/bash
 set -euo pipefail
 name="$(basename "$0")"
 printf '%s %s\\n' "$name" "$*" >> "$TRACE"
 if [ "$name" = git ]; then
+ parent_of() {
+  while read -r candidate parent; do
+   if [ "$candidate" = "$1" ]; then printf '%s\\n' "$parent"; return 0; fi
+  done < "$STATE/graph"
+  return 1
+ }
  case "$1" in
+  diff) [ "$NOOP" = 1 ] && exit 0; exit 1;;
+  commit)
+   count=0; [ ! -f "$STATE/commits" ] || count=$(cat "$STATE/commits")
+   count=$((count+1)); echo "$count" > "$STATE/commits"
+   candidate=$(printf '%040x' "$((100+count))")
+   printf '%s %s\\n' "$candidate" "$(cat "$STATE/head")" >> "$STATE/graph"
+   echo "$candidate" > "$STATE/head"; exit 0;;
   rev-parse)
    case "$2" in
-    HEAD) echo candidate;;
-    HEAD~1) echo previous;;
-    origin/main) echo newer-main;;
+    HEAD) cat "$STATE/head";;
+    HEAD~1) parent_of "$(cat "$STATE/head")";;
+    origin/main) cat "$STATE/tracking";;
+    *) exit 2;;
    esac
-   exit 0;;
-  merge-base) exit 1;;
-  diff) [ "$NOOP" = 1 ] && exit 0; exit 1;;
+   exit $?;;
+  fetch) cp "$STATE/remote" "$STATE/tracking"; exit 0;;
+  reset) cp "$STATE/tracking" "$STATE/head"; exit 0;;
+  merge-base)
+   [ "$2" = --is-ancestor ] && [ "$4" = origin/main ] || exit 2
+   current=$(cat "$STATE/tracking")
+   while [ -n "$current" ]; do
+    [ "$current" != "$3" ] || exit 0
+    current=$(parent_of "$current")
+   done
+   exit 1;;
   push)
    count=0; [ ! -f "$COUNT" ] || count=$(cat "$COUNT")
    count=$((count+1)); echo "$count" > "$COUNT"
-   [ "$count" -gt "$CONFLICTS" ]; exit $?;;
+   if [ "$count" -gt "$CONFLICTS" ]; then cp "$STATE/head" "$STATE/remote"; exit 0; fi
+   if [ -n "$LOST_ACK" ]; then
+    cp "$STATE/head" "$STATE/remote"
+    if [ "$LOST_ACK" = descendant ]; then
+     advanced=$(printf '%040x' "$((2000+count))")
+     printf '%s %s\\n' "$advanced" "$(cat "$STATE/remote")" >> "$STATE/graph"
+     echo "$advanced" > "$STATE/remote"
+    fi
+   elif [ "$REMOTE_UNCHANGED" != 1 ]; then
+    advanced=$(printf '%040x' "$((1000+count))")
+    printf '%s %s\\n' "$advanced" "$(cat "$STATE/remote")" >> "$STATE/graph"
+    echo "$advanced" > "$STATE/remote"
+   fi
+   exit 1;;
  esac
 fi
 if [ "$name $*" = "$FAIL_GATE" ]; then exit 9; fi
@@ -57,8 +96,8 @@ if [ "$name" = node ] && [ "$1" = - ]; then cat >/dev/null; fi
   for(const name of ['git','node','npm'])fs.writeFileSync(path.join(binary,name),fake,{mode:0o755});
   const trace=path.join(dir,'trace'),output=path.join(dir,'output');
   const shellScript='export PATH="'+bashPath(binary)+':/usr/bin:/bin"\n'+script;
-  const run=spawnSync(BASH,['-c',shellScript],{encoding:'utf8',env:{...process.env,TRACE:bashPath(trace),COUNT:bashPath(path.join(dir,'count')),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',GITHUB_OUTPUT:bashPath(output)}});
-  return {status:run.status,stderr:run.stderr,trace:fs.readFileSync(trace,'utf8').trim().split('\n'),output:fs.existsSync(output)?fs.readFileSync(output,'utf8'):''};
+  const run=spawnSync(BASH,['-c',shellScript],{encoding:'utf8',env:{...process.env,TRACE:bashPath(trace),COUNT:bashPath(path.join(dir,'count')),STATE:bashPath(state),CONFLICTS:String(conflicts),FAIL_GATE:failGate,NOOP:noop?'1':'0',LOST_ACK:lostAck,REMOTE_UNCHANGED:remoteUnchanged?'1':'0',GITHUB_OUTPUT:bashPath(output)}});
+  return {status:run.status,stdout:run.stdout,stderr:run.stderr,trace:fs.readFileSync(trace,'utf8').trim().split('\n'),output:fs.existsSync(output)?fs.readFileSync(output,'utf8'):'',head:fs.readFileSync(path.join(state,'head'),'utf8').trim(),remote:fs.readFileSync(path.join(state,'remote'),'utf8').trim()};
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 }
 test('daily publisher discards conflicted generation, refreshes latest main and reruns every gate before publishing',()=>{
@@ -80,4 +119,27 @@ test('failed regenerated audit or regression prevents another commit and push',(
 test('no-op never publishes, and repeated conflicts stop after three validated attempts',()=>{
  const noop=simulate({noop:true});assert.equal(noop.status,0);assert.equal(noop.output,'changed=0\n');assert.ok(!noop.trace.some(x=>x.startsWith('git push')));
  const exhausted=simulate({conflicts:3});assert.notEqual(exhausted.status,0);assert.equal(exhausted.output,'');assert.equal(exhausted.trace.filter(x=>x==='git push origin HEAD:main').length,3);assert.equal(exhausted.trace.filter(x=>x==='npm test').length,2);
+});
+test('an accepted push with a lost acknowledgement succeeds without regenerating or resubmitting',()=>{
+ for(const lostAck of ['head','descendant']){
+  const r=simulate({lostAck});assert.equal(r.status,0,r.stderr);assert.equal(r.output,'changed=1\n');
+  assert.equal(r.trace.filter(x=>x==='git push origin HEAD:main').length,1);
+  assert.equal(r.trace.filter(x=>x.startsWith('git commit ')).length,1);
+  assert.ok(r.trace.some(x=>x==='git fetch --no-tags origin main'));
+  assert.ok(r.trace.some(x=>x==='git merge-base --is-ancestor '+r.head+' origin/main'));
+  assert.ok(!r.trace.some(x=>x.startsWith('git reset ')||x.startsWith('node ')||x.startsWith('npm ')));
+  assert.ok(!r.trace.some(x=>x==='git rev-parse HEAD~1'));
+  if(lostAck==='head')assert.equal(r.remote,r.head);
+  else assert.notEqual(r.remote,r.head,'a newer remote descendant still contains the accepted publication');
+ }
+});
+test('a failed push with unchanged remote stops without a changed output or another attempt',()=>{
+ const r=simulate({remoteUnchanged:true});assert.notEqual(r.status,0);assert.equal(r.output,'');
+ assert.equal(r.trace.filter(x=>x==='git push origin HEAD:main').length,1);
+ assert.equal(r.trace.filter(x=>x.startsWith('git commit ')).length,1);
+ assert.ok(r.trace.some(x=>x==='git rev-parse HEAD~1'));
+ assert.ok(r.trace.some(x=>x==='git rev-parse origin/main'));
+ assert.ok(!r.trace.some(x=>x.startsWith('git reset ')||x.startsWith('node ')||x.startsWith('npm ')));
+ assert.match(r.stdout,/Push failed without newer main; stop rather than resubmit an unknown outcome/);
+ assert.notEqual(r.remote,r.head,'the unpublished candidate must not become remote main');
 });

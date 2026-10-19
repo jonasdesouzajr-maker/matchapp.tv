@@ -171,6 +171,10 @@ trees, Kids retry gates, and safe push acknowledgement reconciliation in the
 existing owners. The archive owner validates and regenerates after genuine main
 conflicts using its original event revision. Unknown outcomes stop publication.
 All triggers, cron expressions, permissions and concurrency remain identical.
+PR307 published most of these safeguards while this change was under review.
+Its validated availability staging and stronger daily-publisher fixtures are
+preserved. The remaining V2 workflow difference stages all five regional watch
+trees during midnight rotation, keeping the generated pages with their sitemap.
 Executable regression fixtures exercise real bare Git remotes for successful,
 lost-acknowledgement, rejected, conflicting and unknown publication outcomes;
 failed gate fixtures prevent writes, and regional staging excludes unrelated code.
