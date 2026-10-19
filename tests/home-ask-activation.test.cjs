@@ -28,7 +28,9 @@ test('empty chat Send provides accessible bilingual feedback without triggering 
  const dom=new JSDOM('<html lang="en"><body><div id="discover-compose-help" aria-live="polite">Original help</div><textarea id="discover-new-input"></textarea></body></html>',{url:'https://matchapp.tv/discover.html'});
  const w=dom.window;let queries=[],resizes=0;
  w.autoGrowComposer=()=>resizes++;
- const fn=new Function('window','document','askAndRender',s.slice(start,end+3)+';return window.newDiscoverSearch;')(w,w.document,q=>queries.push(q));
+ const recoveryStart=s.indexOf('function discoverRecoveryText('),recoveryEnd=s.indexOf('\n}\n',recoveryStart)+2;
+ assert.ok(recoveryStart>=0&&recoveryEnd>recoveryStart);
+ const fn=new Function('window','document','askAndRender',s.slice(recoveryStart,recoveryEnd)+'\n'+s.slice(start,end+3)+';return window.newDiscoverSearch;')(w,w.document,q=>queries.push(q));
  const hint=w.document.getElementById('discover-compose-help'),input=w.document.getElementById('discover-new-input');
  assert.equal(fn(),false);assert.match(hint.textContent,/Type a question/);assert.deepEqual(queries,[]);
  w.MATCH_LANG='pt-BR';assert.equal(fn(),false);assert.match(hint.textContent,/Digite uma pergunta/);

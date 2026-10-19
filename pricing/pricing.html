@@ -86,15 +86,21 @@
         .price-badge span { font-size: 14px; color: #aaa; font-weight: normal; }
 
         .how-it-works-glow { background: rgba(20, 5, 5, 0.85); border: 2px solid var(--gold); border-radius: 16px; padding: 25px; margin: 0 0 25px 0; text-align: center; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-        .how-it-works-glow h3 { color: #fff; font-size: 26px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .how-it-works-glow h2 { color: #fff; font-size: 26px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
         .how-it-works-glow p { color: #ddd; font-size: 16px; line-height: 1.6; margin: 0 0 10px 0; }
+        /* Keep the established presentation when section headings use their correct rank. */
+        #pricing-main .premium-card > .pricing-legacy-heading { margin-top: 1em; }
+        @media (max-width: 1024px) {
+            #pricing-main .pricing-legacy-heading { font-size: 16px !important; margin: 8px 0 6px !important; }
+        }
 
         .stream-flags { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; opacity: 0.35; }
         .sf-item { position: absolute; font-size: 14vw; font-weight: 900; color: #fff; white-space: nowrap; opacity: 0.8; text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
         .brand-netflix { color: #E50914; } .brand-prime { color: #00A8E1; } .brand-max { color: #8A2BE2; } .brand-disney { color: #113CCF; }
 
         .seo-footer { background: rgba(10,5,5,0.95); border-top: 2px solid var(--gold); padding: 30px 20px; text-align: center; margin-top: auto; width: 100%; }
-        .seo-footer h4 { color: var(--gold); font-size: 18px; margin-bottom: 15px; text-transform: uppercase; }
+        #pricing-platforms { color: var(--gold); font-family: var(--font-display) !important; font-size: 18px; margin-top: 1.33em; margin-bottom: 15px; line-height: inherit; letter-spacing: var(--ls-display); text-wrap: wrap; text-transform: uppercase; }
+        html[data-theme] #pricing-platforms { font-family: var(--theme-heading) !important; }
         .streaming-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
         .streaming-links a { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 6px; }
         .streaming-links a:hover { border-color: var(--gold); background: rgba(212,175,55,0.1); transform: scale(1.05); }
@@ -219,7 +225,7 @@
         </nav>
     </header>
 
-    <main class="page-wrapper" style="flex: 1;">
+    <main id="pricing-main" class="page-wrapper" style="flex: 1;">
         <div class="main-layout fade-in">
 
             <section class="container" style="text-align: center;" aria-label="Pricing Plans">
@@ -229,7 +235,7 @@
                 </div>
 
                 <div class="how-it-works-glow fade-in">
-                    <h3 data-i18n="pricing.howworks">💡 How MatchApp Works</h3>
+                    <h2 class="pricing-legacy-heading" data-i18n="pricing.howworks">💡 How MatchApp Works</h2>
                     <p><strong>1. Curate:</strong> Tell the AI your exact vibe, pacing, and platform preferences.</p>
                     <p><strong>2. Match:</strong> OpenAI-first AI finds a duplicate-free match across trusted sources, with fallback providers if needed.</p>
                     <p><strong>3. Save:</strong> Build your ultimate Watch Later Portfolio securely.</p>
@@ -242,7 +248,7 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left;">
 
                     <article class="premium-card">
-                        <h3 style="color: var(--gold); font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.adfree.name">Ad-Free Pass</h3>
+                        <h2 class="pricing-legacy-heading" style="color: var(--gold); font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.adfree.name">Ad-Free Pass</h2>
                         <div class="price-badge">$1.99 <span data-i18n="pr.oneTime">/ one-time</span></div>
                         <ul style="color: #bbb; font-size: 13px; line-height: 1.8; margin-bottom: 25px; padding-left: 18px;">
                             <li data-i18n="pricing.adfree.f1">✔️ Removes native ads in the Android app</li>
@@ -253,7 +259,7 @@
                     </article>
 
                     <article class="premium-card">
-                        <h3 style="color: var(--gold); font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.vipm.name">VIP Monthly</h3>
+                        <h2 class="pricing-legacy-heading" style="color: var(--gold); font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.vipm.name">VIP Monthly</h2>
                         <div class="price-badge">$4.99 <span data-i18n="pr.perMonth">/ month</span></div>
                         <ul style="color: #bbb; font-size: 13px; line-height: 1.8; margin-bottom: 25px; padding-left: 18px;">
                             <li data-i18n-html="pricing.vipm.f1">✔️ <strong>10</strong> included AI actions daily</li>
@@ -266,7 +272,7 @@
 
                     <article class="premium-card" style="border: 2px solid var(--gold); background: rgba(212,175,55,0.05); position: relative;">
                         <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg,#FFD700,#FFA500); color: #000; font-size: 11px; font-weight: 900; padding: 5px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 12px rgba(212,175,55,0.5); white-space: nowrap;">🏆 Best Value</div>
-                        <h3 style="color: var(--gold-glow); font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.vipa.name">VIP Annual Pass</h3>
+                        <h2 class="pricing-legacy-heading" style="color: var(--gold-glow); font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.vipa.name">VIP Annual Pass</h2>
                         <div class="price-badge">$39.99 <span data-i18n="pr.perYear">/ year</span></div>
                         <ul style="color: #bbb; font-size: 13px; line-height: 1.8; margin-bottom: 25px; padding-left: 18px;">
                             <li data-i18n="pricing.vipa.f1">✔️ Everything in VIP Monthly, all year</li>
@@ -280,7 +286,7 @@
                     <!-- BUSINESS PLAN -->
                     <article class="premium-card" style="border: 2px solid #6B3FA0; background: rgba(216,156,72,0.08); position: relative;">
                         <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg,#6B3FA0,#A376B6); color: #fff; font-size: 11px; font-weight: 900; padding: 5px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 12px rgba(216,156,72,0.45); white-space: nowrap;">💼 For High-Volume Use</div>
-                        <h3 style="color: #A376B6; font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.biz.name">Business</h3>
+                        <h2 class="pricing-legacy-heading" style="color: #A376B6; font-size: 22px; margin-bottom: 5px;" data-i18n="pricing.biz.name">Business</h2>
                         <div class="price-badge">$49 <span>/ month</span></div>
                         <ul style="color: #bbb; font-size: 13px; line-height: 1.8; margin-bottom: 25px; padding-left: 18px;">
                             <li data-i18n-html="pricing.biz.f1">✔️ <strong>50</strong> included AI actions daily</li>
@@ -333,7 +339,7 @@
     </main>
 
     <footer class="seo-footer">
-        <h4 data-i18n="pricing.platforms">Global Streaming Platforms &amp; Apps</h4>
+        <h2 id="pricing-platforms" data-i18n="pricing.platforms">Global Streaming Platforms &amp; Apps</h2>
         <p style="color: #888; font-size: 12px; margin-bottom: 20px;" data-i18n="pricing.platformsdesc">MatchApp securely routes you directly to the official platforms to watch globally.</p>
         <div class="streaming-links">
             <a href="https://www.netflix.com" target="_blank" rel="noopener noreferrer">📺 Netflix</a>
@@ -353,7 +359,7 @@
     <script src="/settings.js?v=20260926-guarantee-outage1"></script>
     <script src="/match-localization.js?v=20260925-matchrestore2"></script>
 <script src="/match-ai-rank.js?v=20260927-ranked1"></script>
-<script src="/match-tokens.js?v=20261017-3"></script>
+<script src="/match-tokens.js?v=20261019-refresh1"></script>
 <script src="/viewer-country.js?v=20261018-1"></script>
 <script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1"></script>
     <script src="/install-progress.js?v=20260930-install-recovery1"></script>

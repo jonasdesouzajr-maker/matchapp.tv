@@ -112,6 +112,7 @@
           if(accountId!==id){accountId=id;currentWallet=null;hasValue=false;awaitingFirstReveal=false;debits.clear();unconfirmed.clear();}
           const data=await rpc('match_token_status');if(current!==epoch)return null;
           if(!assign(data))throw Error('wallet_invalid');
+          if(notice==='loading'||notice==='failed'){notice=defaultNotice();draw();}
           return currentWallet;
         }catch(_){if(current===epoch){currentWallet=null;notice='failed';paintBalances();draw();if(!quiet)alert('failed');}return null;}
       })();
@@ -145,6 +146,7 @@
     function close(){if(!view)return;view.scrim.hidden=true;if(!claim&&adPhase==='preparing'){++preparationId;busy=false;adPhase='';}if(claim&&!claim.shown&&!claim.showRequested)void cancelPreparation();if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});}
     function button(key,handler,quiet=false){const el=node('button','ma-token-button no-depth'+(quiet?' ma-token-button--quiet':''),label(key));el.type='button';el.addEventListener('click',event=>{if(trusted(w,event))handler(event);});return el;}
     function draw(){try{drawView();}catch(_){}}
+    function defaultNotice(){return claim?adPhase==='ready'?'ready':'verifying':accountId?currentWallet?.rewarded_available&&typeof w.MatchAppNativeRewards?.postMessage==='function'?'rewardNote':'refreshNote':'signInNote';}
     function drawView(){
       if(!view)return;
       view.dialog.lang=locale(w);view.dialog.dir=locale(w)==='ar'?'rtl':'ltr';view.title.textContent=label('title');view.close.setAttribute('aria-label',label('close'));
@@ -186,7 +188,7 @@
     function open(event){
       if(!enabled||!hasValue||(event&&!trusted(w,event)))return false;
       mount();returnFocus=d.activeElement;view.scrim.hidden=false;
-      notice=claim?adPhase==='ready'?'ready':'verifying':accountId?currentWallet?.rewarded_available&&typeof w.MatchAppNativeRewards?.postMessage==='function'?'rewardNote':'refreshNote':'signInNote';
+      notice=defaultNotice();
       draw();view.close.focus({preventScroll:true});return true;
     }
     function handleLimit(kind,status,requested='match'){
