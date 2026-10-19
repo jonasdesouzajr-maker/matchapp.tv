@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
+const { randomUUID } = require('crypto');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
@@ -94,6 +95,23 @@ function validLastmod(value, fallback) {
     return d.toISOString().replace(/\.\d{3}Z$/, '+00:00');
 }
 
+function readOptional(file) {
+    try { return fs.readFileSync(file, 'utf8'); }
+    catch (error) { if (error.code === 'ENOENT') return null; throw error; }
+}
+
+function writeChanged(file, content, previous) {
+    if (content === previous) return;
+    const temporary = `${file}.${randomUUID()}.tmp`;
+    try {
+        fs.writeFileSync(temporary, content, {encoding:'utf8', flag:'wx'});
+        fs.renameSync(temporary, file);
+    } finally {
+        try { fs.unlinkSync(temporary); }
+        catch (error) { if (error.code !== 'ENOENT') throw error; }
+    }
+}
+
 function fileForUrl(loc) {
     try {
         const u = new URL(loc);
@@ -106,7 +124,7 @@ function fileForUrl(loc) {
     }
 }
 
-function gitLastmodForUrl(loc, fallback) {
+function gitLastmodForUrl(loc, fallback, publishedLastmod, sitemapRevision) {
     const rel = fileForUrl(loc);
     if (!rel) return fallback;
     const abs = path.join(ROOT, rel);
@@ -114,7 +132,10 @@ function gitLastmodForUrl(loc, fallback) {
     try {
         const dirty = execFileSync('git', ['status', '--porcelain', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim();
         if (dirty) return fallback;
-        const iso = execFileSync('git', ['log', '-1', '--format=%cI', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim();
+        const [revision, iso] = execFileSync('git', ['log', '-1', '--format=%H%x00%cI', '--', rel], {cwd:ROOT, encoding:'utf8'}).trim().split('\0');
+        // A page and its sitemap published together already have a truthful
+        // generation date; their later commit time must not cause another write.
+        if (publishedLastmod && revision === sitemapRevision) return validLastmod(publishedLastmod, fallback);
         return validLastmod(iso, fallback);
     } catch (_) {
         return fallback;
@@ -123,6 +144,14 @@ function gitLastmodForUrl(loc, fallback) {
 
 function main() {
     const now = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');
+    const sitemapPath = path.join(ROOT, 'sitemap.xml');
+    const sitemapIndexPath = path.join(ROOT, 'sitemaps.xml');
+    const previousXml = readOptional(sitemapPath);
+    const previousIndex = readOptional(sitemapIndexPath);
+    const publishedDates = new Map([...String(previousXml || '').matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map(match => [match[1], match[2]]));
+    let sitemapRevision = '';
+    try { sitemapRevision = execFileSync('git', ['log', '-1', '--format=%H', '--', 'sitemap.xml'], {cwd:ROOT, encoding:'utf8', stdio:['ignore','pipe','ignore']}).trim(); }
+    catch (_) { /* Source archives without Git retain the existing date fallback. */ }
     const seo   = readList('seo-urls.json').map(loc => ({ loc, freq: 'weekly', pri: '0.7' }));
     const watch = readList('watch-urls.json').map(loc => ({loc,freq:'weekly',pri:loc.endsWith('/where-to-watch/')?'0.8':'0.6'}));
 
@@ -153,23 +182,25 @@ function main() {
     const unique = all.filter(u => (seen.has(u.loc) ? false : seen.add(u.loc)));
 
     const body = unique.map(u => {
-        const lastmod = u.lastmod || gitLastmodForUrl(u.loc, now);
+        const lastmod = u.lastmod || gitLastmodForUrl(u.loc, now, publishedDates.get(u.loc), sitemapRevision);
         return `    <url>\n        <loc>${u.loc}</loc>\n        <lastmod>${lastmod}</lastmod>\n        <changefreq>${u.freq}</changefreq>\n        <priority>${u.pri}</priority>\n    </url>`;
     }).join('\n');
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
-    fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
-
-    const sitemapIndexPath = path.join(ROOT, 'sitemaps.xml');
+    // The index records a sitemap change, not the time of an unchanged check.
+    const indexLastmod = previousXml === xml
+        ? validLastmod(previousIndex?.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1], now)
+        : now;
     const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://matchapp.tv/sitemap.xml</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${indexLastmod}</lastmod>
   </sitemap>
 </sitemapindex>
 `;
-    fs.writeFileSync(sitemapIndexPath, indexXml, 'utf8');
+    writeChanged(sitemapPath, xml, previousXml);
+    writeChanged(sitemapIndexPath, indexXml, previousIndex);
 
     console.log(`sitemap.xml: ${unique.length} URLs (${kids.length} kids, ${news.length} news, ${awareness.length} awareness)`);
 }
