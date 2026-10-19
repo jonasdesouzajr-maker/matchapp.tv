@@ -382,14 +382,20 @@ async function sourceCover(book,source){
  BOOK_COVER_INFLIGHT.set(key,job);
  return job;
 }
+// BookDetails hydrates the same image independently. Keep verified pixels
+// once either owner has rendered them, including across late source failures.
+function hasUsableCover(img){
+ return !!(img?.isConnected&&!img.hidden&&img.complete&&img.naturalWidth>0&&img.style.opacity!=='0');
+}
 function showVerifiedCover(img,fall,url,timeout=7000){
  if(!url||!img?.isConnected)return Promise.resolve(false);
+ if(hasUsableCover(img))return Promise.resolve(true);
  return new Promise(resolve=>{
   let finished=false,timer;
   const settle=good=>{
    if(finished)return;
    finished=true;clearTimeout(timer);img.onload=null;img.onerror=null;
-   const valid=good&&img.isConnected&&img.naturalWidth>0;
+   const valid=(good||hasUsableCover(img))&&img.isConnected&&img.naturalWidth>0;
    img.hidden=!valid;if(fall)fall.hidden=valid;
    resolve(valid);
   };
@@ -415,6 +421,7 @@ async function hydrateCover(book,img,fall,audio){
   const url=await job;
   if(url&&await showSourceCover(img,fall,url))return;
  }
+ if(hasUsableCover(img))return;
  img.hidden=true;if(fall)fall.hidden=false;
 }
 function boundedReading(job,ms=6500){
