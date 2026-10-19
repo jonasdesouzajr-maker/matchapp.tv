@@ -113,7 +113,7 @@ jobs:
             git add -A -- tools/event-urls.json tools/awareness-urls.json tools/news-urls.json tools/news-sitemap-meta.json tools/seo-urls.json tools/watch-urls.json
             git add -A -- data/international-day-history.json sitemap.xml sitemaps.xml
             git add -A -- guides/worldwide-entertainment-discovery
-            for d in moods collections platforms languages decades; do
+            for d in moods collections platforms languages decades en/br/watch en/us/watch en/gb/watch en/pt/watch pt/br/watch; do
               if [ -e "$d" ]; then git add -A -- "$d"; fi
             done
             if git diff --staged --quiet; then
