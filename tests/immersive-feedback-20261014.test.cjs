@@ -18,8 +18,8 @@ test('hourly news hub regeneration preserves its approved adult presentation ass
  const source=read('tools/refresh-news-rss.js');
  const hub=source.split('function hub(items,generated){')[1]?.split('function readSports()')[0];
  assert.ok(hub,'news hub template must exist');
- assert.match(hub,/<link rel="stylesheet" href="\/brand\.css\?v=20261015-spacing1&amp;frame=20261016-rounded1">/);
- assert.match(hub,/<script defer src="\/patches\/jonas-adult-page\.js\?v=20261014-fastlang1"><\/script>/);
+ assert.match(hub,/<link rel="stylesheet" href="\/brand\.css\?v=20261018-nativeheader1&amp;frame=20261016-rounded1">/);
+ assert.match(hub,/<script defer src="\/patches\/jonas-adult-page\.js\?v=header20261018-1"><\/script>/);
  assert.match(hub,/<script defer src="\/patches\/immersive-feedback-20261014\.js\?v=immersive1"><\/script>/);
 });
 test('original bundled video keeps its soundtrack, with media volume below full scale',()=>{

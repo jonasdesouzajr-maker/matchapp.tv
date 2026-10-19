@@ -8,7 +8,7 @@ test('shared adult header reserves brand space and uses content-sized wrapping c
  assert.match(repair,/flex-wrap:wrap!important/);assert.match(repair,/grid-template-columns:none!important/);
  assert.match(repair,/min-height:44px!important;height:44px!important/);assert.match(repair,/white-space:nowrap!important/);
  assert.doesNotMatch(repair,/body\.page-home|body\.kids-body|display:none/);
- for(const name of ['brand.css'])assert.match(fs.readFileSync(path.join(root,name),'utf8'),/adult-screen-fit-20261015\.css\?[^"]*header=20261017-1/);
+ for(const name of ['brand.css'])assert.match(fs.readFileSync(path.join(root,name),'utf8'),/adult-screen-fit-20261015\.css\?[^"]*header=20261018-1/);
 });
 
 test('quick quiz launcher accounts for document scroll without changing voice or saved drag handling',()=>{

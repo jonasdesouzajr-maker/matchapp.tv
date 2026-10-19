@@ -36,6 +36,32 @@
 
 @layer ma-screen-fit {
  body:has(#ma-ambient-jonas.ja-header-default):not(.page-home) .app-header .mh-head{padding-inline-end:96px!important;min-height:104px!important;box-sizing:border-box!important}
+ /* Default Jonas stays physically top-right in every language. Reserve that same
+    side of the shared brand row, including when the document is RTL. */
+ html body.page-shell:has(#ma-ambient-jonas.ja-header-default) header.app-header.mh-topbox > .mh-head{
+  padding-left:0!important;padding-right:100px!important;
+ }
+ @media(max-width:600px){
+  /* Publisher hubs can keep their original simple header without a .mh-head. */
+  html body:has(#ma-ambient-jonas.ja-header-default):not(.page-home) > header.app-header:not(.mh-topbox){
+   padding-right:106px!important;box-sizing:border-box!important;
+  }
+ }
+ /* home-rtl-brand-clearance-20261019 */
+ /* The approved orb and fixed product name retain their physical order;
+    translated supporting copy keeps the selected page direction. */
+ html body.page-home #mh-topbox :is(.ma-brand-home-link,.ma-brand-title-line){direction:ltr!important}
+ html[dir="rtl"] body.page-home #mh-topbox .ma-brand-caption{direction:rtl!important}
+ @media(max-width:600px){
+  /* The default companion is physically right in RTL too. Keep the existing
+     browser/native reservation sizes and the original opposite-edge inset. */
+  html[dir="rtl"] body.page-home:has(#ma-jonas-home.ja-header-default,#ma-ambient-jonas.ja-header-default) #mh-topbox > .mh-head{
+   padding-left:clamp(8px,2vw,12px)!important;padding-right:92px!important;
+  }
+  html.matchapp-ai-android[dir="rtl"] body.page-home:has(#ma-ambient-jonas.ja-header-default) #mh-topbox > .mh-head{
+   padding-right:96px!important;
+  }
+ }
  body:has(#ma-ambient-jonas.ja-header-default) .journey-brand{width:100%!important;padding-inline-end:88px!important;min-height:80px!important;box-sizing:border-box!important}
  body:has(#ma-ambient-jonas.ja-header-default):not(.page-home)>.matchapp-brand-bar{padding-inline-end:106px!important;min-height:98px!important;box-sizing:border-box!important}
  @media(max-width:1099px){html.matchapp-ai-android body.page-home #mh-topbox>.mh-head{padding-inline-end:96px!important;min-height:110px!important;box-sizing:border-box!important}}
@@ -446,6 +472,20 @@
   html body:not(.page-kids):not(.kids-body) :is(.spotlight-actions,.weekly-pick-actions) > :is(button,a):focus-visible {
    outline-color:Highlight!important;
   }
+ }
+}
+
+/* install-visibility-state-20261018 */
+/* Keep the install runtime's hidden state authoritative over shared header
+   display rules. Native WebView also hides controls added after initialization. */
+@layer ma-screen-fit {
+ html body:not(.page-kids):not(.kids-body) .app-header
+ .install-btn:is([hidden],[style*="display: none"],[style*="display:none"]) {
+  display:none!important;
+ }
+ html.matchapp-ai-android body:not(.page-kids):not(.kids-body) .app-header
+ :is(.install-btn,.install-wrap) {
+  display:none!important;
  }
 }
 

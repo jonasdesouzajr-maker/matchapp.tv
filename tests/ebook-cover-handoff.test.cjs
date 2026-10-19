@@ -1,0 +1,155 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const matcher=read('ebooks/ebook-matcher.js'),detailsSource=read('ebooks/book-details-20261011.js');
+const identitySource=read('ebooks/cover-identity.js');
+const book={id:'frankenstein',title:'Frankenstein',author:'Mary Shelley',year:1818};
+const cover=id=>'https://covers.openlibrary.org/b/id/'+id+'-L.jpg';
+const row=id=>({title:book.title,author_name:[book.author],cover_i:id,first_publish_year:1818});
+const flush=async()=>{for(let i=0;i<40;i++)await Promise.resolve()};
+
+// A deterministic image/network boundary; all cover, metadata, identity and
+// renderResult handoff code below is read from the real production sources.
+function fixture({cached=[]}={}){
+ let now=0,nextTimer=0;const timers=new Map(),delays=[],requests=[],waiting=new Map();
+ const clock={
+  setTimeout(fn,ms){const id=++nextTimer;timers.set(id,{fn,at:now+ms});delays.push(ms);return id},
+  clearTimeout(id){timers.delete(id)},
+  async advance(ms){const target=now+ms;await flush();for(;;){
+   const due=[...timers].filter(([,t])=>t.at<=target).sort((a,b)=>a[1].at-b[1].at)[0];
+   if(!due)break;now=due[1].at;timers.delete(due[0]);due[1].fn();await flush();
+  }now=target;await flush()}
+ };
+ class ImageNode extends EventTarget{
+  constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.writes=[];this.listeners=[];this.handlers={};this._src=''}
+  addEventListener(type,fn,options){this.listeners.push({type,once:!!options?.once});super.addEventListener(type,fn,options)}
+  set src(value){this._src=String(value);this.writes.push(this._src);this.complete=cached.includes(this._src);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
+  get src(){return this._src}
+  setHandler(type,fn){if(this.handlers[type])this.removeEventListener(type,this.handlers[type]);this.handlers[type]=fn;if(fn)this.addEventListener(type,fn)}
+  set onload(fn){this.setHandler('load',fn)}get onload(){return this.handlers.load||null}
+  set onerror(fn){this.setHandler('error',fn)}get onerror(){return this.handlers.error||null}
+  load(){this.complete=true;this.naturalWidth=480;this.naturalHeight=720;this.dispatchEvent(new Event('load'))}
+  fail(){this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.dispatchEvent(new Event('error'))}
+ }
+ const img=new ImageNode(),fallback={hidden:false};
+ const frame={querySelector:s=>s==='img'?img:s.includes('fallback')?fallback:null};
+ const host={isConnected:true,querySelector(s){
+  if(s==='[data-ebook-cover]')return img;
+  if(s==='[data-ebook-cover-fallback]')return fallback;
+  if(s==='.ebook-top-cover,.ebook-cover')return frame;
+  if(s==='.ebook-top-copy,.ebook-result-copy')return null;
+  throw Error('Unexpected DOM lookup '+s);
+ }};
+ function fetchBoundary(raw,{signal}={}){
+  const url=String(raw);requests.push(url);
+  if(url.startsWith('/ebooks/verified-book-index-20261011.json'))return Promise.resolve({ok:true,json:async()=>({entries:[]})});
+  const u=new URL(url);let key;
+  if(u.hostname==='openlibrary.org')key=u.searchParams.get('fields').includes('number_of_pages_median')?'detailsOL':'matcherOL';
+  else if(u.hostname==='www.googleapis.com')key=u.searchParams.get('maxResults')==='8'?'detailsGoogle':'matcherGoogle';
+  else if(u.hostname==='itunes.apple.com')key='matcherApple';
+  else throw Error('Unexpected network boundary '+url);
+  assert(!waiting.has(key),'only one request per owner/source');
+  return new Promise((resolve,reject)=>{
+   const abort=()=>{waiting.delete(key);reject(Error('fixture aborted'))};
+   signal?.addEventListener('abort',abort,{once:true});
+   waiting.set(key,data=>{waiting.delete(key);signal?.removeEventListener('abort',abort);resolve({ok:true,json:async()=>data})});
+  });
+ }
+ const context=vm.createContext({window:{},document:{documentElement:{lang:'en'},createElement(){throw Error('Cover fixture must retain its original image')}},
+  URL,URLSearchParams,AbortController,fetch:fetchBoundary,setTimeout:clock.setTimeout,clearTimeout:clock.clearTimeout,
+  market:()=> 'US',APPLE_BOOK_MARKETS:new Set(['US'])});
+ vm.runInContext(identitySource,context,{filename:'ebooks/cover-identity.js'});
+ vm.runInContext(detailsSource,context,{filename:'ebooks/book-details-20261011.js'});
+ const start=matcher.indexOf('const BOOK_COVER_IDENTITY='),end=matcher.indexOf('function boundedReading(',start);
+ assert(start>=0&&end>start,'production cover block must exist');
+ vm.runInContext(matcher.slice(start,end),context,{filename:'ebooks/ebook-matcher.js'});
+ const renderStart=matcher.indexOf(" const img=host.querySelector('[data-ebook-cover]'),fall=host.querySelector('[data-ebook-cover-fallback]');");
+ const renderEnd=matcher.indexOf(' if(audio)paintAudio(root,book,audio);',renderStart);
+ assert(renderStart>=0&&renderEnd>renderStart,'actual result handoff must exist');
+ const realCover=context.hydrateCover,realDetails=context.window.MatchAppBookDetails;let coverWork,detailsWork;
+ context.hydrateCover=(...args)=>(coverWork=realCover(...args));
+ context.window.MatchAppBookDetails={...realDetails,hydrate:(...args)=>(detailsWork=realDetails.hydrate(...args))};
+ return {img,fallback,host,requests,waiting,delays,timers,clock,
+  async start(audio=null){Object.assign(context,{host,book,audio});vm.runInContext('(function(){'+matcher.slice(renderStart,renderEnd)+'})()',context);await flush()},
+  async reply(key,data){assert(waiting.has(key),'expected pending '+key);waiting.get(key)(data);await flush()},
+  async emptyMatcher(){for(const key of ['matcherOL','matcherGoogle','matcherApple'])if(waiting.has(key))await this.reply(key,{docs:[],items:[],results:[]})},
+  async done(){await Promise.all([coverWork,detailsWork]);await flush()},
+  ready(){assert.equal(img.complete,true);assert.equal(img.hidden,false);assert(img.naturalWidth>0);assert.notEqual(img.style.opacity,'0');assert.equal(fallback.hidden,true)}
+ };
+}
+
+test('late matcher source cannot replace Frankenstein cover already loaded by real BookDetails',async()=>{
+ const f=fixture();await f.start();
+ await f.reply('detailsOL',{docs:[row(220)]});
+ assert.deepEqual(f.img.writes,[cover(220)]);
+ assert.equal(f.img.loading,'eager');assert.equal(f.img.decoding,'async');
+ assert.equal(f.img.hidden,false);assert.equal(f.img.style.opacity,'0');assert.equal(f.fallback.hidden,false);
+ assert.deepEqual(f.img.listeners.filter(x=>x.once),[{type:'load',once:true},{type:'error',once:true}]);
+ f.img.load();f.ready();
+ await f.reply('matcherOL',{docs:[row(110)]});
+ await f.emptyMatcher();
+ assert.deepEqual(f.img.writes,[cover(220)],'a late verified alternative must not restart the visible image request');
+ f.ready();await f.done();assert.equal(f.timers.size,0);
+});
+
+test('matcher image timeout preserves a cover completed by BookDetails cached-image fast path',async()=>{
+ const f=fixture({cached:[cover(220)]});await f.start();
+ await f.reply('matcherOL',{docs:[row(110)]});
+ assert.equal(f.img.src,cover(110));assert.equal(f.img.complete,false);
+ const matcherLoad=f.img.onload;assert.equal(typeof matcherLoad,'function');
+ await f.reply('detailsOL',{docs:[row(220)]});
+ assert.equal(f.img.onload,matcherLoad,'BookDetails uses separate once listeners, not property replacement');
+ f.ready();assert(f.delays.includes(7000));
+ await f.emptyMatcher();await f.clock.advance(7000);
+ f.ready();assert.deepEqual(f.img.writes,[cover(110),cover(220)]);await f.done();assert.equal(f.timers.size,0);
+});
+
+test('terminal empty matcher sources retain the independently loaded original cover',async()=>{
+ const f=fixture();await f.start();await f.reply('detailsOL',{docs:[row(220)]});f.img.load();f.ready();
+ await f.emptyMatcher();await f.done();
+ f.ready();assert.deepEqual(f.img.writes,[cover(220)]);assert.equal(f.timers.size,0);
+});
+
+test('wrong identity and a failed real BookDetails image still keep an honest fallback',async()=>{
+ const f=fixture();await f.start();await f.reply('detailsOL',{docs:[row(220)]});
+ assert.equal(f.img.style.opacity,'0');f.img.fail();
+ await f.reply('matcherOL',{docs:[{...row(999),author_name:['Another Writer']}]});
+ await f.emptyMatcher();await f.done();
+ assert.deepEqual(f.img.writes,[cover(220)],'wrong-author art is never assigned');
+ assert.equal(f.img.hidden,true);assert.equal(f.img.style.opacity,'0');assert.equal(f.fallback.hidden,false);
+ assert.equal(f.timers.size,0);
+});
+
+test('verified audio edition keeps priority and bounded sharp-to-original fallback',async()=>{
+ const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100';
+ const sharp=original.replace('/100x100','/600x600bb.jpg'),f=fixture();
+ await f.start({apple:{coverUrl:original}});
+ await f.reply('detailsOL',{docs:[row(220)]});
+ assert.deepEqual(f.img.writes,[sharp],'the actual verifiedAudio handoff prevents work-level artwork from replacing the audio edition');
+ assert.equal(f.img.listeners.filter(x=>x.once).length,0,'BookDetails skips all setCover listeners for verified audio');
+ await f.clock.advance(2500);
+ assert.deepEqual(f.img.writes,[sharp,original]);assert(f.delays.includes(7000));
+ f.img.load();await f.done();f.ready();
+ assert.equal(f.requests.filter(x=>{const u=new URL(x,'https://fixture.invalid/');return u.searchParams.get('maxResults')==='10'||u.hostname==='itunes.apple.com'}).length,0);
+ assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+});
+
+test('late sources cannot write to a disconnected result and still settle within existing budgets',async()=>{
+ const f=fixture();await f.start();await f.reply('matcherOL',{docs:[row(110)]});
+ f.img.isConnected=false;f.host.isConnected=false;
+ await f.reply('detailsOL',{docs:[row(220)]});
+ await f.clock.advance(7000);await f.done();
+ assert.deepEqual(f.img.writes,[cover(110)],'disconnected metadata cannot replace the old image');
+ assert.equal(f.img.hidden,true);assert.equal(f.fallback.hidden,false);
+ assert(f.delays.includes(6000));assert(f.delays.includes(5500));
+ assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+});
+
+test('both rendering pages request the handoff repair without changing earlier loader query contracts',()=>{
+ const pin='/ebooks/ebook-matcher.js?v=20261011-meta1&amp;tokens=20261017-1&amp;reliability=20261018-1&amp;cover=20261019-handoff1';
+ for(const page of ['index.html','ebooks/index.html']){
+  const html=read(page);assert.equal(html.split(pin).length-1,1,page);
+  assert(html.indexOf('/ebooks/book-details-20261011.js')<html.indexOf(pin),page+' retains the real metadata owner before matching');
+ }
+});

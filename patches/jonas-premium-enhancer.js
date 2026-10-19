@@ -26,8 +26,9 @@
   if(!document.body.classList.contains('page-home')||vw<1100){
    var head=document.querySelector('#mh-topbox .mh-head,.app-header .mh-head,.journey-header,.matchapp-brand-bar');
    var headerBox=head?head.getBoundingClientRect():null;
-   x=Math.max(17,vw-size-22);y=Math.max(17,Math.min(vh-size-17,headerBox?headerBox.top+14:20));
-   if(document.body.classList.contains('page-shell')&&headerBox)x=Math.max(17,Math.min(vw-size-17,headerBox.right-size));
+   // Secondary pages stay at the screen corner when their header scrolls or reflows.
+   // Home still uses its reserved header area; the quick quiz keeps its flow dock below.
+   x=Math.max(17,vw-size-22);y=Math.max(17,Math.min(vh-size-17,document.body.classList.contains('page-home')&&headerBox?headerBox.top+14:20));
    // The quick quiz keeps its closed launcher in document flow, not fixed over
    // the answers. Convert viewport geometry to document coordinates when it scrolls.
    if(root.id==='ma-ambient-jonas'&&document.documentElement.dataset.growthMode==='quick'&&headerBox){

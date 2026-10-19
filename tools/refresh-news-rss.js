@@ -34,19 +34,18 @@ const TOPIC=/\b(actor|actress|singer|musician|film|movie|television|tv|streaming
 const WORLD_TOPIC=/\b(hormuz|shipping|maritime|united nations|un general assembly|diplomacy|climate|hurricane|tropical storm|el ni[nñ]o|artificial intelligence|\bai\b|technology|energy|oil|gas|power grid|international summit|humanitarian|wildfire|flood)\b/i;
 const STOP=new Set('the a an and or of for to in on with from at by as is are was were be this that de da do das dos e em para com por no na nos nas um uma o a os as'.split(' '));
 
+const NEWS_ENTITIES=Object.freeze({amp:'&',quot:'"',apos:"'",nbsp:' ',lt:'<',gt:'>'});
 const clean=s=>String(s||'')
   .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1')
   .replace(/<[^>]*>/g,' ')
-  .replace(/&amp;/g,'&')
-  .replace(/&quot;/g,'"')
-  .replace(/&#39;|&apos;/g,"'")
-  // RSS headlines sometimes contain numeric curly quotes. Decode them once
-  // before escaping generated HTML to avoid visible double-escaped entities.
-  .replace(/&#x([a-f0-9]+);/gi,(_,n)=>String.fromCodePoint(parseInt(n,16)))
-  .replace(/&#([0-9]+);/g,(_,n)=>String.fromCodePoint(parseInt(n,10)))
-  .replace(/&nbsp;/g,' ')
-  .replace(/&lt;/g,'<')
-  .replace(/&gt;/g,'>')
+  // Decode each source entity once; replacement text is not decoded again.
+  .replace(/&(amp|quot|apos|nbsp|lt|gt|#(?:[0-9]+|[xX][a-fA-F0-9]+));/g,(entity,name)=>{
+    if(name[0]!=='#')return NEWS_ENTITIES[name];
+    const hex=name[1]==='x'||name[1]==='X';
+    const code=Number.parseInt(name.slice(hex?2:1),hex?16:10);
+    return Number.isInteger(code)&&code>0&&code<=0x10ffff&&!(code>=0xd800&&code<=0xdfff)
+      ?String.fromCodePoint(code):entity;
+  })
   .replace(/\s+/g,' ')
   .trim();
 
@@ -457,11 +456,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="${esc(metaTitle)}">
 <meta name="twitter:description" content="${d}">
 ${imageMeta}
-<script type="application/ld+json">${JSON.stringify(schema)}</script>
+<script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
-<link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
-${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
+<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 <style>
 /* Keep article navigation clear of the existing top-right Jonas companion. */
@@ -564,11 +563,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Latest Entertainment, World and Sports News | MatchApp Ai">
 <meta property="og:description" content="Hourly verified entertainment and world reporting plus twice-daily sports updates with original publisher attribution.">
 <meta property="og:url" content="${SITE}/news/">
-<script type="application/ld+json">${JSON.stringify(schema)}</script>
+<script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
-<link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
-${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
+<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 </head>
 <body>
@@ -629,26 +628,13 @@ function currentSlugDir(i){
 }
 
 function ensureArticleAnalyticsFile(file){
-  if(!fs.existsSync(file))return false;
-  let html=fs.readFileSync(file,'utf8');
-  let changed=false;
-  if(!html.includes('GTM-M7J3NNBN')){
-    const gtmHead=`<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
-<!-- End Google Tag Manager -->`;
-    const gtmBody=`<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->`;
-    html=html.replace(/<head>/i,'<head>\n'+gtmHead);
-    html=html.replace(/<body>/i,'<body>\n'+gtmBody);
-    changed=true;
-  }else{
-    if(!html.includes('googletagmanager.com/gtm.js?id=')){
+  let fd;
+  try{fd=fs.openSync(file,'r+');}
+  catch(e){if(e.code==='ENOENT')return false;throw e;}
+  try{
+    let html=fs.readFileSync(fd,'utf8');
+    let changed=false;
+    if(!html.includes('GTM-M7J3NNBN')){
       const gtmHead=`<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -656,20 +642,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 <!-- End Google Tag Manager -->`;
-      html=html.replace(/<head>/i,'<head>\n'+gtmHead);
-      changed=true;
-    }
-    if(!html.includes('googletagmanager.com/ns.html?id=GTM-M7J3NNBN')){
       const gtmBody=`<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->`;
+      html=html.replace(/<head>/i,'<head>\n'+gtmHead);
       html=html.replace(/<body>/i,'<body>\n'+gtmBody);
       changed=true;
+    }else{
+      if(!html.includes('googletagmanager.com/gtm.js?id=')){
+        const gtmHead=`<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+<!-- End Google Tag Manager -->`;
+        html=html.replace(/<head>/i,'<head>\n'+gtmHead);
+        changed=true;
+      }
+      if(!html.includes('googletagmanager.com/ns.html?id=GTM-M7J3NNBN')){
+        const gtmBody=`<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->`;
+        html=html.replace(/<body>/i,'<body>\n'+gtmBody);
+        changed=true;
+      }
     }
-  }
-  if(changed)fs.writeFileSync(file,html);
-  return changed;
+    if(changed){
+      const bytes=Buffer.from(html,'utf8');
+      let offset=0;
+      while(offset<bytes.length){
+        const written=fs.writeSync(fd,bytes,offset,bytes.length-offset,offset);
+        if(written<=0)throw new Error('Could not finish article analytics write');
+        offset+=written;
+      }
+      fs.ftruncateSync(fd,bytes.length);
+    }
+    return changed;
+  }finally{fs.closeSync(fd);}
 }
 
 function enforceArticleAnalyticsOnDisk(){
