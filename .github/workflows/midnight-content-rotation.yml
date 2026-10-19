@@ -121,9 +121,19 @@ jobs:
               exit 0
             fi
             git commit -m "Daily midnight content and SEO rotation"
+            published="$(git rev-parse HEAD)"
             if git push origin HEAD:main; then
               echo 'changed=1' >> "$GITHUB_OUTPUT"
               exit 0
+            fi
+            git fetch --no-tags origin main
+            if git merge-base --is-ancestor "$published" origin/main; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse origin/main)" ]; then
+              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
+              exit 1
             fi
             echo "Remote main advanced; rebuilding all editorial outputs before retry $((attempt+1))."
           done

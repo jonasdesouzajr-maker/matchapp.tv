@@ -20,10 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
+      - name: Install locked validation dependencies
+        run: npm ci --ignore-scripts
       - name: Preserve the outgoing day record
         run: node tools/archive-international-day.cjs
       - name: Publish retained event history
@@ -33,15 +35,40 @@ jobs:
           set -euo pipefail
           git config user.name "matchapp-events-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/international-day-history.json
-          if git diff --staged --quiet; then
-            echo "No outgoing International Day to archive."
-            echo 'changed=0' >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git commit -m "Events: retain ended International Day"
-          git push origin HEAD:main
-          echo 'changed=1' >> "$GITHUB_OUTPUT"
+          for attempt in 1 2 3; do
+            if [ "$attempt" -gt 1 ]; then
+              git fetch --no-tags origin main
+              git reset --hard origin/main
+              git clean -fd
+              # The generator reads the original GITHUB_SHA parent, even after main advances.
+              node tools/archive-international-day.cjs
+            fi
+            node tools/check-content-rotation.js
+            npm test
+            npm run audit:site
+            git add data/international-day-history.json
+            if git diff --staged --quiet; then
+              echo 'changed=0' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -m "Events: retain ended International Day"
+            published="$(git rev-parse HEAD)"
+            if git push origin HEAD:main; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git fetch --no-tags origin main
+            if git merge-base --is-ancestor "$published" origin/main; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse origin/main)" ]; then
+              echo "::error::Archive push outcome cannot be confirmed; stop automatic retries."
+              exit 1
+            fi
+          done
+          echo "::error::Archive publication failed after three validated regenerations."
+          exit 1
 
       - name: Validate and deploy updated retained events
         if: steps.publish.outputs.changed == '1'

@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
+      - name: Install locked validation dependencies
+        run: npm ci --ignore-scripts
       - name: Fetch trusted entertainment headlines
         run: node tools/refresh-news-rss.js
       - name: Refresh sitemap
@@ -49,16 +51,29 @@ jobs:
               node tools/refresh-news-rss.js
               node tools/update-sitemap.js
             fi
+            node tools/check-content-rotation.js
+            npm test
+            npm run audit:site
             git add news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml
             if git diff --staged --quiet; then
               echo "Entertainment news already current"
               echo "changed=0" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-            git commit -m "Refresh hourly entertainment news" || true
+            git commit -m "Refresh hourly entertainment news"
+            published="$(git rev-parse HEAD)"
             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
               echo "changed=1" >> "$GITHUB_OUTPUT"
               exit 0
+            fi
+            git fetch --no-tags origin "${GITHUB_REF_NAME}"
+            if git merge-base --is-ancestor "$published" "origin/${GITHUB_REF_NAME}"; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
+              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
+              exit 1
             fi
           done
           exit 1
