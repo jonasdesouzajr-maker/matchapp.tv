@@ -1,149 +1,213 @@
 {
-  "generated_at": "2026-10-19T14:02:38.701Z",
-  "feed_version": "d7332db2",
-  "sports_updated_at": "2026-10-19T01:17:08.010Z",
+  "generated_at": "2026-10-19T17:29:17.624Z",
+  "feed_version": "599e4d25",
+  "sports_updated_at": "2026-10-19T17:29:17.567Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
-      "id": "d61ceccc",
-      "title": "Entertainment 360, Griffin Gaming Launch HITpoint to Bring Gaming Characters, Stories to Film, TV",
-      "url": "https://www.hollywoodreporter.com/business/business-news/entertainment-360-griffin-gaming-hitpoint-gaming-hollywood-1236734723/",
+      "id": "e9bd8671",
+      "title": "European Film Producers Say Oscar Contender ‘La Bola Negra’ Shows Taking Big Risks Can Pay Off",
+      "url": "https://www.hollywoodreporter.com/business/business-news/european-film-producers-1236735396/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
       "language": "en",
-      "published_at": "2026-10-19T14:00:00.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Release",
+      "published_at": "2026-10-19T17:26:08.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Awards",
       "category": "entertainment",
-      "person": "",
-      "description": "release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/04/Fallout_S1_FG_103_00480623_Still591_3000-copy.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/entertainment-360-griffin-gaming-launch-hitpoint-to-bring-gaming-characters-stor-d61cec/",
-      "landing_url": "https://matchapp.tv/?news=d61ceccc#latest-news",
+      "person": "European Film Producers Say",
+      "description": "European Film Producers Say: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/08/LBN_20250905_0279_carlaoset-1.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/european-film-producers-say-oscar-contender-la-bola-negra-shows-taking-big-risks-e9bd86/",
+      "landing_url": "https://matchapp.tv/?news=e9bd8671#latest-news",
       "seo": {
-        "primary_keyword": "entertainment 360 griffin gaming latest news",
+        "primary_keyword": "European Film Producers Say latest news",
         "short_tail": [
-          "entertainment 360 griffin gaming",
-          "entertainment 360 griffin gaming news",
-          "release",
+          "European Film Producers Say",
+          "European Film Producers Say news",
+          "awards",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates"
         ],
         "long_tail": [
-          "entertainment 360 griffin gaming latest news October 2026",
-          "entertainment 360 griffin gaming release update 2026",
-          "entertainment 360 griffin gaming news 2026-10-19",
-          "latest release news about entertainment 360 griffin gaming",
-          "entertainment 360 griffin gaming launch hitpoint latest update",
-          "The Hollywood Reporter entertainment 360 griffin gaming release",
-          "latest news about entertainment 360 griffin gaming October 2026",
-          "entertainment 360 griffin gaming entertainment news 2026-10-19",
-          "what happened with entertainment 360 griffin gaming"
+          "European Film Producers Say latest news October 2026",
+          "European Film Producers Say awards update 2026",
+          "European Film Producers Say news 2026-10-19",
+          "latest awards news about European Film Producers Say",
+          "european film producers say european film latest update",
+          "The Hollywood Reporter European Film Producers Say awards",
+          "latest news about European Film Producers Say October 2026",
+          "European Film Producers Say entertainment news 2026-10-19",
+          "what happened with European Film Producers Say"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "entertainment",
-          "360",
-          "griffin",
-          "gaming",
-          "launch",
-          "hitpoint",
-          "bring"
+          "European Film Producers Say",
+          "european",
+          "film",
+          "producers",
+          "say"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-19",
-          "entertainment 360 griffin gaming 2026"
+          "European Film Producers Say 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter entertainment 360 griffin gaming",
-          "hollywoodreporter.com entertainment 360 griffin gaming",
+          "The Hollywood Reporter European Film Producers Say",
+          "hollywoodreporter.com European Film Producers Say",
           "The Hollywood Reporter entertainment news"
         ],
-        "meta_title": "Entertainment 360, Griffin Gaming Launch HITpoint to Bring…",
-        "meta_description": "Release update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
+        "meta_title": "European Film Producers Say Oscar Contender ‘La Bola…",
+        "meta_description": "European Film Producers Say: Awards update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source…",
         "keywords": [
-          "entertainment 360 griffin gaming latest news",
-          "entertainment 360 griffin gaming",
-          "entertainment 360 griffin gaming news",
-          "release",
+          "European Film Producers Say latest news",
+          "European Film Producers Say",
+          "European Film Producers Say news",
+          "awards",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "entertainment 360 griffin gaming latest news October 2026",
-          "entertainment 360 griffin gaming release update 2026",
-          "entertainment 360 griffin gaming news 2026-10-19",
-          "latest release news about entertainment 360 griffin gaming",
-          "entertainment 360 griffin gaming launch hitpoint latest update",
-          "The Hollywood Reporter entertainment 360 griffin gaming release",
-          "latest news about entertainment 360 griffin gaming October 2026",
-          "entertainment 360 griffin gaming entertainment news 2026-10-19",
-          "what happened with entertainment 360 griffin gaming",
-          "entertainment",
-          "360",
-          "griffin",
-          "gaming",
-          "launch",
-          "hitpoint",
-          "bring",
+          "European Film Producers Say latest news October 2026",
+          "European Film Producers Say awards update 2026",
+          "European Film Producers Say news 2026-10-19",
+          "latest awards news about European Film Producers Say",
+          "european film producers say european film latest update",
+          "The Hollywood Reporter European Film Producers Say awards",
+          "latest news about European Film Producers Say October 2026",
+          "European Film Producers Say entertainment news 2026-10-19",
+          "what happened with European Film Producers Say",
+          "european",
+          "film",
+          "producers",
+          "say",
           "October 2026",
           "2026-10-19",
-          "entertainment 360 griffin gaming 2026",
-          "The Hollywood Reporter entertainment 360 griffin gaming",
-          "hollywoodreporter.com entertainment 360 griffin gaming",
+          "European Film Producers Say 2026",
+          "The Hollywood Reporter European Film Producers Say",
+          "hollywoodreporter.com European Film Producers Say",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
-      "id": "0de891a8",
-      "title": "Alberta heads to polls to decide whether to hold vote on separation from Canada",
-      "url": "https://www.bbc.co.uk/news/articles/cxvgd0ymgzgyo?at_medium=RSS&at_campaign=rss",
+      "id": "e82ec452",
+      "title": "VÍDEO: Galerias Lafayette são saqueadas por durante distúrbios na França",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/video-galerias-lafayette-sao-saqueadas-por-durante-disturbios-na-franca.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T17:21:55.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/2R_WbSw4kIbiGlfvsl9D3iuHVA0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/5/W8BXksRP2WQRq8dCA96A/2026-10-19t064535z-866165662-rc2u5oar66q8-rtrmadp-3-france-protest.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/video-galerias-lafayette-sao-saqueadas-por-durante-disturbios-na-franca-e82ec4/",
+      "landing_url": "https://matchapp.tv/?news=e82ec452#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "video",
+          "galerias",
+          "lafayette",
+          "sao",
+          "saqueadas",
+          "durante"
+        ],
+        "long_tail": [
+          "VÍDEO: Galerias Lafayette são saqueadas por durante distúrbios na França 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "video",
+          "galerias",
+          "lafayette",
+          "sao",
+          "saqueadas",
+          "durante"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "VÍDEO: Galerias Lafayette são saqueadas por durante…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "video",
+          "galerias",
+          "lafayette",
+          "sao",
+          "saqueadas",
+          "durante",
+          "VÍDEO: Galerias Lafayette são saqueadas por durante distúrbios na França 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "0d1ca792",
+      "title": "Kenya cult leader who told parents to starve children guilty of 191 murders",
+      "url": "https://www.bbc.co.uk/news/articles/ckd6d2l3dz4xo?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-19T13:44:57.000Z",
-      "discovered_at": "2026-10-19T11:11:51.603Z",
+      "published_at": "2026-10-19T17:18:04.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/975c/live/8ec83c20-cb9c-11f1-93a7-b36f3083f4d3.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/alberta-heads-to-polls-to-decide-whether-to-hold-vote-on-separation-from-canada-0de891/",
-      "landing_url": "https://matchapp.tv/?news=0de891a8#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d07e/live/02bf88b0-cbd7-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/kenya-cult-leader-who-told-parents-to-starve-children-guilty-of-191-murders-0d1ca7/",
+      "landing_url": "https://matchapp.tv/?news=0d1ca792#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-19",
         "short_tail": [
           "world news",
           "global headlines",
-          "alberta",
-          "heads",
-          "polls",
-          "decide",
-          "whether",
-          "hold"
+          "kenya",
+          "cult",
+          "leader",
+          "who",
+          "told",
+          "parents"
         ],
         "long_tail": [
-          "Alberta heads to polls to decide whether to hold vote on separation from Canada 2026-10-19",
+          "Kenya cult leader who told parents to starve children guilty of 191 murders 2026-10-19",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "alberta",
-          "heads",
-          "polls",
-          "decide",
-          "whether",
-          "hold"
+          "kenya",
+          "cult",
+          "leader",
+          "who",
+          "told",
+          "parents"
         ],
         "freshness_keywords": [
           "2026-10-19"
@@ -151,49 +215,148 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Alberta heads to polls to decide whether to hold vote on…",
+        "meta_title": "Kenya cult leader who told parents to starve children…",
         "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-19",
           "world news",
           "global headlines",
-          "alberta",
-          "heads",
-          "polls",
-          "decide",
-          "whether",
-          "hold",
-          "Alberta heads to polls to decide whether to hold vote on separation from Canada 2026-10-19",
+          "kenya",
+          "cult",
+          "leader",
+          "who",
+          "told",
+          "parents",
+          "Kenya cult leader who told parents to starve children guilty of 191 murders 2026-10-19",
           "world news October 2026",
           "2026-10-19",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
-      "id": "c11439d9",
-      "title": "Edward Berger Talks Filmmaking in a Streaming Age: “The Movie Industry Needed Netflix to Wake Up”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/conclave-edward-berger-netflix-world-war-z-mia-market-1236735243/",
+      "id": "63338709",
+      "title": "‘Upgraded 2’: Camila Mendes to Return as Star and Producer for Sequel From Gulfstream, Honor Role (Exclusive)",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/upgraded-2-camila-mendes-star-producer-amazon-mgm-sequel-1236735310/",
       "source": "The Hollywood Reporter",
       "source_domain": "hollywoodreporter.com",
       "source_home": "https://www.hollywoodreporter.com",
       "country": "US",
       "language": "en",
-      "published_at": "2026-10-19T13:44:16.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
+      "published_at": "2026-10-19T17:08:30.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "",
+      "description": "casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Camila-Mendes-MOTU-Headshot-Main-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/upgraded-2-camila-mendes-to-return-as-star-and-producer-for-sequel-from-gulfstre-633387/",
+      "landing_url": "https://matchapp.tv/?news=63338709#latest-news",
+      "seo": {
+        "primary_keyword": "upgraded camila mendes return latest news",
+        "short_tail": [
+          "upgraded camila mendes return",
+          "upgraded camila mendes return news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "upgraded camila mendes return latest news October 2026",
+          "upgraded camila mendes return casting update 2026",
+          "upgraded camila mendes return news 2026-10-19",
+          "latest casting news about upgraded camila mendes return",
+          "upgraded camila mendes return star producer latest update",
+          "The Hollywood Reporter upgraded camila mendes return casting",
+          "latest news about upgraded camila mendes return October 2026",
+          "upgraded camila mendes return entertainment news 2026-10-19",
+          "what happened with upgraded camila mendes return"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "upgraded",
+          "camila",
+          "mendes",
+          "return",
+          "star",
+          "producer",
+          "sequel",
+          "gulfstream"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "upgraded camila mendes return 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter upgraded camila mendes return",
+          "hollywoodreporter.com upgraded camila mendes return",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Upgraded 2’: Camila Mendes to Return as Star and Producer…",
+        "meta_description": "Casting update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "upgraded camila mendes return latest news",
+          "upgraded camila mendes return",
+          "upgraded camila mendes return news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "upgraded camila mendes return latest news October 2026",
+          "upgraded camila mendes return casting update 2026",
+          "upgraded camila mendes return news 2026-10-19",
+          "latest casting news about upgraded camila mendes return",
+          "upgraded camila mendes return star producer latest update",
+          "The Hollywood Reporter upgraded camila mendes return casting",
+          "latest news about upgraded camila mendes return October 2026",
+          "upgraded camila mendes return entertainment news 2026-10-19",
+          "what happened with upgraded camila mendes return",
+          "upgraded",
+          "camila",
+          "mendes",
+          "return",
+          "star",
+          "producer",
+          "sequel",
+          "gulfstream",
+          "October 2026",
+          "2026-10-19",
+          "upgraded camila mendes return 2026",
+          "The Hollywood Reporter upgraded camila mendes return",
+          "hollywoodreporter.com upgraded camila mendes return",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "f65cf91c",
+      "title": "Tom Cullen says he does not take playing LGBT roles lightly",
+      "url": "https://www.bbc.co.uk/news/articles/cw146g3l8p2xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-19T17:01:08.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
       "event_type": "Entertainment",
       "category": "entertainment",
-      "person": "Edward Berger Talks Filmmaking",
-      "description": "Edward Berger Talks Filmmaking: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/09/Edward-Berger-Serge-Holtschi_for-ZFF.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/edward-berger-talks-filmmaking-in-a-streaming-age-the-movie-industry-needed-netf-c11439/",
-      "landing_url": "https://matchapp.tv/?news=c11439d9#latest-news",
+      "person": "Tom Cullen",
+      "description": "Tom Cullen: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/df63/live/00858d50-cbce-11f1-bc2e-018d645d8d21.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/tom-cullen-says-he-does-not-take-playing-lgbt-roles-lightly-f65cf9/",
+      "landing_url": "https://matchapp.tv/?news=f65cf91c#latest-news",
       "seo": {
-        "primary_keyword": "Edward Berger Talks Filmmaking latest news",
+        "primary_keyword": "Tom Cullen latest news",
         "short_tail": [
-          "Edward Berger Talks Filmmaking",
-          "Edward Berger Talks Filmmaking news",
+          "Tom Cullen",
+          "Tom Cullen news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
@@ -201,110 +364,275 @@
           "entertainment updates"
         ],
         "long_tail": [
-          "Edward Berger Talks Filmmaking latest news October 2026",
-          "Edward Berger Talks Filmmaking entertainment update 2026",
-          "Edward Berger Talks Filmmaking news 2026-10-19",
-          "latest entertainment news about Edward Berger Talks Filmmaking",
-          "edward berger talks filmmaking edward berger latest update",
-          "The Hollywood Reporter Edward Berger Talks Filmmaking entertainment",
-          "latest news about Edward Berger Talks Filmmaking October 2026",
-          "Edward Berger Talks Filmmaking entertainment news 2026-10-19",
-          "what happened with Edward Berger Talks Filmmaking"
+          "Tom Cullen latest news October 2026",
+          "Tom Cullen entertainment update 2026",
+          "Tom Cullen news 2026-10-19",
+          "latest entertainment news about Tom Cullen",
+          "tom cullen tom cullen says does latest update",
+          "BBC Tom Cullen entertainment",
+          "latest news about Tom Cullen October 2026",
+          "Tom Cullen entertainment news 2026-10-19",
+          "what happened with Tom Cullen"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "Edward Berger Talks Filmmaking",
-          "edward",
-          "berger",
-          "talks",
-          "filmmaking"
+          "Tom Cullen",
+          "tom",
+          "cullen",
+          "says",
+          "does",
+          "not",
+          "take"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-19",
-          "Edward Berger Talks Filmmaking 2026"
+          "Tom Cullen 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter Edward Berger Talks Filmmaking",
-          "hollywoodreporter.com Edward Berger Talks Filmmaking",
-          "The Hollywood Reporter entertainment news"
+          "BBC Tom Cullen",
+          "bbc.co.uk Tom Cullen",
+          "BBC entertainment news"
         ],
-        "meta_title": "Edward Berger Talks Filmmaking in a Streaming Age: “The…",
-        "meta_description": "Edward Berger Talks Filmmaking: Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the…",
+        "meta_title": "Tom Cullen says he does not take playing LGBT roles…",
+        "meta_description": "Tom Cullen: Entertainment update reported by BBC on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "Edward Berger Talks Filmmaking latest news",
-          "Edward Berger Talks Filmmaking",
-          "Edward Berger Talks Filmmaking news",
+          "Tom Cullen latest news",
+          "Tom Cullen",
+          "Tom Cullen news",
           "entertainment",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "Edward Berger Talks Filmmaking latest news October 2026",
-          "Edward Berger Talks Filmmaking entertainment update 2026",
-          "Edward Berger Talks Filmmaking news 2026-10-19",
-          "latest entertainment news about Edward Berger Talks Filmmaking",
-          "edward berger talks filmmaking edward berger latest update",
-          "The Hollywood Reporter Edward Berger Talks Filmmaking entertainment",
-          "latest news about Edward Berger Talks Filmmaking October 2026",
-          "Edward Berger Talks Filmmaking entertainment news 2026-10-19",
-          "what happened with Edward Berger Talks Filmmaking",
-          "edward",
-          "berger",
-          "talks",
-          "filmmaking",
+          "Tom Cullen latest news October 2026",
+          "Tom Cullen entertainment update 2026",
+          "Tom Cullen news 2026-10-19",
+          "latest entertainment news about Tom Cullen",
+          "tom cullen tom cullen says does latest update",
+          "BBC Tom Cullen entertainment",
+          "latest news about Tom Cullen October 2026",
+          "Tom Cullen entertainment news 2026-10-19",
+          "what happened with Tom Cullen",
+          "tom",
+          "cullen",
+          "says",
+          "does",
+          "not",
+          "take",
           "October 2026",
           "2026-10-19",
-          "Edward Berger Talks Filmmaking 2026",
-          "The Hollywood Reporter Edward Berger Talks Filmmaking",
-          "hollywoodreporter.com Edward Berger Talks Filmmaking",
-          "The Hollywood Reporter entertainment news"
+          "Tom Cullen 2026",
+          "BBC Tom Cullen",
+          "bbc.co.uk Tom Cullen",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
-      "id": "b1fd16c8",
-      "title": "Exiled critic of Rwandan president found beheaded",
-      "url": "https://www.bbc.co.uk/news/articles/c3lylj78777do?at_medium=RSS&at_campaign=rss",
+      "id": "6a6f260f",
+      "title": "Nathan Fielder Didn’t Want to Be on Camera Until Elizabeth Holmes, Billy Evans Changed His Mind",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/nathan-fielder-elizabeth-holmes-you-can-see-everything-1236735363/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-19T17:00:10.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Nathan Fielder Didn’t Want",
+      "description": "Nathan Fielder Didn’t Want: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Nathan-Fielder.png?crop=0px%2C6px%2C2986px%2C1671px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/nathan-fielder-didn-t-want-to-be-on-camera-until-elizabeth-holmes-billy-evans-ch-6a6f26/",
+      "landing_url": "https://matchapp.tv/?news=6a6f260f#latest-news",
+      "seo": {
+        "primary_keyword": "Nathan Fielder Didn’t Want latest news",
+        "short_tail": [
+          "Nathan Fielder Didn’t Want",
+          "Nathan Fielder Didn’t Want news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Nathan Fielder Didn’t Want latest news October 2026",
+          "Nathan Fielder Didn’t Want entertainment update 2026",
+          "Nathan Fielder Didn’t Want news 2026-10-19",
+          "latest entertainment news about Nathan Fielder Didn’t Want",
+          "nathan fielder didn want nathan fielder latest update",
+          "The Hollywood Reporter Nathan Fielder Didn’t Want entertainment",
+          "latest news about Nathan Fielder Didn’t Want October 2026",
+          "Nathan Fielder Didn’t Want entertainment news 2026-10-19",
+          "what happened with Nathan Fielder Didn’t Want"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Nathan Fielder Didn’t Want",
+          "nathan",
+          "fielder",
+          "didn",
+          "want"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "Nathan Fielder Didn’t Want 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Nathan Fielder Didn’t Want",
+          "hollywoodreporter.com Nathan Fielder Didn’t Want",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Nathan Fielder Didn’t Want to Be on Camera Until Elizabeth…",
+        "meta_description": "Nathan Fielder Didn’t Want: Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original…",
+        "keywords": [
+          "Nathan Fielder Didn’t Want latest news",
+          "Nathan Fielder Didn’t Want",
+          "Nathan Fielder Didn’t Want news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Nathan Fielder Didn’t Want latest news October 2026",
+          "Nathan Fielder Didn’t Want entertainment update 2026",
+          "Nathan Fielder Didn’t Want news 2026-10-19",
+          "latest entertainment news about Nathan Fielder Didn’t Want",
+          "nathan fielder didn want nathan fielder latest update",
+          "The Hollywood Reporter Nathan Fielder Didn’t Want entertainment",
+          "latest news about Nathan Fielder Didn’t Want October 2026",
+          "Nathan Fielder Didn’t Want entertainment news 2026-10-19",
+          "what happened with Nathan Fielder Didn’t Want",
+          "nathan",
+          "fielder",
+          "didn",
+          "want",
+          "October 2026",
+          "2026-10-19",
+          "Nathan Fielder Didn’t Want 2026",
+          "The Hollywood Reporter Nathan Fielder Didn’t Want",
+          "hollywoodreporter.com Nathan Fielder Didn’t Want",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "3536f117",
+      "title": "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO mostra janelas explodindo",
+      "url": "https://g1.globo.com/mundo/ucrania-russia/noticia/2026/10/19/ataque-russo-atinge-predio-residencial-na-ucrania-video-mostra-janelas-explodindo.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T16:58:55.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/3sNrQ7HNrONaEn5Uto7_SQdKMEU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/0/yf8RwASBm8FaUeP9lWSg/novo-projeto-1-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ataque-russo-atinge-predio-residencial-na-ucrania-video-mostra-janelas-explodind-3536f1/",
+      "landing_url": "https://matchapp.tv/?news=3536f117#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "ataque",
+          "russo",
+          "atinge",
+          "predio",
+          "residencial",
+          "ucrania"
+        ],
+        "long_tail": [
+          "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO mostra janelas explodindo 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ataque",
+          "russo",
+          "atinge",
+          "predio",
+          "residencial",
+          "ucrania"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "ataque",
+          "russo",
+          "atinge",
+          "predio",
+          "residencial",
+          "ucrania",
+          "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO mostra janelas explodindo 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "f0874e30",
+      "title": "Warning signs over threats to Australian politicians were rising before MP hit by car",
+      "url": "https://www.bbc.co.uk/news/articles/cq398rk4p3exo?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-10-19T13:42:41.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
+      "published_at": "2026-10-19T16:32:47.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
       "event_type": "Entertainment",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6002/live/ca68a640-cbae-11f1-821f-c5d07d801cca.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/exiled-critic-of-rwandan-president-found-beheaded-b1fd16/",
-      "landing_url": "https://matchapp.tv/?news=b1fd16c8#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5abf/live/997b5110-cbde-11f1-b139-f77a8b036d06.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/warning-signs-over-threats-to-australian-politicians-were-rising-before-mp-hit-b-f0874e/",
+      "landing_url": "https://matchapp.tv/?news=f0874e30#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-19",
         "short_tail": [
           "world news",
           "global headlines",
-          "exiled",
-          "critic",
-          "rwandan",
-          "president",
-          "found",
-          "beheaded"
+          "warning",
+          "signs",
+          "over",
+          "threats",
+          "australian",
+          "politicians"
         ],
         "long_tail": [
-          "Exiled critic of Rwandan president found beheaded 2026-10-19",
+          "Warning signs over threats to Australian politicians were rising before MP hit by car 2026-10-19",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "exiled",
-          "critic",
-          "rwandan",
-          "president",
-          "found",
-          "beheaded"
+          "warning",
+          "signs",
+          "over",
+          "threats",
+          "australian",
+          "politicians"
         ],
         "freshness_keywords": [
           "2026-10-19"
@@ -312,29 +640,1074 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Exiled critic of Rwandan president found beheaded | World…",
+        "meta_title": "Warning signs over threats to Australian politicians were…",
         "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-19",
           "world news",
           "global headlines",
-          "exiled",
-          "critic",
-          "rwandan",
-          "president",
-          "found",
-          "beheaded",
-          "Exiled critic of Rwandan president found beheaded 2026-10-19",
+          "warning",
+          "signs",
+          "over",
+          "threats",
+          "australian",
+          "politicians",
+          "Warning signs over threats to Australian politicians were rising before MP hit by car 2026-10-19",
           "world news October 2026",
           "2026-10-19",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "e2dda64b",
+      "title": "Papa pede que Zelensky coopere com Putin para garantir ajuda a cidade ucraniana sob controle russo",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/papa-fala-ao-telefone-com-zelensky.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T16:26:51.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0CIyvri3H7JHyAOy6tSv15B5U_0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/M/m/Rsc3xXTfuYAA3IDc9IXA/2026-10-18t102902z-1761409032-rc2m5oanj7do-rtrmadp-3-pope-health-prayer.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/papa-pede-que-zelensky-coopere-com-putin-para-garantir-ajuda-a-cidade-ucraniana--e2dda6/",
+      "landing_url": "https://matchapp.tv/?news=e2dda64b#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "pede",
+          "que",
+          "zelensky",
+          "coopere",
+          "putin"
+        ],
+        "long_tail": [
+          "Papa pede que Zelensky coopere com Putin para garantir ajuda a cidade ucraniana sob controle russo 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "papa",
+          "pede",
+          "que",
+          "zelensky",
+          "coopere",
+          "putin"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Papa pede que Zelensky coopere com Putin para garantir…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "papa",
+          "pede",
+          "que",
+          "zelensky",
+          "coopere",
+          "putin",
+          "Papa pede que Zelensky coopere com Putin para garantir ajuda a cidade ucraniana sob controle russo 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "733cc190",
+      "title": "Ex-OpenAI worker accused of planting device had Saudi support says court filing",
+      "url": "https://www.bbc.co.uk/news/articles/c6gel2dlyxvyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T16:22:12.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ad18/live/95af9980-cbd2-11f1-aba9-2bb2608f11d9.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/ex-openai-worker-accused-of-planting-device-had-saudi-support-says-court-filing-733cc1/",
+      "landing_url": "https://matchapp.tv/?news=733cc190#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "openai",
+          "worker",
+          "accused",
+          "planting",
+          "device",
+          "had"
+        ],
+        "long_tail": [
+          "Ex-OpenAI worker accused of planting device had Saudi support says court filing 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "openai",
+          "worker",
+          "accused",
+          "planting",
+          "device",
+          "had"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Ex-OpenAI worker accused of planting device had Saudi…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "openai",
+          "worker",
+          "accused",
+          "planting",
+          "device",
+          "had",
+          "Ex-OpenAI worker accused of planting device had Saudi support says court filing 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "92108772",
+      "title": "Houthi missile strike on Yemen camp kills 50 security recruits, local authorities say",
+      "url": "https://www.bbc.co.uk/news/articles/cv0ld6lrr2zeo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T16:20:51.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9320/live/759508d0-cbd5-11f1-aba9-2bb2608f11d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/houthi-missile-strike-on-yemen-camp-kills-50-security-recruits-local-authorities-921087/",
+      "landing_url": "https://matchapp.tv/?news=92108772#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "houthi",
+          "missile",
+          "strike",
+          "yemen",
+          "camp",
+          "kills"
+        ],
+        "long_tail": [
+          "Houthi missile strike on Yemen camp kills 50 security recruits, local authorities say 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "houthi",
+          "missile",
+          "strike",
+          "yemen",
+          "camp",
+          "kills"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Houthi missile strike on Yemen camp kills 50 security…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "houthi",
+          "missile",
+          "strike",
+          "yemen",
+          "camp",
+          "kills",
+          "Houthi missile strike on Yemen camp kills 50 security recruits, local authorities say 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "5f41c822",
+      "title": "Suprema Corte dos Estados Unidos rejeita recurso de mentor dos atentados de 11/9",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/suprema-corte-dos-estados-unidos-rejeita-recurso-de-suposto-mentor-dos-atentados-de-119.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T16:17:29.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Suprema Corte",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/b-NAusf1O2oBfgpwjBEC3tpi_Ug=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/1/h0kAhwQGS03BQhOBQfhQ/ap26239030442296.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/suprema-corte-dos-estados-unidos-rejeita-recurso-de-mentor-dos-atentados-de-11-9-5f41c8/",
+      "landing_url": "https://matchapp.tv/?news=5f41c822#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "suprema",
+          "corte",
+          "estados",
+          "unidos",
+          "rejeita",
+          "recurso"
+        ],
+        "long_tail": [
+          "Suprema Corte dos Estados Unidos rejeita recurso de mentor dos atentados de 11/9 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "suprema",
+          "corte",
+          "estados",
+          "unidos",
+          "rejeita",
+          "recurso"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Suprema Corte dos Estados Unidos rejeita recurso de mentor…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "suprema",
+          "corte",
+          "estados",
+          "unidos",
+          "rejeita",
+          "recurso",
+          "Suprema Corte dos Estados Unidos rejeita recurso de mentor dos atentados de 11/9 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "c0bd71ac",
+      "title": "Obama blasts federal probe of congresswoman Ilhan Omar as 'so appalling'",
+      "url": "https://www.bbc.co.uk/news/articles/cr15jl7dd42vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T16:16:51.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5592/live/e0f10480-cb2b-11f1-97d2-23d8daaba2e1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/obama-blasts-federal-probe-of-congresswoman-ilhan-omar-as-so-appalling-c0bd71/",
+      "landing_url": "https://matchapp.tv/?news=c0bd71ac#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "obama",
+          "blasts",
+          "federal",
+          "probe",
+          "congresswoman",
+          "ilhan"
+        ],
+        "long_tail": [
+          "Obama blasts federal probe of congresswoman Ilhan Omar as 'so appalling' 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "obama",
+          "blasts",
+          "federal",
+          "probe",
+          "congresswoman",
+          "ilhan"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Obama blasts federal probe of congresswoman Ilhan Omar as…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "obama",
+          "blasts",
+          "federal",
+          "probe",
+          "congresswoman",
+          "ilhan",
+          "Obama blasts federal probe of congresswoman Ilhan Omar as 'so appalling' 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "3de76569",
+      "title": "Capybara pups at Manx zoo draw record crowds",
+      "url": "https://www.bbc.co.uk/news/articles/cw7vplvjd3elo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T16:12:09.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7b36/live/c3ff4750-cbcc-11f1-aba9-2bb2608f11d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/capybara-pups-at-manx-zoo-draw-record-crowds-3de765/",
+      "landing_url": "https://matchapp.tv/?news=3de76569#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "capybara",
+          "pups",
+          "manx",
+          "zoo",
+          "draw",
+          "record"
+        ],
+        "long_tail": [
+          "Capybara pups at Manx zoo draw record crowds 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "capybara",
+          "pups",
+          "manx",
+          "zoo",
+          "draw",
+          "record"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Capybara pups at Manx zoo draw record crowds | World News…",
+        "meta_description": "World report published by BBC Science on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "capybara",
+          "pups",
+          "manx",
+          "zoo",
+          "draw",
+          "record",
+          "Capybara pups at Manx zoo draw record crowds 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "303cb7d2",
+      "title": "Paris e outrs cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/cidades-na-franca-decretam-toque-de-recolher.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T16:09:45.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/Xgu7Pnr8lSHQMPNAMuGe72QyXhc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/I/P/eeaRYXQjyjDJfA5ceC0A/2026-10-19t084121z-1040104409-rc286oamsqhy-rtrmadp-3-france-protest.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/paris-e-outrs-cidades-na-franca-decretam-toque-de-recolher-em-meio-a-onda-de-pro-303cb7/",
+      "landing_url": "https://matchapp.tv/?news=303cb7d2#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "paris",
+          "outrs",
+          "cidades",
+          "franca",
+          "decretam",
+          "toque"
+        ],
+        "long_tail": [
+          "Paris e outrs cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "paris",
+          "outrs",
+          "cidades",
+          "franca",
+          "decretam",
+          "toque"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Paris e outrs cidades na França decretam toque de recolher…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "paris",
+          "outrs",
+          "cidades",
+          "franca",
+          "decretam",
+          "toque",
+          "Paris e outrs cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "8866b93d",
+      "title": "Justiça dos EUA emite ordem de prisão a Raúl Castro, diz procurador-geral da Flórida",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/justica-dos-eua-emitem-ordem-de-prisao-a-raul-castro.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T15:47:58.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/K0mg_U9DKDPln8LZ8EsXaMx-y2s=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/E/nf1uAbQs6aJwVL82HPzQ/2026-05-15t003856z-1065884124-rc2y8eaujeci-rtrmadp-3-usa-cuba-indictment-castro.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/justica-dos-eua-emite-ordem-de-prisao-a-raul-castro-diz-procurador-geral-da-flor-8866b9/",
+      "landing_url": "https://matchapp.tv/?news=8866b93d#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "justica",
+          "eua",
+          "emite",
+          "ordem",
+          "prisao",
+          "raul"
+        ],
+        "long_tail": [
+          "Justiça dos EUA emite ordem de prisão a Raúl Castro, diz procurador-geral da Flórida 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "justica",
+          "eua",
+          "emite",
+          "ordem",
+          "prisao",
+          "raul"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Justiça dos EUA emite ordem de prisão a Raúl Castro, diz…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "justica",
+          "eua",
+          "emite",
+          "ordem",
+          "prisao",
+          "raul",
+          "Justiça dos EUA emite ordem de prisão a Raúl Castro, diz procurador-geral da Flórida 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "9a74f366",
+      "title": "‘Carrie’ Star Alison Thornton Knows Exactly How You Feel About Her Polarizing Character",
+      "url": "https://www.hollywoodreporter.com/tv/tv-features/carrie-alison-thornton-chris-character-christine-theory-1236728300/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-19T15:45:00.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Alison-Thornton-7-High-Res-H-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/carrie-star-alison-thornton-knows-exactly-how-you-feel-about-her-polarizing-char-9a74f3/",
+      "landing_url": "https://matchapp.tv/?news=9a74f366#latest-news",
+      "seo": {
+        "primary_keyword": "carrie star alison thornton latest news",
+        "short_tail": [
+          "carrie star alison thornton",
+          "carrie star alison thornton news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "carrie star alison thornton latest news October 2026",
+          "carrie star alison thornton entertainment update 2026",
+          "carrie star alison thornton news 2026-10-19",
+          "latest entertainment news about carrie star alison thornton",
+          "carrie star alison thornton knows exactly latest update",
+          "The Hollywood Reporter carrie star alison thornton entertainment",
+          "latest news about carrie star alison thornton October 2026",
+          "carrie star alison thornton entertainment news 2026-10-19",
+          "what happened with carrie star alison thornton"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "carrie",
+          "star",
+          "alison",
+          "thornton",
+          "knows",
+          "exactly",
+          "how",
+          "you"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "carrie star alison thornton 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter carrie star alison thornton",
+          "hollywoodreporter.com carrie star alison thornton",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Carrie’ Star Alison Thornton Knows Exactly How You Feel…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "carrie star alison thornton latest news",
+          "carrie star alison thornton",
+          "carrie star alison thornton news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "carrie star alison thornton latest news October 2026",
+          "carrie star alison thornton entertainment update 2026",
+          "carrie star alison thornton news 2026-10-19",
+          "latest entertainment news about carrie star alison thornton",
+          "carrie star alison thornton knows exactly latest update",
+          "The Hollywood Reporter carrie star alison thornton entertainment",
+          "latest news about carrie star alison thornton October 2026",
+          "carrie star alison thornton entertainment news 2026-10-19",
+          "what happened with carrie star alison thornton",
+          "carrie",
+          "star",
+          "alison",
+          "thornton",
+          "knows",
+          "exactly",
+          "how",
+          "you",
+          "October 2026",
+          "2026-10-19",
+          "carrie star alison thornton 2026",
+          "The Hollywood Reporter carrie star alison thornton",
+          "hollywoodreporter.com carrie star alison thornton",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "383eea94",
+      "title": "Polícia de Israel prende 10 suspeitos por ataques a jornalista e diplomatas na Cisjordânia",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/policia-israelense-prende-suspeitos-de-ataques-de-colonos-contra-jornalista-dos-eua-e-diplomatas-europeus.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T15:40:09.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/B8BSFqqpmweWqOKN5hR6JJ5-Dl8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/Z/JKhcAJSByE83sk1U9YnA/2026-10-16t081107z-1747813151-rc264oapaxjg-rtrmadp-3-israel-palestinians-settlers-attack.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/policia-de-israel-prende-10-suspeitos-por-ataques-a-jornalista-e-diplomatas-na-c-383eea/",
+      "landing_url": "https://matchapp.tv/?news=383eea94#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "policia",
+          "israel",
+          "prende",
+          "suspeitos",
+          "ataques",
+          "jornalista"
+        ],
+        "long_tail": [
+          "Polícia de Israel prende 10 suspeitos por ataques a jornalista e diplomatas na Cisjordânia 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "policia",
+          "israel",
+          "prende",
+          "suspeitos",
+          "ataques",
+          "jornalista"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Polícia de Israel prende 10 suspeitos por ataques a…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "policia",
+          "israel",
+          "prende",
+          "suspeitos",
+          "ataques",
+          "jornalista",
+          "Polícia de Israel prende 10 suspeitos por ataques a jornalista e diplomatas na Cisjordânia 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "b86fc79d",
+      "title": "Netflix Film Head Dan Lin Out",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/netflix-film-head-dan-lin-out-1236733802/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-19T15:38:33.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Netflix Film Head Dan",
+      "description": "Netflix Film Head Dan: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/06/GettyImages-2247714986-e1780697512161.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/netflix-film-head-dan-lin-out-b86fc7/",
+      "landing_url": "https://matchapp.tv/?news=b86fc79d#latest-news",
+      "seo": {
+        "primary_keyword": "Netflix Film Head Dan latest news",
+        "short_tail": [
+          "Netflix Film Head Dan",
+          "Netflix Film Head Dan news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Netflix Film Head Dan latest news October 2026",
+          "Netflix Film Head Dan entertainment update 2026",
+          "Netflix Film Head Dan news 2026-10-19",
+          "latest entertainment news about Netflix Film Head Dan",
+          "netflix film head dan netflix film latest update",
+          "The Hollywood Reporter Netflix Film Head Dan entertainment",
+          "latest news about Netflix Film Head Dan October 2026",
+          "Netflix Film Head Dan entertainment news 2026-10-19",
+          "what happened with Netflix Film Head Dan"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Netflix Film Head Dan",
+          "netflix",
+          "film",
+          "head",
+          "dan"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "Netflix Film Head Dan 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Netflix Film Head Dan",
+          "hollywoodreporter.com Netflix Film Head Dan",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Netflix Film Head Dan Lin Out | Entertainment News |…",
+        "meta_description": "Netflix Film Head Dan: Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source…",
+        "keywords": [
+          "Netflix Film Head Dan latest news",
+          "Netflix Film Head Dan",
+          "Netflix Film Head Dan news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Netflix Film Head Dan latest news October 2026",
+          "Netflix Film Head Dan entertainment update 2026",
+          "Netflix Film Head Dan news 2026-10-19",
+          "latest entertainment news about Netflix Film Head Dan",
+          "netflix film head dan netflix film latest update",
+          "The Hollywood Reporter Netflix Film Head Dan entertainment",
+          "latest news about Netflix Film Head Dan October 2026",
+          "Netflix Film Head Dan entertainment news 2026-10-19",
+          "what happened with Netflix Film Head Dan",
+          "netflix",
+          "film",
+          "head",
+          "dan",
+          "October 2026",
+          "2026-10-19",
+          "Netflix Film Head Dan 2026",
+          "The Hollywood Reporter Netflix Film Head Dan",
+          "hollywoodreporter.com Netflix Film Head Dan",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "c4b974bc",
+      "title": "In pictures: French landmarks damaged and destroyed by violent protesters",
+      "url": "https://www.bbc.co.uk/news/articles/cmq8n7l0le11o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T15:21:03.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9ff6/live/21dbaa40-cbd6-11f1-9a39-31b474234113.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/in-pictures-french-landmarks-damaged-and-destroyed-by-violent-protesters-c4b974/",
+      "landing_url": "https://matchapp.tv/?news=c4b974bc#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "pictures",
+          "french",
+          "landmarks",
+          "damaged",
+          "destroyed",
+          "violent"
+        ],
+        "long_tail": [
+          "In pictures: French landmarks damaged and destroyed by violent protesters 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "pictures",
+          "french",
+          "landmarks",
+          "damaged",
+          "destroyed",
+          "violent"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "In pictures: French landmarks damaged and destroyed by…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "pictures",
+          "french",
+          "landmarks",
+          "damaged",
+          "destroyed",
+          "violent",
+          "In pictures: French landmarks damaged and destroyed by violent protesters 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "16c8972f",
+      "title": "Freud confirms Beatles' songs to star in musical",
+      "url": "https://www.bbc.co.uk/news/articles/c5rmy4yxj8p3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-19T15:17:15.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "",
+      "description": "casting headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/03c6/live/88ca40d0-cbc8-11f1-aba9-2bb2608f11d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/freud-confirms-beatles-songs-to-star-in-musical-16c897/",
+      "landing_url": "https://matchapp.tv/?news=16c8972f#latest-news",
+      "seo": {
+        "primary_keyword": "freud confirms beatles songs latest news",
+        "short_tail": [
+          "freud confirms beatles songs",
+          "freud confirms beatles songs news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "freud confirms beatles songs latest news October 2026",
+          "freud confirms beatles songs casting update 2026",
+          "freud confirms beatles songs news 2026-10-19",
+          "latest casting news about freud confirms beatles songs",
+          "freud confirms beatles songs star musical latest update",
+          "BBC freud confirms beatles songs casting",
+          "latest news about freud confirms beatles songs October 2026",
+          "freud confirms beatles songs entertainment news 2026-10-19",
+          "what happened with freud confirms beatles songs"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "freud",
+          "confirms",
+          "beatles",
+          "songs",
+          "star",
+          "musical"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "freud confirms beatles songs 2026"
+        ],
+        "source_keywords": [
+          "BBC freud confirms beatles songs",
+          "bbc.co.uk freud confirms beatles songs",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Freud confirms Beatles' songs to star in musical |…",
+        "meta_description": "Casting update reported by BBC on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "freud confirms beatles songs latest news",
+          "freud confirms beatles songs",
+          "freud confirms beatles songs news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "freud confirms beatles songs latest news October 2026",
+          "freud confirms beatles songs casting update 2026",
+          "freud confirms beatles songs news 2026-10-19",
+          "latest casting news about freud confirms beatles songs",
+          "freud confirms beatles songs star musical latest update",
+          "BBC freud confirms beatles songs casting",
+          "latest news about freud confirms beatles songs October 2026",
+          "freud confirms beatles songs entertainment news 2026-10-19",
+          "what happened with freud confirms beatles songs",
+          "freud",
+          "confirms",
+          "beatles",
+          "songs",
+          "star",
+          "musical",
+          "October 2026",
+          "2026-10-19",
+          "freud confirms beatles songs 2026",
+          "BBC freud confirms beatles songs",
+          "bbc.co.uk freud confirms beatles songs",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
+      }
+    },
+    {
+      "id": "4e76560a",
+      "title": "US airman dies as daredevil descent goes wrong before Texas college football game",
+      "url": "https://www.bbc.co.uk/news/articles/crd6dn63j2xwo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T14:13:18.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7d94/live/b7ee0580-cbd8-11f1-b139-f77a8b036d06.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-airman-dies-as-daredevil-descent-goes-wrong-before-texas-college-football-gam-4e7656/",
+      "landing_url": "https://matchapp.tv/?news=4e76560a#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "airman",
+          "dies",
+          "daredevil",
+          "descent",
+          "goes",
+          "wrong"
+        ],
+        "long_tail": [
+          "US airman dies as daredevil descent goes wrong before Texas college football game 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "airman",
+          "dies",
+          "daredevil",
+          "descent",
+          "goes",
+          "wrong"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "US airman dies as daredevil descent goes wrong before…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "airman",
+          "dies",
+          "daredevil",
+          "descent",
+          "goes",
+          "wrong",
+          "US airman dies as daredevil descent goes wrong before Texas college football game 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
       "id": "b2a1caa4",
-      "title": "VÍDEO mostra 'batalha' entre polícia e manifestantes na principal praça de Milão",
+      "title": "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/19/video-mostra-batalha-entre-policia-e-manifestantes-na-principal-praca-de-milao.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -363,7 +1736,7 @@
           "manifestantes"
         ],
         "long_tail": [
-          "VÍDEO mostra 'batalha' entre polícia e manifestantes na principal praça de Milão 2026-10-19",
+          "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão 2026-10-19",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
@@ -381,7 +1754,7 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "VÍDEO mostra 'batalha' entre polícia e manifestantes na…",
+        "meta_title": "VÍDEO mostra batalha entre polícia e manifestantes na…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-19",
@@ -393,81 +1766,12 @@
           "entre",
           "policia",
           "manifestantes",
-          "VÍDEO mostra 'batalha' entre polícia e manifestantes na principal praça de Milão 2026-10-19",
+          "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão 2026-10-19",
           "notícias mundiais outubro 2026",
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "071aeb40",
-      "title": "Volunteers help save one of London's rarest plants",
-      "url": "https://www.bbc.co.uk/news/articles/c8ly070p37d4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T13:22:05.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fc44/live/b59f9bc0-cba3-11f1-9ee2-f74dfb8e54e5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/volunteers-help-save-one-of-london-s-rarest-plants-071aeb/",
-      "landing_url": "https://matchapp.tv/?news=071aeb40#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "volunteers",
-          "help",
-          "save",
-          "one",
-          "london",
-          "rarest"
-        ],
-        "long_tail": [
-          "Volunteers help save one of London's rarest plants 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "volunteers",
-          "help",
-          "save",
-          "one",
-          "london",
-          "rarest"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Volunteers help save one of London's rarest plants | World…",
-        "meta_description": "World report published by BBC Science on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "volunteers",
-          "help",
-          "save",
-          "one",
-          "london",
-          "rarest",
-          "Volunteers help save one of London's rarest plants 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -565,720 +1869,103 @@
           "g1.globo.com Zélia Duncan",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
-      "id": "ec59e949",
-      "title": "VÍDEO: câmeras registram invasão e saque de loja em Nice por manifestantes",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/video-cameras-registram-invasao-e-saque-de-loja-em-nice-por-manifestantes.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T13:14:24.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/SvJOBOUAR58qM4UmcRfPPBUPfjQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/G/v/tBoYqjQOuF1ZiH7y9PZA/saque.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/video-cameras-registram-invasao-e-saque-de-loja-em-nice-por-manifestantes-ec59e9/",
-      "landing_url": "https://matchapp.tv/?news=ec59e949#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "cameras",
-          "registram",
-          "invasao",
-          "saque",
-          "loja"
-        ],
-        "long_tail": [
-          "VÍDEO: câmeras registram invasão e saque de loja em Nice por manifestantes 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "video",
-          "cameras",
-          "registram",
-          "invasao",
-          "saque",
-          "loja"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "VÍDEO: câmeras registram invasão e saque de loja em Nice…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "cameras",
-          "registram",
-          "invasao",
-          "saque",
-          "loja",
-          "VÍDEO: câmeras registram invasão e saque de loja em Nice por manifestantes 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "758ad43d",
-      "title": "Uber wins bid to throw out £200m black cab claims",
-      "url": "https://www.bbc.co.uk/news/articles/cv5ynp1j45x2o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
+      "id": "8f6de731",
+      "title": "Kylie Jenner's debut at Victoria's Secret Fashion Show in $50m bra sparks mixed reaction",
+      "url": "https://www.bbc.co.uk/news/articles/cmx2wqwxvyxlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
+      "country": "GB",
       "language": "en",
-      "published_at": "2026-10-19T12:58:39.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Awards",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/55c0/live/e258cdd0-0819-11ef-8205-3fa833ece17b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/uber-wins-bid-to-throw-out-200m-black-cab-claims-758ad4/",
-      "landing_url": "https://matchapp.tv/?news=758ad43d#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "uber",
-          "wins",
-          "bid",
-          "throw",
-          "out",
-          "200m"
-        ],
-        "long_tail": [
-          "Uber wins bid to throw out £200m black cab claims 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "uber",
-          "wins",
-          "bid",
-          "throw",
-          "out",
-          "200m"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "Uber wins bid to throw out £200m black cab claims | World…",
-        "meta_description": "World report published by BBC Technology on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "uber",
-          "wins",
-          "bid",
-          "throw",
-          "out",
-          "200m",
-          "Uber wins bid to throw out £200m black cab claims 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "63f0d03b",
-      "title": "VÍDEO: Casal bebe e conversa em bar em meio a atos violentos em Paris",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/video-casal-bebe-e-conversa-em-bar-em-meio-a-atos-violentos-em-paris.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T12:57:30.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/2R_WbSw4kIbiGlfvsl9D3iuHVA0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/5/W8BXksRP2WQRq8dCA96A/2026-10-19t064535z-866165662-rc2u5oar66q8-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/video-casal-bebe-e-conversa-em-bar-em-meio-a-atos-violentos-em-paris-63f0d0/",
-      "landing_url": "https://matchapp.tv/?news=63f0d03b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "casal",
-          "bebe",
-          "conversa",
-          "bar",
-          "meio"
-        ],
-        "long_tail": [
-          "VÍDEO: Casal bebe e conversa em bar em meio a atos violentos em Paris 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "video",
-          "casal",
-          "bebe",
-          "conversa",
-          "bar",
-          "meio"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "VÍDEO: Casal bebe e conversa em bar em meio a atos…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "casal",
-          "bebe",
-          "conversa",
-          "bar",
-          "meio",
-          "VÍDEO: Casal bebe e conversa em bar em meio a atos violentos em Paris 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "d9395629",
-      "title": "China cresce 4,5% com exportações em alta, mas crise imobiliária ameaça ritmo",
-      "url": "https://g1.globo.com/economia/noticia/2026/10/19/china-cresce-45percent-com-exportacoes-em-alta-mas-crise-imobiliaria-ameaca-ritmo.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T12:36:43.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/slhm31vyeUNy8w7AISV_7AH8lNs=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/o/n/DsBMeqSAGvGJm5BGbTGQ/2022-08-12t191016z-1-lynxmpei7b0us-rtroptp-4-hongkong-anniversary.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/china-cresce-4-5-com-exportacoes-em-alta-mas-crise-imobiliaria-ameaca-ritmo-d93956/",
-      "landing_url": "https://matchapp.tv/?news=d9395629#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "china",
-          "cresce",
-          "exportacoes",
-          "alta",
-          "mas",
-          "crise"
-        ],
-        "long_tail": [
-          "China cresce 4,5% com exportações em alta, mas crise imobiliária ameaça ritmo 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "china",
-          "cresce",
-          "exportacoes",
-          "alta",
-          "mas",
-          "crise"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "China cresce 4,5% com exportações em alta, mas crise…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "china",
-          "cresce",
-          "exportacoes",
-          "alta",
-          "mas",
-          "crise",
-          "China cresce 4,5% com exportações em alta, mas crise imobiliária ameaça ritmo 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "b5fa8b56",
-      "title": "Caos nas ruas da França amplia desgaste de Macron e pode beneficiar extrema direita",
-      "url": "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/10/19/violencia-nas-ruas-amplia-o-desgaste-de-macron-e-acirra-disputa-pelo-eliseu.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T12:19:26.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/lBLI3BAuv48fwnWXoDRECIjkfgc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/6/B/nzcxx5TQKN7eAwTmpYsQ/58f47718-ccaf-4e43-9611-3dc03b875359-redimensionado-para-1200x675.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/caos-nas-ruas-da-franca-amplia-desgaste-de-macron-e-pode-beneficiar-extrema-dire-b5fa8b/",
-      "landing_url": "https://matchapp.tv/?news=b5fa8b56#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "caos",
-          "ruas",
-          "franca",
-          "amplia",
-          "desgaste",
-          "macron"
-        ],
-        "long_tail": [
-          "Caos nas ruas da França amplia desgaste de Macron e pode beneficiar extrema direita 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "caos",
-          "ruas",
-          "franca",
-          "amplia",
-          "desgaste",
-          "macron"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Caos nas ruas da França amplia desgaste de Macron e pode…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "caos",
-          "ruas",
-          "franca",
-          "amplia",
-          "desgaste",
-          "macron",
-          "Caos nas ruas da França amplia desgaste de Macron e pode beneficiar extrema direita 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "fdb51c57",
-      "title": "Protestos na França: VÍDEOS mostram lojistas desesperados tentando impedir saques",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/protestos-na-franca-videos-mostram-saques-em-lojas-e-desespero-de-comerciantes.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T12:12:40.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/5qW4aVzyp83PT3L7Lt4TDcQvHCE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/K/veXXbJTYOY14ioltvb0Q/lojas.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-videos-mostram-lojistas-desesperados-tentando-impedir-saques-fdb51c/",
-      "landing_url": "https://matchapp.tv/?news=fdb51c57#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "videos",
-          "mostram",
-          "lojistas",
-          "desesperados"
-        ],
-        "long_tail": [
-          "Protestos na França: VÍDEOS mostram lojistas desesperados tentando impedir saques 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "protestos",
-          "franca",
-          "videos",
-          "mostram",
-          "lojistas",
-          "desesperados"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Protestos na França: VÍDEOS mostram lojistas desesperados…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "videos",
-          "mostram",
-          "lojistas",
-          "desesperados",
-          "Protestos na França: VÍDEOS mostram lojistas desesperados tentando impedir saques 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "82c6b47d",
-      "title": "Lojas são saqueadas durante protestos em Milão; polícia italiana detém quase 300 pessoas",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/policia-italiana-detem-centenas-apos-lojas-serem-saqueadas-durante-protestos-em-milao.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T12:04:03.000Z",
-      "discovered_at": "2026-10-19T12:12:05.254Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/srJH5oDDIpjEkdZLf4LjPycJTZ0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/z/X7s1IkRBKiSAZBC7ZR1g/2026-10-19t113605z-493582971-rc286oa0r7e4-rtrmadp-3-italy-protest-aftermath.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/lojas-sao-saqueadas-durante-protestos-em-milao-policia-italiana-detem-quase-300--82c6b4/",
-      "landing_url": "https://matchapp.tv/?news=82c6b47d#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "lojas",
-          "sao",
-          "saqueadas",
-          "durante",
-          "protestos",
-          "milao"
-        ],
-        "long_tail": [
-          "Lojas são saqueadas durante protestos em Milão; polícia italiana detém quase 300 pessoas 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "lojas",
-          "sao",
-          "saqueadas",
-          "durante",
-          "protestos",
-          "milao"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Lojas são saqueadas durante protestos em Milão; polícia…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "lojas",
-          "sao",
-          "saqueadas",
-          "durante",
-          "protestos",
-          "milao",
-          "Lojas são saqueadas durante protestos em Milão; polícia italiana detém quase 300 pessoas 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "b3c5e879",
-      "title": "Personal attacks fire up debate before Brazil's run-off vote",
-      "url": "https://www.bbc.co.uk/news/articles/ck98zlzyqle3o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T11:41:24.000Z",
-      "discovered_at": "2026-10-19T12:12:05.254Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/389a/live/fbd9f9b0-cb98-11f1-93a7-b36f3083f4d3.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/personal-attacks-fire-up-debate-before-brazil-s-run-off-vote-b3c5e8/",
-      "landing_url": "https://matchapp.tv/?news=b3c5e879#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "personal",
-          "attacks",
-          "fire",
-          "debate",
-          "before",
-          "brazil"
-        ],
-        "long_tail": [
-          "Personal attacks fire up debate before Brazil's run-off vote 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "personal",
-          "attacks",
-          "fire",
-          "debate",
-          "before",
-          "brazil"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Personal attacks fire up debate before Brazil's run-off…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "personal",
-          "attacks",
-          "fire",
-          "debate",
-          "before",
-          "brazil",
-          "Personal attacks fire up debate before Brazil's run-off vote 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "cbaa633b",
-      "title": "BBC Says James Acaster Complaint Over “Macho Banter” on ‘Celebrity Traitors’ Is “Categorically Untrue”",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/bbc-james-acaster-romesh-rob-celebrity-traitors-complaint-1236735199/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T11:29:26.000Z",
-      "discovered_at": "2026-10-19T12:12:05.254Z",
-      "event_type": "Entertainment",
+      "published_at": "2026-10-19T13:16:22.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Music",
       "category": "entertainment",
-      "person": "BBC Says James Acaster",
-      "description": "BBC Says James Acaster: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-19T115330.241.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/bbc-says-james-acaster-complaint-over-macho-banter-on-celebrity-traitors-is-cate-cbaa63/",
-      "landing_url": "https://matchapp.tv/?news=cbaa633b#latest-news",
+      "person": "Kylie Jenner's",
+      "description": "Kylie Jenner's: music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/68b5/live/61a0bf00-cbc0-11f1-81ef-39e22b578b80.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/kylie-jenner-s-debut-at-victoria-s-secret-fashion-show-in-50m-bra-sparks-mixed-r-8f6de7/",
+      "landing_url": "https://matchapp.tv/?news=8f6de731#latest-news",
       "seo": {
-        "primary_keyword": "BBC Says James Acaster latest news",
+        "primary_keyword": "Kylie Jenner's latest news",
         "short_tail": [
-          "BBC Says James Acaster",
-          "BBC Says James Acaster news",
-          "entertainment",
+          "Kylie Jenner's",
+          "Kylie Jenner's news",
+          "music",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates"
         ],
         "long_tail": [
-          "BBC Says James Acaster latest news October 2026",
-          "BBC Says James Acaster entertainment update 2026",
-          "BBC Says James Acaster news 2026-10-19",
-          "latest entertainment news about BBC Says James Acaster",
-          "bbc says james acaster bbc says latest update",
-          "The Hollywood Reporter BBC Says James Acaster entertainment",
-          "latest news about BBC Says James Acaster October 2026",
-          "BBC Says James Acaster entertainment news 2026-10-19",
-          "what happened with BBC Says James Acaster"
+          "Kylie Jenner's latest news October 2026",
+          "Kylie Jenner's music update 2026",
+          "Kylie Jenner's news 2026-10-19",
+          "latest music news about Kylie Jenner's",
+          "kylie jenner kylie jenner debut victoria latest update",
+          "BBC Kylie Jenner's music",
+          "latest news about Kylie Jenner's October 2026",
+          "Kylie Jenner's entertainment news 2026-10-19",
+          "what happened with Kylie Jenner's"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "BBC Says James Acaster",
-          "bbc",
-          "says",
-          "james",
-          "acaster"
+          "Kylie Jenner's",
+          "kylie",
+          "jenner",
+          "debut",
+          "victoria",
+          "secret",
+          "fashion"
         ],
         "freshness_keywords": [
           "October 2026",
           "2026-10-19",
-          "BBC Says James Acaster 2026"
+          "Kylie Jenner's 2026"
         ],
         "source_keywords": [
-          "The Hollywood Reporter BBC Says James Acaster",
-          "hollywoodreporter.com BBC Says James Acaster",
-          "The Hollywood Reporter entertainment news"
+          "BBC Kylie Jenner's",
+          "bbc.co.uk Kylie Jenner's",
+          "BBC entertainment news"
         ],
-        "meta_title": "BBC Says James Acaster Complaint Over “Macho Banter” on…",
-        "meta_description": "BBC Says James Acaster: Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original…",
+        "meta_title": "Kylie Jenner's debut at Victoria's Secret Fashion Show in…",
+        "meta_description": "Kylie Jenner's: Music update reported by BBC on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "BBC Says James Acaster latest news",
-          "BBC Says James Acaster",
-          "BBC Says James Acaster news",
-          "entertainment",
+          "Kylie Jenner's latest news",
+          "Kylie Jenner's",
+          "Kylie Jenner's news",
+          "music",
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
           "entertainment updates",
-          "BBC Says James Acaster latest news October 2026",
-          "BBC Says James Acaster entertainment update 2026",
-          "BBC Says James Acaster news 2026-10-19",
-          "latest entertainment news about BBC Says James Acaster",
-          "bbc says james acaster bbc says latest update",
-          "The Hollywood Reporter BBC Says James Acaster entertainment",
-          "latest news about BBC Says James Acaster October 2026",
-          "BBC Says James Acaster entertainment news 2026-10-19",
-          "what happened with BBC Says James Acaster",
-          "bbc",
-          "says",
-          "james",
-          "acaster",
+          "Kylie Jenner's latest news October 2026",
+          "Kylie Jenner's music update 2026",
+          "Kylie Jenner's news 2026-10-19",
+          "latest music news about Kylie Jenner's",
+          "kylie jenner kylie jenner debut victoria latest update",
+          "BBC Kylie Jenner's music",
+          "latest news about Kylie Jenner's October 2026",
+          "Kylie Jenner's entertainment news 2026-10-19",
+          "what happened with Kylie Jenner's",
+          "kylie",
+          "jenner",
+          "debut",
+          "victoria",
+          "secret",
+          "fashion",
           "October 2026",
           "2026-10-19",
-          "BBC Says James Acaster 2026",
-          "The Hollywood Reporter BBC Says James Acaster",
-          "hollywoodreporter.com BBC Says James Acaster",
-          "The Hollywood Reporter entertainment news"
+          "Kylie Jenner's 2026",
+          "BBC Kylie Jenner's",
+          "bbc.co.uk Kylie Jenner's",
+          "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "999faf71",
-      "title": "Meloni calls emergency meeting after weekend of violent clashes",
-      "url": "https://www.bbc.co.uk/news/articles/c6j9kwxxmxydo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T11:23:36.000Z",
-      "discovered_at": "2026-10-19T12:12:05.254Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/16d1/live/3cdb5c00-cba4-11f1-9ee2-f74dfb8e54e5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/meloni-calls-emergency-meeting-after-weekend-of-violent-clashes-999faf/",
-      "landing_url": "https://matchapp.tv/?news=999faf71#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "meloni",
-          "calls",
-          "emergency",
-          "meeting",
-          "after",
-          "weekend"
-        ],
-        "long_tail": [
-          "Meloni calls emergency meeting after weekend of violent clashes 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "meloni",
-          "calls",
-          "emergency",
-          "meeting",
-          "after",
-          "weekend"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Meloni calls emergency meeting after weekend of violent…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "meloni",
-          "calls",
-          "emergency",
-          "meeting",
-          "after",
-          "weekend",
-          "Meloni calls emergency meeting after weekend of violent clashes 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -1379,497 +2066,7 @@
           "g1.globo.com projeto criado edgard scandurra",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "0ca91136",
-      "title": "Protestos na França: primeiro-ministro francês pede toque de recolher a prefeitos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/protestos-em-paris-primeiro-ministro-frances-pede-toque-de-recolher.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T11:00:59.000Z",
-      "discovered_at": "2026-10-19T11:11:51.603Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Xgu7Pnr8lSHQMPNAMuGe72QyXhc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/I/P/eeaRYXQjyjDJfA5ceC0A/2026-10-19t084121z-1040104409-rc286oamsqhy-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/protestos-na-franca-primeiro-ministro-frances-pede-toque-de-recolher-a-prefeitos-0ca911/",
-      "landing_url": "https://matchapp.tv/?news=0ca91136#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "primeiro",
-          "ministro",
-          "frances",
-          "pede"
-        ],
-        "long_tail": [
-          "Protestos na França: primeiro-ministro francês pede toque de recolher a prefeitos 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "protestos",
-          "franca",
-          "primeiro",
-          "ministro",
-          "frances",
-          "pede"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Protestos na França: primeiro-ministro francês pede toque…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "protestos",
-          "franca",
-          "primeiro",
-          "ministro",
-          "frances",
-          "pede",
-          "Protestos na França: primeiro-ministro francês pede toque de recolher a prefeitos 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "25ebdf67",
-      "title": "You Can See Everything documentary stuns with huge box office debut",
-      "url": "https://www.bbc.co.uk/news/articles/cm8xz5kxkkkqo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-19T10:37:13.000Z",
-      "discovered_at": "2026-10-19T11:11:51.603Z",
-      "event_type": "Release",
-      "category": "entertainment",
-      "person": "You Can See Everything",
-      "description": "You Can See Everything: release headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/34cb/live/078117f0-cba1-11f1-9ee2-f74dfb8e54e5.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/you-can-see-everything-documentary-stuns-with-huge-box-office-debut-25ebdf/",
-      "landing_url": "https://matchapp.tv/?news=25ebdf67#latest-news",
-      "seo": {
-        "primary_keyword": "You Can See Everything latest news",
-        "short_tail": [
-          "You Can See Everything",
-          "You Can See Everything news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "You Can See Everything latest news October 2026",
-          "You Can See Everything release update 2026",
-          "You Can See Everything news 2026-10-19",
-          "latest release news about You Can See Everything",
-          "you can see everything you can latest update",
-          "BBC You Can See Everything release",
-          "latest news about You Can See Everything October 2026",
-          "You Can See Everything entertainment news 2026-10-19",
-          "what happened with You Can See Everything"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "You Can See Everything",
-          "you",
-          "can",
-          "see",
-          "everything"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "You Can See Everything 2026"
-        ],
-        "source_keywords": [
-          "BBC You Can See Everything",
-          "bbc.co.uk You Can See Everything",
-          "BBC entertainment news"
-        ],
-        "meta_title": "You Can See Everything documentary stuns with huge box…",
-        "meta_description": "You Can See Everything: Release update reported by BBC on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "You Can See Everything latest news",
-          "You Can See Everything",
-          "You Can See Everything news",
-          "release",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "You Can See Everything latest news October 2026",
-          "You Can See Everything release update 2026",
-          "You Can See Everything news 2026-10-19",
-          "latest release news about You Can See Everything",
-          "you can see everything you can latest update",
-          "BBC You Can See Everything release",
-          "latest news about You Can See Everything October 2026",
-          "You Can See Everything entertainment news 2026-10-19",
-          "what happened with You Can See Everything",
-          "you",
-          "can",
-          "see",
-          "everything",
-          "October 2026",
-          "2026-10-19",
-          "You Can See Everything 2026",
-          "BBC You Can See Everything",
-          "bbc.co.uk You Can See Everything",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "0d1ca792",
-      "title": "Kenya pastor accused of ordering parents to starve their children to death faces verdict",
-      "url": "https://www.bbc.co.uk/news/articles/ckd6d2l3dz4xo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T10:33:12.000Z",
-      "discovered_at": "2026-10-19T05:14:17.960Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8068/live/34a82040-c956-11f1-8879-9d9deeb686e1.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/kenya-pastor-accused-of-ordering-parents-to-starve-their-children-to-death-faces-0d1ca7/",
-      "landing_url": "https://matchapp.tv/?news=0d1ca792#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "kenya",
-          "pastor",
-          "accused",
-          "ordering",
-          "parents",
-          "starve"
-        ],
-        "long_tail": [
-          "Kenya pastor accused of ordering parents to starve their children to death faces verdict 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "kenya",
-          "pastor",
-          "accused",
-          "ordering",
-          "parents",
-          "starve"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Kenya pastor accused of ordering parents to starve their…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "kenya",
-          "pastor",
-          "accused",
-          "ordering",
-          "parents",
-          "starve",
-          "Kenya pastor accused of ordering parents to starve their children to death faces verdict 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "2fa03e25",
-      "title": "European Producers Must Get Bigger to Compete, Says EU Policy Chief: “We Must Invest in Companies”",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/european-producers-eu-chief-1236735171/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T09:40:51.000Z",
-      "discovered_at": "2026-10-19T11:11:51.603Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "European Producers Must Get",
-      "description": "European Producers Must Get: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2024/10/Mia-Market-.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/european-producers-must-get-bigger-to-compete-says-eu-policy-chief-we-must-inves-2fa03e/",
-      "landing_url": "https://matchapp.tv/?news=2fa03e25#latest-news",
-      "seo": {
-        "primary_keyword": "European Producers Must Get latest news",
-        "short_tail": [
-          "European Producers Must Get",
-          "European Producers Must Get news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "European Producers Must Get latest news October 2026",
-          "European Producers Must Get entertainment update 2026",
-          "European Producers Must Get news 2026-10-19",
-          "latest entertainment news about European Producers Must Get",
-          "european producers must get european producers latest update",
-          "The Hollywood Reporter European Producers Must Get entertainment",
-          "latest news about European Producers Must Get October 2026",
-          "European Producers Must Get entertainment news 2026-10-19",
-          "what happened with European Producers Must Get"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "European Producers Must Get",
-          "european",
-          "producers",
-          "must",
-          "get"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "European Producers Must Get 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter European Producers Must Get",
-          "hollywoodreporter.com European Producers Must Get",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "European Producers Must Get Bigger to Compete, Says EU…",
-        "meta_description": "European Producers Must Get: Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original…",
-        "keywords": [
-          "European Producers Must Get latest news",
-          "European Producers Must Get",
-          "European Producers Must Get news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "European Producers Must Get latest news October 2026",
-          "European Producers Must Get entertainment update 2026",
-          "European Producers Must Get news 2026-10-19",
-          "latest entertainment news about European Producers Must Get",
-          "european producers must get european producers latest update",
-          "The Hollywood Reporter European Producers Must Get entertainment",
-          "latest news about European Producers Must Get October 2026",
-          "European Producers Must Get entertainment news 2026-10-19",
-          "what happened with European Producers Must Get",
-          "european",
-          "producers",
-          "must",
-          "get",
-          "October 2026",
-          "2026-10-19",
-          "European Producers Must Get 2026",
-          "The Hollywood Reporter European Producers Must Get",
-          "hollywoodreporter.com European Producers Must Get",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "7787377f",
-      "title": "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds'",
-      "url": "https://www.bbc.co.uk/news/articles/ckj0ly6qnp1lo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T09:40:44.000Z",
-      "discovered_at": "2026-10-19T11:11:51.603Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2ede/live/03f0b480-cbbd-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/deadly-fire-at-canada-military-base-moved-a-kilometre-in-30-to-60-seconds-778737/",
-      "landing_url": "https://matchapp.tv/?news=7787377f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "deadly",
-          "fire",
-          "canada",
-          "military",
-          "base",
-          "moved"
-        ],
-        "long_tail": [
-          "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds' 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "deadly",
-          "fire",
-          "canada",
-          "military",
-          "base",
-          "moved"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Deadly fire at Canada military base moved a kilometre 'in…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "deadly",
-          "fire",
-          "canada",
-          "military",
-          "base",
-          "moved",
-          "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds' 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "0fb88a93",
-      "title": "‘My Notes on Mars,’ ‘Moonglow’ and ‘The Secret Lives of Baba Segi’s Wives’: LFF Tea With Filmmakers",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/my-notes-on-mars-moonglow-lff-2026-tea-with-filmmakers-1236735137/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T09:00:00.000Z",
-      "discovered_at": "2026-10-19T11:11:51.603Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/02/a513e3d2-4b0c-46a5-aec5-6fc6b8569337-scaled-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/my-notes-on-mars-moonglow-and-the-secret-lives-of-baba-segi-s-wives-lff-tea-with-0fb88a/",
-      "landing_url": "https://matchapp.tv/?news=0fb88a93#latest-news",
-      "seo": {
-        "primary_keyword": "notes mars moonglow secret latest news",
-        "short_tail": [
-          "notes mars moonglow secret",
-          "notes mars moonglow secret news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "notes mars moonglow secret latest news October 2026",
-          "notes mars moonglow secret entertainment update 2026",
-          "notes mars moonglow secret news 2026-10-19",
-          "latest entertainment news about notes mars moonglow secret",
-          "notes mars moonglow secret lives baba latest update",
-          "The Hollywood Reporter notes mars moonglow secret entertainment",
-          "latest news about notes mars moonglow secret October 2026",
-          "notes mars moonglow secret entertainment news 2026-10-19",
-          "what happened with notes mars moonglow secret"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "notes",
-          "mars",
-          "moonglow",
-          "secret",
-          "lives",
-          "baba",
-          "segi",
-          "wives"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "notes mars moonglow secret 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter notes mars moonglow secret",
-          "hollywoodreporter.com notes mars moonglow secret",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘My Notes on Mars,’ ‘Moonglow’ and ‘The Secret Lives of…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "notes mars moonglow secret latest news",
-          "notes mars moonglow secret",
-          "notes mars moonglow secret news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "notes mars moonglow secret latest news October 2026",
-          "notes mars moonglow secret entertainment update 2026",
-          "notes mars moonglow secret news 2026-10-19",
-          "latest entertainment news about notes mars moonglow secret",
-          "notes mars moonglow secret lives baba latest update",
-          "The Hollywood Reporter notes mars moonglow secret entertainment",
-          "latest news about notes mars moonglow secret October 2026",
-          "notes mars moonglow secret entertainment news 2026-10-19",
-          "what happened with notes mars moonglow secret",
-          "notes",
-          "mars",
-          "moonglow",
-          "secret",
-          "lives",
-          "baba",
-          "segi",
-          "wives",
-          "October 2026",
-          "2026-10-19",
-          "notes mars moonglow secret 2026",
-          "The Hollywood Reporter notes mars moonglow secret",
-          "hollywoodreporter.com notes mars moonglow secret",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -1968,7 +2165,7 @@
           "g1.globo.com caos sucesso bastidores dvd",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2066,7 +2263,7 @@
           "g1.globo.com Benito Di Paula",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2163,7 +2360,7 @@
           "g1.globo.com integrantes rebelde lamentam morte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2264,7 +2461,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2362,7 +2559,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2456,7 +2653,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2553,103 +2750,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "82ad906e",
-      "title": "Off Campus star collaboration 'gave me chills', says Babydoll singer",
-      "url": "https://www.bbc.co.uk/news/articles/cq5yndllj8d8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-17T17:40:15.000Z",
-      "discovered_at": "2026-10-16T17:40:23.043Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Off Campus",
-      "description": "Off Campus: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cc20/live/6913b550-c308-11f1-a64c-550be9e3c66b.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/off-campus-star-collaboration-gave-me-chills-says-babydoll-singer-82ad90/",
-      "landing_url": "https://matchapp.tv/?news=82ad906e#latest-news",
-      "seo": {
-        "primary_keyword": "Off Campus latest news",
-        "short_tail": [
-          "Off Campus",
-          "Off Campus news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Off Campus latest news October 2026",
-          "Off Campus entertainment update 2026",
-          "Off Campus news 2026-10-17",
-          "latest entertainment news about Off Campus",
-          "off campus off campus star collaboration latest update",
-          "BBC Off Campus entertainment",
-          "latest news about Off Campus October 2026",
-          "Off Campus entertainment news 2026-10-17",
-          "what happened with Off Campus"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Off Campus",
-          "off",
-          "campus",
-          "star",
-          "collaboration",
-          "gave",
-          "chills"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-17",
-          "Off Campus 2026"
-        ],
-        "source_keywords": [
-          "BBC Off Campus",
-          "bbc.co.uk Off Campus",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Off Campus star collaboration 'gave me chills', says…",
-        "meta_description": "Off Campus: Entertainment update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Off Campus latest news",
-          "Off Campus",
-          "Off Campus news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Off Campus latest news October 2026",
-          "Off Campus entertainment update 2026",
-          "Off Campus news 2026-10-17",
-          "latest entertainment news about Off Campus",
-          "off campus off campus star collaboration latest update",
-          "BBC Off Campus entertainment",
-          "latest news about Off Campus October 2026",
-          "Off Campus entertainment news 2026-10-17",
-          "what happened with Off Campus",
-          "off",
-          "campus",
-          "star",
-          "collaboration",
-          "gave",
-          "chills",
-          "October 2026",
-          "2026-10-17",
-          "Off Campus 2026",
-          "BBC Off Campus",
-          "bbc.co.uk Off Campus",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2747,7 +2848,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2848,7 +2949,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -2942,7 +3043,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -3041,7 +3142,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -3139,7 +3240,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -3240,7 +3341,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -3341,105 +3442,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
-      }
-    },
-    {
-      "id": "86e33602",
-      "title": "Karim Aïnouz conta como atraiu Elle Fanning e Callum Turner para seu novo filme: 'Apetite pelo material'",
-      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/16/karim-ainouz-conta-como-atraiu-elle-fanning-e-callum-turner-para-seu-novo-filme-apetite-pelo-material.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-16T13:19:48.000Z",
-      "discovered_at": "2026-10-16T14:24:12.034Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Karim Aïnouz",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/8MKw0EQenIJzkVpRtR6Z8Ly51HU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/k/m/SoJORCRMqlf6mGcrl23Q/55567990863-3150be3762-k.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/karim-ainouz-conta-como-atraiu-elle-fanning-e-callum-turner-para-seu-novo-filme--86e336/",
-      "landing_url": "https://matchapp.tv/?news=86e33602#latest-news",
-      "seo": {
-        "primary_keyword": "Karim Aïnouz últimas notícias",
-        "short_tail": [
-          "Karim Aïnouz",
-          "Karim Aïnouz news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Karim Aïnouz latest news October 2026",
-          "Karim Aïnouz entertainment update 2026",
-          "Karim Aïnouz news 2026-10-16",
-          "latest entertainment news about Karim Aïnouz",
-          "karim ainouz karim ainouz conta como latest update",
-          "G1 Karim Aïnouz entertainment",
-          "últimas notícias sobre Karim Aïnouz outubro 2026",
-          "Karim Aïnouz notícia de 2026-10-16",
-          "o que aconteceu com Karim Aïnouz"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Karim Aïnouz",
-          "karim",
-          "ainouz",
-          "conta",
-          "como",
-          "atraiu",
-          "elle"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "Karim Aïnouz 2026"
-        ],
-        "source_keywords": [
-          "G1 Karim Aïnouz",
-          "g1.globo.com Karim Aïnouz",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Karim Aïnouz conta como atraiu Elle Fanning e Callum…",
-        "meta_description": "Karim Aïnouz: Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Karim Aïnouz últimas notícias",
-          "Karim Aïnouz",
-          "Karim Aïnouz news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Karim Aïnouz latest news October 2026",
-          "Karim Aïnouz entertainment update 2026",
-          "Karim Aïnouz news 2026-10-16",
-          "latest entertainment news about Karim Aïnouz",
-          "karim ainouz karim ainouz conta como latest update",
-          "G1 Karim Aïnouz entertainment",
-          "últimas notícias sobre Karim Aïnouz outubro 2026",
-          "Karim Aïnouz notícia de 2026-10-16",
-          "o que aconteceu com Karim Aïnouz",
-          "karim",
-          "ainouz",
-          "conta",
-          "como",
-          "atraiu",
-          "elle",
-          "October 2026",
-          "2026-10-16",
-          "outubro 2026",
-          "Karim Aïnouz 2026",
-          "G1 Karim Aïnouz",
-          "g1.globo.com Karim Aïnouz",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     },
     {
@@ -3529,7 +3532,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+        "seo_generated_at": "2026-10-19T17:29:17.624Z"
       }
     }
   ]
