@@ -398,11 +398,14 @@ function showVerifiedCover(img,fall,url,timeout=7000){
    if(finished)return;
    finished=true;clearTimeout(timer);img.onload=null;img.onerror=null;
    const valid=(good||hasUsableCover(img))&&img.isConnected&&img.naturalWidth>0;
-   img.hidden=!valid;if(fall)fall.hidden=valid;
+   img.hidden=!valid;img.style.opacity=valid?'1':'0';if(fall)fall.hidden=valid;
    resolve(valid);
   };
   img.onload=()=>settle(true);img.onerror=()=>settle(false);
   timer=setTimeout(()=>settle(false),timeout);
+  // Hidden lazy images may never request pixels. Match the metadata owner's
+  // loading handoff: start eagerly while retaining the honest visible fallback.
+  img.loading='eager';img.decoding='async';img.style.opacity='0';img.hidden=false;
   img.src=url;
   if(img.complete&&img.naturalWidth>0)settle(true);
  });
