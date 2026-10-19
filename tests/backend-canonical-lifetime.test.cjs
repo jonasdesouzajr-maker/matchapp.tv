@@ -5,7 +5,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const {PGlite}=require('@electric-sql/pglite');
 const root=path.join(__dirname,'..');
-const migration='supabase/migrations/20261019193155_backend_canonical_lifetime_identity.sql';
+const migration='supabase/migrations/20261019200629_backend_canonical_lifetime_identity.sql';
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const ALICE='11111111-1111-4111-8111-111111111111';
 const BOB='22222222-2222-4222-8222-222222222222';
@@ -27,7 +27,7 @@ async function setup(apply=true){
   'supabase/migrations/20261016223445_growth_guest_sessions_20261016.sql',
   'supabase/migrations/20261018145723_durable_match_exclusions.sql',
   'supabase/migrations/20261018145959_align_durable_exclusion_source.sql',
-  'supabase/migrations/20261019192814_lifetime_match_exclusions.sql'])await db.exec(read(file));
+  'supabase/migrations/20261019200625_lifetime_match_exclusions.sql'])await db.exec(read(file));
  if(apply)await db.exec(read(migration));
  return db;
 }

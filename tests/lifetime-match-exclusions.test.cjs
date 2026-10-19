@@ -6,7 +6,7 @@ const path=require('node:path');
 const {PGlite}=require('@electric-sql/pglite');
 
 const root=path.join(__dirname,'..');
-const migrationPath='supabase/migrations/20261019192814_lifetime_match_exclusions.sql';
+const migrationPath='supabase/migrations/20261019200625_lifetime_match_exclusions.sql';
 const read=name=>fs.readFileSync(path.join(root,name),'utf8');
 const ALICE='11111111-1111-4111-8111-111111111111';
 const BOB='22222222-2222-4222-8222-222222222222';
