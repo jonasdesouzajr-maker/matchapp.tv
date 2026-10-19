@@ -243,3 +243,14 @@ for every affected owner, while unrelated owners retain their retry budget.
 Isolated regressions reproduce the old cache, whitespace and sitemap-index
 failures and preserve genuine URL-set updates, without network requests or
 changes to real editorial sources, application logic or design.
+
+## Browser-audit observation reliability
+
+Production audit39316456653 timed out on its live-video polling check after
+the short intro element had disappeared. The QA harness now retains decoded
+frame geometry from media events registered before navigation, so natural
+teardown cannot erase that evidence before the browser polling callback runs.
+It preserves the same playback-ready predicate and all geometry, duration,
+trusted natural-ended, full-duration, Skip and same-session checks. Owned media
+errors fail the audit; disappearance or synthetic events never count as proof.
+The production intro and application behavior are unchanged.
