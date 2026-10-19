@@ -55,3 +55,15 @@ test('spoken possessive titles retain their exact identity',async()=>{
  vm.runInNewContext(read('jonas/title-card-presentation-20261011.js'),{window});
  const cards=await window.MatchAppJonasTitlePresentation.fromAnswers("Schitt's Creek is a warm comedy.");assert.equal(cards[0]?.title,title);
 });
+
+test('non-Latin title verification never equates unrelated source names or their posters',async()=>{
+ for(const [requested,other] of [['千と千尋の神隠し','となりのトトロ'],['기생충이라는영화','다른영화입니다'],['霸王别姬这部电影','卧虎藏龙这部电影'],['فيلم سينمائي','عمل مختلف']]){
+  const window={MatchAppCatalogMedia:{lookup:async()=>({title:other,media_kind:'movie',poster_url:'https://image.tmdb.org/t/p/w500/other.jpg'})}};
+  vm.runInNewContext(read('jonas/title-card-presentation-20261011.js'),{window});
+  const cards=await window.MatchAppJonasTitlePresentation.fromAnswers('“'+requested+'”');
+  assert.equal(cards.length,0,requested+' must not inherit '+other+' artwork');
+  window.MatchAppCatalogMedia.lookup=async()=>({title:requested,media_kind:'movie',poster_url:'https://image.tmdb.org/t/p/w500/exact.jpg'});
+  const exact=await window.MatchAppJonasTitlePresentation.fromAnswers('“'+requested+'”');
+  assert.equal(exact[0]?.title,requested);
+ }
+});

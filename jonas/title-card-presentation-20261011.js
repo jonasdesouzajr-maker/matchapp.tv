@@ -3,7 +3,7 @@
  * availability, providers, prices or credits; reuse existing card renderer. */
 (function(){
  'use strict';
- function key(v){return String(v||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+ function key(v){return String(v||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim()}
  function candidates(answer){
   const text=String(answer||'').slice(0,1800),names=[],seen=new Set();
   function add(v){
