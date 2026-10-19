@@ -10,7 +10,7 @@
  */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {execFileSync}=require('node:child_process');
-const {collect:collectLicensedPartnerLinks}=require('./sports-partner-feed.js');
+const {collectReport:collectLicensedPartnerLinks}=require('./sports-partner-feed.js');
 const ROOT=path.join(__dirname,'..'),OUTPUT=path.join(ROOT,'news','sports.json');
 const API='https://api.gdeltproject.org/api/v2/doc/doc';
 const DOMAINS=[
@@ -25,6 +25,7 @@ const DOMAINS=[
 ];
 const SUBJECT=/(?:\b(?:football|soccer|basketball|nba|wnba|tennis|golf|cycling|olympic|formula\s?1|grand prix|motorsport|hockey|cricket|rugby|volleyball|sport|world cup|champions league|premier league|f1)\b|futebol|basquete|tênis|tenis|esporte|olimpíad|campeonato|copa do mundo)/i;
 const RUMOR=/(?:\b(?:rumou?r|allegedly|speculation|unconfirmed)\b|boato|supostamente)/i;
+const PROMOTION=/(?:betting|gambling|casino|sportsbook|wager|moneyline|parlay|bookmaker|bonus bet|odds|picks for betting)/i;
 const words=s=>String(s||'').replace(/\s+/g,' ').trim();
 const domainOf=url=>{try{
  const u=new URL(url);
@@ -54,7 +55,7 @@ function normalizeArticles(articles,now=Date.now()){
   const title=words(article?.title),url=String(article?.url||''),source=publisher(url),date=dateOf(article);
   if(!source||!title||title.length<16||title.length>220||
      !Number.isFinite(date.valueOf())||date.valueOf()>now+3600000||
-     now-date.valueOf()>60*3600000||RUMOR.test(title)||
+     now-date.valueOf()>60*3600000||RUMOR.test(title)||PROMOTION.test(title+' '+url)||
      !SUBJECT.test(title+' '+new URL(url).pathname.replace(/[-_/]+/g,' ')))continue;
   const normalized=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
    .replace(/[^a-z0-9]+/g,' ').trim();
@@ -65,7 +66,7 @@ function normalizeArticles(articles,now=Date.now()){
     id,title,url,source:source.source,source_domain:domainOf(url),
     source_home:'https://'+source.domain,country:source.domain==='g1.globo.com'||source.domain==='espn.com.br'?'BR':'GLOBAL',
     category:'sports',sport:sportType(title,url),event_type:sportType(title,url),
-    published_at:date.toISOString(),image:null,
+    published_at:date.toISOString(),timestamp_kind:'discovered',image:null,
     discovery_source:'GDELT Project DOC 2.0'
   });
  }
@@ -83,7 +84,7 @@ function mergeVerifiedSourceRows(discovered=[],partner=[]){
   if(!title||urls.has(item.url)||headlines.has(title))continue;
   urls.add(item.url);headlines.add(title);rows.push(item);
  }
- return rows.sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,12);
+ return rows.sort((a,b)=>b.published_at.localeCompare(a.published_at)||a.url.localeCompare(b.url)).slice(0,12);
 }
 
 // GDELT DOC queries can legitimately take over 30s. Allow a bounded 45s
@@ -127,7 +128,23 @@ async function fetchGdelt(url){
   }
  }finally{clearTimeout(timer)}
 }
-async function main(){
+function retainedRows(snapshot,now){
+ return (Array.isArray(snapshot?.items)?snapshot.items:[]).filter(item=>{
+  const time=Date.parse(item?.published_at);
+  const partner=item?.discovery_source==='Authorized publisher RSS/Atom'&&
+   domainOf(item.url)==='theconversation.com'&&item.source==='The Conversation'&&item.timestamp_kind==='published';
+  const gdelt=item?.discovery_source==='GDELT Project DOC 2.0'&&publisher(item.url)?.source===item.source;
+  return item?.category==='sports'&&item.image===null&&(partner||gdelt)&&
+   !PROMOTION.test(item.title+' '+item.url)&&!RUMOR.test(item.title)&&
+   Number.isFinite(time)&&time<=now+3600000&&now-time<=(partner?96:60)*3600000;
+ });
+}
+function sameContent(a,b){
+ const canonical=value=>JSON.stringify(value,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)
+  ?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v);
+ return canonical(a)===canonical(b);
+}
+async function main({output=OUTPUT,now=Date.now(),discover=fetchGdelt,partners=collectLicensedPartnerLinks,summaryFile=null}={}){
  const u=new URL(API);
  u.searchParams.set('query','(football OR soccer OR basketball OR tennis OR "Formula 1" OR olympics OR futebol OR basquete)');
  u.searchParams.set('mode','artlist');
@@ -135,28 +152,46 @@ async function main(){
  u.searchParams.set('timespan','48h');
  u.searchParams.set('sort','datedesc');
  u.searchParams.set('maxrecords','250');
- let rows=[],policy='GDELT Project DOC 2.0 publisher-link discovery';
+ let rows=[],checks=[];
  try{
-  const result=await fetchGdelt(u.href);
-  rows=normalizeArticles(result.articles);
- }catch(e){console.warn('[sports] GDELT unavailable; trying explicitly authorized publisher headlines: '+e.message)}
- if(rows.length<3){
-  const fallback=await collectLicensedPartnerLinks();
-  if(fallback.length){
-   const mixed=rows.length>0;
-   rows=mergeVerifiedSourceRows(rows,fallback);
-   policy=mixed
-    ?'GDELT Project DOC 2.0 publisher-link discovery plus explicitly authorized publisher RSS/Atom headlines'
-    :'Explicitly authorized attributed original publisher RSS/Atom headlines';
-  }
+  const result=await discover(u.href);
+  if(!Array.isArray(result?.articles))throw Error('GDELT response missing articles');
+  rows=normalizeArticles(result.articles,now);
+  checks.push({source:'GDELT',ok:true,items:rows.length});
+ }catch(e){
+  checks.push({source:'GDELT',ok:false,error:e.message});
+  console.warn('[sports] GDELT unavailable; trying explicitly authorized publisher headlines: '+e.message);
  }
- if(!rows.length)throw Error('No current source-verified sports stories accessible; preserve previously committed news');
- const snapshot={updated_at:new Date().toISOString(),
+ if(rows.length<3){
+  const fallback=await partners(undefined,now);
+  checks.push(...fallback.checks);
+  rows=mergeVerifiedSourceRows(rows,fallback.items);
+ }
+ if(!checks.some(check=>check.ok))throw Error('No verified sports source check succeeded; preserve previously committed news');
+ let previous=null;
+ try{previous=JSON.parse(fs.readFileSync(output,'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
+ const degraded=checks.some(check=>!check.ok);
+ if(degraded)rows=mergeVerifiedSourceRows(rows,retainedRows(previous,now));
+ // Empty but successfully checked sources do not justify deleting last-good
+ // data or inventing stories. Readers expire cards using the source dates.
+ const policy=[...new Set(rows.map(row=>row.discovery_source))].sort().join(' plus ');
+ const snapshot={updated_at:new Date(now).toISOString(),
   source_policy:policy+'; directly linked canonical URLs, no article-body/image republication and no betting guides',
   items:rows};
- fs.mkdirSync(path.dirname(OUTPUT),{recursive:true});
- fs.writeFileSync(OUTPUT,JSON.stringify(snapshot,null,2)+'\n');
- console.log(JSON.stringify({ok:true,sports:rows.length,sources:[...new Set(rows.map(i=>i.source))]}));
+ const changed=rows.length>0&&!sameContent(previous?.items,rows);
+ if(changed){
+  fs.mkdirSync(path.dirname(output),{recursive:true});
+  const temporary=output+'.'+process.pid+'.tmp';
+  try{fs.writeFileSync(temporary,JSON.stringify(snapshot,null,2)+'\n');fs.renameSync(temporary,output);}
+  finally{if(fs.existsSync(temporary))fs.unlinkSync(temporary);}
+ }
+ const report={ok:true,status:rows.length?(changed?'changed':'unchanged'):'checked-empty',degraded,
+  checked_at:new Date(now).toISOString(),content_updated_at:changed?snapshot.updated_at:previous?.updated_at||null,
+  run_id:process.env.GITHUB_RUN_ID||null,sha:process.env.GITHUB_SHA||null,
+  sports:rows.length,sources:[...new Set(rows.map(i=>i.source))],checks};
+ console.log(JSON.stringify(report));
+ if(summaryFile)fs.appendFileSync(summaryFile,'\nSports source check (publication is verified separately):\n```json\n'+JSON.stringify(report,null,2)+'\n```\n');
+ return report;
 }
-module.exports={normalizeArticles,publisher,dateOf,sportType,mergeVerifiedSourceRows};
-if(require.main===module)main().catch(e=>{console.error('[sports] '+(e.stack||e.message));process.exitCode=1});
+module.exports={normalizeArticles,publisher,dateOf,sportType,mergeVerifiedSourceRows,retainedRows,main};
+if(require.main===module)main({summaryFile:process.env.GITHUB_STEP_SUMMARY}).catch(e=>{console.error('[sports] '+(e.stack||e.message));process.exitCode=1});
