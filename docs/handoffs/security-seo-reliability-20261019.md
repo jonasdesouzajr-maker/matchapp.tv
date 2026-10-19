@@ -1,5 +1,31 @@
 # MatchApp Ai hardening checkpoint — 2026-10-19
 
+## Approved workflow follow-up
+
+The owner explicitly approved both prepared workflow proposals on October 19.
+The follow-up applies their pre-commit validation, bounded regeneration,
+confirmed-publication and lost-acknowledgment checks without changing schedules,
+permissions or publisher concurrency. Availability staging additionally retains
+all five regional watch output roots owned by its generator; narrowing staging
+must not leave those pages behind when inventories and sitemaps change.
+
+The daily retry fixture now models actual commit ancestry instead of returning
+empty revision strings and accepting every ancestor query. It retains the
+existing gate-order, failure, no-op and exhaustion assertions and adds accepted
+push/lost-acknowledgment and unchanged-remote failure cases. Final focused, full
+suite and release evidence belong in the follow-up PR.
+
+This does not claim complete gate parity for all eleven owners: existing
+SEO-hardening retries do not repeat their initial regression suite, and the
+sitemap-only owner has no independent full-suite gate. Those limitations are
+documented; no broader unapproved workflow rewrite is included.
+
+PR #300 is already merged as `ad84cf4af6ae3f130595ca392571cd9efc1df003`.
+Its news-only descendant `ce3cffdbe17814b4fa96e5ed0614be494240371c` was verified
+live, and production audit 39306934687 passed 74 browser, 36 touch and 15 deep
+checks. CodeQL inventory and alert #28/#112 reads remain denied with HTTP 403;
+scanner execution is not an alert-closure claim. Android/Play remains held.
+
 ## Resumed consolidation
 
 The owner instructed this work to finish after the initial draft checkpoint.
@@ -30,9 +56,10 @@ Pages is authoritative for production. Its pending preview does not replace or
 waive any release gate. The Actions-variable denial does not establish a
 separate lock requirement.
 
-PR #301's two workflow proposal patch files remain review material. They do not
-change active workflow files without the explicit proposed-change approval
-required by AGENTS.md section 11. Android/Play remains held.
+At this earlier checkpoint PR #301's two workflow proposal patch files remained
+review material. The owner subsequently approved them as recorded above;
+AGENTS.md section 11 continues to govern any further proposed workflow change.
+Android/Play remains held.
 
 ## Verified starting point
 

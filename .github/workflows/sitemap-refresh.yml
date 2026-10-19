@@ -43,10 +43,20 @@ jobs:
               echo "changed=0" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-            git commit -m "Refresh sitemap for current release" || true
+            git commit -m "Refresh sitemap for current release"
+            published="$(git rev-parse HEAD)"
             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
               echo "changed=1" >> "$GITHUB_OUTPUT"
               exit 0
+            fi
+            git fetch --no-tags origin "${GITHUB_REF_NAME}"
+            if git merge-base --is-ancestor "$published" "origin/${GITHUB_REF_NAME}"; then
+              echo 'changed=1' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
+              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
+              exit 1
             fi
           done
           exit 1
