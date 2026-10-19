@@ -84,8 +84,19 @@ async function guarded(browser,label,fn){
    await page.waitForFunction(()=>{
     const box=document.querySelector('#result-box'),title=document.querySelector('#res-title')?.textContent?.trim();
     // The title paints before metadata and the destination finish resolving.
+    // A placeholder or same-document link is not a completed destination.
+    const href=document.querySelector('#res-direct-link')?.getAttribute('href');
+    let destinationReady=false;
+    if(href){
+     try{
+      const destination=new URL(href,location.href);
+      const sameDocument=destination.origin===location.origin&&
+       destination.pathname===location.pathname&&destination.search===location.search;
+      destinationReady=destination.protocol==='https:'&&!sameDocument;
+     }catch{}
+    }
     return box&&getComputedStyle(box).display!=='none'&&title&&title!=='Title'&&
-     window.globalMatchTitle&&window.globalPlatform&&document.querySelector('#res-direct-link')?.getAttribute('href');
+     window.globalMatchTitle&&window.globalPlatform&&destinationReady;
    },null,{timeout:110000});
    const match=await page.evaluate(()=>({title:document.querySelector('#res-title')?.textContent?.trim(),platform:String(globalPlatform||'').trim(),
     cover:document.querySelector('#res-poster-img')?.currentSrc||document.querySelector('#res-poster-img')?.src,
