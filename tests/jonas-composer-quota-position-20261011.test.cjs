@@ -35,7 +35,9 @@ test('empty Send shows a visible non-chargeable prompt, valid Send restores the 
  const {window}=dom,{document}=window;
  let submitted=[];
  window.autoGrowComposer=()=>{};
- const install=new Function('window','document','navigator','askAndRender',source.slice(start,end));
+ const recoveryStart=source.indexOf('function discoverRecoveryText('),recoveryEnd=source.indexOf('\n}\n',recoveryStart)+2;
+ assert.ok(recoveryStart>=0&&recoveryEnd>recoveryStart);
+ const install=new Function('window','document','navigator','askAndRender',source.slice(recoveryStart,recoveryEnd)+'\n'+source.slice(start,end));
  install(window,document,window.navigator,q=>submitted.push(q));
  assert.equal(window.newDiscoverSearch(),false);
  assert.equal(document.getElementById('discover-compose-help').dataset.error,'1');

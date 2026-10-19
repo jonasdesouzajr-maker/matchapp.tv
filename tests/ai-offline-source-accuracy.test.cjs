@@ -13,7 +13,7 @@ function part(name){
 const block=[
  'const DISCOVER_MAX=12;',
  part('mediaIntentQuestion'),part('detectBookIntent'),part('detectAudioIntent'),part('discoverRecommendationRequest'),
- part('isFactualMediaQuestion'),part('requestedMovieTitle'),
+ part('discoverRecoveryText'),part('isFactualMediaQuestion'),part('requestedMovieTitle'),
  discover.slice(discover.indexOf('const EDITORIAL_FILM_CREDITS='),
   discover.indexOf('\n]);',discover.indexOf('const EDITORIAL_FILM_CREDITS='))+4),
  discover.slice(discover.indexOf('async function sourceVerifiedFilmFacts('),
@@ -110,4 +110,74 @@ test('Gemini invalid argument gets a portable JSON retry; budget caps never trig
  assert.match(proxy,/if \(geminiRes.status === 404 \|\| geminiRes.status === 400\)/);
  assert.match(proxy,/status: geminiRes.status === 429 \? 429 : 502/);
  assert.doesNotMatch(proxy,/geminiRes.status === 429\)\s*\{\s*continue;/);
+});
+
+const recoveryLanguages={
+ en:'Conversational AI is temporarily unavailable.',
+ 'pt-BR':'O chat de IA está temporariamente indisponível.',
+ es:'El chat de IA está temporalmente no disponible.',
+ fr:'Le chat IA est temporairement indisponible.',
+ de:'Der KI-Chat ist vorübergehend nicht verfügbar.',
+ it:'La chat IA è temporaneamente indisponibile.',
+ tr:'Yapay zekâ sohbeti geçici olarak kullanılamıyor.',
+ ru:'Чат с ИИ временно недоступен.',
+ ar:'دردشة الذكاء الاصطناعي غير متاحة مؤقتًا.',
+ hi:'एआई चैट अभी अस्थायी रूप से उपलब्ध नहीं है।',
+ id:'Obrolan AI sementara tidak tersedia.',
+ ja:'AIチャットは一時的に利用できません。',
+ ko:'AI 채팅을 일시적으로 사용할 수 없습니다.',
+ zh:'AI聊天暂时不可用。'
+};
+for(const [lang,unavailable] of Object.entries(recoveryLanguages))test(`selected ${lang} survives factual and reading provider outages with exact source identities`,async()=>{
+ const h=setup({MATCH_LANG:lang,tmdbLookup:async()=>null});
+ // An English question never overrides the visitor's selected UI language.
+ const film=await h.ctx.fallbackSearch('Who directed the 2001 film Spirited Away?',true);
+ assert(film.answer.includes(unavailable));
+ for(const identity of ['Spirited Away','2001','Hayao Miyazaki','Studio Ghibli'])assert(film.answer.includes(identity));
+ assert.equal(film.verifiedSource,'https://www.ghibli.jp/works/chihiro/');
+ assert.equal(film.results.length,0);assert.equal(film._live,false);
+ const unknown=await h.ctx.fallbackSearch('Who directed the 2024 film Imaginary Feature?',true);
+ assert.equal(unknown.answer,h.ctx.discoverRecoveryText('factsUnavailable'));
+ assert(!unknown.verifiedSource);assert.equal(unknown.results.length,0);
+ const audio=await h.ctx.fallbackSearch('Find an audiobook edition of Pride and Prejudice by Jane Austen, do not recommend movies.',true);
+ assert(audio.answer.includes(unavailable));
+ for(const identity of ['Pride and Prejudice','Jane Austen','Apple Books','Audible','Match E-books Ai'])assert(audio.answer.includes(identity));
+ assert.equal(audio.results.length,0);assert.equal(audio._live,false);
+ assert(audio.answer.endsWith(h.ctx.discoverRecoveryText('audio')),'unverified searches retain the authored edition/listening-rights limitation');
+ const book=await h.ctx.fallbackSearch('Find an ebook edition of Pride and Prejudice by Jane Austen.',true);
+ assert(book.answer.endsWith(h.ctx.discoverRecoveryText('books')));
+ if(lang!=='en')for(const result of [film,unknown,audio,book])assert.doesNotMatch(result.answer,/Conversational AI is temporarily unavailable|was directed by| by Jane Austen/);
+});
+test('empty Send uses the selected language on every supported locale without contacting or charging a provider',()=>{
+ const start=discover.indexOf('window.newDiscoverSearch = function () {');
+ const handler=discover.slice(start,discover.indexOf('\n};',start)+3);
+ for(const lang of Object.keys(recoveryLanguages)){
+  const h=setup({MATCH_LANG:lang});
+  const hint={dataset:{},textContent:'Initial hint'};
+  let sent=0;
+  h.ctx.document={getElementById:id=>id==='discover-new-input'?{value:'   '}:id==='discover-compose-help'?hint:null};
+  h.ctx.askAndRender=()=>{sent++;};
+  vm.runInContext(handler,h.ctx);
+  assert.equal(h.ctx.window.newDiscoverSearch(),false);
+  assert.equal(sent,0);assert.equal(hint.dataset.error,'1');
+  assert(hint.textContent.includes('MatchApp Ai'));
+  assert.equal(hint.textContent,h.ctx.discoverRecoveryText('emptyHint'));
+  if(lang!=='en')assert.doesNotMatch(hint.textContent,/Type a question/);
+ }
+});
+test('all authored source, recovery, reading and composer copy is complete and follows language switches',()=>{
+ const h=setup();
+ const keys=['directed','source','unavailable','factsUnavailable','books','audio','author','sourceLink','readingLink','emptyHint'];
+ for(const lang of Object.keys(recoveryLanguages)){
+  h.ctx.window.MATCH_LANG=lang;
+  for(const key of keys){
+   const text=h.ctx.discoverRecoveryText(key,{title:'Exact Title',year:'2001',director:'Exact Director',source:'Exact Source',author:'Exact Author'});
+   assert(text.trim(),`${lang} ${key}`);assert.doesNotMatch(text,/\{\w+\}/);
+  }
+ }
+ h.ctx.window.MATCH_LANG='fr-CA';assert.equal(h.ctx.discoverRecoveryText('unavailable'),recoveryLanguages.fr);
+ h.ctx.window.MATCH_LANG='pt-BR';assert.equal(h.ctx.discoverRecoveryText('unavailable'),recoveryLanguages['pt-BR']);
+ h.ctx.window.MATCH_LANG='ja';assert.equal(h.ctx.discoverRecoveryText('unavailable'),recoveryLanguages.ja);
+ assert.match(discover,/sourceLink\.textContent=discoverRecoveryText\('sourceLink'\)/);
+ assert.match(discover,/route\.textContent = discoverRecoveryText\('readingLink'\)/);
 });

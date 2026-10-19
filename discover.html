@@ -264,7 +264,7 @@
         .ai-thinking { text-align:left!important; padding:20px!important; overflow:hidden; position:relative; }
         .ai-thinking-head { display:flex; align-items:center; gap:12px; margin-bottom:13px; }
         .ai-thinking-icon { width:38px; height:38px; border-radius:12px; }
-        .ai-thinking-copy h3 { margin:0!important; color:var(--gold)!important; font-size:16px!important; text-transform:none!important; }
+        .ai-thinking-copy #ai-thinking-label { margin:0!important; color:var(--gold)!important; font-size:16px!important; text-transform:none!important; }
         .ai-thinking-copy p { margin:3px 0 0!important; color:#9d92b0!important; font-size:12px!important; }
         .ai-workflow-track { height:9px; border-radius:999px; background:rgba(255,255,255,.06); overflow:hidden; }
         .ai-workflow-fill { display:block; width:7%; height:100%; border-radius:inherit;
@@ -328,12 +328,12 @@
 <link rel="stylesheet" href="/premium-unified-20261010.css?v=20261010-luxe1">
 <link rel="stylesheet" href="/jonas/discover-composer-final-20261010.css?v=20261010-v4">
 <link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-grid3&amp;reliability=20261018-1">
-<link rel="stylesheet" href="/jonas/chat-workspace-20261011.css?v=20261011-viewport2">
+<link rel="stylesheet" href="/jonas/chat-workspace-20261011.css?v=20261019-narrow1">
 <link rel="stylesheet" href="/jonas/premium-chat-finish-20261011.css?v=20261011-deviceqa6">
 <link rel="stylesheet" href="/jonas/composer-quota-row-20261011.css?v=20261011-quota3">
 <link rel="stylesheet" href="/jonas/settings-header-touch-target-20261011.css?v=20261011-touch1">
 <link rel="stylesheet" href="/jonas/android-premium-composer-20261012.css?v=20261012-premium1">
-<script defer src="/jonas/chat-workspace-20261011.js?v=20261012-ambient-recovery1"></script>
+<script defer src="/jonas/chat-workspace-20261011.js?v=20261012-ambient-recovery1&amp;viewport=20261019-1"></script>
 <link rel="stylesheet" href="/cinematic-header.css?v=cinematic-shimmer1">
 <script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
@@ -428,11 +428,11 @@
                 </div>
                 <div id="discover-compose-help" class="composer-hint" aria-live="polite">Type your question or tap the microphone. Ask AI can read its answer aloud in your selected language.</div>
             </div>
-        </section><div id="discover-loading" class="premium-card ai-thinking" style="display:none;">
+        </section><div id="discover-loading" role="status" aria-live="polite" class="premium-card ai-thinking" style="display:none;">
             <div class="ai-thinking-head">
                 <img class="ai-thinking-icon" src="/assets/brand/matchapp-ai-orbit-fullbleed.svg?v=1" alt="" width="38" height="38">
                 <div class="ai-thinking-copy">
-                    <h3 id="ai-thinking-label">Understanding your request…</h3>
+                    <strong id="ai-thinking-label">Understanding your request…</strong>
                     <p>MatchApp Ai is building your answer and checking entertainment sources.</p>
                 </div>
             </div>
@@ -446,7 +446,7 @@
 
         <div id="discover-empty" class="premium-card" style="display:none;">
             <div style="font-size:52px; margin-bottom:14px;">💬</div>
-            <h3 style="color:var(--gold); margin:0 0 10px 0;" data-i18n="chat.startTitle">Ask me anything about what to watch</h3>
+            <h2 style="color:var(--gold); margin:0 0 10px 0; font-size:1.17em;" data-i18n="chat.startTitle">Ask me anything about what to watch</h2>
             <p data-i18n-html="chat.startBody">Try <em data-i18n="dc.ex1">"what should I watch after Breaking Bad?"</em>, <em data-i18n="dc.ex2">"a feel-good movie for a rainy Sunday"</em>, or <em data-i18n="dc.ex3">"documentaries about Antarctic expeditions"</em>. Keep the conversation going with follow-up questions — I'll remember what we've talked about.</p>
         </div>
 
@@ -490,7 +490,7 @@
     <script src="/match-localization.js?v=20260925-matchrestore2&amp;language=20260930-fix2"></script>
 <script src="/match-ai-rank.js?v=20260927-ranked1-mobilefresh1"></script>
 <script src="/topic-focus.js?v=20260928-1"></script>
-<script src="/match-tokens.js?v=20261017-3"></script>
+<script src="/match-tokens.js?v=20261019-refresh1"></script>
 <script src="/viewer-country.js?v=20261018-1"></script>
 <script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;mobilefresh=20260927-1&amp;providerfix=20260927-1&amp;poster=20260927-mobile1&amp;matching=20260928-session1&amp;topic=20260928-1&amp;formatfix=20260929-1&amp;fallbackfix=20260929-1&amp;recovery=20260929-2&amp;desktop=20260929-details1&amp;series=20260929-horrortv2&amp;language=20260930-fix2&amp;coverreuse=20261001-1&amp;sound=20261001-modern1&amp;spotlightfix=20261002-1&amp;sbt=20261004-1&amp;androidauth=20261010-v49&amp;audio=20261014-1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1"></script>
 <script src="/guest-share-rewards.js?v=20260926-selectedposter1&amp;tokens=20261017-1"></script>
@@ -511,7 +511,7 @@
     <script src="/jonas/title-card-presentation-20261011.js?v=20261012-exact-multi2"></script>
     <script src="/jonas/verified-documentary-series-20261011.js?v=20261011-doc1&amp;reliability=20261018-1"></script>
 <script src="/jonas/narrated-transcript-20261011.js?v=20261011-final3"></script>
-<script src="/discover.js?v=20260925-intent1&amp;cooking=20260929-1&amp;guest=20260926-guesttrial1&amp;offline=20260926-sourcematch1&amp;mobilefresh=20260927-1&amp;askbtn=20260927-1&amp;recovery=20260929-2&amp;posters=20260929-chat1&amp;composer=20260929-abovecards1&amp;music=20260930-recovery3&amp;language=20260930-fix2&amp;brand=20261001-canonicalai1&amp;sbt=20261004-1&amp;jonas=voice20261010&amp;jonas=voiceanswers20261010&amp;visual=20261011-a1&amp;chatfix=20261011-convo1&amp;viewport=20261011-2&amp;speech=20261011-final3&amp;quota=20261011-row2&amp;ambient=20261012-answer-recovery1&amp;latency=20261012-source-first1&amp;fastlang=20261014-2&amp;voicepair=20261014-1&amp;reliability=20261018-1"></script>
+<script src="/discover.js?v=20260925-intent1&amp;cooking=20260929-1&amp;guest=20260926-guesttrial1&amp;offline=20260926-sourcematch1&amp;mobilefresh=20260927-1&amp;askbtn=20260927-1&amp;recovery=20260929-2&amp;posters=20260929-chat1&amp;composer=20260929-abovecards1&amp;music=20260930-recovery3&amp;language=20260930-fix2&amp;brand=20261001-canonicalai1&amp;sbt=20261004-1&amp;jonas=voice20261010&amp;jonas=voiceanswers20261010&amp;visual=20261011-a1&amp;chatfix=20261011-convo1&amp;viewport=20261011-2&amp;speech=20261011-final3&amp;quota=20261011-row2&amp;ambient=20261012-answer-recovery1&amp;latency=20261012-source-first1&amp;fastlang=20261014-2&amp;voicepair=20261014-1&amp;reliability=20261018-1&amp;recoverylang=20261019-1"></script>
     <script src="/jonas/discovery-speech-lock-20261010.js"></script>
     <script src="/title-experience.js?v=20260918-notify2&amp;music=20260930-1"></script>
     <script src="/voice-input.js?v=20261005-voiceorigin1&amp;fastlang=20261014-1"></script>
