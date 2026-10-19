@@ -11,4 +11,6 @@ var a=document.createElement('a');a.id='ma-donate-shortcut';a.href='/#ma-donate-
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 ['matchapp:languagechange','matchapp:langchange','languagechange'].forEach(function(e){window.addEventListener(e,paint);document.addEventListener(e,paint)});document.addEventListener('change',function(e){if(e.target.matches('select'))queueMicrotask(paint)});
+// Partnership pages set their authored locale after this shortcut mounts.
+new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();

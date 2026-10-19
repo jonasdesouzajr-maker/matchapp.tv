@@ -145,10 +145,10 @@ function brandHeader(){
    function action(label,icon,fn){const b=el('button','',icon+' '+label);b.type='button';b.setAttribute('role','menuitem');b.addEventListener('click',()=>{fn();close()});return b}
    menu.append(
      link('Country','/profile/profile.html#country','🌍'),
-     action('Language','文',()=>{const control=qs('#lang-switcher-host select,#lang-switcher-host button,#lang-switcher-host [role="button"]');if(control)safeClick(control);else window.showToast?.('Language options are available from Settings.')}),
-     action('Sound','♪',()=>{const next=!(window.MatchSettings?.get?.('autoRead')!==false);window.MatchSettings?.set?.('autoRead',next);window.showToast?.(next?'Sound on':'Sound off')}),
-     action('Theme','◐',()=>{const themes=['aurora','cinema','ocean','sunrise','arcade'],cur=window.MatchSettings?.get?.('theme')||'aurora',next=themes[(Math.max(0,themes.indexOf(cur))+1)%themes.length];window.MatchSettings?.set?.('theme',next);document.documentElement.dataset.theme=next;window.showToast?.('Theme: '+next)}),
-     action('Lazy Mode','⚡',()=>{if(!document.body.classList.contains('ma-signed-in')){window.showToast?.('Sign in to use Lazy Mode.');return}const lazy=qs('.lazy-toggle');if(lazy)safeClick(lazy);else window.setLazyMode?.(true)}),
+     action('Language','文',()=>{const control=qs('#lang-switcher-host select,#lang-switcher-host button,#lang-switcher-host [role="button"]');if(control)safeClick(control);else window.showToast?.(menuToast('language'))}),
+     action('Sound','♪',()=>{const next=!(window.MatchSettings?.get?.('autoRead')!==false);window.MatchSettings?.set?.('autoRead',next);window.showToast?.(menuToast(next?'soundOn':'soundOff'))}),
+     action('Theme','◐',()=>{const themes=['aurora','cinema','ocean','sunrise','arcade'],cur=window.MatchSettings?.get?.('theme')||'aurora',next=themes[(Math.max(0,themes.indexOf(cur))+1)%themes.length];window.MatchSettings?.set?.('theme',next);document.documentElement.dataset.theme=next;window.showToast?.(menuToast('theme')+': '+next)}),
+     action('Lazy Mode','⚡',()=>{if(!document.body.classList.contains('ma-signed-in')){window.showToast?.(menuToast('lazy'));return}const lazy=qs('.lazy-toggle');if(lazy)safeClick(lazy);else window.setLazyMode?.(true)}),
      action('Daily check-in','✓',()=>{document.body.classList.add('ma-checkin-open');const box=qs('#daily-match-checkin');if(box){box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'center'})}}),
      link('Jonas experience','/jonas/','✦'),
      link('Pricing','/pricing/pricing.html','♢'),
@@ -168,6 +168,87 @@ function brandHeader(){
    document.addEventListener('matchapp:authchange',syncHeaderAuth);
    window.addEventListener('matchapp:installstate',syncHeaderAuth);
  }
+}
+// Reuse the authored Home header wording for the existing Pricing menu only.
+const PRICING_HEADER_COPY={
+ en:['How it works','Kids Mode','Settings','Country','Language','Sound','Theme','Lazy Mode','Daily check-in','Pricing','Install app','Settings',"What's new"],
+ 'pt-BR':['Como funciona','Modo Kids','Configurações','País','Idioma','Som','Tema','Modo relaxado','Check-in diário','Planos','Instalar app','Configurações','Novidades'],
+ es:['Cómo funciona','Modo infantil','Ajustes','País','Idioma','Sonido','Tema','Modo relajado','Registro diario','Planes','Instalar app','Ajustes','Novedades'],
+ fr:['Mode d’emploi','Mode enfants','Réglages','Pays','Langue','Son','Thème','Mode détente','Pointage quotidien','Tarifs','Installer l’app','Réglages','Nouveautés'],
+ de:['So funktioniert’s','Kindermodus','Einstellungen','Land','Sprache','Ton','Design','Entspannungsmodus','Täglicher Check-in','Preise','App installieren','Einstellungen','Neuigkeiten'],
+ it:['Come funziona','Modalità bambini','Impostazioni','Paese','Lingua','Audio','Tema','Modalità relax','Accesso giornaliero','Piani','Installa app','Impostazioni','Novità'],
+ tr:['Nasıl çalışır','Çocuk modu','Ayarlar','Ülke','Dil','Ses','Tema','Rahat mod','Günlük giriş','Planlar','Uygulamayı yükle','Ayarlar','Yenilikler'],
+ ru:['Как это работает','Детский режим','Настройки','Страна','Язык','Звук','Тема','Режим отдыха','Ежедневная отметка','Тарифы','Установить','Настройки','Новое'],
+ ar:['كيف يعمل','وضع الأطفال','الإعدادات','البلد','اللغة','الصوت','السمة','وضع الراحة','تسجيل يومي','الخطط','تثبيت التطبيق','الإعدادات','الجديد'],
+ hi:['कैसे काम करता है','बच्चों का मोड','सेटिंग्स','देश','भाषा','ध्वनि','थीम','आराम मोड','दैनिक चेक-इन','प्लान','ऐप इंस्टॉल करें','सेटिंग्स','नया क्या है'],
+ id:['Cara kerja','Mode anak','Pengaturan','Negara','Bahasa','Suara','Tema','Mode santai','Check-in harian','Paket','Pasang aplikasi','Pengaturan','Yang baru'],
+ ja:['使い方','キッズモード','設定','国','言語','音声','テーマ','リラックスモード','毎日のチェックイン','料金','アプリを入手','設定','新着情報'],
+ ko:['사용 방법','키즈 모드','설정','국가','언어','소리','테마','휴식 모드','매일 체크인','요금제','앱 설치','설정','새 소식'],
+ zh:['使用指南','儿童模式','设置','国家','语言','声音','主题','休闲模式','每日签到','套餐','安装应用','设置','最新消息']
+};
+const PRICING_MENU_TOASTS={
+ "en":["Language options are available from Settings.","Sound on","Sound off","Sign in to use Lazy Mode."],
+ "pt-BR":["As opções de idioma estão disponíveis nas Configurações.","Som ativado","Som desativado","Entre para usar o Modo relaxado."],
+ "es":["Las opciones de idioma están disponibles en Ajustes.","Sonido activado","Sonido desactivado","Inicia sesión para usar el Modo relajado."],
+ "fr":["Les options de langue sont disponibles dans les Réglages.","Son activé","Son coupé","Connectez-vous pour utiliser le Mode détente."],
+ "de":["Die Sprachoptionen findest du in den Einstellungen.","Ton an","Ton aus","Melde dich an, um den Entspannungsmodus zu nutzen."],
+ "it":["Le opzioni della lingua sono disponibili nelle Impostazioni.","Audio attivo","Audio disattivato","Accedi per usare la Modalità relax."],
+ "tr":["Dil seçenekleri Ayarlar bölümünde bulunur.","Ses açık","Ses kapalı","Rahat modu kullanmak için giriş yapın."],
+ "ru":["Настройки языка доступны в разделе «Настройки».","Звук включён","Звук выключен","Войдите, чтобы использовать режим отдыха."],
+ "ar":["خيارات اللغة متاحة في الإعدادات.","الصوت مُفعّل","الصوت مُغلق","سجّل الدخول لاستخدام وضع الراحة."],
+ "hi":["भाषा के विकल्प सेटिंग्स में उपलब्ध हैं।","ध्वनि चालू","ध्वनि बंद","आराम मोड का उपयोग करने के लिए साइन इन करें।"],
+ "id":["Pilihan bahasa tersedia di Pengaturan.","Suara aktif","Suara nonaktif","Masuk untuk menggunakan Mode santai."],
+ "ja":["言語のオプションは設定で選べます。","サウンドON","サウンドOFF","リラックスモードを使うにはログインしてください。"],
+ "ko":["언어 옵션은 설정에서 선택할 수 있어요.","소리 켜짐","소리 꺼짐","휴식 모드를 사용하려면 로그인하세요."],
+ "zh":["语言选项位于设置中。","声音已开启","声音已关闭","请登录以使用休闲模式。"]
+};
+function menuToast(kind){
+ const original={language:'Language options are available from Settings.',soundOn:'Sound on',soundOff:'Sound off',theme:'Theme',lazy:'Sign in to use Lazy Mode.'};
+ if(!isPricing)return original[kind];
+ const locale=langKey(),copy=PRICING_MENU_TOASTS[locale]||PRICING_MENU_TOASTS.en;
+ return kind==='theme'?(PRICING_HEADER_COPY[locale]||PRICING_HEADER_COPY.en)[6]:copy[{language:0,soundOn:1,soundOff:2,lazy:3}[kind]];
+}
+function fitPricingHeaderMenu(){
+ if(!isPricing||!document?.documentElement)return;
+ const menu=qs('header.app-header .ma-menu');if(!menu)return;
+ menu.parentElement.style.setProperty('z-index',menu.hidden?'auto':'50');if(menu.hidden)return;
+ const viewport=window.visualViewport,inset=16,left=viewport?.offsetLeft||0,top=viewport?.offsetTop||0;
+ const right=left+(viewport?.width||innerWidth),bottom=top+(viewport?.height||innerHeight);
+ menu.style.setProperty('z-index','50');menu.style.setProperty('translate','none');menu.style.setProperty('box-sizing','border-box');
+ menu.style.setProperty('max-width',Math.max(44,right-left-inset*2)+'px');
+ const box=menu.getBoundingClientRect(),y=Math.max(top+inset,Math.min(box.top,bottom-inset-44));
+ const dx=Math.max(left+inset-box.left,Math.min(0,right-inset-box.right));
+ menu.style.setProperty('translate',dx+'px '+(y-box.top)+'px');
+ menu.style.setProperty('max-height',Math.max(44,bottom-inset-y)+'px');menu.style.setProperty('overflow-y','auto');
+}
+function paintPricingHeaderMenu(){
+ if(!isPricing)return;
+ const copy=PRICING_HEADER_COPY[langKey()]||PRICING_HEADER_COPY.en;
+ const button=qs('header.app-header .ma-menu-button');
+ if(button){
+  const caption=qs('span',button);if(caption)caption.textContent=copy[2];
+  button.setAttribute('aria-label',copy[2]);button.setAttribute('title',copy[2]);
+  if(button.dataset.maPricingMenuFit!=='1'){
+   button.dataset.maPricingMenuFit='1';button.addEventListener('click',fitPricingHeaderMenu);
+   const menu=qs('.ma-menu',button.parentElement);if(menu)new MutationObserver(fitPricingHeaderMenu).observe(menu,{attributes:true,attributeFilter:['hidden']});
+   window.addEventListener('resize',fitPricingHeaderMenu,{passive:true});
+   window.visualViewport?.addEventListener('resize',fitPricingHeaderMenu,{passive:true});
+   const header=button.closest('header');if(header&&typeof ResizeObserver==='function')new ResizeObserver(fitPricingHeaderMenu).observe(header);
+  }
+ }
+ const labels=[...copy.slice(3,9),'Jonas',...copy.slice(9)];
+ qsa('header.app-header .ma-menu > [role="menuitem"]').forEach((control,index)=>{
+  const text=labels[index];if(!text)return;
+  let caption=qs('[data-ma-menu-caption]',control);
+  if(!caption){
+   const original=Array.from(control.childNodes).find(node=>node.nodeType===3&&node.nodeValue.trim());
+   if(!original)return;
+   const icon=original.nodeValue.trim().split(' ')[0];original.nodeValue=icon+' ';
+   caption=el('span','',text);caption.dataset.maMenuCaption='1';control.appendChild(caption);
+  }
+  caption.textContent=text;control.setAttribute('aria-label',text);
+ });
+ fitPricingHeaderMenu();
 }
 function criteria(){return typeof window.getMatchCriteria==='function'?window.getMatchCriteria():{cat:[],plat:[],genre:[],mood:[],vibe:[],rating:[],decade:[]}}
 function setCriteria(patch){if(typeof window.setMatchCriteria==='function')window.setMatchCriteria(patch)}
@@ -819,11 +900,11 @@ function applyLanguage(){
    const together=qs('.ma-together-link');if(together)together.textContent=t.together;
  }
  if(isDiscover){const h=qs('.discover-title-copy h1');if(h)h.textContent=t.discover;const i=qs('#discover-new-input');if(i)i.placeholder=t.askph;const b=qs('.composer-send');if(b)b.textContent=t.send}
- if(isPricing)applyPricingLanguage();
+ if(isPricing){paintPricingHeaderMenu();applyPricingLanguage();}
 }
 function boot(){
  if(!(isHome||isDiscover||isTogether||isPricing))return;
- ensureBrandMeta();brandHeader();applyBrandLocale();
+ ensureBrandMeta();brandHeader();applyBrandLocale();paintPricingHeaderMenu();
  if(isHome){
    // Home re-homes several existing sections during boot. Disable browser
    // scroll anchoring for those synchronous moves so first paint can never
