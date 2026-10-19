@@ -460,6 +460,9 @@ ${imageMeta}
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+<link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
+<link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
+<script defer src="/news-ui.js?v=20261019-newsui1"></script>
 ${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 <style>
@@ -468,25 +471,25 @@ ${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/pa
 .news-article-header #matchapp-kids-entry{margin-inline-start:0!important}
 </style>
 </head>
-<body>
+<body class="news-ui-page">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header news-article-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
+<header class="app-header news-article-header ma-news-header"><div class="ma-brand-lockup"><a href="/" class="ma-brand-home-link" data-news-ui-aria="brandHome" aria-label="MatchApp Ai home" dir="ltr"><span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-icon-approved.png" alt="" width="52" height="52" decoding="async"></span><span class="ma-brand-copy ebook-text-wordmark" translate="no" lang="en" dir="ltr" aria-hidden="true"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span></a></div></header>
 <main style="max-width:780px;margin:40px auto;padding:20px">
   <article class="premium-card" style="padding:24px"${commerceAttributes(i)}>
-    <p style="color:#E5C158;font-weight:800">LATEST NEWS · ${esc(i.event_type)}</p>
-    <h1>${t}</h1>
-    <p>${esc(i.description)}</p>${commerceSlot(i,language)}
+    <p style="color:#E5C158;font-weight:800"><span data-news-ui="latest">Latest News</span> · <span data-news-ui-event="${esc(i.event_type)}">${esc(i.event_type)}</span></p>
+    <h1 data-news-source-title lang="${esc(language)}" dir="auto" translate="no">${t}</h1>
+    <p data-news-ui="sourceNote" data-news-source="${src}">${esc(i.description)}</p>${commerceSlot(i,language)}
     <div style="margin:18px 0;padding:14px;border:1px solid rgba(229,193,88,.25);border-radius:12px">
-      <strong>Verified source:</strong> ${src} (${sourceDomain})<br>
-      <span>${esc(publishedTitle)}: <time datetime="${esc(i.published_at)}">${esc(publishedLabel)}</time></span>
+      <strong data-news-ui="verifiedSource">Verified source:</strong> ${src} (${sourceDomain})<br>
+      <span><span data-news-ui="${publishedTitle==='Original publication'?'published':'discovered'}">${esc(publishedTitle)}:</span> <time data-news-ui-date="long" datetime="${esc(i.published_at)}">${esc(publishedLabel)}</time></span>
     </div>
-    <p><a href="${orig}" target="_blank" rel="noopener noreferrer external">Read the original report at ${src} ↗</a></p>
-    <p><a href="${landing}">Open this story inside MatchApp Latest News →</a></p>
-    <p style="font-size:13px;color:#aaa">MatchApp links to the original publisher without republishing article bodies. Dates identify publisher-supplied publication times or clearly labeled discovery-index timestamps according to each story's data source.</p>
-    <p><a href="/news/">More entertainment, world and sports news</a> · <a href="/">Back to MatchApp</a></p>
+    <p><a href="${orig}" target="_blank" rel="noopener noreferrer external" data-news-ui="readAt" data-news-source="${src}">Read the original report at ${src} ↗</a></p>
+    <p><a href="${landing}" data-news-ui="openStory">Open this story in MatchApp Ai News →</a></p>
+    <p style="font-size:13px;color:#aaa" data-news-ui="attribution">MatchApp links to the original publisher without republishing article bodies. Dates identify publisher-supplied publication times or clearly labeled discovery-index timestamps according to each story's data source.</p>
+    <p><a href="/news/" data-news-ui="moreNews">More entertainment, world and sports news</a> · <a href="/" data-news-ui="backHome">Back to MatchApp Ai</a></p>
   </article>
 </main>
 <script src="/build-meta.js?v=203"></script>
@@ -497,11 +500,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 function hub(items,generated){
   const options=newsCommerce.offersMarkup(newsCommerce.offers,'','en');
   const cards=items.slice(0,24).map(i=>`<article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px"${commerceAttributes(i)}>
-    <p style="font-size:12px;color:#E5C158">${esc(i.source)} · ${esc(i.event_type)} · ${esc(new Date(i.published_at).toLocaleDateString('en-US'))}</p>
-    <h2 style="font-size:19px"><a href="${esc(i.matchapp_url)}">${esc(i.title)}</a></h2>
-    <p>${esc(i.description)}</p>${commerceSlot(i,'en')}
-    <p><a href="${esc(i.landing_url)}">Open in Latest News →</a></p>
-    <a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>${esc(i.source)}</bdi> · <span data-news-ui-event="${esc(i.event_type)}">${esc(i.event_type)}</span> · <time data-news-ui-date="numeric" datetime="${esc(i.published_at)}">${esc(new Date(i.published_at).toLocaleDateString('en-US'))}</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="${esc(i.language==='pt'?'pt-BR':i.language||'en')}" dir="auto" translate="no"><a href="${esc(i.matchapp_url)}">${esc(i.title)}</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="${esc(i.source)}">${esc(i.description)}</p>${commerceSlot(i,'en')}
+    <p><a href="${esc(i.landing_url)}" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article>`).join('');
 
   const itemList=items.slice(0,24).map((i,index)=>({
@@ -567,27 +570,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+<link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
+<link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
+<script defer src="/news-ui.js?v=20261019-newsui1"></script>
 ${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 </head>
-<body>
+<body class="news-ui-page">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
+<header class="app-header ma-news-header"><div class="ma-brand-lockup"><a href="/" class="ma-brand-home-link" data-news-ui-aria="brandHome" aria-label="MatchApp Ai home" dir="ltr"><span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-icon-approved.png" alt="" width="52" height="52" decoding="async"></span><span class="ma-brand-copy ebook-text-wordmark" translate="no" lang="en" dir="ltr" aria-hidden="true"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span></a></div></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
-  <a href="/#latest-news">← MatchApp Latest News</a>
-  <h1>Latest Entertainment, World and Sports News</h1>
-  <p>Country-aware and language-aware entertainment and world news refreshed hourly plus trusted publisher sports links discovered twice daily. SEO freshness metadata is rebuilt with every news refresh. Each story opens its source.</p>
+  <a href="/#latest-news" data-news-ui="backLatest">← MatchApp Ai — Latest News</a>
+  <h1 data-news-ui="hubTitle">Latest Entertainment, World and Sports News</h1>
+  <p data-news-ui="hubIntro">Entertainment and world news refresh hourly; sports links update twice daily. Choose your interface language while original headlines keep the publisher’s language. Open the source for the full story.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
-    <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
-    <p>MatchApp Latest News is an hourly entertainment and world-news index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
-    <p>The feed is built from direct trusted-publisher sources and refreshed throughout the day. Automated filters remove obvious rumor-style language and unrelated stories before an item reaches this hub. The original publisher remains the source of record for every headline and claim; MatchApp's role is discovery, organization and a clear path back to that source.</p>
-    <p>When a story points you toward a movie, series, performer or release, continue with <a href="/">MatchApp's entertainment matcher</a>, <a href="/discover.html?focus=start">Ask MatchApp Ai</a>, or check <a href="/where-to-watch/">where to watch</a> for streaming and cinema availability.</p>
-  <p>For deeper discovery beyond headlines, use the <a href="/guides/streaming-music-books-october-2026/">October 2026 streaming, music and books guide</a>, the <a href="/guides/coffee-music-tv-trends-september-30-2026/">September 30 trends guide</a>, or the <a href="/anime.html">Anime Finder</a>.</p>
+    <h2 id="news-guide-title" style="margin-top:0" data-news-ui="howTitle">How MatchApp Ai News works</h2>
+    <p data-news-ui="howIntro">Browse headlines from named publishers. Each item keeps its original source link and publication or discovery date. MatchApp Ai does not republish full articles.</p>
+    <p data-news-ui="howSources">Stories come from publisher feeds. Filters remove unrelated stories and obvious rumors. The original publisher remains responsible for each report; MatchApp Ai helps you discover it.</p>
+    <p><span data-news-ui="exploreLead">Explore the films, series and releases behind the news:</span> <a href="/" data-news-ui="matcher">Entertainment matcher</a> · <a href="/discover.html?focus=start" data-news-ui="askAi">Ask MatchApp Ai</a> · <a href="/where-to-watch/" data-news-ui="whereWatch">Where to watch</a></p>
+  <p><span data-news-ui="guidesLead">More guides and discovery:</span> <a href="/guides/streaming-music-books-october-2026/" data-news-ui="octoberGuide">October 2026 streaming, music and books guide</a> · <a href="/guides/coffee-music-tv-trends-september-30-2026/" data-news-ui="septemberGuide">September 30 trends guide</a> · <a href="/anime.html" data-news-ui="anime">Anime Finder</a>.</p>
   </section>
-  ${options?'<div data-news-local-offers>'+options+'</div>\n  ':''}<section data-native-news-feed aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
+  ${options?'<div data-news-local-offers>'+options+'</div>\n  ':''}<section data-native-news-feed data-news-ui-aria="feedLabel" aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>

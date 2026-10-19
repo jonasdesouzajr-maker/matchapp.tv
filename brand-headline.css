@@ -7,19 +7,22 @@
    Deliberately excludes Kids Mode, title artwork, AdSense and the Android
    launcher/splash assets. */
 html body.page-home #mh-topbox .ma-brand-lockup,
-html body.page-shell header.app-header.mh-topbox .ma-brand-lockup{
+html body.page-shell header.app-header.mh-topbox .ma-brand-lockup,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-lockup{
   display:flex!important;align-items:center!important;gap:0!important;
   min-width:0!important;max-width:100%!important;
   overflow:visible!important;
 }
 html body.page-home #mh-topbox .ma-brand-home-link,
-html body.page-shell header.app-header.mh-topbox .ma-brand-home-link{
+html body.page-shell header.app-header.mh-topbox .ma-brand-home-link,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-home-link{
   display:inline-flex!important;align-items:center!important;gap:0!important;
   min-width:0!important;max-width:100%!important;
   text-decoration:none!important;
 }
 html body.page-home #mh-topbox .ma-brand-copy,
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy{
   display:inline-flex!important;align-items:baseline!important;
   justify-content:flex-start!important;
   flex:0 1 auto!important;min-width:0!important;
@@ -31,7 +34,8 @@ html body.page-shell header.app-header.mh-topbox .ma-brand-copy{
   letter-spacing:-.057em!important;text-transform:none!important;
 }
 html body.page-home #mh-topbox .ma-brand-copy .ma-wordmark,
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-wordmark{
   display:inline-flex!important;align-items:baseline!important;
   flex:0 0 auto!important;white-space:nowrap!important;
   font-family:inherit!important;font-weight:950!important;
@@ -40,19 +44,22 @@ html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark{
   text-shadow:none!important;
 }
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-match,
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-match{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-match,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-match{
   background:linear-gradient(170deg,#FFFFFF 2%,#F8F3FF 32%,#DACDE5 75%,#AEB5CB 100%)!important;
   -webkit-background-clip:text!important;background-clip:text!important;
   -webkit-text-fill-color:transparent!important;color:#F6F1FF!important;
 }
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-app,
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-app{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-app,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-app{
   background:linear-gradient(165deg,#FFF4C0 0%,#FFE09A 27%,#E6B953 65%,#BB802B 100%)!important;
   -webkit-background-clip:text!important;background-clip:text!important;
   -webkit-text-fill-color:transparent!important;color:#EBC76E!important;
 }
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai,
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai{
   display:inline-block!important;position:relative!important;
   flex:0 0 auto!important;min-width:1.1em!important;
   font:950 clamp(38px,4vw,58px)/1.08 Outfit,Inter,"Arial Rounded MT Bold",system-ui,sans-serif!important;
@@ -68,7 +75,8 @@ html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai{
 }
 /* Original four-tip accent drawn in CSS, no generic emoji or extra assets. */
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai::after,
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::after{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::after,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai::after{
   content:""!important;position:absolute!important;pointer-events:none!important;
   top:.02em!important;right:0!important;width:.145em!important;height:.145em!important;
   background:#FFE5A8!important;
@@ -89,7 +97,9 @@ html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::aft
 html body.page-home #mh-topbox .ma-tv,
 html body.page-home #mh-topbox .ma-ai-brand-button,
 html body.page-shell header.app-header.mh-topbox .ma-tv,
-html body.page-shell header.app-header.mh-topbox .ma-ai-brand-button{
+html body.news-ui-page header.app-header.ma-news-header .ma-tv,
+html body.page-shell header.app-header.mh-topbox .ma-ai-brand-button,
+html body.news-ui-page header.app-header.ma-news-header .ma-ai-brand-button{
   display:none!important;
 }
 /* The large desktop mark remains the existing orb — the only motion is
@@ -127,34 +137,43 @@ html body.page-shell header.app-header.mh-topbox .ma-ai-brand-button{
   html body.page-home #mh-topbox .ma-brand-orb-stage{width:66px!important;flex-basis:66px!important}
   html body.page-home #mh-topbox .ma-brand-orb{width:72px!important;height:72px!important}
 }
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-wordmark{
   font-size:clamp(22px,2.1vw,31px)!important;
 }
-html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai{
+html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai{
   font-size:clamp(24px,2.35vw,35px)!important;
 }
 @media(max-width:640px){
-  html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark{
+  html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-wordmark,
+  html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-wordmark{
     font-size:clamp(19px,5.4vw,27px)!important;
   }
-  html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai{
+  html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai,
+  html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai{
     font-size:clamp(21px,5.9vw,29px)!important;
   }
-  html body.page-shell header.app-header.mh-topbox .ma-brand-copy{gap:.15em!important}
+  html body.page-shell header.app-header.mh-topbox .ma-brand-copy,
+  html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy{gap:.15em!important}
 }
 /* Motion/contrast accessibility and Android WebView stability. */
 @media(prefers-reduced-motion:reduce){
   html body.page-home #mh-topbox .ma-word-ai,
   html body.page-home #mh-topbox .ma-word-ai::after,
   html body.page-shell header.app-header.mh-topbox .ma-word-ai,
-  html body.page-shell header.app-header.mh-topbox .ma-word-ai::after{
+  html body.news-ui-page header.app-header.ma-news-header .ma-word-ai,
+  html body.page-shell header.app-header.mh-topbox .ma-word-ai::after,
+  html body.news-ui-page header.app-header.ma-news-header .ma-word-ai::after{
     animation:none!important;background-position:50% 50%!important;
   }
 }
 html.reduce-motion body.page-home #mh-topbox .ma-word-ai,
 html.reduce-motion body.page-home #mh-topbox .ma-word-ai::after,
 html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai,
-html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai::after{
+html.reduce-motion body.news-ui-page header.app-header.ma-news-header .ma-word-ai,
+html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai::after,
+html.reduce-motion body.news-ui-page header.app-header.ma-news-header .ma-word-ai::after{
   animation:none!important;background-position:50% 50%!important;
 }
 
@@ -216,6 +235,7 @@ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{
    Scoped solely to adult Ai letters across the Home, inner pages and hub. */
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai,
 html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai,
 html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{
   isolation:isolate!important;
   background-size:235% 100%!important;
@@ -224,6 +244,7 @@ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{
 }
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai::before,
 html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::before,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai::before,
 html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai::before{
   content:""!important;display:block!important;
   position:absolute!important;z-index:2!important;pointer-events:none!important;
@@ -235,6 +256,7 @@ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai::before{
 }
 html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai::after,
 html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::after,
+html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai::after,
 html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai::after{
   opacity:.8!important;
   transform-origin:center!important;
@@ -273,6 +295,7 @@ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai::after{
 @media(max-width:700px),(pointer:coarse){
   html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai,
   html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai,
+  html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai,
   html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai{
     animation:maSignatureWordmarkGlint 7.6s ease-out 1 both!important;
   }
@@ -280,24 +303,30 @@ html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai::after{
 @media(prefers-reduced-motion:reduce){
   html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai,
   html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai,
+  html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai,
   html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai,
   html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai::before,
   html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::before,
+  html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai::before,
   html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai::before,
   html body.page-home #mh-topbox .ma-brand-copy .ma-word-ai::after,
   html body.page-shell header.app-header.mh-topbox .ma-brand-copy .ma-word-ai::after,
+  html body.news-ui-page header.app-header.ma-news-header .ma-brand-copy .ma-word-ai::after,
   html body.ebook-page .ebook-page-top .ebook-hub-brand .ma-word-ai::after{
     animation:none!important;transform:none!important;
   }
 }
 html.reduce-motion body.page-home #mh-topbox .ma-word-ai,
 html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai,
+html.reduce-motion body.news-ui-page header.app-header.ma-news-header .ma-word-ai,
 html.reduce-motion body.ebook-page .ebook-page-top .ma-word-ai,
 html.reduce-motion body.page-home #mh-topbox .ma-word-ai::before,
 html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai::before,
+html.reduce-motion body.news-ui-page header.app-header.ma-news-header .ma-word-ai::before,
 html.reduce-motion body.ebook-page .ebook-page-top .ma-word-ai::before,
 html.reduce-motion body.page-home #mh-topbox .ma-word-ai::after,
 html.reduce-motion body.page-shell header.app-header.mh-topbox .ma-word-ai::after,
+html.reduce-motion body.news-ui-page header.app-header.ma-news-header .ma-word-ai::after,
 html.reduce-motion body.ebook-page .ebook-page-top .ma-word-ai::after{
  animation:none!important;transform:none!important;
 }

@@ -361,37 +361,418 @@ function extractPrice(card){
  const m=text.match(/\$\s*\d+(?:\.\d{1,2})?\s*(?:\/\s*(?:mo|month|yr|year))?/i);
  return m?m[0].replace(/\s+/g,' '):'';
 }
+// Pricing owns only these authored labels; billing and checkout controls retain their existing owners.
+const PRICING_COPY={
+  "en": {
+    "pageLabel": "MatchApp Ai Pricing",
+    "noAccount": "No account",
+    "dailyAction": "One Match or Ask uses one daily action",
+    "countryGuide": "Country-aware viewing guidance",
+    "firstMatch": "No sign-in before your first match",
+    "freeProfile": "Free profile",
+    "saveHistory": "Save titles and history",
+    "privateTaste": "Private taste profile",
+    "togetherFeatures": "Match Together and account features",
+    "fewerLimits": "Fewer limits",
+    "includedActions": "Included actions can be Matches or Asks",
+    "vipAdFree": "Ad-free while VIP is active",
+    "billingOptions": "Monthly or annual billing",
+    "note": "A daily action is either a Match or an Ask. Extra Matches do not buy Asks, and Extra Ask credits do not buy Matches.",
+    "adFree": "Ad-free",
+    "adFreeDesc": "Remove ads without changing daily allowance.",
+    "extraMatches": "Extra matches",
+    "extraMatchesDesc": "One-time Match top-ups.",
+    "extraAsk": "Extra Ask credits",
+    "extraAskDesc": "One-time Ask AI top-ups.",
+    "business": "Business",
+    "businessDesc": "50 included AI actions daily.",
+    "viewOptions": "View options"
+  },
+  "pt-BR": {
+    "pageLabel": "Preços do MatchApp Ai",
+    "noAccount": "Sem conta",
+    "dailyAction": "Um Match ou uma pergunta à IA usa uma ação diária",
+    "countryGuide": "Orientação sobre onde assistir no seu país",
+    "firstMatch": "Sem login antes do seu primeiro Match",
+    "freeProfile": "Perfil gratuito",
+    "saveHistory": "Salve títulos e seu histórico",
+    "privateTaste": "Perfil de preferências privado",
+    "togetherFeatures": "Match Together e recursos da conta",
+    "fewerLimits": "Menos limites",
+    "includedActions": "As ações incluídas servem para Matches ou perguntas à IA",
+    "vipAdFree": "Sem anúncios enquanto o VIP estiver ativo",
+    "billingOptions": "Cobrança mensal ou anual",
+    "note": "Uma ação diária é um Match ou uma pergunta à IA. Matches extras não compram perguntas à IA, e créditos extras de IA não compram Matches.",
+    "adFree": "Sem anúncios",
+    "adFreeDesc": "Remova anúncios sem alterar a cota diária.",
+    "extraMatches": "Matches extras",
+    "extraMatchesDesc": "Recargas avulsas de Matches.",
+    "extraAsk": "Créditos extras de IA",
+    "extraAskDesc": "Recargas avulsas para perguntas à IA.",
+    "business": "Empresarial",
+    "businessDesc": "50 ações de IA incluídas por dia.",
+    "viewOptions": "Ver opções"
+  },
+  "es": {
+    "pageLabel": "Precios de MatchApp Ai",
+    "noAccount": "Sin cuenta",
+    "dailyAction": "Un Match o una pregunta a la IA usa una acción diaria",
+    "countryGuide": "Orientación sobre dónde ver según tu país",
+    "firstMatch": "No necesitas iniciar sesión para tu primer Match",
+    "freeProfile": "Perfil gratuito",
+    "saveHistory": "Guarda títulos e historial",
+    "privateTaste": "Perfil de preferencias privado",
+    "togetherFeatures": "Match Together y funciones de la cuenta",
+    "fewerLimits": "Menos límites",
+    "includedActions": "Las acciones incluidas sirven para Matches o preguntas a la IA",
+    "vipAdFree": "Sin anuncios mientras VIP esté activo",
+    "billingOptions": "Facturación mensual o anual",
+    "note": "Una acción diaria es un Match o una pregunta a la IA. Los Matches extra no compran preguntas a la IA, y los créditos extra de IA no compran Matches.",
+    "adFree": "Sin anuncios",
+    "adFreeDesc": "Elimina anuncios sin cambiar la cuota diaria.",
+    "extraMatches": "Matches extra",
+    "extraMatchesDesc": "Recargas puntuales de Matches.",
+    "extraAsk": "Créditos extra de IA",
+    "extraAskDesc": "Recargas puntuales para preguntas a la IA.",
+    "business": "Empresas",
+    "businessDesc": "50 acciones de IA incluidas al día.",
+    "viewOptions": "Ver opciones"
+  },
+  "fr": {
+    "pageLabel": "Tarifs de MatchApp Ai",
+    "noAccount": "Sans compte",
+    "dailyAction": "Un Match ou une question à l’IA utilise une action quotidienne",
+    "countryGuide": "Des conseils pour regarder dans votre pays",
+    "firstMatch": "Aucune connexion requise pour votre premier Match",
+    "freeProfile": "Profil gratuit",
+    "saveHistory": "Enregistrez des titres et votre historique",
+    "privateTaste": "Profil de préférences privé",
+    "togetherFeatures": "Match Together et fonctionnalités du compte",
+    "fewerLimits": "Moins de limites",
+    "includedActions": "Les actions incluses servent aux Matches ou aux questions à l’IA",
+    "vipAdFree": "Sans publicité tant que VIP est actif",
+    "billingOptions": "Facturation mensuelle ou annuelle",
+    "note": "Une action quotidienne correspond à un Match ou à une question à l’IA. Les Matches supplémentaires n’achètent pas de questions à l’IA, et les crédits IA supplémentaires n’achètent pas de Matches.",
+    "adFree": "Sans publicité",
+    "adFreeDesc": "Supprimez les publicités sans modifier le quota quotidien.",
+    "extraMatches": "Matches supplémentaires",
+    "extraMatchesDesc": "Recharges ponctuelles de Matches.",
+    "extraAsk": "Crédits IA supplémentaires",
+    "extraAskDesc": "Recharges ponctuelles pour les questions à l’IA.",
+    "business": "Entreprise",
+    "businessDesc": "50 actions IA incluses par jour.",
+    "viewOptions": "Voir les options"
+  },
+  "de": {
+    "pageLabel": "MatchApp Ai Preise",
+    "noAccount": "Ohne Konto",
+    "dailyAction": "Ein Match oder eine KI-Frage verbraucht eine tägliche Aktion",
+    "countryGuide": "Hinweise zu Anbietern in deinem Land",
+    "firstMatch": "Für dein erstes Match ist keine Anmeldung nötig",
+    "freeProfile": "Kostenloses Profil",
+    "saveHistory": "Titel und Verlauf speichern",
+    "privateTaste": "Privates Vorliebenprofil",
+    "togetherFeatures": "Match Together und Kontofunktionen",
+    "fewerLimits": "Weniger Grenzen",
+    "includedActions": "Inklusive Aktionen gelten für Matches oder KI-Fragen",
+    "vipAdFree": "Werbefrei, solange VIP aktiv ist",
+    "billingOptions": "Monatliche oder jährliche Abrechnung",
+    "note": "Eine tägliche Aktion ist ein Match oder eine KI-Frage. Zusätzliche Matches kaufen keine KI-Fragen, und zusätzliche KI-Guthaben kaufen keine Matches.",
+    "adFree": "Werbefrei",
+    "adFreeDesc": "Werbung entfernen, ohne das Tageskontingent zu ändern.",
+    "extraMatches": "Zusätzliche Matches",
+    "extraMatchesDesc": "Einmalige Aufladungen für Matches.",
+    "extraAsk": "Zusätzliches KI-Guthaben",
+    "extraAskDesc": "Einmalige Aufladungen für KI-Fragen.",
+    "business": "Geschäftlich",
+    "businessDesc": "50 inklusive KI-Aktionen pro Tag.",
+    "viewOptions": "Optionen ansehen"
+  },
+  "it": {
+    "pageLabel": "Prezzi di MatchApp Ai",
+    "noAccount": "Senza account",
+    "dailyAction": "Un Match o una domanda all’IA usa un’azione giornaliera",
+    "countryGuide": "Indicazioni su dove guardare nel tuo paese",
+    "firstMatch": "Nessun accesso richiesto per il tuo primo Match",
+    "freeProfile": "Profilo gratuito",
+    "saveHistory": "Salva titoli e cronologia",
+    "privateTaste": "Profilo delle preferenze privato",
+    "togetherFeatures": "Match Together e funzioni dell’account",
+    "fewerLimits": "Meno limiti",
+    "includedActions": "Le azioni incluse servono per Matches o domande all’IA",
+    "vipAdFree": "Senza pubblicità finché VIP è attivo",
+    "billingOptions": "Fatturazione mensile o annuale",
+    "note": "Un’azione giornaliera è un Match o una domanda all’IA. I Matches extra non acquistano domande all’IA e i crediti IA extra non acquistano Matches.",
+    "adFree": "Senza pubblicità",
+    "adFreeDesc": "Rimuovi gli annunci senza modificare la quota giornaliera.",
+    "extraMatches": "Matches extra",
+    "extraMatchesDesc": "Ricariche una tantum per Matches.",
+    "extraAsk": "Crediti IA extra",
+    "extraAskDesc": "Ricariche una tantum per domande all’IA.",
+    "business": "Aziendale",
+    "businessDesc": "50 azioni IA incluse al giorno.",
+    "viewOptions": "Vedi le opzioni"
+  },
+  "tr": {
+    "pageLabel": "MatchApp Ai Fiyatları",
+    "noAccount": "Hesap gerekmez",
+    "dailyAction": "Bir Match veya yapay zekâ sorusu bir günlük işlem kullanır",
+    "countryGuide": "Ülkenize göre izleme rehberliği",
+    "firstMatch": "İlk Match için giriş yapmanız gerekmez",
+    "freeProfile": "Ücretsiz profil",
+    "saveHistory": "Yapımları ve geçmişi kaydedin",
+    "privateTaste": "Özel tercih profili",
+    "togetherFeatures": "Match Together ve hesap özellikleri",
+    "fewerLimits": "Daha az sınır",
+    "includedActions": "Dahil işlemler Match veya yapay zekâ soruları için kullanılabilir",
+    "vipAdFree": "VIP etkinken reklamsız",
+    "billingOptions": "Aylık veya yıllık faturalandırma",
+    "note": "Bir günlük işlem, bir Match veya yapay zekâ sorusudur. Ek Match hakları yapay zekâ sorusu satın almaz; ek yapay zekâ kredileri de Match satın almaz.",
+    "adFree": "Reklamsız",
+    "adFreeDesc": "Günlük kotayı değiştirmeden reklamları kaldırın.",
+    "extraMatches": "Ek Match hakları",
+    "extraMatchesDesc": "Tek seferlik Match yüklemeleri.",
+    "extraAsk": "Ek yapay zekâ kredileri",
+    "extraAskDesc": "Yapay zekâ soruları için tek seferlik yüklemeler.",
+    "business": "Kurumsal",
+    "businessDesc": "Günde 50 yapay zekâ işlemi dahil.",
+    "viewOptions": "Seçenekleri görüntüle"
+  },
+  "ru": {
+    "pageLabel": "Тарифы MatchApp Ai",
+    "noAccount": "Без аккаунта",
+    "dailyAction": "Один Match или вопрос ИИ расходует одно действие в день",
+    "countryGuide": "Подсказки о просмотре с учётом вашей страны",
+    "firstMatch": "Для первого Match вход не нужен",
+    "freeProfile": "Бесплатный профиль",
+    "saveHistory": "Сохраняйте названия и историю",
+    "privateTaste": "Приватный профиль предпочтений",
+    "togetherFeatures": "Match Together и функции аккаунта",
+    "fewerLimits": "Меньше ограничений",
+    "includedActions": "Включённые действия подходят для Matches и вопросов ИИ",
+    "vipAdFree": "Без рекламы, пока активен VIP",
+    "billingOptions": "Ежемесячная или ежегодная оплата",
+    "note": "Одно ежедневное действие — это Match или вопрос ИИ. Дополнительные Matches не оплачивают вопросы ИИ, а дополнительные кредиты ИИ не оплачивают Matches.",
+    "adFree": "Без рекламы",
+    "adFreeDesc": "Уберите рекламу без изменения дневного лимита.",
+    "extraMatches": "Дополнительные Matches",
+    "extraMatchesDesc": "Разовое пополнение Matches.",
+    "extraAsk": "Дополнительные кредиты ИИ",
+    "extraAskDesc": "Разовое пополнение для вопросов ИИ.",
+    "business": "Для бизнеса",
+    "businessDesc": "50 включённых действий ИИ в день.",
+    "viewOptions": "Посмотреть варианты"
+  },
+  "ar": {
+    "pageLabel": "أسعار MatchApp Ai",
+    "noAccount": "دون حساب",
+    "dailyAction": "يستهلك كل Match أو سؤال للذكاء الاصطناعي إجراءً يومياً واحداً",
+    "countryGuide": "إرشادات للمشاهدة حسب بلدك",
+    "firstMatch": "لا يلزم تسجيل الدخول لأول Match",
+    "freeProfile": "ملف شخصي مجاني",
+    "saveHistory": "احفظ العناوين والسجل",
+    "privateTaste": "ملف تفضيلات خاص",
+    "togetherFeatures": "Match Together وميزات الحساب",
+    "fewerLimits": "قيود أقل",
+    "includedActions": "يمكن استخدام الإجراءات المشمولة لطلبات Match أو أسئلة الذكاء الاصطناعي",
+    "vipAdFree": "دون إعلانات طوال فترة تفعيل VIP",
+    "billingOptions": "فوترة شهرية أو سنوية",
+    "note": "الإجراء اليومي هو طلب Match أو سؤال للذكاء الاصطناعي. طلبات Match الإضافية لا تشتري أسئلة للذكاء الاصطناعي، وأرصدة الذكاء الاصطناعي الإضافية لا تشتري طلبات Match.",
+    "adFree": "دون إعلانات",
+    "adFreeDesc": "أزل الإعلانات دون تغيير الحد اليومي.",
+    "extraMatches": "طلبات Match إضافية",
+    "extraMatchesDesc": "شحنات منفردة لطلبات Match.",
+    "extraAsk": "أرصدة ذكاء اصطناعي إضافية",
+    "extraAskDesc": "شحنات منفردة لأسئلة الذكاء الاصطناعي.",
+    "business": "للأعمال",
+    "businessDesc": "50 إجراء ذكاء اصطناعي مشمولاً يومياً.",
+    "viewOptions": "عرض الخيارات"
+  },
+  "hi": {
+    "pageLabel": "MatchApp Ai की कीमतें",
+    "noAccount": "खाते की ज़रूरत नहीं",
+    "dailyAction": "एक Match या AI सवाल में एक दैनिक कार्रवाई लगती है",
+    "countryGuide": "आपके देश के अनुसार देखने की जानकारी",
+    "firstMatch": "पहले Match के लिए साइन इन ज़रूरी नहीं",
+    "freeProfile": "मुफ़्त प्रोफ़ाइल",
+    "saveHistory": "शीर्षक और इतिहास सेव करें",
+    "privateTaste": "निजी पसंद प्रोफ़ाइल",
+    "togetherFeatures": "Match Together और खाते की सुविधाएँ",
+    "fewerLimits": "कम सीमाएँ",
+    "includedActions": "शामिल कार्रवाइयों का उपयोग Matches या AI सवालों के लिए करें",
+    "vipAdFree": "VIP सक्रिय रहने तक विज्ञापन नहीं",
+    "billingOptions": "मासिक या वार्षिक बिलिंग",
+    "note": "एक दैनिक कार्रवाई एक Match या AI सवाल है। अतिरिक्त Matches से AI सवाल नहीं खरीदे जाते और अतिरिक्त AI क्रेडिट से Matches नहीं खरीदे जाते।",
+    "adFree": "विज्ञापन रहित",
+    "adFreeDesc": "दैनिक सीमा बदले बिना विज्ञापन हटाएँ।",
+    "extraMatches": "अतिरिक्त Matches",
+    "extraMatchesDesc": "एकमुश्त Match टॉप-अप।",
+    "extraAsk": "अतिरिक्त AI क्रेडिट",
+    "extraAskDesc": "AI सवालों के लिए एकमुश्त टॉप-अप।",
+    "business": "व्यावसायिक",
+    "businessDesc": "हर दिन 50 AI कार्रवाइयाँ शामिल।",
+    "viewOptions": "विकल्प देखें"
+  },
+  "id": {
+    "pageLabel": "Harga MatchApp Ai",
+    "noAccount": "Tanpa akun",
+    "dailyAction": "Satu Match atau pertanyaan AI memakai satu aksi harian",
+    "countryGuide": "Panduan menonton sesuai negara Anda",
+    "firstMatch": "Tidak perlu masuk untuk Match pertama",
+    "freeProfile": "Profil gratis",
+    "saveHistory": "Simpan judul dan riwayat",
+    "privateTaste": "Profil selera pribadi",
+    "togetherFeatures": "Match Together dan fitur akun",
+    "fewerLimits": "Lebih sedikit batasan",
+    "includedActions": "Aksi yang termasuk dapat dipakai untuk Match atau pertanyaan AI",
+    "vipAdFree": "Bebas iklan selama VIP aktif",
+    "billingOptions": "Tagihan bulanan atau tahunan",
+    "note": "Satu aksi harian adalah satu Match atau pertanyaan AI. Match tambahan tidak membeli pertanyaan AI, dan kredit AI tambahan tidak membeli Match.",
+    "adFree": "Bebas iklan",
+    "adFreeDesc": "Hapus iklan tanpa mengubah kuota harian.",
+    "extraMatches": "Match tambahan",
+    "extraMatchesDesc": "Isi ulang Match sekali bayar.",
+    "extraAsk": "Kredit AI tambahan",
+    "extraAskDesc": "Isi ulang sekali bayar untuk pertanyaan AI.",
+    "business": "Bisnis",
+    "businessDesc": "Termasuk 50 aksi AI setiap hari.",
+    "viewOptions": "Lihat pilihan"
+  },
+  "ja": {
+    "pageLabel": "MatchApp Ai の料金",
+    "noAccount": "アカウント不要",
+    "dailyAction": "Match 1回またはAIへの質問1回で、1日のアクションを1回分使います",
+    "countryGuide": "お住まいの国に応じた視聴案内",
+    "firstMatch": "最初のMatchはログイン不要",
+    "freeProfile": "無料プロフィール",
+    "saveHistory": "作品と履歴を保存",
+    "privateTaste": "非公開の好みプロフィール",
+    "togetherFeatures": "Match Together とアカウント機能",
+    "fewerLimits": "制限を少なく",
+    "includedActions": "含まれるアクションはMatchやAIへの質問に使えます",
+    "vipAdFree": "VIPの有効期間中は広告なし",
+    "billingOptions": "月払いまたは年払い",
+    "note": "1日のアクション1回分は、Match 1回またはAIへの質問1回です。追加MatchではAIへの質問を購入できず、追加AIクレジットではMatchを購入できません。",
+    "adFree": "広告なし",
+    "adFreeDesc": "1日の利用枠を変えずに広告を非表示にします。",
+    "extraMatches": "追加Match",
+    "extraMatchesDesc": "Matchを買い切りで追加。",
+    "extraAsk": "追加AIクレジット",
+    "extraAskDesc": "AIへの質問を買い切りで追加。",
+    "business": "ビジネス",
+    "businessDesc": "1日50回のAIアクションを含みます。",
+    "viewOptions": "選択肢を見る"
+  },
+  "ko": {
+    "pageLabel": "MatchApp Ai 요금",
+    "noAccount": "계정 없이 이용",
+    "dailyAction": "Match 1회 또는 AI 질문 1회에 일일 작업 1회가 사용됩니다",
+    "countryGuide": "거주 국가에 맞는 시청 안내",
+    "firstMatch": "첫 Match는 로그인 없이 이용",
+    "freeProfile": "무료 프로필",
+    "saveHistory": "작품과 기록 저장",
+    "privateTaste": "비공개 취향 프로필",
+    "togetherFeatures": "Match Together 및 계정 기능",
+    "fewerLimits": "더 적은 제한",
+    "includedActions": "포함된 작업은 Match 또는 AI 질문에 사용할 수 있습니다",
+    "vipAdFree": "VIP 활성 기간에는 광고 없음",
+    "billingOptions": "월간 또는 연간 결제",
+    "note": "일일 작업 1회는 Match 1회 또는 AI 질문 1회입니다. 추가 Match로 AI 질문을 구매할 수 없으며, 추가 AI 크레딧으로 Match를 구매할 수 없습니다.",
+    "adFree": "광고 없음",
+    "adFreeDesc": "일일 한도를 바꾸지 않고 광고를 제거합니다.",
+    "extraMatches": "추가 Match",
+    "extraMatchesDesc": "일회성 Match 충전.",
+    "extraAsk": "추가 AI 크레딧",
+    "extraAskDesc": "AI 질문을 위한 일회성 충전.",
+    "business": "비즈니스",
+    "businessDesc": "매일 AI 작업 50회 포함.",
+    "viewOptions": "옵션 보기"
+  },
+  "zh": {
+    "pageLabel": "MatchApp Ai 价格",
+    "noAccount": "无需账户",
+    "dailyAction": "每次 Match 或向 AI 提问都会使用一次每日操作额度",
+    "countryGuide": "根据您所在国家提供观看指引",
+    "firstMatch": "首次 Match 无需登录",
+    "freeProfile": "免费个人资料",
+    "saveHistory": "保存作品和历史记录",
+    "privateTaste": "私密偏好档案",
+    "togetherFeatures": "Match Together 和账户功能",
+    "fewerLimits": "更少限制",
+    "includedActions": "所含操作额度可用于 Match 或向 AI 提问",
+    "vipAdFree": "VIP 有效期间免广告",
+    "billingOptions": "按月或按年付费",
+    "note": "一次每日操作额度可用于一次 Match 或一次 AI 提问。额外 Match 不能购买 AI 提问，额外 AI 积分也不能购买 Match。",
+    "adFree": "免广告",
+    "adFreeDesc": "去除广告，不改变每日额度。",
+    "extraMatches": "额外 Match",
+    "extraMatchesDesc": "一次性充值 Match。",
+    "extraAsk": "额外 AI 积分",
+    "extraAskDesc": "为 AI 提问进行一次性充值。",
+    "business": "商业版",
+    "businessDesc": "每天包含 50 次 AI 操作。",
+    "viewOptions": "查看选项"
+  }
+};
+function pricingText(key){
+ const labels=PRICING_COPY[langKey()];
+ return Object.prototype.hasOwnProperty.call(labels,key)?labels[key]:c()[key];
+}
+function repaintPricingText(node){
+ const value=pricingText(node.dataset.maPricingText);
+ if(typeof value==='string')node.textContent=(node.dataset.maPricingCount==null?'':node.dataset.maPricingCount+' ')+value;
+}
+function pricingNode(tag,cls,key,count){
+ const node=el(tag,cls);node.dataset.maPricingText=key;
+ if(count!=null)node.dataset.maPricingCount=String(count);
+ repaintPricingText(node);return node;
+}
+function applyPricingLanguage(){
+ if(!isPricing)return;
+ const language=langKey(),direction=language==='ar'?'rtl':'ltr',wrap=qs('.ma-pricing-first');
+ if(wrap){wrap.lang=language;wrap.dir=direction;qsa('[data-ma-pricing-text]',wrap).forEach(repaintPricingText);}
+ // The deferred page shell creates this nonbrand label after the Pricing owner can mount.
+ const label=qs('header.app-header.mh-topbox .mh-head > .mh-tagline');
+ if(label){label.textContent=PRICING_COPY[language].pageLabel;label.lang=language;label.dir=direction;}
+ const home=qs('header.app-header.mh-topbox #mh-home-btn'),homeLabel=home&&qs('.mh-home-label',home);
+ const homeCopy=typeof window.t==='function'?window.t('nav.home'):'';
+ if(homeLabel&&typeof homeCopy==='string'&&homeCopy!=='nav.home'){
+  const text=homeCopy.replace(/^🏠\uFE0F?\s*/,'').trim();
+  if(text){homeLabel.textContent=text;homeLabel.lang=language;homeLabel.dir=direction;home.setAttribute('aria-label',text);home.setAttribute('title',text);}
+ }
+}
 function mountPricing(){
- document.body.classList.add('ma-ia-pricing');const t=c();
+ document.body.classList.add('ma-ia-pricing');
  const monthly=qs('#btn-vip_monthly'),annual=qs('#btn-vip_annual'),adfree=qs('#btn-ad_free'),business=qs('#btn-business');
  if(!monthly||!annual)return;
  const monthlyCard=monthly.closest('article'),annualCard=annual.closest('article'),adCard=adfree?.closest('article'),businessCard=business?.closest('article');
  const grid=monthlyCard?.parentElement;if(!grid)return;grid.classList.add('ma-pricing-old-grid');
  const title=qs('[data-i18n="pricing.title"]'),sub=qs('[data-i18n="pricing.subtitle"]');title?.classList.add('ma-pricing-old-head');sub?.classList.add('ma-pricing-old-head');
- const wrap=el('section','ma-pricing-first'),copy=el('div','ma-pricing-copy');copy.innerHTML='<h1>'+t.pricingTitle+'</h1><p>'+t.pricingSub+'</p>';
+ const wrap=el('section','ma-pricing-first'),copy=el('div','ma-pricing-copy');copy.append(pricingNode('h1','','pricingTitle'),pricingNode('p','','pricingSub'));
  const plans=el('div','ma-plan-grid');
- function plan(cls,kicker,name,big,items){const a=el('article','ma-plan '+cls);a.innerHTML='<span class="ma-plan-kicker">'+kicker+'</span><h2>'+name+'</h2><div class="ma-plan-big">'+big+'</div><ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul>';return a}
- const free=plan('','No account',t.freePlan,'3 '+t.daily,['One Match or Ask uses one daily action','Country-aware viewing guidance','No sign-in before your first match']);
- const freeCta=el('a','ma-plan-cta ghost',t.start);freeCta.href='/#ma-concierge';free.appendChild(freeCta);
- const account=plan('is-account','Free profile',t.account,'5 '+t.daily,['Save titles and history','Private taste profile','Match Together and account features']);
- const acct=el('button','ma-plan-cta ghost',t.join);acct.type='button';acct.addEventListener('click',()=>{if(typeof window.openAuthModal==='function')window.openAuthModal();else location.href='/'});account.appendChild(acct);
- const vip=plan('is-vip','Fewer limits',t.vip,'10 '+t.daily,['Included actions can be Matches or Asks','Ad-free while VIP is active','Monthly or annual billing']);
- const toggle=el('div','ma-billing-toggle');const mb=el('button','',t.monthly),ab=el('button','',t.annual);mb.type=ab.type='button';mb.setAttribute('aria-pressed','false');ab.setAttribute('aria-pressed','true');toggle.append(mb,ab);
+ function plan(cls,kicker,name,amount,items){const a=el('article','ma-plan '+cls),list=el('ul');a.append(pricingNode('span','ma-plan-kicker',kicker),pricingNode('h2','',name),pricingNode('div','ma-plan-big','daily',amount));items.forEach(key=>list.appendChild(pricingNode('li','',key)));a.appendChild(list);return a}
+ const free=plan('','noAccount','freePlan',3,['dailyAction','countryGuide','firstMatch']);
+ const freeCta=pricingNode('a','ma-plan-cta ghost','start');freeCta.href='/#ma-concierge';free.appendChild(freeCta);
+ const account=plan('is-account','freeProfile','account',5,['saveHistory','privateTaste','togetherFeatures']);
+ const acct=pricingNode('button','ma-plan-cta ghost','join');acct.type='button';acct.addEventListener('click',()=>{if(typeof window.openAuthModal==='function')window.openAuthModal();else location.href='/'});account.appendChild(acct);
+ const vip=plan('is-vip','fewerLimits','vip',10,['includedActions','vipAdFree','billingOptions']);
+ const toggle=el('div','ma-billing-toggle');const mb=pricingNode('button','','monthly'),ab=pricingNode('button','','annual');mb.type=ab.type='button';mb.setAttribute('aria-pressed','false');ab.setAttribute('aria-pressed','true');toggle.append(mb,ab);
  const price=el('div','ma-plan-big',extractPrice(annualCard)||extractPrice(monthlyCard)||'');
  monthly.removeAttribute('style');annual.removeAttribute('style');monthly.classList.add('ma-vip-checkout');annual.classList.add('ma-vip-checkout');monthly.hidden=true;annual.hidden=false;
  function bill(mode){const isM=mode==='m';mb.setAttribute('aria-pressed',String(isM));ab.setAttribute('aria-pressed',String(!isM));monthly.hidden=!isM;annual.hidden=isM;price.textContent=extractPrice(isM?monthlyCard:annualCard)}
  mb.addEventListener('click',()=>bill('m'));ab.addEventListener('click',()=>bill('a'));vip.append(toggle,price,monthly,annual);
  plans.append(free,account,vip);wrap.append(copy,plans);
- const note=el('p','ma-pricing-note','A daily action is either a Match or an Ask. Extra Matches do not buy Asks, and Extra Ask credits do not buy Matches.');wrap.appendChild(note);
+ const note=pricingNode('p','ma-pricing-note','note');wrap.appendChild(note);
  const secondary=el('div','ma-secondary-products');
- function secondaryCard(name,desc,node){const a=el('div','ma-secondary-product');a.innerHTML='<strong>'+name+'</strong><small>'+desc+'</small>';if(node){node.removeAttribute('style');node.classList.remove('gold-btn');a.appendChild(node)}return a}
- if(adfree)secondary.appendChild(secondaryCard('Ad-free','Remove ads without changing daily allowance.',adfree));
+ function secondaryCard(name,desc,node){const a=el('div','ma-secondary-product');a.append(pricingNode('strong','',name),pricingNode('small','',desc));if(node){node.removeAttribute('style');node.classList.remove('gold-btn');a.appendChild(node)}return a}
+ if(adfree)secondary.appendChild(secondaryCard('adFree','adFreeDesc',adfree));
  const credits=qs('.credits-section');if(credits&&!credits.id)credits.id='credits';
- const ex=secondaryCard('Extra matches','One-time Match top-ups.');const exa=el('a','', 'View options');exa.href='#credits';ex.appendChild(exa);secondary.appendChild(ex);
- const ask=secondaryCard('Extra Ask credits','One-time Ask AI top-ups.');const aska=el('a','', 'View options');aska.href='#credits';ask.appendChild(aska);secondary.appendChild(ask);
- if(business)secondary.appendChild(secondaryCard('Business','50 included AI actions daily.',business));
+ const ex=secondaryCard('extraMatches','extraMatchesDesc');const exa=pricingNode('a','','viewOptions');exa.href='#credits';ex.appendChild(exa);secondary.appendChild(ex);
+ const ask=secondaryCard('extraAsk','extraAskDesc');const aska=pricingNode('a','','viewOptions');aska.href='#credits';ask.appendChild(aska);secondary.appendChild(ask);
+ if(business)secondary.appendChild(secondaryCard('business','businessDesc',business));
  wrap.appendChild(secondary);
  const section=grid.closest('section.container')||grid.parentElement;section.insertBefore(wrap,title||grid);
+ applyPricingLanguage();
 }
 function prepareResponsiveAds(){
  if(!isHome)return;
@@ -438,6 +819,7 @@ function applyLanguage(){
    const together=qs('.ma-together-link');if(together)together.textContent=t.together;
  }
  if(isDiscover){const h=qs('.discover-title-copy h1');if(h)h.textContent=t.discover;const i=qs('#discover-new-input');if(i)i.placeholder=t.askph;const b=qs('.composer-send');if(b)b.textContent=t.send}
+ if(isPricing)applyPricingLanguage();
 }
 function boot(){
  if(!(isHome||isDiscover||isTogether||isPricing))return;
@@ -454,7 +836,7 @@ function boot(){
      else root.style.removeProperty('overflow-anchor');
    }));
  }
- if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing)mountPricing();
+ if(isDiscover)mountDiscover();if(isTogether)mountTogether();if(isPricing){mountPricing();document.addEventListener('DOMContentLoaded',applyPricingLanguage,{once:true});setTimeout(applyPricingLanguage,0);}
  document.addEventListener('matchapp:langchange',()=>setTimeout(applyLanguage,0));
  if(isHome){
    const revealCanonicalHome=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{
