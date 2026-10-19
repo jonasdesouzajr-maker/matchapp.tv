@@ -1,10 +1,79 @@
 {
-  "generated_at": "2026-10-19T18:35:31.615Z",
-  "feed_version": "b55c32c4",
+  "generated_at": "2026-10-19T18:58:25.228Z",
+  "feed_version": "704cda0c",
   "sports_updated_at": "2026-10-19T17:29:17.567Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "rebuilt per check; modification dates advance only with content + source citation + stable archive",
   "items": [
+    {
+      "id": "cac6a995",
+      "title": "Itália anuncia envio de 500 soldados a Milão após protestos violentos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/italia-anuncia-envio-de-500-soldados-a-milao-apos-protestos-violentos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T18:39:54.000Z",
+      "discovered_at": "2026-10-19T18:58:25.228Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/jySdHUmkXDWhBsSn-XLIeaq4z1s=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/O/I7tHFEQRGUGbaHa4HZPQ/2026-10-19t113636z-229004888-rc296oagpzw6-rtrmadp-3-italy-protest-aftermath.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/italia-anuncia-envio-de-500-soldados-a-milao-apos-protestos-violentos-cac6a9/",
+      "landing_url": "https://matchapp.tv/?news=cac6a995#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "italia",
+          "anuncia",
+          "envio",
+          "500",
+          "soldados",
+          "milao"
+        ],
+        "long_tail": [
+          "Itália anuncia envio de 500 soldados a Milão após protestos violentos 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "italia",
+          "anuncia",
+          "envio",
+          "500",
+          "soldados",
+          "milao"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Itália anuncia envio de 500 soldados a Milão após…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "italia",
+          "anuncia",
+          "envio",
+          "500",
+          "soldados",
+          "milao",
+          "Itália anuncia envio de 500 soldados a Milão após protestos violentos 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T18:58:25.228Z"
+      }
+    },
     {
       "id": "09a21c14",
       "title": "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019",
@@ -1379,7 +1448,7 @@
     },
     {
       "id": "303cb7d2",
-      "title": "Paris e outrs cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês",
+      "title": "Paris e outras cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/19/cidades-na-franca-decretam-toque-de-recolher.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
@@ -1393,7 +1462,7 @@
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://s2-g1.glbimg.com/Xgu7Pnr8lSHQMPNAMuGe72QyXhc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/I/P/eeaRYXQjyjDJfA5ceC0A/2026-10-19t084121z-1040104409-rc286oamsqhy-rtrmadp-3-france-protest.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/paris-e-outrs-cidades-na-franca-decretam-toque-de-recolher-em-meio-a-onda-de-pro-303cb7/",
+      "matchapp_url": "https://matchapp.tv/news/articles/paris-e-outras-cidades-na-franca-decretam-toque-de-recolher-em-meio-a-onda-de-pr-303cb7/",
       "landing_url": "https://matchapp.tv/?news=303cb7d2#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-10-19",
@@ -1401,20 +1470,20 @@
           "notícias do mundo",
           "notícias internacionais",
           "paris",
-          "outrs",
+          "outras",
           "cidades",
           "franca",
           "decretam",
           "toque"
         ],
         "long_tail": [
-          "Paris e outrs cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês 2026-10-19",
+          "Paris e outras cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês 2026-10-19",
           "notícias mundiais outubro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "paris",
-          "outrs",
+          "outras",
           "cidades",
           "franca",
           "decretam",
@@ -1426,24 +1495,24 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Paris e outrs cidades na França decretam toque de recolher…",
+        "meta_title": "Paris e outras cidades na França decretam toque de…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-10-19",
           "notícias do mundo",
           "notícias internacionais",
           "paris",
-          "outrs",
+          "outras",
           "cidades",
           "franca",
           "decretam",
           "toque",
-          "Paris e outrs cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês 2026-10-19",
+          "Paris e outras cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês 2026-10-19",
           "notícias mundiais outubro 2026",
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
+        "seo_generated_at": "2026-10-19T18:58:25.228Z"
       }
     },
     {
@@ -1508,75 +1577,6 @@
           "prisao",
           "raul",
           "Justiça dos EUA emite ordem de prisão a Raúl Castro, diz procurador-geral da Flórida 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "383eea94",
-      "title": "Polícia de Israel prende 10 suspeitos por ataques a jornalista e diplomatas na Cisjordânia",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/policia-israelense-prende-suspeitos-de-ataques-de-colonos-contra-jornalista-dos-eua-e-diplomatas-europeus.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T15:40:09.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/B8BSFqqpmweWqOKN5hR6JJ5-Dl8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/Z/JKhcAJSByE83sk1U9YnA/2026-10-16t081107z-1747813151-rc264oapaxjg-rtrmadp-3-israel-palestinians-settlers-attack.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/policia-de-israel-prende-10-suspeitos-por-ataques-a-jornalista-e-diplomatas-na-c-383eea/",
-      "landing_url": "https://matchapp.tv/?news=383eea94#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "policia",
-          "israel",
-          "prende",
-          "suspeitos",
-          "ataques",
-          "jornalista"
-        ],
-        "long_tail": [
-          "Polícia de Israel prende 10 suspeitos por ataques a jornalista e diplomatas na Cisjordânia 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "policia",
-          "israel",
-          "prende",
-          "suspeitos",
-          "ataques",
-          "jornalista"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Polícia de Israel prende 10 suspeitos por ataques a…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "policia",
-          "israel",
-          "prende",
-          "suspeitos",
-          "ataques",
-          "jornalista",
-          "Polícia de Israel prende 10 suspeitos por ataques a jornalista e diplomatas na Cisjordânia 2026-10-19",
           "notícias mundiais outubro 2026",
           "2026-10-19",
           "G1 Mundo"
