@@ -7,7 +7,7 @@ const CURRENT=path.join(ROOT,'data/international-day.json');
 const HISTORY=path.join(ROOT,'data/international-day-history.json');
 const read=(p,f)=>{try{return JSON.parse(fs.readFileSync(p,'utf8'));}catch(error){if(error.code==='ENOENT')return f;throw error;}};
 const current=read(CURRENT,null);
-if(!current||!current.id||!current.date||!current.title||!current.image){process.exit(0);}
+if(!current||!current.id||!current.date||!current.title||!current.image)throw new Error('Invalid current International Day');
 const archived=JSON.parse(JSON.stringify(current));delete archived._contract;delete archived._note;
 const history=read(HISTORY,[]);
 if(!Array.isArray(history))throw new Error('Invalid International Day history');

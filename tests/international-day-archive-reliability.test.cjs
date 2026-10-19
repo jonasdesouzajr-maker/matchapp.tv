@@ -44,3 +44,11 @@ test('missing or malformed source/history fails without erasing retained Interna
   assert.notEqual(f.run('archive-international-day.cjs',{GITHUB_EVENT_NAME:'push',GITHUB_SHA:'f'.repeat(40)}).status,0);assert.equal(f.history(),before);
  }finally{f.close();}
 });
+test('invalid current records and unverified push revisions remain failed checks with last-good history intact',()=>{
+ const f=fixture();try{
+  const before=f.history();
+  assert.notEqual(f.run('archive-international-day.cjs',{GITHUB_EVENT_NAME:'push',GITHUB_SHA:'invalid'}).status,0);assert.equal(f.history(),before);
+  f.write('international-day.json',{});
+  for(const script of ['archive-international-day.cjs','archive-international-day.mjs']){assert.notEqual(f.run(script).status,0);assert.equal(f.history(),before);}
+ }finally{f.close();}
+});
