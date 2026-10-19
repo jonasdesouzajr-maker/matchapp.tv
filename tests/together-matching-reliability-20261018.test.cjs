@@ -1,11 +1,13 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
 const source=read('together.js');
 function fn(name){const start=source.indexOf('function '+name+'('),end=source.indexOf('\n}\n',start)+2;assert(start>=0&&end>start,name);return source.slice(source.slice(start-6,start)==='async '?start-6:start,end);}
 const film=(title,id)=>({title,year:2020,kind:'movie',tmdbId:id,cats:['movie'],platform:'any',synopsis:'An original catalog film.'});
 async function boot(items=[]){
  const dom=new JSDOM('<section id="tg-step-result"></section><p id="tg-waiting-note"></p>',{url:'https://matchapp.tv/together.html?mode=classic',runScripts:'outside-only'}),w=dom.window,painted=[],published=[],errors=[];
+ installGuestReservations(w);
  w.eval(read('matching-policy.js'));await w.matchPolicy.ready();
  w.eval('var tgState={code:"SESSIONA",role:"host",resolved:false};var RATING_RANK={any:5};var SESSION_SHOWN=new Set();');
  w.CONTENT_CATALOG=items;w.tgEl=id=>w.document.getElementById(id);w.tgRenderResult=item=>painted.push(item);w.tgRenderParticipants=()=>{};w.tgStopPolling=()=>{};w.tgError=text=>errors.push(text);w.isBlockedEntry=()=>false;w.tmdbKindForCats=()=> 'movie';
