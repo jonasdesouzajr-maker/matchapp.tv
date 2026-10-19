@@ -6,6 +6,20 @@ const evidence=extra=>({owner:'sports-refresh.yml',now:'2026-10-19T12:32:00Z',ob
  evidenceComplete:true,historyReconciled:true,runs:[],activePublishers:[],openRecovery:false,materiallyStale:true,
  outputCheckedAt:'2026-10-18T14:00:00Z',failureReason:'Scheduled work missing and last successful source check predates due time',...extra,repairedRevision:extra&&'repairedRevision' in extra?extra.repairedRevision:recovery.repairRevision(extra?.owner||'sports-refresh.yml')});
 function fixture(){const dir=fs.mkdtempSync(path.join(os.tmpdir(),'editorial-ledger-'));return {file:path.join(dir,'existing.json'),close(){fs.rmSync(dir,{recursive:true,force:true});}};}
+test('shared sitemap and finalization repairs change every dependent owner fingerprint without resetting unrelated owners',()=>{
+ const f=fixture(),root=path.dirname(f.file);try{
+  const files=new Set(recovery.OWNERS.flatMap(owner=>['.github/workflows/'+owner,...recovery.SOURCES[owner]]));
+  for(const file of files){const target=path.join(root,file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(path.join(__dirname,'..',file),target);}
+  const fingerprints=()=>Object.fromEntries(recovery.OWNERS.map(owner=>[owner,recovery.repairRevision(owner,root)]));
+  for(const [file,dependent] of [
+   ['tools/update-sitemap.js',['sports-refresh.yml','news-refresh.yml','trending-refresh.yml','midnight-content-rotation.yml','availability.yml','awareness-rotation.yml']],
+   ['tools/finalize-brand.js',['midnight-content-rotation.yml','availability.yml']]
+  ]){
+   const before=fingerprints();fs.appendFileSync(path.join(root,file),'\n// Actual repaired shared dependency\n');const after=fingerprints();
+   for(const owner of recovery.OWNERS)assert.equal(before[owner]!==after[owner],dependent.includes(owner),file+' dependency of '+owner);
+  }
+ }finally{f.close();}
+});
 test('all audited owners retain their own exact cron; sports grace expires at 75 minutes',()=>{
  assert.deepEqual(recovery.schedules('sports-refresh.yml'),['17 11,23 * * *']);
  for(const owner of recovery.OWNERS)assert.ok(recovery.latestDue(recovery.schedules(owner),Date.parse('2026-10-19T12:32:00Z')));

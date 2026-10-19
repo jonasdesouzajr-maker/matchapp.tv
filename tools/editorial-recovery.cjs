@@ -10,11 +10,11 @@ const ACTIVE=new Set(['queued','in_progress','waiting','pending','requested']);
 const UNKNOWN=new Set(['reserved','submitted','unknown']);
 const MINUTE=60000;
 const SOURCES={
- 'sports-refresh.yml':['tools/refresh-sports-discovery.js','tools/sports-partner-feed.js','tools/refresh-news-rss.js'],
+ 'sports-refresh.yml':['tools/refresh-sports-discovery.js','tools/sports-partner-feed.js','tools/refresh-news-rss.js','tools/update-sitemap.js'],
  'news-refresh.yml':['tools/refresh-news-rss.js','tools/update-sitemap.js'],
- 'trending-refresh.yml':['tools/refresh-trending.mjs','tools/refresh-music-videos.js','tools/refresh-weekly-pick.mjs','tools/live-editorial-data.mjs','tools/search-guide-links.cjs'],
- 'midnight-content-rotation.yml':['tools/sync-catalog-media.js','tools/refresh-news-rss.js','tools/build-global-events.js','tools/archive-international-day.mjs','tools/retained-history.cjs','tools/awareness-bot.mjs','tools/build-seo-pages.js','tools/build-watch-pages.js','tools/build-world-discovery-guide.js','tools/search-guide-links.cjs','tools/update-sitemap.js'],
- 'availability.yml':['tools/fetch-availability.js','tools/availability-evidence.cjs','tools/build-watch-pages.js','tools/build-seo-pages.js','tools/update-sitemap.js'],
+ 'trending-refresh.yml':['tools/refresh-trending.mjs','tools/refresh-music-videos.js','tools/refresh-weekly-pick.mjs','tools/live-editorial-data.mjs','tools/search-guide-links.cjs','tools/update-sitemap.js'],
+ 'midnight-content-rotation.yml':['tools/sync-catalog-media.js','tools/refresh-news-rss.js','tools/build-global-events.js','tools/archive-international-day.mjs','tools/retained-history.cjs','tools/awareness-bot.mjs','tools/build-seo-pages.js','tools/build-watch-pages.js','tools/build-world-discovery-guide.js','tools/search-guide-links.cjs','tools/update-sitemap.js','tools/finalize-brand.js'],
+ 'availability.yml':['tools/fetch-availability.js','tools/availability-evidence.cjs','tools/build-watch-pages.js','tools/build-seo-pages.js','tools/update-sitemap.js','tools/finalize-brand.js'],
  'scraper.yml':['tools/sync-catalog-media.js'],
  'awareness-rotation.yml':['tools/awareness-bot.mjs','tools/archive-international-day.mjs','tools/retained-history.cjs','tools/update-sitemap.js'],
  'indexnow.yml':[]

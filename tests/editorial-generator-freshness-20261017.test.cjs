@@ -37,10 +37,13 @@ test('only the event archive shell retains the existing token assets before its 
  const source=fs.readFileSync(path.join(ROOT,'tools/build-global-events.js'),'utf8');
  const start=source.indexOf('function shell('),end=source.indexOf('\nconst urls=[];',start);
  assert.ok(start>=0&&end>start);
- const shell=vm.runInNewContext(source.slice(start,end)+'\nshell');
+ const home=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
+ const tokenAssets={script:home.match(/<script src="(\/match-tokens\.js\?[^\"]+)"/)?.[1],style:home.match(/<link rel="stylesheet" href="(\/match-tokens\.css\?[^\"]+)"/)?.[1]};
+ assert.ok(tokenAssets.script&&tokenAssets.style,'Home owns both current token asset URLs');
+ const shell=vm.runInNewContext(source.slice(start,end)+'\nshell',{tokenAssets});
  const args={headHtml:'<title>Verified events</title>',body:'<section id="original-events">Original event details</section>'};
  const archive=shell({...args,archive:true}),guide=shell(args);
- const script='/match-tokens.js?v=20261019-refresh1',style='/match-tokens.css?v=20261017-3';
+ const {script,style}=tokenAssets;
  assert.equal(archive.split(script).length-1,1);assert.equal(archive.split(style).length-1,1);
  assert.ok(archive.indexOf(style)<archive.indexOf('</head>'));
  assert.ok(archive.indexOf(script)<archive.indexOf('/app.js?v='));

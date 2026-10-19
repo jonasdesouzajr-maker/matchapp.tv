@@ -362,7 +362,7 @@ function main() {
 if(require.main===module){
   main();
   // Preserve existing approved branding and metadata after regeneration.
-  require('./finalize-brand.js').finalizeBrand();
+  require('./finalize-brand.js').finalizeBrand(['where-to-watch/','en/br/watch/','en/us/watch/','en/gb/watch/','en/pt/watch/','pt/br/watch/']);
   require('./discovery-metadata.js').applyFiles('where-to-watch/');
 }
 module.exports={buildPage,buildIndex};

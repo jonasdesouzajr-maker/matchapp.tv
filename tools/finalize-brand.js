@@ -46,12 +46,13 @@ function versionFrameStylesheet(html){
    return prefix+'?'+params.toString().replace(/&/g,'&amp;')+end;
   });
 }
-function finalizeBrand(){
+function finalizeBrand(ownedPaths){
  let count=0;
  for(const file of files(ROOT)){
+  const rel=path.relative(ROOT,file).replace(/\\/g,'/');
+  if(ownedPaths&&!ownedPaths.some(scope=>rel===scope||(scope.endsWith('/')&&rel.startsWith(scope))))continue;
   let html=fs.readFileSync(file,'utf8');
   if(!/<body[\s>]/i.test(html)||file.includes('yandex_'))continue;
-  const rel=path.relative(ROOT,file).replace(/\\/g,'/');
   if(rel.startsWith('private-voice/')||rel.startsWith('android-studio/')||rel.startsWith('tests/')||rel.startsWith('artifacts/')||rel.startsWith('reports/'))continue;
   const kids=rel==='kids/index.html'||rel.startsWith('kids/');
   html=name(html,kids);

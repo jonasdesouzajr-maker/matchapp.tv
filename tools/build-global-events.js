@@ -1,6 +1,14 @@
 /* Build verified, date-aware MatchApp event guides from official-source records. */
 const fs=require('fs'),path=require('path');
 const ROOT=path.join(__dirname,'..'),SITE='https://matchapp.tv';
+// Home owns the approved token asset versions. Read them before replacing any
+// last-good output so a later cache bump cannot regress on regeneration.
+const home=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
+const tokenAssets={
+ script:home.match(/<script\b[^>]*\bsrc=["'](\/match-tokens\.js\?[^"']+)["']/i)?.[1],
+ style:home.match(/<link\b[^>]*\bhref=["'](\/match-tokens\.css\?[^"']+)["']/i)?.[1]
+};
+if(!tokenAssets.script||!tokenAssets.style)throw new Error('Home token asset cache URLs are missing; preserve last-good event pages.');
 const events=JSON.parse(fs.readFileSync(path.join(__dirname,'global-events.json'),'utf8'));
 const {statusAt,homeEventOrder}=require('./event-lifecycle');
 const buildNow=Date.now();
@@ -75,10 +83,10 @@ ${tracker()}`;
 }
 function shell({headHtml,body,archive=false}){
  const ad=archive?'<div class="premium-ad-frame" style="margin:1rem auto;min-height:90px"><ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9541435081010948" data-ad-slot="2595698117" data-ad-format="horizontal" data-full-width-responsive="true"></ins></div>':'';
- return `<!doctype html><html lang="en"><head>${headHtml}${archive?'<link rel="stylesheet" href="/match-tokens.css?v=20261017-3">':''}</head><body class="event-guide-page"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+ return `<!doctype html><html lang="en"><head>${headHtml}${archive?'<link rel="stylesheet" href="'+tokenAssets.style+'">':''}</head><body class="event-guide-page"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="app-header"><a href="/" class="header-brand-area"><img class="brand-logo" src="/logo.jpeg?v=2" width="60" height="60" alt="MatchApp"><span class="app-title-main">MatchApp</span></a><nav class="event-top-nav" aria-label="Event navigation"><a class="event-nav-pill event-nav-home" href="/"><span class="event-nav-ico" aria-hidden="true">⌂</span><span>Home</span></a><a class="event-nav-pill event-nav-events" href="/events-archive.html" aria-current="page"><span class="event-nav-ico" aria-hidden="true">✦</span><span>Events</span></a><a class="event-nav-pill event-nav-kids" href="/kids/"><img src="/kids/kids-logo-sm.jpeg?v=2" width="22" height="22" alt="" aria-hidden="true"><span>Kids Mode</span></a></nav></header>
 <main class="event-guide-main">${body}${ad}</main><footer class="seo-footer"><a href="/events-archive.html">Upcoming global events</a> · <a href="/">MatchApp Ai</a> · <a href="mailto:support@matchapp.tv">support@matchapp.tv</a><p>© 2026 MatchApp.tv</p></footer>
-<script src="/settings.js?v=20260916-open1"></script><script src="/global-events.js?v=20260924-event1"></script><script src="/build-meta.js?v=20260926-publicproof1&amp;fastlang=20261014-2"></script><script src="/app-install-state.js?v=20260923-icon4"></script><script src="/install.js?v=20260923-icon4"></script><script src="/app-updates.js?v=191"></script><script src="/tv.js?v=187"></script>${archive?'<script src="/match-localization.js?v=187"></script><script src="/match-ai-rank.js?v=20260927-ranked1"></script><script src="/match-tokens.js?v=20261019-refresh1"></script><script src="/viewer-country.js?v=20261018-1"></script><script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1"></script><script src="/ads-init.js?v=1"></script>':''}</body></html>`;
+<script src="/settings.js?v=20260916-open1"></script><script src="/global-events.js?v=20260924-event1"></script><script src="/build-meta.js?v=20260926-publicproof1&amp;fastlang=20261014-2"></script><script src="/app-install-state.js?v=20260923-icon4"></script><script src="/install.js?v=20260923-icon4"></script><script src="/app-updates.js?v=191"></script><script src="/tv.js?v=187"></script>${archive?'<script src="/match-localization.js?v=187"></script><script src="/match-ai-rank.js?v=20260927-ranked1"></script><script src="'+tokenAssets.script+'"></script><script src="/viewer-country.js?v=20261018-1"></script><script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1"></script><script src="/ads-init.js?v=1"></script>':''}</body></html>`;
 }
 const urls=[];
 for(const e of events){
@@ -103,11 +111,11 @@ const archiveBody=`<section class="event-archive-hero"><p class="event-eyebrow">
 fs.writeFileSync(path.join(ROOT,'events-archive.html'),shell({headHtml:head({title:'Recent & Upcoming Entertainment Events',description:'Explore official schedules, recent event archives and upcoming film, gaming, sports and pop-culture events worldwide, with verified source links.',url:SITE+'/events-archive.html',image:absolutePoster(events.find(e=>e.slug==='new-york-film-festival-2026')||events[0]),keywords:events.map(e=>e.keywords).join(', '),schema:archiveSchema,ads:true}),body:archiveBody,archive:true}));
 
 const homeSection=`<section id="global-events" class="events-wrapper"><details class="global-events-fold" open><summary class="global-events-summary"><span class="ge-sum-label"><span data-i18n="global.heading">Upcoming global events</span></span><span class="ge-sum-count">${homeEvents.length}</span><span class="ge-sum-chev" aria-hidden="true">⌄</span></summary><div class="global-events-body"><p class="ge-help">Tap a poster for a MatchApp Ai event guide, official programme links and title discovery.</p><div class="events-rail-shell"><button type="button" class="marquee-arrow events-prev" data-rail-dir="-1" aria-label="Scroll global events left" aria-controls="events-viewport">‹</button><button type="button" class="marquee-arrow events-next" data-rail-dir="1" aria-label="Scroll global events right" aria-controls="events-viewport">›</button><div class="global-event-grid events-viewport" id="events-viewport" role="region" aria-label="Upcoming global event posters" tabindex="0">${homeCards}</div></div><a class="ge-archive gold-btn" href="/events-archive.html">All event guides</a></div></details></section>`;
-let index=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
+let index=home;
 index=index.replace(/<section id="global-events"[^]*?<\/section>/,homeSection);
 fs.writeFileSync(path.join(ROOT,'index.html'),index);
 fs.writeFileSync(path.join(__dirname,'event-urls.json'),JSON.stringify(urls,null,2)+'\n');
 console.log('Built '+urls.length+' verified event guides.');
 
 // Preserve the shared MatchApp brand on regenerated guides.
-require('./finalize-brand.js').finalizeBrand();
+require('./finalize-brand.js').finalizeBrand(['index.html','events-archive.html','events/']);

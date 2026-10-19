@@ -338,7 +338,7 @@ function main() {
 main();
 
 // Preserve the shared brand on regenerated guides.
-require('./finalize-brand.js').finalizeBrand();
+require('./finalize-brand.js').finalizeBrand(['moods/','collections/','platforms/','languages/','decades/']);
 
 // Retain approved page-specific metadata after catalog regeneration.
 require('./discovery-metadata.js').applyFiles('collections/');
