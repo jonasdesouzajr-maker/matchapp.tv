@@ -238,6 +238,8 @@ The event, catalog-SEO and watch generators also ran the brand finalizer across
 other owners' pages, leaving unstaged HTML changes that influenced sitemap dates.
 Their finalization is now limited to their existing owned output paths. The
 dedicated Brand owner retains its unchanged global default and publishing lock.
+Recovery fingerprints include these shared sitemap/finalization dependencies
+for every affected owner, while unrelated owners retain their retry budget.
 Isolated regressions reproduce the old cache, whitespace and sitemap-index
 failures and preserve genuine URL-set updates, without network requests or
 changes to real editorial sources, application logic or design.
