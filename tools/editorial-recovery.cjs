@@ -87,7 +87,13 @@ function evaluate(evidence,ledger={},root=ROOT){
  return decision('recover','missing-equivalent-work-and-materially-stale-output',context);
 }
 function readLedger(file){
- try{const value=JSON.parse(fs.readFileSync(file,'utf8'));if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Invalid recovery ledger');return value;}
+ try{
+  const value=JSON.parse(fs.readFileSync(file,'utf8'));
+  if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Invalid recovery ledger');
+  if(value.controlledRecoveries!==undefined&&(!value.controlledRecoveries||typeof value.controlledRecoveries!=='object'||Array.isArray(value.controlledRecoveries)||
+   Object.values(value.controlledRecoveries).some(r=>!r||!OWNERS.includes(r.owner)||!['reserved','submitted','unknown','success','failed','not_submitted'].includes(r.status))))throw Error('Invalid controlled recovery records');
+  return value;
+ }
  catch(error){if(error.code==='ENOENT')return {};throw error;}
 }
 function mutate(file,callback){
@@ -95,7 +101,9 @@ function mutate(file,callback){
  const lock=file+'.lock',fd=fs.openSync(lock,'wx'),temporary=file+'.'+process.pid+'.tmp';
  try{
   const ledger=readLedger(file),result=callback(ledger);
-  fs.writeFileSync(temporary,JSON.stringify(ledger,null,2)+'\n');fs.renameSync(temporary,file);
+  const saved=fs.openSync(temporary,'wx');
+  try{fs.writeFileSync(saved,JSON.stringify(ledger,null,2)+'\n');fs.fsyncSync(saved);}finally{fs.closeSync(saved);}
+  fs.renameSync(temporary,file);
   return result;
  }finally{if(fs.existsSync(temporary))fs.unlinkSync(temporary);fs.closeSync(fd);fs.unlinkSync(lock);}
 }

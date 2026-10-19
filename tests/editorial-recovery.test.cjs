@@ -105,3 +105,11 @@ test('ordinary content commits cannot reset the repaired-code recovery budget',(
  assert.equal(recovery.evaluate(evidence({mainSha:'d'.repeat(40)})).repairedRevision,rev);
  assert.equal(recovery.evaluate(evidence({repairedRevision:'c'.repeat(64)})).reason,'revision-is-not-current-owner-code');
 });
+test('malformed recovery record collections cannot be interpreted as unused retry budgets',()=>{
+ const f=fixture();try{
+  for(const controlledRecoveries of [null,[],{one:{owner:'sports-refresh.yml',status:'invented'}}]){
+   const original=JSON.stringify({controlledRecoveries});fs.writeFileSync(f.file,original);
+   assert.throws(()=>recovery.reserve(f.file,evidence()),/Invalid controlled/);assert.equal(fs.readFileSync(f.file,'utf8'),original);
+  }
+ }finally{f.close();}
+});
