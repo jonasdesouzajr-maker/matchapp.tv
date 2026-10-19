@@ -69,7 +69,8 @@
     });
     for (const source of [row,row._tmdb,row._catalogMedia,row._meta].filter(Boolean)) {
       const id = Number(source.tmdbId || source.tmdb_id || source._tmdbId);
-      const kind = source.kind || source.media_kind || source.media_type || source._tmdbKind || row._tmdbKind || row.kind;
+      const format = source.kind || source.media_kind || source.media_type || source._tmdbKind || source.type || row._tmdbKind || row.kind || row.media_kind || row.media_type || row.type;
+      const kind = ({movie:'movie',film:'movie',tv:'tv',series:'tv'})[String(format || '').toLowerCase()];
       if (Number.isSafeInteger(id) && id > 0 && ['movie','tv'].includes(kind)) keys.add('tmdb:'+kind+':'+id);
       const imdb = source.imdbId || source.imdb_id;
       if (/^tt\d{5,}$/.test(String(imdb || ''))) keys.add('imdb:'+imdb);
