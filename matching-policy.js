@@ -489,7 +489,7 @@
   }
   function intentFromText(text, parseNegations = true) {
     const excluded = [];
-    const q = parseNegations !== false ? String(text || '').replace(/\b(?:do\s+not|don['’]?t|avoid)\s+(?:(?:recommend(?:ing)?|suggest(?:ing)?|include|including|show(?:ing)?|offer(?:ing)?)\s+)?([^.!?;,\n]+)/gi, (full, clause) => {
+    const q = parseNegations !== false ? String(text || '').replace(/\b(?:(?:do\s+not|don['’]?t)\s+(?:recommend|suggest|include|show|offer)|avoid(?:\s+(?:recommend(?:ing)?|suggest(?:ing)?|include|including|show(?:ing)?|offer(?:ing)?))?)\s+([^.!?;,\n]+)/gi, (full, clause) => {
       const negative = intentFromText(clause, false);
       const normalized = clause.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
       const genres = Object.entries(OFFLINE_GENRES).filter(([,re])=>re.test(normalized)).map(([genre])=>genre);

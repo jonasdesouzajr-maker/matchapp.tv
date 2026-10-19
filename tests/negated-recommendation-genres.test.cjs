@@ -38,5 +38,7 @@ test('ordinary positive genres, factual prose and unsupported negative phrases k
   assert(p.fitsQuestion(comedy,'Recommend a comedy. Do not include spoilers.'));
   assert(!p.fitsQuestion(drama,'Recommend a comedy. Do not include spoilers.'));
   assert(p.fitsQuestion(comedy,"Tell me about the comedy Don't Look Up."));
+  assert.equal(p.intentFromText("Why don't people recommend horror?").excluded.length,0);
+  assert.equal(p.intentFromText("I don't know which comedy to pick.").excluded.length,0);
  }finally{dom.window.close();}
 });
