@@ -113,3 +113,12 @@ test('malformed recovery record collections cannot be interpreted as unused retr
   }
  }finally{f.close();}
 });
+test('a known unsubmitted reservation closes safely when a late owner wins; uncertain submissions cannot use this path',()=>{
+ const f=fixture();try{
+  const entry=recovery.reserve(f.file,evidence());
+  const close={key:entry.key,owner:entry.owner,status:'not_submitted',verifiedAt:'2026-10-19T12:33:00Z',submissionStarted:false};
+  assert.throws(()=>recovery.record(f.file,{...close,submissionStarted:true}),/Cannot prove/);
+  recovery.record(f.file,close);assert.equal(recovery.readLedger(f.file).controlledRecoveries[entry.key].status,'not_submitted');
+  assert.throws(()=>recovery.reserve(f.file,evidence()),/attempt-already-recorded/);
+ }finally{f.close();}
+});

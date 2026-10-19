@@ -120,6 +120,12 @@ function record(file,verification){
  return mutate(file,ledger=>{
   const entry=ledger.controlledRecoveries?.[verification.key];
   if(!entry||!UNKNOWN.has(entry.status))throw Error('No unresolved reservation');
+  if(verification.status==='not_submitted'){
+   if(entry.status!=='reserved'||entry.runId||verification.owner!==entry.owner||verification.submissionStarted!==false||
+    !Number.isFinite(Date.parse(verification.verifiedAt))||Date.parse(verification.verifiedAt)<Date.parse(entry.reservedAt))throw Error('Cannot prove this reservation was never submitted');
+   Object.assign(entry,{status:'not_submitted',verifiedAt:verification.verifiedAt,reason:'late work won before any dispatch request'});
+   return entry;
+  }
   if(verification.owner!==entry.owner||!Number.isSafeInteger(verification.runId)||verification.runId<=0||
    !/^[a-f0-9]{40}$/.test(verification.runSha||'')||!Number.isFinite(Date.parse(verification.verifiedAt))||
    Date.parse(verification.verifiedAt)<Date.parse(entry.reservedAt)||
