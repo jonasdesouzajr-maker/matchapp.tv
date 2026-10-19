@@ -16,15 +16,19 @@ const matrix=[
   {name:'desktop-en',width:1366,height:900,lang:'en'},
   {name:'narrow-ar',width:320,height:710,lang:'ar'},
   {name:'phone-de',width:390,height:844,lang:'de'},
-  {name:'phone-ja',width:390,height:844,lang:'ja'}
+  {name:'phone-ja',width:390,height:844,lang:'ja'},
+  {name:'short-phone-pt-BR',width:320,height:568,lang:'pt-BR',scrollWorkspace:true},
+  {name:'short-phone-en',width:390,height:600,lang:'en',scrollWorkspace:true},
+  {name:'short-tablet-en',width:820,height:450,lang:'en',scrollWorkspace:true},
+  {name:'landscape-phone-en',width:710,height:320,lang:'en',scrollWorkspace:true}
 ];
 
 function staticServer(){return http.createServer((req,res)=>{
-  let file;
-  try{file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));}
+  let file,pathname;
+  try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);file=path.resolve(root,'.'+pathname);}
   catch{res.writeHead(400).end();return;}
   if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
-  try{if(fs.statSync(file).isDirectory())file=path.join(file,'index.html');
+  try{if(pathname.endsWith('/'))file=path.join(file,'index.html');
     const body=fs.readFileSync(file);res.writeHead(200,{'content-type':mime[path.extname(file)]||'application/octet-stream'});res.end(body);
   }catch{res.writeHead(404).end();}
 });}
@@ -78,7 +82,10 @@ function verifyState(state,label,{keyboard=false}={}){
   const visibleTop=keyboard?state.viewport.offsetTop:0;
   const visibleBottom=keyboard?state.viewport.offsetTop+state.viewport.visualHeight:state.viewport.height;
   assert.ok(state.panel.top>=visibleTop+2&&state.panel.bottom<=visibleBottom-2,label+': panel exceeds viewport '+JSON.stringify(state));
-  assert.ok(state.log.height>=80,label+': conversation viewport is cramped '+state.log.height);
+  // A 160px landscape keyboard fixture has room for one readable message line
+  // plus the full-size controls. Other layouts retain an 80px minimum.
+  const minimumLog=keyboard&&state.viewport.visualHeight<=200?40:80;
+  assert.ok(state.log.height>=minimumLog,label+': conversation viewport is cramped '+state.log.height);
   assert.ok(state.log.hitTests.every(point=>point.visible),label+': conversation is obscured '+JSON.stringify(state.log.hitTests));
   for(const control of state.controls){
     assert.ok(control.visible&&control.hit,label+': obscured control '+JSON.stringify(control));
@@ -108,6 +115,24 @@ async function stableLayout(page,label){
   for(const key of ['panel','log','composer'])for(const axis of ['x','y','width','height'])
     assert.ok(Math.abs(before[key][axis]-after[key][axis])<=1,label+': unstable '+key+'.'+axis);
   return {state:after,postLayoutCLS:cls,allLayoutShifts:shifts.length};
+}
+
+async function showShortWorkspace(page,item){
+  if(!item.scrollWorkspace)return null;
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const result=await page.evaluate(()=>{
+    const panel=document.querySelector('.discover-head'),header=document.querySelector('header.app-header');
+    const before=panel.getBoundingClientRect(),headerRect=header.getBoundingClientRect();
+    const initialScroll=scrollY;
+    if(before.bottom>innerHeight-2||before.top<2)
+      window.scrollTo({top:Math.max(0,scrollY+before.top-10),behavior:'instant'});
+    const style=getComputedStyle(header);
+    return {kind:'ordinary vertical page scroll; no keyboard fixture',initialScroll,scrollY,
+      headerExists:!!header,headerVisible:style.display!=='none'&&style.visibility!=='hidden',
+      headerDocumentTop:headerRect.top+initialScroll,headerHeight:headerRect.height};
+  });
+  assert.ok(result.headerExists&&result.headerVisible&&result.headerHeight>0,'normal short-screen navigation must remain in the document above the conversation');
+  return result;
 }
 
 async function addMessages(page){return page.evaluate(()=>{
@@ -168,6 +193,7 @@ async function run(){
         await page.evaluate(async()=>{await document.fonts.ready;const log=document.getElementById('chat-log');
           const note=document.createElement('div');note.className='chat-assistant';note.dataset.qaFixture='true';
           note.textContent=window.__askLayoutFixture.label;log.replaceChildren(note);});
+        result.ordinaryPageScroll=await showShortWorkspace(page,item);
         result.states.initial=await stableLayout(page,item.name+' initial');verifyState(result.states.initial.state,item.name+' initial');
         result.touchTargetsUnder44=result.states.initial.state.controls.filter(control=>control.height<44).map(control=>({id:control.id,height:control.height}));
         if(item.lang==='ar')assert.equal(result.states.initial.state.dir,'rtl','Arabic document must use RTL');
@@ -195,6 +221,7 @@ async function run(){
         await screenshot('simulated-keyboard');
         await page.evaluate(height=>window.__askLayoutFixture.viewport(height,0),item.height);
         await page.locator('#discover-new-input').fill('');
+        await showShortWorkspace(page,item);
         result.states.restored=await stableLayout(page,item.name+' restored');verifyState(result.states.restored.state,item.name+' restored');
         // Android adjustResize changes the layout viewport too. This browser
         // resize fixture exercises that branch without claiming a real IME.
@@ -207,6 +234,7 @@ async function run(){
         await screenshot('simulated-adjust-resize');
         await page.setViewportSize({width:item.width,height:item.height});
         await page.evaluate(height=>window.__askLayoutFixture.viewport(height,0),item.height);
+        await showShortWorkspace(page,item);
         result.states.final=await stableLayout(page,item.name+' final');verifyState(result.states.final.state,item.name+' final');
         result.passed=true;console.log('PASS_ASK_WORKSPACE',item.name,item.width+'x'+item.height,'screenshots='+result.screenshots.length);
       }catch(error){result.error=error.stack||String(error);await screenshot('failure').catch(()=>{});console.error('FAIL_ASK_WORKSPACE',item.name,error.message);}

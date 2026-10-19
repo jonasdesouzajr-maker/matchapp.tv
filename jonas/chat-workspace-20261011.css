@@ -165,10 +165,24 @@ html body.ai-chat-page #jonas-voice-stage[data-state="idle"] .jds-expression{opa
   html body.ai-chat-page .discover-head #jonas-voice-stage{min-height:76px!important}
   html body.ai-chat-page .discover-head #jonas-voice-stage .jds-portrait{width:56px!important;height:56px!important;flex-basis:56px!important}
  }
+ @media(max-height:610px){
+  html body.ai-chat-page > #ma-ambient-jonas{visibility:hidden!important}
+  html body.ai-chat-page .wrap .premium-card.discover-head{min-height:280px!important}
+  html body.ai-chat-page .discover-head #jonas-voice-stage{display:none!important}
+  html body.ai-chat-page .discover-head .discover-title-copy h1{font-size:18px!important;line-height:1.25!important}
+  html body.ai-chat-page .discover-head #chat-log{min-height:80px!important}
+  html body.ai-chat-page .discover-head .newsearch-row{padding-bottom:4px!important}
+ }
  html body.ai-chat-page .discover-head[data-keyboard="true"]{
   position:fixed!important;top:var(--jonas-workspace-top)!important;
   inset-inline:10px!important;width:calc(100% - 20px)!important;
   margin:0!important;z-index:30!important;
+ }
+ html body.ai-chat-page .wrap .premium-card.discover-head[data-keyboard="true"]{min-height:0!important}
+ @media(max-height:430px){
+  html body.ai-chat-page .discover-head[data-keyboard="true"]{padding:8px!important}
+  html body.ai-chat-page .discover-head[data-keyboard="true"] #chat-log{min-height:40px!important}
+  html body.ai-chat-page .discover-head[data-keyboard="true"] #ai-send-cost{display:none!important}
  }
  html body.ai-chat-page:has(.discover-head[data-keyboard="true"]) > :is(header.app-header,#ma-ambient-jonas,.ma-trust,.ai-sidebar,.ai-sidebar-scrim,.ai-sidebar-toggle){visibility:hidden!important}
  html body.ai-chat-page .discover-head[data-keyboard="true"] :is(.discover-title-row,.ai-session-strip,#jonas-voice-stage){display:none!important}
