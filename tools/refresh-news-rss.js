@@ -238,9 +238,19 @@ function person(title){
   return m?m[1]:'';
 }
 
-function iso(v){
+function iso(v,now=Date.now()){
+  if(!v||!String(v).trim())return null;
   const d=new Date(v);
-  return Number.isNaN(d.valueOf())?new Date().toISOString():d.toISOString();
+  return !Number.isFinite(d.valueOf())||d.valueOf()>now+3600000?null:d.toISOString();
+}
+
+// Rebuild SEO on every check, but only advance modification dates when its
+// actual terms/metadata change. Run logs record checks of unchanged sources.
+function retainSeoTimestamp(item,previous){
+  if(!item.seo||!previous?.seo||!Number.isFinite(Date.parse(previous.seo.seo_generated_at)))return;
+  const withoutTime=seo=>Object.fromEntries(Object.entries(seo).filter(([key])=>key!=='seo_generated_at'));
+  if(JSON.stringify(withoutTime(item.seo))===JSON.stringify(withoutTime(previous.seo)))
+    item.seo.seo_generated_at=previous.seo.seo_generated_at;
 }
 
 function truncateWords(value,max){
@@ -640,14 +650,15 @@ function readSports(){
   try{
     const parsed=JSON.parse(fs.readFileSync(SPORTS_SNAPSHOT,'utf8'));
     const updated=Date.parse(parsed.updated_at);
-    if(!Number.isFinite(updated)||Date.now()-updated>40*3600000||updated>Date.now()+3600000){
-      console.warn('[sports] snapshot older than 40h; preserving archive without showing stale sports as latest');
+    if(!Number.isFinite(updated)||updated>Date.now()+3600000){
+      console.warn('[sports] invalid snapshot timestamp; preserving archive');
       return {updated_at:parsed.updated_at||null,items:[]};
     }
     const items=Array.isArray(parsed.items)?parsed.items.filter(i=>
       i&&i.category==='sports'&&i.title&&i.id&&
       isAllowed(i.url,{domains:['reuters.com','apnews.com','g1.globo.com','espn.com','espn.com.br','theguardian.com','formula1.com','nba.com','theconversation.com']})&&
       Number.isFinite(Date.parse(i.published_at))&&
+      Date.parse(i.published_at)<=Date.now()+3600000&&
       Date.now()-Date.parse(i.published_at)<96*3600000).slice(0,12):[];
     return {updated_at:parsed.updated_at,items};
   }catch(e){console.warn('[sports] invalid optional snapshot: '+e.message);return {updated_at:null,items:[]}}
@@ -737,7 +748,9 @@ function enforceArticleAnalyticsOnDisk(){
 }
 
 (async()=>{
-  const generated=new Date().toISOString();
+  let generated=new Date().toISOString();
+  let priorData=null;
+  try{priorData=JSON.parse(fs.readFileSync(path.join(NEWS,'data.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
   const priorArchive=readArchive();
   const priorById=new Map(priorArchive.map(i=>[i.id,i]));
   const sportsSnapshot=readSports();
@@ -764,13 +777,15 @@ function enforceArticleAnalyticsOnDisk(){
 
     const key=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
     if(seen.has(key))continue;
-    seen.add(key);
 
     const id=hash(url);
     const p=person(title);
     const ev=event(title);
     const matchappUrl=`${SITE}/news/articles/${slug(title)}-${id.slice(0,6)}/`;
     const publishedAt=iso(r.published);
+    // Missing/invalid publisher dates must never become today's headlines.
+    if(!publishedAt)continue;
+    seen.add(key);
     const existing=priorById.get(id);
 
     const item={
@@ -825,8 +840,10 @@ function enforceArticleAnalyticsOnDisk(){
   const world=worldLanguages.flatMap(language=>worldPool.filter(i=>(i.language||'en')===language).slice(0,8));
   const items=[...entertainment,...world,...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,52);
   await enrichMissingImages(items);
+  for(const item of items)retainSeoTimestamp(item,priorById.get(item.id));
+  if(priorData&&JSON.stringify(items)===JSON.stringify(priorData.items))generated=priorData.generated_at;
 
-  if(items.length<5)throw new Error(`trusted publisher feeds returned only ${items.length} usable items`);
+  if(collected.length<5)throw new Error(`trusted publisher feeds returned only ${collected.length} usable news items`);
 
   // Bell notifications change only when actual headlines change, never because
   // a scheduled sports check merely updated its crawl timestamp.
@@ -868,7 +885,7 @@ function enforceArticleAnalyticsOnDisk(){
       feed_version:feedVersion,
       sports_updated_at:sportsSnapshot.updated_at,
       source_policy:'direct-trusted-publisher-rss+google-trends-keyword-signals',
-      seo_policy:'per-story keyword snapshot at first discovery + source citation + stable archive',
+      seo_policy:'rebuilt per check; modification dates advance only with content + source citation + stable archive',
       items
     },null,2)+'\n'
   );
