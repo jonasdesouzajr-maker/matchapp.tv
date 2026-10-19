@@ -196,3 +196,10 @@ fixtures cover all three paths. The separate protected retry/validation proposal
 is [archive-publication-retry.patch](proposals/archive-publication-retry.patch);
 it is not applied without its own owner approval. The old failed job is not
 blindly rerun because current retained data already covers its actual purpose.
+
+CodeQL's result check identified a file-system race in the first archive no-op
+comparison. Both archive entry points now use `retained-history.cjs`: a single
+opened descriptor owns parsing, comparison, bounded complete UTF-8 writes,
+truncation and synchronization. A real pathname-replacement regression proves
+that a replacement file is untouched; partial-write and error cases are tested.
+No alert is dismissed and no analyzer, rule or gate is weakened.

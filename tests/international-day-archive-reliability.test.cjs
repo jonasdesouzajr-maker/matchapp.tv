@@ -4,7 +4,7 @@ const ROOT=path.resolve(__dirname,'..');
 const day=(date)=>({_contract:'docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md',_note:'Execution note, not editorial content',id:'fixture-'+date,date,title:'Fixture observance '+date,image:'/event-posters/fixture.svg',officialUrl:'https://official.example/observance'});
 function fixture(){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'day-archive-'));fs.mkdirSync(path.join(dir,'tools'));fs.mkdirSync(path.join(dir,'data'));
- for(const script of ['archive-international-day.cjs','archive-international-day.mjs'])fs.copyFileSync(path.join(ROOT,'tools',script),path.join(dir,'tools',script));
+ for(const script of ['archive-international-day.cjs','archive-international-day.mjs','retained-history.cjs'])fs.copyFileSync(path.join(ROOT,'tools',script),path.join(dir,'tools',script));
  const git=(...args)=>execFileSync('git',args,{cwd:dir,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
  git('init','--initial-branch=main');git('config','user.name','Archive Fixture');git('config','user.email','archive@example.invalid');
  const write=(name,value)=>fs.writeFileSync(path.join(dir,'data',name),JSON.stringify(value,null,2)+'\n');
@@ -50,5 +50,28 @@ test('invalid current records and unverified push revisions remain failed checks
   assert.notEqual(f.run('archive-international-day.cjs',{GITHUB_EVENT_NAME:'push',GITHUB_SHA:'invalid'}).status,0);assert.equal(f.history(),before);
   f.write('international-day.json',{});
   for(const script of ['archive-international-day.cjs','archive-international-day.mjs']){assert.notEqual(f.run(script).status,0);assert.equal(f.history(),before);}
+ }finally{f.close();}
+});
+test('retained history keeps its opened file across pathname replacement and completes short UTF-8 writes',()=>{
+ const {updateHistory}=require('../tools/retained-history.cjs'),f=fixture();try{
+  const file=path.join(f.dir,'data/international-day-history.json'),opened=file+'.original';
+  const original=JSON.stringify([{id:'old',title:'A long original record '.repeat(20)}]);fs.writeFileSync(file,original);
+  const replacement='REPLACEMENT MUST STAY EXACT';let swapped=false,closed=0;
+  const filesystem={...fs,
+   readFileSync(fd,encoding){const data=fs.readFileSync(fd,encoding);fs.renameSync(file,opened);fs.writeFileSync(file,replacement);swapped=true;return data;},
+   writeSync(fd,bytes,offset,length,position){return fs.writeSync(fd,bytes,offset,Math.min(length,3),position);},
+   closeSync(fd){closed++;fs.closeSync(fd);}
+  };
+  const items=[{id:'verified',title:'Ciência e dignidade 🎬'}];
+  assert.deepEqual(updateHistory(file,()=>items,filesystem),{changed:true,count:1});
+  assert.equal(swapped,true);assert.equal(closed,1);assert.equal(fs.readFileSync(file,'utf8'),replacement);
+  assert.deepEqual(JSON.parse(fs.readFileSync(opened,'utf8')),items);
+ }finally{f.close();}
+});
+test('retained history write errors close the descriptor and propagate rather than pass the gate',()=>{
+ const {updateHistory}=require('../tools/retained-history.cjs'),f=fixture();try{
+  const file=path.join(f.dir,'data/international-day-history.json');let closed=0;
+  assert.throws(()=>updateHistory(file,()=>[{id:'verified'}],{...fs,writeSync(){return 0;},closeSync(fd){closed++;fs.closeSync(fd);}}),/Could not finish/);
+  assert.equal(closed,1);assert.equal(f.history(),'[]\n');
  }finally{f.close();}
 });
