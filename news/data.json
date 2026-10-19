@@ -1,13 +1,733 @@
 {
-  "generated_at": "2026-10-19T01:17:08.076Z",
-  "feed_version": "13f264e8",
+  "generated_at": "2026-10-19T05:14:17.960Z",
+  "feed_version": "7e3dee9d",
   "sports_updated_at": "2026-10-19T01:17:08.010Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
   "items": [
     {
+      "id": "e5394eb9",
+      "title": "Macron calls for 'calm and order' after riots across France",
+      "url": "https://www.bbc.co.uk/news/articles/cw240zl08dm5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T05:07:21.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3671/live/56f97410-cb35-11f1-9e57-a506a0943bb2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/macron-calls-for-calm-and-order-after-riots-across-france-e5394e/",
+      "landing_url": "https://matchapp.tv/?news=e5394eb9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots"
+        ],
+        "long_tail": [
+          "Macron calls for 'calm and order' after riots across France 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Macron calls for 'calm and order' after riots across…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots",
+          "Macron calls for 'calm and order' after riots across France 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "63cfb624",
+      "title": "Australian Greens senator denies claims of misconduct towards women",
+      "url": "https://www.bbc.co.uk/news/articles/cmpdgj8z8v2do?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T04:54:25.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Australian Greens",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/eff2/live/f7cb4020-cb54-11f1-9097-8b5edc27827e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/australian-greens-senator-denies-claims-of-misconduct-towards-women-63cfb6/",
+      "landing_url": "https://matchapp.tv/?news=63cfb624#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "australian",
+          "greens",
+          "senator",
+          "denies",
+          "claims",
+          "misconduct"
+        ],
+        "long_tail": [
+          "Australian Greens senator denies claims of misconduct towards women 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "australian",
+          "greens",
+          "senator",
+          "denies",
+          "claims",
+          "misconduct"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Australian Greens senator denies claims of misconduct…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "australian",
+          "greens",
+          "senator",
+          "denies",
+          "claims",
+          "misconduct",
+          "Australian Greens senator denies claims of misconduct towards women 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "b93423fc",
+      "title": "Anthropic says it will commit 5% of its shares to 'public benefit fund'",
+      "url": "https://www.bbc.co.uk/news/articles/cm2kez327gdko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T04:30:59.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/87fa/live/537946d0-cb5d-11f1-a1ba-9502012907ad.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/anthropic-says-it-will-commit-5-of-its-shares-to-public-benefit-fund-b93423/",
+      "landing_url": "https://matchapp.tv/?news=b93423fc#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "anthropic",
+          "says",
+          "will",
+          "commit",
+          "its",
+          "shares"
+        ],
+        "long_tail": [
+          "Anthropic says it will commit 5% of its shares to 'public benefit fund' 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "anthropic",
+          "says",
+          "will",
+          "commit",
+          "its",
+          "shares"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Anthropic says it will commit 5% of its shares to 'public…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "anthropic",
+          "says",
+          "will",
+          "commit",
+          "its",
+          "shares",
+          "Anthropic says it will commit 5% of its shares to 'public benefit fund' 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "80b190ae",
+      "title": "France's government under pressure after weekend of widespread violence",
+      "url": "https://www.bbc.co.uk/news/articles/crwyd02yz22vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T04:16:46.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/68dd/live/22d4e480-cb6c-11f1-a4ab-0f7a37e66bc1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/france-s-government-under-pressure-after-weekend-of-widespread-violence-80b190/",
+      "landing_url": "https://matchapp.tv/?news=80b190ae#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "france",
+          "government",
+          "under",
+          "pressure",
+          "after",
+          "weekend"
+        ],
+        "long_tail": [
+          "France's government under pressure after weekend of widespread violence 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "france",
+          "government",
+          "under",
+          "pressure",
+          "after",
+          "weekend"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "France's government under pressure after weekend of…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "france",
+          "government",
+          "under",
+          "pressure",
+          "after",
+          "weekend",
+          "France's government under pressure after weekend of widespread violence 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "609953b0",
+      "title": "‘Other Desert Cities’ Theater Review: Julia Louis-Dreyfus, Ed Harris and Allison Janney Fail to Make a Once-Timely Play Relevant Again",
+      "url": "https://www.hollywoodreporter.com/lifestyle/arts/other-desert-cities-theater-review-julia-louis-dreyfus-1236734079/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-19T04:00:00.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Other-Desert-Cities_Allison-Janney-as-Silda-Grauman-Julia-Louis-Dreyfus-as-Polly-Wyeth_by-Emilio-Madrid_6098.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/other-desert-cities-theater-review-julia-louis-dreyfus-ed-harris-and-allison-jan-609953/",
+      "landing_url": "https://matchapp.tv/?news=609953b0#latest-news",
+      "seo": {
+        "primary_keyword": "other desert cities theater latest news",
+        "short_tail": [
+          "other desert cities theater",
+          "other desert cities theater news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "other desert cities theater latest news October 2026",
+          "other desert cities theater entertainment update 2026",
+          "other desert cities theater news 2026-10-19",
+          "latest entertainment news about other desert cities theater",
+          "other desert cities theater review julia latest update",
+          "The Hollywood Reporter other desert cities theater entertainment",
+          "latest news about other desert cities theater October 2026",
+          "other desert cities theater entertainment news 2026-10-19",
+          "what happened with other desert cities theater"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "other",
+          "desert",
+          "cities",
+          "theater",
+          "review",
+          "julia",
+          "louis",
+          "dreyfus"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "other desert cities theater 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter other desert cities theater",
+          "hollywoodreporter.com other desert cities theater",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Other Desert Cities’ Theater Review: Julia Louis-Dreyfus,…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "other desert cities theater latest news",
+          "other desert cities theater",
+          "other desert cities theater news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "other desert cities theater latest news October 2026",
+          "other desert cities theater entertainment update 2026",
+          "other desert cities theater news 2026-10-19",
+          "latest entertainment news about other desert cities theater",
+          "other desert cities theater review julia latest update",
+          "The Hollywood Reporter other desert cities theater entertainment",
+          "latest news about other desert cities theater October 2026",
+          "other desert cities theater entertainment news 2026-10-19",
+          "what happened with other desert cities theater",
+          "other",
+          "desert",
+          "cities",
+          "theater",
+          "review",
+          "julia",
+          "louis",
+          "dreyfus",
+          "October 2026",
+          "2026-10-19",
+          "other desert cities theater 2026",
+          "The Hollywood Reporter other desert cities theater",
+          "hollywoodreporter.com other desert cities theater",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "0d1ca792",
+      "title": "Kenya pastor accused of ordering parents to starve their children to death faces verdict",
+      "url": "https://www.bbc.co.uk/news/articles/ckd6d2l3dz4xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T03:44:02.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8068/live/34a82040-c956-11f1-8879-9d9deeb686e1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/kenya-pastor-accused-of-ordering-parents-to-starve-their-children-to-death-faces-0d1ca7/",
+      "landing_url": "https://matchapp.tv/?news=0d1ca792#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "kenya",
+          "pastor",
+          "accused",
+          "ordering",
+          "parents",
+          "starve"
+        ],
+        "long_tail": [
+          "Kenya pastor accused of ordering parents to starve their children to death faces verdict 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "kenya",
+          "pastor",
+          "accused",
+          "ordering",
+          "parents",
+          "starve"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Kenya pastor accused of ordering parents to starve their…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "kenya",
+          "pastor",
+          "accused",
+          "ordering",
+          "parents",
+          "starve",
+          "Kenya pastor accused of ordering parents to starve their children to death faces verdict 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "e5cad304",
+      "title": "China's growth accelerates as AI export boom outweighs domestic weakness",
+      "url": "https://www.bbc.co.uk/news/articles/cm5yn098xz8lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T03:17:46.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7328/live/2759f110-cb64-11f1-a812-d3be2dbc962d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/china-s-growth-accelerates-as-ai-export-boom-outweighs-domestic-weakness-e5cad3/",
+      "landing_url": "https://matchapp.tv/?news=e5cad304#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "china",
+          "growth",
+          "accelerates",
+          "export",
+          "boom",
+          "outweighs"
+        ],
+        "long_tail": [
+          "China's growth accelerates as AI export boom outweighs domestic weakness 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "china",
+          "growth",
+          "accelerates",
+          "export",
+          "boom",
+          "outweighs"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "China's growth accelerates as AI export boom outweighs…",
+        "meta_description": "World report published by BBC Technology on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "china",
+          "growth",
+          "accelerates",
+          "export",
+          "boom",
+          "outweighs",
+          "China's growth accelerates as AI export boom outweighs domestic weakness 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "34d51c10",
+      "title": "Threat forces Israel to Austria flight into emergency landing",
+      "url": "https://www.bbc.co.uk/news/articles/c680zdmn100lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T02:41:50.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f91d/live/31ebfb00-cb5a-11f1-97b1-010e9e08360f.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/threat-forces-israel-to-austria-flight-into-emergency-landing-34d51c/",
+      "landing_url": "https://matchapp.tv/?news=34d51c10#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "threat",
+          "forces",
+          "israel",
+          "austria",
+          "flight",
+          "into"
+        ],
+        "long_tail": [
+          "Threat forces Israel to Austria flight into emergency landing 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "threat",
+          "forces",
+          "israel",
+          "austria",
+          "flight",
+          "into"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Threat forces Israel to Austria flight into emergency…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "threat",
+          "forces",
+          "israel",
+          "austria",
+          "flight",
+          "into",
+          "Threat forces Israel to Austria flight into emergency landing 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "8cea88c9",
+      "title": "BBC visits wildfire front in haze-choked Indonesia",
+      "url": "https://www.bbc.co.uk/news/videos/cm9wzye55j4xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T01:57:02.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/174e/live/b716c350-cb5f-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/bbc-visits-wildfire-front-in-haze-choked-indonesia-8cea88/",
+      "landing_url": "https://matchapp.tv/?news=8cea88c9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "bbc",
+          "visits",
+          "wildfire",
+          "front",
+          "haze",
+          "choked"
+        ],
+        "long_tail": [
+          "BBC visits wildfire front in haze-choked Indonesia 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "bbc",
+          "visits",
+          "wildfire",
+          "front",
+          "haze",
+          "choked"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "BBC visits wildfire front in haze-choked Indonesia | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "bbc",
+          "visits",
+          "wildfire",
+          "front",
+          "haze",
+          "choked",
+          "BBC visits wildfire front in haze-choked Indonesia 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "8e292d80",
+      "title": "Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/18/como-esta-a-economia-da-argentina.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T01:53:48.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/qloGlH4ABygm0oWAKWL1vgUm40k=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/9/Q/wX7kjHQCqR5XylVy9Dng/2025-07-26t154601z-612507204-rc2kfca5yc1r-rtrmadp-3-argentina-economy.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/como-esta-a-economia-da-argentina-crescimento-e-queda-da-inflacao-contrastam-com-8e292d/",
+      "landing_url": "https://matchapp.tv/?news=8e292d80#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "esta",
+          "economia",
+          "argentina",
+          "crescimento",
+          "queda"
+        ],
+        "long_tail": [
+          "Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "como",
+          "esta",
+          "economia",
+          "argentina",
+          "crescimento",
+          "queda"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Como está a economia da Argentina? Crescimento e queda da…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "esta",
+          "economia",
+          "argentina",
+          "crescimento",
+          "queda",
+          "Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
       "id": "916abdad",
-      "title": "Benito Di Paula morre em São Paulo, aos 84 anos, e deixa obra inovadora no segmento do samba",
+      "title": "Benito Di Paula morre em São Paulo, aos 84 anos, e deixa obra singular no samba",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/18/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-inovadora-no-segmento-do-samba.ghtml",
       "source": "G1",
       "source_domain": "g1.globo.com",
@@ -21,7 +741,7 @@
       "person": "Benito Di Paula",
       "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/lFaCYj8CVlQIWpufX6BHKlJvlJw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/C/W/mndGlMTH6rvzSu49lGuw/benito-di-paula-credito-murilo-alvesso-6020.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-inovadora-no-segment-916abd/",
+      "matchapp_url": "https://matchapp.tv/news/articles/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-singular-no-samba-916abd/",
       "landing_url": "https://matchapp.tv/?news=916abdad#latest-news",
       "seo": {
         "primary_keyword": "Benito Di Paula últimas notícias",
@@ -100,7 +820,7 @@
           "g1.globo.com Benito Di Paula",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -169,76 +889,7 @@
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "9da4344a",
-      "title": "Inside the shadowy world of anti-Putin sabotage from within Russia",
-      "url": "https://www.bbc.co.uk/news/articles/c6pwgzkj8zzgo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T00:06:25.000Z",
-      "discovered_at": "2026-10-19T00:27:21.855Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b9f8/live/f9937b60-c943-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/inside-the-shadowy-world-of-anti-putin-sabotage-from-within-russia-9da434/",
-      "landing_url": "https://matchapp.tv/?news=9da4344a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "inside",
-          "shadowy",
-          "world",
-          "anti",
-          "putin",
-          "sabotage"
-        ],
-        "long_tail": [
-          "Inside the shadowy world of anti-Putin sabotage from within Russia 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "inside",
-          "shadowy",
-          "world",
-          "anti",
-          "putin",
-          "sabotage"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Inside the shadowy world of anti-Putin sabotage from…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "inside",
-          "shadowy",
-          "world",
-          "anti",
-          "putin",
-          "sabotage",
-          "Inside the shadowy world of anti-Putin sabotage from within Russia 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -337,352 +988,7 @@
           "hollywoodreporter.com less red carpet more",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "2064d808",
-      "title": "EU tariffs aimed at China hitting Ukraine, steel boss says",
-      "url": "https://www.bbc.co.uk/news/articles/cwdd8z6gyy96o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T23:28:45.000Z",
-      "discovered_at": "2026-10-19T00:27:21.855Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/29eb/live/c667f2d0-c96f-11f1-80fc-ab418b149008.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/eu-tariffs-aimed-at-china-hitting-ukraine-steel-boss-says-2064d8/",
-      "landing_url": "https://matchapp.tv/?news=2064d808#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "tariffs",
-          "aimed",
-          "china",
-          "hitting",
-          "ukraine",
-          "steel"
-        ],
-        "long_tail": [
-          "EU tariffs aimed at China hitting Ukraine, steel boss says 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "tariffs",
-          "aimed",
-          "china",
-          "hitting",
-          "ukraine",
-          "steel"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "EU tariffs aimed at China hitting Ukraine, steel boss says…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "tariffs",
-          "aimed",
-          "china",
-          "hitting",
-          "ukraine",
-          "steel",
-          "EU tariffs aimed at China hitting Ukraine, steel boss says 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "022ad756",
-      "title": "Don't fall for this - how to protect yourself from AI scams",
-      "url": "https://www.bbc.co.uk/news/articles/c60rl1xvjv89o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Technology",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T23:24:59.000Z",
-      "discovered_at": "2026-10-19T00:27:21.855Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Technology on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8f70/live/9a6f8400-c98c-11f1-adc3-01d8629f0470.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/don-t-fall-for-this-how-to-protect-yourself-from-ai-scams-022ad7/",
-      "landing_url": "https://matchapp.tv/?news=022ad756#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "don",
-          "fall",
-          "how",
-          "protect",
-          "yourself",
-          "scams"
-        ],
-        "long_tail": [
-          "Don't fall for this - how to protect yourself from AI scams 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "don",
-          "fall",
-          "how",
-          "protect",
-          "yourself",
-          "scams"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Technology"
-        ],
-        "meta_title": "Don't fall for this - how to protect yourself from AI…",
-        "meta_description": "World report published by BBC Technology on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "don",
-          "fall",
-          "how",
-          "protect",
-          "yourself",
-          "scams",
-          "Don't fall for this - how to protect yourself from AI scams 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Technology"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "96a1d05f",
-      "title": "Trump says suspension of Russia sanctions is to keep peace negotiations going",
-      "url": "https://www.bbc.co.uk/news/articles/c9p8gz7zx4peo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T23:20:15.000Z",
-      "discovered_at": "2026-10-18T22:34:17.346Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4644/live/461bcc30-cb38-11f1-8a27-2de4c72fadc2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-says-suspension-of-russia-sanctions-is-to-keep-peace-negotiations-going-96a1d0/",
-      "landing_url": "https://matchapp.tv/?news=96a1d05f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "trump",
-          "says",
-          "suspension",
-          "russia",
-          "sanctions",
-          "keep"
-        ],
-        "long_tail": [
-          "Trump says suspension of Russia sanctions is to keep peace negotiations going 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "says",
-          "suspension",
-          "russia",
-          "sanctions",
-          "keep"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Trump says suspension of Russia sanctions is to keep peace…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "trump",
-          "says",
-          "suspension",
-          "russia",
-          "sanctions",
-          "keep",
-          "Trump says suspension of Russia sanctions is to keep peace negotiations going 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "dbb88397",
-      "title": "Major fire at Canada military base leaves four dead, dozens injured",
-      "url": "https://www.bbc.co.uk/news/articles/cxj0ly1m3q81o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T23:06:09.000Z",
-      "discovered_at": "2026-10-19T00:27:21.855Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e891/live/86ce21f0-cb34-11f1-9a39-31b474234113.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/major-fire-at-canada-military-base-leaves-four-dead-dozens-injured-dbb883/",
-      "landing_url": "https://matchapp.tv/?news=dbb88397#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "major",
-          "fire",
-          "canada",
-          "military",
-          "base",
-          "leaves"
-        ],
-        "long_tail": [
-          "Major fire at Canada military base leaves four dead, dozens injured 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "major",
-          "fire",
-          "canada",
-          "military",
-          "base",
-          "leaves"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Major fire at Canada military base leaves four dead,…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "major",
-          "fire",
-          "canada",
-          "military",
-          "base",
-          "leaves",
-          "Major fire at Canada military base leaves four dead, dozens injured 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "e76126b0",
-      "title": "Mission set to blast off for Mars to grab a piece of its moon",
-      "url": "https://www.bbc.co.uk/news/articles/cmvgxvkv54w1o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T23:00:48.000Z",
-      "discovered_at": "2026-10-19T00:27:21.855Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/43e5/live/791ac150-c8ad-11f1-9c75-6ff1271de385.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/mission-set-to-blast-off-for-mars-to-grab-a-piece-of-its-moon-e76126/",
-      "landing_url": "https://matchapp.tv/?news=e76126b0#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "mission",
-          "set",
-          "blast",
-          "off",
-          "mars",
-          "grab"
-        ],
-        "long_tail": [
-          "Mission set to blast off for Mars to grab a piece of its moon 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "mission",
-          "set",
-          "blast",
-          "off",
-          "mars",
-          "grab"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Mission set to blast off for Mars to grab a piece of its…",
-        "meta_description": "World report published by BBC Science on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "mission",
-          "set",
-          "blast",
-          "off",
-          "mars",
-          "grab",
-          "Mission set to blast off for Mars to grab a piece of its moon 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -776,145 +1082,7 @@
           "hollywoodreporter.com Jesse Eisenberg Reveals TV",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "6ef5628d",
-      "title": "'Very upsetting': Residents in shock after historic French town hall set alight",
-      "url": "https://www.bbc.co.uk/news/videos/c9dr8kem27zeo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T22:22:51.000Z",
-      "discovered_at": "2026-10-19T00:27:21.855Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/185e/live/26c3d1c0-cb47-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/very-upsetting-residents-in-shock-after-historic-french-town-hall-set-alight-6ef562/",
-      "landing_url": "https://matchapp.tv/?news=6ef5628d#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "very",
-          "upsetting",
-          "residents",
-          "shock",
-          "after",
-          "historic"
-        ],
-        "long_tail": [
-          "'Very upsetting': Residents in shock after historic French town hall set alight 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "very",
-          "upsetting",
-          "residents",
-          "shock",
-          "after",
-          "historic"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "'Very upsetting': Residents in shock after historic French…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "very",
-          "upsetting",
-          "residents",
-          "shock",
-          "after",
-          "historic",
-          "'Very upsetting': Residents in shock after historic French town hall set alight 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "d54fc759",
-      "title": "Inside Chicago's battle against the synthetic drugs flooding the US",
-      "url": "https://www.bbc.co.uk/news/videos/c84g166kz003o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T21:00:22.000Z",
-      "discovered_at": "2026-10-18T22:34:17.346Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Inside Chicago's",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2040/live/43727360-cb12-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/inside-chicago-s-battle-against-the-synthetic-drugs-flooding-the-us-d54fc7/",
-      "landing_url": "https://matchapp.tv/?news=d54fc759#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "inside",
-          "chicago",
-          "battle",
-          "against",
-          "synthetic",
-          "drugs"
-        ],
-        "long_tail": [
-          "Inside Chicago's battle against the synthetic drugs flooding the US 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "inside",
-          "chicago",
-          "battle",
-          "against",
-          "synthetic",
-          "drugs"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Inside Chicago's battle against the synthetic drugs…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "inside",
-          "chicago",
-          "battle",
-          "against",
-          "synthetic",
-          "drugs",
-          "Inside Chicago's battle against the synthetic drugs flooding the US 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -983,7 +1151,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1052,7 +1220,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1144,7 +1312,7 @@
           "hollywoodreporter.com Young Miko Gets Flirty",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1213,7 +1381,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1282,7 +1450,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1379,7 +1547,7 @@
           "g1.globo.com integrantes rebelde lamentam morte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1448,7 +1616,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1544,7 +1712,7 @@
           "hollywoodreporter.com Betty McGuire",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1613,172 +1781,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "d8cba1f0",
-      "title": "Incêndio em base militar no Canadá deixa 4 mortos; governo descarta terrorismo",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/18/incendio-em-base-militar-no-canada-deixa-diz-tv.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-18T16:19:45.000Z",
-      "discovered_at": "2026-10-18T17:31:30.245Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/kKNIBsDYeVlbJKyvzeQsCTQ7bY0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/c/3/jb1yBgRnCUG4XypUVVRQ/captura-de-tela-2026-10-18-031502.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/incendio-em-base-militar-no-canada-deixa-4-mortos-governo-descarta-terrorismo-d8cba1/",
-      "landing_url": "https://matchapp.tv/?news=d8cba1f0#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-18",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "incendio",
-          "base",
-          "militar",
-          "canada",
-          "deixa",
-          "mortos"
-        ],
-        "long_tail": [
-          "Incêndio em base militar no Canadá deixa 4 mortos; governo descarta terrorismo 2026-10-18",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "incendio",
-          "base",
-          "militar",
-          "canada",
-          "deixa",
-          "mortos"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Incêndio em base militar no Canadá deixa 4 mortos; governo…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-18. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-18",
-          "notícias do mundo",
-          "notícias internacionais",
-          "incendio",
-          "base",
-          "militar",
-          "canada",
-          "deixa",
-          "mortos",
-          "Incêndio em base militar no Canadá deixa 4 mortos; governo descarta terrorismo 2026-10-18",
-          "notícias mundiais outubro 2026",
-          "2026-10-18",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "a42d52f9",
-      "title": "Georgina Cates, ‘An Awfully Big Adventure’ and ‘Clay Pigeons’ Actress, Dies at 51",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/georgina-cates-dead-awfully-big-adventure-skeet-ulrich-1236734334/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-18T15:48:31.000Z",
-      "discovered_at": "2026-10-18T17:31:30.245Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Georgina Cates",
-      "description": "Georgina Cates: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/obit-Georgina-Cates.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/georgina-cates-an-awfully-big-adventure-and-clay-pigeons-actress-dies-at-51-a42d52/",
-      "landing_url": "https://matchapp.tv/?news=a42d52f9#latest-news",
-      "seo": {
-        "primary_keyword": "Georgina Cates latest news",
-        "short_tail": [
-          "Georgina Cates",
-          "Georgina Cates news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Georgina Cates latest news October 2026",
-          "Georgina Cates obituary update 2026",
-          "Georgina Cates news 2026-10-18",
-          "latest obituary news about Georgina Cates",
-          "georgina cates georgina cates awfully big latest update",
-          "The Hollywood Reporter Georgina Cates obituary",
-          "latest news about Georgina Cates October 2026",
-          "Georgina Cates entertainment news 2026-10-18",
-          "what happened with Georgina Cates"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Georgina Cates",
-          "georgina",
-          "cates",
-          "awfully",
-          "big",
-          "adventure",
-          "clay"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-18",
-          "Georgina Cates 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Georgina Cates",
-          "hollywoodreporter.com Georgina Cates",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Georgina Cates, ‘An Awfully Big Adventure’ and ‘Clay…",
-        "meta_description": "Georgina Cates: Obituary update reported by The Hollywood Reporter on 2026-10-18. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Georgina Cates latest news",
-          "Georgina Cates",
-          "Georgina Cates news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Georgina Cates latest news October 2026",
-          "Georgina Cates obituary update 2026",
-          "Georgina Cates news 2026-10-18",
-          "latest obituary news about Georgina Cates",
-          "georgina cates georgina cates awfully big latest update",
-          "The Hollywood Reporter Georgina Cates obituary",
-          "latest news about Georgina Cates October 2026",
-          "Georgina Cates entertainment news 2026-10-18",
-          "what happened with Georgina Cates",
-          "georgina",
-          "cates",
-          "awfully",
-          "big",
-          "adventure",
-          "clay",
-          "October 2026",
-          "2026-10-18",
-          "Georgina Cates 2026",
-          "The Hollywood Reporter Georgina Cates",
-          "hollywoodreporter.com Georgina Cates",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1879,7 +1882,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1977,7 +1980,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2071,7 +2074,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2168,7 +2171,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2264,7 +2267,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2362,7 +2365,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2463,7 +2466,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2557,7 +2560,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2656,7 +2659,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2754,7 +2757,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2855,7 +2858,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -2956,7 +2959,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -3054,7 +3057,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -3155,7 +3158,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -3249,7 +3252,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -3350,7 +3353,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -3451,7 +3454,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -3541,7 +3544,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     }
   ]

@@ -1,10 +1,730 @@
 {
-  "generated_at": "2026-10-19T01:17:08.076Z",
+  "generated_at": "2026-10-19T05:14:17.960Z",
   "limit": 1000,
   "items": [
     {
+      "id": "e5394eb9",
+      "title": "Macron calls for 'calm and order' after riots across France",
+      "url": "https://www.bbc.co.uk/news/articles/cw240zl08dm5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T05:07:21.000Z",
+      "discovered_at": "2026-10-18T22:34:17.346Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3671/live/56f97410-cb35-11f1-9e57-a506a0943bb2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/macron-calls-for-calm-and-order-after-riots-across-france-e5394e/",
+      "landing_url": "https://matchapp.tv/?news=e5394eb9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots"
+        ],
+        "long_tail": [
+          "Macron calls for 'calm and order' after riots across France 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Macron calls for 'calm and order' after riots across…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "macron",
+          "calls",
+          "calm",
+          "order",
+          "after",
+          "riots",
+          "Macron calls for 'calm and order' after riots across France 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "63cfb624",
+      "title": "Australian Greens senator denies claims of misconduct towards women",
+      "url": "https://www.bbc.co.uk/news/articles/cmpdgj8z8v2do?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T04:54:25.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Australian Greens",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/eff2/live/f7cb4020-cb54-11f1-9097-8b5edc27827e.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/australian-greens-senator-denies-claims-of-misconduct-towards-women-63cfb6/",
+      "landing_url": "https://matchapp.tv/?news=63cfb624#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "australian",
+          "greens",
+          "senator",
+          "denies",
+          "claims",
+          "misconduct"
+        ],
+        "long_tail": [
+          "Australian Greens senator denies claims of misconduct towards women 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "australian",
+          "greens",
+          "senator",
+          "denies",
+          "claims",
+          "misconduct"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Australian Greens senator denies claims of misconduct…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "australian",
+          "greens",
+          "senator",
+          "denies",
+          "claims",
+          "misconduct",
+          "Australian Greens senator denies claims of misconduct towards women 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "b93423fc",
+      "title": "Anthropic says it will commit 5% of its shares to 'public benefit fund'",
+      "url": "https://www.bbc.co.uk/news/articles/cm2kez327gdko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T04:30:59.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/87fa/live/537946d0-cb5d-11f1-a1ba-9502012907ad.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/anthropic-says-it-will-commit-5-of-its-shares-to-public-benefit-fund-b93423/",
+      "landing_url": "https://matchapp.tv/?news=b93423fc#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "anthropic",
+          "says",
+          "will",
+          "commit",
+          "its",
+          "shares"
+        ],
+        "long_tail": [
+          "Anthropic says it will commit 5% of its shares to 'public benefit fund' 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "anthropic",
+          "says",
+          "will",
+          "commit",
+          "its",
+          "shares"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Anthropic says it will commit 5% of its shares to 'public…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "anthropic",
+          "says",
+          "will",
+          "commit",
+          "its",
+          "shares",
+          "Anthropic says it will commit 5% of its shares to 'public benefit fund' 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "80b190ae",
+      "title": "France's government under pressure after weekend of widespread violence",
+      "url": "https://www.bbc.co.uk/news/articles/crwyd02yz22vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T04:16:46.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/68dd/live/22d4e480-cb6c-11f1-a4ab-0f7a37e66bc1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/france-s-government-under-pressure-after-weekend-of-widespread-violence-80b190/",
+      "landing_url": "https://matchapp.tv/?news=80b190ae#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "france",
+          "government",
+          "under",
+          "pressure",
+          "after",
+          "weekend"
+        ],
+        "long_tail": [
+          "France's government under pressure after weekend of widespread violence 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "france",
+          "government",
+          "under",
+          "pressure",
+          "after",
+          "weekend"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "France's government under pressure after weekend of…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "france",
+          "government",
+          "under",
+          "pressure",
+          "after",
+          "weekend",
+          "France's government under pressure after weekend of widespread violence 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "609953b0",
+      "title": "‘Other Desert Cities’ Theater Review: Julia Louis-Dreyfus, Ed Harris and Allison Janney Fail to Make a Once-Timely Play Relevant Again",
+      "url": "https://www.hollywoodreporter.com/lifestyle/arts/other-desert-cities-theater-review-julia-louis-dreyfus-1236734079/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-19T04:00:00.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Other-Desert-Cities_Allison-Janney-as-Silda-Grauman-Julia-Louis-Dreyfus-as-Polly-Wyeth_by-Emilio-Madrid_6098.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/other-desert-cities-theater-review-julia-louis-dreyfus-ed-harris-and-allison-jan-609953/",
+      "landing_url": "https://matchapp.tv/?news=609953b0#latest-news",
+      "seo": {
+        "primary_keyword": "other desert cities theater latest news",
+        "short_tail": [
+          "other desert cities theater",
+          "other desert cities theater news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "other desert cities theater latest news October 2026",
+          "other desert cities theater entertainment update 2026",
+          "other desert cities theater news 2026-10-19",
+          "latest entertainment news about other desert cities theater",
+          "other desert cities theater review julia latest update",
+          "The Hollywood Reporter other desert cities theater entertainment",
+          "latest news about other desert cities theater October 2026",
+          "other desert cities theater entertainment news 2026-10-19",
+          "what happened with other desert cities theater"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "other",
+          "desert",
+          "cities",
+          "theater",
+          "review",
+          "julia",
+          "louis",
+          "dreyfus"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "other desert cities theater 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter other desert cities theater",
+          "hollywoodreporter.com other desert cities theater",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Other Desert Cities’ Theater Review: Julia Louis-Dreyfus,…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "other desert cities theater latest news",
+          "other desert cities theater",
+          "other desert cities theater news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "other desert cities theater latest news October 2026",
+          "other desert cities theater entertainment update 2026",
+          "other desert cities theater news 2026-10-19",
+          "latest entertainment news about other desert cities theater",
+          "other desert cities theater review julia latest update",
+          "The Hollywood Reporter other desert cities theater entertainment",
+          "latest news about other desert cities theater October 2026",
+          "other desert cities theater entertainment news 2026-10-19",
+          "what happened with other desert cities theater",
+          "other",
+          "desert",
+          "cities",
+          "theater",
+          "review",
+          "julia",
+          "louis",
+          "dreyfus",
+          "October 2026",
+          "2026-10-19",
+          "other desert cities theater 2026",
+          "The Hollywood Reporter other desert cities theater",
+          "hollywoodreporter.com other desert cities theater",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "0d1ca792",
+      "title": "Kenya pastor accused of ordering parents to starve their children to death faces verdict",
+      "url": "https://www.bbc.co.uk/news/articles/ckd6d2l3dz4xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T03:44:02.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Obituary",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8068/live/34a82040-c956-11f1-8879-9d9deeb686e1.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/kenya-pastor-accused-of-ordering-parents-to-starve-their-children-to-death-faces-0d1ca7/",
+      "landing_url": "https://matchapp.tv/?news=0d1ca792#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "kenya",
+          "pastor",
+          "accused",
+          "ordering",
+          "parents",
+          "starve"
+        ],
+        "long_tail": [
+          "Kenya pastor accused of ordering parents to starve their children to death faces verdict 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "kenya",
+          "pastor",
+          "accused",
+          "ordering",
+          "parents",
+          "starve"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Kenya pastor accused of ordering parents to starve their…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "kenya",
+          "pastor",
+          "accused",
+          "ordering",
+          "parents",
+          "starve",
+          "Kenya pastor accused of ordering parents to starve their children to death faces verdict 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "e5cad304",
+      "title": "China's growth accelerates as AI export boom outweighs domestic weakness",
+      "url": "https://www.bbc.co.uk/news/articles/cm5yn098xz8lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T03:17:46.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7328/live/2759f110-cb64-11f1-a812-d3be2dbc962d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/china-s-growth-accelerates-as-ai-export-boom-outweighs-domestic-weakness-e5cad3/",
+      "landing_url": "https://matchapp.tv/?news=e5cad304#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "china",
+          "growth",
+          "accelerates",
+          "export",
+          "boom",
+          "outweighs"
+        ],
+        "long_tail": [
+          "China's growth accelerates as AI export boom outweighs domestic weakness 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "china",
+          "growth",
+          "accelerates",
+          "export",
+          "boom",
+          "outweighs"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "China's growth accelerates as AI export boom outweighs…",
+        "meta_description": "World report published by BBC Technology on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "china",
+          "growth",
+          "accelerates",
+          "export",
+          "boom",
+          "outweighs",
+          "China's growth accelerates as AI export boom outweighs domestic weakness 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "34d51c10",
+      "title": "Threat forces Israel to Austria flight into emergency landing",
+      "url": "https://www.bbc.co.uk/news/articles/c680zdmn100lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T02:41:50.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f91d/live/31ebfb00-cb5a-11f1-97b1-010e9e08360f.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/threat-forces-israel-to-austria-flight-into-emergency-landing-34d51c/",
+      "landing_url": "https://matchapp.tv/?news=34d51c10#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "threat",
+          "forces",
+          "israel",
+          "austria",
+          "flight",
+          "into"
+        ],
+        "long_tail": [
+          "Threat forces Israel to Austria flight into emergency landing 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "threat",
+          "forces",
+          "israel",
+          "austria",
+          "flight",
+          "into"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Threat forces Israel to Austria flight into emergency…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "threat",
+          "forces",
+          "israel",
+          "austria",
+          "flight",
+          "into",
+          "Threat forces Israel to Austria flight into emergency landing 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "8cea88c9",
+      "title": "BBC visits wildfire front in haze-choked Indonesia",
+      "url": "https://www.bbc.co.uk/news/videos/cm9wzye55j4xo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T01:57:02.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/174e/live/b716c350-cb5f-11f1-9a39-31b474234113.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/bbc-visits-wildfire-front-in-haze-choked-indonesia-8cea88/",
+      "landing_url": "https://matchapp.tv/?news=8cea88c9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "bbc",
+          "visits",
+          "wildfire",
+          "front",
+          "haze",
+          "choked"
+        ],
+        "long_tail": [
+          "BBC visits wildfire front in haze-choked Indonesia 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "bbc",
+          "visits",
+          "wildfire",
+          "front",
+          "haze",
+          "choked"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "BBC visits wildfire front in haze-choked Indonesia | World…",
+        "meta_description": "World report published by BBC Science on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "bbc",
+          "visits",
+          "wildfire",
+          "front",
+          "haze",
+          "choked",
+          "BBC visits wildfire front in haze-choked Indonesia 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
+      "id": "8e292d80",
+      "title": "Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/18/como-esta-a-economia-da-argentina.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T01:53:48.000Z",
+      "discovered_at": "2026-10-19T05:14:17.960Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/qloGlH4ABygm0oWAKWL1vgUm40k=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/9/Q/wX7kjHQCqR5XylVy9Dng/2025-07-26t154601z-612507204-rc2kfca5yc1r-rtrmadp-3-argentina-economy.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/como-esta-a-economia-da-argentina-crescimento-e-queda-da-inflacao-contrastam-com-8e292d/",
+      "landing_url": "https://matchapp.tv/?news=8e292d80#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "esta",
+          "economia",
+          "argentina",
+          "crescimento",
+          "queda"
+        ],
+        "long_tail": [
+          "Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "como",
+          "esta",
+          "economia",
+          "argentina",
+          "crescimento",
+          "queda"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Como está a economia da Argentina? Crescimento e queda da…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "esta",
+          "economia",
+          "argentina",
+          "crescimento",
+          "queda",
+          "Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
+      }
+    },
+    {
       "id": "916abdad",
-      "title": "Benito Di Paula morre em São Paulo, aos 84 anos, e deixa obra inovadora no segmento do samba",
+      "title": "Benito Di Paula morre em São Paulo, aos 84 anos, e deixa obra singular no samba",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/18/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-inovadora-no-segmento-do-samba.ghtml",
       "source": "G1",
       "source_domain": "g1.globo.com",
@@ -18,7 +738,7 @@
       "person": "Benito Di Paula",
       "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
       "image": "https://s2-g1.glbimg.com/lFaCYj8CVlQIWpufX6BHKlJvlJw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/C/W/mndGlMTH6rvzSu49lGuw/benito-di-paula-credito-murilo-alvesso-6020.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-inovadora-no-segment-916abd/",
+      "matchapp_url": "https://matchapp.tv/news/articles/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-singular-no-samba-916abd/",
       "landing_url": "https://matchapp.tv/?news=916abdad#latest-news",
       "seo": {
         "primary_keyword": "Benito Di Paula últimas notícias",
@@ -97,7 +817,7 @@
           "g1.globo.com Benito Di Paula",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -166,7 +886,7 @@
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -334,7 +1054,7 @@
           "hollywoodreporter.com less red carpet more",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -773,7 +1493,7 @@
           "hollywoodreporter.com Jesse Eisenberg Reveals TV",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1049,76 +1769,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
-      }
-    },
-    {
-      "id": "e5394eb9",
-      "title": "Macron calls for 'calm and order' after riots across France",
-      "url": "https://www.bbc.co.uk/news/articles/cw240zl08dm5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-18T20:33:21.000Z",
-      "discovered_at": "2026-10-18T22:34:17.346Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3671/live/56f97410-cb35-11f1-9e57-a506a0943bb2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/macron-calls-for-calm-and-order-after-riots-across-france-e5394e/",
-      "landing_url": "https://matchapp.tv/?news=e5394eb9#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-18",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "macron",
-          "calls",
-          "calm",
-          "order",
-          "after",
-          "riots"
-        ],
-        "long_tail": [
-          "Macron calls for 'calm and order' after riots across France 2026-10-18",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "macron",
-          "calls",
-          "calm",
-          "order",
-          "after",
-          "riots"
-        ],
-        "freshness_keywords": [
-          "2026-10-18"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Macron calls for 'calm and order' after riots across…",
-        "meta_description": "World report published by BBC World on 2026-10-18. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-18",
-          "world news",
-          "global headlines",
-          "macron",
-          "calls",
-          "calm",
-          "order",
-          "after",
-          "riots",
-          "Macron calls for 'calm and order' after riots across France 2026-10-18",
-          "world news October 2026",
-          "2026-10-18",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-18T22:34:17.346Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1187,7 +1838,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1348,7 +1999,7 @@
           "hollywoodreporter.com Young Miko Gets Flirty",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1417,7 +2068,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1555,7 +2206,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1652,7 +2303,7 @@
           "g1.globo.com integrantes rebelde lamentam morte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1721,7 +2372,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1817,7 +2468,7 @@
           "hollywoodreporter.com Betty McGuire",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -1886,7 +2537,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -3156,7 +3807,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -4888,7 +5539,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -5517,7 +6168,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -5876,7 +6527,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -7159,7 +7810,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -7712,7 +8363,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -8560,7 +9211,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -9392,7 +10043,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -9560,7 +10211,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -10540,7 +11191,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -11424,7 +12075,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -13741,7 +14392,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -13908,7 +14559,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -14177,7 +14828,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -14340,7 +14991,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -15297,7 +15948,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -15398,7 +16049,7 @@
           "g1.globo.com que renato russo estaria",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -18440,7 +19091,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-19T01:17:08.076Z"
+        "seo_generated_at": "2026-10-19T05:14:17.960Z"
       }
     },
     {
@@ -79791,889 +80442,6 @@
           "G1 Mundo"
         ],
         "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "38e85ca3",
-      "title": "Skydance’s $80 Billion Debt Bomb: How Will Warner Bros. and Paramount’s New Owner Make It Work?",
-      "url": "https://www.hollywoodreporter.com/business/business-news/skydance-debt-warner-bros-paramount-1236723298/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-06T15:43:24.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/18rep_opener.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/skydance-s-80-billion-debt-bomb-how-will-warner-bros-and-paramount-s-new-owner-m-38e85c/",
-      "landing_url": "https://matchapp.tv/?news=38e85ca3#latest-news",
-      "seo": {
-        "primary_keyword": "kp",
-        "short_tail": [
-          "skydance billion debt bomb",
-          "skydance billion debt bomb news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "long_tail": [
-          "skydance billion debt bomb latest news October 2026",
-          "skydance billion debt bomb entertainment update 2026",
-          "skydance billion debt bomb news 2026-10-06",
-          "latest entertainment news about skydance billion debt bomb",
-          "skydance billion debt bomb how will latest update",
-          "The Hollywood Reporter skydance billion debt bomb entertainment",
-          "latest news about skydance billion debt bomb October 2026",
-          "skydance billion debt bomb entertainment news 2026-10-06",
-          "what happened with skydance billion debt bomb"
-        ],
-        "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "entity_keywords": [
-          "skydance",
-          "billion",
-          "debt",
-          "bomb",
-          "how",
-          "will",
-          "warner",
-          "bros"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "skydance billion debt bomb 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter skydance billion debt bomb",
-          "hollywoodreporter.com skydance billion debt bomb",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Skydance’s $80 Billion Debt Bomb: How Will Warner Bros.…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "kp",
-          "skydance billion debt bomb",
-          "skydance billion debt bomb news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
-          "skydance billion debt bomb latest news October 2026",
-          "skydance billion debt bomb entertainment update 2026",
-          "skydance billion debt bomb news 2026-10-06",
-          "latest entertainment news about skydance billion debt bomb",
-          "skydance billion debt bomb how will latest update",
-          "The Hollywood Reporter skydance billion debt bomb entertainment",
-          "latest news about skydance billion debt bomb October 2026",
-          "skydance billion debt bomb entertainment news 2026-10-06",
-          "what happened with skydance billion debt bomb",
-          "skydance",
-          "billion",
-          "debt",
-          "bomb",
-          "how",
-          "will",
-          "warner",
-          "bros",
-          "October 2026",
-          "2026-10-06",
-          "skydance billion debt bomb 2026",
-          "The Hollywood Reporter skydance billion debt bomb"
-        ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
-      }
-    },
-    {
-      "id": "aa065c12",
-      "title": "Steven Spielberg Returns to ‘Transformers’ Franchise, Michael Bay in Talks to Direct for Paramount",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/steven-spielberg-transformers-new-movie-michael-bay-1236723336/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-06T15:30:27.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Steven Spielberg Returns",
-      "description": "Steven Spielberg Returns: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/08/Transformers-Age-of-Extinction.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/steven-spielberg-returns-to-transformers-franchise-michael-bay-in-talks-to-direc-aa065c/",
-      "landing_url": "https://matchapp.tv/?news=aa065c12#latest-news",
-      "seo": {
-        "primary_keyword": "kp",
-        "short_tail": [
-          "Steven Spielberg Returns",
-          "Steven Spielberg Returns news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "long_tail": [
-          "Steven Spielberg Returns latest news October 2026",
-          "Steven Spielberg Returns entertainment update 2026",
-          "Steven Spielberg Returns news 2026-10-06",
-          "latest entertainment news about Steven Spielberg Returns",
-          "steven spielberg returns steven spielberg returns latest update",
-          "The Hollywood Reporter Steven Spielberg Returns entertainment",
-          "latest news about Steven Spielberg Returns October 2026",
-          "Steven Spielberg Returns entertainment news 2026-10-06",
-          "what happened with Steven Spielberg Returns"
-        ],
-        "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "entity_keywords": [
-          "Steven Spielberg Returns",
-          "steven",
-          "spielberg",
-          "returns",
-          "transformers",
-          "franchise"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "Steven Spielberg Returns 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Steven Spielberg Returns",
-          "hollywoodreporter.com Steven Spielberg Returns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Steven Spielberg Returns to ‘Transformers’ Franchise,…",
-        "meta_description": "Steven Spielberg Returns: Entertainment update reported by The Hollywood Reporter on 2026-10-06. See verified context, publication time and the original…",
-        "keywords": [
-          "kp",
-          "Steven Spielberg Returns",
-          "Steven Spielberg Returns news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
-          "Steven Spielberg Returns latest news October 2026",
-          "Steven Spielberg Returns entertainment update 2026",
-          "Steven Spielberg Returns news 2026-10-06",
-          "latest entertainment news about Steven Spielberg Returns",
-          "steven spielberg returns steven spielberg returns latest update",
-          "The Hollywood Reporter Steven Spielberg Returns entertainment",
-          "latest news about Steven Spielberg Returns October 2026",
-          "Steven Spielberg Returns entertainment news 2026-10-06",
-          "what happened with Steven Spielberg Returns",
-          "steven",
-          "spielberg",
-          "returns",
-          "transformers",
-          "franchise",
-          "October 2026",
-          "2026-10-06",
-          "Steven Spielberg Returns 2026",
-          "The Hollywood Reporter Steven Spielberg Returns",
-          "hollywoodreporter.com Steven Spielberg Returns",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
-      }
-    },
-    {
-      "id": "3749b813",
-      "title": "Luzes e sombras da relação visceral de Aldir Blanc com a mulher Mari Sá Freire são expostas em filme amoroso que abre o relicário afetivo do compositor",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/06/luzes-e-sombras-da-relacao-visceral-de-aldir-blanc-com-a-mulher-mari-de-sa-freire-e-exposta-em-filme-amoroso-que-abre-o-relicario-afetivo-do-compositor.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T15:13:34.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/nUpgP67hBdm7WLL5sbrDI4Tj4IE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/5/M/01AoxlQJ6a8yjtQydzzA/aldir2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/luzes-e-sombras-da-relacao-visceral-de-aldir-blanc-com-a-mulher-mari-sa-freire-s-3749b8/",
-      "landing_url": "https://matchapp.tv/?news=3749b813#latest-news",
-      "seo": {
-        "primary_keyword": "luzes sombras relacao visceral últimas notícias",
-        "short_tail": [
-          "luzes sombras relacao visceral",
-          "luzes sombras relacao visceral news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "luzes sombras relacao visceral latest news October 2026",
-          "luzes sombras relacao visceral entertainment update 2026",
-          "luzes sombras relacao visceral news 2026-10-06",
-          "latest entertainment news about luzes sombras relacao visceral",
-          "luzes sombras relacao visceral aldir blanc latest update",
-          "G1 luzes sombras relacao visceral entertainment",
-          "últimas notícias sobre luzes sombras relacao visceral outubro 2026",
-          "luzes sombras relacao visceral notícia de 2026-10-06",
-          "o que aconteceu com luzes sombras relacao visceral"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "luzes",
-          "sombras",
-          "relacao",
-          "visceral",
-          "aldir",
-          "blanc",
-          "mulher",
-          "mari"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "luzes sombras relacao visceral 2026"
-        ],
-        "source_keywords": [
-          "G1 luzes sombras relacao visceral",
-          "g1.globo.com luzes sombras relacao visceral",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Luzes e sombras da relação visceral de Aldir Blanc com a…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "luzes sombras relacao visceral últimas notícias",
-          "luzes sombras relacao visceral",
-          "luzes sombras relacao visceral news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "luzes sombras relacao visceral latest news October 2026",
-          "luzes sombras relacao visceral entertainment update 2026",
-          "luzes sombras relacao visceral news 2026-10-06",
-          "latest entertainment news about luzes sombras relacao visceral",
-          "luzes sombras relacao visceral aldir blanc latest update",
-          "G1 luzes sombras relacao visceral entertainment",
-          "últimas notícias sobre luzes sombras relacao visceral outubro 2026",
-          "luzes sombras relacao visceral notícia de 2026-10-06",
-          "o que aconteceu com luzes sombras relacao visceral",
-          "luzes",
-          "sombras",
-          "relacao",
-          "visceral",
-          "aldir",
-          "blanc",
-          "mulher",
-          "mari",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "luzes sombras relacao visceral 2026",
-          "G1 luzes sombras relacao visceral",
-          "g1.globo.com luzes sombras relacao visceral",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "2414dee5",
-      "title": "Watch: At the scene of student protests in Lille",
-      "url": "https://www.bbc.co.uk/news/videos/cwzd650e2jqdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-06T15:02:56.000Z",
-      "discovered_at": "2026-10-06T20:50:48.836Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-06. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fc0c/live/7e8d42e0-c199-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/watch-at-the-scene-of-student-protests-in-lille-2414de/",
-      "landing_url": "https://matchapp.tv/?news=2414dee5#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-06",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "watch",
-          "scene",
-          "student",
-          "protests",
-          "lille"
-        ],
-        "long_tail": [
-          "Watch: At the scene of student protests in Lille 2026-10-06",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "watch",
-          "scene",
-          "student",
-          "protests",
-          "lille"
-        ],
-        "freshness_keywords": [
-          "2026-10-06"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Watch: At the scene of student protests in Lille | World…",
-        "meta_description": "World report published by BBC World on 2026-10-06. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-06",
-          "world news",
-          "global headlines",
-          "watch",
-          "scene",
-          "student",
-          "protests",
-          "lille",
-          "Watch: At the scene of student protests in Lille 2026-10-06",
-          "world news October 2026",
-          "2026-10-06",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-06T20:52:22.333Z"
-      }
-    },
-    {
-      "id": "a2508ba9",
-      "title": "American French Film Festival Lineup Features Int’l Oscar Contenders, “Cinema of Resistance”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/american-french-film-festival-2026-lineup-oscar-contenders-1236721881/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-06T15:00:00.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "American French Film Festival",
-      "description": "American French Film Festival: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/Minotaur-200498-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/american-french-film-festival-lineup-features-int-l-oscar-contenders-cinema-of-r-a2508b/",
-      "landing_url": "https://matchapp.tv/?news=a2508ba9#latest-news",
-      "seo": {
-        "primary_keyword": "kp",
-        "short_tail": [
-          "American French Film Festival",
-          "American French Film Festival news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "long_tail": [
-          "American French Film Festival latest news October 2026",
-          "American French Film Festival awards update 2026",
-          "American French Film Festival news 2026-10-06",
-          "latest awards news about American French Film Festival",
-          "american french film festival american french latest update",
-          "The Hollywood Reporter American French Film Festival awards",
-          "latest news about American French Film Festival October 2026",
-          "American French Film Festival entertainment news 2026-10-06",
-          "what happened with American French Film Festival"
-        ],
-        "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "entity_keywords": [
-          "American French Film Festival",
-          "american",
-          "french",
-          "film",
-          "festival"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "American French Film Festival 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter American French Film Festival",
-          "hollywoodreporter.com American French Film Festival",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "American French Film Festival Lineup Features Int’l Oscar…",
-        "meta_description": "American French Film Festival: Awards update reported by The Hollywood Reporter on 2026-10-06. See verified context, publication time and the original…",
-        "keywords": [
-          "kp",
-          "American French Film Festival",
-          "American French Film Festival news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
-          "American French Film Festival latest news October 2026",
-          "American French Film Festival awards update 2026",
-          "American French Film Festival news 2026-10-06",
-          "latest awards news about American French Film Festival",
-          "american french film festival american french latest update",
-          "The Hollywood Reporter American French Film Festival awards",
-          "latest news about American French Film Festival October 2026",
-          "American French Film Festival entertainment news 2026-10-06",
-          "what happened with American French Film Festival",
-          "american",
-          "french",
-          "film",
-          "festival",
-          "October 2026",
-          "2026-10-06",
-          "American French Film Festival 2026",
-          "The Hollywood Reporter American French Film Festival",
-          "hollywoodreporter.com American French Film Festival",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
-      }
-    },
-    {
-      "id": "b3a7d175",
-      "title": "Ava DuVernay Returns With One of Netflix’s Most Political Docs Ever: “This Movie Kicked My Butt”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/ava-duvernay-interview-netflix-political-doc-14th-1236722858/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "published_at": "2026-10-06T15:00:00.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Ava DuVernay Returns With",
-      "description": "Ava DuVernay Returns With: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/h_16262678_LE_upscale_gentle_x2-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/ava-duvernay-returns-with-one-of-netflix-s-most-political-docs-ever-this-movie-k-b3a7d1/",
-      "landing_url": "https://matchapp.tv/?news=b3a7d175#latest-news",
-      "seo": {
-        "primary_keyword": "kp",
-        "short_tail": [
-          "Ava DuVernay Returns With",
-          "Ava DuVernay Returns With news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "long_tail": [
-          "Ava DuVernay Returns With latest news October 2026",
-          "Ava DuVernay Returns With entertainment update 2026",
-          "Ava DuVernay Returns With news 2026-10-06",
-          "latest entertainment news about Ava DuVernay Returns With",
-          "ava duvernay returns ava duvernay returns latest update",
-          "The Hollywood Reporter Ava DuVernay Returns With entertainment",
-          "latest news about Ava DuVernay Returns With October 2026",
-          "Ava DuVernay Returns With entertainment news 2026-10-06",
-          "what happened with Ava DuVernay Returns With"
-        ],
-        "trend_keywords": [
-          "kp",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்"
-        ],
-        "entity_keywords": [
-          "Ava DuVernay Returns With",
-          "ava",
-          "duvernay",
-          "returns",
-          "one",
-          "netflix"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "Ava DuVernay Returns With 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Ava DuVernay Returns With",
-          "hollywoodreporter.com Ava DuVernay Returns With",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Ava DuVernay Returns With One of Netflix’s Most Political…",
-        "meta_description": "Ava DuVernay Returns With: Entertainment update reported by The Hollywood Reporter on 2026-10-06. See verified context, publication time and the original…",
-        "keywords": [
-          "kp",
-          "Ava DuVernay Returns With",
-          "Ava DuVernay Returns With news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "भारतीय नौसेना",
-          "స్లీపర్ బస్సు",
-          "தனுஷ்",
-          "Ava DuVernay Returns With latest news October 2026",
-          "Ava DuVernay Returns With entertainment update 2026",
-          "Ava DuVernay Returns With news 2026-10-06",
-          "latest entertainment news about Ava DuVernay Returns With",
-          "ava duvernay returns ava duvernay returns latest update",
-          "The Hollywood Reporter Ava DuVernay Returns With entertainment",
-          "latest news about Ava DuVernay Returns With October 2026",
-          "Ava DuVernay Returns With entertainment news 2026-10-06",
-          "what happened with Ava DuVernay Returns With",
-          "ava",
-          "duvernay",
-          "returns",
-          "one",
-          "netflix",
-          "October 2026",
-          "2026-10-06",
-          "Ava DuVernay Returns With 2026",
-          "The Hollywood Reporter Ava DuVernay Returns With",
-          "hollywoodreporter.com Ava DuVernay Returns With",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-06T17:11:33.583Z"
-      }
-    },
-    {
-      "id": "49fb6c60",
-      "title": "Jheny Santucci anuncia separação de Arthur Aguiar após 3 meses e nega que dívidas tenham motivado decisão",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/06/jheny-santucci-anuncia-separacao-de-arthur-aguiar-menos-de-3-meses-apos-casamento.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T12:13:08.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Jheny Santucci",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/EZNhiLOL9MAnF_lOtYw2n9DEtds=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/a/1Tcwm2ROebrVvLmL9UYg/design-sem-nome-2026-10-06t090711.516.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/jheny-santucci-anuncia-separacao-de-arthur-aguiar-apos-3-meses-e-nega-que-divida-49fb6c/",
-      "landing_url": "https://matchapp.tv/?news=49fb6c60#latest-news",
-      "seo": {
-        "primary_keyword": "Jheny Santucci últimas notícias",
-        "short_tail": [
-          "Jheny Santucci",
-          "Jheny Santucci news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Jheny Santucci latest news October 2026",
-          "Jheny Santucci entertainment update 2026",
-          "Jheny Santucci news 2026-10-06",
-          "latest entertainment news about Jheny Santucci",
-          "jheny santucci jheny santucci anuncia separacao latest update",
-          "G1 Jheny Santucci entertainment",
-          "últimas notícias sobre Jheny Santucci outubro 2026",
-          "Jheny Santucci notícia de 2026-10-06",
-          "o que aconteceu com Jheny Santucci"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Jheny Santucci",
-          "jheny",
-          "santucci",
-          "anuncia",
-          "separacao",
-          "arthur",
-          "aguiar"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "Jheny Santucci 2026"
-        ],
-        "source_keywords": [
-          "G1 Jheny Santucci",
-          "g1.globo.com Jheny Santucci",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Jheny Santucci anuncia separação de Arthur Aguiar após 3…",
-        "meta_description": "Jheny Santucci: Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Jheny Santucci últimas notícias",
-          "Jheny Santucci",
-          "Jheny Santucci news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Jheny Santucci latest news October 2026",
-          "Jheny Santucci entertainment update 2026",
-          "Jheny Santucci news 2026-10-06",
-          "latest entertainment news about Jheny Santucci",
-          "jheny santucci jheny santucci anuncia separacao latest update",
-          "G1 Jheny Santucci entertainment",
-          "últimas notícias sobre Jheny Santucci outubro 2026",
-          "Jheny Santucci notícia de 2026-10-06",
-          "o que aconteceu com Jheny Santucci",
-          "jheny",
-          "santucci",
-          "anuncia",
-          "separacao",
-          "arthur",
-          "aguiar",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "Jheny Santucci 2026",
-          "G1 Jheny Santucci",
-          "g1.globo.com Jheny Santucci",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "4fabf6bc",
-      "title": "Ex-participante do 'American Idol' é condenado à prisão perpétua pelo assassinato da esposa",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/10/06/ex-participante-do-american-idol-e-condenado-a-prisao-perpetua-pelo-assassinato-da-esposa.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-10-06T11:36:17.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/5Ub18zBYsVrAjOCVRBgE-OFbZIA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/X/D/WrgOwwSnyxjhVeAAQyfg/caleb-flynn-alleged-wife-murder-american-idol.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/ex-participante-do-american-idol-e-condenado-a-prisao-perpetua-pelo-assassinato--4fabf6/",
-      "landing_url": "https://matchapp.tv/?news=4fabf6bc#latest-news",
-      "seo": {
-        "primary_keyword": "participante american idol condenado últimas notícias",
-        "short_tail": [
-          "participante american idol condenado",
-          "participante american idol condenado news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "participante american idol condenado latest news October 2026",
-          "participante american idol condenado entertainment update 2026",
-          "participante american idol condenado news 2026-10-06",
-          "latest entertainment news about participante american idol condenado",
-          "participante american idol condenado prisao perpetua latest update",
-          "G1 participante american idol condenado entertainment",
-          "últimas notícias sobre participante american idol condenado outubro 2026",
-          "participante american idol condenado notícia de 2026-10-06",
-          "o que aconteceu com participante american idol condenado"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "participante",
-          "american",
-          "idol",
-          "condenado",
-          "prisao",
-          "perpetua",
-          "pelo",
-          "assassinato"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "participante american idol condenado 2026"
-        ],
-        "source_keywords": [
-          "G1 participante american idol condenado",
-          "g1.globo.com participante american idol condenado",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Ex-participante do 'American Idol' é condenado à prisão…",
-        "meta_description": "Notícia publicada por G1 em 2026-10-06. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "participante american idol condenado últimas notícias",
-          "participante american idol condenado",
-          "participante american idol condenado news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "participante american idol condenado latest news October 2026",
-          "participante american idol condenado entertainment update 2026",
-          "participante american idol condenado news 2026-10-06",
-          "latest entertainment news about participante american idol condenado",
-          "participante american idol condenado prisao perpetua latest update",
-          "G1 participante american idol condenado entertainment",
-          "últimas notícias sobre participante american idol condenado outubro 2026",
-          "participante american idol condenado notícia de 2026-10-06",
-          "o que aconteceu com participante american idol condenado",
-          "participante",
-          "american",
-          "idol",
-          "condenado",
-          "prisao",
-          "perpetua",
-          "pelo",
-          "assassinato",
-          "October 2026",
-          "2026-10-06",
-          "outubro 2026",
-          "participante american idol condenado 2026",
-          "G1 participante american idol condenado",
-          "g1.globo.com participante american idol condenado",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T17:49:47.639Z"
-      }
-    },
-    {
-      "id": "1f081450",
-      "title": "Rosie O'Donnell and Julie Hesmondhalgh to appear in play about Gisele Pelicot case",
-      "url": "https://www.bbc.co.uk/news/articles/cwn73mzly7v4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-10-06T11:29:55.000Z",
-      "discovered_at": "2026-10-06T17:11:33.583Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Rosie O'Donnell",
-      "description": "Rosie O'Donnell: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b42d/live/eb5f0250-c176-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/rosie-o-donnell-and-julie-hesmondhalgh-to-appear-in-play-about-gisele-pelicot-ca-1f0814/",
-      "landing_url": "https://matchapp.tv/?news=1f081450#latest-news",
-      "seo": {
-        "primary_keyword": "Rosie O'Donnell latest news",
-        "short_tail": [
-          "Rosie O'Donnell",
-          "Rosie O'Donnell news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Rosie O'Donnell latest news October 2026",
-          "Rosie O'Donnell entertainment update 2026",
-          "Rosie O'Donnell news 2026-10-06",
-          "latest entertainment news about Rosie O'Donnell",
-          "rosie donnell rosie donnell julie hesmondhalgh latest update",
-          "BBC Rosie O'Donnell entertainment",
-          "latest news about Rosie O'Donnell October 2026",
-          "Rosie O'Donnell entertainment news 2026-10-06",
-          "what happened with Rosie O'Donnell"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Rosie O'Donnell",
-          "rosie",
-          "donnell",
-          "julie",
-          "hesmondhalgh",
-          "appear",
-          "play"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-06",
-          "Rosie O'Donnell 2026"
-        ],
-        "source_keywords": [
-          "BBC Rosie O'Donnell",
-          "bbc.co.uk Rosie O'Donnell",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Rosie O'Donnell and Julie Hesmondhalgh to appear in play…",
-        "meta_description": "Rosie O'Donnell: Entertainment update reported by BBC on 2026-10-06. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Rosie O'Donnell latest news",
-          "Rosie O'Donnell",
-          "Rosie O'Donnell news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Rosie O'Donnell latest news October 2026",
-          "Rosie O'Donnell entertainment update 2026",
-          "Rosie O'Donnell news 2026-10-06",
-          "latest entertainment news about Rosie O'Donnell",
-          "rosie donnell rosie donnell julie hesmondhalgh latest update",
-          "BBC Rosie O'Donnell entertainment",
-          "latest news about Rosie O'Donnell October 2026",
-          "Rosie O'Donnell entertainment news 2026-10-06",
-          "what happened with Rosie O'Donnell",
-          "rosie",
-          "donnell",
-          "julie",
-          "hesmondhalgh",
-          "appear",
-          "play",
-          "October 2026",
-          "2026-10-06",
-          "Rosie O'Donnell 2026",
-          "BBC Rosie O'Donnell",
-          "bbc.co.uk Rosie O'Donnell",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-07T09:42:02.008Z"
       }
     }
   ]
