@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T08:07:37.586Z",
+  "generated_at": "2026-10-19T08:25:40.016Z",
   "limit": 1000,
   "items": [
     {
@@ -68,7 +68,7 @@
           "2026-10-19",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -137,12 +137,12 @@
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
       "id": "80b190ae",
-      "title": "France's government under pressure after weekend of widespread violence",
+      "title": "Katya Adler: France's government under pressure after weekend of widespread violence",
       "url": "https://www.bbc.co.uk/news/articles/crwyd02yz22vo?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
@@ -153,35 +153,35 @@
       "discovered_at": "2026-10-19T05:14:17.960Z",
       "event_type": "Entertainment",
       "category": "world",
-      "person": "",
+      "person": "Katya Adler",
       "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4190/live/1ce2e400-cb80-11f1-bba6-c7bcff195158.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/france-s-government-under-pressure-after-weekend-of-widespread-violence-80b190/",
+      "matchapp_url": "https://matchapp.tv/news/articles/katya-adler-france-s-government-under-pressure-after-weekend-of-widespread-viole-80b190/",
       "landing_url": "https://matchapp.tv/?news=80b190ae#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-10-19",
         "short_tail": [
           "world news",
           "global headlines",
+          "katya",
+          "adler",
           "france",
           "government",
           "under",
-          "pressure",
-          "after",
-          "weekend"
+          "pressure"
         ],
         "long_tail": [
-          "France's government under pressure after weekend of widespread violence 2026-10-19",
+          "Katya Adler: France's government under pressure after weekend of widespread violence 2026-10-19",
           "world news October 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
+          "katya",
+          "adler",
           "france",
           "government",
           "under",
-          "pressure",
-          "after",
-          "weekend"
+          "pressure"
         ],
         "freshness_keywords": [
           "2026-10-19"
@@ -189,24 +189,24 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "France's government under pressure after weekend of…",
+        "meta_title": "Katya Adler: France's government under pressure after…",
         "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
         "keywords": [
           "world news 2026-10-19",
           "world news",
           "global headlines",
+          "katya",
+          "adler",
           "france",
           "government",
           "under",
           "pressure",
-          "after",
-          "weekend",
-          "France's government under pressure after weekend of widespread violence 2026-10-19",
+          "Katya Adler: France's government under pressure after weekend of widespread violence 2026-10-19",
           "world news October 2026",
           "2026-10-19",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -275,7 +275,7 @@
           "2026-10-19",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -374,7 +374,7 @@
           "g1.globo.com caos sucesso bastidores dvd",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -443,7 +443,7 @@
           "2026-10-19",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -461,7 +461,7 @@
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f91d/live/31ebfb00-cb5a-11f1-97b1-010e9e08360f.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/874b/live/3d27e8a0-cb94-11f1-93a7-b36f3083f4d3.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/bomb-threat-forces-israel-to-austria-flight-into-emergency-landing-34d51c/",
       "landing_url": "https://matchapp.tv/?news=34d51c10#latest-news",
       "seo": {
@@ -512,7 +512,7 @@
           "2026-10-19",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -581,7 +581,7 @@
           "2026-10-19",
           "BBC Technology"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -650,7 +650,7 @@
           "2026-10-19",
           "BBC World"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -719,7 +719,7 @@
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -788,7 +788,7 @@
           "2026-10-19",
           "BBC Science"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -1094,7 +1094,7 @@
           "hollywoodreporter.com other desert cities theater",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -1301,7 +1301,7 @@
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -1399,7 +1399,7 @@
           "g1.globo.com Benito Di Paula",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -1468,7 +1468,7 @@
           "2026-10-19",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -1636,7 +1636,7 @@
           "hollywoodreporter.com less red carpet more",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2006,7 +2006,7 @@
           "hollywoodreporter.com Jesse Eisenberg Reveals TV",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2282,7 +2282,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2351,7 +2351,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2512,7 +2512,7 @@
           "hollywoodreporter.com Young Miko Gets Flirty",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2581,7 +2581,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2719,7 +2719,7 @@
           "2026-10-18",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2816,7 +2816,7 @@
           "g1.globo.com integrantes rebelde lamentam morte",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -2981,7 +2981,7 @@
           "hollywoodreporter.com Betty McGuire",
           "The Hollywood Reporter entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -4320,7 +4320,7 @@
           "g1.globo.com aquarelas ary barroso tom",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -5983,7 +5983,7 @@
           "g1.globo.com Daniel Lopes",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -6612,7 +6612,7 @@
           "bbc.co.uk Comedian Paul Whitehouse",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -6971,7 +6971,7 @@
           "bbc.co.uk manifest reality wembley arena",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -8254,7 +8254,7 @@
           "bbc.co.uk Off Campus",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -8807,7 +8807,7 @@
           "g1.globo.com Grupo Clareou",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -9655,7 +9655,7 @@
           "g1.globo.com iza lanca terceiro album",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -10487,7 +10487,7 @@
           "bbc.co.uk Actress Selma Blair",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -10655,7 +10655,7 @@
           "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -11635,7 +11635,7 @@
           "g1.globo.com Aretuza Lovi",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -12519,7 +12519,7 @@
           "g1.globo.com musicos cristovao bastos mauro",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -14836,7 +14836,7 @@
           "g1.globo.com durante julgamento crimes sexuais",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -15003,7 +15003,7 @@
           "g1.globo.com Karim Aïnouz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -15272,7 +15272,7 @@
           "g1.globo.com pitty reprocessa chip punk",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -15435,7 +15435,7 @@
           "bbc.co.uk Street Fighter",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -16392,7 +16392,7 @@
           "g1.globo.com wannabe spice girls faz",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {
@@ -19535,7 +19535,7 @@
           "2026-10-15",
           "October 2026"
         ],
-        "seo_generated_at": "2026-10-19T08:07:37.586Z"
+        "seo_generated_at": "2026-10-19T08:25:40.016Z"
       }
     },
     {

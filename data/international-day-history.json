@@ -1,5 +1,58 @@
 [
   {
+    "date": "2026-10-18",
+    "id": "world-menopause-day-2026-10-18",
+    "emoji": "🌿",
+    "title": "World Menopause Day",
+    "kicker": "International day",
+    "place": "Worldwide",
+    "summary": "World Menopause Day falls on 18 October. The International Menopause Society's 2026 theme is 'Chronic Pain at Midlife'. Explore respectful documentaries and conversations about midlife, listening and community support.",
+    "prompt": "Explain World Menopause Day on 18 October 2026 and the International Menopause Society's theme 'Chronic Pain at Midlife', using the official source. Suggest respectful ways to learn and support others, then recommend verified documentaries or films about midlife and lived experiences, checking where to watch in my country. Distinguish personal stories from medical evidence; do not diagnose, recommend treatments or invent availability.",
+    "officialUrl": "https://www.imsociety.org/education/world-menopause-day-2026/",
+    "image": "/event-posters/world-menopause-chronic-pain-2026.svg",
+    "keywords": [
+      "World Menopause Day 2026",
+      "18 October international day",
+      "Chronic Pain at Midlife",
+      "International Menopause Society",
+      "World Menopause Day activities",
+      "midlife documentaries",
+      "menopause awareness films",
+      "what to watch on World Menopause Day",
+      "Dia Mundial da Menopausa 2026",
+      "Día Mundial de la Menopausia 2026",
+      "documentários sobre a meia-idade",
+      "conversations about midlife and community support"
+    ],
+    "i18n": {
+      "pt-BR": {
+        "title": "Dia Mundial da Menopausa",
+        "kicker": "Data internacional",
+        "place": "No mundo todo",
+        "summary": "O Dia Mundial da Menopausa é celebrado em 18 de outubro. O tema de 2026 da Sociedade Internacional de Menopausa é 'Dor crônica na meia-idade'. Conheça documentários e conversas respeitosas sobre a meia-idade, a escuta e o apoio da comunidade.",
+        "prompt": "Explique o Dia Mundial da Menopausa em 18 de outubro de 2026 e o tema da Sociedade Internacional de Menopausa 'Dor crônica na meia-idade', usando a fonte oficial. Sugira maneiras respeitosas de aprender e apoiar outras pessoas, depois recomende documentários ou filmes verificados sobre a meia-idade e experiências pessoais, conferindo onde assistir no meu país. Diferencie relatos pessoais de evidências médicas; não faça diagnósticos, não recomende tratamentos nem invente disponibilidade.",
+        "imageAlt": "Ilustração original de uma mulher na meia-idade com uma mão próxima ao ombro, em um ambiente acolhedor que simboliza escuta e apoio",
+        "sourceName": "Sociedade Internacional de Menopausa"
+      },
+      "es": {
+        "title": "Día Mundial de la Menopausia",
+        "kicker": "Día internacional",
+        "place": "En todo el mundo",
+        "summary": "El Día Mundial de la Menopausia se celebra el 18 de octubre. El tema de 2026 de la Sociedad Internacional de Menopausia es 'Dolor crónico en la mediana edad'. Descubre documentales y conversaciones respetuosas sobre la mediana edad, la escucha y el apoyo comunitario.",
+        "prompt": "Explica el Día Mundial de la Menopausia del 18 de octubre de 2026 y el tema de la Sociedad Internacional de Menopausia 'Dolor crónico en la mediana edad', utilizando la fuente oficial. Sugiere formas respetuosas de aprender y apoyar a otras personas y recomienda documentales o películas verificados sobre la mediana edad y experiencias personales, comprobando dónde verlos en mi país. Distingue los relatos personales de la evidencia médica; no diagnostiques, no recomiendes tratamientos ni inventes disponibilidad.",
+        "imageAlt": "Ilustración original de una mujer de mediana edad con una mano cerca del hombro, en un entorno acogedor que representa la escucha y el apoyo",
+        "sourceName": "Sociedad Internacional de Menopausia"
+      }
+    },
+    "imageAlt": "Original illustration of a midlife woman resting a hand near her shoulder in a welcoming setting representing listening and support",
+    "imageCredit": "Original vector illustration created for MatchApp Ai for this observance. No third-party images or logos. Not an official International Menopause Society poster or a documentary photograph.",
+    "sourceName": "International Menopause Society",
+    "sourceUrls": [
+      "https://www.imsociety.org/education/world-menopause-day-2026/"
+    ],
+    "updated": "2026-10-18T16:34:34.745Z"
+  },
+  {
     "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
     "_note": "Source-verified day-of record maintained by the single MatchApp Ai coordinator. The existing archive owner preserves ended history.",
     "updated": "2026-10-17T07:57:23.332Z",
