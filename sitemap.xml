@@ -68,13 +68,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-10-19T19:33:34+00:00</lastmod>
+        <lastmod>2026-10-19T19:35:45+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/trending/this-week/</loc>
-        <lastmod>2026-10-19T19:33:34+00:00</lastmod>
+        <lastmod>2026-10-19T19:28:11+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
@@ -236,7 +236,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/featured/this-week/</loc>
-        <lastmod>2026-10-19T19:33:34+00:00</lastmod>
+        <lastmod>2026-10-19T19:28:11+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -260,7 +260,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events-archive.html</loc>
-        <lastmod>2026-10-19T19:33:34+00:00</lastmod>
+        <lastmod>2026-10-19T19:50:22+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1526,7 +1526,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/kota-dussehra-2026/</loc>
-        <lastmod>2026-10-19T19:33:34+00:00</lastmod>
+        <lastmod>2026-10-19T19:35:45+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>

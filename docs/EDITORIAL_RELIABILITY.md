@@ -217,3 +217,29 @@ opened descriptor owns parsing, comparison, bounded complete UTF-8 writes,
 truncation and synchronization. A real pathname-replacement regression proves
 that a replacement file is untouched; partial-write and error cases are tested.
 No alert is dismissed and no analyzer, rule or gate is weakened.
+
+## Regeneration defects found in the natural release run
+
+Midnight39311818701 completed successfully on the approved workflow, but its
+generated diff exposed two remaining defects. The event archive restored the
+older `match-tokens.js` URL while Home already used the current approved URL.
+The event generator now reads Home's actual token script and stylesheet URLs
+before replacing any last-good page, preserving load order and future cache
+updates. Missing authoritative asset URLs remain a failing build.
+
+Awareness Home synchronization removed its block without consuming its two owned
+separator lines, adding blank lines on every otherwise unchanged rotation. It
+now removes those owned separators with the block, preserving unrelated markup
+and making repeated replacement, duplicate cleanup and empty-campaign passes
+byte-stable. The sitemap index also advanced its timestamp on every unchanged
+check. Its timestamp now advances only when the canonical sitemap changes;
+unchanged XML is not rewritten, and changed XML is replaced atomically.
+The event, catalog-SEO and watch generators also ran the brand finalizer across
+other owners' pages, leaving unstaged HTML changes that influenced sitemap dates.
+Their finalization is now limited to their existing owned output paths. The
+dedicated Brand owner retains its unchanged global default and publishing lock.
+Recovery fingerprints include these shared sitemap/finalization dependencies
+for every affected owner, while unrelated owners retain their retry budget.
+Isolated regressions reproduce the old cache, whitespace and sitemap-index
+failures and preserve genuine URL-set updates, without network requests or
+changes to real editorial sources, application logic or design.
