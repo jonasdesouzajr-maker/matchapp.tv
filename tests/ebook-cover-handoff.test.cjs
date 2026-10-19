@@ -131,7 +131,7 @@ test('verified audio edition keeps priority and bounded sharp-to-original fallba
  await f.clock.advance(2500);
  assert.deepEqual(f.img.writes,[sharp,original]);assert(f.delays.includes(7000));
  f.img.load();await f.done();f.ready();
- assert.equal(f.requests.filter(x=>x.includes('maxResults=10')||x.includes('itunes.apple.com')).length,0);
+ assert.equal(f.requests.filter(x=>{const u=new URL(x,'https://fixture.invalid/');return u.searchParams.get('maxResults')==='10'||u.hostname==='itunes.apple.com'}).length,0);
  assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
 });
 
