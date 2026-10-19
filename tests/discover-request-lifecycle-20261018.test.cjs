@@ -34,7 +34,7 @@ async function boot(){
   w.catalogFallbackForQuestion=()=>[];
   w.fallbackSearch=async()=>({answer:'No live answer.',results:[],_live:false});
   w.renderResultsInto=async(_grid,items,_base,options)=>{events.push({type:'cards',items,options});return items;};
-  w.eval(['titleKey','discoverRecommendationRequest','discoverExcludedTitles','discoverAnswerContainsExcludedTitle','discoverRecommendationSummary','prepareDiscoverRecommendations','releaseDiscoverClaims','loadThreads','saveThreads','persistCurrentThread','appendUserBubble','appendAssistantBubble','runAskAndRender','askAndRender'].map(functionSource).join('\n'));
+  w.eval(['discoverRecoveryText','titleKey','discoverRecommendationRequest','discoverExcludedTitles','discoverAnswerContainsExcludedTitle','discoverRecommendationSummary','prepareDiscoverRecommendations','releaseDiscoverClaims','loadThreads','saveThreads','persistCurrentThread','appendUserBubble','appendAssistantBubble','runAskAndRender','askAndRender'].map(functionSource).join('\n'));
   for(const name of ['startNewChat','openThread','deleteThread']){
     const start=source.indexOf('window.'+name+' = function'),end=source.indexOf('\n};',start)+3;
     w.eval(source.slice(start,end));

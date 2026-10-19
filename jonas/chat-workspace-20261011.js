@@ -6,16 +6,20 @@
  // The Android ambient iframe is sized by its floating panel, not the outer
  // browser window. Recomputing a second workspace height clips chat/composer.
  if(window.parent!==window&&new URLSearchParams(location.search).get('ambient')==='1')return;
- let raf=0;
+ let raf=0,fullHeight=window.innerHeight;
  function fit(){
   if(raf)cancelAnimationFrame(raf);
   raf=requestAnimationFrame(()=>{
    raf=0;
    const panel=document.querySelector('body.ai-chat-page .discover-head');
    if(!panel)return;
-   const top=panel.getBoundingClientRect().top;
    const viewport=window.visualViewport;
-   const keyboardVisible=!!(viewport&&viewport.height<window.innerHeight-110);
+   const editing=panel.contains(document.activeElement)&&document.activeElement?.tagName==='TEXTAREA';
+   if(!editing)fullHeight=window.innerHeight;
+   const keyboardVisible=!!(viewport&&(viewport.height<window.innerHeight-110||editing&&window.innerHeight<fullHeight-110));
+   panel.dataset.keyboard=String(keyboardVisible);
+   panel.style.setProperty('--jonas-workspace-top',((viewport?.offsetTop||0)+10)+'px');
+   const top=panel.getBoundingClientRect().top;
    // Work from viewport coordinates, not document scroll offsets. The cookie
    // notice and Android keyboard must never cover the anchored composer.
    const viewportBottom=keyboardVisible
@@ -25,13 +29,15 @@
    const cookieRect=cookie?.getBoundingClientRect();
    const cookieTop=cookieRect&&cookieRect.height>0&&getComputedStyle(cookie).display!=='none'
     ? cookieRect.top-9:Infinity;
-   const free=Math.max(keyboardVisible?230:260,Math.floor(Math.min(viewportBottom-10,cookieTop)-top));
+   const workspaceTop=keyboardVisible?(viewport.offsetTop+10):top;
+   const free=Math.max(140,Math.floor(Math.min(viewportBottom-10,cookieTop)-workspaceTop));
    panel.style.setProperty('--jonas-workspace-height',free+'px');
   });
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fit,{once:true});else fit();
  window.addEventListener('resize',fit,{passive:true});
  window.visualViewport?.addEventListener('resize',fit,{passive:true});
+ window.visualViewport?.addEventListener('scroll',fit,{passive:true});
  // Consent appears after boot and may disappear without a viewport resize.
  function watchCookie(){
   if(!document.body)return;
@@ -40,6 +46,8 @@
     node.nodeType===1 && node.classList?.contains('ma-cookie'))))fit();
   });
   observer.observe(document.body,{childList:true});
+  const header=document.querySelector('header.app-header');
+  if(header&&typeof ResizeObserver==='function')new ResizeObserver(fit).observe(header);
   fit();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watchCookie,{once:true});

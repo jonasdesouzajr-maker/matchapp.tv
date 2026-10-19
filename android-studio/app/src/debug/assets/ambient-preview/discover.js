@@ -277,6 +277,184 @@ async function askAIConversational(question, history) {
     throw err;
 }
 
+// Outage and source-verification messages follow the explicitly selected app
+// language, even when the user's question or the original title is English.
+function discoverRecoveryText(key, values = {}) {
+    const keys=['directed','source','unavailable','factsUnavailable','books','audio','author','sourceLink','readingLink','emptyHint'];
+    const rows={
+        en:[
+            '{title} ({year}) was directed by {director}.',
+            'Verified original source: {source}.',
+            'Conversational AI is temporarily unavailable.',
+            'Conversational AI is temporarily unavailable, and I could not independently verify those film facts. Please try again later.',
+            'Use the official bookstore and publisher links below to check editions and availability. Store search results do not by themselves verify an edition or listening rights.',
+            'Check the official Apple Books and Audible searches below, then use Match E-books Ai to verify an exact audiobook edition before purchase or listening. Store search results do not by themselves verify an edition or listening rights.',
+            '{title} by {author}',
+            'Verified original film and director source ↗',
+            '📚🎧📰 Verify e-books, audiobooks and magazines',
+            'Type a question, or tap the microphone to ask MatchApp Ai.'
+        ],
+        pt:[
+            '{title} ({year}) foi dirigido por {director}.',
+            'Fonte original verificada: {source}.',
+            'O chat de IA está temporariamente indisponível.',
+            'O chat de IA está temporariamente indisponível. Não consegui confirmar esses dados em uma fonte de cinema; tente novamente mais tarde.',
+            'Use os links oficiais de livrarias e editoras abaixo para conferir edições e disponibilidade. Resultados de busca em lojas não comprovam, por si só, uma edição ou direitos de escuta.',
+            'Confira as buscas oficiais da Apple Books e da Audible abaixo e use o Match E-books Ai para verificar a edição exata do audiolivro antes de comprar ou ouvir. Resultados de busca em lojas não comprovam, por si só, uma edição ou direitos de escuta.',
+            '{title}, de {author}',
+            'Fonte original verificada do filme e da direção ↗',
+            '📚🎧📰 Verificar livros, audiolivros e revistas',
+            'Digite uma pergunta ou toque no microfone para falar com o MatchApp Ai.'
+        ],
+        es:[
+            '{title} ({year}) fue dirigida por {director}.',
+            'Fuente original verificada: {source}.',
+            'El chat de IA está temporalmente no disponible.',
+            'El chat de IA está temporalmente no disponible. No pude verificar esos datos cinematográficos; vuelve a intentarlo más tarde.',
+            'Usa los enlaces oficiales de librerías y editoriales de abajo para consultar ediciones y disponibilidad. Los resultados de búsqueda de una tienda no confirman por sí solos una edición ni los derechos de escucha.',
+            'Consulta las búsquedas oficiales de Apple Books y Audible de abajo y usa Match E-books Ai para verificar la edición exacta del audiolibro antes de comprar o escuchar. Los resultados de búsqueda de una tienda no confirman por sí solos una edición ni los derechos de escucha.',
+            '{title}, de {author}',
+            'Fuente original verificada de la película y su dirección ↗',
+            '📚🎧📰 Verificar libros, audiolibros y revistas',
+            'Escribe una pregunta o toca el micrófono para preguntar a MatchApp Ai.'
+        ],
+        fr:[
+            '{title} ({year}) a été réalisé par {director}.',
+            'Source originale vérifiée : {source}.',
+            'Le chat IA est temporairement indisponible.',
+            'Le chat IA est temporairement indisponible. Je n’ai pas pu vérifier ces informations cinématographiques de façon indépendante. Réessayez plus tard.',
+            'Utilisez les liens officiels des librairies et des éditeurs ci-dessous pour vérifier les éditions et leur disponibilité. Les résultats de recherche d’une boutique ne confirment à eux seuls ni une édition ni des droits d’écoute.',
+            'Consultez les recherches officielles Apple Books et Audible ci-dessous, puis utilisez Match E-books Ai pour vérifier l’édition exacte du livre audio avant tout achat ou écoute. Les résultats de recherche d’une boutique ne confirment à eux seuls ni une édition ni des droits d’écoute.',
+            '{title}, de {author}',
+            'Source originale vérifiée du film et de sa réalisation ↗',
+            '📚🎧📰 Vérifier les livres numériques, livres audio et magazines',
+            'Saisissez une question ou touchez le microphone pour interroger MatchApp Ai.'
+        ],
+        de:[
+            '{title} ({year}) wurde von {director} inszeniert.',
+            'Verifizierte Originalquelle: {source}.',
+            'Der KI-Chat ist vorübergehend nicht verfügbar.',
+            'Der KI-Chat ist vorübergehend nicht verfügbar. Ich konnte diese Filminformationen nicht unabhängig bestätigen. Bitte versuche es später erneut.',
+            'Prüfe Ausgaben und Verfügbarkeit über die offiziellen Buchhandels- und Verlagslinks unten. Suchergebnisse eines Shops bestätigen allein weder eine bestimmte Ausgabe noch Hörrechte.',
+            'Prüfe die offiziellen Suchergebnisse von Apple Books und Audible unten und verifiziere mit Match E-books Ai vor dem Kauf oder Anhören die genaue Hörbuchausgabe. Suchergebnisse eines Shops bestätigen allein weder eine bestimmte Ausgabe noch Hörrechte.',
+            '{title} von {author}',
+            'Verifizierte Originalquelle für Film und Regie ↗',
+            '📚🎧📰 E-Books, Hörbücher und Zeitschriften prüfen',
+            'Gib eine Frage ein oder tippe auf das Mikrofon, um MatchApp Ai zu fragen.'
+        ],
+        it:[
+            '{title} ({year}) è stato diretto da {director}.',
+            'Fonte originale verificata: {source}.',
+            'La chat IA è temporaneamente indisponibile.',
+            'La chat IA è temporaneamente indisponibile. Non ho potuto verificare in modo indipendente queste informazioni sul film. Riprova più tardi.',
+            'Usa i link ufficiali delle librerie e degli editori qui sotto per verificare edizioni e disponibilità. I risultati di ricerca di un negozio non confermano da soli un’edizione o i diritti di ascolto.',
+            'Consulta le ricerche ufficiali Apple Books e Audible qui sotto, poi usa Match E-books Ai per verificare l’edizione esatta dell’audiolibro prima di acquistare o ascoltare. I risultati di ricerca di un negozio non confermano da soli un’edizione o i diritti di ascolto.',
+            '{title} di {author}',
+            'Fonte originale verificata del film e della regia ↗',
+            '📚🎧📰 Verifica e-book, audiolibri e riviste',
+            'Scrivi una domanda o tocca il microfono per chiedere a MatchApp Ai.'
+        ],
+        tr:[
+            '{title} ({year}) filminin yönetmeni {director}.',
+            'Doğrulanmış özgün kaynak: {source}.',
+            'Yapay zekâ sohbeti geçici olarak kullanılamıyor.',
+            'Yapay zekâ sohbeti geçici olarak kullanılamıyor. Bu film bilgilerini bağımsız olarak doğrulayamadım. Lütfen daha sonra tekrar dene.',
+            'Baskıları ve bulunabilirliği kontrol etmek için aşağıdaki resmî kitapçı ve yayınevi bağlantılarını kullan. Mağaza arama sonuçları tek başına bir baskıyı veya dinleme haklarını doğrulamaz.',
+            'Aşağıdaki resmî Apple Books ve Audible aramalarını kontrol et, ardından satın almadan veya dinlemeden önce tam sesli kitap baskısını Match E-books Ai ile doğrula. Mağaza arama sonuçları tek başına bir baskıyı veya dinleme haklarını doğrulamaz.',
+            '{title} — {author}',
+            'Film ve yönetmen için doğrulanmış özgün kaynak ↗',
+            '📚🎧📰 E-kitapları, sesli kitapları ve dergileri doğrula',
+            'MatchApp Ai’ye sormak için bir soru yaz veya mikrofona dokun.'
+        ],
+        ru:[
+            'Режиссёр фильма «{title}» ({year}) — {director}.',
+            'Проверенный первоисточник: {source}.',
+            'Чат с ИИ временно недоступен.',
+            'Чат с ИИ временно недоступен. Не удалось независимо подтвердить эти сведения о фильме. Попробуйте позже.',
+            'Проверьте издания и их доступность по официальным ссылкам книжных магазинов и издателей ниже. Результаты поиска в магазине сами по себе не подтверждают издание или права на прослушивание.',
+            'Проверьте официальные результаты поиска Apple Books и Audible ниже, затем используйте Match E-books Ai, чтобы подтвердить точное издание аудиокниги перед покупкой или прослушиванием. Результаты поиска в магазине сами по себе не подтверждают издание или права на прослушивание.',
+            '«{title}» — {author}',
+            'Проверенный первоисточник о фильме и режиссёре ↗',
+            '📚🎧📰 Проверить электронные книги, аудиокниги и журналы',
+            'Введите вопрос или нажмите на микрофон, чтобы спросить MatchApp Ai.'
+        ],
+        ar:[
+            'أخرج {director} فيلم {title} ({year}).',
+            'المصدر الأصلي المتحقق منه: {source}.',
+            'دردشة الذكاء الاصطناعي غير متاحة مؤقتًا.',
+            'دردشة الذكاء الاصطناعي غير متاحة مؤقتًا. لم أتمكن من التحقق بشكل مستقل من معلومات الفيلم هذه. يُرجى المحاولة لاحقًا.',
+            'استخدم روابط المكتبات والناشرين الرسمية أدناه للتحقق من الطبعات وتوفرها. نتائج البحث في المتجر لا تثبت وحدها وجود طبعة محددة أو حقوق الاستماع.',
+            'راجع نتائج البحث الرسمية في Apple Books وAudible أدناه، ثم استخدم Match E-books Ai للتحقق من طبعة الكتاب الصوتي الدقيقة قبل الشراء أو الاستماع. نتائج البحث في المتجر لا تثبت وحدها وجود طبعة محددة أو حقوق الاستماع.',
+            '{title}، تأليف {author}',
+            'مصدر أصلي متحقق منه للفيلم ومخرجه ↗',
+            '📚🎧📰 التحقق من الكتب الإلكترونية والصوتية والمجلات',
+            'اكتب سؤالًا أو اضغط على الميكروفون لسؤال MatchApp Ai.'
+        ],
+        hi:[
+            '{title} ({year}) का निर्देशन {director} ने किया था।',
+            'सत्यापित मूल स्रोत: {source}।',
+            'एआई चैट अभी अस्थायी रूप से उपलब्ध नहीं है।',
+            'एआई चैट अभी अस्थायी रूप से उपलब्ध नहीं है। फ़िल्म से जुड़ी इन जानकारियों की स्वतंत्र पुष्टि नहीं हो सकी। कृपया बाद में फिर कोशिश करें।',
+            'संस्करण और उपलब्धता जाँचने के लिए नीचे दिए गए आधिकारिक किताबों की दुकानों और प्रकाशकों के लिंक खोलें। दुकान के खोज परिणाम अपने आप किसी संस्करण या सुनने के अधिकार की पुष्टि नहीं करते।',
+            'नीचे Apple Books और Audible की आधिकारिक खोज देखें, फिर खरीदने या सुनने से पहले ऑडियोबुक के सटीक संस्करण की पुष्टि के लिए Match E-books Ai का उपयोग करें। दुकान के खोज परिणाम अपने आप किसी संस्करण या सुनने के अधिकार की पुष्टि नहीं करते।',
+            '{title} — लेखक: {author}',
+            'फ़िल्म और निर्देशक का सत्यापित मूल स्रोत ↗',
+            '📚🎧📰 ई-बुक, ऑडियोबुक और पत्रिकाओं की पुष्टि करें',
+            'MatchApp Ai से पूछने के लिए सवाल लिखें या माइक्रोफ़ोन पर टैप करें।'
+        ],
+        id:[
+            '{title} ({year}) disutradarai oleh {director}.',
+            'Sumber asli terverifikasi: {source}.',
+            'Obrolan AI sementara tidak tersedia.',
+            'Obrolan AI sementara tidak tersedia. Informasi film tersebut tidak dapat saya verifikasi secara independen. Coba lagi nanti.',
+            'Gunakan tautan resmi toko buku dan penerbit di bawah untuk memeriksa edisi dan ketersediaan. Hasil pencarian toko saja tidak memverifikasi suatu edisi atau hak mendengarkan.',
+            'Periksa pencarian resmi Apple Books dan Audible di bawah, lalu gunakan Match E-books Ai untuk memverifikasi edisi buku audio yang tepat sebelum membeli atau mendengarkan. Hasil pencarian toko saja tidak memverifikasi suatu edisi atau hak mendengarkan.',
+            '{title} karya {author}',
+            'Sumber asli terverifikasi untuk film dan sutradara ↗',
+            '📚🎧📰 Verifikasi e-book, buku audio, dan majalah',
+            'Ketik pertanyaan atau ketuk mikrofon untuk bertanya kepada MatchApp Ai.'
+        ],
+        ja:[
+            '『{title}』（{year}年）の監督は{director}です。',
+            '確認済みの一次情報源：{source}。',
+            'AIチャットは一時的に利用できません。',
+            'AIチャットは一時的に利用できません。これらの映画情報を独立した情報源で確認できませんでした。後でもう一度お試しください。',
+            '版や提供状況は、下記の書店・出版社の公式リンクで確認してください。ストアの検索結果だけでは、特定の版や聴取の権利は確認できません。',
+            '下記のApple BooksとAudibleの公式検索を確認し、購入・聴取前にMatch E-books Aiでオーディオブックの正確な版を確認してください。ストアの検索結果だけでは、特定の版や聴取の権利は確認できません。',
+            '『{title}』 著者：{author}',
+            '映画と監督の確認済み一次情報源 ↗',
+            '📚🎧📰 電子書籍・オーディオブック・雑誌を確認',
+            '質問を入力するか、マイクをタップしてMatchApp Aiに質問してください。'
+        ],
+        ko:[
+            '{title}({year})의 감독은 {director}입니다.',
+            '검증된 원본 출처: {source}.',
+            'AI 채팅을 일시적으로 사용할 수 없습니다.',
+            'AI 채팅을 일시적으로 사용할 수 없습니다. 해당 영화 정보를 독립적으로 확인하지 못했습니다. 나중에 다시 시도해 주세요.',
+            '아래 공식 서점 및 출판사 링크에서 판본과 이용 가능 여부를 확인하세요. 스토어 검색 결과만으로는 특정 판본이나 청취 권한을 확인할 수 없습니다.',
+            '아래 Apple Books와 Audible의 공식 검색을 확인한 뒤, 구매하거나 듣기 전에 Match E-books Ai로 정확한 오디오북 판본을 확인하세요. 스토어 검색 결과만으로는 특정 판본이나 청취 권한을 확인할 수 없습니다.',
+            '{title} — 저자: {author}',
+            '영화와 감독에 대한 검증된 원본 출처 ↗',
+            '📚🎧📰 전자책, 오디오북, 잡지 확인',
+            '질문을 입력하거나 마이크를 눌러 MatchApp Ai에 질문하세요.'
+        ],
+        zh:[
+            '《{title}》（{year}年）的导演是{director}。',
+            '已核实的原始来源：{source}。',
+            'AI聊天暂时不可用。',
+            'AI聊天暂时不可用，且无法独立核实这些电影信息。请稍后重试。',
+            '请使用下方书店和出版社的官方链接核查版本及可用性。商店搜索结果本身并不能确认特定版本或收听权利。',
+            '请查看下方Apple Books和Audible的官方搜索，再使用Match E-books Ai核实有声书的确切版本，然后再购买或收听。商店搜索结果本身并不能确认特定版本或收听权利。',
+            '《{title}》— 作者：{author}',
+            '已核实的电影及导演原始来源 ↗',
+            '📚🎧📰 核查电子书、有声书和杂志',
+            '请输入问题，或点击麦克风向MatchApp Ai提问。'
+        ]
+    };
+    const language=String(window.MATCH_LANG||'en').toLowerCase().split(/[-_]/)[0];
+    return String((rows[language]||rows.en)[keys.indexOf(key)]||'').replace(/\{(\w+)\}/g,(_,name)=>String(values[name]??''));
+}
+
 /* ---------- Independent factual source for AI outages ---------- */
 // A factual film question must NEVER fall through to an unrelated movie card.
 // Use the existing exact-identity TMDB lookup and separately verified credits;
@@ -320,12 +498,7 @@ async function sourceVerifiedFilmFacts(question) {
     const year=String(question).match(/\b(?:19|20)\d{2}\b/)?.[0]||'';
     const publisher=EDITORIAL_FILM_CREDITS.find(x=>norm(x.title)===norm(requested) && (!year||x.year===year));
     if(publisher) {
-        const lang=window.MATCH_LANG||'en';
-        const answer=/^pt/.test(lang)
-            ? publisher.title+' ('+publisher.year+') foi dirigido por '+publisher.director+'. Fonte original verificada: '+publisher.publisher+'. O chat de IA está temporariamente indisponível.'
-            : /^es/.test(lang)
-            ? publisher.title+' ('+publisher.year+') fue dirigida por '+publisher.director+'. Fuente original verificada: '+publisher.publisher+'. El chat de IA está temporalmente no disponible.'
-            : publisher.title+' ('+publisher.year+') was directed by '+publisher.director+'. Verified original publisher: '+publisher.publisher+'. Conversational AI is temporarily unavailable.';
+        const answer=[discoverRecoveryText('directed',publisher),discoverRecoveryText('source',{source:publisher.publisher}),discoverRecoveryText('unavailable')].join(' ');
         return {answer,results:[],_live:false,verifiedSource:publisher.source};
     }
     if(typeof window.tmdbLookup!=='function'||typeof window.tmdbRelated!=='function')return null;
@@ -338,12 +511,7 @@ async function sourceVerifiedFilmFacts(question) {
         const info=await window.tmdbRelated(movie.tmdbId,'movie');
         const director=String(info?.director?.name||'').trim();
         if(!director || !/^\d{4}$/.test(String(movie.year||'')))return null;
-        const lang=window.MATCH_LANG||'en';
-        const answer=/^pt/.test(lang)
-          ? movie.title+' ('+movie.year+') foi dirigido por '+director+'. Fonte verificada: The Movie Database (TMDB). O chat de IA está temporariamente indisponível.'
-          : /^es/.test(lang)
-          ? movie.title+' ('+movie.year+') fue dirigida por '+director+'. Fuente verificada: The Movie Database (TMDB). El chat de IA está temporalmente no disponible.'
-          : movie.title+' ('+movie.year+') was directed by '+director+'. Verified film source: The Movie Database (TMDB). Conversational AI is temporarily unavailable.';
+        const answer=[discoverRecoveryText('directed',{title:movie.title,year:movie.year,director}),discoverRecoveryText('source',{source:'The Movie Database (TMDB)'}),discoverRecoveryText('unavailable')].join(' ');
         return {answer,results:[],_live:false,verifiedSource:'https://www.themoviedb.org/movie/'+movie.tmdbId};
     }catch(_){return null;}
 }
@@ -362,29 +530,19 @@ async function fallbackSearch(question, aiWasDown) {
         // Use a bibliographically identified book, never an invented audio edition.
         // The real Bookworms source cards provide official Apple/Audible searches,
         // and the dedicated matcher independently checks an EXACT audio edition.
-        const lang=window.MATCH_LANG||'en';
         const listed=window.MatchAppReadingAI?.selectBooks?.(question,{allowKnown:!discoverRecommendationRequest(question)})||[];
         const norm=x=>String(x||'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
         const q=norm(question);
         const named=listed.find(x=>x?.title&&q.includes(norm(x.title))&&norm(x.title).length>4);
-        const identity=named?named.title+' by '+named.author:'';
+        const identity=named?discoverRecoveryText('author',named):'';
         const audiobook=window.MatchAppReadingAI?.intent?.(question)==='audiobook';
-        const answer=/^pt/.test(lang)
-          ? (identity?identity+'. ':'')+'O chat de IA está temporariamente indisponível. Confira as buscas oficiais abaixo e use o Match E-books Ai para verificar uma edição em áudio exata antes da compra.'
-          : /^es/.test(lang)
-          ? (identity?identity+'. ':'')+'El chat de IA no está disponible temporalmente. Consulta las búsquedas oficiales abajo y verifica la edición exacta antes de comprar.'
-          : (identity?identity+'. ':'')+'Conversational AI is temporarily unavailable. '+
-            (audiobook?'Check the official Apple Books and Audible searches below, then use Match E-books Ai to verify an exact audiobook edition before purchase or listening.':'Use the official bookstore and publisher links below to check editions and availability.')+
-            ' Store search results do not by themselves verify an edition or listening rights.';
+        const answer=(identity?identity+'. ':'')+discoverRecoveryText('unavailable')+' '+discoverRecoveryText(audiobook?'audio':'books');
         return {answer,results:[],_live:false};
     }
     if(isFactualMediaQuestion(question)) {
         const source=await sourceVerifiedFilmFacts(question);
         if(source)return source;
-        const lang=window.MATCH_LANG||'en';
-        const answer=/^pt/.test(lang)?'O chat de IA está indisponível. Não consegui confirmar esses dados em uma fonte de cinema; tente novamente mais tarde.':
-          /^es/.test(lang)?'El chat de IA está temporalmente no disponible. No pude verificar esos datos en una fuente cinematográfica; vuelve a intentarlo.':
-          'Conversational AI is temporarily unavailable, and I could not independently verify those film facts. Please try again later.';
+        const answer=discoverRecoveryText('factsUnavailable');
         return {answer,results:[],_live:false};
     }
     const audioIntent = detectAudioIntent(question);
@@ -2222,7 +2380,7 @@ async function runAskAndRender(question, opts) {
         sourceLink.href=payload.verifiedSource;
         sourceLink.target='_blank';
         sourceLink.rel='noopener noreferrer';
-        sourceLink.textContent='Verified original film and director source ↗';
+        sourceLink.textContent=discoverRecoveryText('sourceLink');
         bubble.wrap.appendChild(sourceLink);
     }
     if (bubble?.wrap && bookIntent) {
@@ -2230,12 +2388,7 @@ async function runAskAndRender(question, opts) {
         const readingFormat = window.MatchAppReadingAI?.intent?.(question) || 'ebook';
         route.href = '/?reading=' + encodeURIComponent(readingFormat) + '#ebook-matcher-root';
         route.className = 'gold-btn discover-book-matcher-link';
-        const lang = window.MATCH_LANG || 'en';
-        route.textContent = /^pt/.test(lang)
-            ? '📚🎧📰 Verificar livros, audiolivros e revistas'
-            : /^es/.test(lang)
-            ? '📚🎧📰 Verificar libros, audiolibros y revistas'
-            : '📚🎧📰 Verify e-books, audiobooks and magazines';
+        route.textContent = discoverRecoveryText('readingLink');
         route.setAttribute('aria-label', route.textContent);
         bubble.wrap.appendChild(route);
         if(wantsTitleRecommendations&&window.MatchAppReadingAI?.renderFresh){
@@ -2421,10 +2574,7 @@ window.newDiscoverSearch = function () {
         if (hint) {
             if (!hint.dataset.initialCopy) hint.dataset.initialCopy = hint.textContent || '';
             hint.dataset.error = '1';
-            const lang = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase();
-            hint.textContent = lang.startsWith('pt')
-                ? 'Digite uma pergunta ou toque no microfone para falar com o MatchApp Ai.'
-                : 'Type a question, or tap the microphone to ask MatchApp Ai.';
+            hint.textContent = discoverRecoveryText('emptyHint');
         }
         return false;
     }
