@@ -23,7 +23,7 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   for(const p of freshEntryPages){const h=read(p);assert(h.includes('/match-ai-rank.js?v=20260927-ranked1-mobilefresh1'));assert(h.indexOf('/match-ai-rank.js?v=')<h.indexOf('/app.js?v='));}
   for(const p of preservedPages){const h=read(p);assert(h.includes('/match-ai-rank.js?v=20260927-ranked1'));assert(h.indexOf('/match-ai-rank.js?v=')<h.indexOf('/app.js?v='));}
   const policyPages=['index.html','discover.html','profile/profile.html','together.html','friends.html'];
-  assert.deepEqual([...new Set(policyPages.map(p=>version(p,'matching-policy.js')))],['20260926-conflicts2&amp;reliability=20261019-1']);
+  assert.deepEqual([...new Set(policyPages.map(p=>version(p,'matching-policy.js')))],['20260926-conflicts2&amp;reliability=20261019-2']);
   assert.equal(version('kids/index.html','matching-policy.js'),'20260924-runtime1');
   const buildPages=['index.html','together.html','pricing/pricing.html','friends.html','events-archive.html'];
   assert.equal(version('index.html','build-meta.js'),'20261002-weekly-cover1&amp;seo=20260928-2&amp;release=20260929-5&amp;intent=20260930-1&amp;installfix=20260930-1&amp;icon=20261003-premiumicon1&amp;fastlang=20261014-2');
