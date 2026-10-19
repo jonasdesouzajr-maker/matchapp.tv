@@ -36,6 +36,14 @@ name="$(basename "$0")"
 printf '%s %s\\n' "$name" "$*" >> "$TRACE"
 if [ "$name" = git ]; then
  case "$1" in
+  rev-parse)
+   case "$2" in
+    HEAD) echo candidate;;
+    HEAD~1) echo previous;;
+    origin/main) echo newer-main;;
+   esac
+   exit 0;;
+  merge-base) exit 1;;
   diff) [ "$NOOP" = 1 ] && exit 0; exit 1;;
   push)
    count=0; [ ! -f "$COUNT" ] || count=$(cat "$COUNT")

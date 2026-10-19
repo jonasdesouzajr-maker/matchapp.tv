@@ -31,7 +31,7 @@ Their current merged state and runs were checked; these recoveries were not
 replayed. October 16–19 laptop checkpoints were read and corroborated against
 GitHub. Historical exact-SHA smoke evidence is not carried forward to descendants.
 
-## Owner inventory
+## Owner inventory at investigation start
 
 All listed Git writers use `matchapp-content-publish`, cancel-in-progress false.
 All changed bot commits explicitly dispatch the existing Pages owner once; no-op
@@ -158,14 +158,24 @@ The library takes explicit time for deterministic regression fixtures. Run recor
 carry key, owner, runId, runSha, verifiedAt and status. No credential belongs in
 these inputs, records or source logs.
 
-## Remaining approval and external boundaries
+## Approved workflow hardening and external boundaries
 
-The exact proposed workflow change is
-[editorial-owner-hardening.patch](proposals/editorial-owner-hardening.patch).
-It is review material, not automatically applied by a tool or by the coordinator.
-Separate owner approval is required before modifying protected YAML. Trigger,
-cron, permissions and concurrency equivalence and Bash syntax were checked on a
-temporary copy. Existing tests and locks are not weakened.
+The owner separately approved both exact current proposals on October19:
+[editorial-owner-hardening-v2.patch](proposals/editorial-owner-hardening-v2.patch)
+(SHA256 `f3cb73c1ec05a35c4912f0ce8098433ca334379ec7d50c99e51e32f0d3610042`)
+and [archive-publication-retry.patch](proposals/archive-publication-retry.patch)
+(`20fc22ccbb359dd43bd217c05f2f65bf0b5839a219b379a64fb0d53e714bbc49`).
+V2 explicitly supersedes the original owner-hardening proposal. These approved
+changes add news/availability pre-commit gates, all five regional watch output
+trees, Kids retry gates, and safe push acknowledgement reconciliation in the
+existing owners. The archive owner validates and regenerates after genuine main
+conflicts using its original event revision. Unknown outcomes stop publication.
+All triggers, cron expressions, permissions and concurrency remain identical.
+Executable regression fixtures exercise real bare Git remotes for successful,
+lost-acknowledgement, rejected, conflicting and unknown publication outcomes;
+failed gate fixtures prevent writes, and regional staging excludes unrelated code.
+The coordinator does not apply these patches itself. Future protected changes
+still require separate owner approval. No existing test or lock is weakened.
 
 GitHub scheduler delivery remains external. GDELT rate limiting and low publisher
 frequency may produce fewer sports stories. No additional API, feed, charge,
@@ -192,9 +202,9 @@ were rechecked; no new curator or guessed theme was introduced. Archive run
 The generators now normalize those notes identically, keep no-op bytes unchanged,
 and fail closed on malformed history. The outgoing archiver uses the original
 push event's SHA after a fresh-main regeneration. Three real-repository regression
-fixtures cover all three paths. The separate protected retry/validation proposal
-is [archive-publication-retry.patch](proposals/archive-publication-retry.patch);
-it is not applied without its own owner approval. The old failed job is not
+fixtures cover all three paths. The separately approved protected retry/validation
+change is [archive-publication-retry.patch](proposals/archive-publication-retry.patch).
+The old failed job is not
 blindly rerun because current retained data already covers its actual purpose.
 
 CodeQL's result check identified a file-system race in the first archive no-op
