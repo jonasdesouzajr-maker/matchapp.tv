@@ -16,6 +16,12 @@ const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wi
     page.on('response',response=>{if(response.url().includes('matchapp-launch-intro'))media.push({status:response.status(),url:response.url()});});
     await context.addInitScript(()=>{
      window.introMediaErrors=[];
+     window.introMediaEnds=[];
+     document.addEventListener('ended',event=>{
+      if(event.target instanceof HTMLVideoElement&&event.target.matches('#matchapp-launch-intro video')){
+       window.introMediaEnds.push({trusted:event.isTrusted,ended:event.target.ended,currentTime:event.target.currentTime,duration:event.target.duration});
+      }
+     },true);
      document.addEventListener('error',event=>{if(event.target instanceof HTMLMediaElement)window.introMediaErrors.push({code:event.target.error?.code,message:event.target.error?.message});},true);
     });
     await page.goto(base+'/?intro_browser_check=1',{waitUntil:'commit'});
@@ -28,14 +34,23 @@ const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wi
     const state=await page.evaluate(()=>{
      const video=document.querySelector('#matchapp-launch-intro video'),rect=video.getBoundingClientRect();
      return {width:rect.width,height:rect.height,screenWidth:innerWidth,screenHeight:innerHeight,
-      encodedWidth:video.videoWidth,encodedHeight:video.videoHeight,fit:getComputedStyle(video).objectFit,muted:video.muted};
+      encodedWidth:video.videoWidth,encodedHeight:video.videoHeight,fit:getComputedStyle(video).objectFit,muted:video.muted,duration:video.duration};
     });
     assert.equal(state.width,state.screenWidth);assert.equal(state.height,state.screenHeight);
     assert.equal(state.encodedWidth,1080);assert.equal(state.encodedHeight,1920);
     assert.equal(state.fit,'cover');assert.equal(state.muted,true);
+    assert.ok(Number.isFinite(state.duration)&&state.duration>0,'intro metadata must include a finite duration');
     await page.screenshot({path:path.join(dir,name+'.png'),timeout:1000}).catch(error=>console.warn('Intro screenshot unavailable: '+error.message));
-    if(name==='phone')await page.locator('#matchapp-launch-intro').waitFor({state:'detached',timeout:7500});
-    else{
+    if(name==='phone'){
+     // Retain the WebM budget and allow the 10s MP4 to finish naturally.
+     const completionTimeout=Math.min(20000,Math.max(7500,Math.ceil(state.duration*1000)+3000));
+     await page.waitForFunction(()=>window.introMediaEnds.length>0,null,{timeout:completionTimeout});
+     const end=await page.evaluate(()=>window.introMediaEnds[0]);
+     assert.equal(end.trusted,true,'completion must come from the media engine');
+     assert.equal(end.ended,true,'intro must finish naturally before it disappears');
+     assert.ok(Number.isFinite(end.duration)&&end.duration>0&&end.currentTime>=end.duration-.05,'intro must reach its full duration');
+     await page.locator('#matchapp-launch-intro').waitFor({state:'detached',timeout:7500});
+    }else{
      const overlay=page.locator('#matchapp-launch-intro'),skip=overlay.locator('button');
      if(await overlay.count()){
       try{await skip.click({timeout:3000});}

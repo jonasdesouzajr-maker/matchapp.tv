@@ -166,6 +166,8 @@
   // This protects only media preparation. Once playback begins, the deadline
   // is replaced by a duration-aware stall failsafe so the film can finish.
   startupDeadline = setTimeout(finish, 8000);
+  // The startup owner is now armed; the generic freeze guard must not cut it short.
+  overlay.dataset.matchappIntroManaged = '1';
   video.src = video.canPlayType('video/mp4; codecs="avc1.640029"')
     ? '/assets/brand/matchapp-launch-intro-hd.mp4'
     : '/assets/brand/matchapp-launch-intro-hd.webm';
