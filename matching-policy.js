@@ -487,8 +487,16 @@
     if(genre==='animation')return /\banimation|animated|anime\b/i.test(metadata);
     return !!re&&(re.test(metadata)||re.test(description));
   }
-  function intentFromText(text) {
-    const q = String(text || '');
+  function intentFromText(text, parseNegations = true) {
+    const excluded = [];
+    const q = parseNegations !== false ? String(text || '').replace(/\b(?:(?:do\s+not|don['’]?t)\s+(?:recommend|suggest|include|show|offer)|avoid(?:\s+(?:recommend(?:ing)?|suggest(?:ing)?|include|including|show(?:ing)?|offer(?:ing)?))?)\s+([^.!?;,\n]+)/gi, (full, clause) => {
+      const negative = intentFromText(clause, false);
+      const normalized = clause.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+      const genres = Object.entries(OFFLINE_GENRES).filter(([,re])=>re.test(normalized)).map(([genre])=>genre);
+      if (!negative.families.size && !genres.length) return full;
+      excluded.push({...negative,genres});
+      return ' ';
+    }) : String(text || '');
     const families = new Set();
     const moods = [];
     const cats = [];
@@ -510,7 +518,7 @@
     if (/\b(documentar(?:y|ies)|documentário)\b/i.test(q)) { families.add('documentary'); cats.push('documentary'); }
     if (/\b(kids?|children|infantil|family[- ]friendly)\b/i.test(q)) { families.add('kids'); cats.push('kids'); }
     return {
-      families, moods, cats, requestedGenre,
+      families, moods, cats, requestedGenre, excluded,
       asCriteria() { return { mood: moods.slice(), cat: cats.slice(), plat: [], vibe: [], rating: [], decade: [] }; }
     };
   }
@@ -570,6 +578,16 @@
     const intent = question && question.families ? question : intentFromText(question);
     const entry = asEntry(item);
     if (!entry || !entry.title) return false;
+    // Negative clauses are hard exclusions, never positive genre selectors.
+    // Use classification metadata rather than a film's title or plot wording.
+    if (Array.isArray(intent.excluded) && intent.excluded.length) {
+      const metadata = {...entry,synopsis:'',overview:''};
+      const tags = [...values(entry.genres),...values(entry.genre),...values(entry.cats),...values(entry.type)].join(' ');
+      const familyPatterns = {comedy:COMEDY_STRONG,drama:new RegExp(DRAMA_STRONG.source+'|'+DRAMA_WEAK.source,'i'),horror:HORROR_RE,romance:ROMANCE_RE,documentary:/\bdocumentar(?:y|ies)\b/i,kids:/\b(?:kids?|children|family)\b/i};
+      if (intent.excluded.some(negative =>
+        values(negative.genres).some(genre=>matchingOfflineGenre(metadata,genre)) ||
+        [...negative.families].some(family=>familyPatterns[family]?.test(tags)))) return false;
+    }
     if (intent.requestedGenre && !matchingOfflineGenre(entry,intent.requestedGenre)) return false;
     // Unrecognized explicit genre selectors cannot silently broaden into an
     // arbitrary drama when the offline catalogue has no known match.
