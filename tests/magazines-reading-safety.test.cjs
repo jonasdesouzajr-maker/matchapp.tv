@@ -30,7 +30,10 @@ test('expanded official adult-only global magazine profiles contain real publish
   assert.ok(/^https:\/\//.test(m.issues)&&/^https:\/\//.test(m.site));
   const icon=new URL(m.icon),publisher=new URL(m.site);
   assert.equal(icon.hostname,publisher.hostname,'publisher icon must be served from its official host: '+m.title);
-  assert.ok(icon.pathname.endsWith('/favicon.ico'),'use original publisher-brand icon: '+m.title);
+  if(m.id==='mag-monocle')
+    assert.equal(icon.href,'https://monocle.com/wp-content/uploads/2025/11/cropped-MONOCLE_DIGI_BLACK-BGWHITE-M-MARK_1.png?fit=192%2C192',
+      'Monocle uses the visible original icon published by its homepage, not its transparent root favicon');
+  else assert.ok(icon.pathname.endsWith('/favicon.ico'),'use original publisher-brand icon: '+m.title);
   if(m.id==='mag-vogue')
     assert.equal(icon.pathname,'/verso/static/vogue-global/assets/us/favicon.ico',
       'Vogue icon must point at the published brand asset, not an assumed root path');

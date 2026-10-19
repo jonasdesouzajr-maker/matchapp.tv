@@ -23,6 +23,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+<link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
+<link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
+<script defer src="/news-ui.js?v=20261019-newsui1"></script>
 <link rel="stylesheet" href="/news-monetization.css?v=20261017-2">
 <script defer src="/news-monetization.js?v=20261017-2"></script>
 <link rel="stylesheet" href="/native-news-slot.css?v=20261017-1">
@@ -30,168 +33,168 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 </head>
-<body>
+<body class="news-ui-page">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header"><a href="/" class="matchapp-brand-link" aria-label="MatchApp Ai"><span class="brand-logo brand-logo-placeholder" aria-hidden="true"></span><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span></a></header>
+<header class="app-header ma-news-header"><div class="ma-brand-lockup"><a href="/" class="ma-brand-home-link" data-news-ui-aria="brandHome" aria-label="MatchApp Ai home" dir="ltr"><span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-icon-approved.png" alt="" width="52" height="52" decoding="async"></span><span class="ma-brand-copy" translate="no" lang="en" dir="ltr" aria-hidden="true"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span></a></div></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
-  <a href="/#latest-news">← MatchApp Latest News</a>
-  <h1>Latest Entertainment, World and Sports News</h1>
-  <p>Country-aware and language-aware entertainment and world news refreshed hourly plus trusted publisher sports links discovered twice daily. SEO freshness metadata is rebuilt with every news refresh. Each story opens its source.</p>
+  <a href="/#latest-news" data-news-ui="backLatest">← MatchApp Ai — Latest News</a>
+  <h1 data-news-ui="hubTitle">Latest Entertainment, World and Sports News</h1>
+  <p data-news-ui="hubIntro">Entertainment and world news refresh hourly; sports links update twice daily. Choose your interface language while original headlines keep the publisher’s language. Open the source for the full story.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
-    <h2 id="news-guide-title" style="margin-top:0">How MatchApp Latest News works</h2>
-    <p>MatchApp Latest News is an hourly entertainment and world-news index with twice-daily sports updates from named publishers. We do not republish full articles here. Each item identifies the publisher, preserves a direct link to the original report and shows enough context to help you decide what is worth opening.</p>
-    <p>The feed is built from direct trusted-publisher sources and refreshed throughout the day. Automated filters remove obvious rumor-style language and unrelated stories before an item reaches this hub. The original publisher remains the source of record for every headline and claim; MatchApp's role is discovery, organization and a clear path back to that source.</p>
-    <p>When a story points you toward a movie, series, performer or release, continue with <a href="/">MatchApp's entertainment matcher</a>, <a href="/discover.html?focus=start">Ask MatchApp Ai</a>, or check <a href="/where-to-watch/">where to watch</a> for streaming and cinema availability.</p>
-  <p>For deeper discovery beyond headlines, use the <a href="/guides/streaming-music-books-october-2026/">October 2026 streaming, music and books guide</a>, the <a href="/guides/coffee-music-tv-trends-september-30-2026/">September 30 trends guide</a>, or the <a href="/anime.html">Anime Finder</a>.</p>
+    <h2 id="news-guide-title" style="margin-top:0" data-news-ui="howTitle">How MatchApp Ai News works</h2>
+    <p data-news-ui="howIntro">Browse headlines from named publishers. Each item keeps its original source link and publication or discovery date. MatchApp Ai does not republish full articles.</p>
+    <p data-news-ui="howSources">Stories come from publisher feeds. Filters remove unrelated stories and obvious rumors. The original publisher remains responsible for each report; MatchApp Ai helps you discover it.</p>
+    <p><span data-news-ui="exploreLead">Explore the films, series and releases behind the news:</span> <a href="/" data-news-ui="matcher">Entertainment matcher</a> · <a href="/discover.html?focus=start" data-news-ui="askAi">Ask MatchApp Ai</a> · <a href="/where-to-watch/" data-news-ui="whereWatch">Where to watch</a></p>
+  <p><span data-news-ui="guidesLead">More guides and discovery:</span> <a href="/guides/streaming-music-books-october-2026/" data-news-ui="octoberGuide">October 2026 streaming, music and books guide</a> · <a href="/guides/coffee-music-tv-trends-september-30-2026/" data-news-ui="septemberGuide">September 30 trends guide</a> · <a href="/anime.html" data-news-ui="anime">Anime Finder</a>.</p>
   </section>
   <div data-news-local-offers><details class="ma-news-offers"><summary><span>Local streaming options</span><span aria-hidden="true">+</span></summary><div class="ma-news-offers-body"><label class="ma-news-offers-country"><span>Choose a country</span><select data-news-offer-country><option value="">Choose a country</option><option value="US">United States</option><option value="BR">Brazil</option><option value="MX">Mexico</option><option value="GB">United Kingdom</option></select></label><div class="ma-news-offers-track" role="list" aria-label="Local streaming options" data-news-offers-track></div><p class="ma-news-offers-caveat">Catalogues vary by country. The provider sets access terms.</p><a class="ma-news-offers-directory" href="/streaming/">More official streaming services</a></div></details></div>
-  <section data-native-news-feed aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px"><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC Science · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/mission-set-to-blast-off-for-mars-to-grab-a-piece-of-its-moon-e76126/">Mission set to blast off for Mars to grab a piece of its moon</a></h2>
-    <p>World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=e76126b0#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/articles/cmvgxvkv54w1o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+  <section data-native-news-feed data-news-ui-aria="feedLabel" aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px"><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC Science</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/mission-set-to-blast-off-for-mars-to-grab-a-piece-of-its-moon-e76126/">Mission set to blast off for Mars to grab a piece of its moon</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC Science">World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=e76126b0#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/articles/cmvgxvkv54w1o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/pais-mais-feliz-do-mundo-finlandia-enfrenta-crise-pode-cortar-servicos-publicos--3f7da4/">País mais feliz do mundo, Finlândia enfrenta crise, pode cortar serviços públicos e benefícios</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=3f7da400#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/economia/noticia/2026/10/19/pais-mais-feliz-do-mundo-finlandia-enfrenta-crise-pode-cortar-servicos-publicos-e-beneficios.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/pais-mais-feliz-do-mundo-finlandia-enfrenta-crise-pode-cortar-servicos-publicos--3f7da4/">País mais feliz do mundo, Finlândia enfrenta crise, pode cortar serviços públicos e benefícios</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=3f7da400#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/economia/noticia/2026/10/19/pais-mais-feliz-do-mundo-finlandia-enfrenta-crise-pode-cortar-servicos-publicos-e-beneficios.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC World · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/katya-adler-france-s-government-under-pressure-after-weekend-of-widespread-viole-80b190/">Katya Adler: France&#39;s government under pressure after weekend of widespread violence</a></h2>
-    <p>World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=80b190ae#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/articles/crwyd02yz22vo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC World</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/katya-adler-france-s-government-under-pressure-after-weekend-of-widespread-viole-80b190/">Katya Adler: France&#39;s government under pressure after weekend of widespread violence</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC World">World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=80b190ae#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/articles/crwyd02yz22vo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC World · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/bollywood-actor-tiger-shroff-survives-shooting-attempt-in-mumbai-6c53ad/">Bollywood actor Tiger Shroff survives shooting attempt in Mumbai</a></h2>
-    <p>World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=6c53adc3#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/articles/c6jdmy872r7vo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC World</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/bollywood-actor-tiger-shroff-survives-shooting-attempt-in-mumbai-6c53ad/">Bollywood actor Tiger Shroff survives shooting attempt in Mumbai</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC World">World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=6c53adc3#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/articles/c6jdmy872r7vo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/do-caos-ao-sucesso-os-bastidores-do-dvd-1000-trutas-1000-tretas-dos-racionais-mc-9bdf0e/">Do caos ao sucesso: os bastidores do DVD &#39;1000 Trutas, 1000 Tretas&#39;, dos Racionais MC&#39;s, que faz 20 anos</a></h2>
-    <p>Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.</p>
-    <p><a href="https://matchapp.tv/?news=9bdf0e13#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/pop-arte/musica/noticia/2026/10/19/do-caos-ao-sucesso-os-bastidores-do-dvd-1000-trutas-1000-tretas-dos-racionais-mcs-que-faz-20-anos.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/do-caos-ao-sucesso-os-bastidores-do-dvd-1000-trutas-1000-tretas-dos-racionais-mc-9bdf0e/">Do caos ao sucesso: os bastidores do DVD &#39;1000 Trutas, 1000 Tretas&#39;, dos Racionais MC&#39;s, que faz 20 anos</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1">Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.</p>
+    <p><a href="https://matchapp.tv/?news=9bdf0e13#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/pop-arte/musica/noticia/2026/10/19/do-caos-ao-sucesso-os-bastidores-do-dvd-1000-trutas-1000-tretas-dos-racionais-mcs-que-faz-20-anos.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC World · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/watch-shops-looted-and-restaurants-gutted-in-paris-riots-b7cab3/">Watch: Shops looted and restaurants gutted in Paris riots</a></h2>
-    <p>World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=b7cab3ee#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/videos/cmn5vey19q3go?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC World</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/watch-shops-looted-and-restaurants-gutted-in-paris-riots-b7cab3/">Watch: Shops looted and restaurants gutted in Paris riots</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC World">World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=b7cab3ee#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/videos/cmn5vey19q3go?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC World · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/bomb-threat-forces-israel-to-austria-flight-into-emergency-landing-34d51c/">Bomb threat forces Israel to Austria flight into emergency landing</a></h2>
-    <p>World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=34d51c10#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/articles/c680zdmn100lo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC World</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/bomb-threat-forces-israel-to-austria-flight-into-emergency-landing-34d51c/">Bomb threat forces Israel to Austria flight into emergency landing</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC World">World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=34d51c10#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/articles/c680zdmn100lo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC Technology · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/china-s-growth-accelerates-as-ai-boom-helps-boost-exports-e5cad3/">China&#39;s growth accelerates as AI boom helps boost exports</a></h2>
-    <p>World news reported by BBC Technology on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=e5cad304#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/articles/cm5yn098xz8lo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC Technology</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/china-s-growth-accelerates-as-ai-boom-helps-boost-exports-e5cad3/">China&#39;s growth accelerates as AI boom helps boost exports</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC Technology">World news reported by BBC Technology on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=e5cad304#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/articles/cm5yn098xz8lo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC World · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/funding-shortages-force-world-food-programme-to-cut-aid-to-gaza-28713c/">Funding shortages force World Food Programme to cut aid to Gaza</a></h2>
-    <p>World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=28713c2b#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/articles/cm79plrvpl4vo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC World</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/funding-shortages-force-world-food-programme-to-cut-aid-to-gaza-28713c/">Funding shortages force World Food Programme to cut aid to Gaza</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC World">World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=28713c2b#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/articles/cm79plrvpl4vo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/oliveiras-destruidas-e-lavouras-bloqueadas-por-tropas-israelenses-a-luta-para-pr-92e3f3/">Oliveiras destruídas e lavouras bloqueadas por tropas israelenses: a luta para produzir azeite em Gaza</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=92e3f304#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/economia/agronegocios/noticia/2026/10/19/oliveiras-destruidas-e-lavouras-bloqueadas-por-tropas-israelenses-a-luta-para-produzir-azeite-em-gaza.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/oliveiras-destruidas-e-lavouras-bloqueadas-por-tropas-israelenses-a-luta-para-pr-92e3f3/">Oliveiras destruídas e lavouras bloqueadas por tropas israelenses: a luta para produzir azeite em Gaza</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=92e3f304#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/economia/agronegocios/noticia/2026/10/19/oliveiras-destruidas-e-lavouras-bloqueadas-por-tropas-israelenses-a-luta-para-produzir-azeite-em-gaza.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">BBC Science · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/volunteers-plant-109-000-trees-in-new-woodlands-79d425/">Volunteers plant 109,000 trees in new woodlands</a></h2>
-    <p>World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=79d425f0#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.bbc.co.uk/news/articles/cxp8gdzj606zo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>BBC Science</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/volunteers-plant-109-000-trees-in-new-woodlands-79d425/">Volunteers plant 109,000 trees in new woodlands</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="BBC Science">World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=79d425f0#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.bbc.co.uk/news/articles/cxp8gdzj606zo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">The Hollywood Reporter · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/other-desert-cities-theater-review-julia-louis-dreyfus-ed-harris-and-allison-jan-609953/">‘Other Desert Cities’ Theater Review: Julia Louis-Dreyfus, Ed Harris and Allison Janney Fail to Make a Once-Timely Play Relevant Again</a></h2>
-    <p>entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
-    <p><a href="https://matchapp.tv/?news=609953b0#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.hollywoodreporter.com/lifestyle/arts/other-desert-cities-theater-review-julia-louis-dreyfus-1236734079/" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>The Hollywood Reporter</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/other-desert-cities-theater-review-julia-louis-dreyfus-ed-harris-and-allison-jan-609953/">‘Other Desert Cities’ Theater Review: Julia Louis-Dreyfus, Ed Harris and Allison Janney Fail to Make a Once-Timely Play Relevant Again</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="The Hollywood Reporter">entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
+    <p><a href="https://matchapp.tv/?news=609953b0#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.hollywoodreporter.com/lifestyle/arts/other-desert-cities-theater-review-julia-louis-dreyfus-1236734079/" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/como-esta-a-economia-da-argentina-crescimento-e-queda-da-inflacao-contrastam-com-8e292d/">Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=8e292d80#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/economia/noticia/2026/10/18/como-esta-a-economia-da-argentina.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/como-esta-a-economia-da-argentina-crescimento-e-queda-da-inflacao-contrastam-com-8e292d/">Como está a economia da Argentina? Crescimento e queda da inflação contrastam com pobreza e desemprego</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=8e292d80#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/economia/noticia/2026/10/18/como-esta-a-economia-da-argentina.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 · Obituary · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-singular-no-samba-916abd/">Benito Di Paula morre em São Paulo, aos 84 anos, e deixa obra singular no samba</a></h2>
-    <p>Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.</p>
-    <p><a href="https://matchapp.tv/?news=916abdad#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/18/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-inovadora-no-segmento-do-samba.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1</bdi> · <span data-news-ui-event="Obituary">Obituary</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-singular-no-samba-916abd/">Benito Di Paula morre em São Paulo, aos 84 anos, e deixa obra singular no samba</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1">Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.</p>
+    <p><a href="https://matchapp.tv/?news=916abdad#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/10/18/benito-di-paula-morre-em-sao-paulo-aos-84-anos-e-deixa-obra-inovadora-no-segmento-do-samba.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/aviao-que-saiu-de-israel-faz-pouso-de-emergencia-apos-ameaca-de-bomba-c63942/">Avião que saiu de Israel faz pouso de emergência após ameaça de bomba</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=c63942bc#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/aviao-que-saiu-de-israel-faz-pouso-de-emergencia-apos-ameaca-de-bomba.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/aviao-que-saiu-de-israel-faz-pouso-de-emergencia-apos-ameaca-de-bomba-c63942/">Avião que saiu de Israel faz pouso de emergência após ameaça de bomba</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=c63942bc#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/aviao-que-saiu-de-israel-faz-pouso-de-emergencia-apos-ameaca-de-bomba.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">The Hollywood Reporter · Entertainment · 10/19/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/less-red-carpet-more-love-of-cinema-the-warsaw-film-festival-wants-to-be-a-desti-a78cc0/">“Less Red Carpet, More Love of Cinema”: The Warsaw Film Festival Wants to Be a Destination for Discovery</a></h2>
-    <p>entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
-    <p><a href="https://matchapp.tv/?news=a78cc00e#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.hollywoodreporter.com/movies/movie-news/warsaw-film-festival-wiff-focus-on-cinema-love-discovery-1236733189/" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>The Hollywood Reporter</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-19">10/19/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/less-red-carpet-more-love-of-cinema-the-warsaw-film-festival-wants-to-be-a-desti-a78cc0/">“Less Red Carpet, More Love of Cinema”: The Warsaw Film Festival Wants to Be a Destination for Discovery</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="The Hollywood Reporter">entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
+    <p><a href="https://matchapp.tv/?news=a78cc00e#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.hollywoodreporter.com/movies/movie-news/warsaw-film-festival-wiff-focus-on-cinema-love-discovery-1236733189/" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">The Hollywood Reporter · Music · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/jesse-eisenberg-reveals-tv-show-details-as-the-debut-closes-a-star-studded-londo-c45b84/">Jesse Eisenberg Reveals TV Show Details as ‘The Debut’ Closes a Star-Studded London Film Festival</a></h2>
-    <p>Jesse Eisenberg Reveals TV: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
-    <p><a href="https://matchapp.tv/?news=c45b8468#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-tv-show-debut-london-film-festival-julianne-1236734918/" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>The Hollywood Reporter</bdi> · <span data-news-ui-event="Music">Music</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/jesse-eisenberg-reveals-tv-show-details-as-the-debut-closes-a-star-studded-londo-c45b84/">Jesse Eisenberg Reveals TV Show Details as ‘The Debut’ Closes a Star-Studded London Film Festival</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="The Hollywood Reporter">Jesse Eisenberg Reveals TV: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
+    <p><a href="https://matchapp.tv/?news=c45b8468#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.hollywoodreporter.com/movies/movie-news/jesse-eisenberg-tv-show-debut-london-film-festival-julianne-1236734918/" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/trump-diz-que-nao-quer-afastar-russia-de-negociacoes-e-acusa-zelensky-de-prolong-d035ab/">Trump diz que não quer afastar Rússia de negociações e acusa Zelensky de prolongar guerra</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=d035abcb#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/trump-diz-que-nao-quer-afastar-russia-de-negociacoes-e-acusa-zelensky-de-prolongar-guerra.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/trump-diz-que-nao-quer-afastar-russia-de-negociacoes-e-acusa-zelensky-de-prolong-d035ab/">Trump diz que não quer afastar Rússia de negociações e acusa Zelensky de prolongar guerra</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=d035abcb#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/trump-diz-que-nao-quer-afastar-russia-de-negociacoes-e-acusa-zelensky-de-prolongar-guerra.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/quenia-confirma-oitavo-caso-de-ebola-enquanto-surto-avanca-no-congo-1c7839/">Quênia confirma oitavo caso de ebola enquanto surto avança no Congo</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=1c783917#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/saude/noticia/2026/10/18/quenia-confirma-oitavo-caso-de-ebola-enquanto-surto-avanca-no-congo.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/quenia-confirma-oitavo-caso-de-ebola-enquanto-surto-avanca-no-congo-1c7839/">Quênia confirma oitavo caso de ebola enquanto surto avança no Congo</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=1c783917#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/saude/noticia/2026/10/18/quenia-confirma-oitavo-caso-de-ebola-enquanto-surto-avanca-no-congo.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">The Hollywood Reporter · Music · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/young-miko-gets-flirty-with-l-a-during-her-late-checkout-tour-6b33c2/">Young Miko Gets Flirty With L.A. During Her Late Checkout Tour</a></h2>
-    <p>Young Miko Gets Flirty: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
-    <p><a href="https://matchapp.tv/?news=6b33c2f2#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.hollywoodreporter.com/music/music-news/young-miko-la-concert-late-checkout-tour-highlights-1236734751/" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>The Hollywood Reporter</bdi> · <span data-news-ui-event="Music">Music</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/young-miko-gets-flirty-with-l-a-during-her-late-checkout-tour-6b33c2/">Young Miko Gets Flirty With L.A. During Her Late Checkout Tour</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="The Hollywood Reporter">Young Miko Gets Flirty: music headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
+    <p><a href="https://matchapp.tv/?news=6b33c2f2#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.hollywoodreporter.com/music/music-news/young-miko-la-concert-late-checkout-tour-highlights-1236734751/" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/rubio-diz-que-trump-tera-ate-60-dias-para-reavaliar-suspensao-de-sancoes-a-russi-44cd97/">Rubio diz que Trump terá até 60 dias para reavaliar suspensão de sanções à Rússia</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=44cd9768#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/rubio-diz-que-trump-tera-ate-60-dias-para-reavaliar-suspensao-de-sancoes-a-russia.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/rubio-diz-que-trump-tera-ate-60-dias-para-reavaliar-suspensao-de-sancoes-a-russi-44cd97/">Rubio diz que Trump terá até 60 dias para reavaliar suspensão de sanções à Rússia</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=44cd9768#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/rubio-diz-que-trump-tera-ate-60-dias-para-reavaliar-suspensao-de-sancoes-a-russia.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 Mundo · Entertainment · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/macron-diz-que-nada-justifica-violencia-desenfreada-em-protestos-na-franca-a64316/">Macron diz que nada justifica violência &#39;desenfreada&#39; em protestos na França</a></h2>
-    <p>World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
-    <p><a href="https://matchapp.tv/?news=a643167a#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/macron-diz-que-nada-justifica-violencia-desenfreada-em-protestos-na-franca.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1 Mundo</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/macron-diz-que-nada-justifica-violencia-desenfreada-em-protestos-na-franca-a64316/">Macron diz que nada justifica violência &#39;desenfreada&#39; em protestos na França</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1 Mundo">World news reported by G1 Mundo on 2026-10-18. MatchApp links to the original report for its complete context and ongoing updates.</p>
+    <p><a href="https://matchapp.tv/?news=a643167a#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/mundo/noticia/2026/10/18/macron-diz-que-nada-justifica-violencia-desenfreada-em-protestos-na-franca.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">G1 · Entertainment · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/integrantes-de-rebelde-lamentam-morte-de-lua-blanco-8a749e/">Integrantes de &#39;Rebelde&#39; lamentam morte de Lua Blanco</a></h2>
-    <p>Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.</p>
-    <p><a href="https://matchapp.tv/?news=8a749e38#latest-news">Open in Latest News →</a></p>
-    <a href="https://g1.globo.com/pop-arte/noticia/2026/10/18/integrantes-de-rebelde-lamentam-morte-de-lua-blanco.ghtml" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>G1</bdi> · <span data-news-ui-event="Entertainment">Entertainment</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="pt-BR" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/integrantes-de-rebelde-lamentam-morte-de-lua-blanco-8a749e/">Integrantes de &#39;Rebelde&#39; lamentam morte de Lua Blanco</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="G1">Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.</p>
+    <p><a href="https://matchapp.tv/?news=8a749e38#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://g1.globo.com/pop-arte/noticia/2026/10/18/integrantes-de-rebelde-lamentam-morte-de-lua-blanco.ghtml" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article><article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px">
-    <p style="font-size:12px;color:#E5C158">The Hollywood Reporter · Obituary · 10/18/2026</p>
-    <h2 style="font-size:19px"><a href="https://matchapp.tv/news/articles/betty-mcguire-actress-on-broadway-and-growing-pains-dies-at-100-1a1e48/">Betty McGuire, Actress on Broadway and ‘Growing Pains,’ Dies at 100</a></h2>
-    <p>Betty McGuire: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
-    <p><a href="https://matchapp.tv/?news=1a1e480c#latest-news">Open in Latest News →</a></p>
-    <a href="https://www.hollywoodreporter.com/tv/tv-news/betty-mcguire-dead-growing-pains-broadway-1236734856/" target="_blank" rel="noopener noreferrer external">Original source ↗</a>
+    <p style="font-size:12px;color:#E5C158"><bdi>The Hollywood Reporter</bdi> · <span data-news-ui-event="Obituary">Obituary</span> · <time data-news-ui-date="numeric" datetime="2026-10-18">10/18/2026</time></p>
+    <h2 style="font-size:19px" data-news-source-title lang="en" dir="auto" translate="no"><a href="https://matchapp.tv/news/articles/betty-mcguire-actress-on-broadway-and-growing-pains-dies-at-100-1a1e48/">Betty McGuire, Actress on Broadway and ‘Growing Pains,’ Dies at 100</a></h2>
+    <p data-news-ui="sourceNote" data-news-source="The Hollywood Reporter">Betty McGuire: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.</p>
+    <p><a href="https://matchapp.tv/?news=1a1e480c#latest-news" data-news-ui="openLatest">Open in Latest News →</a></p>
+    <a href="https://www.hollywoodreporter.com/tv/tv-news/betty-mcguire-dead-growing-pains-broadway-1236734856/" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article></section>
 </main>
 <script src="/build-meta.js?v=203"></script>

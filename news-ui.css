@@ -1,0 +1,44 @@
+/* News-only layout. Canonical lettering and motion stay in brand-headline.css. */
+@layer ma-screen-fit {
+ html body.news-ui-page > header.app-header.ma-news-header {
+  display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+  justify-content:flex-start!important;direction:ltr!important;gap:12px!important;
+  min-height:104px!important;box-sizing:border-box!important;
+ }
+ html body.news-ui-page header.ma-news-header .ma-brand-lockup {
+  flex:0 1 auto!important;min-width:0!important;max-width:100%!important;
+ }
+ html body.news-ui-page header.ma-news-header .ma-brand-home-link {
+  direction:ltr!important;flex-wrap:nowrap!important;min-height:56px!important;
+ }
+ html body.news-ui-page header.ma-news-header .ma-brand-orb-stage {
+  position:relative!important;display:block!important;width:52px!important;height:52px!important;
+  flex:0 0 52px!important;margin:0 8px 0 0!important;padding:0!important;
+ }
+ html body.news-ui-page header.ma-news-header .ma-brand-orb {
+  display:block!important;position:static!important;width:52px!important;height:52px!important;
+  max-width:none!important;margin:0!important;transform:none!important;
+ }
+ html body.news-ui-page header.ma-news-header .ma-brand-copy {direction:ltr!important}
+ html body.news-ui-page header.ma-news-header #matchapp-kids-entry {
+  margin:0!important;max-width:100%!important;min-height:44px!important;
+  white-space:normal!important;line-height:1.3!important;box-sizing:border-box!important;
+ }
+ html body.news-ui-page main {min-width:0!important;box-sizing:border-box!important}
+ html body.news-ui-page main :is(article,h1,h2,p,a,bdi) {overflow-wrap:anywhere}
+ html body.news-ui-page [data-native-news-feed] {
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))!important;
+ }
+ html body.news-ui-page main a[data-news-ui] {
+  display:inline-flex;align-items:center;min-height:44px;max-width:100%;
+  box-sizing:border-box;white-space:normal;
+ }
+ html body.news-ui-page [data-news-source-title] {unicode-bidi:plaintext}
+ @media(max-width:600px) {
+  html body.news-ui-page header.ma-news-header .ma-brand-orb-stage {
+   width:40px!important;height:40px!important;flex-basis:40px!important;margin-right:6px!important;
+  }
+  html body.news-ui-page header.ma-news-header .ma-brand-orb {width:40px!important;height:40px!important}
+  html body.news-ui-page main > article.premium-card {padding:18px!important}
+ }
+}

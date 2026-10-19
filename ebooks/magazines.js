@@ -46,7 +46,9 @@ const RAW=[
 const OFFICIAL_ICONS=Object.freeze({
  // Vogue publishes its icon below this versioned editorial assets directory,
  // not at /favicon.ico. Keep the source on Vogue's own domain.
- vogue:'https://www.vogue.com/verso/static/vogue-global/assets/us/favicon.ico'
+ vogue:'https://www.vogue.com/verso/static/vogue-global/assets/us/favicon.ico',
+ // Monocle's root favicon is transparent; use the icon published in its homepage head.
+ monocle:'https://monocle.com/wp-content/uploads/2025/11/cropped-MONOCLE_DIGI_BLACK-BGWHITE-M-MARK_1.png?fit=192%2C192'
 });
 const BLOCK=/\b(?:xxx|porn(?:ographic|ography|star|hub)?|hentai|erotica|hardcore(?:\s+sex)?|onlyfans)\b/i;
 const magazines=Object.freeze(RAW.map(r=>Object.freeze({
