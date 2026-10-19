@@ -180,3 +180,19 @@ The October 19 day-of candidate already exists at
 PR-creation safety rejection. It remains the existing coordinator's candidate;
 do not create a second curator or repeat that rejected operation through a
 workaround. Archive-only success is not proof a current observance was created.
+
+## Additional observed archive repair
+
+The existing October 19 candidate was accepted through the supported GitHub
+review action as PR303 under the renewed instruction, then merged as
+`2658be4bf3154282e06624322099239ed2363f22`. The original source and artwork
+were rechecked; no new curator or guessed theme was introduced. Archive run
+39299816203 then lost a push race to independent PR299. Its candidate only added
+`_contract` and `_note`: the October18 record was already present from midnight.
+The generators now normalize those notes identically, keep no-op bytes unchanged,
+and fail closed on malformed history. The outgoing archiver uses the original
+push event's SHA after a fresh-main regeneration. Three real-repository regression
+fixtures cover all three paths. The separate protected retry/validation proposal
+is [archive-publication-retry.patch](proposals/archive-publication-retry.patch);
+it is not applied without its own owner approval. The old failed job is not
+blindly rerun because current retained data already covers its actual purpose.
