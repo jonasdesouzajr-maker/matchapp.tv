@@ -1,10 +1,79 @@
 {
-  "generated_at": "2026-10-19T18:33:39.759Z",
-  "feed_version": "411d0bb6",
+  "generated_at": "2026-10-19T18:35:31.615Z",
+  "feed_version": "b55c32c4",
   "sports_updated_at": "2026-10-19T17:29:17.567Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "rebuilt per check; modification dates advance only with content + source citation + stable archive",
   "items": [
+    {
+      "id": "09a21c14",
+      "title": "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/chile-prende-110-pessoas-em-protestos-no-aniversario-da-revolta-social-de-2019.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T18:33:48.000Z",
+      "discovered_at": "2026-10-19T18:35:31.615Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://g1.globo.com/mundo/noticia/2026/10/19/None",
+      "matchapp_url": "https://matchapp.tv/news/articles/chile-prende-110-pessoas-em-protestos-no-aniversario-da-revolta-social-de-2019-09a21c/",
+      "landing_url": "https://matchapp.tv/?news=09a21c14#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "chile",
+          "prende",
+          "110",
+          "pessoas",
+          "protestos",
+          "aniversario"
+        ],
+        "long_tail": [
+          "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "chile",
+          "prende",
+          "110",
+          "pessoas",
+          "protestos",
+          "aniversario"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Chile prende 110 pessoas em protestos no aniversário da…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "chile",
+          "prende",
+          "110",
+          "pessoas",
+          "protestos",
+          "aniversario",
+          "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T18:35:31.615Z"
+      }
+    },
     {
       "id": "c1ae638f",
       "title": "Ukrainians dying because US restricting intelligence sharing, Zelensky adviser tells BBC",
@@ -1606,75 +1675,6 @@
           "BBC freud confirms beatles songs",
           "bbc.co.uk freud confirms beatles songs",
           "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "b2a1caa4",
-      "title": "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/video-mostra-batalha-entre-policia-e-manifestantes-na-principal-praca-de-milao.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T13:35:39.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/jySdHUmkXDWhBsSn-XLIeaq4z1s=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/O/I7tHFEQRGUGbaHa4HZPQ/2026-10-19t113636z-229004888-rc296oagpzw6-rtrmadp-3-italy-protest-aftermath.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/video-mostra-batalha-entre-policia-e-manifestantes-na-principal-praca-de-milao-b2a1ca/",
-      "landing_url": "https://matchapp.tv/?news=b2a1caa4#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "mostra",
-          "batalha",
-          "entre",
-          "policia",
-          "manifestantes"
-        ],
-        "long_tail": [
-          "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "video",
-          "mostra",
-          "batalha",
-          "entre",
-          "policia",
-          "manifestantes"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "VÍDEO mostra batalha entre polícia e manifestantes na…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "mostra",
-          "batalha",
-          "entre",
-          "policia",
-          "manifestantes",
-          "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
         ],
         "seo_generated_at": "2026-10-19T17:44:03.755Z"
       }
