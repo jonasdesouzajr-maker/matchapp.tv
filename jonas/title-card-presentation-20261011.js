@@ -3,7 +3,7 @@
  * availability, providers, prices or credits; reuse existing card renderer. */
 (function(){
  'use strict';
- function key(v){return String(v||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+ function key(v){return String(v||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim()}
  function candidates(answer){
   const text=String(answer||'').slice(0,1800),names=[],seen=new Set();
   function add(v){
@@ -51,9 +51,23 @@
     // Only show exact, source-identified titles; never infer regional streams.
     let meta=await api.lookup(name,{priority:true});
     if(!meta&&api.lookupLive)meta=await api.lookupLive(name,{priority:true});
+    let verifiedAlias='';
+    const locale=({en:'en-US','pt-BR':'pt-BR',es:'es-ES',fr:'fr-FR',de:'de-DE',it:'it-IT',tr:'tr-TR',ru:'ru-RU',ar:'ar-SA',hi:'hi-IN',id:'id-ID',ja:'ja-JP',ko:'ko-KR',zh:'zh-CN'})[window.MATCH_LANG];
+    // The ordinary lookup establishes English identities. A spoken localized
+    // name may need one regional search, followed by details pinned to its ID.
+    // Never accept a translated spelling as proof of a different poster.
+    if(!meta&&locale&&locale!=='en-US'&&window.requestTMDB&&api.lookupLive){
+     const response=await window.requestTMDB({query:name,lang:locale});
+     const rows=response?.error?[]:response?.data?.results;
+     const exact=(Array.isArray(rows)?rows:[]).find(row=>row&&row.adult!==true&&Number.isSafeInteger(row.tmdbId)&&row.tmdbId>0&&['movie','tv'].includes(row.kind)&&[row.title,row.originalTitle].some(title=>key(title)===key(name)));
+     if(exact){
+      const pinned=await api.lookupLive(name,{priority:true,tmdbId:exact.tmdbId,kind:exact.kind});
+      if(pinned&&Number(pinned.tmdb_id)===exact.tmdbId&&pinned.media_kind===exact.kind){meta=pinned;verifiedAlias=name;}
+     }
+    }
     if(!meta)return null;
     const title=String(meta.title||meta.original_title||'');
-    const accepted=[title,meta.original_title,meta.original_name,meta.name].filter(Boolean);
+    const accepted=[title,meta.original_title,meta.original_name,meta.name,verifiedAlias].filter(Boolean);
     if(!accepted.some(x=>key(x)===key(name)))return null;
     if(!['movie','tv'].includes(meta.media_kind))return null;
     return {
