@@ -1,5 +1,39 @@
 # MatchApp Ai hardening checkpoint — 2026-10-19
 
+## Resumed consolidation
+
+The owner instructed this work to finish after the initial draft checkpoint.
+PR #300 now includes current production main
+`0099b25d753093be1c28f1bfae5ffa1441e7e629` and preserves PR #301's source
+repairs through commit `968945c91e6ac56d56f04557d5010ca57afb4eba`: original RSS
+dates/future-date rejection, stable SEO timestamps, last-good sports evidence,
+bounded recovery decision support and the single-descriptor archive writer.
+The archive check/reopen defect was identified by CodeQL comment #112; its
+source correction is independently reviewed, while the alert API state remains
+unavailable. Current alert inventory access was retried and still returned 403.
+
+Independent review reproduced and corrected two further sports adapter defects:
+redirect/error bodies now cancel and remaining request resources abort on exit;
+the final approved feed supplies the topic policy after redirects, so a general
+feed cannot inherit sports-topic privileges. Sixteen behavioral regressions
+cover these paths without expanding destinations, deadlines or redirect limits.
+The combined focused publisher/regional/sports checks passed 45/45. Final
+full-suite, exact-candidate CI and production evidence are recorded in PR #300;
+the initial checkpoint counts below remain historical evidence.
+
+Release review found only the documented `matchapp-content-publish` and `pages`
+concurrency locks. Visible rulesets are empty, main has no branch-protection
+rule, and GitHub reports no configured required checks for these PRs. All
+owner-requested website, editorial, AdSense, matching/art/browser and CodeQL
+gates still apply. The historical Cloudflare preview is informational; GitHub
+Pages is authoritative for production. Its pending preview does not replace or
+waive any release gate. The Actions-variable denial does not establish a
+separate lock requirement.
+
+PR #301's two workflow proposal patch files remain review material. They do not
+change active workflow files without the explicit proposed-change approval
+required by AGENTS.md section 11. Android/Play remains held.
+
 ## Verified starting point
 
 - Owner checkpoint: `33f41acb7d1cf1db2159ff7c07d91787831aca55` (PR #298).
@@ -53,11 +87,10 @@ taint flow, establish exploitability, dismiss false positives or certify any
 alert state. A successful CodeQL workflow only establishes analyzer execution;
 it is not evidence of zero findings. Rules and dismissals are untouched.
 
-Repository Actions-variable reads also returned 403, so any release lock stored
-there cannot be inspected. Visible deployment/publisher queues were idle when
-checked; that does not establish the state of an inaccessible external lock.
-Do not merge this draft until mandatory release gates and lock availability
-have been established.
+Repository Actions-variable reads also returned 403. Release review found no
+separate variable-based lock; that denied read is not a release blocker by
+itself. Verify the actual documented publisher/deployment queues and all
+mandatory gates before merging.
 
 ## SEO and search-engine evidence
 
@@ -148,11 +181,13 @@ country-specific metadata, and preservation of authored Portuguese metadata.
 
 ## Outstanding release work
 
-Open a dedicated draft PR, run existing exact-candidate website/AdSense,
+PR #300 is the dedicated consolidation PR. Run existing exact-candidate website/AdSense,
 matching/browser/touch/deep audit gates and the independent CodeQL workflow.
 Record their final IDs and results in the PR. Do not claim that a scan success
-resolves the inaccessible alerts. Restore alert access, inspect any release
-lock, and complete review before merge. Only then use the existing Pages
+resolves the inaccessible alerts. Restore alert access to complete the
+alert-by-alert audit; this is distinct from releasing independently reviewed
+eligible web repairs. Complete review, the documented concurrency checks and
+all mandatory gates before merge. Use the existing Pages
 pipeline, verify the actual live SHA, run the existing post-deploy smoke once,
 and check changed URLs in Google/Bing/Yandex through supported discovery paths.
 Android/Play remains held throughout.
