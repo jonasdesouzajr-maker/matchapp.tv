@@ -143,20 +143,55 @@ function parse(xml,feed){
   }).filter(x=>x.title&&x.link);
 }
 
+function newsRequestTarget(value,policy){
+  let url;
+  try{url=new URL(value);}catch(_){throw new Error('Invalid news request URL');}
+  if(!policy){
+    const feed=FEEDS.find(f=>url.hostname===new URL(f.url).hostname||isAllowed(url.href,f));
+    policy=feed
+      ?{host:new URL(feed.url).hostname,domains:feed.domains}
+      :{host:'trends.google.com',domains:[]};
+  }
+  const approvedHost=url.hostname===policy.host||policy.domains.some(d=>url.hostname===d||url.hostname.endsWith('.'+d));
+  if(url.protocol!=='https:'||url.username||url.password||url.port||!approvedHost){
+    throw new Error('Untrusted news request URL');
+  }
+  return {url,policy};
+}
+
 async function get(url,accept){
+  let target=newsRequestTarget(url);
   const ac=new AbortController();
   const timer=setTimeout(()=>ac.abort(),10000);
   try{
-    const r=await fetch(url,{
-      signal:ac.signal,
-      redirect:'follow',
-      headers:{
-        accept:accept||'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.5',
-        'user-agent':'MatchAppNewsBot/1.2 (+https://matchapp.tv/)'
+    for(let redirects=0;;redirects++){
+      ac.signal.throwIfAborted();
+      const r=await fetch(target.url.href,{
+        signal:ac.signal,
+        redirect:'manual',
+        headers:{
+          accept:accept||'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.5',
+          'user-agent':'MatchAppNewsBot/1.2 (+https://matchapp.tv/)'
+        }
+      });
+      if([301,302,303,307,308].includes(r.status)){
+        try{
+          if(redirects>=5)throw new Error('News request redirect limit exceeded');
+          const location=r.headers.get('location');
+          if(!location)throw new Error('News request redirect has no location');
+          // Every hop keeps the initial configured publisher/Trends policy.
+          target=newsRequestTarget(new URL(location,target.url).href,target.policy);
+        }finally{
+          if(r.body)await r.body.cancel();
+        }
+        continue;
       }
-    });
-    if(!r.ok)throw new Error(`HTTP ${r.status}`);
-    return await r.text();
+      if(!r.ok){
+        if(r.body)await r.body.cancel();
+        throw new Error(`HTTP ${r.status}`);
+      }
+      return await r.text();
+    }
   }finally{
     clearTimeout(timer);
   }

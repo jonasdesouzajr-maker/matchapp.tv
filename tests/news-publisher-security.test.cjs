@@ -11,9 +11,9 @@ const source=fs.readFileSync(path.join(ROOT,'tools/refresh-news-rss.js'),'utf8')
 const entry=source.search(/^\(async\b/m);
 assert.ok(entry>0,'locate the publisher entry point without executing it');
 
-function definitions({filesystem=fs,fetcher=()=>{throw new Error('No upstream request is allowed in this fixture');}}={}){
-  return vm.runInNewContext(source.slice(0,entry)+'\n;({clean,parse,page,hub,readSports,enrichMissingImages,ensureArticleAnalyticsFile,FEEDS,isAllowed,TOPIC,RUMOR,NON_NEWS})',{
-    __dirname:path.join(ROOT,'tools'),URL,URLSearchParams,AbortController,Buffer,setTimeout,clearTimeout,
+function definitions({filesystem=fs,fetcher=()=>{throw new Error('No upstream request is allowed in this fixture');},schedule=setTimeout,cancel=clearTimeout}={}){
+  return vm.runInNewContext(source.slice(0,entry)+'\n;({clean,parse,page,hub,readSports,enrichMissingImages,ensureArticleAnalyticsFile,FEEDS,isAllowed,TOPIC,RUMOR,NON_NEWS,get})',{
+    __dirname:path.join(ROOT,'tools'),URL,URLSearchParams,AbortController,Buffer,setTimeout:schedule,clearTimeout:cancel,
     console:{log(){},warn(){},error(){}},fetch:fetcher,
     require(name){
       if(name==='node:fs')return filesystem;
@@ -158,4 +158,153 @@ test('file-backed sports records never enter publisher image requests',async()=>
   assert.equal(requests.length,1);assert.equal(requests[0].url,fresh.url);
   assert.equal(requests[0].options.body,undefined);assert.equal(requests[0].options.headers.authorization,undefined);
   assert.equal(fresh.image,'https://images.example.test/poster.jpg');
+});
+
+test('news requests preserve every configured feed, publisher aliases and the exact Google Trends host',async()=>{
+  const requests=[];
+  const api=definitions({fetcher:async(url,options)=>{
+    requests.push({url,options});return {ok:true,status:200,text:async()=>'publisher response'};
+  }});
+  const urls=[...Array.from(api.FEEDS,feed=>feed.url),
+    'https://www.bbc.com/news/articles/fixture','https://www.bbc.co.uk/news/articles/fixture',
+    'https://edition.cnn.com/entertainment/fixture','https://www.reuters.com/world/fixture',
+    'https://trends.google.com/trending/rss?geo=BR'];
+  for(const url of urls)assert.equal(await api.get(url),'publisher response');
+  assert.deepEqual(requests.map(r=>r.url),urls);
+  for(const {options} of requests){
+    assert.equal(options.redirect,'manual');assert.equal(options.method,undefined,'fetch retains its GET default');
+    assert.equal(options.body,undefined);assert.equal(options.headers.authorization,undefined);
+    assert.equal(options.headers.accept,'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.5');
+    assert.equal(options.headers['user-agent'],'MatchAppNewsBot/1.2 (+https://matchapp.tv/)');
+  }
+  await api.get('https://WWW.BBC.COM:443/news/articles/fixture');
+  assert.equal(requests.at(-1).url,'https://www.bbc.com/news/articles/fixture');
+});
+
+test('untrusted initial news URLs are rejected before fetching or starting a timer',async()=>{
+  let requests=0,timers=0;
+  const api=definitions({fetcher:async()=>{requests++;throw new Error('unexpected request');},schedule:()=>{timers++;}});
+  const urls=['not a URL','//www.bbc.com/news/fixture','http://www.bbc.com/news/fixture',
+    'ftp://www.bbc.com/news/fixture','file:///etc/hosts','data:text/plain,news',
+    'https://reader:secret@www.bbc.com/news/fixture','https://www.bbc.com:8443/news/fixture',
+    'https://www.bbc.com.evil.example/news/fixture','https://www.bbc.com@127.0.0.1/news/fixture',
+    'https://127.0.0.1/','https://[::1]/','https://localhost/','https://169.254.169.254/',
+    'https://unapproved.example/','https://other.trends.google.com/rss'];
+  for(const url of urls)await assert.rejects(api.get(url),/Invalid news request URL|Untrusted news request URL/);
+  assert.equal(requests,0);assert.equal(timers,0);
+});
+
+test('approved relative and publisher-alias redirects share one ten-second request budget',async()=>{
+  const urls=['https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',
+    'https://www.bbc.co.uk/news/premiere','https://www.bbc.co.uk/articles/fixture',
+    'https://www.bbc.com/news/articles/fixture','https://www.bbc.com/news/articles/fixture?output=1',
+    'https://www.bbc.com/news/articles/final'];
+  const locations=[urls[1],'../articles/fixture',urls[3],'?output=1','/news/articles/final'];
+  const statuses=[301,302,303,307,308],requests=[],scheduled=[],cleared=[];
+  let cancelled=0;
+  const token={budget:true};
+  const api=definitions({schedule:(callback,delay)=>{scheduled.push({callback,delay});return token;},cancel:id=>cleared.push(id),
+    fetcher:async(url,options)=>{
+      const hop=requests.length;requests.push({url,options});
+      if(hop===locations.length)return {ok:true,status:200,text:async()=>'<html>original report</html>'};
+      return {ok:false,status:statuses[hop],headers:{get:name=>name==='location'?locations[hop]:null},
+        body:{cancel:async()=>{cancelled++;}},text:async()=>{throw new Error('redirect body must not be read');}};
+    }
+  });
+  assert.equal(await api.get(urls[0],'text/html'),'<html>original report</html>');
+  assert.deepEqual(requests.map(r=>r.url),urls);assert.equal(cancelled,5);
+  assert.equal(scheduled.length,1);assert.equal(scheduled[0].delay,10000);assert.deepEqual(cleared,[token]);
+  assert.ok(requests.every(r=>r.options.signal===requests[0].options.signal));
+  assert.ok(requests.every(r=>r.options.redirect==='manual'&&r.options.headers.accept==='text/html'));
+});
+
+test('news redirects cannot leave their publisher policy or weaken transport restrictions',async()=>{
+  const locations=['https://g1.globo.com/news/fixture','https://trends.google.com/trending/rss?geo=BR',
+    'https://www.bbc.com.evil.example/news/fixture','https://127.0.0.1/','https://[::1]/',
+    'https://169.254.169.254/','//unapproved.example/','http://www.bbc.com/news/fixture',
+    'https://reader:secret@www.bbc.com/news/fixture','https://www.bbc.com:8443/news/fixture'];
+  for(const location of locations){
+    let requested=0,cancelled=0;
+    const api=definitions({fetcher:async()=>{
+      requested++;return {ok:false,status:302,headers:{get:()=>location},body:{cancel:async()=>{cancelled++;}}};
+    }});
+    await assert.rejects(api.get('https://www.bbc.com/news/fixture'),/Untrusted news request URL/);
+    assert.equal(requested,1,'must reject before contacting the redirect destination');assert.equal(cancelled,1);
+  }
+  let requested=0;
+  const trends=definitions({fetcher:async()=>{requested++;return {ok:false,status:302,headers:{get:()=>'https://news.google.com/rss'}};}});
+  await assert.rejects(trends.get('https://trends.google.com/trending/rss?geo=BR'),/Untrusted news request URL/);
+  assert.equal(requested,1,'Trends does not authorize other Google hosts');
+});
+
+test('missing or malformed redirects and unsuccessful responses release their bodies and timer',async()=>{
+  const cases=[{status:302,location:null,error:/no location/},{status:307,location:'https://[',error:/Invalid URL/},
+    ...[300,304,404,429,503].map(status=>({status,location:'https://www.bbc.com/fixture',error:new RegExp('HTTP '+status)}))];
+  for(const {status,location,error} of cases){
+    let requested=0,cancelled=0,cleared=0;
+    const token={};
+    const api=definitions({schedule:()=>token,cancel:id=>{assert.equal(id,token);cleared++;},fetcher:async()=>{
+      requested++;return {ok:false,status,headers:{get:()=>location},body:{cancel:async()=>{cancelled++;}}};
+    }});
+    await assert.rejects(api.get('https://www.bbc.com/news/fixture'),error);
+    assert.equal(requested,1);assert.equal(cancelled,1);assert.equal(cleared,1);
+  }
+});
+
+test('news redirect exhaustion performs at most the initial request plus five approved hops',async()=>{
+  let requested=0,cancelled=0,scheduled=0,cleared=0;
+  const api=definitions({schedule:()=>{scheduled++;return 1;},cancel:()=>{cleared++;},fetcher:async()=>{
+    requested++;return {ok:false,status:301,headers:{get:()=>'/news/redirect-'+requested},body:{cancel:async()=>{cancelled++;}}};
+  }});
+  await assert.rejects(api.get('https://www.bbc.com/news/start'),/redirect limit exceeded/);
+  assert.equal(requested,6);assert.equal(cancelled,6);assert.equal(scheduled,1);assert.equal(cleared,1);
+});
+
+test('one news deadline aborts a later fetch or its final body read after a redirect',async()=>{
+  for(const phase of ['fetch','body']){
+    let expire,requested=0,cancelled=0,cleared=0,started;
+    const pendingStarted=new Promise(resolve=>{started=resolve;});
+    const signals=[],scheduled=[];
+    const waitForAbort=signal=>new Promise((resolve,reject)=>{
+      signal.addEventListener('abort',()=>reject(signal.reason),{once:true});started();
+    });
+    const api=definitions({schedule:(callback,delay)=>{expire=callback;scheduled.push(delay);return 1;},cancel:()=>{cleared++;},
+      fetcher:async(url,options)=>{
+        requested++;signals.push(options.signal);
+        if(requested===1)return {ok:false,status:302,headers:{get:()=>'/news/final'},body:{cancel:async()=>{cancelled++;}}};
+        if(phase==='fetch')return waitForAbort(options.signal);
+        return {ok:true,status:200,text:()=>waitForAbort(options.signal)};
+      }
+    });
+    const pending=api.get('https://www.bbc.com/news/start');
+    await pendingStarted;expire();
+    await assert.rejects(pending,error=>error.name==='AbortError');
+    assert.deepEqual(scheduled,[10000]);assert.equal(requested,2);assert.equal(cancelled,1);assert.equal(cleared,1);
+    assert.equal(signals[0],signals[1]);assert.equal(signals[0].aborted,true);
+  }
+});
+
+test('news request cleanup propagates network, body and cancellation failures without retries',async()=>{
+  for(const phase of ['network','body','cancel']){
+    const failure=new Error('fixture '+phase);let requested=0,cleared=0;
+    const api=definitions({schedule:()=>1,cancel:()=>{cleared++;},fetcher:async()=>{
+      requested++;
+      if(phase==='network')throw failure;
+      if(phase==='body')return {ok:true,status:200,text:async()=>{throw failure;}};
+      return {ok:false,status:302,headers:{get:()=>'/news/next'},body:{cancel:async()=>{throw failure;}}};
+    }});
+    await assert.rejects(api.get('https://www.bbc.com/news/fixture'),error=>error===failure);
+    assert.equal(requested,1);assert.equal(cleared,1);
+  }
+});
+
+test('rejected image requests leave article selection and source metadata intact',async()=>{
+  let requests=0;
+  const api=definitions({fetcher:async()=>{requests++;throw new Error('unexpected request');}});
+  const article={...story('Original publisher film premiere'),url:'http://www.bbc.com/news/articles/fixture'};
+  const before={...article};
+  assert.ok(api.isAllowed(article.url,api.FEEDS[0]),'request hardening does not rewrite article selection policy');
+  const items=[article];
+  assert.equal(await api.enrichMissingImages(items),items);
+  assert.deepEqual(article,before);assert.equal(requests,0);assert.equal(article.image,null);
 });

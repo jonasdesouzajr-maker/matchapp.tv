@@ -27,7 +27,9 @@ function renderGuideLinks(root=ROOT){
    const label=d.querySelector('h1')?.textContent.trim();page.window.close();
    if(excluded)return '';
    if(!label)throw Error('Guide lacks a visible heading: '+u);
-   return '<li><a href="'+escape(pathname)+'">'+escape(label)+'</a></li>';
+   // The daily owner rotates this destination independently of this guide.
+   const navigationLabel=pathname==='/featured/this-week/'?"This week's featured title":label;
+   return '<li><a href="'+escape(pathname)+'">'+escape(navigationLabel)+'</a></li>';
   }).filter(Boolean);
   return links.length?'<section aria-labelledby="'+g.id+'"><h2 id="'+g.id+'">'+g.name+'</h2><p>'+g.note+'</p><ul>'+links.join('')+'</ul></section>':'';
  }).join('\n');
