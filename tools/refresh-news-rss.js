@@ -460,8 +460,8 @@ ${imageMeta}
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
-<link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
-${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
+<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 <style>
 /* Keep article navigation clear of the existing top-right Jonas companion. */
@@ -567,8 +567,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 <link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=187">
-<link rel="stylesheet" href="/brand.css?v=20261015-spacing1&amp;frame=20261016-rounded1">
-${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>
+<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
 </head>
 <body>

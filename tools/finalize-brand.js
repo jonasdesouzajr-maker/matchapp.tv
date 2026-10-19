@@ -34,7 +34,7 @@ function regionalBrand(brand){
 // Other routes retain their existing stylesheet version; Kids never enters this path.
 function versionBrandStylesheet(html,home=false){
  return html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,
-  '$1?v=20261015-spacing1'+(home?'&amp;headerauth=20261016-1':'')+'$2');
+  '$1?v=20261018-nativeheader1'+(home?'&amp;headerauth=20261016-1':'')+'$2');
 }
 // Refresh only the shared frame stylesheet, preserving route-specific cache keys.
 // This runs for both adult and Kids pages after their existing brand normalization.
@@ -89,7 +89,7 @@ function finalizeBrand(){
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
     });
   }
-  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=20261014-fastlang1"></script>\n</head>');
+  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>\n</head>');
   if(!kids&&!html.includes('/patches/immersive-feedback-20261014.js'))html=html.replace('</head>','<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>\n</head>');
   html=versionFrameStylesheet(html);
   html=name(html,kids);

@@ -43,7 +43,7 @@ test('homepage versions the parent stylesheet so the shared fix cannot be held b
   assert.equal(links.length, 1);
   const url = new URL(links[0].href);
   assert.equal(url.origin, 'https://matchapp.tv');
-  assert.equal(url.searchParams.get('v'), '20261015-spacing1');
+  assert.equal(url.searchParams.get('v'), '20261018-nativeheader1');
   assert.equal(url.searchParams.get('headerauth'), '20261016-1');
  } finally { dom.window.close(); }
 });
@@ -61,10 +61,10 @@ test('editorial brand normalization retains the homepage cache key and is idempo
   try { const url=new URL(dom.window.document.querySelector('link').href);
    assert.equal(url.searchParams.get('headerauth'),'20261016-1');
    assert.equal(url.searchParams.getAll('headerauth').length,1);
-   assert.equal(url.searchParams.get('v'),'20261015-spacing1');
+   assert.equal(url.searchParams.get('v'),'20261018-nativeheader1');
   } finally { dom.window.close(); }
  }
  const other='<link rel="stylesheet" href="/brand.css?v=20261015-spacing1">';
- assert.equal(versionBrandStylesheet(other,false),other);
+ assert.equal(versionBrandStylesheet(other,false),'<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1">');
  assert.ok(read('tools/finalize-brand.js').includes("html=versionBrandStylesheet(html,rel==='index.html');"));
 });

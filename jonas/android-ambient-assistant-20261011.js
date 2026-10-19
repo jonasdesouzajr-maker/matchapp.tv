@@ -91,7 +91,7 @@
    else{var policy=document.createElement('script');policy.src='/jonas/male-voice-policy-20261010.js';policy.onload=function(){document.head.appendChild(speech)};document.head.appendChild(policy)}
   }
   if(!document.getElementById('ma-jonas-premium-script')){
-   var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=screenfit2&quickdock=20261017-1';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
+   var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=header20261018-1&quickdock=20261017-1';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
   }
   // Critical first-paint styling is deliberately inline. Synchronous head
   // scripts may delay external CSS but the Jonas bubble cannot appear square
