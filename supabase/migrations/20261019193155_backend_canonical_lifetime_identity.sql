@@ -1,5 +1,27 @@
 begin;
 
+-- A rerun may encounter this helper after later work. Only its reviewed body,
+-- invoker settings, empty search path and owner-only execution are replaceable.
+-- The body hash was measured from this migration in the PGlite fixture.
+do $canonical_helper_baseline$
+declare existing oid:=pg_catalog.to_regprocedure('match_private.canonical_session_title(jsonb)');
+begin
+ if existing is null then return;end if;
+ if not exists(
+  select 1 from pg_catalog.pg_proc p join pg_catalog.pg_language l on l.oid=p.prolang
+  where p.oid=existing and md5(p.prosrc)='5cf9834e5e5a6529028785caf433798a'
+   and l.lanname='plpgsql' and p.prokind='f' and p.provolatile='s'
+   and not p.prosecdef and not p.proisstrict and not p.proleakproof and not p.proretset
+   and p.proparallel='u' and p.proconfig=array['search_path=""']::text[]
+   and p.proargnames=array['p_item']::text[] and p.pronargdefaults=0 and p.provariadic=0
+   and p.prorettype='jsonb'::regtype and p.procost=100 and p.prorows=0
+   and (select count(*) from pg_catalog.aclexplode(coalesce(p.proacl,pg_catalog.acldefault('f',p.proowner))))=1
+   and exists(select 1 from pg_catalog.aclexplode(coalesce(p.proacl,pg_catalog.acldefault('f',p.proowner))) a
+    where a.grantor=p.proowner and a.grantee=p.proowner and a.privilege_type='EXECUTE' and not a.is_grantable)
+ ) then raise exception 'Canonical lifetime helper baseline mismatch; newer helper left unchanged';end if;
+end;
+$canonical_helper_baseline$;
+
 -- Resolve title-only backend candidates before exclusion filtering/publication.
 -- No fuzzy lookup: a film/TV candidate needs one existing exact typed identity,
 -- or one verified TMDB metadata identity at the same normalized title/year/kind.

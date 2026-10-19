@@ -15,6 +15,7 @@ let readingOwner='guest';
 try{readingOwner=localStorage.getItem(READING_OWNER)||localStorage.getItem('match_portfolio_owner')||'guest';}catch(_){}
 let readingEpoch=0,readingHydrating=null,readingFlushing=null;
 const readingClaims=new Map();
+const guestReadingClaimsKey='match_ebook_guest_claims_v1';
 const readingMemory=new Map(),unwritableReading=new Set(),importedOwners=new Set();
 const pendingKey=owner=>'match_ebook_pending_v2_'+owner;
 const FIELDS={
@@ -112,8 +113,9 @@ function lang(){const raw=String(window.MATCH_LANG||document.documentElement.lan
 function tr(k){const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
 function read(key){try{if(!unwritableReading.has(key)){const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}}catch(_){}return readingMemory.get(key)||[];}
 function write(key,v){
- const put=name=>{readingMemory.set(name,v);try{localStorage.setItem(name,JSON.stringify(v));unwritableReading.delete(name);}catch(_){unwritableReading.add(name);}};
- put(key);if([K.saved,K.disliked,K.seen].includes(key))put(key+'_owner_'+readingOwner);
+ const put=name=>{readingMemory.set(name,v);try{const value=JSON.stringify(v);localStorage.setItem(name,value);if(localStorage.getItem(name)!==value)throw Error('Reading history unavailable');unwritableReading.delete(name);return true;}catch(_){unwritableReading.add(name);return false;}};
+ const stored=put(key),owned=[K.saved,K.disliked,K.seen].includes(key)?put(key+'_owner_'+readingOwner):true;
+ return stored&&owned;
 }
 function switchReadingOwner(next){
  next=next||'guest';
@@ -435,7 +437,12 @@ async function readingRPC(action,payload,owner){
 }
 function applyReadingAction(event){
  const {id,action}=event;
- if(action==='forget')for(const key of [K.saved,K.disliked,K.seen])write(key,read(key).filter(x=>x!==id));
+ if(action==='forget'){
+  for(const key of [K.saved,K.disliked])write(key,read(key).filter(x=>x!==id));
+  // Removing a preference never makes an already presented work fresh again.
+  write(K.seen,uniq(read(K.seen).concat(id)));
+  readingClaims.delete(readingOwner+':'+id);
+ }
  else{
   const key=action==='save'?K.saved:action==='dislike'?K.disliked:K.seen;
   write(key,uniq(read(key).concat(id)));
@@ -446,6 +453,12 @@ function applyReadingAction(event){
 function queueReading(id,action,legacy=false){
  const event={id,action,legacy,token:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)};
  write(pendingKey(readingOwner),read(pendingKey(readingOwner)).concat(event));
+ if(readingOwner==='guest'){
+  // The committed reservation remains exclusive while this asynchronous
+  // settlement starts. Never clear its active receipt before scheduling it.
+  try{Promise.resolve(window.MatchAppGuestReservations?.settle({scope:'reading',keys:[id],state:action==='forget'?'lifetime':'shown'})).catch(()=>{});}catch(_){}
+  write(guestReadingClaimsKey,read(guestReadingClaimsKey).filter(claim=>claim.id!==id));
+ }
  applyReadingAction(event);
  return event;
 }
@@ -522,15 +535,56 @@ async function claimReading(id){
   if(owner!==readingOwner||epoch!==readingEpoch)return false;
   applyReadingCloud(data);if(data.claimed!==true)readingClaims.delete(owner+':'+id);return data.claimed===true;
  }
- const reserve=()=>{
-  if(owner!==readingOwner||epoch!==readingEpoch||[K.saved,K.disliked,K.seen].some(k=>read(k).includes(id)))return false;
-  write(K.seen,uniq(read(K.seen).concat(id)));readingClaims.set(owner+':'+id,token);return true;
- };
- return navigator.locks?.request?navigator.locks.request('matchapp-reading-claim-guest',reserve):reserve();
+ const coordinator=window.MatchAppGuestReservations;
+ if(!coordinator?.reserve||!coordinator?.settle||!coordinator?.release)throw Error('Reading history unavailable');
+ const reservation=await coordinator.reserve({scope:'reading',keys:[id],token});
+ if(reservation?.claimed!==true)return false;
+ let settled=false;
+ try{
+  if(owner!==readingOwner||epoch!==readingEpoch)return false;
+  // IndexedDB owns exclusivity. Keep the legacy history mirror durable too,
+  // and reconcile only exact, released, never-presented reservation receipts.
+  for(const key of [K.saved,K.disliked,K.seen,guestReadingClaimsKey,pendingKey(owner)]){
+   const values=JSON.parse(localStorage.getItem(key)||'[]');
+   if(!Array.isArray(values)||values.some(value=>[K.saved,K.disliked,K.seen].includes(key)?typeof value!=='string'||!value:
+    !value||typeof value.id!=='string'||!value.id||typeof value.token!=='string'||!value.token||
+    (key===pendingKey(owner)&&!['seen','save','dislike','forget'].includes(value.action))))throw Error('Reading history unavailable');
+  }
+  const pending=read(pendingKey(owner)),confirmed=pending.some(event=>event?.id===id&&['seen','save','dislike','forget'].includes(event.action));
+  const released=new Set(reservation.releasedTokens||[]),receipts=read(guestReadingClaimsKey);
+  if(!confirmed&&receipts.some(claim=>claim?.id===id&&released.has(claim.token))){
+   if(!write(K.seen,read(K.seen).filter(value=>value!==id))||!write(guestReadingClaimsKey,receipts.filter(claim=>claim?.id!==id||!released.has(claim.token))))throw Error('Reading history unavailable');
+  }
+  if(confirmed||[K.saved,K.disliked,K.seen].some(key=>read(key).includes(id))){
+   settled=await coordinator.settle({scope:'reading',keys:[id],state:pending.some(event=>event?.id===id&&event.action==='forget')?'lifetime':'shown'})===true;
+   if(owner!==readingOwner||epoch!==readingEpoch)return false;
+   if(settled&&!write(K.seen,uniq(read(K.seen).concat(id))))throw Error('Reading history unavailable');
+   return false;
+  }
+  if(!write(guestReadingClaimsKey,read(guestReadingClaimsKey).filter(claim=>claim?.id!==id).concat({id,token}))||!write(K.seen,uniq(read(K.seen).concat(id))))throw Error('Reading history unavailable');
+  readingClaims.set(owner+':'+id,token);settled=true;return true;
+ }finally{if(!settled)await coordinator.release({scope:'reading',keys:[id],token});}
 }
 async function releaseReading(id,owner,epoch,token){
- if(owner!==readingOwner||epoch!==readingEpoch||readingClaims.get(owner+':'+id)!==token)return;
- if(owner==='guest'){write(K.seen,read(K.seen).filter(x=>x!==id));readingClaims.delete(owner+':'+id);return;}
+ if(owner!==readingOwner||epoch!==readingEpoch)return;
+ if(owner==='guest'){
+  if(readingClaims.get(owner+':'+id)!==token&&!read(guestReadingClaimsKey).some(claim=>claim?.id===id&&claim.token===token))return;
+  const pending=read(pendingKey(owner)),confirmed=pending.some(event=>event?.id===id&&['seen','save','dislike','forget'].includes(event.action));
+  if(confirmed||[K.saved,K.disliked].some(key=>read(key).includes(id))){
+   try{await window.MatchAppGuestReservations?.settle({scope:'reading',keys:[id],state:pending.some(event=>event?.id===id&&event.action==='forget')?'lifetime':'shown'});}catch(_){}
+   if(readingClaims.get(owner+':'+id)===token)readingClaims.delete(owner+':'+id);return;
+  }
+  try{if(await window.MatchAppGuestReservations?.release({scope:'reading',keys:[id],token})!==true)return;}catch(_){return;}
+  if(owner!==readingOwner||epoch!==readingEpoch)return;
+  // A newer transaction may already own this work after the release commit.
+  const receipts=read(guestReadingClaimsKey);
+  if(receipts.some(claim=>claim?.id===id&&claim.token===token)&&!read(pendingKey(owner)).some(event=>event?.id===id&&['seen','save','dislike','forget'].includes(event.action))){
+   write(K.seen,read(K.seen).filter(value=>value!==id));
+   write(guestReadingClaimsKey,receipts.filter(claim=>claim?.id!==id||claim.token!==token));
+  }
+  if(readingClaims.get(owner+':'+id)===token)readingClaims.delete(owner+':'+id);return;
+ }
+ if(readingClaims.get(owner+':'+id)!==token)return;
  try{const data=await readingRPC('release',{id,token},owner);if(owner===readingOwner&&epoch===readingEpoch){applyReadingCloud(data);readingClaims.delete(owner+':'+id);}}catch(_){}
 }
 function readingHistoryNotice(root){
@@ -707,24 +761,20 @@ function renderResult(root,book,p,relaxed,audio,magazine,pick){
 // Honest fallback: no verified audio means no Match credit is used.
 function renderAudioDiscovery(root,p){
  const host=root.querySelector('[data-ebook-result]');if(!host)return;
- const selected=choose(p),book=selected?.book,country=market(),foreign=p.access==='free'&&country!=='US';
+ const country=market(),foreign=p.access==='free'&&country!=='US';
  const reason=foreign?
    (lang()==='pt-BR'?'Ainda não verificamos os direitos de gravações gratuitas no seu país. O domínio público nos EUA não garante o mesmo direito no Brasil.':
     'Free recordings are not yet rights-verified for your country. US public-domain rights may not apply locally.'):
    tr('audioEmpty');
  // Respect the selected free/paid tier even for unverified discovery links.
- const searches=p.access==='free'?discoverySearches(p,book).map(([provider,url])=>({provider,url})):
-   book?(window.MatchAppAudiobooks?.sourceSearches?.(book,country)||
-     discoverySearches(p,book).map(([provider,url])=>({provider,url}))):
-   discoverySearches(p,null).map(([provider,url])=>({provider,url}));
- const disclosure=selected?matchNote(p,selected):fallbackCopy('browse');
+ // Unverified source discovery must not present an unclaimed book profile.
+ const searches=discoverySearches(p,null).map(([provider,url])=>({provider,url}));
+ const disclosure=fallbackCopy('sourceCheck');
  host.hidden=false;
  host.innerHTML='<div class="ebook-result-copy ebook-audio-discovery"><h3>🎧 '+esc(tr('audioTitle'))+'</h3>'+
    '<p class="ebook-audio-note">'+esc(reason)+'</p>'+
    chooseCountryLink()+
    (disclosure?'<p class="ebook-audio-note">'+esc(disclosure)+'</p>':'')+
-   (book?'<h3>'+esc(book.title)+'</h3><p class="ebook-author">'+esc(book.author)+'</p><p>'+esc(book.summary)+'</p>':'')+
-   (book?'<p class="ebook-rights">'+esc(fallbackCopy('bookProfile'))+'</p>':'')+
    '<div class="ebook-provider-row">'+searches.map(item=>'<a class="ebook-provider ebook-audio-search" href="'+esc(item.url)+
      '" target="_blank" rel="noopener noreferrer">'+esc(item.provider)+' · '+esc(lang()==='pt-BR'?'pesquisa não confirmada':'unverified search')+' ↗</a>').join('')+'</div>'+
    '<div class="ebook-result-actions"><button type="button" class="ebook-rematch" data-ebook-switch-format="ebook">'+
@@ -793,6 +843,13 @@ async function doMatch(root){
   if(!allowed){await releaseReading(reservedId,matchOwner,matchEpoch,reservedToken);reservedId='';}
   if(!allowed)return;
   if(matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
+  // A preference removal or dismissal may arrive while the shared allowance
+  // is pending. Never reveal a now-excluded or no-longer-owned reservation.
+  if([K.saved,K.disliked].some(k=>read(k).includes(pick.book.id))||readingClaims.get(matchOwner+':'+pick.book.id)!==reservedToken){
+   await window.MatchAppTokens?.noteUnconfirmed?.('ebook',tokenContext?.runId);
+   const result=root.querySelector('[data-ebook-result]');if(result)result.hidden=true;
+   readingHistoryNotice(root);return;
+  }
   if(note){const message=matchNote(p,pick);note.hidden=!message;note.textContent=message;}
   queueReading(pick.book.id,'seen');readingClaims.delete(matchOwner+':'+pick.book.id);reservedId='';
   renderResult(root,pick.book,p,pick.relaxed,pick.audio||null,pick.magazine===true,pick);

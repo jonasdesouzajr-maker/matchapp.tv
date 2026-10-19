@@ -4,12 +4,14 @@ const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
 const {JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const root=path.join(__dirname,'..');
 const policy=fs.readFileSync(path.join(root,'matching-policy.js'),'utf8');
 const migration=fs.readFileSync(path.join(root,'supabase/migrations/20261018145723_durable_match_exclusions.sql'),'utf8');
 function browser(rpc){
  const dom=new JSDOM('<body></body>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  dom.window.supabaseClient={rpc:rpc||(async()=>({data:{keys:[],history:[]}}))};
+ installGuestReservations(dom.window);
  dom.window.eval(policy);return dom;
 }
 test('a guest can dismiss locally; identity survives translated aliases, reload and late artwork',async()=>{
@@ -28,7 +30,8 @@ test('a guest can dismiss locally; identity survives translated aliases, reload 
   assert(w.matchPolicy.excludes({title:'Um Título'}));
   assert(w.matchPolicy.excludes({title:'One Title'}));
   assert(await w.matchPolicy.forget('One Title'));
-  assert(!w.matchPolicy.excludes(movie),'explicit restore removes every local alias and preference copy');
+  assert(w.matchPolicy.excludes(movie),'removing a visible preference preserves every lifetime identity');
+  assert.equal(w.matchPolicy.history().length,0);
  }finally{dom.window.close();}
 });
 test('failed cloud writes survive reload and are replayed only for their account',async()=>{
@@ -60,9 +63,9 @@ test('another tab preference is retained when this tab records a new title',asyn
   assert(w.matchPolicy.history().some(x=>x.title===remote.title));
  }finally{dom.window.close();}
 });
-test('account refresh receives another device dismissal and honors an explicit cloud restore',async()=>{
- let remote=[];
- const dom=browser(async(name,args)=>({data:args.p_action==='list'?{history:remote,keys:remote.map(x=>x.title.toLowerCase().replace(/\W/g,''))}:{}})),w=dom.window;
+test('account refresh receives another device dismissal and hides history without forgetting lifetime identity',async()=>{
+ let remote=[],hiddenKeys=[];
+ const dom=browser(async(name,args)=>({data:args.p_action==='list'?{history:remote,keys:[...hiddenKeys,...remote.map(x=>x.title.toLowerCase().replace(/\W/g,''))],hiddenKeys}:{}})),w=dom.window;
  try{
   await w.matchPolicy.attach({id:'alice'});
   remote=[{title:'Cloud Choice',action:'dislike',addedAt:30,identityKeys:['cloudchoice','tmdb:movie:987']}];
@@ -70,8 +73,9 @@ test('account refresh receives another device dismissal and honors an explicit c
   assert(w.matchPolicy.excludes({title:'Localized Choice',tmdbId:987,kind:'movie'},{hardOnly:true}));
   w.localStorage.setItem('match_dislikedList',JSON.stringify(remote));
   w.sessionStorage.setItem('match_sessionShown',JSON.stringify(['Cloud Choice']));
-  remote=[];await w.matchPolicy.refresh(true);
-  assert(!w.matchPolicy.excludes({title:'Cloud Choice'}));
+  hiddenKeys=['cloudchoice','tmdb:movie:987'];remote=[];await w.matchPolicy.refresh(true);
+  assert(w.matchPolicy.excludes({title:'Cloud Choice'}));
+  assert.equal(w.matchPolicy.history().length,0);
   assert.deepEqual(JSON.parse(w.localStorage.getItem('match_dislikedList')),[]);
   assert.deepEqual(JSON.parse(w.sessionStorage.getItem('match_sessionShown')),[]);
  }finally{dom.window.close();}

@@ -4148,25 +4148,8 @@ async function aiProposedVerifiedExact(requested){
     return null;
 }
 
-// SESSION-LEVEL REPEAT PREVENTION.
-//
-// recentTitles (capped at 6, persisted to localStorage) existed to prevent
-// short-term repeats, but it had a critical flaw: when the filtered pool
-// had only one matching title, freshPool would be empty, the code fell back
-// to the full pool, and it could return the same title on every consecutive
-// match — confirmed with a live simulation showing the exact user report of
-// a title appearing 4 times in a row.
-//
-// This Set grows with every match shown in the current page session and is
-// checked BEFORE the fallback. A title once shown this session is removed
-// from every pool before selection. It only resets on page reload, which is
-// the right granularity: within a single session a title must never repeat.
-// Across sessions the persistent seenList and recentTitles still apply.
-// SESSION_SHOWN was in-memory only, so it emptied on every page load — and
-// since a match navigates and people reload constantly, "this session" in
-// practice meant "until you blink". Backed by sessionStorage it now survives
-// reloads and in-tab navigation while still clearing when the tab closes,
-// which is the behaviour the name always implied.
+// Supplemental in-tab cache. The shared matching policy owns the durable
+// lifetime exclusion; these bounded recent caches never make an old title fresh.
 const SESSION_SHOWN = new Set((() => {
     try { return JSON.parse(sessionStorage.getItem('match_sessionShown') || '[]'); }
     catch (e) { return []; }
@@ -4174,8 +4157,7 @@ const SESSION_SHOWN = new Set((() => {
 
 function persistSessionShown() {
     try {
-        // Capped: an unbounded list would eventually exclude the whole
-        // catalogue and leave the user with nothing to match.
+        // Bound this supplemental cache; durable history remains authoritative.
         sessionStorage.setItem('match_sessionShown',
             JSON.stringify([...SESSION_SHOWN].slice(-120)));
     } catch (e) { /* private mode or quota — in-memory still works */ }
@@ -4187,10 +4169,8 @@ function rememberShownTitle(item) {
     SESSION_SHOWN.add(title);
     persistSessionShown();
     recentTitles.unshift(title);
-    // 6 was too short to be felt as variety. 30 still leaves the catalogue
-    // plenty of room while making a repeat genuinely uncommon.
     recentTitles = [...new Set(recentTitles)].slice(0, 30);
-    localStorage.setItem('match_recentTitles', JSON.stringify(recentTitles));
+    try { localStorage.setItem('match_recentTitles', JSON.stringify(recentTitles)); } catch (_) {}
 
     // Also use the shared history policy. Local recentTitles protects this
     // browser; matchPolicy.remember persists signed-in history so the same
@@ -4664,7 +4644,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if(matchRunId!==window.__matchappMatchRunId)return;
     const typedAtStart=(document.getElementById('specific-search-input')?.value||'').trim();
     if(isSpecificSearch&&!typedAtStart){window.showToast?.('Enter a title to search.');return false;}
-    // An exact saved and source-verified catalogue lookup is a free retrieval.
+    // Preserve saved-source allowance classification. It never bypasses the
+    // lifetime eligibility and atomic claim checks for a generated match.
     const savedKey=window.matchPolicy?.key?.(typedAtStart)||'';
     let previouslySaved=false;
     if(isSpecificSearch&&savedKey){
@@ -4803,7 +4784,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     // Recover a fresh, verified catalogue title under the hard category,
     // mood, rating, genre and exclusion boundaries before showing an outage.
-    // Do not turn on previously-seen recycling without the user's opt-in.
+    // Previously shown titles remain excluded even during recovery.
     if (!isSpecificSearch && !preflight && typeof pickGuaranteedCatalog === 'function') {
         try {
             preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade,true);
@@ -4825,7 +4806,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         window.showToast?.(noExactMatchMessage,true,{recovery:'empty'});
         return;
     }
-    const alreadySeenSpecific = isSpecificSearch && !freeSavedSpecific && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
+    const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
     if (isSpecificSearch && !typed.trim()) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
@@ -4947,9 +4928,9 @@ window.triggerMatch = async function(isSpecificSearch = false) {
             matchResult.synopsisLang='en';
         }
     }
-    // Source flags cannot bypass user history. Only the existing explicit
-    // saved-title retrieval path may reopen a title the user asked to view.
-    const resultWasKnown = !!(matchResult && !freeSavedSpecific &&
+    // Every generated match obeys lifetime history, including exact saved-title
+    // searches. Saved and history views remain separate retrieval surfaces.
+    const resultWasKnown = !!(matchResult &&
         (window.matchPolicy?.excludes ? window.matchPolicy.excludes(matchResult) :
             window.matchPolicy?.known().has(window.matchPolicy.key(matchResult.title))));
     if (!matchResult || resultWasKnown) {
@@ -4964,7 +4945,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     // A refresh is only a snapshot. Reserve the complete identity atomically
     // before spending or revealing it, including when another device is
     // matching at the same time. A collision gets bounded fresh alternatives.
-    let titleClaimed=freeSavedSpecific;
+    let titleClaimed=false;
     for(let attempt=0;!titleClaimed&&attempt<3;attempt++){
         if(matchRunId!==window.__matchappMatchRunId)break;
         titleClaimed=await window.matchPolicy?.claim?.(matchResult)===true;
@@ -4986,8 +4967,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         window.showToast?.(tSafe('polish.noFresh'),true);
         return;
     }
-    // Charge only after a fresh usable title has passed validation. Explicit
-    // retrieval of a saved, verified title keeps its existing free behavior.
+    // Charge only after a fresh usable title has passed validation. Keep the
+    // existing saved-source allowance classification separate from eligibility.
     if(matchRunId!==window.__matchappMatchRunId){clearInterval(timerInterval);await window.matchPolicy?.releaseClaim?.(matchResult);return;}
     window.__matchappMatchPhase='quota';
     if (!freeSavedSpecific && !(await checkDailyLimit('match', {runId:matchRunId}))) {

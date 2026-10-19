@@ -191,3 +191,27 @@ test('source drift aborts the entire migration without overwriting newer functio
   assert.deepEqual(after,before);assert.equal((await db.query("select to_regprocedure('match_private.canonical_session_title(jsonb)') helper")).rows[0].helper,null);
  }finally{await db.close();}
 });
+
+test('helper body, security, search path and grant drift are never overwritten on rerun',async()=>{
+ const db=await setup();try{
+  const signature='match_private.canonical_session_title(jsonb)';
+  const original=(await db.query('select pg_get_functiondef($1::regprocedure) definition',[signature])).rows[0].definition;
+  const changed=original.replace(' keys:=match_private.session_title_keys(p_item);',' keys :=match_private.session_title_keys(p_item);');
+  assert.notEqual(changed,original);
+  const snapshot=async()=> (await db.query(`select oid,prosrc,proacl::text grants,proconfig,prosecdef,provolatile
+   from pg_proc where oid=any($1::regprocedure[]) order by oid`,[[signature,
+   'match_private.record_session_title(uuid[],jsonb,text,uuid,text)',
+   'match_private.friends_impl(text,jsonb)','public.growth_together_service(text,jsonb)']])).rows;
+  for(const mutation of [changed,
+   `alter function ${signature} security definer`,
+   `alter function ${signature} set search_path='public'`,
+   `grant execute on function ${signature} to authenticated`,
+   `alter function ${signature} volatile`]){
+   await db.exec(mutation);const before=await snapshot();
+   await assert.rejects(db.exec(read(migration)),/Canonical lifetime helper baseline mismatch/);
+   await db.exec('rollback');assert.deepEqual(await snapshot(),before,'the newer helper and every existing matcher function survive the rejected rerun');
+   await db.exec(original);await db.exec(`revoke all on function ${signature} from public,anon,authenticated`);
+  }
+  await db.exec(read(migration));
+ }finally{await db.close();}
+});

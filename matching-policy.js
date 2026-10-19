@@ -39,7 +39,7 @@
   const ROMANCE_RE = /\b(romance|romantic|rom-?com|love story|rom[aâ]ntic[oa]?)\b/i;
 
   const GUEST_ID = 'guest';
-  let owner = null, permanent = new Set(), history = [], pending = [], ready = Promise.resolve(), flushing = null;
+  let owner = null, permanent = new Set(), hidden = new Set(), history = [], pending = [], ready = Promise.resolve(), flushing = null;
   const titleItem = item => typeof item === 'string' ? !!item.trim() : item && typeof item.title === 'string' && !!item.title.trim();
   const stored = (name, fallback, validItem = titleItem) => { try { const value = JSON.parse(localStorage.getItem(name)); if (Array.isArray(fallback)) return Array.isArray(value) ? value.filter(validItem) : fallback; return value && typeof value === 'object' && !Array.isArray(value) ? value : fallback; } catch (_) { return fallback; } };
   const bucket = () => owner || GUEST_ID;
@@ -47,6 +47,7 @@
   const historyStore = id => 'match_history_' + (id || GUEST_ID);
   const pendingStore = id => 'match_history_pending_' + (id || GUEST_ID);
   const cloudStore = id => 'match_history_cloud_' + (id || GUEST_ID);
+  const hiddenStore = id => 'match_history_hidden_' + (id || GUEST_ID);
   let historySnapshot='',historyRevision=0;
   let refreshing=null,lastRefresh=0;
   const exclusionCache=new Map();
@@ -85,7 +86,18 @@
     const aliases=[...new Set([source.originalTitle,source.original_title,source.original_name,
       ...[source._tmdb,source._catalogMedia,source._meta].filter(Boolean).flatMap(meta=>[meta.title,meta.originalTitle,meta.original_title,meta.original_name]),
       ...(Array.isArray(source.titleAliases)?source.titleAliases:[])].filter(value=>typeof value==='string'&&value.trim()).map(value=>value.slice(0,300)))].slice(0,30);
-    return {title:String(source.title).slice(0,300),action:String(action||source.action||'shown').slice(0,20),addedAt:Number(source.addedAt)||Date.now(),posterUrl:String(source.posterUrl||'').slice(0,1500),streamUrl:String(source.streamUrl||'').slice(0,1500),reason:String(source.reason||'').slice(0,300),identityKeys:boundedIdentityKeys(identityKeys(source)),originalTitle:String(source.originalTitle||source.original_title||source._tmdb?.originalTitle||source._catalogMedia?.originalTitle||source._meta?.originalTitle||'').slice(0,300),titleAliases:aliases,...(source.claimToken?{claimToken:String(source.claimToken).slice(0,100)}:{})};
+    return {title:String(source.title).slice(0,300),action:String(action||source.action||'shown').slice(0,20),addedAt:Number(source.addedAt)||Date.now(),posterUrl:String(source.posterUrl||'').slice(0,1500),streamUrl:String(source.streamUrl||'').slice(0,1500),reason:String(source.reason||'').slice(0,300),identityKeys:boundedIdentityKeys(identityKeys(source)),originalTitle:String(source.originalTitle||source.original_title||source._tmdb?.originalTitle||source._catalogMedia?.originalTitle||source._meta?.originalTitle||'').slice(0,300),titleAliases:aliases,...(source.claimToken?{claimToken:String(source.claimToken).slice(0,100)}:{}),...(source.historyHidden===true&&String(action||source.action)==='lifetime'?{historyHidden:true}:{})};
+  }
+  const hideItem = item => ({...item,action:'lifetime',historyHidden:true});
+  function guestLedgerReadable() {
+    try{
+      for(const name of [exclusionStore(GUEST_ID),historyStore(GUEST_ID),hiddenStore(GUEST_ID)]){
+        const raw=localStorage.getItem(name);if(raw===null)continue;
+        const rows=JSON.parse(raw);
+        if(!Array.isArray(rows)||rows.some(row=>name===historyStore(GUEST_ID)?!row||typeof row!=='object'||!titleItem(row):typeof row!=='string'||!row))return false;
+      }
+      return true;
+    }catch(_){return false;}
   }
   function mergeItem(previous, incoming) {
     if(!previous)return incoming;
@@ -98,10 +110,28 @@
     if(!incoming.originalTitle)next.originalTitle=previous.originalTitle||'';
     if(!incoming.reason)next.reason=previous.reason||'';
     if(preserveAction){next.action=previous.action;next.addedAt=previous.addedAt;}
+    if(previous.historyHidden===true||incoming.historyHidden===true)return hideItem(next);
     return next;
   }
+  function mergeLocal() {
+    stored(exclusionStore(bucket()),[],value=>typeof value==='string').forEach(value=>permanent.add(value));
+    stored(hiddenStore(bucket()),[],value=>typeof value==='string').forEach(value=>hidden.add(value));
+    let externalSnapshot='';try{externalSnapshot=localStorage.getItem(historyStore(bucket()))||'';}catch(_){}
+    for(const row of externalSnapshot!==historySnapshot?stored(historyStore(bucket()),[]):[]){
+      const rowKeys=identityKeys(row),index=history.findIndex(i=>intersects(identityKeys(i),rowKeys));
+      if(index<0)history.push(row);else history[index]=mergeItem(history[index],row);
+      rowKeys.forEach(k=>permanent.add(k));
+    }
+    history=history.map(row=>{
+      const keys=identityKeys(row);
+      if(row.historyHidden!==true&&!intersects(keys,hidden))return row;
+      keys.forEach(value=>hidden.add(value));return hideItem(row);
+    });
+    hidden.forEach(value=>permanent.add(value));
+    pending=pending.map(row=>intersects(identityKeys(row),hidden)?hideItem(row):row);
+  }
   function exclusions(hardOnly) {
-    const names=[exclusionStore(bucket()),historyStore(bucket()),'match_savedList','match_dislikedList','match_seenList','match_recentTitles','match_userRatings'];
+    const names=[exclusionStore(bucket()),historyStore(bucket()),hiddenStore(bucket()),'match_savedList','match_dislikedList','match_seenList','match_recentTitles','match_userRatings'];
     const snapshots=names.map(name=>{try{return localStorage.getItem(name);}catch(_){return null;}});
     const cached=exclusionCache.get(!!hardOnly);
     if(cached&&cached.owner===bucket()&&cached.revision===historyRevision&&snapshots.every((value,index)=>value===cached.snapshots[index]))return cached.titles;
@@ -139,30 +169,51 @@
   async function claim(item) {
     await ready;
     const clean=cleanItem(item,'reserved');
-    if(!clean||excludes(clean))return false;
+    if(!clean)return false;
     const account=owner;
+    if(account&&excludes(clean))return false;
     const token=window.crypto?.randomUUID?.()||('claim_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2));
     clean.claimToken=token;
     const accept=record=>{
-      remember(record,record.action||'reserved',false,false);
+      const durable=remember(record,record.action||'reserved',false,false);
+      if(!account&&!durable)return false;
       activeClaims.set(token,{account,item:record});
       return true;
     };
     if(!account){
-      const reserve=()=>{
-        if(owner!==account||excludes(clean))return false;
-        return accept(clean);
+      const reserve=async()=>{
+        const coordinator=window.MatchAppGuestReservations;
+        if(owner!==account||!guestLedgerReadable()||!coordinator?.reserve)return false;
+        const keys=[...identityKeys(clean)],reservation=await coordinator.reserve({scope:'audiovisual',keys,token});
+        if(reservation?.claimed!==true)return false;
+        if(owner!==account){await coordinator.release({scope:'audiovisual',keys,token});return false;}
+        mergeLocal();
+        // Only the atomic store can prove that another tab released an
+        // unused token. Absence never removes shown or hidden identities.
+        const released=new Set(reservation.releasedTokens||[]);
+        const unused=history.filter(row=>row.action==='reserved'&&row.historyHidden!==true&&released.has(row.claimToken));
+        if(unused.length){
+          const removed=new Set(unused.flatMap(row=>[...identityKeys(row)]));
+          history=history.filter(row=>!unused.includes(row));
+          for(const value of removed)if(!hidden.has(value)&&!history.some(row=>identityKeys(row).has(value)))permanent.delete(value);
+          if(!persist()){await coordinator.release({scope:'audiovisual',keys,token});return false;}
+        }
+        if(!guestLedgerReadable()||excludes(clean)){await coordinator.release({scope:'audiovisual',keys,token});return false;}
+        const accepted=accept(clean);
+        if(!accepted)await coordinator.release({scope:'audiovisual',keys,token});
+        return accepted;
       };
-      try{return window.navigator?.locks?.request
-        ? await window.navigator.locks.request('matchapp-guest-title-claim',reserve)
-        : reserve();}catch(_){return false;}
+      // IndexedDB commits atomically across tabs. Web Locks are an optional
+      // extra serializer; localStorage alone is never a claim authority.
+      try{return typeof window.navigator?.locks?.request==='function'?await window.navigator.locks.request('matchapp-guest-title-claim',reserve):await reserve();}catch(_){return false;}
     }
     if(!window.supabaseClient)return false;
     try{
       const {data,error}=await historyRpc('claim',{items:[clean],token});
       if(error||owner!==account||!data)return false;
       if(data.claimed===true){
-        if(excludes(clean,{hardOnly:true})){
+        mergeLocal();
+        if(excludes(clean,{hardOnly:true})||intersects(identityKeys(clean),hidden)){
           activeClaims.set(token,{account,item:data.item||clean});await releaseClaim(clean);return false;
         }
         return accept(data.item||clean);
@@ -172,15 +223,23 @@
     }catch(_){return false;}
   }
   async function releaseClaim(item) {
+    mergeLocal();
+    const account=owner;
     const keys=identityKeys(item);
     const found=[...activeClaims].find(([,record])=>record.account===owner&&intersects(identityKeys(record.item),keys));
     if(!found)return false;
     const [token,record]=found;
+    if(!history.some(row=>row.action==='reserved'&&row.historyHidden!==true&&row.claimToken===token)){activeClaims.delete(token);return false;}
     if(owner){
       try{const {data,error}=await historyRpc('release_claim',{token});if(error||data?.released!==true)return false;}catch(_){return false;}
+    }else{
+      try{if(await window.MatchAppGuestReservations?.release({scope:'audiovisual',keys:[...identityKeys(record.item)],token})!==true)return false;}catch(_){return false;}
     }
+    if(owner!==account)return false;
+    mergeLocal();
     activeClaims.delete(token);
-    const removable=history.filter(row=>row.action==='reserved'&&row.claimToken===token);
+    const removable=history.filter(row=>row.action==='reserved'&&row.historyHidden!==true&&row.claimToken===token);
+    if(!removable.length)return false;
     const removed=new Set(removable.flatMap(row=>[...identityKeys(row)]));
     history=history.filter(row=>!removable.includes(row));
     for(const value of removed)if(!history.some(row=>identityKeys(row).has(value)))permanent.delete(value);
@@ -192,17 +251,21 @@
     const remote=(Array.isArray(data.history)?data.history:[]).filter(titleItem);
     const remoteKeys=new Set((Array.isArray(data.keys)?data.keys:[]).filter(k=>typeof k==='string'));
     remote.forEach(item=>identityKeys(item).forEach(k=>remoteKeys.add(k)));
-    const localPending=new Set([...pending,...stored(pendingStore(bucket()),[])].flatMap(item=>[...identityKeys(item)]));
-    const removed=new Set(stored(cloudStore(bucket()),[],item=>typeof item==='string').filter(k=>!remoteKeys.has(k)&&!localPending.has(k)));
-    const retained=item=>{const keys=identityKeys(item);return !intersects(keys,removed)||intersects(keys,remoteKeys)||intersects(keys,localPending);};
-    removed.forEach(k=>permanent.delete(k));
-    history=history.filter(retained);
-    if(removed.size){
+    mergeLocal();
+    const remoteHidden=new Set((Array.isArray(data.hiddenKeys)?data.hiddenKeys:[]).filter(k=>typeof k==='string'));
+    remoteHidden.forEach(value=>hidden.add(value));
+    history=history.map(item=>{
+      const keys=identityKeys(item);if(!intersects(keys,hidden))return item;
+      keys.forEach(k=>hidden.add(k));return hideItem(item);
+    });
+    pending=pending.filter(item=>!intersects(identityKeys(item),remoteHidden));
+    const retained=item=>!intersects(identityKeys(item),hidden);
+    if(hidden.size){
       try{
         for(const name of ['match_savedList','match_seenList','match_dislikedList','match_recentTitles'])localStorage.setItem(name,JSON.stringify(stored(name,[]).filter(retained)));
-        const ratings=stored('match_userRatings',{});Object.keys(ratings).forEach(t=>{if(removed.has(key(t)))delete ratings[t];});localStorage.setItem('match_userRatings',JSON.stringify(ratings));
-        const session=JSON.parse(sessionStorage.getItem('match_sessionShown')||'[]');sessionStorage.setItem('match_sessionShown',JSON.stringify((Array.isArray(session)?session:[]).filter(t=>!removed.has(key(t)))));
-        if(typeof SESSION_SHOWN!=='undefined')for(const t of SESSION_SHOWN){if(removed.has(key(t)))SESSION_SHOWN.delete(t);}
+        const ratings=stored('match_userRatings',{});Object.keys(ratings).forEach(t=>{if(hidden.has(key(t)))delete ratings[t];});localStorage.setItem('match_userRatings',JSON.stringify(ratings));
+        const session=JSON.parse(sessionStorage.getItem('match_sessionShown')||'[]');sessionStorage.setItem('match_sessionShown',JSON.stringify((Array.isArray(session)?session:[]).filter(t=>!hidden.has(key(t)))));
+        if(typeof SESSION_SHOWN!=='undefined')for(const t of SESSION_SHOWN){if(hidden.has(key(t)))SESSION_SHOWN.delete(t);}
       }catch(_){}
     }
     // Source aliases coalesce into one record without repeatedly scanning
@@ -216,8 +279,10 @@
       for(const index of matches){if(rows[index]){identityKeys(rows[index]).forEach(k=>mergedKeys.add(k));combined=mergeItem(rows[index],combined);}if(index!==at)rows[index]=null;}
       rows[at]=combined;mergedKeys.forEach(k=>byIdentity.set(k,at));
     }
-    history=rows.filter(Boolean).sort((a,b)=>Number(b.addedAt)-Number(a.addedAt));
+    history=rows.filter(Boolean).map(item=>intersects(identityKeys(item),hidden)?hideItem(item):item).sort((a,b)=>Number(b.addedAt)-Number(a.addedAt));
+    history.filter(item=>item.historyHidden===true).forEach(item=>identityKeys(item).forEach(k=>hidden.add(k)));
     remoteKeys.forEach(k=>permanent.add(k));
+    hidden.forEach(k=>permanent.add(k));
     try{localStorage.setItem(cloudStore(bucket()),JSON.stringify([...remoteKeys]));}catch(_){}
   }
   async function refresh(force=false) {
@@ -235,12 +300,17 @@
   }
   function persist() {
     historyRevision++;
+    if(!owner&&!guestLedgerReadable())return false;
     try {
-      localStorage.setItem(exclusionStore(bucket()), JSON.stringify([...permanent]));
-      historySnapshot=JSON.stringify(history);
-      localStorage.setItem(historyStore(bucket()), historySnapshot);
+      const keys=JSON.stringify([...permanent]),rows=JSON.stringify(history),hiddenKeys=JSON.stringify([...hidden]);
+      localStorage.setItem(exclusionStore(bucket()),keys);
+      localStorage.setItem(historyStore(bucket()),rows);
+      localStorage.setItem(hiddenStore(bucket()),hiddenKeys);
       localStorage.setItem(pendingStore(bucket()), JSON.stringify(pending));
-    } catch (_) {}
+      if(localStorage.getItem(exclusionStore(bucket()))!==keys||localStorage.getItem(historyStore(bucket()))!==rows||localStorage.getItem(hiddenStore(bucket()))!==hiddenKeys)return false;
+      historySnapshot=rows;
+      return true;
+    } catch (_) {return false;}
   }
   async function flush() {
     if (!owner || !window.supabaseClient || !pending.length) return;
@@ -262,17 +332,21 @@
     owner = user ? user.id : null;
     const guestKeys = new Set(stored(exclusionStore(GUEST_ID), [], item => typeof item === 'string' && !!item));
     const guestHistory = stored(historyStore(GUEST_ID), [], item => item && typeof item.title === 'string' && !!item.title.trim());
+    const guestHidden = stored(hiddenStore(GUEST_ID),[],value=>typeof value==='string');
     permanent = new Set(stored(exclusionStore(owner || GUEST_ID), [], item => typeof item === 'string' && !!item));
+    hidden = new Set(stored(hiddenStore(owner || GUEST_ID),[],value=>typeof value==='string'));
     history = stored(historyStore(owner || GUEST_ID), [], item => item && typeof item.title === 'string' && !!item.title.trim());
     pending = stored(pendingStore(owner || GUEST_ID), [], item=>item&&typeof item.title==='string');
 
     if (owner && (!previousOwner || previousOwner===owner)) {
       guestKeys.forEach(k => permanent.add(k));
+      guestHidden.forEach(k => hidden.add(k));
       const merged = new Map(history.map(i => [key(i.title),i]));
       guestHistory.forEach(i => { if(!merged.has(key(i.title))) merged.set(key(i.title),i); });
       history=[...merged.values()];
     }
     stored('match_recentTitles', [], item => typeof item === 'string' && !!item.trim()).forEach(t => permanent.add(key(t)));
+    mergeLocal();
 
     if (!owner) { persist(); document.dispatchEvent(new CustomEvent('matchapp:historychange')); return; }
     const meta=user.user_metadata||{};
@@ -300,7 +374,8 @@
     const stageRestored=(item,action)=>{
       const source=typeof item==='string'?{title:item}:item;
       const itemKey=key(source&&source.title);if(!itemKey)return;
-      const clean=cleanItem(source,action);
+      let clean=cleanItem(source,action);
+      if(intersects(identityKeys(clean),hidden))clean=hideItem(clean);
       identityKeys(clean).forEach(k=>permanent.add(k));
       if(!restoredByKey.has(itemKey)){
         restoredByKey.set(itemKey,clean);restoredNewKeys.unshift(itemKey);restoredNewSet.add(itemKey);
@@ -319,30 +394,31 @@
     persist();
     // Once migrated, guest choices belong to this account, not every account
     // subsequently opened on the same browser.
-    if(owner){try{localStorage.removeItem(exclusionStore(GUEST_ID));localStorage.removeItem(historyStore(GUEST_ID));localStorage.removeItem(pendingStore(GUEST_ID));}catch(_){}}
+    if(owner){try{localStorage.removeItem(exclusionStore(GUEST_ID));localStorage.removeItem(historyStore(GUEST_ID));localStorage.removeItem(hiddenStore(GUEST_ID));localStorage.removeItem(pendingStore(GUEST_ID));}catch(_){}}
     await flush();
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
   }
   function remember(item, action, sync = true, enqueue = true) {
     if (!item || !key(item.title)) return;
     // Merge another tab's latest writes before persisting this tab's choice.
-    let externalSnapshot='';try{externalSnapshot=localStorage.getItem(historyStore(bucket()))||'';}catch(_){}
-    for(const row of externalSnapshot!==historySnapshot?stored(historyStore(bucket()),[]):[]){
-      const rowKeys=identityKeys(row),index=history.findIndex(i=>intersects(identityKeys(i),rowKeys));
-      if(index<0)history.push(row);else history[index]=mergeItem(history[index],row);
-      rowKeys.forEach(k=>permanent.add(k));
-    }
+    mergeLocal();
     let clean=cleanItem(item,action);
     const keys=identityKeys(clean);
     const old = history.findIndex(i => intersects(identityKeys(i),keys));
     if(old>=0)clean=mergeItem(history[old],clean);
+    if(intersects(identityKeys(clean),hidden))clean=hideItem(clean);
     identityKeys(clean).forEach(k=>permanent.add(k));
+    if(clean.historyHidden===true)identityKeys(clean).forEach(k=>hidden.add(k));
     if (old < 0) history.unshift(clean); else history[old] = clean;
     if(clean.action!=='reserved')for(const [token,record] of activeClaims)if(record.account===owner&&intersects(identityKeys(record.item),keys))activeClaims.delete(token);
     if(owner&&enqueue){pending=pending.filter(i=>!intersects(identityKeys(i),identityKeys(clean)));pending.push(clean);}
-    persist();
+    if(!owner&&clean.action!=='reserved'){
+      try{Promise.resolve(window.MatchAppGuestReservations?.settle({scope:'audiovisual',keys:[...identityKeys(clean)],state:clean.historyHidden===true?'lifetime':'shown'})).catch(()=>{});}catch(_){}
+    }
+    const durable=persist();
     if (sync && owner) flush().catch(() => {});
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
+    return durable;
   }
   function savePreference(item, action) {
     if(!item?.title||!['save','dislike','seen'].includes(action))return false;
@@ -360,11 +436,14 @@
   async function forget(title) {
     const account=owner;
     const titleKey=key(title); if(!titleKey)return false;
+    mergeLocal();
     const removed=new Set([titleKey]);
     history.filter(i=>identityKeys(i).has(titleKey)).forEach(i=>identityKeys(i).forEach(k=>removed.add(k)));
-    removed.forEach(k=>permanent.delete(k));
-    history=history.filter(i=>!intersects(identityKeys(i),removed));
+    removed.forEach(k=>{permanent.add(k);hidden.add(k);});
+    history=history.map(i=>intersects(identityKeys(i),removed)?hideItem(i):i);
+    if(!history.some(i=>intersects(identityKeys(i),removed)))history.unshift(hideItem(cleanItem({title},'lifetime')));
     pending=pending.filter(i=>!intersects(identityKeys(i),removed));
+    if(owner)pending.push(...history.filter(i=>intersects(identityKeys(i),removed)));
     try{
       for(const name of ['match_savedList','match_seenList','match_dislikedList','match_recentTitles']){
         localStorage.setItem(name,JSON.stringify(stored(name,[]).filter(i=>!intersects(identityKeys(i),removed))));
@@ -376,9 +455,13 @@
       sessionStorage.setItem('match_sessionShown',JSON.stringify((Array.isArray(shown)?shown:[]).filter(t=>!removed.has(key(t)))));
       if(typeof SESSION_SHOWN!=='undefined')for(const t of SESSION_SHOWN){if(removed.has(key(t)))SESSION_SHOWN.delete(t);}
     }catch(_){}
-    persist();
+    const durable=persist();
+    if(!account&&!durable)return false;
+    if(!account){
+      try{if(await window.MatchAppGuestReservations?.settle({scope:'audiovisual',keys:[...removed],state:'lifetime'})!==true)return false;}catch(_){return false;}
+    }
     if(owner&&window.supabaseClient){
-      try{if(flushing)await flushing;if(owner!==account)return false;const {error}=await historyRpc('forget',{title:String(title).slice(0,300),ownerId:account});if(error)throw error;}catch(_){return false;}
+      try{if(flushing)await flushing;if(owner!==account)return false;const {error}=await historyRpc('forget',{title:String(title).slice(0,300),ownerId:account});if(error)throw error;if(owner!==account)return false;pending=pending.filter(i=>!intersects(identityKeys(i),removed));persist();}catch(_){return false;}
     }
     document.dispatchEvent(new CustomEvent('matchapp:historychange'));
     document.dispatchEvent(new CustomEvent('matchapp:portfoliochange',{detail:{action:'forget',owner}}));
@@ -630,8 +713,13 @@
     if (!entry || !entry.title || excludes(entry) || [...identityKeys(entry)].some(k=>extra.includes(k))) return false;
     return matchesCriteria(entry, criteria);
   }
-  window.matchPolicy = Object.freeze({key,values,identityKeys,excludes,savePreference,claim,releaseClaim,matches,matchesCriteria,remember,forget,known,history:()=>history.slice(),ready:async()=>{await ready;await refresh();},refresh,incompatible,genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
+  window.matchPolicy = Object.freeze({key,values,identityKeys,excludes,savePreference,claim,releaseClaim,matches,matchesCriteria,remember,forget,known,history:()=>history.filter(item=>item.historyHidden!==true),ready:async()=>{await ready;await refresh();},refresh,incompatible,genreFits,intentFromText,fitsQuestion,sameFamily,asEntry,familyScores,comedyLocked,attach:user => (ready = attach(user).catch(() => {})), flush});
   window.addEventListener('online', () => {flush().catch(() => {});refresh(true);});
+  window.addEventListener('storage',event=>{
+    if(![historyStore(bucket()),hiddenStore(bucket()),exclusionStore(bucket())].includes(event.key))return;
+    mergeLocal();historyRevision++;
+    document.dispatchEvent(new CustomEvent('matchapp:historychange'));
+  });
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
   setTimeout(() => {
     const client = window.supabaseClient;

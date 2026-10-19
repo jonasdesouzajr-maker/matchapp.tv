@@ -30,6 +30,7 @@ async function setup(page){
  let browser;
  try{
  browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ for(const check of await require('./guest-lifetime-browser-check.cjs').runGuestLifetimeChecks(browser,{base:BASE,dest:DEST}))pass(check.label,check.ok,check.detail);
  for(const device of cases){
    const ctx=await browser.newContext({viewport:{width:device.width,height:device.height},deviceScaleFactor:2,isMobile:true,hasTouch:true,userAgent:device.ua,locale:'en-US'});
    const page=await ctx.newPage(),fatal=[];

@@ -1,5 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const covers=require('../ebooks/cover-identity.js'),audio=require('../ebooks/audiobooks.js');
 
@@ -55,6 +56,7 @@ test('an exact numeric TMDB identity cannot fall through to unrelated same-name 
 });
 test('two rapid e-book matching requests can debit the shared quota only once',{timeout:3000},async()=>{
  const dom=new JSDOM('<main><div id="search-box"></div></main>',{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window;
+ installGuestReservations(w);
  w.MATCHAPP_EBOOK_CATALOG=[{id:'one',title:'Pride and Prejudice',author:'Jane Austen',year:1813,genres:['romance'],moods:['romantic'],pace:'balanced',length:'long',era:'classic',access:['free','paid'],summary:'A novel'}];
  w.MATCHAPP_TOP_EBOOKS=[];w.MatchAppBookCoverIdentity=covers;w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};
  w.fetch=async()=>{throw Error('offline')};
