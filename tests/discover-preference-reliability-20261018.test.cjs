@@ -1,6 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
 const source=read('discover.js');
 function functionSource(name){
@@ -12,6 +13,7 @@ function functionSource(name){
 function boot(items=[]){
   const dom=new JSDOM('<main id="chat-log"></main>',{url:'https://matchapp.tv/discover.html',runScripts:'outside-only'});
   const w=dom.window;
+  installGuestReservations(w);
   w.CONTENT_CATALOG=[];w.DISCOVER_ITEMS=items;w.lastDiscoverQuestion='';
   w.eval(read('matching-policy.js'));
   w.discoverFallbackPoster=()=> 'data:image/svg+xml,fallback';

@@ -1,6 +1,7 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const sourceRoute=(value,hosts,prefix='/')=>{
  const url=new URL(value,'https://matchapp.tv/');
@@ -24,6 +25,7 @@ async function setup(criteria={},items=null,magazines=null){
   url:'https://matchapp.tv/',runScripts:'outside-only'
  });
  const w=dom.window;
+ installGuestReservations(w);
  w.MATCH_LANG='en';w.MATCHAPP_TOP_EBOOKS=[];
  w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};
  w.fetch=async()=>{throw Error('Cover network unavailable in isolated test')};
@@ -145,16 +147,17 @@ test('a canceled Ask reading request releases its unseen claim and renders no st
   assert.deepEqual(JSON.parse(h.w.localStorage.getItem('match_ebook_seen_v1')),[]);
  }finally{h.dom.window.close()}
 });
-test('denied local storage still prevents repeated guest books within the active page',async()=>{
+test('denied local storage blocks guest books before a reveal or debit',async()=>{
  const item=book('Storage denied title',['classics'],['curious']);
  const h=await setup({},[item]);
  try{
   Object.defineProperty(h.w,'localStorage',{get(){throw Error('Storage denied')}});
   await h.w.MatchAppEbooks.match();
-  assert.match(h.result().textContent,/Storage denied title/);
+  assert.doesNotMatch(h.result().textContent,/Storage denied title/);
+  assert.match(h.note().textContent,/could not sync your match history/);
   await h.w.MatchAppEbooks.match();
   assert.doesNotMatch(h.result().textContent,/Storage denied title/);
-  assert.equal(h.credits(),1);
+  assert.equal(h.credits(),0);
  }finally{h.dom.window.close()}
 });
 test('selected paid/free access and cozy-content safety remain hard gates',async()=>{
@@ -232,7 +235,7 @@ test('excluded magazines show genuine publisher discovery instead of a wrong-cat
   assert.equal(h.credits(),0);
  }finally{h.dom.window.close()}
 });
-test('free audiobooks outside US remain honest unverified book suggestions and cost no credits',async()=>{
+test('free audiobooks outside US offer generic unverified source searches and cost no credits',async()=>{
  const it=book('Real curated classic',['historical'],['hopeful']);
  const h=await setup({format:'audiobook',mood:'cozy',genre:'historical',access:'free'},[it]);
  try{
@@ -241,7 +244,7 @@ test('free audiobooks outside US remain honest unverified book suggestions and c
   h.w.MatchAppAudiobooks={verify:async()=>{calls++;throw Error('must not claim US rights in Brazil')}};
   await h.w.MatchAppEbooks.match();
   assert.equal(calls,0);
-  assert.match(h.result().textContent,/Real curated classic/);
+  assert.doesNotMatch(h.result().textContent,/Real curated classic/);
   assert.match(h.result().textContent,/Free recordings are not yet rights-verified/);
   assert.match(h.result().textContent,/unverified search/);
   assert.doesNotMatch(h.result().textContent,/Audible|Apple Books/);
@@ -368,7 +371,7 @@ test('a simultaneous cloud title claim loses safely and cannot debit or reveal t
   assert.match(h.result().textContent,/No unexcluded catalogued title remains/);
  }finally{h.dom.window.close()}
 });
-test('explicit Remove restores a saved book for future matching',async()=>{
+test('explicit Remove clears a saved preference while preserving lifetime shown history',async()=>{
  const item=book('Restore this book',['classics'],['cozy']);
  const h=await setup({},[item]);
  try{
@@ -377,10 +380,10 @@ test('explicit Remove restores a saved book for future matching',async()=>{
   assert.deepEqual(Array.from(h.w.MatchAppEbooks.saved()),[item.id]);
   h.w.document.querySelector('[data-ebook-remove]').click();
   assert.deepEqual(Array.from(h.w.MatchAppEbooks.saved()),[]);
-  assert.deepEqual(JSON.parse(h.w.localStorage.getItem('match_ebook_seen_v1')),[]);
+  assert.deepEqual(JSON.parse(h.w.localStorage.getItem('match_ebook_seen_v1')),[item.id]);
   await h.w.MatchAppEbooks.match();
-  assert.match(h.result().textContent,/Restore this book/);
-  assert.equal(h.credits(),2,'the user explicitly restored this title');
+  assert.doesNotMatch(h.result().textContent,/Restore this book/);
+  assert.equal(h.credits(),1,'removing a preference cannot make a shown title fresh again');
  }finally{h.dom.window.close()}
 });
 

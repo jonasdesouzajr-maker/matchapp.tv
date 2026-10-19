@@ -62,14 +62,14 @@ test('magazine-only selection respects topics, exclusions, and source priority w
 });
 test('magazine matching retains the original shared allowance when the actual token policy is disabled',async()=>{
  const w=new JSDOM('<html><body><section id="reading"><button data-ebook-match></button><div data-ebook-note></div><div data-ebook-result></div></section></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true}).window;
- const calls=[],order=[],rootNode=w.document.getElementById('reading');let allowed=true,found=true;
+ const calls=[],order=[],claims=new Map(),rootNode=w.document.getElementById('reading');let allowed=true,found=true;
  w.supabaseClient={auth:{getSession:async()=>({data:{session:null}})},rpc:async name=>{calls.push(name);return{data:{ok:true,enabled:false,policy_version:'match-tokens-v1',authenticated:false}};}};
  w.eval(read('match-tokens.js'));await w.MatchAppTokens.refresh();
  const quota=async(action,context)=>{order.push('quota');assert.equal(action,'match');assert.equal(context.surface,'ebook');return allowed;};w.checkDailyLimit=quota;
  const magazine=setup().MatchAppMagazines.items[0];
  const context={window:w,console,prefs:()=>({format:'magazine',access:'free'}),chooseMagazine:async()=>{order.push('source');return found?{book:magazine,magazine:true}:null;},matchNote:()=>'',read:()=>[],K:{saved:'saved',disliked:'disliked',seen:'existing-seen'},renderResult:()=>order.push('reveal'),renderReadingDiscovery:()=>order.push('source-fallback'),
-  readingOwner:'guest',readingEpoch:0,readingClaims:new Map(),cloudHydrate:async()=>true,cloudSync:async()=>{},readingHistoryNotice:()=>{throw Error('history unexpectedly unavailable');},
-  claimReading:async()=>{order.push('claim');return true;},releaseReading:async()=>order.push('release'),queueReading:()=>order.push('history')};
+  readingOwner:'guest',readingEpoch:0,readingClaims:claims,cloudHydrate:async()=>true,cloudSync:async()=>{},readingHistoryNotice:()=>{throw Error('history unexpectedly unavailable');},
+  claimReading:async id=>{order.push('claim');claims.set('guest:'+id,'fixture-reservation-token');return true;},releaseReading:async id=>{order.push('release');claims.delete('guest:'+id);},queueReading:()=>order.push('history')};
  const match=read('ebooks/ebook-matcher.js'),start=match.indexOf('async function doMatch(root){'),end=match.indexOf('\nfunction syncBookControls',start);
  vm.createContext(context);vm.runInContext(match.slice(start,end)+'\nthis.matchMagazine=doMatch;',context);
  try{
