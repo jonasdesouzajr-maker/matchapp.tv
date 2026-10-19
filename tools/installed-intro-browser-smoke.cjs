@@ -2,6 +2,7 @@
 // Real Chromium playback in simulated installed windows; not physical-device QA.
 const {chromium}=require('playwright'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
+const {installIntroPlaybackEvidence}=require('./intro-playback-evidence.cjs');
 const base=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const dir=path.resolve('artifacts/installed-intro-smoke');fs.mkdirSync(dir,{recursive:true});
 const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wide-screen',1920,1080]];
@@ -14,28 +15,14 @@ const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wi
     await context.addInitScript(()=>Object.defineProperty(navigator,'standalone',{value:true}));
     const page=await context.newPage(),media=[];
     page.on('response',response=>{if(response.url().includes('matchapp-launch-intro'))media.push({status:response.status(),url:response.url()});});
-    await context.addInitScript(()=>{
-     window.introMediaErrors=[];
-     window.introMediaEnds=[];
-     document.addEventListener('ended',event=>{
-      if(event.target instanceof HTMLVideoElement&&event.target.matches('#matchapp-launch-intro video')){
-       window.introMediaEnds.push({trusted:event.isTrusted,ended:event.target.ended,currentTime:event.target.currentTime,duration:event.target.duration});
-      }
-     },true);
-     document.addEventListener('error',event=>{if(event.target instanceof HTMLMediaElement)window.introMediaErrors.push({code:event.target.error?.code,message:event.target.error?.message});},true);
-    });
+    await context.addInitScript(installIntroPlaybackEvidence);
     await page.goto(base+'/?intro_browser_check=1',{waitUntil:'commit'});
     await page.waitForFunction(()=>{
-     const video=document.querySelector('#matchapp-launch-intro video');
-     return video&&video.readyState>=2&&video.currentTime>0;
+     return !!window.introPlaybackEvidence?.frame;
     },null,{timeout:6000}).catch(async error=>{
-     console.error('Intro diagnostic',name,JSON.stringify({media,state:await page.evaluate(()=>({installed:navigator.standalone,mp4:document.createElement('video').canPlayType('video/mp4'),errors:window.introMediaErrors,hidden:document.hidden,overlay:!!document.querySelector('#matchapp-launch-intro'),played:sessionStorage.getItem('matchapp-launch-intro')}))}));throw error;
+     console.error('Intro diagnostic',name,JSON.stringify({media,state:await page.evaluate(()=>({installed:navigator.standalone,mp4:document.createElement('video').canPlayType('video/mp4'),errors:window.introMediaErrors,evidence:window.introPlaybackEvidence,hidden:document.hidden,overlay:!!document.querySelector('#matchapp-launch-intro'),played:sessionStorage.getItem('matchapp-launch-intro')}))}));throw error;
     });
-    const state=await page.evaluate(()=>{
-     const video=document.querySelector('#matchapp-launch-intro video'),rect=video.getBoundingClientRect();
-     return {width:rect.width,height:rect.height,screenWidth:innerWidth,screenHeight:innerHeight,
-      encodedWidth:video.videoWidth,encodedHeight:video.videoHeight,fit:getComputedStyle(video).objectFit,muted:video.muted,duration:video.duration};
-    });
+    const state=await page.evaluate(()=>window.introPlaybackEvidence.frame);
     assert.equal(state.width,state.screenWidth);assert.equal(state.height,state.screenHeight);
     assert.equal(state.encodedWidth,1080);assert.equal(state.encodedHeight,1920);
     assert.equal(state.fit,'cover');assert.equal(state.muted,true);
@@ -59,7 +46,12 @@ const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wi
      await overlay.waitFor({state:'detached',timeout:3000}).catch(async error=>{if(await overlay.count())throw error;});
      assert.equal(await overlay.count(),0,'intro must be dismissed or complete naturally');
     }
-    console.log('PASS real intro decode, viewport fill and '+(name==='phone'?'completion':'Skip')+' '+name+' '+JSON.stringify(state));
+    const evidence=await page.evaluate(()=>window.introPlaybackEvidence);
+    assert.deepEqual(evidence.errors,[],'intro media errors must fail the audit');
+    const natural=evidence.ends.some(end=>end.trusted&&end.ended&&Number.isFinite(end.duration)&&end.duration>0&&end.currentTime>=end.duration-.05);
+    assert.ok(evidence.skip?.trusted||natural,'dismissal must have a real Skip click or full natural playback');
+    fs.writeFileSync(path.join(dir,name+'.json'),JSON.stringify({media,...evidence},null,2)+'\n');
+    console.log('PASS real intro decode, viewport fill and '+(evidence.skip?.trusted?'Skip':'completion')+' '+name+' '+JSON.stringify(state));
     await page.reload({waitUntil:'domcontentloaded'});
     assert.equal(await page.locator('#matchapp-launch-intro').count(),0,'same-session navigation must not replay');
    }finally{await context.close();}
