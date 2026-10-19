@@ -40,7 +40,7 @@ test('only the event archive shell retains the existing token assets before its 
  const shell=vm.runInNewContext(source.slice(start,end)+'\nshell');
  const args={headHtml:'<title>Verified events</title>',body:'<section id="original-events">Original event details</section>'};
  const archive=shell({...args,archive:true}),guide=shell(args);
- const script='/match-tokens.js?v=20261017-3',style='/match-tokens.css?v=20261017-3';
+ const script='/match-tokens.js?v=20261019-refresh1',style='/match-tokens.css?v=20261017-3';
  assert.equal(archive.split(script).length-1,1);assert.equal(archive.split(style).length-1,1);
  assert.ok(archive.indexOf(style)<archive.indexOf('</head>'));
  assert.ok(archive.indexOf(script)<archive.indexOf('/app.js?v='));

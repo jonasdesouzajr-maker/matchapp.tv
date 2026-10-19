@@ -566,9 +566,11 @@ async function claimReading(id){
  }finally{if(!settled)await coordinator.release({scope:'reading',keys:[id],token});}
 }
 async function releaseReading(id,owner,epoch,token){
- if(owner!==readingOwner||epoch!==readingEpoch)return;
+ // A durable reserved receipt cannot prove that an earlier document never
+ // displayed the work after a failed history write/settlement. Only this
+ // document's still-active, exact unused claim may be released.
+ if(owner!==readingOwner||epoch!==readingEpoch||readingClaims.get(owner+':'+id)!==token)return;
  if(owner==='guest'){
-  if(readingClaims.get(owner+':'+id)!==token&&!read(guestReadingClaimsKey).some(claim=>claim?.id===id&&claim.token===token))return;
   const pending=read(pendingKey(owner)),confirmed=pending.some(event=>event?.id===id&&['seen','save','dislike','forget'].includes(event.action));
   if(confirmed||[K.saved,K.disliked].some(key=>read(key).includes(id))){
    try{await window.MatchAppGuestReservations?.settle({scope:'reading',keys:[id],state:pending.some(event=>event?.id===id&&event.action==='forget')?'lifetime':'shown'});}catch(_){}
@@ -584,7 +586,6 @@ async function releaseReading(id,owner,epoch,token){
   }
   if(readingClaims.get(owner+':'+id)===token)readingClaims.delete(owner+':'+id);return;
  }
- if(readingClaims.get(owner+':'+id)!==token)return;
  try{const data=await readingRPC('release',{id,token},owner);if(owner===readingOwner&&epoch===readingEpoch){applyReadingCloud(data);readingClaims.delete(owner+':'+id);}}catch(_){}
 }
 function readingHistoryNotice(root){

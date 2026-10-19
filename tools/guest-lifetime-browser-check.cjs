@@ -73,11 +73,15 @@ async function runGuestLifetimeChecks(browser,{base,dest}){
    for(const page of pages)assert.equal(await page.evaluate(()=>window.MatchAppEbooks.claimSuggestion('fixture-reading-0')),null,'reading identity survives reload');
    const unusedReading=await pages[0].evaluate(()=>window.MatchAppEbooks.claimSuggestion('fixture-unused-reading'));
    assert(unusedReading,'a fresh reading work can still be reserved');
-   await restore(pages[0]);
    await pages[0].evaluate(claim=>window.MatchAppEbooks.releaseSuggestion(claim),unusedReading);
    const reusedReading=await pages[1].evaluate(()=>window.MatchAppEbooks.claimSuggestion('fixture-unused-reading'));
-   assert(reusedReading,'an unused reading receipt can be released after reload and used by another tab');
+   assert(reusedReading,'an unused active reading receipt can be released and used by another tab');
    await pages[1].evaluate(claim=>window.MatchAppEbooks.releaseSuggestion(claim),reusedReading);
+   const uncertainReading=await pages[0].evaluate(()=>window.MatchAppEbooks.claimSuggestion('fixture-uncertain-reading'));
+   assert(uncertainReading);
+   await restore(pages[0]);
+   await pages[0].evaluate(claim=>window.MatchAppEbooks.releaseSuggestion(claim),uncertainReading);
+   assert.equal(await pages[1].evaluate(()=>window.MatchAppEbooks.claimSuggestion('fixture-uncertain-reading')),null,'a reloaded tab cannot prove an old reservation was never displayed');
    results.push({label:'guest lifetime '+viewport.width+'px',ok:true,detail:'40 audiovisual and 20 reading cross-tab races; reload, hidden history and unused release; Web Locks '+(index%2?'disabled':'available')});
   }catch(error){results.push({label:'guest lifetime '+viewport.width+'px',ok:false,detail:String(error.stack||error).slice(0,900)});}
   finally{await ctx?.close();}

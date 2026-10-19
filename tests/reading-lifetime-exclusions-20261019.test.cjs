@@ -95,7 +95,8 @@ test('a released unused reading receipt can be reconciled after reload without r
  try{
   claim=await first.w.MatchAppEbooks.claimSuggestion(item.id);assert(claim);
   storage=Object.fromEntries(Object.keys(first.w.localStorage).map(key=>[key,first.w.localStorage.getItem(key)]));
-  assert.equal(await coordinator.release({scope:'reading',keys:[item.id],token:claim.token}),true);
+  await first.w.MatchAppEbooks.releaseSuggestion(claim);
+  assert(!JSON.parse(first.w.localStorage.getItem(keys.seen)).includes(item.id));
  }finally{first.dom.window.close();}
  const reloaded=await boot(storage,coordinator);
  try{
@@ -105,7 +106,7 @@ test('a released unused reading receipt can be reconciled after reload without r
   assert.equal(await reloaded.w.MatchAppEbooks.claimSuggestion(item.id),null);
  }finally{reloaded.dom.window.close();}
 });
-test('an unused reading claim can be released by its owned receipt after reload',async()=>{
+test('an unknown reading reservation stays excluded after reload even with its old durable receipt',async()=>{
  const coordinator=createGuestReservations(),first=await boot({},coordinator);let storage,claim;
  try{
   claim=await first.w.MatchAppEbooks.claimSuggestion(item.id);assert(claim);
@@ -114,8 +115,33 @@ test('an unused reading claim can be released by its owned receipt after reload'
  const reloaded=await boot(storage,coordinator);
  try{
   await reloaded.w.MatchAppEbooks.releaseSuggestion(claim);
-  assert(!JSON.parse(reloaded.w.localStorage.getItem(keys.seen)).includes(item.id));
-  assert(await reloaded.w.MatchAppEbooks.claimSuggestion(item.id));
+  assert(JSON.parse(reloaded.w.localStorage.getItem(keys.seen)).includes(item.id));
+  assert.equal(await reloaded.w.MatchAppEbooks.claimSuggestion(item.id),null);
+ }finally{reloaded.dom.window.close();}
+});
+test('failed shown settlement plus failed local writes cannot paint a work that becomes claimable after reload',async()=>{
+ const coordinator=createGuestReservations(),originalSettle=coordinator.settle,first=await boot({},coordinator);let storage,claim,count;
+ try{
+  first.w.eval(read('ebooks/reading-ai.js'));
+  const host=first.w.document.createElement('main');first.w.document.body.appendChild(host);
+  const originalFinish=first.w.MatchAppEbooks.finishSuggestion,store=first.w.localStorage;
+  first.w.MatchAppEbooks.finishSuggestion=value=>{
+   claim=value;coordinator.settle=async()=>false;
+   Object.defineProperty(first.w,'localStorage',{configurable:true,value:{getItem:key=>store.getItem(key),setItem:()=>{throw Error('Storage commit failed after reservation');}}});
+   return originalFinish(value);
+  };
+  count=await first.w.MatchAppReadingAI.renderFresh('Recommend a book',host);
+  assert.equal(host.querySelectorAll('.reading-ai-card').length,count);
+  storage=Object.fromEntries(Object.keys(store).map(key=>[key,store.getItem(key)]));
+  assert.equal(first.debits(),0);
+ }finally{first.dom.window.close();coordinator.settle=originalSettle;}
+ const reloaded=await boot(storage,coordinator);
+ try{
+  await reloaded.w.MatchAppEbooks.releaseSuggestion(claim);
+  const next=await reloaded.w.MatchAppEbooks.claimSuggestion(item.id);
+  assert(!(count>0&&next),'a source card was painted, then its durable old receipt allowed the same work after reload');
+  assert.equal(count,1,'exercise an actually painted card despite unavailable settlement and local history writes');
+  assert.equal(next,null,'the unknown durable reservation must remain excluded after the original document closes');
  }finally{reloaded.dom.window.close();}
 });
 test('a failed local reservation mirror releases its atomic claim for repaired-storage retry',async()=>{
