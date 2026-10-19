@@ -1,0 +1,266 @@
+--- a/.github/workflows/midnight-content-rotation.yml
++++ b/.github/workflows/midnight-content-rotation.yml
+@@ -121,9 +121,19 @@
+               exit 0
+             fi
+             git commit -m "Daily midnight content and SEO rotation"
++            published="$(git rev-parse HEAD)"
+             if git push origin HEAD:main; then
+               echo 'changed=1' >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin main
++            if git merge-base --is-ancestor "$published" origin/main; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse origin/main)" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+             echo "Remote main advanced; rebuilding all editorial outputs before retry $((attempt+1))."
+           done
+--- a/.github/workflows/trending-refresh.yml
++++ b/.github/workflows/trending-refresh.yml
+@@ -133,9 +133,19 @@
+               exit 0
+             fi
+             git commit -m "Refresh daily Top Titles, music videos and SEO"
++            published="$(git rev-parse HEAD)"
+             if git push origin HEAD:main; then
+               echo "changed=1" >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin main
++            if git merge-base --is-ancestor "$published" origin/main; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse origin/main)" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+             echo "Remote main advanced; regenerate and revalidate before retry."
+           done
+--- a/.github/workflows/news-refresh.yml
++++ b/.github/workflows/news-refresh.yml
+@@ -29,6 +29,8 @@
+       - uses: actions/setup-node@v7
+         with:
+           node-version: '24'
++      - name: Install locked validation dependencies
++        run: npm ci --ignore-scripts
+       - name: Fetch trusted entertainment headlines
+         run: node tools/refresh-news-rss.js
+       - name: Refresh sitemap
+@@ -49,16 +51,29 @@
+               node tools/refresh-news-rss.js
+               node tools/update-sitemap.js
+             fi
++            node tools/check-content-rotation.js
++            npm test
++            npm run audit:site
+             git add news tools/news-urls.json tools/news-sitemap-meta.json sitemap.xml sitemaps.xml
+             if git diff --staged --quiet; then
+               echo "Entertainment news already current"
+               echo "changed=0" >> "$GITHUB_OUTPUT"
+               exit 0
+             fi
+-            git commit -m "Refresh hourly entertainment news" || true
++            git commit -m "Refresh hourly entertainment news"
++            published="$(git rev-parse HEAD)"
+             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+               echo "changed=1" >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin "${GITHUB_REF_NAME}"
++            if git merge-base --is-ancestor "$published" "origin/${GITHUB_REF_NAME}"; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+           done
+           exit 1
+--- a/.github/workflows/sports-refresh.yml
++++ b/.github/workflows/sports-refresh.yml
+@@ -73,9 +73,19 @@
+               exit 0
+             fi
+             git commit -m "Refresh verified sports and entertainment news"
++            published="$(git rev-parse HEAD)"
+             if git push origin HEAD:main; then
+               echo "changed=1" >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin main
++            if git merge-base --is-ancestor "$published" origin/main; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse origin/main)" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+           done
+           echo "::error::Sports content failed to publish after 3 safe regenerations."
+--- a/.github/workflows/availability.yml
++++ b/.github/workflows/availability.yml
+@@ -79,17 +79,33 @@
+               node tools/build-seo-pages.js
+               node tools/update-sitemap.js
+             fi
+-            git add -A
++            node tools/check-content-rotation.js
++            npm test
++            npm run audit:site
++            git add -A -- data/availability.json where-to-watch tools/watch-urls.json tools/seo-urls.json sitemap.xml sitemaps.xml
++            for directory in moods collections platforms languages decades; do
++              if [ -e "$directory" ]; then git add -A -- "$directory"; fi
++            done
+             if git diff --staged --quiet; then
+               echo "No availability changes this run."
+               echo "changed=0" >> "$GITHUB_OUTPUT"
+               exit 0
+             fi
+-            git commit -m "Refresh streaming availability from TMDB [skip ci]" || true
++            git commit -m "Refresh streaming availability from TMDB [skip ci]"
++            published="$(git rev-parse HEAD)"
+             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+               changed=1
+               echo "changed=1" >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin "${GITHUB_REF_NAME}"
++            if git merge-base --is-ancestor "$published" "origin/${GITHUB_REF_NAME}"; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+             echo "Push attempt $attempt failed; refreshing from remote and regenerating."
+           done
+--- a/.github/workflows/awareness-rotation.yml
++++ b/.github/workflows/awareness-rotation.yml
+@@ -67,7 +67,14 @@
+               exit 0
+             fi
+             git commit -m "Awareness bot: rotate active campaign"
++            published="$(git rev-parse HEAD)"
+             if git push origin HEAD:main; then echo 'changed=1' >> "$GITHUB_OUTPUT"; exit 0; fi
++            git fetch --no-tags origin main
++            if git merge-base --is-ancestor "$published" origin/main; then echo 'changed=1' >> "$GITHUB_OUTPUT"; exit 0; fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse origin/main)" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
++            fi
+           done
+           exit 1
+ 
+--- a/.github/workflows/kids-seo-refresh.yml
++++ b/.github/workflows/kids-seo-refresh.yml
+@@ -53,6 +53,8 @@
+               git clean -fd
+               node tools/build-kids-pages.js
+               node tools/update-sitemap.js
++              npm test
++              npm run audit:search
+             fi
+             git add kids/titles kids/nostalgia tools/kids-urls.json tools/kids-sitemap-meta.json sitemap.xml sitemaps.xml
+             if git diff --staged --quiet; then
+@@ -60,10 +62,20 @@
+               echo "changed=0" >> "$GITHUB_OUTPUT"
+               exit 0
+             fi
+-            git commit -m "Refresh Kids SEO guides" || true
++            git commit -m "Refresh Kids SEO guides"
++            published="$(git rev-parse HEAD)"
+             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+               echo "changed=1" >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin "${GITHUB_REF_NAME}"
++            if git merge-base --is-ancestor "$published" "origin/${GITHUB_REF_NAME}"; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+           done
+           exit 1
+--- a/.github/workflows/sitemap-refresh.yml
++++ b/.github/workflows/sitemap-refresh.yml
+@@ -43,10 +43,20 @@
+               echo "changed=0" >> "$GITHUB_OUTPUT"
+               exit 0
+             fi
+-            git commit -m "Refresh sitemap for current release" || true
++            git commit -m "Refresh sitemap for current release"
++            published="$(git rev-parse HEAD)"
+             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+               echo "changed=1" >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin "${GITHUB_REF_NAME}"
++            if git merge-base --is-ancestor "$published" "origin/${GITHUB_REF_NAME}"; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+           done
+           exit 1
+--- a/.github/workflows/music-video-refresh.yml
++++ b/.github/workflows/music-video-refresh.yml
+@@ -43,9 +43,19 @@
+               exit 0
+             fi
+             git commit -m 'Refresh verified official music video releases and SEO'
++            published="$(git rev-parse HEAD)"
+             if git push origin HEAD:main; then
+               echo 'changed=1' >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin main
++            if git merge-base --is-ancestor "$published" origin/main; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse origin/main)" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+           done
+           echo '::error::Remote advanced; unable to publish safely after three complete rebuilds.'
+--- a/.github/workflows/seo-hardening.yml
++++ b/.github/workflows/seo-hardening.yml
+@@ -64,10 +64,20 @@
+               echo "changed=0" >> "$GITHUB_OUTPUT"
+               exit 0
+             fi
+-            git commit -m "Harden Search Console metadata and structured data" || true
++            git commit -m "Harden Search Console metadata and structured data"
++            published="$(git rev-parse HEAD)"
+             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+               echo "changed=1" >> "$GITHUB_OUTPUT"
+               exit 0
++            fi
++            git fetch --no-tags origin "${GITHUB_REF_NAME}"
++            if git merge-base --is-ancestor "$published" "origin/${GITHUB_REF_NAME}"; then
++              echo 'changed=1' >> "$GITHUB_OUTPUT"
++              exit 0
++            fi
++            if [ "$(git rev-parse HEAD~1)" = "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
++              echo "::error::Push failed without newer main; stop rather than resubmit an unknown outcome."
++              exit 1
+             fi
+           done
+           exit 1

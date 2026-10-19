@@ -48,7 +48,8 @@ function allowed(url,domain){
  }catch(_){return false}
 }
 function parseFeed(xml,feed,now=Date.now()){
- if(!FEEDS.some(f=>f.url===feed?.url&&f.source===feed?.source&&f.domain===feed?.domain))return [];
+ feed=FEEDS.find(f=>f.url===feed?.url&&f.source===feed?.source&&f.domain===feed?.domain);
+ if(!feed)return [];
  const atom=/<feed\b/i.test(String(xml||'')),name=atom?'entry':'item';
  const blocks=String(xml||'').match(new RegExp('<'+name+'(?:\\s[^>]*)?>[\\s\\S]*?<\\/'+name+'>','gi'))||[];
  const out=new Map();
@@ -74,19 +75,34 @@ function parseFeed(xml,feed,now=Date.now()){
  }
  return [...out.values()].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,8);
 }
-async function collect(fetchFn=fetch){
+async function collectReport(fetchFn=fetch,now=Date.now()){
+ const checks=[];
  const parts=await Promise.all(FEEDS.map(async feed=>{
   const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),7500);
   try{
-   const res=await fetchFn(feed.url,{signal:ac.signal,headers:{
+   let destination=feed.url,res;
+   for(let hop=0;hop<=3;hop++){
+    res=await fetchFn(destination,{signal:ac.signal,redirect:'manual',headers:{
     accept:'application/atom+xml,application/rss+xml,application/xml;q=0.9',
     'user-agent':'MatchAppSportsDiscovery/1.0 (+https://matchapp.tv/)'
-   }});
+    }});
+    if(![301,302,303,307,308].includes(res.status))break;
+    const location=res.headers.get('location');
+    const next=location&&new URL(location,destination).href;
+    if(hop===3||!FEEDS.some(f=>f.url===next))throw Error('Unapproved feed redirect');
+    destination=next;
+   }
    if(!res.ok)throw Error('HTTP '+res.status);
-   const items=parseFeed(await res.text(),feed);
+   // An HTML error page with HTTP 200 is not a successful empty feed.
+   const xml=await res.text();
+   if(!/^\s*(?:<\?xml[^?]*\?>\s*)?<(feed|rss)\b[^>]*>[\s\S]*<\/\1>\s*$/i.test(xml))throw Error('Invalid RSS/Atom response');
+   if(res.url&&!FEEDS.some(f=>f.url===res.url))throw Error('Unapproved feed redirect');
+   const items=parseFeed(xml,feed,now);
+   checks.push({url:feed.url,ok:true,items:items.length});
    console.log('[sports] '+feed.source+' '+feed.url.split('/').slice(-2)[0]+': '+items.length+' attributed current original-source links');
    return items;
   }catch(e){
+   checks.push({url:feed.url,ok:false,error:String(e?.message||e)});
    console.warn('[sports] '+feed.source+' optional feed unavailable: '+String(e?.message||e));
    return [];
   }finally{clearTimeout(timer)}
@@ -97,6 +113,7 @@ async function collect(fetchFn=fetch){
   if(!key||seen.has(key))continue;
   seen.add(key);out.push(row);
  }
- return out.slice(0,12);
+ return {items:out.slice(0,12),checks:checks.sort((a,b)=>a.url.localeCompare(b.url))};
 }
-module.exports={collect,parseFeed,FEEDS,allowed};
+async function collect(fetchFn=fetch){return (await collectReport(fetchFn)).items;}
+module.exports={collect,collectReport,parseFeed,FEEDS,allowed};

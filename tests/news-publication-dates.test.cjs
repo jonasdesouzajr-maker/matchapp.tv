@@ -6,9 +6,10 @@ const ROOT=path.resolve(__dirname,'..');
 const source=fs.readFileSync(path.join(ROOT,'tools/refresh-news-rss.js'),'utf8');
 const newsFile=name=>path.join(ROOT,'news',name);
 const prior=JSON.stringify({items:[]});
+const priorData=JSON.stringify({generated_at:'2026-10-18T12:00:00.000Z',items:[]});
 const item=(title,date,id)=>`<item><title>${title}</title><link>https://www.bbc.com/news/articles/${id}</link>${date===undefined?'':`<pubDate>${date}</pubDate>`}<media:thumbnail url="https://images.example.test/film.jpg"/></item>`;
 async function publish(rows){
-  const files=new Map([[newsFile('archive.json'),prior],[newsFile('data.json'),'previous verified feed']]);
+  const files=new Map([[newsFile('archive.json'),prior],[newsFile('data.json'),priorData]]);
   const writes=[],warnings=[],errors=[];
   let exitCode=0;
   const filesystem={
@@ -61,9 +62,9 @@ test('too few dated stories fail before any committed feed, archive, HTML or sit
   const invalidRows=Array.from({length:6},(_,n)=>item(`Film premiere without a valid date ${n}`,'bad date','undated-'+n)).join('');
   const result=await publish(item('Film premiere with a verified old date','Tue, 13 Oct 2026 08:00:00 GMT','dated')+invalidRows);
   assert.equal(result.exitCode,1);
-  assert.ok(result.errors.some(message=>message.includes('only 1 usable items')));
+  assert.ok(result.errors.some(message=>message.includes('only 1 usable news items')));
   assert.deepEqual(result.writes,[]);
-  assert.equal(result.files.get(newsFile('data.json')),'previous verified feed');
+  assert.equal(result.files.get(newsFile('data.json')),priorData);
   assert.equal(result.files.get(newsFile('archive.json')),prior);
 });
 
