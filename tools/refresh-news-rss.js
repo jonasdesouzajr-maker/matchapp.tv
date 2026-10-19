@@ -239,8 +239,8 @@ function person(title){
 }
 
 function iso(v){
-  const d=new Date(v);
-  return Number.isNaN(d.valueOf())?new Date().toISOString():d.toISOString();
+  const timestamp=Date.parse(v);
+  return Number.isFinite(timestamp)?new Date(timestamp).toISOString():null;
 }
 
 function truncateWords(value,max){
@@ -751,6 +751,7 @@ function enforceArticleAnalyticsOnDisk(){
   const trends=trendParts.flat();
   const seen=new Set();
   const collected=[];
+  let invalidDates=0;
 
   for(const r of raw){
     const title=clean(r.title);
@@ -762,6 +763,9 @@ function enforceArticleAnalyticsOnDisk(){
     // headlines broad instead of forcing entertainment-only topic matching.
     if(!isWorld&&!TOPIC.test(`${title} ${r.desc}`))continue;
 
+    const publishedAt=iso(r.published);
+    if(!publishedAt){invalidDates++;continue;}
+
     const key=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
     if(seen.has(key))continue;
     seen.add(key);
@@ -770,7 +774,6 @@ function enforceArticleAnalyticsOnDisk(){
     const p=person(title);
     const ev=event(title);
     const matchappUrl=`${SITE}/news/articles/${slug(title)}-${id.slice(0,6)}/`;
-    const publishedAt=iso(r.published);
     const existing=priorById.get(id);
 
     const item={
@@ -803,6 +806,7 @@ function enforceArticleAnalyticsOnDisk(){
     collected.push(item);
   }
 
+  if(invalidDates)console.warn(`[news] skipped ${invalidDates} publisher items with missing or invalid publication dates`);
   collected.sort((a,b)=>b.published_at.localeCompare(a.published_at));
   const sports=sportsSnapshot.items.map(entry=>{
     const existing=priorById.get(entry.id);
