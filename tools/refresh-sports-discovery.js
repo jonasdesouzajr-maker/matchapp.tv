@@ -135,6 +135,7 @@ function retainedRows(snapshot,now){
    domainOf(item.url)==='theconversation.com'&&item.source==='The Conversation'&&item.timestamp_kind==='published';
   const gdelt=item?.discovery_source==='GDELT Project DOC 2.0'&&publisher(item.url)?.source===item.source;
   return item?.category==='sports'&&item.image===null&&(partner||gdelt)&&
+   !PROMOTION.test(item.title+' '+item.url)&&!RUMOR.test(item.title)&&
    Number.isFinite(time)&&time<=now+3600000&&now-time<=(partner?96:60)*3600000;
  });
 }

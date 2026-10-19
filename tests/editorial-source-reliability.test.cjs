@@ -36,7 +36,7 @@ test('empty successful checks and total source failure remain distinct; neither 
  }finally{f.close();}
 });
 test('retained sports never extend source expiry, trust unauthorized sources, or accept future dates',()=>{
- const retained=sports.retainedRows({items:[null,row(),row('old','2026-10-14T00:00:00Z'),row('future','2026-10-20T00:00:00Z'),{...row('bad'),url:'https://evil.example/sport'}]},NOW);
+ const retained=sports.retainedRows({items:[null,row(),row('old','2026-10-14T00:00:00Z'),row('future','2026-10-20T00:00:00Z'),row('betting'),{...row('bad'),url:'https://evil.example/sport'}]},NOW);
  assert.deepEqual(retained.map(r=>r.id),['one']);
 });
 test('sports topic privileges come from the exact approved feed, not supplied category metadata',()=>{
