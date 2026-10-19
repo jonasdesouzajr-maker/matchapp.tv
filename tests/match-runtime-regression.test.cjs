@@ -1,10 +1,12 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{JSDOM}=require('jsdom');
 const topic=require('../topic-focus.js');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const root=path.join(__dirname,'..'),source=fs.readFileSync(path.join(root,'app.js'),'utf8').replace(/\r\n/g,'\n');
 const catalog=vm.runInNewContext(source.match(/const CONTENT_CATALOG = (\[[\s\S]*?\n\]);/)[1]);
 const functionSource=name=>source.match(new RegExp('function '+name+'\\([\\s\\S]*?\\n}\\n'))[0];
 function matching(requested,excluded=[]){
  const dom=new JSDOM('<div id="questionnaire-box" style="display:none"></div><div id="search-box" style="display:none"></div><div id="result-box"></div><div id="loading-box"></div>',{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window,state={charges:0,rendered:null,messages:[]};
+ installGuestReservations(w);
  w.HTMLElement.prototype.scrollIntoView=function(){};
  w.localStorage.setItem('match_seenList',JSON.stringify(excluded));w.eval(fs.readFileSync(path.join(root,'matching-policy.js'),'utf8'));
  w.getMatchCriteria=()=>requested;w.localizeMatchSynopsis=async text=>text;w.showToast=text=>state.messages.push(text);

@@ -151,4 +151,4 @@ function matchesCriteria(entry, criteria) {
   }
 
 export { matchesCriteria };
-export const policySourceSha = 'e6ad9c49abdbdb43d29628379ec4d04fc353c0c74edbce96f798f7961b59ad96';
+export const policySourceSha = 'fff1a3543df9a52eaea72c09f2187f566a90b28560dab03dfe09a2687db621f5';

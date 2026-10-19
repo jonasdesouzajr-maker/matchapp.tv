@@ -13,7 +13,7 @@ async function prepare(){
   if(!root.MatchAppEbooks?.ready){
    if(!preparing)preparing=new Promise((resolve,reject)=>{
     const script=document.createElement('script');script.dataset.readingStateOnly='1';
-    script.src='/ebooks/ebook-matcher.js?v=20261011-meta1&reliability=20261018-1';
+    script.src='/ebooks/ebook-matcher.js?v=20261011-meta1&reliability=20261018-1&lifetime=20261019-1';
     const timer=setTimeout(()=>reject(Error('Reading history unavailable')),7000);
     script.onload=()=>{clearTimeout(timer);resolve();};script.onerror=()=>{clearTimeout(timer);reject(Error('Reading history unavailable'));};
     document.head.appendChild(script);

@@ -1,6 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
 const source=read('discover.js');
 function functionSource(name){
@@ -14,6 +15,7 @@ async function until(predicate){for(let i=0;i<150&&!predicate();i++)await Promis
 async function boot(){
   const dom=new JSDOM('<main id="chat-log"></main><div id="discover-loading"></div><div id="discover-empty"></div><textarea id="discover-new-input"></textarea>',{url:'https://matchapp.tv/discover.html',runScripts:'outside-only'});
   const w=dom.window,events=[];
+  installGuestReservations(w);
   w.MATCH_LANG='en';w.t=()=>'';w.matchMedia=()=>({matches:false});
   w.eval('var currentThread=null,discoverThreadVersion=0,DISCOVER_ITEMS=[],lastDiscoverQuestion="",askInFlight=null,CHAT_STORE_KEY="match_chatThreads",CHAT_MAX_THREADS=20,CONTENT_CATALOG=[];');
   w.eval(read('matching-policy.js'));await w.matchPolicy.ready();

@@ -1,10 +1,11 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {JSDOM}=require('jsdom');const ROOT=path.join(__dirname,'..'),core=require('../growth-core.js');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8');
 const observed=()=>new Date().toISOString();
 function result(){return {title:'Fixture film',year:2020,kind:'movie',tmdbId:123,posterUrl:'https://image.tmdb.org/t/p/w500/test.jpg',synopsis:'A fixture description.',sourceLanguage:'en',runtime:90,viewingMode:'shared',viewing:[{role:'shared',country:'BR',checkedAt:observed(),source:'TMDB / JustWatch',sourceUrl:'https://www.themoviedb.org/movie/123-fixture/watch?locale=BR',offers:[{provider:'Example Service',access:'subscription'}]}],common:{mood:'funny',cat:'movie'}};}
-function dom(url='https://matchapp.tv/together.html'){return new JSDOM('<!doctype html><html lang="en"><head></head><body><main class="tg-wrap"><section id="growth-root"></section><div id="tg-step-start"></div></main></body></html>',{url,runScripts:'outside-only',pretendToBeVisual:true});}
+function dom(url='https://matchapp.tv/together.html'){const instance=new JSDOM('<!doctype html><html lang="en"><head></head><body><main class="tg-wrap"><section id="growth-root"></section><div id="tg-step-start"></div></main></body></html>',{url,runScripts:'outside-only',pretendToBeVisual:true});installGuestReservations(instance.window);return instance;}
 function load(w,files){if(files.includes('growth-together.js')&&!w.matchPolicy)w.eval(read('matching-policy.js'));for(const f of files)w.eval(read(f));}
 const wait=()=>new Promise(resolve=>setTimeout(resolve,25));
 test('growth copy is complete for all fourteen supported languages',()=>{const sandbox={window:{document:{documentElement:{lang:'en'}}}};vm.runInNewContext(read('growth-copy.js'),sandbox);const copy=sandbox.window.MatchAppGrowthCopy;assert.deepEqual(Object.keys(copy.all).sort(),[...core.LANGS].sort());for(const lang of core.LANGS){const row=copy.all[lang];for(const key of copy.keys)assert.ok(typeof row[key]==='string'&&row[key].trim(),lang+':'+key);assert.equal(row.moods.length,6);assert.equal(row.formats.length,3);assert.equal(row.times.length,4);assert.equal(row.ratings.length,3);assert.equal(row.access.length,5);sandbox.window.MATCH_LANG=lang;assert.equal(copy.lang(),lang);assert.ok(copy.text('step',{step:2}).includes('2'));}});

@@ -1,6 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
 const known={id:'known-reading-work',title:'Known Reading Work',author:'Fixture Writer',year:1895,genres:['classics'],moods:['cozy'],pace:'balanced',length:'medium',era:'classic',access:['paid'],summary:'An existing catalogue entry.'};
@@ -17,6 +18,7 @@ async function boot(client,storage={}){
   url:'https://matchapp.tv/ebooks/',runScripts:'outside-only'
  });
  const w=dom.window;let credits=0;
+ installGuestReservations(w);
  w.MATCH_LANG='en';w.MATCHAPP_EBOOK_CATALOG=[known,fresh];w.MATCHAPP_TOP_EBOOKS=[];
  w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};
  w.fetch=async()=>{throw Error('Cover requests are outside this session regression');};

@@ -1,9 +1,11 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
+const {installGuestReservations}=require('./helpers/guest-reservations.cjs');
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
 const result=(title='Shared original',id=123)=>({title,year:2020,kind:'movie',tmdbId:id,posterUrl:'https://image.tmdb.org/t/p/w500/original.jpg',viewingMode:'shared',viewing:[{role:'shared',country:'BR',checkedAt:new Date().toISOString(),source:'TMDB / JustWatch',sourceUrl:'https://www.themoviedb.org/movie/'+id+'-original/watch?locale=BR',offers:[{provider:'Verified source',access:'subscription'}]}]});
 async function boot(user=null){
  const dom=new JSDOM('<main><section id="growth-root"></section></main>',{url:'https://matchapp.tv/together.html',runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window;
+ installGuestReservations(w);
  w.supabaseClient={supabaseKey:'test-public-key',supabaseUrl:'https://example.supabase.co',auth:{getUser:async()=>({data:{user}}),getSession:async()=>({data:{session:null}})}};
  w.eval(read('matching-policy.js'));await w.matchPolicy.ready();
  for(const file of ['growth-bootstrap.js','growth-core.js','growth-copy.js'])w.eval(read(file));
