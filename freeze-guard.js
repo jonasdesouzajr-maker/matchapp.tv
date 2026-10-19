@@ -2,7 +2,10 @@
 (function(){
 'use strict';
 function release(){
-  document.querySelectorAll('#matchapp-launch-intro,#matchapp-update-overlay').forEach(el=>el.remove());
+  document.querySelectorAll('#matchapp-launch-intro,#matchapp-update-overlay').forEach(el=>{
+    if(el.id==='matchapp-launch-intro'&&el.dataset.matchappIntroManaged==='1')return;
+    el.remove();
+  });
   if(!document.body)return;
   if(window.__matchappMatchPhase!=='searching')document.body.classList.remove('match-searching');
   document.body.style.pointerEvents='';
