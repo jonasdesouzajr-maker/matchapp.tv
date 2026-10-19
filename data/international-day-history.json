@@ -1,5 +1,59 @@
 [
   {
+    "date": "2026-10-19",
+    "id": "world-bioethics-day-2026-10-19",
+    "emoji": "⚖️",
+    "title": "World Bioethics Day",
+    "kicker": "International observance",
+    "place": "Worldwide",
+    "summary": "World Bioethics Day is marked on 19 October by the International Chair in Bioethics. It invites conversations about dignity, fair choices and responsibility in medicine, research and emerging technology. Explore thoughtful documentaries and films about science and ethics.",
+    "prompt": "Explain World Bioethics Day on 19 October and how the International Chair in Bioethics observes it, using the organizer's official source. Discuss human dignity, informed consent, fair access and research ethics in accessible terms. Suggest respectful ways to learn more, then recommend source-verified documentaries or films about scientific responsibility and ethical dilemmas, checking viewing availability in my country and never inventing availability or a 2026 theme.",
+    "officialUrl": "https://internationalchairbioethics.org/",
+    "image": "/event-posters/world-bioethics-day-2026.svg",
+    "keywords": [
+      "World Bioethics Day 2026",
+      "19 October World Bioethics Day",
+      "International Chair in Bioethics",
+      "World Bioethics Day activities",
+      "bioethics in documentaries",
+      "science ethics movies",
+      "medical research ethics documentaries",
+      "human dignity and informed consent",
+      "what to watch on World Bioethics Day",
+      "Dia Mundial da Bioética 2026",
+      "Día Mundial de la Bioética 2026",
+      "documentaries about science and responsibility"
+    ],
+    "i18n": {
+      "pt-BR": {
+        "title": "Dia Mundial da Bioética",
+        "kicker": "Data internacional",
+        "place": "No mundo todo",
+        "summary": "O Dia Mundial da Bioética é celebrado em 19 de outubro pela Cátedra Internacional de Bioética. A data estimula conversas sobre dignidade, decisões justas e responsabilidade na medicina, na pesquisa e nas novas tecnologias. Descubra documentários e filmes sobre ciência e ética.",
+        "prompt": "Explique o Dia Mundial da Bioética em 19 de outubro com base na fonte oficial da Cátedra Internacional de Bioética. Aborde dignidade humana, consentimento informado, acesso justo e ética em pesquisa. Sugira maneiras respeitosas de aprender mais e recomende documentários ou filmes verificados sobre responsabilidade científica e dilemas éticos, conferindo onde assistir no meu país. Não invente disponibilidade nem um tema oficial de 2026.",
+        "imageAlt": "Ilustração original de uma balança equilibrando uma hélice de DNA e uma pessoa com um coração, apoiada por um livro aberto",
+        "sourceName": "Cátedra Internacional de Bioética"
+      },
+      "es": {
+        "title": "Día Mundial de la Bioética",
+        "kicker": "Día internacional",
+        "place": "En todo el mundo",
+        "summary": "El Día Mundial de la Bioética se conmemora el 19 de octubre por la Cátedra Internacional de Bioética. Invita a reflexionar sobre la dignidad, las decisiones justas y la responsabilidad en la medicina, la investigación y las nuevas tecnologías. Descubre documentales y películas sobre ciencia y ética.",
+        "prompt": "Explica el Día Mundial de la Bioética del 19 de octubre usando la fuente oficial de la Cátedra Internacional de Bioética. Habla de dignidad humana, consentimiento informado, acceso justo y ética de investigación. Sugiere formas respetuosas de aprender y recomienda documentales o películas verificados sobre responsabilidad científica y dilemas éticos, comprobando dónde verlos en mi país. No inventes disponibilidad ni un tema oficial para 2026.",
+        "imageAlt": "Ilustración original de una balanza con una doble hélice de ADN y una persona con un corazón, sostenida por un libro abierto",
+        "sourceName": "Cátedra Internacional de Bioética"
+      }
+    },
+    "imageAlt": "Original illustration of a balance scale holding a DNA helix and a caring human figure, supported by an open book",
+    "imageCredit": "Original event-specific vector illustration created for MatchApp Ai; no organizer marks, licensed third-party artwork or fabricated affiliation.",
+    "sourceName": "International Chair in Bioethics",
+    "sourceUrls": [
+      "https://internationalchairbioethics.org/",
+      "https://internationalchairbioethics.org/world-bioethics-day/world-bioethics-day-2026/"
+    ],
+    "updated": "2026-10-19T04:49:55.153Z"
+  },
+  {
     "date": "2026-10-18",
     "id": "world-menopause-day-2026-10-18",
     "emoji": "🌿",
