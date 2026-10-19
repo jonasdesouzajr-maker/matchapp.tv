@@ -1,10 +1,382 @@
 {
-  "generated_at": "2026-10-19T17:44:03.755Z",
-  "feed_version": "599e4d25",
+  "generated_at": "2026-10-19T18:35:31.615Z",
+  "feed_version": "b55c32c4",
   "sports_updated_at": "2026-10-19T17:29:17.567Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
-  "seo_policy": "per-story keyword snapshot at first discovery + source citation + stable archive",
+  "seo_policy": "rebuilt per check; modification dates advance only with content + source citation + stable archive",
   "items": [
+    {
+      "id": "09a21c14",
+      "title": "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/chile-prende-110-pessoas-em-protestos-no-aniversario-da-revolta-social-de-2019.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-19T18:33:48.000Z",
+      "discovered_at": "2026-10-19T18:35:31.615Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://g1.globo.com/mundo/noticia/2026/10/19/None",
+      "matchapp_url": "https://matchapp.tv/news/articles/chile-prende-110-pessoas-em-protestos-no-aniversario-da-revolta-social-de-2019-09a21c/",
+      "landing_url": "https://matchapp.tv/?news=09a21c14#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-19",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "chile",
+          "prende",
+          "110",
+          "pessoas",
+          "protestos",
+          "aniversario"
+        ],
+        "long_tail": [
+          "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019 2026-10-19",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "chile",
+          "prende",
+          "110",
+          "pessoas",
+          "protestos",
+          "aniversario"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Chile prende 110 pessoas em protestos no aniversário da…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-19",
+          "notícias do mundo",
+          "notícias internacionais",
+          "chile",
+          "prende",
+          "110",
+          "pessoas",
+          "protestos",
+          "aniversario",
+          "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019 2026-10-19",
+          "notícias mundiais outubro 2026",
+          "2026-10-19",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-19T18:35:31.615Z"
+      }
+    },
+    {
+      "id": "c1ae638f",
+      "title": "Ukrainians dying because US restricting intelligence sharing, Zelensky adviser tells BBC",
+      "url": "https://www.bbc.co.uk/news/articles/cmj47yx572z5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T18:23:50.000Z",
+      "discovered_at": "2026-10-19T18:33:39.759Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/68c7/live/28c5fe60-cbcb-11f1-aba9-2bb2608f11d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ukrainians-dying-because-us-restricting-intelligence-sharing-zelensky-adviser-te-c1ae63/",
+      "landing_url": "https://matchapp.tv/?news=c1ae638f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "ukrainians",
+          "dying",
+          "because",
+          "restricting",
+          "intelligence",
+          "sharing"
+        ],
+        "long_tail": [
+          "Ukrainians dying because US restricting intelligence sharing, Zelensky adviser tells BBC 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ukrainians",
+          "dying",
+          "because",
+          "restricting",
+          "intelligence",
+          "sharing"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Ukrainians dying because US restricting intelligence…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "ukrainians",
+          "dying",
+          "because",
+          "restricting",
+          "intelligence",
+          "sharing",
+          "Ukrainians dying because US restricting intelligence sharing, Zelensky adviser tells BBC 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T18:33:39.759Z"
+      }
+    },
+    {
+      "id": "7787377f",
+      "title": "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds'",
+      "url": "https://www.bbc.co.uk/news/articles/ckj0ly6qnp1lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T18:22:48.000Z",
+      "discovered_at": "2026-10-19T11:11:51.603Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2ede/live/03f0b480-cbbd-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/deadly-fire-at-canada-military-base-moved-a-kilometre-in-30-to-60-seconds-778737/",
+      "landing_url": "https://matchapp.tv/?news=7787377f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "deadly",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "moved"
+        ],
+        "long_tail": [
+          "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds' 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "deadly",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "moved"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Deadly fire at Canada military base moved a kilometre 'in…",
+        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "deadly",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "moved",
+          "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds' 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-19T14:02:38.701Z"
+      }
+    },
+    {
+      "id": "c67da6c0",
+      "title": "US bans DeepSeek AI from government use as tech tension with China continues",
+      "url": "https://www.bbc.co.uk/news/articles/cjkgeq0k1wevo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-19T18:21:54.000Z",
+      "discovered_at": "2026-10-19T18:33:39.759Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/76fb/live/a102f4a0-cbe9-11f1-ad7b-fd8c269705fe.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-bans-deepseek-ai-from-government-use-as-tech-tension-with-china-continues-c67da6/",
+      "landing_url": "https://matchapp.tv/?news=c67da6c0#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-19",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "bans",
+          "deepseek",
+          "government",
+          "use",
+          "tech",
+          "tension"
+        ],
+        "long_tail": [
+          "US bans DeepSeek AI from government use as tech tension with China continues 2026-10-19",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "bans",
+          "deepseek",
+          "government",
+          "use",
+          "tech",
+          "tension"
+        ],
+        "freshness_keywords": [
+          "2026-10-19"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "US bans DeepSeek AI from government use as tech tension…",
+        "meta_description": "World report published by BBC Technology on 2026-10-19. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-19",
+          "world news",
+          "global headlines",
+          "bans",
+          "deepseek",
+          "government",
+          "use",
+          "tech",
+          "tension",
+          "US bans DeepSeek AI from government use as tech tension with China continues 2026-10-19",
+          "world news October 2026",
+          "2026-10-19",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-10-19T18:33:39.759Z"
+      }
+    },
+    {
+      "id": "8e5a62c8",
+      "title": "Ron Koslow, Creator of TV’s ‘Beauty and the Beast,’ Dies at 81",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/ron-koslow-dead-beauty-and-beast-linda-hamilton-ron-perlman-1236735493/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-19T17:48:14.000Z",
+      "discovered_at": "2026-10-19T18:33:39.759Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Ron Koslow",
+      "description": "Ron Koslow: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Ron-Koslow-Obit-Main-2026.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ron-koslow-creator-of-tv-s-beauty-and-the-beast-dies-at-81-8e5a62/",
+      "landing_url": "https://matchapp.tv/?news=8e5a62c8#latest-news",
+      "seo": {
+        "primary_keyword": "Ron Koslow latest news",
+        "short_tail": [
+          "Ron Koslow",
+          "Ron Koslow news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Ron Koslow latest news October 2026",
+          "Ron Koslow obituary update 2026",
+          "Ron Koslow news 2026-10-19",
+          "latest obituary news about Ron Koslow",
+          "ron koslow ron koslow creator beauty latest update",
+          "The Hollywood Reporter Ron Koslow obituary",
+          "latest news about Ron Koslow October 2026",
+          "Ron Koslow entertainment news 2026-10-19",
+          "what happened with Ron Koslow"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Ron Koslow",
+          "ron",
+          "koslow",
+          "creator",
+          "beauty",
+          "beast",
+          "dies"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-19",
+          "Ron Koslow 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Ron Koslow",
+          "hollywoodreporter.com Ron Koslow",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Ron Koslow, Creator of TV’s ‘Beauty and the Beast,’ Dies…",
+        "meta_description": "Ron Koslow: Obituary update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Ron Koslow latest news",
+          "Ron Koslow",
+          "Ron Koslow news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Ron Koslow latest news October 2026",
+          "Ron Koslow obituary update 2026",
+          "Ron Koslow news 2026-10-19",
+          "latest obituary news about Ron Koslow",
+          "ron koslow ron koslow creator beauty latest update",
+          "The Hollywood Reporter Ron Koslow obituary",
+          "latest news about Ron Koslow October 2026",
+          "Ron Koslow entertainment news 2026-10-19",
+          "what happened with Ron Koslow",
+          "ron",
+          "koslow",
+          "creator",
+          "beauty",
+          "beast",
+          "dies",
+          "October 2026",
+          "2026-10-19",
+          "Ron Koslow 2026",
+          "The Hollywood Reporter Ron Koslow",
+          "hollywoodreporter.com Ron Koslow",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T18:33:39.759Z"
+      }
+    },
     {
       "id": "e9bd8671",
       "title": "European Film Producers Say Oscar Contender ‘La Bola Negra’ Shows Taking Big Risks Can Pay Off",
@@ -112,7 +484,7 @@
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/2R_WbSw4kIbiGlfvsl9D3iuHVA0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/5/W8BXksRP2WQRq8dCA96A/2026-10-19t064535z-866165662-rc2u5oar66q8-rtrmadp-3-france-protest.jpg",
+      "image": "https://s2-g1.glbimg.com/y528WLDubOnfEjQ1uN45H6o-AwQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/T/L/XZ6H5HQfCX2sBZAtqvXg/fotojet-2026-10-19t145532.760.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/video-galerias-lafayette-sao-saqueadas-durante-protestos-na-franca-e82ec4/",
       "landing_url": "https://matchapp.tv/?news=e82ec452#latest-news",
       "seo": {
@@ -1006,75 +1378,6 @@
       }
     },
     {
-      "id": "3de76569",
-      "title": "Capybara pups at Manx zoo draw record crowds",
-      "url": "https://www.bbc.co.uk/news/articles/cw7vplvjd3elo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T16:12:09.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7b36/live/c3ff4750-cbcc-11f1-aba9-2bb2608f11d9.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/capybara-pups-at-manx-zoo-draw-record-crowds-3de765/",
-      "landing_url": "https://matchapp.tv/?news=3de76569#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "capybara",
-          "pups",
-          "manx",
-          "zoo",
-          "draw",
-          "record"
-        ],
-        "long_tail": [
-          "Capybara pups at Manx zoo draw record crowds 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "capybara",
-          "pups",
-          "manx",
-          "zoo",
-          "draw",
-          "record"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Capybara pups at Manx zoo draw record crowds | World News…",
-        "meta_description": "World report published by BBC Science on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "capybara",
-          "pups",
-          "manx",
-          "zoo",
-          "draw",
-          "record",
-          "Capybara pups at Manx zoo draw record crowds 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
       "id": "303cb7d2",
       "title": "Paris e outrs cidades na França decretam toque de recolher em meio a onda de protestos que já dura um mês",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/19/cidades-na-franca-decretam-toque-de-recolher.ghtml",
@@ -1213,105 +1516,6 @@
       }
     },
     {
-      "id": "9a74f366",
-      "title": "‘Carrie’ Star Alison Thornton Knows Exactly How You Feel About Her Polarizing Character",
-      "url": "https://www.hollywoodreporter.com/tv/tv-features/carrie-alison-thornton-chris-character-christine-theory-1236728300/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T15:45:00.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Alison-Thornton-7-High-Res-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/carrie-star-alison-thornton-knows-exactly-how-you-feel-about-her-polarizing-char-9a74f3/",
-      "landing_url": "https://matchapp.tv/?news=9a74f366#latest-news",
-      "seo": {
-        "primary_keyword": "carrie star alison thornton latest news",
-        "short_tail": [
-          "carrie star alison thornton",
-          "carrie star alison thornton news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "carrie star alison thornton latest news October 2026",
-          "carrie star alison thornton entertainment update 2026",
-          "carrie star alison thornton news 2026-10-19",
-          "latest entertainment news about carrie star alison thornton",
-          "carrie star alison thornton knows exactly latest update",
-          "The Hollywood Reporter carrie star alison thornton entertainment",
-          "latest news about carrie star alison thornton October 2026",
-          "carrie star alison thornton entertainment news 2026-10-19",
-          "what happened with carrie star alison thornton"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "carrie",
-          "star",
-          "alison",
-          "thornton",
-          "knows",
-          "exactly",
-          "how",
-          "you"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "carrie star alison thornton 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter carrie star alison thornton",
-          "hollywoodreporter.com carrie star alison thornton",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Carrie’ Star Alison Thornton Knows Exactly How You Feel…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "carrie star alison thornton latest news",
-          "carrie star alison thornton",
-          "carrie star alison thornton news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "carrie star alison thornton latest news October 2026",
-          "carrie star alison thornton entertainment update 2026",
-          "carrie star alison thornton news 2026-10-19",
-          "latest entertainment news about carrie star alison thornton",
-          "carrie star alison thornton knows exactly latest update",
-          "The Hollywood Reporter carrie star alison thornton entertainment",
-          "latest news about carrie star alison thornton October 2026",
-          "carrie star alison thornton entertainment news 2026-10-19",
-          "what happened with carrie star alison thornton",
-          "carrie",
-          "star",
-          "alison",
-          "thornton",
-          "knows",
-          "exactly",
-          "how",
-          "you",
-          "October 2026",
-          "2026-10-19",
-          "carrie star alison thornton 2026",
-          "The Hollywood Reporter carrie star alison thornton",
-          "hollywoodreporter.com carrie star alison thornton",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
       "id": "383eea94",
       "title": "Polícia de Israel prende 10 suspeitos por ataques a jornalista e diplomatas na Cisjordânia",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/19/policia-israelense-prende-suspeitos-de-ataques-de-colonos-contra-jornalista-dos-eua-e-diplomatas-europeus.ghtml",
@@ -1376,167 +1580,6 @@
           "notícias mundiais outubro 2026",
           "2026-10-19",
           "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "b86fc79d",
-      "title": "Netflix Film Head Dan Lin Out",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/netflix-film-head-dan-lin-out-1236733802/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T15:38:33.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Netflix Film Head Dan",
-      "description": "Netflix Film Head Dan: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/06/GettyImages-2247714986-e1780697512161.jpg?w=1440&h=810&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/netflix-film-head-dan-lin-out-b86fc7/",
-      "landing_url": "https://matchapp.tv/?news=b86fc79d#latest-news",
-      "seo": {
-        "primary_keyword": "Netflix Film Head Dan latest news",
-        "short_tail": [
-          "Netflix Film Head Dan",
-          "Netflix Film Head Dan news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Netflix Film Head Dan latest news October 2026",
-          "Netflix Film Head Dan entertainment update 2026",
-          "Netflix Film Head Dan news 2026-10-19",
-          "latest entertainment news about Netflix Film Head Dan",
-          "netflix film head dan netflix film latest update",
-          "The Hollywood Reporter Netflix Film Head Dan entertainment",
-          "latest news about Netflix Film Head Dan October 2026",
-          "Netflix Film Head Dan entertainment news 2026-10-19",
-          "what happened with Netflix Film Head Dan"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Netflix Film Head Dan",
-          "netflix",
-          "film",
-          "head",
-          "dan"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "Netflix Film Head Dan 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Netflix Film Head Dan",
-          "hollywoodreporter.com Netflix Film Head Dan",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Netflix Film Head Dan Lin Out | Entertainment News |…",
-        "meta_description": "Netflix Film Head Dan: Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source…",
-        "keywords": [
-          "Netflix Film Head Dan latest news",
-          "Netflix Film Head Dan",
-          "Netflix Film Head Dan news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Netflix Film Head Dan latest news October 2026",
-          "Netflix Film Head Dan entertainment update 2026",
-          "Netflix Film Head Dan news 2026-10-19",
-          "latest entertainment news about Netflix Film Head Dan",
-          "netflix film head dan netflix film latest update",
-          "The Hollywood Reporter Netflix Film Head Dan entertainment",
-          "latest news about Netflix Film Head Dan October 2026",
-          "Netflix Film Head Dan entertainment news 2026-10-19",
-          "what happened with Netflix Film Head Dan",
-          "netflix",
-          "film",
-          "head",
-          "dan",
-          "October 2026",
-          "2026-10-19",
-          "Netflix Film Head Dan 2026",
-          "The Hollywood Reporter Netflix Film Head Dan",
-          "hollywoodreporter.com Netflix Film Head Dan",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "c4b974bc",
-      "title": "In pictures: French landmarks damaged and destroyed by violent protesters",
-      "url": "https://www.bbc.co.uk/news/articles/cmq8n7l0le11o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T15:21:03.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9ff6/live/21dbaa40-cbd6-11f1-9a39-31b474234113.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/in-pictures-french-landmarks-damaged-and-destroyed-by-violent-protesters-c4b974/",
-      "landing_url": "https://matchapp.tv/?news=c4b974bc#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pictures",
-          "french",
-          "landmarks",
-          "damaged",
-          "destroyed",
-          "violent"
-        ],
-        "long_tail": [
-          "In pictures: French landmarks damaged and destroyed by violent protesters 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pictures",
-          "french",
-          "landmarks",
-          "damaged",
-          "destroyed",
-          "violent"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "In pictures: French landmarks damaged and destroyed by…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "pictures",
-          "french",
-          "landmarks",
-          "damaged",
-          "destroyed",
-          "violent",
-          "In pictures: French landmarks damaged and destroyed by violent protesters 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
         ],
         "seo_generated_at": "2026-10-19T17:44:03.755Z"
       }
@@ -1632,144 +1675,6 @@
           "BBC freud confirms beatles songs",
           "bbc.co.uk freud confirms beatles songs",
           "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "4e76560a",
-      "title": "US airman dies as daredevil descent goes wrong before Texas college football game",
-      "url": "https://www.bbc.co.uk/news/articles/crd6dn63j2xwo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T14:13:18.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Obituary",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7d94/live/b7ee0580-cbd8-11f1-b139-f77a8b036d06.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-airman-dies-as-daredevil-descent-goes-wrong-before-texas-college-football-gam-4e7656/",
-      "landing_url": "https://matchapp.tv/?news=4e76560a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "airman",
-          "dies",
-          "daredevil",
-          "descent",
-          "goes",
-          "wrong"
-        ],
-        "long_tail": [
-          "US airman dies as daredevil descent goes wrong before Texas college football game 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "airman",
-          "dies",
-          "daredevil",
-          "descent",
-          "goes",
-          "wrong"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "US airman dies as daredevil descent goes wrong before…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "airman",
-          "dies",
-          "daredevil",
-          "descent",
-          "goes",
-          "wrong",
-          "US airman dies as daredevil descent goes wrong before Texas college football game 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "b2a1caa4",
-      "title": "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/video-mostra-batalha-entre-policia-e-manifestantes-na-principal-praca-de-milao.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T13:35:39.000Z",
-      "discovered_at": "2026-10-19T14:02:38.701Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/jySdHUmkXDWhBsSn-XLIeaq4z1s=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/K/O/I7tHFEQRGUGbaHa4HZPQ/2026-10-19t113636z-229004888-rc296oagpzw6-rtrmadp-3-italy-protest-aftermath.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/video-mostra-batalha-entre-policia-e-manifestantes-na-principal-praca-de-milao-b2a1ca/",
-      "landing_url": "https://matchapp.tv/?news=b2a1caa4#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "mostra",
-          "batalha",
-          "entre",
-          "policia",
-          "manifestantes"
-        ],
-        "long_tail": [
-          "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "video",
-          "mostra",
-          "batalha",
-          "entre",
-          "policia",
-          "manifestantes"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "VÍDEO mostra batalha entre polícia e manifestantes na…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "mostra",
-          "batalha",
-          "entre",
-          "policia",
-          "manifestantes",
-          "VÍDEO mostra batalha entre polícia e manifestantes na principal praça de Milão 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
         ],
         "seo_generated_at": "2026-10-19T17:44:03.755Z"
       }
@@ -3443,6 +3348,104 @@
           "G1 entertainment news"
         ],
         "seo_generated_at": "2026-10-19T17:44:03.755Z"
+      }
+    },
+    {
+      "id": "86e33602",
+      "title": "Karim Aïnouz conta como atraiu Elle Fanning e Callum Turner para seu novo filme: 'Apetite pelo material'",
+      "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/10/16/karim-ainouz-conta-como-atraiu-elle-fanning-e-callum-turner-para-seu-novo-filme-apetite-pelo-material.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-10-16T13:19:48.000Z",
+      "discovered_at": "2026-10-16T14:24:12.034Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Karim Aïnouz",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/8MKw0EQenIJzkVpRtR6Z8Ly51HU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/k/m/SoJORCRMqlf6mGcrl23Q/55567990863-3150be3762-k.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/karim-ainouz-conta-como-atraiu-elle-fanning-e-callum-turner-para-seu-novo-filme--86e336/",
+      "landing_url": "https://matchapp.tv/?news=86e33602#latest-news",
+      "seo": {
+        "primary_keyword": "Karim Aïnouz últimas notícias",
+        "short_tail": [
+          "Karim Aïnouz",
+          "Karim Aïnouz news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Karim Aïnouz latest news October 2026",
+          "Karim Aïnouz entertainment update 2026",
+          "Karim Aïnouz news 2026-10-16",
+          "latest entertainment news about Karim Aïnouz",
+          "karim ainouz karim ainouz conta como latest update",
+          "G1 Karim Aïnouz entertainment",
+          "últimas notícias sobre Karim Aïnouz outubro 2026",
+          "Karim Aïnouz notícia de 2026-10-16",
+          "o que aconteceu com Karim Aïnouz"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Karim Aïnouz",
+          "karim",
+          "ainouz",
+          "conta",
+          "como",
+          "atraiu",
+          "elle"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "Karim Aïnouz 2026"
+        ],
+        "source_keywords": [
+          "G1 Karim Aïnouz",
+          "g1.globo.com Karim Aïnouz",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Karim Aïnouz conta como atraiu Elle Fanning e Callum…",
+        "meta_description": "Karim Aïnouz: Notícia publicada por G1 em 2026-10-16. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Karim Aïnouz últimas notícias",
+          "Karim Aïnouz",
+          "Karim Aïnouz news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Karim Aïnouz latest news October 2026",
+          "Karim Aïnouz entertainment update 2026",
+          "Karim Aïnouz news 2026-10-16",
+          "latest entertainment news about Karim Aïnouz",
+          "karim ainouz karim ainouz conta como latest update",
+          "G1 Karim Aïnouz entertainment",
+          "últimas notícias sobre Karim Aïnouz outubro 2026",
+          "Karim Aïnouz notícia de 2026-10-16",
+          "o que aconteceu com Karim Aïnouz",
+          "karim",
+          "ainouz",
+          "conta",
+          "como",
+          "atraiu",
+          "elle",
+          "October 2026",
+          "2026-10-16",
+          "outubro 2026",
+          "Karim Aïnouz 2026",
+          "G1 Karim Aïnouz",
+          "g1.globo.com Karim Aïnouz",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T14:02:38.701Z"
       }
     },
     {
