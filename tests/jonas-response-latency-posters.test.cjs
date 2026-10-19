@@ -55,3 +55,30 @@ test('spoken possessive titles retain their exact identity',async()=>{
  vm.runInNewContext(read('jonas/title-card-presentation-20261011.js'),{window});
  const cards=await window.MatchAppJonasTitlePresentation.fromAnswers("Schitt's Creek is a warm comedy.");assert.equal(cards[0]?.title,title);
 });
+
+test('non-Latin title verification never equates unrelated source names or their posters',async()=>{
+ for(const [requested,other] of [['千と千尋の神隠し','となりのトトロ'],['기생충이라는영화','다른영화입니다'],['霸王别姬这部电影','卧虎藏龙这部电影'],['فيلم سينمائي','عمل مختلف']]){
+  const window={MatchAppCatalogMedia:{lookup:async()=>({title:other,media_kind:'movie',poster_url:'https://image.tmdb.org/t/p/w500/other.jpg'})}};
+  vm.runInNewContext(read('jonas/title-card-presentation-20261011.js'),{window});
+  const cards=await window.MatchAppJonasTitlePresentation.fromAnswers('“'+requested+'”');
+  assert.equal(cards.length,0,requested+' must not inherit '+other+' artwork');
+  window.MatchAppCatalogMedia.lookup=async()=>({title:requested,media_kind:'movie',poster_url:'https://image.tmdb.org/t/p/w500/exact.jpg'});
+  const exact=await window.MatchAppJonasTitlePresentation.fromAnswers('“'+requested+'”');
+  assert.equal(exact[0]?.title,requested);
+ }
+});
+
+test('localized spoken titles use exact regional source identity before loading their original poster',async()=>{
+ const source={title:'Superbad: É Hoje',originalTitle:'Superbad',tmdbId:8363,kind:'movie',adult:false};
+ for(const mismatch of [false,true]){
+  const calls=[],window={MATCH_LANG:'pt-BR',requestTMDB:async body=>{calls.push(body);return {data:{results:[source]}};},MatchAppCatalogMedia:{
+   lookup:async()=>null,
+   lookupLive:async(name,opts)=>opts.tmdbId?{title:'Superbad',tmdb_id:mismatch?1:8363,media_kind:'movie',genres:['Comedy'],poster_url:'https://image.tmdb.org/t/p/w500/exact.jpg'}:null
+  }};
+  vm.runInNewContext(read('jonas/title-card-presentation-20261011.js'),{window});
+  const cards=await window.MatchAppJonasTitlePresentation.fromAnswers("I recommend 'Superbad - É Hoje'.");
+  assert.equal(cards.length,mismatch?0:1,'regional lookup and poster must identify the same numeric work');
+  assert.equal(calls.length,1);assert.equal(calls[0].lang,'pt-BR');
+  if(!mismatch){assert.equal(cards[0].title,'Superbad');assert.equal(cards[0]._catalogMedia.tmdb_id,8363);}
+ }
+});
