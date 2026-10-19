@@ -87,17 +87,24 @@ async function collectReport(fetchFn=fetch,now=Date.now()){
     'user-agent':'MatchAppSportsDiscovery/1.0 (+https://matchapp.tv/)'
     }});
     if(![301,302,303,307,308].includes(res.status))break;
-    const location=res.headers.get('location');
-    const next=location&&new URL(location,destination).href;
-    if(hop===3||!FEEDS.some(f=>f.url===next))throw Error('Unapproved feed redirect');
-    destination=next;
+    try{
+     const location=res.headers.get('location');
+     const next=location&&new URL(location,destination).href;
+     if(hop===3||!FEEDS.some(f=>f.url===next))throw Error('Unapproved feed redirect');
+     destination=next;
+    }finally{if(res.body)await res.body.cancel();}
    }
-   if(!res.ok)throw Error('HTTP '+res.status);
+   if(!res.ok){
+    if(res.body)await res.body.cancel();
+    throw Error('HTTP '+res.status);
+   }
    // An HTML error page with HTTP 200 is not a successful empty feed.
    const xml=await res.text();
    if(!/^\s*(?:<\?xml[^?]*\?>\s*)?<(feed|rss)\b[^>]*>[\s\S]*<\/\1>\s*$/i.test(xml))throw Error('Invalid RSS/Atom response');
-   if(res.url&&!FEEDS.some(f=>f.url===res.url))throw Error('Unapproved feed redirect');
-   const items=parseFeed(xml,feed,now);
+   // Topic privileges belong to the final approved feed after redirects.
+   const finalFeed=FEEDS.find(f=>f.url===(res.url||destination));
+   if(!finalFeed)throw Error('Unapproved feed redirect');
+   const items=parseFeed(xml,finalFeed,now);
    checks.push({url:feed.url,ok:true,items:items.length});
    console.log('[sports] '+feed.source+' '+feed.url.split('/').slice(-2)[0]+': '+items.length+' attributed current original-source links');
    return items;
@@ -105,7 +112,7 @@ async function collectReport(fetchFn=fetch,now=Date.now()){
    checks.push({url:feed.url,ok:false,error:String(e?.message||e)});
    console.warn('[sports] '+feed.source+' optional feed unavailable: '+String(e?.message||e));
    return [];
-  }finally{clearTimeout(timer)}
+  }finally{clearTimeout(timer);ac.abort();}
  }));
  const seen=new Set(),out=[];
  for(const row of parts.flat().sort((a,b)=>b.published_at.localeCompare(a.published_at))){
