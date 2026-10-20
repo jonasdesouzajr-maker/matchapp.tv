@@ -1249,4 +1249,3 @@ html.ma-reference:not(#ma-reference-legacy) body:has(> .matchapp-brand-bar) :is(
 ) {display:none!important;}
 html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(.trend-card img,article.hero > img,.rg-poster) {border-radius:10px!important;}
 }
-

@@ -12,7 +12,7 @@ const flush=async()=>{for(let i=0;i<40;i++)await Promise.resolve()};
 // A deterministic image/network boundary; all cover, metadata, identity and
 // renderResult handoff code below is read from the real production sources.
 function fixture({cached=[],indexEntries=[]}={}){
- let now=0,nextTimer=0;const timers=new Map(),delays=[],requests=[],waiting=new Map();
+ let now=0,nextTimer=0;const timers=new Map(),delays=[],requests=[],waiting=new Map(),images=[],cachedUrls=new Set(cached);
  const clock={
   setTimeout(fn,ms){const id=++nextTimer;timers.set(id,{fn,at:now+ms});delays.push(ms);return id},
   clearTimeout(id){timers.delete(id)},
@@ -22,14 +22,16 @@ function fixture({cached=[],indexEntries=[]}={}){
   }now=target;await flush()}
  };
  class ImageNode extends EventTarget{
-  constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.dataset={};this.writes=[];this.listeners=[];this.listenerCallbacks=[];this.handlers={};this._src=''}
+  constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.dataset={};this.writes=[];this.listeners=[];this.listenerCallbacks=[];this.handlers={};this._src='';images.push(this)}
   addEventListener(type,fn,options){this.listeners.push({type,once:!!options?.once});this.listenerCallbacks.push({type,fn,once:!!options?.once});super.addEventListener(type,fn,options)}
-  set src(value){this._src=String(value);this.writes.push(this._src);this.complete=cached.includes(this._src)&&!(this.loading==='lazy'&&this.hidden);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
+  set src(value){this._src=String(value);this.writes.push(this._src);this.complete=cachedUrls.has(this._src)&&!(this.loading==='lazy'&&this.hidden);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
   get src(){return this._src}
+  removeAttribute(name){if(name==='src'){this._src='';this.complete=true;this.naturalWidth=0;this.naturalHeight=0}}
   setHandler(type,fn){if(this.handlers[type])this.removeEventListener(type,this.handlers[type]);this.handlers[type]=fn;if(fn)this.addEventListener(type,fn)}
   set onload(fn){this.setHandler('load',fn)}get onload(){return this.handlers.load||null}
   set onerror(fn){this.setHandler('error',fn)}get onerror(){return this.handlers.error||null}
-  load(){this.complete=true;this.naturalWidth=480;this.naturalHeight=720;this.dispatchEvent(new Event('load'))}
+  load(){cachedUrls.add(this.src);this.complete=true;this.naturalWidth=480;this.naturalHeight=720;this.dispatchEvent(new Event('load'))}
+  decode(){return this.complete&&this.naturalWidth>0?Promise.resolve():Promise.reject(Error('No decoded image'))}
   fail(){this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.dispatchEvent(new Event('error'))}
  }
  const img=new ImageNode(),fallback={hidden:false};
@@ -56,7 +58,7 @@ function fixture({cached=[],indexEntries=[]}={}){
    waiting.set(key,data=>{waiting.delete(key);signal?.removeEventListener('abort',abort);resolve({ok:true,json:async()=>data})});
   });
  }
- const context=vm.createContext({window:{},document:{documentElement:{lang:'en'},createElement(){throw Error('Cover fixture must retain its original image')}},
+ const context=vm.createContext({window:{Image:ImageNode},document:{documentElement:{lang:'en'},createElement(){throw Error('Cover fixture must retain its original image')}},
   URL,URLSearchParams,AbortController,fetch:fetchBoundary,setTimeout:clock.setTimeout,clearTimeout:clock.clearTimeout,
   market:()=> 'US',APPLE_BOOK_MARKETS:new Set(['US'])});
  vm.runInContext(identitySource,context,{filename:'ebooks/cover-identity.js'});
@@ -75,7 +77,7 @@ function fixture({cached=[],indexEntries=[]}={}){
  const realCover=context.hydrateCover,realDetails=context.window.MatchAppBookDetails;let coverWork,detailsWork;
  context.hydrateCover=(...args)=>(coverWork=realCover(...args));
  context.window.MatchAppBookDetails={...realDetails,hydrate:(...args)=>(detailsWork=realDetails.hydrate(...args))};
- return {img,fallback,host,requests,waiting,delays,timers,clock,
+ return {img,fallback,host,requests,waiting,delays,timers,clock,preloads:images,
   async start(audio=null){Object.assign(context,{host,book,audio});vm.runInContext('(function(){'+matcher.slice(renderStart,renderEnd)+'})()',context);await flush()},
   async reply(key,data){assert(waiting.has(key),'expected pending '+key);waiting.get(key)(data);await flush()},
   async emptyMatcher(){for(const key of ['matcherOL','matcherGoogle','matcherApple'])if(waiting.has(key))await this.reply(key,{docs:[],items:[],results:[]})},
@@ -126,16 +128,20 @@ test('wrong identity and a failed real BookDetails image still keep an honest fa
  assert.equal(f.timers.size,0);
 });
 
-test('verified audio edition keeps priority and bounded sharp-to-original fallback',async()=>{
+test('slow verified audio sharp download keeps priority when the exact original rendition starts',async()=>{
  const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100';
  const sharp=original.replace('/100x100','/600x600bb.jpg'),f=fixture();
  await f.start({apple:{coverUrl:original}});
  await f.reply('detailsOL',{docs:[row(220)]});
- assert.deepEqual(f.img.writes,[sharp],'the actual verifiedAudio handoff prevents work-level artwork from replacing the audio edition');
+ assert.deepEqual(f.img.writes,[],'pending downloads do not replace the result image');
+ assert.deepEqual(f.preloads.slice(1).map(img=>img.src),[sharp]);
  assert.equal(f.img.listeners.filter(x=>x.once).length,0,'BookDetails skips all setCover listeners for verified audio');
  await f.clock.advance(2500);
- assert.deepEqual(f.img.writes,[sharp,original]);assert(f.delays.includes(7000));
- f.img.load();await f.done();f.ready();
+ assert.deepEqual(f.preloads.slice(1).map(img=>img.src),[sharp,original]);
+ assert.deepEqual(f.preloads[1].writes,[sharp],'starting the original cannot abort the sharp request');
+ assert.deepEqual(f.img.writes,[]);assert(f.delays.includes(9500));
+ await f.clock.advance(700);f.preloads[1].load();await flush();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[sharp],'already decoded audio pixels hand off once');
  assert.equal(f.requests.filter(x=>{const u=new URL(x,'https://fixture.invalid/');return u.searchParams.get('maxResults')==='10'||u.hostname==='itunes.apple.com'}).length,0);
  assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
 });
@@ -164,13 +170,65 @@ test('verified audio cover starts eagerly when inherited lazy loading would leav
 test('pending verified audio pixels stay transparent with fallback visible and real image errors still fail closed',async()=>{
  const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100',f=fixture();
  f.img.loading='lazy';await f.start({apple:{coverUrl:original}});
- assert.equal(f.img.hidden,false,'the image must be renderable to start its request');
+ assert.equal(f.preloads[1].loading,'eager','a detached preloader eagerly requests the exact audio asset');
+ assert.equal(f.img.hidden,true,'the result retains its fallback until a verified asset is decoded');
  assert.equal(f.img.style.opacity,'0');assert.equal(f.fallback.hidden,false);
- f.img.fail();await flush();assert.equal(f.img.src,original);
- f.img.fail();await flush();await f.reply('detailsOL',{docs:[row(220)]});
- await f.emptyMatcher();await f.done();
+ f.preloads[1].fail();await flush();assert.equal(f.preloads[2].src,original);
+ f.preloads[2].fail();await flush();await f.reply('detailsOL',{docs:[row(220)]});
+ await f.done();
  assert.equal(f.img.hidden,true);assert.equal(f.img.style.opacity,'0');
  assert.equal(f.img.naturalWidth,0);assert.equal(f.fallback.hidden,false);
+ assert.deepEqual(f.img.writes,[],'a verified ebook edition is never substituted for failed audio art');
+ assert.equal(f.waiting.size,0,'failed audio art must not start matcher work-level source searches');
+ assert.equal(f.timers.size,0);
+});
+
+test('verified audio image deadline remains bounded and never degrades to work-level art',async()=>{
+ const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100',f=fixture();
+ await f.start({apple:{coverUrl:original}});await f.reply('detailsOL',{docs:[row(220)]});
+ await f.clock.advance(9500);await f.done();
+ assert.equal(f.img.hidden,true);assert.equal(f.fallback.hidden,false);
+ assert.deepEqual(f.img.writes,[]);assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+ f.preloads[1].load();await flush();assert.deepEqual(f.img.writes,[],'late pixels cannot revive an expired handoff');
+});
+
+test('verified audio keeps the original-only 7000ms deadline and disconnects cannot paint a stale result',async()=>{
+ const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/600x600bb.jpg',f=fixture();
+ await f.start({apple:{coverUrl:original}});await f.reply('detailsOL',{docs:[row(220)]});
+ assert(f.delays.includes(7000));assert(!f.delays.includes(9500));
+ f.img.isConnected=false;f.host.isConnected=false;
+ f.preloads[1].load();await flush();await f.done();
+ assert.deepEqual(f.img.writes,[]);assert.equal(f.img.hidden,true);assert.equal(f.fallback.hidden,false);
+ assert.equal(f.preloads[1].src,'','disconnected completion releases its pending loader');
+ assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+});
+
+test('failed sharp decoding uses only the exact original audio rendition and cancels the unused loader',async()=>{
+ const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100',f=fixture();
+ await f.start({apple:{coverUrl:original}});await f.reply('detailsOL',{docs:[row(220)]});
+ f.preloads[1].decode=()=>Promise.reject(Error('Cannot decode sharp rendition'));
+ f.preloads[1].load();await flush();assert.equal(f.preloads[2].src,original);
+ f.preloads[2].load();await flush();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[original]);assert.equal(f.preloads[1].src,'');
+ assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+});
+
+test('an audio edition without its own verified artwork never borrows ebook art',async()=>{
+ const f=fixture();await f.start({apple:{coverUrl:null}});
+ await f.reply('detailsOL',{docs:[row(220)]});await f.done();
+ assert.deepEqual(f.img.writes,[]);assert.equal(f.img.hidden,true);assert.equal(f.fallback.hidden,false);
+ assert.equal(f.preloads.length,1);assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+});
+
+test('a reused verified work cover cannot satisfy an audio edition without its own art',async()=>{
+ const source=cover(330),f=fixture({cached:[source],indexEntries:[{...book,source:'Open Library',cover:source}]});
+ await f.start();await f.done();f.ready();
+ assert.equal(f.img.dataset.bookCoverVerified,source);
+ await f.start({apple:{coverUrl:null}});await f.done();
+ assert.deepEqual(f.img.writes,[source],'audio never assigns the already verified ebook source again');
+ assert.equal(f.img.hidden,true);assert.equal(f.fallback.hidden,false);
+ assert.equal(f.requests.length,1,'the audio art boundary adds no work-level source lookup');
+ assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
 });
 
 test('a loaded branded fallback is replaced by exact local-index art without any remote search',async()=>{
@@ -231,5 +289,6 @@ test('both rendering pages request the handoff repair without changing earlier l
   const html=read(page);assert.equal(html.split(pin).length-1,1,page);
   assert(html.indexOf('/ebooks/book-details-20261011.js')<html.indexOf(pin),page+' retains the real metadata owner before matching');
   assert(html.includes(pin+'&amp;lifetime=20261019-1&amp;coverload=20261019-eager1'),page+' invalidates the repaired cover loader while retaining lifetime exclusion');
+  assert(html.includes('&amp;audioart=20261020-exact1'),page+' invalidates the exact audio preloading repair');
  }
 });

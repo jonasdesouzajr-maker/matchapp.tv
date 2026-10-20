@@ -538,7 +538,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p><a href="/news/" data-news-ui="moreNews">More entertainment, world and sports news</a> · <a href="/" data-news-ui="backHome">Back to MatchApp Ai</a></p>
   </article>
 </main>
-<script src="/build-meta.js?v=203"></script>
+<script src="/build-meta.js?v=203&release=20261020-ui1"></script>
 </body>
 </html>`,path.relative(ROOT,path.join(currentSlugDir(i),'index.html')));
 }
@@ -641,7 +641,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
   ${options?'<div data-news-local-offers>'+options+'</div>\n  ':''}<section data-native-news-feed data-news-ui-aria="feedLabel" aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
-<script src="/build-meta.js?v=203"></script>
+<script src="/build-meta.js?v=203&release=20261020-ui1"></script>
 </body>
 </html>`,'news/index.html');
 }

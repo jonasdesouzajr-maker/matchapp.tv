@@ -3,7 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {createRequire}=require('node:module');
 const {JSDOM}=require('jsdom');
-const {cinemaAssets,versionFrameStylesheet}=require('../tools/finalize-brand.js');
+const {cinemaAssets,versionFrameStylesheet,versionReferenceRuntimeAssets}=require('../tools/finalize-brand.js');
 const ROOT=path.join(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(ROOT,file),'utf8');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -81,7 +81,7 @@ function assertPresentationOnly(raw,themed,route){
     assert.equal(d.querySelector('style[data-cinema-layer]').textContent,'@layer ma-reference;');
     assert.equal(d.querySelector('link[href^="/patches/reference-home.css"],link[href^="/patches/reference-explore.css"]'),null);
     assert.equal(d.body.outerHTML,beforeDoc.body.outerHTML,'all source records, controls, artwork, ad geometry and paths stay identical');
-    const originalHead=doc=>[...doc.head.children].filter(node=>!node.matches('style[data-cinema-layer],link[href^="/patches/reference-system.css?"],link[href^="/patches/reference-pages.css?"],script[src^="/patches/reference-system.js?"]')).map(node=>versionFrameStylesheet(node.outerHTML));
+    const originalHead=doc=>[...doc.head.children].filter(node=>!node.matches('style[data-cinema-layer],link[href^="/patches/reference-system.css?"],link[href^="/patches/reference-pages.css?"],script[src^="/patches/reference-system.js?"]')).map(node=>versionReferenceRuntimeAssets(versionFrameStylesheet(node.outerHTML)));
     assert.deepEqual(originalHead(d),originalHead(beforeDoc),'metadata, analytics, original styles and source scripts stay identical');
     assert.equal(d.documentElement.lang,beforeDoc.documentElement.lang);
     assert.equal(cinemaAssets(themed,route),themed,'repeated finalization cannot duplicate the theme');

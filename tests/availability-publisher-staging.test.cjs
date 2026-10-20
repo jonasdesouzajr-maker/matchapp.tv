@@ -23,17 +23,19 @@ function bashPath(value){
  if(process.platform!=='win32')return value;
  return String(value).replace(/^([A-Za-z]):[\\/]/,(_,drive)=>'/'+drive.toLowerCase()+'/').replace(/\\/g,'/');
 }
-const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/availability.yml'),'utf8').replace(/\r\n/g,'\n');
-const section=workflow.split('      - name: Commit and push with retry')[1].split('      - name: Validate and deploy')[0];
+const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/unified-refresh.yml'),'utf8').replace(/\r\n/g,'\n');
+const section=workflow.split('      - name: Publish verified daily editorial refresh')[1].split('      - name: Validate and deploy')[0];
 const script=section.split('        run: |\n')[1].split('\n').map(line=>line.slice(10)).join('\n');
 const regionalRoots=['en/br/watch','en/us/watch','en/gb/watch','en/pt/watch','pt/br/watch'];
 const ownedFiles=[
  'data/availability.json','where-to-watch/index.html','where-to-watch/fixture/index.html',
+ 'awareness/fixture-campaign/index.html','awareness/new-campaign/index.html',
  'tools/watch-urls.json','tools/seo-urls.json','sitemap.xml','sitemaps.xml',
  ...regionalRoots.flatMap(root=>[root+'/index.html',root+'/movie/fixture-123/index.html']),
  ...['moods','collections','platforms','languages','decades'].map(root=>root+'/fixture/index.html')
 ];
-const gates=['node tools/check-content-rotation.js','npm test','npm run audit:site'];
+const gates=['node --test tests/release-audit.test.cjs','node tools/check-content-rotation.js','npm test','npm run audit:site','npm run build'];
+const runnerFile=path.join(__dirname,'../tools/unified-refresh.cjs');
 function fixture(){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'availability-publish-'));
  const work=path.join(dir,'work'),remote=path.join(dir,'remote.git'),binary=path.join(dir,'binary');
@@ -50,12 +52,15 @@ function fixture(){
   git(['init','--initial-branch=main']);
   git(['config','user.name','Availability Fixture']);git(['config','user.email','fixture@example.invalid']);
   git(['config','core.autocrlf','false']);
-  for(const file of [...ownedFiles,'app.js'])write(file,'initial '+file+'\n');
+  for(const file of [...ownedFiles.filter(file=>file!=='awareness/new-campaign/index.html'),'app.js','awareness/calendar.json','awareness/source-notes.txt'])write(file,'initial '+file+'\n');
   git(['add','.']);git(['commit','-m','Initial fixture']);
   git(['remote','add','origin',remote]);git(['push','--set-upstream','origin','main']);
   const initial=git(['rev-parse','HEAD']);
+  write('tools/unified-refresh.cjs',fs.readFileSync(runnerFile,'utf8'));
   for(const file of ownedFiles)write(file,'updated '+file+'\n');
   write('app.js','Unrelated UI change must stay local\n');
+  write('awareness/calendar.json','Unrelated reviewed source calendar change\n');
+  write('awareness/source-notes.txt','Unrelated source notes\n');
   write('.env.fixture','UNRELATED_FIXTURE=must-not-publish\n');
   const validator=`#!/bin/bash
 set -euo pipefail
@@ -63,7 +68,8 @@ name="\${0##*/}"
 entry="$name $*"
 printf '%s\\n' "$entry" >> "$TRACE"
 case "$entry" in
- 'node tools/check-content-rotation.js'|'npm test'|'npm run audit:site') ;;
+ 'node --test tests/release-audit.test.cjs'|'node tools/check-content-rotation.js'|'npm test'|'npm run audit:site'|'npm run build') ;;
+ 'node tools/unified-refresh.cjs stage') exec \"$MATCHAPP_FIXTURE_REAL_NODE\" \"$@\" ;;
  *) echo 'Unexpected validator or generator command' >&2; exit 2 ;;
 esac
 if [ "$entry" = "$FAIL_GATE" ]; then exit 9; fi
@@ -77,7 +83,7 @@ if [ "$entry" = "$FAIL_GATE" ]; then exit 9; fi
    run(failGate=''){
     return spawnSync(bashExecutable(),['-c','export PATH="$MATCHAPP_FIXTURE_BIN:$PATH"\n'+script],{
      cwd:work,encoding:'utf8',env:{...process.env,MATCHAPP_FIXTURE_BIN:bashPath(binary),TRACE:bashPath(trace),
-      FAIL_GATE:failGate,GITHUB_OUTPUT:bashPath(output),GITHUB_REF_NAME:'main',GIT_TERMINAL_PROMPT:'0'}
+      FAIL_GATE:failGate,MATCHAPP_FIXTURE_REAL_NODE:process.execPath,GITHUB_OUTPUT:bashPath(output),GITHUB_REF_NAME:'main',GIT_TERMINAL_PROMPT:'0'}
     });
    },
    trace(){return fs.existsSync(trace)?fs.readFileSync(trace,'utf8').trim().split(/\r?\n/):[];},
@@ -88,7 +94,7 @@ if [ "$entry" = "$FAIL_GATE" ]; then exit 9; fi
  }catch(error){fs.rmSync(dir,{recursive:true,force:true});throw error;}
 }
 
-test('availability publishes all owned regional outputs and leaves unrelated UI and environment files local',()=>{
+test('unified refresh publishes all owned regional outputs and leaves unrelated UI and environment files local',()=>{
  const f=fixture();try{
   const run=f.run();assert.equal(run.status,0,run.stderr||String(run.error||''));
   assert.equal(f.output(),'changed=1\n');
@@ -97,14 +103,17 @@ test('availability publishes all owned regional outputs and leaves unrelated UI 
   assert.deepEqual(f.remoteGit(['diff-tree','--no-commit-id','--name-only','-r',published]).split(/\r?\n/).sort(),[...ownedFiles].sort());
   for(const file of ownedFiles)assert.equal(f.remoteGit(['show','main:'+file]),'updated '+file,file+' must reach the published tree');
   assert.equal(f.remoteGit(['show','main:app.js']),'initial app.js');
+  for(const file of ['awareness/calendar.json','awareness/source-notes.txt'])assert.equal(f.remoteGit(['show','main:'+file]),'initial '+file,'awareness source files must remain unpublished');
+  assert.equal(f.read('awareness/calendar.json'),'Unrelated reviewed source calendar change\n');
+  assert.equal(f.read('awareness/source-notes.txt'),'Unrelated source notes\n');
   assert.ok(!f.remoteGit(['ls-tree','-r','--name-only','main']).split(/\r?\n/).includes('.env.fixture'));
   assert.equal(f.read('app.js'),'Unrelated UI change must stay local\n');
   assert.equal(f.read('.env.fixture'),'UNRELATED_FIXTURE=must-not-publish\n');
-  assert.deepEqual(f.trace(),[...gates,'commit','push refs/heads/main'],'every gate must precede the real commit and push');
+  assert.deepEqual(f.trace(),[...gates,'node tools/unified-refresh.cjs stage','commit','push refs/heads/main'],'every gate must precede the real commit and push');
  }finally{f.close();}
 });
 
-for(const [index,gate] of gates.entries())test('availability '+gate+' failure prevents any commit, push or changed output',()=>{
+for(const [index,gate] of gates.entries())test('unified refresh '+gate+' failure prevents any commit, push or changed output',()=>{
  const f=fixture();try{
   const run=f.run(gate);assert.notEqual(run.status,0);assert.equal(f.output(),'');
   assert.equal(f.git(['rev-parse','HEAD']),f.initial);

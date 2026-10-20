@@ -85,12 +85,13 @@ test('global route is internally linked, sitemapped and retained by the schedule
  const home=read('index.html');
  const sitemap=read('sitemap.xml');
  const generator=read('tools/update-sitemap.js');
- const workflow=read('.github/workflows/midnight-content-rotation.yml');
+ const workflow=read('.github/workflows/unified-refresh.yml'),runner=read('tools/unified-refresh.cjs');
  assert(home.includes('href="/guides/worldwide-entertainment-discovery/"'));
  assert(sitemap.includes('<loc>'+url+'</loc>'));
  assert(generator.includes("guides/worldwide-entertainment-discovery/"));
- assert(workflow.includes('node tools/build-world-discovery-guide.js'));
- assert(workflow.includes('git add -A -- guides/worldwide-entertainment-discovery'));
+ assert(workflow.includes('node tools/unified-refresh.cjs generate'));
+ assert(runner.includes('tools/build-world-discovery-guide.js'));
+ assert(runner.includes('guides/worldwide-entertainment-discovery'));
 });
 
 test('news source summaries retain noindex while legitimate news hub stays indexable',()=>{

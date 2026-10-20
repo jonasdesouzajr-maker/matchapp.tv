@@ -2,7 +2,8 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const flow=n=>read('.github/workflows/'+n+'.yml');
-const publishers=['midnight-content-rotation','news-refresh','awareness-rotation','availability','kids-seo-refresh','sitemap-refresh','seo-hardening','archive-international-day','sports-refresh','trending-refresh','music-video-refresh'];
+const publishers=['unified-refresh','kids-seo-refresh','sitemap-refresh','seo-hardening','archive-international-day','music-video-refresh'];
+const retired=['midnight-content-rotation','trending-refresh','news-refresh','sports-refresh','availability','scraper','awareness-rotation'];
 
 test('GrokBot and other agents inherit permanent owner-only workflow and data contracts',()=>{
  const agents=read('AGENTS.md'),policy=read('docs/EDITORIAL_AUTOMATION_LOCK.md'),owners=read('.github/CODEOWNERS');
@@ -21,46 +22,33 @@ test('every repository-writing editorial workflow shares one serialized publishe
  }
 });
 
-test('daily midnight coordinates existing verified data owners and retries from latest main',()=>{
- const yml=flow('midnight-content-rotation');
- for(const step of ['node tools/sync-catalog-media.js','node tools/refresh-news-rss.js','node tools/build-global-events.js','node tools/archive-international-day.mjs','node tools/awareness-bot.mjs','node tools/build-seo-pages.js','node tools/build-watch-pages.js','node tools/update-sitemap.js','node tools/check-content-rotation.js','node tools/audit-search.js']) assert.ok(yml.includes(step),'Midnight lost '+step);
- assert.match(yml,/cron: '0 3 \* \* \*'/);
- assert.match(yml,/git reset --hard origin\/main/);
- assert.match(yml,/node tools\/check-content-rotation\.js[\s\S]*?git add -A -- index\.html/);
- assert.doesNotMatch(yml,/\bgit add -A\s*(?:\n|\r|$)/,'Unscoped staging could commit unrelated private configuration');
- assert.match(yml,/if: steps\.publish\.outputs\.changed == '1'[\s\S]*?gh workflow run pages-deploy\.yml --ref main/,'GITHUB_TOKEN commits need an explicit validated Pages dispatch');
- assert.doesNotMatch(yml,/gh workflow run indexnow\.yml/,'IndexNow must wait for confirmed Pages deployment');
+test('one daily refresh replaces every superseded recurring source writer',()=>{
+ const yml=flow('unified-refresh');
+ assert.match(yml,/cron: '30 4 \* \* \*'/);
+ assert.match(yml,/workflow_dispatch:/);
+ assert.match(yml,/push:[\s\S]*branches: \[main\][\s\S]*paths:[\s\S]*\.github\/workflows\/unified-refresh\.yml/);
+ assert.equal((yml.match(/cron:/g)||[]).length,1,'only one daily trigger');
+ for(const name of retired)assert.equal(fs.existsSync(path.join(root,'.github/workflows',name+'.yml')),false,name+' must not remain a competing owner');
+ for(const name of publishers.filter(x=>x!=='unified-refresh'))assert.doesNotMatch(flow(name),/schedule:|cron:/,name+' is event/manual only');
+ assert.doesNotMatch(yml,/continue-on-error:|git rebase|git add -A\s*(?:\n|$)/,'never hide failed gates or publish unrelated files');
 });
 
-test('daily Top Titles refresh owns verified music-video discovery and SEO generation',()=>{
- const daily=flow('trending-refresh'),manual=flow('music-video-refresh');
- for(const text of ["cron: '15 3 * * *'",'node tools/refresh-music-videos.js','node tools/refresh-trending.mjs','data/music-video-releases.json','data/trending-keywords.json','trending/this-week/index.html'])assert.ok(daily.includes(text),text);
- assert.ok(daily.indexOf('node tools/refresh-music-videos.js')<daily.indexOf('node tools/refresh-trending.mjs'));
- assert.ok(!manual.includes('schedule:')&&!manual.includes('cron:'));assert.ok(manual.includes('workflow_dispatch:'));
+test('unified generation keeps source integrity, ordering and one news generator',()=>{
+ const yml=flow('unified-refresh'),runner=read('tools/unified-refresh.cjs');
+ for(const script of ['sync-catalog-media.js','fetch-availability.js','refresh-music-videos.js','refresh-trending.mjs','refresh-weekly-pick.mjs','refresh-sports-discovery.js','refresh-news-rss.js','build-global-events.js','archive-international-day.mjs','awareness-bot.mjs','build-seo-pages.js','build-watch-pages.js','build-world-discovery-guide.js','update-sitemap.js'])assert.ok(runner.includes('tools/'+script),'Unified refresh lost '+script);
+ assert.ok(runner.indexOf('tools/refresh-music-videos.js')<runner.indexOf('tools/refresh-trending.mjs'),'verified music discovery precedes presentation');
+ assert.ok(runner.indexOf('tools/refresh-sports-discovery.js')<runner.indexOf('tools/refresh-news-rss.js'),'one news generation consumes the sports snapshot');
+ assert.match(yml,/node tools\/unified-refresh\.cjs generate/);
+ assert.match(yml,/node tools\/unified-refresh\.cjs stage/);
+ assert.match(yml,/git reset --hard origin\/main/);
+ for(const gate of ['node --test tests/release-audit.test.cjs','node tools/check-content-rotation.js','npm test','npm run audit:site','npm run build'])assert.ok(yml.includes(gate),'Pre-publication gate missing: '+gate);
+ assert.match(yml,/id-token: write/);
+ assert.doesNotMatch(yml,/gh workflow run (?:availability|scraper|news-refresh|sports-refresh|trending-refresh|awareness-rotation|midnight-content-rotation)\.yml/,'retired owner jobs may not be dispatched');
+ const manual=flow('music-video-refresh');assert.match(manual,/workflow_dispatch:/);assert.doesNotMatch(manual,/schedule:|cron:/);
  const agents=read('AGENTS.md'),lock=read('docs/EDITORIAL_AUTOMATION_LOCK.md');for(const text of ['music-video discovery + SEO','VideoObject','manual recovery only'])assert.ok(agents.includes(text)||lock.includes(text),text);
 });
 
-test('hourly NEWS remains publisher sourced; awareness recovery cannot start another midnight refresh',()=>{
- const news=flow('news-refresh'),events=flow('awareness-rotation');
- assert.match(news,/cron: '37 \* \* \* \*'/);
- const sports=flow('sports-refresh');
- assert.match(sports,/cron: '17 11,23 \* \* \*'/);
- assert.match(sports,/node tools\/refresh-sports-discovery\.js/);
- assert.match(sports,/node tools\/refresh-news-rss\.js/);
- assert.doesNotMatch(sports,/gh workflow run indexnow\.yml/);
- assert.match(news,/node tools\/refresh-news-rss\.js/);
- assert.match(news,/git add news tools\/news-urls\.json/);
- assert.match(events,/cron: '45 3 \* \* \*'/);
- assert.match(events,/node tools\/awareness-bot\.mjs/);
- assert.match(events,/git add index\.html awareness\/current\.json/);
- assert.match(news,/gh workflow run pages-deploy\.yml --ref main/);
- assert.match(events,/gh workflow run pages-deploy\.yml --ref main/);
- assert.doesNotMatch(news,/- '\.github\/workflows\/news-refresh\.yml'/,'News workflow must not trigger itself from multi-workflow metadata merges');
- assert.doesNotMatch(flow('kids-seo-refresh'),/- '\.github\/workflows\/kids-seo-refresh\.yml'/);
- assert.doesNotMatch(flow('seo-hardening'),/- '\.github\/workflows\/seo-hardening\.yml'/);
-});
-
-test('only successful production Pages deployment initiates immediate IndexNow',()=>{
+test('changed content uses Pages discovery; only unchanged verified production uses daily IndexNow recovery',()=>{
  const deploy=flow('pages-deploy'),now=flow('indexnow');
  assert.match(deploy,/actions: write/);
  assert.match(deploy,/npm run audit:site/);
@@ -70,8 +58,13 @@ test('only successful production Pages deployment initiates immediate IndexNow',
  assert.ok(deploy.indexOf('uses: actions/deploy-pages@v4')<deploy.indexOf('gh workflow run indexnow.yml --ref main'));
  assert.doesNotMatch(now,/  push:/,'Raw commits may not ping still-unpublished pages');
  assert.match(now,/workflow_dispatch:/);
- assert.match(now,/schedule:/,'Scheduled IndexNow recovery retained');
- for(const name of publishers){
+ assert.doesNotMatch(now,/schedule:|cron:/,'IndexNow recovery belongs inside the sole daily refresh');
+ assert.match(flow('unified-refresh'),/dispatchAndConfirm\('indexnow\.yml', 'discovery'\)/);
+ assert.match(flow('unified-refresh'),/deployment-sha\.txt/,'unchanged discovery dispatch must first confirm live production');
+ const unified=flow('unified-refresh');
+ assert.equal((unified.match(/dispatchAndConfirm\('pages-deploy\.yml', 'pages'\)/g)||[]).length,1,'the unified refresh requests one Pages deployment');
+ assert.match(unified,/CONTENT_CHANGED: \$\{\{ steps\.publish\.outputs\.changed \}\}/);
+ for(const name of publishers.filter(x=>x!=='unified-refresh')){
    const yml=flow(name);
    assert.equal((yml.match(/gh workflow run pages-deploy\.yml --ref main/g)||[]).length,1,name+' must dispatch exactly once after a bot content commit');
    assert.match(yml,/if: steps\.publish\.outputs\.changed == '1'/);
@@ -90,9 +83,9 @@ test('ended global/day/awareness events preserve three-day visibility and SEO',(
  assert.doesNotMatch(html,/<script type="application\/ld\+json">\{"@context":"https:\/\/schema\.org","@type":"Event"/,'Observance is not a fabricated venue event');
 });
 
-test('separate TMDB refresh stays OIDC-secured and does not fabricate Home Top Titles',()=>{
+test('unified TMDB refresh stays OIDC-secured and does not fabricate Home Top Titles',()=>{
  const ingest=read('supabase/functions/catalog-media-ingest/index.ts'),client=read('tools/sync-catalog-media.js'),lock=read('tools/check-content-rotation.js');
- assert.match(flow('scraper'),/id-token: write/);
+ assert.match(flow('unified-refresh'),/id-token: write/);
  assert.match(ingest,/origin_countries:originCountries\(record\),cast_members:castMembers\(record\)/);
  assert.match(ingest,/stage==="authorization"\?403:500/);
  assert.match(client,/homepageTrending/);

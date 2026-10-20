@@ -5,29 +5,39 @@
 const fs=require('node:fs'),path=require('node:path');
 const crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..');
-const OWNERS=['midnight-content-rotation.yml','trending-refresh.yml','news-refresh.yml','sports-refresh.yml','availability.yml','scraper.yml','awareness-rotation.yml','indexnow.yml'];
+// Retired names are retained only to reconcile durable historical reservations.
+// They are never dispatched or interpreted as separate recurring owners again.
+const OWNERS=['unified-refresh.yml'];
+const LEGACY_OWNERS=['midnight-content-rotation.yml','trending-refresh.yml','news-refresh.yml','sports-refresh.yml','availability.yml','scraper.yml','awareness-rotation.yml','indexnow.yml'];
+const RECORD_OWNERS=[...OWNERS,...LEGACY_OWNERS];
 const ACTIVE=new Set(['queued','in_progress','waiting','pending','requested']);
 const UNKNOWN=new Set(['reserved','submitted','unknown']);
 const MINUTE=60000;
 const SOURCES={
- 'sports-refresh.yml':['tools/refresh-sports-discovery.js','tools/sports-partner-feed.js','tools/refresh-news-rss.js','tools/update-sitemap.js'],
- 'news-refresh.yml':['tools/refresh-news-rss.js','tools/update-sitemap.js'],
- 'trending-refresh.yml':['tools/refresh-trending.mjs','tools/refresh-music-videos.js','tools/refresh-weekly-pick.mjs','tools/live-editorial-data.mjs','tools/search-guide-links.cjs','tools/update-sitemap.js'],
- 'midnight-content-rotation.yml':['tools/sync-catalog-media.js','tools/refresh-news-rss.js','tools/build-global-events.js','tools/archive-international-day.mjs','tools/retained-history.cjs','tools/awareness-bot.mjs','tools/build-seo-pages.js','tools/build-watch-pages.js','tools/build-world-discovery-guide.js','tools/search-guide-links.cjs','tools/update-sitemap.js','tools/finalize-brand.js'],
- 'availability.yml':['tools/fetch-availability.js','tools/availability-evidence.cjs','tools/build-watch-pages.js','tools/build-seo-pages.js','tools/update-sitemap.js','tools/finalize-brand.js'],
- 'scraper.yml':['tools/sync-catalog-media.js'],
- 'awareness-rotation.yml':['tools/awareness-bot.mjs','tools/archive-international-day.mjs','tools/retained-history.cjs','tools/update-sitemap.js'],
- 'indexnow.yml':[]
+ 'unified-refresh.yml':[
+  'tools/unified-refresh.cjs','tools/editorial-recovery.cjs','tools/sync-catalog-media.js',
+  'tools/fetch-availability.js','tools/availability-evidence.cjs','tools/availability-page-policy.cjs',
+  'tools/refresh-sports-discovery.js','tools/sports-partner-feed.js','tools/refresh-news-rss.js',
+  'tools/refresh-music-videos.js','tools/billboard-music.js','tools/spotify-music-videos.js',
+  'tools/refresh-trending.mjs','tools/refresh-weekly-pick.mjs','tools/live-editorial-data.mjs',
+  'tools/build-global-events.js','tools/archive-international-day.mjs','tools/retained-history.cjs',
+  'tools/awareness-bot.mjs','tools/build-seo-pages.js','tools/build-watch-pages.js',
+  'tools/build-world-discovery-guide.js','tools/search-guide-links.cjs',
+  'tools/update-sitemap.js','tools/finalize-brand.js','tools/check-content-rotation.js',
+  'tools/event-lifecycle.js','tools/discovery-editorial.cjs','tools/discovery-metadata.js',
+  'tools/build-growth-watch-pilot.cjs','tools/watch-search-metadata.cjs','growth-core.js','news-monetization.js',
+  'package.json','package-lock.json'
+ ]
 };
 function repairRevision(owner,root=ROOT){
- if(!OWNERS.includes(owner))throw Error('Unknown recurring owner');
+ if(!OWNERS.includes(owner))throw Error(LEGACY_OWNERS.includes(owner)?'Retired recurring owner':'Unknown recurring owner');
  const hash=crypto.createHash('sha256');
  for(const file of ['.github/workflows/'+owner,...SOURCES[owner]])hash.update(file+'\0').update(fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n/g,'\n')).update('\0');
  return hash.digest('hex');
 }
 function localDate(now){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(now));}
 function schedules(owner,root=ROOT){
- if(!OWNERS.includes(owner))throw Error('Unknown recurring owner');
+ if(!OWNERS.includes(owner))throw Error(LEGACY_OWNERS.includes(owner)?'Retired recurring owner':'Unknown recurring owner');
  const text=fs.readFileSync(path.join(root,'.github/workflows',owner),'utf8');
  const crons=[...text.matchAll(/cron:\s*['"]([^'"]+)['"]/g)].map(m=>m[1]);
  if(!crons.length)throw Error('Owner has no approved cron');
@@ -35,8 +45,8 @@ function schedules(owner,root=ROOT){
 }
 function matches(field,value){return field==='*'||field.split(',').some(part=>/^\d+$/.test(part)&&Number(part)===value);}
 function latestDue(crons,before){
- // Existing owners use daily or hourly UTC schedules. Refuse new syntax until
- // explicitly supported; never reinterpret a changed schedule silently.
+ // Read the current owner's UTC schedule. Refuse new syntax until explicitly
+ // supported; never reinterpret a changed schedule silently.
  const parsed=crons.map(cron=>{
   const fields=cron.trim().split(/\s+/);
   if(fields.length!==5||fields.slice(2).some(f=>f!=='*')||fields.slice(0,2).some(f=>!/^\*$|^\d+(?:,\d+)*$/.test(f)))throw Error('Unsupported owner cron: '+cron);
@@ -54,20 +64,27 @@ function evaluate(evidence,ledger={},root=ROOT){
  const e=evidence||{},now=Date.parse(e.now),observed=Date.parse(e.observedAt);
  const base={owner:e.owner,mainSha:e.mainSha,repairedRevision:e.repairedRevision,observedAt:e.observedAt};
  const decision=(action,reason,extra={})=>({...base,action,reason,...extra});
+ if(LEGACY_OWNERS.includes(e.owner))return decision('stop','retired-owner-use-unified-refresh');
  if(!OWNERS.includes(e.owner)||!Number.isFinite(now)||!Number.isFinite(observed)||now-observed<0||now-observed>MINUTE||
   !/^[a-f0-9]{40}$/.test(e.mainSha||'')||!/^[a-f0-9]{40,64}$/.test(e.repairedRevision||''))return decision('stop','invalid-or-old-evidence');
  if(e.evidenceComplete!==true||e.historyReconciled!==true||!Array.isArray(e.runs)||!Array.isArray(e.activePublishers)||typeof e.openRecovery!=='boolean'||typeof e.materiallyStale!=='boolean')return decision('stop','incomplete-evidence');
  const date=localDate(now),key=[e.owner,date,e.repairedRevision].join(':');
  let dueAt;
- try{dueAt=latestDue(schedules(e.owner,root),e.owner==='news-refresh.yml'?now-75*MINUTE:now);}catch(error){return decision('stop',error.message);}
+ try{dueAt=latestDue(schedules(e.owner,root),now);}catch(error){return decision('stop',error.message);}
  const context={key,localDate:date,dueAt,notificationKey:key+':'+(e.failureReason||'missing-equivalent-work')};
- const records=Object.values(ledger.controlledRecoveries||{}).filter(r=>r.owner===e.owner);
- if(records.some(r=>UNKNOWN.has(r.status)))return decision('stop','previous-attempt-outcome-unknown',context);
+ const allRecords=Object.values(ledger.controlledRecoveries||{});
+ const records=allRecords.filter(r=>r.owner===e.owner);
+ // An unknown old dispatch may still publish part of this unified pipeline.
+ // Consolidation must not erase or reset its durable submission state.
+ if(allRecords.some(r=>UNKNOWN.has(r.status)))return decision('stop','previous-attempt-outcome-unknown',context);
+ if(allRecords.some(r=>LEGACY_OWNERS.includes(r.owner)&&r.status==='failed')&&e.repairValidated!==true&&e.sourceRecoveryVerified!==true)return decision('stop','legacy-failed-recovery-needs-diagnosed-repair',context);
  if(records.some(r=>r.status==='failed'&&r.repairedRevision===e.repairedRevision))return decision('stop','failed-recovery-requires-code-repair',context);
  if(ledger.controlledRecoveries?.[key])return decision('stop','attempt-already-recorded',context);
  if(e.repairedRevision!==repairRevision(e.owner,root))return decision('stop','revision-is-not-current-owner-code',context);
  if(now-Date.parse(dueAt)<75*MINUTE)return decision('wait','scheduled-owner-within-75-minute-grace',context);
  if(e.openRecovery||e.activePublishers.length)return decision('wait','recovery-or-publication-active',context);
+ if(e.runs.some(r=>LEGACY_OWNERS.includes(r.owner)&&ACTIVE.has(r.status)))return decision('wait','retired-owner-still-active',context);
+ if(e.runs.some(r=>LEGACY_OWNERS.includes(r.owner)&&r.status!=='completed'))return decision('stop','unknown-retired-owner-run-status',context);
  const relevant=e.runs.filter(r=>r.owner===e.owner||(Array.isArray(r.covers)&&r.covers.includes(e.owner)));
  if(relevant.some(r=>ACTIVE.has(r.status)))return decision('wait','equivalent-owner-active',context);
  if(relevant.some(r=>r.status!=='completed'))return decision('stop','unknown-owner-run-status',context);
@@ -79,7 +96,6 @@ function evaluate(evidence,ledger={},root=ROOT){
  if(recent.some(r=>['failure','timed_out','startup_failure','action_required'].includes(r.conclusion))&&
   e.repairValidated!==true&&e.sourceRecoveryVerified!==true)return decision('stop','failed-owner-needs-diagnosed-repair',context);
  if(!e.materiallyStale)return decision('done','output-not-materially-stale',context);
- if(e.owner==='news-refresh.yml'&&(!Number.isFinite(e.newsGapMinutes)||e.newsGapMinutes<90))return decision('wait','news-gap-below-90-minutes',context);
  // A stale output must predate the actual grace-eligible due time. Otherwise
  // the latest schedule remains within grace, even if yesterday was stale.
  if(!Number.isFinite(Date.parse(e.outputCheckedAt))||Date.parse(e.outputCheckedAt)>=Date.parse(dueAt))return decision('wait','due-time-grace-or-output-evidence',context);
@@ -91,7 +107,7 @@ function readLedger(file){
   const value=JSON.parse(fs.readFileSync(file,'utf8'));
   if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Invalid recovery ledger');
   if(value.controlledRecoveries!==undefined&&(!value.controlledRecoveries||typeof value.controlledRecoveries!=='object'||Array.isArray(value.controlledRecoveries)||
-   Object.values(value.controlledRecoveries).some(r=>!r||!OWNERS.includes(r.owner)||!['reserved','submitted','unknown','success','failed','not_submitted'].includes(r.status))))throw Error('Invalid controlled recovery records');
+   Object.values(value.controlledRecoveries).some(r=>!r||!RECORD_OWNERS.includes(r.owner)||!['reserved','submitted','unknown','success','failed','not_submitted'].includes(r.status))))throw Error('Invalid controlled recovery records');
   return value;
  }
  catch(error){if(error.code==='ENOENT')return {};throw error;}
@@ -136,7 +152,7 @@ function record(file,verification){
   return entry;
  });
 }
-module.exports={OWNERS,SOURCES,repairRevision,schedules,latestDue,evaluate,reserve,record,readLedger,localDate};
+module.exports={OWNERS,LEGACY_OWNERS,RECORD_OWNERS,SOURCES,repairRevision,schedules,latestDue,evaluate,reserve,record,readLedger,localDate};
 if(require.main===module){
  try{
   const [command,input,file]=process.argv.slice(2);

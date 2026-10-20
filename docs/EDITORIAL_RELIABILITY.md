@@ -1,5 +1,39 @@
 # MatchApp Ai editorial reliability
 
+## October 20, 2026: consolidated daily execution
+
+The owner has superseded the separate scheduled content owners described in the
+historical investigation below. The authoritative schedule is now
+`.github/workflows/unified-refresh.yml`: 04:30 UTC / 01:30 America/Sao_Paulo.
+It calls `tools/unified-refresh.cjs generate`, runs all existing validation
+gates, and stages only `ownedPaths` with the runner's `stage` command before
+one serialized publication. The seven old source workflow files are removed.
+Catalog extraction and OIDC enrichment run once per generation pass; sports
+precedes the one news generation pass. All five regional watch trees, official
+music artwork and metadata, weekly choice, event history and SEO outputs are
+included in the same candidate. No new date-specific observance is invented.
+
+`artifacts/unified-refresh/generation.json` records actual child-process
+outcomes separately from publication and live deployment. A failed source or
+gate prevents the candidate commit. Lost push acknowledgements are reconciled
+against remote ancestry; a genuine newer main is regenerated and revalidated,
+and an unknown result stops. Successful unchanged checks do not create timestamp
+commits or deploy again. IndexNow retains its delivery workflow but loses its
+standalone recurring recovery timer.
+
+The recovery helper preserves old ledger records for reconciliation, while only
+the unified owner can receive a new recovery reservation. An unresolved legacy
+submission blocks a duplicate unified recovery. Its fingerprint covers the
+unified workflow, runner and source dependencies rather than removed workflows.
+Existing Pages, smoke/security/AdSense checks and the approved manual source
+tools remain. Daily operation does not require repeating the owner's approval.
+
+The historical cron table, hourly coordinator references and former protected
+proposal status below describe the investigation at that time. They must not
+restore deleted schedules or override the October 20 amendment in
+`docs/EDITORIAL_AUTOMATION_LOCK.md`.
+
+
 This is operating guidance for the existing MatchApp Unified Refresh coordinator,
 not a new scheduler, publisher, content owner or permission to change protected
 workflows. The authoritative locks remain in AGENTS.md and

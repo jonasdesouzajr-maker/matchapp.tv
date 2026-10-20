@@ -10,6 +10,7 @@ function cinemaAssets(html, relativePath) {
   const rel = relativePath.replace(/\\/g, '/');
   if (/^(kids|private-voice|oauth|android-studio|tests|artifacts|reports|node_modules)\//.test(rel) || /^(callback|confirm|yandex_[^/]+)\.html$/.test(rel) || !/<body[\s>]/i.test(html)) return html;
   html = versionFrameStylesheet(html);
+  html = versionReferenceRuntimeAssets(html);
   const eol = html.includes('\r\n') ? '\r\n' : '\n';
   // The first declared layer owns important overrides. Repair partial inputs
   // and retain one declaration even when a template copied existing assets.
@@ -58,8 +59,27 @@ function cinemaAssets(html, relativePath) {
   const assets=[];
   if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1">');
   if(!found.family)assets.push('<link rel="stylesheet" href="/patches/reference-'+family+'.css?v=20261020-review1'+(explore?'':'&amp;premium=20261020-2')+'">');
-  if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&dialogs=20261020-1&pills=20261020-1&headernav=20261020-1"></script>');
+  if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1"></script>');
   return assets.length?html.replace(/<\/head>/i,eol+assets.join(eol)+eol+'</head>'):html;
+}
+// Existing editorial pages can carry older script URLs when their source data
+// is refreshed. Keep their original version and require the approved UI assets.
+function versionReferenceRuntimeAssets(html){
+ const pins={
+  'catalog-media.js':['posters','20261020-1'],'poster-wall.js':['posters','20261020-1'],'trending-rail.js':['posters','20261020-1'],'profile.js':['posters','20261020-1'],'portfolio-history.js':['posters','20261020-1'],'settings.js':['posters','20261020-1'],'title-captions.js':['posters','20261020-1'],
+  'app.js':['art','20261020-source1'],'ebook-matcher.js':['art','20261020-source1'],'book-details-20261011.js':['art','20261020-source1'],'reading-ai.js':['art','20261020-source1'],
+  'jonas-premium-glass.css':['stellar','20261020-1'],'jonas-premium-enhancer.js':['stellar','20261020-1'],'jonas-adult-page.js':['stellar','20261020-1'],
+  'reference-system.css':['premium','20261020-2'],'reference-pages.css':['premium','20261020-2'],'reference-home.css':['premium','20261020-2'],'pricing.js':['premium','20261020-2']
+ };
+ const dialogs=new Set(['reference-system.js','profile.js','app.js','passkeys.js','pricing.js','settings.js']);
+ return html.replace(/(\b(?:src|href)=["'])(\/[A-Za-z0-9_./-]+)(?:\?([^"']*))?(["'])/g,(all,prefix,url,query,end)=>{
+  const file=url.split('/').pop(),pin=pins[file];if(!pin&&!dialogs.has(file))return all;
+  const params=new URLSearchParams((query||'').replace(/&amp;/g,'&'));
+  if(pin)params.set(pin[0],pin[1]);
+  if(dialogs.has(file))params.set('dialogs','20261020-1');
+  if(file==='reference-system.css'||file==='reference-system.js')params.set('pills','20261020-1');
+  return prefix+url+'?'+params.toString().replace(/&/g,'&amp;')+end;
+ });
 }
 function name(text,kids=false){
  let out=String(text??'')
@@ -157,5 +177,5 @@ function finalizeBrand(ownedPaths){
  }
  return count;
 }
-module.exports={cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
+module.exports={versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
 if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');

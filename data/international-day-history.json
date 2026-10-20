@@ -1,5 +1,60 @@
 [
   {
+    "date": "2026-10-20",
+    "id": "world-osteoporosis-day-2026-10-20",
+    "emoji": "🦴",
+    "title": "World Osteoporosis Day",
+    "kicker": "International observance",
+    "place": "Worldwide",
+    "summary": "World Osteoporosis Day is marked each year on 20 October by the International Osteoporosis Foundation. The 2026 campaign, “Build, Protect and Strengthen Your Bones for Life,” highlights lifelong bone health. Explore respectful documentaries and stories about mobility, ageing and community support.",
+    "prompt": "Explain World Osteoporosis Day on 20 October and the International Osteoporosis Foundation's 2026 campaign, “Build, Protect and Strengthen Your Bones for Life,” using the organizer's official sources. Share general, non-diagnostic ways to learn about lifelong bone health and support people living with osteoporosis. Then recommend source-verified documentaries or films about mobility, ageing and community care, checking viewing availability in my country and never inventing medical advice or availability.",
+    "officialUrl": "https://www.worldosteoporosisday.org/",
+    "image": "/event-posters/world-osteoporosis-day-2026.svg",
+    "keywords": [
+      "World Osteoporosis Day 2026",
+      "20 October World Osteoporosis Day",
+      "Build Protect Strengthen Your Bones for Life",
+      "International Osteoporosis Foundation",
+      "lifelong bone health awareness",
+      "osteoporosis awareness documentaries",
+      "films about mobility and ageing",
+      "community care documentaries",
+      "what to watch on World Osteoporosis Day",
+      "Dia Mundial da Osteoporose 2026",
+      "Día Mundial de la Osteoporosis 2026",
+      "documentaries about healthy ageing"
+    ],
+    "i18n": {
+      "pt-BR": {
+        "title": "Dia Mundial da Osteoporose",
+        "kicker": "Data internacional",
+        "place": "No mundo todo",
+        "summary": "O Dia Mundial da Osteoporose é celebrado todos os anos em 20 de outubro pela Fundação Internacional de Osteoporose. A campanha de 2026, “Construa, proteja e fortaleça seus ossos por toda a vida”, destaca a saúde óssea ao longo da vida. Descubra documentários e histórias respeitosas sobre mobilidade, envelhecimento e apoio comunitário.",
+        "prompt": "Explique o Dia Mundial da Osteoporose em 20 de outubro e a campanha de 2026 da Fundação Internacional de Osteoporose, “Construa, proteja e fortaleça seus ossos por toda a vida”, usando as fontes oficiais da organizadora. Compartilhe formas gerais e não diagnósticas de aprender sobre saúde óssea ao longo da vida e apoiar pessoas que vivem com osteoporose. Depois, recomende documentários ou filmes verificados sobre mobilidade, envelhecimento e cuidado comunitário, conferindo onde assistir no meu país e sem inventar orientações médicas nem disponibilidade.",
+        "imageAlt": "Ilustração original de ossos estilizados formando um círculo protetor ao redor de uma figura humana ativa, com detalhes azuis e dourados",
+        "sourceName": "Fundação Internacional de Osteoporose"
+      },
+      "es": {
+        "title": "Día Mundial de la Osteoporosis",
+        "kicker": "Día internacional",
+        "place": "En todo el mundo",
+        "summary": "El Día Mundial de la Osteoporosis se conmemora cada año el 20 de octubre por la Fundación Internacional de Osteoporosis. La campaña de 2026, “Construye, protege y fortalece tus huesos de por vida”, destaca la salud ósea durante toda la vida. Descubre documentales e historias respetuosas sobre movilidad, envejecimiento y apoyo comunitario.",
+        "prompt": "Explica el Día Mundial de la Osteoporosis del 20 de octubre y la campaña de 2026 de la Fundación Internacional de Osteoporosis, “Construye, protege y fortalece tus huesos de por vida”, usando las fuentes oficiales de la organización. Comparte formas generales y no diagnósticas de aprender sobre la salud ósea durante toda la vida y apoyar a quienes viven con osteoporosis. Después, recomienda documentales o películas verificados sobre movilidad, envejecimiento y cuidado comunitario, comprobando dónde verlos en mi país y sin inventar consejos médicos ni disponibilidad.",
+        "imageAlt": "Ilustración original de huesos estilizados que forman un círculo protector alrededor de una figura humana activa, con detalles azules y dorados",
+        "sourceName": "Fundación Internacional de Osteoporosis"
+      }
+    },
+    "imageAlt": "Original illustration of stylized bones forming a protective circle around an active human figure, with blue and gold details",
+    "imageCredit": "Original event-specific vector illustration created for MatchApp Ai; no organizer marks, licensed third-party artwork or fabricated affiliation.",
+    "sourceName": "International Osteoporosis Foundation",
+    "sourceUrls": [
+      "https://www.worldosteoporosisday.org/",
+      "https://www.worldosteoporosisday.org/get-involved",
+      "https://www.worldosteoporosisday.org/resources/build-protect-strengthen-your-bones-life"
+    ],
+    "updated": "2026-10-20T04:30:00.000Z"
+  },
+  {
     "date": "2026-10-19",
     "id": "world-bioethics-day-2026-10-19",
     "emoji": "⚖️",

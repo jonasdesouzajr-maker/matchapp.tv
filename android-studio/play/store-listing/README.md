@@ -1,34 +1,48 @@
 # MatchApp Ai Google Play store presence
 
-This directory is the repository source for the adult Android app's intended Play Store metadata. Local edits do not publish changes or establish which text is currently live in Console.
+This directory contains the intended metadata for the adult Android package `com.jonas.papercup`. Local files do not publish a listing or establish the latest Console release state. Kids belongs to its separate package and listing.
 
-Package: com.jonas.papercup
+## Current checkpoint — 2026-10-20
 
-## 2026-10-05 live Play audit
+A fresh read-only audit of both public English and Brazilian Portuguese Play pages confirmed:
 
-The public listing was reachable as MatchApp Ai version 1.1.36. The highest-priority store-presence corrections identified were:
+- The published name is exactly **MatchApp Ai** in both locales.
+- The published category is **Entertainment**.
+- The developer website is `https://matchapp.tv/`, and the app privacy-policy link is `https://matchapp.tv/privacy.html`.
 
-1. The Brazilian localized app name was still MatchApp iA. It must be exactly MatchApp Ai.
-2. The live category was Books & Reference. MatchApp's primary experience is movies, TV and interactive entertainment discovery, so the intended Play category is Entertainment.
-3. The public website and privacy-policy links still pointed at the old Google Sites property. The intended first-party URLs are https://matchapp.tv/ and https://matchapp.tv/privacy.html.
-4. The live English and Portuguese descriptions were verbose and used markup-like characters. The locale files here provide cleaner user-first copy with natural discovery terms and no ranking claims or keyword blocks.
+The brand, category and legacy-site problems recorded in the October 5 audit are historical findings, not current defects. Older release notes and screenshots are not authoritative evidence of today's Console state.
 
-## Console-only improvements
+The current public full descriptions still mention VIP/Business subscriptions and extra-match/Ask AI credit packs as possible new purchases. Those legacy new-sales paths are retired. The prepared refresh removes that promotion while preserving existing-subscription management and neutral terms for any currently available optional purchase.
 
-Use Play Console > Grow users > Store presence to apply the intended category/contact details, localized listing files, relevant tags, custom store listings and experiments. Do not change the production AAB merely to update listing metadata.
+## Prepared listing refresh
 
-Keep the title MatchApp Ai in every locale. Do not localize the brand to MatchApp iA.
+The EN-US and PT-BR files in this directory now describe the current movie/TV discovery experience, Jonas, Books and Recipes in clear, natural language. The exact title stays **MatchApp Ai**. They preserve the qualifications for regional availability, third-party sources, affiliate links, optional purchases, existing subscriptions and voluntary support.
 
-For tags, choose no more than five tags actually offered by Play and only when they clearly match the app's first-run experience. Do not use unrelated tags for traffic.
+| Locale | Title | Short description | Full description |
+| --- | ---: | ---: | ---: |
+| en-US | 11 / 30 | 66 / 80 | 2445 / 4000 |
+| pt-BR | 11 / 30 | 68 / 80 | 2570 / 4000 |
 
-For experiments, change one meaningful variable at a time. Start with the short description or feature graphic, use install/open metrics, and keep the current listing as the control.
+These drafts make no ranking, award, guaranteed availability, streaming-provider partnership or universal ad-free claim. They do not promote a disabled purchase product or promise that contributions unlock benefits.
 
-For custom store listings, prioritize Brazil, the United States and Australia using localized screenshots and copy that remain truthful to features available in those markets.
+The refreshed [default feature graphic](../feature-graphic.png) is the English 1024×500, 24-bit RGB PNG. A Portuguese graphic, reproducible HTML/SVG composition, approved-art hashes and manifests are included in the `final-release-20261020/store/` artifact. The old graphic claiming “MatchApp TV” and “Ad-free Android app” has been replaced and must not be reused. The approved product mark and its display mask remain unchanged.
 
-Google Play metadata must not claim rankings, awards, prices, guaranteed availability or unsupported relationships with streaming providers.
+## Screenshots and provenance
 
-## 2026-10-17 local CRO checkpoint
+The release artifact separates Android-bootstrap **previews** from device captures. The previews render the actual website with the current `MainActivity.APP_MODE_JS` and Android user agent in Chromium at 360×640 CSS pixels and 3× density, producing 1080×1920 PNGs. They contain actual interface copy and source artwork.
 
-The English and Brazilian Portuguese short descriptions now lead with movie/TV recommendations and where-to-watch intent. The full descriptions make a narrow, version-independent correction to optional purchase terms, preserving existing subscription management without promoting retired VIP/Business/pack sales or a not-yet-enabled Pro product. The exact title remains **MatchApp Ai** in both locales.
+They are **not APK, emulator or physical-device screenshots** and must not be described as such. Their README and manifest record routes, locale, dimensions, source hashes and capture limitations. Do not reuse old screenshots showing retired branding, a superseded layout, fabricated AI answers or the separate Kids product.
 
-See [CRO_REVIEW_20261017.md](CRO_REVIEW_20261017.md) for the authored three-screen narrative, current UI capture anchors, exact text lengths and the local screenshot audit. The older PNGs were inspected and remain unchanged; they are not ready to re-upload as current product evidence. Final current-device captures and the published/default/custom listing review belong to the release owner.
+Google Play requires at least two screenshots to publish a listing. Its large-format recommendation guidance calls for at least four app screenshots at 1080×1920 portrait or 1920×1080 landscape. Screenshots must be JPEG or 24-bit PNG without alpha, within the current size and aspect-ratio rules. Recheck the live [preview-asset requirements](https://support.google.com/googleplay/android-developer/answer/9866151) when uploading.
+
+## Publication status
+
+The refreshed copy and graphics are **prepared, not published**. No Play publishing identity or credential is connected in this execution environment; the current public listing was audited without an authenticated Console session. No upload, release-track or review approval is claimed.
+
+Use the existing Play Console Store presence flow with the authorized publisher account to compare and apply the intended localized metadata and assets. Metadata changes do not require a new Android binary. A binary update remains a separate signed-release process with current package, version-code, upload-certificate and device validation.
+
+Preserve the adult **Contains ads: Yes** declaration and review all current Console declarations against the actual release. Do not copy historical version codes, rating or Data safety answers blindly. Do not change native ads, web AdSense, Kids or payment behavior as part of a listing refresh.
+
+The source contact targets remain in [store-presence.json](../store-presence.json). Public support-mail ownership and any future category, tag, custom-listing or experiment changes require current account evidence. Keep at most five relevant tags actually offered by Play; no keyword stuffing or ranking forecasts.
+
+The [October 17 CRO review](CRO_REVIEW_20261017.md) remains a dated historical record.

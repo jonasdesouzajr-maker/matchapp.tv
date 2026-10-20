@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-19",
-  "updated": "2026-10-19T19:26:13.013Z",
+  "updated": "2026-10-20T08:08:45.141Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -17,7 +17,7 @@
         "Crunchyroll Amazon Channel"
       ],
       "tmdbId": "123542",
-      "poster": "https://image.tmdb.org/t/p/w780/wo9jwu5qMvXzhW2cyy5E6hOVs92.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/hCt2bLRGTCjHGqtV5FP3Img6w1h.jpg",
       "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photography shop set in the backdrop of a modern metropolis. Each job can be full of danger, but nothing is more important than fulfilling every order, no matter the scale…or peril involved!",
       "genre": [
         "Animation",
@@ -33,7 +33,7 @@
       ],
       "runtimeMinutes": 23,
       "contentRating": "14",
-      "voteAverage": 8.04,
+      "voteAverage": 8,
       "previewUrl": "https://www.youtube.com/watch?v=HxoR_7jVBCM",
       "availability": {
         "BR": {
@@ -145,7 +145,7 @@
       ],
       "runtimeMinutes": 100,
       "contentRating": "R",
-      "voteAverage": 7.04,
+      "voteAverage": 7.1,
       "previewUrl": "https://www.youtube.com/watch?v=4nhu80EmVQE",
       "availability": {
         "GB": {
@@ -202,115 +202,100 @@
       }
     },
     {
-      "title": "Masterplan",
+      "title": "Clayface",
       "kind": "movie",
       "year": 2026,
-      "origin": "FR",
-      "originName": "France",
-      "platform": "Amazon Prime Video",
-      "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads"
-      ],
-      "tmdbId": "1561726",
-      "poster": "https://image.tmdb.org/t/p/w780/5xmXVd7nCK3tAo34XkO58SxUCip.jpg",
-      "description": "When a legendary thief sets his sights on the Mona Lisa, he recruits two young strangers to help him before revealing they are long-lost siblings… and oh yes, by the way, he is their father. Thrown into a chaotic reunion they never asked for, this new family must learn to work together — and try not to kill each other — if they want any chance at pulling off the heist of the century.",
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1400940",
+      "poster": "https://image.tmdb.org/t/p/w780/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
+      "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfigured. Abandoned by his team and with nothing left, Matt seeks out a cutting edge treatment that miraculously returns him to his former self… but also unexpectedly affects his grip on reality, spiraling him down a destructive path of all-consuming revenge.",
       "genre": [
-        "Action",
-        "Thriller"
+        "Horror",
+        "Thriller",
+        "Science Fiction"
       ],
       "inLanguage": "en",
       "cast": [
-        "Stanley Tucci",
-        "Simona Tabasco",
-        "Victor Belmondo",
-        "Eliott Margueron"
+        "Tom Rhys Harries",
+        "Naomi Ackie",
+        "Eddie Marsan",
+        "Max Minghella"
       ],
-      "runtimeMinutes": 110,
+      "runtimeMinutes": 109,
       "contentRating": "R",
-      "voteAverage": 7.1,
-      "previewUrl": "https://www.youtube.com/watch?v=gc0t8AfMP6k",
+      "voteAverage": 8,
+      "previewUrl": "https://www.youtube.com/watch?v=f7jlCqdtwdM",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=BR",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-22"
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=GB",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-19"
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=PT",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Amazon Prime Video"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-22"
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-23"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1561726"
+        "source_page_url": "https://www.themoviedb.org/movie/1400940"
       },
       "sourceRank": 3,
       "keywords": [
-        "Masterplan",
-        "Masterplan 2026",
-        "where to watch Masterplan",
-        "Action movie",
+        "Clayface",
+        "Clayface 2026",
+        "where to watch Clayface",
+        "Horror movie",
         "Thriller movie",
-        "Amazon Prime Video trending movie",
-        "Amazon Prime Video with Ads trending movie",
-        "Stanley Tucci",
-        "Simona Tabasco"
+        "Science Fiction movie",
+        "Tom Rhys Harries",
+        "Naomi Ackie"
       ],
       "longTailKeywords": [
-        "where to watch Masterplan 2026",
-        "Masterplan streaming in Brazil and United States",
-        "Masterplan cast synopsis trailer and where to watch",
-        "what Action to watch this week"
+        "where to watch Clayface 2026",
+        "Clayface streaming in Brazil and United States",
+        "Clayface cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Masterplan (2026) | MatchApp Ai",
-        "description": "When a legendary thief sets his sights on the Mona Lisa, he recruits two young strangers to help him before revealing they are long-lost siblings… and oh yes,",
+        "title": "Where to watch Clayface (2026) | MatchApp Ai",
+        "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfig",
         "keywords": [
-          "Masterplan",
-          "Masterplan 2026",
-          "where to watch Masterplan",
-          "Action movie",
+          "Clayface",
+          "Clayface 2026",
+          "where to watch Clayface",
+          "Horror movie",
           "Thriller movie",
-          "Amazon Prime Video trending movie",
-          "Amazon Prime Video with Ads trending movie",
-          "Stanley Tucci",
-          "Simona Tabasco",
-          "where to watch Masterplan 2026",
-          "Masterplan streaming in Brazil and United States",
-          "Masterplan cast synopsis trailer and where to watch",
-          "what Action to watch this week"
+          "Science Fiction movie",
+          "Tom Rhys Harries",
+          "Naomi Ackie",
+          "where to watch Clayface 2026",
+          "Clayface streaming in Brazil and United States",
+          "Clayface cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
         ],
-        "canonicalQuery": "Masterplan"
+        "canonicalQuery": "Clayface"
       }
     },
     {
@@ -373,118 +358,6 @@
       "sourceRank": 1
     },
     {
-      "title": "Tenzing",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "AU",
-      "originName": "Australia",
-      "platform": "Apple TV",
-      "platforms": [
-        "Apple TV",
-        "Apple TV Amazon Channel"
-      ],
-      "tmdbId": "1288069",
-      "poster": "https://image.tmdb.org/t/p/w780/eI0QW02PYqhnmIvLRdn9vrfVVP7.jpg",
-      "description": "A determined man embarks on a high-stakes quest—and defies seemingly impossible odds—to fulfill his dream of being the first to reach the summit of Mount Everest.",
-      "genre": [
-        "Drama",
-        "History"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Genden Phuntsok",
-        "Tom Hiddleston",
-        "Willem Dafoe",
-        "Samdrup Dorje Lama"
-      ],
-      "runtimeMinutes": 126,
-      "contentRating": "PG",
-      "voteAverage": 8.31,
-      "previewUrl": "https://www.youtube.com/watch?v=KkYCY5YR12U",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": "2026-10-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1288069"
-      },
-      "sourceRank": 4,
-      "keywords": [
-        "Tenzing",
-        "Tenzing 2026",
-        "where to watch Tenzing",
-        "Drama movie",
-        "History movie",
-        "Apple TV trending movie",
-        "Apple TV Amazon Channel trending movie",
-        "Genden Phuntsok",
-        "Tom Hiddleston"
-      ],
-      "longTailKeywords": [
-        "where to watch Tenzing 2026",
-        "Tenzing streaming in Brazil and United States",
-        "Tenzing cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Tenzing (2026) | MatchApp Ai",
-        "description": "A determined man embarks on a high-stakes quest—and defies seemingly impossible odds—to fulfill his dream of being the first to reach the summit of Mount Ever",
-        "keywords": [
-          "Tenzing",
-          "Tenzing 2026",
-          "where to watch Tenzing",
-          "Drama movie",
-          "History movie",
-          "Apple TV trending movie",
-          "Apple TV Amazon Channel trending movie",
-          "Genden Phuntsok",
-          "Tom Hiddleston",
-          "where to watch Tenzing 2026",
-          "Tenzing streaming in Brazil and United States",
-          "Tenzing cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Tenzing"
-      }
-    },
-    {
       "title": "Crystal Lake",
       "kind": "tv",
       "year": 2026,
@@ -513,7 +386,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-MA",
-      "voteAverage": 8.4,
+      "voteAverage": 8.52,
       "previewUrl": "https://www.youtube.com/watch?v=Rs49eRHFD9c",
       "availability": {
         "BR": {
@@ -548,7 +421,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/213562"
       },
-      "sourceRank": 5,
+      "sourceRank": 4,
       "keywords": [
         "Crystal Lake",
         "Crystal Lake 2026",
@@ -588,100 +461,209 @@
       }
     },
     {
-      "title": "Clayface",
+      "title": "By Any Means",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1400940",
-      "poster": "https://image.tmdb.org/t/p/w780/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
-      "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfigured. Abandoned by his team and with nothing left, Matt seeks out a cutting edge treatment that miraculously returns him to his former self… but also unexpectedly affects his grip on reality, spiraling him down a destructive path of all-consuming revenge.",
+      "tmdbId": "1380417",
+      "poster": "https://image.tmdb.org/t/p/w780/hxTjCfEmZJFAPW8h5S3tDQNaBi8.jpg",
+      "description": "In 1960s Mississippi, a young Black FBI agent is forced to partner with a notorious mafia hitman to investigate a wave of brutal civil rights murders.",
       "genre": [
-        "Horror",
-        "Thriller",
-        "Science Fiction"
+        "History",
+        "Crime",
+        "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Tom Rhys Harries",
-        "Naomi Ackie",
-        "Eddie Marsan",
-        "Max Minghella"
+        "Yahya Abdul-Mateen II",
+        "Mark Wahlberg",
+        "Nicole Beharie",
+        "Josh Lucas"
       ],
-      "runtimeMinutes": 109,
+      "runtimeMinutes": 107,
       "contentRating": "R",
-      "voteAverage": 8.25,
-      "previewUrl": "https://www.youtube.com/watch?v=f7jlCqdtwdM",
+      "voteAverage": 7.32,
+      "previewUrl": "https://www.youtube.com/watch?v=fvnyrBnUx4E",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-22"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-23"
+          "cinema_release_date": "2026-09-17"
         },
         "PT": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-22"
+          "cinema_release_date": "2026-09-03"
         },
         "US": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-23"
+          "cinema_release_date": "2026-09-04"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1400940"
+        "source_page_url": "https://www.themoviedb.org/movie/1380417"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "By Any Means",
+        "By Any Means 2026",
+        "where to watch By Any Means",
+        "History movie",
+        "Crime movie",
+        "Drama movie",
+        "Yahya Abdul-Mateen II",
+        "Mark Wahlberg"
+      ],
+      "longTailKeywords": [
+        "where to watch By Any Means 2026",
+        "By Any Means streaming in Brazil and United States",
+        "By Any Means cast synopsis trailer and where to watch",
+        "what History to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch By Any Means (2026) | MatchApp Ai",
+        "description": "In 1960s Mississippi, a young Black FBI agent is forced to partner with a notorious mafia hitman to investigate a wave of brutal civil rights murders.",
+        "keywords": [
+          "By Any Means",
+          "By Any Means 2026",
+          "where to watch By Any Means",
+          "History movie",
+          "Crime movie",
+          "Drama movie",
+          "Yahya Abdul-Mateen II",
+          "Mark Wahlberg",
+          "where to watch By Any Means 2026",
+          "By Any Means streaming in Brazil and United States",
+          "By Any Means cast synopsis trailer and where to watch",
+          "what History to watch this week"
+        ],
+        "canonicalQuery": "By Any Means"
+      }
+    },
+    {
+      "title": "Cyberpunk: Edgerunners",
+      "kind": "tv",
+      "year": 2022,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "105248",
+      "poster": "https://image.tmdb.org/t/p/w780/v3JuB15WybKmxDeT1hWdK3j6eSJ.jpg",
+      "description": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+      "genre": [
+        "Animation",
+        "Action & Adventure",
+        "Sci-Fi & Fantasy",
+        "Crime"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Momoka Terasawa",
+        "Akari Kito",
+        "Koki Uchiyama",
+        "Kentaro Tone"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.49,
+      "previewUrl": "https://www.youtube.com/watch?v=JtqIas3bYhg",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/105248"
       },
       "sourceRank": 6,
       "keywords": [
-        "Clayface",
-        "Clayface 2026",
-        "where to watch Clayface",
-        "Horror movie",
-        "Thriller movie",
-        "Science Fiction movie",
-        "Tom Rhys Harries",
-        "Naomi Ackie"
+        "Cyberpunk: Edgerunners",
+        "Cyberpunk: Edgerunners 2022",
+        "where to watch Cyberpunk: Edgerunners",
+        "Animation series",
+        "Action & Adventure series",
+        "Sci-Fi & Fantasy series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Momoka Terasawa",
+        "Akari Kito"
       ],
       "longTailKeywords": [
-        "where to watch Clayface 2026",
-        "Clayface streaming in Brazil and United States",
-        "Clayface cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
+        "where to watch Cyberpunk: Edgerunners 2022",
+        "Cyberpunk: Edgerunners streaming in Brazil and United States",
+        "Cyberpunk: Edgerunners cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Clayface (2026) | MatchApp Ai",
-        "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfig",
+        "title": "Where to watch Cyberpunk: Edgerunners (2022) | MatchApp Ai",
+        "description": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
         "keywords": [
-          "Clayface",
-          "Clayface 2026",
-          "where to watch Clayface",
-          "Horror movie",
-          "Thriller movie",
-          "Science Fiction movie",
-          "Tom Rhys Harries",
-          "Naomi Ackie",
-          "where to watch Clayface 2026",
-          "Clayface streaming in Brazil and United States",
-          "Clayface cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
+          "Cyberpunk: Edgerunners",
+          "Cyberpunk: Edgerunners 2022",
+          "where to watch Cyberpunk: Edgerunners",
+          "Animation series",
+          "Action & Adventure series",
+          "Sci-Fi & Fantasy series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Momoka Terasawa",
+          "Akari Kito",
+          "where to watch Cyberpunk: Edgerunners 2022",
+          "Cyberpunk: Edgerunners streaming in Brazil and United States",
+          "Cyberpunk: Edgerunners cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "Clayface"
+        "canonicalQuery": "Cyberpunk: Edgerunners"
       }
     },
     {
@@ -746,147 +728,108 @@
       "sourceRank": 2
     },
     {
-      "title": "Hope",
-      "kind": "movie",
+      "title": "Love in Disguise",
+      "kind": "tv",
       "year": 2026,
       "origin": "KR",
       "originName": "South Korea",
-      "platform": "Cinemas",
+      "platform": "",
       "platforms": [],
-      "tmdbId": "1058424",
-      "poster": "https://image.tmdb.org/t/p/w780/1n37BJchWHLiSYQkuFxe5KjB951.jpg",
-      "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on the community. But all is not as it seems, and perceptions can be misleading. What begins as ignorance plants the seed of disaster, escalating through human conflict into a tragedy of cosmic proportions.",
+      "tmdbId": "303745",
+      "poster": "https://image.tmdb.org/t/p/w780/kSAXIAovLC4z7Wp2Hy8oqLmpkox.jpg",
+      "description": "Taekang Group's successor, Yoon Yi-jun, is the prime suspect of a shocking murder. To uncover the truth, Kang Jae-hee goes undercover as a male secretary to keep an eye on Yi-jun. The closer they get to what really happened, the closer Yi-jun and Jae-hee become. Will Jae-hee, who is hiding her identity, and Yi-jun, who is hiding a secret, be able to let their true feelings be known to one another?",
       "genre": [
-        "Science Fiction",
-        "Mystery",
-        "Action"
+        "Comedy",
+        "Drama",
+        "Crime",
+        "Action & Adventure"
       ],
       "inLanguage": "ko",
       "cast": [
-        "Hwang Jung-min",
-        "Zo In-sung",
-        "Hoyeon",
-        "Alicia Vikander"
-      ],
-      "runtimeMinutes": 157,
-      "contentRating": "R",
-      "voteAverage": 6.88,
-      "previewUrl": "https://www.youtube.com/watch?v=OFaJzL83y0Q",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-25"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-10"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1058424/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home",
-            "Plex"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-09-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1058424"
-      },
-      "sourceRank": 7,
-      "keywords": [
-        "Hope",
-        "Hope 2026",
-        "where to watch Hope",
-        "Science Fiction movie",
-        "Mystery movie",
-        "Action movie",
-        "Hwang Jung-min",
-        "Zo In-sung"
-      ],
-      "longTailKeywords": [
-        "where to watch Hope 2026",
-        "Hope streaming in Brazil and United States",
-        "Hope cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Hope (2026) | MatchApp Ai",
-        "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on",
-        "keywords": [
-          "Hope",
-          "Hope 2026",
-          "where to watch Hope",
-          "Science Fiction movie",
-          "Mystery movie",
-          "Action movie",
-          "Hwang Jung-min",
-          "Zo In-sung",
-          "where to watch Hope 2026",
-          "Hope streaming in Brazil and United States",
-          "Hope cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
-        ],
-        "canonicalQuery": "Hope"
-      }
-    },
-    {
-      "title": "Carrie",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Amazon Prime Video",
-      "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads",
-        "Amazon MX Player"
-      ],
-      "tmdbId": "288673",
-      "poster": "https://image.tmdb.org/t/p/w780/6mUMquPQBFJGqTACS3Azkwwrx8d.jpg",
-      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social‑media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
-      "genre": [
-        "Mystery",
-        "Drama",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Summer H. Howell",
-        "Samantha Sloyan",
-        "Siena Agudong",
-        "Alison Thornton"
+        "Yim Si-wan",
+        "Seorina",
+        "Kim Jung-hyun",
+        "Yeon Woo"
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-MA",
-      "voteAverage": 8.35,
-      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "voteAverage": 1,
+      "previewUrl": "https://www.youtube.com/watch?v=Q7Xj7sASXSU",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/303745"
+      },
+      "sourceRank": 7,
+      "keywords": [
+        "Love in Disguise",
+        "Love in Disguise 2026",
+        "where to watch Love in Disguise",
+        "Comedy series",
+        "Drama series",
+        "Crime series",
+        "Yim Si-wan",
+        "Seorina"
+      ],
+      "longTailKeywords": [
+        "where to watch Love in Disguise 2026",
+        "Love in Disguise streaming in Brazil and United States",
+        "Love in Disguise cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Love in Disguise (2026) | MatchApp Ai",
+        "description": "Taekang Group's successor, Yoon Yi-jun, is the prime suspect of a shocking murder. To uncover the truth, Kang Jae-hee goes undercover as a male secretary to k",
+        "keywords": [
+          "Love in Disguise",
+          "Love in Disguise 2026",
+          "where to watch Love in Disguise",
+          "Comedy series",
+          "Drama series",
+          "Crime series",
+          "Yim Si-wan",
+          "Seorina",
+          "where to watch Love in Disguise 2026",
+          "Love in Disguise streaming in Brazil and United States",
+          "Love in Disguise cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Love in Disguise"
+      }
+    },
+    {
+      "title": "Masterplan",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "FR",
+      "originName": "France",
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
+      ],
+      "tmdbId": "1561726",
+      "poster": "https://image.tmdb.org/t/p/w780/5xmXVd7nCK3tAo34XkO58SxUCip.jpg",
+      "description": "When a legendary thief sets his sights on the Mona Lisa, he recruits two young strangers to help him before revealing they are long-lost siblings… and oh yes, by the way, he is their father. Thrown into a chaotic reunion they never asked for, this new family must learn to work together — and try not to kill each other — if they want any chance at pulling off the heist of the century.",
+      "genre": [
+        "Action",
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Stanley Tucci",
+        "Simona Tabasco",
+        "Victor Belmondo",
+        "Eliott Margueron"
+      ],
+      "runtimeMinutes": 110,
+      "contentRating": "R",
+      "voteAverage": 7.06,
+      "previewUrl": "https://www.youtube.com/watch?v=gc0t8AfMP6k",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=BR",
+          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=BR",
           "rent": [],
           "stream": [
             "Amazon Prime Video",
@@ -896,7 +839,7 @@
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=GB",
+          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=GB",
           "rent": [],
           "stream": [
             "Amazon Prime Video",
@@ -906,7 +849,7 @@
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=PT",
+          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=PT",
           "rent": [],
           "stream": [
             "Amazon Prime Video"
@@ -915,155 +858,167 @@
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=US",
+          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=US",
           "rent": [],
           "stream": [
             "Amazon Prime Video",
-            "Amazon Prime Video with Ads",
-            "Amazon Prime Video Free with Ads",
-            "Amazon MX Player"
+            "Amazon Prime Video with Ads"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/288673"
+        "source_page_url": "https://www.themoviedb.org/movie/1561726"
       },
       "sourceRank": 8,
       "keywords": [
-        "Carrie",
-        "Carrie 2026",
-        "where to watch Carrie",
-        "Mystery series",
-        "Drama series",
-        "Sci-Fi & Fantasy series",
-        "Amazon Prime Video trending series",
-        "Amazon Prime Video with Ads trending series",
-        "Summer H. Howell",
-        "Samantha Sloyan"
-      ],
-      "longTailKeywords": [
-        "where to watch Carrie 2026",
-        "Carrie streaming in Brazil and United States",
-        "Carrie cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Carrie (2026) | MatchApp Ai",
-        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
-        "keywords": [
-          "Carrie",
-          "Carrie 2026",
-          "where to watch Carrie",
-          "Mystery series",
-          "Drama series",
-          "Sci-Fi & Fantasy series",
-          "Amazon Prime Video trending series",
-          "Amazon Prime Video with Ads trending series",
-          "Summer H. Howell",
-          "Samantha Sloyan",
-          "where to watch Carrie 2026",
-          "Carrie streaming in Brazil and United States",
-          "Carrie cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
-        ],
-        "canonicalQuery": "Carrie"
-      }
-    },
-    {
-      "title": "Street Fighter",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1153576",
-      "poster": "https://image.tmdb.org/t/p/w780/pwUb3gdkSrlyMZWs0MFOQg3N5s7.jpg",
-      "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tournament: a brutal clash of fists, fate, and fury. But behind this battle royale lies a deadly conspiracy that forces them to face off against each other and the demons of their past. And if they don't, it's GAME OVER!",
-      "genre": [
-        "Action",
-        "Fantasy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Andrew Koji",
-        "Noah Centineo",
-        "Callina Liang",
-        "David Dastmalchian"
-      ],
-      "runtimeMinutes": 120,
-      "contentRating": "PG-13",
-      "voteAverage": 6.25,
-      "previewUrl": "https://www.youtube.com/watch?v=U6sbm1OaJb8",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-15"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-16"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-15"
-        },
-        "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1153576-street-fighter/watch?locale=US",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-16"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1153576"
-      },
-      "sourceRank": 9,
-      "keywords": [
-        "Street Fighter",
-        "Street Fighter 2026",
-        "where to watch Street Fighter",
+        "Masterplan",
+        "Masterplan 2026",
+        "where to watch Masterplan",
         "Action movie",
-        "Fantasy movie",
-        "Andrew Koji",
-        "Noah Centineo"
+        "Thriller movie",
+        "Amazon Prime Video trending movie",
+        "Amazon Prime Video with Ads trending movie",
+        "Stanley Tucci",
+        "Simona Tabasco"
       ],
       "longTailKeywords": [
-        "where to watch Street Fighter 2026",
-        "Street Fighter streaming in Brazil and United States",
-        "Street Fighter cast synopsis trailer and where to watch",
+        "where to watch Masterplan 2026",
+        "Masterplan streaming in Brazil and United States",
+        "Masterplan cast synopsis trailer and where to watch",
         "what Action to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Street Fighter (2026) | MatchApp Ai",
-        "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tourna",
+        "title": "Where to watch Masterplan (2026) | MatchApp Ai",
+        "description": "When a legendary thief sets his sights on the Mona Lisa, he recruits two young strangers to help him before revealing they are long-lost siblings… and oh yes,",
         "keywords": [
-          "Street Fighter",
-          "Street Fighter 2026",
-          "where to watch Street Fighter",
+          "Masterplan",
+          "Masterplan 2026",
+          "where to watch Masterplan",
           "Action movie",
-          "Fantasy movie",
-          "Andrew Koji",
-          "Noah Centineo",
-          "where to watch Street Fighter 2026",
-          "Street Fighter streaming in Brazil and United States",
-          "Street Fighter cast synopsis trailer and where to watch",
+          "Thriller movie",
+          "Amazon Prime Video trending movie",
+          "Amazon Prime Video with Ads trending movie",
+          "Stanley Tucci",
+          "Simona Tabasco",
+          "where to watch Masterplan 2026",
+          "Masterplan streaming in Brazil and United States",
+          "Masterplan cast synopsis trailer and where to watch",
           "what Action to watch this week"
         ],
-        "canonicalQuery": "Street Fighter"
+        "canonicalQuery": "Masterplan"
+      }
+    },
+    {
+      "title": "Tenzing",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "AU",
+      "originName": "Australia",
+      "platform": "Apple TV",
+      "platforms": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "tmdbId": "1288069",
+      "poster": "https://image.tmdb.org/t/p/w780/eI0QW02PYqhnmIvLRdn9vrfVVP7.jpg",
+      "description": "A determined man embarks on a high-stakes quest—and defies seemingly impossible odds—to fulfill his dream of being the first to reach the summit of Mount Everest.",
+      "genre": [
+        "Drama",
+        "History"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Genden Phuntsok",
+        "Tom Hiddleston",
+        "Willem Dafoe",
+        "Samdrup Dorje Lama"
+      ],
+      "runtimeMinutes": 126,
+      "contentRating": "PG",
+      "voteAverage": 8.33,
+      "previewUrl": "https://www.youtube.com/watch?v=KkYCY5YR12U",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Apple TV"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": "2026-10-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1288069"
+      },
+      "sourceRank": 9,
+      "keywords": [
+        "Tenzing",
+        "Tenzing 2026",
+        "where to watch Tenzing",
+        "Drama movie",
+        "History movie",
+        "Apple TV trending movie",
+        "Apple TV Amazon Channel trending movie",
+        "Genden Phuntsok",
+        "Tom Hiddleston"
+      ],
+      "longTailKeywords": [
+        "where to watch Tenzing 2026",
+        "Tenzing streaming in Brazil and United States",
+        "Tenzing cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Tenzing (2026) | MatchApp Ai",
+        "description": "A determined man embarks on a high-stakes quest—and defies seemingly impossible odds—to fulfill his dream of being the first to reach the summit of Mount Ever",
+        "keywords": [
+          "Tenzing",
+          "Tenzing 2026",
+          "where to watch Tenzing",
+          "Drama movie",
+          "History movie",
+          "Apple TV trending movie",
+          "Apple TV Amazon Channel trending movie",
+          "Genden Phuntsok",
+          "Tom Hiddleston",
+          "where to watch Tenzing 2026",
+          "Tenzing streaming in Brazil and United States",
+          "Tenzing cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Tenzing"
       }
     },
     {
@@ -1126,83 +1081,377 @@
       "sourceRank": 3
     },
     {
-      "title": "VisionQuest",
+      "title": "Bleach",
       "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
+      "year": 2004,
+      "origin": "JP",
+      "originName": "Japan",
       "platform": "Disney Plus",
       "platforms": [
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
-      "tmdbId": "213375",
-      "poster": "https://image.tmdb.org/t/p/w780/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
-      "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+      "tmdbId": "30984",
+      "poster": "https://image.tmdb.org/t/p/w780/2EewmxXe72ogD0EaWM8gqa0ccIw.jpg",
+      "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows, he finds his life is changed forever. Now, with a newfound wealth of spiritual energy, Ichigo discovers his true calling: to protect the living and the dead from evil.",
       "genre": [
-        "Sci-Fi & Fantasy",
-        "Drama"
+        "Action & Adventure",
+        "Animation",
+        "Sci-Fi & Fantasy"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ja",
       "cast": [
-        "Paul Bettany",
-        "James Spader",
-        "Ruaridh Mollica",
-        "Todd Stashwick"
+        "Masakazu Morita",
+        "Fumiko Orikasa",
+        "Hiroki Yasumoto",
+        "Yuki Matsuoka"
       ],
-      "runtimeMinutes": null,
+      "runtimeMinutes": 24,
       "contentRating": "TV-14",
-      "voteAverage": 8.83,
-      "previewUrl": "https://www.youtube.com/watch?v=sXKnmgmbkoE",
+      "voteAverage": 8.35,
+      "previewUrl": "https://www.youtube.com/watch?v=0c4IoCA5fY0",
       "availability": {
-        "US": {
+        "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=BR",
           "rent": [],
           "stream": [
             "Disney Plus"
           ],
           "cinema_release_date": null
         },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Hulu"
+          ],
+          "cinema_release_date": null
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/213375"
+        "source_page_url": "https://www.themoviedb.org/tv/30984"
       },
       "sourceRank": 10,
       "keywords": [
-        "VisionQuest",
-        "VisionQuest 2026",
-        "where to watch VisionQuest",
+        "Bleach",
+        "Bleach 2004",
+        "where to watch Bleach",
+        "Action & Adventure series",
+        "Animation series",
         "Sci-Fi & Fantasy series",
-        "Drama series",
         "Disney Plus trending series",
-        "Paul Bettany",
-        "James Spader"
+        "Hulu trending series",
+        "Masakazu Morita",
+        "Fumiko Orikasa"
       ],
       "longTailKeywords": [
-        "where to watch VisionQuest 2026",
-        "VisionQuest streaming in Brazil and United States",
-        "VisionQuest cast synopsis trailer and where to watch",
-        "what Sci-Fi & Fantasy to watch this week"
+        "where to watch Bleach 2004",
+        "Bleach streaming in Brazil and United States",
+        "Bleach cast synopsis trailer and where to watch",
+        "what Action & Adventure to watch this week"
       ],
       "seo": {
-        "title": "Where to watch VisionQuest (2026) | MatchApp Ai",
-        "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+        "title": "Where to watch Bleach (2004) | MatchApp Ai",
+        "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows,",
         "keywords": [
-          "VisionQuest",
-          "VisionQuest 2026",
-          "where to watch VisionQuest",
+          "Bleach",
+          "Bleach 2004",
+          "where to watch Bleach",
+          "Action & Adventure series",
+          "Animation series",
           "Sci-Fi & Fantasy series",
-          "Drama series",
           "Disney Plus trending series",
-          "Paul Bettany",
-          "James Spader",
-          "where to watch VisionQuest 2026",
-          "VisionQuest streaming in Brazil and United States",
-          "VisionQuest cast synopsis trailer and where to watch",
-          "what Sci-Fi & Fantasy to watch this week"
+          "Hulu trending series",
+          "Masakazu Morita",
+          "Fumiko Orikasa",
+          "where to watch Bleach 2004",
+          "Bleach streaming in Brazil and United States",
+          "Bleach cast synopsis trailer and where to watch",
+          "what Action & Adventure to watch this week"
         ],
-        "canonicalQuery": "VisionQuest"
+        "canonicalQuery": "Bleach"
       }
+    },
+    {
+      "title": "Hope",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "KR",
+      "originName": "South Korea",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1058424",
+      "poster": "https://image.tmdb.org/t/p/w780/6VY1ZKgpsc8CfGsQcCGiYEgHdH0.jpg",
+      "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on the community. But all is not as it seems, and perceptions can be misleading. What begins as ignorance plants the seed of disaster, escalating through human conflict into a tragedy of cosmic proportions.",
+      "genre": [
+        "Science Fiction",
+        "Mystery",
+        "Action"
+      ],
+      "inLanguage": "ko",
+      "cast": [
+        "Hwang Jung-min",
+        "Zo In-sung",
+        "Hoyeon",
+        "Alicia Vikander"
+      ],
+      "runtimeMinutes": 157,
+      "contentRating": "R",
+      "voteAverage": 6.89,
+      "previewUrl": "https://www.youtube.com/watch?v=OFaJzL83y0Q",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-08"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-25"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1058424/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home",
+            "Plex"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-09-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1058424"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Hope",
+        "Hope 2026",
+        "where to watch Hope",
+        "Science Fiction movie",
+        "Mystery movie",
+        "Action movie",
+        "Hwang Jung-min",
+        "Zo In-sung"
+      ],
+      "longTailKeywords": [
+        "where to watch Hope 2026",
+        "Hope streaming in Brazil and United States",
+        "Hope cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Hope (2026) | MatchApp Ai",
+        "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on",
+        "keywords": [
+          "Hope",
+          "Hope 2026",
+          "where to watch Hope",
+          "Science Fiction movie",
+          "Mystery movie",
+          "Action movie",
+          "Hwang Jung-min",
+          "Zo In-sung",
+          "where to watch Hope 2026",
+          "Hope streaming in Brazil and United States",
+          "Hope cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
+        ],
+        "canonicalQuery": "Hope"
+      }
+    },
+    {
+      "title": "Street Fighter",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1153576",
+      "poster": "https://image.tmdb.org/t/p/w780/pwUb3gdkSrlyMZWs0MFOQg3N5s7.jpg",
+      "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tournament: a brutal clash of fists, fate, and fury. But behind this battle royale lies a deadly conspiracy that forces them to face off against each other and the demons of their past. And if they don't, it's GAME OVER!",
+      "genre": [
+        "Action",
+        "Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Andrew Koji",
+        "Noah Centineo",
+        "Callina Liang",
+        "David Dastmalchian"
+      ],
+      "runtimeMinutes": 120,
+      "contentRating": "PG-13",
+      "voteAverage": 6.28,
+      "previewUrl": "https://www.youtube.com/watch?v=U6sbm1OaJb8",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
+        },
+        "US": {
+          "buy": [
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1153576-street-fighter/watch?locale=US",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1153576"
+      },
+      "sourceRank": 12,
+      "keywords": [
+        "Street Fighter",
+        "Street Fighter 2026",
+        "where to watch Street Fighter",
+        "Action movie",
+        "Fantasy movie",
+        "Andrew Koji",
+        "Noah Centineo"
+      ],
+      "longTailKeywords": [
+        "where to watch Street Fighter 2026",
+        "Street Fighter streaming in Brazil and United States",
+        "Street Fighter cast synopsis trailer and where to watch",
+        "what Action to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Street Fighter (2026) | MatchApp Ai",
+        "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tourna",
+        "keywords": [
+          "Street Fighter",
+          "Street Fighter 2026",
+          "where to watch Street Fighter",
+          "Action movie",
+          "Fantasy movie",
+          "Andrew Koji",
+          "Noah Centineo",
+          "where to watch Street Fighter 2026",
+          "Street Fighter streaming in Brazil and United States",
+          "Street Fighter cast synopsis trailer and where to watch",
+          "what Action to watch this week"
+        ],
+        "canonicalQuery": "Street Fighter"
+      }
+    },
+    {
+      "title": "ROSÉ — new trick",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
+      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
+      "artist": "ROSÉ",
+      "songTitle": "new trick",
+      "publishedAt": "2026-09-17T23:00:06Z",
+      "viewCount": 50148189,
+      "viewCountCheckedAt": "2026-10-04",
+      "channel": "ROSÉ",
+      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
+      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "ROSÉ",
+        "new trick",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "ROSÉ new music video",
+        "Dave Meyers",
+        "Shot on iPhone 18 Pro",
+        "ROSÉ new trick official music video",
+        "ROSÉ music videos",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "ROSÉ new trick official music video YouTube",
+        "where to watch ROSÉ new trick music video",
+        "new ROSÉ music video 2026",
+        "ROSÉ new trick release date",
+        "ROSÉ new trick YouTube views"
+      ],
+      "seo": {
+        "title": "ROSÉ — new trick official music video | MatchApp Ai",
+        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+        "keywords": [
+          "ROSÉ",
+          "new trick",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "Dave Meyers",
+          "Shot on iPhone 18 Pro",
+          "ROSÉ new trick official music video",
+          "ROSÉ music videos",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "ROSÉ new trick official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 4
     },
     {
       "title": "Spider-Man: Brand New Day",
@@ -1304,7 +1553,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/969681"
       },
-      "sourceRank": 11,
+      "sourceRank": 13,
       "keywords": [
         "Spider-Man: Brand New Day",
         "Spider-Man: Brand New Day 2026",
@@ -1344,6 +1593,85 @@
       }
     },
     {
+      "title": "VisionQuest",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Disney Plus",
+      "platforms": [
+        "Disney Plus"
+      ],
+      "tmdbId": "213375",
+      "poster": "https://image.tmdb.org/t/p/w780/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
+      "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+      "genre": [
+        "Sci-Fi & Fantasy",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Paul Bettany",
+        "James Spader",
+        "Ruaridh Mollica",
+        "Todd Stashwick"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-14",
+      "voteAverage": 8.8,
+      "previewUrl": "https://www.youtube.com/watch?v=sXKnmgmbkoE",
+      "availability": {
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/213375"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "VisionQuest",
+        "VisionQuest 2026",
+        "where to watch VisionQuest",
+        "Sci-Fi & Fantasy series",
+        "Drama series",
+        "Disney Plus trending series",
+        "Paul Bettany",
+        "James Spader"
+      ],
+      "longTailKeywords": [
+        "where to watch VisionQuest 2026",
+        "VisionQuest streaming in Brazil and United States",
+        "VisionQuest cast synopsis trailer and where to watch",
+        "what Sci-Fi & Fantasy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch VisionQuest (2026) | MatchApp Ai",
+        "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+        "keywords": [
+          "VisionQuest",
+          "VisionQuest 2026",
+          "where to watch VisionQuest",
+          "Sci-Fi & Fantasy series",
+          "Drama series",
+          "Disney Plus trending series",
+          "Paul Bettany",
+          "James Spader",
+          "where to watch VisionQuest 2026",
+          "VisionQuest streaming in Brazil and United States",
+          "VisionQuest cast synopsis trailer and where to watch",
+          "what Sci-Fi & Fantasy to watch this week"
+        ],
+        "canonicalQuery": "VisionQuest"
+      }
+    },
+    {
       "title": "Extraordinary Attorney Minami",
       "kind": "tv",
       "year": 2026,
@@ -1373,7 +1701,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/332713"
       },
-      "sourceRank": 12,
+      "sourceRank": 15,
       "keywords": [
         "Extraordinary Attorney Minami",
         "Extraordinary Attorney Minami 2026",
@@ -1407,504 +1735,122 @@
       }
     },
     {
-      "title": "ROSÉ — new trick",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
-      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
-      "artist": "ROSÉ",
-      "songTitle": "new trick",
-      "publishedAt": "2026-09-17T23:00:06Z",
-      "viewCount": 50148189,
-      "viewCountCheckedAt": "2026-10-04",
-      "channel": "ROSÉ",
-      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
-      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "ROSÉ",
-        "new trick",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "ROSÉ new music video",
-        "Dave Meyers",
-        "Shot on iPhone 18 Pro",
-        "ROSÉ new trick official music video",
-        "ROSÉ music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "ROSÉ new trick official music video YouTube",
-        "where to watch ROSÉ new trick music video",
-        "new ROSÉ music video 2026",
-        "ROSÉ new trick release date",
-        "ROSÉ new trick YouTube views"
-      ],
-      "seo": {
-        "title": "ROSÉ — new trick official music video | MatchApp Ai",
-        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
-        "keywords": [
-          "ROSÉ",
-          "new trick",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "Dave Meyers",
-          "Shot on iPhone 18 Pro",
-          "ROSÉ new trick official music video",
-          "ROSÉ music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "ROSÉ new trick official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 4
-    },
-    {
-      "title": "Therapy Done Right",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "AR",
-      "originName": "AR",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "1487317",
-      "poster": "https://image.tmdb.org/t/p/w780/2gJiHJYhPXQy4ovDD5ZvSjwYfMZ.jpg",
-      "description": "A psychoanalyst who's lost faith in traditional therapy crosses every boundary to help a blocked novelist in this cutting Argentine dark comedy.",
-      "genre": [
-        "Comedy",
-        "Drama"
-      ],
-      "inLanguage": "es",
-      "cast": [
-        "Ricardo Darín",
-        "Diego Peretti",
-        "Inés Efrón",
-        "Carlos Santamaría"
-      ],
-      "runtimeMinutes": 97,
-      "contentRating": "R",
-      "voteAverage": 7.69,
-      "previewUrl": "https://www.youtube.com/watch?v=DgZQwmjdcp8",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1487317-lo-dejamos-aca/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1487317-lo-dejamos-aca/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1487317-lo-dejamos-aca/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1487317-lo-dejamos-aca/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1487317"
-      },
-      "sourceRank": 13,
-      "keywords": [
-        "Therapy Done Right",
-        "Therapy Done Right 2026",
-        "where to watch Therapy Done Right",
-        "Comedy movie",
-        "Drama movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Ricardo Darín",
-        "Diego Peretti"
-      ],
-      "longTailKeywords": [
-        "where to watch Therapy Done Right 2026",
-        "Therapy Done Right streaming in Brazil and United States",
-        "Therapy Done Right cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Therapy Done Right (2026) | MatchApp Ai",
-        "description": "A psychoanalyst who's lost faith in traditional therapy crosses every boundary to help a blocked novelist in this cutting Argentine dark comedy.",
-        "keywords": [
-          "Therapy Done Right",
-          "Therapy Done Right 2026",
-          "where to watch Therapy Done Right",
-          "Comedy movie",
-          "Drama movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Ricardo Darín",
-          "Diego Peretti",
-          "where to watch Therapy Done Right 2026",
-          "Therapy Done Right streaming in Brazil and United States",
-          "Therapy Done Right cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Therapy Done Right"
-      }
-    },
-    {
-      "title": "Dragon Ball Super: Beerus",
+      "title": "Carrie",
       "kind": "tv",
-      "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "HBO Max",
-        "Crunchyroll",
-        "Netflix Standard with Ads",
-        "Crunchyroll Amazon Channel",
-        "Hulu"
-      ],
-      "tmdbId": "312359",
-      "poster": "https://image.tmdb.org/t/p/w780/AojgldgsOlzZV8ahyOzaiAjJWvV.jpg",
-      "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemastered and re-edited version of Dragon Ball Super.",
-      "genre": [
-        "Animation",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Masako Nozawa",
-        "Ryo Horikawa",
-        "Naoko Watanabe",
-        "Unsho Ishizuka"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-PG",
-      "voteAverage": 9.73,
-      "previewUrl": "https://www.youtube.com/watch?v=iCD3Lf7Jf9o",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/312359/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "HBO Max",
-            "Crunchyroll",
-            "Netflix Standard with Ads",
-            "Crunchyroll Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/312359/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/312359/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/312359/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Hulu",
-            "Crunchyroll",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/312359"
-      },
-      "sourceRank": 14,
-      "keywords": [
-        "Dragon Ball Super: Beerus",
-        "Dragon Ball Super: Beerus 2026",
-        "where to watch Dragon Ball Super: Beerus",
-        "Animation series",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Netflix trending series",
-        "HBO Max trending series",
-        "Masako Nozawa",
-        "Ryo Horikawa"
-      ],
-      "longTailKeywords": [
-        "where to watch Dragon Ball Super: Beerus 2026",
-        "Dragon Ball Super: Beerus streaming in Brazil and United States",
-        "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Dragon Ball Super: Beerus (2026) | MatchApp Ai",
-        "description": "When Beerus, the God of Destruction, awakens in search of a worthy rival, Goku and his friends face an epic battle to stop him from destroying Earth.\n\nRemaste",
-        "keywords": [
-          "Dragon Ball Super: Beerus",
-          "Dragon Ball Super: Beerus 2026",
-          "where to watch Dragon Ball Super: Beerus",
-          "Animation series",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Netflix trending series",
-          "HBO Max trending series",
-          "Masako Nozawa",
-          "Ryo Horikawa",
-          "where to watch Dragon Ball Super: Beerus 2026",
-          "Dragon Ball Super: Beerus streaming in Brazil and United States",
-          "Dragon Ball Super: Beerus cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Dragon Ball Super: Beerus"
-      }
-    },
-    {
-      "title": "Bleach",
-      "kind": "tv",
-      "year": 2004,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "Disney Plus",
-      "platforms": [
-        "Disney Plus",
-        "Hulu"
-      ],
-      "tmdbId": "30984",
-      "poster": "https://image.tmdb.org/t/p/w780/2EewmxXe72ogD0EaWM8gqa0ccIw.jpg",
-      "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows, he finds his life is changed forever. Now, with a newfound wealth of spiritual energy, Ichigo discovers his true calling: to protect the living and the dead from evil.",
-      "genre": [
-        "Action & Adventure",
-        "Animation",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Masakazu Morita",
-        "Fumiko Orikasa",
-        "Hiroki Yasumoto",
-        "Yuki Matsuoka"
-      ],
-      "runtimeMinutes": 24,
-      "contentRating": "TV-14",
-      "voteAverage": 8.4,
-      "previewUrl": "https://www.youtube.com/watch?v=0c4IoCA5fY0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Hulu"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/30984"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Bleach",
-        "Bleach 2004",
-        "where to watch Bleach",
-        "Action & Adventure series",
-        "Animation series",
-        "Sci-Fi & Fantasy series",
-        "Disney Plus trending series",
-        "Hulu trending series",
-        "Masakazu Morita",
-        "Fumiko Orikasa"
-      ],
-      "longTailKeywords": [
-        "where to watch Bleach 2004",
-        "Bleach streaming in Brazil and United States",
-        "Bleach cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Bleach (2004) | MatchApp Ai",
-        "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows,",
-        "keywords": [
-          "Bleach",
-          "Bleach 2004",
-          "where to watch Bleach",
-          "Action & Adventure series",
-          "Animation series",
-          "Sci-Fi & Fantasy series",
-          "Disney Plus trending series",
-          "Hulu trending series",
-          "Masakazu Morita",
-          "Fumiko Orikasa",
-          "where to watch Bleach 2004",
-          "Bleach streaming in Brazil and United States",
-          "Bleach cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
-        ],
-        "canonicalQuery": "Bleach"
-      }
-    },
-    {
-      "title": "Whalefall",
-      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1255833",
-      "poster": "https://image.tmdb.org/t/p/w780/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
-      "description": "Following the death of his father, Jay Gardiner goes diving off the central Coast of California in search of his remains, but is swallowed by a massive sperm whale. While trapped inside its belly with only one hour of oxygen left, Jay comes to realize that the hard-earned lessons his father imparted may be the key to his escape.",
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
+      ],
+      "tmdbId": "288673",
+      "poster": "https://image.tmdb.org/t/p/w780/6mUMquPQBFJGqTACS3Azkwwrx8d.jpg",
+      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social‑media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
       "genre": [
-        "Thriller"
+        "Mystery",
+        "Drama",
+        "Sci-Fi & Fantasy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Austin Abrams",
-        "Josh Brolin",
-        "Elisabeth Shue",
-        "John Ortiz"
+        "Summer H. Howell",
+        "Samantha Sloyan",
+        "Siena Agudong",
+        "Alison Thornton"
       ],
-      "runtimeMinutes": 106,
-      "contentRating": "PG-13",
-      "voteAverage": 6.76,
-      "previewUrl": "https://www.youtube.com/watch?v=Dw-5ZGapGTQ",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.34,
+      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
       "availability": {
         "BR": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=BR",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-15"
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=GB",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-16"
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=PT",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-15"
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=US",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-16"
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads",
+            "Amazon Prime Video Free with Ads",
+            "Amazon MX Player"
+          ],
+          "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1255833"
+        "source_page_url": "https://www.themoviedb.org/tv/288673"
       },
       "sourceRank": 16,
       "keywords": [
-        "Whalefall",
-        "Whalefall 2026",
-        "where to watch Whalefall",
-        "Thriller movie",
-        "Austin Abrams",
-        "Josh Brolin"
+        "Carrie",
+        "Carrie 2026",
+        "where to watch Carrie",
+        "Mystery series",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
+        "Summer H. Howell",
+        "Samantha Sloyan"
       ],
       "longTailKeywords": [
-        "where to watch Whalefall 2026",
-        "Whalefall streaming in Brazil and United States",
-        "Whalefall cast synopsis trailer and where to watch",
-        "what Thriller to watch this week"
+        "where to watch Carrie 2026",
+        "Carrie streaming in Brazil and United States",
+        "Carrie cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Whalefall (2026) | MatchApp Ai",
-        "description": "Following the death of his father, Jay Gardiner goes diving off the central Coast of California in search of his remains, but is swallowed by a massive sperm ",
+        "title": "Where to watch Carrie (2026) | MatchApp Ai",
+        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
         "keywords": [
-          "Whalefall",
-          "Whalefall 2026",
-          "where to watch Whalefall",
-          "Thriller movie",
-          "Austin Abrams",
-          "Josh Brolin",
-          "where to watch Whalefall 2026",
-          "Whalefall streaming in Brazil and United States",
-          "Whalefall cast synopsis trailer and where to watch",
-          "what Thriller to watch this week"
+          "Carrie",
+          "Carrie 2026",
+          "where to watch Carrie",
+          "Mystery series",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
+          "Summer H. Howell",
+          "Samantha Sloyan",
+          "where to watch Carrie 2026",
+          "Carrie streaming in Brazil and United States",
+          "Carrie cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Whalefall"
+        "canonicalQuery": "Carrie"
       }
     }
   ]
