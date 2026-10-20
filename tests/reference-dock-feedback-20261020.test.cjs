@@ -52,5 +52,5 @@ test('destination signatures obey sound mute, both speech owners, reduced motion
 });
 test('hidden or disabled navigation stays silent and destination attributes outside the dock keep existing generic feedback',async()=>{
  for(const hidden of [false,true]){const f=fixture();try{if(hidden)Object.defineProperty(f.w.document,'hidden',{get:()=>true});else f.w.document.getElementById('profile').setAttribute('aria-disabled','true');f.activate('profile');await tick();assert.equal(f.stats.notes.length,0);assert.equal(f.stats.vibrations.length,0);}finally{f.close()}}
- const f=fixture();try{f.activate('other');assert.equal(f.stats.notes.length,0,'unrelated links retain their existing deferred cue');await tick();assert.equal(f.stats.notes.length,3);assert.equal(f.stats.notes[0],659.25);assert.equal(f.stats.fetches.length,1);assert.equal(f.stats.vibrations.length,1);}finally{f.close()}
+ const f=fixture();try{f.activate('other');assert.equal(f.stats.notes.length,0,'unrelated links retain their existing deferred cue');await tick();assert.equal(f.stats.notes.length,3);assert.equal(f.stats.notes[0],659.25);assert.equal(f.stats.fetches.length,0,'original reel synthesis requires no asset fetch');assert.equal(f.stats.vibrations.length,1);}finally{f.close()}
 });

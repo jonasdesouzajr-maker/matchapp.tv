@@ -90,17 +90,20 @@ Deno.serve(async(req:Request)=>{
     let state=await proBillingState(db,user.id);
     const legacy=await verifiedLegacySubscription(db,stripe,user.id);
     if(action==='status'){
+      let checkoutDelivered=false;
       if(body.sessionId!==undefined){
-        await confirmProCheckout(db,stripe,String(body.sessionId),user.id);
+        const delivery=await confirmProCheckout(db,stripe,String(body.sessionId),user.id);
+        checkoutDelivered=delivery.delivered===true;
         state=await proBillingState(db,user.id);
       }
-      let result=publicProBillingState(state,legacy);
+      const checkoutFeedback=body.sessionId!==undefined?{checkoutDelivered}:{};
+      let result={...publicProBillingState(state,legacy),...checkoutFeedback};
       const entry=latestStripe(state);
       if(entry&&result.provider==='stripe'&&!legacy.hasLegacySubscription){
         // Read current provider state before offering retention. Status failures
         // never manufacture an offer or a paid entitlement.
         const current=await syncProSubscription(db,stripe,entry.external_id,user.id);
-        state=await proBillingState(db,user.id);result=publicProBillingState(state,legacy);
+        state=await proBillingState(db,user.id);result={...publicProBillingState(state,legacy),...checkoutFeedback};
         if(current.retentionEligible&&result.entitled&&result.provider==='stripe')return reply({...result,retentionEligible:true,
           retentionOffer:{percentOff:50,months:3}});
       }
