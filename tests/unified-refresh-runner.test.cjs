@@ -5,6 +5,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const os=require('node:os');
 const path=require('node:path');
+const {execFileSync}=require('node:child_process');
 const {generationPlan,generate,validateMetadata}=require('../tools/unified-refresh.cjs');
 
 const repository=path.resolve(__dirname,'..');
@@ -84,7 +85,8 @@ test('successful generation invokes real Node child argv once per stage and save
  assert.equal(calls.length,generationPlan.length);
  assert.equal(result.status,'success');
  assert.equal(result.runId,process.env.GITHUB_RUN_ID||null);
- assert.equal(result.sourceSha,process.env.GITHUB_SHA||null);
+ assert.equal(result.sourceSha,null,'a fixture without a checkout must not invent provenance from the trigger');
+ assert.equal(result.triggerSha,process.env.GITHUB_SHA||null);
  assert.deepEqual(result.metadata,validateMetadata(root));
  assert.deepEqual(ledger(root),result);
  assert.deepEqual(result.steps.map(s=>s.name),generationPlan.map(([name])=>name));
@@ -94,6 +96,31 @@ test('successful generation invokes real Node child argv once per stage and save
  }
  assert.ok(Date.parse(result.completedAt)>Date.parse(result.steps.at(-1).completedAt));
  assert.ok(calls.every(([,args])=>!args.some(arg=>/publish|deploy|commit|dispatch/.test(arg))),'source runner must not publish');
+});
+
+test('generation provenance follows actual checkout HEAD after a rebuild instead of the original trigger SHA',t=>{
+ const root=fixture(t);
+ const git=args=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
+ git(['init','-q']);
+ git(['config','user.name','Refresh fixture']);
+ git(['config','user.email','fixture@example.invalid']);
+ git(['commit','--allow-empty','-qm','Original source']);
+ const original=git(['rev-parse','HEAD']);
+ const previous=process.env.GITHUB_SHA;
+ process.env.GITHUB_SHA=original;
+ try{
+  const first=generateFixture(root,{run:()=>({status:0})});
+  assert.equal(first.sourceSha,original);
+  git(['commit','--allow-empty','-qm','Fresh source after main advanced']);
+  const current=git(['rev-parse','HEAD']);
+  assert.notEqual(current,original);
+  const rebuilt=generateFixture(root,{run:()=>({status:0})});
+  assert.equal(rebuilt.sourceSha,current);
+  assert.equal(rebuilt.triggerSha,original);
+ }finally{
+  if(previous===undefined)delete process.env.GITHUB_SHA;
+  else process.env.GITHUB_SHA=previous;
+ }
 });
 
 test('failed sports ingestion stops before news, leaves an accurate failed ledger and authorizes no publication',t=>{
