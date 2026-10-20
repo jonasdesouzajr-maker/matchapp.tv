@@ -3,6 +3,7 @@
   'use strict';
   if (window.top !== window || window.MatchAppReferenceHeader || /^\/(kids|private-voice|oauth|android-studio)(\/|$)/.test(location.pathname) || /\/(callback|confirm)\.html$/.test(location.pathname)) return;
   var html=document.documentElement,header=null,space=null,chrome=null,slot=null,active=null,frame=0,resizeObserver=null,returnButton=null,help=null;
+  var launcherPresentation=new WeakMap();
   var positionKey='matchapp-jonas-header-drag-v1',floating=false,preference=null,point=null,drag=null,suppressClick=false,moveListenersInstalled=false;
   try{var saved=JSON.parse(localStorage.getItem(positionKey)||'null');if(Number.isFinite(saved?.x)&&Number.isFinite(saved?.y)){preference={x:Math.max(0,Math.min(1,saved.x)),y:Math.max(0,Math.min(1,saved.y))};floating=true;}}catch(_){}
   var words={en:'App controls',pt:'Controles do app',es:'Controles de la app',fr:'Commandes de l’app',de:'App-Steuerung',it:'Controlli dell’app',tr:'Uygulama kontrolleri',ru:'Управление приложением',ar:'أدوات التطبيق',hi:'ऐप नियंत्रण',id:'Kontrol aplikasi',ja:'アプリの操作',ko:'앱 설정',zh:'应用控制'};
@@ -52,8 +53,33 @@
   function clearLegacyReservation(){
     document.querySelectorAll('.ma-jonas-dock-slot').forEach(function(node){var parent=node.parentElement;node.remove();parent.removeAttribute('data-jonas-reserved');if(parent.classList.contains('ma-jonas-reserve-only'))parent.remove();});
   }
+  function syncLaunchers(root){
+    document.querySelectorAll('#ma-ambient-jonas,#ma-jonas-home').forEach(function(node){
+      var prior=launcherPresentation.get(node);
+      if(!prior){
+        var nativeLegacy=node.id==='ma-jonas-home'&&document.getElementById('ma-ambient-jonas')&&!node.hidden&&node.style.getPropertyValue('display')==='none'&&node.style.getPropertyPriority('display')==='important'&&node.getAttribute('aria-hidden')==='true';
+        prior={display:nativeLegacy?'':node.style.getPropertyValue('display'),displayPriority:nativeLegacy?'':node.style.getPropertyPriority('display'),pointerEvents:node.style.getPropertyValue('pointer-events'),pointerPriority:node.style.getPropertyPriority('pointer-events'),ariaHidden:nativeLegacy?null:node.getAttribute('aria-hidden'),inert:node.hasAttribute('inert'),suppressed:false};
+        launcherPresentation.set(node,prior);
+      }
+      if(node!==root){
+        prior.suppressed=true;delete node.dataset.jonasPlacement;
+        node.style.setProperty('display','none','important');node.style.setProperty('pointer-events','none','important');
+        node.setAttribute('aria-hidden','true');node.setAttribute('inert','');
+      }else if(prior.suppressed){
+        // Restore the original fallback, including its handlers and state,
+        // if the selected launcher is removed. Do not clone/delete owners.
+        [['display',prior.display,prior.displayPriority],['pointer-events',prior.pointerEvents,prior.pointerPriority]].forEach(function(value){if(value[1])node.style.setProperty(value[0],value[1],value[2]);else node.style.removeProperty(value[0]);});
+        if(prior.ariaHidden===null)node.removeAttribute('aria-hidden');else node.setAttribute('aria-hidden',prior.ariaHidden);
+        node.toggleAttribute('inert',prior.inert);prior.suppressed=false;
+      }
+    });
+  }
   function claim(root){
     if(!root||!slot)return false;
+    // Native injection can finish before Home's launcher is parsed. Every
+    // later legacy claim must yield to the same canonical owner, not leave
+    // two launchers painting successive rows of the reserved header slot.
+    root=chooseLauncher()||root;syncLaunchers(root);
     if(active&&active!==root)delete active.dataset.jonasPlacement;
     var changed=active!==root;active=root;clearLegacyReservation();installMove(root);
     root.dataset.jonasPlacement=floating?'dragged':'header';root.dataset.jonasDefaultDock='1';
@@ -155,7 +181,7 @@
       if(late){late.classList.add('ma-reference-header-original');compactOriginal(late);chrome.replaceChildren(late);labelTools();schedule();}
     }
     consolidateFallbackBrand();
-    var launcher=chooseLauncher();if(launcher&&(!owns(launcher)||launcher.parentElement!==(floating?document.body:slot)))claim(launcher);
+    var launcher=chooseLauncher();if(launcher){if(!owns(launcher)||launcher.parentElement!==(floating?document.body:slot))claim(launcher);else syncLaunchers(launcher);}
     // Header builders may insert account/language controls after DOM ready.
     if(changes.some(function(change){return chrome.contains(change.target);}))schedule();
   });
