@@ -2146,35 +2146,35 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     </style>
 
     <script id="mh-footer-fold">
-    /* The SEO footer is fifteen link sections — roughly 3900px on a phone,
-       a third of the whole page. The links earn their place with crawlers,
-       not with someone holding a phone looking for something to watch, so
-       they fold behind one summary at every width. <details> keeps every
-       link in the DOM and in the markup crawlers read, so nothing is lost
-       for search; it just stops being 3900px of scrolling. */
+    /* Keep streaming-guide links in the SEO document while folding their
+       existing sections. Language updates only the same summary text node. */
     (function () {
+      var labels = { en:'Browse all streaming guides', pt:'Ver todos os guias de streaming', es:'Ver todas las guías de streaming',
+        fr:'Voir tous les guides de streaming', de:'Alle Streaming-Guides ansehen', it:'Scopri tutte le guide streaming', tr:'Tüm yayın rehberlerini görüntüle',
+        ru:'Все руководства по стримингу', ar:'عرض جميع أدلة المشاهدة', hi:'स्ट्रीमिंग की सभी गाइड देखें',
+        id:'Lihat semua panduan streaming', ja:'配信ガイドをすべて見る', ko:'모든 스트리밍 가이드 보기', zh:'查看所有流媒体指南' };
+      function paint(sum) {
+        var saved = ''; try { saved = localStorage.getItem('match_lang') || ''; } catch (_) {}
+        var candidates = [saved, window.MATCH_LANG, document.documentElement.lang, 'en'], lang = 'en';
+        for (var i = 0; i < candidates.length; i++) { var key = String(candidates[i] || '').toLowerCase().replace('_','-').split('-')[0]; if (Object.prototype.hasOwnProperty.call(labels, key)) { lang = key; break; } }
+        if (sum && sum.textContent !== labels[lang]) sum.textContent = labels[lang];
+      }
       function fold() {
-        var inner = document.querySelector('.seo-footer-inner');
-        if (!inner || inner.querySelector(':scope > details.seo-fold')) return;
-        var lede = inner.querySelector('.seo-footer-lede');
-        var start = lede ? lede.nextElementSibling : inner.firstElementChild;
-        var legal = inner.querySelector('.seo-footer-legal');
-        var move = [];
+        var inner = document.querySelector('.seo-footer-inner'); if (!inner) return;
+        var existing = inner.querySelector(':scope > details.seo-fold'); if (existing) { paint(existing.querySelector(':scope > summary')); return; }
+        var lede = inner.querySelector('.seo-footer-lede'), start = lede ? lede.nextElementSibling : inner.firstElementChild;
+        var legal = inner.querySelector('.seo-footer-legal'), move = [];
         for (var n = start; n && n !== legal; n = n.nextElementSibling) { if (n.id !== 'ma-donate-support') move.push(n); }
         if (!move.length) return;
-        var d = document.createElement('details');
-        d.className = 'seo-fold';
-        var sum = document.createElement('summary');
-        sum.className = 'seo-fold-summary';
-        sum.textContent = (document.documentElement.lang || 'en').indexOf('pt') === 0
-          ? 'Ver todos os guias de streaming'
-          : 'Browse all streaming guides';
-        d.appendChild(sum);
-        move.forEach(function (el) { d.appendChild(el); });
+        var d = document.createElement('details'); d.className = 'seo-fold';
+        var sum = document.createElement('summary'); sum.className = 'seo-fold-summary'; paint(sum);
+        d.appendChild(sum); move.forEach(function (el) { d.appendChild(el); });
         inner.insertBefore(d, inner.querySelector('#ma-donate-support') || legal);
       }
-      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fold, { once: true });
-      else fold();
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fold, { once: true }); else fold();
+      document.addEventListener('matchapp:langchange', fold);
+      window.addEventListener('matchapp:languagechange', fold);
+      window.addEventListener('storage', function (event) { if (event.key === 'match_lang' || event.key === null) fold(); });
       window.addEventListener('resize', fold);
     })();
     </script>
