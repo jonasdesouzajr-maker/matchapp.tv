@@ -84,7 +84,11 @@ function cinemaAssets(html, relativePath) {
     // Offsets are UTF-16; the HTML encoding limit is measured in UTF-8 bytes.
     if(!charsetRange||charsetBytes>1024){
       const declaration=charsetRange?html.slice(charsetRange.startOffset,charsetRange.endOffset):'<meta charset="UTF-8">';
-      if(charsetRange)remove(charset);
+      if(charsetRange){
+        remove(charset);const edit=edits[edits.length-1],lineStart=Math.max(html.lastIndexOf('\n',edit[0]-1),html.lastIndexOf('\r',edit[0]-1))+1;
+        // A moved standalone declaration must not leave its indentation behind.
+        if(/^[ \t]*$/.test(html.slice(lineStart,edit[0])))edit[0]=lineStart;
+      }
       preloadAt=head.startTag.endOffset;insert(preloadAt,eol+declaration);
     }
     if(preloadURLs.length)insert(preloadAt,eol+preloadURLs.map(url=>'<link rel="preload" as="style" data-cinema-preload="'+PRELOAD_MARKER+'" href="'+escaped(url)+'">').join(eol));
@@ -145,8 +149,9 @@ function referenceRuntimeAssetURL(url){
  const dialogs=new Set(['reference-system.js','profile.js','app.js','passkeys.js','pricing.js','settings.js']);
  const pathname=url.split(/[?#]/)[0];
  if(!/^\/[A-Za-z0-9_./-]+$/.test(pathname))return url;
- const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file))return url;
+ const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file)&&!['brand.css','style.css','adult-page-compact.css'].includes(file))return url;
  const entries=[];if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
+ if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
  if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);
  if(file==='reference-system.css')entries.push(['footer','20261020-1']);

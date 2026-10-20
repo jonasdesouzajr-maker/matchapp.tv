@@ -461,6 +461,9 @@ test('both rendering pages request the handoff repair without changing earlier l
   assert(html.includes(pin+'&amp;lifetime=20261019-1&amp;coverload=20261019-eager1'),page+' invalidates the repaired cover loader while retaining lifetime exclusion');
   assert(html.includes('&amp;audioart=20261020-exact1'),page+' invalidates the exact audio preloading repair');
   assert(html.includes('&amp;ebookart=20261020-renditions1'),page+' invalidates the exact e-book rendition repair');
+  const entry=html.match(/src="([^"\r\n]*\/ebooks\/ebook-matcher\.js\?[^"\r\n]+)"/);
+  assert(entry,page+' retains its active matcher entry');
+  assert.equal(new URL(entry[1].replace(/&amp;/g,'&'),'https://matchapp.tv').searchParams.get('fastart'),'20261020-1',page+' invalidates the immediate rendition handoff');
  }
 });
 
@@ -469,12 +472,14 @@ test('Ask reading lazy loading and its active script entry request the same repa
  assert(dynamic,'the existing reading-only loader remains in place');
  const matcherURL=new URL(dynamic[1],'https://matchapp.tv');
  assert.equal(matcherURL.searchParams.get('ebookart'),'20261020-renditions1');
+ assert.equal(matcherURL.searchParams.get('fastart'),'20261020-1');
  assert.equal(matcherURL.searchParams.get('lifetime'),'20261019-1');
  assert.equal(matcherURL.searchParams.get('locale'),'20261020-books14-1');
  const entry=read('discover.html').match(/src="([^"\r\n]*\/ebooks\/reading-ai\.js\?[^"\r\n]+)"/);
  assert(entry,'the original Ask reading script remains installed');
  const readingURL=new URL(entry[1].replace(/&amp;/g,'&'),'https://matchapp.tv');
  assert.equal(readingURL.searchParams.get('ebookart'),'20261020-renditions1');
+ assert.equal(readingURL.searchParams.get('fastart'),'20261020-1');
  assert.equal(readingURL.searchParams.get('lifetime'),'20261019-1');
  assert.equal(readingURL.searchParams.get('locale'),'20261020-books14-1');
 });
