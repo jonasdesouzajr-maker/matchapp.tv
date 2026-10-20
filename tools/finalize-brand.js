@@ -46,7 +46,10 @@ function cinemaAssets(html, relativePath) {
     insert(head.startTag.endOffset,eol+'<style data-cinema-layer>@layer ma-reference;</style>');
     const names=(doc.documentElement.getAttribute('class')||'').split(/\s+/).filter(Boolean),classes=names.filter((name,index)=>name!=='ma-reference'||names.indexOf(name)===index);
     if(!classes.includes('ma-reference'))classes.push('ma-reference');
-    if(names.join(' ')!==classes.join(' ')||!doc.documentElement.hasAttribute('class'))attribute(doc.documentElement,'class','class="'+escaped(classes.join(' '))+'"');
+    const rootClass='class="'+escaped(classes.join(' '))+'"';
+    // Keep generated source parity: a newly owned class precedes original attributes.
+    if(!doc.documentElement.hasAttribute('class'))insert(root.startTag.startOffset+1+doc.documentElement.localName.length,' '+rootClass);
+    else if(names.join(' ')!==classes.join(' '))attribute(doc.documentElement,'class',rootClass);
     for(const node of doc.querySelectorAll('link[href],script[src]')){
       if(!actual(node))continue;
       const attr=node.localName==='link'?'href':'src',url=node.getAttribute(attr);
