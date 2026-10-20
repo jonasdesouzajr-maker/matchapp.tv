@@ -111,12 +111,18 @@
             } catch (_) { /* Keep the sign-in and recovery options available. */ }
         }
         if (session?.user) {
-            // Complete a verified email callback by opening the *signed-in*
-            // Profile Hub directly, never by displaying the sign-in modal or
-            // leaving a new member stranded on the homepage.
+            // Email confirmation and Google share this landing page. Read the
+            // account's saved identity before deciding whether setup is needed.
             cleanReturnUrl();
             if (hasResponse && !hasError) {
-                window.location.replace('/profile/profile.html?welcome=verified');
+                try {
+                    await window.MatchAppAuthDestination.finish(client, session.user);
+                } catch (error) {
+                    // A failed profile read must never send a returning member
+                    // to setup based on an empty cache on this device.
+                    console.warn('Sign-in destination deferred:', error?.message || error);
+                }
+                window.closeAuthModal?.();
                 return true;
             }
             // /register.html links without a callback still work for people

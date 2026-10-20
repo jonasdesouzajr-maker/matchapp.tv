@@ -1,0 +1,432 @@
+/* Owner-requested compact adult presentation, 20 October 2026.
+ * Load after the existing page styles. The live adult Android WebView uses
+ * these same rules. No ad geometry, content engines or Kids styling lives here.
+ * Repeated Home IDs match the existing header finish selectors. The scoped
+ * layer lets important density rules beat legacy important page overrides;
+ * the earlier ma-depth layer continues to own the premium surface effects.
+ */
+
+@layer ma-compact-app {
+
+html:not(.kids-mode):not([data-kids-mode]) body:is(.page-home,.page-shell,.ai-chat-page,.ebook-page,.page-explore,.page-music):not([class*="kids"]):not([data-kids-mode]) {
+  --ma-grid-gap:10px!important;
+  --ma-grid-gap-tight:6px!important;
+  --ma-grid-radius:16px!important;
+  --ma-grid-radius-inner:12px!important;
+  --ma-grid-pad:14px!important;
+  --ma-grid-field-height:44px!important;
+}
+
+/* Home: fit the top box to its real contents, keeping the existing reserved
+ * Jonas corner and its drag/chat implementation intact. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header {
+  box-sizing:border-box!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:12px 16px!important;
+  gap:8px!important;
+  row-gap:8px!important;
+  border-radius:20px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-home-link {
+  min-height:56px!important;
+  height:auto!important;
+  gap:12px!important;
+  padding:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb-stage {
+  width:56px!important;
+  height:56px!important;
+  min-width:56px!important;
+  max-width:56px!important;
+  flex:0 0 56px!important;
+  margin:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-copy {
+  min-width:0!important;
+  max-width:100%!important;
+  gap:3px 5px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-wordmark,
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-word-ai {
+  font-size:clamp(24px,3.2vw,40px)!important;
+  line-height:1.08!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-caption {
+  gap:3px 8px!important;
+  margin-top:3px!important;
+  line-height:1.3!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-tagline,
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-security {
+  font-size:11px!important;
+  line-height:1.3!important;
+  white-space:normal!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck.ma-header-actions {
+  display:grid!important;
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  grid-auto-rows:minmax(44px,auto)!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:6px 0 0!important;
+  gap:5px!important;
+  align-content:start!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck.ma-header-actions > * {
+  box-sizing:border-box!important;
+  min-height:44px!important;
+  height:auto!important;
+  min-width:0!important;
+  width:100%!important;
+  margin:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck :is(button,select,#quota-badge,#nav-reg-btn,#nav-logout-btn,.ma-menu-wrap,#lang-switcher-host) {
+  box-sizing:border-box!important;
+  min-height:44px!important;
+  height:auto!important;
+  max-height:none!important;
+  padding:6px 8px!important;
+  font-size:13px!important;
+  line-height:1.3!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck #lang-switcher-host {
+  grid-area:1 / 1 / auto / 5!important;
+  padding:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck #lang-switcher-host select {
+  width:100%!important;
+  min-width:0!important;
+  height:44px!important;
+  padding:6px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck > .sound-toggle-btn {grid-area:1 / 5 / auto / 7!important}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck > .matchapp-notification-button {grid-area:1 / 7 / auto / 9!important}
+/* Auth still owns visibility; removing the avatar must not leave a grid hole. */
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck > :is(#nav-reg-btn,#nav-logout-btn) {
+  grid-area:1 / 9 / auto / 13!important;
+  min-width:44px!important;
+  white-space:normal!important;
+  text-transform:none!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck > .ma-how-button {grid-area:2 / 1 / auto / 11!important}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck > .ma-menu-wrap {
+  grid-area:2 / 11 / auto / 13!important;
+  padding:0!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck > #quota-badge {
+  grid-area:2 / 1 / auto / 5!important;
+  padding:5px!important;
+  white-space:normal!important;
+  font-size:12px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck:has(#quota-badge:not([hidden]):not([style*="display:none"]):not([style*="display: none"])) > .ma-how-button {
+  grid-area:2 / 5 / auto / 11!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck :is(.sound-toggle-btn,.matchapp-notification-button,#nav-logout-btn,.ma-menu-button) {
+  min-width:44px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck :is(button svg,.matchapp-notification-button svg) {
+  width:20px!important;
+  height:20px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts.ma-luxe-shortcuts {
+  display:flex!important;
+  flex-flow:row wrap!important;
+  gap:6px!important;
+  padding:6px 0 0!important;
+  min-height:0!important;
+  height:auto!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > .ma-luxe-shortcut {
+  box-sizing:border-box!important;
+  flex:1 1 0!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:44px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:7px 9px!important;
+  gap:5px!important;
+  font-size:13px!important;
+  line-height:1.25!important;
+  white-space:normal!important;
+  overflow-wrap:break-word!important;
+  border-radius:12px!important;
+}
+html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > .ma-luxe-shortcut svg {
+  width:16px!important;
+  height:16px!important;
+  flex:0 0 16px!important;
+}
+
+/* Home content: compact typography and source-art slots. Keep the outer Home
+ * grid, all five ad units, their spacing and their responsive rules untouched. */
+html body.page-home .main-layout .container > .home-hero {
+  min-height:0!important;
+  padding:10px 12px!important;
+}
+html body.page-home .main-layout .home-hero .home-h1 {
+  font-size:clamp(22px,3vw,32px)!important;
+  line-height:1.18!important;
+  margin:0!important;
+}
+html body.page-home #trending-rail .marquee-item:not([data-music-video]) {
+  box-sizing:border-box!important;
+  width:96px!important;
+  height:144px!important;
+  flex:0 0 96px!important;
+  border-radius:9px!important;
+}
+html body.page-home #trending-rail .marquee-track {gap:7px!important}
+html body.page-home #trending-rail .marquee-item > img {
+  object-fit:contain!important;
+  object-position:center!important;
+}
+html body.page-home #trending-rail .marquee-title {
+  font-size:11px!important;
+  line-height:1.25!important;
+  padding:8px 4px 4px!important;
+}
+html body.page-home #trending-rail .marquee-arrow {
+  width:44px!important;
+  height:44px!important;
+  min-width:44px!important;
+  min-height:44px!important;
+}
+html body.page-home :is(#questionnaire-box,#loading-box,#result-box,#search-box).premium-card {
+  min-height:0!important;
+  padding:16px!important;
+  border-radius:16px!important;
+}
+html body.page-home #questionnaire-box > h2 {
+  font-size:clamp(21px,2.4vw,26px)!important;
+  line-height:1.25!important;
+  margin:0 0 12px!important;
+}
+html body.page-home #questionnaire-box .q-grid {
+  gap:12px!important;
+  margin-bottom:12px!important;
+}
+html body.page-home #questionnaire-box .q-grid > div {min-width:0!important}
+html body.page-home #questionnaire-box :is(.q-grid label,.ma-filter-label) {
+  margin-bottom:5px!important;
+  font-size:12px!important;
+  line-height:1.3!important;
+}
+html body.page-home #questionnaire-box select {
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-height:44px!important;
+  padding:9px 10px!important;
+  font-size:16px!important;
+  line-height:1.35!important;
+}
+html body.page-home #questionnaire-box :is(.gold-btn,.ma-chip,.matchapp-topic-choice) {
+  min-height:44px!important;
+  padding:8px 12px!important;
+  font-size:14px!important;
+  line-height:1.3!important;
+}
+html body.page-home #questionnaire-box > button[data-i18n="q.submit"] {
+  margin-top:12px!important;
+  min-height:44px!important;
+  padding:10px 14px!important;
+  font-size:15px!important;
+}
+/* The current compact matcher already owns its outer padding. */
+html body.page-home #ma-concierge #questionnaire-box.premium-card {padding:0!important}
+html body.page-home #ma-concierge .ma-watch-preview select {min-height:44px!important;font-size:16px!important}
+html body.page-home #ma-concierge :is(.ma-tab,.match-more-filters > summary) {min-height:44px!important}
+
+/* Shared adult destinations. These selectors intentionally stop at known
+ * UI surfaces and never select ad containers or arbitrary images. */
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox {
+  padding:10px 12px!important;
+  gap:8px!important;
+  min-height:0!important;
+  border-radius:18px!important;
+}
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox .ma-brand-home-link {gap:9px!important}
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox .ma-brand-orb-stage {
+  width:44px!important;
+  height:44px!important;
+  min-width:44px!important;
+  flex:0 0 44px!important;
+}
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox .ma-brand-copy {gap:3px!important}
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox :is(.ma-wordmark,.ma-word-ai) {
+  font-size:clamp(23px,2.8vw,30px)!important;
+  line-height:1.1!important;
+}
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox .ma-brand-caption {gap:2px!important}
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox > nav.mh-deck {
+  min-height:0!important;
+  gap:6px!important;
+  grid-auto-rows:minmax(44px,auto)!important;
+}
+html body.page-shell:not([class*="kids"]) header.app-header.mh-topbox > nav.mh-deck :is(a,button,select,.ma-menu-wrap,#lang-switcher-host) {
+  box-sizing:border-box!important;
+  min-height:44px!important;
+  height:auto!important;
+  max-height:none!important;
+  font-size:13px!important;
+  line-height:1.3!important;
+}
+html body.ai-chat-page.page-shell header.app-header.mh-topbox > nav.mh-deck > .ma-menu-wrap,
+html body.ai-chat-page.page-shell header.app-header.mh-topbox > nav.mh-deck > .ma-menu-wrap > button.ma-menu-button {
+  min-width:44px!important;
+  width:44px!important;
+  max-width:none!important;
+  min-height:44px!important;
+  flex-basis:44px!important;
+}
+
+@media (max-width:1024px) {
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox.app-header.ma-home-header {
+    padding:9px 10px!important;
+    gap:6px!important;
+    border-radius:17px!important;
+  }
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > .ma-luxe-shortcut {
+    flex:1 1 calc(33.333% - 6px)!important;
+    padding:6px!important;
+    font-size:12px!important;
+  }
+  html body.page-home #trending-rail .marquee-item:not([data-music-video]) {
+    width:84px!important;
+    height:126px!important;
+    flex-basis:84px!important;
+  }
+  html body.page-home :is(#questionnaire-box,#loading-box,#result-box,#search-box).premium-card {padding:12px!important}
+  html body.page-home #questionnaire-box .q-grid {gap:9px!important}
+  html body.page-home #weekly-pick .spotlight-poster {
+    width:112px!important;
+    height:auto!important;
+    max-width:100%!important;
+    aspect-ratio:2 / 3!important;
+  }
+  html body.page-home #weekly-pick .spotlight-poster img {width:100%!important;height:100%!important;object-fit:contain!important}
+  html body.page-home #weekly-pick .weekly-pick-actions :is(a,button) {min-height:44px!important;padding:8px 11px!important;font-size:13px!important}
+
+  html:not(.kids-mode):not([data-kids-mode]) body:is(.page-shell,.ai-chat-page,.ebook-page,.page-explore,.page-music):not([class*="kids"]) main :is(.premium-card,.pf-panel,.pf-action-card,.plan-card,.price-card,.ma-plan,.ma-secondary-product,.purchase-pack,.credit-pack,.ebook-result,.ebook-seo-card,.ebook-hub-magazines,.discover-card):not(.pf-card-flush):not(.ad-banner-container):not(.premium-ad-frame):not(.ma-inline-ad):not(:has(ins.adsbygoogle)) {
+    min-height:0!important;
+    padding:12px!important;
+    border-radius:16px!important;
+  }
+  html:not(.kids-mode):not([data-kids-mode]) body:is(.page-shell,.ai-chat-page,.ebook-page):not([class*="kids"]) main :is(.input-grid,.ebook-fields,.pf-actions,.discover-actions,.tg-actions) {gap:10px!important}
+  html body.page-shell:not([class*="kids"]) main :is(.input-group label,.pf-label,.ebook-select-field label) {
+    margin-bottom:5px!important;
+    line-height:1.35!important;
+  }
+  html body.page-shell:not([class*="kids"]) main :is(.input-group input,.input-group select,.pf-input,.pf-select,.settings-input,.settings-select),
+  html body.ebook-page main :is(.ebook-select,.ebook-select-field select),
+  html body.page-shell:not([class*="kids"]) .cooking-tools :is(input,select) {
+    box-sizing:border-box!important;
+    max-width:100%!important;
+    min-height:44px!important;
+    padding:9px 10px!important;
+    font-size:16px!important;
+    line-height:1.35!important;
+  }
+  html body:is(.page-shell,.ebook-page,.ai-chat-page):not([class*="kids"]) main :is(.gold-btn,.secondary-btn,.ma-plan-cta,.pf-btn,.pf-action,.settings-save,.settings-reset,.ebook-chip,.ebook-provider,.ebook-match-cta,.tg-btn,.cooking-actions a,.cooking-actions button,.discover-actions a,.discover-actions button):not(.mic-btn):not(.composer-send) {
+    box-sizing:border-box!important;
+    min-height:44px!important;
+    padding:8px 12px!important;
+    font-size:14px!important;
+    line-height:1.3!important;
+  }
+  html body.page-shell:not([class*="kids"]) .profile-hub-intro {padding:4px 4px 12px!important}
+  html body.page-shell:not([class*="kids"]) .profile-hub-intro h1 {
+    font-size:28px!important;
+    line-height:1.15!important;
+    margin:0 0 5px!important;
+  }
+  html body.page-shell:not([class*="kids"]) .profile-hub-menu {gap:7px!important}
+  html body.page-shell:not([class*="kids"]) .profile-hub-menu .profile-hub-row {
+    min-height:58px!important;
+    padding:8px 10px!important;
+    grid-template-columns:32px minmax(0,1fr) 18px!important;
+    column-gap:7px!important;
+    border-radius:14px!important;
+  }
+  html body.page-shell:not([class*="kids"]) .profile-hub-menu .profile-hub-row > span:first-child {
+    width:30px!important;
+    height:30px!important;
+    font-size:20px!important;
+  }
+  html body.page-shell:not([class*="kids"]) .profile-hub-menu .profile-hub-row strong {font-size:15px!important}
+  html body.page-shell:not([class*="kids"]) .profile-hub-menu .profile-hub-row small {font-size:12px!important;line-height:1.4!important}
+  html body.page-shell:not([class*="kids"]) .pf-card-flush > .pf-card > .pf-card-head {padding:12px!important;min-height:44px!important}
+  html body.page-shell:not([class*="kids"]) .pf-card-flush > .pf-card > :not(.pf-card-head) {padding-inline:12px!important}
+  html body.page-shell:not([class*="kids"]) :is(#portfolio-grid,#seen-grid,#audio-grid) {
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,120px),1fr))!important;
+    gap:10px!important;
+  }
+  html body:is(.page-explore,.page-music) .hub-header {padding:12px!important;gap:10px!important;border-radius:18px!important}
+  html body:is(.page-explore,.page-music) .hub-title {
+    font-size:28px!important;
+    line-height:1.18!important;
+    margin:20px 0 8px!important;
+  }
+  html body:is(.page-explore,.page-music) .hub-lede {font-size:14px!important;line-height:1.55!important;margin-bottom:16px!important}
+  html body:is(.page-explore,.page-music) .hub-links a {min-height:44px!important;padding:7px 10px!important;font-size:13px!important}
+  html body.page-explore .explore-grid {gap:10px!important}
+  html body.page-explore .explore-card {min-height:140px!important;padding:14px!important;border-radius:16px!important}
+  html body.page-explore .explore-card::before {width:30px!important;height:30px!important;top:12px!important;inset-inline-start:14px!important;border-radius:10px!important}
+  html body.page-explore .explore-card::after {top:21px!important;inset-inline-end:17px!important;width:8px!important;height:8px!important}
+  html body.page-explore .explore-card h2 {font-size:17px!important;line-height:1.3!important;margin-bottom:5px!important}
+  html body.page-explore .explore-card p {font-size:13px!important;line-height:1.5!important}
+  html body.page-explore #how-it-works {padding:12px!important;margin-top:16px!important}
+  html body.page-explore #how-it-works summary {min-height:44px!important;font-size:17px!important;line-height:1.35!important}
+
+  /* Compact sign-in surfaces keep readable fields and full touch targets. */
+  html body:not([class*="kids"]) #main-auth-modal .premium-card {padding:16px!important;border-radius:18px!important}
+  html body:not([class*="kids"]) #main-auth-modal .auth-brand {min-height:44px!important;gap:9px!important;margin-bottom:10px!important}
+  html body:not([class*="kids"]) #main-auth-modal .auth-brand-orb {width:40px!important;height:40px!important}
+  html body:not([class*="kids"]) #main-auth-modal :is(.google-signin-btn,.phone-auth-entry,.phone-auth-action,.phone-auth-secondary,.auth-tab,.auth-close) {min-height:44px!important}
+  html body:not([class*="kids"]) #main-auth-modal .auth-close {width:44px!important;height:44px!important}
+  html body:not([class*="kids"]) #main-auth-modal .phone-auth-panel {padding:12px!important}
+  html body:not([class*="kids"]) #main-auth-modal input:not([type="checkbox"]):not([type="radio"]) {min-height:44px!important;font-size:16px!important;padding:9px 10px!important}
+  html body:not([class*="kids"]) #registration-save-success > div {padding:18px 16px!important;border-radius:18px!important}
+  html body:not([class*="kids"]) #registration-save-success p {font-size:15px!important;line-height:1.5!important}
+  html body:not([class*="kids"]) #registration-save-success :is(button,a) {min-height:44px!important;padding:10px 14px!important;font-size:14px!important;line-height:1.35!important}
+}
+
+@media (max-width:599px) {
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck.ma-header-actions {column-gap:4px!important}
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-home-link {min-height:48px!important;gap:8px!important}
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb-stage {
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    max-width:40px!important;
+    flex-basis:40px!important;
+  }
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-wordmark,
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-word-ai {font-size:clamp(18px,5.3vw,26px)!important}
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-tagline,
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-security {font-size:10px!important}
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck :is(button,select,#quota-badge,#nav-reg-btn,#nav-logout-btn) {font-size:12px!important;padding:6px!important}
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > .ma-luxe-shortcut {gap:4px!important}
+  html body.page-home #trending-rail .marquee-item:not([data-music-video]) {
+    width:74px!important;
+    height:111px!important;
+    flex-basis:74px!important;
+  }
+  html body.page-home #trending-rail .marquee-track {gap:6px!important}
+  html body.page-home .main-layout .container > .home-hero {padding:8px 10px!important}
+  html body.page-home #questionnaire-box > h2 {font-size:21px!important;margin-bottom:10px!important}
+  html body.page-home #questionnaire-box .q-grid {gap:8px!important}
+  html body.page-shell:not([class*="kids"]) :is(#portfolio-grid,#seen-grid,#audio-grid) {grid-template-columns:repeat(auto-fill,minmax(min(100%,110px),1fr))!important}
+  html body.page-explore .explore-card {min-height:116px!important;padding-top:48px!important}
+}
+
+@media (max-width:355px) {
+  /* At 320px the existing inset header has a 274px content box. A 2px
+   * column gap keeps every two-column icon slot at least 44px wide. */
+  html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox > nav.mh-deck.ma-header-actions {column-gap:2px!important}
+}
+
+} /* ma-compact-app */

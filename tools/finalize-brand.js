@@ -36,13 +36,13 @@ function versionBrandStylesheet(html,home=false){
  return html.replace(/(href=["']\/brand\.css)(?:\?[^"']*)?(["'])/g,
   '$1?v=20261018-nativeheader1'+(home?'&amp;headerauth=20261016-1':'')+'$2');
 }
-// Refresh only the shared frame stylesheet, preserving route-specific cache keys.
+// Refresh the shared outline removal, preserving route-specific cache keys.
 // This runs for both adult and Kids pages after their existing brand normalization.
 function versionFrameStylesheet(html){
  return html.replace(/(\bhref=["'](?:\/|(?:\.\.\/)+)?brand\.css)(?:\?([^"']*))?(["'])/g,
   (all,prefix,query,end)=>{
    const params=new URLSearchParams((query||'').replace(/&amp;/g,'&'));
-   params.set('frame','20261016-rounded1');
+   params.set('frame','20261020-none1');
    return prefix+'?'+params.toString().replace(/&/g,'&amp;')+end;
   });
 }
@@ -85,7 +85,8 @@ function finalizeBrand(ownedPaths){
   if(!doc.querySelector('link[href^="/brand.css"]'))html=html.replace('</head>','<link rel="stylesheet" href="/brand.css?v=195">\n</head>');
   if(!kids){
     html=versionBrandStylesheet(html,rel==='index.html');
-    html=html.replace(/(src=["']\/(?:page-shell|matchapp-ia|avatar-builder|daily-checkin)\.js)(?:\?([^"']*))?(["'])/g,function(all,prefix,query,end){
+    if(!html.includes('/compact-app-20261020.css'))html=html.replace('</head>','<link rel="stylesheet" href="/compact-app-20261020.css?v=20261020-1">\n</head>');
+    html=html.replace(/(src=["']\/(?:page-shell|matchapp-ia|daily-checkin)\.js)(?:\?([^"']*))?(["'])/g,function(all,prefix,query,end){
       if((query||'').includes('approvedlogo=20261014'))return all;
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
     });

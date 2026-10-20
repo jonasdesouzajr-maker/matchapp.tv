@@ -63,7 +63,13 @@
             scrubLink();
             if (session?.user) {
                 status('Email confirmed. Opening MatchApp…', 'success');
-                window.location.replace('/profile/profile.html?welcome=verified');
+                try {
+                    await window.MatchAppAuthDestination.finish(client, session.user);
+                } catch (_) {
+                    // The token was already verified. Never ask someone to
+                    // spend that one-time confirmation link a second time.
+                    window.location.replace('/');
+                }
             } else {
                 status('Your email is confirmed. Sign in to continue.', 'success');
             }
