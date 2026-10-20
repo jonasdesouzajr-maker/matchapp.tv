@@ -1271,4 +1271,7 @@ html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-
 html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields > .registration-divider > * {
  margin-block:0!important;
 }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #identity-load-retry:not([hidden]) + #save-profile-btn {
+ margin-block-start:8px!important;
+}
 }
