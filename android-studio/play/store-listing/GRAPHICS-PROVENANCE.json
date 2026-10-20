@@ -3,7 +3,7 @@
   "package": "com.jonas.papercup",
   "captureCommit": "a40b26ccf088d410fc3142cfa73ede08eca38d90",
   "captureProvenance": "Actual website UI rendered using verbatim MainActivity Android bootstrap and user agent in Chromium. Not APK, emulator, or physical-device screenshots. No invented app screens or AI responses.",
-  "interfaceChangesAfterCapture": "Later changes fix Profile spacing, source/security, factual Ask intent, verified-cover loading, original cinematic feedback, native launcher load ordering and footer language hydration. The compact Support control and footer label are outside these phone captures; the captured intended Home, matcher, Explore and Jonas layouts remain unchanged. Separate genuine Play-installed tablet captures are managed through Console with device provenance.",
+  "interfaceChangesAfterCapture": "Later changes fix Profile spacing, source/security, factual Ask intent, verified-cover loading, original cinematic feedback, native launcher load ordering, footer language hydration and solid Android heading paint. The compact Support control and footer label are outside these phone captures; the captured intended Home, matcher, Explore and Jonas layouts remain unchanged. Separate genuine Play-installed tablet captures are managed through Console with device provenance.",
   "nativeBootstrapSha256": "8f5e9336bcbe8fee3eb10e6654a63c85fd049ac08966431ebf71f488248a080e",
   "files": [
     {

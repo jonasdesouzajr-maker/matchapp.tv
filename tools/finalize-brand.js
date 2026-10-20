@@ -76,7 +76,7 @@ function cinemaAssets(html, relativePath) {
     }
     const assets=[];
     if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1">');
-    if(!found.family)assets.push('<link rel="stylesheet" href="/patches/reference-'+family+'.css?v=20261020-review1'+(family==='explore'?'':'&amp;premium=20261020-2')+'">');
+    if(!found.family)assets.push('<link rel="stylesheet" href="/patches/reference-'+family+'.css?v=20261020-review1'+(family==='explore'?'':'&amp;premium=20261020-2')+(family==='home'?'&amp;nativepaint=20261020-1':'')+'">');
     if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1"></script>');
     if(assets.length)insert(head.endTag.startOffset,eol+assets.join(eol)+eol);
     for(const [at,text]of insertions)edits.push([at,at,text]);
@@ -107,6 +107,7 @@ function referenceRuntimeAssetURL(url){
  if(!/^\/[A-Za-z0-9_./-]+$/.test(pathname))return url;
  const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file))return url;
  const entries=[];if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
+ if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);
  return withQueryParams(url,entries);
 }
