@@ -183,7 +183,7 @@ test('Ask AI composer stays visible and voice works in the active language',()=>
 
 test('Ask AI has a bounded local catalogue recovery without polling or UI mutation',()=>{
   const js=read('discover.js');
-  assert.match(js,/function catalogFallbackForQuestion\(question\)/);
+  assert.match(js,/function catalogFallbackForQuestion\(question, landingContext\)/);
   assert.match(js,/payload\.results = local/);
   assert.match(js,/catalog-recovery/);
   const recovery=js.slice(js.indexOf('function catalogFallbackForQuestion'),js.indexOf('\/\* ---------- Typewriter reveal'));
@@ -284,7 +284,7 @@ test('Ask AI book/audiobook questions never fall back to unrelated movie or musi
  assert.equal(vm.runInContext("detectBookIntent('Comedy movies on Netflix')",ctx),false);
  const fallback=js.slice(js.indexOf('async function fallbackSearch'),js.indexOf('function catalogFallbackForQuestion'));
  assert(fallback.indexOf('if (detectBookIntent(question))')<fallback.indexOf('const audioIntent'));
- assert.match(js,/function catalogFallbackForQuestion\(question\)[\s\S]*?detectBookIntent\(question\)\) return \[\]/);
+ assert.match(js,/function catalogFallbackForQuestion\(question, landingContext\)[\s\S]*?detectBookIntent\(question\)\) return \[\]/);
  assert.match(js,/if \(preparedRecommendations===null && !bookIntent && wantsTitleRecommendations && !newItems\.length/);
  assert.match(js,/!payload\?\._live && window\.matchPolicy/,'valid conversational answers must not be replaced with film recommendations');
  assert.match(js,/bookIntent \? \[\] : \(payload\.results \|\| \[\]\)/);

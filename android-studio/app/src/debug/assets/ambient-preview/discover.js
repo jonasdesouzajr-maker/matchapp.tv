@@ -528,7 +528,11 @@ function stripQuestionWords(q) {
             .trim();
 }
 
-async function fallbackSearch(question, aiWasDown) {
+async function fallbackSearch(question, aiWasDown, landingContext) {
+    // Keyword search cannot establish an editorial mood, title similarity or
+    // regional provider availability. The scoped catalogue recovery below may
+    // still use the exact landing tags, through the existing safety policy.
+    if (landingContext) return {answer: discoverRecoveryText('unavailable'), results: [], _live: false};
     if (detectBookIntent(question)) {
         // Use a bibliographically identified book, never an invented audio edition.
         // The real Bookworms source cards provide official Apple/Audible searches,
@@ -603,7 +607,7 @@ async function fallbackSearch(question, aiWasDown) {
     };
 }
 
-function catalogFallbackForQuestion(question) {
+function catalogFallbackForQuestion(question, landingContext) {
     if (detectBookIntent(question)) return []; // Film catalogue is not the Books catalogue.
     if (typeof CONTENT_CATALOG === 'undefined' || !Array.isArray(CONTENT_CATALOG)) return [];
     const policy = window.matchPolicy;
@@ -611,6 +615,7 @@ function catalogFallbackForQuestion(question) {
         .filter(e => {
             if (!e || !e.title || isDiscoverDisliked(e, true)) return false;
             if (typeof window.tasteAllowsEntry === 'function' && !window.tasteAllowsEntry(e)) return false;
+            if (landingContext && !window.MatchAppLandingIntent?.allowsFallback?.(landingContext, e)) return false;
             return !policy || policy.fitsQuestion(e, question);
         })
         .slice(0, DISCOVER_MAX)
@@ -2238,7 +2243,7 @@ async function runAskAndRender(question, opts) {
             else payload = await askAIConversational(question, history);
         }
     }
-    catch (e) { cookingUnavailable = cookingIntent; payload = cookingIntent ? {answer: window.MatchAppBooksLocale?.t?.('ui.cookingUnavailable') || (/^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.'), results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+    catch (e) { cookingUnavailable = cookingIntent; payload = cookingIntent ? {answer: window.MatchAppBooksLocale?.t?.('ui.cookingUnavailable') || (/^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.'), results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable, opts?.landingContext); source = 'fallback'; }
     if(!currentRequest()){await abandon();return;}
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
@@ -2251,7 +2256,7 @@ async function runAskAndRender(question, opts) {
         !payload?._docVerified &&
         (!payload?._live || !String(payload.answer || '').trim()) &&
         (!Array.isArray(payload?.results) || payload.results.length === 0)) {
-        const local = catalogFallbackForQuestion(question);
+        const local = catalogFallbackForQuestion(question, opts?.landingContext);
         if (local.length) {
             payload = payload || {};
             payload.results = local;
@@ -2468,6 +2473,9 @@ async function runAskAndRender(question, opts) {
         !payload?._live && window.matchPolicy && !payload?._docVerified && typeof CONTENT_CATALOG !== 'undefined') {
         newItems = CONTENT_CATALOG
             .filter(e => e && e.title && !isDiscoverDisliked(e, true) && window.matchPolicy.fitsQuestion(e, question))
+            .filter(e => !opts?.landingContext ||
+                ((typeof window.tasteAllowsEntry !== 'function' || window.tasteAllowsEntry(e)) &&
+                 window.MatchAppLandingIntent?.allowsFallback?.(opts.landingContext, e)))
             .slice(0, 6)
             .map(e => enrichDiscoverItem({
                 title: e.title, year: e.year || '', type: (e.cats && e.cats[0]) || '',
@@ -2507,11 +2515,12 @@ async function runAskAndRender(question, opts) {
 let askInFlight = null;
 function askAndRender(question, opts) {
     if (askInFlight) return askInFlight;
+    const landingContext = window.MatchAppLandingIntent?.capture?.(question) || null;
     const requestVersion=discoverThreadVersion;
     const replyCount = document.querySelectorAll('#chat-log .chat-assistant').length;
     const markedVoice = opts?.voiceOrigin === true ||
         (!!window.MatchAppVoiceOrigin?.consume && window.MatchAppVoiceOrigin.consume(question));
-    const running = Promise.resolve().then(() => runAskAndRender(question, { voiceOrigin: markedVoice })).catch(error => {
+    const running = Promise.resolve().then(() => runAskAndRender(question, { voiceOrigin: markedVoice, landingContext })).catch(error => {
         if(requestVersion!==discoverThreadVersion){finishAiWorkflow();return null;}
         // Rendering and voice failures must not be misreported as a failed AI
         // request after the answer has already appeared in the conversation.
@@ -2824,6 +2833,7 @@ async function runDiscovery() {
     if (!q) {
         if (loadEl) loadEl.style.display = 'none';
         if (emptyEl) emptyEl.style.display = 'block';
+        window.MatchAppLandingIntent?.apply();
         return;
     }
     document.title = `${q} — MatchApp Ai Concierge`;

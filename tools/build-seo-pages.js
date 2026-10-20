@@ -36,6 +36,7 @@ const SITE = 'https://matchapp.tv';
 const BRAND = 'MatchApp Ai';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 const {validateEditorial, renderEditorial} = require('./discovery-editorial.cjs');
+const {copy: shortlistCopy, planShortlist, trustedPoster} = require('./film-tv-shortlists.cjs');
 
 /* ---------- load the catalog straight out of app.js ---------- */
 function loadCatalog() {
@@ -106,9 +107,68 @@ const PLAT_COPY = {
     'Spotify': ['What to Listen To on Spotify', 'Podcasts and music worth putting on properly.']
 };
 
+function screenSections(page, plan) {
+    const ui = key => `<span data-shortlist-copy="ui.${key}">${esc(shortlistCopy.ui[key])}</span>`;
+    const matchHref = '/discover.html?landing=' + encodeURIComponent(page);
+    const card = (entry, index, reason) => {
+        const poster = reason && trustedPoster(entry);
+        const reasonCopy = reason ? `
+                        <p class="seo-why"><strong>${ui('why')}</strong><span data-shortlist-copy="reason.${reason}">${esc(shortlistCopy.reasons[reason])}</span></p>` : '';
+        return `
+                <li class="seo-item${reason ? ' seo-shortlist-item' : ''}">
+                    <span class="seo-rank">${index + 1}</span>
+                    <div class="seo-item-body">
+                        ${poster ? `<img class="seo-shortlist-art" src="${esc(poster)}" alt="${esc(entry.title)}" width="120" height="180" loading="lazy" decoding="async">` : ''}<h3>${esc(entry.title)}${entry.year ? ` <span class="seo-year">(${entry.year})</span>` : ''}</h3>
+                        <p class="seo-syn">${esc(entry.synopsis || '')}</p>${reasonCopy}
+                        <p class="seo-meta">
+                            <span class="seo-chip">${esc(entry.platform)}</span>
+                            ${(entry.cats || []).slice(0, 2).map(c => `<span class="seo-chip seo-chip-quiet">${esc(c)}</span>`).join('')}
+                        </p>
+                        <div class="seo-shortlist-actions"><a class="seo-title-link" href="/discover.html?title=${encodeURIComponent(entry.title)}&amp;focus=start">${ui('explore')}</a>${reason ? `<a class="seo-similar-link" href="${esc(matchHref + '&like=' + encodeURIComponent(entry.title))}">${ui('similar')}</a>` : ''}</div>
+                    </div>
+                </li>`;
+    };
+    const remainingOffset = plan.shortlist.length;
+    const otherOffset = remainingOffset + plan.screen.length;
+    return {
+        before: `<section class="seo-shortlist" aria-label="Recommended titles" aria-labelledby="seo-shortlist-heading">
+        <h2 id="seo-shortlist-heading">${ui('shortlistHeading')}</h2>
+        <p class="seo-shortlist-intro">${ui('shortlistIntro')}</p>
+        <ol class="seo-list seo-shortlist-picks">${plan.shortlist.map((pick, index) => card(pick.item, index, pick.reason)).join('')}
+        </ol>
+        <p class="seo-shortlist-availability">${ui('availability')}</p>
+    </section>`,
+        after: `${plan.screen.length ? `<section class="seo-section" aria-labelledby="seo-screen-heading">
+        <h2 id="seo-screen-heading">${ui('moreHeading')}</h2>
+        <ol class="seo-list" start="${remainingOffset + 1}">${plan.screen.map((entry, index) => card(entry, index + remainingOffset)).join('')}
+        </ol>
+    </section>
+
+    ` : ''}<section class="seo-section seo-other-formats" aria-labelledby="seo-other-heading">
+        <h2 id="seo-other-heading">${ui('otherHeading')}</h2>
+        <p class="seo-shortlist-intro">${ui('otherIntro')}</p>
+        <div class="seo-related">
+            <a href="/music.html">${ui('music')}</a>
+            <a href="/collections/podcast/">${ui('podcasts')}</a>
+            <a href="/ebooks/">${ui('books')}</a>
+            <a href="/collections/youtube-channel/">${ui('creators')}</a>
+        </div>${plan.other.length ? `
+        <details class="seo-other-catalog"><summary>${ui('otherCatalog')}</summary>
+            <ol class="seo-list" start="${otherOffset + 1}">${plan.other.map((entry, index) => card(entry, index + otherOffset)).join('')}
+            </ol>
+        </details>` : ''}
+    </section>`
+    };
+}
+
 /* ---------- page template ---------- */
 function buildPage({ kind, key, title, lede, items, related }) {
     const s = slug(key);
+    const page = kind + '/' + s;
+    const plan = planShortlist(page, items);
+    const sections = plan && screenSections(page, plan);
+    const matchHref = '/discover.html?landing=' + encodeURIComponent(page);
+    const matchAction = `<a class="seo-cta" href="${esc(matchHref)}"><span data-shortlist-copy="ui.match">${esc(shortlistCopy.ui.match)}</span></a>`;
     const url = `${SITE}/${kind}/${s}/`;
     const suffix = ` Explore ${items.length} catalog ideas on ${BRAND}.`;
     let metaLead = String(lede || '').replace(/\s+/g, ' ').trim();
@@ -140,7 +200,7 @@ function buildPage({ kind, key, title, lede, items, related }) {
         "@context": "https://schema.org", "@type": "ItemList",
         "name": title, "description": lede, "url": url,
         "numberOfItems": items.length,
-        "itemListElement": items.map((e, i) => ({
+        "itemListElement": (plan ? plan.ordered : items).map((e, i) => ({
             "@type": "ListItem", "position": i + 1, "name": e.title
         }))
     };
@@ -234,14 +294,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .seo-foot { margin-top: 52px; padding-top: 26px; border-top: 1px solid var(--edge-subtle); text-align: center; }
     .seo-foot a { color: var(--gold-mid); text-decoration: none; margin: 0 11px; font-size: 14px; }
     @media (prefers-reduced-motion: reduce) { .seo-cta { transition: none; } .seo-cta:hover { transform: none; } }
-    @media (max-width: 560px) { .seo-item { padding: 14px; gap: 11px; } }
-</style>
+    @media (max-width: 560px) { .seo-item { padding: 14px; gap: 11px; } }${plan ? `
+    .seo-shortlist, .seo-other-formats { min-width: 0; }
+    .seo-shortlist h2 { color: var(--gold-core); font-size: clamp(20px, 3vw, 26px); }
+    .seo-shortlist-intro, .seo-shortlist-availability { color: #C9C2B4; font-size: 14.5px; line-height: 1.6; overflow-wrap: anywhere; }
+    .seo-shortlist-picks { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+    .seo-shortlist-item { position: relative; display: block; min-width: 0; padding: 14px; }
+    .seo-shortlist-item .seo-rank { margin-bottom: 8px; }
+    .seo-shortlist-item h3 { overflow-wrap: anywhere; }
+    .seo-shortlist-art { display: block; width: 120px; max-width: 100%; height: 180px; object-fit: contain; margin: 0 auto 8px; }
+    .seo-why { display: grid; gap: 8px; color: #E4D4B8; font-size: 14px; line-height: 1.55; margin: 8px 0; }
+    .seo-why strong { color: var(--gold-core); }
+    .seo-shortlist-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .seo-shortlist-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; margin: 0; padding: 8px 12px; box-sizing: border-box; border-radius: 999px; border: 1px solid var(--edge); text-align: center; text-decoration: none; font-size: 14px; font-weight: 700; overflow-wrap: anywhere; }
+    .seo-shortlist-actions .seo-similar-link { color: #F0D8FF; background: rgba(126, 74, 174, .2); border-color: rgba(190, 145, 227, .5); }
+    .seo-shortlist-actions .seo-title-link { color: var(--gold-core); background: rgba(216, 156, 72, .12); }
+    .seo-shortlist-actions a:focus-visible, .seo-other-catalog summary:focus-visible, .seo-other-formats a:focus-visible { outline: 2px solid var(--gold-core); outline-offset: 4px; }
+    .seo-other-catalog { margin-top: 16px; }
+    .seo-other-catalog summary { cursor: pointer; min-height: 44px; padding: 10px 14px; box-sizing: border-box; color: var(--gold-core); border: 1px solid var(--edge); border-radius: 18px; }
+    .seo-shortlist-locale-status { margin-block: 12px; color: var(--gold-core); line-height: 1.6; overflow-wrap: anywhere; }
+    .seo-shortlist-locale-status button { min-height: 44px; margin-inline-start: 8px; padding: 8px 16px; border: 1px solid var(--edge); border-radius: 999px; color: var(--gold-core); background: rgba(216, 156, 72, .12); font: inherit; cursor: pointer; }
+    .seo-shortlist-locale-status[hidden], .seo-shortlist-locale-status button[hidden] { display: none; }
+    @media (max-width: 740px) { .seo-shortlist-picks { grid-template-columns: 1fr; } }
+    @media (forced-colors: active) { .seo-shortlist-actions a, .seo-other-catalog summary { border-color: ButtonText; } }` : ''}
+</style>${plan ? '\n<script src="/patches/seo-shortlist-locale.js?v=20261020-1" defer></script>' : ''}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<main class="seo-wrap">
+<main class="seo-wrap"${plan ? ' data-shortlist-status-host' : ''}>
     <nav class="seo-crumbs" aria-label="Breadcrumb">
         <a href="/">${BRAND}</a> › <span>${esc(title)}</span>
     </nav>
@@ -249,23 +331,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header class="seo-hero">
         <h1>${esc(title)}</h1>
         <p class="seo-lede">${esc(lede)}</p>
-        <a class="seo-cta" href="/discover.html">Ask the AI Concierge →</a>
+        ${plan ? matchAction : '<a class="seo-cta" href="/discover.html">Ask the AI Concierge →</a>'}
         <p class="seo-count">${items.length} catalog ideas. List order is not a popularity or review ranking.</p>
     </header>
 
-    ${renderEditorial(kind + '/' + s)}
+    ${plan ? sections.before + '\n\n    ' : ''}${renderEditorial(kind + '/' + s)}
 
-    <section aria-label="Recommended titles">
+    ${plan ? sections.after : `<section aria-label="Recommended titles">
         <h2>Titles and creators to explore</h2>
         <p class="seo-lede">Read the format and synopsis together. Platform tags describe catalog associations, not a confirmed offer in your country. Check the exact title, edition and regional provider before paying.</p>
         <ol class="seo-list">${cards}
         </ol>
-    </section>
+    </section>`}
 
     <section class="seo-section">
         <h2>Not quite it?</h2>
         <p class="seo-lede" style="margin-bottom:18px;">Tell ${BRAND} what you actually feel like and the AI concierge will work it out — in any of 14 languages, free, no account needed.</p>
-        <div style="text-align:center;"><a class="seo-cta" href="/discover.html">Find my match →</a></div>
+        <div style="text-align:center;">${plan ? matchAction : '<a class="seo-cta" href="/discover.html">Find my match →</a>'}</div>
     </section>
 
     <section class="seo-section">
@@ -307,6 +389,9 @@ function main() {
     // Validate the complete set before writing any output, so a new facet
     // cannot silently publish another catalog-only landing page.
     validateEditorial(facets.map(f => f.kind + '/' + slug(f.key)));
+    // A removed/reclassified curated identity must stop before any page is
+    // written, rather than silently selecting a different work on refresh.
+    facets.forEach(f => planShortlist(f.kind + '/' + slug(f.key), f.items));
 
     let written = 0;
     const urls = [];
@@ -335,12 +420,16 @@ function main() {
     console.log(`URL list -> tools/seo-urls.json`);
 }
 
-main();
+if (require.main === module) {
+    main();
 
-// Preserve the shared brand on regenerated guides.
-require('./finalize-brand.js').finalizeBrand(['moods/','collections/','platforms/','languages/','decades/']);
+    // Preserve the shared brand on regenerated guides.
+    require('./finalize-brand.js').finalizeBrand(['moods/','collections/','platforms/','languages/','decades/']);
 
-// Retain approved page-specific metadata after catalog regeneration.
-require('./discovery-metadata.js').applyFiles('collections/');
-require('./discovery-metadata.js').applyFiles('moods/');
-require('./discovery-metadata.js').applyFiles('platforms/');
+    // Retain approved page-specific metadata after catalog regeneration.
+    require('./discovery-metadata.js').applyFiles('collections/');
+    require('./discovery-metadata.js').applyFiles('moods/');
+    require('./discovery-metadata.js').applyFiles('platforms/');
+}
+
+module.exports = {buildPage, loadCatalog, slug, MOOD_COPY, CAT_COPY, PLAT_COPY};
