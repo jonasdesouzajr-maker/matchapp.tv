@@ -5,7 +5,7 @@ const root=path.join(__dirname,'..');
 const media=fs.readFileSync(path.join(root,'catalog-media.js'),'utf8');
 const helpers=media.slice(media.indexOf('  function adultPosterSurface('),media.indexOf('  function localLikePoster('));
 
-test('poster verification shares duplicate URLs and keeps at most six image requests active',async()=>{
+test('poster verification shares duplicate URLs and reserves two of six lanes for visible artwork',async()=>{
  let active=0,peak=0,starts=0;
  class Probe{
   naturalWidth=342;
@@ -22,9 +22,9 @@ test('poster verification shares duplicate URLs and keeps at most six image requ
   assert.equal(posterImageLoads(url),original);
   work.push(original);
  }
- assert.equal(starts,6,'offscreen failures cannot open an unbounded request burst');
+ assert.equal(starts,4,'background failures leave two lanes available without an unbounded request burst');
  assert.ok((await Promise.all(work)).every(Boolean));
- assert.equal(starts,18);assert.equal(peak,6);assert.equal(active,0);
+ assert.equal(starts,18);assert.equal(peak,4);assert.equal(active,0);
 });
 
 test('a visible result verification runs ahead of queued background rail repairs',async()=>{
@@ -35,9 +35,13 @@ test('a visible result verification runs ahead of queued background rail repairs
  });
  const work=Array.from({length:8},(_,i)=>posterImageLoads('background-'+i));
  work.push(posterImageLoads('visible-result',true));
+ work.push(posterImageLoads('visible-result-sharp',true));
+ work.push(posterImageLoads('next-visible-result',true));
  assert.equal(probes.length,6);
+ assert.equal(probes[4].url,'visible-result','a visible result starts while all four background requests are stalled');
+ assert.equal(probes[5].url,'visible-result-sharp');
  probes[0].onload();
- assert.equal(probes[6].url,'visible-result');
+ assert.equal(probes[6].url,'next-visible-result','the queued visible image still precedes background work');
  for(let i=1;i<probes.length;i++)probes[i].onload?.();
  assert.ok((await Promise.all(work)).every(Boolean));
 });
