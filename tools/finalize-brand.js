@@ -57,9 +57,9 @@ function cinemaAssets(html, relativePath) {
     return /\bdefer(?:\s|=|>)/i.test(tag)?tag:tag.replace(/<script\b/i,'<script defer');
   });
   const assets=[];
-  if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;release=20261020-ui1">');
+  if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1">');
   if(!found.family)assets.push('<link rel="stylesheet" href="/patches/reference-'+family+'.css?v=20261020-review1'+(explore?'':'&amp;premium=20261020-2')+'">');
-  if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;release=20261020-ui1"></script>');
+  if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1"></script>');
   return assets.length?html.replace(/<\/head>/i,eol+assets.join(eol)+eol+'</head>'):html;
 }
 // Existing editorial pages can carry older script URLs when their source data
