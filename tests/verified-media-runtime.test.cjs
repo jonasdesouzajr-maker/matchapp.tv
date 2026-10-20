@@ -114,7 +114,7 @@ test('optional third cover source uses exact Apple book identity, region and gen
   assert.equal(covers.sharpAppleCoverUrl('bad'),null);
  });
 
-test('failed sharper Apple rendition falls back to the verified thumbnail',async()=>{
+test('failed sharp and compact Apple renditions fall back to the verified thumbnail',async()=>{
  const source=read('ebooks/ebook-matcher.js');
  const start=source.indexOf('function coverURL('),end=source.indexOf('async function hydrateCover(',start);
  const calls=[],cached=new Set(),original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact/100x100';
@@ -126,11 +126,13 @@ test('failed sharper Apple rendition falls back to the verified thumbnail',async
   decode(){return this.naturalWidth?Promise.resolve():Promise.reject(Error('No source pixels'))}
   removeAttribute(name){if(name==='src'){this._src='';this.naturalWidth=0}}
  }
- const ctx=vm.createContext({window:{MatchAppBookCoverIdentity:covers,Image:SourceImage},setTimeout,clearTimeout,Date});
+ const ctx=vm.createContext({window:{MatchAppBookCoverIdentity:covers,Image:SourceImage},URL,setTimeout,clearTimeout,Date});
  const show=vm.runInContext(source.slice(start,end)+';showSourceCover',ctx);
  const image=new SourceImage(),fallback={hidden:false};
  assert.equal(await show(image,fallback,original),true);
- assert.equal(calls[0],covers.sharpAppleCoverUrl(original));assert.equal(calls[1],original);
+ const sharp=covers.sharpAppleCoverUrl(original),preview=sharp.replace('/600x600bb.jpg','/300x300bb.jpg');
+ assert.deepEqual(calls.slice(0,3),[sharp,preview,original],'both higher quality exact-asset renditions fail before the verified original fallback');
+ assert.equal(calls.filter(url=>url===original).length,2,'one original probe and one loaded destination assignment');
  assert.equal(image.src,original);assert.equal(image.dataset.bookCoverVerified,original);
  assert.equal(image.hidden,false);assert.equal(fallback.hidden,true);
 });
