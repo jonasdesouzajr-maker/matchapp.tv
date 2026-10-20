@@ -52,6 +52,19 @@
     var action = parent.closest(control);
     var card = artCard(action);
     if (card) mark(action, controlAttribute, 'card');
+    var related=parent.closest('.music-video-caption,.music-cover-header,.ma-result-trust__label');
+    if(related){mark(related,textAttribute,related.matches('.ma-result-trust__label')?'label':'group');return;}
+    // A caption and its native field are two surfaces, not a pill around a
+    // second pill. Reuse an existing caption node; direct Text-child contracts
+    // and toggle labels deliberately retain their original owner.
+    var fieldLabel=parent.closest('label');
+    if(fieldLabel&&fieldLabel.querySelector('select,textarea,input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"])')&&!Array.from(fieldLabel.childNodes).some(function(node){return node.nodeType===Node.TEXT_NODE&&/\S/.test(node.nodeValue||'');})){
+      var caption=parent;while(caption.parentElement&&caption.parentElement!==fieldLabel)caption=caption.parentElement;
+      if(caption!==fieldLabel&&!caption.querySelector(field)){
+        fieldLabel.removeAttribute(textAttribute);fieldLabel.setAttribute('data-ma-pill-field-group','');
+        mark(caption,textAttribute,'label');return;
+      }
+    }
     if (covered(parent)) return;
     // Keep the approved logo pixels separate from the rounded wordmark surface.
     var wordmark = parent.closest(brand);
@@ -96,6 +109,13 @@
     var nodes = [], next;
     while ((next = walker.nextNode())) nodes.push(next);
     nodes.forEach(owner);
+    // Plain reading lists have no layout gap of their own. Existing flex/grid
+    // catalogs, action rows, fields and protected inventory retain their owners.
+    (root.matches('ul,ol')?[root].concat(Array.from(root.querySelectorAll('ul,ol'))):Array.from(root.querySelectorAll('ul,ol'))).forEach(function(list){
+      if(excludedNode(list)||covered(list)||list.closest('.premium-ad-frame,.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right'))return;
+      var items=Array.from(list.children);
+      if(items.length>1&&items.every(function(item){return item.tagName==='LI'&&item.hasAttribute(textAttribute);})&&getComputedStyle(list).display==='block')list.setAttribute('data-ma-pill-reading-list','');
+    });
   }
   function flush() {
     frame = 0;

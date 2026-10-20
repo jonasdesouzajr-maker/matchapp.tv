@@ -154,3 +154,29 @@ test('late native app-dialog text receives surfaces without changing cancellatio
   cancel.click();assert.equal(await pending,false);await f.drain();assert.equal(f.d.activeElement,trigger);assert.equal(dialog.open,false);
  }finally{f.close();}
 });
+
+test('composite field captions keep the original label, field, option, value and events without a nested frame',async()=>{
+ const f=fixture('<main><label id="search-label"><span id="caption">Search recipes</span><input id="search" value="Original query"></label><label id="country-label"><span id="country-caption">Country</span><select id="country"><option value="br" selected>Brazil</option><option value="pt">Portugal</option></select></label><label id="toggle">Keep original <input type="checkbox" checked></label><label id="text-contract">Direct source text<input value="Saved"></label></main>');
+ try{
+  const label=f.d.getElementById('search-label'),caption=f.d.getElementById('caption'),input=f.d.getElementById('search'),select=f.d.getElementById('country'),option=select.firstElementChild,optionHTML=select.innerHTML,direct=f.d.getElementById('text-contract').firstChild;let events=0;input.addEventListener('input',()=>events++);f.start();
+  assert.equal(f.d.getElementById('search-label'),label);assert.equal(f.d.getElementById('caption'),caption);assert.equal(f.d.getElementById('search'),input);assert.equal(input.value,'Original query');assert.ok(label.hasAttribute('data-ma-pill-field-group'));assert.equal(label.hasAttribute('data-ma-text-pill'),false);assert.equal(caption.getAttribute('data-ma-text-pill'),'label');assert.equal(input.hasAttribute('data-ma-text-pill'),false);
+  assert.equal(select.firstElementChild,option);assert.equal(select.innerHTML,optionHTML);assert.equal(select.value,'br');assert.equal(f.d.getElementById('toggle').hasAttribute('data-ma-pill-field-group'),false);assert.equal(f.d.getElementById('text-contract').firstChild,direct);
+  caption.textContent='Pesquisar receitas';input.value='Saved local query';input.dispatchEvent(new f.w.Event('input',{bubbles:true}));await f.drain();f.w.MatchAppTextPills.refresh();await f.drain();assert.equal(events,1);assert.equal(input.value,'Saved local query');assert.equal(label.firstElementChild,caption);assert.equal(label.querySelectorAll('[data-ma-text-pill]').length,1);
+ }finally{f.close();}
+});
+
+test('plain reading lists receive a single gap owner while existing grids and ads retain theirs',async()=>{
+ const f=fixture('<main><ul id="reading"><li>First original paragraph</li><li>Second original paragraph</li></ul><ul id="grid" style="display:grid;gap:8px"><li>Existing grid first</li><li>Existing grid second</li></ul><ins class="adsbygoogle" data-ad-slot="frozen"><ul id="ad-list"><li>Ad first</li><li>Ad second</li></ul></ins></main>');
+ try{
+  const list=f.d.getElementById('reading'),items=[...list.children],ad=f.d.getElementById('ad-list'),adHTML=ad.outerHTML;f.start();assert.ok(list.hasAttribute('data-ma-pill-reading-list'));assert.deepEqual([...list.children],items);assert.equal(f.d.getElementById('grid').hasAttribute('data-ma-pill-reading-list'),false);assert.equal(ad.outerHTML,adHTML);
+  const late=f.d.createElement('ul');late.innerHTML='<li>Late first</li><li>Late second</li>';f.d.querySelector('main').appendChild(late);await f.drain();assert.ok(late.hasAttribute('data-ma-pill-reading-list'));const html=list.outerHTML;f.w.MatchAppTextPills.refresh();await f.drain();assert.equal(list.outerHTML,html);
+ }finally{f.close();}
+});
+
+test('related source poster metadata and trust icon labels each remain one semantic capsule',()=>{
+ const f=fixture('<main><div class="marquee-item" role="button" id="poster"><img src="/original.jpg"><div class="music-cover-header"><span>YouTube</span><span>Original artist</span></div><div class="music-video-caption"><span>Original title</span><div class="music-cover-meta"><span>2026-10-01</span><span>12M views</span></div><span>youtu.be/original</span></div></div><span class="ma-result-trust__label"><span aria-hidden="true">✓</span><span>Source checked</span></span></main>');
+ try{
+  const poster=f.d.getElementById('poster'),nodes=[...poster.querySelectorAll('*')],text=poster.textContent;let calls=0;poster.addEventListener('click',()=>calls++);f.start();assert.deepEqual([...poster.querySelectorAll('*')],nodes);assert.equal(poster.textContent,text);assert.equal(poster.querySelector('img').getAttribute('src'),'/original.jpg');
+  for(const selector of ['.music-cover-header','.music-video-caption','.ma-result-trust__label']){const group=f.d.querySelector(selector);assert.ok(group.hasAttribute('data-ma-text-pill'));assert.equal(group.querySelectorAll('[data-ma-text-pill]').length,0);}assert.equal(poster.getAttribute('data-ma-control-pill'),'card');poster.click();assert.equal(calls,1);
+ }finally{f.close();}
+});

@@ -914,6 +914,10 @@ html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-pane
 }
 /* Conversation history is the one deliberate sidebar column, not a second
  * arbitrary centering wrapper. Keep its existing collapse/open behavior. */
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.ai-sidebar,.ai-sidebar-scrim) {
+ top:calc(var(--ma-reference-header-height,88px) + 8px)!important;
+ bottom:var(--ma-reference-dock-clearance,102px)!important;
+}
 @media(min-width:901px) {
   html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page:not(.page-home):not(.page-explore) > main.wrap {
     width: calc(100% - 300px) !important;
@@ -1248,4 +1252,23 @@ html.ma-reference:not(#ma-reference-legacy) body:has(> .matchapp-brand-bar) :is(
  .reg-gateway > .reg-brand,main.card > a.brand,main:has(> #confirm-email) > img.brand
 ) {display:none!important;}
 html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(.trend-card img,article.hero > img,.rg-poster) {border-radius:10px!important;}
+/* A missing provider photo removes the avatar slot. Give the remaining copy
+ * the whole card instead of placing it in the old 70/92px photo column. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #audit-profile-hero:has(> .audit-profile-avatar[hidden]) {
+ grid-template-columns:minmax(0,1fr)!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #audit-profile-hero > .audit-profile-copy {
+ display:flex!important;flex-direction:column!important;gap:8px!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #audit-profile-hero > .audit-profile-copy > :is(.audit-profile-eyebrow,h1,p,.audit-profile-badges) {
+ margin-block:0!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields,
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields > .registration-divider {
+ display:grid!important;gap:8px!important;min-inline-size:0!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields > *,
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields > .registration-divider > * {
+ margin-block:0!important;
+}
 }

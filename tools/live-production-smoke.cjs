@@ -329,8 +329,13 @@ async function aiQuestion(page,question,expected,label){
     // Jonas has one deliberate header History action; the duplicate floating
     // hamburger is hidden. Exercise the visible real action on every viewport.
     const visibleHistory=page.locator('.jonas-top-history');
+    const historyTools=page.locator('.ma-reference-header-tools').filter({has:visibleHistory});
+    if(!await visibleHistory.isVisible()&&await historyTools.count()){
+      if(!await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
+    }
     if(await visibleHistory.isVisible())await visibleHistory.click({timeout:12000});
     else await page.locator('#ai-sidebar-toggle').click({timeout:12000});
+    if(await historyTools.count()&&await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
     await page.waitForFunction(()=>{
       const panel=document.getElementById('ai-sidebar')?.getBoundingClientRect();
       return panel&&panel.left>=-1&&panel.right>0;
@@ -338,14 +343,15 @@ async function aiQuestion(page,question,expected,label){
     const history=await page.evaluate(()=>{
       const button=document.querySelector('.jonas-top-history')||document.getElementById('ai-sidebar-toggle');
       const panel=document.getElementById('ai-sidebar');
-      const header=document.querySelector('header.app-header').getBoundingClientRect();
+      const header=(document.getElementById('ma-reference-header')||document.querySelector('header.app-header')).getBoundingClientRect();
+      const dock=document.querySelector('.ma-cinema-dock')?.getBoundingClientRect();
       const rect=panel.getBoundingClientRect();
-      return {belowHeader:rect.top>=header.bottom,visible:rect.left>=-1&&rect.right>0,
+      return {belowHeader:rect.top>=header.bottom+7.5,aboveDock:!dock||rect.bottom<=dock.top-7.5,visible:rect.left>=-1&&rect.right>0,
         newChat:!!document.getElementById('ai-new-chat')?.getClientRects().length,
         toggleTop:button.getBoundingClientRect().top,headerBottom:header.bottom};
     });
     record('Ask AI history opens below shared header '+device.name,
-      history.belowHeader&&history.visible&&history.newChat,JSON.stringify(history));
+      history.belowHeader&&history.aboveDock&&history.visible&&history.newChat,JSON.stringify(history));
     await historyFold.click();
     // Empty Send must guide the user rather than appearing unresponsive.
     await page.locator('.composer-send').click({timeout:10000});

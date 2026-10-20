@@ -18,3 +18,17 @@ test('every actual Match smoke branch clicks the visible action and opens only a
   }
  }
 });
+
+test('the actual History smoke opens the current controls menu and closes it after the original action',async()=>{
+ const start=source.indexOf("const visibleHistory=page.locator('.jonas-top-history');"),end=source.indexOf('\n    await page.waitForFunction',start);
+ assert.ok(start>0&&end>start);const body=source.slice(start,end);
+ for(const state of[{tools:true,open:false},{tools:true,open:true},{tools:false,legacy:true},{tools:false,legacy:false}]){
+  let open=!!state.open;const calls=[];
+  const history={isVisible:async()=>state.tools&&open,click:async()=>{assert.ok(open);calls.push('history')}};
+  const summary={click:async()=>{open=!open;calls.push(open?'open':'close')}};
+  const tools={count:async()=>state.tools?1:0,evaluate:async()=>open,locator:selector=>{assert.equal(selector,':scope > summary');return summary},filter:()=>tools};
+  const page={locator:selector=>selector==='.jonas-top-history'?history:selector==='.ma-reference-header-tools'?tools:selector==='#ai-sidebar-toggle'?{click:async()=>{assert.ok(state.legacy,'An unreachable history action must fail');calls.push('legacy')}}:assert.fail(selector)};
+  const run=()=>vm.runInNewContext('(async()=>{'+body+'})()',{page,assert});
+  if(!state.tools&&!state.legacy)await assert.rejects(run(),/unreachable history/);else{await run();assert.deepEqual(calls,state.tools?(state.open?['history','close']:['open','history','close']):['legacy']);assert.equal(open,false)}
+ }
+});

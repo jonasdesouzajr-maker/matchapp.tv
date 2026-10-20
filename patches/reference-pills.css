@@ -5,6 +5,7 @@ html.ma-reference {
  --ma-pill-edge:color-mix(in srgb,var(--cinema-gold,#e4ba67) 27%,transparent);
  --ma-pill-sheen:color-mix(in srgb,var(--cinema-gold,#e4ba67) 7%,transparent);
  --ma-pill-title-radius:14px;--ma-pill-copy-radius:14px;
+ --ma-pill-gap:8px;
 }
 html.ma-reference [data-ma-text-pill] {
  box-sizing:border-box;min-inline-size:0;max-inline-size:100%;
@@ -43,6 +44,62 @@ html.ma-reference:has(head > link[rel='canonical'][href$='/callback.html']) body
 /* Existing reference controls/captions already have important declarations in
  * this layer. Keep only the necessary capsule shape/padding overrides here. */
 @layer ma-reference {
+ /* Distinct semantic surfaces share one gap owner. Inline words, native
+  * option internals, established density grids and ad inventory stay intact. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-field-group] {display:grid!important;gap:var(--ma-pill-gap)!important;min-inline-size:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-field-group] > :is([data-ma-text-pill],input,select,textarea) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-reading-list] {display:grid!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-reading-list] > li {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .q-grid--primary {gap:var(--ma-pill-gap)!important;border:0!important;box-shadow:none!important;overflow:visible!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .crit-collapsible {border:0!important;box-shadow:none!important;background:transparent!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .crit-open > .crit-chips {margin-block-start:var(--ma-pill-gap)!important;border-radius:14px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .match-more-filters > a.ma-fine-link {margin-block-start:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(.ma-cinema-header-actions,.ma-cinema-quick-choices .ma-quick,.ma-cinema-quick-choices #matchapp-topic-shortcuts,.composer,.jds-copy,.ma-legal-bar,.ref-editorial-copy,.ebook-top-copy,.ebook-top-actions,.ma-billing-toggle) {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ebook-top-copy {display:flex!important;flex-direction:column!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ebook-top-copy > :is(h3,p,.ebook-top-badge,.ebook-top-actions) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ref-editorial-copy {display:flex!important;flex-direction:column!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ref-editorial-copy > :is(h2,.ref-editorial-sub) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .cooking-card > h3 {margin-block-end:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .cooking-card > h3 + p {margin-block-start:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-plan {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-plan > :is(.ma-plan-kicker,h2,.ma-plan-big,.ma-billing-toggle,ul) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-secondary-product {display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-secondary-product > :is(strong,small,button,a) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #purchase-hub .purchase-pack {display:flex!important;flex-direction:column!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #purchase-hub .purchase-pack > :is(strong,small,b,button,.purchase-badge) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #purchase-hub .purchase-pack > .purchase-badge {position:static!important;align-self:center!important;inset:auto!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(.passkey-box,.rg-breadcrumb,.swifties-latest) {display:flex!important;flex-wrap:wrap!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .passkey-box {flex-direction:column!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .passkey-box > :is(button,p) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-latest {margin-block-start:8px!important;align-items:flex-start!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-latest-label {flex-basis:100%!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-latest > a {display:inline-flex!important;min-height:44px!important;align-items:center!important;padding:6px 10px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-new-album {display:inline-flex!important;align-items:center!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .event-archive-grid > .global-event > .event-countdown {position:static!important;display:flex!important;margin:8px!important;min-width:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .event-archive-grid > .global-event > h3 {margin:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(.ma-result-trust__state,#result-box .res-info-col) {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .history-empty > strong {margin-block-end:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is([data-mp='placement'],[data-mp='editorial'],[data-founder='testHeading'],[data-founder='supportHeading'],.ma-pricing-copy > h1) {margin-block-end:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is([data-mp='placement'],[data-mp='editorial'],[data-founder='testHeading'],[data-founder='supportHeading'],.ma-pricing-copy > h1) + p {margin-block-start:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer > p,
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer #ma-privacy-choices {margin-block-start:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer nav[data-ma-density='balanced'] > [data-ma-density-item] {padding-inline:6px!important;}
+ @media(max-width:359px){
+  html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer nav[data-ma-density='balanced']:has(> a:nth-child(7):last-child) > [data-ma-density-item] {flex-basis:calc((100% - 8px)/2)!important;width:calc((100% - 8px)/2)!important;}
+  html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer nav[data-ma-density='balanced']:has(> a:nth-child(7):last-child) > [data-ma-density-item]:nth-child(-n+3) {flex-basis:calc((100% - 16px)/3)!important;width:calc((100% - 16px)/3)!important;}
+ }
+ /* Source title, date, views and address remain one compact metadata capsule
+  * inside the original fixed poster, rather than four touching nested frames. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #trending-rail .music-video-caption[data-ma-text-pill] {padding:18px 5px 5px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #trending-rail .music-cover-header[data-ma-text-pill] {padding:3px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(#match-packs-section,#ask-ai-credits,#matchapp-app-install-setting,.mp-card) > :is(h3,h4)[data-ma-text-pill] + p[data-ma-text-pill] {margin-block-start:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #ma-donate-title {margin-block-start:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal :is(.auth-tabs,.auth-form-section) {border:0!important;box-shadow:none!important;background:transparent!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal .auth-tabs {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal .auth-form-section.active {display:flex!important;flex-direction:column!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal .auth-form-section.active > :is(input,button,p,.auth-password-field,.passkey-box) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal > .premium-card > h3 {margin-right:52px!important;margin-left:0!important;}
+ @media(max-width:600px){html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home .home-hero .home-h1 {margin-block-end:8px!important;}}
  html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill][data-ma-text-pill] {
   box-sizing:border-box!important;min-inline-size:0!important;
   background:linear-gradient(125deg,var(--ma-pill-sheen),transparent 72%),var(--ma-pill-surface)!important;

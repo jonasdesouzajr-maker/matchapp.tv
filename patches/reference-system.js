@@ -23,9 +23,23 @@
     var id=savedPalette();
     if(document.documentElement.dataset.theme!==id)document.documentElement.dataset.theme=id;
   }
-  syncPalette();
-  document.addEventListener('matchapp:settingschanged',syncPalette);
-  window.addEventListener('storage',function(event){if(event.key==='match_settings'||event.key===null)syncPalette();});
+  function syncFontScale() {
+    // A page with the canonical Settings engine keeps its live preference owner.
+    if (window.MatchSettings) return;
+    var scale=1;
+    try {
+      var saved=JSON.parse(localStorage.getItem('match_settings')||'{}');
+      var value=saved && saved.fontScale;
+      // Same allowed range as the existing Profile text-size control.
+      if(typeof value==='number' && Number.isFinite(value) && value>=0.85 && value<=1.4)scale=value;
+    } catch (_) {}
+    var text=String(scale);
+    if(document.documentElement.style.getPropertyValue('--font-scale')!==text)document.documentElement.style.setProperty('--font-scale',text);
+  }
+  function syncAppearance() { syncPalette(); syncFontScale(); }
+  syncAppearance();
+  document.addEventListener('matchapp:settingschanged',syncAppearance);
+  window.addEventListener('storage',function(event){if(event.key==='match_settings'||event.key===null)syncAppearance();});
   if (!window.MatchAppTextPills && !document.querySelector('script[data-cinema-pills]')) {
     var pillScript=document.createElement('script');pillScript.src='/patches/reference-pills.js?v=20261020-pills1';pillScript.dataset.cinemaPills='';pillScript.defer=true;document.head.appendChild(pillScript);
   }
