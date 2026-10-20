@@ -25,7 +25,10 @@ test('exactly8 new UI keys exist in all14 languages and all95 original English v
  }finally{dom.window.close();}
 });
 test('both runtime files keep their requested source/binding blocks identical',()=>{
- const sources=files.map(read);assert.equal(cookingBlock(sources[0]),cookingBlock(sources[1]));assert.equal(fallbackBody(sources[0]),fallbackBody(sources[1]));
+ // Only the main screen handoff adds transient landing context to the
+ // non-cooking fallback call; every cooking/source/binding byte stays equal.
+ const withoutScreenContext=body=>body.replace('fallbackSearch(question, !!e.aiUnavailable, opts?.landingContext)','fallbackSearch(question, !!e.aiUnavailable)');
+ const sources=files.map(read);assert.equal(cookingBlock(sources[0]),cookingBlock(sources[1]));assert.equal(withoutScreenContext(fallbackBody(sources[0])),fallbackBody(sources[1]));
  const binding=source=>{const start=source.indexOf("        if(window.MatchAppBooksLocale?.bind){",source.indexOf('    if (bubble?.wrap && bookIntent) {'));return source.slice(start,source.indexOf('\n        bubble.wrap.appendChild(route);',start));};
  assert.equal(binding(sources[0]),binding(sources[1]));assert(sources.every(source=>source.includes(fallbackBind)));
 });

@@ -34,7 +34,7 @@ test('matching and Ask AI share only the real upstream quota cooldown, not an ar
  assert.match(app,/if\(Number\(error\?\.context\?\.status\|\|data\?\.status\|\|0\)===429\)/);
  assert.match(chat,/if\(Date\.now\(\)<Number\(window\.__matchappAIDownUntil\|\|0\)\)/);
  assert.match(chat,/if\(status===429\)window\.__matchappAIDownUntil/);
- assert.match(chat,/await fallbackSearch\(question, !!e\.aiUnavailable\)/);
+ assert.match(chat,/await fallbackSearch\(question, !!e\.aiUnavailable, opts\?\.landingContext\)/);
 });
 test('provider routes keep existing daily cost ceiling and protect conversational capacity',()=>{
  const proxy=read('supabase/functions/gemini-proxy/index.ts');
