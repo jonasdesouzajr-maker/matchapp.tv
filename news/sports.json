@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-19T17:29:17.567Z",
-  "source_policy": "Explicitly authorized attributed original publisher RSS/Atom headlines; directly linked canonical URLs, no article-body/image republication and no betting guides",
+  "updated_at": "2026-10-20T01:50:08.032Z",
+  "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
-      "id": "81a6363a",
-      "title": "Jeux olympiques de Montréal : cinquante ans après, les correspondances inédites",
-      "url": "https://theconversation.com/jeux-olympiques-de-montreal-cinquante-ans-apres-les-correspondances-inedites-291012",
+      "id": "be4ef3e4",
+      "title": "Pour une grossesse en santé, il ne suffit pas de dire aux femmes de bouger",
+      "url": "https://theconversation.com/pour-une-grossesse-en-sante-il-ne-suffit-pas-de-dire-aux-femmes-de-bouger-293411",
       "source": "The Conversation",
       "source_domain": "theconversation.com",
       "source_home": "https://theconversation.com",
@@ -13,7 +13,7 @@
       "category": "sports",
       "sport": "Sports",
       "event_type": "Sports",
-      "published_at": "2026-10-15T19:02:17.000Z",
+      "published_at": "2026-10-19T18:49:05.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
