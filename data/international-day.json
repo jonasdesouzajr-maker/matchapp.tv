@@ -1,56 +1,57 @@
 {
   "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
   "_note": "Source-verified day-of record maintained by the single MatchApp Ai coordinator. The existing archive owner preserves ended history.",
-  "date": "2026-10-19",
-  "id": "world-bioethics-day-2026-10-19",
-  "emoji": "⚖️",
-  "title": "World Bioethics Day",
+  "date": "2026-10-20",
+  "id": "world-osteoporosis-day-2026-10-20",
+  "emoji": "🦴",
+  "title": "World Osteoporosis Day",
   "kicker": "International observance",
   "place": "Worldwide",
-  "summary": "World Bioethics Day is marked on 19 October by the International Chair in Bioethics. It invites conversations about dignity, fair choices and responsibility in medicine, research and emerging technology. Explore thoughtful documentaries and films about science and ethics.",
-  "prompt": "Explain World Bioethics Day on 19 October and how the International Chair in Bioethics observes it, using the organizer's official source. Discuss human dignity, informed consent, fair access and research ethics in accessible terms. Suggest respectful ways to learn more, then recommend source-verified documentaries or films about scientific responsibility and ethical dilemmas, checking viewing availability in my country and never inventing availability or a 2026 theme.",
-  "officialUrl": "https://internationalchairbioethics.org/",
-  "image": "/event-posters/world-bioethics-day-2026.svg",
+  "summary": "World Osteoporosis Day is marked each year on 20 October by the International Osteoporosis Foundation. The 2026 campaign, “Build, Protect and Strengthen Your Bones for Life,” highlights lifelong bone health. Explore respectful documentaries and stories about mobility, ageing and community support.",
+  "prompt": "Explain World Osteoporosis Day on 20 October and the International Osteoporosis Foundation's 2026 campaign, “Build, Protect and Strengthen Your Bones for Life,” using the organizer's official sources. Share general, non-diagnostic ways to learn about lifelong bone health and support people living with osteoporosis. Then recommend source-verified documentaries or films about mobility, ageing and community care, checking viewing availability in my country and never inventing medical advice or availability.",
+  "officialUrl": "https://www.worldosteoporosisday.org/",
+  "image": "/event-posters/world-osteoporosis-day-2026.svg",
   "keywords": [
-    "World Bioethics Day 2026",
-    "19 October World Bioethics Day",
-    "International Chair in Bioethics",
-    "World Bioethics Day activities",
-    "bioethics in documentaries",
-    "science ethics movies",
-    "medical research ethics documentaries",
-    "human dignity and informed consent",
-    "what to watch on World Bioethics Day",
-    "Dia Mundial da Bioética 2026",
-    "Día Mundial de la Bioética 2026",
-    "documentaries about science and responsibility"
+    "World Osteoporosis Day 2026",
+    "20 October World Osteoporosis Day",
+    "Build Protect Strengthen Your Bones for Life",
+    "International Osteoporosis Foundation",
+    "lifelong bone health awareness",
+    "osteoporosis awareness documentaries",
+    "films about mobility and ageing",
+    "community care documentaries",
+    "what to watch on World Osteoporosis Day",
+    "Dia Mundial da Osteoporose 2026",
+    "Día Mundial de la Osteoporosis 2026",
+    "documentaries about healthy ageing"
   ],
   "i18n": {
     "pt-BR": {
-      "title": "Dia Mundial da Bioética",
+      "title": "Dia Mundial da Osteoporose",
       "kicker": "Data internacional",
       "place": "No mundo todo",
-      "summary": "O Dia Mundial da Bioética é celebrado em 19 de outubro pela Cátedra Internacional de Bioética. A data estimula conversas sobre dignidade, decisões justas e responsabilidade na medicina, na pesquisa e nas novas tecnologias. Descubra documentários e filmes sobre ciência e ética.",
-      "prompt": "Explique o Dia Mundial da Bioética em 19 de outubro com base na fonte oficial da Cátedra Internacional de Bioética. Aborde dignidade humana, consentimento informado, acesso justo e ética em pesquisa. Sugira maneiras respeitosas de aprender mais e recomende documentários ou filmes verificados sobre responsabilidade científica e dilemas éticos, conferindo onde assistir no meu país. Não invente disponibilidade nem um tema oficial de 2026.",
-      "imageAlt": "Ilustração original de uma balança equilibrando uma hélice de DNA e uma pessoa com um coração, apoiada por um livro aberto",
-      "sourceName": "Cátedra Internacional de Bioética"
+      "summary": "O Dia Mundial da Osteoporose é celebrado todos os anos em 20 de outubro pela Fundação Internacional de Osteoporose. A campanha de 2026, “Construa, proteja e fortaleça seus ossos por toda a vida”, destaca a saúde óssea ao longo da vida. Descubra documentários e histórias respeitosas sobre mobilidade, envelhecimento e apoio comunitário.",
+      "prompt": "Explique o Dia Mundial da Osteoporose em 20 de outubro e a campanha de 2026 da Fundação Internacional de Osteoporose, “Construa, proteja e fortaleça seus ossos por toda a vida”, usando as fontes oficiais da organizadora. Compartilhe formas gerais e não diagnósticas de aprender sobre saúde óssea ao longo da vida e apoiar pessoas que vivem com osteoporose. Depois, recomende documentários ou filmes verificados sobre mobilidade, envelhecimento e cuidado comunitário, conferindo onde assistir no meu país e sem inventar orientações médicas nem disponibilidade.",
+      "imageAlt": "Ilustração original de ossos estilizados formando um círculo protetor ao redor de uma figura humana ativa, com detalhes azuis e dourados",
+      "sourceName": "Fundação Internacional de Osteoporose"
     },
     "es": {
-      "title": "Día Mundial de la Bioética",
+      "title": "Día Mundial de la Osteoporosis",
       "kicker": "Día internacional",
       "place": "En todo el mundo",
-      "summary": "El Día Mundial de la Bioética se conmemora el 19 de octubre por la Cátedra Internacional de Bioética. Invita a reflexionar sobre la dignidad, las decisiones justas y la responsabilidad en la medicina, la investigación y las nuevas tecnologías. Descubre documentales y películas sobre ciencia y ética.",
-      "prompt": "Explica el Día Mundial de la Bioética del 19 de octubre usando la fuente oficial de la Cátedra Internacional de Bioética. Habla de dignidad humana, consentimiento informado, acceso justo y ética de investigación. Sugiere formas respetuosas de aprender y recomienda documentales o películas verificados sobre responsabilidad científica y dilemas éticos, comprobando dónde verlos en mi país. No inventes disponibilidad ni un tema oficial para 2026.",
-      "imageAlt": "Ilustración original de una balanza con una doble hélice de ADN y una persona con un corazón, sostenida por un libro abierto",
-      "sourceName": "Cátedra Internacional de Bioética"
+      "summary": "El Día Mundial de la Osteoporosis se conmemora cada año el 20 de octubre por la Fundación Internacional de Osteoporosis. La campaña de 2026, “Construye, protege y fortalece tus huesos de por vida”, destaca la salud ósea durante toda la vida. Descubre documentales e historias respetuosas sobre movilidad, envejecimiento y apoyo comunitario.",
+      "prompt": "Explica el Día Mundial de la Osteoporosis del 20 de octubre y la campaña de 2026 de la Fundación Internacional de Osteoporosis, “Construye, protege y fortalece tus huesos de por vida”, usando las fuentes oficiales de la organización. Comparte formas generales y no diagnósticas de aprender sobre la salud ósea durante toda la vida y apoyar a quienes viven con osteoporosis. Después, recomienda documentales o películas verificados sobre movilidad, envejecimiento y cuidado comunitario, comprobando dónde verlos en mi país y sin inventar consejos médicos ni disponibilidad.",
+      "imageAlt": "Ilustración original de huesos estilizados que forman un círculo protector alrededor de una figura humana activa, con detalles azules y dorados",
+      "sourceName": "Fundación Internacional de Osteoporosis"
     }
   },
-  "imageAlt": "Original illustration of a balance scale holding a DNA helix and a caring human figure, supported by an open book",
+  "imageAlt": "Original illustration of stylized bones forming a protective circle around an active human figure, with blue and gold details",
   "imageCredit": "Original event-specific vector illustration created for MatchApp Ai; no organizer marks, licensed third-party artwork or fabricated affiliation.",
-  "sourceName": "International Chair in Bioethics",
+  "sourceName": "International Osteoporosis Foundation",
   "sourceUrls": [
-    "https://internationalchairbioethics.org/",
-    "https://internationalchairbioethics.org/world-bioethics-day/world-bioethics-day-2026/"
+    "https://www.worldosteoporosisday.org/",
+    "https://www.worldosteoporosisday.org/get-involved",
+    "https://www.worldosteoporosisday.org/resources/build-protect-strengthen-your-bones-life"
   ],
-  "updated": "2026-10-19T04:49:55.153Z"
+  "updated": "2026-10-20T04:30:00.000Z"
 }
