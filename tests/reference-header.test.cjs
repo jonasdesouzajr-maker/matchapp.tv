@@ -117,6 +117,32 @@ test('fallback branding leaves the existing matcher and filter nodes in place',t
  const brand=w.document.querySelector('#ma-reference-header .ma-reference-header-brand');assert.equal(brand.getAttribute('href'),'/');assert.equal(brand.textContent,'MatchApp Ai');assert.equal(filter.parentElement,parent);filter.click();assert.equal(f.calls.filter,1);unchangedPositions(w);
 });
 
+test('a generic brand-only header yields its exact generated Search action to the fallback once',async t=>{
+ const f=scene('/contact.html',{noHeader:true});t.after(f.close);const {w}=f;
+ const legacy=w.document.createElement('header');legacy.innerHTML='\n <a class="matchapp-brand-link" href="/"><img class="matchapp-wordmark" alt="MatchApp Ai"></a>\n <a class="ma-cinema-search" data-cinema-icon-only="true" data-cinema-copy="search" href="/discover.html?focus=start">Search</a>\n';
+ w.document.body.prepend(legacy);const brand=legacy.firstElementChild,search=legacy.lastElementChild;let calls=0;search.addEventListener('click',event=>{event.preventDefault();calls++;});
+ f.start();const fallback=w.document.querySelector('.ma-reference-header-fallback');
+ assert.equal(search.parentElement,fallback);assert.equal(search.getAttribute('href'),'/discover.html?focus=start');assert.equal(brand.parentElement,legacy);assert.equal(legacy.getAttribute('data-ma-reference-brand-only'),'true');
+ search.click();assert.equal(calls,1);w.MatchAppReferenceHeader.mount();await flush(w);
+ assert.equal(fallback.querySelectorAll('.ma-cinema-search').length,1);assert.equal(legacy.children.length,1);assert.equal(legacy.firstElementChild,brand);unchangedPositions(w);
+});
+
+test('generic headers with authored text, navigation or unknown controls retain their exact children',t=>{
+ const f=scene('/contact.html',{noHeader:true});t.after(f.close);const {w}=f,headers=[];
+ for(const extra of ['Keep this authored text','<button type="button">Original action</button>','<nav><a href="/privacy.html">Privacy</a></nav>']){
+  const header=w.document.createElement('header');header.innerHTML='<a class="matchapp-brand-link" href="/"><img class="matchapp-wordmark"></a><a class="ma-cinema-search" data-cinema-icon-only="true" data-cinema-copy="search" href="/discover.html?focus=start">Search</a>'+extra;w.document.body.prepend(header);headers.push({header,nodes:[...header.childNodes]});
+ }
+ f.start();for(const {header,nodes}of headers){assert.deepEqual([...header.childNodes],nodes);assert.equal(header.hasAttribute('data-ma-reference-brand-only'),false);assert.equal(header.querySelector('.ma-cinema-search').parentElement,header);}unchangedPositions(w);
+});
+
+test('late generated Search stays live while a later unknown control restores its legacy header',async t=>{
+ const f=scene('/contact.html',{noHeader:true});t.after(f.close);const {w}=f;
+ const legacy=w.document.createElement('header');legacy.innerHTML='<a class="matchapp-brand-link" href="/"><img class="matchapp-wordmark"></a>';w.document.body.prepend(legacy);f.start();assert.equal(legacy.getAttribute('data-ma-reference-brand-only'),'true');
+ const search=w.document.createElement('a');search.className='ma-cinema-search';search.dataset.cinemaIconOnly='true';search.dataset.cinemaCopy='search';search.href='/discover.html?focus=start';let calls=0;search.addEventListener('click',event=>{event.preventDefault();calls++;});legacy.appendChild(search);await flush(w);
+ assert.equal(search.parentElement,w.document.querySelector('.ma-reference-header-fallback'));search.click();assert.equal(calls,1);
+ const button=w.document.createElement('button');button.textContent='Late original action';legacy.appendChild(button);await flush(w);assert.equal(legacy.hasAttribute('data-ma-reference-brand-only'),false);assert.equal(button.parentElement,legacy);unchangedPositions(w);
+});
+
 test('a late canonical masthead replaces only the fallback while preserving its original buttons',async t=>{
  const f=scene('/',{noHeader:true});t.after(f.close);const {w}=f;f.start();
  const header=w.document.getElementById('ma-reference-header'),slot=w.document.getElementById('ma-reference-header-slot'),root=w.document.getElementById('ma-jonas-home');

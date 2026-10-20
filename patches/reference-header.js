@@ -101,6 +101,22 @@
     var image=document.createElement('img');image.src='/assets/brand/matchapp-icon-approved.png';image.alt='';image.width=36;image.height=36;image.decoding='async';
     var label=document.createElement('span');label.textContent='MatchApp Ai';label.translate=false;a.append(image,label);node.appendChild(a);return node;
   }
+  function consolidateFallbackBrand(){
+    var target=chrome?.firstElementChild;
+    if(!target?.classList.contains('ma-reference-header-fallback'))return;
+    Array.from(document.body.children).filter(function(node){return node.tagName==='HEADER';}).forEach(function(legacy){
+      var brand=legacy.querySelector(':scope > a.matchapp-brand-link');
+      var text=Array.from(legacy.childNodes).some(function(node){return node.nodeType===3&&node.textContent.trim();});
+      var controls=Array.from(legacy.children).filter(function(node){return node!==brand;});
+      // Only a duplicate image wordmark and the shell's own Search may move.
+      // Auth, navigation, authored copy and every other control retain owners.
+      if(!brand||!brand.querySelector('img.matchapp-wordmark')||brand.textContent.trim()||text||controls.some(function(node){return !node.matches('a.ma-cinema-search[data-cinema-icon-only="true"][data-cinema-copy="search"]');})){
+        legacy.removeAttribute('data-ma-reference-brand-only');return;
+      }
+      controls.forEach(function(node){target.appendChild(node);});
+      legacy.setAttribute('data-ma-reference-brand-only','true');
+    });
+  }
   function measure(){
     frame=0;if(!header||!space)return;
     var height=Math.ceil(header.getBoundingClientRect().height);
@@ -126,6 +142,7 @@
       if('ResizeObserver'in window){resizeObserver=new ResizeObserver(schedule);resizeObserver.observe(header);}
       html.setAttribute('data-ma-jonas-header','active');
     }
+    consolidateFallbackBrand();
     var launcher=chooseLauncher();if(launcher)claim(launcher);
     labelTools();measure();window.MatchAppTextPills?.scan(header);
   }
@@ -137,6 +154,7 @@
       var late=findOriginal();
       if(late){late.classList.add('ma-reference-header-original');compactOriginal(late);chrome.replaceChildren(late);labelTools();schedule();}
     }
+    consolidateFallbackBrand();
     var launcher=chooseLauncher();if(launcher&&(!owns(launcher)||launcher.parentElement!==(floating?document.body:slot)))claim(launcher);
     // Header builders may insert account/language controls after DOM ready.
     if(changes.some(function(change){return chrome.contains(change.target);}))schedule();

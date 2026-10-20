@@ -10,6 +10,10 @@ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header {
  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);contain:none!important;overflow:visible!important;transform:none!important;
 }
 html.ma-reference #ma-reference-header-space {display:block!important;width:100%!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;pointer-events:none;}
+/* A generic page's old brand-only header duplicates the active fallback
+ * masthead. Its independently scaled wordmark must not widen a mobile RTL
+ * layout viewport. Keep original nodes; headers with any other action stay. */
+html.ma-reference[data-ma-jonas-header] body:has(> #ma-reference-header .ma-reference-header-fallback) > header[data-ma-reference-brand-only='true']:has(> a.matchapp-brand-link:only-child) {display:none!important;}
 html.ma-reference #ma-reference-header .ma-reference-header-bar {display:grid!important;grid-template-columns:minmax(0,1fr) 80px!important;align-items:center!important;gap:8px!important;min-height:88px!important;max-width:1500px!important;margin-inline:auto!important;direction:ltr!important;}
 html.ma-reference #ma-reference-header .ma-reference-header-chrome {min-width:0!important;max-width:100%!important;overflow:visible!important;}
 html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-original {
