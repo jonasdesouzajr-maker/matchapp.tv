@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">World Osteoporosis Day 2026</title>
+  <desc id="desc">Original MatchApp Ai illustration of stylized bones forming a protective circle around an active person, with blue and gold details.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07172f"/>
+      <stop offset="0.55" stop-color="#0b3158"/>
+      <stop offset="1" stop-color="#111f45"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="44%" r="55%">
+      <stop offset="0" stop-color="#3ed5f4" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#3ed5f4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff0a6"/>
+      <stop offset=".45" stop-color="#e7bb45"/>
+      <stop offset="1" stop-color="#a56d15"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#020817" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" rx="44" fill="url(#bg)"/>
+  <rect width="1200" height="675" rx="44" fill="url(#glow)"/>
+  <g opacity=".22" fill="none" stroke="#70dff4" stroke-width="2">
+    <circle cx="600" cy="322" r="240"/>
+    <circle cx="600" cy="322" r="282" stroke-dasharray="4 16"/>
+  </g>
+  <g filter="url(#shadow)">
+    <g fill="#f7fbff" stroke="#c8edf6" stroke-width="5">
+      <g transform="translate(357 166) rotate(-38 92 44)">
+        <rect x="35" y="20" width="114" height="48" rx="24"/>
+        <circle cx="30" cy="20" r="27"/><circle cx="30" cy="68" r="27"/>
+        <circle cx="154" cy="20" r="27"/><circle cx="154" cy="68" r="27"/>
+      </g>
+      <g transform="translate(665 154) rotate(38 92 44)">
+        <rect x="35" y="20" width="114" height="48" rx="24"/>
+        <circle cx="30" cy="20" r="27"/><circle cx="30" cy="68" r="27"/>
+        <circle cx="154" cy="20" r="27"/><circle cx="154" cy="68" r="27"/>
+      </g>
+      <g transform="translate(315 384) rotate(34 92 44)">
+        <rect x="35" y="20" width="114" height="48" rx="24"/>
+        <circle cx="30" cy="20" r="27"/><circle cx="30" cy="68" r="27"/>
+        <circle cx="154" cy="20" r="27"/><circle cx="154" cy="68" r="27"/>
+      </g>
+      <g transform="translate(707 384) rotate(-34 92 44)">
+        <rect x="35" y="20" width="114" height="48" rx="24"/>
+        <circle cx="30" cy="20" r="27"/><circle cx="30" cy="68" r="27"/>
+        <circle cx="154" cy="20" r="27"/><circle cx="154" cy="68" r="27"/>
+      </g>
+    </g>
+    <g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="600" cy="244" r="38" fill="url(#gold)" stroke-width="8"/>
+      <path d="M600 292v150M600 330l-82 72M600 330l82 72M600 442l-62 104M600 442l62 104" stroke-width="32"/>
+      <path d="M532 402c38 26 98 26 136 0" stroke="#73e0f4" stroke-width="13"/>
+    </g>
+    <path d="M600 298c-18 0-34 12-34 30 0 31 34 52 34 52s34-21 34-52c0-18-16-30-34-30z" fill="#f05f75" stroke="#ffd9de" stroke-width="5"/>
+  </g>
+  <g text-anchor="middle" font-family="Arial, Helvetica, sans-serif">
+    <text x="600" y="90" fill="#fff5c9" font-size="31" font-weight="700" letter-spacing="5">20 OCTOBER 2026</text>
+    <text x="600" y="610" fill="#ffffff" font-size="54" font-weight="800">World Osteoporosis Day</text>
+    <text x="600" y="648" fill="#8fe7f4" font-size="24" font-weight="600" letter-spacing="2">BUILD • PROTECT • STRENGTHEN FOR LIFE</text>
+  </g>
+</svg>
