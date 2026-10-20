@@ -1,10 +1,1033 @@
 {
-  "generated_at": "2026-10-20T01:50:42.238Z",
-  "feed_version": "ab90fea3",
+  "generated_at": "2026-10-20T06:31:59.714Z",
+  "feed_version": "8e6a4796",
   "sports_updated_at": "2026-10-20T01:50:08.032Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "rebuilt per check; modification dates advance only with content + source citation + stable archive",
   "items": [
+    {
+      "id": "10190416",
+      "title": "The British island where red squirrels are thriving",
+      "url": "https://www.bbc.co.uk/news/articles/cw1m4e3mrljxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-20T05:38:30.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "The British",
+      "description": "World news reported by BBC Science on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ebff/live/6e1cd920-cbcb-11f1-aba9-2bb2608f11d9.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-british-island-where-red-squirrels-are-thriving-101904/",
+      "landing_url": "https://matchapp.tv/?news=10190416#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-20",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "british",
+          "island",
+          "where",
+          "red",
+          "squirrels",
+          "thriving"
+        ],
+        "long_tail": [
+          "The British island where red squirrels are thriving 2026-10-20",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "british",
+          "island",
+          "where",
+          "red",
+          "squirrels",
+          "thriving"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "The British island where red squirrels are thriving |…",
+        "meta_description": "World report published by BBC Science on 2026-10-20. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-20",
+          "world news",
+          "global headlines",
+          "british",
+          "island",
+          "where",
+          "red",
+          "squirrels",
+          "thriving",
+          "The British island where red squirrels are thriving 2026-10-20",
+          "world news October 2026",
+          "2026-10-20",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "d0183ed0",
+      "title": "Northern Ireland needs 'courage and leadership' to tackle climate change",
+      "url": "https://www.bbc.co.uk/news/articles/cxzd6j5q0g7eo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-20T05:27:15.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "Northern Ireland",
+      "description": "World news reported by BBC Science on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/76f3/live/165a2440-b877-11ef-a72c-55cc49f950c5.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/northern-ireland-needs-courage-and-leadership-to-tackle-climate-change-d0183e/",
+      "landing_url": "https://matchapp.tv/?news=d0183ed0#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-20",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "northern",
+          "ireland",
+          "needs",
+          "courage",
+          "leadership",
+          "tackle"
+        ],
+        "long_tail": [
+          "Northern Ireland needs 'courage and leadership' to tackle climate change 2026-10-20",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "northern",
+          "ireland",
+          "needs",
+          "courage",
+          "leadership",
+          "tackle"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Northern Ireland needs 'courage and leadership' to tackle…",
+        "meta_description": "World report published by BBC Science on 2026-10-20. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-20",
+          "world news",
+          "global headlines",
+          "northern",
+          "ireland",
+          "needs",
+          "courage",
+          "leadership",
+          "tackle",
+          "Northern Ireland needs 'courage and leadership' to tackle climate change 2026-10-20",
+          "world news October 2026",
+          "2026-10-20",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "5f5ed2da",
+      "title": "How is the US economy really doing under President Trump?",
+      "url": "https://www.bbc.co.uk/news/articles/cv98ze40jz18o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-20T05:00:45.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/711c/live/8e797e10-cbd7-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/how-is-the-us-economy-really-doing-under-president-trump-5f5ed2/",
+      "landing_url": "https://matchapp.tv/?news=5f5ed2da#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-20",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "how",
+          "economy",
+          "really",
+          "doing",
+          "under",
+          "president"
+        ],
+        "long_tail": [
+          "How is the US economy really doing under President Trump? 2026-10-20",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "how",
+          "economy",
+          "really",
+          "doing",
+          "under",
+          "president"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "How is the US economy really doing under President Trump?…",
+        "meta_description": "World report published by BBC World on 2026-10-20. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-20",
+          "world news",
+          "global headlines",
+          "how",
+          "economy",
+          "really",
+          "doing",
+          "under",
+          "president",
+          "How is the US economy really doing under President Trump? 2026-10-20",
+          "world news October 2026",
+          "2026-10-20",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "51386307",
+      "title": "Como americanos enfrentam a alta da inflação: 'Já fiz coisas insanas para sobreviver'",
+      "url": "https://g1.globo.com/economia/noticia/2026/10/20/como-americanos-enfrentam-a-alta-da-inflacao-ja-fiz-coisas-insanas-para-sobreviver.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-20T05:00:00.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/1oO-PW0rSrT05DUUF4dywzyInt0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/f/5rBkBCTfKkssXoNLpHXA/captura-de-tela-2026-10-18-163538-1-.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/como-americanos-enfrentam-a-alta-da-inflacao-ja-fiz-coisas-insanas-para-sobreviv-513863/",
+      "landing_url": "https://matchapp.tv/?news=51386307#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-20",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "americanos",
+          "enfrentam",
+          "alta",
+          "inflacao",
+          "fiz"
+        ],
+        "long_tail": [
+          "Como americanos enfrentam a alta da inflação: 'Já fiz coisas insanas para sobreviver' 2026-10-20",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "como",
+          "americanos",
+          "enfrentam",
+          "alta",
+          "inflacao",
+          "fiz"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Como americanos enfrentam a alta da inflação: 'Já fiz…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-20. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-20",
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "americanos",
+          "enfrentam",
+          "alta",
+          "inflacao",
+          "fiz",
+          "Como americanos enfrentam a alta da inflação: 'Já fiz coisas insanas para sobreviver' 2026-10-20",
+          "notícias mundiais outubro 2026",
+          "2026-10-20",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "ea4a0f8c",
+      "title": "Desabamento de mina de ouro ilegal na Colômbia deixa 14 mortos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/20/desabamento-de-mina-de-ouro-ilegal-na-colombia-deixa-mortos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-20T04:55:43.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0DF8JvbZYk2dFXopn_3FZQ5R65w=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s04.video.glbimg.com/deo/vi/55/20/992055",
+      "matchapp_url": "https://matchapp.tv/news/articles/desabamento-de-mina-de-ouro-ilegal-na-colombia-deixa-14-mortos-ea4a0f/",
+      "landing_url": "https://matchapp.tv/?news=ea4a0f8c#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-20",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "desabamento",
+          "mina",
+          "ouro",
+          "ilegal",
+          "colombia",
+          "deixa"
+        ],
+        "long_tail": [
+          "Desabamento de mina de ouro ilegal na Colômbia deixa 14 mortos 2026-10-20",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "desabamento",
+          "mina",
+          "ouro",
+          "ilegal",
+          "colombia",
+          "deixa"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Desabamento de mina de ouro ilegal na Colômbia deixa 14…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-20. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-20",
+          "notícias do mundo",
+          "notícias internacionais",
+          "desabamento",
+          "mina",
+          "ouro",
+          "ilegal",
+          "colombia",
+          "deixa",
+          "Desabamento de mina de ouro ilegal na Colômbia deixa 14 mortos 2026-10-20",
+          "notícias mundiais outubro 2026",
+          "2026-10-20",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "de66e811",
+      "title": "Zelensky diz que sistema da SpaceX usado na guerra ficou mais lento e afeta tropas ucranianas",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/20/zelensky-diz-que-sistema-da-spacex-usado-na-guerra-ficou-mais-lento.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-20T04:08:58.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0CWnGpr3liGDmKTQiT3J_BbsJo8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/A/v/AYWg4MS0y8aKJpF2Ju7Q/globo-canal-4-20261019-2000-frame-121484.jpeg",
+      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-diz-que-sistema-da-spacex-usado-na-guerra-ficou-mais-lento-e-afeta-trop-de66e8/",
+      "landing_url": "https://matchapp.tv/?news=de66e811#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-20",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "zelensky",
+          "diz",
+          "que",
+          "sistema",
+          "spacex",
+          "usado"
+        ],
+        "long_tail": [
+          "Zelensky diz que sistema da SpaceX usado na guerra ficou mais lento e afeta tropas ucranianas 2026-10-20",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "zelensky",
+          "diz",
+          "que",
+          "sistema",
+          "spacex",
+          "usado"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Zelensky diz que sistema da SpaceX usado na guerra ficou…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-20. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-20",
+          "notícias do mundo",
+          "notícias internacionais",
+          "zelensky",
+          "diz",
+          "que",
+          "sistema",
+          "spacex",
+          "usado",
+          "Zelensky diz que sistema da SpaceX usado na guerra ficou mais lento e afeta tropas ucranianas 2026-10-20",
+          "notícias mundiais outubro 2026",
+          "2026-10-20",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "37580953",
+      "title": "Ann Hornaday, Longtime Washington Post Film Critic, Dies at 66",
+      "url": "https://www.hollywoodreporter.com/news/general-news/ann-hornaday-washington-post-film-critic-dead-at-66-1236735969/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-20T04:01:41.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "Ann Hornaday",
+      "description": "Ann Hornaday: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Ann-Hornaday.jpg?w=1296&h=730&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/ann-hornaday-longtime-washington-post-film-critic-dies-at-66-375809/",
+      "landing_url": "https://matchapp.tv/?news=37580953#latest-news",
+      "seo": {
+        "primary_keyword": "Ann Hornaday latest news",
+        "short_tail": [
+          "Ann Hornaday",
+          "Ann Hornaday news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Ann Hornaday latest news October 2026",
+          "Ann Hornaday obituary update 2026",
+          "Ann Hornaday news 2026-10-20",
+          "latest obituary news about Ann Hornaday",
+          "ann hornaday ann hornaday longtime washington latest update",
+          "The Hollywood Reporter Ann Hornaday obituary",
+          "latest news about Ann Hornaday October 2026",
+          "Ann Hornaday entertainment news 2026-10-20",
+          "what happened with Ann Hornaday"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Ann Hornaday",
+          "ann",
+          "hornaday",
+          "longtime",
+          "washington",
+          "post",
+          "film"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-20",
+          "Ann Hornaday 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Ann Hornaday",
+          "hollywoodreporter.com Ann Hornaday",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Ann Hornaday, Longtime Washington Post Film Critic, Dies…",
+        "meta_description": "Ann Hornaday: Obituary update reported by The Hollywood Reporter on 2026-10-20. See verified context, publication time and the original source via MatchApp…",
+        "keywords": [
+          "Ann Hornaday latest news",
+          "Ann Hornaday",
+          "Ann Hornaday news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Ann Hornaday latest news October 2026",
+          "Ann Hornaday obituary update 2026",
+          "Ann Hornaday news 2026-10-20",
+          "latest obituary news about Ann Hornaday",
+          "ann hornaday ann hornaday longtime washington latest update",
+          "The Hollywood Reporter Ann Hornaday obituary",
+          "latest news about Ann Hornaday October 2026",
+          "Ann Hornaday entertainment news 2026-10-20",
+          "what happened with Ann Hornaday",
+          "ann",
+          "hornaday",
+          "longtime",
+          "washington",
+          "post",
+          "film",
+          "October 2026",
+          "2026-10-20",
+          "Ann Hornaday 2026",
+          "The Hollywood Reporter Ann Hornaday",
+          "hollywoodreporter.com Ann Hornaday",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "a5adb4e1",
+      "title": "Canadian tourist found guilty of animal cruelty after stealing Las Vegas flamingo from enclosure",
+      "url": "https://www.bbc.co.uk/news/articles/cq398rjewd1jo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-20T03:10:39.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8f1e/live/5b9b0010-cc2f-11f1-aeea-f9fa95687445.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/canadian-tourist-found-guilty-of-animal-cruelty-after-stealing-las-vegas-flaming-a5adb4/",
+      "landing_url": "https://matchapp.tv/?news=a5adb4e1#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-20",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "canadian",
+          "tourist",
+          "found",
+          "guilty",
+          "animal",
+          "cruelty"
+        ],
+        "long_tail": [
+          "Canadian tourist found guilty of animal cruelty after stealing Las Vegas flamingo from enclosure 2026-10-20",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "canadian",
+          "tourist",
+          "found",
+          "guilty",
+          "animal",
+          "cruelty"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Canadian tourist found guilty of animal cruelty after…",
+        "meta_description": "World report published by BBC World on 2026-10-20. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-20",
+          "world news",
+          "global headlines",
+          "canadian",
+          "tourist",
+          "found",
+          "guilty",
+          "animal",
+          "cruelty",
+          "Canadian tourist found guilty of animal cruelty after stealing Las Vegas flamingo from enclosure 2026-10-20",
+          "world news October 2026",
+          "2026-10-20",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "23f2c8f8",
+      "title": "Como protesto estudantil evoluiu na França, levou 500 mil às ruas e mergulhou Paris no caos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/10/20/como-protesto-estudantil-evoluiu-na-franca-levou-500-mil-as-ruas-e-mergulhou-paris-no-caos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-20T03:00:00.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/YWqyHNwVZ6j2GwmxFbLsGseKsiM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/D/R/1QR5BZQwqz0AJnT30mUA/2026-10-18t175948z-1726197260-rc2s5oaoqqut-rtrmadp-3-france-protest.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/como-protesto-estudantil-evoluiu-na-franca-levou-500-mil-as-ruas-e-mergulhou-par-23f2c8/",
+      "landing_url": "https://matchapp.tv/?news=23f2c8f8#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-20",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "protesto",
+          "estudantil",
+          "evoluiu",
+          "franca",
+          "levou"
+        ],
+        "long_tail": [
+          "Como protesto estudantil evoluiu na França, levou 500 mil às ruas e mergulhou Paris no caos 2026-10-20",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "como",
+          "protesto",
+          "estudantil",
+          "evoluiu",
+          "franca",
+          "levou"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Como protesto estudantil evoluiu na França, levou 500 mil…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-20. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-20",
+          "notícias do mundo",
+          "notícias internacionais",
+          "como",
+          "protesto",
+          "estudantil",
+          "evoluiu",
+          "franca",
+          "levou",
+          "Como protesto estudantil evoluiu na França, levou 500 mil às ruas e mergulhou Paris no caos 2026-10-20",
+          "notícias mundiais outubro 2026",
+          "2026-10-20",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "920fe148",
+      "title": "México suspende importação de frango do Brasil após foco da doença de Newcastle em SC",
+      "url": "https://g1.globo.com/economia/agronegocios/noticia/2026/10/19/mexico-suspende-importacao-de-frango-do-brasil-apos-foco-da-doenca-de-newcastle-em-sc.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-10-20T02:57:17.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/gojSvvdbhUg7GvrejT5u0K8TSg4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/G/XQIkK0R1qjnhuRb4Dz0w/perus.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/mexico-suspende-importacao-de-frango-do-brasil-apos-foco-da-doenca-de-newcastle--920fe1/",
+      "landing_url": "https://matchapp.tv/?news=920fe148#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-10-20",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "mexico",
+          "suspende",
+          "importacao",
+          "frango",
+          "brasil",
+          "apos"
+        ],
+        "long_tail": [
+          "México suspende importação de frango do Brasil após foco da doença de Newcastle em SC 2026-10-20",
+          "notícias mundiais outubro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "mexico",
+          "suspende",
+          "importacao",
+          "frango",
+          "brasil",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "México suspende importação de frango do Brasil após foco…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-20. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-10-20",
+          "notícias do mundo",
+          "notícias internacionais",
+          "mexico",
+          "suspende",
+          "importacao",
+          "frango",
+          "brasil",
+          "apos",
+          "México suspende importação de frango do Brasil após foco da doença de Newcastle em SC 2026-10-20",
+          "notícias mundiais outubro 2026",
+          "2026-10-20",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "f0874e30",
+      "title": "'Our worst nightmare': Threats to Australian politicians were rising before MP hit by car",
+      "url": "https://www.bbc.co.uk/news/articles/cq398rk4p3exo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-20T02:54:05.000Z",
+      "discovered_at": "2026-10-19T17:29:17.624Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/98d1/live/ef977c30-cc48-11f1-a64c-550be9e3c66b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/our-worst-nightmare-threats-to-australian-politicians-were-rising-before-mp-hit--f0874e/",
+      "landing_url": "https://matchapp.tv/?news=f0874e30#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-20",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "our",
+          "worst",
+          "nightmare",
+          "threats",
+          "australian",
+          "politicians"
+        ],
+        "long_tail": [
+          "'Our worst nightmare': Threats to Australian politicians were rising before MP hit by car 2026-10-20",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "our",
+          "worst",
+          "nightmare",
+          "threats",
+          "australian",
+          "politicians"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "'Our worst nightmare': Threats to Australian politicians…",
+        "meta_description": "World report published by BBC World on 2026-10-20. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-20",
+          "world news",
+          "global headlines",
+          "our",
+          "worst",
+          "nightmare",
+          "threats",
+          "australian",
+          "politicians",
+          "'Our worst nightmare': Threats to Australian politicians were rising before MP hit by car 2026-10-20",
+          "world news October 2026",
+          "2026-10-20",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-20T01:50:42.238Z"
+      }
+    },
+    {
+      "id": "d553e1b9",
+      "title": "Seventh day of violent clashes between Albanian protesters and police",
+      "url": "https://www.bbc.co.uk/news/articles/cmy4xjlpqgd3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-20T02:45:05.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b732/live/2812da60-cc20-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/seventh-day-of-violent-clashes-between-albanian-protesters-and-police-d553e1/",
+      "landing_url": "https://matchapp.tv/?news=d553e1b9#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-20",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "seventh",
+          "day",
+          "violent",
+          "clashes",
+          "between",
+          "albanian"
+        ],
+        "long_tail": [
+          "Seventh day of violent clashes between Albanian protesters and police 2026-10-20",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "seventh",
+          "day",
+          "violent",
+          "clashes",
+          "between",
+          "albanian"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Seventh day of violent clashes between Albanian protesters…",
+        "meta_description": "World report published by BBC World on 2026-10-20. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-20",
+          "world news",
+          "global headlines",
+          "seventh",
+          "day",
+          "violent",
+          "clashes",
+          "between",
+          "albanian",
+          "Seventh day of violent clashes between Albanian protesters and police 2026-10-20",
+          "world news October 2026",
+          "2026-10-20",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "e0bbd68d",
+      "title": "‘Star Wars’-Themed Super Bowl Altcast Joins Disney’s Big Game Lineup",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/star-wars-super-bowl-altcast-disney-plus-1236735682/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-10-20T02:00:00.000Z",
+      "discovered_at": "2026-10-20T06:31:59.714Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "",
+      "description": "casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Star-Wars-Funday-announce-KEY-ART-16x9-1.jpg?w=1296&h=729&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/star-wars-themed-super-bowl-altcast-joins-disney-s-big-game-lineup-e0bbd6/",
+      "landing_url": "https://matchapp.tv/?news=e0bbd68d#latest-news",
+      "seo": {
+        "primary_keyword": "star wars themed super latest news",
+        "short_tail": [
+          "star wars themed super",
+          "star wars themed super news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "star wars themed super latest news October 2026",
+          "star wars themed super casting update 2026",
+          "star wars themed super news 2026-10-20",
+          "latest casting news about star wars themed super",
+          "star wars themed super bowl altcast latest update",
+          "The Hollywood Reporter star wars themed super casting",
+          "latest news about star wars themed super October 2026",
+          "star wars themed super entertainment news 2026-10-20",
+          "what happened with star wars themed super"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "star",
+          "wars",
+          "themed",
+          "super",
+          "bowl",
+          "altcast",
+          "joins",
+          "disney"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-20",
+          "star wars themed super 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter star wars themed super",
+          "hollywoodreporter.com star wars themed super",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Star Wars’-Themed Super Bowl Altcast Joins Disney’s Big…",
+        "meta_description": "Casting update reported by The Hollywood Reporter on 2026-10-20. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "star wars themed super latest news",
+          "star wars themed super",
+          "star wars themed super news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "star wars themed super latest news October 2026",
+          "star wars themed super casting update 2026",
+          "star wars themed super news 2026-10-20",
+          "latest casting news about star wars themed super",
+          "star wars themed super bowl altcast latest update",
+          "The Hollywood Reporter star wars themed super casting",
+          "latest news about star wars themed super October 2026",
+          "star wars themed super entertainment news 2026-10-20",
+          "what happened with star wars themed super",
+          "star",
+          "wars",
+          "themed",
+          "super",
+          "bowl",
+          "altcast",
+          "joins",
+          "disney",
+          "October 2026",
+          "2026-10-20",
+          "star wars themed super 2026",
+          "The Hollywood Reporter star wars themed super",
+          "hollywoodreporter.com star wars themed super",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
+    {
+      "id": "7787377f",
+      "title": "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds'",
+      "url": "https://www.bbc.co.uk/news/articles/ckj0ly6qnp1lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-10-20T01:52:43.000Z",
+      "discovered_at": "2026-10-19T11:11:51.603Z",
+      "event_type": "Entertainment",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2ede/live/03f0b480-cbbd-11f1-bc2e-018d645d8d21.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/deadly-fire-at-canada-military-base-moved-a-kilometre-in-30-to-60-seconds-778737/",
+      "landing_url": "https://matchapp.tv/?news=7787377f#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-10-20",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "deadly",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "moved"
+        ],
+        "long_tail": [
+          "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds' 2026-10-20",
+          "world news October 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "deadly",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "moved"
+        ],
+        "freshness_keywords": [
+          "2026-10-20"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Deadly fire at Canada military base moved a kilometre 'in…",
+        "meta_description": "World report published by BBC World on 2026-10-20. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-10-20",
+          "world news",
+          "global headlines",
+          "deadly",
+          "fire",
+          "canada",
+          "military",
+          "base",
+          "moved",
+          "Deadly fire at Canada military base moved a kilometre 'in 30 to 60 seconds' 2026-10-20",
+          "world news October 2026",
+          "2026-10-20",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-10-20T06:31:59.714Z"
+      }
+    },
     {
       "id": "123ab2b6",
       "title": "Dwayne Johnson and Benny Safdie’s ‘Lizard Music’ Sets Holiday 2027 Release From Amazon MGM",
@@ -97,75 +1120,6 @@
           "The Hollywood Reporter Dwayne Johnson",
           "hollywoodreporter.com Dwayne Johnson",
           "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-20T01:50:42.238Z"
-      }
-    },
-    {
-      "id": "f0874e30",
-      "title": "'Our worst nightmare': Threats to Australian politicians were rising before MP hit by car",
-      "url": "https://www.bbc.co.uk/news/articles/cq398rk4p3exo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-20T01:24:59.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-20. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d96e/live/22b402e0-cc18-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/our-worst-nightmare-threats-to-australian-politicians-were-rising-before-mp-hit--f0874e/",
-      "landing_url": "https://matchapp.tv/?news=f0874e30#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-20",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "our",
-          "worst",
-          "nightmare",
-          "threats",
-          "australian",
-          "politicians"
-        ],
-        "long_tail": [
-          "'Our worst nightmare': Threats to Australian politicians were rising before MP hit by car 2026-10-20",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "our",
-          "worst",
-          "nightmare",
-          "threats",
-          "australian",
-          "politicians"
-        ],
-        "freshness_keywords": [
-          "2026-10-20"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "'Our worst nightmare': Threats to Australian politicians…",
-        "meta_description": "World report published by BBC World on 2026-10-20. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-20",
-          "world news",
-          "global headlines",
-          "our",
-          "worst",
-          "nightmare",
-          "threats",
-          "australian",
-          "politicians",
-          "'Our worst nightmare': Threats to Australian politicians were rising before MP hit by car 2026-10-20",
-          "world news October 2026",
-          "2026-10-20",
-          "BBC World"
         ],
         "seo_generated_at": "2026-10-20T01:50:42.238Z"
       }
@@ -431,213 +1385,6 @@
       }
     },
     {
-      "id": "3d665779",
-      "title": "Morocco's first female prime minister caught between the king, clerics, and feminists",
-      "url": "https://www.bbc.co.uk/news/articles/cmqxn4gggdw4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T23:30:03.000Z",
-      "discovered_at": "2026-10-20T01:15:38.411Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2a92/live/3903b230-cbc7-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/morocco-s-first-female-prime-minister-caught-between-the-king-clerics-and-femini-3d6657/",
-      "landing_url": "https://matchapp.tv/?news=3d665779#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "morocco",
-          "first",
-          "female",
-          "prime",
-          "minister",
-          "caught"
-        ],
-        "long_tail": [
-          "Morocco's first female prime minister caught between the king, clerics, and feminists 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "morocco",
-          "first",
-          "female",
-          "prime",
-          "minister",
-          "caught"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Morocco's first female prime minister caught between the…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "morocco",
-          "first",
-          "female",
-          "prime",
-          "minister",
-          "caught",
-          "Morocco's first female prime minister caught between the king, clerics, and feminists 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-20T01:15:38.411Z"
-      }
-    },
-    {
-      "id": "0359e08f",
-      "title": "Five ways El Niño is affecting the weather around the world",
-      "url": "https://www.bbc.co.uk/weather/articles/c6dx07dznpyyo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T23:08:25.000Z",
-      "discovered_at": "2026-10-20T01:15:38.411Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/be75/live/52212cf0-b73d-11f1-aa9c-3d062fa3aea7.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/five-ways-el-nino-is-affecting-the-weather-around-the-world-0359e0/",
-      "landing_url": "https://matchapp.tv/?news=0359e08f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "five",
-          "ways",
-          "nino",
-          "affecting",
-          "weather",
-          "around"
-        ],
-        "long_tail": [
-          "Five ways El Niño is affecting the weather around the world 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "five",
-          "ways",
-          "nino",
-          "affecting",
-          "weather",
-          "around"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Five ways El Niño is affecting the weather around the…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "five",
-          "ways",
-          "nino",
-          "affecting",
-          "weather",
-          "around",
-          "Five ways El Niño is affecting the weather around the world 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-20T01:15:38.411Z"
-      }
-    },
-    {
-      "id": "5b65e4be",
-      "title": "In pictures: Dussehra celebrated across India as triumph of good over evil",
-      "url": "https://www.bbc.co.uk/news/articles/c98rzynj6e1yo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T23:04:08.000Z",
-      "discovered_at": "2026-10-20T01:15:38.411Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ecf1/live/af489e70-cbe4-11f1-a64c-550be9e3c66b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/in-pictures-dussehra-celebrated-across-india-as-triumph-of-good-over-evil-5b65e4/",
-      "landing_url": "https://matchapp.tv/?news=5b65e4be#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pictures",
-          "dussehra",
-          "celebrated",
-          "across",
-          "india",
-          "triumph"
-        ],
-        "long_tail": [
-          "In pictures: Dussehra celebrated across India as triumph of good over evil 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pictures",
-          "dussehra",
-          "celebrated",
-          "across",
-          "india",
-          "triumph"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "In pictures: Dussehra celebrated across India as triumph…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "pictures",
-          "dussehra",
-          "celebrated",
-          "across",
-          "india",
-          "triumph",
-          "In pictures: Dussehra celebrated across India as triumph of good over evil 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-20T01:15:38.411Z"
-      }
-    },
-    {
       "id": "7c09e8e5",
       "title": "How to Watch Memphis Grizzlies Games for the 2026–27 NBA Season Under One Streaming Platform",
       "url": "https://www.hollywoodreporter.com/tv/tv-news/how-to-watch-memphis-grizzlies-2026-27-nba-season-dazn-1236733099/",
@@ -737,291 +1484,6 @@
       }
     },
     {
-      "id": "1480ab9e",
-      "title": "‘You Can See Everything’ Is a Gothic Romance for the Ages",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/you-can-see-everything-gothic-romance-for-ages-1236735800/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T22:23:46.000Z",
-      "discovered_at": "2026-10-19T22:36:38.664Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/You-Can-See-Everything-Trailer-3-Publicity-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/you-can-see-everything-is-a-gothic-romance-for-the-ages-1480ab/",
-      "landing_url": "https://matchapp.tv/?news=1480ab9e#latest-news",
-      "seo": {
-        "primary_keyword": "you can see everything latest news",
-        "short_tail": [
-          "you can see everything",
-          "you can see everything news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "you can see everything latest news October 2026",
-          "you can see everything entertainment update 2026",
-          "you can see everything news 2026-10-19",
-          "latest entertainment news about you can see everything",
-          "you can see everything gothic romance latest update",
-          "The Hollywood Reporter you can see everything entertainment",
-          "latest news about you can see everything October 2026",
-          "you can see everything entertainment news 2026-10-19",
-          "what happened with you can see everything"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "you",
-          "can",
-          "see",
-          "everything",
-          "gothic",
-          "romance",
-          "ages"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "you can see everything 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter you can see everything",
-          "hollywoodreporter.com you can see everything",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘You Can See Everything’ Is a Gothic Romance for the Ages…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "you can see everything latest news",
-          "you can see everything",
-          "you can see everything news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "you can see everything latest news October 2026",
-          "you can see everything entertainment update 2026",
-          "you can see everything news 2026-10-19",
-          "latest entertainment news about you can see everything",
-          "you can see everything gothic romance latest update",
-          "The Hollywood Reporter you can see everything entertainment",
-          "latest news about you can see everything October 2026",
-          "you can see everything entertainment news 2026-10-19",
-          "what happened with you can see everything",
-          "you",
-          "can",
-          "see",
-          "everything",
-          "gothic",
-          "romance",
-          "ages",
-          "October 2026",
-          "2026-10-19",
-          "you can see everything 2026",
-          "The Hollywood Reporter you can see everything",
-          "hollywoodreporter.com you can see everything",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T22:36:38.664Z"
-      }
-    },
-    {
-      "id": "d9cc28ac",
-      "title": "Jason Segel Marries Kayla Radomski",
-      "url": "https://www.hollywoodreporter.com/lifestyle/lifestyle-news/jason-segel-married-kayla-radomski-shrinking-himym-1236735763/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T22:16:15.000Z",
-      "discovered_at": "2026-10-19T22:36:38.664Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Jason Segel Marries Kayla",
-      "description": "Jason Segel Marries Kayla: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/GettyImages-2295296060.jpg?crop=0px%2C474px%2C5000px%2C2797px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/jason-segel-marries-kayla-radomski-d9cc28/",
-      "landing_url": "https://matchapp.tv/?news=d9cc28ac#latest-news",
-      "seo": {
-        "primary_keyword": "Jason Segel Marries Kayla latest news",
-        "short_tail": [
-          "Jason Segel Marries Kayla",
-          "Jason Segel Marries Kayla news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Jason Segel Marries Kayla latest news October 2026",
-          "Jason Segel Marries Kayla entertainment update 2026",
-          "Jason Segel Marries Kayla news 2026-10-19",
-          "latest entertainment news about Jason Segel Marries Kayla",
-          "jason segel marries kayla jason segel latest update",
-          "The Hollywood Reporter Jason Segel Marries Kayla entertainment",
-          "latest news about Jason Segel Marries Kayla October 2026",
-          "Jason Segel Marries Kayla entertainment news 2026-10-19",
-          "what happened with Jason Segel Marries Kayla"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Jason Segel Marries Kayla",
-          "jason",
-          "segel",
-          "marries",
-          "kayla"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "Jason Segel Marries Kayla 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Jason Segel Marries Kayla",
-          "hollywoodreporter.com Jason Segel Marries Kayla",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Jason Segel Marries Kayla Radomski | Entertainment News |…",
-        "meta_description": "Jason Segel Marries Kayla: Entertainment update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original…",
-        "keywords": [
-          "Jason Segel Marries Kayla latest news",
-          "Jason Segel Marries Kayla",
-          "Jason Segel Marries Kayla news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Jason Segel Marries Kayla latest news October 2026",
-          "Jason Segel Marries Kayla entertainment update 2026",
-          "Jason Segel Marries Kayla news 2026-10-19",
-          "latest entertainment news about Jason Segel Marries Kayla",
-          "jason segel marries kayla jason segel latest update",
-          "The Hollywood Reporter Jason Segel Marries Kayla entertainment",
-          "latest news about Jason Segel Marries Kayla October 2026",
-          "Jason Segel Marries Kayla entertainment news 2026-10-19",
-          "what happened with Jason Segel Marries Kayla",
-          "jason",
-          "segel",
-          "marries",
-          "kayla",
-          "October 2026",
-          "2026-10-19",
-          "Jason Segel Marries Kayla 2026",
-          "The Hollywood Reporter Jason Segel Marries Kayla",
-          "hollywoodreporter.com Jason Segel Marries Kayla",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T22:36:38.664Z"
-      }
-    },
-    {
-      "id": "11980bfc",
-      "title": "Oscar Predictions via Feinberg Forecast: Scott’s Mid-October Charts and Dissection of the Race",
-      "url": "https://www.hollywoodreporter.com/lists/oscar-predictions-feinberg-forecast-2027-race/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-10-19T22:11:42.000Z",
-      "discovered_at": "2026-10-19T22:36:38.664Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "Oscar Predictions",
-      "description": "Oscar Predictions: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/09/You-Can-See-Everything-Trailer-2-Screenshot-Publicity-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/oscar-predictions-via-feinberg-forecast-scott-s-mid-october-charts-and-dissectio-11980b/",
-      "landing_url": "https://matchapp.tv/?news=11980bfc#latest-news",
-      "seo": {
-        "primary_keyword": "Oscar Predictions latest news",
-        "short_tail": [
-          "Oscar Predictions",
-          "Oscar Predictions news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Oscar Predictions latest news October 2026",
-          "Oscar Predictions awards update 2026",
-          "Oscar Predictions news 2026-10-19",
-          "latest awards news about Oscar Predictions",
-          "oscar predictions oscar predictions via feinberg latest update",
-          "The Hollywood Reporter Oscar Predictions awards",
-          "latest news about Oscar Predictions October 2026",
-          "Oscar Predictions entertainment news 2026-10-19",
-          "what happened with Oscar Predictions"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Oscar Predictions",
-          "oscar",
-          "predictions",
-          "via",
-          "feinberg",
-          "forecast",
-          "scott"
-        ],
-        "freshness_keywords": [
-          "October 2026",
-          "2026-10-19",
-          "Oscar Predictions 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Oscar Predictions",
-          "hollywoodreporter.com Oscar Predictions",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Oscar Predictions via Feinberg Forecast: Scott’s…",
-        "meta_description": "Oscar Predictions: Awards update reported by The Hollywood Reporter on 2026-10-19. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Oscar Predictions latest news",
-          "Oscar Predictions",
-          "Oscar Predictions news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Oscar Predictions latest news October 2026",
-          "Oscar Predictions awards update 2026",
-          "Oscar Predictions news 2026-10-19",
-          "latest awards news about Oscar Predictions",
-          "oscar predictions oscar predictions via feinberg latest update",
-          "The Hollywood Reporter Oscar Predictions awards",
-          "latest news about Oscar Predictions October 2026",
-          "Oscar Predictions entertainment news 2026-10-19",
-          "what happened with Oscar Predictions",
-          "oscar",
-          "predictions",
-          "via",
-          "feinberg",
-          "forecast",
-          "scott",
-          "October 2026",
-          "2026-10-19",
-          "Oscar Predictions 2026",
-          "The Hollywood Reporter Oscar Predictions",
-          "hollywoodreporter.com Oscar Predictions",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-10-19T22:36:38.664Z"
-      }
-    },
-    {
       "id": "8d35adca",
       "title": "Asa de avião da Latam pega fogo antes da decolagem no Peru; passageiros desembarcam",
       "url": "https://g1.globo.com/mundo/noticia/2026/10/19/asa-de-aviao-da-latam-pega-fogo-antes-da-decolagem-no-peru-passageiros-desembarcam.ghtml",
@@ -1086,213 +1548,6 @@
           "notícias mundiais outubro 2026",
           "2026-10-19",
           "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T22:36:38.664Z"
-      }
-    },
-    {
-      "id": "22a5987f",
-      "title": "Clean up begins after French riots but police remain",
-      "url": "https://www.bbc.co.uk/news/videos/cwr7y0e57r50o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T21:30:08.000Z",
-      "discovered_at": "2026-10-20T01:15:38.411Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6193/live/d6797140-cc02-11f1-bc2e-018d645d8d21.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/clean-up-begins-after-french-riots-but-police-remain-22a598/",
-      "landing_url": "https://matchapp.tv/?news=22a5987f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "clean",
-          "begins",
-          "after",
-          "french",
-          "riots",
-          "but"
-        ],
-        "long_tail": [
-          "Clean up begins after French riots but police remain 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "clean",
-          "begins",
-          "after",
-          "french",
-          "riots",
-          "but"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Clean up begins after French riots but police remain |…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "clean",
-          "begins",
-          "after",
-          "french",
-          "riots",
-          "but",
-          "Clean up begins after French riots but police remain 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-20T01:15:38.411Z"
-      }
-    },
-    {
-      "id": "8bc9310d",
-      "title": "Curfew imposed in parts of central Paris and other cities after rioting across France",
-      "url": "https://www.bbc.co.uk/news/articles/cx30ez03djyqo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T21:14:53.000Z",
-      "discovered_at": "2026-10-20T01:15:38.411Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a4a4/live/f9b4b1d0-cc1e-11f1-94fe-b94794c2a157.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/curfew-imposed-in-parts-of-central-paris-and-other-cities-after-rioting-across-f-8bc931/",
-      "landing_url": "https://matchapp.tv/?news=8bc9310d#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "curfew",
-          "imposed",
-          "parts",
-          "central",
-          "paris",
-          "other"
-        ],
-        "long_tail": [
-          "Curfew imposed in parts of central Paris and other cities after rioting across France 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "curfew",
-          "imposed",
-          "parts",
-          "central",
-          "paris",
-          "other"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Curfew imposed in parts of central Paris and other cities…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "curfew",
-          "imposed",
-          "parts",
-          "central",
-          "paris",
-          "other",
-          "Curfew imposed in parts of central Paris and other cities after rioting across France 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-10-20T01:15:38.411Z"
-      }
-    },
-    {
-      "id": "733cc190",
-      "title": "Ex-OpenAI worker accused of planting device had Saudi support, says court filing",
-      "url": "https://www.bbc.co.uk/news/articles/c6gel2dlyxvyo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-10-19T21:12:30.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ad18/live/95af9980-cbd2-11f1-aba9-2bb2608f11d9.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/ex-openai-worker-accused-of-planting-device-had-saudi-support-says-court-filing-733cc1/",
-      "landing_url": "https://matchapp.tv/?news=733cc190#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-10-19",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "openai",
-          "worker",
-          "accused",
-          "planting",
-          "device",
-          "had"
-        ],
-        "long_tail": [
-          "Ex-OpenAI worker accused of planting device had Saudi support, says court filing 2026-10-19",
-          "world news October 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "openai",
-          "worker",
-          "accused",
-          "planting",
-          "device",
-          "had"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Ex-OpenAI worker accused of planting device had Saudi…",
-        "meta_description": "World report published by BBC World on 2026-10-19. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-10-19",
-          "world news",
-          "global headlines",
-          "openai",
-          "worker",
-          "accused",
-          "planting",
-          "device",
-          "had",
-          "Ex-OpenAI worker accused of planting device had Saudi support, says court filing 2026-10-19",
-          "world news October 2026",
-          "2026-10-19",
-          "BBC World"
         ],
         "seo_generated_at": "2026-10-19T22:36:38.664Z"
       }
@@ -1624,144 +1879,6 @@
       }
     },
     {
-      "id": "09a21c14",
-      "title": "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/chile-prende-110-pessoas-em-protestos-no-aniversario-da-revolta-social-de-2019.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T18:33:48.000Z",
-      "discovered_at": "2026-10-19T18:35:31.615Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/ngtM6Suz77kKbVDESp1G-w0YK3A=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/7/A/wAUx77TIiG9OEYGlARAQ/2026-10-18t204555z-954792801-rc2s5oaemkba-rtrmadp-3-chile-protests-anniversary.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/chile-prende-110-pessoas-em-protestos-no-aniversario-da-revolta-social-de-2019-09a21c/",
-      "landing_url": "https://matchapp.tv/?news=09a21c14#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "chile",
-          "prende",
-          "110",
-          "pessoas",
-          "protestos",
-          "aniversario"
-        ],
-        "long_tail": [
-          "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "chile",
-          "prende",
-          "110",
-          "pessoas",
-          "protestos",
-          "aniversario"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Chile prende 110 pessoas em protestos no aniversário da…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "chile",
-          "prende",
-          "110",
-          "pessoas",
-          "protestos",
-          "aniversario",
-          "Chile prende 110 pessoas em protestos no aniversário da 'revolta social' de 2019 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T18:35:31.615Z"
-      }
-    },
-    {
-      "id": "e82ec452",
-      "title": "VÍDEO: Galerias Lafayette são saqueadas durante protestos na França",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/video-galerias-lafayette-sao-saqueadas-por-durante-disturbios-na-franca.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T17:21:55.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/y528WLDubOnfEjQ1uN45H6o-AwQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/T/L/XZ6H5HQfCX2sBZAtqvXg/fotojet-2026-10-19t145532.760.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/video-galerias-lafayette-sao-saqueadas-durante-protestos-na-franca-e82ec4/",
-      "landing_url": "https://matchapp.tv/?news=e82ec452#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "galerias",
-          "lafayette",
-          "sao",
-          "saqueadas",
-          "durante"
-        ],
-        "long_tail": [
-          "VÍDEO: Galerias Lafayette são saqueadas durante protestos na França 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "video",
-          "galerias",
-          "lafayette",
-          "sao",
-          "saqueadas",
-          "durante"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "VÍDEO: Galerias Lafayette são saqueadas durante protestos…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "video",
-          "galerias",
-          "lafayette",
-          "sao",
-          "saqueadas",
-          "durante",
-          "VÍDEO: Galerias Lafayette são saqueadas durante protestos na França 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
       "id": "f65cf91c",
       "title": "Tom Cullen says he doesn't take playing LGBT roles lightly",
       "url": "https://www.bbc.co.uk/news/articles/cw146g3l8p2xo?at_medium=RSS&at_campaign=rss",
@@ -1855,213 +1972,6 @@
           "BBC entertainment news"
         ],
         "seo_generated_at": "2026-10-19T22:36:38.664Z"
-      }
-    },
-    {
-      "id": "3536f117",
-      "title": "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO mostra janelas explodindo",
-      "url": "https://g1.globo.com/mundo/ucrania-russia/noticia/2026/10/19/ataque-russo-atinge-predio-residencial-na-ucrania-video-mostra-janelas-explodindo.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T16:58:55.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/3sNrQ7HNrONaEn5Uto7_SQdKMEU=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/0/yf8RwASBm8FaUeP9lWSg/novo-projeto-1-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ataque-russo-atinge-predio-residencial-na-ucrania-video-mostra-janelas-explodind-3536f1/",
-      "landing_url": "https://matchapp.tv/?news=3536f117#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ataque",
-          "russo",
-          "atinge",
-          "predio",
-          "residencial",
-          "ucrania"
-        ],
-        "long_tail": [
-          "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO mostra janelas explodindo 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ataque",
-          "russo",
-          "atinge",
-          "predio",
-          "residencial",
-          "ucrania"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ataque",
-          "russo",
-          "atinge",
-          "predio",
-          "residencial",
-          "ucrania",
-          "Ataque russo atinge prédio residencial na Ucrânia; VÍDEO mostra janelas explodindo 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "e2dda64b",
-      "title": "Papa pede que Zelensky coopere com Putin para garantir ajuda a cidade ucraniana sob controle russo",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/papa-fala-ao-telefone-com-zelensky.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T16:26:51.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/0CIyvri3H7JHyAOy6tSv15B5U_0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/M/m/Rsc3xXTfuYAA3IDc9IXA/2026-10-18t102902z-1761409032-rc2m5oanj7do-rtrmadp-3-pope-health-prayer.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/papa-pede-que-zelensky-coopere-com-putin-para-garantir-ajuda-a-cidade-ucraniana--e2dda6/",
-      "landing_url": "https://matchapp.tv/?news=e2dda64b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "pede",
-          "que",
-          "zelensky",
-          "coopere",
-          "putin"
-        ],
-        "long_tail": [
-          "Papa pede que Zelensky coopere com Putin para garantir ajuda a cidade ucraniana sob controle russo 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "papa",
-          "pede",
-          "que",
-          "zelensky",
-          "coopere",
-          "putin"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Papa pede que Zelensky coopere com Putin para garantir…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "papa",
-          "pede",
-          "que",
-          "zelensky",
-          "coopere",
-          "putin",
-          "Papa pede que Zelensky coopere com Putin para garantir ajuda a cidade ucraniana sob controle russo 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
-      }
-    },
-    {
-      "id": "5f41c822",
-      "title": "Suprema Corte dos Estados Unidos rejeita recurso de mentor dos atentados de 11/9",
-      "url": "https://g1.globo.com/mundo/noticia/2026/10/19/suprema-corte-dos-estados-unidos-rejeita-recurso-de-suposto-mentor-dos-atentados-de-119.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-10-19T16:17:29.000Z",
-      "discovered_at": "2026-10-19T17:29:17.624Z",
-      "event_type": "Entertainment",
-      "category": "world",
-      "person": "Suprema Corte",
-      "description": "World news reported by G1 Mundo on 2026-10-19. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/b-NAusf1O2oBfgpwjBEC3tpi_Ug=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/1/h0kAhwQGS03BQhOBQfhQ/ap26239030442296.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/suprema-corte-dos-estados-unidos-rejeita-recurso-de-mentor-dos-atentados-de-11-9-5f41c8/",
-      "landing_url": "https://matchapp.tv/?news=5f41c822#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-10-19",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "suprema",
-          "corte",
-          "estados",
-          "unidos",
-          "rejeita",
-          "recurso"
-        ],
-        "long_tail": [
-          "Suprema Corte dos Estados Unidos rejeita recurso de mentor dos atentados de 11/9 2026-10-19",
-          "notícias mundiais outubro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "suprema",
-          "corte",
-          "estados",
-          "unidos",
-          "rejeita",
-          "recurso"
-        ],
-        "freshness_keywords": [
-          "2026-10-19"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Suprema Corte dos Estados Unidos rejeita recurso de mentor…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-10-19. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-10-19",
-          "notícias do mundo",
-          "notícias internacionais",
-          "suprema",
-          "corte",
-          "estados",
-          "unidos",
-          "rejeita",
-          "recurso",
-          "Suprema Corte dos Estados Unidos rejeita recurso de mentor dos atentados de 11/9 2026-10-19",
-          "notícias mundiais outubro 2026",
-          "2026-10-19",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-10-19T17:44:03.755Z"
       }
     },
     {
@@ -3518,6 +3428,105 @@
           "Actress Selma Blair 2026",
           "BBC Actress Selma Blair",
           "bbc.co.uk Actress Selma Blair",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-10-19T17:44:03.755Z"
+      }
+    },
+    {
+      "id": "6c2b5fd8",
+      "title": "Miranda's tears, joy and dance moves steal show as deadly boredom sets in on The Celebrity Traitors",
+      "url": "https://www.bbc.co.uk/news/articles/cq70pre80gwko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-10-17T01:34:52.000Z",
+      "discovered_at": "2026-10-17T06:06:08.689Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e183/live/2c8eab40-c9bf-11f1-ae9f-bf0ab88aba90.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/miranda-s-tears-joy-and-dance-moves-steal-show-as-deadly-boredom-sets-in-on-the--6c2b5f/",
+      "landing_url": "https://matchapp.tv/?news=6c2b5fd8#latest-news",
+      "seo": {
+        "primary_keyword": "miranda tears joy dance latest news",
+        "short_tail": [
+          "miranda tears joy dance",
+          "miranda tears joy dance news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "miranda tears joy dance latest news October 2026",
+          "miranda tears joy dance music update 2026",
+          "miranda tears joy dance news 2026-10-17",
+          "latest music news about miranda tears joy dance",
+          "miranda tears joy dance moves steal latest update",
+          "BBC miranda tears joy dance music",
+          "latest news about miranda tears joy dance October 2026",
+          "miranda tears joy dance entertainment news 2026-10-17",
+          "what happened with miranda tears joy dance"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "miranda",
+          "tears",
+          "joy",
+          "dance",
+          "moves",
+          "steal",
+          "show",
+          "deadly"
+        ],
+        "freshness_keywords": [
+          "October 2026",
+          "2026-10-17",
+          "miranda tears joy dance 2026"
+        ],
+        "source_keywords": [
+          "BBC miranda tears joy dance",
+          "bbc.co.uk miranda tears joy dance",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Miranda's tears, joy and dance moves steal show as deadly…",
+        "meta_description": "Music update reported by BBC on 2026-10-17. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "miranda tears joy dance latest news",
+          "miranda tears joy dance",
+          "miranda tears joy dance news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "miranda tears joy dance latest news October 2026",
+          "miranda tears joy dance music update 2026",
+          "miranda tears joy dance news 2026-10-17",
+          "latest music news about miranda tears joy dance",
+          "miranda tears joy dance moves steal latest update",
+          "BBC miranda tears joy dance music",
+          "latest news about miranda tears joy dance October 2026",
+          "miranda tears joy dance entertainment news 2026-10-17",
+          "what happened with miranda tears joy dance",
+          "miranda",
+          "tears",
+          "joy",
+          "dance",
+          "moves",
+          "steal",
+          "show",
+          "deadly",
+          "October 2026",
+          "2026-10-17",
+          "miranda tears joy dance 2026",
+          "BBC miranda tears joy dance",
+          "bbc.co.uk miranda tears joy dance",
           "BBC entertainment news"
         ],
         "seo_generated_at": "2026-10-19T17:44:03.755Z"
