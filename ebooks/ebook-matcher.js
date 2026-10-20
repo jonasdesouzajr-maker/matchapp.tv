@@ -437,7 +437,7 @@ function showVerifiedCover(img,fall,url,timeout=7000,replaceURL=null,currentRun=
  });
 }
 function showExactCoverRenditions(img,fall,url,sharp){
- if(!url||!img?.isConnected)return Promise.resolve(false);
+ if(!url||!img?.isConnected||/^data:/i.test(url))return Promise.resolve(false);
  // The compact rendition is derived only from the strict verifier's 600px
  // result. All three URLs retain the exact original asset and edition path.
  let preview=null;

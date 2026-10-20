@@ -94,6 +94,19 @@ const appleOriginal='https://is1-ssl.mzstatic.com/image/thumb/Publication123/v4/
 const appleSharp=appleOriginal.replace('/100x100bb.jpg','/600x600bb.jpg');
 const applePreview=appleSharp.replace('/600x600bb.jpg','/300x300bb.jpg');
 
+test('data URI covers are rejected before source or audio artwork starts or becomes verified',async()=>{
+ for(const entry of ['source','audio'])for(const url of ['data:image/svg+xml,not-source-art','DaTa:image/jpeg;base64,AA==']){
+  const f=fixture();await f[entry](url);
+  assert.equal(f.preloads.length,1,'only the unchanged destination image exists; no probe is constructed');
+  assert.deepEqual(f.img.writes,[]);assert.equal(f.img.src,'');
+  assert.equal(f.img.hidden,true);assert.equal(f.img.style.opacity,'');assert.equal(f.fallback.hidden,false);
+  assert.deepEqual(f.img.dataset,{});assert.equal(f.img.__matchappBookCover.pending,null);
+  assert.equal(f.img.__matchappBookCover.verified,null);assert.equal(f.img.__matchappBookCover.sourceRun,undefined);
+  assert.equal(f.img.onload,null);assert.equal(f.img.onerror,null);assert.equal(f.requests.length,0);assert.equal(f.timers.size,0);
+  await f.done();
+ }
+});
+
 test('verified 300px and 600px e-book renditions start at 0ms and a slow sharp download survives preview failure',async()=>{
  const f=fixture();await f.source(appleOriginal);
  assert.deepEqual(f.preloads.slice(1).map(node=>node.writeTimes),[[{src:appleSharp,at:0}],[{src:applePreview,at:0}]]);
