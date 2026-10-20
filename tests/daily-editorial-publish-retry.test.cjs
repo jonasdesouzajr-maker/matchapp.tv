@@ -23,7 +23,7 @@ function bashPath(value){
  if(process.platform!=='win32')return value;
  return String(value).replace(/^([A-Za-z]):[\\/]/,(_,drive)=>'/'+drive.toLowerCase()+'/').replace(/\\/g,'/');
 }
-const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/trending-refresh.yml'),'utf8').replace(/\r\n/g,'\n');
+const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/unified-refresh.yml'),'utf8').replace(/\r\n/g,'\n');
 const section=workflow.split('      - name: Publish verified daily editorial refresh')[1].split('      - name: Validate and deploy')[0];
 const script=section.split('        run: |\n')[1].split('\n').map(line=>line.slice(10)).join('\n');
 function simulate({conflicts=1,failGate='',noop=false,lostAck='',remoteUnchanged=false}={}){
@@ -90,7 +90,7 @@ if [ "$name" = git ]; then
    exit 1;;
  esac
 fi
-if [ "$name $*" = "$FAIL_GATE" ]; then exit 9; fi
+if [ "$name $*" = "$FAIL_GATE" ] && [ -f "$COUNT" ]; then exit 9; fi
 if [ "$name" = node ] && [ "$1" = - ]; then cat >/dev/null; fi
 `;
   for(const name of ['git','node','npm'])fs.writeFileSync(path.join(binary,name),fake,{mode:0o755});
@@ -104,13 +104,12 @@ test('daily publisher discards conflicted generation, refreshes latest main and 
  const r=simulate();assert.equal(r.status,0,r.stderr);assert.equal(r.output,'changed=1\n');
  const pushes=r.trace.map((x,i)=>x==='git push origin HEAD:main'?i:-1).filter(i=>i>=0);assert.equal(pushes.length,2);
  const retry=r.trace.slice(pushes[0]+1,pushes[1]);
- const required=['git fetch origin main','git reset --hard origin/main','node tools/refresh-music-videos.js','node tools/sync-catalog-media.js','node tools/refresh-trending.mjs','node tools/refresh-weekly-pick.mjs','node tools/update-sitemap.js','node --check weekly-pick.js','node --check trending-rail.js','node --check tools/refresh-trending.mjs','node --check tools/refresh-music-videos.js','node --check tools/refresh-weekly-pick.mjs','node tools/check-content-rotation.js','node -','npm run audit:site','npm test','npm run build'];
+ const required=['git fetch origin main','git reset --hard origin/main','git clean -fd','npm ci --ignore-scripts','node tools/unified-refresh.cjs generate','node --test tests/release-audit.test.cjs','node tools/check-content-rotation.js','npm test','npm run audit:site','npm run build','node tools/unified-refresh.cjs stage'];
  let last=-1;for(const command of required){const i=retry.indexOf(command);assert.ok(i>last,command+' must run in sequence before the retry');last=i;}
- assert.ok(retry.findIndex(x=>x.startsWith('git add -- '))>last);
  assert.ok(!r.trace.some(x=>/git rebase|git add -A$|gh workflow/.test(x)));
 });
 test('failed regenerated audit or regression prevents another commit and push',()=>{
- for(const failGate of ['node tools/check-content-rotation.js','node -','npm run audit:site','npm test','npm run build']){
+ for(const failGate of ['node tools/unified-refresh.cjs generate','node --test tests/release-audit.test.cjs','node tools/check-content-rotation.js','npm run audit:site','npm test','npm run build','node tools/unified-refresh.cjs stage']){
   const r=simulate({failGate});assert.notEqual(r.status,0,failGate);assert.equal(r.output,'');
   assert.equal(r.trace.filter(x=>x==='git push origin HEAD:main').length,1);
   assert.equal(r.trace.filter(x=>x.startsWith('git commit ')).length,1);
@@ -118,7 +117,7 @@ test('failed regenerated audit or regression prevents another commit and push',(
 });
 test('no-op never publishes, and repeated conflicts stop after three validated attempts',()=>{
  const noop=simulate({noop:true});assert.equal(noop.status,0);assert.equal(noop.output,'changed=0\n');assert.ok(!noop.trace.some(x=>x.startsWith('git push')));
- const exhausted=simulate({conflicts:3});assert.notEqual(exhausted.status,0);assert.equal(exhausted.output,'');assert.equal(exhausted.trace.filter(x=>x==='git push origin HEAD:main').length,3);assert.equal(exhausted.trace.filter(x=>x==='npm test').length,2);
+ const exhausted=simulate({conflicts:3});assert.notEqual(exhausted.status,0);assert.equal(exhausted.output,'');assert.equal(exhausted.trace.filter(x=>x==='git push origin HEAD:main').length,3);assert.equal(exhausted.trace.filter(x=>x==='npm test').length,3);
 });
 test('an accepted push with a lost acknowledgement succeeds without regenerating or resubmitting',()=>{
  for(const lostAck of ['head','descendant']){
@@ -127,7 +126,8 @@ test('an accepted push with a lost acknowledgement succeeds without regenerating
   assert.equal(r.trace.filter(x=>x.startsWith('git commit ')).length,1);
   assert.ok(r.trace.some(x=>x==='git fetch --no-tags origin main'));
   assert.ok(r.trace.some(x=>x==='git merge-base --is-ancestor '+r.head+' origin/main'));
-  assert.ok(!r.trace.some(x=>x.startsWith('git reset ')||x.startsWith('node ')||x.startsWith('npm ')));
+  assert.ok(!r.trace.some(x=>x.startsWith('git reset ')||x==='node tools/unified-refresh.cjs generate'));
+  assert.equal(r.trace.filter(x=>x==='npm test').length,1,'initial publication gates run exactly once');
   assert.ok(!r.trace.some(x=>x==='git rev-parse HEAD~1'));
   if(lostAck==='head')assert.equal(r.remote,r.head);
   else assert.notEqual(r.remote,r.head,'a newer remote descendant still contains the accepted publication');
@@ -139,7 +139,8 @@ test('a failed push with unchanged remote stops without a changed output or anot
  assert.equal(r.trace.filter(x=>x.startsWith('git commit ')).length,1);
  assert.ok(r.trace.some(x=>x==='git rev-parse HEAD~1'));
  assert.ok(r.trace.some(x=>x==='git rev-parse origin/main'));
- assert.ok(!r.trace.some(x=>x.startsWith('git reset ')||x.startsWith('node ')||x.startsWith('npm ')));
+ assert.ok(!r.trace.some(x=>x.startsWith('git reset ')||x==='node tools/unified-refresh.cjs generate'));
+ assert.equal(r.trace.filter(x=>x==='npm test').length,1,'unknown outcome must not rerun passed initial gates');
  assert.match(r.stdout,/Push failed without newer main; stop rather than resubmit an unknown outcome/);
  assert.notEqual(r.remote,r.head,'the unpublished candidate must not become remote main');
 });

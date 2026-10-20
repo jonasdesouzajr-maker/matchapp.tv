@@ -34,19 +34,21 @@ test('a GDELT first-seen timestamp is parsed exactly; no fabricated publication 
  assert.equal(v[0].discovery_source,'GDELT Project DOC 2.0');
  assert.equal(discover.publisher('https://reuters.com.attacker.invalid/sports/football'),null);
 });
-test('one sports snapshot, twice daily; serialize publishers and dispatch only after successful content push',()=>{
- const sport=read('.github/workflows/sports-refresh.yml'),hour=read('.github/workflows/news-refresh.yml');
- assert.match(sport,/cron: '17 11,23 \* \* \*'/);
- assert.match(sport,/push:[\s\S]*branches: \[main\][\s\S]*paths:[\s\S]*\.github\/workflows\/sports-refresh\.yml/);
- assert.doesNotMatch(sport,/push:[\s\S]*news\/\*\*/);
- assert.match(sport,/group: matchapp-content-publish/);
- assert.match(sport,/cancel-in-progress: false/);
- assert.match(sport,/node tools\/refresh-sports-discovery\.js/);
- assert.match(sport,/node tools\/refresh-news-rss\.js/);
- assert.match(sport,/node tools\/check-content-rotation\.js/);
- assert.match(sport,/if: steps\.publish\.outputs\.changed == '1'[\s\S]*gh workflow run pages-deploy\.yml --ref main/);
- assert.doesNotMatch(sport,/gh workflow run indexnow\.yml/);
- assert.match(hour,/cron: '37 \* \* \* \*'/);
+test('one daily pipeline generates the sports snapshot before the sole news publication',()=>{
+ const daily=read('.github/workflows/unified-refresh.yml'),runner=read('tools/unified-refresh.cjs');
+ assert.match(daily,/cron: '30 4 \* \* \*'/);
+ assert.match(daily,/push:[\s\S]*branches: \[main\][\s\S]*paths:[\s\S]*\.github\/workflows\/unified-refresh\.yml/);
+ assert.doesNotMatch(daily,/push:[\s\S]*news\/\*\*/);
+ assert.match(daily,/group: matchapp-content-publish/);
+ assert.match(daily,/cancel-in-progress: false/);
+ assert.ok(runner.includes('tools/refresh-sports-discovery.js'));
+ assert.ok(runner.includes('tools/refresh-news-rss.js'));
+ assert.ok(runner.indexOf('tools/refresh-sports-discovery.js')<runner.indexOf('tools/refresh-news-rss.js'),'sports snapshot must exist before news generator consumes it');
+ assert.match(daily,/node tools\/check-content-rotation\.js/);
+ assert.match(daily,/CONTENT_CHANGED: \$\{\{ steps\.publish\.outputs\.changed \}\}/);
+ assert.match(daily,/dispatchAndConfirm\('pages-deploy\.yml', 'pages'\)/);
+ assert.match(daily,/run\.head_sha === expectedSha/);
+ for(const retired of ['sports-refresh','news-refresh'])assert.equal(fs.existsSync(path.join(root,'.github/workflows/'+retired+'.yml')),false,'retired source scheduler may not compete with unified refresh');
 });
 test('sports reuse existing homepage click flow, real source links, semantic metadata, and no publisher photo copying',()=>{
  const front=read('latest-news.js'),news=read('tools/refresh-news-rss.js'),sports=read('tools/refresh-sports-discovery.js');
@@ -62,7 +64,7 @@ test('sports reuse existing homepage click flow, real source links, semantic met
  assert.match(sports,/fetchGdelt/);
  assert.match(sports,/execFileSync\('curl'/);
  assert.match(sports,/--fail/);
- assert.match(read('.github/workflows/sports-refresh.yml'),/NODE_OPTIONS: --dns-result-order=ipv4first/);
+ assert.match(read('.github/workflows/unified-refresh.yml'),/NODE_OPTIONS: --dns-result-order=ipv4first/);
  assert.match(read('tools/update-sitemap.js'),/newsUrlsFromDisk/);
 });
 

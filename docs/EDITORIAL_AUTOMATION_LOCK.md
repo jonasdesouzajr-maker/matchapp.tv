@@ -1,4 +1,53 @@
 # MatchApp TV editorial automation lock
+
+## Owner amendment — one daily refresh, October 20, 2026
+
+The owner explicitly requested one refresh containing the others, removal of the
+superseded jobs, and daily operation without repeated manual permission. This
+amendment supersedes the historical separate-owner schedules and preservation
+instructions below. It does not change the AdSense, source, content or test gates.
+
+`unified-refresh.yml` is the **only recurring repository content refresh**. It
+runs at `30 4 * * *` UTC (01:30 America/Sao_Paulo), and supports manual recovery
+and a narrowly scoped main-branch source-change trigger. The seven superseded
+source workflows are removed. Their generators remain and run in one ordered
+pass through `tools/unified-refresh.cjs`: catalog/OIDC, availability, official
+music, Top Titles, weekly choice, sports, news, events, day-history, awareness,
+SEO/watch/worldwide guides, and sitemaps. News is generated once after sports.
+The weekly choice is validated daily and retains its existing weekly rotation.
+
+One `matchapp-content-publish` lock, one scoped staged candidate, and one commit
+publish the generated output. Every initial candidate and genuine main-conflict
+regeneration must pass the existing runtime, content, AdSense, regression,
+site/search and build gates. Unknown push outcomes stop after reconciliation;
+they never authorize another blind push. Source failures preserve committed
+last-good content and remain visible failures, never manufactured freshness.
+The backend catalog accepts only the new workflow's existing GitHub OIDC claims;
+no long-lived backend credential is added to Actions or the client.
+
+Pages, release smoke, validation/security and IndexNow are dependent release
+checks, not independent content refreshes. Pages keeps its existing deployment
+and test gates and is dispatched once only for changed content. A successful
+unchanged daily check may request the existing IndexNow delivery owner once;
+IndexNow has no independent daily cron. Submission is not indexing proof, and
+Google continues to use its supported sitemap/Search Console mechanisms.
+Manual/path-triggered Kids, day-record archival, brand and other specialized
+tools retain their distinct source contracts and shared publishing lock.
+
+The existing ChatGPT coordinator becomes one daily unified operations task,
+including the former mailbox/creator monitoring and weekly SEO report. Other
+hosted tasks are disabled; no new competing coordinator or laptop scheduler is
+authorized. Previously paused/completed releases must not be replayed.
+Current local-date ledgers and historical unknown recovery reservations remain
+authoritative. `editorial-recovery.cjs` may recover only the unified owner;
+retired source jobs cannot be dispatched independently.
+
+Routine execution and minimal diagnosed refresh repairs within this contract
+are already authorized. Do not ask for the same permission every day. New costs,
+credential changes, legal decisions and unrelated protected changes retain
+their separate authorization requirements. An external service outage or a late
+GitHub schedule cannot be promised away or represented as success.
+
 Owner directive — 2026-09-25. Applies to GrokBot, other AI coding agents,
 GitHub Actions and manual edits until the owner explicitly changes it.
 

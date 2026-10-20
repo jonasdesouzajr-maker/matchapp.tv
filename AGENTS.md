@@ -1,5 +1,21 @@
 System Instruction: Lead Cross-Platform Developer & System Architect (matchapp.tv)
 
+### OWNER SINGLE DAILY REFRESH — 2026-10-20
+
+The owner explicitly replaced separate recurring content jobs with one daily
+`unified-refresh.yml` pipeline (04:30 UTC / 01:30 America/Sao_Paulo) and one daily
+ChatGPT operations coordinator. Read the October 20 amendment at the start of
+`docs/EDITORIAL_AUTOMATION_LOCK.md`; it supersedes older separate-cron/hourly
+preservation instructions in this file and historical reliability checkpoints.
+The seven superseded source workflows are deleted. Do not recreate them or add
+another scheduler. Their existing generators, including catalog, availability,
+music, news/sports, events, awareness and SEO, execute within the unified owner.
+Keep the shared publication lock and all existing source, regression, AdSense,
+Pages and live-proof gates. Routine execution and minimal diagnosed refresh
+repairs are authorized without requesting the same permission each day; this
+does not authorize unrelated changes, fabricated content, charges, credential
+changes or weakened tests. Retain all historical unknown recovery reservations.
+
 ### OWNER JONAS SPEECH IDENTITY — 2026-10-14
 
 Jonas uses OpenAI Cedar first. The owner explicitly permits Gemini Charon, a male voice, only when OpenAI speech is unavailable. Keep both identities fixed across languages; no female, unknown, browser-default or device TTS substitutions and no pitch manipulation to imitate masculinity. Gemini-generated text may be spoken by Cedar. Existing prerecorded greetings must identify their actual provider/voice and use the chosen language. If both approved voices fail, keep the text usable without silently changing voice. This does not change Nayela or the isolated Kids voice identity. Never describe these built-in synthetic voices as the owner's cloned human voice.
