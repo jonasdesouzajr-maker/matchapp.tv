@@ -85,6 +85,7 @@
         // The SDK persists the verified session and emits SIGNED_IN. Existing
         // MatchApp profile/quota hydration remains the authority for membership.
         window.closeAuthModal?.();
+        await window.MatchAppAuthDestination.finish(client(),data.user);
       }
     } catch (error) { message(errorKey(error),true); }
     finally { busy = false; render(); if (action === 'add') loadList(); }

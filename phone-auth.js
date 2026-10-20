@@ -190,8 +190,9 @@ async function verifyCode(){
     }
     setStatus(t.success,'ok');
     document.dispatchEvent(new CustomEvent('matchapp:phoneauthsuccess',{detail:{phone:activePhone}}));
-    // The Profile Hub validates the same server session before opening fields.
-    window.location.assign('/profile/profile.html?welcome=phone');
+    // Returning phone accounts stay on Home; only account-persisted initial
+    // setup opens the Profile Hub, using the same rule as email and Google.
+    await window.MatchAppAuthDestination.finish(sb,confirmed.data.user);
   }catch(error){
     setStatus(friendlySmsError(error,'verify'),'error');
   }finally{

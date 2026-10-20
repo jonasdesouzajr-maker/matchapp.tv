@@ -91,12 +91,6 @@ function renderProfileAgeLabel(node, age) {
 document.addEventListener('DOMContentLoaded', () => {
     const dobInput = document.getElementById('profile-dob');
     const ageDisplay = document.getElementById('profile-age-display');
-    const picPreview = document.getElementById('profile-pic-preview');
-
-    const savedAvatar = localStorage.getItem('match_custom_avatar');
-    if (savedAvatar && picPreview) {
-        picPreview.src = savedAvatar;
-    }
     
     const savedAge = localStorage.getItem('match_user_age');
     if (savedAge && ageDisplay) {
@@ -125,6 +119,18 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProfileGrids();
 });
 
+let initialSetupOpenedFor = null;
+function openInitialProfileSetup(state) {
+    if (new URLSearchParams(location.search).get('setup') !== '1' ||
+        state.status !== 'ready' || !state.userId || initialSetupOpenedFor === state.userId) return;
+    const card = document.getElementById('account-details');
+    if (!card) return;
+    initialSetupOpenedFor = state.userId;
+    card.hidden = false;
+    card.classList.add('profile-hub-open');
+    requestAnimationFrame(() => card.scrollIntoView({ block: 'start' }));
+}
+
 function checkAndRenderProfileState(event) {
     const state=window.matchProfileState || {status:'loading'};
     const pending=state.status!=='ready';
@@ -147,6 +153,7 @@ function checkAndRenderProfileState(event) {
         if(form)form.style.display='none';if(card)card.style.display='none';if(save){save.disabled=true;save.hidden=true;}
         return;
     }
+    openInitialProfileSetup(state);
     const save=document.getElementById('save-profile-btn');if(save)save.hidden=false;
     const isLocked = localStorage.getItem('match_profile_locked') === 'true';
     const savedName = localStorage.getItem('match_user_name') || "";
@@ -158,7 +165,6 @@ function checkAndRenderProfileState(event) {
     const lockedCard = document.getElementById('locked-info-card');
     const saveBtn = document.getElementById('save-profile-btn');
     const instructionsText = document.getElementById('profile-instructions-text');
-    const changeBadge = document.getElementById('avatar-change-badge');
 
     if (isLocked) {
         if (editableSection) editableSection.style.display = 'none';
@@ -175,7 +181,6 @@ function checkAndRenderProfileState(event) {
             populateEmail();
         }
         if (instructionsText) instructionsText.innerHTML = window.MatchProfileDetailsI18n?.text('identityLockedHelp') || "Your core identity is locked and permanently guiding your AI Matches.";
-        if (changeBadge) changeBadge.innerText = window.t?.('identity.avatarEditable') || 'Change avatar';
         
         if (saveBtn) {
             saveBtn.innerText = window.t?.('identity.locked') || 'Identity saved and locked';
@@ -189,7 +194,7 @@ function checkAndRenderProfileState(event) {
     } else {
         if (editableSection) editableSection.style.display='';
         if (lockedCard) lockedCard.style.display='none';
-        if (saveBtn) { if(!languageRefresh){saveBtn.disabled=false;saveBtn.onclick=window.saveProfileData;} saveBtn.setAttribute('data-i18n','profile.saveIdentity'); saveBtn.innerText=window.t?.('profile.saveIdentity') || 'Save & Lock Identity'; }
+        if (saveBtn) { if(!languageRefresh){saveBtn.disabled=false;saveBtn.onclick=()=>window.saveProfileData?.();} saveBtn.setAttribute('data-i18n','profile.saveIdentity'); saveBtn.innerText=window.t?.('profile.saveIdentity') || 'Save & Lock Identity'; }
         if (!languageRefresh && savedName) document.getElementById('profile-name').value = savedName;
         if (!languageRefresh && savedCountry) document.getElementById('profile-country').value = savedCountry;
         if (!languageRefresh && savedDob) document.getElementById('profile-dob').value = savedDob;
@@ -212,91 +217,6 @@ window.retryLockedProfile = async function() {
 document.addEventListener('matchapp:langchange',checkAndRenderProfileState);
 document.addEventListener('matchapp:historychange',()=>window.renderProfileGrids?.());
 document.addEventListener('matchapp:profilehydrated',()=>window.renderProfileGrids?.());
-
-window.handleAvatar = function(event) {
-    // The profile lock deliberately does NOT apply here. It exists to freeze
-    // the identity facts the AI matches on — name, country, date of birth,
-    // star sign — so those stay consistent. A profile photo is not one of
-    // those: it feeds nothing, and locking it meant a user who sealed their
-    // identity could never change their picture again, which is a change
-    // they have every right to make and no reason to be denied.
-    const file = event.target.files[0];
-    if (!file) return;
-
-    if (!/^image\//.test(file.type)) {
-        if (window.showToast) showToast('Please choose an image file.', true);
-        return;
-    }
-    // 8MB ceiling on the ORIGINAL. Anything larger is almost certainly a
-    // RAW or burst capture, and decoding it on a mid-range phone can hang
-    // the tab before we ever get to resize it.
-    if (file.size > 8 * 1024 * 1024) {
-        if (window.showToast) showToast('That image is very large — please pick one under 8MB.', true);
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const img = new Image();
-        img.onload = function () {
-            // RESIZE BEFORE STORING. A modern phone photo is 3-5MB, and
-            // base64 inflates it by roughly a third — so storing the raw
-            // file would push a single avatar past localStorage's ~5MB
-            // budget for the whole origin, silently throwing QuotaExceeded
-            // and taking every other saved preference down with it.
-            // 256px square is more than enough for a 96px display at 2x.
-            const SIZE = 256;
-            const canvas = document.createElement('canvas');
-            canvas.width = canvas.height = SIZE;
-            const ctx = canvas.getContext('2d');
-
-            // Centre-crop to square so portrait and landscape photos are not
-            // squashed into the circular frame.
-            const side = Math.min(img.width, img.height);
-            const sx = (img.width - side) / 2;
-            const sy = (img.height - side) / 2;
-            ctx.drawImage(img, sx, sy, side, side, 0, 0, SIZE, SIZE);
-
-            // JPEG at 0.82 lands a 256px avatar around 15-25KB.
-            const base64 = canvas.toDataURL('image/jpeg', 0.82);
-
-            try {
-                localStorage.setItem('match_custom_avatar', base64);
-            } catch (err) {
-                if (window.showToast) showToast('Could not save the image — your browser storage is full.', true);
-                return;
-            }
-            // A custom photo overrides any preset avatar that was chosen.
-            localStorage.removeItem('match_preset_avatar');
-
-            const preview = document.getElementById('profile-pic-preview');
-            if (preview) preview.src = base64;
-            const navImg = document.getElementById('nav-avatar-img');
-            if (navImg) { navImg.src = base64; navImg.style.display = 'inline-block'; }
-            document.querySelectorAll('.avatar-opt[aria-pressed="true"]')
-                .forEach(b => b.setAttribute('aria-pressed', 'false'));
-
-            if (window.supabaseClient) {
-                window.supabaseClient.auth.getUser().then(async ({ data }) => {
-                    if (data && data.user) {
-                        await window.supabaseClient.from('profiles')
-                            .upsert({ id: data.user.id, avatar_url: base64 }, { onConflict: 'id' });
-                    }
-                });
-            }
-            if (window.showToast) showToast('Profile photo updated.');
-            if (window.track) window.track('avatar_changed', { source: 'upload' });
-        };
-        img.onerror = function () {
-            if (window.showToast) showToast("That file could not be read as an image.", true);
-        };
-        img.src = e.target.result;
-    };
-    reader.onerror = function () {
-        if (window.showToast) showToast('Could not read that file.', true);
-    };
-    reader.readAsDataURL(file);
-};
 
 window.saveProfileData = async function() {
     if (localStorage.getItem('match_profile_locked') === 'true') return;
@@ -649,59 +569,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Re-sort the voice list toward the newly chosen language.
 document.addEventListener('matchapp:langchange', populateVoiceList);
 /* ============================================================
-   AVATAR PICKER + NICKNAME
-   Presets and resolution logic live in avatars.js; this is the profile-page
-   UI that drives them.
+   PROFILE NICKNAME
    ============================================================ */
-
-function renderAvatarPicker() {
-    const grid = document.getElementById('avatar-preset-grid');
-    if (!grid || !window.AVATAR_PRESETS) return;
-    const current = localStorage.getItem('match_preset_avatar') || '';
-    grid.innerHTML = Object.entries(window.AVATAR_PRESETS).map(([key, p]) => `
-        <button type="button" class="avatar-opt" data-key="${key}"
-                aria-pressed="${key === current ? 'true' : 'false'}"
-                title="${escapeHtml(p.label)}" aria-label="${escapeHtml(p.label)}"
-                onclick="choosePresetAvatar('${key}')">
-            <img src="${window.avatarSVG(key, 64)}" alt="">
-        </button>`).join('');
-}
-
-window.choosePresetAvatar = function (key) {
-    if (!window.AVATAR_PRESETS || !window.AVATAR_PRESETS[key]) return;
-    try {
-        localStorage.setItem('match_preset_avatar', key);
-        // A preset is an explicit choice, so it should win over a previously
-        // uploaded file until the user clears it — otherwise picking one would
-        // appear to do nothing.
-        localStorage.removeItem('match_custom_avatar');
-    } catch (e) {}
-
-    const src = window.avatarSVG(key, 260);
-    const preview = document.getElementById('profile-pic-preview');
-    if (preview) preview.src = src;
-    if (typeof window.renderUserAvatar === 'function') window.renderUserAvatar();
-    renderAvatarPicker();
-
-    // Best-effort sync so the choice follows the account, not just this device.
-    if (window.supabaseClient) {
-        window.supabaseClient.auth.getUser().then(({ data }) => {
-            if (data && data.user) {
-                window.supabaseClient.from('profiles')
-                    .upsert({ id: data.user.id, avatar_url: src }, { onConflict: 'id' });
-            }
-        }).catch(() => {});
-    }
-};
-
-window.clearPresetAvatar = function () {
-    try { localStorage.removeItem('match_preset_avatar'); } catch (e) {}
-    const src = (typeof window.resolveUserAvatar === 'function') ? window.resolveUserAvatar() : null;
-    const preview = document.getElementById('profile-pic-preview');
-    if (preview && src) preview.src = src;
-    if (typeof window.renderUserAvatar === 'function') window.renderUserAvatar();
-    renderAvatarPicker();
-};
 
 let nicknameTimer = null;
 window.saveNickname = function (value) {
@@ -731,13 +600,8 @@ window.saveNickname = function (value) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderAvatarPicker();
     const nick = document.getElementById('pf-nickname');
     if (nick) nick.value = localStorage.getItem('match_user_nickname') || '';
-    // Show whatever avatar currently resolves, including the Google photo.
-    const preview = document.getElementById('profile-pic-preview');
-    const src = (typeof window.resolveUserAvatar === 'function') ? window.resolveUserAvatar() : null;
-    if (preview && src) preview.src = src;
 });
 
 /* ============================================================

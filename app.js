@@ -2266,7 +2266,7 @@ window.handleEmailSignup = async function() {
         } else if (data?.session?.user) {
             msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
             msgEl.innerText = "Signed in. Opening your profile...";
-            setTimeout(() => { window.location.href = '/profile/profile.html'; }, 700);
+            await window.MatchAppAuthDestination.finish(supabaseClient, data.session.user);
         } else {
             // Email confirmation enabled: signUp returns a user, NOT a session.
             // Do not redirect to an unauthenticated profile or claim success.
@@ -2358,6 +2358,7 @@ window.handleEmailLogin = async function() {
         // Avoid an immediate reload that used to race session persistence.
         window.closeAuthModal?.();
         window.showToast?.('Welcome back to MatchApp Ai!');
+        await window.MatchAppAuthDestination.finish(supabaseClient, saved.data.session.user);
     } catch (err) {
         console.warn('Email sign-in session could not be confirmed:', err?.code || err?.message || err);
         show('Sign-in connection interrupted. Please retry; if the password is rejected, choose Forgot your password?');
@@ -2649,13 +2650,28 @@ window.matchAgainSameCriteria = function() {
 
 // ----------------------------------------------------
 // PROFILE HYDRATION AFTER LOGIN
-// Pulls whatever Google gave us (name, avatar) into the profiles row and
+// Pulls the account name into the profiles row and
 // into localStorage so the profile page is pre-filled, then works out what
 // is still missing. Google never provides country, date of birth or star
 // sign, so those always need the user to fill them in — and until they do,
 // the account stays on the 3-session tier rather than 5.
 // ----------------------------------------------------
-const REQUIRED_PROFILE_FIELDS = ['full_name', 'country', 'dob', 'star_sign', 'age']; // avatar_url deliberately optional
+const REQUIRED_PROFILE_FIELDS = ['full_name', 'country', 'dob', 'star_sign', 'age'];
+
+// Nicknames remain independent of the retired profile-avatar feature.
+window.getUserNickname = function () {
+    try {
+        const nick = (localStorage.getItem('match_user_nickname') || '').trim();
+        if (nick) return nick;
+        const name = (localStorage.getItem('match_user_name') || '').trim();
+        if (name) return name.split(/\s+/)[0];
+    } catch (_) {}
+    return '';
+};
+try {
+    ['match_user_avatar','match_custom_avatar','match_preset_avatar','match_avatar_svg',
+     'match_avatar_character_v2','match_avatar_character_v3'].forEach(key => localStorage.removeItem(key));
+} catch (_) { /* Retired avatar cache must not block account loading. */ }
 
 let profileHydrationEpoch = 0;
 window.matchProfileState = {status:'loading',userId:null};
@@ -2677,7 +2693,6 @@ async function hydrateProfileFromAuth(user) {
         localStorage.setItem('match_portfolio_owner',user.id);
         const meta = user.user_metadata || {};
         const googleName = meta.full_name || meta.name || '';
-        const googleAvatar = meta.avatar_url || meta.picture || '';
 
         // RESTORE PORTFOLIO + NOTES FROM THE ACCOUNT.
         // syncListsToDatabase() has always WRITTEN these to user metadata, but
@@ -2774,13 +2789,12 @@ async function hydrateProfileFromAuth(user) {
 
         const patch = {};
         if (googleName && !(existing && existing.full_name)) patch.full_name = googleName;
-        if (googleAvatar && !(existing && existing.avatar_url)) patch.avatar_url = googleAvatar;
 
         if (Object.keys(patch).length) {
             // upsert, not update: update() matches zero rows and succeeds
             // silently when no profiles row exists yet — which is exactly what
             // happens if the handle_new_user trigger never ran (migration 001
-            // not applied, or an account created before it). The avatar would
+            // not applied, or an account created before it). The name would
             // then be "saved" to nothing, with no error to notice.
             await supabaseClient.from('profiles').upsert(
                 Object.assign({ id: user.id }, patch), { onConflict: 'id' });
@@ -2796,7 +2810,6 @@ async function hydrateProfileFromAuth(user) {
         if (merged.dob)       localStorage.setItem('match_user_dob', merged.dob);
         if (merged.star_sign) localStorage.setItem('match_user_sign', merged.star_sign);
         if (merged.age != null) localStorage.setItem('match_user_age', String(merged.age));
-        if (merged.avatar_url) localStorage.setItem('match_user_avatar', merged.avatar_url);
         if (merged.nickname)  localStorage.setItem('match_user_nickname', merged.nickname);
         if (user.email) localStorage.setItem('match_user_email', user.email);
 
@@ -2822,12 +2835,9 @@ async function hydrateProfileFromAuth(user) {
         });
         window.profileMissingFields = missing;
 
-        // Paint the avatar now that the Google photo has actually landed.
-        // Without this the photo sat in localStorage unread — the whole
-        // reason the Google picture never appeared.
-        if (typeof window.renderUserAvatar === 'function') window.renderUserAvatar();
-
-        if (missing.length) promptProfileCompletion(missing);
+        const destination = await window.MatchAppAuthDestination.enforceInitialSetup(supabaseClient, user, existing);
+        if (hydrationEpoch !== profileHydrationEpoch) return null;
+        if (missing.length && destination?.needsProfile) promptProfileCompletion(missing);
         return missing;
     } catch (e) {
         console.warn('Profile hydration skipped:', e.message || e);
@@ -2929,7 +2939,7 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
             if (profTab) profTab.style.display = 'none';
         }
         // Auth resolves after first paint, so anything whose UI depends on
-        // membership (Lazy Mode's locked state, the avatar, member-only
+        // membership (Lazy Mode's locked state, member-only
         // panels) has to be told rather than left to poll or guess.
         document.dispatchEvent(new CustomEvent('matchapp:authchange', {
             detail: { signedIn: window.isUserLoggedIn }
