@@ -142,9 +142,18 @@ async function guarded(browser,label,fn){
    await open(page,'/ebooks/#ebook-matcher-root');
    const root=page.locator('#ebook-matcher-root');
    const fold=root.locator('details.ebook-fold');await fold.waitFor({state:'attached',timeout:23000});
-   await fold.evaluate(node=>{node.open=true});
+   if(!await fold.evaluate(node=>node.open))await fold.locator(':scope > summary').click();
    await root.locator('[data-ebook-field="format"][data-ebook-value="audiobook"]').click();
-   await root.locator('[data-ebook-field="access"][data-ebook-value="paid"]').click();
+   // Dedicated Books keeps advanced fields in their original collapsible
+   // owners. Reach the real Access control through its nearest summary.
+   const paidAccess=root.locator('[data-ebook-field="access"][data-ebook-value="paid"]');
+   if(!await paidAccess.isVisible()){
+     const accessFold=paidAccess.locator('xpath=ancestor::details[1]');
+     assert(await accessFold.count()&&await accessFold.locator(':scope > summary').isVisible(),
+       'The original paid Access field or its own fold must be reachable');
+     if(!await accessFold.evaluate(node=>node.open))await accessFold.locator(':scope > summary').click();
+   }
+   await paidAccess.click();
    const quotaBefore=await page.evaluate(()=>localStorage.getItem('match_dailyCount'));
    await root.locator('[data-ebook-match]').first().click();
    await page.waitForFunction(()=>{
