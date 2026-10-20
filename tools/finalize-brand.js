@@ -97,6 +97,7 @@ function referenceRuntimeAssetURL(url){
  const pins={
   'catalog-media.js':['posters','20261020-1'],'poster-wall.js':['posters','20261020-1'],'trending-rail.js':['posters','20261020-1'],'profile.js':['posters','20261020-1'],'portfolio-history.js':['posters','20261020-1'],'settings.js':['posters','20261020-1'],'title-captions.js':['posters','20261020-1'],
   'app.js':['art','20261020-source1'],'ebook-matcher.js':['art','20261020-source1'],'book-details-20261011.js':['art','20261020-source1'],'reading-ai.js':['art','20261020-source1'],
+  'immersive-feedback-20261014.js':['cinemasound','20261020-1'],'purchase.js':['cinemasound','20261020-1'],'pro-plan.js':['cinemasound','20261020-1'],
   'jonas-premium-glass.css':['stellar','20261020-1'],'jonas-premium-enhancer.js':['stellar','20261020-1'],'jonas-adult-page.js':['stellar','20261020-1'],
   'reference-system.css':['premium','20261020-2'],'reference-pages.css':['premium','20261020-2'],'reference-home.css':['premium','20261020-2'],'pricing.js':['premium','20261020-2']
  };

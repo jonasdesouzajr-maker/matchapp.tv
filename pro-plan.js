@@ -192,6 +192,7 @@
     const d=w.document,returned=takeBillingReturn(w);
     let view=null,returnFocus=null,epoch=0,accountId='',state=null,catalog=null,market=country(w),busy=false;
     let nativeRequest='',nativeOffers=[],nativePurpose='',quoteTime=0,quoteChargeAt=0,notice='loading',deadline=null;
+    let nativeSoundRequest='',nativeSoundAccount='';
     let receipt=native(w)?'':returned?.sessionId||'',receiptAccount='',returnMode=returned?.mode||'',returnTimer=null,returnChecks=0;
     let retentionPanel=false,retentionNotice='';
     const pricingViews=new Map();
@@ -217,6 +218,16 @@
       if(result.error)throw Error('session_unavailable');
       return result.data?.session||null;
     }
+    async function purchaseFeedback(provider,reference,expectedAccount,result,current) {
+      // Presentation only: recheck the local auth identity after confirmation.
+      // A stale delivery must not announce a purchase to a different account.
+      if(!expectedAccount||current!==epoch||accountId!==expectedAccount||!entitlement(result)||result.provider!==provider)return;
+      try {
+        const auth=await session();
+        if(current!==epoch||accountId!==expectedAccount||auth?.user?.id!==expectedAccount)return;
+        w.MatchAppFeedback?.purchaseConfirmed?.({provider,reference,delivered:true});
+      } catch (_) { /* Feedback never changes a completed billing outcome. */ }
+    }
     async function invoke(action,values={}) {
       if(!w.supabaseClient?.functions?.invoke)throw Error('billing_unavailable');
       const response=await bounded(w.supabaseClient.functions.invoke('pro-billing',{body:{action,...values}}));
@@ -233,7 +244,7 @@
       if(typeof w.MatchAppNativeBilling?.postMessage==='function') {
         const id=requestId(w);if(id)try{w.MatchAppNativeBilling.postMessage(JSON.stringify({type:'clear',requestId:id}));}catch(_){}
       }
-      nativeRequest='';nativeOffers=[];nativePurpose='';quoteTime=0;quoteChargeAt=0;
+      nativeRequest='';nativeOffers=[];nativePurpose='';quoteTime=0;quoteChargeAt=0;nativeSoundRequest='';nativeSoundAccount='';
     }
     function close() {
       if(!view)return;
@@ -416,7 +427,11 @@
         if(receiptAccount&&receiptAccount!==userId){receipt='';returnMode='';receiptAccount='';}
         if(auth){
           if(receipt)receiptAccount=userId;
-          const result=await invoke('status',receipt?{sessionId:receipt}:{});if(current!==epoch)return null;state=result;
+          const checkedReceipt=receipt,checkedAccount=userId;
+          const result=await invoke('status',checkedReceipt?{sessionId:checkedReceipt}:{});if(current!==epoch)return null;state=result;
+          if(checkedReceipt&&result.checkoutDelivered===true&&entitlement(result)&&result.provider==='stripe'&&accountId===checkedAccount){
+            void purchaseFeedback('stripe',checkedReceipt,checkedAccount,result,current);
+          }
           if(entitlement(state)){receipt='';returnMode='';stopReturnTimer();}
         }else state=null;
         if(!native(w)) {const data=await invoke('catalog',{country:market,lang:locale(w)});if(current!==epoch)return null;catalog=data;
@@ -428,7 +443,7 @@
       }catch(_){if(current===epoch){busy=false;notice=receipt?'verificationPending':'unavailable';state=null;draw();scheduleReturnCheck();}return null;}
     }
     async function prepareNative(type,auth,current=epoch) {
-      nativeOffers=[];nativeRequest=requestId(w);nativePurpose=type==='prepare_retention'?'retention':type;quoteTime=0;quoteChargeAt=0;
+      nativeOffers=[];nativeRequest=requestId(w);nativePurpose=type==='prepare_retention'?'retention':type;quoteTime=0;quoteChargeAt=0;nativeSoundRequest='';nativeSoundAccount='';
       if(!nativeRequest||!post(type,{accessToken:auth.access_token})){notice='nativeUnavailable';busy=false;draw();return;}
       busy=true;notice=type==='restore'?'verifying':'loading';draw();stopDeadline();
       deadline=w.setTimeout(()=>{if(current===epoch){busy=false;nativeOffers=[];notice='nativeUnavailable';draw();}},20000);
@@ -445,7 +460,7 @@
       const offerKey=view.offers.querySelector('input:checked')?.value;
       if(!nativeOffers.some(o=>o.offerKey===offerKey))return;
       // Do not await before native's independent physical-gesture check.
-      if(post('launch',{offerKey})){busy=true;notice='verifying';draw();}
+      if(post('launch',{offerKey})){if(nativePurpose==='prepare'){nativeSoundRequest=nativeRequest;nativeSoundAccount=accountId;}busy=true;notice='verifying';draw();}
     }
     async function checkout() {
       if(native(w)||busy||legacySubscription(state)||!catalogOffer(catalog))return;
@@ -541,9 +556,18 @@
         else if(detail.reason!=='user_gesture_required'||Date.now()-quoteTime>55000)nativeOffers=[];
         busy=false;notice=nativeOffers.length?'inactive':'nativeUnavailable';draw();return;
       }
-      if(['verified','already_entitled'].includes(detail.status)&&detail.serverVerified===true) {stopDeadline();nativeOffers=[];retentionPanel=false;await refresh({prepare:false});return;}
+      if(['verified','already_entitled'].includes(detail.status)&&detail.serverVerified===true) {
+        const completedRequest=nativeSoundRequest,completedAccount=nativeSoundAccount;
+        const purchased=detail.status==='verified'&&completedRequest===detail.requestId&&completedAccount===accountId&&nativePurpose==='prepare';
+        nativeSoundRequest='';nativeSoundAccount='';stopDeadline();nativeOffers=[];retentionPanel=false;
+        const refreshEpoch=epoch+1,refreshed=await refresh({prepare:false});
+        if(purchased&&accountId===completedAccount&&entitlement(refreshed)&&refreshed.provider==='play'){
+          void purchaseFeedback('play',completedRequest,completedAccount,refreshed,refreshEpoch);
+        }
+        return;
+      }
       if(['loading','launching','verifying'].includes(detail.status)){busy=true;notice='verifying';draw();return;}
-      stopDeadline();
+      nativeSoundRequest='';nativeSoundAccount='';stopDeadline();
       busy=false;nativeOffers=[];
       notice={pending:'pending',verification_pending:'verificationPending',restored_none:'restoreNone',cancelled:'cancelled',unavailable:'nativeUnavailable',management_opened:'inactive'}[detail.status]||'verificationPending';draw();
     }

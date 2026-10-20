@@ -18,10 +18,10 @@ const tick=()=>new Promise(r=>setTimeout(r,10));
 test('no initialization or programmatic action plays sound before the first deliberate gesture',()=>{
  const f=fixture();f.w.playMatchAppSound('open');assert.equal(f.stats.contexts,0);assert.equal(f.stats.fetches,0);assert.equal(f.stats.vibrations.length,0);f.close();
 });
-test('one real action replaces both legacy cue owners with one original glass cue and keeps handlers untouched',async()=>{
+test('one real action replaces both legacy cue owners with one original clapper cue and keeps handlers untouched',async()=>{
  const f=fixture();let handlerRuns=0;f.w.document.getElementById('ok').onclick=()=>handlerRuns++;
  f.click('ok');f.w.document.getElementById('ok').onclick();f.w.playMatchAppSound('nav');f.w.maPlayUISound('primary');await tick();
- assert.equal(handlerRuns,1);assert.equal(f.stats.legacy,0);assert.equal(f.stats.notes.length,9);assert.equal(f.stats.fetches,1);assert.equal(f.stats.vibrations.length,1);assert.equal(f.stats.contexts,1);f.close();
+ assert.equal(handlerRuns,1);assert.equal(f.stats.legacy,0);assert.equal(f.stats.notes.length,9);assert.equal(f.stats.fetches,0,'original clapper synthesis requires no asset fetch');assert.equal(f.stats.vibrations.length,1);assert.equal(f.stats.contexts,1);f.close();
 });
 test('sound mute, haptic opt out, reduced motion and speech priority are authoritative',async()=>{
  for(const mode of ['mute','haptics','motion','speech']){

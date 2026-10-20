@@ -124,7 +124,10 @@ function parseAIResponse(data) {
 }
 
 function discoverRecommendationRequest(question) {
-    const q=typeof mediaIntentQuestion==='function'?mediaIntentQuestion(question):String(question||'');
+    // A prohibition is not a request for suggestions. Remove only its clause
+    // for intent classification, retaining any later positive mixed request.
+    const q=(typeof mediaIntentQuestion==='function'?mediaIntentQuestion(question):String(question||''))
+      .replace(/\b(?:do\s+not|don['’]?t|avoid|n[aã]o(?:\s+me)?)\s+(?:recommend\w*|suggest\w*|recomend\w*|sugir\w*|suger\w*|indiqu\w*)\b[\s\S]*?(?=[.!?;\n]|(?:,\s*(?:(?:but|and|mas|e)\s+)?|\s+(?:but|and|mas|e)\s+)(?:please\s+|por\s+favor\s+)?(?:me\s+)?(?:recommend\w*|suggest\w*|recomend\w*|sugir\w*|suger\w*|indiqu\w*|find\s+me|what\s+should\s+i\s+watch)\b|$)/giu,' ');
     if(window.MatchCooking?.isCooking?.(q))return false;
     const explicit=/\b(?:recommend\w*|suggest\w*|similar|another|next pick|what should i watch|find me|recomend\w*|sugir\w*|sugest\w*|indiqu\w*|sugier\w*|recomiend\w*|recommand\w*|sugg[eè]r\w*|empfehl\w*|consigli\w*|sugger\w*|tavsiye|[oö]ner\w*|rekomendas\w*|sarankan)\b|порекоменду|посоветуй|اقترح|رشح|أوصي|सुझाओ|सुझाव|おすすめ|推薦|추천|推荐/iu;
     if(explicit.test(q))return true;

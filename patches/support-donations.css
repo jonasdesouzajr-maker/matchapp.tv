@@ -1,14 +1,14 @@
 /* MatchApp Ai voluntary support — adult Home footer only.
    No overlays, no AdSense changes, and no intrusive motion. */
 body.page-home #ma-donate-support{
-  box-sizing:border-box;display:grid;gap:13px;width:min(100%,760px);
-  margin:25px auto 24px;padding:clamp(16px,3vw,25px);
+  box-sizing:border-box;display:grid;justify-items:center;gap:8px;width:fit-content;max-width:100%;
+  margin:8px auto;padding:0;
   color:#f9f3e7;text-align:center;
-  background:linear-gradient(145deg,rgba(39,29,62,.96),rgba(17,14,35,.97));
-  border:1px solid rgba(255,218,123,.7);border-radius:22px;
-  box-shadow:0 6px 26px rgba(0,0,0,.27),inset 0 1px 0 rgba(255,245,197,.13);
-  overflow:hidden;position:relative;isolation:isolate;
+  background:none;border:0;border-radius:0;box-shadow:none;
+  overflow:visible;position:relative;
 }
+body.page-home #ma-donate-support:has(>.ma-donate-panel:not([hidden])){width:min(100%,480px);}
+body.page-home #ma-donate-support .ma-donate-copy{display:grid;gap:8px;}
 body.page-home #ma-donate-support :is(h3,p){margin:0;}
 body.page-home #ma-donate-support .ma-donate-kicker{
   color:#ffdf87;text-transform:uppercase;font-size:11px;
@@ -23,26 +23,24 @@ body.page-home #ma-donate-support .ma-donate-desc{
   line-height:1.55;font-size:clamp(13px,2.7vw,15px);
 }
 body.page-home #ma-donate-support .ma-donate-pill{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  width:min(100%,355px);min-height:48px;margin:4px auto 0;
-  padding:11px 20px;border:1px solid #fff1b0;border-radius:999px;
-  background:linear-gradient(120deg,#ffe69c,#edbb4b 65%,#ffd573);
-  color:#21182b;font:800 15px/1.2 system-ui,sans-serif;
-  box-shadow:0 5px 18px rgba(211,163,48,.23);
-  cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  width:auto;min-height:44px;max-width:100%;margin:0;
+  padding:8px 12px;border:1px solid #e5c15855;border-radius:999px;
+  background:#e5c15808;color:#e5c158;font:500 .8125rem/1.35 system-ui,sans-serif;
+  box-shadow:none;cursor:pointer;transition:background .18s ease;
 }
 body.page-home #ma-donate-support .ma-donate-pill:hover,
 body.page-home #ma-donate-support .ma-donate-pill:focus-visible{
-  transform:translateY(-1px);box-shadow:0 7px 23px rgba(211,163,48,.35);
+  background:#e5c15814;transform:none;box-shadow:none;
 }
 body.page-home #ma-donate-support :is(button,input):focus-visible{
   outline:2px solid #fff;outline-offset:3px;
 }
 body.page-home #ma-donate-support [hidden]{display:none!important;}
 body.page-home #ma-donate-support .ma-donate-panel{
-  width:100%;max-width:480px;margin:auto;padding:14px;
+  box-sizing:border-box;width:100%;max-width:480px;margin:auto;padding:12px;
   background:rgba(7,6,19,.55);border:1px solid rgba(229,193,88,.33);
-  border-radius:16px;display:grid;gap:12px;
+  border-radius:16px;display:grid;gap:8px;
 }
 body.page-home #ma-donate-support .ma-donate-values{
   display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
@@ -51,13 +49,13 @@ body.page-home #ma-donate-support .ma-donate-value{
   border:1px solid rgba(247,215,135,.58);border-radius:999px;
   padding:9px 16px;background:rgba(255,255,255,.07);
   color:#fff;font:750 14px/1 system-ui,sans-serif;
-  cursor:pointer;min-height:41px;
+  cursor:pointer;min-height:44px;
 }
 body.page-home #ma-donate-support .ma-donate-value[aria-pressed="true"]{
   background:rgba(255,220,121,.18);border-color:#ffe09a;color:#ffe09a;
 }
 body.page-home #ma-donate-support .ma-donate-amount-label{
-  display:grid;gap:5px;text-align:left;color:#e4ddf0;font-size:13px;
+  display:grid;gap:8px;text-align:left;color:#e4ddf0;font-size:13px;
 }
 body.page-home #ma-donate-support .ma-donate-amount-label input{
   display:block;width:100%;min-width:0;min-height:44px;
@@ -83,8 +81,8 @@ body.page-home #ma-donate-support .ma-donate-footnote{
 }
 
 /* A signature orbit crest keeps the support action in the adult icon family. */
-body.page-home #ma-donate-support .ma-donate-pill{border-radius:14px;flex-wrap:wrap;}
+body.page-home #ma-donate-support .ma-donate-pill{border-radius:999px;flex-wrap:wrap;}
 body.page-home #ma-donate-support .ma-donate-pill::before{
- content:"";width:27px;height:27px;flex:0 0 27px;background:url('/assets/brand/symbols/support.svg') center/contain no-repeat;filter:brightness(.35);
+ content:"";width:16px;height:16px;flex:0 0 16px;background:url('/assets/brand/symbols/support.svg') center/contain no-repeat;
 }
 body.page-home #ma-donate-support .ma-donate-checkout{border-radius:13px;min-height:48px;background:linear-gradient(120deg,#ffe69c,#edbb4b 65%,#ffd573);}

@@ -175,3 +175,85 @@ test('automatically appended related cards wait for and respect an atomic claim 
     assert.equal(w.matchPolicy.history().length,0);
   }finally{dom.window.close();}
 });
+
+// Reproduce the live EN/PT request using the actual client request builder and
+// response parser. Only the external provider transport is a deterministic
+// fixture; classification, preference guard, transcript, credit and voice owners run.
+async function factualRequestFixture(language,payload){
+  const f=await boot(),requests=[];
+  f.w.MATCH_LANG=language;
+  f.w.fetch=()=>{assert.fail('No external provider/catalog request is allowed in this regression');};
+  f.w.eval(['mediaIntentQuestion','parseAIResponse','askAIConversational'].map(functionSource).join('\n'));
+  f.w.supabaseClient={functions:{invoke:async(name,{body})=>{
+    requests.push({name,body});
+    return {data:{candidates:[{content:{parts:[{text:JSON.stringify(payload)}]}}]},error:null};
+  }}};
+  return {...f,requests};
+}
+const factualQuestions={
+  en:'Who directed the 2001 animated film Spirited Away? Answer in English and preserve the director’s original name. Do not recommend other titles.',
+  'pt-BR':'Quem dirigiu o filme de animação de 2001 Spirited Away (A Viagem de Chihiro)? Responda em português e preserve o nome original do diretor. Não recomende outros títulos.'
+};
+
+test('negated EN/PT suggestion clauses stay factual while positive and mixed recommendation requests retain precedence',async()=>{
+  const {dom,w}=await boot();
+  try{
+    w.eval(functionSource('mediaIntentQuestion'));
+    for(const question of[
+      ...Object.values(factualQuestions),
+      'Do not recommend other titles. Who directed Spirited Away?',
+      'Who directed Spirited Away? Don’t suggest other titles.',
+      'Who directed Spirited Away? Avoid recommending other films.',
+      'Não recomende outros títulos; quem dirigiu Spirited Away?',
+      'Quem dirigiu Spirited Away? Não me recomende outros filmes.',
+      'Quem dirigiu Spirited Away? Nao sugira outros títulos.',
+      'Quem dirigiu Spirited Away? Não indique outros filmes.',
+      'Do not recommend other titles.',
+      'Não recomende outros títulos.'
+    ])assert.equal(w.discoverRecommendationRequest(question),false,question);
+    for(const question of[
+      'Who directed Spirited Away? Recommend another film by that director.',
+      'Quem dirigiu Spirited Away? Recomende outro filme desse diretor.',
+      'Who directed Spirited Away? Do not recommend horror, but suggest a comedy.',
+      'Who directed Spirited Away? Do not recommend horror but suggest a comedy.',
+      'Who directed Spirited Away? Do not recommend horror, suggest a comedy.',
+      'Who directed Spirited Away? Do not recommend horror and recommend a comedy.',
+      'Who directed Spirited Away? Do not recommend horror, but find me a comedy.',
+      'Who directed Spirited Away? Do not recommend horror, what should I watch instead?',
+      'Quem dirigiu Spirited Away? Não recomende terror, mas recomende uma comédia.',
+      'Quem dirigiu Spirited Away? Não recomende terror e recomende uma comédia.',
+      'Quem dirigiu Spirited Away? Não recomende terror, sugira uma comédia.',
+      'Quem dirigiu Spirited Away? Não recomende terror, mas me indique uma comédia.',
+      'Recommend another movie but do not recommend horror.',
+      'Recomende outro filme, mas não recomende terror.'
+    ])assert.equal(w.discoverRecommendationRequest(question),true,question);
+  }finally{dom.window.close();}
+});
+
+for(const language of['en','pt-BR'])test(language+' factual prohibition retains the actual request, answer, known source, transcript, debit and speech semantics',async()=>{
+  const answer=language==='pt-BR'?'Spirited Away (2001) foi dirigido por Hayao Miyazaki.':'Spirited Away (2001) was directed by Hayao Miyazaki.';
+  const item=film('Spirited Away',129),{dom,w,events,requests}=await factualRequestFixture(language,{answer,results:[item]});
+  try{
+    w.matchPolicy.savePreference(item,'save');const saved=w.localStorage.getItem('match_savedList');
+    w.matchPolicy={...w.matchPolicy,claim:async()=>{assert.fail('Factual reference must not reserve or reject a saved title');}};
+    await w.askAndRender(factualQuestions[language],{voiceOrigin:true});
+    assert.equal(requests.length,1);assert.equal(requests[0].name,'gemini-proxy');
+    const body=requests[0].body;assert.equal(body.recommendationsOnly,false);assert.deepEqual(Array.from(body.excludedTitles),[]);assert.equal(body.lang,language);assert.equal(body.question.split('\n\n')[0],factualQuestions[language],'the actual question and its prohibition stay verbatim');
+    assert.equal(w.document.querySelector('.chat-answer-text').textContent,answer);assert.equal(events.find(e=>e.type==='voice').text,answer);assert.equal(w.currentThread.turns.at(-1).text,answer);assert.equal(w.currentThread.turns.at(-1).results[0].title,'Spirited Away');
+    assert.equal(events.find(e=>e.type==='cards').options.allowKnown,true);assert.equal(events.filter(e=>e.type==='debit').length,1,'one successful live factual answer retains its ordinary debit');assert.equal(w.localStorage.getItem('match_savedList'),saved);assert.equal(w.matchPolicy.excludes(item),true,'existing saved exclusion remains authoritative for future recommendations');
+    assert.doesNotMatch(w.document.querySelector('.chat-answer-text').textContent,/No new titles|Não restaram títulos/);
+  }finally{dom.window.close();}
+});
+
+for(const language of['en','pt-BR'])test(language+' positive request plus prohibition still applies no-repeat filtering before credit and voice',async()=>{
+  const old=film('Spirited Away',129),fresh=film('Fresh Verified Film',799),{dom,w,events,requests}=await factualRequestFixture(language,{answer:'Try Spirited Away or Fresh Verified Film.',results:[old,fresh]});
+  try{
+    w.matchPolicy.savePreference(old,'save');const policy=w.matchPolicy;
+    w.matchPolicy={...policy,claim:async item=>{events.push({type:'claim',title:item.title});return policy.claim(item);}};
+    const question=language==='pt-BR'?'Recomende outro filme, mas não recomende terror.':'Recommend another movie but do not recommend horror.';
+    await w.askAndRender(question,{voiceOrigin:true});
+    assert.equal(requests.length,1);assert.equal(requests[0].body.recommendationsOnly,true);assert.ok(requests[0].body.excludedTitles.includes('Spirited Away'));assert.equal(requests[0].body.question.split('\n\n')[0],question);
+    const voice=events.find(e=>e.type==='voice').text;assert.match(voice,/Fresh Verified Film/);assert.doesNotMatch(voice,/Spirited Away/);assert.equal(w.document.querySelector('.chat-answer-text').textContent,voice);assert.equal(w.currentThread.turns.at(-1).text,voice);
+    assert.equal(events.filter(e=>e.type==='debit').length,1);assert.ok(events.findIndex(e=>e.type==='claim')<events.findIndex(e=>e.type==='debit'));assert.ok(events.findIndex(e=>e.type==='debit')<events.findIndex(e=>e.type==='voice'));assert.equal(w.matchPolicy.history().find(item=>item.title===fresh.title)?.action,'ai');
+  }finally{dom.window.close();}
+});

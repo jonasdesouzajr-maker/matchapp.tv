@@ -116,12 +116,23 @@ test('optional third cover source uses exact Apple book identity, region and gen
 
 test('failed sharper Apple rendition falls back to the verified thumbnail',async()=>{
  const source=read('ebooks/ebook-matcher.js');
- const start=source.indexOf('async function showSourceCover('),end=source.indexOf('async function hydrateCover(',start);
- const calls=[],original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact/100x100';
- const ctx=vm.createContext({window:{MatchAppBookCoverIdentity:covers},showVerifiedCover:async(_img,_fall,url,timeout)=>{calls.push({url,timeout});return url===original}});
+ const start=source.indexOf('function coverURL('),end=source.indexOf('async function hydrateCover(',start);
+ const calls=[],cached=new Set(),original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact/100x100';
+ class SourceImage{
+  constructor(){this.isConnected=true;this.style={};this.dataset={};this.complete=true;this.naturalWidth=0;this.hidden=true;this.__matchappBookCover={identity:'verified work'}}
+  set src(value){this._src=value;calls.push(value);this.complete=cached.has(value);this.naturalWidth=this.complete?480:0;
+   if(!this.complete)queueMicrotask(()=>{if(this.src!==value)return;this.complete=true;this.naturalWidth=value===original?480:0;if(this.naturalWidth){cached.add(value);this.onload?.()}else this.onerror?.()});}
+  get src(){return this._src||''}
+  decode(){return this.naturalWidth?Promise.resolve():Promise.reject(Error('No source pixels'))}
+  removeAttribute(name){if(name==='src'){this._src='';this.naturalWidth=0}}
+ }
+ const ctx=vm.createContext({window:{MatchAppBookCoverIdentity:covers,Image:SourceImage},setTimeout,clearTimeout,Date});
  const show=vm.runInContext(source.slice(start,end)+';showSourceCover',ctx);
- assert.equal(await show({},null,original),true);
- assert.equal(calls.length,2);assert.equal(calls[0].timeout,2500);assert.equal(calls[1].url,original);
+ const image=new SourceImage(),fallback={hidden:false};
+ assert.equal(await show(image,fallback,original),true);
+ assert.equal(calls[0],covers.sharpAppleCoverUrl(original));assert.equal(calls[1],original);
+ assert.equal(image.src,original);assert.equal(image.dataset.bookCoverVerified,original);
+ assert.equal(image.hidden,false);assert.equal(fallback.hidden,true);
 });
 
 test('fresh rich artwork is reused while pinned source art retains priority',async()=>{
