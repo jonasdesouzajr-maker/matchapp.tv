@@ -21,7 +21,7 @@ async function runGuestLifetimeChecks(browser,{base,dest}){
    if(url.pathname==='/__qa_guest_lifetime__')return route.fulfill({contentType:'text/html',body:
     '<!doctype html><meta name="viewport" content="width=device-width"><script src="/guest-reservations.js?v=20261019-1"></script>'+
     '<script src="/matching-policy.js?lifetime=20261019-1"></script>'+
-    '<script data-reading-state-only="1" src="/ebooks/ebook-matcher.js?lifetime=20261019-1"></script>'+
+    '<script data-reading-state-only="1" src="/ebooks/ebook-matcher.js?lifetime=20261019-1&art=20261020-source1&locale=20261020-books14-1"></script>'+
     '<body>Isolated guest history verification</body>'});
    return route.abort();
   });

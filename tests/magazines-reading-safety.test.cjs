@@ -71,7 +71,11 @@ test('magazine matching retains the original shared allowance when the actual to
   readingOwner:'guest',readingEpoch:0,readingClaims:claims,cloudHydrate:async()=>true,cloudSync:async()=>{},readingHistoryNotice:()=>{throw Error('history unexpectedly unavailable');},
   claimReading:async id=>{order.push('claim');claims.set('guest:'+id,'fixture-reservation-token');return true;},releaseReading:async id=>{order.push('release');claims.delete('guest:'+id);},queueReading:()=>order.push('history')};
  const match=read('ebooks/ebook-matcher.js'),start=match.indexOf('async function doMatch(root){'),end=match.indexOf('\nfunction syncBookControls',start);
- vm.createContext(context);vm.runInContext(match.slice(start,end)+'\nthis.matchMagazine=doMatch;',context);
+ // Keep isolated allowance orchestration attached to its real presentation
+ // helpers, including stable text-node note painting; never replace debit paths.
+ const copyStart=match.indexOf('function ui('),copyEnd=match.indexOf('\nfunction read(',copyStart);
+ assert.ok(copyStart>=0&&copyEnd>copyStart,'production presentation helpers must exist');
+ vm.createContext(context);vm.runInContext(match.slice(copyStart,copyEnd)+'\n'+match.slice(start,end)+'\nthis.matchMagazine=doMatch;',context);
  try{
   await context.matchMagazine(rootNode);assert.deepEqual(order,['source','claim','quota','history','reveal']);assert.equal(w.checkDailyLimit,quota);assert.equal(w.MatchAppTokens.enabled,false);
   order.length=0;allowed=false;await context.matchMagazine(rootNode);assert.deepEqual(order,['source','claim','quota','release'],'denied shared allowance releases the unused claim without history or reveal');

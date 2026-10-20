@@ -3,7 +3,7 @@
 'use strict';
 const HOME=location.pathname==='/'||location.pathname==='/index.html';
 if(!HOME)return;
-function card(item, copy){
+function card(item, copy, index){
   const el=document.createElement('div');
   el.className='marquee-item';
   el.dataset.loopCopy=copy?'1':'0';
@@ -15,9 +15,19 @@ function card(item, copy){
   const img=document.createElement('img');
   img.alt=title;
   img.dataset.title=title;
-  if(item.poster)img.src=item.poster;
-  img.loading='lazy';
+  // Preserve the exact artwork hash while letting the browser decode the
+  // rendition needed by the compact card rather than a full 780px poster.
+  const tmdb=/^(https:\/\/image\.tmdb\.org\/t\/p\/)(?:w[0-9]+|original)\/([A-Za-z0-9_.-]+)$/.exec(String(item.poster||''));
+  if(tmdb){
+    img.srcset=[185,342,500,780].map(w=>tmdb[1]+'w'+w+'/'+tmdb[2]+' '+w+'w').join(', ');
+    img.sizes='(max-width: 384px) 86px, (max-width: 624px) calc((100vw - 40px) / 4), 146px';
+    img.width=342;img.height=513;
+  }
+  const firstVisible=!copy&&index<4;
+  img.loading=firstVisible?'eager':'lazy';
+  if(firstVisible)img.setAttribute('fetchpriority','high');
   img.decoding='async';
+  if(item.poster)img.src=item.poster;
   el.appendChild(img);
   const cap=document.createElement('span');
   cap.className='marquee-title';
@@ -49,8 +59,8 @@ function paint(data){
   if(!label){label=document.createElement('p');label.className='trending-week-label';rail.insertBefore(label, rail.firstChild);}
   label.textContent=shown;
   track.replaceChildren();
-  editorialTitles.forEach(item=>track.appendChild(card(item,false)));
-  editorialTitles.forEach(item=>track.appendChild(card(item,true)));
+  editorialTitles.forEach((item,index)=>track.appendChild(card(item,false,index)));
+  editorialTitles.forEach((item,index)=>track.appendChild(card(item,true,index)));
   track.dataset.loopCount=String(editorialTitles.length);
   // app.js owns scroll state. Resync its invisible loop seam after a weekly repaint.
   requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));

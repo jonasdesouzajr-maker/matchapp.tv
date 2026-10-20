@@ -1,36 +1,28 @@
-MatchApp Ai helps you decide what to watch, read or listen to without endless scrolling.
+What should you watch tonight? MatchApp Ai helps you find a movie or series that fits your mood, then explore where to watch it.
 
-Find movie and TV recommendations by mood, genre, platform, decade and country. Ask AI for entertainment ideas, explore where titles may be available to stream, and discover books, audiobooks, magazines, music videos, podcasts and more from official sources.
+Make your next pick
+• Choose a mood, format, platform and era, or let the app surprise you.
+• Explore movies, TV series, anime, K-dramas, documentaries and international stories.
+• See original posters, synopses and available title details, with official previews and viewing links when verified.
+• Use Match Together to find a movie or show for two people.
+• Save discoveries for later and tell the app what is not for you.
 
-What to watch
-• Get personalized movie and TV show recommendations based on your mood and preferences.
-• Explore Netflix and other supported platforms, international cinema, K-dramas, anime, documentaries and series.
-• Use Match Together when two people want one shared movie or show suggestion.
-• Save titles for later and exclude suggestions that are not for you.
+Talk to Jonas
+Ask MatchApp Ai's assistant about what to watch or discover next. Type your question or use the microphone when available. Ask about a title, compare ideas or explore a different mood without leaving your conversation.
 
-Where to watch
-MatchApp Ai helps you discover official streaming, rental and other viewing destinations when verified availability is available for your country. Availability can vary by title, provider and region.
+Explore more
+Open dedicated destinations for books, audiobooks, magazines, original cooking creators, music videos, news, premieres and events.
 
-Ask MatchApp Ai
-Ask questions such as:
-• What should I watch tonight?
-• Find a funny series on Netflix.
-• Where can I watch this movie?
-• Recommend anime or a K-drama for my mood.
-• Suggest a book, audiobook, magazine or podcast.
+Bookworms helps you discover reading profiles and verify audiobook editions by title and author. Follow legal library, publisher and official store links; edition availability and listening rights depend on the source and your country.
 
-Bookworms and audio
-Discover e-books, verified audiobook editions, magazines and legal reading or listening sources. MatchApp Ai links to official publishers, libraries and major digital stores where available.
+Recipes connects you with original cooking sources and videos. Explore by dish, ingredient or creator, then use the original source for ingredient amounts and instructions.
 
-Trending discovery
-Explore current entertainment releases, music videos, premieres, events and source-linked entertainment news. Dated trend signals are refreshed so older charts are not presented as current.
+Make it yours
+Use your saved discoveries and preferences to shape your experience. The interface supports 14 languages, with your chosen language carried between pages. Original titles and source identities stay recognizable.
 
-Personalized for you
-MatchApp Ai can remember saved discoveries and preferences to make future searches more useful. Multilingual support helps users explore entertainment from around the world.
+Availability and access
+MatchApp Ai is an independent discovery service. Movies, series, books and other third-party content remain with their original providers. Streaming access, subscriptions, purchases, prices and regional availability depend on those providers. Some external purchase links may be affiliate links.
 
-Optional features and existing subscriptions
-Some features may require an account or an optional purchase. When a purchase is available, review the current price, included benefits and billing period before confirming. Existing subscriptions are managed through the store or payment service used for purchase and renew automatically unless cancelled; cancellation stops future renewals.
+Free use may include ads. Some features require an account or an optional purchase. When a purchase is available, review its current price, benefits and billing period before confirming. Manage existing subscriptions through the store or payment service used for purchase; cancelling stops future renewals.
 
-Want to help shape what comes next? The Donate section offers voluntary support for reliable servers, speed improvements and new features. Contributions do not unlock matches, credits, features or other rewards. This is support for an independent app, not a charitable or tax-deductible donation. Review the amount and payment details before confirming.
-
-MatchApp Ai is an independent entertainment discovery service. It does not host or stream third-party copyrighted content. Streaming access, purchases, subscriptions and regional availability depend on external providers. Some external purchasing links may be affiliate links.
+Voluntary support through Donate helps maintain the independent app. Contributions do not unlock matches, credits, features or rewards and are not charitable or tax-deductible donations. Review the amount and payment details before confirming.

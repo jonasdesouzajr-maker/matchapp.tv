@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="ma-reference" lang="en">
 <head>
+<style data-cinema-layer>@layer ma-reference;</style>
 <script src="/pro-plan.js?v=20261017-3&amp;billingcopy=20261018-1"></script>
 <title>Your MatchApp profile | MatchApp Ai</title>
 <meta name="description" content="Your MatchApp profile, saved matches and preferences.">
@@ -42,7 +43,7 @@
 
         #portfolio-grid, #seen-grid, #audio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
 
-        /* ===== IDENTITY EXTRAS: avatar picker + nickname ===== */
+        /* ===== IDENTITY EXTRAS: nickname ===== */
         .identity-extras { max-width: 520px; margin: 0 auto 26px auto; }
         .pf-fold { border: 1px solid rgba(168,108,36,0.50); border-radius: 14px;
                    background: rgba(216,156,72,0.12); margin-bottom: 14px; overflow: hidden; }
@@ -53,17 +54,6 @@
         .pf-fold-chev { color: var(--gold); transition: transform 0.25s; }
         .pf-fold[open] .pf-fold-chev { transform: rotate(180deg); }
         .pf-fold-note { color: #a99cc4; font-size: 12px; line-height: 1.6; margin: 0 15px 12px 15px; }
-        .avatar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
-                       gap: 10px; padding: 0 15px 14px 15px; }
-        .avatar-opt { width: 100%; aspect-ratio: 1; border-radius: 50%; cursor: pointer;
-                      border: 2px solid transparent; background: none; padding: 0; transition: 0.2s; }
-        .avatar-opt img { width: 100%; height: 100%; border-radius: 50%; display: block; }
-        .avatar-opt:hover { transform: scale(1.08); }
-        .avatar-opt[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 12px rgba(229,193,88,0.5); }
-        .pf-clear-avatar { margin: 0 15px 14px 15px; background: none; border: 1px solid rgba(255,255,255,0.22);
-                           color: #a99cc4; font-size: 11.5px; padding: 7px 13px; border-radius: 10px;
-                           cursor: pointer; font-family: inherit; }
-        .pf-clear-avatar:hover { border-color: var(--gold); color: var(--gold-glow); }
         .pf-field { margin-bottom: 6px; }
         .pf-label { display: block; color: #a99cc4; font-size: 11px; text-transform: uppercase;
                     letter-spacing: 1.2px; font-weight: bold; margin-bottom: 7px; }
@@ -317,12 +307,11 @@
 <link rel="stylesheet" href="/themes.css?v=194">
 <link rel="stylesheet" href="/app-polish.css?v=187">
 <script src="/themes.js?v=187"></script>
-<link rel="stylesheet" href="/poster-wall.css?v=20260922-global1"><script defer src="/poster-wall.js?v=20260922-global1"></script><meta property="og:site_name" content="MatchApp Ai">
-<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+<link rel="stylesheet" href="/poster-wall.css?v=20260922-global1"><script defer src="/poster-wall.js?v=20260922-global1&amp;posters=20261020-1"></script><meta property="og:site_name" content="MatchApp Ai">
+<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261020-borderless1">
     <link rel="stylesheet" href="/page-shell.css?v=20260926-ai-energy2" data-page-shell="1">
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
-    <link rel="stylesheet" href="/avatar-studio.css?v=20260922-studio4">
-<style>.profile-avatar-stage{display:flex;justify-content:center;text-align:center;margin:8px 0 34px}.profile-avatar-control{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer}.profile-avatar-frame{width:clamp(126px,32vw,164px);aspect-ratio:1;border-radius:50%;padding:3px;background:linear-gradient(135deg,#ffe58a,#e5c158 42%,#9b6cff 76%,#e5c158);box-shadow:0 14px 38px #0005,0 0 26px #9b6cff29;transition:.28s}.profile-avatar-frame img{display:block;width:100%!important;height:100%!important;border:0!important;border-radius:50%;object-fit:cover;background:#12082d}.profile-avatar-orbit{position:absolute;width:calc(clamp(126px,32vw,164px) + 18px);aspect-ratio:1;border-radius:50%;border:1px solid #e5c15833;top:-9px;pointer-events:none;animation:avatarBreath 4.8s ease-in-out infinite}.profile-avatar-orbit:after{content:"✦";position:absolute;right:7px;top:8px;color:#ffe58a;font-size:13px;text-shadow:0 0 10px #e5c158;animation:avatarTwinkle 2.6s ease-in-out infinite}.profile-avatar-action{min-width:170px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;padding:9px 14px;border-radius:999px;background:linear-gradient(100deg,#e5c15821,#522a8b61,#9b6cff29);border:1px solid #e5c15885;color:#f8e6a8;font-size:12px;font-weight:800;letter-spacing:.035em;box-shadow:inset 0 1px #ffffff14,0 7px 22px #0003;backdrop-filter:blur(8px);transition:.22s}.profile-avatar-control:hover .profile-avatar-frame{transform:translateY(-2px);box-shadow:0 16px 40px #0005,0 0 30px #e5c15833}.profile-avatar-control:hover .profile-avatar-action{transform:translateY(-1px)}@keyframes avatarBreath{0%,100%{opacity:.55;transform:scale(.985)}50%{opacity:.95;transform:scale(1.018)}}@keyframes avatarTwinkle{0%,100%{opacity:.45;transform:scale(.75)}50%{opacity:1;transform:scale(1.08) rotate(25deg)}}@media(prefers-reduced-motion:reduce){.profile-avatar-orbit,.profile-avatar-orbit:after{animation:none}}</style><style>.profile-hub{margin-bottom:20px}.profile-hub-intro{padding:2px 6px 18px}.profile-hub-intro h1{margin:0;font-size:40px}.profile-hub-intro p{color:#aaa0d5}.profile-hub-menu{display:grid;gap:11px}.profile-hub-row{display:grid;grid-template-columns:50px 1fr 24px;align-items:center;min-height:72px;padding:9px 16px;border:1px solid #9069e652;border-radius:18px;background:#201248d6;text-decoration:none;color:#fff}.profile-hub-row>span:first-child,.profile-hub-row b{color:#f2cb59;font-size:26px;text-align:center}.profile-hub-row strong,.profile-hub-row small{display:block}.profile-hub-row strong{font-size:18px}.profile-hub-row small{color:#a9a0d1;margin-top:3px}.profile-avatar-stage,.identity-extras,.identity-showcase{display:none!important}@media(max-width:640px){.profile-hub-row{grid-template-columns:42px 1fr 18px;min-height:64px;padding:8px 10px}.profile-hub-row strong{font-size:16px}.profile-hub-row small{font-size:12px}.input-grid{grid-template-columns:1fr}}</style><style id="profile-hub-fix">body{background:transparent!important}.profile-hub-row{width:100%;font:inherit;text-align:left;cursor:pointer}.profile-hub-target[hidden]{display:none!important}.profile-hub-target.profile-hub-open{display:block!important;scroll-margin-top:120px}.profile-hub-menu+.premium-card{margin-top:12px}.profile-hub~.premium-card:empty{display:none!important}</style><style id="profile-mobile-v3">
+<style>.profile-hub{margin-bottom:20px}.profile-hub-intro{padding:2px 6px 18px}.profile-hub-intro h1{margin:0;font-size:40px}.profile-hub-intro p{color:#aaa0d5}.profile-hub-menu{display:grid;gap:11px}.profile-hub-row{display:grid;grid-template-columns:50px 1fr 24px;align-items:center;min-height:72px;padding:9px 16px;border:1px solid #9069e652;border-radius:18px;background:#201248d6;text-decoration:none;color:#fff}.profile-hub-row>span:first-child,.profile-hub-row b{color:#f2cb59;font-size:26px;text-align:center}.profile-hub-row strong,.profile-hub-row small{display:block}.profile-hub-row strong{font-size:18px}.profile-hub-row small{color:#a9a0d1;margin-top:3px}.identity-extras,.identity-showcase{display:none!important}@media(max-width:640px){.profile-hub-row{grid-template-columns:42px 1fr 18px;min-height:64px;padding:8px 10px}.profile-hub-row strong{font-size:16px}.profile-hub-row small{font-size:12px}.input-grid{grid-template-columns:1fr}}</style><style id="profile-hub-fix">body{background:transparent!important}.profile-hub-row{width:100%;font:inherit;text-align:left;cursor:pointer}.profile-hub-target[hidden]{display:none!important}.profile-hub-target.profile-hub-open{display:block!important;scroll-margin-top:120px}.profile-hub-menu+.premium-card{margin-top:12px}.profile-hub~.premium-card:empty{display:none!important}</style><style id="profile-mobile-v3">
 @media(max-width:900px){
 body.profile-page-v3 .main-layout{padding:18px 14px 44px!important;max-width:none!important}
 body.profile-page-v3 .container{max-width:760px!important;padding:0!important}
@@ -337,8 +326,8 @@ body.profile-page-v3 .profile-hub-row{min-height:70px!important;border-radius:18
 <link rel="stylesheet" href="/premium-unified-20261010.css?v=20261010-luxe1">
 <link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-grid3">
 <link rel="stylesheet" href="/profile-security-20261011.css?v=20261011-security1">
-<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
-<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1"></script>
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 <link rel="stylesheet" href="/match-tokens.css?v=20261017-3">
 <link rel="stylesheet" href="/pro-plan.css?v=20261017-3">
 <style id="profile-account-consent-layout-20261018">
@@ -353,6 +342,11 @@ body.matchapp-profile #account-details #registration-account-fields label.regist
 body.matchapp-profile #account-details #registration-account-fields label.registration-check:focus-within{outline:2px solid #f4d77d;outline-offset:3px;border-radius:8px}
 body.matchapp-profile #account-details #save-profile-btn,body.matchapp-profile #taste-quiz #taste-save,body.matchapp-profile #settings-panel #taste-edit,body.matchapp-profile .ma-delete-box #ma-delete-btn{min-height:44px!important}
 </style>
+
+<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1">
+<link rel="stylesheet" href="/patches/reference-pages.css?v=20261020-review1&amp;premium=20261020-2">
+
+<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1"></script>
 </head>
 <body class="matchapp-profile">
     <!-- Google Tag Manager (noscript) -->
@@ -371,7 +365,7 @@ body.matchapp-profile #account-details #save-profile-btn,body.matchapp-profile #
 
     <main class="main-layout">
         <section class="container">
-            <section class="match-avatar-maker" id="avatar-studio" aria-label="MatchApp avatar"></section><section class="profile-hub"><div class="profile-hub-intro"><h1 data-i18n="profile.hubTitle">My Profile</h1><p data-i18n="profile.hubSubtitle">Manage your account and preferences</p></div><nav class="profile-hub-menu">
+            <section class="profile-hub"><div class="profile-hub-intro"><h1 data-i18n="profile.hubTitle">My Profile</h1><p data-i18n="profile.hubSubtitle">Manage your account and preferences</p></div><nav class="profile-hub-menu">
 <button class="profile-hub-row" type="button" data-profile-target="account-details"><span>👤</span><span><strong data-i18n="profile.detailsTitle">My details</strong><small data-i18n="profile.detailsSummary">Name, email and account info</small></span><b>›</b></button>
 <a class="profile-hub-row" href="/pricing/pricing.html"><span>♛</span><span><strong data-i18n="profile.planTitle">My plan</strong><small data-i18n="profile.planSummary">Manage your subscription</small></span><b>›</b></a>
 <a class="profile-hub-row" href="#activity-panel"><span>✧</span><span><strong data-i18n="profile.matchesCreditsTitle">My matches &amp; credits</strong><small data-i18n="profile.matchesCreditsSummary">See your activity and rewards</small></span><b>›</b></a>
@@ -597,36 +591,36 @@ body.matchapp-profile #account-details #save-profile-btn,body.matchapp-profile #
 
     <script src="/activity.js?v=194"></script>
     <script src="/profile-details-i18n.js?v=20261018-1"></script>
-    <script src="/settings.js?v=20261006-installbell1&amp;details=20261018-1"></script>
-    <script src="/i18n.js?v=20261001-profileptbr1&amp;billing=20261017-2&amp;fastlang=20261014-1"></script>
+    <script src="/settings.js?v=20261006-installbell1&amp;details=20261018-1&amp;posters=20261020-1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;brandlocale=20261020-1"></script>
+    <script src="/i18n.js?v=20261001-profileptbr1&amp;billing=20261017-2&amp;fastlang=20261014-1&amp;polish=20261020-ui1"></script>
 <script defer src="/polish-i18n.js?v=191"></script>
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
-    <script src="/build-meta.js?v=20260924-runtime2&amp;installfix=20260930-1&amp;icon=20261001-circle-launch1&amp;brand=20261001-canonicalai1&amp;fastlang=20261014-2"></script>
+    <script src="/build-meta.js?v=20260924-runtime2&amp;installfix=20260930-1&amp;icon=20261001-circle-launch1&amp;brand=20261001-canonicalai1&amp;fastlang=20261014-2&amp;polish=20261020-ui1"></script>
 <script src="/app-install-state.js?v=20260930-install-recovery1&amp;icon=20261001-circle-launch1&amp;device=20261005-playroute2"></script>
 <script defer src="/install.js?v=20260930-install-recovery1&amp;icon=20261001-circle-launch1&amp;device=20261005-playroute2"></script>
-    <script defer src="/avatars.js?v=187"></script>
-<script defer src="/avatar-builder.js?v=20260922-studio4&amp;approvedlogo=20261014"></script>
+    <script defer src="/avatars.js?v=187&amp;accountphoto=20261020-1"></script>
     <script src="/guest-reservations.js?v=20261019-1"></script><script src="/matching-policy.js?v=20260926-conflicts2&amp;reliability=20261019-2&amp;lifetime=20261019-1"></script>
     <script src="/match-localization.js?v=20260925-matchrestore2"></script>
 <script src="/match-ai-rank.js?v=20260927-ranked1"></script>
 <script src="/match-tokens.js?v=20261019-refresh1"></script>
 <script src="/viewer-country.js?v=20261018-1"></script>
-<script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1"></script>
+<script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1&amp;art=20261020-source1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;polish=20261020-ui1"></script>
     <script src="/install-progress.js?v=20260930-install-recovery1&amp;brand=20261001-canonicalai1"></script>
     <script src="/taste.js?v=187"></script>
 <script src="/notifications.js?v=20261016-surface1"></script>
     <script src="/profile-geography.js?v=20260926-geo1&amp;details=20261018-1"></script>
-    <script src="/profile.js?v=20260924-ui2&amp;sbt=20261004-1&amp;details=20261018-1"></script>
+    <script src="/catalog-media.js?v=20260927-posterrecovery2&amp;desktop=20260929-details1&amp;experience=20261017-1&amp;resultlabels=20261018-1&amp;sbt=20261004-1&amp;reliability=20261018-1&amp;posters=20261020-1"></script>
+    <script src="/profile.js?v=20260924-ui2&amp;sbt=20261004-1&amp;details=20261018-1&amp;posters=20261020-1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1"></script>
     <script data-registration-upgrade="1" src="/registration-upgrade.js?v=20260927-confirm1&amp;details=20261018-1"></script>
     <script src="/profile-portfolio-i18n.js?v=20261018-1"></script>
-    <script src="/portfolio-history.js?v=20260924-ui2&amp;portfolio=20261018-1"></script>
+    <script src="/portfolio-history.js?v=20260924-ui2&amp;portfolio=20261018-1&amp;posters=20261020-1"></script>
     <script src="/tv.js?v=187"></script>
-<script src="/passkeys.js?v=20261011-session1"></script>
+<script src="/passkeys.js?v=20261011-session1&amp;dialogs=20261020-1"></script>
 <script src="/libphonenumber-max-1.12.25.js?v=1"></script>
 <script defer src="/profile-phone-20261011.js?v=20261011-phone1"></script>
 <script src="/app-updates.js?v=202&amp;installfix=20260930-1&amp;brand=20261001-canonicalai1"></script>
-<script src="/title-captions.js?v=20260929-avatar1&amp;profilelang=20261018-1&amp;portfolio=20261018-1"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script>
+<script src="/title-captions.js?v=20260929-avatar1&amp;profilelang=20261018-1&amp;portfolio=20261018-1&amp;posters=20261020-1&amp;accountphoto=20261020-1"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script>
 <script id="profile-hub-actions">document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('[data-profile-target]').forEach(btn=>btn.addEventListener('click',()=>{const el=document.getElementById(btn.dataset.profileTarget);if(!el)return;const opening=el.hidden;document.querySelectorAll('.profile-hub-target').forEach(x=>{x.hidden=true;x.classList.remove('profile-hub-open')});if(opening){el.hidden=false;el.classList.add('profile-hub-open');requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}))}}));});</script><script id="verified-email-profile-entry">
 document.addEventListener('DOMContentLoaded', async () => {
     // A URL marker alone grants no access: server-validate email or phone confirmation.
@@ -692,7 +686,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Existing profile loading/error handling already exposes retry.
     }
 });
-</script><script id="avatar-studio-deeplink">document.addEventListener('DOMContentLoaded',()=>{if(location.hash==='#avatar-studio'){const open=()=>{const b=document.getElementById('avatar-preview-button'),d=document.getElementById('avatar-maker-dialog');if(b&&d){b.click();return true}return false};if(!open())setTimeout(open,250)}});</script><script defer src="/brand-lock-20261011.js?v=20261011-a1"></script>
+</script><script defer src="/brand-lock-20261011.js?v=20261011-a1"></script>
 <script defer src="/patches/donate-shortcut.js?v=20261015-1"></script>
 </body>
 </html>

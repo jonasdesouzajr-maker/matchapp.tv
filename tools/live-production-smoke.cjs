@@ -151,38 +151,33 @@ async function aiQuestion(page,question,expected,label){
     const focused=await page.evaluate(()=>({
       titles:!!document.getElementById('trending-rail')?.getClientRects().length,
       explore:(()=>{
-        const direct=document.querySelector('.ma-luxe-shortcuts a[href="/explore.html"]');
-        if(direct?.getClientRects().length)return true;
-        const trigger=document.querySelector('#ma-worlds-trigger');
-        const panel=document.querySelector('#ma-explore-worlds-panel');
-        const hub=panel?.querySelector('a[href="/explore.html"]');
-        return !!(trigger?.getClientRects().length&&trigger.getAttribute('aria-controls')===panel?.id&&hub);
+        const route=document.querySelector('nav.ma-cinema-dock a[data-cinema-route="explore"][href="/explore.html"]');
+        return !!(route?.getClientRects().length&&route.textContent.trim());
       })(),
       hidden:['ebook-matcher-root','cooking-home','latest-news','global-events','billboard','spotify-videos','swifties-spotify','awareness-spotlight'].every(id=>!document.getElementById(id)?.getClientRects().length)
     }));
     record('Focused Home and Explore destinations '+device.name,focused.titles&&focused.explore&&focused.hidden,JSON.stringify(focused));
-    // The newer release replaces a direct Explore anchor with an intentional
-    // inline Worlds selector. Verify that actual click -> region -> dedicated
-    // Explore hub works, rather than merely counting a legacy DOM anchor.
-    if(await page.locator('#ma-worlds-trigger').count()){
-      try{
-        const trigger=page.locator('#ma-worlds-trigger');
-        await trigger.click();
-        const inline=page.locator('#ma-explore-worlds-panel');
-        await inline.waitFor({state:'visible',timeout:5000});
-        const expanded=await trigger.getAttribute('aria-expanded');
-        const topics=await inline.locator('a.ma-world-card[href]').count();
-        await inline.locator('a.ma-worlds-see-all[href="/explore.html"]').click();
-        await page.waitForURL(/\/explore\.html(?:\?|$)/,{timeout:15000});
-        const destination=await page.locator('.explore-grid a.explore-card[href]').count();
-        record('Explore More opens nine topics then navigates to Explore '+device.name,
-          expanded==='true'&&topics===9&&destination>=8,
-          JSON.stringify({expanded,topics,destination,path:new URL(page.url()).pathname}));
-      }catch(error){
-        record('Explore More opens and navigates '+device.name,false,String(error.message||error).slice(0,280));
-      }finally{
-        await observed(page,'/');
-      }
+    // The approved persistent navigation replaces the removed inline Worlds
+    // duplicate. Click its real Explore route and verify all twelve destinations.
+    try{
+      await page.locator('nav.ma-cinema-dock a[data-cinema-route="explore"][href="/explore.html"]').click();
+      await page.waitForURL(/\/explore\.html(?:\?|$)/,{timeout:15000});
+      await page.locator('#explore-topics a.ref-topic[href]').first().waitFor({state:'visible',timeout:12000});
+      const destinations=await page.evaluate(()=>({
+        primary:[...document.querySelectorAll('#explore-topics a.ref-topic[href]')].map(a=>a.getAttribute('href')),
+        secondary:[...document.querySelectorAll('.ref-secondary-topics a[href]')].map(a=>a.getAttribute('href')),
+        visible:[...document.querySelectorAll('#explore-topics a.ref-topic[href],.ref-secondary-topics a[href]')].every(a=>a.getClientRects().length>0&&a.textContent.trim())
+      }));
+      const primary=['/ebooks/#ebook-matcher-root','/cooking/','/news/','/events-archive.html','/music.html#swifties-spotify','/discover.html'];
+      const secondary=['/music.html','/together.html','/friends.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/how-it-works.html'];
+      record('Signature Explore navigation opens all approved topics '+device.name,
+        destinations.visible&&destinations.primary.length===6&&destinations.secondary.length===6&&
+        primary.every(href=>destinations.primary.includes(href))&&secondary.every(href=>destinations.secondary.includes(href)),
+        JSON.stringify({...destinations,path:new URL(page.url()).pathname}));
+    }catch(error){
+      record('Signature Explore navigation '+device.name,false,String(error.message||error).slice(0,280));
+    }finally{
+      await observed(page,'/');
     }
     try {
       await observed(page,'/news/');
@@ -218,7 +213,7 @@ async function aiQuestion(page,question,expected,label){
       return {
         label:brand?.getAttribute('aria-label')||'',ai:ai?.textContent||'',
         tv:!!brand?.querySelector('.ma-tv'),detached:!!brand?.querySelector('.ma-ai-brand-button'),
-        logo:!!brand?.querySelector('.ma-brand-orb[src^="/assets/brand/matchapp-icon-approved.png"]'),
+        logo:(()=>{const icon=brand?.querySelector('.ma-brand-orb');if(!icon)return false;const source=new URL(icon.src,location.href);return source.origin===location.origin&&(source.pathname==='/assets/brand/matchapp-icon-approved.png'||(source.pathname==='/assets/brand/matchapp-official-icon-512.webp'&&icon.getAttribute('data-matchapp-canonical-logo')==='1'));})(),
         gradient:!!ai&&getComputedStyle(ai).backgroundImage.includes('linear-gradient'),
         weight:name?getComputedStyle(name.querySelector('.ma-wordmark')).fontWeight:'0',
         textInside:!!rect&&!!box&&rect.right<=box.right+3&&rect.left>=box.left-3,
@@ -334,8 +329,14 @@ async function aiQuestion(page,question,expected,label){
     // Jonas has one deliberate header History action; the duplicate floating
     // hamburger is hidden. Exercise the visible real action on every viewport.
     const visibleHistory=page.locator('.jonas-top-history');
-    if(await visibleHistory.isVisible())await visibleHistory.click({timeout:12000});
-    else await page.locator('#ai-sidebar-toggle').click({timeout:12000});
+    // The shared shell rehomes this original action asynchronously. Wait for
+    // its actual menu owner, then for the opened control to paint.
+    await page.locator('#ma-reference-header .ma-reference-header-tools .jonas-top-history').waitFor({state:'attached',timeout:20000});
+    const historyTools=page.locator('.ma-reference-header-tools').filter({has:visibleHistory});
+    if(!await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
+    await visibleHistory.waitFor({state:'visible',timeout:12000});
+    await visibleHistory.click({timeout:12000});
+    if(await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
     await page.waitForFunction(()=>{
       const panel=document.getElementById('ai-sidebar')?.getBoundingClientRect();
       return panel&&panel.left>=-1&&panel.right>0;
@@ -343,14 +344,15 @@ async function aiQuestion(page,question,expected,label){
     const history=await page.evaluate(()=>{
       const button=document.querySelector('.jonas-top-history')||document.getElementById('ai-sidebar-toggle');
       const panel=document.getElementById('ai-sidebar');
-      const header=document.querySelector('header.app-header').getBoundingClientRect();
+      const header=(document.getElementById('ma-reference-header')||document.querySelector('header.app-header')).getBoundingClientRect();
+      const dock=document.querySelector('.ma-cinema-dock')?.getBoundingClientRect();
       const rect=panel.getBoundingClientRect();
-      return {belowHeader:rect.top>=header.bottom,visible:rect.left>=-1&&rect.right>0,
+      return {belowHeader:rect.top>=header.bottom+7.5,aboveDock:!dock||rect.bottom<=dock.top-7.5,visible:rect.left>=-1&&rect.right>0,
         newChat:!!document.getElementById('ai-new-chat')?.getClientRects().length,
         toggleTop:button.getBoundingClientRect().top,headerBottom:header.bottom};
     });
     record('Ask AI history opens below shared header '+device.name,
-      history.belowHeader&&history.visible&&history.newChat,JSON.stringify(history));
+      history.belowHeader&&history.aboveDock&&history.visible&&history.newChat,JSON.stringify(history));
     await historyFold.click();
     // Empty Send must guide the user rather than appearing unresponsive.
     await page.locator('.composer-send').click({timeout:10000});
@@ -399,10 +401,13 @@ async function aiQuestion(page,question,expected,label){
     await page.waitForFunction(()=>typeof window.setMatchCriteria==='function',{timeout:15000});
     const picked=await page.evaluate(()=>{window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]});return window.getMatchCriteria()});
     assert(picked.cat.includes('movie')&&picked.mood.includes('funny'),'production multi-select did not preserve choices');
-    await page.locator('.lazy-head[data-fold-key="concierge"]').click();
-    const askHead=page.locator('.lazy-head[data-fold-key="askai"]');
-    if(await askHead.getAttribute('aria-expanded')!=='true')await askHead.click();
-    await page.locator('button[onclick="triggerMatch(false)"]').click();
+    const matchAction=page.locator('button[onclick="triggerMatch(false)"]');
+    if(!await matchAction.isVisible()){
+      const concierge=page.locator('.lazy-head[data-fold-key="concierge"]');
+      assert(await concierge.isVisible(),'the actual Match action or its original fold must be reachable');
+      if(await concierge.getAttribute('aria-expanded')!=='true')await concierge.click();
+    }
+    await matchAction.click();
     await page.waitForFunction(()=>{
       const box=document.getElementById('result-box');
       const title=document.getElementById('res-title')?.textContent?.trim();
@@ -436,13 +441,8 @@ async function aiQuestion(page,question,expected,label){
       homeVisible:!!document.getElementById('trending-rail')?.getClientRects().length&&
         !!document.getElementById('ma-concierge')?.getClientRects().length&&
         (()=>{
-          const direct=document.querySelector('#mh-topbox a[href="/explore.html"]');
-          if(direct?.getClientRects().length)return true;
-          const trigger=document.querySelector('#ma-worlds-trigger');
-          const panel=document.querySelector('#ma-explore-worlds-panel');
-          return !!(trigger?.getClientRects().length &&
-            trigger.getAttribute('aria-controls')===panel?.id &&
-            panel?.querySelector('a[href="/explore.html"]'));
+          const route=document.querySelector('nav.ma-cinema-dock a[data-cinema-route="explore"][href="/explore.html"]');
+          return !!(route?.getClientRects().length&&route.textContent.trim());
         })(),
       titlesRemainUnfolded:!document.querySelector('.lazy-head[data-fold-key="trending"]')&&
         !!document.getElementById('trending-rail')?.getClientRects().length,

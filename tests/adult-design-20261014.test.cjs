@@ -14,12 +14,33 @@ test('adult design stylesheet and routes are opt-in and do not alter protected a
  assert.equal((home.match(/<ins class="adsbygoogle"/g)||[]).length,5);
  assert.ok(fs.existsSync(path.join(root,'assets/brand/matchapp-icon-approved.png')));
 });
-test('Explore keeps all secondary destinations, with Together and Friends replacing the Home premiere duplicate',()=>{
- const d=new JSDOM(read('explore.html'),{url:'https://matchapp.tv/explore.html'});
- const links=[...d.window.document.querySelectorAll('.explore-grid a')].map(n=>n.getAttribute('href'));
- assert.deepEqual(links,['/cooking/','/music.html','/news/','/ebooks/#ebook-matcher-root','/events-archive.html','/together.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/friends.html']);
- assert.ok(d.window.document.querySelector('#how-it-works summary[data-i18n="how.title"]'));
- assert.equal(d.window.document.querySelector('[href="/explore.html"]').getAttribute('aria-current'),'page');
+test('Explore keeps every original destination in its cinematic categories, secondary grid and compact controls',()=>{
+ const d=new JSDOM(read('explore.html'),{url:'https://matchapp.tv/explore.html',runScripts:'outside-only',pretendToBeVisual:true});
+ const w=d.window,doc=w.document;
+ w.eval(read('i18n.js'));w.eval(read('patches/explore-locales.js'));w.eval(read('patches/reference-explore.js'));w.eval(read('patches/reference-system.js'));
+ doc.dispatchEvent(new w.Event('DOMContentLoaded'));
+ const primary=[...doc.querySelectorAll('.ref-primary-topics > a')].map(n=>n.getAttribute('href'));
+ const secondary=[...doc.querySelectorAll('.ref-secondary-topics > a')].map(n=>n.getAttribute('href'));
+ assert.deepEqual(primary,['/ebooks/#ebook-matcher-root','/cooking/','/news/','/events-archive.html','/music.html#swifties-spotify','/discover.html']);
+ assert.deepEqual(secondary,['/music.html','/together.html','/friends.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/how-it-works.html']);
+ const original=['/cooking/','/music.html','/news/','/ebooks/#ebook-matcher-root','/events-archive.html','/together.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/friends.html'];
+ for(const href of original)assert.ok([...primary,...secondary].includes(href),'original destination missing: '+href);
+ assert.deepEqual([...doc.querySelectorAll('.ref-editorial-banners > a')].map(n=>n.getAttribute('href')),['/featured/american-horror-story-13/','/featured/this-week/']);
+ const guide=doc.querySelectorAll('.ref-secondary-topics a[href="/how-it-works.html"]');
+ assert.equal(guide.length,1,'the guide retains one dedicated destination after removing its duplicate inline wrapper');
+ assert.equal(guide[0].querySelector('[data-i18n="how.title"]').textContent,w.t('how.title'));
+ const controls=doc.querySelector('#ref-explore-header details.ref-explore-tools');
+ assert.ok(controls.querySelector('summary[data-cinema-copy="controls"]'));
+ assert.deepEqual([...doc.querySelectorAll('.ma-cinema-dock a')].map(n=>n.getAttribute('href')),['/','/explore.html','/#questionnaire-box','/profile/profile.html#tab-watchlater','/profile/profile.html']);
+ assert.equal(doc.querySelector('.ma-cinema-dock [href="/explore.html"]').getAttribute('aria-current'),'page');
+ assert.equal(controls.querySelector('.hub-links'),null,'duplicate header routes are consolidated into the shared dock');
+ assert.equal(doc.querySelector('#ref-explore-header .ma-cinema-search').getAttribute('href'),'/discover.html?focus=start');
+ assert.equal(doc.querySelectorAll('#lang-switcher-host').length,1);
+ assert.ok(controls.querySelector('#lang-switcher-host'),'original language host remains in controls');
+ for(const href of [...primary,...secondary]){
+  const url=new URL(href,'https://matchapp.tv');
+  assert.ok(fs.existsSync(path.join(root,url.pathname,url.pathname.endsWith('/')?'index.html':'')),'destination file missing: '+href);
+ }
  d.window.close();
 });
 test('Home Explore CTA and description keep all fourteen authored languages',()=>{

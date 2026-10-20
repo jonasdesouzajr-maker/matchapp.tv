@@ -5,11 +5,11 @@
 (function(){
  'use strict';
  if(window.top!==window||window.__matchappAmbientJonas||!/^(?:matchapp\.tv|www\.matchapp\.tv|127\.0\.0\.1|localhost)$/i.test(location.hostname))return;
- if(location.pathname.startsWith('/kids'))return;
+ if(/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)||/\/(callback|confirm)\.html$/.test(location.pathname))return;
  // Only the Android app launches this script; explicit local QA opt-in never affects website users.
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
- var asset='/jonas/android-ambient-assistant-20261011.css?v=20261014-dock1',frame=null,panel=null,root=null,bubble=null;
+ var asset='/jonas/android-ambient-assistant-20261011.css?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1',frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0,parkedBeforeChat=null;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
@@ -33,12 +33,14 @@
  function locale(){var s=String(selectedLanguage()).toLowerCase();return labels[s.split('-')[0]]||labels.en}
  function clamp(x,low,high){return Math.max(low,Math.min(high,x))}
  function viewport(){return {width:Math.max(1,window.innerWidth),height:Math.max(1,window.visualViewport?.height||window.innerHeight)}}
- function safeBounds(){var v=viewport(),inset=(v.width>=700?4:3)+13;return {minX:inset,minY:inset,maxX:Math.max(inset,v.width-78-inset),maxY:Math.max(inset,v.height-78-inset)}}
- function setPosition(x,y){var b=safeBounds();root.style.setProperty('left',clamp(x,b.minX,b.maxX)+'px','important');root.style.setProperty('top',clamp(y,b.minY,b.maxY)+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
- function flushDrag(){dragRaf=0;if(!drag||!drag.moved)return;var b=safeBounds();var nx=clamp(drag.x+drag.dx,b.minX,b.maxX),ny=clamp(drag.y+drag.dy,b.minY,b.maxY);root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
+ function safeBounds(){if(window.MatchAppJonasPlacement)return window.MatchAppJonasPlacement.bounds(78,78);var v=viewport(),inset=16;return {minX:inset,minY:inset,maxX:Math.max(inset,v.width-78-inset),maxY:Math.max(inset,v.height-78-inset)}}
+ function holdInHeader(){if(!root||!document.documentElement?.hasAttribute?.('data-ma-jonas-header'))return false;if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}if(flingRaf){cancelAnimationFrame(flingRaf);flingRaf=0;}drag=null;root.style.transform='';window.MatchAppReferenceHeader?.claim(root);return true;}
+ function setPosition(x,y){if(holdInHeader())return;var b=safeBounds();root.style.setProperty('left',clamp(x,b.minX,b.maxX)+'px','important');root.style.setProperty('top',clamp(y,b.minY,b.maxY)+'px','important');root.style.setProperty('right','auto','important');root.style.setProperty('bottom','auto','important')}
+ function flushDrag(){if(holdInHeader())return;dragRaf=0;if(!drag||!drag.moved)return;var b=safeBounds();var nx=clamp(drag.x+drag.dx,b.minX,b.maxX),ny=clamp(drag.y+drag.dy,b.minY,b.maxY);root.style.transform='translate3d('+(nx-drag.x)+'px,'+(ny-drag.y)+'px,0)';}
  function stopDragFrame(){if(dragRaf){cancelAnimationFrame(dragRaf);dragRaf=0;}}
  function stopFling(){if(flingRaf){cancelAnimationFrame(flingRaf);flingRaf=0;var rect=root.getBoundingClientRect();root.style.transform='';setPosition(rect.left,rect.top);}}
  function coastBubble(fromX,fromY,toX,toY,ms,dragStartX,dragStartY){
+   if(holdInHeader())return;
    var begin=0;
    function coast(now){
      if(!begin)begin=now;
@@ -51,7 +53,7 @@
    // left/top; always use the measured drag origin, never parseStyle(auto).
    flingRaf=requestAnimationFrame(coast);
  }
- function store(){try{var r=root.getBoundingClientRect(),v=viewport();var position=JSON.stringify({x:r.left/Math.max(1,v.width-76),y:r.top/Math.max(1,v.height-76)});localStorage.setItem(key,position);localStorage.setItem('matchapp-jonas-position-v2',position)}catch(_){}}
+ function store(){if(holdInHeader())return;try{var r=root.getBoundingClientRect();var position=JSON.stringify({x:r.left/Math.max(1,innerWidth-r.width),y:r.top/Math.max(1,innerHeight-r.height)});localStorage.setItem(key,position);localStorage.setItem('matchapp-jonas-position-v2',position)}catch(_){}}
  function defaultPosition(){
   var v=viewport(),right=v.width>=1100?28:(v.width>=700?22:14);
   var bottom=v.width>=1100?120:(v.width>=700?118:Math.max(104,Math.min(150,v.height*.17)));
@@ -59,10 +61,11 @@
   root.dataset.jonasDefaultDock='1';
  }
  function restore(){
+  if(holdInHeader())return;
   try{
    var p=JSON.parse(localStorage.getItem('matchapp-jonas-position-v2')||localStorage.getItem(key)||'null');
    if(Number.isFinite(p?.x)&&Number.isFinite(p?.y)){
-    var v=viewport();setPosition(p.x*(v.width-76),p.y*(v.height-76));
+    setPosition(p.x*(innerWidth-78),p.y*(innerHeight-78));
     root.dataset.jonasDefaultDock='0';return;
    }
   }catch(_){}
@@ -91,7 +94,7 @@
    else{var policy=document.createElement('script');policy.src='/jonas/male-voice-policy-20261010.js';policy.onload=function(){document.head.appendChild(speech)};document.head.appendChild(policy)}
   }
   if(!document.getElementById('ma-jonas-premium-script')){
-   var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=header20261018-1&quickdock=20261017-1';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
+   var premium=document.createElement('script');premium.id='ma-jonas-premium-script';premium.src='/patches/jonas-premium-enhancer.js?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1';premium.defer=true;(document.head||document.documentElement).appendChild(premium);
   }
   // Critical first-paint styling is deliberately inline. Synchronous head
   // scripts may delay external CSS but the Jonas bubble cannot appear square
@@ -353,6 +356,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   },{once:true});
   bubble.setAttribute('aria-label',locale().open);
   bubble.addEventListener('pointerdown',function(e){
+    if(holdInHeader())return;
     if(e.button!==0&&e.pointerType==='mouse')return;
     stopDragFrame();stopFling();
     var r=root.getBoundingClientRect();
@@ -361,6 +365,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
     bubble.setPointerCapture?.(e.pointerId);
   });
   bubble.addEventListener('pointermove',function(e){
+    if(holdInHeader())return;
     if(!drag||drag.id!==e.pointerId)return;
     drag.dx=e.clientX-drag.startX;drag.dy=e.clientY-drag.startY;
     var at=performance.now(),dt=Math.max(1,at-drag.lastTime);
@@ -376,6 +381,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
     if(!dragRaf)dragRaf=requestAnimationFrame(flushDrag);
   });
   function end(e){
+    if(holdInHeader())return;
     if(!drag||drag.id!==e.pointerId)return;
     if(e.type==='pointerup'){
       drag.dx=e.clientX-drag.startX;drag.dy=e.clientY-drag.startY;
@@ -423,6 +429,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   // Keep Jonas dormant/lightweight. Native greeting happens on tap while
   // the single conversation frame initializes only when the user opens it.
   window.MatchAppAmbientJonas=Object.freeze({open:openPanel,close:closePanel,getContext:contextTitle,isOpen:()=>open});
+  if(document.body)document.dispatchEvent(new Event('matchapp:jonas-mounted'));
  }
  // The app may still be parsing blocking head scripts. Jonas must not wait
  // for DOMContentLoaded or onPageFinished; the HTML root is sufficient.

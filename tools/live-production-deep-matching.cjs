@@ -79,8 +79,13 @@ async function guarded(browser,label,fn){
      return getMatchCriteria();
    });
    assert(chosen.cat.includes('Spotify playlist')&&chosen.plat.includes('Spotify')&&chosen.mood.includes('cozy comfort watch'),'music form did not preserve choices');
-   await page.locator('.lazy-head[data-fold-key="concierge"]').click();
-   await page.locator('button[onclick="triggerMatch(false)"]').click();
+   const matchAction=page.locator('button[onclick="triggerMatch(false)"]');
+   if(!await matchAction.isVisible()){
+    const concierge=page.locator('.lazy-head[data-fold-key="concierge"]');
+    assert(await concierge.isVisible(),'the actual Match action or its original fold must be reachable');
+    if(await concierge.getAttribute('aria-expanded')!=='true')await concierge.click();
+   }
+   await matchAction.click();
    await page.waitForFunction(()=>{
     const box=document.querySelector('#result-box'),title=document.querySelector('#res-title')?.textContent?.trim();
     // The title paints before metadata and the destination finish resolving.
@@ -137,9 +142,18 @@ async function guarded(browser,label,fn){
    await open(page,'/ebooks/#ebook-matcher-root');
    const root=page.locator('#ebook-matcher-root');
    const fold=root.locator('details.ebook-fold');await fold.waitFor({state:'attached',timeout:23000});
-   await fold.evaluate(node=>{node.open=true});
+   if(!await fold.evaluate(node=>node.open))await fold.locator(':scope > summary').click();
    await root.locator('[data-ebook-field="format"][data-ebook-value="audiobook"]').click();
-   await root.locator('[data-ebook-field="access"][data-ebook-value="paid"]').click();
+   // Dedicated Books keeps advanced fields in their original collapsible
+   // owners. Reach the real Access control through its nearest summary.
+   const paidAccess=root.locator('[data-ebook-field="access"][data-ebook-value="paid"]');
+   if(!await paidAccess.isVisible()){
+     const accessFold=paidAccess.locator('xpath=ancestor::details[1]');
+     assert(await accessFold.count()&&await accessFold.locator(':scope > summary').isVisible(),
+       'The original paid Access field or its own fold must be reachable');
+     if(!await accessFold.evaluate(node=>node.open))await accessFold.locator(':scope > summary').click();
+   }
+   await paidAccess.click();
    const quotaBefore=await page.evaluate(()=>localStorage.getItem('match_dailyCount'));
    await root.locator('[data-ebook-match]').first().click();
    await page.waitForFunction(()=>{

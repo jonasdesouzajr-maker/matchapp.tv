@@ -1,0 +1,1277 @@
+@layer ma-reference {
+/* MatchApp reference cinema system — secondary adult page families.
+ * Presentation only. Existing routes, forms, hidden states, source media,
+ * matching/auth/payment handlers and the independent Kids shell are preserved.
+ * html.ma-reference:not(#ma-reference-legacy) is installed only by the adult reference shell.
+ */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) {
+  --reference-ink: var(--cinema-bg, #0b050f);
+  --reference-surface: var(--cinema-surface, #100a16);
+  --reference-raised: var(--cinema-panel, #180f1e);
+  --reference-line: var(--cinema-line, #6b5539);
+  --reference-line-soft: color-mix(in srgb, var(--cinema-gold, #dcaf57) 32%, transparent);
+  --reference-gold: var(--cinema-gold, #dcaf57);
+  --reference-highlight: color-mix(in srgb, var(--cinema-gold, #dcaf57) 72%, #fff0d7);
+  --reference-copy: var(--cinema-text, #f4f0e9);
+  --reference-muted: var(--cinema-muted, #b7afba);
+}
+
+/* One editorial hierarchy regardless of the page's original template. */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  main h1, .container > h1, .wrap > h1, .ma-pro-pricing > h1, .ma-pro-title,
+  .hub-title, .ebook-page-hero h1, .cooking-hero h1, .cooking-shell > h1,
+  .seo-hero h1, .w2w-hero h1, .event-hero-copy h1, .event-archive-hero h1,
+  .tg-hero h1, .mp-hero h1, .mf-hero h1, .journey-intro h1,
+  .discover-head h1, .ma-news-head h1, .news-hero h1, .reg-gateway h1,
+  .gh-hero h1, .sd-hero h1, #sd-article > h1, .anime-guide > h1
+) {
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: clamp(2rem, 4.8vw, 4rem) !important;
+  line-height: 1.08 !important;
+  font-weight: 500 !important;
+  letter-spacing: -.035em !important;
+  color: var(--reference-highlight) !important;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  text-shadow: 0 3px 22px rgb(0 0 0 / 28%) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .premium-card h2, .seo-section h2, .w2w-section h2, .w2w-panel h2,
+  .ebook-top-section h2, .ebook-seo-card h2, .cooking-shell h2,
+  .friend-panel h2, .tg-card h2, .mp-card h2, .mf-card h2,
+  .journey-chapter h2, .gh-panel h2, .anime-guide h2,
+  .ma-news-section h2, .credits-h, .profile-hub-intro h1, .ma-av-entry-copy h2, .ma-pro-pricing-card h2, .purchase-hub h2, .purchase-hub h3
+) {
+  font-family: Georgia, 'Times New Roman', serif !important;
+  color: var(--reference-highlight) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.02em !important;
+  text-wrap: balance;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .hub-lede, .ebook-page-hero p, .seo-hero p, .w2w-hero p,
+  .event-hero-copy p, .event-archive-hero p, .tg-lede, .tg-sub,
+  .mp-lede, .mf-lede, .journey-intro p, .cooking-shell > p,
+  .discover-head p, .profile-hub-intro p, .gh-hero p
+) {
+  color: var(--reference-muted) !important;
+  font-size: clamp(.95rem, 1.3vw, 1.1rem) !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Flat, precise gold edges replace the previous thick violet card treatments. */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .premium-card, .friend-panel, .tg-card, .tg-how-step,
+  .ebook-seo-card, .ebook-top-section, .ebook-platform-trust,
+  .ebook-matcher-root, .ebook-result-card, .ebook-match-card,
+  .cooking-card, .cooking-tools, .seo-section, .seo-item,
+  .w2w-region, .w2w-section, .w2w-panel,
+  .event-info-card, .event-source-card, .event-title-shelf,
+  .mp-card, .mp-service, .mp-title, .mf-card,
+  .gh-panel, .gh-mini, .anime-guide-card, .anime-link-card,
+  .passkey-box, .profile-phone-box, .pf-locked-summary,
+  .matchapp-exclusion-box, .journey-sidebar, .journey-chapter,
+  .ma-news-offers, .ma-news-card, .news-card,
+  .billboard-card, .spotify-video-card, .ma-av-entry, .ma-pro-entry, .ma-pro-pricing-card, .ma-pro-dialog, .discover-card, .discover-event-card,
+  .purchase-hub, .purchase-panel, .purchase-pack, .kids-purchase-group
+) {
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 13px !important;
+  background: linear-gradient(145deg, var(--reference-raised), var(--reference-surface) 78%) !important;
+  box-shadow: inset 0 1px rgb(255 229 183 / 4%), 0 12px 32px rgb(0 0 0 / 15%) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .seo-hero, .w2w-hero, .event-archive-hero, .ebook-page-hero,
+  .tg-hero, .mp-hero, .mf-hero, .cooking-hero, .gh-hero,
+  .discover-head, .journey-intro
+) {
+  border-color: var(--reference-line) !important;
+  border-radius: 15px !important;
+  background-color: var(--reference-surface) !important;
+  box-shadow: inset 0 1px rgb(255 229 183 / 6%), 0 16px 50px rgb(0 0 0 / 22%) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .seo-hero, .w2w-hero, .ebook-page-hero, .tg-hero, .event-archive-hero,
+  .mp-hero, .journey-intro, .gh-hero, .discover-head
+) {
+  background-image: radial-gradient(ellipse at 100% 0, rgb(101 58 110 / 13%), transparent 62%),
+    linear-gradient(120deg, var(--reference-raised), var(--reference-surface)) !important;
+}
+
+/* Preserve the information architecture while giving form sections clear rhythm. */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .input-group > label, .setting-row > label, .setting-row > div > label,
+  .tg-field > label, .friend-panel label, .mp-form label,
+  .ebook-field label, .cooking-tools label, .profile-phone-box label
+) {
+  color: var(--reference-copy) !important;
+  font-size: .9rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: .005em !important;
+  overflow-wrap: break-word;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .input-group input, .input-group select, .setting-select,
+  .tg-card input, .tg-card select, .friend-panel input, .friend-panel select,
+  .mp-form input, .mp-form select, .mp-form textarea,
+  .cooking-tools input, .cooking-tools select,
+  .ebook-matcher-root select, .ebook-matcher-root input,
+  .profile-phone-box input, .profile-phone-box select, .card input,
+  #activity-filter
+):not([type='checkbox']):not([type='range']):not([type='radio']):not([type='hidden']) {
+  min-height: 46px !important;
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 8px !important;
+  background: var(--reference-ink) !important;
+  color: var(--reference-copy) !important;
+  box-shadow: inset 0 1px 5px rgb(0 0 0 / 20%) !important;
+  font: inherit;
+  line-height: 1.45 !important;
+  max-width: 100%;
+  min-width: 0;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .input-group input, .input-group select, .setting-select, .tg-card input,
+  .tg-card select, .friend-panel input, .friend-panel select, .mp-form input,
+  .mp-form select, .mp-form textarea, .cooking-tools input, .cooking-tools select,
+  .ebook-matcher-root select, .ebook-matcher-root input, .profile-phone-box input,
+  .profile-phone-box select
+):focus-visible {
+  border-color: var(--reference-gold) !important;
+  outline: 2px solid var(--reference-highlight) !important;
+  outline-offset: 3px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .gold-btn, .tg-btn-gold, .passkey-button, .mp-pill:not(.secondary),
+  .settings-save, .matchapp-settings-install-cta,
+  .ebook-match-btn, .ebook-find-btn, .ebook-primary,
+  #friend-save-settings, #friend-add-request, #friend-match-form button[type='submit'],
+  #save-profile-btn, #pf-phone-send, #pf-phone-verify, .card > button#save,
+  .journey-next, .composer-send, .ma-av-entry-btn, .ma-av-save, .ma-pro-button:not(.ma-pro-button--quiet):not(.ma-pro-close), .purchase-pack button
+) {
+  border: 1px solid var(--reference-gold) !important;
+  border-radius: 9px !important;
+  background: linear-gradient(115deg, color-mix(in srgb, var(--reference-gold) 75%, white), var(--reference-gold) 58%, color-mix(in srgb, var(--reference-gold) 82%, #694d25)) !important;
+  color: var(--cinema-ink, #20140b) !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  box-shadow: inset 0 1px rgb(255 239 194 / 55%), 0 5px 15px rgb(194 137 51 / 10%) !important;
+  min-height: 44px;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .secondary-btn, .tg-btn-ghost, .mp-pill.secondary, .settings-reset,
+  .activity-clear, .settings-test, .ebook-chip, .ebook-source-links a,
+  .w2w-countries a, .event-top-nav a, .event-primary-actions a,
+  .adult-page-nav a, .journey-control:not(.journey-next), .journey-related a, .ma-pro-button--quiet, .ma-pro-close
+) {
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 9px !important;
+  background: color-mix(in srgb, var(--reference-raised) 80%, transparent) !important;
+  color: var(--reference-highlight) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-chip.active, .ebook-chip[aria-pressed='true'], .portfolio-tab.active,
+  .theme-choice.active, .theme-choice[aria-pressed='true'],
+  .matchapp-exclusion-chip.active, .journey-nav-item[aria-current='step']
+) {
+  color: var(--reference-highlight) !important;
+  border-color: var(--reference-gold) !important;
+  box-shadow: inset 0 0 0 1px rgb(220 175 87 / 16%) !important;
+}
+
+/* Profile, saved titles and configuration use the same quiet grouped panels. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(.profile-hub, .core-identity-card, #settings-panel, #activity-panel) {
+  color: var(--reference-copy);
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-menu {
+  gap: 8px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row {
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 10px !important;
+  background: var(--reference-surface) !important;
+  color: var(--reference-copy) !important;
+  box-shadow: none !important;
+  min-height: 52px;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(.profile-hub-row svg, .profile-hub-row .icon) {
+  color: var(--reference-gold) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(#settings-panel > summary, #activity-panel > summary) {
+  color: var(--reference-highlight) !important;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: 1.4rem !important;
+  line-height: 1.3 !important;
+  font-weight: 500 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .setting-row {
+  padding-block: 16px !important;
+  border-color: rgb(179 139 78 / 18%) !important;
+  gap: 12px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(.setting-row small, .setting-description, .pf-locked-summary small) {
+  color: var(--reference-muted) !important;
+  line-height: 1.5 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tabs {
+  border-bottom: 1px solid var(--reference-line-soft) !important;
+  gap: 6px !important;
+  padding-bottom: 10px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tab {
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  color: var(--reference-muted) !important;
+  background: transparent !important;
+  white-space: normal !important;
+  min-height: 44px !important;
+  line-height: 1.3 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tab.active {
+  border-color: var(--reference-line) !important;
+  color: var(--reference-highlight) !important;
+  background: var(--reference-raised) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(.poster-card, .history-card) {
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 10px !important;
+  background: var(--reference-ink) !important;
+  box-shadow: 0 8px 22px rgb(0 0 0 / 20%) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .poster-title {
+  border-top: 0 !important;
+  font-weight: 500 !important;
+  color: var(--reference-copy) !important;
+}
+
+/* Ask AI stays a real conversation: existing history, mic and send handlers remain. */
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.ai-sidebar, .ai-composer, .ai-composer-shell, .composer-container, .composer, .ai-usage-card) {
+  border-color: var(--reference-line-soft) !important;
+  background: var(--reference-surface) !important;
+  box-shadow: 0 12px 36px rgb(0 0 0 / 20%) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.ai-new-chat, .jonas-top-new, .jonas-top-history, .ai-sidebar-fold) {
+  color: var(--reference-highlight) !important;
+  border-color: var(--reference-line-soft) !important;
+  background: var(--reference-raised) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.ai-thread, .chat-history-item, .ai-history-item, .chat-thread-item) {
+  border-color: rgb(179 139 78 / 20%) !important;
+  border-radius: 8px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.ai-bubble, .ai-message, .message-content, .ma-ask-reply) {
+  border-color: var(--reference-line-soft) !important;
+  background: var(--reference-surface) !important;
+  color: var(--reference-copy) !important;
+  border-radius: 13px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.user .ai-bubble, .ai-message.user, .user-message) {
+  background: var(--reference-raised) !important;
+  border-color: var(--reference-line) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.ai-composer textarea, #discover-query, #ai-question, #discover-new-input) {
+  color: var(--reference-copy) !important;
+  background: transparent !important;
+}
+
+/* Reading, original title art, event guides and source cards share poster framing. */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-top-card, .ebook-cover-wrap, .ebook-result-cover,
+  .seo-item, .w2w-poster-wrap, .event-hero-art,
+  .billboard-card, .spotify-video-card, .anime-link-card,
+  .mp-title, .ma-news-card, .news-card
+) {
+  border-color: var(--reference-line-soft) !important;
+  border-radius: 10px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .poster-card img, .ebook-top-card img, .ebook-result-cover img,
+  .ebook-cover-wrap img, .w2w-poster, .event-hero-art img,
+  .seo-item img, .mp-title img, .anime-link-card img,
+  .billboard-card img, .spotify-video-card img
+) {
+  object-fit: contain !important;
+  max-width: 100%;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .seo-item-body, .w2w-region, .ebook-top-card, .billboard-card,
+  .event-hero-copy, .mp-service, .mp-title
+) :is(h2, h3, h4) {
+  color: var(--reference-highlight) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .seo-crumbs, .w2w-crumbs, .event-guide-flags, .ebook-source-links,
+  .seo-item-body > p, .w2w-region > p, .event-guide .event-meta
+) {
+  color: var(--reference-muted) !important;
+  line-height: 1.55 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .seo-related a, .w2w-related a, .event-title-links a,
+  .global-event-links a, .seo-item-body a, .w2w-region a,
+  .ebook-source-links a, .mp-service a
+) {
+  color: var(--reference-highlight) !important;
+  text-decoration-color: rgb(235 198 126 / 45%);
+  text-underline-offset: 3px;
+}
+
+/* Music, cooking, source-led news and legal/help pages retain their content layouts. */
+html.ma-reference:not(#ma-reference-legacy) body.page-music :is(details, .swifties-spotify) {
+  border: 1px solid var(--reference-line-soft) !important;
+  background: var(--reference-surface) !important;
+  border-radius: 13px !important;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 17%) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.page-music summary {
+  color: var(--reference-highlight) !important;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.page-music .hub-header {
+  border-color: var(--reference-line-soft) !important;
+  background: var(--reference-surface) !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.page-music .hub-links a {
+  color: var(--reference-highlight) !important;
+  background: var(--reference-raised) !important;
+  border-color: var(--reference-line-soft) !important;
+  border-radius: 8px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.page-music .hub-links a[aria-current='page'] {
+  color: var(--cinema-ink, #21150b) !important;
+  background: linear-gradient(115deg, color-mix(in srgb, var(--reference-gold) 75%, white), var(--reference-gold)) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .cooking-card h3, .ma-news-card h3, .news-card h3,
+  .billboard-card h3, .spotify-video-card h3
+) {
+  color: var(--reference-copy) !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .cooking-shell, .event-guide-main, .ebook-page-wrap,
+  .seo-wrap, .w2w-wrap, .mp-wrap, .mf-wrap, .tg-wrap,
+  .journey-shell, .gh-wrap, .reg-gateway
+) {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  main > .card, .reg-gateway, .confirmation-card, .auth-card, .reset-card
+) {
+  border: 1px solid var(--reference-line) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(145deg, var(--reference-raised), var(--reference-surface)) !important;
+  box-shadow: 0 20px 65px rgb(0 0 0 / 30%), inset 0 1px rgb(255 225 164 / 5%) !important;
+  color: var(--reference-copy) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .price-badge, .credits-balance, .plan-price, .mp-eyebrow,
+  .mf-eyebrow, .journey-number
+) {
+  color: var(--reference-highlight) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .credits-grid > article, .credit-pack, .pro-plan-card, .theme-choice,
+  .activity-list > article, .activity-item, .passkey-list > div
+) {
+  border-color: var(--reference-line-soft) !important;
+  border-radius: 10px !important;
+}
+
+/* Responsive refinements do not move the original forms or alter their visibility. */
+@media (max-width: 600px) {
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+    .premium-card, .friend-panel, .tg-card, .mp-card, .mf-card,
+    .seo-section, .w2w-section, .w2w-region, .gh-panel
+  ) {
+    border-radius: 11px !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .setting-row {
+    flex-wrap: wrap;
+    align-items: flex-start !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(.setting-control, .setting-select) {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row {
+    padding-block: 14px !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+    .portfolio-tab, .mp-pill, .tg-btn, .ebook-chip, .w2w-countries a,
+    .journey-control, .event-top-nav a
+  ) {
+    white-space: normal !important;
+    overflow-wrap: break-word;
+    line-height: 1.35 !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+    .input-group input, .input-group select, .setting-select,
+    .tg-card input, .tg-card select, .friend-panel input,
+    .friend-panel select, .mp-form input, .mp-form textarea,
+    .cooking-tools input, .cooking-tools select
+  ):not([type='checkbox']):not([type='radio']):not([type='range']) {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 360px) {
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tabs {
+    flex-wrap: wrap !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+    .settings-actions, .theme-actions, .pf-phone-buttons,
+    .event-primary-actions, .mp-form .mp-actions
+  ) {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+}
+html.ma-reference:not(#ma-reference-legacy)[dir='rtl'] body:not(.page-home):not(.page-explore) :is(
+  .seo-crumbs, .w2w-crumbs, .input-group label, .setting-row,
+  .ebook-page-hero, .event-hero-copy, .mp-card, .friend-panel
+) {
+  text-align: start;
+}
+html.ma-reference:not(#ma-reference-legacy):lang(ar) body:not(.page-home):not(.page-explore) :is(h1, h2, h3, summary) {
+  font-family: 'Noto Naskh Arabic', 'Noto Sans Arabic', Tahoma, sans-serif !important;
+  letter-spacing: 0 !important;
+  line-height: 1.5 !important;
+}
+html.ma-reference:not(#ma-reference-legacy):lang(hi) body:not(.page-home):not(.page-explore) :is(h1, h2, h3, summary) {
+  font-family: 'Noto Sans Devanagari', Mangal, sans-serif !important;
+  letter-spacing: 0 !important;
+  line-height: 1.45 !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+    .premium-card, .friend-panel, .tg-card, .ebook-chip, .poster-card,
+    .mp-card, .mp-pill, .journey-control, .profile-hub-row
+  ) {
+    transition: none !important;
+  }
+}
+@media (forced-colors: active) {
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+    .premium-card, .friend-panel, .tg-card, .mp-card, .mf-card,
+    .seo-section, .w2w-region, .profile-hub-row, .portfolio-tab.active
+  ) {
+    border-color: CanvasText !important;
+    box-shadow: none !important;
+  }
+}
+
+/* The avatar configuration dialog keeps its custom controls and source previews. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #avatar-maker-dialog {
+  --av-line: var(--reference-line-soft);
+  --av-gold: var(--reference-gold);
+  --av-gold-hi: var(--reference-highlight);
+  border-color: var(--reference-line) !important;
+  background: var(--reference-surface) !important;
+  color: var(--reference-copy) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #avatar-maker-dialog :is(.ma-av-row, .ma-av-tabs, .ma-av-side) {
+  background: var(--reference-raised) !important;
+  border-color: var(--reference-line-soft) !important;
+  border-radius: 10px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #avatar-maker-dialog .ma-av-tab.is-active {
+  background: var(--reference-gold) !important;
+  color: var(--cinema-ink, #20140b) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #avatar-maker-dialog .ma-av-choice.is-selected {
+  border-color: var(--reference-gold) !important;
+  box-shadow: 0 0 0 2px var(--reference-line-soft) !important;
+}
+
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page,
+html.ma-reference:not(#ma-reference-legacy) body.page-shell:not(.page-home):not(.page-explore) {
+  padding-top: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page { padding-inline: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page .ebook-page-top > nav > a:is([href='/'], [href='/#questionnaire-box']) {
+  display: none !important;
+}
+/* Secondary chrome follows the reference's quiet compact masthead. Content
+ * posters remain untouched; only the decorative full-screen wall is retired. */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(.poster-wall, .luxury-bg, .ambient-bg, .floating-orb) {
+  display: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top, header.hub-header) {
+  position: relative !important;
+  top: auto !important;
+  width: min(calc(100% - 28px), 1180px) !important;
+  max-width: 1180px !important;
+  min-height: 78px !important;
+  max-height: none !important;
+  height: auto !important;
+  margin: 12px auto 14px !important;
+  padding: 10px 14px !important;
+  display: flex !important;
+  flex-flow: row wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--reference-line-soft) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-sizing: border-box !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top, header.hub-header)::before,
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top, header.hub-header)::after {
+  display: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header :is(.mh-head, .header-brand-area, .ma-brand-lockup, .ma-brand-home-link) {
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 9px !important;
+  flex: 0 1 auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header :is(.mh-tagline, .ma-brand-caption),
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header .header-brand-area > img {
+  display: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header :is(.ma-brand-orb-stage) {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  flex: 0 0 36px !important;
+  margin: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header :is(.ma-wordmark, .ma-word-match, .ma-word-app, .ma-word-ai) {
+  font-size: clamp(1.15rem, 2.2vw, 1.75rem) !important;
+  line-height: 1.2 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) > nav {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  min-height: 44px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 6px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  flex: 1 1 auto !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) > nav > :is(a, button, .ma-menu-wrap, #lang-switcher-host) {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 44px !important;
+  max-width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  margin: 0 !important;
+  padding: 8px 10px !important;
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 8px !important;
+  background: var(--reference-surface) !important;
+  color: var(--reference-highlight) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  font-size: .78rem !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header > nav > :is(.mh-home-btn, .home-btn) {
+  display: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) > nav > :is(.ma-menu-wrap, #lang-switcher-host) {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) :is(.ma-menu-button, .lang-switcher) {
+  min-height: 44px !important;
+  height: 44px !important;
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 8px !important;
+  background: var(--reference-surface) !important;
+  color: var(--reference-copy) !important;
+  box-shadow: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) .lang-switcher {
+  min-width: 104px !important;
+  max-width: 130px !important;
+  padding: 8px !important;
+  font-size: .78rem !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) :is(.ma-support-shortcut, .ma-kids-mode-entry) > span {
+  display: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page header.app-header > nav > .ma-cinema-search {
+  display: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page header.app-header :is(.jonas-top-new, .jonas-top-history) > span {
+  display: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page header.app-header :is(.jonas-top-new, .jonas-top-history) svg {
+  display: block !important;
+  width: 22px !important;
+  height: 22px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .ebook-page-hero {
+  text-align: start !important;
+  padding: clamp(20px, 3vw, 36px) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .ebook-page-hero p {
+  max-width: 78ch !important;
+}
+@media (max-width: 700px) {
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top, header.hub-header) {
+    min-height: 78px !important;
+    width: calc(100% - 28px) !important;
+    padding: 12px 0 !important;
+    margin: 8px 14px 14px !important;
+    gap: 12px !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) > :is(.mh-head, .ebook-hub-brand) {
+    min-height: 44px !important;
+    width: 100% !important;
+    flex: 0 1 100% !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) > nav {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.ebook-page-top > nav {
+    width: calc(100% - 56px) !important;
+    flex: 1 1 calc(100% - 56px) !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .ebook-page-top > .ma-cinema-search {
+    position: static !important;
+    flex: 0 0 44px !important;
+    margin: 0 !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header .ma-wordmark,
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header .ma-word-ai {
+    font-size: clamp(1.2rem, 5.5vw, 1.5rem) !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .ebook-page-hero h1 {
+    font-size: clamp(1.8rem, 7.7vw, 2.4rem) !important;
+  }
+}
+
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .purchase-tab {
+  border: 1px solid var(--reference-line-soft) !important;
+  border-radius: 8px !important;
+  background: var(--reference-surface) !important;
+  color: var(--reference-copy) !important;
+  min-height: 44px !important;
+  line-height: 1.35 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .purchase-tab[aria-selected='true'] {
+  background: var(--reference-raised) !important;
+  border-color: var(--reference-gold) !important;
+  color: var(--reference-highlight) !important;
+}
+
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header .ma-menu {
+  border: 1px solid var(--reference-line) !important;
+  border-radius: 10px !important;
+  background: var(--reference-surface) !important;
+  color: var(--reference-copy) !important;
+  box-shadow: 0 16px 42px rgb(0 0 0 / 35%) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) header.app-header .ma-menu [role='menuitem'] {
+  color: var(--reference-copy) !important;
+  border-color: var(--reference-line-soft) !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+}
+
+/* Keep profile categories visually consistent across OS emoji fonts. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row { --reference-profile-icon: url('/assets/brand/symbols/profile.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row[href='/pricing/pricing.html'] { --reference-profile-icon: url('/assets/brand/symbols/pricing.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row[href='#activity-panel'] { --reference-profile-icon: url('/assets/brand/symbols/trending.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row[href='#tab-watchlater'] { --reference-profile-icon: url('/assets/brand/symbols/saved.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row[href='#settings-panel'] { --reference-profile-icon: url('/assets/brand/symbols/settings.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row[href='/kids/'] { --reference-profile-icon: url('/assets/brand/symbols/kids.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row[onclick] { --reference-profile-icon: url('/assets/brand/symbols/notifications.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row[href='mailto:support@matchapp.tv'] { --reference-profile-icon: url('/assets/brand/symbols/support.svg'); }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row > span:first-child {
+  display: grid !important;
+  place-items: center !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row > span:first-child::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: var(--reference-profile-icon) center / contain no-repeat;
+}
+
+/* One edge-to-edge secondary grid. Outer geometry is shared; the only inset
+ * belongs to panel content, so nested templates cannot accumulate gutters. */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) {
+  margin-inline: 0 !important;
+  padding-inline: max(var(--cinema-page-gutter, 0px), env(safe-area-inset-left)) max(var(--cinema-page-gutter, 0px), env(safe-area-inset-right)) !important;
+  --reference-grid-gap: var(--cinema-grid-gap, 8px);
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) > :is(
+  main, .hub-shell, .journey-shell, .seo-wrap, .w2w-wrap, .cooking-shell,
+  .mp-wrap, .mf-wrap, .tg-wrap, .gh-wrap, .ebook-page-wrap
+) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+  box-sizing: border-box !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  main.main-layout > .container, main.page-wrapper > .container,
+  main.page-wrapper > .main-layout, main.page-wrapper > .main-layout > .container,
+  .hub-shell > main, .journey-shell > main, .ebook-page-wrap > main
+) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin-inline: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  header.app-header, header.ebook-page-top, header.hub-header
+) {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  padding-inline: 12px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-page-hero, .ebook-matcher-root, .ebook-top-section, .ebook-platform-trust,
+  .ebook-seo-grid, .cooking-grid, .seo-hero, .seo-section, .w2w-hero,
+  .w2w-section, .w2w-region, .mp-card, .mf-card, .tg-card, .gh-panel,
+  .event-archive-hero, .event-guide, .purchase-hub, .ma-pro-entry.ma-pro-pricing
+) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-inline: 0 !important;
+  box-sizing: border-box !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-seo-grid, .cooking-grid, .mp-grid, .mp-title-grid, .mf-help-grid,
+  .event-archive-grid, .anime-guide-grid, .gh-grid, .route-grid,
+  .ma-pro-pricing-grid, .purchase-pack-grid, [data-native-news-feed]
+) {
+  gap: var(--reference-grid-gap) !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+  min-width: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-seo-grid, .cooking-grid, .mp-grid, .mp-title-grid, .mf-help-grid,
+  .event-archive-grid, .anime-guide-grid, .gh-grid, .route-grid,
+  .ma-pro-pricing-grid, .purchase-pack-grid, [data-native-news-feed]
+) > * { min-width: 0 !important; max-width: 100% !important; }
+
+/* Profile is a single twelve-column grid; related controls share its tracks. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile main.main-layout {
+  padding: 0 !important;
+  gap: var(--reference-grid-gap) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile main.main-layout > .container {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  align-content: start !important;
+  align-items: start !important;
+  gap: var(--reference-grid-gap) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile main.main-layout > .container > * {
+  grid-column: 1 / -1;
+  min-width: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile main.main-layout > .container > .premium-card {
+  padding: 12px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(.profile-hub-intro, .ma-av-entry) {
+  padding: 12px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-intro :is(h1, p) { margin-inline: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-intro h1 {
+  font-size: clamp(1.9rem, 3vw, 2.8rem) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-menu {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: var(--reference-grid-gap) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row {
+  padding: 10px 12px !important;
+  min-height: 64px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .input-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: var(--reference-grid-gap) !important;
+  min-width: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(.settings-body, #account-details .input-grid) {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .settings-body {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  align-items: start !important;
+  gap: var(--reference-grid-gap) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .settings-body > * {
+  grid-column: 1 / -1;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(.settings-group, .settings-actions, .theme-actions) {
+  margin-block: 0 !important;
+  padding-block: 8px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .setting-row {
+  display: grid !important;
+  grid-template-columns: minmax(100px, .8fr) minmax(0, 1.4fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 48px !important;
+  padding: 8px 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .setting-row-toggle {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(.setting-control, .setting-select) {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .setting-note {
+  padding-block: 0 8px !important;
+  color: var(--reference-muted) !important;
+  font-size: .84rem !important;
+  line-height: 1.5 !important;
+  align-self: center !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-grid {
+  gap: var(--reference-grid-gap) !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)) !important;
+  margin-block: 12px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-choice {
+  min-height: 100px !important;
+  padding: 12px !important;
+}
+@media(min-width:700px) {
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-menu { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .input-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media(min-width:1000px) {
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-menu { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .input-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile main.main-layout > .container > .premium-card { grid-column: span 6; }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile main.main-layout > .container > :is(#account-details, .premium-card:has(#settings-panel[open]), .premium-card:has(#activity-panel[open])) { grid-column: 1 / -1; }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .settings-body > :is(.setting-row, .setting-note) { grid-column: span 6; }
+}
+/* Conversation history is the one deliberate sidebar column, not a second
+ * arbitrary centering wrapper. Keep its existing collapse/open behavior. */
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page :is(.ai-sidebar,.ai-sidebar-scrim) {
+ top:calc(var(--ma-reference-header-height,88px) + 8px)!important;
+ bottom:var(--ma-reference-dock-clearance,102px)!important;
+}
+@media(min-width:901px) {
+  html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page:not(.page-home):not(.page-explore) > main.wrap {
+    width: calc(100% - 300px) !important;
+    margin-left: 300px !important;
+    margin-right: 0 !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy)[dir='rtl'] body.ai-chat-page:not(.page-home):not(.page-explore) > main.wrap {
+    margin-left: 0 !important;
+    margin-right: 300px !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page.ai-sidebar-collapsed:not(.page-home):not(.page-explore) > main.wrap { width: 100% !important; margin-inline: 0 !important; }
+}
+
+/* Actions fit their grid cells; a wide panel does not stretch a short label
+ * into a page-wide button. Phone labels can still wrap and remain tappable. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(.theme-actions, .settings-actions) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: var(--reference-grid-gap) !important;
+  width: 100% !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(.theme-actions, .settings-actions) > button,
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(#taste-edit, .settings-test) {
+  width: auto !important;
+  min-width: min(100%, 160px) !important;
+  max-width: 100% !important;
+  min-height: 44px !important;
+  padding: 10px 18px !important;
+  flex: 0 1 auto !important;
+  justify-self: start !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .input-group input, .input-group select, .setting-select,
+  .mp-form input, .mp-form select, .mp-form textarea,
+  .cooking-tools input, .cooking-tools select, .tg-card input, .tg-card select
+):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='hidden']) {
+  padding: 10px 12px !important;
+}
+
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-page-hero, .ebook-top-section, .ebook-platform-trust, .ebook-panel,
+  .cooking-card, .cooking-tools, .seo-hero, .seo-section, .w2w-hero,
+  .w2w-region, .w2w-section, .mp-card, .mf-card, .tg-card, .gh-panel,
+  .ma-pro-entry, .ma-pro-pricing-card, .purchase-hub, .purchase-panel
+) { padding: 12px !important; }
+
+}
+
+/* Preserve the installer capability gate; do not paint its empty hidden action. */
+@layer ma-reference {html.ma-reference #matchapp-app-install-setting .matchapp-settings-install-cta[hidden]{display:none!important}}
+
+/* The open Books accordion already names this matcher in its summary. */
+@layer ma-reference {
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page #ebook-matcher-root > details.ebook-fold > .ebook-panel > .ebook-intro > div > h2 {
+  display: none !important;
+}
+}
+
+/* Default density: one gap between groups, one inset inside each real panel.
+ * These are known content wrappers, never ad containers or media frames. */
+@layer ma-reference {
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .cooking-card, .cooking-tools, .ebook-field, .ebook-seo-card,
+  .ebook-platform-trust article, .tg-card, .mp-card, .mf-card, .gh-panel,
+  .w2w-region, .profile-phone-box, .passkey-box, .history-empty
+) {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: var(--cinema-panel-padding, 12px) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-fields, .ebook-platform-trust-inner, .ebook-seo-grid,
+  .cooking-grid, .cooking-tools, .profile-hub-menu, .input-grid,
+  .matchapp-exclusion-grid, .pf-phone-buttons, .portfolio-tabs
+) { gap: var(--cinema-grid-gap, 8px) !important; }
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-field, .ebook-seo-card, .cooking-grid > .cooking-card,
+  .ebook-platform-trust-inner > article
+) { margin: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-seo-card, .cooking-card, .ebook-platform-trust article,
+  .profile-phone-box, .passkey-box, .history-empty
+) > :is(h2, h3, h4, p):first-child { margin-block-start: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-seo-card, .cooking-card, .ebook-platform-trust article,
+  .profile-phone-box, .passkey-box, .history-empty
+) > :is(h2, h3, h4, p):last-child { margin-block-end: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-seo-grid, .ebook-platform-trust, .ebook-top-section, .cooking-tools
+) { margin-block: var(--cinema-grid-gap, 8px) !important; }
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page #ebook-matcher-root {
+  padding: 0 !important;
+  margin-block: var(--cinema-grid-gap, 8px) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page #ebook-matcher-root > .ebook-fold { margin: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page :is(.ebook-seo-grid, .ebook-platform-trust) { padding: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page .ebook-intro {
+  gap: var(--cinema-grid-gap, 8px) !important;
+  margin-block-end: var(--cinema-grid-gap, 8px) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .cooking-shell { margin-block: var(--cinema-grid-gap, 8px) !important; }
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .cooking-shell > :is(h1, h2, p, nav, footer),
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) .cooking-shell > section > h2 {
+  padding-inline: var(--cinema-panel-padding, 12px) !important;
+  margin-block: var(--cinema-grid-gap, 8px) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-intro p { margin-block: var(--cinema-grid-gap, 8px) 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-menu { padding: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row {
+  min-height: 44px !important;
+  height: auto !important;
+  padding-block: 8px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row > span:nth-child(2) { min-width: 0 !important; overflow-wrap: anywhere; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .settings-body { padding-block-start: var(--cinema-grid-gap, 8px) !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .setting-note { padding-block-end: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(.settings-group, .theme-actions, .settings-actions) { padding-block: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(header.app-header, header.ebook-page-top) > nav > :is(a, button, .ma-menu-wrap) {
+  height: auto !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+  .ebook-guide-link, .ebook-match-cta, .cooking-tools button,
+  .pf-phone-buttons button, .theme-actions button, .settings-actions button
+) { min-width: 0 !important; max-width: 100% !important; white-space: normal !important; overflow-wrap: anywhere; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: var(--cinema-grid-gap, 8px) !important;
+  margin-block: var(--cinema-grid-gap, 8px) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-choice {
+  grid-column: span 2;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  height: auto !important;
+  padding: 8px !important;
+  overflow-wrap: anywhere;
+  white-space: normal !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-choice:nth-last-child(-n + 2) { grid-column: span 3; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-choice :is(strong, small) { margin-block-start: 4px !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-choice small { font-size: .8rem !important; line-height: 1.4 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-swatch { gap: 4px !important; flex-wrap: nowrap !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-swatch i { width: clamp(12px, 2vw, 22px) !important; height: clamp(12px, 2vw, 22px) !important; flex: 0 0 auto; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  margin-block-end: var(--cinema-grid-gap, 8px) !important;
+  padding-block-end: var(--cinema-grid-gap, 8px) !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tab {
+  grid-column: span 2;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 8px !important;
+  overflow-wrap: anywhere;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tab:nth-last-child(-n + 2) { grid-column: span 3; }
+@media(max-width:599px) {
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(.theme-actions, .settings-actions):not([data-ma-density]) {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel :is(.theme-actions, .settings-actions):not([data-ma-density]) > button {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    padding-inline: 8px !important;
+  }
+}
+@media(min-width:600px) {
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-grid,
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tabs { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-choice,
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #settings-panel .theme-choice:nth-last-child(-n + 2),
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tab,
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .portfolio-tab:nth-last-child(-n + 2) { grid-column: auto; }
+}
+@media(min-width:700px) and (max-width:999px) {
+  html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile .profile-hub-row:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+}
+
+/* Final draft chrome: remove the News template's legacy installation gutter. */
+@layer ma-reference {
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page { padding-top: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page > header.app-header.ma-news-header {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 44px 44px !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-height: 60px !important;
+  padding: 8px 12px !important;
+  margin-block: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page header.ma-news-header > .ma-brand-lockup { min-width: 0 !important; max-width: 100% !important; }
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page header.ma-news-header > .ma-cinema-search { grid-column: 2 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page header.ma-news-header > #matchapp-kids-entry {
+  grid-column: 3 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  padding: 10px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page header.ma-news-header > #matchapp-kids-entry :is(img, svg) { width: 24px !important; height: 24px !important; max-width: 24px !important; flex: 0 0 24px !important; object-fit: contain !important; }
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page > main { margin-block: 8px !important; padding-block: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.news-ui-page > main > :is(h1, p, a) { padding-inline: 12px !important; }
+/* Keep the dedicated status and microphone; only the duplicate face is hidden. */
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page .discover-head #jonas-voice-stage .jds-portrait { display: none !important; }
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page .discover-head #jonas-voice-stage {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 8px 12px !important;
+  margin-block-end: 8px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page .discover-head:has(> #chat-log:empty):not([data-keyboard='true']) {
+  height: auto !important;
+  min-height: 0 !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.ai-chat-page .discover-head:not([data-keyboard='true']) > #chat-log:empty { display: none !important; }
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #portfolio-grid > p:only-child { grid-column: 1 / -1 !important; margin-block: 0 !important; }
+html.ma-reference:not(#ma-reference-legacy) body.ebook-page #ebook-matcher-root .ebook-intro > .ebook-guide-link[href='/ebooks/'] { display: none !important; }
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) > .matchapp-brand-bar:has(+ main.cooking-shell) {
+  width: 100% !important;
+  max-width: none !important;
+  margin-block: 8px 0 !important;
+  padding: 8px 12px !important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) > main.cooking-shell { padding-block: 0 !important; }
+
+/* Template coverage: use the actual authored component names, including
+ * runtime pricing/account forms, rather than resetting arbitrary containers. */
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ main.card,.ma-plan,.ma-secondary-product,.credits-section,.credit-pack,
+ .portfolio-panel,.matchapp-exclusion-group,.trend-card,.reader-spotlight,
+ .rg-surface,article.hero,article.route,article.tile,.plan-card,
+ main:has(> #confirm-email),main > article:has(> .support)
+) {
+ background:linear-gradient(145deg,var(--reference-raised),var(--reference-surface) 78%)!important;
+ color:var(--reference-copy)!important;border:1px solid var(--reference-line-soft)!important;
+ border-radius:13px!important;box-shadow:inset 0 1px #ffe5b70a,0 12px 32px #0002!important;
+ animation:none!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .premium-card > h1,main.card > h1,main:has(> #confirm-email) > h1,header > h1,
+ .ma-plan h2,.ma-secondary-product h2,.plan-card h2,.rg-surface h2,
+ article.route h2,article.tile h2,.trend-card h2,.reader-spotlight h2
+) {
+ font-family:var(--cinema-serif)!important;font-weight:500!important;
+ color:var(--reference-highlight)!important;letter-spacing:-.025em!important;
+ line-height:1.2!important;text-transform:none!important;text-wrap:balance;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .reg-join,.support,.seo-cta,.w2w-cta,.growth-primary,.rg-button,
+ article.hero .button,body.matchapp-browser-jonas .main-cta,
+ .ma-plan-cta:not(.ghost),.credit-pack.is-featured .credit-pack-btn,
+ main.card #save,#confirm-email,#purchase-retry
+) {
+ background:linear-gradient(115deg,color-mix(in srgb,var(--reference-gold) 75%,white),var(--reference-gold))!important;
+ color:var(--cinema-ink)!important;border:1px solid var(--reference-gold)!important;
+ border-radius:9px!important;box-shadow:inset 0 1px #ffedbe66,0 4px 18px #dba34d12!important;
+ min-height:44px!important;text-shadow:none!important;animation:none!important;
+ white-space:normal!important;overflow-wrap:break-word;box-sizing:border-box!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .reg-home,.ma-plan-cta.ghost,.credit-pack-btn,.ma-billing-toggle button,
+ [data-theme-cancel],.matchapp-exclusion-chip,body.matchapp-browser-jonas .mood-card
+) {
+ background:var(--reference-raised)!important;color:var(--reference-highlight)!important;
+ border:1px solid var(--reference-line-soft)!important;border-radius:9px!important;
+ min-height:44px!important;box-shadow:none!important;text-shadow:none!important;animation:none!important;
+ white-space:normal!important;overflow-wrap:break-word;
+}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .ma-billing-toggle button[aria-pressed='true'],.matchapp-exclusion-chip[aria-pressed='true']
+) {background:color-mix(in srgb,var(--reference-gold) 12%,var(--reference-surface))!important;border-color:var(--reference-gold)!important;color:var(--reference-copy)!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .ma-billing-toggle,.theme-choice,.w2w-note
+) {background:var(--reference-surface)!important;color:var(--reference-copy)!important;border-color:var(--reference-line-soft)!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .mp-locale select,.mp-field select,.growth-language,#lang-switcher,#mp-language,#mp-market,
+ select[data-news-offer-country]
+) {
+ box-sizing:border-box!important;min-height:44px!important;max-width:100%!important;min-width:0!important;
+ padding:8px 12px!important;background:var(--reference-ink)!important;
+ color:var(--reference-copy)!important;border:1px solid var(--reference-line-soft)!important;
+ border-radius:8px!important;font:inherit!important;line-height:1.4!important;box-shadow:inset 0 1px 5px #0003!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile :is(#set-fontscale,#set-rate,#set-pitch) {
+ background:transparent!important;border-color:transparent!important;
+ accent-color:var(--reference-gold)!important;min-height:44px!important;
+}
+/* The switch keeps its original native input and checked transform. Its 26px
+ * visual track sits inside a44px input hit target, without adding a second control. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile input.setting-switch {
+ width:46px!important;min-width:46px!important;height:44px!important;
+ background:transparent!important;border:0!important;border-radius:0!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile input.setting-switch::before {
+ content:'';position:absolute;inset-inline-start:0;top:9px;width:46px;height:26px;
+ box-sizing:border-box;border:1px solid var(--reference-line-soft);border-radius:99px;background:var(--reference-raised);
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile input.setting-switch::after {top:12px!important;background:var(--reference-copy)!important;}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile input.setting-switch:checked::before {background:var(--reference-gold);border-color:var(--reference-gold);}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile input.setting-switch:checked::after {background:var(--cinema-ink)!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .reg-actions,.ma-billing-toggle,.ma-plan-cta,.credit-pack-btn,.growth-primary,
+ #purchase-retry,main.card #save,#confirm-email
+) :focus-visible {outline:2px solid var(--reference-gold)!important;outline-offset:3px!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ .ma-plan-cta,.credit-pack-btn,.growth-primary,#purchase-retry,main.card #save,#confirm-email
+):disabled {opacity:.55!important;cursor:not-allowed!important;box-shadow:none!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(main.card,.mp-locale,.mp-field) :is(input,select,textarea):is(:user-invalid,[aria-invalid='true']) {border-color:var(--cinema-danger)!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(main.card,.mp-locale,.mp-field) :is(input,textarea)::placeholder {color:var(--reference-muted)!important;opacity:.8!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(
+ main.card a:not([class]),main:has(> #confirm-email) a:not([class]),
+ main > article:has(> .support) a:not([class]),.premium-card > p > a:not([class])
+) {color:var(--reference-highlight)!important;text-underline-offset:3px;}
+/* The existing shared masthead is the one brand anchor on these account entries. */
+html.ma-reference:not(#ma-reference-legacy) body:has(> .matchapp-brand-bar) :is(
+ .reg-gateway > .reg-brand,main.card > a.brand,main:has(> #confirm-email) > img.brand
+) {display:none!important;}
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore) :is(.trend-card img,article.hero > img,.rg-poster) {border-radius:10px!important;}
+/* A missing provider photo removes the avatar slot. Give the remaining copy
+ * the whole card instead of placing it in the old 70/92px photo column. */
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #audit-profile-hero:has(> .audit-profile-avatar[hidden]) {
+ grid-template-columns:minmax(0,1fr)!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #audit-profile-hero > .audit-profile-copy {
+ display:flex!important;flex-direction:column!important;gap:8px!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #audit-profile-hero > .audit-profile-copy > :is(.audit-profile-eyebrow,h1,p,.audit-profile-badges) {
+ margin-block:0!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields,
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields > .registration-divider {
+ display:grid!important;gap:8px!important;min-inline-size:0!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields > *,
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #registration-account-fields > .registration-divider > * {
+ margin-block:0!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.matchapp-profile #identity-load-retry:not([hidden]) + #save-profile-btn {
+ margin-block-start:8px!important;
+}
+}

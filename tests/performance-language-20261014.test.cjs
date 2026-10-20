@@ -20,18 +20,48 @@ test('all supported dictionaries have complete primary UI, profile and current h
 });
 test('Explore translates every authored navigation/card and preserves destinations for every language',()=>{
  const d=scene(read('explore.html'),'https://matchapp.tv/explore.html'),w=d.window;
+ w.eval(read('i18n.js')+'\nwindow.languages=I18N_LANGS;');
+ w.eval(read('patches/explore-locales.js'));
+ w.eval(read('patches/reference-explore.js'));
+ w.eval(read('patches/reference-system.js'));
+ w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  const links=[...w.document.querySelectorAll('a')].map(a=>a.getAttribute('href'));
- w.eval(read('i18n.js')+'\nwindow.languages=I18N_LANGS;');w.eval(read('patches/explore-locales.js'));
+ const expectedKeys=['title','intro','explore','awaited','premiere','weekly','curated','books','recipes','news','events','taylor','ask','more','askDescription','friends','donate'];
+ const expectedTitles={en:'Explore more','pt-BR':'Explore mais',es:'Explora más',fr:'Explorer plus',de:'Mehr entdecken',it:'Esplora altro',tr:'Daha fazlası',ru:'Откройте больше',ar:'اكتشف المزيد',hi:'और खोजें',id:'Jelajahi lainnya',ja:'もっと見る',ko:'더 둘러보기',zh:'探索更多'};
+ const english=new Map();
+ assert.equal(Object.keys(w.languages).length,14,'all supported languages must be exercised');
  for(const lang of Object.keys(w.languages)){
-  w.setLanguage(lang);
+  w.setLanguage(lang);w.MatchCinemaShell.paint();
   for(const node of w.document.querySelectorAll('[data-hub-copy]')){
    assert.ok(node.textContent.trim(),lang+' '+node.dataset.hubCopy);
    assert.equal(node.children.length,0);
   }
-  assert.equal(w.document.querySelector('#how-it-works summary').textContent,w.t('how.title'));
-  assert.deepEqual([...w.document.querySelectorAll('a')].map(a=>a.getAttribute('href')),links);
+  const reference=[...w.document.querySelectorAll('[data-ref-explore]')];
+  assert.deepEqual(reference.map(node=>node.dataset.refExplore).sort(),[...expectedKeys].sort(),'every reference label must be covered');
+  for(const node of reference){
+   const key=node.dataset.refExplore,text=node.textContent.trim();
+   assert.ok(text&&!/undefined|null/.test(text),lang+' missing reference '+key);
+   assert.equal(node.children.length,0,'translated label must retain its surrounding link/icon structure');
+   if(lang==='en')english.set(key,text);
+   // Retain artist identity and the authored German loanword ‘Events’.
+   else if(lang==='de'&&key==='events')assert.equal(text,'Events');
+   else if(key!=='taylor')assert.notEqual(text,english.get(key),lang+' silently kept English '+key);
+  }
+  assert.equal(w.document.querySelector('#explore-title').textContent,expectedTitles[lang]);
+  const guide=w.document.querySelectorAll('.ref-secondary-topics a[href="/how-it-works.html"]');
+  assert.equal(guide.length,1,'the consolidated guide action remains reachable');
+  assert.equal(guide[0].querySelector('[data-i18n="how.title"]').textContent,w.t('how.title'));
+  const controls=w.document.querySelector('.ref-explore-tools>summary');
+  assert.equal(controls.getAttribute('aria-label'),w.MatchCinemaShell.labels[lang==='pt-BR'?'pt':lang][10]);
+  assert.equal(controls.querySelector('[data-cinema-copy="controls"]').textContent,controls.getAttribute('aria-label'));
+  assert.equal(w.document.querySelector('#lang-switcher').value,lang);
+  assert.equal(w.localStorage.getItem('match_lang'),lang);
+  assert.equal(w.document.documentElement.dir,lang==='ar'?'rtl':'ltr');
+  assert.deepEqual([...w.document.querySelectorAll('a')].map(a=>a.getAttribute('href')),links,'language switch must retain every route');
  }
- assert.equal(w.document.querySelectorAll('#lang-switcher-host').length,1);w.close();
+ assert.equal(w.document.querySelectorAll('#lang-switcher-host').length,1);
+ assert.equal(w.document.querySelectorAll('.ref-explore-tools #lang-switcher-host').length,1);
+ w.close();
 });
 function speech(voices){
  const d=scene(),w=d.window,utterances=[];let requests=0;

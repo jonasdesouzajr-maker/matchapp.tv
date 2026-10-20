@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const {JSDOM} = require('jsdom');
 
 const root = path.join(__dirname, '..');
 const regions = [
@@ -12,7 +13,10 @@ const regions = [
 test('regional landing pages have canonical and reciprocal hreflang cluster', () => {
   for (const [code, lang] of regions) {
     const html = fs.readFileSync(path.join(root, code, 'index.html'), 'utf8');
-    assert.match(html, new RegExp('<html lang="' + lang.replace('-','\\-') + '">'));
+    const dom = new JSDOM(html);
+    assert.equal(dom.window.document.documentElement.lang, lang);
+    assert.ok(dom.window.document.documentElement.classList.contains('ma-reference'));
+    dom.window.close();
     assert.ok(html.includes('<link rel="canonical" href="https://matchapp.tv/' + code + '/">'));
     assert.ok(html.includes('hreflang="x-default" href="https://matchapp.tv/guides/worldwide-entertainment-discovery/"'));
     for (const [peer, peerLang] of regions) {

@@ -1,0 +1,45 @@
+/* Canonical color preferences from themes.css; reference layout stays authoritative. */
+html.ma-reference[data-theme="cinema"] {
+ --theme-bg:#17120f;
+ --theme-surface:#282019;
+ --theme-panel:#362b21;
+ --theme-text:#fff6e6;
+ --theme-muted:#e0cbb5;
+ --theme-accent:#ffd48b;
+ --theme-second:#eb9c94;
+ --theme-ink:#28190c;
+ --theme-border:#aa8663;
+}
+html.ma-reference[data-theme="ocean"] {
+ --theme-bg:#031d2b;
+ --theme-surface:#093448;
+ --theme-panel:#10475b;
+ --theme-text:#f0fcff;
+ --theme-muted:#bde0ee;
+ --theme-accent:#7be8f6;
+ --theme-second:#a2f5c8;
+ --theme-ink:#082633;
+ --theme-border:#4d8ba0;
+}
+html.ma-reference[data-theme="sunrise"] {
+ --theme-bg:#fff4e6;
+ --theme-surface:#fffaf3;
+ --theme-panel:#ffe4c6;
+ --theme-text:#382318;
+ --theme-muted:#694331;
+ --theme-accent:#c45a22;
+ --theme-second:#345b54;
+ --theme-ink:#fff8ef;
+ --theme-border:#b58762;
+}
+html.ma-reference[data-theme="arcade"] {
+ --theme-bg:#101522;
+ --theme-surface:#20293d;
+ --theme-panel:#2b354b;
+ --theme-text:#f5ffe8;
+ --theme-muted:#d2ddbc;
+ --theme-accent:#d8fb8f;
+ --theme-second:#ff9ad6;
+ --theme-ink:#202b15;
+ --theme-border:#879969;
+}

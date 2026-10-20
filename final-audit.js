@@ -144,10 +144,11 @@
     const host=$('#notforme-grid');if(!host)return;const items=readArray('match_dislikedList');$('#count-notforme')&&($('#count-notforme').textContent=String(items.length));
     if(!items.length){host.innerHTML='<div class="history-empty"><strong>Nothing here.</strong><span>Titles you mark “Not For Me” will stay out of future matches and appear here.</span></div>';
       const empty=host.firstElementChild;window.MatchProfilePortfolioI18n?.bind(empty,()=>{const ui=window.MatchProfilePortfolioI18n;empty.querySelector('strong').textContent=ui.text('notForMeEmptyTitle');empty.querySelector('span').textContent=ui.text('notForMeEmptyCopy');empty.style.textAlign='start';});return;}
-    host.innerHTML='';items.forEach(item=>{const title=typeof item==='string'?item:item?.title;if(!title)return;const card=document.createElement('article');card.className='audit-notforme-card';const poster=typeof item==='object'?item.posterUrl:'';card.innerHTML=(poster?'<img src="'+esc(poster)+'" alt="'+esc(title)+'" loading="lazy">':'<div class="audit-fallback">'+esc(title)+'</div>')+'<div><strong>'+esc(title)+'</strong><span>Excluded from future matches</span></div>';
+    host.innerHTML='';items.forEach((item,index)=>{const title=typeof item==='string'?item:item?.title;if(!title)return;const card=document.createElement('article');card.className='audit-notforme-card';const img=document.createElement('img');window.MatchAppPortfolioPosters.apply(img,item,{eager:index<4});card.innerHTML='<div><strong>'+esc(title)+'</strong><span>Excluded from future matches</span></div>';card.prepend(img);
       const allow=document.createElement('button');allow.type='button';allow.className='history-forget-btn';allow.innerHTML='<span>Allow again</span>';allow.addEventListener('click',async()=>{allow.disabled=true;const ok=await forgetEverywhere(title);if(ok){window.showToast?.(portfolioText('allowedAgain','“'+title+'” can be recommended again.',{title}));renderNotForMe();}else{allow.disabled=false;window.showToast?.(portfolioText('allowFailed','Could not update this item. Please try again.'),true);}});card.appendChild(allow);
       window.MatchProfilePortfolioI18n?.bind(card,()=>{const ui=window.MatchProfilePortfolioI18n;card.querySelector('div>span').textContent=ui.text('excluded');allow.querySelector('span').textContent=ui.text('allowAgain');const name=card.querySelector('strong');if(name){name.dir='auto';name.style.textAlign='start';}});
       host.appendChild(card);});
+    window.MatchAppPortfolioPosters.bind(host);
   }
 
   function organizeProfileIcons(){
@@ -171,20 +172,20 @@
   }
 
   const profileLabelRows={
-    en:['Your MatchApp Ai avatar','Private MatchApp Ai profile','Complete your profile','Sign in to sync your profile across devices','Identity protected','Identity setup required','Sync across devices'],
-    'pt-BR':['Seu avatar do MatchApp Ai','Perfil privado do MatchApp Ai','Complete seu perfil','Entre para sincronizar seu perfil entre dispositivos','Identidade protegida','Complete os dados de identidade','Sincronização entre dispositivos'],
-    es:['Tu avatar de MatchApp Ai','Perfil privado de MatchApp Ai','Completa tu perfil','Inicia sesión para sincronizar tu perfil entre dispositivos','Identidad protegida','Completa tus datos de identidad','Sincronización entre dispositivos'],
-    fr:['Votre avatar MatchApp Ai','Profil privé MatchApp Ai','Complétez votre profil','Connectez-vous pour synchroniser votre profil sur vos appareils','Identité protégée','Complétez vos informations d’identité','Synchronisation entre appareils'],
-    de:['Dein MatchApp Ai Avatar','Privates MatchApp Ai Profil','Vervollständige dein Profil','Melde dich an, um dein Profil auf deinen Geräten zu synchronisieren','Identität geschützt','Vervollständige deine Identitätsangaben','Geräteübergreifende Synchronisierung'],
-    it:['Il tuo avatar MatchApp Ai','Profilo privato MatchApp Ai','Completa il tuo profilo','Accedi per sincronizzare il tuo profilo tra i dispositivi','Identità protetta','Completa i dati della tua identità','Sincronizzazione tra dispositivi'],
-    tr:['MatchApp Ai avatarınız','Özel MatchApp Ai profili','Profilinizi tamamlayın','Profilinizi cihazlar arasında eşitlemek için giriş yapın','Kimlik korumalı','Kimlik bilgilerinizi tamamlayın','Cihazlar arasında eşitleme'],
-    ru:['Ваш аватар MatchApp Ai','Личный профиль MatchApp Ai','Заполните профиль','Войдите, чтобы синхронизировать профиль на разных устройствах','Личные данные защищены','Заполните личные данные','Синхронизация между устройствами'],
-    ar:['صورتك الرمزية في MatchApp Ai','ملفك الشخصي الخاص في MatchApp Ai','أكمل ملفك الشخصي','سجّل الدخول لمزامنة ملفك الشخصي بين أجهزتك','الهوية محمية','أكمل بيانات هويتك','المزامنة بين الأجهزة'],
-    hi:['MatchApp Ai पर आपका अवतार','आपकी निजी MatchApp Ai प्रोफ़ाइल','अपनी प्रोफ़ाइल पूरी करें','डिवाइसों के बीच अपनी प्रोफ़ाइल सिंक करने के लिए साइन इन करें','पहचान सुरक्षित है','अपनी पहचान की जानकारी पूरी करें','डिवाइसों के बीच सिंक'],
-    id:['Avatar MatchApp Ai Anda','Profil pribadi MatchApp Ai','Lengkapi profil Anda','Masuk untuk menyinkronkan profil Anda di berbagai perangkat','Identitas terlindungi','Lengkapi informasi identitas Anda','Sinkronisasi antarperangkat'],
-    ja:['MatchApp Ai のアバター','MatchApp Ai の個人プロフィール','プロフィールを完成させてください','ログインしてデバイス間でプロフィールを同期','本人情報は保護されています','本人情報を入力してください','デバイス間で同期'],
-    ko:['MatchApp Ai 아바타','MatchApp Ai 개인 프로필','프로필을 완성하세요','로그인하여 기기 간에 프로필을 동기화하세요','신원 정보 보호 중','신원 정보를 입력하세요','기기 간 동기화'],
-    zh:['您的 MatchApp Ai 头像','MatchApp Ai 私人资料','完善您的个人资料','登录以在设备间同步您的资料','身份信息已受保护','请完善身份信息','跨设备同步']
+    en:['Your account photo','Private MatchApp Ai profile','Complete your profile','Sign in to sync your profile across devices','Identity protected','Identity setup required','Sync across devices'],
+    'pt-BR':['Foto da sua conta','Perfil privado do MatchApp Ai','Complete seu perfil','Entre para sincronizar seu perfil entre dispositivos','Identidade protegida','Complete os dados de identidade','Sincronização entre dispositivos'],
+    es:['Foto de tu cuenta','Perfil privado de MatchApp Ai','Completa tu perfil','Inicia sesión para sincronizar tu perfil entre dispositivos','Identidad protegida','Completa tus datos de identidad','Sincronización entre dispositivos'],
+    fr:['Photo de votre compte','Profil privé MatchApp Ai','Complétez votre profil','Connectez-vous pour synchroniser votre profil sur vos appareils','Identité protégée','Complétez vos informations d’identité','Synchronisation entre appareils'],
+    de:['Dein Kontofoto','Privates MatchApp Ai Profil','Vervollständige dein Profil','Melde dich an, um dein Profil auf deinen Geräten zu synchronisieren','Identität geschützt','Vervollständige deine Identitätsangaben','Geräteübergreifende Synchronisierung'],
+    it:['Foto del tuo account','Profilo privato MatchApp Ai','Completa il tuo profilo','Accedi per sincronizzare il tuo profilo tra i dispositivi','Identità protetta','Completa i dati della tua identità','Sincronizzazione tra dispositivi'],
+    tr:['Hesap fotoğrafınız','Özel MatchApp Ai profili','Profilinizi tamamlayın','Profilinizi cihazlar arasında eşitlemek için giriş yapın','Kimlik korumalı','Kimlik bilgilerinizi tamamlayın','Cihazlar arasında eşitleme'],
+    ru:['Фото вашей учётной записи','Личный профиль MatchApp Ai','Заполните профиль','Войдите, чтобы синхронизировать профиль на разных устройствах','Личные данные защищены','Заполните личные данные','Синхронизация между устройствами'],
+    ar:['صورة حسابك','ملفك الشخصي الخاص في MatchApp Ai','أكمل ملفك الشخصي','سجّل الدخول لمزامنة ملفك الشخصي بين أجهزتك','الهوية محمية','أكمل بيانات هويتك','المزامنة بين الأجهزة'],
+    hi:['आपके खाते की फ़ोटो','आपकी निजी MatchApp Ai प्रोफ़ाइल','अपनी प्रोफ़ाइल पूरी करें','डिवाइसों के बीच अपनी प्रोफ़ाइल सिंक करने के लिए साइन इन करें','पहचान सुरक्षित है','अपनी पहचान की जानकारी पूरी करें','डिवाइसों के बीच सिंक'],
+    id:['Foto akun Anda','Profil pribadi MatchApp Ai','Lengkapi profil Anda','Masuk untuk menyinkronkan profil Anda di berbagai perangkat','Identitas terlindungi','Lengkapi informasi identitas Anda','Sinkronisasi antarperangkat'],
+    ja:['アカウントの写真','MatchApp Ai の個人プロフィール','プロフィールを完成させてください','ログインしてデバイス間でプロフィールを同期','本人情報は保護されています','本人情報を入力してください','デバイス間で同期'],
+    ko:['계정 사진','MatchApp Ai 개인 프로필','프로필을 완성하세요','로그인하여 기기 간에 프로필을 동기화하세요','신원 정보 보호 중','신원 정보를 입력하세요','기기 간 동기화'],
+    zh:['您的账号照片','MatchApp Ai 私人资料','完善您的个人资料','登录以在设备间同步您的资料','身份信息已受保护','请完善身份信息','跨设备同步']
   };
   function profileLabels(){
     let language='en';try{language=localStorage.getItem('match_lang')||window.MATCH_LANG||'en';}catch(_){language=window.MATCH_LANG||'en';}
@@ -197,14 +198,14 @@
   async function refreshProfileHero(){
     if(location.pathname!='/profile/profile.html')return;const root=$('.container > .premium-card');if(!root)return;
     let hero=$('#audit-profile-hero');if(!hero){hero=document.createElement('section');hero.id='audit-profile-hero';hero.className='audit-profile-hero';const extras=$('.identity-extras');root.insertBefore(hero,extras||root.firstChild);}
-    let name=localStorage.getItem('match_user_name')||'',email='',avatar=window.resolveUserAvatar?.()||'',locked=localStorage.getItem('match_profile_locked')==='true';
+    let name=localStorage.getItem('match_user_name')||'',email='',avatar='',locked=localStorage.getItem('match_profile_locked')==='true';
     try{
       const auth=window.supabaseClient?.auth?.getUser?await window.supabaseClient.auth.getUser():null;
       const user=auth?.data?.user;
       if(user){email=user.email||'';name=name||user.user_metadata?.full_name||user.user_metadata?.name||'';}
     }catch(_){}
-    const copy=profileLabels();
-    hero.innerHTML='<div class="audit-profile-avatar" data-avatar-slot><img src="'+esc(avatar)+'" alt="'+esc(copy.avatar)+'" width="96" height="96"'+(avatar?'':' style="display:none"')+'><span class="avatar-empty"'+(avatar?' style="display:none"':'')+'>'+icon('user')+'</span>'+'</div><div class="audit-profile-copy"><span class="audit-profile-eyebrow">'+esc(copy.privateProfile)+'</span><h1>'+esc(name||copy.complete)+'</h1><p>'+esc(email||copy.signIn)+'</p><div class="audit-profile-badges"><span>'+icon('lock')+(locked?esc(copy.protected):esc(copy.setup))+'</span><span>'+icon('globe')+esc(copy.sync)+'</span></div></div>';
+    const copy=profileLabels();avatar=window.resolveUserAvatar?.()||'';
+    hero.innerHTML='<div class="audit-profile-avatar" data-avatar-slot hidden style="display:none!important"><img'+(avatar?' src="'+esc(avatar)+'"':'')+' alt="'+esc(copy.avatar)+'" width="96" height="96"></div><div class="audit-profile-copy"><span class="audit-profile-eyebrow">'+esc(copy.privateProfile)+'</span><h1>'+esc(name||copy.complete)+'</h1><p>'+esc(email||copy.signIn)+'</p><div class="audit-profile-badges"><span>'+icon('lock')+(locked?esc(copy.protected):esc(copy.setup))+'</span><span>'+icon('globe')+esc(copy.sync)+'</span></div></div>';
     window.renderUserAvatar?.();
     const save=$('#save-profile-btn');if(save)save.hidden=locked;
     const core=$('.core-identity-card');if(core)core.classList.toggle('is-locked',locked);

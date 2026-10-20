@@ -57,8 +57,8 @@ function qsa(s,r=document){return Array.from(r.querySelectorAll(s))}
 function safeClick(target){try{target?.click?.()}catch(_){}}
 function countryName(){try{return String(localStorage.getItem('match_user_country')||'').trim()}catch(_){return''}}
 function syncHeaderAuth(){
- const profile=qs('#profile-link-tab');
- const signed=!!(profile&&getComputedStyle(profile).display!=='none'&&profile.getAttribute('aria-hidden')!=='true');
+ // Account state is independent of an optional provider photo.
+ const signed=window.isUserLoggedIn===true;
  document.body.classList.toggle('ma-guest',!signed);
  document.body.classList.toggle('ma-signed-in',signed);
  const logout=qs('#nav-logout-btn');
@@ -335,7 +335,7 @@ function mountHome(){
  tabs.append(bm,ba);concierge.append(tabs,pm,pa);hero.after(concierge);pm.appendChild(form);pa.appendChild(search);
  buildQuick(form);
  const fine=qs('.match-more-filters',form);if(fine&&!qs('.ma-fine-link',fine)){
-   const a=el('a','ma-fine-link','Exclusions & “not like this” settings →');a.href='/profile/profile.html';fine.appendChild(a)
+   const a=el('a','ma-fine-link',window.t?.('filters.exclusions',langKey())||'Exclusions & “not like this” settings →');a.setAttribute('data-i18n','filters.exclusions');a.href='/profile/profile.html';fine.appendChild(a)
  }
  const submit=qs('button[data-i18n="q.submit"]',form);if(submit){submit.textContent=t.find;submit.classList.add('ma-primary')}
  if(!qs('.ma-together-link',pm)){const a=el('a','ma-together-link',t.together);a.href='/together.html';pm.appendChild(a)}

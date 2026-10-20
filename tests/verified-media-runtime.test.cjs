@@ -141,13 +141,14 @@ test('verified ebook cover sources overlap network work while preserving trusted
  assert(start>=0&&end>start);
  const starts=[],shown=[],resolve={};
  const ctx=vm.createContext({
+  prepareBookArtwork:()=>{},hasUsableCover:()=>false,
   sourceCover:(_book,name)=>{starts.push(name);return new Promise(r=>{resolve[name]=r})},
   showSourceCover:async(_img,_fall,url)=>{shown.push(url);return true},
   window:{MatchAppBookCoverIdentity:{}}
  });
  const hydrate=vm.runInContext(source.slice(start,end)+';hydrateCover',ctx);
  const work=hydrate({title:'Exact Book',author:'Exact Author'},{hidden:false},{hidden:false},null);
- await Promise.resolve();
+ for(let i=0;i<4;i++)await Promise.resolve();
  assert.deepEqual(starts,['openlibrary','google','apple']);
  resolve.google('google-exact');resolve.apple('apple-exact');
  await Promise.resolve();

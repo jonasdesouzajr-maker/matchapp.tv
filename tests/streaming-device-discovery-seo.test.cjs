@@ -81,7 +81,9 @@ test('new route is linked and survives future sitemap regeneration',()=>{
 test('dedicated guide keeps responsive UI scoped and original ads untouched',()=>{
  const {window}=dom(),d=window.document;
  assert.ok(d.querySelector('#sd-article'));
- const css=d.querySelector('style').textContent;
+ const contentStyle=d.querySelector('style:not([data-cinema-layer])');
+ assert.ok(contentStyle,'the dedicated guide retains its authored presentation stylesheet');
+ const css=contentStyle.textContent;
  assert.match(css,/#sd-article \.card/);
  assert.match(css,/#sd-article \.panel/);
  assert.match(css,/@media\(max-width:520px\)/);

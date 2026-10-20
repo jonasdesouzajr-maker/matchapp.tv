@@ -26,7 +26,7 @@ function fixture({status='ready',locked=false,lang='en'}={}){
   '<input id="profile-preference" type="checkbox"><input id="profile-consent" type="checkbox">'+
   '</section><section id="locked-info-card" style="display:none">'+
   ['name','country','region','dob','sign','age','sign-trait'].map(name=>'<span id="lock-val-'+name+'"></span>').join('')+
-  '</section><button id="save-profile-btn" hidden></button><p id="profile-instructions-text"></p><span id="avatar-change-badge"></span>'+
+  '</section><button id="save-profile-btn" hidden></button><p id="profile-instructions-text"></p>'+
   '</body></html>',{url:'https://matchapp.tv/profile/profile.html',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole});
  const w=dom.window;
  const saved={match_lang:lang,match_profile_locked:String(locked),match_user_name:'Saved person',match_user_country:'Brazil',match_user_dob:'01/01/1984',match_user_sign:'Aries',match_user_region:'SP',match_user_age:'42',match_owned_wallet_test:JSON.stringify({match:10,ask:10})};
@@ -154,7 +154,9 @@ test('ready locked language repaint preserves the permanent lock and paints save
  assert.equal(save.disabled,true);assert.equal(save.hidden,false);assert.notEqual(save.onclick,w.saveProfileData);
  assert.equal(save.getAttribute('data-i18n'),'identity.locked');
  assert.equal(save.innerText,'pt-BR:identity.locked');
- assert.equal(w.document.getElementById('avatar-change-badge').innerText,'pt-BR:identity.avatarEditable');
+ assert.equal(w.document.getElementById('avatar-change-badge'),null,'retired avatar-edit badge stays absent');
+ assert.doesNotMatch(actual,/identity\.avatarEditable|handleAvatar|renderAvatarPicker|choosePresetAvatar/,'identity repaint has no avatar editor label or handler');
+ assert.doesNotMatch(read('profile/profile.html'),/id=["'](?:avatar-change-badge|avatar-studio|profile-pic-preview)["']|avatar-builder\.js|avatar-studio\.css/,'actual Profile has no avatar chooser entry point');
  save.click();assert.equal(f.calls.saved,0);assert.equal(f.calls.email,1);
  assert.deepEqual(f.snapshot(),before);assert.deepEqual(f.calls.writes,[]);assert.deepEqual(f.calls.requests,[]);assert.deepEqual(f.errors,[]);
 });

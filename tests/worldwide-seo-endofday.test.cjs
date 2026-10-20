@@ -3,23 +3,53 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const {execFileSync}=require('node:child_process');
+const vm=require('node:vm');
+const {createRequire}=require('node:module');
+const {JSDOM}=require('jsdom');
+const {cinemaAssets}=require('../tools/finalize-brand.js');
 const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const page='guides/worldwide-entertainment-discovery/index.html';
 const url='https://matchapp.tv/guides/worldwide-entertainment-discovery/';
 const supported=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 
+function renderGuide(){
+ const filename=path.join(root,'tools/build-world-discovery-guide.js'),target=path.join(root,page),writes=[];
+ const requireFromGenerator=createRequire(filename);
+ vm.runInNewContext(read('tools/build-world-discovery-guide.js'),{
+  __dirname:path.dirname(filename),console:{log(){}},
+  require(name){
+   if(name==='node:fs')return {
+    mkdirSync(dir){assert.equal(dir,path.dirname(target));},
+    writeFileSync(file,html,encoding){assert.equal(file,target);assert.equal(encoding,'utf8');writes.push(html);}
+   };
+   return requireFromGenerator(name);
+  },
+  fetch(){throw Error('Guide generation must not request sources in this fixture');}
+ });
+ assert.equal(writes.length,1,'capture the sole generated document without writing to the repository');
+ return writes[0];
+}
+
 test('global discovery guide regenerates deterministically with all actual interface languages',()=>{
  const before=read(page);
- execFileSync(process.execPath,['tools/build-world-discovery-guide.js'],{cwd:root,stdio:'pipe'});
- const after=read(page);
- assert.equal(after.replace(/\r\n/g,'\n'),before.replace(/\r\n/g,'\n'),'Generated global guide must be committed exactly as produced');
+ const after=renderGuide();
+ assert.equal(renderGuide(),after,'identical source data produces identical documents');
+ assert.equal(read(page),before,'the offline generator fixture never changes committed content');
+ const expected=new JSDOM(cinemaAssets(before,page)),actual=new JSDOM(after);
+ try{
+  const a=actual.window.document,e=expected.window.document;
+  assert.equal(a.body.outerHTML,e.body.outerHTML,'all committed source copy, paths, title data and scripts remain exact');
+  assert.deepEqual([...a.head.children].map(node=>node.outerHTML),[...e.head.children].map(node=>node.outerHTML),'metadata and source assets remain exact after shared presentation normalization');
+  assert.equal(a.documentElement.className,'ma-reference');
+  for(const selector of ['style[data-cinema-layer]','link[href^="/patches/reference-system.css?"]','link[href^="/patches/reference-pages.css?"]','script[defer][src^="/patches/reference-system.js?"]'])assert.equal(a.querySelectorAll(selector).length,1);
+  assert.equal(new URL(a.querySelector('link[href^="/brand.css"]').href,'https://matchapp.tv').searchParams.get('frame'),'20261020-borderless1');
+ }finally{expected.window.close();actual.window.close();}
  for(const lang of supported){
   assert(after.includes('lang="'+lang+'"'),lang+' language section is absent');
   assert(after.includes('/?lang='+lang),'Supported language preference link missing: '+lang);
  }
- assert.match(after,/<html lang="en">/);
+ assert.match(after,/<html class="ma-reference" lang="en">/);
  assert.equal((after.match(/class="lang-card"/g)||[]).length,14);
  assert.match(after,/<section class="lang-card" id="lang-ar" lang="ar" dir="rtl">/);
 });

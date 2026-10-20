@@ -62,7 +62,8 @@ test('Home and Explore guide entry points reach the same premium route',()=>{
  assert.match(read('matchapp-ia.js'),/location\.href='\/how-it-works\.html'/);
  assert.match(read('explore.html'),/href="\/how-it-works\.html"/);
  const explore=new JSDOM(read('explore.html')).window.document;
- assert.equal(explore.querySelectorAll('#how-it-works a[href="/how-it-works.html"]').length,1);
+ assert.equal(explore.querySelectorAll('.ref-secondary-topics a[href="/how-it-works.html"]').length,1);
+ assert.ok(explore.querySelector('.ref-secondary-topics a[href="/how-it-works.html"] [data-i18n="how.title"]'));
  assert.equal(explore.querySelectorAll('#how-it-works ol').length,0);
 
  assert.match(read('patches/home-watch-focus.js'),/'#how-it-works':'\/how-it-works\.html'/);

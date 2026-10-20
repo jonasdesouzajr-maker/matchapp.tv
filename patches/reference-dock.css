@@ -1,0 +1,118 @@
+/* MatchApp original jewel dock: the existing five anchors remain the controls. */
+@layer ma-reference {
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-cinema-dock.ma-reference-dock {
+ --dock-glass:color-mix(in srgb,var(--cinema-surface) 89%,transparent);
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;align-items:stretch!important;gap:2px!important;
+ left:max(6px,env(safe-area-inset-left))!important;right:max(6px,env(safe-area-inset-right))!important;bottom:max(6px,env(safe-area-inset-bottom))!important;
+ width:auto!important;max-width:740px!important;margin-inline:auto!important;min-height:76px!important;height:auto!important;
+ padding:8px 5px 6px!important;border:1px solid color-mix(in srgb,var(--cinema-gold) 26%,transparent)!important;border-radius:24px!important;
+ background:linear-gradient(160deg,color-mix(in srgb,var(--cinema-gold) 5%,transparent),transparent 45%),var(--dock-glass)!important;
+ box-shadow:inset 0 1px 0 color-mix(in srgb,var(--cinema-text) 10%,transparent),inset 0 -1px 0 #0003,0 8px 30px #0005!important;
+ backdrop-filter:blur(24px) saturate(145%)!important;-webkit-backdrop-filter:blur(24px) saturate(145%)!important;
+ isolation:isolate!important;overflow:visible!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) body.ma-has-cinema-dock:has(> nav.ma-reference-dock) {padding-bottom:max(calc(94px + env(safe-area-inset-bottom)),var(--ma-reference-dock-clearance,94px))!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock::before {
+ content:''!important;position:absolute!important;pointer-events:none!important;inset:0 20px auto!important;height:1px!important;border:0!important;
+ background:linear-gradient(90deg,transparent 5%,color-mix(in srgb,var(--cinema-gold) 45%,transparent) 45%,#fff5 50%,transparent 70%)!important;
+ opacity:.65;border-radius:100%!important;animation:maDockGlint 13s ease-in-out 3s infinite!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination] {
+ position:relative!important;isolation:isolate!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;
+ gap:4px!important;min-width:0!important;max-width:100%!important;min-height:58px!important;height:auto!important;margin:0!important;padding:1px 1px 4px!important;
+ border:0!important;border-radius:16px!important;background:transparent!important;box-shadow:none!important;text-decoration:none!important;
+ color:var(--cinema-text)!important;font-size:.73rem!important;line-height:1.2!important;text-align:center!important;
+ -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='home'] {--dock-jewel:#edc071;--dock-deep:#9a6e29;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='explore'] {--dock-jewel:#82d5c5;--dock-deep:#258d83;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='matches'] {--dock-jewel:#c1a1f2;--dock-deep:#8255bd;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='mylist'] {--dock-jewel:#e8a6bd;--dock-deep:#ae587a;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='profile'] {--dock-jewel:#9dc9eb;--dock-deep:#4b8ebe;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy)[data-theme='sunrise'] nav.ma-reference-dock a[data-ma-dock-destination] {--dock-jewel:var(--dock-deep)!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination]::before {
+ content:''!important;position:absolute!important;z-index:-1!important;inset:0 1px 1px!important;pointer-events:none!important;border:0!important;border-radius:16px!important;
+ background:radial-gradient(ellipse at 50% 22%,color-mix(in srgb,var(--dock-jewel) 16%,transparent),transparent 73%)!important;
+ opacity:0!important;transition:opacity .22s ease!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination]::after {
+ content:''!important;position:absolute!important;pointer-events:none!important;bottom:-1px!important;left:50%!important;width:18px!important;height:2px!important;margin:0!important;
+ border-radius:4px!important;background:var(--dock-jewel)!important;box-shadow:0 0 9px color-mix(in srgb,var(--dock-jewel) 55%,transparent)!important;
+ opacity:0!important;transform:translateX(-50%) scaleX(.4)!important;transition:opacity .18s ease,transform .25s cubic-bezier(.2,.9,.25,1.3)!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a.is-active::before {opacity:1!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a.is-active::after {opacity:1!important;transform:translateX(-50%) scaleX(1)!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-symbol {
+ position:relative!important;display:grid!important;place-items:center!important;flex:0 0 34px!important;width:42px!important;height:34px!important;min-width:0!important;padding:0!important;margin:0!important;
+ border:0!important;border-radius:13px!important;background:transparent!important;color:var(--dock-jewel)!important;
+ transition:transform .28s cubic-bezier(.2,.8,.2,1.35),filter .25s ease!important;transform:translateY(0)!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock svg.ma-dock-icon {
+ display:block!important;width:26px!important;height:26px!important;flex:0 0 26px!important;margin:0!important;fill:none!important;stroke:currentColor!important;color:inherit!important;
+ filter:drop-shadow(0 1px 2px #0004)!important;transform:none!important;transition:none!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-facet {fill:color-mix(in srgb,var(--dock-jewel) 12%,transparent)!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock :is(.ma-dock-core,.ma-dock-play) {fill:var(--dock-jewel)!important;stroke-width:.8!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-cut {opacity:.6!important;stroke-width:1.2!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-orbit {opacity:.6!important;stroke-width:1.1!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a.is-active .ma-dock-symbol {filter:drop-shadow(0 0 7px color-mix(in srgb,var(--dock-jewel) 34%,transparent))!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='matches'] .ma-dock-symbol {
+ transform:translateY(-7px)!important;width:43px!important;height:34px!important;border:1px solid color-mix(in srgb,var(--dock-jewel) 46%,transparent)!important;border-radius:15px!important;
+ background:linear-gradient(145deg,color-mix(in srgb,var(--dock-jewel) 23%,var(--cinema-panel)),var(--cinema-surface))!important;
+ box-shadow:inset 0 1px 0 #fff3,0 3px 8px #0004!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a > [data-cinema-copy] {
+ display:inline-block!important;flex:0 1 auto!important;box-sizing:border-box!important;min-width:0!important;width:fit-content!important;max-width:100%!important;height:auto!important;
+ padding:2px 5px!important;margin:0!important;border:0!important;border-radius:9px!important;
+ background:color-mix(in srgb,var(--cinema-panel) 94%,var(--dock-jewel) 6%)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--dock-jewel) 12%,transparent)!important;
+ color:var(--cinema-text)!important;font:inherit!important;line-height:1.2!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;opacity:.82!important;
+ transition:box-shadow .2s ease,opacity .2s ease!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a.is-active > [data-cinema-copy] {opacity:1!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--dock-jewel) 42%,transparent)!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-symbol::after {
+ content:''!important;position:absolute!important;inset:0!important;border:1px solid var(--dock-jewel)!important;border-radius:50%!important;opacity:0;pointer-events:none!important;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-particle {
+ position:absolute!important;display:block!important;pointer-events:none!important;left:50%!important;top:50%!important;width:3px!important;height:3px!important;border-radius:50%!important;
+ background:var(--dock-jewel)!important;box-shadow:0 0 5px var(--dock-jewel)!important;opacity:0;--spark-x:0px;--spark-y:-22px;
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-particle-a {--spark-x:-20px;--spark-y:-14px;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-particle-b {--spark-x:18px;--spark-y:-19px;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock .ma-dock-particle-c {--spark-x:2px;--spark-y:-27px;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a.ma-dock-activated .ma-dock-symbol::after {animation:maDockBloom .5s ease-out both!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a.ma-dock-activated .ma-dock-particle {animation:maDockSpark .48s cubic-bezier(.1,.7,.3,1) both!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a:active .ma-dock-symbol {transform:translateY(1px) scale(.91)!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='matches']:active .ma-dock-symbol {transform:translateY(-5px) scale(.91)!important;}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a:focus-visible {outline:2px solid var(--dock-jewel)!important;outline-offset:0!important;}
+@media(hover:hover) and (pointer:fine) {
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a:hover::before {opacity:.7!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a:hover .ma-dock-symbol {transform:translateY(-2px)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination='matches']:hover .ma-dock-symbol {transform:translateY(-9px)!important;}
+}
+@media(min-width:1100px) {
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-cinema-dock.ma-reference-dock {bottom:14px!important;padding-inline:16px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination] {font-size:.78rem!important;}
+}
+@media(max-width:359px) {
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a[data-ma-dock-destination] {font-size:.68rem!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a > [data-cinema-copy] {padding-inline:3px!important;}
+}
+html.ma-reference.reduce-motion:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock *,
+html.ma-reference.reduce-motion:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock *::after,
+html.ma-reference.reduce-motion:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock::before {animation:none!important;transition:none!important;}
+@media(prefers-reduced-motion:reduce) {
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock *,
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock *::after,
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock::before {animation:none!important;transition:none!important;}
+}
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock[data-ma-dock-paused='true']::before {animation-play-state:paused!important;}
+@media(forced-colors:active) {
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock {border:1px solid CanvasText!important;background:Canvas!important;box-shadow:none!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock :is(svg.ma-dock-icon,a > [data-cinema-copy]) {color:CanvasText!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock a.is-active {outline:2px solid Highlight!important;}
+}
+@media print {html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) nav.ma-reference-dock {display:none!important;}}
+}
+@keyframes maDockGlint {0%,72%,100%{opacity:.35;transform:scaleX(.94)}80%{opacity:.85;transform:scaleX(1)}}
+@keyframes maDockBloom {0%{opacity:.65;transform:scale(.55)}100%{opacity:0;transform:scale(1.65)}}
+@keyframes maDockSpark {0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}12%{opacity:.9}100%{opacity:0;transform:translate(calc(-50% + var(--spark-x)),calc(-50% + var(--spark-y))) scale(.2)}}

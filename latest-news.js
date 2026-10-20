@@ -21,7 +21,8 @@
     const raw=String(value||'');
     if(!raw.includes('&'))return raw;
     const el=document.createElement('textarea');
-    el.innerHTML=raw;
+    // Preserve entity decoding while keeping literal source markup inert.
+    el.innerHTML=raw.replace(/</g,'&lt;');
     return el.value.replace(/\s+/g,' ').trim();
   }
   function domainOf(u){try{return new URL(u,location.origin).hostname.toLowerCase().replace(/^www\./,'');}catch(_){return'';}}
@@ -214,9 +215,12 @@
     items.forEach(({item,scope})=>{const c=card(item,scope);c.setAttribute('role','listitem');trackEl.append(c);});
 
     let autoTimer=0;
-    let paused=false;
+    let hoverHeld=false;
+    let touchHeld=false;
     let inView=false;
-    const reduced=()=>window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionQuery=window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    const reduced=()=>document.documentElement.classList.contains('reduce-motion')||!!motionQuery?.matches;
+    const paused=()=>hoverHeld||touchHeld||wrap.contains(document.activeElement);
     const step=()=>{const first=trackEl.querySelector('.ma-news-card');return first?first.getBoundingClientRect().width+8:168;};
     const maxScroll=()=>Math.max(0,trackEl.scrollWidth-trackEl.clientWidth);
     const updateArrows=()=>{
@@ -235,17 +239,16 @@
     const stopAuto=()=>{if(autoTimer){clearTimeout(autoTimer);autoTimer=0;}};
     const scheduleAuto=(delay=AUTO_MS)=>{
       stopAuto();
-      if(paused||!inView||document.hidden||reduced()||items.length<2)return;
+      if(paused()||!inView||document.hidden||reduced()||items.length<2)return;
       autoTimer=window.setTimeout(()=>{
         autoTimer=0;
-        if(paused||!inView||document.hidden)return;
+        if(paused()||!inView||document.hidden||reduced())return;
         if(trackEl.scrollLeft>=maxScroll()-2)trackEl.scrollTo({left:0,behavior:'smooth'});
         else move(1);
         scheduleAuto(AUTO_MS);
       },delay);
     };
-    const pause=()=>{paused=true;stopAuto();};
-    const resume=()=>{paused=false;scheduleAuto(AUTO_FIRST_MS);};
+    const resume=()=>scheduleAuto(AUTO_FIRST_MS);
 
     prev.addEventListener('click',()=>{move(-1);scheduleAuto(AUTO_FIRST_MS);});
     next.addEventListener('click',()=>{move(1);scheduleAuto(AUTO_FIRST_MS);});
@@ -254,12 +257,14 @@
       if(e.key==='ArrowLeft'){e.preventDefault();move(-1);}
       if(e.key==='ArrowRight'){e.preventDefault();move(1);}
     });
-    wrap.addEventListener('mouseenter',pause);
-    wrap.addEventListener('mouseleave',resume);
-    wrap.addEventListener('focusin',pause);
-    wrap.addEventListener('focusout',e=>{if(!wrap.contains(e.relatedTarget))resume();});
-    wrap.addEventListener('touchstart',pause,{passive:true});
-    wrap.addEventListener('touchend',()=>{paused=false;scheduleAuto(AUTO_FIRST_MS);},{passive:true});
+    wrap.addEventListener('mouseenter',()=>{hoverHeld=true;stopAuto();});
+    wrap.addEventListener('mouseleave',()=>{hoverHeld=false;resume();});
+    wrap.addEventListener('focusin',stopAuto);
+    wrap.addEventListener('focusout',e=>{if(!wrap.contains(e.relatedTarget))window.setTimeout(resume,0);});
+    wrap.addEventListener('touchstart',()=>{touchHeld=true;stopAuto();},{passive:true});
+    ['touchend','touchcancel'].forEach(type=>wrap.addEventListener(type,()=>{touchHeld=false;resume();},{passive:true}));
+    motionQuery?.addEventListener?.('change',resume);
+    document.addEventListener('matchapp:settingschanged',e=>{if(!e.detail?.key||['reduceMotion','*'].includes(e.detail.key))resume();});
     document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto();else scheduleAuto(AUTO_FIRST_MS);});
     if('IntersectionObserver' in window){
       const io=new IntersectionObserver(entries=>{

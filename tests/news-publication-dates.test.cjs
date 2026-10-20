@@ -25,6 +25,7 @@ async function publish(rows){
     require(name){
       if(name==='node:fs')return filesystem;
       if(name==='../news-monetization.js')return {eligibleArticle:()=>false,offers:[],offersMarkup:()=>''};
+      if(name==='./finalize-brand.js')return require('../tools/finalize-brand.js');
       assert.ok(['node:path','node:crypto'].includes(name));return require(name);
     }
   });

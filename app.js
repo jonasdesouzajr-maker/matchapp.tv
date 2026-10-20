@@ -1794,6 +1794,12 @@ window.eventMatch = function (query) {
     }
 
     function init(vp) {
+        // Local cinematic draft delegates Top Titles to one native-scroll owner.
+        // The settled legacy controller remains the fallback for other designs.
+        if (vp?.id === 'marquee-viewport' && document.documentElement.classList.contains('ma-reference') && window.MatchTopTitlesDraft?.mount) {
+            window.MatchTopTitlesDraft.mount(vp);
+            return;
+        }
         if (!vp || vp.dataset.railReady === '1') return;
         vp.dataset.railReady = '1';
         vp.tabIndex = vp.tabIndex >= 0 ? vp.tabIndex : 0;
@@ -2666,6 +2672,7 @@ function setProfileLoadState(status,userId) {
 async function hydrateProfileFromAuth(user) {
     const hydrationEpoch = ++profileHydrationEpoch;
     if (!supabaseClient || !user) return;
+    window.MatchAppAccountPhoto?.setUser(user);
     setProfileLoadState('loading',user.id);
     try {
         const previousOwner = localStorage.getItem('match_portfolio_owner');
@@ -2677,7 +2684,6 @@ async function hydrateProfileFromAuth(user) {
         localStorage.setItem('match_portfolio_owner',user.id);
         const meta = user.user_metadata || {};
         const googleName = meta.full_name || meta.name || '';
-        const googleAvatar = meta.avatar_url || meta.picture || '';
 
         // RESTORE PORTFOLIO + NOTES FROM THE ACCOUNT.
         // syncListsToDatabase() has always WRITTEN these to user metadata, but
@@ -2774,7 +2780,6 @@ async function hydrateProfileFromAuth(user) {
 
         const patch = {};
         if (googleName && !(existing && existing.full_name)) patch.full_name = googleName;
-        if (googleAvatar && !(existing && existing.avatar_url)) patch.avatar_url = googleAvatar;
 
         if (Object.keys(patch).length) {
             // upsert, not update: update() matches zero rows and succeeds
@@ -2796,7 +2801,9 @@ async function hydrateProfileFromAuth(user) {
         if (merged.dob)       localStorage.setItem('match_user_dob', merged.dob);
         if (merged.star_sign) localStorage.setItem('match_user_sign', merged.star_sign);
         if (merged.age != null) localStorage.setItem('match_user_age', String(merged.age));
-        if (merged.avatar_url) localStorage.setItem('match_user_avatar', merged.avatar_url);
+        // Account-photo rendering comes from the current sign-in identity.
+        // Legacy profile/custom avatar values are never a display fallback.
+        localStorage.removeItem('match_user_avatar');
         if (merged.nickname)  localStorage.setItem('match_user_nickname', merged.nickname);
         if (user.email) localStorage.setItem('match_user_email', user.email);
 
@@ -2894,7 +2901,9 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
             const profTab = document.getElementById('profile-link-tab');
             if (regBtn) regBtn.style.display = 'none';
             if (outBtn) outBtn.style.display = 'inline-block';
-            if (profTab) profTab.style.display = 'inline-flex';
+            // Photo visibility belongs to the verified provider-photo renderer.
+            if (profTab) profTab.style.display = 'none';
+            window.MatchAppAccountPhoto?.setUser(session.user);
             // Pull Google's data into our own profile row, then refresh quota
             // (which now depends on whether that profile is complete).
             // Auth callbacks run under the SDK's session lock. Defer API calls
@@ -2917,6 +2926,7 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
             }, 0);
         } else {
             ++profileHydrationEpoch;
+            window.MatchAppAccountPhoto?.clear();
             setProfileLoadState('signedout',null);
             isUserLoggedIn = false;
             window.isUserLoggedIn = false;
@@ -4939,7 +4949,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         if (loadBox) loadBox.style.display='none';
         if (typeof window.goToQuestionnaire === 'function') window.goToQuestionnaire();
         else if (qBox) qBox.style.display='block';
-        window.showToast(!matchResult && isSpecificSearch ? "Couldn't verify this title. No Match was used." : tSafe('polish.inHistory'));
+        window.showToast(!matchResult && isSpecificSearch ? tSafe('match.titleUnverified', "Couldn't verify this title. No Match was used.") : tSafe('polish.inHistory'));
         return;
     }
     // A refresh is only a snapshot. Reserve the complete identity atomically
@@ -5282,11 +5292,36 @@ async function renderResult(selected, isSpecificSearch) {
         firstPoster.dataset.matchappMediaTitle = selected.title;
         firstPoster.alt = selected.title + ' cover';
         firstPoster.loading = 'eager';
-        const firstCover = exactSpotifyPlaylistCover(selected) || generatedCover(selected.title, selected);
+        firstPoster.fetchPriority = 'high';
+        firstPoster.decoding = 'async';
+        const firstFallback = generatedCover(selected.title, selected);
+        // The selected source already owns this artwork. Request it before
+        // optional synopsis/provider enrichment rather than briefly replacing
+        // a verified original with a generated cover.
+        const sourceArtwork = String(selected._meta?.artwork || '');
+        const initialPinnedId = Number(selected._tmdbId || selected._meta?.tmdbId);
+        const initialPinned = Number.isSafeInteger(initialPinnedId) && initialPinnedId > 0 &&
+            ['movie', 'tv'].includes(selected._tmdbKind || selected._meta?.kind);
+        const firstKnownCover = !initialPinned && selected.source !== 'itunes-live'
+            ? getVerifiedPoster(selected.title) : '';
+        const firstCover = exactSpotifyPlaylistCover(selected) ||
+            (/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com|i\.scdn\.co|http2\.mlstatic\.com)\//i.test(sourceArtwork)
+                ? sourceArtwork : firstKnownCover || firstFallback);
+        if (firstPoster.__matchappInitialPosterLoad)
+            firstPoster.removeEventListener('load', firstPoster.__matchappInitialPosterLoad);
+        const firstLoaded = () => {
+            if (!currentRender() || window.globalMatchTitle !== selected.title ||
+                firstPoster.src !== firstCover || !firstPoster.naturalWidth) return;
+            window.setLoadedMatchPoster?.(firstCover, selected.title);
+        };
+        firstPoster.__matchappInitialPosterLoad = firstLoaded;
+        firstPoster.addEventListener('load', firstLoaded, { once: true });
+        firstPoster.removeAttribute('srcset');
         firstPoster.src = firstCover;
         firstPoster.style.display = 'block';
-        globalMatchPoster = firstCover;
-        window.globalMatchPoster = firstCover;
+        globalMatchPoster = firstFallback;
+        window.globalMatchPoster = firstFallback;
+        if (firstPoster.complete && firstPoster.naturalWidth) firstLoaded();
     }
     delete resultBox.dataset.resultClosing;
     resultBox.classList.remove('ma-result-closing', 'ma-result-arriving');
@@ -5881,7 +5916,9 @@ window.notForMeBlockCategories = function() {
 window.recordAction = async function(type) {
     if (!globalMatchTitle) return;
     if (!isUserLoggedIn && type !== 'dislike') {
-        alert("💎 Join for FREE!\n\nTo save titles to your Portfolio, please create a free account.");
+        const message = "💎 Join for FREE!\n\nTo save titles to your Portfolio, please create a free account.";
+        if (typeof window.MatchAppDialogs?.alert === 'function') await window.MatchAppDialogs.alert(message);
+        else window.alert(message);
         window.openAuthModal();
         return;
     }

@@ -493,12 +493,13 @@
     return rows;
   }
 
-  // Adults only: exact-title poster recovery for Top Titles and the match result.
+  // Adults only: exact-title poster recovery for Top Titles, results and saved visual titles.
   // Retry the same TMDB artwork at different image sizes before attempting a
   // different image. Only metadata already bound to this exact title can add
   // another artwork identity; this never searches for unrelated artwork.
   function adultPosterSurface(img){
-    return !!(img && (img.id==='res-poster-img'||img.closest?.('#marquee-track')));
+    return !!(img && (img.id==='res-poster-img'||img.closest?.('#marquee-track')||
+      img.dataset?.portfolioPoster==='1'||img.dataset?.watchPoster==='1'));
   }
   function posterVariants(url){
     const safe=String(url||'');
@@ -536,22 +537,37 @@
     return normalise(row.title)===normalise(state.title)||(state.tmdbId>0&&found===state.tmdbId);
   }
   const ADULT_IMAGE_PROBES=new Map();
-  function posterImageLoads(url){
+  const ADULT_IMAGE_QUEUE=[],ADULT_IMAGE_PRIORITY=[];
+  let adultImageActive=0;
+  function drainAdultImageProbes(){
+    while(adultImageActive<6&&(ADULT_IMAGE_PRIORITY.length||ADULT_IMAGE_QUEUE.length)){
+      const start=(ADULT_IMAGE_PRIORITY.length?ADULT_IMAGE_PRIORITY:ADULT_IMAGE_QUEUE).shift();
+      adultImageActive++;
+      start();
+    }
+  }
+  function posterImageLoads(url,priority=false){
     if(ADULT_IMAGE_PROBES.has(url))return ADULT_IMAGE_PROBES.get(url);
     const pending=new Promise(resolve=>{
-      const probe=new Image();
-      let done=false;
-      const finish=valid=>{
-        if(done)return;
-        done=true;clearTimeout(timeout);
-        probe.onload=null;probe.onerror=null;
-        resolve(valid);
+      const start=()=>{
+        const probe=new Image();
+        let done=false,timeout;
+        const finish=valid=>{
+          if(done)return;
+          done=true;clearTimeout(timeout);
+          probe.onload=null;probe.onerror=null;
+          adultImageActive--;
+          resolve(valid);
+          drainAdultImageProbes();
+        };
+        // Stalled mobile images must release their bounded verification lane.
+        timeout=setTimeout(()=>finish(false),6500);
+        probe.onload=()=>finish(probe.naturalWidth!==0);
+        probe.onerror=()=>finish(false);
+        try{probe.src=url;}catch(_){finish(false);}
       };
-      // Some mobile browsers leave stalled images pending without an error.
-      const timeout=setTimeout(()=>finish(false),6500);
-      probe.onload=()=>finish(probe.naturalWidth!==0);
-      probe.onerror=()=>finish(false);
-      probe.src=url;
+      (priority?ADULT_IMAGE_PRIORITY:ADULT_IMAGE_QUEUE).push(start);
+      drainAdultImageProbes();
     });
     ADULT_IMAGE_PROBES.set(url,pending);
     pending.then(valid=>{
@@ -568,15 +584,22 @@
     // Alternate TMDB sizes share the same exact source artwork. Race the
     // verified sizes without letting a stalled first size block the card.
     const firstVerified=urls=>new Promise(resolve=>{
-      let remaining=urls.length,settled=false;
+      // Two alternate sizes per identity are enough to bypass one stalled
+      // rendition. Prefer a compact companion to the requested original.
+      const compact=urls.find(url=>(state.isRail||state.isPortfolio? /\/w342\// : /\/w500\//).test(url));
+      urls=[...new Set([urls[0],compact,...urls].filter(Boolean))];
+      let remaining=urls.length,settled=false,next=0;
       if(!remaining){resolve('');return;}
-      urls.forEach(async url=>{
-        let valid=false;
-        try{valid=await posterImageLoads(url);}catch(_){}
-        if(valid){if(!settled){settled=true;resolve(url);}return;}
-        state.failed.add(url);
-        if(--remaining===0&&!settled)resolve('');
-      });
+      const worker=async()=>{
+        while(!settled&&next<urls.length){
+          const url=urls[next++];let valid=false;
+          try{valid=await posterImageLoads(url,!state.isRail);}catch(_){}
+          if(valid){if(!settled){settled=true;resolve(url);}return;}
+          state.failed.add(url);
+          if(--remaining===0&&!settled)resolve('');
+        }
+      };
+      for(let i=0;i<Math.min(2,urls.length);i++)void worker();
     });
     const attempt=async()=>{
       const candidates=exactPosterCandidates(state).filter(url=>!state.failed.has(url));
@@ -595,6 +618,7 @@
       if(!winner)return false;
       if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
       img.dataset.matchappFallbackStage='verified';
+      img.removeAttribute?.('srcset');
       img.src=winner;
       if(img.id==='res-poster-img'&&window.globalMatchTitle===title){
         if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(winner,title);
@@ -656,14 +680,17 @@
       return;
     }
     const isRail=!!img.closest?.('#marquee-track');
-    const currentIdentity=!isRail&&window.currentMatchIdentity&&
+    const isPortfolio=img.dataset?.portfolioPoster==='1';
+    const isWatch=img.dataset?.watchPoster==='1';
+    const isTile=isRail||isPortfolio||isWatch;
+    const currentIdentity=!isTile&&window.currentMatchIdentity&&
       normalise(window.currentMatchIdentity.title)===normalise(name)
       ?window.currentMatchIdentity:{};
-    const rawId=isRail?img.dataset.tmdbId:currentIdentity.tmdbId||meta?.tmdb_id;
+    const rawId=isTile?img.dataset.tmdbId:currentIdentity.tmdbId||meta?.tmdb_id;
     const tmdbId=Number(rawId);
     const incomingId=Number.isSafeInteger(tmdbId)&&tmdbId>0?tmdbId:0;
-    const incomingKind=isRail?img.dataset.tmdbKind:currentIdentity.kind||meta?.media_kind;
-    const generation=isRail?0:Number(window.__matchappMatchRunId)||0;
+    const incomingKind=isTile?img.dataset.tmdbKind:currentIdentity.kind||meta?.media_kind;
+    const generation=isTile?0:Number(window.__matchappMatchRunId)||0;
     let state=img.__matchappAdultPoster;
     if(!state||state.title!==name||state.generation!==generation||
        (incomingId&&state.tmdbId!==incomingId)||
@@ -673,21 +700,25 @@
       img.__matchappAdultPoster=state;
     }
     state.isRail=isRail;
+    state.isPortfolio=isPortfolio;
     if(Number.isSafeInteger(tmdbId)&&tmdbId>0){
       state.tmdbId=tmdbId;
-      const kind=incomingKind;
-      if(['movie','tv'].includes(kind))state.kind=kind;
-      const year=Number(state.isRail?img.dataset.tmdbYear:currentIdentity.year||meta?.year);
-      if(Number.isSafeInteger(year)&&year>=1880&&year<=2200)state.year=year;
     }
+    if(['movie','tv'].includes(incomingKind))state.kind=incomingKind;
+    const year=Number(isTile?img.dataset.tmdbYear:currentIdentity.year||meta?.year);
+    if(Number.isSafeInteger(year)&&year>=1880&&year<=2200)state.year=year;
     const previousMeta=state.meta,previousPreferred=state.preferred;
     if(safeSameTitleMedia(meta,state))state.meta=meta;
     // Live TMDB discovery already supplied the exact numeric identity AND its
     // source artwork. Start that original on the very first result event,
     // without waiting for a title-only SQL search or delayed metadata chain.
-    const pinnedOriginal=!state.isRail&&state.tmdbId>0&&['movie','tv'].includes(state.kind)
+    const pinnedOriginal=!isTile&&state.tmdbId>0&&['movie','tv'].includes(state.kind)
       ? String(currentIdentity.artwork||''):'';
-    const eligiblePreferred=posterVariants(preferred).length?preferred:pinnedOriginal;
+    const savedOriginal=isPortfolio||isWatch?String(img.dataset.posterPreferredUrl||''):'';
+    const shownOriginal=String(img.currentSrc||img.src||'');
+    const eligiblePreferred=posterVariants(preferred).length?preferred:
+      posterVariants(savedOriginal).length?savedOriginal:
+      pinnedOriginal||(posterVariants(shownOriginal).length?shownOriginal:'');
     if(eligiblePreferred&&posterVariants(eligiblePreferred).length)state.preferred=eligiblePreferred;
     if(state.repairing&&(state.meta!==previousMeta||state.preferred!==previousPreferred))
       state.needsRepair=true;
@@ -702,6 +733,7 @@
         if(!String(img.src||'').startsWith('data:image/svg+xml')){
           img.dataset.matchappFallbackStage='local';
           const cover=localPoster(active.title);
+          img.removeAttribute?.('srcset');
           img.src=cover;
           if(img.id==='res-poster-img'&&window.globalMatchTitle===active.title){
             if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(cover,active.title);
@@ -712,7 +744,11 @@
       });
     }
     const current=String(img.currentSrc||img.src||'');
-    const originalLoaded=TRUSTED_POSTER.test(current)&&img.complete&&img.naturalWidth>0;
+    // A saved source may be an official publisher CDN outside the film CDN
+    // allowlist. Preserve healthy saved pixels; only exact trusted art repairs it.
+    const savedLoaded=isPortfolio&&/^https?:\/\//.test(current)&&
+      img.dataset.maFallback!=='1';
+    const originalLoaded=(TRUSTED_POSTER.test(current)||savedLoaded)&&img.complete&&img.naturalWidth>0;
     if(originalLoaded){
       const catalogOriginal=state.isRail&&state.meta&&
         (state.meta.poster_large_url||state.meta.poster_url||state.meta.poster_original_url);
@@ -732,6 +768,7 @@
           if(String(img.currentSrc||img.src||'')!==url)return;
           watching.failed.add(url);ADULT_IMAGE_PROBES.delete(url);
           img.dataset.matchappFallbackStage='local';
+          img.removeAttribute?.('srcset');
           img.src=localPoster(name);
           watching.watchingUrl='';
           void repairAdultPoster(img,watching);
@@ -743,6 +780,7 @@
     if(!String(img.src||'').startsWith('data:image/svg+xml')&&
        (!img.getAttribute('src')||(img.complete&&img.naturalWidth===0))){
       img.dataset.matchappFallbackStage='local';
+      img.removeAttribute?.('srcset');
       img.src=localPoster(name);
     }
     // Retry after reconnect instead of permanently remembering CDN outages.
@@ -1255,6 +1293,8 @@
   function hardenWithin(root){
     root?.querySelectorAll?.('img[data-title]:not([data-matchapp-media-hardened]),img[data-poster-title]:not([data-matchapp-media-hardened]),#res-poster-img:not([data-matchapp-media-hardened]),.kids-card img:not([data-matchapp-media-hardened])').forEach(img=>{
       const title=titleForImage(img);
+      // Saved music and reading editions keep their source-specific owners.
+      if(['audio','book'].includes(img.dataset?.posterSourceKind))return;
       if(adultPosterSurface(img))recoverAdultPoster(img,title);
       else hardenImage(img,title);
     });
@@ -1302,6 +1342,7 @@
       queueKidsEnrich();
     });
   }
-  window.MatchAppCatalogMedia=Object.freeze({localizeResultFacts,localizeResultLabels,resultFact,recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,resolveCountryCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({hardenWithin,localizeResultFacts,localizeResultLabels,resultFact,recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,resolveCountryCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  document.dispatchEvent(new Event('matchapp:catalog-media-ready'));
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

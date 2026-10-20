@@ -45,10 +45,81 @@ function loadCatalog() {
     return sandbox.C;
 }
 
+// Artwork is rendered from a dated exact-ID snapshot, never a fuzzy title search.
+// Keeping it in the document lets the browser request first-view art immediately.
+function loadWatchPosters() {
+    const file = path.join(ROOT, 'data', 'watch-poster-identities.json');
+    try {
+        const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+        return Array.isArray(data.entries) ? data.entries : [];
+    } catch (_) { return []; }
+}
+
+function watchPoster(info, records = loadWatchPosters()) {
+    const id = Number(info?.tmdbId), year = Number(info?.year);
+    if (!Number.isSafeInteger(id) || id <= 0 || !['movie', 'tv'].includes(info?.kind)) return null;
+    const record = records.find(row => Number(row.tmdbId) === id && row.kind === info.kind &&
+        (!year || Number(row.year) === year) && row.adult !== true);
+    const source = String(record?.poster || record?.posterLarge || record?.posterOriginal || '');
+    const match = /^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\/([A-Za-z0-9_.-]+)$/.exec(source);
+    if (!match) return null;
+    return { ...record, path: match[1] };
+}
+
+function watchPosterMarkup(title, info, records) {
+    const art = watchPoster(info, records);
+    if (!art) return '';
+    const base = 'https://image.tmdb.org/t/p/';
+    const renditions = [185, 342, 500, 780].map(width => `${base}w${width}/${art.path} ${width}w`).join(', ');
+    return `<figure class="w2w-title-art" data-watch-artwork>
+            <span class="w2w-title-art-fallback" aria-hidden="true">${esc(title)}</span>
+            <img data-watch-poster="1" data-poster-title="${esc(title)}" data-poster-preferred-url="${base}w342/${art.path}" data-tmdb-id="${Number(info.tmdbId)}" data-tmdb-kind="${esc(info.kind)}" data-tmdb-year="${Number(art.year) || Number(info.year) || ''}" src="${base}w342/${art.path}" srcset="${renditions}" sizes="(max-width:599px) 96px, (max-width:899px) 128px, 156px" alt="${esc(title)}" width="300" height="450" loading="eager" fetchpriority="high" decoding="async">
+        </figure>`;
+}
+
+const WATCH_POSTER_MEDIA = '<script defer src="/catalog-media.js?v=20260927-posterrecovery2&amp;posters=20261020-1"></script>';
+
+const WATCH_POSTER_STYLE = `<style data-watch-poster-layout>
+.w2w-hero:has(> .w2w-title-art){display:grid;grid-template-columns:156px minmax(0,1fr);column-gap:12px;row-gap:8px;align-items:center;text-align:start}
+.w2w-hero > .w2w-title-art{grid-column:1;grid-row:1 / span 2;align-self:start;position:relative;isolation:isolate;width:156px;aspect-ratio:2 / 3;margin:0;overflow:hidden;border-radius:10px;background:linear-gradient(145deg,#271631,#110c18);box-shadow:0 8px 24px #0004}
+.w2w-title-art > img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1}
+.w2w-title-art-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center;color:#e9c986;font:600 .85rem/1.4 system-ui,sans-serif;overflow-wrap:anywhere}
+.w2w-hero:has(> .w2w-title-art) > h1{grid-column:2;grid-row:1;margin:0}
+.w2w-hero:has(> .w2w-title-art) > p:first-of-type{grid-column:2;grid-row:2;margin:0}
+.w2w-hero:has(> .w2w-title-art) > :is(nav,p:not(:first-of-type)){grid-column:1 / -1}
+.w2w-hero:has(> .w2w-title-art) > .w2w-countries{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0}
+.w2w-hero:has(> .w2w-title-art) > .w2w-countries > a{justify-content:center;min-width:0;padding-inline:8px;text-align:center;overflow-wrap:anywhere}
+@media(max-width:899px){.w2w-hero:has(> .w2w-title-art){grid-template-columns:128px minmax(0,1fr);gap:8px}.w2w-hero > .w2w-title-art{width:128px}}
+@media(max-width:599px){.w2w-hero:has(> .w2w-title-art){grid-template-columns:96px minmax(0,1fr)}.w2w-hero > .w2w-title-art{width:96px}.w2w-hero:has(> .w2w-title-art) > .w2w-countries{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>`;
+
+// Apply artwork to an existing owned page without regenerating its copy,
+// metadata, ads or shared design hooks.
+function injectWatchPoster(html, title, info, records) {
+    const poster = watchPosterMarkup(title, info, records);
+    if (!poster || !/<header\b[^>]*class="w2w-hero"/.test(html)) return html;
+    let output = html;
+    if (/<figure\b[^>]*data-watch-artwork/.test(output)) {
+        output = output.replace(/<figure\b[^>]*data-watch-artwork[\s\S]*?<\/figure>/, poster);
+    } else {
+        output = output.replace(/(<header\b[^>]*class="w2w-hero"[^>]*>)/, '$1\n        ' + poster);
+    }
+    if (/<style data-watch-poster-layout>/.test(output)) {
+        output = output.replace(/<style data-watch-poster-layout>[\s\S]*?<\/style>/, WATCH_POSTER_STYLE);
+    } else {
+        output = output.replace('</head>', WATCH_POSTER_STYLE + '\n</head>');
+    }
+    if (!/<script\b[^>]*src=["']\/catalog-media\.js(?:[?"'])/.test(output)) {
+        output = output.replace('</head>', WATCH_POSTER_MEDIA + '\n</head>');
+    }
+    return output;
+}
+
 function buildPage(title, info, entry, related, generated) {
     const s = slug(title);
     const url = `${SITE}/where-to-watch/${s}/`;
     const yr = info.year ? ` (${info.year})` : '';
+    const poster = watchPosterMarkup(title, info);
 
     const regionalRecords={...info.regionObservations,...info.regions};
     const regions=[...new Set([...Object.keys(REGION_NAMES),...Object.keys(regionalRecords)])]
@@ -191,6 +262,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .w2w-foot a { color: var(--gold-mid); text-decoration: none; margin: 0 11px; font-size: 14px; }
     @media (max-width: 560px) { .w2w-kind { min-width: 0; width: 100%; padding-top: 0; } }
 </style>
+${poster ? WATCH_POSTER_STYLE + '\n' + WATCH_POSTER_MEDIA : ''}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
@@ -202,6 +274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
 
     <header class="w2w-hero">
+        ${poster}
         <h1>Where to Watch ${esc(title)}${esc(yr)}</h1>
         <p class="w2w-syn">Choose your viewing country for the dated source answer. Subscription, rental and purchase options are shown separately.</p>
         <nav class="w2w-countries" aria-label="Choose viewing country">${regions.map(([code])=>`<a href="#availability-${code.toLowerCase()}">${esc(REGION_NAMES[code]||code)}</a>`).join('')}</nav>
@@ -365,4 +438,4 @@ if(require.main===module){
   require('./finalize-brand.js').finalizeBrand(['where-to-watch/','en/br/watch/','en/us/watch/','en/gb/watch/','en/pt/watch/','pt/br/watch/']);
   require('./discovery-metadata.js').applyFiles('where-to-watch/');
 }
-module.exports={buildPage,buildIndex};
+module.exports={buildPage,buildIndex,watchPoster,watchPosterMarkup,WATCH_POSTER_STYLE,injectWatchPoster};

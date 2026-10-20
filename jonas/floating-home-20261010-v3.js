@@ -16,8 +16,11 @@
  var opened=false,dragging=null,suppressClick=false,stageFloating=false,stagePosition=null,lastAppliedLang=null;
  var storageKey='matchapp-jonas-inline-position-v1';
  var dock=null,returnButton=null;
+ function headerMode(){return !!document.documentElement?.hasAttribute?.('data-ma-jonas-header')}
+ function mountHeader(){return window.MatchAppReferenceHeader?.claim(root)}
  function homeEntry(){return document?.getElementById?.('ma-ai-entry')||null}
  function mountInline(){
+  if(headerMode()){mountHeader();return true;}
   var entry=homeEntry();
   if(!entry||root.classList.contains('is-floating'))return false;
   if(!dock){
@@ -51,9 +54,10 @@
   return true;
  }
  function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
- function edgeInset(){return (innerWidth>=700?4:3)+13}
- function safeBounds(w,h){var inset=edgeInset(),v=window.visualViewport;var vx=v?.offsetLeft||0,vy=v?.offsetTop||0,vw=v?.width||innerWidth,vh=v?.height||innerHeight;return {minX:vx+inset,minY:vy+inset,maxX:Math.max(vx+inset,vx+vw-w-inset),maxY:Math.max(vy+inset,vy+vh-h-inset)}}
+ function edgeInset(){return 16}
+ function safeBounds(w,h){if(window.MatchAppJonasPlacement)return window.MatchAppJonasPlacement.bounds(w,h);var inset=edgeInset(),v=window.visualViewport;var vx=v?.offsetLeft||0,vy=v?.offsetTop||0,vw=v?.width||innerWidth,vh=v?.height||innerHeight;return {minX:vx+inset,minY:vy+inset,maxX:Math.max(vx+inset,vx+vw-w-inset),maxY:Math.max(vy+inset,vy+vh-h-inset)}}
  function setFloating(x,y){
+  if(headerMode()){mountHeader();return;}
   if(root.parentElement!==document.body)document.body.appendChild(root);
   root.classList.add('is-floating');
   var size=bubble.getBoundingClientRect();
@@ -65,10 +69,11 @@
   if(returnButton)returnButton.hidden=false;
  }
  function restorePosition(){
+  if(headerMode()){mountHeader();return;}
   try{
    var pos=JSON.parse(localStorage.getItem('matchapp-jonas-position-v2')||localStorage.getItem(storageKey)||'null');
    if(!pos||!Number.isFinite(pos.x)||!Number.isFinite(pos.y))return;
-   setFloating(pos.x*Math.max(1,innerWidth-bubble.offsetWidth),pos.y*Math.max(1,innerHeight-bubble.offsetHeight));
+   setFloating(pos.x*Math.max(1,innerWidth-(root.offsetWidth||bubble.offsetWidth)),pos.y*Math.max(1,innerHeight-(root.offsetHeight||bubble.offsetHeight)));
   }catch(_){/* Unavailable storage simply leaves Jonas in his section. */}
  }
  function returnHome(clear){
@@ -78,12 +83,14 @@
   mountInline();translate();
  }
  function savePosition(){
+  if(headerMode())return;
   try{
    var r=root.getBoundingClientRect();
    var position=JSON.stringify({x:r.left/Math.max(1,innerWidth-r.width),y:r.top/Math.max(1,innerHeight-r.height)});localStorage.setItem(storageKey,position);localStorage.setItem('matchapp-jonas-position-v2',position);
   }catch(_){/* optional preference */}
  }
  function positionPanel(){
+  if(headerMode())return;
   if(root.classList.contains('is-chat-stage')||!root.classList.contains('is-floating'))return;
   var r=root.getBoundingClientRect();
   var panelW=Math.min(355,innerWidth-24),panelH=Math.min(370,innerHeight-130);
@@ -93,12 +100,14 @@
   else{panel.style.setProperty('top','auto');panel.style.setProperty('bottom',(r.height+12)+'px');}
  }
  function startDrag(event){
+  if(headerMode())return;
   if(event.button!==0 && event.pointerType==='mouse')return;
   var r=root.getBoundingClientRect();
   dragging={id:event.pointerId,x:event.clientX,y:event.clientY,left:r.left,top:r.top,moved:false};
   if(bubble.setPointerCapture)bubble.setPointerCapture(event.pointerId);
  }
  function moveDrag(event){
+  if(headerMode()){dragging=null;return;}
   if(!dragging||dragging.id!==event.pointerId)return;
   var dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
   if(!dragging.moved&&Math.hypot(dx,dy)<9)return;
@@ -106,14 +115,14 @@
   setFloating(dragging.left+dx,dragging.top+dy);
  }
  function endDrag(event){
+  if(headerMode()){dragging=null;return;}
   if(!dragging||dragging.id!==event.pointerId)return;
   if(dragging.moved){
    root.dataset.jonasDefaultDock='0';
    var size=bubble.getBoundingClientRect(),bounds=safeBounds(Math.max(72,size.width||82,root.offsetWidth||0),Math.max(72,size.height||82,root.offsetHeight||0));
    var x=clamp(dragging.left+event.clientX-dragging.x,bounds.minX,bounds.maxX);
    var y=clamp(dragging.top+event.clientY-dragging.y,bounds.minY,bounds.maxY);
-   // A border collision triggers a small inward spring. Jonas never crosses
-   // the fixed gold perimeter, even while the drag is in progress.
+   // A screen-edge collision keeps the glass halo inside the visible screen.
    var reboundX=x<=bounds.minX+2?Math.min(bounds.maxX,bounds.minX+16):x>=bounds.maxX-2?Math.max(bounds.minX,bounds.maxX-16):x;
    var reboundY=y<=bounds.minY+2?Math.min(bounds.maxY,bounds.minY+16):y>=bounds.maxY-2?Math.max(bounds.minY,bounds.maxY-16):y;
    if(reboundX!==x||reboundY!==y){root.classList.add('ma-jonas-rebound');setFloating(reboundX,reboundY);setTimeout(function(){root.classList.remove('ma-jonas-rebound')},280)}
@@ -190,7 +199,7 @@
   }
  }
  function syncConversationViewport(){
-  if(!opened&&!root.classList.contains('is-chat-stage'))return;
+  if(!opened&&!root.classList.contains('is-chat-stage')&&!panel.classList.contains('ma-header-jonas-conversation'))return;
   var v=window.visualViewport;
   root.style.setProperty('--ja-view-left',Math.round(v?.offsetLeft||0)+'px');
   root.style.setProperty('--ja-view-top',Math.round(v?.offsetTop||0)+'px');
@@ -205,8 +214,8 @@
   if(next){
    stageFloating=root.classList.contains('is-floating');
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
-   if(root.parentElement!==document.body)document.body.appendChild(root);
-   root.classList.add('is-chat-stage');
+   if(headerMode()){panel.classList.add('ma-header-jonas-conversation');mountHeader();}
+   else {if(root.parentElement!==document.body)document.body.appendChild(root);root.classList.add('is-chat-stage');}
    panel.setAttribute('aria-modal','true');
    syncConversationViewport();
    ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
@@ -223,7 +232,9 @@
    panel.setAttribute('aria-modal','false');
    ['--ja-view-left','--ja-view-top','--ja-view-width','--ja-view-height'].forEach(function(key){root.style.removeProperty(key)});
    document.body.classList.remove('ma-jonas-chat-open');
-   if(stageFloating&&stagePosition)setFloating(stagePosition.left,stagePosition.top);
+   panel.classList.remove('ma-header-jonas-conversation');
+   if(headerMode())mountHeader();
+   else if(stageFloating&&stagePosition)setFloating(stagePosition.left,stagePosition.top);
    else {root.classList.remove('is-floating');mountInline();}
   }
   if(next){

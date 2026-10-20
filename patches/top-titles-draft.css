@@ -1,0 +1,71 @@
+/* Local review carousel: physical RIGHT glide, native two-way touch, two controls. */
+@layer ma-reference {
+ html.ma-reference #trending-rail.ma-top-titles-grid,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-grid {
+  display:grid!important;grid-template-columns:44px minmax(0,1fr) 44px!important;column-gap:4px!important;
+  align-items:center!important;direction:ltr!important;min-width:0!important;width:100%!important;box-sizing:border-box!important;
+ }
+ html.ma-reference #trending-rail .ma-top-titles-native,
+ html[data-top-titles-draft] #trending-rail .ma-top-titles-native {
+  grid-column:2!important;grid-row:1!important;min-width:0!important;width:100%!important;box-sizing:border-box!important;
+  direction:ltr!important;overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x pan-y pinch-zoom!important;
+  scroll-behavior:auto!important;scroll-snap-type:none!important;-webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;scrollbar-width:none;cursor:grab;mask-image:none!important;-webkit-mask-image:none!important;
+ }
+ html.ma-reference #trending-rail .ma-top-titles-native::-webkit-scrollbar,
+ html[data-top-titles-draft] #trending-rail .ma-top-titles-native::-webkit-scrollbar{display:none;}
+ html.ma-reference #trending-rail .ma-top-titles-native #marquee-track,
+ html[data-top-titles-draft] #trending-rail .ma-top-titles-native #marquee-track{animation:none!important;transform:none!important;}
+ html.ma-reference #trending-rail .ma-top-titles-native.is-autoglide,
+ html[data-top-titles-draft] #trending-rail .ma-top-titles-native.is-autoglide{scroll-snap-type:none!important;}
+ html.ma-reference #trending-rail .ma-top-titles-native.is-dragging,
+ html[data-top-titles-draft] #trending-rail .ma-top-titles-native.is-dragging{cursor:grabbing;scroll-snap-type:none!important;user-select:none;}
+ html.ma-reference #trending-rail .marquee-item,
+ html[data-top-titles-draft] #trending-rail .marquee-item {direction:var(--top-title-direction,ltr);scroll-snap-align:start;scroll-snap-stop:normal;}
+ html.ma-reference #trending-rail .marquee-item img,
+ html[data-top-titles-draft] #trending-rail .marquee-item img{-webkit-user-drag:none;user-select:none;}
+ html.ma-reference .ma-top-titles-controls,
+ html[data-top-titles-draft] .ma-top-titles-controls{display:contents!important;}
+ html.ma-reference .ma-top-titles-controls[hidden],
+ html[data-top-titles-draft] .ma-top-titles-controls[hidden]{display:none!important;}
+ html.ma-reference #trending-rail.ma-top-titles-native-app,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-native-app,
+ html.ma-reference #trending-rail.ma-top-titles-no-arrows,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-no-arrows{grid-template-columns:minmax(0,1fr)!important;column-gap:0!important;}
+ html.ma-reference #trending-rail.ma-top-titles-native-app .ma-top-titles-native,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-native-app .ma-top-titles-native,
+ html.ma-reference #trending-rail.ma-top-titles-no-arrows .ma-top-titles-native,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-no-arrows .ma-top-titles-native{grid-column:1!important;}
+ html.ma-reference .ma-top-titles-controls .ma-top-titles-arrow,
+ html[data-top-titles-draft] .ma-top-titles-controls .ma-top-titles-arrow{
+  display:inline-flex!important;position:relative!important;inset:auto!important;align-items:center!important;justify-content:center!important;
+  grid-row:1!important;justify-self:center!important;align-self:center!important;
+  width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;padding:10px!important;
+  border:0!important;border-radius:10px!important;background:transparent!important;color:#e9c381!important;
+  box-shadow:none!important;transform:none!important;cursor:pointer;
+ }
+ html.ma-reference .ma-top-titles-arrow[data-top-title-step="-1"],
+ html[data-top-titles-draft] .ma-top-titles-arrow[data-top-title-step="-1"]{grid-column:1!important;}
+ html.ma-reference .ma-top-titles-arrow[data-top-title-step="1"],
+ html[data-top-titles-draft] .ma-top-titles-arrow[data-top-title-step="1"]{grid-column:3!important;}
+ html.ma-reference .ma-top-titles-arrow::before,
+ html[data-top-titles-draft] .ma-top-titles-arrow::before{
+  content:'';position:absolute;inset:6px;border:1px solid #ad874f88;border-radius:9px;
+  background:linear-gradient(140deg,#4b315177,#1a1028bb);box-shadow:inset 0 1px #fff0c717,0 4px 14px #0002;
+  transition:border-color 180ms ease,background-color 180ms ease,box-shadow 180ms ease,transform 180ms ease;
+ }
+ html.ma-reference .ma-top-titles-arrow svg,
+ html[data-top-titles-draft] .ma-top-titles-arrow svg{display:block;position:relative;width:18px;height:18px;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+ html.ma-reference .ma-top-titles-arrow:hover::before,
+ html[data-top-titles-draft] .ma-top-titles-arrow:hover::before{border-color:#f0cc8c;background-color:#c89e471a;box-shadow:inset 0 1px #fff0c724,0 0 16px #d7ab6422;}
+ html.ma-reference .ma-top-titles-arrow:active::before,
+ html[data-top-titles-draft] .ma-top-titles-arrow:active::before{transform:scale(.92);}
+ html.ma-reference .ma-top-titles-arrow:focus-visible,
+ html[data-top-titles-draft] .ma-top-titles-arrow:focus-visible{outline:2px solid #f1d49d!important;outline-offset:0!important;}
+ @media(max-width:1099px){
+  html.ma-reference #trending-rail.ma-top-titles-grid,html[data-top-titles-draft] #trending-rail.ma-top-titles-grid{grid-template-columns:minmax(0,1fr)!important;column-gap:0!important;}
+  html.ma-reference #trending-rail .ma-top-titles-native,html[data-top-titles-draft] #trending-rail .ma-top-titles-native{grid-column:1!important;}
+  html.ma-reference .ma-top-titles-controls,html[data-top-titles-draft] .ma-top-titles-controls{display:none!important;}
+ }
+ @media(prefers-reduced-motion:reduce){html.ma-reference .ma-top-titles-arrow::before,html[data-top-titles-draft] .ma-top-titles-arrow::before{transition:none!important;transform:none!important;}}
+}

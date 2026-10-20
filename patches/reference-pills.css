@@ -1,0 +1,182 @@
+/* Text capsules for existing, presentation-owned nodes. Source art, control
+ * identity, translations and the existing layout remain authoritative. */
+html.ma-reference {
+ --ma-pill-surface:color-mix(in srgb,var(--cinema-panel,#19111e) 94%,var(--cinema-gold,#e4ba67) 6%);
+ --ma-pill-edge:color-mix(in srgb,var(--cinema-gold,#e4ba67) 27%,transparent);
+ --ma-pill-sheen:color-mix(in srgb,var(--cinema-gold,#e4ba67) 7%,transparent);
+ --ma-pill-title-radius:14px;--ma-pill-copy-radius:14px;
+ --ma-pill-gap:8px;
+}
+html.ma-reference [data-ma-text-pill] {
+ box-sizing:border-box;min-inline-size:0;max-inline-size:100%;
+ background:linear-gradient(125deg,var(--ma-pill-sheen),transparent 72%),var(--ma-pill-surface);
+ border-radius:var(--ma-pill-copy-radius);
+ box-shadow:inset 0 0 0 1px var(--ma-pill-edge);
+ overflow-wrap:break-word;word-break:normal;
+ -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+html.ma-reference [data-ma-text-pill='title'] {padding:4px 10px;border-radius:var(--ma-pill-title-radius);}
+html.ma-reference [data-ma-text-pill='copy'] {padding:5px 10px;border-radius:var(--ma-pill-copy-radius);text-wrap:pretty;}
+html.ma-reference [data-ma-text-pill='label'] {padding:3px 8px;border-radius:12px;}
+html.ma-reference [data-ma-text-pill='caption'] {padding:3px 6px;border-radius:9px;}
+html.ma-reference [data-ma-text-pill='micro'] {padding:2px 6px;border-radius:9px;}
+html.ma-reference [data-ma-text-pill='loose'] {padding:3px 8px;border-radius:12px;}
+html.ma-reference [data-ma-text-pill='group'] {padding:0;border-radius:14px;}
+html.ma-reference .ma-loose-text-pill {display:inline-block;vertical-align:baseline;}
+html.ma-reference [data-ma-control-pill] {
+ border-radius:max(22px,1.5em);
+ /* An inset edge makes an otherwise plain link read as a capsule without
+  * adding a border, padding, width, height or changing its line box. */
+ box-shadow:inset 0 0 0 1px var(--ma-pill-edge);
+}
+html.ma-reference textarea[data-ma-control-pill] {border-radius:14px;}
+html.ma-reference [data-ma-text-pill]:empty {padding:0;background:none;box-shadow:none;}
+
+/* Confirmation and OAuth callback intentionally have no shared shell script.
+ * Their existing semantic copy gets the same reading surface through CSS. */
+html.ma-reference:has(head > link[rel='canonical'][href$='/confirm.html']) body :is(h1,h2,h3,p):not(:empty),
+html.ma-reference:has(head > link[rel='canonical'][href$='/callback.html']) body :is(h1,h2,h3,p):not(:empty) {
+ box-sizing:border-box;min-inline-size:0;max-inline-size:100%;padding:5px 10px;
+ background:linear-gradient(125deg,var(--ma-pill-sheen),transparent 72%),var(--ma-pill-surface);
+ border-radius:14px;box-shadow:inset 0 0 0 1px var(--ma-pill-edge);overflow-wrap:break-word;
+}
+
+/* Existing reference controls/captions already have important declarations in
+ * this layer. Keep only the necessary capsule shape/padding overrides here. */
+@layer ma-reference {
+ /* Distinct semantic surfaces share one gap owner. Inline words, native
+  * option internals, established density grids and ad inventory stay intact. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-field-group] {display:grid!important;gap:var(--ma-pill-gap)!important;min-inline-size:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-field-group] > :is([data-ma-text-pill],input,select,textarea) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-reading-list] {display:grid!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-reading-list] > li {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .q-grid--primary {gap:var(--ma-pill-gap)!important;border:0!important;box-shadow:none!important;overflow:visible!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .crit-collapsible {border:0!important;box-shadow:none!important;background:transparent!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .crit-open > .crit-chips {margin-block-start:var(--ma-pill-gap)!important;border-radius:14px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home #questionnaire-box .match-more-filters > a.ma-fine-link {margin-block-start:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(.ma-cinema-header-actions,.ma-cinema-quick-choices .ma-quick,.ma-cinema-quick-choices #matchapp-topic-shortcuts,.composer,.jds-copy,.ma-legal-bar,.ref-editorial-copy,.ebook-top-copy,.ebook-top-actions,.ma-billing-toggle) {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ebook-top-copy {display:flex!important;flex-direction:column!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ebook-top-copy > :is(h3,p,.ebook-top-badge,.ebook-top-actions) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ref-editorial-copy {display:flex!important;flex-direction:column!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ref-editorial-copy > :is(h2,.ref-editorial-sub) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .cooking-card > h3 {margin-block-end:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .cooking-card > h3 + p {margin-block-start:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-plan {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-plan > :is(.ma-plan-kicker,h2,.ma-plan-big,.ma-billing-toggle,ul) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-secondary-product {display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-secondary-product > :is(strong,small,button,a) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #purchase-hub .purchase-pack {display:flex!important;flex-direction:column!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #purchase-hub .purchase-pack > :is(strong,small,b,button,.purchase-badge) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #purchase-hub .purchase-pack > .purchase-badge {position:static!important;align-self:center!important;inset:auto!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(.passkey-box,.rg-breadcrumb,.swifties-latest) {display:flex!important;flex-wrap:wrap!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .passkey-box {flex-direction:column!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .passkey-box > :is(button,p) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-latest {margin-block-start:8px!important;align-items:flex-start!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-latest-label {flex-basis:100%!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-latest > a {display:inline-flex!important;min-height:44px!important;align-items:center!important;padding:6px 10px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .swifties-new-album {display:inline-flex!important;align-items:center!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .event-archive-grid > .global-event > .event-countdown {position:static!important;display:flex!important;margin:8px!important;min-width:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .event-archive-grid > .global-event > h3 {margin:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(.ma-result-trust__state,#result-box .res-info-col) {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .history-empty > strong {margin-block-end:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is([data-mp='placement'],[data-mp='editorial'],[data-founder='testHeading'],[data-founder='supportHeading'],.ma-pricing-copy > h1) {margin-block-end:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is([data-mp='placement'],[data-mp='editorial'],[data-founder='testHeading'],[data-founder='supportHeading'],.ma-pricing-copy > h1) + p {margin-block-start:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer > p,
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer #ma-privacy-choices {margin-block-start:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer nav[data-ma-density='balanced'] > [data-ma-density-item] {padding-inline:6px!important;}
+ @media(max-width:359px){
+  html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer nav[data-ma-density='balanced']:has(> a:nth-child(7):last-child) > [data-ma-density-item] {flex-basis:calc((100% - 8px)/2)!important;width:calc((100% - 8px)/2)!important;}
+  html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .mf-footer nav[data-ma-density='balanced']:has(> a:nth-child(7):last-child) > [data-ma-density-item]:nth-child(-n+3) {flex-basis:calc((100% - 16px)/3)!important;width:calc((100% - 16px)/3)!important;}
+ }
+ /* Source title, date, views and address remain one compact metadata capsule
+  * inside the original fixed poster, rather than four touching nested frames. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #trending-rail .music-video-caption[data-ma-text-pill] {padding:18px 5px 5px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #trending-rail .music-cover-header[data-ma-text-pill] {padding:3px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(#match-packs-section,#ask-ai-credits,#matchapp-app-install-setting,.mp-card) > :is(h3,h4)[data-ma-text-pill] + p[data-ma-text-pill] {margin-block-start:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #ma-donate-title {margin-block-start:8px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal :is(.auth-tabs,.auth-form-section) {border:0!important;box-shadow:none!important;background:transparent!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal .auth-tabs {gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal .auth-form-section.active {display:flex!important;flex-direction:column!important;gap:var(--ma-pill-gap)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal .auth-form-section.active > :is(input,button,p,.auth-password-field,.passkey-box) {margin-block:0!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal > .premium-card > h3 {margin-right:52px!important;margin-left:0!important;}
+ @media(max-width:600px){html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-home .home-hero .home-h1 {margin-block-end:8px!important;}}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill][data-ma-text-pill] {
+  box-sizing:border-box!important;min-inline-size:0!important;
+  background:linear-gradient(125deg,var(--ma-pill-sheen),transparent 72%),var(--ma-pill-surface)!important;
+  border-radius:var(--ma-pill-copy-radius)!important;
+  box-shadow:inset 0 0 0 1px var(--ma-pill-edge)!important;
+ }
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill='title'][data-ma-text-pill] {padding:4px 10px!important;border-radius:var(--ma-pill-title-radius)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill='copy'][data-ma-text-pill] {padding:5px 10px!important;border-radius:var(--ma-pill-copy-radius)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill='label'][data-ma-text-pill] {padding:3px 8px!important;border-radius:12px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill='caption'][data-ma-text-pill] {padding:3px 6px!important;border-radius:9px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill='micro'][data-ma-text-pill] {padding:2px 6px!important;border-radius:9px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill='loose'][data-ma-text-pill] {padding:3px 8px!important;border-radius:12px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill='group'][data-ma-text-pill] {padding:0!important;border-radius:14px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-control-pill][data-ma-control-pill] {
+  border-radius:max(22px,1.5em)!important;box-shadow:inset 0 0 0 1px var(--ma-pill-edge)!important;
+ }
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-control-pill='card'][data-ma-control-pill] {border-radius:14px!important;}
+ /* Let the longest complete heading word set its own compact capsule width.
+  * The copy column remains the bound, with wrapping only when that word cannot
+  * fit; padding must not subtract from the old narrow character-width limit. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-explore #explore-title[data-ma-text-pill] {width:min-content!important;max-width:100%!important;max-inline-size:100%!important;overflow-wrap:break-word!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) textarea[data-ma-control-pill][data-ma-control-pill] {border-radius:14px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(
+  select,input:not([type='hidden']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):not([type='file']):not([type='image'])
+ ):not(:where(.adsbygoogle *,.premium-ad-frame *,.ad-banner-container *,.sidebar-ad-left *,.sidebar-ad-right *,[data-ad-slot] *,[data-ad-client] *,[data-admob] *)) {border-radius:22px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) textarea:not(:where(.adsbygoogle *,.premium-ad-frame *,.ad-banner-container *,.sidebar-ad-left *,.sidebar-ad-right *,[data-ad-slot] *,[data-ad-client] *,[data-admob] *)) {border-radius:14px!important;}
+ /* Dense source captions and dock labels retain their original footprints. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) :is(#trending-rail,.ma-cinema-dock) [data-ma-text-pill][data-ma-text-pill] {padding:1px 3px!important;border-radius:7px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #trending-rail .marquee-item {border-radius:14px!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.matchapp-profile .setting-control > .scale-hint[data-ma-text-pill][aria-hidden='true'] {padding:1px 3px!important;border-radius:7px!important;}
+ /* Light reading surfaces need the current dark ink, including legacy inline
+  * gold metadata. Real nested controls keep their own foreground/background. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy)[data-theme='sunrise'] [data-ma-text-pill] {color:var(--cinema-text)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy)[data-theme='sunrise'] [data-ma-text-pill] :is(span,strong,small,time,a,em,b,bdi,i,code,mark):not(:where(
+  [data-ma-text-pill] :is(button,input,select,textarea,[role='button'],a.gold-btn,a.hub-action,a.btn,a[class*='primary'],a[class*='cta'],a[class*='button']),
+  [data-ma-text-pill] :is(button,input,select,textarea,[role='button'],a.gold-btn,a.hub-action,a.btn,a[class*='primary'],a[class*='cta'],a[class*='button']) *
+ )) {color:inherit!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy)[data-theme='sunrise'] a[data-ma-control-pill]:not([class]):not([role='button']):not([style*='background']) {color:var(--cinema-text)!important;}
+ /* Error/alert copy retains its semantic treatment on the light surface. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy)[data-theme='sunrise'] :is([data-ma-text-pill],[data-ma-text-pill] *) :is([role='alert'],[data-state='error'],[data-status='error'],.error,.danger,.is-error,.text-danger),
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy)[data-theme='sunrise'] [data-ma-text-pill]:is([role='alert'],[data-state='error'],[data-status='error'],.error,.danger,.is-error,.text-danger) {color:var(--cinema-danger)!important;}
+ /* The label is ours; the protected ad container and third-party creative are
+  * never styled or resized. Its original font and line-height remain intact. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-pill-ad-label][data-ma-pill-ad-label] {
+  padding:0!important;border:0!important;border-radius:9px!important;
+  background:var(--ma-pill-surface)!important;box-shadow:inset 0 0 0 1px var(--ma-pill-edge)!important;
+ }
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) [data-ma-text-pill][data-ma-text-pill]:empty {padding:0!important;background:none!important;box-shadow:none!important;}
+ /* This closed disclosure already has a complete summary capsule. Retain its
+  * exact border width and layout while avoiding a second visible frame. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.news-ui-page .ma-news-offers:not([open]):has(> summary[data-ma-control-pill]) {border-color:transparent!important;background:transparent!important;box-shadow:none!important;}
+ /* These two security entries intentionally have CSS only, so their original
+  * native controls and bare escape links use exact template-scoped fallbacks. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy):has(head > link[rel='canonical']:is([href$='/confirm.html'],[href$='/callback.html'])) body :is(main:has(> #confirm-email),body > .premium-card) :is(a[href],button,summary,select,input:not([type='hidden']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):not([type='file'])) {border-radius:max(22px,1.5em)!important;box-shadow:inset 0 0 0 1px var(--ma-pill-edge)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy):has(head > link[rel='canonical']:is([href$='/confirm.html'],[href$='/callback.html'])) body :is(main:has(> #confirm-email),body > .premium-card) > a[href]:not([class]) {background:var(--ma-pill-surface)!important;}
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy):has(head > link[rel='canonical'][href$='/callback.html']) body > .premium-card > div:not(:has(*)):not(:empty) {background:var(--ma-pill-surface)!important;border-radius:14px!important;box-shadow:inset 0 0 0 1px var(--ma-pill-edge)!important;}
+ /* The symbol-only auth close action keeps its existing 44px target and
+  * 30px icon size. Arabic reading-font ascenders must not displace the glyph. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) #main-auth-modal .auth-close[data-ma-control-pill] {
+  display:grid!important;place-items:center!important;padding:0!important;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;line-height:1!important;
+ }
+ /* These existing product actions retain their original nodes and checkout
+  * policy, with a readable centered label and a full touch target. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .ma-secondary-product > :is(button,a)[data-ma-control-pill] {
+  box-sizing:border-box!important;min-height:44px!important;min-inline-size:0!important;max-inline-size:100%!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:8px 12px!important;
+  font-size:.8rem!important;line-height:1.35!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important;
+ }
+ /* The existing Home masthead already owns the approved product identity. */
+ html.ma-reference body.page-home #main-auth-modal .auth-brand {display:none!important;}
+ /* The journey owner hides English-only notes in other locale selections. */
+ html.ma-reference:not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) .journey-note[hidden] {display:none!important;}
+}
+@media(forced-colors:active) {
+ html.ma-reference :is([data-ma-text-pill],[data-ma-control-pill]) {box-shadow:none!important;outline:1px solid CanvasText;outline-offset:-1px;}
+}
+@media print {
+ html.ma-reference [data-ma-text-pill] {background:none!important;box-shadow:none!important;}
+}

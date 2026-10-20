@@ -39,7 +39,7 @@ test('profile hero follows all14 selected languages while retaining account iden
   h.w.dispatchEvent(new h.w.StorageEvent('storage',{key:'match_lang'}));
   await tick();
   assert.match(h.d.querySelector('.audit-profile-badges').textContent,/Identidade protegida/);
-  assert.match(h.d.querySelector('img').alt,/Seu avatar/);
+  assert.match(h.d.querySelector('img').alt,/Foto da sua conta/);
   assert.equal(h.writes(),0);
  }finally{h.close();}
 });

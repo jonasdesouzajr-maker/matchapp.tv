@@ -98,9 +98,12 @@ async function setup(page){
      pass(device.name+' vertical scroll from Home heading',heroAfter>heroBefore+20,JSON.stringify({before:heroBefore,after:heroAfter}));
      await touch.detach();
      await page.evaluate(()=>window.setMatchCriteria({cat:['movie'],mood:['funny'],plat:[]}));
-     const watchFold=page.locator('.lazy-head[data-fold-key="concierge"]');
-     if(await watchFold.getAttribute('aria-expanded')==='false')await watchFold.click();
      const btn=page.locator('button[onclick="triggerMatch(false)"]');
+     if(!await btn.isVisible()){
+       const watchFold=page.locator('.lazy-head[data-fold-key="concierge"]');
+       assert(await watchFold.isVisible(),'the actual Match action or its original fold must be reachable');
+       if(await watchFold.getAttribute('aria-expanded')!=='true')await watchFold.click();
+     }
      await btn.scrollIntoViewIfNeeded({timeout:12000});
      await btn.click({timeout:12000});
      await page.waitForFunction(()=>{

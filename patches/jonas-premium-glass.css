@@ -280,3 +280,172 @@ body.ma-jonas-modal-open,body.ma-jonas-chat-open{overflow:hidden!important;overs
  }
  html body.page-home #ma-jonas-header-slot{display:none!important;width:0!important;height:0!important}
 }
+
+/* 2026-10-20 owner direction: one movable glass companion on every adult page.
+   Closed positioning is viewport-based; no header corner is reserved. */
+html body #ma-jonas-home.is-floating:not(.is-chat-stage),
+html body #ma-ambient-jonas {
+ position:fixed!important;width:var(--ma-jonas-launcher-size,78px)!important;height:var(--ma-jonas-launcher-size,78px)!important;
+ min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;
+ background:transparent!important;border:0!important;border-radius:50%!important;
+ box-shadow:none!important;overflow:visible!important;z-index:2147483200!important;
+}
+html body #ma-jonas-home.is-floating:not(.is-chat-stage) .jh-bubble,
+html body #ma-ambient-jonas .ja-bubble {
+ position:relative!important;display:block!important;width:calc(var(--ma-jonas-launcher-size,78px) - 2px)!important;height:calc(var(--ma-jonas-launcher-size,78px) - 2px)!important;
+ box-sizing:border-box!important;padding:3px!important;border:1.5px solid #e4bc72!important;
+ border-radius:50%!important;overflow:visible!important;cursor:grab!important;
+ background:linear-gradient(145deg,#ffffff4d,#150f1c80 48%,#f6dc9a45)!important;
+ box-shadow:inset 0 1px 2px #fff9,inset 0 -2px 5px #0009,0 0 0 2px #e4bc722e,0 8px 22px #0008!important;
+ -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+ touch-action:none!important;-webkit-user-select:none;user-select:none;
+}
+html body #ma-jonas-home.is-floating:not(.is-chat-stage) .jh-bubble:active,
+html body #ma-ambient-jonas .ja-bubble:active {cursor:grabbing!important;}
+html body #ma-jonas-home.is-floating:not(.is-chat-stage) .jh-portrait {
+ position:absolute!important;inset:4px!important;width:auto!important;height:auto!important;
+ border:1px solid #fff1c780!important;box-shadow:inset 0 0 8px #0008!important;
+}
+html body #ma-ambient-jonas .ja-premium-face {
+ border:1px solid #fff1c780;box-sizing:border-box;
+}
+html body #ma-jonas-home.is-floating:not(.is-chat-stage) .jh-bubble::after,
+html body #ma-ambient-jonas .ja-bubble::after {
+ content:'';position:absolute;inset:3px;border-radius:50%;pointer-events:none;
+ background:linear-gradient(135deg,#fff7 0%,#fff2 12%,transparent 34%,transparent 72%,#d6ba8055 100%);
+ box-shadow:inset 2px 2px 5px #fff3,inset -2px -2px 6px #0005;
+}
+html body #ma-jonas-home.is-floating:not(.is-chat-stage) .jh-halo {inset:-3px;opacity:.24;filter:blur(3px);animation:none!important;}
+html body #ma-jonas-home.is-floating:not(.is-chat-stage) .jh-online,
+html body #ma-ambient-jonas .ja-live {width:11px!important;height:11px!important;right:4px!important;bottom:4px!important;border-width:2px!important;z-index:3;}
+html body #ma-jonas-header-slot {display:none!important;width:0!important;height:0!important;}
+@media(prefers-reduced-motion:reduce){
+ html body #ma-jonas-home .jh-bubble,html body #ma-ambient-jonas .ja-bubble {transition:none!important;}
+}
+@media print {html body #ma-jonas-home,html body #ma-ambient-jonas,html body #ma-ambient-panel {display:none!important;}}
+
+/* Default-only dense-screen fallback. The launcher owns an empty dock slot;
+   all five existing destinations keep their original links and touch areas. */
+html.ma-reference nav.ma-cinema-dock[data-jonas-reserved] {
+ gap:0!important;padding:2px!important;background:var(--cinema-bg,#0c0710)!important;
+}
+html.ma-reference nav.ma-cinema-dock[data-jonas-reserved] a {min-width:44px!important;min-height:44px!important;}
+.ma-jonas-dock-slot {display:block!important;flex:0 0 76px!important;width:76px!important;height:76px!important;pointer-events:none!important;}
+.ma-jonas-reserve-only {position:fixed;z-index:10000;inset:auto 0 0;display:flex;justify-content:flex-end;padding:4px 10px;background:var(--cinema-bg,#0c0710);}
+html body #ma-jonas-home.is-floating:not(.is-chat-stage),html body #ma-ambient-jonas {transition:none!important;}
+
+html body :is(#ma-jonas-home,#ma-ambient-jonas) img {-webkit-user-drag:none;user-select:none;}
+
+/* MatchApp Ai signature constellation: motion belongs to the glass background.
+   The portrait and rim never pulse, scale or fade with this decoration. */
+.ma-jonas-stellar {isolation:isolate;}
+.ma-jonas-stellar > .ma-jonas-cosmos {
+ position:absolute!important;inset:-5px!important;z-index:2!important;display:block!important;
+ border-radius:50%!important;overflow:hidden!important;pointer-events:none!important;
+ contain:layout paint;user-select:none;
+ -webkit-mask-image:radial-gradient(ellipse 37% 46% at 50% 55%,transparent 96%,#000 100%);
+ mask-image:radial-gradient(ellipse 37% 46% at 50% 55%,transparent 96%,#000 100%);
+}
+.ma-jonas-cosmos::before,.ma-jonas-cosmos::after {
+ content:'';position:absolute;inset:0;border-radius:50%;pointer-events:none;
+}
+.ma-jonas-cosmos::before {
+ background:radial-gradient(ellipse at 16% 48%,#ecc37d99,transparent 41%),radial-gradient(ellipse at 84% 40%,#81d8d97d,transparent 38%),radial-gradient(ellipse at 57% 17%,#c095e98a,transparent 46%),radial-gradient(circle,transparent 65%,#f9da9d7a 77%,transparent 87%);
+ opacity:.6;animation:ma-jonas-stellar-pulse var(--ma-jonas-pulse-time,4.8s) ease-in-out infinite;
+}
+.ma-jonas-cosmos::after {
+ background:conic-gradient(from 0deg,transparent 2%,#fce2ac00 12%,#fce2ac85 18%,transparent 24%,transparent 49%,#a2e9ec70 57%,transparent 64%,transparent 82%,#cfb3f280 89%,transparent 97%);
+ opacity:.48;animation:ma-jonas-glass-shimmer 28s linear infinite;
+}
+.ma-jonas-cosmos > .ma-jonas-starmap {
+ position:absolute;inset:0;width:100%!important;height:100%!important;overflow:visible;
+ color:#ffdfa3;animation:ma-jonas-constellation-drift 19s ease-in-out infinite;transform-origin:50% 50%;
+}
+.ma-jonas-starmap .ma-jonas-starthread {fill:none;stroke:#ebd0a2;stroke-width:.42;stroke-opacity:.45;stroke-linecap:round;stroke-dasharray:1.4 2.2;}
+.ma-jonas-starmap .ma-jonas-star {fill:currentColor;stroke:#fff3d0;stroke-width:.18;transform-box:fill-box;transform-origin:center;animation:ma-jonas-star-twinkle var(--star-time,3.8s) ease-in-out var(--star-delay,0s) infinite;}
+.ma-jonas-starmap .ma-jonas-star:nth-of-type(3n) {color:#b9f5ef;}
+.ma-jonas-starmap .ma-jonas-star:nth-of-type(4n) {color:#e4c3ff;}
+.ma-jonas-starmap .ma-jonas-stardust {fill:#fff0c8;opacity:.65;}
+html body #ma-jonas-home .ma-jonas-stellar .jh-portrait,
+html body #ma-ambient-jonas .ma-jonas-stellar .ja-premium-face {animation:none!important;transform:none!important;}
+#ma-jonas-home.jh-speaking .ma-jonas-stellar,
+#ma-ambient-jonas[data-speaking='1'] .ma-jonas-stellar {--ma-jonas-pulse-time:3.4s;}
+@keyframes ma-jonas-stellar-pulse {0%,100%{opacity:.3;transform:scale(.97)}50%{opacity:.9;transform:scale(1)}}
+@keyframes ma-jonas-glass-shimmer {from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ma-jonas-constellation-drift {0%,100%{transform:rotate(-3deg) translateY(.5%)}50%{transform:rotate(3deg) translateY(-.5%)}}
+@keyframes ma-jonas-star-twinkle {0%,100%{opacity:.32;transform:scale(.72) rotate(-8deg)}45%{opacity:1;transform:scale(1.08) rotate(8deg)}72%{opacity:.55;transform:scale(.88) rotate(0deg)}}
+html[data-ma-jonas-fx-paused] .ma-jonas-cosmos,
+html[data-ma-jonas-fx-paused] .ma-jonas-cosmos::before,
+html[data-ma-jonas-fx-paused] .ma-jonas-cosmos::after,
+html[data-ma-jonas-fx-paused] .ma-jonas-cosmos * {animation-play-state:paused!important;}
+html.reduce-motion .ma-jonas-cosmos,
+html.reduce-motion .ma-jonas-cosmos::before,
+html.reduce-motion .ma-jonas-cosmos::after,
+html.reduce-motion .ma-jonas-cosmos * {animation:none!important;transform:none!important;}
+@media(prefers-reduced-motion:reduce) {
+ .ma-jonas-cosmos,.ma-jonas-cosmos::before,.ma-jonas-cosmos::after,.ma-jonas-cosmos * {animation:none!important;transform:none!important;}
+}
+@media(forced-colors:active) {.ma-jonas-cosmos {display:none!important;}}
+
+/* Local portrait life, not launcher motion. The six aligned source poses keep
+   their identity; only image pixels breathe inside the stationary glass/rim. */
+html body #ma-jonas-home#ma-jonas-home .jh-portrait,
+html body #ma-ambient-jonas#ma-ambient-jonas .ja-premium-face {
+ animation:none!important;transform:none!important;
+}
+html body #ma-jonas-home#ma-jonas-home .jh-portrait > img,
+html body #ma-ambient-jonas#ma-ambient-jonas .ja-premium-face > img {
+ transform-origin:50% 62%!important;
+ animation:ma-jonas-face-idle 6.7s ease-in-out infinite!important;
+}
+/* Source eyes sit at x41%/67%, y36% of the 768x1152 photograph. Cover-fit in a
+   square at18% vertical position puts the eyelids around46.5% of the circle.
+   Two feathered islands replace only eyes, never forehead, hair or cheeks. */
+html body #ma-jonas-home#ma-jonas-home :is(.jh-portrait,.jh-medallion) > img.jh-blink-layer,
+html body #ma-ambient-jonas#ma-ambient-jonas .ja-blink,
+html body #ma-ambient-panel#ma-ambient-panel .ja-blink {
+ --ja-eye-y:46.5%;clip-path:none!important;
+ -webkit-mask-image:radial-gradient(ellipse 11.5% 7.5% at 40.7% var(--ja-eye-y),#000 45%,transparent 100%),radial-gradient(ellipse 11.5% 7.5% at 67.2% var(--ja-eye-y),#000 45%,transparent 100%);
+ mask-image:radial-gradient(ellipse 11.5% 7.5% at 40.7% var(--ja-eye-y),#000 45%,transparent 100%),radial-gradient(ellipse 11.5% 7.5% at 67.2% var(--ja-eye-y),#000 45%,transparent 100%);
+ pointer-events:none!important;z-index:4!important;
+}
+html body #ma-jonas-home#ma-jonas-home :is(.jh-portrait,.jh-medallion) > img.jh-blink-layer {--ja-eye-y:46%;object-position:center 19%!important;transition:opacity 55ms linear!important;}
+html body #ma-ambient-jonas#ma-ambient-jonas .ja-premium-face > img.ja-blink {object-position:center 18%!important;animation:ma-jonas-face-idle 6.7s ease-in-out infinite,ja-premium-blink 13.9s linear -.7s infinite!important;}
+html body #ma-ambient-panel#ma-ambient-panel .ja-blink {--ja-eye-y:45.5%;object-position:center 20%!important;animation:ja-premium-blink 13.9s linear -.7s infinite!important;}
+@keyframes ja-premium-blink {
+ 0%,22%,23.9%,58%,59.8%,92%,93.9%,100%{opacity:0}
+ 22.5%,23.1%,58.5%,59.1%,92.5%,93.1%{opacity:1}
+}
+@keyframes ma-jonas-face-idle {
+ 0%,100%{transform:translateY(.1px) scale(1.002)}
+ 44%{transform:translateY(-.18px) scale(1.006)}
+ 68%{transform:translateY(-.05px) scale(1.004)}
+}
+/* A gentle lower-face smile leaves the existing eyes and speaking mouth owner
+   visible. Source pose crossfades never replace the entire portrait. */
+html body #ma-jonas-home#ma-jonas-home .ja-premium-smile,
+html body #ma-ambient-jonas#ma-ambient-jonas .ja-premium-smile {
+ -webkit-mask-image:radial-gradient(ellipse 34% 24% at 53% 75%,#000 48%,transparent 100%);
+ mask-image:radial-gradient(ellipse 34% 24% at 53% 75%,#000 48%,transparent 100%);
+ transition:opacity 220ms cubic-bezier(.22,.7,.3,1)!important;
+}
+html body #ma-jonas-home#ma-jonas-home .ja-premium-smile {object-position:center 19%!important;}
+html body #ma-jonas-home#ma-jonas-home.jh-speaking .ja-premium-smile,
+html body #ma-ambient-jonas#ma-ambient-jonas[data-speaking='1'] .ja-premium-smile {opacity:0!important;}
+html[data-ma-jonas-fx-paused] body #ma-jonas-home#ma-jonas-home .jh-portrait > img,
+html[data-ma-jonas-fx-paused] body #ma-ambient-jonas#ma-ambient-jonas .ja-premium-face > img,
+html[data-ma-jonas-fx-paused] body #ma-ambient-panel#ma-ambient-panel .ja-blink {animation-play-state:paused!important;}
+html.reduce-motion body #ma-jonas-home#ma-jonas-home .jh-portrait > img,
+html.reduce-motion body #ma-ambient-jonas#ma-ambient-jonas .ja-premium-face > img,
+html.reduce-motion body #ma-ambient-panel#ma-ambient-panel .ja-blink {animation:none!important;transform:none!important;transition:none!important;}
+html.reduce-motion body #ma-jonas-home#ma-jonas-home .jh-blink-layer,
+html.reduce-motion body #ma-ambient-jonas#ma-ambient-jonas .ja-blink,
+html.reduce-motion body #ma-ambient-panel#ma-ambient-panel .ja-blink {opacity:0!important;}
+@media(prefers-reduced-motion:reduce) {
+ html body #ma-jonas-home#ma-jonas-home .jh-portrait > img,
+ html body #ma-ambient-jonas#ma-ambient-jonas .ja-premium-face > img,
+ html body #ma-ambient-panel#ma-ambient-panel .ja-blink {animation:none!important;transform:none!important;transition:none!important;}
+ html body #ma-jonas-home#ma-jonas-home .jh-blink-layer,
+ html body #ma-ambient-jonas#ma-ambient-jonas .ja-blink,
+ html body #ma-ambient-panel#ma-ambient-panel .ja-blink {opacity:0!important;}
+}

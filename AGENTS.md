@@ -1,5 +1,80 @@
 System Instruction: Lead Cross-Platform Developer & System Architect (matchapp.tv)
 
+### OWNER FINAL POLISH AND RELEASE AUTHORIZATION - 2026-10-20
+
+The creator explicitly authorized completing the approved premium mockup design,
+final text/pill/button alignment, English and Brazilian Portuguese matching/chat
+verification, rotation bug fixes, tasteful founder/donation/partnership polish,
+AdSense/search readiness, and publication of the finished website/backend and
+updated adult Play listing with current product screenshots after passing checks.
+This supersedes historical local-review-only and awaiting-release-approval text
+below for this change set. Preserve the approved design, all languages, the zero
+outer gold frame, provider-only account photos, Jonas's reserved default header,
+remembered deliberate dragging, single speech engine, all protected ad inventory,
+and the latest single daily editorial publisher. No emulator work is authorized.
+Use existing publishing identities; report missing Play/webmaster access honestly.
+This authorization does not authorize purchases, payment-recipient changes,
+fabricated rankings, fabricated screenshots, or bypassed release checks.
+
+### OWNER PERSISTENT JONAS HEADER AND SIGNATURE NAVIGATION - 2026-10-20
+
+The creator approved the remaining design and now requires Jonas ALWAYS visible
+inside his own reserved space in the persistent top header on every adult app
+page by default for first-time users. The latest owner instruction restores
+deliberate user dragging anywhere, with the chosen position remembered and
+clamped to the visible viewport; preserve the reserved header as the default
+and provide a way to return there. Keep controls and fields clear at rest.
+Keep the existing single chat/speech engine, glass face and constellation effect.
+The bottom navigation must use original MatchApp icons, jewel colors, polished
+materials, motion and original sound/haptic feedback through the existing sole
+feedback owner. Keep its five destinations and all existing functionality.
+The rest of the approved compact pill design remains unchanged. This is still
+local review only: no commit, push, merge, deployment or publication before
+explicit release approval.
+
+### OWNER ACCOUNT PHOTO ONLY — 2026-10-20
+
+Remove custom user-avatar creation, choosing, uploading, preset editors and their
+entry points completely. A user profile photo may only come from the actual
+linked sign-in account provider. If there is no verified provider photo or it
+fails to load, hide the entire photo circle; no initial, generated or generic
+photo fallback. Preserve sign-in, account identity, portfolio and privacy flows.
+Jonas is the separate assistant and keeps his approved face and glass effects.
+
+### OWNER CINEMATIC DESIGN REVIEW — 2026-10-20
+
+The owner explicitly requested removal of the gold viewport outline completely.
+This supersedes the older non-negotiable perimeter/rounded-frame instructions below;
+retain the shared brand.css implementation with zero frame width and no drawn outline.
+Jonas keeps his glass appearance inside a reserved persistent header slot on
+adult app pages by default. The latest owner instruction permits deliberate
+user dragging and remembers that choice. Keep all text, controls and fields clear.
+Preserve the existing chat/speech engine and Kids isolation. The current redesign
+is LOCAL REVIEW ONLY: do not push, merge or deploy before the owner's approval.
+The owner initially requested a draft before production building, then approved
+the rest of the design and instructed us to continue on 2026-10-20, specifically
+fixing missing title posters and making artwork render promptly. Local implementation
+and relevant validation are now authorized. Do not push, merge, deploy or publish
+without explicit release approval. The portable review remains in
+/workspace/artifacts/matchapp-design-draft/.
+The latest creator revisions require one edge-to-edge content grid, compact 3:4
+Top Titles cards, shared 8px gaps, balanced control rows without sparse trailing
+items, readable wrapping labels in every supported language, and no viewport
+overflow. Keep user font-size preferences. Preserve all ad inventory/geometry.
+Top Titles glides physically right and supports slow/fast two-way native swipes
+on every version. Arrows appear beside the rail on desktop browsers only;
+phone/tablet browsers and every native Android surface have no arrows.
+The persistent header owns the default Jonas placement on all adult app pages;
+a deliberate user drag may move him and persist the chosen position.
+The How to use action remains in its approved hero position with a clear hit area.
+The creator additionally requires every visible app text element to use the shared
+pill treatment: headings, descriptions, labels, captions, helper copy and actions.
+Use one fitted capsule per semantic label or reading paragraph; preserve original
+text/control nodes, native field behavior, source artwork, compact grids, selected
+language/font scale and ad dimensions. Rich image-card captions need their own
+text surfaces inside the existing card. Keep the shared reference-pills CSS/JS
+loading hooks in future generated adult pages.
+
 ### OWNER SINGLE DAILY REFRESH — 2026-10-20
 
 The owner explicitly replaced separate recurring content jobs with one daily

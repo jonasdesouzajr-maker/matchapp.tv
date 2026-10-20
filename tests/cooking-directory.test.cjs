@@ -29,6 +29,7 @@ test('adult cooking page keeps source identity, defers video and escapes search 
     runScripts: 'outside-only'
   });
   const { window } = dom;
+  window.eval(fs.readFileSync('cooking/i18n.js', 'utf8'));
   window.eval(fs.readFileSync('cooking/catalog.js', 'utf8'));
   window.eval(fs.readFileSync('cooking/cooking.js', 'utf8'));
   assert.equal(window.document.querySelectorAll('iframe').length, 0);

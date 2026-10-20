@@ -1,0 +1,80 @@
+{
+  "product": "MatchApp Ai",
+  "package": "com.jonas.papercup",
+  "captureCommit": "a40b26ccf088d410fc3142cfa73ede08eca38d90",
+  "captureProvenance": "Actual website UI rendered using verbatim MainActivity Android bootstrap and user agent in Chromium. Not APK, emulator, or physical-device screenshots. No invented app screens or AI responses.",
+  "interfaceChangesAfterCapture": "Only Profile recovery spacing, source/security and release-verification changes; these captured Home/matcher/Explore/Jonas views are unchanged.",
+  "nativeBootstrapSha256": "8f5e9336bcbe8fee3eb10e6654a63c85fd049ac08966431ebf71f488248a080e",
+  "files": [
+    {
+      "path": "en-US/graphics/feature-graphic.png",
+      "sha256": "1b546397a5a4ca116b6b187a031b2055e2165c6c237a99b0e52c09c7617666c9",
+      "width": 1024,
+      "height": 500,
+      "mode": "RGB"
+    },
+    {
+      "path": "en-US/graphics/phone-screenshots/01-home.png",
+      "sha256": "d9e9432da3c5881df73099b005bb4c6cfc7480461fb999fec51a3f9299421e1a",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    },
+    {
+      "path": "en-US/graphics/phone-screenshots/02-matcher.png",
+      "sha256": "7b34274b2fc52c65429196bdc4bb7848d896a7b3e7040c8d35ebd6084c870313",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    },
+    {
+      "path": "en-US/graphics/phone-screenshots/03-explore.png",
+      "sha256": "6e9dcfbcbf1fd1afaa9ab24e17986e32520b26f0295a60758997da994079e3d4",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    },
+    {
+      "path": "en-US/graphics/phone-screenshots/04-jonas-idle.png",
+      "sha256": "1ace6589acecb98e0259915e1aa4cf1caddd666b31ff3814eb916209151f5dde",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    },
+    {
+      "path": "pt-BR/graphics/feature-graphic.png",
+      "sha256": "29e9972417d4128a31aac188afcc3937534b2c6a18a5e2cd21acf2e365900a4c",
+      "width": 1024,
+      "height": 500,
+      "mode": "RGB"
+    },
+    {
+      "path": "pt-BR/graphics/phone-screenshots/01-home.png",
+      "sha256": "6a1b51c239118c9fca5a66472d654fa2be5e772963a36efc0c25887c39d576d9",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    },
+    {
+      "path": "pt-BR/graphics/phone-screenshots/02-matcher.png",
+      "sha256": "bcbf167fa0eeb1bb9ee0c340f47f38d64771afeeba636815193842161124410f",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    },
+    {
+      "path": "pt-BR/graphics/phone-screenshots/03-explore.png",
+      "sha256": "1879e6eb497927aed5c16b98d2143a44fea888bec8ab116889ceb0cc2d46a06b",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    },
+    {
+      "path": "pt-BR/graphics/phone-screenshots/04-jonas-idle.png",
+      "sha256": "a00d9c1c5275f520c986e3fa268dc2d4914eefdc1cbd305e62a341a9f2c38745",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB"
+    }
+  ]
+}

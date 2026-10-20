@@ -20,6 +20,7 @@
  const APPLE_AUDIO_REGIONS=new Set('AT AU BE CA CH DE DK ES FI FR GB GR IE IT JP LU NL NO NZ PT SE US'.split(' '));
  const AUDIBLE_DOMAINS={BR:'audible.com.br',GB:'audible.co.uk',CA:'audible.ca',AU:'audible.com.au',JP:'audible.co.jp',DE:'audible.de',FR:'audible.fr',IT:'audible.it',ES:'audible.es',IN:'audible.in',US:'audible.com'};
  const KOBO_LOCALES={BR:'br/pt',GB:'gb/en',CA:'ca/en',AU:'au/en',JP:'jp/ja',PT:'pt/pt',US:'us/en'};
+ function searchLabel(provider,fallback){return root?.MatchAppReadingDetailsCopy?.text?.('audio.search',{provider})||fallback;}
  function countryCode(market){
   if(typeof root?.MatchAppCountry?.resolveCountryCode==='function')return root.MatchAppCountry.resolveCountryCode(market)||'';
   const code=String(market||'').trim().toUpperCase();
@@ -123,9 +124,9 @@
    term=encodeURIComponent(title+' '+author);
   const region=countryCode(market),audible=AUDIBLE_DOMAINS[region],kobo=KOBO_LOCALES[region];
   const suggestions=[
-   {provider:'Google Play Books',url:'https://play.google.com/store/search?q='+term+'&c=books',label:'Search Google Play audio editions',region:''},
-   {provider:'Audible',url:audible?'https://www.'+audible+'/search?keywords='+term:'https://www.audible.com/',label:'Search Audible audio editions',region:audible?region:''},
-   {provider:'Kobo',url:'https://www.kobo.com/'+(kobo?kobo+'/':'')+'search?query='+term,label:'Search Kobo audio editions',region:kobo?region:''}
+   {provider:'Google Play Books',url:'https://play.google.com/store/search?q='+term+'&c=books',label:searchLabel('Google Play Books','Search Google Play audio editions'),region:''},
+   {provider:'Audible',url:audible?'https://www.'+audible+'/search?keywords='+term:'https://www.audible.com/',label:searchLabel('Audible','Search Audible audio editions'),region:audible?region:''},
+   {provider:'Kobo',url:'https://www.kobo.com/'+(kobo?kobo+'/':'')+'search?query='+term,label:searchLabel('Kobo','Search Kobo audio editions'),region:kobo?region:''}
   ];
   return suggestions.map(x=>Object.freeze({...x,verified:false,kind:'search-only'}));
  }

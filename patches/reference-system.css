@@ -1,0 +1,194 @@
+@import url('/patches/reference-header.css?v=20261020-header1&polish=20261020-ui1');
+@import url('/patches/reference-dock.css?v=20261020-dock1');
+@import url('/patches/reference-palette-tokens.css?v=20261020-palettes1');
+@import url('/patches/reference-pills.css?v=20261020-pills1&polish=20261020-ui1');
+/* Reference art direction. This layer changes presentation, never ad inventory. */
+@layer ma-reference {
+html.ma-reference {
+ --cinema-bg:#0b050f;--cinema-surface:#110b17;--cinema-panel:#19111e;
+ --cinema-text:#f4f0e9;--cinema-muted:#bab1bd;--cinema-gold:#e4ba67;
+ --cinema-line:#705938;--cinema-ink:#211509;--cinema-page-gutter:0px;--cinema-grid-gap:8px;--cinema-panel-padding:12px;--cinema-serif:Georgia,"Times New Roman",serif;
+ --cinema-danger:#ed9d9d;
+ --gold:var(--cinema-gold);--text-primary:var(--cinema-text);--text-secondary:var(--cinema-muted);
+ --gold-core:var(--cinema-gold);--gold-mid:var(--cinema-gold);--gold-glow:color-mix(in srgb,var(--cinema-gold) 75%,white);--gold-deep:color-mix(in srgb,var(--cinema-gold) 75%,var(--cinema-ink));
+ --edge:color-mix(in srgb,var(--cinema-gold) 32%,transparent);--edge-strong:var(--cinema-line);--edge-subtle:color-mix(in srgb,var(--cinema-gold) 18%,transparent);--text-muted:var(--cinema-muted);
+ color-scheme:dark;
+ font-size:calc(16px * var(--font-scale,1))!important;
+}
+html.ma-reference:is([data-theme="cinema"],[data-theme="ocean"],[data-theme="sunrise"],[data-theme="arcade"]) {
+ --cinema-bg:var(--theme-bg);--cinema-surface:var(--theme-surface);--cinema-panel:var(--theme-panel);
+ --cinema-text:var(--theme-text);--cinema-muted:var(--theme-muted);--cinema-gold:var(--theme-accent);
+ --cinema-line:var(--theme-border);--cinema-ink:var(--theme-ink);
+}
+html.ma-reference[data-theme="sunrise"] {color-scheme:light;}
+html.ma-reference body {
+ color:var(--cinema-text)!important;background:radial-gradient(ellipse 80% 55% at 90% 30%,#260d272e,transparent 80%),var(--cinema-bg)!important;
+ font-family:system-ui,-apple-system,"Segoe UI","Noto Sans",sans-serif!important;
+ -webkit-font-smoothing:antialiased;
+}
+html.ma-reference body.ma-has-cinema-dock {padding-bottom:calc(94px + env(safe-area-inset-bottom))!important;}
+html.ma-reference body::before {opacity:.035!important;animation:none!important;}
+html.ma-reference :is(h1,h2,h3) {text-wrap:balance;}
+html.ma-reference :is(input,select,textarea) {color:var(--cinema-text);accent-color:var(--cinema-gold);}
+html.ma-reference :is(button,a,summary,input,select,textarea):focus-visible {outline:2px solid var(--cinema-gold)!important;outline-offset:4px!important;}
+html.ma-reference :is(.gold-btn,.hub-action,.ma-cinema-hero-action) {
+ border:1px solid var(--cinema-gold)!important;background:linear-gradient(115deg,color-mix(in srgb,var(--cinema-gold) 75%,white),var(--cinema-gold))!important;
+ color:var(--cinema-ink)!important;box-shadow:inset 0 1px #ffedbe66,0 4px 18px #dba34d12!important;
+ border-radius:9px!important;text-shadow:none!important;text-decoration:none;
+}
+html.ma-reference :is(.ma-cinema-hero-action,.ma-cinema-search) {display:inline-flex;align-items:center;justify-content:center;min-height:44px;}
+html.ma-reference .ma-cinema-hero-action {gap:16px;padding:9px 22px;font-family:var(--cinema-serif)!important;font-size:clamp(1rem,2.5vw,1.4rem);}
+html.ma-reference .ma-cinema-hero-action::after {content:'›';font:1.7em/.7 system-ui;}
+html.ma-reference .ma-cinema-search {
+ box-sizing:border-box;flex:0 0 44px;width:44px;height:44px;padding:10px!important;
+ color:var(--cinema-gold)!important;background:transparent!important;border:0!important;border-radius:50%!important;
+}
+html.ma-reference .ma-cinema-search svg {display:block;width:25px;height:25px;}
+/* Legacy header paint containment must not clip an expanded controls menu. */
+html.ma-reference :is(#mh-topbox.ma-cinema-header-compact,#ref-explore-header) {contain:none!important;overflow:visible!important;}
+html.ma-reference .ma-cinema-section-heading {display:flex;align-items:center;justify-content:space-between;gap:16px;margin:14px 0 8px;}
+html.ma-reference .ma-cinema-section-heading h2 {font:500 clamp(1.15rem,2.4vw,1.7rem)/1.2 var(--cinema-serif)!important;color:var(--cinema-gold)!important;margin:0!important;}
+html.ma-reference .ma-cinema-section-heading a {font-size:.85rem!important;color:var(--cinema-gold)!important;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;gap:10px;}
+html.ma-reference .ma-cinema-section-heading a::after {content:'›';font-size:1.6em;}
+html.ma-reference nav.ma-cinema-dock {
+ position:fixed;z-index:10000;inset:auto max(5px,env(safe-area-inset-right)) max(5px,env(safe-area-inset-bottom)) max(5px,env(safe-area-inset-left));
+ display:flex;align-items:stretch;justify-content:space-around;gap:3px;
+ padding:9px 8px 7px;box-sizing:border-box;min-height:72px;
+ border:0;border-top:1px solid #70593866;border-radius:0;background:color-mix(in srgb,var(--cinema-bg) 95%,transparent);
+ backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 -8px 30px #0002;
+}
+html.ma-reference nav.ma-cinema-dock a {
+ position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex:1 1 0;min-width:0;
+ min-height:48px;padding:2px 3px 7px;color:var(--cinema-muted)!important;background:transparent!important;border:0!important;
+ box-shadow:none!important;text-decoration:none;font:400 .78rem/1.25 system-ui!important;text-align:center;overflow-wrap:anywhere;
+}
+html.ma-reference nav.ma-cinema-dock svg {width:25px;height:25px;flex-shrink:0;transition:transform .2s ease;}
+html.ma-reference nav.ma-cinema-dock a.is-active {color:var(--cinema-gold)!important;}
+html.ma-reference nav.ma-cinema-dock a.is-active::after {content:'';position:absolute;bottom:0;width:30px;height:2px;border-radius:2px;background:var(--cinema-gold);}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route="home"].is-active svg {fill:currentColor;}
+/* Jewel-tone accents give each destination its own restrained color. */
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route="home"] {--nav-accent:#edc071;}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route="explore"] {--nav-accent:#82d5c5;}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route="matches"] {--nav-accent:#c1a1f2;}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route="list"] {--nav-accent:#e8a6bd;}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route="profile"] {--nav-accent:#9dc9eb;}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route] svg {color:var(--nav-accent)!important;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--nav-accent) 16%,transparent));}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route].is-active {color:var(--nav-accent)!important;background:linear-gradient(180deg,color-mix(in srgb,var(--nav-accent) 11%,transparent),transparent)!important;border-radius:10px!important;}
+html.ma-reference nav.ma-cinema-dock a[data-cinema-route].is-active::after {background:var(--nav-accent)!important;box-shadow:0 0 8px color-mix(in srgb,var(--nav-accent) 40%,transparent);}
+html.ma-reference nav.ma-cinema-dock a:hover svg {transform:translateY(-2px);}
+@media(min-width:1000px){
+ html.ma-reference nav.ma-cinema-dock {max-width:720px;margin-inline:auto;inset-inline:5px;border:1px solid #70593899;border-radius:18px;padding:9px 20px;bottom:14px;}
+}
+@media(max-width:359px){html.ma-reference nav.ma-cinema-dock a {font-size:.69rem!important;}html.ma-reference nav.ma-cinema-dock svg{width:23px;height:23px;}}
+@media(prefers-reduced-motion:reduce){html.ma-reference nav.ma-cinema-dock svg{transition:none;}html.ma-reference nav.ma-cinema-dock a:hover svg{transform:none;}}
+html.ma-reference.reduce-motion nav.ma-cinema-dock svg{transition:none;}
+@media(forced-colors:active){html.ma-reference nav.ma-cinema-dock{border:1px solid CanvasText;}html.ma-reference nav.ma-cinema-dock a.is-active{outline:1px solid Highlight;}}
+@media print {html.ma-reference nav.ma-cinema-dock{display:none!important;}html.ma-reference body.ma-has-cinema-dock{padding-bottom:0!important;}}
+
+/* Shared overlays also live on Home, where secondary-page paint is absent.
+ * Only existing dialog surfaces and controls are themed; visibility, source
+ * artwork, companion panels, provider icons and payment handlers stay owned. */
+html.ma-reference:not(#ma-reference-legacy) :is(
+ #main-auth-modal > .premium-card, #share-modal > .share-sheet,
+ #out-of-matches-modal > .oom-sheet, #rematch-modal > .premium-card,
+ #notforme-modal > .nfm-box, dialog, .ma-menu
+) {
+ color:var(--cinema-text)!important;
+ background:linear-gradient(145deg,var(--cinema-panel),var(--cinema-surface) 78%)!important;
+ border:1px solid color-mix(in srgb,var(--cinema-gold) 32%,transparent)!important;
+ border-radius:13px!important;
+ box-shadow:0 20px 60px #0006,inset 0 1px #ffe5b70a!important;
+}
+html.ma-reference:not(#ma-reference-legacy) dialog::backdrop,
+html.ma-reference:not(#ma-reference-legacy) :is(.ma-pro-scrim,.matchapp-notification-backdrop) {
+ background:color-mix(in srgb,var(--cinema-bg) 86%,transparent)!important;
+}
+html.ma-reference:not(#ma-reference-legacy) :is(#main-auth-modal,#share-modal,#out-of-matches-modal,#rematch-modal,#notforme-modal) {
+ background:color-mix(in srgb,var(--cinema-bg) 86%,transparent)!important;
+ z-index:2147483400!important;
+}
+html.ma-reference:not(#ma-reference-legacy) :is(.ma-pro-scrim,.matchapp-notification-backdrop) {z-index:2147483400!important;}
+html.ma-reference:not(#ma-reference-legacy) :is(.ma-pro-dialog,#matchapp-notifications) {z-index:2147483401!important;}
+html.ma-reference:not(#ma-reference-legacy) :is(
+ #main-auth-modal .passkey-box, #main-auth-modal .phone-auth-panel,
+ #main-auth-modal .auth-tabs, #main-auth-modal .auth-form-section,
+ .ma-pro-dialog .ma-pro-state, .ma-pro-dialog .ma-pro-offer,
+ #matchapp-notifications .matchapp-notification-settings,
+ #matchapp-notifications .matchapp-notification-item
+) {
+ background:var(--cinema-surface)!important;color:var(--cinema-text)!important;
+ border-color:color-mix(in srgb,var(--cinema-gold) 32%,transparent)!important;
+ border-radius:9px!important;box-shadow:none!important;
+}
+html.ma-reference:not(#ma-reference-legacy) :is(
+ #main-auth-modal h3, #share-modal .share-title, #out-of-matches-modal .oom-headline,
+ #notforme-modal h3, #matchapp-notifications h2, .ma-pro-dialog .ma-pro-title
+) {font-family:var(--cinema-serif)!important;color:var(--cinema-gold)!important;text-transform:none!important;letter-spacing:0!important;}
+html.ma-reference:not(#ma-reference-legacy) :is(
+ #main-auth-modal input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
+ #share-modal .tg-send-input,#share-modal .tg-save-name,.ma-pro-country select
+) {
+ box-sizing:border-box!important;min-height:44px!important;max-width:100%!important;min-width:0!important;
+ color:var(--cinema-text)!important;background:var(--cinema-bg)!important;
+ border:1px solid color-mix(in srgb,var(--cinema-gold) 32%,transparent)!important;
+ border-radius:8px!important;box-shadow:inset 0 1px 5px #0003!important;
+ font-family:system-ui,-apple-system,'Segoe UI',sans-serif!important;
+}
+html.ma-reference:not(#ma-reference-legacy) :is(
+ #main-auth-modal .auth-link-btn,#main-auth-modal #resend-confirmation-btn,
+ #main-auth-modal .phone-auth-secondary,#main-auth-modal .phone-auth-entry,
+ #main-auth-modal .auth-tab,#main-auth-modal .auth-password-toggle,
+ #main-auth-modal .auth-close,#share-modal .share-close,
+ #share-modal .share-utils button,#share-modal .share-grid button,
+ #out-of-matches-modal .oom-later,#out-of-matches-modal .oom-close,
+ #rematch-modal button[onclick='closeRematchPrompt()'],
+ #notforme-modal .nfm-btn-ghost,#notforme-modal .nfm-cancel,
+ #matchapp-notifications button,#matchapp-notifications .matchapp-notification-toolbar a,
+ .ma-pro-dialog .ma-pro-button--quiet,.ma-pro-dialog .ma-pro-close
+) {
+ color:var(--cinema-gold)!important;background:var(--cinema-panel)!important;
+ border:1px solid color-mix(in srgb,var(--cinema-gold) 32%,transparent)!important;
+ border-radius:9px!important;box-shadow:none!important;text-shadow:none!important;
+ min-height:44px!important;white-space:normal!important;overflow-wrap:break-word;
+}
+html.ma-reference:not(#ma-reference-legacy) :is(
+ #main-auth-modal .gold-btn,#main-auth-modal .google-signin-btn,
+ #main-auth-modal .passkey-button,#main-auth-modal .phone-auth-action,
+ #share-modal .share-native,#share-modal .tg-send-btn,
+ .ma-pro-dialog .ma-pro-button:not(.ma-pro-button--quiet):not(.ma-pro-close)
+) {
+ color:var(--cinema-ink)!important;
+ background:linear-gradient(115deg,color-mix(in srgb,var(--cinema-gold) 75%,white),var(--cinema-gold))!important;
+ border:1px solid var(--cinema-gold)!important;border-radius:9px!important;min-height:44px!important;
+ box-shadow:inset 0 1px #ffedbe66,0 4px 18px #dba34d12!important;text-shadow:none!important;
+}
+html.ma-reference:not(#ma-reference-legacy) :is(#main-auth-modal .auth-tab.active,.ma-pro-offer:has(input:checked),#matchapp-notifications .is-unread) {
+ border-color:var(--cinema-gold)!important;
+ background:color-mix(in srgb,var(--cinema-gold) 12%,var(--cinema-surface))!important;
+ color:var(--cinema-text)!important;
+}
+html.ma-reference:not(#ma-reference-legacy) #main-auth-modal :is(.auth-close,.auth-password-toggle) {box-sizing:border-box!important;width:44px!important;min-width:44px!important;height:44px!important;padding:8px!important;}
+html.ma-reference:not(#ma-reference-legacy) #main-auth-modal .auth-password-toggle {top:50%!important;transform:translateY(-50%)!important;}
+html.ma-reference:not(#ma-reference-legacy) #main-auth-modal .auth-password-field input {padding-inline-end:58px!important;}
+html.ma-reference:not(#ma-reference-legacy) #matchapp-notifications :is(.matchapp-notification-header,.matchapp-notification-toolbar,.matchapp-notification-scroll) {background:var(--cinema-surface)!important;border-color:color-mix(in srgb,var(--cinema-gold) 24%,transparent)!important;}
+html.ma-reference:not(#ma-reference-legacy) #matchapp-notifications :is(.matchapp-notification-empty,.matchapp-notification-help,.matchapp-notification-delivery small,.matchapp-notification-copy > span,.matchapp-notification-copy small) {color:var(--cinema-muted)!important;}
+html.ma-reference:not(#ma-reference-legacy) #matchapp-notifications#matchapp-notifications :is([data-notify-delete-all],.matchapp-notification-delete) {color:var(--cinema-danger)!important;}
+html.ma-reference:not(#ma-reference-legacy) :is(#main-auth-modal,.ma-pro-dialog,#share-modal) :is(input,textarea)::placeholder {color:var(--cinema-muted)!important;opacity:.8!important;}
+html.ma-reference:not(#ma-reference-legacy) :is(#main-auth-modal#main-auth-modal,.ma-pro-dialog,#share-modal) :is(input,select,textarea):is(:user-invalid,[aria-invalid='true']) {border-color:var(--cinema-danger)!important;}
+html.ma-reference:not(#ma-reference-legacy) :is(#main-auth-modal,.ma-pro-dialog,#share-modal,#notforme-modal,#out-of-matches-modal) :is(button,input,select,textarea):disabled {opacity:.55!important;cursor:not-allowed!important;box-shadow:none!important;}
+html.ma-reference:not(#ma-reference-legacy) :is(#main-auth-modal,#share-modal,#notforme-modal,#out-of-matches-modal,.ma-pro-dialog,#matchapp-notifications) a:not([class]) {color:var(--cinema-gold)!important;text-underline-offset:3px;}
+html.ma-reference:not(#ma-reference-legacy) body.page-home #advanced-filters .crit-toggle {
+ background:var(--cinema-surface)!important;border:1px solid color-mix(in srgb,var(--cinema-gold) 32%,transparent)!important;
+ border-radius:9px!important;box-shadow:none!important;animation:none!important;min-height:44px!important;
+}
+html.ma-reference:not(#ma-reference-legacy) body.page-home #advanced-filters .crit-toggle :is(.crit-toggle-label,.crit-toggle-summary,.crit-toggle-chevron) {color:var(--cinema-text)!important;}
+html.ma-reference:not(#ma-reference-legacy) .ma-menu {border-radius:10px!important;}
+html.ma-reference:not(#ma-reference-legacy) .ma-menu :is(a,button) {color:var(--cinema-text)!important;border-color:color-mix(in srgb,var(--cinema-gold) 24%,transparent)!important;min-height:44px!important;}
+/* The source rail deliberately remains LTR for native swiping. Its RTL parent
+ * needs the same physical grid alignment as the other visual panels. */
+html.ma-reference:not(#ma-reference-legacy)[dir='rtl'] body.page-home #trending-rail#trending-rail {margin-inline-start:0!important;margin-inline-end:var(--home-grid-offset,0px)!important;}
+html.ma-reference[data-theme='sunrise'] {--cinema-danger:#a12d35;}
+html.ma-reference:lang(ar) {--cinema-serif:'Noto Naskh Arabic','Noto Sans Arabic',Tahoma,sans-serif;}
+html.ma-reference:lang(hi) {--cinema-serif:'Noto Sans Devanagari',Mangal,sans-serif;}
+
+}

@@ -144,13 +144,15 @@ function buildLabels(){
   if(typeof value==='string'&&!/[<>]/.test(value)&&value.length>3&&!reverse.has(value.trim()))reverse.set(value.trim(),key);
  }));
 }
+const brandOwner='.ma-brand-lockup,.matchapp-brand-link,.ma-brand-home-link,.ma-reference-header-brand,.ebook-text-wordmark,[class^="ebook-brand-"],[class*=" ebook-brand-"]';
 function localizeControl(node){
+ if(node.closest(brandOwner))return;
  const key=reverse.get((node.getAttribute('aria-label')||node.getAttribute('title')||'').trim());
  const aria=key?.startsWith('composer.extra.')?(extra[language()]||extra.en)[Number(key.split('.').pop())]:key&&window.t?.(key);
  if(aria){node.setAttribute('aria-label',aria);node.setAttribute('title',aria);}
  const walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);let text;
  while((text=walker.nextNode())){
-  if(text.parentElement?.closest('[translate="no"],svg,script,style,textarea,.discover-card,.marquee-item,.chat-user,.chat-answer-text'))continue;
+  if(text.parentElement?.closest('[translate="no"],'+brandOwner+',svg,script,style,textarea,.discover-card,.marquee-item,.chat-user,.chat-answer-text'))continue;
   const source=text.nodeValue.trim(),labelKey=reverse.get(source);
   const translated=labelKey?.startsWith('composer.extra.')?(extra[language()]||extra.en)[Number(labelKey.split('.').pop())]:labelKey&&window.t?.(labelKey);
   if(translated&&translated!==source&&!/[<>]/.test(translated))text.nodeValue=text.nodeValue.replace(source,translated);
