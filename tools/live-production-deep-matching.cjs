@@ -79,8 +79,13 @@ async function guarded(browser,label,fn){
      return getMatchCriteria();
    });
    assert(chosen.cat.includes('Spotify playlist')&&chosen.plat.includes('Spotify')&&chosen.mood.includes('cozy comfort watch'),'music form did not preserve choices');
-   await page.locator('.lazy-head[data-fold-key="concierge"]').click();
-   await page.locator('button[onclick="triggerMatch(false)"]').click();
+   const matchAction=page.locator('button[onclick="triggerMatch(false)"]');
+   if(!await matchAction.isVisible()){
+    const concierge=page.locator('.lazy-head[data-fold-key="concierge"]');
+    assert(await concierge.isVisible(),'the actual Match action or its original fold must be reachable');
+    if(await concierge.getAttribute('aria-expanded')!=='true')await concierge.click();
+   }
+   await matchAction.click();
    await page.waitForFunction(()=>{
     const box=document.querySelector('#result-box'),title=document.querySelector('#res-title')?.textContent?.trim();
     // The title paints before metadata and the destination finish resolving.
