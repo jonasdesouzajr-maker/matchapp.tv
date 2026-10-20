@@ -540,7 +540,9 @@
   const ADULT_IMAGE_QUEUE=[],ADULT_IMAGE_PRIORITY=[];
   let adultImageActive=0;
   function drainAdultImageProbes(){
-    while(adultImageActive<6&&(ADULT_IMAGE_PRIORITY.length||ADULT_IMAGE_QUEUE.length)){
+    // Keep two of the six lanes available for art entering view. Background
+    // repairs must not hold a new result behind stalled offscreen downloads.
+    while(adultImageActive<(ADULT_IMAGE_PRIORITY.length?6:4)&&(ADULT_IMAGE_PRIORITY.length||ADULT_IMAGE_QUEUE.length)){
       const start=(ADULT_IMAGE_PRIORITY.length?ADULT_IMAGE_PRIORITY:ADULT_IMAGE_QUEUE).shift();
       adultImageActive++;
       start();
@@ -577,6 +579,66 @@
     });
     return pending;
   }
+  function adultPosterNearView(img,margin=240){
+    if(typeof img.getBoundingClientRect!=='function')return true;
+    const r=img.getBoundingClientRect();
+    return r.width>0&&r.height>0&&r.bottom>=-margin&&r.right>=-margin&&
+      r.top<=(window.innerHeight||document.documentElement.clientHeight)+margin&&
+      r.left<=(window.innerWidth||document.documentElement.clientWidth)+margin;
+  }
+  let adultPosterVisibility=null;
+  function deferOffscreenPoster(img,state){
+    if(img.loading!=='lazy'||adultPosterNearView(img)||typeof IntersectionObserver!=='function')return false;
+    if(!adultPosterVisibility)adultPosterVisibility=new IntersectionObserver(entries=>{
+      for(const entry of entries){
+        const image=entry.target,current=image.__matchappAdultPoster;
+        if(!image.isConnected){adultPosterVisibility.unobserve(image);continue;}
+        if(!entry.isIntersecting||!current)continue;
+        adultPosterVisibility.unobserve(image);current.waitingForView=false;
+        image.loading='eager';image.decoding='async';
+        if(adultPosterNearView(image,0))image.fetchPriority='high';
+        recoverAdultPoster(image,current.title,current.meta,current.preferred);
+      }
+    },{rootMargin:'240px'});
+    if(!state.waitingForView){state.waitingForView=true;adultPosterVisibility.observe(img);}
+    return true;
+  }
+  function fastVisibleAdultPoster(img,state,url){
+    const source=String(url||''),match=/^(https:\/\/image\.tmdb\.org\/t\/p\/)(?:w[0-9]+|original)\/([A-Za-z0-9_.-]+)$/.exec(source);
+    if(!match||!adultPosterNearView(img))return false;
+    if(state.fastPaint?.active&&state.fastPaint.source===source)return true;
+    if(state.fastPaint)state.fastPaint.active=false;
+    const size=value=>/\/original\//.test(value)?Infinity:Number(String(value).match(/\/w(\d+)\//)?.[1]||0);
+    const compact=match[1]+((state.isRail||state.isPortfolio||state.isWatch)?'w342/':'w500/')+match[2];
+    const alternate=compact===source?match[1]+'w780/'+match[2]:compact;
+    const urls=[...new Set([source,alternate])],run={active:true,source,shown:false,rank:0,remaining:urls.length};
+    state.fastPaint=run;
+    const current=()=>run.active&&img.isConnected&&img.__matchappAdultPoster===state&&state.fastPaint===run;
+    for(const candidate of urls)posterImageLoads(candidate,true).then(valid=>{
+      if(!current())return;
+      if(valid){
+        const shown=String(img.currentSrc||img.src||'');
+        const loaded=img.complete&&img.naturalWidth>0&&sameOriginalArtwork(shown,source);
+        if(loaded){run.shown=true;run.rank=Math.max(run.rank,size(shown));}
+        if(size(candidate)>=run.rank){
+          run.shown=true;run.rank=size(candidate);
+          img.dataset.matchappFallbackStage='verified';
+          if(shown!==candidate){img.removeAttribute?.('srcset');img.src=candidate;}
+          if(img.id==='res-poster-img'&&window.globalMatchTitle===state.title){
+            const publish=()=>{if(img.__matchappAdultPoster===state&&img.isConnected&&String(img.currentSrc||img.src||'')===candidate&&img.naturalWidth>0){
+              if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(candidate,state.title);else window.globalMatchPoster=candidate;
+            }};
+            if(img.complete&&img.naturalWidth>0)publish();else img.addEventListener('load',publish,{once:true});
+          }
+        }
+      }else state.failed.add(candidate);
+      if(--run.remaining===0){
+        run.active=false;if(state.fastPaint===run)state.fastPaint=null;
+        if(!run.shown&&img.__matchappAdultPoster===state&&img.isConnected)void repairAdultPoster(img,state);
+      }
+    });
+    return true;
+  }
   async function repairAdultPoster(img,state){
     if(state.repairing)return;
     state.repairing=true;
@@ -593,7 +655,7 @@
       const worker=async()=>{
         while(!settled&&next<urls.length){
           const url=urls[next++];let valid=false;
-          try{valid=await posterImageLoads(url,!state.isRail);}catch(_){}
+          try{valid=await posterImageLoads(url,!state.isRail||adultPosterNearView(img));}catch(_){}
           if(valid){if(!settled){settled=true;resolve(url);}return;}
           state.failed.add(url);
           if(--remaining===0&&!settled)resolve('');
@@ -701,6 +763,7 @@
     }
     state.isRail=isRail;
     state.isPortfolio=isPortfolio;
+    state.isWatch=isWatch;
     if(Number.isSafeInteger(tmdbId)&&tmdbId>0){
       state.tmdbId=tmdbId;
     }
@@ -730,6 +793,8 @@
         if(!active)return;
         const bad=img.currentSrc||img.src;
         if(bad)active.failed.add(bad);
+        if(deferOffscreenPoster(img,active))return;
+        if(active.fastPaint?.active){active.fastPaint.shown=false;active.fastPaint.rank=0;return;}
         if(!String(img.src||'').startsWith('data:image/svg+xml')){
           img.dataset.matchappFallbackStage='local';
           const cover=localPoster(active.title);
@@ -757,6 +822,12 @@
       return; // Never blank a working original while checking fresh artwork.
     }
     if(current&&TRUSTED_POSTER.test(current)&&!img.complete){
+      // Native lazy images can stay pending offscreen indefinitely. Arm their
+      // exact-art recovery only as they approach view, not 52 rail tiles at once.
+      if(deferOffscreenPoster(img,state))return;
+      // Race only two renditions of this same verified asset now. A compact
+      // result can paint immediately; a later larger rendition only upgrades it.
+      if(fastVisibleAdultPoster(img,state,current))return;
       // Android WebView can leave a stalled remote <img> loading forever, with
       // neither load nor error. Keep the title card visible and give it a
       // bounded, exact-identity alternate-poster recovery after 8 seconds.

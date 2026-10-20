@@ -11,7 +11,7 @@ function verify(raw,route,family){
   assert.equal(doc.querySelector('style[data-cinema-layer]').textContent,'@layer ma-reference;');
   assert.equal(doc.querySelectorAll('link[href^="/patches/reference-system.css"]').length,1);
   assert.equal(doc.querySelectorAll('link[href^="/patches/reference-'+family+'.css"]').length,1);
-  assert.equal(doc.querySelectorAll('link[href^="/patches/reference-"]:not([href^="/patches/reference-system.css"]):not([href^="/patches/reference-'+family+'.css"])').length,0);
+  assert.equal(doc.querySelectorAll('link[rel="stylesheet"][href^="/patches/reference-"]:not([href^="/patches/reference-system.css"]):not([href^="/patches/reference-'+family+'.css"])').length,0);
   assert.equal(doc.querySelectorAll('script[src^="/patches/reference-system.js"]').length,1);assert.equal(doc.querySelector('script[src^="/patches/reference-system.js"]').defer,true);
   assert.equal(new URL(doc.querySelector('script[src^="/patches/reference-system.js"]').getAttribute('src'),'https://matchapp.tv').searchParams.get('dialogs'),'20261020-1','fresh and previously copied runtime references receive the current dialog loader');
   assert.equal(new URL(doc.querySelector('script[src^="/patches/reference-system.js"]').getAttribute('src'),'https://matchapp.tv').searchParams.get('pills'),'20261020-1','copied runtime references receive the current pill loader');

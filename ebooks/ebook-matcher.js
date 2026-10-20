@@ -436,124 +436,113 @@ function showVerifiedCover(img,fall,url,timeout=7000,replaceURL=null,currentRun=
   if(img.complete&&img.naturalWidth>30&&coverURL(img)===url)settle(true);
  });
 }
-async function showSourceCover(img,fall,url){
- const sharp=window.MatchAppBookCoverIdentity?.sharpAppleCoverUrl(url);
- if(!sharp)return showVerifiedCover(img,fall,url);
- if(!img?.isConnected)return false;
- if(hasUsableCover(img))return true;
- // Keep both renditions of this exact verified asset alive. Replacing the
- // result src at 2500ms cancelled a sharper download that could still succeed.
- const state=img.__matchappBookCover,run={active:true},deadlineAt=Date.now()+9500,candidates=[sharp,url].map(src=>({src,loader:null,failed:false,ready:false}));
- state.sourceRun=run;
+function showExactCoverRenditions(img,fall,url,sharp){
+ if(!url||!img?.isConnected||/^data:/i.test(url))return Promise.resolve(false);
+ // The compact rendition is derived only from the strict verifier's 600px
+ // result. All three URLs retain the exact original asset and edition path.
+ let preview=null;
+ if(sharp){const compact=new URL(sharp);compact.pathname=compact.pathname.replace(/\/600x600bb\.jpg$/,'/300x300bb.jpg');preview=compact.href}
+ const candidates=[...new Set([sharp,preview,url].filter(Boolean))].map(src=>({src,loader:null,failed:false,ready:false}));
+ const state=img.__matchappBookCover||(img.__matchappBookCover={identity:'',pending:null,verified:null});
+ if(hasUsableCover(img)&&!candidates.some(item=>item.src===coverURL(img)))return Promise.resolve(true);
+ state.sourceRun?.cancel?.();
+ const run={active:true};state.sourceRun=run;
+ if(!hasUsableCover(img))img.style.opacity='0';
  const current=()=>run.active&&img.isConnected&&img.__matchappBookCover===state&&state.sourceRun===run;
  return new Promise(resolve=>{
-   let finished=false,originalTimer,handoffRank=Infinity;
-   const finish=()=>{
-    if(finished)return;finished=true;
-    const valid=current()&&hasUsableCover(img);run.active=false;
-    clearTimeout(deadline);clearTimeout(originalTimer);
-    for(const item of candidates)if(item.loader){
-     item.loader.onload=item.loader.onerror=null;
-     item.loader.removeAttribute('src');
-    }
-    resolve(valid);
-   };
-   const deadline=setTimeout(finish,9500);
-   const present=async(index)=>{
-    const candidate=candidates[index];
-    if(finished||!current()){finish();return}
-    if(index>=handoffRank)return;
-    handoffRank=index;
-    const remaining=deadlineAt-Date.now();
-    const good=remaining>0&&await showVerifiedCover(img,fall,candidate.src,remaining,index===0?url:null,current);
-    if(finished||!current()){finish();return}
-    if(good){if(index===0||candidates[0].failed)finish();return}
-    candidate.failed=true;handoffRank=Infinity;
-    if(index===0){start(1);if(candidates[1].ready)present(1)}
-    if(candidates.every(item=>item.failed))finish();
-   };
-   const start=index=>{
-    const candidate=candidates[index];
-    if(finished||!candidate||candidate.loader)return;
-    if(!current()){finish();return}
-    const loader=candidate.loader=new window.Image();
-    loader.loading='eager';loader.decoding='async';
-    const failed=()=>{
-     if(finished||candidate.failed)return;
-     if(!current()){finish();return}
-     candidate.failed=true;
-     if(index===0)start(1);
-     if(candidates.every(item=>item.failed)||(index===0&&hasUsableCover(img)))finish();
-    };
-    const ready=()=>{
-     if(finished||candidate.preparing||!loader.complete||loader.naturalWidth<=30)return;
-     if(!current()){finish();return}
-     candidate.preparing=true;
-     Promise.resolve().then(()=>typeof loader.decode==='function'?loader.decode():null)
-      .then(()=>{candidate.ready=true;present(index)},failed);
-    };
-    loader.onload=ready;loader.onerror=failed;loader.src=candidate.src;
-    if(loader.complete&&loader.naturalWidth>30)ready();
-   };
-   start(0);
-   if(!finished&&!candidates[1].loader)originalTimer=setTimeout(()=>start(1),2500);
- });
-}
-function showVerifiedAudioCover(img,fall,url){
- if(!url||!img?.isConnected)return Promise.resolve(false);
- const sharp=window.MatchAppBookCoverIdentity?.sharpAppleCoverUrl(url);
- const candidates=[...new Set([sharp,url].filter(Boolean))].map(src=>({src,loader:null,failed:false}));
- return new Promise(resolve=>{
-  let finished=false,selected=null,originalTimer;
-  // Preserve the former 2500ms sharp + 7000ms original total budget. Starting
-  // the source rendition must not cancel a valid sharp download in progress.
-  const deadline=setTimeout(()=>settle(false),candidates.length>1?9500:7000);
-  const settle=good=>{
-   if(finished)return;finished=true;clearTimeout(deadline);clearTimeout(originalTimer);
-   for(const candidate of candidates)if(candidate.loader){
-    candidate.loader.onload=candidate.loader.onerror=null;
-    if(candidate.loader!==selected)candidate.loader.removeAttribute('src');
+  let finished=false,handoff=null,displayedRank=hasUsableCover(img)?candidates.findIndex(item=>item.src===coverURL(img)):Infinity;
+  const detach=()=>{if(!handoff)return;if(img.onload===handoff.onLoad)img.onload=null;if(img.onerror===handoff.onError)img.onerror=null;handoff=null};
+  const finish=()=>{
+   if(finished)return;finished=true;
+   const same=current();let valid=same&&hasUsableCover(img);
+   detach();
+   // A destination cache handoff may still be pending at the deadline. Restore
+   // only pixels this exact run already displayed, rather than losing its preview.
+   const previous=candidates[displayedRank];
+   if(same&&!valid&&previous?.ready&&!previous.failed&&state.verified===previous.src){
+    img.src=previous.src;state.pending=null;
+    if(img.dataset){img.dataset.bookCoverVerified=previous.src;delete img.dataset.bookCoverPending}
+    img.hidden=false;img.style.opacity='1';if(fall)fall.hidden=true;valid=true;
    }
-   if(selected)img.onload=img.onerror=null;
-   const valid=!!(good&&img.isConnected&&img.complete&&img.naturalWidth>0);
-   img.hidden=!valid;img.style.opacity=valid?'1':'0';if(fall)fall.hidden=valid;
+   run.active=false;clearTimeout(deadline);
+   for(const candidate of candidates)if(candidate.loader){candidate.loader.onload=candidate.loader.onerror=null;candidate.loader.removeAttribute('src')}
+   if(same&&!valid){
+    if(candidates.some(item=>item.src===state.pending)){state.pending=null;if(img.dataset)delete img.dataset.bookCoverPending}
+    img.hidden=true;img.style.opacity='0';if(fall)fall.hidden=false;
+   }
    resolve(valid);
   };
-  const handoff=loader=>{
-   if(finished||selected)return;
-   if(!img.isConnected){settle(false);return;}
-   selected=loader;clearTimeout(originalTimer);
-   // Only an already loaded exact audio asset may replace the result image.
-   // Its cached handoff keeps fallback text visible until the real image loads.
-   img.onload=()=>settle(true);img.onerror=()=>settle(false);
-   img.loading='eager';img.decoding='async';img.hidden=false;img.style.opacity='0';
-   img.src=loader.src;
-   if(img.complete&&img.naturalWidth>0)settle(true);
+  // Keep the existing finite budget; a preview never cancels the sharper work.
+  const deadline=setTimeout(finish,sharp?9500:7000);run.cancel=finish;
+  const present=index=>{
+   const candidate=candidates[index];
+   if(finished||!current()){finish();return}
+   if(index>=Math.min(displayedRank,handoff?.index??Infinity))return;
+   // A separately hydrated, verified work cover still owns its handoff.
+   if(hasUsableCover(img)&&!candidates.some(item=>item.src===coverURL(img))){finish();return}
+   const visible=hasUsableCover(img);detach();
+   const pending={index,onLoad:null,onError:null};handoff=pending;
+   pending.onLoad=()=>{
+    if(finished||!current()){finish();return}
+    if(handoff!==pending||coverURL(img)!==candidate.src||img.naturalWidth<=30||img.dataset?.maFallback==='1')return;
+    state.verified=candidate.src;state.pending=null;
+    if(img.dataset){img.dataset.bookCoverVerified=candidate.src;delete img.dataset.bookCoverPending;delete img.dataset.maFallback}
+    img.hidden=false;img.style.opacity='1';if(fall)fall.hidden=true;
+    displayedRank=index;detach();pump();
+   };
+   pending.onError=()=>{
+    if(finished||!current()){finish();return}
+    if(handoff!==pending||coverURL(img)!==candidate.src)return;
+    candidate.failed=true;displayedRank=Infinity;detach();pump();
+   };
+   img.onload=pending.onLoad;img.onerror=pending.onError;
+   state.pending=candidate.src;
+   if(img.dataset){img.dataset.bookCoverPending=candidate.src;delete img.dataset.maFallback;delete img.dataset.bookCoverVerified}
+   img.loading='eager';img.decoding='async';img.hidden=false;img.style.opacity=visible?'1':'0';
+   if(coverURL(img)!==candidate.src)img.src=candidate.src;
+   if(img.complete&&img.naturalWidth>30)pending.onLoad();
+  };
+  const pump=()=>{
+   if(finished||!current()){finish();return}
+   const best=candidates.findIndex(item=>item.ready&&!item.failed);
+   if(best>=0&&best<Math.min(displayedRank,handoff?.index??Infinity)){present(best);return}
+   if(handoff)return;
+   if(hasUsableCover(img)&&(displayedRank===0||candidates.slice(0,displayedRank).every(item=>item.failed))){finish();return}
+   // Never upscale the 100px source while either high-quality rendition can win.
+   const last=candidates.length-1;
+   if(candidates.slice(0,last).every(item=>item.failed))start(last);
+   if(candidates.every(item=>item.failed))finish();
   };
   const start=index=>{
    const candidate=candidates[index];
-   if(finished||selected||!candidate||candidate.loader)return;
-   const loader=candidate.loader=new window.Image();
-   loader.loading='eager';loader.decoding='async';
+   if(finished||!candidate||candidate.loader)return;
+   if(!current()){finish();return}
+   const loader=candidate.loader=new window.Image();loader.loading='eager';loader.decoding='async';
    const failed=()=>{
-    candidate.failed=true;
-    if(index===0)start(1);
-    if(candidates.every(item=>item.failed))settle(false);
+    if(finished||candidate.failed)return;
+    if(!current()){finish();return}
+    candidate.failed=true;pump();
    };
    const ready=()=>{
-    if(candidate.preparing||finished||selected||!loader.complete||!loader.naturalWidth)return;
+    if(finished||candidate.preparing||!loader.complete||loader.naturalWidth<=30)return;
+    if(!current()){finish();return}
     candidate.preparing=true;
     Promise.resolve().then(()=>typeof loader.decode==='function'?loader.decode():null)
-     .then(()=>handoff(loader),failed);
+     .then(()=>{if(finished||!current()){finish();return}candidate.ready=true;pump()},failed);
    };
-   loader.onload=ready;loader.onerror=failed;
-   loader.src=candidate.src;
-   if(loader.complete&&loader.naturalWidth>0)ready();
+   loader.onload=ready;loader.onerror=failed;loader.src=candidate.src;
+   if(loader.complete&&loader.naturalWidth>30)ready();
   };
-  img.loading='eager';img.decoding='async';img.style.opacity='0';
-  start(0);
-  if(!finished&&!selected&&candidates.length>1&&!candidates[1].loader)originalTimer=setTimeout(()=>start(1),2500);
+  start(0);if(sharp)start(1);
  });
+}
+async function showSourceCover(img,fall,url){
+ const sharp=window.MatchAppBookCoverIdentity?.sharpAppleCoverUrl(url);
+ return sharp?showExactCoverRenditions(img,fall,url,sharp):showVerifiedCover(img,fall,url);
+}
+function showVerifiedAudioCover(img,fall,url){
+ const sharp=window.MatchAppBookCoverIdentity?.sharpAppleCoverUrl(url);
+ return showExactCoverRenditions(img,fall,url,sharp);
 }
 async function hydrateCover(book,img,fall,audio){
  if(!img)return;

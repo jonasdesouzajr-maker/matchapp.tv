@@ -1,9 +1,26 @@
 // Keep every public page on the canonical MatchApp brand without localizing the product name.
-const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
+const fs=require('node:fs'),path=require('node:path'),{Buffer}=require('node:buffer'),{JSDOM}=require('jsdom');
 const ROOT=path.join(__dirname,'..');
 const ADULT='MatchApp Ai',KIDS='MatchApp Ai KIDS';
 const mark='<img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="600" height="104" decoding="async">';
 const kidsMark='<span class="matchapp-wordmark kids-wordmark" role="img" aria-label="MatchApp Ai KIDS">MatchApp Ai KIDS</span>';
+
+// Discovery hints only: the original stylesheets/imports keep cascade ownership.
+const CRITICAL_STYLE_PRELOADS=Object.freeze([
+ '/patches/reference-header.css?v=20261020-header1&polish=20261020-ui1',
+ '/patches/reference-dock.css?v=20261020-dock1',
+ '/patches/reference-palette-tokens.css?v=20261020-palettes1',
+ '/patches/reference-pills.css?v=20261020-pills1&polish=20261020-ui1',
+ '/patches/adult-screen-fit-20261015.css?v=consistency2&auth=20261016-1&header=20261018-1',
+ '/patches/signature-ui-20261015.css?v=orbit3',
+ '/adult-page-compact.css?v=20260929-1&fastart=20261020-1',
+ '/premium-unified-20261010.css?v=20261010-luxe1',
+ 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap',
+ '/patches/premium-type-20261014.css?v=type3',
+ '/patches/premium-touch-motion-20261014.css?v=touch1'
+]);
+const PRELOAD_MARKER='critical-style';
+
 
 
 function cinemaAssets(html, relativePath) {
@@ -44,12 +61,38 @@ function cinemaAssets(html, relativePath) {
       if(html.slice(0,edit[0]).endsWith(eol))edit[0]-=eol.length;
     }
     insert(head.startTag.endOffset,eol+'<style data-cinema-layer>@layer ma-reference;</style>');
+
     const names=(doc.documentElement.getAttribute('class')||'').split(/\s+/).filter(Boolean),classes=names.filter((name,index)=>name!=='ma-reference'||names.indexOf(name)===index);
     if(!classes.includes('ma-reference'))classes.push('ma-reference');
     const rootClass='class="'+escaped(classes.join(' '))+'"';
     // Keep generated source parity: a newly owned class precedes original attributes.
     if(!doc.documentElement.hasAttribute('class'))insert(root.startTag.startOffset+1+doc.documentElement.localName.length,' '+rootClass);
     else if(names.join(' ')!==classes.join(' '))attribute(doc.documentElement,'class',rootClass);
+    const directStyles=new Set([...doc.head.querySelectorAll('link[href]')].filter(node=>actual(node)&&(node.getAttribute('rel')||'').toLowerCase().split(/\s+/).includes('stylesheet')).map(node=>node.getAttribute('href')));
+    const brandStyles=[...directStyles].some(url=>/^(?:\/|(?:\.\.\/)+)?brand\.css$/.test(url.split(/[?#]/)[0]));
+    const compactStyles=brandStyles||[...directStyles].some(url=>/^\/style\.css$/.test(url.split(/[?#]/)[0]));
+    const preloadURLs=CRITICAL_STYLE_PRELOADS.filter((url,index)=>(!directStyles.has(url)||url.startsWith('https://fonts.googleapis.com/'))&&(index<4||brandStyles||(compactStyles&&(url.startsWith('/adult-page-compact.css?')||url.startsWith('https://fonts.googleapis.com/')))));
+    for(const node of doc.head.querySelectorAll('link[data-cinema-preload]')){
+      if(!actual(node)||node.getAttribute('data-cinema-preload')!==PRELOAD_MARKER||node.getAttribute('rel')?.toLowerCase()!=='preload'||node.getAttribute('as')?.toLowerCase()!=='style'||!CRITICAL_STYLE_PRELOADS.includes(node.getAttribute('href')))continue;
+      remove(node);const edit=edits[edits.length-1];if(html.slice(0,edit[0]).endsWith(eol))edit[0]-=eol.length;
+    }
+    const charset=[...doc.head.querySelectorAll('meta')].find(node=>actual(node)&&(node.hasAttribute('charset')||((node.getAttribute('http-equiv')||'').toLowerCase()==='content-type'&&/charset\s*=/i.test(node.getAttribute('content')||''))));
+    const charsetRange=charset&&dom.nodeLocation(charset);
+    const charsetBytes=charsetRange&&Buffer.byteLength(html.slice(0,charsetRange.endOffset))+edits.filter(([,end])=>end<=charsetRange.startOffset).reduce((bytes,[start,end,text])=>bytes+Buffer.byteLength(text)-Buffer.byteLength(html.slice(start,end)),0)+[...insertions].filter(([at])=>at<=charsetRange.startOffset).reduce((bytes,[,text])=>bytes+Buffer.byteLength(text),0);
+    let preloadAt=charsetRange?.endOffset;
+    // Keep the exact existing declaration, but move a late one ahead of hints.
+    // Offsets are UTF-16; the HTML encoding limit is measured in UTF-8 bytes.
+    if(!charsetRange||charsetBytes>1024){
+      const declaration=charsetRange?html.slice(charsetRange.startOffset,charsetRange.endOffset):'<meta charset="UTF-8">';
+      if(charsetRange){
+        remove(charset);const edit=edits[edits.length-1],lineStart=Math.max(html.lastIndexOf('\n',edit[0]-1),html.lastIndexOf('\r',edit[0]-1))+1;
+        // A moved standalone declaration must not leave its indentation behind.
+        if(/^[ \t]*$/.test(html.slice(lineStart,edit[0])))edit[0]=lineStart;
+      }
+      preloadAt=head.startTag.endOffset;insert(preloadAt,eol+declaration);
+    }
+    if(preloadURLs.length)insert(preloadAt,eol+preloadURLs.map(url=>'<link rel="preload" as="style" data-cinema-preload="'+PRELOAD_MARKER+'" href="'+escaped(url)+'">').join(eol));
+
     for(const node of doc.querySelectorAll('link[href],script[src]')){
       if(!actual(node))continue;
       const attr=node.localName==='link'?'href':'src',url=node.getAttribute(attr);
@@ -75,7 +118,7 @@ function cinemaAssets(html, relativePath) {
       if(next!==current)attribute(node,attr,attr+'="'+escaped(next)+'"');
     }
     const assets=[];
-    if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1">');
+    if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;footer=20261020-1">');
     if(!found.family)assets.push('<link rel="stylesheet" href="/patches/reference-'+family+'.css?v=20261020-review1'+(family==='explore'?'':'&amp;premium=20261020-2')+(family==='home'?'&amp;nativepaint=20261020-1':'')+'">');
     if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1"></script>');
     if(assets.length)insert(head.endTag.startOffset,eol+assets.join(eol)+eol);
@@ -99,16 +142,19 @@ function referenceRuntimeAssetURL(url){
   'app.js':['art','20261020-source1'],'ebook-matcher.js':['art','20261020-source1'],'book-details-20261011.js':['art','20261020-source1'],'reading-ai.js':['art','20261020-source1'],
   'immersive-feedback-20261014.js':['cinemasound','20261020-1'],'purchase.js':['cinemasound','20261020-1'],'pro-plan.js':['cinemasound','20261020-1'],
   'reference-system.js':['launcher','20261020-1'],
+  'reference-support.css':['footer','20261020-1'],'reference-support.js':['footer','20261020-1'],
   'jonas-premium-glass.css':['stellar','20261020-1'],'jonas-premium-enhancer.js':['stellar','20261020-1'],'jonas-adult-page.js':['stellar','20261020-1'],
   'reference-system.css':['premium','20261020-2'],'reference-pages.css':['premium','20261020-2'],'reference-home.css':['premium','20261020-2'],'pricing.js':['premium','20261020-2']
  };
  const dialogs=new Set(['reference-system.js','profile.js','app.js','passkeys.js','pricing.js','settings.js']);
  const pathname=url.split(/[?#]/)[0];
  if(!/^\/[A-Za-z0-9_./-]+$/.test(pathname))return url;
- const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file))return url;
+ const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file)&&!['brand.css','style.css','adult-page-compact.css'].includes(file))return url;
  const entries=[];if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
+ if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
  if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);
+ if(file==='reference-system.css')entries.push(['footer','20261020-1']);
  return withQueryParams(url,entries);
 }
 function versionReferenceRuntimeAssets(html){
@@ -216,5 +262,5 @@ function finalizeBrand(ownedPaths){
  }
  return count;
 }
-module.exports={versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
+module.exports={CRITICAL_STYLE_PRELOADS,versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
 if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');

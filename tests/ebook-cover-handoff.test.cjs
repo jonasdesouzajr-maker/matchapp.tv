@@ -11,7 +11,7 @@ const flush=async()=>{for(let i=0;i<40;i++)await Promise.resolve()};
 
 // A deterministic image/network boundary; all cover, metadata, identity and
 // renderResult handoff code below is read from the real production sources.
-function fixture({cached=[],indexEntries=[]}={}){
+function fixture({cached=[],indexEntries=[],uncachedHandoff=[]}={}){
  let now=0,nextTimer=0;const timers=new Map(),delays=[],requests=[],waiting=new Map(),images=[],cachedUrls=new Set(cached);
  const clock={
   setTimeout(fn,ms){const id=++nextTimer;timers.set(id,{fn,at:now+ms});delays.push(ms);return id},
@@ -22,9 +22,9 @@ function fixture({cached=[],indexEntries=[]}={}){
   }now=target;await flush()}
  };
  class ImageNode extends EventTarget{
-  constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.dataset={};this.writes=[];this.listeners=[];this.listenerCallbacks=[];this.handlers={};this._src='';images.push(this)}
+  constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.dataset={};this.writes=[];this.writeTimes=[];this.listeners=[];this.listenerCallbacks=[];this.handlers={};this._src='';images.push(this)}
   addEventListener(type,fn,options){this.listeners.push({type,once:!!options?.once});this.listenerCallbacks.push({type,fn,once:!!options?.once});super.addEventListener(type,fn,options)}
-  set src(value){this._src=String(value);this.writes.push(this._src);this.complete=cachedUrls.has(this._src)&&!(this.loading==='lazy'&&this.hidden);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
+  set src(value){this._src=String(value);this.writes.push(this._src);this.writeTimes.push({src:this._src,at:now});this.complete=cachedUrls.has(this._src)&&!(images[0]===this&&uncachedHandoff.includes(this._src))&&!(this.loading==='lazy'&&this.hidden);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
   get src(){return this._src}
   removeAttribute(name){if(name==='src'){this._src='';this.complete=true;this.naturalWidth=0;this.naturalHeight=0}}
   setHandler(type,fn){if(this.handlers[type])this.removeEventListener(type,this.handlers[type]);this.handlers[type]=fn;if(fn)this.addEventListener(type,fn)}
@@ -77,9 +77,11 @@ function fixture({cached=[],indexEntries=[]}={}){
  const realCover=context.hydrateCover,realDetails=context.window.MatchAppBookDetails;let coverWork,detailsWork;
  context.hydrateCover=(...args)=>(coverWork=realCover(...args));
  context.window.MatchAppBookDetails={...realDetails,hydrate:(...args)=>(detailsWork=realDetails.hydrate(...args))};
- return {img,fallback,host,requests,waiting,delays,timers,clock,preloads:images,
+ return {img,fallback,host,requests,waiting,delays,timers,clock,preloads:images,now:()=>now,
+  probe(url){return images.findLast(node=>node!==img&&node.writes[0]===url)},
   async start(audio=null){Object.assign(context,{host,book,audio});vm.runInContext('(function(){'+matcher.slice(renderStart,renderEnd)+'})()',context);await flush()},
   async source(url,nextBook=book){context.prepareBookArtwork(img,nextBook);coverWork=context.showSourceCover(img,fallback,url);await flush()},
+  async audio(url,nextBook=book){context.prepareBookArtwork(img,nextBook,url);coverWork=context.showVerifiedAudioCover(img,fallback,url);await flush()},
   replace(nextBook){context.prepareBookArtwork(img,nextBook)},
   async reply(key,data){assert(waiting.has(key),'expected pending '+key);waiting.get(key)(data);await flush()},
   async emptyMatcher(){for(const key of ['matcherOL','matcherGoogle','matcherApple'])if(waiting.has(key))await this.reply(key,{docs:[],items:[],results:[]})},
@@ -90,88 +92,163 @@ function fixture({cached=[],indexEntries=[]}={}){
 
 const appleOriginal='https://is1-ssl.mzstatic.com/image/thumb/Publication123/v4/49/fa/eb/49faebf7-204a-8c61-af4d-1c00f2145330/PD_Little_Women-Adj.jpg/100x100bb.jpg';
 const appleSharp=appleOriginal.replace('/100x100bb.jpg','/600x600bb.jpg');
+const applePreview=appleSharp.replace('/600x600bb.jpg','/300x300bb.jpg');
 
-test('a slow successful exact e-book sharp rendition survives an original image error',async()=>{
+test('data URI covers are rejected before source or audio artwork starts or becomes verified',async()=>{
+ for(const entry of ['source','audio'])for(const url of ['data:image/svg+xml,not-source-art','DaTa:image/jpeg;base64,AA==']){
+  const f=fixture();await f[entry](url);
+  assert.equal(f.preloads.length,1,'only the unchanged destination image exists; no probe is constructed');
+  assert.deepEqual(f.img.writes,[]);assert.equal(f.img.src,'');
+  assert.equal(f.img.hidden,true);assert.equal(f.img.style.opacity,'');assert.equal(f.fallback.hidden,false);
+  assert.deepEqual(f.img.dataset,{});assert.equal(f.img.__matchappBookCover.pending,null);
+  assert.equal(f.img.__matchappBookCover.verified,null);assert.equal(f.img.__matchappBookCover.sourceRun,undefined);
+  assert.equal(f.img.onload,null);assert.equal(f.img.onerror,null);assert.equal(f.requests.length,0);assert.equal(f.timers.size,0);
+  await f.done();
+ }
+});
+
+test('verified 300px and 600px e-book renditions start at 0ms and a slow sharp download survives preview failure',async()=>{
  const f=fixture();await f.source(appleOriginal);
- assert.equal(f.preloads[1].src,appleSharp);assert.equal(f.preloads[1].loading,'eager');
- await f.clock.advance(2500);assert.equal(f.preloads[2].src,appleOriginal);
- f.preloads[2].fail();await flush();
- assert.equal(f.preloads[1].src,appleSharp,'the pending sharp request is not cancelled');
+ assert.deepEqual(f.preloads.slice(1).map(node=>node.writeTimes),[[{src:appleSharp,at:0}],[{src:applePreview,at:0}]]);
+ assert.equal(f.probe(appleSharp).loading,'eager');assert.equal(f.probe(applePreview).decoding,'async');
+ await f.clock.advance(2500);assert.equal(f.probe(appleOriginal),undefined,'no timer starts a pixelated 100px upscale');
+ f.probe(applePreview).fail();await flush();
+ assert.equal(f.probe(appleSharp).src,appleSharp,'preview failure cannot cancel the pending sharp request');
  assert.deepEqual(f.img.writes,[],'only decoded source pixels can replace the result image');
- await f.clock.advance(700);f.preloads[1].load();await flush();await f.done();f.ready();
+ await f.clock.advance(700);f.probe(appleSharp).load();await flush();await f.done();f.ready();
  assert.deepEqual(f.img.writes,[appleSharp]);assert.equal(f.img.dataset.bookCoverVerified,appleSharp);
  assert.equal(f.timers.size,0);assert.equal(f.requests.length,0);
 });
 
-test('original e-book pixels show promptly and upgrade to the same exact sharp asset without downgrading',async()=>{
- const f=fixture();await f.source(appleOriginal);await f.clock.advance(2500);
- const lateOriginalLoad=f.preloads[2].onload;
- f.preloads[2].load();await flush();f.ready();
- assert.equal(f.img.src,appleOriginal);assert.equal(f.preloads[1].src,appleSharp);
- await f.clock.advance(700);f.preloads[1].load();await flush();await f.done();f.ready();
- lateOriginalLoad();await flush();
- assert.deepEqual(f.img.writes,[appleOriginal,appleSharp]);
- assert.equal(f.img.dataset.bookCoverVerified,appleSharp);assert.equal(f.timers.size,0);
+test('fast verified e-book preview paints at 50ms and upgrades only to the same exact sharp asset',async()=>{
+ const f=fixture();await f.source(appleOriginal);const latePreviewLoad=f.probe(applePreview).onload;
+ await f.clock.advance(50);f.probe(applePreview).load();await flush();f.ready();
+ assert.deepEqual(f.img.writeTimes,[{src:applePreview,at:50}]);assert.equal(f.probe(appleSharp).src,appleSharp);
+ await f.clock.advance(3150);f.probe(appleSharp).load();await flush();await f.done();f.ready();
+ latePreviewLoad();await flush();
+ assert.deepEqual(f.img.writes,[applePreview,appleSharp]);
+ assert.equal(f.img.dataset.bookCoverVerified,appleSharp);assert.equal(f.probe(appleOriginal),undefined);assert.equal(f.timers.size,0);
 });
 
-test('two failed exact e-book renditions retain the named fallback and cancel their timers',async()=>{
- const f=fixture();await f.source(appleOriginal);f.preloads[1].fail();await flush();
- assert.equal(f.preloads[2].src,appleOriginal);f.preloads[2].fail();await flush();await f.done();
+test('only two failed higher-quality e-book renditions start the exact original and all failures retain fallback',async()=>{
+ const f=fixture();await f.source(appleOriginal);f.probe(appleSharp).fail();await flush();
+ assert.equal(f.probe(appleOriginal),undefined,'one failed rendition cannot start the 100px source');
+ f.probe(applePreview).fail();await flush();assert.equal(f.probe(appleOriginal).src,appleOriginal);
+ f.probe(appleOriginal).fail();await flush();await f.done();
  assert.deepEqual(f.img.writes,[]);assert.equal(f.img.hidden,true);assert.equal(f.fallback.hidden,false);
  assert.equal(f.timers.size,0);assert.equal(f.requests.length,0);
 });
 
-test('a sharp e-book deadline keeps an already loaded original and releases pending source work',async()=>{
- const f=fixture();await f.source(appleOriginal);await f.clock.advance(2500);
- f.preloads[2].load();await flush();f.ready();
- await f.clock.advance(7000);await f.done();f.ready();
- assert.deepEqual(f.img.writes,[appleOriginal]);assert.equal(f.preloads[1].src,'');assert.equal(f.timers.size,0);
+test('a sharp e-book deadline keeps loaded 300px pixels and releases pending source work without starting 100px',async()=>{
+ const f=fixture();await f.source(appleOriginal);f.probe(applePreview).load();await flush();f.ready();
+ await f.clock.advance(9500);await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[applePreview]);assert.equal(f.probe(appleSharp).src,'');assert.equal(f.probe(appleOriginal),undefined);assert.equal(f.timers.size,0);
 });
 
 test('late e-book pixels cannot replace a disconnected or newer title result',async()=>{
  for(const replaced of [false,true]){
   const f=fixture();await f.source(appleOriginal);
   if(replaced)f.replace({...book,title:'Another exact work'});else f.img.isConnected=false;
-  f.preloads[1].load();await flush();await f.done();
+  f.probe(appleSharp).load();await flush();await f.done();
   assert.deepEqual(f.img.writes,[]);assert.equal(f.fallback.hidden,false);assert.equal(f.timers.size,0);
+  assert.equal(f.probe(applePreview).src,'');
  }
 });
 
-test('a newer source run on the same title owns all later e-book callbacks',async()=>{
- const f=fixture();await f.source(appleOriginal);const old=f.preloads[1];
+test('a newer source run on the same title owns all later e-book callbacks and clears obsolete work immediately',async()=>{
+ const f=fixture();await f.source(appleOriginal);const old=f.probe(appleSharp),lateLoad=old.onload;
  const nextOriginal=appleOriginal.replace('PD_Little_Women-Adj.jpg','Another-verified-edition.jpg');
  const nextSharp=nextOriginal.replace('/100x100bb.jpg','/600x600bb.jpg');
- await f.source(nextOriginal);const current=f.preloads[2];
- old.load();await flush();assert.deepEqual(f.img.writes,[]);
- current.load();await flush();await f.done();f.ready();
+ await f.source(nextOriginal);assert.equal(old.src,'');assert.equal(f.timers.size,1);
+ lateLoad();await flush();assert.deepEqual(f.img.writes,[]);
+ f.probe(nextSharp).load();await flush();await f.done();f.ready();
  assert.deepEqual(f.img.writes,[nextSharp]);assert.equal(f.timers.size,0);
 });
 
 test('an obsolete sharp error cannot start an original request from the older e-book run',async()=>{
- const f=fixture();await f.source(appleOriginal);const old=f.preloads[1];
+ const f=fixture();await f.source(appleOriginal);const lateError=f.probe(appleSharp).onerror;
  const nextOriginal=appleOriginal.replace('PD_Little_Women-Adj.jpg','Another-verified-edition.jpg');
- await f.source(nextOriginal);const current=f.preloads[2];
- old.fail();await flush();
- assert.equal(f.preloads.length,3,'a stale error releases its own work without fetching the old fallback');
- current.load();await flush();await f.done();f.ready();assert.equal(f.timers.size,0);
- assert.equal(f.img.src,nextOriginal.replace('/100x100bb.jpg','/600x600bb.jpg'));
+ await f.source(nextOriginal);lateError();await flush();
+ assert.equal(f.preloads.length,5,'the two current and two obsolete high-quality probes are the only requests');
+ assert.equal(f.probe(appleOriginal),undefined);
+ f.probe(nextOriginal.replace('/100x100bb.jpg','/600x600bb.jpg')).load();await flush();await f.done();f.ready();assert.equal(f.timers.size,0);
 });
 
-test('an obsolete original-start timer cannot fetch for the older e-book run',async()=>{
+test('the former original-start deadline cannot fetch 100px from either e-book run',async()=>{
  const f=fixture();await f.source(appleOriginal);await f.clock.advance(500);
  const nextOriginal=appleOriginal.replace('PD_Little_Women-Adj.jpg','Another-verified-edition.jpg');
- await f.source(nextOriginal);const current=f.preloads[2];await f.clock.advance(2000);
- assert.equal(f.preloads.length,3,'only the newer run may start its original rendition');
- current.load();await flush();await f.done();f.ready();assert.equal(f.timers.size,0);
+ await f.source(nextOriginal);await f.clock.advance(2500);
+ assert.equal(f.preloads.length,5);assert.equal(f.probe(appleOriginal),undefined);assert.equal(f.probe(nextOriginal),undefined);
+ f.probe(nextOriginal.replace('/100x100bb.jpg','/600x600bb.jpg')).load();await flush();await f.done();f.ready();assert.equal(f.timers.size,0);
 });
 
-test('source e-book sharpening coexists with the original BookDetails owner',async()=>{
+test('source e-book preview and sharpening coexist with the original BookDetails owner',async()=>{
  const f=fixture({indexEntries:[{...book,source:'Apple Books',cover:appleOriginal}]});await f.start();
  assert.equal(f.img.src,appleOriginal,'original BookDetails hydration remains intact');
- await f.clock.advance(2500);f.img.fail();f.preloads[2].fail();await flush();
- assert.equal(f.preloads[1].src,appleSharp);
- await f.clock.advance(700);f.preloads[1].load();await flush();await f.done();f.ready();
+ f.img.fail();await flush();f.probe(applePreview).load();await flush();f.ready();
+ await f.clock.advance(3200);f.probe(appleSharp).load();await flush();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[appleOriginal,applePreview,appleSharp]);
  assert.equal(f.img.dataset.bookCoverVerified,appleSharp);assert.equal(f.requests.length,1);assert.equal(f.timers.size,0);
+});
+
+test('cached preview paints without advancing the clock and cached sharp wins without a preview downgrade',async()=>{
+ for(const cached of [[applePreview],[appleSharp,applePreview]]){
+  const f=fixture({cached});await f.source(appleOriginal);f.ready();
+  const first=cached.includes(appleSharp)?appleSharp:applePreview;
+  assert.deepEqual(f.img.writeTimes,[{src:first,at:0}]);
+  if(first===applePreview){f.probe(appleSharp).load();await flush()}
+  await f.done();assert.equal(f.img.src,appleSharp);assert.equal(f.timers.size,0);
+ }
+});
+
+test('cached original pixels from BookDetails cannot block the same-asset high-quality upgrade',async()=>{
+ const f=fixture({cached:[appleOriginal],indexEntries:[{...book,source:'Apple Books',cover:appleOriginal}]});await f.start();f.ready();
+ assert.equal(f.probe(applePreview).src,applePreview);assert.equal(f.probe(appleSharp).src,appleSharp);
+ f.probe(applePreview).load();await flush();f.ready();f.probe(appleSharp).load();await flush();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[appleOriginal,applePreview,appleSharp]);assert.equal(f.timers.size,0);
+});
+
+test('an uncached destination waits for real pixels and a failed sharp handoff recovers the exact preview',async()=>{
+ const f=fixture({uncachedHandoff:[appleSharp]});await f.source(appleOriginal);
+ f.probe(appleSharp).load();await flush();assert.equal(f.img.src,appleSharp);
+ assert.equal(f.img.style.opacity,'0');assert.equal(f.fallback.hidden,false);assert.equal(f.img.dataset.bookCoverVerified,undefined);
+ f.img.fail();await flush();assert.equal(f.probe(appleOriginal),undefined);
+ f.probe(applePreview).load();await flush();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[appleSharp,applePreview]);assert.equal(f.img.dataset.bookCoverVerified,applePreview);assert.equal(f.timers.size,0);
+});
+
+test('a pending destination upgrade at the deadline restores the preview already displayed by this exact run',async()=>{
+ for(const audio of [false,true]){
+  const f=fixture({uncachedHandoff:[appleSharp]});await (audio?f.audio(appleOriginal):f.source(appleOriginal));
+  f.probe(applePreview).load();await flush();f.ready();await f.clock.advance(9490);
+  f.probe(appleSharp).load();await flush();assert.equal(f.img.complete,false);
+  const obsoleteDestinationLoad=f.img.onload;await f.clock.advance(10);await f.done();f.ready();
+  obsoleteDestinationLoad();await flush();f.ready();
+  assert.deepEqual(f.img.writes,[applePreview,appleSharp,applePreview]);assert.equal(f.img.dataset.bookCoverVerified,applePreview);
+  assert.equal(f.timers.size,0);assert.equal(f.img.onload,null);assert.equal(f.img.onerror,null);
+ }
+});
+
+test('a delayed decode from an older e-book or audio edition cannot paint or hide its newer result',async()=>{
+ for(const audio of [false,true]){
+  const f=fixture();let decodeReady;
+  const begin=url=>audio?f.audio(url):f.source(url);
+  await begin(appleOriginal);f.probe(appleSharp).decode=()=>new Promise(resolve=>{decodeReady=resolve});
+  f.probe(appleSharp).load();await flush();assert.equal(typeof decodeReady,'function');
+  const next=appleOriginal.replace('PD_Little_Women-Adj.jpg','New-source-edition.jpg'),nextSharp=next.replace('/100x100bb.jpg','/600x600bb.jpg');
+  await begin(next);f.probe(nextSharp).load();await flush();await f.done();f.ready();
+  decodeReady();await flush();f.ready();assert.deepEqual(f.img.writes,[nextSharp]);assert.equal(f.img.dataset.bookCoverVerified,nextSharp);
+  assert.equal(f.timers.size,0);
+ }
+});
+
+test('verified preview derivation preserves the complete asset path and query and never expands the strict allowlist',async()=>{
+ const source=appleOriginal+'?source=exact-edition',sharp=appleSharp+'?source=exact-edition',preview=applePreview+'?source=exact-edition';
+ const f=fixture();await f.source(source);assert.equal(f.probe(sharp).src,sharp);assert.equal(f.probe(preview).src,preview);
+ f.probe(sharp).load();await flush();await f.done();f.ready();
+ const untrusted='https://unverified.example/image/thumb/book/100x100bb.jpg',g=fixture();await g.source(untrusted);
+ assert.equal(g.preloads.length,1,'no Apple rendition is derived for an unverified host');assert.deepEqual(g.img.writes,[untrusted]);
+ g.img.fail();await g.done();assert.equal(g.timers.size,0);
 });
 
 test('late matcher source cannot replace Frankenstein cover already loaded by real BookDetails',async()=>{
@@ -216,20 +293,17 @@ test('wrong identity and a failed real BookDetails image still keep an honest fa
  assert.equal(f.timers.size,0);
 });
 
-test('slow verified audio sharp download keeps priority when the exact original rendition starts',async()=>{
+test('verified audio preview starts immediately, preserves exact edition art and upgrades a slow sharp download',async()=>{
  const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100';
- const sharp=original.replace('/100x100','/600x600bb.jpg'),f=fixture();
- await f.start({apple:{coverUrl:original}});
- await f.reply('detailsOL',{docs:[row(220)]});
- assert.deepEqual(f.img.writes,[],'pending downloads do not replace the result image');
- assert.deepEqual(f.preloads.slice(1).map(img=>img.src),[sharp]);
+ const sharp=original.replace('/100x100','/600x600bb.jpg'),preview=sharp.replace('/600x600bb.jpg','/300x300bb.jpg'),f=fixture();
+ await f.start({apple:{coverUrl:original}});await f.reply('detailsOL',{docs:[row(220)]});
+ assert.deepEqual(f.preloads.slice(1).map(node=>node.writeTimes),[[{src:sharp,at:0}],[{src:preview,at:0}]]);
  assert.equal(f.img.listeners.filter(x=>x.once).length,0,'BookDetails skips all setCover listeners for verified audio');
- await f.clock.advance(2500);
- assert.deepEqual(f.preloads.slice(1).map(img=>img.src),[sharp,original]);
- assert.deepEqual(f.preloads[1].writes,[sharp],'starting the original cannot abort the sharp request');
- assert.deepEqual(f.img.writes,[]);assert(f.delays.includes(9500));
- await f.clock.advance(700);f.preloads[1].load();await flush();await f.done();f.ready();
- assert.deepEqual(f.img.writes,[sharp],'already decoded audio pixels hand off once');
+ await f.clock.advance(50);f.probe(preview).load();await flush();f.ready();
+ assert.deepEqual(f.img.writeTimes,[{src:preview,at:50}]);
+ await f.clock.advance(2450);assert.equal(f.probe(original),undefined);assert.equal(f.probe(sharp).src,sharp);
+ await f.clock.advance(700);f.probe(sharp).load();await flush();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[preview,sharp]);assert(f.delays.includes(9500));
  assert.equal(f.requests.filter(x=>{const u=new URL(x,'https://fixture.invalid/');return u.searchParams.get('maxResults')==='10'||u.hostname==='itunes.apple.com'}).length,0);
  assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
 });
@@ -261,8 +335,8 @@ test('pending verified audio pixels stay transparent with fallback visible and r
  assert.equal(f.preloads[1].loading,'eager','a detached preloader eagerly requests the exact audio asset');
  assert.equal(f.img.hidden,true,'the result retains its fallback until a verified asset is decoded');
  assert.equal(f.img.style.opacity,'0');assert.equal(f.fallback.hidden,false);
- f.preloads[1].fail();await flush();assert.equal(f.preloads[2].src,original);
- f.preloads[2].fail();await flush();await f.reply('detailsOL',{docs:[row(220)]});
+ f.preloads[1].fail();await flush();assert.equal(f.probe(original),undefined);
+ f.preloads[2].fail();await flush();assert.equal(f.probe(original).src,original);f.probe(original).fail();await flush();await f.reply('detailsOL',{docs:[row(220)]});
  await f.done();
  assert.equal(f.img.hidden,true);assert.equal(f.img.style.opacity,'0');
  assert.equal(f.img.naturalWidth,0);assert.equal(f.fallback.hidden,false);
@@ -295,10 +369,18 @@ test('failed sharp decoding uses only the exact original audio rendition and can
  const original='https://is1-ssl.mzstatic.com/image/thumb/Books/exact-audio/100x100',f=fixture();
  await f.start({apple:{coverUrl:original}});await f.reply('detailsOL',{docs:[row(220)]});
  f.preloads[1].decode=()=>Promise.reject(Error('Cannot decode sharp rendition'));
- f.preloads[1].load();await flush();assert.equal(f.preloads[2].src,original);
- f.preloads[2].load();await flush();await f.done();f.ready();
+ f.preloads[1].load();await flush();assert.equal(f.probe(original),undefined);
+ f.preloads[2].fail();await flush();assert.equal(f.probe(original).src,original);
+ f.probe(original).load();await flush();await f.done();f.ready();
  assert.deepEqual(f.img.writes,[original]);assert.equal(f.preloads[1].src,'');
  assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+});
+
+test('an audio preview remains visible at the 9.5s sharp deadline and stale destination callbacks cannot downgrade it',async()=>{
+ const f=fixture();await f.audio(appleOriginal);const latePreview=f.probe(applePreview).onload;
+ f.probe(applePreview).load();await flush();f.ready();await f.clock.advance(9500);await f.done();f.ready();
+ latePreview();await flush();assert.deepEqual(f.img.writes,[applePreview]);assert.equal(f.probe(appleOriginal),undefined);
+ assert.equal(f.probe(appleSharp).src,'');assert.equal(f.timers.size,0);
 });
 
 test('an audio edition without its own verified artwork never borrows ebook art',async()=>{
@@ -379,6 +461,9 @@ test('both rendering pages request the handoff repair without changing earlier l
   assert(html.includes(pin+'&amp;lifetime=20261019-1&amp;coverload=20261019-eager1'),page+' invalidates the repaired cover loader while retaining lifetime exclusion');
   assert(html.includes('&amp;audioart=20261020-exact1'),page+' invalidates the exact audio preloading repair');
   assert(html.includes('&amp;ebookart=20261020-renditions1'),page+' invalidates the exact e-book rendition repair');
+  const entry=html.match(/src="([^"\r\n]*\/ebooks\/ebook-matcher\.js\?[^"\r\n]+)"/);
+  assert(entry,page+' retains its active matcher entry');
+  assert.equal(new URL(entry[1].replace(/&amp;/g,'&'),'https://matchapp.tv').searchParams.get('fastart'),'20261020-1',page+' invalidates the immediate rendition handoff');
  }
 });
 
@@ -387,12 +472,14 @@ test('Ask reading lazy loading and its active script entry request the same repa
  assert(dynamic,'the existing reading-only loader remains in place');
  const matcherURL=new URL(dynamic[1],'https://matchapp.tv');
  assert.equal(matcherURL.searchParams.get('ebookart'),'20261020-renditions1');
+ assert.equal(matcherURL.searchParams.get('fastart'),'20261020-1');
  assert.equal(matcherURL.searchParams.get('lifetime'),'20261019-1');
  assert.equal(matcherURL.searchParams.get('locale'),'20261020-books14-1');
  const entry=read('discover.html').match(/src="([^"\r\n]*\/ebooks\/reading-ai\.js\?[^"\r\n]+)"/);
  assert(entry,'the original Ask reading script remains installed');
  const readingURL=new URL(entry[1].replace(/&amp;/g,'&'),'https://matchapp.tv');
  assert.equal(readingURL.searchParams.get('ebookart'),'20261020-renditions1');
+ assert.equal(readingURL.searchParams.get('fastart'),'20261020-1');
  assert.equal(readingURL.searchParams.get('lifetime'),'20261019-1');
  assert.equal(readingURL.searchParams.get('locale'),'20261020-books14-1');
 });
