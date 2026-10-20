@@ -322,4 +322,10 @@ html.ma-reference body.page-home .ma-cinema-section-heading h2::before {content:
    bootstrap removes website ads. Keep the browser AdSense track and all
    source ad nodes/slots unchanged; the native wrapper follows content. */
 html.ma-reference.matchapp-ai-android body.page-home .main-layout {min-height:0!important;}
+/* Solid native heading paint; existing type, colors and capsule geometry stay
+   authoritative. Physical WebView validation is required for this mitigation. */
+html.ma-reference.matchapp-ai-android body.page-home :is(.home-hero.home-hero .home-h1.home-h1,.ma-cinema-section-heading h2) {
+ text-shadow:none!important;-webkit-text-fill-color:currentColor!important;
+ -webkit-background-clip:border-box!important;background-clip:border-box!important;
+}
 }
