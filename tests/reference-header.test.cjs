@@ -96,6 +96,47 @@ test('late native launcher takeover clears an obsolete dock slot and keeps one s
  assert.equal(ambient.style.position,'');assert.equal(ambient.style.left,'');assert.equal(ambient.style.top,'');assert.equal(ambient.style.transform,'');unchangedPositions(w);
 });
 
+test('a native launcher arriving before Home parsing prevents late Home claims from creating a second visible entry',async t=>{
+ const f=scene();t.after(f.close);const {w}=f,d=w.document,home=d.getElementById('ma-jonas-home');home.remove();
+ const ambient=d.createElement('div');ambient.id='ma-ambient-jonas';ambient.innerHTML='<button class="ja-bubble">Jonas</button>';d.body.appendChild(ambient);
+ f.start();d.body.appendChild(home);await flush(w);
+ assert.equal(home.style.getPropertyValue('display'),'none');assert.equal(home.style.getPropertyPriority('display'),'important');
+ assert.equal(home.getAttribute('aria-hidden'),'true');assert.equal(home.hasAttribute('inert'),true);assert.equal(home.style.pointerEvents,'none');
+ for(let i=0;i<3;i++)assert.equal(w.MatchAppReferenceHeader.claim(home),true);
+ assert.equal(ambient.parentElement.id,'ma-reference-header-slot');assert.ok(w.MatchAppReferenceHeader.owns(ambient));assert.equal(w.MatchAppReferenceHeader.owns(home),false);
+ assert.equal(d.querySelectorAll('#ma-ambient-jonas').length,1);assert.equal(d.querySelectorAll('#ma-jonas-home').length,1);assert.equal(home.dataset.jonasPlacement,undefined);unchangedPositions(w);
+});
+
+test('native takeover restores the same Home fallback and original handlers if its canonical launcher is removed',async t=>{
+ const f=scene();t.after(f.close);const {w}=f,d=w.document,home=d.getElementById('ma-jonas-home'),bubble=d.getElementById('ma-jonas-home-bubble');
+ home.style.setProperty('display','flex');home.style.setProperty('pointer-events','auto','important');home.setAttribute('aria-hidden','false');let clicks=0;bubble.addEventListener('click',()=>clicks++);
+ f.start();const ambient=d.createElement('div');ambient.id='ma-ambient-jonas';ambient.innerHTML='<button class="ja-bubble">Jonas</button>';d.body.appendChild(ambient);await flush(w);
+ assert.equal(home.style.display,'none');assert.equal(home.hasAttribute('inert'),true);assert.ok(w.MatchAppReferenceHeader.owns(ambient));
+ ambient.remove();await flush(w);
+ assert.equal(d.getElementById('ma-jonas-home'),home);assert.equal(home.style.display,'flex');assert.equal(home.style.getPropertyPriority('display'),'');
+ assert.equal(home.style.pointerEvents,'auto');assert.equal(home.style.getPropertyPriority('pointer-events'),'important');assert.equal(home.getAttribute('aria-hidden'),'false');assert.equal(home.hasAttribute('inert'),false);
+ assert.equal(home.parentElement.id,'ma-reference-header-slot');assert.ok(w.MatchAppReferenceHeader.owns(home));bubble.click();assert.equal(clicks,1);unchangedPositions(w);
+});
+
+test('a native legacy hide applied before header initialization does not strand the later Home fallback',async t=>{
+ const f=scene();t.after(f.close);const {w}=f,d=w.document,home=d.getElementById('ma-jonas-home');
+ home.style.setProperty('display','none','important');home.setAttribute('aria-hidden','true');const ambient=d.createElement('div');ambient.id='ma-ambient-jonas';ambient.innerHTML='<button class="ja-bubble">Jonas</button>';d.body.appendChild(ambient);f.start();
+ assert.equal(home.style.display,'none');ambient.remove();await flush(w);
+ assert.equal(home.style.display,'');assert.equal(home.getAttribute('aria-hidden'),null);assert.equal(home.hasAttribute('inert'),false);assert.ok(w.MatchAppReferenceHeader.owns(home));unchangedPositions(w);
+});
+
+test('canonical arbitration retains the saved drag point through native takeover and late Home callbacks',async t=>{
+ const f=scene();t.after(f.close);const {w}=f,d=w.document;w.localStorage.setItem(headerPositionKey,'{"x":0.5,"y":0.4}');f.start();
+ const home=d.getElementById('ma-jonas-home'),ambient=d.createElement('div');ambient.id='ma-ambient-jonas';ambient.innerHTML='<button class="ja-bubble">Jonas</button>';d.body.appendChild(ambient);await flush(w);
+ const expected={left:ambient.style.left,top:ambient.style.top};w.MatchAppReferenceHeader.claim(home);
+ assert.deepEqual({left:ambient.style.left,top:ambient.style.top},expected);assert.equal(ambient.parentElement,d.body);assert.equal(ambient.dataset.jonasPlacement,'dragged');assert.equal(home.style.display,'none');assert.equal(w.localStorage.getItem(headerPositionKey),'{"x":0.5,"y":0.4}');unchangedPositions(w);
+});
+
+test('a hidden canonical native launcher during its conversation never reveals the inactive Home fallback',async t=>{
+ const f=scene();t.after(f.close);const {w}=f,d=w.document;f.start();const home=d.getElementById('ma-jonas-home'),ambient=d.createElement('div');ambient.id='ma-ambient-jonas';ambient.innerHTML='<button class="ja-bubble">Jonas</button>';ambient.hidden=true;d.body.appendChild(ambient);await flush(w);
+ w.MatchAppReferenceHeader.claim(home);assert.equal(ambient.hidden,true);assert.ok(w.MatchAppReferenceHeader.owns(ambient));assert.equal(home.style.display,'none');assert.equal(home.hasAttribute('inert'),true);unchangedPositions(w);
+});
+
 test('flow reservation follows the measured header height after a resize',async t=>{
  const f=scene();t.after(f.close);const {w}=f;f.start();
  f.heights.header=93.25;w.MatchAppReferenceHeader.measure();await flush(w);

@@ -77,7 +77,7 @@ function cinemaAssets(html, relativePath) {
     const assets=[];
     if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1">');
     if(!found.family)assets.push('<link rel="stylesheet" href="/patches/reference-'+family+'.css?v=20261020-review1'+(family==='explore'?'':'&amp;premium=20261020-2')+'">');
-    if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1"></script>');
+    if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1"></script>');
     if(assets.length)insert(head.endTag.startOffset,eol+assets.join(eol)+eol);
     for(const [at,text]of insertions)edits.push([at,at,text]);
     edits.sort((a,b)=>b[0]-a[0]||b[1]-a[1]);
@@ -98,6 +98,7 @@ function referenceRuntimeAssetURL(url){
   'catalog-media.js':['posters','20261020-1'],'poster-wall.js':['posters','20261020-1'],'trending-rail.js':['posters','20261020-1'],'profile.js':['posters','20261020-1'],'portfolio-history.js':['posters','20261020-1'],'settings.js':['posters','20261020-1'],'title-captions.js':['posters','20261020-1'],
   'app.js':['art','20261020-source1'],'ebook-matcher.js':['art','20261020-source1'],'book-details-20261011.js':['art','20261020-source1'],'reading-ai.js':['art','20261020-source1'],
   'immersive-feedback-20261014.js':['cinemasound','20261020-1'],'purchase.js':['cinemasound','20261020-1'],'pro-plan.js':['cinemasound','20261020-1'],
+  'reference-system.js':['launcher','20261020-1'],
   'jonas-premium-glass.css':['stellar','20261020-1'],'jonas-premium-enhancer.js':['stellar','20261020-1'],'jonas-adult-page.js':['stellar','20261020-1'],
   'reference-system.css':['premium','20261020-2'],'reference-pages.css':['premium','20261020-2'],'reference-home.css':['premium','20261020-2'],'pricing.js':['premium','20261020-2']
  };
