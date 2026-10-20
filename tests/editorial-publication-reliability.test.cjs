@@ -56,7 +56,7 @@ exec "$MATCHAPP_FIXTURE_REAL_GIT" "$@"
   changed(){return fs.existsSync(output)&&fs.readFileSync(output,'utf8').includes('changed=1');},
   close(){fs.rmSync(dir,{recursive:true,force:true});}};
 }
-const owners=['midnight-content-rotation','trending-refresh','news-refresh','sports-refresh','availability','awareness-rotation','kids-seo-refresh','sitemap-refresh','music-video-refresh','seo-hardening','archive-international-day'];
+const owners=['unified-refresh','kids-seo-refresh','sitemap-refresh','music-video-refresh','seo-hardening','archive-international-day'];
 for(const owner of owners)for(const scenario of ['normal','lost-ack','rejected-unchanged','remote-advance','unknown-after-push'])test(owner+' reconciles actual Git publication: '+scenario,()=>{
  const f=fixture();try{
   if(scenario==='remote-advance'){
@@ -74,7 +74,7 @@ for(const owner of owners)for(const scenario of ['normal','lost-ack','rejected-u
   else assert.equal(result.status,0,result.stderr);
  }finally{f.close();}
 });
-for(const owner of ['news-refresh','availability','archive-international-day'])for(const gate of ['node tools/check-content-rotation.js','npm test','npm run audit:site'])test(owner+' refuses publication when '+gate+' fails',()=>{
+for(const owner of ['unified-refresh','archive-international-day'])for(const gate of ['node tools/check-content-rotation.js','npm test','npm run audit:site'])test(owner+' refuses publication when '+gate+' fails',()=>{
  const f=fixture();try{
   for(const binary of ['node','npm'])fs.writeFileSync(path.join(f.binary,binary),`#!/bin/bash
 name="$(basename "$0")"
@@ -88,24 +88,17 @@ if [ "$name $*" = "$MATCHAPP_FIXTURE_FAIL_GATE" ]; then exit 9; fi
   assert.ok(!fs.readFileSync(f.trace,'utf8').includes('git push'),'no push before all gates succeed');
  }finally{f.close();}
 });
-for(const owner of ['availability','midnight-content-rotation'])test(owner+' stages every generated regional watch tree and leaves unrelated sources alone',()=>{
+test('unified staging includes every regional watch tree, generated news and music but leaves unrelated sources alone',()=>{
  const f=fixture();try{
   const owned=['en/br/watch','en/us/watch','en/gb/watch','en/pt/watch','pt/br/watch'];
-  for(const route of owned){const p=path.join(f.work,route,'index.html');fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,'Generated page');}
+  const files=[...owned.map(route=>route+'/index.html'),'news/sports.json','data/music-video-releases.json','guides/worldwide-entertainment-discovery/index.html'];
+  for(const file of files){const p=path.join(f.work,file);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,'Generated output');}
   fs.writeFileSync(path.join(f.work,'app.js'),'Unrelated source must remain unstaged');
-  let stage;const script=publishScript(owner);
-  if(owner==='availability'){
-   for(const rel of ['data/availability.json','where-to-watch/index.html','tools/watch-urls.json','tools/seo-urls.json','sitemap.xml','sitemaps.xml']){
-    const p=path.join(f.work,rel);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,'Generated output');
-   }
-   stage=script.slice(script.indexOf('git add -A -- data/availability.json'),script.indexOf('if git diff --staged'));
-  }else{
-   const start=script.indexOf('for d in moods collections'),part=script.slice(start),end=part.match(/\n[ \t]*done\b/);assert.ok(end);
-   stage=part.slice(0,end.index+end[0].length);
-  }
-  const result=f.execute(stage);assert.equal(result.status,0,result.stderr);
+  fs.writeFileSync(path.join(f.work,'.env.fixture'),'Unrelated private configuration');
+  require('../tools/unified-refresh.cjs').stage(f.work);
   const staged=git(f.work,'diff','--staged','--name-only').split('\n');
-  for(const route of owned)assert.ok(staged.includes(route+'/index.html'),route+' must publish with sitemap');
+  for(const file of files)assert.ok(staged.includes(file),file+' must publish with sitemap');
   assert.ok(!staged.includes('app.js'),'unrelated application source must remain unstaged');
+  assert.ok(!staged.includes('.env.fixture'),'unrelated private configuration must remain unstaged');
  }finally{f.close();}
 });

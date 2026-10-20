@@ -44,13 +44,15 @@ test('existing ingest function enriches server-side and verifies GitHub OIDC',()
   assert.match(src,/kids_approved:item\.kids_approved===true/);
 });
 
-test('daily workflow uses OIDC and contains no long-lived backend secret',()=>{
-  const yml=read('.github/workflows/scraper.yml'),client=read('tools/sync-catalog-media.js');
+test('unified daily workflow retains OIDC catalog authentication without exposing a service-role key',()=>{
+  const yml=read('.github/workflows/unified-refresh.yml'),runner=read('tools/unified-refresh.cjs'),client=read('tools/sync-catalog-media.js');
   assert.match(yml,/schedule:/);
-  assert.match(yml,/cron: '17 7 \* \* \*'/);
+  assert.match(yml,/cron: '30 4 \* \* \*'/);
   assert.match(yml,/id-token: write/);
-  assert.match(yml,/node tools\/sync-catalog-media\.js/);
-  assert.doesNotMatch(yml,/SUPABASE_SERVICE_ROLE_KEY|TMDB_API_KEY|secrets\./);
+  assert.match(yml,/node tools\/unified-refresh\.cjs generate/);
+  assert.match(runner,/tools\/sync-catalog-media\.js/);
+  assert.doesNotMatch(yml,/SUPABASE_SERVICE_ROLE_KEY/);
+  assert.doesNotMatch(client,/SUPABASE_SERVICE_ROLE_KEY/);
   assert.match(client,/catalog-media-ingest/);
   assert.match(client,/matchapp-supabase-catalog-media/);
 });

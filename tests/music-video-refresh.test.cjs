@@ -44,12 +44,13 @@ test('official MV releases qualify only on the monitored owner channel, while be
  const roster=JSON.parse(fs.readFileSync('data/music-video-artists.json','utf8'));
  for(const name of ['BTS','Bad Bunny','The Weeknd'])assert(roster.some(x=>x.artist===name));
 });
-test('daily Top Titles owns music-video discovery while the old workflow is manual recovery only',()=>{
- const daily=fs.readFileSync('.github/workflows/trending-refresh.yml','utf8'),manual=fs.readFileSync('.github/workflows/music-video-refresh.yml','utf8');
- for(const text of ["cron: '15 3 * * *'",'node tools/refresh-music-videos.js','node tools/refresh-trending.mjs','data/music-video-releases.json','data/trending-keywords.json','trending/this-week/index.html','group: matchapp-content-publish','cancel-in-progress: false','npm test','npm run audit:site','node tools/check-content-rotation.js','gh workflow run pages-deploy.yml --ref main'])assert.ok(daily.includes(text),text);
- assert.ok(daily.indexOf('node tools/refresh-music-videos.js')<daily.indexOf('node tools/refresh-trending.mjs'),'music discovery must happen before Top Titles generation');
+test('unified daily refresh owns music-video discovery while standalone recovery stays manual',()=>{
+ const daily=fs.readFileSync('.github/workflows/unified-refresh.yml','utf8'),runner=fs.readFileSync('tools/unified-refresh.cjs','utf8'),manual=fs.readFileSync('.github/workflows/music-video-refresh.yml','utf8');
+ for(const text of ["cron: '30 4 * * *'",'node tools/unified-refresh.cjs generate','node tools/unified-refresh.cjs stage','group: matchapp-content-publish','cancel-in-progress: false','npm test','npm run audit:site','node tools/check-content-rotation.js',"dispatchAndConfirm('pages-deploy.yml', 'pages')"])assert.ok(daily.includes(text),text);
+ for(const file of ['tools/refresh-music-videos.js','tools/refresh-trending.mjs','data/music-video-releases.json','data/trending-keywords.json','trending/this-week'])assert.ok(runner.includes(file),file+' must remain in unified coverage');
+ assert.ok(runner.indexOf('tools/refresh-music-videos.js')<runner.indexOf('tools/refresh-trending.mjs'),'music discovery must happen before Top Titles generation');
  assert.doesNotMatch(manual,/schedule:|cron:/);assert.match(manual,/workflow_dispatch:/);
- assert.ok(!daily.includes('git add -A'));assert.ok(!daily.includes('continue-on-error'));
+ assert.doesNotMatch(daily,/continue-on-error/);
 });
 test('music release SEO metadata includes exact identity, release date, keywords and verified views',()=>{
  const r={artist:'Artist',title:'Song',publishedAt:'2026-10-03T12:00:00Z',viewCount:1234567,keywords:['official music video']};

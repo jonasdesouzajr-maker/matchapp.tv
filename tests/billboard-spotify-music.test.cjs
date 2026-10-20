@@ -52,7 +52,7 @@ test('new music regions remain in the adult music area and translate immediately
  }finally{d.window.close();}
 });
 test('the existing serialized daily writer regenerates chart/video presentation and SEO without a second publisher',()=>{
- const daily=fs.readFileSync('.github/workflows/trending-refresh.yml','utf8');assert.match(daily,/15 3 \* \* \*/);assert.match(daily,/matchapp-content-publish/);assert.match(daily,/data\/music-video-releases.json/);
+ const daily=fs.readFileSync('.github/workflows/unified-refresh.yml','utf8'),runner=fs.readFileSync('tools/unified-refresh.cjs','utf8');assert.match(daily,/30 4 \* \* \*/);assert.match(daily,/matchapp-content-publish/);assert.match(runner,/data\/music-video-releases.json/);
  const script=fs.readFileSync('tools/refresh-music-videos.js','utf8');assert.match(script,/refreshBillboard/);assert.match(script,/refreshSpotifyVideos/);
  const trending=fs.readFileSync('tools/refresh-trending.mjs','utf8');assert.match(trending,/chartKeywords/);assert.match(trending,/spotifyKeywords/);assert.match(trending,/renderSpotify/);
  assert.match(fs.readFileSync('trending/this-week/index.html','utf8'),/id="billboard"/);assert.match(fs.readFileSync('sitemap.xml','utf8'),/https:\/\/matchapp.tv\/trending\/this-week\//);
