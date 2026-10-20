@@ -3921,7 +3921,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                         let label = copy[key];
                         const i18nKey = key === 0 ? 'pf.email' : key === 2 ? 'pf.fullName' : '';
                         if (i18nKey && typeof window.t === 'function') {
-                            const language = authLabelLanguage() === 'pt' ? 'pt-BR' : authLabelLanguage();
+                            const language = window.normalizeLang?.(authLabelLanguage()) || window.MATCH_LANG || 'en';
                             const translated = window.t(i18nKey, language);
                             if (translated && translated !== i18nKey) label = translated;
                         }
@@ -3934,7 +3934,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                     const modal = document.getElementById('main-auth-modal');
                     if (modal) {
                         modal.setAttribute('data-i18n-aria', 'auth.login');
-                        const language = authLabelLanguage() === 'pt' ? 'pt-BR' : authLabelLanguage();
+                        const language = window.normalizeLang?.(authLabelLanguage()) || window.MATCH_LANG || 'en';
                         const label = window.t?.('auth.login', language);
                         if (label && label !== 'auth.login') modal.setAttribute('aria-label', label);
                     }

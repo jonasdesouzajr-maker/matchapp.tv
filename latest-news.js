@@ -21,7 +21,8 @@
     const raw=String(value||'');
     if(!raw.includes('&'))return raw;
     const el=document.createElement('textarea');
-    el.innerHTML=raw;
+    // Preserve entity decoding while keeping literal source markup inert.
+    el.innerHTML=raw.replace(/</g,'&lt;');
     return el.value.replace(/\s+/g,' ').trim();
   }
   function domainOf(u){try{return new URL(u,location.origin).hostname.toLowerCase().replace(/^www\./,'');}catch(_){return'';}}

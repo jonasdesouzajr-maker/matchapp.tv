@@ -329,13 +329,14 @@ async function aiQuestion(page,question,expected,label){
     // Jonas has one deliberate header History action; the duplicate floating
     // hamburger is hidden. Exercise the visible real action on every viewport.
     const visibleHistory=page.locator('.jonas-top-history');
+    // The shared shell rehomes this original action asynchronously. Wait for
+    // its actual menu owner, then for the opened control to paint.
+    await page.locator('#ma-reference-header .ma-reference-header-tools .jonas-top-history').waitFor({state:'attached',timeout:20000});
     const historyTools=page.locator('.ma-reference-header-tools').filter({has:visibleHistory});
-    if(!await visibleHistory.isVisible()&&await historyTools.count()){
-      if(!await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
-    }
-    if(await visibleHistory.isVisible())await visibleHistory.click({timeout:12000});
-    else await page.locator('#ai-sidebar-toggle').click({timeout:12000});
-    if(await historyTools.count()&&await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
+    if(!await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
+    await visibleHistory.waitFor({state:'visible',timeout:12000});
+    await visibleHistory.click({timeout:12000});
+    if(await historyTools.evaluate(details=>details.open))await historyTools.locator(':scope > summary').click();
     await page.waitForFunction(()=>{
       const panel=document.getElementById('ai-sidebar')?.getBoundingClientRect();
       return panel&&panel.left>=-1&&panel.right>0;

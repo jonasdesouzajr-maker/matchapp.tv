@@ -39,9 +39,9 @@ function trendingTemplate(theme){
 function weeklyTemplate(theme,pick){
   const source=read('tools/refresh-weekly-pick.mjs');
   assert.match(source,/import \{cinemaAssets\} from '\.\/finalize-brand\.js'/);
-  const start=source.indexOf('function page(pick){'),end=source.indexOf('\nfunction write(pick)',start);
+  const start=source.indexOf('function verifiedSourceUrl(pick){'),end=source.indexOf('\nfunction write(pick)',start);
   assert.ok(start>0&&end>start,'extract the pure weekly document renderer');
-  const render=vm.runInNewContext(source.slice(start,end)+'\n;page;',{cinemaAssets:theme,esc});
+  const render=vm.runInNewContext(source.slice(start,end)+'\n;page;',{cinemaAssets:theme,esc,httpsUrl:require('../tools/availability-evidence.cjs').httpsUrl});
   return render(pick);
 }
 

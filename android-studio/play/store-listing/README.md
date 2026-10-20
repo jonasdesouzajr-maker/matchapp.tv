@@ -46,3 +46,7 @@ Preserve the adult **Contains ads: Yes** declaration and review all current Cons
 The source contact targets remain in [store-presence.json](../store-presence.json). Public support-mail ownership and any future category, tag, custom-listing or experiment changes require current account evidence. Keep at most five relevant tags actually offered by Play; no keyword stuffing or ranking forecasts.
 
 The [October 17 CRO review](CRO_REVIEW_20261017.md) remains a dated historical record.
+
+## Current localized graphics
+
+Use `en-US/graphics/` and `pt-BR/graphics/` for the approved feature graphics and four refreshed UI captures per language. `GRAPHICS-PROVENANCE.json` records exact dimensions, source and SHA256 values. The captures show actual web UI rendered with the Android app bootstrap; they are not APK or physical-device captures. Historical files under `../screenshots/` are not the current adult upload set.
