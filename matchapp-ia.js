@@ -57,8 +57,8 @@ function qsa(s,r=document){return Array.from(r.querySelectorAll(s))}
 function safeClick(target){try{target?.click?.()}catch(_){}}
 function countryName(){try{return String(localStorage.getItem('match_user_country')||'').trim()}catch(_){return''}}
 function syncHeaderAuth(){
- const profile=qs('#profile-link-tab');
- const signed=!!(profile&&getComputedStyle(profile).display!=='none'&&profile.getAttribute('aria-hidden')!=='true');
+ // Account state is independent of an optional provider photo.
+ const signed=window.isUserLoggedIn===true;
  document.body.classList.toggle('ma-guest',!signed);
  document.body.classList.toggle('ma-signed-in',signed);
  const logout=qs('#nav-logout-btn');

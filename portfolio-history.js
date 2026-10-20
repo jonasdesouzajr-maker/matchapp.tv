@@ -78,11 +78,10 @@
     });
   }
 
-  function cardFor(i){
+  function cardFor(i,index){
     const card=document.createElement('article');card.className='profile-history-card';
-    const img=document.createElement('img');img.width=66;img.height=99;img.className='profile-history-poster';img.alt=i.title||'';img.loading='lazy';
-    const fallback=()=>{if(typeof generateLocalPosterSVG==='function')img.src=generateLocalPosterSVG(i.title||'MatchApp',{synopsis:i.reason});};
-    img.onerror=()=>{img.onerror=null;fallback();};if(i.posterUrl)img.src=safeLink(i.posterUrl);else fallback();
+    const img=document.createElement('img');img.width=66;img.height=99;img.className='profile-history-poster';
+    window.MatchAppPortfolioPosters.apply(img,i,{eager:index<4});
     const body=document.createElement('div');body.className='profile-history-copy';
     const title=document.createElement('h3'),note=document.createElement('p'),actions=document.createElement('div');actions.className='profile-history-actions';
     title.textContent=i.title||i.detail||'Untitled';
@@ -125,13 +124,14 @@
       merged.push({...item,title});
     };
     records.forEach(push);
-    activity.forEach(e=>push({title:e.detail,action:e.type,type:e.type,ts:e.ts,reason:e.type==='ai'?'Ask AI':'',posterUrl:e.meta?.posterUrl||'',addedAt:e.ts}));
+    activity.forEach(e=>push({...e.meta,metadata:e.meta,title:e.detail,action:e.type,type:e.type,ts:e.ts,reason:e.type==='ai'?'Ask AI':'',addedAt:e.ts}));
     merged.sort((a,b)=>(Number(b.addedAt||b.ts||0)-Number(a.addedAt||a.ts||0)));
     const count=document.getElementById('count-history');
     if(count) count.textContent=String(merged.length);
     if(!merged.length){host.innerHTML='<div class="history-empty"><strong>Your private history is clear.</strong><span>Matches, Ask AI titles, saves and seen titles stay here until you remove them.</span></div>';
       const empty=host.firstElementChild;window.MatchProfilePortfolioI18n?.bind(empty,()=>{const ui=window.MatchProfilePortfolioI18n;empty.querySelector('strong').textContent=ui.text('historyEmptyTitle');empty.querySelector('span').textContent=ui.text('historyEmptyCopy');empty.style.textAlign='start';});return;}
-    merged.forEach(i=>host.append(cardFor(i)));
+    merged.forEach((i,index)=>host.append(cardFor(i,index)));
+    window.MatchAppPortfolioPosters.bind(host);
   }
   function init(){
     render();

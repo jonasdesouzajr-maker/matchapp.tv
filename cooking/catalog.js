@@ -16,7 +16,8 @@ const recipes=[
 ];
 function normalize(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
 function isCooking(q){
- const text=normalize(q);
+ // Source links describe provenance, not a request to watch a film or series.
+ const text=normalize(String(q||'').replace(/https?:\/\/[^\s<>"']+/gi,' '));
  // A film, series or documentary ABOUT cooking is still a watch request.
  if(/\b(watch|stream|(?:cooking|tv|television)\s+shows?|series|movies?|films?|documentar(?:y|ies|ios?)|assistir|ver|filmes?|series?|documentarios?|peliculas?)\b/.test(text))return false;
  return /\b(recipes?|receitas?|cooking|cookery|culinaria|cozinhar|recetas?|cocinar|maangchi|panelinha|rita lobo|food wishes|chef john|jamie oliver|bibimbap|omelet|omelette|omelete|scrambled eggs|tomato soup)\b/.test(text);

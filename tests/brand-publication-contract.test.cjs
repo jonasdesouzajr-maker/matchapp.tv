@@ -3,6 +3,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),vm=require('node:vm');
 const {execFileSync}=require('node:child_process');
+const {createRequire}=require('node:module');
 const {JSDOM}=require('jsdom');
 const ROOT=path.join(__dirname,'..');
 const source=fs.readFileSync(path.join(ROOT,'tools/refresh-news-rss.js'),'utf8');
@@ -11,7 +12,7 @@ const workflow=fs.readFileSync(path.join(ROOT,'.github/workflows/brand-normalize
 const entry=source.search(/^\(async\b/m);
 assert.ok(entry>0,'the news owner entry point must be located before evaluation');
 const render=vm.runInNewContext(source.slice(0,entry)+'\n;({page,hub})',{
- require,__dirname:path.join(ROOT,'tools'),URL,URLSearchParams,AbortController,console,
+ require:createRequire(path.join(ROOT,'tools/refresh-news-rss.js')),__dirname:path.join(ROOT,'tools'),URL,URLSearchParams,AbortController,console,
  fetch:()=>{throw new Error('Renderer tests must not access upstream feeds');}
 });
 function fixture(language='en',category='entertainment'){

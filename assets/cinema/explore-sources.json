@@ -1,0 +1,16 @@
+{
+  "purpose": "Decorative category imagery for the cinematic Explore page; no imagery represents a specific title or artist.",
+  "downloaded": "2026-10-20",
+  "license": "Unsplash License (https://unsplash.com/license)",
+  "photos": [
+    {"file":"explore-hero.jpg","source":"https://images.unsplash.com/photo-1469474968028-56623f02e42e","description":"Golden mountain landscape with a person standing on a cliff"},
+    {"file":"explore-awaited.jpg","source":"https://images.unsplash.com/photo-1449452198679-05c7fd30f416","description":"Neuschwanstein Castle landscape"},
+    {"file":"explore-weekly.jpg","source":"https://images.unsplash.com/photo-1490730141103-6cac27aaab94","description":"Silhouette overlooking a vivid sunset"},
+    {"file":"explore-books.jpg","source":"https://images.unsplash.com/photo-1507842217343-583bb7270b66","description":"Warm library bookshelves"},
+    {"file":"explore-food.jpg","source":"https://images.unsplash.com/photo-1551183053-bf91a1d81141","description":"Pasta in a bowl"},
+    {"file":"explore-news.jpg","source":"https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4","description":"Earth globe"},
+    {"file":"explore-events.jpg","source":"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7","description":"Concert crowd under colored stage lighting"},
+    {"file":"explore-music.jpg","source":"https://images.unsplash.com/photo-1516280440614-37939bbacd81","description":"Stage microphone"}
+  ],
+  "originalIllustrations": [{"file":"explore-ai.svg","description":"Original gold orbit illustration created for MatchApp Ai"}]
+}

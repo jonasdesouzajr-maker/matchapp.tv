@@ -11,7 +11,7 @@ const flush=async()=>{for(let i=0;i<40;i++)await Promise.resolve()};
 
 // A deterministic image/network boundary; all cover, metadata, identity and
 // renderResult handoff code below is read from the real production sources.
-function fixture({cached=[]}={}){
+function fixture({cached=[],indexEntries=[]}={}){
  let now=0,nextTimer=0;const timers=new Map(),delays=[],requests=[],waiting=new Map();
  const clock={
   setTimeout(fn,ms){const id=++nextTimer;timers.set(id,{fn,at:now+ms});delays.push(ms);return id},
@@ -22,8 +22,8 @@ function fixture({cached=[]}={}){
   }now=target;await flush()}
  };
  class ImageNode extends EventTarget{
-  constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.writes=[];this.listeners=[];this.handlers={};this._src=''}
-  addEventListener(type,fn,options){this.listeners.push({type,once:!!options?.once});super.addEventListener(type,fn,options)}
+  constructor(){super();this.isConnected=true;this.hidden=true;this.complete=true;this.naturalWidth=0;this.naturalHeight=0;this.style={opacity:''};this.dataset={};this.writes=[];this.listeners=[];this.listenerCallbacks=[];this.handlers={};this._src=''}
+  addEventListener(type,fn,options){this.listeners.push({type,once:!!options?.once});this.listenerCallbacks.push({type,fn,once:!!options?.once});super.addEventListener(type,fn,options)}
   set src(value){this._src=String(value);this.writes.push(this._src);this.complete=cached.includes(this._src)&&!(this.loading==='lazy'&&this.hidden);this.naturalWidth=this.complete?480:0;this.naturalHeight=this.complete?720:0}
   get src(){return this._src}
   setHandler(type,fn){if(this.handlers[type])this.removeEventListener(type,this.handlers[type]);this.handlers[type]=fn;if(fn)this.addEventListener(type,fn)}
@@ -43,7 +43,7 @@ function fixture({cached=[]}={}){
  }};
  function fetchBoundary(raw,{signal}={}){
   const url=String(raw);requests.push(url);
-  if(url.startsWith('/ebooks/verified-book-index-20261011.json'))return Promise.resolve({ok:true,json:async()=>({entries:[]})});
+  if(url.startsWith('/ebooks/verified-book-index-20261011.json'))return Promise.resolve({ok:true,json:async()=>({entries:indexEntries})});
   const u=new URL(url);let key;
   if(u.hostname==='openlibrary.org')key=u.searchParams.get('fields').includes('number_of_pages_median')?'detailsOL':'matcherOL';
   else if(u.hostname==='www.googleapis.com')key=u.searchParams.get('maxResults')==='8'?'detailsGoogle':'matcherGoogle';
@@ -61,6 +61,11 @@ function fixture({cached=[]}={}){
   market:()=> 'US',APPLE_BOOK_MARKETS:new Set(['US'])});
  vm.runInContext(identitySource,context,{filename:'ebooks/cover-identity.js'});
  vm.runInContext(detailsSource,context,{filename:'ebooks/book-details-20261011.js'});
+ // Cover alt text now uses the same pure presentation helper as the full
+ // matcher. Include that real function when exercising the isolated art block.
+ const copyStart=matcher.indexOf('function ui('),copyEnd=matcher.indexOf('function choice(',copyStart);
+ assert(copyStart>=0&&copyEnd>copyStart,'production presentation helper must exist');
+ vm.runInContext(matcher.slice(copyStart,copyEnd),context,{filename:'ebooks/ebook-matcher.js'});
  const start=matcher.indexOf('const BOOK_COVER_IDENTITY='),end=matcher.indexOf('function boundedReading(',start);
  assert(start>=0&&end>start,'production cover block must exist');
  vm.runInContext(matcher.slice(start,end),context,{filename:'ebooks/ebook-matcher.js'});
@@ -166,6 +171,58 @@ test('pending verified audio pixels stay transparent with fallback visible and r
  await f.emptyMatcher();await f.done();
  assert.equal(f.img.hidden,true);assert.equal(f.img.style.opacity,'0');
  assert.equal(f.img.naturalWidth,0);assert.equal(f.fallback.hidden,false);
+});
+
+test('a loaded branded fallback is replaced by exact local-index art without any remote search',async()=>{
+ const source=cover(330),f=fixture({cached:[source],indexEntries:[{...book,source:'Open Library',cover:source,url:'https://openlibrary.org/works/OL123W'}]});
+ f.img.src='data:image/svg+xml,branded-placeholder';f.img.load();
+ f.img.hidden=false;f.img.style.opacity='1';f.img.dataset.maFallback='1';f.fallback.hidden=true;
+ await f.start();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,['data:image/svg+xml,branded-placeholder',source]);
+ assert.equal(f.img.dataset.bookCoverVerified,source);assert.equal(f.img.dataset.maFallback,undefined);
+ assert.equal(f.img.dataset.bookCoverPending,undefined);
+ assert.equal(f.img.alt,'Frankenstein — Mary Shelley (source cover)');
+ assert.equal(f.requests.length,1,'the shared same-origin index is sufficient for both owners');
+ assert(f.requests[0].startsWith('/ebooks/verified-book-index-20261011.json'));
+ assert.equal(f.waiting.size,0);assert.equal(f.timers.size,0);
+});
+
+test('local-index art starts before remote searches and waits for real pixels behind the honest fallback',async()=>{
+ const source=cover(330),f=fixture({indexEntries:[{...book,source:'Open Library',cover:source}]});
+ await f.start();
+ assert.deepEqual(f.img.writes,[source],'both owners share one in-flight approved asset');
+ assert.equal(f.requests.length,1);assert.equal(f.img.hidden,false);assert.equal(f.img.style.opacity,'0');
+ assert.equal(f.fallback.hidden,false);assert.equal(f.img.dataset.bookCoverVerified,undefined);
+ f.img.load();await f.done();f.ready();assert.equal(f.img.dataset.bookCoverVerified,source);
+ assert.equal(f.requests.length,1);assert.equal(f.timers.size,0);
+});
+
+test('an indexed title with a different full author never supplies its artwork',async()=>{
+ const f=fixture({indexEntries:[{...book,author:'Mary Shelley Smith',source:'Open Library',cover:cover(999)}]});
+ await f.start();assert.deepEqual(f.img.writes,[]);
+ await f.reply('detailsOL',{docs:[]});await f.reply('detailsGoogle',{items:[]});
+ await f.reply('matcherOL',{docs:[row(110)]});f.img.load();await f.emptyMatcher();await f.done();f.ready();
+ assert.deepEqual(f.img.writes,[cover(110)]);assert.equal(f.img.dataset.bookCoverVerified,cover(110));
+});
+
+test('generic pixels cannot satisfy a pending source and a stale metadata error cannot hide the recovered cover',async()=>{
+ const f=fixture();await f.start();await f.reply('detailsOL',{docs:[row(220)]});
+ const staleError=f.img.listenerCallbacks.find(x=>x.type==='error'&&x.once).fn;
+ f.img.src='data:image/svg+xml,legacy-placeholder';f.img.dataset.maFallback='1';f.img.load();
+ assert.equal(f.img.dataset.bookCoverVerified,undefined,'a generic load is never attributed to the approved source');
+ assert.equal(f.fallback.hidden,false);
+ await f.reply('matcherOL',{docs:[row(110)]});
+ assert.equal(f.img.style.opacity,'0');assert.equal(f.fallback.hidden,false);
+ f.img.load();f.ready();assert.equal(f.img.dataset.bookCoverVerified,cover(110));
+ staleError();f.ready();
+ await f.emptyMatcher();await f.done();f.ready();assert.equal(f.timers.size,0);
+});
+
+test('a late metadata error for the same source cannot undo a genuinely loaded cover',async()=>{
+ const source=cover(220),f=fixture();await f.start();await f.reply('detailsOL',{docs:[row(220)]});
+ const staleError=f.img.listenerCallbacks.find(x=>x.type==='error'&&x.once).fn;
+ f.img.load();f.ready();staleError();f.ready();
+ await f.emptyMatcher();await f.done();f.ready();assert.equal(f.img.dataset.bookCoverVerified,source);
 });
 
 test('both rendering pages request the handoff repair without changing earlier loader query contracts',()=>{

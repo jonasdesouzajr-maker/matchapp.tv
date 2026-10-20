@@ -6,9 +6,67 @@ function svgFallback(title,platform){
  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900"><defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#2b1643"/><stop offset="1" stop-color="#080916"/></linearGradient></defs><rect width="600" height="900" rx="36" fill="url(#g)"/><circle cx="300" cy="315" r="88" fill="none" stroke="#E5C158" stroke-width="10" opacity=".7"/><path d="M277 264l92 51-92 51z" fill="#E5C158"/><text x="300" y="505" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="40" font-weight="800">'+t+'</text><text x="300" y="565" text-anchor="middle" fill="#E5C158" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="3">'+p+'</text></svg>');
 }
 function titleFor(img){const card=img.closest('[data-title],article,.marquee-item,.ma-news-card,.global-event,.spotlight-card');return card?.dataset?.title||card?.querySelector('h2,h3,h4,.marquee-title,.spotlight-title')?.textContent||img.alt||'MatchApp pick'}
+// Source-specific runtimes own original artwork, identity checks and recovery.
+// The visual polish layer must never turn their failed request into a generic
+// "loaded image" that suppresses a later verified cover handoff.
+function specializedMedia(img){
+ if(typeof img.onerror==='function')return true;
+ if(/(?:^|\/)assets\/brand\//.test(img.getAttribute('src')||''))return true;
+ if(img.matches('[id*="avatar"],[class*="avatar"],[data-avatar]')||img.closest('[class*="avatar"],[data-avatar]'))return true;
+ if(img.matches('#res-poster-img,#spotlight-poster-img,#nav-avatar-img,[data-title],[data-poster-title],[data-matchapp-media-title],[data-matchapp-media-hardened],[data-matchapp-adult-poster-bound],[data-ebook-cover],[data-top-cover],[data-magazine-publisher-icon],[data-magazine-hub-icon],[data-book-cover],[data-book-cover-pending],[data-book-cover-verified],[data-ma-media-owner]'))return true;
+ return !!img.closest('#marquee-track,.marquee-item,.ebook-cover,.ebook-top-cover,.reading-ai-cover,.book-cover,.global-event,.event-card,.event-guide-hero,.event-poster,.event-cover,.event-hero,[data-event-start],[data-event-slug],.adsbygoogle,[data-ad-slot],[data-ad-client],.premium-ad-frame,.sponsored-match,.sponsored-unit,.ma-news-card,.news-card,.avatar-preview,.profile-avatar,.nav-avatar,.avatar-face,.avatar-circle,.ja-face-wrap,.jh-portrait,#ma-jonas-home,#ma-ambient-jonas,.matchapp-brand-link,.ma-brand-lockup,.hub-brand,.kids-body,.page-kids,.kids-card');
+}
+function genericPixels(img){
+ const src=img.getAttribute('src')||'';
+ return img.dataset.maFallback==='1'&&(src===img.dataset.maFallbackSrc||/^data:image\/svg\+xml/i.test(src));
+}
+function restoreSpecializedSource(img){
+ if(img.dataset.maFallback==='1'&&img.dataset.maFallbackCleanupBound!=='1'){
+  img.dataset.maFallbackCleanupBound='1';
+  img.addEventListener('load',()=>{
+   const loaded=img.currentSrc||img.src||'';
+   if(img.complete&&img.naturalWidth>0&&!genericPixels(img)&&!/^data:image\/svg\+xml/i.test(loaded)){delete img.dataset.maFallback;delete img.dataset.maFallbackSrc;}
+  });
+ }
+ const source=img.dataset.maOriginalSrc;
+ if(!genericPixels(img)||!source||/^data:/i.test(source)||img.dataset.maFallbackRestored===source)return;
+ img.dataset.maFallbackRestored=source;
+ delete img.dataset.maFallback;delete img.dataset.maFallbackSrc;
+ if(!img.alt&&img.dataset.maOriginalAlt)img.alt=img.dataset.maOriginalAlt;
+ if(img.dataset.maOriginalSrcset)img.setAttribute('srcset',img.dataset.maOriginalSrcset);
+ if(img.dataset.maOriginalSizes)img.setAttribute('sizes',img.dataset.maOriginalSizes);
+ img.src=source;
+}
 function enhanceMedia(){
- document.querySelectorAll('img').forEach(img=>{if(img.dataset.maMedia==='1')return;img.dataset.maMedia='1';const shell=img.parentElement;if(shell){shell.classList.add('ma-media-shell');if(!img.complete)shell.classList.add('is-loading')}
- const done=()=>shell?.classList.remove('is-loading');img.addEventListener('load',done,{once:true});img.addEventListener('error',()=>{if(img.dataset.maFallback==='1')return;img.dataset.maFallback='1';img.alt='';img.src=svgFallback(titleFor(img),img.closest('[data-platform]')?.dataset?.platform||'MATCHAPP TV');done()},{once:true});if(img.complete)done();
+ document.querySelectorAll('img').forEach(img=>{
+  if(specializedMedia(img)){restoreSpecializedSource(img);return;}
+  if(img.dataset.maMedia==='1')return;
+  img.dataset.maMedia='1';
+  const shell=img.parentElement;
+  if(shell){shell.classList.add('ma-media-shell');if(!img.complete)shell.classList.add('is-loading')}
+  const done=()=>shell?.classList.remove('is-loading');
+  img.addEventListener('load',()=>{
+   done();
+   if(img.dataset.maFallback==='1'&&!genericPixels(img)){
+    delete img.dataset.maFallback;delete img.dataset.maFallbackSrc;delete img.dataset.maFallbackRestored;
+   }
+  });
+  img.addEventListener('error',()=>{
+   done();
+   // Ownership can be attached after this node was initially scanned.
+   if(specializedMedia(img)||img.dataset.maFallback==='1')return;
+   img.dataset.maOriginalSrc=img.src||img.getAttribute('src')||'';
+   img.dataset.maOriginalAlt=img.alt||'';
+   if(img.getAttribute('srcset'))img.dataset.maOriginalSrcset=img.getAttribute('srcset');
+   if(img.getAttribute('sizes'))img.dataset.maOriginalSizes=img.getAttribute('sizes');
+   img.dataset.maFallback='1';
+   const fallback=svgFallback(titleFor(img),img.closest('[data-platform]')?.dataset?.platform||'MATCHAPP TV');
+   img.dataset.maFallbackSrc=fallback;
+   // Otherwise the browser keeps selecting the failed srcset candidate.
+   img.removeAttribute('srcset');img.removeAttribute('sizes');
+   img.src=fallback;
+  });
+  if(img.complete)done();
  });
  document.querySelectorAll('iframe').forEach(f=>{if(f.dataset.maMedia==='1')return;f.dataset.maMedia='1';const shell=f.parentElement;shell?.classList.add('ma-media-shell','is-loading');f.addEventListener('load',()=>shell?.classList.remove('is-loading'),{once:true})});
 }

@@ -1771,13 +1771,13 @@ async function runAskAndRender(question, opts) {
 
     const bookIntent = detectBookIntent(question);
     const cookingIntent = !!window.MatchCooking?.isCooking(question);
-    let payload, musicPayload, source = 'ai';
+    let payload, musicPayload, source = 'ai', cookingUnavailable = false;
     try {
         musicPayload = await window.MatchAppMusicReleases?.query(question, history);
         if (musicPayload) payload = musicPayload;
         else payload = await askAIConversational(question, history);
     }
-    catch (e) { payload = cookingIntent ? {answer: /^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.', results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
+    catch (e) { cookingUnavailable = cookingIntent; payload = cookingIntent ? {answer: window.MatchAppBooksLocale?.t?.('ui.cookingUnavailable') || (/^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.'), results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable); source = 'fallback'; }
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
     // provider returns nothing, reuse the reviewed local catalogue under the
@@ -1878,7 +1878,12 @@ async function runAskAndRender(question, opts) {
     if(cookingIntent && bubble?.wrap){
       const sources=document.createElement('section');sources.className='cooking-chat-sources';sources.setAttribute('aria-label','Original cooking sources');
       const route=document.createElement('a');route.className='gold-btn';route.href='/cooking/?q='+encodeURIComponent(question);route.textContent=/^pt/i.test(window.MATCH_LANG||'')?'Explorar receitas e vídeos originais':/^es/i.test(window.MATCH_LANG||'')?'Explorar recetas y vídeos originales':/^fr/i.test(window.MATCH_LANG||'')?'Explorer les recettes et vidéos originales':/^de/i.test(window.MATCH_LANG||'')?'Originalrezepte und Videos ansehen':'Explore original recipes & videos';sources.append(route);
-      window.MatchCooking.channels.forEach(c=>{const p=document.createElement('p'),a=document.createElement('a');a.href=c.url;a.textContent=c.name+' · '+c.specialty;p.append(a);sources.append(p);});bubble.wrap.append(sources);
+      if(window.MatchAppBooksLocale?.bind){
+        window.MatchAppBooksLocale.bind(sources,'ui.cookingSources',null,'aria-label');
+        const label=document.createElement('span');label.textContent=route.textContent;route.replaceChildren(label);
+        window.MatchAppBooksLocale.bind(label,'ui.cookingBrowse');
+      }
+      window.MatchCooking.channels.forEach(c=>{const p=document.createElement('p'),a=document.createElement('a'),specialty=document.createElement('span');a.href=c.url;specialty.textContent=c.specialty;a.append(document.createTextNode(c.name+' · '),specialty);p.append(a);sources.append(p);if(window.MatchAppBooksLocale?.get?.('ui.cookingSpecialty.'+c.id)!==undefined)window.MatchAppBooksLocale.bind(specialty,'ui.cookingSpecialty.'+c.id);});bubble.wrap.append(sources);
     }
     // Only attach the exact numbered TMDB record returned from verified
     // lookup+credits. Plain AI prose and fuzzy title suggestions get no link.
@@ -1903,6 +1908,11 @@ async function runAskAndRender(question, opts) {
             ? '📚🎧📰 Verificar libros, audiolibros y revistas'
             : '📚🎧📰 Verify e-books, audiobooks and magazines';
         route.setAttribute('aria-label', route.textContent);
+        if(window.MatchAppBooksLocale?.bind){
+            const label=document.createElement('span');label.textContent=route.textContent;route.replaceChildren(label);
+            window.MatchAppBooksLocale.bind(label,'ui.verifyReading');
+            window.MatchAppBooksLocale.bind(route,'ui.verifyReading',null,'aria-label');
+        }
         bubble.wrap.appendChild(route);
         window.MatchAppReadingAI?.render?.(question, bubble.wrap);
     }
@@ -1920,6 +1930,7 @@ async function runAskAndRender(question, opts) {
         }
     }
 
+    if(cookingUnavailable && bubble?.textEl)window.MatchAppBooksLocale?.bind?.(bubble.textEl,'ui.cookingUnavailable');
     const baseIndex = DISCOVER_ITEMS.length;
     let newItems = (bookIntent ? [] : (payload.results || []))
         .map(item => enrichDiscoverItem(item, question))

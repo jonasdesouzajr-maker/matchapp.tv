@@ -55,6 +55,7 @@ test('Awareness regeneration preserves the approved shared shell and committed s
  const start=source.indexOf('const today='),end=source.indexOf('\nconst cal=read(CAL,');
  assert.ok(start>=0&&end>start,'evaluate render definitions without the network/publishing entry point');
  const render=vm.runInNewContext(source.slice(start,end)+'\n({expand,generic})',{
+  cinemaAssets:require('../tools/finalize-brand.js').cinemaAssets,
   fetch(){throw Error('Template parity must not fetch or refresh editorial sources');}
  });
  const hub=fs.readFileSync(path.join(ROOT,'news/index.html'),'utf8');
@@ -72,6 +73,9 @@ test('Awareness regeneration preserves the approved shared shell and committed s
    assert.equal(output.split(asset).length-1,1,key+' retains one exact approved asset');
    assert.ok(output.indexOf(asset)<output.indexOf('</head>'),key+' keeps the shell in the head');
   }
-  assert.equal(output,fs.readFileSync(path.join(ROOT,'awareness',campaign.id,'index.html'),'utf8'),key+' template retains the committed source, metadata and body');
+  // The managed runtime query may serialize the same ampersand as & or &amp;.
+  // Preserve every other byte, including campaign copy, metadata and source URLs.
+  const scriptEncoding=html=>html.replace(/(<script\b[^>]*\bsrc=["']\/patches\/reference-system\.js(?:\?[^"']*)?)(["'])/g,(all,src,end)=>src.replace(/&amp;/g,'&')+end);
+  assert.equal(scriptEncoding(output),scriptEncoding(fs.readFileSync(path.join(ROOT,'awareness',campaign.id,'index.html'),'utf8')),key+' template retains the committed source, metadata and body');
  }
 });

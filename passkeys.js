@@ -57,8 +57,16 @@
         const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'passkey-remove'; remove.textContent = t('remove');
         remove.setAttribute('aria-label', t('remove') + ': ' + name.textContent); remove.disabled = busy;
         remove.addEventListener('click', async () => {
-          if (busy || !window.confirm(t('removeQuestion'))) return;
+          if (busy) return;
+          const confirmingUserId = confirmedUserId;
           busy = true; render(); remove.disabled = true;
+          let accepted = false;
+          try {
+            accepted = typeof window.MatchAppDialogs?.confirm === 'function'
+              ? await window.MatchAppDialogs.confirm(t('removeQuestion'), {trigger:remove})
+              : window.confirm(t('removeQuestion'));
+          } catch (_) {}
+          if (accepted !== true || !signedIn || confirmedUserId !== confirmingUserId) { busy = false; render(); remove.disabled = false; return; }
           try { const {error} = await client().auth.passkey.delete({passkeyId:passkey.id}); if (error) throw error; message('removed'); }
           catch (_) { message('failure',true); }
           finally { busy = false; render(); loadList(); }

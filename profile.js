@@ -91,12 +91,6 @@ function renderProfileAgeLabel(node, age) {
 document.addEventListener('DOMContentLoaded', () => {
     const dobInput = document.getElementById('profile-dob');
     const ageDisplay = document.getElementById('profile-age-display');
-    const picPreview = document.getElementById('profile-pic-preview');
-
-    const savedAvatar = localStorage.getItem('match_custom_avatar');
-    if (savedAvatar && picPreview) {
-        picPreview.src = savedAvatar;
-    }
     
     const savedAge = localStorage.getItem('match_user_age');
     if (savedAge && ageDisplay) {
@@ -158,7 +152,6 @@ function checkAndRenderProfileState(event) {
     const lockedCard = document.getElementById('locked-info-card');
     const saveBtn = document.getElementById('save-profile-btn');
     const instructionsText = document.getElementById('profile-instructions-text');
-    const changeBadge = document.getElementById('avatar-change-badge');
 
     if (isLocked) {
         if (editableSection) editableSection.style.display = 'none';
@@ -175,7 +168,6 @@ function checkAndRenderProfileState(event) {
             populateEmail();
         }
         if (instructionsText) instructionsText.innerHTML = window.MatchProfileDetailsI18n?.text('identityLockedHelp') || "Your core identity is locked and permanently guiding your AI Matches.";
-        if (changeBadge) changeBadge.innerText = window.t?.('identity.avatarEditable') || 'Change avatar';
         
         if (saveBtn) {
             saveBtn.innerText = window.t?.('identity.locked') || 'Identity saved and locked';
@@ -184,7 +176,11 @@ function checkAndRenderProfileState(event) {
             saveBtn.style.background = "#555";
             saveBtn.style.borderColor = "#555";
             saveBtn.style.boxShadow = "none";
-            saveBtn.onclick = () => alert(window.MatchProfileDetailsI18n?.text('identityLockedAlert') || "Core identity fields are permanently locked to maintain consistent AI matching.");
+            saveBtn.onclick = async () => {
+                const message = window.MatchProfileDetailsI18n?.text('identityLockedAlert') || "Core identity fields are permanently locked to maintain consistent AI matching.";
+                if (typeof window.MatchAppDialogs?.alert === 'function') await window.MatchAppDialogs.alert(message);
+                else window.alert(message);
+            };
         }
     } else {
         if (editableSection) editableSection.style.display='';
@@ -213,90 +209,7 @@ document.addEventListener('matchapp:langchange',checkAndRenderProfileState);
 document.addEventListener('matchapp:historychange',()=>window.renderProfileGrids?.());
 document.addEventListener('matchapp:profilehydrated',()=>window.renderProfileGrids?.());
 
-window.handleAvatar = function(event) {
-    // The profile lock deliberately does NOT apply here. It exists to freeze
-    // the identity facts the AI matches on — name, country, date of birth,
-    // star sign — so those stay consistent. A profile photo is not one of
-    // those: it feeds nothing, and locking it meant a user who sealed their
-    // identity could never change their picture again, which is a change
-    // they have every right to make and no reason to be denied.
-    const file = event.target.files[0];
-    if (!file) return;
 
-    if (!/^image\//.test(file.type)) {
-        if (window.showToast) showToast('Please choose an image file.', true);
-        return;
-    }
-    // 8MB ceiling on the ORIGINAL. Anything larger is almost certainly a
-    // RAW or burst capture, and decoding it on a mid-range phone can hang
-    // the tab before we ever get to resize it.
-    if (file.size > 8 * 1024 * 1024) {
-        if (window.showToast) showToast('That image is very large — please pick one under 8MB.', true);
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const img = new Image();
-        img.onload = function () {
-            // RESIZE BEFORE STORING. A modern phone photo is 3-5MB, and
-            // base64 inflates it by roughly a third — so storing the raw
-            // file would push a single avatar past localStorage's ~5MB
-            // budget for the whole origin, silently throwing QuotaExceeded
-            // and taking every other saved preference down with it.
-            // 256px square is more than enough for a 96px display at 2x.
-            const SIZE = 256;
-            const canvas = document.createElement('canvas');
-            canvas.width = canvas.height = SIZE;
-            const ctx = canvas.getContext('2d');
-
-            // Centre-crop to square so portrait and landscape photos are not
-            // squashed into the circular frame.
-            const side = Math.min(img.width, img.height);
-            const sx = (img.width - side) / 2;
-            const sy = (img.height - side) / 2;
-            ctx.drawImage(img, sx, sy, side, side, 0, 0, SIZE, SIZE);
-
-            // JPEG at 0.82 lands a 256px avatar around 15-25KB.
-            const base64 = canvas.toDataURL('image/jpeg', 0.82);
-
-            try {
-                localStorage.setItem('match_custom_avatar', base64);
-            } catch (err) {
-                if (window.showToast) showToast('Could not save the image — your browser storage is full.', true);
-                return;
-            }
-            // A custom photo overrides any preset avatar that was chosen.
-            localStorage.removeItem('match_preset_avatar');
-
-            const preview = document.getElementById('profile-pic-preview');
-            if (preview) preview.src = base64;
-            const navImg = document.getElementById('nav-avatar-img');
-            if (navImg) { navImg.src = base64; navImg.style.display = 'inline-block'; }
-            document.querySelectorAll('.avatar-opt[aria-pressed="true"]')
-                .forEach(b => b.setAttribute('aria-pressed', 'false'));
-
-            if (window.supabaseClient) {
-                window.supabaseClient.auth.getUser().then(async ({ data }) => {
-                    if (data && data.user) {
-                        await window.supabaseClient.from('profiles')
-                            .upsert({ id: data.user.id, avatar_url: base64 }, { onConflict: 'id' });
-                    }
-                });
-            }
-            if (window.showToast) showToast('Profile photo updated.');
-            if (window.track) window.track('avatar_changed', { source: 'upload' });
-        };
-        img.onerror = function () {
-            if (window.showToast) showToast("That file could not be read as an image.", true);
-        };
-        img.src = e.target.result;
-    };
-    reader.onerror = function () {
-        if (window.showToast) showToast('Could not read that file.', true);
-    };
-    reader.readAsDataURL(file);
-};
 
 window.saveProfileData = async function() {
     if (localStorage.getItem('match_profile_locked') === 'true') return;
@@ -355,10 +268,114 @@ function platformFallbackUrl(platform, title) {
     return `https://www.justwatch.com/us/search?q=${encodeURIComponent(title)}`;
 }
 
+// Display-only normalization; saved records and their action owners stay intact.
+/* MATCHAPP_PORTFOLIO_POSTERS_BEGIN */
+(function () {
+    'use strict';
+    if (window.MatchAppPortfolioPosters) return;
+    const imageKeys = ['posterUrl','poster','artwork','cover','poster_large_url','poster_url','poster_original_url','posterLarge','posterOriginal','thumbnailUrl','thumbnail','artworkUrl600','artworkUrl100'];
+    function sources(item) {
+        const found = [], pending = item && typeof item === 'object' ? [item] : [];
+        while (pending.length && found.length < 24) {
+            const row = pending.shift();
+            if (!row || typeof row !== 'object' || found.includes(row)) continue;
+            found.push(row);
+            ['metadata','_meta','_tmdb','meta','verifiedMetadata','verified','media'].forEach(key => {
+                if (row[key] && typeof row[key] === 'object' && !Array.isArray(row[key])) pending.push(row[key]);
+            });
+        }
+        return found;
+    }
+    function safeImage(value) {
+        if (typeof value !== 'string' || !value.trim() || /^(?:invalid-image|fallback|data:|javascript:)/i.test(value.trim())) return '';
+        try {
+            const url = new URL(value.trim(), location.origin);
+            return ['http:','https:'].includes(url.protocol) ? url.href : '';
+        } catch (_) { return ''; }
+    }
+    function kind(value) {
+        const name = String(value || '').toLowerCase();
+        return /^(?:tv|series|show|television)$/.test(name) ? 'tv' : /^(?:movie|film)$/.test(name) ? 'movie' : '';
+    }
+    function id(value) {
+        if (!/^[1-9]\d{0,9}$/.test(String(value || ''))) return 0;
+        const number = Number(value);
+        return Number.isSafeInteger(number) && number > 0 ? number : 0;
+    }
+    function fallback(title) {
+        const xml = String(title).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[char]));
+        return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450"><rect width="300" height="450" fill="#130b1b"/><rect x="12" y="12" width="276" height="426" rx="14" fill="#201329" stroke="#705938"/><text x="150" y="222" text-anchor="middle" fill="#e4ba67" font-family="sans-serif" font-size="16">' + xml + '</text></svg>');
+    }
+    function record(item) {
+        const rows = sources(item), first = rows[0] || {};
+        const title = typeof item === 'string' ? item : String(first.title || first.name || 'Untitled');
+        const values = rows.flatMap(row => [row.kind,row.type,row.format,row.mediaType,row.media_type]).map(value => String(value || '').toLowerCase());
+        let sourceKind = rows.some(row => row.isAudio === true) || values.some(value => /audio|album|song|track|single|podcast|playlist|music/.test(value)) ? 'audio' :
+            rows.some(row => row.isBook === true) || values.some(value => /book|magazine|ebook|reading/.test(value)) ? 'book' : 'visual';
+        let posterUrl = '';
+        for (const row of rows) {
+            for (const key of imageKeys) { posterUrl = safeImage(row[key]); if (posterUrl) break; }
+            if (!posterUrl && typeof row.poster_path === 'string' && /^\/[A-Za-z0-9_.-]+$/.test(row.poster_path)) posterUrl = 'https://image.tmdb.org/t/p/w500' + row.poster_path;
+            if (posterUrl) break;
+        }
+        if (sourceKind === 'visual' && /(?:covers\.openlibrary\.org|\/Publication[^/]*\/)/i.test(posterUrl)) sourceKind = 'book';
+        const yearValue = rows.map(row => row.year || row.releaseYear || row.release_date || row.first_air_date).find(Boolean);
+        const parsedYear = Number(String(yearValue || '').slice(0,4)), year = Number.isSafeInteger(parsedYear) && parsedYear >= 1880 && parsedYear <= 2200 ? parsedYear : 0;
+        const identities = new Map();
+        if (sourceKind === 'visual') rows.forEach(row => {
+            const mediaKind = kind(row.tmdbKind || row.kind || row.media_kind || row.media_type || row.type), mediaId = id(row.tmdbId || row.tmdb_id || (mediaKind ? row.id : 0));
+            if (mediaId && mediaKind) identities.set(mediaKind + ':' + mediaId, {tmdbId:mediaId,kind:mediaKind});
+            if (Array.isArray(row.identityKeys)) row.identityKeys.forEach(key => {
+                const match = /^tmdb:(movie|tv):([1-9]\d{0,9})$/.exec(String(key));
+                if (match && id(match[2])) identities.set(match[1] + ':' + match[2], {tmdbId:id(match[2]),kind:match[1]});
+            });
+        });
+        const identity = identities.size === 1 ? [...identities.values()][0] : {tmdbId:0,kind:''};
+        const originalTitle = String(rows.map(row => row.originalTitle || row.original_title).find(Boolean) || '');
+        return {title,posterUrl,fallbackUrl:fallback(title),sourceKind,tmdbId:identity.tmdbId,kind:identity.kind,year,originalTitle};
+    }
+    function bindImage(img) {
+        if (img.__matchappPortfolioFallbackBound) return;
+        img.__matchappPortfolioFallbackBound = true;
+        img.addEventListener('error', function () {
+            // The shared exact-identity owner handles visual retries when ready.
+            if (img.dataset.portfolioPoster === '1' && img.__matchappAdultPoster) return;
+            const cover = img.dataset.posterFallback;
+            if (cover && img.getAttribute('src') !== cover) { img.removeAttribute('srcset'); img.src = cover; }
+            img.hidden = false; img.style.display = 'block'; img.style.visibility = 'visible'; img.style.opacity = '1';
+        });
+    }
+    function apply(img, item, options) {
+        const art = record(item), eager = !!options?.eager;
+        img.alt = art.title; img.hidden = false;
+        img.setAttribute('loading', eager ? 'eager' : 'lazy');
+        img.setAttribute('decoding','async'); img.setAttribute('fetchpriority', eager ? 'high' : 'auto');
+        img.dataset.posterTitle = art.title; img.dataset.posterSourceKind = art.sourceKind;
+        img.dataset.posterPreferredUrl = art.posterUrl; img.dataset.posterFallback = art.fallbackUrl;
+        if (art.originalTitle) img.dataset.originalTitle = art.originalTitle; else delete img.dataset.originalTitle;
+        ['portfolioPoster','tmdbId','tmdbKind','tmdbYear'].forEach(key => { delete img.dataset[key]; });
+        if (art.sourceKind === 'visual') {
+            img.dataset.portfolioPoster = '1';
+            if (art.tmdbId && art.kind) { img.dataset.tmdbId = String(art.tmdbId); img.dataset.tmdbKind = art.kind; }
+            if (art.year) img.dataset.tmdbYear = String(art.year);
+        }
+        img.style.display = 'block'; bindImage(img); img.src = art.posterUrl || art.fallbackUrl;
+        return art;
+    }
+    function bind(root) {
+        if (!root) return;
+        if (root.matches?.('img[data-poster-title]')) bindImage(root);
+        root.querySelectorAll?.('img[data-poster-title]').forEach(bindImage);
+        window.MatchAppCatalogMedia?.hardenWithin?.(root);
+    }
+    window.MatchAppPortfolioPosters = Object.freeze({record,apply,bind});
+    document.addEventListener('matchapp:catalog-media-ready', () => bind(document));
+})();
+/* MATCHAPP_PORTFOLIO_POSTERS_END */
+
 // Cards are clickable: tapping one opens where the title actually plays.
-function buildPosterCard(item, accent) {
+function buildPosterCard(item, accent, index = 0) {
     const title = typeof item === 'string' ? item : (item.title || 'Untitled');
-    let poster = typeof item === 'string' ? '' : (item.posterUrl || '');
     const platform = typeof item === 'string' ? '' : (item.platform || '');
     const isAudio = typeof item === 'object' && item.isAudio;
     const link = (typeof item === 'object' && item.streamUrl) ? item.streamUrl : platformFallbackUrl(platform, title);
@@ -376,11 +393,10 @@ function buildPosterCard(item, accent) {
     const noteBadge = noteText
         ? `<div class="poster-note-badge" title="${escapeHtml(noteText)}">📝</div>`
         : '';
-    const hasPoster = poster && poster.trim() !== '' && poster !== 'invalid-image' && poster !== 'fallback';
-    const imgTag = hasPoster
-        ? `<img src="${escapeHtml(poster)}" alt="${safeTitle}" style="width:100%; height:100%; object-fit:contain; background:#0b0303; display:block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
-        : '';
-    const fallbackDisplay = hasPoster ? 'none' : 'flex';
+    const image = document.createElement('img');
+    window.MatchAppPortfolioPosters.apply(image, item, {eager:index < 4});
+    image.style.cssText = 'width:100%; height:100%; object-fit:contain; background:#0b0303; display:block;';
+    const imgTag = image.outerHTML;
     const cta = isAudio ? '🎧 Listen Now' : '▶ Stream Now';
 
     // Which list this card belongs to, so the delete button knows what to
@@ -400,9 +416,6 @@ function buildPosterCard(item, accent) {
            onmouseover="this.style.transform='translateY(-6px) scale(1.03)'; this.style.boxShadow='0 14px 34px rgba(0,0,0,0.95)'; this.querySelector('.card-cta').style.opacity='1';"
            onmouseout="this.style.transform='none'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.9)'; this.querySelector('.card-cta').style.opacity='0';">
             ${imgTag}
-            <div class="css-poster-fallback" style="display:${fallbackDisplay}; background:linear-gradient(135deg,#130734,#6B3FA0); width:100%; height:100%; align-items:center; justify-content:center; text-align:center; padding:10px; box-sizing:border-box; color:var(--gold); font-weight:900; font-size:16px; text-transform:uppercase; text-shadow:0 2px 8px rgba(0,0,0,0.9); box-shadow: inset 0 0 30px rgba(0,0,0,0.9);">
-                ${safeTitle}
-            </div>
             ${noteBadge}
             ${platform ? `<div style="position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.85); color:${accent}; font-size:9px; font-weight:900; padding:4px 8px; border-radius:6px; text-transform:uppercase; border:1px solid ${accent};">${escapeHtml(platform)}</div>` : ''}
             <div class="card-cta" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.62); color:var(--gold-glow); font-weight:900; font-size:14px; text-transform:uppercase; opacity:0; transition:opacity 0.3s ease;">${cta}</div>
@@ -533,7 +546,8 @@ window.renderProfileGrids = function() {
         if (!el) return;
         el.innerHTML = data.length === 0
             ? `<p style="color:#aaa; font-size:15px; font-style:italic;">${emptyMsg}</p>`
-            : data.map(item => buildPosterCard(item, accent)).join('');
+            : data.map((item,index) => buildPosterCard(item, accent,index)).join('');
+        window.MatchAppPortfolioPosters.bind(el);
     };
 
     fill('portfolio-grid', watchLater, 'var(--gold)', 'Your Watch Later portfolio is empty. Go match!');
@@ -648,60 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Re-sort the voice list toward the newly chosen language.
 document.addEventListener('matchapp:langchange', populateVoiceList);
-/* ============================================================
-   AVATAR PICKER + NICKNAME
-   Presets and resolution logic live in avatars.js; this is the profile-page
-   UI that drives them.
-   ============================================================ */
-
-function renderAvatarPicker() {
-    const grid = document.getElementById('avatar-preset-grid');
-    if (!grid || !window.AVATAR_PRESETS) return;
-    const current = localStorage.getItem('match_preset_avatar') || '';
-    grid.innerHTML = Object.entries(window.AVATAR_PRESETS).map(([key, p]) => `
-        <button type="button" class="avatar-opt" data-key="${key}"
-                aria-pressed="${key === current ? 'true' : 'false'}"
-                title="${escapeHtml(p.label)}" aria-label="${escapeHtml(p.label)}"
-                onclick="choosePresetAvatar('${key}')">
-            <img src="${window.avatarSVG(key, 64)}" alt="">
-        </button>`).join('');
-}
-
-window.choosePresetAvatar = function (key) {
-    if (!window.AVATAR_PRESETS || !window.AVATAR_PRESETS[key]) return;
-    try {
-        localStorage.setItem('match_preset_avatar', key);
-        // A preset is an explicit choice, so it should win over a previously
-        // uploaded file until the user clears it — otherwise picking one would
-        // appear to do nothing.
-        localStorage.removeItem('match_custom_avatar');
-    } catch (e) {}
-
-    const src = window.avatarSVG(key, 260);
-    const preview = document.getElementById('profile-pic-preview');
-    if (preview) preview.src = src;
-    if (typeof window.renderUserAvatar === 'function') window.renderUserAvatar();
-    renderAvatarPicker();
-
-    // Best-effort sync so the choice follows the account, not just this device.
-    if (window.supabaseClient) {
-        window.supabaseClient.auth.getUser().then(({ data }) => {
-            if (data && data.user) {
-                window.supabaseClient.from('profiles')
-                    .upsert({ id: data.user.id, avatar_url: src }, { onConflict: 'id' });
-            }
-        }).catch(() => {});
-    }
-};
-
-window.clearPresetAvatar = function () {
-    try { localStorage.removeItem('match_preset_avatar'); } catch (e) {}
-    const src = (typeof window.resolveUserAvatar === 'function') ? window.resolveUserAvatar() : null;
-    const preview = document.getElementById('profile-pic-preview');
-    if (preview && src) preview.src = src;
-    if (typeof window.renderUserAvatar === 'function') window.renderUserAvatar();
-    renderAvatarPicker();
-};
+/* Optional nickname remains independent of the account photo. */
 
 let nicknameTimer = null;
 window.saveNickname = function (value) {
@@ -731,13 +692,9 @@ window.saveNickname = function (value) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderAvatarPicker();
     const nick = document.getElementById('pf-nickname');
     if (nick) nick.value = localStorage.getItem('match_user_nickname') || '';
-    // Show whatever avatar currently resolves, including the Google photo.
-    const preview = document.getElementById('profile-pic-preview');
-    const src = (typeof window.resolveUserAvatar === 'function') ? window.resolveUserAvatar() : null;
-    if (preview && src) preview.src = src;
+    window.renderUserAvatar?.();
 });
 
 /* ============================================================

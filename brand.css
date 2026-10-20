@@ -506,43 +506,18 @@ html body:not(.page-kids):not(.kids-body) .ma-brand-orb {content:normal!importan
 html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb {transform:scale(1.65)!important}
 html body:not(.page-kids):not(.kids-body) .hub-brand img {object-fit:cover;object-position:center 47%;border-radius:12px}
 
-/* MATCHAPP PERIMETER FINISH | 2026-10-14
- * One architectural frame, shared by adult destinations, Android WebView and
- * Kids. CSS-only: fixed to the viewport, no hit testing, scrolling or JS.
- * The verification file intentionally has no product styling.
- * Protected advertising inventory is NOT selected here. */
+/* Owner requested a borderless screen on 2026-10-20. The shared inset remains
+ * zero so existing dialogs and companion bounds use the complete viewport. */
 html {
-  --ma-screen-frame-width:3px;
-  --ma-screen-frame-gold:#e1bb70;
-  --ma-screen-frame-radius:clamp(20px,3vmin,32px);
+  --ma-screen-frame-width:0px;
+  --ma-screen-frame-radius:0px;
   --ma-internal-stroke:1px;
 }
 html::after {
-  content:"";
-  position:fixed;
-  inset:0;
-  box-sizing:border-box;
-  z-index:2147483646;
-  pointer-events:none!important;
-  border:var(--ma-screen-frame-width) solid var(--ma-screen-frame-gold);
-  border-radius:var(--ma-screen-frame-radius);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,236,188,.36),
-    inset 0 0 12px rgba(210,157,69,.075);
-  background:transparent;
-  opacity:1;
-  transform:none;
-  animation:none!important;
-  transition:none!important;
-}
-@media (min-width:700px) {
-  html { --ma-screen-frame-width:4px; }
-}
-@media (forced-colors:active) {
-  html::after {border-color:CanvasText;box-shadow:none}
-}
-@media print {
-  html::after {display:none}
+  content:none!important;
+  display:none!important;
+  border:0!important;
+  box-shadow:none!important;
 }
 /* Interior frames are deliberately lighter than the perimeter. These known
  * UI surfaces are separate from AdSense and AdMob placements. Keep source
@@ -568,16 +543,7 @@ html.kids-mode body.page-kids :is(
  .kids-card,.kids-panel,.kids-feature,.kids-source-card
 ) {border-width:2px!important}
 
-/* PERMANENT DISPLAY INVARIANT: The viewport's gold frame is the final normal
- * paint layer. No page component, card, video, Jonas panel, animation or ad may
- * visually paint over this perimeter. Never lower the frame's stacking level.
- * UI remains inside its inner edge; the frame never consumes pointer events. */
-html::after {
- z-index:2147483647!important;
- pointer-events:none!important;
-}
-/* Real modal top-layer content can appear above normal paint layers. Constrain
- * native dialogs to leave an uninterrupted perimeter; do not restyle ads. */
+/* Retain viewport bounds for dialogs without drawing a screen perimeter. */
 html dialog:modal {
  box-sizing:border-box;
  max-inline-size:calc(100vw - 2 * var(--ma-screen-frame-width));

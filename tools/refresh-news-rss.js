@@ -5,6 +5,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const crypto=require('node:crypto');
 const newsCommerce=require('../news-monetization.js');
+const {cinemaAssets}=require('./finalize-brand.js');
 
 const ROOT=path.join(__dirname,'..');
 const NEWS=path.join(ROOT,'news');
@@ -472,7 +473,7 @@ function page(i){
     ]
   };
 
-  return `<!doctype html>
+  return cinemaAssets(`<!doctype html>
 <html lang="${i.language==='pt'?'pt-BR':(i.language||'en')}">
 <head>
 <!-- Google Tag Manager -->
@@ -508,8 +509,8 @@ ${imageMeta}
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
-${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
-<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1"></script>
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 <style>
 /* Keep article navigation clear of the existing top-right Jonas companion. */
 .news-article-header{justify-content:left!important;gap:12px!important}
@@ -539,7 +540,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>
-</html>`;
+</html>`,path.relative(ROOT,path.join(currentSlugDir(i),'index.html')));
 }
 
 function hub(items,generated){
@@ -590,7 +591,7 @@ function hub(items,generated){
     ]
   };
 
-  return `<!doctype html>
+  return cinemaAssets(`<!doctype html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->
@@ -618,8 +619,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
-${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
-<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1"></script>
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head>
 <body class="news-ui-page">
 <!-- Google Tag Manager (noscript) -->
@@ -642,7 +643,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 <script src="/build-meta.js?v=203"></script>
 </body>
-</html>`;
+</html>`,'news/index.html');
 }
 
 function readSports(){

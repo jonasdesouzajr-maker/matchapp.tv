@@ -31,11 +31,19 @@
  const SAFE=/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/[A-Za-z0-9_.-]+$/;
  const FILE=/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/([A-Za-z0-9_.-]+)$/;
  function kids(){return location.pathname.startsWith('/kids/')||document.body.classList.contains('kids-body');}
+ function themeHidesWall(){
+  const root=document.documentElement,body=document.body;
+  // Match the approved theme's display:none scopes before fetching artwork.
+  // Legacy visible walls, including the secondary-page legacy opt-out, retain
+  // their existing real-art rendering path.
+  return root.classList.contains('ma-reference')&&(body.classList.contains('page-home')||(root.id!=='ma-reference-legacy'&&!body.classList.contains('page-explore')));
+ }
  async function load(url){try{const r=await fetch(url,{cache:'force-cache'});return r.ok?await r.json():null;}catch(_){return null;}}
  async function boot(){
   // Home uses the same wall as the rest of the site: real title posters, one
   // node each, with all motion disabled by poster-wall.css.
   if(kids()||document.querySelector('.poster-wall'))return;
+  if(themeHidesWall())return;
   try{
    const [wallList,identities]=await Promise.all([
     load('/data/poster-wall.json'),
@@ -52,7 +60,7 @@
    (Array.isArray(identities)?identities:[]).forEach(entry=>{if(entry&&entry.adult!==true)add(entry.poster);});
    try{if(typeof VERIFIED_POSTERS==='object'&&VERIFIED_POSTERS)Object.keys(VERIFIED_POSTERS).forEach(k=>add(VERIFIED_POSTERS[k]));}catch(_){}
    document.querySelectorAll('#trending-rail .marquee-item img[src]').forEach(img=>add(img.getAttribute('src')));
-   if(!files.length)return;
+   if(!files.length||themeHidesWall())return;
    // Enough tiles to fill the tilted grid at every breakpoint. With the pooled
    // catalogue this is reached without repeating; the modulo only matters if a
    // source is unavailable.
@@ -70,6 +78,7 @@
    const CHUNK=10;
    let cursor=0;
    function fillChunk(){
+    if(themeHidesWall())return;
     const stop=Math.min(cursor+CHUNK,posters.length);
     const batch=document.createDocumentFragment();
     for(let i=cursor;i<stop;i++){

@@ -5,6 +5,7 @@
 const fs=require('node:fs');
 const discoveryLinks=require('./search-guide-links.cjs').renderGuideLinks();
 const path=require('node:path');
+const {cinemaAssets}=require('./finalize-brand.js');
 const LANGUAGES=[
   {
     "code": "en",
@@ -125,7 +126,7 @@ const SITE="https://matchapp.tv",url=SITE+"/guides/worldwide-entertainment-disco
 const link=(href,label)=>`<a href="${esc(href)}">${esc(label)}</a>`;
 const sections=data.map(r=>`<section class="lang-card" id="lang-${esc(r.code.toLowerCase())}" lang="${esc(r.code)}"${r.code==="ar"?' dir="rtl"':""}><h2>${esc(r.label)}</h2><p>${esc(r.description)}</p><h3>${esc(r.watch)}</h3><ul><li>${esc(r.mood)}</li><li>${esc(r.books)}</li></ul><p>${link("/?lang="+encodeURIComponent(r.code),r.code==="en"?"Explore MatchApp in English":r.watch+" →")}</p></section>`).join("\n");
 const ld={"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Worldwide movie, series, e-book and audiobook discovery in 14 languages","description":"A practical guide to MatchApp's entertainment discovery categories, localized search prompts and regional publisher links.","url":url,"inLanguage":"en","about":[{"@type":"Thing","name":"Movies and TV by mood"},{"@type":"Thing","name":"E-books and verified audiobooks"},{"@type":"Thing","name":"Streaming availability by country"}],"isPartOf":{"@type":"WebSite","url":SITE+"/","name":"MatchApp Ai","alternateName":["MatchApp","MatchApp.tv"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MatchApp Ai","item":SITE+"/"},{"@type":"ListItem","position":2,"name":"Worldwide entertainment discovery","item":url}]}]};
-return `<!doctype html>
+return cinemaAssets(`<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What to Watch or Read Worldwide | MatchApp Ai</title>
@@ -164,8 +165,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 <!-- End Google Tag Manager -->
-<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
-<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&stellar=20261020-1&headerface=20261020-1"></script>
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
@@ -213,7 +214,7 @@ ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/even
 ${discoveryLinks}</main>
 <footer>${link("/","MatchApp Ai")} · ${link("/discover.html","Ask AI")} · ${link("/ebooks/","Books & audiobooks")} · ${link("/pricing/pricing.html","Plans")}</footer>
 </body></html>
-`;
+`,'guides/worldwide-entertainment-discovery/index.html');
 };
 const out=path.join(__dirname,'..','guides','worldwide-entertainment-discovery','index.html');
 fs.mkdirSync(path.dirname(out),{recursive:true});

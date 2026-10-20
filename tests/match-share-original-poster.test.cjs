@@ -3,11 +3,12 @@ const {test}=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 
-test('the displayed match and both saved/share snapshots start with real rendered local fallback',()=>{
+test('saved/share snapshots stay on rendered fallback until the initial original loads',()=>{
  const app=read('app.js');
  assert.match(app,/firstPoster\.src = firstCover;/,'The first match paint must already have a visible title-labelled image');
  assert.match(app,/if \(!originalShown\) posterEl\.src = localCover;/,'A slower provider cannot overwrite a decoded original');
- assert.match(app,/globalMatchPoster = firstCover;\s*window\.globalMatchPoster = firstCover;/,'The first visible image and saved share preview stay synchronized');
+ assert.match(app,/globalMatchPoster = firstFallback;\s*window\.globalMatchPoster = firstFallback;/,'Saved/share snapshots must not advertise a candidate before its pixels load');
+ assert.match(app,/firstPoster\.addEventListener\('load', firstLoaded, \{ once: true \}\)/);
  assert.match(app,/window\.setLoadedMatchPoster = function\(url,title\)/);
  assert.match(read('catalog-media.js'),/if\(typeof window\.setLoadedMatchPoster==='function'\)window\.setLoadedMatchPoster\(winner,title\)/);
  assert.match(read('catalog-media.js'),/if\(img\.id==='res-poster-img'&&window\.globalMatchTitle===title\)/,'only matching title can update share snapshot after a successful original probe');
@@ -31,7 +32,7 @@ test('only the currently selected title may update both match portfolio and publ
 
 test('failed actual poster display restores a title-labelled fallback in shared image state',()=>{
  const media=read('catalog-media.js');
- assert.match(media,/const cover=localPoster\(active\.title\);\s*img\.src=cover/);
+ assert.match(media,/const cover=localPoster\(active\.title\);\s*img\.removeAttribute\?\.\('srcset'\);\s*img\.src=cover/);
  assert.match(media,/window\.setLoadedMatchPoster\(cover,active\.title\)/);
  // Never change Kids poster handling or accepted match criteria.
  assert.match(media,/if\(adultPosterSurface\(img\)\)recoverAdultPoster\(img,title\)/);

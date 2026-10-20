@@ -47,7 +47,12 @@ async function client(id,{found=true,route='/ebooks/'}={}){
     renderResult:(host,chosen)=>{order.push('reveal');rendered++;assert.ok(books.includes(chosen));const result=host.querySelector('[data-ebook-result]');result.hidden=false;result.innerHTML='<h3></h3><a data-original-book-source>Search Project Gutenberg</a>';result.querySelector('a').href='https://www.gutenberg.org/ebooks/search/?query='+encodeURIComponent(chosen.title+' '+chosen.author);result.querySelector('h3').textContent=chosen.title;},
     renderReadingDiscovery:()=>order.push('source-fallback')};
   const match=read('ebooks/ebook-matcher.js'),start=match.indexOf('async function doMatch(root){'),end=match.indexOf('\nfunction syncBookControls',start);
-  assert.ok(start>=0&&end>start);vm.createContext(context);vm.runInContext(match.slice(start,end)+'\nthis.runMatch=doMatch;',context);
+  assert.ok(start>=0&&end>start);
+  // Keep isolated allowance orchestration attached to its real presentation
+  // helpers, including stable text-node note painting; never replace debit paths.
+  const copyStart=match.indexOf('function ui('),copyEnd=match.indexOf('\nfunction read(',copyStart);
+  assert.ok(copyStart>=0&&copyEnd>copyStart,'production presentation helpers must exist');
+  vm.createContext(context);vm.runInContext(match.slice(copyStart,copyEnd)+'\n'+match.slice(start,end)+'\nthis.runMatch=doMatch;',context);
   return {w,calls,order,toasts,rootNode,originalQuota,run:()=>context.runMatch(rootNode),rendered:()=>rendered,setFound:value=>{sourceFound=value;},close:()=>w.close()};
 }
 

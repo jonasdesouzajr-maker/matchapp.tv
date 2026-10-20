@@ -210,7 +210,7 @@ function unsupportedReadingRefusal(question: string, answer: string): boolean {
 function buildDiscoverPrompt(question: string, langCode: string, country: string, age: string, history?: Array<{role: string, text: string}>, kidsMode = false, childAgeBand = "", nickname = ""): string {
   const lang = LANG_NAMES[langCode] || LANG_NAMES[langCode.split("-")[0]] || "English";
   const intentQuestion=mediaIntentQuestion(question);
-  const watchText = intentQuestion.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+  const watchText = (kidsMode ? intentQuestion : intentQuestion.replace(/https?:\/\/[^\s<>"']+/gi," ")).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
   // A film or a documentary ABOUT cooking is not a recipe question.
   const watchIntent = /\b(watch|stream|movie|movies|film|films|series|tv|tv shows?|cooking shows?|documentary|documentaries|documentario|documentarios|filme|filmes|serie|series|pelicula|peliculas|assistir|ver|regarder|sehen)\b/i.test(watchText);
   const cookingIntent = !kidsMode && !watchIntent && /\b(recipes?|receitas?|cooking|cookery|culinaria|cozinhar|recetas?|cocinar|maangchi|panelinha|rita lobo|food wishes|chef john|jamie oliver|bibimbap|omelet|omelette|omelete|scrambled eggs|tomato soup)\b/i.test(watchText);

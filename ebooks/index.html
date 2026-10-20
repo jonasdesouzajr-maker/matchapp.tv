@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html class="ma-reference" lang="en">
 <head>
+<style data-cinema-layer>@layer ma-reference;</style>
 <script src="/pro-plan.js?v=20261017-3&amp;billingcopy=20261018-1"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
+<script src="/i18n.js?v=200&amp;billing=20261017-2&amp;fastlang=20261014-1"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Book Recommendations AI: E-books &amp; Audiobooks | MatchApp Ai</title>
 <meta name="description" content="Find your next e-book, verified audiobook or magazine by mood and genre, with original covers, official publishers and legal reading or listening sources.">
@@ -26,7 +28,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/themes.css?v=187">
-<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
+<link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261020-borderless1">
 <link rel="stylesheet" href="/page-shell.css?v=20260926-ai-energy2">
 <link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20261011-meta1">
 <style>
@@ -68,8 +70,8 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 <link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-grid3">
 <link rel="stylesheet" href="/ebooks/ebook-page-mobile-finish-20261011.css?v=20261011-device2">
 <link rel="stylesheet" href="/result-experience.css?v=20261017-1">
-<script defer src="/patches/jonas-adult-page.js?v=header20261018-1"></script>
-<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1"></script>
+<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1"></script>
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="MatchApp Ai">
@@ -77,74 +79,83 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 <link rel="stylesheet" href="/match-tokens.css?v=20261017-3">
 <script defer src="/native-news-slot.js?v=20261017-2"></script>
 <link rel="stylesheet" href="/pro-plan.css?v=20261017-3">
+
+<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1">
+<link rel="stylesheet" href="/patches/reference-pages.css?v=20261020-review1&amp;premium=20261020-2">
+<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1"></script>
 </head>
 <body class="ebook-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="ebook-page-top">
-<a class="ebook-hub-brand matchapp-brand-link" href="/" aria-label="MatchApp Ai home"><img class="ma-brand-orb" src="/assets/brand/matchapp-icon-approved.png?v=20261013-approved1" alt="" width="52" height="52" decoding="async"><span class="ebook-text-wordmark"><span class="ebook-brand-match">Match</span><span class="ebook-brand-app">App</span><span class="ebook-brand-ai" data-ma-brand-ai>Ai</span></span></a>
-<nav aria-label="E-book page navigation"><a href="/">Home</a><a href="/#questionnaire-box">Movies & TV Match</a><a href="/discover.html">Ask Ai</a></nav>
+<a class="ebook-hub-brand matchapp-brand-link" href="/" aria-label="MatchApp Ai home" data-book-aria="hub.homeAria"><img class="ma-brand-orb" src="/assets/brand/matchapp-icon-approved.png?v=20261013-approved1" alt="" width="52" height="52" decoding="async"><span class="ebook-text-wordmark"><span class="ebook-brand-match">Match</span><span class="ebook-brand-app">App</span><span class="ebook-brand-ai" data-ma-brand-ai="">Ai</span></span></a>
+<nav aria-label="E-book page navigation" data-book-aria="hub.navAria"><a href="/" data-book-copy="hub.nav.home">Home</a><a href="/#questionnaire-box" data-book-copy="hub.nav.movies">Movies &amp; TV Match</a><a href="/discover.html" data-book-copy="hub.nav.ask">Ask Ai</a><div id="lang-switcher-host"></div></nav>
 </header>
 <main>
-<nav class="ebook-source-links"><a href="/explore.html">Explore more</a><a href="/">Home</a></nav>
+<nav class="ebook-source-links"><a href="/explore.html" data-book-copy="hub.nav.explore">Explore more</a><a href="/" data-book-copy="hub.nav.home">Home</a></nav>
 <section class="ebook-page-hero">
-<p class="ebook-page-eyebrow">BOOKWORMS · NEW MATCHAPP UNIVERSE</p>
-<h1>Match E-books, Audiobooks &amp; Magazines Ai</h1>
-<p>Movies have moods. Books do too. Match over 100 curated reading profiles by mood, genre, pace, length, era, legal access, and whether you want to read or listen. Select Magazine only for international or Brazilian magazines; ordinary e-book and audiobook matching never mixes in magazines. For verified audiobook editions, MatchApp checks the exact title and author against official source listings before presenting any edition as confirmed. Magazine covers are linked directly at publishers; free publisher articles are not free full issues.</p>
-<a class="ebook-page-cta" href="#ebook-matcher-root">📚🎧📰 Match a book, audiobook or magazine</a>
+<p class="ebook-page-eyebrow" data-book-copy="hub.hero.eyebrow">BOOKWORMS · NEW MATCHAPP UNIVERSE</p>
+<h1 data-book-copy="hub.hero.title">Match E-books, Audiobooks &amp; Magazines Ai</h1>
+<p data-book-copy="hub.hero.intro">Movies have moods. Books do too. Match over 100 curated reading profiles by mood, genre, pace, length, era, legal access, and whether you want to read or listen. Select Magazine only for international or Brazilian magazines; ordinary e-book and audiobook matching never mixes in magazines. For verified audiobook editions, MatchApp checks the exact title and author against official source listings before presenting any edition as confirmed. Magazine covers are linked directly at publishers; free publisher articles are not free full issues.</p>
+<a class="ebook-page-cta" href="#ebook-matcher-root">📚🎧📰 <span data-book-copy="hub.hero.cta">Match a book, audiobook or magazine</span></a>
 </section>
 
 <section id="ebook-matcher-root" class="ebook-matcher-root"></section>
 <section class="ebook-top-section ebook-hub-top" aria-labelledby="ebook-hub-top-title">
-<div class="ebook-top-head"><div><small>BOOKWORMS PICKS · UPDATED SEPTEMBER 24, 2026</small><h2 id="ebook-hub-top-title" style="margin:0;color:#f3d77f;font-size:24px">Top E-books right now</h2><p>Current popular e-books from Brazilian and global charts, with official purchase routes and legal free-edition searches where applicable.</p></div></div>
+<div class="ebook-top-head"><div><small data-book-copy="hub.top.eyebrow">BOOKWORMS PICKS · UPDATED SEPTEMBER 24, 2026</small><h2 id="ebook-hub-top-title" style="margin:0;color:#f3d77f;font-size:24px" data-book-copy="hub.top.title">Top E-books right now</h2><p data-book-copy="hub.top.intro">Current popular e-books from Brazilian and global charts, with official purchase routes and legal free-edition searches where applicable.</p></div></div>
 <div id="ebook-hub-top" class="ebook-top-rail" aria-live="polite"></div>
 </section>
 <section class="ebook-top-section ebook-hub-magazines" id="magazines" aria-labelledby="magazine-hub-title">
-<div class="ebook-top-head"><div><small>OFFICIAL PUBLISHERS · GLOBAL + BRAZIL</small>
-<h2 id="magazine-hub-title">Discover magazines worldwide by subject and mood</h2>
-<p>Explore a curated selection of mainstream magazines covering science, nature, business, fashion, culture and travel. Choose <strong>Magazine only</strong> in Match E-books Ai to receive magazine matches instead of books. Visit the publisher for original issue covers, legally available articles and current subscriptions.</p>
-<p>Examples include TIME, National Geographic, WIRED, Vogue, The Economist, Scientific American, Smithsonian, Superinteressante and Exame. Prices, Amazon availability and free article access are determined by the publisher or retailer.</p>
+<div class="ebook-top-head"><div><small data-book-copy="hub.mag.eyebrow">OFFICIAL PUBLISHERS · GLOBAL + BRAZIL</small>
+<h2 id="magazine-hub-title" data-book-copy="hub.mag.title">Discover magazines worldwide by subject and mood</h2>
+<p data-book-copy="hub.mag.intro">Explore a curated selection of mainstream magazines covering science, nature, business, fashion, culture and travel. Choose <strong>Magazine only</strong> in Match E-books Ai to receive magazine matches instead of books. Visit the publisher for original issue covers, legally available articles and current subscriptions.</p>
+<p data-book-copy="hub.mag.examples">Examples include TIME, National Geographic, WIRED, Vogue, The Economist, Scientific American, Smithsonian, Superinteressante and Exame. Prices, Amazon availability and free article access are determined by the publisher or retailer.</p>
 </div></div>
-<div id="magazine-hub-list" class="ebook-top-rail magazine-hub-list" aria-label="Curated official magazine sources"></div>
+<div id="magazine-hub-list" class="ebook-top-rail magazine-hub-list" aria-label="Curated official magazine sources" data-book-aria="hub.mag.aria"></div>
 <noscript><p><a href="https://time.com/vault/">TIME original issues</a> · <a href="https://www.nationalgeographic.com/magazine/">National Geographic original issues</a> · <a href="https://super.abril.com.br/">Superinteressante articles</a> · <a href="https://www.wired.com/magazine/">WIRED original issues</a></p></noscript>
-<p class="ebook-rights">Only official publisher websites and ordinary Amazon magazine searches are provided. A free article does not mean a complete issue is free. Amazon Brazil qualifying purchases can support MatchApp on approved browser surfaces; commissions are not guaranteed.</p>
+<p class="ebook-rights" data-book-copy="hub.mag.rights">Only official publisher websites and ordinary Amazon magazine searches are provided. A free article does not mean a complete issue is free. Amazon Brazil qualifying purchases can support MatchApp on approved browser surfaces; commissions are not guaranteed.</p>
 </section>
-<section class="ebook-platform-trust" aria-label="E-book sources">
+<section class="ebook-platform-trust" aria-label="E-book sources" data-book-aria="hub.sourcesAria">
 <div class="ebook-platform-trust-inner">
-<article><h2>🆓 Legal free editions</h2><p>Public-domain and legally offered editions can be discovered through Project Gutenberg, Standard Ebooks and Open Library. Copyright availability can differ by country.</p></article>
-<article><h2>🛍️ Major paid stores</h2><p>Matched books can be searched on Amazon Kindle, Apple Books, Google Play Books, Rakuten Kobo and, in the United States, Barnes & Noble NOOK.</p></article>
-<article><h2>🔒 MatchApp does not host books</h2><p>MatchApp is the discovery layer. Copyrighted e-book files stay with publishers, libraries and official storefronts.</p></article>
+<article><h2>🆓 <span data-book-copy="hub.trust.free.title">Legal free editions</span></h2><p data-book-copy="hub.trust.free.body">Public-domain and legally offered editions can be discovered through Project Gutenberg, Standard Ebooks and Open Library. Copyright availability can differ by country.</p></article>
+<article><h2>🛍️ <span data-book-copy="hub.trust.paid.title">Major paid stores</span></h2><p data-book-copy="hub.trust.paid.body">Matched books can be searched on Amazon Kindle, Apple Books, Google Play Books, Rakuten Kobo and, in the United States, Barnes &amp; Noble NOOK.</p></article>
+<article><h2>🔒 <span data-book-copy="hub.trust.host.title">MatchApp does not host books</span></h2><p data-book-copy="hub.trust.host.body">MatchApp is the discovery layer. Copyrighted e-book files stay with publishers, libraries and official storefronts.</p></article>
 </div>
 </section>
 
 <section class="ebook-seo-grid">
-<article class="ebook-seo-card"><h2>Match by reading mood</h2><p>Choose cozy, funny, witty, romantic, hopeful, emotional, mysterious, dark, scary, intense, adventurous, cerebral, mind-bending, reflective, inspiring, practical, curious, awe-filled, quirky, nostalgic, mythic, glamorous, dreamy, epic or melancholy. Mood is a real matching signal rather than a decorative label.</p></article>
-<article class="ebook-seo-card"><h2>Match by genre and pace</h2><p>Match fantasy, sci-fi, romance, mystery, thriller, horror, gothic, literary, contemporary, historical, classics, adventure, dystopian, magical realism and comedy with fast, balanced or slow-burn pacing.</p></article>
-<article class="ebook-seo-card"><h2>Explore nonfiction by interest</h2><p>Go beyond broad “nonfiction” matching with memoir, biography, psychology, philosophy, self-help, business, economics, technology, science, history, nature and true crime categories.</p></article>
-<article class="ebook-seo-card"><h2>Broader curated catalog</h2><p>The catalog now spans more than 100 hand-tagged reading profiles, including Brazilian literature, translated fiction, classics, cozy reads, epic fantasy, speculative fiction, modern literary fiction and practical nonfiction.</p></article>
-<article class="ebook-seo-card"><h2>🎧 Match verified audiobooks</h2><p>Choose Audiobook only in MatchApp's book matcher. We look for exact title-and-author audiobook listings in the selected Apple Books country store, and qualifying US public-domain audio in LibriVox. If no edition can be confirmed, no audiobook match credit is spent. Narrators, translations, prices and audio lengths depend on the retailer.</p><div class="ebook-source-links"><a href="https://books.apple.com/" target="_blank" rel="noopener noreferrer">Apple Books Audio ↗</a><a href="https://www.audible.com.br/" target="_blank" rel="noopener noreferrer">Audible Brazil ↗</a><a href="https://play.google.com/store/books/category/audiobooks" target="_blank" rel="noopener noreferrer">Google Play audiobooks ↗</a></div></article>
-<article class="ebook-seo-card"><h2>🆓 Listen to verified public-domain recordings</h2><p>For US users and eligible classic works, exact LibriVox project matches can appear as a verified free-listening option. LibriVox recordings are public domain in the United States; outside the US, users must check their country's copyright status. MatchApp does not redistribute audio or bypass retailer access restrictions.</p><div class="ebook-source-links"><a href="https://librivox.org/search?action=search" target="_blank" rel="noopener noreferrer">Search official LibriVox catalog ↗</a><a href="#ebook-matcher-root">Find my next audiobook ↗</a></div></article>
-<article class="ebook-seo-card"><h2>Find free e-books legally</h2><p>When a matched work has a known public-domain route, MatchApp surfaces legal source pages rather than unofficial download mirrors.</p><div class="ebook-source-links"><a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg ↗</a><a href="https://standardebooks.org/" target="_blank" rel="noopener noreferrer">Standard Ebooks ↗</a><a href="https://openlibrary.org/" target="_blank" rel="noopener noreferrer">Open Library ↗</a></div></article>
-<article class="ebook-seo-card"><h2>Find paid e-books</h2><p>Store buttons are region-aware where possible and take readers to the official storefront search for the matched title. Prices, DRM, language editions and country availability remain controlled by each retailer.</p><div class="ebook-source-links"><a href="https://www.amazon.com/kindle-dbs/storefront" target="_blank" rel="noopener noreferrer">Kindle ↗</a><a href="https://www.apple.com/apple-books/" target="_blank" rel="noopener noreferrer">Apple Books ↗</a><a href="https://play.google.com/books" target="_blank" rel="noopener noreferrer">Google Play Books ↗</a><a href="https://www.kobo.com/" target="_blank" rel="noopener noreferrer">Kobo ↗</a><a href="https://www.barnesandnoble.com/collections/ebooks-nook" target="_blank" rel="noopener noreferrer">NOOK ↗</a></div></article>
+<article class="ebook-seo-card"><h2 data-book-copy="hub.seo.mood.title">Match by reading mood</h2><p data-book-copy="hub.seo.mood.body">Choose cozy, funny, witty, romantic, hopeful, emotional, mysterious, dark, scary, intense, adventurous, cerebral, mind-bending, reflective, inspiring, practical, curious, awe-filled, quirky, nostalgic, mythic, glamorous, dreamy, epic or melancholy. Mood is a real matching signal rather than a decorative label.</p></article>
+<article class="ebook-seo-card"><h2 data-book-copy="hub.seo.genre.title">Match by genre and pace</h2><p data-book-copy="hub.seo.genre.body">Match fantasy, sci-fi, romance, mystery, thriller, horror, gothic, literary, contemporary, historical, classics, adventure, dystopian, magical realism and comedy with fast, balanced or slow-burn pacing.</p></article>
+<article class="ebook-seo-card"><h2 data-book-copy="hub.seo.interest.title">Explore nonfiction by interest</h2><p data-book-copy="hub.seo.interest.body">Go beyond broad “nonfiction” matching with memoir, biography, psychology, philosophy, self-help, business, economics, technology, science, history, nature and true crime categories.</p></article>
+<article class="ebook-seo-card"><h2 data-book-copy="hub.seo.catalog.title">Broader curated catalog</h2><p data-book-copy="hub.seo.catalog.body">The catalog now spans more than 100 hand-tagged reading profiles, including Brazilian literature, translated fiction, classics, cozy reads, epic fantasy, speculative fiction, modern literary fiction and practical nonfiction.</p></article>
+<article class="ebook-seo-card"><h2>🎧 <span data-book-copy="hub.seo.audio.title">Match verified audiobooks</span></h2><p data-book-copy="hub.seo.audio.body">Choose Audiobook only in MatchApp's book matcher. We look for exact title-and-author audiobook listings in the selected Apple Books country store, and qualifying US public-domain audio in LibriVox. If no edition can be confirmed, no audiobook match credit is spent. Narrators, translations, prices and audio lengths depend on the retailer.</p><div class="ebook-source-links"><a href="https://books.apple.com/" target="_blank" rel="noopener noreferrer"><span data-book-copy="hub.link.appleAudio">Apple Books Audio</span> ↗</a><a href="https://www.audible.com.br/" target="_blank" rel="noopener noreferrer"><span data-book-copy="hub.link.audibleBrazil">Audible Brazil</span> ↗</a><a href="https://play.google.com/store/books/category/audiobooks" target="_blank" rel="noopener noreferrer"><span data-book-copy="hub.link.googleAudio">Google Play audiobooks</span> ↗</a></div></article>
+<article class="ebook-seo-card"><h2>🆓 <span data-book-copy="hub.seo.listen.title">Listen to verified public-domain recordings</span></h2><p data-book-copy="hub.seo.listen.body">For US users and eligible classic works, exact LibriVox project matches can appear as a verified free-listening option. LibriVox recordings are public domain in the United States; outside the US, users must check their country's copyright status. MatchApp does not redistribute audio or bypass retailer access restrictions.</p><div class="ebook-source-links"><a href="https://librivox.org/search?action=search" target="_blank" rel="noopener noreferrer"><span data-book-copy="hub.link.librivox">Search official LibriVox catalog</span> ↗</a><a href="#ebook-matcher-root"><span data-book-copy="hub.link.findAudio">Find my next audiobook</span> ↗</a></div></article>
+<article class="ebook-seo-card"><h2 data-book-copy="hub.seo.free.title">Find free e-books legally</h2><p data-book-copy="hub.seo.free.body">When a matched work has a known public-domain route, MatchApp surfaces legal source pages rather than unofficial download mirrors.</p><div class="ebook-source-links"><a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg ↗</a><a href="https://standardebooks.org/" target="_blank" rel="noopener noreferrer">Standard Ebooks ↗</a><a href="https://openlibrary.org/" target="_blank" rel="noopener noreferrer">Open Library ↗</a></div></article>
+<article class="ebook-seo-card"><h2 data-book-copy="hub.seo.paid.title">Find paid e-books</h2><p data-book-copy="hub.seo.paid.body">Store buttons are region-aware where possible and take readers to the official storefront search for the matched title. Prices, DRM, language editions and country availability remain controlled by each retailer.</p><div class="ebook-source-links"><a href="https://www.amazon.com/kindle-dbs/storefront" target="_blank" rel="noopener noreferrer">Kindle ↗</a><a href="https://www.apple.com/apple-books/" target="_blank" rel="noopener noreferrer">Apple Books ↗</a><a href="https://play.google.com/books" target="_blank" rel="noopener noreferrer">Google Play Books ↗</a><a href="https://www.kobo.com/" target="_blank" rel="noopener noreferrer">Kobo ↗</a><a href="https://www.barnesandnoble.com/collections/ebooks-nook" target="_blank" rel="noopener noreferrer">NOOK ↗</a></div></article>
 </section>
-<p class="ebook-page-note">Amazon Brazil book and magazine searches may be paid affiliate links, clearly marked beside each eligible button. Como associado da Amazon, eu ganho com compras qualificadas. As an Amazon Associate I earn from qualifying purchases. MatchApp is an independent book and audiobook discovery service, not endorsed by the listed retailers or libraries. Links labeled as audiobook searches do not establish that a particular edition is in stock, and no Audible, Apple or Google affiliate commission is implied. A “free” route refers to a legal source; local copyright rules and eligibility still apply.</p>
+<p class="ebook-page-note" data-book-copy="hub.note">Amazon Brazil book and magazine searches may be paid affiliate links, clearly marked beside each eligible button. Como associado da Amazon, eu ganho com compras qualificadas. As an Amazon Associate I earn from qualifying purchases. MatchApp is an independent book and audiobook discovery service, not endorsed by the listed retailers or libraries. Links labeled as audiobook searches do not establish that a particular edition is in stock, and no Audible, Apple or Google affiliate commission is implied. A “free” route refers to a legal source; local copyright rules and eligibility still apply.</p>
 </main>
-<footer class="seo-footer"><a href="/">MatchApp Ai</a> · <a href="/copyright.html">Copyright</a> · <a href="/privacy.html">Privacy</a><p>© 2026 MatchApp.tv</p></footer>
+<footer class="seo-footer"><a href="/">MatchApp Ai</a> · <a href="/copyright.html" data-book-copy="hub.footer.copyright">Copyright</a> · <a href="/privacy.html" data-book-copy="hub.footer.privacy">Privacy</a><p>© 2026 MatchApp.tv</p></footer>
+<script src="/ebooks/locale.js?v=20261020-books14-1"></script>
+<script src="/ebooks/locale-choices.js?v=20261020-books14-1"></script>
+<script src="/ebooks/locale-interface.js?v=20261020-books14-1"></script>
+<script src="/ebooks/locale-hub.js?v=20261020-books14-1"></script>
+<script src="/ebooks/locale-details.js?v=20261020-books14-1"></script>
 <script src="/themes.js?v=187"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
-<script src="/settings.js?v=20261006-installbell1"></script>
+<script src="/settings.js?v=20261006-installbell1&amp;posters=20261020-1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;brandlocale=20261020-1"></script>
 <script src="/match-tokens.js?v=20261019-refresh1"></script>
 <script src="/viewer-country.js?v=20261018-1"></script>
-<script src="/app.js?v=20261014-reading-surface1&amp;experience=20261017-1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1"></script>
+<script src="/app.js?v=20261014-reading-surface1&amp;experience=20261017-1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1&amp;art=20261020-source1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1"></script>
 <script src="/ebooks/catalog.js?v=20260926-catalogscale1"></script>
 <script src="/build-meta.js?v=20260924-ebooks1&amp;fastlang=20261014-2"></script>
 <script src="/ebooks/top-ebooks.js?v=20260924-top1"></script>
 <script src="/content-safety.js?v=20260925-xxx2"></script>
 <script src="/ebooks/magazines.js?v=20260926-publishericon2&amp;publishericon=20261019-1"></script>
-<script src="/ebooks/affiliate-links.js?v=20260925-amzmag1"></script>
-<script src="/ebooks/audiobooks.js?v=20260926-catalogscale1&amp;reliability=20261018-1"></script>
+<script src="/ebooks/affiliate-links.js?v=20260925-amzmag1&locale=20261020-books14-1"></script>
+<script src="/ebooks/audiobooks.js?v=20260926-catalogscale1&amp;reliability=20261018-1&amp;locale=20261020-books14-1"></script>
 <script src="/ebooks/cover-identity.js?v=20261001-coverquality1"></script>
-<script src="/ebooks/book-details-20261011.js?v=20261011-meta3"></script>
-<script src="/guest-reservations.js?v=20261019-1"></script><script src="/ebooks/ebook-matcher.js?v=20261011-meta1&amp;tokens=20261017-1&amp;reliability=20261018-1&amp;cover=20261019-handoff1&amp;lifetime=20261019-1&amp;coverload=20261019-eager1"></script>
+<script src="/ebooks/book-details-20261011.js?v=20261011-meta3&amp;art=20261020-source1&amp;locale=20261020-books14-1"></script>
+<script src="/guest-reservations.js?v=20261019-1"></script><script src="/ebooks/ebook-matcher.js?v=20261011-meta1&amp;tokens=20261017-1&amp;reliability=20261018-1&amp;cover=20261019-handoff1&amp;lifetime=20261019-1&amp;coverload=20261019-eager1&amp;art=20261020-source1&amp;locale=20261020-books14-1"></script>
 <script>
 (function(){
  const host=document.getElementById('ebook-hub-top'),items=window.MATCHAPP_TOP_EBOOKS||[];if(!host)return;
@@ -153,6 +164,9 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
  let saved='';try{saved=String(localStorage.getItem('match_user_country')||'').trim().toLowerCase()}catch(_){}
  const market=(saved==='br'||saved==='brazil'||saved==='brasil'||(navigator.language||'').toLowerCase().endsWith('-br'))?'BR':'GLOBAL';
  const aff=window.MatchAppEbookAffiliate;
+ const locale=window.MatchAppBooksLocale;
+ const copy=(key,text)=>'<span data-book-copy="'+key+'">'+esc(text)+'</span>';
+ const badges={'Top Apple Books BR':'hub.badge.appleBR','Top Apple Books US':'hub.badge.appleUS','Kobo bestseller':'hub.badge.kobo','Current bestseller':'hub.badge.bestseller'};
  const ordered=items.slice().sort((a,b)=>((a.market===market?0:a.market==='GLOBAL'?1:2)-(b.market===market?0:b.market==='GLOBAL'?1:2)));
  host.innerHTML=ordered.map(b=>{
    const free=String(b.access||'').includes('free');
@@ -160,8 +174,9 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
    const paid=!!(aff&&aff.isAffiliateLink(buy));
    const freeUrl='https://www.gutenberg.org/ebooks/search/?query='+q(b);
    const initials=b.title.split(/\s+/).filter(Boolean).slice(0,3).map(x=>x[0]).join('').toUpperCase();
-   return '<article class="ebook-top-card"><div class="ebook-top-cover"><img data-top-cover alt="" hidden><div class="ebook-cover-fallback"><span>'+esc(initials)+'</span><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div></div><div class="ebook-top-copy"><span class="ebook-top-badge">'+esc(b.badge)+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre">'+esc(b.genre)+'</p><div class="ebook-top-actions">'+(free?'<a class="ebook-provider ebook-free" href="'+freeUrl+'" target="_blank" rel="noopener noreferrer">Legal free edition ↗</a>':'')+'<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="'+(paid?'sponsored ':'')+'noopener noreferrer"'+(paid?' data-ebook-affiliate="amazon-br"':'')+'>'+(paid?'Kindle · '+esc(aff.paidLabel(navigator.language)):'Find / buy e-book')+' ↗</a>'+(paid?'<small class="ebook-rights">'+esc(aff.disclosure(navigator.language))+'</small>':'')+'<a class="ebook-top-source" href="'+esc(b.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Chart source · '+esc(b.source)+'</a></div></div></article>';
+   return '<article class="ebook-top-card"><div class="ebook-top-cover"><img data-top-cover alt="" hidden><div class="ebook-cover-fallback"><span>'+esc(initials)+'</span><strong>'+esc(b.title)+'</strong><small>'+esc(b.author)+'</small></div></div><div class="ebook-top-copy"><span class="ebook-top-badge"'+(badges[b.badge]?' data-book-copy="'+badges[b.badge]+'"':'')+'>'+esc(b.badge)+'</span><h3>'+esc(b.title)+'</h3><p class="ebook-top-author">'+esc(b.author)+'</p><p class="ebook-top-genre" data-book-hub-genres="'+esc(b.genre)+'">'+esc(b.genre)+'</p><div class="ebook-top-actions">'+(free?'<a class="ebook-provider ebook-free" href="'+freeUrl+'" target="_blank" rel="noopener noreferrer">'+copy('hub.action.free','Legal free edition')+' ↗</a>':'')+'<a class="ebook-provider" href="'+esc(buy)+'" target="_blank" rel="'+(paid?'sponsored ':'')+'noopener noreferrer"'+(paid?' data-ebook-affiliate="amazon-br"':'')+'>'+(paid?'Kindle · <span data-book-hub-affiliate="paid">'+esc(aff.paidLabel(locale?.lang()))+'</span>':copy('hub.action.buy','Find / buy e-book'))+' ↗</a>'+(paid?'<small class="ebook-rights" data-book-hub-affiliate="disclosure">'+esc(aff.disclosure(locale?.lang()))+'</small>':'')+'<a class="ebook-top-source" href="'+esc(b.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+copy('hub.chartSource','Chart source')+' · '+(b.source==='Current US bestseller list'?copy('hub.source.usBestsellers',b.source):'<span data-book-source-content>'+esc(b.source)+'</span>')+'</a></div></div></article>';
  }).join('');
+ window.MatchAppBookHubLocale?.paint(host);
  const cards=[...host.querySelectorAll('.ebook-top-card')];
  const hydrate=(card,i)=>{
    if(card.dataset.metadataRequested==='1')return;
@@ -191,21 +206,24 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
  let saved='';try{saved=String(localStorage.getItem('match_user_country')||'').toLowerCase()}catch(_){}
  const market=['br','brasil','brazil'].includes(saved)||(navigator.language||'').toLowerCase().endsWith('-br')?'BR':'US';
  const affiliate=window.MatchAppEbookAffiliate;
+ const locale=window.MatchAppBooksLocale;
+ const copy=(key,text)=>'<span data-book-copy="'+key+'">'+esc(text)+'</span>';
  host.innerHTML=api.items.slice().sort((a,b)=>Number(b.region===market)-Number(a.region===market)).map(m=>{
   const offers=api.buyLinks(m,market,affiliate),amazon=offers.find(x=>x.name.startsWith('Amazon')),tagged=!!(amazon&&affiliate?.isAffiliateLink(amazon.url));
   return '<article class="ebook-top-card magazine-hub-card"><div class="magazine-hub-logo">'+
-   '<img data-magazine-hub-icon src="'+esc(m.icon)+'" alt="'+esc(m.title)+' publisher icon" loading="lazy" decoding="async">'+
-   '<strong>'+esc(m.title)+'</strong><span>ORIGINAL PUBLISHER IDENTITY</span></div>'+
+   '<img data-magazine-hub-icon src="'+esc(m.icon)+'" alt="'+esc(m.title)+' publisher icon" data-book-hub-icon="'+esc(m.title)+'" loading="lazy" decoding="async">'+
+   '<strong data-book-source-content>'+esc(m.title)+'</strong>'+copy('hub.mag.identity','ORIGINAL PUBLISHER IDENTITY')+'</div>'+
    '<div class="ebook-top-copy"><h3>'+esc(m.title)+'</h3><p class="ebook-top-author">'+esc(m.publisher)+'</p>'+
-   '<p class="ebook-top-genre">'+esc(m.genres.join(' · '))+'</p><div class="ebook-top-actions">'+
-   '<a class="ebook-provider ebook-free" href="'+esc(m.issues)+'" target="_blank" rel="noopener noreferrer">Original covers ↗</a>'+
-   '<a class="ebook-provider ebook-free" href="'+esc(m.site)+'" target="_blank" rel="noopener noreferrer">Official articles ↗</a>'+
+   '<p class="ebook-top-genre" data-book-hub-genres="'+esc(m.genres.join(' · '))+'">'+esc(m.genres.join(' · '))+'</p><div class="ebook-top-actions">'+
+   '<a class="ebook-provider ebook-free" href="'+esc(m.issues)+'" target="_blank" rel="noopener noreferrer">'+copy('hub.action.cover','Original covers')+' ↗</a>'+
+   '<a class="ebook-provider ebook-free" href="'+esc(m.site)+'" target="_blank" rel="noopener noreferrer">'+copy('hub.action.articles','Official articles')+' ↗</a>'+
    (amazon?'<a class="ebook-provider" href="'+esc(amazon.url)+'" target="_blank" rel="'+(tagged?'sponsored ':'')+
-    'noopener noreferrer"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>Amazon magazine search'+(tagged?' · '+esc(affiliate.paidLabel(navigator.language)):'')+' ↗</a>':'')+
-   '<a class="ebook-provider" href="'+esc(m.subscription)+'" target="_blank" rel="noopener noreferrer">Publisher subscription ↗</a>'+
-   (tagged?'<small class="ebook-rights">'+esc(affiliate.disclosure(navigator.language))+'</small>':'')+
+    'noopener noreferrer"'+(tagged?' data-ebook-affiliate="amazon-br"':'')+'>'+copy('hub.action.amazon','Amazon magazine search')+(tagged?' · <span data-book-hub-affiliate="paid">'+esc(affiliate.paidLabel(locale?.lang()))+'</span>':'')+' ↗</a>':'')+
+   '<a class="ebook-provider" href="'+esc(m.subscription)+'" target="_blank" rel="noopener noreferrer">'+copy('hub.action.subscription','Publisher subscription')+' ↗</a>'+
+   (tagged?'<small class="ebook-rights" data-book-hub-affiliate="disclosure">'+esc(affiliate.disclosure(locale?.lang()))+'</small>':'')+
    '</div></div></article>';
  }).join('');
+ window.MatchAppBookHubLocale?.paint(host);
  // Remote publisher artwork may fail; original publisher name stays visible.
  host.querySelectorAll('[data-magazine-hub-icon]').forEach(img=>{
   const unavailable=()=>{img.hidden=true;};
@@ -218,17 +236,13 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;gap
 })();
 </script>
 <script>
-/* The independent adult Bookworms hub uses the same locale-sensitive top
-   wordmark, but does not load the Home's matching/AI header controllers. */
+/* Keep the product wordmark fixed; the shared reading locale owns its label. */
 (function(){
  function paint(){
-  var lang=String(window.MATCH_LANG||'').toLowerCase();
-  try{lang=lang||String(localStorage.getItem('match_lang')||'').toLowerCase();}catch(_){}
-  lang=lang||String(navigator.language||document.documentElement.lang||'en').toLowerCase();
-  var pt=lang.indexOf('pt')===0,brand=document.querySelector('.ebook-hub-brand');
+  var brand=document.querySelector('.ebook-hub-brand');
   if(!brand)return;
   var ai=brand.querySelector('[data-ma-brand-ai]');if(ai)ai.textContent='Ai';
-  brand.setAttribute('aria-label','MatchApp Ai home');
+  window.MatchAppBooksLocale?.paint(brand);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',paint,{once:true});else paint();
  document.addEventListener('matchapp:langchange',paint);

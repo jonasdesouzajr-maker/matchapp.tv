@@ -614,7 +614,7 @@ class MainActivity : AppCompatActivity() {
               var script = document.createElement('script');
               script.id = 'matchapp-ambient-jonas-script';
               script.async = true;
-              script.src = '/jonas/android-ambient-assistant-20261011.js?live=' + Date.now();
+              script.src = '/jonas/android-ambient-assistant-20261011.js?live=' + Date.now() + '&stellar=20261020-1';
               (document.head || document.documentElement).appendChild(script);
             })();
             """.trimIndent(), null

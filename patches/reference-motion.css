@@ -1,0 +1,55 @@
+/* MatchApp motion language: quiet arrival, glass depth and deliberate responses.
+   The app's controls/state remain owned by their existing implementations. */
+@view-transition {navigation:auto;}
+@layer ma-reference {
+ html.ma-reference {--cinema-ease:cubic-bezier(.22,.8,.22,1);--cinema-fast:160ms;--cinema-fold:320ms;}
+ html.ma-reference :is(button,.gold-btn,.hub-action,.ma-cinema-hero-action,.ref-explore-primary,.ma-cinema-dock a,.crit-toggle,.ma-cinema-tools>summary,.ref-explore-tools>summary) {
+  -webkit-tap-highlight-color:transparent;
+  transition:transform var(--cinema-fast) var(--cinema-ease),border-color 180ms ease,box-shadow 220ms ease,background-color 180ms ease!important;
+ }
+ html.ma-reference :is(button,.gold-btn,.hub-action,.ma-cinema-hero-action,.ref-explore-primary,.ma-cinema-dock a,.crit-toggle):active:not(:disabled) {transform:scale(.975)!important;}
+ html.ma-reference :is(.gold-btn,.hub-action,.ma-cinema-hero-action,.ref-explore-primary) {
+  background-image:linear-gradient(115deg,#f6d388 0%,#e9bc67 46%,#d8a049 100%)!important;
+  box-shadow:inset 0 1px rgba(255,247,216,.58),inset 0 -1px rgba(119,70,20,.2),0 4px 14px rgba(205,148,60,.12)!important;
+ }
+ html.ma-reference :is(.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-cinema-quick-choices,.match-more-filters,.profile-hub-row) {
+  box-shadow:inset 0 1px rgba(255,242,214,.045),0 8px 24px rgba(0,0,0,.1)!important;
+ }
+ html.ma-reference :is(.ma-cinema-tools-content,.ref-explore-tools-panel) {
+  background:color-mix(in srgb,var(--cinema-panel) 94%,transparent)!important;
+  backdrop-filter:blur(20px) saturate(125%);-webkit-backdrop-filter:blur(20px) saturate(125%);
+ }
+ html.ma-reference :is(.crit-toggle-chevron,.lazy-head-chevron,.ma-menu-button svg) {transition:transform 260ms var(--cinema-ease)!important;}
+ html.ma-reference .crit-toggle[aria-expanded="true"] .crit-toggle-chevron,
+ html.ma-reference .lazy-head.is-open .lazy-head-chevron {transform:rotate(180deg)!important;}
+ html.ma-reference details {interpolate-size:allow-keywords;}
+ @supports selector(details::details-content) {
+  html.ma-reference details:not(.ma-cinema-tools):not(.ref-explore-tools)::details-content {
+   block-size:0;opacity:0;overflow:clip;
+   transition:block-size var(--cinema-fold) var(--cinema-ease),opacity 220ms ease,content-visibility var(--cinema-fold) allow-discrete;
+  }
+  html.ma-reference details[open]:not(.ma-cinema-tools):not(.ref-explore-tools)::details-content {block-size:auto;opacity:1;}
+ }
+ html.ma-reference [data-cinema-fold-animating] {overflow:clip!important;}
+ html.ma-reference .ma-cinema-fold-echo {pointer-events:none!important;user-select:none!important;touch-action:none!important;}
+ html.ma-reference::view-transition-old(root) {animation:cinema-page-out 180ms ease both;}
+ html.ma-reference::view-transition-new(root) {animation:cinema-page-in 260ms ease both;}
+ @keyframes cinema-page-out {to{opacity:0;}}
+ @keyframes cinema-page-in {from{opacity:0;}to{opacity:1;}}
+ @media(hover:hover) and (pointer:fine) {
+  html.ma-reference :is(.gold-btn,.hub-action,.ma-cinema-hero-action,.ref-explore-primary):hover {
+   transform:translateY(-1px)!important;
+   box-shadow:inset 0 1px rgba(255,251,232,.75),inset 0 -1px rgba(119,70,20,.2),0 7px 25px rgba(224,171,79,.21)!important;
+  }
+  html.ma-reference :is(.crit-toggle,.ma-cinema-tools>summary,.ref-explore-tools>summary):hover {background-color:color-mix(in srgb,var(--cinema-gold) 7%,var(--cinema-surface))!important;}
+ }
+ @media(prefers-reduced-motion:reduce) {
+  html.ma-reference *,html.ma-reference *::before,html.ma-reference *::after {transition:none!important;animation:none!important;scroll-behavior:auto!important;}
+  html.ma-reference :is(button,a,summary):active {transform:none!important;}
+  html.ma-reference::view-transition-old(root),html.ma-reference::view-transition-new(root) {animation:none!important;}
+ }
+ html.ma-reference.reduce-motion *,html.ma-reference.reduce-motion *::before,html.ma-reference.reduce-motion *::after {transition:none!important;animation:none!important;scroll-behavior:auto!important;}
+ html.ma-reference.reduce-motion :is(button,a,summary):active {transform:none!important;}
+ html.ma-reference.reduce-motion::view-transition-old(root),html.ma-reference.reduce-motion::view-transition-new(root) {animation:none!important;}
+ @media print {html.ma-reference .ma-cinema-fold-echo {display:none!important;}}
+}

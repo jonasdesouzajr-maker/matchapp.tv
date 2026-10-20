@@ -137,12 +137,23 @@
     setCopy(box.querySelector('p'), 'deleteBody');
     setCopy(box.querySelector('#ma-delete-btn'), 'deleteRequest');
     bind(box, () => { box.style.textAlign = 'start'; });
+    let deletionPending = false;
     box.querySelector('#ma-delete-btn').addEventListener('click', async function () {
+      if (deletionPending) return;
+      deletionPending = true;
+      this.disabled = true;
       const msg = box.querySelector('#ma-delete-msg');
-      if (!confirm(copy('deleteConfirm', 'Delete your MatchApp account? You can recreate it with the same email after 72 hours.'))) return;
-      const sb = window.supabaseClient;
-      if (!sb) { setCopy(msg, 'deleteSignIn', 'Sign in first.'); return; }
+      const confirmingClient = window.supabaseClient;
+      const confirmingUserId = window.matchProfileState?.userId;
       try {
+        const question = copy('deleteConfirm', 'Delete your MatchApp account? You can recreate it with the same email after 72 hours.');
+        const accepted = typeof window.MatchAppDialogs?.confirm === 'function'
+          ? await window.MatchAppDialogs.confirm(question, {trigger:this})
+          : window.confirm(question);
+        if (accepted !== true) return;
+        const sb = window.supabaseClient;
+        if (sb !== confirmingClient || window.matchProfileState?.userId !== confirmingUserId) return;
+        if (!sb) { setCopy(msg, 'deleteSignIn', 'Sign in first.'); return; }
         const { data, error } = await sb.rpc('request_account_deletion');
         if (error) throw error;
         const message = data && data.message;
@@ -152,6 +163,9 @@
         try { await sb.auth.signOut(); } catch (_) {}
       } catch (err) {
         setCopy(msg, 'deleteFailed', 'Could not complete deletion automatically. Email support@matchapp.tv and we will close the account.');
+      } finally {
+        deletionPending = false;
+        this.disabled = false;
       }
     });
   }

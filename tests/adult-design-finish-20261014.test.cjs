@@ -26,16 +26,22 @@ test('Home Explore invitation updates every label and description without alteri
 });
 test('Explore and Music label their menu and call to action in every selected language',()=>{
  for(const file of ['explore.html','music.html']){
-  const dom=new JSDOM(read(file),{url:'https://matchapp.tv/'+file,runScripts:'outside-only'}),w=dom.window;
-  w.MATCH_LANG='en';w.eval(read('patches/explore-locales.js'));
+  const dom=new JSDOM(read(file),{url:'https://matchapp.tv/'+file,runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window;
+  w.eval(read('i18n.js'));w.eval(read('patches/explore-locales.js'));w.eval(read('patches/reference-explore.js'));w.eval(read('patches/reference-system.js'));
+  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
   const expectedRoutes=Array.from(w.document.querySelectorAll('a'),a=>a.getAttribute('href'));
   const labels=new Set();
   for(const language of languages){
-   w.MATCH_LANG=language;
-   w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang:language}}));
-   const nav=w.document.querySelector('[data-hub-aria="menu"]');
+   w.setLanguage(language);w.MatchCinemaShell.paint();
+   const nav=w.document.querySelector(file==='explore.html'?'.ref-explore-tools>summary':'[data-hub-aria="menu"]');
    assert.ok(nav?.getAttribute('aria-label')?.length>2,file+' '+language+' menu');
    labels.add(nav.getAttribute('aria-label'));
+   if(file==='explore.html'){
+    const expected=w.MatchCinemaShell.labels[language==='pt-BR'?'pt':language][10];
+    assert.equal(nav.getAttribute('aria-label'),expected,language+' authored controls label');
+    assert.equal(nav.querySelector('[data-cinema-copy="controls"]').textContent,expected);
+    assert.ok(w.document.querySelector('.ref-explore-primary [data-ref-explore="explore"]').textContent.trim().length>2,language+' Explore CTA');
+   }
    if(file==='music.html')assert.ok(w.document.querySelector('[data-music-ask]').textContent.trim().length>5,language+' Music CTA');
    assert.deepEqual(Array.from(w.document.querySelectorAll('a'),a=>a.getAttribute('href')),expectedRoutes,'localization must preserve destinations');
   }

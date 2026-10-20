@@ -1,4 +1,4 @@
-@import url("/patches/jonas-premium-glass.css?v=20261014-dock2");
+@import url("/patches/jonas-premium-glass.css?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1");
 /* Android-only ambient Jonas. All colors, sizing and motion are server-editable.
    Never touches Kids, AdSense, Matching or the native Play Billing entitlement. */
 html.matchapp-ai-android #ma-jonas-home,

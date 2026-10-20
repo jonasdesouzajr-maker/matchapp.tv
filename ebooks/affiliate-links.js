@@ -41,10 +41,11 @@ function isAffiliateLink(href){
  }catch(_){return false}
 }
 function disclosure(locale){
+ if(root.MatchAppReadingDetailsCopy?.text)return root.MatchAppReadingDetailsCopy.text('affiliate.disclosure');
  return /^pt/i.test(String(locale||''))?
   'Como associado da Amazon, eu ganho com compras qualificadas.':
   'As an Amazon Associate I earn from qualifying purchases. Como associado da Amazon, eu ganho com compras qualificadas.';
 }
-function paidLabel(locale){return /^pt/i.test(String(locale||''))?'publicidade':'paid link'}
+function paidLabel(locale){return root.MatchAppReadingDetailsCopy?.text?.('affiliate.paid')||(/^pt/i.test(String(locale||''))?'publicidade':'paid link')}
 root.MatchAppEbookAffiliate=Object.freeze({amazonSearchUrl,amazonMagazineSearchUrl,isAffiliateLink,disclosure,paidLabel});
 })(window);

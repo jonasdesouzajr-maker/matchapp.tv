@@ -1661,6 +1661,26 @@ function normalizeLang(tag) {
     return null;
 }
 
+// Exact-title source failure is UI copy; verification and credit behavior stay unchanged.
+Object.entries({
+  "en": "Couldn't verify this title. No Match was used.",
+  "pt-BR": "Não foi possível verificar este título. Nenhum Match foi usado.",
+  "es": "No se pudo verificar este título. No se ha usado ningún Match.",
+  "fr": "Impossible de vérifier ce titre. Aucun Match n’a été utilisé.",
+  "de": "Dieser Titel konnte nicht verifiziert werden. Es wurde kein Match verbraucht.",
+  "it": "Non è stato possibile verificare questo titolo. Nessun Match è stato utilizzato.",
+  "tr": "Bu yapım doğrulanamadı. Hiçbir Match kullanılmadı.",
+  "ru": "Не удалось проверить это произведение. Ни один Match не использован.",
+  "ar": "تعذّر التحقق من هذا العنوان. لم تُستخدم أي حصة Match.",
+  "hi": "इस शीर्षक की पुष्टि नहीं हो सकी। कोई Match इस्तेमाल नहीं हुआ।",
+  "id": "Judul ini tidak dapat diverifikasi. Tidak ada Match yang digunakan.",
+  "ja": "この作品を確認できませんでした。Matchは消費されていません。",
+  "ko": "이 작품을 확인하지 못했습니다. Match는 사용되지 않았습니다.",
+  "zh": "无法核实这部作品。未消耗任何Match。"
+}).forEach(([language, text]) => {
+    if (I18N[language]) I18N[language]['match.titleUnverified'] = text;
+});
+
 function detectLanguage() {
     // 1. Explicit user override always wins.
     let saved;

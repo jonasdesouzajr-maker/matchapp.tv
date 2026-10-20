@@ -1,0 +1,65 @@
+{
+  "title": "MatchApp glass interaction suite",
+  "authorship": "Original local procedural sound design created for MatchApp Ai, 2026-10-20. No third-party recordings, stock samples, voices or generated provider audio.",
+  "format": "PCM signed 16-bit mono WAV, 24000 Hz",
+  "design": "Warm damped glass resonances, subtle inharmonic partials, a soft tactile onset, and clean fades. Cues share a pentatonic sound identity.",
+  "cues": {
+    "tap": {
+      "file": "matchapp-tap.wav",
+      "durationSeconds": 0.12,
+      "notesHz": [
+        659.25
+      ]
+    },
+    "open": {
+      "file": "matchapp-open.wav",
+      "durationSeconds": 0.23,
+      "notesHz": [
+        523.25,
+        783.99
+      ]
+    },
+    "close": {
+      "file": "matchapp-close.wav",
+      "durationSeconds": 0.2,
+      "notesHz": [
+        783.99,
+        523.25
+      ]
+    },
+    "select": {
+      "file": "matchapp-select.wav",
+      "durationSeconds": 0.19,
+      "notesHz": [
+        659.25,
+        880
+      ]
+    },
+    "confirm": {
+      "file": "matchapp-confirm.wav",
+      "durationSeconds": 0.32,
+      "notesHz": [
+        523.25,
+        783.99,
+        1046.5
+      ]
+    },
+    "mic": {
+      "file": "matchapp-mic.wav",
+      "durationSeconds": 0.26,
+      "notesHz": [
+        440,
+        659.25
+      ]
+    },
+    "error": {
+      "file": "matchapp-error.wav",
+      "durationSeconds": 0.26,
+      "notesHz": [
+        440,
+        392
+      ]
+    }
+  },
+  "serviceAvailability": "No ElevenLabs API key was configured. One connected Runway sound-effect request required reauthentication and produced no audio or reported usage."
+}
