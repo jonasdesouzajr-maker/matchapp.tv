@@ -1,1 +1,3761 @@
-$(cat /tmp/matchapp-ia.css)
+/* MatchApp 2026 IA reset — one coherent UX layer over the existing vanilla app.
+   Backend, routes, quota, auth, payment and Kids safety code remain untouched. */
+:root{
+  --ma-navy:#071326;--ma-navy-2:#0d1d35;--ma-purple:#1b1234;--ma-surface:rgba(13,19,39,.90);
+  --ma-surface-2:rgba(24,20,48,.90);--ma-gold:#e8ba40;--ma-gold-soft:#fff0ba;
+  --ma-text:#f6f2fb;--ma-muted:#b8aec9;--ma-border:rgba(232,186,64,.24);--ma-focus:#7ce7ff;
+  --ma-radius:22px;--ma-shadow:0 22px 60px rgba(0,0,0,.32);--ma-max:1120px;
+}
+html{scroll-padding-top:82px}
+body{font-family:Inter,"Segoe UI",system-ui,-apple-system,sans-serif!important;color:var(--ma-text)}
+body:not(.page-kids){background-color:var(--ma-navy)!important}
+h1,h2,h3,.home-h1,.tg-h1,.credits-h{font-family:Outfit,Inter,"Segoe UI",system-ui,sans-serif!important}
+a,button,input,textarea,select,summary{font:inherit}
+button,a,[role="button"],summary{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{
+  outline:3px solid var(--ma-focus)!important;outline-offset:3px!important
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* ---------- canonical shared header ---------- */
+header.app-header.ma-global-header,
+html body.page-home #mh-topbox.app-header.ma-global-header{
+  position:relative!important;top:auto!important;z-index:1600!important;
+  display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;
+  gap:12px!important;width:100%!important;max-width:none!important;min-height:64px!important;
+  margin:0!important;padding:8px max(14px,calc((100vw - var(--ma-max))/2))!important;
+  border:0!important;border-bottom:1px solid rgba(255,255,255,.09)!important;border-radius:0!important;
+  background:rgba(6,12,27,.88)!important;box-shadow:0 10px 30px rgba(0,0,0,.22)!important;
+  backdrop-filter:blur(18px) saturate(120%)!important;overflow:visible!important
+}
+.ma-global-header .mh-head{display:flex!important;align-items:center!important;flex:0 0 auto!important;width:auto!important;margin:0!important}
+.ma-global-header .mh-tagline{display:none!important}
+.ma-global-header .header-brand-area,
+.ma-global-header #home-brand-lockup{display:flex!important;align-items:center!important;width:auto!important;margin:0!important;padding:0!important}
+.ma-global-header .ma-brand-lockup{display:flex;align-items:center;text-decoration:none;min-width:0}
+.ma-global-header .ma-brand-lockup img{display:block!important;width:auto!important;height:46px!important;max-width:min(238px,46vw)!important;object-fit:contain!important}
+.ma-global-header .header-brand-area.matchapp-brand-link>img:not(.ma-brand-image),
+.ma-global-header .header-brand-area.matchapp-brand-link>span,
+.ma-global-header #home-brand-lockup>.matchapp-brand-link,
+.ma-global-header #home-brand-lockup>.home-ai-link{display:none!important}
+.ma-global-header nav,.ma-global-header nav.mh-deck{
+  display:flex!important;flex:1 1 auto!important;align-items:center!important;justify-content:flex-end!important;
+  gap:8px!important;width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0!important;
+  background:none!important;border:0!important;box-shadow:none!important
+}
+.ma-global-header nav>*{order:initial!important;grid-column:auto!important;transform:none!important}
+.ma-global-header .ma-country-link,.ma-global-header #lang-switcher-host,.ma-global-header #profile-link-tab,
+.ma-global-header #nav-reg-btn,.ma-global-header .matchapp-notification-button,.ma-menu-button{
+  min-height:44px!important;border-radius:12px!important
+}
+.ma-global-header .ma-country-link{
+  display:inline-flex;align-items:center;gap:6px;padding:0 10px;color:#ddd5e7;text-decoration:none;
+  border:1px solid transparent;font-size:12px;font-weight:750;white-space:nowrap
+}
+.ma-global-header .ma-country-link:hover{border-color:var(--ma-border);background:rgba(255,255,255,.05)}
+.ma-global-header #lang-switcher-host{
+  display:flex!important;align-items:center!important;width:auto!important;min-width:0!important;padding:0!important;
+  border:0!important;background:none!important;box-shadow:none!important
+}
+.ma-global-header #lang-switcher-host::before{display:none!important}
+.ma-global-header #lang-switcher-host select{
+  width:auto!important;max-width:130px!important;min-height:44px!important;padding:0 10px!important;
+  border:1px solid rgba(255,255,255,.13)!important;border-radius:12px!important;background:rgba(255,255,255,.04)!important;
+  color:var(--ma-text)!important;font-size:12px!important
+}
+.ma-global-header #nav-reg-btn{
+  width:auto!important;max-width:170px!important;padding:0 14px!important;margin:0!important;
+  border:1px solid var(--ma-border)!important;background:transparent!important;color:var(--ma-gold-soft)!important;
+  box-shadow:none!important;font-size:12px!important;text-transform:none!important;letter-spacing:0!important
+}
+.ma-global-header #profile-link-tab{width:44px!important;min-width:44px!important;padding:0!important;background:transparent!important;border:1px solid rgba(255,255,255,.12)!important}
+.ma-global-header #profile-link-tab #nav-profile-text{display:none!important}
+.ma-global-header .matchapp-notification-button{position:relative!important;width:44px!important;min-width:44px!important;padding:0!important;background:transparent!important;border:1px solid rgba(255,255,255,.12)!important}
+.ma-global-header .install-wrap,.ma-global-header .install-btn,.ma-global-header .sound-toggle-btn,
+.ma-global-header #quota-badge,.ma-global-header #nav-logout-btn,.ma-global-header .home-btn,
+.ma-global-header a[data-i18n="discover.newMatch"]{display:none!important}
+.ma-menu-wrap{position:relative;display:flex;align-items:center}
+.ma-menu-button{width:44px;min-width:44px;padding:0;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.04);color:var(--ma-text);cursor:pointer;font-size:21px}
+.ma-menu{position:absolute;right:0;top:52px;width:min(280px,86vw);padding:8px;border:1px solid var(--ma-border);
+  border-radius:16px;background:rgba(7,12,29,.98);box-shadow:0 24px 60px rgba(0,0,0,.5);backdrop-filter:blur(18px)}
+.ma-menu[hidden]{display:none!important}
+.ma-menu a,.ma-menu button{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:9px 11px;border:0;border-radius:10px;
+  background:transparent;color:var(--ma-text);text-decoration:none;text-align:left;cursor:pointer;font-size:13px}
+.ma-menu a:hover,.ma-menu button:hover{background:rgba(232,186,64,.09);color:var(--ma-gold-soft)}
+.ma-menu-sep{height:1px;margin:6px;background:rgba(255,255,255,.08)}
+@media(max-width:650px){
+  header.app-header.ma-global-header,html body.page-home #mh-topbox.app-header.ma-global-header{min-height:58px!important;padding:6px 10px!important;gap:6px!important}
+  .ma-global-header .ma-brand-lockup img{height:38px!important;max-width:145px!important}
+  .ma-global-header .ma-country-link{font-size:0;padding:0;width:40px;justify-content:center}
+  .ma-global-header .ma-country-link::before{content:"🌍";font-size:17px}
+  .ma-global-header #lang-switcher-host select{max-width:72px!important;padding:0 6px!important;font-size:11px!important}
+  .ma-global-header #nav-reg-btn{max-width:78px!important;padding:0 8px!important;font-size:11px!important}
+}
+
+/* ---------- no first-paint interstitial / no competing home chrome ---------- */
+/* Daily Check-in is no longer in this list: as of the 2026-09-21 release it is
+   a permanent field directly under the top box on every surface, so the offer
+   is visible instead of living behind the Settings menu. */
+html body.page-home .top-ask-wrap,
+html body.page-home #live-status-strip,
+html body.page-home #how-it-works,
+html body.page-home #ai-concierge-section,
+html body.page-home .lazy-bar{display:none!important}
+html body.page-home:not(.ma-ia-ready) #trending-rail{display:none!important}
+html body.page-home .page-wrapper{padding:0!important}
+html body.page-home .main-layout{padding-top:10px!important}
+html body.page-home .container{max-width:900px!important;margin-inline:auto!important}
+html body.page-home .sidebar-ad-left,html body.page-home .sidebar-ad-right{top:82px!important}
+
+/* ---------- home first screen ---------- */
+html body.page-home .home-hero{padding:12px 12px 8px!important;margin:0!important;text-align:center}
+html body.page-home .home-h1{margin:0 0 5px!important;color:var(--ma-text)!important;font-size:clamp(28px,4vw,46px)!important;line-height:1.04!important;
+  letter-spacing:-.025em!important;text-transform:none!important;text-shadow:none!important}
+html body.page-home .home-h1-sub{max-width:640px!important;margin:0 auto!important;color:var(--ma-muted)!important;font-size:14px!important;line-height:1.5!important}
+
+.ma-concierge{position:relative;margin:8px 0 18px;padding:14px;border:1px solid var(--ma-border);border-radius:var(--ma-radius);
+  background:linear-gradient(160deg,rgba(15,27,50,.96),rgba(23,16,47,.95));box-shadow:var(--ma-shadow);overflow:visible}
+.ma-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;margin-bottom:12px;border-radius:14px;background:rgba(0,0,0,.24)}
+.ma-tab{min-height:44px;border:0;border-radius:11px;background:transparent;color:var(--ma-muted);font-weight:850;cursor:pointer}
+.ma-tab[aria-selected="true"]{background:rgba(232,186,64,.13);color:var(--ma-gold-soft);box-shadow:inset 0 0 0 1px rgba(232,186,64,.25)}
+.ma-panel[hidden]{display:none!important}
+.ma-concierge #questionnaire-box,.ma-concierge #search-box{display:block!important;margin:0!important;border:0!important;border-radius:0!important;
+  background:none!important;box-shadow:none!important;box-sizing:border-box!important;min-width:0!important;max-width:100%!important}
+.ma-concierge #questionnaire-box{padding:4px!important;overflow:hidden!important}
+.ma-concierge #search-box{padding:0!important}
+.ma-concierge #questionnaire-box>h2,.ma-concierge #search-box>h2,.ma-concierge #search-box>p{display:none!important}
+.ma-concierge .q-grid--primary{display:none!important}
+.ma-quick{display:grid;gap:8px;min-width:0;max-width:100%;box-sizing:border-box}
+.ma-filter-row{display:grid;gap:4px;min-width:0;max-width:100%;padding:2px 0;box-sizing:border-box}
+.ma-filter-label{display:flex;align-items:baseline;justify-content:space-between;gap:6px;min-width:0;max-width:100%;padding:0 2px;box-sizing:border-box;color:#d8d0e4;font-size:12px;font-weight:850}
+.ma-filter-label>span{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.ma-filter-label small{min-width:0;color:#80788f;font-size:10px;font-weight:600;overflow-wrap:anywhere}
+.ma-chip-row{display:flex;gap:5px;flex-wrap:wrap;min-width:0;max-width:100%;padding:1px 2px;box-sizing:border-box}
+.ma-chip-row.ma-scroll{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;padding:2px 2px 5px;scrollbar-width:none;overscroll-behavior-inline:contain}
+.ma-chip-row.ma-scroll::-webkit-scrollbar{display:none}
+.ma-chip{flex:0 0 auto;min-width:0;max-width:100%;min-height:40px;padding:7px 10px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:transparent;
+  color:#d8d0e4;font-size:12px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;box-sizing:border-box}
+.ma-chip:hover{border-color:rgba(232,186,64,.5);color:#fff}
+.ma-chip[aria-pressed="true"]{border-color:var(--ma-gold);background:var(--ma-gold);color:#151019;box-shadow:none}
+.ma-chip.ma-any[aria-pressed="true"]{background:rgba(232,186,64,.16);color:var(--ma-gold-soft)}
+.ma-concierge .match-more-filters{margin-top:10px!important;border:0!important;background:transparent!important}
+.ma-concierge .match-more-filters>summary{
+  min-height:42px!important;justify-content:flex-start!important;padding:8px 2px!important;color:#cabee0!important;font-size:12px!important;
+  border:0!important;background:transparent!important
+}
+.ma-concierge .match-more-filters .q-grid--advanced{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:8px 0 0!important;gap:8px!important}
+.ma-concierge .crit-toggle{min-height:44px;padding:10px 11px;border-radius:11px}
+.ma-concierge .crit-toggle-label{font-size:10.5px}
+.ma-concierge .crit-toggle-summary{font-size:11px}
+.ma-fine-link{display:flex;justify-content:flex-start;margin-top:6px;color:#9f94b5!important;font-size:11px;text-decoration:none}
+.ma-primary,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"],
+.ma-concierge #search-box .gold-btn{
+  display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:52px!important;
+  margin:12px 0 0!important;padding:11px 18px!important;border:1px solid #f2cf69!important;border-radius:14px!important;
+  background:linear-gradient(180deg,#f7d76f,#d9a827)!important;color:#171018!important;box-shadow:0 10px 24px rgba(232,186,64,.16)!important;
+  font-size:15px!important;font-weight:900!important;text-transform:none!important;letter-spacing:0!important
+}
+.ma-concierge .gold-btn::after,.ma-concierge #questionnaire-box>button::after{display:none!important}
+.ma-together-link{display:block;margin:9px auto 0;text-align:center;color:#cabee0;font-size:12px;text-decoration:none}
+.ma-together-link:hover{color:var(--ma-gold-soft)}
+.ma-concierge #search-box>div:first-of-type{display:grid!important;grid-template-columns:minmax(0,1fr) 52px 92px!important;gap:8px!important;align-items:stretch!important}
+.ma-concierge #specific-search-input{min-width:0!important;min-height:52px!important;padding:12px 14px!important;border:1px solid rgba(255,255,255,.16)!important;
+  border-radius:14px!important;background:rgba(0,0,0,.22)!important;color:#fff!important;font-size:16px!important}
+.ma-concierge #mic-btn-index{width:52px!important;height:52px!important;margin:0!important;border:1px solid rgba(232,186,64,.36)!important;border-radius:14px!important;background:transparent!important}
+.ma-concierge #search-box .gold-btn{margin:0!important;min-height:52px!important;padding:8px 12px!important}
+.ma-concierge .search-examples{justify-content:flex-start!important;margin-top:9px!important;gap:6px!important}
+.ma-concierge .search-examples>span{display:none!important}
+.ma-concierge .search-examples button{min-height:36px!important;padding:7px 10px!important;background:transparent!important;border:1px solid rgba(255,255,255,.12)!important;color:#a99dbd!important}
+.ma-quota-line{min-height:17px;margin:7px 2px 0;color:#8f84a2;font-size:11px;text-align:left}
+@media(max-width:640px){
+  html body.page-home .main-layout{padding:6px 8px 0!important}
+  html body.page-home .home-hero{padding:8px 8px 4px!important}
+  html body.page-home .home-h1{font-size:27px!important}
+  html body.page-home .home-h1-sub{font-size:12px!important;line-height:1.35!important}
+  .ma-concierge{margin:5px 0 12px;padding:10px;border-radius:18px}
+  .ma-tabs{margin-bottom:9px}.ma-quick{gap:8px}.ma-filter-row{gap:5px}
+  .ma-chip-row{gap:5px}.ma-chip{min-height:38px;padding:7px 10px;font-size:11.5px}
+  .ma-concierge .match-more-filters{margin-top:5px!important}
+  .ma-concierge .match-more-filters .q-grid--advanced{grid-template-columns:1fr!important}
+  .ma-concierge #questionnaire-box>button[data-i18n="q.submit"],.ma-concierge #search-box .gold-btn{min-height:50px!important}
+  .ma-concierge #search-box>div:first-of-type{grid-template-columns:minmax(0,1fr) 50px!important}
+  .ma-concierge #search-box .gold-btn{grid-column:1/-1}
+  .ma-concierge .search-examples{display:none!important}
+}
+@media(max-width:430px){
+  .ma-moods{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px!important}
+  .ma-moods .ma-chip{width:100%;padding:7px 3px;font-size:10.5px;text-align:center}
+}
+
+/* mobile CTA pinned without hiding cookie controls */
+@media(max-width:640px){
+  body.page-home.ma-match-tab .ma-concierge #questionnaire-box>button[data-i18n="q.submit"]{
+    position:sticky!important;bottom:70px!important;z-index:40!important
+  }
+  body.page-home.ma-ask-tab .ma-concierge #search-box .gold-btn{position:static!important;bottom:auto!important;z-index:auto!important}
+}
+
+/* below-the-fold order and calmer surfaces */
+html body.page-home #loading-box,html body.page-home #result-box{margin-top:12px!important}
+html body.page-home #trending-rail{order:initial!important;margin:12px 0 18px!important;padding:12px 0!important;border:0!important;border-radius:18px!important;background:rgba(10,16,34,.72)!important;box-shadow:none!important}
+html body.page-home #trending-rail h4{margin:0 14px 10px!important;text-align:left!important;color:#e8dfef!important;font-size:13px!important;letter-spacing:.2px!important;text-transform:none!important}
+html body.page-home #premiere-disclosure{margin:0 0 14px!important;border:0!important;background:none!important}
+html body.page-home #premiere-disclosure>summary{display:none!important}
+html body.page-home #premiere-disclosure>.spotlight-card{margin:0!important;padding:14px!important;border:1px solid rgba(255,255,255,.10)!important;border-radius:18px!important;background:rgba(11,18,36,.78)!important;box-shadow:none!important}
+html body.page-home #global-events{margin:0 0 16px!important}
+html body.page-home #global-events details{border:1px solid rgba(255,255,255,.10)!important;border-radius:18px!important;background:rgba(11,18,36,.7)!important}
+html body.page-home .container>.ad-banner-container{margin:18px 0!important}
+html body.page-home #result-box .premium-ad-frame,html body.page-home #result-box>.ad-banner-container{display:none!important}
+
+/* result becomes one calm title-detail treatment */
+html body.page-home #result-box{padding:18px!important;border:1px solid var(--ma-border)!important;border-radius:var(--ma-radius)!important;
+  background:linear-gradient(160deg,rgba(13,22,42,.96),rgba(24,17,47,.95))!important;box-shadow:var(--ma-shadow)!important}
+html body.page-home #result-box .res-media-row{display:grid!important;grid-template-columns:150px minmax(0,1fr)!important;gap:18px!important;align-items:start!important}
+html body.page-home #result-box .poster-stage{min-height:210px!important;border-radius:16px!important;overflow:hidden!important}
+html body.page-home #result-box #res-title{animation:none!important;background:none!important;color:#fff!important;-webkit-text-fill-color:currentColor!important;font-size:clamp(25px,4vw,39px)!important;text-transform:none!important}
+html body.page-home #result-box #res-synopsis{font-size:15px!important;line-height:1.55!important;font-weight:500!important}
+html body.page-home #result-box .res-action-grid{gap:8px!important}
+html body.page-home #result-box .share-cta{animation:none!important;background:transparent!important;border:1px solid rgba(255,255,255,.18)!important;box-shadow:none!important;color:#eee!important}
+@media(max-width:560px){
+  html body.page-home #result-box{padding:13px!important}
+  html body.page-home #result-box .res-media-row{grid-template-columns:105px minmax(0,1fr)!important;gap:12px!important}
+  html body.page-home #result-box .poster-stage{min-height:155px!important}
+  html body.page-home #result-box #res-title{font-size:23px!important}
+}
+
+/* ---------- Ask / Discover: same product language ---------- */
+body.ai-chat-page{background:var(--ma-navy)!important}
+body.ai-chat-page .luxury-bg{opacity:.22!important}
+body.ai-chat-page .wrap{padding-top:18px!important}
+body.ai-chat-page .discover-head{border:1px solid var(--ma-border)!important;border-radius:var(--ma-radius)!important;background:linear-gradient(160deg,rgba(13,22,42,.96),rgba(24,17,47,.95))!important;box-shadow:var(--ma-shadow)!important}
+body.ai-chat-page .discover-title-copy .concierge-tagline,
+body.ai-chat-page .ai-session-strip{display:none!important}
+body.ai-chat-page .discover-title-row{margin-bottom:8px!important}
+body.ai-chat-page .discover-ai-mark{display:none!important}
+body.ai-chat-page .discover-title-copy h1{font-size:clamp(26px,4vw,38px)!important;color:#fff!important;text-transform:none!important}
+body.ai-chat-page #discover-empty{display:none!important}
+body.ai-chat-page .newsearch-row{margin-top:8px!important}
+body.ai-chat-page .composer{
+  order:1!important;flex:1 1 420px!important;min-width:0!important;min-height:64px!important;
+  border:2px solid rgba(255,217,106,.78)!important;border-radius:16px!important;
+  background:linear-gradient(145deg,rgba(8,14,29,.98),rgba(28,16,48,.98))!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.32)!important;
+  align-items:center!important
+}
+body.ai-chat-page .composer textarea{
+  display:block!important;width:100%!important;min-width:0!important;min-height:48px!important;
+  padding:12px 10px!important;border:0!important;border-radius:11px!important;background:rgba(255,255,255,.045)!important;
+  color:#fff!important;caret-color:var(--ma-gold-hot)!important;opacity:1!important;
+  -webkit-text-fill-color:#fff!important;font-size:16px!important;line-height:1.5!important
+}
+body.ai-chat-page .composer textarea::placeholder{color:#b8aec8!important;opacity:.9!important}
+body.ai-chat-page .composer:focus-within{
+  border-color:#ffe18a!important;box-shadow:0 0 0 3px rgba(255,217,106,.18),0 12px 34px rgba(0,0,0,.34)!important
+}
+body.ai-chat-page .composer .mic-btn{
+  display:inline-flex!important;visibility:visible!important;opacity:1!important;flex:0 0 50px!important;
+  width:50px!important;height:50px!important;margin:0!important;border:2px solid var(--ma-gold-hot)!important;
+  background:rgba(229,193,88,.12)!important;color:#ffe99d!important
+}
+body.ai-chat-page .composer .mic-btn[aria-disabled="true"]{opacity:.58!important;filter:saturate(.65)!important}
+body.ai-chat-page .composer-send{order:2!important;align-self:stretch!important;min-height:64px!important}
+body.ai-chat-page .composer-hint{order:3!important;flex:0 0 100%!important;margin:0 4px!important;color:#a99fba!important;font-size:11.5px!important;line-height:1.45!important}
+@media(max-width:640px){
+  /* On phones the writing surface must read as a real input, not an empty panel. */
+  body.ai-chat-page .composer{
+    position:relative!important; flex-basis:100%!important; min-height:112px!important;
+    padding:31px 10px 10px!important; align-items:stretch!important;
+    background:linear-gradient(145deg,#15102b,#281744)!important;
+  }
+  body.ai-chat-page .composer-input-label{
+    position:absolute!important; top:10px!important; left:16px!important; z-index:1!important;
+    display:block!important; color:#ffe18a!important; font-size:12px!important;
+    font-weight:800!important; letter-spacing:.02em!important; pointer-events:none!important;
+  }
+  body.ai-chat-page .composer textarea{
+    min-height:66px!important; padding:12px!important; border:1px solid rgba(255,225,138,.55)!important;
+    border-radius:12px!important; background:rgba(5,7,20,.72)!important; color:#fff!important;
+  }
+  body.ai-chat-page .composer textarea::placeholder{color:#d7cee5!important;opacity:1!important}
+  body.ai-chat-page .composer .mic-btn{align-self:flex-end!important}
+  body.ai-chat-page .composer-send{
+    width:100%!important; min-height:48px!important; padding:12px 18px!important;
+    font-size:16px!important; border-radius:14px!important;
+  }
+}
+body.ai-chat-page .composer-send{border-radius:14px!important;background:linear-gradient(180deg,#f7d76f,#d9a827)!important;color:#171018!important;box-shadow:none!important;text-transform:none!important}
+body.ai-chat-page .ai-sidebar{background:rgba(6,12,27,.98)!important;border-right:1px solid rgba(255,255,255,.08)!important}
+body.ai-chat-page .ai-new-chat{background:transparent!important;color:var(--ma-gold-soft)!important;border-color:var(--ma-border)!important;box-shadow:none!important}
+.ma-discover-quota{margin:7px 3px 0;color:#8f84a2;font-size:11px}
+@media(max-width:980px){body.ai-chat-page .wrap{padding-inline:10px!important}}
+@media(max-width:640px){body.ai-chat-page .discover-head{padding:13px!important}.ai-sidebar-toggle{top:70px!important}}
+
+/* ---------- Together ---------- */
+body.page-together .tg-hero,.ma-ia-together .tg-hero{padding-top:18px!important;padding-bottom:10px!important}
+.ma-ia-together .tg-h1{font-size:clamp(30px,5vw,52px)!important;line-height:1.03!important;text-transform:none!important}
+.ma-ia-together .tg-card{border:1px solid var(--ma-border)!important;border-radius:var(--ma-radius)!important;background:linear-gradient(160deg,rgba(13,22,42,.94),rgba(24,17,47,.93))!important;box-shadow:var(--ma-shadow)!important}
+.ma-ia-together #tg-step-start{margin-top:10px!important}
+.ma-ia-together .tg-how{margin-top:14px!important}
+.ma-ia-together .tg-how-step{border-color:rgba(255,255,255,.10)!important;background:rgba(255,255,255,.025)!important}
+.ma-ia-together .tg-btn-gold{background:linear-gradient(180deg,#f7d76f,#d9a827)!important;color:#171018!important;box-shadow:none!important}
+.ma-ia-together .ma-cookie{z-index:2000!important}
+
+/* ---------- Pricing first screen ---------- */
+body.ma-ia-pricing .real-time-clock,body.ma-ia-pricing .stream-flags,body.ma-ia-pricing .chrome-banner,
+body.ma-ia-pricing .how-it-works-glow,body.ma-ia-pricing .ma-pricing-old-head,body.ma-ia-pricing .ma-pricing-old-grid{display:none!important}
+body.ma-ia-pricing .main-layout{padding-top:20px!important}
+.ma-pricing-first{max-width:1050px;margin:0 auto 26px;text-align:start;--ma-gold-soft:#fff0ba}
+.ma-pricing-copy{text-align:center;margin-bottom:18px}
+.ma-pricing-copy h1{margin:0 0 7px;color:#fff;font-size:clamp(31px,5vw,50px);line-height:1.04;letter-spacing:-.025em}
+.ma-pricing-copy p{margin:0 auto;max-width:650px;color:var(--ma-muted);font-size:14px;line-height:1.55}
+.ma-plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ma-plan{display:flex;flex-direction:column;min-height:310px;padding:18px;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:rgba(12,20,39,.87)}
+.ma-plan.is-account{border-color:rgba(124,231,255,.32)}
+.ma-plan.is-vip{border-color:rgba(232,186,64,.55);background:linear-gradient(160deg,rgba(68,51,16,.38),rgba(19,17,39,.94))}
+.ma-plan-kicker{color:#897f9c;font-size:10px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+.ma-plan h2{margin:5px 0 8px;color:#fff;font-size:24px}
+.ma-plan .ma-plan-big{color:var(--ma-gold-soft);font-size:17px;font-weight:850}
+.ma-plan ul{margin:14px 0 18px;padding-left:18px;color:#bdb4ca;font-size:13px;line-height:1.6}
+.ma-plan .ma-plan-cta{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:46px;padding:10px 14px;border-radius:13px;text-decoration:none;font-weight:850}
+.ma-plan .ma-plan-cta.ghost{border:1px solid rgba(255,255,255,.15);color:#eee;background:transparent}
+.ma-plan .gold-btn,.ma-plan button.gold-btn{width:100%!important;margin-top:auto!important;min-height:46px!important;padding:10px 14px!important;border-radius:13px!important;
+  background:linear-gradient(180deg,#f7d76f,#d9a827)!important;color:#171018!important;box-shadow:none!important;font-size:14px!important;text-transform:none!important}
+body.ma-ia-pricing .ma-pricing-first #btn-vip_monthly[hidden],body.ma-ia-pricing .ma-pricing-first #btn-vip_annual[hidden]{display:none!important}
+.ma-billing-toggle{display:flex;gap:4px;margin:4px 0 13px;padding:4px;border-radius:12px;background:rgba(0,0,0,.22)}
+.ma-billing-toggle button{flex:1;min-height:38px;border:0;border-radius:9px;background:transparent;color:#a9a0b7;font-size:12px;cursor:pointer}
+.ma-billing-toggle button[aria-pressed="true"]{background:rgba(232,186,64,.14);color:var(--ma-gold-soft)}
+.ma-pricing-note{margin:13px auto 0;max-width:760px;color:#9f96ad;font-size:11.5px;text-align:center;line-height:1.5}
+.ma-secondary-products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
+.ma-secondary-product{min-height:78px;padding:12px;border:1px solid rgba(255,255,255,.10);border-radius:15px;background:rgba(255,255,255,.025);color:#ded7e8}
+.ma-secondary-product strong{display:block;margin-bottom:3px;font-size:12px;color:#fff}
+.ma-secondary-product small{display:block;color:#897f9a;font-size:10.5px;line-height:1.35}
+.ma-secondary-product button,.ma-secondary-product a{display:inline-flex;margin-top:7px;padding:0;border:0;background:none;color:var(--ma-gold-soft);font-size:11px;font-weight:800;text-decoration:none;cursor:pointer}
+@media(max-width:760px){.ma-plan-grid{grid-template-columns:1fr}.ma-plan{min-height:auto}.ma-secondary-products{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ma-secondary-products{grid-template-columns:1fr}}
+
+/* ---------- cookies / ads ---------- */
+.ma-cookie{position:fixed!important;left:50%!important;right:auto!important;bottom:10px!important;transform:translateX(-50%)!important;
+  z-index:5000!important;display:flex!important;align-items:center!important;gap:8px!important;width:min(760px,calc(100vw - 20px))!important;
+  min-height:52px!important;padding:8px 10px!important;border:1px solid rgba(255,255,255,.13)!important;border-radius:14px!important;
+  background:rgba(6,12,27,.96)!important;box-shadow:0 18px 50px rgba(0,0,0,.45)!important;color:#cfc6db!important}
+.ma-cookie p{flex:1;margin:0!important;font-size:10.5px!important;line-height:1.35!important;text-align:left!important}
+.ma-cookie a{color:var(--ma-gold-soft)!important}
+.ma-cookie button{flex:0 0 auto;min-height:40px!important;padding:7px 10px!important;border-radius:10px!important;font-size:10.5px!important}
+.ma-cookie .ok{background:var(--ma-gold)!important;color:#141019!important;border:1px solid var(--ma-gold)!important}
+.ma-cookie .no{background:transparent!important;color:#ddd!important;border:1px solid rgba(255,255,255,.16)!important}
+@media(max-width:560px){
+  .ma-cookie{bottom:6px!important;gap:5px!important;padding:7px!important}
+  .ma-cookie p{font-size:9.5px!important}
+  .ma-cookie button{min-height:38px!important;padding:6px 8px!important;font-size:9.5px!important}
+}
+
+/* Core-page menu owns Kids/Check-in; no floating mode button in the redesigned shell. */
+body.ma-ia-home>.matchapp-kids-toggle,
+body.ma-ia-discover>.matchapp-kids-toggle,
+body.ma-ia-together>.matchapp-kids-toggle,
+body.ma-ia-pricing>.matchapp-kids-toggle{display:none!important}
+body.page-home.ma-checkin-open #daily-match-checkin{display:block!important;margin:14px 0!important}
+body.ma-guest .ma-global-header .matchapp-notification-button{display:none!important}
+body.ma-guest .ma-menu [data-signed-only="1"]{display:none!important}
+
+
+/* ===== MATCHAPP FUN / MOTION PASS ===== */
+:root{--ma-stage-width:960px;--ma-gold-hot:#ffd96a;--ma-gold-white:#fff4bd}
+html body.page-home .container{
+  width:min(calc(100% - 24px),var(--ma-stage-width))!important;
+  max-width:var(--ma-stage-width)!important;
+}
+html body.page-home :is(.home-hero,.ma-concierge,#loading-box,#result-box,#trending-rail,#premiere-disclosure,#global-events){
+  width:100%!important;max-width:var(--ma-stage-width)!important;margin-left:auto!important;margin-right:auto!important;box-sizing:border-box!important;
+}
+
+@keyframes maGoldTravel{
+  0%{background-position:0 0,0% 50%}
+  50%{background-position:0 0,100% 50%}
+  100%{background-position:0 0,200% 50%}
+}
+@keyframes maGoldPulse{
+  0%,100%{box-shadow:0 14px 40px rgba(0,0,0,.30),0 0 0 rgba(255,217,106,0)}
+  50%{box-shadow:0 18px 48px rgba(0,0,0,.36),0 0 28px rgba(255,217,106,.20)}
+}
+@keyframes maButtonSweep{
+  0%,20%{transform:translateX(-180%) skewX(-20deg);opacity:0}
+  35%{opacity:.9}
+  60%{opacity:.9}
+  78%,100%{transform:translateX(420%) skewX(-20deg);opacity:0}
+}
+@keyframes maChipPulse{
+  0%,100%{box-shadow:0 0 0 rgba(255,217,106,0)}
+  50%{box-shadow:0 0 18px rgba(255,217,106,.28)}
+}
+@keyframes maChevronBounce{
+  0%,100%{translate:0 -1px}
+  50%{translate:0 3px}
+}
+@keyframes maBrandFloat{
+  0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 8px rgba(255,217,106,.18))}
+  50%{transform:translateY(-2px) scale(1.018);filter:drop-shadow(0 0 18px rgba(255,217,106,.34))}
+}
+@keyframes maRiseIn{
+  from{opacity:0;transform:translateY(14px) scale(.988)}
+  to{opacity:1;transform:none}
+}
+
+/* Animated gold border on the real product surfaces. */
+html body.page-home .ma-concierge,
+html body.page-home #result-box,
+html body.page-home #trending-rail,
+html body.page-home #premiere-disclosure>.spotlight-card,
+html body.page-home #global-events details,
+body.ai-chat-page .discover-head,
+body.ma-ia-together .premium-card,
+body.ma-ia-pricing .ma-plan,
+body.ma-ia-pricing .ma-secondary-product{
+  border:1.5px solid transparent!important;
+  border-radius:24px!important;
+  background:
+    linear-gradient(155deg,rgba(10,23,45,.96),rgba(27,16,48,.96)) padding-box,
+    linear-gradient(115deg,rgba(120,82,19,.55),var(--ma-gold-hot),var(--ma-gold-white),#c99325,var(--ma-gold-hot),rgba(120,82,19,.55)) border-box!important;
+  background-size:100% 100%,260% 100%!important;
+  animation:maGoldTravel 5.4s linear 2,maGoldPulse 4.2s ease-in-out 2!important;
+}
+html body.page-home .ma-concierge,
+body.ai-chat-page .discover-head{animation-name:maGoldTravel,maGoldPulse,maRiseIn!important;animation-duration:5.4s,4.2s,.52s!important;animation-timing-function:linear,ease-in-out,cubic-bezier(.2,.8,.2,1)!important;animation-iteration-count:2,2,1!important}
+
+/* Fields use the same radius and shimmer language. */
+.ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button),
+body.ai-chat-page :is(.composer,.composer-send),
+body.ma-ia-together :is(.tg-field select,.tg-field input,.tg-field textarea,.gold-btn,.secondary-btn),
+body.ma-ia-pricing :is(.ma-plan-cta,.ma-billing-toggle button){
+  border:1px solid transparent!important;
+  border-radius:14px!important;
+  background:
+    linear-gradient(145deg,rgba(5,12,25,.92),rgba(20,12,36,.94)) padding-box,
+    linear-gradient(110deg,rgba(229,193,88,.24),rgba(255,237,159,.88),rgba(176,120,31,.28),rgba(255,217,106,.72)) border-box!important;
+  background-size:100% 100%,240% 100%!important;
+  animation:maGoldTravel 6.6s linear 2!important;
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease!important;
+}
+.ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button):hover,
+body.ai-chat-page :is(.composer,.composer-send):hover,
+body.ma-ia-together :is(.tg-field select,.tg-field input,.tg-field textarea,.gold-btn,.secondary-btn):hover,
+body.ma-ia-pricing :is(.ma-plan-cta,.ma-billing-toggle button):hover{
+  transform:translateY(-2px) scale(1.006)!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.28),0 0 22px rgba(255,217,106,.20)!important;
+}
+
+/* Chips are playful and visibly interactive. */
+.ma-chip,.crit-chip{
+  transition:transform .16s cubic-bezier(.2,.9,.25,1.25),box-shadow .18s ease,filter .18s ease!important;
+}
+.ma-chip:hover,.crit-chip:hover{transform:translateY(-2px) scale(1.035)!important;filter:brightness(1.12)!important}
+.ma-chip[aria-pressed="true"],.crit-chip.is-on{
+  animation:maChipPulse 2.1s ease-in-out 2!important;
+}
+.ma-chip:active,.crit-chip:active{transform:scale(.94)!important}
+
+/* Primary CTA gets an obvious cinema-light sweep. */
+.ma-primary,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"],
+.ma-concierge #search-box .gold-btn,
+body.ai-chat-page .composer-send,
+body.ma-ia-together .gold-btn,
+body.ma-ia-pricing .ma-plan-cta{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  box-shadow:0 12px 30px rgba(229,185,71,.22),0 0 20px rgba(255,217,106,.13)!important;
+  transition:transform .16s cubic-bezier(.2,.9,.25,1.25),box-shadow .18s ease!important;
+}
+.ma-primary::after,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"]::after,
+.ma-concierge #search-box .gold-btn::after,
+body.ai-chat-page .composer-send::after,
+body.ma-ia-together .gold-btn::after,
+body.ma-ia-pricing .ma-plan-cta::after{
+  content:""!important;display:block!important;position:absolute!important;top:-30%!important;bottom:-30%!important;left:-35%!important;width:24%!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent)!important;
+  pointer-events:none!important;animation:maButtonSweep 2.5s ease-in-out 3!important;
+}
+.ma-primary:hover,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"]:hover,
+.ma-concierge #search-box .gold-btn:hover,
+body.ai-chat-page .composer-send:hover,
+body.ma-ia-together .gold-btn:hover,
+body.ma-ia-pricing .ma-plan-cta:hover{
+  transform:translateY(-3px) scale(1.015)!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.32),0 0 30px rgba(255,217,106,.30)!important;
+}
+.ma-primary:active,
+.ma-concierge #questionnaire-box>button[data-i18n="q.submit"]:active,
+.ma-concierge #search-box .gold-btn:active,
+body.ai-chat-page .composer-send:active,
+body.ma-ia-together .gold-btn:active,
+body.ma-ia-pricing .ma-plan-cta:active{transform:scale(.975)!important}
+
+/* One elegant fold indicator: no minus/plus glyphs on fields. */
+.ma-concierge .match-more-filters>summary{position:relative!important;list-style:none!important;padding-right:38px!important}
+.ma-concierge .match-more-filters>summary::-webkit-details-marker{display:none!important}
+.ma-concierge .match-more-filters>summary::marker{content:""}
+.ma-concierge .match-more-filters>summary::after{
+  content:""!important;position:absolute!important;right:14px!important;top:50%!important;width:10px!important;height:10px!important;
+  border-right:2px solid var(--ma-gold-hot)!important;border-bottom:2px solid var(--ma-gold-hot)!important;
+  transform:translateY(-70%) rotate(45deg)!important;filter:drop-shadow(0 0 5px rgba(255,217,106,.65))!important;
+  animation:maChevronBounce 1.5s ease-in-out infinite!important;
+}
+.ma-concierge .match-more-filters[open]>summary::after{transform:translateY(-25%) rotate(225deg)!important}
+.crit-toggle-chevron{font-size:0!important;width:20px!important;height:20px!important;margin-left:auto!important;position:relative!important;flex:0 0 20px!important}
+.crit-toggle-chevron::before{
+  content:""!important;position:absolute!important;left:5px!important;top:3px!important;width:9px!important;height:9px!important;
+  border-right:2px solid var(--ma-gold-hot)!important;border-bottom:2px solid var(--ma-gold-hot)!important;
+  transform:rotate(45deg)!important;filter:drop-shadow(0 0 5px rgba(255,217,106,.60))!important;
+  animation:maChevronBounce 1.5s ease-in-out infinite!important;
+}
+.crit-open .crit-toggle-chevron::before{transform:rotate(225deg)!important;top:8px!important}
+.crit-more{position:relative!important;padding-right:34px!important}
+.crit-more::after{
+  content:""!important;position:absolute!important;right:14px!important;top:50%!important;width:8px!important;height:8px!important;
+  border-right:2px solid currentColor!important;border-bottom:2px solid currentColor!important;transform:translateY(-70%) rotate(45deg)!important;
+}
+.crit-chips[data-expanded="1"] .crit-more::after{transform:translateY(-25%) rotate(225deg)!important}
+
+/* Brand and content entrances carry more life without scroll traps. */
+.ma-global-header .ma-brand-image{animation:maBrandFloat 3.4s ease-in-out infinite!important}
+html body.page-home .home-hero{animation:maRiseIn .48s cubic-bezier(.2,.8,.2,1) both!important}
+html body.page-home :is(#trending-rail,#premiere-disclosure,#global-events){animation:maRiseIn .62s cubic-bezier(.2,.8,.2,1) both!important}
+
+@media(min-width:1000px){
+  html body.page-home .container{max-width:var(--ma-stage-width)!important}
+  html body.page-home .ma-concierge{padding:20px 22px!important}
+  html body.page-home .home-h1{font-size:clamp(38px,3.6vw,52px)!important}
+  .ma-chip{min-height:44px!important;padding:9px 14px!important;font-size:13px!important}
+  .ma-concierge .crit-toggle{min-height:48px!important;padding:11px 14px!important}
+  .ma-concierge #questionnaire-box>button[data-i18n="q.submit"],
+  .ma-concierge #search-box .gold-btn{min-height:56px!important;font-size:16px!important}
+}
+@media(max-width:640px){
+  html body.page-home .container{width:calc(100% - 12px)!important}
+  html body.page-home :is(.home-hero,.ma-concierge,#loading-box,#result-box,#trending-rail,#premiere-disclosure,#global-events){max-width:100%!important}
+  .ma-global-header .ma-brand-image{animation-duration:4.2s!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .ma-concierge,
+  html body.page-home #result-box,
+  html body.page-home #trending-rail,
+  html body.page-home #premiere-disclosure>.spotlight-card,
+  html body.page-home #global-events details,
+  body.ai-chat-page .discover-head,
+  body.ma-ia-together .premium-card,
+  body.ma-ia-pricing .ma-plan,
+  body.ma-ia-pricing .ma-secondary-product,
+  .ma-concierge :is(.crit-toggle,#specific-search-input,.mic-btn,.search-examples button),
+  .ma-chip[aria-pressed="true"],.crit-chip.is-on,
+  .ma-global-header .ma-brand-image,
+  .ma-primary::after,
+  .ma-concierge #questionnaire-box>button[data-i18n="q.submit"]::after,
+  .ma-concierge #search-box .gold-btn::after{animation:none!important}
+}
+
+
+/* ===== OVERSIZED BRAND HEADER / CLICKABLE AI ===== */
+header.app-header.ma-global-header,
+html body.page-home #mh-topbox.app-header.ma-global-header{
+  min-height:72px!important;
+  padding-top:5px!important;padding-bottom:5px!important;
+  overflow:visible!important;
+}
+.ma-global-header .ma-brand-stage{
+  position:relative!important;display:flex!important;align-items:center!important;
+  min-width:0!important;overflow:visible!important;z-index:4!important;
+}
+.ma-global-header .ma-brand-lockup{
+  position:relative!important;display:flex!important;align-items:center!important;gap:8px!important;
+  height:68px!important;overflow:visible!important;text-decoration:none!important;
+}
+.ma-global-header .ma-brand-home-link{
+  display:flex!important;align-items:center!important;gap:9px!important;
+  height:68px!important;text-decoration:none!important;color:inherit!important;overflow:visible!important;
+}
+.ma-global-header .ma-brand-orb{
+  width:104px!important;height:104px!important;max-width:none!important;object-fit:contain!important;flex:0 0 104px!important;
+  margin-left:-12px!important;transform:translateY(3px)!important;
+  filter:drop-shadow(0 10px 16px rgba(0,0,0,.42)) drop-shadow(0 0 16px rgba(255,217,106,.42))!important;
+  animation:maBrandOrbPop 3.2s ease-in-out infinite!important;
+}
+.ma-global-header .ma-brand-copy{
+  display:flex!important;align-items:baseline!important;gap:10px!important;white-space:nowrap!important;
+  transform:translateY(-1px)!important;
+}
+.ma-global-header .ma-wordmark{
+  display:inline-flex!important;align-items:baseline!important;
+  font-family:Outfit,Inter,system-ui,sans-serif!important;font-weight:950!important;
+  font-size:clamp(34px,3vw,50px)!important;line-height:.9!important;letter-spacing:-.055em!important;
+  text-shadow:0 4px 16px rgba(0,0,0,.42)!important;
+}
+.ma-global-header .ma-word-match{
+  color:#f5f7fb!important;
+  background:linear-gradient(180deg,#fff 8%,#dce1ea 50%,#9ba8bc 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+.ma-global-header .ma-word-app{
+  background:linear-gradient(180deg,#fff0ba 0%,#f2c951 45%,#9e6c17 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+}
+.ma-global-header .ma-tv{
+  font-family:Outfit,Inter,system-ui,sans-serif!important;font-size:clamp(22px,2vw,32px)!important;font-weight:900!important;
+  color:var(--ma-gold-hot)!important;text-shadow:0 0 14px rgba(255,217,106,.32)!important;letter-spacing:-.04em!important;
+}
+.ma-ai-brand-button{
+  position:relative!important;display:grid!important;place-items:center!important;min-width:76px!important;height:64px!important;
+  margin-left:2px!important;padding:0 12px!important;border:0!important;background:transparent!important;overflow:visible!important;
+  cursor:pointer!important;isolation:isolate!important;
+}
+.ma-ai-letters{
+  position:relative!important;z-index:2!important;
+  font-family:"Arial Rounded MT Bold",Outfit,Inter,sans-serif!important;font-weight:1000!important;
+  font-size:clamp(39px,3.5vw,58px)!important;line-height:1!important;letter-spacing:-.10em!important;padding-right:.10em!important;
+  background:linear-gradient(105deg,#5ee7ff 0%,#67a8ff 25%,#cf66ff 50%,#fff0ba 70%,#55e8ff 100%)!important;
+  background-size:240% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;
+  filter:drop-shadow(0 0 7px rgba(74,221,255,.66)) drop-shadow(0 0 13px rgba(190,81,255,.40))!important;
+  animation:maAiChromatic 2.3s linear infinite,maAiFloat 2.4s ease-in-out infinite!important;
+}
+.ma-ai-brand-button::before{
+  content:""!important;position:absolute!important;inset:6px 1px!important;border-radius:18px!important;
+  background:radial-gradient(circle at 50% 48%,rgba(64,208,255,.14),rgba(181,77,255,.08) 44%,transparent 72%)!important;
+  opacity:.85!important;filter:blur(2px)!important;animation:maAiAura 2.1s ease-in-out infinite!important;
+}
+.ma-ai-brand-button::after{
+  content:""!important;position:absolute!important;top:8%!important;left:-4%!important;width:35%!important;height:88%!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.88),transparent)!important;
+  filter:blur(2px)!important;transform:skewX(-18deg)!important;animation:maAiShine 2.35s ease-in-out infinite!important;pointer-events:none!important;
+}
+.ma-ai-star{
+  position:absolute!important;z-index:3!important;color:#fff4b8!important;
+  text-shadow:0 0 7px #fff,0 0 12px #55e8ff,0 0 18px #b74dff!important;pointer-events:none!important;
+  animation:maAiStarDance 1.9s ease-in-out infinite!important;
+}
+.ma-ai-star-one{font-size:13px!important;left:10px!important;top:6px!important;animation-delay:0s!important}
+.ma-ai-star-two{font-size:10px!important;right:7px!important;top:17px!important;animation-delay:.55s!important}
+.ma-ai-star-three{font-size:8px!important;right:18px!important;bottom:5px!important;animation-delay:1.05s!important}
+.ma-ai-brand-button:hover .ma-ai-letters{filter:drop-shadow(0 0 10px rgba(74,221,255,.9)) drop-shadow(0 0 22px rgba(190,81,255,.65))!important}
+.ma-ai-brand-button:hover{transform:scale(1.08)!important}
+.ma-ai-brand-button:active{transform:scale(.96)!important}
+
+.ma-menu-button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
+  width:auto!important;min-width:112px!important;padding:0 12px!important;font-size:12px!important;font-weight:850!important;
+  color:#f7e7ad!important;border-color:rgba(232,186,64,.28)!important;
+}
+.ma-menu-button svg{width:20px!important;height:20px!important;filter:drop-shadow(0 0 5px rgba(255,217,106,.32))!important}
+.ma-menu-button:hover svg{animation:maGearTurn .72s ease!important}
+
+.ma-ai-prompt-hint{
+  position:absolute!important;z-index:80!important;left:50%!important;top:84px!important;transform:translate(-50%,-8px) scale(.96)!important;
+  width:min(520px,calc(100% - 28px))!important;padding:11px 14px!important;border:1px solid rgba(255,217,106,.70)!important;
+  border-radius:14px!important;background:rgba(5,12,27,.97)!important;color:#fff2bf!important;text-align:center!important;
+  box-shadow:0 16px 44px rgba(0,0,0,.46),0 0 24px rgba(255,217,106,.18)!important;
+  opacity:0!important;transition:opacity .22s ease,transform .22s ease!important;pointer-events:none!important;
+}
+.ma-ai-prompt-hint.is-showing{opacity:1!important;transform:translate(-50%,0) scale(1)!important}
+.ma-ai-focus-pulse{animation:maAskFocusPulse 1.05s ease-in-out 2!important}
+
+@keyframes maBrandOrbPop{
+  0%,100%{transform:translateY(3px) scale(1);filter:drop-shadow(0 10px 16px rgba(0,0,0,.42)) drop-shadow(0 0 12px rgba(255,217,106,.32))}
+  50%{transform:translateY(-1px) scale(1.055);filter:drop-shadow(0 12px 20px rgba(0,0,0,.48)) drop-shadow(0 0 25px rgba(255,217,106,.56))}
+}
+@keyframes maAiChromatic{to{background-position:240% 0}}
+@keyframes maAiFloat{0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-3px) scale(1.04)}}
+@keyframes maAiAura{0%,100%{opacity:.45;transform:scale(.88)}50%{opacity:1;transform:scale(1.10)}}
+@keyframes maAiShine{0%,15%{left:-35%;opacity:0}25%{opacity:1}65%{opacity:1}80%,100%{left:115%;opacity:0}}
+@keyframes maAiStarDance{0%,100%{transform:scale(.65) rotate(0);opacity:.35}45%{transform:scale(1.35) rotate(125deg);opacity:1}}
+@keyframes maGearTurn{to{transform:rotate(120deg)}}
+@keyframes maAskFocusPulse{0%,100%{box-shadow:0 0 0 rgba(91,226,255,0)!important}50%{box-shadow:0 0 0 3px rgba(255,217,106,.35),0 0 28px rgba(91,226,255,.34)!important}}
+
+@media(max-width:820px){
+  .ma-global-header .ma-brand-orb{width:76px!important;height:76px!important;flex-basis:76px!important;margin-left:-6px!important}
+  .ma-global-header .ma-wordmark{font-size:clamp(27px,6vw,36px)!important}
+  .ma-global-header .ma-tv{font-size:21px!important}
+  .ma-ai-brand-button{min-width:58px!important;height:54px!important;padding:0 7px!important}
+  .ma-ai-letters{font-size:38px!important}
+  .ma-menu-button{min-width:46px!important;width:46px!important;padding:0!important}
+  .ma-menu-button span{display:none!important}
+}
+@media(max-width:560px){
+  header.app-header.ma-global-header,html body.page-home #mh-topbox.app-header.ma-global-header{min-height:62px!important;padding-left:7px!important;padding-right:7px!important}
+  .ma-global-header .ma-brand-lockup,.ma-global-header .ma-brand-home-link{height:58px!important;gap:4px!important}
+  .ma-global-header .ma-brand-orb{width:66px!important;height:66px!important;flex-basis:66px!important;margin-left:-8px!important}
+  .ma-global-header .ma-brand-copy{gap:5px!important}
+  .ma-global-header .ma-wordmark{font-size:clamp(22px,6.9vw,29px)!important}
+  .ma-global-header .ma-tv{font-size:17px!important}
+  .ma-ai-brand-button{min-width:46px!important;width:46px!important;height:50px!important;padding:0 2px!important;margin-left:-2px!important}
+  .ma-ai-letters{font-size:31px!important}
+  .ma-ai-star-one{left:0!important;top:4px!important}.ma-ai-star-two{right:-1px!important}.ma-ai-star-three{right:5px!important}
+  .ma-global-header nav,.ma-global-header nav.mh-deck{gap:4px!important}
+  .ma-global-header .ma-country-link{display:none!important}
+}
+@media(max-width:420px){
+  .ma-global-header .ma-brand-orb{width:60px!important;height:60px!important;flex-basis:60px!important}
+  .ma-global-header .ma-wordmark{font-size:22px!important}
+  .ma-global-header .ma-tv{font-size:15px!important}
+  .ma-ai-brand-button{min-width:41px!important;width:41px!important}
+  .ma-ai-letters{font-size:28px!important}
+  .ma-global-header #lang-switcher-host{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .ma-global-header .ma-brand-orb,.ma-ai-letters,.ma-ai-brand-button::before,.ma-ai-brand-button::after,.ma-ai-star,.ma-ai-focus-pulse{animation:none!important}
+}
+
+
+/* ===== CONCIERGE STABILITY FIX =====
+   Keep the premium border travel, but never pulse/flicker the Match me / Ask card. */
+html body.page-home .ma-concierge{
+  animation:maGoldTravel 5.4s linear 2!important;
+  box-shadow:0 22px 60px rgba(0,0,0,.32),0 0 18px rgba(255,217,106,.10)!important;
+}
+html body.page-home .ma-tabs,
+html body.page-home .ma-tab{
+  animation:none!important;
+}
+
+
+/* ===== UNIFIED FOLD BARS + CENTERING =====
+   One fold language everywhere on Home: rounded bar, one plus on the right.
+   Open state rotates the same plus into an x — never a minus or chevron. */
+html body.page-home{
+  --ma-stage-width:980px;
+}
+html body.page-home .main-layout>.container,
+html body.page-home section.container{
+  width:min(calc(100% - 28px),var(--ma-stage-width))!important;
+  max-width:var(--ma-stage-width)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:0!important;padding-right:0!important;
+  box-sizing:border-box!important;
+}
+html body.page-home :is(
+  .home-hero,.ma-concierge,#loading-box,#result-box,#trending-rail,
+  #latest-news,#premiere-disclosure,#global-events,#how-it-works,
+  #ai-concierge-section,.tg-entry,.marquee-wrapper,.ad-banner-container,
+  #daily-match-checkin
+){
+  width:100%!important;
+  max-width:var(--ma-stage-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+html body.page-home #global-events,
+html body.page-home #global-events>.global-events-fold,
+html body.page-home #global-events .global-events-body,
+html body.page-home #premiere-disclosure,
+html body.page-home #latest-news{
+  padding-left:0!important;padding-right:0!important;
+}
+html body.page-home #global-events>.global-events-fold,
+html body.page-home #premiere-disclosure,
+html body.page-home #latest-news{
+  width:100%!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;
+}
+
+/* Shared fold header appearance. */
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+){
+  position:relative!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  gap:12px!important;width:100%!important;max-width:100%!important;min-height:72px!important;
+  margin:0!important;padding:15px 76px 15px 22px!important;box-sizing:border-box!important;
+  border:1px solid rgba(232,186,64,.38)!important;border-radius:24px!important;
+  background:
+    linear-gradient(145deg,rgba(24,15,45,.88),rgba(11,10,28,.92)) padding-box,
+    linear-gradient(110deg,rgba(232,186,64,.22),rgba(255,238,164,.68),rgba(116,77,171,.38),rgba(232,186,64,.22)) border-box!important;
+  background-size:100% 100%,220% 100%!important;
+  color:#eee6fa!important;list-style:none!important;cursor:pointer!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.22)!important;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease!important;
+  animation:maGoldTravel 7s linear 2!important;
+}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .seo-fold-summary
+)::-webkit-details-marker{display:none!important}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .seo-fold-summary
+)::marker{content:""!important}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+):hover{
+  transform:translateY(-2px)!important;
+  border-color:rgba(255,224,125,.72)!important;
+  box-shadow:0 14px 32px rgba(0,0,0,.28),0 0 20px rgba(255,217,106,.12)!important;
+}
+
+/* The one and only fold affordance. */
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+)::after{
+  content:"+"!important;
+  position:absolute!important;right:19px!important;top:50%!important;
+  display:grid!important;place-items:center!important;
+  width:42px!important;height:42px!important;margin:0!important;
+  border:1px solid rgba(255,220,111,.34)!important;border-radius:50%!important;
+  background:rgba(255,255,255,.025)!important;color:#fff0b0!important;
+  font:500 34px/1 Inter,Arial,sans-serif!important;
+  text-shadow:0 0 10px rgba(255,217,106,.45)!important;
+  transform:translateY(-50%) rotate(0deg)!important;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),background .18s ease,box-shadow .18s ease!important;
+  animation:none!important;
+}
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  .global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+):hover::after{
+  background:rgba(232,186,64,.11)!important;
+  box-shadow:0 0 18px rgba(255,217,106,.18)!important;
+}
+html body.page-home :is(
+  #latest-news[open]>summary,
+  #premiere-disclosure[open]>summary,
+  .global-events-fold[open]>.global-events-summary,
+  .match-more-filters[open]>summary,
+  .seo-fold[open]>.seo-fold-summary
+)::after,
+html body.page-home .crit-toggle[aria-expanded="true"]::after,
+html body.page-home .lazy-head[aria-expanded="true"]::after{
+  transform:translateY(-50%) rotate(45deg)!important;
+}
+
+/* Kill every legacy fold glyph so the UI never shows + and arrow/minus together. */
+html body.page-home :is(.ge-sum-chev,.crit-toggle-chevron,.lazy-head-chevron){display:none!important}
+
+/* Keep the translated More/Fewer Filters labels; only the right-side + is visual. */
+html body.page-home .match-more-filters .more-filters-open,
+html body.page-home .match-more-filters .more-filters-close{
+  color:#e8dfef!important;font-weight:850!important;font-size:13px!important;
+}
+
+/* Global Events must be one bar, not a bar inside a second framed box. */
+html body.page-home #global-events{
+  border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;
+}
+html body.page-home #global-events>.global-events-fold{
+  border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;
+}
+html body.page-home .global-events-summary{
+  border-radius:24px!important;
+}
+html body.page-home .global-events-body{
+  margin-top:10px!important;padding:14px!important;
+  border:1px solid rgba(232,186,64,.18)!important;border-radius:22px!important;
+  background:rgba(10,14,32,.78)!important;
+}
+
+/* Premiere summary is part of the same system and must remain visible. */
+html body.page-home #premiere-disclosure>summary{display:flex!important}
+html body.page-home #premiere-disclosure>.spotlight-card{
+  margin-top:10px!important;border-radius:22px!important;
+}
+
+/* Latest News already has the right behavior; make its measure identical. */
+html body.page-home #latest-news>summary{border-radius:24px!important}
+html body.page-home #latest-news .ma-news-panel{margin-top:10px!important;border-radius:22px!important}
+
+/* Every advanced matching field is one centered full-width fold bar. */
+html body.page-home .ma-concierge .match-more-filters .q-grid--advanced{
+  grid-template-columns:1fr!important;
+  width:100%!important;max-width:100%!important;gap:10px!important;
+}
+html body.page-home .ma-concierge .crit-collapsible,
+html body.page-home .ma-concierge .crit-toggle,
+html body.page-home .ma-concierge .crit-chips{
+  width:100%!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .crit-toggle{
+  min-height:62px!important;padding-top:11px!important;padding-bottom:11px!important;
+}
+html body.page-home .ma-concierge .crit-toggle-summary{
+  margin-left:auto!important;margin-right:10px!important;text-align:right!important;
+}
+
+/* No nested extra frame around opened sections. */
+html body.page-home :is(#latest-news,#premiere-disclosure,#global-events) {
+  border-radius:24px!important;
+}
+
+@media(max-width:640px){
+  html body.page-home{--ma-stage-width:100%}
+  html body.page-home .main-layout>.container,
+  html body.page-home section.container{width:calc(100% - 12px)!important}
+  html body.page-home :is(
+    #latest-news>summary,#premiere-disclosure>summary,.global-events-summary,
+    .match-more-filters>summary,.crit-toggle,.lazy-head,.seo-fold-summary
+  ){
+    min-height:60px!important;padding:11px 60px 11px 15px!important;border-radius:19px!important;
+  }
+  html body.page-home :is(
+    #latest-news>summary,#premiere-disclosure>summary,.global-events-summary,
+    .match-more-filters>summary,.crit-toggle,.lazy-head,.seo-fold-summary
+  )::after{
+    right:12px!important;width:36px!important;height:36px!important;font-size:29px!important;
+  }
+  html body.page-home .ma-news-summary-main{gap:5px!important}
+  html body.page-home .ma-news-description{font-size:10px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home :is(
+    #latest-news>summary,#premiere-disclosure>summary,.global-events-summary,
+    .match-more-filters>summary,.crit-toggle,.lazy-head,.seo-fold-summary
+  ){animation:none!important}
+}
+
+
+/* ===== GIANT BRAND ORB + SAFE DESKTOP / ADS RAILS ===== */
+html,body{max-width:100%!important}
+body.page-home{overflow-x:clip!important}
+.ma-global-header{
+  box-sizing:border-box!important;
+  max-width:100vw!important;
+  overflow:visible!important;
+}
+.ma-global-header .ma-brand-stage,
+.ma-global-header .ma-brand-lockup,
+.ma-global-header .ma-brand-home-link{overflow:visible!important;min-width:0!important}
+.ma-brand-orb-stage{
+  position:relative!important;display:block!important;flex:0 0 auto!important;
+  pointer-events:none!important;overflow:visible!important;isolation:isolate!important;
+}
+.ma-brand-orb-stage .ma-brand-orb{pointer-events:none!important}
+.ma-orbit,.ma-orb-star{position:absolute!important;pointer-events:none!important}
+.ma-orbit{
+  border-radius:50%!important;border:1px solid rgba(255,218,99,.62)!important;
+  box-shadow:0 0 14px rgba(255,218,99,.34),inset 0 0 12px rgba(84,213,255,.10)!important;
+}
+.ma-orbit-a{left:18px!important;top:18px!important;width:224px!important;height:224px!important;animation:maOrbOrbitA 5.8s linear infinite!important}
+.ma-orbit-b{left:42px!important;top:42px!important;width:176px!important;height:176px!important;border-color:rgba(91,220,255,.48)!important;animation:maOrbOrbitB 4.1s linear infinite reverse!important}
+.ma-orb-star{
+  z-index:4!important;color:#fff5b7!important;
+  text-shadow:0 0 8px #fff,0 0 14px #ffd95f,0 0 22px #56ddff!important;
+  animation:maOrbSpark 1.8s ease-in-out infinite!important;
+}
+.ma-orb-star-a{left:24px!important;top:47px!important;font-size:20px!important}
+.ma-orb-star-b{left:218px!important;top:96px!important;font-size:14px!important;animation-delay:.55s!important}
+.ma-orb-star-c{left:105px!important;top:226px!important;font-size:12px!important;animation-delay:1.05s!important}
+@keyframes maOrbOrbitA{to{transform:rotate(360deg)}}
+@keyframes maOrbOrbitB{to{transform:rotate(360deg) scale(1.04)}}
+@keyframes maOrbSpark{0%,100%{opacity:.24;transform:scale(.55) rotate(0)}45%{opacity:1;transform:scale(1.35) rotate(155deg)}}
+
+/* Large desktop brand: the icon has roughly a 3x visual footprint while its
+   horizontal space is reserved, so it can POP without being clipped off-screen. */
+@media(min-width:1000px){
+  header.app-header.ma-global-header,
+  html body.page-home #mh-topbox.app-header.ma-global-header{
+    min-height:94px!important;
+    padding:7px clamp(14px,1.5vw,26px)!important;
+  }
+  .ma-global-header .ma-brand-lockup,
+  .ma-global-header .ma-brand-home-link{height:88px!important}
+  .ma-global-header .ma-brand-orb-stage{
+    width:260px!important;height:88px!important;flex-basis:260px!important;
+  }
+  .ma-global-header .ma-brand-orb{
+    position:absolute!important;left:0!important;top:-2px!important;
+    width:260px!important;height:260px!important;max-width:none!important;
+    margin:0!important;transform:none!important;
+    filter:drop-shadow(0 14px 20px rgba(0,0,0,.50)) drop-shadow(0 0 26px rgba(255,217,106,.48))!important;
+    animation:maBrandOrbPop 3.2s ease-in-out infinite!important;
+  }
+  .ma-global-header .ma-brand-copy{margin-left:8px!important}
+  .ma-global-header .ma-wordmark{font-size:clamp(42px,3.4vw,58px)!important}
+  .ma-global-header .ma-tv{font-size:clamp(25px,2vw,34px)!important}
+  .ma-ai-brand-button{min-width:82px!important;height:70px!important}
+  .ma-ai-letters{font-size:clamp(48px,3.8vw,64px)!important}
+}
+/* Keep header controls inside the viewport on laptop-sized desktops. */
+@media(min-width:1000px) and (max-width:1320px){
+  .ma-global-header .ma-brand-orb-stage{width:220px!important;flex-basis:220px!important}
+  .ma-global-header .ma-brand-orb{width:246px!important;height:246px!important}
+  .ma-global-header .ma-wordmark{font-size:40px!important}
+  .ma-global-header .ma-tv{font-size:23px!important}
+  .ma-global-header .ma-country-link{display:none!important}
+  .ma-global-header #lang-switcher-host select{max-width:78px!important}
+  .ma-menu-button{min-width:46px!important;width:46px!important;padding:0!important}
+  .ma-menu-button span{display:none!important}
+}
+
+/* Tablet/phone stays intentionally smaller so the giant desktop emblem does
+   not push controls off-screen. */
+@media(max-width:999px){
+  .ma-brand-orb-stage{width:76px!important;height:58px!important;flex-basis:76px!important}
+  .ma-global-header .ma-brand-orb{
+    position:absolute!important;left:0!important;top:-7px!important;
+    width:82px!important;height:82px!important;max-width:none!important;margin:0!important;
+  }
+  .ma-orbit{display:none!important}
+  .ma-orb-star{font-size:8px!important}
+}
+@media(max-width:560px){
+  .ma-brand-orb-stage{width:58px!important;height:52px!important;flex-basis:58px!important}
+  .ma-global-header .ma-brand-orb{width:64px!important;height:64px!important;top:-4px!important}
+}
+
+/* Desktop: real AdSense rails on BOTH sides. Grid always fits inside the
+   viewport; the center column flexes before anything can be clipped. */
+@media(min-width:1180px) and (hover:hover) and (pointer:fine){
+  html body.page-home main.page-wrapper>.main-layout{
+    --ma-ad-rail:clamp(144px,11vw,160px);
+    --ma-ad-gap:clamp(12px,1.4vw,22px);
+    display:grid!important;
+    grid-template-columns:var(--ma-ad-rail) minmax(0,var(--ma-stage-width)) var(--ma-ad-rail)!important;
+    justify-content:center!important;align-items:start!important;
+    width:100%!important;max-width:1480px!important;
+    margin:0 auto!important;padding:14px clamp(10px,1.3vw,22px) 0!important;
+    gap:var(--ma-ad-gap)!important;box-sizing:border-box!important;
+  }
+  html body.page-home main.page-wrapper>.main-layout>.container{
+    grid-column:2!important;width:100%!important;max-width:var(--ma-stage-width)!important;
+    min-width:0!important;margin:0 auto!important;padding-inline:0!important;
+  }
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:block!important;position:sticky!important;top:118px!important;
+    width:100%!important;min-width:0!important;max-width:160px!important;
+    min-height:600px!important;margin:0!important;padding:8px!important;
+    box-sizing:border-box!important;overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.18)!important;border-radius:18px!important;
+    background:rgba(8,13,29,.70)!important;
+  }
+  html body.page-home .sidebar-ad-left{grid-column:1!important;justify-self:end!important}
+  html body.page-home .sidebar-ad-right{grid-column:3!important;justify-self:start!important}
+  html body.page-home .sidebar-ad-left ins.adsbygoogle,
+  html body.page-home .sidebar-ad-right ins.adsbygoogle{
+    display:block!important;width:100%!important;max-width:100%!important;min-height:600px!important;
+  }
+  html body.page-home .ad-banner-container{display:none!important}
+}
+
+/* Tablet: use the same safe in-flow responsive inventory as phones.
+   Side rails stay off so they never squeeze the product, but inline AdSense
+   canvases remain available and reserve space for inventory. */
+@media(min-width:768px) and (max-width:1179px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{display:none!important}
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:block!important;position:relative!important;
+    width:100%!important;max-width:100%!important;min-height:104px!important;
+    margin:18px auto!important;padding:8px!important;box-sizing:border-box!important;
+    overflow:hidden!important;border:1px solid rgba(232,186,64,.12)!important;
+    border-radius:16px!important;background:rgba(8,13,29,.48)!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;width:100%!important;max-width:100%!important;min-height:88px!important;
+  }
+  html body.page-home main.page-wrapper>.main-layout{
+    display:block!important;width:100%!important;max-width:100%!important;
+    margin:0 auto!important;padding-inline:12px!important;box-sizing:border-box!important;
+  }
+}
+
+/* Smartphone: ads are inline only, distributed through the natural scroll.
+   They reserve a safe responsive slot and never overlay matcher/result/auth. */
+@media(max-width:767px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{display:none!important}
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:block!important;position:relative!important;
+    width:100%!important;max-width:100%!important;min-height:112px!important;
+    margin:18px auto!important;padding:8px!important;box-sizing:border-box!important;
+    overflow:hidden!important;border:1px solid rgba(232,186,64,.14)!important;
+    border-radius:18px!important;background:rgba(8,13,29,.66)!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;width:100%!important;min-height:96px!important;max-width:100%!important;
+  }
+}
+
+/* If AdSense has conclusively returned no inventory, keep the existing
+   collapse behavior instead of displaying dead empty slabs. */
+html.ads-empty body.page-home .sidebar-ad-left,
+html.ads-empty body.page-home .sidebar-ad-right,
+html.ads-empty body.page-home .ad-banner-container{display:none!important}
+
+@media(prefers-reduced-motion:reduce){
+  .ma-orbit,.ma-orb-star,.ma-global-header .ma-brand-orb{animation:none!important}
+}
+
+
+/* ===== STATIC TITLES + NEWS / FOLD BAR V2 =====
+   Latest Titles and Latest News are permanently open.
+   Premiere, Weekly Pick and Global Events share one exact fold-bar geometry. */
+
+/* Never let Lazy Mode fold the two always-visible discovery rails. */
+html body.page-home.lazy-mode #trending-rail,
+html body.page-home.lazy-mode #latest-news{
+  display:block!important;
+}
+html body.page-home .lazy-head:has(+ #trending-rail),
+html body.page-home .lazy-head:has(+ #latest-news){
+  display:none!important;
+}
+
+/* Latest Titles: permanently visible and roughly 2x the old compact posters. */
+html body.page-home #trending-rail{
+  display:block!important;
+  width:100%!important;max-width:var(--ma-stage-width)!important;
+  margin:16px auto 22px!important;
+  padding:16px 0 18px!important;
+  border:1px solid rgba(232,186,64,.55)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,rgba(15,22,45,.92),rgba(16,11,34,.92))!important;
+  box-shadow:0 18px 44px rgba(0,0,0,.30)!important;
+  overflow:hidden!important;
+}
+html body.page-home #trending-rail h4{
+  margin:0 22px 14px!important;
+  font-size:18px!important;line-height:1.25!important;
+  text-align:left!important;color:#eee9f7!important;
+  letter-spacing:0!important;text-transform:none!important;
+}
+html body.page-home #trending-rail .marquee-track{
+  gap:16px!important;padding:4px 22px 12px!important;
+}
+html body.page-home #trending-rail .marquee-item{
+  flex:0 0 224px!important;
+  width:224px!important;height:336px!important;
+  border-radius:16px!important;
+  box-shadow:0 15px 34px rgba(0,0,0,.34)!important;
+}
+html body.page-home #trending-rail .marquee-item img{
+  width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;
+}
+html body.page-home #trending-rail::before,
+html body.page-home #trending-rail::after{display:none!important}
+
+/* Latest News: permanently open; summary becomes a static header, not a control. */
+html body.page-home #latest-news{
+  display:block!important;
+  width:100%!important;max-width:var(--ma-stage-width)!important;
+  margin:16px auto 22px!important;
+  border:1px solid rgba(232,186,64,.48)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,rgba(20,14,39,.92),rgba(12,10,27,.94))!important;
+  box-shadow:0 16px 38px rgba(0,0,0,.26)!important;
+  overflow:hidden!important;
+}
+html body.page-home #latest-news>summary{
+  display:flex!important;
+  min-height:84px!important;height:auto!important;
+  padding:18px 24px!important;
+  cursor:default!important;
+  border:0!important;border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  animation:none!important;
+  pointer-events:none!important;
+}
+html body.page-home #latest-news>summary::after,
+html body.page-home #latest-news>summary::before{
+  display:none!important;content:none!important;
+}
+html body.page-home #latest-news .ma-news-title{font-size:22px!important}
+html body.page-home #latest-news .ma-news-description{font-size:13px!important}
+html body.page-home #latest-news .ma-news-panel{
+  display:block!important;
+  margin:0!important;padding:0 10px 14px!important;
+  border:0!important;background:transparent!important;
+}
+html body.page-home #latest-news .ma-news-card{
+  flex:0 0 280px!important;
+  border-radius:16px!important;
+}
+html body.page-home #latest-news .ma-news-card h3{
+  font-size:15px!important;min-height:36px!important;
+}
+html body.page-home #latest-news .ma-news-summary{
+  font-size:11.5px!important;min-height:30px!important;
+}
+html body.page-home #latest-news .ma-news-source{font-size:10.5px!important}
+
+/* Three true foldables: exact same width, height and arrow control. */
+html body.page-home :is(
+  #premiere-disclosure,
+  #weekly-pick-disclosure,
+  #global-events>.global-events-fold
+){
+  width:100%!important;max-width:var(--ma-stage-width)!important;
+  margin:14px auto!important;padding:0!important;
+  border:0!important;background:transparent!important;box-shadow:none!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+){
+  position:relative!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  width:100%!important;max-width:100%!important;
+  height:88px!important;min-height:88px!important;
+  margin:0!important;padding:0 86px 0 28px!important;
+  box-sizing:border-box!important;
+  border:1px solid rgba(232,186,64,.54)!important;
+  border-radius:28px!important;
+  background:linear-gradient(145deg,rgba(29,19,48,.94),rgba(18,13,35,.96))!important;
+  color:#eee6f8!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.25)!important;
+  font-size:22px!important;font-weight:850!important;line-height:1.15!important;
+  list-style:none!important;cursor:pointer!important;
+  animation:none!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)::-webkit-details-marker{display:none!important}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)::marker{content:""!important}
+
+/* New dedicated down-arrow button. No +, minus or old chevrons. */
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)::after{
+  content:""!important;
+  position:absolute!important;right:22px!important;top:50%!important;
+  width:48px!important;height:48px!important;
+  border:1px solid rgba(255,220,111,.42)!important;border-radius:50%!important;
+  background-color:rgba(255,255,255,.035)!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;background-position:center!important;background-size:22px 22px!important;
+  box-shadow:0 0 16px rgba(255,217,106,.14)!important;
+  transform:translateY(-50%) rotate(0deg)!important;
+  transition:transform .24s cubic-bezier(.2,.8,.2,1),background-color .18s ease,box-shadow .18s ease!important;
+}
+html body.page-home :is(
+  #premiere-disclosure[open]>summary,
+  #weekly-pick-disclosure[open]>summary,
+  #global-events>.global-events-fold[open]>.global-events-summary
+)::after{
+  transform:translateY(-50%) rotate(180deg)!important;
+  background-color:rgba(232,186,64,.10)!important;
+  box-shadow:0 0 22px rgba(255,217,106,.22)!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+):hover{
+  border-color:rgba(255,227,143,.78)!important;
+  box-shadow:0 16px 38px rgba(0,0,0,.30),0 0 18px rgba(255,217,106,.10)!important;
+}
+
+/* Eliminate every legacy control visible in the screenshot. */
+html body.page-home :is(
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+) .ge-sum-chev,
+html body.page-home #global-events .ge-sum-chev{
+  display:none!important;
+}
+html body.page-home #global-events>.global-events-fold{
+  border:0!important;background:transparent!important;
+}
+html body.page-home #global-events .global-events-body,
+html body.page-home #premiere-disclosure>.spotlight-card,
+html body.page-home #weekly-pick-disclosure>.spotlight-card{
+  margin-top:10px!important;width:100%!important;max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+/* Keep the event count, but park it consistently before the arrow. */
+html body.page-home #global-events .ge-sum-count{
+  margin-left:auto!important;margin-right:8px!important;
+}
+
+/* Make the weekly dynamically-created disclosure follow the same centered axis. */
+html body.page-home #weekly-pick-disclosure{box-sizing:border-box!important}
+
+/* Mobile preserves the hierarchy without making posters absurdly huge. */
+@media(max-width:700px){
+  html body.page-home #trending-rail{margin:10px auto 16px!important;padding:12px 0 14px!important;border-radius:20px!important}
+  html body.page-home #trending-rail h4{margin:0 14px 10px!important;font-size:15px!important}
+  html body.page-home #trending-rail .marquee-track{gap:10px!important;padding:3px 14px 9px!important}
+  html body.page-home #trending-rail .marquee-item{
+    flex-basis:156px!important;width:156px!important;height:234px!important;border-radius:13px!important;
+  }
+  html body.page-home #latest-news>summary{min-height:70px!important;padding:14px 16px!important}
+  html body.page-home #latest-news .ma-news-title{font-size:18px!important}
+  html body.page-home #latest-news .ma-news-card{flex-basis:220px!important}
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  ){
+    height:68px!important;min-height:68px!important;
+    padding:0 68px 0 18px!important;
+    border-radius:22px!important;font-size:17px!important;
+  }
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  )::after{
+    right:14px!important;width:40px!important;height:40px!important;background-size:19px 19px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  )::after{transition:none!important}
+}
+
+
+/* ===== FINAL LIVE ORB REVERT =====
+   Use the complete emblem inside the existing circular header position.
+   Remove the detached empty-orbit treatment; leave all other UI untouched. */
+.ma-global-header .ma-orbit,
+.ma-global-header .ma-orb-star{display:none!important}
+
+@media(min-width:1000px){
+  .ma-global-header .ma-brand-orb-stage{
+    position:relative!important;
+    width:270px!important;height:94px!important;flex:0 0 270px!important;
+    overflow:visible!important;
+  }
+  .ma-global-header .ma-brand-orb{
+    position:absolute!important;
+    left:0!important;top:-8px!important;
+    width:270px!important;height:270px!important;max-width:none!important;
+    margin:0!important;object-fit:contain!important;
+    transform:none!important;
+    border-radius:50%!important;
+    filter:drop-shadow(0 14px 22px rgba(0,0,0,.46)) drop-shadow(0 0 20px rgba(255,217,95,.24))!important;
+    animation:maLiveOrbFloat 4.6s ease-in-out infinite!important;
+  }
+}
+@media(min-width:1000px) and (max-width:1320px){
+  .ma-global-header .ma-brand-orb-stage{width:230px!important;flex-basis:230px!important}
+  .ma-global-header .ma-brand-orb{width:244px!important;height:244px!important}
+}
+@media(max-width:999px){
+  .ma-global-header .ma-brand-orb-stage{
+    position:relative!important;width:78px!important;height:58px!important;flex:0 0 78px!important;overflow:visible!important
+  }
+  .ma-global-header .ma-brand-orb{
+    position:absolute!important;left:0!important;top:-8px!important;
+    width:82px!important;height:82px!important;max-width:none!important;
+    margin:0!important;object-fit:contain!important;border-radius:50%!important;
+    animation:maLiveOrbFloat 4.8s ease-in-out infinite!important;
+  }
+}
+@media(max-width:560px){
+  .ma-global-header .ma-brand-orb-stage{width:60px!important;height:52px!important;flex-basis:60px!important}
+  .ma-global-header .ma-brand-orb{width:66px!important;height:66px!important;top:-5px!important}
+}
+@keyframes maLiveOrbFloat{
+  0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 12px 20px rgba(0,0,0,.42)) drop-shadow(0 0 16px rgba(255,217,95,.22))}
+  50%{transform:translateY(-3px) scale(1.018);filter:drop-shadow(0 15px 24px rgba(0,0,0,.48)) drop-shadow(0 0 28px rgba(74,209,255,.20))}
+}
+@media(prefers-reduced-motion:reduce){.ma-global-header .ma-brand-orb{animation:none!important}}
+
+
+/* ===== DOMINANT HEADER ORB FIX =====
+   Make the MatchApp emblem unmistakable: larger than the wordmark, visually
+   integrated with it, and allowed to project beyond the header without clipping. */
+@media (min-width:1000px){
+  header.app-header.ma-global-header,
+  html body.page-home #mh-topbox.app-header.ma-global-header{
+    min-height:118px!important;
+    padding:8px 18px!important;
+    overflow:visible!important;
+  }
+
+  .ma-global-header .ma-brand-stage,
+  .ma-global-header .ma-brand-lockup,
+  .ma-global-header .ma-brand-home-link{
+    overflow:visible!important;
+    align-items:center!important;
+  }
+
+  .ma-global-header .ma-brand-orb-stage{
+    position:relative!important;
+    width:350px!important;
+    height:106px!important;
+    flex:0 0 350px!important;
+    overflow:visible!important;
+    margin-right:-42px!important;
+  }
+
+  .ma-global-header .ma-brand-orb{
+    position:absolute!important;
+    left:0!important;
+    top:-28px!important;
+    width:330px!important;
+    height:330px!important;
+    max-width:none!important;
+    margin:0!important;
+    object-fit:contain!important;
+    border-radius:50%!important;
+    z-index:5!important;
+    transform:none!important;
+    filter:
+      drop-shadow(0 18px 28px rgba(0,0,0,.50))
+      drop-shadow(0 0 28px rgba(255,217,95,.38))
+      drop-shadow(0 0 18px rgba(68,205,255,.18))!important;
+    animation:maDominantOrbFloat 4.6s ease-in-out infinite!important;
+  }
+
+  .ma-global-header .ma-brand-copy{
+    margin-left:-8px!important;
+    gap:10px!important;
+    align-items:baseline!important;
+    transform:none!important;
+    white-space:nowrap!important;
+  }
+
+  .ma-global-header .ma-wordmark{
+    font-size:clamp(50px,4.1vw,72px)!important;
+    line-height:.88!important;
+    letter-spacing:-.055em!important;
+  }
+
+  .ma-global-header .ma-tv{
+    font-size:clamp(29px,2.25vw,41px)!important;
+  }
+
+  .ma-ai-brand-button{
+    min-width:86px!important;
+    height:74px!important;
+    margin-left:2px!important;
+  }
+
+  .ma-ai-letters{
+    font-size:clamp(56px,4.25vw,76px)!important;
+  }
+
+  .ma-global-header .ma-header-actions{
+    margin-left:auto!important;
+    flex:0 0 auto!important;
+  }
+}
+
+/* Laptop-safe version: still dominant, but prevents right-side controls from clipping. */
+@media (min-width:1000px) and (max-width:1320px){
+  .ma-global-header .ma-brand-orb-stage{
+    width:286px!important;
+    flex-basis:286px!important;
+    margin-right:-34px!important;
+  }
+  .ma-global-header .ma-brand-orb{
+    width:276px!important;
+    height:276px!important;
+    top:-24px!important;
+  }
+  .ma-global-header .ma-wordmark{font-size:46px!important}
+  .ma-global-header .ma-tv{font-size:27px!important}
+  .ma-ai-brand-button{min-width:70px!important}
+  .ma-ai-letters{font-size:52px!important}
+}
+
+/* Tablet/mobile keep the orb prominent without breaking the viewport. */
+@media (max-width:999px){
+  .ma-global-header .ma-brand-orb-stage{
+    width:94px!important;
+    height:62px!important;
+    flex:0 0 94px!important;
+    margin-right:-8px!important;
+  }
+  .ma-global-header .ma-brand-orb{
+    width:98px!important;
+    height:98px!important;
+    top:-15px!important;
+    left:0!important;
+  }
+}
+@media (max-width:560px){
+  .ma-global-header .ma-brand-orb-stage{
+    width:70px!important;
+    height:54px!important;
+    flex-basis:70px!important;
+    margin-right:-6px!important;
+  }
+  .ma-global-header .ma-brand-orb{
+    width:76px!important;
+    height:76px!important;
+    top:-10px!important;
+  }
+}
+
+@keyframes maDominantOrbFloat{
+  0%,100%{
+    transform:translateY(0) scale(1);
+    filter:
+      drop-shadow(0 18px 28px rgba(0,0,0,.50))
+      drop-shadow(0 0 24px rgba(255,217,95,.32))
+      drop-shadow(0 0 14px rgba(68,205,255,.14));
+  }
+  50%{
+    transform:translateY(-4px) scale(1.025);
+    filter:
+      drop-shadow(0 21px 32px rgba(0,0,0,.54))
+      drop-shadow(0 0 36px rgba(255,217,95,.46))
+      drop-shadow(0 0 24px rgba(68,205,255,.22));
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ma-global-header .ma-brand-orb{animation:none!important}
+}
+
+
+/* ===== CANONICAL HOME SHELL — SINGLE OWNER =====
+   Legacy Home brand/layout layers are no longer loaded. This block owns the
+   first-paint header, responsive controls, startup anchoring and box containment. */
+
+html.ma-start-at-top,
+html.ma-start-at-top body.page-home{overflow-anchor:none!important}
+
+html body.page-home #mh-topbox.app-header.ma-global-header{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+  width:min(calc(100% - 28px),1180px)!important;
+  max-width:1180px!important;
+  min-width:0!important;
+  min-height:116px!important;
+  margin:10px auto 14px!important;
+  padding:10px 18px!important;
+  box-sizing:border-box!important;
+  overflow:visible!important;
+  border:1.5px solid rgba(232,186,64,.38)!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(620px 170px at 20% 5%,rgba(47,120,197,.12),transparent 72%),
+    linear-gradient(145deg,rgba(20,14,39,.96),rgba(10,18,39,.96))!important;
+  box-shadow:0 18px 52px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+html body.page-home #mh-topbox .mh-head{
+  display:flex!important;
+  flex:1 1 auto!important;
+  min-width:0!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  margin:0!important;padding:0!important;
+}
+html body.page-home #mh-topbox .mh-tagline{display:none!important}
+html body.page-home #mh-topbox #home-brand-lockup{
+  display:flex!important;
+  min-width:0!important;
+  width:auto!important;
+  margin:0!important;padding:0!important;
+  overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-brand-lockup,
+html body.page-home #mh-topbox .ma-brand-home-link{
+  display:flex!important;align-items:center!important;min-width:0!important;overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb-stage{
+  position:relative!important;
+  width:250px!important;height:96px!important;flex:0 0 250px!important;
+  margin-right:-30px!important;overflow:visible!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb{
+  position:absolute!important;left:0!important;top:-24px!important;
+  width:248px!important;height:248px!important;max-width:none!important;
+  object-fit:contain!important;margin:0!important;border-radius:50%!important;
+  z-index:5!important;
+  filter:drop-shadow(0 15px 24px rgba(0,0,0,.48)) drop-shadow(0 0 28px rgba(255,217,95,.34))!important;
+}
+html body.page-home #mh-topbox .ma-brand-copy{
+  display:flex!important;align-items:baseline!important;gap:8px!important;min-width:0!important;
+  margin-left:0!important;transform:none!important;white-space:nowrap!important;
+}
+html body.page-home #mh-topbox .ma-wordmark{
+  font-size:clamp(42px,3.6vw,58px)!important;line-height:.9!important;
+}
+html body.page-home #mh-topbox .ma-tv{font-size:clamp(24px,2vw,32px)!important}
+html body.page-home #mh-topbox .ma-ai-brand-button{
+  min-width:72px!important;width:auto!important;height:66px!important;margin-left:2px!important;flex:0 0 auto!important;
+}
+html body.page-home #mh-topbox .ma-ai-letters{font-size:clamp(46px,3.7vw,60px)!important}
+
+html body.page-home #mh-topbox nav.mh-deck,
+html body.page-home #mh-topbox nav.ma-header-actions{
+  display:flex!important;
+  flex:0 1 auto!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:7px!important;
+  width:auto!important;
+  max-width:52%!important;
+  min-width:0!important;
+  margin:0!important;padding:0!important;
+  overflow:visible!important;
+}
+html body.page-home #mh-topbox nav.mh-deck>*,
+html body.page-home #mh-topbox nav.ma-header-actions>*{
+  flex:0 0 auto!important;
+  max-width:100%!important;
+}
+html body.page-home #mh-topbox .install-wrap,
+html body.page-home #mh-topbox #lang-switcher-host,
+html body.page-home #mh-topbox .ma-menu-wrap{min-width:0!important}
+html body.page-home #mh-topbox button,
+html body.page-home #mh-topbox a,
+html body.page-home #mh-topbox select{
+  box-sizing:border-box!important;
+}
+
+/* Compact desktop fallback: preserve every control instead of clipping it. */
+@media (min-width:900px) and (max-width:1260px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:205px!important;flex-basis:205px!important;margin-right:-25px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{width:212px!important;height:212px!important;top:-18px!important}
+  html body.page-home #mh-topbox .ma-wordmark{font-size:38px!important}
+  html body.page-home #mh-topbox .ma-tv{font-size:22px!important}
+  html body.page-home #mh-topbox .ma-ai-letters{font-size:44px!important}
+  html body.page-home #mh-topbox nav.mh-deck,
+  html body.page-home #mh-topbox nav.ma-header-actions{max-width:50%!important;gap:5px!important}
+  html body.page-home #mh-topbox .ma-country-link span:last-child,
+  html body.page-home #mh-topbox .ma-menu-button span{display:none!important}
+  html body.page-home #mh-topbox .ma-menu-button{width:44px!important;min-width:44px!important;padding:0!important}
+}
+
+/* Smartphone: brand first, ALL controls on a second visible row. */
+@media (max-width:899px){
+  html body.page-home #mh-topbox.app-header.ma-global-header{
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:8px!important;
+    width:calc(100% - 12px)!important;
+    min-height:0!important;
+    margin:6px auto 10px!important;
+    padding:8px 9px 10px!important;
+    border-radius:18px!important;
+    overflow:visible!important;
+  }
+  html body.page-home #mh-topbox .mh-head{
+    width:100%!important;
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  html body.page-home #mh-topbox #home-brand-lockup{
+    width:100%!important;justify-content:center!important;overflow:visible!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:92px!important;height:64px!important;flex-basis:92px!important;margin-right:-7px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    width:96px!important;height:96px!important;top:-16px!important;left:0!important;
+  }
+  html body.page-home #mh-topbox .ma-wordmark{font-size:clamp(25px,7vw,34px)!important}
+  html body.page-home #mh-topbox .ma-tv{font-size:18px!important}
+  html body.page-home #mh-topbox .ma-ai-brand-button{min-width:52px!important;height:52px!important;padding-inline:4px!important}
+  html body.page-home #mh-topbox .ma-ai-letters{font-size:34px!important}
+  html body.page-home #mh-topbox nav.mh-deck,
+  html body.page-home #mh-topbox nav.ma-header-actions{
+    display:flex!important;
+    width:100%!important;max-width:100%!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    gap:5px!important;
+    overflow:visible!important;
+  }
+  html body.page-home #mh-topbox nav.mh-deck>*,
+  html body.page-home #mh-topbox nav.ma-header-actions>*{
+    min-width:40px!important;
+    max-width:min(100%,180px)!important;
+    min-height:40px!important;
+  }
+  html body.page-home #mh-topbox #lang-switcher-host select{
+    max-width:112px!important;min-width:72px!important;
+  }
+  html body.page-home #mh-topbox .ma-menu-button{
+    width:44px!important;min-width:44px!important;padding:0!important;
+  }
+  html body.page-home #mh-topbox .ma-menu-button span{display:none!important}
+  html body.page-home #mh-topbox .ma-country-link span:last-child{display:none!important}
+}
+@media (max-width:420px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{width:76px!important;flex-basis:76px!important}
+  html body.page-home #mh-topbox .ma-brand-orb{width:82px!important;height:82px!important;top:-10px!important}
+  html body.page-home #mh-topbox .ma-wordmark{font-size:23px!important}
+  html body.page-home #mh-topbox .ma-tv{font-size:15px!important}
+  html body.page-home #mh-topbox .ma-ai-brand-button{min-width:43px!important;width:43px!important}
+  html body.page-home #mh-topbox .ma-ai-letters{font-size:29px!important}
+}
+
+/* Box-content containment: no label, title or description may paint outside. */
+html body.page-home :is(
+  .ma-concierge,#trending-rail,#latest-news,#premiere-disclosure,
+  #weekly-pick-disclosure,#global-events,#result-box,#loading-box,
+  .premium-card,.spotlight-card,.crit-collapsible,.crit-toggle,
+  .global-events-summary,.ma-news-card,.marquee-item
+){
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+html body.page-home :is(
+  .ma-concierge,#latest-news,#premiere-disclosure,#weekly-pick-disclosure,
+  #global-events,#result-box,.premium-card,.spotlight-card,.crit-toggle,
+  .global-events-summary
+) :is(h1,h2,h3,h4,p,span,strong,small,label,a,button){
+  min-width:0!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,
+  .crit-toggle,.match-more-filters>summary
+){
+  overflow:hidden!important;
+}
+html body.page-home :is(
+  #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+)>*:not(.ge-sum-count){
+  min-width:0!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+@media(max-width:600px){
+  html body.page-home :is(
+    #premiere-disclosure>summary,#weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  ){
+    font-size:15px!important;
+    line-height:1.2!important;
+  }
+  html body.page-home .ma-tabs{display:grid!important;grid-template-columns:1fr 1fr!important;width:100%!important}
+  html body.page-home .ma-tab{
+    min-width:0!important;white-space:normal!important;line-height:1.15!important;padding:10px 8px!important;
+  }
+}
+
+
+
+/* ===== HEADER ORB LEFT-EDGE POSITION FIX =====
+   Position only: keep current logo size/animation, anchor it to the far-left
+   INSIDE edge of the top box, and reserve its full footprint so nothing overlaps it. */
+@media (min-width:1261px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:270px!important;
+    flex-basis:270px!important;
+    margin-left:-10px!important;
+    margin-right:10px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    left:0!important;
+  }
+}
+@media (min-width:900px) and (max-width:1260px){
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    width:232px!important;
+    flex-basis:232px!important;
+    margin-left:-8px!important;
+    margin-right:8px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    left:0!important;
+  }
+}
+
+
+/* ===== HEADER FIRST-PAINT STABILITY =====
+   Never expose intermediate/legacy header states during startup. */
+/* Home header must never depend on JavaScript to become visible. */
+html body.page-home #mh-topbox.app-header{
+  visibility:visible!important;
+  opacity:1!important;
+  transition:none!important;
+}
+
+
+/* ===== HOME HEADER PREMIUM GRID V2 — 2026-09-19 =====
+   Home deliberately does NOT carry .ma-global-header. This block is the sole
+   final owner of its geometry so no deferred shared-header class can morph it
+   after first paint. */
+html body.page-home #mh-topbox.app-header.ma-home-header{
+  position:relative!important;display:grid!important;
+  grid-template-columns:minmax(330px,.9fr) minmax(520px,1.35fr)!important;
+  align-items:center!important;justify-content:stretch!important;gap:16px!important;
+  width:min(calc(100% - 24px),1180px)!important;max-width:1180px!important;min-width:0!important;
+  min-height:104px!important;margin:10px auto 14px!important;padding:10px 14px!important;box-sizing:border-box!important;
+  overflow:visible!important;border:1px solid rgba(229,193,88,.50)!important;border-radius:24px!important;
+  background:
+    radial-gradient(720px 220px at 18% 0%,rgba(93,39,168,.30),transparent 70%),
+    radial-gradient(680px 220px at 86% 100%,rgba(28,78,160,.18),transparent 72%),
+    linear-gradient(135deg,#24103e 0%,#170c31 34%,#100b26 68%,#09091c 100%)!important;
+  box-shadow:0 18px 52px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+html body.page-home #mh-topbox.ma-home-header .mh-head{display:flex!important;align-items:center!important;justify-content:flex-start!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .mh-tagline{display:none!important}
+html body.page-home #mh-topbox.ma-home-header #home-brand-lockup{display:flex!important;align-items:center!important;justify-content:flex-start!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-lockup,
+html body.page-home #mh-topbox.ma-home-header .ma-brand-home-link{display:flex!important;align-items:center!important;min-width:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{position:relative!important;width:92px!important;height:76px!important;flex:0 0 92px!important;margin:0 5px 0 -5px!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{position:absolute!important;left:0!important;top:-7px!important;width:90px!important;height:90px!important;max-width:none!important;object-fit:contain!important;margin:0!important;border-radius:50%!important;z-index:2!important;filter:drop-shadow(0 7px 16px rgba(0,0,0,.34)) drop-shadow(0 0 18px rgba(229,193,88,.24))!important;animation:none!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-copy{display:flex!important;align-items:baseline!important;gap:6px!important;min-width:0!important;margin:0!important;transform:none!important;white-space:nowrap!important}
+html body.page-home #mh-topbox.ma-home-header .ma-wordmark{font-size:clamp(31px,3vw,43px)!important;line-height:.92!important;letter-spacing:-.055em!important}
+html body.page-home #mh-topbox.ma-home-header .ma-tv{font-size:clamp(18px,1.65vw,25px)!important}
+html body.page-home #mh-topbox.ma-home-header .ma-ai-brand-button{min-width:55px!important;width:auto!important;height:52px!important;min-height:52px!important;margin-left:3px!important;padding:0 7px!important;flex:0 0 auto!important;display:grid!important;place-items:center!important}
+html body.page-home #mh-topbox.ma-home-header .ma-ai-letters{font-size:clamp(34px,3.2vw,45px)!important;line-height:1!important}
+html body.page-home #mh-topbox.ma-home-header nav.mh-deck,
+html body.page-home #mh-topbox.ma-home-header nav.ma-header-actions{display:flex!important;flex-flow:row wrap!important;align-items:center!important;align-content:center!important;justify-content:flex-end!important;justify-self:end!important;gap:8px!important;width:100%!important;max-width:690px!important;min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
+html body.page-home #mh-topbox.ma-home-header nav>*{flex:0 0 auto!important;margin:0!important;box-sizing:border-box!important}
+html body.page-home #mh-topbox.ma-home-header :is(.sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-logout-btn){width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;place-items:center!important;border-radius:13px!important;line-height:1!important}
+/* app.js hides the auth controls for guests with inline display:none; never override that. */
+html body.page-home #mh-topbox.ma-home-header :is(.sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-logout-btn):not([hidden]):not([style*="display: none"]):not([style*="display:none"]){display:grid!important}
+html body.page-home #mh-topbox.ma-home-header :is(.sound-toggle-btn,.matchapp-notification-button,#nav-logout-btn)>*{margin:auto!important}
+html body.page-home #mh-topbox.ma-home-header #profile-link-tab{justify-content:center!important;gap:0!important}
+html body.page-home #mh-topbox.ma-home-header #profile-link-tab #nav-profile-text{display:none!important}
+html body.page-home #mh-topbox.ma-home-header #profile-link-tab .avatar-ring{width:30px!important;height:30px!important;margin:0!important;display:grid!important;place-items:center!important}
+html body.page-home #mh-topbox.ma-home-header #nav-logout-btn{font-size:0!important;color:#ff8d83!important;border-color:rgba(255,104,91,.55)!important}
+html body.page-home #mh-topbox.ma-home-header #nav-logout-btn svg{width:18px!important;height:18px!important;stroke:currentColor!important}
+html body.page-home #mh-topbox.ma-home-header .install-wrap{width:auto!important;min-width:0!important}
+html body.page-home #mh-topbox.ma-home-header .install-wrap>.install-btn{width:auto!important;min-width:158px!important;min-height:44px!important;height:44px!important;padding:0 15px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important}
+html body.page-home #mh-topbox.ma-home-header #quota-badge{width:auto!important;min-width:124px!important;min-height:44px!important;height:44px!important;padding:0 13px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important}
+html body.page-home #mh-topbox.ma-home-header .ma-country-link{width:auto!important;min-width:92px!important;min-height:44px!important;height:44px!important;padding:0 11px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important}
+html body.page-home #mh-topbox.ma-home-header #lang-switcher-host{width:auto!important;min-width:0!important;height:44px!important;padding:0!important;display:flex!important;align-items:center!important}
+html body.page-home #mh-topbox.ma-home-header #lang-switcher-host select{width:auto!important;min-width:142px!important;max-width:168px!important;height:44px!important;padding:0 34px 0 12px!important;margin:0!important}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{width:auto!important;min-width:122px!important;height:44px!important;padding:0 12px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;border-radius:13px!important;text-decoration:none!important;color:#fff4c1!important;font-weight:850!important;font-size:12px!important}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry img{width:23px!important;height:23px!important;min-width:23px!important;border-radius:50%!important;object-fit:cover!important;border:1px solid rgba(255,229,129,.65)!important}
+html body.page-home #mh-topbox.ma-home-header .ma-menu-wrap{width:auto!important;min-width:0!important}
+html body.page-home #mh-topbox.ma-home-header .ma-menu-button{width:auto!important;min-width:116px!important;height:44px!important;padding:0 13px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important}
+html body.page-home #mh-topbox.ma-home-header .ma-menu-button svg{width:20px!important;height:20px!important;flex:0 0 20px!important}
+html body.page-home #mh-topbox.ma-home-header #nav-reg-btn{width:auto!important;min-width:138px!important;min-height:44px!important;height:44px!important;padding:0 14px!important}
+@keyframes maHomeOrbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2px) scale(1.012)}}
+@media(min-width:900px) and (max-width:1120px){
+ html body.page-home #mh-topbox.app-header.ma-home-header{grid-template-columns:minmax(285px,.75fr) minmax(500px,1.25fr)!important;gap:10px!important;width:calc(100% - 18px)!important;padding-inline:10px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{width:76px!important;flex-basis:76px!important;height:66px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{width:76px!important;height:76px!important;top:-5px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-wordmark{font-size:30px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-tv{font-size:18px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-brand-button{min-width:48px!important;height:48px!important;min-height:48px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-letters{font-size:34px!important}
+ html body.page-home #mh-topbox.ma-home-header nav.mh-deck,html body.page-home #mh-topbox.ma-home-header nav.ma-header-actions{gap:6px!important;max-width:640px!important}
+ html body.page-home #mh-topbox.ma-home-header .install-wrap>.install-btn{min-width:142px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-menu-button{min-width:108px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{min-width:110px!important}
+}
+@media(max-width:899px){
+ html body.page-home #mh-topbox.app-header.ma-home-header{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:9px!important;width:calc(100% - 12px)!important;min-height:0!important;margin:6px auto 10px!important;padding:8px 9px 10px!important;border-radius:19px!important}
+ html body.page-home #mh-topbox.ma-home-header .mh-head{justify-content:center!important}
+ html body.page-home #mh-topbox.ma-home-header #home-brand-lockup{justify-content:center!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{width:70px!important;height:58px!important;flex-basis:70px!important;margin-right:2px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{width:70px!important;height:70px!important;top:-5px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-wordmark{font-size:clamp(24px,6vw,31px)!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-tv{font-size:17px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-brand-button{min-width:46px!important;height:46px!important;min-height:46px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-ai-letters{font-size:31px!important}
+ html body.page-home #mh-topbox.ma-home-header nav.mh-deck,html body.page-home #mh-topbox.ma-home-header nav.ma-header-actions{width:100%!important;max-width:100%!important;justify-content:center!important;justify-self:stretch!important;gap:6px!important}
+}
+@media(max-width:520px){
+ html body.page-home #mh-topbox.ma-home-header .ma-country-link{min-width:44px!important;width:44px!important;padding:0!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-country-link span:last-child{display:none!important}
+ html body.page-home #mh-topbox.ma-home-header #lang-switcher-host select{min-width:108px!important;max-width:120px!important}
+ html body.page-home #mh-topbox.ma-home-header .install-wrap>.install-btn{min-width:128px!important;padding-inline:10px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{min-width:94px!important;padding-inline:9px!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-menu-button{min-width:44px!important;width:44px!important;padding:0!important}
+ html body.page-home #mh-topbox.ma-home-header .ma-menu-button span{display:none!important}
+ html body.page-home #mh-topbox.ma-home-header #quota-badge{min-width:106px!important}
+}
+@media(prefers-reduced-motion:reduce){html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{animation:none!important}}
+
+
+/* KIDS MODE CANDY BUTTON — main page only */
+@keyframes maKidsCandyGlow{
+  0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.34) inset,0 7px 18px rgba(255,79,154,.24),0 0 12px rgba(83,221,255,.16);filter:saturate(1)}
+  50%{box-shadow:0 0 0 1px rgba(255,255,255,.56) inset,0 9px 24px rgba(255,79,154,.32),0 0 20px rgba(83,221,255,.28),0 0 28px rgba(255,220,73,.18);filter:saturate(1.12)}
+}
+@keyframes maKidsCandyShine{
+  0%,58%{transform:translateX(-160%) skewX(-18deg)}
+  82%,100%{transform:translateX(180%) skewX(-18deg)}
+}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{
+  position:relative!important;overflow:hidden!important;isolation:isolate!important;
+  min-width:126px!important;height:44px!important;padding:0 12px!important;
+  border:1px solid rgba(255,255,255,.64)!important;border-radius:14px!important;
+  background:linear-gradient(118deg,#ffd84d 0%,#ff7bb5 28%,#8e7dff 54%,#56dcff 76%,#79f29a 100%)!important;
+  color:#241331!important;text-shadow:0 1px 0 rgba(255,255,255,.58)!important;
+  font-weight:950!important;letter-spacing:.035em!important;
+  animation:maKidsCandyGlow 3.4s ease-in-out 2!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry::before{
+  content:""!important;position:absolute!important;inset:-20% auto -20% -38%!important;width:34%!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.78),transparent)!important;
+  transform:translateX(-160%) skewX(-18deg);animation:maKidsCandyShine 3.6s ease-in-out 2!important;
+  z-index:-1!important;pointer-events:none!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry img{
+  width:25px!important;height:25px!important;min-width:25px!important;
+  border:2px solid rgba(255,255,255,.9)!important;
+  box-shadow:0 2px 7px rgba(63,19,88,.24)!important;background:#fff!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry span{
+  position:relative!important;z-index:1!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry:hover,
+html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry:focus-visible{
+  transform:translateY(-1px) scale(1.025)!important;
+  border-color:#fff!important;
+  box-shadow:0 0 0 2px rgba(255,255,255,.22),0 10px 26px rgba(255,95,170,.34),0 0 24px rgba(87,222,255,.34)!important;
+}
+@media(max-width:520px){
+  html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry{
+    min-width:100px!important;padding:0 9px!important;font-size:11px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry img{width:23px!important;height:23px!important;min-width:23px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry,
+  html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry::before{animation:none!important}
+}
+
+
+/* FINAL HOME FIELD — Taylor Swift / Spotify */
+html body.page-home #swifties-spotify.swifties-spotify--final{
+  display:block!important;width:min(calc(100% - 16px),900px)!important;
+  margin:10px auto 18px!important;padding:0!important;overflow:hidden!important;
+  border:1px solid rgba(29,185,84,.5)!important;border-radius:20px!important;
+  background:
+    radial-gradient(520px 160px at 4% 0%,rgba(29,185,84,.14),transparent 70%),
+    linear-gradient(145deg,rgba(15,25,26,.98),rgba(18,13,30,.98))!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.34),0 0 26px rgba(29,185,84,.08)!important;
+}
+html body.page-home #swifties-spotify .swifties-fold{
+  width:100%!important;min-height:54px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:12px!important;padding:13px 16px!important;border:0!important;border-radius:0!important;
+  background:linear-gradient(90deg,rgba(29,185,84,.13),rgba(229,193,88,.06),transparent)!important;
+  color:#f4f1f8!important;font:900 13px/1.3 Inter,system-ui,sans-serif!important;letter-spacing:.055em!important;text-align:left!important;
+  cursor:pointer!important;
+}
+html body.page-home #swifties-spotify .swifties-fold strong{color:#71ef9b!important;white-space:nowrap!important}
+html body.page-home #swifties-spotify .swifties-fold-icon{color:#79f29a!important;font-size:20px!important;flex:0 0 auto!important}
+html body.page-home #swifties-spotify-body{padding:14px 16px 16px!important}
+html body.page-home #swifties-spotify-body[hidden]{display:none!important}
+html body.page-home #swifties-spotify .swifties-copy{
+  max-width:800px!important;margin:0 auto 14px!important;color:#d9d5df!important;text-align:center!important;font-size:13px!important;line-height:1.55!important;
+}
+html body.page-home #swifties-spotify .swifties-latest{
+  display:flex!important;flex-wrap:wrap!important;justify-content:center!important;gap:7px!important;margin:0 auto 14px!important;max-width:830px!important;
+}
+html body.page-home #swifties-spotify .swifties-latest-label{
+  width:100%!important;text-align:center!important;color:#87f2aa!important;font-size:11px!important;font-weight:900!important;letter-spacing:.08em!important;text-transform:uppercase!important;
+}
+html body.page-home #swifties-spotify .swifties-latest a{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:36px!important;
+  padding:7px 10px!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:999px!important;
+  background:rgba(255,255,255,.045)!important;color:#fff!important;text-decoration:none!important;font-size:11.5px!important;font-weight:760!important;
+}
+html body.page-home #swifties-spotify .swifties-latest a:hover{border-color:#55e986!important;background:rgba(29,185,84,.12)!important}
+/* Authentic Spotify release art: contained, not stretched or cropped. */
+html body.page-home #swifties-spotify .swifties-new-album{
+  display:flex;align-items:center;gap:12px;max-width:830px;margin:0 auto 12px;padding:10px 12px;
+  border:1px solid rgba(29,185,84,.4);border-radius:14px;background:rgba(0,0,0,.24);
+  color:#fff;text-decoration:none;
+}
+html body.page-home #swifties-spotify .swifties-new-album:hover{border-color:#55e986;background:rgba(29,185,84,.12)}
+html body.page-home #swifties-spotify .swifties-new-album img{
+  display:block;width:96px;height:96px;flex:0 0 96px;object-fit:contain;border-radius:9px;
+}
+html body.page-home #swifties-spotify .swifties-new-album span{display:flex;flex-direction:column;gap:5px;min-width:0;text-align:left}
+html body.page-home #swifties-spotify .swifties-new-album strong{font-size:14px;line-height:1.3}
+html body.page-home #swifties-spotify .swifties-new-album small{color:#a7ddb8;font-size:11.5px;line-height:1.4}
+@media(max-width:380px){
+  html body.page-home #swifties-spotify .swifties-new-album{gap:9px;padding:9px}
+  html body.page-home #swifties-spotify .swifties-new-album img{width:72px;height:72px;flex-basis:72px}
+}
+html body.page-home #swifties-spotify .swifties-grid{display:grid!important;grid-template-columns:1.25fr .75fr!important;gap:8px!important;max-width:830px!important;margin:0 auto 14px!important}
+html body.page-home #swifties-spotify :is(.swifties-official-link,.swifties-artist-link){
+  min-height:58px!important;display:flex!important;align-items:center!important;gap:10px!important;padding:10px 12px!important;
+  border:1px solid rgba(29,185,84,.4)!important;border-radius:14px!important;background:rgba(0,0,0,.24)!important;color:#fff!important;text-decoration:none!important;
+}
+html body.page-home #swifties-spotify .swifties-official-link span:nth-child(2){display:flex!important;flex-direction:column!important;gap:3px!important;min-width:0!important}
+html body.page-home #swifties-spotify .swifties-official-link small{color:#aaa2b2!important;font-size:11px!important}
+html body.page-home #swifties-spotify .swifties-spotify-mark{color:#1DB954!important;font-size:26px!important;line-height:1!important}
+html body.page-home #swifties-spotify :is(.swifties-official-link,.swifties-artist-link) b{margin-left:auto!important;color:#6df49b!important}
+html body.page-home #swifties-spotify .swifties-artist-link{justify-content:center!important;font-size:12px!important;font-weight:850!important}
+html body.page-home #swifties-spotify .swifties-player-block{max-width:830px!important;margin:10px auto 0!important}
+html body.page-home #swifties-spotify .swifties-player-block h3{margin:0 0 7px!important;color:#ded8e8!important;font-size:12px!important;font-weight:850!important;text-align:left!important}
+html body.page-home #swifties-spotify .swifties-embed{display:block!important;width:100%!important;max-width:830px!important;border:0!important;border-radius:12px!important;background:#121212!important}
+html body.page-home #swifties-spotify .swifties-source-note{margin:10px 0 0!important;color:#8f8797!important;text-align:center!important;font-size:10px!important;line-height:1.45!important}
+@media(max-width:650px){
+ html body.page-home #swifties-spotify.swifties-spotify--final{width:calc(100% - 10px)!important;margin:6px auto 12px!important;border-radius:16px!important}
+ html body.page-home #swifties-spotify .swifties-fold{min-height:50px!important;padding:11px!important;font-size:11px!important;letter-spacing:.035em!important}
+ html body.page-home #swifties-spotify .swifties-fold strong{display:block!important;margin-top:2px!important}
+ html body.page-home #swifties-spotify-body{padding:11px 9px 12px!important}
+ html body.page-home #swifties-spotify .swifties-grid{grid-template-columns:1fr!important}
+ html body.page-home #swifties-spotify .swifties-latest a{width:100%!important;border-radius:11px!important;text-align:center!important}
+ html body.page-home #swifties-spotify .swifties-embed{height:352px!important}
+}
+
+/* MOBILE FREEZE GUARD — keep desktop polish, remove expensive phone compositing. */
+@media(max-width:820px){
+  html.ma-ui-preparing body{visibility:visible!important}
+  html.ma-ui-preparing body::before{display:none!important}
+  html body.page-home #mh-topbox.app-header,
+  header.app-header.ma-global-header{
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb,
+  html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry,
+  html body.page-home #mh-topbox.ma-home-header .ma-kids-mode-entry::before{
+    animation:none!important;
+  }
+  html body.page-home #mh-topbox.app-header.ma-home-header{
+    box-shadow:0 8px 22px rgba(0,0,0,.24)!important;
+  }
+  .ma-menu{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+}
+
+
+/* ===== USER-PERSISTENT HOME FOLDS =====
+   Default state is open. lazy.js persists explicit user folds and Lazy Mode
+   closes every content module without creating a second layout owner. */
+html body.page-home .lazy-head:has(+ #trending-rail){display:none!important}
+html body.page-home .lazy-foldable:not(.lazy-open){display:none!important}
+html body.page-home #latest-news:not([open])>.ma-news-panel{display:none!important}
+html body.page-home #latest-news[open]>.ma-news-panel{display:block!important}
+html body.page-home #latest-news>summary{
+  pointer-events:auto!important;cursor:pointer!important;
+  position:relative!important;padding-right:72px!important;
+}
+html body.page-home #latest-news>summary::after{
+  display:block!important;content:""!important;
+  position:absolute!important;right:18px!important;top:50%!important;
+  width:40px!important;height:40px!important;border-radius:50%!important;
+  border:1px solid rgba(255,220,111,.42)!important;
+  background:rgba(255,255,255,.035) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/19px 19px no-repeat!important;
+  transform:translateY(-50%) rotate(0deg)!important;transition:transform .2s ease!important;
+}
+html body.page-home #latest-news[open]>summary::after{transform:translateY(-50%) rotate(180deg)!important}
+
+
+/* ===== MOBILE/TABLET FOLD POLISH — 2026-09-20 =====
+   Scoped to <=1024px only. Desktop remains untouched. */
+@media(max-width:1024px){
+
+  /* 1) One arrow language everywhere. Remove every legacy + / x fold glyph. */
+  html body.page-home :is(
+    #latest-news>summary,
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary,
+    .match-more-filters>summary,
+    .crit-toggle,
+    .lazy-head,
+    .seo-fold-summary
+  )::after{
+    content:""!important;
+    position:absolute!important;
+    right:14px!important;top:50%!important;
+    width:40px!important;height:40px!important;
+    border:1px solid rgba(255,220,111,.42)!important;
+    border-radius:50%!important;
+    background-color:rgba(255,255,255,.035)!important;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+    background-repeat:no-repeat!important;
+    background-position:center!important;
+    background-size:19px 19px!important;
+    color:transparent!important;
+    font-size:0!important;
+    text-shadow:none!important;
+    transform:translateY(-50%) rotate(0deg)!important;
+    transition:transform .2s ease,background-color .18s ease!important;
+    animation:none!important;
+  }
+  html body.page-home :is(
+    #latest-news[open]>summary,
+    #premiere-disclosure[open]>summary,
+    #weekly-pick-disclosure[open]>summary,
+    #global-events>.global-events-fold[open]>.global-events-summary,
+    .match-more-filters[open]>summary,
+    .seo-fold[open]>.seo-fold-summary
+  )::after,
+  html body.page-home .crit-toggle[aria-expanded="true"]::after,
+  html body.page-home .lazy-head[aria-expanded="true"]::after{
+    transform:translateY(-50%) rotate(180deg)!important;
+  }
+  html body.page-home :is(.ge-sum-chev,.crit-toggle-chevron,.lazy-head-chevron){display:none!important}
+
+  /* 2) Native disclosure = ONE box. Header and body no longer look detached. */
+  html body.page-home :is(
+    #premiere-disclosure,
+    #weekly-pick-disclosure,
+    #latest-news,
+    #global-events>.global-events-fold
+  ){
+    overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.48)!important;
+    border-radius:22px!important;
+    background:linear-gradient(145deg,rgba(24,17,43,.95),rgba(12,16,34,.96))!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.22)!important;
+    padding:0!important;
+  }
+  html body.page-home :is(
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #latest-news>summary,
+    #global-events>.global-events-fold>.global-events-summary
+  ){
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  html body.page-home :is(
+    #premiere-disclosure[open]>summary,
+    #weekly-pick-disclosure[open]>summary,
+    #latest-news[open]>summary,
+    #global-events>.global-events-fold[open]>.global-events-summary
+  ){
+    border-bottom:1px solid rgba(232,186,64,.20)!important;
+  }
+  html body.page-home #premiere-disclosure>.spotlight-card,
+  html body.page-home #weekly-pick-disclosure>.spotlight-card,
+  html body.page-home #latest-news>.ma-news-panel,
+  html body.page-home #global-events .global-events-body{
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  /* 3) Generic fold bar + content also reads as one continuous box. */
+  html body.page-home .lazy-head{
+    position:relative!important;
+    margin-bottom:0!important;
+    border-radius:22px!important;
+    background:linear-gradient(145deg,rgba(24,17,43,.95),rgba(12,16,34,.96))!important;
+    border:1px solid rgba(232,186,64,.48)!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.22)!important;
+  }
+  html body.page-home .lazy-head.is-open{
+    border-radius:22px 22px 0 0!important;
+    border-bottom-color:rgba(232,186,64,.20)!important;
+  }
+  html body.page-home .lazy-head.is-open + .lazy-foldable.lazy-open{
+    margin-top:0!important;
+    border-top:0!important;
+    border-radius:0 0 22px 22px!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.18)!important;
+  }
+
+  /* 4) Remove repeated titles/labels inside an already-labelled open fold. */
+  html body.page-home .lazy-head + #trending-rail>h4,
+  html body.page-home .lazy-head + #how-it-works>h2:first-child,
+  html body.page-home .lazy-head + #ai-concierge-section>h2:first-child,
+  html body.page-home .lazy-head + .tg-entry .tg-entry-body>strong,
+  html body.page-home #premiere-disclosure .spotlight-eyebrow,
+  html body.page-home #weekly-pick-disclosure .spotlight-eyebrow{
+    display:none!important;
+  }
+
+  /* 5) Taylor/spotlight button already lives inside its box; use same arrow treatment. */
+  html body.page-home #swifties-spotify{
+    overflow:hidden!important;
+  }
+  html body.page-home #swifties-spotify .swifties-fold-icon{
+    width:40px!important;height:40px!important;
+    flex:0 0 40px!important;
+    display:grid!important;place-items:center!important;
+    border:1px solid rgba(255,220,111,.42)!important;
+    border-radius:50%!important;
+    font-size:0!important;color:transparent!important;
+    background:rgba(255,255,255,.035) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/19px 19px no-repeat!important;
+    transform:rotate(0deg)!important;
+    transition:transform .2s ease!important;
+  }
+  html body.page-home #swifties-spotify .swifties-fold[aria-expanded="true"] .swifties-fold-icon{
+    transform:rotate(180deg)!important;
+  }
+
+  /* 6) Poster/title safety: never crop title artwork on phones/tablets. */
+  html body.page-home :is(
+    .spotlight-poster img,
+    .marquee-item img,
+    .global-event>a>img,
+    #result-box .poster-stage img,
+    #result-box .result-poster,
+    .discover-poster img
+  ){
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#0b1020!important;
+  }
+  html body.page-home :is(
+    .spotlight-title,
+    .marquee-title,
+    .global-event h3,
+    .ma-news-card h3,
+    #res-title
+  ){
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal!important;
+    -webkit-line-clamp:unset!important;
+    max-height:none!important;
+  }
+
+  /* 7) Stop the remaining intermittent mobile/tablet shimmer/blink. */
+  html:not(.kids-mode) body.page-home :is(
+    button:not(.matchapp-tour-skip),
+    input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+    select,textarea,a.gold-btn,a.install-btn,a.ma-kids-mode-entry,[role="button"],
+    .premium-card,.spotlight-card,.tg-card,.ma-concierge,.crit-toggle,.ma-news-card,
+    .share-sheet,.app-header,.global-events-summary,
+    .home-hero,#trending-rail,#latest-news,#premiere-disclosure,
+    #weekly-pick-disclosure,#global-events
+  ),
+  html:not(.kids-mode) body.page-home :is(
+    .premium-card,.spotlight-card,.ma-concierge,.crit-toggle,.ma-news-card,
+    .global-events-summary,.lazy-head
+  )::before,
+  html:not(.kids-mode) body.page-home :is(
+    .premium-card,.spotlight-card,.ma-concierge,.crit-toggle,.ma-news-card,
+    .global-events-summary,.lazy-head
+  )::after{
+    animation:none!important;
+  }
+}
+
+
+/* ===== HOME FOLD CLEANUP — 2026-09-20 =====
+   Remove orphan/dead fold bars and use one compact centered arrow language
+   for real Home disclosures on every viewport. */
+html body.page-home .lazy-head:is(
+  [data-fold-key="checkin"],
+  [data-fold-key="topask"],
+  [data-fold-key="how"],
+  [data-fold-key="aboutai"],
+  [data-fold-key="tiktok"]
+){display:none!important}
+
+/* Never show a plus/x fold affordance anywhere on Home. */
+html body.page-home :is(
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary,
+  .match-more-filters>summary,
+  .crit-toggle,
+  .lazy-head,
+  .seo-fold-summary
+)::after{
+  content:""!important;
+  position:absolute!important;
+  right:12px!important;top:50%!important;
+  width:38px!important;height:38px!important;
+  border:1px solid rgba(255,220,111,.42)!important;
+  border-radius:50%!important;
+  background-color:rgba(255,255,255,.035)!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:18px 18px!important;
+  color:transparent!important;font-size:0!important;text-shadow:none!important;
+  transform:translateY(-50%) rotate(0deg)!important;
+  transition:transform .2s ease,background-color .18s ease,box-shadow .18s ease!important;
+  animation:none!important;
+}
+html body.page-home :is(
+  #latest-news[open]>summary,
+  #premiere-disclosure[open]>summary,
+  #weekly-pick-disclosure[open]>summary,
+  #global-events>.global-events-fold[open]>.global-events-summary,
+  .match-more-filters[open]>summary,
+  .seo-fold[open]>.seo-fold-summary
+)::after,
+html body.page-home .crit-toggle[aria-expanded="true"]::after,
+html body.page-home .lazy-head[aria-expanded="true"]::after{
+  transform:translateY(-50%) rotate(180deg)!important;
+}
+html body.page-home :is(.ge-sum-chev,.crit-toggle-chevron,.lazy-head-chevron){display:none!important}
+
+/* Real top-level Home folds are compact and centered instead of stretched bars. */
+html body.page-home :is(
+  .lazy-head,
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+){
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:min(calc(100% - 20px),720px)!important;
+  max-width:720px!important;
+  min-height:54px!important;height:auto!important;
+  margin:8px auto!important;
+  padding:10px 58px 10px 18px!important;
+  box-sizing:border-box!important;
+  border:1px solid rgba(232,186,64,.46)!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,rgba(27,18,47,.94),rgba(13,13,31,.95))!important;
+  color:#f3edf9!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.22)!important;
+  text-align:center!important;
+  font-size:clamp(13px,1.15vw,15px)!important;
+  font-weight:850!important;
+  line-height:1.25!important;
+  list-style:none!important;
+  animation:none!important;
+}
+html body.page-home :is(
+  .lazy-head,
+  #latest-news>summary,
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary,
+  #global-events>.global-events-fold>.global-events-summary
+):hover{
+  transform:translateY(-1px)!important;
+  border-color:rgba(255,227,143,.72)!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.26),0 0 16px rgba(255,217,106,.10)!important;
+}
+html body.page-home .lazy-head-label{
+  width:100%!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  text-align:center!important;
+}
+
+/* Spotify already owns its fold button; give it the same compact centered treatment. */
+html body.page-home #swifties-spotify .swifties-fold{
+  position:relative!important;
+  width:min(calc(100% - 20px),720px)!important;
+  max-width:720px!important;
+  min-height:54px!important;
+  margin:8px auto!important;
+  padding:10px 14px 10px 18px!important;
+  border:1px solid rgba(29,185,84,.46)!important;
+  border-radius:16px!important;
+  justify-content:center!important;
+  text-align:center!important;
+  background:linear-gradient(145deg,rgba(19,31,29,.94),rgba(16,13,30,.95))!important;
+}
+html body.page-home #swifties-spotify .swifties-fold>span:first-child{flex:1 1 auto!important;text-align:center!important}
+html body.page-home #swifties-spotify .swifties-fold-icon{
+  width:38px!important;height:38px!important;flex:0 0 38px!important;
+  display:grid!important;place-items:center!important;
+  border:1px solid rgba(255,220,111,.42)!important;border-radius:50%!important;
+  font-size:0!important;color:transparent!important;
+  background:rgba(255,255,255,.035) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFE38A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px 18px no-repeat!important;
+  transform:rotate(0deg)!important;transition:transform .2s ease!important;
+}
+html body.page-home #swifties-spotify .swifties-fold[aria-expanded="true"] .swifties-fold-icon{transform:rotate(180deg)!important}
+
+@media(max-width:640px){
+  html body.page-home :is(
+    .lazy-head,
+    #latest-news>summary,
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary,
+    #global-events>.global-events-fold>.global-events-summary,
+    #swifties-spotify .swifties-fold
+  ){
+    width:calc(100% - 12px)!important;
+    min-height:50px!important;
+    margin:6px auto!important;
+    padding-top:8px!important;padding-bottom:8px!important;
+    font-size:12px!important;
+  }
+}
+
+
+/* ===== OFFICIAL BRAND ICON — 2026-09-20 =====
+   Approved purple/gold squircle. Transparent outer pixels blend into the
+   existing premium top-box background on every viewport. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  isolation:isolate!important;
+  background:transparent!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  object-fit:contain!important;
+  object-position:center!important;
+  border-radius:22%!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 7px 16px rgba(0,0,0,.26)) drop-shadow(0 0 14px rgba(229,193,88,.20))!important;
+}
+@media(max-width:1024px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+    filter:drop-shadow(0 4px 10px rgba(0,0,0,.22))!important;
+  }
+}
+
+/* Official icon on shared non-Kids headers: preserve the approved squircle. */
+.ma-global-header .ma-brand-orb-stage :is(.ma-orbit,.ma-orb-star){display:none!important}
+.ma-global-header .ma-brand-orb{
+  object-fit:contain!important;object-position:center!important;
+  border-radius:22%!important;background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 5px 12px rgba(0,0,0,.24)) drop-shadow(0 0 12px rgba(229,193,88,.18))!important;
+}
+
+/* 2026-09-20 renderer root guard.
+   Keep the approved Home composition, but never reintroduce the filtered 8K
+   SVG or a JS-gated invisible header on the critical render path. */
+html body.page-home #mh-topbox.app-header{
+  visibility:visible!important;
+  opacity:1!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  animation:none!important;
+  will-change:auto!important;
+}
+
+
+/* 2026-09-20 Home compositor stability guard.
+   Keep the approved glass colors, borders and shadows, but avoid full-page
+   backdrop rasterization over the fixed poster layer during startup/scroll. */
+html body.page-home #mh-topbox.app-header,
+html body.page-home :is(.premium-card,.spotlight-card,.ma-concierge,.tg-entry,details.premiere-disclosure,details#weekly-pick-disclosure,.ma-news,.global-events-fold,#swifties-spotify),
+html body.page-home .ma-menu,
+html body.page-home .real-time-clock,
+html body.page-home .chrome-banner{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+
+/* 2026-09-20 Home top-box final freeze guard.
+   The approved Ai badge stays visible, but its continuous gradient/blur/star
+   animations are disabled on Home so the header cannot keep a compositor
+   layer repainting while the page is scrolling. */
+html body.page-home #mh-topbox :is(.ma-brand-orb,.ma-ai-letters,.ma-ai-star),
+html body.page-home #mh-topbox .ma-ai-brand-button::before,
+html body.page-home #mh-topbox .ma-ai-brand-button::after{
+  animation:none!important;
+  will-change:auto!important;
+}
+html body.page-home #mh-topbox .ma-ai-brand-button::before,
+html body.page-home #mh-topbox .ma-ai-brand-button::after{
+  filter:none!important;
+}
+html body.page-home #mh-topbox .ma-ai-letters{
+  background-position:50% 50%!important;
+  filter:drop-shadow(0 0 6px rgba(74,221,255,.42)) drop-shadow(0 0 10px rgba(190,81,255,.24))!important;
+}
+
+/* 2026-09-20 Home brand-circle crop.
+   Home only: visually remove the dark square around the approved app artwork
+   while preserving the stable lightweight official image file. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  border-radius:50%!important;
+  clip-path:circle(35.5% at 50% 50%)!important;
+  transform:scale(1.34)!important;
+  filter:drop-shadow(0 4px 9px rgba(0,0,0,.22))!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+
+
+/* 2026-09-20 Home brand crop and fold cleanup */
+html body.page-home #trending-rail>h4{display:none!important}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  position:relative!important;
+  width:78px!important;
+  height:78px!important;
+  flex:0 0 78px!important;
+  margin:0 8px 0 0!important;
+  overflow:hidden!important;
+  border-radius:50%!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  transform:scale(1.4)!important;
+  transform-origin:center!important;
+  margin:0!important;
+  border-radius:0!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+    width:64px!important;
+    height:64px!important;
+    flex-basis:64px!important;
+    margin-right:6px!important;
+  }
+}
+
+
+/* 2026-09-20 final Home brand visibility lock */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  width:78px!important;
+  height:78px!important;
+  flex:0 0 78px!important;
+  margin:0 8px 0 0!important;
+  overflow:hidden!important;
+  border-radius:50%!important;
+  background:transparent!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  clip-path:none!important;
+  border-radius:0!important;
+  transform:translate(-50%,-50%) scale(1.42)!important;
+  transform-origin:center!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+    width:64px!important;
+    height:64px!important;
+    flex-basis:64px!important;
+    margin-right:6px!important;
+  }
+}
+
+
+/* 2026-09-20 Home-only transparent brand asset.
+   Static presentation only: no animation, filters, borders or promoted layers. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  overflow:visible!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:translate(-50%,-50%) scale(.98)!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+/* Never restore the obsolete fold control around the real trending rail. */
+html body.page-home .lazy-head:has(+ #trending-rail){display:none!important}
+
+
+/* 2026-09-20 final Home logo placement lock.
+   The transparent circular app mark must remain visible immediately before
+   MatchApp TV. Static only to preserve the Home freeze/crash guard. */
+html body.page-home #mh-topbox.ma-home-header #home-brand-lockup,
+html body.page-home #mh-topbox.ma-home-header .ma-brand-lockup,
+html body.page-home #mh-topbox.ma-home-header .ma-brand-home-link{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  align-items:center!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:74px!important;
+  height:74px!important;
+  flex:0 0 74px!important;
+  margin:0 7px 0 0!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:74px!important;
+  height:74px!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  border:0!important;
+  border-radius:0!important;
+  clip-path:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage,
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+    width:60px!important;
+    height:60px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage{flex-basis:60px!important;margin-right:5px!important}
+}
+
+
+/* 2026-09-20 Home transparent-logo guard.
+   The approved asset already contains only the circular gold/purple emblem.
+   Keep it untouched and static so no square background or compositor work returns. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  -webkit-clip-path:none!important;
+  clip-path:none!important;
+  transform:none!important;
+  transform-origin:50% 50%!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+
+/* ===== 2026-09-21 Home logo containment fix — ALL viewports =====
+   The brand mark was escaping the top box on every device, including the
+   Android WebView. Cause: the 2026-09-20 crop pass positions the orb with
+   left:50%/top:50% and re-centres it with transform:translate(-50%,-50%),
+   but the later transparent-logo guard forces transform:none. The offsets
+   survive, the compensating translate does not, so the orb is pushed down and
+   right by half the stage and hangs outside the header.
+
+   Fix at the root: the orb and its stage are the same size at every
+   breakpoint (74px, 60px under 700px), so anchoring the orb at the stage
+   origin is exactly correct and needs no transform. This is deliberately NOT
+   inside a media query — the defect is present at every width and the fix must
+   reach handsets, tablets, desktop and both Android modules alike. */
+html body.page-home #mh-topbox.ma-home-header .ma-brand-orb{
+  left:0!important;
+  top:0!important;
+  right:auto!important;
+  bottom:auto!important;
+}
+
+/* ===== 2026-09-21 desktop cinematic landing polish =====
+   Desktop-only (>=1100px) presentation pass covering the Home brand lockup and
+   the sign-in card. Every rule below is inert under 1100px, so the handset and
+   tablet rendering is unchanged from the previous release.
+
+   Two standing guards are deliberately preserved, not lifted:
+   - the transparent-logo guard keeps filter:none on .ma-brand-orb, so the
+     lockup glow is painted by a sibling layer on the stage instead of by a
+     filter on the image itself;
+   - the Home compositor guard keeps backdrop-filter off every Home surface.
+     Only #main-auth-modal>.premium-card is exempted, by id specificity, and
+     that card exists solely while the modal is open, so no backdrop is
+     rasterised during startup or scrolling. */
+@media(min-width:1100px){
+
+  /* --- 1. Logo positioning and hierarchy --- */
+  html body.page-home #mh-topbox.app-header.ma-home-header{
+    padding:14px 26px!important;
+  }
+  /* Ambient brand glow behind the orb. Static, single small layer, no filter. */
+  html body.page-home #mh-topbox.ma-home-header .ma-brand-orb-stage::before{
+    content:''!important;
+    position:absolute!important;
+    left:-27px!important;top:-34px!important;
+    width:144px!important;height:144px!important;
+    border-radius:50%!important;
+    background:radial-gradient(circle,rgba(229,193,88,.30) 0%,rgba(229,193,88,.13) 38%,rgba(147,86,214,.10) 58%,transparent 72%)!important;
+    z-index:1!important;
+    pointer-events:none!important;
+  }
+  /* The wordmark gradients are only defined under .ma-global-header, and Home
+     runs .ma-home-header, so "Match" and "App" render untreated on the landing
+     page. Restore the same treatment for Home. */
+  html body.page-home #mh-topbox.ma-home-header .ma-word-match{
+    background:linear-gradient(180deg,#fff 8%,#dce1ea 50%,#9ba8bc 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;
+    -webkit-text-fill-color:transparent!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-word-app{
+    background:linear-gradient(180deg,#fff0ba 0%,#f2c951 45%,#9e6c17 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;
+    -webkit-text-fill-color:transparent!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header .ma-wordmark{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    text-shadow:0 2px 18px rgba(8,6,20,.85)!important;
+  }
+
+  /* --- 2. Auth overlay: let the mosaic read behind the card --- */
+  html body.page-home #main-auth-modal{
+    background:rgba(6,5,16,.72)!important;
+  }
+
+  /* --- 3. Glassmorphic auth card (scoped exemption from the Home guard) --- */
+  html body.page-home #main-auth-modal>.premium-card{
+    width:min(92vw,468px)!important;
+    max-width:468px!important;
+    padding:34px 32px 30px!important;
+    border:1px solid rgba(255,255,255,.10)!important;
+    border-radius:22px!important;
+    background:linear-gradient(180deg,rgba(28,21,45,.72),rgba(10,13,27,.86))!important;
+    box-shadow:0 34px 90px rgba(0,0,0,.62),0 0 0 1px rgba(229,193,88,.13),inset 0 1px 0 rgba(255,255,255,.07)!important;
+    backdrop-filter:blur(16px) saturate(118%)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(118%)!important;
+  }
+
+  /* Brand lockup inside the card. Reuses the orb already cached by the header,
+     so it costs no additional request. */
+  html body.page-home #main-auth-modal .auth-brand{
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    gap:9px!important;margin:0 0 16px!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-orb{
+    width:44px!important;height:44px!important;object-fit:contain!important;display:block!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-word{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    font-size:25px!important;font-weight:800!important;letter-spacing:-.035em!important;
+    line-height:1!important;color:#f5f2fb!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-word b{
+    font-weight:800!important;
+    background:linear-gradient(180deg,#fff0ba 0%,#f2c951 45%,#c08a20 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;
+    -webkit-text-fill-color:transparent!important;
+  }
+  html body.page-home #main-auth-modal .auth-brand-tv{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    font-size:13px!important;font-weight:700!important;letter-spacing:.10em!important;
+    color:rgba(226,218,240,.72)!important;align-self:flex-end!important;padding-bottom:3px!important;
+  }
+
+  /* --- 4. Type pairing: cinematic display heading, legible body --- */
+  html body.page-home #main-auth-modal>.premium-card>h3{
+    font-family:var(--font-display,"Outfit",system-ui,sans-serif)!important;
+    font-size:27px!important;font-weight:800!important;
+    letter-spacing:.005em!important;line-height:1.18!important;
+    margin:0 0 4px!important;
+  }
+  html body.page-home #main-auth-modal :is(input,button,p,label,span,div){
+    font-family:var(--font-body,"Inter",system-ui,sans-serif)!important;
+  }
+  html body.page-home #main-auth-modal :is(.auth-hint,.passkey-help,.phone-auth-status,#phone-auth-help){
+    line-height:1.62!important;
+  }
+
+  /* --- 5. Inputs: border luminance shift and a clear focus ring --- */
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field){
+    background:rgba(6,6,16,.62)!important;
+    border:1px solid rgba(229,193,88,.34)!important;
+    color:#fff!important;
+    transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease!important;
+  }
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field):hover{
+    border-color:rgba(229,193,88,.56)!important;
+  }
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field):focus-visible,
+  html body.page-home #main-auth-modal :is(#login-email,#login-password,#reg-email,#reg-password,#forgot-email,.audit-auth-input,.phone-auth-field):focus{
+    outline:none!important;
+    border-color:var(--gold,#e5c158)!important;
+    background:rgba(8,8,20,.78)!important;
+    box-shadow:0 0 0 3px color-mix(in srgb,var(--gold,#e5c158) 22%,transparent),0 0 22px color-mix(in srgb,var(--gold,#e5c158) 16%,transparent)!important;
+  }
+
+  /* --- 6. Button micro-interactions --- */
+  html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry){
+    transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s ease,border-color .2s ease!important;
+  }
+  html body.page-home #main-auth-modal .gold-btn{
+    border-radius:14px!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.42),0 0 18px color-mix(in srgb,var(--gold,#e5c158) 20%,transparent)!important;
+  }
+  @media(hover:hover){
+    html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry):hover{
+      transform:scale(1.02)!important;
+    }
+    html body.page-home #main-auth-modal .gold-btn:hover{
+      box-shadow:0 16px 38px rgba(0,0,0,.5),0 0 30px color-mix(in srgb,var(--gold,#e5c158) 38%,transparent)!important;
+    }
+    html body.page-home #main-auth-modal :is(.passkey-button,.phone-auth-entry,.phone-auth-action):hover{
+      border-color:var(--gold,#e5c158)!important;
+      box-shadow:0 12px 30px rgba(0,0,0,.42)!important;
+    }
+  }
+  html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry):active{
+    transform:scale(.995)!important;
+  }
+  html body.page-home #main-auth-modal .auth-tabs{
+    border-bottom-color:rgba(255,255,255,.10)!important;
+  }
+}
+
+/* Decoration only: every transition above stops under either reduced-motion
+   signal, matching the dual guard used across the rest of the site. */
+@media(prefers-reduced-motion:reduce){
+  html body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry,input){
+    transition:none!important;transform:none!important;
+  }
+}
+html.reduce-motion body.page-home #main-auth-modal :is(.gold-btn,.google-signin-btn,.passkey-button,.phone-auth-action,.phone-auth-entry,input){
+  transition:none!important;transform:none!important;
+}
+
+/* ===== 2026-09-21 Home top-box control bar =====
+   Eleven controls share the header. They previously wrapped into ragged rows —
+   four of them on a handset, with a single orphaned badge on the last row, so
+   the box ate a third of the screen. One consistent control height, even gaps
+   and balanced wrapping fix it without hiding or removing a single control. */
+html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions){
+  align-content:center!important;
+  row-gap:8px!important;
+  column-gap:8px!important;
+}
+html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions)>*{
+  box-sizing:border-box!important;
+  align-self:center!important;
+}
+/* Uniform pill height so no control sits proud of its row. */
+html body.page-home #mh-topbox.ma-home-header nav :is(button,a.nav-avatar-link,a.ma-kids-mode-entry,a.quota-badge,.install-wrap,.ma-menu-wrap,#lang-switcher-host){
+  height:44px!important;
+  min-height:44px!important;
+}
+html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host select{
+  height:44px!important;
+  box-sizing:border-box!important;
+}
+
+@media(min-width:701px) and (max-width:1099px){
+  html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions){
+    justify-content:center!important;
+    max-width:100%!important;
+    row-gap:7px!important;
+    column-gap:7px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(button,a.nav-avatar-link,a.ma-kids-mode-entry,a.quota-badge,.install-wrap,.ma-menu-wrap,#lang-switcher-host){
+    height:42px!important;
+    min-height:42px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host{width:132px!important;flex:0 0 132px!important}
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host select{height:42px!important;width:100%!important}
+}
+
+@media(max-width:700px){
+  /* Compact, centred and evenly wrapped: the same eleven controls in three
+     tidy rows instead of four ragged ones. */
+  html body.page-home #mh-topbox.ma-home-header nav:is(.mh-deck,.ma-header-actions){
+    justify-content:center!important;
+    max-width:100%!important;
+    row-gap:6px!important;
+    column-gap:6px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(button,a.nav-avatar-link,a.ma-kids-mode-entry,a.quota-badge,.install-wrap,.ma-menu-wrap,#lang-switcher-host){
+    height:38px!important;
+    min-height:38px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(.sound-toggle-btn,.matchapp-notification-button,#profile-link-tab,#nav-logout-btn){
+    width:38px!important;min-width:38px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host{width:104px!important;flex:0 0 104px!important}
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host select{
+    height:38px!important;width:100%!important;font-size:12px!important;padding-left:8px!important;padding-right:20px!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav #nav-reg-btn{
+    padding:0 14px!important;font-size:12.5px!important;white-space:nowrap!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav :is(.ma-kids-mode-entry,.ma-how-button){
+    padding:0 12px!important;font-size:12.5px!important;white-space:nowrap!important;
+  }
+  html body.page-home #mh-topbox.ma-home-header nav .install-wrap .install-btn{
+    height:38px!important;padding:0 12px!important;font-size:12.5px!important;
+  }
+}
+
+/* ===== 2026-09-21 golden sheen =====
+   A gold edge on every cover, box and field, plus a travelling sheen. The
+   outline is painted statically by CSS on all of them; only elements carrying
+   .ma-sheen-live animate, and gold-sheen.js caps that at twelve on-screen
+   elements. None of the selectors below used ::before/::after before this
+   pass, so the ring cannot collide with an existing decoration. */
+/* The ring is applied by selector, not by a class the runtime adds, so every
+   cover and box carries it even if the observer never reaches them. */
+html body.page-home :is(.marquee-item,.ma-news-card,.global-event,.spotlight-card,.premium-card,#questionnaire-box,.ma-news,.tg-entry,.global-events-fold,#daily-match-checkin,.ma-concierge){position:relative}
+html body.page-home :is(.marquee-item,.ma-news-card,.global-event,.spotlight-card,.premium-card,#questionnaire-box,.ma-news,.tg-entry,.global-events-fold,#daily-match-checkin,.ma-concierge)::after{
+  content:''!important;
+  position:absolute!important;
+  inset:0!important;
+  border-radius:inherit!important;
+  padding:1px!important;
+  pointer-events:none!important;
+  z-index:3!important;
+  background:linear-gradient(115deg,
+    rgba(229,193,88,.34) 0%,
+    rgba(229,193,88,.34) 38%,
+    rgba(255,241,190,.96) 50%,
+    rgba(229,193,88,.34) 62%,
+    rgba(229,193,88,.34) 100%)!important;
+  background-size:300% 100%!important;
+  background-position:100% 0!important;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;
+  -webkit-mask-composite:xor!important;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;
+  mask-composite:exclude!important;
+}
+@keyframes maSheenSweep{
+  0%{background-position:100% 0}
+  100%{background-position:-200% 0}
+}
+html body.page-home .ma-sheen-live::after{
+  animation:maSheenSweep 3.6s linear var(--sheen-delay,0s) 2!important;
+}
+/* Fields carry the same gold edge, drawn with outline rather than a pseudo
+   element so it never collides with the existing button sweeps. */
+html body.page-home :is(input:not([type=checkbox]):not([type=radio]),select,textarea){
+  outline:1px solid rgba(229,193,88,.26)!important;
+  outline-offset:-1px!important;
+}
+html body.page-home :is(input:not([type=checkbox]):not([type=radio]),select,textarea):focus-visible{
+  outline-color:var(--gold,#e5c158)!important;
+}
+
+/* Cover captions: every rail tile is a framed card with its title under the
+   artwork. title-captions.js creates the caption; this styles it. */
+html body.page-home #trending-rail .marquee-item{
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+  background:rgba(12,10,26,.72)!important;
+}
+html body.page-home #trending-rail .marquee-item .marquee-title{
+  position:static!important;
+  display:block!important;
+  width:100%!important;
+  box-sizing:border-box!important;
+  flex:0 0 auto!important;
+  padding:7px 8px 8px!important;
+  background:linear-gradient(180deg,rgba(18,13,34,.96),rgba(10,9,22,.98))!important;
+  color:#f6f2fb!important;
+  font:700 11.5px/1.3 var(--font-body,"Inter",system-ui,sans-serif)!important;
+  text-align:center!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+}
+@media(max-width:700px){
+  html body.page-home #trending-rail .marquee-item .marquee-title{
+    font-size:10.5px!important;padding:6px 6px 7px!important;
+  }
+}
+
+/* Decoration only: the sheen stops under either reduced-motion signal, and
+   gold-sheen.js does not even start an observer in that case. */
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .ma-sheen-live::after{animation:none!important}
+}
+html.reduce-motion body.page-home .ma-sheen-live::after{animation:none!important}
+
+/* Handset row packing. Widths and explicit order are chosen together so the
+   eleven controls wrap into three full rows instead of three ragged rows plus
+   a single orphaned badge. Nothing is hidden or removed. */
+@media(max-width:700px){
+  html body.page-home #mh-topbox.ma-home-header nav #lang-switcher-host{order:1!important}
+  html body.page-home #mh-topbox.ma-home-header nav .sound-toggle-btn{order:2!important}
+  html body.page-home #mh-topbox.ma-home-header nav .matchapp-notification-button{order:3!important}
+  html body.page-home #mh-topbox.ma-home-header nav #profile-link-tab{order:4!important}
+  html body.page-home #mh-topbox.ma-home-header nav #nav-logout-btn{order:5!important}
+  html body.page-home #mh-topbox.ma-home-header nav #nav-reg-btn{order:6!important;max-width:150px!important}
+  html body.page-home #mh-topbox.ma-home-header nav .ma-kids-mode-entry{order:7!important}
+  html body.page-home #mh-topbox.ma-home-header nav .quota-badge{order:8!important}
+  html body.page-home #mh-topbox.ma-home-header nav .ma-how-button{order:9!important}
+  html body.page-home #mh-topbox.ma-home-header nav .install-wrap{order:10!important;max-width:118px!important}
+  html body.page-home #mh-topbox.ma-home-header nav .install-wrap .install-btn{max-width:118px!important;padding:0 10px!important}
+  html body.page-home #mh-topbox.ma-home-header nav .ma-menu-wrap{order:11!important}
+}
+
+/* The rail card previously gave the poster 100% of a fixed card height, so the
+   caption title-captions.js writes was pushed past the card's overflow:hidden
+   edge and never rendered. Let the card size to poster + caption instead. */
+html body.page-home #trending-rail .marquee-item{
+  height:auto!important;
+  min-height:0!important;
+}
+html body.page-home #trending-rail .marquee-item img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:2/3!important;
+  flex:0 0 auto!important;
+}
+html body.page-home #trending-rail .marquee-item .marquee-title{
+  flex:0 0 auto!important;
+}
+
+/* The credits badge ships empty and is filled by credits-ui.js. While it has
+   no content it should not occupy a pill in the control bar. */
+html body.page-home #mh-topbox.ma-home-header #quota-badge:empty{display:none!important}
+
+/* The hero headline is the shortcut into the matcher (lazy.js binds it), so it
+   advertises itself as one. The fold's own "Curate Your Perfect Match" button
+   remains the primary, fully labelled control. */
+html body.page-home .home-h1-jump{
+  cursor:pointer!important;
+  transition:color .18s ease,text-shadow .18s ease!important;
+}
+@media(hover:hover){
+  html body.page-home .home-h1-jump:hover{
+    color:#fff6d6!important;
+    text-shadow:0 0 24px color-mix(in srgb,var(--gold,#e5c158) 42%,transparent)!important;
+  }
+}
+html body.page-home .home-h1-jump:focus-visible{
+  outline:2px solid var(--gold,#e5c158)!important;
+  outline-offset:6px!important;
+  border-radius:10px!important;
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .home-h1-jump{transition:none!important}
+}
+html.reduce-motion body.page-home .home-h1-jump{transition:none!important}
+
+
+/* ===== 2026-09-21 coherent Home stage + AdSense placement pass =====
+   Top-level Home folds now use the exact same centered stage width as the
+   Match / Ask panel and Latest Titles. Inner matcher labels and controls keep
+   a tiny but consistent breathing space at every breakpoint. */
+html body.page-home :is(
+  .lazy-head[data-fold-key="concierge"],
+  .lazy-head[data-fold-key="together"],
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary
+){
+  width:100%!important;
+  max-width:100%!important;
+  min-height:68px!important;
+  height:auto!important;
+  margin:10px auto!important;
+  padding:12px 62px 12px 20px!important;
+  box-sizing:border-box!important;
+  border-radius:20px!important;
+}
+
+html body.page-home :is(
+  .lazy-head[data-fold-key="concierge"],
+  .lazy-head[data-fold-key="together"]
+){
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+html body.page-home :is(
+  #premiere-disclosure,
+  #weekly-pick-disclosure
+){
+  width:100%!important;
+  max-width:var(--ma-stage-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+
+/* Matcher spacing: labels, chips and containers never touch or cross the
+   inner edge. Keep the gap deliberately small, but always present. */
+html body.page-home .ma-concierge{
+  padding:16px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+html body.page-home .ma-concierge #questionnaire-box{
+  padding:10px 12px 12px!important;
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+html body.page-home .ma-concierge .ma-quick{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:2px!important;
+  gap:10px!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-filter-row{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:3px 2px!important;
+  gap:6px!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-filter-label{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:0 4px 2px!important;
+  line-height:1.25!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-chip-row{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  padding:2px 4px 4px!important;
+  gap:6px!important;
+  box-sizing:border-box!important;
+}
+html body.page-home .ma-concierge .ma-chip{
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+/* Desktop web: keep both AdSense rails visible. Minimum outer rail of 144px
+   leaves 128px for the responsive vertical unit after locked 7px padding
+   and two 1px borders, safely over Google's 120px minimum. All five existing
+   slots, positions, formats, heights, breakpoints and Auto ads stay intact. */
+@media(min-width:1180px){
+  html body.page-home main.page-wrapper>.main-layout{
+    --ma-ad-rail:clamp(144px,10.8vw,160px);
+    --ma-ad-gap:clamp(10px,1.25vw,18px);
+    display:grid!important;
+    grid-template-columns:var(--ma-ad-rail) minmax(0,var(--ma-stage-width)) var(--ma-ad-rail)!important;
+    justify-content:center!important;
+    align-items:start!important;
+    width:100%!important;
+    max-width:1480px!important;
+    margin:0 auto!important;
+    padding:14px clamp(8px,1vw,16px) 0!important;
+    gap:var(--ma-ad-gap)!important;
+    box-sizing:border-box!important;
+  }
+  html body.page-home main.page-wrapper>.main-layout>.container{
+    grid-column:2!important;
+    width:100%!important;
+    max-width:var(--ma-stage-width)!important;
+    min-width:0!important;
+    margin:0 auto!important;
+  }
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    position:sticky!important;
+    top:104px!important;
+    width:100%!important;
+    max-width:160px!important;
+    min-width:0!important;
+    min-height:600px!important;
+    padding:7px!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+    border:1px solid rgba(232,186,64,.14)!important;
+    border-radius:16px!important;
+    background:rgba(8,13,29,.52)!important;
+  }
+  html body.page-home .sidebar-ad-left{grid-column:1!important;justify-self:end!important}
+  html body.page-home .sidebar-ad-right{grid-column:3!important;justify-self:start!important}
+  html body.page-home .sidebar-ad-left ins.adsbygoogle,
+  html body.page-home .sidebar-ad-right ins.adsbygoogle{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:600px!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:none!important;
+  }
+}
+
+/* Tablet web uses the same in-flow strategy as phones, with a slightly
+   larger responsive canvas and no side rails competing with the product. */
+@media(min-width:768px) and (max-width:1179px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:min(100%,760px)!important;
+    max-width:760px!important;
+    min-height:104px!important;
+    margin:16px auto!important;
+    padding:7px!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.11)!important;
+    border-radius:15px!important;
+    background:rgba(8,13,29,.40)!important;
+    box-shadow:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:88px!important;
+  }
+}
+
+/* Mobile web: the three existing responsive slots stay in the document flow,
+   small and subtle. matchapp-ia.js already distributes them after the
+   discovery/result/editorial sections instead of stacking them together. */
+@media(max-width:767px){
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right{
+    display:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:92px!important;
+    margin:14px auto!important;
+    padding:6px!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+    border:1px solid rgba(232,186,64,.10)!important;
+    border-radius:14px!important;
+    background:rgba(8,13,29,.36)!important;
+    box-shadow:none!important;
+  }
+  html body.page-home .ad-banner-container.ma-inline-ad ins.adsbygoogle{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-height:78px!important;
+  }
+  html body.page-home .ma-concierge{
+    padding:12px!important;
+  }
+  html body.page-home .ma-concierge #questionnaire-box{
+    padding:8px 8px 10px!important;
+  }
+  html body.page-home .ma-concierge .ma-quick{
+    gap:8px!important;
+  }
+  html body.page-home .ma-concierge .ma-filter-row{
+    padding:3px 1px!important;
+    gap:5px!important;
+  }
+  html body.page-home .ma-concierge .ma-filter-label{
+    padding:0 3px 2px!important;
+  }
+  html body.page-home .ma-concierge .ma-chip-row{
+    padding:2px 3px 3px!important;
+    gap:5px!important;
+  }
+  html body.page-home :is(
+    .lazy-head[data-fold-key="concierge"],
+    .lazy-head[data-fold-key="together"],
+    #premiere-disclosure>summary,
+    #weekly-pick-disclosure>summary
+  ){
+    width:100%!important;
+    max-width:100%!important;
+    min-height:56px!important;
+    margin:7px auto!important;
+    padding:9px 54px 9px 14px!important;
+    border-radius:18px!important;
+  }
+}
+
+html body.page-home .ma-ad-label{
+  display:block;
+  margin:0 0 5px;
+  color:rgba(226,219,236,.58);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.2;
+  text-align:center;
+  text-transform:uppercase;
+}
+
+
+/* ===== 2026-09-21 screenshot geometry correction =====
+   These four collapsed headers must span the exact same horizontal stage as
+   their opened content / Latest Titles. Do not reintroduce a compact-width cap. */
+html body.page-home :is(
+  .lazy-head[data-fold-key="concierge"],
+  .lazy-head[data-fold-key="together"],
+  #premiere-disclosure>summary,
+  #weekly-pick-disclosure>summary
+){
+  inline-size:100%!important;
+  width:100%!important;
+  max-inline-size:none!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  box-sizing:border-box!important;
+}
+
+html body.page-home :is(
+  #premiere-disclosure,
+  #weekly-pick-disclosure
+){
+  inline-size:100%!important;
+  width:100%!important;
+  max-inline-size:none!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Real breathing room inside the matching field. Labels and chip rows are
+   inset from the purple/gold edge instead of touching it. */
+html body.page-home .ma-concierge #questionnaire-box{
+  padding:16px 16px 14px!important;
+  box-sizing:border-box!important;
+}
+
+html body.page-home .ma-concierge .ma-quick{
+  width:100%!important;
+  padding:4px 2px!important;
+  gap:12px!important;
+  box-sizing:border-box!important;
+}
+
+html body.page-home .ma-concierge .ma-filter-row{
+  width:100%!important;
+  padding:4px 2px 6px!important;
+  gap:7px!important;
+  box-sizing:border-box!important;
+}
+
+html body.page-home .ma-concierge .ma-filter-row:first-child{
+  padding-top:6px!important;
+}
+
+html body.page-home .ma-concierge .ma-filter-label{
+  width:100%!important;
+  margin:0!important;
+  padding:0 6px 2px!important;
+  box-sizing:border-box!important;
+  line-height:1.3!important;
+}
+
+html body.page-home .ma-concierge .ma-chip-row{
+  width:100%!important;
+  margin:0!important;
+  padding:2px 6px 4px!important;
+  gap:7px!important;
+  box-sizing:border-box!important;
+}
+
+html body.page-home .ma-concierge .match-more-filters{
+  margin-top:4px!important;
+}
+
+@media(max-width:767px){
+  html body.page-home .ma-concierge #questionnaire-box{
+    padding:13px 12px 12px!important;
+  }
+  html body.page-home .ma-concierge .ma-quick{
+    padding:3px 1px!important;
+    gap:10px!important;
+  }
+  html body.page-home .ma-concierge .ma-filter-row{
+    padding:3px 1px 5px!important;
+    gap:6px!important;
+  }
+  html body.page-home .ma-concierge .ma-filter-label{
+    padding:0 5px 2px!important;
+  }
+  html body.page-home .ma-concierge .ma-chip-row{
+    padding:2px 5px 3px!important;
+    gap:6px!important;
+  }
+}
+
+
+/* ===== 2026-09-21 emotional Match/Ai CTA pass =====
+   Make the two entry choices feel like real product actions, not muted tabs.
+   Warm energy = matching system. Cool chromatic energy = conversational Ai. */
+html body.page-home .ma-tabs{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  gap:12px!important;
+  padding:7px!important;
+  margin-bottom:14px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:20px!important;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(255,111,97,.11),transparent 34%),
+    radial-gradient(circle at 88% 0%,rgba(92,122,255,.14),transparent 38%),
+    rgba(4,8,24,.72)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 12px 34px rgba(0,0,0,.28)!important;
+  overflow:visible!important;
+}
+html body.page-home .ma-tab{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:4px!important;
+  min-width:0!important;
+  min-height:78px!important;
+  padding:13px 18px!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  border-radius:16px!important;
+  color:#fff!important;
+  opacity:1!important;
+  cursor:pointer!important;
+  transform:translateZ(0)!important;
+  transition:transform .22s ease,filter .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+html body.page-home #ma-tab-match{
+  background:linear-gradient(120deg,#ff5d73 0%,#ff8a42 34%,#ffd45f 66%,#a05cff 100%)!important;
+  background-size:220% 220%!important;
+  box-shadow:0 10px 28px rgba(255,111,78,.24),inset 0 1px 0 rgba(255,255,255,.24)!important;
+  animation:maMatchCtaFlow 7s ease-in-out 1!important;
+}
+html body.page-home #ma-tab-ask{
+  background:linear-gradient(120deg,#00cfee 0%,#4378ff 33%,#9f55ff 68%,#ff61cc 100%)!important;
+  background-size:220% 220%!important;
+  box-shadow:0 10px 28px rgba(87,103,255,.26),inset 0 1px 0 rgba(255,255,255,.24)!important;
+  animation:maAskCtaFlow 7.8s ease-in-out 1!important;
+}
+html body.page-home .ma-tab::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:-45% -18%!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(circle at 28% 42%,rgba(255,255,255,.34),transparent 17%),
+    radial-gradient(circle at 72% 58%,rgba(255,255,255,.17),transparent 22%)!important;
+  opacity:.64!important;
+  transform:scale(.96)!important;
+  animation:maCtaBreath 3.6s ease-in-out 2!important;
+}
+html body.page-home .ma-tab::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:1!important;
+  top:-35%!important;
+  bottom:-35%!important;
+  left:-34%!important;
+  width:24%!important;
+  pointer-events:none!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent)!important;
+  filter:blur(1px)!important;
+  transform:skewX(-18deg) translateX(-120%)!important;
+  animation:maCtaSweep 4.8s ease-in-out 2!important;
+}
+html body.page-home #ma-tab-ask::after{animation-delay:1.15s!important}
+html body.page-home .ma-tab-title{
+  position:relative!important;
+  z-index:2!important;
+  display:block!important;
+  max-width:100%!important;
+  color:#fff!important;
+  font-family:Outfit,Inter,system-ui,sans-serif!important;
+  font-size:clamp(16px,1.55vw,20px)!important;
+  font-weight:950!important;
+  line-height:1.08!important;
+  letter-spacing:-.02em!important;
+  text-align:center!important;
+  text-wrap:balance!important;
+  text-shadow:0 2px 8px rgba(0,0,0,.48),0 0 18px rgba(255,255,255,.16)!important;
+}
+html body.page-home .ma-tab-hint{
+  position:relative!important;
+  z-index:2!important;
+  display:block!important;
+  max-width:100%!important;
+  color:rgba(255,255,255,.91)!important;
+  font-size:clamp(10.5px,.9vw,12px)!important;
+  font-weight:760!important;
+  line-height:1.25!important;
+  letter-spacing:.01em!important;
+  text-align:center!important;
+  text-shadow:0 1px 4px rgba(0,0,0,.44)!important;
+}
+html body.page-home .ma-tab[aria-selected="true"]{
+  border-color:rgba(255,247,199,.86)!important;
+  filter:saturate(1.16) brightness(1.05)!important;
+  transform:translateY(-1px) scale(1.012)!important;
+  box-shadow:0 13px 34px rgba(0,0,0,.26),0 0 0 2px rgba(255,226,128,.16),0 0 30px rgba(255,210,92,.20)!important;
+}
+html body.page-home #ma-tab-ask[aria-selected="true"]{
+  box-shadow:0 13px 34px rgba(0,0,0,.26),0 0 0 2px rgba(133,225,255,.16),0 0 30px rgba(119,102,255,.28)!important;
+}
+html body.page-home .ma-tab[aria-selected="false"]{
+  filter:saturate(.92) brightness(.90)!important;
+}
+@media(hover:hover) and (pointer:fine){
+  html body.page-home .ma-tab:hover{
+    transform:translateY(-3px) scale(1.018)!important;
+    filter:saturate(1.22) brightness(1.08)!important;
+    border-color:rgba(255,255,255,.72)!important;
+  }
+  html body.page-home #ma-tab-match:hover{box-shadow:0 16px 38px rgba(255,112,73,.34),0 0 28px rgba(255,207,91,.22)!important}
+  html body.page-home #ma-tab-ask:hover{box-shadow:0 16px 38px rgba(74,119,255,.34),0 0 30px rgba(217,82,255,.24)!important}
+}
+html body.page-home .ma-tab:active{
+  transform:translateY(0) scale(.985)!important;
+}
+body.tv-mode.page-home .ma-tab{
+  min-height:90px!important;
+  padding:16px 22px!important;
+}
+body.tv-mode.page-home .ma-tab-title{font-size:23px!important}
+body.tv-mode.page-home .ma-tab-hint{font-size:13px!important}
+@media(max-width:560px){
+  html body.page-home .ma-tabs{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    padding:5px!important;
+  }
+  html body.page-home .ma-tab{
+    min-height:66px!important;
+    padding:10px 14px!important;
+    border-radius:14px!important;
+  }
+  html body.page-home .ma-tab-title{font-size:16px!important}
+  html body.page-home .ma-tab-hint{font-size:10.5px!important}
+}
+@keyframes maMatchCtaFlow{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes maAskCtaFlow{
+  0%,100%{background-position:100% 50%}
+  50%{background-position:0% 50%}
+}
+@keyframes maCtaBreath{
+  0%,100%{opacity:.42;transform:scale(.94)}
+  50%{opacity:.82;transform:scale(1.05)}
+}
+@keyframes maCtaSweep{
+  0%,58%{left:-38%;opacity:0}
+  66%{opacity:.82}
+  82%{left:118%;opacity:.72}
+  100%{left:118%;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.page-home .ma-tab,
+  html body.page-home #ma-tab-match,
+  html body.page-home #ma-tab-ask,
+  html body.page-home .ma-tab::before,
+  html body.page-home .ma-tab::after{
+    animation:none!important;
+    transition:none!important;
+  }
+  html body.page-home .ma-tab::after{display:none!important}
+}
+
+/* Homepage Ask Ai: keep all three controls in separate mobile grid cells.
+   No sticky positioning or movement when the keyboard changes the viewport. */
+@media(max-width:640px){
+  html body.page-home #search-box > .home-ask-composer{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 50px!important;
+    grid-template-rows:auto auto!important;
+    grid-template-areas:"input mic" "send send"!important;
+    gap:10px!important;
+    align-items:stretch!important;
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    box-sizing:border-box!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > :is(input,button){
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    translate:none!important;
+    margin:0!important;
+    z-index:auto!important;
+    box-sizing:border-box!important;
+    animation:none!important;
+    transition:none!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #specific-search-input{
+    grid-area:input!important;
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    height:96px!important;
+    min-height:96px!important;
+    padding:12px!important;
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+    caret-color:#ffe18a!important;
+    background:#171126!important;
+    border:1px solid #cbb3df!important;
+    opacity:1!important;
+    visibility:visible!important;
+    font-size:16px!important;
+    line-height:1.5!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #specific-search-input::placeholder{
+    color:#d7cee5!important;
+    -webkit-text-fill-color:#d7cee5!important;
+    opacity:1!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > #mic-btn-index{
+    grid-area:mic!important;
+    width:50px!important;
+    height:56px!important;
+    min-height:56px!important;
+    align-self:start!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > .gold-btn{
+    grid-area:send!important;
+    width:100%!important;
+    min-width:0!important;
+    height:48px!important;
+    min-height:48px!important;
+    padding:10px 16px!important;
+    font-size:16px!important;
+  }
+  html body.page-home #search-box > .home-ask-composer > button::before,
+  html body.page-home #search-box > .home-ask-composer > button::after{
+    display:none!important;
+    animation:none!important;
+  }
+}
+
+/* The matching panel is nested inside the concierge card. Keep only the
+   outer card and the real gold CTA; do not draw a second box under it. */
+html body.page-home #ma-concierge #questionnaire-box{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+html body.page-home #ma-concierge #questionnaire-box::after{
+  content:none!important;
+  display:none!important;
+}
+
+/* 2026-09-23 result poster: artwork is the hero; all details flow below it. */
+html body.page-home #result-box .res-media-row{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:12px!important;text-align:left!important;padding:0!important}
+html body.page-home #result-box .res-poster-col{width:100%!important;display:flex!important;justify-content:center!important}
+html body.page-home #result-box .poster-stage{display:flex!important;width:min(100%,560px)!important;max-width:560px!important;min-height:0!important;aspect-ratio:auto!important;align-items:center!important;justify-content:center!important;overflow:visible!important;border:2px solid #e5c158!important;border-radius:24px!important;background:#120824!important;box-shadow:0 0 0 1px rgba(255,243,163,.28),0 14px 34px rgba(0,0,0,.42),0 0 22px rgba(229,193,88,.2)!important}
+html body.page-home #result-box #res-poster-img{display:block;width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center!important;border-radius:21px!important}
+html body.page-home #result-box .res-info-col{width:100%!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:7px!important;padding:2px 2px 0!important}
+html body.page-home #result-box #res-title{margin:0!important}
+html body.page-home #result-box #res-factbar{margin:0 0 4px!important}
+@media(max-width:640px){
+ html body.page-home #result-box{padding:12px 12px 104px!important}
+ html body.page-home #result-box .poster-stage{width:100%!important;max-width:100%!important;border-radius:20px!important}
+ html body.page-home #result-box #res-poster-img{border-radius:17px!important}
+ html body.page-home #result-box .res-media-row{gap:10px!important;margin-bottom:12px!important}
+ html body.page-home #result-box .res-info-col{padding:0 2px!important}
+ html body.page-home #result-box #res-title{font-size:25px!important;line-height:1.15!important}
+}
+
+/* Desktop result hierarchy: poster leads, but must not consume multiple viewports. */
+@media(min-width:641px){
+ html body.page-home #result-box .poster-stage{width:min(38vw,380px)!important;max-width:380px!important;margin-inline:auto!important}
+ html body.page-home #result-box #res-poster-img{width:100%!important;height:auto!important;max-height:570px!important;object-fit:contain!important}
+ html body.page-home #result-box .res-info-col{max-width:760px!important;margin-inline:auto!important}
+}
+
+/* MA-SOUND-CONTROL:START
+   Visual-only adult sound control. Preserve the existing top-box grid slot and
+   dimensions; center a literal speaker state icon instead of the old music mark. */
+html body:not(.page-kids) .sound-toggle-btn{
+  align-items:center!important;
+  justify-content:center!important;
+}
+html body.page-home #mh-topbox .sound-toggle-btn::before,
+html body.page-home #mh-topbox .sound-toggle-btn::after{
+  content:none!important;
+  display:none!important;
+}
+html body:not(.page-kids) .sound-toggle-btn .sound-state-icon{
+  width:22px!important;
+  height:22px!important;
+  display:grid!important;
+  place-items:center!important;
+  margin:auto!important;
+  padding:0!important;
+  line-height:0!important;
+  pointer-events:none!important;
+  transform:none!important;
+}
+html body:not(.page-kids) .sound-toggle-btn .sound-state-icon svg{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:visible!important;
+}
+html body:not(.page-kids) .sound-toggle-btn .sound-wave,
+html body:not(.page-kids) .sound-toggle-btn .sound-slash{
+  vector-effect:non-scaling-stroke;
+}
+html body:not(.page-kids) .sound-toggle-btn.is-muted .sound-state-icon{
+  opacity:.72;
+}
+/* MA-SOUND-CONTROL:END */
