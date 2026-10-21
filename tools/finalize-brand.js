@@ -223,9 +223,13 @@ function finalizeBrand(ownedPaths){
   const dom=new JSDOM(html,{includeNodeLocations:true}),doc=dom.window.document,edits=[];
   const replace=(el,text)=>{const at=dom.nodeLocation(el);if(at)edits.push([at.startOffset,at.endOffset,text]);};
   const brand=doc.querySelector('body > header a[href="/"],body > header a[href="/kids/"],.hub-header .hub-brand,.kids-brand');
+  // The shared adult text lockup is already canonical; keep its styling hooks.
+  const inlineCopy=kids?null:brand?.querySelector('.ma-brand-copy');
+  const canonicalInline=inlineCopy?.querySelector('.ma-wordmark')?.textContent.trim()==='MatchApp'
+    &&inlineCopy?.querySelector('.ma-word-ai[data-ma-brand-ai]')?.textContent.trim()==='Ai';
   const regional=regionalBrand(brand);
   if(regional){replace(brand,regional)}
-  else if(brand&&!brand.querySelector('.matchapp-wordmark,.ebook-text-wordmark')&&!brand.closest('#home-brand-lockup')){
+  else if(brand&&!canonicalInline&&!brand.querySelector('.matchapp-wordmark,.ebook-text-wordmark')&&!brand.closest('#home-brand-lockup')){
     const copy=brand.cloneNode(true);
     copy.removeAttribute('data-i18n');
     copy.setAttribute('aria-label',kids?KIDS:ADULT);
