@@ -29,15 +29,21 @@ The refreshed [default feature graphic](../feature-graphic.png) is the English 1
 
 ## Screenshots and provenance
 
-The release artifact separates Android-bootstrap **previews** from device captures. The previews render the actual website with the current `MainActivity.APP_MODE_JS` and Android user agent in Chromium at 360×640 CSS pixels and 3× density, producing 1080×1920 PNGs. They contain actual interface copy and source artwork.
+The release artifact separates Android-bootstrap **previews** from device captures. The previews render the actual website with the current `MainActivity.APP_MODE_JS`, release ambient-loader JavaScript and Android user agent in Chromium. Each language has four phone previews at 360×640 CSS pixels and 3× density (1080×1920 PNGs), plus four landscape tablet previews at 960×540 CSS pixels and 2× density (1920×1080 PNGs). They contain actual interface copy and source artwork.
 
 They are **not APK, emulator or physical-device screenshots** and must not be described as such. Their README and manifest record routes, locale, dimensions, source hashes and capture limitations. Do not reuse old screenshots showing retired branding, a superseded layout, fabricated AI answers or the separate Kids product.
+
+The October 21 Home refresh captures the product CSS correction that lets localized music release dates and view counts wrap inside their original cards. The two Home phone images and all eight tablet images were captured from the candidate source recorded in `GRAPHICS-PROVENANCE.json`; every locally served source file was compared with that exact commit. Deploy the matching source before publishing those previews. The other six phone images retain their original, verified hashes and capture provenance.
+
+The manifest distinguishes local capture revisions from their published equivalents. The October 21 candidate's published commit has exactly the same full Git tree as the local capture source; the historical Explore phone previews record the narrower English/PT-BR implementation equivalence separately. A matching repository tree does not establish a production deployment.
+
+The four scenes are Home, the unsubmitted matching form, Explore and the existing idle Jonas conversation. The tablet conversation retains the actual wide-screen layout with an empty left column and the unused composer on the right. No question or microphone action was submitted, and the displayed anonymous allowance is not evidence of a server quota check. Capture preferences use the real reduced-motion and essential-cookie choices; images were not retouched or given screenshot-only styling.
 
 Google Play requires at least two screenshots to publish a listing. Its large-format recommendation guidance calls for at least four app screenshots at 1080×1920 portrait or 1920×1080 landscape. Screenshots must be JPEG or 24-bit PNG without alpha, within the current size and aspect-ratio rules. Recheck the live [preview-asset requirements](https://support.google.com/googleplay/android-developer/answer/9866151) when uploading.
 
 ## Publication status
 
-The refreshed copy and graphics are **prepared, not published**. No Play publishing identity or credential is connected in this execution environment; the current public listing was audited without an authenticated Console session. No upload, release-track or review approval is claimed.
+This directory contains the localized source copy and graphics for the adult listing. `GRAPHICS-PROVENANCE.json` records each phone and tablet preview’s exact source revision, capture method and hash, including the Explore header and music-metadata corrections. Source preparation and repository commits do not establish a Play Console upload, review decision or publication. Record the actual Console outcome separately after checking the authorized publisher session.
 
 Use the existing Play Console Store presence flow with the authorized publisher account to compare and apply the intended localized metadata and assets. Metadata changes do not require a new Android binary. A binary update remains a separate signed-release process with current package, version-code, upload-certificate and device validation.
 
@@ -49,4 +55,4 @@ The [October 17 CRO review](CRO_REVIEW_20261017.md) remains a dated historical r
 
 ## Current localized graphics
 
-Use `en-US/graphics/` and `pt-BR/graphics/` for the approved feature graphics and four refreshed UI captures per language. `GRAPHICS-PROVENANCE.json` records exact dimensions, source and SHA256 values. The captures show actual web UI rendered with the Android app bootstrap; they are not APK or physical-device captures. Historical files under `../screenshots/` are not the current adult upload set.
+Use `en-US/graphics/` and `pt-BR/graphics/` for the approved feature graphics, four captures in `phone-screenshots/` and four captures in `tablet-screenshots/` per language: eight phone images and eight tablet images in total. `GRAPHICS-PROVENANCE.json` records exact dimensions, source and SHA256 values. The captures show actual web UI rendered with the Android app bootstrap; they are not APK or physical-device captures. Historical files under `../screenshots/` are not the current adult upload set.

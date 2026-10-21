@@ -1,80 +1,681 @@
 {
+  "schemaVersion": 2,
   "product": "MatchApp Ai",
   "package": "com.jonas.papercup",
-  "captureCommit": "a40b26ccf088d410fc3142cfa73ede08eca38d90",
-  "captureProvenance": "Actual website UI rendered using verbatim MainActivity Android bootstrap and user agent in Chromium. Not APK, emulator, or physical-device screenshots. No invented app screens or AI responses.",
-  "interfaceChangesAfterCapture": "Later changes fix Profile spacing, source/security, factual Ask intent, verified-cover loading, original cinematic feedback, native launcher load ordering, footer language hydration, solid Android heading paint, compact localized footer presentation, immediate same-art cover previews, visible poster recovery and early stylesheet/font discovery. The compact Support control and footer label are outside these phone captures; the captured intended Home, matcher, Explore and Jonas layouts remain unchanged. Separate genuine Play-installed tablet captures are managed through Console with device provenance.",
-  "nativeBootstrapSha256": "8f5e9336bcbe8fee3eb10e6654a63c85fd049ac08966431ebf71f488248a080e",
+  "captureCommits": [
+    "8d7b38601011febd1799167df9b49207e2f17c02",
+    "94db637707e14206af5612bf2789b1e6ac4f49d9",
+    "2a3302d537a39fce120a29c5d96f1ff27ff668a2"
+  ],
+  "captureProvenance": "Actual website UI rendered with verbatim MainActivity APP_MODE_JS, release ambient-loader JavaScript and Android user-agent suffix in Chromium. These are Android-bootstrap website previews, not APK, emulator or physical-device screenshots. No app UI, source artwork or AI response was fabricated or retouched.",
+  "captureEnvironment": {
+    "renderer": "Chromium 141.0.7390.37",
+    "viewportCss": {
+      "width": 360,
+      "height": 640
+    },
+    "deviceScaleFactor": 3,
+    "imageMode": "RGB",
+    "localePolicy": "Each fresh context saves the selected English or Brazilian Portuguese language before loading the actual UI.",
+    "preferences": {
+      "fontScale": 1,
+      "reduceMotion": true,
+      "cookieChoice": "essential",
+      "legalChoice": "essential"
+    },
+    "serviceWorkers": "blocked",
+    "requests": "GET/HEAD/OPTIONS only; API/form submissions, advertising and analytics requests were not exercised.",
+    "network": "Public source art loaded through the capture environment proxy. Certificate-error tolerance was confined to ephemeral browser contexts. The historical live source was SHA-verified over system-trusted HTTPS; new candidate captures compare all locally served source bytes against the exact committed source.",
+    "viewportScope": "Default viewport below describes phone previews; each capture source and file records phone or tablet dimensions.",
+    "tabletViewportCss": {
+      "width": 960,
+      "height": 540
+    },
+    "tabletDeviceScaleFactor": 2
+  },
+  "nativeBootstrapSha256": "4f65547f0a9d49f23df20e409c4a5e7c073d88ec48ca74f8704cba8d7234b275",
+  "nativeBootstrap": {
+    "sourceCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+    "sourcePath": "android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt",
+    "sourceFileSha256": "c9c14534614266e8d8b23bcd76c994849d961d4f900d4eb1b0a6be0aa53ad042",
+    "appModeJsRawLiteralSha256": "4f65547f0a9d49f23df20e409c4a5e7c073d88ec48ca74f8704cba8d7234b275",
+    "releaseAmbientInjectionRawLiteralSha256": "7c15b384e73bd8e5ac96ceab78cf03a138e3b31c6482ae77dec0210453d7dfc9",
+    "appUserAgentSuffix": "MatchAppTVAndroid/1.1.55 MatchAppAiAndroid/1.1.55 MatchAppLaunchIntro/1",
+    "execution": "The original source strings execute in the top document at creation and after parsing begins, preserving their idempotent behavior. No native bridge is fabricated."
+  },
+  "captureSources": {
+    "live": {
+      "commit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "origin": "https://matchapp.tv",
+      "startedAt": "2026-10-20T22:45:50.994Z",
+      "finishedAt": "2026-10-20T22:46:40.424Z",
+      "verification": "deployment-sha.txt matched before and after each locale; shared header CSS/JS and ambient-loader bytes matched the exact source checkout.",
+      "reportSha256": "e566617e8ddb65fe1f490eddfce452eafb809dc90d44306206337fbedbaf4952"
+    },
+    "exploreCandidate": {
+      "commit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "equivalentLocalCommit": "af08f0b44f3d52e82b69c3aff5b0c18956feeffb",
+      "gitTree": "58feba6c01e008f7aea3075a9145d59b37dac3d1",
+      "startedAt": "2026-10-20T22:54:00.697Z",
+      "finishedAt": "2026-10-20T22:55:04.693Z",
+      "transport": "Original candidate static file bytes served through Playwright request routing because the capture proxy does not permit Chromium loopback connections. No transformed product source, service worker, fixture, or dynamic API response.",
+      "verification": "The candidate and its local cherry-pick have identical full Git tree hashes. The actual Explore HTML, shared wordmark CSS, Explore CSS, header assets and ambient script matched served source hashes.",
+      "reportSha256": "72a9815d01446f3c208ff2be0b2428dd122e47f073170b6789ad6d9e6431473a",
+      "deploymentAtCapture": "Candidate source; publication of these two Explore previews requires the matching source correction to be deployed.",
+      "revisionScope": "Historical local capture revision; not a claim that this exact commit exists on the public GitHub repository.",
+      "localCaptureCommit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "publishedEquivalent": {
+        "commit": "89d59e79a5e7c30a11ba2c23d53b790639554b31",
+        "scope": "English/PT-BR implementation equivalence, not whole-tree identity. The later Explore HTML adds the CJK stylesheet cache key, and reference-explore.css adds a heading-width rule restricted to ja/zh/ko. The captured EN/PT branding and layout rules remain unchanged.",
+        "unchangedCoreSourceSha256": [
+          {
+            "path": "brand-headline.css",
+            "sha256": "2d28348af56f4de09ccf72265516d191072907fc8b0c592c28ef0fe57db183cd"
+          },
+          {
+            "path": "patches/reference-header.css",
+            "sha256": "6f99c46d17fe7b55b2468d80ccd542532ad08209ac5ed6cf73960388c6cfa47c"
+          },
+          {
+            "path": "patches/reference-header.js",
+            "sha256": "d5844b03f49fb8522997f2499b02a5cd15f7476701eceec778f8a3e23c7e6838"
+          },
+          {
+            "path": "jonas/android-ambient-assistant-20261011.js",
+            "sha256": "b5f343c80a3c19878229b275f4839b0875507d308002c0cfb9f8f9b80a9100ba"
+          }
+        ]
+      }
+    },
+    "homeWrapCandidate": {
+      "commit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "baseCommit": "89d59e79a5e7c30a11ba2c23d53b790639554b31",
+      "startedAt": "2026-10-21T08:07:47.178Z",
+      "finishedAt": "2026-10-21T08:08:45.578Z",
+      "viewportCss": {
+        "width": 360,
+        "height": 640
+      },
+      "deviceScaleFactor": 3,
+      "transport": "Actual candidate static bytes served through Playwright route fulfillment without source transformation, synthetic data, screenshot CSS or native-bridge mocks.",
+      "verification": "All 281 locally served files were compared by SHA256 with exact bytes from this source commit; no mismatch. Images show actual source artwork and product UI, with no retouching or response fixtures.",
+      "reportSha256": "e0f94b0f20fb13e53e4d292e744b0dafd2d0338eb474424f13d1e32aff650bf2",
+      "captureScriptSha256": "0cf6c6503331c3b4d829d1cec2e14ebd0ae7772b73c8592a0e98d3e4687c499a",
+      "deploymentAtCapture": "Candidate source; publication of the new previews requires this matching product source (including the metadata wrapping and prior Explore header correction) to be deployed.",
+      "revisionScope": "Local capture revision. This hash does not establish that the commit exists on the public GitHub repository; a published equivalent must be verified by its exact Git tree.",
+      "localCaptureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "sourceTree": "a191fcbc0105eaee28eaa9cd66bf5329ad8a4071",
+      "servedFileCount": 281,
+      "servedFileInventorySha256": "3868a6aee65bb37ac0d730744b9aa39d9ef20cc7897a489c538d0a6192a25502",
+      "coreServedFileSha256": [
+        {
+          "path": "index.html",
+          "sha256": "776e70c45e3489d2f4cfa0ca353caa47ae1e5e0bf5d91c06c6c6600d3c3a4163"
+        },
+        {
+          "path": "patches/reference-header.css",
+          "sha256": "6f99c46d17fe7b55b2468d80ccd542532ad08209ac5ed6cf73960388c6cfa47c"
+        },
+        {
+          "path": "brand-headline.css",
+          "sha256": "2d28348af56f4de09ccf72265516d191072907fc8b0c592c28ef0fe57db183cd"
+        },
+        {
+          "path": "music-video-releases.css",
+          "sha256": "2ceee59b10fbc202b53881dde761bb7a50795750d37df63da0ec1fecb8ed2f48"
+        },
+        {
+          "path": "jonas/android-ambient-assistant-20261011.js",
+          "sha256": "b5f343c80a3c19878229b275f4839b0875507d308002c0cfb9f8f9b80a9100ba"
+        },
+        {
+          "path": "patches/reference-header.js",
+          "sha256": "d5844b03f49fb8522997f2499b02a5cd15f7476701eceec778f8a3e23c7e6838"
+        }
+      ],
+      "sourceInventory": "The report identified by reportSha256 contains the complete served-file SHA256 inventory; core product source hashes are repeated here for direct review.",
+      "publishedEquivalent": {
+        "commit": "e96ea072f9b5b0495e6b3435e90ea5cca3cb7386",
+        "sourceTree": "a191fcbc0105eaee28eaa9cd66bf5329ad8a4071",
+        "scope": "Exact full Git tree identity with local capture commit 2a3302d537a39fce120a29c5d96f1ff27ff668a2.",
+        "verification": "The publishing agent verified the GitHub tree equals the local source tree and all three changed product-file Git blob SHAs match. This establishes repository source identity; it does not establish production deployment or Play publication."
+      }
+    },
+    "tabletCandidate": {
+      "commit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "baseCommit": "89d59e79a5e7c30a11ba2c23d53b790639554b31",
+      "startedAt": "2026-10-21T08:10:52.319Z",
+      "finishedAt": "2026-10-21T08:11:33.221Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "transport": "Actual candidate static bytes served through Playwright route fulfillment without source transformation, synthetic data, screenshot CSS or native-bridge mocks.",
+      "verification": "All 342 locally served files were compared by SHA256 with exact bytes from this source commit; no mismatch. Images show actual source artwork and product UI, with no retouching or response fixtures.",
+      "reportSha256": "be2c931494c8367602fa89acbcbe331de2b13201f27ac8a71f1b7e7b241851b8",
+      "captureScriptSha256": "57b7d73dd1b68b3cc129afba9a031ebca8ec18ff451eb008ada47fd7ff3ba27e",
+      "deploymentAtCapture": "Candidate source; publication of the new previews requires this matching product source (including the metadata wrapping and prior Explore header correction) to be deployed.",
+      "revisionScope": "Local capture revision. This hash does not establish that the commit exists on the public GitHub repository; a published equivalent must be verified by its exact Git tree.",
+      "localCaptureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "sourceTree": "a191fcbc0105eaee28eaa9cd66bf5329ad8a4071",
+      "servedFileCount": 342,
+      "servedFileInventorySha256": "0dab3e8b74584502d4867688ec812534c1da32fdb6dec63aa7f2eab14583aeb5",
+      "coreServedFileSha256": [
+        {
+          "path": "index.html",
+          "sha256": "776e70c45e3489d2f4cfa0ca353caa47ae1e5e0bf5d91c06c6c6600d3c3a4163"
+        },
+        {
+          "path": "patches/reference-header.css",
+          "sha256": "6f99c46d17fe7b55b2468d80ccd542532ad08209ac5ed6cf73960388c6cfa47c"
+        },
+        {
+          "path": "brand-headline.css",
+          "sha256": "2d28348af56f4de09ccf72265516d191072907fc8b0c592c28ef0fe57db183cd"
+        },
+        {
+          "path": "music-video-releases.css",
+          "sha256": "2ceee59b10fbc202b53881dde761bb7a50795750d37df63da0ec1fecb8ed2f48"
+        },
+        {
+          "path": "jonas/android-ambient-assistant-20261011.js",
+          "sha256": "b5f343c80a3c19878229b275f4839b0875507d308002c0cfb9f8f9b80a9100ba"
+        },
+        {
+          "path": "patches/reference-header.js",
+          "sha256": "d5844b03f49fb8522997f2499b02a5cd15f7476701eceec778f8a3e23c7e6838"
+        },
+        {
+          "path": "explore.html",
+          "sha256": "d4ea18ce36461b3d98dd52f09f901e3d16263a2e26ca810ffc9216895fa6652c"
+        },
+        {
+          "path": "patches/reference-explore.css",
+          "sha256": "5011a365584708a2d1b4157fae6155473687d3acdaedf26d71dc7d23dd91a146"
+        },
+        {
+          "path": "discover.html",
+          "sha256": "ae0887e8f48cbdf2897da5a5110fddf42b8d97d0fa32684c5d68879724336278"
+        }
+      ],
+      "sourceInventory": "The report identified by reportSha256 contains the complete served-file SHA256 inventory; core product source hashes are repeated here for direct review.",
+      "publishedEquivalent": {
+        "commit": "e96ea072f9b5b0495e6b3435e90ea5cca3cb7386",
+        "sourceTree": "a191fcbc0105eaee28eaa9cd66bf5329ad8a4071",
+        "scope": "Exact full Git tree identity with local capture commit 2a3302d537a39fce120a29c5d96f1ff27ff668a2.",
+        "verification": "The publishing agent verified the GitHub tree equals the local source tree and all three changed product-file Git blob SHAs match. This establishes repository source identity; it does not establish production deployment or Play publication."
+      }
+    }
+  },
+  "captureHostFonts": {
+    "emoji": {
+      "family": "Noto Color Emoji",
+      "source": "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/2D/fonts/NotoColorEmoji.ttf",
+      "sha256": "15671215ab769fdc7162a045d56fd7d7e477c51b04e6b3c761d914d8fdd6cc44",
+      "scope": "Fontconfig for this capture process only; no product CSS or system settings changed."
+    },
+    "japaneseVisualQa": {
+      "family": "Noto Sans CJK JP",
+      "source": "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-Regular.otf",
+      "sha256": "68a3fc98800b2a27b371f2fb79991daf3633bd89309d4ffaa6946fd587f375b5",
+      "scope": "Capture Fontconfig only; no product stylesheet or system font changes"
+    }
+  },
+  "verification": {
+    "phonePreviews": 8,
+    "dimensions": "Eight phone previews are 1080x1920 RGB PNGs; eight tablet previews are 1920x1080 RGB PNGs. None has alpha.",
+    "visualReview": "All eight phone previews and all eight tablet previews were visually inspected. The new Home captures preserve complete localized music metadata; tablet Home, matcher and Explore show actual artwork and the current reserved Jonas header. The idle conversation shows original UI and no generated response.",
+    "pageErrors": 0,
+    "phoneHorizontalOverflowPx": 0,
+    "exploreHeader": {
+      "sourceCommit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "widthsCss": [
+        320,
+        390,
+        820,
+        1366
+      ],
+      "languages": [
+        "en",
+        "pt-BR",
+        "ar",
+        "ja"
+      ],
+      "cases": 16,
+      "result": "No horizontal overflow or wordmark/search/controls/Jonas collision. Canonical MatchApp Ai survives changes through the actual language selector. Phone/tablet widths use the Android bootstrap; 1366px uses desktop browser behavior.",
+      "japaneseFontRecheck": "The four Japanese views were rechecked with actual Japanese glyph coverage after correcting a capture-host font omission. This checks header geometry, not an unrelated CJK hero-heading layout issue handled separately.",
+      "japaneseReportSha256": "e7f3bf301e93e5369a97b30c1ef8b0ccec80e83982d531297e9892785aeff355"
+    },
+    "tabletPreviews": 8,
+    "tabletHorizontalOverflowPx": 0,
+    "metadataWrap": {
+      "sourceCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "phoneAndResponsiveCases": [
+        {
+          "widthCss": 360,
+          "heightCss": 640,
+          "language": "en",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 360,
+          "heightCss": 640,
+          "language": "pt-BR",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 320,
+          "heightCss": 800,
+          "language": "pt-BR",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 390,
+          "heightCss": 844,
+          "language": "pt-BR",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 820,
+          "heightCss": 1180,
+          "language": "pt-BR",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 1366,
+          "heightCss": 900,
+          "language": "pt-BR",
+          "nativeBootstrap": false,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 320,
+          "heightCss": 800,
+          "language": "es",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 320,
+          "heightCss": 800,
+          "language": "it",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 320,
+          "heightCss": 800,
+          "language": "ar",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        }
+      ],
+      "tabletCases": [
+        {
+          "widthCss": 960,
+          "heightCss": 540,
+          "language": "en",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        },
+        {
+          "widthCss": 960,
+          "heightCss": 540,
+          "language": "pt-BR",
+          "nativeBootstrap": true,
+          "musicCardNodes": 22
+        }
+      ],
+      "result": "All title, release-date, numeric-view-count and source-link text rectangles remain inside the music card/caption bounds in all eleven cases; no horizontal page overflow. Nine responsive cases and two tablet locales cover 22 rendered music card nodes each, including carousel repeats.",
+      "targetedTests": [
+        "tests/music-video-releases.test.cjs",
+        "tests/reference-pills-20261020.test.cjs",
+        "tests/top-titles-responsive-posters-20261020.test.cjs"
+      ],
+      "targetedTestResult": "3 tests passed; 0 failed."
+    },
+    "tabletHeader": {
+      "widthCss": 960,
+      "heightCss": 540,
+      "languages": [
+        "en",
+        "pt-BR"
+      ],
+      "result": "Home, matcher and Explore have exactly one visible reserved Jonas header; no horizontal overflow. Both Explore headers retain the canonical integrated wordmark and have no brand/search/controls/Jonas collisions."
+    },
+    "independentVisualReview": "A second reviewer inspected all eight tablet PNGs and the corrected pt-BR Home phone image. No critical blank page, missing hero art, header collision, clipped headline or obscured primary CTA was found; labels match their locales. The fixed dock overlays lower scrolling content as the product implements it. This verifies image appearance only, not APK or physical-device execution."
+  },
+  "limitations": [
+    "These previews establish the rendered website state only, not physical-device or APK behavior.",
+    "No account login, microphone use, matching request, AI question, purchase or ad click occurred. Idle allowance text is the actual anonymous UI state and is not evidence of a server quota check.",
+    "Home preserves its actual mixed source carousel. Localized music metadata wraps in the real product CSS; the eleven checked viewport/language cases show no title/date/view-count/source-link clipping. No cards, captions or artwork were hidden or retouched.",
+    "The tablet idle Jonas preview preserves the current wide-screen two-column layout: an empty left column and the unused composer on the right. It contains no submitted question, generated response or validated server quota.",
+    "Feature graphics below are unchanged approved assets retained from the prior manifest. This manifest does not establish any Play Console upload, approval or publication outcome."
+  ],
   "files": [
     {
       "path": "en-US/graphics/feature-graphic.png",
       "sha256": "1b546397a5a4ca116b6b187a031b2055e2165c6c237a99b0e52c09c7617666c9",
       "width": 1024,
       "height": 500,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "unchangedApprovedFeatureGraphic"
     },
     {
       "path": "en-US/graphics/phone-screenshots/01-home.png",
-      "sha256": "d9e9432da3c5881df73099b005bb4c6cfc7480461fb999fec51a3f9299421e1a",
+      "sha256": "e3d6c4f2b57776ccd5e45052f27e9ad9bca0a7cd28ce1ead7a75ac459e87223e",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "homeWrapCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:07:54.821Z",
+      "route": "/?utm_source=android_app&appBuild=55",
+      "visibleState": "Home with actual source carousel and persistent reserved Jonas header. Localized music dates and view counts wrap inside their original captions; source art, numeric view counts and direct YouTube links are retained.",
+      "viewportCss": {
+        "width": 360,
+        "height": 640
+      },
+      "deviceScaleFactor": 3,
+      "captureCommitScope": "local capture revision"
     },
     {
       "path": "en-US/graphics/phone-screenshots/02-matcher.png",
-      "sha256": "7b34274b2fc52c65429196bdc4bb7848d896a7b3e7040c8d35ebd6084c870313",
+      "sha256": "60db1ddb766494027b626d1e0866f1f92d903eaba85044cb20e2f891c941e992",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:06.235Z",
+      "route": "/#questionnaire-box",
+      "visibleState": "Matching form reached through the existing Matches dock action; not submitted."
     },
     {
       "path": "en-US/graphics/phone-screenshots/03-explore.png",
-      "sha256": "6e9dcfbcbf1fd1afaa9ab24e17986e32520b26f0295a60758997da994079e3d4",
+      "sha256": "83ac57c65132c62b5469d65630351d3f490265d41b49ec88a40577e474ef14f4",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "exploreCandidate",
+      "captureCommit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "capturedAt": "2026-10-20T22:54:04.867Z",
+      "route": "/explore.html",
+      "visibleState": "Actual Explore route with canonical integrated wordmark and persistent reserved Jonas header.",
+      "captureCommitScope": "historical local capture revision; see the published EN/PT-equivalent implementation in captureSources"
     },
     {
       "path": "en-US/graphics/phone-screenshots/04-jonas-idle.png",
-      "sha256": "1ace6589acecb98e0259915e1aa4cf1caddd666b31ff3814eb916209151f5dde",
+      "sha256": "08ece1a02530ae03f50cf0ee561e455e234549db196093150689c71023c572ee",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:14.313Z",
+      "route": "/explore.html",
+      "visibleState": "Existing Jonas conversation opened through the header launcher; no text, microphone or Send action used."
     },
     {
       "path": "pt-BR/graphics/feature-graphic.png",
       "sha256": "29e9972417d4128a31aac188afcc3937534b2c6a18a5e2cd21acf2e365900a4c",
       "width": 1024,
       "height": 500,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "unchangedApprovedFeatureGraphic"
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/01-home.png",
-      "sha256": "6a1b51c239118c9fca5a66472d654fa2be5e772963a36efc0c25887c39d576d9",
+      "sha256": "0655acda1bdc1fbb87d2cd2837a6201f60ed5faaf2020bc181f56539203be441",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "homeWrapCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:08:02.297Z",
+      "route": "/?utm_source=android_app&appBuild=55",
+      "visibleState": "Home with actual source carousel and persistent reserved Jonas header. Localized music dates and view counts wrap inside their original captions; source art, numeric view counts and direct YouTube links are retained.",
+      "viewportCss": {
+        "width": 360,
+        "height": 640
+      },
+      "deviceScaleFactor": 3,
+      "captureCommitScope": "local capture revision"
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/02-matcher.png",
-      "sha256": "bcbf167fa0eeb1bb9ee0c340f47f38d64771afeeba636815193842161124410f",
+      "sha256": "e976237d0447f3d608df0d0b9d04df66b8c99cf14047e3b2afdc9f6b3cd0fdcf",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:30.135Z",
+      "route": "/#questionnaire-box",
+      "visibleState": "Matching form reached through the existing Matches dock action; not submitted."
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/03-explore.png",
-      "sha256": "1879e6eb497927aed5c16b98d2143a44fea888bec8ab116889ceb0cc2d46a06b",
+      "sha256": "76ea1b1eaf21258ca51845cdc1d39d7fb6020c36f55e116505301dee758c414f",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "exploreCandidate",
+      "captureCommit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "capturedAt": "2026-10-20T22:54:08.890Z",
+      "route": "/explore.html",
+      "visibleState": "Actual Explore route with canonical integrated wordmark and persistent reserved Jonas header.",
+      "captureCommitScope": "historical local capture revision; see the published EN/PT-equivalent implementation in captureSources"
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/04-jonas-idle.png",
-      "sha256": "a00d9c1c5275f520c986e3fa268dc2d4914eefdc1cbd305e62a341a9f2c38745",
+      "sha256": "11b4c8cfc5b718cdc72e32f6d8251efb59f452374d228d2f91029adfa5e68168",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:40.350Z",
+      "route": "/explore.html",
+      "visibleState": "Existing Jonas conversation opened through the header launcher; no text, microphone or Send action used."
+    },
+    {
+      "path": "en-US/graphics/tablet-screenshots/01-home.png",
+      "sha256": "5edceae337287c23deb7226b64449875b47cbfb60e11a76341a980cdc7c62f52",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:10:58.751Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/?utm_source=android_app&appBuild=55",
+      "visibleState": "Actual Home at selected saved language with original source carousel and reduced-motion preference. No screenshot-only changes.",
+      "captureCommitScope": "local capture revision"
+    },
+    {
+      "path": "en-US/graphics/tablet-screenshots/02-matcher.png",
+      "sha256": "7b647c3056b95ca21348b77f84b10a4a8144591f97f96ce16a30565bcff303ad",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:11:04.776Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/#questionnaire-box",
+      "visibleState": "Clicked the existing Matches dock action; no form submission.",
+      "captureCommitScope": "local capture revision"
+    },
+    {
+      "path": "en-US/graphics/tablet-screenshots/03-explore.png",
+      "sha256": "27c2c21355335e5a6a1b2d6cc5f73b6b7d7ce50279cfe1623ee2c6df31f8a3a9",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:11:09.066Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/explore.html",
+      "visibleState": "Clicked the existing Explore dock destination.",
+      "captureCommitScope": "local capture revision"
+    },
+    {
+      "path": "en-US/graphics/tablet-screenshots/04-jonas-idle.png",
+      "sha256": "7676213972607fea2e236df6b841a59164e52c171122b98abe331e9bafdc1c9e",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:11:12.170Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/explore.html",
+      "visibleState": "Opened the existing Jonas conversation through its real header launcher. No text, microphone or Send action used.",
+      "captureCommitScope": "local capture revision"
+    },
+    {
+      "path": "pt-BR/graphics/tablet-screenshots/01-home.png",
+      "sha256": "4949aa2393057bb6aa71dabd671e866d72262d1ca69dc9e930f9fb170f140722",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:11:18.862Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/?utm_source=android_app&appBuild=55",
+      "visibleState": "Actual Home at selected saved language with original source carousel and reduced-motion preference. No screenshot-only changes.",
+      "captureCommitScope": "local capture revision"
+    },
+    {
+      "path": "pt-BR/graphics/tablet-screenshots/02-matcher.png",
+      "sha256": "23673ea781b145f2ace1b463b85ed6829698fa20af72a042a3475271d66dba09",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:11:25.285Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/#questionnaire-box",
+      "visibleState": "Clicked the existing Matches dock action; no form submission.",
+      "captureCommitScope": "local capture revision"
+    },
+    {
+      "path": "pt-BR/graphics/tablet-screenshots/03-explore.png",
+      "sha256": "c5974008fcf2a6f339cb7308d18fced4323739fa526763a6b9b8fb25c4ede9db",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:11:30.000Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/explore.html",
+      "visibleState": "Clicked the existing Explore dock destination.",
+      "captureCommitScope": "local capture revision"
+    },
+    {
+      "path": "pt-BR/graphics/tablet-screenshots/04-jonas-idle.png",
+      "sha256": "d98ff0857530e804140d0514f1757619c00c0af62ec2861f1a71adaeab8c3b70",
+      "width": 1920,
+      "height": 1080,
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "tabletCandidate",
+      "captureCommit": "2a3302d537a39fce120a29c5d96f1ff27ff668a2",
+      "capturedAt": "2026-10-21T08:11:33.197Z",
+      "viewportCss": {
+        "width": 960,
+        "height": 540
+      },
+      "deviceScaleFactor": 2,
+      "route": "/explore.html",
+      "visibleState": "Opened the existing Jonas conversation through its real header launcher. No text, microphone or Send action used.",
+      "captureCommitScope": "local capture revision"
     }
   ]
 }

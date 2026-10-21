@@ -36,7 +36,9 @@ html body.page-home #trending-rail .marquee-item[data-music-video] .music-cover-
     color:#f5dfa0;font-size:clamp(7.5px,4.2cqw,9.5px);line-height:1.2;font-weight:700;
 }
 .marquee-item[data-music-video] .music-cover-release,
-.marquee-item[data-music-video] .music-cover-views { white-space:nowrap; }
+.marquee-item[data-music-video] .music-cover-views {
+    min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;
+}
 .marquee-item[data-music-video] .music-cover-link {
     max-width:100%;font-size:clamp(7px,3.9cqw,9px);line-height:1.15;color:#fff;opacity:.88;
     text-decoration:underline;text-decoration-color:#f5dfa066;text-underline-offset:2px;

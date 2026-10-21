@@ -1,27 +1,65 @@
 name: Live MatchApp Browser and Android Emulator Smoke
+run-name: 'Release smoke: ${{ inputs.expected_sha }}'
 on:
-  # The exact production deploy (not an earlier push) is the source of truth.
-  # Automated Kids SEO/metadata commits can supersede a push while deploying;
-  # old push-triggered smoke waited forever for a SHA that was never published.
-  workflow_run:
-    workflows: ["Deploy MatchApp Pages"]
-    types: [completed]
-    branches: [main]
+  # Pages is the single automatic owner. Manual recovery must identify the
+  # successful deployment and reconcile its existing run before requesting one.
   workflow_dispatch:
+    inputs:
+      expected_sha:
+        description: Exact deployed main SHA
+        required: true
+        type: string
+      pages_run_id:
+        description: Pages run that deployed this SHA
+        required: true
+        type: string
+      pages_run_attempt:
+        description: Successful Pages deployment attempt
+        required: true
+        type: string
 permissions:
+  actions: read
   contents: read
 concurrency:
   group: live-smoke-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   live-browser:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 24
     steps:
+      - name: Verify deployment identity before checkout
+        uses: actions/github-script@v8
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+          PAGES_RUN_ID: ${{ inputs.pages_run_id }}
+          PAGES_RUN_ATTEMPT: ${{ inputs.pages_run_attempt }}
+        with:
+          script: |
+            const sha = process.env.EXPECTED_SHA;
+            const runId = process.env.PAGES_RUN_ID;
+            const attempt = process.env.PAGES_RUN_ATTEMPT;
+            if (!/^[a-f0-9]{40}$/.test(sha || '') || !/^[1-9][0-9]*$/.test(runId || '')
+                || !/^[1-9][0-9]*$/.test(attempt || '')
+                || !Number.isSafeInteger(Number(runId)) || !Number.isSafeInteger(Number(attempt))) {
+              throw new Error('A full lowercase deployment SHA and valid Pages run/attempt are required.');
+            }
+            const {owner, repo} = context.repo;
+            const {data: run} = await github.rest.actions.getWorkflowRun({owner, repo, run_id: Number(runId)});
+            if (run.head_sha !== sha || run.head_branch !== 'main'
+                || run.path !== '.github/workflows/pages-deploy.yml' || Number(attempt) > run.run_attempt) {
+              throw new Error('This request does not identify a Pages deployment of the expected main SHA.');
+            }
+            const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRunAttempt,
+              {owner, repo, run_id: Number(runId), attempt_number: Number(attempt), per_page: 100});
+            if (!jobs.some(job => job.name === 'deploy' && job.steps?.some(step =>
+                step.name === 'Deploy validated Pages artifact' && step.conclusion === 'success'))) {
+              throw new Error('The specified Pages attempt has not successfully deployed this SHA.');
+            }
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ inputs.expected_sha }}
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
@@ -33,16 +71,22 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Wait for this commit or a newer descendant to reach the live domain before testing
         env:
-          EXPECTED_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
         run: |
           set -euo pipefail
+          mkdir -p artifacts/live-smoke
+          printf '%s\n' "$EXPECTED_SHA" > artifacts/live-smoke/expected-sha.txt
           git fetch --no-tags --depth=64 origin main
           for i in {1..28}; do
-            remote="$(curl -fsSL "https://matchapp.tv/deployment-sha.txt?release=${EXPECTED_SHA}-${i}" || true)"
-            if [ "$remote" = "$EXPECTED_SHA" ]; then exit 0; fi
+            remote="$(curl -fsSL "https://matchapp.tv/deployment-sha.txt?release=${EXPECTED_SHA}-${i}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" || true)"
+            if [ "$remote" = "$EXPECTED_SHA" ]; then
+              printf '%s\n' "$remote" > artifacts/live-smoke/tested-sha.txt
+              exit 0
+            fi
             if [[ "$remote" =~ ^[0-9a-f]{40}$ ]] && git cat-file -e "$remote^{commit}" 2>/dev/null; then
               if git merge-base --is-ancestor "$EXPECTED_SHA" "$remote"; then
                 echo "::notice::Expected deploy was superseded by descendant $remote; testing current production instead."
+                printf '%s\n' "$remote" > artifacts/live-smoke/tested-sha.txt
                 exit 0
               fi
             fi
@@ -52,6 +96,18 @@ jobs:
           exit 1
       - name: Run live production adult normal matching, e-book/magazine, original art and two Ask AI questions
         run: node tools/live-production-smoke.cjs
+      - name: Confirm production stayed on the tested SHA
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: |
+          set -euo pipefail
+          tested="$(cat artifacts/live-smoke/tested-sha.txt)"
+          remote="$(curl -fsSL "https://matchapp.tv/deployment-sha.txt?release=${EXPECTED_SHA}-after-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}")"
+          printf '%s\n' "$remote" > artifacts/live-smoke/after-sha.txt
+          if [ "$remote" != "$tested" ]; then
+            echo '::error::Production advanced during browser validation; do not attribute this test to a different revision.'
+            exit 1
+          fi
       - name: Keep screenshots and machine-readable test report, even on failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -61,10 +117,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   android-emulator:
-    # The hosted guest may have no external route. Each app therefore receives
-    # its own fresh emulator and a DEBUG-only adb-reverse mirror of the exact
-    # checked-out web tree; production/release builds remain HTTPS-only.
-    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && contains(github.event.workflow_run.head_commit.message, '[android-emulator-check]')
+    # The owner's permanent instruction excludes emulator execution.
+    if: ${{ false }}
     strategy:
       fail-fast: false
       matrix:
