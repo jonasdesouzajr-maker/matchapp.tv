@@ -14,10 +14,11 @@ function withCheckout(run){
  try{return run(fs.realpathSync(checkout),parent);}
  finally{fs.rmSync(parent,{recursive:true,force:true});}
 }
-function definitions(filesystem){
+function treeEntry(file,mode='100644'){return `${mode} blob ${'a'.repeat(40)}\t${file}\0`;}
+function definitions(filesystem,subprocess=require('node:child_process')){
  const module={exports:{}};
  vm.runInNewContext(source,{module,__dirname:path.join(__dirname,'../tools'),process:{env:{}},URL,Buffer,
-  require(name){return name==='node:fs'?filesystem:require(name);}});
+  require(name){return name==='node:fs'?filesystem:name==='node:child_process'?subprocess:require(name);}});
  return module.exports;
 }
 
@@ -31,14 +32,36 @@ test('QA debugger can connect only to the fixed loopback ADB port and page path'
  for(const url of ['ws://evil.example:9223/devtools/page/123','ws://127.0.0.1.evil.example:9223/devtools/page/123','ws://localhost:9223/devtools/page/123','ws://127.0.0.1:9222/devtools/page/123','wss://127.0.0.1:9223/devtools/page/123','ws://user:password@127.0.0.1:9223/devtools/page/123','ws://127.0.0.1:9223/devtools/page/123?redirect=evil','ws://127.0.0.1:9223/devtools/page/123#fragment','ws://127.0.0.1:9223/devtools/browser/123','ws://127.0.0.1:9223/devtools/page/%2fsecret','ws://127.0.0.1:9223/devtools/page/','not a URL'])assert.throws(()=>overlay.localDebuggerUrl(url),undefined,url);
 });
 
+test('QA inventory includes only committed regular files in known public web paths',()=>withCheckout(checkout=>{
+ const calls=[];
+ const publicFiles=['index.html','app.js','manifest.json','manifest-pt-br.json','release.json','.well-known/assetlinks.json','assets/original.avif','guides/index.html'];
+ const excluded=['local-config.json','package.json','package-lock.json','vercel.json','chrome-launcher.js','docs/example.html','patches/private.js','reports/device.json','tools/private.js','tests/fixture.json','android-studio/config.json','private-voice/config.json','oauth/callback.html','callback.html','confirm.html','auth-confirmation.html','purchase.html','.env.json','assets/private.key','unreviewed/config.json','../outside.json'];
+ const listing=[...publicFiles,...excluded].map(file=>treeEntry(file)).join('')+treeEntry('assets/alias.svg','120000')+treeEntry('assets/submodule','160000');
+ const safe=definitions(fs,{execFileSync(command,args,options){
+  calls.push({command,args,options});return args[2]==='rev-parse'?checkout+'\n':listing;
+ }});
+ assert.deepEqual([...safe.loadPublicAssets(checkout)].sort(),publicFiles.map(file=>'/'+file).sort());
+ assert.equal(calls.length,2);assert.ok(calls.every(call=>call.command==='git'&&call.args[0]==='-C'&&call.args[1]===checkout));
+ assert.deepEqual(Array.from(calls[1].args),['-C',checkout,'ls-tree','--full-tree','-r','-z','HEAD']);
+ assert.equal(calls[1].options.encoding,'utf8');
+}));
+
+test('QA inventory fails closed for a nested root or a checkout without a committed public home',()=>withCheckout((checkout,parent)=>{
+ const nested=definitions(fs,{execFileSync(){return parent+'\n';}});
+ assert.throws(()=>nested.loadPublicAssets(checkout),/Git checkout root/);
+ const missing=definitions(fs,{execFileSync(command,args){return args[2]==='rev-parse'?checkout+'\n':treeEntry('reports/index.html');}});
+ assert.throws(()=>missing.loadPublicAssets(checkout),/no committed public index/);
+}));
+
 test('QA overlay serves exact static bytes, directory indexes and supported media',()=>withCheckout(checkout=>{
  fs.writeFileSync(path.join(checkout,'index.html'),'<h1>Home</h1>');
- fs.mkdirSync(path.join(checkout,'guide'));fs.writeFileSync(path.join(checkout,'guide/index.html'),'<h1>Guide</h1>');
+ fs.mkdirSync(path.join(checkout,'guides'));fs.writeFileSync(path.join(checkout,'guides/index.html'),'<h1>Guide</h1>');
  fs.mkdirSync(path.join(checkout,'assets'));const bytes=Buffer.from([0,255,128,71]);fs.writeFileSync(path.join(checkout,'assets/original.avif'),bytes);
- for(const route of ['/','/index.html'])assert.equal(overlay.readLocalAsset(checkout,route).body.toString(),'<h1>Home</h1>');
- for(const route of ['/guide','/guide/'])assert.equal(overlay.readLocalAsset(checkout,route).body.toString(),'<h1>Guide</h1>');
- const art=overlay.readLocalAsset(checkout,'/assets/original.avif');assert.equal(art.type,'image/avif');assert.deepEqual(art.body,bytes);
- assert.equal(overlay.readLocalAsset(checkout,'/unsupported.secret'),null);
+ const assets=new Set(['/index.html','/guides/index.html','/assets/original.avif']);
+ for(const route of ['/','/index.html'])assert.equal(overlay.readLocalAsset(checkout,route,assets).body.toString(),'<h1>Home</h1>');
+ for(const route of ['/guides','/guides/'])assert.equal(overlay.readLocalAsset(checkout,route,assets).body.toString(),'<h1>Guide</h1>');
+ const art=overlay.readLocalAsset(checkout,'/assets/original.avif',assets);assert.equal(art.type,'image/avif');assert.deepEqual(art.body,bytes);
+ assert.equal(overlay.readLocalAsset(checkout,'/unsupported.secret',assets),null);
 }));
 
 test('QA overlay rejects encoded traversal, Windows paths, private files and auth/payment callbacks before reading',()=>withCheckout(checkout=>{
@@ -51,11 +74,27 @@ test('QA overlay rejects encoded traversal, Windows paths, private files and aut
 
 test('QA asset aliases cannot escape the checkout or expose an excluded directory',()=>withCheckout((checkout,parent)=>{
  const outside=path.join(parent,'outside');fs.mkdirSync(outside);fs.writeFileSync(path.join(outside,'secret.json'),'PRIVATE');
- fs.symlinkSync(outside,path.join(checkout,'alias'),'junction');
- assert.throws(()=>overlay.readLocalAsset(checkout,'/alias/secret.json'),/Outside checkout/);
+ const assets=new Set(['/assets/secret.json','/covers/private.json']);
+ fs.symlinkSync(outside,path.join(checkout,'assets'),'junction');
+ assert.throws(()=>overlay.readLocalAsset(checkout,'/assets/secret.json',assets),/Outside checkout/);
  fs.mkdirSync(path.join(checkout,'reports'));fs.writeFileSync(path.join(checkout,'reports/private.json'),'PRIVATE');
- fs.symlinkSync(path.join(checkout,'reports'),path.join(checkout,'assets'),'junction');
- assert.equal(overlay.readLocalAsset(checkout,'/assets/private.json'),null);
+ fs.symlinkSync(path.join(checkout,'reports'),path.join(checkout,'covers'),'junction');
+ assert.equal(overlay.readLocalAsset(checkout,'/covers/private.json',assets),null);
+}));
+
+test('QA overlay never opens unlisted files or canonical aliases to private or other asset bytes',()=>withCheckout(checkout=>{
+ fs.mkdirSync(path.join(checkout,'assets'));fs.writeFileSync(path.join(checkout,'assets/local-config.json'),'LOCAL ONLY');
+ const assets=new Set(['/index.html','/assets/alias.svg','/assets/public.svg']);
+ let opened=0;
+ for(const target of ['assets/local-config.json','assets/private.key','assets/public.svg']){
+  const safe=definitions({...fs,
+   realpathSync(){return path.join(checkout,target);},
+   openSync(){opened++;throw Error('Private/aliased bytes must not be opened');}
+  });
+  assert.equal(safe.readLocalAsset(checkout,'/assets/local-config.json',assets),null);
+  assert.equal(safe.readLocalAsset(checkout,'/assets/alias.svg',assets),null);
+ }
+ assert.equal(opened,0);
 }));
 
 test('QA serving checks and reads the opened regular-file handle across pathname replacement',()=>withCheckout(checkout=>{
@@ -67,7 +106,7 @@ test('QA serving checks and reads the opened regular-file handle across pathname
   readFileSync(fd){assert.equal(fd,opened);assert.equal(typeof fd,'number');return fs.readFileSync(fd);},
   closeSync(fd){assert.equal(fd,opened);closed++;return fs.closeSync(fd);}
  });
- assert.equal(safe.readLocalAsset(checkout,'/index.html').body.toString(),'APPROVED');
+ assert.equal(safe.readLocalAsset(checkout,'/index.html',new Set(['/index.html'])).body.toString(),'APPROVED');
  assert.equal(fs.readFileSync(file,'utf8'),'REPLACEMENT');assert.equal(closed,1);assert.throws(()=>fs.fstatSync(opened),{code:'EBADF'});
 }));
 
@@ -81,8 +120,8 @@ test('QA serving closes the descriptor when reading fails or the opened entry is
    readFileSync(){throw Error('controlled read error');},
    closeSync(fd){closed++;return fs.closeSync(fd);}
   });
-  if(nonFile)assert.equal(safe.readLocalAsset(checkout,'/index.html'),null);
-  else assert.throws(()=>safe.readLocalAsset(checkout,'/index.html'),/controlled read error/);
+  if(nonFile)assert.equal(safe.readLocalAsset(checkout,'/index.html',new Set(['/index.html'])),null);
+  else assert.throws(()=>safe.readLocalAsset(checkout,'/index.html',new Set(['/index.html'])),/controlled read error/);
   assert.equal(closed,1);assert.throws(()=>fs.fstatSync(opened),{code:'EBADF'});
  }
 }));
@@ -91,6 +130,7 @@ test('QA overlay startup and interception keep file bytes on the loopback debugg
  const parent=fs.mkdtempSync(path.join(os.tmpdir(),'matchapp-overlay-flow-'));
  try{
   const checkout=path.join(parent,'checkout');fs.mkdirSync(checkout);fs.writeFileSync(path.join(checkout,'index.html'),'APPROVED HOME');
+  fs.mkdirSync(path.join(checkout,'assets'));fs.writeFileSync(path.join(checkout,'assets/local-config.json'),'LOCAL ONLY');
   const sent=[],connections=[],fetches=[],module={exports:{}};let socket,ready;
   const started=new Promise(resolve=>{ready=resolve;});
   class LocalSocket{
@@ -99,7 +139,7 @@ test('QA overlay startup and interception keep file bytes on the loopback debugg
    send(data){const message=JSON.parse(data);sent.push(message);queueMicrotask(()=>this.listeners.message({data:JSON.stringify({id:message.id,result:{}})}));}
    close(){}
   }
-  function localRequire(name){return require(name);}localRequire.main=module;
+  function localRequire(name){return name==='node:child_process'?{execFileSync(command,args){return args[2]==='rev-parse'?checkout+'\n':treeEntry('index.html');}}:require(name);}localRequire.main=module;
   vm.runInNewContext(source,{module,require:localRequire,__dirname:path.join(__dirname,'../tools'),URL,Buffer,AbortSignal,
    process:{env:{MATCHAPP_QA_ROOT:checkout,MATCHAPP_QA_OUTPUT:path.join(parent,'evidence')},once(){}},
    console:{log:ready,error(error){assert.fail(error.message);}},setTimeout(){return 0;},WebSocket:LocalSocket,
@@ -111,11 +151,11 @@ test('QA overlay startup and interception keep file bytes on the loopback debugg
   await started;
   assert.deepEqual(connections,['ws://127.0.0.1:9223/devtools/page/123']);
   assert.equal(fetches[0].url,'http://127.0.0.1:9223/json/list');assert.equal(fetches[0].options.redirect,'error');assert.ok(fetches[0].options.signal);
-  for(const [id,url,method] of [['public','https://matchapp.tv/','GET'],['foreign','https://matchapp.tv.evil.example/','GET'],['private','https://matchapp.tv/reports/private.json','GET'],['post','https://matchapp.tv/','POST'],['malformed','https://matchapp.tv/%invalid','GET']])socket.listeners.message({data:JSON.stringify({method:'Fetch.requestPaused',params:{requestId:id,request:{url,method}}})});
+  for(const [id,url,method] of [['public','https://matchapp.tv/','GET'],['foreign','https://matchapp.tv.evil.example/','GET'],['private','https://matchapp.tv/reports/private.json','GET'],['untracked','https://matchapp.tv/assets/local-config.json','GET'],['post','https://matchapp.tv/','POST'],['malformed','https://matchapp.tv/%invalid','GET']])socket.listeners.message({data:JSON.stringify({method:'Fetch.requestPaused',params:{requestId:id,request:{url,method}}})});
   await new Promise(resolve=>setImmediate(resolve));
   const fulfilled=sent.filter(message=>message.method==='Fetch.fulfillRequest');
   assert.equal(fulfilled.length,1);assert.equal(fulfilled[0].params.requestId,'public');assert.equal(Buffer.from(fulfilled[0].params.body,'base64').toString(),'APPROVED HOME');
-  assert.deepEqual(sent.filter(message=>message.method==='Fetch.continueRequest').map(message=>message.params.requestId).sort(),['foreign','malformed','post','private']);
+  assert.deepEqual(sent.filter(message=>message.method==='Fetch.continueRequest').map(message=>message.params.requestId).sort(),['foreign','malformed','post','private','untracked']);
   const evidence=JSON.parse(fs.readFileSync(path.join(parent,'evidence/webview-overlay-served.json'),'utf8'));
   assert.equal(evidence.resources.length,1);assert.equal(evidence.resources[0].path,'/');assert.equal(evidence.resources[0].bytes,13);
  }finally{fs.rmSync(parent,{recursive:true,force:true});}

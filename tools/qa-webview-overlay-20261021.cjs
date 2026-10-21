@@ -1,10 +1,12 @@
 'use strict';
 // Development-only CDP overlay for the isolated physical-device QA package.
 // It serves this checkout at the existing origin without deploying production.
-const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{execFileSync}=require('node:child_process');
 const root=path.resolve(process.env.MATCHAPP_QA_ROOT||path.join(__dirname,'..'));
 const out=process.env.MATCHAPP_QA_OUTPUT||path.join(root,'reports/android-ui-20261021/device');
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.avif':'image/avif','.woff2':'font/woff2'};
+const publicDirectories=new Set(['.well-known','android','assets','au','awareness','br','ca','collections','cooking','covers','data','desktop','ebooks','en','event-posters','events','featured','founder','guides','jonas','jp','kids','moods','news','platforms','pricing','profile','pt','sponsor','streaming','trending','uk','us','where-to-watch']);
+const publicRootJson=new Set(['manifest.json','manifest-pt-br.json','release.json']);
 function isTrustedPage(value){
  try{const url=new URL(value);return url.origin==='https://matchapp.tv'&&!url.username&&!url.password;}
  catch{return false;}
@@ -19,24 +21,47 @@ function allowedAssetPath(relative){
  if(!relative.startsWith('/')||/[\\:\u0000-\u001f\u007f]/.test(relative))return false;
  const parts=relative.split('/');
  if(parts.some(part=>part==='.'||part==='..'||(part.startsWith('.')&&part!=='.well-known')))return false;
- return !/^\/(?:android-studio|private-voice|oauth|tests|tools|reports|node_modules|api)(?:\/|$)/i.test(relative)&&!/^\/(?:callback|confirm|auth-confirmation|purchase)\.html$/i.test(relative);
+ if(/^\/(?:callback|confirm|auth-confirmation|purchase)\.html$/i.test(relative))return false;
+ const segments=parts.filter(Boolean);
+ if(segments.length>1)return publicDirectories.has(segments[0]);
+ return relative!=='/chrome-launcher.js'&&(path.extname(relative)!=='.json'||publicRootJson.has(segments[0]));
+}
+function loadPublicAssets(checkout){
+ const options={encoding:'utf8',maxBuffer:8*1024*1024};
+ const gitRoot=execFileSync('git',['-C',checkout,'rev-parse','--show-toplevel'],options).trim();
+ if(fs.realpathSync(gitRoot)!==checkout)throw Error('QA root must be the Git checkout root');
+ // Only committed regular-file paths in the public web tree may be overlaid.
+ // Untracked/staged-only files, Git symlinks and native/tooling files are absent.
+ const tree=execFileSync('git',['-C',checkout,'ls-tree','--full-tree','-r','-z','HEAD'],options);
+ const assets=new Set();
+ for(const entry of tree.split('\0')){
+  const match=/^100(?:644|755) blob [0-9a-f]{40,64}\t([^\0]+)$/.exec(entry);
+  if(!match)continue;
+  const relative='/'+match[1];
+  if(allowedAssetPath(relative)&&mime[path.extname(relative)])assets.add(relative);
+ }
+ if(!assets.has('/index.html'))throw Error('QA checkout has no committed public index.html');
+ return assets;
 }
 function confinedRelative(checkout,file){
  const relative=path.relative(checkout,file);
  if(path.isAbsolute(relative)||relative==='..'||relative.startsWith('..'+path.sep))throw Error('Outside checkout');
  return '/'+relative.split(path.sep).join('/');
 }
-function readLocalAsset(checkout,pathname){
+function readLocalAsset(checkout,pathname,publicAssets){
  const relative=decodeURIComponent(pathname);
  if(!allowedAssetPath(relative))return null;
  let file=path.resolve(checkout,'.'+relative);
  confinedRelative(checkout,file);
  if(relative.endsWith('/')||!path.extname(file))file=path.join(file,'index.html');
  const type=mime[path.extname(file)];if(!type)return null;
- // Resolve links before opening, so an asset alias cannot expose private files
- // or leave this trusted local checkout. Keep the same handle for check/read.
- file=fs.realpathSync(file);
- if(!allowedAssetPath(confinedRelative(checkout,file)))return null;
+ const publicPath=confinedRelative(checkout,file);
+ if(!publicAssets.has(publicPath))return null;
+ // Reject aliases even if their requested path was once a committed web file.
+ // Canonical identity, extension and inventory must all match before opening.
+ const canonical=fs.realpathSync(file),canonicalPath=confinedRelative(checkout,canonical);
+ if(canonicalPath!==publicPath||!allowedAssetPath(canonicalPath)||!publicAssets.has(canonicalPath)||mime[path.extname(canonical)]!==type)return null;
+ file=canonical;
  const fd=fs.openSync(file,fs.constants.O_RDONLY|(fs.constants.O_NOFOLLOW||0));
  try{
   if(!fs.fstatSync(fd).isFile())return null;
@@ -45,6 +70,7 @@ function readLocalAsset(checkout,pathname){
 }
 async function main(){
  const checkout=fs.realpathSync(root);
+ const publicAssets=loadPublicAssets(checkout);
  fs.mkdirSync(out,{recursive:true});
  const response=await fetch('http://127.0.0.1:9223/json/list',{redirect:'error',signal:AbortSignal.timeout(5000)});
  if(!response.ok)throw Error('Cannot inspect the forwarded QA WebView');
@@ -59,7 +85,7 @@ async function main(){
   const id=event.requestId;
   try{
    if(event.request.method!=='GET'||!isTrustedPage(event.request.url))return await rpc('Fetch.continueRequest',{requestId:id});
-   const asset=readLocalAsset(checkout,new URL(event.request.url).pathname);
+   const asset=readLocalAsset(checkout,new URL(event.request.url).pathname,publicAssets);
    if(!asset)return await rpc('Fetch.continueRequest',{requestId:id});
    const {relative,type,body}=asset;
    await rpc('Fetch.fulfillRequest',{requestId:id,responseCode:200,responseHeaders:[{name:'Content-Type',value:type},{name:'Cache-Control',value:'no-store'}],body:body.toString('base64')});
@@ -79,4 +105,4 @@ async function main(){
  process.once('SIGINT',stop);process.once('SIGTERM',stop);setTimeout(stop,30*60*1000);
 }
 if(require.main===module)main().catch(error=>{console.error(error);process.exitCode=1;});
-module.exports={isTrustedPage,localDebuggerUrl,readLocalAsset};
+module.exports={isTrustedPage,localDebuggerUrl,loadPublicAssets,readLocalAsset};
