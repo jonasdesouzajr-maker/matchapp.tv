@@ -1,5 +1,6 @@
 'use strict';
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {candidateFiles}=require('../tools/candidate-files.cjs');
 const {JSDOM}=require('jsdom');
 const root=path.join(__dirname,'..'),read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const expected={
@@ -9,7 +10,7 @@ const expected={
  'reference-system.css':['premium','20261020-2'],'reference-pages.css':['premium','20261020-2'],'reference-home.css':['premium','20261020-2'],'pricing.js':['premium','20261020-2']
 };
 test('every adult document requests current changed artwork/theme assets while retaining their original base versions',()=>{
- const files=execFileSync('git',['ls-files','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(file=>file.endsWith('.html')&&!/^(?:kids|private-voice|oauth|android-studio|tests|artifacts|reports|node_modules)\//.test(file));
+ const files=candidateFiles(root).filter(file=>file.endsWith('.html')&&!/^(?:kids|private-voice|oauth|android-studio|tests|artifacts|reports|node_modules)\//.test(file));
  const counts={};
  for(const file of files){
   const html=read(file),refs=[...html.matchAll(/\b(?:src|href)=["']([^"']+)["']/g)].map(match=>match[1].replace(/&amp;/g,'&'));
@@ -25,7 +26,7 @@ test('every adult document requests current changed artwork/theme assets while r
 });
 test('all adult dialog callers and the single shared loader request current sources without adding a callback runtime',()=>{
  const changed=new Set(['reference-system.js','profile.js','app.js','passkeys.js','pricing.js','settings.js']);
- const files=execFileSync('git',['ls-files','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(file=>file.endsWith('.html')&&!/^(?:kids|private-voice|oauth|android-studio|tests|artifacts|reports|node_modules)\//.test(file));
+ const files=candidateFiles(root).filter(file=>file.endsWith('.html')&&!/^(?:kids|private-voice|oauth|android-studio|tests|artifacts|reports|node_modules)\//.test(file));
  const counts={};
  for(const file of files){
   for(const match of read(file).matchAll(/\bsrc=["']([^"']+)["']/g)){
