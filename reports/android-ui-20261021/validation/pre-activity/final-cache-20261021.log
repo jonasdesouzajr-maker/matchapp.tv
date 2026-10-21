@@ -1,0 +1,23 @@
+✔ every adult document requests current changed artwork/theme assets while retaining their original base versions (186.659139ms)
+✔ all adult dialog callers and the single shared loader request current sources without adding a callback runtime (113.099642ms)
+✔ changed loader chains request the new premium runtime and only Profile receives the final-audit poster suffix (129.109793ms)
+✔ ambient CSS imports, both debug mirrors and native timestamp URL reach the current stellar glass assets (0.559449ms)
+✔ profile always receives current canonical avatar and compact Taste DNA styles and script (1.344581ms)
+✔ fresh news hub and retained article templates keep the approved theme without changing source records (313.083525ms)
+✔ fresh trending document keeps the approved theme and immediate poster loading (46.760273ms)
+✔ fresh weekly-choice documents preserve verified art and viewing routes while receiving the theme (80.931189ms)
+✔ fresh awareness documents preserve campaign identity, dates, resources and copy without invoking rotation (82.567713ms)
+✔ fresh worldwide guide preserves every authored language section and discovery link (1209.054627ms)
+✔ fresh sponsorship and streaming directories preserve forms, source art, markets and exact route paths (121.047212ms)
+✔ fresh founder biography repairs copied partial theme assets without duplicating them or changing his identity (80.888004ms)
+✔ behavioral pages load one current shared runtime instead of stale cache keys (10.951552ms)
+✔ public quota copy matches the shared included-action architecture (5.496732ms)
+✔ both Android shells are synchronized and target the current Play API level (0.433012ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2676.921832

@@ -1,0 +1,30 @@
+✔ long destination starts below one measured header offset, independent of CSS padding/margin and existing scroll (85.800455ms)
+✔ late target/header layout changes correct the section start within a bounded window (35.998593ms)
+✔ a late dynamic target is aligned after it becomes visible without opening hidden content (11.173895ms)
+✔ wheel, touch, pointer and navigation keys cancel late correction immediately (53.810597ms)
+✔ reduced motion and the existing disabled scroll gate are honored (11.939589ms)
+✔ initial hash alignment does not compete with browser or native restoration (31.21119ms)
+✔ a native restoration starting during initial alignment stops all pending correction (8.736273ms)
+✔ late startup callbacks cannot pull the reader back after a gesture, while a new explicit click still works (11.012125ms)
+✔ modified or external links do not activate the shared local destination scroll (15.914127ms)
+✔ profile hub activation reveals the original long card before aligning its start (16.953447ms)
+✔ saved Discover conversation opens at its first turn while the live-reply scroll owner remains intact (13.287836ms)
+✔ premium guide is complete and crawlable with fourteen authentic destination chapters (62.462611ms)
+✔ chapter UI changes without navigation or starting sound automatically (75.407609ms)
+✔ the guide follows supported locale, including pt-BR and right-to-left Arabic (63.571123ms)
+✔ same-page language changes update the visible guide without resetting its chapter or leaving a stale speech language (60.499542ms)
+✔ Guide kickers and footer follow all fourteen languages without duplicate hooks or resetting the active chapter (231.440901ms)
+✔ chapter navigation reveals its content while scrolling the chapter index locally (46.658397ms)
+✔ shared control balancing preserves the dedicated chapter rail and its original actions (89.37089ms)
+✔ Home and Explore guide entry points reach the same premium route (17.923744ms)
+✔ adult typography preserves Kids branding, motion preference and original heading scale (0.381936ms)
+✔ all fourteen guide languages explain every chapter in the selected language and preserve destinations (234.518215ms)
+✔ newly localized explanations keep the exact product and shared-match names (161.507113ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1647.946973

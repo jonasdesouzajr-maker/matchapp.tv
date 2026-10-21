@@ -1,0 +1,118 @@
+{
+  "scope": "One local candidate Chromium viewport, external requests blocked; physical-device checks are owned separately.",
+  "viewport": {
+    "width": 800,
+    "height": 1180
+  },
+  "lang": "pt-BR",
+  "eyebrow": "MatchApp Ai · Guia de exploração",
+  "counters": [
+    "Descoberta 01 / 14",
+    "Descoberta 02 / 14",
+    "Descoberta 03 / 14",
+    "Descoberta 04 / 14",
+    "Descoberta 05 / 14",
+    "Descoberta 06 / 14",
+    "Descoberta 07 / 14",
+    "Descoberta 08 / 14",
+    "Descoberta 09 / 14",
+    "Descoberta 10 / 14",
+    "Descoberta 11 / 14",
+    "Descoberta 12 / 14",
+    "Descoberta 13 / 14",
+    "Descoberta 14 / 14"
+  ],
+  "hooks": [
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    },
+    {
+      "hidden": true,
+      "display": "none",
+      "rects": 0
+    }
+  ],
+  "footer": {
+    "copyright": "© 2026 MatchApp Ai · Todos os direitos reservados",
+    "links": [
+      {
+        "text": "Sobre",
+        "href": "/about.html"
+      },
+      {
+        "text": "Privacidade",
+        "href": "/privacy.html"
+      },
+      {
+        "text": "Termos",
+        "href": "/terms.html"
+      }
+    ],
+    "aria": "Informações legais"
+  },
+  "overflow": 0,
+  "activeChapter": "chapter-1",
+  "hash": "#chapter-1"
+}

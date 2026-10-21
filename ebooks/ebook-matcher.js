@@ -108,7 +108,7 @@ function renderReadingDiscovery(root,p){
       '" target="_blank" rel="noopener noreferrer">'+esc(name)+' ↗</a>').join('')+'</div>'+
    '<p class="ebook-rights">'+esc(tr('rights'))+'</p></div>';
  localize(root);
- host.scrollIntoView?.({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+ window.MatchAppActivatedScroll?.toStart(host) ?? host.scrollIntoView?.({behavior:'auto',block:'start'});
 }
 function lang(){if(window.MatchAppBooksLocale)return window.MatchAppBooksLocale.lang();let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}const raw=String(saved||window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();if(/^pt/.test(raw))return'pt-BR';const base=raw.split('-')[0];return ['en','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'].includes(base)?base:'en';}
 function tr(k){if(window.MatchAppBooksLocale)return window.MatchAppBooksLocale.t('ui.'+k);const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
@@ -863,7 +863,7 @@ function renderMagazineResult(root,mag,p,pick){
   img.onerror=()=>{img.hidden=true;fallback.hidden=false};
   if(img.complete&&img.naturalWidth>0){img.hidden=false;fallback.hidden=true}
  }
- host.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+ window.MatchAppActivatedScroll?.toStart(host) ?? host.scrollIntoView({behavior:'auto',block:'start'});
  bindResultCopy(host,mag,p,pick?.relaxed,pick,true);localize(root);
  window.MatchAppTitleIdentity?.paint(host.querySelector('.ebook-result-copy h3'),{...mag,kind:'magazine',countryCode:mag.region});
  analytics('ebook_match_reveal',{ebook_id:mag.id,ebook_title:mag.title,ebook_access:p.access,ebook_format:'magazine'});
@@ -899,7 +899,7 @@ function renderResult(root,book,p,relaxed,audio,magazine,pick){
  hydrateCover(book,img,fall,audio);
  window.MatchAppBookDetails?.hydrate?.(host,book,{format:audio?'audiobook':'ebook',verifiedAudio:!!audio?.apple});
  if(audio)paintAudio(root,book,audio);
- host.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});
+ window.MatchAppActivatedScroll?.toStart(host) ?? host.scrollIntoView({behavior:'auto',block:'start'});
  analytics('ebook_match_reveal',{ebook_id:book.id,ebook_title:book.title,ebook_access:p.access,ebook_format:p.format,relaxed:!!relaxed});
 }
 // Honest fallback: no verified audio means no Match credit is used.
@@ -927,7 +927,7 @@ function renderAudioDiscovery(root,p){
    '<p class="ebook-rights">'+esc(ui('noCredit','No Match credit was consumed. Search links do not confirm edition availability.'))+'</p></div>';
  const locale=window.MatchAppBooksLocale;if(locale)host.querySelectorAll('.ebook-audio-search').forEach((link,index)=>locale.bindValue(link,()=>{const label=discoverySearches(p,null)[index]?.[0]||searches[index].provider;return label+' · '+ui('unverified','unverified search')+' ↗';}));
  localize(root);
- host.scrollIntoView?.({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+ window.MatchAppActivatedScroll?.toStart(host) ?? host.scrollIntoView?.({behavior:'auto',block:'start'});
 }
 async function doMatch(root){
  // One in-flight search includes source preflight and shared Match allowance.
@@ -1172,9 +1172,9 @@ async function mount(){
  }
  if(root.dataset.ebookMounted==='1')return;
  root.dataset.ebookMounted='1';root.innerHTML=markup();bind(root);syncBookControls(root,prefs());renderTop(root);await cloudHydrate();renderSaved(root);localize(root);
- if(location.hash==='#ebook-matcher-root')requestAnimationFrame(()=>root.scrollIntoView({behavior:'auto',block:'start'}));
+ if(location.hash==='#ebook-matcher-root')requestAnimationFrame(()=>window.MatchAppActivatedScroll?.toStart(root,{initial:true}) ?? root.scrollIntoView({behavior:'auto',block:'start'}));
  // Reveal collapsed Home controls when an already open page receives a reading deep link.
- window.addEventListener('hashchange',()=>{if(location.hash!=='#ebook-matcher-root')return;const fold=root.querySelector('.ebook-fold');if(fold)fold.open=true;root.scrollIntoView({behavior:'auto',block:'start'});});
+ window.addEventListener('hashchange',()=>{if(location.hash!=='#ebook-matcher-root')return;const fold=root.querySelector('.ebook-fold');if(fold)fold.open=true;/* Shared hash navigation owns alignment and back/restore exclusion. */});
  document.addEventListener('matchapp:langchange',()=>localize(root));
  window.addEventListener('storage',event=>{if(event.key==='match_lang')localize(root);});
 }

@@ -1,0 +1,43 @@
+✔ native launch audio never attaches document click playback, even before native DOM injection (58.065663ms)
+✔ preserved browser intro has an in-flight latch against two rapid eligible clicks (13.724929ms)
+✔ Android page state captures full multiselect choices without passwords, drafts, DOM or tokens (13.863074ms)
+✔ recreation restores allowed filter options and scroll through the existing criteria owner without generating a result (10.010697ms)
+✔ route mismatch and missing native state bridge never apply a foreign state snapshot (12.419294ms)
+✔ recreation waits for loaded content before scroll and does not overwrite the saved offset with an early clamp (7.032025ms)
+✔ recreation retains pending scroll when history adds height after document load (7.560989ms)
+✔ deliberate scroll input or navigation cancels delayed restoration without a later jump (31.976872ms)
+✔ native shell disables destructive pull refresh and keeps launcher reentry distinct from explicit links (0.624345ms)
+✔ native recreation compares consumed intents, excludes unsafe history and gates Play replay on its initiating source (0.538617ms)
+✔ native manual update refreshes in place without claiming an APK install or reloading the document (10.147429ms)
+✔ native unchanged and unavailable refresh actions provide localized visible feedback without changing the screen (42.295766ms)
+✔ critical hint allowlist is exactly the existing shared/brand import URLs and unified fonts retain every existing family/weight (470.603387ms)
+✔ adult-only hints follow the exact early charset; imported assets preload without moving original stylesheet/script cascade order (41.314864ms)
+✔ late charset and near1024 byte declarations move as exact original tags, including http-equiv and multibyte source (80.390616ms)
+✔ moving a standalone late charset removes only its same-line indentation and preserves EOLs, neighboring source and body (78.936136ms)
+✔ exact owned duplicates consolidate while unowned/dormant/invalid-marker examples remain byte-identical (20.970261ms)
+✔ missing charset gets one early UTF8 declaration; excluded routes and metadata-only inputs remain untouched (14.885598ms)
+✔ all 14 authored dictionaries cover the same 37 UI keys and preserve placeholders (1.462787ms)
+✔ saved Portuguese overrides stale globals; language and storage repaint preserve source data and control identity (45.348182ms)
+✔ history actions, empty states, rematch anchors and Not For Me copy render in each chosen language (619.720038ms)
+✔ open removal dialog repaints without losing focus; cancel, Escape and confirm keep the original action contract (35.319003ms)
+✔ tab names and live item counts repaint while tab navigation and allow-again handlers remain attached (48.649227ms)
+✔ storage read failures preserve renderability and use the existing app-selected language (8.337519ms)
+✔ profile loads the copy helper before its consumers and only the profile audit loader receives the new cache suffix (63.577088ms)
+✔ fresh news hub and retained article templates keep the approved theme without changing source records (272.728774ms)
+✔ fresh trending document keeps the approved theme and immediate poster loading (44.003295ms)
+✔ fresh weekly-choice documents preserve verified art and viewing routes while receiving the theme (96.312513ms)
+✔ fresh awareness documents preserve campaign identity, dates, resources and copy without invoking rotation (76.078124ms)
+✔ fresh worldwide guide preserves every authored language section and discovery link (1004.405957ms)
+✔ fresh sponsorship and streaming directories preserve forms, source art, markets and exact route paths (93.814985ms)
+✔ fresh founder biography repairs copied partial theme assets without duplicating them or changing his identity (51.251201ms)
+✔ behavioral pages load one current shared runtime instead of stale cache keys (11.221521ms)
+✔ public quota copy matches the shared included-action architecture (5.922302ms)
+✔ both Android shells are synchronized and target the current Play API level (0.423928ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3758.358366

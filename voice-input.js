@@ -12,6 +12,24 @@ const SPEECH_LANG_MAP = {
   'it':'it-IT','tr':'tr-TR','ru':'ru-RU','ar':'ar-SA','hi':'hi-IN',
   'id':'id-ID','ja':'ja-JP','ko':'ko-KR','zh':'zh-CN'
 };
+// The adult native shell uses Android app permissions, not browser site settings.
+// Keep denial actionable without opening settings, retrying permission, or blocking text.
+const NATIVE_MIC_DENIED = {
+  en:'Microphone access is blocked. You can keep typing. To use voice, allow the microphone for MatchApp Ai in Android app permissions.',
+  pt:'O microfone está bloqueado. Você pode continuar digitando. Para usar a voz, permita o microfone para o MatchApp Ai nas permissões de apps do Android.',
+  es:'El micrófono está bloqueado. Puedes seguir escribiendo. Para usar la voz, permite el micrófono para MatchApp Ai en los permisos de aplicaciones de Android.',
+  fr:'L’accès au microphone est bloqué. Vous pouvez continuer à écrire. Pour parler, autorisez le microphone pour MatchApp Ai dans les autorisations des applications Android.',
+  de:'Der Mikrofonzugriff ist blockiert. Du kannst weiter tippen. Erlaube MatchApp Ai das Mikrofon in den Android-App-Berechtigungen, um die Spracheingabe zu nutzen.',
+  it:'L’accesso al microfono è bloccato. Puoi continuare a scrivere. Per parlare, consenti il microfono a MatchApp Ai nelle autorizzazioni delle app Android.',
+  tr:'Mikrofon erişimi engellendi. Yazarak devam edebilirsiniz. Sesle konuşmak için Android uygulama izinlerinde MatchApp Ai için mikrofona izin verin.',
+  ru:'Доступ к микрофону заблокирован. Вы можете продолжать печатать. Для голосового ввода разрешите микрофон для MatchApp Ai в разрешениях приложений Android.',
+  ar:'الوصول إلى الميكروفون محظور. يمكنك متابعة الكتابة. لاستخدام الصوت، اسمح لـ MatchApp Ai بالوصول إلى الميكروفون في أذونات التطبيقات على Android.',
+  hi:'माइक्रोफ़ोन की अनुमति नहीं है। आप टाइप करना जारी रख सकते हैं। आवाज़ से बात करने के लिए Android की ऐप अनुमतियों में MatchApp Ai को माइक्रोफ़ोन की अनुमति दें।',
+  id:'Akses mikrofon diblokir. Anda tetap dapat mengetik. Untuk berbicara, izinkan mikrofon untuk MatchApp Ai di izin aplikasi Android.',
+  ja:'マイクへのアクセスが拒否されています。文字入力は続けられます。音声を使うには、Android のアプリの権限で MatchApp Ai のマイクを許可してください。',
+  ko:'마이크 접근이 차단되어 있습니다. 계속 입력할 수 있습니다. 음성을 사용하려면 Android 앱 권한에서 MatchApp Ai의 마이크를 허용하세요.',
+  zh:'麦克风访问已被阻止。你可以继续打字。要使用语音，请在 Android 的应用权限中允许 MatchApp Ai 使用麦克风。'
+};
 
 const VOICE_ORIGIN_KEY='matchapp_voice_origin_v1';
 const VOICE_ORIGIN_TTL=120000;
@@ -49,6 +67,12 @@ function nativeVoiceAvailable(){
   catch(_){return false;}
 }
 function activeSpeechLang(){return SPEECH_LANG_MAP[window.MATCH_LANG] || 'en-US';}
+function nativeMicrophoneDenied(){
+  if(/^\/kids(?:\/|$)/.test(location.pathname)||window.MATCHAPP_ANDROID_KIDS_ONLY||
+    /MatchApp(?:Ai|TV)?KidsAndroid\//i.test(window.navigator?.userAgent||'')||!nativeVoiceAvailable())return '';
+  const language=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().replace('_','-').split('-')[0];
+  return NATIVE_MIC_DENIED[language]||NATIVE_MIC_DENIED.en;
+}
 
 /* Keep recognizer wording and existing device punctuation. */
 function punctuateSpeech(value,lang){
@@ -148,7 +172,7 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     voiceEvent('matchapp:voice-error',{code:String(code||'unavailable')});
     if(audioOnlyKids)return;
     if(code==='not-allowed'||code==='permission-denied'||code==='service-not-allowed'){
-      if(window.showToast)showToast(tr('voice.micDenied','🎙️ Microphone access was blocked — check your microphone permission.'),true);
+      if(window.showToast)showToast(nativeMicrophoneDenied()||tr('voice.micDenied','🎙️ Microphone access was blocked — check your microphone permission.'),true);
     }else if(code==='no-speech'){
       if(window.showToast)showToast(tr('voice.noSpeech',"Didn't catch that — try again."),true);
     }else if(window.showToast){

@@ -1,0 +1,14 @@
+{
+  "gate": "npm-test",
+  "command": [
+    "npm",
+    "test"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": null,
+  "startedAt": "2026-10-21T19:44:35.883447+00:00",
+  "finishedAt": "2026-10-21T19:47:37.780434+00:00",
+  "durationSeconds": 181.897,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-npm-test-20261021.log"
+}

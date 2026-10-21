@@ -1,0 +1,39 @@
+✔ premium guide is complete and crawlable with fourteen authentic destination chapters (130.116129ms)
+✔ chapter UI changes without navigation or starting sound automatically (88.450139ms)
+✔ the guide follows supported locale, including pt-BR and right-to-left Arabic (78.670585ms)
+✔ same-page language changes update the visible guide without resetting its chapter or leaving a stale speech language (69.020727ms)
+✔ chapter navigation reveals its content while scrolling the chapter index locally (47.153226ms)
+✔ shared control balancing preserves the dedicated chapter rail and its original actions (134.496403ms)
+✔ Home and Explore guide entry points reach the same premium route (17.448494ms)
+✔ adult typography preserves Kids branding, motion preference and original heading scale (0.564135ms)
+✔ shared header moves the original controls and launcher once, preserving handlers and data (35.909187ms)
+✔ Discover history and new-chat actions release their tools panel and focus the destination (23.710299ms)
+✔ late native launcher takeover clears an obsolete dock slot and keeps one selected owner (36.392153ms)
+✔ a native launcher arriving before Home parsing prevents late Home claims from creating a second visible entry (37.4296ms)
+✔ native takeover restores the same Home fallback and original handlers if its canonical launcher is removed (49.973509ms)
+✔ a native legacy hide applied before header initialization does not strand the later Home fallback (32.786322ms)
+✔ canonical arbitration retains the saved drag point through native takeover and late Home callbacks (34.941378ms)
+✔ a hidden canonical native launcher during its conversation never reveals the inactive Home fallback (47.635011ms)
+✔ flow reservation follows the measured header height after a resize (46.882791ms)
+✔ header tools use the explicitly selected language in all fourteen locales (22.872198ms)
+✔ the visible assistant invitation activates the same launcher and follows all fourteen selected languages (17.91812ms)
+✔ drag and viewport restoration clamp the complete measured launcher including its invitation (63.60467ms)
+✔ fallback branding leaves the existing matcher and filter nodes in place (15.115469ms)
+✔ a generic brand-only header yields its exact generated Search action to the fallback once (34.457007ms)
+✔ generic headers with authored text, navigation or unknown controls retain their exact children (15.286753ms)
+✔ late generated Search stays live while a later unknown control restores its legacy header (46.724767ms)
+✔ a late canonical masthead replaces only the fallback while preserving its original buttons (31.209076ms)
+✔ the single shared adapter starts in the header, saves intentional dragging separately and returns to its slot (60.405671ms)
+✔ the shared adapter restores its own saved point and supports keyboard movement and return (35.209891ms)
+✔ the original web owner leaves dragging to the shared adapter and keeps its conversation handlers (65.694275ms)
+✔ the first header-owned web conversation uses the current viewport after a resize (33.218823ms)
+✔ the native owner leaves dragging to the shared adapter after header takeover (70.582786ms)
+✔ isolated Kids, private and authentication routes receive no adult shared header (54.090888ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1820.123193

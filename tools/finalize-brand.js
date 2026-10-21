@@ -7,8 +7,8 @@ const kidsMark='<span class="matchapp-wordmark kids-wordmark" role="img" aria-la
 
 // Discovery hints only: the original stylesheets/imports keep cascade ownership.
 const CRITICAL_STYLE_PRELOADS=Object.freeze([
- '/patches/reference-header.css?v=20261020-header1&polish=20261020-ui1',
- '/patches/reference-dock.css?v=20261020-dock1',
+ '/patches/reference-header.css?v=20261020-header1&polish=20261020-ui1&androidqa=20261021-1',
+ '/patches/reference-dock.css?v=20261020-dock1&androidqa=20261021-1',
  '/patches/reference-palette-tokens.css?v=20261020-palettes1',
  '/patches/reference-pills.css?v=20261020-pills1&polish=20261020-ui1',
  '/patches/adult-screen-fit-20261015.css?v=consistency2&auth=20261016-1&header=20261018-1',
@@ -92,6 +92,11 @@ function cinemaAssets(html, relativePath) {
       preloadAt=head.startTag.endOffset;insert(preloadAt,eol+declaration);
     }
     if(preloadURLs.length)insert(preloadAt,eol+preloadURLs.map(url=>'<link rel="preload" as="style" data-cinema-preload="'+PRELOAD_MARKER+'" href="'+escaped(url)+'">').join(eol));
+    // The Home photograph is above the fold but otherwise discovered only
+    // after its CSS. Hint that exact lossless source, without preloading rails,
+    // hidden artwork, videos, or images belonging to other destinations.
+    if(rel==='index.html'&&!doc.head.querySelector('link[rel="preload"][as="image"][href="/assets/cinema/home-city-lossless.webp"]'))
+      insert(preloadAt,eol+'<link rel="preload" as="image" href="/assets/cinema/home-city-lossless.webp" fetchpriority="high" data-cinema-preload="home-hero">');
 
     for(const node of doc.querySelectorAll('link[href],script[src]')){
       if(!actual(node))continue;
@@ -121,7 +126,7 @@ function cinemaAssets(html, relativePath) {
     if(!found.system)assets.push('<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;footer=20261020-1">');
     if(!found.family)assets.push('<link rel="stylesheet" href="/patches/reference-'+family+'.css?v=20261020-review1'+(family==='explore'?'':'&amp;premium=20261020-2')+(family==='home'?'&amp;nativepaint=20261020-1':'')+'">');
     if(!found.script)assets.push('<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1"></script>');
-    if(assets.length)insert(head.endTag.startOffset,eol+assets.join(eol)+eol);
+    if(assets.length)insert(head.endTag.startOffset,eol+versionReferenceRuntimeAssets(assets.join(eol))+eol);
     for(const [at,text]of insertions)edits.push([at,at,text]);
     edits.sort((a,b)=>b[0]-a[0]||b[1]-a[1]);
     for(const [start,end,text]of edits)html=html.slice(0,start)+text+html.slice(end);
@@ -136,6 +141,7 @@ function withQueryParams(url,entries){
  entries.forEach(([key,value])=>params.set(key,value));
  return pathname+'?'+params.toString()+fragment;
 }
+const ANDROID_QA_ASSETS=new Set(['reference-system.css','reference-system.js','reference-header.css','reference-header.js','reference-density.js','reference-home.css','reference-pages.css','premium-journey-20261014.css','premium-journey-20261014.js','filter-wrap-fix.css','app-updates.js','jonas-intro-audio.js','portfolio-history.js','build-meta.js','reference-explore.css','reference-support.css','catalog-media.js','app.js','matchapp-ia.js','criteria.js','ebook-matcher.js','pricing.js','experience-v2.js','taste-profile.js','discover.js','friends.js','growth-together.js','settings.js','final-wiring.js','production-hardening.js','shown-history.js','reference-dock.css','reference-dock.js','voice-input.js','activity.js']);
 function referenceRuntimeAssetURL(url){
  const pins={
   'catalog-media.js':['posters','20261020-1'],'poster-wall.js':['posters','20261020-1'],'trending-rail.js':['posters','20261020-1'],'profile.js':['posters','20261020-1'],'portfolio-history.js':['posters','20261020-1'],'settings.js':['posters','20261020-1'],'title-captions.js':['posters','20261020-1'],
@@ -149,8 +155,8 @@ function referenceRuntimeAssetURL(url){
  const dialogs=new Set(['reference-system.js','profile.js','app.js','passkeys.js','pricing.js','settings.js']);
  const pathname=url.split(/[?#]/)[0];
  if(!/^\/[A-Za-z0-9_./-]+$/.test(pathname))return url;
- const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file)&&!['brand.css','style.css','adult-page-compact.css'].includes(file))return url;
- const entries=[];if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
+ const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file)&&!ANDROID_QA_ASSETS.has(file)&&!['brand.css','style.css','adult-page-compact.css'].includes(file))return url;
+ const entries=[];if(ANDROID_QA_ASSETS.has(file))entries.push(['androidqa','20261021-1']);if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
  if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
  if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);

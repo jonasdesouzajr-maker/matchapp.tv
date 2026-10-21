@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">Ses ve yakındaki sinemaları ayarla</string>
+    <string name="permission_setup_body">Mikrofon, yapay zekâ asistanın Jonas ile konuşmanı sağlar. Yaklaşık konum, yakındaki sinemaları bulmaya yardımcı olur. Kayıt veya konum sorgusu yalnızca ilgili özelliği kullanmayı seçtiğinde başlar. İki izin de isteğe bağlıdır; metin kullanmaya devam edebilirsin.</string>
+    <string name="permission_setup_allow">İzinleri seç</string>
+    <string name="permission_setup_skip">Şimdi değil</string>
+    <string name="intro_skip">Atla</string>
+</resources>

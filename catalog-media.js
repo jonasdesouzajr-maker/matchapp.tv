@@ -528,6 +528,76 @@
     const file=url=>String(url||'').match(/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w[0-9]+|original)\/([A-Za-z0-9_.-]+)$/)?.[1]||String(url||'');
     return !!a&&!!b&&file(a)===file(b);
   }
+  // Fast recovery may temporarily pin a decoded rendition. Remember the
+  // original responsive contract so rotation or a wider window can select a
+  // sharper rendition of that exact artwork again. One bounded resize owner;
+  // no new poster identities, polling, or eager offscreen image requests.
+  const RESPONSIVE_POSTERS=new Set();
+  let responsivePosterResizeBound=false,responsivePosterResizeTimer;
+  let responsivePosterVisibility=null;
+  function forgetResponsivePoster(img){
+    RESPONSIVE_POSTERS.delete(img);
+    responsivePosterVisibility?.unobserve(img);
+  }
+  function restoreResponsivePoster(img,state=img.__matchappAdultPoster){
+    if(!img.isConnected){forgetResponsivePoster(img);return;}
+    if(!state||img.__matchappAdultPoster!==state||!state.responsiveResizePending||!state.responsive){
+      responsivePosterVisibility?.unobserve(img);return;
+    }
+    // Recovery can still remove a healthy srcset, or assign a decoded probe
+    // before the destination <img> finishes loading. Its completion/load
+    // callbacks retain this resize intent instead of requiring a second turn.
+    if(state.repairing||state.fastPaint?.active)return;
+    const finish=()=>{state.responsiveResizePending=false;responsivePosterVisibility?.unobserve(img);};
+    if(img.getAttribute?.('srcset')){finish();return;}
+    if(!img.complete||!img.naturalWidth)return;
+    const shown=String(img.currentSrc||img.src||'');
+    const choices=state.responsive.choices.filter(([url])=>sameOriginalArtwork(url,shown)&&!state.failed.has(url));
+    if(!choices.length){finish();return;}
+    if(!adultPosterNearView(img,0)){
+      if(typeof IntersectionObserver==='function'){
+        if(!responsivePosterVisibility)responsivePosterVisibility=new IntersectionObserver(entries=>{
+          for(const entry of entries){
+            if(!entry.target.isConnected){forgetResponsivePoster(entry.target);continue;}
+            if(entry.isIntersecting)restoreResponsivePoster(entry.target);
+          }
+        },{rootMargin:'0px'});
+        responsivePosterVisibility.observe(img);
+      }
+      return;
+    }
+    finish(); // Clear before attributes/load callbacks; never create a retry loop.
+    img.setAttribute('sizes',state.responsive.sizes);
+    img.setAttribute('srcset',choices.map(choice=>choice.join(' ')).join(', '));
+  }
+  function rememberResponsivePoster(img,state){
+    const srcset=img.getAttribute?.('srcset'),sizes=img.getAttribute?.('sizes');
+    if(srcset&&sizes){
+      const choices=srcset.split(',').map(part=>part.trim().split(/\s+/));
+      const current=String(img.currentSrc||img.src||'');
+      if(choices.length&&choices.every(([url,width,...extra])=>!extra.length&&/^[1-9]\d*w$/.test(width||'')&&
+        /^https:\/\/image\.tmdb\.org\/t\/p\/w\d+\/[A-Za-z0-9_.-]+$/.test(url)&&sameOriginalArtwork(url,current)))
+        state.responsive={choices,sizes};
+    }
+    if(!state.responsive)return;
+    for(const image of RESPONSIVE_POSTERS)if(!image.isConnected)forgetResponsivePoster(image);
+    if(RESPONSIVE_POSTERS.size>=200&&!RESPONSIVE_POSTERS.has(img))return;
+    RESPONSIVE_POSTERS.add(img);
+    if(responsivePosterResizeBound||typeof window.addEventListener!=='function')return;
+    responsivePosterResizeBound=true;
+    window.addEventListener('resize',()=>{
+      clearTimeout(responsivePosterResizeTimer);
+      responsivePosterResizeTimer=setTimeout(()=>{
+        for(const image of RESPONSIVE_POSTERS){
+          if(!image.isConnected){forgetResponsivePoster(image);continue;}
+          const active=image.__matchappAdultPoster;
+          if(!active?.responsive)continue;
+          active.responsiveResizePending=true;
+          restoreResponsivePoster(image,active);
+        }
+      },120);
+    },{passive:true});
+  }
   function safeSameTitleMedia(row,state){
     if(!row||!row.title)return false;
     const found=Number(row.tmdb_id);
@@ -635,6 +705,7 @@
       if(--run.remaining===0){
         run.active=false;if(state.fastPaint===run)state.fastPaint=null;
         if(!run.shown&&img.__matchappAdultPoster===state&&img.isConnected)void repairAdultPoster(img,state);
+        if(state.responsiveResizePending)restoreResponsivePoster(img,state);
       }
     });
     return true;
@@ -727,6 +798,7 @@
           if(!sameOriginalArtwork(img.src,state.preferred))
             void repairAdultPoster(img,state);
         }
+        if(state.responsiveResizePending)restoreResponsivePoster(img,state);
       }
     }
   }
@@ -764,6 +836,7 @@
     state.isRail=isRail;
     state.isPortfolio=isPortfolio;
     state.isWatch=isWatch;
+    rememberResponsivePoster(img,state);
     if(Number.isSafeInteger(tmdbId)&&tmdbId>0){
       state.tmdbId=tmdbId;
     }
@@ -788,6 +861,10 @@
     img.dataset.matchappMediaTitle=name;
     if(img.dataset.matchappAdultPosterBound!=='1'){
       img.dataset.matchappAdultPosterBound='1';
+      img.addEventListener('load',()=>{
+        const active=img.__matchappAdultPoster;
+        if(active?.responsiveResizePending)restoreResponsivePoster(img,active);
+      });
       img.addEventListener('error',()=>{
         const active=img.__matchappAdultPoster;
         if(!active)return;
@@ -819,6 +896,7 @@
         (state.meta.poster_large_url||state.meta.poster_url||state.meta.poster_original_url);
       if(catalogOriginal&&posterVariants(catalogOriginal).length&&
          !sameOriginalArtwork(current,catalogOriginal))void repairAdultPoster(img,state);
+      if(state.responsiveResizePending)restoreResponsivePoster(img,state);
       return; // Never blank a working original while checking fresh artwork.
     }
     if(current&&TRUSTED_POSTER.test(current)&&!img.complete){

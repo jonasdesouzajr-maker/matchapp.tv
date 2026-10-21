@@ -75,7 +75,7 @@ function openAskFromBrand(){
  if(!isHome){location.href='/?ask=1#ma-concierge';return}
  const ask=qs('#ma-tab-ask'),card=qs('#ma-ai-entry')||qs('#ma-concierge');
  if(ask)safeClick(ask);
- if(card)card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+ if(card)window.MatchAppActivatedScroll?.toStart(card) ?? card.scrollIntoView({behavior:'auto',block:'start'});
  setTimeout(()=>{
    const input=qs('#specific-search-input');
    if(input){input.classList.add('ma-ai-focus-pulse');setTimeout(()=>input.classList.remove('ma-ai-focus-pulse'),2200)}
@@ -149,7 +149,7 @@ function brandHeader(){
      action('Sound','♪',()=>{const next=!(window.MatchSettings?.get?.('autoRead')!==false);window.MatchSettings?.set?.('autoRead',next);window.showToast?.(menuToast(next?'soundOn':'soundOff'))}),
      action('Theme','◐',()=>{const themes=['aurora','cinema','ocean','sunrise','arcade'],cur=window.MatchSettings?.get?.('theme')||'aurora',next=themes[(Math.max(0,themes.indexOf(cur))+1)%themes.length];window.MatchSettings?.set?.('theme',next);document.documentElement.dataset.theme=next;window.showToast?.(menuToast('theme')+': '+next)}),
      action('Lazy Mode','⚡',()=>{if(!document.body.classList.contains('ma-signed-in')){window.showToast?.(menuToast('lazy'));return}const lazy=qs('.lazy-toggle');if(lazy)safeClick(lazy);else window.setLazyMode?.(true)}),
-     action('Daily check-in','✓',()=>{document.body.classList.add('ma-checkin-open');const box=qs('#daily-match-checkin');if(box){box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'center'})}}),
+     action('Daily check-in','✓',()=>{document.body.classList.add('ma-checkin-open');const box=qs('#daily-match-checkin');if(box){box.style.display='block';window.MatchAppActivatedScroll?.toStart(box) ?? box.scrollIntoView({behavior:'auto',block:'start'})}}),
      link('Jonas experience','/jonas/','✦'),
      link('Pricing','/pricing/pricing.html','♢'),
      action('Install app','↓',()=>{if(typeof window.installMatchApp==='function')window.installMatchApp();else location.href='/android/'}),
@@ -362,24 +362,7 @@ function mountHome(){
    requestAnimationFrame(()=>{
      if(!pa.hidden&&pa.getClientRects().length){
        const target=qs('#search-box',pa)||pa;
-       // No queued smooth animation after a fold opens: the input must
-       // actually enter the viewport on the first mobile/desktop tap.
-       try{target.scrollIntoView({behavior:'instant',block:'start'});}
-       catch(_){target.scrollIntoView();}
-       // On narrow WebViews an anchored Trending row or restored fold can
-       // counteract scrollIntoView. Set an explicit, keyboard-safe visible
-       // position after the fold has committed its layout, above the bottom dock.
-       requestAnimationFrame(()=>{
-         const rect=target.getBoundingClientRect();
-         const desiredTop=Math.max(70,Math.min(112,window.innerHeight*0.16));
-         const dock=qs('#ma-dock');
-         const dockVisible=dock&&getComputedStyle(dock).display!=='none';
-         const safeBottom=window.innerHeight-(dockVisible?dock.getBoundingClientRect().height+20:18);
-         if(rect.top>desiredTop||rect.bottom>safeBottom){
-           try{window.scrollBy({top:rect.top-desiredTop,behavior:'instant'});}
-           catch(_){window.scrollBy(0,rect.top-desiredTop);}
-         }
-       });
+       window.MatchAppActivatedScroll?.toStart(target,{behavior:'auto'}) ?? target.scrollIntoView({behavior:'auto',block:'start'});
      }
    });
  });

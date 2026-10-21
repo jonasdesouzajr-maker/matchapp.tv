@@ -1,0 +1,2600 @@
+{
+  "scope": "Physical Samsung SM-X236B Android16; separate com.jonas.papercup.qa20261021 debug app. Candidate web files served by developer CDP overlay; not a production deployment.",
+  "states": {
+    "tablet-candidate-home": {
+      "url": "https://matchapp.tv/",
+      "timeOrigin": 1792610392579,
+      "scrollY": 0,
+      "viewport": {
+        "width": 800,
+        "height": 1145,
+        "visual": {
+          "width": 800,
+          "height": 1144.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1052.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1052.666748046875,
+        "right": 770,
+        "bottom": 1128.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-candidate-guide": {
+      "url": "https://matchapp.tv/how-it-works.html",
+      "timeOrigin": 1792610459380.3,
+      "scrollY": 0,
+      "viewport": {
+        "width": 800,
+        "height": 1235,
+        "visual": {
+          "width": 800,
+          "height": 1234.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "chapter": "0",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1142.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1142.666748046875,
+        "right": 770,
+        "bottom": 1218.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-candidate-chapter9": {
+      "url": "https://matchapp.tv/how-it-works.html#chapter-9",
+      "timeOrigin": 1792610459380.3,
+      "scrollY": 552.6666870117188,
+      "viewport": {
+        "width": 800,
+        "height": 1235,
+        "visual": {
+          "width": 800,
+          "height": 1234.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "chapter": "8",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1142.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1142.666748046875,
+        "right": 770,
+        "bottom": 1218.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-candidate-resume": {
+      "url": "https://matchapp.tv/how-it-works.html#chapter-9",
+      "timeOrigin": 1792610459380.3,
+      "scrollY": 552.6666870117188,
+      "viewport": {
+        "width": 800,
+        "height": 1235,
+        "visual": {
+          "width": 800,
+          "height": 1234.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "chapter": "8",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1142.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1142.666748046875,
+        "right": 770,
+        "bottom": 1218.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-candidate-jonas-denied": {
+      "url": "https://matchapp.tv/how-it-works.html#chapter-9",
+      "timeOrigin": 1792610459380.3,
+      "scrollY": 552.6666870117188,
+      "viewport": {
+        "width": 800,
+        "height": 1235,
+        "visual": {
+          "width": 800,
+          "height": 1234.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "chapter": "8",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1142.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1142.666748046875,
+        "right": 770,
+        "bottom": 1218.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-mic-denied-no-reprompt": {
+      "url": "https://matchapp.tv/how-it-works.html#chapter-9",
+      "timeOrigin": 1792610459380.3,
+      "scrollY": 552.6666870117188,
+      "viewport": {
+        "width": 800,
+        "height": 1235,
+        "visual": {
+          "width": 800,
+          "height": 1234.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "chapter": "8",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1142.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1142.666748046875,
+        "right": 770,
+        "bottom": 1218.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-chat-keyboard": {
+      "url": "https://matchapp.tv/how-it-works.html#chapter-9",
+      "timeOrigin": 1792610459380.3,
+      "scrollY": 521.3333129882812,
+      "viewport": {
+        "width": 800,
+        "height": 1250,
+        "visual": {
+          "width": 800,
+          "height": 830,
+          "offsetTop": 15.333333015441895
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "chapter": "8",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1168,
+        "width": 740,
+        "height": 76,
+        "top": 1168,
+        "right": 770,
+        "bottom": 1244,
+        "left": 30
+      },
+      "jonas": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-candidate-profile": {
+      "url": "https://matchapp.tv/profile/profile.html",
+      "timeOrigin": 1792610787177.1,
+      "scrollY": 0,
+      "viewport": {
+        "width": 800,
+        "height": 1235,
+        "visual": {
+          "width": 800,
+          "height": 1234.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1142.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1142.666748046875,
+        "right": 770,
+        "bottom": 1218.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 1,
+      "introElements": 0
+    },
+    "tablet-candidate-history-tile": {
+      "url": "https://matchapp.tv/profile/profile.html#activity-panel",
+      "timeOrigin": 1792610787177.1,
+      "scrollY": 503.3333435058594,
+      "viewport": {
+        "width": 800,
+        "height": 1145,
+        "visual": {
+          "width": 800,
+          "height": 1144.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1052.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1052.666748046875,
+        "right": 770,
+        "bottom": 1128.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 1,
+      "introElements": 0
+    },
+    "tablet-before-pull": {
+      "url": "https://matchapp.tv/profile/profile.html#activity-panel",
+      "timeOrigin": 1792610787177.1,
+      "scrollY": 0,
+      "viewport": {
+        "width": 800,
+        "height": 1145,
+        "visual": {
+          "width": 800,
+          "height": 1144.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1052.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1052.666748046875,
+        "right": 770,
+        "bottom": 1128.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 1,
+      "introElements": 0
+    },
+    "tablet-after-pull": {
+      "url": "https://matchapp.tv/profile/profile.html#activity-panel",
+      "timeOrigin": 1792610787177.1,
+      "scrollY": 0,
+      "viewport": {
+        "width": 800,
+        "height": 1145,
+        "visual": {
+          "width": 800,
+          "height": 1144.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 126.66667175292969,
+        "top": 0,
+        "right": 800,
+        "bottom": 126.66667175292969,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1052.666748046875,
+        "width": 740,
+        "height": 76,
+        "top": 1052.666748046875,
+        "right": 770,
+        "bottom": 1128.666748046875,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 36,
+        "width": 252,
+        "height": 84,
+        "top": 36,
+        "right": 792,
+        "bottom": 120,
+        "left": 540
+      },
+      "historyRows": 1,
+      "introElements": 0
+    },
+    "tablet-candidate-explore": {
+      "url": "https://matchapp.tv/explore.html",
+      "timeOrigin": 1792611013265.5,
+      "scrollY": 0,
+      "viewport": {
+        "width": 800,
+        "height": 1235,
+        "visual": {
+          "width": 800,
+          "height": 1234.6666259765625,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 138.6666717529297,
+        "top": 0,
+        "right": 800,
+        "bottom": 138.6666717529297,
+        "left": 0
+      },
+      "dock": {
+        "x": 30,
+        "y": 1140.3333740234375,
+        "width": 740,
+        "height": 78.33333587646484,
+        "top": 1140.3333740234375,
+        "right": 770,
+        "bottom": 1218.6667098999023,
+        "left": 30
+      },
+      "jonas": {
+        "x": 540,
+        "y": 42,
+        "width": 252,
+        "height": 84,
+        "top": 42,
+        "right": 792,
+        "bottom": 126,
+        "left": 540
+      },
+      "historyRows": 0,
+      "introElements": 0
+    },
+    "tablet-candidate-landscape": {
+      "url": "https://matchapp.tv/explore.html",
+      "timeOrigin": 1792611013265.5,
+      "scrollY": 0,
+      "viewport": {
+        "width": 1280,
+        "height": 755,
+        "visual": {
+          "width": 1280,
+          "height": 754.6666870117188,
+          "offsetTop": 0
+        }
+      },
+      "overflow": 0,
+      "lang": "pt-BR",
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 138.6666717529297,
+        "top": 0,
+        "right": 1280,
+        "bottom": 138.6666717529297,
+        "left": 0
+      },
+      "dock": {
+        "x": 270,
+        "y": 662.3333740234375,
+        "width": 740,
+        "height": 78.33333587646484,
+        "top": 662.3333740234375,
+        "right": 1010,
+        "bottom": 740.6667098999023,
+        "left": 270
+      },
+      "jonas": {
+        "x": 1000,
+        "y": 42,
+        "width": 252,
+        "height": 84,
+        "top": 42,
+        "right": 1252,
+        "bottom": 126,
+        "left": 1000
+      },
+      "historyRows": 0,
+      "introElements": 0
+    }
+  },
+  "localRefresh": {
+    "before": {
+      "url": "https://matchapp.tv/profile/profile.html#activity-panel",
+      "timeOrigin": 1792610787177.1,
+      "scrollY": 503.3333435058594,
+      "filter": ""
+    },
+    "result": true,
+    "after": {
+      "url": "https://matchapp.tv/profile/profile.html#activity-panel",
+      "timeOrigin": 1792610787177.1,
+      "scrollY": 503.3333435058594,
+      "filter": ""
+    }
+  },
+  "permissions": {
+    "packages": [
+      "com.jonas.papercup.qa20261021"
+    ],
+    "messages": [
+      "Digite ou use o microfone e depois toque em Enviar.",
+      "&#127897;️ O acesso ao microfone foi bloqueado — verifique as permissões do navegador."
+    ],
+    "nativeGrants": "      android.permission.ACCESS_COARSE_LOCATION\r\n      android.permission.RECORD_AUDIO\r\n        android.permission.ACCESS_COARSE_LOCATION: granted=false, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]\r\n        android.permission.RECORD_AUDIO: granted=false, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]\r\n"
+  },
+  "jvm": [
+    {
+      "suite": "com.jonas.papercup.GrowthReferrerParserTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "suite": "com.jonas.papercup.NativeLaunchPolicyTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "suite": "com.jonas.papercup.NativeNewsPolicyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "suite": "com.jonas.papercup.PlayBillingPolicyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "suite": "com.jonas.papercup.RewardedRequestPolicyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0"
+    }
+  ],
+  "introPreferences": "��<\u0000?\u0000x\u0000m\u0000l\u0000 \u0000v\u0000e\u0000r\u0000s\u0000i\u0000o\u0000n\u0000=\u0000'\u00001\u0000.\u00000\u0000'\u0000 \u0000e\u0000n\u0000c\u0000o\u0000d\u0000i\u0000n\u0000g\u0000=\u0000'\u0000u\u0000t\u0000f\u0000-\u00008\u0000'\u0000 \u0000s\u0000t\u0000a\u0000n\u0000d\u0000a\u0000l\u0000o\u0000n\u0000e\u0000=\u0000'\u0000y\u0000e\u0000s\u0000'\u0000 \u0000?\u0000>\u0000\r\u0000\n\u0000<\u0000m\u0000a\u0000p\u0000>\u0000\r\u0000\n\u0000 \u0000 \u0000 \u0000 \u0000<\u0000b\u0000o\u0000o\u0000l\u0000e\u0000a\u0000n\u0000 \u0000n\u0000a\u0000m\u0000e\u0000=\u0000\"\u0000i\u0000n\u0000t\u0000r\u0000o\u0000_\u0000s\u0000e\u0000e\u0000n\u0000_\u0000v\u00001\u0000\"\u0000 \u0000v\u0000a\u0000l\u0000u\u0000e\u0000=\u0000\"\u0000t\u0000r\u0000u\u0000e\u0000\"\u0000 \u0000/\u0000>\u0000\r\u0000\n\u0000 \u0000 \u0000 \u0000 \u0000<\u0000s\u0000t\u0000r\u0000i\u0000n\u0000g\u0000 \u0000n\u0000a\u0000m\u0000e\u0000=\u0000\"\u0000a\u0000p\u0000p\u0000_\u0000l\u0000a\u0000n\u0000g\u0000u\u0000a\u0000g\u0000e\u0000_\u0000v\u00001\u0000\"\u0000>\u0000p\u0000t\u0000-\u0000B\u0000R\u0000<\u0000/\u0000s\u0000t\u0000r\u0000i\u0000n\u0000g\u0000>\u0000\r\u0000\n\u0000 \u0000 \u0000 \u0000 \u0000<\u0000i\u0000n\u0000t\u0000 \u0000n\u0000a\u0000m\u0000e\u0000=\u0000\"\u0000i\u0000n\u0000t\u0000r\u0000o\u0000_\u0000c\u0000o\u0000n\u0000s\u0000u\u0000m\u0000e\u0000d\u0000_\u0000p\u0000a\u0000c\u0000k\u0000a\u0000g\u0000e\u0000_\u0000v\u0000e\u0000r\u0000s\u0000i\u0000o\u0000n\u0000_\u0000v\u00002\u0000\"\u0000 \u0000v\u0000a\u0000l\u0000u\u0000e\u0000=\u0000\"\u00005\u00005\u0000\"\u0000 \u0000/\u0000>\u0000\r\u0000\n\u0000 \u0000 \u0000 \u0000 \u0000<\u0000b\u0000o\u0000o\u0000l\u0000e\u0000a\u0000n\u0000 \u0000n\u0000a\u0000m\u0000e\u0000=\u0000\"\u0000p\u0000e\u0000r\u0000m\u0000i\u0000s\u0000s\u0000i\u0000o\u0000n\u0000s\u0000_\u0000s\u0000e\u0000t\u0000u\u0000p\u0000_\u0000c\u0000o\u0000m\u0000p\u0000l\u0000e\u0000t\u0000e\u0000_\u0000v\u00002\u0000\"\u0000 \u0000v\u0000a\u0000l\u0000u\u0000e\u0000=\u0000\"\u0000t\u0000r\u0000u\u0000e\u0000\"\u0000 \u0000/\u0000>\u0000\r\u0000\n\u0000<\u0000/\u0000m\u0000a\u0000p\u0000>\u0000\r\u0000\n\u0000",
+  "artwork": [
+    {
+      "file": "explore-hero-700.avif",
+      "bytes": 29588,
+      "sha256": "6fafe35c063b3ade3e0b8f664d287ed8136e4a88cca6361596b362bd3d1df671"
+    },
+    {
+      "file": "explore-hero-2800.avif",
+      "bytes": 261033,
+      "sha256": "d51e14408e6378c82e80219b7d8f014b5edceb159c519518c21715565c9842f3"
+    },
+    {
+      "file": "explore-hero-1400.avif",
+      "bytes": 94641,
+      "sha256": "6421f031da12073c2ce9568ef93b63963192cebfce728cb9b4b8c4baf37a32e9"
+    },
+    {
+      "file": "explore-awaited-600.avif",
+      "bytes": 44189,
+      "sha256": "740ed6d986061d500adf83f7cb08d87fecee0e067d8f9eb53fd82fac95375fc6"
+    },
+    {
+      "file": "explore-awaited-1200.avif",
+      "bytes": 149522,
+      "sha256": "c7e196f64b2d975d8ea4b7024cd5973366fcbc7dbffb43af08a2f02b60f6ab93"
+    },
+    {
+      "file": "explore-hero-3500.avif",
+      "bytes": 349840,
+      "sha256": "f0e9057a74a1b338b650ba4386e0223d525efc0e4ee4fca773d97cd1f77265e0"
+    },
+    {
+      "file": "explore-weekly-500.avif",
+      "bytes": 23773,
+      "sha256": "e6a7a63c5329cc4834e68ee4a3900da41656f910d133be0328b5ad4222d64da0"
+    },
+    {
+      "file": "explore-weekly-1000.avif",
+      "bytes": 64749,
+      "sha256": "63316655bbd2cc3e8237643ce17ea1f452331dd78fb5ee6a7ef61fecb8a1ff8b"
+    },
+    {
+      "file": "explore-awaited-2400.avif",
+      "bytes": 504726,
+      "sha256": "63f733f88fc40a3ec195d61b8e5bed7da4116fdebbfd071b6ccdd74ca2735412"
+    },
+    {
+      "file": "explore-books-350.avif",
+      "bytes": 26906,
+      "sha256": "f3b5b4dc9dedef1f7f337e3a93cbc8a466d003e8db1f7872985bfc6df6234791"
+    },
+    {
+      "file": "explore-weekly-2000.avif",
+      "bytes": 183345,
+      "sha256": "4b33349050416522fdff27c409b093d0d2e51ac761f5b4d8ebd7381e11ba5992"
+    },
+    {
+      "file": "explore-books-700.avif",
+      "bytes": 84484,
+      "sha256": "1e4f66b73c44c17af3002c8aef94e882784d0e3d443c258d5fd53b5ae0e2db89"
+    },
+    {
+      "file": "explore-food-350.avif",
+      "bytes": 23519,
+      "sha256": "598fee3a09e3d45aa813936c9b3efbf4e4682b363446802549dd9bd48b92ddca"
+    },
+    {
+      "file": "explore-books-1400.avif",
+      "bytes": 269263,
+      "sha256": "c301f6aa358b36e328bd6f625f8f2c8a664c3241cad7cc4aea0f3c1e26eedd0b"
+    },
+    {
+      "file": "explore-food-700.avif",
+      "bytes": 52303,
+      "sha256": "882613326416686442a01e0e74e0f37ceb88c409da4d24cd5c90c727d67480c5"
+    },
+    {
+      "file": "explore-food-1400.avif",
+      "bytes": 117569,
+      "sha256": "b0b1c37dc786544d34d98034a8173c8f1dff5e95ec66817bb58b1a7e95e844d8"
+    },
+    {
+      "file": "explore-news-350.avif",
+      "bytes": 11633,
+      "sha256": "e2b15e11c115331517515725db53bdc722d9305a4ca3e80d3837b6cfa06b81c9"
+    },
+    {
+      "file": "explore-news-700.avif",
+      "bytes": 32274,
+      "sha256": "19eb5e7b84ad02c3a5a40dfccd153de9a4cd3e33b2d0f6581c3886cde1bc160e"
+    },
+    {
+      "file": "explore-news-1400.avif",
+      "bytes": 100833,
+      "sha256": "9568ae4c15f3879e8efc11559d1280d31d6f3b125768b941a9ccd00d0665254e"
+    },
+    {
+      "file": "explore-events-500.avif",
+      "bytes": 20869,
+      "sha256": "5497d16513e36e964405c8c29aa7f493f2071d9d58f7d86cd9aaafbe302d5e22"
+    },
+    {
+      "file": "explore-events-1000.avif",
+      "bytes": 52633,
+      "sha256": "c8318a94336f2aaf7115d97a64003f8c9f4428404de9c360053a30f300790460"
+    },
+    {
+      "file": "explore-events-2000.avif",
+      "bytes": 266214,
+      "sha256": "be911e36488665d42e005704bc1ded0a493ffb02ec1b2be9a05b2c001b9f3965"
+    },
+    {
+      "file": "explore-music-350.avif",
+      "bytes": 6811,
+      "sha256": "abeab141f60a3070b0b234029b0e47c7f29b9a5ee5896e959792ea7f2e02770b"
+    },
+    {
+      "file": "explore-music-700.avif",
+      "bytes": 12649,
+      "sha256": "10aad83c43d25d256ba9d0dd82e56e1b39916cad53d475e64a8ead91db4543a3"
+    },
+    {
+      "file": "explore-music-1400.avif",
+      "bytes": 57210,
+      "sha256": "179ab8b3ae351701c8636b3b844f36106e4ec9d779451c8f2a66ed263d7bc1e9"
+    }
+  ],
+  "overlay": {
+    "scope": "Isolated QA WebView; local checkout overlay, not production deployment",
+    "resources": [
+      {
+        "path": "/",
+        "bytes": 431639,
+        "sha256": "b22c2d873c5364f84d54951a6c1df21ae6788a6ce80c799da2e81c4d79d2b6b7"
+      },
+      {
+        "path": "/assets/cinema/home-city-lossless.webp",
+        "bytes": 1325222,
+        "sha256": "23f2c685336655e9787d2e4ae9fd67ac8cbb59020f044c661999061582d396f6"
+      },
+      {
+        "path": "/patches/reference-header.css",
+        "bytes": 23690,
+        "sha256": "5ea1fd2d8c3c00b95a1abd923c7bbba4c7e0cfe1bfba5e2855329e544b9233b1"
+      },
+      {
+        "path": "/patches/reference-dock.css",
+        "bytes": 17355,
+        "sha256": "1ce9e94b84da0dcc0b2f789109518a2a3d43e5cb34b9f9a2707eb179584926be"
+      },
+      {
+        "path": "/patches/reference-palette-tokens.css",
+        "bytes": 1166,
+        "sha256": "94a2cd6a7c197ff5d7a047cea2e020a7ba597232739d273687857fccccae769b"
+      },
+      {
+        "path": "/patches/reference-pills.css",
+        "bytes": 23257,
+        "sha256": "832a20859c0bf478511da81321df3139b1989124b66f89229aa90dbbf42acefe"
+      },
+      {
+        "path": "/patches/signature-ui-20261015.css",
+        "bytes": 32539,
+        "sha256": "9e61e13b7ecfe12de73f6a88f7ba7a77d410eefc748b1d9f7c511763e69aa349"
+      },
+      {
+        "path": "/patches/adult-screen-fit-20261015.css",
+        "bytes": 43488,
+        "sha256": "ffbb9fb2f7a2d3c314729ac605792319c51aee948542010287881951f4cb322c"
+      },
+      {
+        "path": "/adult-page-compact.css",
+        "bytes": 7317,
+        "sha256": "4b4ce615bad02142fd849a9c8b9dbdc5c4cfe93e1c344b89d1341206fb4e27b7"
+      },
+      {
+        "path": "/patches/premium-type-20261014.css",
+        "bytes": 2486,
+        "sha256": "a652523baa7d451941288d2af1949640598b7faf84d1765fe0ac30d0432398cd"
+      },
+      {
+        "path": "/patches/premium-touch-motion-20261014.css",
+        "bytes": 3984,
+        "sha256": "8fdf7a482e221d6528deb26c5dd60b24250a8e0f190db7721294b113b8380eff"
+      },
+      {
+        "path": "/android-early-ui-20261011.js",
+        "bytes": 880,
+        "sha256": "6b3f6914ffe84a69b0d7f6f896045e704a6a47c7d12b43841439e2959de202fe"
+      },
+      {
+        "path": "/pro-plan.js",
+        "bytes": 91593,
+        "sha256": "61373f11fd25b14629887447f12b1d82af5b272f94c6611fdce475fcf803bede"
+      },
+      {
+        "path": "/one-match-continuation.js",
+        "bytes": 15588,
+        "sha256": "b9ed5f3c72f30c028dc05d0eaafae9ffe4c9e907aa2d2744c75a8034f15806df"
+      },
+      {
+        "path": "/installed-app-intro.js",
+        "bytes": 8736,
+        "sha256": "4cf1b6f4e408fb1ee9f953ea5266123aa41fa00e83c02b69454ce8a28f0dd242"
+      },
+      {
+        "path": "/page-origin.js",
+        "bytes": 663,
+        "sha256": "051c36eb4fe2d77d7cabbad34f55e54ce4fce9a4f40da7d73e3e7c3d374d890e"
+      },
+      {
+        "path": "/freeze-guard.js",
+        "bytes": 650,
+        "sha256": "7a8103ce0ab19e3a4448a1b356fff7a2c215dcdd23adb9a9a6ba237e7bc760be"
+      },
+      {
+        "path": "/build-meta.js",
+        "bytes": 8297,
+        "sha256": "b05b737ad0e2fca61dfabb804c59a5358b9aa4854bf0a5646b380296cbf95063"
+      },
+      {
+        "path": "/app-install-state.js",
+        "bytes": 2889,
+        "sha256": "cd818f4ad5aa159086e5695b6286789beeb2c3fd045f2f7996d9968ef0d10ca7"
+      },
+      {
+        "path": "/awareness.css",
+        "bytes": 7834,
+        "sha256": "ec5b60daa3f8a1bb53c7db5d8d62b42a1b865afd02fe29970972ff8b9a4bf6e5"
+      },
+      {
+        "path": "/style.css",
+        "bytes": 58566,
+        "sha256": "08b2fcfede1434c11e56560a16f93cae9cca114e2f64472a4325e4d1eb2fe243"
+      },
+      {
+        "path": "/auth-premium.css",
+        "bytes": 5775,
+        "sha256": "6e46b686cc080b562bbcd1063415b659a1fbbbb8d526a98e699c34c6d60f6372"
+      },
+      {
+        "path": "/rail-parity.css",
+        "bytes": 2826,
+        "sha256": "98bb3a4ab359f2021125745737de1f59ac1ef436a779122fce0603e94852e02e"
+      },
+      {
+        "path": "/tv.css",
+        "bytes": 6144,
+        "sha256": "053294a3740e8291fb5d06ea701e1f1211352da6476211856c3c2522d6c71059"
+      },
+      {
+        "path": "/passkeys.css",
+        "bytes": 1467,
+        "sha256": "bb370fb3ba7cdd6f0870a4fee0aaf3f0546bd65ac3eff7423e1d8c29b5fdfbff"
+      },
+      {
+        "path": "/phone-auth.css",
+        "bytes": 2760,
+        "sha256": "a6a31b57d723e0c385057b0c69f1495c1ac6b45adc945190e7f44b815f69003f"
+      },
+      {
+        "path": "/app-updates.css",
+        "bytes": 2163,
+        "sha256": "d131d709caf4a78d90f3c1a5d77242c42b2477badd4fd1267fa53481c988f7d6"
+      },
+      {
+        "path": "/app-install-state.css",
+        "bytes": 2870,
+        "sha256": "7aa0e7e23b04beafcdf41aef271ee24d8d402f27ee0ee2cb19d110faf05f7eb2"
+      },
+      {
+        "path": "/themes.css",
+        "bytes": 8125,
+        "sha256": "b1361857edef1ebd7c67b3153ce9947386978c642009023b4b935dbd6fe0bdcd"
+      },
+      {
+        "path": "/app-polish.css",
+        "bytes": 11999,
+        "sha256": "22f4d1944a507742a522998ea92141ba6e4b4abdc77cc3fb8c952afe0d1709e0"
+      },
+      {
+        "path": "/themes.js",
+        "bytes": 3180,
+        "sha256": "9ae1cfd1a60f7c8e2048213047b92dbe64da5913b0a667c8bcc99f2d6e5fcd4f"
+      },
+      {
+        "path": "/poster-wall.css",
+        "bytes": 32140,
+        "sha256": "25af8c3cc8fe445030e267c893e40a3451a9f634c7163cc4bb134db135731139"
+      },
+      {
+        "path": "/brand.css",
+        "bytes": 42299,
+        "sha256": "a87dc4d16df04aa8e5b0f413af3c7b5deade85c21487e11653846786e13aaa02"
+      },
+      {
+        "path": "/daily-checkin.css",
+        "bytes": 11954,
+        "sha256": "91b4e193210a7911390f359e1a3e8e8820be8af70d2c7d07fded4e9c608d73ad"
+      },
+      {
+        "path": "/international-day.css",
+        "bytes": 3053,
+        "sha256": "29d01030c901cb85d6c89f2d38e57c7a7a98cc80ef9c25765a3c284dd6b09251"
+      },
+      {
+        "path": "/notifications.css",
+        "bytes": 20392,
+        "sha256": "28f6b8d10f40b14c06a568e12145a29699c1da0c2cf0533efb652026ff12302d"
+      },
+      {
+        "path": "/onboarding-tour.css",
+        "bytes": 9734,
+        "sha256": "b780a7263fa8be79718f953965cab705144af99d49ec99a0e75f3a3151e1d9eb"
+      },
+      {
+        "path": "/taste-profile.css",
+        "bytes": 2858,
+        "sha256": "a78d7a5ae710bb7bdfb66bd0565f22e1d33e577fd18a3f62410e407589f013ff"
+      },
+      {
+        "path": "/profile-card.css",
+        "bytes": 1334,
+        "sha256": "2cb687ec52465501d32d7c689c8f9473e2d3a5c272ba455b784fcfcca1b25cea"
+      },
+      {
+        "path": "/preference-exclusions.css",
+        "bytes": 2169,
+        "sha256": "bfeb596607e48d56b518944d426a38a9145dc43abc5cd40df5c7688938169ca5"
+      },
+      {
+        "path": "/matchapp-ia.css",
+        "bytes": 191187,
+        "sha256": "187ddad989b29672bd4490bd1a1468bce4f83e7276ae450e9e5e8c8ec17cfd25"
+      },
+      {
+        "path": "/filter-wrap-fix.css",
+        "bytes": 1426,
+        "sha256": "4291f44590eb18ba1cb33131bf6a18d9001362763b6a7cc3db94d72cebefd21d"
+      },
+      {
+        "path": "/home-polish.css",
+        "bytes": 3406,
+        "sha256": "7ac5729502b906d0c7f4bcd8183a88662a60a6faddb40b3da0651a4c1c4c6680"
+      },
+      {
+        "path": "/ui-containment.css",
+        "bytes": 3866,
+        "sha256": "86daed17d4796c84ea3d6f8336bb2a4c3ff0439107b958e24afc96adcd9d0fac"
+      },
+      {
+        "path": "/home-8k-layout.css",
+        "bytes": 9752,
+        "sha256": "843a0c2bca3ef3f7eb1ecdabb046f110a4aa01e0023d5b1e54e002eef01a7cb1"
+      },
+      {
+        "path": "/events-cover.css",
+        "bytes": 10060,
+        "sha256": "39d716cc6c7888d9aa08f5fcd72f47111088ed3e0dd54c4f01d30a5030f5fb99"
+      },
+      {
+        "path": "/event-guide.css",
+        "bytes": 11450,
+        "sha256": "5e68c23c2136a5a2c5157692ca45ae36f8234613c2f579c21fa7b1fa528e4dbb"
+      },
+      {
+        "path": "/frontend-polish.css",
+        "bytes": 10464,
+        "sha256": "36e89b988e351ffd7b74cafe6e330719f84332d369e03e083d3891d22872da02"
+      },
+      {
+        "path": "/adult-design-refresh.css",
+        "bytes": 5787,
+        "sha256": "a43e985a2a7f5cbe6ff776780c3ee31bb9d88d06192118d7cc48c9bb9187ef5e"
+      },
+      {
+        "path": "/topic-focus.css",
+        "bytes": 1997,
+        "sha256": "0126f9ed49ffd30e1ee5047b6359f2bd3241f2668e2034f5ea2680610430c1b2"
+      },
+      {
+        "path": "/omdb-ratings.css",
+        "bytes": 841,
+        "sha256": "eb7c74cb7a9332a9a8d005031215f73bf8365562736cebf42946acf666b20586"
+      },
+      {
+        "path": "/ebooks/ebook-matcher.css",
+        "bytes": 39861,
+        "sha256": "1e95c4a563136fa0c447ce17dcf62530cd1ea233a320a77d70fa1af1ff9d06b0"
+      },
+      {
+        "path": "/fold-colors.css",
+        "bytes": 16084,
+        "sha256": "5011ee3fef1f47847193b99f87c23e61263bdf370e7e35e08a9b23038999b210"
+      },
+      {
+        "path": "/brand-headline.css",
+        "bytes": 22625,
+        "sha256": "2df4fbb27354dfebff8c6983294b9821c81ddf29b3c1f17d7c6a66d7ecc16d9e"
+      },
+      {
+        "path": "/registration-welcome.css",
+        "bytes": 2022,
+        "sha256": "b7938acb1e6b30e984052aa7303c17ea2b4441f41611a1f3b0a7eab7b585e8f2"
+      },
+      {
+        "path": "/guest-share-rewards.css",
+        "bytes": 6304,
+        "sha256": "5dbf386ffe31f133aee58460cb4d88343f795ed50d494a40afe6f758d783c62e"
+      },
+      {
+        "path": "/mobile-header-compact.css",
+        "bytes": 11027,
+        "sha256": "36dfcb86b0156ac89f9b76f060e4e3030946e6ad4473475404880ec01680f21b"
+      },
+      {
+        "path": "/match-result-stability.css",
+        "bytes": 4605,
+        "sha256": "127fd227d6dcc0effac1affc0b40125d02c235e595772029429b5b9de0167dda"
+      },
+      {
+        "path": "/cooking/cooking.css",
+        "bytes": 2042,
+        "sha256": "abae130089aa594983842e6135789931abbc22ae39260fb6fe0ba17e34ff98e6"
+      },
+      {
+        "path": "/ai-composer.css",
+        "bytes": 34671,
+        "sha256": "7cf1c37853c14cc1bb61c78aa628746a12ab8a63aef2c2dd0656f07067e44f6e"
+      },
+      {
+        "path": "/mobile-compact.css",
+        "bytes": 19785,
+        "sha256": "8bbf4b673dd1296480477f8e86806d2017113e5be19f15efc97c6767f52ebc6a"
+      },
+      {
+        "path": "/home-fold-grid.css",
+        "bytes": 34345,
+        "sha256": "9673e2d2ec59efc95bcb98f728f4ad7dc719ace18f8f2dd92889a37451a240ed"
+      },
+      {
+        "path": "/music-video-releases.css",
+        "bytes": 3216,
+        "sha256": "1de3ff92850ada04fc2fc77802c95cd22c74979da2d690cbbeeee4ea0ffe626a"
+      },
+      {
+        "path": "/title-identity.css",
+        "bytes": 495,
+        "sha256": "3e6bb89cde398523b0dba870c1ac04294696fd818ca1b42cd2ec8f997477ea3a"
+      },
+      {
+        "path": "/billboard-music.css",
+        "bytes": 2498,
+        "sha256": "13adb390ecf3eeb3eebf5a2b7a35c25131257da2255f660e5d54c02b9194e9bb"
+      },
+      {
+        "path": "/jonas/entry.css",
+        "bytes": 2350,
+        "sha256": "b2757e16f2e1c07a26b4734c1759b06f5c3b5c6aeeb8e4f21a41fb428e0f14a2"
+      },
+      {
+        "path": "/jonas/floating-home-20261010-v3.css",
+        "bytes": 11725,
+        "sha256": "ce485ed7120a17acf330241b4cd250895e910d35a5716a0df8bac4eeb27f00db"
+      },
+      {
+        "path": "/jonas/floating-chat.css",
+        "bytes": 5063,
+        "sha256": "d404d6c915581c6d11ec7908245321108a29228089bcc2251eb3f5f29b2876c9"
+      },
+      {
+        "path": "/ui-harmony.css",
+        "bytes": 14017,
+        "sha256": "2424fc86835d16a959d73e4ac02ee3b003c33ab9d62b83eb9c4a81ef99457549"
+      },
+      {
+        "path": "/jonas/lifelike-home-20261010.css",
+        "bytes": 1183,
+        "sha256": "78dabd337a92f78c1e42401699927998188a5b8e98f7ca317b06968546e5f261"
+      },
+      {
+        "path": "/jonas/android-hide-kids-20261010.css",
+        "bytes": 940,
+        "sha256": "361c6b111c827ccec85c55cd734906f8ef21ff34b1a444a13904a2010b4b01d0"
+      },
+      {
+        "path": "/premium-header-precision-20261010.css",
+        "bytes": 20378,
+        "sha256": "15da705c0ab4f6e637c688b1015e4bcedcfd4ee5d223e8bb889a9cae029c7759"
+      },
+      {
+        "path": "/premium-unified-20261010.css",
+        "bytes": 26054,
+        "sha256": "8725873abe277e335953f0837904df3077570577ac1d0442df362f0bd08bf859"
+      },
+      {
+        "path": "/jonas/home-rebuild-20261010.css",
+        "bytes": 12697,
+        "sha256": "a96dc361790b32e8a8c7a9ca2936baba74b50a0a58e1cc8ac4743988fbdf63e7"
+      },
+      {
+        "path": "/premium-finish-20261011.css",
+        "bytes": 27472,
+        "sha256": "001f71cc2c0b9d5cf209782f419ecd7df804f84b6f81e2f9c4de713e8eadb455"
+      },
+      {
+        "path": "/home-cinematic.css",
+        "bytes": 7768,
+        "sha256": "690ada595c24a2793593004c2a2ee40f1daaf19775b24be57ae878cf1493e474"
+      },
+      {
+        "path": "/cinematic-header.css",
+        "bytes": 3081,
+        "sha256": "e1b0da8dcb5825a40154d3019cd11c4cbd9f140bcdfc47f5bd7a54a4d62220c9"
+      },
+      {
+        "path": "/patches/header-and-jonas-fixes.css",
+        "bytes": 885,
+        "sha256": "9c42d7b1f44d169c6b50f7f33bd761ea2f77c9510290edebfd3c2e9f80cc31ac"
+      },
+      {
+        "path": "/patches/home-watch-focus.css",
+        "bytes": 1151,
+        "sha256": "3390b5edd869d9cabbdc9714b764f09e18d362cd144082750611461a64082422"
+      },
+      {
+        "path": "/patches/jonas-premium-glass.css",
+        "bytes": 32053,
+        "sha256": "34f1a7c02aa73e3873073234097a45f9a20d504c71a23fde9375bc5c8d6420ac"
+      },
+      {
+        "path": "/patches/adult-home-finish-20261014.css",
+        "bytes": 10484,
+        "sha256": "b98f907659cac7f490f685dfe714f217e218f56a815db8954c290c7946edeb30"
+      },
+      {
+        "path": "/patches/explore-worlds-20261014.css",
+        "bytes": 9291,
+        "sha256": "a6aa45d008523d30728dbf5f02efe6481238a9601f4ffc57fcdbe8515083890a"
+      },
+      {
+        "path": "/patches/support-donations.css",
+        "bytes": 4266,
+        "sha256": "368f902c49cc1bbe59f0d2a0d37eecc20499f4cb0547e673629aa092866c584d"
+      },
+      {
+        "path": "/patches/partnership-pages.css",
+        "bytes": 5952,
+        "sha256": "20f9c419439ec0beab8c68554dd1f5e92e657760d0fd39f13d3fa57ce2e857ab"
+      },
+      {
+        "path": "/sponsored-match.css",
+        "bytes": 2029,
+        "sha256": "63355df3b9ac5a1bea9b5c2b027fe660caff5dacb01c87eaa7aef1d8511dcc7e"
+      },
+      {
+        "path": "/result-experience.css",
+        "bytes": 8935,
+        "sha256": "9ae9f8bacc1f49378b13a7cf83b598a6e11787a005e5610b39a16bd51c0fcfa0"
+      },
+      {
+        "path": "/one-match-continuation.css",
+        "bytes": 1946,
+        "sha256": "49b2ef7f4c1b7413d0dd572cd25c78fa008196042bfdfa09dc7bf0cb7870084c"
+      },
+      {
+        "path": "/news-monetization.css",
+        "bytes": 5817,
+        "sha256": "67ce2fc6b82a5d9677a0ede82ec1dce3cc925c4a1265dcff5502a8b7a8d56515"
+      },
+      {
+        "path": "/match-tokens.css",
+        "bytes": 6057,
+        "sha256": "200ea335a64cd98ae0071c20a4da86dce6da74d0d6ac30adf18086e441bf1be3"
+      },
+      {
+        "path": "/pro-plan.css",
+        "bytes": 8088,
+        "sha256": "72af25db78c18063d28e017e5fb218e2a7802b3de7915ce9eb7c7ae5a2f747b8"
+      },
+      {
+        "path": "/patches/reference-system.css",
+        "bytes": 17114,
+        "sha256": "316ec882ecb6430b6bae2c4370be35a33b7123d85112299814aac69579578785"
+      },
+      {
+        "path": "/patches/reference-home.css",
+        "bytes": 37392,
+        "sha256": "7e67ccde080e378c34f0dc8e3e5e8bd2d018b4b94d693e5257b8f60cda4c92e7"
+      },
+      {
+        "path": "/patches/top-titles-draft.css",
+        "bytes": 6137,
+        "sha256": "4c8b64973b3577b88c7e5d42704e6c1493558300a9ca446f10ce8d274488f313"
+      },
+      {
+        "path": "/patches/reference-support.css",
+        "bytes": 19945,
+        "sha256": "005518ff4cbe3cc4b6d636deb8267f906e010dabcca08da50a71c5bfa3b7eadc"
+      },
+      {
+        "path": "/assets/brand/matchapp-icon-approved.png",
+        "bytes": 135314,
+        "sha256": "dc399359cf27c8786db72ef80ee4e02e457fa855b35cae370ee6879849ea42d3"
+      },
+      {
+        "path": "/settings.js",
+        "bytes": 21063,
+        "sha256": "007727925c854383f0b29732ee7c3658fbaf69e4e2f35f3fcd1b8915be969c06"
+      },
+      {
+        "path": "/topic-focus.js",
+        "bytes": 4351,
+        "sha256": "c46aa567d554ef1615b1c453f1161ecb1f853e2b51400558caf93d658b7c8fca"
+      },
+      {
+        "path": "/jonas/faces/jonas/rest.jpg",
+        "bytes": 97185,
+        "sha256": "e8fce204adae5ba956cc2f476b46af948add684c1f0866d06c38ff3f1b1f989e"
+      },
+      {
+        "path": "/matching-policy.js",
+        "bytes": 47607,
+        "sha256": "e1cd99ed6addfc62c46f264c132bebe330c139efdd591316ad00dee1a0d5167e"
+      },
+      {
+        "path": "/guest-reservations.js",
+        "bytes": 3738,
+        "sha256": "ce896290f594c0a2537dcda0e47eb658d72d107b670a3b999b1bf129aee1b169"
+      },
+      {
+        "path": "/match-localization.js",
+        "bytes": 6251,
+        "sha256": "1868ae87320bdbcc6a490f31e5443dd911eedac9cfce2477851832f6fc818bfb"
+      },
+      {
+        "path": "/auth-confirmation.js",
+        "bytes": 7690,
+        "sha256": "4eb85eac6f091a5598c2cb34248ec18d0133cd5a61975b6ca2e1a6c052fadedf"
+      },
+      {
+        "path": "/sponsored-match.js",
+        "bytes": 6603,
+        "sha256": "e92dc2950ac41413f1152c26324a03d133a217260666f557f0e878fd16d3af22"
+      },
+      {
+        "path": "/match-ai-rank.js",
+        "bytes": 2635,
+        "sha256": "0e51336e13930d85e03b0a8d17040819c48b52240cf67d88a5f7bfe30c607b81"
+      },
+      {
+        "path": "/match-tokens.js",
+        "bytes": 54277,
+        "sha256": "f1e666f9ff8efcc109136a77e26f12e7a3d75de8702a7d226fc2149dc8754ed4"
+      },
+      {
+        "path": "/viewer-country.js",
+        "bytes": 10011,
+        "sha256": "bf6e5ad015327f2e7b1d31bfaa5d4f4a142c824867fb6c42b113ae2eb931d20e"
+      },
+      {
+        "path": "/result-experience.js",
+        "bytes": 20644,
+        "sha256": "1e2627022312680a4cf70db6926f0fa98f4be77ccedb082c48e39626d4aa82f8"
+      },
+      {
+        "path": "/app.js",
+        "bytes": 453668,
+        "sha256": "34ecf81679f0eed290f77771161f253af125731239b6f12d9c81e3dcc62e5043"
+      },
+      {
+        "path": "/registration-welcome.js",
+        "bytes": 3907,
+        "sha256": "7b547a1cd5e329aebc7bb794dc8fef9ed450e06e5a8e131f3ab1cd59eacc1fcb"
+      },
+      {
+        "path": "/content-safety.js",
+        "bytes": 2647,
+        "sha256": "5e5e0daf88dedffa4f62970f364245827584ae424f918e5ae5fb3a6ffb619121"
+      },
+      {
+        "path": "/verified-public-guest-share.js",
+        "bytes": 14991,
+        "sha256": "74aa0f029a9177fb6d6946d2e813e5a39fbeb2f4bf35d79d3c8a1cf71294cb1b"
+      },
+      {
+        "path": "/catalog-plus.js",
+        "bytes": 53734,
+        "sha256": "3f7ca48dcf40d827c33260ca59ecf3dc58ff78d9f27f1dfedf3321bf7c57ee4a"
+      },
+      {
+        "path": "/ebooks/locale-interface.js",
+        "bytes": 111684,
+        "sha256": "5ae8ed7ed1199e21c1ac172d9dbcd529d5ba7d6019684f7dfc6d0806078a04e6"
+      },
+      {
+        "path": "/ebooks/locale-details.js",
+        "bytes": 30851,
+        "sha256": "f0c58f77fb67572ea5ce97aa1f4c2194ff68b0f5d4df2024fa1bf3e3a4c0f295"
+      },
+      {
+        "path": "/ebooks/catalog.js",
+        "bytes": 58623,
+        "sha256": "36e721efc52407da32739942d40568b49e617e77d180456e43915e8b3f999e8e"
+      },
+      {
+        "path": "/ebooks/locale-choices.js",
+        "bytes": 50304,
+        "sha256": "c6b8c20fb2101c089e67efccc3f0499392ede4bfc646c69a89081f8c520e0603"
+      },
+      {
+        "path": "/guest-share-rewards.js",
+        "bytes": 16035,
+        "sha256": "ba54b786f4d473afb3de5d46d2df45510bd45165b7e413871ede266d0d08d0e0"
+      },
+      {
+        "path": "/ebooks/locale.js",
+        "bytes": 7837,
+        "sha256": "ee9a9da7fdec0ce622e7040950bf265287c6b107e03dba21db03aea2e2e57eef"
+      },
+      {
+        "path": "/ebooks/audiobooks.js",
+        "bytes": 11463,
+        "sha256": "d6affb4816cc4a0acb689c3a1f76ce95e75c6ee8305fe9860c420ee4acf13240"
+      },
+      {
+        "path": "/ebooks/cover-identity.js",
+        "bytes": 5039,
+        "sha256": "55a18e8bd65fb6b20753fe1e9b1b8f90876c8a51c89522c81e1579431f819924"
+      },
+      {
+        "path": "/ebooks/top-ebooks.js",
+        "bytes": 2851,
+        "sha256": "79c3b917bc9ab8c459b50803b3d0e7dad7c5d438c987ba7b63966820a7c6caff"
+      },
+      {
+        "path": "/ebooks/affiliate-links.js",
+        "bytes": 2989,
+        "sha256": "37a9372d75a14d221b49cbbc3b8bf3b754b720396bca688c6ae739e25a72caa1"
+      },
+      {
+        "path": "/ebooks/magazines.js",
+        "bytes": 13103,
+        "sha256": "cd99e37c80a55d2ce66976f70938579e4f862b4e77d7ca4890fe81a932fd448c"
+      },
+      {
+        "path": "/phone-auth-i18n.js",
+        "bytes": 13527,
+        "sha256": "d9c17301430c7abdf8f5f34683eb4e10b41b5a34b6cbdf0245328b136aa1c435"
+      },
+      {
+        "path": "/phone-auth.js",
+        "bytes": 15273,
+        "sha256": "2cdc3fe376570221227d9f61c7c6eda31d1b09f0752fdcb1a5777ccebabc5e1f"
+      },
+      {
+        "path": "/ebooks/book-details-20261011.js",
+        "bytes": 13521,
+        "sha256": "bf8aa2ac14aa56d65d192f7e64e959d78f68777789a19656360ddfc40b28862a"
+      },
+      {
+        "path": "/ebooks/ebook-matcher.js",
+        "bytes": 94182,
+        "sha256": "a200c28809e135b2f9a570359e08c48c2b73e78f2b8dc2129ef640b24b3f9388"
+      },
+      {
+        "path": "/catalog-media.js",
+        "bytes": 107357,
+        "sha256": "02e5d02081d1d3ee1e6e4d8eabb36fbd620762f0bb60c08d6dcfc58d070837d5"
+      },
+      {
+        "path": "/omdb-ratings.js",
+        "bytes": 3186,
+        "sha256": "b35f7f34d2afb5cef1e68ac8542b0a50d61bababf3028cff4542055e646f5e40"
+      },
+      {
+        "path": "/title-experience.js",
+        "bytes": 13554,
+        "sha256": "624d07ad42a16094d9047dc59075011f050135335caec018ddd1e932102f7510"
+      },
+      {
+        "path": "/phone-auth-localize.js",
+        "bytes": 2856,
+        "sha256": "a6bce154278e9d5488a7dedf55bea93a21f2168a97a981db5d738d3dac32c361"
+      },
+      {
+        "path": "/rapidapi-streaming.js",
+        "bytes": 3522,
+        "sha256": "d425a34bfc84759f24ee3ba6b4a5577ee25abf490c08b3e63760df6fd886dd9c"
+      },
+      {
+        "path": "/install-progress.js",
+        "bytes": 7447,
+        "sha256": "1e9cf7dcbead18e45d2d94d78d807e3112b797a33e0096c6237c3224a00f1c15"
+      },
+      {
+        "path": "/tmdb.js",
+        "bytes": 18009,
+        "sha256": "d4c41833bd92f0be83105136fd5acc4aaf0f7381c1ef7dce1d619ae8f7f61554"
+      },
+      {
+        "path": "/criteria.js",
+        "bytes": 26258,
+        "sha256": "13a3c2fafdb7a79d89f88ad0bac2fb2da689a3da28beed1bfe4892b9167a6b6d"
+      },
+      {
+        "path": "/match-speed.js",
+        "bytes": 2759,
+        "sha256": "e45fac99ef5672d4751433fe6032a724ccf2c8d96996a6d90c243219fee5f161"
+      },
+      {
+        "path": "/lazy.js",
+        "bytes": 12814,
+        "sha256": "24db58f44a0f6ca4229fa2be0aab496c3d675bc11b952586d88d40544184e6bb"
+      },
+      {
+        "path": "/tv.js",
+        "bytes": 11662,
+        "sha256": "0b731f8245f5a9bd519a9c5b0b7310c1b60333bb191383375070169f921f1f6b"
+      },
+      {
+        "path": "/taste.js",
+        "bytes": 8446,
+        "sha256": "04cf169797263bfe45eda33b38a19696193359f0ae04448bf6e9bca91b6e8119"
+      },
+      {
+        "path": "/notifications.js",
+        "bytes": 27081,
+        "sha256": "f4d72ca23ec6572710fb60bfd4f9421f690781adae776ba72ee0e26480af60fb"
+      },
+      {
+        "path": "/contacts.js",
+        "bytes": 11015,
+        "sha256": "f3dab8b4095d487ba8ce68255b2100637ecd9fe48f18d62ce3088fdaa0635fee"
+      },
+      {
+        "path": "/share.js",
+        "bytes": 37881,
+        "sha256": "7767a09d078ebcb8ed4433526cf5b998bfb3782ae9e473cdd99e8fa04353f66d"
+      },
+      {
+        "path": "/credits-ui.js",
+        "bytes": 4015,
+        "sha256": "4e8cb7d84acf5dec401179a5dc2f11342be428b21326baa9cd487b6127b5a8c6"
+      },
+      {
+        "path": "/passkeys.js",
+        "bytes": 12280,
+        "sha256": "ec04d9de1c77a33d50eabb2b5b0a802f4b22845337f93db9e644d610beb22649"
+      },
+      {
+        "path": "/app-updates.js",
+        "bytes": 13178,
+        "sha256": "b2b4f6f8136c68cbad9cd4b1b17d90dbead6fd8de5267d8535d627f3b0ed16cf"
+      },
+      {
+        "path": "/pricing.js",
+        "bytes": 32362,
+        "sha256": "bdd6d6c0634b31ce02c95409caf497ae63d4de06b16a485055a3d10107a9f18a"
+      },
+      {
+        "path": "/global-events.js",
+        "bytes": 3521,
+        "sha256": "07926e973af5cd153ed0a12934c6adde5bf5ca06b6e6214d5791b7aa063f9a09"
+      },
+      {
+        "path": "/daily-checkin.js",
+        "bytes": 15476,
+        "sha256": "fbcf04b89a8df27ed984127d9cb0e9f38cfa7d0279e8f738d14694cb71ed4039"
+      },
+      {
+        "path": "/growth-core.js",
+        "bytes": 5341,
+        "sha256": "611e3e3c9e2c87b6193324aabeabb30a163f892e8fbfb4a296cb95924437cee8"
+      },
+      {
+        "path": "/title-captions.js",
+        "bytes": 5757,
+        "sha256": "e6003ef1d66816250cdc9bf54c7c65c5e7c75f088ffc3de621c7b66677629839"
+      },
+      {
+        "path": "/patches/support-donations-config.js",
+        "bytes": 269,
+        "sha256": "f6b17583f18db55ab3ec72d3848607f03d003fdf52b113ee21f536eb8b5a026b"
+      },
+      {
+        "path": "/i18n.js",
+        "bytes": 522944,
+        "sha256": "fe962a0ef8dd4d803dba3848325a5787570409b7f808097f1ba20165eb64f9f7"
+      },
+      {
+        "path": "/polish-i18n.js",
+        "bytes": 47441,
+        "sha256": "9bc8768518cd5651cb5658bee855d635c0132843ad85dd6d2b0d5682c55fa57c"
+      },
+      {
+        "path": "/event-i18n.js",
+        "bytes": 16097,
+        "sha256": "3cb8229709f4bf09db96f1acfffa519ad83d0d0e46ce62e7dc9d86a2370c7deb"
+      },
+      {
+        "path": "/page-locale.js",
+        "bytes": 14404,
+        "sha256": "d1e9643e992c8fff2eedfa37789cc85b76b188fc9d27b3d0058fbc5246d997fd"
+      },
+      {
+        "path": "/install.js",
+        "bytes": 25957,
+        "sha256": "2af736deb06f0268c5801cb78b08e5b185457923159b3a3c6cf5e6271fb171b4"
+      },
+      {
+        "path": "/awareness.js",
+        "bytes": 4798,
+        "sha256": "b43af011358c095b295cc9a84ccf5fa3df2bc33f1ee442a6fb35acf63259dc9e"
+      },
+      {
+        "path": "/trending-rail.js",
+        "bytes": 5406,
+        "sha256": "4c90fb271f9a31332b2b46642908f9071b2889f54117883f3f8ebcc364dad802"
+      },
+      {
+        "path": "/avatars.js",
+        "bytes": 7201,
+        "sha256": "3f1f8dbb82328f6455fc61edfbb199fa24bff077d17c2ef6e5e2f851a790931d"
+      },
+      {
+        "path": "/ambient.js",
+        "bytes": 1769,
+        "sha256": "fcb821c20b08659ee6326a0fd77cd7c3a7990f6a5327465ff62d682208d47db7"
+      },
+      {
+        "path": "/poster-wall.js",
+        "bytes": 8183,
+        "sha256": "6325cf4f3d0d366226611a29628827efee4a1c302c1d631ed3474c5f5d92c632"
+      },
+      {
+        "path": "/locale-results.js",
+        "bytes": 10375,
+        "sha256": "d041d2a4a2cca6a24e7623270ccec64974cfb0fc93e27cf9b062d3937e9f40a6"
+      },
+      {
+        "path": "/matchapp-ia.js",
+        "bytes": 84575,
+        "sha256": "efc283429bd0ed2dd7cda1665a3e5ae10c1643666d41be225442a6badc0c55a1"
+      },
+      {
+        "path": "/music-video-releases.js",
+        "bytes": 18439,
+        "sha256": "41be0360ee898a97be5da8185980feca63b1b3e593d916da82340c358129e940"
+      },
+      {
+        "path": "/ai-composer.js",
+        "bytes": 29754,
+        "sha256": "8fc7832b813fbe5905a5e179d3d377cfd925024d1bf1d8fbb278efe85041a570"
+      },
+      {
+        "path": "/title-identity.js",
+        "bytes": 5708,
+        "sha256": "1033e7c558a6362d45fd657357e7832eea50bb4189f73365470c74cb63fbdde8"
+      },
+      {
+        "path": "/patches/explore-worlds-20261014.js",
+        "bytes": 14367,
+        "sha256": "2c760d035ef6d45b9f1daa81703f40a97aa43cd6b6749bbcebd1bb5382b86892"
+      },
+      {
+        "path": "/billboard-music.js",
+        "bytes": 11779,
+        "sha256": "5a7596a60522671173e4ae5d172354e82c8d1ae98782458daaaf2994c8fd5f35"
+      },
+      {
+        "path": "/patches/home-watch-focus.js",
+        "bytes": 4212,
+        "sha256": "69556be13cffbac37e4486a84438a8ffd69debcab4002f4c5f914bcdf5e38439"
+      },
+      {
+        "path": "/patches/result-synopsis-visible-20261014.js",
+        "bytes": 2994,
+        "sha256": "3247363c6e170475b7da34b69b4f0ae7b4308228311384da46a45374567c1447"
+      },
+      {
+        "path": "/patches/jonas-premium-enhancer.js",
+        "bytes": 19305,
+        "sha256": "97138267e150599ed1c3084b4a3e4284e165364cb79cfd0b1ff380c34d499d13"
+      },
+      {
+        "path": "/patches/match-first-experience-20261014.js",
+        "bytes": 3499,
+        "sha256": "466670fee9da5712f9fb1f1f71be4651a464a12d93c1cbec105020f51b7d594c"
+      },
+      {
+        "path": "/patches/jonas-swipe-velocity.js",
+        "bytes": 1218,
+        "sha256": "c90029bb470c416bf93bd89c8a55835a591e599a4d95066a5c93fb2bdf70a257"
+      },
+      {
+        "path": "/patches/jonas-intro-audio.js",
+        "bytes": 1392,
+        "sha256": "9f7c2e64d8c78f4162f76fc2cfea2ff4704c9653007e8609e1679e7cd9d0a894"
+      },
+      {
+        "path": "/patches/jonas-adult-page.js",
+        "bytes": 819,
+        "sha256": "eb933e2a555c02438c6164b9b852b3a95820f628f0d8409568869e49be9d30ee"
+      },
+      {
+        "path": "/news-monetization.js",
+        "bytes": 36637,
+        "sha256": "c73ced2cb13958eceda10e0b831e64cbce5f4f7af828d3dba5cf974ae7f2177f"
+      },
+      {
+        "path": "/native-news-slot.js",
+        "bytes": 27509,
+        "sha256": "53947d072312076dd405ccaac8c7f4c7baa5ddade41264558bb84d6f7efe67bc"
+      },
+      {
+        "path": "/patches/immersive-feedback-20261014.js",
+        "bytes": 13849,
+        "sha256": "bdd696a243567ff2a4aea2e17b278c4b0d4c4bae6642fa750882775126f36a0d"
+      },
+      {
+        "path": "/patches/top-titles-draft.js",
+        "bytes": 13361,
+        "sha256": "8fb599a682a79cb731997f54c57bf2801a54d928e445ef1970ac4f26aa208326"
+      },
+      {
+        "path": "/patches/reference-system.js",
+        "bytes": 21817,
+        "sha256": "2e41e3f47737e89d7e8e3d49ccde406ae903e0f37ce4abf82013fbce35ba331c"
+      },
+      {
+        "path": "/assets/brand/matchapp-ai-orbit-fullbleed.svg",
+        "bytes": 6292,
+        "sha256": "e562b480d650650a8508bfa06c4f20fe1fda79f46c4356b139f272ce264f6513"
+      },
+      {
+        "path": "/assets/brand/matchapp-fold-cooking.svg",
+        "bytes": 382,
+        "sha256": "d7c446f7ec284a7ceaf8387e9561e62907c6d33dc703773906f548dc68de5567"
+      },
+      {
+        "path": "/assets/brand/matchapp-fold-together.svg",
+        "bytes": 1603,
+        "sha256": "f1c471f7166b9fa0bacb64a2436f45f573ba2d972a1f490a3de23da33fbd6ecc"
+      },
+      {
+        "path": "/ahs13-official.png",
+        "bytes": 351603,
+        "sha256": "d81e073e74e38f67636ca99983801c6edc6fb82e53405688b0f8a05ffbfaa138"
+      },
+      {
+        "path": "/latest-news.js",
+        "bytes": 31790,
+        "sha256": "468d3c427ab85bb60073230d3ed44e32b5dba141d87508c1ecefff48597393f8"
+      },
+      {
+        "path": "/browser-install-offer.js",
+        "bytes": 5904,
+        "sha256": "8f7e15b2d018f8d054ffd000b3f8df5b8d168b502c98ccc246bb47cb4a1cbdc7"
+      },
+      {
+        "path": "/live-news-loader.js",
+        "bytes": 12719,
+        "sha256": "6bb903e75906d54dfc9f53d4bd556be6b1042ed455ba04593cba820940ec3807"
+      },
+      {
+        "path": "/home-approved.js",
+        "bytes": 2639,
+        "sha256": "0e37a86d4a9e3afe20d2bfbcc6b39193c24d475f4eeb51834c1191057f6a237f"
+      },
+      {
+        "path": "/desktop-install.js",
+        "bytes": 1541,
+        "sha256": "84f4ee62e64910990616d65e3bcb5faee7f267f888e04ab03bbd3d1c6589e8a4"
+      },
+      {
+        "path": "/share-guard.js",
+        "bytes": 1909,
+        "sha256": "c9327295d4fb30d5d1766d44df289e7a3a05525466f4bd1fcbbb8c4aae791a3e"
+      },
+      {
+        "path": "/match-fun-share.js",
+        "bytes": 4480,
+        "sha256": "dd962e76d0e5f92b0d8c7f3aabc24807d55c13227146d4cf5af7fa2abdcd1e11"
+      },
+      {
+        "path": "/jonas/locales-20261009-v2.js",
+        "bytes": 12528,
+        "sha256": "963c1146b66e002a3ae3a564993de4b41d07bd7f2f93047332359b18d1386f8c"
+      },
+      {
+        "path": "/jonas/floating-home-20261010-v3.js",
+        "bytes": 17678,
+        "sha256": "29c7b370e4ba3cb218df2ef16b991a97db2a62922a87a84e391a994a77698335"
+      },
+      {
+        "path": "/jonas/male-voice-policy-20261010.js",
+        "bytes": 3341,
+        "sha256": "3ebc4db62b1686d05b9cbc915fa2fb44b14d5ea843265b6cb2bfa8fad846bff0"
+      },
+      {
+        "path": "/jonas/secure-speech-20261010.js",
+        "bytes": 13054,
+        "sha256": "ccb6ae80d5b36caa2a2823fdbe83719feee8c731581157a248207f6e445a29e9"
+      },
+      {
+        "path": "/jonas/floating-voice-20261010-v5.js",
+        "bytes": 15238,
+        "sha256": "7cdb5d03982e07d9410cbf954ac0073bad770f6642b639096d4d8f08d12fcdc5"
+      },
+      {
+        "path": "/international-day.js",
+        "bytes": 12933,
+        "sha256": "87ea7adb25550891b3c0079db300a14ebe9fd80c0e97ba8ee3b9be0dd349ce32"
+      },
+      {
+        "path": "/gold-sheen.js",
+        "bytes": 4968,
+        "sha256": "81663e16ecbc03e3aedf59ef759d4e5ca1f7fd3ecf11d12b9edc62006a720d88"
+      },
+      {
+        "path": "/onboarding-tour-locales-20261010.js",
+        "bytes": 19924,
+        "sha256": "a559de708f0fa24050277af9b57b9750f6383337754a71a4b8ac15a3f2aed54c"
+      },
+      {
+        "path": "/onboarding-tour.js",
+        "bytes": 30608,
+        "sha256": "154784512485c420f4eec08f4f2e9cac12284392e414f0a9dba1c22c6fb1bdff"
+      },
+      {
+        "path": "/match-insights.js",
+        "bytes": 23574,
+        "sha256": "bc4db8364ef35afa043033a1554778b199b3174eb20b421b89b81a78aee92b26"
+      },
+      {
+        "path": "/premium-nav-20261010.js",
+        "bytes": 2671,
+        "sha256": "cb238abecc7a5f5b1c98afa8c8864c796c74be2f92ca737bb728da83746449a4"
+      },
+      {
+        "path": "/brand-lock-20261011.js",
+        "bytes": 2452,
+        "sha256": "eeb05e1eff25e58146244e7d77c3a05a1b30307ebe1e3a203725797a068f4871"
+      },
+      {
+        "path": "/patches/donate-shortcut.js",
+        "bytes": 3606,
+        "sha256": "883a50c06fb8e4af6ddc9d1dcc5910e18ea14405a64fbe42a91958d6eb118de7"
+      },
+      {
+        "path": "/patches/support-donations.js",
+        "bytes": 15456,
+        "sha256": "2fbcbd0777971de0df0bf4af9595531099115368c2b3031228fad541a652b7c9"
+      },
+      {
+        "path": "/patches/sponsor-footer.js",
+        "bytes": 1413,
+        "sha256": "f37c5fb3bcb120c4485afbaea6fe7b0e6d58fb05c2eba5447950ba26495a06a3"
+      },
+      {
+        "path": "/patches/founder-link.js",
+        "bytes": 1035,
+        "sha256": "99363070c4cfb983760ad00cde07a47ceb047b18167b85d1e684632307b1fa82"
+      },
+      {
+        "path": "/growth-return.js",
+        "bytes": 1360,
+        "sha256": "7e9d5214fe5d60f68aa78ab236ecd532387fb25d190448ab21edeb94a47876ae"
+      },
+      {
+        "path": "/patches/reference-support.js",
+        "bytes": 17914,
+        "sha256": "e8e0a887db4a834260ac88baa6f3070f5ef0a4f4820ee04a09aa3ee424f96b88"
+      },
+      {
+        "path": "/jonas/faces/jonas/blink.jpg",
+        "bytes": 102365,
+        "sha256": "b41eb5e84cd5da13a7b34ed2bb46fa709390aef5d23e497748e61cb4cc937980"
+      },
+      {
+        "path": "/final-wiring.js",
+        "bytes": 11312,
+        "sha256": "6e18de19f791d462cf7fa3b2c512da6dec0c22f47e762b6bf334cfec63a944d6"
+      },
+      {
+        "path": "/assets/brand/matchapp-icon-approved-mask.svg",
+        "bytes": 216,
+        "sha256": "ca6cd707757c00300911347ca8a80a77c0c41274b465304d24ed7a8899edad51"
+      },
+      {
+        "path": "/assets/brand/symbols/home.svg",
+        "bytes": 738,
+        "sha256": "c2a8b4e403229549157bcac203578d361d9426174ae0609542f44b00aa15f85c"
+      },
+      {
+        "path": "/assets/brand/symbols/discover.svg",
+        "bytes": 760,
+        "sha256": "86728359fbbd4dff8cf54e8cca104309dd16856ce7d3490e80f4d50320008b44"
+      },
+      {
+        "path": "/assets/brand/symbols/profile.svg",
+        "bytes": 793,
+        "sha256": "83c197047b32d03d055d2a97a7643cf7010e34c0be0855867b92a2c23a49f545"
+      },
+      {
+        "path": "/assets/brand/symbols/trending.svg",
+        "bytes": 769,
+        "sha256": "e76fcc31aed348b4551b483048fa3db2cda3d961e3ab6b8f2232f78f7a269296"
+      },
+      {
+        "path": "/assets/brand/symbols/explore.svg",
+        "bytes": 776,
+        "sha256": "fe540b1dc09e395eeec5317e44525d73d75ce348391c3a9c6897e07efcc2686f"
+      },
+      {
+        "path": "/assets/brand/symbols/support.svg",
+        "bytes": 575,
+        "sha256": "9e31972c6c31cffffb51dc4d9a8cdece435d97a0a3cf2fe118c87b82fefdfd8a"
+      },
+      {
+        "path": "/tokens.css",
+        "bytes": 1453,
+        "sha256": "7049851784d1b90be1e83758dbbba870c1f6555884871112bd0ba99620e42ef5"
+      },
+      {
+        "path": "/components.css",
+        "bytes": 6868,
+        "sha256": "cdffc3b0a997652fb31c254b6282ae11b14310b121af1daea49fd73c59ae7d4e"
+      },
+      {
+        "path": "/activity.js",
+        "bytes": 7634,
+        "sha256": "4e237af4e371c91450bdfb75bf1091ca7ae3ec8ef2a60da8a6e960b5d11255de"
+      },
+      {
+        "path": "/chrome-launcher.js",
+        "bytes": 3715,
+        "sha256": "e0618f814fe0f502025025f6d3c77a57fced015bcb6cf5b678bffded7608f68d"
+      },
+      {
+        "path": "/activity-cloud-bridge.js",
+        "bytes": 1134,
+        "sha256": "9db28ae2c4a3c8f9043aad4f1a27c1ca9194c932c2b217a5a4b7a6918ba222b8"
+      },
+      {
+        "path": "/legal-kit.js",
+        "bytes": 12821,
+        "sha256": "f2f92175eaa5f2161d00d2420a0e0755af785c2e7bf70e51bb639e05cf295133"
+      },
+      {
+        "path": "/social-kit.js",
+        "bytes": 1481,
+        "sha256": "91a3d26186367cb5575a36047aa9c8b2dfc0c86a9391cef35b5e52c83bf399d1"
+      },
+      {
+        "path": "/taste-profile.js",
+        "bytes": 76969,
+        "sha256": "5ebd330333ce21a9494191d335653bc287222dbf1771fe22d138d5708a3e6517"
+      },
+      {
+        "path": "/match-guarantee.js",
+        "bytes": 9361,
+        "sha256": "18a692593285aa4485306cc042b436fdfa3dfa52ea143dd4ad9cfa5815d158aa"
+      },
+      {
+        "path": "/site-hits.js",
+        "bytes": 1391,
+        "sha256": "e6db8e4f813e1ba4bf2c3b769cb64527835088b9f886a57745933633de2c6338"
+      },
+      {
+        "path": "/roadmap-runtime.js",
+        "bytes": 4324,
+        "sha256": "20b821522ea723f4bddcb104d30d3cf582180df24c02ae97f290d88ec468f5e6"
+      },
+      {
+        "path": "/cinema-dim.css",
+        "bytes": 4013,
+        "sha256": "f129e6113e1e4fc901e1430482aace2ff8bc3281d59ed362fa6e7069dc28a96b"
+      },
+      {
+        "path": "/assets/brand/symbols/guides.svg",
+        "bytes": 771,
+        "sha256": "accef00f242a09f9556c8304685aacbeae8f5e869f8701d1621c9d28e9d250ac"
+      },
+      {
+        "path": "/data/poster-identities.json",
+        "bytes": 8325,
+        "sha256": "a9308cccbe6c9a7535376009eb6d27f256a3257468a6345eb12c3e249fca0eaf"
+      },
+      {
+        "path": "/awareness/current.json",
+        "bytes": 839,
+        "sha256": "c2dbb62140c4afd412cb7b02e1cb3a409de5d3fb46f663251b26d5c6b41cf2bb"
+      },
+      {
+        "path": "/awareness/calendar.json",
+        "bytes": 9636,
+        "sha256": "d6ae47c2412de30fc1fbffa6821f7987a80cf51cbe83e4557798942187a4ac49"
+      },
+      {
+        "path": "/data/trending-week.json",
+        "bytes": 67113,
+        "sha256": "a950315397473b5829e2a4a1668dcc75a5f253143837195673aa3db91882b49c"
+      },
+      {
+        "path": "/kids/kids-logo-sm.jpeg",
+        "bytes": 3774,
+        "sha256": "33f8ceb2fcfc864f646cf3812af1e497dff1621d19b5b2c793f7cdaa30fb7af7"
+      },
+      {
+        "path": "/data/music-video-releases.json",
+        "bytes": 42911,
+        "sha256": "ef2d7f27cb1267740949844ad9e4bfbf15c3639938072633a660cbbade7a2dc7"
+      },
+      {
+        "path": "/patches/activated-scroll.js",
+        "bytes": 6910,
+        "sha256": "834a5e5980c89c76c430b30c1d2881fdbd8861c069b4735a3cefaf845d21faa4"
+      },
+      {
+        "path": "/patches/reference-header.js",
+        "bytes": 23920,
+        "sha256": "5bf97ad812bf1a1446764aa59b25c96ee6d120fb403fffe53b2ad4d1193d15d7"
+      },
+      {
+        "path": "/patches/reference-dock.js",
+        "bytes": 9521,
+        "sha256": "9e8ffafccf6044b52bba2b1d03ffae67401eb71ebff3e9de2e868cc9ec532d0a"
+      },
+      {
+        "path": "/patches/reference-pills.js",
+        "bytes": 9250,
+        "sha256": "7bc7c3ae8b28c2f88138ade5aa6a15074a7411a0b280d9abe2c54bf0f25fe766"
+      },
+      {
+        "path": "/patches/reference-dialogs.css",
+        "bytes": 5588,
+        "sha256": "aebb81c3f1793f99722cc5fec8504a6b0cf6afdf28b4c7356775e8ef1ae740a6"
+      },
+      {
+        "path": "/patches/reference-dialogs.js",
+        "bytes": 8290,
+        "sha256": "5eee9c84974b153ee077722a6e248d429e352e987317181857dc296cecdb544d"
+      },
+      {
+        "path": "/patches/reference-motion.css",
+        "bytes": 4465,
+        "sha256": "d93e39b383f1beba53297679031965ebb38b13d1da14fb86233c1c1639d49375"
+      },
+      {
+        "path": "/patches/reference-motion.js",
+        "bytes": 7248,
+        "sha256": "3f826e5e1c7e13d31b5ef4793be1fd94a8e5847f8db874eb596ac1d9d0cd506f"
+      },
+      {
+        "path": "/patches/reference-density.css",
+        "bytes": 10452,
+        "sha256": "dcbb2d837e55a63b49ff6ed791ba677c69ef48d6bd628da47fec6d5f6d20cf67"
+      },
+      {
+        "path": "/patches/reference-density.js",
+        "bytes": 15933,
+        "sha256": "a3170f54cc13ef70e01288047b9c6d773b48159becc04abffbdde2d37feb464b"
+      },
+      {
+        "path": "/news/data.json",
+        "bytes": 157204,
+        "sha256": "1e88579462c5712e666b286addfb8a81fc77deb4f4f83fee5de7c9763a96763f"
+      },
+      {
+        "path": "/discover-composer.css",
+        "bytes": 3943,
+        "sha256": "e11fa71b39fb4a0863380cc14da1ed426e9a43247477a5558a8e21468632a8ca"
+      },
+      {
+        "path": "/home-approved.css",
+        "bytes": 18963,
+        "sha256": "59c88682b3cd12b261ce0a0cce1f481784d62ed53c4468968b22169a3b5a672b"
+      },
+      {
+        "path": "/install-onetap.js",
+        "bytes": 1811,
+        "sha256": "34eb9e6900f98b5922b961dc99feed2c5696f50dc5cdfd2f452cf8790b459948"
+      },
+      {
+        "path": "/assets/brand/symbols/how.svg",
+        "bytes": 747,
+        "sha256": "74eb4be5efebe2d4f8b8f995f4a638e4662bff21244b6414ec23181d237c6287"
+      },
+      {
+        "path": "/release.json",
+        "bytes": 7231,
+        "sha256": "e1e034b23c50efd44150a53659f54789fb93b02a3c9a5f027638da2310f259d3"
+      },
+      {
+        "path": "/assets/brand/symbols/together.svg",
+        "bytes": 768,
+        "sha256": "f8f1a59b710fd16ef7fe33e404bafc0f5673f0d398f70b9ec1fdc3b134049d3f"
+      },
+      {
+        "path": "/assets/brand/symbols/notifications.svg",
+        "bytes": 779,
+        "sha256": "16de2cea91c60bb0a58ac7c97289121dd73b7d9ec13ad70a0608bd804cf22697"
+      },
+      {
+        "path": "/jonas/faces/jonas/smile.jpg",
+        "bytes": 102866,
+        "sha256": "02b27cfe61692bd006aab6452750f1b772ee14aee927bb36181b73996e5d473a"
+      },
+      {
+        "path": "/jonas/faces/jonas/aa.jpg",
+        "bytes": 102973,
+        "sha256": "ab1f3daade7fe2f28fd30f2c5b6b92ac04d8784b8378096341ce81e1f66c543a"
+      },
+      {
+        "path": "/jonas/faces/jonas/ee.jpg",
+        "bytes": 103118,
+        "sha256": "bf1c47337d73d275197282954a7f42be173a859d5dc6d85177a917ca1798cfed"
+      },
+      {
+        "path": "/jonas/faces/jonas/oh.jpg",
+        "bytes": 102358,
+        "sha256": "4ecc70b3d6d768858ad2277c7de17dbddeb75615e3ce1de75e8d4d876c4e3714"
+      },
+      {
+        "path": "/data/international-day.json",
+        "bytes": 19231,
+        "sha256": "dfa33197b19715f82670f0f62138da1eb9adc42ef6324c1973a9e060badd72dd"
+      },
+      {
+        "path": "/data/international-day-history.json",
+        "bytes": 31183,
+        "sha256": "8a3445a8854a0b5e2e44f91b5994476fe769c74648b32db3f16161b5862c4fef"
+      },
+      {
+        "path": "/production-hardening.js",
+        "bytes": 16047,
+        "sha256": "0b46d6fd1dbca1d8c189c442d7d32b1af37f6927f37486edf870bf9c6feec4b3"
+      },
+      {
+        "path": "/shown-history.js",
+        "bytes": 2793,
+        "sha256": "0f89f18e763cbc7b880cb71265669daf9dec80398ca1d277409aa6c71766a57b"
+      },
+      {
+        "path": "/assets/brand/matchapp-bookworms-crest.svg",
+        "bytes": 2725,
+        "sha256": "5dd0b0d6a989bb92a5d28745e92635a4c4e6557d17e93fe9bb4e5a091ba8e492"
+      },
+      {
+        "path": "/assets/brand/matchapp-fold-saved.svg",
+        "bytes": 1407,
+        "sha256": "ee05b6ded5393895e156eed77c3b62656e35fdfa56a221d3e3a70dcf5670685b"
+      },
+      {
+        "path": "/daily-checkin-bubble.css",
+        "bytes": 7949,
+        "sha256": "0dc8e11797901ff40d5110c70dbb2d1055c5f6b3822794490f7b8b8389494316"
+      },
+      {
+        "path": "/assets/music-videos/mw3kSNIxjqo.jpg",
+        "bytes": 8987,
+        "sha256": "da9d97b18e718c71384f1efa5756ae99918f95d2da89b20737fee8d0ff6b2048"
+      },
+      {
+        "path": "/assets/music-videos/Rt9tW3cMLhI.jpg",
+        "bytes": 41341,
+        "sha256": "54fe0dde83ad78089b8a87f3d8c3e04d156122cdd1a4c842b9fa68d1c069982a"
+      },
+      {
+        "path": "/assets/music-videos/nUsrYVxrDwI.jpg",
+        "bytes": 17670,
+        "sha256": "f45feb166632bb6d902a1b714840ab90917da240123a73090f72734059f51fd9"
+      },
+      {
+        "path": "/assets/music-videos/KWoTyfPsqbE.jpg",
+        "bytes": 23437,
+        "sha256": "43ccd3a6ae74c6dc72f0fa7a592a9343d1f68c1c71682060dfb90bedac08e923"
+      },
+      {
+        "path": "/assets/brand/matchapp-official-icon-192.png",
+        "bytes": 7514,
+        "sha256": "cf0f765b9af320b65c57193f8a722d1c2794dbfd53627939ee864ac6171318ed"
+      },
+      {
+        "path": "/final-audit.js",
+        "bytes": 23110,
+        "sha256": "27b6c07b115302cfb919fcdbff024d16fd75392dab07719abc3e0eb62f3dfc79"
+      },
+      {
+        "path": "/assets/music-videos/XXIX2WnfbpE.jpg",
+        "bytes": 19254,
+        "sha256": "d5a35ada3d0ebad03a6487a4cda76c07bd3443e36bfdae462459f541801ab82c"
+      },
+      {
+        "path": "/assets/music-videos/fcnDmrtj6Sk.jpg",
+        "bytes": 28238,
+        "sha256": "a0b7a01e109d8455b270ae57d611e4fc678853eb196b66a3219badfc00fee051"
+      },
+      {
+        "path": "/how-it-works.html",
+        "bytes": 24753,
+        "sha256": "ec4a8e5d163e0ebafbe8cd319ef057e56761bf4f20df41f4eb49ce494a7a9c78"
+      },
+      {
+        "path": "/assets/brand/matchapp-tv-ai-v2.svg",
+        "bytes": 6863,
+        "sha256": "5f595ff8eff96eb56b4161abc028e15b4ff493b762ff90abf2be70816587a94c"
+      },
+      {
+        "path": "/patches/reference-pages.css",
+        "bytes": 72933,
+        "sha256": "ff6453f3cb13f42be5effd3ae5a381f63ef7e8c78962d56becd8a8dc4bfab207"
+      },
+      {
+        "path": "/patches/premium-journey-20261014.css",
+        "bytes": 14221,
+        "sha256": "d90ff578d32feea63bdd58248484ea02cafb696dfa7bbc23f3f309b0443e4dfb"
+      },
+      {
+        "path": "/patches/premium-journey-20261014.js",
+        "bytes": 64958,
+        "sha256": "712064a756a2ec12b94c2d551a6c49935e6afaab4e22017dfd8972b06d707ead"
+      },
+      {
+        "path": "/assets/brand/symbols/sound-muted.svg",
+        "bytes": 741,
+        "sha256": "7b8e8fe3799f7d9fe9455280ff4d6b5a635268ab7d9d074073608d3d8a4cca9f"
+      },
+      {
+        "path": "/discover.html",
+        "bytes": 57205,
+        "sha256": "bae14d9745a0e32ea8478813b362fda89139a1344c6d3fa52d47c8e428c4134d"
+      },
+      {
+        "path": "/page-shell.css",
+        "bytes": 23698,
+        "sha256": "853d3c4b85d96a399d44f68cd9572190d0fada2738c68f1d1a52761acada6fb5"
+      },
+      {
+        "path": "/trust-notice.css",
+        "bytes": 1473,
+        "sha256": "afece3bbd2f66e85f277892cb38a8ec2521773cfbab78cf3a271814eef780ffc"
+      },
+      {
+        "path": "/discover-compact.css",
+        "bytes": 8932,
+        "sha256": "ef9ab5d5efca2aef7d0a48e1c1b62c30455795ad2520c1434da2304492588cf8"
+      },
+      {
+        "path": "/jonas/discover-mobile-repair-20261010.css",
+        "bytes": 11866,
+        "sha256": "b0acdc47f3ec32663ca08b00e48f1fb2040c085fd879593e252cd6a432721d5d"
+      },
+      {
+        "path": "/jonas/discover-editorial-20261010.css",
+        "bytes": 1235,
+        "sha256": "41e1908d694b6e90c6f150faa30719fcf8ef19b082f2ac0c97fb28873eabb11d"
+      },
+      {
+        "path": "/jonas/discovery-avatar-stage-20261010.css",
+        "bytes": 4909,
+        "sha256": "91bfe4d3ce4ffb1a1f895675f1dacfce677bbda190c56fcae472c989fa5695ae"
+      },
+      {
+        "path": "/jonas/discover-composer-final-20261010.css",
+        "bytes": 11520,
+        "sha256": "da8114d0b031b574c8551926009829b6810d5a6b79717b0af8219c14457ed6e0"
+      },
+      {
+        "path": "/jonas/chat-workspace-20261011.css",
+        "bytes": 11008,
+        "sha256": "37bfc0d157a8d289e824545fc4e738958ed08b2de2d22bc396fd5fa8c9d657e6"
+      },
+      {
+        "path": "/jonas/premium-chat-finish-20261011.css",
+        "bytes": 18098,
+        "sha256": "d712c3ac8580ff8fa016288c2c5250a3a168bfd5083a2b1ea97d20a73bd15b52"
+      },
+      {
+        "path": "/jonas/composer-quota-row-20261011.css",
+        "bytes": 3102,
+        "sha256": "74c8c842c92cac72a54d9947102bc5764102166f05647a9c465e37a01c180dc2"
+      },
+      {
+        "path": "/jonas/settings-header-touch-target-20261011.css",
+        "bytes": 1222,
+        "sha256": "77af5348e8f07ca72da57b600ec324d7bf52bc314fe82b20b8ebd7edcc81896d"
+      },
+      {
+        "path": "/jonas/android-premium-composer-20261012.css",
+        "bytes": 5903,
+        "sha256": "dd8a7102e655848253f29c390ce173c1c7ec03717eafc6193da876ed20f783f0"
+      },
+      {
+        "path": "/patches/ask-language-label-fit-20261015.css",
+        "bytes": 1649,
+        "sha256": "cd120febb53c69aeb72f8c6c5318cff9c4765cab0db44befcb7809f800eba96f"
+      },
+      {
+        "path": "/cooking/catalog.js",
+        "bytes": 5174,
+        "sha256": "4182d3abe2edf4fa23634b19f328b406329ade9bc2bf51e05ad0dd1024ed2472"
+      },
+      {
+        "path": "/ebooks/reading-ai.js",
+        "bytes": 16842,
+        "sha256": "7c1bd17f03d538b6b724ae72c96282a3e68fd531caa28da0de0dd3a585d32ebd"
+      },
+      {
+        "path": "/jonas/title-card-presentation-20261011.js",
+        "bytes": 5402,
+        "sha256": "31ba526bcd2cb8ce6dbb19d0a929ea618da7137f6d32fe6f59caddbd34965a6b"
+      },
+      {
+        "path": "/jonas/verified-documentary-series-20261011.js",
+        "bytes": 6980,
+        "sha256": "6784d987bff73dd4c64b39887c9a9a6bb98813102573530eb12d76a9a7b3157b"
+      },
+      {
+        "path": "/patches/landing-match-intent.js",
+        "bytes": 17860,
+        "sha256": "6d9cedaae550103e5f61a0feb87ba9439f33f7ed0f153d8b34ed98cea5e90fdc"
+      },
+      {
+        "path": "/jonas/discovery-speech-lock-20261010.js",
+        "bytes": 1000,
+        "sha256": "26644decbebc25ff0309b847873845d2aba7f04f37a1986e63e971ecba8074b4"
+      },
+      {
+        "path": "/jonas/discovery-avatar-stage-20261010.js",
+        "bytes": 10161,
+        "sha256": "18f5691eafbd75145f542442d82c1304fef702c795c29ad685f3f7b53f630055"
+      },
+      {
+        "path": "/discover-sidebar-layout.js",
+        "bytes": 1092,
+        "sha256": "89a6f9fa0e809e423a1df4033a0411fb8b5719c498773f6969e146aa7f58f9cf"
+      },
+      {
+        "path": "/jonas/chat-workspace-20261011.js",
+        "bytes": 3074,
+        "sha256": "af9b626b994cb757a9029810f0b42a0eefb7fc54dd7a9dd23c75c8459fb6f008"
+      },
+      {
+        "path": "/logo.jpeg",
+        "bytes": 47407,
+        "sha256": "fed5b71727982634abf0857e9d5bea4fe2878bc95a87d18e67281ca04d644d59"
+      },
+      {
+        "path": "/page-shell.js",
+        "bytes": 9721,
+        "sha256": "d3cefa5100875bba4e7826c85f363ab9994a5fcbbc8da2169a689e613e94238b"
+      },
+      {
+        "path": "/trust-notice.js",
+        "bytes": 4364,
+        "sha256": "e3affb91b3af6b72e01c9c2f47510252e5045efb4dea6fe7b6bf72f4c5d86891"
+      },
+      {
+        "path": "/jonas/discover-layout-runtime-20261010.js",
+        "bytes": 1865,
+        "sha256": "0bc261ae6d3ccdbad3947ef273882db43c660bf94de39af1ba44732e24585106"
+      },
+      {
+        "path": "/redesign.css",
+        "bytes": 9638,
+        "sha256": "6f33d0ef740806453f5af4ff0375bf11593b1bfaec8ce40ac5d36764c9570720"
+      },
+      {
+        "path": "/premium-ui.js",
+        "bytes": 7928,
+        "sha256": "ba1bd2afe43ddd000a0ef4cea39101eca97d83e8a7a54dffb2652b1b506302ca"
+      },
+      {
+        "path": "/emergency-layout.css",
+        "bytes": 7275,
+        "sha256": "56aec4fb03b89a24915b3c004cdfcd679abf37f1220df4943f7cba9f52302fa4"
+      },
+      {
+        "path": "/experience-v2.css",
+        "bytes": 10614,
+        "sha256": "9b233150eb54ce3d8e5b10724b9d7afc9c8e40d1d0646e409953a1cb3c2a49d4"
+      },
+      {
+        "path": "/premium-cinema.css",
+        "bytes": 7681,
+        "sha256": "bd5d22c3959d99da8d02e32d14aeef0f3d9b7c22db2cb78294789f136458722c"
+      },
+      {
+        "path": "/criteria-fold.css",
+        "bytes": 935,
+        "sha256": "e68639506dfac8e8e1fc4ac5b34e66b090820737c443794a0aa9d11fa6084f56"
+      },
+      {
+        "path": "/urgent-fixes.css",
+        "bytes": 11126,
+        "sha256": "028b3df74e2a506782615148af18b6f87ee37d425c2d531da0c67666cf9eb63c"
+      },
+      {
+        "path": "/page-fluidity.css",
+        "bytes": 3611,
+        "sha256": "0702ac472064b7731c1206f51eb7af5651eb2a5a709c269c4055b4eefce66a39"
+      },
+      {
+        "path": "/experience-v2.js",
+        "bytes": 11961,
+        "sha256": "66476e8b2f8855545e561e1019400a5375f75130986c15a624066356c3f3d6a8"
+      },
+      {
+        "path": "/premium-cinema.js",
+        "bytes": 5798,
+        "sha256": "83ae15cee6f94d45edd2126fdb8ba0d417bdac9d22c5e61da2281ef543669342"
+      },
+      {
+        "path": "/page-fluidity.js",
+        "bytes": 3089,
+        "sha256": "d0367dfad77696889a9013f124b46a7139d6361aaba3e8368c5bb80825693007"
+      },
+      {
+        "path": "/final-audit.css",
+        "bytes": 10493,
+        "sha256": "cd02e4028d71c1dffb9571733fe57b2b6aac5cc829c705ce5a6be0eec5dea483"
+      },
+      {
+        "path": "/assets/brand/matchapp-official-icon-512.webp",
+        "bytes": 268230,
+        "sha256": "e3180b4d4dca2e228bc5d3c6052312b0ee720591e74ff8d14fc1a06359ae65a8"
+      },
+      {
+        "path": "/assets/brand/symbols/settings.svg",
+        "bytes": 777,
+        "sha256": "e61075a95e38537168e08f049e28618bfec7be1eb0bf271cba540c0b6d74bbe6"
+      },
+      {
+        "path": "/brand-corrections.css",
+        "bytes": 7412,
+        "sha256": "2f4172093ec3a873e516492e82e2ac71e495b2ad60d4f098e16a41a9b0fdfdac"
+      },
+      {
+        "path": "/brand-corrections.js",
+        "bytes": 3530,
+        "sha256": "9d686d35be80394ab8d12955a36b659ca146b0290fa75913d7757f19becb3c57"
+      },
+      {
+        "path": "/install-corner.js",
+        "bytes": 5192,
+        "sha256": "7a886145c327ac4e3ce8d3027650893bb7f06319382c41fbe1b9544d918f51a9"
+      },
+      {
+        "path": "/install-device-choice.js",
+        "bytes": 15803,
+        "sha256": "a202bff550b5eee2b79ce4f02749e1dec285a8172a5ce108c29af81493708726"
+      },
+      {
+        "path": "/human-conversation-cloud-20261010.js",
+        "bytes": 5561,
+        "sha256": "0d00bf6fec93ab3f59fae714c69385036567d4f12f18c5814331e7b343120ac2"
+      },
+      {
+        "path": "/profile/profile.html",
+        "bytes": 70253,
+        "sha256": "24ac275611406fa43087a4f407f0e381e1bd1c5ebf11cfbec5697b33abf2d944"
+      },
+      {
+        "path": "/profile-security-20261011.css",
+        "bytes": 7631,
+        "sha256": "6726d15190cc07fcf7dff4b497c7eada518171f9e9b4030dbd6b1c0673fcd691"
+      },
+      {
+        "path": "/profile-details-i18n.js",
+        "bytes": 70039,
+        "sha256": "e58c0db3c314c8699d0526ce83ecfeb30435fd4b565f3ea33859611025613744"
+      },
+      {
+        "path": "/profile-portfolio-i18n.js",
+        "bytes": 33008,
+        "sha256": "72ca2dae0b9fad06b2a79e0cfae51bcd4fd5fe8fec1da66e3d36f23a8be4b82e"
+      },
+      {
+        "path": "/profile-geography.js",
+        "bytes": 66855,
+        "sha256": "5cd82b83c20202d5ff27d9a9b11a69ac2aaa01030b02fe1f3153a88ac9e54c36"
+      },
+      {
+        "path": "/registration-upgrade.js",
+        "bytes": 16885,
+        "sha256": "3046b274545c0f32b6c9763ad05fa3fc2a94ad1800aae42ee2c076715d08cef8"
+      },
+      {
+        "path": "/portfolio-history.js",
+        "bytes": 9900,
+        "sha256": "7d903b6dafbfb2f5537f298a3ec9bdb775e2784e443ccd75fb57562d3e14cca8"
+      },
+      {
+        "path": "/libphonenumber-max-1.12.25.js",
+        "bytes": 251699,
+        "sha256": "aa86944f0394926935270b28decd058136a0eed2347774bbf5fcfa719f7bdde9"
+      },
+      {
+        "path": "/profile.js",
+        "bytes": 55093,
+        "sha256": "60bc7ad52c70b56554bd95b66b6e6668a98cc23d81d910b5b886b2ea960c6d3b"
+      },
+      {
+        "path": "/profile-phone-20261011.js",
+        "bytes": 13040,
+        "sha256": "644687f7efc472503dd02fe392bfa60e97db360fdebf154a066f52cbe6666f68"
+      },
+      {
+        "path": "/assets/brand/symbols/pricing.svg",
+        "bytes": 763,
+        "sha256": "441b1caebd0acf3ddf2b1253ab55309e0f4994304090a3018173c413c50a5def"
+      },
+      {
+        "path": "/assets/brand/symbols/saved.svg",
+        "bytes": 730,
+        "sha256": "3c475f4a8322f9cdb8f927020d87a1c04ac15409d4a234590a80d2e829cd3bbf"
+      },
+      {
+        "path": "/profile-history.css",
+        "bytes": 1594,
+        "sha256": "fb3e08b0a77d7d37099bb57f53c2dd72342991d87f2d3f20c42d1feb037e0ddb"
+      },
+      {
+        "path": "/profile-history.js",
+        "bytes": 3114,
+        "sha256": "d307f2e50d92a5e41d041a534fa425a9cff1daa49485c46846cc34ab42699297"
+      },
+      {
+        "path": "/patches/native-local-refresh.js",
+        "bytes": 3653,
+        "sha256": "66eaf361061f8083d22a651ebc0caf8f679e5e72aec413d5bd7138559339523f"
+      },
+      {
+        "path": "/explore.html",
+        "bytes": 14233,
+        "sha256": "a137ed3199714d1598891716d1e8f9dbe8e9ae4e76f29b177c68f9eb50e9e8c6"
+      },
+      {
+        "path": "/patches/explore-hub.css",
+        "bytes": 12771,
+        "sha256": "49eb21b12fc1ec63803205cf224ea131999dd5d0040db057c04a21608561754d"
+      },
+      {
+        "path": "/patches/reference-explore.css",
+        "bytes": 36035,
+        "sha256": "144daf5114f3b7f93284c0b96f4cf3d3c5219cd74f5f691af493512764fe4911"
+      },
+      {
+        "path": "/patches/explore-locales.js",
+        "bytes": 15673,
+        "sha256": "d1634b0c09a7a31f060e6c38a2b0ff7c8ed2d684b73d6a0aecf9350226a0390e"
+      },
+      {
+        "path": "/patches/reference-explore.js",
+        "bytes": 9571,
+        "sha256": "7cc4c4af10f8f91e16cc5312a9789e8cd09687db97b6933e62ed0e784f16118f"
+      },
+      {
+        "path": "/assets/cinema/explore-hero-2800.avif",
+        "bytes": 261033,
+        "sha256": "d51e14408e6378c82e80219b7d8f014b5edceb159c519518c21715565c9842f3"
+      },
+      {
+        "path": "/assets/cinema/explore-awaited-1200.avif",
+        "bytes": 149522,
+        "sha256": "c7e196f64b2d975d8ea4b7024cd5973366fcbc7dbffb43af08a2f02b60f6ab93"
+      },
+      {
+        "path": "/assets/cinema/explore-weekly-2000.avif",
+        "bytes": 183345,
+        "sha256": "4b33349050416522fdff27c409b093d0d2e51ac761f5b4d8ebd7381e11ba5992"
+      },
+      {
+        "path": "/assets/cinema/explore-books-700.avif",
+        "bytes": 84484,
+        "sha256": "1e4f66b73c44c17af3002c8aef94e882784d0e3d443c258d5fd53b5ae0e2db89"
+      },
+      {
+        "path": "/assets/cinema/explore-food-700.avif",
+        "bytes": 52303,
+        "sha256": "882613326416686442a01e0e74e0f37ceb88c409da4d24cd5c90c727d67480c5"
+      },
+      {
+        "path": "/assets/cinema/explore-news-700.avif",
+        "bytes": 32274,
+        "sha256": "19eb5e7b84ad02c3a5a40dfccd153de9a4cd3e33b2d0f6581c3886cde1bc160e"
+      },
+      {
+        "path": "/assets/cinema/explore-events-1000.avif",
+        "bytes": 52633,
+        "sha256": "c8318a94336f2aaf7115d97a64003f8c9f4428404de9c360053a30f300790460"
+      },
+      {
+        "path": "/assets/cinema/explore-music-700.avif",
+        "bytes": 12649,
+        "sha256": "10aad83c43d25d256ba9d0dd82e56e1b39916cad53d475e64a8ead91db4543a3"
+      },
+      {
+        "path": "/assets/cinema/explore-ai.svg",
+        "bytes": 1590,
+        "sha256": "1a82419bfcdb373427ea992e671fe5d120dce9282aed70599e4635d7aa9e963d"
+      }
+    ]
+  }
+}

@@ -496,7 +496,7 @@
             wrap.querySelector('.crit-toggle')?.setAttribute('aria-expanded','true');
             const chips=wrap.querySelector('.crit-chips');
             if(chips){chips.dataset.expanded='1';renderField(native,'cat');}
-            wrap.querySelector('.crit-toggle')?.scrollIntoView({behavior:'auto',block:'nearest'});
+            window.MatchAppActivatedScroll?.toStart(wrap,{behavior:'auto'}) ?? wrap.scrollIntoView({behavior:'auto',block:'start'});
         });
         host.appendChild(more);
         const desc=document.getElementById('matchapp-topic-description')||document.createElement('p');
@@ -514,7 +514,7 @@
     if (rematch === 'same') {
         try { const previous=JSON.parse(localStorage.getItem('match_rematch_criteria') || '{}');FIELDS.forEach(f=>{if(Array.isArray(previous[f.key]))state[f.key]=previous[f.key];}); } catch (_) {}
     }
-    if (rematch) { const form=document.getElementById('questionnaire-box');if(form){form.style.display='block';if(window.MatchAppScrollGate?.canAutoScroll?.())form.scrollIntoView({behavior:'smooth',block:'start'});} }
+    if (rematch) { const form=document.getElementById('questionnaire-box');if(form){form.style.display='block';if(window.MatchAppScrollGate?.canAutoScroll?.())window.MatchAppActivatedScroll?.toStart(form,{initial:true}) ?? form.scrollIntoView({behavior:'auto',block:'start'});} }
         normalizeCategories();
         reconcileConflicts();
         FIELDS.forEach(mountField);

@@ -112,7 +112,9 @@
     const host=document.getElementById('history-list');if(!host)return;
     host.replaceChildren();
     const records=window.matchPolicy?.history() || [];
-    const activity=(window.MatchActivity?.all?.()||[]).filter(e=>e && (e.type==='match'||e.type==='ai'||e.type==='save'||e.type==='seen'));
+    // AI prompts remain in Activity. Only the producer's explicit title marker
+    // makes an AI activity row eligible for the title portfolio.
+    const activity=(window.MatchActivity?.all?.()||[]).filter(e=>e && (e.type==='match'||(e.type==='ai'&&e.meta?.source==='ask-ai')||e.type==='save'||e.type==='seen'));
     const seen=new Set();
     const merged=[];
     const push=item=>{
@@ -138,12 +140,33 @@
     const query=new URLSearchParams(location.search);
     const tab=query.get('tab')||'history';
     window.switchPortfolioTab?.(tab);
+    const tabs=document.querySelector('.portfolio-tabs');
+    if(tabs&&!tabs.hasAttribute('data-ma-portfolio-scroll')){
+      tabs.setAttribute('data-ma-portfolio-scroll','1');
+      // Let the tab's existing handler reveal its panel before aligning the
+      // explicit destination. Hydration, repaint and programmatic switches do not scroll.
+      tabs.addEventListener('click',event=>{
+        const button=event.target.closest?.('.portfolio-tab[id^="tab-"]');
+        if(!button||!tabs.contains(button)||button.disabled)return;
+        const panel=document.getElementById('panel-'+button.id.slice(4));
+        if(!panel)return;
+        requestAnimationFrame(()=>{
+          if(button.classList.contains('active')&&panel.isConnected&&!panel.hidden&&getComputedStyle(panel).display!=='none')window.MatchAppActivatedScroll?.toStart(panel);
+        });
+      });
+    }
     if(query.get('rematch')==='1'){
       const host=document.getElementById('history-rematch');
       if(host){host.innerHTML='<p>This title is saved to history. Ready for a rematch?</p><a class="portfolio-tab" href="/?rematch=same#questionnaire-box">Same criteria</a> <a class="portfolio-tab" href="/?rematch=new#questionnaire-box">New criteria</a>';
         window.MatchProfilePortfolioI18n?.bind(host,()=>{const ui=window.MatchProfilePortfolioI18n;host.querySelector('p').textContent=ui.text('rematchPrompt');host.querySelector('p').style.textAlign='start';const links=host.querySelectorAll('a');links[0].textContent=ui.text('sameCriteria');links[1].textContent=ui.text('newCriteria');});}
     }
   }
+  // Repaint the current local records without running init(), changing the
+  // selected portfolio tab or emitting a broad history-change notification.
+  window.MatchAppPortfolioHistory=Object.freeze({refresh(){
+    if(!document.getElementById('history-list') || typeof window.matchPolicy?.history!=='function' || typeof window.MatchActivity?.all!=='function' || typeof window.MatchAppPortfolioPosters?.apply!=='function' || typeof window.MatchAppPortfolioPosters?.bind!=='function')return false;
+    render();return true;
+  }});
   document.addEventListener('matchapp:historychange',render);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();

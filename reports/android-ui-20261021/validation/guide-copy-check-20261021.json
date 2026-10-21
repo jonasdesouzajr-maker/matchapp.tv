@@ -1,0 +1,21 @@
+{
+  "gate": "guide",
+  "command": [
+    "node",
+    "--test",
+    "--test-isolation=none",
+    "--test-force-exit",
+    "--test-reporter=spec",
+    "tests/premium-guide-20261014.test.cjs",
+    "tests/premium-guide-languages-20261021.test.cjs",
+    "tests/activated-scroll-20261021.test.cjs"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": null,
+  "startedAt": "2026-10-21T19:26:47.501952+00:00",
+  "finishedAt": "2026-10-21T19:26:49.202751+00:00",
+  "durationSeconds": 1.701,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/guide-copy-check-20261021.log",
+  "scopeNote": "Passed before the final native microphone microcopy and localized Guide footer width repair; final scoped checks and site audit are recorded separately."
+}

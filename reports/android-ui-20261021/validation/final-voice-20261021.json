@@ -1,0 +1,23 @@
+{
+  "gate": "voice",
+  "command": [
+    "node",
+    "--test",
+    "--test-isolation=none",
+    "--test-force-exit",
+    "--test-reporter=spec",
+    "tests/native-microphone-copy-20261021.test.cjs",
+    "tests/voice-live-dictation.test.cjs",
+    "tests/android-voice-swipe-icon.test.cjs",
+    "tests/kids-lumi-assistant.test.cjs",
+    "tests/performance-language-20261014.test.cjs",
+    "tests/android-ambient-preview-20261012.test.cjs"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": null,
+  "startedAt": "2026-10-21T19:28:44.830028+00:00",
+  "finishedAt": "2026-10-21T19:28:45.760557+00:00",
+  "durationSeconds": 0.931,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-voice-20261021.log"
+}

@@ -71,7 +71,7 @@
    const values=new Set();if(typeof CONTENT_CATALOG!=='undefined')CONTENT_CATALOG.forEach(e=>(Array.isArray(e[prop])?e[prop]:[e[prop]]).forEach(v=>{if(v && v!=='any')values.add(v);}));
    [...values].sort().forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;sel.append(o);});
   }
-  $('friend-match').scrollIntoView({behavior:'smooth',block:'start'});
+  window.MatchAppActivatedScroll?.toStart($('friend-match')) ?? $('friend-match').scrollIntoView({behavior:'auto',block:'start'});
  }
  function prefs(){const p={};['cat','plat','mood','vibe','rating'].forEach(k=>p[k]=[$('friend-match-'+k).value].filter(v=>v!=='any'));return p;}
  function hydrateFriendResultMedia(result,version,code){

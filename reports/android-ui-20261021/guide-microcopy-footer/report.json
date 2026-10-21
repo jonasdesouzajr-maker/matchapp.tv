@@ -1,0 +1,147 @@
+{
+  "scope": "Focused Guide footer only at 320 px with 1.4 font preference; external requests blocked.",
+  "cases": [
+    {
+      "locale": "pt-BR",
+      "width": 320,
+      "rootFont": "22.4px",
+      "overflow": 0,
+      "dockTop": 534.4375,
+      "links": [
+        {
+          "text": "Sobre",
+          "box": {
+            "x": 2,
+            "y": 431.6875,
+            "width": 73.6875,
+            "height": 48,
+            "top": 431.6875,
+            "right": 75.6875,
+            "bottom": 479.6875,
+            "left": 2
+          },
+          "words": [
+            {
+              "word": "Sobre",
+              "lines": 1
+            }
+          ],
+          "overflowWrap": "normal"
+        },
+        {
+          "text": "Privacidade",
+          "box": {
+            "x": 83.6875,
+            "y": 431.6875,
+            "width": 125.9375,
+            "height": 48,
+            "top": 431.6875,
+            "right": 209.625,
+            "bottom": 479.6875,
+            "left": 83.6875
+          },
+          "words": [
+            {
+              "word": "Privacidade",
+              "lines": 1
+            }
+          ],
+          "overflowWrap": "normal"
+        },
+        {
+          "text": "Termos",
+          "box": {
+            "x": 217.625,
+            "y": 431.6875,
+            "width": 85.6875,
+            "height": 48,
+            "top": 431.6875,
+            "right": 303.3125,
+            "bottom": 479.6875,
+            "left": 217.625
+          },
+          "words": [
+            {
+              "word": "Termos",
+              "lines": 1
+            }
+          ],
+          "overflowWrap": "normal"
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "width": 320,
+      "rootFont": "22.4px",
+      "overflow": 0,
+      "dockTop": 483.4375,
+      "links": [
+        {
+          "text": "О нас",
+          "box": {
+            "x": 2,
+            "y": 324.9375,
+            "width": 74.3125,
+            "height": 48,
+            "top": 324.9375,
+            "right": 76.3125,
+            "bottom": 372.9375,
+            "left": 2
+          },
+          "words": [
+            {
+              "word": "О",
+              "lines": 1
+            },
+            {
+              "word": "нас",
+              "lines": 1
+            }
+          ],
+          "overflowWrap": "normal"
+        },
+        {
+          "text": "Конфиденциальность",
+          "box": {
+            "x": 84.3125,
+            "y": 324.9375,
+            "width": 229.71875,
+            "height": 48,
+            "top": 324.9375,
+            "right": 314.03125,
+            "bottom": 372.9375,
+            "left": 84.3125
+          },
+          "words": [
+            {
+              "word": "Конфиденциальность",
+              "lines": 1
+            }
+          ],
+          "overflowWrap": "normal"
+        },
+        {
+          "text": "Условия",
+          "box": {
+            "x": 2,
+            "y": 380.9375,
+            "width": 98.125,
+            "height": 48,
+            "top": 380.9375,
+            "right": 100.125,
+            "bottom": 428.9375,
+            "left": 2
+          },
+          "words": [
+            {
+              "word": "Условия",
+              "lines": 1
+            }
+          ],
+          "overflowWrap": "normal"
+        }
+      ]
+    }
+  ]
+}

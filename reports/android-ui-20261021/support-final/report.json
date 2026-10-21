@@ -1,0 +1,4403 @@
+{
+  "scope": "Rendered browser viewports; not Android emulator or native permission/audio verification.",
+  "base": "local candidate",
+  "lang": "en",
+  "cases": [
+    {
+      "name": "home-tools-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 37,
+                "y": 394,
+                "w": 83.640625,
+                "h": 48,
+                "right": 120.640625,
+                "bottom": 442,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 22,
+                "y": 166,
+                "w": 360,
+                "h": 291,
+                "right": 382,
+                "bottom": 457,
+                "display": "block",
+                "font": "15px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "14px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 289,
+                  "ch": 289,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "footer-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 151.28125,
+                "y": 361.078125,
+                "w": 87.4375,
+                "h": 48,
+                "right": 238.71875,
+                "bottom": 409.078125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "Become a sponsor",
+                "x": 10,
+                "y": 469.078125,
+                "w": 181,
+                "h": 56.375,
+                "right": 191,
+                "bottom": 525.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "38.375px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Become a sponsor",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 56,
+                  "ch": 56,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Streaming around the world",
+                "x": 199,
+                "y": 469.078125,
+                "w": 181,
+                "h": 56.375,
+                "right": 380,
+                "bottom": 525.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "38.375px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Streaming around the world",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 56,
+                  "ch": 56,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Meet the engineer",
+                "x": 10,
+                "y": 533.453125,
+                "w": 181,
+                "h": 48,
+                "right": 191,
+                "bottom": 581.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "What’s new",
+                "x": 199,
+                "y": 533.453125,
+                "w": 181,
+                "h": 48,
+                "right": 380,
+                "bottom": 581.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "expanded": "true",
+        "amount": "12.75",
+        "panelHidden": false,
+        "checkoutDisabled": false
+      },
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "INDEPENDENT IDEAS. SHARED POSSIBILITIES.\nBe part of what comes next\n\nBuilt indep",
+                "x": 33,
+                "y": 228.078125,
+                "w": 324,
+                "h": 610.90625,
+                "right": 357,
+                "bottom": 838.984375,
+                "display": "grid",
+                "font": "15px",
+                "color": "rgb(249, 243, 231)",
+                "textFill": "rgb(249, 243, 231)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 609,
+                  "ch": 609,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 46,
+                "y": 559.75,
+                "w": 298,
+                "h": 48.390625,
+                "right": 344,
+                "bottom": 608.140625,
+                "display": "block",
+                "font": "16px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "10px 13px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "Continue securely with PayPal",
+                "x": 46,
+                "y": 726.390625,
+                "w": 298,
+                "h": 48,
+                "right": 344,
+                "bottom": 774.390625,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(30, 25, 48)",
+                "textFill": "rgb(30, 25, 48)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "auth-focused-short-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#main-auth-modal > .premium-card",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 16,
+                "y": 24,
+                "w": 358,
+                "h": 312,
+                "right": 374,
+                "bottom": 336,
+                "display": "block",
+                "font": "15px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "17px",
+                "bg": "linear-gradient(145deg, rgb(25, 17, 30), rgb(17, 11, 23) 78%)",
+                "animation": "none",
+                "pseudo": {
+                  "h": "308px",
+                  "inset": "0px",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 844,
+                  "ch": 310,
+                  "top": 400,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal .auth-close",
+            "nodes": [
+              {
+                "text": "×",
+                "x": 321,
+                "y": -368.609375,
+                "w": 44,
+                "h": 44,
+                "right": 365,
+                "bottom": -324.609375,
+                "display": "grid",
+                "font": "30px",
+                "color": "rgb(228, 186, 103)",
+                "textFill": "rgb(228, 186, 103)",
+                "padding": "0px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 42,
+                  "ch": 42,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal input",
+            "nodes": [
+              {
+                "text": "Email Address",
+                "x": 34,
+                "y": 151.25,
+                "w": 322,
+                "h": 57.09375,
+                "right": 356,
+                "bottom": 208.34375,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 55,
+                  "ch": 55,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              },
+              {
+                "text": "Password",
+                "x": 34,
+                "y": 216.34375,
+                "w": 322,
+                "h": 57.09375,
+                "right": 356,
+                "bottom": 273.4375,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "16px 58px 16px 16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 55,
+                  "ch": 55,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "dialog-short-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "authDismissed": true
+      },
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".ma-reference-dialog__panel",
+            "nodes": [
+              {
+                "text": "Review this action\n\nReview this local interface notice without changing account ",
+                "x": 16,
+                "y": 63.484375,
+                "w": 358,
+                "h": 233.03125,
+                "right": 374,
+                "bottom": 296.515625,
+                "display": "grid",
+                "font": "15px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "16px",
+                "bg": "linear-gradient(145deg, color(srgb 0.0980392 0.0666667 0.117647 / 0.95), rgb(17, 11, 23))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 231,
+                  "ch": 231,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__button",
+            "nodes": [
+              {
+                "text": "Keep settings",
+                "x": 33,
+                "y": 215.921875,
+                "w": 158,
+                "h": 63.59375,
+                "right": 191,
+                "bottom": 279.515625,
+                "display": "flex",
+                "font": "16px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "10px 16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 62,
+                  "ch": 62,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Confirm",
+                "x": 199,
+                "y": 215.921875,
+                "w": 158,
+                "h": 63.59375,
+                "right": 357,
+                "bottom": 279.515625,
+                "display": "flex",
+                "font": "16px",
+                "color": "rgb(33, 21, 9)",
+                "textFill": "rgb(33, 21, 9)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(115deg, color(srgb 0.920588 0.797059 0.552941), rgb(228, 186, 103))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 62,
+                  "ch": 62,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "sponsor-secondary-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/sponsor/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".mp-form .mp-pill",
+            "nodes": [
+              {
+                "text": "Open email draft",
+                "x": 13,
+                "y": 554.84375,
+                "w": 270.25,
+                "h": 48,
+                "right": 283.25,
+                "bottom": 602.84375,
+                "display": "flex",
+                "font": "14px",
+                "color": "rgb(33, 21, 9)",
+                "textFill": "rgb(33, 21, 9)",
+                "padding": "11px 19px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Copy brief",
+                "x": 295.25,
+                "y": 554.84375,
+                "w": 81.75,
+                "h": 48,
+                "right": 377,
+                "bottom": 602.84375,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "founder-secondary-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/founder/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".mf-secondary",
+            "nodes": [
+              {
+                "text": "Explore voluntary support",
+                "x": 13,
+                "y": 171.328125,
+                "w": 175.8125,
+                "h": 48,
+                "right": 188.8125,
+                "bottom": 219.328125,
+                "display": "inline-flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "32px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-390-900-en-1",
+      "config": {
+        "width": 390,
+        "height": 900,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/discover.html",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 139,
+                "y": 344,
+                "w": 83.640625,
+                "h": 48,
+                "right": 222.640625,
+                "bottom": 392,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "New chat\nHistory\nDonate",
+                "x": 22,
+                "y": 166,
+                "w": 360,
+                "h": 239,
+                "right": 382,
+                "bottom": 405,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 237,
+                  "ch": 237,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "home-tools-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 447,
+                "y": 404.1875,
+                "w": 83.640625,
+                "h": 48,
+                "right": 530.640625,
+                "bottom": 452.1875,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 432,
+                "y": 105,
+                "w": 360,
+                "h": 362.1875,
+                "right": 792,
+                "bottom": 467.1875,
+                "display": "block",
+                "font": "15px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "14px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 360,
+                  "ch": 360,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "footer-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 356.28125,
+                "y": 746.515625,
+                "w": 87.4375,
+                "h": 48,
+                "right": 443.71875,
+                "bottom": 794.515625,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "Become a sponsor",
+                "x": 14,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 201,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "38.375px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Become a sponsor",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 56,
+                  "ch": 56,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Streaming around the world",
+                "x": 209,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 396,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "38.375px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Streaming around the world",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 56,
+                  "ch": 56,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Meet the engineer",
+                "x": 404,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 591,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "38.375px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 56,
+                  "ch": 56,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "What’s new",
+                "x": 599,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 786,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "38.375px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 56,
+                  "ch": 56,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "expanded": "true",
+        "amount": "12.75",
+        "panelHidden": false,
+        "checkoutDisabled": false
+      },
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "INDEPENDENT IDEAS. SHARED POSSIBILITIES.\nBe part of what comes next\n\nBuilt indep",
+                "x": 160,
+                "y": 254.515625,
+                "w": 480,
+                "h": 539.109375,
+                "right": 640,
+                "bottom": 793.625,
+                "display": "grid",
+                "font": "15px",
+                "color": "rgb(249, 243, 231)",
+                "textFill": "rgb(249, 243, 231)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 537,
+                  "ch": 537,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 173,
+                "y": 548.890625,
+                "w": 454,
+                "h": 48.390625,
+                "right": 627,
+                "bottom": 597.28125,
+                "display": "block",
+                "font": "16px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "10px 13px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "Continue securely with PayPal",
+                "x": 173,
+                "y": 681.03125,
+                "w": 454,
+                "h": 48,
+                "right": 627,
+                "bottom": 729.03125,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(30, 25, 48)",
+                "textFill": "rgb(30, 25, 48)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "auth-focused-short-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#main-auth-modal > .premium-card",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 50,
+                "y": 24,
+                "w": 700,
+                "h": 312,
+                "right": 750,
+                "bottom": 336,
+                "display": "block",
+                "font": "15px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "32px",
+                "bg": "linear-gradient(145deg, rgb(25, 17, 30), rgb(17, 11, 23) 78%)",
+                "animation": "none",
+                "pseudo": {
+                  "h": "308px",
+                  "inset": "0px",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 798,
+                  "ch": 310,
+                  "top": 339,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal .auth-close",
+            "nodes": [
+              {
+                "text": "×",
+                "x": 697,
+                "y": -307.609375,
+                "w": 44,
+                "h": 44,
+                "right": 741,
+                "bottom": -263.609375,
+                "display": "grid",
+                "font": "30px",
+                "color": "rgb(228, 186, 103)",
+                "textFill": "rgb(228, 186, 103)",
+                "padding": "0px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 42,
+                  "ch": 42,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal input",
+            "nodes": [
+              {
+                "text": "Email Address",
+                "x": 83,
+                "y": 151.015625,
+                "w": 634,
+                "h": 57.09375,
+                "right": 717,
+                "bottom": 208.109375,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 55,
+                  "ch": 55,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              },
+              {
+                "text": "Password",
+                "x": 83,
+                "y": 216.109375,
+                "w": 634,
+                "h": 57.09375,
+                "right": 717,
+                "bottom": 273.203125,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "16px 58px 16px 16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 55,
+                  "ch": 55,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "dialog-short-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "authDismissed": true
+      },
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".ma-reference-dialog__panel",
+            "nodes": [
+              {
+                "text": "Review this action\n\nReview this local interface notice without changing account ",
+                "x": 176,
+                "y": 65.28125,
+                "w": 448,
+                "h": 229.4375,
+                "right": 624,
+                "bottom": 294.71875,
+                "display": "grid",
+                "font": "15px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "24px",
+                "bg": "linear-gradient(145deg, color(srgb 0.0980392 0.0666667 0.117647 / 0.95), rgb(17, 11, 23))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 227,
+                  "ch": 227,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__button",
+            "nodes": [
+              {
+                "text": "Keep settings",
+                "x": 201,
+                "y": 225.71875,
+                "w": 195,
+                "h": 44,
+                "right": 396,
+                "bottom": 269.71875,
+                "display": "flex",
+                "font": "16px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "10px 16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 42,
+                  "ch": 42,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Confirm",
+                "x": 404,
+                "y": 225.71875,
+                "w": 195,
+                "h": 44,
+                "right": 599,
+                "bottom": 269.71875,
+                "display": "flex",
+                "font": "16px",
+                "color": "rgb(33, 21, 9)",
+                "textFill": "rgb(33, 21, 9)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(115deg, color(srgb 0.920588 0.797059 0.552941), rgb(228, 186, 103))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 42,
+                  "ch": 42,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "sponsor-secondary-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/sponsor/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".mp-form .mp-pill",
+            "nodes": [
+              {
+                "text": "Open email draft",
+                "x": 13,
+                "y": 754.578125,
+                "w": 173.421875,
+                "h": 48,
+                "right": 186.421875,
+                "bottom": 802.578125,
+                "display": "flex",
+                "font": "14px",
+                "color": "rgb(33, 21, 9)",
+                "textFill": "rgb(33, 21, 9)",
+                "padding": "11px 19px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Copy brief",
+                "x": 198.421875,
+                "y": 754.578125,
+                "w": 81.75,
+                "h": 48,
+                "right": 280.171875,
+                "bottom": 802.578125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "founder-secondary-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/founder/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".mf-secondary",
+            "nodes": [
+              {
+                "text": "Explore voluntary support",
+                "x": 417,
+                "y": 115.84375,
+                "w": 175.8125,
+                "h": 48,
+                "right": 592.8125,
+                "bottom": 163.84375,
+                "display": "inline-flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "32px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-800-1180-en-1",
+      "config": {
+        "width": 800,
+        "height": 1180,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/discover.html",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 549,
+                "y": 335,
+                "w": 83.640625,
+                "h": 48,
+                "right": 632.640625,
+                "bottom": 383,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "New chat\nHistory\n🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deu",
+                "x": 432,
+                "y": 105,
+                "w": 360,
+                "h": 291,
+                "right": 792,
+                "bottom": 396,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 289,
+                  "ch": 289,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "home-tools-320-640-en-1.4",
+      "config": {
+        "width": 320,
+        "height": 640,
+        "lang": "en",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 320,
+          "h": 640
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 23,
+                "y": 405,
+                "w": 101.015625,
+                "h": 48,
+                "right": 124.015625,
+                "bottom": 453,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 8,
+                "y": 177,
+                "w": 304,
+                "h": 291,
+                "right": 312,
+                "bottom": 468,
+                "display": "block",
+                "font": "21px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "14px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 289,
+                  "ch": 289,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "footer-320-640-en-1.4",
+      "config": {
+        "width": 320,
+        "height": 640,
+        "lang": "en",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 320,
+          "h": 640
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 106.828125,
+                "y": 182.75,
+                "w": 106.34375,
+                "h": 48,
+                "right": 213.171875,
+                "bottom": 230.75,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "Become a sponsor",
+                "x": 10,
+                "y": 290.75,
+                "w": 146,
+                "h": 92.015625,
+                "right": 156,
+                "bottom": 382.765625,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "74.0156px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Become a sponsor",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 92,
+                  "ch": 92,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Streaming around the world",
+                "x": 164,
+                "y": 290.75,
+                "w": 146,
+                "h": 92.015625,
+                "right": 310,
+                "bottom": 382.765625,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "74.0156px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Streaming around the world",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 92,
+                  "ch": 92,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Meet the engineer",
+                "x": 10,
+                "y": 390.765625,
+                "w": 146,
+                "h": 69.34375,
+                "right": 156,
+                "bottom": 460.109375,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "51.3438px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 69,
+                  "ch": 69,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "What’s new",
+                "x": 164,
+                "y": 390.765625,
+                "w": 146,
+                "h": 69.34375,
+                "right": 310,
+                "bottom": 460.109375,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "51.3438px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 69,
+                  "ch": 69,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-320-640-en-1.4",
+      "config": {
+        "width": 320,
+        "height": 640,
+        "lang": "en",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "expanded": "true",
+        "amount": "12.75",
+        "panelHidden": false,
+        "checkoutDisabled": false
+      },
+      "values": {
+        "viewport": {
+          "w": 320,
+          "h": 640
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "INDEPENDENT IDEAS. SHARED POSSIBILITIES.\nBe part of what comes next\n\nBuilt indep",
+                "x": 33,
+                "y": 238.75,
+                "w": 254,
+                "h": 971.8125,
+                "right": 287,
+                "bottom": 1210.5625,
+                "display": "grid",
+                "font": "21px",
+                "color": "rgb(249, 243, 231)",
+                "textFill": "rgb(249, 243, 231)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 970,
+                  "ch": 970,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 46,
+                "y": 831.625,
+                "w": 228,
+                "h": 48.390625,
+                "right": 274,
+                "bottom": 880.015625,
+                "display": "block",
+                "font": "16px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "10px 13px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "Continue securely with PayPal",
+                "x": 46,
+                "y": 1032.765625,
+                "w": 228,
+                "h": 96.40625,
+                "right": 274,
+                "bottom": 1129.171875,
+                "display": "block",
+                "font": "19.6px",
+                "color": "rgb(30, 25, 48)",
+                "textFill": "rgb(30, 25, 48)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 96,
+                  "ch": 96,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-320-640-en-1.4",
+      "config": {
+        "width": 320,
+        "height": 640,
+        "lang": "en",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/discover.html",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 320,
+          "h": 640
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 125,
+                "y": 355,
+                "w": 101.015625,
+                "h": 48,
+                "right": 226.015625,
+                "bottom": 403,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "New chat\nHistory\nDonate",
+                "x": 8,
+                "y": 177,
+                "w": 304,
+                "h": 239,
+                "right": 312,
+                "bottom": 416,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 237,
+                  "ch": 237,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "home-tools-390-800-pt-1.4",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "pt",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Doar",
+                "x": 37,
+                "y": 457,
+                "w": 80.375,
+                "h": 48,
+                "right": 117.375,
+                "bottom": 505,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Doar",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 22,
+                "y": 229,
+                "w": 360,
+                "h": 291,
+                "right": 382,
+                "bottom": 520,
+                "display": "block",
+                "font": "21px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "14px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 289,
+                  "ch": 289,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "footer-390-800-pt-1.4",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "pt",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "Apoiar",
+                "x": 147.875,
+                "y": 234.21875,
+                "w": 94.25,
+                "h": 48,
+                "right": 242.125,
+                "bottom": 282.21875,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "Seja um patrocinador",
+                "x": 10,
+                "y": 342.21875,
+                "w": 181,
+                "h": 69.34375,
+                "right": 191,
+                "bottom": 411.5625,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "51.3438px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Seja um patrocinador",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 69,
+                  "ch": 69,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Streaming pelo mundo",
+                "x": 199,
+                "y": 342.21875,
+                "w": 181,
+                "h": 69.34375,
+                "right": 380,
+                "bottom": 411.5625,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "51.3438px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Streaming pelo mundo",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 69,
+                  "ch": 69,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Conheça o engenheiro",
+                "x": 10,
+                "y": 419.5625,
+                "w": 181,
+                "h": 69.34375,
+                "right": 191,
+                "bottom": 488.90625,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "51.3438px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 69,
+                  "ch": 69,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Novidades",
+                "x": 199,
+                "y": 419.5625,
+                "w": 181,
+                "h": 69.34375,
+                "right": 380,
+                "bottom": 488.90625,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "51.3438px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 69,
+                  "ch": 69,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-390-800-pt-1.4",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "pt",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "expanded": "true",
+        "amount": "12.75",
+        "panelHidden": false,
+        "checkoutDisabled": false
+      },
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "IDEIAS INDEPENDENTES. NOVAS POSSIBILIDADES.\nFaça parte do próximo capítulo\n\nUm p",
+                "x": 33,
+                "y": 290.21875,
+                "w": 324,
+                "h": 838.625,
+                "right": 357,
+                "bottom": 1128.84375,
+                "display": "grid",
+                "font": "21px",
+                "color": "rgb(249, 243, 231)",
+                "textFill": "rgb(249, 243, 231)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 837,
+                  "ch": 837,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 46,
+                "y": 809.421875,
+                "w": 298,
+                "h": 48.390625,
+                "right": 344,
+                "bottom": 857.8125,
+                "display": "block",
+                "font": "16px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "10px 13px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "Continuar com segurança no PayPal",
+                "x": 46,
+                "y": 993.3125,
+                "w": 298,
+                "h": 70.9375,
+                "right": 344,
+                "bottom": 1064.25,
+                "display": "block",
+                "font": "19.6px",
+                "color": "rgb(30, 25, 48)",
+                "textFill": "rgb(30, 25, 48)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 71,
+                  "ch": 71,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-390-800-pt-1.4",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "pt",
+        "fontScale": 1.4
+      },
+      "url": "http://127.0.0.1:39399/discover.html",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "22.4px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Doar",
+                "x": 139,
+                "y": 407,
+                "w": 80.375,
+                "h": 48,
+                "right": 219.375,
+                "bottom": 455,
+                "display": "flex",
+                "font": "16.8px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Doar",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "Novo chat\nHistórico\nDoar",
+                "x": 22,
+                "y": 229,
+                "w": 360,
+                "h": 239,
+                "right": 382,
+                "bottom": 468,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 237,
+                  "ch": 237,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "home-tools-390-800-ar-1",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "ar",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "تبرع",
+                "x": 37,
+                "y": 394,
+                "w": 60.75,
+                "h": 48,
+                "right": 97.75,
+                "bottom": 442,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "تبرع",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 22,
+                "y": 166,
+                "w": 360,
+                "h": 291,
+                "right": 382,
+                "bottom": 457,
+                "display": "block",
+                "font": "15px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "14px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 289,
+                  "ch": 289,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "footer-390-800-ar-1",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "ar",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "دعم",
+                "x": 164.75,
+                "y": 251.453125,
+                "w": 60.5,
+                "h": 48,
+                "right": 225.25,
+                "bottom": 299.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "كن راعيًا",
+                "x": 199,
+                "y": 359.453125,
+                "w": 181,
+                "h": 48,
+                "right": 380,
+                "bottom": 407.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "كن راعيًا",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "البث حول العالم",
+                "x": 10,
+                "y": 359.453125,
+                "w": 181,
+                "h": 48,
+                "right": 191,
+                "bottom": 407.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "البث حول العالم",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "تعرّف على المهندس",
+                "x": 199,
+                "y": 415.453125,
+                "w": 181,
+                "h": 48,
+                "right": 380,
+                "bottom": 463.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "ما الجديد",
+                "x": 10,
+                "y": 415.453125,
+                "w": 181,
+                "h": 48,
+                "right": 191,
+                "bottom": 463.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-390-800-ar-1",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "ar",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "expanded": "true",
+        "amount": "12.75",
+        "panelHidden": false,
+        "checkoutDisabled": false
+      },
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "كن جزءًا من نمونا\nساهم في تطوير MatchApp Ai\n\nكن جزءًا من نمو MatchApp Ai. يساعد ",
+                "x": 33,
+                "y": 227.453125,
+                "w": 324,
+                "h": 543.109375,
+                "right": 357,
+                "bottom": 770.5625,
+                "display": "grid",
+                "font": "15px",
+                "color": "rgb(249, 243, 231)",
+                "textFill": "rgb(249, 243, 231)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 541,
+                  "ch": 541,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 46,
+                "y": 542.625,
+                "w": 298,
+                "h": 48.390625,
+                "right": 344,
+                "bottom": 591.015625,
+                "display": "block",
+                "font": "16px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "10px 13px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "المتابعة بأمان عبر PayPal",
+                "x": 46,
+                "y": 674.765625,
+                "w": 298,
+                "h": 48,
+                "right": 344,
+                "bottom": 722.765625,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(30, 25, 48)",
+                "textFill": "rgb(30, 25, 48)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-390-800-ar-1",
+      "config": {
+        "width": 390,
+        "height": 800,
+        "lang": "ar",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/discover.html",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 800
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "تبرع",
+                "x": 204.25,
+                "y": 344,
+                "w": 60.75,
+                "h": 48,
+                "right": 265,
+                "bottom": 392,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "تبرع",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "محادثة جديدة\nالسجل\nتبرع",
+                "x": 22,
+                "y": 166,
+                "w": 360,
+                "h": 239,
+                "right": 382,
+                "bottom": 405,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 237,
+                  "ch": 237,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "home-tools-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 287,
+                "y": 352.1875,
+                "w": 83.640625,
+                "h": 48,
+                "right": 370.640625,
+                "bottom": 400.1875,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 272,
+                "y": 105,
+                "w": 360,
+                "h": 247,
+                "right": 632,
+                "bottom": 352,
+                "display": "block",
+                "font": "15px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "14px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 308,
+                  "ch": 245,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "footer-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 276.28125,
+                "y": 111.453125,
+                "w": 87.4375,
+                "h": 48,
+                "right": 363.71875,
+                "bottom": 159.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "Become a sponsor",
+                "x": 14,
+                "y": 219.453125,
+                "w": 302,
+                "h": 48,
+                "right": 316,
+                "bottom": 267.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Become a sponsor",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Streaming around the world",
+                "x": 324,
+                "y": 219.453125,
+                "w": 302,
+                "h": 48,
+                "right": 626,
+                "bottom": 267.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Streaming around the world",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Meet the engineer",
+                "x": 14,
+                "y": 275.453125,
+                "w": 302,
+                "h": 48,
+                "right": 316,
+                "bottom": 323.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "What’s new",
+                "x": 324,
+                "y": 275.453125,
+                "w": 302,
+                "h": 48,
+                "right": 626,
+                "bottom": 323.453125,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "expanded": "true",
+        "amount": "12.75",
+        "panelHidden": false,
+        "checkoutDisabled": false
+      },
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "INDEPENDENT IDEAS. SHARED POSSIBILITIES.\nBe part of what comes next\n\nBuilt indep",
+                "x": 80,
+                "y": 167.453125,
+                "w": 480,
+                "h": 539.109375,
+                "right": 560,
+                "bottom": 706.5625,
+                "display": "grid",
+                "font": "15px",
+                "color": "rgb(249, 243, 231)",
+                "textFill": "rgb(249, 243, 231)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 537,
+                  "ch": 537,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 93,
+                "y": 461.828125,
+                "w": 454,
+                "h": 48.390625,
+                "right": 547,
+                "bottom": 510.21875,
+                "display": "block",
+                "font": "16px",
+                "color": "rgb(250, 245, 255)",
+                "textFill": "rgb(250, 245, 255)",
+                "padding": "10px 13px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "Continue securely with PayPal",
+                "x": 93,
+                "y": 593.96875,
+                "w": 454,
+                "h": 48,
+                "right": 547,
+                "bottom": 641.96875,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(30, 25, 48)",
+                "textFill": "rgb(30, 25, 48)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "auth-focused-short-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#main-auth-modal > .premium-card",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 28.1875,
+                "y": 24,
+                "w": 583.625,
+                "h": 312,
+                "right": 611.8125,
+                "bottom": 336,
+                "display": "block",
+                "font": "15px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "25.6px",
+                "bg": "linear-gradient(145deg, rgb(25, 17, 30), rgb(17, 11, 23) 78%)",
+                "animation": "none",
+                "pseudo": {
+                  "h": "308px",
+                  "inset": "0px",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 785,
+                  "ch": 310,
+                  "top": 332,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal .auth-close",
+            "nodes": [
+              {
+                "text": "×",
+                "x": 558.8125,
+                "y": -300.609375,
+                "w": 44,
+                "h": 44,
+                "right": 602.8125,
+                "bottom": -256.609375,
+                "display": "grid",
+                "font": "30px",
+                "color": "rgb(228, 186, 103)",
+                "textFill": "rgb(228, 186, 103)",
+                "padding": "0px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 42,
+                  "ch": 42,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal input",
+            "nodes": [
+              {
+                "text": "Email Address",
+                "x": 54.78125,
+                "y": 151.609375,
+                "w": 530.4375,
+                "h": 57.09375,
+                "right": 585.21875,
+                "bottom": 208.703125,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 55,
+                  "ch": 55,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              },
+              {
+                "text": "Password",
+                "x": 54.78125,
+                "y": 216.703125,
+                "w": 530.4375,
+                "h": 57.09375,
+                "right": 585.21875,
+                "bottom": 273.796875,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "16px 58px 16px 16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 55,
+                  "ch": 55,
+                  "top": 0,
+                  "overflowY": "clip"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "dialog-short-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/",
+      "extra": {
+        "authDismissed": true
+      },
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".ma-reference-dialog__panel",
+            "nodes": [
+              {
+                "text": "Review this action\n\nReview this local interface notice without changing account ",
+                "x": 96,
+                "y": 65.28125,
+                "w": 448,
+                "h": 229.4375,
+                "right": 544,
+                "bottom": 294.71875,
+                "display": "grid",
+                "font": "15px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "24px",
+                "bg": "linear-gradient(145deg, color(srgb 0.0980392 0.0666667 0.117647 / 0.95), rgb(17, 11, 23))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 227,
+                  "ch": 227,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__button",
+            "nodes": [
+              {
+                "text": "Keep settings",
+                "x": 121,
+                "y": 225.71875,
+                "w": 195,
+                "h": 44,
+                "right": 316,
+                "bottom": 269.71875,
+                "display": "flex",
+                "font": "16px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "10px 16px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 42,
+                  "ch": 42,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Confirm",
+                "x": 324,
+                "y": 225.71875,
+                "w": 195,
+                "h": 44,
+                "right": 519,
+                "bottom": 269.71875,
+                "display": "flex",
+                "font": "16px",
+                "color": "rgb(33, 21, 9)",
+                "textFill": "rgb(33, 21, 9)",
+                "padding": "10px 16px",
+                "bg": "linear-gradient(115deg, color(srgb 0.920588 0.797059 0.552941), rgb(228, 186, 103))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 42,
+                  "ch": 42,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "sponsor-secondary-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/sponsor/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".mp-form .mp-pill",
+            "nodes": [
+              {
+                "text": "Open email draft",
+                "x": 13,
+                "y": 493.75,
+                "w": 173.421875,
+                "h": 48,
+                "right": 186.421875,
+                "bottom": 541.75,
+                "display": "flex",
+                "font": "14px",
+                "color": "rgb(33, 21, 9)",
+                "textFill": "rgb(33, 21, 9)",
+                "padding": "11px 19px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 46,
+                  "ch": 46,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              },
+              {
+                "text": "Copy brief",
+                "x": 198.421875,
+                "y": 493.75,
+                "w": 81.75,
+                "h": 48,
+                "right": 280.171875,
+                "bottom": 541.75,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "founder-secondary-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/founder/",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": ".mf-secondary",
+            "nodes": [
+              {
+                "text": "Explore voluntary support",
+                "x": 13,
+                "y": 110.734375,
+                "w": 175.8125,
+                "h": 48,
+                "right": 188.8125,
+                "bottom": 158.734375,
+                "display": "inline-flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "32px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-640-360-en-1",
+      "config": {
+        "width": 640,
+        "height": 360,
+        "lang": "en",
+        "fontScale": 1
+      },
+      "url": "http://127.0.0.1:39399/discover.html",
+      "extra": {},
+      "values": {
+        "viewport": {
+          "w": 640,
+          "h": 360
+        },
+        "overflow": 0,
+        "rootFont": "16px",
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 389,
+                "y": 335,
+                "w": 83.640625,
+                "h": 48,
+                "right": 472.640625,
+                "bottom": 383,
+                "display": "flex",
+                "font": "12px",
+                "color": "rgb(186, 177, 189)",
+                "textFill": "rgb(186, 177, 189)",
+                "padding": "12px 10px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "30px",
+                  "inset": "8px 0px",
+                  "bg": "color(srgb 0.0980392 0.0666667 0.117647 / 0.85)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [
+                  {
+                    "text": "Donate",
+                    "color": "rgb(186, 177, 189)",
+                    "textFill": "rgb(186, 177, 189)",
+                    "display": "block"
+                  }
+                ],
+                "scroll": {
+                  "h": 48,
+                  "ch": 48,
+                  "top": 0,
+                  "overflowY": "visible"
+                }
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "New chat\nHistory\n🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deu",
+                "x": 272,
+                "y": 105,
+                "w": 360,
+                "h": 247,
+                "right": 632,
+                "bottom": 352,
+                "display": "block",
+                "font": "14px",
+                "color": "rgb(244, 240, 233)",
+                "textFill": "rgb(244, 240, 233)",
+                "padding": "12px",
+                "bg": "none",
+                "animation": "none",
+                "pseudo": {
+                  "h": "auto",
+                  "inset": "auto",
+                  "bg": "rgba(0, 0, 0, 0)",
+                  "animation": "none",
+                  "opacity": "1"
+                },
+                "children": [],
+                "scroll": {
+                  "h": 289,
+                  "ch": 245,
+                  "top": 0,
+                  "overflowY": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "finished": true
+}

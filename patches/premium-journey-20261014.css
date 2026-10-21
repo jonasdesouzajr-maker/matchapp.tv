@@ -29,7 +29,7 @@ body.page-journey{
 .journey-header-links{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
 .journey-header-links :is(a,button){display:inline-flex;align-items:center;justify-content:center;gap:7px;
  font:700 .85rem/1.15 "Space Grotesk",system-ui,sans-serif;text-decoration:none;cursor:pointer;
- border:1px solid #d9be8666;border-radius:999px;padding:11px 13px;min-height:44px;
+ border:1px solid #d9be8666;border-radius:999px;padding:11px 13px;min-height:48px;
  background:#61487930;color:#f9e9c7;transition:transform .2s,background .2s,border-color .2s}
 .journey-header-links :is(a,button):hover{background:#d8a96524;border-color:#f1d4a1;transform:translateY(-2px)}
 .journey-header-links button[aria-pressed="true"]{background:#e2ba7555}
@@ -55,13 +55,17 @@ body.page-journey{
 .journey-sidebar{position:sticky;top:16px;max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain;
  padding:19px 15px 16px;border-radius:24px;border:1px solid #e7c38b3d;background:linear-gradient(150deg,#261832ee,#160f22f4);
  box-shadow:0 19px 50px #05020c66}
+/* Keep the chapter index inside the space between the persistent app chrome. */
+@media(min-width:881px){
+ .page-journey .journey-sidebar{top:calc(var(--ma-reference-header-height,8px) + 8px);max-height:calc(100dvh - var(--ma-reference-header-height,8px) - var(--ma-reference-dock-clearance,0px) - 24px)}
+}
 .journey-nav-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:12px}
 .journey-nav-head>span{font-variant-numeric:tabular-nums;letter-spacing:0;color:#ddcced}
 .journey-progress{height:5px;overflow:hidden;border-radius:99px;background:#f1dfb224;margin-bottom:16px}
 .journey-progress>span{display:block;width:7.14%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#d49be0,#f4d18e);
  transition:width .38s cubic-bezier(.2,.85,.2,1)}
 .journey-chapter-links{display:grid;gap:3px}
-.journey-nav-item{appearance:none;display:flex;align-items:center;gap:11px;width:100%;text-align:left;min-height:37px;
+.journey-nav-item{appearance:none;display:flex;align-items:center;gap:11px;width:100%;text-align:left;min-height:48px;
  border:1px solid transparent;border-radius:12px;padding:7px 10px;background:transparent;color:#cfbfd6;
  font:650 .82rem/1.3 "Space Grotesk",system-ui,sans-serif;cursor:pointer;transition:color .18s,background .18s,border-color .18s,transform .18s}
 .journey-nav-item:hover{color:#fff0c8;background:#ffffff0b;transform:translateX(2px)}
@@ -99,7 +103,7 @@ body.page-journey{
  font-size:.9rem;line-height:1.65;border-left:2px solid #e4be8488;padding-left:14px;margin:0 0 23px}
 .journey-note span{color:#f6d29b}
 .journey-related{display:flex;flex-wrap:wrap;gap:9px;margin:2px 0 20px}
-.journey-related a{display:inline-flex;align-items:center;min-height:39px;padding:8px 13px;
+.journey-related a{display:inline-flex;align-items:center;min-height:48px;padding:8px 13px;
  border:1px solid #d7b99170;border-radius:13px;color:#fce8ba;text-decoration:none;
  background:rgba(198,138,187,.13);font:700 .78rem/1.35 "Space Grotesk",system-ui,sans-serif;
  transition:background-color .2s,border-color .2s}
@@ -111,10 +115,14 @@ body.page-journey{
  box-shadow:inset 0 1px #fff9,0 6px 19px #0005;
  transition:transform .2s,box-shadow .2s}
 .journey-visit{margin-top:auto}
+/* The document already reserves the measured header with scroll-padding-top.
+ * Applying that offset again to each chapter's id pushes its action into the dock. */
+.page-journey .journey-chapter{scroll-margin-top:0}
+.page-journey :is(.journey-chapter,.journey-visit,.journey-home,.journey-control){scroll-margin-bottom:calc(var(--ma-reference-dock-clearance,94px) + 12px)}
 .journey-visit:hover,.journey-home:hover{transform:translateY(-3px);box-shadow:0 10px 25px #d2a36945}
 .journey-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
  padding:10px 0 0}
-.journey-control{appearance:none;cursor:pointer;min-height:47px;border-radius:15px;padding:11px 16px;
+.journey-control{appearance:none;cursor:pointer;min-height:48px;border-radius:15px;padding:11px 16px;
  border:1px solid #ead19a69;background:#f4e7ce16;color:#f7e8cb;
  font:760 .87rem/1.3 "Space Grotesk",system-ui,sans-serif;transition:background .17s,transform .17s}
 .journey-control:hover:not(:disabled){background:#d9b47630;transform:translateY(-2px)}
@@ -135,6 +143,13 @@ body.page-journey{
 .journey-footer nav{display:flex;gap:15px}
 .journey-footer nav a{text-decoration:none}
 .journey-footer nav a:hover{color:#fff0b8}
+@layer ma-reference {
+ /* Localized legal labels size to their words and wrap as whole controls. */
+ html.ma-reference:not(#ma-reference-legacy) body.page-journey .journey-footer nav[data-ma-density='balanced'] > a {
+  flex:0 1 auto!important;width:auto!important;min-width:min-content!important;
+  min-height:48px!important;overflow-wrap:normal!important;word-break:normal!important;
+ }
+}
 @keyframes journeyFloat{from{transform:translateY(-13px) scale(.97)}to{transform:translateY(34px) scale(1.08)}}
 @keyframes journeyShimmer{0%,55%{background-position:220% 0}95%,100%{background-position:-170% 0}}
 @keyframes journeyEnter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
@@ -143,7 +158,7 @@ body.page-journey{
  .journey-layout{grid-template-columns:minmax(0,1fr);gap:12px}
  .journey-sidebar{position:relative;top:0;max-height:none}
  .journey-chapter-links{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px;scroll-snap-type:x proximity;padding:4px 2px 8px}
- .journey-nav-item{flex:0 0 auto;max-width:160px;min-height:44px;scroll-snap-align:start;white-space:nowrap}
+ .journey-nav-item{flex:0 0 auto;max-width:160px;min-height:48px;scroll-snap-align:start;white-space:nowrap}
  .journey-nav-item .journey-nav-text{max-width:125px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
  .journey-chapter{min-height:510px}
 }

@@ -85,6 +85,17 @@ test('shared header moves the original controls and launcher once, preserving ha
  unchangedPositions(w);assert.equal(w.localStorage.getItem('match_history'),history);
 });
 
+test('Discover history and new-chat actions release their tools panel and focus the destination',t=>{
+ const f=scene('/discover.html');t.after(f.close);const {w}=f,d=w.document;
+ const action=d.getElementById('original-control');action.className='jonas-top-history';
+ const sidebar=d.createElement('aside');sidebar.id='ai-sidebar';sidebar.innerHTML='<button class="ai-sidebar-fold">Close history</button>';d.body.appendChild(sidebar);
+ const input=d.createElement('textarea');input.id='discover-new-input';d.body.appendChild(input);
+ f.start();const tools=d.querySelector('.ma-reference-header-tools');tools.open=true;
+ action.click();assert.equal(f.calls.original,1,'the original action still runs once');assert.equal(tools.open,false);assert.equal(d.activeElement,sidebar.firstElementChild);
+ action.className='jonas-top-new';tools.open=true;action.click();assert.equal(f.calls.original,2);assert.equal(tools.open,false);assert.equal(d.activeElement,input);
+ tools.open=true;d.getElementById('original-language').click();assert.equal(tools.open,true,'choosing a setting retains its panel');
+});
+
 test('late native launcher takeover clears an obsolete dock slot and keeps one selected owner',async t=>{
  const f=scene();t.after(f.close);const {w}=f;
  f.start();const home=w.document.getElementById('ma-jonas-home');
@@ -151,6 +162,26 @@ test('header tools use the explicitly selected language in all fourteen locales'
  const labels=new Set();
  for(const lang of languages){w.localStorage.setItem('match_lang',lang);w.MATCH_LANG=lang;w.document.documentElement.lang=lang;w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang}}));const label=summary.getAttribute('aria-label');assert.ok(label?.trim(),lang);assert.equal(summary.title,label);labels.add(label);}
  assert.equal(labels.size,14);unchangedPositions(w);
+});
+
+test('the visible assistant invitation activates the same launcher and follows all fourteen selected languages',t=>{
+ const f=scene();t.after(f.close);const {w}=f;f.start();
+ const root=w.document.getElementById('ma-jonas-home'),bubble=w.document.getElementById('ma-jonas-home-bubble');let clicks=0;bubble.addEventListener('click',()=>clicks++);
+ const caption=root.querySelector(':scope > .ma-reference-jonas-caption');assert.ok(caption);assert.equal(caption.tagName,'LABEL');assert.equal(caption.htmlFor,bubble.id);
+ assert.equal(caption.querySelector('strong').textContent,'Jonas · AI assistant');assert.equal(caption.querySelector('span').textContent,'Tap to talk');
+ caption.click();assert.equal(clicks,1,'the invitation must use the original conversation action');
+ const labels=new Set();for(const lang of languages){w.localStorage.setItem('match_lang',lang);w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang}}));const text=caption.textContent;assert.ok(text.trim());labels.add(text);assert.equal(bubble.getAttribute('aria-label'),caption.querySelector('strong').textContent);assert.ok(bubble.getAttribute('aria-describedby').split(' ').includes(caption.querySelector('span').id));assert.equal(caption.dir,lang==='ar'?'rtl':'ltr');}
+ assert.equal(labels.size,14);w.localStorage.setItem('match_lang','pt-BR');w.document.dispatchEvent(new w.Event('matchapp:langchange'));assert.equal(caption.querySelector('strong').textContent,'Jonas · assistente de IA');assert.equal(caption.querySelector('span').textContent,'Toque para conversar');
+ w.MatchAppReferenceHeader.claim(root);assert.equal(root.querySelectorAll('.ma-reference-jonas-caption').length,1);assert.equal(root.querySelectorAll('.jh-bubble').length,1);unchangedPositions(w);
+});
+
+test('drag and viewport restoration clamp the complete measured launcher including its invitation',async t=>{
+ const f=scene();t.after(f.close);const {w}=f;f.start();const root=w.document.getElementById('ma-jonas-home'),bubble=w.document.getElementById('ma-jonas-home-bubble');
+ root.getBoundingClientRect=()=>{const left=parseFloat(root.style.left)||0,top=parseFloat(root.style.top)||0;return{left,top,right:left+118,bottom:top+166,width:118,height:166};};
+ pointer(w,bubble,'pointerdown',20,20);pointer(w,w,'pointermove',2000,2000);pointer(w,w,'pointerup',2000,2000);await flush(w);
+ assert.equal(parseFloat(root.style.left),260);assert.equal(parseFloat(root.style.top),672);assert.ok(root.getBoundingClientRect().right<=w.innerWidth-12);assert.ok(root.getBoundingClientRect().bottom<=w.innerHeight-12);
+ Object.defineProperty(w,'innerWidth',{configurable:true,value:320});Object.defineProperty(w,'innerHeight',{configurable:true,value:480});w.dispatchEvent(new w.Event('resize'));await flush(w);
+ assert.equal(parseFloat(root.style.left),190);assert.equal(parseFloat(root.style.top),302);assert.equal(root.querySelector('.ma-reference-jonas-caption').parentElement,root);unchangedPositions(w);
 });
 
 test('fallback branding leaves the existing matcher and filter nodes in place',t=>{

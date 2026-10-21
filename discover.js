@@ -1968,7 +1968,9 @@ window.openThread = function (id) {
     renderThreadList();
     if (window.matchMedia('(max-width: 980px)').matches) window.toggleAiSidebar(false);
     const log2 = document.getElementById('chat-log');
-    if (log2) log2.scrollTop=Math.max(0,log2.scrollHeight-log2.clientHeight);
+    // Opening a saved conversation is destination navigation. Begin with its
+    // first turn; live replies keep their separate follow-along behavior.
+    if (log2) { log2.scrollTop=0; window.MatchAppActivatedScroll?.toStart(log2,{behavior:'auto'}); }
 };
 
 window.deleteThread = function (id, ev) {

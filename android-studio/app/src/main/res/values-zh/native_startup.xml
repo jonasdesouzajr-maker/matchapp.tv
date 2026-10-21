@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">设置语音和附近影院</string>
+    <string name="permission_setup_body">麦克风可让你与AI助手Jonas交谈。大致位置信息用于查找附近的影院。只有在你选择使用相应功能时，才会开始录音或查询位置。两项权限均为可选；你仍可使用文字交流。</string>
+    <string name="permission_setup_allow">选择权限</string>
+    <string name="permission_setup_skip">暂不设置</string>
+    <string name="intro_skip">跳过</string>
+</resources>

@@ -1,0 +1,22 @@
+{
+  "gate": "npm-test",
+  "command": [
+    "npm",
+    "test"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": null,
+  "startedAt": "2026-10-21T19:20:47.913341+00:00",
+  "finishedAt": "2026-10-21T19:23:38.140865+00:00",
+  "durationSeconds": 170.228,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/pre-activity/final-npm-test-20261021.log",
+  "tests": 2653,
+  "passed": 2653,
+  "failed": 0,
+  "suites": 9,
+  "skipped": 0,
+  "cancelled": 0,
+  "scopeNote": "Full suite started from the previously frozen source. The later Guide kicker localization and duplicate-label presentation repair is verified separately by the final focused Guide regression gate and final site audit.",
+  "checkpoint": "Passing pre-Activity-localization snapshot; later Activity presentation change requires focused tests and final cache/site audit."
+}

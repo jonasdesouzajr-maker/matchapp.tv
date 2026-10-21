@@ -1,0 +1,326 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-21T19:49:28.089924+00:00",
+  "scope": "Final frozen Android/UI checkout; all final Activity, Guide, voice, activated portfolio-tab scroll, and native durable-restoration source changes are included in the full Node suite.",
+  "npmTest": {
+    "run": {
+      "gate": "npm-test",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+      "nodeOptions": null,
+      "startedAt": "2026-10-21T19:44:35.883447+00:00",
+      "finishedAt": "2026-10-21T19:47:37.780434+00:00",
+      "durationSeconds": 181.897,
+      "exitCode": 0,
+      "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-npm-test-20261021.log"
+    },
+    "result": {
+      "tests": 2670,
+      "suites": 9,
+      "pass": 2670,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "siteAudit": {
+    "run": {
+      "gate": "site-audit",
+      "command": [
+        "npm",
+        "run",
+        "audit:site"
+      ],
+      "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+      "nodeOptions": "--max-old-space-size=6144",
+      "startedAt": "2026-10-21T19:47:55.654220+00:00",
+      "finishedAt": "2026-10-21T19:48:32.239816+00:00",
+      "durationSeconds": 36.586,
+      "exitCode": 0,
+      "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-site-audit-20261021.log"
+    },
+    "results": [
+      {
+        "files": 3581,
+        "html": 1520,
+        "js": 775,
+        "externalUrls": 2154,
+        "issues": []
+      },
+      {
+        "publicUrls": 266,
+        "issues": [],
+        "warnings": [
+          {
+            "url": "https://matchapp.tv/sponsor/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/streaming/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/explore.html",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/how-it-works.html",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/music.html",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/guides/what-to-watch-october-9-12-2026/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/",
+            "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+          },
+          {
+            "url": "https://matchapp.tv/trending/this-week/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/discover.html",
+            "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+          },
+          {
+            "url": "https://matchapp.tv/jonas/",
+            "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+          },
+          {
+            "url": "https://matchapp.tv/android/",
+            "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+          },
+          {
+            "url": "https://matchapp.tv/featured/this-week/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/together.html",
+            "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+          },
+          {
+            "url": "https://matchapp.tv/about.html",
+            "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+          },
+          {
+            "url": "https://matchapp.tv/contact.html",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/br/watch/series/shogun-126308/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/pt/br/watch/series/shogun-126308/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/us/watch/series/shogun-126308/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/gb/watch/series/shogun-126308/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/pt/watch/series/shogun-126308/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/br/watch/movie/dune-part-two-693134/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/pt/br/watch/movie/dune-part-two-693134/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/us/watch/movie/dune-part-two-693134/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/gb/watch/movie/dune-part-two-693134/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/pt/watch/movie/dune-part-two-693134/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/br/watch/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/pt/br/watch/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/us/watch/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/gb/watch/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/en/pt/watch/",
+            "detail": "Existing analytics container missing"
+          },
+          {
+            "url": "https://matchapp.tv/platforms/plus-sbt/",
+            "detail": "Existing analytics container missing"
+          }
+        ]
+      },
+      {
+        "checkedUrls": 266,
+        "errors": []
+      },
+      {
+        "sitemapUrls": 266,
+        "sitemapMissing": 0,
+        "noindexInSitemap": 0,
+        "filesWithVideoMarkup": 4,
+        "errors": [],
+        "site": "https://matchapp.tv/",
+        "examplePrivateExcluded": true
+      }
+    ],
+    "warningCounts": {
+      "Existing analytics container missing": 25,
+      "Application lacks Google rich-result eligibility fields; never invent reviews": 6
+    },
+    "warningsEqualOriginalBaseline": true,
+    "warningsEqualPreActivityCheckpoint": true
+  },
+  "earlierFocusedChecks": {
+    "cache": {
+      "run": {
+        "gate": "cache",
+        "command": [
+          "node",
+          "--test",
+          "--test-isolation=none",
+          "--test-force-exit",
+          "--test-reporter=spec",
+          "tests/artwork-cache-references-20261020.test.cjs",
+          "tests/profile-runtime-cache.test.cjs",
+          "tests/reference-generator-theme.test.cjs",
+          "tests/release-audit.test.cjs",
+          "tests/critical-style-preloads-20261020.test.cjs"
+        ],
+        "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+        "nodeOptions": null,
+        "startedAt": "2026-10-21T19:29:37.969279+00:00",
+        "finishedAt": "2026-10-21T19:29:40.705365+00:00",
+        "durationSeconds": 2.736,
+        "exitCode": 0,
+        "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-cache-20261021.log"
+      },
+      "result": {
+        "tests": 15,
+        "suites": 0,
+        "pass": 15,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    "guide": {
+      "run": {
+        "gate": "guide",
+        "command": [
+          "node",
+          "--test",
+          "--test-isolation=none",
+          "--test-force-exit",
+          "--test-reporter=spec",
+          "tests/premium-guide-20261014.test.cjs",
+          "tests/premium-guide-languages-20261021.test.cjs",
+          "tests/activated-scroll-20261021.test.cjs"
+        ],
+        "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+        "nodeOptions": null,
+        "startedAt": "2026-10-21T19:29:33.578966+00:00",
+        "finishedAt": "2026-10-21T19:29:35.208900+00:00",
+        "durationSeconds": 1.63,
+        "exitCode": 0,
+        "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-guide-20261021.log"
+      },
+      "result": {
+        "tests": 22,
+        "suites": 0,
+        "pass": 22,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    "voice": {
+      "run": {
+        "gate": "voice",
+        "command": [
+          "node",
+          "--test",
+          "--test-isolation=none",
+          "--test-force-exit",
+          "--test-reporter=spec",
+          "tests/native-microphone-copy-20261021.test.cjs",
+          "tests/voice-live-dictation.test.cjs",
+          "tests/android-voice-swipe-icon.test.cjs",
+          "tests/kids-lumi-assistant.test.cjs",
+          "tests/performance-language-20261014.test.cjs",
+          "tests/android-ambient-preview-20261012.test.cjs"
+        ],
+        "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+        "nodeOptions": null,
+        "startedAt": "2026-10-21T19:28:44.830028+00:00",
+        "finishedAt": "2026-10-21T19:28:45.760557+00:00",
+        "durationSeconds": 0.931,
+        "exitCode": 0,
+        "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-voice-20261021.log"
+      },
+      "result": {
+        "tests": 26,
+        "suites": 0,
+        "pass": 26,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    }
+  },
+  "additionalFocusedEvidence": {
+    "profileTabAndRelatedSuites": {
+      "tests": 42,
+      "passed": 42,
+      "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/profile-tab-scroll-20261021.log"
+    }
+  },
+  "priorCheckpoint": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/pre-activity",
+  "initialFailuresAndRepairs": [
+    "Synced the debug Discover asset with its canonical source; kept exact-byte mirror assertion.",
+    "Added the current app.js cache suffix to the global-events generator; kept exact generated HTML comparison.",
+    "Updated two exact stale cache expectations in token and pricing language tests.",
+    "Updated two Home Ask activation implementation expectations to require the shared measured-header start helper, retaining fold, focus, keyboard, and behavioral scroll checks.",
+    "After the final native voice-copy change, synced the debug voice asset with its canonical source and re-ran the mirror/voice cases."
+  ],
+  "runnerNotices": [
+    "npm reports an unknown http-proxy environment configuration.",
+    "Node reports experimental stripTypeScriptTypes support."
+  ],
+  "generatedReport": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/generated-midnight-latest-20261021.md",
+  "verificationBoundary": "These commands validate local code, generated references and static site invariants. Android compilation/JVM/device results and live release status are recorded separately by the parent audit; they are not inferred from this Node/site pass."
+}

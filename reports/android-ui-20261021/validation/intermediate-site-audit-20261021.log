@@ -1,0 +1,155 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> audit:site
+> node tools/audit-site.js && node tools/audit-search.js && node tools/search-readiness.js && node tools/gsc-index-video-guard-20261012.cjs
+
+{
+  "files": 3532,
+  "html": 1520,
+  "js": 772,
+  "externalUrls": 2154,
+  "issues": []
+}
+{
+  "publicUrls": 266,
+  "issues": [],
+  "warnings": [
+    {
+      "url": "https://matchapp.tv/sponsor/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/streaming/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/explore.html",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/how-it-works.html",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/music.html",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/guides/what-to-watch-october-9-12-2026/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/trending/this-week/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/discover.html",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/jonas/",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/android/",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/featured/this-week/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/together.html",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/about.html",
+      "detail": "Application lacks Google rich-result eligibility fields; never invent reviews"
+    },
+    {
+      "url": "https://matchapp.tv/contact.html",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/br/watch/series/shogun-126308/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/pt/br/watch/series/shogun-126308/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/us/watch/series/shogun-126308/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/gb/watch/series/shogun-126308/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/pt/watch/series/shogun-126308/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/br/watch/movie/dune-part-two-693134/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/pt/br/watch/movie/dune-part-two-693134/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/us/watch/movie/dune-part-two-693134/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/gb/watch/movie/dune-part-two-693134/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/pt/watch/movie/dune-part-two-693134/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/br/watch/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/pt/br/watch/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/us/watch/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/gb/watch/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/en/pt/watch/",
+      "detail": "Existing analytics container missing"
+    },
+    {
+      "url": "https://matchapp.tv/platforms/plus-sbt/",
+      "detail": "Existing analytics container missing"
+    }
+  ]
+}
+{
+  "checkedUrls": 266,
+  "errors": []
+}
+{
+  "sitemapUrls": 266,
+  "sitemapMissing": 0,
+  "noindexInSitemap": 0,
+  "filesWithVideoMarkup": 4,
+  "errors": [],
+  "site": "https://matchapp.tv/",
+  "examplePrivateExcluded": true
+}

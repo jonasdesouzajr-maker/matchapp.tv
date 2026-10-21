@@ -15,7 +15,7 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   const freshEntryPages=['index.html','discover.html'];
   const preservedPages=['profile/profile.html','pricing/pricing.html','purchase.html','friends.html','callback.html','oauth/consent.html','events-archive.html'];
   const original='20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1';
-  const presentation='&amp;art=20261020-source1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;polish=20261020-ui1';
+  const presentation='&amp;art=20261020-source1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;polish=20261020-ui1&amp;androidqa=20261021-1';
   // Preserve every existing pin and append the current matching reliability revision.
   const entryRuntime=original+'&amp;mobilefresh=20260927-1&amp;providerfix=20260927-1&amp;poster=20260927-mobile1&amp;matching=20260928-session1&amp;topic=20260928-1&amp;formatfix=20260929-1&amp;fallbackfix=20260929-1&amp;recovery=20260929-2&amp;desktop=20260929-details1&amp;series=20260929-horrortv2&amp;language=20260930-fix2&amp;coverreuse=20261001-1&amp;sound=20261001-modern1&amp;spotlightfix=20261002-1&amp;sbt=20261004-1&amp;androidauth=20261010-v49&amp;audio=20261014-1';
   for(const page of freshEntryPages)assert.equal(version(page,'app.js'),entryRuntime+(page==='index.html'?'&amp;experience=20261017-1&amp;resultlabels=20261018-1':'')+'&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1'+presentation);
@@ -28,9 +28,9 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   for(const page of policyPages)assert.equal(version(page,'matching-policy.js'),'20260926-conflicts2&amp;reliability=20261019-2&amp;lifetime=20261019-1'+(page==='index.html'?'&amp;carousel=20261020-right2':''),page+' preserves policy pins and the Home carousel cache suffix');
   assert.equal(version('kids/index.html','matching-policy.js'),'20260924-runtime1');
   const buildPages=['index.html','together.html','pricing/pricing.html','friends.html','events-archive.html'];
-  assert.equal(version('index.html','build-meta.js'),'20261002-weekly-cover1&amp;seo=20260928-2&amp;release=20260929-5&amp;intent=20260930-1&amp;installfix=20260930-1&amp;icon=20261003-premiumicon1&amp;fastlang=20261014-2&amp;polish=20261020-ui1');
+  assert.equal(version('index.html','build-meta.js'),'20261002-weekly-cover1&amp;seo=20260928-2&amp;release=20260929-5&amp;intent=20260930-1&amp;installfix=20260930-1&amp;icon=20261003-premiumicon1&amp;fastlang=20261014-2&amp;polish=20261020-ui1&amp;androidqa=20261021-1');
   for(const page of buildPages.filter(p=>p!=='index.html')){
-    assert.equal(version(page,'build-meta.js'),'20260926-publicproof1'+(page==='events-archive.html'?'':'&amp;installfix=20260930-1&amp;icon=20261001-circle-launch1')+'&amp;fastlang=20261014-2'+(page==='pricing/pricing.html'?'&amp;pricing=20261017-2':'')+'&amp;polish=20261020-ui1');
+    assert.equal(version(page,'build-meta.js'),'20260926-publicproof1'+(page==='events-archive.html'?'':'&amp;installfix=20260930-1&amp;icon=20261001-circle-launch1')+'&amp;fastlang=20261014-2'+(page==='pricing/pricing.html'?'&amp;pricing=20261017-2':'')+'&amp;polish=20261020-ui1&amp;androidqa=20261021-1');
   }
   assert.match(read('pricing/pricing.html'),/\/pricing\.js\?v=\d{8}-[\w-]+/);
   assert.match(read('purchase.html'),/\/purchase\.js\?v=\d{8}-[\w-]+/);

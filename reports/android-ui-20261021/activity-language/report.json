@@ -1,0 +1,166 @@
+{
+  "cases": [
+    {
+      "scope": "Focused local Portuguese Activity rendering check; external requests blocked, populated rows are isolated local fixtures.",
+      "viewport": {
+        "width": 800,
+        "height": 1180
+      },
+      "rootFont": "16px",
+      "locale": "pt-BR",
+      "empty": "Nada por aqui ainda. Recomendações, perguntas à IA e itens salvos ficam aqui até você removê-los.",
+      "count": "Registros: 2 · Mantidos até você removê-los.",
+      "filterAria": "Filtrar atividade",
+      "overflow": 0,
+      "rows": [
+        {
+          "type": "Pergunta à IA",
+          "detail": "Café <Title> — local QA question",
+          "time": "há 2 min.",
+          "deleteAria": "Excluir este registro",
+          "deleteBox": {
+            "x": 726,
+            "y": 118.453125,
+            "width": 48,
+            "height": 48,
+            "top": 118.453125,
+            "right": 774,
+            "bottom": 166.453125,
+            "left": 726
+          },
+          "markInset": "12px",
+          "outerShadow": "none",
+          "textOverflow": []
+        },
+        {
+          "type": "Salvo",
+          "detail": "Local QA saved title",
+          "time": "ontem",
+          "deleteAria": "Excluir este registro",
+          "deleteBox": {
+            "x": 726,
+            "y": 198.953125,
+            "width": 48,
+            "height": 48,
+            "top": 198.953125,
+            "right": 774,
+            "bottom": 246.953125,
+            "left": 726
+          },
+          "markInset": "12px",
+          "outerShadow": "none",
+          "textOverflow": []
+        }
+      ],
+      "storedUnchanged": true
+    },
+    {
+      "scope": "Focused local Portuguese Activity rendering check; external requests blocked, populated rows are isolated local fixtures.",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "rootFont": "16px",
+      "locale": "pt-BR",
+      "empty": "Nada por aqui ainda. Recomendações, perguntas à IA e itens salvos ficam aqui até você removê-los.",
+      "count": "Registros: 2 · Mantidos até você removê-los.",
+      "filterAria": "Filtrar atividade",
+      "overflow": 0,
+      "rows": [
+        {
+          "type": "Pergunta à IA",
+          "detail": "Café <Title> — local QA question",
+          "time": "há 2 min.",
+          "deleteAria": "Excluir este registro",
+          "deleteBox": {
+            "x": 246,
+            "y": 212.453125,
+            "width": 48,
+            "height": 48,
+            "top": 212.453125,
+            "right": 294,
+            "bottom": 260.453125,
+            "left": 246
+          },
+          "markInset": "12px",
+          "outerShadow": "none",
+          "textOverflow": []
+        },
+        {
+          "type": "Salvo",
+          "detail": "Local QA saved title",
+          "time": "ontem",
+          "deleteAria": "Excluir este registro",
+          "deleteBox": {
+            "x": 246,
+            "y": 334.703125,
+            "width": 48,
+            "height": 48,
+            "top": 334.703125,
+            "right": 294,
+            "bottom": 382.703125,
+            "left": 246
+          },
+          "markInset": "12px",
+          "outerShadow": "none",
+          "textOverflow": []
+        }
+      ],
+      "storedUnchanged": true
+    },
+    {
+      "scope": "Focused local Portuguese Activity rendering check; external requests blocked, populated rows are isolated local fixtures.",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "rootFont": "22.4px",
+      "locale": "pt-BR",
+      "empty": "Nada por aqui ainda. Recomendações, perguntas à IA e itens salvos ficam aqui até você removê-los.",
+      "count": "Registros: 2 · Mantidos até você removê-los.",
+      "filterAria": "Filtrar atividade",
+      "overflow": 0,
+      "rows": [
+        {
+          "type": "Pergunta à IA",
+          "detail": "Café <Title> — local QA question",
+          "time": "há 2 min.",
+          "deleteAria": "Excluir este registro",
+          "deleteBox": {
+            "x": 246,
+            "y": 274.453125,
+            "width": 48,
+            "height": 48,
+            "top": 274.453125,
+            "right": 294,
+            "bottom": 322.453125,
+            "left": 246
+          },
+          "markInset": "12px",
+          "outerShadow": "none",
+          "textOverflow": []
+        },
+        {
+          "type": "Salvo",
+          "detail": "Local QA saved title",
+          "time": "ontem",
+          "deleteAria": "Excluir este registro",
+          "deleteBox": {
+            "x": 246,
+            "y": 436.421875,
+            "width": 48,
+            "height": 48,
+            "top": 436.421875,
+            "right": 294,
+            "bottom": 484.421875,
+            "left": 246
+          },
+          "markInset": "12px",
+          "outerShadow": "none",
+          "textOverflow": []
+        }
+      ],
+      "storedUnchanged": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">Configure a voz e os cinemas próximos</string>
+    <string name="permission_setup_body">O microfone permite conversar com Jonas, seu assistente de IA. A localização aproximada ajuda a encontrar cinemas próximos. A gravação ou a busca de localização só começa quando você escolhe usar o recurso. As duas permissões são opcionais; você pode continuar usando texto.</string>
+    <string name="permission_setup_allow">Escolher permissões</string>
+    <string name="permission_setup_skip">Agora não</string>
+    <string name="intro_skip">Pular</string>
+</resources>

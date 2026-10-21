@@ -256,7 +256,7 @@ test('HTML includes use early private-return capture, before-app token hooks and
     const scripts=[...d.querySelectorAll('script')],pro=scripts.find(s=>s.src.includes('/pro-plan.js?')),tokens=scripts.find(s=>s.src.includes('/match-tokens.js?')),legacy=scripts.find(s=>s.src.includes('/app.js?'));
     assert.ok(pro&&tokens&&legacy,file);assert.equal(pro.hasAttribute('defer'),false);assert.equal(pro.hasAttribute('async'),false);
     assert.ok(scripts.indexOf(pro)<scripts.findIndex(s=>s.textContent.includes('gtm.start')),file+' captures private receipt before analytics');
-    assert.ok(scripts.indexOf(tokens)<scripts.indexOf(legacy));assert.ok(legacy.src.endsWith('&regional=20261016-1&reliability=20261018-1&lifetime=20261019-1&art=20261020-source1&dialogs=20261020-1&accountphoto=20261020-1&polish=20261020-ui1'));
+    assert.ok(scripts.indexOf(tokens)<scripts.indexOf(legacy));assert.ok(legacy.src.endsWith('&regional=20261016-1&reliability=20261018-1&lifetime=20261019-1&art=20261020-source1&dialogs=20261020-1&accountphoto=20261020-1&polish=20261020-ui1&androidqa=20261021-1'));
     assert.ok(d.querySelector('link[href^="/match-tokens.css?"]'));assert.ok(d.querySelector('link[href^="/pro-plan.css?"]'));
     d.defaultView.close();
   }

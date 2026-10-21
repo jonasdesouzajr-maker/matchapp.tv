@@ -1,0 +1,5265 @@
+{
+  "scope": "Rendered browser viewports; not Android emulator or native permission/audio verification.",
+  "base": "local candidate",
+  "lang": "en",
+  "cases": [
+    {
+      "route": "/",
+      "width": 320,
+      "name": "home-320-en",
+      "errors": [],
+      "screens": [
+        "home-320-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/",
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 149.78125,
+          "top": 0,
+          "right": 320,
+          "bottom": 149.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 150,
+          "top": 0,
+          "right": 320,
+          "bottom": 150,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 817.953125,
+          "width": 308,
+          "height": 76.046875,
+          "top": 817.953125,
+          "right": 314,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "ASIDE",
+            "id": "ma-jonas-home",
+            "classes": "is-floating",
+            "label": "Jonas floating companion",
+            "box": {
+              "x": 176,
+              "y": 6,
+              "width": 136,
+              "height": 136.78125,
+              "top": 6,
+              "right": 312,
+              "bottom": 142.78125,
+              "left": 176
+            }
+          }
+        ],
+        "controlCount": 64,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "",
+            "label": "+ More Filters",
+            "box": {
+              "x": 13,
+              "y": 774.453125,
+              "width": 294,
+              "height": 36,
+              "top": 774.453125,
+              "right": 307,
+              "bottom": 810.453125,
+              "left": 13
+            }
+          }
+        ],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 826.453125,
+                "width": 294,
+                "height": 48,
+                "top": 826.453125,
+                "right": 307,
+                "bottom": 874.453125,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "is-active",
+              "label": "Home",
+              "box": {
+                "x": 12,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 69.59375,
+                "bottom": 887,
+                "left": 12
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 826.453125,
+                "width": 294,
+                "height": 48,
+                "top": 826.453125,
+                "right": 307,
+                "bottom": 874.453125,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Explore",
+              "box": {
+                "x": 71.59375,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 129.1875,
+                "bottom": 887,
+                "left": 71.59375
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 826.453125,
+                "width": 294,
+                "height": 48,
+                "top": 826.453125,
+                "right": 307,
+                "bottom": 874.453125,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Matches",
+              "box": {
+                "x": 131.1875,
+                "y": 826.953125,
+                "width": 57.609375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 188.796875,
+                "bottom": 887,
+                "left": 131.1875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 826.453125,
+                "width": 294,
+                "height": 48,
+                "top": 826.453125,
+                "right": 307,
+                "bottom": 874.453125,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "My List",
+              "box": {
+                "x": 190.796875,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 248.390625,
+                "bottom": 887,
+                "left": 190.796875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 826.453125,
+                "width": 294,
+                "height": 48,
+                "top": 826.453125,
+                "right": 307,
+                "bottom": 874.453125,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Profile",
+              "box": {
+                "x": 250.390625,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 307.984375,
+                "bottom": 887,
+                "left": 250.390625
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "gold-btn ma-primary",
+            "label": "Find something to watch",
+            "box": {
+              "x": 13,
+              "y": 826.453125,
+              "width": 294,
+              "height": 48,
+              "top": 826.453125,
+              "right": 307,
+              "bottom": 874.453125,
+              "left": 13
+            }
+          }
+        ],
+        "outside": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Quem É Você?",
+            "box": {
+              "x": -3538,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -3450,
+              "bottom": 538.265625,
+              "left": -3538
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Bruno Mars — Dance With Me. Released on YouTube: Oct 1, 2026. 12.1M views. htt",
+            "box": {
+              "x": -3442,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -3354,
+              "bottom": 538.265625,
+              "left": -3442
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Absolutely Fabulous",
+            "box": {
+              "x": -3346,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -3258,
+              "bottom": 538.265625,
+              "left": -3346
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Heartbreak High",
+            "box": {
+              "x": -3250,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -3162,
+              "bottom": 538.265625,
+              "left": -3250
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Taylor Swift — Patient Zero. Released on YouTube: Sep 29, 2026. 18.6M views. h",
+            "box": {
+              "x": -3154,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -3066,
+              "bottom": 538.265625,
+              "left": -3154
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Schitt's Creek",
+            "box": {
+              "x": -3058,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2970,
+              "bottom": 538.265625,
+              "left": -3058
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Alice in Borderland",
+            "box": {
+              "x": -2962,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2874,
+              "bottom": 538.265625,
+              "left": -2962
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: BTS — Merry Go Round. Released on YouTube: Sep 25, 2026. 10.4M views. https://",
+            "box": {
+              "x": -2866,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2778,
+              "bottom": 538.265625,
+              "left": -2866
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Wicked",
+            "box": {
+              "x": -2770,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2682,
+              "bottom": 538.265625,
+              "left": -2770
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Vermelho Sangue",
+            "box": {
+              "x": -2674,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2586,
+              "bottom": 538.265625,
+              "left": -2674
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Slow Horses",
+            "box": {
+              "x": -2578,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2490,
+              "bottom": 538.265625,
+              "left": -2578
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: ROSÉ — new trick. Released on YouTube: Sep 17, 2026. 50.1M views. https://www.",
+            "box": {
+              "x": -2482,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2394,
+              "bottom": 538.265625,
+              "left": -2482
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Survivors",
+            "box": {
+              "x": -2386,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2298,
+              "bottom": 538.265625,
+              "left": -2386
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "North of North",
+            "box": {
+              "x": -2290,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2202,
+              "bottom": 538.265625,
+              "left": -2290
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Ariana Grande — petal. Released on YouTube: Jul 31, 2026. 34.5M views. https:/",
+            "box": {
+              "x": -2194,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2106,
+              "bottom": 538.265625,
+              "left": -2194
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Golden Kamuy -The Abashiri Prison Raid-",
+            "box": {
+              "x": -2098,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -2010,
+              "bottom": 538.265625,
+              "left": -2098
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Line of Fire",
+            "box": {
+              "x": -2002,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1914,
+              "bottom": 538.265625,
+              "left": -2002
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Olivia Rodrigo — stupid song. Released on YouTube: Jun 12, 2026. 38.8M views. ",
+            "box": {
+              "x": -1906,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1818,
+              "bottom": 538.265625,
+              "left": -1906
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Habeas Corpus",
+            "box": {
+              "x": -1810,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1722,
+              "bottom": 538.265625,
+              "left": -1810
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Black Mirror",
+            "box": {
+              "x": -1714,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1626,
+              "bottom": 538.265625,
+              "left": -1714
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Narrow Road to the Deep North",
+            "box": {
+              "x": -1618,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1530,
+              "bottom": 538.265625,
+              "left": -1618
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Shakira & Burna Boy — Dai Dai. Released on YouTube: May 23, 2026. 1.2B views. ",
+            "box": {
+              "x": -1522,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1434,
+              "bottom": 538.265625,
+              "left": -1522
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Shoresy",
+            "box": {
+              "x": -1426,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1338,
+              "bottom": 538.265625,
+              "left": -1426
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Last Samurai Standing",
+            "box": {
+              "x": -1330,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1242,
+              "bottom": 538.265625,
+              "left": -1330
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Lady Gaga & Doechii — RUNWAY. Released on YouTube: Apr 27, 2026. 29.6M views. ",
+            "box": {
+              "x": -1234,
+              "y": 420.9375,
+              "width": 88,
+              "height": 117.328125,
+              "top": 420.9375,
+              "right": -1146,
+              "bottom": 538.265625,
+              "left": -1234
+            }
+          }
+        ],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-jonas-home-bubble",
+            "classes": "jh-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 206,
+              "y": 6,
+              "width": 76,
+              "height": 76,
+              "top": 6,
+              "right": 282,
+              "bottom": 82,
+              "left": 206
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Find what to watch | MatchApp Ai"
+      }
+    },
+    {
+      "route": "/how-it-works.html",
+      "width": 320,
+      "name": "how-it-works-html-320-en",
+      "errors": [],
+      "screens": [
+        "how-it-works-html-320-en.png",
+        "how-it-works-html-320-en-controls.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/how-it-works.html",
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 149.78125,
+          "top": 0,
+          "right": 320,
+          "bottom": 149.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 150,
+          "top": 0,
+          "right": 320,
+          "bottom": 150,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 817.953125,
+          "width": 308,
+          "height": 76.046875,
+          "top": 817.953125,
+          "right": 314,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 176,
+              "y": 6,
+              "width": 136,
+              "height": 136.78125,
+              "top": 6,
+              "right": 312,
+              "bottom": 142.78125,
+              "left": 176
+            }
+          }
+        ],
+        "controlCount": 23,
+        "smallTargets": [],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "05\nPremieres and this week's pick",
+              "box": {
+                "x": 13,
+                "y": 805.859375,
+                "width": 143.5,
+                "height": 58,
+                "top": 805.859375,
+                "right": 156.5,
+                "bottom": 863.859375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Home",
+              "box": {
+                "x": 12,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 69.59375,
+                "bottom": 887,
+                "left": 12
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "05\nPremieres and this week's pick",
+              "box": {
+                "x": 13,
+                "y": 805.859375,
+                "width": 143.5,
+                "height": 58,
+                "top": 805.859375,
+                "right": 156.5,
+                "bottom": 863.859375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "is-active",
+              "label": "Explore",
+              "box": {
+                "x": 71.59375,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 129.1875,
+                "bottom": 887,
+                "left": 71.59375
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "05\nPremieres and this week's pick",
+              "box": {
+                "x": 13,
+                "y": 805.859375,
+                "width": 143.5,
+                "height": 58,
+                "top": 805.859375,
+                "right": 156.5,
+                "bottom": 863.859375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Matches",
+              "box": {
+                "x": 131.1875,
+                "y": 826.953125,
+                "width": 57.609375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 188.796875,
+                "bottom": 887,
+                "left": 131.1875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "06\nDiscover with Jonas",
+              "box": {
+                "x": 163.5,
+                "y": 805.859375,
+                "width": 143.5,
+                "height": 58,
+                "top": 805.859375,
+                "right": 307,
+                "bottom": 863.859375,
+                "left": 163.5
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Matches",
+              "box": {
+                "x": 131.1875,
+                "y": 826.953125,
+                "width": 57.609375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 188.796875,
+                "bottom": 887,
+                "left": 131.1875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "06\nDiscover with Jonas",
+              "box": {
+                "x": 163.5,
+                "y": 805.859375,
+                "width": 143.5,
+                "height": 58,
+                "top": 805.859375,
+                "right": 307,
+                "bottom": 863.859375,
+                "left": 163.5
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "My List",
+              "box": {
+                "x": 190.796875,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 248.390625,
+                "bottom": 887,
+                "left": 190.796875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "06\nDiscover with Jonas",
+              "box": {
+                "x": 163.5,
+                "y": 805.859375,
+                "width": 143.5,
+                "height": 58,
+                "top": 805.859375,
+                "right": 307,
+                "bottom": 863.859375,
+                "left": 163.5
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Profile",
+              "box": {
+                "x": 250.390625,
+                "y": 826.953125,
+                "width": 57.59375,
+                "height": 60.046875,
+                "top": 826.953125,
+                "right": 307.984375,
+                "bottom": 887,
+                "left": 250.390625
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "05\nPremieres and this week's pick",
+            "box": {
+              "x": 13,
+              "y": 805.859375,
+              "width": 143.5,
+              "height": 58,
+              "top": 805.859375,
+              "right": 156.5,
+              "bottom": 863.859375,
+              "left": 13
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "06\nDiscover with Jonas",
+            "box": {
+              "x": 163.5,
+              "y": 805.859375,
+              "width": 143.5,
+              "height": 58,
+              "top": 805.859375,
+              "right": 307,
+              "bottom": 863.859375,
+              "left": 163.5
+            }
+          }
+        ],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 206,
+              "y": 6,
+              "width": 76,
+              "height": 76,
+              "top": 6,
+              "right": 282,
+              "bottom": 82,
+              "left": 206
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      },
+      "lastChapter": "13",
+      "guideControls": {
+        "url": "http://127.0.0.1:44503/how-it-works.html#chapter-14",
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 149.78125,
+          "top": 0,
+          "right": 320,
+          "bottom": 149.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": -1004,
+          "width": 320,
+          "height": 150,
+          "top": -1004,
+          "right": 320,
+          "bottom": -854,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 817.953125,
+          "width": 308,
+          "height": 76.046875,
+          "top": 817.953125,
+          "right": 314,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 176,
+              "y": 6,
+              "width": 136,
+              "height": 136.78125,
+              "top": 6,
+              "right": 312,
+              "bottom": 142.78125,
+              "left": 176
+            }
+          }
+        ],
+        "controlCount": 22,
+        "smallTargets": [],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "SUMMARY",
+              "id": "",
+              "classes": "",
+              "label": "App controls",
+              "box": {
+                "x": 124,
+                "y": 76.390625,
+                "width": 44,
+                "height": 44,
+                "top": 76.390625,
+                "right": 168,
+                "bottom": 120.390625,
+                "left": 124
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "13\nProfile, saved picks and plans",
+              "box": {
+                "x": 13,
+                "y": 68.390625,
+                "width": 143.5,
+                "height": 64.53125,
+                "top": 68.390625,
+                "right": 156.5,
+                "bottom": 132.921875,
+                "left": 13
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "SUMMARY",
+              "id": "",
+              "classes": "",
+              "label": "App controls",
+              "box": {
+                "x": 124,
+                "y": 76.390625,
+                "width": 44,
+                "height": 44,
+                "top": 76.390625,
+                "right": 168,
+                "bottom": 120.390625,
+                "left": 124
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "14\nYour next experience awaits",
+              "box": {
+                "x": 163.5,
+                "y": 68.390625,
+                "width": 143.5,
+                "height": 64.53125,
+                "top": 68.390625,
+                "right": 307,
+                "bottom": 132.921875,
+                "left": 163.5
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "ma-ambient-jonas-launcher",
+              "classes": "ja-bubble ma-jonas-stellar",
+              "label": "Jonas · AI assistant. Tap to talk",
+              "box": {
+                "x": 206,
+                "y": 6,
+                "width": 76,
+                "height": 76,
+                "top": 6,
+                "right": 282,
+                "bottom": 82,
+                "left": 206
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "12\nMatch Together and Friends",
+              "box": {
+                "x": 163.5,
+                "y": 3.390625,
+                "width": 143.5,
+                "height": 58,
+                "top": 3.390625,
+                "right": 307,
+                "bottom": 61.390625,
+                "left": 163.5
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "ma-ambient-jonas-launcher",
+              "classes": "ja-bubble ma-jonas-stellar",
+              "label": "Jonas · AI assistant. Tap to talk",
+              "box": {
+                "x": 206,
+                "y": 6,
+                "width": 76,
+                "height": 76,
+                "top": 6,
+                "right": 282,
+                "bottom": 82,
+                "left": 206
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "14\nYour next experience awaits",
+              "box": {
+                "x": 163.5,
+                "y": 68.390625,
+                "width": 143.5,
+                "height": 64.53125,
+                "top": 68.390625,
+                "right": 307,
+                "bottom": 132.921875,
+                "left": 163.5
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "11\nNews, events and awareness",
+            "box": {
+              "x": 13,
+              "y": 3.390625,
+              "width": 143.5,
+              "height": 58,
+              "top": 3.390625,
+              "right": 156.5,
+              "bottom": 61.390625,
+              "left": 13
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "12\nMatch Together and Friends",
+            "box": {
+              "x": 163.5,
+              "y": 3.390625,
+              "width": 143.5,
+              "height": 58,
+              "top": 3.390625,
+              "right": 307,
+              "bottom": 61.390625,
+              "left": 163.5
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "13\nProfile, saved picks and plans",
+            "box": {
+              "x": 13,
+              "y": 68.390625,
+              "width": 143.5,
+              "height": 64.53125,
+              "top": 68.390625,
+              "right": 156.5,
+              "bottom": 132.921875,
+              "left": 13
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "14\nYour next experience awaits",
+            "box": {
+              "x": 163.5,
+              "y": 68.390625,
+              "width": 143.5,
+              "height": 64.53125,
+              "top": 68.390625,
+              "right": 307,
+              "bottom": 132.921875,
+              "left": 163.5
+            }
+          }
+        ],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 206,
+              "y": 6,
+              "width": 76,
+              "height": 76,
+              "top": 6,
+              "right": 282,
+              "bottom": 82,
+              "left": 206
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      }
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 320,
+      "name": "profile-profile-html-320-en",
+      "errors": [],
+      "screens": [
+        "profile-profile-html-320-en.png",
+        "profile-profile-html-320-en-history.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/profile/profile.html",
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 149.78125,
+          "top": 0,
+          "right": 320,
+          "bottom": 149.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 150,
+          "top": 0,
+          "right": 320,
+          "bottom": 150,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 817.953125,
+          "width": 308,
+          "height": 76.046875,
+          "top": 817.953125,
+          "right": 314,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 176,
+              "y": 6,
+              "width": 136,
+              "height": 136.78125,
+              "top": 6,
+              "right": 312,
+              "bottom": 142.78125,
+              "left": 176
+            }
+          }
+        ],
+        "controlCount": 16,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "settings-summary",
+            "label": "🕘 Your Activity\n⌄",
+            "box": {
+              "x": 13,
+              "y": 1042.890625,
+              "width": 294,
+              "height": 37.125,
+              "top": 1042.890625,
+              "right": 307,
+              "bottom": 1080.015625,
+              "left": 13
+            }
+          }
+        ],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 206,
+              "y": 6,
+              "width": 76,
+              "height": 76,
+              "top": 6,
+              "right": 282,
+              "bottom": 82,
+              "left": 206
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "MatchApp Ai | My Profile"
+      },
+      "history": {
+        "selected": null,
+        "visible": true
+      }
+    },
+    {
+      "route": "/explore.html",
+      "width": 320,
+      "name": "explore-html-320-en",
+      "errors": [],
+      "screens": [
+        "explore-html-320-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/explore.html",
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 149.78125,
+          "top": 0,
+          "right": 320,
+          "bottom": 149.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 150,
+          "top": 0,
+          "right": 320,
+          "bottom": 150,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 815,
+          "width": 308,
+          "height": 79,
+          "top": 815,
+          "right": 314,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 176,
+              "y": 6,
+              "width": 136,
+              "height": 136.78125,
+              "top": 6,
+              "right": 312,
+              "bottom": 142.78125,
+              "left": 176
+            }
+          }
+        ],
+        "controlCount": 7,
+        "smallTargets": [],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 206,
+              "y": 6,
+              "width": 76,
+              "height": 76,
+              "top": 6,
+              "right": 282,
+              "bottom": 82,
+              "left": 206
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Explore more | MatchApp Ai"
+      }
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "name": "home-390-en",
+      "errors": [],
+      "screens": [
+        "home-390-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 157.78125,
+          "top": 0,
+          "right": 390,
+          "bottom": 157.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 158,
+          "top": 0,
+          "right": 390,
+          "bottom": 158,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 816.984375,
+          "width": 378,
+          "height": 77.015625,
+          "top": 816.984375,
+          "right": 384,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "ASIDE",
+            "id": "ma-jonas-home",
+            "classes": "is-floating",
+            "label": "Jonas floating companion",
+            "box": {
+              "x": 238,
+              "y": 6,
+              "width": 144,
+              "height": 144.78125,
+              "top": 6,
+              "right": 382,
+              "bottom": 150.78125,
+              "left": 238
+            }
+          }
+        ],
+        "controlCount": 64,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "",
+            "label": "+ More Filters",
+            "box": {
+              "x": 13,
+              "y": 740.59375,
+              "width": 364,
+              "height": 36,
+              "top": 740.59375,
+              "right": 377,
+              "bottom": 776.59375,
+              "left": 13
+            }
+          }
+        ],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 792.59375,
+                "width": 364,
+                "height": 48,
+                "top": 792.59375,
+                "right": 377,
+                "bottom": 840.59375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "is-active",
+              "label": "Home",
+              "box": {
+                "x": 12,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 83.59375,
+                "bottom": 887,
+                "left": 12
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 792.59375,
+                "width": 364,
+                "height": 48,
+                "top": 792.59375,
+                "right": 377,
+                "bottom": 840.59375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Explore",
+              "box": {
+                "x": 85.59375,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 157.1875,
+                "bottom": 887,
+                "left": 85.59375
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 792.59375,
+                "width": 364,
+                "height": 48,
+                "top": 792.59375,
+                "right": 377,
+                "bottom": 840.59375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Matches",
+              "box": {
+                "x": 159.1875,
+                "y": 825.984375,
+                "width": 71.609375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 230.796875,
+                "bottom": 887,
+                "left": 159.1875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 792.59375,
+                "width": 364,
+                "height": 48,
+                "top": 792.59375,
+                "right": 377,
+                "bottom": 840.59375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "My List",
+              "box": {
+                "x": 232.796875,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 304.390625,
+                "bottom": 887,
+                "left": 232.796875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "gold-btn ma-primary",
+              "label": "Find something to watch",
+              "box": {
+                "x": 13,
+                "y": 792.59375,
+                "width": 364,
+                "height": 48,
+                "top": 792.59375,
+                "right": 377,
+                "bottom": 840.59375,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Profile",
+              "box": {
+                "x": 306.390625,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 377.984375,
+                "bottom": 887,
+                "left": 306.390625
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "gold-btn ma-primary",
+            "label": "Find something to watch",
+            "box": {
+              "x": 13,
+              "y": 792.59375,
+              "width": 364,
+              "height": 48,
+              "top": 792.59375,
+              "right": 377,
+              "bottom": 840.59375,
+              "left": 13
+            }
+          }
+        ],
+        "outside": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Quem É Você?",
+            "box": {
+              "x": -3594,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -3504.5,
+              "bottom": 504.40625,
+              "left": -3594
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Bruno Mars — Dance With Me. Released on YouTube: Oct 1, 2026. 12.1M views. htt",
+            "box": {
+              "x": -3496.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -3407,
+              "bottom": 504.40625,
+              "left": -3496.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Absolutely Fabulous",
+            "box": {
+              "x": -3399,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -3309.5,
+              "bottom": 504.40625,
+              "left": -3399
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Heartbreak High",
+            "box": {
+              "x": -3301.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -3212,
+              "bottom": 504.40625,
+              "left": -3301.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Taylor Swift — Patient Zero. Released on YouTube: Sep 29, 2026. 18.6M views. h",
+            "box": {
+              "x": -3204,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -3114.5,
+              "bottom": 504.40625,
+              "left": -3204
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Schitt's Creek",
+            "box": {
+              "x": -3106.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -3017,
+              "bottom": 504.40625,
+              "left": -3106.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Alice in Borderland",
+            "box": {
+              "x": -3009,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2919.5,
+              "bottom": 504.40625,
+              "left": -3009
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: BTS — Merry Go Round. Released on YouTube: Sep 25, 2026. 10.4M views. https://",
+            "box": {
+              "x": -2911.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2822,
+              "bottom": 504.40625,
+              "left": -2911.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Wicked",
+            "box": {
+              "x": -2814,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2724.5,
+              "bottom": 504.40625,
+              "left": -2814
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Vermelho Sangue",
+            "box": {
+              "x": -2716.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2627,
+              "bottom": 504.40625,
+              "left": -2716.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Slow Horses",
+            "box": {
+              "x": -2619,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2529.5,
+              "bottom": 504.40625,
+              "left": -2619
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: ROSÉ — new trick. Released on YouTube: Sep 17, 2026. 50.1M views. https://www.",
+            "box": {
+              "x": -2521.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2432,
+              "bottom": 504.40625,
+              "left": -2521.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Survivors",
+            "box": {
+              "x": -2424,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2334.5,
+              "bottom": 504.40625,
+              "left": -2424
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "North of North",
+            "box": {
+              "x": -2326.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2237,
+              "bottom": 504.40625,
+              "left": -2326.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Ariana Grande — petal. Released on YouTube: Jul 31, 2026. 34.5M views. https:/",
+            "box": {
+              "x": -2229,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2139.5,
+              "bottom": 504.40625,
+              "left": -2229
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Golden Kamuy -The Abashiri Prison Raid-",
+            "box": {
+              "x": -2131.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -2042,
+              "bottom": 504.40625,
+              "left": -2131.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Line of Fire",
+            "box": {
+              "x": -2034,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1944.5,
+              "bottom": 504.40625,
+              "left": -2034
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Olivia Rodrigo — stupid song. Released on YouTube: Jun 12, 2026. 38.8M views. ",
+            "box": {
+              "x": -1936.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1847,
+              "bottom": 504.40625,
+              "left": -1936.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Habeas Corpus",
+            "box": {
+              "x": -1839,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1749.5,
+              "bottom": 504.40625,
+              "left": -1839
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Black Mirror",
+            "box": {
+              "x": -1741.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1652,
+              "bottom": 504.40625,
+              "left": -1741.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Narrow Road to the Deep North",
+            "box": {
+              "x": -1644,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1554.5,
+              "bottom": 504.40625,
+              "left": -1644
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Shakira & Burna Boy — Dai Dai. Released on YouTube: May 23, 2026. 1.2B views. ",
+            "box": {
+              "x": -1546.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1457,
+              "bottom": 504.40625,
+              "left": -1546.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Shoresy",
+            "box": {
+              "x": -1449,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1359.5,
+              "bottom": 504.40625,
+              "left": -1449
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Last Samurai Standing",
+            "box": {
+              "x": -1351.5,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1262,
+              "bottom": 504.40625,
+              "left": -1351.5
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Lady Gaga & Doechii — RUNWAY. Released on YouTube: Apr 27, 2026. 29.6M views. ",
+            "box": {
+              "x": -1254,
+              "y": 385.078125,
+              "width": 89.5,
+              "height": 119.328125,
+              "top": 385.078125,
+              "right": -1164.5,
+              "bottom": 504.40625,
+              "left": -1254
+            }
+          }
+        ],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-jonas-home-bubble",
+            "classes": "jh-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 268,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 352,
+              "bottom": 90,
+              "left": 268
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Find what to watch | MatchApp Ai"
+      }
+    },
+    {
+      "route": "/how-it-works.html",
+      "width": 390,
+      "name": "how-it-works-html-390-en",
+      "errors": [],
+      "screens": [
+        "how-it-works-html-390-en.png",
+        "how-it-works-html-390-en-controls.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/how-it-works.html",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 157.78125,
+          "top": 0,
+          "right": 390,
+          "bottom": 157.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 158,
+          "top": 0,
+          "right": 390,
+          "bottom": 158,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 816.984375,
+          "width": 378,
+          "height": 77.015625,
+          "top": 816.984375,
+          "right": 384,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 238,
+              "y": 6,
+              "width": 144,
+              "height": 144.78125,
+              "top": 6,
+              "right": 382,
+              "bottom": 150.78125,
+              "left": 238
+            }
+          }
+        ],
+        "controlCount": 23,
+        "smallTargets": [],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "07\nExplore Worlds",
+              "box": {
+                "x": 13,
+                "y": 812.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 812.96875,
+                "right": 191.5,
+                "bottom": 870.96875,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Home",
+              "box": {
+                "x": 12,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 83.59375,
+                "bottom": 887,
+                "left": 12
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "07\nExplore Worlds",
+              "box": {
+                "x": 13,
+                "y": 812.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 812.96875,
+                "right": 191.5,
+                "bottom": 870.96875,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "is-active",
+              "label": "Explore",
+              "box": {
+                "x": 85.59375,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 157.1875,
+                "bottom": 887,
+                "left": 85.59375
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "07\nExplore Worlds",
+              "box": {
+                "x": 13,
+                "y": 812.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 812.96875,
+                "right": 191.5,
+                "bottom": 870.96875,
+                "left": 13
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Matches",
+              "box": {
+                "x": 159.1875,
+                "y": 825.984375,
+                "width": 71.609375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 230.796875,
+                "bottom": 887,
+                "left": 159.1875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "08\nMusic and official videos",
+              "box": {
+                "x": 198.5,
+                "y": 812.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 812.96875,
+                "right": 377,
+                "bottom": 870.96875,
+                "left": 198.5
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Matches",
+              "box": {
+                "x": 159.1875,
+                "y": 825.984375,
+                "width": 71.609375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 230.796875,
+                "bottom": 887,
+                "left": 159.1875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "08\nMusic and official videos",
+              "box": {
+                "x": 198.5,
+                "y": 812.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 812.96875,
+                "right": 377,
+                "bottom": 870.96875,
+                "left": 198.5
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "My List",
+              "box": {
+                "x": 232.796875,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 304.390625,
+                "bottom": 887,
+                "left": 232.796875
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "08\nMusic and official videos",
+              "box": {
+                "x": 198.5,
+                "y": 812.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 812.96875,
+                "right": 377,
+                "bottom": 870.96875,
+                "left": 198.5
+              }
+            },
+            "b": {
+              "tag": "A",
+              "id": "",
+              "classes": "",
+              "label": "Profile",
+              "box": {
+                "x": 306.390625,
+                "y": 825.984375,
+                "width": 71.59375,
+                "height": 61.015625,
+                "top": 825.984375,
+                "right": 377.984375,
+                "bottom": 887,
+                "left": 306.390625
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "07\nExplore Worlds",
+            "box": {
+              "x": 13,
+              "y": 812.96875,
+              "width": 178.5,
+              "height": 58,
+              "top": 812.96875,
+              "right": 191.5,
+              "bottom": 870.96875,
+              "left": 13
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "08\nMusic and official videos",
+            "box": {
+              "x": 198.5,
+              "y": 812.96875,
+              "width": 178.5,
+              "height": 58,
+              "top": 812.96875,
+              "right": 377,
+              "bottom": 870.96875,
+              "left": 198.5
+            }
+          }
+        ],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 268,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 352,
+              "bottom": 90,
+              "left": 268
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      },
+      "lastChapter": "13",
+      "guideControls": {
+        "url": "http://127.0.0.1:44503/how-it-works.html#chapter-14",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 157.78125,
+          "top": 0,
+          "right": 390,
+          "bottom": 157.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": -925,
+          "width": 390,
+          "height": 158,
+          "top": -925,
+          "right": 390,
+          "bottom": -767,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 816.984375,
+          "width": 378,
+          "height": 77.015625,
+          "top": 816.984375,
+          "right": 384,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 238,
+              "y": 6,
+              "width": 144,
+              "height": 144.78125,
+              "top": 6,
+              "right": 382,
+              "bottom": 150.78125,
+              "left": 238
+            }
+          }
+        ],
+        "controlCount": 22,
+        "smallTargets": [],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "SUMMARY",
+              "id": "",
+              "classes": "",
+              "label": "App controls",
+              "box": {
+                "x": 186,
+                "y": 80.390625,
+                "width": 44,
+                "height": 44,
+                "top": 80.390625,
+                "right": 230,
+                "bottom": 124.390625,
+                "left": 186
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "13\nProfile, saved picks and plans",
+              "box": {
+                "x": 13,
+                "y": 82.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 82.96875,
+                "right": 191.5,
+                "bottom": 140.96875,
+                "left": 13
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "SUMMARY",
+              "id": "",
+              "classes": "",
+              "label": "App controls",
+              "box": {
+                "x": 186,
+                "y": 80.390625,
+                "width": 44,
+                "height": 44,
+                "top": 80.390625,
+                "right": 230,
+                "bottom": 124.390625,
+                "left": 186
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "14\nYour next experience awaits",
+              "box": {
+                "x": 198.5,
+                "y": 82.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 82.96875,
+                "right": 377,
+                "bottom": 140.96875,
+                "left": 198.5
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "ma-ambient-jonas-launcher",
+              "classes": "ja-bubble ma-jonas-stellar",
+              "label": "Jonas · AI assistant. Tap to talk",
+              "box": {
+                "x": 268,
+                "y": 6,
+                "width": 84,
+                "height": 84,
+                "top": 6,
+                "right": 352,
+                "bottom": 90,
+                "left": 268
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "12\nMatch Together and Friends",
+              "box": {
+                "x": 198.5,
+                "y": 17.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 17.96875,
+                "right": 377,
+                "bottom": 75.96875,
+                "left": 198.5
+              }
+            }
+          },
+          {
+            "a": {
+              "tag": "BUTTON",
+              "id": "ma-ambient-jonas-launcher",
+              "classes": "ja-bubble ma-jonas-stellar",
+              "label": "Jonas · AI assistant. Tap to talk",
+              "box": {
+                "x": 268,
+                "y": 6,
+                "width": 84,
+                "height": 84,
+                "top": 6,
+                "right": 352,
+                "bottom": 90,
+                "left": 268
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "14\nYour next experience awaits",
+              "box": {
+                "x": 198.5,
+                "y": 82.96875,
+                "width": 178.5,
+                "height": 58,
+                "top": 82.96875,
+                "right": 377,
+                "bottom": 140.96875,
+                "left": 198.5
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "11\nNews, events and awareness",
+            "box": {
+              "x": 13,
+              "y": 17.96875,
+              "width": 178.5,
+              "height": 58,
+              "top": 17.96875,
+              "right": 191.5,
+              "bottom": 75.96875,
+              "left": 13
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "12\nMatch Together and Friends",
+            "box": {
+              "x": 198.5,
+              "y": 17.96875,
+              "width": 178.5,
+              "height": 58,
+              "top": 17.96875,
+              "right": 377,
+              "bottom": 75.96875,
+              "left": 198.5
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "13\nProfile, saved picks and plans",
+            "box": {
+              "x": 13,
+              "y": 82.96875,
+              "width": 178.5,
+              "height": 58,
+              "top": 82.96875,
+              "right": 191.5,
+              "bottom": 140.96875,
+              "left": 13
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "14\nYour next experience awaits",
+            "box": {
+              "x": 198.5,
+              "y": 82.96875,
+              "width": 178.5,
+              "height": 58,
+              "top": 82.96875,
+              "right": 377,
+              "bottom": 140.96875,
+              "left": 198.5
+            }
+          }
+        ],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 268,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 352,
+              "bottom": 90,
+              "left": 268
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      }
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 390,
+      "name": "profile-profile-html-390-en",
+      "errors": [],
+      "screens": [
+        "profile-profile-html-390-en.png",
+        "profile-profile-html-390-en-history.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/profile/profile.html",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 157.78125,
+          "top": 0,
+          "right": 390,
+          "bottom": 157.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 158,
+          "top": 0,
+          "right": 390,
+          "bottom": 158,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 816.984375,
+          "width": 378,
+          "height": 77.015625,
+          "top": 816.984375,
+          "right": 384,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 238,
+              "y": 6,
+              "width": 144,
+              "height": 144.78125,
+              "top": 6,
+              "right": 382,
+              "bottom": 150.78125,
+              "left": 238
+            }
+          }
+        ],
+        "controlCount": 16,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "settings-summary",
+            "label": "⚙️ Settings & Accessibility\n⌄",
+            "box": {
+              "x": 13,
+              "y": 909.625,
+              "width": 364,
+              "height": 37.125,
+              "top": 909.625,
+              "right": 377,
+              "bottom": 946.75,
+              "left": 13
+            }
+          },
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "settings-summary",
+            "label": "🕘 Your Activity\n⌄",
+            "box": {
+              "x": 13,
+              "y": 980.75,
+              "width": 364,
+              "height": 37.125,
+              "top": 980.75,
+              "right": 377,
+              "bottom": 1017.875,
+              "left": 13
+            }
+          }
+        ],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 268,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 352,
+              "bottom": 90,
+              "left": 268
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "MatchApp Ai | My Profile"
+      },
+      "history": {
+        "selected": null,
+        "visible": true
+      }
+    },
+    {
+      "route": "/explore.html",
+      "width": 390,
+      "name": "explore-html-390-en",
+      "errors": [],
+      "screens": [
+        "explore-html-390-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/explore.html",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 157.78125,
+          "top": 0,
+          "right": 390,
+          "bottom": 157.78125,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 158,
+          "top": 0,
+          "right": 390,
+          "bottom": 158,
+          "left": 0
+        },
+        "dock": {
+          "x": 6,
+          "y": 814.984375,
+          "width": 378,
+          "height": 79.015625,
+          "top": 814.984375,
+          "right": 384,
+          "bottom": 894,
+          "left": 6
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 238,
+              "y": 6,
+              "width": 144,
+              "height": 144.78125,
+              "top": 6,
+              "right": 382,
+              "bottom": 150.78125,
+              "left": 238
+            }
+          }
+        ],
+        "controlCount": 7,
+        "smallTargets": [],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 268,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 352,
+              "bottom": 90,
+              "left": 268
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Explore more | MatchApp Ai"
+      }
+    },
+    {
+      "route": "/",
+      "width": 800,
+      "name": "home-800-en",
+      "errors": [],
+      "screens": [
+        "home-800-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/",
+        "viewport": {
+          "width": 800,
+          "height": 1180
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 97,
+          "top": 0,
+          "right": 800,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 97,
+          "top": 0,
+          "right": 800,
+          "bottom": 97,
+          "left": 0
+        },
+        "dock": {
+          "x": 30,
+          "y": 1096.984375,
+          "width": 740,
+          "height": 77.015625,
+          "top": 1096.984375,
+          "right": 770,
+          "bottom": 1174,
+          "left": 30
+        },
+        "launchers": [
+          {
+            "tag": "ASIDE",
+            "id": "ma-jonas-home",
+            "classes": "is-floating",
+            "label": "Jonas floating companion",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 792,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "controlCount": 64,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "",
+            "label": "+ More Filters",
+            "box": {
+              "x": 13,
+              "y": 701.328125,
+              "width": 448.15625,
+              "height": 36,
+              "top": 701.328125,
+              "right": 461.15625,
+              "bottom": 737.328125,
+              "left": 13
+            }
+          }
+        ],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Quem É Você?",
+            "box": {
+              "x": -5750,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -5602,
+              "bottom": 566.328125,
+              "left": -5750
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Bruno Mars — Dance With Me. Released on YouTube: Oct 1, 2026. 12.1M views. htt",
+            "box": {
+              "x": -5594,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -5446,
+              "bottom": 566.328125,
+              "left": -5594
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Absolutely Fabulous",
+            "box": {
+              "x": -5438,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -5290,
+              "bottom": 566.328125,
+              "left": -5438
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Heartbreak High",
+            "box": {
+              "x": -5282,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -5134,
+              "bottom": 566.328125,
+              "left": -5282
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Taylor Swift — Patient Zero. Released on YouTube: Sep 29, 2026. 18.6M views. h",
+            "box": {
+              "x": -5126,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -4978,
+              "bottom": 566.328125,
+              "left": -5126
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Schitt's Creek",
+            "box": {
+              "x": -4970,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -4822,
+              "bottom": 566.328125,
+              "left": -4970
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Alice in Borderland",
+            "box": {
+              "x": -4814,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -4666,
+              "bottom": 566.328125,
+              "left": -4814
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: BTS — Merry Go Round. Released on YouTube: Sep 25, 2026. 10.4M views. https://",
+            "box": {
+              "x": -4658,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -4510,
+              "bottom": 566.328125,
+              "left": -4658
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Wicked",
+            "box": {
+              "x": -4502,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -4354,
+              "bottom": 566.328125,
+              "left": -4502
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Vermelho Sangue",
+            "box": {
+              "x": -4346,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -4198,
+              "bottom": 566.328125,
+              "left": -4346
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Slow Horses",
+            "box": {
+              "x": -4190,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -4042,
+              "bottom": 566.328125,
+              "left": -4190
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: ROSÉ — new trick. Released on YouTube: Sep 17, 2026. 50.1M views. https://www.",
+            "box": {
+              "x": -4034,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -3886,
+              "bottom": 566.328125,
+              "left": -4034
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Survivors",
+            "box": {
+              "x": -3878,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -3730,
+              "bottom": 566.328125,
+              "left": -3878
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "North of North",
+            "box": {
+              "x": -3722,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -3574,
+              "bottom": 566.328125,
+              "left": -3722
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Ariana Grande — petal. Released on YouTube: Jul 31, 2026. 34.5M views. https:/",
+            "box": {
+              "x": -3566,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -3418,
+              "bottom": 566.328125,
+              "left": -3566
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Golden Kamuy -The Abashiri Prison Raid-",
+            "box": {
+              "x": -3410,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -3262,
+              "bottom": 566.328125,
+              "left": -3410
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Line of Fire",
+            "box": {
+              "x": -3254,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -3106,
+              "bottom": 566.328125,
+              "left": -3254
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Olivia Rodrigo — stupid song. Released on YouTube: Jun 12, 2026. 38.8M views. ",
+            "box": {
+              "x": -3098,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -2950,
+              "bottom": 566.328125,
+              "left": -3098
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Habeas Corpus",
+            "box": {
+              "x": -2942,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -2794,
+              "bottom": 566.328125,
+              "left": -2942
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Black Mirror",
+            "box": {
+              "x": -2786,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -2638,
+              "bottom": 566.328125,
+              "left": -2786
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Narrow Road to the Deep North",
+            "box": {
+              "x": -2630,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -2482,
+              "bottom": 566.328125,
+              "left": -2630
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Shakira & Burna Boy — Dai Dai. Released on YouTube: May 23, 2026. 1.2B views. ",
+            "box": {
+              "x": -2474,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -2326,
+              "bottom": 566.328125,
+              "left": -2474
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Shoresy",
+            "box": {
+              "x": -2318,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -2170,
+              "bottom": 566.328125,
+              "left": -2318
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Last Samurai Standing",
+            "box": {
+              "x": -2162,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -2014,
+              "bottom": 566.328125,
+              "left": -2162
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Lady Gaga & Doechii — RUNWAY. Released on YouTube: Apr 27, 2026. 29.6M views. ",
+            "box": {
+              "x": -2006,
+              "y": 369,
+              "width": 148,
+              "height": 197.328125,
+              "top": 369,
+              "right": -1858,
+              "bottom": 566.328125,
+              "left": -2006
+            }
+          }
+        ],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-jonas-home-bubble",
+            "classes": "jh-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 624,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Find what to watch | MatchApp Ai"
+      }
+    },
+    {
+      "route": "/how-it-works.html",
+      "width": 800,
+      "name": "how-it-works-html-800-en",
+      "errors": [],
+      "screens": [
+        "how-it-works-html-800-en.png",
+        "how-it-works-html-800-en-controls.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/how-it-works.html",
+        "viewport": {
+          "width": 800,
+          "height": 1180
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 97,
+          "top": 0,
+          "right": 800,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 97,
+          "top": 0,
+          "right": 800,
+          "bottom": 97,
+          "left": 0
+        },
+        "dock": {
+          "x": 30,
+          "y": 1096.984375,
+          "width": 740,
+          "height": 77.015625,
+          "top": 1096.984375,
+          "right": 770,
+          "bottom": 1174,
+          "left": 30
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 792,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "controlCount": 23,
+        "smallTargets": [],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 624,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      },
+      "lastChapter": "13",
+      "guideControls": {
+        "url": "http://127.0.0.1:44503/how-it-works.html#chapter-14",
+        "viewport": {
+          "width": 800,
+          "height": 1180
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 97,
+          "top": 0,
+          "right": 800,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": -750,
+          "width": 800,
+          "height": 97,
+          "top": -750,
+          "right": 800,
+          "bottom": -653,
+          "left": 0
+        },
+        "dock": {
+          "x": 30,
+          "y": 1096.984375,
+          "width": 740,
+          "height": 77.015625,
+          "top": 1096.984375,
+          "right": 770,
+          "bottom": 1174,
+          "left": 30
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 792,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "controlCount": 22,
+        "smallTargets": [],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "SUMMARY",
+              "id": "",
+              "classes": "",
+              "label": "App controls",
+              "box": {
+                "x": 488,
+                "y": 26,
+                "width": 44,
+                "height": 44,
+                "top": 26,
+                "right": 532,
+                "bottom": 70,
+                "left": 488
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "journey-nav-item",
+              "label": "14\nYour next experience awaits",
+              "box": {
+                "x": 274.328125,
+                "y": 17.578125,
+                "width": 251.328125,
+                "height": 58,
+                "top": 17.578125,
+                "right": 525.65625,
+                "bottom": 75.578125,
+                "left": 274.328125
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "13\nProfile, saved picks and plans",
+            "box": {
+              "x": 16,
+              "y": 17.578125,
+              "width": 251.328125,
+              "height": 58,
+              "top": 17.578125,
+              "right": 267.328125,
+              "bottom": 75.578125,
+              "left": 16
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "14\nYour next experience awaits",
+            "box": {
+              "x": 274.328125,
+              "y": 17.578125,
+              "width": 251.328125,
+              "height": 58,
+              "top": 17.578125,
+              "right": 525.65625,
+              "bottom": 75.578125,
+              "left": 274.328125
+            }
+          }
+        ],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 624,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      }
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 800,
+      "name": "profile-profile-html-800-en",
+      "errors": [],
+      "screens": [
+        "profile-profile-html-800-en.png",
+        "profile-profile-html-800-en-history.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/profile/profile.html",
+        "viewport": {
+          "width": 800,
+          "height": 1180
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 97,
+          "top": 0,
+          "right": 800,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 97,
+          "top": 0,
+          "right": 800,
+          "bottom": 97,
+          "left": 0
+        },
+        "dock": {
+          "x": 30,
+          "y": 1096.984375,
+          "width": 740,
+          "height": 77.015625,
+          "top": 1096.984375,
+          "right": 770,
+          "bottom": 1174,
+          "left": 30
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 792,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "controlCount": 16,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "settings-summary",
+            "label": "⚙️ Settings & Accessibility\n⌄",
+            "box": {
+              "x": 13,
+              "y": 607.546875,
+              "width": 774,
+              "height": 37.125,
+              "top": 607.546875,
+              "right": 787,
+              "bottom": 644.671875,
+              "left": 13
+            }
+          },
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "settings-summary",
+            "label": "🕘 Your Activity\n⌄",
+            "box": {
+              "x": 13,
+              "y": 678.671875,
+              "width": 774,
+              "height": 37.125,
+              "top": 678.671875,
+              "right": 787,
+              "bottom": 715.796875,
+              "left": 13
+            }
+          }
+        ],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant. Tap to talk",
+            "box": {
+              "x": 540,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 624,
+              "bottom": 90,
+              "left": 540
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "MatchApp Ai | My Profile"
+      },
+      "history": {
+        "selected": null,
+        "visible": true
+      }
+    },
+    {
+      "route": "/explore.html",
+      "width": 800,
+      "name": "explore-html-800-en",
+      "errors": [],
+      "screens": [
+        "explore-html-800-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/explore.html",
+        "viewport": {
+          "width": 800,
+          "height": 1180
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 109,
+          "top": 0,
+          "right": 800,
+          "bottom": 109,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 109,
+          "top": 0,
+          "right": 800,
+          "bottom": 109,
+          "left": 0
+        },
+        "dock": {
+          "x": 30,
+          "y": 1094.984375,
+          "width": 740,
+          "height": 79.015625,
+          "top": 1094.984375,
+          "right": 770,
+          "bottom": 1174,
+          "left": 30
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 540,
+              "y": 12,
+              "width": 252,
+              "height": 84,
+              "top": 12,
+              "right": 792,
+              "bottom": 96,
+              "left": 540
+            }
+          }
+        ],
+        "controlCount": 7,
+        "smallTargets": [],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant",
+            "box": {
+              "x": 540,
+              "y": 12,
+              "width": 84,
+              "height": 84,
+              "top": 12,
+              "right": 624,
+              "bottom": 96,
+              "left": 540
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Explore more | MatchApp Ai"
+      }
+    },
+    {
+      "route": "/",
+      "width": 1366,
+      "name": "home-1366-en",
+      "errors": [],
+      "screens": [
+        "home-1366-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/",
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 97,
+          "top": 0,
+          "right": 1366,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 97,
+          "top": 0,
+          "right": 1366,
+          "bottom": 97,
+          "left": 0
+        },
+        "dock": {
+          "x": 313,
+          "y": 808.03125,
+          "width": 740,
+          "height": 77.96875,
+          "top": 808.03125,
+          "right": 1053,
+          "bottom": 886,
+          "left": 313
+        },
+        "launchers": [
+          {
+            "tag": "ASIDE",
+            "id": "ma-jonas-home",
+            "classes": "is-floating",
+            "label": "Jonas floating companion",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 1338,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "controlCount": 66,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "",
+            "label": "+ More Filters",
+            "box": {
+              "x": 191.265625,
+              "y": 740.859375,
+              "width": 553.15625,
+              "height": 36,
+              "top": 740.859375,
+              "right": 744.421875,
+              "bottom": 776.859375,
+              "left": 191.265625
+            }
+          }
+        ],
+        "overlaps": [
+          {
+            "a": {
+              "tag": "DIV",
+              "id": "",
+              "classes": "marquee-item",
+              "label": "The Love Hypothesis",
+              "box": {
+                "x": 92.265625,
+                "y": 401.484375,
+                "width": 148,
+                "height": 197.328125,
+                "top": 401.484375,
+                "right": 240.265625,
+                "bottom": 598.8125,
+                "left": 92.265625
+              }
+            },
+            "b": {
+              "tag": "BUTTON",
+              "id": "",
+              "classes": "ma-top-titles-arrow",
+              "label": "Previous titles",
+              "box": {
+                "x": 178.265625,
+                "y": 482.140625,
+                "width": 44,
+                "height": 44,
+                "top": 482.140625,
+                "right": 222.265625,
+                "bottom": 526.140625,
+                "left": 178.265625
+              }
+            }
+          }
+        ],
+        "blocked": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Love Hypothesis",
+            "box": {
+              "x": 92.265625,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": 240.265625,
+              "bottom": 598.8125,
+              "left": 92.265625
+            }
+          }
+        ],
+        "outside": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Quem É Você?",
+            "box": {
+              "x": -5523.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -5375.734375,
+              "bottom": 598.8125,
+              "left": -5523.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Bruno Mars — Dance With Me. Released on YouTube: Oct 1, 2026. 12.1M views. htt",
+            "box": {
+              "x": -5367.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -5219.734375,
+              "bottom": 598.8125,
+              "left": -5367.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Absolutely Fabulous",
+            "box": {
+              "x": -5211.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -5063.734375,
+              "bottom": 598.8125,
+              "left": -5211.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Heartbreak High",
+            "box": {
+              "x": -5055.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -4907.734375,
+              "bottom": 598.8125,
+              "left": -5055.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Taylor Swift — Patient Zero. Released on YouTube: Sep 29, 2026. 18.6M views. h",
+            "box": {
+              "x": -4899.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -4751.734375,
+              "bottom": 598.8125,
+              "left": -4899.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Schitt's Creek",
+            "box": {
+              "x": -4743.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -4595.734375,
+              "bottom": 598.8125,
+              "left": -4743.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Alice in Borderland",
+            "box": {
+              "x": -4587.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -4439.734375,
+              "bottom": 598.8125,
+              "left": -4587.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: BTS — Merry Go Round. Released on YouTube: Sep 25, 2026. 10.4M views. https://",
+            "box": {
+              "x": -4431.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -4283.734375,
+              "bottom": 598.8125,
+              "left": -4431.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Wicked",
+            "box": {
+              "x": -4275.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -4127.734375,
+              "bottom": 598.8125,
+              "left": -4275.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Vermelho Sangue",
+            "box": {
+              "x": -4119.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -3971.734375,
+              "bottom": 598.8125,
+              "left": -4119.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Slow Horses",
+            "box": {
+              "x": -3963.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -3815.734375,
+              "bottom": 598.8125,
+              "left": -3963.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: ROSÉ — new trick. Released on YouTube: Sep 17, 2026. 50.1M views. https://www.",
+            "box": {
+              "x": -3807.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -3659.734375,
+              "bottom": 598.8125,
+              "left": -3807.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Survivors",
+            "box": {
+              "x": -3651.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -3503.734375,
+              "bottom": 598.8125,
+              "left": -3651.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "North of North",
+            "box": {
+              "x": -3495.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -3347.734375,
+              "bottom": 598.8125,
+              "left": -3495.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Ariana Grande — petal. Released on YouTube: Jul 31, 2026. 34.5M views. https:/",
+            "box": {
+              "x": -3339.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -3191.734375,
+              "bottom": 598.8125,
+              "left": -3339.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Golden Kamuy -The Abashiri Prison Raid-",
+            "box": {
+              "x": -3183.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -3035.734375,
+              "bottom": 598.8125,
+              "left": -3183.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Line of Fire",
+            "box": {
+              "x": -3027.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -2879.734375,
+              "bottom": 598.8125,
+              "left": -3027.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Olivia Rodrigo — stupid song. Released on YouTube: Jun 12, 2026. 38.8M views. ",
+            "box": {
+              "x": -2871.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -2723.734375,
+              "bottom": 598.8125,
+              "left": -2871.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Habeas Corpus",
+            "box": {
+              "x": -2715.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -2567.734375,
+              "bottom": 598.8125,
+              "left": -2715.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Black Mirror",
+            "box": {
+              "x": -2559.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -2411.734375,
+              "bottom": 598.8125,
+              "left": -2559.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "The Narrow Road to the Deep North",
+            "box": {
+              "x": -2403.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -2255.734375,
+              "bottom": 598.8125,
+              "left": -2403.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Shakira & Burna Boy — Dai Dai. Released on YouTube: May 23, 2026. 1.2B views. ",
+            "box": {
+              "x": -2247.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -2099.734375,
+              "bottom": 598.8125,
+              "left": -2247.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Shoresy",
+            "box": {
+              "x": -2091.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -1943.734375,
+              "bottom": 598.8125,
+              "left": -2091.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Last Samurai Standing",
+            "box": {
+              "x": -1935.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -1787.734375,
+              "bottom": 598.8125,
+              "left": -1935.734375
+            }
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "classes": "marquee-item",
+            "label": "Official music video: Lady Gaga & Doechii — RUNWAY. Released on YouTube: Apr 27, 2026. 29.6M views. ",
+            "box": {
+              "x": -1779.734375,
+              "y": 401.484375,
+              "width": 148,
+              "height": 197.328125,
+              "top": 401.484375,
+              "right": -1631.734375,
+              "bottom": 598.8125,
+              "left": -1779.734375
+            }
+          }
+        ],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-jonas-home-bubble",
+            "classes": "jh-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 1170,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Find what to watch | MatchApp Ai"
+      }
+    },
+    {
+      "route": "/how-it-works.html",
+      "width": 1366,
+      "name": "how-it-works-html-1366-en",
+      "errors": [],
+      "screens": [
+        "how-it-works-html-1366-en.png",
+        "how-it-works-html-1366-en-controls.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/how-it-works.html",
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 97,
+          "top": 0,
+          "right": 1366,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 97,
+          "top": 0,
+          "right": 1366,
+          "bottom": 97,
+          "left": 0
+        },
+        "dock": {
+          "x": 313,
+          "y": 808.03125,
+          "width": 740,
+          "height": 77.96875,
+          "top": 808.03125,
+          "right": 1053,
+          "bottom": 886,
+          "left": 313
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 1338,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "controlCount": 23,
+        "smallTargets": [],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 1170,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      },
+      "lastChapter": "13",
+      "guideControls": {
+        "url": "http://127.0.0.1:44503/how-it-works.html#chapter-14",
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 97,
+          "top": 0,
+          "right": 1366,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": -412,
+          "width": 1366,
+          "height": 97,
+          "top": -412,
+          "right": 1366,
+          "bottom": -315,
+          "left": 0
+        },
+        "dock": {
+          "x": 313,
+          "y": 808.03125,
+          "width": 740,
+          "height": 77.96875,
+          "top": 808.03125,
+          "right": 1053,
+          "bottom": 886,
+          "left": 313
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 1338,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "controlCount": 22,
+        "smallTargets": [],
+        "overlaps": [],
+        "blocked": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "classes": "journey-nav-item",
+            "label": "01\nStart at Home",
+            "box": {
+              "x": 16,
+              "y": 74.90625,
+              "width": 248,
+              "height": 44,
+              "top": 74.90625,
+              "right": 264,
+              "bottom": 118.90625,
+              "left": 16
+            }
+          }
+        ],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 1170,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "journeyOpacity": [
+          {
+            "tag": "DIV",
+            "classes": "journey-intro",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "MAIN",
+            "classes": "",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "DIV",
+            "classes": "journey-shell",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "BODY",
+            "classes": "page-journey journey-ready ma-has-cinema-dock",
+            "opacity": "1",
+            "filter": "none"
+          },
+          {
+            "tag": "HTML",
+            "classes": "ma-reference",
+            "opacity": "1",
+            "filter": "none"
+          }
+        ],
+        "lang": "en",
+        "title": "How MatchApp Ai Works | Find Your Next Experience"
+      }
+    },
+    {
+      "route": "/profile/profile.html",
+      "width": 1366,
+      "name": "profile-profile-html-1366-en",
+      "errors": [],
+      "screens": [
+        "profile-profile-html-1366-en.png",
+        "profile-profile-html-1366-en-history.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/profile/profile.html",
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 97,
+          "top": 0,
+          "right": 1366,
+          "bottom": 97,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 97,
+          "top": 0,
+          "right": 1366,
+          "bottom": 97,
+          "left": 0
+        },
+        "dock": {
+          "x": 313,
+          "y": 808.03125,
+          "width": 740,
+          "height": 77.96875,
+          "top": 808.03125,
+          "right": 1053,
+          "bottom": 886,
+          "left": 313
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 252,
+              "height": 84,
+              "top": 6,
+              "right": 1338,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "controlCount": 16,
+        "smallTargets": [
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "settings-summary",
+            "label": "⚙️ Settings & Accessibility\n⌄",
+            "box": {
+              "x": 13,
+              "y": 471.125,
+              "width": 653,
+              "height": 37.125,
+              "top": 471.125,
+              "right": 666,
+              "bottom": 508.25,
+              "left": 13
+            }
+          },
+          {
+            "tag": "SUMMARY",
+            "id": "",
+            "classes": "settings-summary",
+            "label": "🕘 Your Activity\n⌄",
+            "box": {
+              "x": 700,
+              "y": 471.125,
+              "width": 653,
+              "height": 37.125,
+              "top": 471.125,
+              "right": 1353,
+              "bottom": 508.25,
+              "left": 700
+            }
+          }
+        ],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant",
+            "box": {
+              "x": 1086,
+              "y": 6,
+              "width": 84,
+              "height": 84,
+              "top": 6,
+              "right": 1170,
+              "bottom": 90,
+              "left": 1086
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "MatchApp Ai | My Profile"
+      },
+      "history": {
+        "selected": null,
+        "visible": true
+      }
+    },
+    {
+      "route": "/explore.html",
+      "width": 1366,
+      "name": "explore-html-1366-en",
+      "errors": [],
+      "screens": [
+        "explore-html-1366-en.png"
+      ],
+      "status": 200,
+      "initial": {
+        "url": "http://127.0.0.1:44503/explore.html",
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "overflow": 0,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 109,
+          "top": 0,
+          "right": 1366,
+          "bottom": 109,
+          "left": 0
+        },
+        "headerSpace": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 109,
+          "top": 0,
+          "right": 1366,
+          "bottom": 109,
+          "left": 0
+        },
+        "dock": {
+          "x": 313,
+          "y": 806.03125,
+          "width": 740,
+          "height": 79.96875,
+          "top": 806.03125,
+          "right": 1053,
+          "bottom": 886,
+          "left": 313
+        },
+        "launchers": [
+          {
+            "tag": "DIV",
+            "id": "ma-ambient-jonas",
+            "classes": "",
+            "label": "Jonas · AI assistant\nTap to talk",
+            "box": {
+              "x": 1086,
+              "y": 12,
+              "width": 252,
+              "height": 84,
+              "top": 12,
+              "right": 1338,
+              "bottom": 96,
+              "left": 1086
+            }
+          }
+        ],
+        "controlCount": 7,
+        "smallTargets": [],
+        "overlaps": [],
+        "blocked": [],
+        "outside": [],
+        "textClip": [
+          {
+            "tag": "BUTTON",
+            "id": "ma-ambient-jonas-launcher",
+            "classes": "ja-bubble ma-jonas-stellar",
+            "label": "Jonas · AI assistant",
+            "box": {
+              "x": 1086,
+              "y": 12,
+              "width": 84,
+              "height": 84,
+              "top": 12,
+              "right": 1170,
+              "bottom": 96,
+              "left": 1086
+            }
+          }
+        ],
+        "journeyOpacity": [],
+        "lang": "en",
+        "title": "Explore more | MatchApp Ai"
+      }
+    }
+  ],
+  "finished": true
+}

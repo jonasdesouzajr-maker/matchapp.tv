@@ -1,0 +1,2727 @@
+{
+  "scope": "Rendered browser viewports; not Android emulator or native permission/audio verification.",
+  "base": "local candidate",
+  "lang": "en",
+  "cases": [
+    {
+      "name": "home-tools-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 37,
+                "y": 394,
+                "w": 83.640625,
+                "h": 48,
+                "right": 120.640625,
+                "bottom": 442,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 22,
+                "y": 166,
+                "w": 360,
+                "h": 291,
+                "right": 382,
+                "bottom": 457,
+                "display": "block",
+                "font": "15px",
+                "padding": "14px",
+                "border": "1px solid rgb(112, 89, 56)",
+                "shadow": "rgba(0, 0, 0, 0.6) 0px 18px 50px 0px",
+                "bg": "none",
+                "color": "rgb(250, 245, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-closed-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 151.28125,
+                "y": 361.078125,
+                "w": 87.4375,
+                "h": 48,
+                "right": 238.71875,
+                "bottom": 409.078125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-support",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 151.28125,
+                "y": 361.078125,
+                "w": 87.4375,
+                "h": 48,
+                "right": 238.71875,
+                "bottom": 409.078125,
+                "display": "grid",
+                "font": "15px",
+                "padding": "0px",
+                "border": "0px none rgb(249, 243, 231)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(249, 243, 231)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-actions",
+            "nodes": [
+              {
+                "text": "Become a sponsor\nStreaming around the world\nMeet the engineer\nWhat’s new",
+                "x": 10,
+                "y": 469.078125,
+                "w": 370,
+                "h": 112.375,
+                "right": 380,
+                "bottom": 581.453125,
+                "display": "grid",
+                "font": "15px",
+                "padding": "0px",
+                "border": "0px none rgb(250, 245, 255)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(250, 245, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "Become a sponsor",
+                "x": 10,
+                "y": 469.078125,
+                "w": 181,
+                "h": 56.375,
+                "right": 191,
+                "bottom": 525.453125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Streaming around the world",
+                "x": 199,
+                "y": 469.078125,
+                "w": 181,
+                "h": 56.375,
+                "right": 380,
+                "bottom": 525.453125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Meet the engineer",
+                "x": 10,
+                "y": 533.453125,
+                "w": 181,
+                "h": 48,
+                "right": 191,
+                "bottom": 581.453125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "What’s new",
+                "x": 199,
+                "y": 533.453125,
+                "w": 181,
+                "h": 48,
+                "right": 380,
+                "bottom": 581.453125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "INDEPENDENT IDEAS. SHARED POSSIBILITIES.\nBe part of what comes next\n\nBuilt indep",
+                "x": 33,
+                "y": 228.078125,
+                "w": 324,
+                "h": 610.90625,
+                "right": 357,
+                "bottom": 838.984375,
+                "display": "grid",
+                "font": "15px",
+                "padding": "12px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(249, 243, 231)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-donate-value",
+            "nodes": [
+              {
+                "text": "US$5",
+                "x": 46.015625,
+                "y": 472.3125,
+                "w": 93.984375,
+                "h": 44,
+                "right": 140,
+                "bottom": 516.3125,
+                "display": "block",
+                "font": "13px",
+                "padding": "8px 6px",
+                "border": "1px solid rgb(255, 224, 154)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(255, 224, 154)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "US$10",
+                "x": 148,
+                "y": 472.3125,
+                "w": 93.984375,
+                "h": 44,
+                "right": 241.984375,
+                "bottom": 516.3125,
+                "display": "block",
+                "font": "13px",
+                "padding": "8px 6px",
+                "border": "1px solid rgba(247, 215, 135, 0.58)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(255, 255, 255)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "US$25",
+                "x": 249.984375,
+                "y": 472.3125,
+                "w": 93.984375,
+                "h": 44,
+                "right": 343.96875,
+                "bottom": 516.3125,
+                "display": "block",
+                "font": "13px",
+                "padding": "8px 6px",
+                "border": "1px solid rgba(247, 215, 135, 0.58)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(255, 255, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "Continue securely with PayPal",
+                "x": 46,
+                "y": 726.390625,
+                "w": 298,
+                "h": 48,
+                "right": 344,
+                "bottom": 774.390625,
+                "display": "block",
+                "font": "14px",
+                "padding": "10px 16px",
+                "border": "0px none rgb(30, 25, 48)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "color": "rgb(30, 25, 48)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 46,
+                "y": 559.75,
+                "w": 298,
+                "h": 48.390625,
+                "right": 344,
+                "bottom": 608.140625,
+                "display": "block",
+                "font": "16px",
+                "padding": "10px 13px",
+                "border": "1px solid rgb(136, 107, 167)",
+                "shadow": "rgba(0, 0, 0, 0.5) 0px 2px 5px 0px inset, rgba(255, 255, 255, 0.07) 0px -1px 0px 0px inset",
+                "bg": "none",
+                "color": "rgb(250, 245, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-keyboard-viewport-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 420,
+          "vv": {
+            "w": 390,
+            "h": 420,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 46,
+                "y": 268.75,
+                "w": 298,
+                "h": 48.390625,
+                "right": 344,
+                "bottom": 317.140625,
+                "display": "block",
+                "font": "16px",
+                "padding": "10px 13px",
+                "border": "1px solid rgb(136, 107, 167)",
+                "shadow": "rgba(0, 0, 0, 0.5) 0px 2px 5px 0px inset, rgba(255, 255, 255, 0.07) 0px -1px 0px 0px inset, rgba(229, 193, 88, 0.55) 0px 0px 0px 2px",
+                "bg": "none",
+                "color": "rgb(250, 245, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "INDEPENDENT IDEAS. SHARED POSSIBILITIES.\nBe part of what comes next\n\nBuilt indep",
+                "x": 33,
+                "y": -62.921875,
+                "w": 324,
+                "h": 610.90625,
+                "right": 357,
+                "bottom": 547.984375,
+                "display": "grid",
+                "font": "15px",
+                "padding": "12px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(249, 243, 231)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "auth-open-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#main-auth-modal",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 0,
+                "y": 0,
+                "w": 390,
+                "h": 900,
+                "right": 390,
+                "bottom": 900,
+                "display": "flex",
+                "font": "15px",
+                "padding": "24px 10px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal > .premium-card",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 16,
+                "y": 26.78125,
+                "w": 358,
+                "h": 846.4375,
+                "right": 374,
+                "bottom": 873.21875,
+                "display": "block",
+                "font": "15px",
+                "padding": "17px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.4) 0px 20px 60px 0px, rgba(255, 229, 183, 0.04) 0px 1px 0px 0px inset",
+                "bg": "linear-gradient(145deg, rgb(25, 17, 30), rgb(17, 11, 23) 78%)",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal .auth-close",
+            "nodes": [
+              {
+                "text": "×",
+                "x": 321,
+                "y": 34.171875,
+                "w": 44,
+                "h": 44,
+                "right": 365,
+                "bottom": 78.171875,
+                "display": "grid",
+                "font": "30px",
+                "padding": "0px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(228, 186, 103)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal input",
+            "nodes": [
+              {
+                "text": "Mobile phone number with country code",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Full name (first registration)",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "SMS verification code",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 34,
+                "y": 554.03125,
+                "w": 322,
+                "h": 57.09375,
+                "right": 356,
+                "bottom": 611.125,
+                "display": "block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Password",
+                "x": 34,
+                "y": 619.125,
+                "w": 322,
+                "h": 57.09375,
+                "right": 356,
+                "bottom": 676.21875,
+                "display": "block",
+                "font": "14px",
+                "padding": "16px 58px 16px 16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Create Password",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "auth-keyboard-viewport-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 420,
+          "vv": {
+            "w": 390,
+            "h": 420,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#main-auth-modal",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 0,
+                "y": 0,
+                "w": 390,
+                "h": 420,
+                "right": 390,
+                "bottom": 420,
+                "display": "flex",
+                "font": "15px",
+                "padding": "24px 10px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal > .premium-card",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 16,
+                "y": 24,
+                "w": 358,
+                "h": 372,
+                "right": 374,
+                "bottom": 396,
+                "display": "block",
+                "font": "15px",
+                "padding": "17px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.4) 0px 20px 60px 0px, rgba(255, 229, 183, 0.04) 0px 1px 0px 0px inset",
+                "bg": "linear-gradient(145deg, rgb(25, 17, 30), rgb(17, 11, 23) 78%)",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal .auth-close",
+            "nodes": [
+              {
+                "text": "×",
+                "x": 321,
+                "y": -338.609375,
+                "w": 44,
+                "h": 44,
+                "right": 365,
+                "bottom": -294.609375,
+                "display": "grid",
+                "font": "30px",
+                "padding": "0px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(228, 186, 103)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal input",
+            "nodes": [
+              {
+                "text": "Mobile phone number with country code",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Full name (first registration)",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "SMS verification code",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 34,
+                "y": 181.25,
+                "w": 322,
+                "h": 57.09375,
+                "right": 356,
+                "bottom": 238.34375,
+                "display": "block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Password",
+                "x": 34,
+                "y": 246.34375,
+                "w": 322,
+                "h": 57.09375,
+                "right": 356,
+                "bottom": 303.4375,
+                "display": "block",
+                "font": "14px",
+                "padding": "16px 58px 16px 16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Full Name",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Create Password",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "confirm-dialog-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-reference-dialog",
+            "nodes": [
+              {
+                "text": "Review this action\n\nReview this local interface notice. This check verifies long",
+                "x": 0,
+                "y": 0,
+                "w": 390,
+                "h": 900,
+                "right": 390,
+                "bottom": 900,
+                "display": "flex",
+                "font": "15px",
+                "padding": "16px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__panel",
+            "nodes": [
+              {
+                "text": "Review this action\n\nReview this local interface notice. This check verifies long",
+                "x": 16,
+                "y": 285.890625,
+                "w": 358,
+                "h": 328.21875,
+                "right": 374,
+                "bottom": 614.109375,
+                "display": "grid",
+                "font": "15px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.42)",
+                "shadow": "rgba(0, 0, 0, 0.6) 0px 24px 80px 0px, rgba(255, 239, 207, 0.1) 0px 1px 0px 0px inset",
+                "bg": "linear-gradient(145deg, color(srgb 0.0980392 0.0666667 0.117647 / 0.95), rgb(17, 11, 23))",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__actions",
+            "nodes": [
+              {
+                "text": "Keep my current settings\nConfirm this local example",
+                "x": 33,
+                "y": 512.71875,
+                "w": 324,
+                "h": 84.390625,
+                "right": 357,
+                "bottom": 597.109375,
+                "display": "grid",
+                "font": "15px",
+                "padding": "0px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__button",
+            "nodes": [
+              {
+                "text": "Keep my current settings",
+                "x": 33,
+                "y": 512.71875,
+                "w": 158,
+                "h": 84.390625,
+                "right": 191,
+                "bottom": 597.109375,
+                "display": "flex",
+                "font": "16px",
+                "padding": "10px 16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.35)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Confirm this local example",
+                "x": 199,
+                "y": 512.71875,
+                "w": 158,
+                "h": 84.390625,
+                "right": 357,
+                "bottom": 597.109375,
+                "display": "flex",
+                "font": "16px",
+                "padding": "10px 16px",
+                "border": "1px solid rgb(228, 186, 103)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "linear-gradient(115deg, color(srgb 0.920588 0.797059 0.552941), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "founder-initial-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/founder/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": [
+              {
+                "text": "Create the next chapter together",
+                "x": 13,
+                "y": 747.453125,
+                "w": 219.28125,
+                "h": 48,
+                "right": 232.28125,
+                "bottom": 795.453125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email your feedback",
+                "x": 13,
+                "y": 3019.46875,
+                "w": 202.75,
+                "h": 48,
+                "right": 215.75,
+                "bottom": 3067.46875,
+                "display": "inline-flex",
+                "font": "14px",
+                "padding": "11px 20px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Explore voluntary support",
+                "x": 13,
+                "y": 3435.328125,
+                "w": 175.8125,
+                "h": 48,
+                "right": 188.8125,
+                "bottom": 3483.328125,
+                "display": "inline-flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "founder-secondary-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/founder/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": [
+              {
+                "text": "Create the next chapter together",
+                "x": 13,
+                "y": -1499.546875,
+                "w": 219.28125,
+                "h": 48,
+                "right": 232.28125,
+                "bottom": -1451.546875,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email your feedback",
+                "x": 13,
+                "y": 772.46875,
+                "w": 202.75,
+                "h": 48,
+                "right": 215.75,
+                "bottom": 820.46875,
+                "display": "inline-flex",
+                "font": "14px",
+                "padding": "11px 20px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Explore voluntary support",
+                "x": 13,
+                "y": 1188.328125,
+                "w": 175.8125,
+                "h": 48,
+                "right": 188.8125,
+                "bottom": 1236.328125,
+                "display": "inline-flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": []
+          },
+          {
+            "sel": ".mp-form",
+            "nodes": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "sponsor-initial-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/sponsor/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": []
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": [
+              {
+                "text": "Let’s make something worth discovering",
+                "x": 17,
+                "y": 598.546875,
+                "w": 356,
+                "h": 61.78125,
+                "right": 373,
+                "bottom": 660.328125,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Open email draft",
+                "x": 13,
+                "y": 2504.84375,
+                "w": 364,
+                "h": 48,
+                "right": 377,
+                "bottom": 2552.84375,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Copy brief",
+                "x": 13,
+                "y": 2564.84375,
+                "w": 364,
+                "h": 48,
+                "right": 377,
+                "bottom": 2612.84375,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "sponsor-secondary-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/sponsor/",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": []
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": [
+              {
+                "text": "Let’s make something worth discovering",
+                "x": 17,
+                "y": -1351.453125,
+                "w": 356,
+                "h": 61.78125,
+                "right": 373,
+                "bottom": -1289.671875,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Open email draft",
+                "x": 13,
+                "y": 554.84375,
+                "w": 364,
+                "h": 48,
+                "right": 377,
+                "bottom": 602.84375,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Copy brief",
+                "x": 13,
+                "y": 614.84375,
+                "w": 364,
+                "h": 48,
+                "right": 377,
+                "bottom": 662.84375,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-form",
+            "nodes": [
+              {
+                "text": "COMPANY / WEBSITE\nTARGET COUNTRIES\nCAMPAIGN IDEA\nDATES / INDICATIVE BUDGET (OPTI",
+                "x": 13,
+                "y": 171.625,
+                "w": 364,
+                "h": 551.21875,
+                "right": 377,
+                "bottom": 722.84375,
+                "display": "grid",
+                "font": "14px",
+                "padding": "0px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/discover.html",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 900,
+          "vv": {
+            "w": 390,
+            "h": 900,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 139,
+                "y": 344,
+                "w": 83.640625,
+                "h": 48,
+                "right": 222.640625,
+                "bottom": 392,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "New chat\nHistory\nDonate",
+                "x": 22,
+                "y": 166,
+                "w": 360,
+                "h": 239,
+                "right": 382,
+                "bottom": 405,
+                "display": "block",
+                "font": "14px",
+                "padding": "12px",
+                "border": "1px solid rgb(112, 89, 56)",
+                "shadow": "rgba(0, 0, 0, 0.6) 0px 14px 44px 0px",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tools-keyboard-viewport-390",
+      "width": 390,
+      "url": "http://127.0.0.1:38435/discover.html",
+      "values": {
+        "viewport": {
+          "w": 390,
+          "h": 420,
+          "vv": {
+            "w": 390,
+            "h": 420,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "New chat\nHistory\nDonate",
+                "x": 22,
+                "y": 166,
+                "w": 360,
+                "h": 239,
+                "right": 382,
+                "bottom": 405,
+                "display": "block",
+                "font": "14px",
+                "padding": "12px",
+                "border": "1px solid rgb(112, 89, 56)",
+                "shadow": "rgba(0, 0, 0, 0.6) 0px 14px 44px 0px",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 139,
+                "y": 344,
+                "w": 83.640625,
+                "h": 48,
+                "right": 222.640625,
+                "bottom": 392,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "home-tools-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 447,
+                "y": 404.1875,
+                "w": 63.640625,
+                "h": 66.1875,
+                "right": 510.640625,
+                "bottom": 470.375,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-cinema-tools-content",
+            "nodes": [
+              {
+                "text": "🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deutsch\n🇮🇹 Italian",
+                "x": 432,
+                "y": 105,
+                "w": 360,
+                "h": 380.375,
+                "right": 792,
+                "bottom": 485.375,
+                "display": "block",
+                "font": "15px",
+                "padding": "14px",
+                "border": "1px solid rgb(112, 89, 56)",
+                "shadow": "rgba(0, 0, 0, 0.6) 0px 18px 50px 0px",
+                "bg": "none",
+                "color": "rgb(250, 245, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-closed-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-pill",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 356.28125,
+                "y": 746.515625,
+                "w": 87.4375,
+                "h": 48,
+                "right": 443.71875,
+                "bottom": 794.515625,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-support",
+            "nodes": [
+              {
+                "text": "Support",
+                "x": 356.28125,
+                "y": 746.515625,
+                "w": 87.4375,
+                "h": 48,
+                "right": 443.71875,
+                "bottom": 794.515625,
+                "display": "grid",
+                "font": "15px",
+                "padding": "0px",
+                "border": "0px none rgb(249, 243, 231)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(249, 243, 231)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-actions",
+            "nodes": [
+              {
+                "text": "Become a sponsor\nStreaming around the world\nMeet the engineer\nWhat’s new",
+                "x": 14,
+                "y": 854.515625,
+                "w": 772,
+                "h": 56.375,
+                "right": 786,
+                "bottom": 910.890625,
+                "display": "grid",
+                "font": "15px",
+                "padding": "0px",
+                "border": "0px none rgb(250, 245, 255)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(250, 245, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-footer-pill",
+            "nodes": [
+              {
+                "text": "Become a sponsor",
+                "x": 14,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 201,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Streaming around the world",
+                "x": 209,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 396,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Meet the engineer",
+                "x": 404,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 591,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "What’s new",
+                "x": 599,
+                "y": 854.515625,
+                "w": 187,
+                "h": 56.375,
+                "right": 786,
+                "bottom": 910.890625,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "donate-open-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-panel",
+            "nodes": [
+              {
+                "text": "INDEPENDENT IDEAS. SHARED POSSIBILITIES.\nBe part of what comes next\n\nBuilt indep",
+                "x": 160,
+                "y": 254.515625,
+                "w": 480,
+                "h": 539.109375,
+                "right": 640,
+                "bottom": 793.625,
+                "display": "grid",
+                "font": "15px",
+                "padding": "12px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(249, 243, 231)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-donate-value",
+            "nodes": [
+              {
+                "text": "US$5",
+                "x": 173,
+                "y": 461.453125,
+                "w": 146,
+                "h": 44,
+                "right": 319,
+                "bottom": 505.453125,
+                "display": "block",
+                "font": "13px",
+                "padding": "8px 6px",
+                "border": "1px solid rgb(255, 224, 154)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(255, 224, 154)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "US$10",
+                "x": 327,
+                "y": 461.453125,
+                "w": 146,
+                "h": 44,
+                "right": 473,
+                "bottom": 505.453125,
+                "display": "block",
+                "font": "13px",
+                "padding": "8px 6px",
+                "border": "1px solid rgba(247, 215, 135, 0.58)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(255, 255, 255)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "US$25",
+                "x": 481,
+                "y": 461.453125,
+                "w": 146,
+                "h": 44,
+                "right": 627,
+                "bottom": 505.453125,
+                "display": "block",
+                "font": "13px",
+                "padding": "8px 6px",
+                "border": "1px solid rgba(247, 215, 135, 0.58)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(255, 255, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-checkout",
+            "nodes": [
+              {
+                "text": "Continue securely with PayPal",
+                "x": 173,
+                "y": 681.03125,
+                "w": 454,
+                "h": 48,
+                "right": 627,
+                "bottom": 729.03125,
+                "display": "block",
+                "font": "14px",
+                "padding": "10px 16px",
+                "border": "0px none rgb(30, 25, 48)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "linear-gradient(120deg, rgb(255, 230, 156), rgb(237, 187, 75) 65%, rgb(255, 213, 115))",
+                "color": "rgb(30, 25, 48)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#ma-donate-amount",
+            "nodes": [
+              {
+                "text": "",
+                "x": 173,
+                "y": 548.890625,
+                "w": 454,
+                "h": 48.390625,
+                "right": 627,
+                "bottom": 597.28125,
+                "display": "block",
+                "font": "16px",
+                "padding": "10px 13px",
+                "border": "1px solid rgb(136, 107, 167)",
+                "shadow": "rgba(0, 0, 0, 0.5) 0px 2px 5px 0px inset, rgba(255, 255, 255, 0.07) 0px -1px 0px 0px inset",
+                "bg": "none",
+                "color": "rgb(250, 245, 255)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "auth-open-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#main-auth-modal",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 0,
+                "y": 0,
+                "w": 800,
+                "h": 1180,
+                "right": 800,
+                "bottom": 1180,
+                "display": "flex",
+                "font": "15px",
+                "padding": "24px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal > .premium-card",
+            "nodes": [
+              {
+                "text": "×\nUnlock Full Concierge\nContinue with Google\nOR CONTINUE WITH EMAIL\nLog In\nSign ",
+                "x": 50,
+                "y": 189.890625,
+                "w": 700,
+                "h": 800.203125,
+                "right": 750,
+                "bottom": 990.09375,
+                "display": "block",
+                "font": "15px",
+                "padding": "32px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.4) 0px 20px 60px 0px, rgba(255, 229, 183, 0.04) 0px 1px 0px 0px inset",
+                "bg": "linear-gradient(145deg, rgb(25, 17, 30), rgb(17, 11, 23) 78%)",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal .auth-close",
+            "nodes": [
+              {
+                "text": "×",
+                "x": 697,
+                "y": 197.28125,
+                "w": 44,
+                "h": 44,
+                "right": 741,
+                "bottom": 241.28125,
+                "display": "grid",
+                "font": "30px",
+                "padding": "0px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(228, 186, 103)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": "#main-auth-modal input",
+            "nodes": [
+              {
+                "text": "Mobile phone number with country code",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Full name (first registration)",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "SMS verification code",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "block",
+                "font": "14px",
+                "padding": "11px 14px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 83,
+                "y": 655.90625,
+                "w": 634,
+                "h": 57.09375,
+                "right": 717,
+                "bottom": 713,
+                "display": "block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Password",
+                "x": 83,
+                "y": 721,
+                "w": 634,
+                "h": 57.09375,
+                "right": 717,
+                "bottom": 778.09375,
+                "display": "block",
+                "font": "14px",
+                "padding": "16px 58px 16px 16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email Address",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Create Password",
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0,
+                "right": 0,
+                "bottom": 0,
+                "display": "inline-block",
+                "font": "14px",
+                "padding": "16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.32)",
+                "shadow": "rgba(0, 0, 0, 0.2) 0px 1px 5px 0px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "confirm-dialog-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-reference-dialog",
+            "nodes": [
+              {
+                "text": "Review this action\n\nReview this local interface notice. This check verifies long",
+                "x": 0,
+                "y": 0,
+                "w": 800,
+                "h": 1180,
+                "right": 800,
+                "bottom": 1180,
+                "display": "flex",
+                "font": "15px",
+                "padding": "16px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__panel",
+            "nodes": [
+              {
+                "text": "Review this action\n\nReview this local interface notice. This check verifies long",
+                "x": 176,
+                "y": 440.6875,
+                "w": 448,
+                "h": 298.625,
+                "right": 624,
+                "bottom": 739.3125,
+                "display": "grid",
+                "font": "15px",
+                "padding": "24px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.42)",
+                "shadow": "rgba(0, 0, 0, 0.6) 0px 24px 80px 0px, rgba(255, 239, 207, 0.1) 0px 1px 0px 0px inset",
+                "bg": "linear-gradient(145deg, color(srgb 0.0980392 0.0666667 0.117647 / 0.95), rgb(17, 11, 23))",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__actions",
+            "nodes": [
+              {
+                "text": "Keep my current settings\nConfirm this local example",
+                "x": 201,
+                "y": 650.71875,
+                "w": 398,
+                "h": 63.59375,
+                "right": 599,
+                "bottom": 714.3125,
+                "display": "grid",
+                "font": "15px",
+                "padding": "0px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-dialog__button",
+            "nodes": [
+              {
+                "text": "Keep my current settings",
+                "x": 201,
+                "y": 650.71875,
+                "w": 195,
+                "h": 63.59375,
+                "right": 396,
+                "bottom": 714.3125,
+                "display": "flex",
+                "font": "16px",
+                "padding": "10px 16px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.35)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Confirm this local example",
+                "x": 404,
+                "y": 650.71875,
+                "w": 195,
+                "h": 63.59375,
+                "right": 599,
+                "bottom": 714.3125,
+                "display": "flex",
+                "font": "16px",
+                "padding": "10px 16px",
+                "border": "1px solid rgb(228, 186, 103)",
+                "shadow": "color(srgb 0.894118 0.729412 0.403922 / 0.27) 0px 0px 0px 1px inset",
+                "bg": "linear-gradient(115deg, color(srgb 0.920588 0.797059 0.552941), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "founder-initial-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/founder/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": [
+              {
+                "text": "Create the next chapter together",
+                "x": 13,
+                "y": 544.265625,
+                "w": 219.28125,
+                "h": 48,
+                "right": 232.28125,
+                "bottom": 592.265625,
+                "display": "inline-flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email your feedback",
+                "x": 13,
+                "y": 2191.390625,
+                "w": 202.75,
+                "h": 48,
+                "right": 215.75,
+                "bottom": 2239.390625,
+                "display": "inline-flex",
+                "font": "14px",
+                "padding": "11px 20px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Explore voluntary support",
+                "x": 417,
+                "y": 1992.84375,
+                "w": 175.8125,
+                "h": 48,
+                "right": 592.8125,
+                "bottom": 2040.84375,
+                "display": "inline-flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "founder-secondary-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/founder/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": [
+              {
+                "text": "Create the next chapter together",
+                "x": 13,
+                "y": -995.734375,
+                "w": 219.28125,
+                "h": 48,
+                "right": 232.28125,
+                "bottom": -947.734375,
+                "display": "inline-flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Email your feedback",
+                "x": 13,
+                "y": 651.390625,
+                "w": 202.75,
+                "h": 48,
+                "right": 215.75,
+                "bottom": 699.390625,
+                "display": "inline-flex",
+                "font": "14px",
+                "padding": "11px 20px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Explore voluntary support",
+                "x": 417,
+                "y": 452.84375,
+                "w": 175.8125,
+                "h": 48,
+                "right": 592.8125,
+                "bottom": 500.84375,
+                "display": "inline-flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": []
+          },
+          {
+            "sel": ".mp-form",
+            "nodes": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "sponsor-initial-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/sponsor/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": []
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": [
+              {
+                "text": "Let’s make something worth discovering",
+                "x": 25,
+                "y": 465.125,
+                "w": 361.703125,
+                "h": 48,
+                "right": 386.703125,
+                "bottom": 513.125,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Open email draft",
+                "x": 13,
+                "y": 1743.578125,
+                "w": 173.421875,
+                "h": 48,
+                "right": 186.421875,
+                "bottom": 1791.578125,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Copy brief",
+                "x": 198.421875,
+                "y": 1743.578125,
+                "w": 81.75,
+                "h": 48,
+                "right": 280.171875,
+                "bottom": 1791.578125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "sponsor-secondary-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/sponsor/",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": ".mf-pill",
+            "nodes": []
+          },
+          {
+            "sel": ".mp-pill",
+            "nodes": [
+              {
+                "text": "Let’s make something worth discovering",
+                "x": 25,
+                "y": -523.875,
+                "w": 361.703125,
+                "h": 48,
+                "right": 386.703125,
+                "bottom": -475.875,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Open email draft",
+                "x": 13,
+                "y": 754.578125,
+                "w": 173.421875,
+                "h": 48,
+                "right": 186.421875,
+                "bottom": 802.578125,
+                "display": "flex",
+                "font": "14px",
+                "padding": "11px 19px",
+                "border": "1px solid color(srgb 0.894118 0.729412 0.403922 / 0.38)",
+                "shadow": "rgba(255, 255, 255, 0.333) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.133) 0px 4px 16px 0px",
+                "bg": "linear-gradient(115deg, color(srgb 0.915294 0.783529 0.523137), rgb(228, 186, 103))",
+                "color": "rgb(33, 21, 9)",
+                "animation": "none",
+                "hidden": false
+              },
+              {
+                "text": "Copy brief",
+                "x": 198.421875,
+                "y": 754.578125,
+                "w": 81.75,
+                "h": 48,
+                "right": 280.171875,
+                "bottom": 802.578125,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".mp-form",
+            "nodes": [
+              {
+                "text": "COMPANY / WEBSITE\nTARGET COUNTRIES\nCAMPAIGN IDEA\nDATES / INDICATIVE BUDGET (OPTI",
+                "x": 13,
+                "y": 371.359375,
+                "w": 774,
+                "h": 491.21875,
+                "right": 787,
+                "bottom": 862.578125,
+                "display": "grid",
+                "font": "14px",
+                "padding": "0px",
+                "border": "0px none rgb(244, 240, 233)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "discover-tools-800",
+      "width": 800,
+      "url": "http://127.0.0.1:38435/discover.html",
+      "values": {
+        "viewport": {
+          "w": 800,
+          "h": 1180,
+          "vv": {
+            "w": 800,
+            "h": 1180,
+            "top": 0
+          }
+        },
+        "overflow": 0,
+        "selectors": [
+          {
+            "sel": "#ma-donate-shortcut",
+            "nodes": [
+              {
+                "text": "Donate",
+                "x": 549,
+                "y": 335,
+                "w": 83.640625,
+                "h": 48,
+                "right": 632.640625,
+                "bottom": 383,
+                "display": "flex",
+                "font": "12px",
+                "padding": "12px 10px",
+                "border": "0px none rgb(186, 177, 189)",
+                "shadow": "none",
+                "bg": "none",
+                "color": "rgb(186, 177, 189)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          },
+          {
+            "sel": ".ma-reference-header-tools-panel",
+            "nodes": [
+              {
+                "text": "New chat\nHistory\n🇺🇸 English\n🇧🇷 Português\n🇪🇸 Español\n🇫🇷 Français\n🇩🇪 Deu",
+                "x": 432,
+                "y": 105,
+                "w": 360,
+                "h": 291,
+                "right": 792,
+                "bottom": 396,
+                "display": "block",
+                "font": "14px",
+                "padding": "12px",
+                "border": "1px solid rgb(112, 89, 56)",
+                "shadow": "rgba(0, 0, 0, 0.6) 0px 14px 44px 0px",
+                "bg": "none",
+                "color": "rgb(244, 240, 233)",
+                "animation": "none",
+                "hidden": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "finished": true
+}

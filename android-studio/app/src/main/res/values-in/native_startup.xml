@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">Siapkan suara dan bioskop terdekat</string>
+    <string name="permission_setup_body">Mikrofon memungkinkan Anda berbicara dengan Jonas, asisten AI Anda. Perkiraan lokasi membantu menemukan bioskop terdekat. Perekaman atau pencarian lokasi hanya dimulai saat Anda memilih fitur tersebut. Kedua izin bersifat opsional; Anda tetap dapat menggunakan teks.</string>
+    <string name="permission_setup_allow">Pilih izin</string>
+    <string name="permission_setup_skip">Jangan sekarang</string>
+    <string name="intro_skip">Lewati</string>
+</resources>

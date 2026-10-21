@@ -2,6 +2,8 @@
    (Category / Format, Mood, Platform, etc.) on all device widths.
    Overrides the broad overflow-wrap:anywhere rule from the IA layer. */
 html body.page-home :is(
+  #questionnaire-box .crit-toggle-label,
+  #questionnaire-box .crit-toggle-summary,
   #questionnaire-box label,
   #questionnaire-box .ma-filter-label,
   #questionnaire-box .ma-filter-label > span,
@@ -19,6 +21,8 @@ html body.page-home :is(
   min-width:0!important;
 }
 html body.page-home :is(
+  #questionnaire-box .crit-toggle-label,
+  #questionnaire-box .crit-toggle-summary,
   .ma-filter-label > span,
   .ma-filter-label small
 ){

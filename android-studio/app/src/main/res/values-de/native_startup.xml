@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">Sprache und Kinos in der Nähe einrichten</string>
+    <string name="permission_setup_body">Mit dem Mikrofon kannst du mit Jonas, deinem KI-Assistenten, sprechen. Der ungefähre Standort hilft, Kinos in der Nähe zu finden. Aufnahme oder Standortabfrage starten erst, wenn du die jeweilige Funktion auswählst. Beide Berechtigungen sind freiwillig; du kannst weiterhin Text verwenden.</string>
+    <string name="permission_setup_allow">Berechtigungen auswählen</string>
+    <string name="permission_setup_skip">Jetzt nicht</string>
+    <string name="intro_skip">Überspringen</string>
+</resources>

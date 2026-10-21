@@ -7,10 +7,12 @@
   var positionKey='matchapp-jonas-header-drag-v1',floating=false,preference=null,point=null,drag=null,suppressClick=false,moveListenersInstalled=false;
   try{var saved=JSON.parse(localStorage.getItem(positionKey)||'null');if(Number.isFinite(saved?.x)&&Number.isFinite(saved?.y)){preference={x:Math.max(0,Math.min(1,saved.x)),y:Math.max(0,Math.min(1,saved.y))};floating=true;}}catch(_){}
   var words={en:'App controls',pt:'Controles do app',es:'Controles de la app',fr:'Commandes de l’app',de:'App-Steuerung',it:'Controlli dell’app',tr:'Uygulama kontrolleri',ru:'Управление приложением',ar:'أدوات التطبيق',hi:'ऐप नियंत्रण',id:'Kontrol aplikasi',ja:'アプリの操作',ko:'앱 설정',zh:'应用控制'};
+  var assistantWords={en:['Jonas · AI assistant','Tap to talk'],pt:['Jonas · assistente de IA','Toque para conversar'],es:['Jonas · asistente de IA','Toca para hablar'],fr:['Jonas · assistant IA','Touchez pour parler'],de:['Jonas · KI-Assistent','Tippen zum Sprechen'],it:['Jonas · assistente IA','Tocca per parlare'],tr:['Jonas · yapay zekâ asistanı','Konuşmak için dokun'],ru:['Йонас · ИИ-помощник','Нажмите для беседы'],ar:['جوناس · مساعد ذكاء اصطناعي','اضغط للتحدث'],hi:['जोनस · AI सहायक','बात करने के लिए टैप करें'],id:['Jonas · asisten AI','Ketuk untuk bicara'],ja:['ジョナス · AIアシスタント','タップして話す'],ko:['조나스 · AI 도우미','눌러서 대화하기'],zh:['乔纳斯 · AI助手','轻点开始对话']};
   var moveWords={en:['Return Jonas to header','Drag to move Jonas. Alt + arrow keys move him; Alt + Home returns him to the header.'],pt:['Voltar Jonas ao cabeçalho','Arraste para mover Jonas. Alt + setas movem; Alt + Home volta ao cabeçalho.'],es:['Devolver a Jonas al encabezado','Arrastra para mover a Jonas. Alt + flechas lo mueven; Alt + Inicio lo devuelve al encabezado.'],fr:['Replacer Jonas dans l’en-tête','Faites glisser Jonas. Alt + les flèches le déplacent ; Alt + Début le replace dans l’en-tête.'],de:['Jonas zurück in die Kopfzeile','Ziehe Jonas zum Verschieben. Alt + Pfeiltasten bewegen ihn; Alt + Pos1 bringt ihn zur Kopfzeile zurück.'],it:['Riporta Jonas nell’intestazione','Trascina Jonas per spostarlo. Alt + frecce lo muovono; Alt + Home lo riporta nell’intestazione.'],tr:['Jonas’ı üst başlığa döndür','Jonas’ı taşımak için sürükleyin. Alt + ok tuşları taşır; Alt + Home üst başlığa döndürür.'],ru:['Вернуть Йонаса в шапку','Перетащите Йонаса. Alt + стрелки перемещают его; Alt + Home возвращает в шапку.'],ar:['إعادة جوناس إلى الترويسة','اسحب جوناس لتحريكه. Alt مع الأسهم يحركه؛ Alt مع Home يعيده إلى الترويسة.'],hi:['जोनस को शीर्ष पट्टी में लौटाएँ','जोनस को खींचकर ले जाएँ। Alt + तीर कुंजियाँ उसे चलाती हैं; Alt + Home शीर्ष पट्टी में लौटाता है।'],id:['Kembalikan Jonas ke header','Seret untuk memindahkan Jonas. Alt + panah memindahkannya; Alt + Home mengembalikannya ke header.'],ja:['ジョナスをヘッダーに戻す','ドラッグで移動できます。Alt＋矢印キーで移動し、Alt＋Homeでヘッダーに戻ります。'],ko:['조나스를 머리글로 되돌리기','드래그하여 이동하세요. Alt + 방향키로 이동하고 Alt + Home으로 머리글에 되돌립니다.'],zh:['将乔纳斯移回页眉','拖动可移动乔纳斯。Alt + 方向键移动，Alt + Home 返回页眉。']};
   html.setAttribute('data-ma-jonas-header','pending');
   function owns(root){return !!root && (root===active || /^(header|dragged)$/.test(root.dataset.jonasPlacement||''));}
-  function bounds(){var v=window.visualViewport;return window.MatchAppJonasPlacement?.bounds(64,64)||{minX:(v?.offsetLeft||0)+12,minY:(v?.offsetTop||0)+12,maxX:Math.max(12,(v?.offsetLeft||0)+(v?.width||innerWidth)-76),maxY:Math.max(12,(v?.offsetTop||0)+(v?.height||innerHeight)-76)};}
+  function launcherSize(){var r=active?.getBoundingClientRect();return{width:r?.width||144,height:r?.height||132};}
+  function bounds(){var v=window.visualViewport,size=launcherSize(),left=v?.offsetLeft||0,top=v?.offsetTop||0;return window.MatchAppJonasPlacement?.bounds(size.width,size.height)||{minX:left+12,minY:top+12,maxX:Math.max(left+12,left+(v?.width||innerWidth)-size.width-12),maxY:Math.max(top+12,top+(v?.height||innerHeight)-size.height-12)};}
   function clamp(value,min,max){return Math.max(min,Math.min(max,value));}
   function syncReturn(){if(returnButton)returnButton.hidden=!floating;slot?.toggleAttribute('data-jonas-floated',floating);}
   function floatAt(x,y){
@@ -26,13 +28,13 @@
   function nearestClear(x,y){
     // A small nearby clear gap is preferable on release. Dense content never
     // cancels an intentional placement: beyond24px, the chosen point wins.
-    var blocks=[],b=bounds();
+    var blocks=[],b=bounds(),size=launcherSize();
     function visible(node){if(active.contains(node)||node.closest('#ma-ambient-panel,#ma-jonas-home-panel,script,style,svg,option,[hidden],.ma-reference-header-move-help'))return false;var closed=node.closest('details:not([open])');if(closed&&!closed.querySelector('summary')?.contains(node))return false;var c=getComputedStyle(node);return c.clipPath!=='inset(50%)'&&c.clip!=='rect(0px, 0px, 0px, 0px)'&&node.checkVisibility?.({checkVisibilityCSS:true,checkOpacity:true})!==false;}
     function add(r){if(r.width>1&&r.height>1&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth)blocks.push(r);}
     document.querySelectorAll('a,button,input,select,textarea,summary,[role="button"],#trending-rail,.marquee-viewport,nav.ma-cinema-dock,ins.adsbygoogle,iframe,.ad-banner-container,.sidebar-ad-left,.sidebar-ad-right').forEach(function(node){if(visible(node))add(node.getBoundingClientRect());});
     var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),text;
     while(text=walker.nextNode()){if(!text.textContent.trim()||!visible(text.parentElement))continue;var range=document.createRange();range.selectNodeContents(text);Array.from(range.getClientRects?.()||[]).forEach(add);}
-    function clear(px,py){return !blocks.some(function(r){return px-8<r.right&&px+72>r.left&&py-8<r.bottom&&py+72>r.top;});}
+    function clear(px,py){return !blocks.some(function(r){return px-8<r.right&&px+size.width+8>r.left&&py-8<r.bottom&&py+size.height+8>r.top;});}
     if(clear(x,y))return{x:x,y:y};
     for(var distance=8;distance<=24;distance+=8)for(var axis of [[0,-1],[-1,0],[1,0],[0,1],[-1,-1],[1,-1],[-1,1],[1,1]]){var px=clamp(x+axis[0]*distance,b.minX,b.maxX),py=clamp(y+axis[1]*distance,b.minY,b.maxY);if(clear(px,py))return{x:px,y:py};}
     return{x:x,y:y};
@@ -40,7 +42,7 @@
   function installMove(root){
     if(root.dataset.referenceHeaderMove==='1')return;root.dataset.referenceHeaderMove='1';
     var bubble=root.querySelector('.ja-bubble,.jh-bubble');if(!bubble)return;
-    bubble.setAttribute('aria-describedby','ma-reference-header-move-help');bubble.setAttribute('aria-keyshortcuts','Alt+ArrowUp Alt+ArrowDown Alt+ArrowLeft Alt+ArrowRight Alt+Home');
+    bubble.setAttribute('aria-describedby',root.id+'-assistant-invitation ma-reference-header-move-help');bubble.setAttribute('aria-keyshortcuts','Alt+ArrowUp Alt+ArrowDown Alt+ArrowLeft Alt+ArrowRight Alt+Home');
     bubble.addEventListener('pointerdown',function(event){if(event.button!==0&&event.pointerType==='mouse')return;var r=root.getBoundingClientRect();drag={id:event.pointerId,x:event.clientX,y:event.clientY,left:r.left,top:r.top,moved:false};bubble.setPointerCapture?.(event.pointerId);},true);
     if(!moveListenersInstalled){moveListenersInstalled=true;
     window.addEventListener('pointermove',function(event){if(!drag||drag.id!==event.pointerId)return;var dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(!drag.moved&&Math.hypot(dx,dy)<6)return;drag.moved=true;floatAt(drag.left+dx,drag.top+dy);if(event.cancelable)event.preventDefault();},{passive:false});
@@ -88,18 +90,32 @@
     // Keep old saved coordinates untouched. A header launcher never consumes
     // or rewrites the user's earlier free-screen placement preference.
     if(!floating)['left','right','top','bottom','position','transform'].forEach(function(name){root.style.removeProperty(name);});
-    root.style.setProperty('--ma-jonas-launcher-size','64px');
+    root.style.removeProperty('--ma-jonas-launcher-size');
+    ensureCaption(root);labelAssistant(root);
     if(floating){if(changed||root.parentElement!==document.body)restoreFloating();}
     else if(root.parentElement!==slot)slot.appendChild(root);
     syncReturn();
     return true;
   }
   function chooseLauncher(){return document.getElementById('ma-ambient-jonas')||document.getElementById('ma-jonas-home');}
+  function currentLanguage(){var selected='';try{selected=localStorage.getItem('match_lang')||'';}catch(_){}return String(selected||window.MATCH_LANG||html.lang||'en').toLowerCase().split('-')[0];}
+  function ensureCaption(root){
+    var bubble=root.querySelector('.ja-bubble,.jh-bubble');if(!bubble)return;
+    if(!bubble.id)bubble.id=root.id+'-launcher';
+    var caption=root.querySelector(':scope > .ma-reference-jonas-caption');
+    if(!caption){caption=document.createElement('label');caption.className='ma-reference-jonas-caption';caption.id=root.id+'-assistant-caption';caption.htmlFor=bubble.id;caption.innerHTML='<strong></strong><span></span>';bubble.insertAdjacentElement('afterend',caption);}
+    caption.querySelector('span').id=root.id+'-assistant-invitation';
+  }
+  function labelAssistant(root){
+    if(!root)return;var copy=assistantWords[currentLanguage()]||assistantWords.en,caption=root.querySelector(':scope > .ma-reference-jonas-caption'),bubble=root.querySelector('.ja-bubble,.jh-bubble');
+    if(caption){caption.dir=/^ar$/.test(currentLanguage())?'rtl':'ltr';var title=caption.querySelector('strong'),hint=caption.querySelector('span');if(title.textContent!==copy[0])title.textContent=copy[0];if(hint.textContent!==copy[1])hint.textContent=copy[1];}
+    if(bubble)bubble.setAttribute('aria-label',copy[0]);
+  }
   function labelTools(){
-    var selected='';try{selected=localStorage.getItem('match_lang')||'';}catch(_){}
-    var lang=String(selected||window.MATCH_LANG||html.lang||'en').toLowerCase().split('-')[0],label=words[lang]||words.en;
+    var lang=currentLanguage(),label=words[lang]||words.en;
     document.querySelectorAll('.ma-reference-header-tools>summary').forEach(function(summary){summary.setAttribute('aria-label',label);summary.title=label;});
     var moveCopy=moveWords[lang]||moveWords.en;if(returnButton){returnButton.setAttribute('aria-label',moveCopy[0]);returnButton.title=moveCopy[0];}if(help)help.textContent=moveCopy[1];
+    labelAssistant(active);
   }
   function compactOriginal(original){
     if(original.id==='mh-topbox'||original.id==='ref-explore-header')return;
@@ -114,6 +130,14 @@
     var panel=document.createElement('div');panel.className='ma-reference-header-tools-panel';
     controls.forEach(function(node){panel.appendChild(node);});tools.append(summary,panel);original.appendChild(tools);
     tools.addEventListener('keydown',function(event){if(event.key==='Escape'){tools.open=false;summary.focus();}});
+    panel.addEventListener('click',function(event){
+      var action=event.target.closest?.('.jonas-top-history,.jonas-top-new');if(!action)return;
+      // These original actions open a second surface. Release the tools panel
+      // after their existing handlers run so it cannot cover the destination.
+      tools.open=false;
+      var destination=document.querySelector(action.matches('.jonas-top-history')?'#ai-sidebar .ai-sidebar-fold':'#discover-new-input');
+      destination?.focus({preventScroll:true});
+    });
   }
   function findOriginal(){
     var candidates=document.querySelectorAll('#mh-topbox,#ref-explore-header,header.app-header,header.ebook-page-top,header.journey-header,header.hub-header');
@@ -148,6 +172,7 @@
     var height=Math.ceil(header.getBoundingClientRect().height);
     if(space.style.height!==height+'px')space.style.height=height+'px';
     if(html.style.getPropertyValue('--ma-reference-header-height')!==height+'px')html.style.setProperty('--ma-reference-header-height',height+'px');
+    if(floating&&!drag)restoreFloating();
   }
   function schedule(){if(!frame)frame=requestAnimationFrame(measure);}
   function mount(){

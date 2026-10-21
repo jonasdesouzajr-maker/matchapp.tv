@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">音声と近くの映画館を設定</string>
+    <string name="permission_setup_body">マイクを使うとAIアシスタントのJonasと話せます。おおよその位置情報は近くの映画館を探すために使います。録音や位置情報の取得は、その機能を選んだときだけ始まります。どちらの許可も任意で、許可しなくても文字で会話できます。</string>
+    <string name="permission_setup_allow">権限を選択</string>
+    <string name="permission_setup_skip">今はしない</string>
+    <string name="intro_skip">スキップ</string>
+</resources>

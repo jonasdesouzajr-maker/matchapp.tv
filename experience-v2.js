@@ -136,7 +136,7 @@
       const target = document.getElementById('match-packs-section');
       if(target){
         target.setAttribute('tabindex','-1');
-        target.scrollIntoView({behavior:'smooth',block:'start'});
+        window.MatchAppActivatedScroll?.toStart(target,{initial:true}) ?? target.scrollIntoView({behavior:'auto',block:'start'});
         setTimeout(()=>target.focus({preventScroll:true}),500);
         return;
       }

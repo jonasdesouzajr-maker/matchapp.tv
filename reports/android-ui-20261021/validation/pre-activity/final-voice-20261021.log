@@ -1,0 +1,34 @@
+✔ debug preview bundles the exact validated web assets, and release contains none (1.514954ms)
+✔ WebView serves the preview only to DEBUG builds at first party HTTPS URLs (0.674449ms)
+✔ Jonas AI is a circular created face that stays on screen while scrolling (0.514002ms)
+✔ Voice final transcript automatically triggers the existing Ask AI pipeline once (0.43916ms)
+✔ Top Titles drag is Android-only, two-way, tap-safe, and preserves vertical page movement (0.65485ms)
+✔ Every adult launcher size is padded, the startup mark is circular and Kids icons are unmodified (1.18855ms)
+✔ Kids page exposes only the voice-first Luma assistant, not a typed Ask AI surface (113.459684ms)
+✔ Floating Luma is compact, draggable, stateful and persists a safe viewport-relative position (0.520962ms)
+✔ Tapping Luma speaks the prompt, then starts the hidden Kids microphone and speaks the approved answer (20.037793ms)
+✔ Luma voice remains childlike, local-first and audio-only for Kids results (1.06665ms)
+✔ adult native denial has fourteen authored locale messages and retains typing without settings or permission retries (106.366486ms)
+✔ native denial follows the selected app language at error time, including regional aliases (5.506667ms)
+✔ browser microphone guidance and the isolated Kids denial behavior remain unchanged (36.173604ms)
+✔ all supported dictionaries have complete primary UI, profile and current how-to copy (28.155787ms)
+✔ Explore translates every authored navigation/card and preserves destinations for every language (170.617382ms)
+✔ installed device voices cannot replace the approved provider identities (6.926239ms)
+✔ wrong-language or female local voices never speak and failed cloud ends exactly once (5.482361ms)
+✔ language switch cancels provider playback without substituting a device voice (12.420247ms)
+✔ speech-recognition language switch discards previous-language interim/final transcript (7.880153ms)
+✔ Home paints body before loading SDK while retaining dependency order and one SDK owner (2.228692ms)
+✔ exact recorded greetings use same-origin audio with no synthesis/auth request (14.29871ms)
+✔ late-inserted cookie controls are not dropped behind another queued localization paint (42.456141ms)
+✔ live dictation keeps typed prefix and accumulates earlier final results (2.858675ms)
+✔ keyboard edits win over late recognizer results (0.920283ms)
+✔ native final dictation handles punctuation and empty results (1.105718ms)
+✔ Kids retains original voice path (0.527621ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 880.574949

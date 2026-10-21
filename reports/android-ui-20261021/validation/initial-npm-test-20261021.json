@@ -1,0 +1,15 @@
+{
+  "gate": "npm-test",
+  "command": [
+    "npm",
+    "test"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": null,
+  "startedAt": "2026-10-21T19:16:43.189398+00:00",
+  "finishedAt": "2026-10-21T19:19:37.089756+00:00",
+  "durationSeconds": 173.9,
+  "exitCode": 1,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/initial-npm-test-20261021.log",
+  "phase": "Initial integration run before stale mirror/cache/scroll-assertion corrections"
+}

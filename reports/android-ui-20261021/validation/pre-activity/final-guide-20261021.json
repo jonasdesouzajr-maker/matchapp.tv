@@ -1,0 +1,21 @@
+{
+  "gate": "guide",
+  "command": [
+    "node",
+    "--test",
+    "--test-isolation=none",
+    "--test-force-exit",
+    "--test-reporter=spec",
+    "tests/premium-guide-20261014.test.cjs",
+    "tests/premium-guide-languages-20261021.test.cjs",
+    "tests/activated-scroll-20261021.test.cjs"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": null,
+  "startedAt": "2026-10-21T19:29:33.578966+00:00",
+  "finishedAt": "2026-10-21T19:29:35.208900+00:00",
+  "durationSeconds": 1.63,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/pre-activity/final-guide-20261021.log",
+  "checkpoint": "Passing pre-Activity-localization snapshot; later Activity presentation change requires focused tests and final cache/site audit."
+}

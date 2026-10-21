@@ -1,0 +1,3749 @@
+{
+  "scope": "Local candidate geometry and original-image resolution; external services blocked. This is not field performance or a physical 12K display test.",
+  "cases": [
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/brand/matchapp-icon-approved.png?v=20261013-approved1",
+          "srcset": "",
+          "rendered": {
+            "w": 56.099998474121094,
+            "h": 56.10000228881836
+          },
+          "natural": {
+            "w": 1536,
+            "h": 1536
+          },
+          "fit": "contain",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 72,
+            "h": 72
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 185w, https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 342w, https://image.tmdb.org/t/p/w500/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 500w, https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 780w",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(228%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-408%22%20cy%3D%22-168%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-367%22%20cy%3D%22-174%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-357%22%20cy%3D%22-175%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-355%22%20cy%3D%2213%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-354%22%20cy%3D%2236%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-74%22%20cy%3D%222%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-284%22%20cy%3D%2235%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-56%22%20cy%3D%22-186%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%221%22%20cy%3D%22-26%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22470%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EQuem%20%C3%89%20Voc%C3%AA%3F%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 283,
+            "h": 425
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/1l7wbZmdtys.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 87.5,
+            "h": 115.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(67%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-209%22%20cy%3D%22-29%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-458%22%20cy%3D%22-119%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-380%22%20cy%3D%2220%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-500%22%20cy%3D%22-225%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-390%22%20cy%3D%22-106%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-83%22%20cy%3D%22-54%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-6%22%20cy%3D%22-122%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-407%22%20cy%3D%2219%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-227%22%20cy%3D%22-38%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22437%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EAbsolutely%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22503%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EFabulous%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 283,
+            "h": 425
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 185w, https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 342w, https://image.tmdb.org/t/p/w500/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 500w, https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 780w",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "home-hero",
+          "rect": {
+            "x": 0,
+            "y": 158,
+            "width": 390,
+            "height": 162.078125,
+            "top": 158,
+            "right": 390,
+            "bottom": 320.078125,
+            "left": 0
+          },
+          "source": "linear-gradient(90deg, rgba(8, 5, 14, 0.86) 0%, rgba(8, 5, 14, 0.314) 52%, rgba(8, 5, 14, 0) 85%), url(\"http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp\")",
+          "fit": "auto, cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 322.69999999552965,
+          "transfer": 97485,
+          "start": 36
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp",
+          "duration": 99.19999999552965,
+          "transfer": 1325522,
+          "start": 246.39999999850988
+        }
+      ]
+    },
+    {
+      "route": "/explore.html",
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 80,
+            "h": 80
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "ref-explore-hero",
+          "rect": {
+            "x": 0,
+            "y": 166,
+            "width": 389.984375,
+            "height": 241.453125,
+            "top": 166,
+            "right": 389.984375,
+            "bottom": 407.453125,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-hero.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--premiere",
+          "rect": {
+            "x": 0,
+            "y": 415.453125,
+            "width": 389.984375,
+            "height": 88.265625,
+            "top": 415.453125,
+            "right": 389.984375,
+            "bottom": 503.71875,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--weekly",
+          "rect": {
+            "x": 0,
+            "y": 511.71875,
+            "width": 389.984375,
+            "height": 88.265625,
+            "top": 511.71875,
+            "right": 389.984375,
+            "bottom": 599.984375,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--book",
+          "rect": {
+            "x": 0,
+            "y": 607.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 607.984375,
+            "right": 124.65625,
+            "bottom": 711.984375,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-books.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--chef",
+          "rect": {
+            "x": 132.65625,
+            "y": 607.984375,
+            "width": 124.671875,
+            "height": 104,
+            "top": 607.984375,
+            "right": 257.328125,
+            "bottom": 711.984375,
+            "left": 132.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-food.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--news",
+          "rect": {
+            "x": 265.328125,
+            "y": 607.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 607.984375,
+            "right": 389.984375,
+            "bottom": 711.984375,
+            "left": 265.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-news.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--calendar",
+          "rect": {
+            "x": 0,
+            "y": 719.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 719.984375,
+            "right": 124.65625,
+            "bottom": 823.984375,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-events.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--star",
+          "rect": {
+            "x": 132.65625,
+            "y": 719.984375,
+            "width": 124.671875,
+            "height": 104,
+            "top": 719.984375,
+            "right": 257.328125,
+            "bottom": 823.984375,
+            "left": 132.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-music.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--spark",
+          "rect": {
+            "x": 265.328125,
+            "y": 719.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 719.984375,
+            "right": 389.984375,
+            "bottom": 823.984375,
+            "left": 265.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-ai.svg\")",
+          "fit": "cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-hero.jpg",
+          "duration": 30.700000002980232,
+          "transfer": 187253,
+          "start": 78.79999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg",
+          "duration": 28.600000001490116,
+          "transfer": 215463,
+          "start": 81.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg",
+          "duration": 27.399999998509884,
+          "transfer": 119808,
+          "start": 81.79999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-books.jpg",
+          "duration": 27,
+          "transfer": 112148,
+          "start": 82.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-food.jpg",
+          "duration": 34.69999999552965,
+          "transfer": 77944,
+          "start": 83
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-news.jpg",
+          "duration": 34.399999998509884,
+          "transfer": 45324,
+          "start": 83.39999999850988
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-events.jpg",
+          "duration": 34.30000000447035,
+          "transfer": 111200,
+          "start": 83.69999999552965
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-music.jpg",
+          "duration": 54.19999999552965,
+          "transfer": 37748,
+          "start": 84
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-ai.svg",
+          "duration": 53,
+          "transfer": 1870,
+          "start": 84.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 20.799999997019768,
+          "transfer": 97485,
+          "start": 124.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/blink.jpg",
+          "duration": 23.899999998509884,
+          "transfer": 102665,
+          "start": 124.39999999850988
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/smile.jpg",
+          "duration": 14.899999998509884,
+          "transfer": 103166,
+          "start": 206.19999999552965
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 3
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/brand/matchapp-icon-approved.png?v=20261013-approved1",
+          "srcset": "",
+          "rendered": {
+            "w": 56.099998474121094,
+            "h": 56.10000228881836
+          },
+          "natural": {
+            "w": 1536,
+            "h": 1536
+          },
+          "fit": "contain",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 72,
+            "h": 72
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 185w, https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 342w, https://image.tmdb.org/t/p/w500/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 500w, https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 780w",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 185w, https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 342w, https://image.tmdb.org/t/p/w500/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 500w, https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 780w",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/1l7wbZmdtys.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 87.5,
+            "h": 115.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 185w, https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 342w, https://image.tmdb.org/t/p/w500/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 500w, https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 780w",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 185w, https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 342w, https://image.tmdb.org/t/p/w500/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 500w, https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 780w",
+          "rendered": {
+            "w": 87.5,
+            "h": 117.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "home-hero",
+          "rect": {
+            "x": 0,
+            "y": 158,
+            "width": 390,
+            "height": 162.078125,
+            "top": 158,
+            "right": 390,
+            "bottom": 320.078125,
+            "left": 0
+          },
+          "source": "linear-gradient(90deg, rgba(8, 5, 14, 0.86) 0%, rgba(8, 5, 14, 0.314) 52%, rgba(8, 5, 14, 0) 85%), url(\"http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp\")",
+          "fit": "auto, cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 342.8999999985099,
+          "transfer": 97485,
+          "start": 22.899999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp",
+          "duration": 106.40000000596046,
+          "transfer": 1325522,
+          "start": 253.59999999403954
+        }
+      ]
+    },
+    {
+      "route": "/explore.html",
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 3
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 80,
+            "h": 80
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "ref-explore-hero",
+          "rect": {
+            "x": 0,
+            "y": 166,
+            "width": 389.984375,
+            "height": 241.453125,
+            "top": 166,
+            "right": 389.984375,
+            "bottom": 407.453125,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-hero.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--premiere",
+          "rect": {
+            "x": 0,
+            "y": 415.453125,
+            "width": 389.984375,
+            "height": 88.265625,
+            "top": 415.453125,
+            "right": 389.984375,
+            "bottom": 503.71875,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--weekly",
+          "rect": {
+            "x": 0,
+            "y": 511.71875,
+            "width": 389.984375,
+            "height": 88.265625,
+            "top": 511.71875,
+            "right": 389.984375,
+            "bottom": 599.984375,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--book",
+          "rect": {
+            "x": 0,
+            "y": 607.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 607.984375,
+            "right": 124.65625,
+            "bottom": 711.984375,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-books.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--chef",
+          "rect": {
+            "x": 132.65625,
+            "y": 607.984375,
+            "width": 124.671875,
+            "height": 104,
+            "top": 607.984375,
+            "right": 257.328125,
+            "bottom": 711.984375,
+            "left": 132.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-food.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--news",
+          "rect": {
+            "x": 265.328125,
+            "y": 607.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 607.984375,
+            "right": 389.984375,
+            "bottom": 711.984375,
+            "left": 265.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-news.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--calendar",
+          "rect": {
+            "x": 0,
+            "y": 719.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 719.984375,
+            "right": 124.65625,
+            "bottom": 823.984375,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-events.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--star",
+          "rect": {
+            "x": 132.65625,
+            "y": 719.984375,
+            "width": 124.671875,
+            "height": 104,
+            "top": 719.984375,
+            "right": 257.328125,
+            "bottom": 823.984375,
+            "left": 132.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-music.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--spark",
+          "rect": {
+            "x": 265.328125,
+            "y": 719.984375,
+            "width": 124.65625,
+            "height": 104,
+            "top": 719.984375,
+            "right": 389.984375,
+            "bottom": 823.984375,
+            "left": 265.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-ai.svg\")",
+          "fit": "cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-hero.jpg",
+          "duration": 26.100000001490116,
+          "transfer": 187253,
+          "start": 50.399999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg",
+          "duration": 23.5,
+          "transfer": 215463,
+          "start": 53.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg",
+          "duration": 22.399999998509884,
+          "transfer": 119808,
+          "start": 53.899999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-books.jpg",
+          "duration": 22.19999999552965,
+          "transfer": 112148,
+          "start": 54.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-food.jpg",
+          "duration": 34.29999999701977,
+          "transfer": 77944,
+          "start": 55.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-news.jpg",
+          "duration": 33,
+          "transfer": 45324,
+          "start": 55.399999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-events.jpg",
+          "duration": 34,
+          "transfer": 111200,
+          "start": 55.70000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-music.jpg",
+          "duration": 32.600000001490116,
+          "transfer": 37748,
+          "start": 56
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-ai.svg",
+          "duration": 31.700000002980232,
+          "transfer": 1870,
+          "start": 56.5
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 19.299999997019768,
+          "transfer": 97485,
+          "start": 89.70000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/blink.jpg",
+          "duration": 20.600000001490116,
+          "transfer": 102665,
+          "start": 89.79999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/smile.jpg",
+          "duration": 3.5,
+          "transfer": 103166,
+          "start": 160.39999999850988
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 800,
+        "height": 1000,
+        "dpr": 1.5
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/brand/matchapp-icon-approved.png?v=20261013-approved1",
+          "srcset": "",
+          "rendered": {
+            "w": 56.099998474121094,
+            "h": 56.10000228881836
+          },
+          "natural": {
+            "w": 1536,
+            "h": 1536
+          },
+          "fit": "contain",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 72,
+            "h": 72
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 185w, https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 342w, https://image.tmdb.org/t/p/w500/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 500w, https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 185w, https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 342w, https://image.tmdb.org/t/p/w500/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 500w, https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/1l7wbZmdtys.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 185w, https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 342w, https://image.tmdb.org/t/p/w500/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 500w, https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 185w, https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 342w, https://image.tmdb.org/t/p/w500/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 500w, https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/mw3kSNIxjqo.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "home-hero",
+          "rect": {
+            "x": 0,
+            "y": 97,
+            "width": 800,
+            "height": 208,
+            "top": 97,
+            "right": 800,
+            "bottom": 305,
+            "left": 0
+          },
+          "source": "linear-gradient(90deg, rgba(8, 5, 14, 0.86) 0%, rgba(8, 5, 14, 0.314) 52%, rgba(8, 5, 14, 0) 85%), url(\"http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp\")",
+          "fit": "auto, cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 292.30000000447035,
+          "transfer": 97485,
+          "start": 24.399999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp",
+          "duration": 143.20000000298023,
+          "transfer": 1325522,
+          "start": 242.39999999850988
+        }
+      ]
+    },
+    {
+      "route": "/explore.html",
+      "viewport": {
+        "width": 800,
+        "height": 1000,
+        "dpr": 1.5
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 80,
+            "h": 80
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "ref-explore-hero",
+          "rect": {
+            "x": 0,
+            "y": 117,
+            "width": 799.984375,
+            "height": 275.5,
+            "top": 117,
+            "right": 799.984375,
+            "bottom": 392.5,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-hero.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--premiere",
+          "rect": {
+            "x": 0,
+            "y": 406.5,
+            "width": 392.984375,
+            "height": 104,
+            "top": 406.5,
+            "right": 392.984375,
+            "bottom": 510.5,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--weekly",
+          "rect": {
+            "x": 406.984375,
+            "y": 406.5,
+            "width": 393,
+            "height": 104,
+            "top": 406.5,
+            "right": 799.984375,
+            "bottom": 510.5,
+            "left": 406.984375
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--book",
+          "rect": {
+            "x": 0,
+            "y": 524.5,
+            "width": 257.328125,
+            "height": 121.75,
+            "top": 524.5,
+            "right": 257.328125,
+            "bottom": 646.25,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-books.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--chef",
+          "rect": {
+            "x": 271.328125,
+            "y": 524.5,
+            "width": 257.328125,
+            "height": 121.75,
+            "top": 524.5,
+            "right": 528.65625,
+            "bottom": 646.25,
+            "left": 271.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-food.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--news",
+          "rect": {
+            "x": 542.65625,
+            "y": 524.5,
+            "width": 257.328125,
+            "height": 121.75,
+            "top": 524.5,
+            "right": 799.984375,
+            "bottom": 646.25,
+            "left": 542.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-news.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--calendar",
+          "rect": {
+            "x": 0,
+            "y": 660.25,
+            "width": 257.328125,
+            "height": 121.75,
+            "top": 660.25,
+            "right": 257.328125,
+            "bottom": 782,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-events.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--star",
+          "rect": {
+            "x": 271.328125,
+            "y": 660.25,
+            "width": 257.328125,
+            "height": 121.75,
+            "top": 660.25,
+            "right": 528.65625,
+            "bottom": 782,
+            "left": 271.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-music.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--spark",
+          "rect": {
+            "x": 542.65625,
+            "y": 660.25,
+            "width": 257.328125,
+            "height": 121.75,
+            "top": 660.25,
+            "right": 799.984375,
+            "bottom": 782,
+            "left": 542.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-ai.svg\")",
+          "fit": "cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-hero.jpg",
+          "duration": 28.700000002980232,
+          "transfer": 187253,
+          "start": 123
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg",
+          "duration": 24.899999998509884,
+          "transfer": 215463,
+          "start": 127.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg",
+          "duration": 23.69999999552965,
+          "transfer": 119808,
+          "start": 127.70000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-books.jpg",
+          "duration": 23.5,
+          "transfer": 112148,
+          "start": 128
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-food.jpg",
+          "duration": 24.900000005960464,
+          "transfer": 77944,
+          "start": 128.79999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-news.jpg",
+          "duration": 29.899999998509884,
+          "transfer": 45324,
+          "start": 129.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-events.jpg",
+          "duration": 30.200000002980232,
+          "transfer": 111200,
+          "start": 129.39999999850988
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-music.jpg",
+          "duration": 44.100000001490116,
+          "transfer": 37748,
+          "start": 129.5
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-ai.svg",
+          "duration": 42.899999998509884,
+          "transfer": 1870,
+          "start": 129.70000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 10.200000002980232,
+          "transfer": 97485,
+          "start": 240.39999999850988
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/blink.jpg",
+          "duration": 10.200000002980232,
+          "transfer": 102665,
+          "start": 240.5
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/smile.jpg",
+          "duration": 3.5999999940395355,
+          "transfer": 103166,
+          "start": 274.70000000298023
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 1366,
+        "height": 1000,
+        "dpr": 2
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/brand/matchapp-icon-approved.png?v=20261013-approved1",
+          "srcset": "",
+          "rendered": {
+            "w": 56.10000228881836,
+            "h": 56.10000228881836
+          },
+          "natural": {
+            "w": 1536,
+            "h": 1536
+          },
+          "fit": "contain",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 72,
+            "h": 72
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 185w, https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 342w, https://image.tmdb.org/t/p/w500/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 500w, https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 185w, https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 342w, https://image.tmdb.org/t/p/w500/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 500w, https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 185w, https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 342w, https://image.tmdb.org/t/p/w500/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 500w, https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/1l7wbZmdtys.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 185w, https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 342w, https://image.tmdb.org/t/p/w500/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 500w, https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 185w, https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 342w, https://image.tmdb.org/t/p/w500/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 500w, https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/mw3kSNIxjqo.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 185w, https://image.tmdb.org/t/p/w342/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 342w, https://image.tmdb.org/t/p/w500/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 500w, https://image.tmdb.org/t/p/w780/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w342/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 185w, https://image.tmdb.org/t/p/w342/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 342w, https://image.tmdb.org/t/p/w500/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 500w, https://image.tmdb.org/t/p/w780/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/eJXL4-4m5nY.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "home-hero",
+          "rect": {
+            "x": 178.265625,
+            "y": 97,
+            "width": 980,
+            "height": 240,
+            "top": 97,
+            "right": 1158.265625,
+            "bottom": 337,
+            "left": 178.265625
+          },
+          "source": "linear-gradient(90deg, rgba(8, 5, 14, 0.86) 0%, rgba(8, 5, 14, 0.314) 52%, rgba(8, 5, 14, 0) 85%), url(\"http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp\")",
+          "fit": "auto, cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 306.29999999701977,
+          "transfer": 97485,
+          "start": 24.900000005960464
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp",
+          "duration": 139.89999999850988,
+          "transfer": 1325522,
+          "start": 238.30000000447035
+        }
+      ]
+    },
+    {
+      "route": "/explore.html",
+      "viewport": {
+        "width": 1366,
+        "height": 1000,
+        "dpr": 2
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 80,
+            "h": 80
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "ref-explore-hero",
+          "rect": {
+            "x": 0,
+            "y": 117,
+            "width": 1366,
+            "height": 365,
+            "top": 117,
+            "right": 1366,
+            "bottom": 482,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-hero.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--premiere",
+          "rect": {
+            "x": 0,
+            "y": 496,
+            "width": 676,
+            "height": 118.390625,
+            "top": 496,
+            "right": 676,
+            "bottom": 614.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--weekly",
+          "rect": {
+            "x": 690,
+            "y": 496,
+            "width": 676,
+            "height": 118.390625,
+            "top": 496,
+            "right": 1366,
+            "bottom": 614.390625,
+            "left": 690
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--book",
+          "rect": {
+            "x": 0,
+            "y": 628.390625,
+            "width": 446,
+            "height": 190,
+            "top": 628.390625,
+            "right": 446,
+            "bottom": 818.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-books.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--chef",
+          "rect": {
+            "x": 460,
+            "y": 628.390625,
+            "width": 446,
+            "height": 190,
+            "top": 628.390625,
+            "right": 906,
+            "bottom": 818.390625,
+            "left": 460
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-food.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--news",
+          "rect": {
+            "x": 920,
+            "y": 628.390625,
+            "width": 446,
+            "height": 190,
+            "top": 628.390625,
+            "right": 1366,
+            "bottom": 818.390625,
+            "left": 920
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-news.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--calendar",
+          "rect": {
+            "x": 0,
+            "y": 832.390625,
+            "width": 446,
+            "height": 190,
+            "top": 832.390625,
+            "right": 446,
+            "bottom": 1022.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-events.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--star",
+          "rect": {
+            "x": 460,
+            "y": 832.390625,
+            "width": 446,
+            "height": 190,
+            "top": 832.390625,
+            "right": 906,
+            "bottom": 1022.390625,
+            "left": 460
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-music.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--spark",
+          "rect": {
+            "x": 920,
+            "y": 832.390625,
+            "width": 446,
+            "height": 190,
+            "top": 832.390625,
+            "right": 1366,
+            "bottom": 1022.390625,
+            "left": 920
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-ai.svg\")",
+          "fit": "cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-hero.jpg",
+          "duration": 32.399999998509884,
+          "transfer": 187253,
+          "start": 55.19999999552965
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg",
+          "duration": 30,
+          "transfer": 215463,
+          "start": 58.19999999552965
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg",
+          "duration": 28.399999998509884,
+          "transfer": 119808,
+          "start": 58.69999999552965
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-books.jpg",
+          "duration": 28.100000001490116,
+          "transfer": 112148,
+          "start": 59.19999999552965
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-food.jpg",
+          "duration": 28.19999999552965,
+          "transfer": 77944,
+          "start": 60.399999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-news.jpg",
+          "duration": 33.5,
+          "transfer": 45324,
+          "start": 60.599999994039536
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-events.jpg",
+          "duration": 33.79999999701977,
+          "transfer": 111200,
+          "start": 60.899999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-music.jpg",
+          "duration": 32.899999998509884,
+          "transfer": 37748,
+          "start": 61.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-ai.svg",
+          "duration": 40.20000000298023,
+          "transfer": 1870,
+          "start": 61.599999994039536
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 18.30000000447035,
+          "transfer": 97485,
+          "start": 100.19999999552965
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/blink.jpg",
+          "duration": 18.299999997019768,
+          "transfer": 102665,
+          "start": 100.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/smile.jpg",
+          "duration": 3.5,
+          "transfer": 103166,
+          "start": 186.29999999701977
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 3840,
+        "height": 1000,
+        "dpr": 1
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/brand/matchapp-icon-approved.png?v=20261013-approved1",
+          "srcset": "",
+          "rendered": {
+            "w": 56.10009765625,
+            "h": 56.10000228881836
+          },
+          "natural": {
+            "w": 1536,
+            "h": 1536
+          },
+          "fit": "contain",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 72,
+            "h": 72
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/KWoTyfPsqbE.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/tDHWWReefmOOjBCJZUck8cNwssk.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/tDHWWReefmOOjBCJZUck8cNwssk.jpg 185w, https://image.tmdb.org/t/p/w342/tDHWWReefmOOjBCJZUck8cNwssk.jpg 342w, https://image.tmdb.org/t/p/w500/tDHWWReefmOOjBCJZUck8cNwssk.jpg 500w, https://image.tmdb.org/t/p/w780/tDHWWReefmOOjBCJZUck8cNwssk.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 185w, https://image.tmdb.org/t/p/w342/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 342w, https://image.tmdb.org/t/p/w500/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 500w, https://image.tmdb.org/t/p/w780/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 185w, https://image.tmdb.org/t/p/w342/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 342w, https://image.tmdb.org/t/p/w500/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 500w, https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/nUsrYVxrDwI.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 185w, https://image.tmdb.org/t/p/w342/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 342w, https://image.tmdb.org/t/p/w500/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 500w, https://image.tmdb.org/t/p/w780/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 185w, https://image.tmdb.org/t/p/w342/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 342w, https://image.tmdb.org/t/p/w500/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 500w, https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/vmbyVU9w47Y.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 185w, https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 342w, https://image.tmdb.org/t/p/w500/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 500w, https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 185w, https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 342w, https://image.tmdb.org/t/p/w500/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 500w, https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(228%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-408%22%20cy%3D%22-168%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-367%22%20cy%3D%22-174%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-357%22%20cy%3D%22-175%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-355%22%20cy%3D%2213%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-354%22%20cy%3D%2236%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-74%22%20cy%3D%222%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-284%22%20cy%3D%2235%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-56%22%20cy%3D%22-186%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%221%22%20cy%3D%22-26%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22470%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EQuem%20%C3%89%20Voc%C3%AA%3F%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/1l7wbZmdtys.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(67%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-209%22%20cy%3D%22-29%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-458%22%20cy%3D%22-119%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-380%22%20cy%3D%2220%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-500%22%20cy%3D%22-225%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-390%22%20cy%3D%22-106%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-83%22%20cy%3D%22-54%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-6%22%20cy%3D%22-122%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-407%22%20cy%3D%2219%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-227%22%20cy%3D%22-38%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22437%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EAbsolutely%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22503%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EFabulous%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 185w, https://image.tmdb.org/t/p/w342/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 342w, https://image.tmdb.org/t/p/w500/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 500w, https://image.tmdb.org/t/p/w780/1KTYMK7N2vRe8PowCyb799DbDRR.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/mw3kSNIxjqo.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 185w, https://image.tmdb.org/t/p/w342/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 342w, https://image.tmdb.org/t/p/w500/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 500w, https://image.tmdb.org/t/p/w780/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 185w, https://image.tmdb.org/t/p/w342/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 342w, https://image.tmdb.org/t/p/w500/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 500w, https://image.tmdb.org/t/p/w780/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/eJXL4-4m5nY.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 185w, https://image.tmdb.org/t/p/w342/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 342w, https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 500w, https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 185w, https://image.tmdb.org/t/p/w342/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 342w, https://image.tmdb.org/t/p/w500/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 500w, https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 185w, https://image.tmdb.org/t/p/w342/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 342w, https://image.tmdb.org/t/p/w500/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 500w, https://image.tmdb.org/t/p/w780/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/Lufa9QAFFeY.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/4Xgf1axYG97G7BYC661O27t9iYu.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/4Xgf1axYG97G7BYC661O27t9iYu.jpg 185w, https://image.tmdb.org/t/p/w342/4Xgf1axYG97G7BYC661O27t9iYu.jpg 342w, https://image.tmdb.org/t/p/w500/4Xgf1axYG97G7BYC661O27t9iYu.jpg 500w, https://image.tmdb.org/t/p/w780/4Xgf1axYG97G7BYC661O27t9iYu.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 185w, https://image.tmdb.org/t/p/w342/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 342w, https://image.tmdb.org/t/p/w500/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 500w, https://image.tmdb.org/t/p/w780/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/afSgBNwmZrQ.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 185w, https://image.tmdb.org/t/p/w342/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 342w, https://image.tmdb.org/t/p/w500/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 500w, https://image.tmdb.org/t/p/w780/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "home-hero",
+          "rect": {
+            "x": 1374,
+            "y": 97,
+            "width": 980,
+            "height": 240,
+            "top": 97,
+            "right": 2354,
+            "bottom": 337,
+            "left": 1374
+          },
+          "source": "linear-gradient(90deg, rgba(8, 5, 14, 0.86) 0%, rgba(8, 5, 14, 0.314) 52%, rgba(8, 5, 14, 0) 85%), url(\"http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp\")",
+          "fit": "auto, cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 306.1000000014901,
+          "transfer": 97485,
+          "start": 17.899999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp",
+          "duration": 156.5,
+          "transfer": 1325522,
+          "start": 231.79999999701977
+        }
+      ]
+    },
+    {
+      "route": "/explore.html",
+      "viewport": {
+        "width": 3840,
+        "height": 1000,
+        "dpr": 1
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 80,
+            "h": 80
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "ref-explore-hero",
+          "rect": {
+            "x": 0,
+            "y": 117,
+            "width": 3839.984375,
+            "height": 365,
+            "top": 117,
+            "right": 3839.984375,
+            "bottom": 482,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-hero.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--premiere",
+          "rect": {
+            "x": 0,
+            "y": 496,
+            "width": 1912.984375,
+            "height": 118.390625,
+            "top": 496,
+            "right": 1912.984375,
+            "bottom": 614.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--weekly",
+          "rect": {
+            "x": 1926.984375,
+            "y": 496,
+            "width": 1913,
+            "height": 118.390625,
+            "top": 496,
+            "right": 3839.984375,
+            "bottom": 614.390625,
+            "left": 1926.984375
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--book",
+          "rect": {
+            "x": 0,
+            "y": 628.390625,
+            "width": 1270.65625,
+            "height": 190,
+            "top": 628.390625,
+            "right": 1270.65625,
+            "bottom": 818.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-books.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--chef",
+          "rect": {
+            "x": 1284.65625,
+            "y": 628.390625,
+            "width": 1270.671875,
+            "height": 190,
+            "top": 628.390625,
+            "right": 2555.328125,
+            "bottom": 818.390625,
+            "left": 1284.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-food.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--news",
+          "rect": {
+            "x": 2569.328125,
+            "y": 628.390625,
+            "width": 1270.65625,
+            "height": 190,
+            "top": 628.390625,
+            "right": 3839.984375,
+            "bottom": 818.390625,
+            "left": 2569.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-news.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--calendar",
+          "rect": {
+            "x": 0,
+            "y": 832.390625,
+            "width": 1270.65625,
+            "height": 190,
+            "top": 832.390625,
+            "right": 1270.65625,
+            "bottom": 1022.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-events.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--star",
+          "rect": {
+            "x": 1284.65625,
+            "y": 832.390625,
+            "width": 1270.671875,
+            "height": 190,
+            "top": 832.390625,
+            "right": 2555.328125,
+            "bottom": 1022.390625,
+            "left": 1284.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-music.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--spark",
+          "rect": {
+            "x": 2569.328125,
+            "y": 832.390625,
+            "width": 1270.65625,
+            "height": 190,
+            "top": 832.390625,
+            "right": 3839.984375,
+            "bottom": 1022.390625,
+            "left": 2569.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-ai.svg\")",
+          "fit": "cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-hero.jpg",
+          "duration": 48.100000001490116,
+          "transfer": 187253,
+          "start": 144.5
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg",
+          "duration": 49.600000001490116,
+          "transfer": 215463,
+          "start": 146.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg",
+          "duration": 41.600000001490116,
+          "transfer": 119808,
+          "start": 146.79999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-books.jpg",
+          "duration": 41.29999999701977,
+          "transfer": 112148,
+          "start": 147.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-food.jpg",
+          "duration": 59.899999998509884,
+          "transfer": 77944,
+          "start": 148.10000000149012
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-news.jpg",
+          "duration": 64.60000000149012,
+          "transfer": 45324,
+          "start": 148.5
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-events.jpg",
+          "duration": 67.30000000447035,
+          "transfer": 111200,
+          "start": 148.79999999701977
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-music.jpg",
+          "duration": 67,
+          "transfer": 37748,
+          "start": 149
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-ai.svg",
+          "duration": 67.20000000298023,
+          "transfer": 1870,
+          "start": 149.39999999850988
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 33.79999999701977,
+          "transfer": 97485,
+          "start": 186
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/blink.jpg",
+          "duration": 45.399999998509884,
+          "transfer": 102665,
+          "start": 186
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/smile.jpg",
+          "duration": 3.899999998509884,
+          "transfer": 103166,
+          "start": 288
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "width": 12288,
+        "height": 1000,
+        "dpr": 1
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/brand/matchapp-icon-approved.png?v=20261013-approved1",
+          "srcset": "",
+          "rendered": {
+            "w": 56.099609375,
+            "h": 56.10000228881836
+          },
+          "natural": {
+            "w": 1536,
+            "h": 1536
+          },
+          "fit": "contain",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 72,
+            "h": 72
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(228%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-408%22%20cy%3D%22-168%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-367%22%20cy%3D%22-174%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-357%22%20cy%3D%22-175%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-355%22%20cy%3D%2213%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-354%22%20cy%3D%2236%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-74%22%20cy%3D%222%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-284%22%20cy%3D%2235%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-56%22%20cy%3D%22-186%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%221%22%20cy%3D%22-26%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22470%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EQuem%20%C3%89%20Voc%C3%AA%3F%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/1l7wbZmdtys.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(67%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-209%22%20cy%3D%22-29%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-458%22%20cy%3D%22-119%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-380%22%20cy%3D%2220%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-500%22%20cy%3D%22-225%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-390%22%20cy%3D%22-106%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-83%22%20cy%3D%22-54%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-6%22%20cy%3D%22-122%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-407%22%20cy%3D%2219%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-227%22%20cy%3D%22-38%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22437%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EAbsolutely%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22503%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EFabulous%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(209%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-307%22%20cy%3D%22-7%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-482%22%20cy%3D%22-191%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-526%22%20cy%3D%22-177%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-537%22%20cy%3D%22-100%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-260%22%20cy%3D%22-53%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-190%22%20cy%3D%2228%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-313%22%20cy%3D%22-37%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-484%22%20cy%3D%22-83%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-526%22%20cy%3D%2224%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22470%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EHeartbreak%20High%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/mw3kSNIxjqo.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(209%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22109%22%20cy%3D%2269%22%20r%3D%223.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%22231%22%20r%3D%223.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22445%22%20cy%3D%22326%22%20r%3D%222.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22266%22%20cy%3D%22300%22%20r%3D%223.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22221%22%20cy%3D%22147%22%20r%3D%223.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22210%22%20cy%3D%22165%22%20r%3D%223.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%2267%22%20cy%3D%22168%22%20r%3D%222.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22311%22%20cy%3D%22168%22%20r%3D%223.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22372%22%20cy%3D%22131%22%20r%3D%223.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22470%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3ESchitt's%20Creek%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 185w, https://image.tmdb.org/t/p/w342/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 342w, https://image.tmdb.org/t/p/w500/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 500w, https://image.tmdb.org/t/p/w780/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/eJXL4-4m5nY.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 185w, https://image.tmdb.org/t/p/w342/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 342w, https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 500w, https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 185w, https://image.tmdb.org/t/p/w342/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 342w, https://image.tmdb.org/t/p/w500/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 500w, https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 185w, https://image.tmdb.org/t/p/w342/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 342w, https://image.tmdb.org/t/p/w500/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 500w, https://image.tmdb.org/t/p/w780/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/Lufa9QAFFeY.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/4Xgf1axYG97G7BYC661O27t9iYu.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/4Xgf1axYG97G7BYC661O27t9iYu.jpg 185w, https://image.tmdb.org/t/p/w342/4Xgf1axYG97G7BYC661O27t9iYu.jpg 342w, https://image.tmdb.org/t/p/w500/4Xgf1axYG97G7BYC661O27t9iYu.jpg 500w, https://image.tmdb.org/t/p/w780/4Xgf1axYG97G7BYC661O27t9iYu.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 185w, https://image.tmdb.org/t/p/w342/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 342w, https://image.tmdb.org/t/p/w500/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 500w, https://image.tmdb.org/t/p/w780/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/afSgBNwmZrQ.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 185w, https://image.tmdb.org/t/p/w342/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 342w, https://image.tmdb.org/t/p/w500/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 500w, https://image.tmdb.org/t/p/w780/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 185w, https://image.tmdb.org/t/p/w342/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 342w, https://image.tmdb.org/t/p/w500/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 500w, https://image.tmdb.org/t/p/w780/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/Rt9tW3cMLhI.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/cojcROwZe8681XzroVIOE9VK4zV.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/cojcROwZe8681XzroVIOE9VK4zV.jpg 185w, https://image.tmdb.org/t/p/w342/cojcROwZe8681XzroVIOE9VK4zV.jpg 342w, https://image.tmdb.org/t/p/w500/cojcROwZe8681XzroVIOE9VK4zV.jpg 500w, https://image.tmdb.org/t/p/w780/cojcROwZe8681XzroVIOE9VK4zV.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 185w, https://image.tmdb.org/t/p/w342/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 342w, https://image.tmdb.org/t/p/w500/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 500w, https://image.tmdb.org/t/p/w780/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 185w, https://image.tmdb.org/t/p/w342/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 342w, https://image.tmdb.org/t/p/w500/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 500w, https://image.tmdb.org/t/p/w780/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/fcnDmrtj6Sk.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 185w, https://image.tmdb.org/t/p/w342/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 342w, https://image.tmdb.org/t/p/w500/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 500w, https://image.tmdb.org/t/p/w780/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 185w, https://image.tmdb.org/t/p/w342/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 342w, https://image.tmdb.org/t/p/w500/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 500w, https://image.tmdb.org/t/p/w780/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/XXIX2WnfbpE.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 185w, https://image.tmdb.org/t/p/w342/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 342w, https://image.tmdb.org/t/p/w500/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 500w, https://image.tmdb.org/t/p/w780/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 185w, https://image.tmdb.org/t/p/w342/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 342w, https://image.tmdb.org/t/p/w500/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 500w, https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/KWoTyfPsqbE.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/tDHWWReefmOOjBCJZUck8cNwssk.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/tDHWWReefmOOjBCJZUck8cNwssk.jpg 185w, https://image.tmdb.org/t/p/w342/tDHWWReefmOOjBCJZUck8cNwssk.jpg 342w, https://image.tmdb.org/t/p/w500/tDHWWReefmOOjBCJZUck8cNwssk.jpg 500w, https://image.tmdb.org/t/p/w780/tDHWWReefmOOjBCJZUck8cNwssk.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 185w, https://image.tmdb.org/t/p/w342/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 342w, https://image.tmdb.org/t/p/w500/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 500w, https://image.tmdb.org/t/p/w780/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 185w, https://image.tmdb.org/t/p/w342/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 342w, https://image.tmdb.org/t/p/w500/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 500w, https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/nUsrYVxrDwI.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 185w, https://image.tmdb.org/t/p/w342/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 342w, https://image.tmdb.org/t/p/w500/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 500w, https://image.tmdb.org/t/p/w780/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 185w, https://image.tmdb.org/t/p/w342/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 342w, https://image.tmdb.org/t/p/w500/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 500w, https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/vmbyVU9w47Y.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 185w, https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 342w, https://image.tmdb.org/t/p/w500/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 500w, https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 185w, https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 342w, https://image.tmdb.org/t/p/w500/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 500w, https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(228%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-408%22%20cy%3D%22-168%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-367%22%20cy%3D%22-174%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-357%22%20cy%3D%22-175%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-355%22%20cy%3D%2213%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-354%22%20cy%3D%2236%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-74%22%20cy%3D%222%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-284%22%20cy%3D%2235%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-56%22%20cy%3D%22-186%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%221%22%20cy%3D%22-26%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22470%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EQuem%20%C3%89%20Voc%C3%AA%3F%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/1l7wbZmdtys.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(67%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-209%22%20cy%3D%22-29%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-458%22%20cy%3D%22-119%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-380%22%20cy%3D%2220%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-500%22%20cy%3D%22-225%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-390%22%20cy%3D%22-106%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-83%22%20cy%3D%22-54%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-6%22%20cy%3D%22-122%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-407%22%20cy%3D%2219%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-227%22%20cy%3D%22-38%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22437%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EAbsolutely%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22503%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EFabulous%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22900%22%20viewBox%3D%220%200%20600%20900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate(209%200.5%200.5)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2314131A%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232A1A47%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2250%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220.30%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23E5C158%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22-307%22%20cy%3D%22-7%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-482%22%20cy%3D%22-191%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-526%22%20cy%3D%22-177%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-537%22%20cy%3D%22-100%22%20r%3D%221.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-260%22%20cy%3D%22-53%22%20r%3D%22-0.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-190%22%20cy%3D%2228%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-313%22%20cy%3D%22-37%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-484%22%20cy%3D%22-83%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%3Ccircle%20cx%3D%22-526%22%20cy%3D%2224%22%20r%3D%220.5%22%20fill%3D%22%23E5C158%22%20opacity%3D%220.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2222%22%20y%3D%2222%22%20width%3D%22556%22%20height%3D%22856%22%20rx%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%223%22%20opacity%3D%220.85%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2234%22%20y%3D%2234%22%20width%3D%22532%22%20height%3D%22832%22%20rx%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%22124%22%20height%3D%2284%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M266%2C212%20L266%2C296%20M334%2C212%20L334%2C296%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%224%22%20opacity%3D%220.6%22%2F%3E%3Cpath%20d%3D%22M290%2C238%20L322%2C254%20L290%2C270%20Z%22%20fill%3D%22%23E5C158%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22330%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22900%22%20fill%3D%22%23E5C158%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%224.5%22%3EON%20MATCHAPP%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22362%22%20x2%3D%22400%22%20y2%3D%22362%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22470%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2253%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EHeartbreak%20High%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22200%22%20y1%3D%22700%22%20x2%3D%22400%22%20y2%3D%22700%22%20stroke%3D%22%23E5C158%22%20stroke-width%3D%222%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22812%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22bold%22%20fill%3D%22%23FFF0B3%22%20text-anchor%3D%22middle%22%20letter-spacing%3D%222.5%22%3Ematchapp.tv%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22840%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%20opacity%3D%220.55%22%3EAI%20Concierge%20for%20Entertainment%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 473,
+            "h": 710
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/mw3kSNIxjqo.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 185w, https://image.tmdb.org/t/p/w342/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 342w, https://image.tmdb.org/t/p/w500/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 500w, https://image.tmdb.org/t/p/w780/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 185w, https://image.tmdb.org/t/p/w342/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 342w, https://image.tmdb.org/t/p/w500/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 500w, https://image.tmdb.org/t/p/w780/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/eJXL4-4m5nY.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 185w, https://image.tmdb.org/t/p/w342/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 342w, https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 500w, https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 185w, https://image.tmdb.org/t/p/w342/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 342w, https://image.tmdb.org/t/p/w500/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 500w, https://image.tmdb.org/t/p/w780/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 185w, https://image.tmdb.org/t/p/w342/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 342w, https://image.tmdb.org/t/p/w500/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 500w, https://image.tmdb.org/t/p/w780/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/Lufa9QAFFeY.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/4Xgf1axYG97G7BYC661O27t9iYu.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/4Xgf1axYG97G7BYC661O27t9iYu.jpg 185w, https://image.tmdb.org/t/p/w342/4Xgf1axYG97G7BYC661O27t9iYu.jpg 342w, https://image.tmdb.org/t/p/w500/4Xgf1axYG97G7BYC661O27t9iYu.jpg 500w, https://image.tmdb.org/t/p/w780/4Xgf1axYG97G7BYC661O27t9iYu.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 185w, https://image.tmdb.org/t/p/w342/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 342w, https://image.tmdb.org/t/p/w500/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 500w, https://image.tmdb.org/t/p/w780/yAtcsq5ciJ6TBfGzM0b6BzVCaPA.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/afSgBNwmZrQ.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 185w, https://image.tmdb.org/t/p/w342/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 342w, https://image.tmdb.org/t/p/w500/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 500w, https://image.tmdb.org/t/p/w780/a9W2203QLRqBT3a6EVDECc8g9Y2.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 185w, https://image.tmdb.org/t/p/w342/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 342w, https://image.tmdb.org/t/p/w500/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 500w, https://image.tmdb.org/t/p/w780/sodRW36uEDHjv8l1WhYUNDvnIK6.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/Rt9tW3cMLhI.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/cojcROwZe8681XzroVIOE9VK4zV.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/cojcROwZe8681XzroVIOE9VK4zV.jpg 185w, https://image.tmdb.org/t/p/w342/cojcROwZe8681XzroVIOE9VK4zV.jpg 342w, https://image.tmdb.org/t/p/w500/cojcROwZe8681XzroVIOE9VK4zV.jpg 500w, https://image.tmdb.org/t/p/w780/cojcROwZe8681XzroVIOE9VK4zV.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 185w, https://image.tmdb.org/t/p/w342/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 342w, https://image.tmdb.org/t/p/w500/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 500w, https://image.tmdb.org/t/p/w780/seN6rRfN0I6n8iDXjlSMk1QjNcq.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 185w, https://image.tmdb.org/t/p/w342/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 342w, https://image.tmdb.org/t/p/w500/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 500w, https://image.tmdb.org/t/p/w780/g0QMGxXtoNnMXz4QN2U05ijvqBe.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/fcnDmrtj6Sk.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 185w, https://image.tmdb.org/t/p/w342/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 342w, https://image.tmdb.org/t/p/w500/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 500w, https://image.tmdb.org/t/p/w780/aOnZyGIJCkG3gCMLWInGWRpM3HT.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 185w, https://image.tmdb.org/t/p/w342/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 342w, https://image.tmdb.org/t/p/w500/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 500w, https://image.tmdb.org/t/p/w780/6t1G0Ugcj4vdBVFOgfwR26gyfRY.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/XXIX2WnfbpE.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 185w, https://image.tmdb.org/t/p/w342/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 342w, https://image.tmdb.org/t/p/w500/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 500w, https://image.tmdb.org/t/p/w780/p3Ro0ngezX9aNZY6j3vYbpQqVhr.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 185w, https://image.tmdb.org/t/p/w342/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 342w, https://image.tmdb.org/t/p/w500/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 500w, https://image.tmdb.org/t/p/w780/v9wSMFf9Ysj40aHHUJ1VeLStZWn.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/KWoTyfPsqbE.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/tDHWWReefmOOjBCJZUck8cNwssk.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/tDHWWReefmOOjBCJZUck8cNwssk.jpg 185w, https://image.tmdb.org/t/p/w342/tDHWWReefmOOjBCJZUck8cNwssk.jpg 342w, https://image.tmdb.org/t/p/w500/tDHWWReefmOOjBCJZUck8cNwssk.jpg 500w, https://image.tmdb.org/t/p/w780/tDHWWReefmOOjBCJZUck8cNwssk.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 185w, https://image.tmdb.org/t/p/w342/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 342w, https://image.tmdb.org/t/p/w500/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 500w, https://image.tmdb.org/t/p/w780/zrB0Viy72GYKiLrtSs7SQVz5QWl.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 185w, https://image.tmdb.org/t/p/w342/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 342w, https://image.tmdb.org/t/p/w500/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 500w, https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/nUsrYVxrDwI.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 185w, https://image.tmdb.org/t/p/w342/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 342w, https://image.tmdb.org/t/p/w500/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 500w, https://image.tmdb.org/t/p/w780/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 185w, https://image.tmdb.org/t/p/w342/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 342w, https://image.tmdb.org/t/p/w500/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 500w, https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/assets/music-videos/vmbyVU9w47Y.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 146,
+            "h": 193.328125
+          },
+          "natural": {
+            "w": 480,
+            "h": 360
+          },
+          "fit": "cover",
+          "decoded": true
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 185w, https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 342w, https://image.tmdb.org/t/p/w500/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 500w, https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        },
+        {
+          "id": "",
+          "src": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg",
+          "srcset": "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 185w, https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 342w, https://image.tmdb.org/t/p/w500/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 500w, https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg 780w",
+          "rendered": {
+            "w": 146,
+            "h": 195.328125
+          },
+          "natural": {
+            "w": 0,
+            "h": 0
+          },
+          "fit": "cover",
+          "decoded": false
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "home-hero",
+          "rect": {
+            "x": 5598,
+            "y": 97,
+            "width": 980,
+            "height": 240,
+            "top": 97,
+            "right": 6578,
+            "bottom": 337,
+            "left": 5598
+          },
+          "source": "linear-gradient(90deg, rgba(8, 5, 14, 0.86) 0%, rgba(8, 5, 14, 0.314) 52%, rgba(8, 5, 14, 0) 85%), url(\"http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp\")",
+          "fit": "auto, cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 333.29999999701977,
+          "transfer": 97485,
+          "start": 26.399999998509884
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/home-city-lossless.webp",
+          "duration": 89.10000000149012,
+          "transfer": 1325522,
+          "start": 221.79999999701977
+        }
+      ]
+    },
+    {
+      "route": "/explore.html",
+      "viewport": {
+        "width": 12288,
+        "height": 1000,
+        "dpr": 1
+      },
+      "overflow": 0,
+      "images": [
+        {
+          "id": "",
+          "src": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "srcset": "",
+          "rendered": {
+            "w": 80,
+            "h": 80
+          },
+          "natural": {
+            "w": 768,
+            "h": 1152
+          },
+          "fit": "cover",
+          "decoded": true
+        }
+      ],
+      "backgrounds": [
+        {
+          "class": "ref-explore-hero",
+          "rect": {
+            "x": 0,
+            "y": 117,
+            "width": 12288,
+            "height": 365,
+            "top": 117,
+            "right": 12288,
+            "bottom": 482,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-hero.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--premiere",
+          "rect": {
+            "x": 0,
+            "y": 496,
+            "width": 6137,
+            "height": 118.390625,
+            "top": 496,
+            "right": 6137,
+            "bottom": 614.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-editorial-banner ref-editorial-banner--weekly",
+          "rect": {
+            "x": 6151,
+            "y": 496,
+            "width": 6137,
+            "height": 118.390625,
+            "top": 496,
+            "right": 12288,
+            "bottom": 614.390625,
+            "left": 6151
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--book",
+          "rect": {
+            "x": 0,
+            "y": 628.390625,
+            "width": 4086.65625,
+            "height": 190,
+            "top": 628.390625,
+            "right": 4086.65625,
+            "bottom": 818.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-books.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--chef",
+          "rect": {
+            "x": 4100.65625,
+            "y": 628.390625,
+            "width": 4086.671875,
+            "height": 190,
+            "top": 628.390625,
+            "right": 8187.328125,
+            "bottom": 818.390625,
+            "left": 4100.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-food.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--news",
+          "rect": {
+            "x": 8201.328125,
+            "y": 628.390625,
+            "width": 4086.671875,
+            "height": 190,
+            "top": 628.390625,
+            "right": 12288,
+            "bottom": 818.390625,
+            "left": 8201.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-news.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--calendar",
+          "rect": {
+            "x": 0,
+            "y": 832.390625,
+            "width": 4086.65625,
+            "height": 190,
+            "top": 832.390625,
+            "right": 4086.65625,
+            "bottom": 1022.390625,
+            "left": 0
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-events.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--star",
+          "rect": {
+            "x": 4100.65625,
+            "y": 832.390625,
+            "width": 4086.671875,
+            "height": 190,
+            "top": 832.390625,
+            "right": 8187.328125,
+            "bottom": 1022.390625,
+            "left": 4100.65625
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-music.jpg\")",
+          "fit": "cover"
+        },
+        {
+          "class": "ref-topic ref-topic--spark",
+          "rect": {
+            "x": 8201.328125,
+            "y": 832.390625,
+            "width": 4086.671875,
+            "height": 190,
+            "top": 832.390625,
+            "right": 12288,
+            "bottom": 1022.390625,
+            "left": 8201.328125
+          },
+          "source": "url(\"http://127.0.0.1:35323/assets/cinema/explore-ai.svg\")",
+          "fit": "cover"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-hero.jpg",
+          "duration": 18.799999997019768,
+          "transfer": 187253,
+          "start": 134.60000000149012
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-awaited.jpg",
+          "duration": 28.5,
+          "transfer": 215463,
+          "start": 136.60000000149012
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-weekly.jpg",
+          "duration": 26.600000001490116,
+          "transfer": 119808,
+          "start": 137.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-books.jpg",
+          "duration": 26.399999998509884,
+          "transfer": 112148,
+          "start": 137.60000000149012
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-food.jpg",
+          "duration": 25.899999998509884,
+          "transfer": 77944,
+          "start": 138.10000000149012
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-news.jpg",
+          "duration": 24.80000000447035,
+          "transfer": 45324,
+          "start": 138.39999999850988
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-events.jpg",
+          "duration": 32.600000001490116,
+          "transfer": 111200,
+          "start": 138.60000000149012
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-music.jpg",
+          "duration": 31.69999999552965,
+          "transfer": 37748,
+          "start": 138.80000000447035
+        },
+        {
+          "url": "http://127.0.0.1:35323/assets/cinema/explore-ai.svg",
+          "duration": 30.200000002980232,
+          "transfer": 1870,
+          "start": 139
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/rest.jpg",
+          "duration": 25.399999998509884,
+          "transfer": 97485,
+          "start": 146.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/blink.jpg",
+          "duration": 26.399999998509884,
+          "transfer": 102665,
+          "start": 146.20000000298023
+        },
+        {
+          "url": "http://127.0.0.1:35323/jonas/faces/jonas/smile.jpg",
+          "duration": 3,
+          "transfer": 103166,
+          "start": 220.70000000298023
+        }
+      ]
+    }
+  ]
+}

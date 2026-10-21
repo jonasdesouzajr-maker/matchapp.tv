@@ -167,7 +167,7 @@ test('profile loads the copy helper before its consumers and only the profile au
  const html=new JSDOM(read('profile/profile.html'));t.after(()=>html.window.close());
  const sources=[...html.window.document.querySelectorAll('script[src]')].map(s=>s.getAttribute('src'));
  const helperAt=sources.indexOf('/profile-portfolio-i18n.js?v=20261018-1');
- const historyAt=sources.indexOf('/portfolio-history.js?v=20260924-ui2&portfolio=20261018-1&posters=20261020-1');
+ const historyAt=sources.indexOf('/portfolio-history.js?v=20260924-ui2&portfolio=20261018-1&posters=20261020-1&androidqa=20261021-1');
  assert.ok(helperAt>=0&&historyAt>helperAt);
  assert.ok(sources.includes('/title-captions.js?v=20260929-avatar1&profilelang=20261018-1&portfolio=20261018-1&posters=20261020-1&accountphoto=20261020-1'));
  const loader=read('title-captions.js').slice(read('title-captions.js').indexOf('/* Site-wide final audit layer.'));

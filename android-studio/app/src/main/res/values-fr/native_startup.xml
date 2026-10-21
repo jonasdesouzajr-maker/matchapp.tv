@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">Configurez la voix et les cinémas à proximité</string>
+    <string name="permission_setup_body">Le microphone permet de parler à Jonas, votre assistant IA. La position approximative aide à trouver des cinémas à proximité. L’enregistrement ou la recherche de position ne commence que lorsque vous choisissez la fonction concernée. Ces autorisations sont facultatives ; vous pouvez continuer par écrit.</string>
+    <string name="permission_setup_allow">Choisir les autorisations</string>
+    <string name="permission_setup_skip">Pas maintenant</string>
+    <string name="intro_skip">Passer</string>
+</resources>

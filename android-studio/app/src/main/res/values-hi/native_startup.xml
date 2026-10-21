@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">आवाज़ और आस-पास के सिनेमाघर सेट करें</string>
+    <string name="permission_setup_body">माइक्रोफ़ोन से आप अपने AI सहायक Jonas से बात कर सकते हैं। अनुमानित स्थान आस-पास के सिनेमाघर खोजने में मदद करता है। रिकॉर्डिंग या स्थान की खोज तभी शुरू होती है जब आप संबंधित सुविधा चुनते हैं। दोनों अनुमतियाँ वैकल्पिक हैं; आप लिखकर बातचीत जारी रख सकते हैं।</string>
+    <string name="permission_setup_allow">अनुमतियाँ चुनें</string>
+    <string name="permission_setup_skip">अभी नहीं</string>
+    <string name="intro_skip">छोड़ें</string>
+</resources>
