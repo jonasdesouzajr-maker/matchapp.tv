@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-21",
   "items": [
     {
       "id": "1l7wbZmdtys",
@@ -16,7 +16,7 @@
       "url": "https://www.youtube.com/watch?v=1l7wbZmdtys",
       "thumbnail": "https://i.ytimg.com/vi/1l7wbZmdtys/hqdefault.jpg",
       "poster": "/assets/music-videos/1l7wbZmdtys.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "Bruno Mars",
         "Dance With Me",
@@ -63,7 +63,7 @@
       "creditsSource": "https://www.taylorswift.com/directed-projects/",
       "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
       "thumbnail": "https://i.ytimg.com/vi/mw3kSNIxjqo/hqdefault.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "Taylor Swift",
         "Patient Zero",
@@ -199,7 +199,7 @@
       "url": "https://www.youtube.com/watch?v=XwCWKSO0F8s",
       "thumbnail": "https://i.ytimg.com/vi/XwCWKSO0F8s/hqdefault.jpg",
       "poster": "/assets/music-videos/XwCWKSO0F8s.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "Taylor Swift",
         "I Knew It, I Knew You (Piano Version)",
@@ -417,7 +417,7 @@
       "creditsSource": "https://www.universal-music.co.jp/lady-gaga/news/2026-04-28/",
       "url": "https://www.youtube.com/watch?v=XXIX2WnfbpE",
       "thumbnail": "https://i.ytimg.com/vi/XXIX2WnfbpE/hqdefault.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "Lady Gaga & Doechii",
         "RUNWAY",
@@ -466,7 +466,7 @@
       "creditsSource": "https://www.universal-music.co.jp/sabrina-carpenter/news/2026-04-07/",
       "url": "https://www.youtube.com/watch?v=KWoTyfPsqbE",
       "thumbnail": "https://i.ytimg.com/vi/KWoTyfPsqbE/hqdefault.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "Sabrina Carpenter",
         "House Tour",
@@ -600,7 +600,7 @@
       "url": "https://www.youtube.com/watch?v=xGaZBfJOyAc",
       "thumbnail": "https://i.ytimg.com/vi/xGaZBfJOyAc/hqdefault.jpg",
       "poster": "/assets/music-videos/xGaZBfJOyAc.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "Lady Gaga",
         "The Dead Dance",
@@ -643,7 +643,7 @@
       "url": "https://www.youtube.com/watch?v=vmbyVU9w47Y",
       "thumbnail": "https://i.ytimg.com/vi/vmbyVU9w47Y/hqdefault.jpg",
       "poster": "/assets/music-videos/vmbyVU9w47Y.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "viewCount": 50116039,
       "viewCountCheckedAt": "2026-10-12",
       "keywords": [
@@ -689,7 +689,7 @@
       "url": "https://www.youtube.com/watch?v=KU5V5WZVcVE",
       "thumbnail": "https://i.ytimg.com/vi/KU5V5WZVcVE/hqdefault.jpg",
       "poster": "/assets/music-videos/KU5V5WZVcVE.jpg",
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "viewCount": 166007040,
       "viewCountCheckedAt": "2026-10-12",
       "keywords": [
@@ -737,7 +737,7 @@
   "billboard": {
     "name": "Billboard Hot 100",
     "region": "US",
-    "chartDate": "2026-10-17",
+    "chartDate": "2026-10-24",
     "sourceUrl": "https://www.billboard.com/charts/hot-100/",
     "chartUrl": "https://www.billboard.com/charts/hot-100/",
     "entries": [
@@ -765,13 +765,13 @@
       },
       {
         "rank": 5,
-        "title": "Solar Eclipse",
-        "artist": "Drake & Don Toliver"
+        "title": "Dracula",
+        "artist": "Tame Impala & JENNIE"
       },
       {
         "rank": 6,
-        "title": "Dracula",
-        "artist": "Tame Impala & JENNIE"
+        "title": "Nicole Kidman",
+        "artist": "ADELA"
       },
       {
         "rank": 7,
@@ -787,16 +787,16 @@
       },
       {
         "rank": 9,
-        "title": "Nicole Kidman",
-        "artist": "ADELA"
+        "title": "BbY WOW",
+        "artist": "Karol G With Judeline & rusowsky"
       },
       {
         "rank": 10,
-        "title": "BbY WOW",
-        "artist": "Karol G With Judeline & rusowsky"
+        "title": "Babydoll",
+        "artist": "Dominic Fike"
       }
     ],
-    "verifiedAt": "2026-10-20"
+    "verifiedAt": "2026-10-21"
   },
   "spotifyVideos": [
     {
@@ -1064,7 +1064,7 @@
         "uploadDate": "2026-09-24T16:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b7152c7a24edf892696e18a925"
       },
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "Happiness Is So Sad",
         "Swedish House Mafia, Lykke Li",
@@ -1087,7 +1087,7 @@
         "uploadDate": "2026-08-21T02:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b76815f287bace7a8ff5934e63"
       },
-      "verifiedAt": "2026-10-20",
+      "verifiedAt": "2026-10-21",
       "keywords": [
         "After You",
         "Stray Kids",

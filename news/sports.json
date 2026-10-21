@@ -1,7 +1,23 @@
 {
-  "updated_at": "2026-10-20T01:50:08.032Z",
+  "updated_at": "2026-10-21T10:32:46.267Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
+    {
+      "id": "74fa37e4",
+      "title": "Are transgender sports bans really about protecting women? Survey data tells a different story",
+      "url": "https://theconversation.com/are-transgender-sports-bans-really-about-protecting-women-survey-data-tells-a-different-story-293927",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-20T12:37:47.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
     {
       "id": "be4ef3e4",
       "title": "Pour une grossesse en santé, il ne suffit pas de dire aux femmes de bouger",
