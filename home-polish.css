@@ -1,0 +1,114 @@
+/* 2026-10-21 — home polish: logo size, header spacing, hero contrast.
+   Presentation only. Does not change matching, auth, or business logic. */
+
+/* Header: more breathing room, balanced logo size */
+html body.page-home #mh-topbox.app-header.ma-global-header,
+html body.page-home header.app-header.ma-global-header{
+  min-height:64px!important;
+  padding:8px 12px!important;
+  gap:10px!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb-stage{
+  width:auto!important;
+  height:52px!important;
+  flex:0 0 auto!important;
+  margin-right:4px!important;
+}
+html body.page-home #mh-topbox .ma-brand-orb{
+  width:52px!important;
+  height:52px!important;
+  top:0!important;
+  left:0!important;
+  margin:0!important;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))!important;
+}
+html body.page-home #mh-topbox .ma-brand-lockup,
+html body.page-home #mh-topbox .ma-brand-home-link{
+  height:52px!important;
+  gap:6px!important;
+}
+html body.page-home #mh-topbox .ma-wordmark{
+  font-size:clamp(22px,4.2vw,32px)!important;
+  letter-spacing:-.03em!important;
+}
+html body.page-home #mh-topbox .ma-ai-brand-button{
+  height:44px!important;
+  min-width:auto!important;
+}
+html body.page-home #mh-topbox .ma-ai-letters{
+  font-size:clamp(20px,3.6vw,28px)!important;
+}
+html body.page-home #mh-topbox nav.mh-deck,
+html body.page-home #mh-topbox nav.ma-header-actions{
+  gap:8px!important;
+}
+html body.page-home #mh-topbox nav :is(button,a,select,.ma-menu-button){
+  min-height:40px!important;
+  padding:6px 10px!important;
+}
+
+/* Mobile: slightly larger logo, more spacing */
+@media(max-width:480px){
+  html body.page-home #mh-topbox.app-header.ma-global-header{
+    min-height:56px!important;
+    padding:6px 10px!important;
+    gap:8px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb{
+    width:40px!important;
+    height:40px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-orb-stage{
+    height:40px!important;
+  }
+  html body.page-home #mh-topbox .ma-brand-lockup,
+  html body.page-home #mh-topbox .ma-brand-home-link{
+    height:40px!important;
+    gap:4px!important;
+  }
+  html body.page-home #mh-topbox .ma-wordmark{
+    font-size:20px!important;
+  }
+  html body.page-home #mh-topbox .ma-ai-letters{
+    font-size:18px!important;
+  }
+  html body.page-home #mh-topbox nav.mh-deck{
+    gap:6px!important;
+  }
+}
+
+/* Hero: stronger contrast so text stays readable over imagery */
+html body.page-home .home-hero{
+  padding:16px 16px 12px!important;
+}
+html body.page-home .home-h1{
+  text-shadow:0 2px 12px rgba(0,0,0,.75),0 0 24px rgba(0,0,0,.5)!important;
+  color:#fff!important;
+}
+html body.page-home .home-h1-sub{
+  text-shadow:0 1px 8px rgba(0,0,0,.6)!important;
+  color:#e8e0f0!important;
+}
+
+/* How it works: prevent clipping */
+html body.page-home .ma-how-button,
+html body.page-home [aria-label*="How it works"],
+html body.page-home [data-i18n*="how"]{
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  max-width:none!important;
+}
+
+/* Concierge / filter area: more consistent spacing */
+html body.page-home .ma-concierge{
+  padding:16px!important;
+  margin:12px 0 16px!important;
+}
+html body.page-home .ma-filter-row{
+  gap:6px!important;
+  padding:4px 0!important;
+}
+html body.page-home .ma-chip-row{
+  gap:6px!important;
+}
