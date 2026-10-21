@@ -37,6 +37,7 @@ const BRAND = 'MatchApp Ai';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 const {validateEditorial, renderEditorial} = require('./discovery-editorial.cjs');
 const {copy: shortlistCopy, planShortlist, trustedPoster} = require('./film-tv-shortlists.cjs');
+const {renderSpotifyFeatureSection, spotifyFeatureStyles} = require('./spotify-feature-page.cjs');
 
 /* ---------- load the catalog straight out of app.js ---------- */
 function loadCatalog() {
@@ -104,7 +105,7 @@ const CAT_COPY = {
 const PLAT_COPY = {
     'YouTube': ['What to Watch on YouTube', 'Channels and creators worth more than an algorithm rabbit hole.'],
     'Netflix': ['What to Watch on Netflix', 'Cutting through a homepage that never quite knows what you want.'],
-    'Spotify': ['What to Listen To on Spotify', 'Podcasts and music worth putting on properly.']
+    'Spotify': ['What to Listen To on Spotify', 'Find music, podcasts and audiobooks by mood, plus sourced updates on Spotify features and country-by-country rollout.']
 };
 
 function screenSections(page, plan) {
@@ -317,7 +318,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .seo-shortlist-locale-status[hidden], .seo-shortlist-locale-status button[hidden] { display: none; }
     @media (max-width: 740px) { .seo-shortlist-picks { grid-template-columns: 1fr; } }
     @media (forced-colors: active) { .seo-shortlist-actions a, .seo-other-catalog summary { border-color: ButtonText; } }` : ''}
-</style>${plan ? '\n<script src="/patches/seo-shortlist-locale.js?v=20261020-1" defer></script>' : ''}
+${kind === 'platforms' && s === 'spotify' ? spotifyFeatureStyles : ''}\n</style>${plan ? '\n<script src="/patches/seo-shortlist-locale.js?v=20261020-1" defer></script>' : ''}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
@@ -335,7 +336,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="seo-count">${items.length} catalog ideas. List order is not a popularity or review ranking.</p>
     </header>
 
-    ${plan ? sections.before + '\n\n    ' : ''}${renderEditorial(kind + '/' + s)}
+    ${plan ? sections.before + '\n\n    ' : ''}${renderEditorial(kind + '/' + s)}${kind === 'platforms' && s === 'spotify' ? '\n\n    ' + renderSpotifyFeatureSection() : ''}
 
     ${plan ? sections.after : `<section aria-label="Recommended titles">
         <h2>Titles and creators to explore</h2>
