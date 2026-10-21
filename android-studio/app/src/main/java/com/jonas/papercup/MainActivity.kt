@@ -685,7 +685,7 @@ class MainActivity : AppCompatActivity() {
                 view.loadUrl(HOME)
                 return
             }
-            if (uri != null && isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            if (uri != null && (isAdultAiDocument(uri) || (isMatchAppHost(uri.host.orEmpty()) && uri.path.orEmpty().startsWith("/jonas/")))) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
             lastUrl = url ?: lastUrl
             injectAppMode(view)
             if (uri != null && (isMatchAppHost(uri.host.orEmpty()) || isDebugSmokeUrl(url))) {
