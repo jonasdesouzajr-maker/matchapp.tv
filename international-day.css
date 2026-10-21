@@ -52,3 +52,18 @@
 .global-event.international-day .event-badge.event-live{
   background:#1f9d55;color:#fff;
 }
+
+/* Match the archive's compact poster frame; keep the source link inside the artwork area. */
+.event-archive-grid > .international-day{
+  display:grid;grid-template-columns:minmax(0,1fr);align-content:start;
+}
+.event-archive-grid > .international-day .id-art{grid-area:1/1}
+.event-archive-grid > .international-day .id-art img{
+  display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;background:#120a24;
+}
+.event-archive-grid > .international-day > h3{grid-area:2/1}
+.event-archive-grid > .international-day > .id-cta{display:none}
+.event-archive-grid > .international-day > .id-official{
+  grid-area:1/1;align-self:end;justify-self:center;z-index:1;
+  width:calc(100% - 20px);margin:0 10px 10px;background:rgba(10,6,17,.9);
+}
