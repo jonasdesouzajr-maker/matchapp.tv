@@ -1,0 +1,43 @@
+/* 2026-10-21 — stop mid-word breaks on match filter labels
+   (Category / Format, Mood, Platform, etc.) on all device widths.
+   Overrides the broad overflow-wrap:anywhere rule from the IA layer. */
+html body.page-home :is(
+  #questionnaire-box label,
+  #questionnaire-box .ma-filter-label,
+  #questionnaire-box .ma-filter-label > span,
+  .ma-concierge .ma-filter-label,
+  .ma-concierge .ma-filter-label > span,
+  .q-grid label,
+  .q-grid--primary label,
+  .q-grid--advanced label,
+  .crit-collapsible label
+){
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+  white-space:normal!important;
+  min-width:0!important;
+}
+html body.page-home :is(
+  .ma-filter-label > span,
+  .ma-filter-label small
+){
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+}
+html body.page-home .q-grid--primary label,
+html body.page-home .ma-filter-label{
+  max-width:100%!important;
+  line-height:1.25!important;
+}
+@media(max-width:420px){
+  html body.page-home .q-grid--primary,
+  html body.page-home .q-grid--advanced{
+    grid-template-columns:1fr!important;
+  }
+  html body.page-home .q-grid--primary label,
+  html body.page-home .ma-filter-label{
+    font-size:12px!important;
+    letter-spacing:0!important;
+  }
+}
