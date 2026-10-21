@@ -37,7 +37,7 @@ Google Play requires at least two screenshots to publish a listing. Its large-fo
 
 ## Publication status
 
-The refreshed copy and graphics are **prepared, not published**. No Play publishing identity or credential is connected in this execution environment; the current public listing was audited without an authenticated Console session. No upload, release-track or review approval is claimed.
+This directory contains the localized source copy and graphics for the adult listing. `GRAPHICS-PROVENANCE.json` records each phone preview’s exact source revision, capture method and hash, including the Explore source correction. Source preparation and repository commits do not establish a Play Console upload, review decision or publication. Record the actual Console outcome separately after checking the authorized publisher session.
 
 Use the existing Play Console Store presence flow with the authorized publisher account to compare and apply the intended localized metadata and assets. Metadata changes do not require a new Android binary. A binary update remains a separate signed-release process with current package, version-code, upload-certificate and device validation.
 

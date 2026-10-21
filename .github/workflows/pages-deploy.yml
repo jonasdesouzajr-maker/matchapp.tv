@@ -87,7 +87,8 @@ jobs:
         with:
           name: github-pages-${{ github.run_attempt }}
           path: .
-      - id: deploy
+      - name: Deploy validated Pages artifact
+        id: deploy
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
@@ -97,3 +98,31 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run indexnow.yml --ref main
+
+      # A GITHUB_TOKEN-dispatched Pages run does not reliably emit workflow_run.
+      # Pages owns the one explicit request, independently of IndexNow delivery.
+      - name: Request one live smoke for the deployed SHA
+        if: ${{ !cancelled() && steps.deploy.outcome == 'success' }}
+        uses: actions/github-script@v8
+        with:
+          retries: 0
+          script: |
+            const fs = require('node:fs');
+            const {requestReleaseSmoke} = require('./tools/release-smoke-dispatch.cjs');
+            const directory = 'artifacts/release-smoke-dispatch';
+            fs.mkdirSync(directory, {recursive: true});
+            const save = evidence => fs.writeFileSync(`${directory}/delivery.json`, JSON.stringify(evidence, null, 2) + '\n');
+            const evidence = await requestReleaseSmoke({github, context,
+              expectedSha: process.env.GITHUB_SHA,
+              runAttempt: Number(process.env.GITHUB_RUN_ATTEMPT), save});
+            await core.summary.addHeading('Production smoke delivery')
+              .addRaw(`SHA ${evidence.expectedSha}: ${evidence.status}\n`)
+              .addLink('Existing smoke run', evidence.smokeUrl).write();
+      - name: Keep smoke dispatch and reconciliation evidence
+        if: ${{ always() && steps.deploy.outcome == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: MatchApp-release-smoke-delivery-${{ github.run_attempt }}
+          path: artifacts/release-smoke-dispatch/
+          if-no-files-found: warn
+          retention-days: 14

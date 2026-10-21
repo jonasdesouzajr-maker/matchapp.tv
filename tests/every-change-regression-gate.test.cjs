@@ -5,15 +5,20 @@ const root=path.join(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'
 
 test('Every successful main deployment launches live regression against its exact deployed SHA',()=>{
  const workflow=read('.github/workflows/release-smoke.yml');
- assert.match(workflow,/workflow_run:\s*\n\s*workflows:\s*\["Deploy MatchApp Pages"\]/);
- assert.match(workflow,/types:\s*\[completed\]/);
- assert.match(workflow,/branches:\s*\[main\]/);
- assert.match(workflow,/github\.event\.workflow_run\.conclusion == 'success'/,
-  'Cancelled deployments must never launch live regression');
- assert.match(workflow,/ref:\s*\$\{\{ github\.event\.workflow_run\.head_sha \|\| github\.sha \}\}/,
+ const pages=read('.github/workflows/pages-deploy.yml');
+ assert.match(workflow,/workflow_dispatch:/);
+ assert.doesNotMatch(workflow,/workflow_run:/,'Pages must remain the sole automatic smoke owner');
+ assert.match(pages,/!cancelled\(\) && steps\.deploy\.outcome == 'success'/,
+  'Only a successful, non-cancelled deployment may request live regression');
+ assert.match(pages,/expectedSha: process\.env\.GITHUB_SHA/);
+ assert.match(pages,/requestReleaseSmoke\(\{github, context/);
+ assert.match(workflow,/Verify deployment identity before checkout/);
+ assert.match(workflow,/step\.name === 'Deploy validated Pages artifact' && step\.conclusion === 'success'/);
+ assert.match(workflow,/ref:\s*\$\{\{ inputs\.expected_sha \}\}/,
   'Check out precisely the deployment that successfully completed');
- assert.match(workflow,/EXPECTED_SHA:\s*\$\{\{ github\.event\.workflow_run\.head_sha \|\| github\.sha \}\}/);
+ assert.match(workflow,/EXPECTED_SHA:\s*\$\{\{ inputs\.expected_sha \}\}/);
  assert.match(workflow,/deployment-sha\.txt/);
+ assert.match(workflow,/Production advanced during browser validation/);
  assert.match(workflow,/node tools\/live-production-smoke\.cjs/);
  assert.match(workflow,/upload-artifact@/,'Keep screenshots and machine-readable report');
 });

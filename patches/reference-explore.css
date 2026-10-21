@@ -231,4 +231,15 @@ html:lang(hi).ma-reference body.page-explore #explore-main .ref-explore-hero .hu
 html:lang(ru).ma-reference body.page-explore #explore-main .ref-explore-hero .hub-title {font-size:clamp(32px,5vw,62px)!important}
 html.ma-reference body.page-explore #explore-main :is(.ref-explore-hero,.ref-editorial-banner,.ref-topic,.ref-secondary-topic):focus-visible {outline-offset:-3px!important}
 
+/* CJK can wrap between characters, so the shared min-content capsule would
+   collapse this heading to one glyph. Use the available copy-column width. */
+html.ma-reference:is(:lang(ja),:lang(zh),:lang(ko)):not(#ma-reference-legacy):not(#ma-pill-legacy):not(#ma-pill-legacy) body.page-explore #explore-title[data-ma-text-pill] {width:fit-content!important;}
+
+/* Keep the full text wordmark and both44px actions clear on narrow phones. */
+@media(max-width:359px) {
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.hub-brand {grid-column:1 / -1!important;grid-row:1!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.ma-cinema-search,
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.ref-explore-tools {grid-row:2!important;}
+}
+
 }

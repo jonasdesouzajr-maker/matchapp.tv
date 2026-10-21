@@ -1,80 +1,244 @@
 {
+  "schemaVersion": 2,
   "product": "MatchApp Ai",
   "package": "com.jonas.papercup",
-  "captureCommit": "a40b26ccf088d410fc3142cfa73ede08eca38d90",
-  "captureProvenance": "Actual website UI rendered using verbatim MainActivity Android bootstrap and user agent in Chromium. Not APK, emulator, or physical-device screenshots. No invented app screens or AI responses.",
-  "interfaceChangesAfterCapture": "Later changes fix Profile spacing, source/security, factual Ask intent, verified-cover loading, original cinematic feedback, native launcher load ordering, footer language hydration, solid Android heading paint, compact localized footer presentation, immediate same-art cover previews, visible poster recovery and early stylesheet/font discovery. The compact Support control and footer label are outside these phone captures; the captured intended Home, matcher, Explore and Jonas layouts remain unchanged. Separate genuine Play-installed tablet captures are managed through Console with device provenance.",
-  "nativeBootstrapSha256": "8f5e9336bcbe8fee3eb10e6654a63c85fd049ac08966431ebf71f488248a080e",
+  "captureCommits": [
+    "8d7b38601011febd1799167df9b49207e2f17c02",
+    "94db637707e14206af5612bf2789b1e6ac4f49d9"
+  ],
+  "captureProvenance": "Actual website UI rendered with verbatim MainActivity APP_MODE_JS, release ambient-loader JavaScript and Android user-agent suffix in Chromium. These are Android-bootstrap website previews, not APK, emulator or physical-device screenshots. No app UI, source artwork or AI response was fabricated or retouched.",
+  "captureEnvironment": {
+    "renderer": "Chromium 141.0.7390.37",
+    "viewportCss": {
+      "width": 360,
+      "height": 640
+    },
+    "deviceScaleFactor": 3,
+    "imageMode": "RGB",
+    "localePolicy": "Each fresh context saves the selected English or Brazilian Portuguese language before loading the actual UI.",
+    "preferences": {
+      "fontScale": 1,
+      "reduceMotion": true,
+      "cookieChoice": "essential",
+      "legalChoice": "essential"
+    },
+    "serviceWorkers": "blocked",
+    "requests": "GET/HEAD/OPTIONS only; API/form submissions, advertising and analytics requests were not exercised.",
+    "network": "Public source art loaded through the capture environment proxy. Certificate-error tolerance was confined to these ephemeral browser contexts; public deployment SHA was also verified through the system trusted HTTPS client."
+  },
+  "nativeBootstrapSha256": "4f65547f0a9d49f23df20e409c4a5e7c073d88ec48ca74f8704cba8d7234b275",
+  "nativeBootstrap": {
+    "sourceCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+    "sourcePath": "android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt",
+    "sourceFileSha256": "c9c14534614266e8d8b23bcd76c994849d961d4f900d4eb1b0a6be0aa53ad042",
+    "appModeJsRawLiteralSha256": "4f65547f0a9d49f23df20e409c4a5e7c073d88ec48ca74f8704cba8d7234b275",
+    "releaseAmbientInjectionRawLiteralSha256": "7c15b384e73bd8e5ac96ceab78cf03a138e3b31c6482ae77dec0210453d7dfc9",
+    "appUserAgentSuffix": "MatchAppTVAndroid/1.1.55 MatchAppAiAndroid/1.1.55 MatchAppLaunchIntro/1",
+    "execution": "The original source strings execute in the top document at creation and after parsing begins, preserving their idempotent behavior. No native bridge is fabricated."
+  },
+  "captureSources": {
+    "live": {
+      "commit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "origin": "https://matchapp.tv",
+      "startedAt": "2026-10-20T22:45:50.994Z",
+      "finishedAt": "2026-10-20T22:46:40.424Z",
+      "verification": "deployment-sha.txt matched before and after each locale; shared header CSS/JS and ambient-loader bytes matched the exact source checkout.",
+      "reportSha256": "e566617e8ddb65fe1f490eddfce452eafb809dc90d44306206337fbedbaf4952"
+    },
+    "exploreCandidate": {
+      "commit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "equivalentLocalCommit": "af08f0b44f3d52e82b69c3aff5b0c18956feeffb",
+      "gitTree": "58feba6c01e008f7aea3075a9145d59b37dac3d1",
+      "startedAt": "2026-10-20T22:54:00.697Z",
+      "finishedAt": "2026-10-20T22:55:04.693Z",
+      "transport": "Original candidate static file bytes served through Playwright request routing because the capture proxy does not permit Chromium loopback connections. No transformed product source, service worker, fixture, or dynamic API response.",
+      "verification": "The candidate and its local cherry-pick have identical full Git tree hashes. The actual Explore HTML, shared wordmark CSS, Explore CSS, header assets and ambient script matched served source hashes.",
+      "reportSha256": "72a9815d01446f3c208ff2be0b2428dd122e47f073170b6789ad6d9e6431473a",
+      "deploymentAtCapture": "Candidate source; publication of these two Explore previews requires the matching source correction to be deployed."
+    }
+  },
+  "captureHostFonts": {
+    "emoji": {
+      "family": "Noto Color Emoji",
+      "source": "https://raw.githubusercontent.com/googlefonts/noto-emoji/main/2D/fonts/NotoColorEmoji.ttf",
+      "sha256": "15671215ab769fdc7162a045d56fd7d7e477c51b04e6b3c761d914d8fdd6cc44",
+      "scope": "Fontconfig for this capture process only; no product CSS or system settings changed."
+    },
+    "japaneseVisualQa": {
+      "family": "Noto Sans CJK JP",
+      "source": "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-Regular.otf",
+      "sha256": "68a3fc98800b2a27b371f2fb79991daf3633bd89309d4ffaa6946fd587f375b5",
+      "scope": "Capture Fontconfig only; no product stylesheet or system font changes"
+    }
+  },
+  "verification": {
+    "phonePreviews": 8,
+    "dimensions": "All eight previews are 1080x1920 RGB PNGs with no alpha.",
+    "visualReview": "All eight final previews were inspected. English/PT labels, source artwork, current integrated wordmark and reserved Jonas header are visible; the idle conversation shows original UI and no generated response.",
+    "pageErrors": 0,
+    "phoneHorizontalOverflowPx": 0,
+    "exploreHeader": {
+      "sourceCommit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "widthsCss": [
+        320,
+        390,
+        820,
+        1366
+      ],
+      "languages": [
+        "en",
+        "pt-BR",
+        "ar",
+        "ja"
+      ],
+      "cases": 16,
+      "result": "No horizontal overflow or wordmark/search/controls/Jonas collision. Canonical MatchApp Ai survives changes through the actual language selector. Phone/tablet widths use the Android bootstrap; 1366px uses desktop browser behavior.",
+      "japaneseFontRecheck": "The four Japanese views were rechecked with actual Japanese glyph coverage after correcting a capture-host font omission. This checks header geometry, not an unrelated CJK hero-heading layout issue handled separately.",
+      "japaneseReportSha256": "e7f3bf301e93e5369a97b30c1ef8b0ccec80e83982d531297e9892785aeff355"
+    }
+  },
+  "limitations": [
+    "These previews establish the rendered website state only, not physical-device or APK behavior.",
+    "No account login, microphone use, matching request, AI question, purchase or ad click occurred. Idle allowance text is the actual anonymous UI state and is not evidence of a server quota check.",
+    "Home preserves its actual mixed source carousel. Compact source metadata may wrap or clip as implemented; no cards, captions or artwork were hidden or retouched.",
+    "Feature graphics below are unchanged approved assets retained from the prior manifest. This manifest does not establish any Play Console upload, approval or publication outcome."
+  ],
   "files": [
     {
       "path": "en-US/graphics/feature-graphic.png",
       "sha256": "1b546397a5a4ca116b6b187a031b2055e2165c6c237a99b0e52c09c7617666c9",
       "width": 1024,
       "height": 500,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "unchangedApprovedFeatureGraphic"
     },
     {
       "path": "en-US/graphics/phone-screenshots/01-home.png",
-      "sha256": "d9e9432da3c5881df73099b005bb4c6cfc7480461fb999fec51a3f9299421e1a",
+      "sha256": "df2f272c388c4a4777ee4e5ecec805d8dad3e6971eab05fc551d8cc030d184c4",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:45:59.066Z",
+      "route": "/?utm_source=android_app&appBuild=55",
+      "visibleState": "Home with actual source carousel and persistent reserved Jonas header."
     },
     {
       "path": "en-US/graphics/phone-screenshots/02-matcher.png",
-      "sha256": "7b34274b2fc52c65429196bdc4bb7848d896a7b3e7040c8d35ebd6084c870313",
+      "sha256": "60db1ddb766494027b626d1e0866f1f92d903eaba85044cb20e2f891c941e992",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:06.235Z",
+      "route": "/#questionnaire-box",
+      "visibleState": "Matching form reached through the existing Matches dock action; not submitted."
     },
     {
       "path": "en-US/graphics/phone-screenshots/03-explore.png",
-      "sha256": "6e9dcfbcbf1fd1afaa9ab24e17986e32520b26f0295a60758997da994079e3d4",
+      "sha256": "83ac57c65132c62b5469d65630351d3f490265d41b49ec88a40577e474ef14f4",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "exploreCandidate",
+      "captureCommit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "capturedAt": "2026-10-20T22:54:04.867Z",
+      "route": "/explore.html",
+      "visibleState": "Actual Explore route with canonical integrated wordmark and persistent reserved Jonas header."
     },
     {
       "path": "en-US/graphics/phone-screenshots/04-jonas-idle.png",
-      "sha256": "1ace6589acecb98e0259915e1aa4cf1caddd666b31ff3814eb916209151f5dde",
+      "sha256": "08ece1a02530ae03f50cf0ee561e455e234549db196093150689c71023c572ee",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "en-US",
+      "selectedLanguage": "en",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:14.313Z",
+      "route": "/explore.html",
+      "visibleState": "Existing Jonas conversation opened through the header launcher; no text, microphone or Send action used."
     },
     {
       "path": "pt-BR/graphics/feature-graphic.png",
       "sha256": "29e9972417d4128a31aac188afcc3937534b2c6a18a5e2cd21acf2e365900a4c",
       "width": 1024,
       "height": 500,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "unchangedApprovedFeatureGraphic"
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/01-home.png",
-      "sha256": "6a1b51c239118c9fca5a66472d654fa2be5e772963a36efc0c25887c39d576d9",
+      "sha256": "3d15078e323959f0fcac4981b22ad373c6883bdef68e30dd6d768f9981f75128",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:22.357Z",
+      "route": "/?utm_source=android_app&appBuild=55",
+      "visibleState": "Home with actual source carousel and persistent reserved Jonas header."
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/02-matcher.png",
-      "sha256": "bcbf167fa0eeb1bb9ee0c340f47f38d64771afeeba636815193842161124410f",
+      "sha256": "e976237d0447f3d608df0d0b9d04df66b8c99cf14047e3b2afdc9f6b3cd0fdcf",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:30.135Z",
+      "route": "/#questionnaire-box",
+      "visibleState": "Matching form reached through the existing Matches dock action; not submitted."
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/03-explore.png",
-      "sha256": "1879e6eb497927aed5c16b98d2143a44fea888bec8ab116889ceb0cc2d46a06b",
+      "sha256": "76ea1b1eaf21258ca51845cdc1d39d7fb6020c36f55e116505301dee758c414f",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "exploreCandidate",
+      "captureCommit": "94db637707e14206af5612bf2789b1e6ac4f49d9",
+      "capturedAt": "2026-10-20T22:54:08.890Z",
+      "route": "/explore.html",
+      "visibleState": "Actual Explore route with canonical integrated wordmark and persistent reserved Jonas header."
     },
     {
       "path": "pt-BR/graphics/phone-screenshots/04-jonas-idle.png",
-      "sha256": "a00d9c1c5275f520c986e3fa268dc2d4914eefdc1cbd305e62a341a9f2c38745",
+      "sha256": "11b4c8cfc5b718cdc72e32f6d8251efb59f452374d228d2f91029adfa5e68168",
       "width": 1080,
       "height": 1920,
-      "mode": "RGB"
+      "mode": "RGB",
+      "assetKind": "androidBootstrapWebsitePreview",
+      "locale": "pt-BR",
+      "selectedLanguage": "pt-BR",
+      "captureSource": "live",
+      "captureCommit": "8d7b38601011febd1799167df9b49207e2f17c02",
+      "capturedAt": "2026-10-20T22:46:40.350Z",
+      "route": "/explore.html",
+      "visibleState": "Existing Jonas conversation opened through the header launcher; no text, microphone or Send action used."
     }
   ]
 }
