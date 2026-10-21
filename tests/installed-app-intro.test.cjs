@@ -83,8 +83,9 @@ test('native intro is bundled, duration-aware, one-time and destroyed on backgro
  // recreated Activities and same-version launches are governed by the native policy.
  assert.match(s,/if \(savedInstanceState == null\) startStartupExperience\(\)/);
  assert.match(s,/NativeLaunchPolicy\.shouldPlayIntro/);
- assert.ok(fs.statSync('assets/brand/matchapp-launch-intro-hd.mp4').size>1000000);
- assert.equal(fs.readFileSync('assets/brand/matchapp-launch-intro-hd.mp4').compare(fs.readFileSync('android-studio/app/src/main/res/raw/matchapp_launch_intro.mp4')),0);
+ const introBytes=fs.readFileSync('assets/brand/matchapp-launch-intro-hd.mp4');
+ assert.ok(introBytes.length>1000000);
+ assert.equal(introBytes.compare(fs.readFileSync('android-studio/app/src/main/res/raw/matchapp_launch_intro.mp4')),0);
 });
 
 test('installed intro fills the viewport without distorting the video and native restores system bars',()=>{
