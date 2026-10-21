@@ -61,12 +61,13 @@ function capturePageError(device,error){
  }
  errors.push({device,page:'home',error:stack.slice(0,500)});
 }
+const {captureAuditedScreenshot} = require('./live-qa-screenshot.cjs');
 async function shot(page,name){
- try{await page.screenshot({path:path.join(dir,name+'.png'),animations:'disabled',timeout:30000});report.screens.push(name+'.png');return true}
- catch(first){
-  try{await page.screenshot({path:path.join(dir,name+'.png'),animations:'allow',timeout:20000});report.screens.push(name+'.png');return true}
-  catch(second){const issue=String(second.message||first.message).slice(0,180);record('screenshot '+name,false,issue);return false}
- }
+ try {
+  const warning=await captureAuditedScreenshot(page,path.join(dir,name+'.png'));
+  if(warning){report.warnings.push({name,...warning});console.warn('SCREENSHOT FONT WARNING '+name+': '+warning.issue)}
+  report.screens.push(name+'.png');return true;
+ }catch(error){record('screenshot '+name,false,String(error.message||error).slice(0,250));return false}
 }
 async function observed(page,url){
  // Observe ErrorEvent provenance as well as Playwright's sometimes opaque
