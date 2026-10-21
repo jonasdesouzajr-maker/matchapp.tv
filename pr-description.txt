@@ -1,0 +1,32 @@
+Six changes plus a release bump.
+
+1. Shared page shell: all 20 non-Home, non-Kids routes now carry the Home
+   key-art wall and the Home top box, with a labelled HOME button. Fixes the
+   brand mark that was absolutely positioned at top:-28px and hung outside the
+   box on desktop, and stops the header's aura/shine animation loops that were
+   still running off Home.
+2. Daily Check-in rebuilt as a seven-day track directly under the top box on
+   Home, Match Together and Ask MatchApp. +1 Extra Match per check-in, +5 on
+   day 7. Registered accounts only, enforced server-side. Includes migration
+   supabase/migrations/015_daily_checkin_match_rewards.sql.
+3. "International day of..." card in the Events tab, driven entirely by
+   data/international-day.json so a daily bot rewrites one file. Taps through
+   to the AI chat. Emits its own schema.org/Event block.
+4. Antártida (2026) replaces A Gata Comeu as the featured title, with an
+   "In cinemas now" ribbon that flips to "Where to watch" on one data field.
+   Cover resolves from the verified TMDB identity via our own proxy. New
+   static featured page + sitemap entry; the old featured page is kept so it
+   does not 404.
+5. where-to-watch hub was missing its analytics container — fixed in the page
+   and in its generator.
+6. ui-containment.css fixes every label overflow measured at 360/390/768/1440.
+
+Release: release.json -> 2026.09.21.1, matched in build-meta.js. Both Android
+modules bumped together: versionCode 23->24, versionName 1.1.21->1.1.22,
+appBuild 23->24 on each module's HOME url.
+
+Matching, Ask AI, quota, auth and payment code are unchanged.
+
+Verification: 253 tests pass; audit:site, audit:search and search-readiness
+report 0 issues and 0 errors; CI release/build metadata check passes; no page
+errors and no horizontal overflow at 390/820/1440 across all 20 routes.
