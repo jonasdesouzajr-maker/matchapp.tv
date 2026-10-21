@@ -1,0 +1,160 @@
+{
+  "platform": "Spotify",
+  "reviewedAt": "2026-10-21",
+  "editorialPolicy": "MatchApp Ai independent editorial summaries of announced Spotify features. No Spotify Content, user listening history or Spotify recommendation data is stored. Feature availability is not asserted for an individual account.",
+  "features": [
+    {
+      "id": "audiobooks-global-expansion",
+      "title": "Audiobooks expand across more markets",
+      "category": "audiobooks",
+      "announcedOn": "2026-10-07",
+      "status": "rolling_out",
+      "eligibility": "Spotify plans and audiobook access options vary by country; Brazil was announced among planned Audiobooks in Premium markets.",
+      "marketCodes": [],
+      "description": "Spotify announced a phased expansion of audiobook access toward more than 180 markets by the end of 2026, including more languages and regional catalogs.",
+      "matchappRelevance": "MatchApp Ai can help listeners choose a topic, format and mood, then encourage them to verify the exact audiobook edition in their country.",
+      "keywords": [
+        "Spotify audiobooks Brazil 2026",
+        "audiobooks on Spotify by country",
+        "Spotify audiolivros Brasil",
+        "find audiobooks by mood"
+      ],
+      "sourceUrl": "https://newsroom.spotify.com/2026-10-07/audiobooks-global-expansion/"
+    },
+    {
+      "id": "page-match-audiobooks",
+      "title": "Page Match for print, e-book and audio",
+      "category": "audiobooks",
+      "announcedOn": "2026-10-07",
+      "status": "available_in_eligible_markets",
+      "eligibility": "Requires a supported title and a compatible Spotify audiobook experience; check your market and account.",
+      "marketCodes": [],
+      "description": "Spotify's Page Match helps eligible readers move between physical or digital text and audiobook listening positions, with expanded page-number support.",
+      "matchappRelevance": "Show format-aware book discovery without claiming that MatchApp Ai synchronizes reading positions.",
+      "keywords": [
+        "Spotify Page Match",
+        "switch from book to audiobook",
+        "Spotify audiobook page numbers",
+        "Spotify Page Match feature"
+      ],
+      "sourceUrl": "https://newsroom.spotify.com/2026-10-07/audiobooks-global-expansion/"
+    },
+    {
+      "id": "taste-profile-beta",
+      "title": "Taste Profile beta for personalized listening",
+      "category": "discovery",
+      "announcedOn": "2026-09-23",
+      "status": "limited_beta",
+      "eligibility": "Spotify Premium users aged 18 or older in the United States during the announced beta.",
+      "marketCodes": [
+        "US"
+      ],
+      "description": "Taste Profile beta lets eligible listeners view and guide Spotify's interpretation of their interests across music, podcasts and audiobooks.",
+      "matchappRelevance": "MatchApp Ai maintains its own explicit mood and format preferences; it does not access Spotify's private taste profile.",
+      "keywords": [
+        "Spotify Taste Profile 2026",
+        "personalized music discovery",
+        "Spotify taste controls",
+        "Spotify podcast recommendations"
+      ],
+      "sourceUrl": "https://newsroom.spotify.com/2026-09-23/taste-profile-shape-home-feed/"
+    },
+    {
+      "id": "prompted-playlist-audiobooks",
+      "title": "Prompted Playlist for audiobooks",
+      "category": "audiobooks",
+      "announcedOn": "2026-08-11",
+      "status": "limited_beta",
+      "eligibility": "Eligible Spotify Premium users in the United States, Canada, United Kingdom, Ireland, Australia, New Zealand and Sweden; beta restrictions apply.",
+      "marketCodes": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "AU",
+        "NZ",
+        "SE"
+      ],
+      "description": "Listeners can describe the audiobooks they want and receive a personalized audiobook playlist within Spotify, with optional automatic refresh.",
+      "matchappRelevance": "MatchApp Ai can independently recommend book ideas while respecting exact edition, country and rights verification.",
+      "keywords": [
+        "Spotify prompted audiobook playlist",
+        "AI audiobook discovery",
+        "audiobooks by mood",
+        "personalized audiobook recommendations"
+      ],
+      "sourceUrl": "https://newsroom.spotify.com/2026-08-11/audiobook-new-expanded-features/"
+    },
+    {
+      "id": "talk-to-spotify",
+      "title": "Talk to Spotify conversational discovery",
+      "category": "discovery",
+      "announcedOn": "2026-07-14",
+      "status": "limited_beta",
+      "eligibility": "Spotify Premium subscribers aged 18 or older in the United States, Ireland and Sweden; English-language experience in the announced rollout.",
+      "marketCodes": [
+        "US",
+        "IE",
+        "SE"
+      ],
+      "description": "Eligible Spotify listeners can type or speak follow-up questions within Spotify to explore music, podcasts and audiobooks.",
+      "matchappRelevance": "MatchApp Ai's separate entertainment assistant does not control Spotify playback or account actions.",
+      "keywords": [
+        "Talk to Spotify AI",
+        "Spotify conversational discovery",
+        "ask Spotify about podcasts",
+        "Spotify audiobook questions"
+      ],
+      "sourceUrl": "https://newsroom.spotify.com/2026-07-14/talk-to-spotify-announcement-beta/"
+    },
+    {
+      "id": "prompted-playlist-podcasts",
+      "title": "Prompted Playlist for podcasts",
+      "category": "podcasts",
+      "announcedOn": "2026-04-07",
+      "status": "limited_beta",
+      "eligibility": "Spotify Premium users in the United States, Canada, United Kingdom, Ireland, Australia, New Zealand and Sweden; English-language beta.",
+      "marketCodes": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "AU",
+        "NZ",
+        "SE"
+      ],
+      "description": "Spotify expanded prompted playlists to podcast discovery, allowing eligible users to describe subjects and topics they want to hear about.",
+      "matchappRelevance": "MatchApp Ai can surface original topic-based listening suggestions without claiming it generates Spotify-hosted playlists.",
+      "keywords": [
+        "Spotify prompted podcast playlist",
+        "podcast discovery by topic",
+        "podcast recommendations AI",
+        "find new podcasts"
+      ],
+      "sourceUrl": "https://newsroom.spotify.com/2026-04-07/prompted-playlist-for-podcasts-launch/"
+    },
+    {
+      "id": "prompted-playlist-music",
+      "title": "Prompted Playlist for music",
+      "category": "music",
+      "announcedOn": "2026-02-23",
+      "status": "limited_beta",
+      "eligibility": "Spotify Premium beta; the February expansion included the United Kingdom, Ireland, Australia and Sweden, with availability changing by market.",
+      "marketCodes": [
+        "GB",
+        "IE",
+        "AU",
+        "SE"
+      ],
+      "description": "Spotify's Prompted Playlist helps eligible listeners turn natural-language music moods, moments or activities into tailored playlists.",
+      "matchappRelevance": "MatchApp Ai can assist with mood and genre discovery; playlists are created and managed by Spotify itself.",
+      "keywords": [
+        "Spotify prompted playlist",
+        "music playlist by mood",
+        "Spotify AI playlist discovery",
+        "music recommendations for activities"
+      ],
+      "sourceUrl": "https://newsroom.spotify.com/2026-02-23/prompted-playlist-prompts-to-try/"
+    }
+  ]
+}

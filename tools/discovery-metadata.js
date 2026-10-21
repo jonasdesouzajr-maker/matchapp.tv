@@ -46,9 +46,9 @@ page('platforms/plus-sbt/index.html', '+SBT: Catálogo, Novelas, Séries e Filme
 page('platforms/youtube/index.html', 'YouTube Channels & Videos to Watch | MatchApp Ai',
   'Discover curated YouTube creators and videos across entertainment, music and more. Explore channels and ask AI for a recommendation by topic.',
   'what to watch on YouTube, YouTube creator discovery, YouTube channel recommendations, music videos, video podcasts, canais do YouTube');
-page('platforms/spotify/index.html', 'Spotify Music & Podcast Recommendations | MatchApp Ai',
-  'Explore curated Spotify music and podcasts for your mood. Discover listening ideas and ask MatchApp Ai for a topic-focused recommendation.',
-  'Spotify music discovery, podcast recommendations, what podcast should I listen to, music by mood, Spotify playlists, podcasts para ouvir');
+page('platforms/spotify/index.html', 'Spotify Music, Podcasts & Audiobooks in 2026 | MatchApp Ai',
+  'Explore Spotify music, podcasts and audiobooks by mood. See sourced 2026 playlist, Taste Profile and Page Match updates, with market eligibility notes.',
+  'Spotify music discovery, Spotify audiobooks 2026, Spotify podcasts, Spotify Page Match, Spotify Taste Profile, Spotify prompted playlist, music by mood, podcast recommendations by topic, audiobooks by mood, Spotify AI playlist, Spotify Brazil audiobooks, audiolivros Spotify Brasil, descobrir podcasts, ouvir musicas por humor, Spotify audiobook availability');
 page('collections/movie/index.html', 'Movie Recommendations: What to Watch Tonight | MatchApp Ai',
   'Browse curated movies across comedy, romance, drama and more. Find a film for tonight and ask AI to match your mood, genre and viewing preferences.',
   'movie recommendations, what movie should I watch, movies by mood, films to watch tonight, indicações de filmes');
