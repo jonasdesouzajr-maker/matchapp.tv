@@ -48,7 +48,7 @@ page('platforms/youtube/index.html', 'YouTube Channels & Videos to Watch | Match
   'what to watch on YouTube, YouTube creator discovery, YouTube channel recommendations, music videos, video podcasts, canais do YouTube');
 page('platforms/spotify/index.html', 'Spotify Music, Podcasts & Audiobooks in 2026 | MatchApp Ai',
   'Explore Spotify music, podcasts and audiobooks by mood. See sourced 2026 playlist, Taste Profile and Page Match updates, with market eligibility notes.',
-  'Spotify music discovery, Spotify audiobooks 2026, Spotify podcasts, Spotify Page Match, Spotify Taste Profile, Spotify prompted playlist, music by mood, podcast recommendations by topic, audiobooks by mood, Spotify AI playlist, Spotify Brazil audiobooks, audiolivros Spotify Brasil, descobrir podcasts, ouvir musicas por humor, Spotify audiobook availability');
+  'Spotify music discovery, Spotify audiobooks 2026, Spotify podcasts, Spotify Page Match, Spotify Taste Profile, Spotify prompted playlist, music by mood, podcast recommendations by topic, audiobooks by mood, Spotify AI playlist, Spotify Brazil audiobooks, audiolivros Spotify Brasil, descobrir podcasts, ouvir musicas por humor, Spotify audiobook availability, Spotify DJ português brasileiro, Spotify DJ Brasil, Spotify SongDNA, Spotify AI artist badge, Spotify Claude integration');
 page('collections/movie/index.html', 'Movie Recommendations: What to Watch Tonight | MatchApp Ai',
   'Browse curated movies across comedy, romance, drama and more. Find a film for tonight and ask AI to match your mood, genre and viewing preferences.',
   'movie recommendations, what movie should I watch, movies by mood, films to watch tonight, indicações de filmes');

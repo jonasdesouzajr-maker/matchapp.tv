@@ -37,7 +37,7 @@ const BRAND = 'MatchApp Ai';
 const LANGS = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 const {validateEditorial, renderEditorial} = require('./discovery-editorial.cjs');
 const {copy: shortlistCopy, planShortlist, trustedPoster} = require('./film-tv-shortlists.cjs');
-const {renderSpotifyFeatureSection} = require('./spotify-feature-page.cjs');
+const {renderSpotifyFeatureSection, spotifyFeatureStyles} = require('./spotify-feature-page.cjs');
 
 /* ---------- load the catalog straight out of app.js ---------- */
 function loadCatalog() {
@@ -318,7 +318,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .seo-shortlist-locale-status[hidden], .seo-shortlist-locale-status button[hidden] { display: none; }
     @media (max-width: 740px) { .seo-shortlist-picks { grid-template-columns: 1fr; } }
     @media (forced-colors: active) { .seo-shortlist-actions a, .seo-other-catalog summary { border-color: ButtonText; } }` : ''}
-</style>${plan ? '\n<script src="/patches/seo-shortlist-locale.js?v=20261020-1" defer></script>' : ''}
+${kind === 'platforms' && s === 'spotify' ? spotifyFeatureStyles : ''}\n</style>${plan ? '\n<script src="/patches/seo-shortlist-locale.js?v=20261020-1" defer></script>' : ''}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
