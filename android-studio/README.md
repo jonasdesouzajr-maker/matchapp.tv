@@ -46,24 +46,25 @@ These existing native modules are **live WebView shells**, not divergent forks o
 - Uses the existing MatchApp Kids visual identity for launcher/splash presentation
 - Cinema dim is **not** applied in this module
 
-## Current AAB release
+## Current adult AAB candidate — October 21, 2026
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) release version: **1.1.38**
-- Standard app version code: **42**
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=53`
+- Standard app (`:app`) candidate version: **1.1.56**, package `com.jonas.papercup`.
+- Standard app version code: **56**. The October 21 all-bundle Play Console check at 22:45 UTC found **55 / 1.1.55** as the highest uploaded bundle, already on Production at 100%; recheck before upload.
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=56`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.
-- Kids app (`:kidsapp`) release version: **1.1.25** / version code **27**
-- Kids app launch: `https://matchapp.tv/kids/?utm_source=android_kids_app&appBuild=27`
-- Both apps cold-load production on launch and manual refresh to avoid stale WebView content, then resume normal caching after the page renders.
+- Kids app (`:kidsapp`) remains a separate, unchanged package; its independent release is outside this adult candidate.
+- The adult shell preserves its eligible current screen on launcher reentry and supports bounded presentation recovery after process death. Pull-to-refresh is disabled; the adult manual refresh preserves the current document and uses the existing local read-only adapter. Installed binary updates come through Google Play.
 - The standard app receives the new Taste DNA daily suggestion notifications, poster/synopsis cards and per-notification delete controls directly from the live shared web runtime.
 - Expanded grown-up Global Events (US, UK, Canada, Brazil, Australia, Japan and existing verified events) are delivered through the same production WebView, with countdowns, premium covers, MatchApp Ai handoff and official-source guides. The Kids app remains excluded from this adult event surface.
-- The dedicated Kids app remains inside the Kids-only surface and does not expose adult Taste DNA suggestions; its native build markers are advanced in the same release so both Android Studio modules stay synchronized.
+- The dedicated Kids app remains inside the Kids-only surface and does not expose adult Taste DNA suggestions; do not advance its native build markers or publish it as part of this adult release.
 - The standard app blocks Kids routes and hides the Kids entry only inside its native shell.
 - The Kids app blocks non-Kids routes internally and exposes only the guarded parent handoff to grown-up mode.
 
 Because these apps intentionally render the live web experience, the latest approved MatchApp UI/content/features do **not** need to be copied into Android source. Native Android files are changed only when routing, permissions, WebView behavior, package identity, or Android-specific presentation requires it.
+
+This candidate changes native lifecycle, permissions and safe-area behavior, so it needs a new signed adult bundle. Follow the current [release preflight](play/RELEASE_PREFLIGHT.md): run the static guard, adult JVM tests, adult debug/release builds and Kids compilation; use the existing registered upload identity and physical-device QA. No emulator work or new testing track is part of this release. The CI artifact `MatchApp-Ai-adult-1.1.56-code56-UNSIGNED-AAB` is not Play-ready. Historical version, emulator and coordinated Kids-release instructions below are superseded by this current adult-only preflight.
 
 ## October 7, 2026 adult Play publication candidate
 
