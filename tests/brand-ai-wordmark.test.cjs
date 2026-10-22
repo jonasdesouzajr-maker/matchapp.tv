@@ -10,7 +10,7 @@ test('adult Home paints integrated MatchApp Ai beside the unchanged official orb
  assert.ok(lockup,'Canonical header must exist even before scripts run');
  const home=lockup.querySelector('a.ma-brand-home-link');
  assert.equal(home.getAttribute('aria-label'),'MatchApp Ai home');
- assert.match(home.querySelector('.ma-brand-orb').getAttribute('src'),/matchapp-icon-approved\.png/);
+ assert.match(home.querySelector('.ma-brand-orb').getAttribute('src'),/matchapp-ai-mark-header@3x\.webp/);
  assert.equal(home.querySelector('.ma-brand-orb').getAttribute('alt'),'','decorative image avoids repeated text');
  assert.equal(home.querySelector('.ma-word-match').textContent,'Match');
  assert.equal(home.querySelector('.ma-word-app').textContent,'App');
@@ -36,7 +36,7 @@ test('other adult route headers replace old raster/SVG TV wordmark without chang
  assert.equal(header.querySelectorAll('.ma-brand-lockup').length,1);
  assert.equal(header.querySelectorAll('.matchapp-wordmark').length,0,'Static TV graphic must be replaced');
  assert.equal(header.querySelector('.ma-brand-copy').textContent.replace(/\s+/g,''),'MatchAppAi');
- assert.match(header.querySelector('.ma-brand-orb').getAttribute('src'),/matchapp-icon-approved\.png/);
+ assert.match(header.querySelector('.ma-brand-orb').getAttribute('src'),/matchapp-ai-mark-header@3x\.webp/);
  assert.equal(header.querySelector('.ma-brand-home-link').getAttribute('aria-label'),'MatchApp Ai home');
  assert.equal(header.querySelector('#keep-action').getAttribute('href'),'/pricing/','Route account/nav survives');
  assert.ok(header.querySelector('#mh-home-btn'),'Shared Home control remains');

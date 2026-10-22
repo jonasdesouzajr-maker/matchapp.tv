@@ -39,7 +39,7 @@ test('an incomplete or incorrect adult inline wordmark still receives ordinary b
   try{
    const brand=dom.window.document.querySelector('header a');
    assert.equal(brand.querySelectorAll('img.matchapp-wordmark').length,1);
-   assert.equal(brand.querySelector('img.matchapp-wordmark').getAttribute('src'),'/assets/brand/matchapp-tv-ai-v2.svg');
+   assert.equal(brand.querySelector('img.matchapp-wordmark').getAttribute('src'),'/assets/brand/matchapp-ai-mark-header@3x.webp?v=20261022-playai1');
    assert.equal(brand.querySelector('img:not(.matchapp-wordmark)').getAttribute('src'),'/assets/brand/matchapp-icon-approved.png');
    assert.equal(brand.getAttribute('href'),'/');
    assert.equal(dom.window.document.querySelector('button').textContent,'Existing control');
