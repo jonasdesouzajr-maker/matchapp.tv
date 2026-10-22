@@ -17,7 +17,7 @@ async function prepare(){
   if(!root.MatchAppEbooks?.ready){
    if(!preparing)preparing=new Promise((resolve,reject)=>{
     const script=document.createElement('script');script.dataset.readingStateOnly='1';
-    script.src='/ebooks/ebook-matcher.js?v=20261011-meta1&reliability=20261018-1&lifetime=20261019-1&art=20261020-source1&locale=20261020-books14-1&ebookart=20261020-renditions1&fastart=20261020-1';
+    script.src='/ebooks/ebook-matcher.js?v=20261011-meta1&reliability=20261018-1&lifetime=20261019-1&art=20261020-source1&locale=20261020-books14-1&ebookart=20261020-renditions1&fastart=20261020-1&audiocover=20261022-1';
     const timer=setTimeout(()=>reject(Error(copy('reading.historyUnavailable','Reading history unavailable'))),7000);
     script.onload=()=>{clearTimeout(timer);resolve();};script.onerror=()=>{clearTimeout(timer);reject(Error(copy('reading.historyUnavailable','Reading history unavailable')));};
     document.head.appendChild(script);
