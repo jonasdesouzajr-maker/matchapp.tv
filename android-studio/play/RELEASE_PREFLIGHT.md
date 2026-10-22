@@ -1,3 +1,11 @@
+## October 22, 2026 adult launcher and permission bridge — 1.1.59 (code 59)
+
+Code **59** combines the approved Play + Ai launcher/adaptive/Play icons and native permission capability with the complete current main branch. It preserves the version-58 Maps handoff, post-intro insets, app data, protected web design and ad configuration. The new permission endpoint is restricted to trusted HTTPS main-frame messages and deliberate foreground interaction. The approved web tour is unchanged and does not currently call this endpoint.
+
+Use the same required gates below for **59 / 1.1.59**: adult static guard, JVM tests, debug/release builds, unchanged Kids compilation, exact bundle and upload-signature verification, and physical SM-X236B QA. Use only the Production track. A separate debug package may be used for physical preflight; never sideload, clear data or uninstall the production app. Verify production delivery only through a real Play Store update. Recheck the all-bundle inventory before upload; an accepted version code is never reusable.
+
+The unsigned CI artifact is MatchApp-Ai-adult-1.1.59-code59-UNSIGNED-AAB. Compilation, signing, Play acceptance, publication and real-device update are separate checks; this preflight does not certify their completion.
+
 ## October 22, 2026 adult post-intro dock fix — 1.1.58 (code 58)
 
 Code **58** keeps the 57 Maps handoff and holds the opaque intro layer until content is laid out with restored system-bar insets, removing the brief dock clipping after natural intro completion. It replaces 57 in the Production release. Recheck all uploaded bundles before uploading 58.

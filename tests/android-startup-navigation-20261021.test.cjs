@@ -145,7 +145,7 @@ test('first-run capabilities request only ungranted mic and approximate location
  assert.match(missing,/filter \{ ContextCompat\.checkSelfPermission\(this, it\) != PackageManager\.PERMISSION_GRANTED \}/);
  const setup=source.slice(source.indexOf('private fun maybeShowPermissionSetup()'),source.indexOf('private fun injectAmbientJonas'));
  assert.match(setup,/if \(missingStartupPermissions\(\)\.isEmpty\(\)\)/);
- assert.match(setup,/if \(missing\.isNotEmpty\(\)\) initialPermissions\.launch\(missing\)/);
+ assert.match(setup,/if \(missing\.isNotEmpty\(\)\) launchStartupPermissions\(missing\)/);
  assert.doesNotMatch(setup,/startInlineRecognition|getCurrentPosition|requestLocationUpdates/);
  const geolocation=source.slice(source.indexOf('override fun onGeolocationPermissionsShowPrompt'),source.indexOf('override fun onProgressChanged'));
  assert.match(geolocation,/checkSelfPermission\(this@MainActivity, Manifest\.permission\.ACCESS_COARSE_LOCATION\)/);
