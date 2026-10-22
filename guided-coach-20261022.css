@@ -1,0 +1,48 @@
+/* MatchApp Ai hands-on guide — scoped to .ma-coach; fixed overlay, never changes page/ad layout. */
+.ma-coach{--coach-level:0;--coach-gold:#f3d68b;--coach-violet:#a77bff;position:fixed;inset:0;z-index:30050;pointer-events:none;font-family:Outfit,system-ui,-apple-system,sans-serif}
+.ma-coach[hidden]{display:none!important}
+.ma-coach-block{position:fixed;background:rgba(8,4,18,.66);pointer-events:auto;touch-action:none}
+.ma-coach-ring{position:fixed;box-sizing:border-box;pointer-events:none;border-radius:18px;
+ border:calc(2px + var(--coach-level) * .25px) solid var(--coach-gold);
+ box-shadow:0 0 0 calc(3px + var(--coach-level) * .5px) rgba(167,123,255,.45),0 0 calc(16px + var(--coach-level) * 3px) rgba(243,214,139,.75);
+ animation:maCoachPulse calc(1.9s - var(--coach-level) * .06s) ease-in-out infinite}
+.ma-coach-ring.is-nudge{animation:maCoachNudge .42s ease-out 1}
+.ma-coach-arrow{position:fixed;width:40px;height:40px;pointer-events:none;color:var(--coach-gold);filter:drop-shadow(0 0 8px rgba(243,214,139,.8));transform:scale(calc(1 + var(--coach-level) * .03));animation:maCoachBob 1.1s ease-in-out infinite}
+.ma-coach-arrow svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:calc(2.4px + var(--coach-level) * .12px);stroke-linecap:round;stroke-linejoin:round}
+.ma-coach-arrow[data-side="below"] svg{transform:rotate(180deg)}
+.ma-coach-ring[hidden],.ma-coach-arrow[hidden]{display:none}
+.ma-coach-card{position:fixed;left:12px;top:12px;box-sizing:border-box;width:min(380px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;pointer-events:auto;
+ padding:16px 18px 14px;border-radius:22px;color:#fef8ff;
+ background:linear-gradient(150deg,rgba(43,24,72,.97),rgba(20,10,36,.97));
+ border:1px solid rgba(243,214,139,.42);box-shadow:0 18px 48px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)}
+.ma-coach-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.ma-coach-badge{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--coach-gold)}
+.ma-coach-count{font-size:12px;color:#d9c9f3;opacity:.85}
+.ma-coach-title{margin:2px 0 6px;font-size:calc(19px + var(--coach-level) * .25px);line-height:1.2;font-weight:800;color:#fff}
+.ma-coach-body{margin:0 0 8px;font-size:15px;line-height:1.45;color:#efe6ff}
+.ma-coach-hint{margin:0 0 10px;font-size:13px;font-weight:700;color:var(--coach-gold)}
+.ma-coach-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:6px}
+.ma-coach-btn{min-height:44px;padding:10px 18px;border-radius:999px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.ma-coach-primary{color:#231405;border:1px solid #f6dc95;background:linear-gradient(135deg,#f8e3a3,#d9a650 55%,#f3d68b);box-shadow:0 6px 18px rgba(217,166,80,.35)}
+.ma-coach-ghost{color:#f3e7ff;border:1px solid rgba(201,168,236,.55);background:rgba(255,255,255,.05)}
+.ma-coach-btn:hover{transform:translateY(-1px)}
+.ma-coach-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.ma-coach-btn:disabled{opacity:.6;cursor:progress}
+.ma-coach-small{min-height:40px;padding:8px 14px;font-size:13px}
+.ma-coach-progress{height:4px;margin-top:12px;border-radius:4px;background:rgba(255,255,255,.12);overflow:hidden}
+.ma-coach-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--coach-violet),var(--coach-gold));transition:width .35s ease}
+.ma-coach-perms{list-style:none;margin:8px 0 4px;padding:0;display:grid;gap:10px}
+.ma-coach-perm{display:grid;gap:8px;padding:12px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,236,.25)}
+.ma-coach-perm-copy strong{display:block;font-size:15px}
+.ma-coach-perm-copy small{display:block;margin-top:2px;font-size:13px;line-height:1.4;color:#dcd0f0}
+.ma-coach-perm-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.ma-coach-perm-actions[hidden]{display:none}
+.ma-coach-perm-status{font-size:12px;font-weight:800;color:var(--coach-gold)}
+.ma-coach-perm-status:empty{display:none}
+.ma-coach.is-final .ma-coach-ring{border-color:#c9a8ec}
+@keyframes maCoachPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes maCoachNudge{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes maCoachBob{0%,100%{translate:0 0}50%{translate:0 7px}}
+@media (prefers-reduced-motion:reduce){.ma-coach-ring,.ma-coach-arrow,.ma-coach-ring.is-nudge{animation:none!important}.ma-coach-progress span,.ma-coach-btn{transition:none}}
+html.reduce-motion .ma-coach-ring,html.reduce-motion .ma-coach-arrow{animation:none!important}
+@media (forced-colors:active){.ma-coach-ring{border-color:Highlight}.ma-coach-card{border-color:CanvasText}}
