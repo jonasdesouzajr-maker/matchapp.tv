@@ -214,7 +214,7 @@ async function aiQuestion(page,question,expected,label){
       return {
         label:brand?.getAttribute('aria-label')||'',ai:ai?.textContent||'',
         tv:!!brand?.querySelector('.ma-tv'),detached:!!brand?.querySelector('.ma-ai-brand-button'),
-        logo:(()=>{const icon=brand?.querySelector('.ma-brand-orb');if(!icon)return false;const source=new URL(icon.src,location.href);return source.origin===location.origin&&(source.pathname==='/assets/brand/matchapp-icon-approved.png'||(source.pathname==='/assets/brand/matchapp-official-icon-512.webp'&&icon.getAttribute('data-matchapp-canonical-logo')==='1'));})(),
+        logo:(()=>{const icon=brand?.querySelector('.ma-brand-orb');if(!icon)return false;const source=new URL(icon.src,location.href);return source.origin===location.origin&&(source.pathname==='/assets/brand/matchapp-ai-mark.svg'||source.pathname==='/assets/brand/matchapp-icon-approved.png'||(source.pathname==='/assets/brand/matchapp-official-icon-512.webp'&&icon.getAttribute('data-matchapp-canonical-logo')==='1'));})(),
         gradient:!!ai&&getComputedStyle(ai).backgroundImage.includes('linear-gradient'),
         weight:name?getComputedStyle(name.querySelector('.ma-wordmark')).fontWeight:'0',
         textInside:!!rect&&!!box&&rect.right<=box.right+3&&rect.left>=box.left-3,
