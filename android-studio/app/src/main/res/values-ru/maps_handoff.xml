@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps_handoff_unavailable">Не удалось открыть Google Карты. Установите или включите Google Карты или браузер и повторите попытку.</string>
+</resources>

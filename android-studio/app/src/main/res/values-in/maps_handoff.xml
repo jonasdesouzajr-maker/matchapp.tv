@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps_handoff_unavailable">Tidak dapat membuka Google Maps. Instal atau aktifkan Google Maps atau browser, lalu coba lagi.</string>
+</resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps_handoff_unavailable">Google 지도를 열 수 없습니다. Google 지도 또는 브라우저를 설치하거나 사용 설정한 후 다시 시도하세요.</string>
+</resources>

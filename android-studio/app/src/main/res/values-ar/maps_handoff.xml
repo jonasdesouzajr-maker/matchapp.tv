@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps_handoff_unavailable">تعذّر فتح خرائط Google. ثبّت خرائط Google أو متصفحًا أو فعّله ثم حاول مرة أخرى.</string>
+</resources>

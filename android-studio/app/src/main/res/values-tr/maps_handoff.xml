@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps_handoff_unavailable">Google Haritalar açılamadı. Google Haritalar\'ı veya bir tarayıcıyı yükleyin ya da etkinleştirin ve tekrar deneyin.</string>
+</resources>

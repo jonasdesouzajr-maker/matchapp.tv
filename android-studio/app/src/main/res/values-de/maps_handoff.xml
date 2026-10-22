@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps_handoff_unavailable">Google Maps konnte nicht geöffnet werden. Installiere oder aktiviere Google Maps oder einen Browser und versuche es erneut.</string>
+</resources>
