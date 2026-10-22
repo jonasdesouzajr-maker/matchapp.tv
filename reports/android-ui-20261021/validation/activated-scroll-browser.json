@@ -1,0 +1,50 @@
+[
+  {
+    "viewport": {
+      "width": 320,
+      "height": 568
+    },
+    "base": {
+      "target": 148,
+      "header": 140
+    },
+    "late": {
+      "target": 183,
+      "header": 175
+    },
+    "cancelledByWheel": true,
+    "reducedMotion": "instant"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "base": {
+      "target": 148,
+      "header": 140
+    },
+    "late": {
+      "target": 183,
+      "header": 175
+    },
+    "cancelledByWheel": true,
+    "reducedMotion": "instant"
+  },
+  {
+    "viewport": {
+      "width": 800,
+      "height": 1180
+    },
+    "base": {
+      "target": 148,
+      "header": 140
+    },
+    "late": {
+      "target": 183,
+      "header": 175
+    },
+    "cancelledByWheel": true,
+    "reducedMotion": "instant"
+  }
+]

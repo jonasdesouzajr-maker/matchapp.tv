@@ -155,12 +155,18 @@ test('hosted native smoke bounds ADB setup, install and final diagnostics so run
 });
 
 
-test('adult Android keeps immersive background while respecting status bar and camera cutout',()=>{
+test('adult Android keeps fullscreen media immersive and gives normal content one safe area on every edge',()=>{
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  assert.match(main,/setDecorFitsSystemWindows\(window, false\)/);
- assert.match(main,/WindowInsetsCompat\.Type\.statusBars\(\) or WindowInsetsCompat\.Type\.displayCutout\(\)/);
- assert.match(main,/setOnApplyWindowInsetsListener\(refresh\)/);
- assert.match(main,/setPadding\(view\.paddingLeft, safe\.top, view\.paddingRight, view\.paddingBottom\)/);
+ const insets=main.slice(main.indexOf('private fun applySafeInsets()'),main.indexOf('override fun onNewIntent'));
+ assert.match(insets,/val content = refresh\.parent as View/);
+ assert.match(insets,/listOf\(content, offline\)/);
+ assert.match(insets,/WindowInsetsCompat\.Type\.systemBars\(\) or WindowInsetsCompat\.Type\.displayCutout\(\)/);
+ assert.match(insets,/setPadding\(left \+ safe\.left, top \+ safe\.top, right \+ safe\.right, bottom \+ bottomSafe\)/);
+ assert.ok(insets.indexOf('val left = target.paddingLeft')<insets.indexOf('setOnApplyWindowInsetsListener(target)'), 'insets never accumulate over their previous padding');
+ assert.match(insets,/if \(insets\.isVisible\(WindowInsetsCompat\.Type\.ime\(\)\)\) 0 else safe\.bottom/);
+ assert.doesNotMatch(insets,/fullscreenHost|introHost|setAdSize|ad_shell|Type\.ime\(\)\.bottom/);
+ assert.match(read('android-studio/app/src/main/AndroidManifest.xml'),/android:windowSoftInputMode="adjustResize"/);
 });
 
 

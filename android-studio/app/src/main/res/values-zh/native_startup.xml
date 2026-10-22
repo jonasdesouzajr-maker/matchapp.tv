@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">设置语音和附近影院</string>
+    <string name="permission_setup_body">麦克风让你与Jonas交谈。设备的语音识别服务可能会将音频发送到其服务器转成文字；文字会发送给我们的AI服务提供商以生成回复。查找附近影院时，我们会将你的大致位置和所选作品名称发送给Google Maps。只有在你选择使用相应功能时，才会开始录音或查询位置。两项权限均为可选，你仍可使用文字交流。</string>
+    <string name="permission_setup_allow">选择权限</string>
+    <string name="permission_setup_skip">暂不设置</string>
+    <string name="intro_skip">跳过</string>
+</resources>

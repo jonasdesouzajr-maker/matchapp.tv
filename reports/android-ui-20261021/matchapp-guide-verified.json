@@ -1,0 +1,545 @@
+[
+  {
+    "route": "/how-it-works.html",
+    "width": 320,
+    "scale": 1,
+    "lang": "en",
+    "overflow": 0,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 149.78125,
+      "top": 0,
+      "right": 320,
+      "bottom": 149.78125,
+      "left": 0
+    },
+    "slot": {
+      "x": 176,
+      "y": 0,
+      "width": 136,
+      "height": 148.78125,
+      "top": 0,
+      "right": 312,
+      "bottom": 148.78125,
+      "left": 176
+    },
+    "chrome": {
+      "x": 8,
+      "y": 42.390625,
+      "width": 160,
+      "height": 64,
+      "top": 42.390625,
+      "right": 168,
+      "bottom": 106.390625,
+      "left": 8
+    },
+    "launcher": {
+      "x": 176,
+      "y": 6,
+      "width": 136,
+      "height": 136.78125,
+      "top": 6,
+      "right": 312,
+      "bottom": 142.78125,
+      "left": 176
+    },
+    "bubble": {
+      "x": 206,
+      "y": 6,
+      "width": 76,
+      "height": 76,
+      "top": 6,
+      "right": 282,
+      "bottom": 82,
+      "left": 206
+    },
+    "caption": {
+      "x": 176,
+      "y": 86,
+      "width": 136,
+      "height": 56.78125,
+      "top": 86,
+      "right": 312,
+      "bottom": 142.78125,
+      "left": 176
+    },
+    "label": "Jonas · AI assistantTap to talk",
+    "hero": null,
+    "title": null,
+    "footer": null,
+    "help": null,
+    "filterWrap": null,
+    "rootFont": "16px",
+    "checks": {
+      "noHorizontalOverflow": true,
+      "reserved": true,
+      "faceEnlarged": true,
+      "heroFits": true,
+      "helpTarget": true
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 320,
+    "scale": 1,
+    "lang": "pt-BR",
+    "overflow": 0,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 165.375,
+      "top": 0,
+      "right": 320,
+      "bottom": 165.375,
+      "left": 0
+    },
+    "slot": {
+      "x": 176,
+      "y": 0,
+      "width": 136,
+      "height": 164.375,
+      "top": 0,
+      "right": 312,
+      "bottom": 164.375,
+      "left": 176
+    },
+    "chrome": {
+      "x": 8,
+      "y": 50.1875,
+      "width": 160,
+      "height": 64,
+      "top": 50.1875,
+      "right": 168,
+      "bottom": 114.1875,
+      "left": 8
+    },
+    "launcher": {
+      "x": 176,
+      "y": 6,
+      "width": 136,
+      "height": 152.375,
+      "top": 6,
+      "right": 312,
+      "bottom": 158.375,
+      "left": 176
+    },
+    "bubble": {
+      "x": 206,
+      "y": 6,
+      "width": 76,
+      "height": 76,
+      "top": 6,
+      "right": 282,
+      "bottom": 82,
+      "left": 206
+    },
+    "caption": {
+      "x": 176,
+      "y": 86,
+      "width": 136,
+      "height": 72.375,
+      "top": 86,
+      "right": 312,
+      "bottom": 158.375,
+      "left": 176
+    },
+    "label": "Jonas · assistente de IAToque para conversar",
+    "hero": null,
+    "title": null,
+    "footer": null,
+    "help": null,
+    "filterWrap": null,
+    "rootFont": "16px",
+    "checks": {
+      "noHorizontalOverflow": true,
+      "reserved": true,
+      "faceEnlarged": true,
+      "heroFits": true,
+      "helpTarget": true
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 800,
+    "scale": 1,
+    "lang": "en",
+    "overflow": 0,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 800,
+      "height": 97,
+      "top": 0,
+      "right": 800,
+      "bottom": 97,
+      "left": 0
+    },
+    "slot": {
+      "x": 540,
+      "y": 0,
+      "width": 252,
+      "height": 96,
+      "top": 0,
+      "right": 792,
+      "bottom": 96,
+      "left": 540
+    },
+    "chrome": {
+      "x": 8,
+      "y": 16,
+      "width": 524,
+      "height": 64,
+      "top": 16,
+      "right": 532,
+      "bottom": 80,
+      "left": 8
+    },
+    "launcher": {
+      "x": 540,
+      "y": 6,
+      "width": 252,
+      "height": 84,
+      "top": 6,
+      "right": 792,
+      "bottom": 90,
+      "left": 540
+    },
+    "bubble": {
+      "x": 540,
+      "y": 6,
+      "width": 84,
+      "height": 84,
+      "top": 6,
+      "right": 624,
+      "bottom": 90,
+      "left": 540
+    },
+    "caption": {
+      "x": 632,
+      "y": 27.40625,
+      "width": 160,
+      "height": 41.1875,
+      "top": 27.40625,
+      "right": 792,
+      "bottom": 68.59375,
+      "left": 632
+    },
+    "label": "Jonas · AI assistantTap to talk",
+    "hero": null,
+    "title": null,
+    "footer": null,
+    "help": null,
+    "filterWrap": null,
+    "rootFont": "16px",
+    "checks": {
+      "noHorizontalOverflow": true,
+      "reserved": true,
+      "faceEnlarged": true,
+      "heroFits": true,
+      "helpTarget": true
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 800,
+    "scale": 1,
+    "lang": "pt-BR",
+    "overflow": 0,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 800,
+      "height": 97,
+      "top": 0,
+      "right": 800,
+      "bottom": 97,
+      "left": 0
+    },
+    "slot": {
+      "x": 540,
+      "y": 0,
+      "width": 252,
+      "height": 96,
+      "top": 0,
+      "right": 792,
+      "bottom": 96,
+      "left": 540
+    },
+    "chrome": {
+      "x": 8,
+      "y": 16,
+      "width": 524,
+      "height": 64,
+      "top": 16,
+      "right": 532,
+      "bottom": 80,
+      "left": 8
+    },
+    "launcher": {
+      "x": 540,
+      "y": 6,
+      "width": 252,
+      "height": 84,
+      "top": 6,
+      "right": 792,
+      "bottom": 90,
+      "left": 540
+    },
+    "bubble": {
+      "x": 540,
+      "y": 6,
+      "width": 84,
+      "height": 84,
+      "top": 6,
+      "right": 624,
+      "bottom": 90,
+      "left": 540
+    },
+    "caption": {
+      "x": 632,
+      "y": 19.609375,
+      "width": 160,
+      "height": 56.78125,
+      "top": 19.609375,
+      "right": 792,
+      "bottom": 76.390625,
+      "left": 632
+    },
+    "label": "Jonas · assistente de IAToque para conversar",
+    "hero": null,
+    "title": null,
+    "footer": null,
+    "help": null,
+    "filterWrap": null,
+    "rootFont": "16px",
+    "checks": {
+      "noHorizontalOverflow": true,
+      "reserved": true,
+      "faceEnlarged": true,
+      "heroFits": true,
+      "helpTarget": true
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 1280,
+    "scale": 1,
+    "lang": "en",
+    "overflow": 0,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 97,
+      "top": 0,
+      "right": 1280,
+      "bottom": 97,
+      "left": 0
+    },
+    "slot": {
+      "x": 1000,
+      "y": 0,
+      "width": 252,
+      "height": 96,
+      "top": 0,
+      "right": 1252,
+      "bottom": 96,
+      "left": 1000
+    },
+    "chrome": {
+      "x": 28,
+      "y": 16,
+      "width": 964,
+      "height": 64,
+      "top": 16,
+      "right": 992,
+      "bottom": 80,
+      "left": 28
+    },
+    "launcher": {
+      "x": 1000,
+      "y": 6,
+      "width": 252,
+      "height": 84,
+      "top": 6,
+      "right": 1252,
+      "bottom": 90,
+      "left": 1000
+    },
+    "bubble": {
+      "x": 1000,
+      "y": 6,
+      "width": 84,
+      "height": 84,
+      "top": 6,
+      "right": 1084,
+      "bottom": 90,
+      "left": 1000
+    },
+    "caption": {
+      "x": 1092,
+      "y": 27.40625,
+      "width": 160,
+      "height": 41.1875,
+      "top": 27.40625,
+      "right": 1252,
+      "bottom": 68.59375,
+      "left": 1092
+    },
+    "label": "Jonas · AI assistantTap to talk",
+    "hero": null,
+    "title": null,
+    "footer": null,
+    "help": null,
+    "filterWrap": null,
+    "rootFont": "16px",
+    "checks": {
+      "noHorizontalOverflow": true,
+      "reserved": true,
+      "faceEnlarged": true,
+      "heroFits": true,
+      "helpTarget": true
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 1280,
+    "scale": 1,
+    "lang": "pt-BR",
+    "overflow": 0,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 97,
+      "top": 0,
+      "right": 1280,
+      "bottom": 97,
+      "left": 0
+    },
+    "slot": {
+      "x": 1000,
+      "y": 0,
+      "width": 252,
+      "height": 96,
+      "top": 0,
+      "right": 1252,
+      "bottom": 96,
+      "left": 1000
+    },
+    "chrome": {
+      "x": 28,
+      "y": 16,
+      "width": 964,
+      "height": 64,
+      "top": 16,
+      "right": 992,
+      "bottom": 80,
+      "left": 28
+    },
+    "launcher": {
+      "x": 1000,
+      "y": 6,
+      "width": 252,
+      "height": 84,
+      "top": 6,
+      "right": 1252,
+      "bottom": 90,
+      "left": 1000
+    },
+    "bubble": {
+      "x": 1000,
+      "y": 6,
+      "width": 84,
+      "height": 84,
+      "top": 6,
+      "right": 1084,
+      "bottom": 90,
+      "left": 1000
+    },
+    "caption": {
+      "x": 1092,
+      "y": 19.609375,
+      "width": 160,
+      "height": 56.78125,
+      "top": 19.609375,
+      "right": 1252,
+      "bottom": 76.390625,
+      "left": 1092
+    },
+    "label": "Jonas · assistente de IAToque para conversar",
+    "hero": null,
+    "title": null,
+    "footer": null,
+    "help": null,
+    "filterWrap": null,
+    "rootFont": "16px",
+    "checks": {
+      "noHorizontalOverflow": true,
+      "reserved": true,
+      "faceEnlarged": true,
+      "heroFits": true,
+      "helpTarget": true
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 320,
+    "navigation": {
+      "step": "1",
+      "cardTop": 174.40625,
+      "headerBottom": 165.375,
+      "sidebarTop": -639.390625,
+      "sidebarBottom": 162.40625,
+      "sidebarHeight": 801.796875,
+      "sidebarOverflow": "auto",
+      "scrollY": 1297
+    },
+    "cta": {
+      "hit": true,
+      "bottom": 660.40625,
+      "dockTop": 804.90625
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 800,
+    "navigation": {
+      "step": "2",
+      "cardTop": 105.328125,
+      "headerBottom": 97,
+      "sidebarTop": -214.21875,
+      "sidebarBottom": 93.328125,
+      "sidebarHeight": 307.546875,
+      "sidebarOverflow": "auto",
+      "scrollY": 646
+    },
+    "cta": {
+      "hit": true,
+      "bottom": 582.328125,
+      "dockTop": 816.984375
+    }
+  },
+  {
+    "route": "/how-it-works.html",
+    "width": 1280,
+    "navigation": {
+      "step": "3",
+      "cardTop": 105.03125,
+      "headerBottom": 97,
+      "sidebarTop": 105.03125,
+      "sidebarBottom": 784.03125,
+      "sidebarHeight": 679,
+      "sidebarOverflow": "auto",
+      "scrollY": 469
+    },
+    "cta": {
+      "hit": true,
+      "bottom": 624.03125,
+      "dockTop": 808.03125
+    }
+  }
+]

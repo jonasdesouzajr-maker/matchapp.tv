@@ -1,0 +1,12 @@
+{"route":"/","width":390,"dpr":1,"overflow":0,"images":7}
+{"route":"/explore.html","width":390,"dpr":1,"overflow":0,"images":1}
+{"route":"/","width":390,"dpr":3,"overflow":0,"images":7}
+{"route":"/explore.html","width":390,"dpr":3,"overflow":0,"images":1}
+{"route":"/","width":800,"dpr":1.5,"overflow":0,"images":8}
+{"route":"/explore.html","width":800,"dpr":1.5,"overflow":0,"images":1}
+{"route":"/","width":1366,"dpr":2,"overflow":0,"images":12}
+{"route":"/explore.html","width":1366,"dpr":2,"overflow":0,"images":1}
+{"route":"/","width":3840,"dpr":1,"overflow":0,"images":28}
+{"route":"/explore.html","width":3840,"dpr":1,"overflow":0,"images":1}
+{"route":"/","width":12288,"dpr":1,"overflow":0,"images":76}
+{"route":"/explore.html","width":12288,"dpr":1,"overflow":0,"images":1}

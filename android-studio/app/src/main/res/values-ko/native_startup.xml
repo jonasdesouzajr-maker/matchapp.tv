@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">음성 대화 및 근처 영화관 설정</string>
+    <string name="permission_setup_body">마이크를 사용하면 Jonas와 대화할 수 있습니다. 기기의 음성 인식 서비스는 오디오를 텍스트로 변환하기 위해 자체 서버로 보낼 수 있으며, 변환된 텍스트는 답변을 위해 당사의 AI 제공업체로 전송됩니다. 근처 영화관을 찾을 때는 대략적인 위치와 선택한 작품명을 Google Maps로 보냅니다. 녹음이나 위치 조회는 해당 기능을 선택할 때만 시작됩니다. 두 권한 모두 선택 사항이며 계속 입력해서 대화할 수 있습니다.</string>
+    <string name="permission_setup_allow">권한 선택</string>
+    <string name="permission_setup_skip">나중에</string>
+    <string name="intro_skip">건너뛰기</string>
+</resources>

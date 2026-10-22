@@ -1,0 +1,8 @@
+{
+  "scope": "Final isolated Windows checkout/CDP response bytes versus this committed source candidate. Unmodified Windows text files are checked out with CRLF; changed files extracted from the final source ZIP retain repository line endings.",
+  "resources": 341,
+  "exactByteMatches": 61,
+  "equivalentWindowsCRLFMatches": 280,
+  "mismatches": [],
+  "nativeAndFinalSourceFilesExact": 8
+}

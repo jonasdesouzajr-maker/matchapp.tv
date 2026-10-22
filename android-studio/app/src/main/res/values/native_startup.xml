@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">Set up voice and nearby cinemas</string>
+    <string name="permission_setup_body">Microphone access lets you talk with Jonas. Your device’s speech service may send audio to its servers for transcription; the text is sent to our AI providers for a reply. Approximate location helps find nearby cinemas: we send your coordinates and selected title to Google Maps. Recording or location lookup starts only when you choose that feature. Both permissions are optional; you can continue using text.</string>
+    <string name="permission_setup_allow">Choose permissions</string>
+    <string name="permission_setup_skip">Not now</string>
+    <string name="intro_skip">Skip</string>
+</resources>

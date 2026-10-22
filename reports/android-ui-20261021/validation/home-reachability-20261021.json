@@ -1,0 +1,241 @@
+{
+  "scope": "Home only, local candidate browser; no match/credit action or native device operation.",
+  "method": [
+    "One Chromium browser/context/page, English guest state, reduced motion, widths 320 and 390, height 900 CSS pixels.",
+    "External requests blocked; wait for active header and initial layout.",
+    "Measure initial CTA; scroll its center into midpoint between header bottom + 8 and dock top - 8; hit-test without clicking.",
+    "Scroll to maximum; exclude fixed/sticky overlay descendants and hidden controls. Inspect last normal-flow control by document bottom, including links; check bounds and center hit."
+  ],
+  "cases": [
+    {
+      "width": 320,
+      "errors": [],
+      "status": 200,
+      "initial": {
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "gold-btn ma-primary",
+          "label": "Find something to watch"
+        },
+        "box": {
+          "x": 13,
+          "y": 838.453125,
+          "width": 294,
+          "height": 48,
+          "top": 838.453125,
+          "right": 307,
+          "bottom": 886.453125,
+          "left": 13
+        },
+        "safeTop": 157.78125,
+        "safeBottom": 809.953125,
+        "insideSafeInterval": false,
+        "centerHit": false,
+        "hit": {
+          "tag": "A",
+          "id": "",
+          "className": "",
+          "label": "Matches"
+        },
+        "scrollY": 0,
+        "documentHeight": 2315,
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "maximumScroll": 1415,
+        "overflow": 0
+      },
+      "ctaRevealed": {
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "gold-btn ma-primary",
+          "label": "Find something to watch"
+        },
+        "box": {
+          "x": 13,
+          "y": 459.453125,
+          "width": 294,
+          "height": 48,
+          "top": 459.453125,
+          "right": 307,
+          "bottom": 507.453125,
+          "left": 13
+        },
+        "safeTop": 157.78125,
+        "safeBottom": 809.953125,
+        "insideSafeInterval": true,
+        "centerHit": true,
+        "hit": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "gold-btn ma-primary",
+          "label": "Find something to watch"
+        },
+        "scrollY": 379,
+        "documentHeight": 2315,
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "maximumScroll": 1415,
+        "overflow": 0
+      },
+      "lastFlowAtMaxScroll": {
+        "target": {
+          "tag": "A",
+          "id": "ma-privacy-choices",
+          "className": "",
+          "label": "Privacy and cookie settings"
+        },
+        "box": {
+          "x": 10,
+          "y": 744.734375,
+          "width": 146,
+          "height": 49.59375,
+          "top": 744.734375,
+          "right": 156,
+          "bottom": 794.328125,
+          "left": 10
+        },
+        "safeTop": 157.78125,
+        "safeBottom": 809.953125,
+        "insideSafeInterval": true,
+        "centerHit": true,
+        "hit": {
+          "tag": "A",
+          "id": "ma-privacy-choices",
+          "className": "",
+          "label": "Privacy and cookie settings"
+        },
+        "scrollY": 1415,
+        "documentHeight": 2315,
+        "viewport": {
+          "width": 320,
+          "height": 900
+        },
+        "maximumScroll": 1415,
+        "overflow": 0
+      },
+      "pass": true
+    },
+    {
+      "width": 390,
+      "errors": [],
+      "status": 200,
+      "initial": {
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "gold-btn ma-primary",
+          "label": "Find something to watch"
+        },
+        "box": {
+          "x": 13,
+          "y": 808.59375,
+          "width": 364,
+          "height": 48,
+          "top": 808.59375,
+          "right": 377,
+          "bottom": 856.59375,
+          "left": 13
+        },
+        "safeTop": 165.78125,
+        "safeBottom": 808.984375,
+        "insideSafeInterval": false,
+        "centerHit": false,
+        "hit": {
+          "tag": "path",
+          "id": "",
+          "className": "",
+          "label": ""
+        },
+        "scrollY": 0,
+        "documentHeight": 2248,
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "maximumScroll": 1348,
+        "overflow": 0
+      },
+      "ctaRevealed": {
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "gold-btn ma-primary",
+          "label": "Find something to watch"
+        },
+        "box": {
+          "x": 13,
+          "y": 463.59375,
+          "width": 364,
+          "height": 48,
+          "top": 463.59375,
+          "right": 377,
+          "bottom": 511.59375,
+          "left": 13
+        },
+        "safeTop": 165.78125,
+        "safeBottom": 808.984375,
+        "insideSafeInterval": true,
+        "centerHit": true,
+        "hit": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "gold-btn ma-primary",
+          "label": "Find something to watch"
+        },
+        "scrollY": 345,
+        "documentHeight": 2248,
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "maximumScroll": 1348,
+        "overflow": 0
+      },
+      "lastFlowAtMaxScroll": {
+        "target": {
+          "tag": "A",
+          "id": "ma-privacy-choices",
+          "className": "",
+          "label": "Privacy and cookie settings"
+        },
+        "box": {
+          "x": 10,
+          "y": 745.453125,
+          "width": 181,
+          "height": 49.59375,
+          "top": 745.453125,
+          "right": 191,
+          "bottom": 795.046875,
+          "left": 10
+        },
+        "safeTop": 165.78125,
+        "safeBottom": 808.984375,
+        "insideSafeInterval": true,
+        "centerHit": true,
+        "hit": {
+          "tag": "A",
+          "id": "ma-privacy-choices",
+          "className": "",
+          "label": "Privacy and cookie settings"
+        },
+        "scrollY": 1348,
+        "documentHeight": 2248,
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "maximumScroll": 1348,
+        "overflow": 0
+      },
+      "pass": true
+    }
+  ],
+  "finished": true,
+  "browserClosed": true
+}

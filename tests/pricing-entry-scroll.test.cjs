@@ -24,7 +24,7 @@ test('plain pricing entry selects the same default purchase tab without requesti
 test('explicit purchase deep links retain their panel scroll and selected state',async t=>{
  for(const [suffix,target]of [['?focus=credits','credits'],['#ask-ai-credits','credits'],['?focus=kids','kids'],['#kids-packs-section','kids'],['?focus=matches','matches']]){
   const f=await fixture(suffix,false);t.after(()=>f.dom.window.close());
-  assert.deepEqual(f.calls,[{id:target==='credits'?'ask-ai-credits':target==='kids'?'kids-packs-section':'match-packs-section',behavior:'auto',block:'center'}]);
+  assert.deepEqual(f.calls,[{id:target==='credits'?'ask-ai-credits':target==='kids'?'kids-packs-section':'match-packs-section',behavior:'auto',block:'start'}]);
   assert.equal(f.w.document.querySelector('.purchase-tab[aria-selected="true"]').dataset.target,target);
  }
 });

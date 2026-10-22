@@ -6,6 +6,16 @@ window.__matchappShownHistoryBooted=true;
 
 const k=t=>window.matchPolicy?.key?.(t)||String(t||'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
 
+function visibleResult(node){
+ if(!node?.isConnected)return false;
+ for(let current=node;current;current=current.parentElement){
+  if(current.hidden||current.getAttribute('aria-hidden')==='true')return false;
+  const style=getComputedStyle(current);
+  if(style.display==='none'||style.visibility==='hidden'||style.visibility==='collapse')return false;
+ }
+ return true;
+}
+
 function scan(){
  const policy=window.matchPolicy;
  if(!policy)return;
@@ -17,9 +27,10 @@ function scan(){
   known.add(key);
   policy.remember?.({title,...extra,reason:'Shown by MatchApp'},'shown');
  };
- const title=window.globalMatchTitle||document.getElementById('res-title')?.textContent?.trim();
- if(title&&document.getElementById('result-box')?.style.display!=='none')remember(title,{posterUrl:window.globalMatchPoster||'',streamUrl:document.getElementById('res-direct-link')?.href||''});
- document.querySelectorAll('.discover-card').forEach(card=>{const t=card.querySelector('h3')?.textContent?.trim();if(t)remember(t,{posterUrl:card.querySelector('img')?.src||'',streamUrl:card.querySelector('.discover-play')?.href||''});});
+ // A heading in hidden/static markup is not evidence that a title was shown.
+ const title=String(window.globalMatchTitle||'').trim();
+ if(title&&visibleResult(document.getElementById('result-box')))remember(title,{posterUrl:window.globalMatchPoster||'',streamUrl:document.getElementById('res-direct-link')?.href||''});
+ document.querySelectorAll('.discover-card').forEach(card=>{if(!visibleResult(card))return;const t=card.querySelector('h3')?.textContent?.trim();if(t)remember(t,{posterUrl:card.querySelector('img')?.src||'',streamUrl:card.querySelector('.discover-play')?.href||''});});
 }
 
 let scanTimer=0;

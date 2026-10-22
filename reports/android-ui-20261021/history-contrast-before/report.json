@@ -1,0 +1,30 @@
+{
+  "scope": "Rendered browser viewports; not Android emulator or native permission/audio verification.",
+  "base": "local candidate",
+  "lang": "en",
+  "cases": [
+    {
+      "width": 390,
+      "text": "Find where to watch",
+      "color": "rgb(220, 192, 255)",
+      "textFill": "rgb(220, 192, 255)",
+      "bg": "rgb(229, 193, 88)",
+      "gradient": "none",
+      "font": "800 11px / 16.5px Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "fontSize": "11px",
+      "opacity": "1"
+    },
+    {
+      "width": 800,
+      "text": "Find where to watch",
+      "color": "rgb(220, 192, 255)",
+      "textFill": "rgb(220, 192, 255)",
+      "bg": "rgb(229, 193, 88)",
+      "gradient": "none",
+      "font": "800 11px / 16.5px Inter, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "fontSize": "11px",
+      "opacity": "1"
+    }
+  ],
+  "finished": true
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">Configurez la voix et les cinémas à proximité</string>
+    <string name="permission_setup_body">Le microphone permet de parler à Jonas. Le service de reconnaissance vocale de votre appareil peut envoyer l’audio à ses serveurs pour le transcrire ; le texte est envoyé à nos fournisseurs d’IA pour répondre. Pour trouver des cinémas proches, nous envoyons votre position approximative et le titre choisi à Google Maps. L’enregistrement ou la localisation ne démarre que si vous choisissez la fonction. Les deux autorisations sont facultatives ; vous pouvez continuer par écrit.</string>
+    <string name="permission_setup_allow">Choisir les autorisations</string>
+    <string name="permission_setup_skip">Pas maintenant</string>
+    <string name="intro_skip">Passer</string>
+</resources>

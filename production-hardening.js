@@ -89,6 +89,15 @@ function patchAI(){
  wrapped.__integrityPatched=true;wrapped.__original=fn;window.askAIConversational=wrapped;return true;
 }
 function rememberShown(title,extra={}){const k=key(title);if(!k||window.matchPolicy?.known?.().has(k))return;window.matchPolicy?.remember?.({title,...extra,reason:'Shown by MatchApp'},'shown');}
+function visibleResult(node){
+ if(!node?.isConnected)return false;
+ for(let current=node;current;current=current.parentElement){
+  if(current.hidden||current.getAttribute('aria-hidden')==='true')return false;
+  const style=getComputedStyle(current);
+  if(style.display==='none'||style.visibility==='hidden'||style.visibility==='collapse')return false;
+ }
+ return true;
+}
 function criteriaSatisfied(entry,c){
  if(!entry||!c)return true;const arr=v=>(Array.isArray(v)?v:[v]).filter(x=>x&&x!=='any');
  const checks=[['cat','cats'],['plat','platform'],['mood','moods'],['vibe','vibes'],['rating','ratings']];
@@ -102,7 +111,10 @@ function ensureFormatBadge(entry){
 }
 let mainSignature='';
 function repairMainResult(){
- const title=window.globalMatchTitle||document.getElementById('res-title')?.textContent?.trim();if(!title)return;
+ // The static heading contains "Title" before a match exists. Only the
+ // revealed runtime result can enter private history or permanent exclusions.
+ if(!visibleResult(document.getElementById('result-box')))return;
+ const title=String(window.globalMatchTitle||'').trim();if(!title)return;
  const signature=key(title)+'|'+language();if(signature===mainSignature)return;mainSignature=signature;
  const entry=findEntry(title);
  if(entry){
@@ -118,7 +130,7 @@ function repairMainResult(){
  rememberShown(title,{posterUrl:window.globalMatchPoster||'',streamUrl:document.getElementById('res-direct-link')?.href||''});
 }
 function repairDiscoverCard(card){
- if(!card)return;const title=card.querySelector('h3')?.textContent?.trim();if(!title)return;
+ if(!visibleResult(card))return;const title=card.querySelector('h3')?.textContent?.trim();if(!title)return;
  const lang=language();if(card.dataset.integrityLang===lang)return;card.dataset.integrityLang=lang;
  const entry=findEntry(title);
  if(entry){

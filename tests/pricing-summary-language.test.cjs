@@ -255,7 +255,7 @@ test('the Pricing caption binding stays out of other routes and both actual Pric
     const styles=Array.from(w.document.querySelectorAll('link[rel="stylesheet"][href]'),node=>new URL(node.href)).filter(url=>url.pathname==='/matchapp-ia.css');
     assert.equal(styles.length,1);assert.deepEqual(Array.from(styles[0].searchParams),[['v','20260924-ads1'],['pricinglayout','20261019-1']]);
     assert.deepEqual(Array.from(entry[0].searchParams),[
-      ['v','20260926-brandai1'],['fastlang','20261014-2'],['approvedlogo','20261014'],['pricingcopy','20261019-1'],['menulocale','20261019-1'],['accountphoto','20261020-1']]);
+      ['v','20260926-brandai1'],['fastlang','20261014-2'],['approvedlogo','20261014'],['pricingcopy','20261019-1'],['menulocale','20261019-1'],['accountphoto','20261020-1'],['androidqa','20261021-1']]);
     assert.deepEqual(Array.from(overlay[0].searchParams),[
       ['v','20261001-pt1'],['android','20261017-1'],['pricingcopy','20261019-1']]);
   }finally{w.close();}

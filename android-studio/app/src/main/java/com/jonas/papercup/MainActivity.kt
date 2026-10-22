@@ -9,6 +9,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Bundle
+import android.os.Build
 import android.os.Message
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -25,6 +26,7 @@ import android.view.ViewGroup
 import android.view.MotionEvent
 import android.view.HapticFeedbackConstants
 import android.webkit.CookieManager
+import android.webkit.GeolocationPermissions
 import android.webkit.JavascriptInterface
 import android.webkit.URLUtil
 import android.webkit.ValueCallback
@@ -37,6 +39,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
+import androidx.webkit.WebViewCompat
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
@@ -52,6 +55,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.WindowCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.json.JSONObject
 import java.util.Locale
 
@@ -79,6 +83,15 @@ class MainActivity : AppCompatActivity() {
     private var growthReferrer: GrowthInstallReferrer? = null
     private var growthCanRestore = false
     private var lastUrl = HOME
+    private var pageUiState: String? = null
+    private var pendingPageUiState: String? = null
+    private data class ScrollRestore(val url: String, val x: Int, val y: Int, var ownedByPage: Boolean = false)
+    private var pendingScrollRestore: ScrollRestore? = null
+    private var activityResumed = false
+    private var permissionSetupShowing = false
+    private val nativePageStateScript by lazy {
+        runCatching { assets.open("native-page-state.js").bufferedReader().use { it.readText() } }.getOrNull()
+    }
     private var voiceTts: TextToSpeech? = null
     private var voiceTtsReady = false
     private var currentVoiceText = ""
@@ -97,7 +110,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Inline Android SpeechRecognizer: keeps Jonas visible instead of opening
-    // the Google full-screen speech intent. Never records until a user taps mic.
+    // the Google full-screen speech intent. Starts only with a user-initiated voice conversation.
     private var inlineVoiceRecognizer: SpeechRecognizer? = null
     private var requestedVoiceLanguage = "en-US"
     private var microphonePermissionPending = false
@@ -108,6 +121,13 @@ class MainActivity : AppCompatActivity() {
         microphonePermissionPending = false
         if (granted && waiting) startInlineRecognition(requestedVoiceLanguage)
         else if (!granted && waiting) sendVoiceError("permission-denied")
+    }
+
+    // This launcher grants capabilities only: no recording or location lookup.
+    private val initialPermissions = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { _ ->
+        startupPrefs.edit().putBoolean(PREF_PERMISSION_SETUP, true).apply()
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -173,6 +193,7 @@ class MainActivity : AppCompatActivity() {
         web.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
+            setGeolocationEnabled(true)
             // WebAuthn via Android Credential Manager for signed-in passkey enrollment.
             if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_AUTHENTICATION)) {
                 WebSettingsCompat.setWebAuthenticationSupport(
@@ -205,6 +226,7 @@ class MainActivity : AppCompatActivity() {
         web.setBackgroundColor(Color.parseColor("#101010"))
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
+        installPageStateBridge()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
@@ -230,20 +252,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        refresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.gold))
-        refresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.royal))
-        refresh.setOnRefreshListener {
-            if (isOnline()) {
-                web.settings.cacheMode = WebSettings.LOAD_NO_CACHE
-                web.reload()
-            } else {
-                refresh.isRefreshing = false
-                showOffline(true)
-            }
-        }
+        // A downward page gesture scrolls content; it never destroys the current
+        // result, draft or route by performing a browser document reload.
+        refresh.isEnabled = false
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
+                cancelPendingPageRestore()
                 when {
                     introHost != null -> finishIntro()
                     customView != null -> hideCustomView()
@@ -253,16 +268,42 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        if (savedInstanceState == null && intent.data == null) startStartupExperience()
+        if (savedInstanceState == null) startStartupExperience()
 
-        val launch = resolveLaunchUrl(intent)
+        // Android may recreate a stopped Activity to deliver a new app link.
+        // That link wins, while the original consumed launch still permits
+        // rotation/process restoration of the screen the user navigated to.
+        val currentLaunch = launchIntentFingerprint(intent)
+        val restoreSavedScreen = NativeLaunchPolicy.shouldRestoreSavedScreen(
+            savedInstanceState?.getString(STATE_LAUNCH_INTENT), currentLaunch
+        )
+        val savedUrl = if (restoreSavedScreen)
+            NativeLaunchPolicy.restorableUrl(savedInstanceState?.getString(STATE_URL)) else null
+        // The launcher may create a fresh Activity without a saved Bundle after
+        // process death. Only a data-less launch may use this disk fallback.
+        val checkpoint = if (savedUrl == null && currentLaunch == null) readScreenCheckpoint() else null
+        val restoredUrl = savedUrl ?: NativeLaunchPolicy.checkpointFallbackUrl(
+            savedUrl, currentLaunch, checkpoint?.getString(STATE_URL)
+        )
+        val restoreState = if (savedUrl != null) savedInstanceState else checkpoint
+        pendingPageUiState = restoredUrl?.let { validatedPageState(restoreState?.getString(STATE_UI), it) }
+        pendingScrollRestore = restoredUrl?.let {
+            ScrollRestore(it, (restoreState?.getInt(STATE_SCROLL_X) ?: 0).coerceIn(0, 1000000),
+                (restoreState?.getInt(STATE_SCROLL_Y) ?: 0).coerceIn(0, 1000000))
+        }
+        val restored = savedUrl != null && savedInstanceState?.getBundle(STATE_WEB)?.let { state ->
+            runCatching { web.restoreState(state) }.getOrNull() != null
+        } == true
+        val launch = restoredUrl ?: resolveLaunchUrl(intent)
         lastUrl = launch
-        if (isDebugSmokeUrl(launch) || isOnline()) web.loadUrl(launch) else {
-            splashKeep = false
-            showOffline(true)
+        if (!restored) {
+            if (isDebugSmokeUrl(launch) || isOnline()) web.loadUrl(launch) else {
+                splashKeep = false
+                showOffline(true)
+            }
         }
         // Resolve a recent, explicitly requested web-to-app handoff without delaying normal startup.
-        growthCanRestore = savedInstanceState == null && intent.data == null
+        growthCanRestore = restoredUrl == null && savedInstanceState == null && currentLaunch == null
         if (growthCanRestore) {
             growthReferrer = GrowthInstallReferrer(this) { destination ->
                 if (growthCanRestore && !isFinishing && !isDestroyed && lastUrl == launch) {
@@ -275,23 +316,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun applySafeInsets() {
-        // The background remains edge-to-edge. Only normal adult-app content is
-        // inset below system bars/camera cutouts; fullscreen intro/video remains immersive.
-        ViewCompat.setOnApplyWindowInsetsListener(refresh) { view, insets ->
-            val safe = insets.getInsets(
-                WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout()
-            )
-            view.setPadding(view.paddingLeft, safe.top, view.paddingRight, view.paddingBottom)
-            insets
+        // One safe-area owner surrounds the existing WebView/ad layout, including
+        // when the ad shell is gone. Ad sizing stays unchanged; fullscreen intro
+        // and video are sibling layers outside these insets.
+        val content = refresh.parent as View
+        for (target in listOf(content, offline)) {
+            val left = target.paddingLeft
+            val top = target.paddingTop
+            val right = target.paddingRight
+            val bottom = target.paddingBottom
+            ViewCompat.setOnApplyWindowInsetsListener(target) { view, insets ->
+                val safe = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+                )
+                // adjustResize already reduces the WebView for the keyboard.
+                // Do not reserve the IME height or its navigation area twice.
+                val bottomSafe = if (insets.isVisible(WindowInsetsCompat.Type.ime())) 0 else safe.bottom
+                view.setPadding(left + safe.left, top + safe.top, right + safe.right, bottom + bottomSafe)
+                insets
+            }
+            ViewCompat.requestApplyInsets(target)
         }
-        val adShell = findViewById<View>(R.id.ad_shell)
-        ViewCompat.setOnApplyWindowInsetsListener(adShell) { view, insets ->
-            val navigation = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
-            view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, navigation.bottom)
-            insets
-        }
-        ViewCompat.requestApplyInsets(refresh)
-        ViewCompat.requestApplyInsets(adShell)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -299,6 +344,10 @@ class MainActivity : AppCompatActivity() {
         growthReferrer?.close()
         super.onNewIntent(intent)
         setIntent(intent)
+        // Tapping the launcher resumes the current screen. Only an explicit app
+        // link (or the existing debug fixture) may navigate a running Activity.
+        if (intent.data == null && debugSmokeLaunch(intent) == null) return
+        cancelPendingPageRestore()
         val url = resolveLaunchUrl(intent)
         if (url != lastUrl) {
             lastUrl = url
@@ -309,6 +358,11 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         finishIntro()
         finishStartupTransition(immediate = true)
+        activityResumed = false
+        // Commit the already available route/UI/native offsets before the
+        // process can be killed. JS capture may refine it, but is not required.
+        persistScreenCheckpoint()
+        web.evaluateJavascript("window.MatchAppNativePageCapture&&window.MatchAppNativePageCapture.capture();", null)
         nativeRewardedBridge?.onPause()
         nativePlayBillingBridge?.onPause()
         nativeNewsBridge?.onPause()
@@ -318,8 +372,14 @@ class MainActivity : AppCompatActivity() {
         CookieManager.getInstance().flush()
     }
 
+    override fun onStop() {
+        persistScreenCheckpoint()
+        super.onStop()
+    }
+
     override fun onResume() {
         super.onResume()
+        activityResumed = true
         web.onResume()
         adMobController?.resume()
         nativeRewardedBridge?.onResume()
@@ -328,9 +388,78 @@ class MainActivity : AppCompatActivity() {
         // Re-resolve account entitlement after returning from browser/payment/account
         // changes. APP_MODE_JS is idempotent and keeps paid users fail-closed.
         injectAppMode(web)
+        web.post { maybeShowPermissionSetup() }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(STATE_LAUNCH_INTENT, launchIntentFingerprint(intent))
+        NativeLaunchPolicy.restorableUrl(web.url ?: lastUrl)?.let { url ->
+            val safeHistory = runCatching {
+                val entries = web.copyBackForwardList()
+                NativeLaunchPolicy.canSaveHistory((0 until entries.size).flatMap {
+                    val entry = entries.getItemAtIndex(it)
+                    listOf(entry?.url, entry?.originalUrl)
+                })
+            }.getOrDefault(false)
+            if (safeHistory) {
+                val history = Bundle()
+                if (runCatching { web.saveState(history) }.getOrNull() != null) outState.putBundle(STATE_WEB, history)
+            }
+            outState.putString(STATE_URL, url)
+            outState.putString(STATE_UI, pageUiState ?: validatedPageState(pendingPageUiState, url))
+            val pending = pendingScrollRestore?.takeIf { it.url == url }
+            outState.putInt(STATE_SCROLL_X, pending?.x ?: web.scrollX)
+            outState.putInt(STATE_SCROLL_Y, pending?.y ?: web.scrollY)
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun persistScreenCheckpoint() {
+        if (!this::web.isInitialized) return
+        val currentUrl = web.url ?: lastUrl
+        val url = NativeLaunchPolicy.checkpointUrl(currentUrl)
+        if (url == null) {
+            // Never leave a previous account screen as the fallback when the
+            // current destination is an auth/payment/private flow.
+            startupPrefs.edit().remove(PREF_SCREEN_CHECKPOINT).commit()
+            return
+        }
+        val pending = pendingScrollRestore?.takeIf { it.url == currentUrl }
+        val ui = validatedPageState(pageUiState, currentUrl) ?: validatedPageState(pendingPageUiState, currentUrl)
+        val safeUi = ui?.let { JSONObject(it).put("url", url).toString() }
+        val checkpoint = JSONObject().put("version", 1).put("url", url)
+            .put("scrollX", (pending?.x ?: web.scrollX).coerceIn(0, 1000000))
+            .put("scrollY", (pending?.y ?: web.scrollY).coerceIn(0, 1000000))
+        if (safeUi != null) checkpoint.put("ui", safeUi)
+        // This small preference file is excluded from cloud backup and device
+        // transfer. No WebView history, arbitrary query, form or result is saved.
+        startupPrefs.edit().putString(PREF_SCREEN_CHECKPOINT, checkpoint.toString()).commit()
+    }
+
+    private fun readScreenCheckpoint(): Bundle? {
+        val raw = startupPrefs.getString(PREF_SCREEN_CHECKPOINT, null) ?: return null
+        if (raw.length > 24576) return null
+        return runCatching {
+            val checkpoint = JSONObject(raw)
+            if (checkpoint.optInt("version") != 1) return null
+            val storedUrl = checkpoint.optString("url")
+            val url = NativeLaunchPolicy.checkpointUrl(storedUrl)?.takeIf { it == storedUrl } ?: return null
+            Bundle().apply {
+                putString(STATE_URL, url)
+                putString(STATE_UI, validatedPageState(checkpoint.optString("ui"), url))
+                putInt(STATE_SCROLL_X, checkpoint.optInt("scrollX").coerceIn(0, 1000000))
+                putInt(STATE_SCROLL_Y, checkpoint.optInt("scrollY").coerceIn(0, 1000000))
+            }
+        }.getOrNull()
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus && this::web.isInitialized) web.post { maybeShowPermissionSetup() }
     }
 
     override fun onUserInteraction() {
+        cancelPendingPageRestore()
         growthCanRestore = false
         nativeRewardedBridge?.recordUserInteraction()
         nativePlayBillingBridge?.recordUserInteraction()
@@ -367,13 +496,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startStartupExperience() {
-        if (startupPrefs.getBoolean(PREF_REGISTERED, false) ||
-            startupPrefs.getBoolean(PREF_INTRO_SEEN, false)
-        ) {
-            startStartupTransition()
-        } else {
-            startIntro()
-        }
+        val installedByPlay = runCatching {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                // The installer of record can survive a subsequent sideload.
+                // Unknown initiating sources fail closed through the comparison below.
+                packageManager.getInstallSourceInfo(packageName).initiatingPackageName
+            } else {
+                // Older Android versions expose only the installer of record,
+                // which cannot prove who initiated this update. Do not rearm.
+                null
+            }
+        }.getOrNull() == "com.android.vending"
+        @Suppress("DEPRECATION")
+        val packageWasUpdated = runCatching { packageManager.getPackageInfo(packageName, 0) }
+            .getOrNull()?.let { it.lastUpdateTime > it.firstInstallTime } == true
+        val play = NativeLaunchPolicy.shouldPlayIntro(
+            BuildConfig.VERSION_CODE, startupPrefs.getInt(PREF_INTRO_VERSION, 0),
+            startupPrefs.getBoolean(PREF_INTRO_SEEN, false), startupPrefs.getBoolean(PREF_REGISTERED, false),
+            installedByPlay, packageWasUpdated
+        )
+        // Consume before attempting playback: failure, skip and process death
+        // must not defer the soundtrack to an unrelated later launch or click.
+        val recorded = startupPrefs.edit().putInt(PREF_INTRO_VERSION,
+            maxOf(startupPrefs.getInt(PREF_INTRO_VERSION, 0), BuildConfig.VERSION_CODE)).commit()
+        if (play && recorded) startIntro() else startStartupTransition()
     }
 
     private fun startStartupTransition() {
@@ -418,12 +564,16 @@ class MainActivity : AppCompatActivity() {
         startupHost = null
         if (immediate) {
             (host.parent as? ViewGroup)?.removeView(host)
+            web.post { maybeShowPermissionSetup() }
             return
         }
         host.animate()
             .alpha(0f)
             .setDuration(240L)
-            .withEndAction { (host.parent as? ViewGroup)?.removeView(host) }
+            .withEndAction {
+                (host.parent as? ViewGroup)?.removeView(host)
+                maybeShowPermissionSetup()
+            }
             .start()
     }
 
@@ -431,7 +581,7 @@ class MainActivity : AppCompatActivity() {
         startupPrefs.edit().putBoolean(PREF_INTRO_SEEN, true).apply()
     }
 
-    // Playback is bundled, muted, finite, and independent of Home loading.
+    // The sole Android intro owner: bundled, finite and bound to package version.
     private fun startIntro() {
         val root = findViewById<FrameLayout>(R.id.root)
         val host = FrameLayout(this).apply { setBackgroundColor(Color.BLACK) }
@@ -449,7 +599,7 @@ class MainActivity : AppCompatActivity() {
             hide(WindowInsetsCompat.Type.systemBars())
         }
         val skip = MaterialButton(this).apply {
-            text = if (resources.configuration.locales[0].language == "pt") "Pular" else "Skip"
+            text = startupStrings().getString(R.string.intro_skip)
             setOnClickListener {
                 markIntroSeen()
                 finishIntro()
@@ -490,10 +640,11 @@ class MainActivity : AppCompatActivity() {
         introHost = null
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowCompat.getInsetsController(window, window.decorView).show(WindowInsetsCompat.Type.systemBars())
-        ViewCompat.requestApplyInsets(refresh)
+        ViewCompat.requestApplyInsets(refresh.parent as View)
         try { introVideo?.stopPlayback() } catch (_: Exception) { }
         introVideo = null
         (host.parent as? ViewGroup)?.removeView(host)
+        web.post { maybeShowPermissionSetup() }
     }
 
     private fun retry() {
@@ -533,6 +684,9 @@ class MainActivity : AppCompatActivity() {
     private fun debugSmokeLaunch(intent: Intent?): String? =
         intent?.getStringExtra("matchapp_smoke_url")
             ?.let { debugSmokeUri(it)?.toString() }
+
+    private fun launchIntentFingerprint(intent: Intent?): String? =
+        NativeLaunchPolicy.launchIntentFingerprint(intent?.action, debugSmokeLaunch(intent) ?: intent?.dataString)
 
     private fun isMatchAppHost(host: String): Boolean {
         val normalized = host.lowercase()
@@ -588,6 +742,147 @@ class MainActivity : AppCompatActivity() {
 
     private fun injectAppMode(view: WebView) {
         view.evaluateJavascript(APP_MODE_JS, null)
+    }
+
+    private fun installPageStateBridge() {
+        if (!WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) return
+        WebViewCompat.addWebMessageListener(web, "MatchAppNativePageState",
+            setOf("https://matchapp.tv", "https://www.matchapp.tv")) { view, message, origin, mainFrame, _ ->
+            if (!mainFrame || origin.scheme != "https" ||
+                origin.host !in setOf("matchapp.tv", "www.matchapp.tv")) return@addWebMessageListener
+            val raw = runCatching { message.data }.getOrNull() ?: return@addWebMessageListener
+            // Do not replace a pending native offset with a short document's
+            // temporary scroll position before its visual callback completes.
+            if (pendingScrollRestore?.let { !it.ownedByPage && it.url == view.url } == true) return@addWebMessageListener
+            pageUiState = validatedPageState(raw, view.url) ?: return@addWebMessageListener
+            if (pendingScrollRestore?.let { it.ownedByPage && it.url == view.url } == true) pendingScrollRestore = null
+            if (!activityResumed) persistScreenCheckpoint()
+            val language = runCatching { JSONObject(pageUiState!!).optString("lang") }.getOrDefault("")
+            if (language in APP_LANGUAGES) startupPrefs.edit().putString(PREF_APP_LANGUAGE, language).apply()
+        }
+    }
+
+    private fun validatedPageState(raw: String?, currentUrl: String?): String? {
+        if (raw == null || raw.length > 16384 || NativeLaunchPolicy.restorableUrl(currentUrl) == null) return null
+        return runCatching {
+            val input = JSONObject(raw)
+            if (input.optInt("version") != 1 || input.optString("url") != currentUrl) return null
+            val filters = JSONObject()
+            val supplied = input.optJSONObject("filters") ?: JSONObject()
+            for (id in PAGE_FILTER_IDS) {
+                val values = supplied.optJSONArray(id) ?: continue
+                if (values.length() > 40) return null
+                val selected = org.json.JSONArray()
+                for (index in 0 until values.length()) {
+                    val value = values.optString(index)
+                    if (value.length > 128) return null
+                    selected.put(value)
+                }
+                filters.put(id, selected)
+            }
+            JSONObject().put("version", 1).put("url", currentUrl).put("filters", filters)
+                .put("scrollX", input.optInt("scrollX").coerceIn(0, 1000000))
+                .put("scrollY", input.optInt("scrollY").coerceIn(0, 1000000))
+                .put("lang", input.optString("lang").takeIf { it in APP_LANGUAGES }.orEmpty())
+                .toString()
+        }.getOrNull()
+    }
+
+    private fun injectPageState(view: WebView) {
+        if (NativeLaunchPolicy.restorableUrl(view.url) == null) return
+        val source = nativePageStateScript ?: return
+        val restored = validatedPageState(pendingPageUiState, view.url)
+        // A redirect or newer explicit app link invalidates the old screen's
+        // snapshot; it must not be applied later when the user visits that URL.
+        pendingPageUiState = null
+        if (restored != null && WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
+            pageUiState = restored
+            pendingScrollRestore?.takeIf { it.url == view.url }?.ownedByPage = true
+        }
+        view.evaluateJavascript(
+            (if (restored != null) "window.__MATCHAPP_NATIVE_RESTORE__=$restored;" else "") + source,
+            null
+        )
+    }
+
+    private fun cancelPendingPageRestore() {
+        val pending = pendingPageUiState != null || pendingScrollRestore != null
+        pendingPageUiState = null
+        pendingScrollRestore = null
+        if (pending) pageUiState = null
+        if (pending && this::web.isInitialized && NativeLaunchPolicy.restorableUrl(web.url) != null) {
+            web.evaluateJavascript("window.MatchAppNativePageCapture&&window.MatchAppNativePageCapture.cancelRestore&&window.MatchAppNativePageCapture.cancelRestore();delete window.__MATCHAPP_NATIVE_RESTORE__;", null)
+        }
+    }
+
+    private fun restorePendingScroll(view: WebView, attempt: Int = 0) {
+        val pending = pendingScrollRestore ?: return
+        if (pending.ownedByPage || isFinishing || isDestroyed) return
+        if (view.url != pending.url) { pendingScrollRestore = null; return }
+        // A posted runnable during onCreate runs before content has height.
+        // This fallback also covers safe-URL reloads when history/state JS is unavailable.
+        view.postVisualStateCallback(0L, object : WebView.VisualStateCallback() {
+            override fun onComplete(requestId: Long) {
+                if (pendingScrollRestore !== pending || pending.ownedByPage || isFinishing || isDestroyed) return
+                if (view.url != pending.url) { pendingScrollRestore = null; return }
+                view.scrollTo(pending.x, pending.y)
+                if (attempt < 12 && (kotlin.math.abs(view.scrollX - pending.x) > 2 || kotlin.math.abs(view.scrollY - pending.y) > 2)) {
+                    view.postDelayed({ restorePendingScroll(view, attempt + 1) }, 100L)
+                } else {
+                    pendingScrollRestore = null
+                    view.evaluateJavascript("window.MatchAppNativePageCapture&&window.MatchAppNativePageCapture.capture();", null)
+                }
+            }
+        })
+    }
+
+    private fun startupStrings(language: String? = startupPrefs.getString(PREF_APP_LANGUAGE, null)): android.content.Context {
+        val selected = language?.takeIf { it in APP_LANGUAGES } ?: return this
+        val configuration = android.content.res.Configuration(resources.configuration)
+        configuration.setLocale(Locale.forLanguageTag(selected))
+        return createConfigurationContext(configuration)
+    }
+
+    private fun missingStartupPermissions(): Array<String> =
+        listOf(Manifest.permission.RECORD_AUDIO, Manifest.permission.ACCESS_COARSE_LOCATION)
+            .filter { ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED }
+            .toTypedArray()
+
+    private fun maybeShowPermissionSetup() {
+        if (!activityResumed || isFinishing || isDestroyed || !hasWindowFocus() ||
+            introHost != null || startupHost != null || permissionSetupShowing ||
+            startupPrefs.getBoolean(PREF_PERMISSION_SETUP, false) ||
+            NativeLaunchPolicy.restorableUrl(web.url) == null || web.progress < 100) return
+        if (missingStartupPermissions().isEmpty()) {
+            startupPrefs.edit().putBoolean(PREF_PERMISSION_SETUP, true).apply()
+            return
+        }
+        permissionSetupShowing = true
+        web.evaluateJavascript("(window.MATCH_LANG||document.documentElement.lang||'')") { encoded ->
+            if (!activityResumed || isFinishing || isDestroyed || !hasWindowFocus() ||
+                introHost != null || startupHost != null ||
+                startupPrefs.getBoolean(PREF_PERMISSION_SETUP, false) ||
+                NativeLaunchPolicy.restorableUrl(web.url) == null || web.progress < 100) {
+                permissionSetupShowing = false
+                return@evaluateJavascript
+            }
+            val language = runCatching { JSONObject("{\"lang\":$encoded}").optString("lang") }.getOrNull()
+            val copy = startupStrings(language)
+            val complete = { startupPrefs.edit().putBoolean(PREF_PERMISSION_SETUP, true).apply() }
+            val dialog = MaterialAlertDialogBuilder(this)
+                .setTitle(copy.getString(R.string.permission_setup_title))
+                .setMessage(copy.getString(R.string.permission_setup_body))
+                .setPositiveButton(copy.getString(R.string.permission_setup_allow)) { _, _ ->
+                    complete()
+                    val missing = missingStartupPermissions()
+                    if (missing.isNotEmpty()) initialPermissions.launch(missing)
+                }
+                .setNegativeButton(copy.getString(R.string.permission_setup_skip)) { _, _ -> complete() }
+                .setOnCancelListener { complete() }
+                .setOnDismissListener { permissionSetupShowing = false }
+                .create()
+            dialog.show()
+        }
     }
 
     private fun injectAmbientJonas(view: WebView) {
@@ -672,6 +967,7 @@ class MainActivity : AppCompatActivity() {
             // persistent bubble must be available before onPageFinished.
             injectAppMode(view)
             injectAmbientJonas(view)
+            injectPageState(view)
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
@@ -686,7 +982,9 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             if (uri != null && isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            if (pendingScrollRestore?.let { it.url != url } == true) cancelPendingPageRestore()
             lastUrl = url ?: lastUrl
+            if (runCatching { JSONObject(pageUiState.orEmpty()).optString("url") }.getOrNull() != url) pageUiState = null
             injectAppMode(view)
             if (uri != null && (isMatchAppHost(uri.host.orEmpty()) || isDebugSmokeUrl(url))) {
                 // Retry early injection while the document is being parsed;
@@ -703,7 +1001,10 @@ class MainActivity : AppCompatActivity() {
             view.settings.cacheMode = WebSettings.LOAD_DEFAULT
             injectAppMode(view)
             injectAmbientJonas(view)
+            injectPageState(view)
+            restorePendingScroll(view)
             CookieManager.getInstance().flush()
+            maybeShowPermissionSetup()
         }
 
         override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
@@ -767,12 +1068,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startInlineRecognition(language: String) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
-            != PackageManager.PERMISSION_GRANTED) {
-            requestedVoiceLanguage = language
-            microphonePermissionPending = true
-            microphonePermission.launch(Manifest.permission.RECORD_AUDIO)
-            return
+        when (NativeLaunchPolicy.voicePermissionAction(
+            ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED,
+            startupPrefs.getBoolean(PREF_PERMISSION_SETUP, false)
+        )) {
+            NativeLaunchPolicy.VoicePermissionAction.DENY -> {
+                // Respect the upfront choice and later revocation. A voice tap
+                // must not repeat the OS prompt; text remains available.
+                microphonePermissionPending = false
+                sendVoiceError("permission-denied")
+                return
+            }
+            NativeLaunchPolicy.VoicePermissionAction.REQUEST -> {
+                requestedVoiceLanguage = language
+                microphonePermissionPending = true
+                microphonePermission.launch(Manifest.permission.RECORD_AUDIO)
+                return
+            }
+            NativeLaunchPolicy.VoicePermissionAction.START -> Unit
         }
         if (!SpeechRecognizer.isRecognitionAvailable(this)) {
             sendVoiceError("unavailable")
@@ -1086,6 +1399,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class MatchChrome : WebChromeClient() {
+        override fun onGeolocationPermissionsShowPrompt(origin: String, callback: GeolocationPermissions.Callback) {
+            val granted = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED
+            val allowed = NativeLaunchPolicy.canUseApproximateLocation(origin, web.url, granted)
+            // Recheck OS permission for each deliberate feature request. Never
+            // show a new runtime prompt here or remember a revoked grant.
+            callback.invoke(origin, allowed, false)
+        }
+
         override fun onProgressChanged(view: WebView?, newProgress: Int) {
             if (newProgress >= 100) refresh.isRefreshing = false
         }
@@ -1154,11 +1476,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=55"
-        const val APP_UA = "MatchAppTVAndroid/1.1.55 MatchAppAiAndroid/1.1.55 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=56"
+        const val APP_UA = "MatchAppTVAndroid/1.1.56 MatchAppAiAndroid/1.1.56 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
+        private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"
         private const val PREF_REGISTERED = "registered_v1"
+        private const val PREF_PERMISSION_SETUP = "permissions_setup_complete_v2"
+        private const val PREF_APP_LANGUAGE = "app_language_v1"
+        private const val PREF_SCREEN_CHECKPOINT = "screen_checkpoint_v1"
+        private const val STATE_URL = "matchapp_current_url_v1"
+        private const val STATE_LAUNCH_INTENT = "matchapp_consumed_launch_v1"
+        private const val STATE_WEB = "matchapp_webview_history_v1"
+        private const val STATE_UI = "matchapp_page_ui_v1"
+        private const val STATE_SCROLL_X = "matchapp_scroll_x_v1"
+        private const val STATE_SCROLL_Y = "matchapp_scroll_y_v1"
+        private val PAGE_FILTER_IDS = setOf("q-category", "q-mood", "q-platform", "q-genre", "q-vibe", "q-decade", "q-rating")
+        private val APP_LANGUAGES = setOf("en", "pt", "pt-BR", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh")
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;

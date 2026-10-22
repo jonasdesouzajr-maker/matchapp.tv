@@ -1,0 +1,327 @@
+{
+  "retrieved": "2026-10-21",
+  "license": "Unsplash License (https://unsplash.com/license)",
+  "purpose": "Responsive renditions of the same decorative photographs. Original files remain the compatibility fallback. No generated or upscaled detail.",
+  "photos": [
+    {
+      "original": "explore-hero.jpg",
+      "source": "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+      "sourceDimensions": [
+        3506,
+        2329
+      ],
+      "fallbackDimensions": [
+        1400,
+        930
+      ],
+      "fallbackBytes": 186953,
+      "variants": [
+        {
+          "file": "explore-hero-700.avif",
+          "source": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?fm=avif&fit=max&w=700&q=82",
+          "width": 700,
+          "height": 465,
+          "bytes": 29588,
+          "sha256": "6fafe35c063b3ade3e0b8f664d287ed8136e4a88cca6361596b362bd3d1df671"
+        },
+        {
+          "file": "explore-hero-1400.avif",
+          "source": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?fm=avif&fit=max&w=1400&q=82",
+          "width": 1400,
+          "height": 930,
+          "bytes": 94641,
+          "sha256": "6421f031da12073c2ce9568ef93b63963192cebfce728cb9b4b8c4baf37a32e9"
+        },
+        {
+          "file": "explore-hero-2800.avif",
+          "source": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?fm=avif&fit=max&w=2800&q=82",
+          "width": 2800,
+          "height": 1860,
+          "bytes": 261033,
+          "sha256": "d51e14408e6378c82e80219b7d8f014b5edceb159c519518c21715565c9842f3"
+        },
+        {
+          "file": "explore-hero-3500.avif",
+          "source": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?fm=avif&fit=max&w=3500&q=82",
+          "width": 3500,
+          "height": 2325,
+          "bytes": 349840,
+          "sha256": "f0e9057a74a1b338b650ba4386e0223d525efc0e4ee4fca773d97cd1f77265e0"
+        }
+      ]
+    },
+    {
+      "original": "explore-awaited.jpg",
+      "source": "https://images.unsplash.com/photo-1449452198679-05c7fd30f416",
+      "sourceDimensions": [
+        4496,
+        3000
+      ],
+      "fallbackDimensions": [
+        1200,
+        801
+      ],
+      "fallbackBytes": 215163,
+      "variants": [
+        {
+          "file": "explore-awaited-600.avif",
+          "source": "https://images.unsplash.com/photo-1449452198679-05c7fd30f416?fm=avif&fit=max&w=600&q=82",
+          "width": 600,
+          "height": 400,
+          "bytes": 44189,
+          "sha256": "740ed6d986061d500adf83f7cb08d87fecee0e067d8f9eb53fd82fac95375fc6"
+        },
+        {
+          "file": "explore-awaited-1200.avif",
+          "source": "https://images.unsplash.com/photo-1449452198679-05c7fd30f416?fm=avif&fit=max&w=1200&q=82",
+          "width": 1200,
+          "height": 801,
+          "bytes": 149522,
+          "sha256": "c7e196f64b2d975d8ea4b7024cd5973366fcbc7dbffb43af08a2f02b60f6ab93"
+        },
+        {
+          "file": "explore-awaited-2400.avif",
+          "source": "https://images.unsplash.com/photo-1449452198679-05c7fd30f416?fm=avif&fit=max&w=2400&q=82",
+          "width": 2400,
+          "height": 1601,
+          "bytes": 504726,
+          "sha256": "63f733f88fc40a3ec195d61b8e5bed7da4116fdebbfd071b6ccdd74ca2735412"
+        }
+      ]
+    },
+    {
+      "original": "explore-weekly.jpg",
+      "source": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94",
+      "sourceDimensions": [
+        5184,
+        3456
+      ],
+      "fallbackDimensions": [
+        1000,
+        667
+      ],
+      "fallbackBytes": 119508,
+      "variants": [
+        {
+          "file": "explore-weekly-500.avif",
+          "source": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?fm=avif&fit=max&w=500&q=82",
+          "width": 500,
+          "height": 333,
+          "bytes": 23773,
+          "sha256": "e6a7a63c5329cc4834e68ee4a3900da41656f910d133be0328b5ad4222d64da0"
+        },
+        {
+          "file": "explore-weekly-1000.avif",
+          "source": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?fm=avif&fit=max&w=1000&q=82",
+          "width": 1000,
+          "height": 667,
+          "bytes": 64749,
+          "sha256": "63316655bbd2cc3e8237643ce17ea1f452331dd78fb5ee6a7ef61fecb8a1ff8b"
+        },
+        {
+          "file": "explore-weekly-2000.avif",
+          "source": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?fm=avif&fit=max&w=2000&q=82",
+          "width": 2000,
+          "height": 1333,
+          "bytes": 183345,
+          "sha256": "4b33349050416522fdff27c409b093d0d2e51ac761f5b4d8ebd7381e11ba5992"
+        }
+      ]
+    },
+    {
+      "original": "explore-books.jpg",
+      "source": "https://images.unsplash.com/photo-1507842217343-583bb7270b66",
+      "sourceDimensions": [
+        5957,
+        3493
+      ],
+      "fallbackDimensions": [
+        700,
+        410
+      ],
+      "fallbackBytes": 111848,
+      "variants": [
+        {
+          "file": "explore-books-350.avif",
+          "source": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?fm=avif&fit=max&w=350&q=82",
+          "width": 350,
+          "height": 205,
+          "bytes": 26906,
+          "sha256": "f3b5b4dc9dedef1f7f337e3a93cbc8a466d003e8db1f7872985bfc6df6234791"
+        },
+        {
+          "file": "explore-books-700.avif",
+          "source": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?fm=avif&fit=max&w=700&q=82",
+          "width": 700,
+          "height": 410,
+          "bytes": 84484,
+          "sha256": "1e4f66b73c44c17af3002c8aef94e882784d0e3d443c258d5fd53b5ae0e2db89"
+        },
+        {
+          "file": "explore-books-1400.avif",
+          "source": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?fm=avif&fit=max&w=1400&q=82",
+          "width": 1400,
+          "height": 821,
+          "bytes": 269263,
+          "sha256": "c301f6aa358b36e328bd6f625f8f2c8a664c3241cad7cc4aea0f3c1e26eedd0b"
+        }
+      ]
+    },
+    {
+      "original": "explore-food.jpg",
+      "source": "https://images.unsplash.com/photo-1551183053-bf91a1d81141",
+      "sourceDimensions": [
+        5572,
+        3471
+      ],
+      "fallbackDimensions": [
+        700,
+        436
+      ],
+      "fallbackBytes": 77644,
+      "variants": [
+        {
+          "file": "explore-food-350.avif",
+          "source": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?fm=avif&fit=max&w=350&q=82",
+          "width": 350,
+          "height": 218,
+          "bytes": 23519,
+          "sha256": "598fee3a09e3d45aa813936c9b3efbf4e4682b363446802549dd9bd48b92ddca"
+        },
+        {
+          "file": "explore-food-700.avif",
+          "source": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?fm=avif&fit=max&w=700&q=82",
+          "width": 700,
+          "height": 436,
+          "bytes": 52303,
+          "sha256": "882613326416686442a01e0e74e0f37ceb88c409da4d24cd5c90c727d67480c5"
+        },
+        {
+          "file": "explore-food-1400.avif",
+          "source": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?fm=avif&fit=max&w=1400&q=82",
+          "width": 1400,
+          "height": 872,
+          "bytes": 117569,
+          "sha256": "b0b1c37dc786544d34d98034a8173c8f1dff5e95ec66817bb58b1a7e95e844d8"
+        }
+      ]
+    },
+    {
+      "original": "explore-news.jpg",
+      "source": "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4",
+      "sourceDimensions": [
+        6561,
+        4920
+      ],
+      "fallbackDimensions": [
+        700,
+        525
+      ],
+      "fallbackBytes": 45024,
+      "variants": [
+        {
+          "file": "explore-news-350.avif",
+          "source": "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?fm=avif&fit=max&w=350&q=82",
+          "width": 350,
+          "height": 262,
+          "bytes": 11633,
+          "sha256": "e2b15e11c115331517515725db53bdc722d9305a4ca3e80d3837b6cfa06b81c9"
+        },
+        {
+          "file": "explore-news-700.avif",
+          "source": "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?fm=avif&fit=max&w=700&q=82",
+          "width": 700,
+          "height": 525,
+          "bytes": 32274,
+          "sha256": "19eb5e7b84ad02c3a5a40dfccd153de9a4cd3e33b2d0f6581c3886cde1bc160e"
+        },
+        {
+          "file": "explore-news-1400.avif",
+          "source": "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?fm=avif&fit=max&w=1400&q=82",
+          "width": 1400,
+          "height": 1050,
+          "bytes": 100833,
+          "sha256": "9568ae4c15f3879e8efc11559d1280d31d6f3b125768b941a9ccd00d0665254e"
+        }
+      ]
+    },
+    {
+      "original": "explore-events.jpg",
+      "source": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7",
+      "sourceDimensions": [
+        3000,
+        2000
+      ],
+      "fallbackDimensions": [
+        1000,
+        667
+      ],
+      "fallbackBytes": 110900,
+      "variants": [
+        {
+          "file": "explore-events-500.avif",
+          "source": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?fm=avif&fit=max&w=500&q=82",
+          "width": 500,
+          "height": 333,
+          "bytes": 20869,
+          "sha256": "5497d16513e36e964405c8c29aa7f493f2071d9d58f7d86cd9aaafbe302d5e22"
+        },
+        {
+          "file": "explore-events-1000.avif",
+          "source": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?fm=avif&fit=max&w=1000&q=82",
+          "width": 1000,
+          "height": 667,
+          "bytes": 52633,
+          "sha256": "c8318a94336f2aaf7115d97a64003f8c9f4428404de9c360053a30f300790460"
+        },
+        {
+          "file": "explore-events-2000.avif",
+          "source": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?fm=avif&fit=max&w=2000&q=82",
+          "width": 2000,
+          "height": 1333,
+          "bytes": 266214,
+          "sha256": "be911e36488665d42e005704bc1ded0a493ffb02ec1b2be9a05b2c001b9f3965"
+        }
+      ]
+    },
+    {
+      "original": "explore-music.jpg",
+      "source": "https://images.unsplash.com/photo-1516280440614-37939bbacd81",
+      "sourceDimensions": [
+        4272,
+        2848
+      ],
+      "fallbackDimensions": [
+        700,
+        467
+      ],
+      "fallbackBytes": 37448,
+      "variants": [
+        {
+          "file": "explore-music-350.avif",
+          "source": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?fm=avif&fit=max&w=350&q=82",
+          "width": 350,
+          "height": 233,
+          "bytes": 6811,
+          "sha256": "abeab141f60a3070b0b234029b0e47c7f29b9a5ee5896e959792ea7f2e02770b"
+        },
+        {
+          "file": "explore-music-700.avif",
+          "source": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?fm=avif&fit=max&w=700&q=82",
+          "width": 700,
+          "height": 467,
+          "bytes": 12649,
+          "sha256": "10aad83c43d25d256ba9d0dd82e56e1b39916cad53d475e64a8ead91db4543a3"
+        },
+        {
+          "file": "explore-music-1400.avif",
+          "source": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?fm=avif&fit=max&w=1400&q=82",
+          "width": 1400,
+          "height": 933,
+          "bytes": 57210,
+          "sha256": "179ab8b3ae351701c8636b3b844f36106e4ec9d779451c8f2a66ed263d7bc1e9"
+        }
+      ]
+    }
+  ]
+}

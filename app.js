@@ -1760,7 +1760,7 @@ window.eventMatch = function (query) {
     if (input) input.value = query;
 
     const searchBox = document.getElementById('search-box');
-    if (searchBox) searchBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (searchBox) window.MatchAppActivatedScroll?.toStart(searchBox) ?? searchBox.scrollIntoView({ behavior: 'auto', block: 'start' });
 
     setTimeout(() => { window.triggerMatch(true); }, 320);
 };
@@ -2588,13 +2588,10 @@ function goToQuestionnaire() {
     const resultBox = document.getElementById('result-box');
     if (resultBox && resultBox.style.display !== 'none') resultBox.style.display = 'none';
 
-    // 'center' was wrong here: the questionnaire is taller than a phone
-    // viewport, so centring it scrolled the "Curate Your Perfect Match"
-    // heading off the top and dropped the user into the middle of the form.
-    // 'start' + the scroll-margin-top rule lands the heading just below the
-    // sticky header instead.
+    // Align the section start below the current measured header, even when
+    // the form is taller than the viewport or a fold changes the layout.
     try {
-        box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.MatchAppActivatedScroll?.toStart(box) ?? box.scrollIntoView({ behavior: 'auto', block: 'start' });
     } catch (e) {
         box.scrollIntoView(true); // older browsers: no options object
     }
@@ -4705,7 +4702,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (loadBox) {
         loadBox.style.display = 'block';
         document.body.classList.add('match-searching');
-        requestAnimationFrame(() => loadBox.scrollIntoView({behavior:'auto',block:'center'}));
+        requestAnimationFrame(() => window.MatchAppActivatedScroll?.toStart(loadBox,{behavior:'auto'}) ?? loadBox.scrollIntoView({behavior:'auto',block:'start'}));
     }
     // Yield one painted frame before any source work. Without this, mobile
     // WebView can show the loader markup at its static 0% state while JS
@@ -4821,7 +4818,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         clearInterval(timerInterval);
         document.body.classList.remove('match-searching');
         if (loadBox) loadBox.style.display='none';
-        if (sBox) { sBox.style.display='block'; sBox.scrollIntoView({behavior:'auto',block:'center'}); }
+        if (sBox) { sBox.style.display='block'; window.MatchAppActivatedScroll?.toStart(sBox,{behavior:'auto'}) ?? sBox.scrollIntoView({behavior:'auto',block:'start'}); }
         return;
     }
     if (alreadySeenSpecific) {
@@ -4834,7 +4831,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         ['loading-box','result-box'].forEach(id => { const el=document.getElementById(id); if(el)el.style.display='none'; });
         window.showToast(tSafe('polish.noFresh'));
         const form = document.getElementById('questionnaire-box');
-        if (form) { form.style.display='block'; form.scrollIntoView({behavior:'smooth',block:'center'}); }
+        if (form) { form.style.display='block'; window.MatchAppActivatedScroll?.toStart(form) ?? form.scrollIntoView({behavior:'auto',block:'start'}); }
         return;
     }
     window.lastMatchWasSpecificSearch = isSpecificSearch;
@@ -5331,12 +5328,10 @@ async function renderResult(selected, isSpecificSearch) {
     resultBox.style.display = 'block';
     resultBox.classList.add('is-revealed', 'ma-result-arriving');
     // The stylesheet reserves the full poster area from first paint. Wait for
-    // two lightweight paint frames without a forced layout pass,
-    // before scrolling once to the actual artwork.
+    // two lightweight paint frames before revealing the start of the result.
     requestAnimationFrame(() => requestAnimationFrame(() => {
         if (window.globalMatchTitle !== selected.title || resultBox.style.display === 'none') return;
-        const posterStage = resultBox.querySelector('.poster-stage');
-        (posterStage || resultBox).scrollIntoView({
+        window.MatchAppActivatedScroll?.toStart(resultBox) ?? resultBox.scrollIntoView({
             behavior: document.documentElement.classList.contains('reduce-motion') ||
                 matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
             block: 'start'
@@ -6148,7 +6143,7 @@ window.changeParamsAndRematch = function() {
     if (resultBox) resultBox.style.display = 'none';
     const form = document.getElementById('questionnaire-box') || document.getElementById('q-category');
     if (form) {
-        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.MatchAppActivatedScroll?.toStart(form) ?? form.scrollIntoView({ behavior: 'auto', block: 'start' });
         const catEl = document.getElementById('q-category');
         if (catEl) setTimeout(() => catEl.focus(), 600);
     }

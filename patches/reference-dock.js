@@ -11,7 +11,7 @@
   list:'<path class="ma-dock-cut" d="M10 4h16v18M6 8h16v20l-8-4.5L6 28z"/><path class="ma-dock-facet" d="M6 8h16v20l-8-4.5L6 28z"/><path d="M6 8h16v20l-8-4.5L6 28z"/><path d="M10 13h8M10 17h5"/><path class="ma-dock-spark" d="m27 11 .7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>',
   profile:'<path class="ma-dock-orbit" d="M7.2 11.1C6.6 5.2 13 1.3 18.4 3.9M24.8 20.9c.6 5.9-5.8 9.8-11.2 7.2"/><path class="ma-dock-facet" d="M5.5 27c.6-6.1 4-9.1 10.5-9.1s9.9 3 10.5 9.1z"/><path d="M6.2 26.6c.7-5.2 4-8 9.8-8s9.1 2.8 9.8 8"/><path d="M21 10.1c0 3.2-2.1 5.9-5 5.9s-5-2.7-5-5.9a5 5 0 0 1 10 0Z"/><circle class="ma-dock-core" cx="23.7" cy="5.3" r="1.7"/><circle class="ma-dock-core" cx="8.3" cy="27.4" r="1.3"/>'
  };
- var nav = null, mountObserver = null, navObserver = null, resizeObserver = null, frame = 0;
+ var nav = null, mountObserver = null, navObserver = null, resizeObserver = null, frame = 0, textMeasure = null;
  var timers = new Map();
  var motion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
  function reduced() { return document.documentElement.classList.contains('reduce-motion') || !!(motion && motion.matches); }
@@ -19,9 +19,35 @@
   timers.forEach(function (id, anchor) { clearTimeout(id); anchor.classList.remove('ma-dock-activated'); });
   timers.clear();
  }
+ function fitLabels() {
+  var anchors = Array.from(nav.querySelectorAll('a[data-ma-dock-destination]'));
+  if (anchors.length !== 5 || !nav.clientWidth) return;
+  if (!textMeasure) textMeasure = document.createElement('canvas').getContext('2d');
+  if (!textMeasure) return;
+  var number = function (value) { return parseFloat(value) || 0; };
+  var style = getComputedStyle(nav);
+  var available = nav.clientWidth - number(style.paddingLeft) - number(style.paddingRight) - 4 * number(style.columnGap);
+  var needed = anchors.reduce(function (total, anchor) {
+   var label = anchor.querySelector('[data-cinema-copy]');
+   if (!label) return total + 48;
+   var copy = getComputedStyle(label), control = getComputedStyle(anchor);
+   textMeasure.font = copy.font;
+   var spacing = number(copy.letterSpacing);
+   // Keep each translated word (including joined Arabic/CJK copy) intact.
+   // Measure independently of the current row layout, so resizing can safely
+   // return from the balanced second row without oscillating on ResizeObserver.
+   var longest = Math.max.apply(null, label.textContent.trim().split(/\s+/).map(function (word) {
+    return textMeasure.measureText(word).width + Math.max(0, Array.from(word).length - 1) * spacing;
+   }));
+   return total + Math.max(48, Math.ceil(longest + number(copy.paddingLeft) + number(copy.paddingRight) + number(control.paddingLeft) + number(control.paddingRight)));
+  }, 0);
+  var wrap = needed > available ? 'true' : 'false';
+  if (nav.dataset.maDockWrap !== wrap) nav.dataset.maDockWrap = wrap;
+ }
  function measure() {
   frame = 0;
   if (!nav || !nav.isConnected || !document.body) return;
+  fitLabels();
   var box = nav.getBoundingClientRect();
   if (!box.height) return;
   // Extra clearance is only added when long selected-language labels or the
@@ -94,6 +120,11 @@
  };
  document.addEventListener('click',activate,{passive:true});
  document.addEventListener('visibilitychange',visibility);
+ document.addEventListener('matchapp:settingschanged',scheduleMeasure);
+ if (document.fonts) {
+  document.fonts.ready.then(scheduleMeasure);
+  if (document.fonts.addEventListener) document.fonts.addEventListener('loadingdone',scheduleMeasure);
+ }
  window.addEventListener('pagehide',clearActivation);
  window.addEventListener('pageshow',function () { visibility(); scheduleMeasure(); });
  window.addEventListener('resize',scheduleMeasure,{passive:true});

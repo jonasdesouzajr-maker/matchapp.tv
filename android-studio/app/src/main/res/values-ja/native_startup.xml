@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">音声と近くの映画館を設定</string>
+    <string name="permission_setup_body">マイクを使うとJonasと話せます。端末の音声認識サービスは、文字起こしのために音声をそのサービスのサーバーへ送る場合があります。回答を生成するため、文字起こしされたテキストはAI提供事業者に送信されます。近くの映画館を探す際は、おおよその位置情報と選んだ作品名をGoogle Mapsへ送信します。録音や位置情報の取得は、その機能を選んだときだけ始まります。どちらの許可も任意で、文字での会話も続けられます。</string>
+    <string name="permission_setup_allow">権限を選択</string>
+    <string name="permission_setup_skip">今はしない</string>
+    <string name="intro_skip">スキップ</string>
+</resources>

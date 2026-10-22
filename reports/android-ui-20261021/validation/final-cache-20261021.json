@@ -1,0 +1,22 @@
+{
+  "gate": "cache",
+  "command": [
+    "node",
+    "--test",
+    "--test-isolation=none",
+    "--test-force-exit",
+    "--test-reporter=spec",
+    "tests/artwork-cache-references-20261020.test.cjs",
+    "tests/profile-runtime-cache.test.cjs",
+    "tests/reference-generator-theme.test.cjs",
+    "tests/release-audit.test.cjs",
+    "tests/critical-style-preloads-20261020.test.cjs"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": null,
+  "startedAt": "2026-10-21T19:29:37.969279+00:00",
+  "finishedAt": "2026-10-21T19:29:40.705365+00:00",
+  "durationSeconds": 2.736,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/final-cache-20261021.log"
+}

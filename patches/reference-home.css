@@ -76,7 +76,7 @@ html.ma-reference body.page-home #mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > 
 html.ma-reference body.page-home.ma-has-cinema-dock #mh-topbox#mh-topbox > nav.ma-luxe-shortcuts > a[data-ma-nav]:not([data-ma-nav="5"]) {display:none!important;}
 html.ma-reference body.page-home .home-hero.home-hero {
  display:flex!important;position:relative!important;isolation:isolate;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;
- min-height:clamp(200px,26vw,330px)!important;margin:0!important;padding:clamp(16px,2.5vw,32px)!important;
+ height:auto!important;min-height:clamp(200px,26vw,330px)!important;margin:0!important;padding:clamp(16px,2.5vw,32px)!important;
  overflow:hidden!important;border:1px solid var(--cinema-line)!important;border-radius:12px!important;
  background:linear-gradient(90deg,#08050edb 0%,#08050e50 52%,#08050e00 85%),url('/assets/cinema/home-city-lossless.webp') center/cover no-repeat!important;
  box-shadow:inset 0 1px #fff1ca14,0 12px 36px #0003!important;
@@ -248,7 +248,7 @@ html.ma-reference body.page-home #mh-topbox#mh-topbox .ma-cinema-tools-content n
 }
 html.ma-reference body.page-home #mh-topbox#mh-topbox .ma-cinema-tools-content nav.ma-luxe-shortcuts svg {width:18px!important;height:18px!important;}
 html.ma-reference body.page-home #questionnaire-box#questionnaire-box .ma-cinema-quick-choices {margin:7px 0!important;border:1px solid #70593866!important;border-radius:7px!important;background:transparent!important;}
-html.ma-reference body.page-home #questionnaire-box#questionnaire-box .ma-cinema-quick-choices > summary {min-height:36px!important;box-sizing:border-box!important;padding:9px 10px!important;font:.8rem/1.3 system-ui!important;color:var(--cinema-muted)!important;cursor:pointer;}
+html.ma-reference body.page-home #questionnaire-box#questionnaire-box .ma-cinema-quick-choices > summary {min-height:48px!important;box-sizing:border-box!important;padding:9px 10px!important;font:.8rem/1.3 system-ui!important;color:var(--cinema-muted)!important;cursor:pointer;}
 html.ma-reference body.page-home #questionnaire-box#questionnaire-box .ma-cinema-quick-choices :is(.ma-quick,#matchapp-topic-shortcuts) {display:grid!important;gap:7px!important;padding:10px!important;}
 html.ma-reference body.page-home #questionnaire-box#questionnaire-box .ma-cinema-quick-choices #matchapp-topic-description {display:block!important;font-size:.8rem!important;line-height:1.5!important;padding:10px!important;}
 html.ma-reference body.page-home #questionnaire-box#questionnaire-box .ma-cinema-quick-choices .ma-chip {min-height:36px!important;border:1px solid #70593888!important;background:var(--cinema-panel)!important;color:var(--cinema-text)!important;border-radius:7px!important;}
@@ -260,7 +260,7 @@ html.ma-reference body.page-home.ma-match-tab:not(.lazy-mode) #ma-panel-match#ma
 html.ma-reference body.page-home.ma-match-tab:not(.lazy-mode) #ma-concierge#ma-concierge > .ma-watch-preview {display:none!important;}
 html.ma-reference body.page-home #ma-panel-match#ma-panel-match::before,
 html.ma-reference body.page-home #ma-panel-match#ma-panel-match::after {display:none!important;}
-html.ma-reference body.page-home #questionnaire-box#questionnaire-box .match-more-filters > summary {min-height:36px!important;padding:8px 10px!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:6px!important;}
+html.ma-reference body.page-home #questionnaire-box#questionnaire-box .match-more-filters > summary {min-height:48px!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;padding:8px 10px!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:6px!important;}
 html.ma-reference body.page-home #questionnaire-box#questionnaire-box .match-more-filters > summary :is(img,svg) {width:18px!important;height:18px!important;min-width:18px!important;}
 html.ma-reference body.page-home #questionnaire-box#questionnaire-box .match-more-filters > summary :is(span,strong) {font-size:.8rem!important;text-transform:none!important;}
 html.ma-reference body.page-home #questionnaire-box#questionnaire-box .match-more-filters > summary::before {display:none!important;content:none!important;}
@@ -290,7 +290,7 @@ html.ma-reference body.page-home :is(#questionnaire-box,#ma-concierge)::after {d
 html.ma-reference body.page-home .ma-cinema-hero-footer {display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;width:100%!important;}
 html.ma-reference body.page-home .home-hero .ma-cinema-help {
  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
- min-height:40px!important;max-width:48%!important;padding:8px 13px!important;margin:0!important;
+ min-height:48px!important;max-width:48%!important;padding:8px 13px!important;margin:0!important;
  background:#120a17b8!important;backdrop-filter:blur(10px);border:1px solid #d7b46c80!important;border-radius:8px!important;
  color:#f1d79f!important;font:500 .78rem/1.3 system-ui!important;text-align:center!important;text-decoration:none!important;white-space:normal!important;
  box-shadow:inset 0 1px #fff2c21a,0 4px 14px #0003!important;

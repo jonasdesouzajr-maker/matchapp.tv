@@ -83,7 +83,68 @@ async function recoverInstalledMobileRuntime(){
  if(typeof location.replace==='function')location.replace(url.toString());
 }
 
+// Native refresh only repaints saved local activity. It does not install an APK
+// or claim to synchronize records with a server.
+const nativeRefreshMessages={
+ en:['Saved activity refreshed on this device.','Your current screen has been kept.','Refresh is unavailable.','App updates are installed through Google Play.'],
+ pt:['A atividade salva foi atualizada neste dispositivo.','Sua tela atual foi mantida.','Não foi possível atualizar.','As atualizações do aplicativo são instaladas pelo Google Play.'],
+ es:['La actividad guardada se ha actualizado en este dispositivo.','Se ha conservado la pantalla actual.','No se puede actualizar ahora.','Las actualizaciones de la aplicación se instalan desde Google Play.'],
+ fr:['L’activité enregistrée a été actualisée sur cet appareil.','Votre écran actuel a été conservé.','L’actualisation est indisponible.','Les mises à jour de l’application s’installent via Google Play.'],
+ de:['Die gespeicherten Aktivitäten wurden auf diesem Gerät neu angezeigt.','Deine aktuelle Ansicht bleibt erhalten.','Die Ansicht kann gerade nicht aktualisiert werden.','App-Updates werden über Google Play installiert.'],
+ it:['L’attività salvata è stata aggiornata su questo dispositivo.','La schermata attuale è stata mantenuta.','L’aggiornamento della schermata non è disponibile.','Gli aggiornamenti dell’app si installano tramite Google Play.'],
+ tr:['Bu cihazda kayıtlı etkinlikler yenilendi.','Mevcut ekranınız korundu.','Yenileme şu anda kullanılamıyor.','Uygulama güncellemeleri Google Play üzerinden yüklenir.'],
+ ru:['Сохранённые действия обновлены на этом устройстве.','Текущий экран сохранён.','Обновление экрана недоступно.','Обновления приложения устанавливаются через Google Play.'],
+ ar:['تم تحديث النشاط المحفوظ على هذا الجهاز.','تم الاحتفاظ بالشاشة الحالية.','تحديث الشاشة غير متاح.','تُثبَّت تحديثات التطبيق عبر Google Play.'],
+ hi:['इस डिवाइस पर सहेजी गई गतिविधि रीफ़्रेश की गई।','आपकी मौजूदा स्क्रीन बरकरार है।','रीफ़्रेश उपलब्ध नहीं है।','ऐप के अपडेट Google Play से इंस्टॉल होते हैं।'],
+ id:['Aktivitas tersimpan telah disegarkan di perangkat ini.','Layar saat ini tetap dipertahankan.','Penyegaran tidak tersedia.','Pembaruan aplikasi dipasang melalui Google Play.'],
+ ja:['この端末に保存されたアクティビティを再表示しました。','現在の画面は保持されています。','画面を再読み込みできませんでした。','アプリのアップデートは Google Play からインストールします。'],
+ ko:['이 기기에 저장된 활동을 새로 표시했습니다.','현재 화면이 유지됩니다.','화면을 새로 표시할 수 없습니다.','앱 업데이트는 Google Play에서 설치합니다.'],
+ zh:['已重新显示此设备上保存的活动。','当前页面已保留。','暂时无法刷新。','应用更新通过 Google Play 安装。']
+};
+let nativeRefreshStatusTimer;
+function notifyNativeRefresh(result){
+ const language=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase().replace('_','-').split('-')[0];
+ const copy=nativeRefreshMessages[language]||nativeRefreshMessages.en;
+ const status=result?.refreshed===true?copy[0]:(result?.kind==='unavailable'?copy[2]+' ':'')+copy[1];
+ const message=status+' '+copy[3];
+ if(typeof window.showToast==='function'){
+  try{window.showToast(message);return;}catch(_){}
+ }
+ let notice=document.getElementById('matchapp-native-refresh-status');
+ if(!notice){
+  notice=document.createElement('div');notice.id='matchapp-native-refresh-status';
+  notice.setAttribute('role','status');notice.setAttribute('aria-live','polite');
+  notice.style.cssText='position:fixed;inset-inline:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));margin-inline:auto;max-width:32rem;padding:14px 16px;border:1px solid rgba(229,193,88,.5);border-radius:14px;background:#21162f;color:#fff;font:500 14px/1.5 Outfit,system-ui,sans-serif;z-index:4000;pointer-events:none';
+  (document.body||document.documentElement).appendChild(notice);
+ }
+ notice.textContent=message;
+ clearTimeout(nativeRefreshStatusTimer);nativeRefreshStatusTimer=setTimeout(()=>notice.remove(),6500);
+}
+
+let nativeRefreshModule;
+function loadNativeRefresh(){
+ if(window.MatchAppLocalRefresh?.refresh)return Promise.resolve();
+ if(!nativeRefreshModule)nativeRefreshModule=bounded(new Promise((resolve,reject)=>{
+  const script=document.createElement('script');
+  script.src='/patches/native-local-refresh.js?v=20261021-1';
+  script.onload=()=>window.MatchAppLocalRefresh?.refresh?resolve():reject(new Error('Refresh unavailable'));
+  script.onerror=()=>reject(new Error('Refresh unavailable'));
+  (document.head||document.documentElement).appendChild(script);
+ })).catch(error=>{nativeRefreshModule=null;throw error;});
+ return nativeRefreshModule;
+}
 window.updateMatchAppNow=async function(){
+ if(!KIDS&&(IS_NATIVE_ADULT||window.MATCHAPP_ANDROID)){
+  try{
+   await loadNativeRefresh();
+   const result=await bounded(window.MatchAppLocalRefresh.refresh({reason:'manual-update'}));
+   notifyNativeRefresh(result);
+   return result?.refreshed===true;
+  }catch(_){
+   notifyNativeRefresh({refreshed:false,kind:'unavailable'});
+   return false;
+  }
+ }
  const name=appName();
  overlay(pt()
   ?('Atualizando '+name+' para a versão mais recente…')

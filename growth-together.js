@@ -41,7 +41,7 @@ function event(name){
  d.dispatchEvent(new CustomEvent('matchapp:growth',{detail:{event:name,surface:'together'}}));
  core.track(w,name,'together');
 }
-function alignStep(){requestAnimationFrame(()=>{root.querySelector('.growth-panel')?.scrollIntoView?.({block:'start',behavior:'auto'});root.querySelector('h1,h2')?.focus({preventScroll:true});});}
+function alignStep(){requestAnimationFrame(()=>{w.MatchAppActivatedScroll?.toStart(root.querySelector('.growth-panel'),{behavior:'auto'}) ?? root.querySelector('.growth-panel')?.scrollIntoView?.({block:'start',behavior:'auto'});root.querySelector('h1,h2')?.focus({preventScroll:true});});}
 function show(next,focus=true){view=next;render();if(focus)alignStep();}
 function noteError(code){errorKey=/expired/.test(code)?'expired':/already_joined/.test(code)?'used':/sign_in_required|different_viewer_required/.test(code)?'needAccount':/limit|try_later/.test(code)?'limitReached':'error';}
 function countryLabel(country){try{return new Intl.DisplayNames([copy.lang()],{type:'region'}).of(country)||country;}catch(_){return country;}}

@@ -1,0 +1,16 @@
+{
+  "gate": "site-audit",
+  "command": [
+    "npm",
+    "run",
+    "audit:site"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": "--max-old-space-size=6144",
+  "startedAt": "2026-10-21T19:27:04.695141+00:00",
+  "finishedAt": "2026-10-21T19:27:44.573097+00:00",
+  "durationSeconds": 39.878,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/intermediate-site-audit-20261021.log",
+  "scopeNote": "Passed before the final native microphone microcopy and localized Guide footer width repair; final scoped checks and site audit are recorded separately."
+}

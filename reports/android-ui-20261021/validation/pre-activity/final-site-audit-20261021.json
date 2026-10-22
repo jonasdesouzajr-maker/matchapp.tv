@@ -1,0 +1,16 @@
+{
+  "gate": "site-audit",
+  "command": [
+    "npm",
+    "run",
+    "audit:site"
+  ],
+  "cwd": "/workspace/scratch/76e2418e7096/matchapp-tv-qa",
+  "nodeOptions": "--max-old-space-size=6144",
+  "startedAt": "2026-10-21T19:29:56.943023+00:00",
+  "finishedAt": "2026-10-21T19:30:29.902387+00:00",
+  "durationSeconds": 32.959,
+  "exitCode": 0,
+  "log": "/workspace/scratch/76e2418e7096/matchapp-tv-qa/reports/android-ui-20261021/validation/pre-activity/final-site-audit-20261021.log",
+  "checkpoint": "Passing pre-Activity-localization snapshot; later Activity presentation change requires focused tests and final cache/site audit."
+}

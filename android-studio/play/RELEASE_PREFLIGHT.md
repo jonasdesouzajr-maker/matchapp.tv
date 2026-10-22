@@ -1,3 +1,22 @@
+## October 21, 2026 adult lifecycle and UI candidate — 1.1.56 (code 56)
+
+This is the current adult release preflight. It supersedes the historical version, emulator and testing-track directions below. Keep package `com.jonas.papercup`, the existing registered upload signing identity, protected ad configuration and the separate Kids app unchanged. The owner requires a Production release, not a new internal/beta track; no emulator work is authorized.
+
+The live all-bundle Play Console check on October 21 at **22:45 UTC** found **55 / 1.1.55** as the highest uploaded bundle, with Production at **100% rollout in 178 of 178 countries/regions** and no unpublished changes. Code **56 / 1.1.56** is reserved for this new native candidate. Recheck the all-bundle inventory before upload; do not reuse an accepted version code or republish the previous release.
+
+The candidate contains the reviewed adult lifecycle recovery, single native intro owner, optional microphone/approximate-location setup and safe-area changes. Website-only UI changes still reach the live WebView after deployment; the new bundle is required for these actual native changes. The earlier isolated debug version 55 evidence remains historical and does not certify version 56 signing or Play delivery.
+
+Required gates for this candidate:
+
+1. Run `python3 android-studio/scripts/verify_adult_release.py` and the relevant web/source gates for the exact candidate. Inside `android-studio`, build `:app:testDebugUnitTest :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug` with the existing JDK 17 / API 36 toolchain. Preserve the separate Kids sources and all release checks.
+2. Verify the unsigned AAB archive, package `com.jonas.papercup`, code **56**, version **1.1.56**, target SDK **36** and checksum. The CI artifact `MatchApp-Ai-adult-1.1.56-code56-UNSIGNED-AAB` is verification output, not an upload-ready bundle.
+3. Sign a separate output locally with the protected existing Play upload key. Verify the signed archive, upload-certificate identity and unchanged unsigned source hash. Never commit keys/passwords, substitute another identity or confuse the upload certificate with the Play distribution certificate used by App Links.
+4. Complete physical-device checks for deliberately granted microphone/transcription and approximate-location cinema lookup, permission revocation without repeated OS prompts, retained typing/navigation, audible intro/Skip and lifecycle recovery. Use existing test-device ad handling and never click live ads. Keep untested device/accessibility configurations explicit.
+5. Match the optional-permission behavior to the published privacy pages and applicable Play declarations. Upload only the verified signed adult AAB to the Production draft; inspect Play processing and the Google-signed candidate on the physical device before submission where available. Do not create internal/beta tracks or change the existing countries without an owner request.
+6. Submit the same verified Production release after its gates pass and confirm review/publication/rollout separately. A Play-origin update is required to prove the update-triggered intro path; a sideload or debug install cannot establish that distribution behavior. Record actual Play status rather than treating submission as publication.
+
+**Preparation status:** version metadata and preflight are synchronized; this section alone does not certify a signed artifact, successful device checks, Play upload, review approval or production publication.
+
 ## October 15, 2026 adult visual release — 1.1.53 (code 53)
 
 New original gold Orbit launcher artwork uses a true-alpha foreground with safe spacing and platform-owned adaptive masking. Adult web layouts inherit the live responsive presentation. Package, account, matching, speech, consent and advertising mechanisms are preserved. Play Console latest-bundles review on October 15 showed code 50 as the highest uploaded build; code 53 is reserved for this candidate. Recheck before upload. Build, exact upload-certificate verification, physical QA and store processing remain required; a generated unsigned bundle is not publishable.

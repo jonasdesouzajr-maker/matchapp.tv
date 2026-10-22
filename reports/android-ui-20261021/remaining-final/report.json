@@ -1,0 +1,3174 @@
+{
+  "scope": "Rendered browser viewports; not Android emulator or native permission/audio verification.",
+  "base": "local candidate",
+  "lang": "en",
+  "cases": [
+    {
+      "name": "profile",
+      "width": 390,
+      "track": {
+        "background": "linear-gradient(rgb(228, 186, 103), rgb(228, 186, 103))",
+        "height": 44
+      },
+      "checks": [
+        {
+          "sel": ".activity-clear",
+          "nodes": [
+            {
+              "text": "🗑 Clear all",
+              "w": 93.625,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".passkey-sign-in",
+          "nodes": [
+            {
+              "text": "Sign in first",
+              "w": 338,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "discover",
+      "width": 390,
+      "labels": [
+        {
+          "text": "New chat",
+          "display": "block"
+        },
+        {
+          "text": "History",
+          "display": "block"
+        }
+      ],
+      "toolsStillOpenAfterHistory": false,
+      "checks": [
+        {
+          "sel": ".ai-sidebar-fold",
+          "nodes": [
+            {
+              "text": "‹",
+              "w": 48,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "ebooks",
+      "width": 390,
+      "checks": [
+        {
+          "sel": ".ebook-provider",
+          "nodes": [
+            {
+              "text": "Free edition ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Free edition ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Free edition ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Legal free edition\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Legal free edition\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Legal free edition\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 134,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 134,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 134,
+              "h": 53.8125,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".ebook-source-links a",
+          "nodes": [
+            {
+              "text": "Explore more",
+              "w": 111.9375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Home",
+              "w": 60.9375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Apple Books Audio ↗",
+              "w": 115.984375,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Audible Brazil ↗",
+              "w": 115.984375,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Google Play audiobooks ↗",
+              "w": 115.984375,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Search official LibriVox catalog ↗",
+              "w": 245.28125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find my next audiobook ↗",
+              "w": 199.34375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Project Gutenberg ↗",
+              "w": 115.984375,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Standard Ebooks ↗",
+              "w": 115.984375,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Open Library ↗",
+              "w": 115.984375,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Kindle ↗",
+              "w": 115.984375,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Apple Books ↗",
+              "w": 115.984375,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Google Play Books ↗",
+              "w": 115.984375,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Kobo ↗",
+              "w": 178,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "NOOK ↗",
+              "w": 178,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "cooking",
+      "width": 390,
+      "checks": [
+        {
+          "sel": "#cooking-form > button",
+          "nodes": [
+            {
+              "text": "Find cooking ideas",
+              "w": 153.796875,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "music",
+      "width": 390,
+      "headerTools": {
+        "w": 44,
+        "h": 44,
+        "padding": "0px"
+      },
+      "sheets": 1,
+      "checks": [
+        {
+          "sel": ".billboard-watch",
+          "nodes": [
+            {
+              "text": "Watch official video",
+              "w": 148,
+              "h": 51.59375,
+              "pass": true
+            },
+            {
+              "text": "Watch official video",
+              "w": 148,
+              "h": 51.59375,
+              "pass": true
+            },
+            {
+              "text": "Watch official video",
+              "w": 148,
+              "h": 51.59375,
+              "pass": true
+            },
+            {
+              "text": "Watch official video",
+              "w": 148,
+              "h": 51.59375,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 148,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".billboard-sources a",
+          "nodes": [
+            {
+              "text": "Chart source",
+              "w": 95.03125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Billboard Hot 100",
+              "w": 125.203125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Music and entertainment guide",
+              "w": 215.796875,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Music and entertainment guide",
+              "w": 215.796875,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".billboard-song > p > a",
+          "nodes": [
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 148,
+              "h": 52.375,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".swifties-official-link",
+          "nodes": [
+            {
+              "text": "●\nTaylor Swift – The VideosOfficial Spotify collection · all 58 music ",
+              "w": 348,
+              "h": 61.1875,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".swifties-artist-link",
+          "nodes": [
+            {
+              "text": "Open Taylor Swift on Spotify\n↗",
+              "w": 348,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "friends",
+      "width": 390,
+      "checks": [
+        {
+          "sel": "#friends-sign-in > a",
+          "nodes": [
+            {
+              "text": "Sign in / register free",
+              "w": 202.875,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "pricing-annual",
+      "width": 390,
+      "checks": [
+        {
+          "sel": ".ma-vip-checkout",
+          "nodes": [
+            {
+              "text": "Go Annual ($39.99/yr)",
+              "w": 352,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "pricing-monthly",
+      "width": 390,
+      "checks": [
+        {
+          "sel": ".ma-vip-checkout",
+          "nodes": [
+            {
+              "text": "Go VIP ($4.99/mo)",
+              "w": 352,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "profile",
+      "width": 800,
+      "track": {
+        "background": "linear-gradient(rgb(228, 186, 103), rgb(228, 186, 103))",
+        "height": 44
+      },
+      "checks": [
+        {
+          "sel": ".activity-clear",
+          "nodes": [
+            {
+              "text": "🗑 Clear all",
+              "w": 93.625,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".passkey-sign-in",
+          "nodes": [
+            {
+              "text": "Sign in first",
+              "w": 748,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "discover",
+      "width": 800,
+      "labels": [
+        {
+          "text": "New chat",
+          "display": "block"
+        },
+        {
+          "text": "History",
+          "display": "block"
+        }
+      ],
+      "toolsStillOpenAfterHistory": false,
+      "checks": [
+        {
+          "sel": ".ai-sidebar-fold",
+          "nodes": [
+            {
+              "text": "‹",
+              "w": 48,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "ebooks",
+      "width": 800,
+      "checks": [
+        {
+          "sel": ".ebook-provider",
+          "nodes": [
+            {
+              "text": "Free edition ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Free edition ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Free edition ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Get this e-book ↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Legal free edition\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Legal free edition\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Legal free edition\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Find / buy e-book\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Original covers\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Official articles\n↗",
+              "w": 142,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Amazon magazine search\n↗",
+              "w": 142,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Publisher subscription\n↗",
+              "w": 142,
+              "h": 53.8125,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".ebook-source-links a",
+          "nodes": [
+            {
+              "text": "Explore more",
+              "w": 111.9375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Home",
+              "w": 60.9375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Apple Books Audio ↗",
+              "w": 235.328125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Audible Brazil ↗",
+              "w": 235.328125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Google Play audiobooks ↗",
+              "w": 235.328125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Search official LibriVox catalog ↗",
+              "w": 235.34375,
+              "h": 51.59375,
+              "pass": true
+            },
+            {
+              "text": "Find my next audiobook ↗",
+              "w": 199.34375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Project Gutenberg ↗",
+              "w": 113.65625,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Standard Ebooks ↗",
+              "w": 113.65625,
+              "h": 71.71875,
+              "pass": true
+            },
+            {
+              "text": "Open Library ↗",
+              "w": 235.328125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Kindle ↗",
+              "w": 113.65625,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Apple Books ↗",
+              "w": 113.65625,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Google Play Books ↗",
+              "w": 113.65625,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "Kobo ↗",
+              "w": 113.65625,
+              "h": 53.8125,
+              "pass": true
+            },
+            {
+              "text": "NOOK ↗",
+              "w": 235.328125,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "cooking",
+      "width": 800,
+      "checks": [
+        {
+          "sel": "#cooking-form > button",
+          "nodes": [
+            {
+              "text": "Find cooking ideas",
+              "w": 153.796875,
+              "h": 80.15625,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "music",
+      "width": 800,
+      "headerTools": {
+        "w": 44,
+        "h": 44,
+        "padding": "0px"
+      },
+      "sheets": 1,
+      "checks": [
+        {
+          "sel": ".billboard-watch",
+          "nodes": [
+            {
+              "text": "Watch official video",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Watch official video",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Watch official video",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Watch official video",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Open in Spotify",
+              "w": 168,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".billboard-sources a",
+          "nodes": [
+            {
+              "text": "Chart source",
+              "w": 95.03125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Billboard Hot 100",
+              "w": 125.203125,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Music and entertainment guide",
+              "w": 215.796875,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Music and entertainment guide",
+              "w": 215.796875,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".billboard-song > p > a",
+          "nodes": [
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            },
+            {
+              "text": "Spotify announcement",
+              "w": 159.375,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".swifties-official-link",
+          "nodes": [
+            {
+              "text": "●\nTaylor Swift – The VideosOfficial Spotify collection · all 58 music ",
+              "w": 758,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "sel": ".swifties-artist-link",
+          "nodes": [
+            {
+              "text": "Open Taylor Swift on Spotify\n↗",
+              "w": 758,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "friends",
+      "width": 800,
+      "checks": [
+        {
+          "sel": "#friends-sign-in > a",
+          "nodes": [
+            {
+              "text": "Sign in / register free",
+              "w": 202.875,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "pricing-annual",
+      "width": 800,
+      "checks": [
+        {
+          "sel": ".ma-vip-checkout",
+          "nodes": [
+            {
+              "text": "Go Annual ($39.99/yr)",
+              "w": 220.65625,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    },
+    {
+      "name": "pricing-monthly",
+      "width": 800,
+      "checks": [
+        {
+          "sel": ".ma-vip-checkout",
+          "nodes": [
+            {
+              "text": "Go VIP ($4.99/mo)",
+              "w": 220.65625,
+              "h": 48,
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "overflow": 0,
+      "pass": true
+    }
+  ],
+  "finished": true
+}

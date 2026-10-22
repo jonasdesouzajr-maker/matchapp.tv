@@ -242,4 +242,44 @@ html.ma-reference:is(:lang(ja),:lang(zh),:lang(ko)):not(#ma-reference-legacy):no
  html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.ref-explore-tools {grid-row:2!important;}
 }
 
+
+/* Same licensed photographs, selected by display density. The existing JPEG
+   remains the fallback; only the selected rendition loads. Never request a
+   12K bitmap or enlarge a source to manufacture detail. */
+html.ma-reference body.page-explore #explore-main .ref-explore-hero {background-image:image-set(url("/assets/cinema/explore-hero-1400.avif") type("image/avif") 1x, url("/assets/cinema/explore-hero-2800.avif") type("image/avif") 2x, url("/assets/cinema/explore-hero-3500.avif") type("image/avif") 2.5x, url("/assets/cinema/explore-hero.jpg") type("image/jpeg") 1x)!important;}
+html.ma-reference body.page-explore #explore-main .ref-editorial-banner--premiere {background-image:image-set(url("/assets/cinema/explore-awaited-1200.avif") type("image/avif") 1.7x, url("/assets/cinema/explore-awaited-2400.avif") type("image/avif") 3.4x, url("/assets/cinema/explore-awaited.jpg") type("image/jpeg") 1.7x)!important;}
+html.ma-reference body.page-explore #explore-main .ref-editorial-banner--weekly {background-image:image-set(url("/assets/cinema/explore-weekly-1000.avif") type("image/avif") 1x, url("/assets/cinema/explore-weekly-2000.avif") type("image/avif") 2x, url("/assets/cinema/explore-weekly.jpg") type("image/jpeg") 1x)!important;}
+html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--book {background-image:image-set(url("/assets/cinema/explore-books-700.avif") type("image/avif") 1.5x, url("/assets/cinema/explore-books-1400.avif") type("image/avif") 3x, url("/assets/cinema/explore-books.jpg") type("image/jpeg") 1.5x)!important;}
+html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--chef {background-image:image-set(url("/assets/cinema/explore-food-700.avif") type("image/avif") 1.5x, url("/assets/cinema/explore-food-1400.avif") type("image/avif") 3x, url("/assets/cinema/explore-food.jpg") type("image/jpeg") 1.5x)!important;}
+html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--news {background-image:image-set(url("/assets/cinema/explore-news-700.avif") type("image/avif") 1.5x, url("/assets/cinema/explore-news-1400.avif") type("image/avif") 3x, url("/assets/cinema/explore-news.jpg") type("image/jpeg") 1.5x)!important;}
+html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--calendar {background-image:image-set(url("/assets/cinema/explore-events-1000.avif") type("image/avif") 2x, url("/assets/cinema/explore-events-2000.avif") type("image/avif") 4x, url("/assets/cinema/explore-events.jpg") type("image/jpeg") 2x)!important;}
+html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--star {background-image:image-set(url("/assets/cinema/explore-music-700.avif") type("image/avif") 1.5x, url("/assets/cinema/explore-music-1400.avif") type("image/avif") 3x, url("/assets/cinema/explore-music.jpg") type("image/jpeg") 1.5x)!important;}
+@media(max-width:700px) {
+ html.ma-reference body.page-explore #explore-main .ref-explore-hero {background-image:image-set(url("/assets/cinema/explore-hero-700.avif") type("image/avif") 1x, url("/assets/cinema/explore-hero-1400.avif") type("image/avif") 2x, url("/assets/cinema/explore-hero-2800.avif") type("image/avif") 4x, url("/assets/cinema/explore-hero.jpg") type("image/jpeg") 1x)!important;}
+ html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--book {background-image:image-set(url("/assets/cinema/explore-books-350.avif") type("image/avif") 1x, url("/assets/cinema/explore-books-700.avif") type("image/avif") 3x, url("/assets/cinema/explore-books.jpg") type("image/jpeg") 1x)!important;}
+ html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--chef {background-image:image-set(url("/assets/cinema/explore-food-350.avif") type("image/avif") 1x, url("/assets/cinema/explore-food-700.avif") type("image/avif") 3x, url("/assets/cinema/explore-food.jpg") type("image/jpeg") 1x)!important;}
+ html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--news {background-image:image-set(url("/assets/cinema/explore-news-350.avif") type("image/avif") 1x, url("/assets/cinema/explore-news-700.avif") type("image/avif") 3x, url("/assets/cinema/explore-news.jpg") type("image/jpeg") 1x)!important;}
+ html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--calendar {background-image:image-set(url("/assets/cinema/explore-events-500.avif") type("image/avif") 1x, url("/assets/cinema/explore-events-1000.avif") type("image/avif") 2x, url("/assets/cinema/explore-events.jpg") type("image/jpeg") 1x)!important;}
+ html.ma-reference body.page-explore #explore-main .ref-primary-topics .ref-topic--star {background-image:image-set(url("/assets/cinema/explore-music-350.avif") type("image/avif") 1x, url("/assets/cinema/explore-music-700.avif") type("image/avif") 3x, url("/assets/cinema/explore-music.jpg") type("image/jpeg") 1x)!important;}
+}
+@media(max-width:480px) {
+ html.ma-reference body.page-explore #explore-main .ref-explore-hero {background-image:image-set(url("/assets/cinema/explore-hero-700.avif") type("image/avif") 1x, url("/assets/cinema/explore-hero-1400.avif") type("image/avif") 3x, url("/assets/cinema/explore-hero.jpg") type("image/jpeg") 1x)!important;}
+}
+@media(max-width:420px) {
+ html.ma-reference body.page-explore #explore-main .ref-editorial-banner--weekly {background-image:image-set(url("/assets/cinema/explore-weekly-500.avif") type("image/avif") 1.2x, url("/assets/cinema/explore-weekly-1000.avif") type("image/avif") 2.5x, url("/assets/cinema/explore-weekly-2000.avif") type("image/avif") 5x, url("/assets/cinema/explore-weekly.jpg") type("image/jpeg") 1.2x)!important;}
+ html.ma-reference body.page-explore #explore-main .ref-editorial-banner--premiere {background-image:image-set(url("/assets/cinema/explore-awaited-600.avif") type("image/avif") 1.4x, url("/assets/cinema/explore-awaited-1200.avif") type("image/avif") 3x, url("/assets/cinema/explore-awaited-2400.avif") type("image/avif") 6x, url("/assets/cinema/explore-awaited.jpg") type("image/jpeg") 1.4x)!important;}
+}
+/* Measured tablet slots need fewer source pixels than the desktop slots. */
+@media(min-width:701px) and (max-width:900px) {
+ html.ma-reference body.page-explore #explore-main .ref-explore-hero {background-image:image-set(url("/assets/cinema/explore-hero-1400.avif") type("image/avif") 1.5x, url("/assets/cinema/explore-hero-2800.avif") type("image/avif") 3x, url("/assets/cinema/explore-hero-3500.avif") type("image/avif") 3.75x, url("/assets/cinema/explore-hero.jpg") type("image/jpeg") 1.5x)!important;}
+}
+@media(min-width:761px) and (max-width:1000px) {
+ html.ma-reference body.page-explore #explore-main .ref-editorial-banner--weekly {background-image:image-set(url("/assets/cinema/explore-weekly-1000.avif") type("image/avif") 2x, url("/assets/cinema/explore-weekly-2000.avif") type("image/avif") 4x, url("/assets/cinema/explore-weekly.jpg") type("image/jpeg") 2x)!important;}
+}
+/* Keep the six-column composition readable on ultrawide/large TV windows.
+   The surrounding vector/gradient canvas remains full width. */
+@media(min-width:1441px) {
+ html.ma-reference body.page-explore .hub-shell.hub-shell {max-width:1400px!important;margin-inline:auto!important;}
+}
+
 }

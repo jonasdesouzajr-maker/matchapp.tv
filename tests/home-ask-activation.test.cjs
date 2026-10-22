@@ -18,7 +18,7 @@ test('dedicated Home Ask card expands fold and scrolls the revealed input withou
  assert.match(s,/ba\.addEventListener\('click',\(\)=>\{/);
  assert.match(s,/if\(fold\)[\s\S]*toggle\.click\(\)/);
  assert.match(s,/tab\('ask'\);\s*requestAnimationFrame/);
- assert.match(s,/target\.scrollIntoView\(\{behavior:'instant',block:'start'\}\)/);
+ assert.match(s,/window\.MatchAppActivatedScroll\?\.toStart\(target,\{behavior:'auto'\}\) \?\? target\.scrollIntoView\(\{behavior:'auto',block:'start'\}\)/);
  const handler=s.slice(s.indexOf("ba.addEventListener('click',()=>{"),s.indexOf("\n });",s.indexOf("ba.addEventListener('click',()=>{"))+4);
  assert.doesNotMatch(handler,/\.focus\(/,'do not auto-pop the phone keyboard');
 });
@@ -63,7 +63,7 @@ test('live phone/tablet/desktop smoke verifies the current Jonas Ask composer an
 test('bell-only install prompting cannot cover or steal focus from the Home Ask composer',()=>{
  const home=read('home-approved.js'),tab=read('matchapp-ia.js'),offer=read('browser-install-offer.js'),html=read('index.html');
  assert.doesNotMatch(home,/ma-hero-ask/);
- assert.match(tab,/requestAnimationFrame\(\(\)=>\{[\s\S]*?window\.scrollBy\(\{top:rect\.top-desiredTop,behavior:'instant'\}\)/);
+ assert.match(tab,/requestAnimationFrame\(\(\)=>\{\s*if\(!pa\.hidden&&pa\.getClientRects\(\)\.length\)\{\s*const target=qs\('#search-box',pa\)\|\|pa;\s*window\.MatchAppActivatedScroll\?\.toStart\(target,\{behavior:'auto'\}\)/);
  assert.match(offer,/notification-bell only/);
  assert.match(offer,/MatchNotifications/);
  assert.doesNotMatch(offer,/appendChild\(node\)|position:\s*fixed|composerOverlapHandler|closeIfOverlappingComposer/);

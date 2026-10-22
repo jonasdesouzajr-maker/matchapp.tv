@@ -3,12 +3,25 @@
   'use strict';
   if (window.MatchCinemaShell || /^\/(kids|private-voice|oauth|android-studio)(\/|$)/.test(location.pathname) || /\/(callback|confirm)\.html$/.test(location.pathname)) return;
   document.documentElement.classList.add('ma-reference');
+  if (!window.MatchAppActivatedScroll) {
+    // Queue only the latest explicit destination while the shared helper loads.
+    const scroll = window.MatchAppActivatedScroll = { pending: null, interacted:false, toStart(target, options) { this.pending = {target, options}; return true; } };
+    const script = document.createElement('script');
+    script.src = '/patches/activated-scroll.js?v=20261021-1';
+    script.dataset.cinemaActivatedScroll = '';
+    script.defer = true;
+    document.head.appendChild(script);
+    document.addEventListener('pointerdown', () => { scroll.pending = null;scroll.interacted=true; }, {capture:true,passive:true});
+    document.addEventListener('touchstart', () => { scroll.pending = null;scroll.interacted=true; }, {capture:true,passive:true});
+    document.addEventListener('wheel', () => { scroll.pending = null;scroll.interacted=true; }, {capture:true,passive:true});
+    document.addEventListener('keydown', () => { scroll.pending = null;scroll.interacted=true; }, true);
+  }
   if (window.top===window) document.documentElement.setAttribute('data-ma-jonas-header','pending');
   if (window.top===window && !window.MatchAppReferenceHeader && !document.querySelector('script[data-cinema-header]')) {
-    var headerScript=document.createElement('script');headerScript.src='/patches/reference-header.js?v=20261020-header1&polish=20261020-ui1&launcher=20261020-1';headerScript.dataset.cinemaHeader='';headerScript.defer=true;document.head.appendChild(headerScript);
+    var headerScript=document.createElement('script');headerScript.src='/patches/reference-header.js?v=20261020-header1&polish=20261020-ui1&launcher=20261020-1&androidqa=20261021-1';headerScript.dataset.cinemaHeader='';headerScript.defer=true;document.head.appendChild(headerScript);
   }
   if (window.top===window && !window.MatchAppReferenceDock && !document.querySelector('script[data-cinema-signature-dock]')) {
-    var dockScript=document.createElement('script');dockScript.src='/patches/reference-dock.js?v=20261020-dock1';dockScript.dataset.cinemaSignatureDock='';dockScript.defer=true;document.head.appendChild(dockScript);
+    var dockScript=document.createElement('script');dockScript.src='/patches/reference-dock.js?v=20261020-dock1&androidqa=20261021-1';dockScript.dataset.cinemaSignatureDock='';dockScript.defer=true;document.head.appendChild(dockScript);
   }
   // Appearance follows the saved preference on every shared page. The existing
   // Settings engine still owns previews/saving; this bridge never writes storage.
@@ -55,7 +68,7 @@
   }
   if (!document.querySelector('script[data-cinema-density]')) {
     var densityStyle=document.createElement('link');densityStyle.rel='stylesheet';densityStyle.href='/patches/reference-density.css?v=20261020-grid1';document.head.appendChild(densityStyle);
-    var densityScript=document.createElement('script');densityScript.src='/patches/reference-density.js?v=20261020-grid1';densityScript.dataset.cinemaDensity='';densityScript.defer=true;document.head.appendChild(densityScript);
+    var densityScript=document.createElement('script');densityScript.src='/patches/reference-density.js?v=20261020-grid1&androidqa=20261021-1';densityScript.dataset.cinemaDensity='';densityScript.defer=true;document.head.appendChild(densityScript);
   }
   var labels = {
     en: ['Home','Explore','Matches','My List','Profile','Search','Top Titles','View all','Explore more','Find Your Perfect Match'],
@@ -116,16 +129,23 @@
       if(active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
     });
   }
-  function revealHash() {
+  function revealHash(initial = false, scroll = true) {
     if (!location.hash) return;
     var target;
     try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (_) { return; }
-    if (!target) return;
+    if (!target) {
+      if(scroll)window.MatchAppActivatedScroll?.toStart(() => document.getElementById(decodeURIComponent(location.hash.slice(1))), {initial});
+      return;
+    }
     if (target.id === 'questionnaire-box') openMatch();
     var parent = target;
     while (parent && parent !== document.body) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
     if (/^tab-(history|watchlater|seenit|audio|notforme)$/.test(target.id) && typeof window.switchPortfolioTab === 'function') window.switchPortfolioTab(target.id.slice(4));
-    if (target.id === 'settings-panel' || target.id === 'activity-panel' || target.id.indexOf('tab-') === 0) target.scrollIntoView?.({block:'start',behavior:'auto'});
+    if (target.id.indexOf('tab-') === 0) target = document.getElementById('panel-' + target.id.slice(4)) || target;
+    if(scroll){
+      if(window.MatchAppActivatedScroll)window.MatchAppActivatedScroll.toStart(target,{initial});
+      else target.scrollIntoView?.({block:'start',behavior:'auto'});
+    }
   }
   function openMatch() {
     var section = document.getElementById('ma-concierge');
@@ -234,18 +254,21 @@
         });
       }
     }
-    paint(); revealHash();
-    requestAnimationFrame(revealHash);
+    paint(); revealHash(true);
+    requestAnimationFrame(() => revealHash(true));
     if (document.body.classList.contains('page-home')) requestAnimationFrame(function () {
       compactHomeControls();
       alignHomeGrid();
       if (!document.body.classList.contains('lazy-mode')) openMatch();
-      if (location.hash === '#questionnaire-box') document.getElementById('questionnaire-box')?.scrollIntoView({block:'start',behavior:'auto'});
+      if (location.hash === '#questionnaire-box') window.MatchAppActivatedScroll?.toStart('#questionnaire-box',{initial:true});
     });
   }
   window.MatchCinemaShell = {paint:paint,revealHash:revealHash,labels:labels};
   document.addEventListener('matchapp:langchange',function(){setTimeout(function(){paint();compactHomeControls();},0);});
   window.addEventListener('matchapp:languagechange',function(){setTimeout(function(){paint();compactHomeControls();},0);});
-  window.addEventListener('hashchange',function(){revealHash();paint();});
+  let restoringHash = false;
+  window.addEventListener('popstate',function(){restoringHash=true;});
+  document.addEventListener('click',function(){restoringHash=false;},true);
+  window.addEventListener('hashchange',function(){revealHash(false,!restoringHash);restoringHash=false;paint();});
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',mount,{once:true}); else mount();
 })();
