@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  const LOGO_ASSET='/assets/brand/matchapp-official-icon-512.webp?v=20260920-official1';
+  const LOGO_ASSET='/assets/brand/matchapp-icon-approved.png?v=20261013-approved1';
   const isKidsRoute=()=>{const p=location.pathname.toLowerCase();return p==='/kids'||p.startsWith('/kids/');};
 
   const AI_LABELS={
@@ -40,7 +40,7 @@
     img.className='brand-logo ma-new-brand-logo ma-official-brand-icon';
     img.src=LOGO_ASSET;
     img.alt='MatchApp Ai official icon';
-    img.width=1536;
+    img.width=512;
     img.height=512;
     img.decoding='async';
     img.setAttribute('data-matchapp-canonical-logo','1');
