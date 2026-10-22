@@ -407,8 +407,68 @@
     return direct[mapped]||direct[raw]||'';
   }
 
-  function showtimesUrl(title){
-    return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(String(title||'')+' movie showtimes');
+  function showtimesUrl(title,coords){
+    let query=String(title||'')+' movie showtimes';
+    const latitude=coords?.latitude,longitude=coords?.longitude;
+    if(Number.isFinite(latitude)&&Math.abs(latitude)<=90&&Number.isFinite(longitude)&&Math.abs(longitude)<=180){
+      // A browser may supply precise coordinates even with high accuracy off.
+      // Send only the rounded, approximate position to Maps; never store it.
+      query+=' near '+latitude.toFixed(2)+','+longitude.toFixed(2);
+    }
+    return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query);
+  }
+
+  function openCinemaSearch(url){
+    // Preserve native main-window routing without an asynchronous blank child.
+    // Its existing Google allowlist may keep Maps inside the WebView.
+    if(!window.MatchAppNativeStartup){
+      let popup;
+      try{
+        // Location permission can outlast browser user activation. If a new
+        // tab is still allowed, isolate it before its first external navigation.
+        popup=window.open('','_blank');
+        if(popup){
+          popup.opener=null;
+          const referrer=popup.document.createElement('meta');
+          referrer.name='referrer';referrer.content='no-referrer';
+          popup.document.head.appendChild(referrer);
+          popup.location.replace(url);
+          return;
+        }
+      }catch(_){try{popup?.close();}catch(__){}}
+    }
+    // The same-origin Discover title panel is also embedded by Jonas. Leave
+    // that frame for Maps instead of trying to embed the destination inside it.
+    window.open(url,window.top===window?'_self':'_top','noopener,noreferrer');
+  }
+
+  let cinemaLocationUnavailable=false,cinemaLocationPending=false;
+  function bindNearbyCinema(link,title){
+    link.addEventListener('click',event=>{
+      if(event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||cinemaLocationUnavailable||typeof navigator.geolocation?.getCurrentPosition!=='function')return;
+      event.preventDefault();
+      if(cinemaLocationPending)return;
+      cinemaLocationPending=true;link.setAttribute('aria-busy','true');
+      const fallback=showtimesUrl(title);
+      let finished=false;
+      const finish=coords=>{
+        if(finished)return;
+        finished=true;cinemaLocationPending=false;clearTimeout(deadline);link.removeAttribute('aria-busy');
+        const url=showtimesUrl(title,coords);
+        // A declined or unavailable request must not repeatedly prompt on this
+        // page. Subsequent clicks retain the ordinary, title-based Maps anchor.
+        if(url===fallback)cinemaLocationUnavailable=true;
+        openCinemaSearch(url);
+      };
+      // The Geolocation timeout excludes permission-prompt time in browsers.
+      // Bound the whole action as well, and ignore any late location callback.
+      const deadline=setTimeout(()=>finish(),8000);
+      try{
+        navigator.geolocation.getCurrentPosition(position=>finish(position?.coords),()=>finish(),{
+          enableHighAccuracy:false,timeout:6000,maximumAge:300000
+        });
+      }catch(_){finish();}
+    });
   }
 
   function providerLinks(meta,title,region){
@@ -1076,6 +1136,7 @@
       const row=document.createElement('div');row.className='matchapp-cinema-actions';
       const when=document.createElement('span');paintResultCopy(when,a.inCinemas?'cinemaNow':'cinemaRelease',{date:a.inCinemas?(a.cinemaDate?' · '+a.cinemaDate:''):a.cinemaDate},kids);row.appendChild(when);
       const nearby=document.createElement('a');nearby.href=showtimesUrl(actualTitle);nearby.target='_blank';nearby.rel='noopener noreferrer';paintResultCopy(nearby,a.inCinemas?'nearby':'showtimes',{},kids);row.appendChild(nearby);
+      if(!kids&&a.inCinemas&&!/^\/kids(?:\/|$)/.test(location.pathname)&&!document.documentElement.classList.contains('kids-mode'))bindNearbyCinema(nearby,actualTitle);
       wrap.appendChild(row);
     }
     if(!a.streams.length){
