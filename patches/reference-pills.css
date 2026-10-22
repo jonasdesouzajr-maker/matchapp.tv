@@ -180,3 +180,8 @@ html.ma-reference:has(head > link[rel='canonical'][href$='/callback.html']) body
 @media print {
  html.ma-reference [data-ma-text-pill] {background:none!important;box-shadow:none!important;}
 }
+/* 2026-10-22 owner (Jonas): remove decorative text pills site-wide; hooks stay, controls keep their capsules. */
+@layer ma-reference {
+ html.ma-reference:not(#ma-pill-flat-a):not(#ma-pill-flat-b):not(#ma-pill-flat-c):not(#ma-pill-flat-d) body:not(.kids-mode) [data-ma-text-pill]:not(a,button,summary,select,input,textarea,[role='button'],[data-ma-control-pill]):not(#ma-reference-header .ma-brand-lockup *),
+ html.ma-reference:not(#ma-pill-flat-a):not(#ma-pill-flat-b):not(#ma-pill-flat-c):not(#ma-pill-flat-d):has(link[rel='canonical']:is([href$='/confirm.html'],[href$='/callback.html'])) body :is(h1,h2,h3,p,.premium-card > div):not(a,button,summary,select,input,textarea,[role='button'],[data-ma-control-pill]) {background:none!important;box-shadow:none!important;padding:0!important;}
+}
