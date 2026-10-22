@@ -162,6 +162,7 @@ function referenceRuntimeAssetURL(url){
  if(file==='app.js'||file==='profile.js')entries.push(['readiness','20261022-1']);
  if(file==='profile.js')entries.push(['identity','20261022-1']);
  if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
+  if(['ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['audiocover','20261022-1']);
  if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);
  if(file==='reference-system.css')entries.push(['footer','20261020-1']);

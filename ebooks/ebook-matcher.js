@@ -436,7 +436,7 @@ function showVerifiedCover(img,fall,url,timeout=7000,replaceURL=null,currentRun=
   if(img.complete&&img.naturalWidth>30&&coverURL(img)===url)settle(true);
  });
 }
-function showExactCoverRenditions(img,fall,url,sharp){
+function showExactCoverRenditions(img,fall,url,sharp,recoverOriginal=false){
  if(!url||!img?.isConnected||/^data:/i.test(url))return Promise.resolve(false);
  // The compact rendition is derived only from the strict verifier's 600px
  // result. All three URLs retain the exact original asset and edition path.
@@ -450,7 +450,7 @@ function showExactCoverRenditions(img,fall,url,sharp){
  if(!hasUsableCover(img))img.style.opacity='0';
  const current=()=>run.active&&img.isConnected&&img.__matchappBookCover===state&&state.sourceRun===run;
  return new Promise(resolve=>{
-  let finished=false,handoff=null,displayedRank=hasUsableCover(img)?candidates.findIndex(item=>item.src===coverURL(img)):Infinity;
+  let finished=false,handoff=null,rescueTimer=null,displayedRank=hasUsableCover(img)?candidates.findIndex(item=>item.src===coverURL(img)):Infinity;
   const detach=()=>{if(!handoff)return;if(img.onload===handoff.onLoad)img.onload=null;if(img.onerror===handoff.onError)img.onerror=null;handoff=null};
   const finish=()=>{
    if(finished)return;finished=true;
@@ -464,7 +464,7 @@ function showExactCoverRenditions(img,fall,url,sharp){
     if(img.dataset){img.dataset.bookCoverVerified=previous.src;delete img.dataset.bookCoverPending}
     img.hidden=false;img.style.opacity='1';if(fall)fall.hidden=true;valid=true;
    }
-   run.active=false;clearTimeout(deadline);
+   run.active=false;clearTimeout(deadline);clearTimeout(rescueTimer);
    for(const candidate of candidates)if(candidate.loader){candidate.loader.onload=candidate.loader.onerror=null;candidate.loader.removeAttribute('src')}
    if(same&&!valid){
     if(candidates.some(item=>item.src===state.pending)){state.pending=null;if(img.dataset)delete img.dataset.bookCoverPending}
@@ -508,7 +508,7 @@ function showExactCoverRenditions(img,fall,url,sharp){
    if(best>=0&&best<Math.min(displayedRank,handoff?.index??Infinity)){present(best);return}
    if(handoff)return;
    if(hasUsableCover(img)&&(displayedRank===0||candidates.slice(0,displayedRank).every(item=>item.failed))){finish();return}
-   // Never upscale the 100px source while either high-quality rendition can win.
+   // Ordinary fallback waits for explicit failure; audio has bounded recovery below.
    const last=candidates.length-1;
    if(candidates.slice(0,last).every(item=>item.failed))start(last);
    if(candidates.every(item=>item.failed))finish();
@@ -533,6 +533,14 @@ function showExactCoverRenditions(img,fall,url,sharp){
    loader.onload=ready;loader.onerror=failed;loader.src=candidate.src;
    if(loader.complete&&loader.naturalWidth>30)ready();
   };
+  // Audio may retain an empty image when derived renditions stall without errors.
+  // Give them 4.5s first, then reserve the remaining 5s for the exact source URL.
+  // Keep sharper requests alive and ranked ahead of any decoded original pixels.
+  if(sharp&&recoverOriginal)rescueTimer=setTimeout(()=>{
+   if(finished)return;
+   if(!current()){finish();return}
+   if(!hasUsableCover(img))start(candidates.length-1);
+  },4500);
   start(0);if(sharp)start(1);
  });
 }
@@ -542,7 +550,7 @@ async function showSourceCover(img,fall,url){
 }
 function showVerifiedAudioCover(img,fall,url){
  const sharp=window.MatchAppBookCoverIdentity?.sharpAppleCoverUrl(url);
- return showExactCoverRenditions(img,fall,url,sharp);
+ return showExactCoverRenditions(img,fall,url,sharp,true);
 }
 async function hydrateCover(book,img,fall,audio){
  if(!img)return;
