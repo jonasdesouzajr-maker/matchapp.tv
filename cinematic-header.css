@@ -86,3 +86,51 @@ html body .app-header :is(a, button, select):not(.gold-btn):not([class*="signin"
     opacity: 0.35;
   }
 }
+
+/* ===== Adult pages: mirror the Home brand lockup (20261022-homeparity1) =====
+   The visible header on every adult page is the shared #ma-reference-header bar.
+   Home's lockup polish lives in home-cinematic.css (body.page-home only); apply the
+   same values on the other adult pages. Header brand scope only; Kids excluded. */
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-orb-stage{
+  border-radius: 50% !important;
+  filter: drop-shadow(rgba(245,182,99,.22) 0 2px 13px) !important;
+}
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-orb{ border-radius: 0 !important; filter: none !important; transform: scale(1.65) !important; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-copy :is(.ma-wordmark,.ma-word-ai){
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
+  letter-spacing: .01em !important;
+}
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-word-match{
+  color: #f8f1e0 !important; -webkit-text-fill-color: #f8f1e0 !important;
+  background: none !important;
+}
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-word-app,.ma-word-ai){
+  background: linear-gradient(180deg, #f6dc94 0%, #e6c36a 55%, #c99a3e 100%) !important;
+  -webkit-background-clip: text !important; background-clip: text !important;
+  -webkit-text-fill-color: transparent !important; color: #e6c36a !important;
+}
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-tagline{ color: rgba(248,241,224,.78) !important; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-security{ color: rgba(230,195,106,.8) !important; border-color: rgba(230,195,106,.35) !important; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-lockup{ display: block !important; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-copy{ gap: 4px !important; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-copy .ma-wordmark{ display: block !important; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-copy :is(.ma-word-match,.ma-word-app){ display: inline !important; width: auto !important; height: auto !important; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-copy .ma-word-ai{ display: block !important; }
+@media (max-width: 600px){
+  html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-orb{ width: 34px !important; height: 34px !important; }
+}
+@layer ma-reference {
+  html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-copy{ gap: 4px !important; letter-spacing: -.057em !important; }
+}
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header .ma-brand-copy :is(.ma-word-match,.ma-word-app){ font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif !important; }
+/* Static Home lockup on shells that do not load page-shell.js (events archive, cooking, Roku). */
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static{ display:block; align-items:center; font-size:23.2px; line-height:1.65; color:#f4f0e9; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static .ma-brand-home-link{ display:flex; align-items:center; text-decoration:none; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static .ma-brand-orb-stage{ display:flex; align-items:center; justify-content:center; position:relative; overflow:visible; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static .ma-brand-orb{ display:block; flex-shrink:0; object-fit:contain; width:100%; height:100%; max-width:238px; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static .ma-brand-copy{ display:flex; flex-direction:column; align-items:flex-start; justify-content:center; flex-grow:1; min-height:0; isolation:isolate; font-family:Outfit, Inter, "Arial Rounded MT Bold", system-ui, sans-serif; font-weight:950; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static .ma-brand-title-line{ display:flex; align-items:baseline; justify-content:flex-start; gap:.12em; flex-shrink:0; max-width:100%; white-space:nowrap; font-weight:950; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai){ font-weight:950; white-space:nowrap; flex-shrink:0; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static .ma-wordmark{ align-items:baseline; }
+html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static .ma-word-ai{ isolation:isolate; filter:drop-shadow(rgba(142,80,194,.24) 0 2px 4px); }
+@media (max-width:600px){ html.ma-reference body:not(.page-home):not(.kids-mode) #ma-reference-header .ma-brand-lockup-static{ font-size:16px; } }
