@@ -436,3 +436,4 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function boot(){if(document.documentElement)build();else setTimeout(boot,65)}
  boot();
 })();
+;(function(){if(document.getElementById('ma-chat-resize-script'))return;var s=document.createElement('script');s.id='ma-chat-resize-script';s.defer=true;s.src='/patches/chat-resize-20261022.js?v=20261022-1';(document.head||document.documentElement).appendChild(s)})();
