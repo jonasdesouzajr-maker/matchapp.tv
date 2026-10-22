@@ -10,7 +10,7 @@ const CRITICAL_STYLE_PRELOADS=Object.freeze([
  '/patches/reference-header.css?v=20261020-header1&polish=20261020-ui1&androidqa=20261021-1',
  '/patches/reference-dock.css?v=20261020-dock1&androidqa=20261021-1',
  '/patches/reference-palette-tokens.css?v=20261020-palettes1',
- '/patches/reference-pills.css?v=20261020-pills1&polish=20261020-ui1',
+ '/patches/reference-pills.css?v=20261022-flat1&polish=20261020-ui1',
  '/patches/adult-screen-fit-20261015.css?v=consistency2&auth=20261016-1&header=20261018-1',
  '/patches/signature-ui-20261015.css?v=orbit3',
  '/adult-page-compact.css?v=20260929-1&fastart=20261020-1',
