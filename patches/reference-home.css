@@ -329,3 +329,6 @@ html.ma-reference.matchapp-ai-android body.page-home :is(.home-hero.home-hero .h
  -webkit-background-clip:border-box!important;background-clip:border-box!important;
 }
 }
+
+/* Compact viewports get a high-quality 1300px encode of the same hero art (1.3 MB lossless -> 80 KB). */
+@layer ma-reference {@media (max-width: 900px){html.ma-reference body.page-home .home-hero.home-hero {background:linear-gradient(90deg,#08050edb 0%,#08050e50 52%,#08050e00 85%),url('/assets/cinema/home-city-1300.webp') center/cover no-repeat!important;}}}
