@@ -1260,6 +1260,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class NativeStartupBridge {
+        /** Read-only grant state for the web guide's permission step; no prompt, no data. */
+        @JavascriptInterface
+        fun permissionStatus(): String {
+            val mic = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.RECORD_AUDIO) ==
+                PackageManager.PERMISSION_GRANTED
+            val location = ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED
+            return JSONObject()
+                .put("microphone", mic)
+                .put("location", location)
+                .put("setupDone", startupPrefs.getBoolean(PREF_PERMISSION_SETUP, false))
+                .toString()
+        }
+
+        /**
+         * Lets the adult web guide re-offer ONLY the runtime permissions this app
+         * already declares (microphone for Jonas voice, approximate location for
+         * cinemas) after a user tap. Kids and non-MatchApp pages are refused; the
+         * OS itself suppresses repeat prompts after a permanent denial.
+         */
+        @JavascriptInterface
+        fun requestStartupPermissions() {
+            runOnUiThread {
+                val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (current?.scheme != "https" || !isMatchAppHost(current.host.orEmpty()) ||
+                    isKidsUri(current) || permissionSetupShowing || isFinishing || isDestroyed) return@runOnUiThread
+                val missing = missingStartupPermissions()
+                if (missing.isEmpty()) {
+                    startupPrefs.edit().putBoolean(PREF_PERMISSION_SETUP, true).apply()
+                    return@runOnUiThread
+                }
+                initialPermissions.launch(missing)
+            }
+        }
+
         @JavascriptInterface
         fun markRegistered() {
             runOnUiThread {
