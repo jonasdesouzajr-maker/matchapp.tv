@@ -43,6 +43,10 @@ const HOME = `
     <section id="global-events" hidden></section>
     <section id="how-it-works" hidden></section>
     <section id="ai-concierge-section" hidden></section>
+    <div class="ad-banner-container"><ins class="adsbygoogle" style="display:block;min-height:120px" data-ad-slot="inline-fixture"></ins></div>
+    <section class="tg-entry">Together</section>
+    <div class="ad-banner-container ma-together-ad"><ins class="adsbygoogle" style="display:block;min-height:120px" data-ad-slot="together-fixture"></ins></div>
+    <div class="ad-banner-container"><ins class="adsbygoogle" style="display:block;min-height:120px" data-ad-slot="events-fixture"></ins></div>
   </section>
 </div></main>`;
 
@@ -189,19 +193,30 @@ test('the real Home section initializer keeps an already prepared heading with i
     const heading = f.d.querySelector('.ma-cinema-section-heading'), rail = f.d.getElementById('trending-rail');
     const hero = f.d.querySelector('.home-hero'), action = f.d.querySelector('.ma-cinema-hero-action');
     const form = f.d.getElementById('questionnaire-box'), button = f.d.getElementById('existing-match');
+    const search = f.d.getElementById('search-box');
     const ads = [...f.d.querySelectorAll('.adsbygoogle')].map(node => [node, node.outerHTML]);
+    assert.equal(ads.length, 5, 'exercise both desktop rails and all three in-flow slots');
     // Defer scripts execute after parsing with readyState=interactive, before
     // the shared shell's DOMContentLoaded listener. Run the actual owner.
     f.loadArchitecture();
     assert.ok(f.d.getElementById('ma-concierge'), 'the actual IA mount ran');
     assert.equal(heading.previousElementSibling, hero);
     assert.equal(heading.nextElementSibling, rail, 'IA must move the existing heading and rail as one group');
+    const assertActionOrder = () => {
+      const ask = f.d.getElementById('ma-ai-entry'), concierge = f.d.getElementById('ma-concierge');
+      assert.equal(rail.nextElementSibling, ask, 'Top Titles must lead directly to the existing Ask entry without an ad');
+      assert.equal(ask.nextElementSibling, concierge, 'the primary Match action must follow Ask without an ad');
+      assert.equal(ask.querySelector('#search-box'), search, 'retain the existing Ask composer');
+      assert.equal(concierge.querySelector('#questionnaire-box'), form, 'retain the existing Match form');
+    };
+    assertActionOrder();
     assert.equal(f.d.getElementById('questionnaire-box'), form);
     assert.equal(f.d.getElementById('existing-match'), button);
     assert.equal(f.d.querySelector('.ma-cinema-hero-action'), action);
     ads.forEach(([node, html]) => { assert.ok(node.isConnected); assert.equal(node.outerHTML, html); });
     f.domContentLoaded(); f.flushFrames(); assertPrepared(f);
     assert.equal(f.d.querySelector('.ma-cinema-section-heading'), heading);
+    assertActionOrder();
   } finally { f.close(); }
 });
 
@@ -246,5 +261,51 @@ test('the single early grid observer continues to measure phone resizing and is 
     f.w.dispatchEvent(new f.w.Event('pagehide'));
     assert.equal(f.frames.size, 0, 'pagehide cancels the pending grid frame');
     assert.equal(f.observers[0].disconnected, true);
+  } finally { f.close(); }
+});
+
+test('rail preparation before the form is parsed stays reusable for the completed Home and DCL', () => {
+  const f = scene();
+  try {
+    f.load(); const { content } = f.appendHome();
+    const form = f.d.getElementById('questionnaire-box'), input = f.d.getElementById('existing-input');
+    const select = f.d.getElementById('q-mood'), rail = f.d.getElementById('trending-rail');
+    const ads = [...f.d.querySelectorAll('.adsbygoogle')].map(node => [node, node.outerHTML, node.parentElement]);
+    // Model the parser stopping after the rail: the form and the remaining
+    // suffix are not yet in the document when the new inline hook executes.
+    const unparsed = f.d.createDocumentFragment();
+    for (let node = form; node;) {
+      const next = node.nextSibling; unparsed.appendChild(node); node = next;
+    }
+    assert.equal(content.lastElementChild, rail);
+    assert.equal(f.d.getElementById('questionnaire-box'), null);
+    f.w.MatchCinemaShell.prepareContent();
+    assert.equal(f.d.readyState, 'loading');
+    assertPrepared(f);
+    const heading = f.d.querySelector('.ma-cinema-section-heading'), action = f.d.querySelector('.ma-cinema-hero-action');
+    assert.equal(heading.nextElementSibling, rail, 'reserve the existing heading before later content can be painted');
+    assert.equal(form.querySelector('h2').getAttribute('data-i18n'), 'q.heading', 'the not-yet-parsed form is untouched');
+    assert.equal(f.d.querySelector('.ma-cinema-dock'), null, 'early presentation must leave the normal lifecycle available');
+
+    content.appendChild(unparsed); // The parser finishes the rest of main.
+    f.w.MatchCinemaShell.prepareContent(); // Retained end-of-main hook.
+    assertPrepared(f);
+    assert.equal(form.querySelector('h2').dataset.cinemaCopy, 'matchTitle');
+    assert.equal(form.querySelector('h2').hasAttribute('data-i18n'), false);
+    for (const id of ['q-category', 'q-platform', 'q-mood']) {
+      const field = f.d.getElementById(id);
+      assert.equal(field.parentElement.querySelector('label').htmlFor, id, 'complete the late-parsed form labels');
+    }
+    assert.ok(select.parentElement.classList.contains('ma-cinema-mood'));
+    assert.equal(f.d.getElementById('existing-input'), input); assert.equal(input.value, 'Keep my text');
+    assert.equal(f.d.getElementById('q-mood'), select); assert.equal(select.value, 'curious');
+    f.domContentLoaded(); f.flushFrames();
+    assertPrepared(f);
+    assert.equal(f.d.querySelector('.ma-cinema-section-heading'), heading);
+    assert.equal(f.d.querySelector('.ma-cinema-hero-action'), action);
+    assert.equal(f.d.getElementById('questionnaire-box'), form);
+    assert.equal(f.d.querySelectorAll('.ma-cinema-dock').length, 1);
+    ads.forEach(([node, html, parent]) => { assert.ok(node.isConnected); assert.equal(node.outerHTML, html); assert.equal(node.parentElement, parent); });
+    assert.deepEqual(f.storageWrites, []);
   } finally { f.close(); }
 });
