@@ -371,7 +371,13 @@ function mountHome(){
    setTimeout(()=>openAskFromBrand(),220);
  }
  const loading=qs('#loading-box'),result=qs('#result-box'),trending=qs('#trending-rail'),week=qs('#premiere-disclosure'),swift=qs('#swifties-spotify'),events=qs('#global-events'),how=qs('#how-it-works'),aiExplainer=qs('#ai-concierge-section');
- if(trending){after(hero,trending);after(trending,concierge)}
+ if(trending){
+   after(hero,trending);
+   // Keep the existing presentation heading with its rail when it was prepared early.
+   const heading=qs('.ma-cinema-section-heading',container);
+   if(heading)trending.before(heading);
+   after(trending,concierge);
+ }
  // Presentation-only journey: titles → primary action → dynamic News → feature banners.
  // Existing IDs, handlers, matching state and feature logic are preserved.
  let anchor=concierge;[qs('#ebook-matcher-root'),qs('#cooking-home'),loading,result,week,swift,events,how,aiExplainer].forEach(n=>{if(n){after(anchor,n);anchor=n}});

@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),{Buffer}=require('node:buffer'),{JSDOM}=require('jsdom');
 const ROOT=path.join(__dirname,'..');
 const ADULT='MatchApp Ai',KIDS='MatchApp Ai KIDS';
-const mark='<img class="matchapp-wordmark ma-playai-mark" src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" alt="" width="48" height="48" decoding="async" style="width:48px;height:48px;object-fit:contain;border:0;border-radius:0;box-shadow:none;background:transparent;vertical-align:middle"><span class="ma-playai-wordmark" translate="no" style="display:inline-block;vertical-align:middle;margin-left:12px;font-family:\'Playfair Display\',Georgia,serif;font-weight:700;font-size:clamp(22px,4.6vw,30px);letter-spacing:.04em;line-height:1;white-space:nowrap;color:#E6C36A;text-shadow:0 1px 12px rgba(230,195,106,.28)">MatchApp <span style="color:#f8f1e0">Ai</span></span>';
+const mark='<img class="matchapp-wordmark ma-playai-mark" src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" alt="" width="48" height="48" decoding="async" style="width:48px;height:48px;object-fit:contain;border:0;border-radius:0;box-shadow:none;background:transparent;vertical-align:middle"><span class="ma-playai-wordmark" data-ma-pill-exclude translate="no" style="display:inline-block;vertical-align:middle;margin-left:12px;font-family:\'Playfair Display\',Georgia,serif;font-weight:700;font-size:clamp(22px,4.6vw,30px);letter-spacing:.04em;line-height:1;white-space:nowrap;color:#E6C36A;text-shadow:0 1px 12px rgba(230,195,106,.28)">MatchApp <span style="color:#f8f1e0">Ai</span></span>';
 const kidsMark='<span class="matchapp-wordmark kids-wordmark" role="img" aria-label="MatchApp Ai KIDS">MatchApp Ai KIDS</span>';
 
 // Discovery hints only: the original stylesheets/imports keep cascade ownership.
@@ -118,7 +118,9 @@ function cinemaAssets(html, relativePath) {
         if(found.script){remove(node,true);continue;}
         found.script=true;
         next=withQueryParams(next,[['dialogs','20261020-1'],['pills','20261020-1'],['headernav','20261020-1']]);
-        if(!node.hasAttribute('defer'))attribute(node,'defer','defer');
+        // Home explicitly prepares parsed header/content before delayed engines.
+        // Preserve that opt-in across normalization; all other routes keep defer.
+        if(!(rel==='index.html'&&node.hasAttribute('data-cinema-prepaint'))&&!node.hasAttribute('defer'))attribute(node,'defer','defer');
       }
       if(next!==current)attribute(node,attr,attr+'="'+escaped(next)+'"');
     }

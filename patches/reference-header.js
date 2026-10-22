@@ -9,6 +9,7 @@
   var words={en:'App controls',pt:'Controles do app',es:'Controles de la app',fr:'Commandes de l’app',de:'App-Steuerung',it:'Controlli dell’app',tr:'Uygulama kontrolleri',ru:'Управление приложением',ar:'أدوات التطبيق',hi:'ऐप नियंत्रण',id:'Kontrol aplikasi',ja:'アプリの操作',ko:'앱 설정',zh:'应用控制'};
   var assistantWords={en:['Jonas · AI assistant','Tap to talk'],pt:['Jonas · assistente de IA','Toque para conversar'],es:['Jonas · asistente de IA','Toca para hablar'],fr:['Jonas · assistant IA','Touchez pour parler'],de:['Jonas · KI-Assistent','Tippen zum Sprechen'],it:['Jonas · assistente IA','Tocca per parlare'],tr:['Jonas · yapay zekâ asistanı','Konuşmak için dokun'],ru:['Йонас · ИИ-помощник','Нажмите для беседы'],ar:['جوناس · مساعد ذكاء اصطناعي','اضغط للتحدث'],hi:['जोनस · AI सहायक','बात करने के लिए टैप करें'],id:['Jonas · asisten AI','Ketuk untuk bicara'],ja:['ジョナス · AIアシスタント','タップして話す'],ko:['조나스 · AI 도우미','눌러서 대화하기'],zh:['乔纳斯 · AI助手','轻点开始对话']};
   var moveWords={en:['Return Jonas to header','Drag to move Jonas. Alt + arrow keys move him; Alt + Home returns him to the header.'],pt:['Voltar Jonas ao cabeçalho','Arraste para mover Jonas. Alt + setas movem; Alt + Home volta ao cabeçalho.'],es:['Devolver a Jonas al encabezado','Arrastra para mover a Jonas. Alt + flechas lo mueven; Alt + Inicio lo devuelve al encabezado.'],fr:['Replacer Jonas dans l’en-tête','Faites glisser Jonas. Alt + les flèches le déplacent ; Alt + Début le replace dans l’en-tête.'],de:['Jonas zurück in die Kopfzeile','Ziehe Jonas zum Verschieben. Alt + Pfeiltasten bewegen ihn; Alt + Pos1 bringt ihn zur Kopfzeile zurück.'],it:['Riporta Jonas nell’intestazione','Trascina Jonas per spostarlo. Alt + frecce lo muovono; Alt + Home lo riporta nell’intestazione.'],tr:['Jonas’ı üst başlığa döndür','Jonas’ı taşımak için sürükleyin. Alt + ok tuşları taşır; Alt + Home üst başlığa döndürür.'],ru:['Вернуть Йонаса в шапку','Перетащите Йонаса. Alt + стрелки перемещают его; Alt + Home возвращает в шапку.'],ar:['إعادة جوناس إلى الترويسة','اسحب جوناس لتحريكه. Alt مع الأسهم يحركه؛ Alt مع Home يعيده إلى الترويسة.'],hi:['जोनस को शीर्ष पट्टी में लौटाएँ','जोनस को खींचकर ले जाएँ। Alt + तीर कुंजियाँ उसे चलाती हैं; Alt + Home शीर्ष पट्टी में लौटाता है।'],id:['Kembalikan Jonas ke header','Seret untuk memindahkan Jonas. Alt + panah memindahkannya; Alt + Home mengembalikannya ke header.'],ja:['ジョナスをヘッダーに戻す','ドラッグで移動できます。Alt＋矢印キーで移動し、Alt＋Homeでヘッダーに戻ります。'],ko:['조나스를 머리글로 되돌리기','드래그하여 이동하세요. Alt + 방향키로 이동하고 Alt + Home으로 머리글에 되돌립니다.'],zh:['将乔纳斯移回页眉','拖动可移动乔纳斯。Alt + 方向键移动，Alt + Home 返回页眉。']};
+  var waitForParsedHeader = document.currentScript?.hasAttribute('data-cinema-prepaint') && document.readyState === 'loading';
   html.setAttribute('data-ma-jonas-header','pending');
   function owns(root){return !!root && (root===active || /^(header|dragged)$/.test(root.dataset.jonasPlacement||''));}
   function launcherSize(){var r=active?.getBoundingClientRect();return{width:r?.width||144,height:r?.height||132};}
@@ -147,7 +148,7 @@
     // Pages without a masthead get the same approved brand, never a moved
     // content fold, native details summary or matcher.
     var node=document.createElement('div');node.className='ma-reference-header-fallback';node.setAttribute('role','banner');
-    var a=document.createElement('a');a.href='/';a.className='ma-reference-header-brand';a.setAttribute('aria-label','MatchApp Ai');
+    var a=document.createElement('a');a.href='/';a.className='ma-reference-header-brand';a.setAttribute('aria-label','MatchApp Ai');a.setAttribute('data-ma-pill-exclude','');
     var image=document.createElement('img');image.src='/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1';image.alt='';image.width=36;image.height=36;image.decoding='async';
     var label=document.createElement('span');label.translate=false;var ai=document.createElement('span');ai.className='ma-word-ai';ai.textContent='Ai';label.append('MatchApp ',ai);a.append(image,label);node.appendChild(a);return node;
   }
@@ -175,8 +176,9 @@
     if(floating&&!drag)restoreFloating();
   }
   function schedule(){if(!frame)frame=requestAnimationFrame(measure);}
-  function mount(){
-    if(!document.body)return;
+  function mount(parsed){
+    if(!document.body || (waitForParsedHeader && document.readyState === 'loading' && parsed !== true))return;
+    waitForParsedHeader=false;
     if(!header){
       var original=findOriginal()||fallback();
       space=document.createElement('div');space.id='ma-reference-header-space';space.setAttribute('aria-hidden','true');
