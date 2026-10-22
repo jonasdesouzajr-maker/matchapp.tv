@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Build
 import android.os.Message
+import android.os.SystemClock
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
@@ -90,6 +91,8 @@ class MainActivity : AppCompatActivity() {
     private var pendingScrollRestore: ScrollRestore? = null
     private var activityResumed = false
     private var permissionSetupShowing = false
+    private var startupPermissionRequestPending = false
+    private var lastPermissionInteractionAt = 0L
     private val nativePageStateScript by lazy {
         runCatching { assets.open("native-page-state.js").bufferedReader().use { it.readText() } }.getOrNull()
     }
@@ -128,6 +131,7 @@ class MainActivity : AppCompatActivity() {
     private val initialPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { _ ->
+        startupPermissionRequestPending = false
         startupPrefs.edit().putBoolean(PREF_PERMISSION_SETUP, true).apply()
     }
 
@@ -228,6 +232,7 @@ class MainActivity : AppCompatActivity() {
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
         installPageStateBridge()
+        installStartupPermissionBridge()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
@@ -357,6 +362,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
+        lastPermissionInteractionAt = 0L
         finishIntro(immediate = true)
         finishStartupTransition(immediate = true)
         activityResumed = false
@@ -461,6 +467,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onUserInteraction() {
         cancelPendingPageRestore()
+        lastPermissionInteractionAt = SystemClock.elapsedRealtime()
         growthCanRestore = false
         nativeRewardedBridge?.recordUserInteraction()
         nativePlayBillingBridge?.recordUserInteraction()
@@ -878,7 +885,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun maybeShowPermissionSetup() {
         if (!activityResumed || isFinishing || isDestroyed || !hasWindowFocus() ||
-            introHost != null || startupHost != null || permissionSetupShowing ||
+            introHost != null || startupHost != null || permissionSetupShowing || startupPermissionRequestPending ||
             startupPrefs.getBoolean(PREF_PERMISSION_SETUP, false) ||
             NativeLaunchPolicy.restorableUrl(web.url) == null || web.progress < 100) return
         if (missingStartupPermissions().isEmpty()) {
@@ -888,7 +895,7 @@ class MainActivity : AppCompatActivity() {
         permissionSetupShowing = true
         web.evaluateJavascript("(window.MATCH_LANG||document.documentElement.lang||'')") { encoded ->
             if (!activityResumed || isFinishing || isDestroyed || !hasWindowFocus() ||
-                introHost != null || startupHost != null ||
+                introHost != null || startupHost != null || startupPermissionRequestPending ||
                 startupPrefs.getBoolean(PREF_PERMISSION_SETUP, false) ||
                 NativeLaunchPolicy.restorableUrl(web.url) == null || web.progress < 100) {
                 permissionSetupShowing = false
@@ -903,7 +910,7 @@ class MainActivity : AppCompatActivity() {
                 .setPositiveButton(copy.getString(R.string.permission_setup_allow)) { _, _ ->
                     complete()
                     val missing = missingStartupPermissions()
-                    if (missing.isNotEmpty()) initialPermissions.launch(missing)
+                    if (missing.isNotEmpty()) launchStartupPermissions(missing)
                 }
                 .setNegativeButton(copy.getString(R.string.permission_setup_skip)) { _, _ -> complete() }
                 .setOnCancelListener { complete() }
@@ -999,6 +1006,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            lastPermissionInteractionAt = 0L
             nativeRewardedBridge?.onNavigation()
             nativePlayBillingBridge?.onNavigation()
             nativeNewsBridge?.onNavigation()
@@ -1287,6 +1295,67 @@ class MainActivity : AppCompatActivity() {
         }.getOrDefault(false)
     }
 
+    private fun startupPermissionStatus(): String {
+        val mic = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) ==
+            PackageManager.PERMISSION_GRANTED
+        val location = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+            PackageManager.PERMISSION_GRANTED
+        return JSONObject()
+            .put("microphone", mic)
+            .put("location", location)
+            .put("setupDone", startupPrefs.getBoolean(PREF_PERMISSION_SETUP, false))
+            .put("requestPending", startupPermissionRequestPending)
+            .toString()
+    }
+
+    private fun launchStartupPermissions(missing: Array<String>) {
+        if (missing.isEmpty() || startupPermissionRequestPending) return
+        startupPermissionRequestPending = true
+        try {
+            initialPermissions.launch(missing)
+        } catch (_: RuntimeException) {
+            startupPermissionRequestPending = false
+        }
+    }
+
+    // Optional native capability only: the approved web tour remains unchanged.
+    private fun installStartupPermissionBridge() {
+        if (!WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) return
+        WebViewCompat.addWebMessageListener(web, "MatchAppNativePermissions",
+            setOf("https://matchapp.tv", "https://www.matchapp.tv")) { view, message, origin, mainFrame, reply ->
+            if (!NativePermissionPolicy.allowsCaller(origin.toString(), view.url, mainFrame) ||
+                isFinishing || isDestroyed) return@addWebMessageListener
+            val command = runCatching { message.data }.getOrNull() ?: return@addWebMessageListener
+            when (command) {
+                "status" -> Unit
+                "request" -> {
+                    val state = NativePermissionPolicy.RequestState(
+                        resumed = activityResumed,
+                        focused = hasWindowFocus(),
+                        pageReady = view.progress >= 100,
+                        overlayShowing = introHost != null || startupHost != null || permissionSetupShowing,
+                        requestPending = startupPermissionRequestPending,
+                        microphonePending = microphonePermissionPending,
+                        terminating = isFinishing || isDestroyed,
+                        lastInteractionAt = lastPermissionInteractionAt
+                    )
+                    if (!NativePermissionPolicy.allowsRequest(state, SystemClock.elapsedRealtime())) {
+                        return@addWebMessageListener
+                    }
+                    lastPermissionInteractionAt = 0L
+                    val missing = missingStartupPermissions()
+                    if (missing.isEmpty()) {
+                        startupPrefs.edit().putBoolean(PREF_PERMISSION_SETUP, true).apply()
+                    } else {
+                        launchStartupPermissions(missing)
+                    }
+                }
+                else -> return@addWebMessageListener
+            }
+            runCatching { reply.postMessage(startupPermissionStatus()) }
+        }
+    }
+
     private inner class NativeStartupBridge {
         @JavascriptInterface
         fun markRegistered() {
@@ -1528,8 +1597,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=58"
-        const val APP_UA = "MatchAppTVAndroid/1.1.58 MatchAppAiAndroid/1.1.58 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=59"
+        const val APP_UA = "MatchAppTVAndroid/1.1.59 MatchAppAiAndroid/1.1.59 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"
