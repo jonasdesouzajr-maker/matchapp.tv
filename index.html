@@ -3,6 +3,8 @@
 <head>
 <style data-cinema-layer>@layer ma-reference;</style>
 <meta charset="UTF-8">
+<link rel="preload" as="script" href="/patches/reference-header.js?v=20261020-header1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1&amp;headercls=20261022-prepaint3">
+<link rel="preload" as="script" href="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1&amp;headercls=20261022-prepaint3">
 <link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/reference-header.css?v=20261020-header1&amp;polish=20261020-ui1&amp;androidqa=20261021-1">
 <link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/reference-dock.css?v=20261020-dock1&amp;androidqa=20261021-1">
 <link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/reference-palette-tokens.css?v=20261020-palettes1">
@@ -1649,7 +1651,7 @@
 <link rel="stylesheet" href="/matchapp-ia.css?v=20260929-askheight1&amp;sound=20261001-modern1&amp;recovery=20261002-1" data-matchapp-ia="1">
 <link rel="stylesheet" href="/filter-wrap-fix.css?v=20261021-wrap1&amp;androidqa=20261021-1" data-filter-wrap-fix="1">
 <link rel="stylesheet" href="/home-polish.css?v=20261021-polish1" data-home-polish="1">
-<script defer src="/matchapp-ia.js?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2&amp;locale=20260930-1&amp;brand=20261001-canonicalai1&amp;composer=20260929-3&amp;guide=20260927-single1&amp;home=20260928-folds2&amp;cooking=20260929-order1&amp;foldgrid=20260929-2&amp;sound=20261001-modern1&amp;recovery=20261002-1&amp;loopcopy=20261007-1&amp;fastlang=20261014-2&amp;audio=20261014-1&amp;approvedlogo=20261014&amp;accountphoto=20261020-1&amp;androidqa=20261021-1" data-matchapp-ia="1"></script>
+<script defer src="/matchapp-ia.js?v=20260926-brandai1-adorder2&amp;askbtn=20260927-2&amp;locale=20260930-1&amp;brand=20261001-canonicalai1&amp;composer=20260929-3&amp;guide=20260927-single1&amp;home=20260928-folds2&amp;cooking=20260929-order1&amp;foldgrid=20260929-2&amp;sound=20261001-modern1&amp;recovery=20261002-1&amp;loopcopy=20261007-1&amp;fastlang=20261014-2&amp;audio=20261014-1&amp;approvedlogo=20261014&amp;accountphoto=20261020-1&amp;androidqa=20261021-1&amp;homeboot=20261022-1" data-matchapp-ia="1"></script>
     <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
 <link rel="stylesheet" href="/home-8k-layout.css?v=20260924-adfull1">
 <style id="home-avatar-profile-v2">
@@ -1749,8 +1751,11 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <link rel="stylesheet" href="/patches/top-titles-draft.css?v=20261020-desktop5">
 <script defer src="/patches/top-titles-draft.js?v=20261020-desktop5&polish=20261020-ui1"></script>
 
-<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1"></script>
+
 <link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&amp;polish=20261020-ui1&amp;compact=20261020-1&amp;footer=20261020-1&amp;androidqa=20261021-1">
+<link id="ma-approved-css" rel="stylesheet" href="/home-approved.css?v=20261001-adulttopboxdark1">
+<script data-cinema-header data-cinema-prepaint src="/patches/reference-header.js?v=20261020-header1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1&amp;headercls=20261022-prepaint3"></script>
+<script data-cinema-prepaint src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1&amp;headercls=20261022-prepaint3"></script>
 </head>
 <body class="page-home ma-watch-focused">
     <!-- Google Tag Manager (noscript) -->
@@ -2315,6 +2320,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
   </section>
  </div>
     </header>
+    <script>window.MatchCinemaShell?.prepareHeader();</script>
     <aside id="matchapp-growth-disclosure" class="matchapp-growth-disclosure" role="note" aria-label="MatchApp is constantly expanding">
       <span class="matchapp-growth-orb" aria-hidden="true">✦</span>
       <span class="matchapp-growth-copy"><strong>Always growing.</strong> MatchApp is constantly expanding with new titles, features and experiences. <span>Stay tuned for what’s next.</span></span>
@@ -2549,6 +2555,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                         </div>
                     </div>
                 </div>
+                <script>window.MatchCinemaShell?.prepareContent();</script>
 
                 <article id="questionnaire-box" class="premium-card">
                     <h2 style="margin: 0 0 25px 0; font-size: 34px; color: var(--gold); text-align: center; font-weight: 900; text-transform: uppercase;" data-i18n="q.title">Find what to watch here</h2>
@@ -3300,6 +3307,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 </section>
 </div>
     </main>
+<script>window.MatchCinemaShell?.prepareContent();</script>
 
     <!-- ============================================= -->
     <!-- SEO FOOTER: PLATFORM BACKLINKS & KEYWORD HUB  -->
