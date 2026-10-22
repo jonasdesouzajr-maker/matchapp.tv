@@ -20,9 +20,16 @@ const smokeRun = (extra = {}) => ({id: 202, path: '.github/workflows/release-smo
 function fixture(options = {}) {
   const current = pageRun({run_attempt: options.attempt || 1, ...options.current});
   const calls = [], saved = [];
-  let sent = false, smokeReads = 0;
+  let sent = false, smokeReads = 0, callerReads = 0;
+  const sleeps = [];
   const api = {
-    async getWorkflowRun(parameters) { calls.push(['get', parameters]); return {data: current}; },
+    async getWorkflowRun(parameters) {
+      calls.push(['get', parameters]);
+      const reads = options.currentReads;
+      const data = reads ? {...current, ...reads[Math.min(callerReads, reads.length - 1)]} : current;
+      callerReads++;
+      return {...options.callerResponse, data};
+    },
     async listWorkflowRuns(parameters) {
       calls.push(['list', parameters]);
       let runs;
@@ -47,8 +54,8 @@ function fixture(options = {}) {
   const run = () => requestReleaseSmoke({github: {rest: {actions: api}},
     context: {repo: {owner: 'example', repo: 'site'}, runId: current.id},
     expectedSha: options.sha || SHA, runAttempt: current.run_attempt,
-    save: evidence => saved.push(structuredClone(evidence)), sleep: async () => {}, polls: 3});
-  return {run, calls, saved, api, posts: () => calls.filter(call => call[0] === 'dispatch')};
+    save: evidence => saved.push(structuredClone(evidence)), sleep: async ms => { sleeps.push(ms); }, polls: 3});
+  return {run, calls, saved, api, sleeps, posts: () => calls.filter(call => call[0] === 'dispatch')};
 }
 
 test('successful Pages requests exactly one explicit smoke with immutable SHA and deployment attempt', async () => {
@@ -115,6 +122,105 @@ test('invalid SHA or a caller outside the exact active main Pages attempt cannot
     await assert.rejects(f.run());
     assert.equal(f.posts().length, 0);
   }
+});
+
+
+test('caller status may become in_progress on a bounded reread before the single POST', async () => {
+  const f = fixture({currentReads: [{status: 'queued'}, {status: 'in_progress'}]});
+  const result = await f.run();
+  assert.equal(result.status, 'run-confirmed');
+  assert.equal(f.posts().length, 1);
+  assert.deepEqual(f.calls.slice(0, 2).map(call => call[0]), ['get', 'get']);
+  assert.equal(f.calls.filter(call => call[0] === 'get').length, 2);
+  assert.deepEqual(f.sleeps, [1000]);
+  assert.deepEqual(result.callerChecks.map(check => check.observed.status), ['queued', 'in_progress']);
+  assert.deepEqual(result.callerChecks.map(check => check.mismatches), [['status'], []]);
+  for (const call of f.calls.filter(call => call[0] === 'get')) {
+    assert.deepEqual(call[1], {owner: 'example', repo: 'site', run_id: 101,
+      headers: {'cache-control': 'no-cache'}});
+  }
+});
+
+test('returned caller run ID must match the requested run on every read', async () => {
+  for (const initial of [[], [{status: 'queued'}]]) {
+    const f = fixture({currentReads: [...initial, {id: 999}, {}]});
+    await assert.rejects(f.run(), /Identity mismatch: id/);
+    assert.deepEqual(f.calls.map(call => call[0]), initial.length ? ['get', 'get'] : ['get']);
+    assert.deepEqual(f.sleeps, initial.length ? [1000] : []);
+    assert.equal(f.posts().length, 0);
+    const evidence = f.saved.at(-1);
+    assert.equal(evidence.status, 'blocked-before-dispatch');
+    assert.equal(evidence.requestedAt, undefined);
+    assert.equal(evidence.pagesRunId, 101);
+    assert.equal(evidence.callerChecks.at(-1).observed.runId, 999);
+    assert.deepEqual(evidence.callerChecks.at(-1).mismatches, ['id']);
+  }
+});
+
+test('caller HTTP diagnostics retain only bounded allowlisted response metadata', async () => {
+  const allowed = {date: 'Thu, 22 Oct 2026 16:50:58 GMT', age: '0',
+    'cache-control': 'private, max-age=60', etag: '"fixture-etag"',
+    'last-modified': 'Thu, 22 Oct 2026 16:50:56 GMT',
+    'x-github-request-id': 'fixture-request-id', 'x-github-api-version-selected': '2022-11-28'};
+  const f = fixture({currentReads: [{status: 'queued'}, {}], callerResponse: {status: 200,
+    headers: {...allowed, authorization: 'fixture-private', cookie: 'fixture-private',
+      'set-cookie': 'fixture-private', 'x-ratelimit-remaining': 'fixture-private',
+      'x-unrecognized-header': 'fixture-private'}}});
+  const result = await f.run();
+  assert.equal(result.callerChecks.length, 2);
+  assert.ok(result.callerChecks.every(check => check.http.status === 200));
+  for (const check of result.callerChecks) assert.deepEqual(check.http.headers, allowed);
+  assert.doesNotMatch(JSON.stringify(f.saved), /fixture-private/);
+  assert.equal(f.posts().length, 1);
+
+  const bounded = fixture({callerResponse: {headers: {etag: 'x'.repeat(600)}}});
+  const evidence = await bounded.run();
+  assert.equal(evidence.callerChecks[0].http.status, null);
+  assert.equal(evidence.callerChecks[0].http.headers.etag, 'x'.repeat(512));
+  assert.equal(evidence.callerChecks[0].http.headers.date, null);
+});
+
+test('persistent non-running caller status stops after three GETs without history reads or POST', async () => {
+  for (const status of ['queued', 'waiting', 'completed']) {
+    const f = fixture({current: {status}});
+    await assert.rejects(f.run(), /Status remained .* after 3 reads/);
+    assert.deepEqual(f.calls.map(call => call[0]), ['get', 'get', 'get']);
+    assert.deepEqual(f.sleeps, [1000, 1000]);
+    assert.equal(f.posts().length, 0);
+    const evidence = f.saved.at(-1);
+    assert.equal(evidence.status, 'blocked-before-dispatch');
+    assert.equal(evidence.requestedAt, undefined);
+    assert.equal(evidence.callerChecks.length, 3);
+    assert.ok(evidence.callerChecks.every(check => check.observed.status === status));
+    assert.ok(evidence.callerChecks.every(check => check.mismatches.join(',') === 'status'));
+  }
+});
+
+test('invalid caller identity is recorded and rejected immediately without any POST', async () => {
+  for (const [field, wrong] of [
+    ['head_sha', {head_sha: NEWER}], ['head_branch', {head_branch: 'feature'}],
+    ['path', {path: '.github/workflows/not-pages.yml'}], ['run_attempt', {run_attempt: 2}]
+  ]) {
+    const f = fixture({currentReads: [wrong, {}]});
+    await assert.rejects(f.run(), /Identity mismatch/);
+    assert.deepEqual(f.calls.map(call => call[0]), ['get']);
+    assert.deepEqual(f.sleeps, []);
+    assert.equal(f.posts().length, 0);
+    const evidence = f.saved.at(-1);
+    assert.equal(evidence.status, 'blocked-before-dispatch');
+    assert.equal(evidence.requestedAt, undefined);
+    assert.deepEqual(evidence.callerChecks[0].mismatches, [field]);
+    assert.equal(evidence.callerChecks[0].observed.runId, 101);
+  }
+});
+
+test('a status reread revalidates identity before permitting any POST', async () => {
+  const f = fixture({currentReads: [{status: 'queued'}, {status: 'in_progress', head_sha: NEWER}]});
+  await assert.rejects(f.run(), /Identity mismatch: head_sha/);
+  assert.deepEqual(f.calls.map(call => call[0]), ['get', 'get']);
+  assert.deepEqual(f.sleeps, [1000]);
+  assert.equal(f.posts().length, 0);
+  assert.deepEqual(f.saved.at(-1).callerChecks.map(check => check.mismatches), [['status'], ['head_sha']]);
 });
 
 test('a lost POST response is reconciled without sending it twice', async () => {

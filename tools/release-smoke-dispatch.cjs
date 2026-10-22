@@ -45,11 +45,41 @@ async function requestReleaseSmoke({github, context, expectedSha, runAttempt, sa
   const record = status => { evidence.status = status; save(evidence); };
   record('checking');
   try {
-    const {data: current} = await api.getWorkflowRun({owner, repo, run_id: context.runId});
-    if (current.head_sha !== expectedSha || current.head_branch !== 'main'
-        || current.path !== `.github/workflows/${PAGES}` || current.run_attempt !== runAttempt
-        || current.status !== 'in_progress') {
-      throw new Error('The caller is not the active Pages attempt for this main deployment.');
+    let current;
+    evidence.callerChecks = [];
+    // Tolerate only short read-status delays, and retain each actual response.
+    // Every read must retain exact identity; only in_progress permits dispatch.
+    for (let read = 1; read <= 3; read++) {
+      const response = await api.getWorkflowRun({owner, repo, run_id: context.runId,
+        headers: {'cache-control': 'no-cache'}});
+      current = response?.data;
+      const observed = {runId: current?.id ?? null, headSha: current?.head_sha ?? null,
+        headBranch: current?.head_branch ?? null, path: current?.path ?? null,
+        runAttempt: current?.run_attempt ?? null, status: current?.status ?? null};
+      const http = {status: Number.isInteger(response?.status) ? response.status : null, headers: {}};
+      // Deliberate allowlist: do not retain credentials, cookies or rate-limit data.
+      for (const name of ['date', 'age', 'cache-control', 'etag', 'last-modified',
+        'x-github-request-id', 'x-github-api-version-selected']) {
+        const value = response?.headers?.[name];
+        http.headers[name] = typeof value === 'string' ? value.slice(0, 512) : null;
+      }
+      const mismatches = [];
+      if (observed.runId !== context.runId) mismatches.push('id');
+      if (observed.headSha !== expectedSha) mismatches.push('head_sha');
+      if (observed.headBranch !== 'main') mismatches.push('head_branch');
+      if (observed.path !== `.github/workflows/${PAGES}`) mismatches.push('path');
+      if (observed.runAttempt !== runAttempt) mismatches.push('run_attempt');
+      if (observed.status !== 'in_progress') mismatches.push('status');
+      evidence.callerChecks.push({read, checkedAt: new Date().toISOString(), observed, http, mismatches});
+      save(evidence);
+      if (mismatches.some(field => field !== 'status')) {
+        throw new Error(`The caller is not the active Pages attempt for this main deployment. Identity mismatch: ${mismatches.filter(field => field !== 'status').join(', ')}.`);
+      }
+      if (!mismatches.length) break;
+      if (read === 3) {
+        throw new Error(`The caller is not the active Pages attempt for this main deployment. Status remained ${JSON.stringify(observed.status)} after 3 reads.`);
+      }
+      await sleep(1000);
     }
     const pages = await completeList(api.listWorkflowRuns, {owner, repo,
       workflow_id: PAGES, head_sha: expectedSha, branch: 'main'}, 'workflow_runs');
