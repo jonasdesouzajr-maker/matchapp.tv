@@ -56,6 +56,6 @@ test('design changes remain scoped to adult surfaces and respect artwork, reduce
  assert.match(home,/#res-poster-img\{object-fit:contain/);
  assert.ok(!/\.adsbygoogle|\.sidebar-ad-left|\.sidebar-ad-right|\.ad-banner-container/.test(home));
  assert.ok(!/\/kids\/|\.kids-body|\.kids-mode/.test(home));
- assert.match(html,/matchapp-ai-mark-header@3x\.webp/);
+ assert.match(html,/matchapp-ai-mark\.svg/);
  assert.match(html,/adult-home-finish-20261014\.css/);
 });

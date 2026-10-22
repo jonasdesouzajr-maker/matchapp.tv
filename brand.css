@@ -94,13 +94,13 @@ html[data-kids-mode] :where(button,.kids-btn,.kids-chip):not(:disabled):active{t
 html:not(.kids-mode) .matchapp-brand-link>img:not(.matchapp-wordmark):not([src^="/kids/"]):not([src*="/kids/"]),
 html:not(.kids-mode) .matchapp-brand-link picture>img:not([src^="/kids/"]):not([src*="/kids/"]),
 html:not(.kids-mode) .brand-logo:not(.kids-mascot):not([src*="/kids/"]){
-  content:url("/assets/brand/matchapp-ai-mark-header@3x.webp?v=20261022-playai1")!important;
+  content:url("/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1")!important;
   object-fit:contain!important;object-position:center!important;
   border:0!important;border-radius:0!important;clip-path:none!important;
   background:transparent!important;box-shadow:none!important;
 }
 html:not(.kids-mode) .brand-logo-placeholder{
-  background:transparent url("/assets/brand/matchapp-ai-mark-header@3x.webp?v=20261022-playai1") center/contain no-repeat!important;
+  background:transparent url("/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1") center/contain no-repeat!important;
   border:0!important;border-radius:0!important;clip-path:none!important;
   box-shadow:none!important;
 }
@@ -497,7 +497,7 @@ html[data-kids-mode] .kids-brand-copy .kids-wordmark,
 /* Owner-approved 2026-10-13 mark: one source on every adult brand surface. */
 html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage,.ma-playai-mark))::before {
  content:""!important;position:relative!important;inset:auto!important;flex:0 0 48px!important;width:48px!important;height:48px!important;
- background: url('/assets/brand/matchapp-ai-mark-header@3x.webp?v=20261022-playai1') center / contain no-repeat!important;
+ background: url('/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1') center / contain no-repeat!important;
  border-radius:0!important;filter:none!important;transform:none!important;animation:none!important;opacity:1!important;z-index:auto!important;
 }
 html body:not(.page-kids):not(.kids-body) .matchapp-brand-link>img:not(.matchapp-wordmark):not(.ma-brand-orb):not([src*='/kids/']){display:none!important}

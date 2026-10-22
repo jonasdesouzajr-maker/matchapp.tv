@@ -148,7 +148,7 @@
     // content fold, native details summary or matcher.
     var node=document.createElement('div');node.className='ma-reference-header-fallback';node.setAttribute('role','banner');
     var a=document.createElement('a');a.href='/';a.className='ma-reference-header-brand';a.setAttribute('aria-label','MatchApp Ai');
-    var image=document.createElement('img');image.src='/assets/brand/matchapp-ai-mark-header@3x.webp?v=20261022-playai1';image.alt='';image.width=36;image.height=36;image.decoding='async';
+    var image=document.createElement('img');image.src='/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1';image.alt='';image.width=36;image.height=36;image.decoding='async';
     var label=document.createElement('span');label.translate=false;var ai=document.createElement('span');ai.className='ma-word-ai';ai.textContent='Ai';label.append('MatchApp ',ai);a.append(image,label);node.appendChild(a);return node;
   }
   function consolidateFallbackBrand(){

@@ -26,7 +26,7 @@ ${shared}
 </head><body class="ma-founder-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="mf-skip" href="#founder-story" data-founder="skip">${esc(t.skip)}</a>
-<header class="app-header" id="ma-founder-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img src="/assets/brand/matchapp-ai-mark-header@3x.webp?v=20261022-playai1" width="50" height="50" alt="MatchApp Ai" class="ma-brand-orb"></a></header>
+<header class="app-header" id="ma-founder-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" width="50" height="50" alt="MatchApp Ai" class="ma-brand-orb"></a></header>
 <main class="mf-wrap" id="founder-story">
 <div class="mf-utility"><nav aria-label="MatchApp Ai"><a href="/" data-founder="home">${t.home}</a><span aria-hidden="true">/</span><span data-founder="title" aria-current="page">${t.title}</span></nav><div id="lang-switcher-host"></div></div>
 <article>
