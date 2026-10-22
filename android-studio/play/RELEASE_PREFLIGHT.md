@@ -1,3 +1,7 @@
+## October 22, 2026 adult post-intro dock fix — 1.1.58 (code 58)
+
+Code **58** keeps the 57 Maps handoff and holds the opaque intro layer until content is laid out with restored system-bar insets, removing the brief dock clipping after natural intro completion. It replaces 57 in the Production release. Recheck all uploaded bundles before uploading 58.
+
 ## October 22, 2026 adult Maps handoff candidate — 1.1.57 (code 57)
 
 This is the current adult release preflight. It supersedes the historical version, emulator and testing-track directions below. Keep package `com.jonas.papercup`, the existing registered upload signing identity, protected ad configuration and the separate Kids app unchanged. The owner requires a Production release, not a new internal/beta track; no emulator work is authorized.
