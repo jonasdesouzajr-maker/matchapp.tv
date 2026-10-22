@@ -17,7 +17,10 @@ ${analytics}
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(t.seoTitle)}</title><meta name="description" content="${esc(t.pageDesc)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}">
 <meta property="og:type" content="profile"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="${esc(t.seoTitle)}"><meta property="og:description" content="${esc(t.pageDesc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${portrait}"><meta property="og:image:width" content="960"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="${esc(t.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.seoTitle)}"><meta name="twitter:description" content="${esc(t.pageDesc)}"><meta name="twitter:image" content="${portrait}"><meta name="twitter:image:alt" content="${esc(t.alt)}"><meta name="author" content="Jonas Junior">
-<link rel="icon" href="/assets/brand/matchapp-official-icon-192.png" type="image/png">
+<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 ${shared}
 <link rel="stylesheet" href="/patches/founder-page.css?v=20261016-4">
 <link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261020-1">

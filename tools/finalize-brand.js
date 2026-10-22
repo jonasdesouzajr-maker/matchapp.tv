@@ -194,6 +194,18 @@ function regionalBrand(brand){
  for(const duplicate of images.slice(1))duplicate.remove();
  return copy.outerHTML;
 }
+// Owner-approved 2026-10-22 Play + Ai favicon set; replaces every older adult icon link in place.
+const FAVICON_LINKS=['<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">','<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">','<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">','<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">'];
+function canonicalFavicons(html){
+ const end=html.search(/<\/head>/i);if(end<0)return html;
+ const eol=html.includes('\r\n')?'\r\n':'\n';
+ const head=html.slice(0,end),rest=html.slice(end);
+ const re=/[ \t]*<link\b[^>]*\brel=(["'])(?:shortcut )?icon\1[^>]*>(?:\r?\n)?/gi;
+ let first=true;
+ const out=head.replace(re,()=>{if(!first)return '';first=false;return FAVICON_LINKS.join(eol)+eol;});
+ if(first){const m=/<meta\b[^>]*\bcharset=[^>]*>(?:\r?\n)?(?:<link\b[^>]*data-cinema-preload[^>]*>(?:\r?\n)?)*/i.exec(head);if(m){const at=m.index+m[0].length;return head.slice(0,at)+(m[0].endsWith('\n')?'':eol)+FAVICON_LINKS.join(eol)+eol+head.slice(at)+rest;}return head+FAVICON_LINKS.join(eol)+eol+rest;}
+ return out+rest;
+}
 // The homepage cache key must survive every editorial normalization pass.
 // Other routes retain their existing stylesheet version; Kids never enters this path.
 function versionBrandStylesheet(html,home=false){
@@ -255,6 +267,7 @@ function finalizeBrand(ownedPaths){
   edits.sort((a,b)=>b[0]-a[0]).forEach(([start,end,text])=>html=html.slice(0,start)+text+html.slice(end));
   if(!doc.querySelector('link[href^="/brand.css"]'))html=html.replace('</head>','<link rel="stylesheet" href="/brand.css?v=195">\n</head>');
   if(!kids){
+    html=canonicalFavicons(html);
     html=versionBrandStylesheet(html,rel==='index.html');
     html=html.replace(/(src=["']\/(?:page-shell|matchapp-ia|daily-checkin)\.js)(?:\?([^"']*))?(["'])/g,function(all,prefix,query,end){
       if((query||'').includes('approvedlogo=20261014'))return all;
@@ -272,5 +285,5 @@ function finalizeBrand(ownedPaths){
  }
  return count;
 }
-module.exports={CRITICAL_STYLE_PRELOADS,versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
+module.exports={canonicalFavicons,FAVICON_LINKS,CRITICAL_STYLE_PRELOADS,versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
 if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');

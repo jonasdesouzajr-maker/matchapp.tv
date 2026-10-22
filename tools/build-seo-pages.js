@@ -226,7 +226,10 @@ function buildPage({ kind, key, title, lede, items, related }) {
 <link rel="canonical" href="${url}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#101010">
-<link rel="icon" href="/logo.jpeg?v=2" type="image/jpeg">
+<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 <link rel="manifest" href="/manifest.json">
 
 <meta property="og:type" content="website">

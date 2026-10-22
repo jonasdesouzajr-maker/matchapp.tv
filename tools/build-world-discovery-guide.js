@@ -138,7 +138,10 @@ return cinemaAssets(`<!doctype html>
 <meta property="og:image" content="${SITE}/assets/brand/matchapp-official-icon-512.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#100d1a">
-<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
+<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g,"\\u003c")}</script>
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:#ece4f3;background:#100d1a}
