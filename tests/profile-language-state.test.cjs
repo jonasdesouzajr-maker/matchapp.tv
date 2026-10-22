@@ -12,6 +12,7 @@ const start=source.indexOf('function checkAndRenderProfileState(');
 const end=source.indexOf('\nwindow.checkAndRenderProfileState = checkAndRenderProfileState;',start);
 assert.ok(start>=0&&end>start,'actual profile-state function is present');
 const actual=source.slice(start,end);
+const ageHelpers=source.slice(source.indexOf('function calculateAgeFromDOB('),source.indexOf('function renderProfileAgeLabel('));
 const listener=source.match(/^document\.addEventListener\('matchapp:langchange',checkAndRenderProfileState\);$/m)?.[0];
 assert.ok(listener,'actual language event binding is present');
 function fixture({status='ready',locked=false,lang='en'}={}){
@@ -29,6 +30,8 @@ function fixture({status='ready',locked=false,lang='en'}={}){
   '</section><button id="save-profile-btn" hidden></button><p id="profile-instructions-text"></p>'+
   '</body></html>',{url:'https://matchapp.tv/profile/profile.html',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole});
  const w=dom.window;
+ const RealDate=w.Date,fixedTime=Date.parse('2026-10-18T12:00:00Z');
+ w.Date=class extends RealDate{constructor(...args){super(...(args.length?args:[fixedTime]));}static now(){return fixedTime;}};
  const saved={match_lang:lang,match_profile_locked:String(locked),match_user_name:'Saved person',match_user_country:'Brazil',match_user_dob:'01/01/1984',match_user_sign:'Aries',match_user_region:'SP',match_user_age:'42',match_owned_wallet_test:JSON.stringify({match:10,ask:10})};
  for(const [key,value]of Object.entries(saved))w.localStorage.setItem(key,value);
  const rawSet=w.Storage.prototype.setItem;
@@ -39,7 +42,7 @@ function fixture({status='ready',locked=false,lang='en'}={}){
  w.formatSign=value=>'sign:'+value;w.STAR_SIGN_TRAITS={Aries:'Saved canonical trait'};
  w.populateEmail=()=>{calls.email++;};w.alert=value=>calls.alerts.push(value);
  w.fetch=async url=>{calls.requests.push(url);throw new Error('Live requests are forbidden in this fixture');};
- w.eval(actual+'\nwindow.checkAndRenderProfileState=checkAndRenderProfileState;\n'+listener);
+ w.eval(ageHelpers+'\n'+actual+'\nwindow.checkAndRenderProfileState=checkAndRenderProfileState;\n'+listener);
  const select=language=>{rawSet.call(w.localStorage,'match_lang',language);w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange'));};
  const snapshot=()=>Object.fromEntries(Object.keys(w.localStorage).filter(key=>key!=='match_lang').map(key=>[key,w.localStorage.getItem(key)]));
  return {dom,w,calls,errors,select,snapshot};
@@ -196,7 +199,7 @@ test('the real details helper localizes every identity state and locked age whil
  }
  const f=fixture({status:'ready',locked:true});t.after(()=>f.dom.window.close());const {w}=f,d=w.document;
  w.MATCH_LANG='en';d.documentElement.lang='en';w.eval(helper);enterDraft(w);
- const ui=w.MatchProfileDetailsI18n,stored=f.snapshot(),expectedInputs=inputSnapshot(w).map(input=>({...input,disabled:false}));
+ const ui=w.MatchProfileDetailsI18n,stored=f.snapshot(),expectedInputs=inputSnapshot(w).map(input=>({...input,disabled:true}));
  const save=d.getElementById('save-profile-btn'),age=d.getElementById('lock-val-age'),help=d.getElementById('profile-instructions-text');
  const canonical={name:'Saved person',country:'Brazil',region:'SP',dob:'01/01/1984',sign:'sign:Aries','sign-trait':'Saved canonical trait'};
  const canonicalNodes=Object.fromEntries(Object.keys(canonical).map(key=>[key,d.getElementById('lock-val-'+key)]));

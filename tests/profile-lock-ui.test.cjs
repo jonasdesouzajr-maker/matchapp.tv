@@ -4,6 +4,7 @@ function boot(result){const d=new JSDOM('<p id="identity-load-status"></p><butto
  w.supabaseClient={auth:{getSession:async()=>({data:{session:{user:{id:'u'}}}})},from:()=>({select:()=>({eq:()=>({maybeSingle:result})})})};
  w.eval('var supabaseClient=window.supabaseClient,seenList=[],savedList=[],dislikedList=[],userRatings={},titleNotes={},recentTitles=[];var SESSION_SHOWN=new Set();var STAR_SIGN_TRAITS={};function formatSign(v){return v}function populateEmail(){}function promptProfileCompletion(){}');
  w.eval(extract(read('app.js'),'const REQUIRED_PROFILE_FIELDS =','// Non-blocking nudge'));
+ w.eval(extract(read('profile.js'),'function calculateAgeFromDOB(','function renderProfileAgeLabel('));
  w.eval(extract(read('profile.js'),'function checkAndRenderProfileState(','window.saveProfileData ='));
  return {d,w};}
 test('a fresh sign-in keeps identity fields closed until the saved server lock has loaded',async()=>{

@@ -85,6 +85,7 @@ test('locked profile notice uses the themed helper and preserves its immutable f
  w.localStorage.setItem('match_profile_locked','true');w.matchProfileState={status:'ready'};
  w.eval('var STAR_SIGN_TRAITS={};function formatSign(value){return value}function populateEmail(){}');
  const source=read('profile.js'),start=source.indexOf('function checkAndRenderProfileState('),end=source.indexOf('\nwindow.checkAndRenderProfileState =',start);
+ w.eval(source.slice(source.indexOf('function calculateAgeFromDOB('),source.indexOf('function renderProfileAgeLabel(')));
  w.eval(source.slice(start,end));w.checkAndRenderProfileState();let messages=[];
  w.MatchAppDialogs={alert:async message=>messages.push(message)};const button=w.document.getElementById('save-profile-btn');await button.onclick();
  assert.deepEqual(messages,['Core identity fields are permanently locked to maintain consistent AI matching.']);assert.equal(button.disabled,true);assert.equal(w.localStorage.getItem('match_profile_locked'),'true');

@@ -81,6 +81,15 @@ function calculateAgeFromDOB(value) {
     return age>=0 && age<=120 ? age : null;
 }
 
+function profileDisplayAge() {
+    const derived = calculateAgeFromDOB(localStorage.getItem('match_user_dob') || '');
+    if (derived !== null) return derived;
+    const cached = localStorage.getItem('match_user_age');
+    if (typeof cached !== 'string' || !/^\d{1,3}$/.test(cached.trim())) return null;
+    const age = Number(cached);
+    return Number.isInteger(age) && age >= 0 && age <= 120 ? age : null;
+}
+
 function renderProfileAgeLabel(node, age) {
     if (!node) return;
     const render = () => { node.innerText = window.MatchProfileDetailsI18n?.text('ageSummary', {age}) || `AI Profile: ${age} Years Old`; };
@@ -89,11 +98,12 @@ function renderProfileAgeLabel(node, age) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    observeProfileIdentityControls();
     const dobInput = document.getElementById('profile-dob');
     const ageDisplay = document.getElementById('profile-age-display');
     
-    const savedAge = localStorage.getItem('match_user_age');
-    if (savedAge && ageDisplay) {
+    const savedAge = ageDisplay ? profileDisplayAge() : null;
+    if (savedAge !== null && ageDisplay) {
         ageDisplay.style.display = 'inline-block';
         renderProfileAgeLabel(ageDisplay, savedAge);
     }
@@ -107,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (this.value.length === 10) {
                 let calculatedAge = calculateAgeFromDOB(this.value);
-                if (calculatedAge && ageDisplay) {
+                if (calculatedAge !== null && ageDisplay) {
                     ageDisplay.style.display = 'inline-block';
                     renderProfileAgeLabel(ageDisplay, calculatedAge);
                 }
@@ -136,10 +146,10 @@ function checkAndRenderProfileState(event) {
     }
     if(notice){notice.hidden=!pending;notice.textContent=messages[state.status]||messages.loading;}
     if(retry){retry.hidden=!['error','signedout'].includes(state.status);retry.textContent=messages[state.status==='signedout'?'signin':'retry'];}
-    if(!languageRefresh)document.querySelectorAll('#editable-fields-section input,#editable-fields-section select').forEach(el=>el.disabled=pending);
+    syncProfileIdentityFormState(languageRefresh);
     if(pending){
-        const form=document.getElementById('editable-fields-section'),card=document.getElementById('locked-info-card'),save=document.getElementById('save-profile-btn');
-        if(form)form.style.display='none';if(card)card.style.display='none';if(save){save.disabled=true;save.hidden=true;}
+        const card=document.getElementById('locked-info-card'),save=document.getElementById('save-profile-btn');
+        if(card)card.style.setProperty('display','none','important');if(save){save.disabled=true;save.hidden=true;}
         return;
     }
     const save=document.getElementById('save-profile-btn');if(save)save.hidden=false;
@@ -149,22 +159,21 @@ function checkAndRenderProfileState(event) {
     const savedDob = localStorage.getItem('match_user_dob') || "";
     const savedSign = localStorage.getItem('match_user_sign') || "";
 
-    const editableSection = document.getElementById('editable-fields-section');
     const lockedCard = document.getElementById('locked-info-card');
     const saveBtn = document.getElementById('save-profile-btn');
     const instructionsText = document.getElementById('profile-instructions-text');
 
     if (isLocked) {
-        if (editableSection) editableSection.style.display = 'none';
         if (lockedCard) {
-            lockedCard.style.display = 'block';
+            lockedCard.style.setProperty('display', 'block');
             const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
             setVal('lock-val-name', savedName || "User");
             setVal('lock-val-country', savedCountry || "N/A");
             setVal('lock-val-region', localStorage.getItem('match_user_region') || 'N/A');
             setVal('lock-val-dob', savedDob || "N/A");
             setVal('lock-val-sign', formatSign(savedSign));
-            setVal('lock-val-age', localStorage.getItem('match_user_age') ? (window.MatchProfileDetailsI18n?.text('ageValue', {age:localStorage.getItem('match_user_age')}) || `${localStorage.getItem('match_user_age')} years old`) : "N/A");
+            const displayAge = profileDisplayAge();
+            setVal('lock-val-age', displayAge !== null ? (window.MatchProfileDetailsI18n?.text('ageValue', {age:displayAge}) || `${displayAge} years old`) : "N/A");
             setVal('lock-val-sign-trait', STAR_SIGN_TRAITS[savedSign] || "Shapes your recommended themes");
             populateEmail();
         }
@@ -184,8 +193,7 @@ function checkAndRenderProfileState(event) {
             };
         }
     } else {
-        if (editableSection) editableSection.style.display='';
-        if (lockedCard) lockedCard.style.display='none';
+        if (lockedCard) lockedCard.style.setProperty('display','none','important');
         if (saveBtn) { if(!languageRefresh){saveBtn.disabled=false;saveBtn.onclick=window.saveProfileData;} saveBtn.setAttribute('data-i18n','profile.saveIdentity'); saveBtn.innerText=window.t?.('profile.saveIdentity') || 'Save & Lock Identity'; }
         if (!languageRefresh && savedName) document.getElementById('profile-name').value = savedName;
         if (!languageRefresh && savedCountry) document.getElementById('profile-country').value = savedCountry;
@@ -193,6 +201,32 @@ function checkAndRenderProfileState(event) {
         if (!languageRefresh && savedSign) document.getElementById('profile-starsign').value = savedSign;
     }
 }
+
+// State owns visibility; the approved grid stylesheet owns visible layout.
+function syncProfileIdentityFormState(preserveEditableState = false) {
+    const section = document.getElementById('editable-fields-section');
+    if (!section) return;
+    const blocked = window.matchProfileState?.status !== 'ready' || localStorage.getItem('match_profile_locked') === 'true';
+    if (blocked) section.style.setProperty('display', 'none', 'important');
+    else section.style.removeProperty('display');
+    if (blocked || !preserveEditableState) {
+        section.querySelectorAll('input,select,textarea,button').forEach(control => { control.disabled = blocked; });
+    }
+}
+
+let profileIdentityObserver, profileIdentityObservedSection;
+function observeProfileIdentityControls() {
+    const section = document.getElementById('editable-fields-section');
+    if (!section) return;
+    syncProfileIdentityFormState(true);
+    if (section === profileIdentityObservedSection || typeof MutationObserver !== 'function') return;
+    profileIdentityObserver?.disconnect();
+    profileIdentityObservedSection = section;
+    profileIdentityObserver = new MutationObserver(() => syncProfileIdentityFormState(true));
+    profileIdentityObserver.observe(section, {childList:true, subtree:true});
+}
+// Cover already inserted controls and late script loading without hydration.
+observeProfileIdentityControls();
 
 window.checkAndRenderProfileState = checkAndRenderProfileState;
 window.retryLockedProfile = async function() {
