@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cinema_maps_unavailable">Установите или включите Google Карты либо браузер и повторите попытку.</string>
+</resources>

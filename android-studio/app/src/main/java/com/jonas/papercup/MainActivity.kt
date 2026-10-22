@@ -1020,6 +1020,9 @@ class MainActivity : AppCompatActivity() {
     private fun handleUrl(uri: Uri): Boolean {
         val scheme = uri.scheme.orEmpty().lowercase()
         val host = uri.host.orEmpty().lowercase()
+        // Maps can redirect to an intent: URL that WebView cannot render.
+        // Hand off the validated HTTPS search before the Google auth allowlist.
+        if (NativeCinemaNavigationPolicy.isSearchUrl(uri.toString())) return openCinemaMaps(uri)
         if (scheme == "mailto" || scheme == "tel" || scheme == "sms" || scheme == "whatsapp" || scheme == "intent" || scheme == "market") {
             return openExternal(uri)
         }
@@ -1040,6 +1043,26 @@ class MainActivity : AppCompatActivity() {
         }
         if (scheme == "https" && isTrustedAuthHost(host)) return false
         return openExternal(uri)
+    }
+
+    private fun openCinemaMaps(uri: Uri): Boolean {
+        try {
+            // The OS chooses Maps or a browser from the original HTTPS URL.
+            // Do not load it in the main WebView or parse arbitrary intent data.
+            startActivity(Intent(Intent.ACTION_VIEW, uri).apply {
+                addCategory(Intent.CATEGORY_BROWSABLE)
+            })
+        } catch (_: ActivityNotFoundException) {
+            showCinemaMapsUnavailable()
+        } catch (_: SecurityException) {
+            showCinemaMapsUnavailable()
+        }
+        // Missing/disabled handlers must leave the current MatchApp page usable.
+        return true
+    }
+
+    private fun showCinemaMapsUnavailable() {
+        Toast.makeText(this, startupStrings().getString(R.string.cinema_maps_unavailable), Toast.LENGTH_LONG).show()
     }
 
     private fun openExternal(uri: Uri): Boolean {
@@ -1442,6 +1465,7 @@ class MainActivity : AppCompatActivity() {
                     // Popups may not bypass the adult-only or HTTPS URL boundary.
                     when {
                         isKidsUri(target) -> web.loadUrl(HOME)
+                        NativeCinemaNavigationPolicy.isSearchUrl(target.toString()) -> openCinemaMaps(target)
                         target.scheme.equals("https", ignoreCase = true) &&
                             (isMatchAppHost(host) || isTrustedAuthHost(host)) -> web.loadUrl(target.toString())
                         else -> openExternal(target)
@@ -1476,8 +1500,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=56"
-        const val APP_UA = "MatchAppTVAndroid/1.1.56 MatchAppAiAndroid/1.1.56 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=57"
+        const val APP_UA = "MatchAppTVAndroid/1.1.57 MatchAppAiAndroid/1.1.57 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"

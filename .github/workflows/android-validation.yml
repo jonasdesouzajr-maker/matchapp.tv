@@ -33,11 +33,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@v6
       - name: Check adult Play identity and safe AdMob staging
         run: python3 android-studio/scripts/verify_adult_release.py
-      - name: Compile adult debug, unsigned release bundle and Kids regression
+      - name: Run adult JVM tests and compile adult debug, unsigned release bundle and Kids regression
         working-directory: android-studio
         run: |
           chmod +x gradlew
-          ./gradlew :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug --no-daemon --stacktrace
+          ./gradlew :app:testDebugUnitTest :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug --no-daemon --stacktrace
       - name: Export adult debug APK for owner-only device QA
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
@@ -53,11 +53,11 @@ jobs:
           test -s "$BUNDLE"
           unzip -t "$BUNDLE" > /dev/null
           sha256sum "$BUNDLE" > app/build/outputs/bundle/release/app-release.aab.sha256
-          printf '%s\n' 'UNSIGNED RELEASE AAB - NOT READY FOR PLAY CONSOLE UPLOAD.' 'Use your private Play upload keystore to sign it locally, or use Android Studio > Generate Signed Bundle on the app module.' 'Package: com.jonas.papercup; version: 1.1.56; versionCode: 56.' > app/build/outputs/bundle/release/README-UNSIGNED.txt
+          printf '%s\n' 'UNSIGNED RELEASE AAB - NOT READY FOR PLAY CONSOLE UPLOAD.' 'Use your private Play upload keystore to sign it locally, or use Android Studio > Generate Signed Bundle on the app module.' 'Package: com.jonas.papercup; version: 1.1.57; versionCode: 57.' > app/build/outputs/bundle/release/README-UNSIGNED.txt
       - name: Export adult-only AAB for local signing
         uses: actions/upload-artifact@v4
         with:
-          name: MatchApp-Ai-adult-1.1.56-code56-UNSIGNED-AAB
+          name: MatchApp-Ai-adult-1.1.57-code57-UNSIGNED-AAB
           path: |
             android-studio/app/build/outputs/bundle/release/app-release.aab
             android-studio/app/build/outputs/bundle/release/app-release.aab.sha256
