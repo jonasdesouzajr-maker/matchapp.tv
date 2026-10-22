@@ -2889,6 +2889,7 @@ let profileAuthEvent = 0;
 if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'function') {
     supabaseClient.auth.onAuthStateChange((event, session) => {
         const authEvent=++profileAuthEvent;
+        ++profileHydrationEpoch;
         if (session && session.user) {
             setProfileLoadState('loading',session.user.id);
             isUserLoggedIn = true;
@@ -2905,14 +2906,19 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
             // (which now depends on whether that profile is complete).
             // Auth callbacks run under the SDK's session lock. Defer API calls
             // so native passkey sign-in and session refresh cannot deadlock.
-            setTimeout(async () => {
+            const restoreProfile = async (retry = false) => {
                 if(authEvent!==profileAuthEvent)return;
                 try {
                     const current = await window.ensureCompactMatchSession();
                     if (authEvent !== profileAuthEvent || !current.data?.session) return;
                     session = current.data.session;
                 } catch (error) {
+                    if (authEvent !== profileAuthEvent) return;
                     console.warn('Session recovery deferred:', error.message);
+                    // Retry one settled startup failure; never queue retries
+                    // behind an unresolved SDK call or a different account.
+                    if (!retry) setTimeout(() => restoreProfile(true), 1000);
+                    else setProfileLoadState('error', session.user.id);
                     return;
                 }
                 // The server grant is independent of profile loading and
@@ -2920,9 +2926,9 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
                 void claimRegistrationWelcomeBonus(session.user);
                 await hydrateProfileFromAuth(session.user);
                 if (window.refreshQuotaStatus) window.refreshQuotaStatus();
-            }, 0);
+            };
+            setTimeout(() => restoreProfile(), 0);
         } else {
-            ++profileHydrationEpoch;
             window.MatchAppAccountPhoto?.clear();
             setProfileLoadState('signedout',null);
             isUserLoggedIn = false;
