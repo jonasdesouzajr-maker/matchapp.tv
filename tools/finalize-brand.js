@@ -159,6 +159,7 @@ function referenceRuntimeAssetURL(url){
  if(!/^\/[A-Za-z0-9_./-]+$/.test(pathname))return url;
  const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file)&&!ANDROID_QA_ASSETS.has(file)&&!['brand.css','style.css','adult-page-compact.css'].includes(file))return url;
  const entries=[];if(ANDROID_QA_ASSETS.has(file))entries.push(['androidqa','20261021-1']);if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
+ if(file==='app.js'||file==='profile.js')entries.push(['readiness','20261022-1']);
  if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
  if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);

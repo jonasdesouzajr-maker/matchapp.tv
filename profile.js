@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    document.getElementById('identity-load-retry')?.addEventListener('click', () => { void window.retryLockedProfile(); });
     checkAndRenderProfileState();
     renderProfileGrids();
 });
@@ -196,13 +197,24 @@ function checkAndRenderProfileState(event) {
 window.checkAndRenderProfileState = checkAndRenderProfileState;
 window.retryLockedProfile = async function() {
     if(window.matchProfileState?.status==='signedout'){window.openAuthModal?.();return;}
+    const attempt={status:'loading',userId:window.matchProfileState?.userId||null};
+    let pendingState=attempt;
     try {
-        window.matchProfileState={status:'loading',userId:null};checkAndRenderProfileState();
-        const result=await window.supabaseClient.auth.getSession();
+        window.matchProfileState=attempt;checkAndRenderProfileState();
+        const result=window.ensureCompactMatchSession
+            ?await window.ensureCompactMatchSession():await window.supabaseClient.auth.getSession();
+        // A newer auth event or retry owns the UI and account attachment.
+        if(window.matchProfileState!==attempt)return;
         if(result.error)throw result.error;
-        if(result.data?.session?.user)await window.hydrateProfileFromAuth(result.data.session.user);
-        else window.matchProfileState={status:'signedout',userId:null};
-    } catch(_){window.matchProfileState={status:'error',userId:null};}
+        if(result.data?.session?.user){
+            const restoring=window.hydrateProfileFromAuth(result.data.session.user);
+            pendingState=window.matchProfileState;
+            await restoring;
+        } else window.matchProfileState={status:'signedout',userId:null};
+    } catch(_){
+        if(window.matchProfileState!==pendingState)return;
+        window.matchProfileState={status:'error',userId:attempt.userId};
+    }
     checkAndRenderProfileState();
 };
 document.addEventListener('matchapp:langchange',checkAndRenderProfileState);
