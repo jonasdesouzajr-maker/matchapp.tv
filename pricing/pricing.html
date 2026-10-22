@@ -72,7 +72,7 @@
     <link rel="stylesheet" href="/tv.css?v=187">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
     <style>
-        .app-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 25px; background: rgba(10,5,5,0.95); border-bottom: 2px solid var(--gold); box-shadow: 0 4px 25px rgba(212,175,55,0.4); flex-wrap: wrap; gap: 15px; }
+        .app-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 25px; flex-wrap: wrap; gap: 15px; }
         .header-brand-area { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .brand-logo { width: 65px; height: 65px; border-radius: 50%; border: 2px solid var(--gold); box-shadow: 0 0 15px var(--gold); animation: pulseGlow 2s infinite alternate; }
         .app-title-main { font-size: 34px; font-weight: 900; background: linear-gradient(90deg, #FFD700, #FFF, #FFA500, #FFD700); background-size: 200% auto; -webkit-background-clip: text; color: transparent; animation: gradientShift 3s infinite linear; text-transform: uppercase; letter-spacing: 1px; }
@@ -208,6 +208,7 @@
 
 <link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;footer=20261020-1&amp;androidqa=20261021-1">
 <link rel="stylesheet" href="/patches/reference-pages.css?v=20261020-review1&amp;premium=20261020-2&amp;androidqa=20261021-1">
+<link rel="stylesheet" href="/cinematic-header.css?v=cinematic-shimmer1">
 
 <script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1"></script>
 </head>
@@ -230,7 +231,7 @@
 
     <header class="app-header fade-in">
         <a href="/" class="header-brand-area matchapp-brand-link" aria-label="MatchApp Ai">
-            <picture><source srcset="/logo.jpeg?v=2" type="image/jpeg"><img width="60" height="60" src="/logo.jpeg?v=2" alt="Logo" class="brand-logo" loading="lazy"></picture>
+            <img width="60" height="60" src="/assets/brand/matchapp-icon-approved.png?v=20261013-approved1" alt="" class="brand-logo" decoding="async">
             <div><span class="app-title-main"><img class="matchapp-wordmark" src="/assets/brand/matchapp-tv-ai-v2.svg" alt="MatchApp Ai" width="368" height="66" decoding="async"></span><span class="app-title-sub" data-i18n="pr.tagline">Streaming Concierge</span></div>
         </a>
         <nav id="header-auth-area" style="display: flex; gap: 10px; align-items: center; justify-content: flex-end;">
