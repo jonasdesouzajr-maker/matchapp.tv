@@ -50,9 +50,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) candidate version: **1.1.57**, package `com.jonas.papercup`.
-- Standard app version code: **57**. Play accepted code **56 / 1.1.56** into the Production draft before physical cinema QA exposed the Maps handoff defect. Do not reuse code 56 or submit that superseded draft; recheck all uploaded bundles before uploading 57.
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=57`
+- Standard app (`:app`) candidate version: **1.1.58**, package `com.jonas.papercup`.
+- Standard app version code: **58**. Code **57 / 1.1.57** (Maps handoff) was submitted to Production review on October 22; 58 adds the post-intro dock inset fix and supersedes it. Play accepted code **56 / 1.1.56** into the Production draft before physical cinema QA exposed the Maps handoff defect. Do not reuse code 56 or submit that superseded draft; recheck all uploaded bundles before uploading 57.
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=58`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.
 - Kids app (`:kidsapp`) remains a separate, unchanged package; its independent release is outside this adult candidate.
 - The adult shell preserves its eligible current screen on launcher reentry and supports bounded presentation recovery after process death. Pull-to-refresh is disabled; the adult manual refresh preserves the current document and uses the existing local read-only adapter. Installed binary updates come through Google Play.
@@ -65,7 +65,7 @@ Both Android modules remain WebView shells over live production:
 
 Because these apps intentionally render the live web experience, the latest approved MatchApp UI/content/features do **not** need to be copied into Android source. Native Android files are changed only when routing, permissions, WebView behavior, package identity, or Android-specific presentation requires it.
 
-This candidate adds the native Maps handoff repair to the reviewed lifecycle, permissions and safe-area changes, so it needs a new signed adult bundle. Follow the current [release preflight](play/RELEASE_PREFLIGHT.md): run the static guard, adult JVM tests, adult debug/release builds and Kids compilation; use the existing registered upload identity and physical-device QA. No emulator work or new testing track is part of this release. The CI artifact `MatchApp-Ai-adult-1.1.57-code57-UNSIGNED-AAB` is not Play-ready. Historical version, emulator and coordinated Kids-release instructions below are superseded by this current adult-only preflight.
+This candidate adds the native Maps handoff repair to the reviewed lifecycle, permissions and safe-area changes, so it needs a new signed adult bundle. Follow the current [release preflight](play/RELEASE_PREFLIGHT.md): run the static guard, adult JVM tests, adult debug/release builds and Kids compilation; use the existing registered upload identity and physical-device QA. No emulator work or new testing track is part of this release. The CI artifact `MatchApp-Ai-adult-1.1.58-code58-UNSIGNED-AAB` is not Play-ready. Historical version, emulator and coordinated Kids-release instructions below are superseded by this current adult-only preflight.
 
 ## October 7, 2026 adult Play publication candidate
 
