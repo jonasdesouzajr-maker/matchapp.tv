@@ -13,7 +13,7 @@
 (function () {
   'use strict';
 
-  var HOME_ORB = '/assets/brand/matchapp-icon-approved.png?v=20261013-approved1';
+  var HOME_ORB = '/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1';
 
   function path() {
     return (location.pathname || '/').replace(/\/+$/, '') || '/';

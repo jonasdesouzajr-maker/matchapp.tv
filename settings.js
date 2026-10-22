@@ -76,7 +76,7 @@ function mountInstallDestinationSetting(){
    const mac=platform.mac;section.querySelector('p').textContent=mac?copy.mac:copy.ios;button.textContent='＋ '+(mac?copy.dock:copy.home);button.hidden=false;link.hidden=true;
  }
 }
-const OFFICIAL_BRAND_ICON='/assets/brand/matchapp-icon-approved.png?v=20261013-approved1';
+const OFFICIAL_BRAND_ICON='/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1';
 const OFFICIAL_FAVICON='/assets/brand/matchapp-official-icon-192.png?v=20260920-official1';
 function applyOfficialBrand(){
  if(location.pathname.startsWith('/kids/'))return;

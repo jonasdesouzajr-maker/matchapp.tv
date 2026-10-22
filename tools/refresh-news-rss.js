@@ -503,7 +503,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="${d}">
 ${imageMeta}
 <script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
-<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
+<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
@@ -522,7 +525,7 @@ ${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/pa
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header news-article-header ma-news-header"><div class="ma-brand-lockup"><a href="/" class="ma-brand-home-link" data-news-ui-aria="brandHome" aria-label="MatchApp Ai home" dir="ltr"><span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-icon-approved.png" alt="" width="52" height="52" decoding="async"></span><span class="ma-brand-copy ebook-text-wordmark" translate="no" lang="en" dir="ltr" aria-hidden="true"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span></a></div></header>
+<header class="app-header news-article-header ma-news-header"><div class="ma-brand-lockup"><a href="/" class="ma-brand-home-link" data-news-ui-aria="brandHome" aria-label="MatchApp Ai home" dir="ltr"><span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" alt="" width="52" height="52" decoding="async"></span><span class="ma-brand-copy ebook-text-wordmark" translate="no" lang="en" dir="ltr" aria-hidden="true"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span></a></div></header>
 <main style="max-width:780px;margin:40px auto;padding:20px">
   <article class="premium-card" style="padding:24px"${commerceAttributes(i)}>
     <p style="color:#E5C158;font-weight:800"><span data-news-ui="latest">Latest News</span> · <span data-news-ui-event="${esc(i.event_type)}">${esc(i.event_type)}</span></p>
@@ -613,7 +616,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:description" content="Hourly verified entertainment and world reporting plus twice-daily sports updates with original publisher attribution.">
 <meta property="og:url" content="${SITE}/news/">
 <script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
-<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">
+<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
@@ -627,7 +633,7 @@ ${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_AS
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="app-header ma-news-header"><div class="ma-brand-lockup"><a href="/" class="ma-brand-home-link" data-news-ui-aria="brandHome" aria-label="MatchApp Ai home" dir="ltr"><span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-icon-approved.png" alt="" width="52" height="52" decoding="async"></span><span class="ma-brand-copy ebook-text-wordmark" translate="no" lang="en" dir="ltr" aria-hidden="true"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span></a></div></header>
+<header class="app-header ma-news-header"><div class="ma-brand-lockup"><a href="/" class="ma-brand-home-link" data-news-ui-aria="brandHome" aria-label="MatchApp Ai home" dir="ltr"><span class="ma-brand-orb-stage" aria-hidden="true"><img class="ma-brand-orb" src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" alt="" width="52" height="52" decoding="async"></span><span class="ma-brand-copy ebook-text-wordmark" translate="no" lang="en" dir="ltr" aria-hidden="true"><span class="ma-wordmark"><span class="ma-word-match">Match</span><span class="ma-word-app">App</span></span><span class="ma-word-ai" data-ma-brand-ai>Ai</span></span></a></div></header>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news" data-news-ui="backLatest">← MatchApp Ai — Latest News</a>
   <h1 data-news-ui="hubTitle">Latest Entertainment, World and Sports News</h1>

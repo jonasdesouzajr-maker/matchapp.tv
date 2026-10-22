@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  const LOGO_ASSET='/assets/brand/matchapp-icon-approved.png?v=20261013-approved1';
+  const LOGO_ASSET='/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1';
   const isKidsRoute=()=>{const p=location.pathname.toLowerCase();return p==='/kids'||p.startsWith('/kids/');};
 
   const AI_LABELS={

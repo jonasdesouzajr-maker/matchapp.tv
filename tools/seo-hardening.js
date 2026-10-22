@@ -9,7 +9,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const ROOT=path.join(__dirname,'..');
 const LOGO='https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp';
-const FAV='<link rel="icon" href="/assets/brand/matchapp-favicon-32.png" type="image/png">';
+const FAV='<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">\n<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">\n<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">\n<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">';
 
 function read(rel){return fs.readFileSync(path.join(ROOT,rel),'utf8');}
 function write(rel,text){fs.writeFileSync(path.join(ROOT,rel),text);}
@@ -78,10 +78,11 @@ patch('tools/refresh-news-rss.js',src=>{
 
 function patchGeneratedNews(){
   const hub=path.join(ROOT,'news','index.html');
-  if(fs.existsSync(hub)){
-    let src=fs.readFileSync(hub,'utf8');
+  let hubSrc=null;try{hubSrc=fs.readFileSync(hub,'utf8');}catch(error){if(error.code!=='ENOENT')throw error;}
+  if(hubSrc!==null){
+    let src=hubSrc;
     src=src.replace('<title>Latest Entertainment News | Actors, Singers, Film & Music | MatchApp TV</title>','<title>Latest Entertainment News | MatchApp TV</title>');
-    if(!src.includes('matchapp-favicon-32.png'))src=src.replace('<link rel="stylesheet" href="/style.css?v=187">',FAV+'\n<link rel="stylesheet" href="/style.css?v=187">');
+    if(!src.includes('matchapp-ai-favicon.svg'))src=src.replace('<link rel="stylesheet" href="/style.css?v=187">',FAV+'\n<link rel="stylesheet" href="/style.css?v=187">');
     src=src.replaceAll(
       '"publisher":{"@type":"Organization","name":"MatchApp TV","url":"https://matchapp.tv"}',
       '"publisher":{"@type":"Organization","name":"MatchApp TV","url":"https://matchapp.tv","logo":{"@type":"ImageObject","url":"'+LOGO+'","width":512,"height":512}}'
@@ -91,9 +92,9 @@ function patchGeneratedNews(){
   const dir=path.join(ROOT,'news','articles');
   if(!fs.existsSync(dir))return;
   for(const name of fs.readdirSync(dir)){
-    const file=path.join(dir,name,'index.html');if(!fs.existsSync(file))continue;
-    let src=fs.readFileSync(file,'utf8');
-    if(!src.includes('matchapp-favicon-32.png'))src=src.replace('<link rel="stylesheet" href="/style.css?v=187">',FAV+'\n<link rel="stylesheet" href="/style.css?v=187">');
+    const file=path.join(dir,name,'index.html');let src;
+    try{src=fs.readFileSync(file,'utf8');}catch(error){if(error.code==='ENOENT'||error.code==='ENOTDIR')continue;throw error;}
+    if(!src.includes('matchapp-ai-favicon.svg'))src=src.replace('<link rel="stylesheet" href="/style.css?v=187">',FAV+'\n<link rel="stylesheet" href="/style.css?v=187">');
     src=src.replaceAll(
       '"publisher":{"@type":"Organization","name":"MatchApp TV","url":"https://matchapp.tv"}',
       '"publisher":{"@type":"Organization","name":"MatchApp TV","url":"https://matchapp.tv","logo":{"@type":"ImageObject","url":"'+LOGO+'","width":512,"height":512}}'

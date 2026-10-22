@@ -17,7 +17,10 @@ ${analytics}
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(t.seoTitle)}</title><meta name="description" content="${esc(t.pageDesc)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}">
 <meta property="og:type" content="profile"><meta property="og:site_name" content="MatchApp Ai"><meta property="og:title" content="${esc(t.seoTitle)}"><meta property="og:description" content="${esc(t.pageDesc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${portrait}"><meta property="og:image:width" content="960"><meta property="og:image:height" content="1200"><meta property="og:image:alt" content="${esc(t.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(t.seoTitle)}"><meta name="twitter:description" content="${esc(t.pageDesc)}"><meta name="twitter:image" content="${portrait}"><meta name="twitter:image:alt" content="${esc(t.alt)}"><meta name="author" content="Jonas Junior">
-<link rel="icon" href="/assets/brand/matchapp-official-icon-192.png" type="image/png">
+<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 ${shared}
 <link rel="stylesheet" href="/patches/founder-page.css?v=20261016-4">
 <link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261020-1">
@@ -26,7 +29,7 @@ ${shared}
 </head><body class="ma-founder-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="mf-skip" href="#founder-story" data-founder="skip">${esc(t.skip)}</a>
-<header class="app-header" id="ma-founder-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img src="/assets/brand/matchapp-icon-approved.png" width="50" height="50" alt="MatchApp Ai" class="ma-brand-orb"></a></header>
+<header class="app-header" id="ma-founder-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" width="50" height="50" alt="MatchApp Ai" class="ma-brand-orb"></a></header>
 <main class="mf-wrap" id="founder-story">
 <div class="mf-utility"><nav aria-label="MatchApp Ai"><a href="/" data-founder="home">${t.home}</a><span aria-hidden="true">/</span><span data-founder="title" aria-current="page">${t.title}</span></nav><div id="lang-switcher-host"></div></div>
 <article>

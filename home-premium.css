@@ -379,8 +379,8 @@ html body.page-home #mh-topbox #home-brand-lockup .home-brand-home::after{
 html body.page-home #mh-topbox #home-brand-lockup .brand-logo-placeholder{
   display:block!important;position:relative!important;isolation:isolate!important;overflow:visible!important;
   border:0!important;border-radius:50%!important;background-color:transparent!important;
-  background-image:url("/assets/brand/matchapp-icon-approved.png?v=20261013-approved1")!important;
-  background-position:center 47%!important;background-size:165% auto!important;background-repeat:no-repeat!important;
+  background-image:url("/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1")!important;
+  background-position:center!important;background-size:contain!important;background-repeat:no-repeat!important;
   box-shadow:none!important;
   filter:drop-shadow(0 0 13px rgba(243,207,105,.42)) drop-shadow(0 0 23px rgba(71,189,255,.13))!important;
   animation:maReferenceLogoGlow 5.6s ease-in-out infinite!important;

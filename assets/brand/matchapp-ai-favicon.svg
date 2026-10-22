@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="MatchApp Ai">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8DC8C"/><stop offset=".5" stop-color="#E6B04A"/><stop offset="1" stop-color="#C58426"/>
+    </linearGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E6B04A" stop-opacity=".25"/><stop offset="1" stop-color="#F3CF72"/>
+    </linearGradient>
+    <radialGradient id="s" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFFBEA"/><stop offset=".6" stop-color="#FFF0C2"/><stop offset="1" stop-color="#F8DC8C"/>
+    </radialGradient>
+  </defs>
+  <!-- flowing ribbons -->
+  <g fill="none" stroke="url(#r)" stroke-linecap="round" stroke-width="12">
+    <path d="M286 222 C330 205 345 175 372 168"/>
+    <path d="M300 256 C330 252 350 258 372 258"/>
+    <path d="M286 290 C330 310 355 335 384 340"/>
+  </g>
+  <!-- play button -->
+  <path d="M92 104 Q72 92 72 116 V396 Q72 420 92 408 L318 270 Q340 256 318 242 Z" fill="url(#g)" stroke="url(#g)" stroke-width="26" stroke-linejoin="round"/>
+  <!-- AI sparkle -->
+  <path d="M168 176 Q176 248 248 256 Q176 264 168 336 Q160 264 88 256 Q160 248 168 176 Z" fill="url(#s)"/>
+  <!-- music note -->
+  <g fill="url(#g)">
+    <path d="M396 70 L468 54 V140 H454 V82 L410 92 V152 H396 Z"/>
+    <ellipse cx="386" cy="154" rx="22" ry="17" transform="rotate(-18 386 154)"/>
+    <ellipse cx="444" cy="142" rx="22" ry="17" transform="rotate(-18 444 142)"/>
+  </g>
+  <!-- open book -->
+  <g fill="url(#g)">
+    <path d="M378 222 Q408 210 436 226 V298 Q408 284 378 296 Z"/>
+    <path d="M444 226 Q472 210 500 222 V296 Q472 284 444 298 Z"/>
+    <path d="M372 230 H378 V302 Q408 290 440 306 Q472 290 502 302 V230 H506 V312 Q472 300 440 316 Q408 300 372 312 Z" fill="#C58426"/>
+  </g>
+  <!-- spoon -->
+  <g fill="url(#g)">
+    <ellipse cx="452" cy="352" rx="30" ry="22" transform="rotate(-40 452 352)"/>
+    <path d="M428 366 L438 376 L384 432 Q376 440 368 432 Q362 424 370 416 Z"/>
+  </g>
+</svg>

@@ -94,14 +94,14 @@ html[data-kids-mode] :where(button,.kids-btn,.kids-chip):not(:disabled):active{t
 html:not(.kids-mode) .matchapp-brand-link>img:not(.matchapp-wordmark):not([src^="/kids/"]):not([src*="/kids/"]),
 html:not(.kids-mode) .matchapp-brand-link picture>img:not([src^="/kids/"]):not([src*="/kids/"]),
 html:not(.kids-mode) .brand-logo:not(.kids-mascot):not([src*="/kids/"]){
-  content:url("/assets/brand/matchapp-icon-approved.png?v=20261013-approved1")!important;
-  object-fit:cover!important;object-position:center!important;
-  border:0!important;border-radius:50%!important;clip-path:circle(49.2% at 50% 50%)!important;
+  content:url("/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1")!important;
+  object-fit:contain!important;object-position:center!important;
+  border:0!important;border-radius:0!important;clip-path:none!important;
   background:transparent!important;box-shadow:none!important;
 }
 html:not(.kids-mode) .brand-logo-placeholder{
-  background:transparent url("/assets/brand/matchapp-icon-approved.png?v=20261013-approved1") center/cover no-repeat!important;
-  border:0!important;border-radius:50%!important;clip-path:circle(49.2% at 50% 50%)!important;
+  background:transparent url("/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1") center/contain no-repeat!important;
+  border:0!important;border-radius:0!important;clip-path:none!important;
   box-shadow:none!important;
 }
 
@@ -495,14 +495,14 @@ html[data-kids-mode] .kids-brand-copy .kids-wordmark,
 }
 
 /* Owner-approved 2026-10-13 mark: one source on every adult brand surface. */
-html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage))::before {
+html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage,.ma-playai-mark))::before {
  content:""!important;position:relative!important;inset:auto!important;flex:0 0 48px!important;width:48px!important;height:48px!important;
- background: url('/assets/brand/matchapp-icon-approved.png?v=20261013-approved1') center 47% / 165% auto no-repeat!important;
- border-radius:12px!important;filter:none!important;transform:none!important;animation:none!important;opacity:1!important;z-index:auto!important;
+ background: url('/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1') center / contain no-repeat!important;
+ border-radius:0!important;filter:none!important;transform:none!important;animation:none!important;opacity:1!important;z-index:auto!important;
 }
 html body:not(.page-kids):not(.kids-body) .matchapp-brand-link>img:not(.matchapp-wordmark):not(.ma-brand-orb):not([src*='/kids/']){display:none!important}
-html body:not(.page-kids):not(.kids-body) .ma-brand-orb-stage {overflow:hidden!important;border-radius:16px!important}
-html body:not(.page-kids):not(.kids-body) .ma-brand-orb {content:normal!important;object-fit:cover!important;object-position:center 47%!important;border-radius:12px!important;clip-path:none!important}
+html body:not(.page-kids):not(.kids-body) .ma-brand-orb-stage {overflow:visible!important;border-radius:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+html body:not(.page-kids):not(.kids-body) .ma-brand-orb {content:normal!important;object-fit:contain!important;object-position:center!important;border-radius:0!important;clip-path:none!important;background:transparent!important;border:0!important}
 html body.page-home header#mh-topbox#mh-topbox#mh-topbox#mh-topbox .ma-brand-orb {transform:scale(1.65)!important}
 html body:not(.page-kids):not(.kids-body) .hub-brand img {object-fit:cover;object-position:center 47%;border-radius:12px}
 
@@ -604,7 +604,7 @@ html body:not(.page-kids):not(.kids-body) :is(
   background:transparent!important;box-shadow:none!important;
  }
 }
-html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage))::before {
+html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-brand-orb,.ma-brand-orb-stage,.ma-playai-mark))::before {
  -webkit-mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
  mask-image:url('/assets/brand/matchapp-icon-approved-mask.svg?v=20261014-1')!important;
  -webkit-mask-size:165% auto!important;mask-size:165% auto!important;

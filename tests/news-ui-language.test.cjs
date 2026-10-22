@@ -163,7 +163,7 @@ test('legacy branding can no longer hide or replace the canonical News orb and t
     const doc = w.document, anchor = doc.querySelector('.ma-brand-home-link'), orb = anchor.querySelector('.ma-brand-orb'), mark = anchor.querySelector('.ma-brand-copy');
     w.eval(read('brand-corrections.js')); boot(w); w.MATCH_LANG = 'ar'; doc.dispatchEvent(new w.CustomEvent('matchapp:langchange'));
     assert.equal(anchor.querySelector('.ma-brand-orb'), orb); assert.equal(anchor.querySelector('.ma-brand-copy'), mark);
-    assert.equal(orb.getAttribute('src'), '/assets/brand/matchapp-icon-approved.png'); assert.equal(orb.alt, '');
+    assert.equal(orb.getAttribute('src'), '/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1'); assert.equal(orb.alt, '');
     assert.equal(mark.textContent.replace(/\s/g, ''), 'MatchAppAi'); assert.equal(mark.getAttribute('translate'), 'no'); assert.equal(mark.dir, 'ltr');
     assert.equal(doc.querySelectorAll('.ma-brand-lockup').length, 1); assert.equal(doc.querySelector('.matchapp-wordmark,.has-ma-local-wordmark,.ma-official-brand-icon'), null);
     const headlineCSS = read('brand-headline.css'), newsCSS = read('news-ui.css');
@@ -212,7 +212,7 @@ test('all committed generated News documents carry the durable header and labels
     assert.match(html, /<body class="news-ui-page">/, file);
     assert.equal((html.match(/class="ma-brand-home-link"/g) || []).length, 1, file);
     assert.equal((html.match(/src="\/news-ui\.js\?v=20261019-newsui1"/g) || []).length, 1, file);
-    assert.match(html, /src="\/assets\/brand\/matchapp-icon-approved\.png"/); assert.doesNotMatch(html, /class="app-title-main"/);
+    assert.match(html, /src="\/assets\/brand\/matchapp-ai-mark\.svg\?v=20261022-vector1"/); assert.doesNotMatch(html, /class="app-title-main"/);
     if (file !== 'news/index.html') {
       assert.match(html, /<h1 data-news-source-title lang="[^"]+" dir="auto" translate="no">/); assert.match(html, /meta name="robots" content="noindex,follow"/);
       assert.match(html, /data-news-ui="readAt" data-news-source="[^"]+"/, 'every article retains an attributed original publisher action');
