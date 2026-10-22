@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() {
     private var introHost: FrameLayout? = null
     private var introVideo: VideoView? = null
     private val introDeadline = Runnable { finishIntro() }
+    private var introRevealFailsafe: Runnable? = null
     private var startupHost: FrameLayout? = null
     private val startupDeadline = Runnable { finishStartupTransition() }
     private val startupPrefs by lazy { getSharedPreferences(STARTUP_PREFS, MODE_PRIVATE) }
@@ -356,7 +357,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
-        finishIntro()
+        finishIntro(immediate = true)
         finishStartupTransition(immediate = true)
         activityResumed = false
         // Commit the already available route/UI/native offsets before the
@@ -474,7 +475,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         growthReferrer?.close()
         growthReferrer = null
-        finishIntro()
+        finishIntro(immediate = true)
         finishStartupTransition(immediate = true)
         nativeRewardedBridge?.destroy()
         nativeRewardedBridge = null
@@ -634,17 +635,44 @@ class MainActivity : AppCompatActivity() {
         } catch (_: Exception) { finishIntro() }
     }
 
-    private fun finishIntro() {
+    private fun finishIntro(immediate: Boolean = false) {
         findViewById<FrameLayout>(R.id.root)?.removeCallbacks(introDeadline)
         val host = introHost ?: return
         introHost = null
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowCompat.getInsetsController(window, window.decorView).show(WindowInsetsCompat.Type.systemBars())
-        ViewCompat.requestApplyInsets(refresh.parent as View)
         try { introVideo?.stopPlayback() } catch (_: Exception) { }
         introVideo = null
-        (host.parent as? ViewGroup)?.removeView(host)
-        web.post { maybeShowPermissionSetup() }
+        val content = refresh.parent as View
+        var removed = false
+        val remove = {
+            if (!removed) {
+                removed = true
+                ViewCompat.setOnApplyWindowInsetsListener(host, null)
+                host.removeCallbacks(introRevealFailsafe)
+                (host.parent as? ViewGroup)?.removeView(host)
+                web.post { maybeShowPermissionSetup() }
+            }
+        }
+        // Keep the opaque intro layer until the content has been laid out with
+        // the restored system-bar insets, so the dock is never drawn against
+        // the stale fullscreen geometry for a frame.
+        if (!immediate && activityResumed && content.isAttachedToWindow) {
+            // Safety net only if the platform never reports visible bars.
+            introRevealFailsafe = Runnable { remove() }
+            host.postDelayed(introRevealFailsafe, 1000L)
+            ViewCompat.setOnApplyWindowInsetsListener(host) { _, insets ->
+                if (insets.isVisible(WindowInsetsCompat.Type.systemBars())) {
+                    androidx.core.view.OneShotPreDrawListener.add(content) { remove() }
+                    content.requestLayout()
+                }
+                insets
+            }
+        }
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.getInsetsController(window, window.decorView).show(WindowInsetsCompat.Type.systemBars())
+        ViewCompat.requestApplyInsets(content)
+        val current = ViewCompat.getRootWindowInsets(content)
+        if (immediate || !activityResumed || !content.isAttachedToWindow ||
+            current == null || current.isVisible(WindowInsetsCompat.Type.systemBars())) remove()
     }
 
     private fun retry() {
@@ -1500,8 +1528,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=57"
-        const val APP_UA = "MatchAppTVAndroid/1.1.57 MatchAppAiAndroid/1.1.57 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=58"
+        const val APP_UA = "MatchAppTVAndroid/1.1.58 MatchAppAiAndroid/1.1.58 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"
