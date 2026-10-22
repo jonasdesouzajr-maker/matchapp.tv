@@ -78,8 +78,9 @@ patch('tools/refresh-news-rss.js',src=>{
 
 function patchGeneratedNews(){
   const hub=path.join(ROOT,'news','index.html');
-  if(fs.existsSync(hub)){
-    let src=fs.readFileSync(hub,'utf8');
+  let hubSrc=null;try{hubSrc=fs.readFileSync(hub,'utf8');}catch(error){if(error.code!=='ENOENT')throw error;}
+  if(hubSrc!==null){
+    let src=hubSrc;
     src=src.replace('<title>Latest Entertainment News | Actors, Singers, Film & Music | MatchApp TV</title>','<title>Latest Entertainment News | MatchApp TV</title>');
     if(!src.includes('matchapp-ai-favicon.svg'))src=src.replace('<link rel="stylesheet" href="/style.css?v=187">',FAV+'\n<link rel="stylesheet" href="/style.css?v=187">');
     src=src.replaceAll(
@@ -91,8 +92,8 @@ function patchGeneratedNews(){
   const dir=path.join(ROOT,'news','articles');
   if(!fs.existsSync(dir))return;
   for(const name of fs.readdirSync(dir)){
-    const file=path.join(dir,name,'index.html');if(!fs.existsSync(file))continue;
-    let src=fs.readFileSync(file,'utf8');
+    const file=path.join(dir,name,'index.html');let src;
+    try{src=fs.readFileSync(file,'utf8');}catch(error){if(error.code==='ENOENT'||error.code==='ENOTDIR')continue;throw error;}
     if(!src.includes('matchapp-ai-favicon.svg'))src=src.replace('<link rel="stylesheet" href="/style.css?v=187">',FAV+'\n<link rel="stylesheet" href="/style.css?v=187">');
     src=src.replaceAll(
       '"publisher":{"@type":"Organization","name":"MatchApp TV","url":"https://matchapp.tv"}',
