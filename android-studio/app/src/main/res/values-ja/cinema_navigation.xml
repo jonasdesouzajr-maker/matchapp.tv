@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cinema_maps_unavailable">Google マップまたはブラウザをインストールするか有効にして、もう一度お試しください。</string>
+</resources>

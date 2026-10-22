@@ -68,10 +68,10 @@ test('Sign-in, sign-up and SMS share premium styling and verified OTP',()=>{
   assert.match(phone,/friendlySmsError\(error,'verify'\)/);
   assert.doesNotMatch(read('kids/index.html'),/auth-premium\.css/);
 });
-test('Release is Android adult v56 with unchanged native AdMob and UMP gates',()=>{
+test('Release is Android adult v57 with unchanged native AdMob and UMP gates',()=>{
   const gradle=read('android-studio/app/build.gradle.kts');
-  assert.match(gradle,/versionCode = 56/);
-  assert.match(gradle,/versionName = "1\.1\.56"/);
+  assert.match(gradle,/versionCode = 57/);
+  assert.match(gradle,/versionName = "1\.1\.57"/);
   assert.match(gradle,/ca-app-pub-9541435081010948\/4843348278/);
   const admob=read('android-studio/app/src/main/java/com/jonas/papercup/AdMobController.kt');
   assert.match(admob,/canRequestAds\(\)/);
