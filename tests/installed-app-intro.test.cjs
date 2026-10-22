@@ -77,7 +77,7 @@ test('native intro is bundled, duration-aware, one-time and destroyed on backgro
  assert.match(s,/R\.drawable\.ic_launcher_foreground/);
  assert.doesNotMatch(s,/setImageResource\(R\.drawable\.matchapp_official_icon\)/);
  assert.match(s,/setOnErrorListener/);
- assert.match(s,/override fun onPause\(\) \{\s*finishIntro\(\)\s*finishStartupTransition\(immediate = true\)/);
+ assert.match(s,/override fun onPause\(\) \{\s*finishIntro\(immediate = true\)\s*finishStartupTransition\(immediate = true\)/);
  assert.match(s,/mediaPlaybackRequiresUserGesture = false/);
  // First install also receives its intro when opened through a valid deep link;
  // recreated Activities and same-version launches are governed by the native policy.
