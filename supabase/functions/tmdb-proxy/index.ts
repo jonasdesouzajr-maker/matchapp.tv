@@ -108,8 +108,16 @@ function fullImage(path: string | null | undefined, size: string): string | null
 // that difference out of app.js entirely.
 function normalise(r: Record<string, unknown>, kind: "movie" | "tv"): Record<string, unknown> {
   const date = String((kind === "movie" ? r.release_date : r.first_air_date) ?? "");
+  // Keep the source's exact IMDb identity for display-only rating enrichment.
+  // Movie details include it directly; TV details expose it in external_ids.
+  const externalIds = r.external_ids;
+  const rawImdbId = kind === "movie" ? r.imdb_id
+    : externalIds && typeof externalIds === "object" && !Array.isArray(externalIds)
+      ? (externalIds as Record<string, unknown>).imdb_id : null;
+  const imdbId = typeof rawImdbId === "string" && /^tt\d{7,10}$/.test(rawImdbId) ? rawImdbId : null;
   return {
     tmdbId: r.id,
+    imdbId,
     kind,
     title: String((kind === "movie" ? r.title : r.name) ?? ""),
     originalTitle: String((kind === "movie" ? r.original_title : r.original_name) ?? ""),
@@ -421,6 +429,7 @@ Deno.serve(async (req: Request) => {
       if (wantRelated) ["credits", "similar", "recommendations"].forEach((v) => append.add(v));
       if (wantDetails) {
         ["videos", "watch/providers", "credits"].forEach((v) => append.add(v));
+        if (kind === "tv") append.add("external_ids");
         append.add(kind === "movie" ? "release_dates" : "content_ratings");
       }
       const extra = append.size ? "&append_to_response=" + encodeURIComponent([...append].join(",")) : "";

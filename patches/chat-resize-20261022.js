@@ -5,15 +5,25 @@
  if(window.__maChatResize)return;window.__maChatResize=true;
  if(/^\/kids(\/|$)/.test(location.pathname))return;
  var KEY='ma-chat-size-v1',SEL='#ma-jonas-home-panel,#ma-ambient-panel',GAP=8,PHONE=768,MINW=320,MAXW=720;
- var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)');
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)'),safeProbe=null;
  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(_){return{}}}
  function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(_){}}
  function kids(){var h=document.documentElement;return h.hasAttribute('data-kids-mode')||(document.body&&document.body.classList.contains('kids-mode'))}
- function safe(){var d=document.createElement('div');d.style.cssText='position:fixed;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)';document.body.appendChild(d);var c=getComputedStyle(d),r={t:parseFloat(c.paddingTop)||0,r:parseFloat(c.paddingRight)||0,b:parseFloat(c.paddingBottom)||0,l:parseFloat(c.paddingLeft)||0};d.remove();return r}
+ function safe(){
+  // Reuse the probe: appending/removing it on every measurement retriggers
+  // the body observer below and keeps an open chat in a resize loop.
+  if(!safeProbe||!safeProbe.isConnected){safeProbe=document.createElement('div');safeProbe.setAttribute('aria-hidden','true');safeProbe.style.cssText='position:fixed;top:0;left:0;visibility:hidden;pointer-events:none;width:0;height:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)';document.body.appendChild(safeProbe)}
+  // Read current env() values each time; rotation/keyboard changes still
+  // need fresh safe-area bounds even though the element is stable.
+  var c=getComputedStyle(safeProbe);return{t:parseFloat(c.paddingTop)||0,r:parseFloat(c.paddingRight)||0,b:parseFloat(c.paddingBottom)||0,l:parseFloat(c.paddingLeft)||0}}
  function vis(e){if(!e)return null;var r=e.getBoundingClientRect();return r.width>1&&r.height>1&&getComputedStyle(e).visibility!=='hidden'?r:null}
  function viewport(){var v=window.visualViewport;return{w:document.documentElement.clientWidth||innerWidth,h:v?Math.min(v.height,innerHeight):innerHeight}}
  function area(panel){
   var vp=viewport(),s=safe(),top=GAP+s.t,left=GAP+s.l,right=vp.w-GAP-s.r,bottom=vp.h-GAP-s.b;
+  // The same Jonas launcher remains the open/close control even at maximum
+  // panel size. Preserve its existing reserved header space.
+  var header=vis(document.getElementById('ma-reference-header'));
+  if(header&&header.bottom>top&&header.top<vp.h)top=Math.min(bottom,Math.max(top,header.bottom+GAP));
   var dock=vis(document.querySelector('.ma-reference-dock,.ma-cinema-dock'));
   if(dock&&dock.top<vp.h&&dock.top>vp.h*0.5)bottom=Math.min(bottom,dock.top-GAP);
   var ads=document.querySelectorAll('ins.adsbygoogle,[data-ad-slot],.sidebar-ad-left,.sidebar-ad-right,[id^="ad-slot"],[class*="ad-slot"]');
@@ -75,7 +85,8 @@
   function go(){try{var d=f.contentDocument;if(!d||!d.head||d.getElementById('ma-chat-resize-frame'))return;var st=d.createElement('style');st.id='ma-chat-resize-frame';
    st.textContent='html.matchapp-ambient-frame .ma-cinema-dock,html.matchapp-ambient-frame .ma-reference-dock{display:none!important}html.matchapp-ambient-frame body{padding-bottom:12px!important}';d.head.appendChild(st)}catch(_){}}
   f.addEventListener('load',go);go()}
- function sync(){if(document.documentElement.classList.contains('ma-chat-resizing'))return;var ps=document.querySelectorAll(SEL);for(var i=0;i<ps.length;i++){var p=ps[i];if(p.hidden||kids())continue;attach(p);frameFix(p);apply(p)}}
+ function sync(){if(document.documentElement.classList.contains('ma-chat-resizing'))return;var ps=document.querySelectorAll(SEL);for(var i=0;i<ps.length;i++){var p=ps[i];if(kids())continue;if(p.hidden){p.style.removeProperty('display');continue}attach(p);frameFix(p);apply(p)}}
+ window.MatchAppChatResize=Object.freeze({sync:sync});
  var t;var t2;function later(){clearTimeout(t);clearTimeout(t2);t=setTimeout(sync,60);t2=setTimeout(sync,450)}
  function boot(){sync();new MutationObserver(function(m){for(var i=0;i<m.length;i++){var n=m[i].target;if(m[i].type==='attributes'?n.matches&&n.matches(SEL):true){later();return}}}).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden']});
   addEventListener('resize',later);addEventListener('orientationchange',later);if(window.visualViewport)visualViewport.addEventListener('resize',later)}

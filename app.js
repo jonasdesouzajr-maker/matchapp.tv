@@ -1351,29 +1351,46 @@ async function getCatalogTmdbIdentity(title) {
 // and their genuine artwork. Use them when the live metadata proxy is slow or
 // unavailable; never search by fuzzy title or accept a mismatched film/TV ID.
 let CURATED_POSTERS_PROMISE = null;
+let CURATED_WATCH_POSTERS_PROMISE = null;
 async function getCuratedPoster(title) {
     if (!title || typeof fetch !== 'function') return null;
     const identity = await getCatalogTmdbIdentity(title);
     if (!identity) return null;
-    if (!CURATED_POSTERS_PROMISE) {
-        CURATED_POSTERS_PROMISE = fetch('/data/poster-identities.json', { cache: 'force-cache' })
-            .then(response => response.ok ? response.json() : [])
-            .then(rows => Array.isArray(rows) ? rows : [])
-            .catch(() => {
-                CURATED_POSTERS_PROMISE = null; // Retry if the local data was briefly unavailable.
-                return [];
-            });
-    }
-    const records = await CURATED_POSTERS_PROMISE;
     const key = catalogIdentityKey(title);
-    const row = records.find(record =>
-        record?.adult === false &&
-        (catalogIdentityKey(record.title) === key || catalogIdentityKey(record.originalTitle) === key) &&
-        Number(record.tmdbId) === identity.tmdbId && record.kind === identity.kind &&
-        (!identity.year || !record.year || Math.abs(Number(record.year) - identity.year) <= 1)
-    );
-    const poster = String(row?.posterLarge || row?.poster || '');
-    return /^https:\/\/image\.tmdb\.org\/t\/p\/(?:w\d+|original)\/[A-Za-z0-9_.-]+$/.test(poster) ? poster : null;
+    const posterFrom = (rows, watch = false) => {
+        for (const record of Array.isArray(rows) ? rows : []) {
+            if (watch ? record?.adult === true ||
+                record?.source !== 'https://www.themoviedb.org/' + identity.kind + '/' + identity.tmdbId
+                : record?.adult !== false) continue;
+            if (!(catalogIdentityKey(record.title) === key || catalogIdentityKey(record.originalTitle) === key) ||
+                Number(record.tmdbId) !== identity.tmdbId || record.kind !== identity.kind ||
+                (identity.year && record.year && !(Math.abs(Number(record.year) - identity.year) <= 1))) continue;
+            const poster = String(record.posterLarge || record.poster || '');
+            if (/^https:\/\/image\.tmdb\.org\/t\/p\/(?:w\d+|original)\/[A-Za-z0-9_.-]+$/.test(poster)) return poster;
+        }
+        return null;
+    };
+    const readSnapshot = url => fetch(url, { cache: 'force-cache' })
+        .then(response => response.ok ? response.json() : null)
+        .catch(() => null);
+    if (!CURATED_POSTERS_PROMISE) {
+        CURATED_POSTERS_PROMISE = readSnapshot('/data/poster-identities.json?repair=20261023-1');
+    }
+    const homeRequest = CURATED_POSTERS_PROMISE;
+    const home = await homeRequest;
+    if (!Array.isArray(home) && CURATED_POSTERS_PROMISE === homeRequest) CURATED_POSTERS_PROMISE = null;
+    const homePoster = posterFrom(home);
+    if (homePoster) return homePoster;
+
+    // The wider watch-guide snapshot is optional. A known Home original must
+    // never wait for this request, even while another title is awaiting it.
+    if (!CURATED_WATCH_POSTERS_PROMISE) {
+        CURATED_WATCH_POSTERS_PROMISE = readSnapshot('/data/watch-poster-identities.json');
+    }
+    const watchRequest = CURATED_WATCH_POSTERS_PROMISE;
+    const watch = await watchRequest;
+    if (!Array.isArray(watch?.entries) && CURATED_WATCH_POSTERS_PROMISE === watchRequest) CURATED_WATCH_POSTERS_PROMISE = null;
+    return posterFrom(watch?.entries, true);
 }
 async function getExactCatalogPoster(title) {
     if (!title) return null;
@@ -4068,7 +4085,7 @@ async function discoverVerifiedExactTMDB(requested){
         // that verified poster away and replaces it with a branded placeholder.
         _meta:{
           artwork:(d?.posterLarge||d?.posterOriginal||d?.poster||base.posterLarge||base.posterOriginal||base.poster||null),
-          tmdbId:base.tmdbId,kind:base.kind
+          tmdbId:base.tmdbId,kind:base.kind,imdbId:d?.imdbId||base.imdbId||''
         }
       };
     }
@@ -4154,7 +4171,7 @@ async function aiProposedVerifiedExact(requested){
             // all over again from title text.
             _meta:{
                 artwork:(d.posterLarge||d.posterOriginal||d.poster||base.posterLarge||base.posterOriginal||base.poster||null),
-                tmdbId:base.tmdbId,kind:base.kind
+                tmdbId:base.tmdbId,kind:base.kind,imdbId:d.imdbId||base.imdbId||''
             }
         };
     }
@@ -4341,7 +4358,7 @@ async function verifyCuratedPlatform(selected,requested) {
     if(!hit)return null;
     return {...result,platform:hit,platformVerified:true,originalTitle:meta.originalTitle||meta.original_title||result.originalTitle||'',
         _tmdbId:Number(meta.tmdb_id),_tmdbKind:meta.media_kind,_catalogMedia:meta,
-        _meta:{...(result._meta||{}),tmdbId:Number(meta.tmdb_id),kind:meta.media_kind,
+        _meta:{...(result._meta||{}),tmdbId:Number(meta.tmdb_id),kind:meta.media_kind,imdbId:meta.imdb_id||'',
             artwork:meta.poster_large_url||meta.poster_original_url||meta.poster_url||result._meta?.artwork||null}};
 }
 async function rankVerifiedCuratedMatch(requested) {
@@ -5350,17 +5367,21 @@ async function renderResult(selected, isSpecificSearch) {
     // live-discovered title could lose the year/type/TMDB identity that had
     // already been source-verified by the matcher. That is how real posters
     // fell back to branded placeholders even though TMDB had the artwork.
+    const sourceImdbId = String(selected._meta?.imdbId || selected._catalogMedia?.imdb_id || '');
     window.currentMatchIdentity = {
         title:selected.title,
         originalTitle:selected.originalTitle||selected._meta?.originalTitle||'',
         identityKeys:[...(window.matchPolicy?.identityKeys?.(selected)||[])],
         streamUrl:selected.watchUrl||'',
-        year:selected.year||'',
+        year:selected.year||selected._meta?.year||'',
         country:selected.country||'',
         countryCode:selected.countryCode||'',
         cats:Array.isArray(selected.cats)?selected.cats:[],
         tmdbId:Number(selected._tmdbId||selected._meta?.tmdbId)||null,
         kind:selected._tmdbKind||selected._meta?.kind||'',
+        imdbId:/^tt\d{7,10}$/.test(sourceImdbId)&&
+            Number.isSafeInteger(Number(selected._tmdbId||selected._meta?.tmdbId))&&
+            Number(selected._tmdbId||selected._meta?.tmdbId)>0?sourceImdbId:'',
         artwork:selected._meta?.artwork||'',
         // Exact official Spotify curation bypasses movie/TMDB poster lookup.
         spotifyArtwork:exactSpotifyPlaylistCover(selected),

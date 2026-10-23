@@ -71,6 +71,22 @@ test('input and quick prompts use original authenticated AI discovery route',()=
  assert.doesNotMatch(js,/\/api\/ask|OPENROUTER_API_KEY|STRIPE_SECRET_KEY/);
  dom.window.close();
 });
+test('Home Jonas remains tappable and toggles a resized panel without discarding the draft',()=>{
+ const dom=scene(),d=dom.window.document,bubble=d.getElementById('ma-jonas-home-bubble'),panel=d.getElementById('ma-jonas-home-panel'),input=d.getElementById('ma-jonas-home-input');
+ const previousStyle=bubble.getAttribute('style');input.value='Continue this question';
+ const legacy=d.createElement('style');legacy.textContent='html body #ma-jonas-home.is-chat-stage > .jh-bubble{visibility:hidden!important;pointer-events:none!important}';d.head.appendChild(legacy);
+ bubble.click();
+ assert.equal(panel.hidden,false);assert.equal(bubble.style.getPropertyValue('display'),'block');
+ assert.equal(dom.window.getComputedStyle(bubble).visibility,'visible','legacy full-screen CSS must not hide the toggle');
+ assert.equal(bubble.style.getPropertyValue('pointer-events'),'auto');
+ panel.style.setProperty('display','flex','important');bubble.click();
+ assert.equal(panel.hidden,true);assert.equal(panel.style.getPropertyValue('display'),'');
+ assert.equal(bubble.getAttribute('aria-expanded'),'false');
+ assert.equal(bubble.getAttribute('style')||'',previousStyle||'');
+ bubble.click();assert.equal(input.value,'Continue this question');
+ assert.equal(panel,d.getElementById('ma-jonas-home-panel'));
+ dom.window.close();
+});
 test('Portuguese locale updates controls and suggestion questions',async()=>{
  const dom=scene('https://matchapp.tv/',{locale:'pt-BR'});const w=dom.window,d=w.document;
  assert.equal(d.getElementById('ma-jonas-home-bubble').getAttribute('aria-label'),'Conversar com Jonas');

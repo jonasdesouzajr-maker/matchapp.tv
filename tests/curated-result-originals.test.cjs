@@ -25,17 +25,17 @@ test('curated original is selected without waiting for TMDB proxy, never swappin
  let identity={tmdbId:928344,kind:'movie',year:2022};
  let requests=0;
  const context={getCatalogTmdbIdentity:async()=>identity,catalogIdentityKey:normalize,
-  fetch:async url=>{requests++;assert.equal(url,'/data/poster-identities.json');return {ok:true,json:async()=>rows};}};
+  fetch:async url=>{requests++;assert.ok(['/data/poster-identities.json','/data/watch-poster-identities.json'].includes(url.split('?')[0]));return {ok:true,json:async()=>url.includes('watch-poster')?{entries:[]}:rows};}};
  const get=vm.runInNewContext(app.slice(start,end)+'\ngetCuratedPoster',context);
  assert.equal(await get('WEIRD: The Al Yankovic Story'),expected.posterLarge);
- assert.equal(requests,1);
+ assert.equal(requests,1,'an available Home original must not fetch the optional watch snapshot');
  identity={tmdbId:999999,kind:'movie',year:2022};
  assert.equal(await get('WEIRD: The Al Yankovic Story'),null,'never use artwork from another TMDB identity');
  identity={tmdbId:928344,kind:'tv',year:2022};
  assert.equal(await get('WEIRD: The Al Yankovic Story'),null,'film and television IDs must not be mixed');
  identity={tmdbId:928344,kind:'movie',year:1995};
  assert.equal(await get('WEIRD: The Al Yankovic Story'),null,'edition year must match');
- assert.equal(requests,1,'curated local data should only be downloaded once');
+ assert.equal(requests,2,'each curated local snapshot should only be downloaded once');
 });
 
 test('the visibly revealed adult match probes curated artwork before optional metadata completes',()=>{

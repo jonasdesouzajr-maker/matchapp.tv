@@ -30,6 +30,9 @@ html body:not(.kids-body) .ma-pill-polish[aria-current="page"],html body:not(.ki
 html.ma-reference body:not(.kids-body) :is(.ma-reference-dock,.ma-cinema-dock) a > span:is([data-cinema-copy],[data-ma-text-pill]),html body:not(.kids-body) :is(.ma-reference-dock,.ma-cinema-dock) [data-ma-text-pill]{background:none!important;box-shadow:none!important;padding:0!important}
 
 /* 2. Poster-wall collage: the reference theme hid it everywhere. */
+/* Keep the negative decorative layer above the body paint on pages that do
+   not load the legacy wall stylesheet. The foreground layout is unchanged. */
+html body:not(.kids-body):has(> .poster-wall){isolation:isolate}
 html body:not(.kids-body) div.poster-wall,
 html.ma-reference body:not(.kids-body) .poster-wall,
 html.ma-reference body.page-home:not(.kids-body) :is(#poster-wall,.poster-wall).poster-wall,
@@ -50,7 +53,10 @@ html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-gr
 html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall{background:#0d0820!important}
 html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{inset:-14% -12% auto -12%!important;transform:perspective(1600px) rotateX(9deg) rotateZ(-5deg) scale(1.1)!important;transform-origin:50% 30%!important;filter:blur(2px) saturate(1.18)!important;backface-visibility:hidden}
 @media(max-width:700px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{filter:blur(1.5px) saturate(1.15)!important;transform:perspective(1200px) rotateX(8deg) rotateZ(-5deg) scale(1.12)!important}}
-html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile{position:relative!important;inset:auto!important;width:auto!important;height:auto!important;aspect-ratio:2/3!important;margin:0!important;border-radius:6px!important;overflow:hidden!important;transform:none!important;animation:none!important;box-shadow:0 2px 6px rgba(0,0,0,.45)!important}
+/* The dense grid needs every tile; supersede the legacy phone limit of 12.
+   Keep the existing failed-image hide behavior above legacy important rules. */
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile[hidden]{display:none!important}
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile:not([hidden]){display:block!important;position:relative!important;inset:auto!important;width:auto!important;height:auto!important;aspect-ratio:2/3!important;margin:0!important;border-radius:6px!important;overflow:hidden!important;transform:none!important;animation:none!important;box-shadow:0 2px 6px rgba(0,0,0,.45)!important}
 html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile>img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;transform:none!important;filter:none!important}
 @media(max-width:1099px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr))!important}}
 @media(max-width:700px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(66px,1fr))!important;gap:4px!important}html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile{border-radius:4px!important}}

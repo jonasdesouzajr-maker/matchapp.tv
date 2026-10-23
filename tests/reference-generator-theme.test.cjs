@@ -71,6 +71,22 @@ function cjsTemplates(file,stop,expression,theme){
   });
 }
 
+// The repair changes only the owned Jonas loader's final query pin. Compare
+// every other byte of the body, including the loader's original version.
+function bodyWithoutJonasRepair(body,expectRepair){
+  const copy=body.cloneNode(true);
+  for(const script of copy.querySelectorAll('script[src^="/patches/jonas-adult-page.js?"]')){
+    const src=script.getAttribute('src'),suffix='&repair=20261023-1';
+    const pins=new URL(src,'https://matchapp.tv').searchParams.getAll('repair');
+    if(expectRepair||pins.length){
+      assert.deepEqual(pins,['20261023-1'],'the owned Jonas loader receives exactly the current repair pin');
+      assert.ok(src.endsWith(suffix),'the repair pin must preserve the original query as an exact prefix');
+      script.setAttribute('src',src.slice(0,-suffix.length));
+    }
+  }
+  return copy.outerHTML;
+}
+
 function assertPresentationOnly(raw,themed,route){
   const before=new JSDOM(raw).window,after=new JSDOM(themed).window;
   try{
@@ -80,7 +96,7 @@ function assertPresentationOnly(raw,themed,route){
     for(const selector of ['style[data-cinema-layer]','link[href^="/patches/reference-system.css?"]','link[href^="/patches/reference-pages.css?"]','script[defer][src^="/patches/reference-system.js?"]'])assert.equal(d.querySelectorAll(selector).length,1,route+' has exactly one '+selector);
     assert.equal(d.querySelector('style[data-cinema-layer]').textContent,'@layer ma-reference;');
     assert.equal(d.querySelector('link[href^="/patches/reference-home.css"],link[href^="/patches/reference-explore.css"]'),null);
-    assert.equal(d.body.outerHTML,beforeDoc.body.outerHTML,'all source records, controls, artwork, ad geometry and paths stay identical');
+    assert.equal(bodyWithoutJonasRepair(d.body,true),bodyWithoutJonasRepair(beforeDoc.body,false),'all source records, controls, artwork, ad geometry and paths stay identical');
     const validOwnedPreload=node=>node.matches('link[rel="preload"][as="style"][data-cinema-preload="critical-style"]')&&CRITICAL_STYLE_PRELOADS.includes(node.getAttribute('href'));
     const originalHead=doc=>[...doc.head.children].filter(node=>!validOwnedPreload(node)&&!node.matches('style[data-cinema-layer],link[href^="/patches/reference-system.css?"],link[href^="/patches/reference-pages.css?"],script[src^="/patches/reference-system.js?"]')).map(node=>versionReferenceRuntimeAssets(versionFrameStylesheet(node.outerHTML)));
     assert.deepEqual(originalHead(d),originalHead(beforeDoc),'metadata, analytics, original styles and source scripts stay identical');
