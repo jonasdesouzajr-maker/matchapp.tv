@@ -1,10 +1,11 @@
 /* Rendered production-DOM artwork fixtures with controlled CDN delays.
  * These checks exercise real browser image events, not live matching or AI. */
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const {matchingFixtureHtml}=require('./qa-matching-fixture-html.cjs');
-const root=path.resolve(__dirname,'..'),out=path.resolve(process.env.MATCHAPP_ARTIFACTS||'/tmp/matchapp-poster-delivery');
+const root=path.resolve(__dirname,'..'),out=process.env.MATCHAPP_ARTIFACTS
+ ?path.resolve(process.env.MATCHAPP_ARTIFACTS):fs.mkdtempSync(path.join(os.tmpdir(),'matchapp-poster-delivery-'));
 const posterFile=process.env.MATCHAPP_POSTER_FIXTURE;
 if(!posterFile)throw Error('Set MATCHAPP_POSTER_FIXTURE to the independently downloaded original Nimona poster.');
 const poster=fs.readFileSync(posterFile),source='https://image.tmdb.org/t/p/w780/2NQljeavtfl22207D1kxLpa4LS3.jpg';
