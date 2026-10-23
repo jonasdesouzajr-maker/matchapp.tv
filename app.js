@@ -5324,9 +5324,12 @@ async function renderResult(selected, isSpecificSearch) {
             ['movie', 'tv'].includes(selected._tmdbKind || selected._meta?.kind);
         const firstKnownCover = !initialPinned && selected.source !== 'itunes-live'
             ? getVerifiedPoster(selected.title) : '';
-        const firstCover = exactSpotifyPlaylistCover(selected) ||
+        let firstCover = exactSpotifyPlaylistCover(selected) ||
             (/^https:\/\/(?:image\.tmdb\.org|is\d+-ssl\.mzstatic\.com|i\.scdn\.co|http2\.mlstatic\.com)\//i.test(sourceArtwork)
                 ? sourceArtwork : firstKnownCover || firstFallback);
+        // Start the exact source poster at a phone-friendly rendition. The
+        // media layer can upgrade it for a larger/high-density display.
+        firstCover = firstCover.replace(/^(https:\/\/image\.tmdb\.org\/t\/p\/)(?:w\d+|original)\//, '$1w500/');
         if (firstPoster.__matchappInitialPosterLoad)
             firstPoster.removeEventListener('load', firstPoster.__matchappInitialPosterLoad);
         const firstLoaded = () => {
