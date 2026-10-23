@@ -512,7 +512,7 @@ ${imageMeta}
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
-${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-5"></script>
+${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-6"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 <style>
 /* Keep article navigation clear of the existing top-right Jonas companion. */
@@ -625,7 +625,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
-${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-5"></script>
+${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-6"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head>
 <body class="news-ui-page">
