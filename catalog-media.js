@@ -210,6 +210,7 @@
       return {
         source_key:'tmdb-live:'+kind+':'+tmdbId,
         title:String(src.title||found?.title||title),
+        original_title:String(src.originalTitle||found?.originalTitle||''),
         normalized_title:normalise(title),
         year:src.year?Number(src.year):(found?.year?Number(found.year):null),
         media_kind:kind,
@@ -257,6 +258,7 @@
         // Use only artwork returned by this successful exact source response.
         _verifiedPosterUrl:d.posterLarge||d.poster||d.posterOriginal||null,
         title:String(d.title||meta.title||''),
+        original_title:String(d.originalTitle||meta.original_title||''),
         imdb_id:/^tt\d{7,10}$/.test(String(d.imdbId||''))?String(d.imdbId):
           /^tt\d{7,10}$/.test(String(meta.imdb_id||''))?String(meta.imdb_id):null,
         year:d.year?Number(d.year):meta.year,
@@ -282,7 +284,10 @@
     }catch(_){return meta;}
   }
 
-  function safePoster(meta){return [meta?.poster_original_url,meta?.poster_large_url,meta?.poster_url].find(u=>TRUSTED_POSTER.test(String(u||'')))||null;}
+  function safePoster(meta,compact=false){return (compact
+    ?[meta?.poster_large_url,meta?.poster_url,meta?.poster_original_url]
+    :[meta?.poster_original_url,meta?.poster_large_url,meta?.poster_url])
+    .find(u=>TRUSTED_POSTER.test(String(u||'')))||null;}
   const COUNTRY_CODES={
     argentina:'AR',australia:'AU',belgium:'BE',brazil:'BR',brasil:'BR',canada:'CA',chile:'CL',china:'CN',colombia:'CO',
     denmark:'DK',egypt:'EG',finland:'FI',france:'FR',germany:'DE',greece:'GR','hong kong':'HK',india:'IN',indonesia:'ID',
@@ -671,7 +676,11 @@
     if(state.tmdbId&&found!==state.tmdbId)return false;
     if(state.kind&&row.media_kind&&row.media_kind!==state.kind)return false;
     if(state.year&&row.year&&Math.abs(Number(row.year)-state.year)>1)return false;
-    return normalise(row.title)===normalise(state.title)||(state.tmdbId>0&&found===state.tmdbId);
+    const exactAlias=Number.isSafeInteger(found)&&found>0&&
+      (row.source_key==='tmdb-live:'+row.media_kind+':'+found||
+       (row.source_key==='tmdb:'+row.media_kind+':'+found&&!!row._verifiedPosterUrl))&&
+      normalise(row.original_title)===normalise(state.title);
+    return normalise(row.title)===normalise(state.title)||exactAlias||(state.tmdbId>0&&found===state.tmdbId);
   }
   const ADULT_IMAGE_PROBES=new Map();
   const ADULT_IMAGE_QUEUE=[],ADULT_IMAGE_PRIORITY=[];
@@ -687,27 +696,40 @@
   }
   function posterImageLoads(url,priority=false){
     if(ADULT_IMAGE_PROBES.has(url))return ADULT_IMAGE_PROBES.get(url);
+    let lateResolve;
+    const lateLoad=new Promise(resolve=>{lateResolve=resolve;});
     const pending=new Promise(resolve=>{
       const start=()=>{
         const probe=new Image();
-        let done=false,timeout;
-        const finish=valid=>{
+        let done=false,timeout,lateTimeout;
+        const cleanup=()=>{
+          clearTimeout(lateTimeout);probe.onload=null;probe.onerror=null;
+        };
+        const finish=(valid,timedOut=false)=>{
           if(done)return;
           done=true;clearTimeout(timeout);
-          probe.onload=null;probe.onerror=null;
+          // Release the request lane promptly, but a slow CDN is not proof
+          // that these exact pixels are unavailable. Keep one bounded listener
+          // so a late success can still recover the result that requested it.
+          if(timedOut)lateTimeout=setTimeout(()=>{cleanup();lateResolve(false);},60000);
+          else {cleanup();lateResolve(false);}
           adultImageActive--;
           resolve(valid);
           drainAdultImageProbes();
         };
         // Stalled mobile images must release their bounded verification lane.
-        timeout=setTimeout(()=>finish(false),6500);
-        probe.onload=()=>finish(probe.naturalWidth!==0);
-        probe.onerror=()=>finish(false);
+        timeout=setTimeout(()=>finish(false,true),6500);
+        probe.onload=()=>{
+          const valid=probe.naturalWidth!==0;
+          if(done){cleanup();lateResolve(valid);}else finish(valid);
+        };
+        probe.onerror=()=>{if(done){cleanup();lateResolve(false);}else finish(false);};
         try{probe.src=url;}catch(_){finish(false);}
       };
       (priority?ADULT_IMAGE_PRIORITY:ADULT_IMAGE_QUEUE).push(start);
       drainAdultImageProbes();
     });
+    pending.lateLoad=lateLoad;
     ADULT_IMAGE_PROBES.set(url,pending);
     pending.then(valid=>{
       if(!valid&&ADULT_IMAGE_PROBES.get(url)===pending)ADULT_IMAGE_PROBES.delete(url);
@@ -715,6 +737,29 @@
       else if(ADULT_IMAGE_PROBES.size>256)ADULT_IMAGE_PROBES.delete(ADULT_IMAGE_PROBES.keys().next().value);
     });
     return pending;
+  }
+  function recoverLateAdultPoster(img,state,url,preferred){
+    if(!img.isConnected||img.__matchappAdultPoster!==state||state.preferred!==preferred)return;
+    if(img.id==='res-poster-img'&&((Number(window.__matchappMatchRunId)||0)!==state.generation||
+       window.globalMatchTitle!==state.title))return;
+    const shown=String(img.currentSrc||img.src||'');
+    const width=value=>/\/original\//.test(value)?Infinity:Number(String(value).match(/\/w(\d+)\//)?.[1]||0);
+    // Preserve sharper decoded pixels and any newer verified source identity.
+    if(img.complete&&img.naturalWidth>0&&sameOriginalArtwork(shown,url)&&width(shown)>=width(url))return;
+    state.failed.delete(url);
+    img.dataset.matchappFallbackStage='verified';
+    img.removeAttribute?.('srcset');img.src=url;
+    if(img.id==='res-poster-img'){
+      const publish=()=>{
+        if(img.isConnected&&img.__matchappAdultPoster===state&&state.preferred===preferred&&
+           (Number(window.__matchappMatchRunId)||0)===state.generation&&
+           window.globalMatchTitle===state.title&&String(img.currentSrc||img.src||'')===url&&img.naturalWidth>0){
+          if(typeof window.setLoadedMatchPoster==='function')window.setLoadedMatchPoster(url,state.title);
+          else window.globalMatchPoster=url;
+        }
+      };
+      if(img.complete&&img.naturalWidth>0)publish();else img.addEventListener('load',publish,{once:true});
+    }
   }
   function adultPosterNearView(img,margin=240){
     if(typeof img.getBoundingClientRect!=='function')return true;
@@ -747,11 +792,16 @@
     if(state.fastPaint)state.fastPaint.active=false;
     const size=value=>/\/original\//.test(value)?Infinity:Number(String(value).match(/\/w(\d+)\//)?.[1]||0);
     const compact=match[1]+((state.isRail||state.isPortfolio||state.isWatch)?'w342/':'w500/')+match[2];
-    const alternate=compact===source?match[1]+'w780/'+match[2]:compact;
-    const urls=[...new Set([source,alternate])],run={active:true,source,shown:false,rank:0,remaining:urls.length};
+    const required=(img.getBoundingClientRect?.().width||250)*(window.devicePixelRatio||1);
+    const primary=source.includes('/original/')?match[1]+'w780/'+match[2]:source;
+    const alternate=compact===primary?match[1]+(required>500?'w780/':'w342/')+match[2]:compact;
+    const urls=[...new Set([primary,alternate])],run={active:true,source,shown:false,rank:0,remaining:urls.length};
     state.fastPaint=run;
     const current=()=>run.active&&img.isConnected&&img.__matchappAdultPoster===state&&state.fastPaint===run;
-    for(const candidate of urls)posterImageLoads(candidate,true).then(valid=>{
+    for(const candidate of urls){
+      const pending=posterImageLoads(candidate,true),preferred=state.preferred;
+      pending.lateLoad?.then(valid=>{if(valid)recoverLateAdultPoster(img,state,candidate,preferred);});
+      pending.then(valid=>{
       if(!current())return;
       if(valid){
         const shown=String(img.currentSrc||img.src||'');
@@ -774,7 +824,8 @@
         if(!run.shown&&img.__matchappAdultPoster===state&&img.isConnected)void repairAdultPoster(img,state);
         if(state.responsiveResizePending)restoreResponsivePoster(img,state);
       }
-    });
+      });
+    }
     return true;
   }
   async function repairAdultPoster(img,state){
@@ -793,7 +844,11 @@
       const worker=async()=>{
         while(!settled&&next<urls.length){
           const url=urls[next++];let valid=false;
-          try{valid=await posterImageLoads(url,!state.isRail||adultPosterNearView(img));}catch(_){}
+          try{
+            const pending=posterImageLoads(url,!state.isRail||adultPosterNearView(img)),preferred=state.preferred;
+            pending.lateLoad?.then(loaded=>{if(loaded)recoverLateAdultPoster(img,state,url,preferred);});
+            valid=await pending;
+          }catch(_){}
           if(valid){if(!settled){settled=true;resolve(url);}return;}
           state.failed.add(url);
           if(--remaining===0&&!settled)resolve('');
@@ -1362,11 +1417,11 @@
     if(Number.isSafeInteger(pinned)&&pinned>0&&meta&&
        Number(meta.tmdb_id)!==pinned)meta=null;
     if(meta)meta=await refreshExact(meta);
-    if(!safePoster(meta)){
+    if(!safePoster(meta,!opts.kids)){
       const live=await lookupLive(title,opts);
       if(live)meta=meta?{...meta,...live}:live;
     }
-    return {url:safePoster(meta)||'',meta:meta||null};
+    return {url:safePoster(meta,!opts.kids)||'',meta:meta||null};
   }
 
   let mainSerial=0;

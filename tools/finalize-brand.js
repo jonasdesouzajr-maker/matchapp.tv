@@ -163,6 +163,7 @@ function referenceRuntimeAssetURL(url){
  const entries=[];if(MATCH_REPAIR_ASSETS.has(file))entries.push(['repair','20261023-1']);if(ANDROID_QA_ASSETS.has(file))entries.push(['androidqa','20261021-1']);if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
  if(file==='app.js'||file==='profile.js')entries.push(['readiness','20261022-1']);
  if(file==='profile.js')entries.push(['identity','20261022-1']);
+ if(file==='app.js'||file==='catalog-media.js')entries.push(['delivery','20261023-2']);
  if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
   if(['ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['audiocover','20261022-1']);
  if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);

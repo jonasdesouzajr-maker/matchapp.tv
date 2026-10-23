@@ -23,6 +23,26 @@ test('exact live and refreshed media retain the validated IMDb identity without 
  assert(!media.match(/\.select\('[^']*\bimdb_id\b/),'IMDb data is in-memory enrichment, not a new SQL column requirement');
 });
 
+test('verified original-title aliases retain source identity when TMDB returns a localized display title',async()=>{
+ const start=media.indexOf('  async function lookupLive('),end=media.indexOf('  function safePoster(',start);
+ const safeStart=media.indexOf('  function safeSameTitleMedia('),safeEnd=media.indexOf('  const ADULT_IMAGE_PROBES',safeStart);
+ const original='Como caído del cielo';
+ const movie={...source,title:'Out of the Clear Blue Sky',originalTitle:original,tmdbId:654299,year:'2019',imdbId:'tt10946934'};
+ const ctx={window:{tmdbLookup:async()=>movie,tmdbDetails:async()=>movie},LIVE_CACHE:new Map(),
+  normalise:v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),Map,Date,Promise};
+ const api=vm.runInNewContext(media.slice(start,end)+media.slice(safeStart,safeEnd)+'\n({lookupLive,safeSameTitleMedia})',ctx);
+ const row=await api.lookupLive(original,{kind:'movie',year:2019});
+ assert.equal(row.original_title,original);
+ const current={title:original,tmdbId:0,kind:'movie',year:2019};
+ assert.equal(api.safeSameTitleMedia(row,current),true);
+ assert.equal(api.safeSameTitleMedia({...row,source_key:'tmdb:movie:654299'},current),true,'a freshly verified database identity retains the original-title alias');
+ assert.equal(api.safeSameTitleMedia({...row,source_key:'tmdb:movie:654299',_verifiedPosterUrl:null},current),false,'unrefreshed cached metadata cannot authorize an alias');
+ assert.equal(api.safeSameTitleMedia({...row,source_key:'unverified'},current),false);
+ assert.equal(api.safeSameTitleMedia({...row,year:1990},current),false);
+ assert.equal(api.safeSameTitleMedia(row,{...current,tmdbId:999}),false);
+ assert.equal(api.safeSameTitleMedia(row,{...current,kind:'tv'}),false);
+});
+
 test('enrichment publishes IMDb only for the same selected TMDB identity',async()=>{
  const start=media.indexOf('  let mainSerial=0;'),end=media.indexOf('  let kidsSerial=',start);
  const safeStart=media.indexOf('  function safeSameTitleMedia('),safeEnd=media.indexOf('  const ADULT_IMAGE_PROBES',safeStart);

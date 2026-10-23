@@ -6,7 +6,7 @@ const helpers=source.slice(source.indexOf('  function adultPosterSurface('),sour
 const original='https://image.tmdb.org/t/p/w780/exact-owner-art.jpg';
 const compact='https://image.tmdb.org/t/p/w500/exact-owner-art.jpg';
 const flush=async()=>{for(let i=0;i<24;i++)await Promise.resolve()};
-function scene({rail=false,offscreen=false,cached=[]}={}){
+function scene({rail=false,offscreen=false,cached=[],startUrl=original}={}){
  let now=0,nextTimer=0;const timers=new Map(),probes=[],observerTargets=new Set(),cache=new Set(cached),loaded=[],lookups=[];
  class Probe{
   constructor(){this.naturalWidth=0;this.onload=null;this.onerror=null;}
@@ -22,7 +22,7 @@ function scene({rail=false,offscreen=false,cached=[]}={}){
  }
  const listeners=new Map();
  const img={id:rail?'':'res-poster-img',dataset:{},loading:rail?'lazy':'eager',style:{},complete:false,naturalWidth:0,isConnected:true,writes:[],
-  _src:original,
+  _src:startUrl,
   get src(){return this._src;},get currentSrc(){return this._src;},
   set src(url){this._src=url;this.writes.push(url);this.complete=cache.has(url);this.naturalWidth=this.complete?Number(url.match(/\/w(\d+)\//)?.[1]||780):0;},
   getBoundingClientRect(){return {width:146,height:195,left:10,right:156,top:offscreen?2000:120,bottom:offscreen?2195:315};},
@@ -37,8 +37,8 @@ function scene({rail=false,offscreen=false,cached=[]}={}){
   setTimeout(fn,ms){const id=++nextTimer;timers.set(id,{fn,at:now+ms});return id;},clearTimeout:id=>timers.delete(id),Date:{now:()=>now},
   localPoster:()=> 'data:image/svg+xml,named-fallback',normalise:s=>String(s).toLowerCase(),lookup:async title=>{lookups.push(title);return null;},Promise,Map,Set});
  const api=vm.runInContext(helpers+'\n({recoverAdultPoster})',ctx);
- const recover=()=>api.recoverAdultPoster(img,'Exact owner title',null,original);
- return {img,probes,timers,loaded,lookups,observerTargets,recover,
+ const recover=()=>api.recoverAdultPoster(img,'Exact owner title',null,startUrl);
+ return {img,probes,timers,loaded,lookups,observerTargets,recover,win,
   enter(){offscreen=false;observer.callback([{target:img,isIntersecting:true}]);},
   disconnect(){img.isConnected=false;observer?.callback([{target:img,isIntersecting:false}]);},
   async advance(ms){const target=now+ms;for(;;){const next=[...timers].filter(([,t])=>t.at<=target).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;now=next[1].at;timers.delete(next[0]);next[1].fn();await flush();}now=target;await flush();},
@@ -105,4 +105,47 @@ test('a destination error keeps the remaining rendition alive and cannot strand 
  s.img.complete=true;s.img.naturalWidth=0;s.error();s.probes[0].fail();await flush();
  assert(s.probes.some(p=>p.url.includes('/w342/')),'the existing exact-art repair resumes after both displayed candidates fail');
  assert.deepEqual(s.lookups,[]);
+});
+
+test('a verified original arriving after the probe deadline replaces the fallback for its current result',async()=>{
+ const s=scene();s.recover();
+ await s.advance(26000);
+ s.img.src='data:image/svg+xml,named-fallback';
+ s.probes[1].load();await flush();
+ assert.equal(s.img.src,compact,'late decoded pixels must recover the current result');
+ assert.equal(s.img.dataset.matchappFallbackStage,'verified');
+ assert.equal(s.loaded.at(-1).url,compact);
+});
+
+test('late successful downloads cannot overwrite a newer result or corrected artwork',async()=>{
+ for(const changed of ['result','artwork','disconnected','generation']){
+  const s=scene();s.recover();await s.advance(26000);
+  s.img.src='data:image/svg+xml,new-result';
+  if(changed==='result')s.img.__matchappAdultPoster={title:'New title'};
+  if(changed==='artwork')s.img.__matchappAdultPoster.preferred=original.replace('exact-owner-art','corrected-art');
+  if(changed==='disconnected')s.img.isConnected=false;
+  if(changed==='generation')s.win.__matchappMatchRunId=1;
+  const before=s.loaded.length;
+  s.probes[1].load();s.probes[0].load();await flush();
+  assert.equal(s.img.src,'data:image/svg+xml,new-result');assert.equal(s.loaded.length,before);
+ }
+});
+
+test('late compact pixels never downgrade a sharper decoded poster and listeners expire',async()=>{
+ const s=scene();s.recover();await s.advance(26000);
+ s.img.src='data:image/svg+xml,named-fallback';
+ s.probes[0].load();await flush();assert.equal(s.img.src,original);
+ s.probes[1].load();await flush();assert.equal(s.img.src,original);
+ await s.advance(90000);assert.equal(s.timers.size,0);
+ const expired=scene();expired.recover();await expired.advance(100000);
+ expired.img.src='data:image/svg+xml,named-fallback';
+ expired.probes[0].load();await flush();assert.equal(expired.img.src,'data:image/svg+xml,named-fallback');
+ assert.equal(expired.timers.size,0);
+});
+
+test('visible delivery bounds huge originals and avoids a needless high-resolution upgrade on small cards',()=>{
+ const huge=scene({startUrl:original.replace('/w780/','/original/')});huge.recover();
+ assert.deepEqual(huge.probes.map(p=>p.url),[original,compact]);
+ const small=scene({startUrl:compact});small.recover();
+ assert.deepEqual(small.probes.map(p=>p.url),[compact,original.replace('/w780/','/w342/')]);
 });

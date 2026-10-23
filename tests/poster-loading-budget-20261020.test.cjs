@@ -68,11 +68,11 @@ function firstPaint(selected,registry=''){
 test('verified selected artwork starts in the initial result paint before optional metadata',()=>{
  const source='https://image.tmdb.org/t/p/w780/exact-tv.jpg';
  const scene=firstPaint({title:'Exact TV',_tmdbId:42,_tmdbKind:'tv',_meta:{artwork:source}},'https://image.tmdb.org/t/p/w780/wrong-film.jpg');
- assert.equal(scene.img.src,source);
+ assert.equal(scene.img.src,source.replace('/w780/','/w500/'));
  assert.equal(scene.img.fetchPriority,'high');assert.equal(scene.img.loading,'eager');
  assert.equal(scene.img.decoding,'async');assert.equal(scene.registryReads,0);
  assert.deepEqual(scene.loaded,[],'candidate art is not shared before pixels load');
- scene.load();assert.deepEqual(scene.loaded,[{url:source,title:'Exact TV'}]);
+ scene.load();assert.deepEqual(scene.loaded,[{url:source.replace('/w780/','/w500/'),title:'Exact TV'}]);
 });
 
 test('initial poster paint never takes title-only registry art for a pinned same-name source',()=>{
@@ -82,5 +82,18 @@ test('initial poster paint never takes title-only registry art for a pinned same
  const audio=firstPaint({title:'Same Name',source:'itunes-live',cats:['music album']},wrong);
  assert.equal(audio.registryReads,0);assert.match(audio.img.src,/^data:image\/svg/);
  const known=firstPaint({title:'Known curated title'},wrong);
- assert.equal(known.img.src,wrong);assert.equal(known.registryReads,1);
+ assert.equal(known.img.src,wrong.replace('/w780/','/w500/'));assert.equal(known.registryReads,1);
+});
+
+test('adult metadata chooses a bounded source rendition while Kids retains its existing image order',async()=>{
+ const start=media.indexOf('  function safePoster('),end=media.indexOf('  const COUNTRY_CODES',start);
+ const resolveStart=media.indexOf('  async function resolvePoster('),resolveEnd=media.indexOf('  let mainSerial=',resolveStart);
+ const prefix='https://image.tmdb.org/t/p/',file='exact-owned-poster.jpg';
+ const row={tmdb_id:42,poster_url:prefix+'w500/'+file,poster_large_url:prefix+'w780/'+file,poster_original_url:prefix+'original/'+file};
+ const api=vm.runInNewContext(media.slice(start,end)+media.slice(resolveStart,resolveEnd)+'\n({resolvePoster})',{
+  TRUSTED_POSTER:/^https:\/\/image\.tmdb\.org\//,lookup:async()=>row,refreshExact:async value=>value,
+  lookupLive:async()=>{throw Error('A known poster must not trigger another provider lookup');}
+ });
+ assert.equal((await api.resolvePoster('Exact title',{tmdbId:42})).url,row.poster_large_url);
+ assert.equal((await api.resolvePoster('Exact title',{tmdbId:42,kids:true})).url,row.poster_original_url);
 });
