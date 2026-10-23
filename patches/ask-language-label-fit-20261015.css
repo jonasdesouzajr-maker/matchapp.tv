@@ -1,5 +1,15 @@
 /* Keep the real language label readable; existing navigation handlers stay intact. */
 @layer ma-screen-fit {
+  /* Preserve the legacy arrival animation, then release its transform-created
+     containing block so the fixed tools panel uses the persistent masthead. */
+  body.ai-chat-page #ma-reference-header .ma-reference-header-original {
+    animation-fill-mode: none !important;
+  }
+  /* The legacy 420px masthead rule must not hide the real language control
+     after the persistent header moves it into its existing tools panel. */
+  body.ai-chat-page .ma-reference-header-tools-panel #lang-switcher-host {
+    display: block !important;
+  }
   body.ai-chat-page .jonas-top-actions {
     display: grid !important;
     grid-template-columns: 42px minmax(0,1fr) minmax(0,1fr) 42px !important;
