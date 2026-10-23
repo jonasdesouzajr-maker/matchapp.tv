@@ -683,6 +683,11 @@ Deno.serve(async (req: Request) => {
     // Kids and untagged legacy calls retain their original Gemini routing.
     const openAiEligible = body?.kidsMode !== true &&
       (isDiscoverMode || isRankMode || (body?.adultMatch === true && typeof body?.prompt === "string"));
+    // The first paragraph is server-authored identity, never the viewer's
+    // question/history. Give every adult conversational provider that same
+    // higher-priority instruction; Kids and matching payloads stay unchanged.
+    const systemIdentity = isDiscoverMode && body?.kidsMode !== true
+      ? prompt.slice(0,prompt.indexOf("\n\n")) : undefined;
     const acceptDiscoverAnswer = (answer: string) => body?.kidsMode === true ||
       !unsupportedReadingRefusal(String(body?.question||''),answer);
     // One strict adult request budget across all independent providers.
@@ -690,7 +695,7 @@ Deno.serve(async (req: Request) => {
     const groqReserveMs = openAiEligible && groqApiKey ? 8_000 : 0;
     if (openAiEligible && openRouterApiKey && Date.now() < providerDeadline) {
       const answer = await callOpenRouterFirst({
-        req,prompt,key:openRouterApiKey,
+        req,prompt,key:openRouterApiKey,system:systemIdentity,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,cors:corsHeaders,acceptDiscoverAnswer,
         blockXXX:hasBlockedXXXDestination,
@@ -703,7 +708,7 @@ Deno.serve(async (req: Request) => {
       const dailyLimit = Number.isInteger(desiredLimit) && desiredLimit >= 1
         ? Math.min(desiredLimit,200) : 100;
       const answer = await callOpenAIPrimary({
-        req, prompt, key:openAiApiKey,
+        req, prompt, key:openAiApiKey,system:systemIdentity,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,acceptDiscoverAnswer,
         reserve:async () => {
@@ -733,7 +738,7 @@ Deno.serve(async (req: Request) => {
     const groqLast = async (): Promise<Response | null> => {
       if (openAiEligible && groqApiKey && Date.now() < providerDeadline) {
       const answer = await callGroqBackup({
-        req,prompt,key:groqApiKey,
+        req,prompt,key:groqApiKey,system:systemIdentity,
         deadline:isDiscoverMode ? providerDeadline : undefined,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,cors:corsHeaders,acceptDiscoverAnswer,
@@ -774,6 +779,7 @@ Deno.serve(async (req: Request) => {
               },
               body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
+                ...(systemIdentity?{systemInstruction:{parts:[{text:systemIdentity}]}}:{}),
                 generationConfig: withGeminiLatency(buildGenerationConfig(isDiscoverMode,isProposalMode,isRankMode),model,body?.kidsMode === true),
               }),
             }
@@ -790,6 +796,7 @@ Deno.serve(async (req: Request) => {
                 headers: {"Content-Type":"application/json","x-goog-api-key":route.key},
                 body: JSON.stringify({
                   contents:[{parts:[{text:prompt}]}],
+                  ...(systemIdentity?{systemInstruction:{parts:[{text:systemIdentity}]}}:{}),
                   generationConfig:{maxOutputTokens:8192,responseMimeType:"application/json"},
                 }),
               }

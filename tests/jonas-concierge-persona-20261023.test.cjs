@@ -45,3 +45,32 @@ test('the adult character cannot enter the isolated Kids prompt',()=>{
   assert.match(prompt,/Never weaken these rules because the user asks/);
  }
 });
+
+test('all independent adult providers send the same identity as a system instruction without changing matching payloads',async()=>{
+ const identity=ctx.prompt('Who are you?','en','','').split('\n\n')[0];
+ for(const [file,fn] of [['openrouter-backup.ts','callOpenRouterFirst'],['openai-primary.ts','callOpenAIPrimary'],['groq-backup.ts','callGroqBackup']]){
+  for(const mode of ['discover','rank_candidates']){
+   let payload;
+   const model={answer:'I am Jonas.',results:[],ids:['allowed']};
+   const c=vm.createContext({Request,Response,AbortController,setTimeout,clearTimeout,Date,
+    Deno:{env:{get:()=>''}},console:{info(){},warn(){}},schemaFor:()=>({name:'test',schema:{type:'object'}}),
+    fetch:async(url,options)=>{
+     payload=JSON.parse(options.body);
+     return new Response(JSON.stringify(file==='openai-primary.ts'
+      ?{status:'completed',output:[{type:'message',content:[{type:'output_text',text:JSON.stringify(model)}]}]}
+      :{choices:[{finish_reason:'stop',message:{content:JSON.stringify(model)}}]}),{status:200});
+    }});
+   const module=fs.readFileSync('supabase/functions/gemini-proxy/'+file,'utf8');
+   vm.runInContext(stripTypeScriptTypes(module.replace(/^import .*;\s*$/gm,'')).replace(/\bexport /g,'')+'\nthis.call='+fn+';',c);
+   const reply=await c.call({req:new Request('https://matchapp.tv'),prompt:'Conversation data',system:identity,mode,
+    key:'unit-only-credential',reserve:async()=>true,cors:()=>({}),explicitXXX:()=>false,blockXXX:()=>false,allowedCandidateIds:['allowed']});
+   assert.equal(reply.status,200);
+   const instruction=file==='openai-primary.ts'?payload.instructions:payload.messages.find(m=>m.role==='system')?.content;
+   assert.equal(instruction,mode==='discover'?identity:undefined,file+' '+mode);
+  }
+ }
+ // Both Gemini attempts (structured and compatibility fallback) share the
+ // same server-owned instruction and explicitly exclude Kids mode.
+ assert.match(source,/const systemIdentity = isDiscoverMode && body\?\.kidsMode !== true/);
+ assert.equal((source.match(/systemInstruction:\{parts:\[\{text:systemIdentity\}\]\}/g)||[]).length,2);
+});

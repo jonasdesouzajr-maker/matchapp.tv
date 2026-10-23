@@ -11,6 +11,7 @@ type GroqArgs = {
   explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
   acceptDiscoverAnswer?: (answer: string) => boolean;
+  system?: string;
   deadline?: number;
 };
 
@@ -33,7 +34,7 @@ export async function callGroqBackup(args: GroqArgs): Promise<Response|null> {
         method:"POST",signal:controller.signal,
         headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
         body:JSON.stringify({
-          model,messages:[{role:"user",content:prompt}],
+          model,messages:[...(mode==="discover"&&args.system?[{role:"system",content:args.system}]:[]),{role:"user",content:prompt}],
           response_format:{type:"json_schema",json_schema:{
             name:format.name,strict:true,schema:format.schema
           }},
