@@ -36,10 +36,14 @@ html.ma-reference body.page-home:not(.kids-body) :is(#poster-wall,.poster-wall).
 html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore):not(.kids-body) .poster-wall{
  display:block!important;visibility:visible!important;opacity:1!important;z-index:-1!important
 }
-html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.42!important}
-@media(max-width:700px){html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.3!important}}
+/* Original Sept collage look (poster-wall.css .62/.46): tilted key-art visible behind every adult page. */
+html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.58!important}
+@media(max-width:700px){html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.44!important}}
+html body:not(.kids-body) a.matchapp-brand-link.ma-ui-dup-brand.ma-ui-dup-brand:not(#ma-x):not(#ma-y){display:none!important}
 html body:not(.kids-body) .poster-wall::after{content:"";position:absolute;inset:0;pointer-events:none;
- background:radial-gradient(120% 90% at 50% 30%,rgba(12,6,18,.25),rgba(12,6,18,.72) 80%)}
+ background:radial-gradient(120% 90% at 50% 30%,rgba(12,6,18,.25),rgba(12,6,18,.72) 80%);z-index:2!important}
+/* Explore header: brand.css hides .matchapp-brand-link>img; show the approved SVG mark. */
+html body.page-explore:not(.kids-body) #ref-explore-header a.matchapp-brand-link > img[src*="matchapp-ai-mark"]:not(#ma-x){display:block!important;width:40px!important;height:40px!important;flex:0 0 40px!important;object-fit:contain!important}
 
 /* 3. The square SVG mark inherited the old 600x104 wordmark ratio and was
    squashed to ~7px tall (or ~23px, hiding the logo on some pages). */

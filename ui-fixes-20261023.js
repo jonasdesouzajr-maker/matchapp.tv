@@ -18,16 +18,18 @@
  function polishPills(root){
   (root||document).querySelectorAll('a[data-ma-control-pill],button[data-ma-control-pill]').forEach(function(el){
    if(el.classList.contains('ma-pill-polish')||el.hasAttribute('data-ma-pill-exclude'))return;
-   if(el.closest('[data-ma-pill-exclude],ins.adsbygoogle,[data-ad-slot],.ma-reference-dock,.ma-cinema-dock,footer,.streaming-links,.seo-footer-links,.ma-home-legal-row,.ma-home-legal-meta,.mp-footer-actions,#ma-ambient-panel .ja-panel-head,#ma-jonas-home-panel .jh-head,.poster-wall'))return;
+   if(el.closest('[data-ma-pill-exclude],ins.adsbygoogle,[data-ad-slot],.ma-reference-dock,.ma-cinema-dock,footer,.streaming-links,.seo-footer-links,.ma-home-legal-row,.ma-home-legal-meta,.mp-footer-actions,#ma-ambient-panel .ja-panel-head,#ma-jonas-home-panel .jh-head,.poster-wall,article,[class*="card"],[class*="step"],[class*="chapter"],[class*="tour"],[class*="crumb"],[aria-label*="readcrumb"],[class*="format"],[class*="edition"]'))return;
    if(el.matches('.ja-close,.jh-close,.ma-chat-grip,.ma-ui-grip,.gold-btn,[class*="pill"],[class*="notification-button"]'))return;
    var text=(el.textContent||'').trim();if(!text||text.length>40)return;
    if(el.querySelector('img'))return;
    var cs=getComputedStyle(el);
    var bg=cs.backgroundImage!=='none'||!/rgba\(0, 0, 0, 0\)|transparent/.test(cs.backgroundColor);
    var padded=(parseFloat(cs.paddingLeft)||0)>=10;
-   if(bg&&padded)return;
+   if(bg||padded)return;
+   if([].filter.call(el.children,function(c){return c.tagName!=='svg'&&c.tagName!=='SVG'&&(c.textContent||'').trim();}).length>1)return;
    var r=el.getBoundingClientRect();if(r.width===0&&r.height===0)return;
    el.classList.add('ma-pill-polish');
+   if(el.offsetHeight>46){el.classList.remove('ma-pill-polish');el.setAttribute('data-ma-pill-exclude','');}
   });
  }
 
@@ -83,7 +85,11 @@
  }
 
  var queued=false;
- function run(){queued=false;if(isKids())return;polishPills();fixClose();watchHidden();scanResizable();}
+ function dedupeBrand(){
+  var top=document.querySelector('#ma-reference-header img[src*="matchapp-ai-mark"]');if(!top||!top.getBoundingClientRect().width)return;
+  document.querySelectorAll('.matchapp-brand-bar .matchapp-brand-link').forEach(function(a){if(!a.closest('#ma-reference-header')&&a.querySelector('img.ma-playai-mark'))a.classList.add('ma-ui-dup-brand');});
+ }
+ function run(){queued=false;if(isKids())return;dedupeBrand();polishPills();fixClose();watchHidden();scanResizable();}
  function queue(){if(queued)return;queued=true;(window.requestAnimationFrame||setTimeout)(run);}
  function start(){
   if(isKids())return;
