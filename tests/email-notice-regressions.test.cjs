@@ -52,16 +52,21 @@ test('Gemini request builders omit deprecated thinking budget and sampling setti
  assert.match(code,/maxOutputTokens:\s*8192/);
  assert.match(code,/geminiRes\.status\s*===\s*400/);
 });
-test('Dated US book-to-screen discovery is responsive, linked and does not invent global availability',()=>{
+test('Dated US book-to-screen discovery expires after its source window without inventing global availability',()=>{
  const generator=read('tools/refresh-trending.mjs'),d=new JSDOM(read('trending/this-week/index.html')).window.document;
+ const cutoff=Date.parse('2026-10-22T00:00:00Z');
  assert.match(generator,/bookSpotlight=Date\.now\(\)<Date\.parse\('2026-10-22T00:00:00Z'\)/);
+ for(const expected of ['United States','Verity','Heated Rivalry','available in your country'])assert.ok(generator.includes(expected),'missing source contract: '+expected);
+ for(const expectedLink of ['Compare%20the%20book%20and%20screen%20versions','Recommend%20romance%20movies%20and%20shows'])assert.ok(generator.includes(expectedLink),'missing book trend discovery link: '+expectedLink);
  const section=d.querySelector('#book-to-screen-trends');
- assert.ok(section,'missing book trend section');
- assert.match(section.textContent,/United States/);
- assert.match(section.textContent,/Verity/);
- assert.match(section.textContent,/Heated Rivalry/);
- assert.match(section.textContent,/available in your country/);
- assert.equal(section.querySelectorAll('a[href^="/discover.html?q="]').length,2);
+ if(Date.now()<cutoff)assert.ok(section,'missing active book trend section');
+ if(section){
+  assert.match(section.textContent,/United States/);
+  assert.match(section.textContent,/Verity/);
+  assert.match(section.textContent,/Heated Rivalry/);
+  assert.match(section.textContent,/available in your country/);
+  assert.equal(section.querySelectorAll('a[href^="/discover.html?q="]').length,2);
+ }
  assert.ok(d.querySelector('meta[name="viewport"]'));
 });
 
