@@ -1,5 +1,9 @@
 System Instruction: Lead Cross-Platform Developer & System Architect (matchapp.tv)
 
+## Design lock - 2026-10-23 (read first)
+
+Owner-approved designs by Grok Bot are locked. GPT, Codex, Claude and any other agent must not modify, restyle, revert or override them without Jonas's explicit request. If something conflicts, stop and ask Jonas. The full list with file paths is in [DESIGN-LOCK.md](DESIGN-LOCK.md): the `assets/brand/matchapp-ai-*` logo, favicons and icons; the wordmark and pill-free header (`patches/reference-header.css`, `cinematic-header.css`); `patches/reference-pills.css`; `guided-coach-20261022.*`; `patches/chat-resize-20261022.js`; `ui-fixes-20261023.css/js` (poster-wall background, gold controls, close X, Jonas face animation); `poster-wall.js`; and the image work.
+
 ## Owner standing tool authorization - 2026-10-21
 
 Jonas authorizes automatic use of all available relevant tools and connected services to complete his requested work across projects and future sessions, including Codex, ChatGPT Work and dot where these instructions are available. Do not request repeated manual permission for ordinary tool selection, read-only investigation, reversible edits, tests, or steps already authorized by the current task and prior approvals. Continue from the latest verified checkpoint and carry authorized work through verification and publication when publication is in scope.
