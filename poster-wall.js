@@ -36,7 +36,9 @@
   // Match the approved theme's display:none scopes before fetching artwork.
   // Legacy visible walls, including the secondary-page legacy opt-out, retain
   // their existing real-art rendering path.
-  return root.classList.contains('ma-reference')&&(body.classList.contains('page-home')||(root.id!=='ma-reference-legacy'&&!body.classList.contains('page-explore')));
+  // 2026-10-23: Jonas asked for the collage back on every adult page; the
+  // reference theme no longer hides it (ui-fixes-20261023.css shows it).
+  void root;void body;return false;
  }
  async function load(url){try{const r=await fetch(url,{cache:'force-cache'});return r.ok?await r.json():null;}catch(_){return null;}}
  async function boot(){

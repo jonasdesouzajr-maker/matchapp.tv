@@ -36,7 +36,7 @@
   set(panel,'position','fixed');set(panel,'inset','auto');set(panel,'margin','0');set(panel,'transform','none');
   set(panel,'top',(A.bottom-h)+'px');set(panel,'left',(A.phone?A.left:A.right-w)+'px');
   set(panel,'width',w+'px');set(panel,'height',h+'px');set(panel,'max-width',A.w+'px');set(panel,'max-height',A.h+'px');set(panel,'min-height','0');set(panel,'min-width','0');
-  set(panel,'border-radius','22px');set(panel,'overflow','hidden');set(panel,'display','flex');set(panel,'flex-direction','column');
+  set(panel,'border-radius','22px');set(panel,'overflow','hidden');if(panel.hidden)panel.style.removeProperty('display');else set(panel,'display','flex');set(panel,'flex-direction','column');
   set(panel,'transition',anim&&!(reduce&&reduce.matches)?'height .22s cubic-bezier(.2,.9,.3,1),top .22s cubic-bezier(.2,.9,.3,1)':'none');
   panel.setAttribute('data-ma-resize',mode);panel.__maSize={w:w,h:h,B:B,A:A};
   var hd=panel.__maHandle;if(hd){hd.setAttribute('aria-orientation',A.phone?'horizontal':'vertical');hd.setAttribute('aria-valuemin',B.minH);hd.setAttribute('aria-valuemax',B.maxH);hd.setAttribute('aria-valuenow',Math.round(h));hd.setAttribute('aria-valuetext',Math.round(h)+' by '+Math.round(w)+' pixels')}

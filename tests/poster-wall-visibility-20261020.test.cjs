@@ -16,12 +16,11 @@ async function scene({htmlClass='',htmlId='',bodyClass='',pathname='/',duringFet
  for(let i=0;i<30;i++)await Promise.resolve();
  return {w,doc:w.document,requests,imageSources,close:()=>w.close()};
 }
-test('approved hidden Home and secondary walls create no wall nodes or image requests and still load the share guard',async()=>{
+test('owner-restored (2026-10-23) reference Home and secondary walls build the poster collage and still load the share guard',async()=>{
  for(const bodyClass of ['page-home','ebook-page','page-settings']){
   const s=await scene({htmlClass:'ma-reference',bodyClass});
-  assert.deepEqual(s.requests,[],'hidden decoration must not fetch catalogues');
-  assert.deepEqual(s.imageSources,[],'hidden decoration must not request or decode poster pixels');
-  assert.equal(s.doc.querySelector('.poster-wall'),null);
+  assert.deepEqual(s.requests,['/data/poster-wall.json','/data/poster-identities.json']);
+  assert.ok(s.doc.querySelector('.poster-wall img'),'restored wall must render posters');
   assert.equal(s.doc.querySelectorAll('script[data-share-guard]').length,1,'independent share protection must remain');
   s.close();
  }
@@ -43,7 +42,7 @@ test('secondary legacy opt-out remains visible and Kids remains isolated by path
   const s=await scene(options);assert.deepEqual(s.requests,[]);assert.deepEqual(s.imageSources,[]);assert.equal(s.doc.querySelector('.poster-wall'),null);s.close();
  }
 });
-test('a theme applied while catalogues are pending prevents the subsequent hidden image burst',async()=>{
+test('a theme applied while catalogues are pending keeps the restored wall',async()=>{
  const s=await scene({bodyClass:'page-home',duringFetch:w=>w.document.documentElement.classList.add('ma-reference')});
- assert.equal(s.requests.length,2);assert.deepEqual(s.imageSources,[]);assert.equal(s.doc.querySelector('.poster-wall'),null);s.close();
+ assert.equal(s.requests.length,2);assert.ok(s.imageSources.length>0);assert.ok(s.doc.querySelector('.poster-wall img'));s.close();
 });

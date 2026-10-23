@@ -1,0 +1,85 @@
+/* MatchApp Ai UI fixes, 2026-10-23. Adult pages only (loader skips /kids/).
+   Fixes within the approved design; does not change ads, auth or SEO. */
+/* Wrapped in the reference layer: layered !important rules outrank unlayered
+   ones, so the theme's layered display:none can only be overridden from here. */
+@layer ma-reference {
+
+/* 1. Genuine control pills that rendered as bare text with a hairline edge. */
+html body:not(.kids-body) .ma-pill-polish{
+ display:inline-flex!important;align-items:center;justify-content:center;gap:6px;
+ min-height:36px;padding:7px 16px!important;box-sizing:border-box;
+ border-radius:999px!important;
+ font-weight:600;letter-spacing:.01em;line-height:1.15;text-decoration:none!important;
+ color:#f6e7c4!important;
+ background:linear-gradient(180deg,rgba(230,195,106,.16),rgba(230,195,106,.06)),rgba(28,18,36,.72)!important;
+ box-shadow:inset 0 0 0 1px rgba(230,195,106,.42),0 1px 0 rgba(255,255,255,.04) inset,0 4px 14px rgba(0,0,0,.28)!important;
+ transition:background-color .18s ease,box-shadow .18s ease,transform .18s ease,color .18s ease;
+ -webkit-tap-highlight-color:transparent;cursor:pointer
+}
+html body:not(.kids-body) .ma-pill-polish:hover{
+ color:#fff6df!important;
+ background:linear-gradient(180deg,rgba(230,195,106,.28),rgba(230,195,106,.12)),rgba(34,22,44,.8)!important;
+ box-shadow:inset 0 0 0 1px rgba(230,195,106,.7),0 6px 18px rgba(0,0,0,.32),0 0 14px rgba(230,195,106,.14)!important
+}
+html body:not(.kids-body) .ma-pill-polish:active{transform:translateY(1px)}
+html body:not(.kids-body) .ma-pill-polish:focus-visible{outline:2px solid #e6c36a!important;outline-offset:3px}
+html body:not(.kids-body) .ma-pill-polish[aria-current="page"],html body:not(.kids-body) .ma-pill-polish[aria-pressed="true"],html body:not(.kids-body) .ma-pill-polish.active{
+ color:#1b1020!important;background:linear-gradient(180deg,#f2d68a,#d9ad55)!important;box-shadow:0 4px 14px rgba(230,195,106,.25)!important
+}
+/* Decorative capsules behind the dock labels made the labels look like stray pills. */
+html.ma-reference body:not(.kids-body) :is(.ma-reference-dock,.ma-cinema-dock) a > span:is([data-cinema-copy],[data-ma-text-pill]),html body:not(.kids-body) :is(.ma-reference-dock,.ma-cinema-dock) [data-ma-text-pill]{background:none!important;box-shadow:none!important;padding:0!important}
+
+/* 2. Poster-wall collage: the reference theme hid it everywhere. */
+html body:not(.kids-body) div.poster-wall,
+html.ma-reference body:not(.kids-body) .poster-wall,
+html.ma-reference body.page-home:not(.kids-body) :is(#poster-wall,.poster-wall).poster-wall,
+html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explore):not(.kids-body) .poster-wall{
+ display:block!important;visibility:visible!important;opacity:1!important;z-index:-1!important
+}
+html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.42!important}
+@media(max-width:700px){html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.3!important}}
+html body:not(.kids-body) .poster-wall::after{content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(120% 90% at 50% 30%,rgba(12,6,18,.25),rgba(12,6,18,.72) 80%)}
+
+/* 3. The square SVG mark inherited the old 600x104 wordmark ratio and was
+   squashed to ~7px tall (or ~23px, hiding the logo on some pages). */
+html body:not(.kids-body) img.ma-playai-mark.ma-playai-mark,
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header img.ma-playai-mark{
+ aspect-ratio:1/1!important;width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;
+ flex:0 0 40px!important;object-fit:contain!important;opacity:1!important;visibility:visible!important
+}
+@media(max-width:480px){html body:not(.kids-body) img.ma-playai-mark.ma-playai-mark,html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header img.ma-playai-mark{width:34px!important;height:34px!important;min-width:34px!important;max-width:34px!important;flex-basis:34px!important}}
+html body:not(.kids-body) .matchapp-brand-link:has(> img.ma-playai-mark){display:inline-flex!important;align-items:center!important;gap:10px}
+html body:not(.kids-body) .matchapp-brand-link > img.ma-playai-mark + .ma-playai-wordmark{margin-left:0!important}
+
+/* 4. Resizable AI answer areas (grip added by ui-fixes-20261023.js). */
+html body:not(.kids-body) #discover-new-input{resize:vertical!important;min-height:44px;max-height:40vh}
+html body:not(.kids-body) .ma-ui-resizable{overflow:auto!important;min-height:200px}
+html body:not(.kids-body) .ma-ui-grip{display:flex;align-items:center;justify-content:center;width:100%;height:24px;margin:4px 0 0;
+ cursor:ns-resize;touch-action:none;user-select:none;-webkit-user-select:none;background:none;border:0;padding:0}
+html body:not(.kids-body) .ma-ui-grip::before{content:"";width:56px;height:5px;border-radius:3px;background:rgba(230,195,106,.55);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+html body:not(.kids-body) .ma-ui-grip:hover::before,html body:not(.kids-body) .ma-ui-grip:focus-visible::before{background:#e6c36a}
+html body:not(.kids-body) .ma-ui-grip:focus-visible{outline:2px solid #e6c36a;outline-offset:2px;border-radius:6px}
+
+/* 5. Chat close: CSS forced display:flex, so panel.hidden never hid it. */
+html body #ma-ambient-panel[hidden],html body #ma-jonas-home-panel[hidden]{display:none!important}
+html body:not(.kids-body) :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close){
+ position:relative;display:inline-grid!important;place-items:center!important;
+ width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;flex:0 0 44px!important;
+ border-radius:50%!important;border:0!important;outline:0;
+ background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.08),rgba(255,255,255,0) 60%),rgba(42,27,54,.92)!important;
+ box-shadow:inset 0 0 0 1.5px rgba(230,195,106,.75),0 4px 12px rgba(0,0,0,.35)!important;
+ color:#f8e9c6!important;font-size:0!important;line-height:0!important;text-indent:0;
+ cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+ transition:background-color .18s ease,box-shadow .18s ease,transform .15s ease
+}
+html body:not(.kids-body) :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close)::before,
+html body:not(.kids-body) :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close)::after{display:none!important}
+html body:not(.kids-body) :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close) > svg.ma-x{width:18px;height:18px;display:block;pointer-events:none}
+html body:not(.kids-body) :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close):hover{background:rgba(64,42,80,.95)!important;box-shadow:inset 0 0 0 1.5px #e6c36a,0 6px 16px rgba(0,0,0,.4),0 0 12px rgba(230,195,106,.2)!important}
+html body:not(.kids-body) :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close):active{transform:scale(.94)}
+html body:not(.kids-body) :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close):focus-visible{box-shadow:inset 0 0 0 1.5px #e6c36a,0 0 0 3px rgba(230,195,106,.45)!important}
+@media (prefers-reduced-motion:reduce){html body .ma-pill-polish,html body :is(#ma-ambient-panel .ja-close,#ma-jonas-home-close){transition:none!important}}
+
+html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) body:not(.kids-body) nav.ma-reference-dock a > [data-cinema-copy],html.ma-reference:not(#ma-reference-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy):not(#ma-dock-legacy) body:not(.kids-body) nav.ma-reference-dock a.is-active > [data-cinema-copy]{background:none!important;box-shadow:none!important}
+}
