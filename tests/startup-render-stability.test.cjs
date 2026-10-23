@@ -164,7 +164,7 @@ test('2026-09-21 tilted collage fills every viewport and stays completely static
  assert.doesNotMatch(js,/w500\/|w780\//);
  // Tile count is sized to the screen instead of a fixed number.
  assert.match(js,/function tileTarget\(\)/);
- assert.match(js,/Math\.min\(cols\*rows,96\)/);
+ assert.match(js,/Math\.min\(cols\*rows,320\)/);
  // Kids is still never decorated, and the boot stays idle-deferred.
  assert.match(js,/if\(kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
  assert.doesNotMatch(js,/new MutationObserver|setInterval/);

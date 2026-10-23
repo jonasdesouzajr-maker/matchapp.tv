@@ -21,12 +21,15 @@
     (document.head||document.documentElement).appendChild(s);
   }
   // Columns per breakpoint must match poster-wall.css.
+ // 2026-10-23 (Jonas): small, flat, identifiable covers. Tile widths must
+ // match ui-fixes-20261023.css: 66px phones, 88px tablets, 100px desktop.
  function tileTarget(){
-  const w=window.innerWidth||1280,h=window.innerHeight||800;
-  const cols=w<=700?4:(w<=1099?7:(w>=1800?14:11));
-  const tile=(w*1.30/cols)*1.5;            // column width x 3:2 poster
-  const rows=Math.ceil((h*1.70)/tile)+1;   // grid overscans for the rotation
-  return Math.min(cols*rows,96);
+  const w=window.innerWidth||1280,h=Math.max(window.innerHeight||800,(window.screen&&screen.height)||0);
+  const t=w<=700?66:(w<=1099?88:100),gap=w<=700?4:6;
+  const cols=Math.max(1,Math.floor((w+gap)/(t+gap)));
+  const tile=((w-gap*(cols-1))/cols)*1.5+gap;
+  const rows=Math.ceil(h/tile)+1;
+  return Math.min(cols*rows,320);
  }
  const SAFE=/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/[A-Za-z0-9_.-]+$/;
  const FILE=/^https:\/\/image\.tmdb\.org\/t\/p\/[a-z0-9]+\/([A-Za-z0-9_.-]+)$/;
@@ -47,9 +50,10 @@
   if(kids()||document.querySelector('.poster-wall'))return;
   if(themeHidesWall())return;
   try{
-   const [wallList,identities]=await Promise.all([
+   const [wallList,identities,watchIds]=await Promise.all([
     load('/data/poster-wall.json'),
-    load('/data/poster-identities.json')
+    load('/data/poster-identities.json'),
+    load('/data/watch-poster-identities.json')
    ]);
    const seen=new Set(),files=[];
    const add=value=>{
@@ -60,6 +64,7 @@
    };
    (Array.isArray(wallList)?wallList:[]).forEach(entry=>{if(entry)add(entry.poster);});
    (Array.isArray(identities)?identities:[]).forEach(entry=>{if(entry&&entry.adult!==true)add(entry.poster);});
+   ((watchIds&&Array.isArray(watchIds.entries))?watchIds.entries:[]).forEach(entry=>{if(entry&&entry.adult!==true)add(entry.poster);});
    try{if(typeof VERIFIED_POSTERS==='object'&&VERIFIED_POSTERS)Object.keys(VERIFIED_POSTERS).forEach(k=>add(VERIFIED_POSTERS[k]));}catch(_){}
    document.querySelectorAll('#trending-rail .marquee-item img[src]').forEach(img=>add(img.getAttribute('src')));
    if(!files.length||themeHidesWall())return;
@@ -90,8 +95,9 @@
      // Background renditions only. The tiles sit at ~100-170px behind a scrim,
      // so w185 is the largest rendition worth fetching even on retina.
      img.src=base+'w154/'+posters[i];
-     img.srcset=base+'w154/'+posters[i]+' 154w, '+base+'w185/'+posters[i]+' 185w';
-     img.sizes='(max-width:700px) 22vw, (max-width:1099px) 15vw, 12vw';
+     // Small tiles, but sharp on 2x/3x screens: w342 covers 100px at 3x.
+     img.srcset=base+'w154/'+posters[i]+' 154w, '+base+'w185/'+posters[i]+' 185w, '+base+'w342/'+posters[i]+' 342w';
+     img.sizes='(max-width:700px) 66px, (max-width:1099px) 88px, 100px';
      img.alt='';img.loading='eager';img.decoding='async';img.fetchPriority='low';
      img.onerror=()=>{tile.hidden=true;};
      tile.append(img);batch.append(tile);

@@ -19,7 +19,7 @@ async function scene({htmlClass='',htmlId='',bodyClass='',pathname='/',duringFet
 test('owner-restored (2026-10-23) reference Home and secondary walls build the poster collage and still load the share guard',async()=>{
  for(const bodyClass of ['page-home','ebook-page','page-settings']){
   const s=await scene({htmlClass:'ma-reference',bodyClass});
-  assert.deepEqual(s.requests,['/data/poster-wall.json','/data/poster-identities.json']);
+  assert.deepEqual(s.requests,['/data/poster-wall.json','/data/poster-identities.json','/data/watch-poster-identities.json']);
   assert.ok(s.doc.querySelector('.poster-wall img'),'restored wall must render posters');
   assert.equal(s.doc.querySelectorAll('script[data-share-guard]').length,1,'independent share protection must remain');
   s.close();
@@ -27,9 +27,9 @@ test('owner-restored (2026-10-23) reference Home and secondary walls build the p
 });
 test('the existing visible legacy wall still fills in finite chunks with genuine low-priority poster renditions',async()=>{
  const s=await scene({bodyClass:'page-home'});
- assert.deepEqual(s.requests,['/data/poster-wall.json','/data/poster-identities.json']);
+ assert.deepEqual(s.requests,['/data/poster-wall.json','/data/poster-identities.json','/data/watch-poster-identities.json']);
  const images=[...s.doc.querySelectorAll('.poster-wall img')];
- assert.ok(images.length>10&&images.length<=96,'the legacy wall keeps its bounded multi-chunk fill');
+ assert.ok(images.length>10&&images.length<=320,'the legacy wall keeps its bounded multi-chunk fill');
  assert.equal(s.imageSources.length,images.length);
  for(const img of images){assert.match(img.src,/^https:\/\/image\.tmdb\.org\/t\/p\/w154\/verified-source\.jpg$/);assert.match(img.srcset,/w185\/verified-source\.jpg/);assert.equal(img.loading,'eager');assert.equal(img.fetchPriority,'low');}
  assert.equal(s.doc.querySelector('.poster-wall').getAttribute('aria-hidden'),'true');
@@ -44,5 +44,5 @@ test('secondary legacy opt-out remains visible and Kids remains isolated by path
 });
 test('a theme applied while catalogues are pending keeps the restored wall',async()=>{
  const s=await scene({bodyClass:'page-home',duringFetch:w=>w.document.documentElement.classList.add('ma-reference')});
- assert.equal(s.requests.length,2);assert.ok(s.imageSources.length>0);assert.ok(s.doc.querySelector('.poster-wall img'));s.close();
+ assert.equal(s.requests.length,3);assert.ok(s.imageSources.length>0);assert.ok(s.doc.querySelector('.poster-wall img'));s.close();
 });

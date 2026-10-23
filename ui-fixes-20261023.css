@@ -42,9 +42,13 @@ html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.58!important}
 /* Edge-to-edge atmosphere: fixed full-viewport wall on every adult page, softly
    blurred and vignetted. Static layer, promoted once to the GPU; no animation. */
 html body:not(.kids-body) div.poster-wall.poster-wall{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100lvh!important;margin:0!important;max-width:none!important;overflow:hidden!important;pointer-events:none!important;contain:strict}
-html body:not(.kids-body) .poster-wall .poster-wall-grid{filter:blur(3px) saturate(1.2) contrast(1.05)!important;will-change:transform;backface-visibility:hidden}
-@media(max-width:700px){html body:not(.kids-body) .poster-wall .poster-wall-grid{filter:blur(2px) saturate(1.15)!important}}
-@media(min-aspect-ratio:2/1){html body:not(.kids-body) .poster-wall .poster-wall-grid{inset:-60% -12%!important}}
+/* Round 4 (Jonas): small flat covers so titles are identifiable. No tilt, no
+   blur; sizes match tileTarget() in poster-wall.js (66/88/100px). */
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{position:absolute!important;inset:0 0 auto 0!important;width:auto!important;height:auto!important;display:grid!important;grid-template-columns:repeat(auto-fill,minmax(100px,1fr))!important;grid-auto-rows:auto!important;gap:6px!important;align-content:start!important;transform:none!important;filter:saturate(1.1)!important;animation:none!important;will-change:auto!important}
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile{position:relative!important;inset:auto!important;width:auto!important;height:auto!important;aspect-ratio:2/3!important;margin:0!important;border-radius:6px!important;overflow:hidden!important;transform:none!important;animation:none!important;box-shadow:0 2px 6px rgba(0,0,0,.45)!important}
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile>img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;transform:none!important;filter:none!important}
+@media(max-width:1099px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr))!important}}
+@media(max-width:700px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(66px,1fr))!important;gap:4px!important}html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile{border-radius:4px!important}}
 html body:not(.kids-body) a.matchapp-brand-link.ma-ui-dup-brand.ma-ui-dup-brand:not(#ma-x):not(#ma-y){display:none!important}
 html body:not(.kids-body) .poster-wall::after{content:"";position:absolute;inset:0;pointer-events:none;
  background:radial-gradient(130% 100% at 50% 40%,rgba(12,6,18,.12) 35%,rgba(12,6,18,.62) 100%);z-index:2!important}
@@ -113,4 +117,25 @@ html body:not(.page-home):not(.kids-body):not(#ma-r3a):not(#ma-r3b) footer.hub-f
 html body:not(.page-home):not(.kids-body):not(#ma-r3a):not(#ma-r3b) a.ref-secondary-topic{
  background-color:rgba(16,9,26,.8)!important;border-radius:14px}
 html body:not(.page-home):not(.kids-body):not(#ma-r3a):not(#ma-r3b) :is(main.wrap,section.ma-discover-editorial,main.site-shell>section,section.ebook-top-section>.ebook-top-head,section.seo-section>header,main>h1,main>p,.hub-shell>main>p,.news-ui-page main>header){text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.75)}
+
+/* Chat greeting sat flush against the panel's left edge. */
+html body:not(.kids-body) #ma-ambient-panel p.ja-hello:not(#ma-x){padding:10px 18px 4px!important;margin:0!important;line-height:1.4!important}
+
+/* Round 4: Jonas face life (layers driven by ui-fixes JS). Old fixed linear
+   blink loop and hover-only smile are replaced by randomized, eased layers. */
+html body:not(.kids-body) .ma-life:not(#ma-x){position:relative;overflow:hidden}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img.ja-blink,html body:not(.kids-body) .ma-life:not(#ma-x) > img.jh-blink-layer,html body:not(.kids-body) .ma-life:not(#ma-x) > img.ja-premium-smile{animation:none!important;opacity:0!important;visibility:hidden!important}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img{object-position:var(--ma-lf-pos,50% 20%)!important}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img.ma-lf{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:inherit;opacity:0;pointer-events:none;transition:opacity 70ms ease-in-out;animation:inherit;clip-path:none!important;margin:0!important}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img.ma-lf.on{opacity:1}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img.ma-lf-smile{transition:opacity .45s cubic-bezier(.4,0,.2,1)}
+html body:not(.kids-body) .ma-life.ma-smiling:not(#ma-x) > img.ma-lf-smile{opacity:1}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img.ma-lf-v{transition:opacity 60ms linear}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img.ma-lf-wink{z-index:3;-webkit-mask-image:radial-gradient(14% 9% at 37% var(--ma-wink-y,42%),#000 55%,transparent 100%);mask-image:radial-gradient(14% 9% at 37% var(--ma-wink-y,42%),#000 55%,transparent 100%);transition:opacity 90ms ease-in-out}
+#ma-jonas-home:not(.jh-speaking) .ma-life > img.jh-mouth-layer,#ma-ambient-panel:not([data-speaking="1"]) .ma-life > img.ja-mouth{opacity:0!important}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img{animation:ma-lf-breathe 5.2s ease-in-out infinite!important;transform-origin:50% 70%;rotate:0deg;translate:0 0;transition:rotate .7s cubic-bezier(.4,0,.2,1),translate .7s cubic-bezier(.4,0,.2,1),opacity 70ms ease-in-out}
+html body:not(.kids-body) .ma-life:not(#ma-x) > img.ma-lf-smile{transition:opacity .45s cubic-bezier(.4,0,.2,1),rotate .7s,translate .7s}
+html body:not(.kids-body) .ma-life.ma-thinking:not(#ma-x) > img{rotate:-2.2deg;translate:-1px -1.5px}
+@keyframes ma-lf-breathe{0%,100%{transform:scale(1.02) rotate(0deg)}30%{transform:scale(1.032) rotate(.5deg)}65%{transform:scale(1.024) rotate(-.45deg)}}
+@media (prefers-reduced-motion:reduce){html body:not(.kids-body) .ma-life:not(#ma-x) > img{animation:none!important;transition:opacity .2s linear!important;rotate:0deg!important;translate:none!important}}
 }
