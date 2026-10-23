@@ -24,7 +24,7 @@
  // 2026-10-23 (Jonas): small, flat, identifiable covers. Tile widths must
  // match ui-fixes-20261023.css: 66px phones, 88px tablets, 100px desktop.
  function tileTarget(){
-  const w=window.innerWidth||1280,h=Math.max(window.innerHeight||800,(window.screen&&screen.height)||0);
+  const w=(window.innerWidth||1280)*1.28,h=Math.max(window.innerHeight||800,(window.screen&&screen.height)||0)*1.3;
   const t=w<=700?66:(w<=1099?88:100),gap=w<=700?4:6;
   const cols=Math.max(1,Math.floor((w+gap)/(t+gap)));
   const tile=((w-gap*(cols-1))/cols)*1.5+gap;

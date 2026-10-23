@@ -37,21 +37,29 @@ html.ma-reference:not(#ma-reference-legacy) body:not(.page-home):not(.page-explo
  display:block!important;visibility:visible!important;opacity:1!important;z-index:-1!important
 }
 /* Original Sept collage look (poster-wall.css .62/.46): tilted key-art visible behind every adult page. */
-html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.58!important}
-@media(max-width:700px){html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.44!important}}
+html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.7!important}
+@media(max-width:700px){html body:not(.kids-body) .poster-wall .poster-wall-grid{opacity:.56!important}}
 /* Edge-to-edge atmosphere: fixed full-viewport wall on every adult page, softly
    blurred and vignetted. Static layer, promoted once to the GPU; no animation. */
 html body:not(.kids-body) div.poster-wall.poster-wall{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100lvh!important;margin:0!important;max-width:none!important;overflow:hidden!important;pointer-events:none!important;contain:strict}
 /* Round 4 (Jonas): small flat covers so titles are identifiable. No tilt, no
    blur; sizes match tileTarget() in poster-wall.js (66/88/100px). */
 html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{position:absolute!important;inset:0 0 auto 0!important;width:auto!important;height:auto!important;display:grid!important;grid-template-columns:repeat(auto-fill,minmax(100px,1fr))!important;grid-auto-rows:auto!important;gap:6px!important;align-content:start!important;transform:none!important;filter:saturate(1.1)!important;animation:none!important;will-change:auto!important}
+/* Round 5: MatchApp's own cinematic wall: dense small covers, gentle perspective tilt,
+   one static 2px blur layer, midnight-purple tint, warm gold glow. */
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall{background:#0d0820!important}
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{inset:-14% -12% auto -12%!important;transform:perspective(1600px) rotateX(9deg) rotateZ(-5deg) scale(1.1)!important;transform-origin:50% 30%!important;filter:blur(2px) saturate(1.18)!important;backface-visibility:hidden}
+@media(max-width:700px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{filter:blur(1.5px) saturate(1.15)!important;transform:perspective(1200px) rotateX(8deg) rotateZ(-5deg) scale(1.12)!important}}
 html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile{position:relative!important;inset:auto!important;width:auto!important;height:auto!important;aspect-ratio:2/3!important;margin:0!important;border-radius:6px!important;overflow:hidden!important;transform:none!important;animation:none!important;box-shadow:0 2px 6px rgba(0,0,0,.45)!important}
 html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile>img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;transform:none!important;filter:none!important}
 @media(max-width:1099px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr))!important}}
 @media(max-width:700px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(66px,1fr))!important;gap:4px!important}html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile{border-radius:4px!important}}
 html body:not(.kids-body) a.matchapp-brand-link.ma-ui-dup-brand.ma-ui-dup-brand:not(#ma-x):not(#ma-y){display:none!important}
 html body:not(.kids-body) .poster-wall::after{content:"";position:absolute;inset:0;pointer-events:none;
- background:radial-gradient(130% 100% at 50% 40%,rgba(12,6,18,.12) 35%,rgba(12,6,18,.62) 100%);z-index:2!important}
+ background:radial-gradient(60% 45% at 50% 42%,rgba(230,195,106,.08),rgba(230,195,106,0) 70%),
+  linear-gradient(180deg,rgba(13,8,32,.94) 0%,rgba(13,8,32,.62) 14%,rgba(13,8,32,.28) 38%,rgba(13,8,32,.3) 62%,rgba(13,8,32,.7) 86%,rgba(13,8,32,.96) 100%),
+  radial-gradient(120% 95% at 50% 45%,rgba(13,8,32,0) 45%,rgba(13,8,32,.72) 100%),
+  linear-gradient(rgba(36,18,70,.22),rgba(36,18,70,.22));z-index:2!important}
 /* Explore header: brand.css hides .matchapp-brand-link>img; show the approved SVG mark. */
 html body.page-explore:not(.kids-body) #ref-explore-header a.matchapp-brand-link > img[src*="matchapp-ai-mark"]:not(#ma-x){display:block!important;width:40px!important;height:40px!important;flex:0 0 40px!important;object-fit:contain!important}
 
