@@ -279,7 +279,7 @@ function finalizeBrand(ownedPaths){
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
     });
   }
-  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261023-2"></script>\n</head>');
+  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261023-3"></script>\n</head>');
   if(!kids&&!html.includes('/patches/immersive-feedback-20261014.js'))html=html.replace('</head>','<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>\n</head>');
   html=versionFrameStylesheet(html);
   html=name(html,kids);

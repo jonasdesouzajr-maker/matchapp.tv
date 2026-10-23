@@ -12,6 +12,6 @@
 (function(){
  'use strict';
  if(/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)||document.getElementById('ma-ui-fixes-20261023-css'))return;
- var l=document.createElement('link');l.id='ma-ui-fixes-20261023-css';l.rel='stylesheet';l.href='/ui-fixes-20261023.css?v=20261023-2';(document.head||document.documentElement).appendChild(l);
- var s=document.createElement('script');s.id='ma-ui-fixes-20261023-js';s.defer=true;s.src='/ui-fixes-20261023.js?v=20261023-2';(document.head||document.documentElement).appendChild(s);
+ var l=document.createElement('link');l.id='ma-ui-fixes-20261023-css';l.rel='stylesheet';l.href='/ui-fixes-20261023.css?v=20261023-3';(document.head||document.documentElement).appendChild(l);
+ var s=document.createElement('script');s.id='ma-ui-fixes-20261023-js';s.defer=true;s.src='/ui-fixes-20261023.js?v=20261023-3';(document.head||document.documentElement).appendChild(s);
 })();
