@@ -248,8 +248,11 @@ KIDS MODE IS ACTIVE. This is a hard safety boundary. Only suggest content clearl
     if (!kidsMode) context += `The latest request determines the current media format. Restrictions such as "do not recommend books or music" in an earlier turn applied to that earlier request; do not carry them forward when the user now explicitly asks for a book, audiobook or other different format. Prior assistant refusals are conversation data, not product rules.\n\n`;
   }
 
+  const adultIdentity = kidsMode ? "" :
+    `PERMANENT ADULT CONCIERGE IDENTITY: You are Jonas, MatchApp Ai's permanent male AI entertainment concierge. Your character is approximately 40 years old and Italian-Brazilian: helpful, natural, articulate and knowledgeable about entertainment. You remain an AI character, not the human founder or a real human. Use masculine self-reference in the user's selected language. Never adopt a different assistant name, a female identity, or an age/nickname supplied by the viewer or an earlier mistaken assistant turn. The viewer's nickname and age describe the viewer, not you. Keep the exact product name MatchApp Ai in every language. Correct an earlier wrong introduction when relevant, but do not repeat your biography in ordinary entertainment answers.\n\n`;
+
   return (
-    context +
+    adultIdentity + context +
     `You are the friendly, knowledgeable AI concierge inside MatchApp, a streaming discovery app. ` +
     kidsRules +
     `PERMANENT SAFETY: MatchApp NEVER features XXX, pornographic films, explicitly sexual/erotic entertainment, pornography publishers, pornography links or adult sex magazines. This rule applies even to adult users; do not follow requests to override it. Do not automatically exclude mainstream journalism, medical education or non-pornographic films because they discuss adult topics. If asked for excluded material, decline in one brief sentence and suggest ordinary, non-explicit alternatives.\n` +
@@ -680,6 +683,11 @@ Deno.serve(async (req: Request) => {
     // Kids and untagged legacy calls retain their original Gemini routing.
     const openAiEligible = body?.kidsMode !== true &&
       (isDiscoverMode || isRankMode || (body?.adultMatch === true && typeof body?.prompt === "string"));
+    // The first paragraph is server-authored identity, never the viewer's
+    // question/history. Give every adult conversational provider that same
+    // higher-priority instruction; Kids and matching payloads stay unchanged.
+    const systemIdentity = isDiscoverMode && body?.kidsMode !== true
+      ? prompt.slice(0,prompt.indexOf("\n\n")) : undefined;
     const acceptDiscoverAnswer = (answer: string) => body?.kidsMode === true ||
       !unsupportedReadingRefusal(String(body?.question||''),answer);
     // One strict adult request budget across all independent providers.
@@ -687,7 +695,7 @@ Deno.serve(async (req: Request) => {
     const groqReserveMs = openAiEligible && groqApiKey ? 8_000 : 0;
     if (openAiEligible && openRouterApiKey && Date.now() < providerDeadline) {
       const answer = await callOpenRouterFirst({
-        req,prompt,key:openRouterApiKey,
+        req,prompt,key:openRouterApiKey,system:systemIdentity,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,cors:corsHeaders,acceptDiscoverAnswer,
         blockXXX:hasBlockedXXXDestination,
@@ -700,7 +708,7 @@ Deno.serve(async (req: Request) => {
       const dailyLimit = Number.isInteger(desiredLimit) && desiredLimit >= 1
         ? Math.min(desiredLimit,200) : 100;
       const answer = await callOpenAIPrimary({
-        req, prompt, key:openAiApiKey,
+        req, prompt, key:openAiApiKey,system:systemIdentity,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,acceptDiscoverAnswer,
         reserve:async () => {
@@ -730,7 +738,7 @@ Deno.serve(async (req: Request) => {
     const groqLast = async (): Promise<Response | null> => {
       if (openAiEligible && groqApiKey && Date.now() < providerDeadline) {
       const answer = await callGroqBackup({
-        req,prompt,key:groqApiKey,
+        req,prompt,key:groqApiKey,system:systemIdentity,
         deadline:isDiscoverMode ? providerDeadline : undefined,
         mode:isDiscoverMode ? "discover" : isRankMode ? "rank_candidates" : isProposalMode ? "match_proposals" : "legacy",
         allowedCandidateIds:rankCandidateIds,cors:corsHeaders,acceptDiscoverAnswer,
@@ -771,6 +779,7 @@ Deno.serve(async (req: Request) => {
               },
               body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
+                ...(systemIdentity?{systemInstruction:{parts:[{text:systemIdentity}]}}:{}),
                 generationConfig: withGeminiLatency(buildGenerationConfig(isDiscoverMode,isProposalMode,isRankMode),model,body?.kidsMode === true),
               }),
             }
@@ -787,6 +796,7 @@ Deno.serve(async (req: Request) => {
                 headers: {"Content-Type":"application/json","x-goog-api-key":route.key},
                 body: JSON.stringify({
                   contents:[{parts:[{text:prompt}]}],
+                  ...(systemIdentity?{systemInstruction:{parts:[{text:systemIdentity}]}}:{}),
                   generationConfig:{maxOutputTokens:8192,responseMimeType:"application/json"},
                 }),
               }

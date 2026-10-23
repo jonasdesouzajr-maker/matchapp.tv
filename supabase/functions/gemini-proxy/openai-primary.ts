@@ -9,6 +9,7 @@ type OpenAIArgs = {
   blockXXX: (row: Record<string,unknown>) => boolean; explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
   acceptDiscoverAnswer?: (answer: string) => boolean;
+  system?: string;
 };
 export function schemaFor(mode: SchemaMode) {
   const str = { type: "string" };
@@ -54,6 +55,7 @@ export async function callOpenAIPrimary(args: OpenAIArgs): Promise<Response|null
       headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
       body:JSON.stringify({
         model:OPENAI_MODEL,input:prompt,store:false,reasoning:{effort:"none"},
+        ...(mode==="discover"&&args.system?{instructions:args.system}:{}),
         max_output_tokens:mode==="legacy"?900:mode==="discover"?2600:mode==="rank_candidates"?350:1500,
         text:{format:schemaFor(mode)}
       })

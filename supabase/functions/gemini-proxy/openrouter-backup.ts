@@ -10,6 +10,7 @@ type RouterArgs = {
   explicitXXX: (text: string) => boolean;
   allowedCandidateIds?: string[];
   acceptDiscoverAnswer?: (answer: string) => boolean;
+  system?: string;
 };
 
 // OpenRouter itself fails over between different model providers.
@@ -37,7 +38,7 @@ export async function callOpenRouterFirst(args: RouterArgs): Promise<Response|nu
       },
       body:JSON.stringify({
         models:OPENROUTER_MODELS,
-        messages:[{role:"user",content:prompt}],
+        messages:[...(mode==="discover"&&args.system?[{role:"system",content:args.system}]:[]),{role:"user",content:prompt}],
         provider:{require_parameters:true},
         response_format:{type:"json_schema",json_schema:{
           name:format.name,strict:true,schema:format.schema
