@@ -87,7 +87,7 @@ test('retired Home anchors reach their dedicated routes without dropping query c
  assert.equal(redirects,0,'visible Top Titles anchor must stay on Home');
 });
 
-test('Jonas open conversation fills viewport and restores parked position',()=>{
+test('Jonas open conversation fits the usable viewport and restores parked position',()=>{
  const css=read('patches/jonas-premium-glass.css');
  const home=read('jonas/floating-home-20261010-v3.js'),ambient=read('jonas/android-ambient-assistant-20261011.js');
  assert.match(css,/#ma-jonas-home\.is-chat-stage > \.jh-bubble/);
@@ -96,12 +96,12 @@ test('Jonas open conversation fills viewport and restores parked position',()=>{
  assert.match(css,/\.jh-form/);
  assert.match(home,/function syncConversationViewport\(\)/);
  assert.match(home,/visualViewport\?\.addEventListener\('resize'/);
- assert.match(home,/panel\.setAttribute\('aria-modal','true'\)/);
+ assert.match(home,/panel\.setAttribute\('aria-modal','false'\)/,'the launcher remains available outside the nonmodal conversation');
  assert.match(home,/stagePosition=\{left:r\.left,top:r\.top\}/);
  assert.match(home,/setFloating\(stagePosition\.left,stagePosition\.top\)/);
  assert.match(ambient,/function syncPanelViewport\(\)/);
  assert.match(ambient,/syncPanelViewport\(\);/);
- assert.match(ambient,/panel\.hidden=true;root\.hidden=false/);
+ assert.match(ambient,/panel\.hidden=true;panel\.style\.removeProperty\('display'\);root\.hidden=false/,'closing clears the resize display override and restores the launcher');
  assert.doesNotMatch(ambient,/panel\.style\.setProperty\('--ja-origin-x'/);
 });
 

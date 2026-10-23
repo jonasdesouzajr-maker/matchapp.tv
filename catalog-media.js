@@ -215,6 +215,7 @@
         media_kind:kind,
         tmdb_id:tmdbId,
         imdb_id:/^tt\d{7,10}$/.test(String(src.imdbId||''))?String(src.imdbId):null,
+        _verifiedPosterUrl:src.posterLarge||src.poster||src.posterOriginal||null,
         poster_url:src.poster||found?.poster||null,
         poster_large_url:src.posterLarge||found?.posterLarge||src.poster||found?.poster||null,
         poster_original_url:src.posterOriginal||found?.posterOriginal||null,
@@ -249,9 +250,12 @@
     if(!meta||!Number.isSafeInteger(Number(meta.tmdb_id))||!['movie','tv'].includes(meta.media_kind)||typeof window.tmdbDetails!=='function')return meta;
     try{
       const d=await window.tmdbDetails(Number(meta.tmdb_id),meta.media_kind);
-      if(!d)return meta;
+      if(!d||d.adult===true||Number(d.tmdbId)!==Number(meta.tmdb_id)||d.kind!==meta.media_kind)return meta;
       return {
         ...meta,
+        // In-memory provenance: a cached DB row cannot claim a live original.
+        // Use only artwork returned by this successful exact source response.
+        _verifiedPosterUrl:d.posterLarge||d.poster||d.posterOriginal||null,
         title:String(d.title||meta.title||''),
         imdb_id:/^tt\d{7,10}$/.test(String(d.imdbId||''))?String(d.imdbId):
           /^tt\d{7,10}$/.test(String(meta.imdb_id||''))?String(meta.imdb_id):null,
@@ -848,6 +852,7 @@
            details.kind===state.kind&&(!state.year||!details.year||
              Math.abs(Number(details.year)-state.year)<=1)){
           state.meta={title,tmdb_id:state.tmdbId,media_kind:state.kind,year:details.year,
+            _verifiedPosterUrl:details.posterLarge||details.poster||details.posterOriginal||null,
             poster_url:details.poster||null,poster_large_url:details.posterLarge||null,
             poster_original_url:details.posterOriginal||null};
           if(await attempt())return;
@@ -911,14 +916,15 @@
     const year=Number(isTile?img.dataset.tmdbYear:currentIdentity.year||meta?.year);
     if(Number.isSafeInteger(year)&&year>=1880&&year<=2200)state.year=year;
     const previousMeta=state.meta,previousPreferred=state.preferred;
-    if(safeSameTitleMedia(meta,state))state.meta=meta;
+    if(safeSameTitleMedia(meta,state)&&
+       (img.id!=='res-poster-img'||!state.meta?._verifiedPosterUrl||meta._verifiedPosterUrl))state.meta=meta;
     // A live record for this exact selected identity can correct an old
     // snapshot (including a backdrop incorrectly saved as a poster). Retain
     // that authority when a later render repeats the snapshot's old URL.
     const exactResultOriginal=img.id==='res-poster-img'&&state.tmdbId>0&&
-      Number(state.meta?.tmdb_id)===state.tmdbId&&state.meta?.media_kind===state.kind
-      ? [state.meta.poster_large_url,state.meta.poster_url,state.meta.poster_original_url]
-          .find(url=>posterVariants(url).length)||'':'';
+      Number(state.meta?.tmdb_id)===state.tmdbId&&state.meta?.media_kind===state.kind&&
+      posterVariants(state.meta?._verifiedPosterUrl).length
+      ?state.meta._verifiedPosterUrl:'';
 
     // Live TMDB discovery already supplied the exact numeric identity AND its
     // source artwork. Start that original on the very first result event,
