@@ -26,7 +26,7 @@ const report = { candidateStylesheet: candidate, backendMocks: false, cases: [],
         await page.goto('https://matchapp.tv/discover.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
         const summary = page.locator('details.ma-reference-header-tools > summary').first();
         await summary.waitFor({ state: 'visible' });
-        await page.waitForFunction(() => document.querySelector('.ma-reference-header-original').getAnimations().every(animation => animation.playState !== 'running'));
+        await page.waitForFunction(() => document.querySelector('.ma-reference-header-original')?.getAnimations().every(animation => animation.playState !== 'running'));
         await summary.click();
         const select = page.locator('#lang-switcher');
         await select.waitFor({ state: 'visible', timeout: 5000 });
@@ -44,7 +44,7 @@ const report = { candidateStylesheet: candidate, backendMocks: false, cases: [],
         await page.screenshot({ path: path.join(out, width + '.png') });
         await page.reload({ waitUntil: 'domcontentloaded' });
         await page.waitForFunction(code => window.MATCH_LANG === code, selected);
-        await page.waitForFunction(() => document.querySelector('.ma-reference-header-original').getAnimations().every(animation => animation.playState !== 'running'));
+        await page.waitForFunction(() => document.querySelector('.ma-reference-header-original')?.getAnimations().every(animation => animation.playState !== 'running'));
         await summary.click();
         await select.waitFor({ state: 'visible' });
         assert.equal(await select.inputValue(), selected, 'user language persists after reload');
