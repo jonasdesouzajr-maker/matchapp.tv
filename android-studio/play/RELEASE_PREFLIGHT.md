@@ -1,3 +1,7 @@
+## October 23, 2026 design polish and stability — 1.1.60 (code 60)
+
+Code **60** rebuilds current main (same native code as 59) with the build number raised. Use the same required gates below. The unsigned CI artifact is MatchApp-Ai-adult-1.1.60-code60-UNSIGNED-AAB.
+
 ## October 22, 2026 adult launcher and permission bridge — 1.1.59 (code 59)
 
 Code **59** combines the approved Play + Ai launcher/adaptive/Play icons and native permission capability with the complete current main branch. It preserves the version-58 Maps handoff, post-intro insets, app data, protected web design and ad configuration. The new permission endpoint is restricted to trusted HTTPS main-frame messages and deliberate foreground interaction. The approved web tour is unchanged and does not currently call this endpoint.
