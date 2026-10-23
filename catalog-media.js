@@ -214,6 +214,7 @@
         year:src.year?Number(src.year):(found?.year?Number(found.year):null),
         media_kind:kind,
         tmdb_id:tmdbId,
+        imdb_id:/^tt\d{7,10}$/.test(String(src.imdbId||''))?String(src.imdbId):null,
         poster_url:src.poster||found?.poster||null,
         poster_large_url:src.posterLarge||found?.posterLarge||src.poster||found?.poster||null,
         poster_original_url:src.posterOriginal||found?.posterOriginal||null,
@@ -252,6 +253,8 @@
       return {
         ...meta,
         title:String(d.title||meta.title||''),
+        imdb_id:/^tt\d{7,10}$/.test(String(d.imdbId||''))?String(d.imdbId):
+          /^tt\d{7,10}$/.test(String(meta.imdb_id||''))?String(meta.imdb_id):null,
         year:d.year?Number(d.year):meta.year,
         poster_url:d.poster||meta.poster_url,
         poster_large_url:d.posterLarge||d.poster||meta.poster_large_url||meta.poster_url,
@@ -795,6 +798,7 @@
       for(let i=0;i<Math.min(2,urls.length);i++)void worker();
     });
     const attempt=async()=>{
+      const preferredAtStart=state.preferred;
       const candidates=exactPosterCandidates(state).filter(url=>!state.failed.has(url));
       // Do not race a title-only saved poster against the known numeric
       // identity's actual source artwork. The chosen source gets priority.
@@ -810,6 +814,9 @@
       }
       if(!winner)return false;
       if(img.__matchappAdultPoster!==identity||!img.isConnected)return true;
+      // Exact metadata may correct a cached image while its older probe is
+      // decoding. Let the newer original finish instead of publishing stale art.
+      if(state.preferred!==preferredAtStart){state.needsRepair=true;return true;}
       img.dataset.matchappFallbackStage='verified';
       img.removeAttribute?.('srcset');
       img.src=winner;
@@ -905,6 +912,14 @@
     if(Number.isSafeInteger(year)&&year>=1880&&year<=2200)state.year=year;
     const previousMeta=state.meta,previousPreferred=state.preferred;
     if(safeSameTitleMedia(meta,state))state.meta=meta;
+    // A live record for this exact selected identity can correct an old
+    // snapshot (including a backdrop incorrectly saved as a poster). Retain
+    // that authority when a later render repeats the snapshot's old URL.
+    const exactResultOriginal=img.id==='res-poster-img'&&state.tmdbId>0&&
+      Number(state.meta?.tmdb_id)===state.tmdbId&&state.meta?.media_kind===state.kind
+      ? [state.meta.poster_large_url,state.meta.poster_url,state.meta.poster_original_url]
+          .find(url=>posterVariants(url).length)||'':'';
+
     // Live TMDB discovery already supplied the exact numeric identity AND its
     // source artwork. Start that original on the very first result event,
     // without waiting for a title-only SQL search or delayed metadata chain.
@@ -912,9 +927,9 @@
       ? String(currentIdentity.artwork||''):'';
     const savedOriginal=isPortfolio||isWatch?String(img.dataset.posterPreferredUrl||''):'';
     const shownOriginal=String(img.currentSrc||img.src||'');
-    const eligiblePreferred=posterVariants(preferred).length?preferred:
+    const eligiblePreferred=exactResultOriginal||(posterVariants(preferred).length?preferred:
       posterVariants(savedOriginal).length?savedOriginal:
-      pinnedOriginal||(posterVariants(shownOriginal).length?shownOriginal:'');
+      pinnedOriginal||(posterVariants(shownOriginal).length?shownOriginal:''));
     if(eligiblePreferred&&posterVariants(eligiblePreferred).length)state.preferred=eligiblePreferred;
     if(state.repairing&&(state.meta!==previousMeta||state.preferred!==previousPreferred))
       state.needsRepair=true;
@@ -946,6 +961,13 @@
       });
     }
     const current=String(img.currentSrc||img.src||'');
+    if(exactResultOriginal&&!sameOriginalArtwork(current,exactResultOriginal)){
+      // Keep existing pixels until the corrected original decodes. Older
+      // rendition probes must not repaint the stale snapshot afterward.
+      if(state.fastPaint){state.fastPaint.active=false;state.fastPaint=null;}
+      void repairAdultPoster(img,state);
+      return;
+    }
     // A saved source may be an official publisher CDN outside the film CDN
     // allowlist. Preserve healthy saved pixels; only exact trusted art repairs it.
     const savedLoaded=isPortfolio&&/^https?:\/\//.test(current)&&
@@ -1435,7 +1457,10 @@
       year:opts.tmdbId?0:Number(opts.year)||0}))return;
     if(meta&&Number.isSafeInteger(Number(meta.tmdb_id))&&Number(meta.tmdb_id)>0&&['movie','tv'].includes(meta.media_kind)){
       const originalTitle=String(meta.original_title||meta.title||identity.originalTitle||'');
-      window.currentMatchIdentity={...identity,title,originalTitle,tmdbId:Number(meta.tmdb_id),
+      const imdbId=/^tt\d{7,10}$/.test(String(meta.imdb_id||''))?String(meta.imdb_id):
+        Number(identity.tmdbId)===Number(meta.tmdb_id)&&identity.kind===meta.media_kind&&
+        /^tt\d{7,10}$/.test(String(identity.imdbId||''))?String(identity.imdbId):'';
+      window.currentMatchIdentity={...identity,title,originalTitle,tmdbId:Number(meta.tmdb_id),imdbId,
         kind:meta.media_kind,year:meta.year||identity.year||'',artwork:resolved.url||identity.artwork||''};
       // Record verified aliases and source identity after enrichment. The
       // policy preserves an explicit Save/Not For Me action during this
@@ -1461,7 +1486,8 @@
     if(Number.isSafeInteger(Number(meta.tmdb_id))&&Number(meta.tmdb_id)>0&&
        ['movie','tv'].includes(meta.media_kind))
       document.dispatchEvent(new CustomEvent('matchapp:adult-metadata',{detail:{
-        title,tmdbId:Number(meta.tmdb_id),kind:meta.media_kind,country:regionCode()
+        title,tmdbId:Number(meta.tmdb_id),kind:meta.media_kind,
+        imdbId:window.currentMatchIdentity?.imdbId||'',country:regionCode()
       }}));
     // Read-only result presentation consumes the same resolved source record;
     // it performs no lookup and cannot interrupt media or matching behavior.

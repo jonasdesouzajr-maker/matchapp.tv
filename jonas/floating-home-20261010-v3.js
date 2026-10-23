@@ -13,7 +13,7 @@
  var panel=root.querySelector('#ma-jonas-home-panel');
  var close=root.querySelector('#ma-jonas-home-close');
  var input=root.querySelector('#ma-jonas-home-input');
- var opened=false,dragging=null,suppressClick=false,stageFloating=false,stagePosition=null,lastAppliedLang=null;
+ var opened=false,dragging=null,suppressClick=false,stageFloating=false,stagePosition=null,lastAppliedLang=null,launcherStyle=null;
  var storageKey='matchapp-jonas-inline-position-v1';
  var dock=null,returnButton=null;
  function headerMode(){return !!document.documentElement?.hasAttribute?.('data-ma-jonas-header')}
@@ -214,9 +214,17 @@
   if(next){
    stageFloating=root.classList.contains('is-floating');
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
+   var launcherRect=bubble.getBoundingClientRect();
+   launcherStyle=['display','visibility','position','top','left','right','bottom','width','height','transform','z-index','pointer-events'].map(function(key){return [key,bubble.style.getPropertyValue(key),bubble.style.getPropertyPriority(key)]});
+   bubble.style.setProperty('display','block','important');bubble.style.setProperty('visibility','visible','important');bubble.style.setProperty('z-index','2147483400','important');bubble.style.setProperty('pointer-events','auto','important');
+   if(!headerMode()){
+    [['position','fixed'],['top',launcherRect.top+'px'],['left',launcherRect.left+'px'],['right','auto'],['bottom','auto'],['transform','none']].forEach(function(value){bubble.style.setProperty(value[0],value[1],'important')});
+    if(launcherRect.width)bubble.style.setProperty('width',launcherRect.width+'px','important');
+    if(launcherRect.height)bubble.style.setProperty('height',launcherRect.height+'px','important');
+   }
    if(headerMode()){panel.classList.add('ma-header-jonas-conversation');mountHeader();}
    else {if(root.parentElement!==document.body)document.body.appendChild(root);root.classList.add('is-chat-stage');}
-   panel.setAttribute('aria-modal','true');
+   panel.setAttribute('aria-modal','false');
    syncConversationViewport();
    ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
    ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
@@ -224,9 +232,11 @@
   }
   opened=next;
   panel.hidden=!next;
+  if(!next)panel.style.removeProperty('display');
   bubble.setAttribute('aria-expanded',String(next));
   root.classList.toggle('is-open',next);
   if(!next){
+   (launcherStyle||[]).forEach(function(value){if(value[1])bubble.style.setProperty(value[0],value[1],value[2]);else bubble.style.removeProperty(value[0])});launcherStyle=null;
    root.dispatchEvent(new CustomEvent('matchapp:jonas-close'));
    root.classList.remove('is-chat-stage');
    panel.setAttribute('aria-modal','false');
@@ -239,6 +249,7 @@
   }
   if(next){
    translate();positionPanel();
+   window.MatchAppChatResize?.sync?.();
    // An in-flow conversation should become visible immediately even when
    // the user opens Jonas near the bottom edge of a short phone screen.
    if(!root.classList.contains('is-floating')&&dock){

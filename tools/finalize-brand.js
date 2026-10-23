@@ -144,6 +144,8 @@ function withQueryParams(url,entries){
  return pathname+'?'+params.toString()+fragment;
 }
 const ANDROID_QA_ASSETS=new Set(['reference-system.css','reference-system.js','reference-header.css','reference-header.js','reference-density.js','reference-home.css','reference-pages.css','premium-journey-20261014.css','premium-journey-20261014.js','filter-wrap-fix.css','app-updates.js','jonas-intro-audio.js','portfolio-history.js','build-meta.js','reference-explore.css','reference-support.css','catalog-media.js','app.js','matchapp-ia.js','criteria.js','ebook-matcher.js','pricing.js','experience-v2.js','taste-profile.js','discover.js','friends.js','growth-together.js','settings.js','final-wiring.js','production-hardening.js','shown-history.js','reference-dock.css','reference-dock.js','voice-input.js','activity.js']);
+// Keep the matching/chat repair current when editorial pages are regenerated.
+const MATCH_REPAIR_ASSETS=new Set(['app.js','catalog-media.js','omdb-ratings.js','discover.js','android-ambient-assistant-20261011.js','android-ambient-embed-20261011.css','discovery-avatar-stage-20261010.js','floating-home-20261010-v3.js','chat-resize-20261022.js','ui-fixes-20261023.css','jonas-adult-page.js','final-wiring.js','build-meta.js']);
 function referenceRuntimeAssetURL(url){
  const pins={
   'catalog-media.js':['posters','20261020-1'],'poster-wall.js':['posters','20261020-1'],'trending-rail.js':['posters','20261020-1'],'profile.js':['posters','20261020-1'],'portfolio-history.js':['posters','20261020-1'],'settings.js':['posters','20261020-1'],'title-captions.js':['posters','20261020-1'],
@@ -157,8 +159,8 @@ function referenceRuntimeAssetURL(url){
  const dialogs=new Set(['reference-system.js','profile.js','app.js','passkeys.js','pricing.js','settings.js']);
  const pathname=url.split(/[?#]/)[0];
  if(!/^\/[A-Za-z0-9_./-]+$/.test(pathname))return url;
- const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file)&&!ANDROID_QA_ASSETS.has(file)&&!['brand.css','style.css','adult-page-compact.css'].includes(file))return url;
- const entries=[];if(ANDROID_QA_ASSETS.has(file))entries.push(['androidqa','20261021-1']);if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
+ const file=pathname.split('/').pop(),pin=Object.hasOwn(pins,file)?pins[file]:null;if(!pin&&!dialogs.has(file)&&!ANDROID_QA_ASSETS.has(file)&&!MATCH_REPAIR_ASSETS.has(file)&&!['brand.css','style.css','adult-page-compact.css'].includes(file))return url;
+ const entries=[];if(MATCH_REPAIR_ASSETS.has(file))entries.push(['repair','20261023-1']);if(ANDROID_QA_ASSETS.has(file))entries.push(['androidqa','20261021-1']);if(pin)entries.push(pin);if(dialogs.has(file))entries.push(['dialogs','20261020-1']);
  if(file==='app.js'||file==='profile.js')entries.push(['readiness','20261022-1']);
  if(file==='profile.js')entries.push(['identity','20261022-1']);
  if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
@@ -279,7 +281,7 @@ function finalizeBrand(ownedPaths){
       return prefix+'?'+(query?query+'&amp;':'')+'approvedlogo=20261014'+end;
     });
   }
-  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261023-6"></script>\n</head>');
+  if(!kids&&!doc.querySelector('script[src^="/patches/jonas-adult-page.js"]'))html=html.replace('</head>','<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261023-6&repair=20261023-1"></script>\n</head>');
   if(!kids&&!html.includes('/patches/immersive-feedback-20261014.js'))html=html.replace('</head>','<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>\n</head>');
   html=versionFrameStylesheet(html);
   html=name(html,kids);

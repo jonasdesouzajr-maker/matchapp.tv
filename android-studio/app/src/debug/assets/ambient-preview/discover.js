@@ -1931,7 +1931,8 @@ window.startNewChat = function () {
     if (empty) empty.style.display = 'none';
     const input = document.getElementById('discover-new-input');
     if (input) { input.value = ''; window.autoGrowComposer?.(); }
-    history.replaceState(null, '', '/discover.html');
+    const ambient = window.top !== window && new URLSearchParams(location.search).get('ambient') === '1';
+    history.replaceState(null, '', ambient ? '/discover.html?ambient=1' : '/discover.html');
     document.title = window.t?.('page.askTitle') || 'Talk to Jonas | MatchApp Ai';
     renderThreadList();
     refreshAiWorkspaceStatus();

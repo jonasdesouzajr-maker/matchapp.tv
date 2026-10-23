@@ -123,7 +123,7 @@ window.MATCHAPP_BUILD = '2026.10.20.1';
 (function(){
   if(document.querySelector('script[data-matchapp-final-wiring]'))return;
   const s=document.createElement('script');
-  s.src='/final-wiring.js?v=20261010-cloudvoice2&icon=20261001-circle-launch1&brand=20261001-canonicalai1&androidqa=20261021-1';
+  s.src='/final-wiring.js?v=20261010-cloudvoice2&icon=20261001-circle-launch1&brand=20261001-canonicalai1&androidqa=20261021-1&repair=20261023-1';
   s.async=false; s.defer=true; s.dataset.matchappFinalWiring='1';
   document.head.appendChild(s);
 })();

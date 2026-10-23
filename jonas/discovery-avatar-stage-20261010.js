@@ -104,14 +104,21 @@ function stopMotion(){
  el.style.setProperty('--jds-head-scale','1');
 }
 function beginSpeaking(){
+ if(!conversationOpen()){window.MatchAppJonasSpeech?.stop?.();endSpeaking(false);return;}
  clearTimeout(timer);stopMotion();
  active=true;change('speaking');scheduleBlink();raf=requestAnimationFrame(animate);
 }
 function endSpeaking(auto){
  stopMotion();change('idle');
- if(auto && voiceTurn && !document.hidden)timer=setTimeout(()=>{if(voiceTurn && document.activeElement!==input && !document.hidden)mic.click()},380);
+ if(auto && voiceTurn && !document.hidden && conversationOpen())timer=setTimeout(()=>{if(voiceTurn && document.activeElement!==input && !document.hidden && conversationOpen())mic.click()},380);
+}
+function conversationOpen(){
+ // A hidden ambient iframe stays mounted to retain its thread and draft.
+ // Late replies must not restart speech or microphone while it is closed.
+ try{return window.parent===window||!window.parent.MatchAppAmbientJonas||window.parent.MatchAppAmbientJonas.isOpen();}catch(_){return true;}
 }
 function speak(text,opts){
+ if(!conversationOpen()){opts?.onComplete?.(false);return Promise.resolve(false);}
  clearTimeout(timer);voiceTurn=opts?.autoListen===true;
  let x=String(text||'').trim();
  if(!x)return Promise.resolve(false);
@@ -139,7 +146,7 @@ function speak(text,opts){
   onError:()=>{opts?.onComplete?.(false);endSpeaking(false)}
  }).catch(()=>{endSpeaking(false);return false});
 }
-mic.addEventListener('click',()=>{voiceTurn=true;stopMotion();change('listening');document.getElementById('mic-btn-discover')?.click()});
+mic.addEventListener('click',()=>{if(!conversationOpen())return;voiceTurn=true;stopMotion();change('listening');document.getElementById('mic-btn-discover')?.click()});
 input.addEventListener('input',event=>{if(event.isTrusted){voiceTurn=false;clearTimeout(timer);}},true);
 input.addEventListener('focus',()=>{voiceTurn=false;clearTimeout(timer)});
 document.addEventListener('matchapp:voice-state',event=>{const s=event.detail?.state;if(s==='listening'){voiceTurn=true;change('listening')}else if(s==='idle'&&el.dataset.state==='listening')change('idle')});

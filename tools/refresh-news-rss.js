@@ -512,7 +512,7 @@ ${imageMeta}
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
-${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-6"></script>
+${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-6&amp;repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 <style>
 /* Keep article navigation clear of the existing top-right Jonas companion. */
@@ -541,7 +541,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p><a href="/news/" data-news-ui="moreNews">More entertainment, world and sports news</a> · <a href="/" data-news-ui="backHome">Back to MatchApp Ai</a></p>
   </article>
 </main>
-<script src="/build-meta.js?v=203&polish=20261020-ui1&androidqa=20261021-1"></script>
+<script src="/build-meta.js?v=203&polish=20261020-ui1&androidqa=20261021-1&repair=20261023-1"></script>
 </body>
 </html>`,path.relative(ROOT,path.join(currentSlugDir(i),'index.html')));
 }
@@ -625,7 +625,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
-${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-6"></script>
+${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261023-6&amp;repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head>
 <body class="news-ui-page">
@@ -647,7 +647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
   ${options?'<div data-news-local-offers>'+options+'</div>\n  ':''}<section data-native-news-feed data-news-ui-aria="feedLabel" aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
-<script src="/build-meta.js?v=203&polish=20261020-ui1&androidqa=20261021-1"></script>
+<script src="/build-meta.js?v=203&polish=20261020-ui1&androidqa=20261021-1&repair=20261023-1"></script>
 </body>
 </html>`,'news/index.html');
 }

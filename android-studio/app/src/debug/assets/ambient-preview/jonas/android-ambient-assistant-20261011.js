@@ -215,6 +215,17 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   try{
    var doc=frame.contentDocument;
    doc.documentElement.classList.add('matchapp-ambient-frame');
+   // Keep the original translated New chat control and its existing reset
+   // handler reachable after the duplicate embedded header is hidden.
+   var newChat=doc.getElementById('jonas-header-new-chat'),workspace=doc.querySelector('.discover-head');
+   if(newChat&&workspace){
+    newChat.classList.add('ai-new-chat');
+    if(newChat.parentElement!==workspace)workspace.insertBefore(newChat,workspace.firstChild);
+    if(!newChat.dataset.ambientReset){
+     newChat.dataset.ambientReset='1';
+     newChat.addEventListener('click',function(){stopConversation();greetingFinished=epoch;activeTitle='';panel.querySelector('.ja-hello').textContent=greeting()},true);
+    }
+   }
    // This embedded chat is not a second MatchApp page. Remove duplicate
    // headers and the oversized voice-stage card, retaining their JS handlers.
    // Inline !important takes precedence over late site layout injections.
@@ -229,7 +240,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
    // Avoid observing style mutations: site layout routines update them often.
    if(!doc.querySelector('link[data-ma-ambient-embed]')){
      var sheet=doc.createElement('link');sheet.rel='stylesheet';sheet.dataset.maAmbientEmbed='1';
-     sheet.href='/jonas/android-ambient-embed-20261011.css?live='+Date.now();doc.head.appendChild(sheet);
+     sheet.href='/jonas/android-ambient-embed-20261011.css?live=&repair=20261023-1'+Date.now();doc.head.appendChild(sheet);
    }
   }catch(_){}
  }
@@ -250,6 +261,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function onFrameLoad(){
   try{if(frame.contentWindow.location.origin!==location.origin||frame.contentWindow.location.pathname!=='/discover.html')return}catch(_){return}
   ready=true;embedStyle();mirrorConversationFace();panel.querySelector('.ja-hello').textContent=greeting();
+  frame.contentDocument?.addEventListener('keydown',escapeKey);
   if(!open)return;
   if(pendingCloud===epoch){cloudGreeting(epoch);return}
   if(pendingListen===epoch){pendingListen=0;listen();return}
@@ -273,46 +285,52 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   if(!panel||!open)return;
   var v=window.visualViewport;
   panel.style.setProperty('--ja-view-left',Math.round(v?.offsetLeft||0)+'px');
-  panel.style.setProperty('--ja-view-top',Math.round(v?.offsetTop||0)+'px');
+  var top=v?.offsetTop||0,height=v?.height||window.innerHeight;
+  var header=root?.closest('#ma-reference-header'),bottom=header?.getBoundingClientRect().bottom||0;
+  if(bottom>top){var reserved=Math.min(height,Math.max(0,bottom-top)+8);top+=reserved;height-=reserved;}
+  panel.style.setProperty('--ja-view-top',Math.round(top)+'px');
   panel.style.setProperty('--ja-view-width',Math.round(v?.width||window.innerWidth)+'px');
-  panel.style.setProperty('--ja-view-height',Math.round(v?.height||window.innerHeight)+'px');
+  panel.style.setProperty('--ja-view-height',Math.round(height)+'px');
  }
  window.addEventListener('resize',syncPanelViewport,{passive:true});
  window.visualViewport?.addEventListener('resize',syncPanelViewport,{passive:true});
  window.visualViewport?.addEventListener('scroll',syncPanelViewport,{passive:true});
  function openPanel(){
   if(open)return;
-  var parked=root.getBoundingClientRect();
-  parkedBeforeChat={x:parked.left,y:parked.top};
+  parkedBeforeChat=['z-index','visibility','pointer-events'].map(function(key){return [key,root.style.getPropertyValue(key),root.style.getPropertyPriority(key)]});
   root.dataset.jonasPositionHeld='1';
-  open=true;epoch++;activeTitle=contextTitle();
+  open=true;epoch++;if(!frame)activeTitle=contextTitle();
   document.body?.classList.add('ma-jonas-modal-open');
   panel.hidden=false;syncPanelViewport();panel.querySelector('.ja-hello').textContent=greeting();
-  // Full-screen conversation is viewport-anchored, not positioned or scaled
-  // from the movable bubble. Closing restores the original saved placement.
+  // The conversation is viewport-anchored. Keep the same movable launcher
+  // at its existing position so the user can tap it again to close.
   panel.style.removeProperty('--ja-origin-x');
   panel.style.removeProperty('--ja-origin-y');
   panel.querySelector('.ja-head-text span').textContent=locale().state;
   panel.querySelector('.ja-close').ariaLabel=locale().close;
   panel.querySelector('.ja-close').focus({preventScroll:true});
-  root.hidden=true;
+  root.hidden=false;root.style.setProperty('z-index','2147483400','important');
+  root.style.setProperty('visibility','visible','important');root.style.setProperty('pointer-events','auto','important');
+  bubble.setAttribute('aria-expanded','true');bubble.ariaLabel=locale().close;
   // Start the prepared recording on the actual click. Iframe parsing/network
   // must not sit on the critical path to the spoken greeting.
   spokenGreeting(epoch);
-  // A fresh title selection starts its own source-backed information card.
-  // Otherwise the existing iframe remains alive, retaining conversation state.
-  if(!frame||frame.dataset.title!==activeTitle){
+  // Opening/closing is presentation only. The original New chat action owns
+  // resets; changing the matching result must not discard an existing thread.
+  if(!frame){
     createFrame(activeTitle);frame.dataset.title=activeTitle;
   }
+  window.MatchAppChatResize?.sync?.();
   document.addEventListener('keydown',escapeKey);
  }
  function closePanel(){
   if(!open)return;
   open=false;stopConversation();
   document.body?.classList.remove('ma-jonas-modal-open');
-  panel.hidden=true;root.hidden=false;
+  panel.hidden=true;panel.style.removeProperty('display');root.hidden=false;
+  bubble.setAttribute('aria-expanded','false');bubble.ariaLabel=locale().open;
   var resume=parkedBeforeChat;parkedBeforeChat=null;
-  if(resume){setPosition(resume.x,resume.y);requestAnimationFrame(function(){if(!open)setPosition(resume.x,resume.y)})}
+  (resume||[]).forEach(function(value){if(value[1])root.style.setProperty(value[0],value[1],value[2]);else root.style.removeProperty(value[0])});
   ['--ja-view-left','--ja-view-top','--ja-view-width','--ja-view-height'].forEach(function(key){panel.style.removeProperty(key)});
   document.removeEventListener('keydown',escapeKey);
   bubble.focus({preventScroll:true});
@@ -348,7 +366,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   root=document.createElement('div');root.id='ma-ambient-jonas';
   root.innerHTML='<button type="button" class="ja-bubble" aria-label="Talk to Jonas" aria-haspopup="dialog"><img src="/jonas/faces/jonas/rest.jpg" alt=""><span class="ja-live" aria-hidden="true"></span></button>';
   bubble=root.firstElementChild;
-  panel=document.createElement('section');panel.id='ma-ambient-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Jonas conversation');panel.setAttribute('aria-modal','true');
+  panel=document.createElement('section');panel.id='ma-ambient-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Jonas conversation');panel.setAttribute('aria-modal','false');
   panel.innerHTML='<div class="ja-panel-head"><div class="ja-face-wrap" aria-hidden="true"><img class="ja-face" src="/jonas/faces/jonas/rest.jpg" alt=""><img class="ja-blink" src="/jonas/faces/jonas/blink.jpg" alt="" aria-hidden="true"><img class="ja-mouth ja-mouth-a" alt=""><img class="ja-mouth ja-mouth-b" alt=""></div><div class="ja-head-text"><strong>Jonas</strong><span></span></div><button type="button" class="ja-close" aria-label="Close Jonas conversation">×</button></div><p class="ja-hello"></p>';
   (document.body||document.documentElement).append(root,panel);
   if(!document.body)document.addEventListener('DOMContentLoaded',function(){
@@ -411,7 +429,8 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
     drag=null;
   }
   bubble.addEventListener('pointerup',end);bubble.addEventListener('pointercancel',end);
-  bubble.addEventListener('click',function(){if(skipClick){skipClick=false;return}openPanel()});
+  bubble.setAttribute('aria-controls','ma-ambient-panel');bubble.setAttribute('aria-expanded','false');
+  bubble.addEventListener('click',function(){if(skipClick){skipClick=false;return}if(open)closePanel();else openPanel()});
   panel.querySelector('.ja-close').addEventListener('click',closePanel);
   window.addEventListener('resize',function(){if(root.dataset.jonasDefaultDock==='1'){defaultPosition();return}var r=root.getBoundingClientRect();if(root.style.left)setPosition(r.left,r.top)},{passive:true});
   window.addEventListener('pagehide',stopConversation);
@@ -419,7 +438,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
    // The same-origin chat must use the same explicit language immediately.
    // Cancel any prior-language turn before accepting another microphone turn.
    if(open)stopConversation();
-   bubble.ariaLabel=locale().open;
+   bubble.ariaLabel=open?locale().close:locale().open;
    panel.querySelector('.ja-hello').textContent=locale().hello;
    panel.querySelector('.ja-head-text span').textContent=locale().state;
    panel.querySelector('.ja-close').ariaLabel=locale().close;
@@ -436,4 +455,4 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  function boot(){if(document.documentElement)build();else setTimeout(boot,65)}
  boot();
 })();
-;(function(){if(document.getElementById('ma-chat-resize-script'))return;var s=document.createElement('script');s.id='ma-chat-resize-script';s.defer=true;s.src='/patches/chat-resize-20261022.js?v=20261022-1';(document.head||document.documentElement).appendChild(s)})();
+;(function(){if(document.getElementById('ma-chat-resize-script'))return;var s=document.createElement('script');s.id='ma-chat-resize-script';s.defer=true;s.src='/patches/chat-resize-20261022.js?v=20261022-1&repair=20261023-1';(document.head||document.documentElement).appendChild(s)})();

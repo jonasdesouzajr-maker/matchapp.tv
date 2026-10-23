@@ -14,6 +14,10 @@
  function viewport(){var v=window.visualViewport;return{w:document.documentElement.clientWidth||innerWidth,h:v?Math.min(v.height,innerHeight):innerHeight}}
  function area(panel){
   var vp=viewport(),s=safe(),top=GAP+s.t,left=GAP+s.l,right=vp.w-GAP-s.r,bottom=vp.h-GAP-s.b;
+  // The same Jonas launcher remains the open/close control even at maximum
+  // panel size. Preserve its existing reserved header space.
+  var header=vis(document.getElementById('ma-reference-header'));
+  if(header&&header.bottom>top&&header.top<vp.h)top=Math.min(bottom,Math.max(top,header.bottom+GAP));
   var dock=vis(document.querySelector('.ma-reference-dock,.ma-cinema-dock'));
   if(dock&&dock.top<vp.h&&dock.top>vp.h*0.5)bottom=Math.min(bottom,dock.top-GAP);
   var ads=document.querySelectorAll('ins.adsbygoogle,[data-ad-slot],.sidebar-ad-left,.sidebar-ad-right,[id^="ad-slot"],[class*="ad-slot"]');
@@ -75,7 +79,8 @@
   function go(){try{var d=f.contentDocument;if(!d||!d.head||d.getElementById('ma-chat-resize-frame'))return;var st=d.createElement('style');st.id='ma-chat-resize-frame';
    st.textContent='html.matchapp-ambient-frame .ma-cinema-dock,html.matchapp-ambient-frame .ma-reference-dock{display:none!important}html.matchapp-ambient-frame body{padding-bottom:12px!important}';d.head.appendChild(st)}catch(_){}}
   f.addEventListener('load',go);go()}
- function sync(){if(document.documentElement.classList.contains('ma-chat-resizing'))return;var ps=document.querySelectorAll(SEL);for(var i=0;i<ps.length;i++){var p=ps[i];if(p.hidden||kids())continue;attach(p);frameFix(p);apply(p)}}
+ function sync(){if(document.documentElement.classList.contains('ma-chat-resizing'))return;var ps=document.querySelectorAll(SEL);for(var i=0;i<ps.length;i++){var p=ps[i];if(kids())continue;if(p.hidden){p.style.removeProperty('display');continue}attach(p);frameFix(p);apply(p)}}
+ window.MatchAppChatResize=Object.freeze({sync:sync});
  var t;var t2;function later(){clearTimeout(t);clearTimeout(t2);t=setTimeout(sync,60);t2=setTimeout(sync,450)}
  function boot(){sync();new MutationObserver(function(m){for(var i=0;i<m.length;i++){var n=m[i].target;if(m[i].type==='attributes'?n.matches&&n.matches(SEL):true){later();return}}}).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden']});
   addEventListener('resize',later);addEventListener('orientationchange',later);if(window.visualViewport)visualViewport.addEventListener('resize',later)}

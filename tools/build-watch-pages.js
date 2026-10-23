@@ -77,7 +77,7 @@ function watchPosterMarkup(title, info, records) {
         </figure>`;
 }
 
-const WATCH_POSTER_MEDIA = '<script defer src="/catalog-media.js?v=20260927-posterrecovery2&amp;posters=20261020-1&amp;fastart=20261020-1"></script>';
+const WATCH_POSTER_MEDIA = '<script defer src="/catalog-media.js?v=20260927-posterrecovery2&amp;posters=20261020-1&amp;fastart=20261020-1&amp;repair=20261023-1"></script>';
 
 const WATCH_POSTER_STYLE = `<style data-watch-poster-layout>
 .w2w-hero:has(> .w2w-title-art){display:grid;grid-template-columns:156px minmax(0,1fr);column-gap:12px;row-gap:8px;align-items:center;text-align:start}
