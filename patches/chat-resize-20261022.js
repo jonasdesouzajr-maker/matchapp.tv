@@ -5,11 +5,17 @@
  if(window.__maChatResize)return;window.__maChatResize=true;
  if(/^\/kids(\/|$)/.test(location.pathname))return;
  var KEY='ma-chat-size-v1',SEL='#ma-jonas-home-panel,#ma-ambient-panel',GAP=8,PHONE=768,MINW=320,MAXW=720;
- var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)');
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)'),safeProbe=null;
  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(_){return{}}}
  function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(_){}}
  function kids(){var h=document.documentElement;return h.hasAttribute('data-kids-mode')||(document.body&&document.body.classList.contains('kids-mode'))}
- function safe(){var d=document.createElement('div');d.style.cssText='position:fixed;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)';document.body.appendChild(d);var c=getComputedStyle(d),r={t:parseFloat(c.paddingTop)||0,r:parseFloat(c.paddingRight)||0,b:parseFloat(c.paddingBottom)||0,l:parseFloat(c.paddingLeft)||0};d.remove();return r}
+ function safe(){
+  // Reuse the probe: appending/removing it on every measurement retriggers
+  // the body observer below and keeps an open chat in a resize loop.
+  if(!safeProbe||!safeProbe.isConnected){safeProbe=document.createElement('div');safeProbe.setAttribute('aria-hidden','true');safeProbe.style.cssText='position:fixed;top:0;left:0;visibility:hidden;pointer-events:none;width:0;height:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)';document.body.appendChild(safeProbe)}
+  // Read current env() values each time; rotation/keyboard changes still
+  // need fresh safe-area bounds even though the element is stable.
+  var c=getComputedStyle(safeProbe);return{t:parseFloat(c.paddingTop)||0,r:parseFloat(c.paddingRight)||0,b:parseFloat(c.paddingBottom)||0,l:parseFloat(c.paddingLeft)||0}}
  function vis(e){if(!e)return null;var r=e.getBoundingClientRect();return r.width>1&&r.height>1&&getComputedStyle(e).visibility!=='hidden'?r:null}
  function viewport(){var v=window.visualViewport;return{w:document.documentElement.clientWidth||innerWidth,h:v?Math.min(v.height,innerHeight):innerHeight}}
  function area(panel){
