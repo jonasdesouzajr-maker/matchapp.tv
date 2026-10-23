@@ -1,7 +1,39 @@
 {
-  "updated_at": "2026-10-21T10:32:46.267Z",
+  "updated_at": "2026-10-23T09:31:10.642Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
+    {
+      "id": "2a1ed8cc",
+      "title": "The next government faces transport tests that new roads or cheap fares won’t solve",
+      "url": "https://theconversation.com/the-next-government-faces-transport-tests-that-new-roads-or-cheap-fares-wont-solve-293790",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-22T18:50:10.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
+    {
+      "id": "4e65ca54",
+      "title": "Perdre face à une femme : une défaite qui ne laisse pas indifférent",
+      "url": "https://theconversation.com/perdre-face-a-une-femme-une-defaite-qui-ne-laisse-pas-indifferent-289325",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-21T13:56:57.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
     {
       "id": "74fa37e4",
       "title": "Are transgender sports bans really about protecting women? Survey data tells a different story",

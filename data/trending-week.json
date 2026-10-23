@@ -1,45 +1,273 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-19",
-  "updated": "2026-10-21T10:32:45.909Z",
+  "updated": "2026-10-23T09:31:10.000Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
     {
-      "title": "Cyberpunk: Edgerunners",
+      "title": "The Apothecary Diaries",
       "kind": "tv",
-      "year": 2022,
+      "year": 2023,
       "origin": "JP",
       "originName": "Japan",
       "platform": "Netflix",
       "platforms": [
         "Netflix",
-        "Netflix Standard with Ads"
+        "HBO Max",
+        "Crunchyroll",
+        "Netflix Standard with Ads",
+        "HBO Max Amazon Channel",
+        "Crunchyroll Amazon Channel",
+        "Hulu"
       ],
-      "tmdbId": "105248",
-      "poster": "https://image.tmdb.org/t/p/w780/v3JuB15WybKmxDeT1hWdK3j6eSJ.jpg",
-      "description": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+      "tmdbId": "220542",
+      "poster": "https://image.tmdb.org/t/p/w780/sJZcy8QsOPuRPiCfoCWVB3r9Ohg.jpg",
+      "description": "Maomao lived a peaceful life with her apothecary father. Until one day, she's sold as a lowly servant to the emperor's palace. But she wasn't meant for a compliant life among royalty. So when imperial heirs fall ill, she decides to step in and find a cure! This catches the eye of Jinshi, a handsome palace official who promotes her. Now, she's making a name for herself solving medical mysteries!",
       "genre": [
         "Animation",
-        "Action & Adventure",
-        "Sci-Fi & Fantasy",
-        "Crime"
+        "Drama",
+        "Mystery"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ja",
       "cast": [
-        "Koki Uchiyama",
-        "Momoka Terasawa",
-        "Akari Kito",
-        "Kentaro Tone"
+        "Aoi Yuuki",
+        "Takeo Otsuka",
+        "Katsuyuki Konishi"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.49,
-      "previewUrl": "https://www.youtube.com/watch?v=JtqIas3bYhg",
+      "runtimeMinutes": 23,
+      "contentRating": "TV-14",
+      "voteAverage": 8.66,
+      "previewUrl": "https://www.youtube.com/watch?v=3lfb_KeqdEM",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/220542/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "HBO Max",
+            "Crunchyroll",
+            "Netflix Standard with Ads",
+            "HBO Max Amazon Channel",
+            "Crunchyroll Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/220542/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/220542/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies"
+          ],
+          "link": "https://www.themoviedb.org/tv/220542/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Hulu",
+            "Crunchyroll",
+            "Crunchyroll Amazon Channel",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/220542"
+      },
+      "sourceRank": 1,
+      "keywords": [
+        "The Apothecary Diaries",
+        "The Apothecary Diaries 2023",
+        "where to watch The Apothecary Diaries",
+        "Animation series",
+        "Drama series",
+        "Mystery series",
+        "Netflix trending series",
+        "HBO Max trending series",
+        "Aoi Yuuki",
+        "Takeo Otsuka"
+      ],
+      "longTailKeywords": [
+        "where to watch The Apothecary Diaries 2023",
+        "The Apothecary Diaries streaming in Brazil and United States",
+        "The Apothecary Diaries cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Apothecary Diaries (2023) | MatchApp Ai",
+        "description": "Maomao lived a peaceful life with her apothecary father. Until one day, she's sold as a lowly servant to the emperor's palace. But she wasn't meant for a comp",
+        "keywords": [
+          "The Apothecary Diaries",
+          "The Apothecary Diaries 2023",
+          "where to watch The Apothecary Diaries",
+          "Animation series",
+          "Drama series",
+          "Mystery series",
+          "Netflix trending series",
+          "HBO Max trending series",
+          "Aoi Yuuki",
+          "Takeo Otsuka",
+          "where to watch The Apothecary Diaries 2023",
+          "The Apothecary Diaries streaming in Brazil and United States",
+          "The Apothecary Diaries cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "The Apothecary Diaries"
+      }
+    },
+    {
+      "title": "Clayface",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1400940",
+      "poster": "https://image.tmdb.org/t/p/w780/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
+      "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfigured. Abandoned by his team and with nothing left, Matt seeks out a cutting edge treatment that miraculously returns him to his former self… but also unexpectedly affects his grip on reality, spiraling him down a destructive path of all-consuming revenge.",
+      "genre": [
+        "Horror",
+        "Thriller",
+        "Science Fiction"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Tom Rhys Harries",
+        "Naomi Ackie",
+        "Eddie Marsan",
+        "Max Minghella"
+      ],
+      "runtimeMinutes": 109,
+      "contentRating": "R",
+      "voteAverage": 7.33,
+      "previewUrl": "https://www.youtube.com/watch?v=f7jlCqdtwdM",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-22"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-19"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-22"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-23"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1400940"
+      },
+      "sourceRank": 2,
+      "keywords": [
+        "Clayface",
+        "Clayface 2026",
+        "where to watch Clayface",
+        "Horror movie",
+        "Thriller movie",
+        "Science Fiction movie",
+        "Tom Rhys Harries",
+        "Naomi Ackie"
+      ],
+      "longTailKeywords": [
+        "where to watch Clayface 2026",
+        "Clayface streaming in Brazil and United States",
+        "Clayface cast synopsis trailer and where to watch",
+        "what Horror to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Clayface (2026) | MatchApp Ai",
+        "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfig",
+        "keywords": [
+          "Clayface",
+          "Clayface 2026",
+          "where to watch Clayface",
+          "Horror movie",
+          "Thriller movie",
+          "Science Fiction movie",
+          "Tom Rhys Harries",
+          "Naomi Ackie",
+          "where to watch Clayface 2026",
+          "Clayface streaming in Brazil and United States",
+          "Clayface cast synopsis trailer and where to watch",
+          "what Horror to watch this week"
+        ],
+        "canonicalQuery": "Clayface"
+      }
+    },
+    {
+      "title": "Lupin",
+      "kind": "tv",
+      "year": 2021,
+      "origin": "FR",
+      "originName": "France",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "96677",
+      "poster": "https://image.tmdb.org/t/p/w780/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg",
+      "description": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
+      "genre": [
+        "Crime",
+        "Drama",
+        "Mystery"
+      ],
+      "inLanguage": "fr",
+      "cast": [
+        "Omar Sy"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.7,
+      "previewUrl": "https://www.youtube.com/watch?v=ga0iTWXCGa0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=BR",
           "rent": [],
           "stream": [
             "Netflix",
@@ -49,7 +277,7 @@
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=GB",
           "rent": [],
           "stream": [
             "Netflix",
@@ -59,7 +287,7 @@
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=PT",
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=PT",
           "rent": [],
           "stream": [
             "Netflix"
@@ -68,7 +296,7 @@
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=US",
           "rent": [],
           "stream": [
             "Netflix",
@@ -78,274 +306,45 @@
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/105248"
-      },
-      "sourceRank": 1,
-      "keywords": [
-        "Cyberpunk: Edgerunners",
-        "Cyberpunk: Edgerunners 2022",
-        "where to watch Cyberpunk: Edgerunners",
-        "Animation series",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Koki Uchiyama",
-        "Momoka Terasawa"
-      ],
-      "longTailKeywords": [
-        "where to watch Cyberpunk: Edgerunners 2022",
-        "Cyberpunk: Edgerunners streaming in Brazil and United States",
-        "Cyberpunk: Edgerunners cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Cyberpunk: Edgerunners (2022) | MatchApp Ai",
-        "description": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-        "keywords": [
-          "Cyberpunk: Edgerunners",
-          "Cyberpunk: Edgerunners 2022",
-          "where to watch Cyberpunk: Edgerunners",
-          "Animation series",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Koki Uchiyama",
-          "Momoka Terasawa",
-          "where to watch Cyberpunk: Edgerunners 2022",
-          "Cyberpunk: Edgerunners streaming in Brazil and United States",
-          "Cyberpunk: Edgerunners cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Cyberpunk: Edgerunners"
-      }
-    },
-    {
-      "title": "The Terminal List",
-      "kind": "tv",
-      "year": 2022,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Amazon Prime Video",
-      "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads",
-        "Amazon MX Player"
-      ],
-      "tmdbId": "120911",
-      "poster": "https://image.tmdb.org/t/p/w780/xyFAzP7RKK8cARCSalIZ9A9T0jV.jpg",
-      "description": "Navy SEAL Commander James Reece turns to vengeance as he investigates the mysterious forces behind the murder of his entire platoon. Free from the military's command structure, Reece applies the lessons he's learned from nearly two decades of warfare to hunt down the people responsible.",
-      "genre": [
-        "Action & Adventure",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Chris Pratt"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.97,
-      "previewUrl": "https://www.youtube.com/watch?v=x9FvvsC0B5Q",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads",
-            "Amazon Prime Video Free with Ads",
-            "Amazon MX Player"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/120911"
-      },
-      "sourceRank": 2,
-      "keywords": [
-        "The Terminal List",
-        "The Terminal List 2022",
-        "where to watch The Terminal List",
-        "Action & Adventure series",
-        "Drama series",
-        "Amazon Prime Video trending series",
-        "Amazon Prime Video with Ads trending series",
-        "Chris Pratt"
-      ],
-      "longTailKeywords": [
-        "where to watch The Terminal List 2022",
-        "The Terminal List streaming in Brazil and United States",
-        "The Terminal List cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Terminal List (2022) | MatchApp Ai",
-        "description": "Navy SEAL Commander James Reece turns to vengeance as he investigates the mysterious forces behind the murder of his entire platoon. Free from the military's ",
-        "keywords": [
-          "The Terminal List",
-          "The Terminal List 2022",
-          "where to watch The Terminal List",
-          "Action & Adventure series",
-          "Drama series",
-          "Amazon Prime Video trending series",
-          "Amazon Prime Video with Ads trending series",
-          "Chris Pratt",
-          "where to watch The Terminal List 2022",
-          "The Terminal List streaming in Brazil and United States",
-          "The Terminal List cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
-        ],
-        "canonicalQuery": "The Terminal List"
-      }
-    },
-    {
-      "title": "LINK CLICK",
-      "kind": "tv",
-      "year": 2021,
-      "origin": "CN",
-      "originName": "China",
-      "platform": "Crunchyroll",
-      "platforms": [
-        "Crunchyroll",
-        "Crunchyroll Amazon Channel"
-      ],
-      "tmdbId": "123542",
-      "poster": "https://image.tmdb.org/t/p/w780/hCt2bLRGTCjHGqtV5FP3Img6w1h.jpg",
-      "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photography shop set in the backdrop of a modern metropolis. Each job can be full of danger, but nothing is more important than fulfilling every order, no matter the scale…or peril involved!",
-      "genre": [
-        "Animation",
-        "Sci-Fi & Fantasy",
-        "Mystery",
-        "Drama"
-      ],
-      "inLanguage": "zh",
-      "cast": [
-        "Su Shangqing",
-        "Yang Tianxiang",
-        "Li Shimeng"
-      ],
-      "runtimeMinutes": 23,
-      "contentRating": "14",
-      "voteAverage": 8.03,
-      "previewUrl": "https://www.youtube.com/watch?v=HxoR_7jVBCM",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/123542/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Crunchyroll",
-            "Crunchyroll Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/123542"
+        "source_page_url": "https://www.themoviedb.org/tv/96677"
       },
       "sourceRank": 3,
       "keywords": [
-        "LINK CLICK",
-        "LINK CLICK 2021",
-        "where to watch LINK CLICK",
-        "Animation series",
-        "Sci-Fi & Fantasy series",
+        "Lupin",
+        "Lupin 2021",
+        "where to watch Lupin",
+        "Crime series",
+        "Drama series",
         "Mystery series",
-        "Crunchyroll trending series",
-        "Crunchyroll Amazon Channel trending series",
-        "Su Shangqing",
-        "Yang Tianxiang"
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Omar Sy"
       ],
       "longTailKeywords": [
-        "where to watch LINK CLICK 2021",
-        "LINK CLICK streaming in Brazil and United States",
-        "LINK CLICK cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
+        "where to watch Lupin 2021",
+        "Lupin streaming in Brazil and United States",
+        "Lupin cast synopsis trailer and where to watch",
+        "what Crime to watch this week"
       ],
       "seo": {
-        "title": "Where to watch LINK CLICK (2021) | MatchApp Ai",
-        "description": "Using superpowers to enter their clientele’s photos one by one, Cheng Xiaoshi and Lu Guang take their work seriously at “Time Photo Studio,” a small photograp",
+        "title": "Where to watch Lupin (2021) | MatchApp Ai",
+        "description": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
         "keywords": [
-          "LINK CLICK",
-          "LINK CLICK 2021",
-          "where to watch LINK CLICK",
-          "Animation series",
-          "Sci-Fi & Fantasy series",
+          "Lupin",
+          "Lupin 2021",
+          "where to watch Lupin",
+          "Crime series",
+          "Drama series",
           "Mystery series",
-          "Crunchyroll trending series",
-          "Crunchyroll Amazon Channel trending series",
-          "Su Shangqing",
-          "Yang Tianxiang",
-          "where to watch LINK CLICK 2021",
-          "LINK CLICK streaming in Brazil and United States",
-          "LINK CLICK cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Omar Sy",
+          "where to watch Lupin 2021",
+          "Lupin streaming in Brazil and United States",
+          "Lupin cast synopsis trailer and where to watch",
+          "what Crime to watch this week"
         ],
-        "canonicalQuery": "LINK CLICK"
+        "canonicalQuery": "Lupin"
       }
     },
     {
@@ -408,262 +407,342 @@
       "sourceRank": 1
     },
     {
-      "title": "VisionQuest",
+      "title": "The Terminal List",
       "kind": "tv",
-      "year": 2026,
+      "year": 2022,
       "origin": "US",
       "originName": "United States",
-      "platform": "Disney Plus",
+      "platform": "Amazon Prime Video",
       "platforms": [
-        "Disney Plus"
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
-      "tmdbId": "213375",
-      "poster": "https://image.tmdb.org/t/p/w780/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
-      "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+      "tmdbId": "120911",
+      "poster": "https://image.tmdb.org/t/p/w780/xyFAzP7RKK8cARCSalIZ9A9T0jV.jpg",
+      "description": "Navy SEAL Commander James Reece turns to vengeance as he investigates the mysterious forces behind the murder of his entire platoon. Free from the military's command structure, Reece applies the lessons he's learned from nearly two decades of warfare to hunt down the people responsible.",
       "genre": [
-        "Sci-Fi & Fantasy",
+        "Action & Adventure",
         "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Paul Bettany",
-        "James Spader",
-        "Ruaridh Mollica",
-        "Todd Stashwick"
+        "Chris Pratt"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 8.82,
-      "previewUrl": "https://www.youtube.com/watch?v=sXKnmgmbkoE",
+      "contentRating": "TV-MA",
+      "voteAverage": 7.99,
+      "previewUrl": "https://www.youtube.com/watch?v=x9FvvsC0B5Q",
       "availability": {
-        "US": {
+        "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Disney Plus"
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads",
+            "Amazon Prime Video Free with Ads",
+            "Amazon MX Player"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/213375"
+        "source_page_url": "https://www.themoviedb.org/tv/120911"
       },
       "sourceRank": 4,
       "keywords": [
-        "VisionQuest",
-        "VisionQuest 2026",
-        "where to watch VisionQuest",
-        "Sci-Fi & Fantasy series",
+        "The Terminal List",
+        "The Terminal List 2022",
+        "where to watch The Terminal List",
+        "Action & Adventure series",
         "Drama series",
-        "Disney Plus trending series",
-        "Paul Bettany",
-        "James Spader"
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
+        "Chris Pratt"
       ],
       "longTailKeywords": [
-        "where to watch VisionQuest 2026",
-        "VisionQuest streaming in Brazil and United States",
-        "VisionQuest cast synopsis trailer and where to watch",
-        "what Sci-Fi & Fantasy to watch this week"
+        "where to watch The Terminal List 2022",
+        "The Terminal List streaming in Brazil and United States",
+        "The Terminal List cast synopsis trailer and where to watch",
+        "what Action & Adventure to watch this week"
       ],
       "seo": {
-        "title": "Where to watch VisionQuest (2026) | MatchApp Ai",
-        "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+        "title": "Where to watch The Terminal List (2022) | MatchApp Ai",
+        "description": "Navy SEAL Commander James Reece turns to vengeance as he investigates the mysterious forces behind the murder of his entire platoon. Free from the military's ",
         "keywords": [
-          "VisionQuest",
-          "VisionQuest 2026",
-          "where to watch VisionQuest",
-          "Sci-Fi & Fantasy series",
+          "The Terminal List",
+          "The Terminal List 2022",
+          "where to watch The Terminal List",
+          "Action & Adventure series",
           "Drama series",
-          "Disney Plus trending series",
-          "Paul Bettany",
-          "James Spader",
-          "where to watch VisionQuest 2026",
-          "VisionQuest streaming in Brazil and United States",
-          "VisionQuest cast synopsis trailer and where to watch",
-          "what Sci-Fi & Fantasy to watch this week"
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
+          "Chris Pratt",
+          "where to watch The Terminal List 2022",
+          "The Terminal List streaming in Brazil and United States",
+          "The Terminal List cast synopsis trailer and where to watch",
+          "what Action & Adventure to watch this week"
         ],
-        "canonicalQuery": "VisionQuest"
+        "canonicalQuery": "The Terminal List"
       }
     },
     {
-      "title": "Clayface",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1400940",
-      "poster": "https://image.tmdb.org/t/p/w780/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
-      "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfigured. Abandoned by his team and with nothing left, Matt seeks out a cutting edge treatment that miraculously returns him to his former self… but also unexpectedly affects his grip on reality, spiraling him down a destructive path of all-consuming revenge.",
+      "title": "Cyberpunk: Edgerunners",
+      "kind": "tv",
+      "year": 2022,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "105248",
+      "poster": "https://image.tmdb.org/t/p/w780/v3JuB15WybKmxDeT1hWdK3j6eSJ.jpg",
+      "description": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
       "genre": [
-        "Horror",
-        "Thriller",
-        "Science Fiction"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Tom Rhys Harries",
-        "Naomi Ackie",
-        "Eddie Marsan",
-        "Max Minghella"
-      ],
-      "runtimeMinutes": 109,
-      "contentRating": "R",
-      "voteAverage": 7.2,
-      "previewUrl": "https://www.youtube.com/watch?v=f7jlCqdtwdM",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-22"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-19"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-22"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-23"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1400940"
-      },
-      "sourceRank": 5,
-      "keywords": [
-        "Clayface",
-        "Clayface 2026",
-        "where to watch Clayface",
-        "Horror movie",
-        "Thriller movie",
-        "Science Fiction movie",
-        "Tom Rhys Harries",
-        "Naomi Ackie"
-      ],
-      "longTailKeywords": [
-        "where to watch Clayface 2026",
-        "Clayface streaming in Brazil and United States",
-        "Clayface cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Clayface (2026) | MatchApp Ai",
-        "description": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfig",
-        "keywords": [
-          "Clayface",
-          "Clayface 2026",
-          "where to watch Clayface",
-          "Horror movie",
-          "Thriller movie",
-          "Science Fiction movie",
-          "Tom Rhys Harries",
-          "Naomi Ackie",
-          "where to watch Clayface 2026",
-          "Clayface streaming in Brazil and United States",
-          "Clayface cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
-        ],
-        "canonicalQuery": "Clayface"
-      }
-    },
-    {
-      "title": "The Weight",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1433583",
-      "poster": "https://image.tmdb.org/t/p/w780/8i5iZV50CoEtmDCFM7RSxCkpE8h.jpg",
-      "description": "When Samuel is torn from his daughter and sent to a brutal prison, Warden Clancy offers him a high-stakes proposition: smuggle gold out of a remote mine with a dangerous crew of prisoners and he’ll win his freedom.",
-      "genre": [
-        "Drama",
-        "Thriller",
+        "Animation",
+        "Action & Adventure",
+        "Sci-Fi & Fantasy",
         "Crime"
       ],
       "inLanguage": "en",
       "cast": [
-        "Ethan Hawke",
-        "Russell Crowe",
-        "Julia Jones",
-        "Austin Amelio"
+        "Koki Uchiyama",
+        "Momoka Terasawa",
+        "Akari Kito",
+        "Kentaro Tone"
       ],
-      "runtimeMinutes": 112,
-      "contentRating": "R",
-      "voteAverage": 7,
-      "previewUrl": "https://www.youtube.com/watch?v=7YpuMymmiJ8",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.5,
+      "previewUrl": "https://www.youtube.com/watch?v=JtqIas3bYhg",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
         "GB": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=GB",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-02"
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/105248-cyberpunk-edgerunners/watch?locale=US",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1433583"
+        "source_page_url": "https://www.themoviedb.org/tv/105248"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "Cyberpunk: Edgerunners",
+        "Cyberpunk: Edgerunners 2022",
+        "where to watch Cyberpunk: Edgerunners",
+        "Animation series",
+        "Action & Adventure series",
+        "Sci-Fi & Fantasy series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Koki Uchiyama",
+        "Momoka Terasawa"
+      ],
+      "longTailKeywords": [
+        "where to watch Cyberpunk: Edgerunners 2022",
+        "Cyberpunk: Edgerunners streaming in Brazil and United States",
+        "Cyberpunk: Edgerunners cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Cyberpunk: Edgerunners (2022) | MatchApp Ai",
+        "description": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+        "keywords": [
+          "Cyberpunk: Edgerunners",
+          "Cyberpunk: Edgerunners 2022",
+          "where to watch Cyberpunk: Edgerunners",
+          "Animation series",
+          "Action & Adventure series",
+          "Sci-Fi & Fantasy series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Koki Uchiyama",
+          "Momoka Terasawa",
+          "where to watch Cyberpunk: Edgerunners 2022",
+          "Cyberpunk: Edgerunners streaming in Brazil and United States",
+          "Cyberpunk: Edgerunners cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Cyberpunk: Edgerunners"
+      }
+    },
+    {
+      "title": "Nobody Wants This",
+      "kind": "tv",
+      "year": 2024,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "250923",
+      "poster": "https://image.tmdb.org/t/p/w780/cUpIceeJJoRqUHSCzh6jRSmlpkA.jpg",
+      "description": "An agnostic sex podcaster and a newly single rabbi fall in love, but can their relationship survive their wildly different lives and meddling families?",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Kristen Bell",
+        "Adam Brody",
+        "Justine Lupe",
+        "Timothy Simons"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.3,
+      "previewUrl": "https://www.youtube.com/watch?v=Xn2PsXD8m4A",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/250923-nobody-wants-this/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/250923-nobody-wants-this/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/250923-nobody-wants-this/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/250923-nobody-wants-this/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/250923"
       },
       "sourceRank": 6,
       "keywords": [
-        "The Weight",
-        "The Weight 2026",
-        "where to watch The Weight",
-        "Drama movie",
-        "Thriller movie",
-        "Crime movie",
-        "Ethan Hawke",
-        "Russell Crowe"
+        "Nobody Wants This",
+        "Nobody Wants This 2024",
+        "where to watch Nobody Wants This",
+        "Comedy series",
+        "Drama series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Kristen Bell",
+        "Adam Brody"
       ],
       "longTailKeywords": [
-        "where to watch The Weight 2026",
-        "The Weight streaming in Brazil and United States",
-        "The Weight cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Nobody Wants This 2024",
+        "Nobody Wants This streaming in Brazil and United States",
+        "Nobody Wants This cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Weight (2026) | MatchApp Ai",
-        "description": "When Samuel is torn from his daughter and sent to a brutal prison, Warden Clancy offers him a high-stakes proposition: smuggle gold out of a remote mine with ",
+        "title": "Where to watch Nobody Wants This (2024) | MatchApp Ai",
+        "description": "An agnostic sex podcaster and a newly single rabbi fall in love, but can their relationship survive their wildly different lives and meddling families?",
         "keywords": [
-          "The Weight",
-          "The Weight 2026",
-          "where to watch The Weight",
-          "Drama movie",
-          "Thriller movie",
-          "Crime movie",
-          "Ethan Hawke",
-          "Russell Crowe",
-          "where to watch The Weight 2026",
-          "The Weight streaming in Brazil and United States",
-          "The Weight cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Nobody Wants This",
+          "Nobody Wants This 2024",
+          "where to watch Nobody Wants This",
+          "Comedy series",
+          "Drama series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Kristen Bell",
+          "Adam Brody",
+          "where to watch Nobody Wants This 2024",
+          "Nobody Wants This streaming in Brazil and United States",
+          "Nobody Wants This cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
         ],
-        "canonicalQuery": "The Weight"
+        "canonicalQuery": "Nobody Wants This"
       }
     },
     {
@@ -728,243 +807,294 @@
       "sourceRank": 2
     },
     {
-      "title": "Phony",
+      "title": "VisionQuest",
       "kind": "tv",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "275139",
-      "poster": "https://image.tmdb.org/t/p/w780/iCyQc8cSSHkxUHbkvzbC77owALt.jpg",
-      "description": "After waking up from a freak car accident, Sonny discovers that his mother has been replaced by an impostor.",
+      "platform": "Disney Plus",
+      "platforms": [
+        "Disney Plus"
+      ],
+      "tmdbId": "213375",
+      "poster": "https://image.tmdb.org/t/p/w780/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
+      "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
       "genre": [
-        "Comedy",
-        "Drama",
-        "Mystery"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Connie Britton",
-        "Sam Nivola",
-        "Grace Brennan",
-        "Maliq Johnson"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "14",
-      "voteAverage": 6.1,
-      "previewUrl": "https://www.youtube.com/watch?v=y-68gT7y_sc",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/275139"
-      },
-      "sourceRank": 7,
-      "keywords": [
-        "Phony",
-        "Phony 2026",
-        "where to watch Phony",
-        "Comedy series",
-        "Drama series",
-        "Mystery series",
-        "Connie Britton",
-        "Sam Nivola"
-      ],
-      "longTailKeywords": [
-        "where to watch Phony 2026",
-        "Phony streaming in Brazil and United States",
-        "Phony cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Phony (2026) | MatchApp Ai",
-        "description": "After waking up from a freak car accident, Sonny discovers that his mother has been replaced by an impostor.",
-        "keywords": [
-          "Phony",
-          "Phony 2026",
-          "where to watch Phony",
-          "Comedy series",
-          "Drama series",
-          "Mystery series",
-          "Connie Britton",
-          "Sam Nivola",
-          "where to watch Phony 2026",
-          "Phony streaming in Brazil and United States",
-          "Phony cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Phony"
-      }
-    },
-    {
-      "title": "Bad Apples",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1198654",
-      "poster": "https://image.tmdb.org/t/p/w780/pcPLnxCThCIo9JFQIMFX4kAE5Yz.jpg",
-      "description": "A struggling primary school teacher is forced to take drastic action because of a foul-mouthed, violent student, and uncovers how her community will turn a blind eye to the most outrageous events to preserve harmony and their sense of safety.",
-      "genre": [
-        "Comedy",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Saoirse Ronan",
-        "Eddie Waller",
-        "Nia Brown",
-        "Jacob Anderson"
-      ],
-      "runtimeMinutes": 100,
-      "contentRating": "R",
-      "voteAverage": 6.42,
-      "previewUrl": "https://www.youtube.com/watch?v=4nhu80EmVQE",
-      "availability": {
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1198654"
-      },
-      "sourceRank": 8,
-      "keywords": [
-        "Bad Apples",
-        "Bad Apples 2026",
-        "where to watch Bad Apples",
-        "Comedy movie",
-        "Thriller movie",
-        "Saoirse Ronan",
-        "Eddie Waller"
-      ],
-      "longTailKeywords": [
-        "where to watch Bad Apples 2026",
-        "Bad Apples streaming in Brazil and United States",
-        "Bad Apples cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Bad Apples (2026) | MatchApp Ai",
-        "description": "A struggling primary school teacher is forced to take drastic action because of a foul-mouthed, violent student, and uncovers how her community will turn a bl",
-        "keywords": [
-          "Bad Apples",
-          "Bad Apples 2026",
-          "where to watch Bad Apples",
-          "Comedy movie",
-          "Thriller movie",
-          "Saoirse Ronan",
-          "Eddie Waller",
-          "where to watch Bad Apples 2026",
-          "Bad Apples streaming in Brazil and United States",
-          "Bad Apples cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Bad Apples"
-      }
-    },
-    {
-      "title": "By Any Means",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1380417",
-      "poster": "https://image.tmdb.org/t/p/w780/hxTjCfEmZJFAPW8h5S3tDQNaBi8.jpg",
-      "description": "In 1960s Mississippi, a young Black FBI agent is forced to partner with a notorious mafia hitman to investigate a wave of brutal civil rights murders.",
-      "genre": [
-        "Thriller",
-        "History",
-        "Crime",
+        "Sci-Fi & Fantasy",
         "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Yahya Abdul-Mateen II",
-        "Mark Wahlberg",
-        "Nicole Beharie",
-        "Josh Lucas"
+        "Paul Bettany",
+        "James Spader",
+        "Ruaridh Mollica",
+        "Todd Stashwick"
       ],
-      "runtimeMinutes": 107,
-      "contentRating": "R",
-      "voteAverage": 6.98,
-      "previewUrl": "https://www.youtube.com/watch?v=fvnyrBnUx4E",
+      "runtimeMinutes": null,
+      "contentRating": "TV-14",
+      "voteAverage": 8.78,
+      "previewUrl": "https://www.youtube.com/watch?v=sXKnmgmbkoE",
       "availability": {
         "BR": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=BR",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=PT",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-03"
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=US",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-04"
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1380417"
+        "source_page_url": "https://www.themoviedb.org/tv/213375"
+      },
+      "sourceRank": 7,
+      "keywords": [
+        "VisionQuest",
+        "VisionQuest 2026",
+        "where to watch VisionQuest",
+        "Sci-Fi & Fantasy series",
+        "Drama series",
+        "Disney Plus trending series",
+        "Paul Bettany",
+        "James Spader"
+      ],
+      "longTailKeywords": [
+        "where to watch VisionQuest 2026",
+        "VisionQuest streaming in Brazil and United States",
+        "VisionQuest cast synopsis trailer and where to watch",
+        "what Sci-Fi & Fantasy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch VisionQuest (2026) | MatchApp Ai",
+        "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
+        "keywords": [
+          "VisionQuest",
+          "VisionQuest 2026",
+          "where to watch VisionQuest",
+          "Sci-Fi & Fantasy series",
+          "Drama series",
+          "Disney Plus trending series",
+          "Paul Bettany",
+          "James Spader",
+          "where to watch VisionQuest 2026",
+          "VisionQuest streaming in Brazil and United States",
+          "VisionQuest cast synopsis trailer and where to watch",
+          "what Sci-Fi & Fantasy to watch this week"
+        ],
+        "canonicalQuery": "VisionQuest"
+      }
+    },
+    {
+      "title": "Carrie",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
+      ],
+      "tmdbId": "288673",
+      "poster": "https://image.tmdb.org/t/p/w780/6mUMquPQBFJGqTACS3Azkwwrx8d.jpg",
+      "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scandal that tears through her community, the relentless pressure and casual cruelty of the social‑media age, and the awakening of mysterious telekinetic powers that rise alongside her adolescence.",
+      "genre": [
+        "Mystery",
+        "Drama",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Summer H. Howell",
+        "Samantha Sloyan",
+        "Siena Agudong",
+        "Alison Thornton"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.4,
+      "previewUrl": "https://www.youtube.com/watch?v=jkUw2nh6fT0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/288673-carrie/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads",
+            "Amazon Prime Video Free with Ads",
+            "Amazon MX Player"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/288673"
+      },
+      "sourceRank": 8,
+      "keywords": [
+        "Carrie",
+        "Carrie 2026",
+        "where to watch Carrie",
+        "Mystery series",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
+        "Summer H. Howell",
+        "Samantha Sloyan"
+      ],
+      "longTailKeywords": [
+        "where to watch Carrie 2026",
+        "Carrie streaming in Brazil and United States",
+        "Carrie cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Carrie (2026) | MatchApp Ai",
+        "description": "After her father's sudden, untimely death thrusts her into the unforgiving ecosystem of public high school, Carrie is forced to navigate a viral bullying scan",
+        "keywords": [
+          "Carrie",
+          "Carrie 2026",
+          "where to watch Carrie",
+          "Mystery series",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
+          "Summer H. Howell",
+          "Samantha Sloyan",
+          "where to watch Carrie 2026",
+          "Carrie streaming in Brazil and United States",
+          "Carrie cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
+        ],
+        "canonicalQuery": "Carrie"
+      }
+    },
+    {
+      "title": "YAGA",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "CA",
+      "originName": "Canada",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "314360",
+      "poster": "https://image.tmdb.org/t/p/w780/2kxIViR7g3e08ZHLlvNFFJkgJtI.jpg",
+      "description": "While a private investigator probes the disappearance of the young heir to a powerful fishery, he finds himself at odds with an apprehensive local detective, a charismatic university professor with a taste for younger men, and a labyrinth of enigmatic suspects, secret lives, and ancient magic.",
+      "genre": [
+        "Drama",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Carrie-Anne Moss",
+        "Clark Backo",
+        "Noah Reid",
+        "Hudson Williams"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "15",
+      "voteAverage": 7.5,
+      "previewUrl": "https://www.youtube.com/watch?v=NZgbgXAlK_Q",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/314360"
       },
       "sourceRank": 9,
       "keywords": [
-        "By Any Means",
-        "By Any Means 2026",
-        "where to watch By Any Means",
-        "Thriller movie",
-        "History movie",
-        "Crime movie",
-        "Yahya Abdul-Mateen II",
-        "Mark Wahlberg"
+        "YAGA",
+        "YAGA 2026",
+        "where to watch YAGA",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Carrie-Anne Moss",
+        "Clark Backo"
       ],
       "longTailKeywords": [
-        "where to watch By Any Means 2026",
-        "By Any Means streaming in Brazil and United States",
-        "By Any Means cast synopsis trailer and where to watch",
-        "what Thriller to watch this week"
+        "where to watch YAGA 2026",
+        "YAGA streaming in Brazil and United States",
+        "YAGA cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch By Any Means (2026) | MatchApp Ai",
-        "description": "In 1960s Mississippi, a young Black FBI agent is forced to partner with a notorious mafia hitman to investigate a wave of brutal civil rights murders.",
+        "title": "Where to watch YAGA (2026) | MatchApp Ai",
+        "description": "While a private investigator probes the disappearance of the young heir to a powerful fishery, he finds himself at odds with an apprehensive local detective, ",
         "keywords": [
-          "By Any Means",
-          "By Any Means 2026",
-          "where to watch By Any Means",
-          "Thriller movie",
-          "History movie",
-          "Crime movie",
-          "Yahya Abdul-Mateen II",
-          "Mark Wahlberg",
-          "where to watch By Any Means 2026",
-          "By Any Means streaming in Brazil and United States",
-          "By Any Means cast synopsis trailer and where to watch",
-          "what Thriller to watch this week"
+          "YAGA",
+          "YAGA 2026",
+          "where to watch YAGA",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Carrie-Anne Moss",
+          "Clark Backo",
+          "where to watch YAGA 2026",
+          "YAGA streaming in Brazil and United States",
+          "YAGA cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "By Any Means"
+        "canonicalQuery": "YAGA"
       }
     },
     {
@@ -1025,514 +1155,6 @@
       },
       "source": "verified-official-music-video",
       "sourceRank": 3
-    },
-    {
-      "title": "Hope",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1058424",
-      "poster": "https://image.tmdb.org/t/p/w780/6VY1ZKgpsc8CfGsQcCGiYEgHdH0.jpg",
-      "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on the community. But all is not as it seems, and perceptions can be misleading. What begins as ignorance plants the seed of disaster, escalating through human conflict into a tragedy of cosmic proportions.",
-      "genre": [
-        "Science Fiction",
-        "Mystery",
-        "Action"
-      ],
-      "inLanguage": "ko",
-      "cast": [
-        "Hwang Jung-min",
-        "Zo In-sung",
-        "Hoyeon",
-        "Alicia Vikander"
-      ],
-      "runtimeMinutes": 157,
-      "contentRating": "R",
-      "voteAverage": 6.88,
-      "previewUrl": "https://www.youtube.com/watch?v=OFaJzL83y0Q",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-25"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-09-10"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1058424/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home",
-            "Plex"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-09-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1058424"
-      },
-      "sourceRank": 10,
-      "keywords": [
-        "Hope",
-        "Hope 2026",
-        "where to watch Hope",
-        "Science Fiction movie",
-        "Mystery movie",
-        "Action movie",
-        "Hwang Jung-min",
-        "Zo In-sung"
-      ],
-      "longTailKeywords": [
-        "where to watch Hope 2026",
-        "Hope streaming in Brazil and United States",
-        "Hope cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Hope (2026) | MatchApp Ai",
-        "description": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on",
-        "keywords": [
-          "Hope",
-          "Hope 2026",
-          "where to watch Hope",
-          "Science Fiction movie",
-          "Mystery movie",
-          "Action movie",
-          "Hwang Jung-min",
-          "Zo In-sung",
-          "where to watch Hope 2026",
-          "Hope streaming in Brazil and United States",
-          "Hope cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
-        ],
-        "canonicalQuery": "Hope"
-      }
-    },
-    {
-      "title": "Tenzing",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "AU",
-      "originName": "Australia",
-      "platform": "Apple TV",
-      "platforms": [
-        "Apple TV",
-        "Apple TV Amazon Channel"
-      ],
-      "tmdbId": "1288069",
-      "poster": "https://image.tmdb.org/t/p/w780/eI0QW02PYqhnmIvLRdn9vrfVVP7.jpg",
-      "description": "A determined man embarks on a high-stakes quest—and defies seemingly impossible odds—to fulfill his dream of being the first to reach the summit of Mount Everest.",
-      "genre": [
-        "Drama",
-        "History"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Genden Phuntsok",
-        "Tom Hiddleston",
-        "Willem Dafoe",
-        "Samdrup Dorje Lama"
-      ],
-      "runtimeMinutes": 126,
-      "contentRating": "PG",
-      "voteAverage": 8.37,
-      "previewUrl": "https://www.youtube.com/watch?v=KkYCY5YR12U",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1288069-tenzing/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": "2026-10-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1288069"
-      },
-      "sourceRank": 11,
-      "keywords": [
-        "Tenzing",
-        "Tenzing 2026",
-        "where to watch Tenzing",
-        "Drama movie",
-        "History movie",
-        "Apple TV trending movie",
-        "Apple TV Amazon Channel trending movie",
-        "Genden Phuntsok",
-        "Tom Hiddleston"
-      ],
-      "longTailKeywords": [
-        "where to watch Tenzing 2026",
-        "Tenzing streaming in Brazil and United States",
-        "Tenzing cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Tenzing (2026) | MatchApp Ai",
-        "description": "A determined man embarks on a high-stakes quest—and defies seemingly impossible odds—to fulfill his dream of being the first to reach the summit of Mount Ever",
-        "keywords": [
-          "Tenzing",
-          "Tenzing 2026",
-          "where to watch Tenzing",
-          "Drama movie",
-          "History movie",
-          "Apple TV trending movie",
-          "Apple TV Amazon Channel trending movie",
-          "Genden Phuntsok",
-          "Tom Hiddleston",
-          "where to watch Tenzing 2026",
-          "Tenzing streaming in Brazil and United States",
-          "Tenzing cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Tenzing"
-      }
-    },
-    {
-      "title": "Crystal Lake",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Universal+ Amazon Channel",
-      "platforms": [
-        "Universal+ Amazon Channel",
-        "Peacock Premium",
-        "Peacock Premium Plus",
-        "Sky Go",
-        "Now TV",
-        "HBO Max"
-      ],
-      "tmdbId": "213562",
-      "poster": "https://image.tmdb.org/t/p/w780/3ENhExiD2fcjk5FX0AcAXcvLu9N.jpg",
-      "description": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-      "genre": [
-        "Drama",
-        "Mystery"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Linda Cardellini",
-        "William Catlett",
-        "Gwendolyn Sundstrom",
-        "Cameron Scoggins"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.61,
-      "previewUrl": "https://www.youtube.com/watch?v=Rs49eRHFD9c",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Universal+ Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Sky Go",
-            "Now TV"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "HBO Max"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Peacock Premium",
-            "Peacock Premium Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/213562"
-      },
-      "sourceRank": 12,
-      "keywords": [
-        "Crystal Lake",
-        "Crystal Lake 2026",
-        "where to watch Crystal Lake",
-        "Drama series",
-        "Mystery series",
-        "Universal+ Amazon Channel trending series",
-        "Peacock Premium trending series",
-        "Linda Cardellini",
-        "William Catlett"
-      ],
-      "longTailKeywords": [
-        "where to watch Crystal Lake 2026",
-        "Crystal Lake streaming in Brazil and United States",
-        "Crystal Lake cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Crystal Lake (2026) | MatchApp Ai",
-        "description": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When",
-        "keywords": [
-          "Crystal Lake",
-          "Crystal Lake 2026",
-          "where to watch Crystal Lake",
-          "Drama series",
-          "Mystery series",
-          "Universal+ Amazon Channel trending series",
-          "Peacock Premium trending series",
-          "Linda Cardellini",
-          "William Catlett",
-          "where to watch Crystal Lake 2026",
-          "Crystal Lake streaming in Brazil and United States",
-          "Crystal Lake cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Crystal Lake"
-      }
-    },
-    {
-      "title": "ROSÉ — new trick",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
-      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
-      "artist": "ROSÉ",
-      "songTitle": "new trick",
-      "publishedAt": "2026-09-17T23:00:06Z",
-      "viewCount": 50148189,
-      "viewCountCheckedAt": "2026-10-04",
-      "channel": "ROSÉ",
-      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
-      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "ROSÉ",
-        "new trick",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "ROSÉ new music video",
-        "Dave Meyers",
-        "Shot on iPhone 18 Pro",
-        "ROSÉ new trick official music video",
-        "ROSÉ music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "ROSÉ new trick official music video YouTube",
-        "where to watch ROSÉ new trick music video",
-        "new ROSÉ music video 2026",
-        "ROSÉ new trick release date",
-        "ROSÉ new trick YouTube views"
-      ],
-      "seo": {
-        "title": "ROSÉ — new trick official music video | MatchApp Ai",
-        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
-        "keywords": [
-          "ROSÉ",
-          "new trick",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "Dave Meyers",
-          "Shot on iPhone 18 Pro",
-          "ROSÉ new trick official music video",
-          "ROSÉ music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "ROSÉ new trick official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 4
-    },
-    {
-      "title": "Masterplan",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "FR",
-      "originName": "France",
-      "platform": "Amazon Prime Video",
-      "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads"
-      ],
-      "tmdbId": "1561726",
-      "poster": "https://image.tmdb.org/t/p/w780/5xmXVd7nCK3tAo34XkO58SxUCip.jpg",
-      "description": "When a legendary thief sets his sights on the Mona Lisa, he recruits two young strangers to help him before revealing they are long-lost siblings… and oh yes, by the way, he is their father. Thrown into a chaotic reunion they never asked for, this new family must learn to work together — and try not to kill each other — if they want any chance at pulling off the heist of the century.",
-      "genre": [
-        "Action",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Stanley Tucci",
-        "Simona Tabasco",
-        "Victor Belmondo",
-        "Eliott Margueron"
-      ],
-      "runtimeMinutes": 110,
-      "contentRating": "R",
-      "voteAverage": 7.1,
-      "previewUrl": "https://www.youtube.com/watch?v=gc0t8AfMP6k",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1561726-masterplan/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1561726"
-      },
-      "sourceRank": 13,
-      "keywords": [
-        "Masterplan",
-        "Masterplan 2026",
-        "where to watch Masterplan",
-        "Action movie",
-        "Thriller movie",
-        "Amazon Prime Video trending movie",
-        "Amazon Prime Video with Ads trending movie",
-        "Stanley Tucci",
-        "Simona Tabasco"
-      ],
-      "longTailKeywords": [
-        "where to watch Masterplan 2026",
-        "Masterplan streaming in Brazil and United States",
-        "Masterplan cast synopsis trailer and where to watch",
-        "what Action to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Masterplan (2026) | MatchApp Ai",
-        "description": "When a legendary thief sets his sights on the Mona Lisa, he recruits two young strangers to help him before revealing they are long-lost siblings… and oh yes,",
-        "keywords": [
-          "Masterplan",
-          "Masterplan 2026",
-          "where to watch Masterplan",
-          "Action movie",
-          "Thriller movie",
-          "Amazon Prime Video trending movie",
-          "Amazon Prime Video with Ads trending movie",
-          "Stanley Tucci",
-          "Simona Tabasco",
-          "where to watch Masterplan 2026",
-          "Masterplan streaming in Brazil and United States",
-          "Masterplan cast synopsis trailer and where to watch",
-          "what Action to watch this week"
-        ],
-        "canonicalQuery": "Masterplan"
-      }
     },
     {
       "title": "Spider-Man: Brand New Day",
@@ -1634,7 +1256,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/969681"
       },
-      "sourceRank": 14,
+      "sourceRank": 10,
       "keywords": [
         "Spider-Man: Brand New Day",
         "Spider-Man: Brand New Day 2026",
@@ -1674,226 +1296,625 @@
       }
     },
     {
-      "title": "Where's Wanda?",
+      "title": "Crystal Lake",
       "kind": "tv",
-      "year": 2024,
-      "origin": "DE",
-      "originName": "Germany",
-      "platform": "Apple TV",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Universal+ Amazon Channel",
       "platforms": [
-        "Apple TV",
-        "Apple TV Amazon Channel"
+        "Universal+ Amazon Channel",
+        "Peacock Premium",
+        "Peacock Premium Plus",
+        "Sky Go",
+        "Now TV",
+        "HBO Max"
       ],
-      "tmdbId": "234310",
-      "poster": "https://image.tmdb.org/t/p/w780/e31KF5NW91PA5ktaxqGMmx6myea.jpg",
-      "description": "After the Klatts' daughter goes missing, they take matters into their own hands and hatch a wild plan: Spy on the neighborhood. As they make their way into small-time espionage, shocking secrets come to light one by one.",
+      "tmdbId": "213562",
+      "poster": "https://image.tmdb.org/t/p/w780/3ENhExiD2fcjk5FX0AcAXcvLu9N.jpg",
+      "description": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
       "genre": [
-        "Drama",
-        "Comedy"
-      ],
-      "inLanguage": "de",
-      "cast": [],
-      "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 6.6,
-      "previewUrl": "https://www.youtube.com/watch?v=ULqwDPNiwjI",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/234310-where-s-wanda/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/234310-where-s-wanda/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/234310-where-s-wanda/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/234310-where-s-wanda/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/234310"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Where's Wanda?",
-        "Where's Wanda? 2024",
-        "where to watch Where's Wanda?",
-        "Drama series",
-        "Comedy series",
-        "Apple TV trending series",
-        "Apple TV Amazon Channel trending series"
-      ],
-      "longTailKeywords": [
-        "where to watch Where's Wanda? 2024",
-        "Where's Wanda? streaming in Brazil and United States",
-        "Where's Wanda? cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Where's Wanda? (2024) | MatchApp Ai",
-        "description": "After the Klatts' daughter goes missing, they take matters into their own hands and hatch a wild plan: Spy on the neighborhood. As they make their way into sm",
-        "keywords": [
-          "Where's Wanda?",
-          "Where's Wanda? 2024",
-          "where to watch Where's Wanda?",
-          "Drama series",
-          "Comedy series",
-          "Apple TV trending series",
-          "Apple TV Amazon Channel trending series",
-          "where to watch Where's Wanda? 2024",
-          "Where's Wanda? streaming in Brazil and United States",
-          "Where's Wanda? cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Where's Wanda?"
-      }
-    },
-    {
-      "title": "Slow Horses",
-      "kind": "tv",
-      "year": 2022,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Apple TV",
-      "platforms": [
-        "Apple TV",
-        "Claro tv+",
-        "Apple TV Amazon Channel",
-        "Amazon Prime Video"
-      ],
-      "tmdbId": "95480",
-      "poster": "https://image.tmdb.org/t/p/w780/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg",
-      "description": "Follow a dysfunctional team of MI5 agents—and their obnoxious boss, the notorious Jackson Lamb—as they navigate the espionage world's smoke and mirrors to defend England from sinister forces.",
-      "genre": [
-        "Crime",
         "Drama",
         "Mystery"
       ],
       "inLanguage": "en",
       "cast": [
-        "Gary Oldman",
-        "Jack Lowden",
-        "Kristin Scott Thomas",
-        "Hugo Weaving"
+        "Linda Cardellini",
+        "William Catlett",
+        "Gwendolyn Sundstrom",
+        "Cameron Scoggins"
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-MA",
-      "voteAverage": 8.06,
-      "previewUrl": "https://www.youtube.com/watch?v=O9ZJChzPn0U",
+      "voteAverage": 8.63,
+      "previewUrl": "https://www.youtube.com/watch?v=Rs49eRHFD9c",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95480-slow-horses/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Apple TV",
-            "Claro tv+",
-            "Apple TV Amazon Channel"
+            "Universal+ Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95480-slow-horses/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel",
-            "Amazon Prime Video"
+            "Sky Go",
+            "Now TV"
           ],
           "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95480-slow-horses/watch?locale=PT",
+          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=PT",
           "rent": [],
           "stream": [
-            "Apple TV"
+            "HBO Max"
           ],
           "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/95480-slow-horses/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/213562-crystal-lake/watch?locale=US",
           "rent": [],
           "stream": [
-            "Apple TV",
-            "Apple TV Amazon Channel",
-            "Amazon Prime Video"
+            "Peacock Premium",
+            "Peacock Premium Plus"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/95480"
+        "source_page_url": "https://www.themoviedb.org/tv/213562"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Crystal Lake",
+        "Crystal Lake 2026",
+        "where to watch Crystal Lake",
+        "Drama series",
+        "Mystery series",
+        "Universal+ Amazon Channel trending series",
+        "Peacock Premium trending series",
+        "Linda Cardellini",
+        "William Catlett"
+      ],
+      "longTailKeywords": [
+        "where to watch Crystal Lake 2026",
+        "Crystal Lake streaming in Brazil and United States",
+        "Crystal Lake cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Crystal Lake (2026) | MatchApp Ai",
+        "description": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When",
+        "keywords": [
+          "Crystal Lake",
+          "Crystal Lake 2026",
+          "where to watch Crystal Lake",
+          "Drama series",
+          "Mystery series",
+          "Universal+ Amazon Channel trending series",
+          "Peacock Premium trending series",
+          "Linda Cardellini",
+          "William Catlett",
+          "where to watch Crystal Lake 2026",
+          "Crystal Lake streaming in Brazil and United States",
+          "Crystal Lake cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Crystal Lake"
+      }
+    },
+    {
+      "title": "Did Someone Happen to Mention Me?",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "300527",
+      "poster": "https://image.tmdb.org/t/p/w780/4zNytZ6R4awYY9vFBNdENkT4hPC.jpg",
+      "description": "Gen Takasegawa, the first Japanese actor to play the lead role at London's Shakespeare’s Globe Theatre, has been unable to return to Japan for some time. After two years, he finally makes his way back home, only to find out that he is suddenly and completely forgotten by the entire world.",
+      "genre": [
+        "Comedy"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Koji Yakusho",
+        "Masatoshi Hamada",
+        "Kento Kaku",
+        "Kenichi Matsuyama"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-14",
+      "voteAverage": 8,
+      "previewUrl": "https://www.youtube.com/watch?v=kcTZQluIt_4",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/300527"
+      },
+      "sourceRank": 12,
+      "keywords": [
+        "Did Someone Happen to Mention Me?",
+        "Did Someone Happen to Mention Me? 2026",
+        "where to watch Did Someone Happen to Mention Me?",
+        "Comedy series",
+        "Koji Yakusho",
+        "Masatoshi Hamada"
+      ],
+      "longTailKeywords": [
+        "where to watch Did Someone Happen to Mention Me? 2026",
+        "Did Someone Happen to Mention Me? streaming in Brazil and United States",
+        "Did Someone Happen to Mention Me? cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Did Someone Happen to Mention Me? (2026) | MatchApp Ai",
+        "description": "Gen Takasegawa, the first Japanese actor to play the lead role at London's Shakespeare’s Globe Theatre, has been unable to return to Japan for some time. Afte",
+        "keywords": [
+          "Did Someone Happen to Mention Me?",
+          "Did Someone Happen to Mention Me? 2026",
+          "where to watch Did Someone Happen to Mention Me?",
+          "Comedy series",
+          "Koji Yakusho",
+          "Masatoshi Hamada",
+          "where to watch Did Someone Happen to Mention Me? 2026",
+          "Did Someone Happen to Mention Me? streaming in Brazil and United States",
+          "Did Someone Happen to Mention Me? cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Did Someone Happen to Mention Me?"
+      }
+    },
+    {
+      "title": "ROSÉ — new trick",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
+      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
+      "artist": "ROSÉ",
+      "songTitle": "new trick",
+      "publishedAt": "2026-09-17T23:00:06Z",
+      "viewCount": 50148189,
+      "viewCountCheckedAt": "2026-10-04",
+      "channel": "ROSÉ",
+      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
+      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "ROSÉ",
+        "new trick",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "ROSÉ new music video",
+        "Dave Meyers",
+        "Shot on iPhone 18 Pro",
+        "ROSÉ new trick official music video",
+        "ROSÉ music videos",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "ROSÉ new trick official music video YouTube",
+        "where to watch ROSÉ new trick music video",
+        "new ROSÉ music video 2026",
+        "ROSÉ new trick release date",
+        "ROSÉ new trick YouTube views"
+      ],
+      "seo": {
+        "title": "ROSÉ — new trick official music video | MatchApp Ai",
+        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+        "keywords": [
+          "ROSÉ",
+          "new trick",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "Dave Meyers",
+          "Shot on iPhone 18 Pro",
+          "ROSÉ new trick official music video",
+          "ROSÉ music videos",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "ROSÉ new trick official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 4
+    },
+    {
+      "title": "Moana",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Disney Plus",
+      "platforms": [
+        "Disney Plus"
+      ],
+      "tmdbId": "1108427",
+      "poster": "https://image.tmdb.org/t/p/w780/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg",
+      "description": "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui on an unforgettable journey to restore prosperity to her people.",
+      "genre": [
+        "Family",
+        "Fantasy",
+        "Comedy",
+        "Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Catherine Lagaʻaia",
+        "Dwayne Johnson",
+        "Rena Owen",
+        "John Tui"
+      ],
+      "runtimeMinutes": 115,
+      "contentRating": "PG",
+      "voteAverage": 7.5,
+      "previewUrl": "https://www.youtube.com/watch?v=EEz5xbzYPKI",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1108427-moana/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": "2026-07-09"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1108427-moana/watch?locale=GB",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-07-10"
+        },
+        "PT": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1108427-moana/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": "2026-07-09"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1108427-moana/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": "2026-07-10"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1108427"
+      },
+      "sourceRank": 13,
+      "keywords": [
+        "Moana",
+        "Moana 2026",
+        "where to watch Moana",
+        "Family movie",
+        "Fantasy movie",
+        "Comedy movie",
+        "Disney Plus trending movie",
+        "Catherine Lagaʻaia",
+        "Dwayne Johnson"
+      ],
+      "longTailKeywords": [
+        "where to watch Moana 2026",
+        "Moana streaming in Brazil and United States",
+        "Moana cast synopsis trailer and where to watch",
+        "what Family to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Moana (2026) | MatchApp Ai",
+        "description": "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui on an unforgettabl",
+        "keywords": [
+          "Moana",
+          "Moana 2026",
+          "where to watch Moana",
+          "Family movie",
+          "Fantasy movie",
+          "Comedy movie",
+          "Disney Plus trending movie",
+          "Catherine Lagaʻaia",
+          "Dwayne Johnson",
+          "where to watch Moana 2026",
+          "Moana streaming in Brazil and United States",
+          "Moana cast synopsis trailer and where to watch",
+          "what Family to watch this week"
+        ],
+        "canonicalQuery": "Moana"
+      }
+    },
+    {
+      "title": "Bad Apples",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1198654",
+      "poster": "https://image.tmdb.org/t/p/w780/pcPLnxCThCIo9JFQIMFX4kAE5Yz.jpg",
+      "description": "A struggling primary school teacher is forced to take drastic action because of a foul-mouthed, violent student, and uncovers how her community will turn a blind eye to the most outrageous events to preserve harmony and their sense of safety.",
+      "genre": [
+        "Comedy",
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Saoirse Ronan",
+        "Eddie Waller",
+        "Nia Brown",
+        "Jacob Anderson"
+      ],
+      "runtimeMinutes": 100,
+      "contentRating": "R",
+      "voteAverage": 6.7,
+      "previewUrl": "https://www.youtube.com/watch?v=4nhu80EmVQE",
+      "availability": {
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-18"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-18"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1198654"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "Bad Apples",
+        "Bad Apples 2026",
+        "where to watch Bad Apples",
+        "Comedy movie",
+        "Thriller movie",
+        "Saoirse Ronan",
+        "Eddie Waller"
+      ],
+      "longTailKeywords": [
+        "where to watch Bad Apples 2026",
+        "Bad Apples streaming in Brazil and United States",
+        "Bad Apples cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Bad Apples (2026) | MatchApp Ai",
+        "description": "A struggling primary school teacher is forced to take drastic action because of a foul-mouthed, violent student, and uncovers how her community will turn a bl",
+        "keywords": [
+          "Bad Apples",
+          "Bad Apples 2026",
+          "where to watch Bad Apples",
+          "Comedy movie",
+          "Thriller movie",
+          "Saoirse Ronan",
+          "Eddie Waller",
+          "where to watch Bad Apples 2026",
+          "Bad Apples streaming in Brazil and United States",
+          "Bad Apples cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Bad Apples"
+      }
+    },
+    {
+      "title": "V",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "CN",
+      "originName": "China",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1567937",
+      "poster": "https://image.tmdb.org/t/p/w780/rNqQQ3hFknhKpy8OTyGfzk7FY20.jpg",
+      "description": "In the early 1990s, this city of desire, once a land of opportunity, was plagued by rampant crime and a breakdown of order. Man Tsz-keung, a working-class man desperate to change his fate, meets flight attendant Lok Ka-yuen, and the two team up to rob a large sum of money. This success fuels Man Tsz-keung's madness, pushing him into a deeper power struggle with wealthy businessman Chan Fai-yin. Meanwhile, mainland police officer Qi Honggang and Hong Kong police officer Guan Suchen continue their investigation of Wan Ziqiang, leading to a joint operation between the two police forces, setting the stage for a clash between good and evil. This film is fictional.",
+      "genre": [
+        "Drama",
+        "Crime"
+      ],
+      "inLanguage": "zh",
+      "cast": [
+        "Zhu Yilong",
+        "Tan Jianci",
+        "Tony Leung Ka-fai",
+        "Michelle Wai Si-Nga"
+      ],
+      "runtimeMinutes": 160,
+      "contentRating": "",
+      "voteAverage": 6.3,
+      "previewUrl": "",
+      "availability": {
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-09-25"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1567937"
+      },
+      "sourceRank": 15,
+      "keywords": [
+        "V",
+        "V 2026",
+        "where to watch V",
+        "Drama movie",
+        "Crime movie",
+        "Zhu Yilong",
+        "Tan Jianci"
+      ],
+      "longTailKeywords": [
+        "where to watch V 2026",
+        "V streaming in Brazil and United States",
+        "V cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch V (2026) | MatchApp Ai",
+        "description": "In the early 1990s, this city of desire, once a land of opportunity, was plagued by rampant crime and a breakdown of order. Man Tsz-keung, a working-class man",
+        "keywords": [
+          "V",
+          "V 2026",
+          "where to watch V",
+          "Drama movie",
+          "Crime movie",
+          "Zhu Yilong",
+          "Tan Jianci",
+          "where to watch V 2026",
+          "V streaming in Brazil and United States",
+          "V cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "V"
+      }
+    },
+    {
+      "title": "Where the Mask Ends",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "CN",
+      "originName": "China",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "300146",
+      "poster": "https://image.tmdb.org/t/p/w780/cE9Og0lCCRCP2RArarzJXmu6xEB.jpg",
+      "description": "An ambitious street urchin seizes the chance to impersonate a noblewoman and becomes a warlord's bride, but when her comatose husband awakens, she must navigate deadly schemes, win his heart through cunning, and uncover her royal heritage to triumph over rivals and rise from gutter to glory.",
+      "genre": [
+        "Drama"
+      ],
+      "inLanguage": "zh",
+      "cast": [
+        "Tian Xiwei",
+        "Yan An"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "",
+      "voteAverage": 7.2,
+      "previewUrl": "https://www.youtube.com/watch?v=Q5vhvNyFph4",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/300146/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/300146/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/300146/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/300146/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/300146"
       },
       "sourceRank": 16,
       "keywords": [
-        "Slow Horses",
-        "Slow Horses 2022",
-        "where to watch Slow Horses",
-        "Crime series",
+        "Where the Mask Ends",
+        "Where the Mask Ends 2026",
+        "where to watch Where the Mask Ends",
         "Drama series",
-        "Mystery series",
-        "Apple TV trending series",
-        "Claro tv+ trending series",
-        "Gary Oldman",
-        "Jack Lowden"
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Tian Xiwei",
+        "Yan An"
       ],
       "longTailKeywords": [
-        "where to watch Slow Horses 2022",
-        "Slow Horses streaming in Brazil and United States",
-        "Slow Horses cast synopsis trailer and where to watch",
-        "what Crime to watch this week"
+        "where to watch Where the Mask Ends 2026",
+        "Where the Mask Ends streaming in Brazil and United States",
+        "Where the Mask Ends cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Slow Horses (2022) | MatchApp Ai",
-        "description": "Follow a dysfunctional team of MI5 agents—and their obnoxious boss, the notorious Jackson Lamb—as they navigate the espionage world's smoke and mirrors to def",
+        "title": "Where to watch Where the Mask Ends (2026) | MatchApp Ai",
+        "description": "An ambitious street urchin seizes the chance to impersonate a noblewoman and becomes a warlord's bride, but when her comatose husband awakens, she must naviga",
         "keywords": [
-          "Slow Horses",
-          "Slow Horses 2022",
-          "where to watch Slow Horses",
-          "Crime series",
+          "Where the Mask Ends",
+          "Where the Mask Ends 2026",
+          "where to watch Where the Mask Ends",
           "Drama series",
-          "Mystery series",
-          "Apple TV trending series",
-          "Claro tv+ trending series",
-          "Gary Oldman",
-          "Jack Lowden",
-          "where to watch Slow Horses 2022",
-          "Slow Horses streaming in Brazil and United States",
-          "Slow Horses cast synopsis trailer and where to watch",
-          "what Crime to watch this week"
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Tian Xiwei",
+          "Yan An",
+          "where to watch Where the Mask Ends 2026",
+          "Where the Mask Ends streaming in Brazil and United States",
+          "Where the Mask Ends cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "Slow Horses"
+        "canonicalQuery": "Where the Mask Ends"
       }
     }
   ]

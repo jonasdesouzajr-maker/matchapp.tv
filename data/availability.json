@@ -1,17 +1,17 @@
 {
   "schemaVersion": 2,
-  "generated": "2026-10-21T10:31:57.221Z",
+  "generated": "2026-10-23T09:30:38.227Z",
   "source": "TMDB / JustWatch",
   "titles": {
     "The Bear": {
       "tmdbId": 136315,
       "kind": "tv",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:26.115Z",
+      "checkedAt": "2026-10-23T09:29:57.347Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:26.115Z",
+          "checkedAt": "2026-10-23T09:29:57.347Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -19,7 +19,7 @@
           "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:26.115Z",
+          "checkedAt": "2026-10-23T09:29:57.347Z",
           "status": "available",
           "stream": [
             "Disney Plus",
@@ -29,7 +29,7 @@
           "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:26.115Z",
+          "checkedAt": "2026-10-23T09:29:57.347Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -37,7 +37,7 @@
           "link": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:26.115Z",
+          "checkedAt": "2026-10-23T09:29:57.347Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -50,11 +50,11 @@
       "tmdbId": 126308,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:26.437Z",
+      "checkedAt": "2026-10-23T09:29:57.804Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:26.437Z",
+          "checkedAt": "2026-10-23T09:29:57.804Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -62,7 +62,7 @@
           "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:26.437Z",
+          "checkedAt": "2026-10-23T09:29:57.804Z",
           "status": "available",
           "stream": [
             "Disney Plus",
@@ -71,7 +71,7 @@
           "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:26.437Z",
+          "checkedAt": "2026-10-23T09:29:57.804Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -79,7 +79,7 @@
           "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:26.437Z",
+          "checkedAt": "2026-10-23T09:29:57.804Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -92,11 +92,11 @@
       "tmdbId": 693134,
       "kind": "movie",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:26.796Z",
+      "checkedAt": "2026-10-23T09:29:58.235Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:26.796Z",
+          "checkedAt": "2026-10-23T09:29:58.235Z",
           "status": "available",
           "stream": [
             "HBO Max",
@@ -115,7 +115,7 @@
           "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:26.796Z",
+          "checkedAt": "2026-10-23T09:29:58.235Z",
           "status": "available",
           "stream": [
             "HBO Max Amazon Channel",
@@ -144,7 +144,7 @@
           "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:26.796Z",
+          "checkedAt": "2026-10-23T09:29:58.235Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -165,7 +165,7 @@
           "link": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:26.796Z",
+          "checkedAt": "2026-10-23T09:29:58.235Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -191,11 +191,11 @@
       "tmdbId": 533535,
       "kind": "movie",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:27.112Z",
+      "checkedAt": "2026-10-23T09:29:58.649Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:27.112Z",
+          "checkedAt": "2026-10-23T09:29:58.649Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -203,7 +203,7 @@
           "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:27.112Z",
+          "checkedAt": "2026-10-23T09:29:58.649Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -225,7 +225,7 @@
           "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:27.112Z",
+          "checkedAt": "2026-10-23T09:29:58.649Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -246,7 +246,7 @@
           "link": "https://www.themoviedb.org/movie/533535-deadpool-wolverine/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:27.112Z",
+          "checkedAt": "2026-10-23T09:29:58.649Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -271,11 +271,11 @@
       "tmdbId": 94997,
       "kind": "tv",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:27.432Z",
+      "checkedAt": "2026-10-23T09:29:59.068Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:27.432Z",
+          "checkedAt": "2026-10-23T09:29:59.068Z",
           "status": "available",
           "stream": [
             "HBO Max",
@@ -284,7 +284,7 @@
           "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:27.432Z",
+          "checkedAt": "2026-10-23T09:29:59.068Z",
           "status": "available",
           "stream": [
             "HBO Max Amazon Channel",
@@ -299,7 +299,7 @@
           "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:27.432Z",
+          "checkedAt": "2026-10-23T09:29:59.068Z",
           "status": "available",
           "stream": [
             "HBO Max Amazon Channel",
@@ -314,7 +314,7 @@
           "link": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:27.432Z",
+          "checkedAt": "2026-10-23T09:29:59.068Z",
           "status": "available",
           "stream": [
             "HBO Max"
@@ -327,11 +327,11 @@
       "tmdbId": 215720,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:27.753Z",
+      "checkedAt": "2026-10-23T09:29:59.475Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:27.753Z",
+          "checkedAt": "2026-10-23T09:29:59.475Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -340,7 +340,7 @@
           "link": "https://www.themoviedb.org/tv/215720/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:27.753Z",
+          "checkedAt": "2026-10-23T09:29:59.475Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -349,7 +349,7 @@
           "link": "https://www.themoviedb.org/tv/215720/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:27.753Z",
+          "checkedAt": "2026-10-23T09:29:59.475Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -358,7 +358,7 @@
           "link": "https://www.themoviedb.org/tv/215720/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:27.753Z",
+          "checkedAt": "2026-10-23T09:29:59.475Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -371,11 +371,11 @@
       "tmdbId": 94796,
       "kind": "tv",
       "year": 2019,
-      "checkedAt": "2026-10-21T10:31:28.075Z",
+      "checkedAt": "2026-10-23T09:29:59.887Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:28.075Z",
+          "checkedAt": "2026-10-23T09:29:59.887Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -384,7 +384,7 @@
           "link": "https://www.themoviedb.org/tv/94796/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:28.075Z",
+          "checkedAt": "2026-10-23T09:29:59.887Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -393,7 +393,7 @@
           "link": "https://www.themoviedb.org/tv/94796/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:28.075Z",
+          "checkedAt": "2026-10-23T09:29:59.887Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -402,7 +402,7 @@
           "link": "https://www.themoviedb.org/tv/94796/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:28.075Z",
+          "checkedAt": "2026-10-23T09:29:59.887Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -415,11 +415,11 @@
       "tmdbId": 95479,
       "kind": "tv",
       "year": 2020,
-      "checkedAt": "2026-10-21T10:31:28.396Z",
+      "checkedAt": "2026-10-23T09:30:00.299Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:28.396Z",
+          "checkedAt": "2026-10-23T09:30:00.299Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -439,7 +439,7 @@
           "link": "https://www.themoviedb.org/tv/95479/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:28.396Z",
+          "checkedAt": "2026-10-23T09:30:00.299Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -458,7 +458,7 @@
           "link": "https://www.themoviedb.org/tv/95479/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:28.396Z",
+          "checkedAt": "2026-10-23T09:30:00.299Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -476,7 +476,7 @@
           "link": "https://www.themoviedb.org/tv/95479/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:28.396Z",
+          "checkedAt": "2026-10-23T09:30:00.299Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -492,11 +492,11 @@
       "tmdbId": 209867,
       "kind": "tv",
       "year": 2023,
-      "checkedAt": "2026-10-21T10:31:28.712Z",
+      "checkedAt": "2026-10-23T09:30:00.707Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:28.712Z",
+          "checkedAt": "2026-10-23T09:30:00.707Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -509,7 +509,7 @@
           "link": "https://www.themoviedb.org/tv/209867/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:28.712Z",
+          "checkedAt": "2026-10-23T09:30:00.707Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -526,7 +526,7 @@
           "link": "https://www.themoviedb.org/tv/209867/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:28.712Z",
+          "checkedAt": "2026-10-23T09:30:00.707Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -540,7 +540,7 @@
           "link": "https://www.themoviedb.org/tv/209867/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:28.712Z",
+          "checkedAt": "2026-10-23T09:30:00.707Z",
           "status": "available",
           "stream": [
             "Crunchyroll",
@@ -554,11 +554,11 @@
       "tmdbId": 46161,
       "kind": "tv",
       "year": null,
-      "checkedAt": "2026-10-21T10:31:29.026Z",
+      "checkedAt": "2026-10-23T09:30:01.124Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:29.026Z",
+          "checkedAt": "2026-10-23T09:30:01.124Z",
           "status": "available",
           "stream": [
             "Globoplay"
@@ -566,7 +566,7 @@
           "link": "https://www.themoviedb.org/tv/46161-vale-tudo/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:29.026Z",
+          "checkedAt": "2026-10-23T09:30:01.124Z",
           "status": "available",
           "ads": [
             "Tubi TV"
@@ -576,11 +576,11 @@
       },
       "regionObservations": {
         "GB": {
-          "checkedAt": "2026-10-21T10:31:29.026Z",
+          "checkedAt": "2026-10-23T09:30:01.124Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:29.026Z",
+          "checkedAt": "2026-10-23T09:30:01.124Z",
           "status": "not_reported"
         }
       }
@@ -589,11 +589,11 @@
       "tmdbId": 241259,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:29.341Z",
+      "checkedAt": "2026-10-23T09:30:01.538Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:29.341Z",
+          "checkedAt": "2026-10-23T09:30:01.538Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -602,7 +602,7 @@
           "link": "https://www.themoviedb.org/tv/241259-baby-reindeer/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:29.341Z",
+          "checkedAt": "2026-10-23T09:30:01.538Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -611,7 +611,7 @@
           "link": "https://www.themoviedb.org/tv/241259-baby-reindeer/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:29.341Z",
+          "checkedAt": "2026-10-23T09:30:01.538Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -620,7 +620,7 @@
           "link": "https://www.themoviedb.org/tv/241259-baby-reindeer/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:29.341Z",
+          "checkedAt": "2026-10-23T09:30:01.538Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -633,11 +633,11 @@
       "tmdbId": 106379,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:29.669Z",
+      "checkedAt": "2026-10-23T09:30:01.948Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:29.669Z",
+          "checkedAt": "2026-10-23T09:30:01.948Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -646,7 +646,7 @@
           "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:29.669Z",
+          "checkedAt": "2026-10-23T09:30:01.948Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -659,7 +659,7 @@
           "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:29.669Z",
+          "checkedAt": "2026-10-23T09:30:01.948Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -668,7 +668,7 @@
           "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:29.669Z",
+          "checkedAt": "2026-10-23T09:30:01.948Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video"
@@ -681,11 +681,11 @@
       "tmdbId": 82728,
       "kind": "tv",
       "year": 2018,
-      "checkedAt": "2026-10-21T10:31:29.987Z",
+      "checkedAt": "2026-10-23T09:30:02.371Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:29.987Z",
+          "checkedAt": "2026-10-23T09:30:02.371Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -693,7 +693,7 @@
           "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:29.987Z",
+          "checkedAt": "2026-10-23T09:30:02.371Z",
           "status": "available",
           "stream": [
             "Disney Plus",
@@ -713,7 +713,7 @@
           "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:29.987Z",
+          "checkedAt": "2026-10-23T09:30:02.371Z",
           "status": "available",
           "stream": [
             "Disney Plus",
@@ -727,7 +727,7 @@
           "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:29.987Z",
+          "checkedAt": "2026-10-23T09:30:02.371Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -740,11 +740,11 @@
       "tmdbId": 1241982,
       "kind": "movie",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:30.337Z",
+      "checkedAt": "2026-10-23T09:30:02.786Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:30.337Z",
+          "checkedAt": "2026-10-23T09:30:02.786Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -752,7 +752,7 @@
           "link": "https://www.themoviedb.org/movie/1241982-moana-2/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:30.337Z",
+          "checkedAt": "2026-10-23T09:30:02.786Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -774,7 +774,7 @@
           "link": "https://www.themoviedb.org/movie/1241982-moana-2/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:30.337Z",
+          "checkedAt": "2026-10-23T09:30:02.786Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -796,7 +796,7 @@
           "link": "https://www.themoviedb.org/movie/1241982-moana-2/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:30.337Z",
+          "checkedAt": "2026-10-23T09:30:02.786Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -821,11 +821,11 @@
       "tmdbId": 961323,
       "kind": "movie",
       "year": 2023,
-      "checkedAt": "2026-10-21T10:31:30.652Z",
+      "checkedAt": "2026-10-23T09:30:03.219Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:30.652Z",
+          "checkedAt": "2026-10-23T09:30:03.219Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -834,7 +834,7 @@
           "link": "https://www.themoviedb.org/movie/961323-nimona/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:30.652Z",
+          "checkedAt": "2026-10-23T09:30:03.219Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -843,7 +843,7 @@
           "link": "https://www.themoviedb.org/movie/961323-nimona/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:30.652Z",
+          "checkedAt": "2026-10-23T09:30:03.219Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -852,7 +852,7 @@
           "link": "https://www.themoviedb.org/movie/961323-nimona/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:30.652Z",
+          "checkedAt": "2026-10-23T09:30:03.219Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -865,11 +865,11 @@
       "tmdbId": 62391,
       "kind": "tv",
       "year": 2015,
-      "checkedAt": "2026-10-21T10:31:31.127Z",
+      "checkedAt": "2026-10-23T09:30:03.871Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:31.127Z",
+          "checkedAt": "2026-10-23T09:30:03.871Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -878,7 +878,7 @@
           "link": "https://www.themoviedb.org/tv/62391-chef-s-table/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:31.127Z",
+          "checkedAt": "2026-10-23T09:30:03.871Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -887,7 +887,7 @@
           "link": "https://www.themoviedb.org/tv/62391-chef-s-table/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:31.127Z",
+          "checkedAt": "2026-10-23T09:30:03.871Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -896,7 +896,7 @@
           "link": "https://www.themoviedb.org/tv/62391-chef-s-table/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:31.127Z",
+          "checkedAt": "2026-10-23T09:30:03.871Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -909,11 +909,11 @@
       "tmdbId": 804251,
       "kind": "movie",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:31.449Z",
+      "checkedAt": "2026-10-23T09:30:04.369Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:31.449Z",
+          "checkedAt": "2026-10-23T09:30:04.369Z",
           "status": "available",
           "stream": [
             "MUBI",
@@ -930,7 +930,7 @@
           "link": "https://www.themoviedb.org/movie/804251-alcarras/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:31.449Z",
+          "checkedAt": "2026-10-23T09:30:04.369Z",
           "status": "available",
           "stream": [
             "MUBI",
@@ -949,7 +949,7 @@
           "link": "https://www.themoviedb.org/movie/804251-alcarras/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:31.449Z",
+          "checkedAt": "2026-10-23T09:30:04.369Z",
           "status": "available",
           "stream": [
             "MUBI",
@@ -968,7 +968,7 @@
           "link": "https://www.themoviedb.org/movie/804251-alcarras/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:31.449Z",
+          "checkedAt": "2026-10-23T09:30:04.369Z",
           "status": "available",
           "stream": [
             "Filmin"
@@ -981,11 +981,11 @@
       "tmdbId": 579974,
       "kind": "movie",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:31.767Z",
+      "checkedAt": "2026-10-23T09:30:04.774Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:31.767Z",
+          "checkedAt": "2026-10-23T09:30:04.774Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -994,7 +994,7 @@
           "link": "https://www.themoviedb.org/movie/579974/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:31.767Z",
+          "checkedAt": "2026-10-23T09:30:04.774Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1003,7 +1003,7 @@
           "link": "https://www.themoviedb.org/movie/579974/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:31.767Z",
+          "checkedAt": "2026-10-23T09:30:04.774Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1012,7 +1012,7 @@
           "link": "https://www.themoviedb.org/movie/579974/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:31.767Z",
+          "checkedAt": "2026-10-23T09:30:04.774Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1025,11 +1025,11 @@
       "tmdbId": 360814,
       "kind": "movie",
       "year": 2016,
-      "checkedAt": "2026-10-21T10:31:32.093Z",
+      "checkedAt": "2026-10-23T09:30:05.193Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:32.093Z",
+          "checkedAt": "2026-10-23T09:30:05.193Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1038,7 +1038,7 @@
           "link": "https://www.themoviedb.org/movie/360814/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:32.093Z",
+          "checkedAt": "2026-10-23T09:30:05.193Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1056,7 +1056,7 @@
           "link": "https://www.themoviedb.org/movie/360814/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:32.093Z",
+          "checkedAt": "2026-10-23T09:30:05.193Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1071,7 +1071,7 @@
           "link": "https://www.themoviedb.org/movie/360814/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:32.093Z",
+          "checkedAt": "2026-10-23T09:30:05.193Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1090,11 +1090,11 @@
       "tmdbId": 1163194,
       "kind": "movie",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:32.375Z",
+      "checkedAt": "2026-10-23T09:30:05.522Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:32.375Z",
+          "checkedAt": "2026-10-23T09:30:05.522Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1103,7 +1103,7 @@
           "link": "https://www.themoviedb.org/movie/1163194/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:32.375Z",
+          "checkedAt": "2026-10-23T09:30:05.522Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1112,7 +1112,7 @@
           "link": "https://www.themoviedb.org/movie/1163194/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:32.375Z",
+          "checkedAt": "2026-10-23T09:30:05.522Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1121,7 +1121,7 @@
           "link": "https://www.themoviedb.org/movie/1163194/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:32.375Z",
+          "checkedAt": "2026-10-23T09:30:05.522Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1134,11 +1134,11 @@
       "tmdbId": 872906,
       "kind": "movie",
       "year": 2023,
-      "checkedAt": "2026-10-21T10:31:32.696Z",
+      "checkedAt": "2026-10-23T09:30:05.935Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:32.696Z",
+          "checkedAt": "2026-10-23T09:30:05.935Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1147,7 +1147,7 @@
           "link": "https://www.themoviedb.org/movie/872906/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:32.696Z",
+          "checkedAt": "2026-10-23T09:30:05.935Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1165,7 +1165,7 @@
           "link": "https://www.themoviedb.org/movie/872906/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:32.696Z",
+          "checkedAt": "2026-10-23T09:30:05.935Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1182,7 +1182,7 @@
           "link": "https://www.themoviedb.org/movie/872906/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:32.696Z",
+          "checkedAt": "2026-10-23T09:30:05.935Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1201,11 +1201,11 @@
       "tmdbId": 664332,
       "kind": "movie",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:33.015Z",
+      "checkedAt": "2026-10-23T09:30:06.384Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:33.015Z",
+          "checkedAt": "2026-10-23T09:30:06.384Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1214,7 +1214,7 @@
           "link": "https://www.themoviedb.org/movie/664332/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:33.015Z",
+          "checkedAt": "2026-10-23T09:30:06.384Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1223,7 +1223,7 @@
           "link": "https://www.themoviedb.org/movie/664332/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:33.015Z",
+          "checkedAt": "2026-10-23T09:30:06.384Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1232,7 +1232,7 @@
           "link": "https://www.themoviedb.org/movie/664332/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:33.015Z",
+          "checkedAt": "2026-10-23T09:30:06.384Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1245,11 +1245,11 @@
       "tmdbId": 589615,
       "kind": "movie",
       "year": 2020,
-      "checkedAt": "2026-10-21T10:31:33.351Z",
+      "checkedAt": "2026-10-23T09:30:06.810Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:33.351Z",
+          "checkedAt": "2026-10-23T09:30:06.810Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1258,7 +1258,7 @@
           "link": "https://www.themoviedb.org/movie/589615/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:33.351Z",
+          "checkedAt": "2026-10-23T09:30:06.810Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1267,7 +1267,7 @@
           "link": "https://www.themoviedb.org/movie/589615/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:33.351Z",
+          "checkedAt": "2026-10-23T09:30:06.810Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1276,7 +1276,7 @@
           "link": "https://www.themoviedb.org/movie/589615/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:33.351Z",
+          "checkedAt": "2026-10-23T09:30:06.810Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1289,11 +1289,11 @@
       "tmdbId": 801526,
       "kind": "movie",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:33.692Z",
+      "checkedAt": "2026-10-23T09:30:07.220Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:33.692Z",
+          "checkedAt": "2026-10-23T09:30:07.220Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1302,17 +1302,16 @@
           "link": "https://www.themoviedb.org/movie/801526/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:33.692Z",
+          "checkedAt": "2026-10-23T09:30:07.220Z",
           "status": "available",
           "stream": [
             "Netflix",
-            "fuboTV",
             "Netflix Standard with Ads"
           ],
           "link": "https://www.themoviedb.org/movie/801526/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:33.692Z",
+          "checkedAt": "2026-10-23T09:30:07.220Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1321,7 +1320,7 @@
           "link": "https://www.themoviedb.org/movie/801526/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:33.692Z",
+          "checkedAt": "2026-10-23T09:30:07.220Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1334,11 +1333,11 @@
       "tmdbId": 156716,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:34.007Z",
+      "checkedAt": "2026-10-23T09:30:07.632Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:34.007Z",
+          "checkedAt": "2026-10-23T09:30:07.632Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1347,7 +1346,7 @@
           "link": "https://www.themoviedb.org/tv/156716/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:34.007Z",
+          "checkedAt": "2026-10-23T09:30:07.632Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1356,7 +1355,7 @@
           "link": "https://www.themoviedb.org/tv/156716/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:34.007Z",
+          "checkedAt": "2026-10-23T09:30:07.632Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1365,7 +1364,7 @@
           "link": "https://www.themoviedb.org/tv/156716/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:34.007Z",
+          "checkedAt": "2026-10-23T09:30:07.632Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1378,11 +1377,11 @@
       "tmdbId": 79352,
       "kind": "tv",
       "year": 2018,
-      "checkedAt": "2026-10-21T10:31:34.324Z",
+      "checkedAt": "2026-10-23T09:30:08.063Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:34.324Z",
+          "checkedAt": "2026-10-23T09:30:08.063Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1391,7 +1390,7 @@
           "link": "https://www.themoviedb.org/tv/79352-sacred-games/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:34.324Z",
+          "checkedAt": "2026-10-23T09:30:08.063Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1400,7 +1399,7 @@
           "link": "https://www.themoviedb.org/tv/79352-sacred-games/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:34.324Z",
+          "checkedAt": "2026-10-23T09:30:08.063Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1409,7 +1408,7 @@
           "link": "https://www.themoviedb.org/tv/79352-sacred-games/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:34.324Z",
+          "checkedAt": "2026-10-23T09:30:08.063Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1422,11 +1421,11 @@
       "tmdbId": 87508,
       "kind": "tv",
       "year": 2019,
-      "checkedAt": "2026-10-21T10:31:34.641Z",
+      "checkedAt": "2026-10-23T09:30:08.485Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:34.641Z",
+          "checkedAt": "2026-10-23T09:30:08.485Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1435,7 +1434,7 @@
           "link": "https://www.themoviedb.org/tv/87508/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:34.641Z",
+          "checkedAt": "2026-10-23T09:30:08.485Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1444,7 +1443,7 @@
           "link": "https://www.themoviedb.org/tv/87508/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:34.641Z",
+          "checkedAt": "2026-10-23T09:30:08.485Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1453,7 +1452,7 @@
           "link": "https://www.themoviedb.org/tv/87508/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:34.641Z",
+          "checkedAt": "2026-10-23T09:30:08.485Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1466,11 +1465,11 @@
       "tmdbId": 89113,
       "kind": "tv",
       "year": 2019,
-      "checkedAt": "2026-10-21T10:31:34.957Z",
+      "checkedAt": "2026-10-23T09:30:08.901Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:34.957Z",
+          "checkedAt": "2026-10-23T09:30:08.901Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1479,7 +1478,7 @@
           "link": "https://www.themoviedb.org/tv/89113/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:34.957Z",
+          "checkedAt": "2026-10-23T09:30:08.901Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1488,7 +1487,7 @@
           "link": "https://www.themoviedb.org/tv/89113/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:34.957Z",
+          "checkedAt": "2026-10-23T09:30:08.901Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1497,7 +1496,7 @@
           "link": "https://www.themoviedb.org/tv/89113/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:34.957Z",
+          "checkedAt": "2026-10-23T09:30:08.901Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1510,11 +1509,11 @@
       "tmdbId": 20453,
       "kind": "movie",
       "year": 2009,
-      "checkedAt": "2026-10-21T10:31:35.274Z",
+      "checkedAt": "2026-10-23T09:30:09.310Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:35.274Z",
+          "checkedAt": "2026-10-23T09:30:09.310Z",
           "status": "available",
           "rent": [
             "Google Play Movies",
@@ -1527,7 +1526,7 @@
           "link": "https://www.themoviedb.org/movie/20453-3-idiots/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:35.274Z",
+          "checkedAt": "2026-10-23T09:30:09.310Z",
           "status": "available",
           "rent": [
             "YouTube"
@@ -1540,11 +1539,11 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:35.274Z",
+          "checkedAt": "2026-10-23T09:30:09.310Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:35.274Z",
+          "checkedAt": "2026-10-23T09:30:09.310Z",
           "status": "not_reported"
         }
       }
@@ -1553,11 +1552,11 @@
       "tmdbId": 61202,
       "kind": "movie",
       "year": 2011,
-      "checkedAt": "2026-10-21T10:31:35.596Z",
+      "checkedAt": "2026-10-23T09:30:09.750Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:35.596Z",
+          "checkedAt": "2026-10-23T09:30:09.750Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1566,7 +1565,7 @@
           "link": "https://www.themoviedb.org/movie/61202/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:35.596Z",
+          "checkedAt": "2026-10-23T09:30:09.750Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1585,7 +1584,7 @@
           "link": "https://www.themoviedb.org/movie/61202/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:35.596Z",
+          "checkedAt": "2026-10-23T09:30:09.750Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1604,7 +1603,7 @@
           "link": "https://www.themoviedb.org/movie/61202/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:35.596Z",
+          "checkedAt": "2026-10-23T09:30:09.750Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1620,11 +1619,11 @@
       "tmdbId": 534780,
       "kind": "movie",
       "year": 2018,
-      "checkedAt": "2026-10-21T10:31:35.911Z",
+      "checkedAt": "2026-10-23T09:30:10.167Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:35.911Z",
+          "checkedAt": "2026-10-23T09:30:10.167Z",
           "status": "available",
           "rent": [
             "Apple TV Store",
@@ -1639,7 +1638,7 @@
           "link": "https://www.themoviedb.org/movie/534780/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:35.911Z",
+          "checkedAt": "2026-10-23T09:30:10.167Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -1656,7 +1655,7 @@
           "link": "https://www.themoviedb.org/movie/534780/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:35.911Z",
+          "checkedAt": "2026-10-23T09:30:10.167Z",
           "status": "available",
           "rent": [
             "Apple TV Store"
@@ -1669,7 +1668,7 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:35.911Z",
+          "checkedAt": "2026-10-23T09:30:10.167Z",
           "status": "not_reported"
         }
       }
@@ -1678,11 +1677,11 @@
       "tmdbId": 247645,
       "kind": "movie",
       "year": 2014,
-      "checkedAt": "2026-10-21T10:31:36.264Z",
+      "checkedAt": "2026-10-23T09:30:10.582Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:36.264Z",
+          "checkedAt": "2026-10-23T09:30:10.582Z",
           "status": "available",
           "rent": [
             "Apple TV Store",
@@ -1697,7 +1696,7 @@
           "link": "https://www.themoviedb.org/movie/247645-queen/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:36.264Z",
+          "checkedAt": "2026-10-23T09:30:10.582Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -1713,7 +1712,7 @@
           "link": "https://www.themoviedb.org/movie/247645-queen/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:36.264Z",
+          "checkedAt": "2026-10-23T09:30:10.582Z",
           "status": "available",
           "buy": [
             "Apple TV Store"
@@ -1723,7 +1722,7 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:36.264Z",
+          "checkedAt": "2026-10-23T09:30:10.582Z",
           "status": "not_reported"
         }
       }
@@ -1732,11 +1731,11 @@
       "tmdbId": 63314,
       "kind": "tv",
       "year": 2015,
-      "checkedAt": "2026-10-21T10:31:36.742Z",
+      "checkedAt": "2026-10-23T09:30:11.192Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:36.742Z",
+          "checkedAt": "2026-10-23T09:30:11.192Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1745,7 +1744,7 @@
           "link": "https://www.themoviedb.org/tv/63314-club-de-cuervos/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:36.742Z",
+          "checkedAt": "2026-10-23T09:30:11.192Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1754,7 +1753,7 @@
           "link": "https://www.themoviedb.org/tv/63314-club-de-cuervos/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:36.742Z",
+          "checkedAt": "2026-10-23T09:30:11.192Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1763,7 +1762,7 @@
           "link": "https://www.themoviedb.org/tv/63314-club-de-cuervos/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:36.742Z",
+          "checkedAt": "2026-10-23T09:30:11.192Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1776,11 +1775,11 @@
       "tmdbId": 102903,
       "kind": "tv",
       "year": 2020,
-      "checkedAt": "2026-10-21T10:31:37.057Z",
+      "checkedAt": "2026-10-23T09:30:11.611Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:37.057Z",
+          "checkedAt": "2026-10-23T09:30:11.611Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1789,7 +1788,7 @@
           "link": "https://www.themoviedb.org/tv/102903-control-z/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:37.057Z",
+          "checkedAt": "2026-10-23T09:30:11.611Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1798,7 +1797,7 @@
           "link": "https://www.themoviedb.org/tv/102903-control-z/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:37.057Z",
+          "checkedAt": "2026-10-23T09:30:11.611Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1807,7 +1806,7 @@
           "link": "https://www.themoviedb.org/tv/102903-control-z/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:37.057Z",
+          "checkedAt": "2026-10-23T09:30:11.611Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1820,11 +1819,11 @@
       "tmdbId": 93297,
       "kind": "tv",
       "year": 2019,
-      "checkedAt": "2026-10-21T10:31:37.373Z",
+      "checkedAt": "2026-10-23T09:30:12.069Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:37.373Z",
+          "checkedAt": "2026-10-23T09:30:12.069Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1833,7 +1832,7 @@
           "link": "https://www.themoviedb.org/tv/93297-monarca/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:37.373Z",
+          "checkedAt": "2026-10-23T09:30:12.069Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1842,7 +1841,7 @@
           "link": "https://www.themoviedb.org/tv/93297-monarca/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:37.373Z",
+          "checkedAt": "2026-10-23T09:30:12.069Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1851,7 +1850,7 @@
           "link": "https://www.themoviedb.org/tv/93297-monarca/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:37.373Z",
+          "checkedAt": "2026-10-23T09:30:12.069Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1864,11 +1863,11 @@
       "tmdbId": 12961,
       "kind": "tv",
       "year": 2004,
-      "checkedAt": "2026-10-21T10:31:38.489Z",
+      "checkedAt": "2026-10-23T09:30:13.550Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:38.489Z",
+          "checkedAt": "2026-10-23T09:30:13.550Z",
           "status": "available",
           "stream": [
             "ViX Premium Amazon Channel"
@@ -1881,15 +1880,15 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:38.489Z",
+          "checkedAt": "2026-10-23T09:30:13.550Z",
           "status": "not_reported"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:38.489Z",
+          "checkedAt": "2026-10-23T09:30:13.550Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:38.489Z",
+          "checkedAt": "2026-10-23T09:30:13.550Z",
           "status": "not_reported"
         }
       }
@@ -1898,11 +1897,11 @@
       "tmdbId": 12926,
       "kind": "tv",
       "year": 2010,
-      "checkedAt": "2026-10-21T10:31:38.810Z",
+      "checkedAt": "2026-10-23T09:30:14.056Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:38.810Z",
+          "checkedAt": "2026-10-23T09:30:14.056Z",
           "status": "available",
           "stream": [
             "ViX Premium Amazon Channel"
@@ -1915,15 +1914,15 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:38.810Z",
+          "checkedAt": "2026-10-23T09:30:14.056Z",
           "status": "not_reported"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:38.810Z",
+          "checkedAt": "2026-10-23T09:30:14.056Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:38.810Z",
+          "checkedAt": "2026-10-23T09:30:14.056Z",
           "status": "not_reported"
         }
       }
@@ -1932,11 +1931,11 @@
       "tmdbId": 426426,
       "kind": "movie",
       "year": 2018,
-      "checkedAt": "2026-10-21T10:31:39.139Z",
+      "checkedAt": "2026-10-23T09:30:14.465Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:39.139Z",
+          "checkedAt": "2026-10-23T09:30:14.465Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1945,7 +1944,7 @@
           "link": "https://www.themoviedb.org/movie/426426-roma/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:39.139Z",
+          "checkedAt": "2026-10-23T09:30:14.465Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1954,7 +1953,7 @@
           "link": "https://www.themoviedb.org/movie/426426-roma/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:39.139Z",
+          "checkedAt": "2026-10-23T09:30:14.465Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1963,7 +1962,7 @@
           "link": "https://www.themoviedb.org/movie/426426-roma/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:39.139Z",
+          "checkedAt": "2026-10-23T09:30:14.465Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -1976,11 +1975,11 @@
       "tmdbId": 1069387,
       "kind": "movie",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:39.454Z",
+      "checkedAt": "2026-10-23T09:30:14.876Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:39.454Z",
+          "checkedAt": "2026-10-23T09:30:14.876Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1989,7 +1988,7 @@
           "link": "https://www.themoviedb.org/movie/1069387-pedro-paramo/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:39.454Z",
+          "checkedAt": "2026-10-23T09:30:14.876Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -1998,7 +1997,7 @@
           "link": "https://www.themoviedb.org/movie/1069387-pedro-paramo/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:39.454Z",
+          "checkedAt": "2026-10-23T09:30:14.876Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2007,7 +2006,7 @@
           "link": "https://www.themoviedb.org/movie/1069387-pedro-paramo/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:39.454Z",
+          "checkedAt": "2026-10-23T09:30:14.876Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2020,11 +2019,11 @@
       "tmdbId": 55,
       "kind": "movie",
       "year": 2000,
-      "checkedAt": "2026-10-21T10:31:39.771Z",
+      "checkedAt": "2026-10-23T09:30:15.283Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:39.771Z",
+          "checkedAt": "2026-10-23T09:30:15.283Z",
           "status": "available",
           "stream": [
             "MUBI",
@@ -2041,7 +2040,7 @@
           "link": "https://www.themoviedb.org/movie/55-amores-perros/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:39.771Z",
+          "checkedAt": "2026-10-23T09:30:15.283Z",
           "status": "available",
           "stream": [
             "MUBI",
@@ -2060,7 +2059,7 @@
           "link": "https://www.themoviedb.org/movie/55-amores-perros/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:39.771Z",
+          "checkedAt": "2026-10-23T09:30:15.283Z",
           "status": "available",
           "stream": [
             "MUBI",
@@ -2077,7 +2076,7 @@
           "link": "https://www.themoviedb.org/movie/55-amores-perros/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:39.771Z",
+          "checkedAt": "2026-10-23T09:30:15.283Z",
           "status": "available",
           "stream": [
             "Filmin",
@@ -2091,11 +2090,11 @@
       "tmdbId": 154825,
       "kind": "tv",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:40.258Z",
+      "checkedAt": "2026-10-23T09:30:15.894Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:40.258Z",
+          "checkedAt": "2026-10-23T09:30:15.894Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2104,7 +2103,7 @@
           "link": "https://www.themoviedb.org/tv/154825/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:40.258Z",
+          "checkedAt": "2026-10-23T09:30:15.894Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2113,7 +2112,7 @@
           "link": "https://www.themoviedb.org/tv/154825/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:40.258Z",
+          "checkedAt": "2026-10-23T09:30:15.894Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2122,7 +2121,7 @@
           "link": "https://www.themoviedb.org/tv/154825/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:40.258Z",
+          "checkedAt": "2026-10-23T09:30:15.894Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2135,11 +2134,11 @@
       "tmdbId": 70593,
       "kind": "tv",
       "year": 2019,
-      "checkedAt": "2026-10-21T10:31:41.053Z",
+      "checkedAt": "2026-10-23T09:30:16.928Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:41.053Z",
+          "checkedAt": "2026-10-23T09:30:16.928Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2148,7 +2147,7 @@
           "link": "https://www.themoviedb.org/tv/70593/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:41.053Z",
+          "checkedAt": "2026-10-23T09:30:16.928Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2157,7 +2156,7 @@
           "link": "https://www.themoviedb.org/tv/70593/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:41.053Z",
+          "checkedAt": "2026-10-23T09:30:16.928Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2166,7 +2165,7 @@
           "link": "https://www.themoviedb.org/tv/70593/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:41.053Z",
+          "checkedAt": "2026-10-23T09:30:16.928Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2179,11 +2178,11 @@
       "tmdbId": 974950,
       "kind": "movie",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:41.391Z",
+      "checkedAt": "2026-10-23T09:30:17.341Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:41.391Z",
+          "checkedAt": "2026-10-23T09:30:17.341Z",
           "status": "available",
           "stream": [
             "Paramount Plus",
@@ -2202,7 +2201,7 @@
           "link": "https://www.themoviedb.org/movie/974950-emilia-perez/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:41.391Z",
+          "checkedAt": "2026-10-23T09:30:17.341Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2211,7 +2210,7 @@
           "link": "https://www.themoviedb.org/movie/974950-emilia-perez/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:41.391Z",
+          "checkedAt": "2026-10-23T09:30:17.341Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2220,7 +2219,7 @@
           "link": "https://www.themoviedb.org/movie/974950-emilia-perez/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:41.391Z",
+          "checkedAt": "2026-10-23T09:30:17.341Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video"
@@ -2239,11 +2238,11 @@
       "tmdbId": 860508,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:41.709Z",
+      "checkedAt": "2026-10-23T09:30:17.746Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:41.709Z",
+          "checkedAt": "2026-10-23T09:30:17.746Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2252,7 +2251,7 @@
           "link": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:41.709Z",
+          "checkedAt": "2026-10-23T09:30:17.746Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2261,7 +2260,7 @@
           "link": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:41.709Z",
+          "checkedAt": "2026-10-23T09:30:17.746Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2270,7 +2269,7 @@
           "link": "https://www.themoviedb.org/movie/860508-the-whisper-man/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:41.709Z",
+          "checkedAt": "2026-10-23T09:30:17.746Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2283,11 +2282,11 @@
       "tmdbId": 1631807,
       "kind": "movie",
       "year": null,
-      "checkedAt": "2026-10-21T10:31:42.023Z",
+      "checkedAt": "2026-10-23T09:30:18.220Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:42.023Z",
+          "checkedAt": "2026-10-23T09:30:18.220Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2296,7 +2295,7 @@
           "link": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:42.023Z",
+          "checkedAt": "2026-10-23T09:30:18.220Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2305,7 +2304,7 @@
           "link": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:42.023Z",
+          "checkedAt": "2026-10-23T09:30:18.220Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2314,7 +2313,7 @@
           "link": "https://www.themoviedb.org/movie/1631807-den-hemmelige-kvinde/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:42.023Z",
+          "checkedAt": "2026-10-23T09:30:18.220Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2327,11 +2326,11 @@
       "tmdbId": 1122030,
       "kind": "movie",
       "year": null,
-      "checkedAt": "2026-10-21T10:31:42.497Z",
+      "checkedAt": "2026-10-23T09:30:18.840Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:42.497Z",
+          "checkedAt": "2026-10-23T09:30:18.840Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2340,7 +2339,7 @@
           "link": "https://www.themoviedb.org/movie/1122030/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:42.497Z",
+          "checkedAt": "2026-10-23T09:30:18.840Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2349,7 +2348,7 @@
           "link": "https://www.themoviedb.org/movie/1122030/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:42.497Z",
+          "checkedAt": "2026-10-23T09:30:18.840Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2358,7 +2357,7 @@
           "link": "https://www.themoviedb.org/movie/1122030/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:42.497Z",
+          "checkedAt": "2026-10-23T09:30:18.840Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2371,11 +2370,11 @@
       "tmdbId": 331616,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:42.811Z",
+      "checkedAt": "2026-10-23T09:30:19.255Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:42.811Z",
+          "checkedAt": "2026-10-23T09:30:19.255Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2384,7 +2383,7 @@
           "link": "https://www.themoviedb.org/tv/331616-death-of-the-pastor-s-wife/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:42.811Z",
+          "checkedAt": "2026-10-23T09:30:19.255Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2393,7 +2392,7 @@
           "link": "https://www.themoviedb.org/tv/331616-death-of-the-pastor-s-wife/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:42.811Z",
+          "checkedAt": "2026-10-23T09:30:19.255Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2402,7 +2401,7 @@
           "link": "https://www.themoviedb.org/tv/331616-death-of-the-pastor-s-wife/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:42.811Z",
+          "checkedAt": "2026-10-23T09:30:19.255Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2415,11 +2414,11 @@
       "tmdbId": 246246,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:43.144Z",
+      "checkedAt": "2026-10-23T09:30:19.670Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:43.144Z",
+          "checkedAt": "2026-10-23T09:30:19.670Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2428,7 +2427,7 @@
           "link": "https://www.themoviedb.org/tv/246246-beauty-in-black/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:43.144Z",
+          "checkedAt": "2026-10-23T09:30:19.670Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2437,7 +2436,7 @@
           "link": "https://www.themoviedb.org/tv/246246-beauty-in-black/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:43.144Z",
+          "checkedAt": "2026-10-23T09:30:19.670Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2446,7 +2445,7 @@
           "link": "https://www.themoviedb.org/tv/246246-beauty-in-black/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:43.144Z",
+          "checkedAt": "2026-10-23T09:30:19.670Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2459,11 +2458,11 @@
       "tmdbId": 100757,
       "kind": "tv",
       "year": 2020,
-      "checkedAt": "2026-10-21T10:31:43.481Z",
+      "checkedAt": "2026-10-23T09:30:20.081Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:43.481Z",
+          "checkedAt": "2026-10-23T09:30:20.081Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2472,7 +2471,7 @@
           "link": "https://www.themoviedb.org/tv/100757-outer-banks/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:43.481Z",
+          "checkedAt": "2026-10-23T09:30:20.081Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2481,7 +2480,7 @@
           "link": "https://www.themoviedb.org/tv/100757-outer-banks/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:43.481Z",
+          "checkedAt": "2026-10-23T09:30:20.081Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2490,7 +2489,7 @@
           "link": "https://www.themoviedb.org/tv/100757-outer-banks/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:43.481Z",
+          "checkedAt": "2026-10-23T09:30:20.081Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2503,11 +2502,11 @@
       "tmdbId": 303351,
       "kind": "tv",
       "year": null,
-      "checkedAt": "2026-10-21T10:31:43.796Z",
+      "checkedAt": "2026-10-23T09:30:20.493Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:43.796Z",
+          "checkedAt": "2026-10-23T09:30:20.493Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2516,7 +2515,7 @@
           "link": "https://www.themoviedb.org/tv/303351-blodsoffer/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:43.796Z",
+          "checkedAt": "2026-10-23T09:30:20.493Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2525,7 +2524,7 @@
           "link": "https://www.themoviedb.org/tv/303351-blodsoffer/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:43.796Z",
+          "checkedAt": "2026-10-23T09:30:20.493Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2534,7 +2533,7 @@
           "link": "https://www.themoviedb.org/tv/303351-blodsoffer/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:43.796Z",
+          "checkedAt": "2026-10-23T09:30:20.493Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2547,11 +2546,11 @@
       "tmdbId": 290193,
       "kind": "tv",
       "year": null,
-      "checkedAt": "2026-10-21T10:31:44.114Z",
+      "checkedAt": "2026-10-23T09:30:20.906Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:44.114Z",
+          "checkedAt": "2026-10-23T09:30:20.906Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2560,7 +2559,7 @@
           "link": "https://www.themoviedb.org/tv/290193/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:44.114Z",
+          "checkedAt": "2026-10-23T09:30:20.906Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2569,7 +2568,7 @@
           "link": "https://www.themoviedb.org/tv/290193/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:44.114Z",
+          "checkedAt": "2026-10-23T09:30:20.906Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2578,7 +2577,7 @@
           "link": "https://www.themoviedb.org/tv/290193/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:44.114Z",
+          "checkedAt": "2026-10-23T09:30:20.906Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2591,11 +2590,11 @@
       "tmdbId": 132057,
       "kind": "tv",
       "year": null,
-      "checkedAt": "2026-10-21T10:31:46.170Z",
+      "checkedAt": "2026-10-23T09:30:23.674Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:46.170Z",
+          "checkedAt": "2026-10-23T09:30:23.674Z",
           "status": "available",
           "ads": [
             "Tubi TV"
@@ -2603,7 +2602,7 @@
           "link": "https://www.themoviedb.org/tv/132057-kings-and-generals/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:46.170Z",
+          "checkedAt": "2026-10-23T09:30:23.674Z",
           "status": "available",
           "ads": [
             "Tubi TV"
@@ -2613,11 +2612,11 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:46.170Z",
+          "checkedAt": "2026-10-23T09:30:23.674Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:46.170Z",
+          "checkedAt": "2026-10-23T09:30:23.674Z",
           "status": "not_reported"
         }
       }
@@ -2626,11 +2625,11 @@
       "tmdbId": 285807,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:47.127Z",
+      "checkedAt": "2026-10-23T09:30:24.913Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:47.127Z",
+          "checkedAt": "2026-10-23T09:30:24.913Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2639,7 +2638,7 @@
           "link": "https://www.themoviedb.org/tv/285807-nemesis/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:47.127Z",
+          "checkedAt": "2026-10-23T09:30:24.913Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2648,7 +2647,7 @@
           "link": "https://www.themoviedb.org/tv/285807-nemesis/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:47.127Z",
+          "checkedAt": "2026-10-23T09:30:24.913Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2657,7 +2656,7 @@
           "link": "https://www.themoviedb.org/tv/285807-nemesis/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:47.127Z",
+          "checkedAt": "2026-10-23T09:30:24.913Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2670,11 +2669,11 @@
       "tmdbId": 236235,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:47.445Z",
+      "checkedAt": "2026-10-23T09:30:25.318Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:47.445Z",
+          "checkedAt": "2026-10-23T09:30:25.318Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2683,7 +2682,7 @@
           "link": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:47.445Z",
+          "checkedAt": "2026-10-23T09:30:25.318Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2692,7 +2691,7 @@
           "link": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:47.445Z",
+          "checkedAt": "2026-10-23T09:30:25.318Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2701,7 +2700,7 @@
           "link": "https://www.themoviedb.org/tv/236235-the-gentlemen/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:47.445Z",
+          "checkedAt": "2026-10-23T09:30:25.318Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2714,11 +2713,11 @@
       "tmdbId": 246473,
       "kind": "tv",
       "year": 2025,
-      "checkedAt": "2026-10-21T10:31:47.763Z",
+      "checkedAt": "2026-10-23T09:30:25.735Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:47.763Z",
+          "checkedAt": "2026-10-23T09:30:25.735Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -2726,7 +2725,7 @@
           "link": "https://www.themoviedb.org/tv/246473/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:47.763Z",
+          "checkedAt": "2026-10-23T09:30:25.735Z",
           "status": "available",
           "stream": [
             "Disney Plus",
@@ -2735,7 +2734,7 @@
           "link": "https://www.themoviedb.org/tv/246473/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:47.763Z",
+          "checkedAt": "2026-10-23T09:30:25.735Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -2743,7 +2742,7 @@
           "link": "https://www.themoviedb.org/tv/246473/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:47.763Z",
+          "checkedAt": "2026-10-23T09:30:25.735Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -2756,11 +2755,11 @@
       "tmdbId": 275102,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:48.098Z",
+      "checkedAt": "2026-10-23T09:30:26.149Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:48.098Z",
+          "checkedAt": "2026-10-23T09:30:26.149Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2769,7 +2768,7 @@
           "link": "https://www.themoviedb.org/tv/275102/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:48.098Z",
+          "checkedAt": "2026-10-23T09:30:26.149Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2778,7 +2777,7 @@
           "link": "https://www.themoviedb.org/tv/275102/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:48.098Z",
+          "checkedAt": "2026-10-23T09:30:26.149Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2787,7 +2786,7 @@
           "link": "https://www.themoviedb.org/tv/275102/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:48.098Z",
+          "checkedAt": "2026-10-23T09:30:26.149Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2800,11 +2799,11 @@
       "tmdbId": 276161,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:48.415Z",
+      "checkedAt": "2026-10-23T09:30:26.566Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:48.415Z",
+          "checkedAt": "2026-10-23T09:30:26.566Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2813,7 +2812,7 @@
           "link": "https://www.themoviedb.org/tv/276161-teach-you-a-lesson/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:48.415Z",
+          "checkedAt": "2026-10-23T09:30:26.566Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2822,7 +2821,7 @@
           "link": "https://www.themoviedb.org/tv/276161-teach-you-a-lesson/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:48.415Z",
+          "checkedAt": "2026-10-23T09:30:26.566Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2831,7 +2830,7 @@
           "link": "https://www.themoviedb.org/tv/276161-teach-you-a-lesson/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:48.415Z",
+          "checkedAt": "2026-10-23T09:30:26.566Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2844,11 +2843,11 @@
       "tmdbId": 117465,
       "kind": "tv",
       "year": 2023,
-      "checkedAt": "2026-10-21T10:31:48.734Z",
+      "checkedAt": "2026-10-23T09:30:26.976Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:48.734Z",
+          "checkedAt": "2026-10-23T09:30:26.976Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2859,7 +2858,7 @@
           "link": "https://www.themoviedb.org/tv/117465/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:48.734Z",
+          "checkedAt": "2026-10-23T09:30:26.976Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2875,7 +2874,7 @@
           "link": "https://www.themoviedb.org/tv/117465/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:48.734Z",
+          "checkedAt": "2026-10-23T09:30:26.976Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2889,7 +2888,7 @@
           "link": "https://www.themoviedb.org/tv/117465/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:48.734Z",
+          "checkedAt": "2026-10-23T09:30:26.976Z",
           "status": "available",
           "stream": [
             "Crunchyroll",
@@ -2903,11 +2902,11 @@
       "tmdbId": 1284041,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:49.055Z",
+      "checkedAt": "2026-10-23T09:30:27.388Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:49.055Z",
+          "checkedAt": "2026-10-23T09:30:27.388Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2916,7 +2915,7 @@
           "link": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:49.055Z",
+          "checkedAt": "2026-10-23T09:30:27.388Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2925,7 +2924,7 @@
           "link": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:49.055Z",
+          "checkedAt": "2026-10-23T09:30:27.388Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2934,7 +2933,7 @@
           "link": "https://www.themoviedb.org/movie/1284041-the-last-house/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:49.055Z",
+          "checkedAt": "2026-10-23T09:30:27.388Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2947,11 +2946,11 @@
       "tmdbId": 224263,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:49.371Z",
+      "checkedAt": "2026-10-23T09:30:27.796Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:49.371Z",
+          "checkedAt": "2026-10-23T09:30:27.796Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2960,7 +2959,7 @@
           "link": "https://www.themoviedb.org/tv/224263-stranger-things-tales-from-85/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:49.371Z",
+          "checkedAt": "2026-10-23T09:30:27.796Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2969,7 +2968,7 @@
           "link": "https://www.themoviedb.org/tv/224263-stranger-things-tales-from-85/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:49.371Z",
+          "checkedAt": "2026-10-23T09:30:27.796Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -2978,7 +2977,7 @@
           "link": "https://www.themoviedb.org/tv/224263-stranger-things-tales-from-85/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:49.371Z",
+          "checkedAt": "2026-10-23T09:30:27.796Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -2991,11 +2990,11 @@
       "tmdbId": 299939,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:49.846Z",
+      "checkedAt": "2026-10-23T09:30:28.478Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:49.846Z",
+          "checkedAt": "2026-10-23T09:30:28.478Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3004,7 +3003,7 @@
           "link": "https://www.themoviedb.org/tv/299939-monster-the-lizzie-borden-story/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:49.846Z",
+          "checkedAt": "2026-10-23T09:30:28.478Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3013,7 +3012,7 @@
           "link": "https://www.themoviedb.org/tv/299939-monster-the-lizzie-borden-story/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:49.846Z",
+          "checkedAt": "2026-10-23T09:30:28.478Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3022,7 +3021,7 @@
           "link": "https://www.themoviedb.org/tv/299939-monster-the-lizzie-borden-story/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:49.846Z",
+          "checkedAt": "2026-10-23T09:30:28.478Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -3035,11 +3034,11 @@
       "tmdbId": 1522689,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:50.166Z",
+      "checkedAt": "2026-10-23T09:30:28.894Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:50.166Z",
+          "checkedAt": "2026-10-23T09:30:28.894Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3048,7 +3047,7 @@
           "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:50.166Z",
+          "checkedAt": "2026-10-23T09:30:28.894Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3057,7 +3056,7 @@
           "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:50.166Z",
+          "checkedAt": "2026-10-23T09:30:28.894Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3066,7 +3065,7 @@
           "link": "https://www.themoviedb.org/movie/1522689-why-did-i-get-married-again/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:50.166Z",
+          "checkedAt": "2026-10-23T09:30:28.894Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -3079,11 +3078,11 @@
       "tmdbId": 1558568,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:50.675Z",
+      "checkedAt": "2026-10-23T09:30:29.579Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:50.675Z",
+          "checkedAt": "2026-10-23T09:30:29.579Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3092,7 +3091,7 @@
           "link": "https://www.themoviedb.org/movie/1558568-gracias-equipo/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:50.675Z",
+          "checkedAt": "2026-10-23T09:30:29.579Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3101,7 +3100,7 @@
           "link": "https://www.themoviedb.org/movie/1558568-gracias-equipo/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:50.675Z",
+          "checkedAt": "2026-10-23T09:30:29.579Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3110,7 +3109,7 @@
           "link": "https://www.themoviedb.org/movie/1558568-gracias-equipo/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:50.675Z",
+          "checkedAt": "2026-10-23T09:30:29.579Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -3123,11 +3122,11 @@
       "tmdbId": 305357,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:50.989Z",
+      "checkedAt": "2026-10-23T09:30:30.025Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:50.989Z",
+          "checkedAt": "2026-10-23T09:30:30.025Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3136,7 +3135,7 @@
           "link": "https://www.themoviedb.org/tv/305357-a-different-world/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:50.989Z",
+          "checkedAt": "2026-10-23T09:30:30.025Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3145,7 +3144,7 @@
           "link": "https://www.themoviedb.org/tv/305357-a-different-world/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:50.989Z",
+          "checkedAt": "2026-10-23T09:30:30.025Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3154,7 +3153,7 @@
           "link": "https://www.themoviedb.org/tv/305357-a-different-world/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:50.989Z",
+          "checkedAt": "2026-10-23T09:30:30.025Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -3167,11 +3166,11 @@
       "tmdbId": 1514863,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:51.304Z",
+      "checkedAt": "2026-10-23T09:30:30.432Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:51.304Z",
+          "checkedAt": "2026-10-23T09:30:30.432Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3180,7 +3179,7 @@
           "link": "https://www.themoviedb.org/movie/1514863-best-of-the-best/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:51.304Z",
+          "checkedAt": "2026-10-23T09:30:30.432Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3189,7 +3188,7 @@
           "link": "https://www.themoviedb.org/movie/1514863-best-of-the-best/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:51.304Z",
+          "checkedAt": "2026-10-23T09:30:30.432Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3198,7 +3197,7 @@
           "link": "https://www.themoviedb.org/movie/1514863-best-of-the-best/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:51.304Z",
+          "checkedAt": "2026-10-23T09:30:30.432Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -3211,11 +3210,11 @@
       "tmdbId": 1365884,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:51.672Z",
+      "checkedAt": "2026-10-23T09:30:30.867Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:51.672Z",
+          "checkedAt": "2026-10-23T09:30:30.867Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3224,7 +3223,7 @@
           "link": "https://www.themoviedb.org/movie/1365884-dix-pour-cent-le-film/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:51.672Z",
+          "checkedAt": "2026-10-23T09:30:30.867Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3233,7 +3232,7 @@
           "link": "https://www.themoviedb.org/movie/1365884-dix-pour-cent-le-film/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:51.672Z",
+          "checkedAt": "2026-10-23T09:30:30.867Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3242,7 +3241,7 @@
           "link": "https://www.themoviedb.org/movie/1365884-dix-pour-cent-le-film/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:51.672Z",
+          "checkedAt": "2026-10-23T09:30:30.867Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -3255,11 +3254,11 @@
       "tmdbId": 273207,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:51.991Z",
+      "checkedAt": "2026-10-23T09:30:31.284Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:51.991Z",
+          "checkedAt": "2026-10-23T09:30:31.284Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3268,7 +3267,7 @@
           "link": "https://www.themoviedb.org/tv/273207-neagley/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:51.991Z",
+          "checkedAt": "2026-10-23T09:30:31.284Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3281,7 +3280,7 @@
           "link": "https://www.themoviedb.org/tv/273207-neagley/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:51.991Z",
+          "checkedAt": "2026-10-23T09:30:31.284Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3290,7 +3289,7 @@
           "link": "https://www.themoviedb.org/tv/273207-neagley/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:51.991Z",
+          "checkedAt": "2026-10-23T09:30:31.284Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video"
@@ -3303,11 +3302,11 @@
       "tmdbId": 1032863,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:52.306Z",
+      "checkedAt": "2026-10-23T09:30:31.693Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:52.306Z",
+          "checkedAt": "2026-10-23T09:30:31.693Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3316,7 +3315,7 @@
           "link": "https://www.themoviedb.org/movie/1032863-the-love-hypothesis/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:52.306Z",
+          "checkedAt": "2026-10-23T09:30:31.693Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3325,7 +3324,7 @@
           "link": "https://www.themoviedb.org/movie/1032863-the-love-hypothesis/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:52.306Z",
+          "checkedAt": "2026-10-23T09:30:31.693Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3334,7 +3333,7 @@
           "link": "https://www.themoviedb.org/movie/1032863-the-love-hypothesis/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:52.306Z",
+          "checkedAt": "2026-10-23T09:30:31.693Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video"
@@ -3347,11 +3346,19 @@
       "tmdbId": 304842,
       "kind": "tv",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:52.787Z",
+      "checkedAt": "2026-10-23T09:30:32.357Z",
       "refreshStatus": "confirmed",
       "regions": {
+        "BR": {
+          "checkedAt": "2026-10-23T09:30:32.357Z",
+          "status": "available",
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/304842-the-drop-a-snowfall-saga/watch?locale=BR"
+        },
         "US": {
-          "checkedAt": "2026-10-21T10:31:52.787Z",
+          "checkedAt": "2026-10-23T09:30:32.357Z",
           "status": "available",
           "stream": [
             "Hulu",
@@ -3359,20 +3366,22 @@
             "FXNow"
           ],
           "link": "https://www.themoviedb.org/tv/304842-the-drop-a-snowfall-saga/watch?locale=US"
-        }
-      },
-      "regionObservations": {
-        "BR": {
-          "checkedAt": "2026-10-21T10:31:52.787Z",
-          "status": "not_reported"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:52.787Z",
-          "status": "not_reported"
+          "checkedAt": "2026-10-23T09:30:32.357Z",
+          "status": "available",
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/304842-the-drop-a-snowfall-saga/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:52.787Z",
-          "status": "not_reported"
+          "checkedAt": "2026-10-23T09:30:32.357Z",
+          "status": "available",
+          "stream": [
+            "Disney Plus"
+          ],
+          "link": "https://www.themoviedb.org/tv/304842-the-drop-a-snowfall-saga/watch?locale=PT"
         }
       }
     },
@@ -3380,11 +3389,11 @@
       "tmdbId": 1084244,
       "kind": "movie",
       "year": 2026,
-      "checkedAt": "2026-10-21T10:31:53.107Z",
+      "checkedAt": "2026-10-23T09:30:32.769Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:53.107Z",
+          "checkedAt": "2026-10-23T09:30:32.769Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -3392,7 +3401,7 @@
           "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:53.107Z",
+          "checkedAt": "2026-10-23T09:30:32.769Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -3414,7 +3423,7 @@
           "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:53.107Z",
+          "checkedAt": "2026-10-23T09:30:32.769Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -3434,7 +3443,7 @@
           "link": "https://www.themoviedb.org/movie/1084244-toy-story-5/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:53.107Z",
+          "checkedAt": "2026-10-23T09:30:32.769Z",
           "status": "available",
           "stream": [
             "Disney Plus"
@@ -3457,11 +3466,11 @@
       "tmdbId": 817758,
       "kind": "movie",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:53.425Z",
+      "checkedAt": "2026-10-23T09:30:33.230Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:53.425Z",
+          "checkedAt": "2026-10-23T09:30:33.230Z",
           "status": "available",
           "rent": [
             "Claro video",
@@ -3475,7 +3484,7 @@
           "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:53.425Z",
+          "checkedAt": "2026-10-23T09:30:33.230Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3498,7 +3507,7 @@
           "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:53.425Z",
+          "checkedAt": "2026-10-23T09:30:33.230Z",
           "status": "available",
           "rent": [
             "Apple TV Store",
@@ -3517,7 +3526,7 @@
           "link": "https://www.themoviedb.org/movie/817758-tar/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:53.425Z",
+          "checkedAt": "2026-10-23T09:30:33.230Z",
           "status": "available",
           "rent": [
             "Apple TV Store",
@@ -3539,11 +3548,11 @@
       "tmdbId": 523607,
       "kind": "movie",
       "year": 2023,
-      "checkedAt": "2026-10-21T10:31:53.741Z",
+      "checkedAt": "2026-10-23T09:30:33.637Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:53.741Z",
+          "checkedAt": "2026-10-23T09:30:33.637Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3552,7 +3561,7 @@
           "link": "https://www.themoviedb.org/movie/523607-maestro/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:53.741Z",
+          "checkedAt": "2026-10-23T09:30:33.637Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3561,7 +3570,7 @@
           "link": "https://www.themoviedb.org/movie/523607-maestro/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:53.741Z",
+          "checkedAt": "2026-10-23T09:30:33.637Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3570,7 +3579,7 @@
           "link": "https://www.themoviedb.org/movie/523607-maestro/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:53.741Z",
+          "checkedAt": "2026-10-23T09:30:33.637Z",
           "status": "available",
           "stream": [
             "Netflix"
@@ -3583,11 +3592,11 @@
       "tmdbId": 279,
       "kind": "movie",
       "year": 1984,
-      "checkedAt": "2026-10-21T10:31:54.065Z",
+      "checkedAt": "2026-10-23T09:30:34.056Z",
       "refreshStatus": "confirmed",
       "regions": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:54.065Z",
+          "checkedAt": "2026-10-23T09:30:34.056Z",
           "status": "available",
           "rent": [
             "Apple TV Store"
@@ -3599,7 +3608,7 @@
           "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=BR"
         },
         "US": {
-          "checkedAt": "2026-10-21T10:31:54.065Z",
+          "checkedAt": "2026-10-23T09:30:34.056Z",
           "status": "available",
           "rent": [
             "Amazon Video",
@@ -3619,7 +3628,7 @@
           "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:54.065Z",
+          "checkedAt": "2026-10-23T09:30:34.056Z",
           "status": "available",
           "buy": [
             "Apple TV Store",
@@ -3631,7 +3640,7 @@
           "link": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=GB"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:54.065Z",
+          "checkedAt": "2026-10-23T09:30:34.056Z",
           "status": "available",
           "stream": [
             "Filmin"
@@ -3649,11 +3658,11 @@
       "tmdbId": 928344,
       "kind": "movie",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:54.403Z",
+      "checkedAt": "2026-10-23T09:30:34.465Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:54.403Z",
+          "checkedAt": "2026-10-23T09:30:34.465Z",
           "status": "available",
           "stream": [
             "Howdy Amazon Channel"
@@ -3682,7 +3691,7 @@
           "link": "https://www.themoviedb.org/movie/928344-weird-the-al-yankovic-story/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:54.403Z",
+          "checkedAt": "2026-10-23T09:30:34.465Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3707,11 +3716,11 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:54.403Z",
+          "checkedAt": "2026-10-23T09:30:34.465Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:54.403Z",
+          "checkedAt": "2026-10-23T09:30:34.465Z",
           "status": "not_reported"
         }
       }
@@ -3720,11 +3729,11 @@
       "tmdbId": 99072,
       "kind": "tv",
       "year": 2020,
-      "checkedAt": "2026-10-21T10:31:54.717Z",
+      "checkedAt": "2026-10-23T09:30:34.906Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:54.717Z",
+          "checkedAt": "2026-10-23T09:30:34.906Z",
           "status": "available",
           "ads": [
             "The Roku Channel"
@@ -3734,15 +3743,15 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:54.717Z",
+          "checkedAt": "2026-10-23T09:30:34.906Z",
           "status": "not_reported"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:54.717Z",
+          "checkedAt": "2026-10-23T09:30:34.906Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:54.717Z",
+          "checkedAt": "2026-10-23T09:30:34.906Z",
           "status": "not_reported"
         }
       }
@@ -3751,11 +3760,11 @@
       "tmdbId": 214665,
       "kind": "tv",
       "year": 2023,
-      "checkedAt": "2026-10-21T10:31:55.034Z",
+      "checkedAt": "2026-10-23T09:30:35.322Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:55.034Z",
+          "checkedAt": "2026-10-23T09:30:35.322Z",
           "status": "available",
           "stream": [
             "Hulu",
@@ -3769,15 +3778,15 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:55.034Z",
+          "checkedAt": "2026-10-23T09:30:35.322Z",
           "status": "not_reported"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:55.034Z",
+          "checkedAt": "2026-10-23T09:30:35.322Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:55.034Z",
+          "checkedAt": "2026-10-23T09:30:35.322Z",
           "status": "not_reported"
         }
       }
@@ -3786,11 +3795,11 @@
       "tmdbId": 233010,
       "kind": "tv",
       "year": 2023,
-      "checkedAt": "2026-10-21T10:31:55.349Z",
+      "checkedAt": "2026-10-23T09:30:35.737Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:55.349Z",
+          "checkedAt": "2026-10-23T09:30:35.737Z",
           "status": "available",
           "stream": [
             "Howdy Amazon Channel"
@@ -3801,7 +3810,7 @@
           "link": "https://www.themoviedb.org/tv/233010-honest-renovations/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:55.349Z",
+          "checkedAt": "2026-10-23T09:30:35.737Z",
           "status": "available",
           "ads": [
             "Channel 4",
@@ -3812,11 +3821,11 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:55.349Z",
+          "checkedAt": "2026-10-23T09:30:35.737Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:55.349Z",
+          "checkedAt": "2026-10-23T09:30:35.737Z",
           "status": "not_reported"
         }
       }
@@ -3825,11 +3834,11 @@
       "tmdbId": 248782,
       "kind": "tv",
       "year": 2024,
-      "checkedAt": "2026-10-21T10:31:55.668Z",
+      "checkedAt": "2026-10-23T09:30:36.201Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:55.668Z",
+          "checkedAt": "2026-10-23T09:30:36.201Z",
           "status": "available",
           "ads": [
             "The Roku Channel"
@@ -3837,7 +3846,7 @@
           "link": "https://www.themoviedb.org/tv/248782-side-hustlers/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:55.668Z",
+          "checkedAt": "2026-10-23T09:30:36.201Z",
           "status": "available",
           "stream": [
             "Sky Go"
@@ -3851,11 +3860,11 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:55.668Z",
+          "checkedAt": "2026-10-23T09:30:36.201Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:55.668Z",
+          "checkedAt": "2026-10-23T09:30:36.201Z",
           "status": "not_reported"
         }
       }
@@ -3864,11 +3873,11 @@
       "tmdbId": 215916,
       "kind": "tv",
       "year": 2022,
-      "checkedAt": "2026-10-21T10:31:55.990Z",
+      "checkedAt": "2026-10-23T09:30:36.615Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:55.990Z",
+          "checkedAt": "2026-10-23T09:30:36.615Z",
           "status": "available",
           "stream": [
             "Netflix",
@@ -3885,15 +3894,15 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:55.990Z",
+          "checkedAt": "2026-10-23T09:30:36.615Z",
           "status": "not_reported"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:55.990Z",
+          "checkedAt": "2026-10-23T09:30:36.615Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:55.990Z",
+          "checkedAt": "2026-10-23T09:30:36.615Z",
           "status": "not_reported"
         }
       }
@@ -3902,11 +3911,11 @@
       "tmdbId": 2394,
       "kind": "tv",
       "year": 1979,
-      "checkedAt": "2026-10-21T10:31:56.306Z",
+      "checkedAt": "2026-10-23T09:30:37.033Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:56.306Z",
+          "checkedAt": "2026-10-23T09:30:37.033Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3935,7 +3944,7 @@
           "link": "https://www.themoviedb.org/tv/2394-this-old-house/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:56.306Z",
+          "checkedAt": "2026-10-23T09:30:37.033Z",
           "status": "available",
           "buy": [
             "Apple TV Store",
@@ -3946,11 +3955,11 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:56.306Z",
+          "checkedAt": "2026-10-23T09:30:37.033Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:56.306Z",
+          "checkedAt": "2026-10-23T09:30:37.033Z",
           "status": "not_reported"
         }
       }
@@ -3959,11 +3968,11 @@
       "tmdbId": 23545,
       "kind": "tv",
       "year": 2002,
-      "checkedAt": "2026-10-21T10:31:56.625Z",
+      "checkedAt": "2026-10-23T09:30:37.459Z",
       "refreshStatus": "confirmed",
       "regions": {
         "US": {
-          "checkedAt": "2026-10-21T10:31:56.625Z",
+          "checkedAt": "2026-10-23T09:30:37.459Z",
           "status": "available",
           "stream": [
             "Amazon Prime Video",
@@ -3989,7 +3998,7 @@
           "link": "https://www.themoviedb.org/tv/23545-ask-this-old-house/watch?locale=US"
         },
         "GB": {
-          "checkedAt": "2026-10-21T10:31:56.625Z",
+          "checkedAt": "2026-10-23T09:30:37.459Z",
           "status": "available",
           "buy": [
             "Apple TV Store"
@@ -3999,11 +4008,11 @@
       },
       "regionObservations": {
         "BR": {
-          "checkedAt": "2026-10-21T10:31:56.625Z",
+          "checkedAt": "2026-10-23T09:30:37.459Z",
           "status": "not_reported"
         },
         "PT": {
-          "checkedAt": "2026-10-21T10:31:56.625Z",
+          "checkedAt": "2026-10-23T09:30:37.459Z",
           "status": "not_reported"
         }
       }

@@ -1,5 +1,158 @@
 [
   {
+    "date": "2026-10-21",
+    "id": "back-to-the-future-day-2026-10-21",
+    "emoji": "🎬",
+    "title": "Back to the Future Day",
+    "kicker": "Cinema celebration",
+    "place": "U.S. screenings · viewing varies by country",
+    "summary": "Back to the Future Day is on 21 October. The franchise's official site announces U.S. cinema screenings on 21 October 2026. Explore the trilogy and time-travel stories, then check local showtimes or legal viewing options.",
+    "prompt": "Explain why Back to the Future Day falls on 21 October using the official franchise source and Universal Pictures. Suggest ways to celebrate with the trilogy and recommend verified time-travel films for tonight. The announced 21 October 2026 cinema return is in the United States; check actual local showtimes and legal viewing options in my country. Do not invent worldwide screenings, an official 2026 theme or availability.",
+    "officialUrl": "https://www.backtothefuture.com/events/2026/10/21/back-to-the-future-day",
+    "image": "/event-posters/back-to-the-future-day-2026.svg",
+    "keywords": [
+      "Back to the Future Day",
+      "Back to the Future Day 2026",
+      "21 October Back to the Future Day",
+      "how to celebrate Back to the Future Day",
+      "what to watch on Back to the Future Day",
+      "where to watch Back to the Future",
+      "Back to the Future US showtimes October 2026",
+      "time travel movies to watch tonight",
+      "Back to the Future trilogy",
+      "Dia de De Volta para o Futuro",
+      "onde assistir De Volta para o Futuro",
+      "películas de viajes en el tiempo"
+    ],
+    "i18n": {
+      "pt-BR": {
+        "title": "Dia de De Volta para o Futuro",
+        "kicker": "Celebração do cinema",
+        "place": "Sessões nos EUA · disponibilidade varia por país",
+        "summary": "O Dia de De Volta para o Futuro é em 21 de outubro. O site oficial da franquia anuncia sessões nos cinemas dos EUA em 21 de outubro de 2026. Explore a trilogia e histórias de viagem no tempo, depois confira sessões locais ou opções legais para assistir.",
+        "prompt": "Explique por que o Dia de De Volta para o Futuro (Back to the Future Day) é em 21 de outubro, usando o site oficial da franquia e a Universal Pictures. Sugira formas de celebrar com a trilogia e filmes verificados sobre viagem no tempo para hoje. A volta aos cinemas anunciada para 21 de outubro de 2026 é nos EUA; confira sessões e opções legais no meu país. Não invente sessões mundiais, tema oficial de 2026 nem disponibilidade.",
+        "imageAlt": "Ilustração original de um cupê prateado, um relógio e faixas luminosas para o Dia de De Volta para o Futuro",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "es": {
+        "title": "Día de Back to the Future",
+        "kicker": "Celebración del cine",
+        "place": "Proyecciones en EE. UU. · disponibilidad según el país",
+        "summary": "El Día de Back to the Future es el 21 de octubre. La web oficial de la saga anuncia proyecciones en cines de EE. UU. el 21 de octubre de 2026. Explora la trilogía e historias de viajes en el tiempo y consulta sesiones locales u opciones legales para verlas.",
+        "prompt": "Explica por qué el Día de Back to the Future es el 21 de octubre, usando la web oficial de la saga y Universal Pictures. Sugiere formas de celebrarlo con la trilogía y películas verificadas sobre viajes en el tiempo para esta noche. El regreso a los cines anunciado para el 21 de octubre de 2026 es en Estados Unidos; comprueba sesiones y opciones legales en mi país. No inventes proyecciones mundiales, un tema oficial de 2026 ni disponibilidad.",
+        "imageAlt": "Ilustración original de un cupé plateado, un reloj y estelas de luz para el Día de Back to the Future",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "fr": {
+        "title": "Journée Retour vers le futur",
+        "kicker": "Célébration du cinéma",
+        "place": "Séances aux États-Unis · disponibilité selon le pays",
+        "summary": "La journée Retour vers le futur a lieu le 21 octobre. Le site officiel de la saga annonce des séances aux États-Unis le 21 octobre 2026. Explorez la trilogie et les récits de voyage dans le temps, puis vérifiez les séances locales ou les offres légales.",
+        "prompt": "Explique pourquoi la journée Retour vers le futur (Back to the Future Day) a lieu le 21 octobre, à partir du site officiel et d'Universal Pictures. Propose des façons de la célébrer avec la trilogie et des films vérifiés de voyage dans le temps pour ce soir. Les séances annoncées pour le 21 octobre 2026 concernent les États-Unis ; vérifie les séances et offres légales dans mon pays. N'invente ni séances mondiales, ni thème officiel pour 2026, ni disponibilité.",
+        "imageAlt": "Illustration originale d'un coupé argenté, d'une horloge et de traînées lumineuses pour la journée Retour vers le futur",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "de": {
+        "title": "Tag von Zurück in die Zukunft",
+        "kicker": "Ein Tag für das Kino",
+        "place": "Kinovorführungen in den USA · Angebote je nach Land",
+        "summary": "Der Tag von Zurück in die Zukunft ist am 21. Oktober. Die offizielle Website kündigt US-Kinovorführungen für den 21. Oktober 2026 an. Entdecke die Trilogie und Zeitreisegeschichten und prüfe lokale Spielzeiten oder legale Angebote.",
+        "prompt": "Erkläre mit der offiziellen Website und Universal Pictures, warum der Back to the Future Day am 21. Oktober ist. Schlage Ideen zum Feiern mit der Trilogie und verifizierte Zeitreisefilme für heute Abend vor. Die angekündigten Kinovorführungen am 21. Oktober 2026 finden in den USA statt; prüfe lokale Spielzeiten und legale Angebote in meinem Land. Erfinde keine weltweiten Vorführungen, kein offizielles Motto für 2026 und keine Verfügbarkeit.",
+        "imageAlt": "Originalillustration eines silbernen Coupés, einer Uhr und leuchtender Spuren zum Tag von Zurück in die Zukunft",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "it": {
+        "title": "Giornata di Ritorno al futuro",
+        "kicker": "Celebrazione del cinema",
+        "place": "Proiezioni negli USA · disponibilità secondo il paese",
+        "summary": "La giornata di Ritorno al futuro cade il 21 ottobre. Il sito ufficiale della saga annuncia proiezioni nei cinema statunitensi il 21 ottobre 2026. Esplora la trilogia e i viaggi nel tempo, poi verifica gli orari locali o le opzioni legali per guardarli.",
+        "prompt": "Spiega perché la giornata di Ritorno al futuro (Back to the Future Day) cade il 21 ottobre, usando il sito ufficiale e Universal Pictures. Suggerisci modi per celebrarla con la trilogia e film verificati sui viaggi nel tempo per stasera. Le proiezioni annunciate per il 21 ottobre 2026 riguardano gli Stati Uniti; verifica orari e opzioni legali nel mio paese. Non inventare proiezioni mondiali, temi ufficiali per il 2026 o disponibilità.",
+        "imageAlt": "Illustrazione originale di una coupé argentata, un orologio e scie luminose per la giornata di Ritorno al futuro",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "tr": {
+        "title": "Geleceğe Dönüş Günü",
+        "kicker": "Sinema kutlaması",
+        "place": "ABD'deki gösterimler · seçenekler ülkeye göre değişir",
+        "summary": "Geleceğe Dönüş Günü 21 Ekim'dir. Serinin resmî sitesi, 21 Ekim 2026'da ABD sinemalarında gösterimler duyuruyor. Üçlemeyi ve zaman yolculuğu hikâyelerini keşfedin; yerel seansları veya yasal izleme seçeneklerini kontrol edin.",
+        "prompt": "Serinin resmî sitesini ve Universal Pictures'ı kaynak alarak Geleceğe Dönüş Günü'nün (Back to the Future Day) neden 21 Ekim olduğunu açıkla. Üçlemeyle kutlama fikirleri ve bu akşam için doğrulanmış zaman yolculuğu filmleri öner. 21 Ekim 2026 için duyurulan sinema gösterimleri ABD'dedir; ülkemdeki seansları ve yasal izleme seçeneklerini kontrol et. Dünya çapında gösterim, resmî 2026 teması veya erişilebilirlik uydurma.",
+        "imageAlt": "Geleceğe Dönüş Günü için gümüş renkli bir spor otomobil, saat ve ışık izlerinden oluşan özgün illüstrasyon",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "ru": {
+        "title": "День «Назад в будущее»",
+        "kicker": "Праздник кино",
+        "place": "Кинопоказы в США · доступность зависит от страны",
+        "summary": "День «Назад в будущее» отмечают 21 октября. Официальный сайт франшизы анонсирует кинопоказы в США 21 октября 2026 года. Откройте для себя трилогию и истории о путешествиях во времени, проверив местные сеансы или легальные варианты просмотра.",
+        "prompt": "Объясни, почему День «Назад в будущее» (Back to the Future Day) отмечают 21 октября, по официальному сайту и материалам Universal Pictures. Предложи идеи празднования с трилогией и проверенные фильмы о путешествиях во времени на вечер. Кинопоказы, заявленные на 21 октября 2026 года, относятся к США; проверь сеансы и легальные варианты просмотра в моей стране. Не выдумывай всемирные показы, официальную тему 2026 года или доступность.",
+        "imageAlt": "Оригинальная иллюстрация серебристого купе, часов и световых следов ко Дню «Назад в будущее»",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "ar": {
+        "title": "يوم العودة إلى المستقبل",
+        "kicker": "احتفال بالسينما",
+        "place": "عروض في الولايات المتحدة · التوفر يختلف حسب البلد",
+        "summary": "يوافق يوم العودة إلى المستقبل 21 أكتوبر. يعلن الموقع الرسمي للسلسلة عروضًا سينمائية في الولايات المتحدة يوم 21 أكتوبر 2026. استكشف الثلاثية وقصص السفر عبر الزمن، ثم تحقق من العروض المحلية أو خيارات المشاهدة القانونية.",
+        "prompt": "اشرح لماذا يصادف يوم العودة إلى المستقبل (Back to the Future Day) 21 أكتوبر، بالاعتماد على الموقع الرسمي وUniversal Pictures. اقترح طرقًا للاحتفال بالثلاثية وأفلامًا موثقة عن السفر عبر الزمن لهذه الليلة. العروض المعلنة ليوم 21 أكتوبر 2026 تخص الولايات المتحدة؛ تحقق من المواعيد وخيارات المشاهدة القانونية في بلدي. لا تختلق عروضًا عالمية أو شعارًا رسميًا لعام 2026 أو توفرًا غير مؤكد.",
+        "imageAlt": "رسم أصلي لسيارة كوبيه فضية وساعة ومسارات ضوئية بمناسبة يوم العودة إلى المستقبل",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "hi": {
+        "title": "बैक टू द फ़्यूचर दिवस",
+        "kicker": "सिनेमा का उत्सव",
+        "place": "अमेरिका में प्रदर्शन · उपलब्धता देश के अनुसार",
+        "summary": "बैक टू द फ़्यूचर दिवस 21 अक्टूबर को है। फ़्रैंचाइज़ की आधिकारिक वेबसाइट ने 21 अक्टूबर 2026 को अमेरिकी सिनेमाघरों में प्रदर्शन की घोषणा की है। त्रयी और समय-यात्रा की कहानियाँ खोजें, फिर स्थानीय शो या कानूनी रूप से देखने के विकल्प जाँचें।",
+        "prompt": "आधिकारिक वेबसाइट और Universal Pictures के आधार पर समझाएँ कि बैक टू द फ़्यूचर दिवस (Back to the Future Day) 21 अक्टूबर को क्यों होता है। त्रयी के साथ मनाने के तरीके और आज रात के लिए सत्यापित समय-यात्रा फ़िल्में सुझाएँ। 21 अक्टूबर 2026 के घोषित सिनेमाघर प्रदर्शन अमेरिका के लिए हैं; मेरे देश में शो और कानूनी देखने के विकल्प जाँचें। वैश्विक प्रदर्शन, 2026 की आधिकारिक थीम या उपलब्धता न गढ़ें।",
+        "imageAlt": "बैक टू द फ़्यूचर दिवस के लिए चाँदी जैसी कार, घड़ी और रोशनी की लकीरों का मौलिक चित्रण",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "id": {
+        "title": "Hari Back to the Future",
+        "kicker": "Perayaan sinema",
+        "place": "Pemutaran di AS · ketersediaan berbeda tiap negara",
+        "summary": "Hari Back to the Future jatuh pada 21 Oktober. Situs resmi waralaba mengumumkan pemutaran di bioskop AS pada 21 Oktober 2026. Jelajahi trilogi dan kisah perjalanan waktu, lalu periksa jadwal setempat atau pilihan menonton yang legal.",
+        "prompt": "Jelaskan mengapa Hari Back to the Future jatuh pada 21 Oktober berdasarkan situs resmi waralaba dan Universal Pictures. Sarankan cara merayakannya dengan trilogi serta film perjalanan waktu terverifikasi untuk malam ini. Pemutaran bioskop yang diumumkan untuk 21 Oktober 2026 berlaku di Amerika Serikat; periksa jadwal dan pilihan menonton legal di negara saya. Jangan mengarang pemutaran global, tema resmi 2026, atau ketersediaan.",
+        "imageAlt": "Ilustrasi orisinal mobil coupe perak, jam, dan jejak cahaya untuk Hari Back to the Future",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "ja": {
+        "title": "バック・トゥ・ザ・フューチャーの日",
+        "kicker": "映画を楽しむ記念日",
+        "place": "米国での上映案内 · 視聴方法は国により異なります",
+        "summary": "10月21日はバック・トゥ・ザ・フューチャーの日です。シリーズ公式サイトは、2026年10月21日に米国の映画館で上映すると案内しています。3部作やタイムトラベル作品を楽しみ、近くの上映時間や正規の視聴方法を確認しましょう。",
+        "prompt": "シリーズ公式サイトとUniversal Picturesの情報を基に、10月21日がバック・トゥ・ザ・フューチャーの日（Back to the Future Day）である理由を説明してください。3部作を楽しむ方法と、今夜見るタイムトラベル映画を確認済みの情報で勧めてください。2026年10月21日の再上映案内は米国が対象です。私の国での上映時間と正規の視聴方法を確認し、世界共通の上映、2026年の公式テーマ、未確認の配信情報を作らないでください。",
+        "imageAlt": "バック・トゥ・ザ・フューチャーの日に合わせた、銀色のクーペ、時計、光の軌跡のオリジナルイラスト",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "ko": {
+        "title": "백 투 더 퓨처 데이",
+        "kicker": "영화를 즐기는 기념일",
+        "place": "미국 상영 안내 · 시청 방법은 국가별로 다릅니다",
+        "summary": "10월 21일은 백 투 더 퓨처 데이입니다. 시리즈 공식 사이트는 2026년 10월 21일 미국 극장 상영을 안내합니다. 3부작과 시간 여행 이야기를 살펴보고, 지역 상영 시간이나 합법적인 시청 방법을 확인하세요.",
+        "prompt": "시리즈 공식 사이트와 Universal Pictures를 근거로 백 투 더 퓨처 데이(Back to the Future Day)가 왜 10월 21일인지 설명해 주세요. 3부작으로 기념하는 방법과 오늘 밤 볼 검증된 시간 여행 영화를 추천해 주세요. 2026년 10월 21일 재상영 안내는 미국 대상입니다. 제 나라의 실제 상영 시간과 합법적인 시청 방법을 확인하고, 전 세계 상영이나 2026년 공식 주제, 확인되지 않은 시청 가능 여부를 지어내지 마세요.",
+        "imageAlt": "백 투 더 퓨처 데이를 위한 은색 쿠페, 시계와 빛의 궤적을 그린 독창적인 일러스트",
+        "sourceName": "BacktotheFuture.com"
+      },
+      "zh": {
+        "title": "《回到未来》日",
+        "kicker": "电影纪念日",
+        "place": "美国影院放映信息 · 观看渠道因国家而异",
+        "summary": "10月21日是《回到未来》日。系列官方网站公布了2026年10月21日在美国影院的放映安排。重温三部曲、探索时间旅行故事，并确认当地场次或合法观看渠道。",
+        "prompt": "请根据系列官方网站和Universal Pictures的资料，解释为什么10月21日是《回到未来》日（Back to the Future Day）。建议用三部曲庆祝的方式，并推荐信息经过核实、适合今晚观看的时间旅行电影。2026年10月21日的重映公告针对美国；请核实我所在国家的实际场次及合法观看渠道。不要编造全球放映安排、2026年官方主题或未经确认的观看信息。",
+        "imageAlt": "为《回到未来》日创作的银色双门汽车、时钟与光轨原创插画",
+        "sourceName": "BacktotheFuture.com"
+      }
+    },
+    "imageAlt": "Original illustration of a silver coupe, a clock and luminous trails for Back to the Future Day",
+    "imageCredit": "Original event-specific vector illustration created for MatchApp Ai. No official poster, logos or character likenesses; no affiliation with Universal Pictures or Amblin Entertainment is implied.",
+    "sourceName": "BacktotheFuture.com",
+    "sourceUrls": [
+      "https://www.backtothefuture.com/events/2026/10/21/back-to-the-future-day",
+      "https://www.universalpicturesathome.com/press-release/back-to-the-future-40th-anniversary-press-release"
+    ],
+    "updated": "2026-10-21T10:49:53.000Z"
+  },
+  {
     "date": "2026-10-20",
     "id": "world-osteoporosis-day-2026-10-20",
     "emoji": "🦴",
