@@ -1,6 +1,18 @@
 'use strict';
 const test=require('node:test');const assert=require('node:assert');const fs=require('fs');const path=require('path');const vm=require('vm');
 const root=path.join(__dirname,'..');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+test('tour reveals a control covered by the actual fixed header',()=>{
+ const source=read('guided-coach-20261022.js');
+ const reveal=source.slice(source.indexOf('function reveal(){'),source.indexOf('\nfunction show('));
+ let scrolled=0,rect={top:80,bottom:124};
+ const context={target:{getBoundingClientRect:()=>rect,scrollIntoView:()=>scrolled++},document:{getElementById:()=>({getBoundingClientRect:()=>({bottom:96})})},innerHeight:800,reduced:()=>true};
+ vm.runInNewContext(reveal+';reveal()',context);
+ assert.equal(scrolled,1,'the header covers a control above its real bottom');
+ rect={top:140,bottom:184};vm.runInNewContext('reveal()',context);
+ assert.equal(scrolled,1,'a fully visible control stays still');
+ rect={top:680,bottom:724};vm.runInNewContext('reveal()',context);
+ assert.equal(scrolled,2,'bottom navigation clearance remains enforced');
+});
 test('guide locales cover all 14 site languages with every key',()=>{
  const ctx={window:{}};vm.runInNewContext(read('guided-coach-locales-20261022.js'),ctx);
  const L=ctx.window.MatchAppCoachLocales,K=ctx.window.MatchAppCoachLocaleKeys;

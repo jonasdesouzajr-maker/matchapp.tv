@@ -116,7 +116,9 @@ function loop(){cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{layout(
 function reveal(){
  if(!target)return;
  const r=target.getBoundingClientRect();
- if(r.top<70||r.bottom>innerHeight-110){try{target.scrollIntoView({block:'center',behavior:reduced()?'auto':'smooth'})}catch(_){}}
+ const header=document.getElementById('ma-reference-header');
+ const topClearance=Math.max(70,header?header.getBoundingClientRect().bottom+8:0);
+ if(r.top<topClearance||r.bottom>innerHeight-110){try{target.scrollIntoView({block:'center',behavior:reduced()?'auto':'smooth'})}catch(_){}}
 }
 
 function show(i,opts){
