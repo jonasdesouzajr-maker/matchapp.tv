@@ -146,3 +146,43 @@ body.kids-guide-page{background:radial-gradient(ellipse at 80% 0%,#7b3fb099,tran
 .page-kids .kids-hero-copy::before{inset:0!important}
 .page-kids .kids-steps{flex-wrap:wrap;gap:var(--kp-gap)!important}
 body.page-kids{padding-bottom:max(88px,env(safe-area-inset-bottom))}
+
+/* ---- Pill system 2026-10-24d: three size tiers, tidy rows ----
+   sm  = header/nav/tool/filter chips  48px, 13.6px/800, pad 0 16px, icon 18px
+   md  = secondary actions             56px, 15px/800,   pad 0 22px, icon 20px
+   lg  = primary CTA                   64px, 17px/900,   pad 0 28px, icon 22px
+   All: radius 999px, gap 8px icon/label, rows wrap with --kp-gap both axes. */
+:root{--kp-pill-sm:48px;--kp-pill-md:56px;--kp-pill-lg:64px;--kp-pill-r:999px}
+.page-kids .kids-header :is(.kids-nav,.kids-tools){display:grid!important;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:var(--kp-gap)!important;align-items:stretch;width:100%}
+.page-kids .kids-header-actions{display:flex!important;flex-direction:column;align-items:stretch;gap:var(--kp-gap)!important;width:100%}
+.page-kids .kids-header :is(.kids-nav,.kids-tools)>*{min-height:var(--kp-pill-sm)!important;height:var(--kp-pill-sm)!important;width:auto!important;min-width:0!important;padding:0 16px!important;margin:0!important;font-size:.85rem!important;font-weight:800!important;line-height:1.1!important;border-radius:var(--kp-pill-r)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;box-sizing:border-box!important;white-space:nowrap}
+.page-kids .kids-header :is(.kids-nav,.kids-tools)>[style*="display:none"],.page-kids .kids-header :is(.kids-nav,.kids-tools)>[hidden]{display:none!important}
+.page-kids .kids-header a#kids-exit.kids-pill-exit{width:auto!important}
+.page-kids .kids-header .kids-lang-wrap select{height:36px;min-height:0!important;padding-block:0!important;font-size:.85rem!important}
+.page-kids .kids-header .kids-lang-wrap :is(.kids-lang-label,span:not(:only-child)){display:none}
+@media(min-width:900px){.page-kids .kids-header :is(.kids-nav,.kids-tools){display:flex!important;flex-wrap:wrap;justify-content:center}.page-kids .kids-header-actions{flex-direction:row;flex-wrap:wrap;justify-content:center}.page-kids .kids-header :is(.kids-nav,.kids-tools){width:auto}}
+/* action rows: primary first, all same height within row */
+.page-kids :is(.kids-hero-actions,.kids-source-controls){display:flex!important;flex-wrap:wrap;gap:var(--kp-gap)!important;align-items:stretch}
+.page-kids :is(.kids-hero-actions,.kids-source-controls)>:is(a,button){min-height:var(--kp-pill-md)!important;padding:0 22px!important;font-size:.94rem!important;font-weight:800!important;border-radius:var(--kp-pill-r)!important;display:inline-flex!important;align-items:center;justify-content:center;gap:8px;margin:0!important;box-sizing:border-box;flex:1 1 180px}
+.page-kids :is(.kids-hero-actions,.kids-source-controls)>:is(a,button):first-child{min-height:var(--kp-pill-md)!important;font-size:1.02rem!important;font-weight:900!important}
+.page-kids #kids-match-submit,.page-kids .kids-match-submit{min-height:var(--kp-pill-lg)!important;font-size:1.06rem!important;font-weight:900!important;border-radius:var(--kp-pill-r)!important}
+/* filter / step chips */
+.page-kids :is(.kids-steps,.kids-wallet-chips,.kids-chips,.kids-mood-chips)>*{min-height:40px;padding:0 14px;font-size:.8rem;font-weight:800;border-radius:var(--kp-pill-r);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;margin:0}
+/* guide/title pages: watch-where and match links share one tier */
+.kids-guide-page :is(.watch,.kp-guide-nav a,main a.button,main .cta){min-height:var(--kp-pill-md)!important;padding:0 22px!important;font-size:.94rem!important;font-weight:800!important;border-radius:var(--kp-pill-r)!important;display:inline-flex!important;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;line-height:1.15;text-align:center}
+.kids-guide-page .kp-guide-nav a{min-height:var(--kp-pill-sm)!important;padding:0 16px!important;font-size:.85rem!important}
+.kids-guide-page .kp-guide-nav{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:var(--kp-gap)!important}
+@media(min-width:700px){.kids-guide-page .kp-guide-nav{display:flex!important;flex-wrap:wrap;justify-content:center}}
+.page-kids .kids-header :is(.kids-nav,.kids-tools)>*{grid-column:auto!important;white-space:nowrap!important}
+.page-kids .kids-header :is(.kids-nav,.kids-tools)>* *{white-space:nowrap!important}
+.page-kids .kids-header .kids-nav{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+.page-kids .kids-header .kids-nav>*{grid-column:span 2!important}
+.page-kids .kids-header .kids-nav>:nth-child(n+4){grid-column:span 3!important}
+.page-kids .kids-header .kids-tools{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media(min-width:600px) and (max-width:899px){.page-kids .kids-header .kids-nav{grid-template-columns:repeat(5,minmax(0,1fr))!important}.page-kids .kids-header .kids-nav>*,.page-kids .kids-header .kids-nav>:nth-child(n+4){grid-column:auto!important}.page-kids .kids-header .kids-tools{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(min-width:900px){.page-kids .kids-header .kids-nav>*,.page-kids .kids-header .kids-nav>:nth-child(n+4){grid-column:auto!important}}
+.kids-guide-page .matcher-link{display:flex!important;width:100%;min-height:var(--kp-pill-lg)!important;padding:10px 28px!important;margin:12px 0 18px!important;font-size:1.02rem!important;font-weight:900!important;border-radius:var(--kp-pill-r)!important;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;line-height:1.2}
+.kids-guide-page .seo-facts{display:flex!important;flex-wrap:wrap;gap:8px!important}
+.kids-guide-page .seo-facts>span{min-height:36px;padding:0 14px!important;margin:0!important;display:inline-flex!important;align-items:center;font-size:.8rem!important;font-weight:800;border-radius:var(--kp-pill-r)!important;box-sizing:border-box}
+.kids-guide-page .watch{min-width:min(100%,220px)}
+@media(max-width:699px){html body.kids-guide-page header nav.kp-guide-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important;flex:1 1 100%}html body.kids-guide-page header nav.kp-guide-nav a{justify-content:center;width:auto}}

@@ -168,7 +168,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 <!-- End Google Tag Manager -->
-<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261023-6&repair=20261023-1"></script>
+<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261024-1&repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head>
 <body>
