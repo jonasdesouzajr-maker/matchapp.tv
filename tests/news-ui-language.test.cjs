@@ -11,6 +11,11 @@ const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const uiSource = read('news-ui.js');
 const ui = require('../news-ui.js');
 const languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
+const FIXTURE_NOW = Date.parse('2026-10-20T12:00:00.000Z');
+class FixtureDate extends Date {
+  constructor(...args) { super(...(args.length ? args : [FIXTURE_NOW])); }
+  static now() { return FIXTURE_NOW; }
+}
 const expectedTitle = {
   en: 'Latest Entertainment, World and Sports News', 'pt-BR': 'Últimas notícias de entretenimento, mundo e esportes',
   es: 'Últimas noticias de entretenimiento, mundo y deportes', fr: 'Dernières actualités culturelles, mondiales et sportives',
@@ -24,7 +29,7 @@ function templates() {
   const entry = source.indexOf('(async()=>{');
   assert.ok(entry > 0, 'extract definitions without running the publisher');
   return vm.runInNewContext(source.slice(0, entry) + '\n;({page,hub})', {
-    require: createRequire(file), __dirname: path.dirname(file), URL, console,
+    require: createRequire(file), __dirname: path.dirname(file), URL, console, Date: FixtureDate,
     fetch() { throw Error('Publisher requests are forbidden in this fixture'); }
   });
 }
