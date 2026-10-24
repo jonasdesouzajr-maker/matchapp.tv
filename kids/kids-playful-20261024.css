@@ -1,0 +1,91 @@
+/* MatchApp Ai KIDS — playful layer (2026-10-24). Additive only.
+   Safety: purely visual. No allowlist, age band, guardian or filtering logic here.
+   Motion: compositor-only (transform/opacity), a handful of elements, and ONLY when
+   prefers-reduced-motion is no-preference, the Pause magic toggle is off and no
+   .reduce-motion class is set. Everything else keeps the 2026-09-21 stability lock. */
+:root{--kp-yellow:#ffd65c;--kp-pink:#ff8fc8;--kp-cyan:#6ff0ec;--kp-lime:#a8f06b;--kp-orange:#ffad5c;--kp-violet:#b79bff;--kp-tap:56px}
+
+/* Brighter sky */
+body.page-kids{background:radial-gradient(ellipse at 80% 0%,#7b3fb099,transparent 55%),radial-gradient(ellipse at 5% 30%,#1e7fa055,transparent 50%),radial-gradient(ellipse at 60% 90%,#c2457a44,transparent 55%),linear-gradient(180deg,#1d0f3d,#160c2e 60%,#1a0f36)}
+.page-kids .kids-universe span{width:.32rem;height:.32rem;background:#fff6c9}
+
+/* Hierarchy: big bouncy headline + rainbow accent word */
+.page-kids .kids-hero h1>span:not(.kids-title-color){color:#fffaf0;text-shadow:0 .25rem 0 #3a1e63}
+.page-kids .kids-title-color{background:linear-gradient(90deg,var(--kp-yellow),var(--kp-pink) 45%,var(--kp-cyan));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.page-kids .kids-section h2,.page-kids .kids-featured h2{font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;letter-spacing:.01em}
+.page-kids .kids-eyebrow{color:var(--kp-yellow);letter-spacing:.06em}
+
+/* Lumi: glowing halo + rainbow orbits */
+.page-kids .kids-hero-art{background:radial-gradient(circle,#ffd65c33 0,#b79bff33 35%,transparent 66%)}
+.page-kids .kids-mascot{filter:drop-shadow(0 0 1.6rem #ffd65c55) drop-shadow(0 1rem 2rem #0006)}
+.page-kids .kids-orbit{border:2px dashed #ffd65c66}
+.page-kids .kids-orbit.orbit-two{border-color:#6ff0ec66}
+.page-kids .kids-space-star{color:var(--kp-yellow);text-shadow:0 0 .8rem #ffd65caa}
+.page-kids .kids-space-star.star-two{color:var(--kp-pink)}.page-kids .kids-space-star.star-three{color:var(--kp-cyan)}
+.page-kids .kids-art-label{background:linear-gradient(90deg,var(--kp-yellow),var(--kp-orange));color:#2a1440;font-weight:900;border:0;box-shadow:0 .3rem 0 #b8782f}
+
+/* Big, friendly touch targets (>=56px) */
+.page-kids :is(.kids-primary,.kids-secondary,.kids-chip,.kids-pill,.kids-hear,.kids-result-actions button,.kids-result-sharing button,.kids-source-controls button,.kids-grid-more>.kids-chip,#kids-match-submit,#kids-surprise){min-height:var(--kp-tap)}
+.page-kids :is(.kids-match-form select,#kids-age,#kids-search,.kids-source-controls input,.kids-source-controls select){min-height:var(--kp-tap);font-size:1rem;border-radius:1rem}
+.page-kids .kids-chip{padding:.8rem 1.25rem;font-size:.95rem;border-width:2px}
+.page-kids .kids-card button[aria-label],.page-kids .kids-card .kids-heart{min-width:var(--kp-tap);min-height:var(--kp-tap)}
+.page-kids .kids-primary{background:linear-gradient(180deg,#ffe27a,var(--kp-yellow));box-shadow:0 .35rem 0 #c0812f,0 .8rem 1.8rem #ffd65c33;border-radius:1.4rem;font-size:1.05rem}
+.page-kids .kids-secondary{border:2px solid #ffffff55;border-radius:1.4rem;background:#ffffff14}
+
+/* Rainbow chips: each category gets its own color */
+.page-kids .kids-chips .kids-chip:nth-child(6n+1){--kp-c:var(--kp-yellow)}
+.page-kids .kids-chips .kids-chip:nth-child(6n+2){--kp-c:var(--kp-lime)}
+.page-kids .kids-chips .kids-chip:nth-child(6n+3){--kp-c:var(--kp-pink)}
+.page-kids .kids-chips .kids-chip:nth-child(6n+4){--kp-c:var(--kp-cyan)}
+.page-kids .kids-chips .kids-chip:nth-child(6n+5){--kp-c:var(--kp-orange)}
+.page-kids .kids-chips .kids-chip:nth-child(6n+6){--kp-c:var(--kp-violet)}
+.page-kids .kids-chips .kids-chip{border-color:color-mix(in srgb,var(--kp-c,#fff) 55%,transparent);background:color-mix(in srgb,var(--kp-c,#fff) 14%,transparent);color:#fff}
+.page-kids .kids-chips .kids-chip.active{background:var(--kp-c,var(--kids-cyan));color:#22103a;border-color:var(--kp-c,var(--kids-cyan));box-shadow:0 .3rem 0 #0005}
+
+/* Joyful cards: colored frames that rotate through the rainbow */
+.page-kids .kids-grid .kids-card:nth-child(5n+1){--kp-c:var(--kp-yellow)}
+.page-kids .kids-grid .kids-card:nth-child(5n+2){--kp-c:var(--kp-pink)}
+.page-kids .kids-grid .kids-card:nth-child(5n+3){--kp-c:var(--kp-cyan)}
+.page-kids .kids-grid .kids-card:nth-child(5n+4){--kp-c:var(--kp-lime)}
+.page-kids .kids-grid .kids-card:nth-child(5n+5){--kp-c:var(--kp-orange)}
+.page-kids .kids-card{border:3px solid color-mix(in srgb,var(--kp-c,#b79bff) 70%,transparent);border-radius:1.5rem;background:linear-gradient(180deg,color-mix(in srgb,var(--kp-c,#b79bff) 18%,#2a1945),#241540 60%)}
+.page-kids .kids-card:focus-within{border-color:var(--kp-c,var(--kids-yellow));box-shadow:0 0 0 .25rem var(--kp-c,var(--kids-yellow))}
+.page-kids .kids-card h3,.page-kids .kids-card strong{font-family:'Baloo 2',system-ui,sans-serif}
+.page-kids .kids-feature{border:2px solid #ffffff33;border-radius:1.6rem}
+.page-kids .kids-feature:nth-child(1){background:linear-gradient(120deg,#7a3fa8,#2b1850)}
+.page-kids .kids-feature:nth-child(2){background:linear-gradient(120deg,#1f7c8f,#21204a)}
+.page-kids .kids-feature:nth-child(3){background:linear-gradient(120deg,#b04a78,#2d1648)}
+
+/* Match panel stands out as the main game */
+.page-kids .kids-match{border:3px solid #ffd65c88;border-radius:1.8rem;background:linear-gradient(140deg,#3b1f6b,#1f3b63);box-shadow:0 1rem 2.4rem #0005,inset 0 0 0 1px #ffffff14}
+.page-kids .kids-match h3{font:800 clamp(1.5rem,3.4vw,2.1rem)/1.1 'Baloo 2',system-ui,sans-serif;color:var(--kp-yellow)}
+
+/* Focus that kids and grown-ups can see */
+.page-kids :is(a,button,select,input,summary):focus-visible{outline:4px solid var(--kp-cyan);outline-offset:3px}
+
+/* Sparkle burst (created by kids-playful JS only when motion is allowed) */
+.kp-spark{position:fixed;z-index:9999;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;opacity:0}
+.kp-spark svg{display:block;width:100%;height:100%}
+
+/* ---- Motion: opt-in, compositor-only, overrides the global lock for these elements only ---- */
+@media (prefers-reduced-motion:no-preference){
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kids-mascot{animation:kp-float 5s ease-in-out infinite!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kids-orbit.orbit-one{animation:kp-spin 40s linear infinite!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kids-orbit.orbit-two{animation:kp-spin 55s linear infinite reverse!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kids-space-star{animation:kp-twinkle 3.2s ease-in-out infinite!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kids-space-star.star-two{animation-delay:-1.1s!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kids-space-star.star-three{animation-delay:-2.2s!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) :is(.kids-card,.kids-chip,.kids-primary,.kids-secondary,.kids-feature){transition:transform .18s cubic-bezier(.3,1.6,.5,1)!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) :is(.kids-chip,.kids-primary,.kids-secondary,.kids-card-poster):active{transform:scale(.95)}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kp-pop{animation:kp-pop .45s cubic-bezier(.3,1.6,.5,1) both!important}
+  html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kp-spark{animation:kp-spark .7s ease-out forwards!important}
+  @media (hover:hover){html:not(.reduce-motion) body.page-kids:not(.kids-paused) .kids-card:hover{transform:translateY(-.35rem) rotate(-.6deg)}}
+}
+@keyframes kp-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-.8rem) rotate(2deg)}}
+@keyframes kp-spin{from{transform:rotate(-28deg)}to{transform:rotate(332deg)}}
+@keyframes kp-twinkle{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes kp-pop{0%{transform:scale(.9);opacity:.4}60%{transform:scale(1.04);opacity:1}100%{transform:scale(1)}}
+@keyframes kp-spark{0%{opacity:1;transform:translate(0,0) scale(.6)}100%{opacity:0;transform:translate(var(--kx),var(--ky)) scale(1.1) rotate(90deg)}}
+
+@media (forced-colors:active){.page-kids .kids-title-color{-webkit-text-fill-color:CanvasText;background:none}.kp-spark{display:none}}
+@media (prefers-contrast:more){.page-kids .kids-card,.page-kids .kids-chips .kids-chip{border-color:#fff}}
