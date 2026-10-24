@@ -10,7 +10,7 @@ test('home keeps requested entertainment search intents in metadata, not hidden 
   const d=new JSDOM(html).window.document;
   const meta=d.querySelector('meta[name="keywords"]')?.content||'';
   // Meta keywords were rewritten on 2026-09-22 (a4517273); they keep the core intents.
-  for(const term of ['what to watch tonight','where to watch','AI streaming concierge','latest streaming releases'])
+  for(const term of ['what to watch tonight','where to watch','AI entertainment discovery guide','latest streaming releases'])
     assert.ok(meta.includes(term),'missing metadata search intent: '+term);
   const ld=[...d.querySelectorAll('script[type="application/ld+json"]')].map(s=>JSON.parse(s.textContent));
   const site=ld.find(x=>x['@type']==='WebSite');
