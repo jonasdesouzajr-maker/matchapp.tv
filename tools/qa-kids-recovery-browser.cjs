@@ -7,7 +7,7 @@ const source=fs.readFileSync(path.join(root,'kids/kids.js'),'utf8');
 const library=vm.runInNewContext(source.match(/const LIBRARY = (\[[\s\S]*?\n  \]);/)[1]);
 const report={production:true,overlays:process.env.MATCHAPP_KIDS_CANDIDATE==='1',physicalAndroid:false,candidate:process.env.MATCHAPP_KIDS_CANDIDATE==='1',cases:[],errors:[],started:new Date().toISOString()};
 (async()=>{const browser=await chromium.launch({headless:true,args:['--no-sandbox'],...(process.env.HTTPS_PROXY?{proxy:{server:process.env.HTTPS_PROXY}}:{})});try{
- const c=await browser.newContext({viewport:{width:390,height:844},locale:'en-US'}),p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));if(report.candidate){await p.route('**/kids/kids.js?*',r=>r.fulfill({contentType:'application/javascript',body:fs.readFileSync(path.join(root,'kids/kids.js'))}));await p.route('**/kids/luxe-kids-browser-20261010.css?*',r=>r.fulfill({contentType:'text/css',body:fs.readFileSync(path.join(root,'kids/luxe-kids-browser-20261010.css'))}));}
+ const c=await browser.newContext({viewport:{width:390,height:844},locale:'en-US'}),p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));if(report.candidate){await p.route('**/app-updates.js?*',r=>r.fulfill({contentType:'application/javascript',body:fs.readFileSync(path.join(root,'app-updates.js'))}));await p.route('https://matchapp.tv/kids/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync(path.join(root,'kids/index.html'))}));await p.route('**/kids/immersive.js?*',r=>r.fulfill({contentType:'application/javascript',body:fs.readFileSync(path.join(root,'kids/immersive.js'))}));await p.route('**/kids/kids.js?*',r=>r.fulfill({contentType:'application/javascript',body:fs.readFileSync(path.join(root,'kids/kids.js'))}));await p.route('**/kids/luxe-kids-browser-20261010.css?*',r=>r.fulfill({contentType:'text/css',body:fs.readFileSync(path.join(root,'kids/luxe-kids-browser-20261010.css'))}));}
  await p.goto('https://matchapp.tv/kids/',{waitUntil:'domcontentloaded',timeout:60000});
  const dialog=p.locator('dialog.kids-parent-setup[open]');await dialog.waitFor({state:'visible'});
  const pin=dialog.locator('.kids-parent-pin-choice');if(await pin.isVisible())await pin.click();
@@ -25,12 +25,13 @@ const report={production:true,overlays:process.env.MATCHAPP_KIDS_CANDIDATE==='1'
   const titles=await p.locator('#kids-grid .kids-card').evaluateAll(nodes=>nodes.map(n=>n.dataset.title));
   const row={age,titles,passed:titles.length>0&&titles.every(t=>library.some(x=>x.title===t&&x.ages.includes(age)))};report.cases.push(row);
  }
+ const navigationKeys=['navHome','navFind','navClassic','stepMood','stepAge','stepPlay','installApp','stopVoice'];const englishNavigation=await p.evaluate(keys=>keys.map(key=>document.querySelector('[data-k="'+key+'"]')?.textContent||''),navigationKeys);
  for(const code of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
   await p.locator('#kids-lang').selectOption(code);await p.waitForTimeout(50);
   for(const width of [320,768,1440]){
    await p.setViewportSize({width,height:900});await p.evaluate(()=>scrollTo(0,0));
    const row=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,lang:document.documentElement.lang,dir:document.documentElement.dir,selectHeight:document.getElementById('kids-lang').getBoundingClientRect().height}));
-   row.requestedLanguage=code;row.passed=row.scroll<=width+1&&row.selectHeight>=44;report.cases.push(row);
+   row.requestedLanguage=code;row.navigation=await p.evaluate(keys=>keys.map(key=>document.querySelector('[data-k="'+key+'"]')?.textContent||''),navigationKeys);row.passed=row.scroll<=width+1&&row.selectHeight>=44&&row.lang===code&&row.dir===(code==='ar'?'rtl':'ltr')&&row.navigation.every((text,i)=>text.trim()&&text!==navigationKeys[i]&&(code==='en'||text!==englishNavigation[i]));report.cases.push(row);
   }
   if(['ar','pt-BR','ja'].includes(code))await p.screenshot({path:path.join(out,'language-'+code+'.png')});
  }
