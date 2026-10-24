@@ -3,7 +3,7 @@
    Does nothing animated when reduced motion, Pause magic or .reduce-motion is on. */
 (function () {
   'use strict';
-  if (!document.body || !document.body.classList.contains('page-kids')) return;
+  if (!document.body || !(document.body.classList.contains('page-kids') || document.body.classList.contains('kids-guide-page'))) return;
   var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   function calm() {
     return (mq && mq.matches) || document.body.classList.contains('kids-paused') ||
@@ -29,7 +29,13 @@
       setTimeout(function (n) { return function () { n.remove(); live--; }; }(s), 800);
     }
   }
-  var TARGETS = '.kids-chip,.kids-primary,#kids-match-submit,#kids-surprise,.kids-card button';
+  var TARGETS = '.kids-chip,.kids-primary,#kids-match-submit,#kids-surprise,.kids-card button,.kids-guide-page .matcher-link,.kids-guide-page .kp-guide-nav a,.kids-guide-page .btn';
+  // Mark the current page in the shared guide nav.
+  var here = location.pathname;
+  Array.prototype.forEach.call(document.querySelectorAll('.kp-guide-nav a'), function (a) {
+    var h = a.getAttribute('href') || '';
+    if (h.indexOf('#') < 0 && h === here) a.setAttribute('aria-current', 'page');
+  });
   document.addEventListener('click', function (e) {
     var t = e.target && e.target.closest ? e.target.closest(TARGETS) : null;
     if (!t || t.disabled) return;
