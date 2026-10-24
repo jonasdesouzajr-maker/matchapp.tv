@@ -28,10 +28,19 @@ function templates() {
   const file = path.join(root, 'tools/refresh-news-rss.js'), source = read('tools/refresh-news-rss.js');
   const entry = source.indexOf('(async()=>{');
   assert.ok(entry > 0, 'extract definitions without running the publisher');
-  return vm.runInNewContext(source.slice(0, entry) + '\n;({page,hub})', {
+  const generated = vm.runInNewContext(source.slice(0, entry) + '\n;({page,hub})', {
     require: createRequire(file), __dirname: path.dirname(file), URL, console, Date: FixtureDate,
     fetch() { throw Error('Publisher requests are forbidden in this fixture'); }
   });
+  return {
+    page: generated.page,
+    hub(...args) {
+      const realNow = Date.now;
+      Date.now = () => FIXTURE_NOW;
+      try { return generated.hub(...args); }
+      finally { Date.now = realNow; }
+    }
+  };
 }
 function story(extra = {}) {
   return {
