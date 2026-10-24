@@ -180,6 +180,8 @@
     zh:['首页','查找','经典','选择心情','选择年龄','开始播放','安装应用','停止语音','聆听','关闭语音']
   };
   Object.entries(navigationCopy).forEach(([locale,values])=>navigationKeys.forEach((key,i)=>{UI[locale][key]=values[i]}));
+  const discoveryControlCopy={"en":["Show more titles","No age-approved picks match this exact mood and format yet. Try another mood or format."],"pt-BR":["Mostrar mais títulos","Ainda não encontramos títulos aprovados com essa combinação. Tente outro humor ou formato."],"es":["Ver más títulos","Todavía no encontramos títulos aprobados con esa combinación. Prueba otro estado de ánimo o formato."],"fr":["Afficher plus de titres","Aucun titre approuvé pour cet âge ne correspond à cette envie et ce format. Essaie une autre envie ou un autre format."],"de":["Weitere Titel anzeigen","Für diese Stimmung und dieses Format gibt es keine altersgerechten Tipps. Wähle eine andere Stimmung oder ein anderes Format."],"it":["Mostra altri titoli","Nessun titolo approvato per questa età corrisponde a questa emozione e formato. Prova un’altra emozione o un altro formato."],"tr":["Daha fazla yapım göster","Bu ruh hâli ve biçim için yaşa uygun onaylı yapım bulunamadı. Başka bir ruh hâli veya biçim dene."],"ru":["Показать больше произведений","Для этого настроения и формата нет одобренных по возрасту вариантов. Выбери другое настроение или формат."],"ar":["اعرض المزيد من الأعمال","لا توجد اختيارات معتمدة لهذا العمر تطابق هذا المزاج والنوع. جرّب مزاجًا أو نوعًا آخر."],"hi":["और शीर्षक दिखाएँ","इस मूड और प्रारूप के लिए आयु-अनुमोदित विकल्प नहीं मिले। दूसरा मूड या प्रारूप चुनें।"],"id":["Tampilkan judul lainnya","Belum ada pilihan sesuai usia untuk suasana hati dan format ini. Coba suasana hati atau format lain."],"ja":["作品をもっと見る","この気分と種類に合う、年齢に承認された作品はありません。別の気分や種類を選んでください。"],"ko":["작품 더 보기","이 기분과 형식에 맞는 연령 승인 작품이 없어요. 다른 기분이나 형식을 골라 보세요."],"zh":["显示更多作品","此心情和类型暂无符合年龄要求的作品。请尝试其他心情或类型。"]};
+  Object.entries(discoveryControlCopy).forEach(([locale,values])=>Object.assign(UI[locale],{moreTitles:values[0],refineMatch:values[1]}));
   const installStateCopy={en:['Update app','Installed'],'pt-BR':['Atualizar app','Instalado'],es:['Actualizar app','Instalada'],fr:['Mettre à jour','Installée'],de:['App aktualisieren','Installiert'],it:['Aggiorna app','Installata'],tr:['Uygulamayı güncelle','Yüklendi'],ru:['Обновить','Установлено'],ar:['تحديث التطبيق','مثبت'],hi:['ऐप अपडेट करें','इंस्टॉल है'],id:['Perbarui aplikasi','Terpasang'],ja:['アプリを更新','インストール済み'],ko:['앱 업데이트','설치됨'],zh:['更新应用','已安装']};
   Object.entries(installStateCopy).forEach(([locale,values])=>Object.assign(UI[locale],{updateApp:values[0],installedApp:values[1]}));
 
@@ -407,7 +409,7 @@
     if(visible.length<items.length){
       const more=document.createElement('div');more.className='kids-grid-more';
       const button=document.createElement('button');button.className='kids-chip';button.type='button';
-      button.textContent=lang==='pt-BR'?'Mostrar mais títulos':lang==='es'?'Ver más títulos':'Show more titles';
+      button.textContent=tr('moreTitles');
       button.setAttribute('aria-label',button.textContent+' ('+(items.length-visible.length)+')');
       button.addEventListener('click',()=>{
         kidsBrowseVisible+=KIDS_BROWSE_BATCH;
@@ -434,6 +436,15 @@
     document.getElementById('kids-match-status').textContent=matchPicks.length?tr('matchReady'):'';
   }
   function clearMatch() { matchPicks=[];renderMatchResults(); }
+  function scrollMatchStart() {
+    const results=document.getElementById('kids-match-results');if(!results)return;
+    const header=document.querySelector('.kids-header');
+    const pinned=header&&['sticky','fixed'].includes(getComputedStyle(header).position);
+    const inset=(pinned?Math.ceil(header.getBoundingClientRect().height):0)+16;
+    const padding=Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0;
+    results.style.scrollMarginTop=Math.max(0,inset-padding)+'px';
+    results.scrollIntoView({behavior:'auto',block:'start'});
+  }
   function setMatchBusy(busy) {
     const form=document.getElementById('kids-match-form');if(form)form.setAttribute('aria-busy',String(busy));
     const submit=document.getElementById('kids-match-submit');if(submit)submit.disabled=busy;
@@ -471,14 +482,10 @@
       // when the child opens one of these reviewed results, never just for
       // generating the three choices.
       matchPicks=chosen.slice(0,3);previousMatch=matchPicks.map(x=>x.title);renderMatchResults();
-      const refineHint=lang==='pt-BR'
-        ?'Ainda não encontramos títulos aprovados com essa combinação. Tente outro humor ou formato.'
-        :lang==='es'
-        ?'Todavía no encontramos títulos aprobados con esa combinación. Prueba otro estado de ánimo o formato.'
-        :'No age-approved picks match this exact mood and format yet. Try another mood or format.';
+      const refineHint=tr('refineMatch');
       status.textContent=matchPicks.length?tr('matchReady'):refineHint;
       document.getElementById('kids-match-submit').textContent=tr('matchAgain');
-      if(matchPicks.length)document.getElementById('kids-match-results')?.scrollIntoView({behavior:'auto',block:'start'});
+      if(matchPicks.length)scrollMatchStart();
     }catch(_){status.textContent=tr('quotaError');}
     finally{buildingMatch=false;setMatchBusy(false);}
   }
