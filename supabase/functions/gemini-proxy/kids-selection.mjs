@@ -41,7 +41,8 @@ export function verifiedKidsSelection(parsed,candidates){
   const row=byTitle.get(key(raw?.title));
   if(!row||seen.has(row.title))continue;
   if(raw.year!=null&&String(raw.year).trim()&&String(raw.year).trim()!==row.year)continue;
-  if(raw.type!=null&&String(raw.type).trim()&&String(raw.type).trim()!==row.type)continue;
+  const type=String(raw.type||'').trim().toLowerCase();
+  if(type&&type!==row.type&&!(row.type==='series'&&['tv','show'].includes(type))&&!(row.type==='movie'&&type==='film'))continue;
   seen.add(row.title);results.push({title:row.title,year:row.year,type:row.type});
   if(results.length===4)break;
  }

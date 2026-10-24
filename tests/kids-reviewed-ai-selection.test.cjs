@@ -37,6 +37,8 @@ test('structured output and server filtering reject unreviewed, wrong-identity a
   {title:first.title}
  ]},rows);
  assert.equal(reply.answer,'');assert.deepEqual(reply.results,[{title:first.title,year:first.year,type:first.type}]);
+ const series=rows.find(row=>row.type==='series');
+ assert.deepEqual(verifiedKidsSelection({results:[{title:series.title,type:'tv'}]},rows).results,[{title:series.title,year:series.year,type:series.type}],'standard TV aliases still resolve to the reviewed series identity');
  assert.deepEqual(verifiedKidsSelection({results:[{title:first.title}]},[]),{answer:'',results:[]});
 });
 
