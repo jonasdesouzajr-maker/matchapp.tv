@@ -66,3 +66,6 @@ html body .daily-reward.daily-reward-toast {position:fixed!important;inset:auto 
 @media(prefers-reduced-motion:reduce){html body #daily-match-checkin.dc.checkin-bubble,.checkin-bubble .mcb-inner::before,html body .daily-reward.daily-reward-toast,html body .daily-reward.daily-reward-toast.is-leaving,.checkin-bubble .dc-action {animation:none!important;transition:none!important;transform:none!important}}
 .reduce-motion .checkin-bubble,.reduce-motion .daily-reward-toast,.reduce-motion .checkin-bubble .mcb-inner::before{animation:none!important}
 @media print {html body #daily-match-checkin.dc.checkin-bubble,html body .daily-reward.daily-reward-toast {display:none!important}}
+
+/* Keep the real tour target reachable; resume the existing reminder afterwards. */
+html.ma-coach-active body #daily-match-checkin.dc.checkin-bubble {display:none!important}
