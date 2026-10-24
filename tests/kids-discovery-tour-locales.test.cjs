@@ -54,3 +54,21 @@ test('the Kids account tour covers every language, points at visible Luma and pr
   assert.equal(w.localStorage.getItem('match_kids_dailyCount'),'2');assert.equal(w.localStorage.getItem('matchapp_onboarding_kids_v1_'+user.id),'1');
  }finally{w.close()}
 });
+test('match result starts clear wrapped sticky headers and discard stale offsets on compact headers',async()=>{
+ const d=new JSDOM(html(),{url:'https://matchapp.tv/kids/',runScripts:'outside-only'}),w=d.window,scrolls=[];
+ try{
+  let position='sticky',height=178,padding='88px';const originalStyle=w.getComputedStyle.bind(w);
+  const header=w.document.querySelector('.kids-header');header.getBoundingClientRect=()=>({height});
+  w.getComputedStyle=element=>element===header?{position}:element===w.document.documentElement?{scrollPaddingTop:padding}:originalStyle(element);
+  w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=function(options){if(this.id==='kids-match-results')scrolls.push(options)};
+  w.tmdbLookup=async()=>null;w.fetch=async()=>({ok:true,json:async()=>JSON.parse(read('kids/watch-links.json'))});
+  w.KidsAccount={prepare:async()=>{},known:()=>new Set(),remember:async()=>{}};w.eval(read('kids/kids.js'));await tick();
+  w.document.getElementById('kids-match-mood').value='funny';w.document.getElementById('kids-match-format').value='series';
+  for(const state of [{position:'sticky',height:178,padding:'88px',margin:'106px'},{position:'fixed',height:120,padding:'88px',margin:'48px'},{position:'relative',height:330,padding:'16px',margin:'0px'}]){
+   ({position,height,padding}=state);w.document.getElementById('kids-match-form').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await tick();
+   assert(w.document.querySelector('#kids-match-results .kids-card'));assert.equal(w.document.getElementById('kids-match-results').style.scrollMarginTop,state.margin);
+   assert.equal(scrolls.at(-1).block,'start');assert.equal(scrolls.at(-1).behavior,'auto');
+  }
+  assert.equal(scrolls.length,3);assert.equal(w.localStorage.getItem('match_kids_dailyCount'),null);
+ }finally{w.close()}
+});
