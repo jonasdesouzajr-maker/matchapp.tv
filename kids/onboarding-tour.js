@@ -371,7 +371,7 @@ function ensure(){
  card.querySelector('[data-next]').onclick=()=>i>=steps.length-1?finish():show(i+1);
 }
 function place(){
- if(!active||!steps[i])return;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const el=document.querySelector(steps[i]);if(!el)return;const r=el.getBoundingClientRect(),p=9;spot.style.left=Math.max(6,r.left-p)+'px';spot.style.top=Math.max(6,r.top-p)+'px';spot.style.width=Math.min(innerWidth-12,r.width+p*2)+'px';spot.style.height=Math.min(innerHeight-12,r.height+p*2)+'px';});
+ if(!active||!steps[i])return;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const el=document.querySelector(steps[i]);if(!el)return;const r=el.getBoundingClientRect(),p=9;card.classList.toggle('kids-tour-clear-bottom',steps[i]==='#kids-lumi-assistant'&&r.top+r.height/2>innerHeight/2);spot.style.left=Math.max(6,r.left-p)+'px';spot.style.top=Math.max(6,r.top-p)+'px';spot.style.width=Math.min(innerWidth-12,r.width+p*2)+'px';spot.style.height=Math.min(innerHeight-12,r.height+p*2)+'px';});
 }
 function show(n){
  i=n;const el=document.querySelector(steps[i]);if(!el){steps.splice(i,1);return steps.length?show(Math.min(i,steps.length-1)):finish();}

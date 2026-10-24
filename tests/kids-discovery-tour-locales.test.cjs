@@ -42,7 +42,7 @@ test('the Kids account tour covers every language, points at visible Luma and pr
    for(let step=0;step<5;step++){
     assert.equal(card.querySelector('h2').textContent,copy.steps[step][0]);assert.equal(card.querySelector('[data-copy]').textContent,copy.steps[step][1]);
     assert.equal(card.querySelector('[data-count]').textContent,(step+1)+' / 5');assert.equal(card.querySelector('[data-skip]').textContent,copy.skip);
-    if(step===1){assert(copy.steps[1][0].includes('Luma'));assert.equal(w.document.querySelector('.kids-tour-spotlight').style.width,'88px','the visible avatar owns the voice tour spotlight');}
+    if(step===1){assert(copy.steps[1][0].includes('Luma'));assert.equal(w.document.querySelector('.kids-tour-spotlight').style.width,'88px','the visible avatar owns the voice tour spotlight');assert(card.classList.contains('kids-tour-clear-bottom'),'the voice coach must leave a bottom avatar visible');}
     if(step<4)card.querySelector('[data-next]').click();
    }
    for(let step=0;step<4;step++)card.querySelector('[data-back]').click();
