@@ -162,6 +162,27 @@
   Object.assign(UI.fr,{navHome:'Accueil',navFind:'Chercher',navClassic:'Classiques',voiceOn:'Écouter',voiceOff:'Muet'});
   Object.assign(UI.de,{navHome:'Start',navFind:'Suchen',navClassic:'Klassiker',voiceOn:'Hören',voiceOff:'Stumm'});
 
+  const navigationKeys=['navHome','navFind','navClassic','stepMood','stepAge','stepPlay','installApp','stopVoice','voiceOn','voiceOff'];
+  const navigationCopy={
+    en:['Home','Find','Classics','Pick a mood','Choose an age','Press play','Install app','Stop voice','Hear me','Voice off'],
+    'pt-BR':['Início','Buscar','Clássicos','Escolha uma emoção','Escolha uma idade','Dê o play','Instalar app','Parar voz','Ouvir','Sem voz'],
+    es:['Inicio','Buscar','Clásicos','Elige una emoción','Elige una edad','Dale play','Instalar app','Detener voz','Escuchar','Sin voz'],
+    fr:['Accueil','Chercher','Classiques','Choisis une envie','Choisis un âge','Lance la lecture','Installer','Arrêter la voix','Écouter','Sans voix'],
+    de:['Start','Suchen','Klassiker','Wähle eine Stimmung','Wähle ein Alter','Drücke auf Play','App installieren','Stimme stoppen','Hören','Stimme aus'],
+    it:['Inizio','Cerca','Classici','Scegli un’emozione','Scegli un’età','Premi play','Installa app','Ferma la voce','Ascolta','Voce disattivata'],
+    tr:['Ana sayfa','Bul','Klasikler','Bir ruh hâli seç','Bir yaş seç','Oynat','Uygulamayı yükle','Sesi durdur','Dinle','Ses kapalı'],
+    ru:['Главная','Поиск','Классика','Выбери настроение','Выбери возраст','Нажми «Смотреть»','Установить','Остановить голос','Слушать','Без голоса'],
+    ar:['الرئيسية','ابحث','كلاسيكيات','اختر مزاجًا','اختر عمرًا','ابدأ المشاهدة','تثبيت التطبيق','إيقاف الصوت','استمع','الصوت متوقف'],
+    hi:['होम','खोजें','पुराने पसंदीदा','मन का मूड चुनें','उम्र चुनें','चलाएँ','ऐप इंस्टॉल करें','आवाज़ रोकें','सुनें','आवाज़ बंद'],
+    id:['Beranda','Cari','Klasik','Pilih suasana hati','Pilih usia','Mulai putar','Pasang aplikasi','Hentikan suara','Dengarkan','Suara mati'],
+    ja:['ホーム','探す','名作','気分を選ぼう','年齢を選ぼう','再生しよう','アプリを入れる','音声を止める','聞く','音声オフ'],
+    ko:['홈','찾기','추억의 명작','기분을 골라요','나이를 골라요','재생해요','앱 설치','음성 멈춤','듣기','음성 끄기'],
+    zh:['首页','查找','经典','选择心情','选择年龄','开始播放','安装应用','停止语音','聆听','关闭语音']
+  };
+  Object.entries(navigationCopy).forEach(([locale,values])=>navigationKeys.forEach((key,i)=>{UI[locale][key]=values[i]}));
+  const installStateCopy={en:['Update app','Installed'],'pt-BR':['Atualizar app','Instalado'],es:['Actualizar app','Instalada'],fr:['Mettre à jour','Installée'],de:['App aktualisieren','Installiert'],it:['Aggiorna app','Installata'],tr:['Uygulamayı güncelle','Yüklendi'],ru:['Обновить','Установлено'],ar:['تحديث التطبيق','مثبت'],hi:['ऐप अपडेट करें','इंस्टॉल है'],id:['Perbarui aplikasi','Terpasang'],ja:['アプリを更新','インストール済み'],ko:['앱 업데이트','설치됨'],zh:['更新应用','已安装']};
+  Object.entries(installStateCopy).forEach(([locale,values])=>Object.assign(UI[locale],{updateApp:values[0],installedApp:values[1]}));
+
   const matchCopy={
     en:{resultTitle:'Your next adventure',matchFree:'Opening a title uses one match from your account, or your daily guest allowance. Watching, sharing and saving this result do not use another match.',opening:'Getting your adventure ready…',quotaEmpty:'All your matches are used for today. Ask a grown-up to help with your account, or come back tomorrow.',quotaError:'We could not check your matches. Please try again.',quotaUsed:'1 match used',synopsis:'The story',share:'Share this adventure',copy:'Copy link',copied:'Link copied!',saveLater:'Watch later',seenIt:'Seen it',lovedIt:'Loved it',notForMe:'Not for me',historySaved:'Saved to your history.',historyError:'Could not save this choice. Please try again.',sameCriteria:'Another with these choices',newCriteria:'Choose a new adventure',account:'Grown-ups: account & matches'},
     'pt-BR':{resultTitle:'Sua próxima aventura',matchFree:'Abrir um título usa um match da sua conta ou da cota diária de visitante. Assistir, compartilhar e salvar este resultado não usam outro match.',opening:'Preparando sua aventura…',quotaEmpty:'Seus matches de hoje acabaram. Peça ajuda a um adulto com sua conta ou volte amanhã.',quotaError:'Não foi possível verificar seus matches. Tente novamente.',quotaUsed:'1 match usado',synopsis:'A história',share:'Compartilhar esta aventura',copy:'Copiar link',copied:'Link copiado!',saveLater:'Assistir depois',seenIt:'Já assisti',lovedIt:'Adorei',notForMe:'Não é pra mim',historySaved:'Salvo no seu histórico.',historyError:'Não foi possível salvar. Tente novamente.',sameCriteria:'Outra com estas escolhas',newCriteria:'Escolher uma nova aventura',account:'Adultos: conta e matches'},
@@ -777,6 +798,10 @@
     setLanguage(requested);
 
     document.getElementById('kids-lang')?.addEventListener('change', e => setLanguage(e.target.value));
+    document.addEventListener('matchapp:kids-install-label',event=>{
+      const label=event.target;
+      if(label?.matches('.kids-install [data-k]'))label.textContent=tr(label.dataset.k);
+    });
     document.getElementById('kids-exit')?.addEventListener('click', exitKids);
     ageSelect?.addEventListener('change', () => { kidsBrowseVisible=KIDS_BROWSE_BATCH;write(AGE_KEY, ageSelect.value); clearChat();clearMatch(); document.getElementById('kids-watch-dialog')?.close?.(); renderChips();renderGrid(); renderFeatured();renderNostalgia();renderSaved(); });
     document.getElementById('kids-match-form').addEventListener('submit',event=>{event.preventDefault();makeKidsMatch();});

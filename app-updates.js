@@ -30,6 +30,12 @@ function removeLegacyUi(){
 function labelInstallButtons(mode){
  const text = mode==='update' ? (pt()?'Atualizar':'Update') : mode==='installed' ? (pt()?'Instalado':'Installed') : (pt()?'Instalar':'Install');
  document.querySelectorAll('.install-btn, .ma-install-go, .chrome-install-now').forEach(btn=>{
+  const kidsLabel=KIDS&&btn.matches('.kids-install')&&btn.querySelector('[data-k]');
+  if(kidsLabel){
+   kidsLabel.dataset.k=mode==='update'?'updateApp':mode==='installed'?'installedApp':'installApp';
+   kidsLabel.dispatchEvent(new CustomEvent('matchapp:kids-install-label',{bubbles:true}));
+   return;
+  }
   if(btn && !btn.closest('#chrome-install-card')) btn.textContent=text;
  });
 }
