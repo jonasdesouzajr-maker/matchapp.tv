@@ -32,6 +32,13 @@ test('event archive generator retains the currently approved shared-runtime URL'
  const template=fs.readFileSync(path.join(ROOT,'tools/build-global-events.js'),'utf8'),archive=fs.readFileSync(path.join(ROOT,'events-archive.html'),'utf8');
  const script=/<script src="(\/app\.js\?[^\"]+)"/;
  assert.equal(template.match(script)?.[1],archive.match(script)?.[1]);assert.ok(template.match(script)?.[1].includes('&amp;regional=20261016-1'));
+ const start=template.indexOf('function shell('),end=template.indexOf('\nconst urls=[];',start);
+ const shell=vm.runInNewContext(template.slice(start,end)+'\nshell',{tokenAssets:{script:'/match-tokens.js?fixture=1',style:'/match-tokens.css?fixture=1'}});
+ const output=shell({headHtml:'<title>Verified events</title>',body:'<main>Existing event sources</main>',archive:true});
+ for(const name of ['app.js','build-meta.js']){
+  const url=html=>{const marker='/'+name+'?v=',at=html.indexOf(marker);assert(at>=0,name+' is present');return html.slice(at).split('"',1)[0]};
+  assert.equal(url(output),url(archive),name+' regeneration retains every approved cache pin in order');
+ }
 });
 test('only the event archive shell retains the existing token assets before its shared runtime',()=>{
  const source=fs.readFileSync(path.join(ROOT,'tools/build-global-events.js'),'utf8');
