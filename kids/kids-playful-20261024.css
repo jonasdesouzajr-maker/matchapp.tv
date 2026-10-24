@@ -127,3 +127,22 @@ body.kids-guide-page{background:radial-gradient(ellipse at 80% 0%,#7b3fb099,tran
   html:not(.reduce-motion) body.kids-guide-page:not(.kids-paused) :is(.watch,.matcher-link,.btn,.kp-guide-nav a,main ul li a):active{transform:scale(.96)}
 }
 @media (max-width:600px){.kids-guide-page header{flex-wrap:wrap;gap:.8rem}.kids-guide-page .kp-guide-nav a{padding:0 .85rem;font-size:.92rem}}
+
+/* ---- Spacing pass 2026-10-24c: nothing glued to walls or to each other ---- */
+:root{--kp-gap:10px;--kp-pad-l:max(16px,env(safe-area-inset-left));--kp-pad-r:max(16px,env(safe-area-inset-right))}
+.page-kids .kids-header-inner{padding-left:var(--kp-pad-l)!important;padding-right:var(--kp-pad-r)!important;box-sizing:border-box}
+.page-kids .kids-header :is(.kids-header-actions,.kids-nav,.kids-tools){gap:var(--kp-gap)!important;row-gap:var(--kp-gap)!important}
+.page-kids .kids-card-body{padding:14px 16px 16px!important;gap:10px}
+.page-kids .kids-card-body>*{margin-left:0;margin-right:0;max-width:100%}
+.page-kids .kids-card .kids-heart{margin-right:0}
+.page-kids .kids-card .kids-watch{padding:8px 14px!important}
+.page-kids .kids-footer a,.kids-guide-page footer a{display:inline-block;margin:6px 4px;line-height:1.4}
+.kids-guide-page :is(header,main,footer){padding-left:var(--kp-pad-l);padding-right:var(--kp-pad-r);box-sizing:border-box}
+.kids-guide-page .watch{margin:6px 10px 6px 0}
+.page-kids .kids-feature{padding:14px!important}
+.page-kids .kids-feature>*{min-width:0}
+.page-kids .kids-feature :is(h3,strong,span,p){overflow-wrap:anywhere;hyphens:auto}
+.page-kids .kids-hero-copy{padding:20px!important;box-sizing:border-box}
+.page-kids .kids-hero-copy::before{inset:0!important}
+.page-kids .kids-steps{flex-wrap:wrap;gap:var(--kp-gap)!important}
+body.page-kids{padding-bottom:max(88px,env(safe-area-inset-bottom))}
