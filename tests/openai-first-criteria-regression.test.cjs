@@ -27,7 +27,7 @@ test('the distinct AI candidate-list schema is used end-to-end, never legacy one
   assert.match(app,/fetchGeminiData\(prompt, true\)/);
   assert.match(app,/mode: 'match_proposals'/);
   assert.match(proxy,/isProposalMode = body\.mode === "match_proposals" && body\.adultMatch === true/);
-  assert.match(proxy,/generationConfig: withGeminiLatency\(buildGenerationConfig\(isDiscoverMode,isProposalMode,isRankMode\)/);
+  assert.match(proxy,/generationConfig: withGeminiLatency\(kidsCandidates\s*\? kidsGenerationConfig\(buildGenerationConfig\(isDiscoverMode,isProposalMode,isRankMode\),kidsCandidates\)\s*: buildGenerationConfig\(isDiscoverMode,isProposalMode,isRankMode\)/);
   assert.match(proxy,/if \(isProposals\)/);
   assert.match(proxy,/required: \["title","year","kind"\]/);
   assert.match(openai,/mode==="match_proposals"\?proposals:mode==="rank_candidates"\?rank:legacy/);

@@ -457,7 +457,7 @@
         :'No age-approved picks match this exact mood and format yet. Try another mood or format.';
       status.textContent=matchPicks.length?tr('matchReady'):refineHint;
       document.getElementById('kids-match-submit').textContent=tr('matchAgain');
-      if(matchPicks.length)document.getElementById('kids-match-results')?.scrollIntoView({behavior:'auto',block:'nearest'});
+      if(matchPicks.length)document.getElementById('kids-match-results')?.scrollIntoView({behavior:'auto',block:'start'});
     }catch(_){status.textContent=tr('quotaError');}
     finally{buildingMatch=false;setMatchBusy(false);}
   }
@@ -502,6 +502,9 @@
 
   async function safeAIRecognise(question, age, version, deadline) {
     if (!window.supabaseClient) return [];
+    const known=window.KidsAccount?.known?.()||new Set();
+    const eligible=allowedLibrary(age).filter(item=>!known.has(window.KidsAccount?.key?.(item.title)||normalizeTitle(item.title)));
+    if(!eligible.length)return [];
     try {
       let data, error;
       // One short retry can recover a minute-window boundary. Longer waits
@@ -516,6 +519,7 @@
         }
         ({ data, error } = await window.supabaseClient.functions.invoke('gemini-proxy', { body: {
         mode:'discover', question, lang, kidsMode:true, childAgeBand:age,
+        kidsCandidateTitles:eligible.map(item=>item.title),
         country:read('match_user_country') || '', age:''
         }}));
         if (!error) break;

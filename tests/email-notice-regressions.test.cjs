@@ -47,7 +47,7 @@ test('Spotify destinations without a publicly available video player use music a
 test('Gemini request builders omit deprecated thinking budget and sampling settings on every retry',()=>{
  const code=read('supabase/functions/gemini-proxy/index.ts');
  assert.doesNotMatch(code,/\b(?:thinkingBudget|temperature|topP|topK|top_p|top_k)\s*:/);
- assert.match(code,/generationConfig:\s*withGeminiLatency\(buildGenerationConfig\(/);
+ assert.match(code,/generationConfig:\s*withGeminiLatency\(kidsCandidates\s*\? kidsGenerationConfig\(buildGenerationConfig\([\s\S]*?: buildGenerationConfig\(isDiscoverMode,isProposalMode,isRankMode\),model,body\?\.kidsMode === true\)/);
  assert.match(code,/responseMimeType:\s*"application\/json"/);
  assert.match(code,/maxOutputTokens:\s*8192/);
  assert.match(code,/geminiRes\.status\s*===\s*400/);

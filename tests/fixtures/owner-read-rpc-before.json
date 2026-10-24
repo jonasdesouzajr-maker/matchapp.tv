@@ -1,0 +1,34 @@
+[
+  {
+    "signature": "consume_credit(text)",
+    "definition": "CREATE OR REPLACE FUNCTION public.consume_credit(p_reason text DEFAULT 'ask_ai'::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$ declare v_uid uuid:=auth.uid();v_bal integer; begin if v_uid is null then return jsonb_build_object('ok',false,'reason','not_authenticated'); end if;if p_reason<>'ask_ai' then return jsonb_build_object('ok',false,'reason','ask_ai_only'); end if;select credits into v_bal from public.profiles where id=v_uid for update;if coalesce(v_bal,0)<=0 then return jsonb_build_object('ok',false,'reason','no_credits','credits',coalesce(v_bal,0)); end if;update public.profiles set credits=credits-1 where id=v_uid returning credits into v_bal;insert into public.credit_ledger(user_id,delta,balance,reason) values(v_uid,-1,v_bal,'ask_ai');return jsonb_build_object('ok',true,'credits',v_bal,'reason','ask_ai');end $function$\n"
+  },
+  {
+    "signature": "daily_match_checkin_status()",
+    "definition": "CREATE OR REPLACE FUNCTION public.daily_match_checkin_status()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v public.daily_match_checkins%rowtype; v_streak int;\nbegin\n if v_uid is null then return jsonb_build_object('authenticated',false); end if;\n select * into v from public.daily_match_checkins where user_id=v_uid;\n if not found then return jsonb_build_object('authenticated',true,'streak',0,'checked_today',false,'total_checkins',0,'completed_weeks',0); end if;\n v_streak:=case when v.last_checkin is null or v.last_checkin < current_date-1 then 0 else v.streak end;\n return jsonb_build_object('authenticated',true,'streak',v_streak,'checked_today',v.last_checkin=current_date,'last_checkin',v.last_checkin,'total_checkins',v.total_checkins,'completed_weeks',v.completed_weeks);\nend $function$\n"
+  },
+  {
+    "signature": "enforce_verified_phone_sms_consent()",
+    "definition": "CREATE OR REPLACE FUNCTION public.enforce_verified_phone_sms_consent()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.sms_communications_opt_in is true\n  and not exists(select 1 from auth.users u\n   where u.id=new.id and u.phone is not null and u.phone<>'' and u.phone_confirmed_at is not null)\n then raise exception 'A verified account phone is required for SMS communications' using errcode='23514';\n end if;\n return new;\nend;\n$function$\n"
+  },
+  {
+    "signature": "kids_credits()",
+    "definition": "CREATE OR REPLACE FUNCTION public.kids_credits()\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$select pg_catalog.jsonb_build_object(\n  'authenticated',auth.uid() is not null,\n  'credits',coalesce((select p.kids_credits from public.profiles p where p.id=auth.uid()),0)\n)$function$\n"
+  },
+  {
+    "signature": "kids_match_pack_balance()",
+    "definition": "CREATE OR REPLACE FUNCTION public.kids_match_pack_balance()\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$select pg_catalog.jsonb_build_object(\n  'authenticated',auth.uid() is not null,\n  'matches',coalesce((select p.kids_purchased_matches from public.profiles p where p.id=auth.uid()),0)\n)$function$\n"
+  },
+  {
+    "signature": "match_credits()",
+    "definition": "CREATE OR REPLACE FUNCTION public.match_credits()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\r\ndeclare\r\n    v_uid uuid := auth.uid();\r\n    v_bal integer;\r\nbegin\r\n    if v_uid is null then\r\n        return jsonb_build_object('authenticated', false, 'credits', 0);\r\n    end if;\r\n    select credits into v_bal from public.profiles where id = v_uid;\r\n    return jsonb_build_object('authenticated', true, 'credits', coalesce(v_bal, 0));\r\nend;\r\n$function$\n"
+  },
+  {
+    "signature": "match_pack_balance()",
+    "definition": "CREATE OR REPLACE FUNCTION public.match_pack_balance()\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$ select jsonb_build_object('authenticated',auth.uid() is not null,'matches',coalesce((select purchased_matches from public.profiles where id=auth.uid()),0)); $function$\n"
+  },
+  {
+    "signature": "request_account_deletion()",
+    "definition": "CREATE OR REPLACE FUNCTION public.request_account_deletion()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\r\ndeclare\r\n  uid uuid := auth.uid();\r\n  mail text;\r\nbegin\r\n  if uid is null then\r\n    raise exception 'Sign in required';\r\n  end if;\r\n  select email into mail from auth.users where id = uid;\r\n  insert into public.account_deletion_requests(user_id, email)\r\n  values (uid, coalesce(mail, ''))\r\n  on conflict (user_id) do update\r\n    set requested_at = now(),\r\n        purge_after = now() + interval '72 hours',\r\n        purged_at = null;\r\n  begin\r\n    update public.profiles\r\n       set profile_locked = true\r\n     where id = uid;\r\n  exception when undefined_table then\r\n    null;\r\n  end;\r\n  return jsonb_build_object(\r\n    'ok', true,\r\n    'purge_after_hours', 72,\r\n    'message', 'Deletion scheduled. The same email can register again after 72 hours.'\r\n  );\r\nend;\r\n$function$\n"
+  }
+]
