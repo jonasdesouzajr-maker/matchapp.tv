@@ -55,6 +55,7 @@ import { callOpenRouterFirst } from "./openrouter-backup.ts";
 import { callGroqBackup } from "./groq-backup.ts";
 import { withGeminiLatency, uniqueGeminiRoutes } from "./latency-config.mjs";
 import { excludedTitleList, exclusionPrompt, guardDiscoverResponse } from "./discover-exclusions.mjs";
+import { reviewedKidsCandidates, kidsSelectionInstructions, kidsGenerationConfig, verifiedKidsSelection } from "./kids-selection.mjs";
 
 // Service-role client, used ONLY to meter requests (migration 008). The key
 // lives in Edge Function secrets and never leaves the server.
@@ -496,11 +497,19 @@ Deno.serve(async (req: Request) => {
     }
 
     const body = await req.json();
+    // Every explicitly tagged Kids request must use the reviewed selection
+    // contract. A legacy prompt or adult ranking mode cannot bypass it.
+    if(body?.kidsMode === true && (body.mode !== "discover" || typeof body.question !== "string")){
+      return new Response(JSON.stringify({error:"Kids requests require the reviewed discovery mode."}),{
+        status:400,headers:{...corsHeaders(req),"Content-Type":"application/json"}
+      });
+    }
     let prompt: string;
     let isDiscoverMode = false;
     let isProposalMode = false;
     let isRankMode = false;
     let rankCandidateIds: string[] = [];
+    let kidsCandidates: ReturnType<typeof reviewedKidsCandidates> | null = null;
 
     // ---- DIAGNOSTIC MODE ----
     // POST { "mode": "selftest" } to get a plain-language report of what is
@@ -607,6 +616,12 @@ Deno.serve(async (req: Request) => {
     if (body && body.mode === "discover" && typeof body.question === "string") {
       // AI Concierge path: build the real prompt here, server-side.
       isDiscoverMode = true;
+      if(body.kidsMode === true){
+        kidsCandidates=reviewedKidsCandidates(body.childAgeBand,body.kidsCandidateTitles);
+        if(!kidsCandidates.length)return new Response(JSON.stringify({candidates:[{content:{parts:[{text:JSON.stringify({answer:"",results:[]})}]}}]}),{
+          headers:{...corsHeaders(req),"Content-Type":"application/json"}
+        });
+      }
       // Every field is truncated before it reaches the prompt. A question is
       // a sentence; history is a few turns. Anything larger is either a bug
       // or someone using our Gemini budget as their own, and in both cases
@@ -688,6 +703,7 @@ Deno.serve(async (req: Request) => {
     // higher-priority instruction; Kids and matching payloads stay unchanged.
     const systemIdentity = isDiscoverMode && body?.kidsMode !== true
       ? prompt.slice(0,prompt.indexOf("\n\n")) : undefined;
+    const geminiSystemInstruction = kidsCandidates ? kidsSelectionInstructions(kidsCandidates) : systemIdentity;
     const acceptDiscoverAnswer = (answer: string) => body?.kidsMode === true ||
       !unsupportedReadingRefusal(String(body?.question||''),answer);
     // One strict adult request budget across all independent providers.
@@ -779,8 +795,10 @@ Deno.serve(async (req: Request) => {
               },
               body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
-                ...(systemIdentity?{systemInstruction:{parts:[{text:systemIdentity}]}}:{}),
-                generationConfig: withGeminiLatency(buildGenerationConfig(isDiscoverMode,isProposalMode,isRankMode),model,body?.kidsMode === true),
+                ...(geminiSystemInstruction?{systemInstruction:{parts:[{text:geminiSystemInstruction}]}}:{}),
+                generationConfig: withGeminiLatency(kidsCandidates
+                  ? kidsGenerationConfig(buildGenerationConfig(isDiscoverMode,isProposalMode,isRankMode),kidsCandidates)
+                  : buildGenerationConfig(isDiscoverMode,isProposalMode,isRankMode),model,body?.kidsMode === true),
               }),
             }
           );
@@ -796,7 +814,7 @@ Deno.serve(async (req: Request) => {
                 headers: {"Content-Type":"application/json","x-goog-api-key":route.key},
                 body: JSON.stringify({
                   contents:[{parts:[{text:prompt}]}],
-                  ...(systemIdentity?{systemInstruction:{parts:[{text:systemIdentity}]}}:{}),
+                  ...(geminiSystemInstruction?{systemInstruction:{parts:[{text:geminiSystemInstruction}]}}:{}),
                   generationConfig:{maxOutputTokens:8192,responseMimeType:"application/json"},
                 }),
               }
@@ -838,7 +856,9 @@ Deno.serve(async (req: Request) => {
           if (isDiscoverMode && data?.candidates?.[0]?.content?.parts?.[0]?.text) {
             try {
               const parsed=JSON.parse(text);
-              if (parsed && typeof parsed.answer==="string") {
+              if (kidsCandidates) {
+                data.candidates[0].content.parts=[{text:JSON.stringify(verifiedKidsSelection(parsed,kidsCandidates))}];
+              } else if (parsed && typeof parsed.answer==="string") {
                 if (!acceptDiscoverAnswer(parsed.answer)) {
                   lastError = "Reading response incorrectly rejected a supported format";
                   continue;
@@ -854,7 +874,10 @@ Deno.serve(async (req: Request) => {
                 }
                 data.candidates[0].content.parts[0].text=JSON.stringify(parsed);
               }
-            }catch(_){/* Frontend parsing and filtering still protect truncated answers. */}
+            }catch(_){
+              if(kidsCandidates)data.candidates[0].content.parts=[{text:JSON.stringify({answer:"",results:[]})}];
+              // Adult frontend parsing still protects truncated answers.
+            }
           }
           // Surface which model answered and how it finished, so the browser
           // console can show this without needing Supabase log access.

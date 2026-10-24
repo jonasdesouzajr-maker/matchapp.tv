@@ -3,6 +3,26 @@ const {JSDOM}=require('jsdom'),root=path.join(__dirname,'..'),source=fs.readFile
 const library=vm.runInNewContext(source.match(/const LIBRARY = (\[[\s\S]*?\n  \]);/)[1]);
 const links=JSON.parse(fs.readFileSync(path.join(root,'kids/watch-links.json'),'utf8'));
 const tick=()=>new Promise(r=>setTimeout(r,10));
+test('every supported Kids age, mood, format and era combination preserves hard filters',async t=>{
+ const d=await boot(),w=d.window;let combinations=0;
+ try{
+  const values=id=>[...w.document.getElementById(id).options].map(o=>o.value);
+  const ages=values('kids-age'),moods=values('kids-match-mood'),formats=values('kids-match-format'),eras=values('kids-match-era');
+  for(const age of ages)for(const mood of moods)for(const format of formats)for(const era of eras){
+   for(const [id,value]of [['kids-age',age],['kids-match-mood',mood],['kids-match-format',format],['kids-match-era',era]])change(w,id,value);
+   w.document.getElementById('kids-match-submit').click();await new Promise(setImmediate);
+   const titles=[...w.document.querySelectorAll('#kids-match-results .kids-card')].map(n=>n.dataset.title);
+   const pool=library.filter(row=>row.ages.includes(age)&&(mood==='all'||row.cats.includes(mood))&&(format==='all'||row.type===format));
+   assert.equal(titles.length,Math.min(3,pool.length),[age,mood,format,era].join('/'));
+   assert.equal(new Set(titles).size,titles.length);
+   assert(titles.every(title=>pool.some(row=>row.title===title)),'age, mood and format must never broaden');
+   const exact=pool.filter(row=>era==='all'||Math.floor(Number(row.year)/10)*10===Number(era));
+   if(exact.length>=3)assert(titles.every(title=>exact.some(row=>row.title===title)),'available exact decades take priority');
+   combinations++;
+  }
+  t.diagnostic(combinations+' supported combinations exercised through the real Kids form handler.');
+ }finally{w.close();}
+});
 async function boot(data=links,saved=[]){const html=fs.readFileSync(path.join(root,'kids/index.html'),'utf8').replace(/<script\b[\s\S]*?<\/script>/g,'');const d=new JSDOM(html,{url:'https://matchapp.tv/kids/',runScripts:'outside-only'}),w=d.window;w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};w.tmdbLookup=async()=>null;w.fetch=async()=>({ok:true,json:async()=>data});w.localStorage.setItem('match_kids_saved_titles',JSON.stringify(saved));w.KidsAccount={prepare:async()=>{},consume:async()=>({allowed:true,userId:null}),remember:async()=>{}};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};w.eval(source);await tick();return d;}
 function change(w,id,value){const el=w.document.getElementById(id);el.value=value;el.dispatchEvent(new w.Event('change'));}
 test('Kids matching intersects the curated age, mood, format and decade filters',async()=>{const d=await boot(),w=d.window;change(w,'kids-age','6-8');change(w,'kids-match-mood','adventure');change(w,'kids-match-format','series');change(w,'kids-match-era','1980');w.document.getElementById('kids-match-submit').click();await tick();const cards=[...w.document.querySelectorAll('#kids-match-results .kids-card')];assert.equal(cards.length,3);for(const card of cards){const item=library.find(x=>x.title===card.dataset.title);assert(item.ages.includes('6-8'));assert(item.cats.includes('adventure'));assert.equal(item.type,'series');assert.equal(Math.floor(Number(item.year)/10),198);}const ids=[...w.document.querySelectorAll('[id]')].map(x=>x.id);assert.equal(new Set(ids).size,ids.length);change(w,'kids-age','3-5');assert.equal(w.document.querySelectorAll('#kids-match-results .kids-card').length,0);d.window.close();});

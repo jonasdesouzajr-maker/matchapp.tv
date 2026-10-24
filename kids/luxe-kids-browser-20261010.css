@@ -47,6 +47,26 @@ html.kids-mode .kids-pill[aria-current="page"]{
 html.kids-mode .kids-tools{
  display:flex;align-items:center;gap:7px;flex-wrap:wrap;
 }
+/* Keep the existing playful controls usable on touch screens. */
+html.kids-mode .kids-header :is(button,select,nav>a,.kids-pill),
+html.kids-mode .kids-quest-choice{
+ min-height:44px!important;
+}
+html.kids-mode .kids-header #kids-lang{height:44px!important}
+/* A stable dark reading surface keeps the approved bright hero and Luma art
+ * intact while giving the white/mint copy sufficient contrast. No layout shift. */
+html.kids-mode .kids-hero-copy{position:relative;isolation:isolate}
+html.kids-mode .kids-hero-copy::before{
+ content:"";position:absolute;inset:-10px;z-index:-1;
+ border-radius:24px;background:rgba(24,12,58,.90);pointer-events:none;
+}
+html.kids-mode .kids-hero-copy>p{color:#f7f3ff}
+/* Wrapped phone/landscape navigation must scroll away instead of obscuring
+ * the beginning of the result cards. Desktop keeps its existing masthead. */
+@media(max-width:900px),(max-height:600px){
+ html.kids-mode{scroll-padding-top:16px}
+ html.kids-mode .kids-header{position:relative!important;top:auto!important}
+}
 html.kids-mode .kids-hero{
  border-radius:clamp(20px,3vw,32px);
  overflow:hidden;

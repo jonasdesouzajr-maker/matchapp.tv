@@ -229,8 +229,9 @@ async function guarded(browser,label,fn){
    const rows=await page.locator('#kids-chat-results .kids-card').evaluateAll(nodes=>nodes.map(n=>n.dataset.title));
    const safe=rows.length>0&&rows.every(title=>approved.some(x=>x.title===title&&(x.ages.includes('6-8')||x.ages.includes('all'))));
    record('LIVE Kids AI only exposes vetted age-approved titles',safe,rows.join(', ')||ans.slice(0,100));
-   if(upstream.includes(200))record('LIVE Kids AI proxy responded successfully',true,'HTTP '+upstream.join(','));
-   else warn('Kids AI live generation','The age-safe local fallback may have answered; production AI proxy responses: '+upstream.join(','));
+   const localFallback=await page.locator('#kids-answer strong').count()>0;
+   if(upstream.includes(200)&&!localFallback&&safe)record('LIVE Kids AI proxy produced usable reviewed recommendations',true,'HTTP '+upstream.join(','));
+   else warn('Kids AI live generation','Approved local recovery was used or no reviewed live result was available; proxy responses: '+upstream.join(','));
    await page.screenshot({path:path.join(out,'kids-ai.png')}).catch(()=>{});
   });
  }catch(e){record('deep smoke bootstrap',false,String(e.message||e));}

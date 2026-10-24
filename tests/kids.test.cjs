@@ -1,6 +1,22 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {JSDOM}=require('jsdom');const root=path.join(__dirname,'..');const js=fs.readFileSync(path.join(root,'kids/kids.js'),'utf8');const library=vm.runInNewContext(js.match(/const LIBRARY = (\[[\s\S]*?\n  \]);/)[1]);
 const tick=()=>new Promise(r=>setTimeout(r,10));
+test('Kids sends only unseen reviewed titles for the selected age to AI',async()=>{
+ let sent,charges=0;const known=new Set(['bluey']);
+ const d=await boot({KidsAccount:{known:()=>known,key:t=>t.toLowerCase(),prepare:async()=>{},status:async()=>({remaining:3,kids_credits:0}),consumeAI:async()=>{charges++;return{allowed:true};}},supabaseClient:{functions:{invoke:async(name,{body})=>{
+  sent=body;return{data:{candidates:[{content:{parts:[{text:JSON.stringify({answer:'',results:[{title:body.kidsCandidateTitles[0]}]})}]}}]}};
+ }}}}),w=d.window;
+ try{
+  w.document.getElementById('kids-age').value='6-8';w.document.getElementById('kids-age').dispatchEvent(new w.Event('change'));
+  w.document.getElementById('kids-question').value='funny animals';w.document.getElementById('kids-ask-form').dispatchEvent(new w.Event('submit',{cancelable:true}));await new Promise(r=>setTimeout(r,30));
+  assert.deepEqual(Array.from(sent.kidsCandidateTitles),Array.from(library.filter(r=>r.ages.includes('6-8')&&r.title!=='Bluey'),r=>r.title));
+  assert.equal(charges,1);assert.equal(w.document.querySelector('#kids-answer strong'),null);
+ }finally{w.close();}
+});
+test('an exhausted Kids AI pool performs no provider request and spends no allowance',async()=>{
+ let calls=0,charges=0;const d=await boot({KidsAccount:{known:()=>new Set(Array.from(library,r=>r.title.toLowerCase())),key:t=>t.toLowerCase(),prepare:async()=>{},status:async()=>({remaining:3,kids_credits:0}),consumeAI:async()=>{charges++;return{allowed:true};}},supabaseClient:{functions:{invoke:async()=>{calls++;throw Error('must not request');}}}}),w=d.window;
+ try{w.document.getElementById('kids-question').value='funny animals';w.document.getElementById('kids-ask-form').dispatchEvent(new w.Event('submit',{cancelable:true}));await new Promise(r=>setTimeout(r,30));assert.equal(calls,0);assert.equal(charges,0);assert.equal(w.document.querySelectorAll('#kids-chat-results .kids-card').length,0);}finally{w.close();}
+});
 function revealAllReviewed(w){const grid=w.document.getElementById('kids-grid');let more,clicks=0;while((more=grid.querySelector('.kids-grid-more button'))){assert(clicks++<20,'reviewed shelf must finish loading in bounded batches');more.click();}return grid;}
 async function boot(overrides={}){const html=fs.readFileSync(path.join(root,'kids/index.html'),'utf8').replace(/<script\b[\s\S]*?<\/script>/g,'');const dom=new JSDOM(html,{url:'https://matchapp.tv/kids/',runScripts:'outside-only'}),w=dom.window;w.matchMedia=()=>({matches:false});w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLDialogElement.prototype.close=function(){this.open=false;};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.tmdbLookup=async()=>null;w.KidsAccount={consume:async()=>({allowed:true,userId:null}),consumeAI:async()=>({allowed:true,userId:null}),prepare:async()=>{},remember:async()=>{},claimShareReward:async()=>({granted:true,kids_purchased_matches:1}),known:()=>new Set(),key:t=>String(t).toLowerCase()};Object.assign(w,overrides);w.eval(js);await tick();return dom;}
 test('every approved title has a complete deterministic local cover and unique DOM IDs',async()=>{const d=await boot();const doc=d.window.document;assert.equal(doc.querySelectorAll('#kids-grid .kids-card').length,Math.min(24,library.length),'initial mobile-safe batch');revealAllReviewed(d.window);assert.equal(doc.querySelectorAll('#kids-grid .kids-card').length,library.length,'all reviewed titles remain reachable');const ids=[...doc.querySelectorAll('[id]')].map(x=>x.id);assert.equal(new Set(ids).size,ids.length);for(const img of doc.querySelectorAll('#kids-grid img')){const p=path.join(root,img.getAttribute('src'));assert(fs.existsSync(p));const svg=new JSDOM(fs.readFileSync(p,'utf8'),{contentType:'image/svg+xml'}).window.document;assert(svg.querySelector('title').textContent.includes(img.alt));assert.equal(svg.querySelectorAll('text').length>=3,true);}d.window.close();});

@@ -70,7 +70,9 @@ test('all independent adult providers send the same identity as a system instruc
   }
  }
  // Both Gemini attempts (structured and compatibility fallback) share the
- // same server-owned instruction and explicitly exclude Kids mode.
+ // same server-owned adult instruction. Kids has a separate reviewed-catalogue
+ // instruction and must never inherit the adult character.
  assert.match(source,/const systemIdentity = isDiscoverMode && body\?\.kidsMode !== true/);
- assert.equal((source.match(/systemInstruction:\{parts:\[\{text:systemIdentity\}\]\}/g)||[]).length,2);
+ assert.match(source,/const geminiSystemInstruction = kidsCandidates \? kidsSelectionInstructions\(kidsCandidates\) : systemIdentity/);
+ assert.equal((source.match(/systemInstruction:\{parts:\[\{text:geminiSystemInstruction\}\]\}/g)||[]).length,2);
 });
