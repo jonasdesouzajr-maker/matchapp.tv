@@ -5,7 +5,7 @@
   'use strict';
   const DAYS = 7;
   const MARK = '/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1';
-  const CSS = '/daily-checkin-bubble.css?v=20260927-bubble1';
+  const CSS = '/daily-checkin-bubble.css?v=20261024-coach1';
   const esc = s => String(s ?? '').replace(/[&<>"']/g,c => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   }[c]));
