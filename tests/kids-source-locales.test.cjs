@@ -6,7 +6,7 @@ test('all fourteen family-discovery languages have complete authored controls, w
  assert.deepEqual(Object.keys(copy).sort(),[...languages].sort());const keys=Object.keys(copy.en);assert.equal(keys.length,26);
  for(const language of languages){assert.deepEqual(Object.keys(copy[language]).sort(),[...keys].sort());
   for(const key of keys){assert.equal(typeof copy[language][key],'string');assert(copy[language][key].trim(),language+' '+key);}
-  assert(copy[language].found.includes('{count}'));assert(copy[language].caution.includes('MatchApp Ai'));
+  assert(copy[language].found.includes('{count}'));assert(copy[language].caution.includes('MatchApp Ai KIDS'));
   assert(copy[language].note.includes('TMDB'));assert(copy[language].note.includes('Ask AI'));
  }
 });
