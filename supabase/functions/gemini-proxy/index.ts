@@ -497,6 +497,13 @@ Deno.serve(async (req: Request) => {
     }
 
     const body = await req.json();
+    // Every explicitly tagged Kids request must use the reviewed selection
+    // contract. A legacy prompt or adult ranking mode cannot bypass it.
+    if(body?.kidsMode === true && (body.mode !== "discover" || typeof body.question !== "string")){
+      return new Response(JSON.stringify({error:"Kids requests require the reviewed discovery mode."}),{
+        status:400,headers:{...corsHeaders(req),"Content-Type":"application/json"}
+      });
+    }
     let prompt: string;
     let isDiscoverMode = false;
     let isProposalMode = false;
