@@ -79,8 +79,8 @@ function bodyWithoutJonasRepair(body,expectRepair){
     const src=script.getAttribute('src'),pins=new URL(src,'https://matchapp.tv').searchParams.getAll('refined');
     if(pins.length){
       assert.equal(pins.length,1,'one presentation pin');
-      if(expectRepair)assert.equal(pins[0],'20261025-2','finalized pages receive the current presentation pin');
-      else assert.ok(['20261025-1','20261025-2'].includes(pins[0]),'source templates may retain the prior presentation pin');
+      if(expectRepair)assert.equal(pins[0],'20261025-3','finalized pages receive the current presentation pin');
+      else assert.ok(['20261025-1','20261025-2','20261025-3'].includes(pins[0]),'source templates may retain the prior presentation pin');
       const suffix='&refined='+pins[0];
       assert.ok(src.endsWith(suffix),'preserve the original query prefix');
       script.setAttribute('src',src.slice(0,-suffix.length));
