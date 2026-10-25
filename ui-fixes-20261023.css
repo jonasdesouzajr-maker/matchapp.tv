@@ -422,8 +422,14 @@ html body:not(.kids-body) .ma-cinema-hero-footer:not(#ma-x):not(#ma-y) > :is(a,b
  }
  html.ma-reference:not(.kids-mode) :is(.marquee-title,.poster-title,.book-title) {
   font-family:var(--ma-refined-font)!important;font-size:.8125rem!important;font-weight:550!important;
-  line-height:1.35!important;color:#fff8ef!important;text-shadow:0 1px 4px #0008!important;
+  line-height:1.35!important;color:#fff8ef!important;-webkit-text-fill-color:currentColor!important;text-shadow:0 1px 4px #0008!important;
  }
+ /* Artwork and the poster stage stay dark in every palette, including Sunrise. */
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) :is(
+  .ma-cinema-section-heading,.marquee-item,.poster-card,.book-card,.ref-topic,.ref-editorial-banner
+ ) {--ma-refined-text:#fff8ef;--cinema-text:#fff8ef;color:#fff8ef!important;}
+ html.ma-reference:not(.kids-mode) :is(.ref-topic,.ref-editorial-banner) :is(h2,h3,p) {-webkit-text-fill-color:currentColor!important;}
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) .ma-cinema-section-heading a {color:#dfc193!important;}
  html.ma-reference:not(.kids-mode) :is(.ma-cinema-dock,.ma-reference-dock) {
   border-color:transparent!important;background:color-mix(in srgb,var(--ma-refined-surface) 96%,transparent)!important;
   box-shadow:0 14px 44px #0005!important;border-radius:20px!important;
