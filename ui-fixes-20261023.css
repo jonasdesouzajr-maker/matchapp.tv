@@ -387,6 +387,30 @@ html body:not(.kids-body) .ma-cinema-hero-footer:not(#ma-x):not(#ma-y) > :is(a,b
   border-color:transparent!important;box-shadow:none!important;
  }
  html.ma-reference:not(.kids-mode) .newsearch-row::after {display:none!important;}
+ /* A few older frames are painted behind padding, rather than with borders. */
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) :is(
+  .ma-concierge,#trending-rail,.spotlight-card,.discover-head,.ma-secondary-product,
+  .mic-btn,.search-examples button,.secondary-btn,.ma-plan-cta,.ma-billing-toggle button,
+  .ma-how-link,.ma-how-button,.lazy-head,.seo-fold-summary,.global-events-summary
+ ) {background-clip:padding-box!important;}
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) :is(
+  #daily-match-checkin.dc,.daily-reward.daily-reward-toast,
+  .checkin-bubble .mcb-inner,.daily-reward.daily-reward-toast .daily-reward-card
+ ) {background:var(--ma-refined-surface)!important;color:var(--ma-refined-text)!important;}
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) :is(
+  #daily-match-checkin.dc,.daily-reward.daily-reward-toast
+ ) {box-shadow:0 16px 48px #0004!important;}
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) .checkin-bubble .mcb-eyebrow {
+  color:var(--ma-refined-muted)!important;font-size:.625rem!important;font-weight:600!important;
+  letter-spacing:.08em!important;line-height:1.4!important;
+ }
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) .checkin-bubble .mcb-title {font-size:1rem!important;}
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) .checkin-bubble .mcb-detail {
+  color:var(--ma-refined-muted)!important;font-size:.8125rem!important;line-height:1.45!important;
+ }
+ html.ma-reference:not(.kids-mode) body:not(.kids-body) .checkin-bubble .dc-action {
+  background:var(--ma-refined-accent)!important;color:var(--ma-refined-ink)!important;
+ }
  html.ma-reference:not(.kids-mode) :is(.marquee-item,.poster-card,.book-card)::before,
  html.ma-reference:not(.kids-mode) :is(.marquee-item,.poster-card,.book-card)::after,
  html.ma-reference:not(.kids-mode) :is(summary,.crit-toggle,.lazy-head,.ma-fold-toggle)::before,
