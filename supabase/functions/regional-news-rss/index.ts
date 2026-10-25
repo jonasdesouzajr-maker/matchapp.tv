@@ -25,6 +25,11 @@ const sha=async(s:string)=>Array.from(new Uint8Array(await crypto.subtle.digest(
 const countryName=(cc:string,l:string)=>{try{return clean(new Intl.DisplayNames([l==='pt'?'pt-BR':l,'en'],{type:'region'}).of(cc))||cc}catch{return cc}};
 const cors=(o:string|null)=>({'access-control-allow-origin':!o||o==='https://matchapp.tv'||o==='https://www.matchapp.tv'||o.startsWith('http://localhost:')?(o||'https://matchapp.tv'):'https://matchapp.tv','access-control-allow-methods':'GET,OPTIONS','access-control-allow-headers':'content-type','vary':'Origin'});
 const CACHE=new Map<string,{freshUntil:number,staleUntil:number,items:any[]}>();
+function publicationTime(value:string,now=Date.now()){
+  if(!value.trim())return null;
+  const timestamp=Date.parse(value);
+  return Number.isFinite(timestamp)&&timestamp<=now+3600000?new Date(timestamp).toISOString():null;
+}
 const sleep=(ms:number)=>new Promise(resolve=>setTimeout(resolve,ms));
 async function fetchXml(url:string){
   let last='unavailable';
@@ -69,7 +74,7 @@ async function pull(scope:'local'|'global',cc:string,l:string){
     if(source&&title.endsWith(' - '+source))title=title.slice(0,-(' - '+source).length).trim();
     const key=title.toLowerCase();if(seen.has(key))continue;seen.add(key);
     const id='regional-'+await sha(scope+'|'+url),global=scope==='global',labels=LABELS[l]||LABELS.en;
-    out.push({id,source,source_home:sourceHome,url,title,description:labels.open,image:null,published_at:new Date(published||Date.now()).toISOString(),country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?labels.global:labels.local,breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal),locale:global?l:(l+'-'+cc),intent:global?'global top news':'local top news',keywords:[title,global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal)]}});
+    out.push({id,source,source_home:sourceHome,url,title,description:labels.open,image:null,published_at:publicationTime(published,now),discovered_at:new Date(now).toISOString(),timestamp_kind:publicationTime(published,now)?'published':'discovered',country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?labels.global:labels.local,breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal),locale:global?l:(l+'-'+cc),intent:global?'global top news':'local top news',keywords:[title,global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal)]}});
     if(out.length>=(global?5:6))break;
   }
   if(!out.length){

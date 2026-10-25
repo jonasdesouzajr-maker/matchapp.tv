@@ -7,6 +7,7 @@ const {chromium}=require('playwright');
 const {fetchDeploymentMarker}=require('./deployment-marker.cjs');
 const {auditLiveSearch}=require('./live-search-readiness.cjs');
 const {waitForUsableCover}=require('./cover-load-check.cjs');
+const {auditNewsDiscovery}=require('./news-discovery-browser-check.cjs');
 const base=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const dir=path.resolve('artifacts/live-smoke');fs.mkdirSync(dir,{recursive:true});
 const report={base,started:new Date().toISOString(),screens:[],checks:[],errors:[],warnings:[],liveAnswers:[],runtimeErrorSources:[]};
@@ -137,6 +138,7 @@ async function aiQuestion(page,question,expected,label){
    record('LIVE crawler policy, sitemap HTTP status and page indexability',search.checkedUrls>0&&!search.issues.length,JSON.stringify(search));
   }catch(error){record('LIVE crawler policy, sitemap HTTP status and page indexability',false,String(error.message));}
   browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+  await auditNewsDiscovery({browser,base,record,shot});
   for(const device of cases){
    const context=await browser.newContext({viewport:{width:device.width,height:device.height},
       isMobile:device.isMobile,hasTouch:device.hasTouch,deviceScaleFactor:1,locale:'en-US'});

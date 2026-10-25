@@ -90,8 +90,8 @@ function assertOriginals(doc, original) {
   for (const [node, datetime] of original.datetimes) assert.equal(node.getAttribute('datetime'), datetime);
 }
 
-test('News has an authored complete 38-key catalog in all 14 supported languages', () => {
-  assert.deepEqual(ui.languages, languages); assert.equal(ui.keys.length, 38);
+test('News has an authored complete 40-key catalog in all 14 supported languages', () => {
+  assert.deepEqual(ui.languages, languages); assert.equal(ui.keys.length, 40);
   assert.ok(Object.isFrozen(ui) && Object.isFrozen(ui.keys) && Object.isFrozen(ui.languages));
   for (const lang of languages) {
     assert.equal(ui.text(lang, 'hubTitle'), expectedTitle[lang]);
