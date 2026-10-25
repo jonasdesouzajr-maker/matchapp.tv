@@ -223,7 +223,7 @@ html body:not(.kids-body) .ma-cinema-hero-footer:not(#ma-x):not(#ma-y) > :is(a,b
   .ma-pro-dialog,.share-sheet,.oom-sheet,.nfm-box,.ma-menu,.ma-reference-header-tools-panel,.ma-cinema-tools-content,
   #questionnaire-box,#result-box,#loading-box,#matchapp-notifications,#ma-ambient-panel,#ma-jonas-home-panel,
   .ebook-fold,.ma-fold,.home-fold,.ma-discover-editorial,.ma-trust,article.journey-chapter,aside.journey-sidebar,
-  .profile-hub-row,.ebook-page-hero,.reg-gateway,.tg-entry,#daily-match-checkin,.daily-reward-toast,
+  .profile-hub-row,.ebook-page-hero,.reg-gateway,.tg-entry,.lazy-head,#daily-match-checkin,.daily-reward-toast,
   .swifties-spotify,.billboard-chart,.billboard-song,
   .ma-cinema-dock,.ma-reference-dock,.ebook-top-actions,.ebook-source-links,.ebook-chips,
   input,select,textarea,.crit-select,.crit-toggle,.crit-chip,.spotlight-chip,.crit-collapsible,
