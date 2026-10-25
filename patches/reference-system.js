@@ -18,7 +18,7 @@
   }
   if (window.top===window) document.documentElement.setAttribute('data-ma-jonas-header','pending');
   if (window.top===window && !window.MatchAppReferenceHeader && !document.querySelector('script[data-cinema-header]')) {
-    var headerScript=document.createElement('script');headerScript.src='/patches/reference-header.js?v=20261020-header1&polish=20261020-ui1&launcher=20261020-1&androidqa=20261021-1&brandpill=20261022-1';headerScript.dataset.cinemaHeader='';headerScript.defer=true;document.head.appendChild(headerScript);
+    var headerScript=document.createElement('script');headerScript.src='/patches/reference-header.js?v=20261020-header1&polish=20261020-ui1&launcher=20261020-1&androidqa=20261021-1&brandpill=20261022-1&masthead=20261025-1';headerScript.dataset.cinemaHeader='';headerScript.defer=true;document.head.appendChild(headerScript);
   }
   if (window.top===window && !window.MatchAppReferenceDock && !document.querySelector('script[data-cinema-signature-dock]')) {
     var dockScript=document.createElement('script');dockScript.src='/patches/reference-dock.js?v=20261020-dock1&androidqa=20261021-1';dockScript.dataset.cinemaSignatureDock='';dockScript.defer=true;document.head.appendChild(dockScript);

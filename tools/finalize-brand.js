@@ -7,7 +7,7 @@ const kidsMark='<span class="matchapp-wordmark kids-wordmark" role="img" aria-la
 
 // Discovery hints only: the original stylesheets/imports keep cascade ownership.
 const CRITICAL_STYLE_PRELOADS=Object.freeze([
- '/patches/reference-header.css?v=20261020-header1&polish=20261020-ui1&androidqa=20261021-1',
+ '/patches/reference-header.css?v=20261020-header1&polish=20261020-ui1&androidqa=20261021-1&masthead=20261025-1',
  '/patches/reference-dock.css?v=20261020-dock1&androidqa=20261021-1',
  '/patches/reference-palette-tokens.css?v=20261020-palettes1',
  '/patches/reference-pills.css?v=20261022-flat1&polish=20261020-ui1',
@@ -169,6 +169,7 @@ function referenceRuntimeAssetURL(url){
  if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);
  if(file==='reference-system.css')entries.push(['footer','20261020-1']);
+ if(['reference-header.css','reference-header.js','reference-system.css','reference-system.js','poster-wall.js','ui-fixes-20261023.css','jonas-adult-page.js','build-meta.js'].includes(file))entries.push(['masthead','20261025-1']);
  return withQueryParams(url,entries);
 }
 function versionReferenceRuntimeAssets(html){

@@ -276,3 +276,15 @@ test('the native owner leaves dragging to the shared adapter after header takeov
 test('isolated Kids, private and authentication routes receive no adult shared header',t=>{
  for(const route of['/kids/','/private-voice/','/oauth/consent.html','/android-studio/','/callback.html','/confirm.html']){const f=scene(route);t.after(f.close);f.start();assert.equal(f.w.MatchAppReferenceHeader,undefined,route);assert.equal(f.w.document.getElementById('ma-reference-header'),null,route);}
 });
+
+test('masthead copy follows all chosen languages and survives a late canonical header',async t=>{
+ const f=scene('/',{noHeader:true});t.after(f.close);const {w}=f;f.start();
+ const intro=w.document.querySelector('.ma-masthead-intro');assert.ok(intro);assert.equal(intro.querySelectorAll('h1').length,0);
+ for(const lang of ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
+  w.localStorage.setItem('match_lang',lang);w.document.dispatchEvent(new w.Event('matchapp:langchange'));
+  assert.equal(intro.lang,lang);assert.equal(intro.dir,lang==='ar'?'rtl':'ltr');assert.ok(intro.textContent.trim());
+  if(lang!=='en')assert.notEqual(intro.firstElementChild.textContent,'Your entertainment, matched.');
+ }
+ const late=w.document.createElement('header');late.className='app-header';late.innerHTML='<div class="mh-head"><a class="ma-brand-lockup" href="/">MatchApp Ai</a></div><button>Original</button>';w.document.body.appendChild(late);await flush(w);
+ assert.equal(w.document.querySelectorAll('.ma-masthead-intro').length,1);assert.equal(intro.parentElement,late.querySelector('.mh-head'));
+});

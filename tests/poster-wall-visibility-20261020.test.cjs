@@ -2,10 +2,10 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
 const source=fs.readFileSync(path.join(__dirname,'..','poster-wall.js'),'utf8');
-async function scene({htmlClass='',htmlId='',bodyClass='',pathname='/',duringFetch}={}){
+async function scene({htmlClass='',htmlId='',bodyClass='',pathname='/',duringFetch,readyState='complete'}={}){
  const dom=new JSDOM('<!doctype html><html class="'+htmlClass+'" id="'+htmlId+'"><head></head><body class="'+bodyClass+'"></body></html>',{url:'https://matchapp.tv'+pathname,runScripts:'outside-only'});
  const w=dom.window,requests=[],imageSources=[];
- Object.defineProperty(w.document,'readyState',{configurable:true,value:'complete'});
+ Object.defineProperty(w.document,'readyState',{configurable:true,value:readyState});
  const descriptor=Object.getOwnPropertyDescriptor(w.HTMLImageElement.prototype,'src');
  Object.defineProperty(w.HTMLImageElement.prototype,'src',{configurable:true,get:descriptor.get,set(value){imageSources.push(value);descriptor.set.call(this,value);}});
  w.fetch=async url=>{requests.push(url);duringFetch?.(w);return {ok:true,json:async()=>[{poster:'https://image.tmdb.org/t/p/w500/verified-source.jpg'}]};};
@@ -45,4 +45,20 @@ test('secondary legacy opt-out remains visible and Kids remains isolated by path
 test('a theme applied while catalogues are pending keeps the restored wall',async()=>{
  const s=await scene({bodyClass:'page-home',duringFetch:w=>w.document.documentElement.classList.add('ma-reference')});
  assert.equal(s.requests.length,3);assert.ok(s.imageSources.length>0);assert.ok(s.doc.querySelector('.poster-wall img'));s.close();
+});
+
+
+test('a delayed external resource cannot keep the adult wall waiting for window.load',async()=>{
+ const s=await scene({readyState:'interactive'});
+ assert.ok(s.doc.querySelector('.poster-wall img'));
+ s.w.dispatchEvent(new s.w.Event('load'));for(let i=0;i<40;i++)await Promise.resolve();
+ assert.equal(s.doc.querySelectorAll('.poster-wall').length,1);assert.equal(s.requests.length,3);s.close();
+});
+test('rotation fills additional rows without replacing decoded posters or exceeding the tile budget',async()=>{
+ const s=await scene();const first=s.doc.querySelector('.poster-wall img'),before=s.imageSources.length;
+ Object.defineProperty(s.w,'innerHeight',{configurable:true,value:2600});s.w.dispatchEvent(new s.w.Event('resize'));
+ for(let i=0;i<80;i++)await Promise.resolve();
+ assert.ok(s.imageSources.length>before);assert.ok(s.imageSources.length<=320);assert.equal(s.doc.querySelector('.poster-wall img'),first);
+ s.w.dispatchEvent(new s.w.Event('resize'));for(let i=0;i<80;i++)await Promise.resolve();
+ assert.equal(s.doc.querySelectorAll('.poster-wall img').length,s.imageSources.length);s.close();
 });

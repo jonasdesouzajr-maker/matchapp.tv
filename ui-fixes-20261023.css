@@ -61,11 +61,11 @@ html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-ti
 @media(max-width:1099px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr))!important}}
 @media(max-width:700px){html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-grid{grid-template-columns:repeat(auto-fill,minmax(66px,1fr))!important;gap:4px!important}html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall .poster-wall-tile{border-radius:4px!important}}
 html body:not(.kids-body) a.matchapp-brand-link.ma-ui-dup-brand.ma-ui-dup-brand:not(#ma-x):not(#ma-y){display:none!important}
-html body:not(.kids-body) .poster-wall::after{content:"";position:absolute;inset:0;pointer-events:none;
+html body:not(.kids-body):not(#ma-pw1):not(#ma-pw2) .poster-wall::after{content:"";position:absolute;inset:0;pointer-events:none;
  background:radial-gradient(60% 45% at 50% 42%,rgba(230,195,106,.08),rgba(230,195,106,0) 70%),
-  linear-gradient(180deg,rgba(13,8,32,.94) 0%,rgba(13,8,32,.62) 14%,rgba(13,8,32,.28) 38%,rgba(13,8,32,.3) 62%,rgba(13,8,32,.7) 86%,rgba(13,8,32,.96) 100%),
-  radial-gradient(120% 95% at 50% 45%,rgba(13,8,32,0) 45%,rgba(13,8,32,.72) 100%),
-  linear-gradient(rgba(36,18,70,.22),rgba(36,18,70,.22));z-index:2!important}
+  linear-gradient(180deg,rgba(13,8,32,.22) 0%,rgba(13,8,32,.18) 38%,rgba(13,8,32,.2) 62%,rgba(13,8,32,.32) 100%),
+  radial-gradient(120% 95% at 50% 45%,rgba(13,8,32,0) 45%,rgba(13,8,32,.38) 100%),
+  linear-gradient(rgba(36,18,70,.22),rgba(36,18,70,.22))!important;z-index:2!important}
 /* Explore header: brand.css hides .matchapp-brand-link>img; show the approved SVG mark. */
 html body.page-explore:not(.kids-body) #ref-explore-header a.matchapp-brand-link > img[src*="matchapp-ai-mark"]:not(#ma-x){display:block!important;width:40px!important;height:40px!important;flex:0 0 40px!important;object-fit:contain!important}
 
