@@ -22,6 +22,9 @@ The EN-US and PT-BR files in this directory now describe the current movie/TV di
 | --- | ---: | ---: | ---: |
 | en-US | 11 / 30 | 66 / 80 | 2445 / 4000 |
 | pt-BR | 11 / 30 | 68 / 80 | 2570 / 4000 |
+| hi-IN | 11 / 30 | 66 / 80 | 2251 / 4000 |
+
+The October 25 Hindi text draft in `hi-IN/` adapts the same adult listing and preserves **MatchApp Ai** unchanged. It is prepared source copy only; no Hindi Play Console save or publication is established here. Hindi-specific screenshots and graphics have not been prepared or verified by this change.
 
 These drafts make no ranking, award, guaranteed availability, streaming-provider partnership or universal ad-free claim. They do not promote a disabled purchase product or promise that contributions unlock benefits.
 
