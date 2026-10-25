@@ -75,6 +75,14 @@ function cjsTemplates(file,stop,expression,theme){
 // repair pin. Every other byte of the body must remain identical.
 function bodyWithoutJonasRepair(body,expectRepair){
   const copy=body.cloneNode(true);
+  for(const script of copy.querySelectorAll('script[src^="/patches/jonas-adult-page.js?"]')){
+    const src=script.getAttribute('src'),pins=new URL(src,'https://matchapp.tv').searchParams.getAll('refined');
+    if(pins.length){
+      assert.deepEqual(pins,['20261025-1'],'one current presentation pin');
+      assert.ok(src.endsWith('&refined=20261025-1'),'preserve the original query prefix');
+      script.setAttribute('src',src.slice(0,-'&refined=20261025-1'.length));
+    }
+  }
   for(const script of copy.querySelectorAll('script[src]')){
     const src=script.getAttribute('src'),url=new URL(src,'https://matchapp.tv');
     if(!['/build-meta.js','/poster-wall.js','/patches/jonas-adult-page.js'].includes(url.pathname))continue;

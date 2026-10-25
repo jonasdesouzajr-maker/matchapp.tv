@@ -170,6 +170,7 @@ function referenceRuntimeAssetURL(url){
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);
  if(file==='reference-system.css')entries.push(['footer','20261020-1']);
  if(['reference-header.css','reference-header.js','reference-system.css','reference-system.js','poster-wall.js','ui-fixes-20261023.css','jonas-adult-page.js','build-meta.js'].includes(file))entries.push(['masthead','20261025-1']);
+ if(['ui-fixes-20261023.css','jonas-adult-page.js'].includes(file))entries.push(['refined','20261025-1']);
  return withQueryParams(url,entries);
 }
 function versionReferenceRuntimeAssets(html){
