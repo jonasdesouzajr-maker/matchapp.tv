@@ -1,155 +1,155 @@
 {
   "_contract": "docs/DAILY_EVENT_AND_FEATURED_TITLE_CONTRACT.md",
-  "_note": "Source-verified day-of record maintained by the single MatchApp Ai coordinator. The United Nations confirms 24 October as United Nations Day. No 2026 theme is claimed; the existing archive owner preserves ended history.",
-  "date": "2026-10-24",
-  "id": "united-nations-day-2026-10-24",
-  "emoji": "🌐",
-  "title": "United Nations Day",
-  "kicker": "International observance",
+  "_note": "Source-verified day-of record maintained by the single MatchApp Ai coordinator. The International Pasta Organisation states that World Pasta Day is celebrated every year on 25 October. Its dated 2026 article describes a focus on conviviality and sharing meals; no formal 2026 theme is claimed. The existing archive owner preserves ended history.",
+  "date": "2026-10-25",
+  "id": "world-pasta-day-2026-10-25",
+  "emoji": "🍝",
+  "title": "World Pasta Day",
+  "kicker": "Global food observance",
   "place": "Worldwide",
-  "summary": "United Nations Day is observed on 24 October, marking the anniversary of the UN Charter entering into force in 1945. Explore documentaries and stories about diplomacy, peacebuilding, humanitarian work and international cooperation.",
-  "prompt": "Explain United Nations Day on 24 October and why it marks the entry into force of the UN Charter in 1945, using official United Nations sources. Suggest respectful ways to learn about diplomacy, peacebuilding, humanitarian work and global cooperation. Then recommend source-verified documentaries or films for tonight and check legal viewing options in my country. Do not invent a 2026 theme, current events, statistics or availability.",
-  "officialUrl": "https://www.un.org/en/observances/un-day",
-  "image": "/event-posters/united-nations-day-2026.svg",
+  "summary": "World Pasta Day is celebrated on 25 October. The organizer’s 2026 focus is the pleasure of sharing meals across cultures. Explore food documentaries, culinary travel stories and films about cooking, family traditions and gathering around the table.",
+  "prompt": "Explain World Pasta Day on 25 October using current official International Pasta Organisation sources. Note that the organizer’s 2026 article focuses on conviviality and sharing meals across cultures, without presenting that focus as a formal theme. Suggest respectful ways to explore pasta traditions, cooking and shared meals. Then recommend source-verified food documentaries or films for tonight and check legal viewing options in my country. Do not invent health claims, statistics, availability or organizer affiliation.",
+  "officialUrl": "https://internationalpasta.org/news/world-pasta-day-2026-recipes-around-the-world/",
+  "image": "/event-posters/world-pasta-day-2026.svg",
   "keywords": [
-    "United Nations Day 2026",
-    "24 October United Nations Day",
-    "United Nations Day activities",
-    "how to celebrate United Nations Day",
-    "what to watch on United Nations Day",
-    "UN Charter 1945",
-    "diplomacy documentaries",
-    "peacebuilding films",
-    "humanitarian documentaries",
-    "global cooperation stories",
-    "Dia das Nações Unidas 2026",
-    "Día de las Naciones Unidas 2026"
+    "World Pasta Day 2026",
+    "25 October World Pasta Day",
+    "World Pasta Day activities",
+    "pasta traditions around the world",
+    "food documentaries",
+    "culinary travel films",
+    "films about cooking",
+    "shared meals stories",
+    "conviviality and food",
+    "International Pasta Organisation",
+    "Dia Mundial do Macarrão 2026",
+    "Día Mundial de la Pasta 2026"
   ],
   "i18n": {
     "pt-BR": {
-      "title": "Dia das Nações Unidas",
-      "kicker": "Data internacional",
+      "title": "Dia Mundial do Macarrão",
+      "kicker": "Data gastronômica global",
       "place": "No mundo todo",
-      "summary": "O Dia das Nações Unidas é celebrado em 24 de outubro, aniversário da entrada em vigor da Carta da ONU em 1945. Descubra documentários e histórias sobre diplomacia, construção da paz, trabalho humanitário e cooperação internacional.",
-      "prompt": "Explique o Dia das Nações Unidas em 24 de outubro e por que a data marca a entrada em vigor da Carta da ONU em 1945, usando fontes oficiais das Nações Unidas. Sugira formas respeitosas de aprender sobre diplomacia, construção da paz, trabalho humanitário e cooperação global. Depois, recomende documentários ou filmes verificados para hoje e confira opções legais para assistir no meu país. Não invente tema de 2026, acontecimentos atuais, estatísticas nem disponibilidade.",
-      "imageAlt": "Ilustração original de um globo luminoso cercado por pessoas e ramos de oliveira para o Dia das Nações Unidas",
-      "sourceName": "Nações Unidas"
+      "summary": "O Dia Mundial do Macarrão é celebrado em 25 de outubro. O foco do organizador em 2026 é o prazer de compartilhar refeições entre culturas. Descubra documentários gastronômicos, histórias de viagens culinárias e filmes sobre cozinha, tradições familiares e encontros à mesa.",
+      "prompt": "Explique o Dia Mundial do Macarrão em 25 de outubro usando fontes atuais e oficiais da International Pasta Organisation. Informe que o artigo do organizador para 2026 destaca a convivialidade e as refeições compartilhadas entre culturas, sem apresentar esse foco como tema formal. Sugira formas respeitosas de conhecer tradições de massas, culinária e refeições em grupo. Depois, recomende documentários ou filmes gastronômicos com fontes verificadas para hoje e confira opções legais para assistir no meu país. Não invente alegações de saúde, estatísticas, disponibilidade nem vínculo com o organizador.",
+      "imageAlt": "Ilustração original de uma tigela de massa dourada no centro de uma mesa compartilhada, cercada por mãos e ervas, para o Dia Mundial do Macarrão",
+      "sourceName": "International Pasta Organisation"
     },
     "es": {
-      "title": "Día de las Naciones Unidas",
-      "kicker": "Día internacional",
+      "title": "Día Mundial de la Pasta",
+      "kicker": "Celebración gastronómica mundial",
       "place": "En todo el mundo",
-      "summary": "El Día de las Naciones Unidas se celebra el 24 de octubre, aniversario de la entrada en vigor de la Carta de la ONU en 1945. Descubre documentales e historias sobre diplomacia, consolidación de la paz, labor humanitaria y cooperación internacional.",
-      "prompt": "Explica el Día de las Naciones Unidas del 24 de octubre y por qué la fecha marca la entrada en vigor de la Carta de la ONU en 1945, usando fuentes oficiales de las Naciones Unidas. Sugiere formas respetuosas de aprender sobre diplomacia, consolidación de la paz, labor humanitaria y cooperación mundial. Después, recomienda documentales o películas verificados para esta noche y comprueba opciones legales para verlos en mi país. No inventes un tema de 2026, acontecimientos actuales, estadísticas ni disponibilidad.",
-      "imageAlt": "Ilustración original de un globo luminoso rodeado de personas y ramas de olivo para el Día de las Naciones Unidas",
-      "sourceName": "Naciones Unidas"
+      "summary": "El Día Mundial de la Pasta se celebra el 25 de octubre. El enfoque del organizador en 2026 es el placer de compartir comidas entre culturas. Descubre documentales gastronómicos, relatos de viajes culinarios y películas sobre cocina, tradiciones familiares y reuniones alrededor de la mesa.",
+      "prompt": "Explica el Día Mundial de la Pasta del 25 de octubre usando fuentes actuales y oficiales de la International Pasta Organisation. Señala que el artículo del organizador para 2026 se centra en la convivencia y las comidas compartidas entre culturas, sin presentarlo como un tema formal. Sugiere formas respetuosas de conocer tradiciones de pasta, cocina y comidas compartidas. Después, recomienda documentales o películas gastronómicas con fuentes verificadas para esta noche y comprueba opciones legales en mi país. No inventes afirmaciones de salud, estadísticas, disponibilidad ni afiliación con el organizador.",
+      "imageAlt": "Ilustración original de un cuenco de pasta dorada en el centro de una mesa compartida, rodeado de manos y hierbas, para el Día Mundial de la Pasta",
+      "sourceName": "International Pasta Organisation"
     },
     "fr": {
-      "title": "Journée des Nations Unies",
-      "kicker": "Journée internationale",
+      "title": "Journée mondiale des pâtes",
+      "kicker": "Célébration gastronomique mondiale",
       "place": "Dans le monde entier",
-      "summary": "La Journée des Nations Unies est célébrée le 24 octobre, anniversaire de l’entrée en vigueur de la Charte des Nations Unies en 1945. Découvrez des documentaires et des récits sur la diplomatie, la consolidation de la paix, l’action humanitaire et la coopération internationale.",
-      "prompt": "Explique la Journée des Nations Unies du 24 octobre et pourquoi cette date marque l’entrée en vigueur de la Charte en 1945, à partir de sources officielles de l’ONU. Propose des façons respectueuses d’en apprendre davantage sur la diplomatie, la paix, l’action humanitaire et la coopération mondiale. Recommande ensuite des documentaires ou films vérifiés pour ce soir et vérifie les offres légales dans mon pays. N’invente ni thème 2026, ni actualité, ni statistique, ni disponibilité.",
-      "imageAlt": "Illustration originale d’un globe lumineux entouré de personnes et de rameaux d’olivier pour la Journée des Nations Unies",
-      "sourceName": "Nations Unies"
+      "summary": "La Journée mondiale des pâtes est célébrée le 25 octobre. En 2026, l’organisateur met l’accent sur le plaisir de partager des repas entre cultures. Découvrez des documentaires culinaires, des récits de voyage gastronomique et des films sur la cuisine, les traditions familiales et les repas partagés.",
+      "prompt": "Explique la Journée mondiale des pâtes du 25 octobre à partir de sources officielles et actuelles de l’International Pasta Organisation. Précise que l’article 2026 de l’organisateur met l’accent sur la convivialité et le partage des repas entre cultures, sans présenter cet axe comme un thème officiel. Propose des façons respectueuses de découvrir les traditions des pâtes, la cuisine et les repas partagés. Recommande ensuite des documentaires ou films culinaires aux sources vérifiées pour ce soir et vérifie les offres légales dans mon pays. N’invente ni allégation de santé, ni statistique, ni disponibilité, ni affiliation.",
+      "imageAlt": "Illustration originale d’un bol de pâtes dorées au centre d’une table partagée, entouré de mains et d’herbes, pour la Journée mondiale des pâtes",
+      "sourceName": "International Pasta Organisation"
     },
     "de": {
-      "title": "Tag der Vereinten Nationen",
-      "kicker": "Internationaler Gedenktag",
+      "title": "Weltnudeltag",
+      "kicker": "Weltweiter kulinarischer Aktionstag",
       "place": "Weltweit",
-      "summary": "Der Tag der Vereinten Nationen wird am 24. Oktober begangen. Er erinnert an das Inkrafttreten der UN-Charta im Jahr 1945. Entdecke Dokumentarfilme und Geschichten über Diplomatie, Friedensarbeit, humanitäre Hilfe und internationale Zusammenarbeit.",
-      "prompt": "Erkläre anhand offizieller UN-Quellen den Tag der Vereinten Nationen am 24. Oktober und warum dieses Datum an das Inkrafttreten der UN-Charta 1945 erinnert. Schlage respektvolle Wege vor, mehr über Diplomatie, Friedensarbeit, humanitäre Hilfe und globale Zusammenarbeit zu erfahren. Empfiehl anschließend geprüfte Dokumentarfilme oder Filme für heute Abend und prüfe legale Angebote in meinem Land. Erfinde kein Motto für 2026, keine aktuellen Ereignisse, Statistiken oder Verfügbarkeit.",
-      "imageAlt": "Originalillustration eines leuchtenden Globus, umgeben von Menschen und Olivenzweigen, zum Tag der Vereinten Nationen",
-      "sourceName": "Vereinte Nationen"
+      "summary": "Der Weltnudeltag wird am 25. Oktober begangen. 2026 stellt der Veranstalter die Freude am gemeinsamen Essen über Kulturen hinweg in den Mittelpunkt. Entdecke kulinarische Dokumentarfilme, Reisegeschichten und Filme über Kochen, Familientraditionen und gemeinsame Mahlzeiten.",
+      "prompt": "Erkläre den Weltnudeltag am 25. Oktober anhand aktueller offizieller Quellen der International Pasta Organisation. Weise darauf hin, dass der Veranstalterbeitrag für 2026 Geselligkeit und gemeinsame Mahlzeiten über Kulturen hinweg hervorhebt, ohne dies als offizielles Motto darzustellen. Schlage respektvolle Wege vor, Nudeltraditionen, Kochen und gemeinsames Essen kennenzulernen. Empfiehl anschließend quellengestützte kulinarische Dokumentarfilme oder Filme für heute Abend und prüfe legale Angebote in meinem Land. Erfinde keine Gesundheitsversprechen, Statistiken, Verfügbarkeit oder Zugehörigkeit.",
+      "imageAlt": "Originalillustration einer Schale goldener Nudeln in der Mitte eines gemeinsamen Tisches, umgeben von Händen und Kräutern, zum Weltnudeltag",
+      "sourceName": "International Pasta Organisation"
     },
     "it": {
-      "title": "Giornata delle Nazioni Unite",
-      "kicker": "Giornata internazionale",
+      "title": "Giornata mondiale della pasta",
+      "kicker": "Ricorrenza gastronomica mondiale",
       "place": "In tutto il mondo",
-      "summary": "La Giornata delle Nazioni Unite si celebra il 24 ottobre, anniversario dell’entrata in vigore della Carta delle Nazioni Unite nel 1945. Scopri documentari e storie su diplomazia, costruzione della pace, lavoro umanitario e cooperazione internazionale.",
-      "prompt": "Spiega la Giornata delle Nazioni Unite del 24 ottobre e perché ricorda l’entrata in vigore della Carta nel 1945, usando fonti ufficiali dell’ONU. Suggerisci modi rispettosi per conoscere diplomazia, costruzione della pace, lavoro umanitario e cooperazione globale. Poi consiglia documentari o film verificati per stasera e controlla le opzioni legali nel mio paese. Non inventare un tema 2026, eventi attuali, statistiche o disponibilità.",
-      "imageAlt": "Illustrazione originale di un globo luminoso circondato da persone e rami d’ulivo per la Giornata delle Nazioni Unite",
-      "sourceName": "Nazioni Unite"
+      "summary": "La Giornata mondiale della pasta si celebra il 25 ottobre. Nel 2026 l’organizzatore pone l’accento sul piacere di condividere i pasti tra culture. Scopri documentari gastronomici, viaggi culinari e film sulla cucina, le tradizioni familiari e lo stare insieme a tavola.",
+      "prompt": "Spiega la Giornata mondiale della pasta del 25 ottobre usando fonti ufficiali e aggiornate dell’International Pasta Organisation. Indica che l’articolo 2026 dell’organizzatore si concentra sulla convivialità e sui pasti condivisi tra culture, senza presentare questo focus come tema ufficiale. Suggerisci modi rispettosi per conoscere tradizioni della pasta, cucina e pasti condivisi. Poi consiglia documentari o film gastronomici con fonti verificate per stasera e controlla le opzioni legali nel mio paese. Non inventare affermazioni sulla salute, statistiche, disponibilità o affiliazioni.",
+      "imageAlt": "Illustrazione originale di una ciotola di pasta dorata al centro di una tavola condivisa, circondata da mani ed erbe, per la Giornata mondiale della pasta",
+      "sourceName": "International Pasta Organisation"
     },
     "tr": {
-      "title": "Birleşmiş Milletler Günü",
-      "kicker": "Uluslararası gün",
+      "title": "Dünya Makarna Günü",
+      "kicker": "Küresel yemek günü",
       "place": "Dünya çapında",
-      "summary": "Birleşmiş Milletler Günü, BM Şartı’nın 1945’te yürürlüğe girişinin yıldönümü olan 24 Ekim’de anılır. Diplomasi, barışın inşası, insani çalışmalar ve uluslararası işbirliği üzerine belgeselleri ve öyküleri keşfedin.",
-      "prompt": "Resmî Birleşmiş Milletler kaynaklarını kullanarak 24 Ekim Birleşmiş Milletler Günü’nü ve bu tarihin BM Şartı’nın 1945’te yürürlüğe girişini neden andığını açıkla. Diplomasi, barışın inşası, insani çalışmalar ve küresel işbirliği hakkında saygılı öğrenme yolları öner. Ardından bu akşam için kaynağı doğrulanmış belgesel veya filmler öner ve ülkemdeki yasal izleme seçeneklerini kontrol et. 2026 teması, güncel olay, istatistik veya erişilebilirlik uydurma.",
-      "imageAlt": "Birleşmiş Milletler Günü için insanlar ve zeytin dallarıyla çevrili parlak bir kürenin özgün illüstrasyonu",
-      "sourceName": "Birleşmiş Milletler"
+      "summary": "Dünya Makarna Günü 25 Ekim’de kutlanır. Düzenleyicinin 2026 odağı, farklı kültürler arasında yemek paylaşmanın keyfidir. Yemek belgesellerini, mutfak yolculuklarını ve yemek pişirme, aile gelenekleri ve sofrada buluşma üzerine filmleri keşfedin.",
+      "prompt": "25 Ekim Dünya Makarna Günü’nü International Pasta Organisation’ın güncel resmî kaynaklarıyla açıkla. Düzenleyicinin 2026 yazısının, bunu resmî bir tema olarak sunmadan, farklı kültürlerde birlikte yemek yeme ve paylaşma duygusuna odaklandığını belirt. Makarna geleneklerini, yemek pişirmeyi ve paylaşılan sofraları saygılı biçimde keşfetme yolları öner. Ardından bu akşam için kaynağı doğrulanmış yemek belgeselleri veya filmleri öner ve ülkemdeki yasal izleme seçeneklerini kontrol et. Sağlık iddiası, istatistik, erişilebilirlik veya organizatörle bağlantı uydurma.",
+      "imageAlt": "Dünya Makarna Günü için paylaşılan bir masanın ortasında, eller ve otlarla çevrili altın renkli makarna kasesinin özgün illüstrasyonu",
+      "sourceName": "International Pasta Organisation"
     },
     "ru": {
-      "title": "День Организации Объединённых Наций",
-      "kicker": "Международный день",
+      "title": "Всемирный день пасты",
+      "kicker": "Всемирный гастрономический день",
       "place": "Во всём мире",
-      "summary": "День Организации Объединённых Наций отмечается 24 октября — в годовщину вступления в силу Устава ООН в 1945 году. Откройте документальные фильмы и истории о дипломатии, миростроительстве, гуманитарной работе и международном сотрудничестве.",
-      "prompt": "Расскажи о Дне Организации Объединённых Наций 24 октября и о том, почему эта дата связана со вступлением в силу Устава ООН в 1945 году, используя официальные источники ООН. Предложи уважительные способы узнать больше о дипломатии, миростроительстве, гуманитарной работе и глобальном сотрудничестве. Затем порекомендуй проверенные документальные или художественные фильмы на вечер и проверь легальные варианты просмотра в моей стране. Не выдумывай тему 2026 года, текущие события, статистику или доступность.",
-      "imageAlt": "Оригинальная иллюстрация светящегося земного шара, окружённого людьми и оливковыми ветвями, ко Дню ООН",
-      "sourceName": "Организация Объединённых Наций"
+      "summary": "Всемирный день пасты отмечается 25 октября. В 2026 году организатор делает акцент на удовольствии от совместной трапезы в разных культурах. Откройте документальные фильмы о еде, кулинарные путешествия и фильмы о готовке, семейных традициях и общении за столом.",
+      "prompt": "Расскажи о Всемирном дне пасты 25 октября, используя актуальные официальные источники International Pasta Organisation. Отметь, что статья организатора за 2026 год посвящена общению и совместным трапезам разных культур, но не называй это официальной темой. Предложи уважительные способы познакомиться с традициями пасты, приготовлением пищи и совместными трапезами. Затем порекомендуй документальные или художественные фильмы о еде с проверенными источниками и проверь легальные варианты просмотра в моей стране. Не выдумывай заявления о здоровье, статистику, доступность или связь с организатором.",
+      "imageAlt": "Оригинальная иллюстрация миски золотистой пасты в центре общего стола, окружённой руками и травами, ко Всемирному дню пасты",
+      "sourceName": "International Pasta Organisation"
     },
     "ar": {
-      "title": "يوم الأمم المتحدة",
-      "kicker": "مناسبة دولية",
+      "title": "اليوم العالمي للمعكرونة",
+      "kicker": "مناسبة عالمية للطعام",
       "place": "في جميع أنحاء العالم",
-      "summary": "يُحتفل بيوم الأمم المتحدة في 24 أكتوبر، ذكرى دخول ميثاق الأمم المتحدة حيز النفاذ عام 1945. استكشف أفلامًا وثائقية وقصصًا عن الدبلوماسية وبناء السلام والعمل الإنساني والتعاون الدولي.",
-      "prompt": "اشرح يوم الأمم المتحدة في 24 أكتوبر ولماذا يوافق ذكرى دخول ميثاق الأمم المتحدة حيز النفاذ عام 1945، بالاعتماد على مصادر الأمم المتحدة الرسمية. اقترح طرقًا محترمة للتعرف على الدبلوماسية وبناء السلام والعمل الإنساني والتعاون العالمي. ثم أوصِ بأفلام وثائقية أو روائية موثقة لهذه الليلة وتحقق من خيارات المشاهدة القانونية في بلدي. لا تختلق موضوعًا لعام 2026 أو أحداثًا راهنة أو إحصاءات أو توفرًا.",
-      "imageAlt": "رسم أصلي لكرة أرضية مضيئة محاطة بأشخاص وأغصان زيتون بمناسبة يوم الأمم المتحدة",
-      "sourceName": "الأمم المتحدة"
+      "summary": "يُحتفل باليوم العالمي للمعكرونة في 25 أكتوبر. ويركز المنظم في عام 2026 على متعة مشاركة الوجبات بين الثقافات. استكشف أفلامًا وثائقية عن الطعام ورحلات الطهي وأفلامًا عن الطبخ والتقاليد العائلية والاجتماع حول المائدة.",
+      "prompt": "اشرح اليوم العالمي للمعكرونة في 25 أكتوبر بالاعتماد على مصادر International Pasta Organisation الرسمية والحديثة. اذكر أن مقال المنظم لعام 2026 يركز على الألفة ومشاركة الوجبات بين الثقافات من دون تقديم ذلك بوصفه موضوعًا رسميًا. اقترح طرقًا محترمة لاستكشاف تقاليد المعكرونة والطهي والوجبات المشتركة. ثم أوصِ بأفلام وثائقية أو روائية عن الطعام موثقة المصادر لهذه الليلة وتحقق من خيارات المشاهدة القانونية في بلدي. لا تختلق ادعاءات صحية أو إحصاءات أو توفرًا أو صلة بالمنظم.",
+      "imageAlt": "رسم أصلي لوعاء من المعكرونة الذهبية في وسط مائدة مشتركة تحيط به الأيدي والأعشاب بمناسبة اليوم العالمي للمعكرونة",
+      "sourceName": "International Pasta Organisation"
     },
     "hi": {
-      "title": "संयुक्त राष्ट्र दिवस",
-      "kicker": "अंतरराष्ट्रीय दिवस",
+      "title": "विश्व पास्ता दिवस",
+      "kicker": "वैश्विक भोजन दिवस",
       "place": "विश्वभर",
-      "summary": "संयुक्त राष्ट्र दिवस 24 अक्टूबर को मनाया जाता है, जब 1945 में संयुक्त राष्ट्र चार्टर लागू हुआ था। कूटनीति, शांति निर्माण, मानवीय कार्य और अंतरराष्ट्रीय सहयोग पर वृत्तचित्र और कहानियाँ खोजें।",
-      "prompt": "संयुक्त राष्ट्र के आधिकारिक स्रोतों के आधार पर 24 अक्टूबर के संयुक्त राष्ट्र दिवस और 1945 में इसी दिन संयुक्त राष्ट्र चार्टर लागू होने का महत्व समझाएँ। कूटनीति, शांति निर्माण, मानवीय कार्य और वैश्विक सहयोग के बारे में सम्मानपूर्वक सीखने के तरीके सुझाएँ। फिर आज रात के लिए स्रोत-सत्यापित वृत्तचित्र या फ़िल्में सुझाएँ और मेरे देश में कानूनी देखने के विकल्प जाँचें। 2026 का विषय, वर्तमान घटनाएँ, आँकड़े या उपलब्धता न गढ़ें।",
-      "imageAlt": "संयुक्त राष्ट्र दिवस के लिए लोगों और जैतून की शाखाओं से घिरे चमकते ग्लोब का मौलिक चित्रण",
-      "sourceName": "संयुक्त राष्ट्र"
+      "summary": "विश्व पास्ता दिवस 25 अक्टूबर को मनाया जाता है। 2026 में आयोजक का ध्यान विभिन्न संस्कृतियों के लोगों के साथ मिलकर भोजन करने की खुशी पर है। भोजन संबंधी वृत्तचित्र, पाक यात्राएँ और खाना पकाने, पारिवारिक परंपराओं तथा साझा मेज़ पर आधारित फ़िल्में खोजें।",
+      "prompt": "International Pasta Organisation के वर्तमान आधिकारिक स्रोतों के आधार पर 25 अक्टूबर के विश्व पास्ता दिवस की व्याख्या करें। बताएँ कि आयोजक का 2026 लेख अलग-अलग संस्कृतियों में साथ भोजन करने और मेल-जोल पर केंद्रित है, लेकिन इसे औपचारिक विषय न कहें। पास्ता परंपराओं, खाना पकाने और साझा भोजन को सम्मानपूर्वक जानने के तरीके सुझाएँ। फिर आज रात के लिए स्रोत-सत्यापित भोजन वृत्तचित्र या फ़िल्में सुझाएँ और मेरे देश में कानूनी देखने के विकल्प जाँचें। स्वास्थ्य दावे, आँकड़े, उपलब्धता या आयोजक से संबंध न गढ़ें।",
+      "imageAlt": "विश्व पास्ता दिवस के लिए साझा मेज़ के बीच सुनहरे पास्ता के कटोरे, हाथों और जड़ी-बूटियों का मौलिक चित्रण",
+      "sourceName": "International Pasta Organisation"
     },
     "id": {
-      "title": "Hari Perserikatan Bangsa-Bangsa",
-      "kicker": "Hari internasional",
+      "title": "Hari Pasta Sedunia",
+      "kicker": "Perayaan pangan dunia",
       "place": "Di seluruh dunia",
-      "summary": "Hari Perserikatan Bangsa-Bangsa diperingati pada 24 Oktober, menandai berlakunya Piagam PBB pada 1945. Jelajahi dokumenter dan kisah tentang diplomasi, pembangunan perdamaian, kerja kemanusiaan, dan kerja sama internasional.",
-      "prompt": "Jelaskan Hari Perserikatan Bangsa-Bangsa pada 24 Oktober dan mengapa tanggal itu menandai berlakunya Piagam PBB pada 1945, menggunakan sumber resmi PBB. Sarankan cara yang menghormati untuk mempelajari diplomasi, pembangunan perdamaian, kerja kemanusiaan, dan kerja sama global. Lalu rekomendasikan dokumenter atau film terverifikasi untuk malam ini dan periksa pilihan menonton legal di negara saya. Jangan mengarang tema 2026, peristiwa terkini, statistik, atau ketersediaan.",
-      "imageAlt": "Ilustrasi orisinal globe bercahaya yang dikelilingi orang-orang dan ranting zaitun untuk Hari PBB",
-      "sourceName": "Perserikatan Bangsa-Bangsa"
+      "summary": "Hari Pasta Sedunia diperingati pada 25 Oktober. Fokus penyelenggara pada 2026 adalah kegembiraan berbagi makanan lintas budaya. Jelajahi dokumenter pangan, perjalanan kuliner, dan film tentang memasak, tradisi keluarga, serta berkumpul di meja makan.",
+      "prompt": "Jelaskan Hari Pasta Sedunia pada 25 Oktober dengan sumber resmi terkini dari International Pasta Organisation. Sebutkan bahwa artikel penyelenggara tahun 2026 berfokus pada kebersamaan dan berbagi makanan lintas budaya, tanpa menyebutnya sebagai tema resmi. Sarankan cara yang menghormati untuk mengenal tradisi pasta, memasak, dan makan bersama. Lalu rekomendasikan dokumenter atau film pangan yang sumbernya terverifikasi untuk malam ini dan periksa pilihan menonton legal di negara saya. Jangan mengarang klaim kesehatan, statistik, ketersediaan, atau afiliasi dengan penyelenggara.",
+      "imageAlt": "Ilustrasi orisinal semangkuk pasta keemasan di tengah meja bersama, dikelilingi tangan dan herba, untuk Hari Pasta Sedunia",
+      "sourceName": "International Pasta Organisation"
     },
     "ja": {
-      "title": "国連デー",
-      "kicker": "国際デー",
+      "title": "世界パスタデー",
+      "kicker": "世界の食文化記念日",
       "place": "世界各地",
-      "summary": "国連デーは10月24日です。1945年に国連憲章が発効したことを記念します。外交、平和構築、人道支援、国際協力を扱うドキュメンタリーや物語を探してみましょう。",
-      "prompt": "国連の公式情報を基に、10月24日の国連デーと、1945年に国連憲章が発効した日である理由を説明してください。外交、平和構築、人道支援、国際協力について敬意をもって学ぶ方法を提案してください。その後、今夜見るための情報源が確認されたドキュメンタリーや映画を勧め、私の国での正規の視聴方法を確認してください。2026年のテーマ、現在の出来事、統計、未確認の視聴情報を作らないでください。",
-      "imageAlt": "国連デーに合わせた、人々とオリーブの枝に囲まれた輝く地球のオリジナルイラスト",
-      "sourceName": "国際連合"
+      "summary": "世界パスタデーは10月25日です。主催者が示す2026年の焦点は、文化を越えて食事を分かち合う喜びです。食のドキュメンタリー、料理の旅、料理や家族の伝統、食卓を囲むことを描いた作品を探してみましょう。",
+      "prompt": "International Pasta Organisationの最新の公式情報を基に、10月25日の世界パスタデーを説明してください。主催者の2026年の記事が、正式なテーマとしてではなく、交流と文化を越えた食事の共有に焦点を当てていることを示してください。パスタの伝統、料理、食卓を分かち合う文化を敬意をもって知る方法を提案してください。その後、今夜見るための情報源が確認された食のドキュメンタリーや映画を勧め、私の国での正規の視聴方法を確認してください。健康効果、統計、視聴可能性、主催者との提携を作らないでください。",
+      "imageAlt": "世界パスタデーに合わせた、共有の食卓の中央にある黄金色のパスタのボウルと手やハーブのオリジナルイラスト",
+      "sourceName": "International Pasta Organisation"
     },
     "ko": {
-      "title": "유엔의 날",
-      "kicker": "국제 기념일",
+      "title": "세계 파스타의 날",
+      "kicker": "세계 음식 기념일",
       "place": "전 세계",
-      "summary": "유엔의 날은 1945년 유엔 헌장이 발효된 것을 기념하는 10월 24일입니다. 외교, 평화 구축, 인도주의 활동, 국제 협력을 다룬 다큐멘터리와 이야기를 살펴보세요.",
-      "prompt": "유엔 공식 자료를 바탕으로 10월 24일 유엔의 날과 1945년 이날 유엔 헌장이 발효된 의미를 설명해 주세요. 외교, 평화 구축, 인도주의 활동, 세계 협력을 존중하는 방식으로 배우는 방법을 제안해 주세요. 이어서 오늘 밤 볼 수 있는 출처가 확인된 다큐멘터리나 영화를 추천하고 제 나라의 합법적인 시청 방법을 확인해 주세요. 2026년 주제, 현재 사건, 통계 또는 시청 가능 여부를 지어내지 마세요.",
-      "imageAlt": "유엔의 날을 위해 사람들과 올리브 가지로 둘러싸인 빛나는 지구를 그린 독창적인 일러스트",
-      "sourceName": "국제연합"
+      "summary": "세계 파스타의 날은 10월 25일입니다. 주최 측의 2026년 초점은 문화권을 넘어 함께 식사하는 즐거움입니다. 음식 다큐멘터리, 미식 여행, 요리와 가족 전통, 함께 둘러앉는 식탁을 다룬 영화를 살펴보세요.",
+      "prompt": "International Pasta Organisation의 최신 공식 자료를 바탕으로 10월 25일 세계 파스타의 날을 설명해 주세요. 주최 측의 2026년 글이 공식 주제를 선언한 것이 아니라 여러 문화의 사람들이 함께 식사하는 즐거움과 유대감에 초점을 맞춘다는 점을 알려 주세요. 파스타 전통, 요리, 함께하는 식사를 존중하며 알아보는 방법을 제안해 주세요. 이어서 오늘 밤 볼 수 있는 출처가 확인된 음식 다큐멘터리나 영화를 추천하고 제 나라의 합법적인 시청 방법을 확인해 주세요. 건강 주장, 통계, 시청 가능 여부 또는 주최 측과의 제휴를 지어내지 마세요.",
+      "imageAlt": "세계 파스타의 날을 위해 공동 식탁 중앙의 황금빛 파스타 그릇과 손, 허브를 그린 독창적인 일러스트",
+      "sourceName": "International Pasta Organisation"
     },
     "zh": {
-      "title": "联合国日",
-      "kicker": "国际纪念日",
+      "title": "世界意大利面日",
+      "kicker": "全球美食纪念日",
       "place": "世界各地",
-      "summary": "联合国日为10月24日，纪念《联合国宪章》于1945年在这一天生效。探索有关外交、建设和平、人道主义工作与国际合作的纪录片和故事。",
-      "prompt": "请根据联合国官方资料，解释10月24日联合国日以及这一天为何纪念《联合国宪章》于1945年生效。建议以尊重的方式了解外交、建设和平、人道主义工作和全球合作。然后推荐来源经过核实、适合今晚观看的纪录片或电影，并确认我所在国家的合法观看渠道。不要编造2026年主题、当前事件、统计数据或观看信息。",
-      "imageAlt": "为联合国日创作的发光地球、人物与橄榄枝原创插画",
-      "sourceName": "联合国"
+      "summary": "世界意大利面日为10月25日。主办方在2026年关注跨文化共享餐食的愉悦。探索美食纪录片、烹饪旅行，以及有关料理、家庭传统和围桌相聚的电影。",
+      "prompt": "请根据International Pasta Organisation最新的官方资料，介绍10月25日的世界意大利面日。说明主办方2026年的文章关注跨文化共餐与相聚，但不要把这一重点说成正式主题。建议以尊重的方式了解意大利面传统、烹饪和共享餐食。然后推荐来源经过核实、适合今晚观看的美食纪录片或电影，并确认我所在国家的合法观看渠道。不要编造健康说法、统计数据、观看信息或与主办方的隶属关系。",
+      "imageAlt": "为世界意大利面日创作的原创插画：共享餐桌中央是一碗金色意大利面，周围有双手与香草",
+      "sourceName": "International Pasta Organisation"
     }
   },
-  "imageAlt": "Original illustration of a luminous globe surrounded by people and olive branches for United Nations Day",
-  "imageCredit": "Original event-specific vector illustration created for MatchApp Ai; no United Nations emblem, organizer marks, licensed third-party artwork or fabricated affiliation.",
-  "sourceName": "United Nations",
+  "imageAlt": "Original illustration of a bowl of golden pasta at the center of a shared table, surrounded by hands and herbs for World Pasta Day",
+  "imageCredit": "Original event-specific vector illustration created for MatchApp Ai; no International Pasta Organisation marks, licensed third-party artwork or fabricated affiliation.",
+  "sourceName": "International Pasta Organisation",
   "sourceUrls": [
-    "https://www.un.org/en/observances/un-day",
-    "https://www.un.org/en/about-us/un-charter"
+    "https://internationalpasta.org/news/world-pasta-day-2026-recipes-around-the-world/",
+    "https://internationalpasta.org/"
   ],
-  "updated": "2026-10-24T06:43:33.664Z"
+  "updated": "2026-10-25T06:36:00.000Z"
 }
