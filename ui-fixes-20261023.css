@@ -225,6 +225,7 @@ html body:not(.kids-body) .ma-cinema-hero-footer:not(#ma-x):not(#ma-y) > :is(a,b
  html.ma-reference:not(.kids-mode) body:not(.kids-body) :is(
   button,a,summary,fieldset,details,dialog,form,section,article,header,footer,nav,
   main,aside,div,span,h1,h2,h3,h4,h5,h6,p,ul,ol,li,table,thead,tbody,tr,th,td,
+  img,picture,figure,figcaption,video,
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),select,textarea,
   [data-ma-control-pill],[data-ma-text-pill],[class*="-card"],[class*="-panel"],[class*="-sheet"],
   [class*="-chip"],[class*="-badge"],[class*="-caption"],.card,.panel,.premium-card,.premium-pill,
