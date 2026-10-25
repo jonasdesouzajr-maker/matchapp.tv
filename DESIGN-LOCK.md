@@ -30,3 +30,13 @@ authored localized supporting copy and a finite decorative glint. The poster wal
 keeps its approved art, density and static tilt/blur while reducing opaque end
 fades, bounding startup delay and filling additional rows after rotation. All
 other protected assets, interactions, Kids isolation and ad contracts remain locked.
+
+## Owner refinement — 2026-10-25
+
+Jonas rejected bright decorative outlines throughout the adult app and requested
+better typography, sizing and placement on every surface. Borderless controls,
+quiet card materials, a unified type scale and an unframed Jonas invitation now
+supersede the earlier decorative border/pill styling in every saved palette.
+Keyboard focus and forced-colors accessibility remain visible. The existing
+artwork, poster wall, layout owners, user font scale, functionality, ad geometry
+and separate Kids product remain protected. Publication continues to be authorized.
