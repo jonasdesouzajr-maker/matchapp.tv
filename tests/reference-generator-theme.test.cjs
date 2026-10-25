@@ -71,10 +71,20 @@ function cjsTemplates(file,stop,expression,theme){
   });
 }
 
-// The repair changes only the owned Jonas loader's final query pin. Compare
-// every other byte of the body, including the loader's original version.
+// Strip only the explicitly versioned masthead assets, then the prior Jonas
+// repair pin. Every other byte of the body must remain identical.
 function bodyWithoutJonasRepair(body,expectRepair){
   const copy=body.cloneNode(true);
+  for(const script of copy.querySelectorAll('script[src]')){
+    const src=script.getAttribute('src'),url=new URL(src,'https://matchapp.tv');
+    if(!['/build-meta.js','/poster-wall.js','/patches/jonas-adult-page.js'].includes(url.pathname))continue;
+    const pins=url.searchParams.getAll('masthead');
+    if(pins.length){
+      assert.deepEqual(pins,['20261025-1'],'one current masthead pin');
+      assert.ok(src.endsWith('&masthead=20261025-1'),'preserve the original query prefix');
+      script.setAttribute('src',src.slice(0,-'&masthead=20261025-1'.length));
+    }
+  }
   for(const script of copy.querySelectorAll('script[src^="/patches/jonas-adult-page.js?"]')){
     const src=script.getAttribute('src'),suffix='&repair=20261023-1';
     const pins=new URL(src,'https://matchapp.tv').searchParams.getAll('repair');
