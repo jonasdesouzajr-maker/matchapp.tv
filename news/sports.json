@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T09:31:10.642Z",
+  "updated_at": "2026-10-25T09:26:15.384Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
@@ -30,38 +30,6 @@
       "sport": "Sports",
       "event_type": "Sports",
       "published_at": "2026-10-21T13:56:57.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "74fa37e4",
-      "title": "Are transgender sports bans really about protecting women? Survey data tells a different story",
-      "url": "https://theconversation.com/are-transgender-sports-bans-really-about-protecting-women-survey-data-tells-a-different-story-293927",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-20T12:37:47.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "be4ef3e4",
-      "title": "Pour une grossesse en santé, il ne suffit pas de dire aux femmes de bouger",
-      "url": "https://theconversation.com/pour-une-grossesse-en-sante-il-ne-suffit-pas-de-dire-aux-femmes-de-bouger-293411",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-19T18:49:05.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
