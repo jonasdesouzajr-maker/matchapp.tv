@@ -23,7 +23,7 @@ ${analytics}
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 ${shared}
 <link rel="stylesheet" href="/patches/founder-page.css?v=20261016-4">
-<link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261020-1">
+<link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261025-1">
 <script type="application/ld+json" id="founder-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <script src="/i18n.js?v=20261016-founder1&amp;billing=20261017-2&amp;polish=20261020-ui1"></script>
 </head><body class="ma-founder-page">

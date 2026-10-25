@@ -152,7 +152,7 @@ function referenceRuntimeAssetURL(url){
   'app.js':['art','20261020-source1'],'ebook-matcher.js':['art','20261020-source1'],'book-details-20261011.js':['art','20261020-source1'],'reading-ai.js':['art','20261020-source1'],
   'immersive-feedback-20261014.js':['cinemasound','20261020-1'],'purchase.js':['cinemasound','20261020-1'],'pro-plan.js':['cinemasound','20261020-1'],
   'reference-system.js':['launcher','20261020-1'],
-  'reference-support.css':['footer','20261020-1'],'reference-support.js':['footer','20261020-1'],
+  'reference-support.css':['footer','20261025-1'],'reference-support.js':['footer','20261020-1'],
   'jonas-premium-glass.css':['stellar','20261020-1'],'jonas-premium-enhancer.js':['stellar','20261020-1'],'jonas-adult-page.js':['stellar','20261020-1'],
   'reference-system.css':['premium','20261020-2'],'reference-pages.css':['premium','20261020-2'],'reference-home.css':['premium','20261020-2'],'pricing.js':['premium','20261020-2']
  };
