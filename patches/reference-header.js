@@ -3,7 +3,14 @@
   'use strict';
   if (window.top !== window || window.MatchAppReferenceHeader || /^\/(kids|private-voice|oauth|android-studio)(\/|$)/.test(location.pathname) || /\/(callback|confirm)\.html$/.test(location.pathname)) return;
   var html=document.documentElement,header=null,space=null,chrome=null,slot=null,active=null,frame=0,resizeObserver=null,returnButton=null,help=null;
-  var launcherPresentation=new WeakMap();
+  var launcherPresentation=new WeakMap(),intro=null;
+  // Owner-requested masthead copy is separate from the page's one main heading.
+  var introWords={en:['Your entertainment, matched.','Movies · Series · More'],pt:['Seu entretenimento, do seu jeito.','Filmes · Séries · Mais'],es:['Tu entretenimiento, a tu medida.','Películas · Series · Más'],fr:['Le divertissement qui vous ressemble.','Films · Séries · Et plus'],de:['Unterhaltung, die zu dir passt.','Filme · Serien · Mehr'],it:['Il tuo intrattenimento, su misura.','Film · Serie · Altro'],tr:['Sana göre eğlence.','Filmler · Diziler · Daha fazlası'],ru:['Развлечения по вашему вкусу.','Фильмы · Сериалы · И другое'],ar:['ترفيه يناسب ذوقك.','أفلام · مسلسلات · المزيد'],hi:['मनोरंजन, आपकी पसंद का।','फ़िल्में · सीरीज़ · और भी'],id:['Hiburan yang cocok untukmu.','Film · Serial · Lainnya'],ja:['あなたにぴったりのエンタメ。','映画 · ドラマ · もっと'],ko:['취향에 꼭 맞는 엔터테인먼트.','영화 · 시리즈 · 더 보기'],zh:['找到适合你的娱乐。','电影 · 剧集 · 更多']};
+  function labelIntro(){
+    if(!intro)return;var lang=currentLanguage(),copy=introWords[lang]||introWords.en;
+    intro.dir=lang==='ar'?'rtl':'ltr';intro.lang=lang;
+    Array.from(intro.children).forEach(function(node,i){if(node.textContent!==copy[i])node.textContent=copy[i];});
+  }
   var positionKey='matchapp-jonas-header-drag-v1',floating=false,preference=null,point=null,drag=null,suppressClick=false,moveListenersInstalled=false;
   try{var saved=JSON.parse(localStorage.getItem(positionKey)||'null');if(Number.isFinite(saved?.x)&&Number.isFinite(saved?.y)){preference={x:Math.max(0,Math.min(1,saved.x)),y:Math.max(0,Math.min(1,saved.y))};floating=true;}}catch(_){}
   var words={en:'App controls',pt:'Controles do app',es:'Controles de la app',fr:'Commandes de l’app',de:'App-Steuerung',it:'Controlli dell’app',tr:'Uygulama kontrolleri',ru:'Управление приложением',ar:'أدوات التطبيق',hi:'ऐप नियंत्रण',id:'Kontrol aplikasi',ja:'アプリの操作',ko:'앱 설정',zh:'应用控制'};
@@ -113,6 +120,7 @@
     if(bubble)bubble.setAttribute('aria-label',copy[0]);
   }
   function labelTools(){
+    labelIntro();
     var lang=currentLanguage(),label=words[lang]||words.en;
     document.querySelectorAll('.ma-reference-header-tools>summary').forEach(function(summary){summary.setAttribute('aria-label',label);summary.title=label;});
     var moveCopy=moveWords[lang]||moveWords.en;if(returnButton){returnButton.setAttribute('aria-label',moveCopy[0]);returnButton.title=moveCopy[0];}if(help)help.textContent=moveCopy[1];
@@ -190,7 +198,9 @@
       slot=document.createElement('div');slot.id='ma-reference-header-slot';
       returnButton=document.createElement('button');returnButton.type='button';returnButton.className='ma-reference-header-return';returnButton.hidden=true;returnButton.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M4 4l6 6M12 4h8v16H4v-8"/></svg>';returnButton.addEventListener('click',returnToHeader);
       help=document.createElement('span');help.id='ma-reference-header-move-help';help.className='ma-reference-header-move-help';slot.append(returnButton,help);
-      original.classList.add('ma-reference-header-original');compactOriginal(original);chrome.appendChild(original);bar.append(chrome,slot);header.appendChild(bar);
+      original.classList.add('ma-reference-header-original');compactOriginal(original);chrome.appendChild(original);
+      intro=document.createElement('p');intro.className='ma-masthead-intro';intro.setAttribute('data-ma-pill-exclude','');intro.innerHTML='<span class="ma-masthead-story"></span><span class="ma-masthead-formats"></span>';
+      (original.querySelector('.mh-head')||chrome).appendChild(intro);bar.append(chrome,slot);header.appendChild(bar);
       document.body.prepend(space,header);
       if('ResizeObserver'in window){resizeObserver=new ResizeObserver(schedule);resizeObserver.observe(header);}
       html.setAttribute('data-ma-jonas-header','active');
@@ -205,7 +215,7 @@
     if(!header){mount();return;}
     if(chrome.firstElementChild?.classList.contains('ma-reference-header-fallback')){
       var late=findOriginal();
-      if(late){late.classList.add('ma-reference-header-original');compactOriginal(late);chrome.replaceChildren(late);labelTools();schedule();}
+      if(late){late.classList.add('ma-reference-header-original');compactOriginal(late);chrome.replaceChildren(late);(late.querySelector('.mh-head')||chrome).appendChild(intro);labelTools();schedule();}
     }
     consolidateFallbackBrand();
     var launcher=chooseLauncher();if(launcher){if(!owns(launcher)||launcher.parentElement!==(floating?document.body:slot))claim(launcher);else syncLaunchers(launcher);}

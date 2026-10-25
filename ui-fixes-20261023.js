@@ -10,7 +10,7 @@
  /* 2. Poster wall: make sure the collage script runs on every adult page. */
  function ensureWall(){
   if(isKids()||document.querySelector('.poster-wall,script[src*="/poster-wall.js"]'))return;
-  var s=document.createElement('script');s.src='/poster-wall.js?v=20261023-ui1&posters=20261020-1';s.defer=true;
+  var s=document.createElement('script');s.src='/poster-wall.js?v=20261023-ui1&posters=20261020-1&masthead=20261025-1';s.defer=true;
   (document.body||document.head).appendChild(s);
  }
 

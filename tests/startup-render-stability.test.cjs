@@ -69,7 +69,7 @@ test('Home poster wall stays lightweight, static and cache-busted',()=>{
  assert.match(wall,/if\(kids\(\)\|\|document\.querySelector\('\.poster-wall'\)\)return/);
  // Tiles fill in bounded batches rather than one decode-heavy burst.
  assert.match(wall,/const CHUNK=10;/);
- assert.match(wall,/requestIdleCallback\(fillChunk\)/);
+ assert.match(wall,/requestIdleCallback\(fillChunk,\{timeout:300\}\)/);
  assert.match(wall,/cursor<posters\.length/);
  assert.match(html,/poster-wall\.js\?v=\d{8}-[\w-]+/);
  assert.match(html,/poster-wall\.css\?v=\d{8}-[\w-]+/);

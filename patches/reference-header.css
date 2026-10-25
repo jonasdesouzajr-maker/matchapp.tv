@@ -9,8 +9,8 @@ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header {
  position:fixed!important;z-index:30000!important;inset:0 0 auto!important;width:100%!important;max-width:none!important;
  margin:0!important;padding:env(safe-area-inset-top,0px) max(8px,env(safe-area-inset-right,0px)) 0 max(8px,env(safe-area-inset-left,0px))!important;
  box-sizing:border-box!important;border:0!important;border-bottom:1px solid color-mix(in srgb,var(--cinema-gold,#dcaf57) 26%,transparent)!important;border-radius:0!important;
- background:color-mix(in srgb,var(--cinema-bg,#0b050f) 96%,transparent)!important;box-shadow:0 5px 20px #0003!important;
- -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);contain:none!important;overflow:visible!important;transform:none!important;
+ background:linear-gradient(105deg,rgba(13,8,32,.72),rgba(13,8,32,.56) 60%,rgba(13,8,32,.76))!important;box-shadow:0 5px 20px #0003!important;
+ -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);contain:none!important;overflow:visible!important;transform:none!important;
 }
 html.ma-reference #ma-reference-header-space {display:block!important;width:100%!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;pointer-events:none;}
 /* A generic page's old brand-only header duplicates the active fallback
@@ -160,4 +160,41 @@ html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-re
 /* At narrow widths the unsplit wordmark may exceed its grid column. Keep the
    controls in that column so they cannot cover Jonas's caption. */
 @media(max-width:374px){html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox .ma-cinema-header-actions {justify-self:start!important;width:calc(100vw - var(--ma-jonas-launcher-width) - 24px)!important;justify-content:flex-end!important;}}
+}
+
+/* 2026-10-25: owner-requested full-bleed masthead. Keep every original control. */
+@layer ma-reference {
+html.ma-reference #ma-reference-header .ma-reference-header-bar {padding-block:10px!important;gap:12px!important;}
+html.ma-reference #ma-reference-header .ma-reference-header-chrome {display:grid!important;gap:7px!important;}
+html.ma-reference #ma-reference-header .ma-masthead-intro {display:flex!important;flex-direction:column!important;gap:4px!important;min-width:0!important;margin:7px 0 0!important;padding:0 4px!important;border:0!important;background:none!important;box-shadow:none!important;text-align:start!important;}
+html.ma-reference #ma-reference-header .ma-masthead-intro > span {display:block!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;white-space:normal!important;overflow-wrap:break-word!important;}
+html.ma-reference #ma-reference-header .ma-masthead-story {font:500 clamp(.75rem,1.1vw,.9375rem)/1.4 system-ui,sans-serif!important;letter-spacing:.015em!important;color:#f3eadc!important;text-shadow:0 1px 5px #0d0820!important;}
+html.ma-reference #ma-reference-header .ma-masthead-formats {font:500 clamp(.625rem,.8vw,.6875rem)/1.4 system-ui,sans-serif!important;letter-spacing:.12em!important;color:#d9c4a3!important;}
+/* One small, finite glint; no continuous backdrop/filter repaint. */
+html.ma-reference #ma-reference-header::before {content:'';position:absolute;inset:auto 10% -1px;height:1px;background:linear-gradient(90deg,transparent,#e6c36a,#bda1ff,transparent);pointer-events:none;transform:scaleX(.35);opacity:.7;animation:maMastheadReveal 1.8s ease-out both;}
+@keyframes maMastheadReveal {from{transform:scaleX(.05);opacity:0}to{transform:scaleX(1);opacity:.7}}
+html.ma-reference #ma-reference-header::after {content:none!important;}
+html.ma-reference #ma-reference-header .ma-reference-header-original::after {content:none!important;}
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-home-link,.ma-reference-header-brand) {padding-inline:4px!important;gap:9px!important;max-width:100%!important;}
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.mh-head,.header-brand-area,.ma-brand-lockup,.ma-brand-copy) {min-width:0!important;max-width:100%!important;}
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span) {font-size:clamp(17px,2.1vw + 9px,28px)!important;line-height:1.15!important;}
+html.ma-reference #ma-reference-header-slot {padding-block:0!important;}
+html.ma-reference #ma-reference-header-slot .ma-reference-jonas-caption {background:rgba(13,8,32,.58)!important;border-color:rgba(230,195,106,.25)!important;}
+@media(max-width:699px){
+ html.ma-reference {--ma-jonas-launcher-width:112px;--ma-jonas-launcher-size:72px;}
+ html.ma-reference #ma-reference-header .ma-reference-header-bar {padding-block:9px!important;gap:8px!important;}
+ html.ma-reference #ma-reference-header-slot {min-height:118px!important;align-self:center!important;}
+ html.ma-reference #ma-reference-header-slot :is(#ma-ambient-jonas,#ma-jonas-home) {grid-template-columns:minmax(0,1fr)!important;row-gap:5px!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-orb-stage,.ma-brand-orb,.ma-reference-header-brand>img) {width:36px!important;height:36px!important;min-width:36px!important;max-width:36px!important;min-height:36px!important;max-height:36px!important;flex-basis:36px!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span) {font-size:clamp(18px,5.4vw,25px)!important;letter-spacing:0!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox {min-width:0!important;max-width:100%!important;}
+ html.ma-reference #ma-reference-header .ma-masthead-formats {letter-spacing:.06em!important;}
+ html.ma-reference #ma-reference-header-slot .ma-reference-jonas-caption {padding:3px 4px!important;border:0!important;min-height:34px!important;font-size:max(11px,.6875rem)!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox .ma-cinema-header-actions {justify-self:start!important;width:auto!important;justify-content:flex-start!important;}
+}
+@media(min-width:700px){
+ html.ma-reference #ma-reference-header .ma-masthead-intro {flex-direction:row!important;align-items:baseline!important;flex-wrap:wrap!important;column-gap:16px!important;}
+}
+@media(prefers-reduced-motion:reduce){html.ma-reference #ma-reference-header::before{animation:none!important;transform:scaleX(1)}}
+html.ma-reference.reduce-motion #ma-reference-header::before,html.ma-reference.reduce-motion #ma-reference-header :is(.ma-wordmark,.ma-word-ai){animation:none!important;}
 }

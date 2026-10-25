@@ -20,3 +20,13 @@ If a task conflicts with anything below, **stop and ask Jonas** before editing. 
 Dense small posters (about 100px desktop, about 66–77px phones), gentle perspective tilt (`rotateX(9deg) rotateZ(-5deg)`), one static blur (2px desktop, 1.5px phones) with a slight saturation boost, a midnight purple base (`#0d0820`) with top and bottom fades, a radial vignette and a faint gold glow (`#E6C36A`). Fixed, edge to edge, top to bottom on all adult pages, with dark card backdrops for readability. Never on Kids pages.
 
 `tests/design-lock-20261023.test.cjs` asserts key values. If it fails, your change touched a locked design: revert it, or get Jonas's explicit approval and update the test in the same change.
+
+## Owner amendment — 2026-10-25
+
+Jonas explicitly requested edge-to-edge posters behind the entire page, a finished
+header with fitted text hierarchy and tasteful animation, all adult surfaces, SEO
+validation and publication. The shared masthead now uses a translucent scrim,
+authored localized supporting copy and a finite decorative glint. The poster wall
+keeps its approved art, density and static tilt/blur while reducing opaque end
+fades, bounding startup delay and filling additional rows after rotation. All
+other protected assets, interactions, Kids isolation and ad contracts remain locked.

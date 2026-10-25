@@ -24,8 +24,10 @@
  // 2026-10-23 (Jonas): small, flat, identifiable covers. Tile widths must
  // match ui-fixes-20261023.css: 66px phones, 88px tablets, 100px desktop.
  function tileTarget(){
-  const w=(window.innerWidth||1280)*1.28,h=Math.max(window.innerHeight||800,(window.screen&&screen.height)||0)*1.3;
-  const t=w<=700?66:(w<=1099?88:100),gap=w<=700?4:6;
+  const viewport=window.innerWidth||1280;
+  const w=viewport*1.24,h=Math.max(window.innerHeight||800,(window.screen&&screen.height)||0)*1.55;
+  // Breakpoints use viewport width, just like CSS, before adding tilt overscan.
+  const t=viewport<=700?66:(viewport<=1099?88:100),gap=viewport<=700?4:6;
   const cols=Math.max(1,Math.floor((w+gap)/(t+gap)));
   const tile=((w-gap*(cols-1))/cols)*1.5+gap;
   const rows=Math.ceil(h/tile)+1;
@@ -71,8 +73,9 @@
    // Enough tiles to fill the tilted grid at every breakpoint. With the pooled
    // catalogue this is reached without repeating; the modulo only matters if a
    // source is unavailable.
-   const posters=[],target=tileTarget();
-   for(let i=0;i<target;i++)posters.push(files[i%files.length]);
+   const posters=[];
+   function extend(){const target=tileTarget();for(let i=posters.length;i<target;i++)posters.push(files[i%files.length]);}
+   extend();
 
    const wall=document.createElement('div');wall.className='poster-wall';wall.setAttribute('aria-hidden','true');wall.inert=true;
    const grid=document.createElement('div');grid.className='poster-wall-grid';
@@ -83,8 +86,9 @@
    // spreads that cost and keeps startup responsive. Bounded by construction:
    // a finite counter, no observer and no interval.
    const CHUNK=10;
-   let cursor=0;
+   let cursor=0,filling=false,resizeTimer=0;
    function fillChunk(){
+    filling=true;
     if(themeHidesWall())return;
     const stop=Math.min(cursor+CHUNK,posters.length);
     const batch=document.createDocumentFragment();
@@ -105,23 +109,33 @@
     grid.append(batch);
     cursor=stop;
     if(cursor<posters.length){
-     if('requestIdleCallback' in window)requestIdleCallback(fillChunk);
+     if('requestIdleCallback' in window)requestIdleCallback(fillChunk,{timeout:300});
      else setTimeout(fillChunk,32);
-    }else document.dispatchEvent(new Event('matchapp:posterwall'));
+    }else {filling=false;document.dispatchEvent(new Event('matchapp:posterwall'));}
    }
    fillChunk();
+   // Rotation and window resizing may need extra rows. Reuse decoded tiles,
+   // append only the missing bounded batch, and never animate the poster layer.
+   function resized(){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{extend();if(!filling&&cursor<posters.length)fillChunk();},180);}
+   window.addEventListener('resize',resized,{passive:true});
+   window.addEventListener('pagehide',event=>{if(!event.persisted){clearTimeout(resizeTimer);window.removeEventListener('resize',resized);}},{once:true});
   }catch(_){/* The selected theme remains complete when decorative images cannot load. */}
  }
  function scheduleBoot(){
+  let queued=false,fallback=0;
   const run=()=>boot();
-  const queue=()=>setTimeout(()=>{
+  const queue=()=>{if(queued)return;queued=true;clearTimeout(fallback);setTimeout(()=>{
     if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:1600});
     else setTimeout(run,0);
-  },250);
-  // Decorative eager poster requests must never extend or compete with the
-  // critical page load on a cache-bypassing refresh.
+  },250);};
+  // Give critical artwork a head start, but a slow external embed must not
+  // leave the entire backdrop blank indefinitely while window.load waits.
   if(document.readyState==='complete')queue();
-  else window.addEventListener('load',queue,{once:true});
+  else {
+   window.addEventListener('load',queue,{once:true});
+   const arm=()=>{if(!queued)fallback=setTimeout(queue,3500);};
+   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arm,{once:true});else arm();
+  }
  }
  function loadShareGuard(){
   if(document.querySelector('script[data-share-guard]'))return;
