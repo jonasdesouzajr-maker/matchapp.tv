@@ -57,7 +57,7 @@ function firstPaint(selected,registry=''){
   removeEventListener:(type,fn)=>{if(listeners.get(type)===fn)listeners.delete(type);},
   removeAttribute:()=>{}};
  let registryReads=0;
- const context={selected,document:{getElementById:()=>img},currentRender:()=>true,
+ const context={selected,form:null,document:{getElementById:id=>id==='res-poster-img'?img:null},currentRender:()=>true,
   exactSpotifyPlaylistCover:()=>'',generatedCover:()=> 'data:image/svg+xml,named-fallback',
   getVerifiedPoster:()=>{registryReads++;return registry;},
   window:{globalMatchTitle:selected.title,setLoadedMatchPoster:(url,title)=>loaded.push({url,title})}};
