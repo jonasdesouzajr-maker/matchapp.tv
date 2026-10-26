@@ -21,3 +21,18 @@ Still configure in GTM with Tag Assistant testing and consent gates:
 4. Cross-device registration deduplication may need server-side first-time-registration status; the browser guard alone is not universal. Backend/webhook or server-side purchase measurement is a separate later enhancement if exact app conversion attribution is required.
 
 No changes here affect locked AdSense placements, Kids Mode or existing Android app version. Website JS updates load normally inside the adult Android WebView after deployment.
+
+## Physical Play build verification — 2026-10-26
+
+The connected S23 Ultra (SM-S918B), adult package `com.jonas.papercup`, version
+1.1.63 / code 63, reports installer `com.android.vending` and SHA-256 signature
+`12:E6:EE:F1:E7:B6:3D:04:96:3B:FD:A7:8B:55:8D:CE:CD:93:10:72:38:6C:9E:92:70:EE:AC:5E:90:53:87:80`
+through `adb shell pm get-app-links --user 0 com.jonas.papercup`. Both association
+files now retain the previously recorded Play certificate and add this observed
+Play-installed certificate. No signing keys or native package identity changed.
+
+The domain was verified but its **user selection was disabled** on this phone.
+Restored its user selection to enabled as part of the owner's sign-in repair.
+A valid association alone cannot override a user's disabled link preference.
+Google OAuth uses PKCE with the verifier in the initiating WebView, so its
+callback must return to that app rather than an independent browser session.

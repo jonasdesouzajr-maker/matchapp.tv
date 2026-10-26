@@ -207,7 +207,9 @@
     const copy=profileLabels();avatar=window.resolveUserAvatar?.()||'';
     hero.innerHTML='<div class="audit-profile-avatar" data-avatar-slot hidden style="display:none!important"><img'+(avatar?' src="'+esc(avatar)+'"':'')+' alt="'+esc(copy.avatar)+'" width="96" height="96"></div><div class="audit-profile-copy"><span class="audit-profile-eyebrow">'+esc(copy.privateProfile)+'</span><h1>'+esc(name||copy.complete)+'</h1><p>'+esc(email||copy.signIn)+'</p><div class="audit-profile-badges"><span>'+icon('lock')+(locked?esc(copy.protected):esc(copy.setup))+'</span><span>'+icon('globe')+esc(copy.sync)+'</span></div></div>';
     window.renderUserAvatar?.();
-    const save=$('#save-profile-btn');if(save)save.hidden=locked;
+    // Profile hydration owns save visibility and pending/locked state. A hero
+    // repaint must never expose a disabled save action to a signed-out user.
+    window.checkAndRenderProfileState?.({type:'matchapp:langchange'});
     const core=$('.core-identity-card');if(core)core.classList.toggle('is-locked',locked);
     $$('#editable-fields-section .input-group label').forEach(l=>{if(!l.querySelector('.required-mark'))l.insertAdjacentHTML('beforeend',' <span class="required-mark" aria-hidden="true">*</span>');});
   }
