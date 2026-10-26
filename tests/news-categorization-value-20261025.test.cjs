@@ -53,7 +53,9 @@ test('orphan wrappers receive category repair, keep their URLs, and remain noind
  assert.equal(d.repairOrphanArticles(new Set(),now),1);
  const html=fs.readFileSync(p,'utf8');assert.match(html,/data-news-ui-event="World"/);assert.match(html,/content="noindex,follow"/);assert.match(html,/https:\/\/matchapp\.tv\/news\/articles\/fixture\//);
  assert.doesNotMatch(html,/adsbygoogle|data-ad-slot=/);
- assert.equal(html.includes('pagead2.googlesyndication.com'),false);
+ const dom=new JSDOM(html,{url:'https://matchapp.tv'});
+ try{for(const script of dom.window.document.querySelectorAll('script[src]'))assert.notEqual(new URL(script.src).hostname,'pagead2.googlesyndication.com');}
+ finally{dom.window.close();}
  assert.equal(d.repairOrphanArticles(new Set(),now),0,'a second repair is stable');
 });
 test('hub gives decision guidance and directs to useful guides without repeated per-card attribution paragraphs',()=>{
