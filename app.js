@@ -2538,9 +2538,9 @@ window.dismissMatchResult = function () {
             box.style.display = 'none';
             box.setAttribute('aria-hidden', 'true');
             const form = document.getElementById('questionnaire-box');
-            if (form) form.style.display = '';
+            if (form) form.style.removeProperty('display');
             const search = document.getElementById('search-box');
-            if (search) search.style.display = '';
+            if (search) search.style.removeProperty('display');
         }
         box.classList.remove('ma-result-closing');
         delete box.dataset.resultClosing;
@@ -4329,20 +4329,24 @@ async function verifyCuratedPlatform(selected,requested) {
     if(!selected||!String(selected.source||'').startsWith('catalog'))return selected;
     const platforms=normCriteria(requested?.plat);
     const region=window.MatchAppCountry?.regionCode?.()||window.MatchAppCatalogMedia?.regionCode?.()||'';
+    let result={...selected,platformVerified:false};
+    // Optional poster/identity lookups can stall when their service is down.
+    // They must NEVER prevent an already-curated, filter-compatible title
+    // from reaching the result card when no provider was demanded.
+    // A direct source-owned link is enough to verify these exceptions.
+    if((!platforms.length||platforms.includes('Mercado Play'))&&selected.platform==='Mercado Play'&&region==='BR'&&
+       selected.availabilityRegions?.includes('BR')&&/^https:\/\/play\.mercadolivre\.com\.br\/assistir\//.test(selected.watchUrl||''))return {...result,platformVerified:true};
+    if((!platforms.length||platforms.includes('Spotify'))&&typeof exactSpotifyPlaylistCover==='function'&&exactSpotifyPlaylistCover(selected))return {...result,platformVerified:true};
+    if(!platforms.length)return result;
     let identity=null;
     try{if(typeof getCatalogTmdbIdentity==='function')identity=await getCatalogTmdbIdentity(selected.title);}catch(_){}
-    let result={...selected,platformVerified:false};
     if(identity){
         result={...result,_tmdbId:identity.tmdbId,_tmdbKind:identity.kind,year:result.year||identity.year};
         let art=null;try{if(typeof getCuratedPoster==='function')art=await getCuratedPoster(selected.title);}catch(_){}
         result._meta={...(result._meta||{}),tmdbId:identity.tmdbId,kind:identity.kind,...(art?{artwork:art}:{})};
     }
-    // These links identify the work on the provider's own service. A bare
-    // catalogue platform label does not establish country availability.
-    if((!platforms.length||platforms.includes('Mercado Play'))&&selected.platform==='Mercado Play'&&region==='BR'&&
-       selected.availabilityRegions?.includes('BR')&&/^https:\/\/play\.mercadolivre\.com\.br\/assistir\//.test(selected.watchUrl||''))return {...result,platformVerified:true};
-    if((!platforms.length||platforms.includes('Spotify'))&&typeof exactSpotifyPlaylistCover==='function'&&exactSpotifyPlaylistCover(selected))return {...result,platformVerified:true};
-    if(!platforms.length)return result;
+    // Country availability still requires live evidence when a platform
+    // was explicitly selected; a catalogue label alone is not proof.
     const kind=identity?.kind||selected._tmdbKind||window.tmdbKindForCats?.(selected.cats||[])||'';
     const screenTitle=!!kind||(selected.cats||[]).some(cat=>['movie','series','documentary','stand-up comedy special','Gospel & Faith'].includes(cat));
     if(!screenTitle)return result;
@@ -4720,8 +4724,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const sBox = document.getElementById('search-box');
     const resultBox = document.getElementById('result-box');
     if (resultBox) { resultBox.style.display = 'none'; resultBox.hidden = true; }
-    if (qBox) qBox.style.display = 'none';
-    if (sBox) sBox.style.display = 'none';
+    // Match layout CSS keeps the chooser visible with !important; use the
+    // same priority for the runtime hidden state while matching runs.
+    if (qBox) qBox.style.setProperty('display','none','important');
+    if (sBox) sBox.style.setProperty('display','none','important');
     if (loadBox) {
         loadBox.style.display = 'block';
         document.body.classList.add('match-searching');
@@ -4818,7 +4824,17 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if (!isSpecificSearch && !preflight && typeof pickGuaranteedCatalog === 'function') {
         try {
             preflight = pickGuaranteedCatalog(requested.cat,requested.plat,requested.mood,requested.vibe,requested.rating,requested.decade,true);
-            if(preflight)preflight=await withMatchSourceDeadline(()=>verifyCuratedPlatform(preflight,requested),sourceMs(8000));
+            // A deliberately broadened provider is a discovery suggestion,
+            // not a claim that the original service carries this title.
+            // Re-verifying with the user's unavailable provider discarded
+            // every broaden-platform recovery and returned to the form.
+            const recoveryCriteria=preflight?._relaxedStage==='broaden-platform'
+                ? {...requested,plat:[]} : requested;
+            if(preflight)preflight=await withMatchSourceDeadline(()=>verifyCuratedPlatform(preflight,recoveryCriteria),sourceMs(8000));
+            if(preflight?._relaxedStage==='broaden-platform'){
+                preflight.platform='any';
+                preflight.platformVerified=false;
+            }
             if (preflight?._relaxedStage) window.lastMatchRelaxation = preflight._relaxedStage;
         } catch (_) { preflight = null; }
     }
@@ -5346,6 +5362,11 @@ async function renderResult(selected, isSpecificSearch) {
         window.globalMatchPoster = firstFallback;
         if (firstPoster.complete && firstPoster.naturalWidth) firstLoaded();
     }
+    // Keep the selector hidden when a verified result arrives. A late
+    // session listener may have reopened it during source verification.
+    if (form) form.style.setProperty('display','none','important');
+    const specificForm = document.getElementById('search-box');
+    if (specificForm) specificForm.style.setProperty('display','none','important');
     delete resultBox.dataset.resultClosing;
     resultBox.classList.remove('ma-result-closing', 'ma-result-arriving');
     resultBox.removeAttribute('aria-hidden');

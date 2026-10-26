@@ -1,0 +1,39 @@
+/* Navigation escape hatches: adult pages only; compact, frameless premium pills. */
+html body.page-home #result-box .match-result-toolbar .ma-result-exits {
+ display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:0 1 auto;
+ margin-inline-start:auto;min-width:0;flex-wrap:wrap;
+}
+html body.page-home #result-box .match-result-toolbar .ma-result-exit,
+body.ai-chat-page .ma-page-escapes .ma-escape-pill {
+ box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
+ min-height:40px;max-width:100%;padding:8px 13px;border:0;border-radius:999px;
+ background:linear-gradient(145deg,rgba(96,72,126,.68),rgba(26,19,44,.96));
+ color:#f5e8ca;box-shadow:0 5px 16px rgba(0,0,0,.22);
+ font-weight:600;font-size:13px;line-height:1.2;font-family:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;
+ -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+html body.page-home #result-box .match-result-toolbar .ma-result-exit:focus-visible,
+body.ai-chat-page .ma-page-escapes .ma-escape-pill:focus-visible {
+ outline:2px solid #e6c36a;outline-offset:2px;
+}
+html body.page-home #result-box .match-result-toolbar .ma-result-exit:hover,
+body.ai-chat-page .ma-page-escapes .ma-escape-pill:hover {background:rgba(110,76,147,.85);color:white}
+html body.page-home #result-box .match-result-toolbar .result-dismiss {margin-left:0!important}
+body.ai-chat-page .ma-page-escapes {
+ position:relative;z-index:5;display:flex;justify-content:flex-end;gap:8px;
+ width:min(100%,1280px);margin:4px auto 0;padding:4px 16px;box-sizing:border-box;
+}
+@media(max-width:410px){
+ html body.page-home #result-box .match-result-toolbar{gap:6px!important}
+ html body.page-home #result-box .match-result-toolbar .ma-result-exits{gap:5px}
+ html body.page-home #result-box .match-result-toolbar .ma-result-exit{padding:7px 9px;font-size:12px}
+ html body.page-home #result-box .match-result-toolbar .quota-corner{max-width:26%!important;min-width:0!important}
+}
+
+/* Result close X retains its original click handler without a destructive trash appearance. */
+html body.page-home #result-box .match-result-toolbar .result-dismiss {
+ border:0!important;border-radius:999px!important;color:#f5e8ca!important;
+ background:linear-gradient(145deg,rgba(96,72,126,.68),rgba(26,19,44,.96))!important;
+ box-shadow:0 5px 16px rgba(0,0,0,.22)!important;
+}
+html body.page-home #result-box .match-result-toolbar .result-dismiss:hover {color:white!important;background:rgba(110,76,147,.85)!important}
