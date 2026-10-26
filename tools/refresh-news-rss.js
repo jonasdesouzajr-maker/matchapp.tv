@@ -29,10 +29,8 @@ const FEEDS=[
 const TREND_GEOS=['BR','US','GB','MX','IN'];
 const RUMOR=/\b(rumou?r|rumor|boato|reportedly|allegedly|speculation|unconfirmed|supostamente|alegadamente|teria|segundo fontes|fontes dizem|sources say|might be|could be|is said to|insider claims?)\b/i;
 const NON_NEWS=/\b(opinion|shopping|coupon|horoscope|quiz|review roundup|opini[aã]o|compras|cupom)\b/i;
-const TOPIC=/\b(actor|actress|singer|musician|film|movie|television|tv|streaming|series|album|song|concert|celebrity|award|emmy|oscar|grammy|director|star|music|cinema|atriz|ator|cantor|cantora|filme|cinema|música|musica|álbum|album|série|serie|televisão|televisao)\b/i;
-// World headlines need topical relevance and a verified publisher source; do
-// not convert unrelated RSS stories or uncertain weather forecasts into news.
-const WORLD_TOPIC=/\b(hormuz|shipping|maritime|united nations|un general assembly|diplomacy|climate|hurricane|tropical storm|el ni[nñ]o|artificial intelligence|\bai\b|technology|energy|oil|gas|power grid|international summit|humanitarian|wildfire|flood)\b/i;
+const TOPIC=/\b(actors?|actress|actresses|singers?|musicians?|films?|movies?|television|tv|streaming|series|albums?|songs?|concerts?|celebrity|celebrities|emmys?|oscars?|grammys?|directors?|music|cinema|atriz|atrizes|ator|atores|cantor|cantora|cantores|filme|filmes|musica|musicas|album|albuns|serie|series|televisao|turne)\b/i;
+const fold=s=>clean(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const STOP=new Set('the a an and or of for to in on with from at by as is are was were be this that de da do das dos e em para com por no na nos nas um uma o a os as'.split(' '));
 
 const NEWS_ENTITIES=Object.freeze({amp:'&',quot:'"',apos:"'",nbsp:' ',lt:'<',gt:'>'});
@@ -224,14 +222,33 @@ async function trendSeeds(geo){
   }
 }
 
-function event(title){
-  const t=title.toLowerCase();
+function event(title,category='entertainment'){
+  // Category wins over ambiguous words in unrelated general-news headlines.
+  if(category==='world'||category==='general')return'World';
+  if(category==='sports')return'Sports';
+  const t=fold(title);
   if(/\b(dies|died|dead|death|obituary|morre|morreu)\b/.test(t))return'Obituary';
   if(/\b(cast|joins|role|stars in|to star|elenco|papel)\b/.test(t))return'Casting';
+  if(/\b(awards?|emmys?|oscars?|grammys?|nominated|nomination|premio|premios)\b/.test(t))return'Awards';
   if(/\b(album|single|song|tour|concert|music video|álbum|musica|música|show|turnê|turne)\b/.test(t))return'Music';
   if(/\b(release|premiere|debut|trailer|launch|estreia|lança|lanca|lançamento|lancamento)\b/.test(t))return'Release';
-  if(/\b(award|emmy|oscar|grammy|wins|nominated|nomination|prêmio|premio)\b/.test(t))return'Awards';
   return'Entertainment';
+}
+
+function normalizeStory(item,generated){
+  const world=item.category==='world'||item.category==='general'||FEEDS.some(f=>f.category==='world'&&f.source===item.source);
+  const category=item.category==='sports'?'sports':world?'world':'entertainment';
+  const eventType=event(item.title,category);
+  if(category===item.category&&eventType===item.event_type)return item;
+  const next={...item,category,event_type:eventType,person:category==='entertainment'?item.person:''};
+  next.seo=seoFor(next,[],generated);
+  retainSeoTimestamp(next,item);
+  return next;
+}
+
+function eligibleStory(item){
+  return Boolean(iso(item.published_at)&&(item.category==='sports'||FEEDS.some(f=>isAllowed(item.url,f)))&&
+    !RUMOR.test(item.title)&&!NON_NEWS.test(fold(item.title)));
 }
 
 function person(title){
@@ -551,7 +568,7 @@ function hub(items,generated){
   const cards=items.slice(0,24).map(i=>`<article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px"${commerceAttributes(i)}>
     <p style="font-size:12px;color:#E5C158"><bdi>${esc(i.source)}</bdi> · <span data-news-ui-event="${esc(i.event_type)}">${esc(i.event_type)}</span> · <time data-news-ui-date="numeric" datetime="${esc(i.published_at)}">${esc(new Date(i.published_at).toLocaleDateString('en-US'))}</time></p>
     <h2 style="font-size:19px" data-news-source-title lang="${esc(i.language==='pt'?'pt-BR':i.language||'en')}" dir="auto" translate="no"><a href="${esc(i.matchapp_url)}">${esc(i.title)}</a></h2>
-    <p data-news-ui="sourceNote" data-news-source="${esc(i.source)}">${esc(i.description)}</p>${commerceSlot(i,'en')}
+${commerceSlot(i,'en')}
     <p><a href="${esc(i.landing_url)}" data-news-ui="openLatest">Open in Latest News →</a></p>
     <a href="${esc(i.url)}" target="_blank" rel="noopener noreferrer external" data-news-ui="sourceLink">Original source ↗</a>
   </article>`).join('');
@@ -572,7 +589,7 @@ function hub(items,generated){
         name:'Latest Entertainment, World and Sports News',
         url:`${SITE}/news/`,
         dateModified:generated,
-        description:'An hourly refreshed entertainment and world-news index with country-aware and language-aware presentation, twice-daily verified sports updates, original publisher links and source attribution.',
+        description:'A source-linked discovery index with separate entertainment, world and sports categories, publication dates, and practical guidance for choosing what to watch, hear or read.',
         isPartOf:{'@type':'WebSite','@id':`${SITE}/#website`,url:`${SITE}/`,name:'MatchApp Ai'},
         about:[
           {'@type':'Thing',name:'Entertainment news'},
@@ -607,13 +624,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Latest Entertainment &amp; Sports News | MatchApp Ai</title>
-<meta name="description" content="Country-aware and language-aware film, TV, music, world and sports headlines from named publishers. News and SEO refresh hourly, with original source links.">
+<meta name="description" content="Country-aware and language-aware film, TV, music, world and sports headlines from named publishers. Read original sources and practical discovery guides.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MatchApp Ai">
 <meta property="og:title" content="Latest Entertainment, World and Sports News | MatchApp Ai">
-<meta property="og:description" content="Hourly verified entertainment and world reporting plus twice-daily sports updates with original publisher attribution.">
+<meta property="og:description" content="Source-linked entertainment, world and sports headlines, clearly dated and connected to practical discovery guides.">
 <meta property="og:url" content="${SITE}/news/">
 <script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
@@ -637,13 +654,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main style="max-width:1120px;margin:36px auto;padding:18px">
   <a href="/#latest-news" data-news-ui="backLatest">← MatchApp Ai — Latest News</a>
   <h1 data-news-ui="hubTitle">Latest Entertainment, World and Sports News</h1>
-  <p data-news-ui="hubIntro">Entertainment and world news refresh hourly; sports links update twice daily. Choose your interface language while original headlines keep the publisher’s language. Open the source for the full story.</p>
+  <p data-news-ui="hubIntro">Browse separate entertainment, world and sports headlines. Dates belong to the publisher; an older report is not made new by a feed check. Choose your interface language; original headlines keep the source language.</p>
+  <p><span data-news-ui="guidesLead">More guides and discovery:</span> <a href="/guides/streaming-music-books-october-2026/" data-news-ui="octoberGuide">October 2026 streaming, music and books guide</a> · <a href="/guides/coffee-music-tv-trends-september-30-2026/" data-news-ui="septemberGuide">September 30 trends guide</a> · <a href="/anime.html" data-news-ui="anime">Anime Finder</a>.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0" data-news-ui="howTitle">How MatchApp Ai News works</h2>
-    <p data-news-ui="howIntro">Browse headlines from named publishers. Each item keeps its original source link and publication or discovery date. MatchApp Ai does not republish full articles.</p>
-    <p data-news-ui="howSources">Stories come from publisher feeds. Filters remove unrelated stories and obvious rumors. The original publisher remains responsible for each report; MatchApp Ai helps you discover it.</p>
+    <p data-news-ui="howIntro">Start with the category and date. A storm or election report belongs to world news, not an entertainment award. An album, casting or premiere announcement is a discovery lead; it is not a review or proof that a title is available to you.</p>
+    <p data-news-ui="howSources">Before choosing a film, open its country-specific viewing options: a release announcement does not mean it is included in your subscription. For a concert or album, check the artist or venue for dates and availability. Open the named publisher for the reporting and any corrections.</p>
     <p><span data-news-ui="exploreLead">Explore the films, series and releases behind the news:</span> <a href="/" data-news-ui="matcher">Entertainment matcher</a> · <a href="/discover.html?focus=start" data-news-ui="askAi">Ask MatchApp Ai</a> · <a href="/where-to-watch/" data-news-ui="whereWatch">Where to watch</a></p>
-  <p><span data-news-ui="guidesLead">More guides and discovery:</span> <a href="/guides/streaming-music-books-october-2026/" data-news-ui="octoberGuide">October 2026 streaming, music and books guide</a> · <a href="/guides/coffee-music-tv-trends-september-30-2026/" data-news-ui="septemberGuide">September 30 trends guide</a> · <a href="/anime.html" data-news-ui="anime">Anime Finder</a>.</p>
+  <details data-news-editorial>
+    <summary><span data-news-ui="comparisonTitle">Two choices behind the headlines</span> · <time data-news-ui-date="long" datetime="2026-10-25">October 25, 2026</time></summary>
+    <p data-news-ui="albumComparison">For a listening night, compare a new album with a new edition. Official Charts’ October 2 UK list includes Blossoms’ Songs From The Wedding Cake and a Super Deluxe edition of the Beatles’ 1965 Rubber Soul. Choose the studio album to explore a new body of songs; choose the reissue to compare a familiar record’s mix and extras. A new release date does not make every recording new or establish a chart rank. Check the exact edition before paying.</p>
+    <p><a href="https://www.officialcharts.com/chart-news/new-music-friday-october-2-2026/" target="_blank" rel="noopener noreferrer external">Official Charts · 2026-10-02</a></p>
+    <p data-news-ui="filmComparison">For a film tonight, distinguish released films from announcements. Our October guide compares Hocus Pocus (1993) for witchy comedy with The Nightmare Before Christmas (1993) for stop-motion fantasy and songs. Disney’s Halloween guide supplies the US broadcast and streaming context; check your own country. Narnia: The Magician’s Nephew is a different choice: Netflix announced February 12, 2027 in cinemas and April 2 on Netflix. As of this check it is a read-before-the-film project, not a film to stream tonight. Dates can change.</p>
+    <p><a href="https://www.disneyplus.com/explore/articles/freeform-31-nights-of-halloween" target="_blank" rel="noopener noreferrer external">Disney / Freeform · 2026</a> · <a href="https://www.netflix.com/tudum/articles/narnia-release-date" target="_blank" rel="noopener noreferrer external">Netflix Tudum · 2026-10-15</a></p>
+  </details>
+  <p data-news-ui="guideChoice">For a whole evening, the October guide compares films, music and books by the time and attention they need. For one title, the Roma guide explains how country, language and rental or subscription options change the decision.</p>
+  <p><a href="/where-to-watch/roma/" data-news-ui="romaGuide">Roma: country and viewing-option guide</a></p>
   </section>
   ${options?'<div data-news-local-offers>'+options+'</div>\n  ':''}<section data-native-news-feed data-news-ui-aria="feedLabel" aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>
@@ -743,6 +769,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }finally{fs.closeSync(fd);}
 }
 
+function repairOrphanArticles(retainedPaths,generated){
+  if(!fs.existsSync(ART))return 0;
+  let repaired=0;
+  for(const entry of fs.readdirSync(ART,{withFileTypes:true})){
+    if(!entry.isDirectory())continue;
+    const file=path.join(ART,entry.name,'index.html');
+    if(retainedPaths.has(file))continue;
+    let fd;
+    try{fd=fs.openSync(file,'r+');}
+    catch(error){if(error.code==='ENOENT')continue;throw error;}
+    try{
+    const html=fs.readFileSync(fd,'utf8');
+    const match=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    if(!match)continue;
+    let web;try{web=JSON.parse(match[1])['@graph']?.find(i=>i['@type']==='WebPage');}catch(_){continue;}
+    const source=web?.mainEntity;
+    if(!web?.url||!source?.url||!source.publisher?.name||!iso(source.datePublished))continue;
+    const category=/article:section" content="World News/.test(html)?'world':/article:section" content="Sports News/.test(html)?'sports':'entertainment';
+    const priorEvent=clean(html.match(/data-news-ui-event="([^"]+)"/)?.[1])||event(web.headline,category);
+    const firstAbout=web.about?.[0]?.name||'';
+    const item={id:hash(source.url),title:web.headline||web.name,url:source.url,
+      source:source.publisher.name,source_home:source.publisher.url||origin(source.url),source_domain:hostname(source.url),
+      published_at:source.datePublished,discovered_at:web.datePublished,category,
+      event_type:priorEvent,person:firstAbout!==priorEvent?firstAbout:'',
+      language:html.match(/<html lang="([^"]+)"/)?.[1]?.split('-')[0]||'en',
+      description:clean(html.match(/<p data-news-ui="sourceNote"[^>]*>([\s\S]*?)<\/p>/)?.[1])||web.description,matchapp_url:web.url,landing_url:web.potentialAction?.target||SITE+'/#latest-news',
+      image:clean(html.match(/<meta property="og:image" content="([^"]+)"/)?.[1])||null};
+    item.seo=seoFor(item,[],web.dateModified||item.discovered_at);
+    const output=page(normalizeStory(item,generated));
+    if(output!==html){
+      const bytes=Buffer.from(output,'utf8');let offset=0;
+      while(offset<bytes.length){
+        const written=fs.writeSync(fd,bytes,offset,bytes.length-offset,offset);
+        if(written<=0)throw new Error('Could not finish orphan article write');
+        offset+=written;
+      }
+      fs.ftruncateSync(fd,bytes.length);repaired++;
+    }
+    }finally{fs.closeSync(fd);}
+  }
+  return repaired;
+}
+
 function enforceArticleAnalyticsOnDisk(){
   if(!fs.existsSync(ART))return 0;
   let changed=0;
@@ -755,14 +824,17 @@ function enforceArticleAnalyticsOnDisk(){
 }
 
 (async()=>{
+  // Template/category repairs can reuse the last good snapshot without
+  // refreshing feeds, inventing new publication dates, or changing schedules.
+  const repairOnly=Boolean(process.argv?.includes('--repair-existing'));
   let generated=new Date().toISOString();
   let priorData=null;
   try{priorData=JSON.parse(fs.readFileSync(path.join(NEWS,'data.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
-  const priorArchive=readArchive();
+  const priorArchive=readArchive().map(item=>normalizeStory(item,generated));
   const priorById=new Map(priorArchive.map(i=>[i.id,i]));
   const sportsSnapshot=readSports();
 
-  const [rawParts,trendParts]=await Promise.all([
+  const [rawParts,trendParts]=repairOnly?[[],[]]:await Promise.all([
     Promise.all(FEEDS.map(fetchFeed)),
     Promise.all(TREND_GEOS.map(trendSeeds))
   ]);
@@ -773,6 +845,8 @@ function enforceArticleAnalyticsOnDisk(){
   const collected=[];
   let invalidDates=0;
 
+  if(repairOnly)collected.push(...(priorData?.items||[]).map(item=>normalizeStory(item,generated)).filter(eligibleStory));
+
   for(const r of raw){
     const title=clean(r.title);
     const url=r.link;
@@ -781,7 +855,7 @@ function enforceArticleAnalyticsOnDisk(){
     const isWorld=r.feed.category==='world';
     // Explicit world feeds are already publisher-curated; keep their top
     // headlines broad instead of forcing entertainment-only topic matching.
-    if(!isWorld&&!TOPIC.test(`${title} ${r.desc}`))continue;
+    if(!isWorld&&!TOPIC.test(fold(`${title} ${r.desc}`)))continue;
 
     const publishedAt=iso(r.published);
     if(!publishedAt){invalidDates++;continue;}
@@ -792,7 +866,7 @@ function enforceArticleAnalyticsOnDisk(){
 
     const id=hash(url);
     const p=person(title);
-    const ev=event(title);
+    const ev=event(title,isWorld?'world':'entertainment');
     const matchappUrl=`${SITE}/news/articles/${slug(title)}-${id.slice(0,6)}/`;
     const existing=priorById.get(id);
 
@@ -828,7 +902,7 @@ function enforceArticleAnalyticsOnDisk(){
 
   if(invalidDates)console.warn(`[news] skipped ${invalidDates} publisher items with missing or invalid publication dates`);
   collected.sort((a,b)=>b.published_at.localeCompare(a.published_at));
-  const sports=sportsSnapshot.items.map(entry=>{
+  const sports=(repairOnly?(priorData?.items||[]).filter(i=>i.category==='sports'):sportsSnapshot.items).map(entry=>{
     const existing=priorById.get(entry.id);
     const item={...entry,
       language:entry.language||(entry.country==='BR'?'pt':'en'),
@@ -848,7 +922,7 @@ function enforceArticleAnalyticsOnDisk(){
   const worldLanguages=[...new Set(worldPool.map(i=>i.language||'en'))];
   const world=worldLanguages.flatMap(language=>worldPool.filter(i=>(i.language||'en')===language).slice(0,8));
   const items=[...entertainment,...world,...sports].sort((a,b)=>b.published_at.localeCompare(a.published_at)).slice(0,52);
-  await enrichMissingImages(items);
+  if(!repairOnly)await enrichMissingImages(items);
   for(const item of items)retainSeoTimestamp(item,priorById.get(item.id));
   if(priorData&&JSON.stringify(items)===JSON.stringify(priorData.items))generated=priorData.generated_at;
 
@@ -861,13 +935,13 @@ function enforceArticleAnalyticsOnDisk(){
   fs.mkdirSync(NEWS,{recursive:true});
   fs.mkdirSync(ART,{recursive:true});
 
-  const archiveMap=new Map(priorArchive.map(i=>[i.id,i]));
+  const archiveMap=new Map(priorArchive.filter(eligibleStory).map(i=>[i.id,i]));
   for(const i of items)archiveMap.set(i.id,i);
   const archive=[...archiveMap.values()]
     .sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||'')))
     .slice(0,ARCHIVE_LIMIT);
 
-  const archiveIds=new Set(archive.map(i=>i.id));
+  const archivePaths=new Set(archive.map(i=>path.join(currentSlugDir(i),'index.html')));
 
   // Re-render the entire retained archive, not only the newest feed slice.
   // This keeps generator/template fixes (analytics, metadata, accessibility)
@@ -878,13 +952,9 @@ function enforceArticleAnalyticsOnDisk(){
     fs.writeFileSync(path.join(dir,'index.html'),page(i));
   }
 
-  for(const old of priorArchive){
-    if(archiveIds.has(old.id))continue;
-    try{fs.rmSync(currentSlugDir(old),{recursive:true,force:true});}catch(_){}
-  }
-
   // Legacy article directories can outlive the archive manifest. Sweep every
   // public article file on disk so analytics never depends on manifest parity.
+  const orphanRepaired=repairOrphanArticles(archivePaths,generated);
   const analyticsRepaired=enforceArticleAnalyticsOnDisk();
 
   fs.writeFileSync(
@@ -924,7 +994,8 @@ function enforceArticleAnalyticsOnDisk(){
     feed_version:feedVersion,
     sources:[...new Set(items.map(i=>i.source))],
     countries:[...new Set(items.map(i=>i.country))],
-    analytics_repaired:analyticsRepaired
+    analytics_repaired:analyticsRepaired,
+    orphan_repaired:orphanRepaired
   }));
 })().catch(err=>{
   console.error(`[news] ${err.stack||err.message}`);

@@ -19,12 +19,22 @@ const LABELS:any={
   zh:{local:'本地新闻',global:'全球新闻',seoLocal:'今日新闻',seoGlobal:'今日全球新闻',open:'打开新闻来源，阅读完整报道。'}
 };
 const clean=(v:any)=>String(v??'').replace(/\s+/g,' ').trim();
-const decode=(v:any)=>clean(String(v??'').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/<[^>]+>/g,' ').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&apos;|&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+const XML_ENTITIES:Record<string,string>={amp:'&',quot:'"',apos:"'",lt:'<',gt:'>'};
+const decode=(v:any)=>clean(String(v??'').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/<[^>]+>/g,' ').replace(/&(amp|quot|apos|lt|gt|#(?:[0-9]+|[xX][a-fA-F0-9]+));/g,(entity,name)=>{
+  if(name[0]!=='#')return XML_ENTITIES[name];
+  const hex=name[1]==='x'||name[1]==='X',code=Number.parseInt(name.slice(hex?2:1),hex?16:10);
+  return Number.isInteger(code)&&code>0&&code<=0x10ffff&&!(code>=0xd800&&code<=0xdfff)?String.fromCodePoint(code):entity;
+}));
 const tag=(block:string,name:string)=>{const m=block.match(new RegExp('<'+name+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/'+name+'>','i'));return m?decode(m[1]):''};
 const sha=async(s:string)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))).map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,16);
 const countryName=(cc:string,l:string)=>{try{return clean(new Intl.DisplayNames([l==='pt'?'pt-BR':l,'en'],{type:'region'}).of(cc))||cc}catch{return cc}};
 const cors=(o:string|null)=>({'access-control-allow-origin':!o||o==='https://matchapp.tv'||o==='https://www.matchapp.tv'||o.startsWith('http://localhost:')?(o||'https://matchapp.tv'):'https://matchapp.tv','access-control-allow-methods':'GET,OPTIONS','access-control-allow-headers':'content-type','vary':'Origin'});
 const CACHE=new Map<string,{freshUntil:number,staleUntil:number,items:any[]}>();
+function publicationTime(value:string,now=Date.now()){
+  if(!value.trim())return null;
+  const timestamp=Date.parse(value);
+  return Number.isFinite(timestamp)&&timestamp<=now+3600000?new Date(timestamp).toISOString():null;
+}
 const sleep=(ms:number)=>new Promise(resolve=>setTimeout(resolve,ms));
 async function fetchXml(url:string){
   let last='unavailable';
@@ -69,7 +79,7 @@ async function pull(scope:'local'|'global',cc:string,l:string){
     if(source&&title.endsWith(' - '+source))title=title.slice(0,-(' - '+source).length).trim();
     const key=title.toLowerCase();if(seen.has(key))continue;seen.add(key);
     const id='regional-'+await sha(scope+'|'+url),global=scope==='global',labels=LABELS[l]||LABELS.en;
-    out.push({id,source,source_home:sourceHome,url,title,description:labels.open,image:null,published_at:new Date(published||Date.now()).toISOString(),country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?labels.global:labels.local,breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal),locale:global?l:(l+'-'+cc),intent:global?'global top news':'local top news',keywords:[title,global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal)]}});
+    out.push({id,source,source_home:sourceHome,url,title,description:labels.open,image:null,published_at:publicationTime(published,now),discovered_at:new Date(now).toISOString(),timestamp_kind:publicationTime(published,now)?'published':'discovered',country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?labels.global:labels.local,breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal),locale:global?l:(l+'-'+cc),intent:global?'global top news':'local top news',keywords:[title,global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal)]}});
     if(out.length>=(global?5:6))break;
   }
   if(!out.length){

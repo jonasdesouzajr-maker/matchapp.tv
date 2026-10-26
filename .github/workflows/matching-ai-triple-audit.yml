@@ -2,6 +2,13 @@ name: Matching and AI Audit
 on:
   pull_request:
     paths:
+      - 'latest-news.js'
+      - 'news-ui.js'
+      - 'news-ui.css'
+      - 'news/**'
+      - 'tools/refresh-news-rss.js'
+      - 'tools/news-discovery-browser-check.cjs'
+      - 'supabase/functions/regional-news-rss/**'
       - 'kids/kids.js'
       - 'kids/index.html'
       - 'tests/**'
@@ -23,6 +30,13 @@ on:
   push:
     branches: [main]
     paths:
+      - 'latest-news.js'
+      - 'news-ui.js'
+      - 'news-ui.css'
+      - 'news/**'
+      - 'tools/refresh-news-rss.js'
+      - 'tools/news-discovery-browser-check.cjs'
+      - 'supabase/functions/regional-news-rss/**'
       - 'kids/kids.js'
       - 'kids/index.html'
       - 'tests/**'
@@ -142,6 +156,9 @@ jobs:
       - name: Verify actual touch and mobile-browser Match and Ask AI flows without spending provider quota
         if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request'
         run: node tools/mobile-runtime-smoke.cjs
+      - name: Verify sourced news discovery on phone, tablet and desktop
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request'
+        run: node tools/news-discovery-browser-check.cjs
       - name: Live adult movie, e-book, magazine and Ask AI across four viewports
         if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || github.event_name == 'pull_request'
         run: node tools/live-production-smoke.cjs

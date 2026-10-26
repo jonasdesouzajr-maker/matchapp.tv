@@ -96,6 +96,12 @@
     catch(_){return String(v||'');}
   }
 
+  function publicationLabel(item){
+    if(item.published_at&&Number.isFinite(Date.parse(item.published_at)))return formatDate(item.published_at);
+    const missing={en:'Publication date unavailable',pt:'Data de publicação indisponível',es:'Fecha de publicación no disponible',fr:'Date de publication indisponible',de:'Veröffentlichungsdatum unbekannt',it:'Data di pubblicazione non disponibile',tr:'Yayın tarihi bilinmiyor',ru:'Дата публикации неизвестна',ar:'تاريخ النشر غير متاح',hi:'प्रकाशन की तारीख उपलब्ध नहीं',id:'Tanggal publikasi tidak tersedia',ja:'公開日不明',ko:'발행일 확인 불가',zh:'发布日期不详'};
+    return missing[selectedLanguage()]||missing.en;
+  }
+
   function newsImage(item){
     const media=item&&typeof item.media==='object'?item.media:{};
     const candidates=[
@@ -155,7 +161,7 @@
     body.className='ma-news-card-body';
     const source=document.createElement('div');
     source.className='ma-news-source';
-    source.textContent=`${sourceName} · ${formatDate(item.published_at)}`;
+    source.textContent=`${sourceName} · ${publicationLabel(item)}`;
     const h3=document.createElement('h3');
     h3.textContent=title;
     const brief=document.createElement('p');
@@ -200,18 +206,18 @@
     prev.className='ma-news-arrow ma-news-arrow-prev';
     prev.type='button';
     prev.textContent='‹';
-    prev.setAttribute('aria-label','Previous entertainment news');
+    prev.setAttribute('aria-label','Previous news');
 
     const next=document.createElement('button');
     next.className='ma-news-arrow ma-news-arrow-next';
     next.type='button';
     next.textContent='›';
-    next.setAttribute('aria-label','Next entertainment news');
+    next.setAttribute('aria-label','Next news');
 
     const trackEl=document.createElement('div');
     trackEl.className='ma-news-track';
     trackEl.setAttribute('role','list');
-    trackEl.setAttribute('aria-label','Latest entertainment news');
+    trackEl.setAttribute('aria-label','Latest news');
     items.forEach(({item,scope})=>{const c=card(item,scope);c.setAttribute('role','listitem');trackEl.append(c);});
 
     let autoTimer=0;
@@ -349,7 +355,7 @@
   }
 
   function mergeRegionalItems(regionalItems,staticChoice,country,language,requestedNewsId=''){
-    const compatible=regionalItems.filter(item=>trustedRegionalItem(item,country,language));
+    const compatible=regionalItems.filter(item=>trustedRegionalItem(item,country,language)).map(item=>({...item,category:'general'}));
     const local=compatible.filter(item=>String(item.country||'').toUpperCase()===country&&String(item.scope||'local')==='local').slice(0,MAX_LOCAL);
     const global=compatible.filter(item=>String(item.country||'').toUpperCase()==='GLOBAL'&&String(item.scope||'global')==='global').slice(0,MAX_GLOBAL);
     const used=new Set([...local,...global].map(item=>item.id));
@@ -373,12 +379,15 @@
   }
 
   async function fetchRegional(country,language){
+    const controller=new AbortController();
+    const timeout=window.setTimeout(()=>controller.abort(),10000);
     try{
-      const r=await fetch(`${REGIONAL_API}?country=${encodeURIComponent(country)}&language=${encodeURIComponent(language)}`,{cache:'no-store',headers:{accept:'application/json'}});
+      const r=await fetch(`${REGIONAL_API}?country=${encodeURIComponent(country)}&language=${encodeURIComponent(language)}`,{cache:'no-store',headers:{accept:'application/json'},signal:controller.signal});
       if(!r.ok)throw new Error(`HTTP ${r.status}`);
       const payload=await r.json();
       return {payload,items:Array.isArray(payload.items)?payload.items:[]};
     }catch(_){return {payload:null,items:[]};}
+    finally{window.clearTimeout(timeout);}
   }
 
   async function boot(){
