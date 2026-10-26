@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">No tienes conexión</string>
+    <string name="offline_body">MatchApp Ai necesita conexión para encontrar títulos y dónde verlos. Comprueba tu red e inténtalo de nuevo.</string>
+    <string name="offline_retry">Reintentar</string>
+    <string name="file_chooser_title">Elegir una foto</string>
+    <string name="ad_privacy_choices">Opciones de privacidad</string>
+    <string name="kids_separate_app">El modo infantil está disponible en la aplicación independiente MatchApp Ai KIDS.</string>
+</resources>

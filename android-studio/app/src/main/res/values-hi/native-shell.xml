@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">आप ऑफ़लाइन हैं</string>
+    <string name="offline_body">शीर्षक और उन्हें कहाँ देखा जा सकता है, यह खोजने के लिए MatchApp Ai को इंटरनेट कनेक्शन चाहिए। अपना नेटवर्क जाँचें और फिर कोशिश करें।</string>
+    <string name="offline_retry">फिर कोशिश करें</string>
+    <string name="file_chooser_title">फ़ोटो चुनें</string>
+    <string name="ad_privacy_choices">गोपनीयता के विकल्प</string>
+    <string name="kids_separate_app">किड्स मोड अलग MatchApp Ai KIDS ऐप में उपलब्ध है।</string>
+</resources>

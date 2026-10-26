@@ -1,8 +1,12 @@
 package com.jonas.papercup
 
+import android.app.PictureInPictureParams
+import android.graphics.Rect
+import android.util.Rational
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.ConnectivityManager
@@ -146,17 +150,17 @@ class MainActivity : AppCompatActivity() {
 
         // Keep the native shell immersive, but never place the interactive WebView
         // underneath a status bar, punch-hole camera, or display cutout.
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        // Preserve the current edge-to-edge shell on older supported Android releases.
-        @Suppress("DEPRECATION")
-        window.statusBarColor = Color.TRANSPARENT
-        @Suppress("DEPRECATION")
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.ink)
+        WindowCompat.enableEdgeToEdge(window)
 
         web = findViewById(R.id.web)
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
+        fullscreenHost.addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+            if (left != oldLeft || top != oldTop || right != oldRight || bottom != oldBottom) {
+                updateFullscreenPipParams()
+            }
+        }
         adMobController = AdMobController(
             this,
             findViewById(R.id.ad_shell),
@@ -375,13 +379,64 @@ class MainActivity : AppCompatActivity() {
         nativeNewsBridge?.onPause()
         adMobController?.pause()
         super.onPause()
-        web.onPause()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || !isInPictureInPictureMode) web.onPause()
         CookieManager.getInstance().flush()
+    }
+
+    private fun updateFullscreenPipParams() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O ||
+            !packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) return
+        val eligible = NativePipPolicy.mayEnter(
+            Build.VERSION.SDK_INT, true, customView != null,
+            introHost != null || startupHost != null,
+            permissionSetupShowing, isFinishing, false
+        )
+        val bounds = Rect()
+        val builder = PictureInPictureParams.Builder().setAspectRatio(Rational(16, 9))
+        if (fullscreenHost.getGlobalVisibleRect(bounds)) builder.setSourceRectHint(bounds)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (eligible) builder.setAutoEnterEnabled(true)
+            else builder.setAutoEnterEnabled(false)
+        }
+        runCatching { setPictureInPictureParams(builder.build()) }
+    }
+
+    override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
+        // Only the existing fullscreen media layer can leave as PiP. Never
+        // shrink Home, Jonas chat, matching, startup, or a permission prompt.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) return
+        if (!NativePipPolicy.mayEnter(
+                Build.VERSION.SDK_INT,
+                packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE),
+                customView != null,
+                introHost != null || startupHost != null,
+                permissionSetupShowing,
+                isFinishing,
+                isInPictureInPictureMode
+            )) return
+        val bounds = Rect()
+        if (!fullscreenHost.getGlobalVisibleRect(bounds)) return
+        val params = PictureInPictureParams.Builder()
+            .setAspectRatio(Rational(16, 9))
+            .setSourceRectHint(bounds)
+            .build()
+        // Device policy or the user's PiP setting may decline entry.
+        runCatching { enterPictureInPictureMode(params) }
+    }
+
+    override fun onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean, newConfig: Configuration) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+        // A transition may deliver onPause before PiP mode becomes visible.
+        if (isInPictureInPictureMode) web.onResume()
     }
 
     override fun onStop() {
         persistScreenCheckpoint()
         super.onStop()
+        // A visible PiP Activity is paused, not stopped. Always suspend the
+        // WebView once hidden, even if PiP exit was reported before onStop.
+        web.onPause()
     }
 
     override fun onResume() {
@@ -601,7 +656,7 @@ class MainActivity : AppCompatActivity() {
                 setMeasuredDimension(kotlin.math.ceil(1080 * scale).toInt(), kotlin.math.ceil(1920 * scale).toInt())
             }
         }
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.enableEdgeToEdge(window)
         WindowCompat.getInsetsController(window, window.decorView).apply {
             systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             hide(WindowInsetsCompat.Type.systemBars())
@@ -674,7 +729,7 @@ class MainActivity : AppCompatActivity() {
                 insets
             }
         }
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.enableEdgeToEdge(window)
         WindowCompat.getInsetsController(window, window.decorView).show(WindowInsetsCompat.Type.systemBars())
         ViewCompat.requestApplyInsets(content)
         val current = ViewCompat.getRootWindowInsets(content)
@@ -772,6 +827,7 @@ class MainActivity : AppCompatActivity() {
         fullscreenHost.removeAllViews()
         fullscreenHost.visibility = View.GONE
         customView = null
+        updateFullscreenPipParams()
         refresh.visibility = View.VISIBLE
     }
 
@@ -1589,6 +1645,7 @@ class MainActivity : AppCompatActivity() {
                 view,
                 FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             )
+            fullscreenHost.post { updateFullscreenPipParams() }
         }
 
         override fun onHideCustomView() {
@@ -1597,8 +1654,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=60"
-        const val APP_UA = "MatchAppTVAndroid/1.1.60 MatchAppAiAndroid/1.1.60 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=61"
+        const val APP_UA = "MatchAppTVAndroid/1.1.61 MatchAppAiAndroid/1.1.61 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"

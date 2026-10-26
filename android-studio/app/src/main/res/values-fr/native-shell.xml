@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">Vous êtes hors ligne</string>
+    <string name="offline_body">MatchApp Ai a besoin de connexion pour trouver des titres et les services où les regarder. Vérifiez votre réseau et réessayez.</string>
+    <string name="offline_retry">Réessayer</string>
+    <string name="file_chooser_title">Choisir une photo</string>
+    <string name="ad_privacy_choices">Choix de confidentialité</string>
+    <string name="kids_separate_app">Le mode enfants est disponible dans une application distincte : MatchApp Ai KIDS.</string>
+</resources>

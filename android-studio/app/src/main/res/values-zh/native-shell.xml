@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">你已离线</string>
+    <string name="offline_body">MatchApp Ai 需要网络连接才能查找影视作品及观看平台。请检查网络后重试。</string>
+    <string name="offline_retry">重试</string>
+    <string name="file_chooser_title">选择照片</string>
+    <string name="ad_privacy_choices">隐私选项</string>
+    <string name="kids_separate_app">儿童模式可在独立的 MatchApp Ai KIDS 应用中使用。</string>
+</resources>

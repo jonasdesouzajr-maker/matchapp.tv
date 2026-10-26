@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MatchApp Ai</string>
+    <string name="app_name" translatable="false">MatchApp Ai</string>
     <string name="offline_title">You’re offline</string>
     <string name="offline_body">MatchApp needs a connection to find titles and where to watch them. Check your network and try again.</string>
     <string name="offline_retry">Try again</string>

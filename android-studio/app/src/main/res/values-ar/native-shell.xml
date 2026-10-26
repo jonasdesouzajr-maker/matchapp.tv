@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">أنت غير متصل بالإنترنت</string>
+    <string name="offline_body">يحتاج MatchApp Ai إلى اتصال بالإنترنت للعثور على الأعمال والمنصات التي تعرضها. تحقق من الشبكة وحاول مرة أخرى.</string>
+    <string name="offline_retry">حاول مرة أخرى</string>
+    <string name="file_chooser_title">اختر صورة</string>
+    <string name="ad_privacy_choices">خيارات الخصوصية</string>
+    <string name="kids_separate_app">يتوفر وضع الأطفال في تطبيق MatchApp Ai KIDS المنفصل.</string>
+</resources>

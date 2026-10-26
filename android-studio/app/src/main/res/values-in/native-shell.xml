@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">Anda sedang offline</string>
+    <string name="offline_body">MatchApp Ai memerlukan koneksi untuk mencari judul dan layanan tempat menontonnya. Periksa jaringan Anda dan coba lagi.</string>
+    <string name="offline_retry">Coba lagi</string>
+    <string name="file_chooser_title">Pilih foto</string>
+    <string name="ad_privacy_choices">Pilihan privasi</string>
+    <string name="kids_separate_app">Mode Anak tersedia di aplikasi MatchApp Ai KIDS yang terpisah.</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">Вы не в сети</string>
+    <string name="offline_body">Для поиска фильмов, сериалов и сервисов просмотра MatchApp Ai нужно подключение к интернету. Проверьте сеть и повторите попытку.</string>
+    <string name="offline_retry">Повторить</string>
+    <string name="file_chooser_title">Выбрать фото</string>
+    <string name="ad_privacy_choices">Настройки конфиденциальности</string>
+    <string name="kids_separate_app">Детский режим доступен в отдельном приложении MatchApp Ai KIDS.</string>
+</resources>

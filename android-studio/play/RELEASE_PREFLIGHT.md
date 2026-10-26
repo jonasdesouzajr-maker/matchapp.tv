@@ -1,3 +1,11 @@
+## October 26, 2026 edge-to-edge and fullscreen PiP — 1.1.61 (code 61)
+
+Play Console all-bundle inventory was inspected on October 26: code 60 is the highest uploaded bundle; production 1.1.60 is at 100% in 178/178 countries, no unpublished changes, managed publishing ON. Code 61 is reserved for this native candidate. Recheck inventory immediately before upload.
+
+Migrate adult edge-to-edge setup, retain safe insets and add fullscreen media PiP. Include all fourteen native shell languages without changing Kids. Preserve original artwork, matching/AI, consent, entitlement and ad configuration. Use the same existing upload signing identity and the Production track only. Verify debug and locally signed candidate on the connected physical tablet without clearing or replacing production app data.
+
+Static guard, JVM tests, adult debug/release build, Kids compile, exact bundle metadata/certificate, and final regression gates remain required. The unsigned CI artifact is MatchApp-Ai-adult-1.1.61-code61-UNSIGNED-AAB and is not upload-ready.
+
 ## October 23, 2026 design polish and stability — 1.1.60 (code 60)
 
 Code **60** rebuilds current main (same native code as 59) with the build number raised. Use the same required gates below. The unsigned CI artifact is MatchApp-Ai-adult-1.1.60-code60-UNSIGNED-AAB.
