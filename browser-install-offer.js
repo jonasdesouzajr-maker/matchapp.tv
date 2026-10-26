@@ -55,7 +55,72 @@
     const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();
     return raw.startsWith('pt')?'pt-BR':'en';
   }
+  const DESKTOP_PLAY_COPY={
+  "en": [
+    "Get MatchApp Ai on Google Play",
+    "Use MatchApp Ai on your Android phone or tablet. Open the official Google Play listing to download the app."
+  ],
+  "pt-BR": [
+    "Baixe o MatchApp Ai no Google Play",
+    "Use o MatchApp Ai no seu celular ou tablet Android. Abra a página oficial no Google Play para baixar o app."
+  ],
+  "es": [
+    "Descarga MatchApp Ai en Google Play",
+    "Usa MatchApp Ai en tu teléfono o tableta Android. Abre la página oficial de Google Play para descargar la app."
+  ],
+  "fr": [
+    "Téléchargez MatchApp Ai sur Google Play",
+    "Utilisez MatchApp Ai sur votre téléphone ou tablette Android. Ouvrez la fiche officielle Google Play pour télécharger l’application."
+  ],
+  "de": [
+    "MatchApp Ai bei Google Play herunterladen",
+    "Nutze MatchApp Ai auf deinem Android-Smartphone oder -Tablet. Öffne den offiziellen Google-Play-Eintrag, um die App herunterzuladen."
+  ],
+  "it": [
+    "Scarica MatchApp Ai da Google Play",
+    "Usa MatchApp Ai sul tuo telefono o tablet Android. Apri la pagina ufficiale di Google Play per scaricare l’app."
+  ],
+  "tr": [
+    "MatchApp Ai uygulamasını Google Play’den indirin",
+    "MatchApp Ai uygulamasını Android telefonunuzda veya tabletinizde kullanın. İndirmek için resmi Google Play sayfasını açın."
+  ],
+  "ru": [
+    "Скачайте MatchApp Ai в Google Play",
+    "Пользуйтесь MatchApp Ai на телефоне или планшете Android. Откройте официальную страницу Google Play, чтобы скачать приложение."
+  ],
+  "ar": [
+    "نزّل MatchApp Ai من Google Play",
+    "استخدم MatchApp Ai على هاتفك أو جهازك اللوحي بنظام Android. افتح الصفحة الرسمية على Google Play لتنزيل التطبيق."
+  ],
+  "hi": [
+    "Google Play से MatchApp Ai डाउनलोड करें",
+    "अपने Android फ़ोन या टैबलेट पर MatchApp Ai इस्तेमाल करें। ऐप डाउनलोड करने के लिए Google Play की आधिकारिक सूची खोलें।"
+  ],
+  "id": [
+    "Unduh MatchApp Ai di Google Play",
+    "Gunakan MatchApp Ai di ponsel atau tablet Android Anda. Buka halaman resmi Google Play untuk mengunduh aplikasi."
+  ],
+  "ja": [
+    "Google Play で MatchApp Ai をダウンロード",
+    "Android スマートフォンやタブレットで MatchApp Ai を使えます。Google Play の公式ページを開いてアプリをダウンロードしてください。"
+  ],
+  "ko": [
+    "Google Play에서 MatchApp Ai 다운로드",
+    "Android 휴대전화나 태블릿에서 MatchApp Ai를 사용하세요. Google Play 공식 페이지를 열어 앱을 다운로드하세요."
+  ],
+  "zh": [
+    "从 Google Play 下载 MatchApp Ai",
+    "在 Android 手机或平板电脑上使用 MatchApp Ai。打开 Google Play 官方页面下载应用。"
+  ]
+};
+  function desktopPlayCopy(){
+    const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase().replace(/_/g,'-');
+    const lang=raw.startsWith('pt')?'pt-BR':raw.split('-')[0];
+    const text=DESKTOP_PLAY_COPY[lang]||DESKTOP_PLAY_COPY.en;
+    return {title:text[0],body:text[1]};
+  }
   function copy(kind,visit){
+    if(kind==='desktop')return desktopPlayCopy();
     const pt=locale()==='pt-BR';
     if(kind==='android')return pt?{
       title:'Baixe o MatchApp Ai no Google Play',
@@ -99,7 +164,7 @@
   async function notify(){
     if(completed||!home()||installed())return;
     const a=apple();
-    const device=android()?'android':a.ios?'ios':a.mac?'mac':'';
+    const device=android()?'android':a.ios?'ios':a.mac?'mac':'desktop';
     if(!device)return;
     if(await relatedInstalled()||installed())return;
     const current=readVisits();
@@ -112,8 +177,8 @@
       kind:'install',
       title:c.title,
       body:c.body,
-      action:'install',
-      href:device==='android'?PLAY:'',
+      action:device==='desktop'?'open':'install',
+      href:device==='android'||device==='desktop'?PLAY:'',
       createdAt:new Date().toISOString(),
       payload:{installPrompt:true,platform:device,visit}
     },visit,0);
