@@ -1,10 +1,10 @@
-## October 26, 2026 edge-to-edge and fullscreen PiP — 1.1.61 (code 61)
+## October 26, 2026 Material compatibility and R8 optimization - 1.1.62 (code 62)
 
-Play Console all-bundle inventory was inspected on October 26: code 60 is the highest uploaded bundle; production 1.1.60 is at 100% in 178/178 countries, no unpublished changes, managed publishing ON. Code 61 is reserved for this native candidate. Recheck inventory immediately before upload.
+Production 61 / 1.1.61 was published October 26 in 178 countries. Candidate 62 addresses the remaining Material DatePicker deprecated API and R8 optimized resource shrinking recommendations. Recheck all uploaded version codes immediately before upload.
 
-Migrate adult edge-to-edge setup, retain safe insets and add fullscreen media PiP. Include all fourteen native shell languages without changing Kids. Preserve original artwork, matching/AI, consent, entitlement and ad configuration. Use the same existing upload signing identity and the Production track only. Verify debug and locally signed candidate on the connected physical tablet without clearing or replacing production app data.
+Upgrade Material 1.12.0 to stable 1.14.0 and AGP 8.13.2 to 9.0.1 with Gradle 9.1.0. Preserve the external Kotlin plugin and existing DSL through the documented AGP compatibility flags. Release minification and resource shrinking remain enabled; optimized resource shrinking is automatic in AGP 9. Preserve all native insets, fullscreen PiP, fourteen shell languages, matching/AI, original artwork, consent, entitlement and ad configuration. Kids source remains unchanged. AndroidX backward compatibility may retain guarded legacy APIs; do not remove older Android support to suppress a static advisory.
 
-Static guard, JVM tests, adult debug/release build, Kids compile, exact bundle metadata/certificate, and final regression gates remain required. The unsigned CI artifact is MatchApp-Ai-adult-1.1.61-code61-UNSIGNED-AAB and is not upload-ready.
+Required gates: adult static guard, JVM tests, adult debug/release builds, Kids compile, full website and real matching/AI/reading/original-art audits, physical-device QA using the separate debug package, and exact signed bundle metadata/certificate verification. Use the existing private upload identity and Production track only. CI artifact MatchApp-Ai-adult-1.1.62-code62-UNSIGNED-AAB must be signed locally before upload. Preserve production app data.
 
 ## October 23, 2026 design polish and stability — 1.1.60 (code 60)
 
