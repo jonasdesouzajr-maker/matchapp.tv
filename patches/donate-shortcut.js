@@ -13,4 +13,13 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 ['matchapp:languagechange','matchapp:langchange','languagechange'].forEach(function(e){window.addEventListener(e,paint);document.addEventListener(e,paint)});document.addEventListener('change',function(e){if(e.target.matches('select'))queueMicrotask(paint)});
 // Partnership pages set their authored locale after this shortcut mounts.
 new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+
+// Wire premium matching animation (design-only)
+if (!document.getElementById('premium-match-animation-script')) {
+  var s = document.createElement('script');
+  s.id = 'premium-match-animation-script';
+  s.src = '/patches/premium-match-animation-20261026.js?v=20261026-1';
+  s.defer = true;
+  document.head.appendChild(s);
+}
 })();
