@@ -212,6 +212,20 @@
         return opt ? opt.textContent.trim() : 'Any';
     }
 
+    function fieldLabel(label) {
+        if (!label) return '';
+        const copy = label.cloneNode(true);
+        copy.querySelectorAll('.crit-count').forEach(badge => badge.remove());
+        return copy.textContent.trim();
+    }
+
+    function setFieldOpen(wrap, open) {
+        wrap.classList.toggle('crit-open', open);
+        wrap.querySelector('.crit-toggle')?.setAttribute('aria-expanded', String(open));
+        const panel = wrap.querySelector('.crit-chips');
+        if (panel) panel.hidden = !open;
+    }
+
     function renderField(sel, key) {
         const host = sel.parentElement.querySelector('.crit-chips');
         if (!host) return;
@@ -300,8 +314,7 @@
                     const opt = Array.from(sel.options).find(o => o.value === v);
                     return opt ? opt.textContent.trim() : v;
                 });
-                const shown = names.slice(0, 2).join(', ');
-                summary.textContent = names.length > 2 ? shown + ' +' + (names.length - 2) : shown;
+                summary.textContent = names.join(', ');
                 summary.classList.remove('is-empty');
             }
         }
@@ -348,7 +361,7 @@
         const host = document.createElement('div');
         host.className = 'crit-chips';
         host.setAttribute('role', 'group');
-        if (label) host.setAttribute('aria-label', label.textContent.trim());
+        if (label) host.setAttribute('aria-label', fieldLabel(label));
         sel.insertAdjacentElement('afterend', host);
 
         // COLLAPSE THE FIELD ITSELF.
@@ -371,8 +384,11 @@
             toggleBtn.type = 'button';
             toggleBtn.className = 'crit-toggle';
             toggleBtn.setAttribute('aria-expanded', 'false');
+            host.id = sel.id + '-choices';
+            toggleBtn.setAttribute('aria-controls', host.id);
+            host.hidden = true;
 
-            const labelText = label.textContent.trim();
+            const labelText = fieldLabel(label);
             label.style.display = 'none';
 
             const icon = FIELD_ICONS[sel.id] || '•';
@@ -386,8 +402,7 @@
             wrap.classList.add('crit-collapsible');
 
             toggleBtn.addEventListener('click', () => {
-                const open = wrap.classList.toggle('crit-open');
-                toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                setFieldOpen(wrap, !wrap.classList.contains('crit-open'));
             });
         }
 
@@ -419,8 +434,8 @@
             const sel = document.getElementById(f.id);
             if (sel && sel.dataset.critMounted === '1') {
                 const label=sel.parentElement.querySelector('label'),heading=sel.parentElement.querySelector('.crit-toggle-label');
-                if(label&&heading)heading.textContent=label.textContent.trim();
-                const group=sel.parentElement.querySelector('.crit-chips');if(label&&group)group.setAttribute('aria-label',label.textContent.trim());
+                if(label&&heading)heading.textContent=fieldLabel(label);
+                const group=sel.parentElement.querySelector('.crit-chips');if(label&&group)group.setAttribute('aria-label',fieldLabel(label));
                 changed = reconcileField(sel, f.key) || changed;
                 Array.from(sel.options).forEach(o=>{if(o.value!=='any')o.disabled=!state[f.key].includes(o.value)&&!!window.matchPolicy?.incompatible(o.value,state);});
                 renderField(sel, f.key); syncSelect(sel, f.key);
@@ -492,8 +507,7 @@
         more.addEventListener('click',()=>{
             const native=document.getElementById('q-category'),wrap=native?.parentElement;
             if(!wrap)return;
-            wrap.classList.add('crit-open');
-            wrap.querySelector('.crit-toggle')?.setAttribute('aria-expanded','true');
+            setFieldOpen(wrap, true);
             const chips=wrap.querySelector('.crit-chips');
             if(chips){chips.dataset.expanded='1';renderField(native,'cat');}
             window.MatchAppActivatedScroll?.toStart(wrap,{behavior:'auto'}) ?? wrap.scrollIntoView({behavior:'auto',block:'start'});
