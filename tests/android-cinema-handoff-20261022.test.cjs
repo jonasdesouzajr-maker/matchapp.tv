@@ -47,5 +47,5 @@ test('the native CI gate executes the new JVM routing tests before exporting adu
   const flow=read('.github/workflows/android-validation.yml');
   assert.match(flow,/\.\/gradlew :app:testDebugUnitTest :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug/);
   assert.match(flow,/MatchApp-Ai-adult-1\.1\.61-code61-UNSIGNED-AAB/);
-  assert.match(flow,/version: 1\.1\.61; versionCode: 60/);
+  assert.match(flow,/version: 1\.1\.61; versionCode: 61/);
 });
