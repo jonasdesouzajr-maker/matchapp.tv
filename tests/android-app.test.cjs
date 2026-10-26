@@ -157,7 +157,7 @@ test('hosted native smoke bounds ADB setup, install and final diagnostics so run
 
 test('adult Android keeps fullscreen media immersive and gives normal content one safe area on every edge',()=>{
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
- assert.match(main,/setDecorFitsSystemWindows\(window, false\)/);
+ assert.match(main,/enableEdgeToEdge\(window\)/);
  const insets=main.slice(main.indexOf('private fun applySafeInsets()'),main.indexOf('override fun onNewIntent'));
  assert.match(insets,/val content = refresh\.parent as View/);
  assert.match(insets,/listOf\(content, offline\)/);

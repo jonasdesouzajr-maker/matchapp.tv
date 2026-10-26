@@ -15,6 +15,9 @@ import android.widget.FrameLayout
 import android.graphics.Color
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.content.ContextCompat
 import androidx.webkit.WebViewAssetLoader
 import org.json.JSONObject
@@ -43,11 +46,7 @@ class VoiceAvatarActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Keep the existing avatar shell colors on supported older Android releases.
-        @Suppress("DEPRECATION")
-        window.statusBarColor = Color.rgb(9,7,18)
-        @Suppress("DEPRECATION")
-        window.navigationBarColor = Color.rgb(9,7,18)
+        WindowCompat.enableEdgeToEdge(window)
         val token = intent.getStringExtra(EXTRA_TOKEN).orEmpty().takeIf {
             it.length in 100..6000 && it.none { char -> char.isWhitespace() }
         }.orEmpty()
@@ -106,7 +105,16 @@ class VoiceAvatarActivity : AppCompatActivity() {
             loadUrl(ASSET_ORIGIN)
         }
         setContentView(FrameLayout(this).apply {
+            setBackgroundColor(Color.rgb(9,7,18))
             addView(player, FrameLayout.LayoutParams(-1, -1))
+            ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
+                val safe = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+                )
+                view.setPadding(safe.left, safe.top, safe.right, safe.bottom)
+                insets
+            }
+            ViewCompat.requestApplyInsets(this)
         })
     }
     override fun onStop() {

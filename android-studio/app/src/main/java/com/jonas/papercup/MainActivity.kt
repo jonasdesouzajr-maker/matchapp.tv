@@ -1,8 +1,12 @@
 package com.jonas.papercup
 
+import android.app.PictureInPictureParams
+import android.graphics.Rect
+import android.util.Rational
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.ConnectivityManager
@@ -146,12 +150,7 @@ class MainActivity : AppCompatActivity() {
 
         // Keep the native shell immersive, but never place the interactive WebView
         // underneath a status bar, punch-hole camera, or display cutout.
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        // Preserve the current edge-to-edge shell on older supported Android releases.
-        @Suppress("DEPRECATION")
-        window.statusBarColor = Color.TRANSPARENT
-        @Suppress("DEPRECATION")
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.ink)
+        WindowCompat.enableEdgeToEdge(window)
 
         web = findViewById(R.id.web)
         refresh = findViewById(R.id.refresh)
@@ -375,11 +374,44 @@ class MainActivity : AppCompatActivity() {
         nativeNewsBridge?.onPause()
         adMobController?.pause()
         super.onPause()
-        web.onPause()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || !isInPictureInPictureMode) web.onPause()
         CookieManager.getInstance().flush()
     }
 
+    override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
+        // Only the existing fullscreen media layer can leave as PiP. Never
+        // shrink Home, Jonas chat, matching, startup, or a permission prompt.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+        if (!NativePipPolicy.mayEnter(
+                Build.VERSION.SDK_INT,
+                packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE),
+                customView != null,
+                introHost != null || startupHost != null,
+                permissionSetupShowing,
+                isFinishing,
+                isInPictureInPictureMode
+            )) return
+        val bounds = Rect()
+        if (!fullscreenHost.getGlobalVisibleRect(bounds)) return
+        val params = PictureInPictureParams.Builder()
+            .setAspectRatio(Rational(16, 9))
+            .setSourceRectHint(bounds)
+            .build()
+        // Device policy or the user's PiP setting may decline entry.
+        runCatching { enterPictureInPictureMode(params) }
+    }
+
+    override fun onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean, newConfig: Configuration) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+        // A transition may deliver onPause before PiP mode becomes visible.
+        if (isInPictureInPictureMode) web.onResume()
+    }
+
     override fun onStop() {
+        // A visible PiP Activity is paused, not stopped. Always suspend the
+        // WebView once hidden, even if PiP exit was reported before onStop.
+        web.onPause()
         persistScreenCheckpoint()
         super.onStop()
     }
@@ -601,7 +633,7 @@ class MainActivity : AppCompatActivity() {
                 setMeasuredDimension(kotlin.math.ceil(1080 * scale).toInt(), kotlin.math.ceil(1920 * scale).toInt())
             }
         }
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.enableEdgeToEdge(window)
         WindowCompat.getInsetsController(window, window.decorView).apply {
             systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             hide(WindowInsetsCompat.Type.systemBars())
@@ -674,7 +706,7 @@ class MainActivity : AppCompatActivity() {
                 insets
             }
         }
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.enableEdgeToEdge(window)
         WindowCompat.getInsetsController(window, window.decorView).show(WindowInsetsCompat.Type.systemBars())
         ViewCompat.requestApplyInsets(content)
         val current = ViewCompat.getRootWindowInsets(content)

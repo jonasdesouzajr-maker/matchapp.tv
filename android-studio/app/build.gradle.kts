@@ -67,7 +67,7 @@ android {
 dependencies {
     implementation("com.android.installreferrer:installreferrer:2.2")
     testImplementation("junit:junit:4.13.2")
-    implementation("androidx.core:core-ktx:1.15.0")
+    implementation("androidx.core:core-ktx:1.17.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.activity:activity-ktx:1.9.3")
     implementation("androidx.webkit:webkit:1.14.0")
