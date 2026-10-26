@@ -23,6 +23,9 @@ test('empty match recovery occupies one in-flow notice and hides conflicting poo
   w.document.dispatchEvent(new w.Event('matchapp:criteriachange'));
   assert.equal(w.document.querySelector('#match-recovery'),null);
   assert.equal(w.document.querySelector('#match-pool-hint').hidden,false);
+  w.showMatchRecovery('Previous language');
+  w.document.dispatchEvent(new w.Event('matchapp:langchange'));
+  assert.equal(w.document.querySelector('#match-recovery'),null,'language changes cannot retain stale translated copy');
  }finally{d.window.close();}
 });
 test('missing viewing country returns actionable localized guidance before any source work',()=>{

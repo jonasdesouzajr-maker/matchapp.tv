@@ -6168,7 +6168,8 @@ window.showMatchRecovery = function(message) {
     if(hint&&!hint.hidden){hint.hidden=true;hint.dataset.recoveryHidden='true';}
     window.MatchAppActivatedScroll?.toStart(notice,{behavior:'auto'});
 };
-document.addEventListener('matchapp:criteriachange',()=>window.clearMatchRecovery());
+['matchapp:criteriachange','matchapp:langchange'].forEach(event=>
+    document.addEventListener(event,()=>window.clearMatchRecovery()));
 window.matchRecoveryHeading = function() {
     return /^pt/i.test(window.MATCH_LANG||'')
         ? 'INTERRUPÇÃO TEMPORÁRIA — TENTE NOVAMENTE EM INSTANTES.'
