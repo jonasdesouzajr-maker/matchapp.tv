@@ -21,3 +21,8 @@ Package: com.jonas.papercup. Native candidate only; no Play upload, submission o
 - Existing listing handoff: E:\MatchAppWork\play-listing-refresh-20261025\STATUS.md. The previous screenshots were not established as rights-cleared. No screenshot rights declaration or store change has been made.
 
 References: https://developer.android.com/reference/androidx/core/view/WindowCompat and https://developer.android.com/develop/ui/views/picture-in-picture
+
+## Final follow-up
+Android 12+ now uses automatic PiP transitions with a source rectangle updated from fullscreen layout, disabled when fullscreen exits. API 26–30 retains explicit entry.
+Laptop lint identified seven pre-existing MissingTranslation errors in the adult default native strings. Added six authored native-shell strings in thirteen locales, marked the unchanged product name non-translatable, and kept native languages in the base bundle so runtime language switching works offline. No lint checks were disabled.
+At the original pushed native head, hosted Android debug/release compilation, JVM tests, unsigned-bundle checks and Kids compilation passed; all 58 laptop JVM tests also passed. Final refined source/resources must finish the final local/hosted checks before release. No signed or uploadable code60 bundle is produced by this task.

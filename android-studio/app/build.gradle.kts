@@ -46,6 +46,13 @@ android {
         }
     }
 
+    // The selected app language can change offline; keep native copy available.
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     androidResources {
         localeFilters += listOf("en", "pt", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "in", "ja", "ko", "zh")
     }

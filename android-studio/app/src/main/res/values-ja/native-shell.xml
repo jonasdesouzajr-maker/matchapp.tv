@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">オフラインです</string>
+    <string name="offline_body">作品や視聴できるサービスを探すには、MatchApp Ai のインターネット接続が必要です。ネットワークを確認して、もう一度お試しください。</string>
+    <string name="offline_retry">再試行</string>
+    <string name="file_chooser_title">写真を選択</string>
+    <string name="ad_privacy_choices">プライバシーの選択</string>
+    <string name="kids_separate_app">キッズモードは別のアプリ MatchApp Ai KIDS で利用できます。</string>
+</resources>

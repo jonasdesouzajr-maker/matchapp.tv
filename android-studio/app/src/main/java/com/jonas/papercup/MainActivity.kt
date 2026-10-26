@@ -156,6 +156,11 @@ class MainActivity : AppCompatActivity() {
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
+        fullscreenHost.addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+            if (left != oldLeft || top != oldTop || right != oldRight || bottom != oldBottom) {
+                updateFullscreenPipParams()
+            }
+        }
         adMobController = AdMobController(
             this,
             findViewById(R.id.ad_shell),
@@ -378,11 +383,29 @@ class MainActivity : AppCompatActivity() {
         CookieManager.getInstance().flush()
     }
 
+    private fun updateFullscreenPipParams() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O ||
+            !packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE)) return
+        val eligible = NativePipPolicy.mayEnter(
+            Build.VERSION.SDK_INT, true, customView != null,
+            introHost != null || startupHost != null,
+            permissionSetupShowing, isFinishing, false
+        )
+        val bounds = Rect()
+        val builder = PictureInPictureParams.Builder().setAspectRatio(Rational(16, 9))
+        if (fullscreenHost.getGlobalVisibleRect(bounds)) builder.setSourceRectHint(bounds)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (eligible) builder.setAutoEnterEnabled(true)
+            else builder.setAutoEnterEnabled(false)
+        }
+        runCatching { setPictureInPictureParams(builder.build()) }
+    }
+
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
         // Only the existing fullscreen media layer can leave as PiP. Never
         // shrink Home, Jonas chat, matching, startup, or a permission prompt.
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) return
         if (!NativePipPolicy.mayEnter(
                 Build.VERSION.SDK_INT,
                 packageManager.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE),
@@ -804,6 +827,7 @@ class MainActivity : AppCompatActivity() {
         fullscreenHost.removeAllViews()
         fullscreenHost.visibility = View.GONE
         customView = null
+        updateFullscreenPipParams()
         refresh.visibility = View.VISIBLE
     }
 
@@ -1621,6 +1645,7 @@ class MainActivity : AppCompatActivity() {
                 view,
                 FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             )
+            fullscreenHost.post { updateFullscreenPipParams() }
         }
 
         override fun onHideCustomView() {
