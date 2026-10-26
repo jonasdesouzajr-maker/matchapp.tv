@@ -60,3 +60,17 @@ test('all topics shortcut opens the same accessible panel', () => {
   assert.equal(wrap.querySelector('.crit-toggle').getAttribute('aria-expanded'),'true');
   dom.window.close();
 });
+test('opening another criterion folds the previous panel without losing selections', () => {
+ const dom=setup(), w=dom.window;
+ w.setMatchCriteria({mood:['romantic'],cat:['movie']});
+ const mood=w.document.querySelector('#q-mood').parentElement;
+ const cat=w.document.querySelector('#q-category').parentElement;
+ mood.querySelector('.crit-toggle').click();
+ cat.querySelector('.crit-toggle').click();
+ assert.equal(mood.querySelector('.crit-chips').hidden,true);
+ assert.equal(mood.querySelector('.crit-toggle').getAttribute('aria-expanded'),'false');
+ assert.equal(cat.querySelector('.crit-chips').hidden,false);
+ assert.deepEqual(Array.from(w.getMatchCriteria().mood),['romantic']);
+ assert.deepEqual(Array.from(w.getMatchCriteria().cat),['movie']);
+ dom.window.close();
+});
