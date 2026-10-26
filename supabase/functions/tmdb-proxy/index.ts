@@ -130,6 +130,7 @@ function normalise(r: Record<string, unknown>, kind: "movie" | "tv"): Record<str
     popularity: typeof r.popularity === "number" ? r.popularity : 0,
     voteAverage: typeof r.vote_average === "number" ? r.vote_average : null,
     originalLanguage: r.original_language ?? null,
+    voteCount: Number.isFinite(Number(r.vote_count)) ? Number(r.vote_count) : 0,
     // Preserve source genre IDs so the client can enforce verified mood/genre fit.
     genreIds: Array.isArray(r.genre_ids) ? (r.genre_ids as unknown[]).map(Number).filter((n)=>Number.isSafeInteger(n)&&n>0) : [],
     // TMDB's own adult flag. MatchApp filters again on the client with its own
@@ -242,6 +243,13 @@ function detailMetadata(record: Record<string, unknown>, kind: "movie" | "tv"): 
       : [],
     runtimeMinutes: Number.isFinite(runtime) && runtime > 0 && runtime <= 1440 ? Math.round(runtime) : null,
     contentRating: detailRating(record, kind),
+    seriesType: kind === "tv" && typeof record.type === "string" ? record.type.slice(0, 60) : null,
+    numberOfSeasons: kind === "tv" && Number.isSafeInteger(record.number_of_seasons) ? record.number_of_seasons : null,
+    keywords: (() => {
+      const bag = record.keywords as Record<string, unknown> | undefined;
+      const rows = Array.isArray(bag?.keywords) ? bag.keywords : Array.isArray(bag?.results) ? bag.results : [];
+      return (rows as Array<Record<string, unknown>>).map(x => String(x?.name || "").slice(0, 100)).filter(Boolean).slice(0, 40);
+    })(),
     cast: Array.isArray((record.credits as { cast?: unknown } | undefined)?.cast)
       ? ((record.credits as { cast?: Array<Record<string, unknown>> }).cast || []).filter((p)=>p?.adult!==true&&String(p?.name||"").trim()).slice(0,12).map((p)=>({name:String(p.name||"").trim(),character:String(p.character||"").trim()}))
       : [],
@@ -281,24 +289,34 @@ async function tmdbFetch(path: string, token: string): Promise<Record<string, un
  */
 function canonicalWatchProvider(value: unknown): string {
  const name=String(value||"").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
+ // Roku Channel is a direct service, unlike another service's add-on channel.
+ if(name==="roku channel"||name==="the roku channel"||name==="roku")return "roku";
+ if(name==="pluto"||name==="pluto tv")return "pluto";
+ if(name==="viki"||name==="rakuten viki")return "viki";
+ if(name==="hotstar"||name==="disney hotstar"||name==="jiohotstar")return "hotstar";
+ if(name==="iqiyi"||name==="iqiyi international")return "iqiyi";
+ if(name==="sbt"||name==="plus sbt"||name==="plussbt")return "sbt";
  if(name.includes("channel")||name.includes("bundle")||name.includes("add on"))return "channel:"+name.replace(/ /g,"");
  if(name==="max"||name==="hbo max")return "max";
  if(name==="netflix"||name==="netflix standard with ads"||name==="netflix basic with ads")return "netflix";
- if(name==="amazon prime video"||name==="prime video"||name==="amazon video")return "primevideo";
+ if(name==="amazon prime video"||name==="prime video"||name==="amazon video"||name==="amazon prime video with ads"||name==="prime video with ads")return "primevideo";
  if(name==="disney plus"||name==="disney")return "disney";
  if(name==="apple tv"||name==="apple tv plus")return "appletv";
- if(name==="paramount plus"||name==="paramount")return "paramount";
+ if(name==="paramount plus"||name==="paramount"||name==="paramount plus with showtime"||name==="paramount with showtime")return "paramount";
  if(name==="peacock premium"||name==="peacock")return "peacock";
  return name.replace(/ /g,"");
 }
+const DISCOVER_DIRECTORY_CACHE=new Map<string,{rows:Array<Record<string,unknown>>,until:number}>();
 const DISCOVER_PROVIDER_CACHE=new Map<string,{ids:number[],until:number}>();
 async function discoverProviderIds(kind:"movie"|"tv",region:string,wanted:string,token:string):Promise<number[]|null>{
  const family=canonicalWatchProvider(wanted);
  if(!family||family.startsWith("channel:"))return [];
  const key=kind+":"+region+":"+family,cached=DISCOVER_PROVIDER_CACHE.get(key);
  if(cached&&cached.until>Date.now())return cached.ids;
- const response=await tmdbFetch("/watch/providers/"+kind+"?watch_region="+encodeURIComponent(region)+"&language=en-US",token);
- const directory=Array.isArray(response?.results)?response.results as Array<Record<string,unknown>>:null;
+ const directoryKey=kind+":"+region, saved=DISCOVER_DIRECTORY_CACHE.get(directoryKey);
+ const response=saved&&saved.until>Date.now()?null:await tmdbFetch("/watch/providers/"+kind+"?watch_region="+encodeURIComponent(region)+"&language=en-US",token);
+ const directory=saved&&saved.until>Date.now()?saved.rows:Array.isArray(response?.results)?response.results as Array<Record<string,unknown>>:null;
+ if(directory)DISCOVER_DIRECTORY_CACHE.set(directoryKey,{rows:directory,until:Date.now()+3600000});
  // Source-confirmed IDs only when the provider directory temporarily fails.
  const fallback:Record<string,number[]>={netflix:[8],max:[1899,384]};
  if(!directory)return fallback[family]||null;
@@ -428,7 +446,7 @@ Deno.serve(async (req: Request) => {
       const append = new Set<string>();
       if (wantRelated) ["credits", "similar", "recommendations"].forEach((v) => append.add(v));
       if (wantDetails) {
-        ["videos", "watch/providers", "credits"].forEach((v) => append.add(v));
+        ["videos", "watch/providers", "credits", "keywords"].forEach((v) => append.add(v));
         if (kind === "tv") append.add("external_ids");
         append.add(kind === "movie" ? "release_dates" : "content_ratings");
       }
@@ -464,23 +482,52 @@ Deno.serve(async (req: Request) => {
       const originalLanguage = typeof d.original_language === "string" && /^[a-z]{2}$/i.test(d.original_language) ? d.original_language.toLowerCase() : "";
       const region = typeof d.region === "string" && /^[A-Z]{2}$/i.test(d.region) ? d.region.toUpperCase() : "";
       const provider = typeof d.provider === "string" ? d.provider.toLowerCase().replace(/[^a-z0-9+ ]/g, "").trim() : "";
+      const requestedProviders = Array.isArray(d.providers) ? (d.providers as unknown[]).filter(v=>typeof v==="string").map(v=>String(v).slice(0,80)).filter(Boolean).slice(0,34) : [];
+      const providers = [...new Set(provider ? [provider] : requestedProviders)];
+      const format = typeof d.format === "string" ? d.format : "";
+      const originCountries=Array.isArray(d.origin_countries)?(d.origin_countries as unknown[]).map(v=>String(v).toUpperCase()).filter(v=>/^[A-Z]{2}$/.test(v)).slice(0,30):[];
+      let totalPages=0;
+      let standupKeyword=0;
+      if(format==="stand-up comedy special"){
+        const words=await tmdbFetch("/search/keyword?query=stand-up%20comedy&page=1",token);
+        const rows=Array.isArray(words?.results)?words.results as Array<Record<string,unknown>>:[];
+        standupKeyword=Number(rows.find(x=>String(x.name).toLowerCase()==="stand-up comedy")?.id)||0;
+        if(!standupKeyword)return json({error:"Verified stand-up source temporarily unavailable",results:[]},503);
+      }
       const out: Record<string, unknown>[] = [];
-      if(provider&&!region)return json({error:"Region required for verified provider discovery",results:[]},400);
+      if(providers.length&&!region)return json({error:"Region required for verified provider discovery",results:[]},400);
       let upstreamFailures=0;
       for (const k of kinds) {
-        const selectedProviderIds=provider?await discoverProviderIds(k,region,provider,token):[];
-        if(provider&&selectedProviderIds===null){upstreamFailures++;continue;}
-        if(provider&&!selectedProviderIds?.length)continue;
+        const providerIds:number[]=[];
+        for(const name of providers){
+          const ids=await discoverProviderIds(k,region,name,token);
+          if(ids===null){upstreamFailures++;continue;}
+          providerIds.push(...ids);
+        }
+        const selectedProviderIds=[...new Set(providerIds)];
+        if(providers.length&&!selectedProviderIds.length)continue;
+        // TV has its own genre IDs. Map coarse movie genres before querying,
+        // then let the client enforce the exact source genres and mood again.
+        const tvGenres:Record<number,number[]>={28:[10759],12:[10759],14:[10765],878:[10765],27:[9648,10765,18],53:[80,9648,18],10749:[18,35],10752:[10768],36:[18],37:[10759,18],10402:[99,18]};
+        const movieGenres:Record<number,number[]>={10759:[28,12],10765:[878,14],10768:[10752,18],10764:[],10766:[],10767:[],10763:[],10762:[10751,16]};
+        const queryGenres=[...new Set(genreIds.flatMap(id=>(k==="tv"?tvGenres[id]:movieGenres[id])||[id]))];
+        if(genreIds.length&&!queryGenres.length)continue;
         for (let page=pageStart; page<=Math.min(500,pageStart+pages-1); page++) {
           const params = new URLSearchParams();
           params.set("include_adult","false");
           params.set("sort_by","popularity.desc");
           params.set("page",String(page));
-          params.set("vote_count.gte","20");
+          params.set("vote_count.gte",String(Number.isFinite(Number(d.min_votes))?Math.min(10000,Math.max(0,Math.floor(Number(d.min_votes)))):20));
           params.set("language",lang);
           if (originalLanguage) params.set("with_original_language", originalLanguage);
-          if (provider && region && selectedProviderIds?.length) { params.set("with_watch_providers", selectedProviderIds.join("|")); params.set("watch_region", region); params.set("with_watch_monetization_types", "flatrate|free|ads"); }
-          if (genreIds.length) params.set("with_genres",genreIds.join("|"));
+          if(originCountries.length)params.set("with_origin_country",originCountries.join("|"));
+          if (providers.length && region && selectedProviderIds.length) { params.set("with_watch_providers", selectedProviderIds.join("|")); params.set("watch_region", region); params.set("with_watch_monetization_types", "flatrate|free|ads"); }
+          if (queryGenres.length) params.set("with_genres",queryGenres.join("|"));
+          if(format==="limited series"&&k==="tv")params.set("with_type","2");
+          if(format==="reality show"&&k==="tv")params.set("with_genres","10764");
+          if(["novela brasileira","telenovela"].includes(format)&&k==="tv")params.set("with_genres","10766");
+          if(format==="short film"&&k==="movie")params.set("with_runtime.lte","39");
+          if(standupKeyword&&k==="movie")params.set("with_keywords",String(standupKeyword));
           if (Number.isSafeInteger(decade) && decade >= 1900 && decade <= 2100) {
             if (k === "movie") {
               params.set("primary_release_date.gte",decade+"-01-01");
@@ -492,11 +539,14 @@ Deno.serve(async (req: Request) => {
           }
           const data = await tmdbFetch(`/discover/${k}?${params.toString()}`, token);
           if(!data){upstreamFailures++;continue;}
+          totalPages=Math.max(totalPages,Math.min(500,Number(data.total_pages)||0));
           const rows = Array.isArray(data?.results) ? data!.results as Array<Record<string, unknown>> : [];
           rows.forEach((row)=>{
             const n=normalise(row,k);
             if(n.adult!==true&&n.poster&&n.title){
-              if(provider&&selectedProviderIds?.length){n.providerFiltered=true;n.verifiedProvider=canonicalWatchProvider(provider);n.verifiedRegion=region;}
+              if(providers.length&&selectedProviderIds.length){
+                n.providerFiltered=true;n.verifiedProvider=providers.length===1?canonicalWatchProvider(providers[0]):"";n.verifiedRegion=region;
+              }
               out.push(n);
             }
           });
@@ -504,7 +554,7 @@ Deno.serve(async (req: Request) => {
       }
       out.sort((a,b)=>(Number(b.popularity)||0)-(Number(a.popularity)||0));
       if(!out.length&&upstreamFailures)return json({error:"Verified discovery source temporarily unavailable",results:[]},503);
-      return json({results:out.slice(0,400)},200,true);
+      return json({results:out.slice(0,400),total_pages:totalPages,page_start:pageStart,pages},200,true);
     }
 
     if (!query) return json({ error: "query is required" }, 400);

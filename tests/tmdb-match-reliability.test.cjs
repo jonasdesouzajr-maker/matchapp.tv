@@ -79,7 +79,7 @@ test('source-based region/provider filtering rejects channels and never uses wor
   assert.equal(provider('Amazon Prime Video'),'primevideo');
   assert.match(source,/watch\/providers\/[^\n]*watch_region=/);
   assert.match(source,/params\.set\("with_watch_providers", selectedProviderIds\.join\("\\|"\)\)/);
-  assert.match(source,/n\.providerFiltered=true;n\.verifiedProvider=canonicalWatchProvider\(provider\);n\.verifiedRegion=region/);
+  assert.match(source,/n\.providerFiltered=true;n\.verifiedProvider=providers\.length===1\?canonicalWatchProvider\(providers\[0\]\):"";n\.verifiedRegion=region/);
   assert.match(source,/if\(!out\.length&&upstreamFailures\)return json\(/);
 });
 

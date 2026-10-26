@@ -3389,12 +3389,10 @@ function platformServesCountry(pf, country) {
 }
 
 // Platforms valid for a given format, filtered by the user's country when known.
-// Platforms the catalogue can actually deliver a title on. Built once and
-// cached: PLATFORMS lists every service MatchApp knows how to link to, which
-// is deliberately broader than what the curated catalogue currently stocks,
-// so offering the full list as *filter* options meant ten platforms that
-// always returned nothing.
+// The curated shelf and live source discovery jointly determine which
+// services can be searched. Invalidate the small shelf cache after expansion.
 let _stockedPlatforms = null;
+document.addEventListener('matchapp:catalogexpanded',()=>{_stockedPlatforms=null;});
 function stockedPlatforms() {
     if (_stockedPlatforms) return _stockedPlatforms;
     _stockedPlatforms = new Set();
@@ -3404,19 +3402,30 @@ function stockedPlatforms() {
     return _stockedPlatforms;
 }
 
+function sourceDiscoverablePlatform(name) {
+    const platform=PLATFORMS[name];
+    return !!platform&&!platform.audio&&!platform.cats.includes('vertical micro-drama');
+}
+
+function platformAcceptsCategory(name,category) {
+    const platform=PLATFORMS[name];
+    if(!platform)return false;
+    if(platform.cats.includes(category))return true;
+    if(sourceDiscoverablePlatform(name)&&sourceDiscoverableCategory(category))return true;
+    return CONTENT_CATALOG.some(entry=>entry.platform===name&&entry.cats?.includes(category));
+}
+
 function platformsFor(cat, country) {
     const stocked = stockedPlatforms();
     return Object.entries(PLATFORMS).filter(([name, pf]) => {
-        // A platform with no catalogue titles can never satisfy a filter, so
-        // it must not appear as one. It stays in PLATFORMS for link-building
-        // (a result can still send you to Apple TV+), and reappears here
-        // automatically the moment a title on it is added.
-        if (stocked.size && !stocked.has(name)) return false;
+        // A small curated shelf is not the live source catalogue. Keep services
+        // whose movie/TV identities can be independently discovered and verified.
+        if (stocked.size && !stocked.has(name) && !sourceDiscoverablePlatform(name)) return false;
         if (!platformServesCountry(pf, country)) return false;
         // Audio services are not Surprise Me filters: choose music or audio first.
         if ((!cat || cat === 'any') && pf.audio) return false;
         if (!cat || cat === 'any') return true;
-        return pf.cats.includes(cat);
+        return platformAcceptsCategory(name,cat);
     });
 }
 
@@ -3871,9 +3880,14 @@ async function discoverFromITunes(cat, mood, vibe, decade, rating) {
 }
 
 // Verified live expansion for exact normal Matches. This is used only after
-// the curated exact shelf and exact-history recycle are empty. Every candidate
+// the curated exact shelf is empty. Every candidate
 // is a real TMDB identity and is checked again against ALL selected criteria.
-const TMDB_GENRE_ID_BY_NAME={Action:28,Adventure:12,Animation:16,Comedy:35,Crime:80,Documentary:99,Drama:18,Family:10751,Fantasy:14,History:36,Horror:27,Music:10402,Mystery:9648,Romance:10749,'Science Fiction':878,Thriller:53,War:10752,Western:37};
+const TMDB_GENRE_ID_BY_NAME={Action:28,Adventure:12,Animation:16,Comedy:35,Crime:80,Documentary:99,Drama:18,Family:10751,Fantasy:14,History:36,Horror:27,Music:10402,Mystery:9648,Romance:10749,'Science Fiction':878,Thriller:53,War:10752,Western:37,'Action & Adventure':10759,'Sci-Fi & Fantasy':10765,'War & Politics':10768,Reality:10764,Soap:10766,Kids:10762,Talk:10767,News:10763};
+function sourceDiscoverableCategory(category) {
+    return ['movie','series','limited series','documentary','stand-up comedy special','short film','anime',
+        'reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela',
+        'Bollywood','Nollywood','European cinema'].includes(category);
+}
 const MOOD_SOURCE_GENRES={
     'funny':['Comedy'],
     'scary':['Horror'],
@@ -3917,30 +3931,37 @@ function moodFitsVerified(wanted,genres,overview,kind=''){
       // verified series overview; a general Mystery/Drama label is not enough.
       if(m==='scary'&&kind==='tv')return gs.includes('Horror')||
         /\b(?:horror|haunt(?:ed|ing|s)?|ghosts?|demons?|zombies?|vampires?|werewolves?|evil spirits?|supernatural terror|terrifying|serial killer)\b/i.test(text);
+      // TV has no standalone Romance or Thriller genre. Require explicit
+      // evidence in that exact series' source overview instead of rejecting
+      // every romantic/thrilling series or accepting any generic Drama.
+      if(kind==='tv'&&m==='romantic')return gs.includes('Romance')||
+          /\b(?:romance|romantic|love story|falls? in love|falling in love|fall for|falling for|love triangle)\b/i.test(text);
+      if(kind==='tv'&&['intense and thrilling','dark and gritty'].includes(m)&&
+          /\b(?:thriller|suspense|gritty crime)\b/i.test(text))return true;
       const mapped=MOOD_SOURCE_GENRES[m]||[];
-      return mapped.length>0&&mapped.some(g=>gs.includes(g));
+      const sourceNames=mapped.flatMap(g=>g==='Action'||g==='Adventure'?[g,'Action & Adventure']:
+          g==='Science Fiction'||g==='Fantasy'?[g,'Sci-Fi & Fantasy']:[g]);
+      return sourceNames.length>0&&sourceNames.some(g=>gs.includes(g));
     });
 }
-function canonicalProviderName(value){
-    const s=String(value||'').toLowerCase();
-    if(s.includes('netflix'))return'netflix';
-    if(s.includes('amazon prime')||s.includes('prime video')||s.includes('amazon video'))return'primevideo';
-    if(s.includes('disney'))return'disney';
-    if(s.includes("amazon channel")||s.includes("apple tv channel")||s.includes("bundle"))return s.replace(/[^a-z0-9]/g,"");
-    if(s==="hbo max"||s==="max")return"max";
-    if(s.includes('apple tv'))return'appletv';
-    if(s.includes('paramount'))return'paramount';
-    if(s.includes('hulu'))return'hulu';
-    if(s.includes('peacock'))return'peacock';
-    if(s.includes('globoplay'))return'globoplay';
-    if(s.includes('crunchyroll'))return'crunchyroll';
-    if(s.includes('viki'))return'viki';
-    if(s.includes('mubi'))return'mubi';
-    if(s.includes('tubi'))return'tubi';
-    if(s.includes('pluto'))return'pluto';
-    if(s.includes('roku'))return'roku';
-    if(s.includes('youtube'))return'youtube';
-    return s.replace(/[^a-z0-9]/g,'');
+function canonicalProviderName(value) {
+ const name=String(value||"").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
+ // Roku Channel is a direct service, unlike another service's add-on channel.
+ if(name==="roku channel"||name==="the roku channel"||name==="roku")return "roku";
+ if(name==="pluto"||name==="pluto tv")return "pluto";
+ if(name==="viki"||name==="rakuten viki")return "viki";
+ if(name==="hotstar"||name==="disney hotstar"||name==="jiohotstar")return "hotstar";
+ if(name==="iqiyi"||name==="iqiyi international")return "iqiyi";
+ if(name==="sbt"||name==="plus sbt"||name==="plussbt")return "sbt";
+ if(name.includes("channel")||name.includes("bundle")||name.includes("add on"))return "channel:"+name.replace(/ /g,"");
+ if(name==="max"||name==="hbo max")return "max";
+ if(name==="netflix"||name==="netflix standard with ads"||name==="netflix basic with ads")return "netflix";
+ if(name==="amazon prime video"||name==="prime video"||name==="amazon video"||name==="amazon prime video with ads"||name==="prime video with ads")return "primevideo";
+ if(name==="disney plus"||name==="disney")return "disney";
+ if(name==="apple tv"||name==="apple tv plus")return "appletv";
+ if(name==="paramount plus"||name==="paramount"||name==="paramount plus with showtime"||name==="paramount with showtime")return "paramount";
+ if(name==="peacock premium"||name==="peacock")return "peacock";
+ return name.replace(/ /g,"");
 }
 function sourceRatingFits(cert,wanted){
     const c=String(cert||'').toUpperCase().replace(/\s+/g,'');
@@ -3962,10 +3983,12 @@ function categoryFitsVerified(kind,genres,countries,wanted,details={}){
     return wanted.some(cat=>{
       if(cat==='movie')return kind==='movie';
       if(cat==='series')return kind==='tv';
+      if(cat==='limited series')return kind==='tv'&&details?.seriesType==='Miniseries';
       if(cat==='documentary')return gs.has('Documentary');
       // Comedy alone does not establish a filmed stand-up performance.
-      // Use the curated stand-up catalogue until the source supplies that proof.
-      if(cat==='stand-up comedy special')return false;
+      // Require the exact source keyword on this verified comedy identity.
+      if(cat==='stand-up comedy special')return kind==='movie'&&gs.has('Comedy')&&
+          (details?.keywords||[]).some(word=>/^stand[- ]up comedy$/i.test(word));
       if(cat==='reality show')return kind==='tv'&&gs.has('Reality');
       if(cat==='short film')return kind==='movie'&&Number(details?.runtimeMinutes)>0&&Number(details.runtimeMinutes)<40;
       if(cat==='anime')return gs.has('Animation')&&cs.has('JP');
@@ -3974,7 +3997,7 @@ function categoryFitsVerified(kind,genres,countries,wanted,details={}){
       if(cat==='novela brasileira'||cat==='telenovela')
           return kind==='tv'&&gs.has('Soap')&&(COUNTRY_CATEGORY_CODES[cat]||[]).some(x=>cs.has(x));
       // Country alone cannot prove Hindi-language Bollywood cinema.
-      if(cat==='Bollywood')return false;
+      if(cat==='Bollywood')return kind==='movie'&&cs.has('IN')&&details?.originalLanguage==='hi'&&!gs.has('Documentary');
       const required=COUNTRY_CATEGORY_CODES[cat];
       if(required)return kind==='movie'&&required.some(x=>cs.has(x));
       return false;
@@ -3985,18 +4008,25 @@ async function discoverVerifiedExactTMDB(requested){
     const cat=normCriteria(requested.cat),mood=normCriteria(requested.mood),vibe=normCriteria(requested.vibe),
           rating=normCriteria(requested.rating),decade=normCriteria(requested.decade),platform=normCriteria(requested.plat),
           realGenres=normCriteria(requested.genre);
-    // These categories/vibes do not have source fields strong enough for a
-    // perfect automated verification; fail closed rather than fake precision.
-    if(vibe.length)return null;
-    const unsupported=cat.some(x=>['limited series','vertical micro-drama','YouTube channel','YouTube Shorts','podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith','Classical Music','News','Sports'].includes(x));
+    // Only use independently verifiable format and pace evidence here.
+    // Subjective pace choices still use the existing AI proposal path.
+    const sourceVibes=['one sitting short watch','long running series','based on a true story'];
+    if(vibe.length&&!vibe.some(v=>sourceVibes.includes(v)))return null;
+    const vibeFits=(details,kind)=>!vibe.length||vibe.some(v=>
+        v==='one sitting short watch'&&kind==='movie'&&Number(details?.runtimeMinutes)>0&&Number(details.runtimeMinutes)<=120 ||
+        v==='long running series'&&kind==='tv'&&Number(details?.numberOfSeasons)>=3 ||
+        v==='based on a true story'&&(details?.keywords||[]).some(word=>/^based on (?:a )?(?:true|real) (?:story|events)$/i.test(word)));
+
+    const unsupported=cat.length>0&&!cat.some(sourceDiscoverableCategory);
     if(unsupported)return null;
     const mappableMood=mood.flatMap(m=>MOOD_SOURCE_GENRES[m]||[]);
     if(mood.length&&!mappableMood.length)return null;
-    const sourceGenres=[...new Set([...mappableMood,...realGenres.filter(g=>TMDB_GENRE_ID_BY_NAME[g]),...(cat.includes('anime')?['Animation']:[])])];
+    const sourceGenres=[...new Set([...mappableMood,...realGenres.filter(g=>TMDB_GENRE_ID_BY_NAME[g]),...(cat.length===1&&cat[0]==='anime'?['Animation']:[])])];
     let genreIds=sourceGenres.map(g=>TMDB_GENRE_ID_BY_NAME[g]).filter(Boolean);
     let kind='';
-    if(cat.length&&cat.every(x=>['movie','stand-up comedy special','short film','Bollywood','Nollywood','European cinema'].includes(x)))kind='movie';
-    else if(cat.length&&cat.every(x=>['series','reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela'].includes(x)))kind='tv';
+    const queryCats=cat.filter(sourceDiscoverableCategory);
+    if(queryCats.length&&queryCats.every(x=>['movie','stand-up comedy special','short film','Bollywood','Nollywood','European cinema'].includes(x)))kind='movie';
+    else if(queryCats.length&&queryCats.every(x=>['series','limited series','reality show','K-drama','C-drama','J-drama','Turkish dizi','novela brasileira','telenovela'].includes(x)))kind='tv';
     // Movie genre 27 (Horror) is invalid for TV discovery. Search native
     // TV genres, then require horror evidence before accepting a series.
     if(kind==='tv'&&sourceGenres.includes('Horror')){
@@ -4010,12 +4040,27 @@ async function discoverVerifiedExactTMDB(requested){
     // no exact fit. Keep source calls and UI wait bounded by the match deadline.
     const sourceStarted=Date.now(),MAX_EXACT_DETAILS=14;
     let exactDetails=0;
-    const pagePlan=provider?[[1,3],[4,3]]:[[1,2],[3,2]];
-    for(const [pageStart,pageCount] of pagePlan){
+    const cursorKey=JSON.stringify({cat:[...cat].sort(),mood:[...mood].sort(),genre:[...realGenres].sort(),
+        vibe:[...vibe].sort(),rating:[...rating].sort(),decade:[...decade].sort(),platform:[...platform].sort(),region});
+    let cursors={};
+    try{cursors=JSON.parse(window.localStorage?.getItem('match_source_cursors_v1')||'{}')||{};}catch(_){}
+    if(!cursors||typeof cursors!=='object'||Array.isArray(cursors))cursors={};
+    let pageStart=Number.isSafeInteger(cursors[cursorKey])&&cursors[cursorKey]>0&&cursors[cursorKey]<=500?cursors[cursorKey]:1;
+    const pageCount=platform.length?3:2;
+    const visited=new Set();
+    const advance=next=>{
+      cursors[cursorKey]=next;
+      try{window.localStorage?.setItem('match_source_cursors_v1',JSON.stringify(Object.fromEntries(Object.entries(cursors).slice(-48))));}catch(_){}
+    };
+    for(let batch=0;batch<4;batch++){
+      if(visited.has(pageStart))break;visited.add(pageStart);
+
       if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)break;
       const candidates=await window.tmdbDiscover({
-        kind,genre_ids:genreIds,original_language:cat.includes('anime')?'ja':'',
-        decade_start:start||0,page_start:pageStart,pages:pageCount,provider,region
+        kind,genre_ids:genreIds,original_language:queryCats.length===1?(queryCats[0]==='anime'?'ja':queryCats[0]==='Bollywood'?'hi':''):'',
+        format:queryCats.length===1?queryCats[0]:'',min_votes:0,
+        origin_countries:queryCats.length&&queryCats.every(c=>COUNTRY_CATEGORY_CODES[c])?[...new Set(queryCats.flatMap(c=>COUNTRY_CATEGORY_CODES[c]))]:[],
+        decade_start:start||0,page_start:pageStart,pages:pageCount,provider,providers:platform.length>1?platform:[],region
       },{priority:true});
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
 
@@ -4024,20 +4069,28 @@ async function discoverVerifiedExactTMDB(requested){
     // for a filter combination (the reported Comfort + Movie + Netflix case).
     // Rotate within the highest-quality slice before verification. History
     // exclusions still win, and every candidate is fully verified below.
-    const candidateWindow=candidates.slice(0,provider?60:40);
+    const candidateWindow=candidates.slice(0,120);
     const head=Math.min(candidateWindow.length,12);
     const rotationStart=head>1?Math.floor(Math.random()*head):0;
     const orderedCandidates=rotationStart
       ? candidateWindow.slice(rotationStart).concat(candidateWindow.slice(0,rotationStart))
       : candidateWindow;
     for(const base of orderedCandidates){
-      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS)return null;
+      if(Date.now()-sourceStarted>46000||exactDetails>=MAX_EXACT_DETAILS){
+        const last=Number(candidates.sourcePages?.total)||500;
+        advance(pageStart+pageCount>last?1:pageStart+pageCount);
+        return null;
+      }
       const key=window.matchPolicy?.key?.(base.title)||'';
       if(!key||known.has(key)||window.matchPolicy?.excludes?.(base)||SESSION_SHOWN.has(base.title))continue;
       // Skip unrelated popular dramas before spending the bounded detail
       // budget. Both discovery and detail overviews belong to this TMDB ID.
       if(base.kind==='tv'&&mood.length===1&&mood[0]==='scary'&&
          !moodFitsVerified(mood,[],base.overview||'',base.kind))continue;
+      const baseGenres=(Array.isArray(base.genreIds)?base.genreIds:[]).map(id=>Object.keys(TMDB_GENRE_ID_BY_NAME).find(name=>TMDB_GENRE_ID_BY_NAME[name]===Number(id))).filter(Boolean);
+      if(baseGenres.length&&baseGenres.some(g=>prefs.genres.has(g.toLowerCase())))continue;
+      if(baseGenres.length&&realGenres.length&&!baseGenres.some(g=>realGenres.includes(g)))continue;
+      if(baseGenres.length&&!moodFitsVerified(mood,baseGenres,base.overview||'',base.kind))continue;
       exactDetails++;
       const d=await window.tmdbDetails(base.tmdbId,base.kind,{priority:true});
       const sourceProvesProvider=!!(provider&&base.providerFiltered===true&&base.verifiedRegion===region&&base.verifiedProvider===canonicalProviderName(provider));
@@ -4057,6 +4110,7 @@ async function discoverVerifiedExactTMDB(requested){
       if(decade.length&&!decade.some(dec=>{const s=Number(String(dec).match(/\d{4}/)?.[0]);const y=Number(d?.year||base.year);return s&&y>=s&&y<s+10;}))continue;
       if(d && !sourceRatingFits(d.contentRating,rating))continue;
       if(!d && rating.length)continue;
+      if(!vibeFits(d,base.kind))continue;
       let verifiedPlatform='any';
       if(platform.length){
         const row=d?.availability?.[region]||{};
@@ -4089,6 +4143,14 @@ async function discoverVerifiedExactTMDB(requested){
         }
       };
     }
+      if(!candidates.length&&candidates.sourcePages?.total===0){
+        if(pageStart!==1){pageStart=1;advance(1);continue;}
+        advance(1);break;
+      }
+      const lastPage=Number(candidates.sourcePages?.total)||0;
+      const next=lastPage&&pageStart+pageCount>lastPage?1:pageStart+pageCount;
+      if(!candidates.length&&!candidates.sourcePages){break;} // source error: retry, never mark exhausted
+      pageStart=next>500?1:next;advance(pageStart);
     }
     return null;
 }
@@ -4110,7 +4172,7 @@ async function aiProposedVerifiedExact(requested){
           rating=normCriteria(requested.rating),decade=normCriteria(requested.decade),platform=normCriteria(requested.plat),
           realGenres=normCriteria(requested.genre);
     // Same boundary as discoverVerifiedExactTMDB: TMDB can only verify film and TV.
-    if(cat.some(x=>['limited series','vertical micro-drama','YouTube channel','YouTube Shorts','podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith','Classical Music','News','Sports'].includes(x)))return null;
+    if(cat.length&&cat.every(x=>['vertical micro-drama','YouTube channel','YouTube Shorts','podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith','Classical Music','News','Sports'].includes(x)))return null;
     const region=window.MatchAppCatalogMedia?.regionCode?.()||'';
     if(platform.length&&!region)return null;
     const prefs=currentPreferenceExclusions(),known=window.matchPolicy?.known?.()||new Set();
@@ -4568,8 +4630,8 @@ function pickGuaranteedCatalog(cat, plat, mood, vibe, rating, decade, freshOnly 
 // Pluto TV and others. Picking any of them guaranteed "no titles match your
 // criteria", which reads as a broken product rather than an empty shelf.
 //
-// Rather than delete them from the markup, they are hidden at runtime based on
-// what the catalogue actually contains. That way the moment a title in one of
+// Retain live-searchable formats and services even when the curated shelf
+// does not currently contain a matching title. That way the moment a title in one of
 // those categories is added, its option reappears on its own — no markup edit,
 // no chance of the list and the data drifting apart again.
 // ----------------------------------------------------
@@ -4594,7 +4656,9 @@ function pruneUnstockedOptions() {
         Array.from(sel.options).forEach(opt => {
             // 'any' and empty values are controls, not content.
             if (!opt.value || opt.value === 'any') return;
-            if (!have.has(opt.value)) { opt.remove(); removed++; }
+            const live=(id==='q-category'&&sourceDiscoverableCategory(opt.value)) ||
+                (id==='q-platform'&&sourceDiscoverablePlatform(opt.value));
+            if (!have.has(opt.value)&&!live) { opt.remove(); removed++; }
         });
         if (removed) console.info('[matchapp] ' + id + ': hid ' + removed + ' option(s) with no titles in stock');
     });

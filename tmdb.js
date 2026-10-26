@@ -197,6 +197,7 @@
             // later Match with the same choices fail instantly for the whole visit.
             if(error||!Array.isArray(data?.results))return [];
             out=data.results.filter(r=>r&&Number.isSafeInteger(r.tmdbId)&&['movie','tv'].includes(r.kind)&&r.adult!==true);
+            Object.defineProperty(out,'sourcePages',{value:{total:Math.max(0,Number(data.total_pages)||0),start:Math.max(1,Number(data.page_start)||1),count:Math.max(1,Number(data.pages)||1)}});
         } catch (_) { return []; }
         // An empty success can mask a transient upstream outage. Let the
         // next user Match retry rather than poisoning the entire browser tab.

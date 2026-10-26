@@ -4,7 +4,9 @@ const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 test('adult movie/TV source discovery expands only after a bounded identity-checked first batch',()=>{
  const app=read('app.js');
  const m=app.slice(app.indexOf('async function discoverVerifiedExactTMDB('),app.indexOf('async function aiProposedVerifiedExact('));
- assert.match(m,/pagePlan=provider\?\[\[1,3\],\[4,3\]\]:\[\[1,2\],\[3,2\]\]/);
+ assert.match(m,/for\(let batch=0;batch<4;batch\+\+\)/);
+ assert.match(m,/match_source_cursors_v1/);
+ assert.match(m,/const candidateWindow=candidates\.slice\(0,120\)/);
  assert.match(m,/MAX_EXACT_DETAILS=14/);
  assert.match(m,/sourceStarted>46000/);
  assert.match(m,/window\.tmdbDetails\(base\.tmdbId,base\.kind/);
