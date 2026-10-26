@@ -39,6 +39,23 @@
     if (vars) Object.keys(vars).forEach(k => { s = s.split('{' + k + '}').join(String(vars[k])); });
     return s;
   }
+  const sourceCopy={
+  "en": "MatchApp checks verified catalogues beyond the curated selection for these choices.",
+  "pt-BR": "O MatchApp consulta catálogos verificados além da seleção editorial para estas escolhas.",
+  "es": "MatchApp consulta catálogos verificados más allá de la selección editorial para estas opciones.",
+  "fr": "MatchApp consulte des catalogues vérifiés au-delà de la sélection éditoriale pour ces critères.",
+  "de": "MatchApp prüft für diese Auswahl verifizierte Kataloge über die redaktionelle Auswahl hinaus.",
+  "it": "MatchApp consulta cataloghi verificati oltre la selezione editoriale per queste scelte.",
+  "tr": "MatchApp bu seçimler için editoryal seçkinin ötesindeki doğrulanmış katalogları kontrol eder.",
+  "ru": "Для этих условий MatchApp проверяет каталоги из подтверждённых источников за пределами редакционной подборки.",
+  "ar": "يتحقق MatchApp من كتالوجات موثّقة تتجاوز الاختيارات التحريرية لهذه الخيارات.",
+  "hi": "इन पसंदों के लिए MatchApp संपादकीय चयन से आगे सत्यापित कैटलॉग जाँचता है।",
+  "id": "MatchApp memeriksa katalog terverifikasi di luar pilihan editorial untuk pilihan ini.",
+  "ja": "この条件では、MatchAppが編集部の厳選リスト以外の確認済みカタログも調べます。",
+  "ko": "이 조건에 대해 MatchApp이 편집 추천 목록 밖의 검증된 카탈로그도 확인합니다.",
+  "zh": "对于这些条件，MatchApp 还会查询编辑精选之外的已核实目录。"
+};
+  for(const [language,copy] of Object.entries(sourceCopy))T[language].sourceSearch=copy;
   const FIELDS = { cat: 'q-category', plat: 'q-platform', genre: 'q-genre', mood: 'q-mood', vibe: 'q-vibe', rating: 'q-rating', decade: 'q-decade' };
   const vals = v => (Array.isArray(v) ? v : [v]).filter(x => x && x !== 'any');
   function optionLabel(field, value) {
@@ -137,7 +154,10 @@
       const n = countPool(c, genreKeys, null);
       if (n == null) { el.hidden = true; return; }
       let text, level;
-      if (n >= 5) { text = t('poolMany', { n }); level = 'many'; }
+      const liveSource=typeof sourceDiscoverableCategory==='function' &&
+          (!vals(c.cat).length || vals(c.cat).some(sourceDiscoverableCategory));
+      if(n<5&&liveSource){text=t('sourceSearch');level='source';}
+      else if (n >= 5) { text = t('poolMany', { n }); level = 'many'; }
       else if (n > 0) { text = t('poolFew', { n }); level = 'few'; }
       else {
         text = t('poolNone'); level = 'none';

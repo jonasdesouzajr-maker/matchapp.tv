@@ -26,13 +26,15 @@
       if (!cats.length) return true;
       const pf = platformInfo(value);
       if (!Array.isArray(pf?.cats)) return true;
-      return cats.some(c => (pf.cats || []).includes(c));
+      return cats.some(c => (pf.cats || []).includes(c) ||
+        typeof platformAcceptsCategory==='function'&&platformAcceptsCategory(value,c));
     }
     if (fieldKey === 'cat') {
       if (!platforms.length) return true;
       return platforms.some(p => {
         const pf = platformInfo(p);
-        return !Array.isArray(pf?.cats) || pf.cats.includes(value);
+        return !Array.isArray(pf?.cats) || pf.cats.includes(value) ||
+          typeof platformAcceptsCategory==='function'&&platformAcceptsCategory(p,value);
       });
     }
     return true;
