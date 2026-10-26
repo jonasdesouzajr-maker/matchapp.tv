@@ -251,3 +251,12 @@ html body.page-home #awareness-spotlight .awareness-card{
 html body.page-home #awareness-spotlight .awareness-cta{
   border-color:rgba(255,255,255,.34)!important;
 }
+
+/* Persistent match recovery stays in document flow; it cannot cover navigation. */
+#questionnaire-box #match-recovery{
+  position:static;display:block;box-sizing:border-box;max-width:100%;
+  margin:16px 0 0;padding:14px 16px;border-radius:14px;
+  background:#211c2c;color:#f4d7a4;font-size:.9375rem;line-height:1.5;
+  white-space:normal;overflow-wrap:anywhere;text-align:center;
+}
+#questionnaire-box:has(#match-recovery) #match-pool-hint{display:none!important}
