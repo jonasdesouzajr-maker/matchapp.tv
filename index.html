@@ -429,6 +429,10 @@
         .crit-chips { display: flex; flex-direction: column; gap: 2px; align-items: stretch;
                       max-height: 268px; overflow-y: auto; overscroll-behavior: contain;
                       scrollbar-width: thin; scrollbar-color: rgba(229,193,88,0.4) transparent; }
+        /* Touch uses one page scroller: long filter lists must not swallow swipes. */
+        @media (any-pointer: coarse) {
+            #questionnaire-box .crit-chips { max-height: none; overflow-y: visible; overscroll-behavior-y: auto; }
+        }
         .crit-chips::-webkit-scrollbar { width: 6px; }
         .crit-chips::-webkit-scrollbar-thumb { background: rgba(229,193,88,0.4); border-radius: 999px; }
         .crit-group { width: 100%; font-size: 10px; font-weight: 800; letter-spacing: 1px;
@@ -1700,7 +1704,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <link rel="stylesheet" href="/ai-composer.css?v=20261002-premium-coherence1">
 <link rel="stylesheet" href="/mobile-compact.css?v=20260929-compact3">
 <link rel="stylesheet" href="/home-fold-grid.css?v=20261002-premium-coherence1">
-<script defer src="/locale-results.js?v=20260929-language1&amp;language=20260930-fix2&amp;sbt=20261004-1"></script>
+<script defer src="/locale-results.js?v=20261026-criteria2&amp;language=20260930-fix2&amp;sbt=20261004-1"></script>
 <script defer src="/ai-composer.js?v=20261002-again1&amp;ui=20260930-1&amp;brand=20260930-1&amp;stream=20260930-1&amp;header=20260930-locales2&amp;language=20260930-fix2&amp;fastlang=20261014-2&amp;brandlocale=20261020-1"></script>
 <link rel="stylesheet" href="/music-video-releases.css?v=20261021-meta-wrap1">
 <script defer src="/music-video-releases.js?v=20261003-meta2"></script>
@@ -3979,7 +3983,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
-    <script src="/settings.js?v=20261006-installbell1&amp;matching=20260928-session1&amp;posters=20261020-1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;brandlocale=20261020-1&amp;androidqa=20261021-1"></script>
+    <script src="/settings.js?v=20261006-installbell1&amp;matching=20260928-session1&amp;posters=20261020-1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;brandlocale=20261020-1&amp;androidqa=20261021-1&amp;criteria=20261026-2"></script>
     <script src="/topic-focus.js?v=20260928-1"></script>
     <script src="/guest-reservations.js?v=20261019-1"></script><script src="/matching-policy.js?v=20260926-conflicts2&amp;reliability=20261019-2&amp;lifetime=20261019-1&amp;carousel=20261020-right2"></script>
     <script src="/match-localization.js?v=20261017-b5e68a81cebc"></script>
@@ -4017,7 +4021,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
          matcher, and non-deferred so the form is never briefly interactive as
          a plain single-choice select. -->
     <script src="/tmdb.js?v=20261001-verifiedalias1&amp;language=20260930-fix2&amp;reliability=20261018-1"></script>
-    <script src="/criteria.js?v=20260928-topics1&amp;ui=20260930-1&amp;androidqa=20261021-1&amp;fold=20261025-1"></script>
+    <script src="/criteria.js?v=20260928-topics1&amp;ui=20260930-1&amp;androidqa=20261021-1&amp;fold=20261026-2"></script>
     <script src="/match-speed.js?v=20260925-matchrestore1&amp;recovery=20260929-2"></script>
     <script src="/lazy.js?v=20260926-chroma1&amp;home=20260928-folds2&amp;toprail=20260929-1&amp;defaults=20260929-toponly1&amp;askfold=20260929-1&amp;ui=20260930-1&amp;native=20261001-userintent1&amp;togethernav=20261015-link1"></script>
     <!-- News must start on Home, not wait for a later editorial section to scroll into view. -->

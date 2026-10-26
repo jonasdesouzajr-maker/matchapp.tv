@@ -38,3 +38,8 @@
   opacity: .7;
 }
 .crit-collapsible:not(.crit-open) .crit-chips { display: none !important; }
+
+/* Touch filters share the page's native momentum instead of nesting scrollers. */
+@media (any-pointer: coarse) {
+  .crit-collapsible .crit-chips { max-height: none; overflow-y: visible; overscroll-behavior-y: auto; }
+}
