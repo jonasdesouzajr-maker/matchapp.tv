@@ -1,6 +1,6 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{JSDOM}=require('jsdom');
-const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8'),app=read('app.js'),trigger=app.slice(app.indexOf('window.triggerMatch = async function'),app.indexOf('// THE RENDER ENGINE')),safe=app.match(/function tSafe\([\s\S]*?\n}\n/)[0];
+const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8'),app=read('app.js').replace(/\r\n/g,'\n'),trigger=app.slice(app.indexOf('window.triggerMatch = async function'),app.indexOf('// THE RENDER ENGINE')),safe=app.match(/function tSafe\([\s\S]*?\n}\n/)[0];
 const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
 test('the actual failed exact-title branch localizes its no-charge message and retains original fields in all14 languages',async()=>{
  for(const language of languages){

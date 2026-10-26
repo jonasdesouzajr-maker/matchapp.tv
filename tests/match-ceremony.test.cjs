@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('path');
 const root=path.join(__dirname,'..');
-const app=fs.readFileSync(path.join(root,'app.js'),'utf8');
+const app=fs.readFileSync(path.join(root,'app.js'),'utf8').replace(/\r\n/g,'\n');
 const speed=fs.readFileSync(path.join(root,'match-speed.js'),'utf8');
 const hardening=fs.readFileSync(path.join(root,'production-hardening.js'),'utf8');
 const css=fs.readFileSync(path.join(root,'urgent-fixes.css'),'utf8');

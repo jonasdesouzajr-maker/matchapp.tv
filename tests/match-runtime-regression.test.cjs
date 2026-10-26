@@ -78,13 +78,50 @@ test('ordinary matching preserves exact choices when no verifiable candidate exi
  }finally{dom.window.close();}
 });
 
-test('recovery cannot claim an unverified selected streaming platform',async()=>{
+test('optional title metadata cannot stall curated matches when no platform was selected',async()=>{
+ const requested={cat:['movie'],plat:[],mood:['funny'],vibe:[],rating:[],decade:[]};
+ const {dom,w,context,state}=matching(requested,[]);
+ let metadataCalls=0;
+ context.getCatalogTmdbIdentity=()=>{metadataCalls++;return new Promise(()=>{});};
+ context.getCuratedPoster=()=>{metadataCalls++;return new Promise(()=>{});};
+ try{
+  await Promise.race([w.triggerMatch(false),new Promise((_,reject)=>setTimeout(()=>reject(new Error('unrestricted match stalled waiting for artwork')),900))]);
+  assert(state.rendered,'an already-curated eligible title must be displayed without a metadata network round trip');
+  assert.equal(metadataCalls,0,'optional identity and artwork lookups must never block this path');
+  assert.equal(state.charges,1);
+ }finally{dom.window.close();}
+});
+
+test('failed exact platform verification recovers a fresh truthful alternative without inventing availability',async()=>{
  const requested={cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:['1900s']};
  const {dom,w,state}=matching(requested,[]);
  try{
   await w.triggerMatch(false);
-  assert.equal(state.rendered,null,'a catalogue label is insufficient proof of country availability');
-  assert.equal(state.charges,0);
+  const match=state.rendered;
+  assert(match,'the verified curated fallback must not be discarded by rechecking the unavailable platform');
+  assert.equal(match.platform,'any','a broadened match must not claim to be on the selected provider');
+  assert.equal(match.platformVerified,false);
+  assert.equal(match._relaxedStage,'broaden-platform');
+  assert.equal(w.lastMatchRelaxation,'broaden-platform');
+  const original=catalog.find(e=>e.title===match.title);
+  assert(original&&original.cats.includes('movie')&&original.moods.includes('funny'));
+  assert.equal(state.charges,1,'one usable reveal consumes just one match');
+ }finally{dom.window.close();}
+});
+
+test('broadened discovery still respects disliked titles and all hard mood/category boundaries',async()=>{
+ const disallowed=catalog.filter(e=>e.cats.includes('movie')&&e.moods.includes('funny'));
+ assert(disallowed.length>1);
+ const requested={cat:['movie'],plat:['Impossible service'],mood:['funny'],vibe:[],rating:[],decade:[]};
+ const {dom,w,state}=matching(requested,[]);
+ try{
+  const disliked=disallowed[0];
+  w.localStorage.setItem('match_dislikedList',JSON.stringify([{title:disliked.title}]));
+  await w.triggerMatch(false);
+  assert(state.rendered,'another eligible curated title must remain available');
+  assert.notEqual(state.rendered.title,disliked.title);
+  assert.equal(state.rendered.platform,'any');
+  assert(w.matchPolicy.matchesCriteria(catalog.find(e=>e.title===state.rendered.title),{...requested,plat:[]}));
  }finally{dom.window.close();}
 });
 
