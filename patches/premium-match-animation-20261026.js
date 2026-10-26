@@ -1,135 +1,92 @@
-/* Premium Matching Search Animation — 2026-10-26
-   Injects new markup, handles sparkles, vibration. Respects existing sound system and reduced motion.
-   Does not touch matching logic. Self-loads CSS. */
-(function() {
+/* Premium matching presentation, 2026-10-26. No matching/progress/feedback owner changes. */
+(function () {
   'use strict';
-
-  // Self-load the companion CSS
-  if (!document.getElementById('premium-match-animation-css')) {
+  if (/^\/kids(?:\/|$)/.test(location.pathname) || window.__maPremiumMatchAnimation) return;
+  function init() {
+    const box = document.getElementById('loading-box');
+    if (!box || document.body.classList.contains('page-kids')) return;
+    window.__maPremiumMatchAnimation = true;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const link = document.createElement('link');
     link.id = 'premium-match-animation-css';
     link.rel = 'stylesheet';
-    link.href = '/patches/premium-match-animation-20261026.css?v=20261026-1';
+    link.href = '/patches/premium-match-animation-20261026.css?v=20261026-2';
+    // Upgrade only after CSS loads, retaining the usable legacy loader on failure.
+    link.onload = upgrade;
     document.head.appendChild(link);
-  }
 
-  function matchVibrate(pattern) {
-    if (!navigator.vibrate) return;
-    try {
-      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      navigator.vibrate(pattern);
-    } catch (_) {}
-  }
-
-  let sparkleAnim = null;
-  function startMatchSparkles() {
-    const canvas = document.getElementById('match-sparkle-canvas');
-    if (!canvas) return;
-    const stage = canvas.parentElement;
-    function resize() {
-      canvas.width = stage.offsetWidth || 220;
-      canvas.height = stage.offsetHeight || 220;
-    }
-    resize();
-    const ctx2d = canvas.getContext('2d');
-    if (!ctx2d) return;
-    const particles = Array.from({length: 32}, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.6 + 0.5,
-      vx: (Math.random() - 0.5) * 0.7,
-      vy: (Math.random() - 0.5) * 0.7,
-      phase: Math.random() * Math.PI * 2
-    }));
-    function frame() {
-      ctx2d.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy; p.phase += 0.04;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        const alpha = 0.35 + Math.sin(p.phase) * 0.35;
-        ctx2d.beginPath();
-        ctx2d.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx2d.fillStyle = `rgba(229,193,88,${alpha})`;
-        ctx2d.fill();
-      });
-      sparkleAnim = requestAnimationFrame(frame);
-    }
-    if (sparkleAnim) cancelAnimationFrame(sparkleAnim);
-    frame();
-  }
-  function stopMatchSparkles() {
-    if (sparkleAnim) { cancelAnimationFrame(sparkleAnim); sparkleAnim = null; }
-    const canvas = document.getElementById('match-sparkle-canvas');
-    if (canvas) {
-      const c = canvas.getContext('2d');
-      if (c) c.clearRect(0, 0, canvas.width, canvas.height);
-    }
-  }
-
-  function injectPremiumMarkup() {
-    const loadBox = document.getElementById('loading-box');
-    if (!loadBox || loadBox.dataset.premiumInjected) return;
-    loadBox.dataset.premiumInjected = '1';
-    loadBox.innerHTML = `
-      <div class="premium-match-stage">
-        <canvas class="sparkle-canvas" id="match-sparkle-canvas"></canvas>
-        <div class="constellation-ring"></div>
-        <div class="constellation-ring"></div>
-        <div class="constellation-ring"></div>
-        <div class="central-orb">✨</div>
-        <div class="orbit-star"></div>
-        <div class="orbit-star"></div>
-        <div class="orbit-star"></div>
-      </div>
-      <h3 id="loading-headline" data-i18n="match.loading" class="shimmer-text">Scanning the global catalog…</h3>
-      <p id="loading-substep" data-i18n="match.wait">Reading your mood profile</p>
-      <div class="premium-meter">
-        <div id="ai-progress-bar" class="premium-meter-fill"></div>
-        <span id="meter-pct" class="premium-meter-pct">0%</span>
-      </div>
-      <p class="loading-adnote" data-i18n="match.wait">Your next pick is on its way.</p>
-    `;
-  }
-
-  function observeLoading() {
-    const loadBox = document.getElementById('loading-box');
-    if (!loadBox) return;
-    const observer = new MutationObserver(() => {
-      if (loadBox.style.display !== 'none' && loadBox.style.display !== '') {
-        injectPremiumMarkup();
-        if (window.playMatchAppSound) window.playMatchAppSound('primary');
-        matchVibrate([40, 20, 40]);
-        startMatchSparkles();
-      } else {
-        stopMatchSparkles();
+    function upgrade() {
+      const stage = document.createElement('div');
+      stage.className = 'premium-match-stage';
+      stage.setAttribute('aria-hidden', 'true');
+      stage.innerHTML = '<canvas class="sparkle-canvas" id="match-sparkle-canvas"></canvas>' +
+        '<div class="constellation-ring"></div>'.repeat(3) +
+        '<div class="central-orb">✦</div>' + '<div class="orbit-star"></div>'.repeat(3);
+      box.prepend(stage);
+      // Keep the exact progress/text nodes: core code and translations own them.
+      const bar = box.querySelector('#ai-progress-bar');
+      const pct = box.querySelector('#meter-pct');
+      const meter = bar && bar.parentElement;
+      if (meter) { meter.classList.remove('meter-shell'); meter.classList.add('premium-meter'); }
+      if (bar) { bar.classList.remove('meter-fill'); bar.classList.add('premium-meter-fill'); }
+      if (pct) { pct.classList.remove('meter-pct'); pct.classList.add('premium-meter-pct'); }
+      box.dataset.premiumInjected = '1';
+      let frameId = null;
+      let ctx = null;
+      const canvas = stage.querySelector('canvas');
+      const particles = Array.from({length: 32}, () => ({
+        x: Math.random(), y: Math.random(), r: .5 + Math.random() * 1.6,
+        vx: (Math.random() - .5) * .003, vy: (Math.random() - .5) * .003,
+        phase: Math.random() * Math.PI * 2
+      }));
+      function reduced() { return motion.matches || document.documentElement.classList.contains('reduce-motion'); }
+      function visible(el) {
+        if (!el || el.hidden) return false;
+        const style = getComputedStyle(el);
+        return style.display !== 'none' && style.visibility !== 'hidden' && el.getClientRects().length > 0;
       }
-    });
-    observer.observe(loadBox, { attributes: true, attributeFilter: ['style', 'hidden'] });
-  }
-
-  function observeResult() {
-    const resultBox = document.getElementById('result-box');
-    if (!resultBox) return;
-    const observer = new MutationObserver(() => {
-      if (resultBox.style.display === 'block' || !resultBox.hidden) {
-        stopMatchSparkles();
-        if (window.playMatchAppSound) window.playMatchAppSound('result');
-        matchVibrate([60, 40, 60, 40, 100]);
+      function stop() {
+        if (frameId !== null) cancelAnimationFrame(frameId);
+        frameId = null;
+        if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
-    });
-    observer.observe(resultBox, { attributes: true, attributeFilter: ['style', 'hidden', 'class'] });
+      function frame() {
+        const size = stage.clientWidth;
+        const scale = Math.min(window.devicePixelRatio || 1, 2);
+        if (canvas.width !== Math.round(size * scale)) {
+          canvas.width = canvas.height = Math.round(size * scale);
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy; p.phase += .04;
+          if (p.x < 0 || p.x > 1) p.vx *= -1;
+          if (p.y < 0 || p.y > 1) p.vy *= -1;
+          ctx.beginPath(); ctx.arc(p.x * canvas.width, p.y * canvas.height, p.r * scale, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(229,193,88,${.35 + Math.sin(p.phase) * .35})`; ctx.fill();
+        });
+        frameId = requestAnimationFrame(frame);
+      }
+      function sync() {
+        const active = !document.hidden && visible(box) && !visible(document.getElementById('result-box'));
+        if (box.classList.contains('premium-match-active') !== active) box.classList.toggle('premium-match-active', active);
+        if (!active || reduced()) { stop(); return; }
+        if (frameId !== null) return;
+        try { ctx = canvas.getContext('2d'); } catch (_) { return; }
+        if (ctx) frame();
+      }
+      // Existing deliberate-action and result cues already use playMatchAppSound
+      // and the sole feedback owner's sound/haptic toggles. Do not double them.
+      const observer = new MutationObserver(sync);
+      [box, document.getElementById('result-box'), document.body, document.documentElement].filter(Boolean).forEach(el =>
+        observer.observe(el, {attributes: true, attributeFilter: ['style', 'hidden', 'class']}));
+      document.addEventListener('visibilitychange', sync);
+      window.addEventListener('pageshow', sync);
+      window.addEventListener('pagehide', stop);
+      if (motion.addEventListener) motion.addEventListener('change', sync);
+      else motion.addListener(sync);
+      sync();
+    }
   }
-
-  function init() {
-    injectPremiumMarkup();
-    observeLoading();
-    observeResult();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once: true});
+  else init();
 })();

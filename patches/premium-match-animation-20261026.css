@@ -2,8 +2,8 @@
    Replaces older cinema scanner. Scoped to #loading-box for safety. */
 #loading-box .premium-match-stage {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: min(220px, 100%);
+  aspect-ratio: 1;
   margin: 0 auto 28px auto;
   display: flex;
   align-items: center;
@@ -12,13 +12,13 @@
 #loading-box .constellation-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(229, 193, 88, 0.35);
-  animation: ringPulse 3.2s ease-in-out infinite;
+  background: radial-gradient(closest-side, transparent calc(100% - 1px), rgba(229, 193, 88, 0.35) 100%);
+  animation: maPremiumRingPulse 3.2s ease-in-out infinite;
 }
-#loading-box .constellation-ring:nth-child(1) { width: 100%; height: 100%; animation-delay: 0s; }
-#loading-box .constellation-ring:nth-child(2) { width: 78%; height: 78%; animation-delay: 0.4s; border-color: rgba(168, 108, 36, 0.5); }
-#loading-box .constellation-ring:nth-child(3) { width: 56%; height: 56%; animation-delay: 0.8s; }
-@keyframes ringPulse {
+#loading-box .constellation-ring:nth-child(2) { width: 100%; height: 100%; animation-delay: 0s; }
+#loading-box .constellation-ring:nth-child(3) { width: 78%; height: 78%; animation-delay: 0.4s; opacity: .7; }
+#loading-box .constellation-ring:nth-child(4) { width: 56%; height: 56%; animation-delay: 0.8s; }
+@keyframes maPremiumRingPulse {
   0%, 100% { transform: scale(1); opacity: 0.6; }
   50% { transform: scale(1.05); opacity: 1; }
 }
@@ -32,10 +32,10 @@
   align-items: center;
   justify-content: center;
   font-size: 36px;
-  animation: orbGlow 2.4s ease-in-out infinite;
+  animation: maPremiumOrbGlow 2.4s ease-in-out infinite;
   z-index: 2;
 }
-@keyframes orbGlow {
+@keyframes maPremiumOrbGlow {
   0%, 100% { box-shadow: 0 0 30px rgba(229, 193, 88, 0.5), inset 0 0 15px rgba(255,255,255,0.3); transform: scale(1); }
   50% { box-shadow: 0 0 55px rgba(229, 193, 88, 0.9), 0 0 80px rgba(168, 108, 36, 0.4); transform: scale(1.06); }
 }
@@ -46,13 +46,13 @@
   background: radial-gradient(circle, #fff, #e5c158);
   border-radius: 50%;
   box-shadow: 0 0 12px #e5c158;
-  animation: orbit 8s linear infinite;
-  top: 50%; left: 50%;
+  animation: maPremiumOrbit 8s linear infinite;
+  top: calc(50% - 9px); left: calc(50% - 9px);
 }
-#loading-box .orbit-star:nth-child(5) { animation-duration: 6s; --orbit: 95px; }
-#loading-box .orbit-star:nth-child(6) { animation-duration: 9s; --orbit: 95px; animation-delay: -2s; }
-#loading-box .orbit-star:nth-child(7) { animation-duration: 7s; --orbit: 95px; animation-delay: -4s; }
-@keyframes orbit {
+#loading-box .orbit-star:nth-child(6) { animation-duration: 6s; --orbit: clamp(65px, 19vw, 95px); }
+#loading-box .orbit-star:nth-child(7) { animation-duration: 9s; --orbit: clamp(65px, 19vw, 95px); animation-delay: -2s; }
+#loading-box .orbit-star:nth-child(8) { animation-duration: 7s; --orbit: clamp(65px, 19vw, 95px); animation-delay: -4s; }
+@keyframes maPremiumOrbit {
   from { transform: rotate(0deg) translateX(var(--orbit, 95px)) rotate(0deg); }
   to { transform: rotate(360deg) translateX(var(--orbit, 95px)) rotate(-360deg); }
 }
@@ -61,10 +61,10 @@
   width: 100%;
   height: 48px;
   background: rgba(10, 5, 20, 0.85);
-  border: 2px solid rgba(229, 193, 88, 0.6);
+  border: 0;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(229, 193, 88, 0.25), inset 0 2px 10px rgba(0,0,0,0.6);
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
   margin: 18px 0;
 }
 #loading-box .premium-meter-fill {
@@ -81,9 +81,9 @@
   inset: 0;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
   width: 40%;
-  animation: meterSheen 1.8s ease-in-out infinite;
+  animation: maPremiumMeterSheen 1.8s ease-in-out infinite;
 }
-@keyframes meterSheen {
+@keyframes maPremiumMeterSheen {
   0% { transform: translateX(-120%); }
   100% { transform: translateX(320%); }
 }
@@ -108,24 +108,27 @@
   pointer-events: none;
   z-index: 1;
 }
-/* Hide any residual older elements if present */
-#loading-box .scanner-stage,
-#loading-box .film-reel,
-#loading-box .scan-beam,
-#loading-box .eq-bars,
-#loading-box .meter-shell,
-#loading-box .ma-spin {
+/* Only hide fallback visuals after a successful upgrade. Specificity beats the legacy spinner. */
+html body.page-home #loading-box[data-premium-injected="1"] :is(.scanner-stage,.eq-bars,.ma-spin,.meter-perforations) {
   display: none !important;
 }
+#loading-box:not(.premium-match-active) :is(.constellation-ring,.central-orb,.orbit-star),
+#loading-box:not(.premium-match-active) .premium-meter-fill::after {
+  animation-play-state: paused;
+}
+html.reduce-motion #loading-box[data-premium-injected="1"] *,
+html.reduce-motion #loading-box[data-premium-injected="1"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
 @media (prefers-reduced-motion: reduce) {
-  #loading-box .constellation-ring,
-  #loading-box .central-orb,
-  #loading-box .orbit-star,
-  #loading-box .premium-meter-fill::after {
+  #loading-box[data-premium-injected="1"] *,
+  #loading-box[data-premium-injected="1"] *::after {
     animation: none !important;
+    transition: none !important;
   }
 }
 @media (max-width: 520px) {
-  #loading-box .premium-match-stage { width: 180px; height: 180px; }
+  #loading-box .premium-match-stage { width: min(180px, 100%); }
   #loading-box .central-orb { width: 70px; height: 70px; font-size: 30px; }
 }
