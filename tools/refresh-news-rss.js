@@ -660,6 +660,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p data-news-ui="howIntro">Start with the category and date. A storm or election report belongs to world news, not an entertainment award. An album, casting or premiere announcement is a discovery lead; it is not a review or proof that a title is available to you.</p>
     <p data-news-ui="howSources">Before choosing a film, open its country-specific viewing options: a release announcement does not mean it is included in your subscription. For a concert or album, check the artist or venue for dates and availability. Open the named publisher for the reporting and any corrections.</p>
     <p><span data-news-ui="exploreLead">Explore the films, series and releases behind the news:</span> <a href="/" data-news-ui="matcher">Entertainment matcher</a> · <a href="/discover.html?focus=start" data-news-ui="askAi">Ask MatchApp Ai</a> · <a href="/where-to-watch/" data-news-ui="whereWatch">Where to watch</a></p>
+  <details data-news-editorial>
+    <summary><span data-news-ui="comparisonTitle">Two choices behind the headlines</span> · <time data-news-ui-date="long" datetime="2026-10-25">October 25, 2026</time></summary>
+    <p data-news-ui="albumComparison">For a listening night, compare a new album with a new edition. Official Charts’ October 2 UK list includes Blossoms’ Songs From The Wedding Cake and a Super Deluxe edition of the Beatles’ 1965 Rubber Soul. Choose the studio album to explore a new body of songs; choose the reissue to compare a familiar record’s mix and extras. A new release date does not make every recording new or establish a chart rank. Check the exact edition before paying.</p>
+    <p><a href="https://www.officialcharts.com/chart-news/new-music-friday-october-2-2026/" target="_blank" rel="noopener noreferrer external">Official Charts · 2026-10-02</a></p>
+    <p data-news-ui="filmComparison">For a film tonight, distinguish released films from announcements. Our October guide compares Hocus Pocus (1993) for witchy comedy with The Nightmare Before Christmas (1993) for stop-motion fantasy and songs. Disney’s Halloween guide supplies the US broadcast and streaming context; check your own country. Narnia: The Magician’s Nephew is a different choice: Netflix announced February 12, 2027 in cinemas and April 2 on Netflix. As of this check it is a read-before-the-film project, not a film to stream tonight. Dates can change.</p>
+    <p><a href="https://www.disneyplus.com/explore/articles/freeform-31-nights-of-halloween" target="_blank" rel="noopener noreferrer external">Disney / Freeform · 2026</a> · <a href="https://www.netflix.com/tudum/articles/narnia-release-date" target="_blank" rel="noopener noreferrer external">Netflix Tudum · 2026-10-15</a></p>
+  </details>
   <p data-news-ui="guideChoice">For a whole evening, the October guide compares films, music and books by the time and attention they need. For one title, the Roma guide explains how country, language and rental or subscription options change the decision.</p>
   <p><a href="/where-to-watch/roma/" data-news-ui="romaGuide">Roma: country and viewing-option guide</a></p>
   <p><span data-news-ui="guidesLead">More guides and discovery:</span> <a href="/guides/streaming-music-books-october-2026/" data-news-ui="octoberGuide">October 2026 streaming, music and books guide</a> · <a href="/guides/coffee-music-tv-trends-september-30-2026/" data-news-ui="septemberGuide">September 30 trends guide</a> · <a href="/anime.html" data-news-ui="anime">Anime Finder</a>.</p>
@@ -768,8 +775,12 @@ function repairOrphanArticles(retainedPaths,generated){
   for(const entry of fs.readdirSync(ART,{withFileTypes:true})){
     if(!entry.isDirectory())continue;
     const file=path.join(ART,entry.name,'index.html');
-    if(retainedPaths.has(file)||!fs.existsSync(file))continue;
-    const html=fs.readFileSync(file,'utf8');
+    if(retainedPaths.has(file))continue;
+    let fd;
+    try{fd=fs.openSync(file,'r+');}
+    catch(error){if(error.code==='ENOENT')continue;throw error;}
+    try{
+    const html=fs.readFileSync(fd,'utf8');
     const match=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
     if(!match)continue;
     let web;try{web=JSON.parse(match[1])['@graph']?.find(i=>i['@type']==='WebPage');}catch(_){continue;}
@@ -787,7 +798,16 @@ function repairOrphanArticles(retainedPaths,generated){
       image:clean(html.match(/<meta property="og:image" content="([^"]+)"/)?.[1])||null};
     item.seo=seoFor(item,[],web.dateModified||item.discovered_at);
     const output=page(normalizeStory(item,generated));
-    if(output!==html){fs.writeFileSync(file,output);repaired++;}
+    if(output!==html){
+      const bytes=Buffer.from(output,'utf8');let offset=0;
+      while(offset<bytes.length){
+        const written=fs.writeSync(fd,bytes,offset,bytes.length-offset,offset);
+        if(written<=0)throw new Error('Could not finish orphan article write');
+        offset+=written;
+      }
+      fs.ftruncateSync(fd,bytes.length);repaired++;
+    }
+    }finally{fs.closeSync(fd);}
   }
   return repaired;
 }

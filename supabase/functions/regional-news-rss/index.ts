@@ -19,7 +19,12 @@ const LABELS:any={
   zh:{local:'本地新闻',global:'全球新闻',seoLocal:'今日新闻',seoGlobal:'今日全球新闻',open:'打开新闻来源，阅读完整报道。'}
 };
 const clean=(v:any)=>String(v??'').replace(/\s+/g,' ').trim();
-const decode=(v:any)=>clean(String(v??'').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/<[^>]+>/g,' ').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&apos;|&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+const XML_ENTITIES:Record<string,string>={amp:'&',quot:'"',apos:"'",lt:'<',gt:'>'};
+const decode=(v:any)=>clean(String(v??'').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/<[^>]+>/g,' ').replace(/&(amp|quot|apos|lt|gt|#(?:[0-9]+|[xX][a-fA-F0-9]+));/g,(entity,name)=>{
+  if(name[0]!=='#')return XML_ENTITIES[name];
+  const hex=name[1]==='x'||name[1]==='X',code=Number.parseInt(name.slice(hex?2:1),hex?16:10);
+  return Number.isInteger(code)&&code>0&&code<=0x10ffff&&!(code>=0xd800&&code<=0xdfff)?String.fromCodePoint(code):entity;
+}));
 const tag=(block:string,name:string)=>{const m=block.match(new RegExp('<'+name+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/'+name+'>','i'));return m?decode(m[1]):''};
 const sha=async(s:string)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))).map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,16);
 const countryName=(cc:string,l:string)=>{try{return clean(new Intl.DisplayNames([l==='pt'?'pt-BR':l,'en'],{type:'region'}).of(cc))||cc}catch{return cc}};

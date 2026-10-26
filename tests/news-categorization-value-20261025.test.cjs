@@ -7,7 +7,7 @@ const root=path.resolve(__dirname,'..'),file=path.join(root,'tools/refresh-news-
 const src=fs.readFileSync(file,'utf8'),now='2026-10-25T23:30:00.000Z';
 function definitions(temp=root){
   return vm.runInNewContext(src.slice(0,src.indexOf('(async()=>{'))+'\n;({event,fold,TOPIC,normalizeStory,eligibleStory,page,hub,repairOrphanArticles,seoFor})',{
-    require:createRequire(file),__dirname:path.join(temp,'tools'),URL,console,Date
+    require:createRequire(file),__dirname:path.join(temp,'tools'),URL,console,Date,Buffer
   });
 }
 function story(extra={}){const i={id:'fixture',title:'Singer announces new album and concert tour',source:'BBC',source_home:'https://www.bbc.com',source_domain:'bbc.com',url:'https://www.bbc.com/news/articles/fixture',country:'GB',language:'en',category:'entertainment',event_type:'Music',person:'',description:'Music discovery',published_at:'2026-10-25T10:00:00.000Z',discovered_at:now,matchapp_url:'https://matchapp.tv/news/articles/fixture/',landing_url:'https://matchapp.tv/?news=fixture#latest-news',...extra};i.seo=definitions().seoFor(i,[],now);return i;}
@@ -51,22 +51,25 @@ test('orphan wrappers receive category repair, keep their URLs, and remain noind
  const d=definitions(temp),dir=path.join(temp,'news/articles/fixture');fs.mkdirSync(dir,{recursive:true});
  const p=path.join(dir,'index.html');fs.writeFileSync(p,d.page(story({title:'President wins election after recount',source:'BBC World',category:'world',event_type:'Awards'})));
  assert.equal(d.repairOrphanArticles(new Set(),now),1);
- const html=fs.readFileSync(p,'utf8');assert.match(html,/data-news-ui-event="World"/);assert.match(html,/content="noindex,follow"/);assert.match(html,/https:\/\/matchapp.tv\/news\/articles\/fixture\//);
- assert.doesNotMatch(html,/adsbygoogle|data-ad-slot=|pagead2.googlesyndication.com/);
+ const html=fs.readFileSync(p,'utf8');assert.match(html,/data-news-ui-event="World"/);assert.match(html,/content="noindex,follow"/);assert.match(html,/https:\/\/matchapp\.tv\/news\/articles\/fixture\//);
+ assert.doesNotMatch(html,/adsbygoogle|data-ad-slot=/);
+ assert.equal(html.includes('pagead2.googlesyndication.com'),false);
  assert.equal(d.repairOrphanArticles(new Set(),now),0,'a second repair is stable');
 });
 test('hub gives decision guidance and directs to useful guides without repeated per-card attribution paragraphs',()=>{
  const d=definitions(),html=d.hub([story()],now),w=new JSDOM(html).window;
- try{assert.ok(w.document.querySelector('[data-news-ui="guideChoice"]'));assert.ok(w.document.querySelector('a[href="/where-to-watch/roma/"]'));assert.ok(w.document.querySelector('a[href="/guides/streaming-music-books-october-2026/"]'));assert.equal(w.document.querySelectorAll('[data-native-news-feed] [data-news-ui="sourceNote"]').length,0);assert.doesNotMatch(html,/refresh hourly|hourly refreshed|twice-daily/);}finally{w.close();}
+ try{assert.ok(w.document.querySelector('[data-news-ui="guideChoice"]'));assert.ok(w.document.querySelector('a[href="/where-to-watch/roma/"]'));assert.ok(w.document.querySelector('a[href="/guides/streaming-music-books-october-2026/"]'));assert.equal(w.document.querySelectorAll('[data-native-news-feed] [data-news-ui="sourceNote"]').length,0);assert.doesNotMatch(html,/refresh hourly|hourly refreshed|twice-daily/);
+  assert.ok(w.document.querySelector('[data-news-editorial]'));assert.match(w.document.querySelector('[data-news-ui="albumComparison"]').textContent,/Rubber Soul|Blossoms/);assert.match(w.document.querySelector('[data-news-ui="filmComparison"]').textContent,/1993|2027/);assert.ok(w.document.querySelector('a[href="https://www.officialcharts.com/chart-news/new-music-friday-october-2-2026/"]'));assert.ok(w.document.querySelector('time[datetime="2026-10-25"]'));
+ }finally{w.close();}
 });
 test('actual regional parser preserves source instants and labels missing, invalid and future dates as discovery only',async()=>{
  const source=fs.readFileSync(path.join(root,'supabase/functions/regional-news-rss/index.ts'),'utf8');
  const code=stripTypeScriptTypes(source.replace(/^import .*;\r?\n/,''),{mode:'strip'});
  let handler;const rows=[['dated','Sun, 25 Oct 2026 10:00:00 GMT'],['missing',''],['invalid','not a date'],['future','Sun, 25 Oct 2099 10:00:00 GMT']];
- const xml='<rss>'+rows.map(([id,date])=>`<item><title>General world report ${id} - BBC</title><link>https://news.google.com/articles/${id}</link><pubDate>${date}</pubDate><source url="https://www.bbc.com">BBC</source></item>`).join('')+'</rss>';
+ const xml='<rss>'+rows.map(([id,date])=>`<item><title>General world report ${id} &amp;lt;safe&amp;gt; - BBC</title><link>https://news.google.com/articles/${id}</link><pubDate>${date}</pubDate><source url="https://www.bbc.com">BBC</source></item>`).join('')+'</rss>';
  const ctx={URL,Response,crypto:require('node:crypto').webcrypto,TextEncoder,AbortSignal,setTimeout,clearTimeout,Intl,Date,console,Deno:{serve:fn=>{handler=fn;}},fetch:async()=>({ok:true,text:async()=>xml})};
  vm.runInNewContext(code,ctx);
  const r=await handler(new Request('https://test.invalid/?country=BR&language=pt'));const payload=await r.json();
  assert.equal(payload.items.length,8);assert.equal(payload.language,'pt');
- for(const row of payload.items){assert.equal(row.category,'general');assert.equal(row.language,'pt');assert.ok(['BR','GLOBAL'].includes(row.country));assert.ok(row.discovered_at);if(row.title.includes('dated')){assert.equal(row.published_at,'2026-10-25T10:00:00.000Z');assert.equal(row.timestamp_kind,'published');}else{assert.equal(row.published_at,null);assert.equal(row.timestamp_kind,'discovered');}}
+ for(const row of payload.items){assert.ok(row.title.includes('&lt;safe&gt;'),'XML entities decode once, without turning nested entities into markup');assert.equal(row.category,'general');assert.equal(row.language,'pt');assert.ok(['BR','GLOBAL'].includes(row.country));assert.ok(row.discovered_at);if(row.title.includes('dated')){assert.equal(row.published_at,'2026-10-25T10:00:00.000Z');assert.equal(row.timestamp_kind,'published');}else{assert.equal(row.published_at,null);assert.equal(row.timestamp_kind,'discovered');}}
 });

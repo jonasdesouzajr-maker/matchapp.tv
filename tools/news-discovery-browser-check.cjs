@@ -12,8 +12,10 @@ async function auditNewsDiscovery({browser,base,record,shot}){
     ['roma','/where-to-watch/roma/'],['october','/guides/streaming-music-books-october-2026/']
    ]){
     await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:30000});
-    await page.locator('main h1').first().waitFor({state:'visible',timeout:10000});
-    const state=await page.evaluate(()=>({heading:document.querySelector('main h1')?.textContent,
+    // The preserved October guide places its semantic H1 in its hero header,
+    // before main. Require a visible page heading without assuming its parent.
+    await page.getByRole('heading',{level:1}).first().waitFor({state:'visible',timeout:10000});
+    const state=await page.evaluate(()=>({heading:document.querySelector('h1')?.textContent,
      overflow:document.documentElement.scrollWidth>innerWidth+2,
      event:document.querySelector('[data-news-ui-event]')?.getAttribute('data-news-ui-event'),
      robots:document.querySelector('meta[name="robots"]')?.content||'',
@@ -27,16 +29,22 @@ async function auditNewsDiscovery({browser,base,record,shot}){
     await shot(page,'news-discovery-'+screen.name+'-'+name);
    }
    for(const [language,hubTitle] of [['en','Latest Entertainment, World and Sports News'],['pt-BR','Últimas notícias de entretenimento, mundo e esportes']]){
-    await page.addInitScript(lang=>localStorage.setItem('match_lang',lang),language);
+    // This fresh test context is already on the site. Store one explicit
+    // choice before navigation instead of accumulating competing init scripts.
+    await page.evaluate(lang=>localStorage.setItem('match_lang',lang),language);
     await page.goto(base+'/news/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.waitForFunction(expected=>document.querySelector('main h1')?.textContent===expected,hubTitle,{timeout:10000});
+    await page.locator('[data-news-editorial] summary').click();
+    await page.locator('[data-news-ui="albumComparison"]').waitFor({state:'visible'});
     const state=await page.evaluate(()=>({language:document.documentElement.lang,
      overflow:document.documentElement.scrollWidth>innerWidth+2,
      guidance:document.querySelector('[data-news-ui="guideChoice"]')?.textContent||'',
      viewingGuide:!!document.querySelector('main a[href="/where-to-watch/roma/"]'),
      currentGuide:!!document.querySelector('main a[href="/guides/streaming-music-books-october-2026/"]'),
+     albumComparison:document.querySelector('[data-news-ui="albumComparison"]')?.textContent||'',
+     filmComparison:document.querySelector('[data-news-ui="filmComparison"]')?.textContent||'',
      repeatedNotes:document.querySelectorAll('[data-native-news-feed] [data-news-ui="sourceNote"]').length}));
-    record('LIVE useful news hub '+language+' '+screen.name,state.language===language&&!state.overflow&&state.guidance.length>80&&state.viewingGuide&&state.currentGuide&&state.repeatedNotes===0,JSON.stringify(state));
+    record('LIVE useful news hub '+language+' '+screen.name,state.language===language&&!state.overflow&&state.guidance.length>80&&state.albumComparison.length>100&&state.filmComparison.length>100&&state.viewingGuide&&state.currentGuide&&state.repeatedNotes===0,JSON.stringify(state));
     await shot(page,'news-discovery-'+screen.name+'-hub-'+language);
    }
   }catch(error){record('LIVE news discovery '+screen.name,false,String(error.stack||error).slice(0,500));}
@@ -44,3 +52,15 @@ async function auditNewsDiscovery({browser,base,record,shot}){
  }
 }
 module.exports={auditNewsDiscovery};
+if(require.main===module){
+ const fs=require('node:fs'),path=require('node:path'),{chromium}=require('playwright');
+ const {captureAuditedScreenshot}=require('./live-qa-screenshot.cjs');
+ const dir=path.resolve('artifacts/live-smoke');fs.mkdirSync(dir,{recursive:true});
+ let passed=0,failed=0;
+ const record=(name,ok,detail)=>{if(ok)passed++;else failed++;console.log((ok?'PASS ':'FAIL ')+name+' '+detail);};
+ (async()=>{const browser=await chromium.launch({headless:true});
+  try{await auditNewsDiscovery({browser,base:process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv',record,
+   shot:async(page,name)=>{await captureAuditedScreenshot(page,path.join(dir,name+'.png'));}});}
+  finally{await browser.close();console.log('NEWS DISCOVERY TOTAL '+passed+' passed '+failed+' failed');if(failed)process.exitCode=1;}
+ })().catch(error=>{console.error(error);process.exitCode=1;});
+}
