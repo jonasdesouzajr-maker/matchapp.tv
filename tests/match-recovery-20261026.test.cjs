@@ -29,16 +29,17 @@ test('empty match recovery occupies one in-flow notice and hides conflicting poo
  }finally{d.window.close();}
 });
 test('missing viewing country returns actionable localized guidance before any source work',()=>{
- const start=app.indexOf('const screenPlatform=');
+ const start=app.indexOf('const selectedFormats=');
  const block=app.slice(start,app.indexOf('const wantedGenres =',start));
  const run=new Function('window','PLATFORMS','requested','isSpecificSearch','normCriteria',block+'return true;');
  for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
   let notice='';const w={MATCH_LANG:lang,MatchAppCountry:{...country,regionCode:()=>''},showMatchRecovery:s=>notice=s};
   const platforms={Netflix:{cats:['movie','series']},Spotify:{cats:['Spotify playlist']}};
-  assert.equal(run(w,platforms,{plat:['Netflix']},false,a=>a),false);
+  assert.equal(run(w,platforms,{plat:['Netflix'],cat:['movie']},false,a=>a||[]),false);
   assert.equal(notice,country.chooseCountryMessage(lang));assert.equal(w.__matchappMatchPhase,'idle');
-  assert.equal(run(w,platforms,{plat:['Spotify']},false,a=>a),true,'global music does not require a viewing country');
+  assert.equal(run(w,platforms,{plat:['Spotify'],cat:['Spotify playlist']},false,a=>a||[]),true,'global music does not require a viewing country');
+  assert.equal(run(w,platforms,{plat:['Netflix','Spotify'],cat:['Spotify playlist']},false,a=>a||[]),true,'an unrelated selected screen service must not block music');
   w.MatchAppCountry.regionCode=()=>'BR';
-  assert.equal(run(w,platforms,{plat:['Netflix']},false,a=>a),true);
+  assert.equal(run(w,platforms,{plat:['Netflix'],cat:['movie']},false,a=>a||[]),true);
  }
 });

@@ -4700,9 +4700,11 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],genre:[document.getElementById('q-genre')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
     // A service's local catalogue cannot be verified without a viewing country.
     // Explain the missing input before starting sources, preserving all choices.
+    const selectedFormats=normCriteria(requested.cat);
     const screenPlatform=normCriteria(requested.plat).some(name=>
         typeof PLATFORMS!=='undefined' && (PLATFORMS[name]?.cats||[]).some(cat=>
-            ['movie','series','documentary','K-drama','anime','reality show'].includes(cat)));
+            ['movie','series','documentary','K-drama','anime','reality show'].includes(cat)) &&
+        (!selectedFormats.length || selectedFormats.some(cat=>PLATFORMS[name].cats.includes(cat))));
     if(!isSpecificSearch && screenPlatform && window.MatchAppCountry && !window.MatchAppCountry.regionCode()){
         window.__matchappMatchPhase='idle';
         const message=window.MatchAppCountry.chooseCountryMessage(window.MATCH_LANG);
