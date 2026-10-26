@@ -4667,6 +4667,7 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     window.__matchappMatchRunId=matchRunId;
     window.lastMatchRelaxation='exact';
     window.__matchappMatchPhase='preflight';
+    window.clearMatchRecovery?.();
     try { await window.ensureCompactMatchSession?.(); }
     catch (error) {
         window.__matchappMatchPhase = 'idle';
@@ -4697,6 +4698,18 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     }
     if(matchRunId!==window.__matchappMatchRunId)return;
     const requested = window.getMatchCriteria?.() || {cat:[document.getElementById('q-category')?.value],plat:[document.getElementById('q-platform')?.value],genre:[document.getElementById('q-genre')?.value],mood:[document.getElementById('q-mood')?.value],vibe:[document.getElementById('q-vibe')?.value],rating:[document.getElementById('q-rating')?.value],decade:[document.getElementById('q-decade')?.value]};
+    // A service's local catalogue cannot be verified without a viewing country.
+    // Explain the missing input before starting sources, preserving all choices.
+    const screenPlatform=normCriteria(requested.plat).some(name=>
+        typeof PLATFORMS!=='undefined' && (PLATFORMS[name]?.cats||[]).some(cat=>
+            ['movie','series','documentary','K-drama','anime','reality show'].includes(cat)));
+    if(!isSpecificSearch && screenPlatform && window.MatchAppCountry && !window.MatchAppCountry.regionCode()){
+        window.__matchappMatchPhase='idle';
+        const message=window.MatchAppCountry.chooseCountryMessage(window.MATCH_LANG);
+        if(window.showMatchRecovery)window.showMatchRecovery(message);
+        else window.showToast?.(message,true);
+        return false;
+    }
     const wantedGenres = normCriteria(requested.genre);
     window.__matchappGenreFilterActive = wantedGenres.length > 0;
     window.__matchappGenreKeys = null;
@@ -4849,7 +4862,10 @@ window.triggerMatch = async function(isSpecificSearch = false) {
         const noExactMatchMessage=window.MATCH_LANG==='pt-BR'
             ? 'Não encontramos um título verificado para essas escolhas agora. Suas escolhas foram mantidas e nenhum match foi consumido. Tente novamente ou ajuste Vibe, Época ou Plataforma.'
             : 'No verified exact title is available for these choices right now. Your choices are saved and no match was used. Please retry, or change Vibe, Era, or Platform.';
-        window.showToast?.(noExactMatchMessage,true,{recovery:'empty'});
+        const translated=window.t?.('polish.noFresh');
+        const message=translated&&translated!=='polish.noFresh'?translated:noExactMatchMessage;
+        if(window.showMatchRecovery)window.showMatchRecovery(message);
+        else window.showToast?.(message,true,{recovery:'empty'});
         return;
     }
     const alreadySeenSpecific = isSpecificSearch && window.matchPolicy?.known().has(window.matchPolicy.key(typed));
@@ -6130,6 +6146,29 @@ async function syncListsToDatabase() {
 // ----------------------------------------------------
 // PREMIUM TOAST (non-blocking replacement for alert popups)
 // ----------------------------------------------------
+// Match recovery belongs in the form's flow, above its pool hint, so long
+// translated messages never paint over controls, navigation or native ads.
+window.clearMatchRecovery = function() {
+    document.getElementById('match-recovery')?.remove();
+    const hint=document.getElementById('match-pool-hint');
+    if(hint?.dataset.recoveryHidden){hint.hidden=false;delete hint.dataset.recoveryHidden;}
+};
+window.showMatchRecovery = function(message) {
+    const form=document.getElementById('questionnaire-box');
+    const button=form?.querySelector('button[onclick^="triggerMatch"]');
+    if(!button){window.showToast?.(message,true);return;}
+    window.clearMatchRecovery();
+    const notice=document.createElement('p');
+    notice.id='match-recovery';
+    notice.setAttribute('role','status');
+    notice.setAttribute('aria-live','polite');
+    notice.textContent=String(message||'');
+    button.insertAdjacentElement('afterend',notice);
+    const hint=document.getElementById('match-pool-hint');
+    if(hint&&!hint.hidden){hint.hidden=true;hint.dataset.recoveryHidden='true';}
+    window.MatchAppActivatedScroll?.toStart(notice,{behavior:'auto'});
+};
+document.addEventListener('matchapp:criteriachange',()=>window.clearMatchRecovery());
 window.matchRecoveryHeading = function() {
     return /^pt/i.test(window.MATCH_LANG||'')
         ? 'INTERRUPÇÃO TEMPORÁRIA — TENTE NOVAMENTE EM INSTANTES.'
