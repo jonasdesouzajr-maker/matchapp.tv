@@ -60,3 +60,34 @@ test('all topics shortcut opens the same accessible panel', () => {
   assert.equal(wrap.querySelector('.crit-toggle').getAttribute('aria-expanded'),'true');
   dom.window.close();
 });
+
+test('parsed Home mounts filters before DOMContentLoaded and late startup cannot discard an early selection',()=>{
+ const dom=new JSDOM(home,{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window;
+ try{
+  assert.equal(w.document.readyState,'loading');
+  w.localStorage.setItem('match_criteria_v1',JSON.stringify({cat:['movie'],mood:['romantic'],plat:['Netflix']}));
+  w.eval(script);
+  const toggle=w.document.querySelector('#q-mood').parentElement.querySelector('.crit-toggle');
+  assert.ok(toggle,'early controls must not wait for optional scripts or DOMContentLoaded');
+  assert.deepEqual(Array.from(w.getMatchCriteria().mood),['romantic']);
+  toggle.click();
+  w.document.querySelector('#q-mood').parentElement.querySelector('[data-value="funny"]').click();
+  const choices=JSON.stringify(w.getMatchCriteria());
+  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+  assert.equal(JSON.stringify(w.getMatchCriteria()),choices);
+  assert.equal(w.document.querySelector('#q-mood').parentElement.querySelector('.crit-toggle'),toggle);
+  assert.equal(w.document.querySelector('#q-category').value,'movie');
+ }finally{w.close();}
+});
+test('Home preloads its sole criteria runtime and mounts it immediately after the matching owner',()=>{
+ const dom=new JSDOM(home),doc=dom.window.document;
+ try{
+  const scripts=[...doc.querySelectorAll('script[src]')];
+  const criteria=scripts.filter(s=>s.getAttribute('src').startsWith('/criteria.js?'));
+  assert.equal(criteria.length,1);
+  const at=scripts.indexOf(criteria[0]);
+  assert.match(scripts[at-1].getAttribute('src'),/^\/app\.js\?/);
+  assert.ok(at<scripts.findIndex(s=>s.getAttribute('src').startsWith('/ebooks/catalog.js?')));
+  assert.equal(doc.querySelector('link[rel="preload"][href^="/criteria.js?"]').getAttribute('href'),criteria[0].getAttribute('src'));
+ }finally{dom.window.close();}
+});

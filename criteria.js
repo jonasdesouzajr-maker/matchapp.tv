@@ -553,8 +553,11 @@
         renderAll();
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-    else init();
+    // Home loads this after the complete form and app.js. Mount immediately
+    // rather than waiting for every later unrelated script to download. Early
+    // taps must reach the same multi-choice controls used after a warm load.
+    if (document.getElementById('q-category') || document.readyState !== 'loading') init();
+    else document.addEventListener('DOMContentLoaded', init, {once:true});
 
     // Labels live in the HTML and are translated in place by i18n.js, so the
     // only correct response to a language change is to re-read them.
