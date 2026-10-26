@@ -1,0 +1,134 @@
+/* Premium Matching Search Animation — 2026-10-26
+   Replaces older cinema scanner. Scoped to #loading-box for safety. */
+#loading-box .premium-match-stage {
+  position: relative;
+  width: min(220px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto 28px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loading-box .constellation-ring {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, transparent calc(100% - 1px), rgba(229, 193, 88, 0.35) 100%);
+  animation: maPremiumRingPulse 3.2s ease-in-out infinite;
+}
+#loading-box .constellation-ring:nth-child(2) { width: 100%; height: 100%; animation-delay: 0s; }
+#loading-box .constellation-ring:nth-child(3) { width: 78%; height: 78%; animation-delay: 0.4s; opacity: .7; }
+#loading-box .constellation-ring:nth-child(4) { width: 56%; height: 56%; animation-delay: 0.8s; }
+@keyframes maPremiumRingPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+#loading-box .central-orb {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff8e0, #e5c158 40%, #a86c24 75%);
+  box-shadow: 0 0 40px rgba(229, 193, 88, 0.7), inset 0 0 20px rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  animation: maPremiumOrbGlow 2.4s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes maPremiumOrbGlow {
+  0%, 100% { box-shadow: 0 0 30px rgba(229, 193, 88, 0.5), inset 0 0 15px rgba(255,255,255,0.3); transform: scale(1); }
+  50% { box-shadow: 0 0 55px rgba(229, 193, 88, 0.9), 0 0 80px rgba(168, 108, 36, 0.4); transform: scale(1.06); }
+}
+#loading-box .orbit-star {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, #fff, #e5c158);
+  border-radius: 50%;
+  box-shadow: 0 0 12px #e5c158;
+  animation: maPremiumOrbit 8s linear infinite;
+  top: calc(50% - 9px); left: calc(50% - 9px);
+}
+#loading-box .orbit-star:nth-child(6) { animation-duration: 6s; --orbit: clamp(65px, 19vw, 95px); }
+#loading-box .orbit-star:nth-child(7) { animation-duration: 9s; --orbit: clamp(65px, 19vw, 95px); animation-delay: -2s; }
+#loading-box .orbit-star:nth-child(8) { animation-duration: 7s; --orbit: clamp(65px, 19vw, 95px); animation-delay: -4s; }
+@keyframes maPremiumOrbit {
+  from { transform: rotate(0deg) translateX(var(--orbit, 95px)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit, 95px)) rotate(-360deg); }
+}
+#loading-box .premium-meter {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  background: rgba(10, 5, 20, 0.85);
+  border: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+  margin: 18px 0;
+}
+#loading-box .premium-meter-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #6b4cff, #a86c24 40%, #e5c158 70%, #fff8e0);
+  transition: width 0.15s linear;
+  position: relative;
+  box-shadow: 0 0 25px rgba(229, 193, 88, 0.8);
+}
+#loading-box .premium-meter-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+  width: 40%;
+  animation: maPremiumMeterSheen 1.8s ease-in-out infinite;
+}
+@keyframes maPremiumMeterSheen {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+#loading-box .premium-meter-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  letter-spacing: 1.2px;
+  z-index: 1;
+}
+#loading-box .sparkle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+/* Only hide fallback visuals after a successful upgrade. Specificity beats the legacy spinner. */
+html body.page-home #loading-box[data-premium-injected="1"] :is(.scanner-stage,.eq-bars,.ma-spin,.meter-perforations) {
+  display: none !important;
+}
+#loading-box:not(.premium-match-active) :is(.constellation-ring,.central-orb,.orbit-star),
+#loading-box:not(.premium-match-active) .premium-meter-fill::after {
+  animation-play-state: paused;
+}
+html.reduce-motion #loading-box[data-premium-injected="1"] *,
+html.reduce-motion #loading-box[data-premium-injected="1"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #loading-box[data-premium-injected="1"] *,
+  #loading-box[data-premium-injected="1"] *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 520px) {
+  #loading-box .premium-match-stage { width: min(180px, 100%); }
+  #loading-box .central-orb { width: 70px; height: 70px; font-size: 30px; }
+}
