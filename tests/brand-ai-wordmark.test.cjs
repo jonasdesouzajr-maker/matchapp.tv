@@ -97,7 +97,7 @@ test('normal submitted Android package inherits web typography; Kids remains sep
  const android=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
  assert.match(android,/https:\/\/matchapp\.tv/);
  assert.match(android,/keep production pages fresh|Keep production pages fresh/i);
- assert.match(read('android-studio/app/src/main/res/values/strings.xml'),/<string name="app_name">MatchApp Ai<\/string>/);
+ assert.match(read('android-studio/app/src/main/res/values/strings.xml'),/<string name="app_name" translatable="false">MatchApp Ai<\/string>/);
  assert.doesNotMatch(read('kids/index.html'),/brand-headline\.css|ma-word-ai/);
  assert.match(read('AGENTS.md'),/CANONICAL MATCHAPP AI HEADER WORDMARK/);
  assert.match(read('AGENTS.md'),/MANDATORY POST-CHANGE MATCHING, BOOKWORMS, AI AND ORIGINAL ART REGRESSION/);

@@ -432,11 +432,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
+        persistScreenCheckpoint()
+        super.onStop()
         // A visible PiP Activity is paused, not stopped. Always suspend the
         // WebView once hidden, even if PiP exit was reported before onStop.
         web.onPause()
-        persistScreenCheckpoint()
-        super.onStop()
     }
 
     override fun onResume() {
