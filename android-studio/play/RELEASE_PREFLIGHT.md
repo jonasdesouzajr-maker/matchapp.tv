@@ -1,3 +1,7 @@
+## October 26, 2026 startup crash repair — 1.1.63 (code 63)
+
+Repairs the observed 1.1.62 S23 Ultra startup failure in WorkManager/Room initialization by preserving the reflected WorkDatabase implementation in R8. The minified separate QA package passed three cold launches on the owner's physical SM-S918B. Production package, existing signing identity, ad configuration, web matching and Kids remain unchanged. Recheck all uploaded Play version codes before upload. Build, signing, store acceptance and production-device delivery remain separate gates.
+
 ## October 26, 2026 Material compatibility and R8 optimization - 1.1.62 (code 62)
 
 Production 61 / 1.1.61 was published October 26 in 178 countries. Candidate 62 addresses the remaining Material DatePicker deprecated API and R8 optimized resource shrinking recommendations. Recheck all uploaded version codes immediately before upload.
