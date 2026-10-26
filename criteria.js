@@ -138,7 +138,11 @@
     function syncSelect(sel, key) {
         const first = state[key][0];
         const has = first && Array.prototype.some.call(sel.options, o => o.value === first);
-        sel.value = has ? first : 'any';
+        const next = has ? first : 'any';
+        const signature = JSON.stringify(state[key]);
+        if (sel.value === next && sel.__criteriaSync === signature) return;
+        sel.__criteriaSync = signature;
+        sel.value = next;
         // Anything listening for a change on these selects (the platform hint
         // under the Platform field, for one) has to hear about it.
         sel.dispatchEvent(new Event('change', { bubbles: true }));
@@ -165,10 +169,15 @@
         state.genre=state.genre.filter(genre=>!window.matchPolicy?.incompatible(genre,{mood:moods,genre:[]}));
     }
 
+    function compatible(key, value) {
+        if (typeof window.criteriaCompatible === 'function') return window.criteriaCompatible(key, value, state);
+        return !['mood','genre'].includes(key) || !window.matchPolicy?.incompatible(value, state);
+    }
+
     function toggle(key, value, sel) {
         const list = state[key];
         const at = list.indexOf(value), before=focusGroup(state.cat);
-        if (at >= 0) list.splice(at, 1); else if (!window.matchPolicy?.incompatible(value,state)) list.push(value);
+        if (at >= 0) list.splice(at, 1); else if (compatible(key, value)) list.push(value);
         if(key==='cat'){
             normalizeCategories(at < 0 ? value : undefined);
             resetIncompatibleFilters(before,focusGroup(state.cat));
@@ -263,7 +272,7 @@
                 // "show more" is how a form silently lies about its own state.
                 // A disabled conflicting option must remain visible as the
                 // reason a Comfort selection cannot produce a Thriller.
-                const blocked = !!window.matchPolicy?.incompatible(o.value,state);
+                const blocked = !compatible(key, o.value);
                 if (on || blocked || shown < limit) {
                     if (!on && !blocked) shown++;
                     visible.push(o);
@@ -277,7 +286,7 @@
                 parts.push(
                     '<button type="button" class="crit-chip' + (on ? ' is-on' : '') + (optIn ? ' crit-optin' : '') + '" ' +
                     'data-value="' + escapeHtml(o.value) + '" aria-pressed="' + (on ? 'true' : 'false') + '"' +
-                    (window.matchPolicy?.incompatible(o.value,state) && !on ? ' disabled aria-disabled="true" title="Conflicts with a mood you selected. Untick that mood first."' : (optIn ? ' title="Only ever matches when you tick it — never shows up in a Surprise Me draw."' : '')) +
+                    (!compatible(key, o.value) && !on ? ' disabled aria-disabled="true"' : (optIn ? ' title="Only ever matches when you tick it — never shows up in a Surprise Me draw."' : '')) +
                     '>' + escapeHtml(o.label) + '</button>'
                 );
             });
@@ -292,7 +301,15 @@
             );
         }
 
-        host.innerHTML = parts.join('');
+        const markup = parts.join('');
+        // Keep unaffected lists, their focus and scroll position intact. Rebuilding
+        // all seven lists also woke every page-wide mutation observer on each tap.
+        if (host.__criteriaMarkup !== markup) {
+            const active = host.contains(document.activeElement) ? document.activeElement?.dataset.value : null;
+            host.innerHTML = markup;
+            host.__criteriaMarkup = markup;
+            if (active) Array.from(host.querySelectorAll('[data-value]')).find(b => b.dataset.value === active)?.focus({preventScroll:true});
+        }
 
         const count = sel.parentElement.querySelector('.crit-count');
         if (count) {
@@ -437,7 +454,7 @@
                 if(label&&heading)heading.textContent=fieldLabel(label);
                 const group=sel.parentElement.querySelector('.crit-chips');if(label&&group)group.setAttribute('aria-label',fieldLabel(label));
                 changed = reconcileField(sel, f.key) || changed;
-                Array.from(sel.options).forEach(o=>{if(o.value!=='any')o.disabled=!state[f.key].includes(o.value)&&!!window.matchPolicy?.incompatible(o.value,state);});
+                Array.from(sel.options).forEach(o=>{if(o.value!=='any')o.disabled=!state[f.key].includes(o.value)&&!compatible(f.key, o.value);});
                 renderField(sel, f.key); syncSelect(sel, f.key);
             }
         });

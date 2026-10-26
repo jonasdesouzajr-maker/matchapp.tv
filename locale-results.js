@@ -6,38 +6,34 @@
     de: 'German', it: 'Italian', tr: 'Turkish', ru: 'Russian', ar: 'Arabic',
     hi: 'Hindi', id: 'Indonesian', ja: 'Japanese', ko: 'Korean', zh: 'Simplified Chinese'
   };
-  const FALLBACK_PLATS = {
-    Netflix: { cats: ['movie','series','limited series','documentary','stand-up comedy special','reality show','K-drama','anime','kids','short film','Bollywood','European cinema','telenovela','C-drama','J-drama','Turkish dizi','Gospel & Faith'] },
-    'Prime Video': { cats: ['movie','series','limited series','documentary','stand-up comedy special','reality show','anime','kids','Bollywood','European cinema','Nollywood','Gospel & Faith'] },
-    'Disney+': { cats: ['movie','series','limited series','documentary','kids','anime'] },
-    Max: { cats: ['movie','series','limited series','documentary','stand-up comedy special','reality show','kids','anime'] },
-    '+SBT': { cats: ['novela brasileira','telenovela','series','movie','documentary','reality show','kids','anime'] },
-    Spotify: { cats: ['podcast','Spotify playlist','Spotify single','music album','audiobook','Gospel & Faith'] },
-    'Apple Music': { cats: ['Spotify single','music album','Spotify playlist','Gospel & Faith'] },
-    'Apple Podcasts': { cats: ['podcast','audiobook'] },
-    'YouTube Music': { cats: ['Spotify playlist','Spotify single','music album'] },
-    Audible: { cats: ['audiobook','podcast'] },
-    YouTube: { cats: ['movie','series','documentary','short film','stand-up comedy special','kids','YouTube Shorts','podcast'] }
-  };
+  // Use the same registry as onCategoryChange/platformsFor. A second, partial
+  // copy treated missing providers as empty catalogues and disabled every chip.
+  function platformInfo(name) {
+    if (window.PLATFORMS?.[name]) return window.PLATFORMS[name];
+    try { return typeof PLATFORMS !== 'undefined' ? PLATFORMS[name] : null; }
+    catch (_) { return null; } // Registry still loading: absence is not evidence.
+  }
   const cache = new Map();
   const lang = () => window.matchResultLanguage?.() || window.MATCH_LANG || document.documentElement.lang || 'en';
   const nameOf = () => NAMES[lang()] || 'English';
 
   window.criteriaCompatible = function (fieldKey, value, state) {
     if (!value || value === 'any') return true;
-    if (window.matchPolicy?.incompatible(value, state) && fieldKey === 'mood') return false;
-    const plats = window.PLATFORMS || FALLBACK_PLATS;
+    if (['mood','genre'].includes(fieldKey) && window.matchPolicy?.incompatible(value, state)) return false;
     const cats = (state?.cat || []).filter(v => v && v !== 'any');
     const platforms = (state?.plat || []).filter(v => v && v !== 'any');
     if (fieldKey === 'plat') {
       if (!cats.length) return true;
-      const pf = plats[value];
-      if (!pf) return true;
+      const pf = platformInfo(value);
+      if (!Array.isArray(pf?.cats)) return true;
       return cats.some(c => (pf.cats || []).includes(c));
     }
     if (fieldKey === 'cat') {
       if (!platforms.length) return true;
-      return platforms.some(p => ((plats[p] || {}).cats || []).includes(value));
+      return platforms.some(p => {
+        const pf = platformInfo(p);
+        return !Array.isArray(pf?.cats) || pf.cats.includes(value);
+      });
     }
     return true;
   };
