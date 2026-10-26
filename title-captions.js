@@ -1,7 +1,18 @@
 /* A localized name is requested by verified numeric identity, never guessed. */
-(function(){'use strict';let records=null;const cache=new Map();
+(function(){'use strict';let records=null,recordsPending=null;const cache=new Map();
  const normalized=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
- async function identities(){if(records)return records;try{const r=await fetch('/data/poster-identities.json');records=r.ok?await r.json():[];}catch(_){records=[];}return records;}
+ async function identities(){
+  if(records)return records;
+  if(recordsPending)return recordsPending;
+  // Every visible title asks concurrently; share the source request and parse.
+  // Keep unsuccessful reads retryable without treating them as an empty registry.
+  recordsPending=(async()=>{
+   try{const r=await fetch('/data/poster-identities.json');if(!r.ok)return [];
+    const data=await r.json();if(Array.isArray(data)){records=data;return records;}
+   }catch(_){}return [];
+  })().finally(()=>{recordsPending=null;});
+  return recordsPending;
+ }
  window.localizedTitle=async function(title,hints={}){
   const language=window.MATCH_LANG||document.documentElement.lang||'en';if(language==='en'||!window.supabaseClient)return title;
   const entry=typeof CONTENT_CATALOG!=='undefined'?CONTENT_CATALOG.find(e=>normalized(e.title)===normalized(title)):null;
