@@ -9,6 +9,15 @@ const spotifyMusic=require('./spotify-music-videos.js');
 const OFFICIAL=/\b(?:official (?:music )?video|official mv|videoclipe oficial|video oficial)\b/i;
 const EXCLUDE=/\b(?:lyric|lyrics|audio|visualizer|teaser|trailer|reaction|behind the scenes|live performance|live at|shorts)\b/i;
 const MIN_MUSIC_VIDEO_SECONDS=30;
+function isPublicationTimestamp(value,now=Date.now()){
+ return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(value)&&Number.isFinite(Date.parse(value))&&Date.parse(value)<=now;
+}
+function confirmPublishedAt(prior,publishedAt){
+ if(!isPublicationTimestamp(publishedAt))throw Error('Video publication identity mismatch');
+ const sameDate=/^\d{4}-\d{2}-\d{2}$/.test(prior)?new Date(publishedAt).toISOString().slice(0,10)===prior:Date.parse(prior)===Date.parse(publishedAt);
+ if(!sameDate)throw Error('Video publication identity mismatch');
+ return publishedAt;
+}
 function releaseTitle(rawTitle,artist){
  const label=String(artist).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
  const clean=String(rawTitle).replace(/\s*[\[(]?(?:official (?:music )?video|official mv|videoclipe oficial|video oficial)[\])]?\s*/ig,' ').trim();
@@ -28,7 +37,7 @@ function parseFeed(xml,channelId,now=Date.now()){
   const owner=value('http://www.youtube.com/xml/schemas/2015','channelId');
   const title=e.querySelector('title')?.textContent?.trim()||'';
   const publishedAt=e.querySelector('published')?.textContent||'';
-  if(owner!==channelId||! /^[\w-]{11}$/.test(id)||!OFFICIAL.test(title)||EXCLUDE.test(title)||!Number.isFinite(Date.parse(publishedAt))||Date.parse(publishedAt)>now)return [];
+  if(owner!==channelId||! /^[\w-]{11}$/.test(id)||!OFFICIAL.test(title)||EXCLUDE.test(title)||!isPublicationTimestamp(publishedAt,now))return [];
   return [{id,rawTitle:title,publishedAt,channel:e.querySelector('author name')?.textContent||''}];
  });}finally{dom.window.close();}
 }
@@ -59,11 +68,10 @@ function confirmExistingRelease(prior,row,artist,channelId,info,checkedAt){
  if(![artist.channelUrl.toLowerCase(),'https://www.youtube.com/channel/'+channelId.toLowerCase()].includes(author)||info.title!==row.rawTitle)throw Error('Video author/title identity mismatch');
  if(!prior)return null;
  const names=String(prior.artist||'').split(/\s+(?:&|feat\.?|ft\.?)\s+/i);
- const sameDate=Date.parse(prior.publishedAt)===Date.parse(row.publishedAt)||(/^\d{4}-\d{2}-\d{2}$/.test(prior.publishedAt)&&new Date(row.publishedAt).toISOString().slice(0,10)===prior.publishedAt);
- if(prior.id!==row.id||!names.includes(artist.artist)||prior.channelUrl.toLowerCase()!==artist.channelUrl.toLowerCase()||!sameDate)throw Error('Existing release identity mismatch');
- return {...prior,publishedAt:row.publishedAt,verifiedAt:checkedAt};
+ if(prior.id!==row.id||!names.includes(artist.artist)||prior.channelUrl.toLowerCase()!==artist.channelUrl.toLowerCase())throw Error('Existing release identity mismatch');
+ return {...prior,publishedAt:confirmPublishedAt(prior.publishedAt,row.publishedAt),verifiedAt:checkedAt};
 }
-function schema(items){return {'@context':'https://schema.org','@type':'ItemList',name:'Official music video releases on YouTube',numberOfItems:items.length,itemListElement:items.map((r,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'VideoObject',name:r.artist+' — '+r.title,description:r.seo?.description||`${r.artist} official music video for ${r.title}. Released on YouTube ${r.publishedAt.slice(0,10)}.`,thumbnailUrl:['https://matchapp.tv'+r.poster],uploadDate:r.publishedAt,url:r.url,embedUrl:'https://www.youtube.com/embed/'+r.id,creator:{'@type':'MusicGroup',name:r.artist,url:r.channelUrl},keywords:(r.seo?.keywords||r.keywords).join(', '),isAccessibleForFree:true,...(r.durationSeconds?{duration:'PT'+r.durationSeconds+'S'}:{}),...(Number.isSafeInteger(Number(r.viewCount))?{interactionStatistic:{'@type':'InteractionCounter',interactionType:{'@type':'WatchAction'},userInteractionCount:Number(r.viewCount)}}:{})}}))};}
+function schema(items){for(const r of items)if(!isPublicationTimestamp(r.publishedAt))throw Error('Verified publication timestamp required for '+r.id);return {'@context':'https://schema.org','@type':'ItemList',name:'Official music video releases on YouTube',numberOfItems:items.length,itemListElement:items.map((r,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'VideoObject',name:r.artist+' — '+r.title,description:r.seo?.description||`${r.artist} official music video for ${r.title}. Released on YouTube ${r.publishedAt.slice(0,10)}.`,thumbnailUrl:['https://matchapp.tv'+r.poster],uploadDate:r.publishedAt,url:r.url,embedUrl:'https://www.youtube.com/embed/'+r.id,creator:{'@type':'MusicGroup',name:r.artist,url:r.channelUrl},keywords:(r.seo?.keywords||r.keywords).join(', '),isAccessibleForFree:true,...(r.durationSeconds?{duration:'PT'+r.durationSeconds+'S'}:{}),...(Number.isSafeInteger(Number(r.viewCount))?{interactionStatistic:{'@type':'InteractionCounter',interactionType:{'@type':'WatchAction'},userInteractionCount:Number(r.viewCount)}}:{})}}))};}
 function seoForRelease(r){
  const day=String(r.publishedAt||'').slice(0,10),views=Number.isSafeInteger(Number(r.viewCount))?Number(r.viewCount):null;
  const keywords=[...new Set([...(r.keywords||[]),r.artist,r.title,`${r.artist} ${r.title} official music video`,`${r.artist} music videos`,`${day.slice(0,4)} music video releases`,'latest official music videos','YouTube music video'].filter(Boolean))];
@@ -123,9 +131,9 @@ async function refresh(){
    if(info.author_url.toLowerCase()!==r.channelUrl.toLowerCase()||billboardMusic.normalize(title)!==billboardMusic.normalize(r.title)||!OFFICIAL.test(info.title)||EXCLUDE.test(info.title))throw Error('Chart video identity mismatch');
    const html=await request(r.url+'&hl=en',false,10000),dom=new JSDOM(html);let published;
    try{published=dom.window.document.querySelector('meta[itemprop="uploadDate"]')?.content;}finally{dom.window.close();}
-   if(!published||new Date(published).toISOString().slice(0,10)!==new Date(r.publishedAt).toISOString().slice(0,10))throw Error('Chart video publication mismatch');
+   published=confirmPublishedAt(r.publishedAt,published);
    const views=parseViewCount(html),checkedAt=new Date().toISOString().slice(0,10);
-   byId.set(id,{...r,verifiedAt:checkedAt,...(views!==null?{viewCount:views,viewCountCheckedAt:checkedAt}:{})});
+   byId.set(id,{...r,publishedAt:published,verifiedAt:checkedAt,...(views!==null?{viewCount:views,viewCountCheckedAt:checkedAt}:{})});
   }catch(error){console.error('[Billboard video] '+id+': '+error.message);}
  }));
  if(!successes)throw Error('All official feeds unavailable; previous inventory retained');
@@ -144,5 +152,5 @@ async function refresh(){
  fs.writeFileSync(file,JSON.stringify(updated,null,2)+'\n');
  console.log(`${successes}/${channels.length} official feeds checked; ${featured.length} featured videos; ${sorted.length} verified records.`);
 }
-module.exports={parseFeed,parseViewCount,parseDurationSeconds,isFullMusicVideoDuration,schema,confirmExistingRelease,seoForRelease,releaseTitle};
+module.exports={parseFeed,parseViewCount,parseDurationSeconds,isFullMusicVideoDuration,schema,confirmExistingRelease,confirmPublishedAt,isPublicationTimestamp,seoForRelease,releaseTitle};
 if(require.main===module)refresh().catch(e=>{console.error(e.message);process.exitCode=1;});

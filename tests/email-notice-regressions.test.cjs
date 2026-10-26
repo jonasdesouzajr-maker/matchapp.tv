@@ -19,6 +19,8 @@ test('Google video structured data exposes real players, never a YouTube watch U
   for(const v of video){
    assert.ok(v.embedUrl||v.contentUrl,page+': '+v.name+' missing embed or content');
    assert.ok(v.name&&v.thumbnailUrl&&v.uploadDate,page+': incomplete '+v.name);
+   assert.match(v.uploadDate,/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/,page+': '+v.name+' uploadDate needs the verified time and timezone');
+   assert.ok(Number.isFinite(Date.parse(v.uploadDate)),page+': invalid uploadDate for '+v.name);
    assert.ok(!v.contentUrl||!v.contentUrl.includes('/watch?v='),page+': watch page mistaken for media file');
    if(v.embedUrl)assert.match(v.embedUrl,/^https:\/\/(?:www\.)?youtube\.com\/embed\/[\w-]{11}$/);
   }
