@@ -66,7 +66,7 @@
  if(!isHome&&!document.querySelector('link[data-final-audit]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/final-audit.css?v=20260929-avatar1';l.dataset.finalAudit='1';document.head.appendChild(l);}
  function loadAudit(){
   if(document.querySelector('script[data-final-audit]'))return;
-  const s=document.createElement('script');s.src='/final-audit.js?v=20260929-avatar1&profilelang=20261018-1&accountphoto=20261020-1'+(location.pathname==='/profile/profile.html'?'&portfolio=20261018-1&posters=20261020-1':'');s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
+  const s=document.createElement('script');s.src='/final-audit.js?v=20260929-avatar1&profilestate=20261026-1&profilelang=20261018-1&accountphoto=20261020-1'+(location.pathname==='/profile/profile.html'?'&portfolio=20261018-1&posters=20261020-1':'');s.async=false;s.dataset.finalAudit='1';document.head.appendChild(s);
  }
  if(isHome){
   const schedule=()=>setTimeout(()=>{
