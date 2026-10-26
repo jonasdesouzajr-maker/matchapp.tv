@@ -11,12 +11,16 @@ const names={
 };
 const user={email:'qa@example.test',user_metadata:{full_name:'MatchApp QA'}};
 function fixture(getUser){
- const dom=new JSDOM('<!doctype html><html lang="en"><body><div class="container"><section class="premium-card"><div class="identity-extras"></div><div class="core-identity-card"></div><button id="save-profile-btn">Save</button></section></div></body></html>',{url:'https://matchapp.tv/profile/profile.html',runScripts:'outside-only'});
+ const dom=new JSDOM('<!doctype html><html lang="en"><body><div class="container"><section class="premium-card"><div class="identity-extras"></div><div class="core-identity-card" id="locked-info-card"></div><div id="editable-fields-section"></div><button id="save-profile-btn">Save</button></section></div></body></html>',{url:'https://matchapp.tv/profile/profile.html',runScripts:'outside-only'});
  const w=dom.window;let writes=0;
  w.localStorage.setItem('match_lang','pt-BR');
  w.localStorage.setItem('match_profile_locked','true');
  w.resolveUserAvatar=()=>'/qa-avatar.png';
  w.supabaseClient={auth:{getUser:getUser||(()=>Promise.resolve({data:{user}}))},from:()=>{writes++;throw Error('Presentation must not write account state');}};
+ const profile=fs.readFileSync(path.resolve(__dirname,'../profile.js'),'utf8');
+ w.matchProfileState={status:'ready'};
+ w.profileDisplayAge=()=>null;w.formatSign=value=>value;w.STAR_SIGN_TRAITS={};w.populateEmail=()=>{};
+ w.eval(profile.slice(profile.indexOf('function checkAndRenderProfileState('),profile.indexOf('\nlet profileIdentityObserver'))+';window.checkAndRenderProfileState=checkAndRenderProfileState;');
  w.eval(source);
  return {dom,w,d:w.document,writes:()=>writes,close:()=>w.close()};
 }
@@ -32,7 +36,9 @@ test('profile hero follows all14 selected languages while retaining account iden
    assert.equal(h.d.querySelector('#audit-profile-hero h1').textContent,'MatchApp QA');
    assert.equal(h.d.querySelector('#audit-profile-hero p').textContent,'qa@example.test');
    assert.equal(h.d.querySelector('#audit-profile-hero img').getAttribute('src'),'/qa-avatar.png');
-   assert.equal(h.d.querySelector('#save-profile-btn').hidden,true);
+   assert.equal(h.d.querySelector('#save-profile-btn').hidden,false);
+   assert.equal(h.d.querySelector('#save-profile-btn').disabled,true);
+   assert.equal(h.d.querySelector('#save-profile-btn').innerText,'Identity saved and locked');
    assert.equal(h.d.querySelector('.core-identity-card').classList.contains('is-locked'),true);
   }
   h.w.localStorage.setItem('match_lang','pt-BR');
