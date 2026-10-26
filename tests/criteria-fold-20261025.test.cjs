@@ -61,6 +61,22 @@ test('all topics shortcut opens the same accessible panel', () => {
   dom.window.close();
 });
 
+test('opening another criterion folds the previous panel without losing selections', () => {
+ const dom=setup(), w=dom.window;
+ w.setMatchCriteria({mood:['romantic'],cat:['movie']});
+ const mood=w.document.querySelector('#q-mood').parentElement;
+ const cat=w.document.querySelector('#q-category').parentElement;
+ mood.querySelector('.crit-toggle').click();
+ cat.querySelector('.crit-toggle').click();
+ assert.equal(mood.querySelector('.crit-chips').hidden,true);
+ assert.equal(mood.querySelector('.crit-toggle').getAttribute('aria-expanded'),'false');
+ assert.equal(cat.querySelector('.crit-chips').hidden,false);
+ assert.deepEqual(Array.from(w.getMatchCriteria().mood),['romantic']);
+ assert.deepEqual(Array.from(w.getMatchCriteria().cat),['movie']);
+ dom.window.close();
+});
+
+
 test('parsed Home mounts filters before DOMContentLoaded and late startup cannot discard an early selection',()=>{
  const dom=new JSDOM(home,{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window;
  try{
@@ -90,4 +106,5 @@ test('Home preloads its sole criteria runtime and mounts it immediately after th
   assert.ok(at<scripts.findIndex(s=>s.getAttribute('src').startsWith('/ebooks/catalog.js?')));
   assert.equal(doc.querySelector('link[rel="preload"][href^="/criteria.js?"]').getAttribute('href'),criteria[0].getAttribute('src'));
  }finally{dom.window.close();}
+
 });

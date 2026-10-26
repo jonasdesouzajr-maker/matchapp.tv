@@ -166,7 +166,7 @@ function referenceRuntimeAssetURL(url){
  if(file==='app.js'||file==='catalog-media.js')entries.push(['delivery','20261023-2']);
  if(['catalog-media.js','ebook-matcher.js','reading-ai.js','brand.css','style.css','adult-page-compact.css'].includes(file))entries.push(['fastart','20261020-1']);
   if(['ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['audiocover','20261022-1']);
- if(file==='reference-home.css')entries.push(['nativepaint','20261020-1']);
+ if(file==='reference-home.css')entries.push(['nativepaint','20261020-1'],['criteria','20261026-compact1']);
  if(file==='reference-system.css'||file==='reference-system.js')entries.push(['pills','20261020-1']);
  if(file==='reference-system.css')entries.push(['footer','20261020-1']);
  if(['reference-header.css','reference-header.js','reference-system.css','reference-system.js','poster-wall.js','ui-fixes-20261023.css','jonas-adult-page.js','build-meta.js'].includes(file))entries.push(['masthead','20261025-1']);

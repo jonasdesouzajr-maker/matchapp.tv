@@ -229,6 +229,11 @@
     }
 
     function setFieldOpen(wrap, open) {
+        // Keep one choice panel open so several expanded lists cannot bury
+        // the match action. This changes presentation only, never selections.
+        if (open) wrap.closest('#questionnaire-box')?.querySelectorAll('.crit-open').forEach(other => {
+            if (other !== wrap) setFieldOpen(other, false);
+        });
         wrap.classList.toggle('crit-open', open);
         wrap.querySelector('.crit-toggle')?.setAttribute('aria-expanded', String(open));
         const panel = wrap.querySelector('.crit-chips');
