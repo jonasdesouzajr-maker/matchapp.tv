@@ -109,3 +109,14 @@ test('bulk-delete RPC keeps the public surface invoker-only',()=>{
  assert.match(sql,/create or replace function public\.notifications_delete_all\(\)[\s\S]*security invoker/);
  assert.match(sql,/revoke all on function public\.notifications_delete_all\(\) from public, anon/);
 });
+
+for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'])test('desktop Play invitation respects '+lang,async()=>{
+ const ctx=mount({ua:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Edg/142.0',lang});await fire(ctx);
+ assert.equal(ctx.items.length,1);assert.equal(ctx.items[0].href,play);assert.equal(ctx.items[0].action,'open');assert.equal(ctx.items[0].payload.platform,'desktop');assert.match(ctx.items[0].body,/Android/);
+ assert.equal(ctx.w.document.querySelector('main').children.length,0);
+ if(lang!=='en')assert.notEqual(ctx.items[0].body,'Use MatchApp Ai on your Android phone or tablet. Open the official Google Play listing to download the app.');
+ ctx.dom.window.close();
+});
+test('desktop Play invitation respects the two-visit limit and installed state',async()=>{
+ for(const opts of [{visits:2},{standalone:true},{installed:true},{kids:true}]){const ctx=mount({ua:'Mozilla/5.0 (X11; Linux x86_64) Firefox/142.0',...opts});await fire(ctx);assert.equal(ctx.items.length,0);ctx.dom.window.close();}
+});
