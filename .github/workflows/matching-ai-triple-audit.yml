@@ -2,6 +2,13 @@ name: Matching and AI Audit
 on:
   pull_request:
     paths:
+      - 'latest-news.js'
+      - 'news-ui.js'
+      - 'news-ui.css'
+      - 'news/**'
+      - 'tools/refresh-news-rss.js'
+      - 'tools/news-discovery-browser-check.cjs'
+      - 'supabase/functions/regional-news-rss/**'
       - 'kids/kids.js'
       - 'kids/index.html'
       - 'tests/**'
@@ -23,6 +30,13 @@ on:
   push:
     branches: [main]
     paths:
+      - 'latest-news.js'
+      - 'news-ui.js'
+      - 'news-ui.css'
+      - 'news/**'
+      - 'tools/refresh-news-rss.js'
+      - 'tools/news-discovery-browser-check.cjs'
+      - 'supabase/functions/regional-news-rss/**'
       - 'kids/kids.js'
       - 'kids/index.html'
       - 'tests/**'
