@@ -50,7 +50,7 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) candidate version: **1.1.62**, package `com.jonas.papercup`.
+- Standard app (`:app`) candidate version: **1.1.63**, package `com.jonas.papercup`.
 - Standard app version code: **62**. Code **61 / 1.1.61** is live on Production. Candidate 62 upgrades Material to 1.14.0 and AGP to 9.0.1 with optimized resource shrinking; existing edge-to-edge insets and fullscreen PiP are preserved.
 - Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=62`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.

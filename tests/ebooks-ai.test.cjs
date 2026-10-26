@@ -88,8 +88,8 @@ test('E-books hub is indexable and preserved by the sitemap generator',()=>{
 test('grown-up Android build is advanced for the E-books release',()=>{
  const gradle=read('android-studio/app/build.gradle.kts');
  const main=read('android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt');
- assert.match(gradle,/versionCode = 62/);
- assert.match(gradle,/versionName = "1\.1\.62"/);
+ assert.match(gradle,/versionCode = 63/);
+ assert.match(gradle,/versionName = "1\.1\.63"/);
  assert.match(main,/appBuild=62/);
- assert.match(main,/MatchAppAiAndroid\/1\.1\.62/);
+ assert.match(main,/MatchAppAiAndroid\/1\.1\.63/);
 });
