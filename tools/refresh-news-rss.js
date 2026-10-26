@@ -655,6 +655,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/#latest-news" data-news-ui="backLatest">← MatchApp Ai — Latest News</a>
   <h1 data-news-ui="hubTitle">Latest Entertainment, World and Sports News</h1>
   <p data-news-ui="hubIntro">Browse separate entertainment, world and sports headlines. Dates belong to the publisher; an older report is not made new by a feed check. Choose your interface language; original headlines keep the source language.</p>
+  <p><span data-news-ui="guidesLead">More guides and discovery:</span> <a href="/guides/streaming-music-books-october-2026/" data-news-ui="octoberGuide">October 2026 streaming, music and books guide</a> · <a href="/guides/coffee-music-tv-trends-september-30-2026/" data-news-ui="septemberGuide">September 30 trends guide</a> · <a href="/anime.html" data-news-ui="anime">Anime Finder</a>.</p>
   <section aria-labelledby="news-guide-title" style="margin:20px 0 28px;padding:20px;border:1px solid rgba(229,193,88,.22);border-radius:14px;background:rgba(24,16,38,.72)">
     <h2 id="news-guide-title" style="margin-top:0" data-news-ui="howTitle">How MatchApp Ai News works</h2>
     <p data-news-ui="howIntro">Start with the category and date. A storm or election report belongs to world news, not an entertainment award. An album, casting or premiere announcement is a discovery lead; it is not a review or proof that a title is available to you.</p>
@@ -669,7 +670,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </details>
   <p data-news-ui="guideChoice">For a whole evening, the October guide compares films, music and books by the time and attention they need. For one title, the Roma guide explains how country, language and rental or subscription options change the decision.</p>
   <p><a href="/where-to-watch/roma/" data-news-ui="romaGuide">Roma: country and viewing-option guide</a></p>
-  <p><span data-news-ui="guidesLead">More guides and discovery:</span> <a href="/guides/streaming-music-books-october-2026/" data-news-ui="octoberGuide">October 2026 streaming, music and books guide</a> · <a href="/guides/coffee-music-tv-trends-september-30-2026/" data-news-ui="septemberGuide">September 30 trends guide</a> · <a href="/anime.html" data-news-ui="anime">Anime Finder</a>.</p>
   </section>
   ${options?'<div data-news-local-offers>'+options+'</div>\n  ':''}<section data-native-news-feed data-news-ui-aria="feedLabel" aria-label="Latest verified entertainment, world and sports headlines" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">${cards}</section>
 </main>

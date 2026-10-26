@@ -34,6 +34,12 @@ async function auditNewsDiscovery({browser,base,record,shot}){
     await page.evaluate(lang=>localStorage.setItem('match_lang',lang),language);
     await page.goto(base+'/news/',{waitUntil:'domcontentloaded',timeout:30000});
     await page.waitForFunction(expected=>document.querySelector('main h1')?.textContent===expected,hubTitle,{timeout:10000});
+    const directGuideVisible=await page.locator('main a[href="/guides/streaming-music-books-october-2026/"]').isVisible();
+    // The approved runtime folds the how-to section. Open its real disclosure
+    // first, then the editorial comparison nested inside it.
+    const guideFold=page.locator('details.ma-density-news-guide');
+    await guideFold.waitFor({state:'visible',timeout:10000});
+    if(!await guideFold.evaluate(el=>el.open))await guideFold.locator(':scope > summary').click();
     await page.locator('[data-news-editorial] summary').click();
     await page.locator('[data-news-ui="albumComparison"]').waitFor({state:'visible'});
     const state=await page.evaluate(()=>({language:document.documentElement.lang,
@@ -44,7 +50,7 @@ async function auditNewsDiscovery({browser,base,record,shot}){
      albumComparison:document.querySelector('[data-news-ui="albumComparison"]')?.textContent||'',
      filmComparison:document.querySelector('[data-news-ui="filmComparison"]')?.textContent||'',
      repeatedNotes:document.querySelectorAll('[data-native-news-feed] [data-news-ui="sourceNote"]').length}));
-    record('LIVE useful news hub '+language+' '+screen.name,state.language===language&&!state.overflow&&state.guidance.length>80&&state.albumComparison.length>100&&state.filmComparison.length>100&&state.viewingGuide&&state.currentGuide&&state.repeatedNotes===0,JSON.stringify(state));
+    record('LIVE useful news hub '+language+' '+screen.name,directGuideVisible&&state.language===language&&!state.overflow&&state.guidance.length>80&&state.albumComparison.length>100&&state.filmComparison.length>100&&state.viewingGuide&&state.currentGuide&&state.repeatedNotes===0,JSON.stringify({...state,directGuideVisible}));
     await shot(page,'news-discovery-'+screen.name+'-hub-'+language);
    }
   }catch(error){record('LIVE news discovery '+screen.name,false,String(error.stack||error).slice(0,500));}

@@ -62,6 +62,7 @@ test('hub gives decision guidance and directs to useful guides without repeated 
  const d=definitions(),html=d.hub([story()],now),w=new JSDOM(html).window;
  try{assert.ok(w.document.querySelector('[data-news-ui="guideChoice"]'));assert.ok(w.document.querySelector('a[href="/where-to-watch/roma/"]'));assert.ok(w.document.querySelector('a[href="/guides/streaming-music-books-october-2026/"]'));assert.equal(w.document.querySelectorAll('[data-native-news-feed] [data-news-ui="sourceNote"]').length,0);assert.doesNotMatch(html,/refresh hourly|hourly refreshed|twice-daily/);
   assert.ok(w.document.querySelector('[data-news-editorial]'));assert.match(w.document.querySelector('[data-news-ui="albumComparison"]').textContent,/Rubber Soul|Blossoms/);assert.match(w.document.querySelector('[data-news-ui="filmComparison"]').textContent,/1993|2027/);assert.ok(w.document.querySelector('a[href="https://www.officialcharts.com/chart-news/new-music-friday-october-2-2026/"]'));assert.ok(w.document.querySelector('time[datetime="2026-10-25"]'));
+  assert.equal(w.document.querySelector('a[href="/guides/streaming-music-books-october-2026/"]').closest('[aria-labelledby="news-guide-title"]'),null,'guide navigation stays ahead of the optional how-to disclosure');
  }finally{w.close();}
 });
 test('actual regional parser preserves source instants and labels missing, invalid and future dates as discovery only',async()=>{
