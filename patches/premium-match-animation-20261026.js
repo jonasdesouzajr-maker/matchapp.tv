@@ -1,8 +1,17 @@
 /* Premium Matching Search Animation — 2026-10-26
    Injects new markup, handles sparkles, vibration. Respects existing sound system and reduced motion.
-   Does not touch matching logic. */
+   Does not touch matching logic. Self-loads CSS. */
 (function() {
   'use strict';
+
+  // Self-load the companion CSS
+  if (!document.getElementById('premium-match-animation-css')) {
+    const link = document.createElement('link');
+    link.id = 'premium-match-animation-css';
+    link.rel = 'stylesheet';
+    link.href = '/patches/premium-match-animation-20261026.css?v=20261026-1';
+    document.head.appendChild(link);
+  }
 
   function matchVibrate(pattern) {
     if (!navigator.vibrate) return;
