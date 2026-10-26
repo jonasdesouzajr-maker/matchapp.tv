@@ -50,9 +50,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) candidate version: **1.1.60**, package `com.jonas.papercup`.
+- Standard app (`:app`) candidate version: **1.1.61**, package `com.jonas.papercup`.
 - Standard app version code: **60**. Code **59 / 1.1.59** is live on Production; 60 is a design-polish and stability rebuild of the same native code from current main.
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=60`
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=61`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.
 - Kids app (`:kidsapp`) remains a separate, unchanged package; its independent release is outside this adult candidate.
 - The adult shell preserves its eligible current screen on launcher reentry and supports bounded presentation recovery after process death. Pull-to-refresh is disabled; the adult manual refresh preserves the current document and uses the existing local read-only adapter. Installed binary updates come through Google Play.
