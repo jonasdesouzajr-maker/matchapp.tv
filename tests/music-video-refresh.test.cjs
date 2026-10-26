@@ -1,6 +1,6 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
-const {parseFeed,parseViewCount,parseDurationSeconds,isFullMusicVideoDuration,schema,confirmExistingRelease,seoForRelease,releaseTitle}=require('../tools/refresh-music-videos.js');
+const {parseFeed,parseViewCount,parseDurationSeconds,isFullMusicVideoDuration,schema,confirmExistingRelease,confirmPublishedAt,isPublicationTimestamp,seoForRelease,releaseTitle}=require('../tools/refresh-music-videos.js');
 const channel='UC1234567890123456789012';
 const entry=(title,owner=channel,date='2026-01-01T12:00:00Z')=>`<entry><yt:videoId>abcdefghijk</yt:videoId><yt:channelId>${owner}</yt:channelId><title>${title}</title><published>${date}</published><author><name>Artist</name></author></entry>`;
 const feed=rows=>`<feed xmlns="http://www.w3.org/2005/Atom" xmlns:yt="http://www.youtube.com/xml/schemas/2015">${rows}</feed>`;
@@ -25,6 +25,22 @@ test('public YouTube page parsing captures exact numeric view counts without inv
  assert.equal(parseViewCount('<meta itemprop="interactionCount" content="1234567">'),1234567);
  assert.equal(parseViewCount('{"videoDetails":{"viewCount":"7654321"}}'),7654321);
  assert.equal(parseViewCount('<html>no count</html>'),null);
+});
+
+test('source timestamps retain the verified time and timezone and cannot be invented from a calendar date',()=>{
+ const published='2026-05-23T09:14:03-07:00';
+ assert.equal(confirmPublishedAt('2026-05-23',published),published);
+ assert.equal(confirmPublishedAt('2026-05-23T16:14:03Z',published),published);
+ for(const unknown of ['2026-05-23','2026-05-23T09:14:03','bad-date','2099-05-23T09:14:03Z',undefined]){
+  assert.equal(isPublicationTimestamp(unknown),false);
+  assert.throws(()=>confirmPublishedAt('2026-05-23',unknown),/publication identity mismatch/);
+  assert.equal(parseFeed(feed(entry('Song (Official Video)',channel,String(unknown))),channel).length,0);
+ }
+ assert.throws(()=>confirmPublishedAt('2026-05-22',published),/publication identity mismatch/);
+ assert.throws(()=>confirmPublishedAt('2026-05-23T16:15:03Z',published),/publication identity mismatch/);
+ const row=JSON.parse(fs.readFileSync('data/music-video-releases.json','utf8')).items[0];
+ assert.throws(()=>schema([{...row,publishedAt:'2026-05-23'}]),/publication timestamp/);
+ assert.equal(schema([{...row,publishedAt:published}]).itemListElement[0].item.uploadDate,published);
 });
 test('public YouTube duration parsing rejects short and unverified new clips fail closed',()=>{
  assert.equal(parseDurationSeconds('{"videoDetails":{"lengthSeconds":"10"}}'),10);
