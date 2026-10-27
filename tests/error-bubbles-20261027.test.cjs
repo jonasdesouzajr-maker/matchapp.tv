@@ -66,6 +66,14 @@ test('explicit form errors survive late loading and return to progress without a
  const d2=new JSDOM('<head></head><body><p data-ma-error="true" role="status">Initial failure</p></body>',{url:'https://matchapp.tv',runScripts:'outside-only'});
  try{d2.window.eval(source);assert.ok(d2.window.document.querySelector('.ma-error-close'));}finally{d2.window.close()}
 });
+test('notice paint survives the locked paragraph layer and restores the next owner state',async()=>{
+ const {d,w}=setup();try{
+  const n=w.document.querySelector('#kids-answer');n.style.background='green';n.textContent='Error';w.MatchAppErrors.decorate(n);
+  assert.equal(n.style.getPropertyPriority('background'),'important');assert.equal(n.style.borderRadius,'16px');
+  n.querySelector('button').click();assert.equal(n.style.background,'green');assert.equal(n.style.getPropertyPriority('background'),'');
+  n.textContent='Error again';w.MatchAppErrors.decorate(n);n.textContent='Success';n.style.background='blue';await Promise.resolve();assert.equal(n.style.background,'blue');assert.equal(n.style.borderRadius,'');
+ }finally{d.window.close()}
+});
 test('preview reports never send; reporting failure does not create recursive bubbles',async()=>{
  const d=new JSDOM('<head></head><body><main></main></body>',{url:'http://127.0.0.1:18928/',runScripts:'outside-only'});let calls=0;
  try{d.window.fetch=()=>{calls++;throw Error('offline')};d.window.eval(source);d.window.MatchAppErrors.show('Test');await Promise.resolve();assert.equal(calls,0);assert.equal(d.window.document.querySelectorAll('.ma-error-bubble').length,1);}finally{d.window.close()}

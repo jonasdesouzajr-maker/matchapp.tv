@@ -45,17 +45,23 @@ function decorate(node,opts={}){
  const previous=decorations.get(node);
  previous?.observer.disconnect();
  const originalRole=previous?previous.originalRole:node.getAttribute('role');
+ // The locked page layer flattens ordinary paragraph surfaces with !important.
+ // Limit the exception to this notice and restore the owner's styles afterward.
+ const paint={background:kids()?'#201943':'#211c2c',color:kids()?'#fff5c9':'#f4d7a4',border:'1px solid '+(kids()?'#bba7ef':'#d7b775'),'border-radius':'16px',padding:'12px'};
+ const originalPaint=previous?.originalPaint||Object.fromEntries(Object.keys(paint).map(key=>[key,[node.style.getPropertyValue(key),node.style.getPropertyPriority(key)]]));
+ for(const [key,value] of Object.entries(paint))node.style.setProperty(key,value,'important');
+ const appliedPaint=Object.fromEntries(Object.keys(paint).map(key=>[key,node.style.getPropertyValue(key)]));
  const restoreRole=()=>{if(originalRole)node.setAttribute('role',originalRole);else node.removeAttribute('role');};
  const copy=document.createElement('span');copy.className='ma-error-copy';
  while(node.firstChild)copy.appendChild(node.firstChild);
  const close=document.createElement('button');close.type='button';close.className='ma-error-close';close.textContent='×';close.setAttribute('aria-label',CLOSE[language()]||CLOSE.en);
  node.classList.add('ma-error-bubble');node.setAttribute('role','alert');node.append(copy,close);
- const clear=()=>{observer.disconnect();if(decorations.get(node)?.close!==close)return;decorations.delete(node);node.classList.remove('ma-error-bubble');restoreRole();};
+ const clear=()=>{observer.disconnect();if(decorations.get(node)?.close!==close)return;decorations.delete(node);node.classList.remove('ma-error-bubble');restoreRole();for(const [key,value] of Object.entries(appliedPaint)){if(node.style.getPropertyValue(key)===value&&node.style.getPropertyPriority(key)==='important'){const [old,priority]=originalPaint[key];if(old)node.style.setProperty(key,old,priority);else node.style.removeProperty(key);}}};
  close.addEventListener('click',()=>{clear();node.removeAttribute('data-ma-error');if(opts.onClose)opts.onClose();else{node.replaceChildren();if(node.id==='ma-error-notice')node.remove();}});
  if(opts.code)report(opts.code);
  // Existing owners may replace a status with progress/success. Remove only our decoration.
  const observer=new MutationObserver(()=>{if(!node.contains(close))clear();});
- decorations.set(node,{observer,originalRole,close,clear,copy});
+ decorations.set(node,{observer,originalRole,originalPaint,close,clear,copy});
  observer.observe(node,{childList:true});
  return node;
 }
