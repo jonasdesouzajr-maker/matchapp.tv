@@ -486,7 +486,7 @@
       status.textContent=matchPicks.length?tr('matchReady'):refineHint;
       document.getElementById('kids-match-submit').textContent=tr('matchAgain');
       if(matchPicks.length)scrollMatchStart();
-    }catch(_){status.textContent=tr('quotaError');}
+    }catch(_){status.textContent=tr('quotaError');window.MatchAppErrors?.decorate(status,{code:'kids-quota'});}
     finally{buildingMatch=false;setMatchBusy(false);}
   }
   function renderSaved() {
@@ -714,7 +714,7 @@
       window.KidsAccount?.remember?.({title:item.title,posterUrl:makePoster(item),streamUrl:watchUrl(item)},'shown',matchedUserId).catch(()=>{});
       document.dispatchEvent(new CustomEvent('matchapp:kids-result',{detail:{title:item.title}}));
       // Kids Mode intentionally runs without decorative result animation.
-    }catch(_){clearKidsCelebrate();status.textContent=tr('quotaError');status.scrollIntoView({block:'center'});}
+    }catch(_){clearKidsCelebrate();status.textContent=tr('quotaError');window.MatchAppErrors?.decorate(status,{code:'kids-quota'});status.scrollIntoView({block:'center'});}
     finally{openingMatch=false;document.getElementById('kids-match-submit').disabled=false;}
   }
 
@@ -726,7 +726,7 @@
       await window.KidsAccount.remember({title:item.title,posterUrl:poster?.currentSrc||makePoster(item),streamUrl:watchUrl(item)},action,matchedUserId);
       status.textContent=tr('historySaved');document.getElementById('kids-rematch-actions').hidden=false;
       if(action==='save'){savedTitles.add(slug(item));write(SAVED_KEY,JSON.stringify([...savedTitles]));renderSaved();notifyFavorites();}
-    }catch(_){status.textContent=tr('historyError');button.disabled=false;}
+    }catch(_){status.textContent=tr('historyError');window.MatchAppErrors?.decorate(status,{code:'kids-history'});button.disabled=false;}
   }
   async function awardKidsShareReward(){
     const status=document.getElementById('kids-result-status');
@@ -739,8 +739,8 @@
         status.textContent=tr('shareReward').replace('{count}',String(balance));
       }else if(reward?.reason==='window_full'){
         status.textContent=tr('shareLimit');
-      }else status.textContent=tr('quotaError');
-    }catch(_){status.textContent=tr('quotaError');}
+      }else {status.textContent=tr('quotaError');window.MatchAppErrors?.decorate(status,{code:'kids-quota'});}
+    }catch(_){status.textContent=tr('quotaError');window.MatchAppErrors?.decorate(status,{code:'kids-quota'});}
   }
   async function shareMatch(copyOnly){
     if(!currentWatchItem)return;
@@ -756,7 +756,7 @@
         status.textContent=tr('copied');
       }
     }
-    catch(e){if(e.name!=='AbortError'){const field=document.getElementById('kids-share-link');field.hidden=false;field.focus();field.select();status.textContent=tr('quotaError');}}
+    catch(e){if(e.name!=='AbortError'){const field=document.getElementById('kids-share-link');field.hidden=false;field.focus();field.select();status.textContent=tr('quotaError');window.MatchAppErrors?.decorate(status,{code:'kids-quota'});}}
   }
   function shareKidsTo(network){
     if(!currentWatchItem)return;

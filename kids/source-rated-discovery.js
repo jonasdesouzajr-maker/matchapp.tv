@@ -503,7 +503,7 @@
   busy=true;load.disabled=true;search.disabled=true;
   try{
    if(!window.tmdbDetails||!window.tmdbDiscover){
-     setStatus(copy('catalogUnavailable'));
+     setStatus(copy('catalogUnavailable'));window.MatchAppErrors?.decorate(status,{code:'kids-service'});
      return;
    }
    let candidates=[];
@@ -563,7 +563,7 @@
    }
    load.hidden=nextPage>499&&!pendingCandidates.length;
   }catch(_){
-   if(token===version)setStatus(copy('unavailable'));
+   if(token===version){setStatus(copy('unavailable'));window.MatchAppErrors?.decorate(status,{code:'kids-service'});}
   }finally{busy=false;load.disabled=false;search.disabled=false}
  }
  load.addEventListener('click',()=>runFind(false));
