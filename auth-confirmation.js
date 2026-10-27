@@ -23,6 +23,7 @@
         el.style.display = 'block';
         el.style.color = isError ? '#ffb4b4' : '#9beeb8';
         el.style.background = isError ? 'rgba(255,82,82,.10)' : 'rgba(63,211,122,.10)';
+        el.setAttribute('data-ma-error',String(!!isError));window.MatchAppErrors?.sync(el);
     }
 
     function cleanReturnUrl() {

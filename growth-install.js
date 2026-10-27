@@ -27,14 +27,14 @@ function mount(container,context){
   if(prepared)return Promise.resolve(prepared);if(flight)return flight;open.disabled=true;
   flight=Promise.resolve().then(target).then(value=>{core.appUrl(value);prepared=value;return value;}).finally(()=>{flight=null;open.disabled=false;});return flight;
  }
- async function store(){if(running)return;running=true;install.disabled=true;status.textContent='';
+ async function store(){if(running)return;running=true;install.disabled=true;status.textContent='';status.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(status);
   try{const destination=await prepare();core.track(w,'app_store_clicked',surface);w.location.assign(core.playUrl(destination));}
-  catch(_){status.textContent=copy.text('error');}finally{running=false;install.disabled=false;}
+  catch(_){status.textContent=copy.text('error');status.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(status);}finally{running=false;install.disabled=false;}
  }
  // Keep the app launch synchronous inside the explicit button gesture. Preparing
  // a read-only handoff never opens an app, emits analytics or exposes an auth token.
  open.addEventListener('click',()=>{
-  if(!prepared){status.textContent=copy.text('working');prepare().then(()=>{status.textContent='';}).catch(()=>{status.textContent=copy.text('error');});return;}
+  if(!prepared){status.textContent=copy.text('working');status.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(status);prepare().then(()=>{status.textContent='';status.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(status);}).catch(()=>{status.textContent=copy.text('error');status.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(status);});return;}
   core.track(w,'open_app_clicked',surface);w.location.assign(core.androidIntent(prepared));
  });
  install.addEventListener('click',store);

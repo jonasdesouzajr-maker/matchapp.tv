@@ -174,6 +174,6 @@ test('profile loads the copy helper before its consumers and only the profile au
  for(const route of ['/profile/profile.html','/pricing/pricing.html']){
   const dom=new JSDOM('<!doctype html><html><head></head><body></body></html>',{url:'https://matchapp.tv'+route,runScripts:'outside-only'});t.after(()=>dom.window.close());dom.window.eval(loader);
   const src=dom.window.document.querySelector('script[data-final-audit]').getAttribute('src');
-  assert.equal(src,'/final-audit.js?v=20260929-avatar1&profilestate=20261026-1&profilelang=20261018-1&accountphoto=20261020-1'+(route.startsWith('/profile/')?'&portfolio=20261018-1&posters=20261020-1':''));
+  assert.equal(src,'/final-audit.js?v=20260929-avatar1&profilestate=20261026-1&profilelang=20261018-1&accountphoto=20261020-1&errors=20261027-2'+(route.startsWith('/profile/')?'&portfolio=20261018-1&posters=20261020-1':''));
  }
 });

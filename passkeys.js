@@ -27,7 +27,7 @@
   const t = key => (STRINGS[window.MATCH_LANG || document.documentElement.lang] || {})[key] || STRINGS.en[key];
   const supported = () => !!(window.isSecureContext && window.PublicKeyCredential && navigator.credentials && typeof client()?.auth.signInWithPasskey === 'function');
   function message(key, error = false) {
-    document.querySelectorAll('[data-passkey-status]').forEach(el => { el.textContent = t(key); el.classList.toggle('passkey-error', error); });
+    document.querySelectorAll('[data-passkey-status]').forEach(el => { el.textContent = t(key); el.classList.toggle('passkey-error', error); el.setAttribute('data-ma-error',String(error));window.MatchAppErrors?.sync(el); });
   }
   function errorKey(error) {
     if (error?.code === 'passkey_disabled') return 'disabled';

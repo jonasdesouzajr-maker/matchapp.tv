@@ -12,10 +12,10 @@ test('borderless screen no longer reserves curved perimeter space or clips the a
 test('borderless brand refresh preserves other cache parameters and remains idempotent for adult and Kids routes',()=>{
  const {versionFrameStylesheet,versionBrandStylesheet}=require('../tools/finalize-brand');
  for(const href of ['/brand.css','/brand.css?v=195','../brand.css?v=195','/brand.css?v=20261015-spacing1&amp;headerauth=20261016-1','/brand.css?v=20261015-spacing1&frame=old']){
-  const before='<link rel="stylesheet" href="'+href+'"><script src="/app.js?v=unchanged"></script>';
+  const before='<link rel="stylesheet" href="'+href+'"><script src="/app.js?v=unchanged&errors=20261027-2"></script>';
   const after=versionFrameStylesheet(before);
   assert.equal(versionFrameStylesheet(after),after);
-  assert.ok(after.endsWith('<script src="/app.js?v=unchanged"></script>'));
+  assert.ok(after.endsWith('<script src="/app.js?v=unchanged&errors=20261027-2"></script>'));
   const u=new URL(after.match(/href="([^"]+)"/)[1].replace(/&amp;/g,'&'),'https://matchapp.tv/');
   assert.equal(u.searchParams.get('frame'),'20261020-borderless1');
   assert.equal(u.searchParams.getAll('frame').length,1);

@@ -5,6 +5,7 @@ const CLOSE={en:'Close message',pt:'Fechar mensagem',es:'Cerrar mensaje',fr:'Fer
 const RETRY={en:'Something went wrong. Please try again.',pt:'Algo deu errado. Tente novamente.',es:'Algo salió mal. Inténtalo de nuevo.',fr:'Une erreur est survenue. Réessayez.',de:'Etwas ist schiefgelaufen. Bitte versuche es erneut.',it:'Qualcosa è andato storto. Riprova.',tr:'Bir sorun oluştu. Lütfen tekrar deneyin.',ru:'Произошла ошибка. Попробуйте ещё раз.',ar:'حدث خطأ. يرجى المحاولة مرة أخرى.',hi:'कुछ गलत हुआ। कृपया फिर से कोशिश करें।',id:'Terjadi kesalahan. Silakan coba lagi.',ja:'エラーが発生しました。もう一度お試しください。',ko:'오류가 발생했습니다. 다시 시도해 주세요.',zh:'出现错误。请重试。'};
 const CODES=new Set(['ui-error','runtime-error','unhandled-rejection','match-recovery','kids-quota','kids-history','kids-service']);
 const sent=new Set();let total=0;
+const decorations=new WeakMap();
 function language(){return String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0]}
 function kids(){return location.pathname.startsWith('/kids/')||document.documentElement.classList.contains('kids-mode')}
 function page(){const p=location.pathname;return kids()?'kids':p.startsWith('/ebooks')?'reading':p.includes('discover')?'chat':p.includes('profile')?'profile':p.includes('explore')?'explore':p==='/'||p==='/index.html'?'home':'other'}
@@ -12,12 +13,17 @@ function report(code){
  if(!CODES.has(code)||sent.has(code)||total>=5)return;
  // Preview/fixture errors never enter the production queue.
  if(!['matchapp.tv','www.matchapp.tv'].includes(location.hostname))return;
- const sb=window.supabaseClient;if(typeof sb?.rpc!=='function')return;
+ if(typeof window.fetch!=='function')return;
  sent.add(code);total++;
  const width=window.visualViewport?.width||innerWidth;
  const data={p_code:code,p_surface:kids()?'kids':/MatchAppAiAndroid/i.test(navigator.userAgent)?'android':'web',p_page:page(),p_viewport:width<480?'phone':width<1024?'tablet':'desktop'};
  // Never send error text, stacks, URLs, identifiers, prompts or storage contents.
- try{Promise.resolve(sb.rpc('record_ui_error_20261027',data)).then(result=>{
+ try{window.fetch('https://zkymvqrmbabngsqblyye.supabase.co/rest/v1/rpc/record_ui_error_20261027',{
+   method:'POST',credentials:'omit',referrerPolicy:'no-referrer',keepalive:true,
+   // Existing public anonymous key; never attach a signed-in session or token.
+   headers:{'Content-Type':'application/json',apikey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q',Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q'},
+   body:JSON.stringify(data)
+ }).then(async response=>({error:!response.ok,data:response.ok?await response.json():false})).then(result=>{
    document.dispatchEvent(new CustomEvent('matchapp:error-report-status',{detail:{code,accepted:!result?.error&&result?.data===true}}));
  }).catch(()=>{});}catch(_){}
 }
@@ -36,16 +42,20 @@ function style(){
 function decorate(node,opts={}){
  if(!node)return null;style();
  const prior=node.querySelector(':scope > .ma-error-close');if(prior)return node;
- const originalRole=node.getAttribute('role');
+ const previous=decorations.get(node);
+ previous?.observer.disconnect();
+ const originalRole=previous?previous.originalRole:node.getAttribute('role');
  const restoreRole=()=>{if(originalRole)node.setAttribute('role',originalRole);else node.removeAttribute('role');};
  const copy=document.createElement('span');copy.className='ma-error-copy';
  while(node.firstChild)copy.appendChild(node.firstChild);
  const close=document.createElement('button');close.type='button';close.className='ma-error-close';close.textContent='×';close.setAttribute('aria-label',CLOSE[language()]||CLOSE.en);
  node.classList.add('ma-error-bubble');node.setAttribute('role','alert');node.append(copy,close);
- close.addEventListener('click',()=>{if(opts.onClose)opts.onClose();else{node.replaceChildren();node.classList.remove('ma-error-bubble');restoreRole();if(node.id==='ma-error-notice')node.remove();}});
+ const clear=()=>{observer.disconnect();if(decorations.get(node)?.close!==close)return;decorations.delete(node);node.classList.remove('ma-error-bubble');restoreRole();};
+ close.addEventListener('click',()=>{clear();node.removeAttribute('data-ma-error');if(opts.onClose)opts.onClose();else{node.replaceChildren();if(node.id==='ma-error-notice')node.remove();}});
  if(opts.code)report(opts.code);
  // Existing owners may replace a status with progress/success. Remove only our decoration.
- const observer=new MutationObserver(()=>{if(!node.contains(close)){node.classList.remove('ma-error-bubble');restoreRole();observer.disconnect();}});
+ const observer=new MutationObserver(()=>{if(!node.contains(close))clear();});
+ decorations.set(node,{observer,originalRole,close,clear,copy});
  observer.observe(node,{childList:true});
  return node;
 }
@@ -61,7 +71,16 @@ function show(message,opts={}){
  try{n.scrollIntoView({block:'nearest',behavior:'auto'});}catch(_){}
  return n;
 }
-window.MatchAppErrors=Object.freeze({show,decorate,report});
+// Owners mark semantic error state explicitly. Never infer failures from message
+// text, colors, input contents or authentication state. The marker also survives
+// a delayed shared-script load without changing the owner's retry behavior.
+function sync(node){
+ if(node.getAttribute('data-ma-error')==='true'&&node.textContent.trim())decorate(node,{code:'ui-error'});
+ else{const old=decorations.get(node);if(old){old.clear();if(node.contains(old.close)){old.close.remove();old.copy.replaceWith(...old.copy.childNodes);}}}
+}
+window.MatchAppErrors=Object.freeze({show,decorate,report,sync});
+document.querySelectorAll('[data-ma-error]').forEach(sync);
+new MutationObserver(records=>{for(const record of records)sync(record.target);}).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['data-ma-error']});
 if(!window.showToast)window.showToast=(text,isError)=>{if(isError)show(text)};
 document.addEventListener('matchapp:kids-ai-error',e=>{
  const node=document.getElementById('kids-answer');

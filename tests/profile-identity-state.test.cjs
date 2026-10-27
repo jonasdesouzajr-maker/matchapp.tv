@@ -166,7 +166,7 @@ test('profile identity normalization is idempotent and preserves original versio
 });
 
 test('the identity key never spreads to unchanged app, registration, settings, final-audit, styles or external assets',()=>{
-  for(const input of ['/app.js?v=kept','/registration-upgrade.js?v=kept','/settings.js?v=kept','/final-audit.js?v=kept','/patches/reference-pages.css?v=kept','https://cdn.example/profile.js?v=kept']){
+  for(const input of ['/app.js?v=kept&errors=20261027-2','/registration-upgrade.js?v=kept','/settings.js?v=kept&errors=20261027-2','/final-audit.js?v=kept&errors=20261027-2','/patches/reference-pages.css?v=kept','https://cdn.example/profile.js?v=kept']){
     const output=normalizer.normalize(input);assert.equal(new URL(output,'https://matchapp.tv').searchParams.has('identity'),false,input);
     if(/registration-upgrade|final-audit|^https:/.test(input))assert.equal(output,input);
   }

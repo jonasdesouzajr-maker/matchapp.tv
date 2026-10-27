@@ -71,7 +71,7 @@ test('the exported generator refreshes every repaired asset while preserving que
 });
 
 test('the repair pin does not spread to unrelated assets or third-party URLs',()=>{
- for(const input of ['/unrelated.js?v=keep','/unrelated.css?v=keep','https://cdn.example/app.js?v=keep']){
+ for(const input of ['/unrelated.js?v=keep','/unrelated.css?v=keep','https://cdn.example/app.js?v=keep&errors=20261027-2']){
   const html='<script src="'+input+'"></script>';
   assert.equal(versionReferenceRuntimeAssets(html),html,input);
  }

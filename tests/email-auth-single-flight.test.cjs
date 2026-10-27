@@ -9,7 +9,7 @@ assert.ok(first>=0&&last>first,'the real email signup handler is present');
 const signup=app.slice(first,last);
 
 function runner(signUp){
-  const button={disabled:false},message={style:{},innerText:''};
+  const button={disabled:false},message={style:{},innerText:'',attributes:{},setAttribute(key,value){this.attributes[key]=value;}};
   const fields={'reg-email':{value:'new@example.test'},'reg-password':{value:'strong-password'},
     'auth-message':message};
   const window={};
@@ -47,9 +47,11 @@ test('failed email signup can be retried and never leaves the submit button stuc
   assert.equal(site.window.__maEmailSignupPending,false);
   assert.equal(site.button.disabled,false);
   assert.match(site.message.innerText,/temporarily unavailable/);
+  assert.equal(site.message.attributes['data-ma-error'],'true');
   await site.window.handleEmailSignup();
   assert.equal(calls,2);
   assert.match(site.message.innerText,/confirm your email/i);
+  assert.equal(site.message.attributes['data-ma-error'],'false');
 });
 
 test('late-loaded registration override has the same cross-handler single-flight guard',()=>{
