@@ -25,6 +25,8 @@ const PRELOAD_MARKER='critical-style';
 
 function cinemaAssets(html, relativePath) {
   const rel = relativePath.replace(/\\/g, '/');
+  // Lumina is an isolated game document inside the already branded homepage.
+  if (rel === 'lumina-match/browser/index.html') return html;
   if (/^(kids|private-voice|oauth|android-studio|tests|artifacts|reports|node_modules)\//.test(rel) || /^(callback|confirm|yandex_[^/]+)\.html$/.test(rel)) return html;
   // Parse one immutable source snapshot. Only real owned HTML nodes/attributes
   // receive source-range edits; comments, examples and raw script text do not.
@@ -241,6 +243,8 @@ function finalizeBrand(ownedPaths){
  let count=0;
  for(const file of files(ROOT)){
   const rel=path.relative(ROOT,file).replace(/\\/g,'/');
+  // Do not inject a second homepage shell or its runtime into the game iframe.
+  if(rel==='lumina-match/browser/index.html')continue;
   if(ownedPaths&&!ownedPaths.some(scope=>rel===scope||(scope.endsWith('/')&&rel.startsWith(scope))))continue;
   let html=fs.readFileSync(file,'utf8');
   if(!/<body[\s>]/i.test(html)||file.includes('yandex_'))continue;
