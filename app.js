@@ -6230,6 +6230,7 @@ window.showMatchRecovery = function(message) {
     notice.setAttribute('aria-live','polite');
     notice.textContent=String(message||'');
     button.insertAdjacentElement('afterend',notice);
+    window.MatchAppErrors?.decorate(notice,{onClose:window.clearMatchRecovery});
     const hint=document.getElementById('match-pool-hint');
     if(hint&&!hint.hidden){hint.hidden=true;hint.dataset.recoveryHidden='true';}
     window.MatchAppActivatedScroll?.toStart(notice,{behavior:'auto'});
@@ -6244,6 +6245,9 @@ window.matchRecoveryHeading = function() {
         : 'TEMPORARY INTERRUPTION — PLEASE TRY AGAIN SHORTLY.';
 };
 window.showToast = function(message, isError, options) {
+    if(isError&&window.MatchAppErrors){
+        return window.MatchAppErrors.show(message,{heading:options?.recovery?(options.recovery==='empty'?null:window.matchRecoveryHeading()):null});
+    }
     let host = document.getElementById('toast-host');
     if (!host) {
         host = document.createElement('div');
