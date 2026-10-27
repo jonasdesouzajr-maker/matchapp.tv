@@ -78,6 +78,9 @@ class NativeErrorNotice(
             val original = anchor.layoutParams
             parent.removeView(anchor)
             LinearLayout(context).apply {
+                // The standalone Kids wrapper draws edge-to-edge; reserve system bars here.
+                // Adult already owns insets on its existing vertical ad shell.
+                fitsSystemWindows = true
                 orientation = LinearLayout.VERTICAL
                 addView(anchor, LinearLayout.LayoutParams(-1, 0, 1f))
                 parent.addView(this, index, original)
