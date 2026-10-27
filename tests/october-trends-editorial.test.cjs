@@ -54,7 +54,7 @@ test('weekly generator retains the contextual guide link without changing the ed
  for(const file of ['trending/this-week/index.html','tools/refresh-trending.mjs']){
   const src=read(file);assert.ok(src.includes('href="'+route+'#october-15-trends"'));
   assert.equal((src.match(/data-october-guide-link/g)||[]).length,1);
-  assert.ok(src.includes('/patches/october-trends-locales.js?v=20261015-1'));
+  assert.ok(src.includes('/patches/october-trends-locales.js?v=20261027-1'));
  }
  const dom=new JSDOM(read('trending/this-week/index.html'),{url:'https://matchapp.tv/trending/this-week/',runScripts:'outside-only'});
  try{dom.window.localStorage.setItem('match_lang','pt-BR');dom.window.eval(read('patches/october-trends-locales.js'));dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));assert.equal(dom.window.document.querySelector('[data-october-guide-link] span').textContent,data.copy['pt-BR'].link)}finally{dom.window.close()}

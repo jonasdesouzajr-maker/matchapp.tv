@@ -3,6 +3,7 @@
   "market": "US",
   "newsletterDates": ["2026-10-07", "2026-10-15"],
   "sources": {
+    "frightgeist": "https://blog.google/products-and-platforms/products/search/frightgeist-halloween-trends-2026/",
     "classics": "https://www.disneyplus.com/explore/articles/freeform-31-nights-of-halloween",
     "passenger": "https://www.paramountplus.com/sneak-peak/how-to-watch-passenger-2026/",
     "otherMommy": "https://www.universalpictures.com/movies/other-mommy/",
@@ -11,6 +12,7 @@
   },
   "copy": {
     "en": {
+      "searchTrends": "Google’s Frightgeist report of 14 October 2026 says searches for nostalgic Halloween movies have grown year over year since 2019. The films below are editorial suggestions, not a Google ranking.",
       "heading": "Halloween movies and book-to-screen discoveries: October 15, 2026",
       "context": "A dated editorial selection inspired by the October 15 Frightgeist and October 7 Book or Movie Google Trends newsletters. Their search-interest signals cover the United States, not Brazil or the world. Rising interest is not an absolute popularity ranking, a quality score or proof of streaming availability. Official release sources were checked October 15, 2026.",
       "classics": "For a nostalgic Halloween evening, start with Hocus Pocus (1993) or The Nightmare Before Christmas (1993). Choose Hocus Pocus for witchy comedy; choose The Nightmare Before Christmas for stop-motion fantasy and songs. Disney's US Freeform schedule lists both and identifies Disney+ viewing options. Broadcast times and subscriptions are separate: check the official schedule and your country's catalog. These are editorial mood suggestions, not Kids Mode approvals.",
@@ -26,6 +28,7 @@
       "link": "October 15 guide: Halloween films, East of Eden and upcoming Narnia"
     },
     "pt-BR": {
+      "searchTrends": "O relatório Frightgeist do Google, de 14 de outubro de 2026, informa que as buscas por filmes nostálgicos de Halloween crescem ano a ano desde 2019. Os filmes abaixo são sugestões editoriais, não um ranking do Google.",
       "heading": "Filmes de Halloween e adaptações de livros: 15 de outubro de 2026",
       "context": "Seleção editorial datada, inspirada nos boletins Frightgeist de 15 de outubro e Book or Movie de 7 de outubro do Google Trends. Os sinais de interesse nas buscas são dos Estados Unidos, não do Brasil nem do mundo. Interesse crescente não é ranking absoluto de popularidade, nota de qualidade ou confirmação de streaming. Fontes oficiais conferidas em 15 de outubro de 2026.",
       "classics": "Para uma noite nostálgica, escolha Abracadabra — Hocus Pocus (1993) pela comédia com bruxas, ou O Estranho Mundo de Jack — The Nightmare Before Christmas (1993) pela fantasia em stop-motion e pelas músicas. A programação americana do Freeform publicada pela Disney inclui os dois e indica opções no Disney+. Horário de TV e assinatura são coisas diferentes: confira a programação oficial e o catálogo do seu país. São sugestões editoriais, não aprovações para o Kids Mode.",
@@ -36,6 +39,7 @@
       "source": "Fonte oficial", "ask": "Explore este título exato com o MatchApp Ai", "reading": "Encontre livros e audiolivros", "series": "Explore séries", "trailer": "Trailer oficial e datas anunciadas", "link": "Guia de 15 de outubro: Halloween, East of Eden e o próximo Nárnia"
     },
     "es": {
+      "searchTrends": "El informe Frightgeist de Google del 14 de octubre de 2026 señala que las búsquedas de películas nostálgicas de Halloween crecen cada año desde 2019. Las películas siguientes son sugerencias editoriales, no una clasificación de Google.",
       "heading": "Halloween y libros en pantalla: 15 de octubre de 2026",
       "context": "Selección editorial inspirada en Frightgeist del 15 de octubre y Book or Movie del 7 de octubre de Google Trends. Los datos de interés son de Estados Unidos, no de Brasil ni del mundo. El interés creciente no es una clasificación absoluta ni confirma disponibilidad. Fuentes oficiales comprobadas el 15 de octubre de 2026.",
       "classics": "Para una noche nostálgica, Hocus Pocus (1993) ofrece comedia de brujas y The Nightmare Before Christmas (1993), fantasía en stop-motion y canciones. La programación estadounidense de Freeform publicada por Disney incluye ambas e indica Disney+. Comprueba el horario y el catálogo de tu país: una emisión de TV no equivale a acceso con cualquier suscripción. Estas sugerencias no autorizan títulos para Kids Mode.",
@@ -46,6 +50,7 @@
       "source": "Fuente oficial", "ask": "Explora este título con MatchApp Ai", "reading": "Encuentra libros y audiolibros", "series": "Explora series", "trailer": "Tráiler oficial y fechas anunciadas", "link": "Guía del 15 de octubre: Halloween, East of Eden y la próxima Narnia"
     },
     "fr": {
+      "searchTrends": "Selon le rapport Frightgeist de Google du 14 octobre 2026, les recherches de films nostalgiques pour Halloween augmentent chaque année depuis 2019. Les films ci-dessous sont des suggestions éditoriales, pas un classement de Google.",
       "heading": "Halloween et adaptations de livres : 15 octobre 2026",
       "context": "Sélection éditoriale inspirée des lettres Google Trends Frightgeist du 15 octobre et Book or Movie du 7 octobre. Les signaux concernent les États-Unis, pas le Brésil ni le monde. Une hausse des recherches ne prouve ni popularité absolue ni disponibilité. Sources officielles vérifiées le 15 octobre 2026.",
       "classics": "Pour une soirée nostalgique, Hocus Pocus (1993) propose une comédie de sorcières ; The Nightmare Before Christmas (1993), de la fantaisie en stop-motion et des chansons. Le programme américain Freeform publié par Disney cite les deux et Disney+. Vérifiez horaires et catalogue local : diffusion télévisée et abonnement sont distincts. Ces suggestions ne valent pas validation Kids Mode.",
@@ -56,6 +61,7 @@
       "source": "Source officielle", "ask": "Explorez ce titre avec MatchApp Ai", "reading": "Trouvez livres et livres audio", "series": "Explorez les séries", "trailer": "Bande-annonce officielle et dates annoncées", "link": "Guide du 15 octobre : Halloween, East of Eden et le prochain Narnia"
     },
     "de": {
+      "searchTrends": "Laut Googles Frightgeist-Bericht vom 14. Oktober 2026 steigen die Suchanfragen nach nostalgischen Halloween-Filmen seit 2019 von Jahr zu Jahr. Die folgenden Filme sind redaktionelle Empfehlungen, keine Google-Rangliste.",
       "heading": "Halloween und Buchverfilmungen: 15. Oktober 2026",
       "context": "Redaktionelle Auswahl nach den Google-Trends-Newslettern Frightgeist vom 15. Oktober und Book or Movie vom 7. Oktober. Die Suchsignale betreffen die USA, nicht Brasilien oder die Welt. Steigendes Interesse belegt weder absolute Beliebtheit noch Verfügbarkeit. Offizielle Quellen am 15. Oktober 2026 geprüft.",
       "classics": "Für einen nostalgischen Abend bietet Hocus Pocus (1993) Hexenkomödie, The Nightmare Before Christmas (1993) Stop-Motion-Fantasie und Lieder. Disneys US-Freeform-Programm nennt beide und Disney+. Prüfe Sendezeiten und deinen Länderkatalog: TV-Ausstrahlung und Abonnementzugang unterscheiden sich. Dies ist keine Freigabe für Kids Mode.",
@@ -66,6 +72,7 @@
       "source": "Offizielle Quelle", "ask": "Diesen Titel mit MatchApp Ai erkunden", "reading": "Bücher und Hörbücher finden", "series": "Serien entdecken", "trailer": "Offizieller Trailer und angekündigte Termine", "link": "Ratgeber vom 15. Oktober: Halloween, East of Eden und das kommende Narnia"
     },
     "it": {
+      "searchTrends": "Il rapporto Frightgeist di Google del 14 ottobre 2026 indica che le ricerche di film nostalgici di Halloween crescono ogni anno dal 2019. I film qui sotto sono suggerimenti editoriali, non una classifica di Google.",
       "heading": "Halloween e adattamenti di libri: 15 ottobre 2026",
       "context": "Selezione editoriale ispirata alle newsletter Google Trends Frightgeist del 15 ottobre e Book or Movie del 7 ottobre. I segnali di ricerca riguardano gli Stati Uniti, non Brasile o mondo. La crescita non è una classifica assoluta né prova di disponibilità. Fonti ufficiali verificate il 15 ottobre 2026.",
       "classics": "Per una serata nostalgica, Hocus Pocus (1993) offre commedia con streghe, The Nightmare Before Christmas (1993) fantasia in stop-motion e canzoni. Il calendario americano Freeform pubblicato da Disney cita entrambi e Disney+. Verifica orari e catalogo del tuo paese: trasmissione televisiva e accesso in abbonamento sono distinti. Non sono approvazioni Kids Mode.",
@@ -76,6 +83,7 @@
       "source": "Fonte ufficiale", "ask": "Esplora questo titolo con MatchApp Ai", "reading": "Trova libri e audiolibri", "series": "Esplora serie", "trailer": "Trailer ufficiale e date annunciate", "link": "Guida del 15 ottobre: Halloween, East of Eden e il prossimo Narnia"
     },
     "tr": {
+      "searchTrends": "Google’ın 14 Ekim 2026 tarihli Frightgeist raporuna göre nostaljik Cadılar Bayramı filmleri için yapılan aramalar 2019’dan beri her yıl artıyor. Aşağıdaki filmler editoryal önerilerdir; Google sıralaması değildir.",
       "heading": "Cadılar Bayramı filmleri ve kitap uyarlamaları: 15 Ekim 2026",
       "context": "Google Trends'in 15 Ekim Frightgeist ve 7 Ekim Book or Movie bültenlerinden esinlenen tarihli editoryal seçim. Arama sinyalleri ABD'ye aittir; Brezilya'yı veya dünyayı temsil etmez. Artan ilgi mutlak popülerlik sıralaması ya da erişim kanıtı değildir. Resmî kaynaklar 15 Ekim 2026'da kontrol edildi.",
       "classics": "Nostaljik bir akşam için Hocus Pocus (1993) cadılı komedi, The Nightmare Before Christmas (1993) stop-motion fantastik dünya ve şarkılar sunar. Disney'in ABD Freeform programı ikisini ve Disney+ seçeneklerini listeler. Yayın saatini ve ülkenizdeki kataloğu kontrol edin; TV yayını ile abonelik erişimi farklıdır. Bunlar Kids Mode onayı değildir.",
@@ -86,6 +94,7 @@
       "source": "Resmî kaynak", "ask": "Bu eseri MatchApp Ai ile keşfedin", "reading": "Kitap ve sesli kitap bulun", "series": "Dizileri keşfedin", "trailer": "Resmî fragman ve duyurulan tarihler", "link": "15 Ekim rehberi: Cadılar Bayramı, East of Eden ve yaklaşan Narnia"
     },
     "ru": {
+      "searchTrends": "Согласно отчёту Google Frightgeist от 14 октября 2026 года, число поисковых запросов о ностальгических фильмах на Хэллоуин растёт ежегодно с 2019 года. Фильмы ниже — редакционные рекомендации, а не рейтинг Google.",
       "heading": "Хэллоуин и экранизации книг: 15 октября 2026 года",
       "context": "Редакционная подборка по мотивам рассылок Google Trends Frightgeist от 15 октября и Book or Movie от 7 октября. Поисковые сигналы относятся к США, не к Бразилии или всему миру. Рост интереса не означает абсолютную популярность или доступность. Официальные источники проверены 15 октября 2026 года.",
       "classics": "Для ностальгического вечера Hocus Pocus (1993) предлагает комедию о ведьмах, а The Nightmare Before Christmas (1993) — кукольную фантазию и песни. В американской программе Freeform от Disney указаны оба фильма и Disney+. Проверьте расписание и каталог своей страны: телеэфир и подписка — разные варианты. Это не одобрение для Kids Mode.",
@@ -96,6 +105,7 @@
       "source": "Официальный источник", "ask": "Узнать об этом произведении с MatchApp Ai", "reading": "Найти книги и аудиокниги", "series": "Посмотреть сериалы", "trailer": "Официальный трейлер и объявленные даты", "link": "Гид от 15 октября: Хэллоуин, East of Eden и будущая Нарния"
     },
     "ar": {
+      "searchTrends": "يفيد تقرير Frightgeist من Google الصادر في 14 أكتوبر 2026 بأن عمليات البحث عن أفلام الهالوين التي تثير الحنين إلى الماضي تزداد سنويًا منذ 2019. الأفلام أدناه اقتراحات تحريرية وليست ترتيبًا من Google.",
       "heading": "أفلام الهالوين واقتباسات الكتب: 15 أكتوبر 2026",
       "context": "اختيارات تحريرية مستوحاة من نشرتي Google Trends: ‏Frightgeist في 15 أكتوبر وBook or Movie في 7 أكتوبر. إشارات البحث تخص الولايات المتحدة، لا البرازيل أو العالم. ارتفاع الاهتمام ليس ترتيباً مطلقاً للشعبية أو إثباتاً للتوافر. روجعت المصادر الرسمية في 15 أكتوبر 2026.",
       "classics": "لأمسية حنين، يقدم Hocus Pocus (1993) كوميديا الساحرات، وThe Nightmare Before Christmas (1993) خيال التحريك المجسم والأغاني. يذكر جدول Freeform الأمريكي المنشور من Disney الفيلمين وخيارات Disney+. تحقق من المواعيد وكتالوج بلدك؛ البث التلفزيوني والاشتراك مختلفان. هذه ليست موافقة على إضافتهما إلى Kids Mode.",
@@ -106,6 +116,7 @@
       "source": "المصدر الرسمي", "ask": "اكتشف هذا العمل مع MatchApp Ai", "reading": "اعثر على كتب وكتب صوتية", "series": "اكتشف المسلسلات", "trailer": "الإعلان الرسمي والمواعيد المعلنة", "link": "دليل 15 أكتوبر: الهالوين وEast of Eden ونارنيا القادمة"
     },
     "hi": {
+      "searchTrends": "Google की 14 अक्टूबर 2026 की Frightgeist रिपोर्ट के अनुसार, पुरानी यादें ताज़ा करने वाली हैलोवीन फ़िल्मों की खोजें 2019 से हर साल बढ़ रही हैं। नीचे दी गई फ़िल्में संपादकीय सुझाव हैं, Google की रैंकिंग नहीं।",
       "heading": "हैलोवीन फ़िल्में और किताबों के रूपांतरण: 15 अक्टूबर 2026",
       "context": "Google Trends के 15 अक्टूबर Frightgeist और 7 अक्टूबर Book or Movie समाचारपत्रों से प्रेरित संपादकीय चयन। खोज के संकेत अमेरिका के हैं, ब्राज़ील या पूरे विश्व के नहीं। बढ़ती रुचि पूर्ण लोकप्रियता रैंकिंग या उपलब्धता का प्रमाण नहीं है। आधिकारिक स्रोत 15 अक्टूबर 2026 को जाँचे गए।",
       "classics": "पुरानी यादों वाली शाम के लिए Hocus Pocus (1993) में चुड़ैलों की कॉमेडी और The Nightmare Before Christmas (1993) में स्टॉप-मोशन कल्पना और गीत मिलते हैं। Disney की अमेरिकी Freeform सूची दोनों और Disney+ विकल्प बताती है। समय और अपने देश का कैटलॉग जाँचें; टीवी प्रसारण और सदस्यता अलग हैं। यह Kids Mode की मंज़ूरी नहीं है।",
@@ -116,6 +127,7 @@
       "source": "आधिकारिक स्रोत", "ask": "MatchApp Ai के साथ इस रचना को खोजें", "reading": "किताबें और ऑडियोबुक खोजें", "series": "सीरीज़ खोजें", "trailer": "आधिकारिक ट्रेलर और घोषित तारीखें", "link": "15 अक्टूबर गाइड: हैलोवीन, East of Eden और आगामी Narnia"
     },
     "id": {
+      "searchTrends": "Laporan Frightgeist Google tanggal 14 Oktober 2026 menyebutkan bahwa penelusuran film Halloween bernuansa nostalgia meningkat setiap tahun sejak 2019. Film di bawah ini adalah saran editorial, bukan peringkat Google.",
       "heading": "Film Halloween dan adaptasi buku: 15 Oktober 2026",
       "context": "Pilihan editorial terinspirasi buletin Google Trends Frightgeist 15 Oktober dan Book or Movie 7 Oktober. Sinyal pencarian berasal dari Amerika Serikat, bukan Brasil atau dunia. Minat meningkat bukan peringkat popularitas mutlak atau bukti ketersediaan. Sumber resmi diperiksa 15 Oktober 2026.",
       "classics": "Untuk malam nostalgia, Hocus Pocus (1993) menawarkan komedi penyihir, sedangkan The Nightmare Before Christmas (1993) menawarkan fantasi stop-motion dan lagu. Jadwal Freeform AS dari Disney mencantumkan keduanya dan Disney+. Periksa jadwal serta katalog negara Anda; siaran TV berbeda dari akses langganan. Ini bukan persetujuan Kids Mode.",
@@ -126,6 +138,7 @@
       "source": "Sumber resmi", "ask": "Jelajahi judul ini dengan MatchApp Ai", "reading": "Temukan buku dan buku audio", "series": "Jelajahi serial", "trailer": "Trailer resmi dan tanggal yang diumumkan", "link": "Panduan 15 Oktober: Halloween, East of Eden dan Narnia mendatang"
     },
     "ja": {
+      "searchTrends": "Googleが2026年10月14日に公開したFrightgeistレポートによると、懐かしいハロウィン映画の検索は2019年以降、毎年増えています。以下の映画は編集部の提案であり、Googleのランキングではありません。",
       "heading": "ハロウィーン映画と文学の映像化：2026年10月15日",
       "context": "Google Trendsの10月15日付Frightgeistと10月7日付Book or Movieに着想を得た編集部の特集です。検索動向は米国のもので、ブラジルや世界全体を示しません。関心の上昇は絶対的な人気順位や配信確認ではありません。公式情報は2026年10月15日に確認しました。",
       "classics": "懐かしい夜には、魔女のコメディHocus Pocus（1993）、またはコマ撮りの幻想と歌を楽しむThe Nightmare Before Christmas（1993）を。Disneyの米国Freeform番組表は両作品とDisney+を案内しています。放送と契約による視聴は別なので、番組表と自国のカタログを確認してください。Kids Modeへの承認ではありません。",
@@ -136,6 +149,7 @@
       "source": "公式情報", "ask": "MatchApp Aiでこの作品を調べる", "reading": "本とオーディオブックを探す", "series": "ドラマを探す", "trailer": "公式予告編と発表された日程", "link": "10月15日の特集：ハロウィーン、East of Eden、公開予定のNarnia"
     },
     "ko": {
+      "searchTrends": "Google의 2026년 10월 14일 Frightgeist 보고서에 따르면 추억을 떠올리게 하는 할로윈 영화 검색은 2019년부터 매년 증가하고 있습니다. 아래 영화는 편집상의 추천이며 Google 순위가 아닙니다.",
       "heading": "할로윈 영화와 책의 영상화: 2026년 10월 15일",
       "context": "Google Trends의 10월 15일 Frightgeist 및 10월 7일 Book or Movie 뉴스레터에서 영감을 받은 편집 추천입니다. 검색 신호는 미국 기준이며 브라질이나 전 세계를 대표하지 않습니다. 관심 상승은 절대적인 인기 순위나 시청 가능 여부의 증거가 아닙니다. 공식 자료 확인일은 2026년 10월 15일입니다.",
       "classics": "추억을 즐기는 밤에는 마녀 코미디 Hocus Pocus(1993), 또는 스톱모션 판타지와 노래의 The Nightmare Before Christmas(1993)를 고르세요. Disney의 미국 Freeform 편성표는 두 작품과 Disney+를 안내합니다. 방송과 구독 시청은 다르므로 시간표와 해당 국가 카탈로그를 확인하세요. Kids Mode 승인을 뜻하지 않습니다.",
@@ -146,6 +160,7 @@
       "source": "공식 출처", "ask": "MatchApp Ai로 이 작품 알아보기", "reading": "책과 오디오북 찾기", "series": "시리즈 살펴보기", "trailer": "공식 예고편과 발표 일정", "link": "10월 15일 가이드: 할로윈, East of Eden, 개봉 예정 Narnia"
     },
     "zh": {
+      "searchTrends": "Google于2026年10月14日发布的Frightgeist报告指出，怀旧万圣节电影的搜索量自2019年以来逐年增长。下方影片是编辑推荐，并非Google排名。",
       "heading": "万圣节电影与图书改编：2026年10月15日",
       "context": "本期编辑精选受到Google Trends的10月15日Frightgeist及10月7日Book or Movie简报启发。搜索信号来自美国，不代表巴西或全球。兴趣上升不等于绝对人气排名，也不能证明可以观看。官方资料核对日期为2026年10月15日。",
       "classics": "怀旧之夜可选女巫喜剧Hocus Pocus（1993），或充满定格动画奇幻与歌曲的The Nightmare Before Christmas（1993）。Disney发布的美国Freeform节目表列有两部作品及Disney+选项。电视播出与订阅观看不同，请核对时间和所在国家的片库。这并不代表Kids Mode审核通过。",
