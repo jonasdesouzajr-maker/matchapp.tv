@@ -1,0 +1,15 @@
+{
+  "source": "LuminaMatch_Browser.zip",
+  "source_sha256": "d4feb038f4e9f723e40d33fd13269797c5b22b95ac98f6bf75836406d2485644",
+  "artwork": {
+    "card_back.jpg": "c426d2265f7d72e0023f820ff468e6234fb03ad440b1e3ad772fad4b8fb4a285",
+    "card_butterfly.jpg": "4de1e158e8c84998ae1d5e85f7d12214959562a36f4ee6fbbd289201e8f5aa6e",
+    "card_crystal.jpg": "fdadae4ba0aa11c2851f83c4ae38b7e72e8f6d215c4601fe191a49d388847a1a",
+    "card_heart.jpg": "eed1d5a34761f3955ddd68544e15646f6b0697273acaac07d96eac1c682011bd",
+    "card_moon.jpg": "8072cf61777bd9e6ffb37f0a712fc5d5c75d19549143ecf636efadd6dea45b69",
+    "card_orb.jpg": "5e4e4ecd230fad07c4f8190e45608ce9aa4d36fe694d2e1b58195af1a89a1bc6",
+    "card_planet.jpg": "93dd42c665a5e83e3613cd03ee2aa752507c61755cbd62ec84df43b0115bee5b",
+    "card_star.jpg": "1ad645a5e372c04596ab070d19f30d67868bcee545aa807540cda2152eb13bb5",
+    "card_sun.jpg": "f3a79a3becdcd1d5d06e7306a08f75d1f44f4cec262660e425f45309d844f719"
+  }
+}
