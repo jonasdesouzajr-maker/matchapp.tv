@@ -67,7 +67,15 @@ document.addEventListener('matchapp:kids-ai-error',e=>{
  const node=document.getElementById('kids-answer');
  if(node&&node.textContent)decorate(node,{code:e.detail?.code==='quota-error'?'kids-quota':null});
 });
-window.addEventListener('error',e=>{if(e instanceof ErrorEvent&&e.message)show(RETRY[language()]||RETRY.en,{code:'runtime-error'});});
-window.addEventListener('unhandledrejection',()=>show(RETRY[language()]||RETRY.en,{code:'unhandled-rejection'}));
+// Third-party media/ad failures must not announce that the app itself failed.
+window.addEventListener('error',e=>{
+ if(!(e instanceof ErrorEvent)||!e.message||!e.filename)return;
+ try{if(new URL(e.filename,location.href).origin!==location.origin)return;}catch(_){return;}
+ show(RETRY[language()]||RETRY.en,{code:'runtime-error'});
+});
+window.addEventListener('unhandledrejection',e=>{
+ if(!String(e.reason?.stack||'').includes(location.origin+'/'))return;
+ show(RETRY[language()]||RETRY.en,{code:'unhandled-rejection'});
+});
 document.addEventListener('matchapp:langchange',()=>document.querySelectorAll('.ma-error-close').forEach(b=>b.setAttribute('aria-label',CLOSE[language()]||CLOSE.en)));
 })();

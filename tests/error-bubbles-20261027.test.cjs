@@ -53,3 +53,14 @@ test('existing match recovery dismiss restores pool guidance without changing ma
   w.document.querySelector('#match-recovery .ma-error-close').click();assert.equal(w.document.querySelector('#match-recovery'),null);assert.equal(w.document.querySelector('#match-pool-hint').hidden,false);
  }finally{d.window.close()}
 });
+
+test('third-party script failures stay separate and first-party exceptions never expose their raw text',()=>{
+ const {d,w,calls}=setup();try{
+  w.dispatchEvent(new w.ErrorEvent('error',{message:'provider failure',filename:'https://ads.example/script.js'}));
+  w.dispatchEvent(new w.ErrorEvent('error',{message:'Script error.'}));
+  assert.equal(w.document.querySelector('.ma-error-bubble'),null);assert.equal(calls.length,0);
+  w.dispatchEvent(new w.ErrorEvent('error',{message:'private error details',filename:'https://matchapp.tv/app.js'}));
+  assert.match(w.document.querySelector('.ma-error-copy').textContent,/Something went wrong/);
+  assert.doesNotMatch(w.document.querySelector('.ma-error-copy').textContent,/private/);assert.equal(calls[0][1].p_code,'runtime-error');
+ }finally{d.window.close()}
+});
