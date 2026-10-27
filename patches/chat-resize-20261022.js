@@ -17,18 +17,18 @@
   // need fresh safe-area bounds even though the element is stable.
   var c=getComputedStyle(safeProbe);return{t:parseFloat(c.paddingTop)||0,r:parseFloat(c.paddingRight)||0,b:parseFloat(c.paddingBottom)||0,l:parseFloat(c.paddingLeft)||0}}
  function vis(e){if(!e)return null;var r=e.getBoundingClientRect();return r.width>1&&r.height>1&&getComputedStyle(e).visibility!=='hidden'?r:null}
- function viewport(){var v=window.visualViewport;return{w:document.documentElement.clientWidth||innerWidth,h:v?Math.min(v.height,innerHeight):innerHeight}}
+ function viewport(){var v=window.visualViewport;return{x:v?v.offsetLeft||0:0,y:v?v.offsetTop||0:0,w:v?v.width:document.documentElement.clientWidth||innerWidth,h:v?Math.min(v.height,innerHeight):innerHeight}}
  function area(panel){
-  var vp=viewport(),s=safe(),top=GAP+s.t,left=GAP+s.l,right=vp.w-GAP-s.r,bottom=vp.h-GAP-s.b;
+  var vp=viewport(),s=safe(),top=vp.y+GAP+s.t,left=vp.x+GAP+s.l,right=vp.x+vp.w-GAP-s.r,bottom=vp.y+vp.h-GAP-s.b;
   // The same Jonas launcher remains the open/close control even at maximum
   // panel size. Preserve its existing reserved header space.
   var header=vis(document.getElementById('ma-reference-header'));
-  if(header&&header.bottom>top&&header.top<vp.h)top=Math.min(bottom,Math.max(top,header.bottom+GAP));
+  if(header&&header.bottom>top&&header.top<vp.y+vp.h)top=Math.min(bottom,Math.max(top,header.bottom+GAP));
   var dock=vis(document.querySelector('.ma-reference-dock,.ma-cinema-dock'));
-  if(dock&&dock.top<vp.h&&dock.top>vp.h*0.5)bottom=Math.min(bottom,dock.top-GAP);
+  if(dock&&dock.top<vp.y+vp.h&&dock.top>vp.y+vp.h*0.5)bottom=Math.min(bottom,dock.top-GAP);
   var ads=document.querySelectorAll('ins.adsbygoogle,[data-ad-slot],.sidebar-ad-left,.sidebar-ad-right,[id^="ad-slot"],[class*="ad-slot"]');
-  for(var i=0;i<ads.length;i++){var a=vis(ads[i]);if(!a||panel.contains(ads[i])||a.bottom<=0||a.top>=vp.h||a.right<=0||a.left>=vp.w)continue;
-   if(vp.w>=PHONE&&a.height>=a.width){ if(a.left>vp.w/2)right=Math.min(right,a.left-GAP); else left=Math.max(left,a.right+GAP); }
+  for(var i=0;i<ads.length;i++){var a=vis(ads[i]);if(!a||panel.contains(ads[i])||a.bottom<=vp.y||a.top>=vp.y+vp.h||a.right<=vp.x||a.left>=vp.x+vp.w)continue;
+   if(vp.w>=PHONE&&a.height>=a.width){ if(a.left>vp.x+vp.w/2)right=Math.min(right,a.left-GAP); else left=Math.max(left,a.right+GAP); }
    else if(a.top<bottom&&a.bottom>top){ if(a.top>(top+bottom)/2)bottom=Math.min(bottom,a.top-GAP); else top=Math.max(top,a.bottom+GAP); }}
   return{top:top,left:left,right:right,bottom:bottom,w:Math.max(0,right-left),h:Math.max(0,bottom-top),phone:vp.w<PHONE}}
  function minH(panel){
@@ -39,6 +39,17 @@
  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
  function nearest(list,v){var best=list[0];list.forEach(function(x){if(Math.abs(x-v)<Math.abs(best-v))best=x});return best}
  function set(el,p,v){el.style.setProperty(p,v,'important')}
+ function revealFocusedComposer(panel){
+  // Android can resize the outer panel after the iframe has already scrolled
+  // its focused input into view. Recheck the frame after applying its new size.
+  // Scroll only the conversation, never the underlying page or unfocused history.
+  var f=panel.querySelector('iframe');if(!f)return;
+  try{var d=f.contentDocument,w=f.contentWindow,e=d&&d.activeElement;
+   if(!w||!e||!e.matches('textarea,input:not([type=hidden]),[contenteditable="true"]'))return;
+   var r=e.getBoundingClientRect(),h=w.innerHeight;
+   if(h>0&&(r.top<0||r.bottom>h))w.scrollTo(w.scrollX,Math.max(0,w.scrollY+r.top-Math.max(0,(h-r.height)/2)));
+  }catch(_){} // Cross-origin frames keep their own scrolling owner.
+ }
  function apply(panel,st,anim){
   var A=area(panel),B=bounds(panel,A),S=load(),mode=A.phone?'phone':'wide',cur=st||S[mode]||{};
   var h=clamp(cur.h||(A.phone?snaps(B)[Math.min(1,snaps(B).length-1)]:Math.min(560,B.maxH)),B.minH,B.maxH);
@@ -50,6 +61,7 @@
   set(panel,'transition',anim&&!(reduce&&reduce.matches)?'height .22s cubic-bezier(.2,.9,.3,1),top .22s cubic-bezier(.2,.9,.3,1)':'none');
   panel.setAttribute('data-ma-resize',mode);panel.__maSize={w:w,h:h,B:B,A:A};
   var hd=panel.__maHandle;if(hd){hd.setAttribute('aria-orientation',A.phone?'horizontal':'vertical');hd.setAttribute('aria-valuemin',B.minH);hd.setAttribute('aria-valuemax',B.maxH);hd.setAttribute('aria-valuenow',Math.round(h));hd.setAttribute('aria-valuetext',Math.round(h)+' by '+Math.round(w)+' pixels')}
+  revealFocusedComposer(panel);
   return{w:w,h:h,mode:mode}}
  function persist(panel){var z=panel.__maSize;if(!z)return;var S=load();S[panel.getAttribute('data-ma-resize')]={w:Math.round(z.w),h:Math.round(z.h)};save(S)}
  function css(){if(document.getElementById('ma-chat-resize-css'))return;var s=document.createElement('style');s.id='ma-chat-resize-css';
@@ -83,12 +95,18 @@
 
  function frameFix(panel){var f=panel.querySelector('iframe');if(!f||f.__maFix)return;f.__maFix=true;
   function go(){try{var d=f.contentDocument;if(!d||!d.head||d.getElementById('ma-chat-resize-frame'))return;var st=d.createElement('style');st.id='ma-chat-resize-frame';
-   st.textContent='html.matchapp-ambient-frame .ma-cinema-dock,html.matchapp-ambient-frame .ma-reference-dock{display:none!important}html.matchapp-ambient-frame body{padding-bottom:12px!important}';d.head.appendChild(st)}catch(_){}}
+   st.textContent='html.matchapp-ambient-frame .ma-cinema-dock,html.matchapp-ambient-frame .ma-reference-dock{display:none!important}html.matchapp-ambient-frame body{padding-bottom:12px!important}'+
+    '@media(max-height:240px){'+
+    'html.matchapp-ambient-frame,html.matchapp-ambient-frame body.ai-chat-page{height:auto!important;overflow-y:auto!important}'+
+    'html.matchapp-ambient-frame body.ai-chat-page main.wrap{height:auto!important;overflow:visible!important}'+
+    'html.matchapp-ambient-frame body.ai-chat-page main.wrap .premium-card.discover-head{height:auto!important;max-height:none!important;flex:none!important;overflow:visible!important}'+
+    'html.matchapp-ambient-frame body.ai-chat-page .discover-head>.newsearch-row{max-height:none!important;overflow:visible!important}'+
+    '}';d.head.appendChild(st);d.addEventListener('focusin',later);d.addEventListener('input',later)}catch(_){}}
   f.addEventListener('load',go);go()}
  function sync(){if(document.documentElement.classList.contains('ma-chat-resizing'))return;var ps=document.querySelectorAll(SEL);for(var i=0;i<ps.length;i++){var p=ps[i];if(kids())continue;if(p.hidden){p.style.removeProperty('display');continue}attach(p);frameFix(p);apply(p)}}
  window.MatchAppChatResize=Object.freeze({sync:sync});
  var t;var t2;function later(){clearTimeout(t);clearTimeout(t2);t=setTimeout(sync,60);t2=setTimeout(sync,450)}
  function boot(){sync();new MutationObserver(function(m){for(var i=0;i<m.length;i++){var n=m[i].target;if(m[i].type==='attributes'?n.matches&&n.matches(SEL):true){later();return}}}).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden']});
-  addEventListener('resize',later);addEventListener('orientationchange',later);if(window.visualViewport)visualViewport.addEventListener('resize',later)}
+  addEventListener('resize',later);addEventListener('orientationchange',later);if(window.visualViewport){visualViewport.addEventListener('resize',later);visualViewport.addEventListener('scroll',later)}}
  if(document.body)boot();else document.addEventListener('DOMContentLoaded',boot);
 })();
