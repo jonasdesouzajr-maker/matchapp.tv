@@ -124,3 +124,27 @@ test('pinch zoom magnifies the existing composer rather than reflowing it into a
   assert(parseFloat(s.panel.style.top)>=213,'ordinary keyboard panning remains active after zoom ends');
  }finally{s.dom.window.close()}
 });
+
+test('short frames reveal a fitting composer and allowance together, without fighting deliberate scroll',async()=>{
+ const s=await scene();
+ try{
+  const frame=s.w.document.createElement('iframe');s.panel.appendChild(frame);await microtasks();await s.drain();
+  const d=frame.contentDocument,w=frame.contentWindow;
+  d.body.innerHTML='<div class="newsearch-row"><div class="composer"><textarea></textarea><button>Send</button></div><div id="ai-send-cost">Allowance</div></div>';
+  const input=d.querySelector('textarea'),composer=d.querySelector('.composer'),quota=d.querySelector('#ai-send-cost');
+  let scrollY=0;Object.defineProperty(w,'innerHeight',{value:90,configurable:true});Object.defineProperty(w,'scrollY',{get:()=>scrollY,configurable:true});
+  w.scrollTo=(x,y)=>{scrollY=y;};
+  const rect=(top,height)=>({top:top-scrollY,bottom:top+height-scrollY,height});
+  input.getBoundingClientRect=()=>rect(30,44);composer.getBoundingClientRect=()=>rect(24,58);quota.getBoundingClientRect=()=>rect(86,18);
+  input.focus();s.w.dispatchEvent(new s.w.Event('resize'));await s.drain();
+  assert(composer.getBoundingClientRect().top>=0&&quota.getBoundingClientRect().bottom<=w.innerHeight,'the input, Send and allowance fit together');
+  // With a longer translated allowance there may be insufficient height for both.
+  // A user can scroll down to read it, and unrelated poster updates must not undo that.
+  quota.getBoundingClientRect=()=>rect(86,70);scrollY=80;
+  s.w.document.body.appendChild(s.w.document.createElement('aside'));await microtasks();await s.drain();
+  assert.equal(scrollY,80,'a page mutation must not snap deliberate conversation scrolling back to the focused field');
+  input.dispatchEvent(new w.Event('input',{bubbles:true}));await s.drain();
+  assert(input.getBoundingClientRect().top>=0&&input.getBoundingClientRect().bottom<=w.innerHeight,'typing restores the complete field when the group is taller than the frame');
+  assert.equal(s.w.scrollY,0,'only the embedded conversation may scroll');
+ }finally{s.dom.window.close();}
+});
