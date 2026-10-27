@@ -10,7 +10,7 @@
  var RICH='img,picture,video,iframe,canvas,article,figure,h1,h2,h3,h4,dl,table,select,textarea,input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])';
  var states=new Map(),pending=0,resize=null,observer=null,measure=null,bookOpen=Object.create(null),dirty=false;
  function enabled(){return document.documentElement.classList.contains('ma-reference')&&!/^\/kids(?:\/|$)/.test(location.pathname)&&document.body&&!document.body.matches('.page-kids,.kids-body,[data-kids-mode="true"]');}
- function visible(node){return node instanceof Element&&!node.hidden&&node.getAttribute('aria-hidden')!=='true'&&node.getClientRects().length>0&&getComputedStyle(node).display!=='none';}
+ function visible(node){return node instanceof Element&&!node.hidden&&node.getAttribute('aria-hidden')!=='true'&&node.getClientRects().length>0;}
  function set(node,key,value){if(node.getAttribute(key)!==value)node.setAttribute(key,value);}
  function simple(node){
   if(!node.matches(CONTROL)||node.matches('[role="tab"],.theme-choice,.profile-hub-row')||node.closest(EXCLUDED)||node.querySelector(RICH))return false;
@@ -18,7 +18,7 @@
   return true;
  }
  function eligible(group){
-  if(!group||!visible(group)||group.matches('body,main,form,fieldset,header,footer,section,article,ul,ol')||group.closest(EXCLUDED)||group.querySelector(AD)||group.querySelector(RICH))return null;
+  if(!group||group.matches('body,main,form,fieldset,header,footer,section,article,ul,ol')||group.closest(EXCLUDED)||group.querySelector(AD)||group.querySelector(RICH)||!visible(group))return null;
   var known=group.matches(KNOWN),children=Array.from(group.children).filter(visible),items=children.filter(simple);
   if(items.length<(known?2:3)||items.length>240)return null;
   var notes=children.filter(function(node){return items.indexOf(node)===-1;});
@@ -47,9 +47,9 @@
  }
  function maximumColumns(group,items,width){
   var need=64,threeLineNeed=0,books=group.classList.contains('ebook-chips')&&window.innerWidth<=600;
+  var rem=parseFloat(getComputedStyle(document.documentElement).fontSize)||16;
   items.forEach(function(item){
    var css=getComputedStyle(item),text=String(item.innerText||item.textContent||'').replace(/\s+/g,' ').trim();
-   var root=getComputedStyle(document.documentElement),rem=parseFloat(root.fontSize)||16;
    var size=.8*rem,font=(css.fontWeight||'500')+' '+size+'px '+css.fontFamily;
    var icon=!books&&item.querySelector('svg,.icon,[data-lucide]')?24:0;
    var natural=textWidth(text,font);
@@ -119,22 +119,33 @@
   var candidates=new Set(Array.from(document.querySelectorAll(KNOWN)));
   var controls=document.querySelectorAll(CONTROL);
   for(var i=0;i<controls.length&&i<1800;i++){var parent=controls[i].parentElement;if(parent&&!parent.closest(EXCLUDED))candidates.add(parent);}
-  var accepted=new Set(),count=0;
+  // Read every candidate before writing grid attributes. Interleaving these
+  // phases forced a fresh layout for each following group on every refresh.
+  var accepted=new Set(),plans=[],count=0;
   candidates.forEach(function(group){
    if(count>=160)return;
    var found=eligible(group);if(!found)return;
    var css=getComputedStyle(group),width=group.getBoundingClientRect().width-parseFloat(css.paddingLeft||0)-parseFloat(css.paddingRight||0)-parseFloat(css.borderLeftWidth||0)-parseFloat(css.borderRightWidth||0);
    if(width<44)return;
    var previous=states.get(group);
+   plans.push({group:group,found:found,previous:previous,width:width,columns:maximumColumns(group,found.items,width)});
+   accepted.add(group);count++;
+  });
+  plans.forEach(function(plan){
+   var group=plan.group,found=plan.found,previous=plan.previous,width=plan.width;
    if(previous){previous.items.filter(function(item){return found.items.indexOf(item)===-1;}).forEach(function(item){item.removeAttribute('data-ma-density-item');item.removeAttribute('data-ma-density-span');});previous.notes.filter(function(note){return found.notes.indexOf(note)===-1;}).forEach(function(note){note.removeAttribute('data-ma-density-note');});}
    var state={items:found.items,notes:found.notes,width:width,observedWidth:previous?previous.observedWidth:width};
-   states.set(group,state);apply(group,state,maximumColumns(group,state.items,width));
-   accepted.add(group);count++;if(resize&&!previous)resize.observe(group);
+   states.set(group,state);apply(group,state,plan.columns);
+   if(resize&&!previous)resize.observe(group);
   });
   Array.from(states.keys()).forEach(function(group){if(!accepted.has(group))clear(group);});
   // Two bounded refinement passes account for the browser's actual shaping
   // and icon widths. Extra-long text remains visible rather than clipped.
-  for(var pass=0;pass<2;pass++)states.forEach(function(state,group){if(state.columns>1&&state.items.some(function(item){return lineCount(item)>3;}))apply(group,state,state.columns-1);});
+  for(var pass=0;pass<2;pass++){
+   var refine=[];
+   states.forEach(function(state,group){if(state.columns>1&&state.items.some(function(item){return lineCount(item)>3;}))refine.push([group,state]);});
+   refine.forEach(function(entry){apply(entry[0],entry[1],entry[1].columns-1);});
+  }
  }
  function schedule(){if(document.hidden){dirty=true;return;}if(!pending)pending=setTimeout(flush,60);}
  function visibilitySignature(value){
@@ -149,6 +160,8 @@
    if(records.some(function(record){
     if(record.target.nodeType===1&&record.target.closest(EXCLUDED))return false;
     if(record.type==='attributes'){
+     // Repeated owners may write an unchanged class/style; it cannot alter layout.
+     if(record.oldValue===record.target.getAttribute(record.attributeName))return false;
      if(record.attributeName==='style'&&record.target!==document.documentElement)return visibilitySignature(record.oldValue)!==visibilitySignature(record.target.getAttribute('style'));
      return true;
     }

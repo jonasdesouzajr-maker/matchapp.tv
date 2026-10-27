@@ -68,7 +68,7 @@
   }
   if (!document.querySelector('script[data-cinema-density]')) {
     var densityStyle=document.createElement('link');densityStyle.rel='stylesheet';densityStyle.href='/patches/reference-density.css?v=20261020-grid1';document.head.appendChild(densityStyle);
-    var densityScript=document.createElement('script');densityScript.src='/patches/reference-density.js?v=20261020-grid1&androidqa=20261021-1';densityScript.dataset.cinemaDensity='';densityScript.defer=true;document.head.appendChild(densityScript);
+    var densityScript=document.createElement('script');densityScript.src='/patches/reference-density.js?v=20261020-grid1&androidqa=20261021-1&perf=20261027-1';densityScript.dataset.cinemaDensity='';densityScript.defer=true;document.head.appendChild(densityScript);
   }
   var labels = {
     en: ['Home','Explore','Matches','My List','Profile','Search','Top Titles','View all','Explore more','Find Your Perfect Match'],
