@@ -46,13 +46,13 @@ These existing native modules are **live WebView shells**, not divergent forks o
 - Uses the existing MatchApp Kids visual identity for launcher/splash presentation
 - Cinema dim is **not** applied in this module
 
-## Current adult AAB candidate — October 22, 2026
+## Current adult AAB candidate - October 27, 2026
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) candidate version: **1.1.63**, package `com.jonas.papercup`.
-- Standard app version code: **62**. Code **61 / 1.1.61** is live on Production. Candidate 62 upgrades Material to 1.14.0 and AGP to 9.0.1 with optimized resource shrinking; existing edge-to-edge insets and fullscreen PiP are preserved.
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=62`
+- Standard app (`:app`) candidate version: **1.1.64**, package `com.jonas.papercup`.
+- Standard app version code: **64**. Code **63 / 1.1.63** is live on Production. Candidate64 adds one closable native error notice and preserves the startup crash fix, native insets, PiP, caching, consent and ad behavior.
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=64`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.
 - Kids app (`:kidsapp`) remains a separate, unchanged package; its independent release is outside this adult candidate.
 - The adult shell preserves its eligible current screen on launcher reentry and supports bounded presentation recovery after process death. Pull-to-refresh is disabled; the adult manual refresh preserves the current document and uses the existing local read-only adapter. Installed binary updates come through Google Play.

@@ -1,3 +1,11 @@
+## October 27, 2026 native error notices — 1.1.64 (code 64)
+
+Play Console was independently checked October27: code63 is the latest uploaded adult bundle, fully rolled out in all178 existing countries, with no unpublished changes. Recheck immediately before upload. Candidate64 uses one branded, closable native error notice and retry recovery without the underlying Chromium error page. Preserve existing startup/R8 fixes, matching, account, quota, voice, permissions, cache policy, ad behavior and signing identity.
+
+The shared notice is regression-tested in the separate Kids module. No Kids listing was found in this developer account; do not create one or present the Kids debug APK as a Play release. Public Kids web fixes already ship through the live site.
+
+Required gates: exact-head website/site/Android/AdSense validation and full matching/AI audit; affected physical phone/tablet checks; signed adult AAB package/version/archive/upload-certificate checks; Production-only submission and separate rollout verification. The CI artifact `MatchApp-Ai-adult-1.1.64-code64-UNSIGNED-AAB` is not Play-ready until signed and verified. No emulator, new track, signing identity or security change.
+
 ## October 26, 2026 startup crash repair — 1.1.63 (code 63)
 
 Repairs the observed 1.1.62 S23 Ultra startup failure in WorkManager/Room initialization by preserving the reflected WorkDatabase implementation in R8. The minified separate QA package passed three cold launches on the owner's physical SM-S918B. Production package, existing signing identity, ad configuration, web matching and Kids remain unchanged. Recheck all uploaded Play version codes before upload. Build, signing, store acceptance and production-device delivery remain separate gates.

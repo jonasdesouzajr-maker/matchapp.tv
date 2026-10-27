@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    sourceSets.getByName("main").java.srcDir("../shared/src/main/java")
     namespace = "com.jonas.papercup"
     compileSdk = 36
 
@@ -11,8 +12,8 @@ android {
         applicationId = "com.jonas.papercup"
         minSdk = 24
         targetSdk = 36
-        versionCode = 63
-        versionName = "1.1.63"
+        versionCode = 64
+        versionName = "1.1.64"
         // Production banner is enabled only after the native entitlement + UMP consent gates allow it.
         buildConfigField("Boolean", "ADMOB_ENABLED", "true")
         buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/5523667258\"")
