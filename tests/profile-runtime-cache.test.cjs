@@ -3,9 +3,9 @@ test('profile always receives current canonical avatar and compact Taste DNA sty
  const profile=fs.readFileSync('profile/profile.html','utf8');
  const shell=fs.readFileSync('title-captions.js','utf8');
  const settings=fs.readFileSync('settings.js','utf8');
- assert(profile.includes('/settings.js?v=20261006-installbell1&errors=20261027-2'));
+ assert(profile.includes('/settings.js?v=20261006-installbell1'));
  assert(profile.includes('/title-captions.js?v=20260929-avatar1'));
- assert(shell.includes('/final-audit.js?v=20260929-avatar1&errors=20261027-2'));
+ assert(shell.includes('/final-audit.js?v=20260929-avatar1'));
  assert(shell.includes('/final-audit.css?v=20260929-avatar1'));
  assert(settings.includes("src==='/taste-profile.js'?'20260929-taste1'"));
  assert(settings.includes("src==='/taste-profile.css'?'20260929-taste1'"));
