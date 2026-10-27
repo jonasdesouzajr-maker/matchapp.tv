@@ -370,7 +370,7 @@
     "poster": "https://kraken.ingresse.com/event/posters/91865/large/1775164706.5283916.jpg",
     "posterCredit": "Official Brasil Game Show 2026 ticket artwork — Brasil Game Show",
     "featuredTitles": [],
-    "searchDescription": "Brasil Game Show 2026, 9–12 October at Distrito Anhembi, São Paulo. Official daily programme, guest information and ticket details.",
+    "searchDescription": "Brasil Game Show 2026 ran 9–12 October at Distrito Anhembi, São Paulo. Revisit official event sources, game announcements and post-event coverage guidance.",
     "visitorNotes": [
       "The published Brasil Game Show 2026 window is 9 to 12 October at Distrito Anhembi in São Paulo. The exhibition programme can differ by day; use the organiser’s own programação page for individual guest appearances, times and any late changes before making travel plans.",
       "The event website is the authority for entrance, tickets and venue updates. MatchApp provides discovery links, not a ticket office, and does not treat a promotional trailer or convention demonstration as proof that a game can be played or purchased today.",
@@ -378,7 +378,8 @@
       "For post-event discovery, use the name of the game, publisher, guest or panel together with the 2026 edition. A general convention recap may mix stage presentations, short demonstrations and interviews; these are useful for different questions. Someone comparing games will usually need the publisher’s own product information, while someone following a guest may be looking for the complete conversation rather than a brief promotional clip.",
       "Keep an announcement, a playable demonstration and a finished release separate. Appearance at Brasil Game Show does not by itself establish a game’s release date, supported platforms, local price or online availability. Follow the identified publisher or developer from the official event material to verify those details. For an archived panel, check the session title and date before assuming a similarly named video is the same appearance; not every convention activity has a public recording."
     ],
-    "updatedAt": "2026-10-16"
+    "updatedAt": "2026-10-27",
+    "searchTitle": "Brasil Game Show 2026: Dates & Event Archive"
   },
   {
     "slug": "adelaide-film-festival-2026",
@@ -535,17 +536,28 @@
     "start": "2026-10-20T00:00:00+05:30",
     "end": "2026-11-06T23:59:59+05:30",
     "timezone": "Asia/Kolkata",
+    "datePrecision": "date",
     "location": "Dussehra Ground, Kota, Rajasthan, India",
     "countryCode": "IN",
     "countryLabel": "India",
     "flag": "🇮🇳",
     "category": "Cultural Festival",
     "synopsis": "The 2026 Kota Dussehra Fair combines processions, folk performances, music, crafts and seasonal cultural celebrations in Rajasthan from 20 October to 6 November.",
-    "watchInfo": "A physical cultural festival in Kota. Dates and venue are published by India's Ministry of Tourism; see the official event guide for any programme and admission updates. Do not assume a public livestream is available.",
+    "watchInfo": "For the daily programme, use the Kota Dussehra Mela event list. Incredible India provides a separate tourism overview. Their published date windows differ; confirm the specific activity with the organiser. These links do not establish ticket prices or a public livestream.",
     "official": "https://www.incredibleindia.gov.in/en/festivals-and-events/rajasthan/dussehra-fair-2026",
     "watch": "https://www.incredibleindia.gov.in/en/festivals-and-events/rajasthan/dussehra-fair-2026",
     "recorded": "https://www.incredibleindia.gov.in/en/festivals-and-events/rajasthan/dussehra-fair-2026",
     "source": "https://www.incredibleindia.gov.in/en/festivals-and-events/rajasthan/dussehra-fair-2026",
+    "sourceLinks": [
+      {
+        "label": "Incredible India: dates, venue and festival overview",
+        "url": "https://www.incredibleindia.gov.in/en/festivals-and-events/rajasthan/dussehra-fair-2026"
+      },
+      {
+        "label": "Kota Dussehra Mela: dated programme list",
+        "url": "https://www.kotadussehramela.in/schedule/events"
+      }
+    ],
     "keywords": "Kota Dussehra Mela 2026, Kota Dussehra Mela 2026 program list, Kota Dussehra Mela dates, official Kota festival programme, MatchApp Ai",
     "organizer": "District Administration, Kota",
     "address": {
@@ -557,9 +569,9 @@
     "poster": "/assets/events/kota-dussehra-2026.svg",
     "posterCredit": "Original MatchApp editorial illustration; not the organizer's official poster.",
     "featuredTitles": [],
-    "updatedAt": "2026-10-16",
+    "updatedAt": "2026-10-27",
     "searchTitle": "Kota Dussehra Mela 2026: Dates & Programme",
-    "searchDescription": "Kota Dussehra Mela 2026: official dates, programme sources and venue. Check daily schedules, entry details and coverage before planning a visit.",
+    "searchDescription": "Kota Dussehra Mela 2026: programme list, venue and tourism dates (20 Oct–6 Nov). Compare organiser dates and confirm individual events before visiting.",
     "visitorNotes": [
       "Kota Dussehra Mela is an in-person cultural fair at Dussehra Ground in Kota, not a film premiere or a guaranteed live broadcast. Use the linked India tourism event page to confirm the venue and festival dates; that listing alone does not establish a livestream or ticket checkout.",
       "The published date range describes the festival as a whole, not the start time of each procession or performance. Before travelling, verify the current daily programme, entry arrangements, local transportation and accessibility with the official organiser. This guide does not independently confirm those details.",
@@ -567,8 +579,9 @@
     ],
     "programmeHeading": "Kota Dussehra Mela 2026 programme and daily schedule",
     "programmeNotes": [
-      "The national tourism overview describes a cultural programme with folk performances, music and poetry events. It is not a complete day-by-day program list: a named type of performance does not confirm its date, start time, artist, seating or admission arrangements. Use the official programme link below to look for the latest organiser notice rather than treating this guide as a ticket or timetable.",
-      "The dates shown here are the festival window published by India’s Ministry of Tourism. Other calendars may describe different parts of the celebrations. Confirm the particular activity and day you plan to attend with the organiser; no unverified daily schedule, ticket price or broadcast link is added here."
+      "The national tourism overview describes folk performances, music and poetry events. It is not a complete day-by-day program list. The separate Kota Dussehra Mela programme page lists dated activities, times and venues; use that programme for individual sessions and recheck it before attending.",
+      "Source comparison checked 27 October 2026: Incredible India lists 20 October–6 November at Dussehra Ground, while the Kota Dussehra Mela website advertises 11 October–5 November and its programme begins on 11 October. The date line in this guide follows Incredible India. These windows differ; this guide does not reconcile the closing-date discrepancy or treat every day as having the same activities.",
+      "The programme page lists a laughter show on 28 October and a laser show followed by a Rajasthani-language poetry gathering on 29 October, at Vijay Shree Rangmanch. These are published programme entries, not confirmation that a performance will proceed unchanged or that admission is available. Check the linked list for current times and venue details."
     ]
   },
   {
@@ -644,7 +657,24 @@
       "Choose the individual programme entry before planning your day. Check its venue, start time, running time and language or subtitle information through the official festival. An English-language festival website does not by itself establish English subtitles for every screening or conversation.",
       "A festival appearance can be a useful starting point for discovering Japanese and international filmmakers, but it does not promise a worldwide release. If no local offer is confirmed, save the title and consult the official distributor later. Treat trailers and recorded press events as context, not substitutes for an authorised full-film listing."
     ],
-    "updatedAt": "2026-10-16"
+    "updatedAt": "2026-10-27",
+    "datePrecision": "date",
+    "searchTitle": "Tokyo Film Festival 2026: Dates & Schedule",
+    "searchDescription": "39th Tokyo International Film Festival, 26 October–4 November 2026. Find the official screening schedule, ticket guidance and central Tokyo venues.",
+    "sourceLinks": [
+      {
+        "label": "Official screening schedule",
+        "url": "https://2026.tiff-jp.net/en/schedule/list/"
+      },
+      {
+        "label": "Official ticket guidance",
+        "url": "https://2026.tiff-jp.net/en/ticket/"
+      },
+      {
+        "label": "Festival dates and venues",
+        "url": "https://2026.tiff-jp.net/en/tiff/outline.html"
+      }
+    ]
   },
   {
     "slug": "mexico-day-of-dead-2026",
@@ -751,6 +781,8 @@
       "Distinguish general admission from any separately described activity or reservation. Read the organiser’s current access rules, session information and venue guidance before committing to travel. MatchApp is a discovery guide and does not issue tickets or confirm admission to a panel.",
       "For films, series and games announced at the event, follow the studio or publisher’s original statement afterward. A teaser or stage presentation does not prove that the work is released or available in your country. Remote viewers should look for officially announced streams and recaps rather than assuming every presentation has a full public recording."
     ],
-    "updatedAt": "2026-10-16"
+    "updatedAt": "2026-10-27",
+    "searchTitle": "CCXP 2026 (CCXP26): Dates, Venue & Programme",
+    "searchDescription": "CCXP26 takes place 3–6 December 2026 at São Paulo Expo. Explore official programme and ticket sources, with guidance for planning your visit."
   }
 ]

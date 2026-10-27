@@ -13,6 +13,7 @@ const section=`<!-- october-trends:start -->
 <h2 id="october-trends-heading" data-october-copy="heading">${esc(data.copy.en.heading)}</h2>
 <time datetime="${data.checked}">${data.checked}</time>
 ${text('context')}
+${text('searchTrends')}<p>${link(data.sources.frightgeist,'source','Google Frightgeist · 2026-10-14')}</p>
 <h3>Hocus Pocus (1993) · The Nightmare Before Christmas (1993)</h3>
 ${text('classics')}<p>${link(data.sources.classics,'source','Disney / Freeform')}</p>
 <p>${ask('Hocus Pocus 1993')}<br>${ask('The Nightmare Before Christmas 1993')}</p>
@@ -43,14 +44,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 `;
 fs.writeFileSync(path.join(root,'patches/october-trends-locales.js'),runtime);
-const script='<script defer src="/patches/october-trends-locales.js?v=20261015-1"></script>';
+const script='<script defer src="/patches/october-trends-locales.js?v=20261027-1"></script>';
 const monthly=path.join(root,route,'index.html');
 let html=fs.readFileSync(monthly,'utf8');
 if(html.includes('<!-- october-trends:start -->'))html=html.replace(/<!-- october-trends:start -->[\s\S]*?<!-- october-trends:end -->/,section);
 else html=html.replace('<h2>Streaming: Netflix global movies</h2>',section+'\n<h2>Streaming: Netflix global movies</h2>');
+html=html.replace('/patches/october-trends-locales.js?v=20261015-1','/patches/october-trends-locales.js?v=20261027-1');
 if(!html.includes(script))html=html.replace('</head>',script+'\n</head>');
 if(!html.includes('id="october-trends-anchor-style"'))html=html.replace('</head>','<style id="october-trends-anchor-style">#october-15-trends{scroll-margin-top:112px}</style>\n</head>');
-html=html.replace('"dateModified":"2026-10-05"','"dateModified":"2026-10-15"');
+html=html.replace(/"dateModified":"[^"]*"/,'"dateModified":"2026-10-27"');
 const title='October 2026: Halloween Movies, Books & Music | MatchApp Ai';
 const desc='Halloween classics, Passenger (2026), East of Eden and upcoming Narnia: dated US search-interest context, official sources and country-specific viewing checks.';
 html=html.replace(/<title>[^<]*<\/title>/,'<title>'+esc(title)+'</title>')
@@ -62,12 +64,14 @@ const guideLink='<p class="intro" data-october-guide-link>'+link(route+'#october
 const weekly=path.join(root,'trending/this-week/index.html');
 let trend=fs.readFileSync(weekly,'utf8');
 if(!trend.includes('data-october-guide-link'))trend=trend.replace('<section class="grid">',guideLink+'<section class="grid">');
+trend=trend.replace('/patches/october-trends-locales.js?v=20261015-1','/patches/october-trends-locales.js?v=20261027-1');
 if(!trend.includes(script))trend=trend.replace('</head>',script+'</head>');
 fs.writeFileSync(weekly,trend);
 // Preserve the link when the existing single publisher next regenerates its page.
 const generator=path.join(root,'tools/refresh-trending.mjs');
 let src=fs.readFileSync(generator,'utf8');
 if(!src.includes('data-october-guide-link'))src=src.replace('<section class="grid">${cards}',guideLink+'<section class="grid">${cards}');
+src=src.replace('/patches/october-trends-locales.js?v=20261015-1','/patches/october-trends-locales.js?v=20261027-1');
 if(!src.includes(script))src=src.replace('</style></head>','</style>'+script+'</head>');
 fs.writeFileSync(generator,src);
 console.log('Updated dated October editorial and persistent weekly guide link in 14 languages.');
