@@ -53,6 +53,7 @@ function setStatus(text,state='info'){
   node.textContent=text||'';
   node.dataset.state=state;
   node.hidden=!text;
+  node.setAttribute('data-ma-error',String(state==='error'));window.MatchAppErrors?.sync(node);
 }
 function friendlySmsError(error, step) {
   const raw=String(error?.message||'');

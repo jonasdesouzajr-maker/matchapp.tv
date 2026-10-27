@@ -321,7 +321,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .seo-shortlist-locale-status[hidden], .seo-shortlist-locale-status button[hidden] { display: none; }
     @media (max-width: 740px) { .seo-shortlist-picks { grid-template-columns: 1fr; } }
     @media (forced-colors: active) { .seo-shortlist-actions a, .seo-other-catalog summary { border-color: ButtonText; } }` : ''}
-${kind === 'platforms' && s === 'spotify' ? spotifyFeatureStyles : ''}\n</style>${plan ? '\n<script src="/patches/seo-shortlist-locale.js?v=20261020-1" defer></script>' : ''}
+${kind === 'platforms' && s === 'spotify' ? spotifyFeatureStyles : ''}\n</style>${plan ? '\n<script src="/patches/seo-shortlist-locale.js?v=20261020-1&errors=20261027-2" defer></script>' : ''}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"

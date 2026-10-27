@@ -59,7 +59,7 @@ test('readiness normalization is idempotent and preserves existing versions, que
 });
 
 test('the readiness cache key does not spread to unchanged scripts, styles or external URLs',()=>{
-  const inputs=['/settings.js?v=kept','/portfolio-history.js?v=kept','/patches/reference-system.js?v=kept','/brand.css?v=kept','https://cdn.example/app.js?v=kept','/unrelated.js?v=kept'];
+  const inputs=['/settings.js?v=kept&errors=20261027-2','/portfolio-history.js?v=kept','/patches/reference-system.js?v=kept','/brand.css?v=kept','https://cdn.example/app.js?v=kept&errors=20261027-2','/unrelated.js?v=kept'];
   for(const input of inputs){
     const html='<script src="'+input+'"></script>',output=context.normalize(html);
     assert(!output.includes('readiness='),input);

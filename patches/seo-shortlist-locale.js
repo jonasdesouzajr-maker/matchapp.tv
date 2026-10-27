@@ -45,6 +45,7 @@
     status.lang = requested;
     status.dir = requested === 'ar' ? 'rtl' : 'ltr';
     message.textContent = messages[requested][value === 'error' ? 1 : 0];
+    message.setAttribute('data-ma-error',String(value==='error'));window.MatchAppErrors?.sync(message);
     retry.textContent = messages[requested][2];
     retry.hidden = value !== 'error';
     records.forEach(function (record) {

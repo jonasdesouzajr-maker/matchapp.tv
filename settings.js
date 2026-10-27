@@ -1,5 +1,5 @@
 /* MatchApp settings — stable production loader */
-(function(){if(document.querySelector('script[data-matchapp-errors]'))return;var s=document.createElement('script');s.src='/error-bubbles.js?v=20261027-1';s.dataset.matchappErrors='1';document.head.appendChild(s);})();
+(function(){if(document.querySelector('script[data-matchapp-errors]'))return;var s=document.createElement('script');s.src='/error-bubbles.js?v=20261027-2';s.dataset.matchappErrors='1';document.head.appendChild(s);})();
 (function(){try{var h=location.hostname;if(h==='matchapp.cc'||h==='www.matchapp.cc')location.replace('https://matchapp.tv'+location.pathname+location.search+location.hash);}catch(e){}})();
 (function(){'use strict';
 /* Stable handset marker: standalone/PWA/WebView modes can expose a desktop-like

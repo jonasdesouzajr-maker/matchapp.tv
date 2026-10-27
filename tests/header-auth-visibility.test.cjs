@@ -53,10 +53,10 @@ test('editorial brand normalization retains the homepage cache key and is idempo
  const { versionBrandStylesheet } = require('../tools/finalize-brand');
  const { JSDOM } = require('jsdom');
  for (const query of ['', '?v=195', '?v=20261015-spacing1', '?v=20261015-spacing1&headerauth=20261016-1', '?v=20261015-spacing1&amp;headerauth=20261016-1']) {
-  const input='<link rel="stylesheet" href="/brand.css'+query+'"><script src="/app.js?v=unchanged"></script>';
+  const input='<link rel="stylesheet" href="/brand.css'+query+'"><script src="/app.js?v=unchanged&errors=20261027-2"></script>';
   const output=versionBrandStylesheet(input,true);
   assert.equal(versionBrandStylesheet(output,true),output);
-  assert.ok(output.endsWith('<script src="/app.js?v=unchanged"></script>'));
+  assert.ok(output.endsWith('<script src="/app.js?v=unchanged&errors=20261027-2"></script>'));
   const dom=new JSDOM(output,{url:'https://matchapp.tv/'});
   try { const url=new URL(dom.window.document.querySelector('link').href);
    assert.equal(url.searchParams.get('headerauth'),'20261016-1');

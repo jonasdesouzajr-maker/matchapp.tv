@@ -2179,7 +2179,7 @@ window.switchAuthTab = function(tab) {
     ['login', 'signup', 'forgot'].forEach(t => { document.getElementById(`tab-${t}`)?.classList.remove('active'); document.getElementById(`form-${t}`)?.classList.remove('active'); });
     document.getElementById(`tab-${tab}`)?.classList.add('active'); document.getElementById(`form-${tab}`)?.classList.add('active');
     const msg = document.getElementById('auth-message');
-    if (msg) msg.style.display = 'none';
+    if (msg) { msg.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(msg);msg.textContent='';msg.style.display = 'none'; }
 };
 
 window.showForgotPassword = function() {
@@ -2210,6 +2210,7 @@ window.handlePasswordReset = async function() {
         msgEl.style.color = ok ? '#4ade80' : '#ffb4b4';
         msgEl.style.background = ok ? 'rgba(74,222,128,0.1)' : 'rgba(255,0,0,0.1)';
         msgEl.textContent = text;
+        msgEl.setAttribute('data-ma-error',String(!ok));window.MatchAppErrors?.sync(msgEl);
     };
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
         show('Enter a valid email address to request a secure password link.', false);
@@ -2263,8 +2264,8 @@ window.handleEmailSignup = async function() {
     const password = document.getElementById('reg-password').value;
     const msgEl = document.getElementById('auth-message');
 
-    if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Account service is temporarily unavailable."; return; }
-    if (!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please provide an email and password."; return; }
+    if (!supabaseClient) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Account service is temporarily unavailable.";msgEl.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(msgEl); return; }
+    if (!email || !password) { msgEl.style.display = 'block'; msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Please provide an email and password.";msgEl.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(msgEl); return; }
 
     // Guard against double taps while Supabase is generating one-time links.
     // Concurrent signups can invalidate the email that arrives first.
@@ -2272,7 +2273,7 @@ window.handleEmailSignup = async function() {
     window.__maEmailSignupPending = true;
     const signupButton = document.querySelector('#form-signup .gold-btn');
     if (signupButton) signupButton.disabled = true;
-    msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Creating account...";
+    msgEl.style.display = 'block'; msgEl.style.color = '#fff'; msgEl.style.background = 'rgba(229,193,88,0.2)'; msgEl.innerText = "Creating account...";msgEl.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(msgEl);
 
     try {
         // A verification email must return to the page that can finish the
@@ -2285,19 +2286,19 @@ window.handleEmailSignup = async function() {
             }
         });
         if (error) {
-            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message;
+            msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message;msgEl.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(msgEl);
         } else if (data?.session?.user) {
             msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
-            msgEl.innerText = "Signed in. Opening your profile...";
+            msgEl.innerText = "Signed in. Opening your profile...";msgEl.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(msgEl);
             setTimeout(() => { window.location.href = '/profile/profile.html'; }, 700);
         } else {
             // Email confirmation enabled: signUp returns a user, NOT a session.
             // Do not redirect to an unauthenticated profile or claim success.
             msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
-            msgEl.innerText = "Check your inbox and confirm your email using the newest link. Already expired? Use 'Resend confirmation email' on the Log In tab.";
+            msgEl.innerText = "Check your inbox and confirm your email using the newest link. Already expired? Use 'Resend confirmation email' on the Log In tab.";msgEl.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(msgEl);
         }
     } catch (_) {
-        msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Could not create the account. Please retry.";
+        msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = "Could not create the account. Please retry.";msgEl.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(msgEl);
     } finally {
         window.__maEmailSignupPending = false;
         if (signupButton) signupButton.disabled = false;
@@ -2319,6 +2320,7 @@ window.handleEmailLogin = async function() {
         msgEl.style.background = state === 'success' ? 'rgba(37,211,102,0.1)' :
             state === 'pending' ? 'rgba(229,193,88,0.2)' : 'rgba(255,0,0,0.1)';
         msgEl.textContent = text;
+        msgEl.setAttribute('data-ma-error',String(state==='error'));window.MatchAppErrors?.sync(msgEl);
     };
     if (!supabaseClient?.auth?.signInWithPassword) {
         show('Account service is temporarily unavailable. Please try again.');
@@ -2401,6 +2403,7 @@ async function loginWithOAuthProvider(provider, label) {
         msgEl.style.color = '#ffb9c1';
         msgEl.style.background = 'rgba(220,66,91,.12)';
         msgEl.innerText = label + ': ' + reason;
+        msgEl.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(msgEl);
     };
     if (!supabaseClient) {
         showError('Sign-in is temporarily unavailable. Please check your connection.');

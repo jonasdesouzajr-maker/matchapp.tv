@@ -14,6 +14,7 @@
         if (element) {
             element.textContent = message;
             element.dataset.state = state || '';
+            element.setAttribute('data-ma-error',String(state==='error'));window.MatchAppErrors?.sync(element);
         }
     }
 

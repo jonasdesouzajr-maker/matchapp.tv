@@ -55,6 +55,7 @@
     select.value = requested;
     status.hidden = state === 'ready';
     message.textContent = state === 'error' ? copy[2] : copy[1];
+    message.setAttribute('data-ma-error',String(state==='error'));window.MatchAppErrors?.sync(message);
     retry.textContent = copy[3];
     retry.hidden = state !== 'error';
     var main = d.querySelector('main');

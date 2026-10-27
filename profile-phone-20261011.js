@@ -14,7 +14,7 @@ const text={
 };
 const t=k=>(text[locale()]||text[locale().split('-')[0]]||text.en)[k]||text.en[k];
 let uid=null,verified=null,pending=null,busy=false,epoch=0,lastSent=0;
-const status=(k,bad=false)=>{const x=$('pf-phone-status');if(x){x.textContent=t(k);x.dataset.state=bad?'error':'info';}};
+const status=(k,bad=false)=>{const x=$('pf-phone-status');if(x){x.textContent=t(k);x.dataset.state=bad?'error':'info';x.setAttribute('data-ma-error',String(bad));window.MatchAppErrors?.sync(x);}};
 const masked=p=>p?String(p).slice(0,Math.max(0,p.length-4)).replace(/\d/g,'•')+String(p).slice(-4):'';
 function resetPending(){pending=null;$('pf-phone-code-row').hidden=true;}
 function render(){

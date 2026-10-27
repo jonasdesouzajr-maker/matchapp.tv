@@ -27,6 +27,7 @@
     const el=$('#auth-message');if(!el)return;
     el.textContent=text;el.style.display='block';el.style.color=error?'#ffb4b4':'#9beeb8';
     el.style.background=error?'rgba(255,82,82,.10)':'rgba(63,211,122,.10)';
+    el.setAttribute('data-ma-error',String(error));window.MatchAppErrors?.sync(el);
   }
 
   function installRequiredSignupName(){

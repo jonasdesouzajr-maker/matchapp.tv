@@ -34,7 +34,7 @@ test('audio cover normalization is idempotent and preserves prior query values a
 });
 
 test('the new audio cover key never spreads to unchanged runtime, identity, metadata, styles or external URLs',()=>{
- for(const input of ['/app.js?v=kept','/profile.js?v=kept','/ebooks/audiobooks.js?v=kept','/ebooks/cover-identity.js?v=kept','/ebooks/book-details-20261011.js?v=kept','/style.css?v=kept','https://cdn.example/ebook-matcher.js?v=kept']){
+ for(const input of ['/app.js?v=kept&errors=20261027-2','/profile.js?v=kept','/ebooks/audiobooks.js?v=kept','/ebooks/cover-identity.js?v=kept','/ebooks/book-details-20261011.js?v=kept','/style.css?v=kept','https://cdn.example/ebook-matcher.js?v=kept']){
   const output=normalizer.normalize(input);assert.equal(new URL(output,'https://matchapp.tv').searchParams.has('audiocover'),false,input);
  }
 });
