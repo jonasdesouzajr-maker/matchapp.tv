@@ -1,0 +1,50 @@
+/* Grok's supplied browser palette, typography and card art; responsive fixes scoped to this document. */
+:root {
+  --bg:#0f0c1d;--surface:#1a1633;--primary:#b39ddb;--accent:#7e57c2;--gold:#ffd54f;--text:#e1bee7;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:radial-gradient(circle at top,#2a2040,var(--bg));color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{overflow-x:hidden}
+button{font:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#app{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(12px,3vw,24px)}
+#app[data-screen="game"]{justify-content:flex-start}
+.screen{width:100%;max-width:480px;text-align:center}
+h1{font-size:clamp(42px,11vw,56px);font-weight:300;letter-spacing:2px;line-height:1.15;overflow-wrap:anywhere}
+.subtitle{letter-spacing:6px;font-size:20px;margin:7px 0 8px;color:var(--primary)}
+.stats{font-size:14px;color:#c9bcdf;margin:12px 0 24px;line-height:1.6}
+.pill{display:block;width:78%;max-width:100%;margin:12px auto;padding:14px 16px;min-height:48px;background:var(--accent);color:#fff;border:0;border-radius:28px;font-size:17px;font-weight:600;line-height:1.35;cursor:pointer;box-shadow:0 4px 12px #0004;overflow-wrap:anywhere}
+.pill:hover{filter:brightness(1.1)}
+.pill:disabled{opacity:.55;cursor:wait;filter:none}
+.pill.compact{font-size:13px;padding:10px 14px;width:auto;min-width:160px;min-height:44px;margin:8px auto}
+.save-area{margin:16px auto 0;max-width:38ch}
+.save-status{font-size:12px;line-height:1.6;color:#cbb9dd;min-height:1.6em}
+.pill.secondary{background:#5e4b8b}
+.pill.friends{background:#5c6bc0}
+.pill.teal{background:#4db6ac;color:#122b2c}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(6px,2vw,8px);width:100%;max-width:420px;margin:12px auto;justify-content:center;perspective:1000px}
+.card{display:block;width:100%;aspect-ratio:.75;border-radius:clamp(9px,3vw,16px);padding:0;background:#1a1633;border:1.5px solid #ffffff33;box-shadow:0 4px 10px #0006;cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform .45s;color:var(--text)}
+.card.flipped{transform:rotateY(180deg)}
+.card.matched{box-shadow:0 0 0 2px #ffd54f66,0 4px 12px #0005}
+.card:disabled{cursor:default}
+.card .face{position:absolute;inset:0;border-radius:inherit;background-size:cover;background-position:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;pointer-events:none}
+.card .back{background-image:url('card_back.jpg')}
+.card .front{transform:rotateY(180deg)}
+.header{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;font-size:16px}
+.header>.pill{width:auto;flex:0 0 auto;padding:9px 16px;margin:0;font-size:14px;min-height:44px;max-width:50%}
+.header>span{font-weight:600;text-align:end;overflow-wrap:anywhere}
+.plates{display:flex;justify-content:space-around;gap:8px;width:100%;margin-bottom:12px}
+.plate{background:#2a2040;padding:8px;flex:1;min-width:0;border-radius:16px;font-size:14px;overflow-wrap:anywhere}
+.plate.active{background:var(--accent);box-shadow:0 0 12px #7e57c299;color:white}
+.plate .score{color:var(--gold);font-size:20px;font-weight:bold}
+.game-status{font-size:13px;line-height:1.5;color:#d3c4e6;margin:8px 0;min-height:20px}
+.result h1,.help h1{font-size:clamp(29px,8vw,40px)}
+.result-score{font-size:18px;line-height:1.7;color:var(--gold);margin:20px 0}
+.help p{font-size:15px;line-height:1.65;margin:20px auto;text-align:start;max-width:38ch;color:#d6c8e4}
+.storage-note{font-size:12px;line-height:1.6;max-width:38ch;margin:16px auto;color:#cbb9dd}
+@media(max-width:360px){.pill{width:88%;font-size:15px}.header{font-size:14px}}
+@media(max-height:540px){#app{justify-content:flex-start}.grid{max-width:310px}.stats{margin-bottom:12px}h1{font-size:42px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(forced-colors:active){.card{border:2px solid ButtonText}.pill{border:1px solid ButtonText}.plate.active{outline:2px solid Highlight}}
