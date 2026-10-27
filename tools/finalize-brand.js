@@ -150,6 +150,7 @@ const ANDROID_QA_ASSETS=new Set(['reference-system.css','reference-system.js','r
 const MATCH_REPAIR_ASSETS=new Set(['app.js','catalog-media.js','omdb-ratings.js','discover.js','android-ambient-assistant-20261011.js','android-ambient-embed-20261011.css','discovery-avatar-stage-20261010.js','floating-home-20261010-v3.js','chat-resize-20261022.js','ui-fixes-20261023.css','jonas-adult-page.js','final-wiring.js','build-meta.js']);
 function referenceRuntimeAssetURL(url){
  const pins={
+  'viewer-country.js':['guestcountry','20261027-1'],'locale-details.js':['guestcountry','20261027-1'],
   'catalog-media.js':['posters','20261020-1'],'poster-wall.js':['posters','20261020-1'],'trending-rail.js':['posters','20261020-1'],'profile.js':['posters','20261020-1'],'portfolio-history.js':['posters','20261020-1'],'settings.js':['posters','20261020-1'],'title-captions.js':['posters','20261020-1'],
   'app.js':['art','20261020-source1'],'ebook-matcher.js':['art','20261020-source1'],'book-details-20261011.js':['art','20261020-source1'],'reading-ai.js':['art','20261020-source1'],
   'immersive-feedback-20261014.js':['cinemasound','20261020-1'],'purchase.js':['cinemasound','20261020-1'],'pro-plan.js':['cinemasound','20261020-1'],
@@ -175,6 +176,7 @@ function referenceRuntimeAssetURL(url){
  if(['ui-fixes-20261023.css','jonas-adult-page.js'].includes(file))entries.push(['refined','20261025-4']);
  if(['reference-system.js','reference-density.js','settings.js'].includes(file))entries.push(['perf','20261027-1']);
  if(['reference-support.css','reference-support.js'].includes(file))entries.push(['compactfooter','20261027-1']);
+ if(['app.js','catalog-media.js','matchapp-ia.js','ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['guestcountry','20261027-1']);
  return withQueryParams(url,entries);
 }
 function versionReferenceRuntimeAssets(html){

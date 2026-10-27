@@ -82,7 +82,7 @@ test('source origin and language never select a provider row, and a country chan
   }finally{dom.window.close();}
 });
 
-test('unknown country offers localized profile guidance without invalid provider or notification actions',()=>{
+test('unknown country offers the guest country picker without invalid provider or notification actions',()=>{
   const {dom,w,api}=boot();
   try{
     const host=w.document.createElement('div');w.document.body.append(host);
@@ -91,7 +91,7 @@ test('unknown country offers localized profile guidance without invalid provider
       w.MATCH_LANG=lang;w.localStorage.setItem('match_lang',lang);
       api.renderAvailability(host,meta);
       const prompt=host.querySelector('.matchapp-availability-status a');
-      assert.equal(prompt?.getAttribute('href'),'/profile/profile.html');
+      assert.equal(prompt?.getAttribute('href'),'/#matchapp-viewer-country');
       assert(prompt.textContent.length>15,lang);
       assert.equal(host.querySelector('.matchapp-follow-availability'),null);
       assert.equal(host.querySelector('.matchapp-provider-actions'),null);

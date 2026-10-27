@@ -28,18 +28,20 @@ test('empty match recovery occupies one in-flow notice and hides conflicting poo
   assert.equal(w.document.querySelector('#match-recovery'),null,'language changes cannot retain stale translated copy');
  }finally{d.window.close();}
 });
-test('missing viewing country returns actionable localized guidance before any source work',()=>{
+test('missing viewing country opens the guest picker with localized guidance before any source work',()=>{
  const start=app.indexOf('const selectedFormats=');
  const block=app.slice(start,app.indexOf('const wantedGenres =',start));
  const run=new Function('window','PLATFORMS','requested','isSpecificSearch','normCriteria',block+'return true;');
  for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']){
-  let notice='';const w={MATCH_LANG:lang,MatchAppCountry:{...country,regionCode:()=>''},showMatchRecovery:s=>notice=s};
+  const actions=[];const w={MATCH_LANG:lang,MatchAppCountry:{...country,regionCode:()=>'',openPicker:()=>actions.push('picker')},showToast:s=>actions.push(s)};
   const platforms={Netflix:{cats:['movie','series']},Spotify:{cats:['Spotify playlist']}};
   assert.equal(run(w,platforms,{plat:['Netflix'],cat:['movie']},false,a=>a||[]),false);
-  assert.equal(notice,country.chooseCountryMessage(lang));assert.equal(w.__matchappMatchPhase,'idle');
+  assert.deepEqual(actions,['picker',country.chooseCountryMessage(lang)],lang+' opens the guest selector before its guidance');assert.equal(w.__matchappMatchPhase,'idle');
   assert.equal(run(w,platforms,{plat:['Spotify'],cat:['Spotify playlist']},false,a=>a||[]),true,'global music does not require a viewing country');
   assert.equal(run(w,platforms,{plat:['Netflix','Spotify'],cat:['Spotify playlist']},false,a=>a||[]),true,'an unrelated selected screen service must not block music');
+  assert.equal(run(w,platforms,{plat:['Netflix'],cat:['movie']},true,a=>a||[]),true,'specific title search keeps its existing country-independent preflight');
   w.MatchAppCountry.regionCode=()=>'BR';
   assert.equal(run(w,platforms,{plat:['Netflix'],cat:['movie']},false,a=>a||[]),true);
+  assert.equal(actions.length,2,'valid and global requests do not reopen the picker or show missing-country guidance');
  }
 });

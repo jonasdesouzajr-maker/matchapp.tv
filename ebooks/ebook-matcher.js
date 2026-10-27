@@ -171,8 +171,8 @@ const APPLE_BOOK_MARKETS=new Set('AT AU BE BR CA CH DE DK ES FI FR GB GR IE IT J
 function appleBookSearch(region,query){return APPLE_BOOK_MARKETS.has(region)?'https://books.apple.com/'+region.toLowerCase()+'/search?term='+query:'https://books.apple.com/';}
 function chooseCountryLink(){
  if(market())return '';
- const label=ui('chooseCountry','Choose your country in your profile to check local reading and listening editions.');
- return '<p class="ebook-audio-note"><a class="ebook-provider" data-ebook-choose-country href="/profile/profile.html">'+esc(label)+'</a></p>';
+ const label=window.MatchAppCountry?.chooseCountryMessage?.(window.MATCH_LANG)||ui('chooseCountry','Choose your viewing country at the top of the app to check local availability.');
+ return '<p class="ebook-audio-note"><a class="ebook-provider" data-ebook-choose-country href="/#matchapp-viewer-country">'+esc(label)+'</a></p>';
 }
 function q(book){return encodeURIComponent(book.title+' '+book.author);}
 function storeLinks(book){
@@ -269,7 +269,7 @@ function choose(p){
 // The e-book catalogue is a set of book profiles, not a list of confirmed
 // audio editions. Verify an exact commercial or eligible public-domain audio
 // record before spending a match on "Audiobook only".
-async function chooseVerifiedAudio(p,onProgress){
+async function chooseVerifiedAudio(p,onProgress,current=()=>true){
  const verify=window.MatchAppAudiobooks?.verify;
  if(typeof verify!=='function')return null;
  const country=market();
@@ -281,7 +281,7 @@ async function chooseVerifiedAudio(p,onProgress){
  for(const allowSeen of [false]){
    const options=bookCandidates(p,allowSeen).filter(row=>!tested.has(row.book.id));
    for(let offset=0;offset<options.length;offset+=4){
-     if(tested.size>=limit||Date.now()-started>55000)return null;
+     if(!current()||tested.size>=limit||Date.now()-started>55000)return null;
      const batch=options.slice(offset,offset+Math.min(4,limit-tested.size));
      batch.forEach(row=>{tested.add(row.book.id);try{onProgress?.(tested.size,limit)}catch(_){}});
      const checked=await Promise.all(batch.map(async row=>{
@@ -292,6 +292,7 @@ async function chooseVerifiedAudio(p,onProgress){
            (p.access==='any'&&(audio.apple||audio.free)))?{...row,audio}:null;
        }catch(_){return null}
      }));
+     if(!current())return null;
      const verified=checked.filter(Boolean);
      if(verified.length)return verified.some(row=>row.relaxed||row.recycled)?verified[0]:
        (await rankBooks(verified,p)||verified[0]);
@@ -944,22 +945,29 @@ async function doMatch(root){
  root.dataset.audioBusy='1';
  root.querySelectorAll('[data-ebook-match],[data-ebook-rematch]').forEach(b=>b.disabled=true);
  const p=prefs(),note=root.querySelector('[data-ebook-note]');
+ // A viewing-country edit invalidates source evidence without changing the
+ // account epoch: unused reservations must still release for their owner.
+ const countryRevision=root.dataset.readingCountryRevision||'0';
+ const currentCountry=()=>countryRevision===(root.dataset.readingCountryRevision||'0');
  const tokenContext=window.MatchAppTokens?.createContext?.('ebook');
  let matchOwner,matchEpoch,reservedId='',reservedToken='';
  try{
   // Auth/profile restoration may finish after the first paint. Read account
   // exclusions before choosing, so an early tap cannot replay a saved book.
-  if(!await cloudHydrate()){readingHistoryNotice(root);return;}
+  const hydrated=await cloudHydrate();
+  if(!currentCountry())return;
+  if(!hydrated){readingHistoryNotice(root);return;}
   matchOwner=readingOwner;matchEpoch=readingEpoch;
   const tokenPreflight=await window.MatchAppTokens?.beforeLookup?.('match',tokenContext);
-  if(tokenPreflight===false||matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
+  if(tokenPreflight===false||matchOwner!==readingOwner||matchEpoch!==readingEpoch||!currentCountry())return;
   let pick;
   for(let attempt=0;attempt<3;attempt++){
+  if(!currentCountry())return;
   if(p.format==='audiobook'){
    if(note){note.hidden=false;paintNote(note,()=>tr('audioWaiting'));}
    pick=await chooseVerifiedAudio(p,(tried,total)=>{
-    if(note?.isConnected)paintNote(note,()=>tr('audioWaiting')+' ('+tried+'/'+total+')');
-   });
+    if(currentCountry()&&note?.isConnected)paintNote(note,()=>tr('audioWaiting')+' ('+tried+'/'+total+')');
+   },currentCountry);
   }else if(p.format==='magazine')pick=await chooseMagazine(p);
   else {
    const shortlist=bestBookChoices(p);
@@ -969,22 +977,23 @@ async function doMatch(root){
      (window.MatchAppAIRank?.rank?(await rankBooks(shortlist,p)||choose(p)):choose(p));}
    catch(_){pick=choose(p);}
   }
-  if(matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
+  if(matchOwner!==readingOwner||matchEpoch!==readingEpoch||!currentCountry())return;
   if(!pick)break;
   // Recheck after ranking/source awaits, then reserve before spending quota.
   if([K.saved,K.disliked,K.seen].some(k=>read(k).includes(pick.book.id))){pick=null;continue;}
   try{
    if(await claimReading(pick.book.id)){reservedId=pick.book.id;reservedToken=readingClaims.get(matchOwner+':'+reservedId)||'';break;}
-  }catch(_){readingHistoryNotice(root);return;}
+  }catch(_){if(currentCountry())readingHistoryNotice(root);return;}
   pick=null;
   }
+  if(!currentCountry())return;
   if(!pick){
    if(p.format==='audiobook')renderAudioDiscovery(root,p);
    else renderReadingDiscovery(root,p);
    if(note){note.hidden=true;note.textContent='';}
    return; // No curated title or verified audio: never spend quota.
   }
-  if(matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
+  if(matchOwner!==readingOwner||matchEpoch!==readingEpoch||!currentCountry())return;
   // If no authentic source was found, spend nothing.
   if(typeof window.checkDailyLimit!=='function'){
    await releaseReading(reservedId,matchOwner,matchEpoch,reservedToken);reservedId='';
@@ -994,6 +1003,10 @@ async function doMatch(root){
   const allowed=await window.checkDailyLimit('match',tokenContext);
   if(!allowed){await releaseReading(reservedId,matchOwner,matchEpoch,reservedToken);reservedId='';}
   if(!allowed)return;
+  if(!currentCountry()){
+   await window.MatchAppTokens?.noteUnconfirmed?.('ebook',tokenContext?.runId);
+   return;
+  }
   if(matchOwner!==readingOwner||matchEpoch!==readingEpoch)return;
   // A preference removal or dismissal may arrive while the shared allowance
   // is pending. Never reveal a now-excluded or no-longer-owned reservation.
@@ -1009,6 +1022,7 @@ async function doMatch(root){
   try{window.MatchAppTokens?.confirmResult?.('ebook',root.querySelector('[data-ebook-result]'),tokenContext?.runId);}catch(_){}
  }catch(e){
   await window.MatchAppTokens?.noteUnconfirmed?.('ebook',tokenContext?.runId);
+  if(!currentCountry())return;
   console.warn('[MatchApp E-books] Match/source error:',e);
   window.showToast?.(ui('sourceUnavailable','Reading sources are temporarily unavailable. You can explore the source links below or retry shortly.'),true,{recovery:true});
   // Upstream/source faults still offer a usable, uncharged discovery route.
@@ -1049,9 +1063,12 @@ function bind(root){
   if(audioCheck){
    const book=CAT().find(b=>b.id===audioCheck.dataset.ebookCheckAudio);
    if(!book||typeof window.MatchAppAudiobooks?.verify!=='function')return;
+   const countryRevision=root.dataset.readingCountryRevision||'0';
    audioCheck.disabled=true;audioCheck.textContent=tr('audioWaiting');
-   const audio=await window.MatchAppAudiobooks.verify(book,market(),'any');
-   paintAudio(root,book,audio);
+   try{
+    const audio=await window.MatchAppAudiobooks.verify(book,market(),'any');
+    if(countryRevision===(root.dataset.readingCountryRevision||'0')&&root.contains(audioCheck))paintAudio(root,book,audio);
+   }finally{audioCheck.disabled=false;audioCheck.textContent=tr('audioVerify');}
    return;
   }
   const switcher=e.target.closest('[data-ebook-switch-format],[data-ebook-switch-access]');
@@ -1077,10 +1094,13 @@ function bind(root){
    const book=CAT().find(b=>b.id===savedAudio.dataset.ebookSavedAudio);
    const host=savedAudio.closest('article')?.querySelector('[data-ebook-saved-audio-result]');
    if(!book||!host||typeof window.MatchAppAudiobooks?.verify!=='function')return;
+   const countryRevision=root.dataset.readingCountryRevision||'0';
    savedAudio.disabled=true;savedAudio.textContent=tr('audioWaiting');
    try{
     const audio=await window.MatchAppAudiobooks.verify(book,market(),'any');
-    host.innerHTML=audioLinksHTML(audio);localize(root);
+    if(countryRevision===(root.dataset.readingCountryRevision||'0')&&root.contains(host)){
+     host.innerHTML=audioLinksHTML(audio);localize(root);
+    }
    }finally{savedAudio.textContent=tr('audioVerify');savedAudio.disabled=false}
    return;
   }
@@ -1187,6 +1207,15 @@ async function mount(){
  window.addEventListener('storage',event=>{if(event.key==='match_lang')localize(root);});
 }
 document.addEventListener('matchapp:authchange',()=>{readingEpoch++;const root=document.getElementById('ebook-matcher-root'),result=root?.querySelector('[data-ebook-result]');if(result)result.hidden=true;void cloudHydrate().then(()=>{if(root)renderSaved(root);});});
+document.addEventListener('matchapp:countrychange',()=>{
+ const root=document.getElementById('ebook-matcher-root');if(!root)return;
+ root.dataset.readingCountryRevision=String((Number(root.dataset.readingCountryRevision)||0)+1);
+ root.querySelectorAll('.ebook-audio-preview').forEach(player=>{try{player.pause();}catch(_){}});
+ const result=root.querySelector('[data-ebook-result]');if(result)result.hidden=true;
+ const note=root.querySelector('[data-ebook-note]');if(note){note.hidden=true;note.textContent='';delete note.__bookCopy;}
+ // Regional retailer/edition links cannot remain visible for the old country.
+ renderTop(root);renderSaved(root);
+});
 window.addEventListener('online',()=>{void cloudHydrate().then(()=>{const root=document.getElementById('ebook-matcher-root');if(root)renderSaved(root);});});
 window.addEventListener('storage',event=>{const root=document.getElementById('ebook-matcher-root');if(root&&[K.saved,K.disliked,K.seen].includes(event.key))renderSaved(root);});
 window.MatchAppEbooks={match:()=>{const r=document.getElementById('ebook-matcher-root');return r?doMatch(r):null},saved:()=>read(K.saved).slice(),disliked:()=>read(K.disliked).slice(),

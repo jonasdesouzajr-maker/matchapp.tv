@@ -102,7 +102,7 @@ load();loadRedesign();applyAll();const ready=()=>{applyAll();applyOfficialBrand(
   var target=p==='/'||p==='/index.html'||p==='/discover.html'||p==='/together.html'||p==='/pricing'||p==='/pricing/pricing.html';
   if(!target)return;
   if(!document.querySelector('link[data-matchapp-ia]')){var l=document.createElement('link');l.rel='stylesheet';l.href='/matchapp-ia.css?v=20260919-ia24';l.dataset.matchappIa='1';document.head.appendChild(l)}
-  if(!document.querySelector('script[data-matchapp-ia]')){var s=document.createElement('script');s.src='/matchapp-ia.js?v=20260919-ia24&accountphoto=20261020-1&androidqa=20261021-1';s.defer=true;s.dataset.matchappIa='1';document.head.appendChild(s)}
+  if(!document.querySelector('script[data-matchapp-ia]')){var s=document.createElement('script');s.src='/matchapp-ia.js?v=20260919-ia24&accountphoto=20261020-1&androidqa=20261021-1&guestcountry=20261027-1';s.defer=true;s.dataset.matchappIa='1';document.head.appendChild(s)}
 })();
 
 (function(){if(String(location.pathname||'').startsWith('/kids/'))return;if(document.querySelector('link[data-cinema-dim]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='/cinema-dim.css?v=20260923-cinemadim1';l.dataset.cinemaDim='1';document.head.appendChild(l);})();

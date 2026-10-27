@@ -144,7 +144,7 @@ function brandHeader(){
    function link(label,href,icon){const a=el('a','',icon+' '+label);a.href=href;a.setAttribute('role','menuitem');return a}
    function action(label,icon,fn){const b=el('button','',icon+' '+label);b.type='button';b.setAttribute('role','menuitem');b.addEventListener('click',()=>{fn();close()});return b}
    menu.append(
-     link('Country','/profile/profile.html#country','🌍'),
+     link('Country','/#matchapp-viewer-country','🌍'),
      action('Language','文',()=>{const control=qs('#lang-switcher-host select,#lang-switcher-host button,#lang-switcher-host [role="button"]');if(control)safeClick(control);else window.showToast?.(menuToast('language'))}),
      action('Sound','♪',()=>{const next=!(window.MatchSettings?.get?.('autoRead')!==false);window.MatchSettings?.set?.('autoRead',next);window.showToast?.(menuToast(next?'soundOn':'soundOff'))}),
      action('Theme','◐',()=>{const themes=['aurora','cinema','ocean','sunrise','arcade'],cur=window.MatchSettings?.get?.('theme')||'aurora',next=themes[(Math.max(0,themes.indexOf(cur))+1)%themes.length];window.MatchSettings?.set?.('theme',next);document.documentElement.dataset.theme=next;window.showToast?.(menuToast('theme')+': '+next)}),
