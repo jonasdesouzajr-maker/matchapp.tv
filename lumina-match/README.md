@@ -28,7 +28,7 @@ The parent owns the existing Supabase auth client. The embedded game uses an ori
 
 The new migration and database tests accompany this feature. The online mode requires that migration before the frontend is released. It creates separate game state and does not rewrite the existing friends or Match Together mechanisms.
 
-Account saves use the same guarded RPC, a separate private table and optimistic revisions. The parent serializes/coalesces writes and allows a bounded pending save to finish after the overlay closes. Account switches clear the old state and abort stale writes. Loading gates solo input; a failed or conflicting save shows a localized explanation and an explicit Reload saved game action, which replaces the current session with the account save. Guest state is never silently imported into an account. Transient flipped cards are hidden on resume; matched pairs and move counts remain.
+Account saves use the same guarded RPC, a separate private table and optimistic revisions. The parent serializes/coalesces writes and allows a bounded pending save to finish after the overlay closes. Account switches clear the old state and abort stale writes. Each RPC pins the checked account token on its own request so a cross-tab account switch cannot change the save owner while the SDK prepares its transport. Loading gates solo input; a failed or conflicting save shows a localized explanation and an explicit Reload saved game action, which replaces the current session with the account save. Guest state is never silently imported into an account. Transient flipped cards are hidden on resume; matched pairs and move counts remain.
 
 ## Advertising
 

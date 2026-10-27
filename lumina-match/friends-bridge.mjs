@@ -50,9 +50,15 @@ export async function requestGame(client, action, input, signal, expectedUser) {
   if (!client?.auth?.getSession || !client?.rpc) throw fail('LUMINA_UNAVAILABLE');
   const session = (await client.auth.getSession())?.data?.session;
   if (!session?.user?.id || session.user.is_anonymous) throw fail('LUMINA_AUTH_REQUIRED');
+  const token = session.access_token;
+  if (typeof token !== 'string' || !token.trim()) throw fail('LUMINA_AUTH_REQUIRED');
   if (expectedUser && session.user.id !== expectedUser) throw fail('LUMINA_AUTH_CHANGED');
   if (signal?.aborted) throw fail('LUMINA_UNAVAILABLE');
   let query = client.rpc('lumina_action', {p_action:action,p_payload:payload});
+  // The SDK reads auth again at dispatch. Another tab can change its storage
+  // before this page receives the auth event, so pin only this query's token.
+  if (typeof query?.setHeader !== 'function') throw fail('LUMINA_UNAVAILABLE');
+  query = query.setHeader('Authorization','Bearer ' + token);
   if (signal && typeof query.abortSignal === 'function') query = query.abortSignal(signal);
   const {data,error} = await query;
   if (error) {
