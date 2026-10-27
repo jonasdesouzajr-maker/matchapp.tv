@@ -50,7 +50,17 @@
   var f=panel.querySelector('iframe');if(!f)return;
   try{var d=f.contentDocument,w=f.contentWindow,e=d&&d.activeElement;
    if(!w||!e||!e.matches('textarea,input:not([type=hidden]),[contenteditable="true"]'))return;
-   var r=e.getBoundingClientRect(),h=w.innerHeight;
+   var r=e.getBoundingClientRect(),h=w.innerHeight,previous=f.__maComposerView;
+   var requested=panel.__maRevealComposer;panel.__maRevealComposer=false;
+   // Poster/page mutations must not undo a deliberate scroll to read guidance.
+   // Refocus, typing or a changed frame viewport may reveal the composer again.
+   if(!requested&&previous&&previous.input===e&&previous.width===w.innerWidth&&previous.height===h)return;
+   f.__maComposerView={input:e,width:w.innerWidth,height:h};
+   var row=e.closest('.newsearch-row'),composer=e.closest('.composer'),quota=row&&row.querySelector('#ai-send-cost');
+   if(composer&&quota){var c=composer.getBoundingClientRect(),q=quota.getBoundingClientRect();
+    var top=Math.min(c.top,q.top),bottom=Math.max(c.bottom,q.bottom);
+    if(q.height>0&&c.height>0&&bottom-top<=h)r={top:top,bottom:bottom,height:bottom-top};
+   }
    if(h>0&&(r.top<0||r.bottom>h))w.scrollTo(w.scrollX,Math.max(0,w.scrollY+r.top-Math.max(0,(h-r.height)/2)));
   }catch(_){} // Cross-origin frames keep their own scrolling owner.
  }
@@ -101,11 +111,14 @@
   function go(){try{var d=f.contentDocument;if(!d||!d.head||d.getElementById('ma-chat-resize-frame'))return;var st=d.createElement('style');st.id='ma-chat-resize-frame';
    st.textContent='html.matchapp-ambient-frame .ma-cinema-dock,html.matchapp-ambient-frame .ma-reference-dock{display:none!important}html.matchapp-ambient-frame body{padding-bottom:12px!important}'+
     '@media(max-height:240px){'+
-    'html.matchapp-ambient-frame,html.matchapp-ambient-frame body.ai-chat-page{height:auto!important;overflow-y:auto!important}'+
+    'html.matchapp-ambient-frame{height:auto!important;overflow-y:auto!important}'+
+    'html.matchapp-ambient-frame body.ai-chat-page{height:auto!important;overflow:visible!important}'+
     'html.matchapp-ambient-frame body.ai-chat-page main.wrap{height:auto!important;overflow:visible!important}'+
     'html.matchapp-ambient-frame body.ai-chat-page main.wrap .premium-card.discover-head{height:auto!important;max-height:none!important;flex:none!important;overflow:visible!important}'+
     'html.matchapp-ambient-frame body.ai-chat-page .discover-head>.newsearch-row{max-height:none!important;overflow:visible!important}'+
-    '}';d.head.appendChild(st);d.addEventListener('focusin',later);d.addEventListener('input',later)}catch(_){}}
+    '}';d.head.appendChild(st);
+   function revealLater(){panel.__maRevealComposer=true;later()}
+   d.addEventListener('focusin',revealLater);d.addEventListener('input',revealLater)}catch(_){}}
   f.addEventListener('load',go);go()}
  function sync(){if(document.documentElement.classList.contains('ma-chat-resizing'))return;var ps=document.querySelectorAll(SEL);for(var i=0;i<ps.length;i++){var p=ps[i];if(kids())continue;if(p.hidden){p.style.removeProperty('display');continue}attach(p);frameFix(p);apply(p)}}
  window.MatchAppChatResize=Object.freeze({sync:sync});
