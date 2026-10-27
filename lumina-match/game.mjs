@@ -1,6 +1,6 @@
 /* Mount Grok's browser game in its own document, loaded only after Play. */
-import {createFriendsBridge} from './friends-bridge.mjs?v=20261027-2';
-import {createProgressBridge} from './progress-bridge.mjs?v=20261027-2';
+import {createFriendsBridge} from './friends-bridge.mjs?v=20261027-3';
+import {createProgressBridge} from './progress-bridge.mjs?v=20261027-3';
 export function mountGame(container, options = {}) {
   const frame = document.createElement('iframe');
   frame.className = 'lm-game-frame';

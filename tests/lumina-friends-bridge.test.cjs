@@ -19,6 +19,11 @@ const deferred = () => {
   return {promise, resolve, reject};
 };
 const session = id => ({user:{id:id || USER,is_anonymous:false},access_token:'fixture-access-only',refresh_token:'fixture-refresh-only'});
+const withHeaders = query => {
+  query.headers = new Headers();
+  query.setHeader = (name,value) => {query.headers = new Headers(query.headers);query.headers.set(name,value);return query;};
+  return query;
+};
 
 function fixture(t, client) {
   const dom = new JSDOM('<!doctype html><html><body><div id="stage"></div></body></html>', {url:ORIGIN + '/'});
@@ -75,23 +80,83 @@ test('guest and anonymous sessions never call a game RPC',async()=>{
   assert.equal(calls,0);
 });
 
-test('signed requests use only lumina_action and never forward session credentials',async()=>{
+test('signed requests pin transport credentials while keeping payloads and results credential-free',async()=>{
   const {requestGame} = await exported;
-  const calls=[], signals=[], controller=new AbortController();
+  const calls=[], signals=[], queries=[], controller=new AbortController();
   const gameData={games:[],friends:[{id:FRIEND,name:'Fixture friend'}]};
   const client={auth:{getSession:async()=>({data:{session:session()}})},rpc(name,args){
     calls.push({name,args});
-    const query=Promise.resolve({data:gameData,error:null});
+    const query=withHeaders(Promise.resolve({data:gameData,error:null}));
+    queries.push(query);
     query.abortSignal=signal=>{signals.push(signal);return query;};
     return query;
   }};
   assert.equal(await requestGame(client,'create',{friend:FRIEND,access_token:'untrusted'},controller.signal),gameData);
   assert.deepEqual(calls,[{name:'lumina_action',args:{p_action:'create',p_payload:{friend:FRIEND}}}]);
+  assert.equal(queries[0].headers.get('Authorization'),'Bearer fixture-access-only');
   assert.equal(signals[0],controller.signal);
   assert.doesNotMatch(JSON.stringify({calls,gameData}),/fixture-access-only|fixture-refresh-only|untrusted/);
   controller.abort();
   await assert.rejects(requestGame(client,'list',{},controller.signal),error=>error.code==='LUMINA_UNAVAILABLE');
   assert.equal(calls.length,1);
+});
+
+test('missing access tokens and unsupported header pinning fail before RPC transport',async()=>{
+  const {requestGame} = await exported;
+  let built=0,dispatched=0;
+  for(const access_token of [undefined,null,'','  ',123]) {
+    const client={auth:{getSession:async()=>({data:{session:{...session(),access_token}}})},rpc(){built++;}};
+    await assert.rejects(requestGame(client,'list',{}),error=>error.code==='LUMINA_AUTH_REQUIRED');
+  }
+  assert.equal(built,0,'invalid credentials must not build a query');
+  const client={auth:{getSession:async()=>({data:{session:session()}})},rpc(){
+    built++;
+    return {then(resolve,reject){dispatched++;return Promise.resolve({data:{},error:null}).then(resolve,reject);}};
+  }};
+  await assert.rejects(requestGame(client,'list',{}),error=>error.code==='LUMINA_UNAVAILABLE');
+  assert.equal(built,1);assert.equal(dispatched,0,'an unsupported lazy builder must never be dispatched');
+});
+
+test('a changed expected account is rejected before constructing a query',async()=>{
+  const {requestGame} = await exported;
+  let built=0;
+  const client={auth:{getSession:async()=>({data:{session:session(FRIEND)}})},rpc(){built++;}};
+  await assert.rejects(requestGame(client,'progress',{},undefined,USER),error=>error.code==='LUMINA_AUTH_CHANGED');
+  assert.equal(built,0);
+});
+
+test('a delayed SDK auth lookup cannot move a save to another account or mutate shared headers',async()=>{
+  const {requestGame} = await exported;
+  const accountA={...session(USER),access_token:'fixture-account-a'};
+  const accountB={...session(FRIEND),access_token:'fixture-account-b'};
+  const sharedHeaders=new Headers({'X-Shared-Fixture':'unchanged'}),queries=[],requests=[];
+  const progress={points:10,rounds:1,activeRound:null};
+  let reads=0;
+  const client={auth:{getSession:async()=>({data:{session:++reads===1?accountA:accountB}})},rpc(name,args){
+    const query=withHeaders({then(resolve,reject){
+      // Supabase's fetchWithAuth reads the shared session a second time at
+      // dispatch and preserves an Authorization header already on the query.
+      return Promise.resolve().then(async()=>{
+        const live=(await client.auth.getSession()).data.session;
+        const headers=new Headers(query.headers);
+        if(!headers.has('Authorization'))headers.set('Authorization','Bearer '+live.access_token);
+        requests.push({name,args,authorization:headers.get('Authorization')});
+        return {data:{revision:1,progress},error:null};
+      }).then(resolve,reject);
+    }});
+    query.headers=sharedHeaders;
+    queries.push(query);return query;
+  }};
+  await requestGame(client,'save_progress',{revision:0,progress},undefined,USER);
+  assert.equal(reads,2);
+  assert.equal(requests[0].authorization,'Bearer fixture-account-a');
+  assert.deepEqual(requests[0].args,{p_action:'save_progress',p_payload:{revision:0,progress}});
+  await requestGame(client,'progress',{},undefined,FRIEND);
+  assert.equal(requests[1].authorization,'Bearer fixture-account-b');
+  assert.equal(queries[0].headers.get('Authorization'),'Bearer fixture-account-a');
+  assert.equal(sharedHeaders.has('Authorization'),false);
+  assert.equal(sharedHeaders.get('X-Shared-Fixture'),'unchanged');
+  assert.doesNotMatch(JSON.stringify(requests.map(request=>request.args)),/fixture-account-[ab]|refresh_token/);
 });
 
 test('RPC error responses expose only stable Lumina codes',async()=>{
@@ -101,7 +166,7 @@ test('RPC error responses expose only stable Lumina codes',async()=>{
     [{message:'invalid authentication fixture-secret',code:'PGRST301'},'LUMINA_AUTH_REQUIRED'],
     [{message:'details: LUMINA_FRIEND_REQUIRED; fixture-secret'},'LUMINA_FRIEND_REQUIRED']
   ]) {
-    const client={auth:{getSession:async()=>({data:{session:session()}})},rpc:async()=>({data:null,error})};
+    const client={auth:{getSession:async()=>({data:{session:session()}})},rpc:()=>withHeaders(Promise.resolve({data:null,error}))};
     await assert.rejects(requestGame(client,'list',{}),failure=>{
       assert.equal(failure.code,expected);assert.equal(failure.message,expected);return true;
     });
@@ -110,7 +175,7 @@ test('RPC error responses expose only stable Lumina codes',async()=>{
 
 test('frame messages must match both origin and exact source window',async t=>{
   const calls=[];
-  const client={auth:{getSession:async()=>({data:{session:session()}})},rpc:async(name,args)=>{calls.push({name,args});return {data:{friends:[],games:[]},error:null};}};
+  const client={auth:{getSession:async()=>({data:{session:session()}})},rpc(name,args){calls.push({name,args});return withHeaders(Promise.resolve({data:{friends:[],games:[]},error:null}));}};
   const f=fixture(t,client), message={type:'lumina:rpc',id:'safe',action:'list',payload:{}};
   f.send(message,{origin:'https://untrusted.example'});
   f.send(message,{source:f.w});
@@ -145,7 +210,7 @@ test('bridge redacts thrown transport details and rejects unknown actions before
 
 test('duplicate IDs and the pending limit bound concurrent game operations',async t=>{
   const work=deferred();let calls=0;
-  const f=fixture(t,{auth:{getSession:async()=>({data:{session:session()}})},rpc(){calls++;return work.promise;}});
+  const f=fixture(t,{auth:{getSession:async()=>({data:{session:session()}})},rpc(){calls++;return withHeaders(work.promise);}});
   for(let i=0;i<4;i++)f.rpc('pending'+i);
   f.rpc('pending0');f.rpc('overflow');await tick();
   assert.equal(calls,4);assert.equal(f.timers.size,4);
@@ -157,7 +222,7 @@ test('duplicate IDs and the pending limit bound concurrent game operations',asyn
 test('disposal aborts in-flight work and never sends its late result to the frame',async t=>{
   const work=deferred(),signals=[];
   work.promise.abortSignal=signal=>{signals.push(signal);return work.promise;};
-  const f=fixture(t,{auth:{getSession:async()=>({data:{session:session()}})},rpc:()=>work.promise});
+  const f=fixture(t,{auth:{getSession:async()=>({data:{session:session()}})},rpc:()=>withHeaders(work.promise)});
   f.rpc('closing');await tick();assert.equal(signals.length,1);
   f.dispose();assert.equal(signals[0].aborted,true);
   work.resolve({data:{privateOldGame:'fixture'},error:null});await tick();
@@ -169,7 +234,7 @@ test('an auth change aborts old work and suppresses old-account results',async t
   const old=deferred(),fresh=deferred(),signals=[];let call=0;
   const f=fixture(t,{auth:{getSession:async()=>({data:{session:session()}})},rpc(){
     const promise=call++===0?old.promise:fresh.promise;
-    promise.abortSignal=signal=>{signals.push(signal);return promise;};return promise;
+    promise.abortSignal=signal=>{signals.push(signal);return promise;};return withHeaders(promise);
   }});
   f.rpc('old');await tick();f.authChange();
   assert.equal(signals[0].aborted,true);
@@ -186,7 +251,7 @@ test('settlement from an earlier auth generation cannot delete a reused pending 
   const old=deferred(),fresh=deferred(),signals=[];let call=0;
   const f=fixture(t,{auth:{getSession:async()=>({data:{session:session()}})},rpc(){
     const promise=call++===0?old.promise:fresh.promise;
-    promise.abortSignal=signal=>{signals.push(signal);return promise;};return promise;
+    promise.abortSignal=signal=>{signals.push(signal);return promise;};return withHeaders(promise);
   }});
   f.rpc('reused');await tick();f.authChange();f.rpc('reused');await tick();
   assert.equal(signals.length,2);

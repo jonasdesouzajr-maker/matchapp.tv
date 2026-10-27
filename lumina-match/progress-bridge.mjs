@@ -1,6 +1,6 @@
 /* Account progress stays behind MatchApp's parent authentication boundary.
  * Closing the game removes its UI, but a bounded account save can finish. */
-import {requestGame} from './friends-bridge.mjs?v=20261027-2';
+import {requestGame} from './friends-bridge.mjs?v=20261027-3';
 
 const artwork = new Set(['moon','star','planet','heart','crystal','butterfly','orb','sun']);
 const fail = code => Object.assign(new Error(code),{code});
