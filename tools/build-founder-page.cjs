@@ -23,7 +23,7 @@ ${analytics}
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
 ${shared}
 <link rel="stylesheet" href="/patches/founder-page.css?v=20261016-4">
-<link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261025-1">
+<link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261025-1&compactfooter=20261027-1">
 <script type="application/ld+json" id="founder-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <script src="/i18n.js?v=20261016-founder1&amp;billing=20261017-2&amp;polish=20261020-ui1"></script>
 </head><body class="ma-founder-page">
@@ -41,8 +41,8 @@ ${[['originHeading','origin','spark'],['learningHeading','learning','craft'],['b
 </article>
 <footer class="mf-footer ma-legal-bar"><nav aria-label="MatchApp Ai">${Object.entries({home:'/',about:'/about.html',contact:'/contact.html',privacy:'/privacy.html',terms:'/terms.html',cookies:'/cookies.html',copyright:'/copyright.html'}).map(([k,href])=>`<a href="${href}" data-founder="${k}">${esc(t[k])}</a>`).join('')}</nav><p>© 2026 MatchApp Ai</p>${text('p','rights','mf-note')}</footer>
 </main>
-<script src="/settings.js?v=20260924-runtime1&posters=20261020-1&dialogs=20261020-1&accountphoto=20261020-1&brandlocale=20261020-1&androidqa=20261021-1"></script><script defer src="/poster-wall.js?v=20260922-global1&posters=20261020-1&ui=20261024-1" data-page-shell="wall"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script><script defer src="/brand-lock-20261011.js?v=20261011-a1"></script><script defer src="/patches/donate-shortcut.js?v=20261015-1"></script><script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261024-1"></script><script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&amp;dock=20261020-1&amp;cinemasound=20261020-1"></script><script src="/patches/founder-copy.js?v=20261016-seo2"></script><script defer src="/patches/founder-page.js?v=20261016-seo2"></script>
-<script defer src="/patches/reference-support.js?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261020-1"></script>
+<script src="/settings.js?v=20260924-runtime1&posters=20261020-1&dialogs=20261020-1&accountphoto=20261020-1&brandlocale=20261020-1&androidqa=20261021-1&perf=20261027-1"></script><script defer src="/poster-wall.js?v=20260922-global1&posters=20261020-1&ui=20261024-1" data-page-shell="wall"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script><script defer src="/brand-lock-20261011.js?v=20261011-a1"></script><script defer src="/patches/donate-shortcut.js?v=20261015-1"></script><script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261024-1"></script><script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&amp;dock=20261020-1&amp;cinemasound=20261020-1"></script><script src="/patches/founder-copy.js?v=20261016-seo2"></script><script defer src="/patches/founder-page.js?v=20261016-seo2"></script>
+<script defer src="/patches/reference-support.js?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261020-1&compactfooter=20261027-1"></script>
 </body></html>\n`,'founder/index.html');
 fs.mkdirSync(path.join(root,'founder'),{recursive:true});fs.writeFileSync(path.join(root,'founder/index.html'),body);
 fs.writeFileSync(path.join(root,'patches/founder-copy.js'),'/* Authored translations. Source: data/founder-copy.json. */\nwindow.MATCHAPP_FOUNDER_COPY='+JSON.stringify(copy).replace(/</g,'\\u003c')+';\n');

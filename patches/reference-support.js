@@ -35,7 +35,7 @@
   const legal=home.querySelector('.seo-footer-legal'),actions=home.querySelector('.mp-footer-actions'),updates=home.querySelector('a[href="/updates.html"]');if(!legal||!actions||!updates)return;
   const details=doc.createElement('details'),summary=doc.createElement('summary'),notice=doc.createElement('span'),support=doc.createElement('span'),email=doc.createElement('a');
   details.className='ma-home-service-info';summary.setAttribute('data-ma-text-pill','label');notice.className='ma-home-service-notice';email.href='mailto:support@matchapp.tv';email.textContent='support@matchapp.tv';
-  legal.before(details);details.append(summary,legal);legal.replaceChildren(notice,' ',support,' ',email);
+  legal.before(details);details.append(summary);const lede=home.querySelector('.seo-footer-lede');if(lede)details.appendChild(lede);details.appendChild(legal);legal.replaceChildren(notice,' ',support,' ',email);
   const oldParent=updates.parentElement;updates.classList.add('mp-footer-pill','secondary');actions.appendChild(updates);if(oldParent.tagName==='P'&&!oldParent.textContent.trim()&&!oldParent.children.length)oldParent.remove();
   homeUI={summary,notice,support,updates,details};
   if(!consolidateLegal()){
