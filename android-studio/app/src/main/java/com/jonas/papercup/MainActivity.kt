@@ -3,6 +3,7 @@ package com.jonas.papercup
 import android.app.PictureInPictureParams
 import android.graphics.Rect
 import android.util.Rational
+import tv.matchapp.shared.NativeErrorNotice
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -68,6 +69,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var web: WebView
     private lateinit var refresh: SwipeRefreshLayout
+    private lateinit var errorNotice: NativeErrorNotice
+    private var pendingNativeError = false
+    private var mainFrameFailed = false
     private lateinit var offline: View
     private lateinit var fullscreenHost: FrameLayout
     private var adMobController: AdMobController? = null
@@ -156,6 +160,10 @@ class MainActivity : AppCompatActivity() {
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
+        errorNotice = NativeErrorNotice(this, refresh, { startupStrings().getString(R.string.error_notice_close) }) {
+            pendingNativeError = true
+            reportNativeError()
+        }
         fullscreenHost.addOnLayoutChangeListener { _, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
             if (left != oldLeft || top != oldTop || right != oldRight || bottom != oldBottom) {
                 updateFullscreenPipParams()
@@ -739,7 +747,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun retry() {
         if (!isDebugSmokeUrl(lastUrl) && !isOnline()) {
-            Toast.makeText(this, getString(R.string.offline_title), Toast.LENGTH_SHORT).show()
+            showOffline(true)
             return
         }
         showOffline(false)
@@ -748,8 +756,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showOffline(show: Boolean) {
-        offline.visibility = if (show) View.VISIBLE else View.GONE
-        refresh.visibility = if (show) View.GONE else View.VISIBLE
+        offline.visibility = View.GONE
+        refresh.visibility = View.VISIBLE
+        if (show) { mainFrameFailed = true; web.visibility = View.INVISIBLE }
+        if (show) errorNotice.show(startupStrings().getString(R.string.offline_body), startupStrings().getString(R.string.offline_retry)) { retry() }
+        else errorNotice.hide()
+    }
+
+    private fun reportNativeError() {
+        if (!pendingNativeError) return
+        web.evaluateJavascript("""(function(){if(!['matchapp.tv','www.matchapp.tv'].includes(location.hostname)||!window.MatchAppErrors)return false;if(!window.__maNativeNoticeWatching){window.__maNativeNoticeWatching=true;document.addEventListener('matchapp:error-report-status',function(e){if(e.detail?.code==='ui-error'&&e.detail?.accepted)window.__maNativeNoticeAccepted=true;});}window.MatchAppErrors.report('ui-error');return !!window.__maNativeNoticeAccepted;})()""") { result ->
+            if (result == "true") pendingNativeError = false
+        }
     }
 
     private fun isOnline(): Boolean {
@@ -1062,6 +1080,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            mainFrameFailed = false
+            errorNotice.hide()
             lastPermissionInteractionAt = 0L
             nativeRewardedBridge?.onNavigation()
             nativePlayBillingBridge?.onNavigation()
@@ -1087,6 +1107,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
+            if (!mainFrameFailed) view.visibility = View.VISIBLE
+            if (pendingNativeError) {
+                reportNativeError()
+                web.postDelayed({ reportNativeError() }, 2500)
+            }
             splashKeep = false
             finishStartupTransition()
             refresh.isRefreshing = false
@@ -1101,10 +1126,14 @@ class MainActivity : AppCompatActivity() {
 
         override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
             if (request.isForMainFrame) {
+                // The native notice owns this failure; do not also expose Chromium error text.
+                mainFrameFailed = true
+                view.visibility = View.INVISIBLE
                 splashKeep = false
                 finishStartupTransition(immediate = true)
                 refresh.isRefreshing = false
                 if (!isOnline()) showOffline(true)
+                else errorNotice.show(startupStrings().getString(R.string.error_notice_generic), startupStrings().getString(R.string.offline_retry)) { retry() }
             }
         }
     }
@@ -1154,7 +1183,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showCinemaMapsUnavailable() {
-        Toast.makeText(this, startupStrings().getString(R.string.cinema_maps_unavailable), Toast.LENGTH_LONG).show()
+        errorNotice.show(startupStrings().getString(R.string.cinema_maps_unavailable))
     }
 
     private fun openExternal(uri: Uri): Boolean {
@@ -1452,7 +1481,7 @@ class MainActivity : AppCompatActivity() {
                         addCategory(Intent.CATEGORY_BROWSABLE)
                     })
                 } catch (_: ActivityNotFoundException) {
-                    Toast.makeText(this@MainActivity, "Install or enable a browser to continue with Google.", Toast.LENGTH_LONG).show()
+                    errorNotice.show("Install or enable a browser to continue with Google.")
                 }
             }
         }
@@ -1515,7 +1544,7 @@ class MainActivity : AppCompatActivity() {
                         JSONObject("{\"token\":" + encoded + "}").optString("token", "")
                     }.getOrDefault("")
                     if (token.length !in 100..6000) {
-                        Toast.makeText(this@MainActivity, "Sign in with your MatchApp account to test Avatar AI.", Toast.LENGTH_LONG).show()
+                        errorNotice.show("Sign in with your MatchApp account to test Avatar AI.")
                         return@evaluateJavascript
                     }
                     startActivity(

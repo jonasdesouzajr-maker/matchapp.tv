@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    sourceSets.getByName("main").java.srcDir("../shared/src/main/java")
     namespace = "tv.matchapp.kids"
     compileSdk = 36
 
