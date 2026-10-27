@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-10-25",
+  "verifiedAt": "2026-10-27",
   "items": [
     {
       "id": "1l7wbZmdtys",
@@ -16,7 +16,7 @@
       "url": "https://www.youtube.com/watch?v=1l7wbZmdtys",
       "thumbnail": "https://i.ytimg.com/vi/1l7wbZmdtys/hqdefault.jpg",
       "poster": "/assets/music-videos/1l7wbZmdtys.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Bruno Mars",
         "Dance With Me",
@@ -63,7 +63,7 @@
       "creditsSource": "https://www.taylorswift.com/directed-projects/",
       "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
       "thumbnail": "https://i.ytimg.com/vi/mw3kSNIxjqo/hqdefault.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Taylor Swift",
         "Patient Zero",
@@ -199,7 +199,7 @@
       "url": "https://www.youtube.com/watch?v=XwCWKSO0F8s",
       "thumbnail": "https://i.ytimg.com/vi/XwCWKSO0F8s/hqdefault.jpg",
       "poster": "/assets/music-videos/XwCWKSO0F8s.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Taylor Swift",
         "I Knew It, I Knew You (Piano Version)",
@@ -417,7 +417,7 @@
       "creditsSource": "https://www.universal-music.co.jp/lady-gaga/news/2026-04-28/",
       "url": "https://www.youtube.com/watch?v=XXIX2WnfbpE",
       "thumbnail": "https://i.ytimg.com/vi/XXIX2WnfbpE/hqdefault.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Lady Gaga & Doechii",
         "RUNWAY",
@@ -466,7 +466,7 @@
       "creditsSource": "https://www.universal-music.co.jp/sabrina-carpenter/news/2026-04-07/",
       "url": "https://www.youtube.com/watch?v=KWoTyfPsqbE",
       "thumbnail": "https://i.ytimg.com/vi/KWoTyfPsqbE/hqdefault.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Sabrina Carpenter",
         "House Tour",
@@ -600,7 +600,7 @@
       "url": "https://www.youtube.com/watch?v=xGaZBfJOyAc",
       "thumbnail": "https://i.ytimg.com/vi/xGaZBfJOyAc/hqdefault.jpg",
       "poster": "/assets/music-videos/xGaZBfJOyAc.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Lady Gaga",
         "The Dead Dance",
@@ -643,7 +643,7 @@
       "url": "https://www.youtube.com/watch?v=vmbyVU9w47Y",
       "thumbnail": "https://i.ytimg.com/vi/vmbyVU9w47Y/hqdefault.jpg",
       "poster": "/assets/music-videos/vmbyVU9w47Y.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "viewCount": 50116039,
       "viewCountCheckedAt": "2026-10-12",
       "keywords": [
@@ -689,7 +689,7 @@
       "url": "https://www.youtube.com/watch?v=KU5V5WZVcVE",
       "thumbnail": "https://i.ytimg.com/vi/KU5V5WZVcVE/hqdefault.jpg",
       "poster": "/assets/music-videos/KU5V5WZVcVE.jpg",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "viewCount": 166007040,
       "viewCountCheckedAt": "2026-10-12",
       "keywords": [
@@ -737,67 +737,65 @@
   "billboard": {
     "name": "Billboard Hot 100",
     "region": "US",
-    "chartDate": "2026-10-24",
-    "periodStart": "2026-10-21",
-    "sourceUrl": "https://www.officialcharts.com/charts/billboard-hot-100-chart/",
+    "chartDate": "2026-10-31",
+    "sourceUrl": "https://www.billboard.com/charts/hot-100/",
     "chartUrl": "https://www.billboard.com/charts/hot-100/",
     "entries": [
       {
         "rank": 1,
-        "title": "Patient Zero",
-        "artist": "Taylor Swift",
-        "videoId": "mw3kSNIxjqo"
-      },
-      {
-        "rank": 2,
         "title": "Choosin' Texas",
         "artist": "Ella Langley",
         "videoId": "nUsrYVxrDwI"
       },
       {
+        "rank": 2,
+        "title": "Housewife",
+        "artist": "Tate McRae"
+      },
+      {
         "rank": 3,
+        "title": "Expectations",
+        "artist": "Olivia Rodrigo & Chappell Roan"
+      },
+      {
+        "rank": 4,
+        "title": "Lies",
+        "artist": "Zach Bryan Featuring Lana Del Rey"
+      },
+      {
+        "rank": 5,
+        "title": "Patient Zero",
+        "artist": "Taylor Swift",
+        "videoId": "mw3kSNIxjqo"
+      },
+      {
+        "rank": 6,
         "title": "Boston",
         "artist": "Stella Lefty"
       },
       {
-        "rank": 4,
+        "rank": 7,
         "title": "Been By Now",
         "artist": "Morgan Wallen"
       },
       {
-        "rank": 5,
+        "rank": 8,
         "title": "Dracula",
         "artist": "Tame Impala & JENNIE"
       },
       {
-        "rank": 6,
+        "rank": 9,
         "title": "Nicole Kidman",
         "artist": "ADELA"
       },
       {
-        "rank": 7,
-        "title": "Hate That I Made You Love Me",
-        "artist": "Ariana Grande",
-        "videoId": "82-jTNka3uc"
-      },
-      {
-        "rank": 8,
+        "rank": 10,
         "title": "Stupid Song",
         "artist": "Olivia Rodrigo",
         "videoId": "Rt9tW3cMLhI"
-      },
-      {
-        "rank": 9,
-        "title": "BbY WOW",
-        "artist": "Karol G With Judeline & rusowsky"
-      },
-      {
-        "rank": 10,
-        "title": "Babydoll",
-        "artist": "Dominic Fike"
       }
     ],
-    "verifiedAt": "2026-10-25"
+    "verifiedAt": "2026-10-27"
   },
   "spotifyVideos": [
     {
@@ -807,7 +805,7 @@
       "source": "https://newsroom.spotify.com/2026-10-09/portola-music-festival-videos/",
       "sourceTitle": "Live Performances and Longform Video DJ Sets From Portola Festival Just Dropped on Spotify",
       "announcedAt": "2026-10-09T18:30:35+00:00",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Portola video hub",
         "Spotify music videos",
@@ -822,7 +820,7 @@
       "source": "https://newsroom.spotify.com/2026-09-25/mtv-vmas-partnership/",
       "sourceTitle": "You Can Now Watch Legendary MTV VMA Performances on Spotify",
       "announcedAt": "2026-09-25T14:00:58+00:00",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "VMA destination",
         "Spotify music videos",
@@ -843,7 +841,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b773ef897f6b8a6edf9d2c5200"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Tim McGraw",
         "Taylor Swift",
@@ -866,7 +864,7 @@
         "uploadDate": "2026-02-06T13:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b7d7b8743df5f81a3af06756e7"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Opalite",
         "Taylor Swift",
@@ -883,7 +881,7 @@
       "source": "https://newsroom.spotify.com/2026-09-16/taylor-swift-music-videos-catalog-spotify/",
       "sourceTitle": "All of Taylor Swift’s Official Music Videos Are Now on Spotify",
       "announcedAt": "2026-09-16T15:00:49+00:00",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Taylor Swift - The Videos",
         "Spotify music videos",
@@ -904,7 +902,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b7db511988ebf9c02d017315f8"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "You Belong With Me",
         "Taylor Swift",
@@ -927,7 +925,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b7be2a79ec37527364b94ee30f"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Mine",
         "Taylor Swift",
@@ -950,7 +948,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b795cb24bc1b9a2cb7674eadd7"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Blank Space",
         "Taylor Swift",
@@ -973,7 +971,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b7bc017abe94246265369fa9ad"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Look What You Made Me Do",
         "Taylor Swift",
@@ -996,7 +994,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b7c2ff4b27f2a4a3a219f555a4"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "The Man",
         "Taylor Swift",
@@ -1019,7 +1017,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b70fced2c0dab46cf1f080fb83"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "cardigan",
         "Taylor Swift",
@@ -1042,7 +1040,7 @@
         "uploadDate": "2026-09-16T15:00:00",
         "thumbnailUrl": "https://i.scdn.co/image/ab6742d3000053b7541d059132709e0deb155697"
       },
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-27",
       "keywords": [
         "Anti-Hero",
         "Taylor Swift",

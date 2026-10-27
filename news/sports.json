@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-25T09:26:15.384Z",
+  "updated_at": "2026-10-27T10:00:31.904Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
-      "id": "2a1ed8cc",
-      "title": "The next government faces transport tests that new roads or cheap fares won’t solve",
-      "url": "https://theconversation.com/the-next-government-faces-transport-tests-that-new-roads-or-cheap-fares-wont-solve-293790",
+      "id": "b04776b3",
+      "title": "Politics with Michelle Grattan: Joe Hockey on how Trump would handle defeat in the midterms",
+      "url": "https://theconversation.com/politics-with-michelle-grattan-joe-hockey-on-how-trump-would-handle-defeat-in-the-midterms-295167",
       "source": "The Conversation",
       "source_domain": "theconversation.com",
       "source_home": "https://theconversation.com",
@@ -13,23 +13,7 @@
       "category": "sports",
       "sport": "Sports",
       "event_type": "Sports",
-      "published_at": "2026-10-22T18:50:10.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "4e65ca54",
-      "title": "Perdre face à une femme : une défaite qui ne laisse pas indifférent",
-      "url": "https://theconversation.com/perdre-face-a-une-femme-une-defaite-qui-ne-laisse-pas-indifferent-289325",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-21T13:56:57.000Z",
+      "published_at": "2026-10-27T06:44:38.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
