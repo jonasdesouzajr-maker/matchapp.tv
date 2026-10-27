@@ -17,7 +17,11 @@
   // need fresh safe-area bounds even though the element is stable.
   var c=getComputedStyle(safeProbe);return{t:parseFloat(c.paddingTop)||0,r:parseFloat(c.paddingRight)||0,b:parseFloat(c.paddingBottom)||0,l:parseFloat(c.paddingLeft)||0}}
  function vis(e){if(!e)return null;var r=e.getBoundingClientRect();return r.width>1&&r.height>1&&getComputedStyle(e).visibility!=='hidden'?r:null}
- function viewport(){var v=window.visualViewport;return{x:v?v.offsetLeft||0:0,y:v?v.offsetTop||0:0,w:v?v.width:document.documentElement.clientWidth||innerWidth,h:v?Math.min(v.height,innerHeight):innerHeight}}
+ function viewport(){var v=window.visualViewport,scale=v&&v.scale||1,zoomed=scale>1.01;
+  // Pinch zoom magnifies the existing layout; it must not collapse a phone
+  // composer into a second, narrower responsive layout. Let the browser pan
+  // that magnified layout, while still accounting for keyboard height.
+  return{x:v&&!zoomed?v.offsetLeft||0:0,y:v&&!zoomed?v.offsetTop||0:0,w:v&&!zoomed?v.width:document.documentElement.clientWidth||innerWidth,h:v?Math.min(v.height*(zoomed?scale:1),innerHeight):innerHeight}}
  function area(panel){
   var vp=viewport(),s=safe(),top=vp.y+GAP+s.t,left=vp.x+GAP+s.l,right=vp.x+vp.w-GAP-s.r,bottom=vp.y+vp.h-GAP-s.b;
   // The same Jonas launcher remains the open/close control even at maximum

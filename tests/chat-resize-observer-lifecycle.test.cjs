@@ -107,3 +107,20 @@ test('keyboard panning keeps the panel inside the visual viewport after scroll a
   assertInside();assert.equal(s.timers.size,0,'keyboard pan handling must settle');
  }finally{s.dom.window.close();}
 });
+
+test('pinch zoom magnifies the existing composer rather than reflowing it into a tiny field',async()=>{
+ const s=await scene({width:390,height:844,offsetTop:0,offsetLeft:0,scale:1});
+ try{
+  const before={width:s.panel.style.width,height:s.panel.style.height,mode:s.panel.dataset.maResize};
+  Object.assign(s.w.visualViewport,{width:195,height:422,offsetTop:90,offsetLeft:40,scale:2});
+  s.w.visualViewport.dispatchEvent(new s.w.Event('resize'));await s.drain();
+  assert.equal(s.panel.style.width,before.width,'zoom must retain the readable layout width');
+  assert.equal(s.panel.style.height,before.height,'zoom alone must not shrink the conversation');
+  assert.equal(s.panel.dataset.maResize,before.mode);
+  s.w.visualViewport.offsetLeft=80;s.w.visualViewport.dispatchEvent(new s.w.Event('scroll'));await s.drain();
+  assert.equal(s.panel.style.left,'13px','browser pinch panning must not make the panel chase the visual viewport');
+  Object.assign(s.w.visualViewport,{width:390,height:388,offsetTop:194,offsetLeft:0,scale:1});
+  s.w.visualViewport.dispatchEvent(new s.w.Event('resize'));await s.drain();
+  assert(parseFloat(s.panel.style.top)>=213,'ordinary keyboard panning remains active after zoom ends');
+ }finally{s.dom.window.close()}
+});
