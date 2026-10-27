@@ -17,7 +17,7 @@ async function prepare(){
   if(!root.MatchAppEbooks?.ready){
    if(!preparing)preparing=new Promise((resolve,reject)=>{
     const script=document.createElement('script');script.dataset.readingStateOnly='1';
-    script.src='/ebooks/ebook-matcher.js?v=20261011-meta1&reliability=20261018-1&lifetime=20261019-1&art=20261020-source1&locale=20261020-books14-1&ebookart=20261020-renditions1&fastart=20261020-1&audiocover=20261022-1';
+    script.src='/ebooks/ebook-matcher.js?v=20261011-meta1&reliability=20261018-1&lifetime=20261019-1&art=20261020-source1&locale=20261020-books14-1&ebookart=20261020-renditions1&fastart=20261020-1&audiocover=20261022-1&guestcountry=20261027-1';
     const timer=setTimeout(()=>reject(Error(copy('reading.historyUnavailable','Reading history unavailable'))),7000);
     script.onload=()=>{clearTimeout(timer);resolve();};script.onerror=()=>{clearTimeout(timer);reject(Error(copy('reading.historyUnavailable','Reading history unavailable')));};
     document.head.appendChild(script);
@@ -50,8 +50,8 @@ function market(){
 }
 const AMAZON_MARKETS=new Set(['BR','GB','CA','AU','JP','PT','US']);
 function chooseCountry(){
- if(root.MatchAppReadingDetailsCopy?.text)return root.MatchAppReadingDetailsCopy.text('reading.chooseCountry');
  if(typeof root.MatchAppCountry?.chooseCountryMessage==='function')return root.MatchAppCountry.chooseCountryMessage(root.MATCH_LANG||document.documentElement.lang||root.navigator?.language||'en');
+ if(root.MatchAppReadingDetailsCopy?.text)return root.MatchAppReadingDetailsCopy.text('reading.chooseCountry');
  return {en:'Choose your country in your profile to check local reading and listening editions.',
   pt:'Escolha seu país no perfil para consultar edições de leitura e áudio disponíveis na sua região.',
   es:'Elige tu país en el perfil para consultar las ediciones de lectura y audio de tu región.',
@@ -160,7 +160,8 @@ function render(question,host,options={}){
  const results=mode==='magazine'?selectMagazine(question,options):selectBooks(question,options);
  return paintSources(mode,results,host);
 }
-function paintSources(mode,results,host){
+const paintedSources=new WeakMap();
+function paintSources(mode,results,host,previous){
  if(!results.length)return 0;
  const section=document.createElement('section');
  section.className='reading-ai-sources';
@@ -169,9 +170,10 @@ function paintSources(mode,results,host){
  'Real books · verify audiobook editions':'Curated e-books · official store searches';
  const headingKey=mode==='magazine'?'reading.magazineHeading':mode==='audiobook'?'reading.audioHeading':'reading.ebookHeading';
  section.innerHTML='<h3'+copyAttributes(headingKey)+'>'+esc(copy(headingKey,heading))+'</h3><p class="reading-ai-note"'+copyAttributes('reading.sourceNote')+'>'+esc(copy('reading.sourceNote','Original publication and store pages, not generated or unlicensed downloads. Prices, free access and stock must be checked at the source.'))+'</p>'+
- (!market()?'<p class="reading-ai-note"><a href="/profile/profile.html" data-reading-choose-country'+copyAttributes('reading.chooseCountry')+'>'+esc(chooseCountry())+'</a></p>':'')+
+ (!market()?'<p class="reading-ai-note"><a href="/#matchapp-viewer-country" data-reading-choose-country'+copyAttributes('reading.chooseCountry')+'>'+esc(chooseCountry())+'</a></p>':'')+
  results.map(r=>mode==='magazine'?magCard(r):bookCard(r,mode)).join('');
- host.appendChild(section);
+ if(previous)previous.replaceWith(section);else host.appendChild(section);
+ paintedSources.set(section,{mode,results});
  root.MatchAppBooksLocale?.paint?.(section);
  section.querySelectorAll('[data-reading-icon-title]').forEach(img=>root.MatchAppBooksLocale?.bind?.(img,'reading.publisherIcon',{title:img.dataset.readingIconTitle},'alt'));
  // A publisher may block off-site icons, so keep its real name visible
@@ -189,6 +191,12 @@ function paintSources(mode,results,host){
  });
  return results.length;
 }
+if(root.document)root.document.addEventListener('matchapp:countrychange',()=>{
+ root.document.querySelectorAll('.reading-ai-sources').forEach(section=>{
+  const record=paintedSources.get(section);
+  if(record)paintSources(record.mode,record.results,section.parentElement,section);
+ });
+});
 // The canonical language event repaints only existing app-copy nodes. Source
 // records, active requests, retained suggestions and external links stay intact.
 if(root.document)root.document.addEventListener('matchapp:langchange',()=>{

@@ -81,14 +81,14 @@ test('Bookworms uses the chosen country despite a different browser language',as
   assert(!urls.some(url=>/amazon\.com\.br|books\.apple\.com\/us\/|barnesandnoble/.test(url)));
  }finally{h.dom.window.close()}
 });
-test('an unknown country offers a profile choice and never requests a US cover storefront',async()=>{
+test('an unknown country offers the guest picker and never requests a US cover storefront',async()=>{
  const h=await setup({},[book('Unknown country book',['classics'],['curious'])]);
  try{
   const calls=[];h.w.fetch=async url=>{calls.push(String(url));throw Error('Source unavailable')};
   h.w.eval(read('viewer-country.js'));
   await h.w.MatchAppEbooks.match();
   await new Promise(resolve=>setTimeout(resolve,0));
-  assert.equal(h.result().querySelector('[data-ebook-choose-country]')?.getAttribute('href'),'/profile/profile.html');
+  assert.equal(h.result().querySelector('[data-ebook-choose-country]')?.getAttribute('href'),'/#matchapp-viewer-country');
   assert(!calls.some(url=>sourceRoute(url,['itunes.apple.com'])));
   assert(![...h.result().querySelectorAll('a')].some(a=>sourceRoute(a.href,['books.apple.com'],'/us/')||sourceRoute(a.href,['amazon.com','www.amazon.com'],'/s')||sourceRoute(a.href,['kobo.com','www.kobo.com'],'/us/')));
   assert(h.result().querySelector('a[href^="https://books.google.com/"]'));

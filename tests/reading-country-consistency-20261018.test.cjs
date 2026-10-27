@@ -98,9 +98,16 @@ test('Ask AI reading cards use the chosen country independently of browser langu
     w.localStorage.clear();host.innerHTML='';
     assert.equal(w.MatchAppReadingAI.render('Recommend an audiobook',host),1,'Unknown country keeps the source book recommendation');
     const choose=host.querySelector('a[data-reading-choose-country]');
-    assert.equal(choose?.getAttribute('href'),'/profile/profile.html');
-    assert.match(choose.textContent,/Escolha seu país/);
+    assert.equal(choose?.getAttribute('href'),'/#matchapp-viewer-country');
+    assert.match(choose.textContent,/Escolha no topo do app o país/);
     assert(!host.querySelector('a[href^="https://books.apple.com/us/"]'));
     assert(host.querySelector('.reading-source-link'),'Source searches remain available');
+    w.MatchAppCountry.setCountry('US');
+    assert.equal(host.querySelectorAll('.reading-ai-sources').length,1,'Changing country repaints the same recommendations');
+    assert(!host.querySelector('[data-reading-choose-country]'));
+    assert(host.querySelector('a[href^="https://books.apple.com/us/"]'));
+    w.MatchAppCountry.setCountry('BR');
+    assert(!host.querySelector('a[href^="https://books.apple.com/us/"]'),'Old-country store links are removed immediately');
+    assert(host.querySelector('a[href^="https://www.audible.com.br/"]'));
   }finally{dom.window.close();}
 });

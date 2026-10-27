@@ -1,5 +1,5 @@
-/* Shared adult viewing/reading country. The profile country and explicit
- * legacy viewing choice are independent of interface language and title origin.
+/* Shared adult viewing/reading country. An explicit guest-friendly choice,
+ * profile country and legacy viewing choice are independent of UI language.
  * The compact country names/codes come from profile-geography.js (249 entries;
  * its country-region-data MIT attribution is retained in that source file).
  * This helper never requests location, changes profile data, or guesses a
@@ -75,24 +75,38 @@
     ivorycoast:'CI',cotedivoire:'CI',capeverde:'CV',eswatini:'SZ'
   });
   const COUNTRY_GUIDANCE=Object.freeze({
-    en:'Choose your country in your profile to check local availability.',
-    'pt-BR':'Escolha seu país no perfil para consultar a disponibilidade na sua região.',
-    es:'Elige tu país en el perfil para consultar la disponibilidad en tu región.',
-    fr:'Choisissez votre pays dans votre profil pour consulter la disponibilité locale.',
-    de:'Wähle dein Land im Profil, um die Verfügbarkeit vor Ort zu prüfen.',
-    it:'Scegli il tuo paese nel profilo per verificare la disponibilità locale.',
-    tr:'Yerel erişilebilirliği kontrol etmek için profilinizde ülkenizi seçin.',
-    ru:'Выберите страну в профиле, чтобы проверить доступность в вашем регионе.',
-    ar:'اختر بلدك في ملفك الشخصي للتحقق من التوفر في منطقتك.',
-    hi:'अपने क्षेत्र में उपलब्धता जाँचने के लिए प्रोफ़ाइल में अपना देश चुनें।',
-    id:'Pilih negara di profil untuk memeriksa ketersediaan di wilayah Anda.',
-    ja:'お住まいの地域での利用可否を確認するには、プロフィールで国を選択してください。',
-    ko:'지역별 이용 가능 여부를 확인하려면 프로필에서 국가를 선택하세요.',
-    zh:'请在个人资料中选择国家，以查看当地的可用情况。'
+    en:'Choose your viewing country at the top of the app to check local availability.',
+    'pt-BR':'Escolha no topo do app o país onde você assiste para consultar a disponibilidade local.',
+    es:'Elige en la parte superior de la app el país donde ves contenido para consultar la disponibilidad local.',
+    fr:'Choisissez votre pays de visionnage en haut de l’application pour consulter la disponibilité locale.',
+    de:'Wähle oben in der App dein Wiedergabeland, um die Verfügbarkeit vor Ort zu prüfen.',
+    it:'Scegli in alto nell’app il paese in cui guardi per verificare la disponibilità locale.',
+    tr:'Yerel erişilebilirliği kontrol etmek için uygulamanın üst kısmından izlediğiniz ülkeyi seçin.',
+    ru:'Выберите страну просмотра вверху приложения, чтобы проверить доступность в вашем регионе.',
+    ar:'اختر بلد المشاهدة في أعلى التطبيق للتحقق من التوفر في منطقتك.',
+    hi:'अपने क्षेत्र में उपलब्धता जाँचने के लिए ऐप के ऊपर देखने का देश चुनें।',
+    id:'Pilih negara tempat menonton di bagian atas aplikasi untuk memeriksa ketersediaan lokal.',
+    ja:'地域での利用可否を確認するには、アプリ上部で視聴する国を選択してください。',
+    ko:'지역별 이용 가능 여부를 확인하려면 앱 상단에서 시청 국가를 선택하세요.',
+    zh:'请在应用顶部选择观看所在国家，以查看当地的可用情况。'
   });
-  function chooseCountryMessage(language){
+  const COUNTRY_LABELS=Object.freeze({
+    en:['Viewing country','Choose country'], 'pt-BR':['País onde você assiste','Escolha o país'],
+    es:['País donde ves contenido','Elige el país'], fr:['Pays de visionnage','Choisir le pays'],
+    de:['Wiedergabeland','Land wählen'], it:['Paese di visione','Scegli il paese'],
+    tr:['İzlediğiniz ülke','Ülke seçin'], ru:['Страна просмотра','Выберите страну'],
+    ar:['بلد المشاهدة','اختر البلد'], hi:['देखने का देश','देश चुनें'],
+    id:['Negara tempat menonton','Pilih negara'], ja:['視聴する国','国を選択'],
+    ko:['시청 국가','국가 선택'], zh:['观看所在国家','选择国家']
+  });
+  const preferenceKey='matchapp_viewer_country';
+  let sessionCountry='',lastCountry='',picker=null;
+  function languageKey(language){
     const base=String(language||'en').toLowerCase().split(/[-_]/)[0];
-    return COUNTRY_GUIDANCE[base==='pt'?'pt-BR':base]||COUNTRY_GUIDANCE.en;
+    return base==='pt'?'pt-BR':base;
+  }
+  function chooseCountryMessage(language){
+    return COUNTRY_GUIDANCE[languageKey(language)]||COUNTRY_GUIDANCE.en;
   }
   function resolveCountryCode(value){
     const raw=String(value||'').trim(),code=raw.toUpperCase();
@@ -101,12 +115,16 @@
     return VIEWING_COUNTRY_CODES.get(key)||VIEWING_COUNTRY_ALIASES[key]||'';
   }
   function regionCode(storage){
+    // A failed write must still beat an older persisted country on this page.
+    if(!storage&&sessionCountry)return sessionCountry;
     let saved='',preferred='';
     try{
       const source=storage||root?.localStorage;
+      const explicit=resolveCountryCode(source?.getItem(preferenceKey));
+      if(explicit)return explicit;
       saved=String(source?.getItem('match_user_country')||'').trim();
       preferred=String(source?.getItem('match_user_region')||'').trim();
-    }catch(_){return '';}
+    }catch(_){return !storage?sessionCountry:'';}
     const country=resolveCountryCode(saved);
     // Current registration stores a subdivision in this legacy key. Honor
     // previously explicit viewing-country codes, never Fiji's Ba/Ra or
@@ -119,5 +137,120 @@
     }
     return country;
   }
-  return Object.freeze({resolveCountryCode,regionCode,chooseCountryMessage});
+  function setCountry(value){
+    const country=resolveCountryCode(value);
+    if(!country||!root)return false;
+    const previous=regionCode();
+    sessionCountry=country;
+    try{root.localStorage.setItem(preferenceKey,country);sessionCountry='';}catch(_){}
+    publishChange(previous);
+    return true;
+  }
+  function publishChange(previous=lastCountry){
+    const country=regionCode();lastCountry=country;
+    syncPicker();
+    if(country!==previous)root?.document?.dispatchEvent(new root.CustomEvent('matchapp:countrychange',{
+      detail:{country,previousCountry:previous}
+    }));
+  }
+  function currentLanguage(){
+    let selected='';try{selected=root.localStorage.getItem('match_lang')||'';}catch(_){}
+    return languageKey(selected||root.MATCH_LANG||root.document.documentElement.lang||'en');
+  }
+  function syncPicker(){
+    if(!picker?.isConnected)return;
+    const language=currentLanguage(),copy=COUNTRY_LABELS[language]||COUNTRY_LABELS.en;
+    picker.setAttribute('aria-label',copy[0]);picker.title=copy[0];
+    picker.lang=language;picker.dir=language==='ar'?'rtl':'ltr';
+    if(picker.dataset.language!==language){
+      let names;try{names=new root.Intl.DisplayNames([language],{type:'region'});}catch(_){}
+      const options=VIEWING_COUNTRIES.map(([name,code])=>{
+        let label=name;try{label=names?.of(code)||name;}catch(_){}
+        return {code,label};
+      }).sort((a,b)=>a.label.localeCompare(b.label,language));
+      const placeholder=root.document.createElement('option');
+      placeholder.value='';placeholder.textContent=copy[1];placeholder.disabled=true;
+      picker.replaceChildren(placeholder);
+      options.forEach(({code,label})=>{const option=root.document.createElement('option');
+        option.value=code;option.textContent=label;picker.appendChild(option);});
+      picker.dataset.language=language;
+    }
+    picker.value=regionCode();
+  }
+  function adultPage(){
+    return !!root?.document&&!/^\/(kids|private-voice|oauth|android-studio)(\/|$)/.test(root.location?.pathname||'')&&
+      !root.document.documentElement.classList.contains('kids-mode');
+  }
+  function mountPicker(){
+    if(!adultPage())return false;
+    const doc=root.document;
+    // The navigation deck is inside a closed app-controls menu on phones.
+    // Keep this small row visible beside Jonas, after the existing masthead.
+    const target=doc.querySelector('#ma-reference-header .ma-reference-header-chrome')||
+      doc.querySelector('#mh-topbox,header.app-header,header.ebook-page-top,header.hub-header');
+    if(!target)return false;
+    let row=doc.getElementById('matchapp-viewer-country-control');
+    if(!row){
+      row=doc.createElement('div');row.id='matchapp-viewer-country-control';
+      row.setAttribute('data-ma-pill-exclude','');
+      picker=doc.createElement('select');picker.id='matchapp-viewer-country';
+      picker.setAttribute('data-ma-pill-exclude','');
+      picker.addEventListener('change',()=>setCountry(picker.value));
+      row.appendChild(picker);
+    }else picker=row.querySelector('select');
+    if(row.parentElement!==target)target.appendChild(row);
+    if(!doc.getElementById('matchapp-viewer-country-style')){
+      const style=doc.createElement('style');style.id='matchapp-viewer-country-style';
+      style.textContent=`
+        html body #matchapp-viewer-country-control{display:block!important;box-sizing:border-box!important;inline-size:min(100%,18rem)!important;min-inline-size:0!important;max-inline-size:100%!important;margin:4px 0 0!important;padding:0!important;}
+        html body #matchapp-viewer-country-control #matchapp-viewer-country{display:block!important;box-sizing:border-box!important;inline-size:100%!important;min-inline-size:0!important;max-inline-size:100%!important;min-block-size:44px!important;margin:0!important;padding:8px 12px!important;border:0!important;border-radius:999px!important;background:linear-gradient(135deg,rgba(216,156,72,.17),rgba(120,80,180,.17))!important;color:var(--cinema-gold,#e6c36a)!important;font:600 max(14px,.875rem)/1.3 var(--font-family,system-ui,sans-serif)!important;letter-spacing:normal!important;text-transform:none!important;text-overflow:ellipsis!important;cursor:pointer!important;appearance:auto!important;}
+        html body #matchapp-viewer-country-control #matchapp-viewer-country:focus-visible{outline:2px solid var(--cinema-gold,#e6c36a)!important;outline-offset:2px!important;}
+        #matchapp-viewer-country option{background:#180f1e;color:#f4f0e9;}
+        @media(forced-colors:active){html body #matchapp-viewer-country-control #matchapp-viewer-country{border:1px solid ButtonText!important;color:ButtonText!important;background:Canvas!important;}}
+      `;doc.head.appendChild(style);
+    }
+    syncPicker();return true;
+  }
+  function openPicker(){
+    if(!mountPicker())return false;
+    picker.focus({preventScroll:true});
+    picker.scrollIntoView?.({block:'nearest',behavior:'auto'});
+    // Async preflight may no longer have transient activation. Focus remains
+    // useful when a browser cannot open its native select programmatically.
+    try{picker.showPicker?.();}catch(_){}
+    return true;
+  }
+  if(adultPage()){
+    lastCountry=regionCode();
+    const doc=root.document;
+    function start(){
+      mountPicker();
+      if(root.location.hash==='#matchapp-viewer-country')openPicker();
+      // Header owners may hydrate just after this script. Observe only that
+      // startup window; never leave a full-page observer running indefinitely.
+      if(root.MutationObserver&&doc.body){
+        const observer=new root.MutationObserver(()=>{
+          if(!picker?.isConnected||(!picker.closest('.ma-reference-header-chrome')&&doc.querySelector('.ma-reference-header-chrome')))mountPicker();
+        });
+        observer.observe(doc.body,{childList:true,subtree:true});
+        root.setTimeout(()=>observer.disconnect(),12000);
+      }
+    }
+    if(doc.readyState==='loading')doc.addEventListener('DOMContentLoaded',start,{once:true});else start();
+    doc.addEventListener('matchapp:langchange',()=>{mountPicker();syncPicker();});
+    ['matchapp:profilehydrated','matchapp:authchange'].forEach(event=>doc.addEventListener(event,()=>{mountPicker();publishChange();}));
+    root.addEventListener('pageshow',()=>{mountPicker();publishChange();});
+    root.addEventListener('storage',event=>{
+      if(event.key!==null&&![preferenceKey,'match_user_country','match_user_region','match_lang'].includes(event.key))return;
+      if(event.key===preferenceKey||event.key===null)sessionCountry='';
+      publishChange();
+    });
+    // Old result/settings links remain recoverable while cached page shells
+    // update. The new choice belongs to viewing, never account registration.
+    doc.addEventListener('click',event=>{
+      const link=event.target.closest?.('a[data-viewing-country],a[href="#matchapp-viewer-country"],a[href="/#matchapp-viewer-country"],.ma-menu a[href="/profile/profile.html#country"]');
+      if(link&&openPicker())event.preventDefault();
+    });
+  }
+  return Object.freeze({resolveCountryCode,regionCode,chooseCountryMessage,setCountry,mountPicker,openPicker});
 });

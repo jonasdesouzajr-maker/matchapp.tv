@@ -3371,7 +3371,7 @@ const PLATFORMS = {
 const AUDIO_CATEGORIES = ["podcast","Spotify playlist","Spotify single","music album","audiobook"];
 function isAudioCategory(cat) { return AUDIO_CATEGORIES.includes(cat); }
 
-// Country the user locked into their profile; drives availability filtering.
+// Explicit viewing choice (including guests), then profile country.
 function getUserCountry() {
     const resolver=window.MatchAppCountry?.regionCode||window.MatchAppCatalogMedia?.regionCode;
     if(typeof resolver==='function')return resolver()||null;
@@ -3505,12 +3505,31 @@ window.onCategoryChange = function() {
 
     const hint = document.getElementById('platform-country-hint');
     if (hint) {
-        if (country) {
+        if (country && !document.getElementById('matchapp-viewer-country')) {
             hint.textContent = '🌍 ' + tSafe('pf.country') + ': ' + country;
             hint.style.display = 'block';
         } else { hint.style.display = 'none'; }
     }
 };
+
+document.addEventListener('matchapp:countrychange',()=>{
+    // A country change invalidates an in-flight availability lookup. Existing
+    // run guards release any pending claim before it can reveal/debit a match.
+    if(['preflight','quota','result'].includes(window.__matchappMatchPhase)){
+        window.__matchappMatchRunId=(Number(window.__matchappMatchRunId)||0)+1;
+        window.__matchappMatchPhase='idle';
+        document.body.classList.remove('match-searching');
+        const loader=document.getElementById('loading-box');if(loader)loader.style.display='none';
+        const result=document.getElementById('result-box');if(result){result.hidden=true;result.style.display='none';}
+        ['questionnaire-box','search-box'].forEach(id=>{
+            const form=document.getElementById(id);if(form)form.style.setProperty('display','block','important');
+        });
+    }
+    window.onCategoryChange();
+    document.dispatchEvent(new CustomEvent('matchapp:optionspruned'));
+    document.dispatchEvent(new CustomEvent('matchapp:criteriachange',{detail:window.getMatchCriteria?.()}));
+    window.clearMatchRecovery?.();
+});
 
 // Swaps Watch Later / Seen It wording for audio picks.
 function applyAudioModeLabels(isAudio) {
@@ -4775,8 +4794,8 @@ window.triggerMatch = async function(isSpecificSearch = false) {
     if(!isSpecificSearch && screenPlatform && window.MatchAppCountry && !window.MatchAppCountry.regionCode()){
         window.__matchappMatchPhase='idle';
         const message=window.MatchAppCountry.chooseCountryMessage(window.MATCH_LANG);
-        if(window.showMatchRecovery)window.showMatchRecovery(message);
-        else window.showToast?.(message,true);
+        window.MatchAppCountry.openPicker?.();
+        window.showToast?.(message);
         return false;
     }
     const wantedGenres = normCriteria(requested.genre);
