@@ -148,3 +148,21 @@ test('incomplete translation fails visibly in selected language, keeps unnamed l
   assert.equal(h.d.querySelector('main').hasAttribute('inert'),false);
  }finally{h.close();}
 });
+
+ test('updated Portuguese guide bypasses old translation URL and revalidates HTTP cache', async()=>{
+  const guide=guides[0];
+  const current=payload(guide,'pt-BR');
+  const stale=JSON.parse(JSON.stringify(current));
+  stale.copy.c015='OLD CACHED COPY';
+  const h=await mount(guide,'pt-BR',async(url,options)=>{
+   const fresh=new URL(url,'https://matchapp.tv').searchParams.get('v')!=='20261018-1';
+   return response(fresh && options.cache==='no-cache' ? current : stale);
+  });
+  try {
+   assert.equal(h.d.querySelector('[data-seo-copy="c015"]').textContent,current.copy.c015);
+   assert.equal(h.d.documentElement.lang,'pt-BR');
+   change(h,'en');await tick();
+   change(h,'pt-BR');await tick();
+   assert.equal(h.requests.length,1,'revalidated copy remains shared within the page');
+  } finally {h.close();}
+ });
