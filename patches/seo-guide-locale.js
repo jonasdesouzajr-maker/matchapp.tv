@@ -4,6 +4,7 @@
   var script = d.currentScript;
   var guide = script && script.getAttribute('data-seo-guide');
   if (!/^(choose-what-to-watch|streaming-device-discovery)$/.test(guide || '')) return;
+  var copyVersion = guide === 'choose-what-to-watch' ? '20261027-1' : '20261018-1';
   var languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
   var names = ['English', 'Português (Brasil)', 'Español', 'Français', 'Deutsch', 'Italiano', 'Türkçe', 'Русский', 'العربية', 'हिन्दी', 'Bahasa Indonesia', '日本語', '한국어', '中文'];
   var ui = {
@@ -135,8 +136,8 @@
     var abort = controller;
     timer = w.setTimeout(function () { abort.abort(); }, 10000);
     try {
-      var response = await w.fetch('/assets/i18n/seo/' + guide + '/' + target + '.json?v=20261018-1', {
-        method: 'GET', mode: 'same-origin', credentials: 'omit', redirect: 'error', signal: abort.signal
+      var response = await w.fetch('/assets/i18n/seo/' + guide + '/' + target + '.json?v=' + copyVersion, {
+        method: 'GET', mode: 'same-origin', credentials: 'omit', redirect: 'error', cache: 'no-cache', signal: abort.signal
       });
       if (!response.ok) throw new Error('Editorial translation unavailable');
       var body = await response.text();
