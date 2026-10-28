@@ -22,6 +22,27 @@ function mount(opts={}){
  w.setTimeout=(fn,ms)=>{const key=++id;jobs.set(key,{fn,due:now+ms});return key};
  w.clearTimeout=key=>jobs.delete(key);
  Object.defineProperty(w.document,'visibilityState',{value:'visible',configurable:true});
+ if(opts.geometry){
+  const g=opts.geometry;w.innerWidth=670;w.innerHeight=430;
+  w.document.body.insertAdjacentHTML('afterbegin','<header class="app-header"></header><nav class="ma-cinema-dock"></nav>');
+  const natural=el=>el.querySelector('p')?.hidden?128:223;
+  Object.defineProperties(w.HTMLElement.prototype,{
+   scrollHeight:{get(){return this.id==='ma-install-offer'?natural(this):0;}},
+   clientHeight:{get(){return this.id==='ma-install-offer'?Math.min(natural(this),parseFloat(this.style.maxHeight)||natural(this)):0;}}
+  });
+  w.HTMLElement.prototype.getBoundingClientRect=function(){
+   const rect=(left,top,width,height)=>({left,top,right:left+width,bottom:top+height,width,height});
+   if(this.matches('.app-header'))return rect(0,0,670,g.header);
+   if(this.matches('.ma-cinema-dock'))return rect(0,g.dock,670,430-g.dock);
+   if(this.id==='ma-install-offer')return rect(147,430-(parseFloat(this.style.bottom)||78)-this.clientHeight,376,this.clientHeight);
+   const box=this.closest('#ma-install-offer');if(!box)return rect(0,0,0,0);
+   const r=box.getBoundingClientRect();
+   if(this.tagName==='BUTTON')return rect(r.right-52,r.top+8,44,44);
+   if(this.tagName==='A')return rect(r.left+12,r.bottom-56,352,44);
+   return rect(0,0,0,0);
+  };
+  w.document.elementFromPoint=(x,y)=>g.occluded?w.document.querySelector('header'):[...w.document.querySelectorAll('#ma-install-offer button,#ma-install-offer a')].find(el=>{const r=el.getBoundingClientRect();return x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;})||w.document.body;
+ }
  if(opts.session)w.sessionStorage.setItem('matchapp_play_bubble_session_v1',JSON.stringify(opts.session));
  Object.defineProperty(w.navigator,'userAgent',{value:opts.ua||UA.android,configurable:true});
  Object.defineProperty(w.navigator,'maxTouchPoints',{value:opts.touch||0,configurable:true});
@@ -68,6 +89,22 @@ test('short landscape defers the bubble until portrait so the fixed header canno
  ctx.w.innerHeight=844;ctx.w.dispatchEvent(new ctx.w.Event('resize'));await ctx.advance(0);assert.ok(bubble(ctx));
  ctx.w.innerHeight=320;ctx.w.dispatchEvent(new ctx.w.Event('resize'));assert.equal(bubble(ctx),null);
  ctx.dom.window.close();
+});
+test('mid-height landscape uses compact copy and keeps both controls between the real header and dock',async()=>{
+ const ctx=mount({geometry:{header:162,dock:352}});await fire(ctx);const box=bubble(ctx);assert.ok(box);
+ assert.equal(box.querySelector('p').hidden,true);const r=box.getBoundingClientRect();
+ assert(r.top>=170);assert(r.bottom<=344);assert.equal(box.style.bottom,'86px');
+ box.querySelector('button').click();assert.equal(bubble(ctx),null);ctx.dom.window.close();
+});
+test('insufficient measured space defers without consuming an impression and resizing restores full copy',async()=>{
+ const geometry={header:270,dock:352},ctx=mount({geometry});await fire(ctx);assert.equal(bubble(ctx),null);
+ assert.equal(ctx.w.sessionStorage.getItem('matchapp_play_bubble_session_v1'),null);
+ geometry.header=100;ctx.w.dispatchEvent(new ctx.w.Event('resize'));await ctx.advance(0);
+ assert.ok(bubble(ctx));assert.equal(bubble(ctx).querySelector('p').hidden,false);ctx.dom.window.close();
+});
+test('an occluded close or store target never produces a visible invitation or consumes a reminder',async()=>{
+ const ctx=mount({geometry:{header:100,dock:352,occluded:true}});await fire(ctx);assert.equal(bubble(ctx),null);
+ assert.equal(ctx.w.sessionStorage.getItem('matchapp_play_bubble_session_v1'),null);ctx.dom.window.close();
 });
 for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'])test('Android bubble keeps authored '+lang+' copy and repaints in place',async()=>{
  const ctx=mount({lang});await fire(ctx);const box=bubble(ctx);assert.ok(box);assert.equal(box.lang,lang);assert.equal(box.dir,lang==='ar'?'rtl':'ltr');

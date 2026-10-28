@@ -141,6 +141,31 @@
     bubble.querySelector('p').textContent=c.body;
     bubble.querySelector('button').setAttribute('aria-label',CLOSE[lang]||CLOSE.en);
     bubble.querySelector('a').setAttribute('aria-label',c.title);
+    if(bubble.isConnected&&!fitBubble(bubble))dismissBubble();
+  }
+  function fitBubble(box){
+    // Measure the actual chrome, including translated/user-scaled headers.
+    // Keep both actions visible; a short invitation may omit its helper copy.
+    if(!box.getBoundingClientRect().height)return true;
+    const headerBottom=Math.max(0,...[...document.querySelectorAll('.app-header,#ma-reference-header')]
+      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0).map(r=>r.bottom));
+    const dockTop=Math.min(innerHeight,...[...document.querySelectorAll('.ma-cinema-dock,.ma-reference-dock')]
+      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0&&r.top>=0).map(r=>r.top));
+    const available=Math.floor(dockTop-headerBottom-16),body=box.querySelector('p');
+    box.style.bottom=Math.max(18,innerHeight-dockTop+8)+'px';
+    box.style.maxHeight=Math.max(0,available)+'px';
+    body.hidden=false;body.style.removeProperty('display');
+    if(box.scrollHeight>box.clientHeight+1){body.hidden=true;body.style.setProperty('display','none','important');}
+    const r=box.getBoundingClientRect();
+    return available>0&&box.scrollHeight<=box.clientHeight+1&&r.top>=headerBottom+8&&
+      r.bottom<=dockTop-8+.5&&r.left>=0&&r.right<=innerWidth;
+  }
+  function bubbleTargetsReachable(box){
+    if(typeof document.elementFromPoint!=='function')return true;
+    return [...box.querySelectorAll('button,a')].every(control=>{
+      const r=control.getBoundingClientRect();
+      return r.width>=44&&r.height>=44&&control.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2));
+    });
   }
   function dismissBubble(stop=false){
     if(!bubble)return;
@@ -172,7 +197,10 @@
     const actions=document.createElement('div');actions.className='ma-offer-actions';actions.style.gridTemplateColumns='1fr';
     const link=document.createElement('a');link.className='ma-offer-play';link.href=PLAY;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Google Play ↗';
     link.addEventListener('click',()=>dismissBubble(true));actions.append(link);box.append(head,close,actions);
-    bubble=box;bubbleCopy();document.body.append(box);
+    bubble=box;bubbleCopy();box.style.visibility='hidden';document.body.append(box);
+    if(!fitBubble(box)){box.remove();bubble=null;bubbleTimer=setTimeout(showBubble,15000);return;}
+    box.style.removeProperty('visibility');
+    if(!bubbleTargetsReachable(box)){box.remove();bubble=null;bubbleTimer=setTimeout(showBubble,15000);return;}
     session.count++;session.next=0;persist();
   }
   function startAndroidBubble(){
@@ -181,8 +209,13 @@
     document.addEventListener('focusin',()=>{if(bubble&&busy())dismissBubble();});
     document.addEventListener('keydown',event=>{if(event.key==='Escape'&&bubble&&!busy())dismissBubble();});
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!bubble)scheduleBubble();});
-    window.addEventListener('resize',()=>{if(bubble&&busy())dismissBubble();else if(!bubble)scheduleBubble();});
-    new MutationObserver(()=>{if(bubble?.isConnected&&(installed()||busy()))dismissBubble(installed());}).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open','hidden','aria-expanded','style','class']});
+    window.addEventListener('resize',()=>{if(bubble&&(busy()||!fitBubble(bubble)))dismissBubble();else if(!bubble)scheduleBubble();});
+    document.fonts?.addEventListener?.('loadingdone',()=>{if(bubble&&!fitBubble(bubble))dismissBubble();});
+    new MutationObserver(records=>{
+      if(!bubble?.isConnected)return;
+      const outside=records.some(record=>record.target!==bubble&&!bubble.contains(record.target));
+      if(installed()||busy()||(outside&&!fitBubble(bubble)))dismissBubble(installed());
+    }).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open','hidden','aria-expanded','style','class']});
   }
   function copy(kind,visit){
     if(kind==='desktop')return desktopPlayCopy();

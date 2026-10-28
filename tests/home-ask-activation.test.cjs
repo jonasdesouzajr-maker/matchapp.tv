@@ -67,7 +67,7 @@ test('install prompting preserves Home Ask focus and yields to forms',()=>{
  assert.match(offer,/notification-bell only/);
  assert.match(offer,/MatchNotifications/);
  assert.doesNotMatch(offer,/appendChild\(node\)|position:\s*fixed|composerOverlapHandler|closeIfOverlappingComposer/);
- assert.match(html,/browser-install-offer\.js\?v=20261028-playbubble1/);
+ assert.match(html,/browser-install-offer\.js\?v=20261028-playbubble2/);
  assert.doesNotMatch(tab.slice(tab.indexOf("ba.addEventListener('click',()=>{"),tab.indexOf("if(new URLSearchParams",tab.indexOf("ba.addEventListener('click',()=>{"))),/localStorage|focus\(/);
 });
 test('live smoke checks usable input and Send inside the phone viewport',()=>{
