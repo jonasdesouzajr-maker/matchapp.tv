@@ -698,7 +698,13 @@ window.readAloud = function(text, btn) {
         }
         document.querySelectorAll('.discover-speak.speaking').forEach(b=>b.classList.remove('speaking'));
         if(btn)btn.classList.add('speaking');
-        window.MatchAppJonasStage.speak(text,{autoListen:false}).finally(()=>btn?.classList.remove('speaking'));
+        const narration=window.MatchAppJonasNarration;
+        const transcript=narration?.prepare?.(btn?.closest('.chat-answer-row')?.querySelector('.chat-answer-text'),text);
+        window.MatchAppJonasStage.speak(text,{
+            autoListen:false,
+            onProgress:p=>narration?.advance?.(p,transcript),
+            onComplete:()=>narration?.finish?.(transcript)
+        }).finally(()=>{narration?.finish?.(transcript);btn?.classList.remove('speaking')});
         return;
     }
     const service=window.MatchAppJonasSpeech;
@@ -1135,8 +1141,10 @@ function placeDiscoverComposer(wrap,grid) {
 }
 function revealJonasTurn(node) {
     const log=document.getElementById('chat-log');
-    if(!log || !node || !log.contains(node) || keepConversationAtStart()) return;
-    const top=node.getBoundingClientRect().top-log.getBoundingClientRect().top+log.scrollTop-12;
+    if(!log || !node || !log.contains(node)) return;
+    const answer=node.querySelector?.('.chat-answer-text');
+    if(!answer && keepConversationAtStart()) return;
+    const top=(answer||node).getBoundingClientRect().top-log.getBoundingClientRect().top+log.scrollTop-12;
     log.scrollTop=Math.max(0,top);
 }
 
@@ -2447,12 +2455,12 @@ async function runAskAndRender(question, opts) {
                     const last = Math.max(...endings);
                     audibleReply = last >= 110 ? first.slice(0,last+1) : first;
                 }
-                narration?.prepare?.(bubble.textEl,fullReply,ambient?audibleReply.length:650);
+                const transcript=narration?.prepare?.(bubble.textEl,fullReply,ambient?audibleReply.length:650);
                 window.MatchAppJonasStage.speak(audibleReply,{
                     autoListen:true,
-                    onProgress:p=>narration?.advance?.(p),
-                    onComplete:()=>narration?.finish?.()
-                }).catch(()=>narration?.finish?.());
+                    onProgress:p=>narration?.advance?.(p,transcript),
+                    onComplete:()=>narration?.finish?.(transcript)
+                }).catch(()=>narration?.finish?.(transcript));
             } else {
                 bubble.textEl.textContent=payload.answer;
                 window.readAloud(payload.answer, bubble.speakBtn);
@@ -2464,6 +2472,7 @@ async function runAskAndRender(question, opts) {
                 new URLSearchParams(location.search).get('ambient') === '1';
             if (ambient) bubble.textEl.textContent = payload.answer;
             else await typewriterReveal(bubble.textEl,payload.answer,8);
+            revealJonasTurn(bubble.wrap);
         }
     }
 

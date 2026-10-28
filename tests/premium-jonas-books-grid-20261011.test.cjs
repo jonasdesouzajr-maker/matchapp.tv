@@ -6,7 +6,7 @@ test('speech starts without waiting for the full typewriter and owns mic sequenc
  const start=src.indexOf('if (voiceOrigin && String(payload.answer ||');
  const type=src.indexOf('await typewriterReveal(bubble.textEl,payload.answer,8);');
  assert.ok(start>0&&type>start,'voice branch precedes typed animation');
- assert.match(src,/onProgress:p=>narration\?\.advance\?\.\(p\)/);
+ assert.match(src,/onProgress:p=>narration\?\.advance\?\.\(p,transcript\)/);
  assert.match(stage,/onEnd:ok=>\{opts\?\.onComplete\?\.\(ok\);endSpeaking\(ok&&opts\?\.autoListen===true\)\}/);
  assert.match(stage,/timer=setTimeout\(\(\)=>\{if\(voiceTurn[^;]+mic\.click\(\)\},380\)/);
 });
@@ -63,4 +63,33 @@ test('global grid tokens are equal for all adult pages and do not target Kids/Ad
  assert.match(css,/not\(\.page-kids\):not\(\.kids-body\)/);
  const pages=['index.html','discover.html','ebooks/index.html','profile/profile.html','pricing/pricing.html','friends.html'];
  for(const p of pages)assert.match(get(p),/premium-finish-20261011\.css\?v=20261011-grid3/,p);
+});
+test('speech completion stays on the final sentence and stale callbacks cannot move a newer reply',()=>{
+ const dom=new JSDOM('<div id="chat-log"><p id="a"></p><p id="b"></p></div>',{runScripts:'dangerously'}),w=dom.window;
+ w.eval(get('jonas/narrated-transcript-20261011.js'));
+ const api=w.MatchAppJonasNarration,log=w.document.getElementById('chat-log');
+ Object.defineProperties(log,{clientHeight:{value:180},scrollHeight:{value:1200}});
+ log.getBoundingClientRect=()=>({top:100,bottom:280});
+ const first=api.prepare(w.document.getElementById('a'),'First sentence. Second sentence. Last sentence.');
+ first.nodes.forEach((node,i)=>node.getBoundingClientRect=()=>({top:110+i*180-log.scrollTop,bottom:150+i*180-log.scrollTop}));
+ api.advance(1,first);
+ assert.equal(first.nodes.at(-1).classList.contains('jonas-speaking-line'),true,'100% playback marks the last sentence');
+ assert.ok(log.scrollTop>0,'long spoken answers follow inside the log');
+ const second=api.prepare(w.document.getElementById('b'),'New reply. Another sentence.');
+ const position=log.scrollTop;
+ api.advance(0,first);api.finish(first);
+ assert.equal(log.scrollTop,position,'old progress cannot scroll the new reply');
+ assert.equal(second.nodes[0].classList.contains('jonas-speaking-line'),true,'old completion cannot clear the new reply');
+ api.finish(second);dom.window.close();
+});
+test('a visible spoken sentence does not jerk the reading position on every audio callback',()=>{
+ const dom=new JSDOM('<div id="chat-log"><p id="a"></p></div>',{runScripts:'dangerously'}),w=dom.window;
+ w.eval(get('jonas/narrated-transcript-20261011.js'));
+ const log=w.document.getElementById('chat-log');
+ Object.defineProperties(log,{clientHeight:{value:200},scrollHeight:{value:1000}});
+ log.getBoundingClientRect=()=>({top:100,bottom:300});
+ const session=w.MatchAppJonasNarration.prepare(w.document.getElementById('a'),'Visible sentence. Next sentence.');
+ log.scrollTop=75;session.nodes[0].getBoundingClientRect=()=>({top:120,bottom:150});
+ w.MatchAppJonasNarration.advance(.1,session);assert.equal(log.scrollTop,75);
+ dom.window.close();
 });
