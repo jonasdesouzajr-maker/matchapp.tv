@@ -22,6 +22,7 @@ async function boot(){
   w.matchAllowanceBeforeLookup=async()=>true;
   w.checkDailyLimit=async()=>{events.push({type:'debit'});return true;};
   w.refreshAiWorkspaceStatus=()=>{};w.renderThreadList=()=>{};
+  w.autoGrowComposer=()=>{};
   w.newThreadId=()=> 'request-thread';
   w.placeDiscoverComposer=()=>{};w.parkDiscoverComposer=()=>{};w.revealJonasTurn=()=>{};
   w.startAiWorkflow=()=>{};w.finishAiWorkflow=()=>{};
@@ -43,6 +44,39 @@ async function boot(){
   }
   return {dom,w,events};
 }
+
+for(const allowed of [false,true])test('Send restores the submitted draft when allowance is denied '+allowed,async()=>{
+  const {dom,w,events}=await boot(),allowance=deferred();
+  try{
+    const start=source.indexOf('window.newDiscoverSearch = function () {');
+    w.eval(source.slice(start,source.indexOf('\n};',start)+3));
+    const input=w.document.getElementById('discover-new-input');
+    input.value='Who directed Interstellar?';
+    w.matchAllowanceBeforeLookup=()=>allowance.promise;
+    let lookups=0;
+    w.askAIConversational=async()=>{lookups++;return {answer:'Christopher Nolan.',results:[],_live:true};};
+    assert.equal(w.newDiscoverSearch(),true);
+    await Promise.resolve();
+    assert.equal(input.value,'','submitted composer collapses while verification is pending');
+    const pending=w.askInFlight;
+    allowance.resolve(allowed);await pending;
+    assert.equal(input.value,allowed?'':'Who directed Interstellar?');
+    assert.equal(lookups,allowed?1:0);
+    assert.equal(events.filter(e=>e.type==='debit').length,allowed?1:0);
+  }finally{dom.window.close();}
+});
+
+test('a successful allowance check preserves a newer composer draft',async()=>{
+  const {dom,w}=await boot(),allowance=deferred();
+  try{
+    const input=w.document.getElementById('discover-new-input');
+    input.value='First question';w.matchAllowanceBeforeLookup=()=>allowance.promise;
+    w.askAIConversational=async()=>({answer:'Verified answer.',results:[],_live:true});
+    const pending=w.askAndRender('First question');await Promise.resolve();
+    input.value='My next question';allowance.resolve(true);await pending;
+    assert.equal(input.value,'My next question');
+  }finally{dom.window.close();}
+});
 
 for(const change of ['new conversation','open another conversation','delete this conversation']){
   test('delayed AI response cannot reveal, debit or persist after '+change,async()=>{

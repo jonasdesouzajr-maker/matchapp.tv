@@ -2176,6 +2176,11 @@ async function runAskAndRender(question, opts) {
     // Verify allowance without spending it before contacting paid providers.
     // A failed or unusable AI response must never consume a guest or paid credit.
     if (typeof window.matchAllowanceBeforeLookup === 'function' && !(await window.matchAllowanceBeforeLookup('ask_ai'))) {
+        const draft=document.getElementById('discover-new-input');
+        if(requestVersion===discoverThreadVersion && draft && !draft.value){
+            draft.value=question;
+            window.autoGrowComposer?.();
+        }
         refreshAiWorkspaceStatus();
         return;
     }
@@ -2207,7 +2212,10 @@ async function runAskAndRender(question, opts) {
     }
 
     const input = document.getElementById('discover-new-input');
-    if (input) input.value = '';
+    if (input && input.value.trim() === question) {
+        input.value = '';
+        window.autoGrowComposer?.();
+    }
 
     // Pass prior turns so follow-ups keep context.
     const history = currentThread.turns
@@ -2615,7 +2623,8 @@ window.newDiscoverSearch = function () {
         el.blur();
     }
     askAndRender(question);
-    // Collapse back to one line once the question is sent.
+    // Collapse the submitted draft; the request restores it if allowance
+    // verification fails, without replacing a newer question.
     el.value = '';
     window.autoGrowComposer();
     return true;
