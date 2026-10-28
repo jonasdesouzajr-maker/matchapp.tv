@@ -175,7 +175,7 @@
     } else if (screen === 'game') {
       var isCampaign = gameKind === 'campaign', pairCount = isCampaign ? stage.pairs : 6;
       var columns = pairCount <= 6 ? 3 : pairCount <= 10 ? 4 : pairCount <= 15 ? 5 : 6;
-      var markup = '<section class="screen play-screen"><header class="header">' + button('home','home') +
+      var markup = '<section class="screen play-screen"><div class="play-controls"><header class="header">' + button('home','home') +
         '<span>' + (isCampaign ? label('levelOf',{n:stage.level}) : label(multi ? 'friendsMatch' : 'solo')) + '</span>' +
         button('pause','pause','secondary') + '</header>';
       if (isCampaign) markup += '<div class="stage-meta"><span>' + themeLabel(stage.theme) + '</span><span>' +
@@ -191,7 +191,8 @@
           label('player',{n:p}) + '<br><span class="score">' + scores[p - 1] + '</span></div>';
         markup += '</div>';
       }
-      markup += '<p class="game-status" role="status" aria-live="polite"></p><div class="board-area"><div class="grid' +
+      markup += '<p class="game-status" role="status" aria-live="polite"></p>' + (multi ? '' : progressNote()) +
+        '</div><div class="board-area"><div class="grid' +
         (isCampaign ? ' campaign-grid' : '') + '" style="--columns:' + columns + ';--mobile-columns:' + (pairCount > 12 ? 5 : columns > 4 ? 4 : columns) +
         '" role="group" aria-label="' + (isCampaign ? label('level',{n:stage.level}) : label(multi ? 'friendsMatch' : 'solo')) + '">';
       cards.forEach(function (card, i) {
@@ -202,8 +203,7 @@
       app.innerHTML = markup + '</div><section class="pause-panel" hidden><h2>' + label('paused') + '</h2><div class="pause-actions">' +
         button('resume','resume','teal') + (isCampaign ? button('restart-level','abandonAttempt','secondary') : '') + '</div>' +
         (isCampaign ? '<div class="restart-confirm" hidden><p id="lumina-restart-question">' + label('confirmRestart') + '</p>' +
-          '<div role="group" aria-labelledby="lumina-restart-question">' + button('confirm-restart','confirm') + button('cancel-restart','cancel','secondary') + '</div></div>' : '') + '</section></div>' +
-        (multi ? '' : progressNote()) + '</section>';
+          '<div role="group" aria-labelledby="lumina-restart-question">' + button('confirm-restart','confirm') + button('cancel-restart','cancel','secondary') + '</div></div>' : '') + '</section></div></section>';
       updateBoard();
     } else if (screen === 'campaign-result') {
       app.innerHTML = '<section class="screen result"><p class="theme-caption">' + themeLabel(stage.theme) + '</p><h1 tabindex="-1">' +
