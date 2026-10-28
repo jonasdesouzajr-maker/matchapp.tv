@@ -125,6 +125,21 @@ test('a changed expected account is rejected before constructing a query',async(
   assert.equal(built,0);
 });
 
+test('a completed 250-level campaign uses the same checked per-request account and credential-free payload',async()=>{
+  const {requestGame}=await exported;
+  const progress={version:2,points:25000,rounds:250,activeRound:null,campaign:{
+    unlocked:250,results:Array.from({length:250},()=>[3,20,60]),activeLevel:null
+  }};
+  const calls=[],queries=[],client={auth:{getSession:async()=>({data:{session:session()}})},rpc(name,args){
+    calls.push({name,args});const query=withHeaders(Promise.resolve({data:{revision:7,progress},error:null}));queries.push(query);return query;
+  }};
+  const result=await requestGame(client,'save_progress',{revision:6,progress:{...progress,user:FRIEND,access_token:'untrusted'},user:FRIEND},undefined,USER);
+  assert.deepEqual(result,{revision:7,progress});
+  assert.deepEqual(calls,[{name:'lumina_action',args:{p_action:'save_progress',p_payload:{revision:6,progress}}}]);
+  assert.equal(queries[0].headers.get('Authorization'),'Bearer fixture-access-only');
+  assert.doesNotMatch(JSON.stringify(calls),/fixture-access-only|refresh_token|untrusted/);
+});
+
 test('a delayed SDK auth lookup cannot move a save to another account or mutate shared headers',async()=>{
   const {requestGame} = await exported;
   const accountA={...session(USER),access_token:'fixture-account-a'};

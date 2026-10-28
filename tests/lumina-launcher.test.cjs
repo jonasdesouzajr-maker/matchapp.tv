@@ -136,6 +136,77 @@ test('closing Lumina disposes the game and restores the prior focus and overflow
   assert.equal(trigger.getAttribute('aria-expanded'), 'false');
 });
 
+function addAccountUI(window) {
+  const modal = window.document.createElement('div'); modal.id = 'main-auth-modal'; modal.style.display = 'none';
+  modal.innerHTML = '<input id="reg-email" type="email"><button id="auth-cancel">Close</button>';
+  window.document.body.appendChild(modal);
+  window.openAuthModal = () => { modal.style.display = 'flex'; };
+  window.switchAuthTab = tab => { modal.dataset.tab = tab; };
+  window.closeAuthModal = () => { modal.style.display = 'none'; };
+  modal.querySelector('button').addEventListener('click', window.closeAuthModal);
+  return modal;
+}
+
+test('Create account keeps the current game in memory behind the existing signup UI, then restores the same frame after verified registration', async t => {
+  let options, disposed = 0;
+  const f = fixture(t, { loader: async () => ({ mountGame(stage, supplied) {
+    options = supplied; stage.textContent = 'Current game'; return () => { disposed++; };
+  } }) });
+  const auth = addAccountUI(f.window);
+  f.document.body.style.setProperty('overflow', 'auto', 'important');
+  f.trigger.click(); await settle();
+  const game = f.document.querySelector('#lm-dialog'), stage = f.document.querySelector('#lm-stage');
+  options.register(); await settle();
+  assert.equal(game.isConnected, true); assert.equal(game.open, false); assert.equal(disposed, 0);
+  assert.equal(auth.style.display, 'flex'); assert.equal(auth.dataset.tab, 'signup');
+  assert.equal(f.document.activeElement.id, 'reg-email');
+  assert.equal(f.document.body.classList.contains('lm-game-open'), false);
+  assert.equal(f.document.body.style.overflow, 'auto');
+  options.onRegistered(); await settle();
+  assert.equal(auth.style.display, 'none'); assert.equal(game.open, true);
+  assert.equal(f.document.querySelector('#lm-stage'), stage); assert.equal(stage.textContent, 'Current game');
+  assert.equal(disposed, 0); assert.equal(f.document.body.classList.contains('lm-game-open'), true);
+  assert.equal(f.document.activeElement.id, 'lm-close');
+  f.document.querySelector('#lm-close').click(); assert.equal(disposed, 1);
+  assert.equal(f.document.body.style.getPropertyPriority('overflow'), 'important');
+});
+
+test('canceling account creation returns to MatchApp, clears the game, and stale registration callbacks cannot reopen a later game', async t => {
+  const mounted = []; let disposed = 0;
+  const f = fixture(t, { loader: async () => ({ mountGame(stage, options) {
+    mounted.push(options); return () => { disposed++; };
+  } }) });
+  const auth = addAccountUI(f.window);
+  f.trigger.focus(); f.trigger.click(); await settle(); mounted[0].register(); await settle();
+  auth.querySelector('button').click(); await settle();
+  assert.equal(f.document.querySelector('#lm-dialog'), null); assert.equal(disposed, 1);
+  assert.equal(f.document.activeElement, f.trigger); assert.equal(f.document.body.style.overflow, '');
+  mounted[0].onRegistered(); assert.equal(f.document.querySelector('#lm-dialog'), null);
+  f.trigger.click(); await settle(); mounted[1].register(); await settle();
+  mounted[0].onRegistered(); assert.equal(f.document.querySelector('#lm-dialog').open, false);
+  assert.equal(auth.style.display, 'flex');
+  auth.querySelector('button').click(); await settle(); assert.equal(disposed, 2);
+});
+
+test('successful auth can close its UI before account progress loads without discarding the staged game', async t => {
+  let options, disposed = 0;
+  const f = fixture(t, { loader: async () => ({ mountGame(stage, supplied) {
+    options = supplied; stage.textContent = 'Pending account game'; return () => { disposed++; };
+  } }) });
+  const auth = addAccountUI(f.window);
+  f.window.supabaseClient = { auth: { getSession: async () => ({ data: { session: { user: { id:'registered-player', is_anonymous:false } } } }) } };
+  f.trigger.click(); await settle(); const game = f.document.querySelector('#lm-dialog');
+  options.register(); await settle();
+  assert.ok(game.hasAttribute('data-lumina-registration'));
+  // Existing password and passkey handlers hide Auth before the progress RPC.
+  f.document.dispatchEvent(new f.window.CustomEvent('matchapp:authchange', { detail: { signedIn:true } }));
+  auth.style.display = 'none'; await settle();
+  assert.equal(disposed, 0); assert.equal(f.document.querySelector('#lm-dialog'), game);
+  assert.equal(game.open, true); assert.equal(f.document.activeElement.id, 'lm-close');
+  options.onRegistered(); await settle(); assert.equal(disposed, 0); assert.equal(game.open, true);
+  f.document.querySelector('#lm-close').click(); assert.equal(disposed, 1);
+});
+
 test('Escape and dialog cancellation both close Lumina without leaving a scroll lock', async t => {
   const {window, document, trigger} = fixture(t);
   trigger.focus();

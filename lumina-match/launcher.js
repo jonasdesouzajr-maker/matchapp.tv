@@ -60,6 +60,8 @@
     var previousScrollPriority = '';
     var loadSequence = 0;
     var retryCount = 0;
+    var registration = null;
+    var ignoredCloseEvents = 0;
 
     function translate() {
       var t = copy();
@@ -100,23 +102,79 @@
       disposeGame = null;
       if (typeof cleanup === 'function') cleanup();
     }
+    function restorePageScroll() {
+      document.body.classList.remove('lm-game-open');
+      if (previousScroll) document.body.style.setProperty('overflow',previousScroll,previousScrollPriority);
+      else document.body.style.removeProperty('overflow');
+    }
     function close() {
       if (!root || closing) return;
       closing = true;
       var currentRoot = root;
       root = null;
+      registration?.observer.disconnect(); clearTimeout(registration?.timer); registration = null;
       ++loadSequence; // An earlier import must never mount into a later opening.
       try { dispose(); } finally {
         if (typeof currentRoot.close === 'function' && currentRoot.open) currentRoot.close();
         currentRoot.remove();
-        document.body.classList.remove('lm-game-open');
-        if (previousScroll) document.body.style.setProperty('overflow',previousScroll,previousScrollPriority);
-        else document.body.style.removeProperty('overflow');
+        restorePageScroll();
         previousScroll = null;
         trigger.setAttribute('aria-expanded', 'false');
         (previousFocus?.isConnected ? previousFocus : trigger).focus({preventScroll:true});
         closing = false;
       }
+    }
+    function revealGame(opening) {
+      if (root !== opening) return;
+      document.body.classList.add('lm-game-open'); document.body.style.overflow = 'hidden';
+      if (!opening.open) {
+        if (typeof opening.showModal === 'function') opening.showModal(); else opening.setAttribute('open','');
+      }
+      trigger.setAttribute('aria-expanded','true');
+      opening.querySelector('#lm-close').focus({preventScroll:true});
+    }
+    function registered() {
+      if (!registration || root !== registration.opening) return;
+      registration.observer.disconnect(); clearTimeout(registration.timer); registration = null;
+      window.closeAuthModal?.(); revealGame(root);
+    }
+    function accountUIClosed(pending) {
+      if (registration !== pending || pending.checking) return;
+      pending.checking = true;
+      // Successful password/passkey sign-in also closes the auth UI before
+      // progress finishes loading. Keep a reachable Close while verifying
+      // the current session, rather than treating that hide as cancellation.
+      revealGame(pending.opening);
+      pending.timer = setTimeout(function () { if (registration === pending) close(); },14000);
+      Promise.resolve().then(function () { return window.supabaseClient?.auth?.getSession?.(); }).then(function (result) {
+        if (registration !== pending) return;
+        clearTimeout(pending.timer); pending.timer = null;
+        var user = result?.data?.session?.user;
+        if (result?.error || !user || user.is_anonymous || typeof user.id !== 'string' || !user.id) close();
+        // A verified account keeps the same frame while its guarded bridge
+        // loads or retries the account save. Only that bridge marks it saved.
+      }).catch(function () { if (registration === pending) close(); });
+    }
+    function register() {
+      if (!root || registration) return;
+      var auth = document.getElementById('main-auth-modal');
+      if (!auth || typeof window.openAuthModal !== 'function' || typeof window.switchAuthTab !== 'function') {
+        close(); location.assign('/?openAuth=1'); return;
+      }
+      var opening = root;
+      var observer = new MutationObserver(function () {
+        if (registration?.opening === opening && (auth.style.display === 'none' || auth.hidden)) accountUIClosed(registration);
+      });
+      registration = {opening:opening,observer:observer,timer:null,checking:false};
+      opening.setAttribute('data-lumina-registration','');
+      // Keep the open guest attempt only in memory while the existing account
+      // UI is visible. Canceling registration disposes it and returns to Home.
+      if (typeof opening.close === 'function' && opening.open) { ignoredCloseEvents++; opening.close(); }
+      else opening.removeAttribute('open');
+      restorePageScroll(); trigger.setAttribute('aria-expanded','false');
+      observer.observe(auth,{attributes:true,attributeFilter:['style','hidden']});
+      window.openAuthModal(); window.switchAuthTab('signup');
+      auth.querySelector('#reg-email')?.focus({preventScroll:true});
     }
     function trap(e) {
       if (!root) return;
@@ -153,11 +211,13 @@
       dispose();
       stage.innerHTML = '<p class="lm-loading" role="status">✦ Lumina Match</p>';
       try {
-        var mod = await import('/lumina-match/game.mjs?v=20261027-3' + (retryCount ? '&retry=' + retryCount : ''));
+        var mod = await import('/lumina-match/game.mjs?v=20261028-1' + (retryCount ? '&retry=' + retryCount : ''));
         if (root !== opening || sequence !== loadSequence) return;
         disposeGame = mod.mountGame(stage, {
           language:language,
           close:close,
+          register:function() { if (root === opening && sequence === loadSequence) register(); },
+          onRegistered:function() { if (root === opening && sequence === loadSequence) registered(); },
           onError:function() { showError(opening,sequence); }
         });
       } catch(err) {
@@ -185,7 +245,10 @@
       opening.querySelector('#lm-close').addEventListener('click',close);
       opening.addEventListener('keydown',trap);
       opening.addEventListener('cancel',function(e) {e.preventDefault();if(root === opening)close();});
-      opening.addEventListener('close',function() {if(root === opening)close();});
+      opening.addEventListener('close',function() {
+        if (ignoredCloseEvents) { ignoredCloseEvents--; return; }
+        if(root === opening)close();
+      });
       translate();
       if (typeof opening.showModal === 'function') opening.showModal();
       else { opening.setAttribute('open',''); opening.setAttribute('role','dialog'); }

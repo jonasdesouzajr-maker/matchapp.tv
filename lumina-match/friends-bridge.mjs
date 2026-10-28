@@ -3,25 +3,74 @@ const actions = new Set(['list','create','accept','decline','cancel','get','flip
 const validCode = value => typeof value === 'string' && /^[a-zA-Z0-9_-]{8,64}$/.test(value);
 const fail = code => Object.assign(new Error(code), {code});
 const artNames = new Set(['moon','star','planet','heart','crystal','butterfly','orb','sun']);
+const standardArt = ['moon','star','planet','heart','crystal','butterfly','lotus','orb','sun','nebula','gem','lantern'];
+const groveArt = ['mushroom','firefly','crystalflower','fern','fox','moonflower'];
+const oceanArt = ['jellyfish','shell','seahorse','coral','starfish','dolphin'];
+const integer = (n,max) => Number.isSafeInteger(n) && n >= 0 && n <= max;
 
-function progressPayload(value) {
-  const integer = (n,max) => Number.isSafeInteger(n) && n >= 0 && n <= max;
+function savedCards(input, pairCount, allowed, allowComplete = true) {
+  if (!Array.isArray(input) || input.length !== pairCount * 2) throw fail('LUMINA_INVALID');
+  const pairs = new Map();
+  const cards = input.map(card => {
+    if (!card || typeof card !== 'object' || Array.isArray(card) || !allowed.has(card.art) || typeof card.matched !== 'boolean') throw fail('LUMINA_INVALID');
+    const values = pairs.get(card.art) || []; values.push(card.matched); pairs.set(card.art,values);
+    // Persist matched pairs, never transient reveals or arbitrary frame data.
+    return {art:card.art,matched:card.matched};
+  });
+  if (pairs.size !== pairCount || [...pairs.values()].some(pair => pair.length !== 2 || pair[0] !== pair[1]) ||
+      (!allowComplete && cards.every(card => card.matched))) throw fail('LUMINA_INVALID');
+  return cards;
+}
+
+function campaignPayload(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value) ||
+      !integer(value.unlocked,250) || value.unlocked < 1 || !Array.isArray(value.results) || value.results.length !== 250) throw fail('LUMINA_INVALID');
+  const results = Array.from(value.results,(result,index) => {
+    if (result === null) {
+      if (index < value.unlocked - 1) throw fail('LUMINA_INVALID');
+      return null;
+    }
+    if (index >= value.unlocked - 1 && !(value.unlocked === 250 && index === 249) ||
+        !Array.isArray(result) || result.length !== 3 || !integer(result[0],3) || result[0] < 1 ||
+        !integer(result[1],1000000) || !integer(result[2],86400)) throw fail('LUMINA_INVALID');
+    return [result[0],result[1],result[2]];
+  });
+  let activeLevel = null;
+  if (value.activeLevel !== null) {
+    const active = value.activeLevel;
+    if (!active || typeof active !== 'object' || Array.isArray(active) ||
+        !integer(active.level,250) || active.level < 1 || active.level > value.unlocked ||
+        !integer(active.moves,1000000) || !integer(active.elapsedSeconds,86400) ||
+        typeof active.timed !== 'boolean' || !integer(active.hintsUsed,3)) throw fail('LUMINA_INVALID');
+    const eventArt = active.level % 20 === 0 ? groveArt : active.level % 25 === 0 ? oceanArt : null;
+    const pool = eventArt || (active.level >= 90 ? [...standardArt,...groveArt,...oceanArt] : standardArt);
+    const pairs = Math.min(4 + Math.floor(active.level / 10),eventArt ? 6 : 20);
+    activeLevel = {
+      level:active.level,cards:savedCards(active.cards,pairs,new Set(pool),false),moves:active.moves,
+      elapsedSeconds:active.elapsedSeconds,timed:active.timed,hintsUsed:active.hintsUsed
+    };
+  }
+  return {unlocked:value.unlocked,results,activeLevel};
+}
+
+export function progressPayload(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value) ||
       !integer(value.points,1000000000) || !integer(value.rounds,1000000000)) throw fail('LUMINA_INVALID');
   let activeRound = null;
   if (value.activeRound !== null) {
     const active = value.activeRound;
-    if (!active || !integer(active.moves,1000000) || !Array.isArray(active.cards) || active.cards.length !== 12) throw fail('LUMINA_INVALID');
-    const pairs = new Map();
-    const cards = active.cards.map(card => {
-      if (!card || !artNames.has(card.art) || typeof card.matched !== 'boolean') throw fail('LUMINA_INVALID');
-      const values = pairs.get(card.art) || []; values.push(card.matched); pairs.set(card.art,values);
-      return {art:card.art,matched:card.matched};
-    });
-    if (pairs.size !== 6 || [...pairs.values()].some(pair => pair.length !== 2 || pair[0] !== pair[1])) throw fail('LUMINA_INVALID');
-    activeRound = {cards,moves:active.moves};
+    if (!active || typeof active !== 'object' || Array.isArray(active) || !integer(active.moves,1000000)) throw fail('LUMINA_INVALID');
+    activeRound = {cards:savedCards(active.cards,6,artNames),moves:active.moves};
   }
-  return {points:value.points,rounds:value.rounds,activeRound};
+  if (!Object.prototype.hasOwnProperty.call(value,'version') && !Object.prototype.hasOwnProperty.call(value,'campaign')) {
+    return {points:value.points,rounds:value.rounds,activeRound};
+  }
+  if (value.version !== 2) throw fail('LUMINA_INVALID');
+  const progress = {version:2,points:value.points,rounds:value.rounds,activeRound,campaign:campaignPayload(value.campaign)};
+  // Every retained field is an ASCII identifier, boolean, bounded number or
+  // array, so the canonical JSON character count is also its UTF-8 byte count.
+  if (JSON.stringify(progress).length > 16384) throw fail('LUMINA_INVALID');
+  return progress;
 }
 
 export function gamePayload(action, input = {}) {

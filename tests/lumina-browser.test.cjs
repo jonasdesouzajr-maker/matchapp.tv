@@ -11,7 +11,7 @@ const read = name => fs.readFileSync(path.join(ROOT,name),'utf8');
 const gameSource = read('lumina-match/browser/lumina-game.js');
 function game(t, options = {}) {
   const dom = new JSDOM('<!doctype html><html><body><div id="app"></div></body></html>', {
-    url:'https://matchapp.tv/lumina-match/browser/index.html?lang='+(options.lang||'en'),runScripts:'outside-only'
+    url:'https://matchapp.tv/lumina-match/browser/index.html?lang='+(options.lang||'en'),runScripts:'outside-only',pretendToBeVisual:true
   });
   t.after(()=>dom.window.close());
   const w = dom.window, timers = new Map(),messages = []; let timerId = 0, onlineOptions;
@@ -20,11 +20,21 @@ function game(t, options = {}) {
   w.setTimeout = fn => { timers.set(++timerId,fn); return timerId; };
   w.clearTimeout = id => timers.delete(id);
   w.LuminaOnline = {open(opts){onlineOptions=opts;},destroy(){},setLanguage(){}};
-  if(options.blockStorage) Object.defineProperty(w,'localStorage',{get(){throw Error('blocked');}});
-  else if(options.storage) for(const [key,value] of Object.entries(options.storage)) w.localStorage.setItem(key,value);
-  if(options.failStorageWrites) Object.defineProperty(w.Storage.prototype,'setItem',{value(){throw Error('quota exceeded');}});
+  const storageCalls = {reads:[],writes:[],removes:[]};
+  const originalGet = w.Storage.prototype.getItem, originalSet = w.Storage.prototype.setItem, originalRemove = w.Storage.prototype.removeItem;
+  if(options.blockStorage) Object.defineProperty(w,'localStorage',{get(){storageCalls.reads.push('storage-access');throw Error('blocked');}});
+  else if(options.storage) for(const [key,value] of Object.entries(options.storage)) originalSet.call(w.localStorage,key,value);
+  w.Storage.prototype.getItem = function(key) {storageCalls.reads.push(key);return originalGet.call(this,key);};
+  w.Storage.prototype.setItem = function(key,value) {
+    storageCalls.writes.push({key,value});
+    if(options.failStorageWrites) throw Error('quota exceeded');
+    return originalSet.call(this,key,value);
+  };
+  w.Storage.prototype.removeItem = function(key) {storageCalls.removes.push(key);return originalRemove.call(this,key);};
   w.eval(read('lumina-match/browser/i18n.js'));
   w.eval(read('lumina-match/browser/progress-i18n.js'));
+  w.eval(read('lumina-match/browser/campaign-i18n.js'));
+  w.eval(read('lumina-match/browser/campaign.js'));
   w.eval(gameSource);
   const click = selector => { const el = w.document.querySelector(selector); assert.ok(el,selector);el.click();return el; };
   const settle = () => { const pending = [...timers.values()];timers.clear();pending.forEach(fn=>fn()); };
@@ -41,15 +51,15 @@ function game(t, options = {}) {
   }));
   const progress = (mode,extra={}) => receive({type:'lumina:progress-state',mode,...extra});
   const stored = () => Object.fromEntries(Array.from({length:w.localStorage.length},(_,i)=>{
-    const key=w.localStorage.key(i);return [key,w.localStorage.getItem(key)];
+    const key=w.localStorage.key(i);return [key,originalGet.call(w.localStorage,key)];
   }));
-  return {w,click,settle,groups,timers,messages,receive,progress,stored,localFriends(){click('[data-action="friends"]');assert.ok(onlineOptions);onlineOptions.onLocal();}};
+  return {w,click,settle,groups,timers,messages,receive,progress,stored,storageCalls,localFriends(){click('[data-action="friends"]');assert.ok(onlineOptions);onlineOptions.onLocal();}};
 }
 test('Home alone loads the launcher and game payload stays opt-in',()=>{
   const html=read('index.html'), launcher=read('lumina-match/launcher.js');
   assert.equal((html.match(/\/lumina-match\/launcher\.js/g)||[]).length,1);
-  assert.match(html,/launcher\.js\?v=20261027-3/);
-  assert.match(html,/lumina\.css\?v=20261027-2/);
+  assert.match(html,/launcher\.js\?v=20261028-1/);
+  assert.match(html,/lumina\.css\?v=20261028-1/);
   assert.doesNotMatch(html,/lumina-match\/browser\//);
   assert.match(launcher,/import\('\/lumina-match\/game\.mjs/);
   for(const name of ['android/index.html','kids/index.html']) assert.doesNotMatch(read(name),/lumina-match/);
@@ -71,17 +81,19 @@ test('all14 locales have complete strings and identical placeholders',t=>{
     for(const key of expected){assert.ok(dict[key].trim(),lang+key);assert.deepEqual([...dict[key].matchAll(/\{\w+\}/g)].map(m=>m[0]).sort(),[...dictionaries.en[key].matchAll(/\{\w+\}/g)].map(m=>m[0]).sort(),lang+key);}
   }
   assert.ok(w.document.querySelector('[data-action="friends"]'));
-  assert.doesNotMatch(w.document.body.textContent,/coming in full build|350|Levels/);
+  assert.doesNotMatch(w.document.body.textContent,/coming in full build|350/);
+  assert.ok(w.document.querySelector('[data-action="levels"]'));
 });
-test('solo completes six pairs, preserves card nodes through flips and saves points',t=>{
-  const {w,click,settle,groups}=game(t);
+test('guest solo completes six pairs, preserves card nodes and keeps points in the open game only',t=>{
+  const {w,click,settle,groups,stored,storageCalls}=game(t);
   click('[data-action="solo"]');const pairs=groups();
   assert.equal(pairs.length,6);assert.ok(pairs.every(p=>p.length===2));
   for(const [a,b] of pairs){a.click();assert.equal(w.document.querySelector('[data-card="'+a.dataset.card+'"]'),a);b.click();settle();}
   assert.equal(w.document.querySelector('#app').dataset.screen,'result');
   assert.match(w.document.body.textContent,/Round complete/);
-  assert.equal(w.localStorage.getItem('luminaPoints'),'10');
-  assert.equal(w.localStorage.getItem('luminaBrowserRounds'),'1');
+  assert.deepEqual(asPlain(w.LuminaGameProgress.snapshot()),{points:10,rounds:1,activeRound:null});
+  assert.deepEqual(stored(),{});
+  assert.deepEqual(storageCalls,{reads:[],writes:[],removes:[]});
   click('[data-action="home"]');assert.match(w.document.body.textContent,/Rounds cleared: 1/);
 });
 test('leaving during two-card delay cannot corrupt a new round',t=>{
@@ -95,6 +107,7 @@ test('leaving during two-card delay cannot corrupt a new round',t=>{
 });
 test('same-screen friends keep their turn on a pair and switch after a miss',t=>{
   const fixture=game(t);const {w,settle,groups,click}=fixture;fixture.localFriends();
+  assert.equal(w.document.querySelector('[data-save-game]').hidden,true,'A shared-device round must not claim to save a solo account game');
   const pairs=groups();pairs[0][0].click();pairs[0][1].click();settle();
   assert.equal(w.document.querySelector('.plate.active').dataset.player,'1');
   assert.equal(w.document.querySelector('[data-player="1"] .score').textContent,'1');
@@ -102,26 +115,28 @@ test('same-screen friends keep their turn on a pair and switch after a miss',t=>
   assert.equal(w.document.querySelector('.plate.active').dataset.player,'2');
   for(const pair of pairs.slice(1)){pair[0].click();pair[1].click();settle();}
   assert.match(w.document.querySelector('h1').textContent,/Player 2 wins/);
-  assert.equal(w.localStorage.getItem('luminaPoints'),null);
+  assert.deepEqual(fixture.stored(),{});
   click('[data-action="localfriends"]');assert.equal(w.document.querySelectorAll('[data-card]').length,12);
 });
-test('unavailable storage and corrupt saved values do not prevent gameplay',t=>{
+test('guest play needs no browser storage and ignores corrupt legacy saved values',t=>{
   const fixture=game(t,{blockStorage:true});fixture.click('[data-action="solo"]');
   for(const pair of fixture.groups()){pair[0].click();pair[1].click();fixture.settle();}
   assert.equal(fixture.w.document.querySelector('#app').dataset.screen,'result');
   assert.match(fixture.w.document.body.textContent,/session only/);
+  assert.deepEqual(fixture.storageCalls,{reads:[],writes:[],removes:[]});
   const corrupt=game(t,{storage:{luminaPoints:'NaN',luminaBrowserRounds:'-5'}});
   assert.match(corrupt.w.document.body.textContent,/Rounds cleared: 0 · 0 points/);
 });
-test('a write-only guest storage failure immediately reports session-only saving during play',t=>{
+test('guest status always explains session-only play and gameplay never attempts storage writes',t=>{
   const f=game(t,{failStorageWrites:true});
-  assert.doesNotMatch(f.w.document.querySelector('.save-status').textContent,/session only/);
+  assert.match(f.w.document.querySelector('.save-status').textContent,/session only/);
   f.click('[data-action="solo"]');
   assert.match(f.w.document.querySelector('.save-status').textContent,/session only/);
   assert.doesNotMatch(f.w.document.querySelector('.save-status').textContent,/saved on this browser/);
   const pair=f.groups()[0];pair[0].click();pair[1].click();f.settle();
   assert.equal(f.w.document.querySelectorAll('.matched').length,2);
-  assert.equal(f.w.localStorage.getItem('luminaPoints'),null);
+  assert.deepEqual(f.stored(),{});
+  assert.deepEqual(f.storageCalls,{reads:[],writes:[],removes:[]});
 });
 test('pagehide clears unmatched flips so a restored round remains playable',t=>{
   const {w,click,settle,groups}=game(t);click('[data-action="solo"]');
@@ -152,20 +167,37 @@ function savedGame(points=40, moves=3, matchedPairs=1) {
   }};
 }
 
-test('guest unfinished solo rounds persist and Continue restores the same board, matches and moves',t=>{
-  const original=game(t);original.click('[data-action="solo"]');
+test('registered unfinished solo rounds restore the same board, matches and moves from the account',t=>{
+  const original=game(t,{embedded:true});original.progress('account',{progress:null,revision:0});original.click('[data-action="solo"]');
   const first=original.groups()[0];first[0].click();first[1].click();original.settle();
   const before=asPlain(original.w.LuminaGameProgress.snapshot());
   assert.equal(before.activeRound.cards.filter(card=>card.matched).length,2);
   assert.equal(before.activeRound.moves,1);
   original.click('[data-action="home"]');
   assert.ok(original.w.document.querySelector('[data-action="continue"]'));
-  const reopened=game(t,{storage:original.stored()});
+  const saved=original.messages.filter(item=>item.value.type==='lumina:progress-change').at(-1).value.progress;
+  assert.deepEqual(saved,before);
+  assert.deepEqual(original.stored(),{});
+  const reopened=game(t,{embedded:true});reopened.progress('account',{progress:saved,revision:1});
   reopened.click('[data-action="continue"]');
   assert.deepEqual(asPlain(reopened.w.LuminaGameProgress.snapshot()),before);
   assert.equal(reopened.w.document.querySelectorAll('.matched').length,2);
   assert.match(reopened.w.document.querySelector('.game-status').textContent,/Moves 1/);
   assert.equal(reopened.w.document.querySelectorAll('.flipped:not(.matched)').length,0);
+});
+
+test('guests can continue a classic round within the open game but reopening starts empty',t=>{
+  const f=game(t);f.click('[data-action="solo"]');
+  const pair=f.groups()[0];pair[0].click();pair[1].click();f.settle();
+  const before=asPlain(f.w.LuminaGameProgress.snapshot());
+  f.click('[data-action="home"]');f.click('[data-action="continue"]');
+  assert.deepEqual(asPlain(f.w.LuminaGameProgress.snapshot()),before);
+  assert.equal(f.w.document.querySelectorAll('.matched').length,2);
+  f.w.dispatchEvent(new f.w.PageTransitionEvent('pagehide',{persisted:false}));
+  assert.deepEqual(f.storageCalls,{reads:[],writes:[],removes:[]});
+  const reopened=game(t,{storage:f.stored()});
+  assert.equal(reopened.w.document.querySelector('[data-action="continue"]'),null);
+  assert.deepEqual(asPlain(reopened.w.LuminaGameProgress.snapshot()),{points:0,rounds:0,activeRound:null});
 });
 
 test('embedded startup disables solo actions until the trusted parent resolves progress ownership',t=>{
@@ -181,7 +213,7 @@ test('embedded startup disables solo actions until the trusted parent resolves p
   f.click('[data-action="solo"]');assert.equal(f.w.document.querySelectorAll('[data-card]').length,12);
 });
 
-test('account progress restores an unfinished board and keeps guest storage separate',t=>{
+test('account progress restores an unfinished board and leaves old guest storage untouched',t=>{
   const guest=savedGame(20,1,0),cloud=savedGame(80,9,2);
   const storage={luminaPoints:'20',luminaBrowserRounds:'2',luminaBrowserRound:JSON.stringify(guest.activeRound)};
   const f=game(t,{embedded:true,storage});
@@ -196,7 +228,8 @@ test('account progress restores an unfinished board and keeps guest storage sepa
   const change=f.messages.filter(item=>item.value.type==='lumina:progress-change').at(-1).value.progress;
   assert.equal(change.points,80);assert.equal(change.activeRound.moves,10);
   assert.equal(change.activeRound.cards.filter(card=>card.matched).length,6);
-  assert.deepEqual(f.stored(),storage,'Account play must not overwrite the separate guest save');
+  assert.deepEqual(f.stored(),storage,'Account play must not read or overwrite ignored legacy guest data');
+  assert.deepEqual(f.storageCalls,{reads:[],writes:[],removes:[]});
 });
 
 test('a new account starts clean rather than importing guest counters or an unfinished round',t=>{
@@ -209,7 +242,7 @@ test('a new account starts clean rather than importing guest counters or an unfi
   assert.deepEqual(f.stored(),storage);
 });
 
-test('auth reset immediately clears old-account board and counters, then restores the independent guest save',t=>{
+test('auth reset clears old-account board and counters, then starts an empty guest session',t=>{
   const guest=savedGame(20,2,1),cloud=savedGame(120,8,2);
   const storage={luminaPoints:'20',luminaBrowserRounds:'2',luminaBrowserRound:JSON.stringify(guest.activeRound)};
   const f=game(t,{embedded:true,storage});f.progress('account',{progress:cloud,revision:4});f.click('[data-action="continue"]');
@@ -222,8 +255,10 @@ test('auth reset immediately clears old-account board and counters, then restore
   assert.deepEqual(asPlain(f.w.LuminaGameProgress.snapshot()),{points:0,rounds:0,activeRound:null});
   assert.equal(f.timers.size,0);f.settle();
   f.progress('guest');
-  assert.deepEqual(asPlain(f.w.LuminaGameProgress.snapshot()),guest);
+  assert.deepEqual(asPlain(f.w.LuminaGameProgress.snapshot()),{points:0,rounds:0,activeRound:null});
+  assert.equal(f.w.document.querySelector('[data-action="continue"]'),null);
   assert.deepEqual(f.stored(),storage);
+  assert.deepEqual(f.storageCalls,{reads:[],writes:[],removes:[]});
 });
 
 test('saving and saved acknowledgments preserve live card nodes, pending flips and the newest solo state',t=>{
@@ -264,13 +299,14 @@ test('offline startup never enables or posts guest progress as account progress'
   const f=game(t,{embedded:true,storage:{luminaPoints:'70',luminaBrowserRounds:'7',luminaBrowserRound:JSON.stringify(guest.activeRound)}});
   f.progress('offline');
   assert.equal(f.w.document.querySelector('[data-action="solo"]').disabled,true);
-  assert.equal(f.w.document.querySelector('[data-action="continue"]').disabled,true);
-  f.click('[data-action="continue"]');assert.equal(f.w.document.querySelectorAll('[data-card]').length,0);
+  assert.equal(f.w.document.querySelector('[data-action="continue"]'),null);
+  f.click('[data-action="solo"]');assert.equal(f.w.document.querySelectorAll('[data-card]').length,0);
   assert.equal(f.messages.filter(item=>item.value.type==='lumina:progress-change').length,0);
+  assert.deepEqual(f.storageCalls,{reads:[],writes:[],removes:[]});
 });
 
-test('closing during the final pair delay saves only settled cards and cannot award a round twice',t=>{
-  const f=game(t);f.click('[data-action="solo"]');const pairs=f.groups();
+test('registered closing during the final pair delay saves settled cards without awarding a round twice',t=>{
+  const f=game(t,{embedded:true});f.progress('account',{progress:null,revision:0});f.click('[data-action="solo"]');const pairs=f.groups();
   for(const pair of pairs.slice(0,5)){pair[0].click();pair[1].click();f.settle();}
   pairs[5][0].click();pairs[5][1].click();assert.equal(f.timers.size,1);
   const closing=asPlain(f.w.LuminaGameProgress.snapshot());
@@ -282,42 +318,57 @@ test('closing during the final pair delay saves only settled cards and cannot aw
   const changed=f.w.LuminaGameProgress.snapshot();changed.activeRound.cards[0].art='not-game-art';
   assert.notEqual(f.w.LuminaGameProgress.snapshot().activeRound.cards[0].art,'not-game-art');
   f.w.dispatchEvent(new f.w.PageTransitionEvent('pagehide',{persisted:false}));f.settle();
-  assert.equal(f.w.localStorage.getItem('luminaPoints'),'0');
-  const resumed=game(t,{storage:f.stored()});resumed.click('[data-action="continue"]');
+  const saved=f.messages.filter(item=>item.value.type==='lumina:progress-change').at(-1).value.progress;
+  assert.deepEqual(saved,closing);assert.deepEqual(f.stored(),{});
+  const resumed=game(t,{embedded:true});resumed.progress('account',{progress:saved,revision:6});resumed.click('[data-action="continue"]');
   assert.equal(resumed.w.document.querySelectorAll('.flipped:not(.matched)').length,0);
   const remaining=resumed.groups().find(pair=>!pair[0].disabled);remaining[0].click();remaining[1].click();resumed.settle();
-  assert.equal(resumed.w.localStorage.getItem('luminaPoints'),'10');
-  assert.equal(resumed.w.localStorage.getItem('luminaBrowserRounds'),'1');
-  assert.equal(resumed.w.localStorage.getItem('luminaBrowserRound'),'null');
+  const finished={points:10,rounds:1,activeRound:null};
+  assert.deepEqual(asPlain(resumed.w.LuminaGameProgress.snapshot()),finished);
+  assert.deepEqual(resumed.messages.filter(item=>item.value.type==='lumina:progress-change').at(-1).value.progress,finished);
   resumed.w.dispatchEvent(new resumed.w.PageTransitionEvent('pagehide',{persisted:false}));resumed.settle();
-  const completed=game(t,{storage:resumed.stored()});
+  const completed=game(t,{embedded:true});completed.progress('account',{progress:finished,revision:7});
   assert.equal(completed.w.document.querySelector('[data-action="continue"]'),null);
   assert.equal(completed.w.LuminaGameProgress.snapshot().points,10);
   assert.equal(completed.w.LuminaGameProgress.snapshot().rounds,1);
+  assert.deepEqual(resumed.storageCalls,{reads:[],writes:[],removes:[]});
 });
 
-test('a partial compatibility-counter write cannot replay a completed guest round after reload',t=>{
-  const f=game(t);f.click('[data-action="solo"]');const pairs=f.groups();
-  for(const pair of pairs.slice(0,5)){pair[0].click();pair[1].click();f.settle();}
-  const originalSet=f.w.Storage.prototype.setItem;
-  let failedMirror=false;
-  f.w.Storage.prototype.setItem=function(key,value) {
-    if(key==='luminaBrowserRounds'&&value==='1') {failedMirror=true;throw Error('quota exceeded');}
-    return originalSet.call(this,key,value);
-  };
-  pairs[5][0].click();pairs[5][1].click();f.settle();
-  assert.equal(failedMirror,true,'The fixture must reproduce the partial legacy-write failure');
+test('account round completion publishes an atomic result and ignores stale legacy guest counters',t=>{
+  const storage={luminaPoints:'900',luminaBrowserRounds:'90',luminaBrowserProgress:JSON.stringify(savedGame(900,9,5))};
+  const f=game(t,{embedded:true,storage,failStorageWrites:true});f.progress('account',{progress:null,revision:0});f.click('[data-action="solo"]');
+  for(const pair of f.groups()){pair[0].click();pair[1].click();f.settle();}
   assert.equal(f.w.document.querySelector('#app').dataset.screen,'result');
-  assert.equal(f.w.localStorage.getItem('luminaBrowserRounds'),'0');
   const complete={points:10,rounds:1,activeRound:null};
-  assert.deepEqual(JSON.parse(f.w.localStorage.getItem('luminaBrowserProgress')),complete);
-  const reopened=game(t,{storage:f.stored()});
+  const changes=f.messages.filter(item=>item.value.type==='lumina:progress-change').map(item=>item.value.progress);
+  assert.deepEqual(changes.at(-1),complete);
+  for(const progress of changes.slice(0,-1)) {
+    assert.equal(progress.points,0);assert.equal(progress.rounds,0);
+    assert.ok(progress.activeRound.cards.some(card=>!card.matched),'A completed board must never accompany old counters');
+  }
+  assert.deepEqual(f.stored(),storage);
+  assert.deepEqual(f.storageCalls,{reads:[],writes:[],removes:[]});
+  const reopened=game(t,{embedded:true,storage});reopened.progress('account',{progress:complete,revision:13});
   assert.equal(reopened.w.document.querySelector('[data-action="continue"]'),null);
   assert.deepEqual(asPlain(reopened.w.LuminaGameProgress.snapshot()),complete);
   assert.match(reopened.w.document.querySelector('.stats').textContent,/Rounds cleared: 1 · 10 points/);
-  const staleMirrors={...f.stored(),luminaPoints:'900',luminaBrowserRounds:'90'};
-  const freshReload=game(t,{storage:staleMirrors});
-  assert.deepEqual(asPlain(freshReload.w.LuminaGameProgress.snapshot()),complete,
-    'Fresh loads must use the complete canonical snapshot rather than stale independent counters');
-  assert.equal(freshReload.w.document.querySelector('[data-action="continue"]'),null);
+  assert.deepEqual(reopened.storageCalls,{reads:[],writes:[],removes:[]});
+});
+
+test('all legacy guest progress keys remain untouched and unread across play and a fresh open',t=>{
+  const legacy=savedGame(90,6,2);
+  const storage={luminaPoints:'90',luminaBrowserRounds:'9',luminaBrowserRound:JSON.stringify(legacy.activeRound),
+    luminaBrowserProgress:JSON.stringify(legacy),luminaBrowserProgressV2:'{invalid',unrelatedPreference:'keep'};
+  const f=game(t,{embedded:true,storage});f.progress('guest');
+  assert.deepEqual(asPlain(f.w.LuminaGameProgress.snapshot()),{points:0,rounds:0,activeRound:null});
+  assert.equal(f.w.document.querySelector('[data-action="continue"]'),null);
+  f.click('[data-action="solo"]');for(const pair of f.groups()){pair[0].click();pair[1].click();f.settle();}
+  assert.deepEqual(asPlain(f.w.LuminaGameProgress.snapshot()),{points:10,rounds:1,activeRound:null});
+  assert.equal(f.messages.filter(item=>item.value.type==='lumina:progress-change').length,0);
+  assert.deepEqual(f.storageCalls,{reads:[],writes:[],removes:[]});
+  assert.deepEqual(f.stored(),storage);
+  const reopened=game(t,{storage:f.stored()});
+  assert.deepEqual(asPlain(reopened.w.LuminaGameProgress.snapshot()),{points:0,rounds:0,activeRound:null});
+  assert.deepEqual(reopened.storageCalls,{reads:[],writes:[],removes:[]});
+  assert.deepEqual(reopened.stored(),storage);
 });

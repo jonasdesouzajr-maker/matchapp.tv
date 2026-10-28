@@ -1,32 +1,12 @@
 /* Account progress stays behind MatchApp's parent authentication boundary.
  * Closing the game removes its UI, but a bounded account save can finish. */
-import {requestGame} from './friends-bridge.mjs?v=20261027-3';
+import {requestGame,progressPayload} from './friends-bridge.mjs?v=20261028-1';
 
-const artwork = new Set(['moon','star','planet','heart','crystal','butterfly','orb','sun']);
 const fail = code => Object.assign(new Error(code),{code});
 const integer = (value,max) => Number.isSafeInteger(value) && value >= 0 && value <= max;
 
 export function progressSnapshot(input) {
-  if (!input || typeof input !== 'object' || Array.isArray(input) ||
-      !integer(input.points,1000000000) || !integer(input.rounds,1000000000)) throw fail('LUMINA_INVALID');
-  let activeRound = null;
-  if (input.activeRound !== null) {
-    const round = input.activeRound;
-    if (!round || typeof round !== 'object' || !Array.isArray(round.cards) || round.cards.length !== 12 ||
-        !integer(round.moves,1000000)) throw fail('LUMINA_INVALID');
-    const counts = new Map();
-    const cards = round.cards.map(card => {
-      if (!card || typeof card !== 'object' || !artwork.has(card.art) || typeof card.matched !== 'boolean') throw fail('LUMINA_INVALID');
-      const pair = counts.get(card.art) || {count:0,matched:card.matched};
-      if (pair.matched !== card.matched) throw fail('LUMINA_INVALID');
-      pair.count++;counts.set(card.art,pair);
-      // Transient reveals are deliberately absent from persisted game state.
-      return {art:card.art,matched:card.matched};
-    });
-    if (counts.size !== 6 || [...counts.values()].some(pair=>pair.count !== 2)) throw fail('LUMINA_INVALID');
-    activeRound = {cards,moves:round.moves};
-  }
-  return {points:input.points,rounds:input.rounds,activeRound};
+  return progressPayload(input);
 }
 
 function progressRecord(value) {
@@ -44,6 +24,7 @@ export function createProgressBridge(frame, options = {}) {
   let mode = 'loading', owner = null, revision = null, savedKey = null;
   let latest = null, latestKey = null, blocked = true, loadQueued = false;
   let operation = null, authTimer = null;
+  let stagedRegistration = null;
   let finishClose;
   const finished = new Promise(resolve => {finishClose = resolve;});
 
@@ -57,7 +38,7 @@ export function createProgressBridge(frame, options = {}) {
     if (authTimer !== null) host.clearTimeout(authTimer);
     host.removeEventListener('message',receive);
     doc.removeEventListener('matchapp:authchange',authChanged);
-    latest = null;latestKey = null;owner = null;savedKey = null;revision = null;
+    latest = null;latestKey = null;owner = null;savedKey = null;revision = null;stagedRegistration = null;
     finishClose();
   }
   function maybeFinish() {
@@ -113,7 +94,7 @@ export function createProgressBridge(frame, options = {}) {
     if (detached || cleaned) return;
     if (authTimer !== null) {host.clearTimeout(authTimer);authTimer = null;}
     if (operation) {
-      if (operation.kind === 'save') loadQueued = true;
+      if (operation.kind !== 'load') loadQueued = true;
       return;
     }
     load();
@@ -125,6 +106,12 @@ export function createProgressBridge(frame, options = {}) {
     const {job,result} = run('load',async current => {
       const service = client();
       const user = await sessionFor(service,current);
+      // Bind before the first account read can await the network. A later
+      // sign-in must never inherit another account's pending guest import.
+      if (stagedRegistration) {
+        if (stagedRegistration.owner && stagedRegistration.owner !== user) stagedRegistration = null;
+        else if (user) stagedRegistration.owner = user;
+      }
       if (!user) return {guest:true};
       const value = await invoke(service,'progress',{},current.controller.signal,user);
       if (current.controller.signal.aborted || current.generation !== generation) throw fail('LUMINA_CANCELED');
@@ -138,7 +125,16 @@ export function createProgressBridge(frame, options = {}) {
       owner = value.user;revision = value.record.revision;
       savedKey = value.record.progress === null ? null : JSON.stringify(value.record.progress);
       blocked = false;
-      post('account',{progress:value.record.progress,revision});
+      // Only the explicit registration flow can carry a guest's current game
+      // into an account. Consume it once; an existing account save always wins.
+      const staged = stagedRegistration?.owner === value.user ? stagedRegistration.progress : null;
+      stagedRegistration = null;
+      const adopted = value.record.progress === null ? staged : null;
+      post('account',{progress:adopted || value.record.progress,revision});
+      if (adopted) change(adopted);
+      // This signals verified account readiness, not successful persistence.
+      // The normal saving/saved/offline states remain the save authority.
+      try { Promise.resolve(options.onAccountReady?.()).catch(()=>{}); } catch (_) { /* Parent UI cannot invalidate a verified account load. */ }
     } catch(error) {
       if (!cleaned && !detached && job.generation === generation && error?.code !== 'LUMINA_CANCELED') {
         if (error?.code === 'LUMINA_AUTH_CHANGED') authChanged();
@@ -147,14 +143,32 @@ export function createProgressBridge(frame, options = {}) {
       }
     } finally {complete(job);}
   }
-  function change(input) {
+  function change(input, explicit = false) {
     if (cleaned || blocked || !owner || !integer(revision,Number.MAX_SAFE_INTEGER)) return;
     let snapshot;
     try {snapshot = progressSnapshot(input);} catch (_) {blocked = true;latest = null;latestKey = null;post('offline');return;}
     const key = JSON.stringify(snapshot);
-    if (key === latestKey || (key === savedKey && !operation)) return;
+    if (key === savedKey && !operation) { if (explicit) confirmSaved(); return; }
+    if (key === latestKey) return;
     latest = snapshot;latestKey = key;
     if (!operation) save();
+  }
+  async function confirmSaved() {
+    if (cleaned || blocked || operation || !owner) return;
+    const expectedOwner = owner;
+    post('saving');
+    const {job,result} = run('confirm',async current => {
+      if (await sessionFor(client(),current) !== expectedOwner) throw fail('LUMINA_AUTH_CHANGED');
+    });
+    try {
+      await result;
+      if (!cleaned && job.generation === generation && (!latest || latestKey === savedKey)) post('saved',{revision});
+    } catch(error) {
+      if (!cleaned && job.generation === generation && error?.code !== 'LUMINA_CANCELED') {
+        if (['LUMINA_AUTH_CHANGED','LUMINA_AUTH_REQUIRED','LUMINA_SIGN_IN_REQUIRED'].includes(error?.code)) authChanged();
+        else {blocked = true;post('offline');}
+      }
+    } finally {complete(job);}
   }
   async function save() {
     if (cleaned || blocked || operation || !latest || latestKey === savedKey || !owner) {maybeFinish();return;}
@@ -188,11 +202,12 @@ export function createProgressBridge(frame, options = {}) {
     if (detached || cleaned || event.source !== frame.contentWindow || event.origin !== origin) return;
     const message = event.data;
     if (message?.type === 'lumina:progress-load') requestLoad();
-    else if (message?.type === 'lumina:progress-change') change(message.progress);
+    else if (message?.type === 'lumina:progress-change') change(message.progress,message.explicit === true);
   }
   host.addEventListener('message',receive);
   doc.addEventListener('matchapp:authchange',authChanged);
-  return function disposeProgress() {
+  function disposeProgress() {
+    stagedRegistration = null;
     if (detached || cleaned) return finished;
     // Read before the adapter removes the iframe. The function returns only
     // the game's normalized snapshot, never authentication data.
@@ -209,5 +224,11 @@ export function createProgressBridge(frame, options = {}) {
     if (!operation && !blocked && latest && latestKey !== savedKey) save();
     else maybeFinish();
     return finished;
+  }
+  disposeProgress.stageRegistration = input => {
+    if (detached || cleaned || mode !== 'guest' || owner || operation) return false;
+    try { stagedRegistration = {progress:progressSnapshot(input),owner:null}; return true; }
+    catch (_) { return false; }
   };
+  return disposeProgress;
 }

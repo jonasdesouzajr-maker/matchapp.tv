@@ -2288,9 +2288,15 @@ window.handleEmailSignup = async function() {
         if (error) {
             msgEl.style.color = '#ff5252'; msgEl.style.background = 'rgba(255,0,0,0.1)'; msgEl.innerText = error.message;msgEl.setAttribute('data-ma-error',String(true));window.MatchAppErrors?.sync(msgEl);
         } else if (data?.session?.user) {
-            msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
-            msgEl.innerText = "Signed in. Opening your profile...";msgEl.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(msgEl);
-            setTimeout(() => { window.location.href = '/profile/profile.html'; }, 700);
+            if (document.querySelector('#lm-dialog[data-lumina-registration]')) {
+                // Lumina's parent verifies account readiness and owns the
+                // staged game's save before returning to the existing frame.
+                window.closeAuthModal?.();
+            } else {
+                msgEl.style.color = '#25D366'; msgEl.style.background = 'rgba(37,211,102,0.1)';
+                msgEl.innerText = "Signed in. Opening your profile...";msgEl.setAttribute('data-ma-error',String(false));window.MatchAppErrors?.sync(msgEl);
+                setTimeout(() => { window.location.href = '/profile/profile.html'; }, 700);
+            }
         } else {
             // Email confirmation enabled: signUp returns a user, NOT a session.
             // Do not redirect to an unauthenticated profile or claim success.
