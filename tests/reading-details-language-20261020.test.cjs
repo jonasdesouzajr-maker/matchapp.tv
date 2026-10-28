@@ -57,6 +57,72 @@ test('hydrated bibliographic facts repaint all locales without refetching or rep
  }
  nodes[0].button.click();assert.equal(clicks,1);assert.equal(calls,1,'same-origin verified index fetched only once');
 });
+test('conflicting live Open Library work year is omitted without rewriting source facts or locale bindings',async t=>{
+ const f=fixture('<article id="host"><div class="ebook-result-copy"><p class="ebook-kicker">1868 · Classics</p><h3 data-book-identity>Little Women</h3><button class="ebook-why">Existing action</button></div><div class="ebook-cover"></div></article>');
+ t.after(()=>f.dom.window.close());const {w}=f;
+ const book=Object.freeze({title:'Little Women',author:'Louisa May Alcott',year:1868});
+ const row=Object.freeze({title:book.title,author_name:[book.author],first_publish_year:1848,number_of_pages_median:423,ratings_average:4.1,ratings_count:126,cover_i:123456,key:'/works/OL123W'});
+ const originalRow=JSON.stringify(row),calls=[];
+ w.fetch=async url=>{
+  calls.push(String(url));
+  if(String(url).startsWith('/ebooks/verified-book-index'))return {ok:true,json:async()=>({entries:[]})};
+  const source=new URL(url);assert.equal(source.origin,'https://openlibrary.org');assert.equal(source.pathname,'/search.json');
+  assert.equal(source.searchParams.get('title'),book.title);assert.equal(source.searchParams.get('author'),book.author);
+  return {ok:true,json:async()=>({docs:[row]})};
+ };
+ w.eval(read('ebooks/book-details-20261011.js'));
+ const api=w.MatchAppBookDetails,data=await api.lookup(book),originalData=JSON.stringify(data);
+ assert.equal(data.year,1848);assert.equal(data.pages,423);assert.equal(data.rating,4.1);assert.equal(data.count,126);
+ assert.equal(data.source,'Open Library');assert.equal(data.url,'https://openlibrary.org/works/OL123W');Object.freeze(data);
+ const host=w.document.getElementById('host'),button=host.querySelector('button'),kicker=host.querySelector('.ebook-kicker');
+ assert.equal(await api.hydrate(host,book,{format:'ebook'}),data);
+ const meta=host.querySelector('[data-book-verified-meta]'),children=[...meta.children],source=meta.querySelector('a'),cover=host.querySelector('.ebook-cover img');
+ assert.equal(cover.src,'https://covers.openlibrary.org/b/id/123456-L.jpg');
+ for(const lang of languages){
+  f.select(lang);
+  const num=value=>new Intl.NumberFormat(lang).format(value),rating=new Intl.NumberFormat(lang,{minimumFractionDigits:1,maximumFractionDigits:1}).format(4.1);
+  assert.deepEqual([...meta.querySelectorAll('span')].map(node=>node.textContent),[
+   w.MatchAppReadingDetailsCopy.text('detail.pages',{count:num(423)}),
+   w.MatchAppReadingDetailsCopy.text('detail.ratings',{rating,count:num(126),source:'Open Library'})
+  ],lang+' retains pages/ratings and omits only the contradictory year');
+  assert.equal(source.textContent,w.MatchAppReadingDetailsCopy.text('detail.sourceWork',{source:'Open Library'}));
+  assert.equal(source.href,data.url);assert.equal(meta.querySelector('a'),source);assert.deepEqual([...meta.children],children);
+  assert.equal(host.querySelector('button'),button);assert.equal(kicker.textContent,'1868 · Classics');assert.equal(host.querySelector('.ebook-cover img'),cover);
+ }
+ assert.equal(await api.lookup(book),data,'hydration and locale repaint preserve the original cache entry');
+ assert.equal(data.year,1848);assert.equal(JSON.stringify(data),originalData);assert.equal(JSON.stringify(row),originalRow);assert.equal(book.year,1868);
+ assert.equal(calls.length,2,'one index request and one exact work lookup, with no retries or locale refetch');
+});
+test('year display preserves equal or unknown canonical years and Apple editions across all locales',async t=>{
+ const cases=[
+  {id:'equal',source:'Open Library',canonical:1868,year:1868,shown:true},
+  {id:'missing',source:'Open Library',year:1848,shown:true},
+  {id:'null',source:'Open Library',canonical:null,year:1848,shown:true},
+  {id:'string',source:'Open Library',canonical:'1868',year:1848,shown:true},
+  {id:'fractional',source:'Open Library',canonical:1868.5,year:1848,shown:true},
+  {id:'snapshot-conflict',source:'Open Library',canonical:1868,year:2000,shown:false},
+  {id:'edition',source:'Apple Books',canonical:1868,year:2000,shown:true}
+ ];
+ const markup=cases.map(c=>'<article id="'+c.id+'"><div class="ebook-result-copy"></div><div class="ebook-cover"></div></article>').join('');
+ const f=fixture(markup);t.after(()=>f.dom.window.close());const {w}=f;let calls=0;
+ const books=cases.map(c=>({title:'Year display '+c.id,author:'Mira Example',year:c.canonical}));
+ const entries=cases.map((c,i)=>({...books[i],source:c.source,year:c.year,pages:275,rating:null,count:null,cover:'https://covers.openlibrary.org/b/id/123456-L.jpg',url:c.source==='Apple Books'?'https://books.apple.com/us/book/exact-edition/id123456':'https://openlibrary.org/works/OL123W'}));
+ w.fetch=async url=>{calls++;assert.match(String(url),/^\/ebooks\/verified-book-index/);return {ok:true,json:async()=>({entries})};};
+ w.eval(read('ebooks/book-details-20261011.js'));
+ const data=[];
+ for(let i=0;i<cases.length;i++)data.push(await w.MatchAppBookDetails.hydrate(w.document.getElementById(cases[i].id),books[i],{format:'ebook'}));
+ for(const lang of languages){
+  f.select(lang);
+  for(let i=0;i<cases.length;i++){
+   const c=cases[i],meta=w.document.getElementById(c.id).querySelector('[data-book-verified-meta]');
+   const year=w.MatchAppReadingDetailsCopy.text('detail.year',{year:c.year});
+   assert.equal([...meta.querySelectorAll('span')].some(node=>node.textContent===year),c.shown,lang+'/'+c.id+': '+meta.textContent);
+   assert.equal(data[i].year,c.year,'source year is never rewritten');assert.equal(meta.querySelector('a').href,entries[i].url);
+   assert.equal(meta.querySelector('a').textContent,w.MatchAppReadingDetailsCopy.text(c.source==='Apple Books'?'detail.sourceEdition':'detail.sourceWork',{source:c.source}));
+  }
+ }
+ assert.equal(calls,1,'all snapshot cases and language changes share the original index fetch');
+});
 test('Ask AI book, audio and magazine source cards retain identity, links and original text through all language switches',t=>{
  const f=fixture('<main id="book"></main><main id="audio"></main><main id="magazine"></main>');t.after(()=>f.dom.window.close());const {w}=f;
  const book={id:'exact-book',title:'Exact Source Book',author:'Mira Example',summary:'Original external English description.',access:['free','paid'],genres:['fantasy'],moods:['curious']};
