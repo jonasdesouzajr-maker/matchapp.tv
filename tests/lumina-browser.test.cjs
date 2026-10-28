@@ -58,7 +58,7 @@ function game(t, options = {}) {
 test('Home alone loads the launcher and game payload stays opt-in',()=>{
   const html=read('index.html'), launcher=read('lumina-match/launcher.js');
   assert.equal((html.match(/\/lumina-match\/launcher\.js/g)||[]).length,1);
-  assert.match(html,/launcher\.js\?v=20261028-1/);
+  assert.match(html,/launcher\.js\?v=20261028-2/);
   assert.match(html,/lumina\.css\?v=20261028-1/);
   assert.doesNotMatch(html,/lumina-match\/browser\//);
   assert.match(launcher,/import\('\/lumina-match\/game\.mjs/);
@@ -117,6 +117,43 @@ test('same-screen friends keep their turn on a pair and switch after a miss',t=>
   assert.match(w.document.querySelector('h1').textContent,/Player 2 wins/);
   assert.deepEqual(fixture.stored(),{});
   click('[data-action="localfriends"]');assert.equal(w.document.querySelectorAll('[data-card]').length,12);
+});
+test('pausing shared-device play settles the selected pair exactly once, including settings and pagehide',t=>{
+  for(const pause of ['button','settings','pagehide']) {
+    const f=game(t);f.localFriends();const pairs=f.groups();
+    const suspend=()=>{
+      if(pause==='button') f.click('[data-action="pause"]');
+      else if(pause==='settings') f.click('[data-audio-settings]');
+      else f.w.dispatchEvent(new f.w.PageTransitionEvent('pagehide',{persisted:true}));
+    };
+    const resume=()=>{
+      if(pause==='settings') f.click('[data-close-audio]');
+      else f.click('[data-action="resume"]');
+    };
+    pairs[0][0].click();pairs[1][0].click();suspend();
+    assert.equal(f.w.document.querySelector('.plate.active').dataset.player,'2',pause+' cannot cancel a missed turn');
+    assert.equal(f.w.document.querySelector('.pause-panel').hidden,false);
+    assert.equal(f.timers.size,0);f.settle();resume();
+    assert.equal(f.w.document.querySelectorAll('.flipped').length,0);
+    pairs[0][0].click();pairs[0][1].click();suspend();
+    assert.equal(f.w.document.querySelector('[data-player="2"] .score').textContent,'1',pause+' retains a selected match');
+    assert.equal(f.w.document.querySelectorAll('.matched').length,2);
+    assert.equal(f.timers.size,0);f.settle();resume();
+    assert.equal(f.w.document.querySelector('[data-player="2"] .score').textContent,'1','no delayed duplicate point');
+    assert.deepEqual(f.stored(),{});
+  }
+});
+test('pausing on the last shared-device pair finishes once without leaving a stale pause panel',t=>{
+  const f=game(t);f.localFriends();const pairs=f.groups();
+  for(const pair of pairs.slice(0,-1)){pair[0].click();pair[1].click();f.settle();}
+  const last=pairs.at(-1);last[0].click();last[1].click();f.click('[data-action="pause"]');
+  assert.equal(f.w.document.querySelector('#app').dataset.screen,'result');
+  assert.match(f.w.document.querySelector('h1').textContent,/Player 1 wins/);
+  assert.equal(f.w.document.querySelector('.pause-panel'),null);
+  assert.equal(f.timers.size,0);f.settle();
+  f.click('[data-action="localfriends"]');
+  assert.equal(f.w.document.querySelector('[data-player="1"] .score').textContent,'0');
+  assert.equal(f.w.document.querySelectorAll('.matched').length,0);
 });
 test('guest play needs no browser storage and ignores corrupt legacy saved values',t=>{
   const fixture=game(t,{blockStorage:true});fixture.click('[data-action="solo"]');

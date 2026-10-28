@@ -27,6 +27,11 @@
 #ma-jonas-home .jh-input{flex:1;min-width:0;min-height:44px;padding:10px 12px;border:1px solid #e3c18680;border-radius:13px;background:#140c22;color:#fff8ff;font-size:13px;line-height:1.3;outline:none}
 #ma-jonas-home .jh-input::placeholder{color:#a899b9}
 #ma-jonas-home .jh-input:focus{border-color:#ffe3a4;box-shadow:0 0 0 2px #e2b76826}
+/* The header-owned conversation also needs the original mic's touch styling. */
+#ma-jonas-home .jh-mic{flex:0 0 44px;display:grid;place-items:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:999px;background:#30203e;color:var(--jh-gold);appearance:none;cursor:pointer;touch-action:manipulation;transition:filter .2s,transform .2s}
+#ma-jonas-home .jh-mic:hover{filter:brightness(1.09)}
+#ma-jonas-home .jh-mic:active{transform:scale(.95)}
+#ma-jonas-home .jh-mic[aria-pressed="true"]{background:#214b46;color:#b1ffe8}
 #ma-jonas-home .jh-send{flex:none;display:grid;place-items:center;width:45px;height:44px;padding:0;border:1px solid #ffe9b0;border-radius:13px;background:linear-gradient(135deg,#ffdfa1,#cf9c4b);color:#22142e;font-weight:800;font-size:23px;cursor:pointer;transition:filter .2s,transform .2s}
 #ma-jonas-home .jh-send:hover{filter:brightness(1.09)}
 #ma-jonas-home .jh-send:active{transform:scale(.95)}
@@ -36,6 +41,21 @@
 #ma-jonas-home .jh-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 15px;border-top:1px solid #edce8e2f;background:#1b1127}
 #ma-jonas-home .jh-full{color:#f6da9b;text-decoration:underline;text-underline-offset:3px;font-size:12px;font-weight:700}
 #ma-jonas-home .jh-footnote{color:#b8a3c7;font-size:10px;line-height:1.3;text-align:right}
+/* Adapt the conversation's own chrome to its actual resizer/keyboard bounds. */
+#ma-jonas-home-panel[data-ma-resize]{container:jh-conversation / size}
+@container jh-conversation (max-height:240px){
+ #ma-jonas-home #ma-jonas-home-panel .jh-header{padding:3px 8px!important;gap:8px}
+ #ma-jonas-home #ma-jonas-home-panel .jh-title small{display:none}
+ #ma-jonas-home #ma-jonas-home-panel .jh-close{width:44px;height:44px;min-width:44px;min-height:44px}
+ #ma-jonas-home #ma-jonas-home-panel .jh-content{padding:8px!important;gap:8px}
+ #ma-jonas-home #ma-jonas-home-panel .jh-form{order:-1;flex-shrink:0}
+ #ma-jonas-home #ma-jonas-home-panel .jh-footer{padding:4px 8px!important}
+}
+@container jh-conversation (max-height:112px){
+ #ma-jonas-home #ma-jonas-home-panel .jh-header{padding-block:0!important}
+ #ma-jonas-home #ma-jonas-home-panel .jh-content{padding-block:0!important}
+ #ma-jonas-home #ma-jonas-home-panel .jh-footer{display:none!important}
+}
 @keyframes jh-halo-drift{0%,100%{opacity:.67;filter:blur(5px)}50%{opacity:.94;filter:blur(8px)}}
 @keyframes jh-panel-in{from{opacity:0;transform:translateY(15px) scale(.9)}to{opacity:1;transform:none}}
 @media(min-width:700px){#ma-jonas-home{bottom:max(24px,env(safe-area-inset-bottom));right:max(24px,env(safe-area-inset-right))}#ma-jonas-home .jh-bubble{width:92px;height:92px}#ma-jonas-home .jh-popover{bottom:110px}}
@@ -43,7 +63,12 @@
 @media(min-width:1180px){#ma-jonas-home{right:max(205px,calc((100vw - 980px)/2))}}
 @media(max-width:374px){#ma-jonas-home{right:12px}#ma-jonas-home .jh-bubble{width:73px;height:73px}#ma-jonas-home .jh-popover{bottom:86px}#ma-jonas-home .jh-suggestions{grid-template-columns:1fr}#ma-jonas-home .jh-content{padding:13px}}
 @media(max-height:560px){#ma-jonas-home{bottom:max(12px,env(safe-area-inset-bottom))}#ma-jonas-home .jh-popover{bottom:87px;max-height:calc(100dvh - 100px)}}
-@media(prefers-reduced-motion:reduce){#ma-jonas-home .jh-halo,#ma-jonas-home .jh-popover{animation:none!important}#ma-jonas-home .jh-bubble,#ma-jonas-home .jh-send,#ma-jonas-home .jh-suggestion{transition:none!important}}
+@media(prefers-reduced-motion:reduce){#ma-jonas-home .jh-halo,#ma-jonas-home .jh-popover{animation:none!important}#ma-jonas-home .jh-bubble,#ma-jonas-home .jh-mic,#ma-jonas-home .jh-send,#ma-jonas-home .jh-suggestion{transition:none!important}}
+@layer ma-reference{
+ @media(prefers-reduced-motion:reduce){#ma-jonas-home .jh-mic{transition:none!important;transform:none!important}}
+ html.reduce-motion #ma-jonas-home .jh-mic{transition:none!important;transform:none!important}
+}
+@media(forced-colors:active){#ma-jonas-home .jh-mic{border:1px solid ButtonText}#ma-jonas-home .jh-mic[aria-pressed="true"]{color:HighlightText;background:Highlight}}
 @media print{#ma-jonas-home{display:none!important}}
 
 /* Jonas replaces the legacy Ask MatchApp Ai form instead of covering the screen. */

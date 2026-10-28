@@ -13,7 +13,7 @@
   document.documentElement.classList.toggle('reduce-motion', new URLSearchParams(location.search).get('reducedMotion') === '1');
   var screen = 'home', cards = [], flipped = [], matches = 0, moves = 0;
   var busy = false, multi = false, player = 1, scores = [0, 0];
-  var timer = null, round = 0;
+  var timer = null, pendingPairSettlement = null, round = 0;
   var embedded = window.parent !== window;
   var saveMode = embedded ? 'loading' : 'guest', progressOwner = embedded ? null : 'guest';
   var points = 0, rounds = 0;
@@ -104,7 +104,7 @@
     if (screen === 'game') updateBoard();
   }
   function cancelRound() {
-    round++; clearTimeout(timer); timer = null; clearTimeout(hintTimer); hintTimer = null;
+    round++; clearTimeout(timer); timer = null; pendingPairSettlement = null; clearTimeout(hintTimer); hintTimer = null;
     flipped = []; peek = []; busy = false; restartPending = false; stopClock();
   }
   function shuffle(items) {
@@ -288,6 +288,12 @@
   }
   function pauseGame() {
     if (screen !== 'game' || paused) return;
+    // A local two-player attempt already belongs to its current player. A
+    // pause must not discard a match or let that player erase a missed turn.
+    if (multi && pendingPairSettlement) {
+      clearTimeout(timer); pendingPairSettlement();
+      if (screen !== 'game') return;
+    }
     cancelRound(); paused = true;
     cards.forEach(function (card) { if (!card.matched) card.flipped = false; });
     window.LuminaAudio?.setActive(false);
@@ -363,9 +369,9 @@
     busy = true; moves = Math.min(moves + 1,1000000); updateBoard();
     if (!multi) save();
     var a = flipped[0], b = flipped[1], thisRound = round;
-    timer = setTimeout(function () {
+    pendingPairSettlement = function () {
       if (thisRound !== round || screen !== 'game') return;
-      timer = null;
+      timer = null; pendingPairSettlement = null;
       if (gameKind === 'campaign' && timedChoice && elapsedSeconds() >= stage.seconds) { loseLevel(); return; }
       if (cards[a].art === cards[b].art) {
         cards[a].matched = cards[b].matched = true; matches++;
@@ -397,7 +403,8 @@
         if (focused?.matches?.('.card:disabled')) app.querySelector('.card:not(:disabled)')?.focus({preventScroll:true});
         if (!multi) save();
       }
-    }, 700);
+    };
+    timer = setTimeout(pendingPairSettlement, 700);
   }
   function home() { if (screen === 'game' && !multi) save(); window.LuminaOnline?.destroy(); cancelRound(); paused = false; screen = 'home'; render(true); }
   function online(roomCode) {
@@ -646,7 +653,7 @@
     if (screen === 'online') { home(); return; }
     // BFCache restoration may arrive without visibilitychange. Keep a timed
     // board explicitly paused until Resume so its clock cannot silently stop.
-    if (screen === 'game' && gameKind === 'campaign') { pauseGame(); return; }
+    if (screen === 'game' && (gameKind === 'campaign' || multi)) { pauseGame(); return; }
     if (screen === 'game' && !multi) save();
     cancelRound();
     cards.forEach(function (card) { if (!card.matched) card.flipped = false; });
