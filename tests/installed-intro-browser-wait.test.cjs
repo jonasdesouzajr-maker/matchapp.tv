@@ -6,11 +6,12 @@ const {installIntroPlaybackEvidence}=require('../tools/intro-playback-evidence.c
 
 // Exercise the actual browser predicates against DOM/media observations on a
 // virtual clock. Synthetic unit events do not claim real video decoding.
-function fixture(events=[]){
+function fixture(events=[],options={}){
  const w=new JSDOM('<body></body>',{url:'https://matchapp.tv/',runScripts:'outside-only'}).window;
  w.eval('('+installIntroPlaybackEvidence.toString()+')()');
- let clock=0;const pending=events.slice().sort((a,b)=>a.at-b.at),waits=[];
+ let clock=0,ready=!options.loading;const pending=events.slice().sort((a,b)=>a.at-b.at),waits=[];
  const actions={
+  ready(){ready=true;},
   owner(){
    w.sessionStorage.setItem('matchapp-launch-intro','played');
    const overlay=w.document.createElement('div');overlay.id='matchapp-launch-intro';
@@ -30,6 +31,13 @@ function fixture(events=[]){
   }
  };
  const page={
+  async waitForLoadState(state,{timeout}){
+   assert.equal(state,'domcontentloaded');const deadline=clock+timeout;
+   while(!ready){
+    if(!pending.length||pending[0].at>deadline){clock=deadline;throw new Error('Document timeout '+timeout+'ms exceeded');}
+    const event=pending.shift();clock=event.at;actions[event.action]();
+   }
+  },
   async waitForFunction(predicate,_argument,{timeout}){
    const deadline=clock+timeout;waits.push({startedAt:clock,timeout});
    while(!w.eval('('+predicate.toString()+')()')){
@@ -41,6 +49,20 @@ function fixture(events=[]){
  };
  return {page,actions,waits,elapsed:()=>clock,close:()=>w.close()};
 }
+
+test('slow deferred-script delivery does not consume the intro startup or preparation windows',async()=>{
+ const f=fixture([{at:13000,action:'ready'},{at:14000,action:'owner'},{at:21000,action:'decoded'}],{loading:true});
+ try{
+  const frame=await waitForIntroFrame(f.page);assert.equal(frame.encodedWidth,1080);
+  assert.equal(f.waits[0].startedAt,13000);assert.equal(f.waits[1].startedAt,14000);assert.equal(f.elapsed(),21000);
+ }finally{f.close();}
+});
+test('a document that never finishes startup fails within its separate navigation budget',async()=>{
+ const f=fixture([],{loading:true});try{
+  await assert.rejects(waitForIntroFrame(f.page),/Document timeout 30000ms exceeded/);
+  assert.equal(f.elapsed(),30000);assert.equal(f.waits.length,0);
+ }finally{f.close();}
+});
 
 test('script startup and valid preparation after six seconds have separate bounded windows',async()=>{
  const f=fixture([{at:4000,action:'owner'},{at:11000,action:'decoded'}]);

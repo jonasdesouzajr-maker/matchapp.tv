@@ -7,6 +7,10 @@ const base=process.env.MATCHAPP_TEST_BASE||'https://matchapp.tv';
 const dir=path.resolve('artifacts/installed-intro-smoke');
 const screens=[['phone',390,844],['tablet',820,1180],['landscape',1180,820],['wide-screen',1920,1080]];
 async function waitForIntroFrame(page){
+ // A navigation commit can precede deferred script delivery by more than ten
+ // seconds. Bound document startup separately; retained evidence still proves
+ // decoding even if playback finished before DOMContentLoaded.
+ await page.waitForLoadState('domcontentloaded',{timeout:30000});
  // Navigation commit precedes the startup script. First wait for its owner,
  // retained playback, or an early terminal result; none is playback proof.
  await page.waitForFunction(()=>{
