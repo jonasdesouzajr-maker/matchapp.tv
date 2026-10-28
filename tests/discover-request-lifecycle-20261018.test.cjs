@@ -257,3 +257,51 @@ for(const language of['en','pt-BR'])test(language+' positive request plus prohib
     assert.equal(events.filter(e=>e.type==='debit').length,1);assert.ok(events.findIndex(e=>e.type==='claim')<events.findIndex(e=>e.type==='debit'));assert.ok(events.findIndex(e=>e.type==='debit')<events.findIndex(e=>e.type==='voice'));assert.equal(w.matchPolicy.history().find(item=>item.title===fresh.title)?.action,'ai');
   }finally{dom.window.close();}
 });
+
+test('paid follow-up questions sent while the visible first reply finishes are processed in order with full history',async()=>{
+  const {dom,w,events}=await boot(),presentation=deferred(),calls=[];let rendering=false,credits=6;
+  try{
+    w.matchAllowanceBeforeLookup=async()=>credits>0;
+    w.checkDailyLimit=async()=>{assert(credits>0);credits--;events.push({type:'debit'});return true;};
+    w.askAIConversational=async(question,history)=>{
+      calls.push({question,history});return {answer:'Verified answer '+calls.length,results:calls.length===1?[film('First Source Title',950)]:[],_live:true};
+    };
+    w.renderResultsInto=async(_grid,items)=>{rendering=true;await presentation.promise;return items;};
+    const first=w.askAndRender('Who directed First Source Title?',{voiceOrigin:true});
+    await until(()=>rendering);
+    assert.equal(w.document.querySelectorAll('.chat-assistant').length,1,'the answer is already visible while supplementary cards finish');
+    const second=w.askAndRender('What year was it released?',{voiceOrigin:true});
+    const third=w.askAndRender('Who wrote it?',{voiceOrigin:true});
+    assert.equal(calls.length,1,'provider work remains serialized');
+    presentation.resolve();await Promise.all([first,second,third]);
+    assert.deepEqual(calls.map(row=>row.question),['Who directed First Source Title?','What year was it released?','Who wrote it?']);
+    assert.equal(calls[1].history.length,2);assert.equal(calls[2].history.length,4);
+    assert.equal(calls[2].history.at(-1).text,'Verified answer 2');
+    assert.equal(w.document.querySelectorAll('.chat-assistant').length,3);assert.equal(w.currentThread.turns.length,6);
+    assert.equal(events.filter(e=>e.type==='debit').length,3);assert.equal(credits,3,'one successful answer consumes one existing AI credit');
+  }finally{presentation.resolve();dom.window.close();}
+});
+test('queued follow-ups cannot enter a replacement conversation',async()=>{
+  const {dom,w,events}=await boot(),answer=deferred();let calls=0;
+  try{
+    w.askAIConversational=()=>{calls++;return answer.promise;};
+    const first=w.askAndRender('Who directed First Source Title?');await until(()=>calls===1);
+    const queued=w.askAndRender('What year was it released?');w.startNewChat();
+    answer.resolve({answer:'Old answer',results:[],_live:true});await Promise.all([first,queued]);
+    assert.equal(calls,1);assert.equal(events.filter(e=>e.type==='debit').length,0);assert.equal(w.currentThread,null);
+  }finally{answer.resolve({answer:'Old answer',results:[],_live:true});dom.window.close();}
+});
+test('duplicate queued submissions share one answer and debit and language changes cancel old queued turns',async()=>{
+  for(const changeLanguage of [false,true]){
+    const {dom,w,events}=await boot(),answer=deferred();let calls=0;
+    try{
+      w.askAIConversational=()=>{calls++;return calls===1?answer.promise:Promise.resolve({answer:'Second answer',results:[],_live:true});};
+      const first=w.askAndRender('Who directed First Source Title?');await until(()=>calls===1);
+      const second=w.askAndRender('What year was it released?'),duplicate=w.askAndRender('What year was it released?');
+      if(changeLanguage)w.MATCH_LANG='pt-BR';
+      answer.resolve({answer:'First answer',results:[],_live:true});await Promise.all([first,second,duplicate]);
+      assert.equal(calls,changeLanguage?1:2);assert.equal(events.filter(e=>e.type==='debit').length,changeLanguage?0:2);
+      assert.equal(w.document.querySelectorAll('.chat-assistant').length,changeLanguage?1:2);
+    }finally{answer.resolve({answer:'First answer',results:[],_live:true});dom.window.close();}
+  }
+});
