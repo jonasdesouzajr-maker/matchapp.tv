@@ -1,7 +1,9 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const {JSDOM}=require('jsdom');const read=p=>fs.readFileSync(p,'utf8');
-const copy=JSON.parse(read('data/partnership-copy.json'));
+const baseCopy=JSON.parse(read('data/partnership-copy.json')),directoryCopy=JSON.parse(read('data/streaming-directory-copy.json'));
+const copy=Object.fromEntries(Object.entries(baseCopy).map(([lang,t])=>[lang,{...t,...directoryCopy[lang]}]));
+const directory=JSON.parse(read('data/regional-services.json'));
 test('new page copy is authored for all app languages and every rendered key exists',()=>{
  assert.equal(Object.keys(copy).length,14);
  for(const lang of Object.keys(copy))assert.deepEqual(Object.keys(copy[lang]).sort(),Object.keys(copy.en).sort(),lang);
@@ -29,10 +31,10 @@ test('regional filtering retains official links and works independently of match
  const dom=new JSDOM(read('streaming/index.html'),{url:'https://matchapp.tv/streaming/',runScripts:'outside-only'}),w=dom.window;w.MATCHAPP_PARTNERSHIP_COPY=copy;w.eval(read('patches/partnership-pages.js'));
  const cover=w.document.querySelector('.mp-title img');cover.dispatchEvent(new w.Event('error'));assert.equal(cover.hidden,true);assert(w.document.querySelector('.mp-title a').href.startsWith('https://play.mercadolivre.com.br/'));
  const filter=w.document.getElementById('mp-market');filter.value='BR';filter.dispatchEvent(new w.Event('change'));
- const visible=[...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden);assert.equal(visible.length,1);assert.match(visible[0].textContent,/Mercado Play/);
- filter.value='GB';filter.dispatchEvent(new w.Event('change'));assert.equal([...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden).length,2);
+ const visible=[...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden);assert.equal(visible.length,directory.filter(s=>s.markets.includes('BR')).length);assert(visible.some(n=>n.querySelector('h3').textContent==='Mercado Play'));
+ filter.value='GB';filter.dispatchEvent(new w.Event('change'));assert.equal([...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden).length,directory.filter(s=>s.markets.includes('GB')).length);
  for(const a of w.document.querySelectorAll('.mp-service a')){assert.equal(new URL(a.href).protocol,'https:');assert(a.rel.includes('noopener'));}
- filter.value='';filter.dispatchEvent(new w.Event('change'));assert.equal([...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden).length,23);w.close();
+ filter.value='';filter.dispatchEvent(new w.Event('change'));assert.equal([...w.document.querySelectorAll('.mp-service')].filter(e=>!e.hidden).length,directory.length);w.close();
 });
 test('Mercado catalog uses official exact art and BR-only offers without changing regional filtering',()=>{
  const s=read('app.js'),a=s.indexOf('const CONTENT_CATALOG'),b=s.indexOf('const VERTICAL_DRAMA_TITLES');

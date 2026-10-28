@@ -34,3 +34,14 @@ html body.page-home .mp-footer-actions .mp-footer-pill:not(.secondary),html body
 html body.ma-partnership-page #ma-donate-shortcut#ma-donate-shortcut#ma-donate-shortcut{min-width:90px!important;white-space:nowrap!important}
 html body.ma-partnership-page #ma-donate-shortcut#ma-donate-shortcut#ma-donate-shortcut span{white-space:nowrap!important}
 }
+
+/* Only the researched streaming directory owns these new elements. */
+.ma-partnership-page [data-mp-page="streaming"] #mp-directory-controls{grid-template-columns:repeat(3,minmax(0,1fr));margin:20px 0}
+.ma-partnership-page [data-mp-page="streaming"] #mp-directory-status{margin:16px 0;font-weight:600}
+.ma-partnership-page [data-mp-page="streaming"] .mp-service-evidence{margin-bottom:8px;overflow-wrap:anywhere}
+.ma-partnership-page [data-mp-page="streaming"] .mp-service-evidence summary,.ma-partnership-page [data-mp-page="streaming"] #mp-legacy-services>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:#ffe4a0}
+.ma-partnership-page [data-mp-page="streaming"] .mp-service-evidence a{display:inline-flex;align-items:center;min-height:44px;max-width:100%}
+.ma-partnership-page [data-mp-page="streaming"] .mp-service-evidence ul{padding-inline-start:20px;margin:0}
+.ma-partnership-page [data-mp-page="streaming"] .mp-legacy-service{min-width:0;padding:20px;background:#21172fe8;border-radius:20px;overflow-wrap:anywhere}
+.ma-partnership-page [data-mp-page="streaming"] .mp-service-offers{font-weight:650}
+@media(max-width:760px){.ma-partnership-page [data-mp-page="streaming"] #mp-directory-controls{grid-template-columns:1fr}}
