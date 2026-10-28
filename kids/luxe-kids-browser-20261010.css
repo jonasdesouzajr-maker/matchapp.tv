@@ -104,6 +104,10 @@ html.kids-mode :is(input,textarea,select){
 @media(max-width:360px){
  html.kids-mode .kids-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+/* Localized navigation pills wrap at their real width on narrow screens. */
+@media(max-width:899px){
+ html.kids-mode .kids-header .kids-header-actions .kids-nav{display:flex!important;flex-wrap:wrap}
+}
 @media(prefers-reduced-motion:reduce){
  html.kids-mode :is(.kids-pill,.kids-primary,.kids-secondary){
  transition:none!important;
