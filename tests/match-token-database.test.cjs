@@ -179,9 +179,22 @@ test('Play hashes bind purchase ownership; linked-token replacement is terminal 
  await assert.rejects(entitlement(other,{...play,external:'c'.repeat(64),hash:'d'.repeat(64)}),/Invalid purchase binding/);
 });
 test('Play obfuscated accounts are immutable and request limits are isolated from Pro and other users',async()=>{
- const id=await user(),other=await user(),hash='1'.repeat(64);assert.equal((await rpc('bind_play_billing_account',[id,hash])).ok,true);assert.equal((await rpc('bind_play_billing_account',[id,hash])).ok,true);assert.equal((await rpc('bind_play_billing_account',[id,'2'.repeat(64)])).ok,false);assert.equal((await rpc('bind_play_billing_account',[other,hash])).ok,false);assert.equal(await rpc('get_play_billing_account_user',[hash]),id);
- for(let i=0;i<12;i++)assert.equal(await rpc('reserve_play_billing_request',[id]),true);assert.equal(await rpc('reserve_play_billing_request',[id]),false);
- for(let i=0;i<30;i++)assert.equal(await rpc('reserve_pro_billing_request',[id]),true);assert.equal(await rpc('reserve_pro_billing_request',[id]),false);assert.equal(await rpc('reserve_play_billing_request',[other]),true);assert.equal(await rpc('reserve_pro_billing_request',[other]),true);
+ // PostgreSQL now() is transaction-stable: exhaust each limit in one minute,
+ // even when the wall clock crosses a minute boundary between awaited calls.
+ await db.exec('begin');
+ try {
+  const id=await user(),other=await user(),hash='1'.repeat(64);assert.equal((await rpc('bind_play_billing_account',[id,hash])).ok,true);assert.equal((await rpc('bind_play_billing_account',[id,hash])).ok,true);assert.equal((await rpc('bind_play_billing_account',[id,'2'.repeat(64)])).ok,false);assert.equal((await rpc('bind_play_billing_account',[other,hash])).ok,false);assert.equal(await rpc('get_play_billing_account_user',[hash]),id);
+  for(let i=0;i<12;i++)assert.equal(await rpc('reserve_play_billing_request',[id]),true);assert.equal(await rpc('reserve_play_billing_request',[id]),false);
+  for(let i=0;i<30;i++)assert.equal(await rpc('reserve_pro_billing_request',[id]),true);assert.equal(await rpc('reserve_pro_billing_request',[id]),false);assert.equal(await rpc('reserve_play_billing_request',[other]),true);assert.equal(await rpc('reserve_pro_billing_request',[other]),true);
+  // Exercise expiry explicitly instead of relying on the real wall clock.
+  for(const kind of ['play','pro']){
+   await db.query(`update matchapp_private.${kind}_billing_limits set window_at=window_at-interval '1 minute' where user_id=$1`,[id]);
+   assert.equal(await rpc(`reserve_${kind}_billing_request`,[id]),true);
+   assert.equal((await scalar(`select attempts from matchapp_private.${kind}_billing_limits where user_id=$1`,[id])).attempts,1);
+  }
+ } finally {
+  await db.exec('rollback');
+ }
 });
 test('one bounded checkout intent prevents different-price tab races and customer binding survives renewal',async()=>{
  const id=await user();const first=await rpc('reserve_pro_checkout',[id,PRICE,'pt-BR']);assert.equal(first.ok,true);assert.ok(Date.parse(first.expires_at)-Date.now()>30*60*1000);
