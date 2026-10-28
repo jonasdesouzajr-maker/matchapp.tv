@@ -41,8 +41,9 @@ test('behavioral pages load one current shared runtime instead of stale cache ke
   for(const page of policyPages)assert.equal(version(page,'matching-policy.js'),'20260926-conflicts2&amp;reliability=20261019-2&amp;lifetime=20261019-1'+(page==='index.html'?'&amp;carousel=20261020-right2':''),page+' preserves policy pins and the Home carousel cache suffix');
   assert.equal(version('kids/index.html','matching-policy.js'),'20260924-runtime1');
   assert.ok(!read('kids/index.html').includes('guestcountry='),'the adult country revision stays outside Kids');
+  assert.equal(version('kids/index.html','build-meta.js'),'20260924-runtime2&amp;build=20261028-1');
   const buildPages=['index.html','together.html','pricing/pricing.html','friends.html','events-archive.html'];
-  assert.equal(version('index.html','build-meta.js'),'20261002-weekly-cover1&amp;seo=20260928-2&amp;release=20260929-5&amp;intent=20260930-1&amp;installfix=20260930-1&amp;icon=20261003-premiumicon1&amp;fastlang=20261014-2&amp;polish=20261020-ui1&amp;androidqa=20261021-1'+repair+masthead);
+  assert.equal(version('index.html','build-meta.js'),'20261002-weekly-cover1&amp;seo=20260928-2&amp;release=20260929-5&amp;intent=20260930-1&amp;installfix=20260930-1&amp;icon=20261003-premiumicon1&amp;fastlang=20261014-2&amp;polish=20261020-ui1&amp;androidqa=20261021-1'+repair+masthead+'&amp;build=20261028-1');
   for(const page of buildPages.filter(p=>p!=='index.html')){
     assert.equal(version(page,'build-meta.js'),'20260926-publicproof1'+(page==='events-archive.html'?'':'&amp;installfix=20260930-1&amp;icon=20261001-circle-launch1')+'&amp;fastlang=20261014-2'+(page==='pricing/pricing.html'?'&amp;pricing=20261017-2':'')+'&amp;polish=20261020-ui1&amp;androidqa=20261021-1'+repair+masthead);
   }
