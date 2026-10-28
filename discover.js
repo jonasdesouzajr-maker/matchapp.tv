@@ -2517,7 +2517,21 @@ async function runAskAndRender(question, opts) {
  // Keep one allowance debit and one answer in flight on this page at a time.
 let askInFlight = null;
 function askAndRender(question, opts) {
-    if (askInFlight) return askInFlight;
+    question=String(question||'').trim();
+    if(!question)return Promise.resolve();
+    if (askInFlight) {
+        // Duplicate button/keyboard/voice delivery shares the original debit.
+        // A different follow-up must wait, not disappear while its text is
+        // cleared by the composer or the previous reply finishes its cards.
+        if(askInFlight.question===question)return askInFlight;
+        const queuedVersion=discoverThreadVersion,queuedLanguage=window.MATCH_LANG||'en';
+        const voiceOrigin=opts?.voiceOrigin===true||
+            (!!window.MatchAppVoiceOrigin?.consume&&window.MatchAppVoiceOrigin.consume(question));
+        return askInFlight.then(()=>{
+            if(queuedVersion!==discoverThreadVersion||queuedLanguage!==(window.MATCH_LANG||'en'))return null;
+            return askAndRender(question,{...opts,voiceOrigin});
+        });
+    }
     const landingContext = window.MatchAppLandingIntent?.capture?.(question) || null;
     const requestVersion=discoverThreadVersion;
     const replyCount = document.querySelectorAll('#chat-log .chat-assistant').length;
@@ -2547,6 +2561,7 @@ function askAndRender(question, opts) {
         window.showToast?.('Ask AI could not complete this request. Your question is ready to retry.',true,{recovery:true});
         return null;
     });
+    running.question=question;
     askInFlight = running;
     running.finally(() => {
         if (askInFlight === running) askInFlight = null;
