@@ -17,6 +17,12 @@ const UA={
 function mount(opts={}){
  const dom=new JSDOM('<!doctype html><html lang="'+(opts.lang||'en')+'"><head></head><body class="page-home"><main></main></body></html>',{url:opts.kids?'https://matchapp.tv/kids/':'https://matchapp.tv/',runScripts:'outside-only'});
  const w=dom.window,items=[],timers=[];
+ let now=1000000,id=0;w.Date.now=()=>now;
+ const jobs=new Map();
+ w.setTimeout=(fn,ms)=>{const key=++id;jobs.set(key,{fn,due:now+ms});return key};
+ w.clearTimeout=key=>jobs.delete(key);
+ Object.defineProperty(w.document,'visibilityState',{value:'visible',configurable:true});
+ if(opts.session)w.sessionStorage.setItem('matchapp_play_bubble_session_v1',JSON.stringify(opts.session));
  Object.defineProperty(w.navigator,'userAgent',{value:opts.ua||UA.android,configurable:true});
  Object.defineProperty(w.navigator,'maxTouchPoints',{value:opts.touch||0,configurable:true});
  Object.defineProperty(w.navigator,'getInstalledRelatedApps',{value:opts.related?()=>Promise.resolve(opts.related):undefined,configurable:true});
@@ -24,24 +30,43 @@ function mount(opts={}){
  w.matchAppInstallState={isInstalled:()=>!!opts.installed};
  w.MatchNotifications={pushLocal:item=>{items.push(item);return true}};
  if(Number.isFinite(opts.visits))w.localStorage.setItem('matchapp_install_prompt_visits_v2',String(opts.visits));
- const real=w.setTimeout.bind(w);
- w.setTimeout=(fn,ms)=>{if(ms===1100){timers.push(fn);return 991}return real(fn,ms)};
+
  w.eval(source);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
- return {dom,w,items,timers};
+ return {dom,w,items,timers,async advance(ms){now+=ms;for(let rounds=0;rounds<8;rounds++){const ready=[...jobs].filter(([,job])=>job.due<=now);if(!ready.length)break;for(const [key,job] of ready){jobs.delete(key);job.fn();}await settle();await settle();}}};
 }
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
-async function fire(ctx){if(ctx.timers.length)ctx.timers.shift()();await settle();await settle();}
-test('Android browser prompting uses the notification bell and Google Play, never a floating/browser-install offer',async()=>{
- const ctx=mount({ua:UA.android,visits:0});await fire(ctx);
- assert.equal(ctx.items.length,1);assert.equal(ctx.items[0].kind,'install');assert.equal(ctx.items[0].action,'install');
- assert.equal(ctx.items[0].href,play);assert.match(ctx.items[0].title,/Google Play/i);assert.match(ctx.items[0].body,/instead of installing from the browser/i);
- assert.equal(ctx.w.localStorage.getItem('matchapp_install_prompt_visits_v2'),'1');
- assert.equal(ctx.w.document.getElementById('ma-install-offer'),null);
- ctx.dom.window.close();
+async function fire(ctx){await ctx.advance(1100);}
+const bubble=ctx=>ctx.w.document.getElementById('ma-install-offer');
+test('Android opening shows one accessible Play bubble without stealing focus or adding bell spam',async()=>{
+ const ctx=mount({visits:99});await fire(ctx);
+ assert.equal(ctx.items.length,0);assert.ok(bubble(ctx));assert.equal(bubble(ctx).querySelector('a').href,play);
+ assert.equal(bubble(ctx).querySelector('a').target,'_blank');assert.equal(bubble(ctx).querySelector('button').getAttribute('aria-label'),'Close');
+ assert.equal(ctx.w.document.activeElement,ctx.w.document.body);
+ bubble(ctx).querySelector('button').click();assert.equal(bubble(ctx),null);
+ await ctx.advance(299999);assert.equal(bubble(ctx),null);await ctx.advance(1);assert.ok(bubble(ctx));
+ bubble(ctx).querySelector('button').click();await ctx.advance(1199999);assert.equal(bubble(ctx),null);await ctx.advance(1);assert.ok(bubble(ctx));
+ bubble(ctx).querySelector('button').click();await ctx.advance(9999999);assert.equal(bubble(ctx),null);ctx.dom.window.close();
 });
-test('install bell prompt appears only on the first and second eligible Home visits',async()=>{
- const second=mount({visits:1});await fire(second);assert.equal(second.items.length,1);assert.match(second.items[0].localKey,/-2$/);assert.equal(second.w.localStorage.getItem('matchapp_install_prompt_visits_v2'),'2');second.dom.window.close();
- const third=mount({visits:2});await fire(third);assert.equal(third.items.length,0);third.dom.window.close();
+test('new sessions restart the invitation while navigation retains dismissal and store clicks stop reminders',async()=>{
+ const ctx=mount({session:{count:1,next:1300000,stopped:false}});await fire(ctx);assert.equal(bubble(ctx),null);
+ await ctx.advance(300000);assert.ok(bubble(ctx));
+ bubble(ctx).querySelector('a').addEventListener('click',e=>e.preventDefault());bubble(ctx).querySelector('a').click();
+ assert.equal(bubble(ctx),null);assert.equal(JSON.parse(ctx.w.sessionStorage.getItem('matchapp_play_bubble_session_v1')).stopped,true);
+ await ctx.advance(9999999);assert.equal(bubble(ctx),null);ctx.dom.window.close();
+ const fresh=mount();await fire(fresh);assert.ok(bubble(fresh));fresh.dom.window.close();
+});
+test('bubble defers to forms, dialogs and background tabs and exits when installed',async()=>{
+ const ctx=mount();const input=ctx.w.document.createElement('input');ctx.w.document.body.append(input);input.focus();await fire(ctx);assert.equal(bubble(ctx),null);
+ input.blur();await ctx.advance(15000);assert.ok(bubble(ctx));
+ const dialog=ctx.w.document.createElement('dialog');dialog.setAttribute('open','');ctx.w.document.body.append(dialog);await settle();assert.equal(bubble(ctx),null);
+ await ctx.advance(300000);assert.equal(bubble(ctx),null);dialog.remove();await ctx.advance(15000);assert.ok(bubble(ctx));
+ ctx.w.dispatchEvent(new ctx.w.Event('appinstalled'));assert.equal(bubble(ctx),null);await ctx.advance(9999999);assert.equal(bubble(ctx),null);ctx.dom.window.close();
+ const hidden=mount();Object.defineProperty(hidden.w.document,'visibilityState',{value:'hidden',configurable:true});await fire(hidden);assert.equal(bubble(hidden),null);hidden.dom.window.close();
+});
+for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'])test('Android bubble keeps authored '+lang+' copy and repaints in place',async()=>{
+ const ctx=mount({lang});await fire(ctx);const box=bubble(ctx);assert.ok(box);assert.equal(box.lang,lang);assert.equal(box.dir,lang==='ar'?'rtl':'ltr');
+ if(lang!=='en')assert.notEqual(box.querySelector('button').getAttribute('aria-label'),'Close');
+ ctx.w.MATCH_LANG='pt-BR';ctx.w.document.dispatchEvent(new ctx.w.Event('matchapp:langchange'));assert.equal(bubble(ctx),box);assert.equal(box.querySelector('button').getAttribute('aria-label'),'Fechar');assert.match(box.textContent,/Baixe/);ctx.dom.window.close();
 });
 test('iPhone and Mac prompts use the real Apple home-screen/app flow through the bell',async()=>{
  const ios=mount({ua:UA.ios});await fire(ios);assert.equal(ios.items.length,1);assert.match(ios.items[0].title,/Home Screen/i);assert.equal(ios.items[0].action,'install');ios.dom.window.close();
@@ -49,7 +74,7 @@ test('iPhone and Mac prompts use the real Apple home-screen/app flow through the
 });
 test('native/installed/Kids/associated installs are never prompted',async()=>{
  for(const opts of [{ua:UA.native},{standalone:true},{installed:true},{kids:true},{related:[{platform:'play',id:'com.jonas.papercup'}]}]){
-   const ctx=mount(opts);await fire(ctx);assert.equal(ctx.items.length,0,JSON.stringify(opts));ctx.dom.window.close();
+   const ctx=mount(opts);await fire(ctx);assert.equal(ctx.items.length,0,JSON.stringify(opts));assert.equal(bubble(ctx),null);ctx.dom.window.close();
  }
 });
 test('notification center exposes local install notifications, branded arrival feedback and bulk delete',()=>{
