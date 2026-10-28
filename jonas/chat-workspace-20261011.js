@@ -29,8 +29,13 @@
    const cookieRect=cookie?.getBoundingClientRect();
    const cookieTop=cookieRect&&cookieRect.height>0&&getComputedStyle(cookie).display!=='none'
     ? cookieRect.top-9:Infinity;
+   const dock=document.querySelector('.ma-cinema-dock,.ma-reference-dock');
+   const dockRect=dock?.getBoundingClientRect();
+   const dockTop=dockRect&&dockRect.height>0&&getComputedStyle(dock).display!=='none'&&getComputedStyle(dock).visibility!=='hidden'
+    ? dockRect.top-8:Infinity;
    const workspaceTop=keyboardVisible?(viewport.offsetTop+10):top;
-   const free=Math.max(140,Math.floor(Math.min(viewportBottom-10,cookieTop)-workspaceTop));
+   const free=Math.max(80,Math.floor(Math.min(viewportBottom-10,cookieTop,dockTop)-workspaceTop));
+   panel.dataset.compact=String(free<280);
    panel.style.setProperty('--jonas-workspace-height',free+'px');
   });
  }

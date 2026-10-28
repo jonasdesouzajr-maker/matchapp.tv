@@ -52,13 +52,13 @@
   advance(0);
   return current;
  }
- function advance(progress){
+ function advance(progress,expected){
   const session=current;
-  if(!session||!session.element.isConnected)return;
+  if(!session||(expected&&expected!==session)||!session.element.isConnected)return;
   const p=Math.max(0,Math.min(1,Number(progress)||0));
   const chars=p*session.total;
-  const idx=Math.max(0,session.ends.findIndex(end=>chars<end));
-  if(idx===session.index)return;
+  const found=session.ends.findIndex(end=>chars<end);
+  const idx=found<0?session.nodes.length-1:found;
   session.index=idx;
   for(let i=0;i<session.nodes.length;i++){
    const node=session.nodes[i];
@@ -67,12 +67,16 @@
   }
   const log=session.log,active=session.nodes[idx];
   if(log&&active){
-   const target=log.scrollTop+active.getBoundingClientRect().top-log.getBoundingClientRect().top-log.clientHeight*.32;
+   const bounds=log.getBoundingClientRect(),line=active.getBoundingClientRect();
+   const inset=Math.min(12,Math.max(0,(log.clientHeight-24)/4));
+   // Keep the spoken sentence in the reading area without moving the page.
+   if(line.top>=bounds.top+inset&&line.bottom<=bounds.top+log.clientHeight-16)return;
+   const target=log.scrollTop+line.top-bounds.top-inset;
    log.scrollTop=Math.max(0,Math.min(log.scrollHeight-log.clientHeight,target));
   }
  }
- function finish(){
-  if(!current)return;
+ function finish(expected){
+  if(!current||(expected&&expected!==current))return;
   for(const node of current.nodes){
    node.classList.remove('jonas-speaking-line');
    node.classList.add('jonas-spoken');
