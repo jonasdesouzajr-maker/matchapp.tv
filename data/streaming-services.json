@@ -1,0 +1,5409 @@
+{
+  "schema_version": 1,
+  "research_date": "2026-10-28",
+  "market_scope": "Representative markets only; absence is not evidence of unavailability. No worldwide rights or exhaustive territorial coverage is asserted.",
+  "offer_scope": "Models observed for the service; individual titles, countries, channels and plans require separate verification. Free does not mean ad-free or exempt from licence/account requirements.",
+  "integration_scope": "Service discovery directory only. Existing matching, title identity, provider verification and Kids allowlists remain authoritative.",
+  "services": [
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "aliases": [],
+      "homepage": "https://www.netflix.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "BR",
+        "US",
+        "GB",
+        "IT",
+        "DE",
+        "FR",
+        "MX",
+        "CA",
+        "AU"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Movies",
+        "Series",
+        "Originals",
+        "Documentaries",
+        "Anime"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.netflix.com/en/node/14164",
+          "note": "Official help confirms service in more than 190 countries and a library that differs by country."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Ad-supported paid plans remain subscription offers, never free-with-ads. No uniform global catalog.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "anime"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "prime-video",
+      "name": "Prime Video",
+      "aliases": [
+        "Amazon Prime Video"
+      ],
+      "homepage": "https://www.primevideo.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "US",
+        "BR",
+        "GB",
+        "DE"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent",
+        "buy",
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "Movies",
+        "Series",
+        "Originals",
+        "Add-on channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://digprjsurvey.amazon.com/csad/help/node/G202095490",
+          "note": "Official Amazon terms distinguish subscription, rental, purchase, pay-per-view and free content."
+        },
+        {
+          "url": "https://advertising.amazon.com/en-us/library/guides/free-ad-supported-streaming-tv/",
+          "note": "Amazon confirms Freevee content/FAST channels now sit under Prime Video Watch for free."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Free content and channels are market-specific. Add-on subscriptions and rental purchases are not included automatically in Prime.",
+      "focus": [
+        "movies",
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+",
+      "aliases": [
+        "Disney Plus"
+      ],
+      "homepage": "https://www.disneyplus.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "BR",
+        "US"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Disney",
+        "Pixar",
+        "Marvel",
+        "Star Wars",
+        "National Geographic",
+        "Hulu hub in applicable markets"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.disneyplus.com/pt-br/browse/entity-f90dfcd0-4748-489e-9001-e797596817f7",
+          "note": "Brazil official offer lists core brands, plan tiers and ESPN sports."
+        },
+        {
+          "url": "https://help.disneyplus.com/pt-BR/article/disneyplus-pt-br-live-sports",
+          "note": "2026 Brazil help limits full ESPN sports catalog to Premium and explains regional rights."
+        },
+        {
+          "url": "https://www.disneyplus.com/",
+          "note": "US landing page shows Disney+, Hulu and ESPN bundles."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Sports are plan- and country-dependent. Brazil ESPN full sports access requires Premium; international Hulu hub branding does not mean US Hulu subscription rights.",
+      "focus": [],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "hbo-max",
+      "name": "HBO Max",
+      "aliases": [
+        "Max",
+        "HBO GO"
+      ],
+      "homepage": "https://www.hbomax.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "US",
+        "BR",
+        "MX",
+        "AR",
+        "GB",
+        "IE",
+        "DE",
+        "IT",
+        "FR",
+        "PT",
+        "ES",
+        "AU",
+        "NZ",
+        "TR"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "HBO",
+        "Warner Bros.",
+        "DC",
+        "Films",
+        "Series"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.hbomax.com/US/Answer/Detail/000002518",
+          "note": "Official current country list includes these representative markets."
+        },
+        {
+          "url": "https://press.wbd.com/emea/ca/media-release/hbo-max-now-streaming-uk-and-ireland-major-international-expansion?language_content_entity=en",
+          "note": "WBD confirms UK/Ireland direct launch on 26 March 2026."
+        },
+        {
+          "url": "https://press.wbd.com/emea/ca/media-release/hbo-max-goes-live-eight-new-countries-including-germany-and-italy-highly-anticipated?language_content_entity=en",
+          "note": "WBD confirms eight-country expansion including Germany/Italy on 13 January 2026."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Max is a prior brand alias, not a separate simultaneous service. Sports and partner bundles depend on market. HBO GO is a historic regional brand, not a universal rights migration.",
+      "focus": [
+        "movies",
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "apple-tv",
+      "name": "Apple TV",
+      "aliases": [
+        "Apple TV+",
+        "Apple TV Plus"
+      ],
+      "homepage": "https://tv.apple.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "US",
+        "BR"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Apple Originals",
+        "Films",
+        "Series",
+        "Documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.apple.com/tv-pr/about/",
+          "note": "Official FAQ explicitly states Apple TV+ is now Apple TV and identifies the original-content subscription."
+        },
+        {
+          "url": "https://support.apple.com/pt-br/118404",
+          "note": "Brazil support confirms Apple TV branding and subscription access."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Subscription service entity only; separate from Apple TV hardware, app, third-party channels, and Store rentals/purchases. Sports rights are country-specific.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "apple-tv-store",
+      "name": "Apple TV Store",
+      "aliases": [
+        "iTunes Movies",
+        "Apple iTunes"
+      ],
+      "homepage": "https://tv.apple.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "AU",
+        "CA"
+      ],
+      "offer_types": [
+        "rent",
+        "buy"
+      ],
+      "specialties": [
+        "Digital movie rentals",
+        "Movie and television purchases"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.apple.com/en-au/119890",
+          "note": "Official Apple support confirms movie/TV purchases through the TV app."
+        },
+        {
+          "url": "https://support.roku.com/en-ca/article/watch-apple-tv",
+          "note": "Official Canadian device support describes Apple TV streaming, buying and renting."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Transactional storefront distinct from Apple TV subscription. Rent/buy availability differs by country and title.",
+      "focus": [
+        "movies",
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "paramount-plus",
+      "name": "Paramount+",
+      "aliases": [
+        "Paramount Plus"
+      ],
+      "homepage": "https://www.paramountplus.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "US",
+        "CA",
+        "MX",
+        "BR",
+        "AR",
+        "GB",
+        "IE",
+        "DE",
+        "FR",
+        "IT",
+        "AT",
+        "CH",
+        "AU"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Movies",
+        "Series",
+        "Paramount originals",
+        "Kids"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.paramountplus.com/global/",
+          "note": "Official global landing page lists supported country destinations."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "SkyShowtime is a separate service in other European markets. Sports and live channels require market-specific confirmation.",
+      "focus": [
+        "movies",
+        "series",
+        "kids"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "mubi",
+      "name": "MUBI",
+      "aliases": [],
+      "homepage": "https://mubi.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "BR",
+        "US",
+        "GB",
+        "IT",
+        "FR",
+        "DE",
+        "MX",
+        "AR",
+        "CA",
+        "CL",
+        "CO",
+        "NL",
+        "TR"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Curated cinema",
+        "Independent films",
+        "International cinema"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.mubi.com/article/31-will-movies-have-subtitles-in-my-language",
+          "note": "Official FAQ identifies localized markets and warns other territories have different language options."
+        },
+        {
+          "url": "https://help.mubi.com/article/27-in-how-many-countries-can-i-watch-films-on-mubi",
+          "note": "Official FAQ explains country-specific film rights."
+        },
+        {
+          "url": "https://mubi.com/",
+          "note": "Official landing page presents curated cinema subscription."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Each country has a distinct lineup. MUBI GO cinema tickets are a separate entitlement and not globally included.",
+      "focus": [
+        "movies",
+        "arthouse"
+      ],
+      "integration": "directory_only",
+      "kind": "culture"
+    },
+    {
+      "id": "plex",
+      "name": "Plex",
+      "aliases": [],
+      "homepage": "https://www.plex.tv/watch-free/",
+      "region_group": "global",
+      "representative_markets": [],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "Free films",
+        "Free shows",
+        "FAST channels",
+        "Discovery"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.plex.tv/watch-free/",
+          "note": "Official page offers free movies/shows and live channels with worldwide reach."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Worldwide marketing is not a country rights list. Country list intentionally omitted until verified. Rentals and personal-media plans are separate products.",
+      "focus": [
+        "movies",
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "pluto-tv",
+      "name": "Pluto TV",
+      "aliases": [],
+      "homepage": "https://pluto.tv/",
+      "region_group": "global",
+      "representative_markets": [
+        "DE"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "FAST channels",
+        "On-demand movies",
+        "Series"
+      ],
+      "official_sources": [
+        {
+          "url": "https://pluto.tv/gsa/",
+          "note": "Official German service page offers free live TV, movies and series."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Representative market evidence is German landing page; service operates elsewhere but no exhaustive coverage asserted.",
+      "focus": [
+        "movies",
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "samsung-tv-plus",
+      "name": "Samsung TV Plus",
+      "aliases": [],
+      "homepage": "https://www.samsungtvplus.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "FAST channels",
+        "On-demand entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.samsung.com/au/tvs/smart-tv/samsung-tv-plus/",
+          "note": "Official Australian FAQ describes free ad-supported video and compatible Samsung devices."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Availability depends on country, device and model. This representative-market evidence is Australia only; do not extrapolate every channel globally.",
+      "focus": [
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "hulu",
+      "name": "Hulu",
+      "aliases": [],
+      "homepage": "https://www.hulu.com/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "US series",
+        "FX",
+        "Hulu originals",
+        "Optional live television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.hulu.com/subscriber_agreement",
+          "note": "Official terms say US Hulu service is available in the US and certain territories."
+        },
+        {
+          "url": "https://www.hulu.com/livetvterms",
+          "note": "Live TV terms restrict coverage to 50 US states and DC."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Hulu US is distinct from Hulu Japan and from the international Hulu content hub on Disney+. Live TV is a separate plan.",
+      "focus": [
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "peacock",
+      "name": "Peacock",
+      "aliases": [],
+      "homepage": "https://www.peacocktv.com/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "NBCUniversal movies",
+        "Series",
+        "Sports",
+        "Live programming"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.peacocktv.com/help/article/where-is-peacock-available",
+          "note": "Official help limits streaming to the US and specified US territories."
+        },
+        {
+          "url": "https://www.peacocktv.com/help/article/what-can-i-watch-on-peacock",
+          "note": "Official help describes available content categories."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "US service; NBCUniversal content in other countries does not establish Peacock service availability.",
+      "focus": [
+        "movies",
+        "series",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "tubi",
+      "name": "Tubi",
+      "aliases": [],
+      "homepage": "https://tubitv.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "US",
+        "CA",
+        "MX",
+        "GB",
+        "AU",
+        "CR",
+        "EC",
+        "SV",
+        "GT",
+        "PA"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "Free movies",
+        "Series",
+        "Originals",
+        "FAST channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://tubitv.com/help-center/About-Tubi/articles/4409969055259",
+          "note": "Official help names international markets and supported devices."
+        },
+        {
+          "url": "https://corporate.tubitv.com/",
+          "note": "Official company page describes AVOD and regional coverage."
+        },
+        {
+          "url": "https://tubitv.com/help-center/Content/articles/24898743777435",
+          "note": "US live-channel help confirms geographically variable FAST channels."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Do not infer Brazil coverage from Latin America wording. Channels and titles differ by region.",
+      "focus": [
+        "movies",
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "roku-channel",
+      "name": "The Roku Channel",
+      "aliases": [
+        "Roku Channel"
+      ],
+      "homepage": "https://therokuchannel.roku.com/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US",
+        "CA",
+        "GB",
+        "MX"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv",
+        "subscription"
+      ],
+      "specialties": [
+        "Free movies",
+        "Shows",
+        "FAST channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://therokuchannel.roku.com/",
+          "note": "Official catalog explicitly labels free-with-ads titles and offers Live TV."
+        },
+        {
+          "url": "https://support.roku.com/en-ca/article/get-the-roku-channel",
+          "note": "Official April 2026 help confirms US/CA/GB device/web/mobile access; Mexico Roku devices only; Premium subscriptions US only."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Mexico access is on Roku streaming devices only. US, Canada and UK have device/web/mobile access according to official help. Premium subscriptions are US-only with device exceptions; country catalogs differ.",
+      "focus": [
+        "movies",
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "crave",
+      "name": "Crave",
+      "aliases": [],
+      "homepage": "https://www.crave.ca/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "CA"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Canadian originals",
+        "English and French entertainment",
+        "Movies",
+        "Series"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.bellmedia.ca/the-lede/press/crave-standard-with-ads-plan-launches-on-prime-video-subscriptions-in-canada/",
+          "note": "Owner Bell Media confirms Canadian subscription service, bilingual offer and Prime channel distribution."
+        },
+        {
+          "url": "https://www.crave.ca/en/subscribe",
+          "note": "Official current plans identify movies, series, live events, selected sport and news."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Partner channel subscription and direct Crave billing may differ. HBO rights here must not be replaced with a presumed Canadian HBO Max app.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "cbc-gem",
+      "name": "CBC Gem",
+      "aliases": [],
+      "homepage": "https://gem.cbc.ca/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "CA"
+      ],
+      "offer_types": [
+        "free_ads",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Canadian television",
+        "Documentaries",
+        "Movies",
+        "CBC channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://play.google.com/store/apps/details?id=ca.cbc.android.cbctv",
+          "note": "Canadian Broadcasting Corporation official app listing confirms Canada-only streaming, free offer and Premium option."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Premium adds benefits; not all CBC content is available internationally. Direct site extraction blocked; publisher app listing supplies primary evidence.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "pbs",
+      "name": "PBS",
+      "aliases": [],
+      "homepage": "https://www.pbs.org/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US",
+        "CA"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Public television",
+        "Documentaries",
+        "Drama",
+        "Arts"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.pbs.org/support/solutions/articles/12000092530-how-much-does-it-cost-to-watch-pbs-",
+          "note": "Official help distinguishes free videos/local livestreams from Passport donor benefit."
+        },
+        {
+          "url": "https://help.pbs.org/support/solutions/articles/12000096220-common-questions",
+          "note": "Passport help identifies US/territories and Canada, with rights limitations."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "PBS Passport is an eligible station-donor benefit, not a blanket free offer or ordinary subscription. Livestreams require local station geography; Canadian Passport rights differ.",
+      "focus": [
+        "series",
+        "documentaries"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "criterion-channel",
+      "name": "The Criterion Channel",
+      "aliases": [
+        "Criterion Channel"
+      ],
+      "homepage": "https://www.criterionchannel.com/",
+      "region_group": "north_america",
+      "representative_markets": [],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Classic cinema",
+        "Independent cinema",
+        "Curated film collections"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.criterionchannel.com/",
+          "note": "Official live catalog exposes new, all-film, leaving-soon and curated collection pages."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Country eligibility not independently checked in this pass; representative markets omitted. Subscription entitlement still must be confirmed in current sign-up flow.",
+      "focus": [
+        "movies",
+        "arthouse"
+      ],
+      "integration": "directory_only",
+      "kind": "culture"
+    },
+    {
+      "id": "shudder",
+      "name": "Shudder",
+      "aliases": [],
+      "homepage": "https://www.shudder.com/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Horror",
+        "Thrillers",
+        "Supernatural cinema"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.shudder.com/",
+          "note": "Official page identifies premium horror service, subscription sign-up and distribution through AMC+."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Standalone Shudder and AMC+ bundle are different billing/distribution entitlements. Market and plan availability require confirmation.",
+      "focus": [
+        "movies"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "globoplay",
+      "name": "Globoplay",
+      "aliases": [],
+      "homepage": "https://globoplay.globo.com/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Brazilian novelas",
+        "Globo originals",
+        "Films",
+        "Series",
+        "Globo programming"
+      ],
+      "official_sources": [
+        {
+          "url": "https://ajuda.globo.com/article/Sobre-os-Produtos-Globo-e-parceiros",
+          "note": "Official help describes Globoplay plans and premium live channels."
+        },
+        {
+          "url": "https://globoplay.globo.com/assine/",
+          "note": "Official landing page confirms novelas, originals, series and live TV."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "International Globoplay catalogs are distinct from Brazil. Telecine, Premiere and Combate entitlements must remain separate from base subscription.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "mercado-play",
+      "name": "Mercado Play",
+      "aliases": [],
+      "homepage": "https://play.mercadolivre.com.br/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR",
+        "MX",
+        "AR",
+        "CL",
+        "CO",
+        "UY",
+        "PE"
+      ],
+      "offer_types": [
+        "free_ads"
+      ],
+      "specialties": [
+        "Free movies",
+        "Series",
+        "Documentaries",
+        "Kids"
+      ],
+      "official_sources": [
+        {
+          "url": "https://news.mercadolivre.com/pt/mercado-play-em-todas-as-Smart-TVs",
+          "note": "Official Mercado Livre article confirms free ad-supported streaming and Smart TV expansion in Latin America."
+        },
+        {
+          "url": "https://play.mercadolivre.com.br/filtrar/gratuito",
+          "note": "Official Brazil catalog labels content watchable free."
+        },
+        {
+          "url": "https://news.mercadolibre.com/mercado-play-pisa-fuerte-en-el-segmento-de-contenidos-gratuitos-en-la-region",
+          "note": "Official Mercado Libre indexed article explicitly names Argentina, Chile, Brazil, Mexico, Colombia, Uruguay and Peru."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Country-specific catalogs differ. Keep official BR/MX/AR destinations from the existing project; direct MX/AR retrieval returned 403 in this research, while owner article verifies market presence. Paid Meli streaming bundles are distinct.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "kids"
+      ],
+      "integration": "directory_only",
+      "kind": "films",
+      "destinations": {
+        "BR": "https://play.mercadolivre.com.br/",
+        "MX": "https://play.mercadolibre.com.mx/",
+        "AR": "https://play.mercadolibre.com.ar/"
+      }
+    },
+    {
+      "id": "record-plus",
+      "name": "RecordPlus",
+      "aliases": [
+        "PlayPlus",
+        "Record Plus"
+      ],
+      "homepage": "https://descubra.recordplus.com/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [
+        "free",
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Record novelas",
+        "Reality shows",
+        "News",
+        "Live TV"
+      ],
+      "official_sources": [
+        {
+          "url": "https://descubra.recordplus.com/",
+          "note": "Official site identifies PlayPlus rebrand, free live offer and paid RecordPlus plans."
+        },
+        {
+          "url": "https://record.r7.com/fala-brasil/video/streaming-da-record-passa-a-se-chamar-recordplus-15082025/",
+          "note": "Record confirms PlayPlus renamed RecordPlus on 15 August 2025."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Free plan and paid full programming differ. Do not label every reality stream or episode free.",
+      "focus": [
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "claro-tv-plus",
+      "name": "Claro tv+",
+      "aliases": [
+        "Claro TV Mais",
+        "NOW Brasil"
+      ],
+      "homepage": "https://www.clarotvmais.com.br/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent",
+        "buy",
+        "live_tv",
+        "tv_everywhere"
+      ],
+      "specialties": [
+        "Live television",
+        "Movies",
+        "Series",
+        "Paid streaming bundles"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.claro.com.br/faq/tv/informacoes-sobre-como-acessar-claro-tv-mais",
+          "note": "Official help distinguishes live-channel access, subscriptions and rental content."
+        },
+        {
+          "url": "https://www.claro.com.br/faq/tv/como-alugar-ou-comprar-filmes-no-app-claro-tv",
+          "note": "Official help confirms rental and purchase offers."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Brazil Claro tv+ is distinct from NOW UK. Bundled streaming requires eligible plan/activation; no automatic access to all brands.",
+      "focus": [
+        "movies",
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "claro-video",
+      "name": "Claro video",
+      "aliases": [],
+      "homepage": "https://www.clarovideo.com/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent"
+      ],
+      "specialties": [
+        "Movies",
+        "Series",
+        "Documentaries",
+        "Shows"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.claro.com.br/faq/servicos/o-que-e-o-claro-video",
+          "note": "Official FAQ identifies subscription and rental streaming."
+        },
+        {
+          "url": "https://www.claro.com.br/servicos/entretenimento/claro-video",
+          "note": "Current Brazil page explains Claro video content inside Claro tv+."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Brazil source shows Claro video accessed within Claro tv+ according to plan. Other Latin American country catalogs need individual confirmation.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "looke",
+      "name": "Looke",
+      "aliases": [],
+      "homepage": "https://www.looke.com.br/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Movies",
+        "Series",
+        "International films",
+        "Looke Kids"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.looke.com.br/helpcenter/firststeps",
+          "note": "Official help identifies Brazilian streaming service and subscription catalog."
+        },
+        {
+          "url": "https://www.looke.com.br/helpcenter/watchingLooke",
+          "note": "Official current help requires monthly or annual subscription."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Current help requires subscription. Do not retain older rental/buy assumptions without fresh evidence.",
+      "focus": [
+        "movies",
+        "series",
+        "kids"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "belas-artes-a-la-carte",
+      "name": "Belas Artes à La Carte",
+      "aliases": [],
+      "homepage": "https://www.belasartesalacarte.com.br/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [],
+      "specialties": [
+        "Curated cinema"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.belasartesalacarte.com.br/",
+          "note": "Official landing page confirms streaming brand; plan/entitlement evidence not extracted."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "pending_verification",
+      "caveats": "Brand identity only verified. Confirm current plans and geographic restrictions before indexable offer pages.",
+      "focus": [
+        "movies",
+        "arthouse"
+      ],
+      "integration": "directory_only",
+      "kind": "culture"
+    },
+    {
+      "id": "mais-sbt",
+      "name": "+SBT",
+      "aliases": [
+        "SBT Plus",
+        "Mais SBT"
+      ],
+      "homepage": "https://mais.sbt.com.br/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "SBT archive",
+        "Novelas",
+        "Originals",
+        "Films",
+        "FAST channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://sbtnews.sbt.com.br/noticia/economia/sbt-conquista-premio-de-app-mais-divertido-no-melhores-de-2024-do-google-play",
+          "note": "SBT official release identifies free on-demand and FAST streaming."
+        },
+        {
+          "url": "https://mais.sbt.com.br/",
+          "note": "Current official service destination remains accessible."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Service is free, but catalog and live rights remain title/region-specific.",
+      "focus": [
+        "movies",
+        "series",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "tela-brasil",
+      "name": "Tela Brasil",
+      "aliases": [],
+      "homepage": "https://telabrasil.cultura.gov.br/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "BR"
+      ],
+      "offer_types": [
+        "free"
+      ],
+      "specialties": [
+        "Brazilian cinema",
+        "Short films",
+        "Documentaries",
+        "National audiovisual heritage"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.gov.br/cultura/pt-br/assuntos/noticias-defeso-eleitoral/tela-brasil-confira-como-acessar-a-plataforma-publica-de-streaming/",
+          "note": "Ministry of Culture July 2026 update confirms active free service, web/mobile access and gov.br login."
+        },
+        {
+          "url": "https://agenciagov.ebc.com.br/noticias/202605/tela-brasil-a-plataforma-publica-de-streaming-comeca-a-funcionar-neste-sabado-30",
+          "note": "Official Ministry announcement states 30 May 2026 launch and no advertising or subscription."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Requires active gov.br account. Do not repeat early-2026 reports that it was already available before its May 30 launch; accessibility differs per work.",
+      "focus": [
+        "movies",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "vix",
+      "name": "ViX",
+      "aliases": [
+        "ViX+",
+        "ViX Premium"
+      ],
+      "homepage": "https://vix.com/",
+      "region_group": "latin_america",
+      "representative_markets": [
+        "US",
+        "MX",
+        "AR",
+        "CL",
+        "CO",
+        "PE",
+        "EC",
+        "GT",
+        "CR",
+        "SV",
+        "HN",
+        "BO",
+        "PA",
+        "DO",
+        "NI",
+        "PY",
+        "VE",
+        "UY"
+      ],
+      "offer_types": [
+        "free_ads",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Spanish-language novelas",
+        "Movies",
+        "Originals",
+        "Sports",
+        "News"
+      ],
+      "official_sources": [
+        {
+          "url": "https://ayuda.vix.com/hc/en-us/articles/4863337920141-In-which-countries-is-ViX-available",
+          "note": "Official country list supplies representative markets."
+        },
+        {
+          "url": "https://ayuda.vix.com/hc/es/articles/7632801854861--Qu%C3%A9-planes-ofrece-ViX",
+          "note": "Official help distinguishes Gratis, Premium with ads, and Premium without ads."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Brazil is not on the official country list. Premium-with-ads is not free and the official help limits that plan to US/Puerto Rico.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "bbc-iplayer",
+      "name": "BBC iPlayer",
+      "aliases": [],
+      "homepage": "https://www.bbc.co.uk/iplayer",
+      "region_group": "europe",
+      "representative_markets": [
+        "GB"
+      ],
+      "offer_types": [
+        "live_tv"
+      ],
+      "specialties": [
+        "BBC series",
+        "Documentaries",
+        "Films",
+        "Public television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.bbc.com/hc/en-us/articles/46983028513299-Is-BBC-iPlayer-included-in-the-BBC-subscription",
+          "note": "Official BBC help confirms iPlayer UK-only and requires a valid TV licence."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Do not market as unconditional free streaming. UK TV licence and BBC account requirements apply. Separate from BBC.com international subscription.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "itvx",
+      "name": "ITVX",
+      "aliases": [
+        "ITV Hub"
+      ],
+      "homepage": "https://www.itv.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "GB"
+      ],
+      "offer_types": [
+        "free_ads",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "ITV programming",
+        "Movies",
+        "Drama",
+        "Reality",
+        "News"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.itv.com/",
+          "note": "Official service exposes films, genres, live channels and ad-free upgrade."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Premium ad-free upgrade differs from free service. UK rights and device eligibility apply.",
+      "focus": [
+        "movies",
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "channel-4",
+      "name": "Channel 4",
+      "aliases": [
+        "All 4",
+        "4oD"
+      ],
+      "homepage": "https://www.channel4.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "GB"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "British television",
+        "Comedy",
+        "Drama",
+        "Reality"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.channel4.com/press/news/channel-4-brings-iconic-blocks-back-together-single-brand-streaming-future",
+          "note": "Official rebrand release identifies unified Channel 4 free UK streaming brand."
+        },
+        {
+          "url": "https://www.channel4.com/press/news/channel-4-and-uktv-deliver-unmissable-entertainment-and-more-choice-viewers",
+          "note": "2026 official release confirms additional UKTV U content on Channel 4 streaming."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Channel 4 brand/FAST distribution abroad does not make its full UK service globally available.",
+      "focus": [
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "now",
+      "name": "NOW",
+      "aliases": [
+        "NOW TV"
+      ],
+      "homepage": "https://www.nowtv.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "GB"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Sky entertainment",
+        "Cinema",
+        "Sky Sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.nowtv.com/",
+          "note": "Official current UK page separates entertainment, cinema and sports memberships."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "UK destination verified here; local NOW brands/plans in other countries differ. Optional HBO Max bundle is separate from base entertainment.",
+      "focus": [
+        "movies",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "wow",
+      "name": "WOW",
+      "aliases": [
+        "Sky Ticket"
+      ],
+      "homepage": "https://www.wowtv.de/",
+      "region_group": "europe",
+      "representative_markets": [
+        "DE"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Sky series",
+        "Films",
+        "Live Sky Sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://apps.apple.com/de/app/wow/id929190059?platform=tv",
+          "note": "Sky Deutschland publisher app listing confirms films, series and live sport."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Germany representative coverage. Plans differ and films/series are not automatically included in sport-only entitlement.",
+      "focus": [
+        "movies",
+        "series",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "skyshowtime",
+      "name": "SkyShowtime",
+      "aliases": [],
+      "homepage": "https://www.skyshowtime.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "AL",
+        "AD",
+        "BA",
+        "BG",
+        "HR",
+        "CZ",
+        "DK",
+        "FI",
+        "HU",
+        "ME",
+        "MK",
+        "NO",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "RS",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Studio films",
+        "International series",
+        "Local originals"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.skyshowtime.com/where-can-i-stream",
+          "note": "Official location page lists service markets."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Not interchangeable with Paramount+, Peacock, NOW, or Sky. Territory list is service presence, not title availability; Kosovo omitted from ISO2 array because it lacks official ISO 3166-1 code.",
+      "focus": [
+        "movies",
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "canal-plus",
+      "name": "CANAL+",
+      "aliases": [
+        "myCANAL"
+      ],
+      "homepage": "https://www.canalplus.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "FR"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Cinema",
+        "Series",
+        "Live channels",
+        "Sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.canalplus.com/",
+          "note": "Official France service page exposes offers, subscriber titles, live sports and selected free programming."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "CANAL+ country operations differ. Bundled providers and French sports rights do not apply automatically across Africa/Europe.",
+      "focus": [
+        "movies",
+        "series",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "rtl-plus",
+      "name": "RTL+",
+      "aliases": [
+        "TVNOW"
+      ],
+      "homepage": "https://plus.rtl.de/",
+      "region_group": "europe",
+      "representative_markets": [
+        "DE"
+      ],
+      "offer_types": [
+        "free",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "German shows",
+        "Series",
+        "Films",
+        "Live channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://plus.rtl.de/agb",
+          "note": "Official current terms distinguish Free, Basic, Premium and Live-Only products and booking territory requirements."
+        },
+        {
+          "url": "https://www.rtl.de/sendungen/rtl-bekommt-ab-mitte-januar-eine-neue-preisstruktur-id30133430.html",
+          "note": "Official 2026 update confirms new plan structure, including ad-free tier."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Basic is Germany-specific; other packages have their own residence rules. Paid ad-supported tiers are not free.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "joyn",
+      "name": "Joyn",
+      "aliases": [
+        "Joyn PLUS+"
+      ],
+      "homepage": "https://www.joyn.de/",
+      "region_group": "europe",
+      "representative_markets": [
+        "DE"
+      ],
+      "offer_types": [
+        "free",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "German television",
+        "Reality",
+        "Series",
+        "Films",
+        "Originals"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.joyn.de/",
+          "note": "Official page explicitly offers free streaming/live TV plus Joyn+ option."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "German offer verified; Austria and partner distribution need separate offer records.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "ard-mediathek",
+      "name": "ARD Mediathek",
+      "aliases": [],
+      "homepage": "https://www.ardmediathek.de/",
+      "region_group": "europe",
+      "representative_markets": [
+        "DE"
+      ],
+      "offer_types": [
+        "free"
+      ],
+      "specialties": [
+        "German public television",
+        "Films",
+        "Series",
+        "Documentaries",
+        "Accessibility collections"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.ardmediathek.de/",
+          "note": "Official catalog exposes current films, series, documentaries and public-service programming."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Program windows, age gates and geoblocking vary. Service identity/content sections verified; no individual title rights copied.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "zdf",
+      "name": "ZDF",
+      "aliases": [
+        "ZDFmediathek",
+        "ZDF Mediathek"
+      ],
+      "homepage": "https://www.zdf.de/",
+      "region_group": "europe",
+      "representative_markets": [
+        "DE"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Public television",
+        "Films",
+        "Series",
+        "Documentaries",
+        "Children"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.zdf.de/",
+          "note": "Current official streaming portal exposes categories, children, live TV and accessibility metadata."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Program windows and geoblocking vary. Preserve historical ZDFmediathek searches as aliases.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "kids"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "arte",
+      "name": "ARTE",
+      "aliases": [],
+      "homepage": "https://www.arte.tv/en/",
+      "region_group": "europe",
+      "representative_markets": [
+        "FR",
+        "DE"
+      ],
+      "offer_types": [
+        "free"
+      ],
+      "specialties": [
+        "European culture",
+        "Cinema",
+        "Documentaries",
+        "Concerts"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.arte.tv/en/",
+          "note": "Official page explicitly describes free on-demand European cultural streaming and lists content genres."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Language editions are not evidence of uniform country rights. Selected content has geographic limits.",
+      "focus": [
+        "movies",
+        "documentaries",
+        "music"
+      ],
+      "integration": "directory_only",
+      "kind": "culture"
+    },
+    {
+      "id": "raiplay",
+      "name": "RaiPlay",
+      "aliases": [],
+      "homepage": "https://www.raiplay.it/",
+      "region_group": "europe",
+      "representative_markets": [
+        "IT"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Italian public television",
+        "Films",
+        "Series",
+        "Documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.raiplay.it/",
+          "note": "Official service lists live Rai channels, program collections and account support."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Italian rights vary by title; some streams require registration. Overseas availability differs.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "mediaset-infinity",
+      "name": "Mediaset Infinity",
+      "aliases": [
+        "Mediaset Play",
+        "Infinity+"
+      ],
+      "homepage": "https://mediasetinfinity.mediaset.it/",
+      "region_group": "europe",
+      "representative_markets": [
+        "IT"
+      ],
+      "offer_types": [
+        "free",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Italian TV",
+        "Fiction",
+        "Soap operas",
+        "Films",
+        "Paid channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.mediasetinfinity.mediaset.it/hc/it/articles/360019863520-I-contenuti-su-Mediaset-Infinity",
+          "note": "Official help separates free Mediaset content from paid channel subscriptions."
+        },
+        {
+          "url": "https://help.mediasetinfinity.mediaset.it/hc/it/articles/4402322887953-Mediaset-Infinity-all-estero",
+          "note": "Official overseas rules specify Italy live rights and conditional EU portability."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Infinity+ is a paid channel/tier within the platform; avoid treating its entire catalog as free. International channel/portability is distinct.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "movistar-plus",
+      "name": "Movistar Plus",
+      "aliases": [
+        "Movistar Plus+",
+        "Movistar+"
+      ],
+      "homepage": "https://www.movistarplus.es/",
+      "region_group": "europe",
+      "representative_markets": [
+        "ES"
+      ],
+      "offer_types": [
+        "free",
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Spanish originals",
+        "Movies",
+        "Series",
+        "Live channels",
+        "Selected sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.movistarplus.es/planes",
+          "note": "Official current page distinguishes free and paid movie/series/sport plans."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Open-operator streaming plans differ from convergent telecom packages. A sports plan does not establish every football match available.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "filmin",
+      "name": "Filmin",
+      "aliases": [],
+      "homepage": "https://www.filmin.es/",
+      "region_group": "europe",
+      "representative_markets": [
+        "ES"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent"
+      ],
+      "specialties": [
+        "Independent cinema",
+        "European films",
+        "Documentaries",
+        "Series"
+      ],
+      "official_sources": [
+        {
+          "url": "https://ayuda.filmin.es/es/support/solutions/articles/47001259008-t%25C3%25ADtulos-disponibles",
+          "note": "Official help distinguishes subscription titles from individual rentals."
+        },
+        {
+          "url": "https://ayuda.filmin.es/es/support/solutions/articles/47001259202-ver-filmin-fuera-de-espa%C3%B1a",
+          "note": "Official help describes temporary European portability and rental limitations."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Spain offer verified. Portugal operates separately; Spanish rental tickets cannot be activated abroad.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "arthouse"
+      ],
+      "integration": "directory_only",
+      "kind": "culture"
+    },
+    {
+      "id": "atresplayer",
+      "name": "atresplayer",
+      "aliases": [
+        "Atresplayer Premium"
+      ],
+      "homepage": "https://www.atresplayer.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "ES",
+        "US",
+        "MX"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Spanish originals",
+        "Atresmedia shows",
+        "Novelas",
+        "Live channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://statics.atresmedia.com/atresplayer/assets/faqs/preguntas-generales.html",
+          "note": "Official FAQ identifies on-demand/live service and separate international premium package."
+        },
+        {
+          "url": "https://www.atresmedia.com/prensa/notas/atresplayer/atresplayer-avanza-expansion-internacional-integra-suscripciones-premium-the-roku-channel-mexico_2025112469248e46df41134465e7a116.html",
+          "note": "Official Nov 2025 release confirms US/Mexico Roku premium channel distribution."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "International catalog and partner channels differ from Spanish domestic offer; do not assume all Atresmedia TV rights follow abroad.",
+      "focus": [
+        "series",
+        "local",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "rtve-play",
+      "name": "RTVE Play",
+      "aliases": [],
+      "homepage": "https://www.rtve.es/play/",
+      "region_group": "europe",
+      "representative_markets": [
+        "ES"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Spanish public television",
+        "Series",
+        "Cinema",
+        "Documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.rtve.es/play/",
+          "note": "Official RTVE service exposes on-demand program catalog; retrieval redirects overseas to international offer."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Domestic RTVE Play differs from paid RTVE Play+ international subscription. Region redirect observed; never imply the international catalog is identical.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "rtp-play",
+      "name": "RTP Play",
+      "aliases": [],
+      "homepage": "https://www.rtp.pt/play/",
+      "region_group": "europe",
+      "representative_markets": [
+        "PT"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Portuguese public television",
+        "Series",
+        "Documentaries",
+        "Arts",
+        "Radio"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.rtp.pt/play/",
+          "note": "Official portal identifies live channels, programs, series, sports and documentary sections."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Public-service coverage does not guarantee worldwide streaming rights for licensed works.",
+      "focus": [
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "viaplay",
+      "name": "Viaplay",
+      "aliases": [],
+      "homepage": "https://viaplay.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "SE",
+        "NO",
+        "DK",
+        "FI",
+        "IS",
+        "NL"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Nordic series",
+        "Films",
+        "Live sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.viaplaygroup.com/en/investors/reports-and-presentations/viaplay-group-q3-2026-interim-report-january-september",
+          "note": "Current official Q3 2026 report identifies Nordic countries and Netherlands direct service."
+        },
+        {
+          "url": "https://www.viaplaygroup.com/sites/viaplay-corp/files/pr/20260423-067ff8fc-71bb-4869-9de6-e3a2b7e16803-1.pdf",
+          "note": "Q1 2026 official report records prior exits from North American DTC and Poland."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Viaplay Select and partner channels abroad are separate distribution. Do not retain obsolete US/Canada/Poland DTC markets; Netherlands transaction status should be monitored.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "svt-play",
+      "name": "SVT Play",
+      "aliases": [],
+      "homepage": "https://www.svtplay.se/",
+      "region_group": "europe",
+      "representative_markets": [
+        "SE"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Swedish public television",
+        "Series",
+        "Documentaries",
+        "Children"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.svtplay.se/",
+          "note": "Official portal explicitly filters to content viewable outside Sweden and lists shows/channels."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Observed overseas-filter banner proves country catalog differences. Full Swedish catalog is not worldwide.",
+      "focus": [
+        "series",
+        "documentaries",
+        "local",
+        "kids"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "yle-areena",
+      "name": "Yle Areena",
+      "aliases": [
+        "Yle Arenan"
+      ],
+      "homepage": "https://areena.yle.fi/",
+      "region_group": "europe",
+      "representative_markets": [
+        "FI"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Finnish public television",
+        "Series",
+        "Documentaries",
+        "Children",
+        "Podcasts"
+      ],
+      "official_sources": [
+        {
+          "url": "https://areena.yle.fi/tv",
+          "note": "Official service provides TV, live broadcasts and category collections."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Language edition and overseas eligibility vary by content. Account may be required for selected use.",
+      "focus": [
+        "series",
+        "documentaries",
+        "local",
+        "kids"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "france-tv",
+      "name": "france.tv",
+      "aliases": [
+        "France.tv",
+        "Pluzz"
+      ],
+      "homepage": "https://www.france.tv/",
+      "region_group": "europe",
+      "representative_markets": [
+        "FR"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "French public television",
+        "Films",
+        "Series",
+        "Documentaries",
+        "Culture"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.francetelevisions.fr/groupe/qui-sommes-nous/nos-activites/france-televisions-une-offre-de-programmes-et-de-contenus-sans-equivalent-40951",
+          "note": "Official group page confirms free streaming, live/replay and public-media partner aggregation."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Partner integration does not imply complete catalogs or worldwide rights. Account and location restrictions may apply.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "tf1-plus",
+      "name": "TF1+",
+      "aliases": [
+        "MYTF1"
+      ],
+      "homepage": "https://www.tf1.fr/",
+      "region_group": "europe",
+      "representative_markets": [
+        "FR",
+        "BE",
+        "CH",
+        "LU"
+      ],
+      "offer_types": [
+        "free_ads",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "French television",
+        "Movies",
+        "Series",
+        "Entertainment",
+        "Sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://groupe-tf1.fr/fr/content/plateformes-digitales-0",
+          "note": "Official group page identifies free streaming, local European markets and wider Francophone African expansion."
+        },
+        {
+          "url": "https://www.tf1.fr/conditions-generales",
+          "note": "Official terms distinguish ad-funded free service, Premium and territorial variations."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "African countries not enumerated in registry because source gives regional count only. Premium and selected paid offers differ.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "tabii",
+      "name": "tabii",
+      "aliases": [],
+      "homepage": "https://www.tabii.com/",
+      "region_group": "europe",
+      "representative_markets": [
+        "TR",
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "CA",
+        "MX",
+        "CO",
+        "SA",
+        "AE",
+        "EG"
+      ],
+      "offer_types": [
+        "free",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Turkish series",
+        "TRT programs",
+        "Originals",
+        "Documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.tabii.com/en/",
+          "note": "Official site search extract enumerates service countries."
+        },
+        {
+          "url": "https://www.trt.net.tr/tabii/tabiiye-dair-her-sey-bu-yazida-22450635",
+          "note": "TRT official guide describes free and Premium offerings and Turkey-only sports."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Free TRT and paid Premium content differ. Certain sports are Turkey-only; Turkish-language content does not imply global rights.",
+      "focus": [
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "shahid",
+      "name": "Shahid",
+      "aliases": [
+        "Shahid VIP"
+      ],
+      "homepage": "https://shahid.mbc.net/",
+      "region_group": "mena",
+      "representative_markets": [
+        "SA"
+      ],
+      "offer_types": [
+        "free",
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Arabic series",
+        "Movies",
+        "MBC live channels",
+        "Originals"
+      ],
+      "official_sources": [
+        {
+          "url": "https://shahid.mbc.net/",
+          "note": "Official service identifies free series, live channels, films and subscription access."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Saudi market is representative; not an exhaustive entitlement list. Paid and free titles must be distinguished; sports rights need separate source.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "osn-plus",
+      "name": "OSN+",
+      "aliases": [
+        "OSN Plus",
+        "OSN Streaming"
+      ],
+      "homepage": "https://osnplus.com/",
+      "region_group": "mena",
+      "representative_markets": [
+        "SA",
+        "AE",
+        "KW",
+        "QA",
+        "BH",
+        "OM",
+        "EG",
+        "JO",
+        "LB",
+        "MA",
+        "TN",
+        "DZ",
+        "IQ",
+        "LY"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Movies",
+        "International series",
+        "Regional entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://osnplus.com/en-sa",
+          "note": "Official FAQ lists MENA markets and subscription methods, and explains region-locking."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Regional licensed HBO content is not HBO Max service presence. Catalog and distributor agreements remain title/territory-specific.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "tod",
+      "name": "TOD",
+      "aliases": [],
+      "homepage": "https://www.tod.tv/",
+      "region_group": "mena",
+      "representative_markets": [],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Live sport",
+        "Entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.tod.tv/hc/en-us/articles/10483880092060-Which-countries-is-TOD-available-in",
+          "note": "Official help confirms MENA service; does not enumerate countries in extract."
+        },
+        {
+          "url": "https://support.tod.tv/hc/en-us/sections/10090022500380-Viewing-Experience",
+          "note": "Official help category lists sports, entertainment, subscription and free-tier guidance."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Country list intentionally empty pending exact official enumeration. Sports, free-tier and plan conditions require further verification.",
+      "focus": [
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "starzplay-mena",
+      "name": "STARZPLAY",
+      "aliases": [
+        "STARZPLAY Arabia"
+      ],
+      "homepage": "https://starzplay.com/",
+      "region_group": "mena",
+      "representative_markets": [
+        "AE"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Arabic and Hollywood entertainment",
+        "Sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://blog.starzplay.com/en/",
+          "note": "Current official company blog confirms MENA streaming and 2026 activity."
+        },
+        {
+          "url": "https://blog.starzplay.com/wp-content/uploads/2021/02/STARZPLAY-Profile.pdf",
+          "note": "Historic official company profile confirms Dubai-based subscription platform; historical footprint must be revalidated."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Distinct from US STARZ and former Lionsgate+ international branding. Only UAE representative market retained; no all-MENA rights assumption.",
+      "focus": [
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "watch-it",
+      "name": "WATCH IT",
+      "aliases": [],
+      "homepage": "https://www.watchit.com/",
+      "region_group": "mena",
+      "representative_markets": [
+        "EG"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Arabic entertainment",
+        "Egyptian programming"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.watchit.com/hc/en-us/articles/5118489729437-How-to-subscribe-to-WATCH-IT-using-your-Credit-Debit-Cards",
+          "note": "Official help identifies Egyptian subscription bundles with/without ads."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Paid with ads remains subscription. Outside-Egypt prices and catalog differ; full overseas availability not verified.",
+      "focus": [
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "dstv-stream",
+      "name": "DStv Stream",
+      "aliases": [
+        "DStv Now"
+      ],
+      "homepage": "https://www.dstv.com/",
+      "region_group": "africa",
+      "representative_markets": [
+        "ZA",
+        "GH",
+        "NA",
+        "ET"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports",
+        "tv_everywhere"
+      ],
+      "specialties": [
+        "African programming",
+        "Movies",
+        "Series",
+        "Live sports",
+        "Selected Showmax originals"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.dstv.com/en-za/news/149042/complete-guide-to-new-dstv-packages/",
+          "note": "Official Sep 2026 update confirms revised South African DStv Stream package lineup."
+        },
+        {
+          "url": "https://www.dstv.com/en-gh/watch/showmax/",
+          "note": "Ghana official migration FAQ confirms Showmax retirement and selected content on DStv Stream."
+        },
+        {
+          "url": "https://www.dstv.com/en-na/",
+          "note": "Namibia official page confirms streaming service and packages."
+        },
+        {
+          "url": "https://www.dstv.com/media/klgmg00k/dstv-stream-frequently-asked-questions.pdf",
+          "note": "Official Ethiopia FAQ confirms launch in June 2025."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Country packages differ. Only selected Showmax content transferred; this is not a universal catalog mapping.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "sabc-plus",
+      "name": "SABC+",
+      "aliases": [
+        "SABC Plus"
+      ],
+      "homepage": "https://sabc-plus.com/",
+      "region_group": "africa",
+      "representative_markets": [
+        "ZA"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "South African television",
+        "News",
+        "Sport",
+        "Catch-up",
+        "Radio"
+      ],
+      "official_sources": [
+        {
+          "url": "https://sabc-plus.com/",
+          "note": "Official active service exposes live TV, on demand, catch-up, radio and sport."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Content-level rights and overseas restrictions remain separate; no individual sports fixture entitlement asserted.",
+      "focus": [
+        "series",
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "irokotv",
+      "name": "IROKOtv",
+      "aliases": [],
+      "homepage": "https://www.irokotv.com/",
+      "region_group": "africa",
+      "representative_markets": [],
+      "offer_types": [],
+      "specialties": [
+        "Nollywood candidate"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.irokotv.com/",
+          "note": "Attempted official retrieval returned 404; no current service claims verified."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "pending_verification",
+      "caveats": "Do not publish as active or free. Current operation, ownership, plan and country eligibility need first-party verification.",
+      "focus": [],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "smotrim",
+      "name": "Смотрим",
+      "aliases": [
+        "Smotrim"
+      ],
+      "homepage": "https://smotrim.ru/serials",
+      "region_group": "europe",
+      "representative_markets": [
+        "RU"
+      ],
+      "offer_types": [],
+      "specialties": [
+        "Russian television candidate"
+      ],
+      "official_sources": [
+        {
+          "url": "https://smotrim.ru/serials",
+          "note": "Existing project destination retained; primary website retrieval could not be completed."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "pending_verification",
+      "caveats": "Do not publish new availability, free/paid or international claims until current first-party evidence is available.",
+      "focus": [
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "freevee",
+      "name": "Amazon Freevee",
+      "aliases": [
+        "IMDb TV",
+        "Freevee"
+      ],
+      "homepage": "https://www.primevideo.com/",
+      "region_group": "global",
+      "representative_markets": [],
+      "offer_types": [],
+      "specialties": [
+        "Legacy free streaming brand"
+      ],
+      "official_sources": [
+        {
+          "url": "https://advertising.amazon.com/en-us/library/guides/free-ad-supported-streaming-tv/",
+          "note": "Amazon confirms Freevee deprecation and absorption into Prime Video Watch for free."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "legacy",
+      "caveats": "Preserve search aliases/history; do not list as a currently separate installable service or imply free Prime subscription.",
+      "successor_id": "prime-video",
+      "focus": [],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "showmax",
+      "name": "Showmax",
+      "aliases": [],
+      "homepage": "https://www.dstv.com/en-gh/watch/showmax/",
+      "region_group": "africa",
+      "representative_markets": [],
+      "offer_types": [],
+      "specialties": [
+        "Legacy African streaming service"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.dstv.com/en-gh/watch/showmax/",
+          "note": "Official DStv FAQ states Showmax discontinued on 30 April 2026 at 23:59."
+        },
+        {
+          "url": "https://www.canalplusgroup.com/en/mandatoryoffermultichoice/multichoice-post-76",
+          "note": "CANAL+ official March 2026 retirement announcement."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "legacy",
+      "caveats": "Only many/selected shows moved. Profiles/watch history did not migrate and some licensed titles cannot move.",
+      "successor_id": "dstv-stream",
+      "focus": [
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "star-plus",
+      "name": "Star+",
+      "aliases": [
+        "Star Plus"
+      ],
+      "homepage": "https://www.disneyplus.com/",
+      "region_group": "latin_america",
+      "representative_markets": [],
+      "offer_types": [],
+      "specialties": [
+        "Legacy Latin American Disney streaming service"
+      ],
+      "official_sources": [
+        {
+          "url": "https://brazil.espnpressroom.com/press-releases/2024/06/endrick-anuncia-a-transferencia-do-ano-no-mundo-do-esporte-espn-agora-e-no-disney/?noamp=mobile",
+          "note": "Disney/ESPN official announcement confirms Star+ and ESPN integration into Disney+."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "legacy",
+      "caveats": "Preserve legacy queries, do not create separate live provider. ESPN sports entitlement is plan-specific.",
+      "successor_id": "disney-plus",
+      "focus": [],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "playplus",
+      "name": "PlayPlus",
+      "aliases": [],
+      "homepage": "https://descubra.recordplus.com/",
+      "region_group": "latin_america",
+      "representative_markets": [],
+      "offer_types": [],
+      "specialties": [
+        "Legacy Record streaming brand"
+      ],
+      "official_sources": [
+        {
+          "url": "https://record.r7.com/fala-brasil/video/streaming-da-record-passa-a-se-chamar-recordplus-15082025/",
+          "note": "Official Record announcement confirms rebrand to RecordPlus."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "legacy",
+      "caveats": "Resolve to RecordPlus for search/directory identity; no duplicate active provider.",
+      "successor_id": "record-plus",
+      "focus": [],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "rakuten-tv",
+      "name": "Rakuten TV",
+      "aliases": [
+        "Wuaki.tv"
+      ],
+      "homepage": "https://www.rakuten.tv/",
+      "region_group": "europe",
+      "representative_markets": [
+        "GB",
+        "IE",
+        "BE",
+        "LU",
+        "ES",
+        "IT",
+        "DE",
+        "CH",
+        "AT",
+        "FR",
+        "PT",
+        "NL"
+      ],
+      "offer_types": [
+        "rent",
+        "buy",
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "Movie rentals",
+        "Digital purchases",
+        "Free movies",
+        "FAST channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.rakuten.tv/hc/en-gb/articles/201547451-First-Steps-at-Rakuten-TV",
+          "note": "Official March 2026 guide expressly distinguishes Rent, Buy, Free and Live TV."
+        },
+        {
+          "url": "https://support.rakuten.tv/hc/en-us/articles/6724239789340-SONY-Smart-TVs-compatible-with-specific-countries",
+          "note": "March 2026 official device help explicitly lists representative European markets."
+        },
+        {
+          "url": "https://help.rakuten.tv/hc/en-gb/articles/7267940643473-Rakuten-TV-Abroad",
+          "note": "June 2026 official help confirms 43-country European service and country-specific content contracts."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Representative countries verified through official device-country help. Device coverage and rental/purchase/free catalogs vary by country; never equate all 43 markets with identical titles.",
+      "focus": [
+        "movies",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "dazn",
+      "name": "DAZN",
+      "aliases": [],
+      "homepage": "https://www.dazn.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "BR",
+        "ES",
+        "GB"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Live sports",
+        "Sports replays",
+        "Event add-ons"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.dazn.com/en-ES/help/articles/16293825515165-where-is-dazn-available",
+          "note": "Official current help confirms broad international presence while sports/events vary by country."
+        },
+        {
+          "url": "https://www.dazn.com/en-BR/help/articles/16391473315101-terms-conditions",
+          "note": "Official Brazil terms distinguish subscriptions and add-on events."
+        },
+        {
+          "url": "https://www.dazn.com/en-BR/help/articles/35086396483357-brasileirao-serie-c-no-longer-available-on-dazn",
+          "note": "Official Brazil help states Serie C no longer available."
+        },
+        {
+          "url": "https://www.dazn.com/en-GB/help/articles/16293825515165-where-is-dazn-available",
+          "note": "Official UK help explains market and event restrictions."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Sport, league, blackout and pay-per-view rights are event/plan/country-specific. Brazil Serie C is no longer available according to DAZN help; never preserve outdated league claims.",
+      "focus": [
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "britbox",
+      "name": "BritBox",
+      "aliases": [],
+      "homepage": "https://www.britbox.com/",
+      "region_group": "global",
+      "representative_markets": [
+        "US",
+        "CA",
+        "AU"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "British drama",
+        "Mystery",
+        "Comedy",
+        "Documentaries",
+        "Lifestyle"
+      ],
+      "official_sources": [
+        {
+          "url": "https://press.britbox.com/about-us",
+          "note": "Official BBC-owned BritBox press page lists US, Canada, Australia and Nordics."
+        },
+        {
+          "url": "https://www.britbox.com/us/terms-and-conditions",
+          "note": "Official US terms confirm monthly/annual subscription model and US access restriction for US subscription."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Nordic coverage is not expanded into country codes without explicit enumeration. UK former standalone BritBox and ITVX distribution are different from current international BritBox.",
+      "focus": [
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "youtube-tv",
+      "name": "YouTube TV",
+      "aliases": [],
+      "homepage": "https://tv.youtube.com/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Live television",
+        "Local channels",
+        "Sports",
+        "News",
+        "Cloud DVR"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.google.com/youtubetv/answer/7370552?hl=en",
+          "note": "Official Google help confirms nationwide US service and location-dependent channel/add-on lineup."
+        },
+        {
+          "url": "https://support.google.com/youtubetv/answer/7300225?hl=en-GB",
+          "note": "Official restrictions explain US-only streaming and content/device/location restrictions."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Distinct from YouTube Premium, free YouTube, and YouTube movie rentals. Local channels, blackouts and add-on entitlements depend on home location and plan.",
+      "focus": [
+        "series",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "fubo",
+      "name": "Fubo",
+      "aliases": [
+        "fuboTV"
+      ],
+      "homepage": "https://www.fubo.tv/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US",
+        "CA",
+        "ES"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Live sports",
+        "TV channels",
+        "News",
+        "Entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.fubo.tv/hc/en-us/articles/115002979407-Is-Fubo-available-in-my-country",
+          "note": "Official February 2026 help explicitly identifies US, Canada and Spain with different subscription programming."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Each country has a separate lineup. A live-channel subscription is not an unconditional entitlement to every event or movie; add-ons and blackouts apply.",
+      "focus": [
+        "series",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "sling-tv",
+      "name": "Sling TV",
+      "aliases": [
+        "Sling"
+      ],
+      "homepage": "https://www.sling.com/",
+      "region_group": "north_america",
+      "representative_markets": [
+        "US",
+        "PR"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Live television",
+        "Sports",
+        "News",
+        "On-demand shows"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.sling.com/help/en/learn-about-sling/get-started",
+          "note": "Official help identifies paid subscription streaming restricted to US and Puerto Rico."
+        },
+        {
+          "url": "https://www.sling.com/service/compare-plans",
+          "note": "Official plan comparison describes live TV subscriptions and on-demand shows/movies."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
+      "status": "active",
+      "caveats": "Sling Freestream is a distinct free offer; not all paid Sling channels are free. Local network availability varies by ZIP code and package.",
+      "focus": [
+        "series",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "jiohotstar",
+      "name": "JioHotstar",
+      "aliases": [
+        "Jio Hotstar"
+      ],
+      "homepage": "https://www.hotstar.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Indian movies and series",
+        "regional-language entertainment",
+        "live sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.jiostar.com/news/jiohotstar-unveiling-infinite-possibilities/",
+          "note": "JioStar confirms the 14 February 2025 launch combining JioCinema and Disney+ Hotstar for India."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "India successor mapping only. Do not globally rename every Hotstar service. Free access in a launch announcement is not evidence that every title is currently free.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "jiocinema",
+      "name": "JioCinema",
+      "aliases": [],
+      "homepage": "https://www.jiocinema.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [],
+      "specialties": [
+        "legacy Indian streaming brand"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.jiostar.com/news/jiohotstar-unveiling-infinite-possibilities/",
+          "note": "Merged into JioHotstar in India."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "legacy",
+      "caveats": "Keep as historical alias/redirect; do not present a separate current catalog.",
+      "successor_id": "jiohotstar",
+      "focus": [
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "disney-plus-hotstar-india",
+      "name": "Disney+ Hotstar (India legacy)",
+      "aliases": [
+        "Disney Hotstar India"
+      ],
+      "homepage": "https://www.hotstar.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [],
+      "specialties": [
+        "legacy Indian streaming brand"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.jiostar.com/news/jiohotstar-unveiling-infinite-possibilities/",
+          "note": "India service combined into JioHotstar."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "legacy",
+      "caveats": "Scope successor resolution to IN. Disney+/Hotstar naming and ownership outside India require separate records.",
+      "successor_id": "jiohotstar",
+      "focus": [
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "zee5",
+      "name": "ZEE5",
+      "aliases": [],
+      "homepage": "https://www.zee5.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "South Asian films",
+        "original series",
+        "regional languages"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.zee5.com/aboutus",
+          "note": "Owner describes South Asian entertainment and international reach."
+        },
+        {
+          "url": "https://helpcenter.zee5.com/portal/en/kb/articles/can-i-use-my-zee5-subscription-in-another-country",
+          "note": "Country-specific subscription policy."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "International footprint is broader than the representative India market. Subscription portability and title rights must be checked separately.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "sonyliv",
+      "name": "SonyLIV",
+      "aliases": [
+        "Sony LIV"
+      ],
+      "homepage": "https://www.sonyliv.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Indian television",
+        "original series",
+        "live sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.sonyliv.com/faqs",
+          "note": "Official FAQ describes subscriptions, sports/content and international account restrictions."
+        },
+        {
+          "url": "https://help.sonyliv.com/categories/account-and-login-issues/articles/will-my-account-work-outside-my-country",
+          "note": "Accounts do not work outside their subscription country."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Representative markets are not exhaustive. Titles, seasons, languages, plans and rights require a current country-specific offer check.",
+      "focus": [
+        "series",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "mx-player-by-prime-video",
+      "name": "MX Player by Prime Video",
+      "aliases": [
+        "Amazon MX Player",
+        "MX Player",
+        "Amazon miniTV"
+      ],
+      "homepage": "https://www.primevideo.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [
+        "free_ads",
+        "subscription"
+      ],
+      "specialties": [
+        "MX Originals",
+        "dubbed international series",
+        "short-form entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.aboutamazon.in/news/company-news/prime-video-mx-player-india-largest-streaming-service",
+          "note": "Amazon update dated 16 July 2026 confirms integration into Prime Video and new Android identity."
+        },
+        {
+          "url": "https://support.mxplayer.in/support/solutions/articles/43000788232-will-amazon-mx-player-be-discontinued-where-can-i-watch-amazon-mx-player-content-do-i-need-to-insta",
+          "note": "Official transition FAQ says Android app continues while web/iOS/TV migrate."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Distribution surface within Prime Video, not a second independently licensed global catalog. Free ad-supported content remains distinct from Prime membership, rentals and add-on subscriptions. Migration is device-specific.",
+      "focus": [
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "sun-nxt",
+      "name": "Sun NXT",
+      "aliases": [
+        "SunNXT"
+      ],
+      "homepage": "https://www.sunnxt.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN",
+        "MY",
+        "SG"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "South Indian and regional Indian content",
+        "movies",
+        "television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.sun.in/digital-platform.aspx",
+          "note": "Sun TV Network describes languages, live TV and film offerings."
+        },
+        {
+          "url": "https://www.sunnxt.com/subscription/plans",
+          "note": "Official subscription page."
+        },
+        {
+          "url": "https://www.astro.com.my/product/apps/sunnxt",
+          "note": "Malaysia distribution partner."
+        },
+        {
+          "url": "https://www.singtel.com/personal/products-services/lifestyle-services/cast/sun-nxt",
+          "note": "Singapore distribution partner."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Representative markets are not exhaustive. Titles, seasons, languages, plans and rights require a current country-specific offer check.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "aha",
+      "name": "aha",
+      "aliases": [],
+      "homepage": "https://www.aha.video/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Indian movies",
+        "original series",
+        "regional entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.aha.video/",
+          "note": "Current homepage lists movies, originals and a View Plans entry."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Representative markets are not exhaustive. Titles, seasons, languages, plans and rights require a current country-specific offer check.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "hoichoi",
+      "name": "hoichoi",
+      "aliases": [],
+      "homepage": "https://www.hoichoi.tv/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "IN"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Bengali films",
+        "original series",
+        "documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.hoichoi.tv/about-us",
+          "note": "Official service overview describes Bengali catalog, subtitles, devices and premium access."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Official overview addresses Bengali audiences worldwide, but representative country list here is not a complete verified territory list.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "eros-now",
+      "name": "Eros Now",
+      "aliases": [],
+      "homepage": "https://erosnow.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [],
+      "offer_types": [],
+      "specialties": [
+        "Indian cinema"
+      ],
+      "official_sources": [
+        {
+          "url": "https://erosnow.com/help_support",
+          "note": "Help page remains indexed; homepage timed out during this check."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Historical/service identity only; current operations not established.",
+      "status": "pending_verification",
+      "caveats": "Do not publish as a confirmed current offering until operational status, current subscription plans and supported markets are validated. An indexed help page alone is insufficient.",
+      "focus": [
+        "movies",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "iqiyi-international",
+      "name": "iQIYI International",
+      "aliases": [
+        "iQIYI",
+        "iQ.com"
+      ],
+      "homepage": "https://www.iq.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [],
+      "offer_types": [
+        "subscription",
+        "free_ads"
+      ],
+      "specialties": [
+        "Asian dramas",
+        "Chinese films",
+        "anime"
+      ],
+      "official_sources": [
+        {
+          "url": "https://pca.iq.com/aboutus",
+          "note": "Official overview describes international service and multilingual support."
+        },
+        {
+          "url": "https://www.iq.com/vip/privilege?is_privilege=1&zeus=true",
+          "note": "Official VIP benefits and limitations on advertising."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "International product is distinct from mainland iQIYI. Official broad territory claim is not a verified per-country/per-title list. Some ads may remain on VIP content.",
+      "focus": [
+        "movies",
+        "series",
+        "anime",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "wetv",
+      "name": "WeTV",
+      "aliases": [],
+      "homepage": "https://wetv.vip/en",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [],
+      "offer_types": [
+        "subscription",
+        "free"
+      ],
+      "specialties": [
+        "Chinese and Thai dramas",
+        "Asian series",
+        "anime"
+      ],
+      "official_sources": [
+        {
+          "url": "https://wetv.vip/en",
+          "note": "Current homepage has free and VIP access plus anime and Asian-series categories."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Do not merge its offer catalog with mainland Tencent Video. Representative markets remain unset until explicit country coverage evidence or licensed offers are supplied.",
+      "focus": [
+        "series",
+        "anime",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "tencent-video",
+      "name": "Tencent Video",
+      "aliases": [],
+      "homepage": "https://v.qq.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "CN"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Chinese dramas",
+        "films",
+        "variety",
+        "animation"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.tencent.com/products/tencent-video/",
+          "note": "Tencent identifies its China streaming platform and content types."
+        },
+        {
+          "url": "https://apps.apple.com/us/app/%E8%85%BE%E8%AE%AF%E8%A7%86%E9%A2%91-%E5%BD%93%E4%BB%A3%E6%BD%9C%E4%BC%8F%E4%BA%A4%E9%94%8B%E5%93%81%E8%B4%A8%E5%BF%85%E7%9C%8B%E5%A4%A7%E5%89%A7/id1231336508?mt=12",
+          "note": "Developer listing links Tencent VIP subscription terms."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Mainland Tencent Video and WeTV are related products but must retain separate catalogs and accounts. App Store presence in a country does not prove local viewing rights.",
+      "focus": [
+        "movies",
+        "series",
+        "anime",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "youku-international",
+      "name": "YOUKU International",
+      "aliases": [
+        "YOUKU"
+      ],
+      "homepage": "https://www.youku.tv/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Chinese drama",
+        "costume romance",
+        "Asian series"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.youku.tv/",
+          "note": "Current international homepage displays VIP titles and regional rankings."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "International site is distinct from mainland youku.com. Do not infer every market or every title from site accessibility.",
+      "focus": [
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "bilibili-international",
+      "name": "BiliBili International",
+      "aliases": [
+        "Bstation"
+      ],
+      "homepage": "https://www.bilibili.tv/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [],
+      "offer_types": [
+        "free"
+      ],
+      "specialties": [
+        "anime",
+        "Asian animation"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.bilibili.tv/",
+          "note": "Current international page displays anime programming with Free access labels."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Only observed service identity and selected free-content labels are supported. Do not equate international bilibili.tv with the mainland bilibili.com catalog or assume full country coverage.",
+      "focus": [
+        "anime"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "rakuten-viki",
+      "name": "Rakuten Viki",
+      "aliases": [
+        "Viki"
+      ],
+      "homepage": "https://www.viki.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "BR",
+        "US",
+        "IN",
+        "AU",
+        "NZ",
+        "TH",
+        "SG"
+      ],
+      "offer_types": [
+        "subscription",
+        "free_ads"
+      ],
+      "specialties": [
+        "Korean dramas",
+        "Chinese dramas",
+        "Asian television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.viki.com/hc/en-us/articles/201780204-Do-I-need-to-pay-to-watch-on-Viki",
+          "note": "Official support explains free ad-supported access and Viki Pass."
+        },
+        {
+          "url": "https://rakuteninternational.com/news/rakuten-vikis-k-drama-day-returns-for-the-fourth-year",
+          "note": "Owner September 2026 campaign explicitly lists representative territories."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Promotional territory evidence supports service presence only, not permanent pricing or individual title availability. Viki Pass tiers and rights differ by territory.",
+      "focus": [
+        "series",
+        "kdrama",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "viu",
+      "name": "Viu",
+      "aliases": [],
+      "homepage": "https://www.viu.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [],
+      "offer_types": [
+        "subscription",
+        "free_ads"
+      ],
+      "specialties": [
+        "Asian series",
+        "regional originals",
+        "subtitled dramas"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.hq.viu.com/",
+          "note": "Owner states Asia/Middle East/Africa presence and a free ad-supported plus premium subscription model."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "No-service geo screen observed from research environment. Regional footprint is established, but a complete ISO country list has not been verified here.",
+      "focus": [
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "kocowa",
+      "name": "KOCOWA+",
+      "aliases": [
+        "KOCOWA"
+      ],
+      "homepage": "https://www.kocowa.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "BR",
+        "US",
+        "AU",
+        "NZ",
+        "GB",
+        "DE",
+        "FR",
+        "IT"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "Korean broadcast television",
+        "K-drama",
+        "K-pop variety"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.kocowa.com/hc/en-us/articles/115004038493-Is-KOCOWA-Available-to-Watch-in-my-Country",
+          "note": "Official country list includes Americas, Europe and Oceania."
+        },
+        {
+          "url": "https://welcon.kocca.kr/en/directory/content/kocowa--7874",
+          "note": "Korean government content-export directory describes KBS/MBC/SBS-backed service."
+        },
+        {
+          "url": "https://www.kocowa.com/en_us/plan",
+          "note": "Official plan page establishes paid subscription; no prices retained."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Korean content service distributed internationally; do not mark it as a domestic Korea-only service. Check plan and title rights for each country.",
+      "focus": [
+        "series",
+        "kdrama",
+        "local",
+        "music"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "tving",
+      "name": "TVING",
+      "aliases": [],
+      "homepage": "https://www.tving.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "KR"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Korean dramas",
+        "variety",
+        "sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.tving.com/",
+          "note": "Official active service lists drama, film, sport, live and news sections."
+        },
+        {
+          "url": "https://mkt.tving.com/2025twdouble/index.html",
+          "note": "Official TVING × Wavve bundle lists separate entitlements and exclusions."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Bundle is not evidence of one merged catalog. Wavve linkage and exclusions vary; some Apple content depends on bundle tier.",
+      "focus": [
+        "series",
+        "kdrama",
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "wavve",
+      "name": "Wavve",
+      "aliases": [
+        "웨이브"
+      ],
+      "homepage": "https://www.wavve.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "KR"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Korean broadcast series",
+        "movies",
+        "live television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://mkt.tving.com/2025twdouble/index.html",
+          "note": "Official partner page documents a Wavve subscription entitlement within the dual bundle."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Do not collapse into TVING. The cited double-plan excludes SBS content on Wavve; direct plans may differ.",
+      "focus": [
+        "movies",
+        "series",
+        "kdrama",
+        "local",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "coupang-play",
+      "name": "Coupang Play",
+      "aliases": [],
+      "homepage": "https://www.coupangplay.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "KR"
+      ],
+      "offer_types": [
+        "free_ads",
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Korean originals",
+        "films",
+        "live sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://play.coupang.com/en/faq",
+          "note": "Current FAQ allows general Coupang members with paid/WOW/Sports Pass exceptions."
+        },
+        {
+          "url": "https://news.coupang.com/archives/52981/",
+          "note": "Owner announced ad-supported free general membership from June 2025."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Free general-member access does not include all content. WOW membership and a separate Sports Pass may be necessary.",
+      "focus": [
+        "movies",
+        "kdrama",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "u-next",
+      "name": "U-NEXT",
+      "aliases": [
+        "U NEXT",
+        "UNEXT"
+      ],
+      "homepage": "https://video.unext.jp/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "films",
+        "anime",
+        "Asian and Japanese television",
+        "live sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://video.unext.jp/",
+          "note": "Current homepage shows film, anime, TV, sports and reading categories."
+        },
+        {
+          "url": "https://help.unext.jp/info-video/detail/info060c",
+          "note": "Official September 2026 notice ends HBO Max brand deployment on 30 September 2026."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "U-NEXT remains active. Do not describe it as the current HBO Max hub: that brand deployment ended 30 September 2026; individual Warner titles may continue under separate licenses.",
+      "focus": [
+        "movies",
+        "series",
+        "anime",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "abema",
+      "name": "ABEMA",
+      "aliases": [
+        "AbemaTV"
+      ],
+      "homepage": "https://abema.tv/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "subscription",
+        "free"
+      ],
+      "specialties": [
+        "anime",
+        "live programming",
+        "Japanese entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.abema.tv/hc/ja/articles/360015030972-%E6%96%99%E9%87%91%E3%81%AF%E3%81%8B%E3%81%8B%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B",
+          "note": "Official help distinguishes free content, premium plans and individual PPV tickets."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Paid ad-supported premium is not the same as free access. Pay-per-view events require separate entitlement; no blanket free trial claim.",
+      "focus": [
+        "anime",
+        "local",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "hulu-japan",
+      "name": "Hulu Japan",
+      "aliases": [
+        "Hulu JP"
+      ],
+      "homepage": "https://www.hulu.jp/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent",
+        "buy",
+        "live_tv"
+      ],
+      "specialties": [
+        "Japanese and international television",
+        "films",
+        "HBO Max brand hub"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.hulu.jp/",
+          "note": "Current homepage lists subscription, rental/purchase and live offerings."
+        },
+        {
+          "url": "https://news.hulu.jp/hbo_max_on_hulu/",
+          "note": "Official announcement establishes HBO Max on Hulu from 1 October 2026 for Hulu monthly members."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Separate from US Hulu. HBO Max on Hulu is a Japanese distribution brand, not evidence of a standalone HBO Max Japan subscription. Future announced series are not marked available.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "tver",
+      "name": "TVer",
+      "aliases": [
+        "ティーバー"
+      ],
+      "homepage": "https://tver.jp/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "free_ads"
+      ],
+      "specialties": [
+        "Japanese broadcast catch-up",
+        "television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.tver.jp/hc/ja/articles/5105308992281--TVer-%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B",
+          "note": "Official help defines a free ad-supported broadcaster streaming service."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Representative markets are not exhaustive. Titles, seasons, languages, plans and rights require a current country-specific offer check.",
+      "focus": [
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "d-anime-store",
+      "name": "d anime store",
+      "aliases": [
+        "dアニメストア"
+      ],
+      "homepage": "https://animestore.docomo.ne.jp/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent"
+      ],
+      "specialties": [
+        "anime"
+      ],
+      "official_sources": [
+        {
+          "url": "https://animestore.docomo.ne.jp/",
+          "note": "Official storefront displays monthly subscription access and rental titles."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Some works are rentals beyond the subscription. Do not propagate homepage title-count or price claims without fresh checking.",
+      "focus": [
+        "anime"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "dmm-tv",
+      "name": "DMM TV",
+      "aliases": [],
+      "homepage": "https://tv.dmm.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "anime",
+        "Japanese entertainment"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.dmm.com/premium/article/47483",
+          "note": "Official help confirms DMM Premium unlocks eligible DMM TV video catalog."
+        },
+        {
+          "url": "https://premium.dmm.com/welcome/b/",
+          "note": "Official welcome page describes anime and entertainment content."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Premium applies to eligible works only. Regional access restriction observed; do not imply international playback.",
+      "focus": [
+        "anime",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "lemino",
+      "name": "Lemino",
+      "aliases": [
+        "dTV"
+      ],
+      "homepage": "https://lemino.docomo.ne.jp/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "subscription",
+        "free_ads"
+      ],
+      "specialties": [
+        "Japanese and Korean drama",
+        "anime",
+        "music and live events"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.docomo.ne.jp/service/lemino/?icid=CRP_SER_pop_to_CRP_SER_lemino",
+          "note": "Official product page establishes subscription service."
+        },
+        {
+          "url": "https://lemino.docomo.ne.jp/cp/0000206/",
+          "note": "Official page labels ad-supported free catch-up works."
+        },
+        {
+          "url": "https://www.docomo.ne.jp/info/news_release/2026/09/24_00.html?cid=CRP_INF_news_release_2026_09_24_00_from_RSS_news_release",
+          "note": "Official September 2026 announcement of joint business with WOWOW/content expansion."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "dTV is a historical alias. WOWOW partnership does not imply every WOWOW title is included. Per-title and tier checks remain required.",
+      "focus": [
+        "series",
+        "anime",
+        "kdrama",
+        "local",
+        "live",
+        "music"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "fod",
+      "name": "FOD",
+      "aliases": [
+        "FOD Premium"
+      ],
+      "homepage": "https://fod.fujitv.co.jp/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "JP"
+      ],
+      "offer_types": [
+        "subscription",
+        "free"
+      ],
+      "specialties": [
+        "Fuji TV drama",
+        "Japanese variety",
+        "anime"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.fod.fujitv.co.jp/hc/ja/articles/360008578893-FOD%E3%81%A8%E3%81%AF",
+          "note": "Official help defines Fuji TV video/e-book service and premium/F1 entitlements."
+        },
+        {
+          "url": "https://help.fod.fujitv.co.jp/hc/ja/articles/360008579393-FOD%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%81%A7%E3%81%AF-%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E4%BD%9C%E5%93%81%E3%81%8C%E8%A6%8B%E6%94%BE%E9%A1%8C%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B",
+          "note": "Official help distinguishes free catch-up and premium eligible works."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "F1 has a specific plan; premium is not a blanket entitlement to everything.",
+      "focus": [
+        "series",
+        "anime",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "stan",
+      "name": "Stan",
+      "aliases": [],
+      "homepage": "https://www.stan.com.au/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "movies",
+        "original series",
+        "sports add-on"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.stan.com.au/",
+          "note": "Active official service homepage."
+        },
+        {
+          "url": "https://help.stan.com.au/hc/en-us/articles/16485018147599-Optus-Sport-on-Stan-Updates-to-Your-Subscription",
+          "note": "August 2026 update documents Optus Sport on Stan and broader Stan entertainment/sport plans."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Stan Entertainment, Stan Sport and legacy Optus Sport on Stan have different entitlements; sport is not universally included in the base plan.",
+      "focus": [
+        "movies",
+        "series",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "binge",
+      "name": "BINGE",
+      "aliases": [],
+      "homepage": "https://binge.com.au/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "films",
+        "drama",
+        "reality",
+        "documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://beta.binge.com.au/en-GB/help/articles/31655266163485-how-much-does-a-binge-subscription-cost",
+          "note": "Official BINGE support lists Basic/Standard/Premium subscriptions and live-channel ad policy."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Some paid tiers include ads; live channels can contain ads on all tiers. URL localization of help pages is not evidence of UK service availability.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "kayo-sports",
+      "name": "Kayo Sports",
+      "aliases": [
+        "Kayo"
+      ],
+      "homepage": "https://kayosports.com.au/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "subscription",
+        "free",
+        "sports"
+      ],
+      "specialties": [
+        "live and on-demand sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://kayosports.com.au/en-IN/help/articles/31174089040285-how-much-does-a-kayo-subscription-cost",
+          "note": "Official help specifies Australia availability, paid options and selected free content."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Selected free content does not cover the full paid sports catalog. Localized help URL is not evidence of India availability.",
+      "focus": [
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "foxtel-now",
+      "name": "Foxtel Now",
+      "aliases": [],
+      "homepage": "https://www.foxtel.com.au/now/index.html",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "live channels",
+        "films",
+        "entertainment",
+        "sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.foxtel.com.au/now/index.html",
+          "note": "Current provider page offers internet-delivered live/on-demand bundles."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Bundle rights differ. An advertised promotion ending 27 October 2026 is already expired at the research date and is not retained as a current price.",
+      "focus": [
+        "movies",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "7plus",
+      "name": "7plus",
+      "aliases": [],
+      "homepage": "https://7plus.com.au/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "Australian television",
+        "catch-up"
+      ],
+      "official_sources": [
+        {
+          "url": "https://7plus.com.au/",
+          "note": "Official page describes free streaming, catch-up and live Channel 7."
+        },
+        {
+          "url": "https://support.7plus.com.au/hc/en-au/articles/360060642091-What-is-7plus",
+          "note": "Official help explicitly states free ad-supported service without subscription."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Specific sports, programs and live channels have separate rights and geographic windows.",
+      "focus": [
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "9now",
+      "name": "9Now",
+      "aliases": [],
+      "homepage": "https://www.9now.com.au/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "Australian television",
+        "news",
+        "sport",
+        "catch-up"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.9now.com.au/about",
+          "note": "Official service overview describes live and on-demand Nine content."
+        },
+        {
+          "url": "https://www.9now.com.au/live/channel-9?startPlaying=true",
+          "note": "Official live page describes free ad-supported access."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Representative markets are not exhaustive. Titles, seasons, languages, plans and rights require a current country-specific offer check.",
+      "focus": [
+        "series",
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "10-australia",
+      "name": "10",
+      "aliases": [
+        "10 Play",
+        "Tenplay",
+        "10play"
+      ],
+      "homepage": "https://10.com.au/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "free_ads",
+        "live_tv"
+      ],
+      "specialties": [
+        "Australian television",
+        "FAST channels",
+        "catch-up"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.paramountanz.com.au/news/a-stronger-network-a-bolder-10/",
+          "note": "Owner confirms 30 June 2025 unification of 10 and 10 Play as 10."
+        },
+        {
+          "url": "https://helpdesk.tenplay.com.au/support/solutions/articles/16000048101-about-10",
+          "note": "Official help confirms free ad-supported streaming and account requirement."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "10 Play is a historical search alias; current destination is 10.com.au. Live and on-demand rights remain program-specific.",
+      "focus": [
+        "series",
+        "local",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "abc-iview",
+      "name": "ABC iview",
+      "aliases": [],
+      "homepage": "https://iview.abc.net.au/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Australian public-service television",
+        "children",
+        "news",
+        "documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://iview.abc.net.au/",
+          "note": "Official ABC service shows live TV, films, programs and children/news categories."
+        },
+        {
+          "url": "https://help.abc.net.au/hc/en-us/articles/8503446177935-What-is-ABC-iview",
+          "note": "Official help explicitly confirms free on-demand service and ABC live streams."
+        },
+        {
+          "url": "https://help.abc.net.au/hc/en-us/articles/8551325377423-Where-can-I-get-ABC-iview",
+          "note": "Selected internationally cleared content is available overseas; not the whole Australia catalog."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Australia is the representative market. Overseas exceptions and particular rights must be checked, not inferred from readable webpages.",
+      "focus": [
+        "series",
+        "documentaries",
+        "local",
+        "kids"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "sbs-on-demand",
+      "name": "SBS On Demand",
+      "aliases": [],
+      "homepage": "https://www.sbs.com.au/ondemand/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "international films",
+        "drama",
+        "documentaries",
+        "sport"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.sbs.com.au/ondemand/",
+          "note": "Official page describes free films and shows with sport, news and live categories."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Do not infer ad-free playback from the free-access label; geography and rights vary by program.",
+      "focus": [
+        "movies",
+        "series",
+        "documentaries",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "public"
+    },
+    {
+      "id": "tvnz-plus",
+      "name": "TVNZ+",
+      "aliases": [
+        "TVNZ OnDemand"
+      ],
+      "homepage": "https://www.tvnz.co.nz/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "NZ"
+      ],
+      "offer_types": [
+        "free_ads",
+        "rent",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "New Zealand television",
+        "films",
+        "news",
+        "event passes"
+      ],
+      "official_sources": [
+        {
+          "url": "https://helptvnz.zendesk.com/hc/en-us/articles/360024994471-Do-I-have-to-pay-to-watch-TVNZ",
+          "note": "Official help describes the ad-funded free base service."
+        },
+        {
+          "url": "https://corporate.tvnz.co.nz/pass-terms/",
+          "note": "2026 terms separately cover paid events and rentals."
+        },
+        {
+          "url": "https://www.tvnz.co.nz/",
+          "note": "Current homepage displays rental-pass content alongside free programs."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "TVNZ+ is no longer accurately modeled as entirely free: paid event passes and 48-hour movie rentals coexist with the free service. Event pass is one-off, not a subscription.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "neon",
+      "name": "Neon",
+      "aliases": [
+        "NEON"
+      ],
+      "homepage": "https://www.neontv.co.nz/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "NZ"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent"
+      ],
+      "specialties": [
+        "films",
+        "television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.neontv.co.nz/support/solutions/articles/64000279705-neon-terms-of-use",
+          "note": "Terms require New Zealand location and distinguish subscription service."
+        },
+        {
+          "url": "https://help.neontv.co.nz/support/home",
+          "note": "Official help includes movie rental eligibility questions."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Use the official .co.nz domain; unrelated similarly named IPTV sites are not this provider.",
+      "focus": [
+        "movies",
+        "series"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "sky-sport-now",
+      "name": "Sky Sport Now",
+      "aliases": [],
+      "homepage": "https://www.skysportnow.co.nz/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "NZ"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "live and on-demand sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.welcome.skysportnow.co.nz/home",
+          "note": "Official service page lists day/month/annual passes and Neon bundle."
+        },
+        {
+          "url": "https://www.welcome.skysportnow.co.nz/help",
+          "note": "Official help explains New Zealand access and account use."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Pass length and package determine access. Do not confuse Sky Sport Now NZ with similarly named Sky services abroad.",
+      "focus": [
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "vidio",
+      "name": "Vidio",
+      "aliases": [],
+      "homepage": "https://www.vidio.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "ID"
+      ],
+      "offer_types": [
+        "subscription",
+        "rent",
+        "sports"
+      ],
+      "specialties": [
+        "Indonesian originals",
+        "local television",
+        "sport"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.vidio.com/",
+          "note": "Current homepage explicitly shows subscriptions, sports and an Indonesian Movies for Rent section."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Some films are rentals beyond subscription. Event purchase buttons are not permanent ownership; avoid mapping every purchase to buy-to-own.",
+      "focus": [
+        "series",
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "vision-plus",
+      "name": "Vision+",
+      "aliases": [
+        "VISION+"
+      ],
+      "homepage": "https://www.visionplus.id/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "ID"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Indonesian television",
+        "originals",
+        "films",
+        "live sports"
+      ],
+      "official_sources": [
+        {
+          "url": "https://about.visionplus.id/",
+          "note": "Official service overview lists films, series, live TV, sport and subscription packages."
+        },
+        {
+          "url": "https://help.visionplus.id/topic/1",
+          "note": "Current official help distinguishes premium, sports, beIN, and bundled plans."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Sports tiers and partner bundles are separate entitlements; title rights must be checked at plan level.",
+      "focus": [
+        "movies",
+        "series",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "rcti-plus",
+      "name": "RCTI+",
+      "aliases": [
+        "RCTI Plus"
+      ],
+      "homepage": "https://www.rctiplus.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "ID"
+      ],
+      "offer_types": [
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Indonesian broadcast television",
+        "catch-up",
+        "live events"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.rctiplus.com/",
+          "note": "Current official homepage shows TV, sport and exclusive pay-per-view packages."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Do not label the entire service free: current homepage includes paid event packages and ad-free episode options. Exact offer type per program remains unverified.",
+      "focus": [
+        "series",
+        "local",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "iwant",
+      "name": "iWant",
+      "aliases": [
+        "iWantTFC",
+        "iWant TFC"
+      ],
+      "homepage": "https://www.iwanttfc.com/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "PH"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv"
+      ],
+      "specialties": [
+        "Filipino films",
+        "ABS-CBN series",
+        "originals"
+      ],
+      "official_sources": [
+        {
+          "url": "https://corporate.abs-cbn.com/newsroom/news-releases/2025/6/4/iwant-officially-launches-revamped-streaming-platf?lang=en",
+          "note": "Owner reports refreshed iWant platform and name from 9 July 2025, subscriptions, live content and diaspora licensing distinctions."
+        },
+        {
+          "url": "https://www.iwanttfc.com/",
+          "note": "Current homepage metadata uses iWant name."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Brand is now iWant, but domain retains iwanttfc.com. Some licensed content is explicitly only outside the Philippines; do not apply one global catalog.",
+      "focus": [
+        "movies",
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "mewatch",
+      "name": "mewatch",
+      "aliases": [
+        "meWATCH",
+        "Toggle"
+      ],
+      "homepage": "https://www.mewatch.sg/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "SG"
+      ],
+      "offer_types": [
+        "subscription",
+        "free",
+        "live_tv"
+      ],
+      "specialties": [
+        "Singapore television",
+        "Asian series",
+        "premium partner channels"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.mewatch.sg/live-tv/free-channels",
+          "note": "Official service lists free channels."
+        },
+        {
+          "url": "https://www.mediacorp.sg/terms-conditions",
+          "note": "Owner terms establish paid content and Singapore location limits."
+        },
+        {
+          "url": "https://apps.apple.com/sg/app/mewatch-video-movies-tv/id566561555",
+          "note": "Developer listing describes free and premium entertainment and partner subscriptions."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Free channels, Prime access and partner subscriptions differ. Most service terms target Singapore; do not infer overseas rights from an installed app.",
+      "focus": [
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "trueid",
+      "name": "TrueID",
+      "aliases": [],
+      "homepage": "https://www.trueid.net/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "TH"
+      ],
+      "offer_types": [
+        "free",
+        "rent",
+        "live_tv"
+      ],
+      "specialties": [
+        "Thai television",
+        "Asian series",
+        "anime",
+        "movie rentals"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.trueid.net/",
+          "note": "Current official homepage distinguishes free viewing, television and new movie rentals."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Country-specific TrueID services and paid packages differ. Listed free content does not establish a free entitlement to every title.",
+      "focus": [
+        "movies",
+        "series",
+        "anime",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "astro-go",
+      "name": "Astro GO",
+      "aliases": [
+        "Astro"
+      ],
+      "homepage": "https://www.astro.com.my/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "MY"
+      ],
+      "offer_types": [
+        "subscription",
+        "tv_everywhere",
+        "live_tv",
+        "sports"
+      ],
+      "specialties": [
+        "Malaysian television",
+        "sports",
+        "bundled streaming"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.astro.com.my/",
+          "note": "Current provider page shows Astro GO with Astro X3/One subscriptions, live sports and originals."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Astro X3, Astro One, Astro GO and third-party app bundles have different account, device and content entitlements; service directory should not flatten these into one universal offer.",
+      "focus": [
+        "series",
+        "local",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "sooka",
+      "name": "sooka",
+      "aliases": [],
+      "homepage": "https://sooka.my/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "MY"
+      ],
+      "offer_types": [
+        "subscription",
+        "live_tv",
+        "sports",
+        "free"
+      ],
+      "specialties": [
+        "Malaysian entertainment",
+        "live sports",
+        "television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://sooka.my/",
+          "note": "Official homepage displays subscription, sports, movies and live TV."
+        },
+        {
+          "url": "https://sooka.my/m/tv-stick",
+          "note": "Official hardware/service page confirms selected VOD and live channels can be watched without a subscription."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "Keep distinct from Astro GO even under related ownership; plans and authentication differ.",
+      "focus": [
+        "series",
+        "local",
+        "sports",
+        "live"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "kbs-world",
+      "name": "KBS WORLD",
+      "aliases": [
+        "KBS World TV"
+      ],
+      "homepage": "https://kbsworld.kbs.co.kr/",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [],
+      "offer_types": [
+        "live_tv"
+      ],
+      "specialties": [
+        "Korean public-service international television",
+        "K-drama",
+        "K-pop"
+      ],
+      "official_sources": [
+        {
+          "url": "https://english.kbs.co.kr/index.php",
+          "note": "KBS official site links its KBS WORLD TV YouTube presence."
+        },
+        {
+          "url": "https://kbsworld.kbs.co.kr/event/view.php?event_seq=140",
+          "note": "Official notice dated 19 October 2026 describes KBS WORLD on LG Channels."
+        },
+        {
+          "url": "https://kbsworld.kbs.co.kr/about/kbskorea.php",
+          "note": "Official KBS KOREA page documents distinct international broadcast/YouTube routes."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "active",
+      "caveats": "International broadcaster/channel, not proof of a standalone globally available SVOD catalog. KBS KOREA and KBS WORLD are distinct channels. Delivery and fees depend on local platform and region; do not claim every KBS program is free globally.",
+      "focus": [
+        "series",
+        "kdrama",
+        "local",
+        "music"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "optus-sport",
+      "name": "Optus Sport",
+      "aliases": [],
+      "homepage": "https://www.optus.com.au/entertainment/sport",
+      "region_group": "Asia-Pacific",
+      "representative_markets": [
+        "AU"
+      ],
+      "offer_types": [],
+      "specialties": [
+        "legacy sports streaming"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.stan.com.au/hc/en-us/articles/16485018147599-Optus-Sport-on-Stan-Updates-to-Your-Subscription",
+          "note": "Official 2026 Stan help confirms Optus Sport closed 1 August 2025 and eligible subscriptions moved."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
+      "status": "legacy",
+      "caveats": "Historical standalone service. Eligible Optus Sport on Stan plans still have specific entitlements; do not advertise the closed Optus app as current.",
+      "successor_id": "stan",
+      "focus": [
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "crunchyroll",
+      "name": "Crunchyroll",
+      "aliases": [],
+      "homepage": "https://www.crunchyroll.com/",
+      "region_group": "Global specialists",
+      "representative_markets": [
+        "BR",
+        "US",
+        "CA",
+        "AU",
+        "NZ",
+        "IN",
+        "GB",
+        "IE"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "anime",
+        "simulcasts",
+        "dubbed and subtitled Japanese animation"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.crunchyroll.com/pt-BR/article/what-are-the-available-membership-options",
+          "note": "Current official membership guide confirms paid plans, selected representative territories and payment/market differences."
+        },
+        {
+          "url": "https://www.crunchyroll.com/pt-pt/news/announcements/2026/2/2/crunchyroll-atualiza-precos-assinatura",
+          "note": "Official February 2026 announcement confirms Brazil paid plans and anime offering; no prices retained."
+        },
+        {
+          "url": "https://help.crunchyroll.com/hc/en-us/articles/19763084300436-Crunchyroll-Channel",
+          "note": "Official help distinguishes the separate free linear Crunchyroll Channel from the Premium on-demand app."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Current service identity and subscription/representative territory evidence only; not title-level rights.",
+      "status": "active",
+      "caveats": "Do not mark the full on-demand app free. The separate curated Crunchyroll Channel is free on selected distributors; an old help page still names Freevee, so distribution must be verified independently. Plans, languages, download perks and titles vary by country. Free trials are not permanent free access.",
+      "focus": [
+        "anime",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "amc-plus",
+      "name": "AMC+",
+      "aliases": [
+        "AMC Plus"
+      ],
+      "homepage": "https://www.amcplus.com/",
+      "region_group": "Global specialists",
+      "representative_markets": [
+        "US",
+        "CA",
+        "AU",
+        "NZ"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "original drama",
+        "horror",
+        "independent films"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.amcplus.com/kb/guide/en/where-is-amc-available-M1ZqaL29Vl/Steps/3677988",
+          "note": "Official help explicitly lists US, Canada, Australia and New Zealand with catalog variations."
+        },
+        {
+          "url": "https://www.amcplus.com/faqs",
+          "note": "Official FAQs establish paid subscription, content focus and partner-channel distribution."
+        },
+        {
+          "url": "https://www.amcplus.com/",
+          "note": "Current homepage separates direct subscription from third-party channel access."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Current provider and market evidence only; direct and partner subscriptions remain separate entitlements.",
+      "status": "active",
+      "caveats": "A subscription bought through Apple, Prime or another channel may only work inside that distributor, not the direct AMC+ app. Included brands, seasons and ads vary by region and plan.",
+      "focus": [
+        "movies",
+        "series",
+        "arthouse"
+      ],
+      "integration": "directory_only",
+      "kind": "culture"
+    },
+    {
+      "id": "acorn-tv",
+      "name": "Acorn TV",
+      "aliases": [],
+      "homepage": "https://acorn.tv/",
+      "region_group": "Global specialists",
+      "representative_markets": [
+        "US",
+        "CA",
+        "AU",
+        "NZ",
+        "GB"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "British and international mysteries",
+        "drama",
+        "crime television"
+      ],
+      "official_sources": [
+        {
+          "url": "https://support.acorn.tv/kb/guide/en/where-is-acorn-tv-available-nshBSMIZC1/Steps/4297201",
+          "note": "Current official country list names US, Canada, Australia, New Zealand and UK."
+        },
+        {
+          "url": "https://join.acorn.tv/may/",
+          "note": "Official subscription page describes mysteries, drama and thrillers and monthly/annual plans."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Current official service/market/subscription evidence only; not a title offer feed.",
+      "status": "active",
+      "caveats": "Do not infer current Latin America presence from historical expansion announcements. Catalog and supported devices vary by location, and direct/partner billing may differ.",
+      "focus": [
+        "series",
+        "local"
+      ],
+      "integration": "directory_only",
+      "kind": "regional"
+    },
+    {
+      "id": "discovery-plus",
+      "name": "discovery+",
+      "aliases": [
+        "Discovery Plus"
+      ],
+      "homepage": "https://www.discoveryplus.com/",
+      "region_group": "Global specialists",
+      "representative_markets": [
+        "US",
+        "CA",
+        "AT",
+        "DE",
+        "IE",
+        "IT",
+        "GB"
+      ],
+      "offer_types": [
+        "subscription"
+      ],
+      "specialties": [
+        "factual entertainment",
+        "reality",
+        "documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://help.discoveryplus.com/hc/en-us/articles/360055667914-Can-I-stream-discovery-while-traveling",
+          "note": "Official help establishes paid service and several supported countries; travel content varies."
+        },
+        {
+          "url": "https://support.discoveryplus.com/ie/Answer/Detail/000004061",
+          "note": "European help confirms overlapping markets and explicitly says Denmark, Finland, Netherlands and Spain are unavailable."
+        },
+        {
+          "url": "https://www.claro.com.br/faq/tv/por-que-nao-estou-conseguindo-assistir-no-meu-discovery",
+          "note": "Official Brazil distribution partner confirms discovery+ ended in Brazil on 6 February 2025 and eligible customers received HBO Max substitution."
+        },
+        {
+          "url": "https://www.verizon.com/support/discovery-plus-faqs/",
+          "note": "Authorized US partner describes the factual-entertainment streaming service."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Official service and overlapping representative country evidence; country lists differ between regional help pages, so coverage is deliberately conservative.",
+      "status": "active",
+      "caveats": "Active in selected markets, but not a currently separate Brazil service. Discovery content inside HBO Max does not establish a direct discovery+ subscription. Separate regional accounts and sports entitlements may apply.",
+      "focus": [
+        "documentaries"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    },
+    {
+      "id": "f1-tv",
+      "name": "F1 TV",
+      "aliases": [
+        "F1 TV Access",
+        "F1 TV Pro",
+        "F1 TV Premium"
+      ],
+      "homepage": "https://f1tv.formula1.com/",
+      "region_group": "Global specialists",
+      "representative_markets": [
+        "US"
+      ],
+      "offer_types": [
+        "subscription",
+        "sports"
+      ],
+      "specialties": [
+        "Formula 1",
+        "racing archives",
+        "motorsport documentaries"
+      ],
+      "official_sources": [
+        {
+          "url": "https://f1help.formula1.com/article/F1-TV-subscription-comparison",
+          "note": "Official comparison distinguishes Access replay/timing plan from Pro/Premium live-race plans."
+        },
+        {
+          "url": "https://www.formula1.com/en-us/subscribe-to-f1-tv",
+          "note": "Current official US page offers F1 TV Premium through Apple TV and separate Access."
+        },
+        {
+          "url": "https://tv.apple.com/us/info/watch-f1",
+          "note": "Apple confirms US subscribers can link an Apple Account for F1 TV Premium; country-specific rights."
+        },
+        {
+          "url": "https://www.formula1.com/en/information/f1-tv-subscription-terms.384sQqjslhQ2Rhm1LdKgfD",
+          "note": "Official terms require territory-specific eligibility and acknowledge varying content/features."
+        }
+      ],
+      "checked_on": "2026-10-28",
+      "evidence_scope": "Plan distinctions and a representative verified US distribution route only; full global location list not enumerated in this pass.",
+      "status": "active",
+      "caveats": "F1 TV Access excludes live F1 races. US F1 TV Premium access in 2026 is linked to Apple TV; do not assume that arrangement applies abroad. Representative US evidence does not mean the service is US-only or establish Brazil/other country live rights.",
+      "focus": [
+        "documentaries",
+        "sports"
+      ],
+      "integration": "directory_only",
+      "kind": "films"
+    }
+  ]
+}
