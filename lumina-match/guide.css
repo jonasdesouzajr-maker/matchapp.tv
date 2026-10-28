@@ -1,0 +1,34 @@
+/* Only the public Lumina guide; the game and existing site designs keep their owners. */
+.lumina-guide-page{margin:0;background:#110b17;color:#f3edf9;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+.lumina-guide-page *{box-sizing:border-box}
+.lumina-guide-shell{width:min(calc(100% - 32px),1080px);margin-inline:auto}
+.lumina-guide-page header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
+.lumina-guide-page .matchapp-brand-link{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:750}
+.lumina-guide-page .matchapp-brand-link img{width:48px;height:48px;object-fit:contain;background:transparent}
+.lumina-guide-page a{color:#f2d49c;text-underline-offset:3px}
+.lumina-guide-page a:focus-visible,.lumina-guide-page summary:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.lumina-guide-page h1{font-size:clamp(1.8rem,4.8vw,3.2rem);line-height:1.15;letter-spacing:-.025em;margin:.35em 0 .65em;overflow-wrap:anywhere}
+.lumina-guide-page h2{font-size:clamp(1.2rem,2.5vw,1.65rem);line-height:1.3;margin:0 0 .7em;color:#f2d49c}
+.lumina-guide-page p{margin:.6em 0 1em;overflow-wrap:anywhere}
+.lumina-guide-languages{display:flex;flex-wrap:wrap;gap:4px 10px;margin-block:12px 24px;font-size:.9rem}
+.lumina-guide-languages p{flex-basis:100%;margin:0;color:#d0c4df}
+.lumina-guide-languages a{display:inline-flex;align-items:center;min-height:44px;padding:7px 10px;border-radius:12px}
+.lumina-guide-languages a[aria-current="page"]{background:rgba(195,159,239,.18);color:#fff;text-decoration:none}
+.lumina-guide-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.lumina-guide-eyebrow,.lumina-guide-date,.lumina-guide-note,.lumina-guide-page figcaption{font-size:.9rem;color:#d0c4df}
+.lumina-guide-play{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;margin-block:10px;border-radius:999px;background:linear-gradient(135deg,#f2d49c,#cda668);color:#201427!important;font-weight:750;text-decoration:none;text-align:center;max-width:100%;overflow-wrap:anywhere}
+.lumina-guide-page figure{margin:0;min-width:0}
+.lumina-guide-art{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:10px;padding-block:14px}
+.lumina-guide-art img{display:block;width:100%;height:auto;aspect-ratio:784/1168;border-radius:14px;object-fit:contain}
+.lumina-guide-page figcaption{margin-block:8px;text-align:center}
+.lumina-guide-panel{margin-block:22px;padding:clamp(18px,3vw,28px);border-radius:20px;background:rgba(30,22,43,.94)}
+.lumina-guide-panel ol{padding-inline-start:1.5em}
+.lumina-guide-panel li{padding-inline-start:.35em;margin-block:.8em}
+.lumina-guide-faq details{padding-block:10px}
+.lumina-guide-faq summary{cursor:pointer;min-height:44px;padding-block:10px;font-weight:650;overflow-wrap:anywhere}
+.lumina-guide-related,.lumina-guide-page footer nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+.lumina-guide-related a,.lumina-guide-page footer a{display:inline-flex;align-items:center;min-height:44px}
+.lumina-guide-page footer{padding-block:22px 90px}
+@media(max-width:720px){.lumina-guide-hero{grid-template-columns:minmax(0,1fr)}.lumina-guide-art{max-width:460px;margin-inline:auto}.lumina-guide-languages{gap:2px 4px}.lumina-guide-shell{width:calc(100% - 24px)}}
+@media(prefers-reduced-motion:reduce){.lumina-guide-page{scroll-behavior:auto}}
+@media(forced-colors:active){.lumina-guide-play{border:1px solid ButtonText}.lumina-guide-languages a[aria-current="page"]{outline:1px solid currentColor}}

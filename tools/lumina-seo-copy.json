@@ -1,0 +1,1055 @@
+{
+  "updated": "2026-10-28",
+  "locales": {
+    "en": {
+      "nativeName": "English",
+      "ogLocale": "en_US",
+      "title": "Lumina Match: Free Online Memory Game | MatchApp Ai",
+      "description": "Play Lumina Match, a free online memory game with 250 levels, relaxed or timed play, music and friend rounds. Save your progress with a MatchApp account.",
+      "keywords": ["Lumina Match", "free online memory game", "card pair matching game", "250 level memory game", "browser memory game", "relaxing matching game", "memory game with friends", "timed card matching"],
+      "eyebrow": "Lumina Match · Browser game",
+      "h1": "Find every pair. Explore 250 levels.",
+      "intro": [
+        "Lumina Match is a free online memory game inside MatchApp Ai. Turn over illustrated cards, remember their positions and match every pair to open the next level.",
+        "Play a quiet solo session, try an optional timed challenge or share a classic round with friends. The game runs in your desktop, phone or tablet browser without installing a game."
+      ],
+      "playLabel": "Go to Home to play",
+      "playNote": "On Home, choose the Play Lumina Match pill to open the game.",
+      "languageLabel": "Read in your language",
+      "homeLabel": "Home",
+      "aboutLabel": "About MatchApp Ai",
+      "privacyLabel": "Privacy",
+      "termsLabel": "Terms",
+      "contactLabel": "Contact",
+      "updatedLabel": "Updated",
+      "imageAlt": "Illustrated Lumina Match cards from the Starlight, Enchanted Grove and Celestial Ocean themes",
+      "imageCaption": "Original game artwork across three themed card collections.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "How to play the card matching game",
+          "paragraphs": ["Each turn reveals two cards. Matching cards stay visible; different cards turn back over. Use what you remember on your next turn."],
+          "steps": ["Open Lumina Match from Home and choose a campaign level.", "Choose Relaxed for no countdown, or Timed challenge to play against the clock.", "Clear every pair to unlock the next level. Replay completed levels whenever you want."]
+        },
+        {
+          "id": "campaign",
+          "title": "A 250-level journey through three themes",
+          "paragraphs": [
+            "The solo campaign has ten chapters of 25 levels. Starlight boards grow as you progress. Enchanted Grove appears every 20 levels and Celestial Ocean every 25; Grove takes priority at levels 100 and 200.",
+            "Earn up to three stars with fewer moves, with 750 stars to collect. Each attempt offers three hints that briefly reveal a pair; using a hint limits that result to two stars. Every first clear of a tenth level adds 50 milestone points."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Solo levels and classic rounds with friends",
+          "paragraphs": [
+            "Relaxed and timed campaign play unlock the same levels. Classic rounds offer a smaller board for solo play or two players taking turns on one device.",
+            "For online friend rounds, sign in and invite an existing, mutually accepted Match Together friend. The friend accepts before the shared round starts. These classic friend rounds are separate from your solo 250-level campaign."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Save your journey, then return to MatchApp",
+          "paragraphs": [
+            "Registered players save unlocked levels, stars and unfinished solo games to their MatchApp account. Use Save in the game and check the save status before leaving.",
+            "Guest progress lasts only while the game stays open. Guest Save opens an account prompt: create an account, keep playing or close without saving. Close returns you to Home; closing or reloading a guest game loses that session's progress."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Set the sound for your session",
+          "paragraphs": [
+            "Theme music and card sounds begin after your first game interaction. Audio settings let you switch music and sound effects separately and adjust the volume.",
+            "Pause when you need a break. Audio stops while the game is paused or hidden, and Close stops the game audio when you return to Home."
+          ]
+        }
+      ],
+      "faqTitle": "Questions about Lumina Match",
+      "faqs": [
+        {"question": "How do I start playing?", "answer": "Go to MatchApp Home, choose Play Lumina Match and open a level. Match all pairs to move forward; Relaxed has no countdown."},
+        {"question": "Is the game free, and does it have ads?", "answer": "Lumina Match is free to play. There are currently no ads inside the game and no videos to watch to continue playing."},
+        {"question": "Do I need an account to save?", "answer": "Yes. Registered accounts retain progress. Guests can play without registering, but their game progress is not stored in the browser and is lost when the game closes or reloads."},
+        {"question": "Can I play with friends?", "answer": "Yes: take turns on one device or sign in for online classic rounds with accepted Match Together friends. The campaign remains a solo mode."},
+        {"question": "Why is there no sound yet?", "answer": "Tap a game control first, then check Audio settings and your device volume. You can also play with music and sound effects turned off."},
+        {"question": "Which devices and languages are supported?", "answer": "Use a desktop, phone or tablet web browser. The game supports all 14 MatchApp interface languages. This browser edition is not available inside the native Android app or Kids Mode."}
+      ],
+      "relatedTitle": "More from MatchApp Ai",
+      "relatedLinks": {"how": "How MatchApp Ai works", "together": "Meet Match Together", "discover": "Discover entertainment with Jonas"}
+    },
+    "pt-BR": {
+      "nativeName": "Português (Brasil)",
+      "ogLocale": "pt_BR",
+      "title": "Lumina Match: Jogo da Memória Online Grátis | MatchApp Ai",
+      "description": "Jogue Lumina Match: 250 fases de memória, modo sem pressa ou contra o tempo, música e partidas com amigos. Salve o progresso com uma conta MatchApp.",
+      "keywords": ["Lumina Match", "jogo da memória online grátis", "jogo de combinar pares de cartas", "jogo da memória com 250 fases", "jogo da memória no navegador", "jogo de pares relaxante", "jogo da memória com amigos", "jogo de cartas contra o tempo"],
+      "eyebrow": "Lumina Match · Jogo no navegador",
+      "h1": "Encontre todos os pares. Explore 250 fases.",
+      "intro": [
+        "Lumina Match é um jogo da memória online grátis dentro do MatchApp Ai. Vire cartas ilustradas, lembre-se das posições e encontre todos os pares para abrir a próxima fase.",
+        "Jogue sozinho sem pressa, experimente um desafio opcional contra o tempo ou compartilhe uma partida clássica com amigos. O jogo funciona no navegador do computador, celular ou tablet, sem instalar um jogo."
+      ],
+      "playLabel": "Ir ao início para jogar",
+      "playNote": "Na página inicial, toque no botão Jogar Lumina Match para abrir o jogo.",
+      "languageLabel": "Leia no seu idioma",
+      "homeLabel": "Início",
+      "aboutLabel": "Sobre o MatchApp Ai",
+      "privacyLabel": "Privacidade",
+      "termsLabel": "Termos",
+      "contactLabel": "Contato",
+      "updatedLabel": "Atualizado em",
+      "imageAlt": "Cartas ilustradas de Lumina Match dos temas Luz das Estrelas, Bosque Encantado e Oceano Celestial",
+      "imageCaption": "Arte original do jogo em três coleções temáticas de cartas.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "Como jogar e encontrar os pares",
+          "paragraphs": ["Em cada jogada, você revela duas cartas. As iguais continuam visíveis; as diferentes voltam a ficar viradas para baixo. Use o que lembra na próxima jogada."],
+          "steps": ["Abra Lumina Match na página inicial e escolha uma fase da campanha.", "Escolha Sem pressa para jogar sem contagem regressiva ou Desafio contra o tempo para enfrentar o relógio.", "Encontre todos os pares para liberar a próxima fase. Repita as fases concluídas quando quiser."]
+        },
+        {
+          "id": "campaign",
+          "title": "Uma jornada de 250 fases por três temas",
+          "paragraphs": [
+            "A campanha individual tem dez capítulos de 25 fases. Os tabuleiros de Luz das Estrelas crescem conforme você avança. Bosque Encantado aparece a cada 20 fases e Oceano Celestial a cada 25; o Bosque tem prioridade nas fases 100 e 200.",
+            "Ganhe até três estrelas usando menos jogadas, com 750 estrelas para conquistar. Cada tentativa oferece três dicas que revelam um par brevemente; usar uma dica limita esse resultado a duas estrelas. Concluir pela primeira vez cada fase múltipla de dez dá 50 pontos de bônus."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Fases individuais e partidas clássicas com amigos",
+          "paragraphs": [
+            "Os modos Sem pressa e contra o tempo liberam as mesmas fases da campanha. As partidas clássicas oferecem um tabuleiro menor para jogar sozinho ou com duas pessoas alternando as jogadas no mesmo aparelho.",
+            "Para jogar online, entre na sua conta e convide um amigo já aceito por ambos no Match Together. A partida compartilhada começa depois que o amigo aceita. Essas partidas clássicas são separadas da sua campanha individual de 250 fases."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Salve sua jornada e volte ao MatchApp",
+          "paragraphs": [
+            "Jogadores cadastrados salvam fases liberadas, estrelas e partidas individuais inacabadas na conta MatchApp. Use Salvar no jogo e confira o status do salvamento antes de sair.",
+            "O progresso de visitantes dura apenas enquanto o jogo permanece aberto. Salvar como visitante abre um convite para criar conta: você pode se cadastrar, continuar jogando ou fechar sem salvar. Fechar volta ao início; fechar ou recarregar o jogo como visitante apaga o progresso daquela sessão."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Escolha o som da sua partida",
+          "paragraphs": [
+            "A música dos temas e os sons das cartas começam após sua primeira interação com o jogo. Nas configurações de áudio, você pode ligar ou desligar música e efeitos separadamente e ajustar o volume.",
+            "Pause quando precisar de uma pausa. O áudio para enquanto o jogo está pausado ou oculto, e Fechar interrompe o áudio ao voltar à página inicial."
+          ]
+        }
+      ],
+      "faqTitle": "Perguntas sobre Lumina Match",
+      "faqs": [
+        {"question": "Como começo a jogar?", "answer": "Vá à página inicial do MatchApp, escolha Jogar Lumina Match e abra uma fase. Encontre todos os pares para avançar; o modo Sem pressa não tem contagem regressiva."},
+        {"question": "O jogo é grátis? Tem anúncios?", "answer": "Lumina Match é grátis. Atualmente não há anúncios dentro do jogo nem vídeos para assistir antes de continuar jogando."},
+        {"question": "Preciso de conta para salvar?", "answer": "Sim. Contas cadastradas mantêm o progresso. Visitantes podem jogar sem cadastro, mas o progresso não é armazenado no navegador e se perde ao fechar ou recarregar o jogo."},
+        {"question": "Posso jogar com amigos?", "answer": "Sim: alternem as jogadas no mesmo aparelho ou entrem nas suas contas para partidas clássicas online com amigos aceitos no Match Together. A campanha continua sendo individual."},
+        {"question": "Por que ainda não ouço som?", "answer": "Toque primeiro em um controle do jogo e confira as configurações de áudio e o volume do aparelho. Você também pode jogar com música e efeitos desligados."},
+        {"question": "Quais aparelhos e idiomas são compatíveis?", "answer": "Use um navegador de computador, celular ou tablet. O jogo oferece os 14 idiomas da interface MatchApp. Esta edição para navegador não está disponível dentro do app nativo Android nem no Kids Mode."}
+      ],
+      "relatedTitle": "Mais do MatchApp Ai",
+      "relatedLinks": {"how": "Como funciona o MatchApp Ai", "together": "Conheça o Match Together", "discover": "Descubra entretenimento com Jonas"}
+    },
+    "es": {
+      "nativeName": "Español",
+      "ogLocale": "es_ES",
+      "title": "Lumina Match: Juego de Memoria Online Gratis | MatchApp Ai",
+      "description": "Juega a Lumina Match: 250 niveles de memoria, modo sin prisas o contrarreloj, música y partidas con amigos. Guarda tu progreso con una cuenta MatchApp.",
+      "keywords": ["Lumina Match", "juego de memoria online gratis", "juego de parejas de cartas", "juego de memoria de 250 niveles", "juego de memoria en el navegador", "juego de parejas relajante", "juego de memoria con amigos", "cartas contrarreloj"],
+      "eyebrow": "Lumina Match · Juego de navegador",
+      "h1": "Encuentra cada pareja. Explora 250 niveles.",
+      "intro": [
+        "Lumina Match es un juego de memoria online gratuito dentro de MatchApp Ai. Voltea cartas ilustradas, recuerda sus posiciones y encuentra todas las parejas para abrir el siguiente nivel.",
+        "Disfruta de una sesión tranquila en solitario, prueba el desafío contrarreloj opcional o comparte una partida clásica con amigos. Juega desde el navegador del ordenador, móvil o tableta, sin instalar un juego."
+      ],
+      "playLabel": "Ir al inicio para jugar",
+      "playNote": "En la página de inicio, elige el botón Jugar Lumina Match para abrir el juego.",
+      "languageLabel": "Lee en tu idioma",
+      "homeLabel": "Inicio",
+      "aboutLabel": "Acerca de MatchApp Ai",
+      "privacyLabel": "Privacidad",
+      "termsLabel": "Condiciones",
+      "contactLabel": "Contacto",
+      "updatedLabel": "Actualizado",
+      "imageAlt": "Cartas ilustradas de Lumina Match de los temas Luz Estelar, Bosque Encantado y Océano Celestial",
+      "imageCaption": "Ilustraciones originales del juego en tres colecciones temáticas de cartas.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "Cómo jugar y emparejar las cartas",
+          "paragraphs": ["Cada turno revela dos cartas. Las iguales permanecen visibles; las diferentes se vuelven a ocultar. Aprovecha lo que recuerdas en el siguiente turno."],
+          "steps": ["Abre Lumina Match desde Inicio y elige un nivel de la campaña.", "Elige Sin prisas para jugar sin cuenta atrás, o Desafío contrarreloj para enfrentarte al reloj.", "Encuentra todas las parejas para desbloquear el siguiente nivel. Repite los niveles completados cuando quieras."]
+        },
+        {
+          "id": "campaign",
+          "title": "Un recorrido de 250 niveles por tres temas",
+          "paragraphs": [
+            "La campaña individual tiene diez capítulos de 25 niveles. Los tableros de Luz Estelar crecen a medida que avanzas. Bosque Encantado aparece cada 20 niveles y Océano Celestial cada 25; el Bosque tiene prioridad en los niveles 100 y 200.",
+            "Consigue hasta tres estrellas con menos movimientos, con 750 estrellas en total. Cada intento ofrece tres pistas que muestran una pareja brevemente; usar una pista limita ese resultado a dos estrellas. Completar por primera vez cada nivel múltiplo de diez añade 50 puntos de bonificación."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Niveles individuales y partidas clásicas con amigos",
+          "paragraphs": [
+            "Los modos Sin prisas y contrarreloj desbloquean los mismos niveles de la campaña. Las partidas clásicas ofrecen un tablero más pequeño para jugar en solitario o por turnos con otra persona en un mismo dispositivo.",
+            "Para jugar online, inicia sesión e invita a un amigo de Match Together cuya amistad ya hayáis aceptado ambos. La partida compartida comienza cuando el amigo acepta. Estas partidas clásicas son independientes de tu campaña individual de 250 niveles."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Guarda tu recorrido y vuelve a MatchApp",
+          "paragraphs": [
+            "Los jugadores registrados guardan niveles desbloqueados, estrellas y partidas individuales sin terminar en su cuenta MatchApp. Pulsa Guardar en el juego y comprueba el estado del guardado antes de salir.",
+            "El progreso de los invitados dura solo mientras el juego permanece abierto. Guardar como invitado abre un aviso: puedes crear una cuenta, seguir jugando o cerrar sin guardar. Cerrar te devuelve a Inicio; cerrar o recargar una partida de invitado elimina el progreso de esa sesión."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Ajusta el sonido de tu partida",
+          "paragraphs": [
+            "La música de los temas y los sonidos de las cartas empiezan tras tu primera interacción con el juego. Los ajustes de audio permiten activar música y efectos por separado y ajustar el volumen.",
+            "Pausa cuando necesites descansar. El audio se detiene mientras el juego está pausado u oculto, y Cerrar detiene el sonido al volver a Inicio."
+          ]
+        }
+      ],
+      "faqTitle": "Preguntas sobre Lumina Match",
+      "faqs": [
+        {"question": "¿Cómo empiezo a jugar?", "answer": "Ve al inicio de MatchApp, elige Jugar Lumina Match y abre un nivel. Encuentra todas las parejas para avanzar; Sin prisas no tiene cuenta atrás."},
+        {"question": "¿Es gratis? ¿Tiene anuncios?", "answer": "Lumina Match es gratuito. Actualmente no hay anuncios dentro del juego ni vídeos que debas ver para seguir jugando."},
+        {"question": "¿Necesito una cuenta para guardar?", "answer": "Sí. Las cuentas registradas conservan el progreso. Los invitados pueden jugar sin registrarse, pero su progreso no se almacena en el navegador y se pierde al cerrar o recargar el juego."},
+        {"question": "¿Puedo jugar con amigos?", "answer": "Sí: jugad por turnos en un mismo dispositivo o iniciad sesión para partidas clásicas online con amigos aceptados en Match Together. La campaña sigue siendo individual."},
+        {"question": "¿Por qué todavía no se oye nada?", "answer": "Toca primero un control del juego y comprueba los ajustes de audio y el volumen del dispositivo. También puedes jugar con la música y los efectos desactivados."},
+        {"question": "¿Qué dispositivos e idiomas admite?", "answer": "Usa un navegador de ordenador, móvil o tableta. El juego ofrece los 14 idiomas de la interfaz MatchApp. Esta edición para navegador no está disponible dentro de la aplicación nativa Android ni en Kids Mode."}
+      ],
+      "relatedTitle": "Más de MatchApp Ai",
+      "relatedLinks": {"how": "Cómo funciona MatchApp Ai", "together": "Conoce Match Together", "discover": "Descubre entretenimiento con Jonas"}
+    },
+    "fr": {
+      "nativeName": "Français",
+      "ogLocale": "fr_FR",
+      "title": "Lumina Match : Jeu de Mémoire Gratuit en Ligne | MatchApp Ai",
+      "description": "Jouez à Lumina Match : 250 niveaux, mode détente ou chronométré, musique et parties entre amis. Sauvegardez votre progression avec un compte MatchApp.",
+      "keywords": ["Lumina Match", "jeu de mémoire gratuit en ligne", "jeu de paires de cartes", "jeu de mémoire 250 niveaux", "jeu de mémoire sur navigateur", "jeu de paires relaxant", "jeu de mémoire entre amis", "jeu de cartes chronométré"],
+      "eyebrow": "Lumina Match · Jeu sur navigateur",
+      "h1": "Retrouvez chaque paire. Explorez 250 niveaux.",
+      "intro": [
+        "Lumina Match est un jeu de mémoire gratuit en ligne dans MatchApp Ai. Retournez les cartes illustrées, retenez leur position et retrouvez toutes les paires pour ouvrir le niveau suivant.",
+        "Profitez d'une partie tranquille en solo, essayez un défi chronométré facultatif ou partagez une partie classique entre amis. Le jeu fonctionne dans le navigateur de votre ordinateur, téléphone ou tablette, sans installation."
+      ],
+      "playLabel": "Aller à l'accueil pour jouer",
+      "playNote": "Sur l'accueil, choisissez le bouton Jouer à Lumina Match pour ouvrir le jeu.",
+      "languageLabel": "Lire dans votre langue",
+      "homeLabel": "Accueil",
+      "aboutLabel": "À propos de MatchApp Ai",
+      "privacyLabel": "Confidentialité",
+      "termsLabel": "Conditions",
+      "contactLabel": "Contact",
+      "updatedLabel": "Mis à jour le",
+      "imageAlt": "Cartes illustrées de Lumina Match des thèmes Lueur des Étoiles, Bosquet Enchanté et Océan Céleste",
+      "imageCaption": "Les illustrations originales du jeu dans trois collections de cartes thématiques.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "Comment jouer et retrouver les paires",
+          "paragraphs": ["À chaque tour, vous révélez deux cartes. Les cartes identiques restent visibles ; les autres se retournent. Utilisez vos souvenirs au tour suivant."],
+          "steps": ["Ouvrez Lumina Match depuis l'accueil et choisissez un niveau de la campagne.", "Choisissez Détente pour jouer sans compte à rebours, ou Défi chronométré pour affronter le temps.", "Retrouvez toutes les paires pour débloquer le niveau suivant. Rejouez les niveaux terminés à votre guise."]
+        },
+        {
+          "id": "campaign",
+          "title": "Un parcours de 250 niveaux à travers trois thèmes",
+          "paragraphs": [
+            "La campagne solo comporte dix chapitres de 25 niveaux. Les plateaux de Lueur des Étoiles s'agrandissent au fil de votre progression. Bosquet Enchanté apparaît tous les 20 niveaux et Océan Céleste tous les 25 ; le Bosquet est prioritaire aux niveaux 100 et 200.",
+            "Gagnez jusqu'à trois étoiles en utilisant moins de coups, pour un total de 750 étoiles. Chaque tentative propose trois indices qui dévoilent brièvement une paire ; utiliser un indice limite le résultat à deux étoiles. La première réussite de chaque niveau multiple de dix rapporte 50 points bonus."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Niveaux solo et parties classiques entre amis",
+          "paragraphs": [
+            "Les modes Détente et chronométré débloquent les mêmes niveaux de campagne. Les parties classiques proposent un plateau plus petit, en solo ou à deux en alternant les tours sur un même appareil.",
+            "Pour jouer en ligne, connectez-vous et invitez un ami avec qui l'amitié est déjà acceptée sur Match Together. La partie partagée commence après son acceptation. Ces parties classiques sont distinctes de votre campagne solo de 250 niveaux."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Sauvegardez votre parcours, puis revenez à MatchApp",
+          "paragraphs": [
+            "Les joueurs inscrits sauvegardent les niveaux débloqués, les étoiles et les parties solo inachevées dans leur compte MatchApp. Utilisez Sauvegarder dans le jeu et vérifiez l'état de la sauvegarde avant de quitter.",
+            "La progression des invités dure seulement tant que le jeu reste ouvert. Sauvegarder en tant qu'invité ouvre une invitation à créer un compte : inscrivez-vous, continuez à jouer ou fermez sans sauvegarder. Fermer ramène à l'accueil ; fermer ou recharger une partie invitée efface sa progression."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Choisissez l'ambiance sonore de votre partie",
+          "paragraphs": [
+            "La musique des thèmes et les sons des cartes démarrent après votre première interaction avec le jeu. Les réglages audio permettent d'activer séparément la musique et les effets sonores, et de régler le volume.",
+            "Faites une pause lorsque vous en avez besoin. Le son s'arrête lorsque le jeu est en pause ou masqué, et Fermer coupe l'audio du jeu en revenant à l'accueil."
+          ]
+        }
+      ],
+      "faqTitle": "Questions sur Lumina Match",
+      "faqs": [
+        {"question": "Comment commencer à jouer ?", "answer": "Allez sur l'accueil de MatchApp, choisissez Jouer à Lumina Match et ouvrez un niveau. Retrouvez toutes les paires pour avancer ; Détente n'a pas de compte à rebours."},
+        {"question": "Le jeu est-il gratuit et contient-il des publicités ?", "answer": "Lumina Match est gratuit. Il n'y a actuellement aucune publicité dans le jeu ni de vidéo à regarder pour continuer à jouer."},
+        {"question": "Faut-il un compte pour sauvegarder ?", "answer": "Oui. Les comptes inscrits conservent la progression. Les invités peuvent jouer sans inscription, mais leur progression n'est pas enregistrée dans le navigateur et disparaît à la fermeture ou au rechargement du jeu."},
+        {"question": "Puis-je jouer avec des amis ?", "answer": "Oui : alternez les tours sur un appareil ou connectez-vous pour des parties classiques en ligne avec vos amis acceptés sur Match Together. La campagne reste un mode solo."},
+        {"question": "Pourquoi n'y a-t-il pas encore de son ?", "answer": "Touchez d'abord une commande du jeu, puis vérifiez les réglages audio et le volume de votre appareil. Vous pouvez aussi jouer sans musique ni effets sonores."},
+        {"question": "Quels appareils et quelles langues sont pris en charge ?", "answer": "Utilisez le navigateur d'un ordinateur, téléphone ou tablette. Le jeu propose les 14 langues de l'interface MatchApp. Cette édition pour navigateur n'est pas disponible dans l'application Android native ni dans Kids Mode."}
+      ],
+      "relatedTitle": "À découvrir sur MatchApp Ai",
+      "relatedLinks": {"how": "Comment fonctionne MatchApp Ai", "together": "Découvrez Match Together", "discover": "Explorez le divertissement avec Jonas"}
+    },
+    "de": {
+      "nativeName": "Deutsch",
+      "ogLocale": "de_DE",
+      "title": "Lumina Match: Kostenloses Online-Merkspiel | MatchApp Ai",
+      "description": "Spiele Lumina Match mit 250 Levels, entspannt oder auf Zeit, mit Musik und Freundesrunden. Speichere deinen Fortschritt mit einem MatchApp-Konto.",
+      "keywords": ["Lumina Match", "kostenloses Online-Merkspiel", "Kartenpaare finden", "Gedächtnisspiel mit 250 Levels", "Merkspiel im Browser", "entspanntes Paare-Spiel", "Merkspiel mit Freunden", "Kartenpaare auf Zeit"],
+      "eyebrow": "Lumina Match · Browserspiel",
+      "h1": "Finde jedes Paar. Entdecke 250 Levels.",
+      "intro": [
+        "Lumina Match ist ein kostenloses Online-Merkspiel in MatchApp Ai. Decke illustrierte Karten auf, merke dir ihre Positionen und finde alle Paare, um das nächste Level zu öffnen.",
+        "Spiele in Ruhe allein, probiere die freiwillige Zeit-Herausforderung oder teile eine klassische Runde mit Freunden. Das Spiel läuft ohne Spielinstallation im Browser deines Computers, Smartphones oder Tablets."
+      ],
+      "playLabel": "Zum Spielen zur Startseite",
+      "playNote": "Wähle auf der Startseite die Schaltfläche Lumina Match spielen, um das Spiel zu öffnen.",
+      "languageLabel": "In deiner Sprache lesen",
+      "homeLabel": "Startseite",
+      "aboutLabel": "Über MatchApp Ai",
+      "privacyLabel": "Datenschutz",
+      "termsLabel": "Nutzungsbedingungen",
+      "contactLabel": "Kontakt",
+      "updatedLabel": "Aktualisiert am",
+      "imageAlt": "Illustrierte Karten aus Lumina Match mit den Themen Sternenlicht, Verzauberter Hain und Himmlischer Ozean",
+      "imageCaption": "Originalgrafiken des Spiels in drei thematischen Kartensammlungen.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "So funktioniert das Kartenpaare-Spiel",
+          "paragraphs": ["Mit jedem Zug deckst du zwei Karten auf. Gleiche Karten bleiben sichtbar, unterschiedliche werden wieder verdeckt. Nutze beim nächsten Zug, was du dir gemerkt hast."],
+          "steps": ["Öffne Lumina Match auf der Startseite und wähle ein Kampagnenlevel.", "Wähle Entspannt für ein Spiel ohne Countdown oder Zeit-Herausforderung, um gegen die Uhr zu spielen.", "Finde alle Paare, um das nächste Level freizuschalten. Bereits abgeschlossene Levels kannst du jederzeit wiederholen."]
+        },
+        {
+          "id": "campaign",
+          "title": "250 Levels in drei Themenwelten",
+          "paragraphs": [
+            "Die Solo-Kampagne umfasst zehn Kapitel mit je 25 Levels. Die Sternenlicht-Spielfelder wachsen mit deinem Fortschritt. Verzauberter Hain erscheint alle 20 Levels, Himmlischer Ozean alle 25. Bei Level 100 und 200 hat der Hain Vorrang.",
+            "Verdiene mit weniger Zügen bis zu drei Sterne; insgesamt gibt es 750 Sterne. Pro Versuch stehen drei Hinweise zur Verfügung, die kurz ein Paar zeigen. Wer einen Hinweis nutzt, erhält für diesen Versuch höchstens zwei Sterne. Für den ersten Abschluss jedes zehnten Levels gibt es 50 Bonuspunkte."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Solo-Levels und klassische Runden mit Freunden",
+          "paragraphs": [
+            "Entspanntes Spielen und Spielen auf Zeit schalten dieselben Kampagnenlevels frei. Klassische Runden bieten ein kleineres Spielfeld für eine Person oder zwei Personen, die sich an einem Gerät abwechseln.",
+            "Melde dich für Online-Runden an und lade einen bereits beidseitig bestätigten Match-Together-Freund ein. Die gemeinsame Runde beginnt, nachdem dein Freund die Einladung angenommen hat. Diese klassischen Freundesrunden sind von deiner Solo-Kampagne mit 250 Levels getrennt."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Fortschritt speichern und zu MatchApp zurückkehren",
+          "paragraphs": [
+            "Registrierte Spieler speichern freigeschaltete Levels, Sterne und unvollendete Solo-Spiele in ihrem MatchApp-Konto. Wähle im Spiel Speichern und prüfe vor dem Verlassen den Speicherstatus.",
+            "Der Fortschritt von Gästen bleibt nur erhalten, solange das Spiel geöffnet ist. Speichern öffnet für Gäste einen Kontohinweis: Erstelle ein Konto, spiele weiter oder schließe ohne Speichern. Schließen führt zur Startseite zurück. Wenn Gäste das Spiel schließen oder neu laden, geht der Fortschritt dieser Sitzung verloren."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Wähle den Klang für deine Spielrunde",
+          "paragraphs": [
+            "Themenmusik und Kartengeräusche starten nach deiner ersten Aktion im Spiel. In den Audioeinstellungen kannst du Musik und Soundeffekte getrennt ein- oder ausschalten und die Lautstärke anpassen.",
+            "Pausiere, wenn du eine Auszeit brauchst. Der Ton stoppt, während das Spiel pausiert oder ausgeblendet ist. Schließen beendet den Spielton bei der Rückkehr zur Startseite."
+          ]
+        }
+      ],
+      "faqTitle": "Fragen zu Lumina Match",
+      "faqs": [
+        {"question": "Wie beginne ich zu spielen?", "answer": "Öffne die MatchApp-Startseite, wähle Lumina Match spielen und starte ein Level. Finde alle Paare, um weiterzukommen. Entspannt hat keinen Countdown."},
+        {"question": "Ist das Spiel kostenlos und enthält es Werbung?", "answer": "Lumina Match ist kostenlos. Im Spiel gibt es derzeit keine Werbung und keine Videos, die du zum Weiterspielen ansehen musst."},
+        {"question": "Brauche ich zum Speichern ein Konto?", "answer": "Ja. Registrierte Konten behalten den Fortschritt. Gäste können ohne Registrierung spielen; ihr Spielfortschritt wird jedoch nicht im Browser gespeichert und geht beim Schließen oder Neuladen verloren."},
+        {"question": "Kann ich mit Freunden spielen?", "answer": "Ja: Wechselt euch an einem Gerät ab oder meldet euch für klassische Online-Runden mit bestätigten Match-Together-Freunden an. Die Kampagne bleibt ein Solo-Modus."},
+        {"question": "Warum höre ich noch keinen Ton?", "answer": "Tippe zuerst auf ein Spielelement und prüfe dann die Audioeinstellungen sowie die Gerätelautstärke. Du kannst auch ohne Musik und Soundeffekte spielen."},
+        {"question": "Welche Geräte und Sprachen werden unterstützt?", "answer": "Nutze einen Browser auf Computer, Smartphone oder Tablet. Das Spiel unterstützt alle 14 MatchApp-Oberflächensprachen. Diese Browserausgabe ist nicht innerhalb der nativen Android-App oder im Kids Mode verfügbar."}
+      ],
+      "relatedTitle": "Mehr von MatchApp Ai",
+      "relatedLinks": {"how": "So funktioniert MatchApp Ai", "together": "Match Together kennenlernen", "discover": "Mit Jonas Unterhaltung entdecken"}
+    },
+    "it": {
+      "nativeName": "Italiano",
+      "ogLocale": "it_IT",
+      "title": "Lumina Match: Gioco di Memoria Online Gratis | MatchApp Ai",
+      "description": "Gioca a Lumina Match: 250 livelli, modalità rilassata o a tempo, musica e partite con amici. Salva i tuoi progressi con un account MatchApp.",
+      "keywords": ["Lumina Match", "gioco di memoria online gratis", "gioco di coppie di carte", "gioco di memoria con 250 livelli", "gioco di memoria nel browser", "gioco di abbinamenti rilassante", "gioco di memoria con amici", "abbinare carte a tempo"],
+      "eyebrow": "Lumina Match · Gioco nel browser",
+      "h1": "Trova ogni coppia. Esplora 250 livelli.",
+      "intro": [
+        "Lumina Match è un gioco di memoria online gratuito all'interno di MatchApp Ai. Gira le carte illustrate, ricorda le loro posizioni e trova tutte le coppie per aprire il livello successivo.",
+        "Goditi una partita tranquilla in solitaria, prova una sfida a tempo facoltativa o condividi una partita classica con gli amici. Il gioco funziona nel browser di computer, telefono o tablet, senza installare un gioco."
+      ],
+      "playLabel": "Vai alla pagina iniziale per giocare",
+      "playNote": "Nella pagina iniziale, scegli il pulsante Gioca a Lumina Match per aprire il gioco.",
+      "languageLabel": "Leggi nella tua lingua",
+      "homeLabel": "Pagina iniziale",
+      "aboutLabel": "Informazioni su MatchApp Ai",
+      "privacyLabel": "Privacy",
+      "termsLabel": "Condizioni",
+      "contactLabel": "Contatti",
+      "updatedLabel": "Aggiornato il",
+      "imageAlt": "Carte illustrate di Lumina Match dei temi Luce Stellare, Boschetto Incantato e Oceano Celeste",
+      "imageCaption": "Illustrazioni originali del gioco in tre collezioni tematiche di carte.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "Come giocare e abbinare le carte",
+          "paragraphs": ["A ogni turno scopri due carte. Quelle uguali restano visibili; quelle diverse si coprono di nuovo. Usa ciò che ricordi nel turno successivo."],
+          "steps": ["Apri Lumina Match dalla pagina iniziale e scegli un livello della campagna.", "Scegli Rilassato per giocare senza conto alla rovescia, oppure Sfida a tempo per affrontare il cronometro.", "Trova tutte le coppie per sbloccare il livello successivo. Rigioca i livelli completati quando vuoi."]
+        },
+        {
+          "id": "campaign",
+          "title": "Un viaggio di 250 livelli attraverso tre temi",
+          "paragraphs": [
+            "La campagna in solitaria comprende dieci capitoli da 25 livelli. I tabelloni di Luce Stellare crescono man mano che avanzi. Boschetto Incantato appare ogni 20 livelli e Oceano Celeste ogni 25; il Boschetto ha la precedenza ai livelli 100 e 200.",
+            "Ottieni fino a tre stelle usando meno mosse, per un totale di 750 stelle. Ogni tentativo offre tre suggerimenti che mostrano brevemente una coppia; usare un suggerimento limita il risultato a due stelle. Completare per la prima volta ogni livello multiplo di dieci aggiunge 50 punti bonus."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Livelli in solitaria e partite classiche con amici",
+          "paragraphs": [
+            "Le modalità rilassata e a tempo sbloccano gli stessi livelli della campagna. Le partite classiche offrono un tabellone più piccolo per giocare da soli o in due, alternando i turni sullo stesso dispositivo.",
+            "Per giocare online, accedi e invita un amico con cui l'amicizia è già stata accettata su Match Together. La partita condivisa inizia dopo che l'amico accetta l'invito. Queste partite classiche sono separate dalla tua campagna individuale di 250 livelli."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Salva il tuo viaggio e torna a MatchApp",
+          "paragraphs": [
+            "I giocatori registrati salvano livelli sbloccati, stelle e partite individuali non terminate nel proprio account MatchApp. Usa Salva nel gioco e controlla lo stato del salvataggio prima di uscire.",
+            "I progressi degli ospiti durano solo finché il gioco rimane aperto. Salva apre per gli ospiti un invito a creare un account: puoi registrarti, continuare a giocare o chiudere senza salvare. Chiudi riporta alla pagina iniziale; chiudere o ricaricare una partita ospite fa perdere i progressi di quella sessione."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Scegli il suono della tua partita",
+          "paragraphs": [
+            "La musica dei temi e i suoni delle carte iniziano dopo la prima interazione con il gioco. Le impostazioni audio permettono di attivare musica ed effetti separatamente e regolare il volume.",
+            "Metti in pausa quando hai bisogno di una sosta. L'audio si ferma quando il gioco è in pausa o nascosto; Chiudi interrompe l'audio del gioco mentre torni alla pagina iniziale."
+          ]
+        }
+      ],
+      "faqTitle": "Domande su Lumina Match",
+      "faqs": [
+        {"question": "Come inizio a giocare?", "answer": "Vai alla pagina iniziale di MatchApp, scegli Gioca a Lumina Match e apri un livello. Trova tutte le coppie per avanzare; Rilassato non ha conto alla rovescia."},
+        {"question": "Il gioco è gratuito? Ci sono pubblicità?", "answer": "Lumina Match è gratuito. Attualmente non ci sono pubblicità all'interno del gioco né video da guardare per continuare a giocare."},
+        {"question": "Serve un account per salvare?", "answer": "Sì. Gli account registrati conservano i progressi. Gli ospiti possono giocare senza registrarsi, ma i loro progressi non vengono memorizzati nel browser e si perdono chiudendo o ricaricando il gioco."},
+        {"question": "Posso giocare con gli amici?", "answer": "Sì: alternate i turni su un dispositivo oppure accedete per partite classiche online con amici accettati su Match Together. La campagna rimane una modalità individuale."},
+        {"question": "Perché non sento ancora nulla?", "answer": "Tocca prima un comando del gioco, poi controlla le impostazioni audio e il volume del dispositivo. Puoi anche giocare con musica ed effetti disattivati."},
+        {"question": "Quali dispositivi e lingue sono supportati?", "answer": "Usa un browser su computer, telefono o tablet. Il gioco supporta tutte le 14 lingue dell'interfaccia MatchApp. Questa edizione per browser non è disponibile nell'app Android nativa né in Kids Mode."}
+      ],
+      "relatedTitle": "Altro da MatchApp Ai",
+      "relatedLinks": {"how": "Come funziona MatchApp Ai", "together": "Scopri Match Together", "discover": "Scopri l'intrattenimento con Jonas"}
+    },
+    "tr": {
+      "nativeName": "Türkçe",
+      "ogLocale": "tr_TR",
+      "title": "Lumina Match: Ücretsiz Çevrimiçi Hafıza Oyunu | MatchApp Ai",
+      "description": "Lumina Match ile 250 bölüm, rahat veya süreli oyun, müzik ve arkadaş turları seni bekliyor. İlerlemeni MatchApp hesabınla kaydet.",
+      "keywords": ["Lumina Match", "ücretsiz çevrimiçi hafıza oyunu", "kart çifti eşleştirme oyunu", "250 bölümlük hafıza oyunu", "tarayıcıda hafıza oyunu", "rahatlatıcı eşleştirme oyunu", "arkadaşlarla hafıza oyunu", "süreli kart eşleştirme"],
+      "eyebrow": "Lumina Match · Tarayıcı oyunu",
+      "h1": "Her çifti bul. 250 bölümü keşfet.",
+      "intro": [
+        "Lumina Match, MatchApp Ai içindeki ücretsiz çevrimiçi hafıza oyunudur. Resimli kartları çevir, yerlerini hatırla ve sonraki bölümü açmak için tüm çiftleri bul.",
+        "Tek başına sakin bir oyun oyna, isteğe bağlı süreli mücadeleyi dene veya arkadaşlarınla klasik bir tur paylaş. Oyun yüklemeden bilgisayarının, telefonunun ya da tabletinin tarayıcısında oynayabilirsin."
+      ],
+      "playLabel": "Oynamak için ana sayfaya git",
+      "playNote": "Oyunu açmak için ana sayfada Lumina Match oyna düğmesini seç.",
+      "languageLabel": "Kendi dilinde oku",
+      "homeLabel": "Ana sayfa",
+      "aboutLabel": "MatchApp Ai hakkında",
+      "privacyLabel": "Gizlilik",
+      "termsLabel": "Koşullar",
+      "contactLabel": "İletişim",
+      "updatedLabel": "Güncelleme",
+      "imageAlt": "Lumina Match'in Yıldız Işığı, Büyülü Koru ve Göksel Okyanus temalarından resimli kartlar",
+      "imageCaption": "Üç temalı kart koleksiyonunda oyunun özgün çizimleri.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "Kart eşleştirme oyunu nasıl oynanır?",
+          "paragraphs": ["Her hamlede iki kart açılır. Aynı kartlar açık kalır, farklı kartlar yeniden kapanır. Sonraki hamlende hatırladığın yerlerden yararlan."],
+          "steps": ["Ana sayfadan Lumina Match'i aç ve yolculuktan bir bölüm seç.", "Geri sayım olmadan oynamak için Rahat, zamana karşı oynamak için Süreli mücadele seçeneğini seç.", "Sonraki bölümü açmak için tüm çiftleri bul. Tamamladığın bölümleri istediğin zaman yeniden oyna."]
+        },
+        {
+          "id": "campaign",
+          "title": "Üç temada 250 bölümlük yolculuk",
+          "paragraphs": [
+            "Tek oyunculu yolculuk, her biri 25 bölümden oluşan on kısımdan oluşur. Yıldız Işığı tahtaları ilerledikçe büyür. Büyülü Koru her 20 bölümde, Göksel Okyanus her 25 bölümde görünür; 100. ve 200. bölümlerde Koru önceliklidir.",
+            "Daha az hamleyle üç yıldıza kadar kazanabilir, toplam 750 yıldız toplayabilirsin. Her denemede bir çifti kısa süreliğine gösteren üç ipucu vardır; ipucu kullanmak o denemenin sonucunu iki yıldızla sınırlar. Her onuncu bölümü ilk kez tamamlamak 50 ek puan kazandırır."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Tek oyunculu bölümler ve arkadaşlarla klasik turlar",
+          "paragraphs": [
+            "Rahat ve süreli oyun aynı yolculuk bölümlerini açar. Klasik turlar, tek başına veya aynı cihazda sırayla oynayan iki kişi için daha küçük bir tahta sunar.",
+            "Çevrimiçi arkadaş turları için giriş yap ve Match Together'da arkadaşlığını karşılıklı olarak kabul ettiğin bir arkadaşını davet et. Ortak tur, arkadaşın daveti kabul edince başlar. Bu klasik arkadaş turları, 250 bölümlük tek oyunculu yolculuğundan ayrıdır."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Yolculuğunu kaydet, sonra MatchApp'e dön",
+          "paragraphs": [
+            "Kayıtlı oyuncular açılan bölümleri, yıldızları ve yarım kalan tek oyunculu oyunları MatchApp hesaplarına kaydeder. Oyunda Kaydet'i kullan ve ayrılmadan önce kayıt durumunu kontrol et.",
+            "Misafir ilerlemesi yalnızca oyun açıkken korunur. Misafir olarak Kaydet'e basınca hesap oluşturma istemi açılır: hesap oluşturabilir, oynamaya devam edebilir veya kaydetmeden kapatabilirsin. Kapat, ana sayfaya döndürür; misafir oyununu kapatmak veya yeniden yüklemek o oturumdaki ilerlemeyi siler."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Oyunun sesini kendine göre ayarla",
+          "paragraphs": [
+            "Tema müziği ve kart sesleri, oyunla ilk etkileşiminden sonra başlar. Ses ayarlarında müziği ve ses efektlerini ayrı ayrı açıp kapatabilir, ses düzeyini ayarlayabilirsin.",
+            "Ara vermek istediğinde oyunu duraklat. Oyun duraklatıldığında veya gizlendiğinde ses kesilir; Kapat ile ana sayfaya döndüğünde oyun sesi durur."
+          ]
+        }
+      ],
+      "faqTitle": "Lumina Match hakkında sorular",
+      "faqs": [
+        {"question": "Oynamaya nasıl başlarım?", "answer": "MatchApp ana sayfasına git, Lumina Match oyna seçeneğini seç ve bir bölüm aç. İlerlemek için tüm çiftleri bul; Rahat modunda geri sayım yoktur."},
+        {"question": "Oyun ücretsiz mi, reklam içeriyor mu?", "answer": "Lumina Match ücretsizdir. Şu anda oyunun içinde reklam yoktur ve oynamaya devam etmek için video izlemen gerekmez."},
+        {"question": "Kaydetmek için hesap gerekiyor mu?", "answer": "Evet. Kayıtlı hesaplar ilerlemeyi korur. Misafirler kayıt olmadan oynayabilir; ancak oyun ilerlemeleri tarayıcıya kaydedilmez ve oyun kapatıldığında veya yeniden yüklendiğinde kaybolur."},
+        {"question": "Arkadaşlarımla oynayabilir miyim?", "answer": "Evet: aynı cihazda sırayla oynayın veya Match Together'da kabul edilmiş arkadaşlarla çevrimiçi klasik turlar için giriş yapın. Yolculuk tek oyunculu bir mod olarak kalır."},
+        {"question": "Neden henüz ses yok?", "answer": "Önce bir oyun kontrolüne dokun, ardından ses ayarlarını ve cihazının ses düzeyini kontrol et. Müzik ve ses efektleri kapalıyken de oynayabilirsin."},
+        {"question": "Hangi cihazlar ve diller destekleniyor?", "answer": "Bilgisayar, telefon veya tablet tarayıcısı kullan. Oyun, MatchApp arayüzünün 14 dilini de destekler. Bu tarayıcı sürümü yerel Android uygulamasının içinde veya Kids Mode'da kullanılamaz."}
+      ],
+      "relatedTitle": "MatchApp Ai'da daha fazlası",
+      "relatedLinks": {"how": "MatchApp Ai nasıl çalışır?", "together": "Match Together'ı tanı", "discover": "Jonas ile eğlenceyi keşfet"}
+    },
+    "ru": {
+      "nativeName": "Русский",
+      "ogLocale": "ru_RU",
+      "title": "Lumina Match: Бесплатная Игра на Память | MatchApp Ai",
+      "description": "Играйте в Lumina Match: 250 уровней, спокойный режим или игра на время, музыка и раунды с друзьями. Сохраняйте прогресс в аккаунте MatchApp.",
+      "keywords": ["Lumina Match", "бесплатная игра на память онлайн", "игра найди пары карточек", "игра на память 250 уровней", "игра на память в браузере", "спокойная игра на поиск пар", "игра на память с друзьями", "поиск пар на время"],
+      "eyebrow": "Lumina Match · Браузерная игра",
+      "h1": "Найдите каждую пару. Пройдите 250 уровней.",
+      "intro": [
+        "Lumina Match — бесплатная онлайн-игра на память внутри MatchApp Ai. Переворачивайте карточки с иллюстрациями, запоминайте их расположение и находите все пары, чтобы открыть следующий уровень.",
+        "Играйте в спокойном одиночном режиме, попробуйте необязательное испытание на время или разделите классический раунд с друзьями. Игра работает в браузере компьютера, телефона или планшета без установки игры."
+      ],
+      "playLabel": "На главную, чтобы играть",
+      "playNote": "На главной странице выберите кнопку Играть в Lumina Match, чтобы открыть игру.",
+      "languageLabel": "Читайте на своём языке",
+      "homeLabel": "Главная",
+      "aboutLabel": "О MatchApp Ai",
+      "privacyLabel": "Конфиденциальность",
+      "termsLabel": "Условия",
+      "contactLabel": "Контакты",
+      "updatedLabel": "Обновлено",
+      "imageAlt": "Иллюстрированные карточки Lumina Match из тем Звёздный Свет, Зачарованная Роща и Небесный Океан",
+      "imageCaption": "Оригинальные иллюстрации игры в трёх тематических коллекциях карточек.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "Как играть и находить пары карточек",
+          "paragraphs": ["За один ход открываются две карточки. Одинаковые остаются видимыми, а разные снова переворачиваются. Используйте запомненные позиции на следующем ходу."],
+          "steps": ["Откройте Lumina Match с главной страницы и выберите уровень кампании.", "Выберите Без спешки для игры без обратного отсчёта или Игра на время для испытания с таймером.", "Найдите все пары, чтобы открыть следующий уровень. Пройденные уровни можно переигрывать в любое время."]
+        },
+        {
+          "id": "campaign",
+          "title": "250 уровней в трёх тематических мирах",
+          "paragraphs": [
+            "Одиночная кампания состоит из десяти глав по 25 уровней. Поля Звёздного Света растут по мере прохождения. Зачарованная Роща появляется каждые 20 уровней, Небесный Океан — каждые 25; на уровнях 100 и 200 приоритет у Рощи.",
+            "Получайте до трёх звёзд за меньшее число ходов: всего можно собрать 750 звёзд. На каждую попытку даются три подсказки, ненадолго открывающие пару. Использование подсказки ограничивает результат двумя звёздами. Первое прохождение каждого десятого уровня приносит 50 бонусных очков."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Одиночные уровни и классические раунды с друзьями",
+          "paragraphs": [
+            "Режимы Без спешки и Игра на время открывают одни и те же уровни кампании. Классические раунды предлагают небольшое поле для одиночной игры или для двоих, которые ходят по очереди на одном устройстве.",
+            "Для онлайн-раундов войдите в аккаунт и пригласите друга, с которым дружба уже взаимно подтверждена в Match Together. Общий раунд начинается после принятия приглашения. Эти классические раунды с друзьями отделены от вашей одиночной кампании на 250 уровней."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Сохраните прохождение и вернитесь в MatchApp",
+          "paragraphs": [
+            "Зарегистрированные игроки сохраняют открытые уровни, звёзды и незаконченные одиночные игры в аккаунте MatchApp. Нажмите Сохранить в игре и проверьте статус сохранения перед выходом.",
+            "Прогресс гостя сохраняется только пока игра открыта. Кнопка Сохранить открывает гостю предложение создать аккаунт: можно зарегистрироваться, продолжить игру или закрыть без сохранения. Закрыть возвращает на главную; закрытие или перезагрузка гостевой игры удаляет прогресс этой сессии."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Настройте звук своей игры",
+          "paragraphs": [
+            "Тематическая музыка и звуки карточек начинаются после первого действия в игре. В настройках аудио можно отдельно включать музыку и звуковые эффекты, а также менять громкость.",
+            "Ставьте игру на паузу, когда нужен перерыв. Звук останавливается, пока игра на паузе или скрыта; кнопка Закрыть выключает звук игры при возвращении на главную."
+          ]
+        }
+      ],
+      "faqTitle": "Вопросы о Lumina Match",
+      "faqs": [
+        {"question": "Как начать играть?", "answer": "Перейдите на главную MatchApp, выберите Играть в Lumina Match и откройте уровень. Найдите все пары, чтобы продвинуться дальше; в режиме Без спешки нет обратного отсчёта."},
+        {"question": "Игра бесплатная? Есть ли реклама?", "answer": "Lumina Match бесплатна. Сейчас внутри игры нет рекламы и не нужно смотреть видео, чтобы продолжить играть."},
+        {"question": "Нужен ли аккаунт для сохранения?", "answer": "Да. Зарегистрированные аккаунты сохраняют прогресс. Гости могут играть без регистрации, но их игровой прогресс не записывается в хранилище браузера и теряется при закрытии или перезагрузке игры."},
+        {"question": "Можно играть с друзьями?", "answer": "Да: ходите по очереди на одном устройстве или войдите в аккаунт для классических онлайн-раундов с подтверждёнными друзьями из Match Together. Кампания остаётся одиночным режимом."},
+        {"question": "Почему пока нет звука?", "answer": "Сначала нажмите на элемент управления игрой, затем проверьте настройки аудио и громкость устройства. Можно также играть с выключенной музыкой и звуковыми эффектами."},
+        {"question": "Какие устройства и языки поддерживаются?", "answer": "Используйте браузер компьютера, телефона или планшета. Игра поддерживает все 14 языков интерфейса MatchApp. Эта браузерная версия недоступна внутри нативного приложения Android и в Kids Mode."}
+      ],
+      "relatedTitle": "Больше возможностей MatchApp Ai",
+      "relatedLinks": {"how": "Как работает MatchApp Ai", "together": "Знакомство с Match Together", "discover": "Откройте мир развлечений с Jonas"}
+    },
+    "ar": {
+      "nativeName": "العربية",
+      "ogLocale": "ar_AR",
+      "title": "Lumina Match: لعبة ذاكرة مجانية عبر الإنترنت | MatchApp Ai",
+      "description": "العب Lumina Match: 250 مستوى، ولعب هادئ أو بتوقيت، وموسيقى وجولات مع الأصدقاء. احفظ تقدمك باستخدام حساب MatchApp.",
+      "keywords": ["Lumina Match", "لعبة ذاكرة مجانية عبر الإنترنت", "لعبة مطابقة أزواج البطاقات", "لعبة ذاكرة من 250 مستوى", "لعبة ذاكرة في المتصفح", "لعبة مطابقة هادئة", "لعبة ذاكرة مع الأصدقاء", "مطابقة بطاقات ضد الوقت"],
+      "eyebrow": "Lumina Match · لعبة في المتصفح",
+      "h1": "اعثر على كل زوج. استكشف 250 مستوى.",
+      "intro": [
+        "Lumina Match لعبة ذاكرة مجانية عبر الإنترنت داخل MatchApp Ai. اقلب البطاقات المصورة، وتذكر أماكنها، وطابق جميع الأزواج لفتح المستوى التالي.",
+        "استمتع بجلسة فردية هادئة، أو جرب تحدي الوقت الاختياري، أو شارك جولة كلاسيكية مع الأصدقاء. تعمل اللعبة في متصفح الكمبيوتر أو الهاتف أو الجهاز اللوحي دون تثبيت لعبة."
+      ],
+      "playLabel": "انتقل إلى الرئيسية للعب",
+      "playNote": "في الصفحة الرئيسية، اختر زر العب Lumina Match لفتح اللعبة.",
+      "languageLabel": "اقرأ بلغتك",
+      "homeLabel": "الرئيسية",
+      "aboutLabel": "حول MatchApp Ai",
+      "privacyLabel": "الخصوصية",
+      "termsLabel": "الشروط",
+      "contactLabel": "اتصل بنا",
+      "updatedLabel": "آخر تحديث",
+      "imageAlt": "بطاقات مصورة من Lumina Match بموضوعات ضوء النجوم والبستان المسحور والمحيط السماوي",
+      "imageCaption": "رسوم اللعبة الأصلية ضمن ثلاث مجموعات من البطاقات ذات الموضوعات المختلفة.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "كيفية لعب مطابقة البطاقات",
+          "paragraphs": ["تكشف كل حركة بطاقتين. تبقى البطاقات المتطابقة ظاهرة، وتُقلب البطاقات المختلفة مجددًا. استفد مما تتذكره في حركتك التالية."],
+          "steps": ["افتح Lumina Match من الرئيسية واختر مستوى من رحلة اللعب.", "اختر بلا استعجال للعب دون عد تنازلي، أو تحدي الوقت للعب ضد الساعة.", "طابق كل الأزواج لفتح المستوى التالي. أعد لعب المستويات المكتملة متى شئت."]
+        },
+        {
+          "id": "campaign",
+          "title": "رحلة من 250 مستوى عبر ثلاثة موضوعات",
+          "paragraphs": [
+            "تتكون الرحلة الفردية من عشرة فصول، في كل فصل 25 مستوى. تكبر لوحات ضوء النجوم مع تقدمك. يظهر البستان المسحور كل 20 مستوى والمحيط السماوي كل 25 مستوى؛ وتكون الأولوية للبستان في المستويين 100 و200.",
+            "اكسب حتى ثلاث نجوم باستخدام حركات أقل، واجمع ما يصل إلى 750 نجمة. لكل محاولة ثلاثة تلميحات تكشف زوجًا لفترة قصيرة؛ واستخدام تلميح يجعل الحد الأقصى لنتيجة تلك المحاولة نجمتين. يمنحك إكمال كل مستوى من مضاعفات العشرة لأول مرة 50 نقطة إضافية."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "مستويات فردية وجولات كلاسيكية مع الأصدقاء",
+          "paragraphs": [
+            "يفتح اللعب بلا استعجال واللعب بتوقيت المستويات نفسها في الرحلة. تقدم الجولات الكلاسيكية لوحة أصغر للعب الفردي أو للاعبين يتناوبان على جهاز واحد.",
+            "للعب مع صديق عبر الإنترنت، سجل الدخول وادعُ صديقًا سبق أن قُبلت الصداقة بينكما في Match Together. تبدأ الجولة المشتركة بعد قبوله الدعوة. هذه الجولات الكلاسيكية مع الأصدقاء منفصلة عن رحلتك الفردية ذات المستويات الـ250."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "احفظ رحلتك ثم عد إلى MatchApp",
+          "paragraphs": [
+            "يحفظ اللاعبون المسجلون المستويات المفتوحة والنجوم والألعاب الفردية غير المكتملة في حساب MatchApp. استخدم حفظ داخل اللعبة وتحقق من حالة الحفظ قبل المغادرة.",
+            "يستمر تقدم الضيف فقط ما دامت اللعبة مفتوحة. يفتح زر حفظ للضيف رسالة إنشاء حساب: يمكنك إنشاء حساب أو متابعة اللعب أو الإغلاق دون حفظ. يعيدك إغلاق إلى الرئيسية؛ وإغلاق لعبة الضيف أو إعادة تحميلها يفقدك تقدم تلك الجلسة."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "اضبط صوت جلسة اللعب",
+          "paragraphs": [
+            "تبدأ موسيقى الموضوعات وأصوات البطاقات بعد تفاعلك الأول مع اللعبة. تتيح إعدادات الصوت تشغيل الموسيقى والمؤثرات الصوتية كلًّا على حدة وضبط مستوى الصوت.",
+            "أوقف اللعبة مؤقتًا عندما تحتاج إلى استراحة. يتوقف الصوت أثناء الإيقاف المؤقت أو إخفاء اللعبة، ويوقف زر إغلاق صوت اللعبة عند العودة إلى الرئيسية."
+          ]
+        }
+      ],
+      "faqTitle": "أسئلة حول Lumina Match",
+      "faqs": [
+        {"question": "كيف أبدأ اللعب؟", "answer": "انتقل إلى الصفحة الرئيسية في MatchApp، واختر العب Lumina Match، وافتح مستوى. طابق جميع الأزواج للتقدم؛ وضع بلا استعجال لا يحتوي على عد تنازلي."},
+        {"question": "هل اللعبة مجانية، وهل تحتوي على إعلانات؟", "answer": "Lumina Match مجانية. لا توجد حاليًا إعلانات داخل اللعبة ولا مقاطع فيديو يلزم مشاهدتها لمتابعة اللعب."},
+        {"question": "هل أحتاج إلى حساب للحفظ؟", "answer": "نعم. تحتفظ الحسابات المسجلة بالتقدم. يمكن للضيوف اللعب دون تسجيل، لكن تقدمهم لا يُخزن في المتصفح ويُفقد عند إغلاق اللعبة أو إعادة تحميلها."},
+        {"question": "هل يمكنني اللعب مع الأصدقاء؟", "answer": "نعم: تناوبوا على جهاز واحد، أو سجلوا الدخول لجولات كلاسيكية عبر الإنترنت مع أصدقاء مقبولين في Match Together. تبقى الرحلة وضعًا فرديًا."},
+        {"question": "لماذا لا أسمع صوتًا بعد؟", "answer": "اضغط أولًا على أحد عناصر التحكم في اللعبة، ثم تحقق من إعدادات الصوت ومستوى صوت جهازك. يمكنك أيضًا اللعب مع إيقاف الموسيقى والمؤثرات الصوتية."},
+        {"question": "ما الأجهزة واللغات المدعومة؟", "answer": "استخدم متصفح كمبيوتر أو هاتف أو جهاز لوحي. تدعم اللعبة لغات واجهة MatchApp الأربع عشرة. نسخة المتصفح هذه غير متاحة داخل تطبيق Android الأصلي أو في Kids Mode."}
+      ],
+      "relatedTitle": "المزيد من MatchApp Ai",
+      "relatedLinks": {"how": "كيف يعمل MatchApp Ai", "together": "تعرّف على Match Together", "discover": "اكتشف الترفيه مع Jonas"}
+    },
+    "hi": {
+      "nativeName": "हिन्दी",
+      "ogLocale": "hi_IN",
+      "title": "Lumina Match: मुफ़्त ऑनलाइन मेमोरी गेम | MatchApp Ai",
+      "description": "Lumina Match में खेलें 250 स्तर, आराम से या समय की चुनौती के साथ। संगीत और दोस्तों संग राउंड का आनंद लें। MatchApp खाते में प्रगति सहेजें।",
+      "keywords": ["Lumina Match", "मुफ़्त ऑनलाइन मेमोरी गेम", "कार्ड की जोड़ियाँ मिलाने का खेल", "250 स्तरों वाला मेमोरी गेम", "ब्राउज़र में मेमोरी गेम", "आराम से खेलें जोड़ी मिलाने का गेम", "दोस्तों के साथ मेमोरी गेम", "समय सीमा में कार्ड मिलाना"],
+      "eyebrow": "Lumina Match · ब्राउज़र गेम",
+      "h1": "हर जोड़ी खोजें। 250 स्तरों का सफ़र तय करें।",
+      "intro": [
+        "Lumina Match, MatchApp Ai के भीतर एक मुफ़्त ऑनलाइन मेमोरी गेम है। चित्रों वाले कार्ड पलटें, उनकी जगहें याद रखें और अगला स्तर खोलने के लिए सभी जोड़ियाँ मिलाएँ।",
+        "अकेले आराम से खेलें, चाहें तो समय की चुनौती आज़माएँ या दोस्तों के साथ एक क्लासिक राउंड खेलें। यह गेम कंप्यूटर, फ़ोन या टैबलेट के ब्राउज़र में चलता है; कोई गेम इंस्टॉल करने की ज़रूरत नहीं।"
+      ],
+      "playLabel": "खेलने के लिए होम पेज पर जाएँ",
+      "playNote": "होम पेज पर Lumina Match खेलें बटन चुनकर गेम खोलें।",
+      "languageLabel": "अपनी भाषा में पढ़ें",
+      "homeLabel": "होम",
+      "aboutLabel": "MatchApp Ai के बारे में",
+      "privacyLabel": "गोपनीयता",
+      "termsLabel": "शर्तें",
+      "contactLabel": "संपर्क",
+      "updatedLabel": "अपडेट किया गया",
+      "imageAlt": "Lumina Match की तारों की रोशनी, जादुई उपवन और दिव्य महासागर थीम के चित्रित कार्ड",
+      "imageCaption": "तीन थीम वाले कार्ड संग्रहों में गेम की मूल कलाकृतियाँ।",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "कार्ड की जोड़ियाँ मिलाने वाला गेम कैसे खेलें",
+          "paragraphs": ["हर चाल में दो कार्ड खुलते हैं। एक जैसे कार्ड खुले रहते हैं; अलग कार्ड फिर पलट जाते हैं। अगली चाल में याद रखी गई जगहों का इस्तेमाल करें।"],
+          "steps": ["होम से Lumina Match खोलें और अभियान का एक स्तर चुनें।", "बिना उलटी गिनती के खेलने के लिए आराम से चुनें, या घड़ी के ख़िलाफ़ खेलने के लिए समय की चुनौती चुनें।", "अगला स्तर खोलने के लिए सभी जोड़ियाँ मिलाएँ। पूरे किए गए स्तर जब चाहें फिर से खेलें।"]
+        },
+        {
+          "id": "campaign",
+          "title": "तीन थीम में 250 स्तरों का सफ़र",
+          "paragraphs": [
+            "अकेले खेलने के अभियान में दस अध्याय हैं, हर अध्याय में 25 स्तर। आगे बढ़ने पर तारों की रोशनी के बोर्ड बड़े होते जाते हैं। जादुई उपवन हर 20 स्तरों पर और दिव्य महासागर हर 25 स्तरों पर आता है; स्तर 100 और 200 पर उपवन को प्राथमिकता मिलती है।",
+            "कम चालों में पूरा करके तीन तक सितारे पाएँ; कुल 750 सितारे इकट्ठे किए जा सकते हैं। हर कोशिश में तीन संकेत मिलते हैं, जो थोड़ी देर के लिए एक जोड़ी दिखाते हैं। संकेत लेने पर उस कोशिश में अधिकतम दो सितारे मिलते हैं। हर दसवें स्तर को पहली बार पूरा करने पर 50 बोनस अंक मिलते हैं।"
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "अकेले खेलने के स्तर और दोस्तों के साथ क्लासिक राउंड",
+          "paragraphs": [
+            "आराम से और समय की चुनौती, दोनों मोड अभियान के वही स्तर खोलते हैं। क्लासिक राउंड में छोटा बोर्ड मिलता है, जिस पर अकेले या एक ही डिवाइस पर दो लोग बारी-बारी से खेल सकते हैं।",
+            "ऑनलाइन दोस्तों के साथ खेलने के लिए साइन इन करें और Match Together में पहले से पारस्परिक रूप से स्वीकार किए गए दोस्त को बुलाएँ। दोस्त के आमंत्रण स्वीकार करने के बाद साझा राउंड शुरू होता है। दोस्तों के ये क्लासिक राउंड आपके 250 स्तरों वाले एकल अभियान से अलग हैं।"
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "अपना सफ़र सहेजें, फिर MatchApp पर लौटें",
+          "paragraphs": [
+            "पंजीकृत खिलाड़ी खुले हुए स्तर, सितारे और अधूरे एकल गेम अपने MatchApp खाते में सहेजते हैं। गेम में सहेजें चुनें और जाने से पहले सहेजने की स्थिति जाँचें।",
+            "मेहमान की प्रगति सिर्फ़ गेम खुला रहने तक रहती है। मेहमान के सहेजें दबाने पर खाता बनाने का संदेश खुलता है: खाता बनाएँ, खेलते रहें या बिना सहेजे बंद करें। बंद करें आपको होम पर लौटाता है; मेहमान का गेम बंद या फिर से लोड करने पर उस सत्र की प्रगति चली जाती है।"
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "अपनी पसंद के हिसाब से आवाज़ चुनें",
+          "paragraphs": [
+            "गेम में पहली बार किसी नियंत्रण का इस्तेमाल करने के बाद थीम का संगीत और कार्ड की आवाज़ें शुरू होती हैं। ऑडियो सेटिंग में संगीत और ध्वनि प्रभाव अलग-अलग चालू या बंद कर सकते हैं और आवाज़ का स्तर बदल सकते हैं।",
+            "जब विराम चाहिए, गेम रोकें। गेम रुका हुआ या छिपा होने पर आवाज़ बंद रहती है। बंद करें चुनकर होम पर लौटने से गेम का ऑडियो भी बंद हो जाता है।"
+          ]
+        }
+      ],
+      "faqTitle": "Lumina Match के बारे में सवाल",
+      "faqs": [
+        {"question": "खेलना कैसे शुरू करूँ?", "answer": "MatchApp के होम पेज पर जाएँ, Lumina Match खेलें चुनें और एक स्तर खोलें। आगे बढ़ने के लिए सभी जोड़ियाँ मिलाएँ; आराम से मोड में उलटी गिनती नहीं होती।"},
+        {"question": "क्या गेम मुफ़्त है और क्या इसमें विज्ञापन हैं?", "answer": "Lumina Match मुफ़्त है। फ़िलहाल गेम के अंदर कोई विज्ञापन नहीं हैं और खेलते रहने के लिए कोई वीडियो नहीं देखना पड़ता।"},
+        {"question": "क्या सहेजने के लिए खाता चाहिए?", "answer": "हाँ। पंजीकृत खाते प्रगति बनाए रखते हैं। मेहमान बिना पंजीकरण खेल सकते हैं, लेकिन उनकी गेम प्रगति ब्राउज़र में सहेजी नहीं जाती और गेम बंद या फिर से लोड करने पर खो जाती है।"},
+        {"question": "क्या दोस्तों के साथ खेल सकता हूँ?", "answer": "हाँ: एक डिवाइस पर बारी-बारी से खेलें या साइन इन करके Match Together के स्वीकार किए गए दोस्तों के साथ ऑनलाइन क्लासिक राउंड खेलें। अभियान एकल मोड ही रहता है।"},
+        {"question": "अभी तक आवाज़ क्यों नहीं आ रही?", "answer": "पहले गेम के किसी नियंत्रण पर टैप करें, फिर ऑडियो सेटिंग और डिवाइस की आवाज़ जाँचें। संगीत और ध्वनि प्रभाव बंद करके भी खेल सकते हैं।"},
+        {"question": "कौन से डिवाइस और भाषाएँ समर्थित हैं?", "answer": "कंप्यूटर, फ़ोन या टैबलेट का वेब ब्राउज़र इस्तेमाल करें। गेम MatchApp इंटरफ़ेस की सभी 14 भाषाओं में है। यह ब्राउज़र संस्करण मूल Android ऐप के अंदर या Kids Mode में उपलब्ध नहीं है।"}
+      ],
+      "relatedTitle": "MatchApp Ai में और खोजें",
+      "relatedLinks": {"how": "MatchApp Ai कैसे काम करता है", "together": "Match Together को जानें", "discover": "Jonas के साथ मनोरंजन खोजें"}
+    },
+    "id": {
+      "nativeName": "Bahasa Indonesia",
+      "ogLocale": "id_ID",
+      "title": "Lumina Match: Game Memori Online Gratis | MatchApp Ai",
+      "description": "Main Lumina Match: 250 level, mode santai atau tantangan waktu, musik, dan ronde bersama teman. Simpan progres dengan akun MatchApp.",
+      "keywords": ["Lumina Match", "game memori online gratis", "game mencocokkan pasangan kartu", "game memori 250 level", "game memori di browser", "game mencocokkan kartu santai", "game memori bersama teman", "mencocokkan kartu berbatas waktu"],
+      "eyebrow": "Lumina Match · Game browser",
+      "h1": "Temukan setiap pasangan. Jelajahi 250 level.",
+      "intro": [
+        "Lumina Match adalah game memori online gratis di dalam MatchApp Ai. Balik kartu bergambar, ingat posisinya, dan cocokkan semua pasangan untuk membuka level berikutnya.",
+        "Main sendiri dengan santai, coba tantangan waktu pilihan, atau nikmati ronde klasik bersama teman. Game berjalan di browser komputer, ponsel, atau tablet tanpa perlu menginstal game."
+      ],
+      "playLabel": "Ke Beranda untuk bermain",
+      "playNote": "Di Beranda, pilih tombol Main Lumina Match untuk membuka game.",
+      "languageLabel": "Baca dalam bahasamu",
+      "homeLabel": "Beranda",
+      "aboutLabel": "Tentang MatchApp Ai",
+      "privacyLabel": "Privasi",
+      "termsLabel": "Ketentuan",
+      "contactLabel": "Kontak",
+      "updatedLabel": "Diperbarui",
+      "imageAlt": "Kartu bergambar Lumina Match dari tema Cahaya Bintang, Hutan Ajaib, dan Samudra Langit",
+      "imageCaption": "Ilustrasi asli game dalam tiga koleksi kartu bertema.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "Cara memainkan game pasangan kartu",
+          "paragraphs": ["Setiap giliran membuka dua kartu. Kartu yang cocok tetap terlihat; kartu yang berbeda tertutup kembali. Gunakan ingatanmu pada giliran berikutnya."],
+          "steps": ["Buka Lumina Match dari Beranda dan pilih level kampanye.", "Pilih Santai untuk bermain tanpa hitung mundur, atau Tantangan waktu untuk berpacu dengan waktu.", "Cocokkan semua pasangan untuk membuka level berikutnya. Mainkan lagi level yang sudah selesai kapan saja."]
+        },
+        {
+          "id": "campaign",
+          "title": "Perjalanan 250 level melalui tiga tema",
+          "paragraphs": [
+            "Kampanye solo memiliki sepuluh bab, masing-masing berisi 25 level. Papan Cahaya Bintang membesar seiring kemajuanmu. Hutan Ajaib muncul setiap 20 level dan Samudra Langit setiap 25 level; Hutan didahulukan pada level 100 dan 200.",
+            "Raih hingga tiga bintang dengan lebih sedikit langkah, dengan total 750 bintang untuk dikumpulkan. Setiap percobaan menyediakan tiga petunjuk yang menampilkan sepasang kartu sebentar; memakai petunjuk membatasi hasil percobaan itu menjadi dua bintang. Penyelesaian pertama setiap level kelipatan sepuluh memberi 50 poin bonus."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "Level solo dan ronde klasik bersama teman",
+          "paragraphs": [
+            "Mode Santai dan Tantangan waktu membuka level kampanye yang sama. Ronde klasik menawarkan papan lebih kecil untuk bermain sendiri atau dua pemain yang bergiliran pada satu perangkat.",
+            "Untuk ronde teman online, masuk ke akun dan undang teman Match Together yang pertemanannya sudah disetujui kedua pihak. Ronde bersama dimulai setelah teman menerima undangan. Ronde klasik bersama teman ini terpisah dari kampanye solo 250 levelmu."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "Simpan perjalananmu, lalu kembali ke MatchApp",
+          "paragraphs": [
+            "Pemain terdaftar menyimpan level terbuka, bintang, dan game solo yang belum selesai ke akun MatchApp. Gunakan Simpan di dalam game dan periksa status penyimpanan sebelum keluar.",
+            "Progres tamu hanya bertahan selama game tetap terbuka. Simpan untuk tamu membuka ajakan membuat akun: buat akun, terus bermain, atau tutup tanpa menyimpan. Tutup mengembalikanmu ke Beranda; menutup atau memuat ulang game tamu menghilangkan progres sesi tersebut."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "Atur suara untuk sesi bermainmu",
+          "paragraphs": [
+            "Musik tema dan suara kartu dimulai setelah interaksi pertamamu dengan game. Pengaturan audio memungkinkanmu menyalakan musik dan efek suara secara terpisah serta mengatur volume.",
+            "Jeda game saat perlu istirahat. Audio berhenti ketika game dijeda atau disembunyikan, dan Tutup menghentikan audio game saat kamu kembali ke Beranda."
+          ]
+        }
+      ],
+      "faqTitle": "Pertanyaan tentang Lumina Match",
+      "faqs": [
+        {"question": "Bagaimana cara mulai bermain?", "answer": "Buka Beranda MatchApp, pilih Main Lumina Match, lalu buka sebuah level. Cocokkan semua pasangan untuk maju; mode Santai tidak memiliki hitung mundur."},
+        {"question": "Apakah game ini gratis dan memiliki iklan?", "answer": "Lumina Match gratis untuk dimainkan. Saat ini tidak ada iklan di dalam game dan tidak ada video yang perlu ditonton untuk melanjutkan permainan."},
+        {"question": "Apakah perlu akun untuk menyimpan?", "answer": "Ya. Akun terdaftar menyimpan progres. Tamu bisa bermain tanpa mendaftar, tetapi progres game mereka tidak disimpan di browser dan hilang ketika game ditutup atau dimuat ulang."},
+        {"question": "Bisakah saya bermain bersama teman?", "answer": "Ya: bergiliranlah pada satu perangkat, atau masuk untuk ronde klasik online bersama teman yang sudah diterima di Match Together. Kampanye tetap merupakan mode solo."},
+        {"question": "Mengapa belum ada suara?", "answer": "Ketuk kontrol game terlebih dahulu, lalu periksa Pengaturan audio dan volume perangkat. Kamu juga dapat bermain dengan musik dan efek suara dimatikan."},
+        {"question": "Perangkat dan bahasa apa yang didukung?", "answer": "Gunakan browser komputer, ponsel, atau tablet. Game mendukung semua 14 bahasa antarmuka MatchApp. Edisi browser ini tidak tersedia di dalam aplikasi Android native atau Kids Mode."}
+      ],
+      "relatedTitle": "Lainnya dari MatchApp Ai",
+      "relatedLinks": {"how": "Cara kerja MatchApp Ai", "together": "Kenali Match Together", "discover": "Temukan hiburan bersama Jonas"}
+    },
+    "ja": {
+      "nativeName": "日本語",
+      "ogLocale": "ja_JP",
+      "title": "Lumina Match：無料オンライン神経衰弱 | MatchApp Ai",
+      "description": "Lumina Matchで250レベルのカードペア探し。時間制限なしでもタイムチャレンジでも楽しめ、音楽や友達との対戦も。MatchAppアカウントで進行状況を保存できます。",
+      "keywords": ["Lumina Match", "無料オンライン神経衰弱", "カードペア合わせゲーム", "250レベルの記憶ゲーム", "ブラウザで神経衰弱", "ゆったり遊べるペア探し", "友達と遊ぶ神経衰弱", "時間制限付きカードゲーム"],
+      "eyebrow": "Lumina Match · ブラウザゲーム",
+      "h1": "すべてのペアを見つけよう。250レベルの旅へ。",
+      "intro": [
+        "Lumina Matchは、MatchApp Ai内で遊べる無料のオンライン記憶ゲームです。イラスト入りのカードをめくって位置を覚え、すべてのペアをそろえると次のレベルが開きます。",
+        "一人でのんびり遊ぶことも、タイムチャレンジに挑戦することも、友達とクラシックラウンドを楽しむこともできます。パソコン、スマートフォン、タブレットのブラウザで動作し、ゲームのインストールは不要です。"
+      ],
+      "playLabel": "ホームに移動して遊ぶ",
+      "playNote": "ホームで「Lumina Match をプレイ」ボタンを選ぶとゲームが開きます。",
+      "languageLabel": "表示する言語",
+      "homeLabel": "ホーム",
+      "aboutLabel": "MatchApp Aiについて",
+      "privacyLabel": "プライバシー",
+      "termsLabel": "利用規約",
+      "contactLabel": "お問い合わせ",
+      "updatedLabel": "更新日",
+      "imageAlt": "Lumina Matchの「星の光」「魔法の木立」「天空の海」テーマのイラスト入りカード",
+      "imageCaption": "3つのテーマ別カードコレクションに使われているゲームのオリジナルアート。",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "カードのペアを見つける遊び方",
+          "paragraphs": ["1回の手番で2枚のカードをめくります。同じ絵なら表向きのまま、違う絵なら再び裏返ります。覚えた位置を次の手番に生かしましょう。"],
+          "steps": ["ホームからLumina Matchを開き、キャンペーンのレベルを選びます。", "カウントダウンなしの「ゆったり」か、制限時間内に挑む「タイムチャレンジ」を選びます。", "すべてのペアをそろえると次のレベルが開きます。クリア済みのレベルはいつでも遊び直せます。"]
+        },
+        {
+          "id": "campaign",
+          "title": "3つのテーマを巡る250レベルの旅",
+          "paragraphs": [
+            "一人用キャンペーンは、各25レベルの全10章です。「星の光」の盤面は進むにつれて大きくなります。「魔法の木立」は20レベルごと、「天空の海」は25レベルごとに登場し、レベル100と200では木立が優先されます。",
+            "少ない手数でクリアすると最大3つの星を獲得でき、全部で750個集められます。1回の挑戦につき3回のヒントでペアを短時間表示できますが、ヒントを使った挑戦の評価は最大2つ星になります。10の倍数のレベルを初めてクリアするたびに、50ボーナスポイントが加わります。"
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "一人用レベルと友達とのクラシックラウンド",
+          "paragraphs": [
+            "「ゆったり」と「タイムチャレンジ」は、同じキャンペーンのレベルを解放します。クラシックラウンドは小さな盤面で、一人でも、1台の端末を使って二人で交代しながらでも遊べます。",
+            "オンラインで友達と遊ぶには、ログインして、Match Togetherですでに双方が承認した友達を招待します。相手が招待を承諾すると共有ラウンドが始まります。このクラシックの友達ラウンドは、一人用の250レベルキャンペーンとは別のモードです。"
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "進行状況を保存してMatchAppに戻る",
+          "paragraphs": [
+            "登録済みプレイヤーは、解放したレベル、星、途中の一人用ゲームをMatchAppアカウントに保存できます。ゲーム内の「保存」を選び、終了前に保存状況を確認してください。",
+            "ゲストの進行状況は、ゲームを開いている間だけ残ります。ゲストが「保存」を選ぶとアカウント作成の案内が開き、アカウントを作る、遊び続ける、保存せずに閉じる、のいずれかを選べます。「閉じる」でホームに戻ります。ゲストのゲームを閉じたり再読み込みしたりすると、そのセッションの進行状況は失われます。"
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "音楽と効果音を好みに合わせる",
+          "paragraphs": [
+            "テーマ音楽とカードの効果音は、最初にゲームを操作した後に始まります。「音声設定」では音楽と効果音を別々に切り替え、音量を調整できます。",
+            "休憩したいときは一時停止してください。ゲームが一時停止中または非表示の間は音が止まります。「閉じる」でホームに戻るとゲームの音声も停止します。"
+          ]
+        }
+      ],
+      "faqTitle": "Lumina Matchについてのよくある質問",
+      "faqs": [
+        {"question": "どうすれば遊び始められますか？", "answer": "MatchAppのホームで「Lumina Match をプレイ」を選び、レベルを開いてください。すべてのペアをそろえると先に進めます。「ゆったり」にはカウントダウンがありません。"},
+        {"question": "無料ですか？広告はありますか？", "answer": "Lumina Matchは無料で遊べます。現在、ゲーム内に広告はなく、続けて遊ぶために動画を見る必要もありません。"},
+        {"question": "保存にはアカウントが必要ですか？", "answer": "はい。登録済みアカウントなら進行状況を保持できます。ゲストは登録なしで遊べますが、ゲームの進行状況はブラウザに保存されず、ゲームを閉じたり再読み込みしたりすると失われます。"},
+        {"question": "友達と遊べますか？", "answer": "はい。1台の端末で交代して遊ぶか、ログインしてMatch Togetherで承認済みの友達とオンラインのクラシックラウンドを楽しめます。キャンペーンは一人用です。"},
+        {"question": "まだ音が出ないのはなぜですか？", "answer": "まずゲームの操作ボタンをタップし、その後「音声設定」と端末の音量を確認してください。音楽や効果音をオフにして遊ぶこともできます。"},
+        {"question": "対応する端末と言語は？", "answer": "パソコン、スマートフォン、タブレットのウェブブラウザで利用できます。MatchAppの画面表示と同じ14言語に対応しています。このブラウザ版は、ネイティブAndroidアプリ内およびKids Modeでは利用できません。"}
+      ],
+      "relatedTitle": "MatchApp Aiをもっと楽しむ",
+      "relatedLinks": {"how": "MatchApp Aiの使い方", "together": "Match Togetherを知る", "discover": "Jonasとエンタメを探す"}
+    },
+    "ko": {
+      "nativeName": "한국어",
+      "ogLocale": "ko_KR",
+      "title": "Lumina Match: 무료 온라인 기억력 게임 | MatchApp Ai",
+      "description": "Lumina Match에서 250개 레벨, 여유로운 플레이와 시간 도전, 음악, 친구 대전을 즐기세요. MatchApp 계정으로 진행 상황을 저장할 수 있습니다.",
+      "keywords": ["Lumina Match", "무료 온라인 기억력 게임", "카드 짝 맞추기 게임", "250레벨 기억력 게임", "브라우저 기억력 게임", "편안한 카드 맞추기 게임", "친구와 기억력 게임", "시간 제한 카드 맞추기"],
+      "eyebrow": "Lumina Match · 브라우저 게임",
+      "h1": "모든 짝을 찾으세요. 250개 레벨을 탐험하세요.",
+      "intro": [
+        "Lumina Match는 MatchApp Ai 안에서 즐기는 무료 온라인 기억력 게임입니다. 그림 카드를 뒤집고 위치를 기억한 다음, 모든 짝을 맞춰 다음 레벨을 여세요.",
+        "혼자 편안하게 즐기거나, 선택 사항인 시간 도전에 도전하거나, 친구와 클래식 라운드를 함께 즐길 수 있습니다. 컴퓨터, 휴대전화, 태블릿의 브라우저에서 게임 설치 없이 플레이합니다."
+      ],
+      "playLabel": "홈으로 이동해 플레이",
+      "playNote": "홈에서 Lumina Match 플레이 버튼을 선택하면 게임이 열립니다.",
+      "languageLabel": "원하는 언어로 읽기",
+      "homeLabel": "홈",
+      "aboutLabel": "MatchApp Ai 소개",
+      "privacyLabel": "개인정보 보호",
+      "termsLabel": "이용약관",
+      "contactLabel": "문의",
+      "updatedLabel": "업데이트",
+      "imageAlt": "Lumina Match의 별빛, 마법의 숲, 천상의 바다 테마 그림 카드",
+      "imageCaption": "세 가지 테마의 카드 모음에 담긴 게임의 원본 아트워크.",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "카드 짝 맞추기 게임 방법",
+          "paragraphs": ["한 번의 차례에 카드 두 장을 엽니다. 같은 카드는 열린 상태로 남고, 다른 카드는 다시 뒤집힙니다. 기억한 위치를 다음 차례에 활용하세요."],
+          "steps": ["홈에서 Lumina Match를 열고 캠페인 레벨을 선택하세요.", "카운트다운 없이 즐기려면 여유롭게, 시간 안에 도전하려면 시간 도전을 선택하세요.", "모든 짝을 맞추면 다음 레벨이 열립니다. 완료한 레벨은 언제든 다시 플레이할 수 있습니다."]
+        },
+        {
+          "id": "campaign",
+          "title": "세 가지 테마를 만나는 250레벨 여정",
+          "paragraphs": [
+            "싱글 플레이 캠페인은 챕터 10개로, 각 챕터에 25개 레벨이 있습니다. 별빛 보드는 진행할수록 커집니다. 마법의 숲은 20레벨마다, 천상의 바다는 25레벨마다 등장하며, 100레벨과 200레벨에서는 숲이 우선합니다.",
+            "더 적은 이동 횟수로 최대 별 세 개를 얻어 총 750개를 모을 수 있습니다. 한 번의 도전마다 짝을 잠깐 보여 주는 힌트가 세 번 제공됩니다. 힌트를 사용하면 해당 도전에서 얻을 수 있는 별은 최대 두 개입니다. 10의 배수인 레벨을 처음 완료할 때마다 보너스 50점을 받습니다."
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "혼자 즐기는 레벨과 친구와의 클래식 라운드",
+          "paragraphs": [
+            "여유롭게와 시간 도전은 같은 캠페인 레벨을 엽니다. 클래식 라운드는 더 작은 보드로 혼자 즐기거나, 한 기기에서 두 사람이 번갈아 플레이할 수 있습니다.",
+            "온라인 친구 라운드는 로그인한 뒤 Match Together에서 서로 친구로 수락한 사람을 초대해 시작합니다. 친구가 초대를 수락하면 공유 라운드가 열립니다. 이 클래식 친구 라운드는 혼자 진행하는 250레벨 캠페인과 별개입니다."
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "여정을 저장하고 MatchApp으로 돌아가기",
+          "paragraphs": [
+            "가입한 플레이어는 열린 레벨, 별, 진행 중인 싱글 플레이 게임을 MatchApp 계정에 저장합니다. 게임에서 저장을 누르고 나가기 전에 저장 상태를 확인하세요.",
+            "게스트의 진행 상황은 게임이 열린 동안에만 유지됩니다. 게스트가 저장을 누르면 계정 만들기 안내가 열리며, 계정 만들기, 계속 플레이, 저장하지 않고 닫기 중에서 선택할 수 있습니다. 닫기는 홈으로 돌아갑니다. 게스트 게임을 닫거나 새로고침하면 해당 세션의 진행 상황을 잃습니다."
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "플레이에 맞게 소리 설정하기",
+          "paragraphs": [
+            "테마 음악과 카드 소리는 처음 게임을 조작한 뒤 시작됩니다. 오디오 설정에서 음악과 효과음을 따로 켜거나 끄고 음량을 조절할 수 있습니다.",
+            "쉬고 싶을 때는 일시 정지하세요. 게임이 일시 정지되거나 숨겨지면 소리가 멈추고, 닫기를 눌러 홈으로 돌아가면 게임 오디오가 종료됩니다."
+          ]
+        }
+      ],
+      "faqTitle": "Lumina Match 자주 묻는 질문",
+      "faqs": [
+        {"question": "어떻게 시작하나요?", "answer": "MatchApp 홈에서 Lumina Match 플레이를 선택하고 레벨을 여세요. 모든 짝을 맞추면 다음으로 진행합니다. 여유롭게 모드에는 카운트다운이 없습니다."},
+        {"question": "무료인가요? 광고가 있나요?", "answer": "Lumina Match는 무료입니다. 현재 게임 안에는 광고가 없으며, 계속 플레이하기 위해 동영상을 시청할 필요도 없습니다."},
+        {"question": "저장하려면 계정이 필요한가요?", "answer": "네. 가입한 계정은 진행 상황을 유지합니다. 게스트도 가입 없이 플레이할 수 있지만, 게임 진행 상황은 브라우저에 저장되지 않으며 게임을 닫거나 새로고침하면 사라집니다."},
+        {"question": "친구와 플레이할 수 있나요?", "answer": "네. 한 기기에서 번갈아 플레이하거나 로그인 후 Match Together에서 수락한 친구와 온라인 클래식 라운드를 즐기세요. 캠페인은 싱글 플레이 모드입니다."},
+        {"question": "왜 아직 소리가 나지 않나요?", "answer": "먼저 게임 조작 버튼을 누른 다음 오디오 설정과 기기 음량을 확인하세요. 음악과 효과음을 끈 상태로도 플레이할 수 있습니다."},
+        {"question": "어떤 기기와 언어를 지원하나요?", "answer": "컴퓨터, 휴대전화, 태블릿의 웹 브라우저를 사용하세요. 게임은 MatchApp 인터페이스의 14개 언어를 모두 지원합니다. 이 브라우저 버전은 네이티브 Android 앱 내부나 Kids Mode에서 제공되지 않습니다."}
+      ],
+      "relatedTitle": "MatchApp Ai 더 알아보기",
+      "relatedLinks": {"how": "MatchApp Ai 이용 방법", "together": "Match Together 알아보기", "discover": "Jonas와 엔터테인먼트 찾기"}
+    },
+    "zh": {
+      "nativeName": "中文",
+      "ogLocale": "zh_CN",
+      "title": "Lumina Match：免费在线记忆配对游戏 | MatchApp Ai",
+      "description": "在Lumina Match体验250关记忆配对，选择轻松或限时模式，欣赏音乐，与好友对局。使用MatchApp账户保存游戏进度。",
+      "keywords": ["Lumina Match", "免费在线记忆游戏", "卡牌配对游戏", "250关记忆配对", "浏览器记忆游戏", "轻松卡牌配对", "与好友玩记忆游戏", "限时翻牌配对"],
+      "eyebrow": "Lumina Match · 浏览器游戏",
+      "h1": "找出每一对，探索250个关卡。",
+      "intro": [
+        "Lumina Match是MatchApp Ai中的免费在线记忆游戏。翻开带有插画的卡牌，记住它们的位置，配对全部卡牌即可解锁下一关。",
+        "你可以独自轻松游玩，尝试可选的限时挑战，或与好友进行经典对局。游戏可在电脑、手机或平板的浏览器中运行，无需安装游戏。"
+      ],
+      "playLabel": "前往首页开始游戏",
+      "playNote": "在首页选择“玩 Lumina Match”按钮即可打开游戏。",
+      "languageLabel": "选择阅读语言",
+      "homeLabel": "首页",
+      "aboutLabel": "关于MatchApp Ai",
+      "privacyLabel": "隐私政策",
+      "termsLabel": "使用条款",
+      "contactLabel": "联系我们",
+      "updatedLabel": "更新日期",
+      "imageAlt": "Lumina Match的星光、魔法林地和天际海洋主题插画卡牌",
+      "imageCaption": "三个主题卡牌系列中的游戏原创插画。",
+      "sections": [
+        {
+          "id": "how-to-play",
+          "title": "卡牌配对游戏怎么玩",
+          "paragraphs": ["每次翻开两张卡牌。相同的卡牌保持正面朝上，不同的卡牌会重新盖住。下一次翻牌时，利用你记住的位置找到配对。"],
+          "steps": ["从首页打开Lumina Match，选择一个闯关关卡。", "选择没有倒计时的“轻松模式”，或选择“限时挑战”与时间赛跑。", "配对全部卡牌即可解锁下一关。已完成的关卡可以随时重玩。"]
+        },
+        {
+          "id": "campaign",
+          "title": "穿越三个主题的250关旅程",
+          "paragraphs": [
+            "单人闯关共十章，每章25关。随着进度推进，星光主题的牌面规模逐渐扩大。魔法林地每20关出现一次，天际海洋每25关出现一次；第100关和第200关优先采用林地主题。",
+            "用更少的步数过关，最多可获得三颗星，总计可收集750颗星。每次尝试有三次提示机会，会短暂显示一对卡牌；使用提示后，该次成绩最多获得两颗星。首次完成每个10的倍数关卡，还可获得50点里程碑奖励分数。"
+          ]
+        },
+        {
+          "id": "modes-and-friends",
+          "title": "单人关卡与好友经典对局",
+          "paragraphs": [
+            "轻松模式和限时挑战都能解锁同一套闯关关卡。经典对局的牌面较小，可以独自游玩，也可以两人在同一台设备上轮流操作。",
+            "在线好友对局需要登录账户，并邀请已在Match Together中互相接受的好友。对方接受邀请后，共享对局才会开始。这些经典好友对局与单人250关旅程相互独立。"
+          ]
+        },
+        {
+          "id": "save-and-close",
+          "title": "保存旅程，再返回MatchApp",
+          "paragraphs": [
+            "已注册玩家可将已解锁关卡、星星和未完成的单人游戏保存到MatchApp账户。请使用游戏内的“保存”，并在离开前查看保存状态。",
+            "访客进度仅在游戏保持打开时有效。访客选择“保存”会看到创建账户的提示，可选择创建账户、继续游玩或不保存直接关闭。“关闭”会返回首页；关闭或重新加载访客游戏，会丢失本次会话的进度。"
+          ]
+        },
+        {
+          "id": "music-and-sound",
+          "title": "按喜好设置游戏声音",
+          "paragraphs": [
+            "主题音乐和卡牌音效会在你首次操作游戏后开始播放。在“音频设置”中，可以分别开关音乐与音效，并调整音量。",
+            "需要休息时可以暂停。游戏暂停或隐藏时，声音会停止；选择“关闭”返回首页时，游戏音频也会停止。"
+          ]
+        }
+      ],
+      "faqTitle": "Lumina Match常见问题",
+      "faqs": [
+        {"question": "如何开始游戏？", "answer": "前往MatchApp首页，选择“玩 Lumina Match”，然后打开一个关卡。配对全部卡牌即可前进；轻松模式没有倒计时。"},
+        {"question": "游戏免费吗？有广告吗？", "answer": "Lumina Match可免费游玩。目前游戏内没有广告，也无需观看视频才能继续游戏。"},
+        {"question": "保存进度需要账户吗？", "answer": "需要。已注册账户可保留进度。访客无需注册也能玩，但游戏进度不会存入浏览器，关闭或重新加载游戏后就会丢失。"},
+        {"question": "可以和好友一起玩吗？", "answer": "可以。你们可以在一台设备上轮流游玩，或登录账户，与Match Together中已接受的好友进行在线经典对局。闯关旅程仍是单人模式。"},
+        {"question": "为什么还没有声音？", "answer": "请先点按一个游戏控件，再检查音频设置和设备音量。也可以关闭音乐和音效继续游玩。"},
+        {"question": "支持哪些设备和语言？", "answer": "可使用电脑、手机或平板的网页浏览器。游戏支持MatchApp界面的全部14种语言。此浏览器版本不在原生Android应用内部或Kids Mode中提供。"}
+      ],
+      "relatedTitle": "探索更多MatchApp Ai内容",
+      "relatedLinks": {"how": "MatchApp Ai使用指南", "together": "了解Match Together", "discover": "与Jonas一起发现娱乐内容"}
+    }
+  }
+}

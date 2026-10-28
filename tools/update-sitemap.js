@@ -158,6 +158,7 @@ function main() {
     try { sitemapRevision = execFileSync('git', ['log', '-1', '--format=%H', '--', 'sitemap.xml'], {cwd:ROOT, encoding:'utf8', stdio:['ignore','pipe','ignore']}).trim(); }
     catch (_) { /* Source archives without Git retain the existing date fallback. */ }
     const seo   = readList('seo-urls.json').map(loc => ({ loc, freq: 'weekly', pri: '0.7' }));
+    const lumina = readList('lumina-urls.json').map(loc => ({loc, freq:'monthly', pri:'0.7'}));
     const watch = readList('watch-urls.json').map(loc => ({loc,freq:'weekly',pri:loc.endsWith('/where-to-watch/')?'0.8':'0.6'}));
 
     const kidsMeta = readObject('kids-sitemap-meta.json');
@@ -182,7 +183,7 @@ function main() {
 
     const awareness = readList('awareness-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.6'}));
 
-    const all = [...CORE, ...seo, ...watch, ...kids, ...events, ...roku, ...plusSbt, ...news, ...awareness];
+    const all = [...CORE, ...seo, ...lumina, ...watch, ...kids, ...events, ...roku, ...plusSbt, ...news, ...awareness];
     const seen = new Set();
     const unique = all.filter(u => (seen.has(u.loc) ? false : seen.add(u.loc)));
 

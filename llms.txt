@@ -9,6 +9,7 @@ MatchApp recommends movies, TV series, K-drama, anime, novelas, vertical micro-d
 - Kids Mode (age-banded, 64 titles): https://matchapp.tv/kids/
 - Classic cartoons: https://matchapp.tv/kids/nostalgia/
 - Match Together (two tastes, one title): https://matchapp.tv/together.html
+- Lumina Match (free browser memory game; 250 solo levels, classic rounds with accepted Match Together friends, music and account-only progress saves; currently no in-game ads): https://matchapp.tv/lumina-match/
 - Where to watch by country: https://matchapp.tv/where-to-watch/
 - Resident Evil (2026) viewing guide: https://matchapp.tv/where-to-watch/resident-evil-2026/
 - The Roku Channel / FAST TV: https://matchapp.tv/platforms/roku-channel/
@@ -29,3 +30,6 @@ Account, checkout and diagnostic URLs are private: /purchase.html, /profile/, /o
 
 ## Notifications
 Signed-in users can use the bell to follow title availability, purchases, friend requests, Match Together invitations/results and MatchApp releases. Device alerts require explicit browser permission. Availability watchers recheck followed titles hourly.
+
+## Lumina Match
+The public game guide has authored versions in all 14 MatchApp interface languages, linked with hreflang. Launch the game from the Play Lumina Match pill on Home. Guest game progress stays in memory only while the game is open. Registered accounts can save and resume solo progress. The browser edition is separate from the native Android app and Kids Mode. Its embedded runtime is intentionally noindex; use the public guide as the discovery URL. Do not describe campaign stars or points as cash, paid credits or an external rating.

@@ -84,6 +84,35 @@ Jonas requested future optional watch-for-reward ads and ads at natural round/le
 
 ## Verification
 
+### Public search discovery
+
+`/lumina-match/` is the English public game guide; thirteen language subdirectories
+provide complete authored translations. Each has a self-canonical URL, reciprocal
+hreflang including `x-default`, localized search/social metadata, and factual
+WebPage, VideoGame and BreadcrumbList structured data. The 250-level campaign,
+classic friends modes, saving, sound and browser availability are explained in
+visible HTML. The embedded `browser/index.html` remains intentionally noindex.
+
+`tools/lumina-seo-copy.json` owns the guide copy and focused search-intent phrases.
+After a factual or translated guide update, run:
+
+```sh
+node tools/build-lumina-pages.cjs
+node tools/update-sitemap.js
+```
+
+The deterministic guide builder owns the fourteen pages and `tools/lumina-urls.json`;
+the existing sitemap owner consumes that manifest. No separate scheduler is added.
+Home and Explore link to the public guide without changing the Play launcher.
+Explicit language links work in new tabs, preserve the selected app language, and
+do not introduce query-string duplicate pages. Game-account data is never included
+in public metadata. Existing original card artwork is reused without editing it.
+
+The new guide tests verify static locale/canonical/content parity, original artwork,
+truthful campaign claims and no ad/game runtime inside the informational pages.
+Metadata and keyword coverage do not establish rankings, rich-result eligibility,
+or AdSense approval; never invent reviews or ratings to satisfy a search feature.
+
 Run the focused Lumina suite from the repository root, followed by the full repository and site-audit gates:
 
 ```sh
