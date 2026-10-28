@@ -125,7 +125,7 @@
   try{const saved=JSON.parse(sessionStorage.getItem(SESSION));if(saved&&Number.isInteger(saved.count)&&saved.count>=0&&saved.count<=3&&Number.isFinite(saved.next))session={count:saved.count,next:saved.next,stopped:saved.stopped===true};}catch(_){}
   function persist(){try{sessionStorage.setItem(SESSION,JSON.stringify(session));}catch(_){} }
   function busy(){
-    return document.visibilityState==='hidden'||
+    return document.visibilityState==='hidden'||window.innerHeight<420||
       [...document.querySelectorAll('dialog[open],[role="dialog"]:not([hidden])')].some(node=>{
         for(let current=node;current;current=current.parentElement){const style=getComputedStyle(current);if(current.hidden||style.display==='none'||style.visibility==='hidden')return false;}
         return true;
@@ -181,6 +181,7 @@
     document.addEventListener('focusin',()=>{if(bubble&&busy())dismissBubble();});
     document.addEventListener('keydown',event=>{if(event.key==='Escape'&&bubble&&!busy())dismissBubble();});
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!bubble)scheduleBubble();});
+    window.addEventListener('resize',()=>{if(bubble&&busy())dismissBubble();else if(!bubble)scheduleBubble();});
     new MutationObserver(()=>{if(bubble?.isConnected&&(installed()||busy()))dismissBubble(installed());}).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open','hidden','aria-expanded','style','class']});
   }
   function copy(kind,visit){

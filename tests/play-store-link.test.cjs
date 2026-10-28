@@ -63,6 +63,12 @@ test('bubble defers to forms, dialogs and background tabs and exits when install
  ctx.w.dispatchEvent(new ctx.w.Event('appinstalled'));assert.equal(bubble(ctx),null);await ctx.advance(9999999);assert.equal(bubble(ctx),null);ctx.dom.window.close();
  const hidden=mount();Object.defineProperty(hidden.w.document,'visibilityState',{value:'hidden',configurable:true});await fire(hidden);assert.equal(bubble(hidden),null);hidden.dom.window.close();
 });
+test('short landscape defers the bubble until portrait so the fixed header cannot cover it',async()=>{
+ const ctx=mount();ctx.w.innerHeight=320;await fire(ctx);assert.equal(bubble(ctx),null);
+ ctx.w.innerHeight=844;ctx.w.dispatchEvent(new ctx.w.Event('resize'));await ctx.advance(0);assert.ok(bubble(ctx));
+ ctx.w.innerHeight=320;ctx.w.dispatchEvent(new ctx.w.Event('resize'));assert.equal(bubble(ctx),null);
+ ctx.dom.window.close();
+});
 for(const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'])test('Android bubble keeps authored '+lang+' copy and repaints in place',async()=>{
  const ctx=mount({lang});await fire(ctx);const box=bubble(ctx);assert.ok(box);assert.equal(box.lang,lang);assert.equal(box.dir,lang==='ar'?'rtl':'ltr');
  if(lang!=='en')assert.notEqual(box.querySelector('button').getAttribute('aria-label'),'Close');
