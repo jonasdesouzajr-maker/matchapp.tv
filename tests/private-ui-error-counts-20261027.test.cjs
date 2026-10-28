@@ -4,7 +4,7 @@ test('private diagnostic RPC accepts enums only, aggregates without identity and
  const {PGlite}=await import('@electric-sql/pglite');const db=new PGlite();
  try{
   await db.exec('create role anon; create role authenticated; create role service_role;');
-  await db.exec(fs.readFileSync('supabase/migrations/20261027121000_private_ui_error_counts.sql','utf8'));
+  await db.exec(fs.readFileSync('supabase/migrations/20261027141009_private_ui_error_counts.sql','utf8'));
   await db.exec('set role anon');
   const call=async(code,surface='web',page='home')=>(await db.query('select public.record_ui_error_20261027($1,$2,$3,$4) as ok',[code,surface,page,'phone'])).rows[0].ok;
   assert.equal(await call('ui-error'),true);assert.equal(await call('ui-error'),true);
