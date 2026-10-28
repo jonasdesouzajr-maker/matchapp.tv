@@ -1,0 +1,33 @@
+{
+  "source": "LuminaMatch_Friends_CardGame.zip",
+  "source_sha256": "3af1475cdd27aea40e117cf831b3c20a5c4975b2ddc5b5e8da02f8f015455c9e",
+  "artwork": {
+    "card_back.jpg": "c426d2265f7d72e0023f820ff468e6234fb03ad440b1e3ad772fad4b8fb4a285",
+    "card_butterfly.jpg": "4de1e158e8c84998ae1d5e85f7d12214959562a36f4ee6fbbd289201e8f5aa6e",
+    "card_crystal.jpg": "fdadae4ba0aa11c2851f83c4ae38b7e72e8f6d215c4601fe191a49d388847a1a",
+    "card_gem.jpg": "c0fc8c4776d55baedff3b9e1921108c5227eabac514bab8f642d9fb087a920a3",
+    "card_heart.jpg": "eed1d5a34761f3955ddd68544e15646f6b0697273acaac07d96eac1c682011bd",
+    "card_lantern.jpg": "0381a67c2d464dd82ee79ad832d6169432080cc3d9a3fe62575222844fb35cba",
+    "card_lotus.jpg": "69b38ec379bdb46cb67e2512d40b0e97a3a2327ba1bc3129f382cff2edf2f88d",
+    "card_moon.jpg": "8072cf61777bd9e6ffb37f0a712fc5d5c75d19549143ecf636efadd6dea45b69",
+    "card_nebula.jpg": "7126c943a4fcdc98b97098647d316eb6ee8512e81e5d0852615ff70b39562e5e",
+    "card_orb.jpg": "5e4e4ecd230fad07c4f8190e45608ce9aa4d36fe694d2e1b58195af1a89a1bc6",
+    "card_planet.jpg": "93dd42c665a5e83e3613cd03ee2aa752507c61755cbd62ec84df43b0115bee5b",
+    "card_star.jpg": "1ad645a5e372c04596ab070d19f30d67868bcee545aa807540cda2152eb13bb5",
+    "card_sun.jpg": "f3a79a3becdcd1d5d06e7306a08f75d1f44f4cec262660e425f45309d844f719",
+    "event_card_back.jpg": "aac6f68c1301c5fdefd3f72ff99f86abdfb293786300d930e69a213984168478",
+    "event_crystalflower.jpg": "56d8e33fd00b2b56676ce198f6d9d01b5baeb1716b2046243aacca319b3ecbcd",
+    "event_fern.jpg": "90a919b7409e881e7a05cfdf7ec1b87a265910282518575925bdfee169c4a987",
+    "event_firefly.jpg": "668b4ac08338e5622912b432a1530f14da7fe6d80538353c04f1eba6d18ebccd",
+    "event_fox.jpg": "5ab959fd9eba33ea281f1d1c5502d23826384f27724ecd47885946f90244cabf",
+    "event_moonflower.jpg": "1f190d0f27950dc454b2fd04f621ef53d5c9dc6a8ac7440c49944f8f2dc3d640",
+    "event_mushroom.jpg": "88377b49930c77bf8c0d877b093c87c4ec21e0a6f305bc86914e1cc427356458",
+    "ocean_card_back.jpg": "f82c725c18e9270c938d45f950a358e3fd84c6b982b2c3b8d3927e74089bfc3c",
+    "ocean_coral.jpg": "c294c04787ea88f3b278933a04a50d520f3290baca2c0a6ec170d77ead6e06a5",
+    "ocean_dolphin.jpg": "5178db8e28414a70423c72d34a3e2b66eda1d7729c88fe0d1e9825d2cc762ffc",
+    "ocean_jellyfish.jpg": "f1e14c4ff528401c1cd210432002ad4bb33c4b110f11e541e496bc74b24fd8b3",
+    "ocean_seahorse.jpg": "eb8bfbfdcc0054d4416f49e36e99c5a64c2d0c89aa41a212b1c91282922da497",
+    "ocean_shell.jpg": "8c0ab4597967afaa05286053b2fc147f87b569df8324b24e01ca74759285e428",
+    "ocean_starfish.jpg": "c6cfed693a6c952295edc6c54ae0720ec7570f0436aab2c10e2d26a96f13ea9e"
+  }
+}

@@ -3,7 +3,9 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
+const campaign=require('../lumina-match/browser/campaign.js');
 const migration=fs.readFileSync(path.join(__dirname,'../supabase/migrations/20261027222612_lumina_browser_friends_and_progress.sql'),'utf8');
+const campaignMigration=fs.readFileSync(path.join(__dirname,'../supabase/migrations/20261028075206_lumina_campaign_progress.sql'),'utf8');
 const A='aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';
 const B='bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb';
 const C='cccccccc-cccc-cccc-cccc-cccccccccccc';
@@ -48,6 +50,7 @@ test('Lumina Postgres rooms and account saves enforce auth, friendship, turns, h
       insert into match_private.friendships(sender,recipient,status) values('${A}','${B}','accepted'),('${A}','${C}','pending');
     `);
     await db.exec(migration);
+    await db.exec(campaignMigration);
 
     await t.test('new tables deny direct reads; wrapper is invoker and auth rejects anonymous/forged ids',async()=>{
       await db.exec('set role anon');
@@ -58,8 +61,16 @@ test('Lumina Postgres rooms and account saves enforce auth, friendship, turns, h
       await as(A,'list');
       await assert.rejects(db.query('select * from match_private.lumina_rooms'),/permission denied/);
       await assert.rejects(db.query('select * from match_private.lumina_progress'),/permission denied/);
+      await assert.rejects(db.query("select match_private.lumina_validate_saved_progress('{}'::jsonb)"),/permission denied/);
+      await assert.rejects(db.query("select match_private.lumina_validate_saved_cards('[]'::jsonb,1,array['moon'],false)"),/permission denied/);
       const metadata=await admin("select p.prosecdef from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname='lumina_action'");
       assert.equal(metadata.rows[0].prosecdef,false);
+      const validators=await admin("select p.prosecdef,p.proconfig,has_function_privilege('anon',p.oid,'execute') as anon_execute,has_function_privilege('authenticated',p.oid,'execute') as authenticated_execute from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='match_private' and p.proname in ('lumina_validate_saved_cards','lumina_validate_saved_progress')");
+      assert.equal(validators.rows.length,2);
+      for(const row of validators.rows){
+        assert.equal(row.prosecdef,false);assert.equal(row.anon_execute,false);assert.equal(row.authenticated_execute,false);
+        assert.ok(row.proconfig.includes('search_path=""'));
+      }
     });
 
     await t.test('lists only approved friends, requires approval and reuses pending invitation',async()=>{
@@ -202,6 +213,112 @@ test('Lumina Postgres rooms and account saves enforce auth, friendship, turns, h
       ];
       for(const value of invalid)await assert.rejects(as(A,'save_progress',{revision:2,progress:value}),/LUMINA_INVALID/);
       assert.equal((await as(A,'progress')).revision,2);
+    });
+
+    await t.test('a legacy account upgrades without losing its classic board, then cached legacy saves preserve the campaign',async()=>{
+      const current=await as(A,'progress');
+      const upgraded={version:2,...progress,campaign:campaign.empty()};
+      upgraded.campaign.activeLevel={level:1,cards:campaign.deck(1,()=>0.25),moves:2,elapsedSeconds:15,timed:true,hintsUsed:1};
+      const saved=await as(A,'save_progress',{revision:current.revision,progress:upgraded});
+      assert.equal(saved.revision,current.revision+1);assert.deepEqual(saved.progress,upgraded);
+      assert.deepEqual((await as(A,'progress')).progress,upgraded);
+      assert.equal((await as(B,'progress')).progress,null);
+
+      const cached={points:40,rounds:4,activeRound:null};
+      const legacyAck=await as(A,'save_progress',{revision:saved.revision,progress:cached});
+      assert.deepEqual(legacyAck.progress,cached,'legacy clients receive the same canonical shape they submitted');
+      assert.equal(legacyAck.revision,saved.revision+1);
+      const full=await as(A,'progress');
+      assert.deepEqual(full.progress,{version:2,...cached,campaign:upgraded.campaign},'the stored campaign and active level survive');
+      await assert.rejects(as(A,'save_progress',{revision:saved.revision,progress:upgraded}),/LUMINA_CONFLICT/);
+      await assert.rejects(as(A,'save_progress',{revision:saved.revision,progress:{...cached,points:50}}),/LUMINA_CONFLICT/);
+      assert.deepEqual(await as(A,'progress'),full);
+    });
+
+    await t.test('auth owns campaign reads and writes regardless of forged account fields',async()=>{
+      const a=await as(A,'progress');
+      assert.equal((await as(B,'progress',{user_id:A,user:A})).progress,null);
+      const own={version:2,points:0,rounds:0,activeRound:null,campaign:campaign.empty()};
+      const b=await as(B,'save_progress',{revision:0,progress:own,user_id:A,user:A});
+      assert.deepEqual(b.progress,own);assert.deepEqual(await as(A,'progress'),a);
+      await assert.rejects(as(G,'progress'),/LUMINA_SIGN_IN_REQUIRED/);
+      await assert.rejects(as(G,'save_progress',{revision:0,progress:own}),/LUMINA_SIGN_IN_REQUIRED/);
+      await assert.rejects(as(null,'save_progress',{revision:0,progress:own}),/LUMINA_SIGN_IN_REQUIRED/);
+      await as(B,'progress');
+      await assert.rejects(db.query('select progress from match_private.lumina_progress where user_id=$1',[A]),/permission denied/);
+    });
+
+    await t.test('the RPC saves and restores all 250 generated boards and the final result without creating level 251',async()=>{
+      let value={version:2,points:0,rounds:0,activeRound:null,campaign:campaign.empty()},revision=0;
+      for(let level=1;level<=250;level++){
+        const stage=campaign.config(level),cards=campaign.deck(level,()=>0.625),matched=cards[0].art;
+        cards.forEach(card=>{card.matched=card.art===matched;});
+        value.campaign.activeLevel={level,cards,moves:1,elapsedSeconds:7,timed:level%2===0,hintsUsed:level%4};
+        const saved=await as(C,'save_progress',{revision,progress:value});
+        assert.equal(saved.revision,++revision,'level '+level);
+        assert.deepEqual(saved.progress,value,'complete snapshot at level '+level);
+        const finished=campaign.finish(value.campaign,level,stage.pairs,stage.seconds,0);
+        value={...value,points:value.points+finished.points,rounds:value.rounds+1,campaign:finished.campaign};
+      }
+      const completed=await as(C,'save_progress',{revision,progress:value});
+      assert.equal(completed.revision,251);assert.equal(completed.progress.campaign.unlocked,250);
+      assert.equal(completed.progress.campaign.results.length,250);assert.ok(completed.progress.campaign.results.every(Boolean));
+      assert.equal(completed.progress.campaign.activeLevel,null);
+      assert.deepEqual((await as(C,'progress')).progress,value);
+      assert.equal((await as(B,'progress')).progress.campaign.unlocked,1,'another account keeps its independent campaign');
+    });
+
+    await t.test('campaign SQL validation rejects level, deck, result and schema violations without changing the saved revision',async()=>{
+      const base={version:2,points:10,rounds:1,activeRound:null,campaign:{
+        unlocked:100,results:Array.from({length:250},(_,i)=>i<99?[3,20,60]:null),
+        activeLevel:{level:100,cards:campaign.deck(100,()=>0.375),moves:10,elapsedSeconds:60,timed:false,hintsUsed:0}
+      }};
+      const cases=[
+        value=>{value.version=3;},value=>{value.version='2';},value=>{delete value.version;},
+        value=>{delete value.campaign;},value=>{value.campaign=null;},value=>{delete value.campaign.activeLevel;},
+        value=>{value.campaign.unlocked=0;},value=>{value.campaign.unlocked=251;},value=>{value.campaign.unlocked=100.5;},
+        value=>{value.campaign.results[0]=null;},value=>{value.campaign.results[99]=[3,20,60];},
+        value=>{value.campaign.results.pop();},value=>{value.campaign.results.push(null);},
+        value=>{value.campaign.results[0]=[0,1,1];},value=>{value.campaign.results[0]=[4,1,1];},
+        value=>{value.campaign.results[0]=[1,1000001,1];},value=>{value.campaign.results[0]=[1,1,86401];},
+        value=>{value.campaign.results[0]=[1,1,0.5];},value=>{value.campaign.results[0]=[1,1,1,1];},
+        value=>{value.campaign.results[0]='bad';},value=>{value.campaign.results={};},
+        value=>{value.campaign.activeLevel.level=101;},value=>{value.campaign.activeLevel.level=251;},
+        value=>{value.campaign.activeLevel.cards.pop();},value=>{value.campaign.activeLevel.cards[0].matched=true;},
+        value=>{value.campaign.activeLevel.cards.forEach(card=>{card.matched=true;});},
+        value=>{value.campaign.activeLevel.cards[0].art='bad';},
+        value=>{value.campaign.activeLevel.cards=campaign.deck(125,()=>0.375);},
+        value=>{value.campaign.activeLevel.cards[0].flipped=true;},
+        value=>{value.campaign.activeLevel.cards[0].matched='false';},
+        value=>{value.campaign.activeLevel.moves=-1;},value=>{value.campaign.activeLevel.moves=1000001;},
+        value=>{value.campaign.activeLevel.elapsedSeconds=86401;},value=>{value.campaign.activeLevel.timed=0;},
+        value=>{value.campaign.activeLevel.hintsUsed=4;},value=>{value.campaign.activeLevel.hintsUsed=-1;},
+        value=>{value.campaign.activeLevel.revealed=[0,1];},value=>{value.campaign.adsReward=1;},
+        value=>{value.user_id=A;},value=>{value.padding='x'.repeat(16385);}
+      ];
+      const current=await as(C,'progress');
+      for(const alter of cases){
+        const value=JSON.parse(JSON.stringify(base));alter(value);
+        await assert.rejects(as(C,'save_progress',{revision:current.revision,progress:value}),/LUMINA_INVALID/);
+      }
+      const early=JSON.parse(JSON.stringify(base));
+      early.campaign={...campaign.empty(),activeLevel:{...base.campaign.activeLevel,level:1,cards:campaign.deck(1,()=>0.375)}};
+      const first=early.campaign.activeLevel.cards[0].art;
+      early.campaign.activeLevel.cards.forEach(card=>{if(card.art===first)card.art='mushroom';});
+      await assert.rejects(as(C,'save_progress',{revision:current.revision,progress:early}),/LUMINA_INVALID/);
+      assert.deepEqual(await as(C,'progress'),current);
+    });
+
+    await t.test('maximum valid counters and a fully completed campaign fit the new save bound',async()=>{
+      const value={version:2,points:1000000000,rounds:1000000000,activeRound:progress.activeRound,campaign:{
+        unlocked:250,results:Array.from({length:250},()=>[3,1000000,86400]),
+        activeLevel:{level:249,cards:campaign.deck(249,()=>0.5),moves:1000000,elapsedSeconds:86400,timed:true,hintsUsed:3}
+      }};
+      const current=await as(C,'progress');
+      const saved=await as(C,'save_progress',{revision:current.revision,progress:value});
+      assert.deepEqual(saved.progress,value);
+      const size=(await admin('select octet_length(progress::text) as bytes from match_private.lumina_progress where user_id=$1',[C])).rows[0].bytes;
+      assert.ok(size<=16384,'the maximum canonical save must fit the new limit');
     });
   }finally{await db.close();}
 });

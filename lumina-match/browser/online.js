@@ -145,6 +145,15 @@
     } else {
       var room = normalizeRoom(value);
       if (state.room && state.room.code === room.code && room.revision < state.room.revision) return;
+      var previousRoom = state.room;
+      if (previousRoom && previousRoom.code === room.code && room.revision > previousRoom.revision) {
+        var oldMatches = previousRoom.cards.filter(function (card) { return card.matched; }).length;
+        var newMatches = room.cards.filter(function (card) { return card.matched; }).length;
+        if (room.status === 'complete' && previousRoom.status !== 'complete') window.LuminaAudio?.play('win');
+        else if (newMatches > oldMatches) window.LuminaAudio?.play('match');
+        else if (room.cards.some(function (card,index) { return card.flipped && !previousRoom.cards[index]?.flipped; })) window.LuminaAudio?.play('flip');
+        else if (previousRoom.cards.some(function (card) { return card.flipped && !card.matched; })) window.LuminaAudio?.play('miss');
+      }
       state.room = room;state.code = room.code;state.mode = 'room';state.loaded = true;
       if (task.returnToLobby) {
         state.mode = 'lobby';state.code = null;state.room = null;state.copyStatus = null;

@@ -48,3 +48,66 @@ h1{font-size:clamp(42px,11vw,56px);font-weight:300;letter-spacing:2px;line-heigh
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @media(forced-colors:active){.card{border:2px solid ButtonText}.pill{border:1px solid ButtonText}.plate.active{outline:2px solid Highlight}}
+/* Campaign and audio controls belong only to this isolated game document. */
+.audio-toolbar{position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end;align-items:center;min-height:52px;padding:4px clamp(12px,3vw,24px);gap:8px;background:#1b142ded;border-bottom:1px solid #ffffff0a}
+.audio-settings-button{border:0;background:#ffffff0d;color:#d4c5e8;font:inherit;font-size:12px;border-radius:22px;padding:10px 16px;min-height:44px;cursor:pointer}
+.save-game-button{background:linear-gradient(120deg,#ebd09a,#bc9be0);color:#231333;font-weight:700;min-width:72px}.save-game-button:disabled{opacity:.5;cursor:wait}
+#app{min-height:calc(100vh - 52px);min-height:calc(100dvh - 52px);padding-top:6px}
+.journey-title{font-size:15px;letter-spacing:.04em;color:var(--primary);margin:12px 0}
+.journey-summary{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:12px;line-height:1.5;max-width:374px;margin:16px auto 6px;color:#cec0df}
+.journey-progress{display:block;width:78%;height:5px;border:0;border-radius:6px;overflow:hidden;background:#ffffff12;margin:0 auto 20px;accent-color:#b39ddb}
+.journey-progress::-webkit-progress-bar{background:#ffffff12}.journey-progress::-webkit-progress-value{background:linear-gradient(90deg,#7e57c2,#80cbc4)}
+.journey-play{background:linear-gradient(120deg,#9365d3,#6457c9);box-shadow:0 6px 24px #9265d32b}
+.home-secondary{margin-top:20px}.home-secondary .pill{font-size:15px;min-height:46px;margin:8px auto;padding:11px 16px}
+.mode-options{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;border:0;margin:14px auto;max-width:390px;color:#d4c7e6}
+.mode-options legend{font-size:11px;line-height:1.5;text-align:center;margin-bottom:4px}
+.mode-options label{display:inline-flex;align-items:center;gap:7px;min-height:44px;font-size:13px;cursor:pointer}
+.mode-options input{accent-color:#b39ddb;width:18px;height:18px}
+.level-screen{max-width:660px}.level-screen h1{font-size:clamp(23px,7vw,32px);letter-spacing:0}
+.chapter-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:16px 0}
+.chapter-nav .pill{min-width:0;max-width:32%;font-size:12px;padding:10px;margin:0;flex:1}
+.chapter-nav strong{font-size:14px;flex:1;overflow-wrap:anywhere}.map-note{font-size:12px;color:#c9bcdf}
+.level-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:20px 0}
+.level-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;min-height:90px;border:0;border-radius:15px;background:#2c2246;color:#e4d6f3;padding:10px 3px;cursor:pointer}
+.level-tile.grove{background:#173c38;color:#a4ead6}.level-tile.ocean{background:#17334d;color:#a7d6f8}
+.level-tile.completed{box-shadow:inset 0 0 0 1px #b39ddb55}.level-tile:disabled{opacity:.38;cursor:default}
+.level-number{font-size:25px;font-weight:600;line-height:1.2}.level-star{color:#f2ca76;font-size:12px;letter-spacing:1px;white-space:nowrap}
+.level-theme{font-size:9px;line-height:1.35;overflow-wrap:anywhere;max-width:100%}
+.play-screen{max-width:640px}.play-screen .header{gap:7px;font-size:14px}
+.play-screen .header>.pill{max-width:28%;font-size:12px;padding:8px 12px}
+.play-screen .header>span{flex:1;text-align:center}
+.stage-meta{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 16px;color:#cfc1e5;font-size:12px}
+.clock{font-variant-numeric:tabular-nums}.clock.urgent{color:#ffc1a8;font-weight:700}
+.hint-row{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0}
+.hint-row .pill{min-width:0;font-size:12px;margin:0}.hint-count,.personal-best{font-size:11px;color:#c9bcdf}
+.grid.campaign-grid{grid-template-columns:repeat(var(--columns),minmax(0,82.5px));max-width:560px;gap:6px}
+.campaign-grid .card{max-height:110px;min-height:55px;border-radius:10px}
+.board-area{position:relative}.board-area.is-paused .grid{visibility:hidden}
+.pause-panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#1a1633ed;border-radius:20px;padding:20px;min-height:220px}
+.pause-panel[hidden]{display:none}.pause-panel h2{font-size:24px;font-weight:400}.pause-panel .pill{max-width:300px}
+.pause-actions,.restart-confirm{width:100%}.restart-confirm p{max-width:35ch;margin:12px auto;font-size:14px;line-height:1.5}
+.earned-stars{color:#f3c96c;font-size:clamp(38px,11vw,52px);letter-spacing:8px;margin:20px 0}
+.result .result-score{margin:12px 0}.result-detail,.theme-caption,.milestone,.completion-copy{font-size:14px;line-height:1.6;margin:12px auto;max-width:38ch}
+.theme-caption{color:#b5a1d3}.milestone{color:#f3c96c}.completion-copy{color:#d6c8e4}
+.audio-dialog{margin:auto;max-width:calc(100vw - 24px);width:390px;border:1px solid #b39ddb33;border-radius:24px;background:#211a36;color:var(--text);padding:24px;box-shadow:0 24px 80px #0009}
+.audio-dialog::backdrop{background:#090615aa;backdrop-filter:blur(4px)}
+.audio-dialog h2{font-size:24px;font-weight:500;margin-bottom:20px}
+.audio-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;font-size:16px;cursor:pointer}
+.audio-setting input{width:22px;height:22px;accent-color:#b39ddb;flex:none}
+.volume-setting{display:block;font-size:14px;margin-top:18px}
+#lumina-volume{display:block;width:100%;height:44px;accent-color:#b39ddb}
+.audio-status{font-size:12px;line-height:1.6;color:#c9bcdf;margin:12px 0}
+.audio-dialog .pill{width:100%;margin-bottom:0}
+.register-dialog{max-height:calc(100dvh - 24px);overflow:auto}
+.register-dialog h2{padding-inline-end:24px;line-height:1.3}.register-dialog p{font-size:14px;line-height:1.6;margin:12px 0}
+.register-dialog .guest-session-note{font-size:12px;color:#c9bcdf}
+.register-dismiss{position:absolute;inset-inline-end:6px;top:6px;width:44px;height:44px;border:0;border-radius:50%;background:#ffffff0d;color:#eee;font-size:27px;cursor:pointer}
+@media(max-width:480px){
+  .grid.campaign-grid{grid-template-columns:repeat(var(--mobile-columns),minmax(0,72px))}
+  .campaign-grid .card{max-height:96px}
+  .level-grid{gap:5px}.level-tile{min-height:80px;border-radius:11px}
+  .level-number{font-size:23px}.level-theme{font-size:8px}.level-star{letter-spacing:0}
+  .journey-summary{width:88%}.mode-options{max-width:90%}
+}
+@media(max-width:360px){.play-screen .header>.pill{padding:8px;font-size:11px}.stage-meta{font-size:11px}.level-tile{min-height:76px}}
+@media(forced-colors:active){.level-tile,.audio-settings-button,.audio-dialog{border:1px solid ButtonText}.level-tile.completed{outline:2px solid Highlight}.level-tile:disabled{opacity:1;color:GrayText}}

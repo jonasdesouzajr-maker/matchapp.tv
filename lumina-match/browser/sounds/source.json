@@ -1,0 +1,26 @@
+{
+  "source": "LuminaMatch.apk",
+  "source_sha256": "aaa0ada11067b34212624f8c87005b4df30d19f87f0c57579d874c5d9ec74b4c",
+  "effects": {
+    "flip.mp3": {
+      "source_path": "res/raw/flip_sound.mp3",
+      "sha256": "d2a6e6eb3191c0498637b24897b420717bcae71c4b73f1ab5237db9c47a802f6",
+      "bytes": 11520,
+      "duration_seconds": 0.36
+    },
+    "match.mp3": {
+      "source_path": "res/raw/match_sound.mp3",
+      "sha256": "234a990ee382f6fa4d556848787f22a1db8d01cc6708274e734dd25170c60a72",
+      "bytes": 68160,
+      "duration_seconds": 3.408
+    }
+  },
+  "music": {
+    "source": "Original procedural composition in ../audio.js",
+    "themes": ["starlight", "grove", "ocean"],
+    "loop_seconds": 24,
+    "sample_rate": 22050,
+    "channels": 2,
+    "description": "Four original ambient phrases per theme, with overlapping pads, bass and a soft four-note melody; synthesized in the game without external audio services."
+  }
+}

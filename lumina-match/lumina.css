@@ -63,7 +63,7 @@
     position:fixed!important;inset:0!important;z-index:2147483000;
     width:100%!important;max-width:none!important;height:100%!important;max-height:none!important;
     height:100dvh!important;margin:0!important;
-    padding:max(env(safe-area-inset-top),10px) max(env(safe-area-inset-right),10px) max(env(safe-area-inset-bottom),10px) max(env(safe-area-inset-left),10px)!important;
+    padding:max(env(safe-area-inset-top),12px) max(env(safe-area-inset-right),12px) max(env(safe-area-inset-bottom),12px) max(env(safe-area-inset-left),12px)!important;
     border:0!important;border-radius:0!important;box-shadow:none!important;
     background:rgba(7,4,18,.86)!important;color:#ffecff!important;
     overflow:hidden!important;isolation:isolate;
@@ -74,7 +74,7 @@
   #lm-dialog#lm-dialog.lm-overlay:not([open]) {display:none!important;}
   #lm-dialog#lm-dialog.lm-overlay::backdrop {background:#080511a6;}
   #lm-dialog#lm-dialog .lm-shell {
-    width:min(100%,730px)!important;height:min(100%,940px)!important;min-height:0!important;
+    width:100%!important;height:100%!important;min-height:0!important;
     max-height:100%!important;max-width:100%!important;padding:0!important;margin:0!important;
     display:flex!important;flex-direction:column!important;gap:0!important;overflow:hidden!important;
     border:0!important;border-radius:22px!important;
@@ -147,17 +147,20 @@
     html body.page-home #lm-launch-grid.lm-launch-grid {margin:8px auto 11px!important;}
     html body.page-home #lm-launch-grid #lm-launch.lm-launch {font-size:.8125rem!important;padding:11px 17px!important;}
     #lm-dialog#lm-dialog.lm-overlay {
-      padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)!important;
+      padding:max(env(safe-area-inset-top),8px) max(env(safe-area-inset-right),8px) max(env(safe-area-inset-bottom),8px) max(env(safe-area-inset-left),8px)!important;
     }
-    #lm-dialog#lm-dialog .lm-shell {width:100%!important;height:100%!important;border-radius:0!important;}
+    #lm-dialog#lm-dialog .lm-shell {width:100%!important;height:100%!important;border-radius:18px!important;}
     #lm-dialog#lm-dialog .lm-framebar {padding-inline-start:12px!important;gap:7px!important;}
   }
-  @media(max-width:340px) {#lm-dialog#lm-dialog .lm-source {display:none!important;}}
+  @media(max-width:340px) {
+    #lm-dialog#lm-dialog .lm-source {display:none!important;}
+    #lm-dialog#lm-dialog #lm-close.lm-icon-btn {margin-inline-start:auto!important;}
+  }
   @media(max-height:500px) {
     #lm-dialog#lm-dialog.lm-overlay {
-      padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)!important;
+      padding:max(env(safe-area-inset-top),6px) max(env(safe-area-inset-right),6px) max(env(safe-area-inset-bottom),6px) max(env(safe-area-inset-left),6px)!important;
     }
-    #lm-dialog#lm-dialog .lm-shell {width:100%!important;height:100%!important;border-radius:0!important;}
+    #lm-dialog#lm-dialog .lm-shell {width:100%!important;height:100%!important;border-radius:16px!important;}
   }
   html.reduce-motion body.page-home #lm-launch-grid #lm-launch,
   html.reduce-motion #lm-dialog#lm-dialog * {animation:none!important;transition:none!important;}
