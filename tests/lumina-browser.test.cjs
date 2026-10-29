@@ -58,7 +58,7 @@ function game(t, options = {}) {
 test('Home alone loads the launcher and game payload stays opt-in',()=>{
   const html=read('index.html'), launcher=read('lumina-match/launcher.js');
   assert.equal((html.match(/\/lumina-match\/launcher\.js/g)||[]).length,1);
-  assert.match(html,/launcher\.js\?v=20261028-3/);
+  assert.match(html,/launcher\.js\?v=20261029-1/);
   assert.match(html,/lumina\.css\?v=20261028-1/);
   assert.doesNotMatch(html,/lumina-match\/browser\//);
   assert.match(launcher,/import\('\/lumina-match\/game\.mjs/);
