@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-10-26",
-  "updated": "2026-10-28T10:46:31.142Z",
+  "updated": "2026-10-29T11:03:32.670Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -23,14 +23,14 @@
       ],
       "inLanguage": "en",
       "cast": [
-        "Anne Hathaway",
         "Dakota Johnson",
+        "Anne Hathaway",
         "Josh Hartnett",
-        "Ismael Cruz Cordova"
+        "Brady Wagner"
       ],
-      "runtimeMinutes": 117,
+      "runtimeMinutes": 121,
       "contentRating": "R",
-      "voteAverage": 6.4,
+      "voteAverage": 6.33,
       "previewUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
       "availability": {
         "BR": {
@@ -55,9 +55,17 @@
           "cinema_release_date": "2026-10-01"
         },
         "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1283515-verity/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
           "stream": [],
           "cinema_release_date": "2026-10-02"
         },
@@ -73,8 +81,8 @@
         "Mystery movie",
         "Thriller movie",
         "Drama movie",
-        "Anne Hathaway",
-        "Dakota Johnson"
+        "Dakota Johnson",
+        "Anne Hathaway"
       ],
       "longTailKeywords": [
         "where to watch Verity 2026",
@@ -92,8 +100,8 @@
           "Mystery movie",
           "Thriller movie",
           "Drama movie",
-          "Anne Hathaway",
           "Dakota Johnson",
+          "Anne Hathaway",
           "where to watch Verity 2026",
           "Verity streaming in Brazil and United States",
           "Verity cast synopsis trailer and where to watch",
@@ -103,222 +111,199 @@
       }
     },
     {
-      "title": "The Dog Stars",
+      "title": "Drive - The Pretenders",
       "kind": "movie",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1384216",
-      "poster": "https://image.tmdb.org/t/p/w780/A7i16oDi03qrKep5pBfuTWNUTb.jpg",
-      "description": "After the world's population has been ravaged by a pandemic, a man lives a lonesome existence in a Colorado airplane hangar with his dog and a dour gunman he has befriended. When a mysterious transmission comes through on the radio while he’s flying his old Cessna, it sparks a hunt for the provenance of the sound.",
+      "origin": "DE",
+      "originName": "Germany",
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
+      ],
+      "tmdbId": "1596275",
+      "poster": "https://image.tmdb.org/t/p/w780/s9syckECnUYhKePQ1A0DC0mFVZ9.jpg",
+      "description": "A young race car mechanic fakes an engagement with racing's most scandalous star - officially for his reputation, secretly for her own shot behind the wheel. But soon the lie threatens to destroy everything - including what's already become so much more than just a deal.",
       "genre": [
-        "Action",
-        "Thriller",
-        "Science Fiction",
-        "Family"
+        "Romance",
+        "Thriller"
       ],
-      "inLanguage": "en",
+      "inLanguage": "de",
       "cast": [
-        "Jacob Elordi",
-        "Josh Brolin",
-        "Margaret Qualley",
-        "Guy Pearce"
+        "Lisa-Marie Koroll",
+        "Amin Baahmed",
+        "Gustav Schmidt",
+        "Mišel Matičević"
       ],
-      "runtimeMinutes": 119,
+      "runtimeMinutes": 103,
       "contentRating": "R",
-      "voteAverage": 6.7,
-      "previewUrl": "https://www.youtube.com/watch?v=-xSxaE1ClEE",
+      "voteAverage": 7.44,
+      "previewUrl": "https://www.youtube.com/watch?v=-sV69CJwUwU",
       "availability": {
         "BR": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=BR",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-08-27"
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
         },
         "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
           ],
-          "link": "https://www.themoviedb.org/movie/1384216-the-dog-stars/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-08-26"
+          "cinema_release_date": null
         },
         "PT": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1384216-the-dog-stars/watch?locale=PT",
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=PT",
           "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-08-27"
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "cinema_release_date": null
         },
         "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
           ],
-          "link": "https://www.themoviedb.org/movie/1384216-the-dog-stars/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-08-28"
+          "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1384216"
+        "source_page_url": "https://www.themoviedb.org/movie/1596275"
       },
       "sourceRank": 2,
       "keywords": [
-        "The Dog Stars",
-        "The Dog Stars 2026",
-        "where to watch The Dog Stars",
-        "Action movie",
+        "Drive - The Pretenders",
+        "Drive - The Pretenders 2026",
+        "where to watch Drive - The Pretenders",
+        "Romance movie",
         "Thriller movie",
-        "Science Fiction movie",
-        "Jacob Elordi",
-        "Josh Brolin"
+        "Amazon Prime Video trending movie",
+        "Amazon Prime Video with Ads trending movie",
+        "Lisa-Marie Koroll",
+        "Amin Baahmed"
       ],
       "longTailKeywords": [
-        "where to watch The Dog Stars 2026",
-        "The Dog Stars streaming in Brazil and United States",
-        "The Dog Stars cast synopsis trailer and where to watch",
-        "what Action to watch this week"
+        "where to watch Drive - The Pretenders 2026",
+        "Drive - The Pretenders streaming in Brazil and United States",
+        "Drive - The Pretenders cast synopsis trailer and where to watch",
+        "what Romance to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Dog Stars (2026) | MatchApp Ai",
-        "description": "After the world's population has been ravaged by a pandemic, a man lives a lonesome existence in a Colorado airplane hangar with his dog and a dour gunman he ",
+        "title": "Where to watch Drive - The Pretenders (2026) | MatchApp Ai",
+        "description": "A young race car mechanic fakes an engagement with racing's most scandalous star - officially for his reputation, secretly for her own shot behind the wheel. ",
         "keywords": [
-          "The Dog Stars",
-          "The Dog Stars 2026",
-          "where to watch The Dog Stars",
-          "Action movie",
+          "Drive - The Pretenders",
+          "Drive - The Pretenders 2026",
+          "where to watch Drive - The Pretenders",
+          "Romance movie",
           "Thriller movie",
-          "Science Fiction movie",
-          "Jacob Elordi",
-          "Josh Brolin",
-          "where to watch The Dog Stars 2026",
-          "The Dog Stars streaming in Brazil and United States",
-          "The Dog Stars cast synopsis trailer and where to watch",
-          "what Action to watch this week"
+          "Amazon Prime Video trending movie",
+          "Amazon Prime Video with Ads trending movie",
+          "Lisa-Marie Koroll",
+          "Amin Baahmed",
+          "where to watch Drive - The Pretenders 2026",
+          "Drive - The Pretenders streaming in Brazil and United States",
+          "Drive - The Pretenders cast synopsis trailer and where to watch",
+          "what Romance to watch this week"
         ],
-        "canonicalQuery": "The Dog Stars"
+        "canonicalQuery": "Drive - The Pretenders"
       }
     },
     {
-      "title": "Forgotten Island",
+      "title": "Ali G: Who Iz I?",
       "kind": "movie",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
+      "origin": "GB",
+      "originName": "United Kingdom",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1465063",
-      "poster": "https://image.tmdb.org/t/p/w780/myd1K3gefdNAWFsGNRDdMeiK9Qg.jpg",
-      "description": "While celebrating their last night together, high school graduates and best friends Jo and Raissa stumble upon a mysterious portal that transports them to the fantastical island of Nakali. When they discover that the memories of their entire friendship are the price for returning home, Jo and Raissa must race to find a way to leave the island before they forget each other forever.",
+      "tmdbId": "1727734",
+      "poster": "https://image.tmdb.org/t/p/w780/uTyVxPeWX8Ai30IQoyDDQONNcq.jpg",
+      "description": "After twenty years spent \"chillin', tokin' and bonin'\", Ali G is shocked to discover that his long-term girlfriend, Julie, is 8 months pregnant. Faced with an extra mouth to feed, he gets off his batty and heads to America to reclaim his former glory… but soon encounters adversaries who will ultimately threaten his and his child's very existence.",
       "genre": [
-        "Animation",
-        "Adventure",
-        "Fantasy",
-        "Comedy",
-        "Family"
+        "Comedy"
       ],
       "inLanguage": "en",
       "cast": [
-        "H.E.R.",
-        "Liza Soberano",
-        "Dave Franco",
-        "Jenny Slate"
+        "Sacha Baron Cohen",
+        "Morgana Robinson",
+        "Alpha Miknas",
+        "Clive Russell"
       ],
-      "runtimeMinutes": 109,
-      "contentRating": "PG",
-      "voteAverage": 7.6,
-      "previewUrl": "https://www.youtube.com/watch?v=PhgY8cOJiQA",
+      "runtimeMinutes": 89,
+      "contentRating": "R",
+      "voteAverage": 5.49,
+      "previewUrl": "https://www.youtube.com/watch?v=pV32AcPa-iA",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-09-10"
+          "cinema_release_date": "2026-10-22"
         },
         "GB": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-04"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-01"
+          "cinema_release_date": "2026-10-23"
         },
         "US": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-09-25"
+          "cinema_release_date": "2026-10-23"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1465063"
+        "source_page_url": "https://www.themoviedb.org/movie/1727734"
       },
       "sourceRank": 3,
       "keywords": [
-        "Forgotten Island",
-        "Forgotten Island 2026",
-        "where to watch Forgotten Island",
-        "Animation movie",
-        "Adventure movie",
-        "Fantasy movie",
-        "H.E.R.",
-        "Liza Soberano"
+        "Ali G: Who Iz I?",
+        "Ali G: Who Iz I? 2026",
+        "where to watch Ali G: Who Iz I?",
+        "Comedy movie",
+        "Sacha Baron Cohen",
+        "Morgana Robinson"
       ],
       "longTailKeywords": [
-        "where to watch Forgotten Island 2026",
-        "Forgotten Island streaming in Brazil and United States",
-        "Forgotten Island cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
+        "where to watch Ali G: Who Iz I? 2026",
+        "Ali G: Who Iz I? streaming in Brazil and United States",
+        "Ali G: Who Iz I? cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Forgotten Island (2026) | MatchApp Ai",
-        "description": "While celebrating their last night together, high school graduates and best friends Jo and Raissa stumble upon a mysterious portal that transports them to the",
+        "title": "Where to watch Ali G: Who Iz I? (2026) | MatchApp Ai",
+        "description": "After twenty years spent \"chillin', tokin' and bonin'\", Ali G is shocked to discover that his long-term girlfriend, Julie, is 8 months pregnant. Faced with an",
         "keywords": [
-          "Forgotten Island",
-          "Forgotten Island 2026",
-          "where to watch Forgotten Island",
-          "Animation movie",
-          "Adventure movie",
-          "Fantasy movie",
-          "H.E.R.",
-          "Liza Soberano",
-          "where to watch Forgotten Island 2026",
-          "Forgotten Island streaming in Brazil and United States",
-          "Forgotten Island cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
+          "Ali G: Who Iz I?",
+          "Ali G: Who Iz I? 2026",
+          "where to watch Ali G: Who Iz I?",
+          "Comedy movie",
+          "Sacha Baron Cohen",
+          "Morgana Robinson",
+          "where to watch Ali G: Who Iz I? 2026",
+          "Ali G: Who Iz I? streaming in Brazil and United States",
+          "Ali G: Who Iz I? cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
         ],
-        "canonicalQuery": "Forgotten Island"
+        "canonicalQuery": "Ali G: Who Iz I?"
       }
     },
     {
@@ -381,6 +366,126 @@
       "sourceRank": 1
     },
     {
+      "title": "The Dog Stars",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1384216",
+      "poster": "https://image.tmdb.org/t/p/w780/5O616X9vmRzQdB68PHzBewPittd.jpg",
+      "description": "After the world's population has been ravaged by a pandemic, a man lives a lonesome existence in a Colorado airplane hangar with his dog and a dour gunman he has befriended. When a mysterious transmission comes through on the radio while he’s flying his old Cessna, it sparks a hunt for the provenance of the sound.",
+      "genre": [
+        "Action",
+        "Thriller",
+        "Science Fiction",
+        "Family"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Jacob Elordi",
+        "Josh Brolin",
+        "Margaret Qualley",
+        "Guy Pearce"
+      ],
+      "runtimeMinutes": 119,
+      "contentRating": "R",
+      "voteAverage": 6.9,
+      "previewUrl": "https://www.youtube.com/watch?v=-xSxaE1ClEE",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-08-27"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1384216-the-dog-stars/watch?locale=GB",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-26"
+        },
+        "PT": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1384216-the-dog-stars/watch?locale=PT",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-08-27"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1384216-the-dog-stars/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-08-28"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1384216"
+      },
+      "sourceRank": 4,
+      "keywords": [
+        "The Dog Stars",
+        "The Dog Stars 2026",
+        "where to watch The Dog Stars",
+        "Action movie",
+        "Thriller movie",
+        "Science Fiction movie",
+        "Jacob Elordi",
+        "Josh Brolin"
+      ],
+      "longTailKeywords": [
+        "where to watch The Dog Stars 2026",
+        "The Dog Stars streaming in Brazil and United States",
+        "The Dog Stars cast synopsis trailer and where to watch",
+        "what Action to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Dog Stars (2026) | MatchApp Ai",
+        "description": "After the world's population has been ravaged by a pandemic, a man lives a lonesome existence in a Colorado airplane hangar with his dog and a dour gunman he ",
+        "keywords": [
+          "The Dog Stars",
+          "The Dog Stars 2026",
+          "where to watch The Dog Stars",
+          "Action movie",
+          "Thriller movie",
+          "Science Fiction movie",
+          "Jacob Elordi",
+          "Josh Brolin",
+          "where to watch The Dog Stars 2026",
+          "The Dog Stars streaming in Brazil and United States",
+          "The Dog Stars cast synopsis trailer and where to watch",
+          "what Action to watch this week"
+        ],
+        "canonicalQuery": "The Dog Stars"
+      }
+    },
+    {
       "title": "VisionQuest",
       "kind": "tv",
       "year": 2026,
@@ -391,7 +496,7 @@
         "Disney Plus"
       ],
       "tmdbId": "213375",
-      "poster": "https://image.tmdb.org/t/p/w780/ajbVvETMM7NMq4Gc5FauOoyeEnu.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
       "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
       "genre": [
         "Sci-Fi & Fantasy",
@@ -449,7 +554,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/213375"
       },
-      "sourceRank": 4,
+      "sourceRank": 5,
       "keywords": [
         "VisionQuest",
         "VisionQuest 2026",
@@ -487,230 +592,114 @@
       }
     },
     {
-      "title": "Lupin",
-      "kind": "tv",
-      "year": 2021,
-      "origin": "FR",
-      "originName": "France",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "96677",
-      "poster": "https://image.tmdb.org/t/p/w780/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg",
-      "description": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
-      "genre": [
-        "Crime",
-        "Drama",
-        "Mystery"
-      ],
-      "inLanguage": "fr",
-      "cast": [
-        "Omar Sy",
-        "Ludivine Sagnier",
-        "Antoine Gouy",
-        "Soufiane Guerrab"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.67,
-      "previewUrl": "https://www.youtube.com/watch?v=ga0iTWXCGa0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/96677"
-      },
-      "sourceRank": 5,
-      "keywords": [
-        "Lupin",
-        "Lupin 2021",
-        "where to watch Lupin",
-        "Crime series",
-        "Drama series",
-        "Mystery series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Omar Sy",
-        "Ludivine Sagnier"
-      ],
-      "longTailKeywords": [
-        "where to watch Lupin 2021",
-        "Lupin streaming in Brazil and United States",
-        "Lupin cast synopsis trailer and where to watch",
-        "what Crime to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Lupin (2021) | MatchApp Ai",
-        "description": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
-        "keywords": [
-          "Lupin",
-          "Lupin 2021",
-          "where to watch Lupin",
-          "Crime series",
-          "Drama series",
-          "Mystery series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Omar Sy",
-          "Ludivine Sagnier",
-          "where to watch Lupin 2021",
-          "Lupin streaming in Brazil and United States",
-          "Lupin cast synopsis trailer and where to watch",
-          "what Crime to watch this week"
-        ],
-        "canonicalQuery": "Lupin"
-      }
-    },
-    {
-      "title": "Drive - The Pretenders",
+      "title": "Forgotten Island",
       "kind": "movie",
       "year": 2026,
-      "origin": "DE",
-      "originName": "Germany",
-      "platform": "Amazon Prime Video",
-      "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads"
-      ],
-      "tmdbId": "1596275",
-      "poster": "https://image.tmdb.org/t/p/w780/c6Gx7JTc8pYyW2WH7yLWj5Rx66I.jpg",
-      "description": "A young race car mechanic fakes an engagement with racing's most scandalous star - officially for his reputation, secretly for her own shot behind the wheel. But soon the lie threatens to destroy everything - including what's already become so much more than just a deal.",
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1465063",
+      "poster": "https://image.tmdb.org/t/p/w780/myd1K3gefdNAWFsGNRDdMeiK9Qg.jpg",
+      "description": "While celebrating their last night together, high school graduates and best friends Jo and Raissa stumble upon a mysterious portal that transports them to the fantastical island of Nakali. When they discover that the memories of their entire friendship are the price for returning home, Jo and Raissa must race to find a way to leave the island before they forget each other forever.",
       "genre": [
-        "Romance",
-        "Thriller"
+        "Animation",
+        "Adventure",
+        "Fantasy",
+        "Comedy",
+        "Family"
       ],
-      "inLanguage": "de",
+      "inLanguage": "en",
       "cast": [
-        "Lisa-Marie Koroll",
-        "Amin Baahmed",
-        "Gustav Schmidt",
-        "Mišel Matičević"
+        "H.E.R.",
+        "Liza Soberano",
+        "Dave Franco",
+        "Jenny Slate"
       ],
-      "runtimeMinutes": 102,
-      "contentRating": "14",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=-sV69CJwUwU",
+      "runtimeMinutes": 109,
+      "contentRating": "PG",
+      "voteAverage": 7.5,
+      "previewUrl": "https://www.youtube.com/watch?v=PhgY8cOJiQA",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=BR",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-09-10"
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=GB",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-04"
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=PT",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Amazon Prime Video"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-01"
         },
         "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1596275-drive-the-pretenders/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
           ],
-          "cinema_release_date": null
+          "link": "https://www.themoviedb.org/movie/1465063-forgotten-island/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-09-25"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1596275"
+        "source_page_url": "https://www.themoviedb.org/movie/1465063"
       },
       "sourceRank": 6,
       "keywords": [
-        "Drive - The Pretenders",
-        "Drive - The Pretenders 2026",
-        "where to watch Drive - The Pretenders",
-        "Romance movie",
-        "Thriller movie",
-        "Amazon Prime Video trending movie",
-        "Amazon Prime Video with Ads trending movie",
-        "Lisa-Marie Koroll",
-        "Amin Baahmed"
+        "Forgotten Island",
+        "Forgotten Island 2026",
+        "where to watch Forgotten Island",
+        "Animation movie",
+        "Adventure movie",
+        "Fantasy movie",
+        "H.E.R.",
+        "Liza Soberano"
       ],
       "longTailKeywords": [
-        "where to watch Drive - The Pretenders 2026",
-        "Drive - The Pretenders streaming in Brazil and United States",
-        "Drive - The Pretenders cast synopsis trailer and where to watch",
-        "what Romance to watch this week"
+        "where to watch Forgotten Island 2026",
+        "Forgotten Island streaming in Brazil and United States",
+        "Forgotten Island cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Drive - The Pretenders (2026) | MatchApp Ai",
-        "description": "A young race car mechanic fakes an engagement with racing's most scandalous star - officially for his reputation, secretly for her own shot behind the wheel. ",
+        "title": "Where to watch Forgotten Island (2026) | MatchApp Ai",
+        "description": "While celebrating their last night together, high school graduates and best friends Jo and Raissa stumble upon a mysterious portal that transports them to the",
         "keywords": [
-          "Drive - The Pretenders",
-          "Drive - The Pretenders 2026",
-          "where to watch Drive - The Pretenders",
-          "Romance movie",
-          "Thriller movie",
-          "Amazon Prime Video trending movie",
-          "Amazon Prime Video with Ads trending movie",
-          "Lisa-Marie Koroll",
-          "Amin Baahmed",
-          "where to watch Drive - The Pretenders 2026",
-          "Drive - The Pretenders streaming in Brazil and United States",
-          "Drive - The Pretenders cast synopsis trailer and where to watch",
-          "what Romance to watch this week"
+          "Forgotten Island",
+          "Forgotten Island 2026",
+          "where to watch Forgotten Island",
+          "Animation movie",
+          "Adventure movie",
+          "Fantasy movie",
+          "H.E.R.",
+          "Liza Soberano",
+          "where to watch Forgotten Island 2026",
+          "Forgotten Island streaming in Brazil and United States",
+          "Forgotten Island cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "Drive - The Pretenders"
+        "canonicalQuery": "Forgotten Island"
       }
     },
     {
@@ -874,194 +863,181 @@
       }
     },
     {
-      "title": "Dune: Part Three",
-      "kind": "movie",
+      "title": "The Gift of Deceit",
+      "kind": "tv",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
+      "origin": "BR",
+      "originName": "Brazil",
+      "platform": "",
       "platforms": [],
-      "tmdbId": "1170608",
-      "poster": "https://image.tmdb.org/t/p/w780/d43fvHQsIMa4kpyhKXw0haEJIvI.jpg",
-      "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies return, terrifying new threats emerge, and betrayal lurks in every shadow. Haunted by visions of Imperial collapse and the reappearance of his long-lost love, Paul is drawn into a sweeping conspiracy, with Chani at the heart of its unfolding mystery. As enemies close in, Paul must confront the true cost of power and the fate of those he loves the most.",
+      "tmdbId": "334700",
+      "poster": "https://image.tmdb.org/t/p/w780/mAfYj5ZtR2V5ad6uham1PwAh0mc.jpg",
+      "description": "Desperate to find a cure for the unknown illness affecting her daughter, art collector Lúcia Rossetti turns to a spiritual healer. When Lúcia falls victim to a scam, a series of secrets is revealed, intertwining two families marked by love, control, resentment, and guilt.",
       "genre": [
-        "Science Fiction",
-        "Adventure"
+        "Drama"
       ],
-      "inLanguage": "en",
+      "inLanguage": "pt",
       "cast": [
-        "Timothée Chalamet",
-        "Zendaya",
-        "Jason Momoa",
-        "Florence Pugh"
+        "Marieta Severo",
+        "Alice Wegmann",
+        "Nanda Costa",
+        "José de Abreu"
       ],
-      "runtimeMinutes": 150,
-      "contentRating": "",
+      "runtimeMinutes": 45,
+      "contentRating": "TV-MA",
       "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=uJqaGLmZpGo",
+      "previewUrl": "",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-15"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-18"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-17"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-18"
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1170608"
+        "source_page_url": "https://www.themoviedb.org/tv/334700"
       },
       "sourceRank": 8,
       "keywords": [
-        "Dune: Part Three",
-        "Dune: Part Three 2026",
-        "where to watch Dune: Part Three",
-        "Science Fiction movie",
-        "Adventure movie",
-        "Timothée Chalamet",
-        "Zendaya"
+        "The Gift of Deceit",
+        "The Gift of Deceit 2026",
+        "where to watch The Gift of Deceit",
+        "Drama series",
+        "Marieta Severo",
+        "Alice Wegmann"
       ],
       "longTailKeywords": [
-        "where to watch Dune: Part Three 2026",
-        "Dune: Part Three streaming in Brazil and United States",
-        "Dune: Part Three cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Dune: Part Three (2026) | MatchApp Ai",
-        "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies",
-        "keywords": [
-          "Dune: Part Three",
-          "Dune: Part Three 2026",
-          "where to watch Dune: Part Three",
-          "Science Fiction movie",
-          "Adventure movie",
-          "Timothée Chalamet",
-          "Zendaya",
-          "where to watch Dune: Part Three 2026",
-          "Dune: Part Three streaming in Brazil and United States",
-          "Dune: Part Three cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
-        ],
-        "canonicalQuery": "Dune: Part Three"
-      }
-    },
-    {
-      "title": "Sense and Sensibility",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1503762",
-      "poster": "https://image.tmdb.org/t/p/w780/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
-      "description": "A charming, witty, and deeply relatable story of love and sisterhood.",
-      "genre": [
-        "Drama",
-        "Romance"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Daisy Edgar-Jones",
-        "Esmé Creed-Miles",
-        "Caitríona Balfe",
-        "Bodhi Rae Breathnach"
-      ],
-      "runtimeMinutes": 132,
-      "contentRating": "PG",
-      "voteAverage": 7.3,
-      "previewUrl": "https://www.youtube.com/watch?v=OFLyW0lxFU0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-15"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1503762-sense-and-sensibility/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-09-25"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-14"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1503762"
-      },
-      "sourceRank": 9,
-      "keywords": [
-        "Sense and Sensibility",
-        "Sense and Sensibility 2026",
-        "where to watch Sense and Sensibility",
-        "Drama movie",
-        "Romance movie",
-        "Daisy Edgar-Jones",
-        "Esmé Creed-Miles"
-      ],
-      "longTailKeywords": [
-        "where to watch Sense and Sensibility 2026",
-        "Sense and Sensibility streaming in Brazil and United States",
-        "Sense and Sensibility cast synopsis trailer and where to watch",
+        "where to watch The Gift of Deceit 2026",
+        "The Gift of Deceit streaming in Brazil and United States",
+        "The Gift of Deceit cast synopsis trailer and where to watch",
         "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Sense and Sensibility (2026) | MatchApp Ai",
-        "description": "A charming, witty, and deeply relatable story of love and sisterhood.",
+        "title": "Where to watch The Gift of Deceit (2026) | MatchApp Ai",
+        "description": "Desperate to find a cure for the unknown illness affecting her daughter, art collector Lúcia Rossetti turns to a spiritual healer. When Lúcia falls victim to ",
         "keywords": [
-          "Sense and Sensibility",
-          "Sense and Sensibility 2026",
-          "where to watch Sense and Sensibility",
-          "Drama movie",
-          "Romance movie",
-          "Daisy Edgar-Jones",
-          "Esmé Creed-Miles",
-          "where to watch Sense and Sensibility 2026",
-          "Sense and Sensibility streaming in Brazil and United States",
-          "Sense and Sensibility cast synopsis trailer and where to watch",
+          "The Gift of Deceit",
+          "The Gift of Deceit 2026",
+          "where to watch The Gift of Deceit",
+          "Drama series",
+          "Marieta Severo",
+          "Alice Wegmann",
+          "where to watch The Gift of Deceit 2026",
+          "The Gift of Deceit streaming in Brazil and United States",
+          "The Gift of Deceit cast synopsis trailer and where to watch",
           "what Drama to watch this week"
         ],
-        "canonicalQuery": "Sense and Sensibility"
+        "canonicalQuery": "The Gift of Deceit"
+      }
+    },
+    {
+      "title": "Lupin",
+      "kind": "tv",
+      "year": 2021,
+      "origin": "FR",
+      "originName": "France",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "96677",
+      "poster": "https://image.tmdb.org/t/p/w780/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg",
+      "description": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
+      "genre": [
+        "Crime",
+        "Drama",
+        "Mystery"
+      ],
+      "inLanguage": "fr",
+      "cast": [
+        "Omar Sy",
+        "Ludivine Sagnier",
+        "Antoine Gouy",
+        "Soufiane Guerrab"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.67,
+      "previewUrl": "https://www.youtube.com/watch?v=ga0iTWXCGa0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/96677"
+      },
+      "sourceRank": 9,
+      "keywords": [
+        "Lupin",
+        "Lupin 2021",
+        "where to watch Lupin",
+        "Crime series",
+        "Drama series",
+        "Mystery series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Omar Sy",
+        "Ludivine Sagnier"
+      ],
+      "longTailKeywords": [
+        "where to watch Lupin 2021",
+        "Lupin streaming in Brazil and United States",
+        "Lupin cast synopsis trailer and where to watch",
+        "what Crime to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Lupin (2021) | MatchApp Ai",
+        "description": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
+        "keywords": [
+          "Lupin",
+          "Lupin 2021",
+          "where to watch Lupin",
+          "Crime series",
+          "Drama series",
+          "Mystery series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Omar Sy",
+          "Ludivine Sagnier",
+          "where to watch Lupin 2021",
+          "Lupin streaming in Brazil and United States",
+          "Lupin cast synopsis trailer and where to watch",
+          "what Crime to watch this week"
+        ],
+        "canonicalQuery": "Lupin"
       }
     },
     {
@@ -1124,114 +1100,6 @@
       "sourceRank": 3
     },
     {
-      "title": "Bleach",
-      "kind": "tv",
-      "year": 2004,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "Disney Plus",
-      "platforms": [
-        "Disney Plus",
-        "Hulu"
-      ],
-      "tmdbId": "30984",
-      "poster": "https://image.tmdb.org/t/p/w780/2EewmxXe72ogD0EaWM8gqa0ccIw.jpg",
-      "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows, he finds his life is changed forever. Now, with a newfound wealth of spiritual energy, Ichigo discovers his true calling: to protect the living and the dead from evil.",
-      "genre": [
-        "Action & Adventure",
-        "Animation",
-        "Sci-Fi & Fantasy"
-      ],
-      "inLanguage": "ja",
-      "cast": [
-        "Masakazu Morita",
-        "Fumiko Orikasa",
-        "Hiroki Yasumoto",
-        "Yuki Matsuoka"
-      ],
-      "runtimeMinutes": 24,
-      "contentRating": "TV-14",
-      "voteAverage": 8.4,
-      "previewUrl": "https://www.youtube.com/watch?v=0c4IoCA5fY0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Hulu"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/30984"
-      },
-      "sourceRank": 10,
-      "keywords": [
-        "Bleach",
-        "Bleach 2004",
-        "where to watch Bleach",
-        "Action & Adventure series",
-        "Animation series",
-        "Sci-Fi & Fantasy series",
-        "Disney Plus trending series",
-        "Hulu trending series",
-        "Masakazu Morita",
-        "Fumiko Orikasa"
-      ],
-      "longTailKeywords": [
-        "where to watch Bleach 2004",
-        "Bleach streaming in Brazil and United States",
-        "Bleach cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Bleach (2004) | MatchApp Ai",
-        "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows,",
-        "keywords": [
-          "Bleach",
-          "Bleach 2004",
-          "where to watch Bleach",
-          "Action & Adventure series",
-          "Animation series",
-          "Sci-Fi & Fantasy series",
-          "Disney Plus trending series",
-          "Hulu trending series",
-          "Masakazu Morita",
-          "Fumiko Orikasa",
-          "where to watch Bleach 2004",
-          "Bleach streaming in Brazil and United States",
-          "Bleach cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
-        ],
-        "canonicalQuery": "Bleach"
-      }
-    },
-    {
       "title": "Runner",
       "kind": "movie",
       "year": 2026,
@@ -1257,7 +1125,7 @@
       ],
       "runtimeMinutes": 97,
       "contentRating": "PG-13",
-      "voteAverage": 8.3,
+      "voteAverage": 8.33,
       "previewUrl": "https://www.youtube.com/watch?v=B6Z9MM1LhEA",
       "availability": {
         "BR": {
@@ -1309,7 +1177,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1377237"
       },
-      "sourceRank": 11,
+      "sourceRank": 10,
       "keywords": [
         "Runner",
         "Runner 2026",
@@ -1347,37 +1215,39 @@
       }
     },
     {
-      "title": "Ali G: Who Iz I?",
+      "title": "Wildwood",
       "kind": "movie",
       "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
+      "origin": "US",
+      "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1727734",
-      "poster": "https://image.tmdb.org/t/p/w780/uTyVxPeWX8Ai30IQoyDDQONNcq.jpg",
-      "description": "After twenty years spent \"chillin', tokin' and bonin'\", Ali G is shocked to discover that his long-term girlfriend, Julie, is 8 months pregnant. Faced with an extra mouth to feed, he gets off his batty and heads to America to reclaim his former glory… but soon encounters adversaries who will ultimately threaten his and his child's very existence.",
+      "tmdbId": "791523",
+      "poster": "https://image.tmdb.org/t/p/w780/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
+      "description": "Prue and her classmate Curtis are drawn into a magical forest filled with enchanted creatures, loyal allies, and formidable adversaries as they embark on a desperate quest to rescue Prue's abducted baby brother from a murder of crows led by a mysterious woman named Alexandra.",
       "genre": [
-        "Comedy"
+        "Animation",
+        "Adventure",
+        "Fantasy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Sacha Baron Cohen",
-        "Morgana Robinson",
-        "A$AP Rocky",
-        "Rihanna"
+        "Peyton Elizabeth Lee",
+        "Carey Mulligan",
+        "Jacob Tremblay",
+        "Mahershala Ali"
       ],
-      "runtimeMinutes": 89,
-      "contentRating": "R",
-      "voteAverage": 6.8,
-      "previewUrl": "https://www.youtube.com/watch?v=pV32AcPa-iA",
+      "runtimeMinutes": 132,
+      "contentRating": "PG-13",
+      "voteAverage": 8.6,
+      "previewUrl": "https://www.youtube.com/watch?v=bJQGtSeLPII",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-22"
+          "cinema_release_date": "2026-10-29"
         },
         "GB": {
           "buy": [],
@@ -1386,48 +1256,127 @@
           "stream": [],
           "cinema_release_date": "2026-10-23"
         },
-        "US": {
+        "PT": {
           "buy": [],
           "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-29"
+        },
+        "US": {
+          "buy": [
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/791523-wildwood/watch?locale=US",
           "rent": [],
           "stream": [],
           "cinema_release_date": "2026-10-23"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1727734"
+        "source_page_url": "https://www.themoviedb.org/movie/791523"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Wildwood",
+        "Wildwood 2026",
+        "where to watch Wildwood",
+        "Animation movie",
+        "Adventure movie",
+        "Fantasy movie",
+        "Peyton Elizabeth Lee",
+        "Carey Mulligan"
+      ],
+      "longTailKeywords": [
+        "where to watch Wildwood 2026",
+        "Wildwood streaming in Brazil and United States",
+        "Wildwood cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Wildwood (2026) | MatchApp Ai",
+        "description": "Prue and her classmate Curtis are drawn into a magical forest filled with enchanted creatures, loyal allies, and formidable adversaries as they embark on a de",
+        "keywords": [
+          "Wildwood",
+          "Wildwood 2026",
+          "where to watch Wildwood",
+          "Animation movie",
+          "Adventure movie",
+          "Fantasy movie",
+          "Peyton Elizabeth Lee",
+          "Carey Mulligan",
+          "where to watch Wildwood 2026",
+          "Wildwood streaming in Brazil and United States",
+          "Wildwood cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Wildwood"
+      }
+    },
+    {
+      "title": "Balaraw: Blood Island",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "PH",
+      "originName": "PH",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "313699",
+      "poster": "https://image.tmdb.org/t/p/w780/s1A6UOu8IOmw0kJXohlitMRiwQb.jpg",
+      "description": "Years after her mother vanished, Sabina follows a mysterious clue to an uncharted island, where she confronts hidden dark secrets within her own family.",
+      "genre": [
+        "Mystery",
+        "Drama"
+      ],
+      "inLanguage": "tl",
+      "cast": [
+        "Janine Gutierrez",
+        "Charlie Dizon",
+        "Agot Isidro",
+        "Ronnie Lazaro"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=InDO8Vbr02M",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/313699"
       },
       "sourceRank": 12,
       "keywords": [
-        "Ali G: Who Iz I?",
-        "Ali G: Who Iz I? 2026",
-        "where to watch Ali G: Who Iz I?",
-        "Comedy movie",
-        "Sacha Baron Cohen",
-        "Morgana Robinson"
+        "Balaraw: Blood Island",
+        "Balaraw: Blood Island 2026",
+        "where to watch Balaraw: Blood Island",
+        "Mystery series",
+        "Drama series",
+        "Janine Gutierrez",
+        "Charlie Dizon"
       ],
       "longTailKeywords": [
-        "where to watch Ali G: Who Iz I? 2026",
-        "Ali G: Who Iz I? streaming in Brazil and United States",
-        "Ali G: Who Iz I? cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
+        "where to watch Balaraw: Blood Island 2026",
+        "Balaraw: Blood Island streaming in Brazil and United States",
+        "Balaraw: Blood Island cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Ali G: Who Iz I? (2026) | MatchApp Ai",
-        "description": "After twenty years spent \"chillin', tokin' and bonin'\", Ali G is shocked to discover that his long-term girlfriend, Julie, is 8 months pregnant. Faced with an",
+        "title": "Where to watch Balaraw: Blood Island (2026) | MatchApp Ai",
+        "description": "Years after her mother vanished, Sabina follows a mysterious clue to an uncharted island, where she confronts hidden dark secrets within her own family.",
         "keywords": [
-          "Ali G: Who Iz I?",
-          "Ali G: Who Iz I? 2026",
-          "where to watch Ali G: Who Iz I?",
-          "Comedy movie",
-          "Sacha Baron Cohen",
-          "Morgana Robinson",
-          "where to watch Ali G: Who Iz I? 2026",
-          "Ali G: Who Iz I? streaming in Brazil and United States",
-          "Ali G: Who Iz I? cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
+          "Balaraw: Blood Island",
+          "Balaraw: Blood Island 2026",
+          "where to watch Balaraw: Blood Island",
+          "Mystery series",
+          "Drama series",
+          "Janine Gutierrez",
+          "Charlie Dizon",
+          "where to watch Balaraw: Blood Island 2026",
+          "Balaraw: Blood Island streaming in Brazil and United States",
+          "Balaraw: Blood Island cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Ali G: Who Iz I?"
+        "canonicalQuery": "Balaraw: Blood Island"
       }
     },
     {
@@ -1518,7 +1467,7 @@
       ],
       "runtimeMinutes": 157,
       "contentRating": "R",
-      "voteAverage": 6.7,
+      "voteAverage": 6.8,
       "previewUrl": "https://www.youtube.com/watch?v=OFaJzL83y0Q",
       "availability": {
         "BR": {
@@ -1529,9 +1478,13 @@
           "cinema_release_date": "2026-10-08"
         },
         "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
+          "buy": [
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/1058424/watch?locale=GB",
+          "rent": [
+            "Amazon Video"
+          ],
           "stream": [],
           "cinema_release_date": "2026-09-25"
         },
@@ -1600,276 +1553,302 @@
       }
     },
     {
-      "title": "The One About Matthew Perry",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "333533",
-      "poster": "https://image.tmdb.org/t/p/w780/zDSjGvywwyWUqnMIpYYwFDyA7Az.jpg",
-      "description": "Told through intimate testimonies from close family and friends, this documentary event reveals the real Matthew Perry—generous, funny, vulnerable, larger than life—and the battles he fought to become the man behind the icon. A raw record of a life lived in full, and the honesty that became his greatest legacy.",
-      "genre": [
-        "Documentary"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Matthew Perry"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.3,
-      "previewUrl": "https://www.youtube.com/watch?v=_iM1AOFxoDI",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/333533"
-      },
-      "sourceRank": 14,
-      "keywords": [
-        "The One About Matthew Perry",
-        "The One About Matthew Perry 2026",
-        "where to watch The One About Matthew Perry",
-        "Documentary series",
-        "Matthew Perry"
-      ],
-      "longTailKeywords": [
-        "where to watch The One About Matthew Perry 2026",
-        "The One About Matthew Perry streaming in Brazil and United States",
-        "The One About Matthew Perry cast synopsis trailer and where to watch",
-        "what Documentary to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The One About Matthew Perry (2026) | MatchApp Ai",
-        "description": "Told through intimate testimonies from close family and friends, this documentary event reveals the real Matthew Perry—generous, funny, vulnerable, larger tha",
-        "keywords": [
-          "The One About Matthew Perry",
-          "The One About Matthew Perry 2026",
-          "where to watch The One About Matthew Perry",
-          "Documentary series",
-          "Matthew Perry",
-          "where to watch The One About Matthew Perry 2026",
-          "The One About Matthew Perry streaming in Brazil and United States",
-          "The One About Matthew Perry cast synopsis trailer and where to watch",
-          "what Documentary to watch this week"
-        ],
-        "canonicalQuery": "The One About Matthew Perry"
-      }
-    },
-    {
-      "title": "Wildwood",
+      "title": "Dune: Part Three",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "791523",
-      "poster": "https://image.tmdb.org/t/p/w780/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
-      "description": "Prue and her classmate Curtis are drawn into a magical forest filled with enchanted creatures, loyal allies, and formidable adversaries as they embark on a desperate quest to rescue Prue's abducted baby brother from a murder of crows led by a mysterious woman named Alexandra.",
+      "tmdbId": "1170608",
+      "poster": "https://image.tmdb.org/t/p/w780/glt0v4I89rMWstDNCaFXc5SNyO1.jpg",
+      "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies return, terrifying new threats emerge, and betrayal lurks in every shadow. Haunted by visions of Imperial collapse and the reappearance of his long-lost love, Paul is drawn into a sweeping conspiracy, with Chani at the heart of its unfolding mystery. As enemies close in, Paul must confront the true cost of power and the fate of those he loves the most.",
       "genre": [
-        "Animation",
-        "Adventure",
-        "Fantasy"
+        "Science Fiction",
+        "Adventure"
       ],
       "inLanguage": "en",
       "cast": [
-        "Peyton Elizabeth Lee",
-        "Carey Mulligan",
-        "Jacob Tremblay",
-        "Mahershala Ali"
+        "Timothée Chalamet",
+        "Zendaya",
+        "Jason Momoa",
+        "Florence Pugh"
       ],
-      "runtimeMinutes": 132,
-      "contentRating": "PG-13",
-      "voteAverage": 8.62,
-      "previewUrl": "https://www.youtube.com/watch?v=bJQGtSeLPII",
+      "runtimeMinutes": 150,
+      "contentRating": "",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=uJqaGLmZpGo",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-29"
+          "cinema_release_date": "2026-12-15"
         },
         "GB": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-23"
+          "cinema_release_date": "2026-12-18"
         },
         "PT": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-29"
+          "cinema_release_date": "2026-12-17"
         },
         "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/791523-wildwood/watch?locale=US",
+          "buy": [],
+          "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-23"
+          "cinema_release_date": "2026-12-18"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/791523"
+        "source_page_url": "https://www.themoviedb.org/movie/1170608"
       },
-      "sourceRank": 15,
+      "sourceRank": 14,
       "keywords": [
-        "Wildwood",
-        "Wildwood 2026",
-        "where to watch Wildwood",
-        "Animation movie",
+        "Dune: Part Three",
+        "Dune: Part Three 2026",
+        "where to watch Dune: Part Three",
+        "Science Fiction movie",
         "Adventure movie",
-        "Fantasy movie",
-        "Peyton Elizabeth Lee",
-        "Carey Mulligan"
+        "Timothée Chalamet",
+        "Zendaya"
       ],
       "longTailKeywords": [
-        "where to watch Wildwood 2026",
-        "Wildwood streaming in Brazil and United States",
-        "Wildwood cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
+        "where to watch Dune: Part Three 2026",
+        "Dune: Part Three streaming in Brazil and United States",
+        "Dune: Part Three cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Wildwood (2026) | MatchApp Ai",
-        "description": "Prue and her classmate Curtis are drawn into a magical forest filled with enchanted creatures, loyal allies, and formidable adversaries as they embark on a de",
+        "title": "Where to watch Dune: Part Three (2026) | MatchApp Ai",
+        "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies",
         "keywords": [
-          "Wildwood",
-          "Wildwood 2026",
-          "where to watch Wildwood",
-          "Animation movie",
+          "Dune: Part Three",
+          "Dune: Part Three 2026",
+          "where to watch Dune: Part Three",
+          "Science Fiction movie",
           "Adventure movie",
-          "Fantasy movie",
-          "Peyton Elizabeth Lee",
-          "Carey Mulligan",
-          "where to watch Wildwood 2026",
-          "Wildwood streaming in Brazil and United States",
-          "Wildwood cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
+          "Timothée Chalamet",
+          "Zendaya",
+          "where to watch Dune: Part Three 2026",
+          "Dune: Part Three streaming in Brazil and United States",
+          "Dune: Part Three cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
         ],
-        "canonicalQuery": "Wildwood"
+        "canonicalQuery": "Dune: Part Three"
       }
     },
     {
-      "title": "The Terminal List",
+      "title": "Bleach",
       "kind": "tv",
-      "year": 2022,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Amazon Prime Video",
+      "year": 2004,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Disney Plus",
       "platforms": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads",
-        "Amazon MX Player"
+        "Disney Plus",
+        "Hulu"
       ],
-      "tmdbId": "120911",
-      "poster": "https://image.tmdb.org/t/p/w780/xyFAzP7RKK8cARCSalIZ9A9T0jV.jpg",
-      "description": "Navy SEAL Commander James Reece turns to vengeance as he investigates the mysterious forces behind the murder of his entire platoon. Free from the military's command structure, Reece applies the lessons he's learned from nearly two decades of warfare to hunt down the people responsible.",
+      "tmdbId": "30984",
+      "poster": "https://image.tmdb.org/t/p/w780/2EewmxXe72ogD0EaWM8gqa0ccIw.jpg",
+      "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows, he finds his life is changed forever. Now, with a newfound wealth of spiritual energy, Ichigo discovers his true calling: to protect the living and the dead from evil.",
       "genre": [
         "Action & Adventure",
-        "Drama"
+        "Animation",
+        "Sci-Fi & Fantasy"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ja",
       "cast": [
-        "Chris Pratt",
-        "Constance Wu",
-        "Tom Hopper",
-        "Dar Salim"
+        "Masakazu Morita",
+        "Fumiko Orikasa",
+        "Hiroki Yasumoto",
+        "Yuki Matsuoka"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8,
-      "previewUrl": "https://www.youtube.com/watch?v=x9FvvsC0B5Q",
+      "runtimeMinutes": 24,
+      "contentRating": "TV-14",
+      "voteAverage": 8.36,
+      "previewUrl": "https://www.youtube.com/watch?v=0c4IoCA5fY0",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
+            "Disney Plus"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video"
+            "Disney Plus"
           ],
           "cinema_release_date": null
         },
         "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/120911-the-terminal-list/watch?locale=US",
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/30984-bleach/watch?locale=US",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads",
-            "Amazon Prime Video Free with Ads",
-            "Amazon MX Player"
+            "Hulu"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/120911"
+        "source_page_url": "https://www.themoviedb.org/tv/30984"
       },
-      "sourceRank": 16,
+      "sourceRank": 15,
       "keywords": [
-        "The Terminal List",
-        "The Terminal List 2022",
-        "where to watch The Terminal List",
+        "Bleach",
+        "Bleach 2004",
+        "where to watch Bleach",
         "Action & Adventure series",
-        "Drama series",
-        "Amazon Prime Video trending series",
-        "Amazon Prime Video with Ads trending series",
-        "Chris Pratt",
-        "Constance Wu"
+        "Animation series",
+        "Sci-Fi & Fantasy series",
+        "Disney Plus trending series",
+        "Hulu trending series",
+        "Masakazu Morita",
+        "Fumiko Orikasa"
       ],
       "longTailKeywords": [
-        "where to watch The Terminal List 2022",
-        "The Terminal List streaming in Brazil and United States",
-        "The Terminal List cast synopsis trailer and where to watch",
+        "where to watch Bleach 2004",
+        "Bleach streaming in Brazil and United States",
+        "Bleach cast synopsis trailer and where to watch",
         "what Action & Adventure to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Terminal List (2022) | MatchApp Ai",
-        "description": "Navy SEAL Commander James Reece turns to vengeance as he investigates the mysterious forces behind the murder of his entire platoon. Free from the military's ",
+        "title": "Where to watch Bleach (2004) | MatchApp Ai",
+        "description": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows,",
         "keywords": [
-          "The Terminal List",
-          "The Terminal List 2022",
-          "where to watch The Terminal List",
+          "Bleach",
+          "Bleach 2004",
+          "where to watch Bleach",
           "Action & Adventure series",
-          "Drama series",
-          "Amazon Prime Video trending series",
-          "Amazon Prime Video with Ads trending series",
-          "Chris Pratt",
-          "Constance Wu",
-          "where to watch The Terminal List 2022",
-          "The Terminal List streaming in Brazil and United States",
-          "The Terminal List cast synopsis trailer and where to watch",
+          "Animation series",
+          "Sci-Fi & Fantasy series",
+          "Disney Plus trending series",
+          "Hulu trending series",
+          "Masakazu Morita",
+          "Fumiko Orikasa",
+          "where to watch Bleach 2004",
+          "Bleach streaming in Brazil and United States",
+          "Bleach cast synopsis trailer and where to watch",
           "what Action & Adventure to watch this week"
         ],
-        "canonicalQuery": "The Terminal List"
+        "canonicalQuery": "Bleach"
+      }
+    },
+    {
+      "title": "Sense and Sensibility",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1503762",
+      "poster": "https://image.tmdb.org/t/p/w780/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg",
+      "description": "A charming, witty, and deeply relatable story of love and sisterhood.",
+      "genre": [
+        "Drama",
+        "Romance"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Daisy Edgar-Jones",
+        "Esmé Creed-Miles",
+        "Caitríona Balfe",
+        "Bodhi Rae Breathnach"
+      ],
+      "runtimeMinutes": 132,
+      "contentRating": "PG",
+      "voteAverage": 7.4,
+      "previewUrl": "https://www.youtube.com/watch?v=OFLyW0lxFU0",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1503762-sense-and-sensibility/watch?locale=GB",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-09-25"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-14"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1503762"
+      },
+      "sourceRank": 16,
+      "keywords": [
+        "Sense and Sensibility",
+        "Sense and Sensibility 2026",
+        "where to watch Sense and Sensibility",
+        "Drama movie",
+        "Romance movie",
+        "Daisy Edgar-Jones",
+        "Esmé Creed-Miles"
+      ],
+      "longTailKeywords": [
+        "where to watch Sense and Sensibility 2026",
+        "Sense and Sensibility streaming in Brazil and United States",
+        "Sense and Sensibility cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Sense and Sensibility (2026) | MatchApp Ai",
+        "description": "A charming, witty, and deeply relatable story of love and sisterhood.",
+        "keywords": [
+          "Sense and Sensibility",
+          "Sense and Sensibility 2026",
+          "where to watch Sense and Sensibility",
+          "Drama movie",
+          "Romance movie",
+          "Daisy Edgar-Jones",
+          "Esmé Creed-Miles",
+          "where to watch Sense and Sensibility 2026",
+          "Sense and Sensibility streaming in Brazil and United States",
+          "Sense and Sensibility cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Sense and Sensibility"
       }
     }
   ]
