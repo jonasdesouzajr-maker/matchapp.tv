@@ -24,3 +24,9 @@ Scope: standalone Android app `com.jonas.luminamatch` AND the browser game embed
 5. Publish only verified changes; report **prepared, tested, submitted, in review, approved and live** separately. A green READY sign-off requires verified gates; no premature claims.
 
 Last known facts: a current Play Console listing batch was sent for review on 2026-10-29, while Play production still displayed **Inactive** and **Apply for access to production**. This does not mean the current Android build was updated. An isolated patch from historical v1.0 lives at `E:\MatchAppWork\lumina-native-ads-difficulty-20261029` and MUST NOT be uploaded as-is. Browser UI work is isolated in its own Git branch and should have complete automated and visual verification before merging.
+
+## Owner refinement - 2026-10-29: premium pills and device rotation
+- Replace the existing game action pills visually with bounded palette waves, a fine outline, consistent typography and press/focus effects. Preserve their existing callbacks, disabled states and destinations; do not duplicate controls.
+- Apply the treatment inside the isolated browser game and native Lumina Match, with reduced-motion and forced-colors support.
+- Native smartphones are portrait-only. Tablets (smallest width at least 600dp) retain user-controlled rotation and fully fitted portrait/landscape screens. Do not change the device-wide auto-rotation preference.
+- The owner explicitly authorized reconstructing the missing native project from the available source, correction module and installed game. This supersedes the missing-current-source restriction for that reconstruction; signing, feature-parity/device QA, track preservation and truthful publication gates remain required.
