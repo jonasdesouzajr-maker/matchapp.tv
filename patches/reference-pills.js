@@ -100,15 +100,25 @@
       return;
     }
     if (root.nodeType !== Node.ELEMENT_NODE || excludedNode(root)) return;
-    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    // Reject entire protected subtrees, rather than visiting every text node in
+    // SVG artwork, ad inventory, templates and editable conversations.
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
-        return /\S/.test(node.nodeValue || '') && !excludedNode(node.parentElement) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        if (node.nodeType === Node.ELEMENT_NODE) return node.matches(excluded) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_SKIP;
+        return /\S/.test(node.nodeValue || '') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       }
     });
     // Collect first: only the rare structural text case inserts a span.
     var nodes = [], next;
     while ((next = walker.nextNode())) nodes.push(next);
     nodes.forEach(owner);
+    // Icon-only actions have no eligible text node. They still need the same
+    // control capsule, without touching SVG artwork or inventing a text label.
+    var actions = Array.from(root.querySelectorAll(control));
+    if (root.matches(control)) actions.unshift(root);
+    actions.forEach(function (action) {
+      if (!action.hasAttribute(controlAttribute) && !excludedNode(action)) mark(action, controlAttribute, artCard(action) ? 'card' : '');
+    });
     // Plain reading lists have no layout gap of their own. Existing flex/grid
     // catalogs, action rows, fields and protected inventory retain their owners.
     (root.matches('ul,ol')?[root].concat(Array.from(root.querySelectorAll('ul,ol'))):Array.from(root.querySelectorAll('ul,ol'))).forEach(function(list){
@@ -119,10 +129,13 @@
   }
   function flush() {
     frame = 0;
-    var roots = Array.from(pending); pending.clear();
+    var roots = Array.from(pending);
     roots.forEach(function (root) {
-      if (!roots.some(function (other) { return other !== root && other.nodeType === Node.ELEMENT_NODE && other.contains(root); })) scan(root);
+      var parent = root.parentNode;
+      while (parent && !pending.has(parent)) parent = parent.parentNode;
+      if (!parent) scan(root);
     });
+    pending.clear();
   }
   function schedule(root) {
     if (!root) return;
