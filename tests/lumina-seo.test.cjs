@@ -245,11 +245,11 @@ test('guide images and social metadata reuse original card bytes with actual int
         assert.equal(Number(image.getAttribute('height')), actual.height);
       });
       assert.equal(d.querySelector('.lumina-guide-art').getAttribute('aria-label'), source.locales[language].imageAlt);
-      assert.equal(text(d.querySelector('figcaption')), source.locales[language].imageCaption);
-      assert.equal(d.querySelector('meta[property="og:image"]').content, SITE + '/lumina-match/browser/card_back.jpg');
+      assert.equal(text(d.querySelector('.lumina-guide-hero figcaption')), source.locales[language].imageCaption);
+      assert.equal(d.querySelector('meta[property="og:image"]').content, SITE + '/lumina-match/lumina-gameplay-1200x630.jpg');
       assert.equal(d.querySelector('meta[name="twitter:image"]').content, d.querySelector('meta[property="og:image"]').content);
-      assert.equal(Number(d.querySelector('meta[property="og:image:width"]').content), dimensions.get('card_back.jpg').width);
-      assert.equal(Number(d.querySelector('meta[property="og:image:height"]').content), dimensions.get('card_back.jpg').height);
+      assert.equal(Number(d.querySelector('meta[property="og:image:width"]').content), jpegSize(fs.readFileSync(path.join(ROOT,'lumina-match/lumina-gameplay-1200x630.jpg'))).width);
+      assert.equal(Number(d.querySelector('meta[property="og:image:height"]').content), jpegSize(fs.readFileSync(path.join(ROOT,'lumina-match/lumina-gameplay-1200x630.jpg'))).height);
       const game = JSON.parse(d.querySelector('script[type="application/ld+json"]').textContent)['@graph'].find(item => item['@type'] === 'VideoGame');
       assert.deepEqual(game.image, ART.map(name => ({'@type':'ImageObject', url:SITE + '/lumina-match/browser/' + name, ...dimensions.get(name)})));
     } finally { dom.window.close(); }
