@@ -180,3 +180,12 @@ test('related source poster metadata and trust icon labels each remain one seman
   for(const selector of ['.music-cover-header','.music-video-caption','.ma-result-trust__label']){const group=f.d.querySelector(selector);assert.ok(group.hasAttribute('data-ma-text-pill'));assert.equal(group.querySelectorAll('[data-ma-text-pill]').length,0);}assert.equal(poster.getAttribute('data-ma-control-pill'),'card');poster.click();assert.equal(calls,1);
  }finally{f.close();}
 });
+
+test('icon-only controls get capsules without modifying art or protected subtrees',async()=>{
+ const f=fixture('<button id="icon" aria-label="Sound"><svg><path d="M0 0"/></svg></button><div contenteditable="true"><button id="editor">Editable</button></div><ins class="adsbygoogle"><button id="ad">Ad</button></ins>');
+ try{const art=f.d.querySelector('svg'),markup=art.outerHTML;f.start();await f.drain();assert(f.d.getElementById('icon').hasAttribute('data-ma-control-pill'));assert.equal(art.outerHTML,markup);assert(!f.d.getElementById('editor').hasAttribute('data-ma-control-pill'));assert(!f.d.getElementById('ad').hasAttribute('data-ma-control-pill'));}finally{f.close();}
+});
+test('text scanning prunes whole excluded branches before reading their text',()=>{
+ const f=fixture('<template id="archive"></template><div contenteditable="true">'+('<span>Private draft</span>'.repeat(400))+'</div><p>Visible copy</p>');
+ try{let reads=0;const desc=Object.getOwnPropertyDescriptor(f.w.Node.prototype,'nodeValue');Object.defineProperty(f.w.Node.prototype,'nodeValue',{configurable:true,get(){reads++;return desc.get.call(this);},set:desc.set});f.start();assert(reads<20,'excluded draft descendants must not be visited: '+reads);assert.equal(f.d.querySelector('p').getAttribute('data-ma-text-pill'),'copy');}finally{f.close();}
+});

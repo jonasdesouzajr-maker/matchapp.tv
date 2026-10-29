@@ -54,7 +54,7 @@
   document.addEventListener('matchapp:settingschanged',syncAppearance);
   window.addEventListener('storage',function(event){if(event.key==='match_settings'||event.key===null)syncAppearance();});
   if (!window.MatchAppTextPills && !document.querySelector('script[data-cinema-pills]')) {
-    var pillScript=document.createElement('script');pillScript.src='/patches/reference-pills.js?v=20261020-pills1';pillScript.dataset.cinemaPills='';pillScript.defer=true;document.head.appendChild(pillScript);
+    var pillScript=document.createElement('script');pillScript.src='/patches/reference-pills.js?v=20261029-controls1';pillScript.dataset.cinemaPills='';pillScript.defer=true;document.head.appendChild(pillScript);
   }
   if (!window.MatchAppDialogs && !document.querySelector('script[data-cinema-dialogs]')) {
     var dialogVersion='20261020-1';
