@@ -32,3 +32,7 @@
 @media(max-width:720px){.lumina-guide-hero{grid-template-columns:minmax(0,1fr)}.lumina-guide-art{max-width:460px;margin-inline:auto}.lumina-guide-languages{gap:2px 4px}.lumina-guide-shell{width:calc(100% - 24px)}}
 @media(prefers-reduced-motion:reduce){.lumina-guide-page{scroll-behavior:auto}}
 @media(forced-colors:active){.lumina-guide-play{border:1px solid ButtonText}.lumina-guide-languages a[aria-current="page"]{outline:1px solid currentColor}}
+
+/* Genuine game screenshot: reserve its intrinsic ratio without changing game UI. */
+.lumina-guide-page .lumina-guide-gameplay{margin-block:22px}
+.lumina-guide-page .lumina-guide-gameplay img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:contain;border-radius:20px}

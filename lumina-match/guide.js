@@ -38,6 +38,15 @@
   d.addEventListener('click', function (event) {
     var link = event.target.closest && event.target.closest('[data-lumina-language], [data-lumina-play]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    // Observe an actual guide CTA click only. Existing consent/GTM configuration
+    // remains the sole collection owner; never send account IDs or query strings.
+    if (locale && link.hasAttribute('data-lumina-play')) {
+      try {
+        var payload = {game_name:'Lumina Match', guide_language:locale,
+          source_path:route(locale), target_path:'/', engagement_type:'play_intent'};
+        if (typeof w.gtag === 'function') w.gtag('event','lumina_guide_play',payload);
+      } catch (_) { /* Analytics must never block navigation. */ }
+    }
     var selected = normalize(link.getAttribute('data-lumina-language') || locale);
     if (!selected) return;
     explicitChoice = selected;
