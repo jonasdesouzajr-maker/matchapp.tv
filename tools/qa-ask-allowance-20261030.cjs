@@ -1,9 +1,14 @@
 'use strict';
 // Deterministic local browser preview. No service requests, real credits, paid
 // providers, physical-device claims or production writes are involved.
-const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),os=require('node:os');
 const {chromium}=require('playwright');
-const root=path.resolve(__dirname,'..'),out=path.resolve(process.env.MATCHAPP_QA_OUTPUT||'/tmp/pr409-browser');
+const root=path.resolve(__dirname,'..');
+const outputRoot=path.resolve(process.env.MATCHAPP_QA_OUTPUT||os.tmpdir());
+fs.mkdirSync(outputRoot,{recursive:true});
+// Create a private directory atomically; never trust a predictable /tmp path
+// that another local process could have pre-created as a symlink.
+const out=fs.mkdtempSync(path.join(outputRoot,'matchapp-ask-allowance-'));
 const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp'};
 const matrix=[
   {name:'narrow-pt',width:320,height:710,lang:'pt-BR'},
@@ -33,7 +38,7 @@ async function settle(page,allowed){await page.waitForFunction(()=>__qa.gates.le
 async function send(page,text){await page.locator('#discover-new-input').fill(text);await page.locator('button[onclick="newDiscoverSearch()"]').click();}
 async function state(page){return page.evaluate(()=>({draft:document.getElementById('discover-new-input').value,debits:__qa.debits,requests:__qa.requests,answers:document.querySelectorAll('#chat-log .chat-assistant').length,overflow:document.documentElement.scrollWidth-innerWidth}));}
 (async()=>{
-  fs.mkdirSync(out,{recursive:true});let browser;
+  console.log('QA evidence directory: '+out);let browser;
   const report={kind:'Local deterministic provider/allowance fixtures',liveProviderCalls:0,physicalDevicesTested:false,results:[]};
   try{
     await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port;
@@ -88,5 +93,5 @@ async function state(page){return page.evaluate(()=>({draft:document.getElementB
       finally{await context.close();console.log(JSON.stringify(row));}
     }
   }catch(error){report.failure=error.stack;process.exitCode=1;}
-  finally{await browser?.close();await new Promise(resolve=>server.close(resolve));fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));}
+  finally{await browser?.close();await new Promise(resolve=>server.close(resolve));fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2),{flag:'wx',mode:0o600});}
 })();

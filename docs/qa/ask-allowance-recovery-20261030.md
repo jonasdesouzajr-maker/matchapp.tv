@@ -43,7 +43,9 @@ exists in this checkout, and the environment's `/workspace/.agents` is empty.
   Six recovery / accounting scenarios run on 320px Portuguese, 390px English,
   820px Portuguese tablet, 1366px English desktop, and 390px Chromium with an
   Android WebView user agent. Screenshot and JSON evidence are generated under
-  `MATCHAPP_QA_OUTPUT` (default `/tmp/pr409-browser`).
+  `MATCHAPP_QA_OUTPUT` (default OS temporary directory), in an atomically
+  created private `matchapp-ask-allowance-*` directory. The report uses an
+  exclusive create and mode 0600; repeated runs never reuse predictable paths.
 - Full test suite, build, site/search audit, editorial rotation check, Android
   release identity/static guard and diff whitespace checks: see the PR description
   for final candidate counts, SHA and execution results.
@@ -63,3 +65,9 @@ guards remain unchanged. An unsigned verification bundle produced by normal CI
 is not a new Play release or upload. Exact-candidate CI results and the pushed SHA
 are recorded in the PR description / handoff; the old head's green CI is not used
 as evidence for this candidate.
+
+The first October 30 CI scan identified an insecure predictable temporary-output
+path in the new QA harness (CodeQL check 124092758278, line 91). The harness now
+uses `mkdtempSync` for a private unique evidence directory and exclusively creates
+its report. This finding was fixed in the harness, not dismissed or suppressed.
+The application runtime bytes are unchanged by this follow-up.
