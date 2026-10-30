@@ -30,3 +30,9 @@ Last known facts: a current Play Console listing batch was sent for review on 20
 - Apply the treatment inside the isolated browser game and native Lumina Match, with reduced-motion and forced-colors support.
 - Native smartphones are portrait-only. Tablets (smallest width at least 600dp) retain user-controlled rotation and fully fitted portrait/landscape screens. Do not change the device-wide auto-rotation preference.
 - The owner explicitly authorized reconstructing the missing native project from the available source, correction module and installed game. This supersedes the missing-current-source restriction for that reconstruction; signing, feature-parity/device QA, track preservation and truthful publication gates remain required.
+
+## Owner studio opening — 2026-10-30
+- Use the exact studio credit **Adv_Dev_Ops by Jonas Junior**, with bold typography, a smooth dark background, restrained animation and a short automatic fade before the existing Lumina intro video. Keep the video's original audio, accessible localized Skip action and normal game entry.
+- Keep studio gestures and video audio separate from gameplay audio. Respect reduced motion, large text, safe areas and foreground/background transitions; completion must be idempotent and never depend solely on an animation callback.
+- The browser edition currently has no verified Lumina intro video asset. Its studio opening therefore reveals the existing menu. Enable its optional video only after recovering the genuine Lumina media; never substitute MatchApp Ai's movie or claim the browser contains an absent video.
+- Native reconstruction source and new en-US/pt-BR listing copy are saved in `LuminaMatch_Studio_Opening_Source_20261030.zip`. A source checkpoint is not a built, signed, tested or published Android release. Preserve the original movie player and verify the genuine video, signing identity, device behavior and current Play Console state before submission.
