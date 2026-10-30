@@ -85,6 +85,8 @@ class MainActivity : AppCompatActivity() {
     private var splashKeep = false
     private var introHost: FrameLayout? = null
     private var introVideo: VideoView? = null
+    private var introStudio: StudioPreludeView? = null
+    private var introSequence: NativeIntroSequence? = null
     private val introDeadline = Runnable { finishIntro() }
     private var introRevealFailsafe: Runnable? = null
     private var startupHost: FrameLayout? = null
@@ -655,7 +657,13 @@ class MainActivity : AppCompatActivity() {
     // The sole Android intro owner: bundled, finite and bound to package version.
     private fun startIntro() {
         val root = findViewById<FrameLayout>(R.id.root)
-        val host = FrameLayout(this).apply { setBackgroundColor(Color.BLACK) }
+        val host = FrameLayout(this).apply {
+            setBackgroundColor(Color.BLACK)
+            isClickable = true
+            isFocusable = true
+        }
+        val sequence = NativeIntroSequence()
+        val studio = StudioPreludeView(this)
         val video = object : VideoView(this@MainActivity) {
             override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
                 val width = View.MeasureSpec.getSize(widthMeasureSpec)
@@ -678,28 +686,57 @@ class MainActivity : AppCompatActivity() {
         }
         introHost = host
         introVideo = video
+        introStudio = studio
+        introSequence = sequence
         val bounds = resources.displayMetrics
         host.clipChildren = true
         host.addView(video, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, android.view.Gravity.CENTER))
+        host.addView(studio, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         val margin = (16 * bounds.density).toInt()
         host.addView(skip, FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, android.view.Gravity.BOTTOM or android.view.Gravity.END).apply {
             setMargins(margin, margin, margin, margin)
         })
+        ViewCompat.setOnApplyWindowInsetsListener(host) { _, insets ->
+            val safe = insets.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+            studio.applySafeInsets(safe.left, safe.top, safe.right, safe.bottom)
+            (skip.layoutParams as FrameLayout.LayoutParams).apply {
+                setMargins(margin + safe.left, margin + safe.top, margin + safe.right, margin + safe.bottom)
+                skip.layoutParams = this
+            }
+            insets
+        }
         root.addView(host, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        ViewCompat.requestApplyInsets(host)
         root.postDelayed(introDeadline, 8000L)
+        var playbackFailsafe = 15000L
+        val startPlayback = {
+            if (introHost === host && introVideo === video) {
+                markIntroSeen()
+                root.removeCallbacks(introDeadline)
+                root.postDelayed(introDeadline, playbackFailsafe)
+                video.start()
+            }
+        }
+        studio.play {
+            if (introHost === host && introStudio === studio) {
+                introStudio = null
+                host.removeView(studio)
+                if (sequence.onStudioFinished()) startPlayback()
+            }
+        }
         video.setOnPreparedListener { player ->
+            if (introHost !== host || introVideo !== video) return@setOnPreparedListener
             // Preserve the original video soundtrack at a restrained volume.
             // The OS media-volume/mute setting remains authoritative.
             player.setVolume(0.55f, 0.55f)
             player.isLooping = false
-            markIntroSeen()
-            root.removeCallbacks(introDeadline)
-            val playbackFailsafe = maxOf(player.duration.toLong(), 10000L) + 5000L
-            root.postDelayed(introDeadline, playbackFailsafe)
-            video.start()
+            playbackFailsafe = maxOf(player.duration.toLong(), 10000L) + 5000L
+            // Preparation may finish behind the opaque card, but neither the
+            // video nor its soundtrack starts until the studio fade completes.
+            if (sequence.onVideoPrepared()) startPlayback()
         }
-        video.setOnCompletionListener { finishIntro() }
-        video.setOnErrorListener { _, _, _ -> finishIntro(); true }
+        video.setOnCompletionListener { if (introHost === host) finishIntro() }
+        video.setOnErrorListener { _, _, _ -> if (introHost === host) finishIntro(); true }
         try {
             video.setVideoURI(Uri.parse("android.resource://$packageName/${R.raw.matchapp_launch_intro}"))
         } catch (_: Exception) { finishIntro() }
@@ -707,6 +744,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun finishIntro(immediate: Boolean = false) {
         findViewById<FrameLayout>(R.id.root)?.removeCallbacks(introDeadline)
+        introSequence?.finish()
+        introSequence = null
+        introStudio?.dispose()
+        introStudio = null
         val host = introHost ?: return
         introHost = null
         try { introVideo?.stopPlayback() } catch (_: Exception) { }
@@ -1683,8 +1724,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=64"
-        const val APP_UA = "MatchAppTVAndroid/1.1.64 MatchAppAiAndroid/1.1.64 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=65"
+        const val APP_UA = "MatchAppTVAndroid/1.1.65 MatchAppAiAndroid/1.1.65 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"

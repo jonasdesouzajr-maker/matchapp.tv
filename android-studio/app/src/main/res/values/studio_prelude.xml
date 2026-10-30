@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Accessible identity for the owner's original studio artwork; no duplicate visible text. -->
+    <string name="studio_identity" translatable="false">Adv_Dev_Ops by Jonas Junior</string>
+</resources>

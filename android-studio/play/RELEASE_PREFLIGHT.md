@@ -1,3 +1,11 @@
+## October 30, 2026 company opening and launcher artwork — 1.1.65 candidate (code 65)
+
+The owner requested the exact supplied Adv_Dev_Ops company artwork before the original native intro video, a refreshed purple/gold MatchApp AI icon and an updated Play listing. The adult candidate is `com.jonas.papercup`; the separate Lumina Match and Kids apps are unchanged.
+
+The company artwork reveals gently, holds for 2.5 seconds and fades for 340 milliseconds, with a hard 3-second stage deadline. Original video playback and its soundtrack wait for that stage. Existing once-per-package-version launch behavior, localized Skip, Back, error recovery and ordinary Home destination remain in place. The uploaded company JPEG is bundled unchanged. New launcher resources include adaptive, themed and five legacy densities; the separate 512px Play icon and EN/PT-BR/HI listing drafts are in `refresh-20261030/`.
+
+**Not a production publication record.** Code 65 is the next repository candidate, not a confirmed unused Play code. Inspect all current Console tracks/artifacts and preserve unrelated drafts before choosing the final version. Device QA, signing with the existing upload key, certificate/package/version/archive verification and Play submission/rollout confirmation remain release gates. The CI artifact `MatchApp-Ai-adult-1.1.65-code65-UNSIGNED-AAB` cannot be uploaded as-is. No new emulator, test track, signing identity, purchase or agreement is authorized by this change.
+
 ## October 27, 2026 native error notices — 1.1.64 (code 64)
 
 Play Console was independently checked October27: code63 is the latest uploaded adult bundle, fully rolled out in all178 existing countries, with no unpublished changes. Recheck immediately before upload. Candidate64 uses one branded, closable native error notice and retry recovery without the underlying Chromium error page. Preserve existing startup/R8 fixes, matching, account, quota, voice, permissions, cache policy, ad behavior and signing identity.
