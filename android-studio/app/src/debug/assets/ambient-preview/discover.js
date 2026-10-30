@@ -698,7 +698,13 @@ window.readAloud = function(text, btn) {
         }
         document.querySelectorAll('.discover-speak.speaking').forEach(b=>b.classList.remove('speaking'));
         if(btn)btn.classList.add('speaking');
-        window.MatchAppJonasStage.speak(text,{autoListen:false}).finally(()=>btn?.classList.remove('speaking'));
+        const narration=window.MatchAppJonasNarration;
+        const transcript=narration?.prepare?.(btn?.closest('.chat-answer-row')?.querySelector('.chat-answer-text'),text);
+        window.MatchAppJonasStage.speak(text,{
+            autoListen:false,
+            onProgress:p=>narration?.advance?.(p,transcript),
+            onComplete:()=>narration?.finish?.(transcript)
+        }).finally(()=>{narration?.finish?.(transcript);btn?.classList.remove('speaking')});
         return;
     }
     const service=window.MatchAppJonasSpeech;
@@ -1135,8 +1141,10 @@ function placeDiscoverComposer(wrap,grid) {
 }
 function revealJonasTurn(node) {
     const log=document.getElementById('chat-log');
-    if(!log || !node || !log.contains(node) || keepConversationAtStart()) return;
-    const top=node.getBoundingClientRect().top-log.getBoundingClientRect().top+log.scrollTop-12;
+    if(!log || !node || !log.contains(node)) return;
+    const answer=node.querySelector?.('.chat-answer-text');
+    if(!answer && keepConversationAtStart()) return;
+    const top=(answer||node).getBoundingClientRect().top-log.getBoundingClientRect().top+log.scrollTop-12;
     log.scrollTop=Math.max(0,top);
 }
 
@@ -2173,18 +2181,26 @@ async function runAskAndRender(question, opts) {
     const emptyEl = document.getElementById('discover-empty');
     if (emptyEl) emptyEl.style.display = 'none';
 
+    // Clear the submitted text before waiting. Any text typed during allowance
+    // verification is a new draft, even if it repeats this question verbatim.
+    const input = document.getElementById('discover-new-input');
+    if (input && input.value.trim() === question) {
+        input.value = '';
+        window.autoGrowComposer?.();
+    }
+
     // Verify allowance without spending it before contacting paid providers.
     // A failed or unusable AI response must never consume a guest or paid credit.
     if (typeof window.matchAllowanceBeforeLookup === 'function' && !(await window.matchAllowanceBeforeLookup('ask_ai'))) {
         const draft=document.getElementById('discover-new-input');
-        if(requestVersion===discoverThreadVersion && draft && !draft.value){
+        if(requestVersion===discoverThreadVersion && responseLanguage===(window.MATCH_LANG||'en') && draft && !draft.value){
             draft.value=question;
             window.autoGrowComposer?.();
         }
         refreshAiWorkspaceStatus();
         return;
     }
-    if(requestVersion!==discoverThreadVersion)return;
+    if(requestVersion!==discoverThreadVersion||responseLanguage!==(window.MATCH_LANG||'en'))return;
     refreshAiWorkspaceStatus();
 
     if (!currentThread) {
@@ -2209,12 +2225,6 @@ async function runAskAndRender(question, opts) {
         document.getElementById('chat-log')?.appendChild(loadEl);
         loadEl.style.display = 'block';
         startAiWorkflow();
-    }
-
-    const input = document.getElementById('discover-new-input');
-    if (input && input.value.trim() === question) {
-        input.value = '';
-        window.autoGrowComposer?.();
     }
 
     // Pass prior turns so follow-ups keep context.
@@ -2455,12 +2465,12 @@ async function runAskAndRender(question, opts) {
                     const last = Math.max(...endings);
                     audibleReply = last >= 110 ? first.slice(0,last+1) : first;
                 }
-                narration?.prepare?.(bubble.textEl,fullReply,ambient?audibleReply.length:650);
+                const transcript=narration?.prepare?.(bubble.textEl,fullReply,ambient?audibleReply.length:650);
                 window.MatchAppJonasStage.speak(audibleReply,{
                     autoListen:true,
-                    onProgress:p=>narration?.advance?.(p),
-                    onComplete:()=>narration?.finish?.()
-                }).catch(()=>narration?.finish?.());
+                    onProgress:p=>narration?.advance?.(p,transcript),
+                    onComplete:()=>narration?.finish?.(transcript)
+                }).catch(()=>narration?.finish?.(transcript));
             } else {
                 bubble.textEl.textContent=payload.answer;
                 window.readAloud(payload.answer, bubble.speakBtn);
@@ -2472,6 +2482,7 @@ async function runAskAndRender(question, opts) {
                 new URLSearchParams(location.search).get('ambient') === '1';
             if (ambient) bubble.textEl.textContent = payload.answer;
             else await typewriterReveal(bubble.textEl,payload.answer,8);
+            revealJonasTurn(bubble.wrap);
         }
     }
 
@@ -2525,14 +2536,31 @@ async function runAskAndRender(question, opts) {
  // Keep one allowance debit and one answer in flight on this page at a time.
 let askInFlight = null;
 function askAndRender(question, opts) {
-    if (askInFlight) return askInFlight;
+    question=String(question||'').trim();
+    if(!question)return Promise.resolve();
+    if (askInFlight) {
+        // Duplicate button/keyboard/voice delivery shares the original debit.
+        // A different follow-up must wait, not disappear while its text is
+        // cleared by the composer or the previous reply finishes its cards.
+        if(askInFlight.question===question)return askInFlight;
+        const queuedVersion=discoverThreadVersion,queuedLanguage=window.MATCH_LANG||'en';
+        const voiceOrigin=opts?.voiceOrigin===true||
+            (!!window.MatchAppVoiceOrigin?.consume&&window.MatchAppVoiceOrigin.consume(question));
+        return askInFlight.then(()=>{
+            if(queuedVersion!==discoverThreadVersion||queuedLanguage!==(window.MATCH_LANG||'en'))return null;
+            return askAndRender(question,{...opts,voiceOrigin});
+        });
+    }
     const landingContext = window.MatchAppLandingIntent?.capture?.(question) || null;
-    const requestVersion=discoverThreadVersion;
+    const requestVersion=discoverThreadVersion,requestLanguage=window.MATCH_LANG||'en';
     const replyCount = document.querySelectorAll('#chat-log .chat-assistant').length;
     const markedVoice = opts?.voiceOrigin === true ||
         (!!window.MatchAppVoiceOrigin?.consume && window.MatchAppVoiceOrigin.consume(question));
-    const running = Promise.resolve().then(() => runAskAndRender(question, { voiceOrigin: markedVoice, landingContext })).catch(error => {
-        if(requestVersion!==discoverThreadVersion){finishAiWorkflow();return null;}
+    const running = Promise.resolve().then(() => {
+        if(requestVersion!==discoverThreadVersion||requestLanguage!==(window.MATCH_LANG||'en'))return null;
+        return runAskAndRender(question, { voiceOrigin: markedVoice, landingContext });
+    }).catch(error => {
+        if(requestVersion!==discoverThreadVersion||requestLanguage!==(window.MATCH_LANG||'en')){finishAiWorkflow();return null;}
         // Rendering and voice failures must not be misreported as a failed AI
         // request after the answer has already appeared in the conversation.
         console.warn('[MatchApp Ai] Request interrupted:',error?.message||error);
@@ -2555,6 +2583,7 @@ function askAndRender(question, opts) {
         window.showToast?.('Ask AI could not complete this request. Your question is ready to retry.',true,{recovery:true});
         return null;
     });
+    running.question=question;
     askInFlight = running;
     running.finally(() => {
         if (askInFlight === running) askInFlight = null;

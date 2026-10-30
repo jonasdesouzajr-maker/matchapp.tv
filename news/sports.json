@@ -1,7 +1,23 @@
 {
-  "updated_at": "2026-10-27T10:00:31.904Z",
+  "updated_at": "2026-10-30T11:00:21.492Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
+    {
+      "id": "ca3ecc0d",
+      "title": "Buried cats, exorcisms and a sunken Colonel Sanders – the strange world of sporting curses",
+      "url": "https://theconversation.com/buried-cats-exorcisms-and-a-sunken-colonel-sanders-the-strange-world-of-sporting-curses-288604",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-10-29T23:29:56.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
     {
       "id": "b04776b3",
       "title": "Politics with Michelle Grattan: Joe Hockey on how Trump would handle defeat in the midterms",

@@ -1,14 +1,24 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "locales": {
     "en": {
       "nativeName": "English",
       "ogLocale": "en_US",
       "title": "Lumina Match: Free Online Memory Game | MatchApp Ai",
-      "description": "Play Lumina Match, a free online memory game with 250 levels, relaxed or timed play, music and friend rounds. Save your progress with a MatchApp account.",
-      "keywords": ["Lumina Match", "free online memory game", "card pair matching game", "250 level memory game", "browser memory game", "relaxing matching game", "memory game with friends", "timed card matching"],
+      "description": "Play Lumina Match free in your browser: 250 memory card levels, no download, relaxed or timed play and classic friend rounds. An account is needed to save.",
+      "keywords": [
+        "Lumina Match",
+        "free online memory game",
+        "memory card matching game",
+        "concentration game online",
+        "matching pairs game",
+        "memory game no download",
+        "relaxing memory game",
+        "two player memory game",
+        "memory game with 250 levels"
+      ],
       "eyebrow": "Lumina Match · Browser game",
-      "h1": "Find every pair. Explore 250 levels.",
+      "h1": "Free online memory card game · 250 levels",
       "intro": [
         "Lumina Match is a free online memory game inside MatchApp Ai. Turn over illustrated cards, remember their positions and match every pair to open the next level.",
         "Play a quiet solo session, try an optional timed challenge or share a classic round with friends. The game runs in your desktop, phone or tablet browser without installing a game."
@@ -28,8 +38,15 @@
         {
           "id": "how-to-play",
           "title": "How to play the card matching game",
-          "paragraphs": ["Each turn reveals two cards. Matching cards stay visible; different cards turn back over. Use what you remember on your next turn."],
-          "steps": ["Open Lumina Match from Home and choose a campaign level.", "Choose Relaxed for no countdown, or Timed challenge to play against the clock.", "Clear every pair to unlock the next level. Replay completed levels whenever you want."]
+          "paragraphs": [
+            "Each turn reveals two cards. Matching cards stay visible; different cards turn back over. Use what you remember on your next turn.",
+            "New to matching pairs? Open the Beginner’s Guide from the game menu for a short interactive practice round. It does not change your campaign progress."
+          ],
+          "steps": [
+            "Open Lumina Match from Home and choose a campaign level.",
+            "Choose Relaxed for no countdown, or Timed challenge to play against the clock.",
+            "Clear every pair to unlock the next level. Replay completed levels whenever you want."
+          ]
         },
         {
           "id": "campaign",
@@ -62,28 +79,77 @@
             "Theme music and card sounds begin after your first game interaction. Audio settings let you switch music and sound effects separately and adjust the volume.",
             "Pause when you need a break. Audio stops while the game is paused or hidden, and Close stops the game audio when you return to Home."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Matching pairs, Concentration and match-3: what is different?",
+          "paragraphs": [
+            "Lumina Match follows the face-down pairs format often called Concentration: reveal two cards, remember the pictures and find the identical pair. The board is a grid of cards, not a path-building or tile-sliding puzzle. You do not swap gems or line up three objects.",
+            "The familiar tabletop card-game idea becomes a browser puzzle with illustrated themes and a level campaign. No download is needed to try the browser edition. Guests can play immediately, but saving across visits requires a MatchApp account; no sign-up does not mean permanent guest saves."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "How to match pairs with fewer moves",
+          "paragraphs": [
+            "Start in Relaxed mode when learning a board. Scan one row at a time and give each picture a location, such as “moon, top left.” When the first card reveals a picture you have seen, choose its known partner rather than opening another unknown card. A mismatch still gives you information for a later turn.",
+            "Use the practice guide to learn the controls, then replay a completed level to compare your moves. Hints reveal a pair but limit that attempt to two stars, so save them for a genuinely uncertain position. Timed mode adds a countdown; it does not change the goal of clearing every pair. These are playing tips, not a promise of medical or cognitive benefits."
+          ]
         }
       ],
       "faqTitle": "Questions about Lumina Match",
       "faqs": [
-        {"question": "How do I start playing?", "answer": "Go to MatchApp Home, choose Play Lumina Match and open a level. Match all pairs to move forward; Relaxed has no countdown."},
-        {"question": "Is the game free, and does it have ads?", "answer": "Lumina Match is free to play. There are currently no ads inside the game and no videos to watch to continue playing."},
-        {"question": "Do I need an account to save?", "answer": "Yes. Registered accounts retain progress. Guests can play without registering, but their game progress is not stored in the browser and is lost when the game closes or reloads."},
-        {"question": "Can I play with friends?", "answer": "Yes: take turns on one device or sign in for online classic rounds with accepted Match Together friends. The campaign remains a solo mode."},
-        {"question": "Why is there no sound yet?", "answer": "Tap a game control first, then check Audio settings and your device volume. You can also play with music and sound effects turned off."},
-        {"question": "Which devices and languages are supported?", "answer": "Use a desktop, phone or tablet web browser. The game supports all 14 MatchApp interface languages. This browser edition is not available inside the native Android app or Kids Mode."}
+        {
+          "question": "How do I start playing?",
+          "answer": "Go to MatchApp Home, choose Play Lumina Match and open a level. Match all pairs to move forward; Relaxed has no countdown."
+        },
+        {
+          "question": "Is the game free, and does it have ads?",
+          "answer": "Lumina Match is free to play. There are currently no ads inside the game and no videos to watch to continue playing."
+        },
+        {
+          "question": "Do I need an account to save?",
+          "answer": "Yes. Registered accounts retain progress. Guests can play without registering, but their game progress is not stored in the browser and is lost when the game closes or reloads."
+        },
+        {
+          "question": "Can I play with friends?",
+          "answer": "Yes: take turns on one device or sign in for online classic rounds with accepted Match Together friends. The campaign remains a solo mode."
+        },
+        {
+          "question": "Why is there no sound yet?",
+          "answer": "Tap a game control first, then check Audio settings and your device volume. You can also play with music and sound effects turned off."
+        },
+        {
+          "question": "Which devices and languages are supported?",
+          "answer": "Use a desktop, phone or tablet web browser. The game supports all 14 MatchApp interface languages. This browser edition is not available inside the native Android app or Kids Mode."
+        }
       ],
       "relatedTitle": "More from MatchApp Ai",
-      "relatedLinks": {"how": "How MatchApp Ai works", "together": "Meet Match Together", "discover": "Discover entertainment with Jonas"}
+      "relatedLinks": {
+        "how": "How MatchApp Ai works",
+        "together": "Meet Match Together",
+        "discover": "Discover entertainment with Jonas"
+      },
+      "socialAlt": "Lumina Match browser game: illustrated memory cards on the first campaign board"
     },
     "pt-BR": {
       "nativeName": "Português (Brasil)",
       "ogLocale": "pt_BR",
       "title": "Lumina Match: Jogo da Memória Online Grátis | MatchApp Ai",
-      "description": "Jogue Lumina Match: 250 fases de memória, modo sem pressa ou contra o tempo, música e partidas com amigos. Salve o progresso com uma conta MatchApp.",
-      "keywords": ["Lumina Match", "jogo da memória online grátis", "jogo de combinar pares de cartas", "jogo da memória com 250 fases", "jogo da memória no navegador", "jogo de pares relaxante", "jogo da memória com amigos", "jogo de cartas contra o tempo"],
+      "description": "Jogue Lumina Match grátis no navegador: 250 fases de memória, sem baixar, modo relaxado ou cronometrado e partidas com amigos. É preciso uma conta para salvar.",
+      "keywords": [
+        "Lumina Match",
+        "jogo da memória online grátis",
+        "jogo de combinar cartas",
+        "jogo de encontrar pares",
+        "jogo da memória sem baixar",
+        "jogo da memória para dois",
+        "jogo de memória relaxante",
+        "jogo de cartas no navegador",
+        "jogo da memória com 250 fases"
+      ],
       "eyebrow": "Lumina Match · Jogo no navegador",
-      "h1": "Encontre todos os pares. Explore 250 fases.",
+      "h1": "Jogo da memória online grátis · 250 fases",
       "intro": [
         "Lumina Match é um jogo da memória online grátis dentro do MatchApp Ai. Vire cartas ilustradas, lembre-se das posições e encontre todos os pares para abrir a próxima fase.",
         "Jogue sozinho sem pressa, experimente um desafio opcional contra o tempo ou compartilhe uma partida clássica com amigos. O jogo funciona no navegador do computador, celular ou tablet, sem instalar um jogo."
@@ -103,8 +169,15 @@
         {
           "id": "how-to-play",
           "title": "Como jogar e encontrar os pares",
-          "paragraphs": ["Em cada jogada, você revela duas cartas. As iguais continuam visíveis; as diferentes voltam a ficar viradas para baixo. Use o que lembra na próxima jogada."],
-          "steps": ["Abra Lumina Match na página inicial e escolha uma fase da campanha.", "Escolha Sem pressa para jogar sem contagem regressiva ou Desafio contra o tempo para enfrentar o relógio.", "Encontre todos os pares para liberar a próxima fase. Repita as fases concluídas quando quiser."]
+          "paragraphs": [
+            "Em cada jogada, você revela duas cartas. As iguais continuam visíveis; as diferentes voltam a ficar viradas para baixo. Use o que lembra na próxima jogada.",
+            "Está começando? Abra o Guia para iniciantes no menu do jogo para praticar em uma rodada interativa curta. Ela não altera seu progresso na campanha."
+          ],
+          "steps": [
+            "Abra Lumina Match na página inicial e escolha uma fase da campanha.",
+            "Escolha Sem pressa para jogar sem contagem regressiva ou Desafio contra o tempo para enfrentar o relógio.",
+            "Encontre todos os pares para liberar a próxima fase. Repita as fases concluídas quando quiser."
+          ]
         },
         {
           "id": "campaign",
@@ -137,28 +210,77 @@
             "A música dos temas e os sons das cartas começam após sua primeira interação com o jogo. Nas configurações de áudio, você pode ligar ou desligar música e efeitos separadamente e ajustar o volume.",
             "Pause quando precisar de uma pausa. O áudio para enquanto o jogo está pausado ou oculto, e Fechar interrompe o áudio ao voltar à página inicial."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Jogo da memória, pares e combinar três: qual é a diferença?",
+          "paragraphs": [
+            "Lumina Match usa o formato clássico de pares com cartas viradas para baixo: revele duas cartas, lembre-se das figuras e encontre as iguais. O tabuleiro é uma grade de cartas, não um quebra-cabeça de caminhos ou peças deslizantes. Você não troca joias de lugar nem alinha três objetos.",
+            "A ideia familiar do jogo de cartas de mesa ganha temas ilustrados e uma campanha no navegador. Não é necessário baixar nada para experimentar esta edição. Visitantes podem jogar sem cadastro, mas salvar entre visitas exige uma conta MatchApp; jogar sem cadastro não significa ter um salvamento permanente."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Como encontrar os pares com menos jogadas",
+          "paragraphs": [
+            "Comece no modo Relaxado para conhecer o tabuleiro. Observe uma linha por vez e associe cada figura a uma posição, como “lua, canto superior esquerdo”. Quando a primeira carta mostrar uma figura conhecida, procure seu par já visto em vez de abrir outra carta desconhecida. Um erro também revela informação útil para a próxima vez.",
+            "Use o guia de prática para aprender os controles e repita uma fase concluída para comparar suas jogadas. As dicas revelam um par, mas limitam aquela tentativa a duas estrelas; reserve-as para quando estiver realmente em dúvida. O modo Cronometrado acrescenta uma contagem regressiva, sem mudar o objetivo de encontrar todos os pares. São dicas de jogo, não promessas de benefícios médicos ou cognitivos."
+          ]
         }
       ],
       "faqTitle": "Perguntas sobre Lumina Match",
       "faqs": [
-        {"question": "Como começo a jogar?", "answer": "Vá à página inicial do MatchApp, escolha Jogar Lumina Match e abra uma fase. Encontre todos os pares para avançar; o modo Sem pressa não tem contagem regressiva."},
-        {"question": "O jogo é grátis? Tem anúncios?", "answer": "Lumina Match é grátis. Atualmente não há anúncios dentro do jogo nem vídeos para assistir antes de continuar jogando."},
-        {"question": "Preciso de conta para salvar?", "answer": "Sim. Contas cadastradas mantêm o progresso. Visitantes podem jogar sem cadastro, mas o progresso não é armazenado no navegador e se perde ao fechar ou recarregar o jogo."},
-        {"question": "Posso jogar com amigos?", "answer": "Sim: alternem as jogadas no mesmo aparelho ou entrem nas suas contas para partidas clássicas online com amigos aceitos no Match Together. A campanha continua sendo individual."},
-        {"question": "Por que ainda não ouço som?", "answer": "Toque primeiro em um controle do jogo e confira as configurações de áudio e o volume do aparelho. Você também pode jogar com música e efeitos desligados."},
-        {"question": "Quais aparelhos e idiomas são compatíveis?", "answer": "Use um navegador de computador, celular ou tablet. O jogo oferece os 14 idiomas da interface MatchApp. Esta edição para navegador não está disponível dentro do app nativo Android nem no Kids Mode."}
+        {
+          "question": "Como começo a jogar?",
+          "answer": "Vá à página inicial do MatchApp, escolha Jogar Lumina Match e abra uma fase. Encontre todos os pares para avançar; o modo Sem pressa não tem contagem regressiva."
+        },
+        {
+          "question": "O jogo é grátis? Tem anúncios?",
+          "answer": "Lumina Match é grátis. Atualmente não há anúncios dentro do jogo nem vídeos para assistir antes de continuar jogando."
+        },
+        {
+          "question": "Preciso de conta para salvar?",
+          "answer": "Sim. Contas cadastradas mantêm o progresso. Visitantes podem jogar sem cadastro, mas o progresso não é armazenado no navegador e se perde ao fechar ou recarregar o jogo."
+        },
+        {
+          "question": "Posso jogar com amigos?",
+          "answer": "Sim: alternem as jogadas no mesmo aparelho ou entrem nas suas contas para partidas clássicas online com amigos aceitos no Match Together. A campanha continua sendo individual."
+        },
+        {
+          "question": "Por que ainda não ouço som?",
+          "answer": "Toque primeiro em um controle do jogo e confira as configurações de áudio e o volume do aparelho. Você também pode jogar com música e efeitos desligados."
+        },
+        {
+          "question": "Quais aparelhos e idiomas são compatíveis?",
+          "answer": "Use um navegador de computador, celular ou tablet. O jogo oferece os 14 idiomas da interface MatchApp. Esta edição para navegador não está disponível dentro do app nativo Android nem no Kids Mode."
+        }
       ],
       "relatedTitle": "Mais do MatchApp Ai",
-      "relatedLinks": {"how": "Como funciona o MatchApp Ai", "together": "Conheça o Match Together", "discover": "Descubra entretenimento com Jonas"}
+      "relatedLinks": {
+        "how": "Como funciona o MatchApp Ai",
+        "together": "Conheça o Match Together",
+        "discover": "Descubra entretenimento com Jonas"
+      },
+      "socialAlt": "Lumina Match no navegador: cartas ilustradas no primeiro tabuleiro da campanha"
     },
     "es": {
       "nativeName": "Español",
       "ogLocale": "es_ES",
       "title": "Lumina Match: Juego de Memoria Online Gratis | MatchApp Ai",
-      "description": "Juega a Lumina Match: 250 niveles de memoria, modo sin prisas o contrarreloj, música y partidas con amigos. Guarda tu progreso con una cuenta MatchApp.",
-      "keywords": ["Lumina Match", "juego de memoria online gratis", "juego de parejas de cartas", "juego de memoria de 250 niveles", "juego de memoria en el navegador", "juego de parejas relajante", "juego de memoria con amigos", "cartas contrarreloj"],
+      "description": "Juega a Lumina Match gratis en el navegador: 250 niveles de memoria, sin descargar, modo relajado o contrarreloj y partidas con amigos. Necesitas cuenta para guardar.",
+      "keywords": [
+        "Lumina Match",
+        "juego de memoria online gratis",
+        "juego de emparejar cartas",
+        "juego de encontrar parejas",
+        "juego de memoria sin descargar",
+        "juego de memoria para dos",
+        "juego de memoria relajante",
+        "juego de cartas en navegador",
+        "juego de memoria de 250 niveles"
+      ],
       "eyebrow": "Lumina Match · Juego de navegador",
-      "h1": "Encuentra cada pareja. Explora 250 niveles.",
+      "h1": "Juego de memoria online gratis · 250 niveles",
       "intro": [
         "Lumina Match es un juego de memoria online gratuito dentro de MatchApp Ai. Voltea cartas ilustradas, recuerda sus posiciones y encuentra todas las parejas para abrir el siguiente nivel.",
         "Disfruta de una sesión tranquila en solitario, prueba el desafío contrarreloj opcional o comparte una partida clásica con amigos. Juega desde el navegador del ordenador, móvil o tableta, sin instalar un juego."
@@ -178,8 +300,15 @@
         {
           "id": "how-to-play",
           "title": "Cómo jugar y emparejar las cartas",
-          "paragraphs": ["Cada turno revela dos cartas. Las iguales permanecen visibles; las diferentes se vuelven a ocultar. Aprovecha lo que recuerdas en el siguiente turno."],
-          "steps": ["Abre Lumina Match desde Inicio y elige un nivel de la campaña.", "Elige Sin prisas para jugar sin cuenta atrás, o Desafío contrarreloj para enfrentarte al reloj.", "Encuentra todas las parejas para desbloquear el siguiente nivel. Repite los niveles completados cuando quieras."]
+          "paragraphs": [
+            "Cada turno revela dos cartas. Las iguales permanecen visibles; las diferentes se vuelven a ocultar. Aprovecha lo que recuerdas en el siguiente turno.",
+            "¿Es tu primera partida? Abre la Guía para principiantes del menú para practicar en una ronda interactiva breve. No modifica tu progreso en la campaña."
+          ],
+          "steps": [
+            "Abre Lumina Match desde Inicio y elige un nivel de la campaña.",
+            "Elige Sin prisas para jugar sin cuenta atrás, o Desafío contrarreloj para enfrentarte al reloj.",
+            "Encuentra todas las parejas para desbloquear el siguiente nivel. Repite los niveles completados cuando quieras."
+          ]
         },
         {
           "id": "campaign",
@@ -212,28 +341,77 @@
             "La música de los temas y los sonidos de las cartas empiezan tras tu primera interacción con el juego. Los ajustes de audio permiten activar música y efectos por separado y ajustar el volumen.",
             "Pausa cuando necesites descansar. El audio se detiene mientras el juego está pausado u oculto, y Cerrar detiene el sonido al volver a Inicio."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Parejas, memoria y combinar tres: ¿en qué se diferencian?",
+          "paragraphs": [
+            "Lumina Match utiliza parejas de cartas boca abajo: destapa dos, recuerda sus imágenes y encuentra la pareja idéntica. El tablero es una cuadrícula de cartas, no un puzle de caminos ni de fichas deslizantes. No intercambias gemas ni alineas tres objetos.",
+            "La idea clásica del juego de cartas de mesa se convierte en un puzle de navegador con temas ilustrados y una campaña. No hace falta descargar nada para probar esta edición. Puedes jugar como invitado, pero guardar entre visitas requiere una cuenta MatchApp; jugar sin registro no implica guardar permanentemente."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Cómo encontrar parejas con menos movimientos",
+          "paragraphs": [
+            "Empieza en modo Relajado para conocer el tablero. Recorre una fila cada vez y relaciona cada imagen con su posición, como “luna, arriba a la izquierda”. Si la primera carta muestra una imagen conocida, elige su pareja recordada en lugar de destapar otra desconocida. Un fallo también aporta información.",
+            "Practica los controles en la guía y repite un nivel completado para comparar movimientos. Las pistas revelan una pareja, pero limitan ese intento a dos estrellas; úsalas cuando realmente las necesites. El modo contrarreloj añade una cuenta atrás, sin cambiar el objetivo de encontrar todas las parejas. Son consejos de juego, no promesas de beneficios médicos o cognitivos."
+          ]
         }
       ],
       "faqTitle": "Preguntas sobre Lumina Match",
       "faqs": [
-        {"question": "¿Cómo empiezo a jugar?", "answer": "Ve al inicio de MatchApp, elige Jugar Lumina Match y abre un nivel. Encuentra todas las parejas para avanzar; Sin prisas no tiene cuenta atrás."},
-        {"question": "¿Es gratis? ¿Tiene anuncios?", "answer": "Lumina Match es gratuito. Actualmente no hay anuncios dentro del juego ni vídeos que debas ver para seguir jugando."},
-        {"question": "¿Necesito una cuenta para guardar?", "answer": "Sí. Las cuentas registradas conservan el progreso. Los invitados pueden jugar sin registrarse, pero su progreso no se almacena en el navegador y se pierde al cerrar o recargar el juego."},
-        {"question": "¿Puedo jugar con amigos?", "answer": "Sí: jugad por turnos en un mismo dispositivo o iniciad sesión para partidas clásicas online con amigos aceptados en Match Together. La campaña sigue siendo individual."},
-        {"question": "¿Por qué todavía no se oye nada?", "answer": "Toca primero un control del juego y comprueba los ajustes de audio y el volumen del dispositivo. También puedes jugar con la música y los efectos desactivados."},
-        {"question": "¿Qué dispositivos e idiomas admite?", "answer": "Usa un navegador de ordenador, móvil o tableta. El juego ofrece los 14 idiomas de la interfaz MatchApp. Esta edición para navegador no está disponible dentro de la aplicación nativa Android ni en Kids Mode."}
+        {
+          "question": "¿Cómo empiezo a jugar?",
+          "answer": "Ve al inicio de MatchApp, elige Jugar Lumina Match y abre un nivel. Encuentra todas las parejas para avanzar; Sin prisas no tiene cuenta atrás."
+        },
+        {
+          "question": "¿Es gratis? ¿Tiene anuncios?",
+          "answer": "Lumina Match es gratuito. Actualmente no hay anuncios dentro del juego ni vídeos que debas ver para seguir jugando."
+        },
+        {
+          "question": "¿Necesito una cuenta para guardar?",
+          "answer": "Sí. Las cuentas registradas conservan el progreso. Los invitados pueden jugar sin registrarse, pero su progreso no se almacena en el navegador y se pierde al cerrar o recargar el juego."
+        },
+        {
+          "question": "¿Puedo jugar con amigos?",
+          "answer": "Sí: jugad por turnos en un mismo dispositivo o iniciad sesión para partidas clásicas online con amigos aceptados en Match Together. La campaña sigue siendo individual."
+        },
+        {
+          "question": "¿Por qué todavía no se oye nada?",
+          "answer": "Toca primero un control del juego y comprueba los ajustes de audio y el volumen del dispositivo. También puedes jugar con la música y los efectos desactivados."
+        },
+        {
+          "question": "¿Qué dispositivos e idiomas admite?",
+          "answer": "Usa un navegador de ordenador, móvil o tableta. El juego ofrece los 14 idiomas de la interfaz MatchApp. Esta edición para navegador no está disponible dentro de la aplicación nativa Android ni en Kids Mode."
+        }
       ],
       "relatedTitle": "Más de MatchApp Ai",
-      "relatedLinks": {"how": "Cómo funciona MatchApp Ai", "together": "Conoce Match Together", "discover": "Descubre entretenimiento con Jonas"}
+      "relatedLinks": {
+        "how": "Cómo funciona MatchApp Ai",
+        "together": "Conoce Match Together",
+        "discover": "Descubre entretenimiento con Jonas"
+      },
+      "socialAlt": "Lumina Match en el navegador: cartas ilustradas del primer tablero de campaña"
     },
     "fr": {
       "nativeName": "Français",
       "ogLocale": "fr_FR",
       "title": "Lumina Match : Jeu de Mémoire Gratuit en Ligne | MatchApp Ai",
-      "description": "Jouez à Lumina Match : 250 niveaux, mode détente ou chronométré, musique et parties entre amis. Sauvegardez votre progression avec un compte MatchApp.",
-      "keywords": ["Lumina Match", "jeu de mémoire gratuit en ligne", "jeu de paires de cartes", "jeu de mémoire 250 niveaux", "jeu de mémoire sur navigateur", "jeu de paires relaxant", "jeu de mémoire entre amis", "jeu de cartes chronométré"],
+      "description": "Jouez à Lumina Match gratuitement dans le navigateur : 250 niveaux, sans téléchargement, mode détendu ou chronométré et parties entre amis. Compte requis pour sauvegarder.",
+      "keywords": [
+        "Lumina Match",
+        "jeu de mémoire en ligne gratuit",
+        "jeu de paires de cartes",
+        "jeu de concentration en ligne",
+        "retrouver les paires",
+        "jeu de mémoire sans téléchargement",
+        "jeu de mémoire relaxant",
+        "jeu de mémoire à deux",
+        "jeu de mémoire 250 niveaux"
+      ],
       "eyebrow": "Lumina Match · Jeu sur navigateur",
-      "h1": "Retrouvez chaque paire. Explorez 250 niveaux.",
+      "h1": "Jeu de mémoire en ligne gratuit · 250 niveaux",
       "intro": [
         "Lumina Match est un jeu de mémoire gratuit en ligne dans MatchApp Ai. Retournez les cartes illustrées, retenez leur position et retrouvez toutes les paires pour ouvrir le niveau suivant.",
         "Profitez d'une partie tranquille en solo, essayez un défi chronométré facultatif ou partagez une partie classique entre amis. Le jeu fonctionne dans le navigateur de votre ordinateur, téléphone ou tablette, sans installation."
@@ -253,8 +431,15 @@
         {
           "id": "how-to-play",
           "title": "Comment jouer et retrouver les paires",
-          "paragraphs": ["À chaque tour, vous révélez deux cartes. Les cartes identiques restent visibles ; les autres se retournent. Utilisez vos souvenirs au tour suivant."],
-          "steps": ["Ouvrez Lumina Match depuis l'accueil et choisissez un niveau de la campagne.", "Choisissez Détente pour jouer sans compte à rebours, ou Défi chronométré pour affronter le temps.", "Retrouvez toutes les paires pour débloquer le niveau suivant. Rejouez les niveaux terminés à votre guise."]
+          "paragraphs": [
+            "À chaque tour, vous révélez deux cartes. Les cartes identiques restent visibles ; les autres se retournent. Utilisez vos souvenirs au tour suivant.",
+            "Vous débutez ? Ouvrez le Guide débutant dans le menu pour une courte partie interactive d’entraînement. Elle ne modifie pas votre progression dans la campagne."
+          ],
+          "steps": [
+            "Ouvrez Lumina Match depuis l'accueil et choisissez un niveau de la campagne.",
+            "Choisissez Détente pour jouer sans compte à rebours, ou Défi chronométré pour affronter le temps.",
+            "Retrouvez toutes les paires pour débloquer le niveau suivant. Rejouez les niveaux terminés à votre guise."
+          ]
         },
         {
           "id": "campaign",
@@ -287,28 +472,77 @@
             "La musique des thèmes et les sons des cartes démarrent après votre première interaction avec le jeu. Les réglages audio permettent d'activer séparément la musique et les effets sonores, et de régler le volume.",
             "Faites une pause lorsque vous en avez besoin. Le son s'arrête lorsque le jeu est en pause ou masqué, et Fermer coupe l'audio du jeu en revenant à l'accueil."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Paires, mémoire et match-3 : quelle différence ?",
+          "paragraphs": [
+            "Lumina Match reprend le principe des paires face cachée : retournez deux cartes, retenez les images et retrouvez leur double. Le plateau est une grille de cartes, pas un puzzle de chemins ou de tuiles coulissantes. Il ne faut ni échanger des gemmes ni aligner trois objets.",
+            "Ce principe familier des jeux de cartes sur table devient un puzzle de navigateur avec des thèmes illustrés et une campagne. Aucun téléchargement n’est nécessaire pour essayer cette édition. Les invités peuvent jouer, mais une sauvegarde entre les visites nécessite un compte MatchApp ; jouer sans inscription ne conserve pas automatiquement la progression."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Retrouver les paires en moins de coups",
+          "paragraphs": [
+            "Commencez en mode Détendu pour découvrir le plateau. Parcourez une ligne à la fois et associez chaque image à une position, par exemple « lune, en haut à gauche ». Si la première carte montre une image déjà vue, choisissez son double connu plutôt qu’une nouvelle carte. Une erreur apporte aussi une information utile.",
+            "Apprenez les commandes avec le guide, puis rejouez un niveau terminé pour comparer vos coups. Les indices révèlent une paire mais limitent cet essai à deux étoiles : réservez-les aux vraies hésitations. Le mode chronométré ajoute un compte à rebours sans changer l’objectif de trouver toutes les paires. Ces conseils ne promettent aucun bénéfice médical ou cognitif."
+          ]
         }
       ],
       "faqTitle": "Questions sur Lumina Match",
       "faqs": [
-        {"question": "Comment commencer à jouer ?", "answer": "Allez sur l'accueil de MatchApp, choisissez Jouer à Lumina Match et ouvrez un niveau. Retrouvez toutes les paires pour avancer ; Détente n'a pas de compte à rebours."},
-        {"question": "Le jeu est-il gratuit et contient-il des publicités ?", "answer": "Lumina Match est gratuit. Il n'y a actuellement aucune publicité dans le jeu ni de vidéo à regarder pour continuer à jouer."},
-        {"question": "Faut-il un compte pour sauvegarder ?", "answer": "Oui. Les comptes inscrits conservent la progression. Les invités peuvent jouer sans inscription, mais leur progression n'est pas enregistrée dans le navigateur et disparaît à la fermeture ou au rechargement du jeu."},
-        {"question": "Puis-je jouer avec des amis ?", "answer": "Oui : alternez les tours sur un appareil ou connectez-vous pour des parties classiques en ligne avec vos amis acceptés sur Match Together. La campagne reste un mode solo."},
-        {"question": "Pourquoi n'y a-t-il pas encore de son ?", "answer": "Touchez d'abord une commande du jeu, puis vérifiez les réglages audio et le volume de votre appareil. Vous pouvez aussi jouer sans musique ni effets sonores."},
-        {"question": "Quels appareils et quelles langues sont pris en charge ?", "answer": "Utilisez le navigateur d'un ordinateur, téléphone ou tablette. Le jeu propose les 14 langues de l'interface MatchApp. Cette édition pour navigateur n'est pas disponible dans l'application Android native ni dans Kids Mode."}
+        {
+          "question": "Comment commencer à jouer ?",
+          "answer": "Allez sur l'accueil de MatchApp, choisissez Jouer à Lumina Match et ouvrez un niveau. Retrouvez toutes les paires pour avancer ; Détente n'a pas de compte à rebours."
+        },
+        {
+          "question": "Le jeu est-il gratuit et contient-il des publicités ?",
+          "answer": "Lumina Match est gratuit. Il n'y a actuellement aucune publicité dans le jeu ni de vidéo à regarder pour continuer à jouer."
+        },
+        {
+          "question": "Faut-il un compte pour sauvegarder ?",
+          "answer": "Oui. Les comptes inscrits conservent la progression. Les invités peuvent jouer sans inscription, mais leur progression n'est pas enregistrée dans le navigateur et disparaît à la fermeture ou au rechargement du jeu."
+        },
+        {
+          "question": "Puis-je jouer avec des amis ?",
+          "answer": "Oui : alternez les tours sur un appareil ou connectez-vous pour des parties classiques en ligne avec vos amis acceptés sur Match Together. La campagne reste un mode solo."
+        },
+        {
+          "question": "Pourquoi n'y a-t-il pas encore de son ?",
+          "answer": "Touchez d'abord une commande du jeu, puis vérifiez les réglages audio et le volume de votre appareil. Vous pouvez aussi jouer sans musique ni effets sonores."
+        },
+        {
+          "question": "Quels appareils et quelles langues sont pris en charge ?",
+          "answer": "Utilisez le navigateur d'un ordinateur, téléphone ou tablette. Le jeu propose les 14 langues de l'interface MatchApp. Cette édition pour navigateur n'est pas disponible dans l'application Android native ni dans Kids Mode."
+        }
       ],
       "relatedTitle": "À découvrir sur MatchApp Ai",
-      "relatedLinks": {"how": "Comment fonctionne MatchApp Ai", "together": "Découvrez Match Together", "discover": "Explorez le divertissement avec Jonas"}
+      "relatedLinks": {
+        "how": "Comment fonctionne MatchApp Ai",
+        "together": "Découvrez Match Together",
+        "discover": "Explorez le divertissement avec Jonas"
+      },
+      "socialAlt": "Lumina Match dans le navigateur : cartes illustrées du premier niveau de la campagne"
     },
     "de": {
       "nativeName": "Deutsch",
       "ogLocale": "de_DE",
       "title": "Lumina Match: Kostenloses Online-Merkspiel | MatchApp Ai",
-      "description": "Spiele Lumina Match mit 250 Levels, entspannt oder auf Zeit, mit Musik und Freundesrunden. Speichere deinen Fortschritt mit einem MatchApp-Konto.",
-      "keywords": ["Lumina Match", "kostenloses Online-Merkspiel", "Kartenpaare finden", "Gedächtnisspiel mit 250 Levels", "Merkspiel im Browser", "entspanntes Paare-Spiel", "Merkspiel mit Freunden", "Kartenpaare auf Zeit"],
+      "description": "Spiele Lumina Match kostenlos im Browser: 250 Memory-Level ohne Download, entspannt oder auf Zeit und klassische Runden mit Freunden. Speichern erfordert ein Konto.",
+      "keywords": [
+        "Lumina Match",
+        "Memory online kostenlos",
+        "Paare finden Kartenspiel",
+        "Gedächtnisspiel online",
+        "Kartenpaare finden",
+        "Memory ohne Download",
+        "entspanntes Memory Spiel",
+        "Memory zu zweit",
+        "Memory Spiel mit 250 Leveln"
+      ],
       "eyebrow": "Lumina Match · Browserspiel",
-      "h1": "Finde jedes Paar. Entdecke 250 Levels.",
+      "h1": "Kostenloses Memory-Kartenspiel online · 250 Level",
       "intro": [
         "Lumina Match ist ein kostenloses Online-Merkspiel in MatchApp Ai. Decke illustrierte Karten auf, merke dir ihre Positionen und finde alle Paare, um das nächste Level zu öffnen.",
         "Spiele in Ruhe allein, probiere die freiwillige Zeit-Herausforderung oder teile eine klassische Runde mit Freunden. Das Spiel läuft ohne Spielinstallation im Browser deines Computers, Smartphones oder Tablets."
@@ -328,8 +562,15 @@
         {
           "id": "how-to-play",
           "title": "So funktioniert das Kartenpaare-Spiel",
-          "paragraphs": ["Mit jedem Zug deckst du zwei Karten auf. Gleiche Karten bleiben sichtbar, unterschiedliche werden wieder verdeckt. Nutze beim nächsten Zug, was du dir gemerkt hast."],
-          "steps": ["Öffne Lumina Match auf der Startseite und wähle ein Kampagnenlevel.", "Wähle Entspannt für ein Spiel ohne Countdown oder Zeit-Herausforderung, um gegen die Uhr zu spielen.", "Finde alle Paare, um das nächste Level freizuschalten. Bereits abgeschlossene Levels kannst du jederzeit wiederholen."]
+          "paragraphs": [
+            "Mit jedem Zug deckst du zwei Karten auf. Gleiche Karten bleiben sichtbar, unterschiedliche werden wieder verdeckt. Nutze beim nächsten Zug, was du dir gemerkt hast.",
+            "Neu dabei? Öffne die Anleitung für Anfänger im Spielmenü für eine kurze interaktive Übungsrunde. Dein Kampagnenfortschritt bleibt dabei unverändert."
+          ],
+          "steps": [
+            "Öffne Lumina Match auf der Startseite und wähle ein Kampagnenlevel.",
+            "Wähle Entspannt für ein Spiel ohne Countdown oder Zeit-Herausforderung, um gegen die Uhr zu spielen.",
+            "Finde alle Paare, um das nächste Level freizuschalten. Bereits abgeschlossene Levels kannst du jederzeit wiederholen."
+          ]
         },
         {
           "id": "campaign",
@@ -362,28 +603,77 @@
             "Themenmusik und Kartengeräusche starten nach deiner ersten Aktion im Spiel. In den Audioeinstellungen kannst du Musik und Soundeffekte getrennt ein- oder ausschalten und die Lautstärke anpassen.",
             "Pausiere, wenn du eine Auszeit brauchst. Der Ton stoppt, während das Spiel pausiert oder ausgeblendet ist. Schließen beendet den Spielton bei der Rückkehr zur Startseite."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Kartenpaare, Memory und Match-3: der Unterschied",
+          "paragraphs": [
+            "In Lumina Match suchst du Paare verdeckter Karten: Decke zwei Karten auf, merke dir die Bilder und finde das gleiche Motiv. Das Spielfeld ist ein Kartenraster, kein Wege- oder Schiebepuzzle. Du tauschst keine Edelsteine und bildest keine Dreierreihen.",
+            "Das bekannte Kartenspielprinzip wird im Browser zu einem Puzzle mit illustrierten Themen und einer Levelkampagne. Für diese Ausgabe ist kein Download nötig. Gäste können direkt spielen; um den Fortschritt zwischen Besuchen zu speichern, brauchst du ein MatchApp-Konto. Ohne Anmeldung zu spielen bedeutet nicht, dauerhaft als Gast zu speichern."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Mit weniger Zügen die Paare finden",
+          "paragraphs": [
+            "Lerne ein Spielfeld zuerst im entspannten Modus kennen. Gehe Reihe für Reihe vor und verbinde jedes Motiv mit einem Ort, etwa „Mond, oben links“. Zeigt die erste Karte ein bekanntes Bild, wähle den gemerkten Partner statt einer unbekannten Karte. Auch ein Fehlversuch liefert neue Informationen.",
+            "Übe die Steuerung in der Anleitung und spiele abgeschlossene Level erneut, um deine Züge zu vergleichen. Hinweise zeigen ein Paar, begrenzen diesen Versuch aber auf zwei Sterne. Nutze sie bei echter Unsicherheit. Im Zeitmodus kommt ein Countdown hinzu; das Ziel bleibt, alle Paare zu finden. Dies sind Spieltipps und keine medizinischen oder kognitiven Wirkungsversprechen."
+          ]
         }
       ],
       "faqTitle": "Fragen zu Lumina Match",
       "faqs": [
-        {"question": "Wie beginne ich zu spielen?", "answer": "Öffne die MatchApp-Startseite, wähle Lumina Match spielen und starte ein Level. Finde alle Paare, um weiterzukommen. Entspannt hat keinen Countdown."},
-        {"question": "Ist das Spiel kostenlos und enthält es Werbung?", "answer": "Lumina Match ist kostenlos. Im Spiel gibt es derzeit keine Werbung und keine Videos, die du zum Weiterspielen ansehen musst."},
-        {"question": "Brauche ich zum Speichern ein Konto?", "answer": "Ja. Registrierte Konten behalten den Fortschritt. Gäste können ohne Registrierung spielen; ihr Spielfortschritt wird jedoch nicht im Browser gespeichert und geht beim Schließen oder Neuladen verloren."},
-        {"question": "Kann ich mit Freunden spielen?", "answer": "Ja: Wechselt euch an einem Gerät ab oder meldet euch für klassische Online-Runden mit bestätigten Match-Together-Freunden an. Die Kampagne bleibt ein Solo-Modus."},
-        {"question": "Warum höre ich noch keinen Ton?", "answer": "Tippe zuerst auf ein Spielelement und prüfe dann die Audioeinstellungen sowie die Gerätelautstärke. Du kannst auch ohne Musik und Soundeffekte spielen."},
-        {"question": "Welche Geräte und Sprachen werden unterstützt?", "answer": "Nutze einen Browser auf Computer, Smartphone oder Tablet. Das Spiel unterstützt alle 14 MatchApp-Oberflächensprachen. Diese Browserausgabe ist nicht innerhalb der nativen Android-App oder im Kids Mode verfügbar."}
+        {
+          "question": "Wie beginne ich zu spielen?",
+          "answer": "Öffne die MatchApp-Startseite, wähle Lumina Match spielen und starte ein Level. Finde alle Paare, um weiterzukommen. Entspannt hat keinen Countdown."
+        },
+        {
+          "question": "Ist das Spiel kostenlos und enthält es Werbung?",
+          "answer": "Lumina Match ist kostenlos. Im Spiel gibt es derzeit keine Werbung und keine Videos, die du zum Weiterspielen ansehen musst."
+        },
+        {
+          "question": "Brauche ich zum Speichern ein Konto?",
+          "answer": "Ja. Registrierte Konten behalten den Fortschritt. Gäste können ohne Registrierung spielen; ihr Spielfortschritt wird jedoch nicht im Browser gespeichert und geht beim Schließen oder Neuladen verloren."
+        },
+        {
+          "question": "Kann ich mit Freunden spielen?",
+          "answer": "Ja: Wechselt euch an einem Gerät ab oder meldet euch für klassische Online-Runden mit bestätigten Match-Together-Freunden an. Die Kampagne bleibt ein Solo-Modus."
+        },
+        {
+          "question": "Warum höre ich noch keinen Ton?",
+          "answer": "Tippe zuerst auf ein Spielelement und prüfe dann die Audioeinstellungen sowie die Gerätelautstärke. Du kannst auch ohne Musik und Soundeffekte spielen."
+        },
+        {
+          "question": "Welche Geräte und Sprachen werden unterstützt?",
+          "answer": "Nutze einen Browser auf Computer, Smartphone oder Tablet. Das Spiel unterstützt alle 14 MatchApp-Oberflächensprachen. Diese Browserausgabe ist nicht innerhalb der nativen Android-App oder im Kids Mode verfügbar."
+        }
       ],
       "relatedTitle": "Mehr von MatchApp Ai",
-      "relatedLinks": {"how": "So funktioniert MatchApp Ai", "together": "Match Together kennenlernen", "discover": "Mit Jonas Unterhaltung entdecken"}
+      "relatedLinks": {
+        "how": "So funktioniert MatchApp Ai",
+        "together": "Match Together kennenlernen",
+        "discover": "Mit Jonas Unterhaltung entdecken"
+      },
+      "socialAlt": "Lumina Match im Browser: illustrierte Memory-Karten im ersten Kampagnenlevel"
     },
     "it": {
       "nativeName": "Italiano",
       "ogLocale": "it_IT",
       "title": "Lumina Match: Gioco di Memoria Online Gratis | MatchApp Ai",
-      "description": "Gioca a Lumina Match: 250 livelli, modalità rilassata o a tempo, musica e partite con amici. Salva i tuoi progressi con un account MatchApp.",
-      "keywords": ["Lumina Match", "gioco di memoria online gratis", "gioco di coppie di carte", "gioco di memoria con 250 livelli", "gioco di memoria nel browser", "gioco di abbinamenti rilassante", "gioco di memoria con amici", "abbinare carte a tempo"],
+      "description": "Gioca gratis a Lumina Match nel browser: 250 livelli di memoria senza download, modalità rilassata o a tempo e partite con amici. Serve un account per salvare.",
+      "keywords": [
+        "Lumina Match",
+        "gioco di memoria online gratis",
+        "gioco di abbinare carte",
+        "trova le coppie online",
+        "memory senza download",
+        "gioco di memoria per due",
+        "gioco di memoria rilassante",
+        "gioco di carte nel browser",
+        "memory con 250 livelli"
+      ],
       "eyebrow": "Lumina Match · Gioco nel browser",
-      "h1": "Trova ogni coppia. Esplora 250 livelli.",
+      "h1": "Gioco di memoria online gratis · 250 livelli",
       "intro": [
         "Lumina Match è un gioco di memoria online gratuito all'interno di MatchApp Ai. Gira le carte illustrate, ricorda le loro posizioni e trova tutte le coppie per aprire il livello successivo.",
         "Goditi una partita tranquilla in solitaria, prova una sfida a tempo facoltativa o condividi una partita classica con gli amici. Il gioco funziona nel browser di computer, telefono o tablet, senza installare un gioco."
@@ -403,8 +693,15 @@
         {
           "id": "how-to-play",
           "title": "Come giocare e abbinare le carte",
-          "paragraphs": ["A ogni turno scopri due carte. Quelle uguali restano visibili; quelle diverse si coprono di nuovo. Usa ciò che ricordi nel turno successivo."],
-          "steps": ["Apri Lumina Match dalla pagina iniziale e scegli un livello della campagna.", "Scegli Rilassato per giocare senza conto alla rovescia, oppure Sfida a tempo per affrontare il cronometro.", "Trova tutte le coppie per sbloccare il livello successivo. Rigioca i livelli completati quando vuoi."]
+          "paragraphs": [
+            "A ogni turno scopri due carte. Quelle uguali restano visibili; quelle diverse si coprono di nuovo. Usa ciò che ricordi nel turno successivo.",
+            "È la tua prima partita? Apri la Guida per principianti dal menu per una breve prova interattiva. Non modifica i tuoi progressi nella campagna."
+          ],
+          "steps": [
+            "Apri Lumina Match dalla pagina iniziale e scegli un livello della campagna.",
+            "Scegli Rilassato per giocare senza conto alla rovescia, oppure Sfida a tempo per affrontare il cronometro.",
+            "Trova tutte le coppie per sbloccare il livello successivo. Rigioca i livelli completati quando vuoi."
+          ]
         },
         {
           "id": "campaign",
@@ -437,28 +734,77 @@
             "La musica dei temi e i suoni delle carte iniziano dopo la prima interazione con il gioco. Le impostazioni audio permettono di attivare musica ed effetti separatamente e regolare il volume.",
             "Metti in pausa quando hai bisogno di una sosta. L'audio si ferma quando il gioco è in pausa o nascosto; Chiudi interrompe l'audio del gioco mentre torni alla pagina iniziale."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Coppie, memory e match-3: che differenza c’è?",
+          "paragraphs": [
+            "Lumina Match segue il classico gioco delle coppie coperte: gira due carte, ricorda le immagini e trova quella identica. Il tabellone è una griglia di carte, non un puzzle di percorsi o tessere scorrevoli. Non scambi gemme e non allinei tre oggetti.",
+            "Il familiare gioco di carte da tavolo diventa un puzzle nel browser con temi illustrati e una campagna a livelli. Non occorre scaricare nulla per provare questa edizione. Gli ospiti possono giocare subito, ma per conservare i progressi tra le visite serve un account MatchApp; giocare senza registrazione non garantisce salvataggi permanenti."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Come trovare le coppie con meno mosse",
+          "paragraphs": [
+            "Inizia in modalità Rilassata per conoscere il tabellone. Esamina una riga alla volta e associa ogni immagine a una posizione, per esempio “luna, in alto a sinistra”. Se la prima carta mostra un’immagine già vista, scegli la sua compagna nota anziché scoprirne un’altra. Anche un errore fornisce informazioni.",
+            "Impara i comandi con la guida e ripeti un livello completato per confrontare le mosse. Gli aiuti mostrano una coppia ma limitano quel tentativo a due stelle: usali nei momenti di vera incertezza. La modalità a tempo aggiunge un conto alla rovescia, senza cambiare l’obiettivo di trovare tutte le coppie. Sono consigli di gioco, non promesse di benefici medici o cognitivi."
+          ]
         }
       ],
       "faqTitle": "Domande su Lumina Match",
       "faqs": [
-        {"question": "Come inizio a giocare?", "answer": "Vai alla pagina iniziale di MatchApp, scegli Gioca a Lumina Match e apri un livello. Trova tutte le coppie per avanzare; Rilassato non ha conto alla rovescia."},
-        {"question": "Il gioco è gratuito? Ci sono pubblicità?", "answer": "Lumina Match è gratuito. Attualmente non ci sono pubblicità all'interno del gioco né video da guardare per continuare a giocare."},
-        {"question": "Serve un account per salvare?", "answer": "Sì. Gli account registrati conservano i progressi. Gli ospiti possono giocare senza registrarsi, ma i loro progressi non vengono memorizzati nel browser e si perdono chiudendo o ricaricando il gioco."},
-        {"question": "Posso giocare con gli amici?", "answer": "Sì: alternate i turni su un dispositivo oppure accedete per partite classiche online con amici accettati su Match Together. La campagna rimane una modalità individuale."},
-        {"question": "Perché non sento ancora nulla?", "answer": "Tocca prima un comando del gioco, poi controlla le impostazioni audio e il volume del dispositivo. Puoi anche giocare con musica ed effetti disattivati."},
-        {"question": "Quali dispositivi e lingue sono supportati?", "answer": "Usa un browser su computer, telefono o tablet. Il gioco supporta tutte le 14 lingue dell'interfaccia MatchApp. Questa edizione per browser non è disponibile nell'app Android nativa né in Kids Mode."}
+        {
+          "question": "Come inizio a giocare?",
+          "answer": "Vai alla pagina iniziale di MatchApp, scegli Gioca a Lumina Match e apri un livello. Trova tutte le coppie per avanzare; Rilassato non ha conto alla rovescia."
+        },
+        {
+          "question": "Il gioco è gratuito? Ci sono pubblicità?",
+          "answer": "Lumina Match è gratuito. Attualmente non ci sono pubblicità all'interno del gioco né video da guardare per continuare a giocare."
+        },
+        {
+          "question": "Serve un account per salvare?",
+          "answer": "Sì. Gli account registrati conservano i progressi. Gli ospiti possono giocare senza registrarsi, ma i loro progressi non vengono memorizzati nel browser e si perdono chiudendo o ricaricando il gioco."
+        },
+        {
+          "question": "Posso giocare con gli amici?",
+          "answer": "Sì: alternate i turni su un dispositivo oppure accedete per partite classiche online con amici accettati su Match Together. La campagna rimane una modalità individuale."
+        },
+        {
+          "question": "Perché non sento ancora nulla?",
+          "answer": "Tocca prima un comando del gioco, poi controlla le impostazioni audio e il volume del dispositivo. Puoi anche giocare con musica ed effetti disattivati."
+        },
+        {
+          "question": "Quali dispositivi e lingue sono supportati?",
+          "answer": "Usa un browser su computer, telefono o tablet. Il gioco supporta tutte le 14 lingue dell'interfaccia MatchApp. Questa edizione per browser non è disponibile nell'app Android nativa né in Kids Mode."
+        }
       ],
       "relatedTitle": "Altro da MatchApp Ai",
-      "relatedLinks": {"how": "Come funziona MatchApp Ai", "together": "Scopri Match Together", "discover": "Scopri l'intrattenimento con Jonas"}
+      "relatedLinks": {
+        "how": "Come funziona MatchApp Ai",
+        "together": "Scopri Match Together",
+        "discover": "Scopri l'intrattenimento con Jonas"
+      },
+      "socialAlt": "Lumina Match nel browser: carte illustrate nel primo livello della campagna"
     },
     "tr": {
       "nativeName": "Türkçe",
       "ogLocale": "tr_TR",
       "title": "Lumina Match: Ücretsiz Çevrimiçi Hafıza Oyunu | MatchApp Ai",
-      "description": "Lumina Match ile 250 bölüm, rahat veya süreli oyun, müzik ve arkadaş turları seni bekliyor. İlerlemeni MatchApp hesabınla kaydet.",
-      "keywords": ["Lumina Match", "ücretsiz çevrimiçi hafıza oyunu", "kart çifti eşleştirme oyunu", "250 bölümlük hafıza oyunu", "tarayıcıda hafıza oyunu", "rahatlatıcı eşleştirme oyunu", "arkadaşlarla hafıza oyunu", "süreli kart eşleştirme"],
+      "description": "Lumina Match tarayıcıda ücretsiz: indirmeden 250 hafıza bölümü, rahat veya süreli oyun ve arkadaşlarla klasik turlar. İlerlemeyi kaydetmek için hesap gerekir.",
+      "keywords": [
+        "Lumina Match",
+        "ücretsiz hafıza oyunu",
+        "kart eşleştirme oyunu",
+        "çiftleri bulma oyunu",
+        "indirmeden hafıza oyunu",
+        "iki kişilik hafıza oyunu",
+        "rahatlatıcı hafıza oyunu",
+        "tarayıcı kart oyunu",
+        "250 bölümlü hafıza oyunu"
+      ],
       "eyebrow": "Lumina Match · Tarayıcı oyunu",
-      "h1": "Her çifti bul. 250 bölümü keşfet.",
+      "h1": "Ücretsiz çevrimiçi hafıza kartı oyunu · 250 bölüm",
       "intro": [
         "Lumina Match, MatchApp Ai içindeki ücretsiz çevrimiçi hafıza oyunudur. Resimli kartları çevir, yerlerini hatırla ve sonraki bölümü açmak için tüm çiftleri bul.",
         "Tek başına sakin bir oyun oyna, isteğe bağlı süreli mücadeleyi dene veya arkadaşlarınla klasik bir tur paylaş. Oyun yüklemeden bilgisayarının, telefonunun ya da tabletinin tarayıcısında oynayabilirsin."
@@ -478,8 +824,15 @@
         {
           "id": "how-to-play",
           "title": "Kart eşleştirme oyunu nasıl oynanır?",
-          "paragraphs": ["Her hamlede iki kart açılır. Aynı kartlar açık kalır, farklı kartlar yeniden kapanır. Sonraki hamlende hatırladığın yerlerden yararlan."],
-          "steps": ["Ana sayfadan Lumina Match'i aç ve yolculuktan bir bölüm seç.", "Geri sayım olmadan oynamak için Rahat, zamana karşı oynamak için Süreli mücadele seçeneğini seç.", "Sonraki bölümü açmak için tüm çiftleri bul. Tamamladığın bölümleri istediğin zaman yeniden oyna."]
+          "paragraphs": [
+            "Her hamlede iki kart açılır. Aynı kartlar açık kalır, farklı kartlar yeniden kapanır. Sonraki hamlende hatırladığın yerlerden yararlan.",
+            "İlk kez mi oynuyorsunuz? Oyun menüsündeki Başlangıç Rehberini açıp kısa bir etkileşimli turda alıştırma yapın. Bu tur kampanya ilerlemenizi değiştirmez."
+          ],
+          "steps": [
+            "Ana sayfadan Lumina Match'i aç ve yolculuktan bir bölüm seç.",
+            "Geri sayım olmadan oynamak için Rahat, zamana karşı oynamak için Süreli mücadele seçeneğini seç.",
+            "Sonraki bölümü açmak için tüm çiftleri bul. Tamamladığın bölümleri istediğin zaman yeniden oyna."
+          ]
         },
         {
           "id": "campaign",
@@ -512,28 +865,77 @@
             "Tema müziği ve kart sesleri, oyunla ilk etkileşiminden sonra başlar. Ses ayarlarında müziği ve ses efektlerini ayrı ayrı açıp kapatabilir, ses düzeyini ayarlayabilirsin.",
             "Ara vermek istediğinde oyunu duraklat. Oyun duraklatıldığında veya gizlendiğinde ses kesilir; Kapat ile ana sayfaya döndüğünde oyun sesi durur."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Çift bulma, hafıza ve üçlü eşleştirme arasındaki fark",
+          "paragraphs": [
+            "Lumina Match kapalı kart çiftlerini bulma oyunudur: iki kartı açın, resimleri hatırlayın ve aynı olanları eşleştirin. Tahta bir kart ızgarasıdır; yol oluşturma veya taş kaydırma bulmacası değildir. Mücevherlerin yerini değiştirmez veya üç nesneyi sıraya dizmezsiniz.",
+            "Masa başında oynanan tanıdık kart oyunu fikri, resimli temalar ve bölümlerle tarayıcıya taşınır. Bu sürümü denemek için indirme gerekmez. Misafirler hemen oynayabilir; ziyaretler arasında ilerlemeyi saklamak için MatchApp hesabı gerekir. Kayıtsız oynamak, kalıcı misafir kaydı olduğu anlamına gelmez."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Daha az hamlede çiftleri bulma ipuçları",
+          "paragraphs": [
+            "Tahtayı öğrenirken Rahat modda başlayın. Satır satır ilerleyip her resmi bir konumla eşleştirin; örneğin “ay, sol üst”. İlk kart tanıdık bir resim gösterdiğinde yeni bir kart açmak yerine hatırladığınız eşini seçin. Yanlış eşleştirme de sonraki hamle için bilgi verir.",
+            "Kontrolleri rehberde öğrenin, ardından hamle sayısını karşılaştırmak için bitirdiğiniz bir bölümü yeniden oynayın. İpuçları bir çifti gösterir ancak o denemeyi iki yıldızla sınırlar; gerçekten emin olmadığınızda kullanın. Süreli mod geri sayım ekler, bütün çiftleri bulma hedefini değiştirmez. Bunlar oyun önerileridir, tıbbi veya bilişsel yarar vaadi değildir."
+          ]
         }
       ],
       "faqTitle": "Lumina Match hakkında sorular",
       "faqs": [
-        {"question": "Oynamaya nasıl başlarım?", "answer": "MatchApp ana sayfasına git, Lumina Match oyna seçeneğini seç ve bir bölüm aç. İlerlemek için tüm çiftleri bul; Rahat modunda geri sayım yoktur."},
-        {"question": "Oyun ücretsiz mi, reklam içeriyor mu?", "answer": "Lumina Match ücretsizdir. Şu anda oyunun içinde reklam yoktur ve oynamaya devam etmek için video izlemen gerekmez."},
-        {"question": "Kaydetmek için hesap gerekiyor mu?", "answer": "Evet. Kayıtlı hesaplar ilerlemeyi korur. Misafirler kayıt olmadan oynayabilir; ancak oyun ilerlemeleri tarayıcıya kaydedilmez ve oyun kapatıldığında veya yeniden yüklendiğinde kaybolur."},
-        {"question": "Arkadaşlarımla oynayabilir miyim?", "answer": "Evet: aynı cihazda sırayla oynayın veya Match Together'da kabul edilmiş arkadaşlarla çevrimiçi klasik turlar için giriş yapın. Yolculuk tek oyunculu bir mod olarak kalır."},
-        {"question": "Neden henüz ses yok?", "answer": "Önce bir oyun kontrolüne dokun, ardından ses ayarlarını ve cihazının ses düzeyini kontrol et. Müzik ve ses efektleri kapalıyken de oynayabilirsin."},
-        {"question": "Hangi cihazlar ve diller destekleniyor?", "answer": "Bilgisayar, telefon veya tablet tarayıcısı kullan. Oyun, MatchApp arayüzünün 14 dilini de destekler. Bu tarayıcı sürümü yerel Android uygulamasının içinde veya Kids Mode'da kullanılamaz."}
+        {
+          "question": "Oynamaya nasıl başlarım?",
+          "answer": "MatchApp ana sayfasına git, Lumina Match oyna seçeneğini seç ve bir bölüm aç. İlerlemek için tüm çiftleri bul; Rahat modunda geri sayım yoktur."
+        },
+        {
+          "question": "Oyun ücretsiz mi, reklam içeriyor mu?",
+          "answer": "Lumina Match ücretsizdir. Şu anda oyunun içinde reklam yoktur ve oynamaya devam etmek için video izlemen gerekmez."
+        },
+        {
+          "question": "Kaydetmek için hesap gerekiyor mu?",
+          "answer": "Evet. Kayıtlı hesaplar ilerlemeyi korur. Misafirler kayıt olmadan oynayabilir; ancak oyun ilerlemeleri tarayıcıya kaydedilmez ve oyun kapatıldığında veya yeniden yüklendiğinde kaybolur."
+        },
+        {
+          "question": "Arkadaşlarımla oynayabilir miyim?",
+          "answer": "Evet: aynı cihazda sırayla oynayın veya Match Together'da kabul edilmiş arkadaşlarla çevrimiçi klasik turlar için giriş yapın. Yolculuk tek oyunculu bir mod olarak kalır."
+        },
+        {
+          "question": "Neden henüz ses yok?",
+          "answer": "Önce bir oyun kontrolüne dokun, ardından ses ayarlarını ve cihazının ses düzeyini kontrol et. Müzik ve ses efektleri kapalıyken de oynayabilirsin."
+        },
+        {
+          "question": "Hangi cihazlar ve diller destekleniyor?",
+          "answer": "Bilgisayar, telefon veya tablet tarayıcısı kullan. Oyun, MatchApp arayüzünün 14 dilini de destekler. Bu tarayıcı sürümü yerel Android uygulamasının içinde veya Kids Mode'da kullanılamaz."
+        }
       ],
       "relatedTitle": "MatchApp Ai'da daha fazlası",
-      "relatedLinks": {"how": "MatchApp Ai nasıl çalışır?", "together": "Match Together'ı tanı", "discover": "Jonas ile eğlenceyi keşfet"}
+      "relatedLinks": {
+        "how": "MatchApp Ai nasıl çalışır?",
+        "together": "Match Together'ı tanı",
+        "discover": "Jonas ile eğlenceyi keşfet"
+      },
+      "socialAlt": "Lumina Match tarayıcı oyununun ilk kampanya tahtasındaki resimli hafıza kartları"
     },
     "ru": {
       "nativeName": "Русский",
       "ogLocale": "ru_RU",
       "title": "Lumina Match: Бесплатная Игра на Память | MatchApp Ai",
-      "description": "Играйте в Lumina Match: 250 уровней, спокойный режим или игра на время, музыка и раунды с друзьями. Сохраняйте прогресс в аккаунте MatchApp.",
-      "keywords": ["Lumina Match", "бесплатная игра на память онлайн", "игра найди пары карточек", "игра на память 250 уровней", "игра на память в браузере", "спокойная игра на поиск пар", "игра на память с друзьями", "поиск пар на время"],
+      "description": "Играйте в Lumina Match бесплатно в браузере: 250 уровней без скачивания, спокойный режим или игра на время и партии с друзьями. Для сохранения нужен аккаунт.",
+      "keywords": [
+        "Lumina Match",
+        "игра на память онлайн бесплатно",
+        "игра найди пару",
+        "парные карточки онлайн",
+        "игра на память без скачивания",
+        "игра на память на двоих",
+        "спокойная игра на память",
+        "карточная игра в браузере",
+        "игра на память 250 уровней"
+      ],
       "eyebrow": "Lumina Match · Браузерная игра",
-      "h1": "Найдите каждую пару. Пройдите 250 уровней.",
+      "h1": "Бесплатная игра на память онлайн · 250 уровней",
       "intro": [
         "Lumina Match — бесплатная онлайн-игра на память внутри MatchApp Ai. Переворачивайте карточки с иллюстрациями, запоминайте их расположение и находите все пары, чтобы открыть следующий уровень.",
         "Играйте в спокойном одиночном режиме, попробуйте необязательное испытание на время или разделите классический раунд с друзьями. Игра работает в браузере компьютера, телефона или планшета без установки игры."
@@ -553,8 +955,15 @@
         {
           "id": "how-to-play",
           "title": "Как играть и находить пары карточек",
-          "paragraphs": ["За один ход открываются две карточки. Одинаковые остаются видимыми, а разные снова переворачиваются. Используйте запомненные позиции на следующем ходу."],
-          "steps": ["Откройте Lumina Match с главной страницы и выберите уровень кампании.", "Выберите Без спешки для игры без обратного отсчёта или Игра на время для испытания с таймером.", "Найдите все пары, чтобы открыть следующий уровень. Пройденные уровни можно переигрывать в любое время."]
+          "paragraphs": [
+            "За один ход открываются две карточки. Одинаковые остаются видимыми, а разные снова переворачиваются. Используйте запомненные позиции на следующем ходу.",
+            "Играете впервые? Откройте руководство для начинающих в меню и пройдите короткую интерактивную тренировку. Она не меняет прогресс кампании."
+          ],
+          "steps": [
+            "Откройте Lumina Match с главной страницы и выберите уровень кампании.",
+            "Выберите Без спешки для игры без обратного отсчёта или Игра на время для испытания с таймером.",
+            "Найдите все пары, чтобы открыть следующий уровень. Пройденные уровни можно переигрывать в любое время."
+          ]
         },
         {
           "id": "campaign",
@@ -587,28 +996,77 @@
             "Тематическая музыка и звуки карточек начинаются после первого действия в игре. В настройках аудио можно отдельно включать музыку и звуковые эффекты, а также менять громкость.",
             "Ставьте игру на паузу, когда нужен перерыв. Звук останавливается, пока игра на паузе или скрыта; кнопка Закрыть выключает звук игры при возвращении на главную."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Поиск пар, игра на память и «три в ряд»: в чём разница?",
+          "paragraphs": [
+            "В Lumina Match нужно находить пары закрытых карточек: откройте две, запомните картинки и найдите одинаковые. Поле состоит из сетки карточек, а не из дорожек или скользящих плиток. Здесь не требуется менять местами кристаллы или собирать три предмета в ряд.",
+            "Знакомая идея настольной карточной игры превращается в браузерную головоломку с иллюстрированными темами и кампанией. Для этой версии ничего скачивать не нужно. Гости могут начать сразу, но для сохранения между посещениями нужен аккаунт MatchApp. Игра без регистрации не означает постоянного гостевого сохранения."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Как находить пары за меньшее число ходов",
+          "paragraphs": [
+            "Для знакомства с полем начните в спокойном режиме. Просматривайте по одному ряду и связывайте картинку с местом, например «луна, слева вверху». Если первая карточка знакома, выберите её уже увиденную пару, а не новую неизвестную карточку. Ошибка тоже даёт полезную информацию.",
+            "Освойте управление в руководстве, затем переиграйте завершённый уровень и сравните число ходов. Подсказка показывает пару, но ограничивает результат попытки двумя звёздами; используйте её, когда действительно сомневаетесь. Режим на время добавляет отсчёт, не меняя цели найти все пары. Это игровые советы, а не обещание медицинской пользы или улучшения когнитивных функций."
+          ]
         }
       ],
       "faqTitle": "Вопросы о Lumina Match",
       "faqs": [
-        {"question": "Как начать играть?", "answer": "Перейдите на главную MatchApp, выберите Играть в Lumina Match и откройте уровень. Найдите все пары, чтобы продвинуться дальше; в режиме Без спешки нет обратного отсчёта."},
-        {"question": "Игра бесплатная? Есть ли реклама?", "answer": "Lumina Match бесплатна. Сейчас внутри игры нет рекламы и не нужно смотреть видео, чтобы продолжить играть."},
-        {"question": "Нужен ли аккаунт для сохранения?", "answer": "Да. Зарегистрированные аккаунты сохраняют прогресс. Гости могут играть без регистрации, но их игровой прогресс не записывается в хранилище браузера и теряется при закрытии или перезагрузке игры."},
-        {"question": "Можно играть с друзьями?", "answer": "Да: ходите по очереди на одном устройстве или войдите в аккаунт для классических онлайн-раундов с подтверждёнными друзьями из Match Together. Кампания остаётся одиночным режимом."},
-        {"question": "Почему пока нет звука?", "answer": "Сначала нажмите на элемент управления игрой, затем проверьте настройки аудио и громкость устройства. Можно также играть с выключенной музыкой и звуковыми эффектами."},
-        {"question": "Какие устройства и языки поддерживаются?", "answer": "Используйте браузер компьютера, телефона или планшета. Игра поддерживает все 14 языков интерфейса MatchApp. Эта браузерная версия недоступна внутри нативного приложения Android и в Kids Mode."}
+        {
+          "question": "Как начать играть?",
+          "answer": "Перейдите на главную MatchApp, выберите Играть в Lumina Match и откройте уровень. Найдите все пары, чтобы продвинуться дальше; в режиме Без спешки нет обратного отсчёта."
+        },
+        {
+          "question": "Игра бесплатная? Есть ли реклама?",
+          "answer": "Lumina Match бесплатна. Сейчас внутри игры нет рекламы и не нужно смотреть видео, чтобы продолжить играть."
+        },
+        {
+          "question": "Нужен ли аккаунт для сохранения?",
+          "answer": "Да. Зарегистрированные аккаунты сохраняют прогресс. Гости могут играть без регистрации, но их игровой прогресс не записывается в хранилище браузера и теряется при закрытии или перезагрузке игры."
+        },
+        {
+          "question": "Можно играть с друзьями?",
+          "answer": "Да: ходите по очереди на одном устройстве или войдите в аккаунт для классических онлайн-раундов с подтверждёнными друзьями из Match Together. Кампания остаётся одиночным режимом."
+        },
+        {
+          "question": "Почему пока нет звука?",
+          "answer": "Сначала нажмите на элемент управления игрой, затем проверьте настройки аудио и громкость устройства. Можно также играть с выключенной музыкой и звуковыми эффектами."
+        },
+        {
+          "question": "Какие устройства и языки поддерживаются?",
+          "answer": "Используйте браузер компьютера, телефона или планшета. Игра поддерживает все 14 языков интерфейса MatchApp. Эта браузерная версия недоступна внутри нативного приложения Android и в Kids Mode."
+        }
       ],
       "relatedTitle": "Больше возможностей MatchApp Ai",
-      "relatedLinks": {"how": "Как работает MatchApp Ai", "together": "Знакомство с Match Together", "discover": "Откройте мир развлечений с Jonas"}
+      "relatedLinks": {
+        "how": "Как работает MatchApp Ai",
+        "together": "Знакомство с Match Together",
+        "discover": "Откройте мир развлечений с Jonas"
+      },
+      "socialAlt": "Lumina Match в браузере: иллюстрированные карточки первого уровня кампании"
     },
     "ar": {
       "nativeName": "العربية",
       "ogLocale": "ar_AR",
       "title": "Lumina Match: لعبة ذاكرة مجانية عبر الإنترنت | MatchApp Ai",
-      "description": "العب Lumina Match: 250 مستوى، ولعب هادئ أو بتوقيت، وموسيقى وجولات مع الأصدقاء. احفظ تقدمك باستخدام حساب MatchApp.",
-      "keywords": ["Lumina Match", "لعبة ذاكرة مجانية عبر الإنترنت", "لعبة مطابقة أزواج البطاقات", "لعبة ذاكرة من 250 مستوى", "لعبة ذاكرة في المتصفح", "لعبة مطابقة هادئة", "لعبة ذاكرة مع الأصدقاء", "مطابقة بطاقات ضد الوقت"],
+      "description": "العب Lumina Match مجانًا في المتصفح: 250 مستوى دون تنزيل، ووضع هادئ أو محدد بالوقت وجولات مع الأصدقاء. يلزم حساب لحفظ التقدم.",
+      "keywords": [
+        "Lumina Match",
+        "لعبة ذاكرة مجانية",
+        "لعبة مطابقة البطاقات",
+        "لعبة إيجاد الأزواج",
+        "لعبة ذاكرة بدون تنزيل",
+        "لعبة ذاكرة لشخصين",
+        "لعبة ذاكرة هادئة",
+        "لعبة بطاقات في المتصفح",
+        "لعبة ذاكرة 250 مستوى"
+      ],
       "eyebrow": "Lumina Match · لعبة في المتصفح",
-      "h1": "اعثر على كل زوج. استكشف 250 مستوى.",
+      "h1": "لعبة ذاكرة مجانية عبر الإنترنت · 250 مستوى",
       "intro": [
         "Lumina Match لعبة ذاكرة مجانية عبر الإنترنت داخل MatchApp Ai. اقلب البطاقات المصورة، وتذكر أماكنها، وطابق جميع الأزواج لفتح المستوى التالي.",
         "استمتع بجلسة فردية هادئة، أو جرب تحدي الوقت الاختياري، أو شارك جولة كلاسيكية مع الأصدقاء. تعمل اللعبة في متصفح الكمبيوتر أو الهاتف أو الجهاز اللوحي دون تثبيت لعبة."
@@ -628,8 +1086,15 @@
         {
           "id": "how-to-play",
           "title": "كيفية لعب مطابقة البطاقات",
-          "paragraphs": ["تكشف كل حركة بطاقتين. تبقى البطاقات المتطابقة ظاهرة، وتُقلب البطاقات المختلفة مجددًا. استفد مما تتذكره في حركتك التالية."],
-          "steps": ["افتح Lumina Match من الرئيسية واختر مستوى من رحلة اللعب.", "اختر بلا استعجال للعب دون عد تنازلي، أو تحدي الوقت للعب ضد الساعة.", "طابق كل الأزواج لفتح المستوى التالي. أعد لعب المستويات المكتملة متى شئت."]
+          "paragraphs": [
+            "تكشف كل حركة بطاقتين. تبقى البطاقات المتطابقة ظاهرة، وتُقلب البطاقات المختلفة مجددًا. استفد مما تتذكره في حركتك التالية.",
+            "هل هذه أول تجربة لك؟ افتح دليل المبتدئين من قائمة اللعبة لخوض جولة تدريبية تفاعلية قصيرة. لن تغيّر تقدمك في الحملة."
+          ],
+          "steps": [
+            "افتح Lumina Match من الرئيسية واختر مستوى من رحلة اللعب.",
+            "اختر بلا استعجال للعب دون عد تنازلي، أو تحدي الوقت للعب ضد الساعة.",
+            "طابق كل الأزواج لفتح المستوى التالي. أعد لعب المستويات المكتملة متى شئت."
+          ]
         },
         {
           "id": "campaign",
@@ -662,28 +1127,77 @@
             "تبدأ موسيقى الموضوعات وأصوات البطاقات بعد تفاعلك الأول مع اللعبة. تتيح إعدادات الصوت تشغيل الموسيقى والمؤثرات الصوتية كلًّا على حدة وضبط مستوى الصوت.",
             "أوقف اللعبة مؤقتًا عندما تحتاج إلى استراحة. يتوقف الصوت أثناء الإيقاف المؤقت أو إخفاء اللعبة، ويوقف زر إغلاق صوت اللعبة عند العودة إلى الرئيسية."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "مطابقة الأزواج وألعاب الذاكرة ومطابقة ثلاثة: ما الفرق؟",
+          "paragraphs": [
+            "تعتمد Lumina Match على أزواج من البطاقات المقلوبة: اكشف بطاقتين، وتذكر الصورتين، وابحث عن الزوج المتطابق. اللوحة شبكة بطاقات وليست لغز مسارات أو قطع منزلقة. لا تحتاج إلى تبديل الجواهر أو ترتيب ثلاثة عناصر في صف.",
+            "تتحول فكرة لعبة البطاقات المألوفة على الطاولة إلى لغز في المتصفح، مع رسوم متنوعة وحملة مستويات. لا تحتاج إلى تنزيل شيء لتجربة هذه النسخة. يستطيع الضيوف اللعب مباشرة، لكن حفظ التقدم بين الزيارات يتطلب حساب MatchApp؛ فاللعب دون تسجيل لا يعني وجود حفظ دائم للضيف."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "كيف تجد الأزواج بحركات أقل",
+          "paragraphs": [
+            "ابدأ بالوضع الهادئ لتتعرف على اللوحة. افحص صفًا واحدًا كل مرة واربط كل صورة بموقع، مثل «القمر، أعلى اليسار». عندما تكشف البطاقة الأولى صورة تعرفها، اختر شريكتها التي تتذكرها بدلًا من بطاقة مجهولة. حتى المحاولة غير المطابقة تمنحك معلومة مفيدة.",
+            "تعلم عناصر التحكم في الدليل ثم أعد مستوى أكملته لمقارنة عدد الحركات. تكشف التلميحات زوجًا لكنها تحد نتيجة تلك المحاولة بنجمتين؛ استخدمها عندما تكون غير متأكد فعلًا. يضيف الوضع المحدد بالوقت عدًا تنازليًا دون تغيير هدف العثور على جميع الأزواج. هذه نصائح للعب وليست وعودًا بفوائد طبية أو معرفية."
+          ]
         }
       ],
       "faqTitle": "أسئلة حول Lumina Match",
       "faqs": [
-        {"question": "كيف أبدأ اللعب؟", "answer": "انتقل إلى الصفحة الرئيسية في MatchApp، واختر العب Lumina Match، وافتح مستوى. طابق جميع الأزواج للتقدم؛ وضع بلا استعجال لا يحتوي على عد تنازلي."},
-        {"question": "هل اللعبة مجانية، وهل تحتوي على إعلانات؟", "answer": "Lumina Match مجانية. لا توجد حاليًا إعلانات داخل اللعبة ولا مقاطع فيديو يلزم مشاهدتها لمتابعة اللعب."},
-        {"question": "هل أحتاج إلى حساب للحفظ؟", "answer": "نعم. تحتفظ الحسابات المسجلة بالتقدم. يمكن للضيوف اللعب دون تسجيل، لكن تقدمهم لا يُخزن في المتصفح ويُفقد عند إغلاق اللعبة أو إعادة تحميلها."},
-        {"question": "هل يمكنني اللعب مع الأصدقاء؟", "answer": "نعم: تناوبوا على جهاز واحد، أو سجلوا الدخول لجولات كلاسيكية عبر الإنترنت مع أصدقاء مقبولين في Match Together. تبقى الرحلة وضعًا فرديًا."},
-        {"question": "لماذا لا أسمع صوتًا بعد؟", "answer": "اضغط أولًا على أحد عناصر التحكم في اللعبة، ثم تحقق من إعدادات الصوت ومستوى صوت جهازك. يمكنك أيضًا اللعب مع إيقاف الموسيقى والمؤثرات الصوتية."},
-        {"question": "ما الأجهزة واللغات المدعومة؟", "answer": "استخدم متصفح كمبيوتر أو هاتف أو جهاز لوحي. تدعم اللعبة لغات واجهة MatchApp الأربع عشرة. نسخة المتصفح هذه غير متاحة داخل تطبيق Android الأصلي أو في Kids Mode."}
+        {
+          "question": "كيف أبدأ اللعب؟",
+          "answer": "انتقل إلى الصفحة الرئيسية في MatchApp، واختر العب Lumina Match، وافتح مستوى. طابق جميع الأزواج للتقدم؛ وضع بلا استعجال لا يحتوي على عد تنازلي."
+        },
+        {
+          "question": "هل اللعبة مجانية، وهل تحتوي على إعلانات؟",
+          "answer": "Lumina Match مجانية. لا توجد حاليًا إعلانات داخل اللعبة ولا مقاطع فيديو يلزم مشاهدتها لمتابعة اللعب."
+        },
+        {
+          "question": "هل أحتاج إلى حساب للحفظ؟",
+          "answer": "نعم. تحتفظ الحسابات المسجلة بالتقدم. يمكن للضيوف اللعب دون تسجيل، لكن تقدمهم لا يُخزن في المتصفح ويُفقد عند إغلاق اللعبة أو إعادة تحميلها."
+        },
+        {
+          "question": "هل يمكنني اللعب مع الأصدقاء؟",
+          "answer": "نعم: تناوبوا على جهاز واحد، أو سجلوا الدخول لجولات كلاسيكية عبر الإنترنت مع أصدقاء مقبولين في Match Together. تبقى الرحلة وضعًا فرديًا."
+        },
+        {
+          "question": "لماذا لا أسمع صوتًا بعد؟",
+          "answer": "اضغط أولًا على أحد عناصر التحكم في اللعبة، ثم تحقق من إعدادات الصوت ومستوى صوت جهازك. يمكنك أيضًا اللعب مع إيقاف الموسيقى والمؤثرات الصوتية."
+        },
+        {
+          "question": "ما الأجهزة واللغات المدعومة؟",
+          "answer": "استخدم متصفح كمبيوتر أو هاتف أو جهاز لوحي. تدعم اللعبة لغات واجهة MatchApp الأربع عشرة. نسخة المتصفح هذه غير متاحة داخل تطبيق Android الأصلي أو في Kids Mode."
+        }
       ],
       "relatedTitle": "المزيد من MatchApp Ai",
-      "relatedLinks": {"how": "كيف يعمل MatchApp Ai", "together": "تعرّف على Match Together", "discover": "اكتشف الترفيه مع Jonas"}
+      "relatedLinks": {
+        "how": "كيف يعمل MatchApp Ai",
+        "together": "تعرّف على Match Together",
+        "discover": "اكتشف الترفيه مع Jonas"
+      },
+      "socialAlt": "لعبة Lumina Match في المتصفح: بطاقات مصورة في اللوحة الأولى من الحملة"
     },
     "hi": {
       "nativeName": "हिन्दी",
       "ogLocale": "hi_IN",
       "title": "Lumina Match: मुफ़्त ऑनलाइन मेमोरी गेम | MatchApp Ai",
-      "description": "Lumina Match में खेलें 250 स्तर, आराम से या समय की चुनौती के साथ। संगीत और दोस्तों संग राउंड का आनंद लें। MatchApp खाते में प्रगति सहेजें।",
-      "keywords": ["Lumina Match", "मुफ़्त ऑनलाइन मेमोरी गेम", "कार्ड की जोड़ियाँ मिलाने का खेल", "250 स्तरों वाला मेमोरी गेम", "ब्राउज़र में मेमोरी गेम", "आराम से खेलें जोड़ी मिलाने का गेम", "दोस्तों के साथ मेमोरी गेम", "समय सीमा में कार्ड मिलाना"],
+      "description": "Lumina Match ब्राउज़र में मुफ़्त खेलें: बिना डाउनलोड 250 स्तर, आराम से या समय-सीमा में खेल और दोस्तों के साथ राउंड। प्रगति सहेजने के लिए खाता चाहिए।",
+      "keywords": [
+        "Lumina Match",
+        "मुफ़्त ऑनलाइन मेमोरी गेम",
+        "कार्ड मिलाने वाला गेम",
+        "जोड़ी खोजने वाला गेम",
+        "बिना डाउनलोड मेमोरी गेम",
+        "दो खिलाड़ियों का मेमोरी गेम",
+        "आराम से खेलने वाला मेमोरी गेम",
+        "ब्राउज़र कार्ड गेम",
+        "250 स्तर वाला मेमोरी गेम"
+      ],
       "eyebrow": "Lumina Match · ब्राउज़र गेम",
-      "h1": "हर जोड़ी खोजें। 250 स्तरों का सफ़र तय करें।",
+      "h1": "मुफ़्त ऑनलाइन मेमोरी कार्ड गेम · 250 स्तर",
       "intro": [
         "Lumina Match, MatchApp Ai के भीतर एक मुफ़्त ऑनलाइन मेमोरी गेम है। चित्रों वाले कार्ड पलटें, उनकी जगहें याद रखें और अगला स्तर खोलने के लिए सभी जोड़ियाँ मिलाएँ।",
         "अकेले आराम से खेलें, चाहें तो समय की चुनौती आज़माएँ या दोस्तों के साथ एक क्लासिक राउंड खेलें। यह गेम कंप्यूटर, फ़ोन या टैबलेट के ब्राउज़र में चलता है; कोई गेम इंस्टॉल करने की ज़रूरत नहीं।"
@@ -703,8 +1217,15 @@
         {
           "id": "how-to-play",
           "title": "कार्ड की जोड़ियाँ मिलाने वाला गेम कैसे खेलें",
-          "paragraphs": ["हर चाल में दो कार्ड खुलते हैं। एक जैसे कार्ड खुले रहते हैं; अलग कार्ड फिर पलट जाते हैं। अगली चाल में याद रखी गई जगहों का इस्तेमाल करें।"],
-          "steps": ["होम से Lumina Match खोलें और अभियान का एक स्तर चुनें।", "बिना उलटी गिनती के खेलने के लिए आराम से चुनें, या घड़ी के ख़िलाफ़ खेलने के लिए समय की चुनौती चुनें।", "अगला स्तर खोलने के लिए सभी जोड़ियाँ मिलाएँ। पूरे किए गए स्तर जब चाहें फिर से खेलें।"]
+          "paragraphs": [
+            "हर चाल में दो कार्ड खुलते हैं। एक जैसे कार्ड खुले रहते हैं; अलग कार्ड फिर पलट जाते हैं। अगली चाल में याद रखी गई जगहों का इस्तेमाल करें।",
+            "पहली बार खेल रहे हैं? गेम मेनू में शुरुआती गाइड खोलकर एक छोटा इंटरैक्टिव अभ्यास राउंड खेलें। इससे आपकी अभियान प्रगति नहीं बदलती।"
+          ],
+          "steps": [
+            "होम से Lumina Match खोलें और अभियान का एक स्तर चुनें।",
+            "बिना उलटी गिनती के खेलने के लिए आराम से चुनें, या घड़ी के ख़िलाफ़ खेलने के लिए समय की चुनौती चुनें।",
+            "अगला स्तर खोलने के लिए सभी जोड़ियाँ मिलाएँ। पूरे किए गए स्तर जब चाहें फिर से खेलें।"
+          ]
         },
         {
           "id": "campaign",
@@ -737,28 +1258,77 @@
             "गेम में पहली बार किसी नियंत्रण का इस्तेमाल करने के बाद थीम का संगीत और कार्ड की आवाज़ें शुरू होती हैं। ऑडियो सेटिंग में संगीत और ध्वनि प्रभाव अलग-अलग चालू या बंद कर सकते हैं और आवाज़ का स्तर बदल सकते हैं।",
             "जब विराम चाहिए, गेम रोकें। गेम रुका हुआ या छिपा होने पर आवाज़ बंद रहती है। बंद करें चुनकर होम पर लौटने से गेम का ऑडियो भी बंद हो जाता है।"
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "जोड़ियाँ मिलाना, मेमोरी और मैच-3 में क्या अंतर है?",
+          "paragraphs": [
+            "Lumina Match में उल्टे रखे कार्डों की जोड़ियाँ खोजनी होती हैं: दो कार्ड खोलें, उनकी तस्वीरें याद रखें और समान जोड़ी खोजें। बोर्ड कार्डों की ग्रिड है, रास्ते बनाने या टाइल खिसकाने वाली पहेली नहीं। इसमें रत्नों की जगह बदलना या तीन वस्तुएँ एक पंक्ति में लगाना ज़रूरी नहीं है।",
+            "मेज़ पर खेले जाने वाले परिचित कार्ड गेम का विचार चित्रित थीम और स्तरों वाले ब्राउज़र गेम में बदल जाता है। इस संस्करण को आज़माने के लिए डाउनलोड की ज़रूरत नहीं है। मेहमान तुरंत खेल सकते हैं, लेकिन अलग-अलग विज़िट के बीच प्रगति सहेजने के लिए MatchApp खाता चाहिए। बिना पंजीकरण खेलने का मतलब स्थायी मेहमान सेव नहीं है।"
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "कम चालों में जोड़ियाँ कैसे खोजें",
+          "paragraphs": [
+            "बोर्ड समझने के लिए पहले आराम वाले मोड में खेलें। एक समय में एक पंक्ति देखें और हर तस्वीर को किसी स्थान से जोड़ें, जैसे “चाँद, ऊपर बाईं ओर”। पहला कार्ड कोई जानी-पहचानी तस्वीर दिखाए तो अज्ञात कार्ड खोलने के बजाय उसकी याद की हुई जोड़ी चुनें। गलत जोड़ी भी नई जानकारी देती है।",
+            "गाइड में नियंत्रण सीखें, फिर चालों की तुलना करने के लिए पूरा किया हुआ स्तर दोबारा खेलें। संकेत एक जोड़ी दिखाते हैं, लेकिन उस प्रयास में अधिकतम दो सितारे मिलते हैं; उन्हें वास्तविक उलझन के समय इस्तेमाल करें। समय वाला मोड उलटी गिनती जोड़ता है, सभी जोड़ियाँ खोजने का लक्ष्य नहीं बदलता। ये खेलने की युक्तियाँ हैं, चिकित्सकीय या संज्ञानात्मक लाभ के वादे नहीं।"
+          ]
         }
       ],
       "faqTitle": "Lumina Match के बारे में सवाल",
       "faqs": [
-        {"question": "खेलना कैसे शुरू करूँ?", "answer": "MatchApp के होम पेज पर जाएँ, Lumina Match खेलें चुनें और एक स्तर खोलें। आगे बढ़ने के लिए सभी जोड़ियाँ मिलाएँ; आराम से मोड में उलटी गिनती नहीं होती।"},
-        {"question": "क्या गेम मुफ़्त है और क्या इसमें विज्ञापन हैं?", "answer": "Lumina Match मुफ़्त है। फ़िलहाल गेम के अंदर कोई विज्ञापन नहीं हैं और खेलते रहने के लिए कोई वीडियो नहीं देखना पड़ता।"},
-        {"question": "क्या सहेजने के लिए खाता चाहिए?", "answer": "हाँ। पंजीकृत खाते प्रगति बनाए रखते हैं। मेहमान बिना पंजीकरण खेल सकते हैं, लेकिन उनकी गेम प्रगति ब्राउज़र में सहेजी नहीं जाती और गेम बंद या फिर से लोड करने पर खो जाती है।"},
-        {"question": "क्या दोस्तों के साथ खेल सकता हूँ?", "answer": "हाँ: एक डिवाइस पर बारी-बारी से खेलें या साइन इन करके Match Together के स्वीकार किए गए दोस्तों के साथ ऑनलाइन क्लासिक राउंड खेलें। अभियान एकल मोड ही रहता है।"},
-        {"question": "अभी तक आवाज़ क्यों नहीं आ रही?", "answer": "पहले गेम के किसी नियंत्रण पर टैप करें, फिर ऑडियो सेटिंग और डिवाइस की आवाज़ जाँचें। संगीत और ध्वनि प्रभाव बंद करके भी खेल सकते हैं।"},
-        {"question": "कौन से डिवाइस और भाषाएँ समर्थित हैं?", "answer": "कंप्यूटर, फ़ोन या टैबलेट का वेब ब्राउज़र इस्तेमाल करें। गेम MatchApp इंटरफ़ेस की सभी 14 भाषाओं में है। यह ब्राउज़र संस्करण मूल Android ऐप के अंदर या Kids Mode में उपलब्ध नहीं है।"}
+        {
+          "question": "खेलना कैसे शुरू करूँ?",
+          "answer": "MatchApp के होम पेज पर जाएँ, Lumina Match खेलें चुनें और एक स्तर खोलें। आगे बढ़ने के लिए सभी जोड़ियाँ मिलाएँ; आराम से मोड में उलटी गिनती नहीं होती।"
+        },
+        {
+          "question": "क्या गेम मुफ़्त है और क्या इसमें विज्ञापन हैं?",
+          "answer": "Lumina Match मुफ़्त है। फ़िलहाल गेम के अंदर कोई विज्ञापन नहीं हैं और खेलते रहने के लिए कोई वीडियो नहीं देखना पड़ता।"
+        },
+        {
+          "question": "क्या सहेजने के लिए खाता चाहिए?",
+          "answer": "हाँ। पंजीकृत खाते प्रगति बनाए रखते हैं। मेहमान बिना पंजीकरण खेल सकते हैं, लेकिन उनकी गेम प्रगति ब्राउज़र में सहेजी नहीं जाती और गेम बंद या फिर से लोड करने पर खो जाती है।"
+        },
+        {
+          "question": "क्या दोस्तों के साथ खेल सकता हूँ?",
+          "answer": "हाँ: एक डिवाइस पर बारी-बारी से खेलें या साइन इन करके Match Together के स्वीकार किए गए दोस्तों के साथ ऑनलाइन क्लासिक राउंड खेलें। अभियान एकल मोड ही रहता है।"
+        },
+        {
+          "question": "अभी तक आवाज़ क्यों नहीं आ रही?",
+          "answer": "पहले गेम के किसी नियंत्रण पर टैप करें, फिर ऑडियो सेटिंग और डिवाइस की आवाज़ जाँचें। संगीत और ध्वनि प्रभाव बंद करके भी खेल सकते हैं।"
+        },
+        {
+          "question": "कौन से डिवाइस और भाषाएँ समर्थित हैं?",
+          "answer": "कंप्यूटर, फ़ोन या टैबलेट का वेब ब्राउज़र इस्तेमाल करें। गेम MatchApp इंटरफ़ेस की सभी 14 भाषाओं में है। यह ब्राउज़र संस्करण मूल Android ऐप के अंदर या Kids Mode में उपलब्ध नहीं है।"
+        }
       ],
       "relatedTitle": "MatchApp Ai में और खोजें",
-      "relatedLinks": {"how": "MatchApp Ai कैसे काम करता है", "together": "Match Together को जानें", "discover": "Jonas के साथ मनोरंजन खोजें"}
+      "relatedLinks": {
+        "how": "MatchApp Ai कैसे काम करता है",
+        "together": "Match Together को जानें",
+        "discover": "Jonas के साथ मनोरंजन खोजें"
+      },
+      "socialAlt": "ब्राउज़र में Lumina Match: अभियान के पहले बोर्ड पर चित्रित मेमोरी कार्ड"
     },
     "id": {
       "nativeName": "Bahasa Indonesia",
       "ogLocale": "id_ID",
       "title": "Lumina Match: Game Memori Online Gratis | MatchApp Ai",
-      "description": "Main Lumina Match: 250 level, mode santai atau tantangan waktu, musik, dan ronde bersama teman. Simpan progres dengan akun MatchApp.",
-      "keywords": ["Lumina Match", "game memori online gratis", "game mencocokkan pasangan kartu", "game memori 250 level", "game memori di browser", "game mencocokkan kartu santai", "game memori bersama teman", "mencocokkan kartu berbatas waktu"],
+      "description": "Mainkan Lumina Match gratis di browser: 250 level memori tanpa unduhan, mode santai atau berbatas waktu dan ronde bersama teman. Akun diperlukan untuk menyimpan.",
+      "keywords": [
+        "Lumina Match",
+        "game memori online gratis",
+        "game mencocokkan kartu",
+        "game mencari pasangan",
+        "game memori tanpa download",
+        "game memori dua pemain",
+        "game memori santai",
+        "game kartu di browser",
+        "game memori 250 level"
+      ],
       "eyebrow": "Lumina Match · Game browser",
-      "h1": "Temukan setiap pasangan. Jelajahi 250 level.",
+      "h1": "Game memori online gratis · 250 level",
       "intro": [
         "Lumina Match adalah game memori online gratis di dalam MatchApp Ai. Balik kartu bergambar, ingat posisinya, dan cocokkan semua pasangan untuk membuka level berikutnya.",
         "Main sendiri dengan santai, coba tantangan waktu pilihan, atau nikmati ronde klasik bersama teman. Game berjalan di browser komputer, ponsel, atau tablet tanpa perlu menginstal game."
@@ -778,8 +1348,15 @@
         {
           "id": "how-to-play",
           "title": "Cara memainkan game pasangan kartu",
-          "paragraphs": ["Setiap giliran membuka dua kartu. Kartu yang cocok tetap terlihat; kartu yang berbeda tertutup kembali. Gunakan ingatanmu pada giliran berikutnya."],
-          "steps": ["Buka Lumina Match dari Beranda dan pilih level kampanye.", "Pilih Santai untuk bermain tanpa hitung mundur, atau Tantangan waktu untuk berpacu dengan waktu.", "Cocokkan semua pasangan untuk membuka level berikutnya. Mainkan lagi level yang sudah selesai kapan saja."]
+          "paragraphs": [
+            "Setiap giliran membuka dua kartu. Kartu yang cocok tetap terlihat; kartu yang berbeda tertutup kembali. Gunakan ingatanmu pada giliran berikutnya.",
+            "Baru mulai? Buka Panduan Pemula dari menu game untuk mencoba latihan interaktif singkat. Latihan ini tidak mengubah progres kampanye."
+          ],
+          "steps": [
+            "Buka Lumina Match dari Beranda dan pilih level kampanye.",
+            "Pilih Santai untuk bermain tanpa hitung mundur, atau Tantangan waktu untuk berpacu dengan waktu.",
+            "Cocokkan semua pasangan untuk membuka level berikutnya. Mainkan lagi level yang sudah selesai kapan saja."
+          ]
         },
         {
           "id": "campaign",
@@ -812,28 +1389,77 @@
             "Musik tema dan suara kartu dimulai setelah interaksi pertamamu dengan game. Pengaturan audio memungkinkanmu menyalakan musik dan efek suara secara terpisah serta mengatur volume.",
             "Jeda game saat perlu istirahat. Audio berhenti ketika game dijeda atau disembunyikan, dan Tutup menghentikan audio game saat kamu kembali ke Beranda."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "Mencari pasangan, memori, dan match-3: apa bedanya?",
+          "paragraphs": [
+            "Lumina Match memakai pasangan kartu tertutup: buka dua kartu, ingat gambarnya, lalu temukan pasangan yang sama. Papan berupa kisi kartu, bukan teka-teki jalur atau ubin geser. Kamu tidak menukar permata atau menyusun tiga benda dalam satu baris.",
+            "Ide permainan kartu meja yang familier menjadi teka-teki browser dengan tema bergambar dan kampanye berlevel. Tidak perlu mengunduh apa pun untuk mencoba edisi ini. Tamu bisa langsung bermain, tetapi menyimpan progres antar kunjungan memerlukan akun MatchApp; bermain tanpa mendaftar bukan berarti progres tamu tersimpan permanen."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "Cara menemukan pasangan dengan lebih sedikit langkah",
+          "paragraphs": [
+            "Mulai di mode Santai untuk mengenali papan. Telusuri satu baris setiap kali dan kaitkan gambar dengan posisi, misalnya “bulan, kiri atas”. Jika kartu pertama menampilkan gambar yang sudah dikenal, pilih pasangan yang kamu ingat daripada membuka kartu baru. Pasangan yang salah juga memberi informasi.",
+            "Pelajari kontrol melalui panduan, lalu ulangi level yang selesai untuk membandingkan jumlah langkah. Petunjuk menunjukkan satu pasangan tetapi membatasi percobaan itu menjadi dua bintang; gunakan saat benar-benar ragu. Mode berbatas waktu menambahkan hitung mundur, tanpa mengubah tujuan mencari semua pasangan. Ini kiat bermain, bukan janji manfaat medis atau kognitif."
+          ]
         }
       ],
       "faqTitle": "Pertanyaan tentang Lumina Match",
       "faqs": [
-        {"question": "Bagaimana cara mulai bermain?", "answer": "Buka Beranda MatchApp, pilih Main Lumina Match, lalu buka sebuah level. Cocokkan semua pasangan untuk maju; mode Santai tidak memiliki hitung mundur."},
-        {"question": "Apakah game ini gratis dan memiliki iklan?", "answer": "Lumina Match gratis untuk dimainkan. Saat ini tidak ada iklan di dalam game dan tidak ada video yang perlu ditonton untuk melanjutkan permainan."},
-        {"question": "Apakah perlu akun untuk menyimpan?", "answer": "Ya. Akun terdaftar menyimpan progres. Tamu bisa bermain tanpa mendaftar, tetapi progres game mereka tidak disimpan di browser dan hilang ketika game ditutup atau dimuat ulang."},
-        {"question": "Bisakah saya bermain bersama teman?", "answer": "Ya: bergiliranlah pada satu perangkat, atau masuk untuk ronde klasik online bersama teman yang sudah diterima di Match Together. Kampanye tetap merupakan mode solo."},
-        {"question": "Mengapa belum ada suara?", "answer": "Ketuk kontrol game terlebih dahulu, lalu periksa Pengaturan audio dan volume perangkat. Kamu juga dapat bermain dengan musik dan efek suara dimatikan."},
-        {"question": "Perangkat dan bahasa apa yang didukung?", "answer": "Gunakan browser komputer, ponsel, atau tablet. Game mendukung semua 14 bahasa antarmuka MatchApp. Edisi browser ini tidak tersedia di dalam aplikasi Android native atau Kids Mode."}
+        {
+          "question": "Bagaimana cara mulai bermain?",
+          "answer": "Buka Beranda MatchApp, pilih Main Lumina Match, lalu buka sebuah level. Cocokkan semua pasangan untuk maju; mode Santai tidak memiliki hitung mundur."
+        },
+        {
+          "question": "Apakah game ini gratis dan memiliki iklan?",
+          "answer": "Lumina Match gratis untuk dimainkan. Saat ini tidak ada iklan di dalam game dan tidak ada video yang perlu ditonton untuk melanjutkan permainan."
+        },
+        {
+          "question": "Apakah perlu akun untuk menyimpan?",
+          "answer": "Ya. Akun terdaftar menyimpan progres. Tamu bisa bermain tanpa mendaftar, tetapi progres game mereka tidak disimpan di browser dan hilang ketika game ditutup atau dimuat ulang."
+        },
+        {
+          "question": "Bisakah saya bermain bersama teman?",
+          "answer": "Ya: bergiliranlah pada satu perangkat, atau masuk untuk ronde klasik online bersama teman yang sudah diterima di Match Together. Kampanye tetap merupakan mode solo."
+        },
+        {
+          "question": "Mengapa belum ada suara?",
+          "answer": "Ketuk kontrol game terlebih dahulu, lalu periksa Pengaturan audio dan volume perangkat. Kamu juga dapat bermain dengan musik dan efek suara dimatikan."
+        },
+        {
+          "question": "Perangkat dan bahasa apa yang didukung?",
+          "answer": "Gunakan browser komputer, ponsel, atau tablet. Game mendukung semua 14 bahasa antarmuka MatchApp. Edisi browser ini tidak tersedia di dalam aplikasi Android native atau Kids Mode."
+        }
       ],
       "relatedTitle": "Lainnya dari MatchApp Ai",
-      "relatedLinks": {"how": "Cara kerja MatchApp Ai", "together": "Kenali Match Together", "discover": "Temukan hiburan bersama Jonas"}
+      "relatedLinks": {
+        "how": "Cara kerja MatchApp Ai",
+        "together": "Kenali Match Together",
+        "discover": "Temukan hiburan bersama Jonas"
+      },
+      "socialAlt": "Lumina Match di browser: kartu memori bergambar pada papan kampanye pertama"
     },
     "ja": {
       "nativeName": "日本語",
       "ogLocale": "ja_JP",
       "title": "Lumina Match：無料オンライン神経衰弱 | MatchApp Ai",
-      "description": "Lumina Matchで250レベルのカードペア探し。時間制限なしでもタイムチャレンジでも楽しめ、音楽や友達との対戦も。MatchAppアカウントで進行状況を保存できます。",
-      "keywords": ["Lumina Match", "無料オンライン神経衰弱", "カードペア合わせゲーム", "250レベルの記憶ゲーム", "ブラウザで神経衰弱", "ゆったり遊べるペア探し", "友達と遊ぶ神経衰弱", "時間制限付きカードゲーム"],
+      "description": "Lumina Matchはブラウザで無料。ダウンロード不要の神経衰弱を全250レベル、時間制限なし・タイムチャレンジや友達との対戦で楽しめます。進行状況の保存にはアカウントが必要です。",
+      "keywords": [
+        "Lumina Match",
+        "神経衰弱 無料 オンライン",
+        "絵合わせ カードゲーム",
+        "ペア探し ゲーム",
+        "神経衰弱 ダウンロード不要",
+        "神経衰弱 二人",
+        "ゆったり遊べる記憶ゲーム",
+        "ブラウザ カードゲーム",
+        "神経衰弱 250レベル"
+      ],
       "eyebrow": "Lumina Match · ブラウザゲーム",
-      "h1": "すべてのペアを見つけよう。250レベルの旅へ。",
+      "h1": "無料オンライン神経衰弱ゲーム · 全250レベル",
       "intro": [
         "Lumina Matchは、MatchApp Ai内で遊べる無料のオンライン記憶ゲームです。イラスト入りのカードをめくって位置を覚え、すべてのペアをそろえると次のレベルが開きます。",
         "一人でのんびり遊ぶことも、タイムチャレンジに挑戦することも、友達とクラシックラウンドを楽しむこともできます。パソコン、スマートフォン、タブレットのブラウザで動作し、ゲームのインストールは不要です。"
@@ -853,8 +1479,15 @@
         {
           "id": "how-to-play",
           "title": "カードのペアを見つける遊び方",
-          "paragraphs": ["1回の手番で2枚のカードをめくります。同じ絵なら表向きのまま、違う絵なら再び裏返ります。覚えた位置を次の手番に生かしましょう。"],
-          "steps": ["ホームからLumina Matchを開き、キャンペーンのレベルを選びます。", "カウントダウンなしの「ゆったり」か、制限時間内に挑む「タイムチャレンジ」を選びます。", "すべてのペアをそろえると次のレベルが開きます。クリア済みのレベルはいつでも遊び直せます。"]
+          "paragraphs": [
+            "1回の手番で2枚のカードをめくります。同じ絵なら表向きのまま、違う絵なら再び裏返ります。覚えた位置を次の手番に生かしましょう。",
+            "初めての方は、ゲームメニューから初心者ガイドを開き、短い練習ラウンドで操作を試せます。キャンペーンの進行状況は変わりません。"
+          ],
+          "steps": [
+            "ホームからLumina Matchを開き、キャンペーンのレベルを選びます。",
+            "カウントダウンなしの「ゆったり」か、制限時間内に挑む「タイムチャレンジ」を選びます。",
+            "すべてのペアをそろえると次のレベルが開きます。クリア済みのレベルはいつでも遊び直せます。"
+          ]
         },
         {
           "id": "campaign",
@@ -887,28 +1520,77 @@
             "テーマ音楽とカードの効果音は、最初にゲームを操作した後に始まります。「音声設定」では音楽と効果音を別々に切り替え、音量を調整できます。",
             "休憩したいときは一時停止してください。ゲームが一時停止中または非表示の間は音が止まります。「閉じる」でホームに戻るとゲームの音声も停止します。"
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "神経衰弱・ペア探しとマッチ3の違い",
+          "paragraphs": [
+            "Lumina Matchは裏向きのカードから同じ絵のペアを探す神経衰弱です。2枚をめくり、絵と位置を覚えて、同じ組み合わせを見つけます。盤面はカードのグリッドで、道をつなげたりタイルを滑らせたりするパズルではありません。宝石を入れ替えて3個並べる必要もありません。",
+            "おなじみの卓上カードゲームの仕組みを、イラスト付きテーマとレベル制キャンペーンのあるブラウザゲームにしました。この版はダウンロードせずに試せます。ゲストでもすぐに遊べますが、次回まで進行状況を保存するにはMatchAppアカウントが必要です。登録不要で遊べることと、ゲストの記録が永久保存されることは別です。"
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "少ない手数でペアを見つけるコツ",
+          "paragraphs": [
+            "盤面を覚えるときは時間制限なしのモードから始めましょう。1行ずつ確認し、「月は左上」のように絵と位置を結び付けます。1枚目が見覚えのある絵なら、新しいカードより、覚えている相方を選びます。不一致でも次の手に役立つ情報が得られます。",
+            "ガイドで操作を練習した後、クリア済みのレベルをもう一度遊び、手数を比べてみましょう。ヒントはペアを表示しますが、その挑戦で獲得できる星は最大2個になります。迷ったときに使うのがおすすめです。タイムチャレンジにはカウントダウンが加わりますが、全ペアを見つける目的は同じです。これらは遊び方のコツであり、医学的効果や認知機能への効果を保証するものではありません。"
+          ]
         }
       ],
       "faqTitle": "Lumina Matchについてのよくある質問",
       "faqs": [
-        {"question": "どうすれば遊び始められますか？", "answer": "MatchAppのホームで「Lumina Match をプレイ」を選び、レベルを開いてください。すべてのペアをそろえると先に進めます。「ゆったり」にはカウントダウンがありません。"},
-        {"question": "無料ですか？広告はありますか？", "answer": "Lumina Matchは無料で遊べます。現在、ゲーム内に広告はなく、続けて遊ぶために動画を見る必要もありません。"},
-        {"question": "保存にはアカウントが必要ですか？", "answer": "はい。登録済みアカウントなら進行状況を保持できます。ゲストは登録なしで遊べますが、ゲームの進行状況はブラウザに保存されず、ゲームを閉じたり再読み込みしたりすると失われます。"},
-        {"question": "友達と遊べますか？", "answer": "はい。1台の端末で交代して遊ぶか、ログインしてMatch Togetherで承認済みの友達とオンラインのクラシックラウンドを楽しめます。キャンペーンは一人用です。"},
-        {"question": "まだ音が出ないのはなぜですか？", "answer": "まずゲームの操作ボタンをタップし、その後「音声設定」と端末の音量を確認してください。音楽や効果音をオフにして遊ぶこともできます。"},
-        {"question": "対応する端末と言語は？", "answer": "パソコン、スマートフォン、タブレットのウェブブラウザで利用できます。MatchAppの画面表示と同じ14言語に対応しています。このブラウザ版は、ネイティブAndroidアプリ内およびKids Modeでは利用できません。"}
+        {
+          "question": "どうすれば遊び始められますか？",
+          "answer": "MatchAppのホームで「Lumina Match をプレイ」を選び、レベルを開いてください。すべてのペアをそろえると先に進めます。「ゆったり」にはカウントダウンがありません。"
+        },
+        {
+          "question": "無料ですか？広告はありますか？",
+          "answer": "Lumina Matchは無料で遊べます。現在、ゲーム内に広告はなく、続けて遊ぶために動画を見る必要もありません。"
+        },
+        {
+          "question": "保存にはアカウントが必要ですか？",
+          "answer": "はい。登録済みアカウントなら進行状況を保持できます。ゲストは登録なしで遊べますが、ゲームの進行状況はブラウザに保存されず、ゲームを閉じたり再読み込みしたりすると失われます。"
+        },
+        {
+          "question": "友達と遊べますか？",
+          "answer": "はい。1台の端末で交代して遊ぶか、ログインしてMatch Togetherで承認済みの友達とオンラインのクラシックラウンドを楽しめます。キャンペーンは一人用です。"
+        },
+        {
+          "question": "まだ音が出ないのはなぜですか？",
+          "answer": "まずゲームの操作ボタンをタップし、その後「音声設定」と端末の音量を確認してください。音楽や効果音をオフにして遊ぶこともできます。"
+        },
+        {
+          "question": "対応する端末と言語は？",
+          "answer": "パソコン、スマートフォン、タブレットのウェブブラウザで利用できます。MatchAppの画面表示と同じ14言語に対応しています。このブラウザ版は、ネイティブAndroidアプリ内およびKids Modeでは利用できません。"
+        }
       ],
       "relatedTitle": "MatchApp Aiをもっと楽しむ",
-      "relatedLinks": {"how": "MatchApp Aiの使い方", "together": "Match Togetherを知る", "discover": "Jonasとエンタメを探す"}
+      "relatedLinks": {
+        "how": "MatchApp Aiの使い方",
+        "together": "Match Togetherを知る",
+        "discover": "Jonasとエンタメを探す"
+      },
+      "socialAlt": "ブラウザ版Lumina Match：キャンペーン最初の盤面に並ぶ絵柄付きカード"
     },
     "ko": {
       "nativeName": "한국어",
       "ogLocale": "ko_KR",
       "title": "Lumina Match: 무료 온라인 기억력 게임 | MatchApp Ai",
-      "description": "Lumina Match에서 250개 레벨, 여유로운 플레이와 시간 도전, 음악, 친구 대전을 즐기세요. MatchApp 계정으로 진행 상황을 저장할 수 있습니다.",
-      "keywords": ["Lumina Match", "무료 온라인 기억력 게임", "카드 짝 맞추기 게임", "250레벨 기억력 게임", "브라우저 기억력 게임", "편안한 카드 맞추기 게임", "친구와 기억력 게임", "시간 제한 카드 맞추기"],
+      "description": "브라우저에서 Lumina Match를 무료로 즐기세요. 다운로드 없이 250레벨, 편안한 모드와 시간 도전, 친구와의 클래식 게임을 제공합니다. 진행 저장에는 계정이 필요합니다.",
+      "keywords": [
+        "Lumina Match",
+        "무료 온라인 메모리 게임",
+        "카드 짝맞추기 게임",
+        "같은 그림 찾기 게임",
+        "다운로드 없는 메모리 게임",
+        "2인 메모리 게임",
+        "편안한 메모리 게임",
+        "브라우저 카드 게임",
+        "250레벨 메모리 게임"
+      ],
       "eyebrow": "Lumina Match · 브라우저 게임",
-      "h1": "모든 짝을 찾으세요. 250개 레벨을 탐험하세요.",
+      "h1": "무료 온라인 메모리 카드 게임 · 250레벨",
       "intro": [
         "Lumina Match는 MatchApp Ai 안에서 즐기는 무료 온라인 기억력 게임입니다. 그림 카드를 뒤집고 위치를 기억한 다음, 모든 짝을 맞춰 다음 레벨을 여세요.",
         "혼자 편안하게 즐기거나, 선택 사항인 시간 도전에 도전하거나, 친구와 클래식 라운드를 함께 즐길 수 있습니다. 컴퓨터, 휴대전화, 태블릿의 브라우저에서 게임 설치 없이 플레이합니다."
@@ -928,8 +1610,15 @@
         {
           "id": "how-to-play",
           "title": "카드 짝 맞추기 게임 방법",
-          "paragraphs": ["한 번의 차례에 카드 두 장을 엽니다. 같은 카드는 열린 상태로 남고, 다른 카드는 다시 뒤집힙니다. 기억한 위치를 다음 차례에 활용하세요."],
-          "steps": ["홈에서 Lumina Match를 열고 캠페인 레벨을 선택하세요.", "카운트다운 없이 즐기려면 여유롭게, 시간 안에 도전하려면 시간 도전을 선택하세요.", "모든 짝을 맞추면 다음 레벨이 열립니다. 완료한 레벨은 언제든 다시 플레이할 수 있습니다."]
+          "paragraphs": [
+            "한 번의 차례에 카드 두 장을 엽니다. 같은 카드는 열린 상태로 남고, 다른 카드는 다시 뒤집힙니다. 기억한 위치를 다음 차례에 활용하세요.",
+            "처음이라면 게임 메뉴에서 초보자 가이드를 열어 짧은 연습 라운드를 해 보세요. 캠페인 진행 상황에는 영향을 주지 않습니다."
+          ],
+          "steps": [
+            "홈에서 Lumina Match를 열고 캠페인 레벨을 선택하세요.",
+            "카운트다운 없이 즐기려면 여유롭게, 시간 안에 도전하려면 시간 도전을 선택하세요.",
+            "모든 짝을 맞추면 다음 레벨이 열립니다. 완료한 레벨은 언제든 다시 플레이할 수 있습니다."
+          ]
         },
         {
           "id": "campaign",
@@ -962,28 +1651,77 @@
             "테마 음악과 카드 소리는 처음 게임을 조작한 뒤 시작됩니다. 오디오 설정에서 음악과 효과음을 따로 켜거나 끄고 음량을 조절할 수 있습니다.",
             "쉬고 싶을 때는 일시 정지하세요. 게임이 일시 정지되거나 숨겨지면 소리가 멈추고, 닫기를 눌러 홈으로 돌아가면 게임 오디오가 종료됩니다."
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "짝맞추기, 메모리 게임과 매치3의 차이",
+          "paragraphs": [
+            "Lumina Match에서는 뒤집힌 카드의 짝을 찾습니다. 두 장을 열어 그림과 위치를 기억하고 같은 그림을 맞추세요. 보드는 카드 격자이며 길을 연결하거나 타일을 미는 퍼즐이 아닙니다. 보석 위치를 바꾸거나 물건 세 개를 한 줄로 만들 필요도 없습니다.",
+            "익숙한 테이블 카드 게임의 방식을 그림 테마와 레벨 캠페인이 있는 브라우저 퍼즐로 옮겼습니다. 이 버전은 다운로드 없이 체험할 수 있습니다. 게스트로 바로 플레이할 수 있지만 다음 방문까지 진행을 저장하려면 MatchApp 계정이 필요합니다. 가입 없이 플레이할 수 있다는 것이 게스트 기록의 영구 저장을 뜻하지는 않습니다."
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "더 적은 횟수로 짝을 찾는 방법",
+          "paragraphs": [
+            "보드를 익힐 때는 편안한 모드로 시작하세요. 한 줄씩 살펴보며 “달, 왼쪽 위”처럼 그림을 위치와 연결합니다. 첫 카드에 익숙한 그림이 나오면 새로운 카드 대신 기억해 둔 짝을 선택하세요. 틀린 조합도 다음 선택에 필요한 정보를 줍니다.",
+            "가이드에서 조작법을 익힌 뒤 완료한 레벨을 다시 플레이하며 이동 횟수를 비교해 보세요. 힌트는 한 쌍을 보여 주지만 해당 시도에서 얻을 수 있는 별을 두 개로 제한하므로 정말 헷갈릴 때 사용하세요. 시간 도전은 카운트다운을 더할 뿐, 모든 짝을 찾는 목표는 같습니다. 이는 플레이 요령이며 의학적 또는 인지적 효과를 약속하지 않습니다."
+          ]
         }
       ],
       "faqTitle": "Lumina Match 자주 묻는 질문",
       "faqs": [
-        {"question": "어떻게 시작하나요?", "answer": "MatchApp 홈에서 Lumina Match 플레이를 선택하고 레벨을 여세요. 모든 짝을 맞추면 다음으로 진행합니다. 여유롭게 모드에는 카운트다운이 없습니다."},
-        {"question": "무료인가요? 광고가 있나요?", "answer": "Lumina Match는 무료입니다. 현재 게임 안에는 광고가 없으며, 계속 플레이하기 위해 동영상을 시청할 필요도 없습니다."},
-        {"question": "저장하려면 계정이 필요한가요?", "answer": "네. 가입한 계정은 진행 상황을 유지합니다. 게스트도 가입 없이 플레이할 수 있지만, 게임 진행 상황은 브라우저에 저장되지 않으며 게임을 닫거나 새로고침하면 사라집니다."},
-        {"question": "친구와 플레이할 수 있나요?", "answer": "네. 한 기기에서 번갈아 플레이하거나 로그인 후 Match Together에서 수락한 친구와 온라인 클래식 라운드를 즐기세요. 캠페인은 싱글 플레이 모드입니다."},
-        {"question": "왜 아직 소리가 나지 않나요?", "answer": "먼저 게임 조작 버튼을 누른 다음 오디오 설정과 기기 음량을 확인하세요. 음악과 효과음을 끈 상태로도 플레이할 수 있습니다."},
-        {"question": "어떤 기기와 언어를 지원하나요?", "answer": "컴퓨터, 휴대전화, 태블릿의 웹 브라우저를 사용하세요. 게임은 MatchApp 인터페이스의 14개 언어를 모두 지원합니다. 이 브라우저 버전은 네이티브 Android 앱 내부나 Kids Mode에서 제공되지 않습니다."}
+        {
+          "question": "어떻게 시작하나요?",
+          "answer": "MatchApp 홈에서 Lumina Match 플레이를 선택하고 레벨을 여세요. 모든 짝을 맞추면 다음으로 진행합니다. 여유롭게 모드에는 카운트다운이 없습니다."
+        },
+        {
+          "question": "무료인가요? 광고가 있나요?",
+          "answer": "Lumina Match는 무료입니다. 현재 게임 안에는 광고가 없으며, 계속 플레이하기 위해 동영상을 시청할 필요도 없습니다."
+        },
+        {
+          "question": "저장하려면 계정이 필요한가요?",
+          "answer": "네. 가입한 계정은 진행 상황을 유지합니다. 게스트도 가입 없이 플레이할 수 있지만, 게임 진행 상황은 브라우저에 저장되지 않으며 게임을 닫거나 새로고침하면 사라집니다."
+        },
+        {
+          "question": "친구와 플레이할 수 있나요?",
+          "answer": "네. 한 기기에서 번갈아 플레이하거나 로그인 후 Match Together에서 수락한 친구와 온라인 클래식 라운드를 즐기세요. 캠페인은 싱글 플레이 모드입니다."
+        },
+        {
+          "question": "왜 아직 소리가 나지 않나요?",
+          "answer": "먼저 게임 조작 버튼을 누른 다음 오디오 설정과 기기 음량을 확인하세요. 음악과 효과음을 끈 상태로도 플레이할 수 있습니다."
+        },
+        {
+          "question": "어떤 기기와 언어를 지원하나요?",
+          "answer": "컴퓨터, 휴대전화, 태블릿의 웹 브라우저를 사용하세요. 게임은 MatchApp 인터페이스의 14개 언어를 모두 지원합니다. 이 브라우저 버전은 네이티브 Android 앱 내부나 Kids Mode에서 제공되지 않습니다."
+        }
       ],
       "relatedTitle": "MatchApp Ai 더 알아보기",
-      "relatedLinks": {"how": "MatchApp Ai 이용 방법", "together": "Match Together 알아보기", "discover": "Jonas와 엔터테인먼트 찾기"}
+      "relatedLinks": {
+        "how": "MatchApp Ai 이용 방법",
+        "together": "Match Together 알아보기",
+        "discover": "Jonas와 엔터테인먼트 찾기"
+      },
+      "socialAlt": "브라우저의 Lumina Match: 첫 캠페인 보드에 놓인 그림 메모리 카드"
     },
     "zh": {
       "nativeName": "中文",
       "ogLocale": "zh_CN",
       "title": "Lumina Match：免费在线记忆配对游戏 | MatchApp Ai",
-      "description": "在Lumina Match体验250关记忆配对，选择轻松或限时模式，欣赏音乐，与好友对局。使用MatchApp账户保存游戏进度。",
-      "keywords": ["Lumina Match", "免费在线记忆游戏", "卡牌配对游戏", "250关记忆配对", "浏览器记忆游戏", "轻松卡牌配对", "与好友玩记忆游戏", "限时翻牌配对"],
+      "description": "在浏览器免费畅玩Lumina Match：无需下载，250个记忆翻牌关卡，可选轻松或计时模式，也能与好友进行经典对局。保存进度需要账号。",
+      "keywords": [
+        "Lumina Match",
+        "免费在线记忆游戏",
+        "卡片配对游戏",
+        "找相同图片游戏",
+        "无需下载记忆游戏",
+        "双人记忆游戏",
+        "轻松记忆游戏",
+        "浏览器卡牌游戏",
+        "250关记忆游戏"
+      ],
       "eyebrow": "Lumina Match · 浏览器游戏",
-      "h1": "找出每一对，探索250个关卡。",
+      "h1": "免费在线记忆翻牌游戏 · 250个关卡",
       "intro": [
         "Lumina Match是MatchApp Ai中的免费在线记忆游戏。翻开带有插画的卡牌，记住它们的位置，配对全部卡牌即可解锁下一关。",
         "你可以独自轻松游玩，尝试可选的限时挑战，或与好友进行经典对局。游戏可在电脑、手机或平板的浏览器中运行，无需安装游戏。"
@@ -1003,8 +1741,15 @@
         {
           "id": "how-to-play",
           "title": "卡牌配对游戏怎么玩",
-          "paragraphs": ["每次翻开两张卡牌。相同的卡牌保持正面朝上，不同的卡牌会重新盖住。下一次翻牌时，利用你记住的位置找到配对。"],
-          "steps": ["从首页打开Lumina Match，选择一个闯关关卡。", "选择没有倒计时的“轻松模式”，或选择“限时挑战”与时间赛跑。", "配对全部卡牌即可解锁下一关。已完成的关卡可以随时重玩。"]
+          "paragraphs": [
+            "每次翻开两张卡牌。相同的卡牌保持正面朝上，不同的卡牌会重新盖住。下一次翻牌时，利用你记住的位置找到配对。",
+            "第一次玩？从游戏菜单打开新手指南，体验一小轮互动练习。练习不会改变你的关卡进度。"
+          ],
+          "steps": [
+            "从首页打开Lumina Match，选择一个闯关关卡。",
+            "选择没有倒计时的“轻松模式”，或选择“限时挑战”与时间赛跑。",
+            "配对全部卡牌即可解锁下一关。已完成的关卡可以随时重玩。"
+          ]
         },
         {
           "id": "campaign",
@@ -1037,19 +1782,58 @@
             "主题音乐和卡牌音效会在你首次操作游戏后开始播放。在“音频设置”中，可以分别开关音乐与音效，并调整音量。",
             "需要休息时可以暂停。游戏暂停或隐藏时，声音会停止；选择“关闭”返回首页时，游戏音频也会停止。"
           ]
+        },
+        {
+          "id": "memory-pairs-explained",
+          "title": "翻牌配对、记忆游戏与三消有什么区别？",
+          "paragraphs": [
+            "Lumina Match采用背面朝上的卡片配对玩法：翻开两张卡，记住图片及位置，找到相同的一对。棋盘是卡片网格，不是连线路径或滑动方块谜题。你不需要交换宝石，也不需要把三个物品排成一行。",
+            "熟悉的桌面翻牌玩法变成了带插画主题和关卡模式的浏览器游戏。体验这个版本无需下载。访客可以直接玩，但想在下次访问时保留进度，需要MatchApp账号。无需注册即可游玩，并不代表访客进度会永久保存。"
+          ]
+        },
+        {
+          "id": "fewer-moves",
+          "title": "怎样用更少的步数找到配对",
+          "paragraphs": [
+            "熟悉棋盘时先选择轻松模式。逐行观察，把每张图片与位置联系起来，例如“月亮在左上角”。第一张卡出现见过的图片时，优先选择记得位置的另一张，而不是翻开未知的卡。配对失败也能为下一步提供线索。",
+            "先通过指南熟悉操作，再重玩已完成的关卡来比较步数。提示会显示一对卡，但会把本次尝试的星级上限降为两颗，因此可以留到真正拿不准时使用。计时模式增加倒计时，找到全部配对的目标不变。这些是游戏技巧，不是对医学或认知效果的承诺。"
+          ]
         }
       ],
       "faqTitle": "Lumina Match常见问题",
       "faqs": [
-        {"question": "如何开始游戏？", "answer": "前往MatchApp首页，选择“玩 Lumina Match”，然后打开一个关卡。配对全部卡牌即可前进；轻松模式没有倒计时。"},
-        {"question": "游戏免费吗？有广告吗？", "answer": "Lumina Match可免费游玩。目前游戏内没有广告，也无需观看视频才能继续游戏。"},
-        {"question": "保存进度需要账户吗？", "answer": "需要。已注册账户可保留进度。访客无需注册也能玩，但游戏进度不会存入浏览器，关闭或重新加载游戏后就会丢失。"},
-        {"question": "可以和好友一起玩吗？", "answer": "可以。你们可以在一台设备上轮流游玩，或登录账户，与Match Together中已接受的好友进行在线经典对局。闯关旅程仍是单人模式。"},
-        {"question": "为什么还没有声音？", "answer": "请先点按一个游戏控件，再检查音频设置和设备音量。也可以关闭音乐和音效继续游玩。"},
-        {"question": "支持哪些设备和语言？", "answer": "可使用电脑、手机或平板的网页浏览器。游戏支持MatchApp界面的全部14种语言。此浏览器版本不在原生Android应用内部或Kids Mode中提供。"}
+        {
+          "question": "如何开始游戏？",
+          "answer": "前往MatchApp首页，选择“玩 Lumina Match”，然后打开一个关卡。配对全部卡牌即可前进；轻松模式没有倒计时。"
+        },
+        {
+          "question": "游戏免费吗？有广告吗？",
+          "answer": "Lumina Match可免费游玩。目前游戏内没有广告，也无需观看视频才能继续游戏。"
+        },
+        {
+          "question": "保存进度需要账户吗？",
+          "answer": "需要。已注册账户可保留进度。访客无需注册也能玩，但游戏进度不会存入浏览器，关闭或重新加载游戏后就会丢失。"
+        },
+        {
+          "question": "可以和好友一起玩吗？",
+          "answer": "可以。你们可以在一台设备上轮流游玩，或登录账户，与Match Together中已接受的好友进行在线经典对局。闯关旅程仍是单人模式。"
+        },
+        {
+          "question": "为什么还没有声音？",
+          "answer": "请先点按一个游戏控件，再检查音频设置和设备音量。也可以关闭音乐和音效继续游玩。"
+        },
+        {
+          "question": "支持哪些设备和语言？",
+          "answer": "可使用电脑、手机或平板的网页浏览器。游戏支持MatchApp界面的全部14种语言。此浏览器版本不在原生Android应用内部或Kids Mode中提供。"
+        }
       ],
       "relatedTitle": "探索更多MatchApp Ai内容",
-      "relatedLinks": {"how": "MatchApp Ai使用指南", "together": "了解Match Together", "discover": "与Jonas一起发现娱乐内容"}
+      "relatedLinks": {
+        "how": "MatchApp Ai使用指南",
+        "together": "了解Match Together",
+        "discover": "与Jonas一起发现娱乐内容"
+      },
+      "socialAlt": "浏览器中的Lumina Match：首个关卡棋盘上的插画记忆卡片"
     }
   }
 }

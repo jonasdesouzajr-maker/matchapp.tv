@@ -128,22 +128,24 @@
   else binding.node.setAttribute(binding.attribute,value);
  }
  root?.document?.addEventListener('matchapp:langchange',()=>{for(const binding of copyBindings){if(!binding.node.isConnected)copyBindings.delete(binding);else writeCopy(binding);}});
- function label(data,kind){
+ function label(data,kind,canonicalYear){
   const pt=language().toLowerCase().startsWith('pt'),a=[];
-  if(data.year)a.push(['detail.year',{year:data.year},(pt?'Ano catalogado':'Catalog year')+' '+data.year]);
+  // Optional work metadata must not contradict the known original year; store editions may differ.
+  const conflictingWorkYear=data.source==='Open Library'&&Number.isInteger(canonicalYear)&&data.year!==canonicalYear;
+  if(data.year&&!conflictingWorkYear)a.push(['detail.year',{year:data.year},(pt?'Ano catalogado':'Catalog year')+' '+data.year]);
   if(data.pages)a.push(['detail.pages',()=>({count:number(data.pages)}),data.pages+(pt?' páginas':' pages')]);
   if(data.rating!==null&&data.count)a.push(['detail.ratings',()=>({rating:number(data.rating,1),count:number(data.count),source:data.source==='Apple Books'?'Apple Books':'Open Library'}),'★ '+data.rating.toFixed(1)+'/5 · '+data.count.toLocaleString(pt?'pt-BR':'en-US')+(pt?' avaliações':' ratings')+' · '+(data.source==='Apple Books'?'Apple Books':'Open Library')]);
   else a.push(['detail.noRating',{},pt?'Avaliação não disponível':'Rating not available']);
   if(kind==='audiobook')a.push(['detail.audioWork',{},pt?'A capa e a avaliação pertencem à obra, não necessariamente à narração':'Cover and ratings describe the book, not a specific recording']);
   return a;
  }
- function injectMeta(host,data,kind){
+ function injectMeta(host,data,kind,canonicalYear){
   const copy=host.querySelector('.ebook-top-copy,.ebook-result-copy');
   if(!copy||!data)return;
   let box=host.querySelector('[data-book-verified-meta]');
   if(!box){box=document.createElement('div');box.className='ebook-verified-meta';box.dataset.bookVerifiedMeta='1'; const actions=copy.querySelector('.ebook-top-actions,.ebook-source-groups,.ebook-why');if(actions)actions.before(box);else copy.append(box);}
   box.replaceChildren();
-  const lines=label(data,kind);
+  const lines=label(data,kind,canonicalYear);
   if(!lines.length){box.hidden=true;return}
   box.hidden=false;
   for(const [key,params,fallback] of lines){const span=document.createElement('span');bindCopy(span,key,params,fallback);box.append(span)}
@@ -201,7 +203,7 @@
   if(!host||!book?.title||!book?.author)return null;
   const data=await lookup(book);
   if(!host.isConnected||!data)return null;
-  injectMeta(host,data,options?.format);
+  injectMeta(host,data,options?.format,book.year);
   if(!options?.verifiedAudio)setCover(host,data,book);
   return data;
  }

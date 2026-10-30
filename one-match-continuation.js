@@ -95,7 +95,8 @@
       let store;
       try { store=playUrl(invitation,locale(w)); } catch (_) { return; }
       const title=node('h3',c[0]),body=node('p',c[1]),actions=node('div',null,'ma-continuation-actions');
-      const install=node('a',c[2],'ma-continuation-primary no-depth');install.href=store;
+      const install=node('a',null,'ma-continuation-primary ma-play-store no-depth');install.href=store;
+      const storeCopy=node('span',null,'ma-play-store-copy');storeCopy.append(node('span',c[2],'ma-play-store-caption'),node('span','Google Play','ma-play-store-name'));install.append(storeCopy);
       const open=node('a',c[3],'no-depth');open.href=intentUrl(invitation,locale(w));
       const stay=node('button',c[4],'no-depth');stay.type='button';
       stay.addEventListener('click',()=>{try { w.localStorage.setItem('matchapp_growth_install_dismissed_v1',String(Date.now()+7*86400000)); } catch (_) {}stayed=true;reveal();});

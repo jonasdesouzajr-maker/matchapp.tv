@@ -1,7 +1,6 @@
-/* Adult browser install discovery — notification-bell only.
-   First and second eligible Home visits get one unread install notification.
-   Android routes to the official Google Play package; Apple devices get the
-   real Add to Home Screen / Add to Dock flow. No floating install banner. */
+/* Adult browser install discovery. Apple/desktop remain notification-bell only.
+   Android gets a dismissible Play bubble per tab session, then at most two
+   reminders, five and twenty minutes after dismissal. */
 (function(){
   'use strict';
   if(window.__maBrowserInstallOffer)return;
@@ -119,6 +118,105 @@
     const text=DESKTOP_PLAY_COPY[lang]||DESKTOP_PLAY_COPY.en;
     return {title:text[0],body:text[1]};
   }
+  const CLOSE={en:'Close', 'pt-BR':'Fechar',es:'Cerrar',fr:'Fermer',de:'Schließen',it:'Chiudi',tr:'Kapat',ru:'Закрыть',ar:'إغلاق',hi:'बंद करें',id:'Tutup',ja:'閉じる',ko:'닫기',zh:'关闭'};
+  const SESSION='matchapp_play_bubble_session_v1';
+  let bubble=null,bubbleTimer=null,bubbleStarted=false;
+  let session={count:0,next:0,stopped:false};
+  try{const saved=JSON.parse(sessionStorage.getItem(SESSION));if(saved&&Number.isInteger(saved.count)&&saved.count>=0&&saved.count<=3&&Number.isFinite(saved.next))session={count:saved.count,next:saved.next,stopped:saved.stopped===true};}catch(_){}
+  function persist(){try{sessionStorage.setItem(SESSION,JSON.stringify(session));}catch(_){} }
+  function busy(){
+    return document.visibilityState==='hidden'||window.innerHeight<420||
+      [...document.querySelectorAll('dialog[open],[role="dialog"]:not([hidden])')].some(node=>{
+        for(let current=node;current;current=current.parentElement){const style=getComputedStyle(current);if(current.hidden||style.display==='none'||style.visibility==='hidden')return false;}
+        return true;
+      })||
+      !!document.activeElement?.matches('input,textarea,select,[contenteditable="true"]');
+  }
+  function bubbleCopy(){
+    if(!bubble)return;
+    const raw=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();
+    const lang=raw.startsWith('pt')?'pt-BR':raw.split('-')[0],c=desktopPlayCopy();
+    bubble.lang=lang;bubble.dir=lang==='ar'?'rtl':'ltr';
+    bubble.querySelector('strong').textContent=c.title;
+    bubble.querySelector('p').textContent=c.body;
+    bubble.querySelector('button').setAttribute('aria-label',CLOSE[lang]||CLOSE.en);
+    bubble.querySelector('a').setAttribute('aria-label',c.title);
+    if(bubble.isConnected&&!fitBubble(bubble))dismissBubble();
+  }
+  function fitBubble(box){
+    // Measure the actual chrome, including translated/user-scaled headers.
+    // Keep both actions visible; a short invitation may omit its helper copy.
+    if(!box.getBoundingClientRect().height)return true;
+    const headerBottom=Math.max(0,...[...document.querySelectorAll('.app-header,#ma-reference-header')]
+      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0).map(r=>r.bottom));
+    const dockTop=Math.min(innerHeight,...[...document.querySelectorAll('.ma-cinema-dock,.ma-reference-dock')]
+      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0&&r.top>=0).map(r=>r.top));
+    const available=Math.floor(dockTop-headerBottom-16),body=box.querySelector('p');
+    box.style.bottom=Math.max(18,innerHeight-dockTop+8)+'px';
+    box.style.maxHeight=Math.max(0,available)+'px';
+    body.hidden=false;body.style.removeProperty('display');
+    if(box.scrollHeight>box.clientHeight+1){body.hidden=true;body.style.setProperty('display','none','important');}
+    const r=box.getBoundingClientRect();
+    return available>0&&box.scrollHeight<=box.clientHeight+1&&r.top>=headerBottom+8&&
+      r.bottom<=dockTop-8+.5&&r.left>=0&&r.right<=innerWidth;
+  }
+  function bubbleTargetsReachable(box){
+    if(typeof document.elementFromPoint!=='function')return true;
+    return [...box.querySelectorAll('button,a')].every(control=>{
+      const r=control.getBoundingClientRect();
+      return r.width>=44&&r.height>=44&&control.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2));
+    });
+  }
+  function dismissBubble(stop=false){
+    if(!bubble)return;
+    const close=bubble.querySelector('button'),restore=document.activeElement===close;
+    bubble.remove();bubble=null;
+    session.stopped=stop||session.count>=3;
+    session.next=Date.now()+(session.count===1?5:20)*60*1000;
+    persist();
+    if(restore)document.querySelector('.app-header a[href="/"]')?.focus({preventScroll:true});
+    scheduleBubble();
+  }
+  function scheduleBubble(){
+    clearTimeout(bubbleTimer);
+    if(session.stopped||session.count>=3||installed())return;
+    bubbleTimer=setTimeout(showBubble,Math.max(0,session.next-Date.now()));
+  }
+  function showBubble(){
+    if(bubble||session.stopped||session.count>=3||!home()||installed())return;
+    if(busy()){bubbleTimer=setTimeout(showBubble,15000);return;}
+    const box=document.createElement('aside');box.id='ma-install-offer';box.setAttribute('role','region');
+    box.style.maxHeight='calc(100dvh - 110px - env(safe-area-inset-bottom,0px))';
+    box.setAttribute('aria-labelledby','ma-play-invitation-title');
+    const head=document.createElement('div');head.className='ma-offer-head';head.style.paddingRight='0';head.style.paddingInlineEnd='44px';
+    const copy=document.createElement('div'),title=document.createElement('strong'),body=document.createElement('p');
+    title.id='ma-play-invitation-title';title.className='ma-offer-title';body.className='ma-offer-description';
+    copy.append(title,body);head.append(copy);
+    const close=document.createElement('button');close.type='button';close.className='ma-offer-close';close.textContent='×';close.style.minWidth=close.style.minHeight='44px';
+    close.addEventListener('click',()=>dismissBubble());
+    const actions=document.createElement('div');actions.className='ma-offer-actions';actions.style.gridTemplateColumns='1fr';
+    const link=document.createElement('a');link.className='ma-offer-play';link.href=PLAY;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Google Play ↗';
+    link.addEventListener('click',()=>dismissBubble(true));actions.append(link);box.append(head,close,actions);
+    bubble=box;bubbleCopy();box.style.visibility='hidden';document.body.append(box);
+    if(!fitBubble(box)){box.remove();bubble=null;bubbleTimer=setTimeout(showBubble,15000);return;}
+    box.style.removeProperty('visibility');
+    if(!bubbleTargetsReachable(box)){box.remove();bubble=null;bubbleTimer=setTimeout(showBubble,15000);return;}
+    session.count++;session.next=0;persist();
+  }
+  function startAndroidBubble(){
+    if(bubbleStarted)return;bubbleStarted=true;scheduleBubble();
+    document.addEventListener('matchapp:langchange',bubbleCopy);
+    document.addEventListener('focusin',()=>{if(bubble&&busy())dismissBubble();});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'&&bubble&&!busy())dismissBubble();});
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!bubble)scheduleBubble();});
+    window.addEventListener('resize',()=>{if(bubble&&(busy()||!fitBubble(bubble)))dismissBubble();else if(!bubble)scheduleBubble();});
+    document.fonts?.addEventListener?.('loadingdone',()=>{if(bubble&&!fitBubble(bubble))dismissBubble();});
+    new MutationObserver(records=>{
+      if(!bubble?.isConnected)return;
+      const outside=records.some(record=>record.target!==bubble&&!bubble.contains(record.target));
+      if(installed()||busy()||(outside&&!fitBubble(bubble)))dismissBubble(installed());
+    }).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open','hidden','aria-expanded','style','class']});
+  }
   function copy(kind,visit){
     if(kind==='desktop')return desktopPlayCopy();
     const pt=locale()==='pt-BR';
@@ -167,6 +265,7 @@
     const device=android()?'android':a.ios?'ios':a.mac?'mac':'desktop';
     if(!device)return;
     if(await relatedInstalled()||installed())return;
+    if(device==='android'){startAndroidBubble();return;}
     const current=readVisits();
     if(current>=MAX_VISITS)return;
     const visit=current+1;
@@ -192,6 +291,6 @@
     setTimeout(()=>{queued=false;void notify();},DELAY);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  window.addEventListener('appinstalled',()=>{completed=true;});
-  window.addEventListener('matchapp:installstate',()=>{if(installed())completed=true;});
+  window.addEventListener('appinstalled',()=>{completed=true;session.stopped=true;clearTimeout(bubbleTimer);dismissBubble(true);persist();});
+  window.addEventListener('matchapp:installstate',()=>{if(installed()){completed=true;clearTimeout(bubbleTimer);dismissBubble(true);}});
 })();

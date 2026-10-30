@@ -38,18 +38,16 @@ async function boot(){
   w.fallbackSearch=async()=>({answer:'No live answer.',results:[],_live:false});
   w.renderResultsInto=async(_grid,items,_base,options)=>{events.push({type:'cards',items,options});return items;};
   w.eval(['discoverRecoveryText','titleKey','discoverRecommendationRequest','discoverExcludedTitles','discoverAnswerContainsExcludedTitle','discoverRecommendationSummary','prepareDiscoverRecommendations','releaseDiscoverClaims','loadThreads','saveThreads','persistCurrentThread','appendUserBubble','appendAssistantBubble','runAskAndRender','askAndRender'].map(functionSource).join('\n'));
-  for(const name of ['startNewChat','openThread','deleteThread']){
+  for(const name of ['startNewChat','openThread','deleteThread','newDiscoverSearch']){
     const start=source.indexOf('window.'+name+' = function'),end=source.indexOf('\n};',start)+3;
     w.eval(source.slice(start,end));
   }
   return {dom,w,events};
 }
 
-for(const allowed of [false,true])test('Send restores the submitted draft when allowance is denied '+allowed,async()=>{
+for(const allowed of [false,true])test('Send recovers only denied allowance; allowed='+allowed,async()=>{
   const {dom,w,events}=await boot(),allowance=deferred();
   try{
-    const start=source.indexOf('window.newDiscoverSearch = function () {');
-    w.eval(source.slice(start,source.indexOf('\n};',start)+3));
     const input=w.document.getElementById('discover-new-input');
     input.value='Who directed Interstellar?';
     w.matchAllowanceBeforeLookup=()=>allowance.promise;
@@ -66,15 +64,110 @@ for(const allowed of [false,true])test('Send restores the submitted draft when a
   }finally{dom.window.close();}
 });
 
-test('a successful allowance check preserves a newer composer draft',async()=>{
+for(const nextDraft of ['My next question','First question'])test('a successful allowance check preserves a newer composer draft: '+nextDraft,async()=>{
   const {dom,w}=await boot(),allowance=deferred();
   try{
     const input=w.document.getElementById('discover-new-input');
     input.value='First question';w.matchAllowanceBeforeLookup=()=>allowance.promise;
     w.askAIConversational=async()=>({answer:'Verified answer.',results:[],_live:true});
     const pending=w.askAndRender('First question');await Promise.resolve();
-    input.value='My next question';allowance.resolve(true);await pending;
-    assert.equal(input.value,'My next question');
+    input.value=nextDraft;allowance.resolve(true);await pending;
+    assert.equal(input.value,nextDraft);
+  }finally{dom.window.close();}
+});
+
+// These fixtures exercise Send plus the real serial queue; only allowance and
+// provider results are controlled. Failed verification must not reach debit.
+for(const outcome of ['denied','allowed','interrupted'])test('pending '+outcome+' verification preserves a newer unsent draft',async()=>{
+  const {dom,w,events}=await boot(),gate=deferred();let calls=0;
+  try{
+    const input=w.document.getElementById('discover-new-input');
+    w.matchAllowanceBeforeLookup=()=>gate.promise;
+    w.askAIConversational=async()=>{calls++;return {answer:'Fixture answer.',results:[],_live:true};};
+    input.value='Who directed Interstellar?';w.newDiscoverSearch();await Promise.resolve();
+    const pending=w.askInFlight;input.value='My newer unsent question';
+    if(outcome==='interrupted')gate.reject(new Error('Fixture verification interruption'));else gate.resolve(outcome==='allowed');
+    await pending;
+    assert.equal(input.value,'My newer unsent question');
+    assert.equal(calls,outcome==='allowed'?1:0);
+    assert.equal(events.filter(e=>e.type==='debit').length,calls);
+    assert.equal(w.askInFlight,null);
+  }finally{dom.window.close();}
+});
+
+for(const change of ['new conversation','open another conversation','delete this conversation','language']){
+  for(const outcome of ['denied','allowed','interrupted'])test(outcome+' allowance cannot restore or submit a draft after '+change,async()=>{
+    const {dom,w,events}=await boot(),gate=deferred();
+    try{
+      w.currentThread={id:'original',title:'Original',turns:[{role:'user',text:'Prior question'}]};w.persistCurrentThread();
+      const input=w.document.getElementById('discover-new-input');
+      w.matchAllowanceBeforeLookup=()=>gate.promise;
+      w.askAIConversational=async()=>assert.fail('canceled allowance must not reach the provider');
+      input.value='Who directed Interstellar?';w.newDiscoverSearch();await Promise.resolve();const pending=w.askInFlight;
+      if(change==='open another conversation'){
+        w.saveThreads([...w.loadThreads(),{id:'other',title:'Other',turns:[]}]);w.openThread('other');
+      }else if(change==='delete this conversation')w.deleteThread('original');
+      else if(change==='language')w.MATCH_LANG='pt-BR';
+      else w.startNewChat();
+      if(outcome==='interrupted')gate.reject(new Error('Fixture interruption'));else gate.resolve(outcome==='allowed');
+      await pending;
+      assert.equal(input.value,'');assert.equal(events.length,0);
+      assert.equal(w.document.querySelectorAll('.chat-assistant').length,0);
+      assert(!w.loadThreads().some(t=>t.turns.some(turn=>turn.text==='Who directed Interstellar?')));
+      assert.equal(w.askInFlight,null);
+    }finally{dom.window.close();}
+  });
+}
+
+for(const change of ['conversation','language'])test('same-tick '+change+' replacement cancels active and queued submissions before verification',async()=>{
+  const {dom,w,events}=await boot();
+  try{
+    const input=w.document.getElementById('discover-new-input');
+    w.matchAllowanceBeforeLookup=async()=>assert.fail('superseded submission must not verify');
+    input.value='Who directed Interstellar?';w.newDiscoverSearch();const first=w.askInFlight;
+    const queued=w.askAndRender('What year was it released?');
+    if(change==='conversation')w.startNewChat();else w.MATCH_LANG='pt-BR';
+    await Promise.all([first,queued]);
+    assert.equal(input.value,'');assert.equal(events.length,0);assert.equal(w.currentThread,null);assert.equal(w.askInFlight,null);
+  }finally{dom.window.close();}
+});
+
+for(const firstAllowed of [false,true])for(const secondAllowed of [false,true]){
+  test('queued duplicate sends retain recovery and debit semantics: '+firstAllowed+'/'+secondAllowed,async()=>{
+    const {dom,w,events}=await boot(),firstGate=deferred(),secondGate=deferred();let checks=0;const calls=[];
+    try{
+      const input=w.document.getElementById('discover-new-input');
+      w.matchAllowanceBeforeLookup=()=>++checks===1?firstGate.promise:secondGate.promise;
+      w.askAIConversational=async q=>{calls.push(q);return {answer:'Fixture answer.',results:[],_live:true};};
+      const firstQuestion='Who directed Interstellar?',secondQuestion='What year was it released?';
+      input.value=firstQuestion;w.newDiscoverSearch();await Promise.resolve();const first=w.askInFlight;
+      assert.equal(w.askAndRender(firstQuestion),first,'active duplicates share the original verification');
+      input.value=secondQuestion;w.newDiscoverSearch();
+      const second=w.askAndRender(secondQuestion),duplicate=w.askAndRender(secondQuestion);
+      firstGate.resolve(firstAllowed);await until(()=>checks===2);
+      secondGate.resolve(secondAllowed);await Promise.all([first,second,duplicate]);
+      assert.equal(checks,2);assert.deepEqual(calls,[...(firstAllowed?[firstQuestion]:[]),...(secondAllowed?[secondQuestion]:[])]);
+      assert.equal(events.filter(e=>e.type==='debit').length,Number(firstAllowed)+Number(secondAllowed));
+      assert.equal(input.value,firstAllowed?(secondAllowed?'':secondQuestion):firstQuestion,'an earlier recovered draft remains owned by the composer');
+      assert.equal(w.askInFlight,null);
+    }finally{dom.window.close();}
+  });
+}
+
+test('interrupted and denied verification repeatedly recover; a retry can complete exactly once',async()=>{
+  const {dom,w,events}=await boot();let attempts=0,calls=0;
+  try{
+    const input=w.document.getElementById('discover-new-input'),question='Who directed Interstellar?';
+    w.matchAllowanceBeforeLookup=async()=>{attempts++;if(attempts===1)throw new Error('Fixture interruption');return attempts===3;};
+    w.askAIConversational=async()=>{calls++;return {answer:'Christopher Nolan.',results:[],_live:true};};
+    input.value=question;
+    for(let attempt=1;attempt<=3;attempt++){
+      assert.equal(w.newDiscoverSearch(),true);const pending=w.askInFlight;
+      assert.equal(w.askAndRender(question),pending);await pending;
+      assert.equal(input.value,attempt===3?'':question);assert.equal(w.askInFlight,null);
+    }
+    assert.equal(attempts,3);assert.equal(calls,1);assert.equal(events.filter(e=>e.type==='debit').length,1);
+    assert.equal(w.currentThread.turns.length,2);
   }finally{dom.window.close();}
 });
 
@@ -290,4 +383,52 @@ for(const language of['en','pt-BR'])test(language+' positive request plus prohib
     const voice=events.find(e=>e.type==='voice').text;assert.match(voice,/Fresh Verified Film/);assert.doesNotMatch(voice,/Spirited Away/);assert.equal(w.document.querySelector('.chat-answer-text').textContent,voice);assert.equal(w.currentThread.turns.at(-1).text,voice);
     assert.equal(events.filter(e=>e.type==='debit').length,1);assert.ok(events.findIndex(e=>e.type==='claim')<events.findIndex(e=>e.type==='debit'));assert.ok(events.findIndex(e=>e.type==='debit')<events.findIndex(e=>e.type==='voice'));assert.equal(w.matchPolicy.history().find(item=>item.title===fresh.title)?.action,'ai');
   }finally{dom.window.close();}
+});
+
+test('paid follow-up questions sent while the visible first reply finishes are processed in order with full history',async()=>{
+  const {dom,w,events}=await boot(),presentation=deferred(),calls=[];let rendering=false,credits=6;
+  try{
+    w.matchAllowanceBeforeLookup=async()=>credits>0;
+    w.checkDailyLimit=async()=>{assert(credits>0);credits--;events.push({type:'debit'});return true;};
+    w.askAIConversational=async(question,history)=>{
+      calls.push({question,history});return {answer:'Verified answer '+calls.length,results:calls.length===1?[film('First Source Title',950)]:[],_live:true};
+    };
+    w.renderResultsInto=async(_grid,items)=>{rendering=true;await presentation.promise;return items;};
+    const first=w.askAndRender('Who directed First Source Title?',{voiceOrigin:true});
+    await until(()=>rendering);
+    assert.equal(w.document.querySelectorAll('.chat-assistant').length,1,'the answer is already visible while supplementary cards finish');
+    const second=w.askAndRender('What year was it released?',{voiceOrigin:true});
+    const third=w.askAndRender('Who wrote it?',{voiceOrigin:true});
+    assert.equal(calls.length,1,'provider work remains serialized');
+    presentation.resolve();await Promise.all([first,second,third]);
+    assert.deepEqual(calls.map(row=>row.question),['Who directed First Source Title?','What year was it released?','Who wrote it?']);
+    assert.equal(calls[1].history.length,2);assert.equal(calls[2].history.length,4);
+    assert.equal(calls[2].history.at(-1).text,'Verified answer 2');
+    assert.equal(w.document.querySelectorAll('.chat-assistant').length,3);assert.equal(w.currentThread.turns.length,6);
+    assert.equal(events.filter(e=>e.type==='debit').length,3);assert.equal(credits,3,'one successful answer consumes one existing AI credit');
+  }finally{presentation.resolve();dom.window.close();}
+});
+test('queued follow-ups cannot enter a replacement conversation',async()=>{
+  const {dom,w,events}=await boot(),answer=deferred();let calls=0;
+  try{
+    w.askAIConversational=()=>{calls++;return answer.promise;};
+    const first=w.askAndRender('Who directed First Source Title?');await until(()=>calls===1);
+    const queued=w.askAndRender('What year was it released?');w.startNewChat();
+    answer.resolve({answer:'Old answer',results:[],_live:true});await Promise.all([first,queued]);
+    assert.equal(calls,1);assert.equal(events.filter(e=>e.type==='debit').length,0);assert.equal(w.currentThread,null);
+  }finally{answer.resolve({answer:'Old answer',results:[],_live:true});dom.window.close();}
+});
+test('duplicate queued submissions share one answer and debit and language changes cancel old queued turns',async()=>{
+  for(const changeLanguage of [false,true]){
+    const {dom,w,events}=await boot(),answer=deferred();let calls=0;
+    try{
+      w.askAIConversational=()=>{calls++;return calls===1?answer.promise:Promise.resolve({answer:'Second answer',results:[],_live:true});};
+      const first=w.askAndRender('Who directed First Source Title?');await until(()=>calls===1);
+      const second=w.askAndRender('What year was it released?'),duplicate=w.askAndRender('What year was it released?');
+      if(changeLanguage)w.MATCH_LANG='pt-BR';
+      answer.resolve({answer:'First answer',results:[],_live:true});await Promise.all([first,second,duplicate]);
+      assert.equal(calls,changeLanguage?1:2);assert.equal(events.filter(e=>e.type==='debit').length,changeLanguage?0:2);
+      assert.equal(w.document.querySelectorAll('.chat-assistant').length,changeLanguage?1:2);
+    }finally{answer.resolve({answer:'First answer',results:[],_live:true});dom.window.close();}
+  }
 });

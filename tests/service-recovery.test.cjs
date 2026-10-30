@@ -20,7 +20,7 @@ test('Ask AI restores its composer and permits a new attempt when all fallback w
  const ctx=vm.createContext({window:w,document:w.document,discoverThreadVersion:0,console:{warn(){}},finishAiWorkflow:()=>stops++,runAskAndRender:async()=>{calls++;throw Error('source failed');}});
  vm.runInContext(discover.slice(discover.indexOf('let askInFlight = null;'),discover.indexOf('/* ---------- Auto-growing composer')),ctx);
  try{
-  const first=ctx.askAndRender('Recommend a film');assert.equal(first,ctx.askAndRender('duplicate'));
+  const first=ctx.askAndRender('Recommend a film');assert.equal(first,ctx.askAndRender('Recommend a film'));
   assert.equal(await first,null);assert.equal(calls,1);assert.equal(stops,1);
   assert.equal(w.document.getElementById('discover-loading').style.display,'none');
   assert.equal(w.document.getElementById('discover-new-input').value,'Recommend a film');

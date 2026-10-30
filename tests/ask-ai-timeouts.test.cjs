@@ -37,7 +37,9 @@ test('Ask AI does not replace legitimate conversational answers with unrelated m
  assert.match(source,/!payload\?\._live \|\| !String\(payload\.answer \|\| ''\)\.trim\(\)/);
  assert.match(source,/wantsTitleRecommendations && !newItems\.length/);
  assert.match(source,/let askInFlight = null/);
- assert.match(source,/if \(askInFlight\) return askInFlight/);
+ assert.match(source,/if\(askInFlight\.question===question\)return askInFlight/);
+ assert.match(source,/return askInFlight\.then\(\(\)=>\{/);
+ assert.match(source,/return askAndRender\(question,\{\.\.\.opts,voiceOrigin\}\)/);
 });
 
 test('Kids Ask AI waits beyond a normal model attempt but remains age-verified and bounded',()=>{

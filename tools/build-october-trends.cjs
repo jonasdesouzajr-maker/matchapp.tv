@@ -27,7 +27,16 @@ ${text('narnia')}<p>${link(data.sources.narnia,'trailer')}</p>
 ${text('choose')}<p>${link('/ebooks/','reading')} · ${link('/collections/series/','series')}</p>
 </section>
 <!-- october-trends:end -->`;
-const runtime=`/* Authored copy for the October 15 editorial section only. No catalog or Kids changes. */
+const bookSection=`<!-- october-book-screen:start -->
+<section id="october-30-book-screen" lang="en" aria-labelledby="october-book-heading">
+<h2 id="october-book-heading" data-october-copy="bookHeading">${esc(data.copy.en.bookHeading)}</h2>
+<time datetime="${data.bookScreen.checked}">${data.bookScreen.checked}</time>
+${text('bookContext')}
+${[['East of Eden (2026)','bookEden','eden'],['Bridgerton','bookBridgerton','bridgerton'],['The Love Hypothesis','bookLove','love'],['Carrie','bookCarrie','carrie']].map(([title,key,source])=>`<h3>${esc(title)}</h3>\n${text(key)}<p>${link(data.bookScreen.sources[source],'source',title)}</p>`).join('\n')}
+${text('bookChoose')}<p>${link('/ebooks/','reading')} · ${link('/collections/series/','series')}</p>
+</section>
+<!-- october-book-screen:end -->`;
+const runtime=`/* Authored copy for the dated October editorial sections. No catalog or Kids changes. */
 (function(){'use strict';
 var copy=${JSON.stringify(data.copy).replace(/</g,'\\u003c')};
 function paint(event){
@@ -36,7 +45,7 @@ function paint(event){
  if(lang==='pt'||lang.toLowerCase()==='pt-br')lang='pt-BR';
  var row=copy[lang];if(!row)return;
  document.querySelectorAll('[data-october-copy]').forEach(function(el){var key=el.getAttribute('data-october-copy');if(row[key]){el.textContent=row[key];el.lang=lang;el.dir=lang==='ar'?'rtl':'ltr'}});
- var section=document.getElementById('october-15-trends');if(section){section.lang=lang;section.dir=lang==='ar'?'rtl':'ltr'}
+ document.querySelectorAll('#october-15-trends, #october-30-book-screen').forEach(function(section){section.lang=lang;section.dir=lang==='ar'?'rtl':'ltr'});
 }
 document.addEventListener('matchapp:langchange',paint);
 window.addEventListener('storage',function(event){if(event.key==='match_lang')paint()});
@@ -44,34 +53,41 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 `;
 fs.writeFileSync(path.join(root,'patches/october-trends-locales.js'),runtime);
-const script='<script defer src="/patches/october-trends-locales.js?v=20261027-1"></script>';
+const script='<script defer src="/patches/october-trends-locales.js?v=20261030-1"></script>';
+const refreshScript=src=>src.replace(/\/patches\/october-trends-locales\.js\?v=\d{8}-\d+/g,'/patches/october-trends-locales.js?v=20261030-1');
 const monthly=path.join(root,route,'index.html');
 let html=fs.readFileSync(monthly,'utf8');
 if(html.includes('<!-- october-trends:start -->'))html=html.replace(/<!-- october-trends:start -->[\s\S]*?<!-- october-trends:end -->/,section);
 else html=html.replace('<h2>Streaming: Netflix global movies</h2>',section+'\n<h2>Streaming: Netflix global movies</h2>');
-html=html.replace('/patches/october-trends-locales.js?v=20261015-1','/patches/october-trends-locales.js?v=20261027-1');
+if(html.includes('<!-- october-book-screen:start -->'))html=html.replace(/<!-- october-book-screen:start -->[\s\S]*?<!-- october-book-screen:end -->/,bookSection);
+else html=html.replace('<!-- october-trends:start -->',bookSection+'\n<!-- october-trends:start -->');
+html=refreshScript(html);
 if(!html.includes(script))html=html.replace('</head>',script+'\n</head>');
-if(!html.includes('id="october-trends-anchor-style"'))html=html.replace('</head>','<style id="october-trends-anchor-style">#october-15-trends{scroll-margin-top:112px}</style>\n</head>');
-html=html.replace(/"dateModified":"[^"]*"/,'"dateModified":"2026-10-27"');
+const anchorStyle='<style id="october-trends-anchor-style">#october-15-trends,#october-30-book-screen{scroll-margin-top:112px}</style>';
+if(html.includes('id="october-trends-anchor-style"'))html=html.replace(/<style id="october-trends-anchor-style">[\s\S]*?<\/style>/,anchorStyle);
+else html=html.replace('</head>',anchorStyle+'\n</head>');
+html=html.replace(/"dateModified":"[^"]*"/,'"dateModified":"'+data.bookScreen.checked+'"');
 const title='October 2026: Halloween Movies, Books & Music | MatchApp Ai';
-const desc='Halloween classics, Passenger (2026), East of Eden and upcoming Narnia: dated US search-interest context, official sources and country-specific viewing checks.';
+const desc='Book or screen first? Compare family drama, slow-burn romance and adult horror, with dated US search context, official sources and country-specific access checks.';
 html=html.replace(/<title>[^<]*<\/title>/,'<title>'+esc(title)+'</title>')
  .replace(/(<meta name="description" content=")[^"]*/,(_,prefix)=>prefix+esc(desc))
  .replace(/(<meta property="og:title" content=")[^"]*/,(_,prefix)=>prefix+esc(title))
  .replace(/(<meta property="og:description" content=")[^"]*/,(_,prefix)=>prefix+esc(desc));
 fs.writeFileSync(monthly,html);
-const guideLink='<p class="intro" data-october-guide-link>'+link(route+'#october-15-trends','link')+'</p>';
+const guideLink='<p class="intro" data-october-guide-link>'+link(route+'#october-30-book-screen','bookLink')+'</p>';
 const weekly=path.join(root,'trending/this-week/index.html');
 let trend=fs.readFileSync(weekly,'utf8');
-if(!trend.includes('data-october-guide-link'))trend=trend.replace('<section class="grid">',guideLink+'<section class="grid">');
-trend=trend.replace('/patches/october-trends-locales.js?v=20261015-1','/patches/october-trends-locales.js?v=20261027-1');
+if(trend.includes('data-october-guide-link'))trend=trend.replace(/<p class="intro" data-october-guide-link>[\s\S]*?<\/p>/,guideLink);
+else trend=trend.replace('<section class="grid">',guideLink+'<section class="grid">');
+trend=refreshScript(trend);
 if(!trend.includes(script))trend=trend.replace('</head>',script+'</head>');
 fs.writeFileSync(weekly,trend);
 // Preserve the link when the existing single publisher next regenerates its page.
 const generator=path.join(root,'tools/refresh-trending.mjs');
 let src=fs.readFileSync(generator,'utf8');
-if(!src.includes('data-october-guide-link'))src=src.replace('<section class="grid">${cards}',guideLink+'<section class="grid">${cards}');
-src=src.replace('/patches/october-trends-locales.js?v=20261015-1','/patches/october-trends-locales.js?v=20261027-1');
+if(src.includes('data-october-guide-link'))src=src.replace(/<p class="intro" data-october-guide-link>[\s\S]*?<\/p>/,guideLink);
+else src=src.replace('<section class="grid">${cards}',guideLink+'<section class="grid">${cards}');
+src=refreshScript(src);
 if(!src.includes(script))src=src.replace('</style></head>','</style>'+script+'</head>');
 fs.writeFileSync(generator,src);
 console.log('Updated dated October editorial and persistent weekly guide link in 14 languages.');

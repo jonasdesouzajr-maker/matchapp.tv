@@ -29,9 +29,20 @@ test('cookie notice never obscures Jonas composer and no code path scrolls the w
  const avatar=read('jonas/discovery-avatar-stage-20261010.js');
  assert.match(workspace,/document\.querySelector\('body > \.ma-cookie'\)/);
  assert.match(workspace,/MutationObserver/);
- assert.match(workspace,/Math\.min\(viewportBottom-10,cookieTop\)/);
+ assert.match(workspace,/Math\.min\(viewportBottom-10,cookieTop,dockTop\)/);
  assert.doesNotMatch(chat,/scrollIntoView\s*\(/);
  assert.match(css,/--jds-head-y/);
  assert.match(avatar,/--jds-head-y/);
  assert.match(avatar,/--jds-head-scale/);
+});
+
+test('new assistant body is revealed even after opening history at its first turn',()=>{
+ const vm=require('node:vm');
+ const source=read('discover.js'),start=source.indexOf('function revealJonasTurn(node)'),end=source.indexOf('\nfunction shareDiscoverItem',start);
+ const log={scrollTop:200,getBoundingClientRect:()=>({top:100}),contains:()=>true};
+ const body={getBoundingClientRect:()=>({top:450})};
+ const context={document:{getElementById:()=>log},keepConversationAtStart:()=>true};
+ vm.createContext(context);vm.runInContext(source.slice(start,end),context);
+ context.revealJonasTurn({querySelector:()=>body});assert.equal(log.scrollTop,538);
+ log.scrollTop=0;context.revealJonasTurn({querySelector:()=>null});assert.equal(log.scrollTop,0,'saved thread opening still stays at its first turn');
 });

@@ -1,0 +1,55 @@
+/* Owner-requested Lumina-only pill replacement. Layout and original DOM actions stay intact. */
+body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button) {
+  --lm-pill-colors:#39245d,#6844a4,#304a73;
+  --lm-wave-a:#d8bdff30;--lm-wave-b:#4de4d52b;
+  position:relative;isolation:isolate;overflow:hidden;
+  border-radius:999px;
+  background-image:linear-gradient(115deg,var(--lm-pill-colors))!important;
+  background-color:#39245d;
+  outline:1px solid #cbb6e0b8;outline-offset:-1px;
+  box-shadow:inset 0 1px 0 #fff3,inset 0 -1px 0 #0c071d55,0 3px 10px #07041030;
+  color:#fff;filter:none;
+}
+body #app :is(.pill,.level-tile,.lm-online-action),body .save-game-button {color:#fff!important;}
+body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button)::before {
+  content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(ellipse at 35% 20%,var(--lm-wave-a),transparent 56%),
+    radial-gradient(ellipse at 70% 85%,var(--lm-wave-b),transparent 54%);
+  background-size:190% 170%;background-position:0% 15%;animation:lumina-pill-wave 8.5s ease-in-out infinite alternate;
+}
+body :is(.pill.teal,.save-game-button,.lm-online-action,.lm-practice-dialog [data-practice-close]) {
+  --lm-pill-colors:#163c50,#236c72,#4d428b;--lm-wave-a:#7ee5dc3b;--lm-wave-b:#b7b4ff33;
+}
+body :is(.pill.journey-play,.level-tile.completed) {
+  --lm-pill-colors:#62461e,#997332,#795272;--lm-wave-a:#ffe6a43b;--lm-wave-b:#e2b6ff30;
+  outline-color:#e7cb87d9;
+}
+body :is(.pill.friends,.pill.secondary,.level-tile.ocean) {
+  --lm-pill-colors:#2a3f66,#575595,#295869;--lm-wave-a:#bedcff30;--lm-wave-b:#85e4d830;
+}
+body .level-tile.grove {--lm-pill-colors:#1f413a,#3e6650,#344a63;}
+body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button):focus-visible {
+  outline:3px solid #ffe29a;outline-offset:-3px;
+}
+@media(hover:hover) {
+  body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button):hover:not(:disabled) {
+    box-shadow:inset 0 0 0 1px #fff5,inset 0 1px #fff4,0 3px 12px #ad88e638;filter:none;
+  }
+}
+body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button):active:not(:disabled) {
+  box-shadow:inset 0 2px 7px #08051d55,inset 0 0 0 1px #fff5;
+}
+body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button):disabled::before {animation-play-state:paused;}
+body .register-dismiss {position:absolute;}
+@keyframes lumina-pill-wave {to{background-position:100% 85%;}}
+@media(prefers-reduced-motion:reduce) {
+  body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button)::before {animation:none;transform:none;}
+}
+html.reduce-motion :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button)::before {animation:none;transform:none;}
+@media(forced-colors:active) {
+  body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button) {
+    background:ButtonFace!important;color:ButtonText!important;outline:1px solid ButtonText;outline-offset:-1px;box-shadow:none;
+  }
+  body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button)::before {display:none;}
+  body :is(.pill,.audio-settings-button,.register-dismiss,.level-tile,.lm-online-action,.lm-practice-dialog button):focus-visible {outline:3px solid Highlight;}
+}

@@ -24,7 +24,7 @@ html body.ai-chat-page #jonas-voice-stage.jonas-voice-stage{
 html body.ai-chat-page .discover-head #chat-log{
  display:flex!important;flex:1 1 auto!important;min-height:0!important;
  overflow-x:hidden!important;overflow-y:auto!important;
- overscroll-behavior:contain;scrollbar-width:thin;
+ overscroll-behavior:contain;overflow-anchor:none;scrollbar-width:thin;
  scrollbar-color:#af85cb55 transparent;
  scroll-behavior:auto;scroll-padding-top:12px;
  border:1px solid rgba(176,137,208,.18);
@@ -42,20 +42,20 @@ html body.ai-chat-page .discover-head #chat-log .chat-user{
 html body.ai-chat-page .discover-head #chat-log .chat-assistant{
  width:100%!important;max-width:100%!important;min-width:0!important;
  box-sizing:border-box!important;align-self:stretch!important;
- margin:0!important;
+ margin:0!important;display:flex!important;flex-direction:column!important;gap:10px!important;
  background:linear-gradient(133deg,rgba(62,42,86,.64),rgba(26,19,47,.82))!important;
  border:1px solid rgba(235,194,123,.35)!important;
  border-radius:16px!important;
 }
 html body.ai-chat-page .discover-head #chat-log .chat-answer-row{
- display:flex!important;align-items:flex-start!important;gap:10px!important;
+ display:grid!important;grid-template-columns:34px minmax(0,1fr) 44px!important;align-items:start!important;gap:10px!important;order:0!important;
 }
 html body.ai-chat-page .discover-head #chat-log .chat-answer-text{
- min-width:0!important;flex:1 1 auto!important;line-height:1.56!important;
+ min-width:0!important;width:100%!important;margin:0!important;line-height:1.56!important;
  white-space:pre-wrap;overflow-wrap:anywhere;
 }
 html body.ai-chat-page .discover-head #chat-log .chat-results-grid{
- width:100%!important;min-width:0!important;max-width:100%!important;
+ width:100%!important;min-width:0!important;max-width:100%!important;order:1!important;
 }
 html body.ai-chat-page .discover-head #discover-loading{
  display:block;flex:0 0 auto!important;
@@ -117,7 +117,7 @@ html body.ai-chat-page #jonas-voice-stage[data-state="idle"] .jds-expression{opa
 @media(max-height:610px){
  html body.ai-chat-page .wrap .premium-card.discover-head{
   height:var(--jonas-workspace-height,calc(100dvh - 95px))!important;
-  min-height:230px!important;
+  min-height:0!important;
  }
  html body.ai-chat-page .discover-head .ai-session-strip{display:none!important;}
 }
@@ -167,7 +167,7 @@ html body.ai-chat-page #jonas-voice-stage[data-state="idle"] .jds-expression{opa
  }
  @media(max-height:610px){
   html body.ai-chat-page > #ma-ambient-jonas{visibility:hidden!important}
-  html body.ai-chat-page .wrap .premium-card.discover-head{min-height:280px!important}
+  html body.ai-chat-page .wrap .premium-card.discover-head{min-height:0!important}
   html body.ai-chat-page .discover-head #jonas-voice-stage{display:none!important}
   html body.ai-chat-page .discover-head .discover-title-copy h1{font-size:18px!important;line-height:1.25!important}
   html body.ai-chat-page .discover-head #chat-log{min-height:80px!important}
@@ -187,4 +187,28 @@ html body.ai-chat-page #jonas-voice-stage[data-state="idle"] .jds-expression{opa
  html body.ai-chat-page:has(.discover-head[data-keyboard="true"]) > :is(header.app-header,#ma-ambient-jonas,.ma-trust,.ai-sidebar,.ai-sidebar-scrim,.ai-sidebar-toggle){visibility:hidden!important}
  html body.ai-chat-page .discover-head[data-keyboard="true"] :is(.discover-title-row,.ai-session-strip,#jonas-voice-stage){display:none!important}
  html body.ai-chat-page .discover-head[data-keyboard="true"] .newsearch-row{padding-bottom:0!important}
+}
+
+/* Keep optional guest offers below the reply, with every existing action intact. */
+@layer ma-screen-fit {
+ html body.ai-chat-page .discover-head #chat-log .chat-assistant{display:flex!important;flex-direction:column!important}
+ html body.ai-chat-page .discover-head #chat-log .ma-guest-trial-bar{order:2!important;margin-top:8px!important}
+ html body.ai-chat-page .discover-head #chat-log .chat-answer-row{display:grid!important;grid-template-columns:34px minmax(0,1fr) 44px!important;flex-wrap:nowrap!important}
+ html body.ai-chat-page .discover-head #chat-log .discover-speak{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;margin:0!important}
+ html body.ai-chat-page .discover-head #chat-log .chat-answer-text{margin:0!important;min-width:0!important;width:auto!important}
+ @media(max-width:600px){
+  html body.ai-chat-page .discover-head #chat-log .chat-answer-row{grid-template-columns:minmax(0,1fr) 44px!important;gap:8px!important}
+  html body.ai-chat-page .discover-head #chat-log .chat-answer-text{grid-column:1 / -1!important;grid-row:2!important}
+  html body.ai-chat-page .discover-head #chat-log .discover-speak{grid-column:2!important;grid-row:1!important}
+ }
+}
+
+@layer ma-screen-fit {
+ html body.ai-chat-page .wrap .premium-card.discover-head[data-compact="true"]{padding:2px!important;min-height:0!important}
+ html body.ai-chat-page .discover-head[data-compact="true"] :is(.discover-title-row,.ai-session-strip,#jonas-voice-stage,.ma-ui-grip){display:none!important}
+ html body.ai-chat-page .discover-head[data-compact="true"] #chat-log{min-height:0!important;margin:0 0 4px!important;padding:4px!important}
+ html body.ai-chat-page .discover-head[data-compact="true"] .newsearch-row{padding:0!important;gap:0!important;margin:0!important}
+ html body.ai-chat-page .discover-head[data-compact="true"] .composer{padding:3px!important;gap:5px!important;min-height:50px!important;height:50px!important;grid-template-rows:44px!important}
+ html body.ai-chat-page .discover-head[data-compact="true"] .composer textarea#discover-new-input{height:44px!important;min-height:44px!important;max-height:44px!important}
+ html body.ai-chat-page .discover-head[data-compact="true"] #ai-send-cost{min-height:15px!important;font-size:11px!important;line-height:1.2!important;margin:3px 0 0!important}
 }

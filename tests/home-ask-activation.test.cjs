@@ -60,14 +60,14 @@ test('live phone/tablet/desktop smoke verifies the current Jonas Ask composer an
  assert.match(smoke,/Ask AI empty Send is actionable/);
 });
 
-test('bell-only install prompting cannot cover or steal focus from the Home Ask composer',()=>{
+test('install prompting preserves Home Ask focus and yields to forms',()=>{
  const home=read('home-approved.js'),tab=read('matchapp-ia.js'),offer=read('browser-install-offer.js'),html=read('index.html');
  assert.doesNotMatch(home,/ma-hero-ask/);
  assert.match(tab,/requestAnimationFrame\(\(\)=>\{\s*if\(!pa\.hidden&&pa\.getClientRects\(\)\.length\)\{\s*const target=qs\('#search-box',pa\)\|\|pa;\s*window\.MatchAppActivatedScroll\?\.toStart\(target,\{behavior:'auto'\}\)/);
  assert.match(offer,/notification-bell only/);
  assert.match(offer,/MatchNotifications/);
  assert.doesNotMatch(offer,/appendChild\(node\)|position:\s*fixed|composerOverlapHandler|closeIfOverlappingComposer/);
- assert.match(html,/browser-install-offer\.js\?v=20261026-desktopplay1/);
+ assert.match(html,/browser-install-offer\.js\?v=20261028-playbubble2/);
  assert.doesNotMatch(tab.slice(tab.indexOf("ba.addEventListener('click',()=>{"),tab.indexOf("if(new URLSearchParams",tab.indexOf("ba.addEventListener('click',()=>{"))),/localStorage|focus\(/);
 });
 test('live smoke checks usable input and Send inside the phone viewport',()=>{
@@ -76,9 +76,12 @@ test('live smoke checks usable input and Send inside the phone viewport',()=>{
  assert.match(smoke,/ir\.bottom<=innerHeight&&sr\.top>=0&&sr\.bottom<=innerHeight/);
  assert.match(smoke,/launcher\?\.getAttribute\('aria-expanded'\)==='true'/);
 });
-test('install discovery is a nonblocking bell notification rather than a floating Home overlay',()=>{
+test('Android invitation is dismissible while other device notifications retain their limit',()=>{
  const s=read('browser-install-offer.js');
  assert.match(s,/MAX_VISITS=2/);
+ assert.match(s,/if\(device==='android'\)\{startAndroidBubble\(\);return;\}/);
+ assert.match(s,/document.activeElement\?\.matches\('input,textarea,select/);
+ assert.match(s,/if\(bubble&&busy\(\)\)dismissBubble\(\)/);
  assert.match(s,/pushLocal/);
  assert.match(s,/kind:'install'/);
  assert.doesNotMatch(s,/function closeIfOverlappingComposer\(\)|composerOverlapHandler/);
