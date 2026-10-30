@@ -2155,7 +2155,6 @@ async function runAskAndRender(question, opts) {
         appendAssistantBubble(reply,[],{instant:true});
         currentThread.turns.push({role:'user',text:question,ts:Date.now()},{role:'assistant',text:reply,results:[],ts:Date.now()});
         currentThread.updatedAt=Date.now();persistCurrentThread();
-        const field=document.getElementById('discover-new-input');if(field)field.value='';
         const empty=document.getElementById('discover-empty');if(empty)empty.style.display='none';
         if(voiceOrigin) {
             if(window.MatchAppJonasStage?.speak) window.MatchAppJonasStage.speak(reply,{autoListen:true});
@@ -2184,10 +2183,15 @@ async function runAskAndRender(question, opts) {
     // Verify allowance without spending it before contacting paid providers.
     // A failed or unusable AI response must never consume a guest or paid credit.
     if (typeof window.matchAllowanceBeforeLookup === 'function' && !(await window.matchAllowanceBeforeLookup('ask_ai'))) {
+        const draft=document.getElementById('discover-new-input');
+        if(requestVersion===discoverThreadVersion && responseLanguage===(window.MATCH_LANG||'en') && draft && !draft.value){
+            draft.value=question;
+            window.autoGrowComposer?.();
+        }
         refreshAiWorkspaceStatus();
         return;
     }
-    if(requestVersion!==discoverThreadVersion)return;
+    if(requestVersion!==discoverThreadVersion||responseLanguage!==(window.MATCH_LANG||'en'))return;
     refreshAiWorkspaceStatus();
 
     if (!currentThread) {
@@ -2213,9 +2217,6 @@ async function runAskAndRender(question, opts) {
         loadEl.style.display = 'block';
         startAiWorkflow();
     }
-
-    const input = document.getElementById('discover-new-input');
-    if (input) input.value = '';
 
     // Pass prior turns so follow-ups keep context.
     const history = currentThread.turns
@@ -2538,16 +2539,25 @@ function askAndRender(question, opts) {
             (!!window.MatchAppVoiceOrigin?.consume&&window.MatchAppVoiceOrigin.consume(question));
         return askInFlight.then(()=>{
             if(queuedVersion!==discoverThreadVersion||queuedLanguage!==(window.MATCH_LANG||'en'))return null;
-            return askAndRender(question,{...opts,voiceOrigin});
+            return askAndRender(question,{...opts,voiceOrigin,queuedSubmission:true});
         });
     }
     const landingContext = window.MatchAppLandingIntent?.capture?.(question) || null;
-    const requestVersion=discoverThreadVersion;
+    // Only the original submission owns its composer text. Queue continuations
+    // must not clear a newer draft, even when it repeats the queued question.
+    if(!opts?.queuedSubmission){
+        const input=document.getElementById('discover-new-input');
+        if(input&&input.value.trim()===question){input.value='';window.autoGrowComposer?.();}
+    }
+    const requestVersion=discoverThreadVersion,requestLanguage=window.MATCH_LANG||'en';
     const replyCount = document.querySelectorAll('#chat-log .chat-assistant').length;
     const markedVoice = opts?.voiceOrigin === true ||
         (!!window.MatchAppVoiceOrigin?.consume && window.MatchAppVoiceOrigin.consume(question));
-    const running = Promise.resolve().then(() => runAskAndRender(question, { voiceOrigin: markedVoice, landingContext })).catch(error => {
-        if(requestVersion!==discoverThreadVersion){finishAiWorkflow();return null;}
+    const running = Promise.resolve().then(() => {
+        if(requestVersion!==discoverThreadVersion||requestLanguage!==(window.MATCH_LANG||'en'))return null;
+        return runAskAndRender(question, { voiceOrigin: markedVoice, landingContext });
+    }).catch(error => {
+        if(requestVersion!==discoverThreadVersion||requestLanguage!==(window.MATCH_LANG||'en')){finishAiWorkflow();return null;}
         // Rendering and voice failures must not be misreported as a failed AI
         // request after the answer has already appeared in the conversation.
         console.warn('[MatchApp Ai] Request interrupted:',error?.message||error);
@@ -2639,7 +2649,7 @@ window.newDiscoverSearch = function () {
         el.blur();
     }
     askAndRender(question);
-    // Collapse back to one line once the question is sent.
+    // This Send owns the submitted text; later queue execution does not.
     el.value = '';
     window.autoGrowComposer();
     return true;
