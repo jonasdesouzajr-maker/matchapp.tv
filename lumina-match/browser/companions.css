@@ -1,0 +1,41 @@
+/* One reserved stage, five articulated creatures; no moving image cards. */
+#app .lm-companions{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:clamp(0px,1vw,8px);height:clamp(48px,12dvh,110px);width:100%;margin:0;pointer-events:none;contain:layout paint;}
+.lm-companion{height:100%;width:18%;max-width:100px;overflow:visible;}
+.lm-companion .lm-animal{transform-origin:50px 90px;animation:lm-giraffe-sway 3.6s ease-in-out infinite;}
+.lm-companion .lm-head{transform-origin:50px 61px;animation:lm-head-nod 3.6s ease-in-out infinite;}
+.lm-companion .lm-tail{transform-origin:68px 69px;animation:lm-tail-swish 2.3s ease-in-out infinite;}
+.lm-companion .lm-legs{transform-origin:50px 75px;animation:lm-step 1.8s ease-in-out infinite;}
+.lm-fox .lm-animal{animation:lm-fox-hop 3s cubic-bezier(.4,0,.3,1) infinite;}
+.lm-fox .lm-tail{animation-duration:1.5s;}
+.lm-butterfly .lm-animal{animation:lm-butterfly-flight 4.1s ease-in-out infinite;}
+.lm-wing-left,.lm-wing-right{transform-origin:50px 50px;animation:lm-wingbeat .7s ease-in-out infinite alternate;}
+.lm-wing-right{animation-delay:-.12s;}
+.lm-dolphin .lm-animal{transform-origin:50px 60px;animation:lm-dolphin-leap 3.7s ease-in-out infinite;}
+.lm-dolphin .lm-tail{transform-origin:30px 68px;animation-duration:.85s;}
+.lm-fin{transform-origin:56px 60px;animation:lm-tail-swish 1.2s ease-in-out infinite;}
+.lm-jellyfish .lm-animal{animation:lm-jelly-drift 4.6s ease-in-out infinite;}
+.lm-bell{transform-origin:50px 54px;animation:lm-jelly-pulse 2.3s ease-in-out infinite;}
+.lm-tentacles{transform-origin:50px 60px;animation:lm-tentacle-wave 2.3s ease-in-out infinite;}
+.lm-effects{transform-origin:50px 55px;animation:lm-sparkle 3.2s ease-in-out infinite;}
+.lm-bubbles{animation:lm-bubble-rise 3.5s ease-in-out infinite;}
+.lm-butterfly .lm-effects{animation-delay:-1.3s;}.lm-jellyfish .lm-effects{animation-delay:-2s;}
+.lm-shadow{transform-origin:50px 100px;animation:lm-shadow-breathe 3.6s ease-in-out infinite;}
+@keyframes lm-giraffe-sway{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+@keyframes lm-head-nod{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes lm-tail-swish{0%,100%{transform:rotate(-11deg)}50%{transform:rotate(13deg)}}
+@keyframes lm-step{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes lm-fox-hop{0%,28%,70%,100%{transform:translateY(0) scale(1,1)}35%,64%{transform:translateY(2px) scale(1.04,.94)}48%{transform:translateY(-11px) rotate(-4deg)}56%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes lm-butterfly-flight{0%,100%{transform:translate(-3px,-3px) rotate(-4deg)}50%{transform:translate(4px,-10px) rotate(5deg)}}
+@keyframes lm-wingbeat{from{transform:scaleX(.35)}to{transform:scaleX(1)}}
+@keyframes lm-dolphin-leap{0%,100%{transform:translate(-3px,3px) rotate(-9deg)}35%{transform:translate(0,-10px) rotate(-17deg)}65%{transform:translate(5px,-4px) rotate(12deg)}}
+@keyframes lm-jelly-drift{0%,100%{transform:translateY(-3px)}50%{transform:translateY(-11px)}}
+@keyframes lm-jelly-pulse{0%,100%{transform:scale(1,1)}50%{transform:scale(.91,1.08)}}
+@keyframes lm-tentacle-wave{0%,100%{transform:skewX(-7deg) scaleY(.93)}50%{transform:skewX(7deg) scaleY(1)}}
+@keyframes lm-sparkle{0%,100%{opacity:.35;transform:rotate(-5deg)}50%{opacity:.85;transform:rotate(6deg)}}
+@keyframes lm-bubble-rise{0%,100%{opacity:.25;transform:translateY(3px)}50%{opacity:.75;transform:translateY(-8px)}}
+@keyframes lm-shadow-breathe{0%,100%{transform:scaleX(1);opacity:.24}50%{transform:scaleX(.85);opacity:.16}}
+@media(max-height:420px) and (min-aspect-ratio:13/10){#app .lm-companions{height:38px;position:absolute;width:180px;inset-inline-start:5px;top:3px;}#app[data-screen="home"]>.screen{position:relative;}#app[data-screen="home"] h1{padding-inline:185px;min-height:39px;}}
+@media(max-height:360px) and (min-aspect-ratio:13/10){#app .lm-companions{height:30px;width:155px;}#app[data-screen="home"] h1{padding-inline:160px;min-height:31px;}}
+@media(prefers-reduced-motion:reduce){.lm-companion *{animation:none!important;}}
+.reduce-motion .lm-companion *,#app[inert] .lm-companion *,.lm-companions-paused .lm-companion *{animation-play-state:paused!important;}
+@media(forced-colors:active){.lm-companion{forced-color-adjust:none;}}

@@ -8,7 +8,7 @@ export function mountGame(container, options = {}) {
   frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
   frame.setAttribute('referrerpolicy', 'no-referrer');
   const source = new URL('/lumina-match/browser/index.html', location.origin);
-  source.searchParams.set('v', '20261030-1');
+  source.searchParams.set('v', '20261030-2');
   source.searchParams.set('lang', options.language?.() || 'en');
   source.searchParams.set('reducedMotion', document.documentElement.classList.contains('reduce-motion') ? '1' : '0');
   const roomCode = new URLSearchParams(location.search).get('lumina');
