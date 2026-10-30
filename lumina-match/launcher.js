@@ -211,7 +211,7 @@
       dispose();
       stage.innerHTML = '<p class="lm-loading" role="status">✦ Lumina Match</p>';
       try {
-        var mod = await import('/lumina-match/game.mjs?v=20261030-1' + (retryCount ? '&retry=' + retryCount : ''));
+        var mod = await import('/lumina-match/game.mjs?v=20261030-2' + (retryCount ? '&retry=' + retryCount : ''));
         if (root !== opening || sequence !== loadSequence) return;
         disposeGame = mod.mountGame(stage, {
           language:language,
