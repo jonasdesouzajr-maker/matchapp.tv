@@ -40,3 +40,17 @@ supersede the earlier decorative border/pill styling in every saved palette.
 Keyboard focus and forced-colors accessibility remain visible. The existing
 artwork, poster wall, layout owners, user font scale, functionality, ad geometry
 and separate Kids product remain protected. Publication continues to be authorized.
+
+## Owner Android identity request — 2026-10-30
+
+Jonas explicitly requested a new adult Android launcher/Play icon based on his
+uploaded purple-and-gold play/star artwork, with the exact image lettering
+"MatchApp AI", and the exact separately uploaded Adv_Dev_Ops company artwork
+before the existing native intro video. This authorization is confined to
+`android-studio/app` launcher/intro resources and the corresponding prepared Play
+listing assets/copy. It does not replace the website header/wordmark, rename the
+public product, alter the original intro video, or change Kids or Lumina Match.
+Preserve the complete company picture with proportional fitting and the existing
+localized Skip behavior. The current task authorizes publishing after the
+applicable artifact, device and Console checks; source changes alone do not
+establish Play publication.

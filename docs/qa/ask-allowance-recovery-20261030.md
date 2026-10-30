@@ -1,7 +1,8 @@
 # Ask AI composer recovery — PR #409 continuation
 
 The existing draft PR is reconciled with main
-`a1c0e9cfb7b79d11adf686f9a1cba427b57a689c`. The original PR head was
+`808caaaab3f0d08427194b4a865d1f11b7e482cb`, including the already released
+code65 source reconciliation from #425. The original PR head was
 `2021ce3ed752f505905ca006f56d95bb35f4d1df`. This is an additive merge of
 main into that branch, preserving the newer queued follow-ups and narration /
 viewport behavior. There is no duplicate PR or history rewrite.
@@ -51,14 +52,14 @@ exists in this checkout, and the environment's `/workspace/.agents` is empty.
 
 Fixtures are not evidence of live provider health, production credit/auth recovery,
 physical Android/iOS behavior, Safari, or deployed production verification. No paid
-live QA, merge, deployment, Play submission or new release AAB was performed.
+manual live QA, merge, deployment, Play submission or new release AAB was performed.
 The older Edge report in this PR remains historical evidence for the original
 October 28 candidate only.
 
-The existing `matching-ai-triple-audit.yml` runs live-provider smoke on PR updates,
-including real backend source and quota calls. Under the no-paid-live-QA boundary,
-pushing needs a confirmed way to prevent that job from reaching live providers.
-The available GitHub connector has no cancellation action; local `gh api` access
-was forbidden. No workflow, protected check, or skip-CI directive was changed to
-work around that boundary. Final push and exact-candidate CI status are recorded
-explicitly in the PR description / handoff, not inferred from the old head's CI.
+The parent explicitly clarified that normal existing PR CI, including bounded
+live-provider/source verification, is authorized. Do not add manual paid traffic,
+purchases, paid-customer debits or spending changes. Existing CI definitions and
+guards remain unchanged. An unsigned verification bundle produced by normal CI
+is not a new Play release or upload. Exact-candidate CI results and the pushed SHA
+are recorded in the PR description / handoff; the old head's green CI is not used
+as evidence for this candidate.
