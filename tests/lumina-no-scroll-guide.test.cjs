@@ -70,6 +70,6 @@ test('no scroll contract is scoped and all cards fit by choosing an actual grid'
 test('new browser assets are loaded without an advertising SDK',()=>{
  const html=source('index.html');
  for(const asset of ['no-scroll.css','tutorial.js','responsive-fit.js'])assert.ok(html.includes(asset));
- assert.ok(fs.readFileSync(path.join(root,'lumina-match/game.mjs'),'utf8').includes('20261029-1'));
+ assert.ok(fs.readFileSync(path.join(root,'lumina-match/game.mjs'),'utf8').includes('20261030-1'));
  assert.doesNotMatch(source('tutorial.js'),/adsbygoogle|InterstitialAd|RewardedAd|localStorage|sessionStorage/);
 });
