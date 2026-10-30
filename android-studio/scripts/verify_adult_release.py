@@ -3,6 +3,7 @@
 from pathlib import Path
 import json
 import xml.etree.ElementTree as ET
+import runpy
 
 root = Path(__file__).resolve().parents[1]
 def content(relative):
@@ -18,11 +19,11 @@ template = content("play/assetlinks.json")
 
 assert 'namespace = "com.jonas.papercup"' in gradle
 assert 'applicationId = "com.jonas.papercup"' in gradle
-assert "targetSdk = 36" in gradle and "versionCode = 64" in gradle
-assert 'versionName = "1.1.64"' in gradle
+assert "targetSdk = 36" in gradle and "versionCode = 65" in gradle
+assert 'versionName = "1.1.65"' in gradle
 assert 'package="tv.matchapp.app"' not in manifest
 assert "package com.jonas.papercup" in activity
-assert "appBuild=64" in activity
+assert "appBuild=65" in activity
 assert "isKidsUri(target)" in activity
 assert "child.post { child.destroy() }" in activity
 assert 'applicationId = "tv.matchapp.kids"' in kids
@@ -74,3 +75,4 @@ for marker in ["requestConsentInfoUpdate", "loadAndShowConsentFormIfRequired", "
 for marker in ["MatchAppNativeExperience", "setAdFree(adFree: Boolean)", "is_vip,is_business,is_ad_free", "syncNativeAdEntitlement"]:
     assert marker in activity, f"Missing native ad-free entitlement bridge marker: {marker}"
 print("Adult Play static package, version, Kids separation, entitlement gating and production AdMob integration: PASS")
+runpy.run_path(str(root / "scripts/verify_brand_assets_20261030.py"), run_name="__main__")
