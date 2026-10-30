@@ -12,9 +12,10 @@ viewport behavior. There is no duplicate PR or history rewrite.
 - False allowance verification restores the question only into an empty composer
   in the same conversation and selected language. A newer or previously recovered
   draft wins over another queued failure.
-- The submitted field is cleared before the allowance wait, so successful
+- The submitted field is cleared only at original submission, so successful
   verification cannot erase text typed during the wait, including a newly typed
-  copy of the same question.
+  copy of the same question, whether typed during a queue delay or allowance wait.
+  Queue continuations never own or clear later composer text.
 - Interrupted verification retains retry behavior without restoring into a
   replacement conversation or language. A same-tick context change cancels the
   scheduled request before verification starts.
@@ -31,16 +32,16 @@ exists in this checkout, and the environment's `/workspace/.agents` is empty.
 
 ## Reproducible validation
 
-- Focused checks: 131 passed, zero failed, using
+- Focused checks: 134 passed, zero failed, using
   `node --test tests/discover-*.test.cjs tests/landing-match-intent.test.cjs tests/android-ambient-preview-20261012.test.cjs tests/ask-ai-*.test.cjs`.
-  This includes 43 lifecycle cases covering denied / allowed / rejected allowance,
+  This includes 46 lifecycle cases covering denied / allowed / rejected allowance,
   new / opened / deleted conversations, language changes, same-tick cancellation,
   duplicate and queued sends, newer drafts and repeated retry.
 - Browser preview: `node tools/qa-ask-allowance-20261030.cjs` serves local files,
   blocks external HTTP and WebSocket requests, and supplies deterministic
   allowance / credit and provider-transport fixtures. The actual request builder,
   parser, queue, Send button, composer and response renderer remain in use.
-  Six recovery / accounting scenarios run on 320px Portuguese, 390px English,
+  Eight recovery / accounting scenarios run on 320px Portuguese, 390px English,
   820px Portuguese tablet, 1366px English desktop, and 390px Chromium with an
   Android WebView user agent. Screenshot and JSON evidence are generated under
   `MATCHAPP_QA_OUTPUT` (default OS temporary directory), in an atomically
@@ -71,3 +72,9 @@ path in the new QA harness (CodeQL check 124092758278, line 91). The harness now
 uses `mkdtempSync` for a private unique evidence directory and exclusively creates
 its report. This finding was fixed in the harness, not dismissed or suppressed.
 The application runtime bytes are unchanged by this follow-up.
+
+A subsequent actual-Send regression reproduced a newer identical Q2 draft being
+cleared when queued Q2 began. Original submission now owns the composer clear;
+queue continuations carry an explicit submission marker and preserve later text.
+Both denied and successful Q2 cases are tested before and after verification,
+alongside the existing landing-intent capture and no-credit greeting paths.

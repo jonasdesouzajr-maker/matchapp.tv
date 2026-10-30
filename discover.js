@@ -2155,7 +2155,6 @@ async function runAskAndRender(question, opts) {
         appendAssistantBubble(reply,[],{instant:true});
         currentThread.turns.push({role:'user',text:question,ts:Date.now()},{role:'assistant',text:reply,results:[],ts:Date.now()});
         currentThread.updatedAt=Date.now();persistCurrentThread();
-        const field=document.getElementById('discover-new-input');if(field)field.value='';
         const empty=document.getElementById('discover-empty');if(empty)empty.style.display='none';
         if(voiceOrigin) {
             if(window.MatchAppJonasStage?.speak) window.MatchAppJonasStage.speak(reply,{autoListen:true});
@@ -2180,14 +2179,6 @@ async function runAskAndRender(question, opts) {
     const loadEl = document.getElementById('discover-loading');
     const emptyEl = document.getElementById('discover-empty');
     if (emptyEl) emptyEl.style.display = 'none';
-
-    // Clear the submitted text before waiting. Any text typed during allowance
-    // verification is a new draft, even if it repeats this question verbatim.
-    const input = document.getElementById('discover-new-input');
-    if (input && input.value.trim() === question) {
-        input.value = '';
-        window.autoGrowComposer?.();
-    }
 
     // Verify allowance without spending it before contacting paid providers.
     // A failed or unusable AI response must never consume a guest or paid credit.
@@ -2548,10 +2539,16 @@ function askAndRender(question, opts) {
             (!!window.MatchAppVoiceOrigin?.consume&&window.MatchAppVoiceOrigin.consume(question));
         return askInFlight.then(()=>{
             if(queuedVersion!==discoverThreadVersion||queuedLanguage!==(window.MATCH_LANG||'en'))return null;
-            return askAndRender(question,{...opts,voiceOrigin});
+            return askAndRender(question,{...opts,voiceOrigin,queuedSubmission:true});
         });
     }
     const landingContext = window.MatchAppLandingIntent?.capture?.(question) || null;
+    // Only the original submission owns its composer text. Queue continuations
+    // must not clear a newer draft, even when it repeats the queued question.
+    if(!opts?.queuedSubmission){
+        const input=document.getElementById('discover-new-input');
+        if(input&&input.value.trim()===question){input.value='';window.autoGrowComposer?.();}
+    }
     const requestVersion=discoverThreadVersion,requestLanguage=window.MATCH_LANG||'en';
     const replyCount = document.querySelectorAll('#chat-log .chat-assistant').length;
     const markedVoice = opts?.voiceOrigin === true ||
@@ -2652,8 +2649,7 @@ window.newDiscoverSearch = function () {
         el.blur();
     }
     askAndRender(question);
-    // Collapse the submitted draft; the request restores it if allowance
-    // verification fails, without replacing a newer question.
+    // This Send owns the submitted text; later queue execution does not.
     el.value = '';
     window.autoGrowComposer();
     return true;

@@ -154,6 +154,38 @@ for(const firstAllowed of [false,true])for(const secondAllowed of [false,true]){
   });
 }
 
+for(const allowed of [false,true])test('queued Send preserves an unsent identical draft before and after its allowance: '+allowed,async()=>{
+  const {dom,w,events}=await boot(),firstGate=deferred(),secondGate=deferred();let checks=0,calls=0;
+  try{
+    const input=w.document.getElementById('discover-new-input'),question='Who wrote Interstellar?';
+    w.matchAllowanceBeforeLookup=()=>++checks===1?firstGate.promise:secondGate.promise;
+    w.askAIConversational=async()=>{calls++;return {answer:'Fixture answer.',results:[],_live:true};};
+    input.value='Who directed Interstellar?';w.newDiscoverSearch();await until(()=>checks===1);
+    input.value=question;w.newDiscoverSearch();assert.equal(input.value,'');
+    input.value=question; // New unsent draft while this identical question is queued.
+    firstGate.resolve(true);await until(()=>checks===2);const second=w.askInFlight;
+    assert.equal(input.value,question,'dequeue must not consume a draft typed after Send');
+    secondGate.resolve(allowed);await second;
+    assert.equal(input.value,question);assert.equal(calls,1+Number(allowed));
+    assert.equal(events.filter(e=>e.type==='debit').length,calls);assert.equal(w.askInFlight,null);
+  }finally{firstGate.resolve(false);secondGate.resolve(false);dom.window.close();}
+});
+
+test('a queued greeting preserves a later draft and retains its no-credit response',async()=>{
+  const {dom,w,events}=await boot(),gate=deferred();let checks=0;
+  try{
+    const input=w.document.getElementById('discover-new-input');
+    w.matchAllowanceBeforeLookup=()=>{checks++;return gate.promise;};
+    w.askAIConversational=async()=>({answer:'Fixture answer.',results:[],_live:true});
+    input.value='Who directed Interstellar?';w.newDiscoverSearch();await until(()=>checks===1);
+    input.value='Hello';w.newDiscoverSearch();const queued=w.askAndRender('Hello');
+    input.value='My later draft';gate.resolve(true);await queued;
+    assert.equal(input.value,'My later draft');assert.equal(checks,1);
+    assert.equal(events.filter(e=>e.type==='debit').length,1);
+    assert.equal(w.currentThread.turns.at(-2).text,'Hello');assert.match(w.currentThread.turns.at(-1).text,/Jonas/);
+  }finally{gate.resolve(false);dom.window.close();}
+});
+
 test('interrupted and denied verification repeatedly recover; a retry can complete exactly once',async()=>{
   const {dom,w,events}=await boot();let attempts=0,calls=0;
   try{

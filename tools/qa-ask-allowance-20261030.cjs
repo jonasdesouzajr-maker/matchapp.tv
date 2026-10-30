@@ -86,6 +86,17 @@ async function state(page){return page.evaluate(()=>({draft:document.getElementB
         await page.evaluate(()=>{window.MATCH_LANG=window.MATCH_LANG==='en'?'pt-BR':'en';window.dispatchEvent(new Event('matchapp:langchange'));});
         await settle(page,false);await idle(page);s=await state(page);assert.equal(s.draft,'');assert.equal(s.debits,3);assert.equal(s.requests.length,3);
         row.checks.push('language switch cancels old recovery');
+        for(const allowed of [false,true]){
+          await page.evaluate(()=>startNewChat());const before=await state(page),queuedQuestion='Who wrote Spirited Away?';
+          await send(page,'What year was Spirited Away released?');await page.waitForFunction(()=>__qa.gates.length===1);
+          await send(page,queuedQuestion);await input.fill(queuedQuestion);
+          await settle(page,true);await page.waitForFunction(()=>__qa.gates.length===1);
+          assert.equal((await state(page)).draft,queuedQuestion,'dequeue must preserve a newer identical draft');
+          await settle(page,allowed);await idle(page);s=await state(page);
+          assert.equal(s.draft,queuedQuestion);assert.equal(s.debits,before.debits+1+Number(allowed));
+          assert.equal(s.requests.length,before.requests.length+1+Number(allowed));
+          row.checks.push('unsent identical draft survives queue delay and '+(allowed?'allowed':'denied')+' verification');
+        }
         assert(s.overflow<=2,'horizontal overflow '+s.overflow);
         await input.fill('Fixture preview complete');await page.screenshot({path:path.join(out,device.name+'-complete.png'),animations:'disabled'});
         assert.deepEqual(row.errors,[]);row.passed=true;
