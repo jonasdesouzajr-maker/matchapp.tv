@@ -121,7 +121,7 @@ test('Kids and missing event hosts stay untouched, and unavailable JSON leaves t
 });
 
 // Capture the existing generator's writes in memory; a regression test must never rewrite editorial output.
-function regeneratedArchive(){
+function regeneratedEventOutput(){
  const writes=new Map(),captureFs={readFileSync:fs.readFileSync,mkdirSync(){},writeFileSync(file,content){writes.set(path.resolve(file),content);}};
  vm.runInNewContext(read('tools/build-global-events.js'),{__dirname:path.join(root,'tools'),console:{log(){}},require(name){
   if(name==='fs')return captureFs;if(name==='path')return path;
@@ -129,10 +129,28 @@ function regeneratedArchive(){
   if(name==='./finalize-brand.js')return {finalizeBrand(){}};
   throw new Error('Unexpected generator dependency: '+name);
  }},{filename:'tools/build-global-events.js'});
- return writes.get(path.join(root,'events-archive.html'));
+ return writes;
 }
+test('CCXP all-day calendar matches the guide, preserves CRLF and opens without an invitation or alarm',()=>{
+ const event=JSON.parse(read('tools/global-events.json')).find(e=>e.slug==='ccxp-2026');
+ const guide='events/'+event.slug+'/',calendar=guide+event.slug+'.ics';
+ const built=regeneratedEventOutput(),bytes=read(calendar);
+ assert.equal(built.get(path.join(root,calendar)),bytes);
+ assert.ok(bytes.endsWith('END:VCALENDAR\r\n'));
+ assert.ok(bytes.split('\r\n').every(line=>!/[\r\n]/.test(line)&&Buffer.byteLength(line)<=75));
+ assert.match(bytes,/\r\nDTSTART;VALUE=DATE:20261203\r\nDTEND;VALUE=DATE:20261207\r\n/);
+ assert.equal(event.start.slice(0,10),'2026-12-03');
+ assert.equal(event.end.slice(0,10),'2026-12-06');
+ assert.ok(bytes.includes('LOCATION:'+event.location.replace(/,/g,'\\,')));
+ assert.ok(bytes.includes('URL:https://matchapp.tv/'+guide+'\r\n'));
+ assert.doesNotMatch(bytes,/VALARM|ORGANIZER|ATTENDEE|METHOD:REQUEST/);
+ for(const html of [read(guide+'index.html'),built.get(path.join(root,guide,'index.html'))]){
+  const doc=JSDOM.fragment(html);
+  assert.equal(doc.querySelector('a[download][type="text/calendar"]').getAttribute('href'),'/'+calendar);
+ }
+});
 for(const regenerated of[false,true])test((regenerated?'regenerated':'published')+' Events archive exposes the daily card without applying Home expiry to indexed guides',async()=>{
- const html=regenerated?regeneratedArchive():read('events-archive.html'),current=day(),ended=day('2026-10-18'),expired=day('2026-10-17');
+ const html=regenerated?regeneratedEventOutput().get(path.join(root,'events-archive.html')):read('events-archive.html'),current=day(),ended=day('2026-10-18'),expired=day('2026-10-17');
  assert.ok(html,'the existing generator produces an archive');
  const f=await fixture({html,route:'/events-archive.html',current,history:[ended,expired]}),{w}=f,d=w.document;
  try{

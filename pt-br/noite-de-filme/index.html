@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Que horas o filme acaba? Planeje sua sessão | MatchApp Ai</title>
+  <meta name="description" content="Calcule que horas o filme termina ou quantos episódios cabem antes de dormir. Inclua as pausas e envie o plano da sessão para quem vai assistir com você.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://matchapp.tv/pt-br/noite-de-filme/">
+  <link rel="alternate" hreflang="en" href="https://matchapp.tv/watch-night/">
+  <link rel="alternate" hreflang="pt-BR" href="https://matchapp.tv/pt-br/noite-de-filme/">
+  <link rel="alternate" hreflang="x-default" href="https://matchapp.tv/watch-night/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://matchapp.tv/pt-br/noite-de-filme/">
+  <meta property="og:site_name" content="MatchApp Ai">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="Que horas o filme acaba? Planeje sua sessão | MatchApp Ai">
+  <meta property="og:description" content="Calcule que horas o filme termina ou quantos episódios cabem antes de dormir. Inclua as pausas e envie o plano da sessão para quem vai assistir com você.">
+  <meta property="og:image" content="https://matchapp.tv/watch-night/share-pt-br.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Uma sessão das 20h às 21h45, com um filme de 95 minutos e uma pausa de 10 minutos.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Que horas o filme acaba? Planeje sua sessão | MatchApp Ai">
+  <meta name="twitter:description" content="Calcule que horas o filme termina ou quantos episódios cabem antes de dormir. Inclua as pausas e envie o plano da sessão para quem vai assistir com você.">
+  <meta name="twitter:image" content="https://matchapp.tv/watch-night/share-pt-br.png">
+  <meta name="twitter:image:alt" content="Uma sessão das 20h às 21h45, com um filme de 95 minutos e uma pausa de 10 minutos.">
+  <link rel="icon" href="/assets/brand/matchapp-ai-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/tokens.css">
+  <link rel="stylesheet" href="/watch-night/planner.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Que horas o filme acaba? Planeje sua sessão | MatchApp Ai",
+  "description": "Calcule que horas o filme termina ou quantos episódios cabem antes de dormir. Inclua as pausas e envie o plano da sessão para quem vai assistir com você.",
+  "url": "https://matchapp.tv/pt-br/noite-de-filme/",
+  "inLanguage": "pt-BR",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "MatchApp Ai",
+    "url": "https://matchapp.tv/"
+  }
+}</script>
+  <script type="application/json" id="planner-strings">{
+  "invalid": "Preencha os dois horários. Use números inteiros de 1 a 600 para a duração e de 0 a 240 para as pausas, em minutos.",
+  "sameTime": "Escolha horários diferentes para calcular a duração da sessão.",
+  "bufferTooLong": "As pausas ultrapassam o tempo disponível. Reduza o total ou escolha um horário limite mais tarde.",
+  "filmFits": "Você tem {minutes} min para assistir. Com as pausas, o filme termina às {finish}. Sobram {remaining} min.",
+  "filmOver": "Você tem {minutes} min para assistir. Com as pausas, o filme termina às {finish} e passa {over} min do horário limite.",
+  "episodes": "Episódios inteiros que cabem na sessão: {count}. Com as pausas, a sessão termina às {finish}. Sobram {remaining} min.",
+  "noneFit": "Não cabe um episódio inteiro. Depois das pausas, você tem {minutes} min para assistir, mas o episódio dura {runtime} min.",
+  "nextDay": "do dia seguinte",
+  "shared": "Plano compartilhado.",
+  "copied": "Link do plano copiado.",
+  "copyManually": "Selecione e copie o link do plano abaixo."
+}</script>
+  <noscript><style>.watch-night #watch-plan { display: none; }</style></noscript>
+  <script defer src="/watch-night/planner.js"></script>
+</head>
+<body class="watch-night">
+  <header class="wn-wrap wn-top">
+    <a class="wn-brand" href="/?lang=pt-BR" aria-label="Início do MatchApp Ai"><img src="/assets/brand/matchapp-ai-mark.svg" alt="" width="44" height="44"><span translate="no">MatchApp <b>Ai</b></span></a>
+    <a id="planner-language" class="wn-pill" href="/watch-night/" lang="en" hreflang="en">English</a>
+  </header>
+  <main class="wn-wrap">
+    <header class="wn-hero">
+      <p class="wn-kicker">Planejador gratuito de sessão</p>
+      <h1>O que dá tempo de assistir hoje?</h1>
+      <p class="wn-intro">Quer escolher um filme para hoje à noite sem passar da hora de dormir? Descubra quando a sessão termina ou quantos episódios cabem no tempo que você tem. Depois, envie o plano para quem vai assistir com você.</p>
+    </header>
+    <section class="wn-card" aria-labelledby="wn-calc">
+      <h2 id="wn-calc">Calcule a duração da sessão</h2>
+      <p>Confira a duração na ficha do filme ou do episódio. Use o horário local. Se o horário limite for anterior ao de início, a calculadora considera o dia seguinte.</p>
+      <form id="watch-plan" action="/pt-br/noite-de-filme/">
+        <div class="wn-fields">
+          <label for="start-time">Início da sessão<input id="start-time" type="time" name="start" value="20:00" required></label>
+          <label for="finish-time">Quero terminar até<input id="finish-time" type="time" name="end" value="22:30" required></label>
+          <label for="watch-mode">O que você vai assistir?<select id="watch-mode" name="mode"><option value="film">Um filme</option><option value="episodes">Episódios de uma série</option></select></label>
+          <label for="running-time">Duração do filme ou episódio (minutos)<input type="number" id="running-time" name="runtime" inputmode="numeric" min="1" max="600" step="1" value="95" required></label>
+          <label for="break-minutes">Tempo total de pausas (minutos)<input type="number" id="break-minutes" name="buffer" inputmode="numeric" min="0" max="240" step="1" value="10" required></label>
+        </div>
+        <p class="wn-field-note">Some as pausas, o tempo de preparo e os anúncios previstos. Se os episódios tiverem durações diferentes, use a do mais longo para ter uma margem.</p>
+        <div class="wn-actions"><button type="submit" class="wn-pill wn-primary">Calcular</button><button type="button" class="wn-pill" id="share-plan">Compartilhar plano</button></div>
+      </form>
+      <output class="wn-result" id="plan-result" aria-live="polite" aria-atomic="true">No exemplo, a sessão pode ir das 20h às 22h30. Um filme de 95 minutos mais 10 minutos de pausas termina às 21h45, com 45 minutos de sobra.</output>
+      <span id="share-status" role="status"></span>
+      <input type="text" id="share-url" aria-label="Link deste plano" readonly hidden>
+      <noscript><p>Ative o JavaScript para mudar o cálculo ou compartilhar o plano. Os exemplos abaixo mostram como fazer a conta sem a calculadora.</p></noscript>
+    </section>
+    <section class="wn-section" aria-labelledby="wn-examples-title">
+      <h2 id="wn-examples-title">Duas ideias para planejar sua sessão</h2>
+      <div class="wn-examples">
+        <article class="wn-card"><h3>Um filme a dois depois do jantar</h3><p>O jantar acaba às 19h45 e vocês querem terminar a sessão até as 21h30. São 105 minutos. Reservando 15 para a sobremesa, cabe um filme de até 90 minutos. Se preferirem dois episódios de 42 minutos, ainda sobram seis.</p></article>
+        <article class="wn-card"><h3>Dá para ver mais um episódio de madrugada?</h3><p>Das 23h40 à 1h15 são 95 minutos. Com 10 minutos de pausa, dois episódios de 40 minutos acabam à 1h10. Já um filme de 90 minutos passaria cinco minutos do horário combinado.</p></article>
+      </div>
+    </section>
+    <section class="wn-section" aria-labelledby="wn-next-title">
+      <h2 id="wn-next-title">Agora, escolham o que assistir</h2><p>Assistindo a dois? Usem o Match Together para encontrar algo de que ambos gostem. Se já escolheram o filme, consultem onde ele está disponível. O catálogo depende do país, e a duração pode variar conforme a versão.</p>
+      <nav class="wn-links" aria-label="Encontre o próximo título"><a class="wn-pill" href="/together.html?lang=pt-BR">Escolher a dois</a><a class="wn-pill" href="/where-to-watch/">Encontrar onde assistir</a><a class="wn-pill" href="/br/">Ver o guia de streaming no Brasil</a></nav>
+    </section>
+  </main>
+  <footer class="wn-wrap"><nav class="wn-links" aria-label="Navegação do planejador"><a class="wn-pill" href="/?lang=pt-BR">Início do MatchApp Ai</a><a class="wn-pill" href="/privacidade.html">Privacidade</a></nav></footer>
+</body>
+</html>

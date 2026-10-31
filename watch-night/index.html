@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movie Night Planner &amp; Movie End Time Calculator | MatchApp Ai</title>
+  <meta name="description" content="Calculate when a movie will end or how many episodes fit before bedtime. Include a break, plan past midnight and share your movie night without an account.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://matchapp.tv/watch-night/">
+  <link rel="alternate" hreflang="en" href="https://matchapp.tv/watch-night/">
+  <link rel="alternate" hreflang="pt-BR" href="https://matchapp.tv/pt-br/noite-de-filme/">
+  <link rel="alternate" hreflang="x-default" href="https://matchapp.tv/watch-night/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://matchapp.tv/watch-night/">
+  <meta property="og:site_name" content="MatchApp Ai">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:title" content="Movie Night Planner &amp; Movie End Time Calculator | MatchApp Ai">
+  <meta property="og:description" content="Calculate when a movie will end or how many episodes fit before bedtime. Include a break, plan past midnight and share your movie night without an account.">
+  <meta property="og:image" content="https://matchapp.tv/watch-night/share-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A movie night from 8:00 PM to 9:45 PM, with a 95-minute film and a 10-minute break.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Movie Night Planner &amp; Movie End Time Calculator | MatchApp Ai">
+  <meta name="twitter:description" content="Calculate when a movie will end or how many episodes fit before bedtime. Include a break, plan past midnight and share your movie night without an account.">
+  <meta name="twitter:image" content="https://matchapp.tv/watch-night/share-en.png">
+  <meta name="twitter:image:alt" content="A movie night from 8:00 PM to 9:45 PM, with a 95-minute film and a 10-minute break.">
+  <link rel="icon" href="/assets/brand/matchapp-ai-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/tokens.css">
+  <link rel="stylesheet" href="/watch-night/planner.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Movie Night Planner & Movie End Time Calculator | MatchApp Ai",
+  "description": "Calculate when a movie will end or how many episodes fit before bedtime. Include a break, plan past midnight and share your movie night without an account.",
+  "url": "https://matchapp.tv/watch-night/",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "MatchApp Ai",
+    "url": "https://matchapp.tv/"
+  }
+}</script>
+  <script type="application/json" id="planner-strings">{
+  "invalid": "Enter both times, a running time from 1 to 600 minutes and a break total from 0 to 240 minutes. Use whole minutes.",
+  "sameTime": "Choose different start and finish times so we know how long you have.",
+  "bufferTooLong": "Your breaks take up more than the full window. Shorten them or choose a later finish time.",
+  "filmFits": "You have {minutes} minutes of viewing time. With breaks, your film ends at {finish}. Time to spare: {remaining} min.",
+  "filmOver": "You have {minutes} minutes of viewing time. With breaks, your film ends at {finish}, missing your cutoff by {over} min.",
+  "episodes": "Whole episodes that fit: {count}. With breaks, you finish at {finish}. Time to spare: {remaining} min.",
+  "noneFit": "No full episode fits. You have {minutes} minutes of viewing time after breaks, but one episode takes {runtime} minutes.",
+  "nextDay": "next day",
+  "shared": "Plan shared.",
+  "copied": "Plan link copied.",
+  "copyManually": "Select and copy the plan link below."
+}</script>
+  <noscript><style>.watch-night #watch-plan { display: none; }</style></noscript>
+  <script defer src="/watch-night/planner.js"></script>
+</head>
+<body class="watch-night">
+  <header class="wn-wrap wn-top">
+    <a class="wn-brand" href="/" aria-label="MatchApp Ai home"><img src="/assets/brand/matchapp-ai-mark.svg" alt="" width="44" height="44"><span translate="no">MatchApp <b>Ai</b></span></a>
+    <a id="planner-language" class="wn-pill" href="/pt-br/noite-de-filme/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a>
+  </header>
+  <main class="wn-wrap">
+    <header class="wn-hero">
+      <p class="wn-kicker">Free movie night planner</p>
+      <h1>What fits into movie night?</h1>
+      <p class="wn-intro">If you’re deciding what to watch tonight, start with when you want to finish. Check a movie’s end time or count how many whole episodes fit. Send the same plan to whoever’s watching with you.</p>
+    </header>
+    <section class="wn-card" aria-labelledby="wn-calc">
+      <h2 id="wn-calc">Calculate your watch time</h2>
+      <p>Enter the running time from the listing for your film or episode. Use local clock times. A finish time earlier than the start means the following day.</p>
+      <form id="watch-plan" action="/watch-night/">
+        <div class="wn-fields">
+          <label for="start-time">Start watching at<input id="start-time" type="time" name="start" value="20:00" required></label>
+          <label for="finish-time">Finish by<input id="finish-time" type="time" name="end" value="22:30" required></label>
+          <label for="watch-mode">What are you watching?<select id="watch-mode" name="mode"><option value="film">One movie</option><option value="episodes">Episodes of a series</option></select></label>
+          <label for="running-time">Movie or episode length (minutes)<input type="number" id="running-time" name="runtime" inputmode="numeric" min="1" max="600" step="1" value="95" required></label>
+          <label for="break-minutes">Total time for breaks (minutes)<input type="number" id="break-minutes" name="buffer" inputmode="numeric" min="0" max="240" step="1" value="10" required></label>
+        </div>
+        <p class="wn-field-note">Include all pauses, setup or expected ads in the break total. For episodes of different lengths, use the longest one for a conservative estimate.</p>
+        <div class="wn-actions"><button type="submit" class="wn-pill wn-primary">Calculate</button><button type="button" class="wn-pill" id="share-plan">Share plan</button></div>
+      </form>
+      <output class="wn-result" id="plan-result" aria-live="polite" aria-atomic="true">The example runs from 8:00 PM to 10:30 PM. A 95-minute movie and 10 minutes of breaks finish at 9:45 PM, with 45 minutes to spare.</output>
+      <span id="share-status" role="status"></span>
+      <input type="text" id="share-url" aria-label="Link to this plan" readonly hidden>
+      <noscript><p>Turn on JavaScript to change the calculation or share a plan. The worked examples below also show how to plan by hand.</p></noscript>
+    </section>
+    <section class="wn-section" aria-labelledby="wn-examples-title">
+      <h2 id="wn-examples-title">Two ways to use the planner</h2>
+      <div class="wn-examples">
+        <article class="wn-card"><h3>Date night with an early finish</h3><p>Dinner wraps up at 7:45 PM and you need to finish by 9:30 PM. That&#x27;s 105 minutes. Set aside 15 for dessert and you can choose a film up to 90 minutes long. Two 42-minute episodes would leave six minutes spare.</p></article>
+        <article class="wn-card"><h3>One more episode after midnight?</h3><p>Starting at 11:40 PM with a 1:15 AM cutoff gives you 95 minutes. After a 10-minute break, two 40-minute episodes finish at 1:10 AM. A 90-minute film would finish five minutes late.</p></article>
+      </div>
+    </section>
+    <section class="wn-section" aria-labelledby="wn-next-title">
+      <h2 id="wn-next-title">You have a time. Now pick a title.</h2><p>Choosing with someone else? Compare tastes in Match Together. If you already have a film in mind, check where it streams in your country. Availability and running times can differ by edition.</p>
+      <nav class="wn-links" aria-label="Find your next title"><a class="wn-pill" href="/together.html">Choose together</a><a class="wn-pill" href="/where-to-watch/">Find where to watch</a><a class="wn-pill" href="/us/">See the US streaming guide</a></nav>
+    </section>
+  </main>
+  <footer class="wn-wrap"><nav class="wn-links" aria-label="Planner navigation"><a class="wn-pill" href="/">MatchApp Ai home</a><a class="wn-pill" href="/privacy.html">Privacy</a></nav></footer>
+</body>
+</html>
