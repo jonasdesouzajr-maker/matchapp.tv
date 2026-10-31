@@ -118,7 +118,7 @@ function injectWatchPoster(html, title, info, records) {
 function titleSearchContext(title, info) {
     if (title === 'A Different World' && Number(info?.tmdbId) === 305357 && info?.kind === 'tv') {
         return {
-            title: 'A Different World (2026): Netflix Sequel & Where to Watch | MatchApp Ai',
+            title: 'A Different World 2026 Streaming & Sequel | MatchApp Ai',
             description: 'A Different World (2026) is Netflix’s sequel series, released Sept. 24, 2026. See where it streams by country and the confirmed Season 2 renewal.',
             body: `<section class="w2w-section" aria-labelledby="a-different-world-sequel-answer">
         <h2 id="a-different-world-sequel-answer">Is A Different World (2026) the Netflix sequel?</h2>
