@@ -60,7 +60,7 @@ function newsDefinitions({filesystem=fs,now=NOW}={}){
  class Clock extends Date{constructor(...args){super(...(args.length?args:[now]));}static now(){return now;}}
  return vm.runInNewContext(source.slice(0,start)+'\n;({iso,readSports,retainSeoTimestamp})',{
   __dirname:path.join(ROOT,'tools'),Date:Clock,URL,URLSearchParams,AbortController,Buffer,setTimeout,clearTimeout,console,
-  require(name){if(name==='node:fs')return filesystem;if(name==='../news-monetization.js')return {};if(name==='./finalize-brand.js'||name==='./public-discovery-head.cjs')return require('../tools/'+name.slice(2));return require(name);}
+  require(name){if(name==='node:fs')return filesystem;if(name==='../news-monetization.js')return {};if(name==='./finalize-brand.js')return require('../tools/finalize-brand.js');return require(name);}
  });
 }
 test('missing, invalid, and future news dates are rejected rather than fabricated from crawl time',()=>{
@@ -88,7 +88,7 @@ test('two identical full news generator executions produce byte-identical data, 
    __dirname:path.join(f.dir,'tools'),Date:Clock,URL,URLSearchParams,AbortController,Buffer,setTimeout,clearTimeout,
    console:{log(){},warn(){},error(){}},process:{env:{},exit(code){throw Error('Generator exit '+code);}},
    fetch:async url=>({ok:true,status:200,text:async()=>String(url).includes('feeds.bbci')?xml:'<rss><channel></channel></rss>'}),
-   require(name){if(name==='../news-monetization.js')return {eligibleArticle:()=>false,offers:[],offersMarkup:()=>''};if(name==='./finalize-brand.js'||name==='./public-discovery-head.cjs')return require('../tools/'+name.slice(2));return require(name);}
+   require(name){if(name==='../news-monetization.js')return {eligibleArticle:()=>false,offers:[],offersMarkup:()=>''};if(name==='./finalize-brand.js')return require('../tools/finalize-brand.js');return require(name);}
   });
   const contents=()=>Object.fromEntries(fs.readdirSync(f.dir,{recursive:true}).filter(p=>fs.statSync(path.join(f.dir,p)).isFile()).map(p=>[p,fs.readFileSync(path.join(f.dir,p),'utf8')]));
   await run();const first=contents();assert.ok(Object.keys(first).length>6);now+=3600000;await run();assert.deepEqual(contents(),first);

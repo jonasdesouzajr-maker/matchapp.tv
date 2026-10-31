@@ -611,7 +611,11 @@ ${commerceSlot(i,'en')}
     ]
   };
 
-  return require('./public-discovery-head.cjs').publicHeadForHtml(cinemaAssets(`<!doctype html>
+  const previewTitle = 'Latest Entertainment, World and Sports News | MatchApp Ai';
+  const previewDescription = 'Source-linked entertainment, world and sports headlines, clearly dated and connected to practical discovery guides.';
+  const previewImage = `${SITE}/og-image.jpg?v=20260928-brand-preview1`;
+
+  return cinemaAssets(`<!doctype html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->
@@ -629,9 +633,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="${SITE}/news/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MatchApp Ai">
-<meta property="og:title" content="Latest Entertainment, World and Sports News | MatchApp Ai">
-<meta property="og:description" content="Source-linked entertainment, world and sports headlines, clearly dated and connected to practical discovery guides.">
+<meta property="og:title" content="${previewTitle}">
+<meta property="og:description" content="${previewDescription}">
 <meta property="og:url" content="${SITE}/news/">
+<meta property="og:image" content="${previewImage}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${previewTitle}">
+<meta name="twitter:description" content="${previewDescription}">
+<meta name="twitter:image" content="${previewImage}">
 <script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>
 <link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
@@ -675,7 +684,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 <script src="/build-meta.js?v=203&polish=20261020-ui1&androidqa=20261021-1&repair=20261023-1"></script>
 </body>
-</html>`,'news/index.html'),'news/index.html');
+</html>`,'news/index.html');
 }
 
 function readSports(){
