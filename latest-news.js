@@ -379,6 +379,7 @@
   }
 
   async function fetchRegional(country,language){
+    if(document.documentElement.dataset.editorialNews==='snapshot')return {payload:null,items:[]};
     const controller=new AbortController();
     const timeout=window.setTimeout(()=>controller.abort(),10000);
     try{
@@ -474,8 +475,8 @@
 
       const meta=document.createElement('div');meta.className='ma-news-meta';
       const sportStatus=chosen.sports.length?` · Sports ${esc(formatDate(payload.sports_updated_at||payload.generated_at))}`:'';
-      const newsUpdated=regional.payload?.generated_at||payload.generated_at||Date.now();
-      meta.innerHTML=`<span>News ${esc(formatDate(newsUpdated))}${sportStatus}</span><span>Open news source ↗</span>`;panel.append(meta);
+      const newsUpdated=regional.payload?.generated_at||payload.generated_at||'';
+      meta.innerHTML=`<span>News${newsUpdated?' '+esc(formatDate(newsUpdated)):''}${sportStatus}</span><span>Open news source ↗</span>`;panel.append(meta);
       if(deep.shouldOpen)openAndReveal(deep.requestedNewsId);else if(section.open&&carousel&&carousel.startAuto)window.setTimeout(()=>carousel.startAuto(),180);
       track('latest_news_ready',{news_country:country,news_language:language,news_local_count:chosen.combined.filter(x=>x.scope==='local').length,news_global_count:chosen.combined.filter(x=>x.scope==='global').length,news_total_count:chosen.combined.length,news_sports_count:chosen.combined.filter(x=>x.scope==='sports').length,news_feed_version:currentVersion,news_regional_count:regional.items.length,news_deep_link:Boolean(deep.requestedNewsId)});
       signalStaticReady(country,language,'ready');

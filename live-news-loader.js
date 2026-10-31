@@ -1,6 +1,8 @@
 /* MatchApp locale-aware live news bridge — overlays country + global headlines onto the existing Latest News rail. */
 (function(){
   'use strict';
+  // Keep the committed news snapshot in place throughout an editorial review.
+  if(document.documentElement.dataset.editorialNews==='snapshot')return;
   const API='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/regional-news-rss';
   const MAX_LOCAL=5,MAX_GLOBAL=3,MAX_TOTAL=12,MAX_WORLD=2,MAX_SPORTS=2;
   const SEEN_KEY='matchapp.latestNewsSeenVersion.locale';

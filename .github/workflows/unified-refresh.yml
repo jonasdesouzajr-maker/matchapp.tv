@@ -22,6 +22,9 @@ concurrency:
 
 jobs:
   refresh:
+    # Owner-requested AdSense review hold, 2026-10-31. Remove this condition
+    # when the owner resumes publishing. The original triggers and gates stay intact.
+    if: ${{ false }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
