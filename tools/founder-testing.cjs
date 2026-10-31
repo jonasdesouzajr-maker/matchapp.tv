@@ -42,7 +42,7 @@ function render() {
     <div id="tester-play" hidden><div id="tester-group" hidden><p data-ma-text-pill="copy">${msg('groupNote')}</p><a class="mf-pill" id="tester-group-link" rel="noopener noreferrer" target="_blank">${msg('group')}</a></div><p id="tester-existing" data-ma-text-pill="copy">${msg('playNote')}</p><a class="mf-pill" id="tester-optin" rel="noopener noreferrer" target="_blank">${msg('optin')}</a></div>
     <a class="mf-pill" href="/privacy.html">${msg('privacy')}</a>
     <script type="application/json" id="founder-testing-config">${JSON.stringify({apps, groups: Object.fromEntries(Object.keys(apps).map(id => [id, groupUrl(id)])), copy}).replace(/</g,'\\u003c')}</script>
-    <script defer src="/patches/founder-testing.js?v=20261031-1"></script>
+    <script defer src="/patches/founder-testing.js?v=20261031-2"></script>
   </section>`;
 }
 module.exports = {render, apps};

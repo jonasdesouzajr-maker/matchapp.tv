@@ -42,16 +42,16 @@ test('application composes one chosen app with matching Gmail and explicit conse
   assert.ok(!form.checkValidity());
   dom.window.close();
 });
-test('choosing another game clears a prior group link', () => {
+test('embedded roster text cannot become a navigable group URL', () => {
   const dom = page('https://groups.google.com/g/example-verified-roster'), w = dom.window, d = w.document;
   d.querySelector('[data-test-app]').click();
-  assert.ok(!d.querySelector('#tester-group').hidden);
-  assert.ok(d.querySelector('#tester-existing').hidden);
+  assert.ok(d.querySelector('#tester-group').hidden);
+  assert.ok(!d.querySelector('#tester-existing').hidden);
+  assert.ok(!d.querySelector('#tester-group-link').hasAttribute('href'));
+  assert.equal(d.querySelector('#tester-optin').href, 'https://play.google.com/apps/testing/com.reelforge.cinemaclash');
   const select = d.querySelector('select');
   select.value = 'lumina';
   select.dispatchEvent(new w.Event('change'));
-  assert.ok(d.querySelector('#tester-group').hidden);
-  assert.ok(!d.querySelector('#tester-group-link').hasAttribute('href'));
   assert.equal(d.querySelector('#tester-optin').href, 'https://play.google.com/apps/testing/com.jonas.luminamatch');
   dom.window.close();
 });

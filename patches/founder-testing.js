@@ -3,13 +3,17 @@
   const form = document.getElementById('founder-tester-form');
   if (!form) return;
   const section = document.getElementById('closed-testing');
-  const {apps, groups, copy} = JSON.parse(document.getElementById('founder-testing-config').textContent);
+  const {apps, copy} = JSON.parse(document.getElementById('founder-testing-config').textContent);
   const select = document.getElementById('tester-app');
   const email = document.getElementById('tester-gmail');
   const optin = document.getElementById('tester-optin');
   const play = document.getElementById('tester-play');
   const button = document.getElementById('tester-send');
   let language = 'en';
+  const trustedOptIn = Object.freeze({
+    lumina: 'https://play.google.com/apps/testing/com.jonas.luminamatch',
+    reelforge: 'https://play.google.com/apps/testing/com.reelforge.cinemaclash'
+  });
 
   function syncLanguage() {
     let saved = '';
@@ -22,15 +26,17 @@
     });
   }
   function chooseApp() {
-    const app = apps[select.value];
-    const group = groups[select.value];
+    const appId = select.value;
+    const app = apps[appId];
+    const destination = Object.hasOwn(trustedOptIn, appId) ? trustedOptIn[appId] : '';
     const groupButton = document.getElementById('tester-group-link');
-    document.getElementById('tester-group').hidden = !group;
-    document.getElementById('tester-existing').hidden = !!group;
-    if (group) groupButton.href = group;
-    else groupButton.removeAttribute('href');
-    play.hidden = !app;
-    if (app) optin.href = 'https://play.google.com/apps/testing/' + app.package;
+    // A tester-group URL is exposed only after a roster is independently verified.
+    // Never convert embedded DOM/config text into a navigable URL.
+    document.getElementById('tester-group').hidden = true;
+    document.getElementById('tester-existing').hidden = false;
+    groupButton.removeAttribute('href');
+    play.hidden = !(app && destination);
+    if (app && destination) optin.href = destination;
     else optin.removeAttribute('href');
   }
   document.querySelectorAll('a[data-test-app]').forEach(link => {
