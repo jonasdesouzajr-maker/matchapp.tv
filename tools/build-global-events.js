@@ -39,7 +39,11 @@ const cards=events.map(card).join('\n');
 const homeEvents=homeEventOrder(events,buildNow);
 const homeCards=homeEvents.map(card).join('\n');
 
-function consentDefaults(){return `<!-- GOOGLE CONSENT MODE: EEA + UK + Switzerland default denied until a certified CMP supplies consent. -->
+function consentDefaults(){return `<script id="ma-publisher-review-hold">
+window.adsbygoogle = window.adsbygoogle || [];
+window.adsbygoogle.pauseAdRequests = 1;
+</script>
+<!-- GOOGLE CONSENT MODE: EEA + UK + Switzerland default denied until a certified CMP supplies consent. -->
 <script>
 window.dataLayer=window.dataLayer||[];
 window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
