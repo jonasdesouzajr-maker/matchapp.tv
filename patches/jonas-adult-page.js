@@ -1,6 +1,7 @@
 /* One persistent adult companion; Home and native Android retain their existing owner. */
 (function(){
  'use strict';
+ if(!/^\/kids(\/|$)/.test(location.pathname)&&!document.getElementById('ma-guide-20261031')){var g=document.createElement('script');g.id='ma-guide-20261031';g.defer=true;g.src='/jonas-guide-20261031.js?v=5';(document.head||document.documentElement).appendChild(g);}
  if(window.top!==window||/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)||/\/(callback|confirm)\.html$/.test(location.pathname)||/^\/(?:index\.html)?$/.test(location.pathname)||/MatchAppAiAndroid\//.test(navigator.userAgent))return;
  if(window.__matchappAmbientJonas||document.getElementById('matchapp-ambient-jonas-script'))return;
  window.__MATCHAPP_AMBIENT_WEB__=true;

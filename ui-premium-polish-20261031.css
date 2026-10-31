@@ -7,3 +7,87 @@ html body:has(nav.ma-cinema-dock) main,html body:has(nav.ma-cinema-dock) .page-w
 html.matchapp-ai-android .ad-banner-container.ma-inline-ad:not(:has(iframe)){min-height:0!important;height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important;opacity:0!important}
 /* 3. Reduced motion. */
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* 4. Palette tokens (gold / ivory / violet). */
+:root{--ma-gold:#E6C36A;--ma-gold-2:#C9A24A;--ma-ivory:#F6F0E1;--ma-violet:#2A1846;--ma-violet-2:#3B2463;--ma-dock-clear:calc(92px + env(safe-area-inset-bottom,0px))}
+
+/* 5. One consistent Jonas panel: above the dock, fits every screen, circular X. */
+html body #ma-jonas-home-panel:not([hidden]),html body #ma-ambient-panel:not([hidden]){
+ max-height:calc(100dvh - var(--ma-dock-clear) - 96px)!important;overflow:auto!important;overscroll-behavior:contain;
+ border-radius:22px!important;background:linear-gradient(160deg,rgba(59,36,99,.96),rgba(22,12,40,.97))!important;
+ box-shadow:0 1px 0 rgba(246,240,225,.10) inset,0 18px 40px rgba(0,0,0,.45),0 4px 12px rgba(0,0,0,.35)!important;
+ color:var(--ma-ivory)}
+@media (max-width:520px){html body #ma-jonas-home-panel:not([hidden]),html body #ma-ambient-panel:not([hidden]){left:8px!important;right:8px!important;width:auto!important;max-width:none!important}}
+html body #ma-jonas-home-panel .jh-close,html body #ma-ambient-panel .jh-close,html body #ma-ambient-panel [aria-label*="Fechar"],html body #ma-ambient-panel [aria-label*="Close"]{
+ width:36px!important;height:36px!important;min-width:36px!important;border-radius:50%!important;display:inline-grid!important;place-items:center!important;
+ background:radial-gradient(circle at 35% 30%,#3d2a66,#1b1030)!important;color:var(--ma-ivory)!important;
+ box-shadow:0 0 0 1.5px var(--ma-gold) inset,0 4px 10px rgba(0,0,0,.4)!important;position:sticky;top:6px;z-index:3}
+html body #ma-jonas-home-panel .jh-input,html body #ma-ambient-panel input[type=text],html body #ma-ambient-panel textarea{border-radius:999px!important;min-height:44px}
+html body #ma-jonas-home-panel .jh-send{border-radius:999px!important;background:linear-gradient(180deg,var(--ma-gold),var(--ma-gold-2))!important;color:#1b1030!important}
+
+/* 6. Guide pills inside Jonas: compact, equal size, neat grid. */
+.ma-guide-pills{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px;margin:8px 10px}
+.ma-guide-pills a{display:flex;align-items:center;justify-content:center;min-height:34px;padding:0 10px;border-radius:999px;font:600 12.5px/1.1 system-ui,sans-serif;
+ color:var(--ma-ivory);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+ background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),var(--ma-violet-2);
+ box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 3px 8px rgba(0,0,0,.35);transition:transform .15s}
+.ma-guide-pills a:hover,.ma-guide-pills a:focus-visible{transform:translateY(-1px);color:var(--ma-gold)}
+
+/* 7. Explore: even card grid, no overlap. */
+.ref-primary-topics{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important;gap:10px!important;align-items:stretch!important}
+.ref-primary-topics>.ref-topic{position:relative!important;inset:auto!important;transform:none!important;margin:0!important;min-height:112px;height:auto!important;overflow:hidden;border-radius:18px!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 10px 22px rgba(0,0,0,.35)!important}
+.ref-topic .ref-topic-caption{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* 8. Poster captions: keep captions off the art. */
+@media (max-width:1099px){.ma-cinema-section .poster-caption,.ma-top-titles .title-caption{position:static!important;background:none!important;padding-top:4px!important}}
+.ma-guide-pills{flex:1 1 100%;width:auto;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (min-width:600px){.ma-guide-pills{grid-template-columns:repeat(4,minmax(0,1fr))}}
+html body #ma-jonas-home-panel #ma-jonas-home-close.jh-close{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;border:0!important;border-radius:50%!important}
+
+/* 9. Premium interaction states everywhere. */
+:where(button,.gold-btn,.crit-chip,.crit-toggle,.jh-suggestion,.ma-guide-pills a,.ma-fx-toggle,summary){transition:transform .14s cubic-bezier(.2,.8,.2,1),box-shadow .18s,background-color .18s,color .18s;-webkit-tap-highlight-color:transparent}
+:where(button,.gold-btn,.crit-chip,.crit-toggle,.jh-suggestion,.ma-guide-pills a,.ma-fx-toggle):focus-visible{outline:2px solid var(--ma-gold);outline-offset:2px}
+:where(button,.gold-btn,.crit-chip,.jh-suggestion,.ma-guide-pills a,.ma-fx-toggle):active,.ma-press{transform:translateY(1px) scale(.97)}
+@media (hover:hover){:where(.gold-btn,.crit-chip,.jh-suggestion):hover{box-shadow:0 0 0 1px rgba(230,195,106,.45),0 6px 16px rgba(0,0,0,.3)}}
+input:not([type=checkbox]):not([type=radio]):focus-visible,textarea:focus-visible{outline:none;box-shadow:0 0 0 2px rgba(230,195,106,.7),0 0 18px rgba(230,195,106,.18)!important}
+
+/* 10. Instant chip feedback: painted on pointerdown, before app logic runs. */
+.crit-chip.ma-tap-on:not(.is-on){background:linear-gradient(180deg,var(--ma-gold),var(--ma-gold-2))!important;color:#1b1030!important;border-color:transparent!important}
+.crit-chip.is-on.ma-tap-off{opacity:.65}
+.crit-chip{contain:layout paint;will-change:transform}
+
+/* 11. Cinematic match loader. */
+#loading-box .scanner-stage,#loading-box .eq-bars,#loading-box .ma-spin,#loading-box .meter-shell .meter-perforations{display:none!important}
+#loading-box .meter-shell{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}
+.ma-cine-loader{position:relative;display:flex;align-items:center;justify-content:center;gap:16px;height:120px;margin:0 auto 18px;max-width:340px}
+.ma-reel{width:96px;height:96px;flex:none;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45)) drop-shadow(0 0 14px rgba(230,195,106,.25))}
+.ma-reel-spin{transform-origin:50px 50px;transform-box:view-box;animation:maReel 2.4s linear infinite;will-change:transform}
+.ma-meter{position:relative;flex:1;height:18px;border-radius:999px;overflow:hidden;background:linear-gradient(180deg,#1b1030,#2A1846);box-shadow:0 0 0 1.5px rgba(230,195,106,.55) inset,0 6px 14px rgba(0,0,0,.35)}
+.ma-meter-fill{position:absolute;inset:3px;border-radius:999px;background:linear-gradient(90deg,#9C7A2E,var(--ma-gold) 60%,var(--ma-ivory));transform-origin:left center;transform:scaleX(.04);transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.ma-meter-sheen{position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(246,240,225,.35) 50%,transparent 70%);transform:translateX(-100%);animation:maSheen 1.8s ease-in-out infinite;will-change:transform}
+.ma-star{position:absolute;color:var(--ma-ivory);font-size:12px;text-shadow:0 0 8px rgba(230,195,106,.9),0 0 2px #fff;opacity:.35;animation:maStar 2.6s ease-in-out infinite;will-change:transform,opacity;pointer-events:none}
+.ma-star.s1{left:4px;top:6px}.ma-star.s2{left:92px;top:2px;animation-delay:.5s;color:#C9B6FF}.ma-star.s3{right:40px;top:22px;animation-delay:1s}.ma-star.s4{right:6px;bottom:20px;animation-delay:1.5s;color:#C9B6FF}.ma-star.s5{left:120px;bottom:10px;animation-delay:2s;font-size:9px}
+@keyframes maReel{to{transform:rotate(360deg)}}
+@keyframes maSheen{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+@keyframes maStar{0%,100%{opacity:.3;transform:scale(.8) rotate(0)}50%{opacity:.95;transform:scale(1.15) rotate(20deg)}}
+
+/* 12. Android-only immersive layer. */
+html.ma-fx .ma-tilt{transition:transform .25s cubic-bezier(.2,.8,.2,1)!important;will-change:transform;transform-style:preserve-3d}
+html.ma-fx .ref-topic,html.ma-fx .premium-card{box-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 14px 30px rgba(0,0,0,.38),0 3px 8px rgba(0,0,0,.3)}
+.ma-fx-toggle{grid-column:1/-1;min-height:32px;border-radius:999px;border:1px solid rgba(230,195,106,.45);background:transparent;color:var(--ma-ivory);font:600 12px system-ui,sans-serif}
+::view-transition-old(root){animation:maOut .22s ease-in both}
+::view-transition-new(root){animation:maIn .3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes maOut{to{opacity:0;transform:scale(.985)}}
+@keyframes maIn{from{opacity:0;transform:scale(1.015)}}
+
+@media (prefers-reduced-motion:reduce){.ma-reel-spin,.ma-meter-sheen,.ma-star{animation:none!important}.ma-star{opacity:.6}::view-transition-old(root),::view-transition-new(root){animation:none!important}html.ma-fx .ma-tilt{transform:none!important}}
+
+/* 13. Instant response everywhere. */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,textarea,[role=button],.crit-chip{touch-action:manipulation}
+a.ma-press,summary.ma-press,[role=button].ma-press,button.ma-press{filter:brightness(1.12)}
+
+/* 14. Cheaper layouts: skip rendering work for off-screen blocks (content stays in DOM). */
+.poster-wall{contain:layout paint style}
+.seo-footer,#billboard,#spotify-videos,#cooking-home{content-visibility:auto;contain-intrinsic-size:auto 560px}

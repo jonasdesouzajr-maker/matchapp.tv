@@ -110,7 +110,7 @@
   desktopQuery?.addEventListener?.('change',measure);
   hoverQuery?.addEventListener?.('change',function(){if(!hoverQuery.matches)hover=false;measure();});
   document.addEventListener('matchapp:langchange',paint);window.addEventListener('matchapp:languagechange',paint);
-  document.addEventListener('change',function(){if(reduced())stop();else schedule();});
+  document.addEventListener('change',function(){setTimeout(function(){if(reduced())stop();else schedule();},180);});
   document.addEventListener('matchapp:settingschanged',function(event){if(!event.detail?.key||['reduceMotion','*'].includes(event.detail.key))schedule();});
   if('IntersectionObserver'in window){var observer=new IntersectionObserver(function(entries){visible=!!entries[0]?.isIntersecting;if(visible)schedule();else stop();},{threshold:.12});observer.observe(vp);}
   var mutation=new MutationObserver(function(){requestAnimationFrame(measure);});mutation.observe(track,{childList:true});

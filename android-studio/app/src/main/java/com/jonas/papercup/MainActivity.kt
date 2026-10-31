@@ -251,6 +251,7 @@ class MainActivity : AppCompatActivity() {
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
         web.addJavascriptInterface(NativeAuthBridge(), "MatchAppNativeAuth")
+        web.addJavascriptInterface(NativeFxBridge(), "MatchAppFx")
         nativeRewardedBridge = NativeRewardedBridge(
             this, web,
             { adMobController?.canRequestRewarded() == true },
@@ -282,8 +283,13 @@ class MainActivity : AppCompatActivity() {
                 when {
                     introHost != null -> finishIntro()
                     customView != null -> hideCustomView()
-                    web.canGoBack() -> web.goBack()
-                    else -> finish()
+                    else -> web.evaluateJavascript(
+                        "(window.MatchAppHandleBack&&window.MatchAppHandleBack())===true"
+                    ) { handled ->
+                        if (handled != "true") {
+                            if (web.canGoBack()) web.goBack() else finish()
+                        }
+                    }
                 }
             }
         })
@@ -1528,6 +1534,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Tiny UI feedback bridge: short haptics and a silent-mode check for UI sounds. */
+    private inner class NativeFxBridge {
+        @JavascriptInterface
+        fun vibrate(ms: Int) {
+            val d = ms.coerceIn(1, 40).toLong()
+            runOnUiThread {
+                runCatching {
+                    val v = if (android.os.Build.VERSION.SDK_INT >= 31) {
+                        (getSystemService(android.content.Context.VIBRATOR_MANAGER_SERVICE) as android.os.VibratorManager).defaultVibrator
+                    } else {
+                        @Suppress("DEPRECATION")
+                        getSystemService(android.content.Context.VIBRATOR_SERVICE) as android.os.Vibrator
+                    }
+                    if (!v.hasVibrator()) return@runCatching
+                    if (android.os.Build.VERSION.SDK_INT >= 26) {
+                        v.vibrate(android.os.VibrationEffect.createOneShot(d, android.os.VibrationEffect.DEFAULT_AMPLITUDE))
+                    } else {
+                        @Suppress("DEPRECATION")
+                        v.vibrate(d)
+                    }
+                }
+            }
+        }
+
+        @JavascriptInterface
+        fun soundAllowed(): Boolean = runCatching {
+            val am = getSystemService(android.content.Context.AUDIO_SERVICE) as android.media.AudioManager
+            am.ringerMode == android.media.AudioManager.RINGER_MODE_NORMAL
+        }.getOrDefault(false)
+    }
+
     private inner class NativeExperienceBridge {
         @JavascriptInterface
         fun setAdFree(adFree: Boolean) {
@@ -1724,8 +1761,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=65"
-        const val APP_UA = "MatchAppTVAndroid/1.1.65 MatchAppAiAndroid/1.1.65 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=66"
+        const val APP_UA = "MatchAppTVAndroid/1.1.66 MatchAppAiAndroid/1.1.66 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"
