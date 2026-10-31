@@ -4,12 +4,102 @@ var copy={"en":["Home","Explore more","Discover with Jonas","Choose your next ex
 var menuLabel={"en":"Main menu","pt-BR":"Menu principal","es":"Menú principal","fr":"Menu principal","de":"Hauptmenü","it":"Menu principale","tr":"Ana menü","ru":"Главное меню","ar":"القائمة الرئيسية","hi":"मुख्य मेन्यू","id":"Menu utama","ja":"メインメニュー","ko":"기본 메뉴","zh":"主菜单"};
 var worldsFriendsDescription={"en":"Find friends and share your next discovery.","pt-BR":"Encontre amigos e compartilhe sua próxima descoberta.","es":"Encuentra amigos y comparte tu próximo descubrimiento.","fr":"Retrouvez vos amis et partagez vos découvertes.","de":"Finde Freunde und teile deine nächste Entdeckung.","it":"Trova amici e condividi la tua prossima scoperta.","tr":"Arkadaşlar bul ve bir sonraki keşfini paylaş.","ru":"Находите друзей и делитесь новыми открытиями.","ar":"تعرّف على الأصدقاء وشارك اكتشافاتك القادمة.","hi":"दोस्त खोजें और अपनी अगली खोज साझा करें।","id":"Temukan teman dan bagikan penemuan berikutnya.","ja":"友達とつながり、次の発見を共有しましょう。","ko":"친구와 연결하고 다음 발견을 공유하세요.","zh":"结识朋友，分享你的下一个发现。"};
 var musicAsk={"en":"Ask Jonas about music","pt-BR":"Pergunte ao Jonas sobre música","es":"Pregunta a Jonas sobre música","fr":"Parlez musique avec Jonas","de":"Frag Jonas nach Musik","it":"Chiedi a Jonas della musica","tr":"Jonas'a müzik hakkında sor","ru":"Спросить Йонаса о музыке","ar":"اسأل جوناس عن الموسيقى","hi":"जोनास से संगीत के बारे में पूछें","id":"Tanya Jonas tentang musik","ja":"ジョナスに音楽について聞く","ko":"조나스에게 음악에 대해 묻기","zh":"向乔纳斯询问音乐"};
+const discoveryMeta = {
+  "en": [
+    "What to Watch, Read, Play or Listen To",
+    "Find a movie for two, a K-drama, a book by mood or a podcast for the commute. Explore cooking videos, events, music charts and the Lumina Match memory game.",
+    "Official Music Videos, Spotify and the Billboard Hot 100",
+    "Find music videos by artist and song, check the dated Billboard Hot 100 selection, and open the official video or the track on Spotify."
+  ],
+  "pt-BR": [
+    "O que assistir, ler, jogar ou ouvir",
+    "Escolha um filme a dois, um dorama, um livro pelo seu humor ou um podcast para o trajeto. Explore receitas, eventos, música e o jogo da memória Lumina Match.",
+    "Clipes oficiais, Spotify e Billboard Hot 100",
+    "Encontre clipes por artista e música, consulte a seleção datada da Billboard Hot 100 e abra o vídeo oficial ou a faixa no Spotify."
+  ],
+  "es": [
+    "Qué ver, leer, jugar o escuchar",
+    "Elige una película para dos, un drama coreano, un libro según tu ánimo o un pódcast para el viaje. Descubre recetas, eventos, música y el juego Lumina Match.",
+    "Vídeos musicales oficiales, Spotify y Billboard Hot 100",
+    "Busca vídeos por artista o canción, consulta la selección fechada del Billboard Hot 100 y abre el vídeo oficial o la pista en Spotify."
+  ],
+  "fr": [
+    "Que regarder, lire ou écouter ? À quoi jouer ?",
+    "Choisissez un film à deux, un drama coréen, un livre selon votre humeur ou un podcast pour le trajet. Découvrez recettes, concerts et jeu de mémoire Lumina Match.",
+    "Clips officiels, Spotify et Billboard Hot 100",
+    "Cherchez un clip par artiste ou chanson, consultez la sélection datée du Billboard Hot 100 et ouvrez le clip officiel ou le titre sur Spotify."
+  ],
+  "de": [
+    "Filme, Bücher, Spiele und Podcasts entdecken",
+    "Finde einen Film für zwei, ein K-Drama, ein Buch nach Stimmung oder einen Podcast für unterwegs. Entdecke Kochvideos, Events, Musik und das Spiel Lumina Match.",
+    "Offizielle Musikvideos, Spotify und Billboard Hot 100",
+    "Suche nach Interpret oder Song, sieh dir die datierte Auswahl aus den Billboard Hot 100 an und öffne das offizielle Video oder den Song auf Spotify."
+  ],
+  "it": [
+    "Cosa guardare, leggere, ascoltare o giocare",
+    "Scegli un film in due, un drama coreano, un libro per il tuo umore o un podcast per il viaggio. Scopri ricette, eventi, musica e il gioco di memoria Lumina Match.",
+    "Video musicali ufficiali, Spotify e Billboard Hot 100",
+    "Cerca un video per artista o canzone, consulta la selezione datata della Billboard Hot 100 e apri il video ufficiale o il brano su Spotify."
+  ],
+  "tr": [
+    "Ne izlesem, okusam, dinlesem ya da oynasam?",
+    "Birlikte izlenecek film, Kore dizisi, ruh haline uygun kitap veya yol için podcast bul. Yemek videolarını, etkinlikleri, müziği ve Lumina Match oyununu keşfet.",
+    "Resmî müzik videoları, Spotify ve Billboard Hot 100",
+    "Sanatçı veya şarkı adına göre klip ara, tarihli Billboard Hot 100 seçkisine göz at ve resmî videoyu ya da parçayı Spotify’da aç."
+  ],
+  "ru": [
+    "Что посмотреть, почитать, послушать и во что поиграть",
+    "Выберите фильм на двоих, дораму, книгу под настроение или подкаст в дорогу. Здесь также есть рецепты, события, музыка и игра на память Lumina Match.",
+    "Официальные клипы, Spotify и Billboard Hot 100",
+    "Найдите клип по исполнителю или песне, проверьте дату подборки Billboard Hot 100 и откройте официальный клип или трек в Spotify."
+  ],
+  "ar": [
+    "ماذا أشاهد أو أقرأ أو أسمع أو ألعب؟",
+    "اختر فيلماً لشخصين أو دراما كورية أو كتاباً يناسب مزاجك أو بودكاست للطريق. اكتشف وصفات وأحداثاً وموسيقى ولعبة الذاكرة Lumina Match.",
+    "فيديوهات موسيقية رسمية وSpotify وBillboard Hot 100",
+    "ابحث عن مقطع موسيقي باسم الفنان أو الأغنية، وتصفّح اختيارات Billboard Hot 100 المؤرخة، ثم افتح الفيديو الرسمي أو الأغنية على Spotify."
+  ],
+  "hi": [
+    "क्या देखें, पढ़ें, सुनें या खेलें?",
+    "साथ देखने के लिए फ़िल्म, कोरियाई ड्रामा, मूड के अनुसार किताब या सफ़र के लिए पॉडकास्ट चुनें। रेसिपी, इवेंट, संगीत और मेमोरी गेम Lumina Match भी खोजें।",
+    "आधिकारिक म्यूज़िक वीडियो, Spotify और Billboard Hot 100",
+    "कलाकार या गाने के नाम से वीडियो खोजें, तारीख़ के साथ Billboard Hot 100 के चुनिंदा गाने देखें और आधिकारिक वीडियो या Spotify पर ट्रैक खोलें।"
+  ],
+  "id": [
+    "Mau nonton, baca, main, atau dengar apa?",
+    "Pilih film untuk berdua, drama Korea, buku sesuai suasana hati, atau podcast untuk perjalanan. Temukan resep, acara, musik, dan gim memori Lumina Match.",
+    "Video musik resmi, Spotify, dan Billboard Hot 100",
+    "Cari video menurut artis atau lagu, periksa pilihan Billboard Hot 100 beserta tanggalnya, lalu buka video resmi atau lagunya di Spotify."
+  ],
+  "ja": [
+    "何を見る？ 何を読む？ 音楽・ポッドキャスト・ゲームも探せる",
+    "二人で見る映画や韓国ドラマ、気分に合う本、通勤中のポッドキャストを探せます。料理動画、イベント、音楽チャート、記憶ゲームの Lumina Match も紹介。",
+    "公式ミュージックビデオ・Spotify・Billboard Hot 100",
+    "アーティストや曲名から動画を探し、日付付きの Billboard Hot 100 の選曲を確認。公式ミュージックビデオや Spotify の楽曲を開けます。"
+  ],
+  "ko": [
+    "무엇을 보고 읽고 듣고 즐길까?",
+    "둘이 볼 영화, 한국 드라마, 기분에 맞는 책, 출퇴근길 팟캐스트를 찾아보세요. 요리 영상, 행사, 음악 차트, 기억력 게임 Lumina Match도 만날 수 있어요.",
+    "공식 뮤직비디오, Spotify, Billboard Hot 100",
+    "가수나 곡명으로 영상을 찾고 날짜가 표시된 Billboard Hot 100 선곡을 확인하세요. 공식 뮤직비디오 또는 Spotify의 곡을 열 수 있어요."
+  ],
+  "zh": [
+    "看什么、读什么、听什么、玩什么？",
+    "找一部两个人都想看的电影、一部韩剧、一本适合当下心情的书，或一档通勤播客。也可以探索烹饪视频、活动、音乐榜单和 Lumina Match 记忆游戏。",
+    "官方音乐视频、Spotify 与 Billboard Hot 100",
+    "按歌手或歌名查找音乐视频，查看标有日期的 Billboard Hot 100 精选，打开官方音乐视频，或在 Spotify 收听歌曲。"
+  ]
+};
 function paint(){var language=window.MATCH_LANG||'en',row=copy[language];if(!row)return;
 document.querySelectorAll('[data-hub-copy]').forEach(function(el){el.textContent=row[Number(el.dataset.hubCopy)]});
 document.querySelectorAll('[data-music-ask]').forEach(function(el){el.textContent=musicAsk[language]});
 document.querySelectorAll('[data-hub-aria="menu"]').forEach(function(el){el.setAttribute('aria-label',menuLabel[language])});
 document.querySelectorAll('[data-world-friends-description]').forEach(function(el){el.textContent=worldsFriendsDescription[language]||worldsFriendsDescription.en});
-document.title=row[document.body.classList.contains('page-music')?6:1]+' | MatchApp Ai';}
+const pageMeta=discoveryMeta[language];
+const offset=document.body.classList.contains('page-music')?2:0;
+document.title=pageMeta[offset]+' | MatchApp Ai';
+document.querySelectorAll('meta[property="og:title"],meta[name="twitter:title"]').forEach(el=>{el.content=document.title;});
+document.querySelectorAll('meta[name="description"],meta[property="og:description"],meta[name="twitter:description"]').forEach(el=>{el.content=pageMeta[offset+1];});}
 document.addEventListener('matchapp:langchange',paint);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',paint,{once:true});else paint();
 if(location.hash==='#how-it-works'){const how=document.getElementById('how-it-works');if(how)how.open=true;}

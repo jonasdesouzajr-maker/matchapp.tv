@@ -80,7 +80,11 @@ test('core pages carry unique 2026 entertainment keywords and stay ads/search re
  assert.match(kids,/MatchApp Ai KIDS/);
  assert.match(together,/what should we watch tonight/);
  assert.match(home,/<title>MatchApp Ai — What to Watch Tonight &amp; Where to Stream<\/title>/);
- assert.match(together,/<title>Match Together: What to Watch Tonight \| MatchApp Ai<\/title>/);
+ const pairTitle='Match Together – Movie Picker for Couples | MatchApp Ai';
+ assert.ok(together.includes('<title>'+pairTitle+'</title>'));
+ assert.ok(together.includes('property="og:title" content="'+pairTitle+'"'));
+ assert.ok(together.includes('name="twitter:title" content="'+pairTitle+'"'));
+ assert.equal(require('../tools/discovery-metadata.js').enrichMetadata(together,'together.html'),together);
  const runtimeMeta=read('build-meta.js');
  assert.match(runtimeMeta,/name: 'MatchApp Ai',[\s\S]{0,220}alternateName: \['MatchApp', 'MatchApp\.tv'\]/);
  assert.match(runtimeMeta,/Ask AI What to Watch \| MatchApp Ai/);

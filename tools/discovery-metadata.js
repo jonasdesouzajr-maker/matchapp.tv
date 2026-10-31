@@ -34,8 +34,8 @@ page('cooking/index.html', 'Cooking Channels & Recipe Videos with AI | MatchApp 
 page('anime.html', 'Anime Recommendations by Mood & Where to Watch | MatchApp Ai',
   'Find anime recommendations by mood and genre, compare movies and series, and check where anime streams by country with MatchApp Ai.',
   'what anime should I watch, anime recommendations, where to watch anime, anime finder, Japanese animation, anime para assistir, onde assistir anime');
-page('together.html', 'Match Together: What to Watch Tonight | MatchApp Ai',
-  'Decide what to watch together with MatchApp Ai. Combine two people’s moods and tastes through a private shared match link for your next movie or series night.',
+page('together.html', 'Match Together – Movie Picker for Couples | MatchApp Ai',
+  'Pick a movie or series with a partner or friend. Compare moods, time limits and streaming services. Sign in to send a private link. Your guest can join without an account.',
   'Match Together, what to watch together, what should we watch tonight, movie night decider, movies for couples, date night movies, what to watch with friends, pick a movie together, shared movie recommendations, o que assistir em casal');
 page('platforms/netflix/index.html', 'Netflix Top 10 & Recommendations by Mood | MatchApp Ai',
   'Explore Netflix Top 10 sources and movie or series recommendations by mood. Compare a dated chart snapshot with your preferences and regional viewing options.',

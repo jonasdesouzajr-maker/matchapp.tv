@@ -645,8 +645,8 @@
       "addressRegion": "Tokyo",
       "addressCountry": "JP"
     },
-    "poster": "https://2026.tiff-jp.net/news/en/files/2026/09/2026_TIFFPoster.jpg",
-    "posterCredit": "Official 39th Tokyo International Film Festival poster — Tokyo International Film Festival",
+    "poster": "/assets/events/tokyo-film-festival-2026.jpg",
+    "posterCredit": "Original editorial illustration by MatchApp Ai for its independent festival guide.",
     "featuredTitles": [
       "Sukiyaki",
       "Colony",
@@ -657,7 +657,7 @@
       "Choose the individual programme entry before planning your day. Check its venue, start time, running time and language or subtitle information through the official festival. An English-language festival website does not by itself establish English subtitles for every screening or conversation.",
       "A festival appearance can be a useful starting point for discovering Japanese and international filmmakers, but it does not promise a worldwide release. If no local offer is confirmed, save the title and consult the official distributor later. Treat trailers and recorded press events as context, not substitutes for an authorised full-film listing."
     ],
-    "updatedAt": "2026-10-27",
+    "updatedAt": "2026-10-31",
     "datePrecision": "date",
     "searchTitle": "Tokyo Film Festival 2026: Dates & Schedule",
     "searchDescription": "39th Tokyo International Film Festival, 26 October–4 November 2026. Find the official screening schedule, ticket guidance and central Tokyo venues.",
@@ -781,8 +781,28 @@
       "Distinguish general admission from any separately described activity or reservation. Read the organiser’s current access rules, session information and venue guidance before committing to travel. MatchApp is a discovery guide and does not issue tickets or confirm admission to a panel.",
       "For films, series and games announced at the event, follow the studio or publisher’s original statement afterward. A teaser or stage presentation does not prove that the work is released or available in your country. Remote viewers should look for officially announced streams and recaps rather than assuming every presentation has a full public recording."
     ],
-    "updatedAt": "2026-10-27",
+    "updatedAt": "2026-10-31",
     "searchTitle": "CCXP 2026 (CCXP26): Dates, Venue & Programme",
-    "searchDescription": "CCXP26 takes place 3–6 December 2026 at São Paulo Expo. Explore official programme and ticket sources, with guidance for planning your visit."
+    "searchDescription": "CCXP26 runs 3–6 December 2026 at São Paulo Expo. See when the Lord of the Rings cast appears, which stages host the reunion and where to check ticket options.",
+    "programmeHeading": "When is the Lord of the Rings reunion at CCXP26?",
+    "programmeNotes": [
+      "Friday, 4 December is the day to visit for the Fellowship Forever reunion. CCXP has confirmed Elijah Wood, Dominic Monaghan and Billy Boyd for a panel on Palco Thunder and an interview on Palco Omelete. The reunion marks 25 years since The Fellowship of the Ring.",
+      "Photos and autographs are scheduled for 3 and 4 December. A festival ticket is required and the photo and autograph sessions have separate access terms. Check the organiser’s programme before choosing a pass or making two plans for the same afternoon.",
+      "For a watch night before the panel, search for the 2001 film The Fellowship of the Ring. It is the first film in the trilogy and introduces the three actors as Frodo, Merry and Pippin. The title link below opens MatchApp Ai to help you check viewing options in your country."
+    ],
+    "sourceLinks": [
+      {
+        "label": "Fellowship Forever programme and access details",
+        "url": "https://ccxp.com.br/fellowship-forever/"
+      },
+      {
+        "label": "Official CCXP ticket options",
+        "url": "https://ccxp.com.br/ingressos/"
+      },
+      {
+        "label": "Official CCXP website",
+        "url": "https://ccxp.com.br/"
+      }
+    ]
   }
 ]

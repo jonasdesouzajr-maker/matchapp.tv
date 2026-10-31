@@ -54,3 +54,14 @@ test('archive search metadata is short and regenerated guides remain locked to t
  assert.match(read('tools/build-global-events.js'),/eventSearchTitle\(e\)/);
  assert.match(read('tools/build-global-events.js'),/eventSearchDescription\(e\)/);
 });
+
+test('CCXP reunion schedule links to the organiser and to the right film',()=>{
+  const event=events.find(item=>item.slug==='ccxp-2026');
+  const html=read('events/ccxp-2026/index.html');
+  assert.match(html,/Friday, 4 December/);
+  assert.match(html,/Elijah Wood, Dominic Monaghan and Billy Boyd/);
+  assert.match(html,/Photos and autographs are scheduled for 3 and 4 December/);
+  assert.ok(html.includes('href="https://ccxp.com.br/fellowship-forever/"'));
+  assert.ok(html.includes(encodeURIComponent(event.featuredTitles[0])));
+  for(const note of event.programmeNotes)assert.ok(decode(html).includes(note));
+});

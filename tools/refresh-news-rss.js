@@ -611,7 +611,7 @@ ${commerceSlot(i,'en')}
     ]
   };
 
-  return cinemaAssets(`<!doctype html>
+  return require('./public-discovery-head.cjs').publicHeadForHtml(cinemaAssets(`<!doctype html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->
@@ -675,7 +675,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 <script src="/build-meta.js?v=203&polish=20261020-ui1&androidqa=20261021-1&repair=20261023-1"></script>
 </body>
-</html>`,'news/index.html');
+</html>`,'news/index.html'),'news/index.html');
 }
 
 function readSports(){
