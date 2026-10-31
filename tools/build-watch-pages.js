@@ -325,7 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 `;
 }
 
-function buildIndex(titles) {
+function buildIndex(titles, publishedUrls = []) {
     const schema={'@context':'https://schema.org','@type':'CollectionPage',
         name:'Where to Watch Movies and TV Series by Country | MatchApp Ai',
         url:SITE+'/where-to-watch/',
@@ -337,6 +337,15 @@ function buildIndex(titles) {
     const schemaJson=safeJson(schema);
     const links = titles.map(t =>
         `<a href="/where-to-watch/${slug(t)}/">${esc(t)}</a>`).join('\n                ');
+    const regionalHubs = [
+        ['/pt/br/watch/', 'Brasil (português)', 'pt-BR'],
+        ['/en/br/watch/', 'Brazil (English)', 'en-BR'],
+        ['/en/us/watch/', 'United States', 'en-US'],
+        ['/en/gb/watch/', 'United Kingdom', 'en-GB'],
+        ['/en/pt/watch/', 'Portugal (English)', 'en-PT']
+    ].filter(([route]) => publishedUrls.includes(SITE + route));
+    const countryNavigation = regionalHubs.length ? `<section aria-labelledby="watch-by-country"><h2 id="watch-by-country">Browse streaming guides by country</h2><nav class="w2w-related" aria-labelledby="watch-by-country">${regionalHubs.map(([route, label, language]) =>
+        `<a href="${route}" hreflang="${language}">${label}</a>`).join(' ')}</nav></section>` : '';
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -383,6 +392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>Where to Watch</h1>
     <p class="w2w-lede">Streaming, rental and purchase options for ${titles.length} titles across Brazil, the US, the UK and Portugal — sourced from TMDB and JustWatch rather than guessed at.</p>
     <section><h2>How to use this regional guide</h2><p>Choose a title below, then read the entry for your country. The same service can carry a film in Brazil and omit it in the United States. Each title page separates subscription viewing from rentals and purchases, includes its source snapshot date and links to the underlying regional listing. A blank provider entry means this source did not confirm an offer; it does not mean no legal offer exists.</p><p>Match the exact title and release year before paying. Remakes, series, films and bonus editions can share a name. On the destination service, check season availability, audio and subtitles, price and any additional channel subscription. A source link is a way to verify the offer, not a promise that MatchApp can play the title.</p><p>For help choosing what suits your evening, read our <a href="/guides/what-to-watch-september-2026/">dated movie and series discovery guide</a>. For corrections and the distinction between AI suggestions and source records, read <a href="/about.html">our source and correction approach</a>.</p></section>
+    ${countryNavigation}
     <nav class="w2w-related" aria-label="Title availability guides">
                 ${links}
     </nav>
@@ -427,9 +437,9 @@ function main() {
         if (hasConfirmedOffer(info)) urls.push(`${SITE}/where-to-watch/${slug(title)}/`);
     });
 
-    fs.writeFileSync(path.join(ROOT, 'where-to-watch', 'index.html'), buildIndex(names), 'utf8');
     urls.unshift(`${SITE}/where-to-watch/`);
     const pilot=buildPilot({root:ROOT,origin:SITE,catalog,data:{titles,generated}});
+    fs.writeFileSync(path.join(ROOT, 'where-to-watch', 'index.html'), buildIndex(names, pilot.urls), 'utf8');
     urls.push(...pilot.urls);
     console.log(`${pilot.pages} evidence-backed country/language pages + ${pilot.hubs} regional hubs written`);
 
@@ -443,5 +453,6 @@ if(require.main===module){
   // Preserve existing approved branding and metadata after regeneration.
   require('./finalize-brand.js').finalizeBrand(['where-to-watch/','en/br/watch/','en/us/watch/','en/gb/watch/','en/pt/watch/','pt/br/watch/']);
   require('./discovery-metadata.js').applyFiles('where-to-watch/');
+  require('./public-discovery-head.cjs').refreshPublicFiles(['where-to-watch/','en/br/watch/','en/us/watch/','en/gb/watch/','en/pt/watch/','pt/br/watch/']);
 }
 module.exports={buildPage,buildIndex,watchPoster,watchPosterMarkup,WATCH_POSTER_STYLE,injectWatchPoster};

@@ -434,6 +434,7 @@ if (require.main === module) {
     require('./discovery-metadata.js').applyFiles('collections/');
     require('./discovery-metadata.js').applyFiles('moods/');
     require('./discovery-metadata.js').applyFiles('platforms/');
+    require('./public-discovery-head.cjs').refreshPublicFiles(['moods/','collections/','platforms/','languages/','decades/']);
 }
 
 module.exports = {buildPage, loadCatalog, slug, MOOD_COPY, CAT_COPY, PLAT_COPY};

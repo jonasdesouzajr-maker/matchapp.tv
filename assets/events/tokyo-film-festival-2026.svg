@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" width="1024" height="1536" role="img" aria-labelledby="title desc">
+  <title id="title">Tokyo International Film Festival, 26 October to 4 November 2026</title>
+  <desc id="desc">Original MatchApp Ai festival guide cover with an abstract city skyline and intersecting beams of light.</desc>
+  <defs>
+    <linearGradient id="night" x2=".92" y2="1"><stop stop-color="#18182e"/><stop offset=".64" stop-color="#282542"/><stop offset="1" stop-color="#11182d"/></linearGradient>
+    <linearGradient id="light" x2=".95" y2=".9"><stop stop-color="#ff885e"/><stop offset="1" stop-color="#f5bc86" stop-opacity=".26"/></linearGradient>
+    <clipPath id="frame"><rect x="64" y="529" width="896" height="594" rx="2"/></clipPath>
+  </defs>
+  <rect width="1024" height="1536" fill="url(#night)"/>
+  <g fill="none" stroke="#e6bd97" stroke-width="2"><path d="M64 92H960M64 1398H960"/></g>
+  <g font-family="DejaVu Sans, sans-serif">
+    <text x="64" y="152" fill="#f3be9e" font-size="26" letter-spacing="4">MatchApp Ai  /  FESTIVAL GUIDE</text>
+    <text x="57" y="355" fill="#fff2de" font-size="161" font-weight="bold" letter-spacing="-8">TOKYO</text>
+    <text x="65" y="421" fill="#fff2de" font-size="45" font-weight="bold">International Film Festival</text>
+    <text x="66" y="477" fill="#f2bd9a" font-size="30" letter-spacing="1">39th edition</text>
+  </g>
+  <g clip-path="url(#frame)">
+    <rect x="64" y="529" width="896" height="594" fill="#202039"/>
+    <path d="M17 1123L1024 541V599L17 1123Z" fill="#f7bf83" opacity=".42"/>
+    <path d="M1024 1100L38 506V720Z" fill="url(#light)"/>
+    <circle cx="703" cy="716" r="85" fill="#ffbf91"/>
+    <path d="M56 944H91V910H118V950H147V858H193V935H224V827H257V872H287V916H318V792H363V899H392V852H423V911H453V774H486V872H530V836H572V874H604V800H635V831H661V889H699V844H735V799H767V871H793V754H835V888H858V819H900V858H930V798H968V1150H56Z" fill="#42405a"/>
+    <path d="M50 1051H113V960H153V1019H184V932H216V988H260V903H302V1005H351V931H398V1010H450V880H495V918H529V1000H577V947H611V1020H671V926H714V980H761V879H804V1008H844V950H901V997H974V1142H50Z" fill="#171a32"/>
+    <g fill="none" stroke="#efb28c" stroke-width="3" opacity=".78"><path d="M80 1087L939 943M80 1099L939 956"/><path d="M188 1069v37m143-61v38m143-63v38m142-62v38m144-61v37"/></g>
+  </g>
+  <g font-family="DejaVu Sans, sans-serif">
+    <text x="65" y="1201" fill="#edb898" font-size="26" letter-spacing="4">TOKYO, JAPAN</text>
+    <text x="65" y="1302" fill="#fff2de" font-size="63" font-weight="bold" letter-spacing="-2">26 OCT – 04 NOV</text>
+    <text x="67" y="1362" fill="#fff2de" font-size="40">2026</text>
+    <text x="65" y="1461" fill="#ecc9ab" font-size="24">Independent editorial illustration by MatchApp Ai</text>
+  </g>
+</svg>

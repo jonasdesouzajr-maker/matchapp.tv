@@ -21,3 +21,4 @@ trackerURLs.forEach(url=>{const target=path.join(ROOT,new URL(url).pathname,'ind
 
 // Preserve the shared brand on regenerated guides.
 require('./finalize-brand.js').finalizeBrand();
+require('./public-discovery-head.cjs').refreshPublicFiles(['platforms/roku-channel/']);

@@ -22,3 +22,11 @@ Event poster prompts requested detailed original art, high contrast, safe text m
 The decorative collage uses eight individually verified TMDB poster records, with a small MatchApp badge placed in a corner through CSS. Original poster text is not overprinted. The collage is omitted from Kids pages. Offline original covers are only used if a verified poster cannot load. TMDB metadata is used through the secure Supabase proxy; MatchApp is not endorsed or certified by TMDB.
 
 The Roku collection links to official Roku or producer viewing guides. The live Rich Eisen Show was deliberately excluded because its current official destination has moved to ESPN/Disney+. Regional access is documented from [Roku Support](https://support.roku.com/en-gb/article/get-the-roku-channel). The layout reference was the public Globoplay login flow; MatchApp artwork, branding, spacing, animation and themes are its own.
+
+### TMDB attribution mark
+
+The adult About page uses the unmodified **Alt short (blue)** SVG from [TMDB’s official logo catalogue](https://www.themoviedb.org/about/logos-attribution). Its [source SVG](https://www.themoviedb.org/assets/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg) has SHA-256 `8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c`. This records the credit asset’s provenance. TMDB publishes its [separate conditions for API, data and image use](https://developer.themoviedb.org/docs/faq).
+
+### Tokyo International Film Festival guide
+
+`assets/events/tokyo-film-festival-2026.svg` is an original MatchApp Ai typographic cover with a fictional skyline and abstract projector beams. The browser card, guide and link previews use its 1024 × 1536 JPEG export. The festival name, dates and city identify the event and come from the [festival’s outline](https://2026.tiff-jp.net/en/tiff/outline.html). The artwork was drawn specifically for this guide, independently of the organizer’s poster, logos and photographs.
