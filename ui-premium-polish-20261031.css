@@ -1,0 +1,9 @@
+/* Grok UI premium polish 2026-10-31 — visual-only, additive.
+   Does not override DESIGN-LOCK files, ad code, auth, kids or logic. */
+/* 1. Nothing hidden under the bottom dock (safe-area aware). */
+html body:has(nav.ma-cinema-dock){padding-bottom:max(94px,calc(96px + env(safe-area-inset-bottom,0px)))!important}
+html body:has(nav.ma-cinema-dock) main,html body:has(nav.ma-cinema-dock) .page-wrapper{scroll-padding-bottom:110px}
+/* 2. Android shell is ad-free on the web side: collapse unfilled web slot frames visually (ad code untouched). */
+html.matchapp-ai-android .ad-banner-container.ma-inline-ad:not(:has(iframe)){min-height:0!important;height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important;opacity:0!important}
+/* 3. Reduced motion. */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
