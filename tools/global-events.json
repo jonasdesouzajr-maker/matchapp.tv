@@ -522,13 +522,98 @@
     "poster": "https://www.barclayscenter.com/assets/img/BC_26_EV_LeagueOfLegends_656x596-b09776e222.jpg",
     "posterCredit": "Official Worlds 2026 event artwork — LoL Esports / Barclays Center",
     "featuredTitles": [],
-    "searchDescription": "League of Legends Worlds 2026 runs 15 October–14 November in North America. Check the official tournament schedule, region-aware streams and VODs.",
+    "searchDescription": "LoL Worlds 2026: check the Oct. 31 Swiss finale, Nov. 3–8 knockout start times and Nov. 14 Brooklyn final, with official streams and VODs.",
     "visitorNotes": [
       "This is the League of Legends World Championship, not a film or TV series. The listed event window is 15 October through 14 November 2026, with the final listed in New York. Individual match start times and stages require the current LoL Esports schedule; the broad date range is not a match-by-match calendar.",
       "The official LoL Esports destination is the source for live viewing and video-on-demand. Broadcast language, start time and replay access can vary by region. Check the particular match and language on the official platform rather than assuming every channel carries every game.",
       "If you arrive after a match has finished, look for the corresponding official VOD or highlights, confirm the teams and round, and avoid confusing fan recaps with live broadcasts. MatchApp links to official routes without claiming to host the tournament stream."
     ],
-    "updatedAt": "2026-10-12"
+    "updatedAt": "2026-10-31",
+    "calendarDownload": true,
+    "searchTitle": "LoL Worlds 2026: Schedule, Streams & Final",
+    "programmeHeading": "What remains at Worlds 2026?",
+    "programmeNotes": [
+      "The Swiss Stage reaches its final day on Saturday, 31 October. The official LoL Esports primer lists the day from 12:00 PM CDT, with three Round 5 best-of-three matches determining the remaining Knockout Stage places.",
+      "Quarterfinals run 3–6 November and semifinals run 7–8 November in Allen, Texas. Riot lists each Knockout Stage day from 4:00 PM CST; individual series can run for several hours, so later coverage may shift.",
+      "The Worlds 2026 Final is scheduled for Saturday, 14 November in Brooklyn, New York, beginning at 2:00 PM EST. MatchApp converts the published starts below to the visitor’s local time but the official LoL Esports schedule remains the live source of truth."
+    ],
+    "scheduleHeading": "Worlds 2026 remaining schedule — shown in your local time",
+    "scheduleIntro": "These are the official daily start times published by LoL Esports. MatchApp converts each timestamp in your browser; pairings, series length and later-day timing can still change.",
+    "scheduleSource": "https://lolesports.com/en-US/news/season-start-2026-lol-esports",
+    "sourceLinks": [
+      {
+        "label": "Official Worlds 2026 schedule",
+        "url": "https://lolesports.com/en-GB/leagues/worlds"
+      },
+      {
+        "label": "Official Worlds 2026 primer and stage times",
+        "url": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Official LoL Esports videos and VODs",
+        "url": "https://www.youtube.com/@lolesports/videos"
+      }
+    ],
+    "scheduleEntries": [
+      {
+        "label": "Swiss Stage — final day begins",
+        "start": "2026-10-31T12:00:00-05:00",
+        "fallback": "31 Oct · 12:00 PM CDT",
+        "location": "North America",
+        "note": "Three Round 5 best-of-three matches are scheduled from this start window.",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Quarterfinal 1",
+        "start": "2026-11-03T16:00:00-06:00",
+        "fallback": "3 Nov · 4:00 PM CST",
+        "location": "Allen, Texas",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Quarterfinal 2",
+        "start": "2026-11-04T16:00:00-06:00",
+        "fallback": "4 Nov · 4:00 PM CST",
+        "location": "Allen, Texas",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Quarterfinal 3",
+        "start": "2026-11-05T16:00:00-06:00",
+        "fallback": "5 Nov · 4:00 PM CST",
+        "location": "Allen, Texas",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Quarterfinal 4",
+        "start": "2026-11-06T16:00:00-06:00",
+        "fallback": "6 Nov · 4:00 PM CST",
+        "location": "Allen, Texas",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Semifinal 1",
+        "start": "2026-11-07T16:00:00-06:00",
+        "fallback": "7 Nov · 4:00 PM CST",
+        "location": "Allen, Texas",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Semifinal 2",
+        "start": "2026-11-08T16:00:00-06:00",
+        "fallback": "8 Nov · 4:00 PM CST",
+        "location": "Allen, Texas",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      },
+      {
+        "label": "Worlds 2026 Final",
+        "start": "2026-11-14T14:00:00-05:00",
+        "fallback": "14 Nov · 2:00 PM EST",
+        "location": "Brooklyn, New York",
+        "note": "Championship final start time published by LoL Esports.",
+        "source": "https://lolesports.com/en-US/news/season-start-2026-lol-esports"
+      }
+    ]
   },
   {
     "slug": "kota-dussehra-2026",
