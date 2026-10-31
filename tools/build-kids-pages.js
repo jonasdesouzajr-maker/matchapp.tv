@@ -65,15 +65,15 @@ function metaDescription(i){
     summary.slice(0,available-1).replace(/\s+\S*$/,'').replace(/[ ,;:]+$/,'').trim()+'…';
   return prefix+clipped+(/[.!?…]$/.test(clipped)?'':'.')+suffix;
 }
-function serpTitle(title,customTitle){
+function serpTitle(title){
   const brand=' | MatchApp Ai KIDS';
-  const clean=String(customTitle||title||'Kids title guide').replace(/\s+for Kids\s*·\s*Age Guide & Where to Watch$/i,' Kids Guide');
+  const clean=String(title||'Kids title guide').replace(/\s+for Kids\s*·\s*Age Guide & Where to Watch$/i,' Kids Guide');
   const max=Math.max(20,60-brand.length);
   const clipped=clean.length<=max?clean:clean.slice(0,max-1).replace(/\s+\S*$/,'').trim()+'…';
   return clipped+brand;
 }
 function page(title,description,url,body,data,keywords,image,customSearchTitle){
-  const searchTitle=serpTitle(title,customSearchTitle);
+  const searchTitle=serpTitle(customSearchTitle||title);
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(searchTitle)}</title><meta name="description" content="${escape(description)}"><meta name="keywords" content="${escape(keywords.join(', '))}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1"><meta name="author" content="MatchApp Ai KIDS"><link rel="canonical" href="${url}"><link rel="alternate" hreflang="x-default" href="${url}"><meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp Ai KIDS"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${image}"><meta property="og:image:alt" content="${escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(title)}"><meta name="twitter:description" content="${escape(description)}"><meta name="twitter:image" content="${image}"><link rel="icon" href="/kids/kids-logo-sm.jpeg"><style>${style}</style><script type="application/ld+json">${JSON.stringify(data).replace(/</g,'\\u003c')}</script><link rel="stylesheet" href="/brand.css?v=194&amp;frame=20261016-rounded1"><link rel="stylesheet" href="/kids/kids-playful-20261024.css?v=20261024-4"></head><body class="kids-guide-page"><header><a href="/kids/" aria-label="MatchApp Ai KIDS" class="matchapp-brand-link"><img src="/kids/kids-logo-sm.jpeg" alt="MatchApp Ai KIDS"><span class="matchapp-wordmark kids-wordmark" role="img" aria-label="MatchApp Ai KIDS">MatchApp Ai KIDS</span></a><nav class="kp-guide-nav" aria-label="Kids"><a href="/kids/">🏠 Home</a><a href="/kids/#kids-match-stage">✨ Match</a><a href="/kids/nostalgia/">📼 Classics</a><a href="/kids/#kids-saved-title">💛 Favourites</a></nav></header><main>${body}</main><footer><a href="/kids/#kids-match-stage">Find an age-appropriate Kids match</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a><p class="note">Viewing services set their own pricing, availability, dubbing and episode ratings. Ask a grown-up before opening another site. MatchApp is a discovery service.</p></footer><script src="/kids/title-artwork.js?v=186"></script><script src="/kids/kids-playful-20261024.js?v=20261024-4" defer></script></body></html>\n`;
 }
 
