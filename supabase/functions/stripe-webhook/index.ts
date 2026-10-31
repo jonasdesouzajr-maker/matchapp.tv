@@ -3,6 +3,7 @@ import Stripe from 'https://esm.sh/stripe@17.7.0?target=deno';
 import {createClient} from 'https://esm.sh/@supabase/supabase-js@2.105.0';
 import {verifiedCheckout,deliver,catalog} from '../_shared/billing.ts';
 import {JONAS_CHAT_PRICE_IDS,deliverJonasCheckout,syncJonasSubscription} from '../_shared/jonas-billing.ts';
+import {isFounderSupportSession} from '../_shared/founder-support.mjs';
 import {handleProStripeEvent} from '../_shared/pro-stripe.mjs';
 const stripe=new Stripe(Deno.env.get('STRIPE_SECRET_KEY')??'',{apiVersion:'2025-01-27.acacia',httpClient:Stripe.createFetchHttpClient()});
 const cryptoProvider=Stripe.createSubtleCryptoProvider();
@@ -30,6 +31,11 @@ Deno.serve(async(req:Request)=>{
   let uid:string|null=null,plan:string|null=null;
   if(['checkout.session.completed','checkout.session.async_payment_succeeded'].includes(event.type)){
    const session=await stripe.checkout.sessions.retrieve((event.data.object as Stripe.Checkout.Session).id);
+   if(isFounderSupportSession(session)){
+    // The founder checkout is voluntary and never grants an in-app benefit.
+    await record(event.id,event.type,null,'founder_support');
+    return new Response(JSON.stringify({received:true}),{headers:{'Content-Type':'application/json'}});
+   }
    if(session.payment_status==='paid'){
     const verified=await verifiedCheckout(stripe,session);
     if(!verified)throw new Error('Paid checkout requires reconciliation');

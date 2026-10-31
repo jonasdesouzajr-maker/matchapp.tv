@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
-const labels={en:'Support','pt-BR':'Apoiar',es:'Apoyar',fr:'Soutenir',de:'Unterstützen',it:'Sostieni',tr:'Destekle',ru:'Поддержать',ar:'دعم',hi:'सहयोग',id:'Dukung',ja:'サポート',ko:'후원',zh:'支持'};
+const labels={"en": "Help me grow the business", "pt-BR": "Ajude meu negócio a crescer", "es": "Ayúdame a hacer crecer mi negocio", "fr": "Aidez-moi à développer mon activité", "de": "Hilf mir, mein Unternehmen auszubauen", "it": "Aiutami a far crescere la mia attività", "tr": "İşimi büyütmeme destek ol", "ru": "Помогите мне развивать своё дело", "ar": "ساعدني على تنمية مشروعي", "hi": "मेरा व्यवसाय बढ़ाने में मदद करें", "id": "Bantu saya mengembangkan usaha ini", "ja": "事業の成長を応援する", "ko": "사업 성장을 응원해 주세요", "zh": "助我发展这项事业"};
 function fixture(){
  const source=read('index.html'),start=source.indexOf('<section id="ma-donate-support"'),end=source.indexOf('</section>',start)+10;
  const dom=new JSDOM('<html lang="en"><body class="page-home">'+source.slice(start,end)+'</body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
@@ -15,7 +15,7 @@ test('closed support is only the compact trigger while original copy/disclosures
  const dom=fixture(),d=dom.window.document;
  try{
   const section=d.querySelector('#ma-donate-support'),panel=d.querySelector('#ma-donate-panel'),button=d.querySelector('#ma-donate-pill');
-  assert.equal(button.textContent,'Support');assert.equal(button.getAttribute('aria-controls'),panel.id);assert.equal(button.getAttribute('aria-expanded'),'false');assert(panel.hidden);
+  assert.equal(button.textContent,labels.en);assert.equal(button.getAttribute('aria-controls'),panel.id);assert.equal(button.getAttribute('aria-expanded'),'false');assert(panel.hidden);
   assert.deepEqual([...section.children].map(e=>e.id),['ma-donate-pill','ma-donate-panel']);
   for(const id of ['ma-donate-kicker','ma-donate-title','ma-donate-desc','ma-donate-footnote','ma-donate-choose','ma-donate-amount','ma-donate-checkout','ma-donate-status'])assert(panel.contains(d.getElementById(id)),id+' stays disclosed only after opening');
   assert.equal(d.querySelector('#ma-donate-amount').getAttribute('min'),'5');
@@ -25,7 +25,7 @@ test('closed support is only the compact trigger while original copy/disclosures
   assert.ok(read('index.html').includes('href="/founder/" data-founder-link'));
  }finally{dom.window.close();}
 });
-test('all14 neutral support labels retain the original controls, disclosure and selected contribution',async()=>{
+test('all 14 business-support labels retain the original controls, disclosure and selected contribution',async()=>{
  const dom=fixture(),w=dom.window,d=w.document;
  try{
   const controls=[...d.querySelectorAll('button,input')],pill=d.getElementById('ma-donate-pill'),panel=d.getElementById('ma-donate-panel'),input=d.getElementById('ma-donate-amount');

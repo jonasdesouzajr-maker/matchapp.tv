@@ -997,8 +997,7 @@
         }
         #res-poster-img:hover { transform: scale(1.02); }
 
-        /* Purely decorative pulse rings radiating out from behind the cover */
-        .pulse-ring { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+        /* Purely decorative pulse rings radiating out from behind the cover */        .pulse-ring { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
             transform: translate(-50%, -50%); border-radius: 20px; border: 2px solid var(--gold);
             opacity: 0; pointer-events: none; z-index: 1; animation: pulseOut 3.6s ease-out infinite; }
         .pulse-ring:nth-child(2) { animation-delay: 1.2s; }
@@ -1766,7 +1765,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <script defer src="/patches/top-titles-draft.js?v=20261020-desktop5&polish=20261020-ui1"></script>
 
 
-<link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&amp;polish=20261020-ui1&amp;compact=20261020-1&amp;footer=20261025-1&amp;androidqa=20261021-1&compactfooter=20261027-1">
+<link rel="stylesheet" href="/patches/reference-support.css?v=20261020-support1&amp;polish=20261020-ui1&amp;compact=20261020-1&amp;footer=20261025-1&amp;androidqa=20261021-1&compactfooter=20261027-1&amp;studio=20261031-1">
 <link id="ma-approved-css" rel="stylesheet" href="/home-approved.css?v=20261001-adulttopboxdark1">
 <script data-cinema-header data-cinema-prepaint src="/patches/reference-header.js?v=20261020-header1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1&amp;headercls=20261022-prepaint3&amp;masthead=20261025-1"></script>
 <script data-cinema-prepaint src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1&amp;headercls=20261022-prepaint3&amp;masthead=20261025-1&amp;perf=20261027-1&amp;uiperf=20261029-1"></script>
@@ -1997,8 +1996,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 
         /* ---------- 6. TABLET / PHONE ----------
            Same cluster, smaller. The brand sits above it rather than beside
-           it, because side by side leaves the controls no room to breathe. */
-        @media (max-width: 999px) {
+           it, because side by side leaves the controls no room to breathe. */        @media (max-width: 999px) {
             html body.page-home #mh-topbox.app-header {
                 padding: 8px 10px !important; margin: 6px auto 8px !important;
                 gap: 6px !important; border-radius: var(--r-lg) !important;
@@ -2997,8 +2995,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                         </div>
                     </div>
 
-                    <p style="text-align: center; font-size: 13px; color: #888; margin: 0 0 10px 0;">
-                        <span data-i18n="match.savedIn">Saved titles appear in your</span> <a href="/profile/profile.html" style="color: var(--gold); text-decoration: none; font-weight: bold;" data-i18n="match.profile">Your profile →</a>
+                    <p style="text-align: center; font-size: 13px; color: #888; margin: 0 0 10px 0;">                        <span data-i18n="match.savedIn">Saved titles appear in your</span> <a href="/profile/profile.html" style="color: var(--gold); text-decoration: none; font-weight: bold;" data-i18n="match.profile">Your profile →</a>
                     </p>
                     <div id="one-match-app-slot" hidden></div>
                 </article>
@@ -3658,7 +3655,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
             <p class="contact-blurb" data-i18n="footer.contactBlurb">Questions, feedback, or a title you think we're missing? Email us or say hello on Instagram — a real person reads every message.</p>
 
             <section id="ma-donate-support" class="ma-donate-card" aria-labelledby="ma-donate-title">
-                <button type="button" class="ma-donate-pill" id="ma-donate-pill" aria-controls="ma-donate-panel" aria-expanded="false">Support</button>
+                <button type="button" class="ma-donate-pill" id="ma-donate-pill" aria-controls="ma-donate-panel" aria-expanded="false">Help me grow the business</button>
                 <div class="ma-donate-panel" id="ma-donate-panel" hidden>
                     <div class="ma-donate-copy">
                         <span class="ma-donate-kicker" id="ma-donate-kicker">Independent ideas. Shared possibilities.</span>
@@ -3688,8 +3685,8 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
                 Availability varies by region and subscription.
             </p>
         </div>
-    <p style="text-align:center"><a href="/updates.html">What’s new · Kids Mode &amp; device sign-in</a></p>
-<nav class="mp-footer-actions" aria-label="MatchApp Ai"><a class="mp-footer-pill secondary" href="/lumina-match/" data-lumina-guide-link translate="no">Lumina Match</a><a class="mp-footer-pill" href="/sponsor/" data-mp-footer="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.7 5.6 6.2.9-4.5 4.4 1.1 6.2L12 16.2l-5.5 2.9 1.1-6.2L3.1 8.5l6.2-.9Z"/><path d="M4 22h16"/></svg><span>Become a sponsor</span></a><a class="mp-footer-pill secondary" href="/streaming/" data-mp-footer="1"><span>Streaming around the world</span></a><a class="mp-footer-pill secondary" href="/founder/" data-founder-link>Meet the engineer</a></nav>
+    <p style="text-align:center"><a class="mp-footer-pill secondary" href="/updates.html">What’s new · Kids Mode &amp; device sign-in</a></p>
+<nav class="mp-footer-actions" aria-label="MatchApp Ai"><a class="mp-footer-pill secondary" href="/lumina-match/" data-lumina-guide-link translate="no">Lumina Match</a><a class="mp-footer-pill" href="/sponsor/" data-mp-footer="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.7 5.6 6.2.9-4.5 4.4 1.1 6.2L12 16.2l-5.5 2.9 1.1-6.2L3.1 8.5l6.2-.9Z"/><path d="M4 22h16"/></svg><span>Become a sponsor</span></a><a class="mp-footer-pill secondary" href="/founder/" data-founder-link>Meet the founder</a><a class="mp-footer-pill secondary" href="/founder/#help" data-improve-link>Help us improve</a><a class="mp-footer-pill secondary" href="/streaming/" data-mp-footer="1"><span>Streaming around the world</span></a></nav>
 <div class="ma-final-legal"><strong class="ma-rights-copy">© 2026 MatchApp Ai · All rights reserved.</strong><nav aria-label="Legal rights"><a href="/copyright.html" class="ma-legal-rights-link">Legal rights</a><a href="/terms.html" class="ma-terms">Terms</a><a href="/privacy.html" class="ma-privacy">Privacy</a></nav><span class="ma-footer-protection" translate="no"><svg width="15" height="17" viewBox="0 0 12 14" aria-hidden="true" fill="none" stroke="currentColor"><path d="M6 1 11 3v4c0 3-5 6-5 6S1 10 1 7V3z"/><path d="m3.5 7 1.5 1.5 3.5-3.5"/></svg> Cloudflare · HTTPS</span></div>
 </footer>
 
@@ -3998,158 +3995,3 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 <script src="/ebooks/locale.js?v=20261020-books14-1"></script>
 <script src="/ebooks/locale-choices.js?v=20261020-books14-1"></script>
 <script src="/ebooks/locale-interface.js?v=20261020-books14-1"></script>
-<script src="/ebooks/locale-details.js?v=20261020-books14-1&amp;guestcountry=20261027-1"></script>
-<script src="/ebooks/catalog.js?v=20260926-catalogscale1"></script>
-<script src="/ebooks/magazines.js?v=20260926-publishericon2&amp;publishericon=20261019-1"></script>
-<script src="/ebooks/top-ebooks.js?v=20260924-top1"></script>
-<script src="/ebooks/affiliate-links.js?v=20260925-amzbr1&locale=20261020-books14-1"></script>
-<script src="/ebooks/audiobooks.js?v=20260926-catalogscale1&amp;reliability=20261018-1&amp;locale=20261020-books14-1"></script>
-<script src="/ebooks/cover-identity.js?v=20261001-coverquality1"></script>
-<script src="/ebooks/book-details-20261011.js?v=20261011-meta3&amp;art=20261020-source1&amp;locale=20261020-books14-1&amp;catalogyear=20261028-1"></script>
-<script src="/ebooks/ebook-matcher.js?v=20261011-meta1&amp;tokens=20261017-1&amp;reliability=20261018-1&amp;cover=20261019-handoff1&amp;lifetime=20261019-1&amp;coverload=20261019-eager1&amp;art=20261020-source1&amp;locale=20261020-books14-1&amp;audioart=20261020-exact1&amp;ebookart=20261020-renditions1&amp;fastart=20261020-1&amp;androidqa=20261021-1&amp;audiocover=20261022-1&amp;guestcountry=20261027-1"></script>
-<script src="/phone-auth-i18n.js?v=20260926-phoneverify1"></script><script src="/phone-auth.js?v=20261010-sms-errors49&amp;errors=20261027-2"></script><script src="/phone-auth-localize.js?v=1"></script>
-    <script src="/catalog-media.js?v=20260927-posterrecovery2&amp;desktop=20260929-details1&amp;experience=20261017-1&amp;resultlabels=20261018-1&amp;sbt=20261004-1&amp;reliability=20261018-1&amp;posters=20261020-1&amp;fastart=20261020-1&amp;androidqa=20261021-1&amp;cinemalocation=20261022-1&amp;repair=20261023-1&amp;delivery=20261023-2&amp;guestcountry=20261027-1"></script>
-<script src="/title-experience.js?v=20260920-freeze2&amp;music=20260930-1"></script>
-<script src="/omdb-ratings.js?v=20260928-1&repair=20261023-1&rights=20261031-1"></script>
-    <script src="/rapidapi-streaming.js?v=20260928-optional1"></script>
-    <script src="/install-progress.js?v=20260930-install-recovery1&amp;brand=20261001-canonicalai1"></script>
-    <script src="/tmdb.js?v=20261001-verifiedalias1&amp;language=20260930-fix2&amp;reliability=20261018-1&amp;sourcewire=20261026-1"></script>
-
-
-
-    <script src="/match-speed.js?v=20260925-matchrestore1&amp;recovery=20260929-2"></script>
-    <script src="/lazy.js?v=20260926-chroma1&amp;home=20260928-folds2&amp;toprail=20260929-1&amp;defaults=20260929-toponly1&amp;askfold=20260929-1&amp;ui=20260930-1&amp;native=20261001-userintent1&amp;togethernav=20261015-link1"></script>
-    <!-- News must start on Home, not wait for a later editorial section to scroll into view. -->
-    <script defer src="/latest-news.js?v=20261012-static-first1&amp;review=20261031-1&amp;cooking=20260929-order1&amp;commerce=20261017-1&amp;folds=20260929-1&amp;polish=20261020-ui1"></script>
-    <script defer src="/live-news-loader.js?v=20260926-newsfold1&amp;review=20261031-1"></script>
-    <script src="/tv.js?v=187"></script>
-    <script src="/taste.js?v=187"></script><script src="/notifications.js?v=20261016-surface1"></script>
-    <script src="/contacts.js?v=187"></script>
-    <script src="/share.js?v=20261017-c2bf5b02b6a2"></script>
-    <script defer src="/home-approved.js?v=20261001-adulttopboxdark1&amp;installfix=20260930-1" data-home-approved="1"></script>
-    <script defer src="/browser-install-offer.js?v=20261028-playbubble2" data-browser-install-offer="1"></script>
-    <script defer src="/desktop-install.js?v=20260923-live1&amp;installfix=20260930-1" data-desktop-install="1"></script>
-    <script defer src="/share-guard.js?v=20260923-live1"></script>
-    <script defer src="/match-fun-share.js?v=20261017-4d495e39"></script>
-    <script src="/pricing.js?v=20260918-billing2&amp;android=20261017-1&amp;tokens=20261017-3&amp;premium=20261020-2&amp;dialogs=20261020-1&amp;androidqa=20261021-1"></script>
-    <script src="/credits-ui.js?v=198&amp;android=20261017-1&amp;tokens=20261017-3"></script>
-    <script src="/voice-input.js?v=20261005-voiceorigin1&amp;fastlang=20261014-1&amp;androidqa=20261021-1"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initVoiceInput('specific-search-input', 'mic-btn-index', () => {
-                document.querySelector('#specific-search-input')?.closest('.home-ask-composer')?.querySelector('.gold-btn')?.click();
-            });
-        });
-    </script>
-    <script>
-        // OS-LEVEL CHROME FORCE LAUNCHER
-        function openInChrome() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            if (/MatchAppTVAndroid/i.test(userAgent)) return;
-            if (/android/i.test(userAgent)) {
-                // Explicit Chrome package + HTTPS fallback. Android opens Chrome when installed;
-                // otherwise the fallback keeps the visitor safely on MatchApp.
-                window.location.href = "intent://matchapp.tv/?install=chrome#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https%3A%2F%2Fmatchapp.tv%2F%3Finstall%3Dchrome;end";
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = "googlechrome://navigate?url=https%3A%2F%2Fmatchapp.tv%2F";
-            } else {
-                window.location.href = "https://matchapp.tv/?install=chrome";
-            }
-        }
-
-        // Floating logos are now handled by ambient.js (canvas + collision physics).
-
-const footerYearEl = document.getElementById('footer-year');
-        if (footerYearEl) footerYearEl.innerText = new Date().getFullYear();
-
-        // PREMIUM SCROLL REVEAL: cards gently fade/rise into view as the user scrolls
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('fade-in'); revealObserver.unobserve(entry.target); }
-            });
-        }, { threshold: 0, rootMargin: '120% 0px' });
-        document.querySelectorAll('.premium-card, .ad-banner-container').forEach(el => { el.classList.add('fade-in'); revealObserver.observe(el); });
-    </script>
-
-    <!-- NOT FOR ME CHOOSER -->
-    <div id="notforme-modal" class="nfm-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="nfm-heading">
-        <div class="nfm-box">
-            <h3 id="nfm-heading" data-i18n="nfm.heading">What wasn't for you?</h3>
-            <p class="nfm-sub">
-                <span data-i18n="nfm.sub">Blocking a category stops it being suggested to you again — not just this title.</span>
-            </p>
-            <p class="nfm-title">“<span id="notforme-title"></span>”</p>
-
-            <div id="notforme-options" class="nfm-options"></div>
-
-            <button onclick="notForMeBlockCategories()" class="nfm-btn nfm-btn-primary" data-i18n="nfm.blockBtn">🚫 Never Show These Again</button>
-            <button onclick="notForMeJustThis()" class="nfm-btn nfm-btn-ghost" data-i18n="nfm.justThis">Just hide this title</button>
-            <button onclick="closeNotForMeChooser()" class="nfm-cancel" data-i18n="nfm.cancel">Cancel</button>
-        </div>
-    </div>
-    <!-- Persistent first-party Jonas bubble, Home only. AI requests remain on /discover.html. -->
-    <aside id="ma-jonas-home" aria-label="Jonas floating companion">
-        <section id="ma-jonas-home-panel" class="jh-popover" role="dialog" aria-modal="true" aria-label="Chat with Jonas" hidden>
-            <header class="jh-header">
-                <span class="jh-medallion" aria-hidden="true"><img src="/jonas/faces/jonas/rest.jpg" alt="" decoding="async"/></span>
-                <span class="jh-title"><strong>Jonas</strong><small data-jh-en="Your entertainment companion" data-jh-pt="Seu companheiro de entretenimento">Your entertainment companion</small></span>
-                <button id="ma-jonas-home-close" class="jh-close" type="button" aria-label="Close conversation">×</button>
-            </header>
-            <div class="jh-content">
-                <p class="jh-greeting" data-jh-en="Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring." data-jh-pt="Olá! Sou o Jonas. O que vamos descobrir? Pergunte sobre filmes, séries, livros, música e muito mais.">Hi! I'm Jonas. What shall we discover? Ask me about movies, series, books, music, or anything worth exploring.</p>
-                <div id="ma-jonas-home-status" class="jh-voice-status" role="status" aria-live="polite">Tap Jonas to talk · or start typing</div>
-                <form class="jh-form" action="/discover.html" method="get"><input type="hidden" name="from" value="jonas">
-                    <input id="ma-jonas-home-input" class="jh-input" name="q" type="text" maxlength="2000" required autocomplete="off" placeholder="Ask Jonas anything…" aria-label="Your question for Jonas" data-jh-placeholder-en="Ask Jonas anything…" data-jh-placeholder-pt="Pergunte qualquer coisa ao Jonas…"/>
-                    <input type="hidden" name="focus" value="start"/>
-                    <button id="ma-jonas-home-mic" class="jh-mic" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 10.5a7 7 0 0 0 14 0M12 17.5V22M8 22h8"/></svg></button>
-                    <button class="jh-send" type="submit" aria-label="Send question to MatchApp Ai" title="Send question">➤</button>
-                </form>
-                <div class="jh-suggestions" aria-label="Conversation suggestions">
-                    <a class="jh-suggestion" href="/discover.html?q=Recommend%20a%20documentary%20series%20available%20in%20Brazil&amp;focus=start" data-jh-query-en="Recommend a documentary series available in Brazil" data-jh-query-pt="Recomende uma série documental disponível no Brasil" data-jh-en="Discover documentaries" data-jh-pt="Descobrir documentários">Discover documentaries</a>
-                    <a class="jh-suggestion" href="/discover.html?q=Find%20a%20great%20movie%20for%20tonight&amp;focus=start" data-jh-query-en="Find a great movie for tonight" data-jh-query-pt="Encontre um ótimo filme para hoje à noite" data-jh-en="Surprise my mood" data-jh-pt="Surpreenda meu humor">Surprise my mood</a>
-                </div>
-            </div>
-            <footer class="jh-footer"><a class="jh-full" href="/jonas/" data-jh-en="Explore Jonas ↗" data-jh-pt="Explorar Jonas ↗">Explore Jonas ↗</a><span class="jh-footnote" data-jh-en="Powered by MatchApp Ai" data-jh-pt="Tecnologia MatchApp Ai">Powered by MatchApp Ai</span></footer>
-        </section>
-        <button id="ma-jonas-home-bubble" class="jh-bubble" type="button" aria-label="Chat with Jonas" aria-controls="ma-jonas-home-panel" aria-expanded="false">
-            <span class="jh-halo" aria-hidden="true"></span>
-            <span class="jh-portrait"><img src="/jonas/faces/jonas/rest.jpg" alt="" width="96" height="96" decoding="async" fetchpriority="low"/></span>
-            <span class="jh-online" aria-hidden="true"></span>
-        </button>
-    </aside>
-    <script defer src="/jonas/locales-20261009-v2.js?v=20261014-fastlang1"></script>
-    <script defer src="/jonas/floating-home-20261010-v3.js?v=motiondock20261014-1&amp;corner=20261020-1&amp;header=20261020-1&amp;repair=20261023-1"></script>
-    <script defer id="ma-chat-resize-script" src="/patches/chat-resize-20261022.js?v=20261023-1&repair=20261023-1"></script>
-<script>
-document.addEventListener('click',function(event){
-  var a=event.target&&event.target.closest&&event.target.closest('#ma-jonas-home .jh-suggestion');
-  if(!a||!a.href)return;
-  try{var u=new URL(a.href,location.origin);if(u.origin===location.origin&&u.pathname==='/discover.html'){u.searchParams.set('from','jonas');a.href=u.pathname+u.search}}catch(_){}
-},true);
-</script>
-    <script defer src="/jonas/male-voice-policy-20261010.js"></script>
-    <script defer src="/jonas/secure-speech-20261010.js?v=20261014-fastlang1&amp;voicepair=20261014-1&amp;instant=20261015-1"></script>
-    <script defer src="/jonas/floating-voice-20261010-v5.js?v=20261011-live2&amp;voicepair=20261014-1"></script>
-<script src="/passkeys.js?v=187&amp;dialogs=20261020-1&amp;errors=20261027-2"></script>
-<script src="/app-updates.js?v=20260927-mobilefresh1&amp;installfix=20260930-1&amp;brand=20261001-canonicalai1&amp;androidqa=20261021-1"></script>
-<script defer src="/ads-init.js?v=20261002-bodyunit1"></script>
-<script src="/global-events.js?v=20260924-event4"></script><script defer src="/international-day.js?v=20261021-day-i18n"></script>
-<script src="/title-captions.js?v=20260921-ui2&amp;auth=20260926-emailsingle1&amp;posters=20261020-1&amp;accountphoto=20261020-1&amp;registry=20261026-1"></script><script defer src="/gold-sheen.js?v=20260921-ui2"></script><script src="/daily-checkin.js?v=20260927-bubble1&amp;coach=20261024-1&amp;approvedlogo=20261014"></script>
-<script defer src="/onboarding-tour-locales-20261010.js"></script>
-<script defer src="/onboarding-tour.js?v=20261010-tour-v10"></script>
-<script defer src="/guided-coach-locales-20261022.js?v=20261022-1"></script>
-<script defer src="/guided-coach-20261022.js?v=20261022-1&amp;clearance=20261024-1"></script>
-<script defer src="/match-insights.js?v=20260922-insights1&amp;sourcewire=20261026-1"></script>
-<script defer src="/premium-nav-20261010.js?v=20261010-luxe1"></script>
-<script defer src="/brand-lock-20261011.js?v=20261011-a1"></script>
-<script src="/patches/support-donations-config.js?v=20261015-paypal2"></script>
-<script defer src="/patches/support-donations.js?v=20261015-growth3&amp;compact=20261020-1"></script>
-<script defer id="premium-match-animation-script" src="/patches/premium-match-animation-20261026.js?v=20261026-2"></script>
-<script defer src="/patches/donate-shortcut.js?v=20261015-1"></script>
-<script defer src="/patches/founder-link.js?v=20261016-1"></script>
-<script defer src="/patches/sponsor-footer.js?v=20261016-1"></script>
-<script defer src="/growth-return.js?v=20261016-1"></script>
-<script defer src="/patches/reference-support.js?v=20261020-support1&polish=20261020-ui1&compact=20261020-1&footer=20261020-1&compactfooter=20261027-1"></script>
-</body>
-</html>
-

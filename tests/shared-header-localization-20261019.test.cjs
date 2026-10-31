@@ -45,7 +45,7 @@ test('Pricing action toasts use complete locale copy with unchanged settings bra
 test('Donate follows delayed html locale initialization and every language switch without replacing the action',async()=>{
  const w=new JSDOM('<html lang="en"><body><header class="app-header"><nav></nav></header></body></html>',{url:'https://matchapp.tv/sponsor/',runScripts:'outside-only'}).window;
  try{let calls=0;w.fetch=()=>{calls++;throw Error('network is forbidden')};w.eval(donate);w.document.dispatchEvent(new w.Event('DOMContentLoaded'));const action=w.document.getElementById('ma-donate-shortcut'),icon=action.querySelector('svg'),href=action.getAttribute('href');
-  for(const lang of locales){w.document.documentElement.lang=lang;await tick();const label=action.querySelector('span').textContent;assert.ok(label);if(lang!=='en')assert.notEqual(label,'Donate');assert.equal(action.getAttribute('aria-label'),label);assert.equal(w.document.getElementById('ma-donate-shortcut'),action);assert.equal(action.querySelector('svg'),icon);assert.equal(action.getAttribute('href'),href)}
+  for(const lang of locales){w.document.documentElement.lang=lang;await tick();const label=action.querySelector('span').textContent;assert.ok(label);if(lang==='en')assert.equal(label,'Help me grow the business');assert.equal(action.title,label);assert.equal(action.querySelector('span').style.display,'none');assert.equal(action.getAttribute('aria-label'),label);assert.equal(w.document.getElementById('ma-donate-shortcut'),action);assert.equal(action.querySelector('svg'),icon);assert.equal(action.getAttribute('href'),href)}
   assert.equal(calls,0);assert.equal(w.document.querySelectorAll('#ma-donate-shortcut').length,1);
  }finally{w.close()}
 });

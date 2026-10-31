@@ -30,7 +30,7 @@ test('verified PayPal.Me link receives valid custom USD amounts; untrusted URLs 
 });
 test('Brazilian Portuguese keeps the closed action neutral and USD explicit inside the opened panel',()=>{
  const dom=page({paypalMeUrl:'',verified:false});const w=dom.window,d=w.document;d.documentElement.lang='pt-BR';d.dispatchEvent(new w.Event('matchapp:langchange'));
- assert.equal(d.getElementById('ma-donate-pill').textContent,'Apoiar');assert.equal(d.getElementById('ma-donate-panel').hidden,true);
+ assert.equal(d.getElementById('ma-donate-pill').textContent,'Ajude meu negócio a crescer');assert.equal(d.getElementById('ma-donate-panel').hidden,true);
  d.getElementById('ma-donate-pill').click();assert.equal(d.getElementById('ma-donate-panel').hidden,false);
  assert.match(d.getElementById('ma-donate-amount-label').textContent,/USD.*US\$5/);assert.equal(d.querySelector('[data-donate-value="5"]').textContent,'US$5');assert.equal(d.getElementById('ma-donate-amount').min,'5');w.close();
 });
