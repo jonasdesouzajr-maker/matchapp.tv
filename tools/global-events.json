@@ -508,7 +508,7 @@
     "flag": "🇺🇸",
     "category": "Esports",
     "synopsis": "The League of Legends World Championship returns to North America from October 15 through November 14, with the championship final in New York.",
-    "watchInfo": "LoL Esports is the official live viewing and schedule destination, with regional broadcasts and VODs. MatchApp keeps the event status current and links only to official viewing routes.",
+    "watchInfo": "LoL Esports is the official live viewing and schedule destination. MatchApp shows the remaining published stage starts in the visitor’s local time and links to official streams and VODs.",
     "official": "https://lolesports.com/en-US/news/season-start-2026-lol-esports",
     "watch": "https://lolesports.com/en-GB/leagues/worlds",
     "recorded": "https://www.youtube.com/@lolesports/videos",
@@ -524,7 +524,7 @@
     "featuredTitles": [],
     "searchDescription": "LoL Worlds 2026: check the Oct. 31 Swiss finale, Nov. 3–8 knockout start times and Nov. 14 Brooklyn final, with official streams and VODs.",
     "visitorNotes": [
-      "This is the League of Legends World Championship, not a film or TV series. The listed event window is 15 October through 14 November 2026, with the final listed in New York. Individual match start times and stages require the current LoL Esports schedule; the broad date range is not a match-by-match calendar.",
+      "This is the League of Legends World Championship, not a film or TV series. The event runs 15 October through 14 November 2026; the summary date range is not a match-by-match calendar, so use the remaining schedule above and the live LoL Esports page for exact pairings.",
       "The official LoL Esports destination is the source for live viewing and video-on-demand. Broadcast language, start time and replay access can vary by region. Check the particular match and language on the official platform rather than assuming every channel carries every game.",
       "If you arrive after a match has finished, look for the corresponding official VOD or highlights, confirm the teams and round, and avoid confusing fan recaps with live broadcasts. MatchApp links to official routes without claiming to host the tournament stream."
     ],
