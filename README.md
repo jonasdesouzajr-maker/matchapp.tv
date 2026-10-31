@@ -1,8 +1,10 @@
-# 🍿 MatchApp TV Ai
+# 🍿 MatchApp Ai
 
 MatchApp is an AI entertainment concierge for finding movies, series, K-dramas, anime, novelas, micro-dramas, podcasts, music and other supported entertainment based on a user's explicit mood and criteria.
 
 The production site is **https://matchapp.tv**. The legacy `matchapp.cc` domain is retained only for migration/redirect purposes.
+
+**Try MatchApp Ai:** [open the live discovery app](https://matchapp.tv/?utm_source=github&utm_medium=referral&utm_campaign=repo_readme) · [plan a movie night](https://matchapp.tv/watch-night/?utm_source=github&utm_medium=referral&utm_campaign=repo_readme) · [search where to watch](https://matchapp.tv/where-to-watch/?utm_source=github&utm_medium=referral&utm_campaign=repo_readme) · [RSS picks](https://matchapp.tv/feed.xml)
 
 ## ✨ Core Features
 
