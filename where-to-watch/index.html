@@ -25,6 +25,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Where to Watch Movies & TV Shows by Country | MatchApp Ai</title>
 <meta name="description" content="Find where to stream, rent or buy 81 titles across Brazil, the US, the UK and Portugal. Availability data from TMDB, updated regularly.">
 <link rel="canonical" href="https://matchapp.tv/where-to-watch/">
+<link rel="search" type="application/opensearchdescription+xml" title="MatchApp Ai title search" href="/opensearch.xml">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#101010">
 <link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
@@ -45,6 +46,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .w2w-related a { background: rgba(31,30,28,0.82); border: 1px solid var(--edge); color: #C9C2B4;
                      padding: 11px 17px; border-radius: 11px; text-decoration: none; font-size: 13.5px; font-weight: 600; }
     .w2w-related a:hover { border-color: var(--edge-strong); color: #fff; }
+    .w2w-search { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; max-width:620px; margin:0 auto 28px; }
+    .w2w-search input { min-width:0; min-height:44px; border:1px solid var(--edge); border-radius:999px; background:rgba(31,30,28,.82); color:#fff; padding:10px 16px; font:inherit; }
+    .w2w-search button { min-height:44px; border:0; border-radius:999px; padding:10px 18px; background:var(--gold-core); color:#171119; font-weight:800; cursor:pointer; }
+    .w2w-search-status { text-align:center; color:#C9C2B4; min-height:1.5em; margin:-18px 0 26px; }
+    @media (max-width:480px){ .w2w-search{grid-template-columns:1fr;} }
 </style>
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261020-borderless1&amp;fastart=20261020-1">
 <script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261024-1&amp;repair=20261023-1&amp;masthead=20261025-1&amp;refined=20261025-4"></script>
@@ -71,6 +77,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="w2w-wrap">
     <h1>Where to Watch</h1>
     <p class="w2w-lede">Streaming, rental and purchase options for 81 titles across Brazil, the US, the UK and Portugal — sourced from TMDB and JustWatch rather than guessed at.</p>
+    <form class="w2w-search" action="/where-to-watch/" method="get" role="search"><label class="sr-only" for="w2w-title-search">Search the 81-title streaming directory</label><input id="w2w-title-search" name="q" type="search" autocomplete="off" placeholder="Search a movie or series" aria-describedby="w2w-search-status"><button type="submit">Search titles</button></form><p class="w2w-search-status" id="w2w-search-status" role="status" aria-live="polite"></p>
     <section><h2>How to use this regional guide</h2><p>Choose a title below, then read the entry for your country. The same service can carry a film in Brazil and omit it in the United States. Each title page separates subscription viewing from rentals and purchases, includes its source snapshot date and links to the underlying regional listing. A blank provider entry means this source did not confirm an offer; it does not mean no legal offer exists.</p><p>Match the exact title and release year before paying. Remakes, series, films and bonus editions can share a name. On the destination service, check season availability, audio and subtitles, price and any additional channel subscription. A source link is a way to verify the offer, not a promise that MatchApp can play the title.</p><p>For help choosing what suits your evening, read our <a href="/guides/what-to-watch-september-2026/">dated movie and series discovery guide</a>. For corrections and the distinction between AI suggestions and source records, read <a href="/about.html">our source and correction approach</a>.</p></section>
     <section aria-labelledby="watch-by-country"><h2 id="watch-by-country">Browse streaming guides by country</h2><nav class="w2w-related" aria-labelledby="watch-by-country"><a href="/pt/br/watch/" hreflang="pt-BR">Brasil (português)</a> <a href="/en/br/watch/" hreflang="en-BR">Brazil (English)</a> <a href="/en/us/watch/" hreflang="en-US">United States</a> <a href="/en/gb/watch/" hreflang="en-GB">United Kingdom</a> <a href="/en/pt/watch/" hreflang="en-PT">Portugal (English)</a></nav></section>
     <nav class="w2w-related" aria-label="Title availability guides">
@@ -157,5 +164,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="/where-to-watch/ask-this-old-house/">Ask This Old House</a>
     </nav>
 </main>
+<script defer src="/where-to-watch/search.js?v=20261031-1"></script>
 </body>
 </html>

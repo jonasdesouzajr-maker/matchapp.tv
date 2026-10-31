@@ -1,0 +1,80 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//MatchApp Ai//Worlds 2026 schedule//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:LoL Worlds 2026 — MatchApp Ai
+X-WR-CALDESC:Stage start times from Riot Games' official Worlds 2026 primer. Re-check pairings after each draw. https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+BEGIN:VEVENT
+UID:worlds-2026-swiss-final-day@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261031T170000Z
+DTEND:20261031T230000Z
+SUMMARY:LoL Worlds 2026 — Swiss Stage finale
+DESCRIPTION:Final Swiss Stage day. Check official pairings and stream links at MatchApp Ai.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-qf1@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261103T220000Z
+DTEND:20261104T030000Z
+SUMMARY:LoL Worlds 2026 — Quarterfinal 1
+DESCRIPTION:Quarterfinal stage start time from Riot's official primer.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-qf2@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261104T220000Z
+DTEND:20261105T030000Z
+SUMMARY:LoL Worlds 2026 — Quarterfinal 2
+DESCRIPTION:Quarterfinal stage start time from Riot's official primer.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-qf3@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261105T220000Z
+DTEND:20261106T030000Z
+SUMMARY:LoL Worlds 2026 — Quarterfinal 3
+DESCRIPTION:Quarterfinal stage start time from Riot's official primer.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-qf4@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261106T220000Z
+DTEND:20261107T030000Z
+SUMMARY:LoL Worlds 2026 — Quarterfinal 4
+DESCRIPTION:Quarterfinal stage start time from Riot's official primer.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-sf1@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261107T220000Z
+DTEND:20261108T030000Z
+SUMMARY:LoL Worlds 2026 — Semifinal 1
+DESCRIPTION:Semifinal stage start time from Riot's official primer.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-sf2@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261108T220000Z
+DTEND:20261109T030000Z
+SUMMARY:LoL Worlds 2026 — Semifinal 2
+DESCRIPTION:Semifinal stage start time from Riot's official primer.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-final@matchapp.tv
+DTSTAMP:20261031T143000Z
+DTSTART:20261114T190000Z
+DTEND:20261114T230000Z
+SUMMARY:LoL Worlds 2026 — Final in Brooklyn
+DESCRIPTION:Worlds Final stage start time from Riot's official primer.
+URL:https://matchapp.tv/events/worlds-2026/?utm_source=calendar&utm_medium=referral&utm_campaign=worlds_2026
+END:VEVENT
+END:VCALENDAR
