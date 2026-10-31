@@ -36,3 +36,73 @@ body.ma-founder-page #ma-ambient-jonas .ja-premium-face>img{position:absolute;in
 .mf-wrap .mf-help>header{max-width:none;margin:26px 0 20px;padding:24px;border:1px solid #e5c15844;border-radius:20px;background:linear-gradient(130deg,rgba(35,20,48,.97),rgba(13,10,19,.98))}
 .mf-wrap .mf-quote{background:linear-gradient(90deg,#21162e,#130e1d)}
 .mf-wrap .mf-footer{border-radius:20px;background:rgba(13,10,19,.94);margin-top:24px}
+
+/* The studio gallery uses the same touch targets and type as the biography. */
+.mf-projects { margin-block: 28px; scroll-margin-top: 8rem; }
+.mf-project-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,17rem),1fr)); gap: 14px; }
+.mf-wrap .mf-project { display: flex; flex-flow: column; gap: 14px; align-items: stretch; padding: clamp(14px,2vw,22px); }
+.mf-project h3, .mf-project p { margin: 0; }
+.mf-wrap .mf-project-name { justify-content: flex-start; text-align: start; padding: 6px 15px 6px 7px; font-size: 1.05rem; }
+.mf-project-name img { flex: none; border-radius: 11px; }
+.mf-shot { display: grid; gap: 4px; justify-items: start; text-decoration: none; }
+.mf-shot img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; background: #100e17; border-radius: 12px; }
+.mf-project-actions { margin-top: auto; display: flex; flex-wrap: wrap; align-items: end; gap: 8px; }
+.mf-project-actions .mf-pill { flex: 1 1 auto; }
+.mf-wrap :is(.mf-project,.mf-utility,.mf-footer,.mf-help,.mf-testing) .mf-pill { white-space: normal; min-height: 44px; border: 0; color: var(--cinema-text,#fff0d9); background: linear-gradient(125deg,var(--cinema-surface,#382741),var(--cinema-raised,#2b2434)); }
+.mf-wrap .mf-project-name:focus-visible,.mf-wrap .mf-shot:focus-visible,.mf-wrap .mf-pill:focus-visible { outline: 2px solid var(--cinema-gold,#edcd8a); outline-offset: 3px; }
+@layer ma-screen-fit {
+  .ma-founder-page #projects a.mf-shot > .mf-shot-caption {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 6px 14px !important;
+    margin: 6px !important;
+    border-radius: 999px !important;
+    background: #332638 !important;
+    color: #f4dfa9 !important;
+    -webkit-text-fill-color: currentColor !important;
+    font-weight: 650;
+  }
+  .ma-founder-page #projects .mf-project-intro {
+    background: var(--cinema-surface,#211c28) !important;
+    padding: 10px 14px !important;
+    border-radius: 18px !important;
+  }
+}
+
+.mf-testing { scroll-margin-top: 8rem; }
+.mf-testing form { display: grid; grid-template-columns: minmax(0,1fr); gap: 10px; max-width: 38rem; }
+.mf-testing form > label { width: fit-content; max-width: 100%; padding: 5px 12px; border-radius: 999px; background: var(--cinema-surface,#211c28); }
+.mf-testing form > :is(input[type="email"],select) { box-sizing: border-box; width: 100%; min-width: 0; min-height: 46px; border: 0; border-radius: 999px; padding: 10px 16px; background: var(--cinema-surface,#211c28); color: var(--cinema-text,#f7f0f8); font: inherit; }
+.mf-testing .mf-check { display: flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; }
+.mf-testing .mf-check input { flex: 0 0 20px; width: 20px; height: 20px; accent-color: var(--cinema-gold,#e1bb70); }
+.mf-testing #tester-play[hidden] { display: none !important; }
+.mf-testing #tester-play { margin-block: 16px; }
+.mf-testing > a { margin-block-start: 10px; }
+.mf-testing :is(input,select,button):focus-visible { outline: 2px solid var(--cinema-gold,#edcd8a); outline-offset: 2px; }
+@layer ma-screen-fit {
+  .ma-founder-page #closed-testing form > label {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    width: fit-content !important;
+    max-width: 100% !important;
+    border-radius: 20px !important;
+    padding: 6px 12px !important;
+    background: var(--cinema-surface,#211c28) !important;
+    color: var(--cinema-text,#f7f0f8) !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+  .ma-founder-page #closed-testing form > :is(input[type="email"],select) { border-radius: 999px !important; }
+}
+@media(max-width:700px) {
+  .ma-founder-page :is(#help,#closed-testing,#projects) { scroll-margin-block-start: 14rem; }
+}
+
+.mf-contribution { display: grid; gap: 10px; max-width: 28rem; }
+.mf-contribution > label { justify-self: start; }
+.mf-contribution .mf-amount-row { display: flex; align-items: center; gap: 8px; }
+.mf-amount-row > span { font-weight: 650; }
+.mf-contribution input[type="number"] { flex: 1; min-width: 0; padding: 8px 14px; min-height: 46px; font: inherit; border-radius: 999px; background: var(--cinema-surface,#211c28); color: var(--cinema-text,#f7f0f8); }
+.mf-contribution input:focus-visible { outline: 2px solid var(--cinema-gold,#edcd8a); }
+.mf-contribution [hidden] { display: none !important; }

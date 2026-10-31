@@ -84,3 +84,7 @@ verify_jwt = false
 # Public Pro catalog; private operations validate the current JWT with Auth getUser.
 [functions.pro-billing]
 verify_jwt = false
+
+# Public, origin-checked founder support. Limits apply before Stripe session creation.
+[functions.founder-support]
+verify_jwt = false

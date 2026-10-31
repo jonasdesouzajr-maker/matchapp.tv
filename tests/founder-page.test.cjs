@@ -19,13 +19,18 @@ test('all 14 authored locales update biography, portrait, mailto, metadata and s
  for(const n of d.querySelectorAll('[data-founder]'))assert.equal(n.textContent,t[n.dataset.founder],lang+' '+n.dataset.founder);
  assert.equal(d.querySelector('h1').textContent,t.heading);assert.equal(d.querySelector('meta[name=description]').content,t.pageDesc);assert.equal(d.querySelector('#founder-portrait').alt,t.alt);assert.ok(d.querySelector('#founder-email').href.startsWith('mailto:support@matchapp.tv?subject='));
  assert.equal(JSON.parse(d.querySelector('#founder-schema').textContent)['@graph'][0].name,t.heading);assert.equal(d.querySelector('link[rel=canonical]').href,'https://matchapp.tv/founder/');
- assert.equal(d.querySelector('[data-founder=supportButton]').getAttribute('href'),'/#ma-donate-support');dom.window.close();
+ assert.equal(d.querySelector('[data-founder=supportButton]').form.action,'https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/founder-support');assert.equal(d.getElementById('founder-amount').min,'30');dom.window.close();
  }
 });
 test('founder page preserves voluntary support and image identity disclosures',()=>{
  assert.match(copy.en.caption,/AI/);assert.match(copy.en.learning,/courses offered by Ivy League/);assert.doesNotMatch(copy.en.learning,/degree|honors|honours|valedictorian/);
  assert.match(copy.en.emailNote,/review and send/);assert.match(copy.en.supportNote,/do not buy shares/);
- const d=new JSDOM(read('founder/index.html')).window.document,img=d.querySelector('#founder-portrait');assert.equal(img.width/img.height,.8);assert.equal(d.querySelectorAll('form').length,0);
+ const d=new JSDOM(read('founder/index.html')).window.document,img=d.querySelector('#founder-portrait');assert.equal(img.width/img.height,.8);assert.ok(d.querySelector('#closed-testing form'));
+ assert.equal(d.querySelectorAll('.mf-project img').length,6);
+ for (const card of d.querySelectorAll('.mf-project')) {
+  assert.ok(card.querySelector('a.mf-shot img'));
+  assert.ok(card.querySelector('a.mf-project-name img'));
+ }
  assert.ok(!d.querySelector('[src*="adsbygoogle"],ins.adsbygoogle'));assert.match(read('patches/founder-page.css'),/object-fit:contain/);
 });
 
@@ -34,5 +39,5 @@ test('founder header keeps translated support labels intact with a synchronized 
  assert.match(css,/@layer ma-screen-fit \{\s*html body\.ma-founder-page #ma-founder-header #ma-donate-shortcut\{flex:0 0 auto!important;width:auto!important;min-width:max-content!important\}/);
  assert.match(css,/html body\.ma-founder-page #ma-founder-header #ma-donate-shortcut span\{flex:0 0 auto!important;white-space:nowrap!important;text-wrap:nowrap!important;word-break:normal!important;overflow-wrap:normal!important\}/);
  const dom=new JSDOM(read('founder/index.html')),href=dom.window.document.querySelector('link[href*="founder-page.css"]').getAttribute('href');
- assert.equal(href,'/patches/founder-page.css?v=20261016-4');assert.ok(read('tools/build-founder-page.cjs').includes(href));dom.window.close();
+ assert.equal(href,'/patches/founder-page.css?v=20261031-projects1');assert.ok(read('tools/build-founder-page.cjs').includes(href));dom.window.close();
 });

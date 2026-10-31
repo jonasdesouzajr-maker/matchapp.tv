@@ -5,6 +5,14 @@
   let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}
   const code=String(window.MATCH_LANG||saved||document.documentElement.lang||'en').split('-')[0].toLowerCase(),t=copy[code];if(!t)return;
   document.querySelectorAll('[data-founder]').forEach(n=>{if(t[n.dataset.founder]!==undefined)n.textContent=t[n.dataset.founder];});
+  const langInput=document.querySelector('.mf-contribution input[name="lang"]');
+  if(langInput)langInput.value=code==='pt'?'pt-BR':code;
+  const checkoutMessage=document.getElementById('founder-checkout-message');
+  if(checkoutMessage){
+   const status=new URLSearchParams(location.search).get('support');
+   const message=status==='amount'?t.amountError:status==='unavailable'?t.checkoutError:'';
+   checkoutMessage.textContent=message;checkoutMessage.hidden=!message;
+  }
   document.title=t.seoTitle||t.title+' | Jonas Junior · MatchApp Ai';
   document.getElementById('founder-portrait').alt=t.alt;
   document.getElementById('founder-email').href='mailto:support@matchapp.tv?subject='+encodeURIComponent(t.emailSubject);

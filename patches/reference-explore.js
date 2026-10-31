@@ -20,13 +20,13 @@
     zh: ['探索更多','发现值得花时间的故事、人物和体验。','立即探索','最受期待','首映指南','本周精选','为你精选','书籍','食谱','新闻','活动','泰勒','问 AI','发现更多精彩','你的 MatchApp Ai 指南','寻找下一部电影、一本书、一份食谱或一次体验。探索主题，或向乔纳斯寻求灵感。','与乔纳斯一起探索。']
   };
   var extraCopy = {
-    en:{friends:'Friends',donate:'Donate'},pt:{friends:'Amigos',donate:'Doar'},
-    es:{friends:'Amigos',donate:'Donar'},fr:{friends:'Amis',donate:'Faire un don'},
-    de:{friends:'Freunde',donate:'Spenden'},it:{friends:'Amici',donate:'Dona'},
-    tr:{friends:'Arkadaşlar',donate:'Bağış yap'},ru:{friends:'Друзья',donate:'Поддержать'},
-    ar:{friends:'الأصدقاء',donate:'تبرّع'},hi:{friends:'दोस्त',donate:'दान करें'},
-    id:{friends:'Teman',donate:'Donasi'},ja:{friends:'友達',donate:'寄付する'},
-    ko:{friends:'친구',donate:'후원하기'},zh:{friends:'好友',donate:'捐助'}
+    en:{friends:'Friends',donate:'Help me grow the business'},pt:{friends:'Amigos',donate:'Ajude meu negócio a crescer'},
+    es:{friends:'Amigos',donate:'Ayúdame a hacer crecer mi negocio'},fr:{friends:'Amis',donate:'Aidez-moi à développer mon activité'},
+    de:{friends:'Freunde',donate:'Hilf mir, mein Unternehmen auszubauen'},it:{friends:'Amici',donate:'Aiutami a far crescere la mia attività'},
+    tr:{friends:'Arkadaşlar',donate:'İşimi büyütmeme destek ol'},ru:{friends:'Друзья',donate:'Помогите мне развивать своё дело'},
+    ar:{friends:'الأصدقاء',donate:'ساعدني على تنمية مشروعي'},hi:{friends:'दोस्त',donate:'मेरा व्यवसाय बढ़ाने में मदद करें'},
+    id:{friends:'Teman',donate:'Bantu saya mengembangkan usaha ini'},ja:{friends:'友達',donate:'事業の成長を応援する'},
+    ko:{friends:'친구',donate:'사업 성장을 응원해 주세요'},zh:{friends:'好友',donate:'助我发展这项事业'}
   };
   function locale() {
     var chosen = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase().split('-')[0];

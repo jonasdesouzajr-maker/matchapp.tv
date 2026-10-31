@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
 const copy = require('../data/founder-copy.json');
+const growthLabels = require('../patches/donate-shortcut.js');
 const base = process.env.QA_BASE_URL || 'http://127.0.0.1:18797';
 const reportDir = process.env.QA_REPORT_DIR || path.join(os.tmpdir(), 'matchapp-founder-fit');
 const widths = [320, 390, 700, 800, 820, 1024, 1366, 1440];
@@ -21,6 +22,10 @@ const widths = [320, 390, 700, 800, 820, 1024, 1366, 1440];
       if (!response.ok()) throw new Error('Founder HTTP ' + response.status());
       await page.waitForFunction(() => typeof window.setLanguage === 'function' && document.querySelector('#ma-donate-shortcut span'));
       await page.evaluate(() => document.fonts.ready);
+      const controls = page.locator('details.ma-reference-header-tools').filter({has: page.locator('#ma-donate-shortcut')});
+      if (await controls.count() && !await controls.evaluate(details => details.open)) {
+        await controls.locator('summary').click();
+      }
       for (const lang of Object.keys(copy)) {
         await page.evaluate(value => window.setLanguage(value), lang === 'pt' ? 'pt-BR' : lang);
         await page.waitForFunction(expected => document.querySelector('h1').textContent === expected, copy[lang].heading);
@@ -34,9 +39,11 @@ const widths = [320, 390, 700, 800, 820, 1024, 1366, 1440];
           const contained = rects.every(r => r.left >= bounds.left - 1 && r.right <= bounds.right + 1 && r.top >= bounds.top - 1 && r.bottom <= bounds.bottom + 1);
           const companion = document.querySelector('#ma-ambient-jonas')?.getBoundingClientRect();
           const collisions = companion ? [...document.querySelectorAll('header.app-header nav a, header.app-header nav button')].filter(el => { const r = el.getBoundingClientRect(); return r.width && r.left < companion.right && r.right > companion.left && r.top < companion.bottom && r.bottom > companion.top; }).map(el => el.textContent.trim()) : [];
-          return { label: label.textContent, lineCount, contained, overflow: document.documentElement.scrollWidth - innerWidth, collisions, whiteSpace: getComputedStyle(label).whiteSpace, width: bounds.width, height: bounds.height };
+          const icon = button.querySelector('svg').getBoundingClientRect();
+          const compact = getComputedStyle(label).display === 'none' && icon.width > 0 && icon.height > 0 && bounds.width >= 44 && bounds.height >= 44 && button.getAttribute('aria-label') === label.textContent && button.title === label.textContent;
+          return { label: label.textContent, compact, lineCount, contained, overflow: document.documentElement.scrollWidth - innerWidth, collisions, whiteSpace: getComputedStyle(label).whiteSpace, width: bounds.width, height: bounds.height };
         });
-        results.push({ viewportWidth: width, lang, ...state, passed: state.lineCount === 1 && state.contained && state.overflow === 0 && state.collisions.length === 0 });
+        results.push({ viewportWidth: width, lang, ...state, passed: state.compact && state.label === growthLabels[lang] && state.contained && state.overflow === 0 && state.collisions.length === 0 });
         if ([320, 800, 1440].includes(width) && ['en', 'fr', 'ar'].includes(lang)) await page.screenshot({ path: path.join(reportDir, `${width}-${lang}.png`) });
       }
       await context.close();

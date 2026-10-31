@@ -210,13 +210,16 @@ html.ma-reference body.page-explore .hub-shell>.hub-foot {
 html.ma-reference body.page-explore .hub-shell>.hub-foot>a {
  display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;
  min-width:0!important;min-height:44px!important;padding:7px!important;box-sizing:border-box!important;
- border:1px solid #75604466!important;border-radius:8px!important;text-decoration:none!important;
- line-height:1.35!important;overflow-wrap:anywhere!important;
+ border:0!important;border-radius:999px!important;text-decoration:none!important;
+ background:var(--cinema-panel,#211b26)!important;color:var(--cinema-text,#f4f0e9)!important;
+ line-height:1.35!important;overflow-wrap:break-word!important;
 }
 @supports(grid-template-columns:subgrid) {
  html.ma-reference body.page-explore #explore-main :is(.ref-editorial-banners,.ref-primary-topics,.ref-explore-more,.ref-secondary-topics) {grid-template-columns:subgrid!important}
 }
 @media(max-width:760px) {
+ html.ma-reference body.page-explore .hub-shell>.hub-foot {grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ html.ma-reference body.page-explore .hub-shell>.hub-foot>[data-ref-explore="donate"] {grid-column:1/-1!important}
  html.ma-reference body.page-explore .hub-shell.hub-shell {--ref-grid-gap:8px!important;padding-top:8px!important;padding-bottom:8px!important}
  html.ma-reference body.page-explore #explore-main .ref-editorial-banners>.ref-editorial-banner {grid-column:1 / -1!important;min-height:74px!important;padding:12px 16px!important}
  html.ma-reference body.page-explore #explore-main .ref-secondary-topics>.ref-secondary-topic {grid-column:span 3!important}
