@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//MatchApp Ai//Event guides//EN
+BEGIN:VEVENT
+UID:ccxp-2026@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261207
+SUMMARY:CCXP26
+LOCATION:São Paulo Expo\, São Paulo\, Brazil
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/ccxp-2026/
+DESCRIPTION:Official event information: https://ccxp.com.br/imprensa/
+END:VEVENT
+END:VCALENDAR

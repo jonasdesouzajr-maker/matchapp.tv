@@ -74,6 +74,19 @@ function eventSearchTitle(e){
 function eventSearchDescription(e){
  return trimSnippet(e.searchDescription||e.synopsis,155);
 }
+function calendarDates(e,url){
+ const dateValue=value=>value.slice(0,10).replace(/-/g,'');
+ const text=value=>value.replace(/\\/g,'\\\\').replace(/\r\n|\r|\n/g,'\\n').replace(/([,;])/g,'\\$1');
+ // RFC 5545 all-day end dates are exclusive. Use the venue's date from the record.
+ const end=new Date(e.end.slice(0,10)+'T00:00:00Z');
+ end.setUTCDate(end.getUTCDate()+1);
+ return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MatchApp Ai//Event guides//EN',
+  'BEGIN:VEVENT','UID:'+e.slug+'@matchapp.tv','DTSTAMP:'+dateValue(e.updatedAt)+'T000000Z',
+  'DTSTART;VALUE=DATE:'+dateValue(e.start),'DTEND;VALUE=DATE:'+dateValue(end.toISOString()),
+  'SUMMARY:'+text(e.title),'LOCATION:'+text(e.location),'TRANSP:TRANSPARENT',
+  'URL:'+url,'DESCRIPTION:Official event information: '+e.source,
+  'END:VEVENT','END:VCALENDAR',''].join('\r\n');
+}
 function head({title,description,url,image,keywords,schema,ads=false}){
  return `${ads?consentDefaults():''}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>${esc(title)} | MatchApp Ai</title><meta name="description" content="${esc(description)}"><meta name="keywords" content="${esc(keywords||'entertainment events, film festivals, Indian cinema, Mexico cultural events, comic cons, where to watch, MatchApp event guide')}">
@@ -99,6 +112,8 @@ const urls=[];
 for(const e of events){
  const url=SITE+'/events/'+e.slug+'/';urls.push(url);
  const image=absolutePoster(e);
+ const calendarName=e.slug+'.ics';
+ const calendarLink=e.calendarDownload?`<a class="event-secondary-btn" href="/events/${esc(e.slug)}/${esc(calendarName)}" type="text/calendar" download>Save festival dates (.ics)</a>`:'';
  // Calendar boundaries drive lifecycle; date-only sources must not imply exact opening hours in search.
  const schema={'@context':'https://schema.org','@graph':[
   {'@type':'WebPage',name:e.title+' event guide',url,description:e.synopsis,keywords:e.keywords,dateModified:e.updatedAt||'2026-09-24',isPartOf:{'@type':'WebSite',name:'MatchApp.tv',url:SITE}},
@@ -108,10 +123,11 @@ for(const e of events){
  const programme=Array.isArray(e.programmeNotes)&&e.programmeNotes.length?'<section class="premium-card event-source-card"><h2>'+esc(e.programmeHeading)+'</h2>'+e.programmeNotes.map(note=>'<p>'+esc(note)+'</p>').join('')+'</section>':'';
  const visitorNotes=Array.isArray(e.visitorNotes)&&e.visitorNotes.length?'<section class="premium-card event-source-card"><h2>Before visiting or looking for coverage</h2>'+e.visitorNotes.map(note=>'<p>'+esc(note)+'</p>').join('')+'</section>':'';
  const related=(e.featuredTitles||[]).length?`<section class="premium-card event-title-shelf"><h2>Titles to explore from this event</h2><p>Open a title in MatchApp Ai for synopsis, cast, preview and verified where-to-watch information.</p><div class="event-title-links">${e.featuredTitles.map(t=>`<a href="${esc(askTitle(t))}">${esc(t)}</a>`).join('')}</div></section>`:'';
- const body=`<article class="event-guide" ${data(e)}><div class="event-detail-hero"><div class="event-hero-art"><img src="${esc(poster(e))}" alt="${esc(e.title)} — ${esc(artLabel(e))}" width="1024" height="1536" fetchpriority="high"></div><div class="event-hero-copy"><div class="event-guide-flags">${country(e)}<span class="event-category">${esc(e.category)}</span></div>${badge(e)}${countdown()}<h1>${esc(e.title)}</h1><p class="event-date-line">${date(e)}<br>${esc(e.location)}</p><p class="event-synopsis">${esc(e.synopsis)}</p><p class="event-art-credit">${esc(e.posterCredit||'Official event artwork')}</p><div class="event-primary-actions"><a class="gold-btn" href="${esc(askEvent(e))}">Open in MatchApp Ai</a><a class="event-secondary-btn" href="${esc(e.official)}" target="_blank" rel="noopener noreferrer">Official event</a></div></div></div>
+ const body=`<article class="event-guide" ${data(e)}><div class="event-detail-hero"><div class="event-hero-art"><img src="${esc(poster(e))}" alt="${esc(e.title)} — ${esc(artLabel(e))}" width="1024" height="1536" fetchpriority="high"></div><div class="event-hero-copy"><div class="event-guide-flags">${country(e)}<span class="event-category">${esc(e.category)}</span></div>${badge(e)}${countdown()}<h1>${esc(e.title)}</h1><p class="event-date-line">${date(e)}<br>${esc(e.location)}</p><p class="event-synopsis">${esc(e.synopsis)}</p><p class="event-art-credit">${esc(e.posterCredit||'Official event artwork')}</p><div class="event-primary-actions"><a class="gold-btn" href="${esc(askEvent(e))}">Open in MatchApp Ai</a><a class="event-secondary-btn" href="${esc(e.official)}" target="_blank" rel="noopener noreferrer">Official event</a>${calendarLink}</div></div></div>
 <section id="where-to-watch" class="premium-card event-info-card"><h2>Official programme & viewing information</h2><p>${esc(e.watchInfo)}</p><div class="global-event-links">${e.sourceLinks?e.sourceLinks.map(link=>`<a href="${esc(link.url)}" target="_blank" rel="noopener noreferrer">${esc(link.label)}</a>`).join(''):`<a href="${esc(e.watch)}" target="_blank" rel="noopener noreferrer">Official programme / tickets</a><a href="${esc(e.recorded)}" target="_blank" rel="noopener noreferrer">Official media / highlights</a><a href="${esc(e.official)}" target="_blank" rel="noopener noreferrer">Official event</a><a href="${esc(e.source)}" target="_blank" rel="noopener noreferrer">Verified source</a>`}</div></section>
 ${programme}${visitorNotes}${related}<section class="premium-card event-source-card"><h2>Why it is on MatchApp</h2><p>MatchApp includes this event because it can help people discover films, series, games or screen culture through verified official sources. Dates and event status are date-aware; expired events leave the Home events rail automatically while their public guide remains available for search and reference.</p></section></article>`;
  const dir=path.join(ROOT,'events',e.slug);fs.mkdirSync(dir,{recursive:true});
+ if(e.calendarDownload)fs.writeFileSync(path.join(dir,calendarName),calendarDates(e,url));
  fs.writeFileSync(path.join(dir,'index.html'),shell({headHtml:head({title:eventSearchTitle(e),description:eventSearchDescription(e),url,image,keywords:e.keywords,schema}),body}));
 }
 const archiveSchema={'@context':'https://schema.org','@type':'CollectionPage',name:'Recent and upcoming global entertainment events',url:SITE+'/events-archive.html',mainEntity:{'@type':'ItemList',itemListElement:events.map((e,i)=>({'@type':'ListItem',position:i+1,name:e.title,url:urls[i]}))}};
