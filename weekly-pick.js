@@ -90,7 +90,7 @@ function pickCopy(){
 }
 
 /* The AI chat is the detail experience for this title: showtimes near the
-   visitor, synopsis, cast, country of production and IMDb rating, in their
+   visitor, synopsis, cast, country of production and reception, in their
    own language. Cinema-only titles ask for cinemas; once the streaming window
    opens the same handoff asks where to stream, rent or buy. */
 function pickAskUrl(){

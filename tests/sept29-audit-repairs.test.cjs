@@ -68,12 +68,11 @@ test('localized live Ask AI replies bypass retranslation and translations fail t
   assert(!translate.includes('return fallback()'));
 });
 
-test('transient OMDb outages are retried and missing configuration is the only 503',()=>{
+test('legacy OMDb requests cannot debit a quota or contact the provider while publication is link-only',()=>{
   const front=source('omdb-ratings.js'),back=source('supabase/functions/omdb-ratings/index.ts');
-  assert(front.includes('disabledUntil'));
-  assert(!front.includes('disabled = true'));
-  assert(back.includes('TimeoutError'));
-  assert.match(back,/const apiKey[\s\S]*?if \(!apiKey\) return json\(req, \{ unavailable: true \}, 503\)/);
+  assert.doesNotMatch(front,/functions\.invoke|fetch\(/);
+  assert.doesNotMatch(back,/OMDB_API_KEY|check_ai_rate_limit|fetch\(/);
+  assert.match(back,/unavailable: true/);
 });
 
 test('member share claims demand server history while keeping existing window limits',()=>{
