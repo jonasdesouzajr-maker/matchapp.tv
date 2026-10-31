@@ -60,3 +60,14 @@ test('English and Brazilian Portuguese discovery feeds each expose twelve origin
   assert.ok(!xml.includes('<script'),file+' must remain passive XML');
  }
 });
+
+
+test('Kids age-intent pages preserve reviewed search titles without changing reviewed age content',()=>{
+ const editorial=JSON.parse(read('tools/kids-guide-editorial.json'));
+ assert.equal(editorial['puffin-rock'].searchTitle,'Puffin Rock Age Range: Ages 3–5');
+ assert.equal(editorial.octonauts.searchTitle,'Octonauts Age Range: Ages 3–8');
+ assert.match(read('kids/titles/puffin-rock/index.html'),/<title>Puffin Rock Age Range: Ages 3–5 \| MatchApp Ai KIDS<\/title>/);
+ assert.match(read('kids/titles/octonauts/index.html'),/<title>Octonauts Age Range: Ages 3–8 \| MatchApp Ai KIDS<\/title>/);
+ const generator=read('tools/build-kids-pages.js');
+ assert.match(generator,/guideEditorial\[id\]\?\.searchTitle/);
+});
