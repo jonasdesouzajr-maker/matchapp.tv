@@ -5,7 +5,7 @@
  if(window.__matchappAmbientJonas||document.getElementById('matchapp-ambient-jonas-script'))return;
  window.__MATCHAPP_AMBIENT_WEB__=true;
  var script=document.createElement('script');script.id='matchapp-ambient-jonas-script';script.defer=true;
- script.src='/jonas/android-ambient-assistant-20261011.js?v=corner20261020-1&voicepair=20261014-1&instant=20261015-1&stellar=20261020-1&header=20261020-1&resize=20261022-1&repair=20261023-1';
+ script.src='/jonas/android-ambient-assistant-20261011.js?v=corner20261020-1&voicepair=20261014-1&instant=20261015-1&stellar=20261020-1&header=20261020-1&resize=20261022-1&repair=20261023-1&pill=20261031-1';
  document.head.appendChild(script);
 })();
 /* UI fixes 2026-10-23: pills, poster wall, logo, chat resize and close (all adult pages, web and Android). */

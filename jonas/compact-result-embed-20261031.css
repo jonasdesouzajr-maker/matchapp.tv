@@ -1,0 +1,33 @@
+/* The compact parent pill owns composition. This iframe retains the one
+   authenticated, metered discovery conversation and displays answers only. */
+html.ma-jonas-pill-embed,html.ma-jonas-pill-embed body.ai-chat-page{height:100%!important;min-height:0!important;overflow:hidden!important}
+html.ma-jonas-pill-embed body.ai-chat-page .discover-head>.newsearch-row,
+html.ma-jonas-pill-embed body.ai-chat-page .discover-head>.ma-ask-again,
+html.ma-jonas-pill-embed body.ai-chat-page .discover-head>#jonas-header-new-chat,
+html.ma-jonas-pill-embed body.ai-chat-page .discover-head>.discover-title-row,
+html.ma-jonas-pill-embed body.ai-chat-page .discover-head>.ai-session-strip,
+html.ma-jonas-pill-embed body.ai-chat-page #jonas-voice-stage,
+html.ma-jonas-pill-embed body.ai-chat-page .ai-sidebar-toggle,
+html.ma-jonas-pill-embed body.ai-chat-page .ma-page-escapes{
+ display:none!important;max-height:0!important;margin:0!important;padding:0!important
+}
+html.ma-jonas-pill-embed body.ai-chat-page main.wrap{
+ height:100%!important;min-height:0!important;max-height:100%!important;
+ width:100%!important;margin:0!important;padding:0!important;overflow:hidden!important
+}
+html.ma-jonas-pill-embed body.ai-chat-page .discover-head{
+ display:flex!important;flex-direction:column!important;height:100%!important;min-height:0!important;
+ padding:8px!important;margin:0!important;border-radius:0!important;overflow:hidden!important
+}
+html.ma-jonas-pill-embed body.ai-chat-page .discover-head #chat-log{
+ display:flex!important;flex:1 1 0!important;min-height:0!important;
+ width:100%!important;height:100%!important;max-height:none!important;
+ padding:8px!important;overflow-y:auto!important;overscroll-behavior:contain!important
+}
+html.ma-jonas-pill-embed body.ai-chat-page #chat-log .chat-turn,
+html.ma-jonas-pill-embed body.ai-chat-page #chat-log .chat-assistant{
+ max-width:100%!important;overflow-wrap:anywhere!important
+}
+html.ma-jonas-pill-embed body.ai-chat-page #chat-log .chat-results-grid{grid-template-columns:1fr!important;min-width:0!important;width:100%!important}
+html.ma-jonas-pill-embed body.ai-chat-page #chat-log .chat-results-grid > *{max-width:100%!important;min-width:0!important}
+@media(prefers-reduced-motion:reduce){html.ma-jonas-pill-embed *{scroll-behavior:auto!important}}
