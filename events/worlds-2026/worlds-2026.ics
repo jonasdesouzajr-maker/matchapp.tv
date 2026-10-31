@@ -1,0 +1,95 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+PRODID:-//MatchApp Ai//Event guides//EN
+X-WR-CALNAME:League of Legends Worlds 2026 schedule
+BEGIN:VEVENT
+UID:worlds-2026-1@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261031T170000Z
+SUMMARY:Swiss Stage — final day begins
+LOCATION:North America
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Three Round 5 best-of-three matches are scheduled from this start window. Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-2@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261103T220000Z
+SUMMARY:Quarterfinal 1
+LOCATION:Allen\, Texas
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-3@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261104T220000Z
+SUMMARY:Quarterfinal 2
+LOCATION:Allen\, Texas
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-4@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261105T220000Z
+SUMMARY:Quarterfinal 3
+LOCATION:Allen\, Texas
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-5@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261106T220000Z
+SUMMARY:Quarterfinal 4
+LOCATION:Allen\, Texas
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-6@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261107T220000Z
+SUMMARY:Semifinal 1
+LOCATION:Allen\, Texas
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-7@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261108T220000Z
+SUMMARY:Semifinal 2
+LOCATION:Allen\, Texas
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+BEGIN:VEVENT
+UID:worlds-2026-8@matchapp.tv
+DTSTAMP:20261031T000000Z
+DTSTART:20261114T190000Z
+SUMMARY:Worlds 2026 Final
+LOCATION:Brooklyn\, New York
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+URL:https://matchapp.tv/events/worlds-2026/
+DESCRIPTION:Championship final start time published by LoL Esports. Start time from the official LoL Esports schedule. Match or session duration may vary. Source: https://lolesports.com/en-US/news/season-start-2026-lol-esports
+END:VEVENT
+END:VCALENDAR

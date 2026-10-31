@@ -115,6 +115,22 @@ function injectWatchPoster(html, title, info, records) {
     return output;
 }
 
+function titleSearchContext(title, info) {
+    if (title === 'A Different World' && Number(info?.tmdbId) === 305357 && info?.kind === 'tv') {
+        return {
+            title: 'A Different World 2026 Streaming & Sequel | MatchApp Ai',
+            description: 'A Different World (2026) is Netflix’s sequel series, released Sept. 24, 2026. See where it streams by country and the confirmed Season 2 renewal.',
+            body: `<section class="w2w-section" aria-labelledby="a-different-world-sequel-answer">
+        <h2 id="a-different-world-sequel-answer">Is A Different World (2026) the Netflix sequel?</h2>
+        <p><strong>Yes.</strong> This guide covers Netflix’s 2026 sequel series set at Hillman College, not the original 1987–1993 sitcom. Netflix released Season 1 on September 24, 2026.</p>
+        <p>Netflix announced on October 2, 2026 that the sequel has been renewed for Season 2. No Season 2 release date has been announced yet, so pages claiming a specific date should be treated cautiously until Netflix publishes one.</p>
+        <p><a href="https://media.netflix.com/en/only-on-netflix/81747525" target="_blank" rel="noopener noreferrer">Official Netflix title page</a> · <a href="https://www.netflix.com/tudum/articles/a-different-world-season-2-plot-release-date-photos-news" target="_blank" rel="noopener noreferrer">Official Season 2 renewal</a></p>
+    </section>`
+        };
+    }
+    return null;
+}
+
 function buildPage(title, info, entry, related, generated) {
     const s = slug(title);
     const url = `${SITE}/where-to-watch/${s}/`;
@@ -126,10 +142,13 @@ function buildPage(title, info, entry, related, generated) {
         .filter(code=>regionalRecords[code]).map(code=>[code,regionalRecords[code]]);
     const allStream = [...new Set(regions.flatMap(([, r]) => r.stream || []))];
 
-    // The description states only what the data supports.
-    const metaDesc = allStream.length
+    // The description states only what the data supports. A small exact-ID
+    // editorial context may sharpen an already verified title without changing provider evidence.
+    const searchContext = titleSearchContext(title, info);
+    const metaDesc = searchContext?.description || (allStream.length
         ? `Where to watch ${title}${yr}: compare reported regional streaming options, source links and the date of the last availability check.`
-        : `Where to watch ${title}${yr}: reported provider listings by region, with source links and a dated TMDB snapshot.`;
+        : `Where to watch ${title}${yr}: reported provider listings by region, with source links and a dated TMDB snapshot.`);
+    const metaTitle = searchContext?.title || `Where to Watch ${title}${yr} | MatchApp Ai`;
 
     const evidence = regions.map(([code]) => regionEvidence(info,code,generated));
     const regionBlocks = regions.map(([code, r]) => {
@@ -189,7 +208,7 @@ function buildPage(title, info, entry, related, generated) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Where to Watch ${esc(title)}${esc(yr)} | MatchApp</title>
+<title>${esc(metaTitle)}</title>
 <meta name="description" content="${esc(metaDesc)}">
 <link rel="canonical" href="${url}">
 <meta name="robots" content="${hasConfirmedOffer(info) ? 'index, follow, max-image-preview:large' : 'noindex,follow'}">
@@ -202,12 +221,12 @@ function buildPage(title, info, entry, related, generated) {
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="${url}">
-<meta property="og:title" content="Where to Watch ${esc(title)} | MatchApp">
+<meta property="og:title" content="${esc(metaTitle)}">
 <meta property="og:description" content="${esc(metaDesc)}">
 <meta property="og:image" content="${SITE}/og-image.jpg?v=2">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Where to Watch ${esc(title)} | MatchApp">
+<meta name="twitter:title" content="${esc(metaTitle)}">
 <meta name="twitter:description" content="${esc(metaDesc)}">
 <meta name="twitter:image" content="${SITE}/og-image.jpg?v=2">
 
@@ -283,6 +302,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <nav class="w2w-countries" aria-label="Choose viewing country">${regions.map(([code])=>`<a href="#availability-${code.toLowerCase()}">${esc(REGION_NAMES[code]||code)}</a>`).join('')}</nav>
         ${entry && entry.synopsis ? `<p class="w2w-syn">${esc(entry.synopsis)}</p>` : ''}
     </header>
+
+    ${searchContext?.body || ''}
 
     <section aria-label="Availability by region">
         ${regionBlocks}
@@ -371,6 +392,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="${SITE}/where-to-watch/">
 <meta property="og:title" content="Where to Watch Movies & TV Shows by Country | MatchApp Ai">
 <meta property="og:image" content="${SITE}/og-image.jpg?v=2">
+<link rel="search" type="application/opensearchdescription+xml" title="MatchApp Ai Where to Watch" href="/opensearch.xml">
+<link rel="alternate" type="application/rss+xml" title="MatchApp Ai discoveries — English" href="/feeds/discoveries-en.xml">
+<link rel="alternate" type="application/rss+xml" title="MatchApp Ai descobertas — Português do Brasil" href="/feeds/discoveries-pt-br.xml">
 <script type="application/ld+json">${schemaJson}</script>
 <link rel="stylesheet" href="/style.css?v=162">
 <style>
@@ -381,6 +405,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .w2w-related a { background: rgba(31,30,28,0.82); border: 1px solid var(--edge); color: #C9C2B4;
                      padding: 11px 17px; border-radius: 11px; text-decoration: none; font-size: 13.5px; font-weight: 600; }
     .w2w-related a:hover { border-color: var(--edge-strong); color: #fff; }
+    .w2w-search { max-width: 620px; margin: 24px auto; }
+    .w2w-search label { display: block; margin-bottom: 8px; color: #C9C2B4; font-weight: 700; }
+    .w2w-search input { width: 100%; min-height: 48px; border: 1px solid var(--edge); border-radius: 14px; background: rgba(31,30,28,.82); color: #fff; padding: 11px 15px; font: inherit; }
+    .w2w-search input:focus-visible { outline: 2px solid var(--gold-core); outline-offset: 3px; }
+    .w2w-search-status { min-height: 1.5em; margin: 8px 0 0; color: #9f988b; font-size: 13px; }
+    .w2w-feed-links { margin-top: 28px; text-align: center; color: #9f988b; }
 </style>
 </head>
 <body>
@@ -393,10 +423,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="w2w-lede">Streaming, rental and purchase options for ${titles.length} titles across Brazil, the US, the UK and Portugal — sourced from TMDB and JustWatch rather than guessed at.</p>
     <section><h2>How to use this regional guide</h2><p>Choose a title below, then read the entry for your country. The same service can carry a film in Brazil and omit it in the United States. Each title page separates subscription viewing from rentals and purchases, includes its source snapshot date and links to the underlying regional listing. A blank provider entry means this source did not confirm an offer; it does not mean no legal offer exists.</p><p>Match the exact title and release year before paying. Remakes, series, films and bonus editions can share a name. On the destination service, check season availability, audio and subtitles, price and any additional channel subscription. A source link is a way to verify the offer, not a promise that MatchApp can play the title.</p><p>For help choosing what suits your evening, read our <a href="/guides/what-to-watch-september-2026/">dated movie and series discovery guide</a>. For corrections and the distinction between AI suggestions and source records, read <a href="/about.html">our source and correction approach</a>.</p></section>
     ${countryNavigation}
+    <form class="w2w-search" role="search" method="get" action="/where-to-watch/">
+        <label for="watch-title-search">Search the 81-title streaming guide</label>
+        <input id="watch-title-search" type="search" name="q" autocomplete="off" enterkeyhint="search" placeholder="Try 3 Idiots, A Different World, Bluey…">
+        <p class="w2w-search-status" id="watch-title-search-status" role="status" aria-live="polite"></p>
+    </form>
     <nav class="w2w-related" aria-label="Title availability guides">
                 ${links}
     </nav>
+    <p class="w2w-feed-links">Follow curated MatchApp discoveries: <a href="/feeds/discoveries-en.xml">English RSS</a> · <a href="/feeds/discoveries-pt-br.xml" hreflang="pt-BR">Português RSS</a></p>
 </main>
+<script>
+(function(){
+ var form=document.querySelector('.w2w-search'),input=document.getElementById('watch-title-search'),status=document.getElementById('watch-title-search-status');
+ var links=Array.from(document.querySelectorAll('nav[aria-label="Title availability guides"] > a'));
+ if(!form||!input||!status||!links.length)return;
+ var normalize=function(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();};
+ var apply=function(){
+  var query=normalize(input.value),shown=0;
+  links.forEach(function(link){var visible=!query||normalize(link.textContent).includes(query);link.hidden=!visible;if(visible)shown++;});
+  status.textContent=query?(shown+' title'+(shown===1?'':'s')+' found'):'';
+ };
+ var requested=new URLSearchParams(location.search).get('q')||'';
+ if(requested)input.value=requested;
+ input.addEventListener('input',apply);
+ form.addEventListener('submit',function(event){event.preventDefault();var url=new URL(location.href);var q=input.value.trim();if(q)url.searchParams.set('q',q);else url.searchParams.delete('q');history.replaceState(null,'',url.pathname+url.search);apply();});
+ apply();
+})();
+</script>
 </body>
 </html>
 `;
