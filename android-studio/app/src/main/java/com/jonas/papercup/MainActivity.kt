@@ -1836,6 +1836,25 @@ class MainActivity : AppCompatActivity() {
                   try { bridge.setAdFree(false); } catch (_) {}
                   return;
                 }
+                // Pages without the shared account runtime (e.g. /explore.html) never
+                // publish matchProfileState. Treat them as guest only when no stored
+                // Supabase session exists; any stored session keeps ads off.
+                if (!window.matchProfileState && !window.supabaseClient &&
+                    typeof window.ensureCompactMatchSession !== 'function') {
+                  var storedSession = true;
+                  try {
+                    storedSession = false;
+                    for (var i = 0; i < localStorage.length; i++) {
+                      var key = localStorage.key(i) || '';
+                      if (key.indexOf('sb-') === 0 && key.indexOf('-auth-token') > 0 && localStorage.getItem(key)) { storedSession = true; break; }
+                    }
+                  } catch (_) { storedSession = true; }
+                  if (!storedSession) {
+                    try { if (typeof bridge.setNewsAccountContext === 'function') bridge.setNewsAccountContext('guest'); } catch (_) {}
+                    try { bridge.setAdFree(false); } catch (_) {}
+                    return;
+                  }
+                }
                 if (window.isUserLoggedIn !== true) {
                   try { bridge.setAdFree(true); } catch (_) {}
                   return;
