@@ -306,7 +306,6 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   parkedBeforeChat=['z-index','visibility','pointer-events'].map(function(key){return [key,root.style.getPropertyValue(key),root.style.getPropertyPriority(key)]});
   root.dataset.jonasPositionHeld='1';
   open=true;epoch++;if(!frame)activeTitle=contextTitle();
-  document.body?.classList.add('ma-jonas-modal-open');
   panel.hidden=false;syncPanelViewport(preViewport);panel.querySelector('.ja-hello').textContent=greeting();
   // The conversation is viewport-anchored. Keep the same movable launcher
   // at its existing position so the user can tap it again to close.
@@ -323,12 +322,18 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   spokenGreeting(epoch);
   // Opening/closing is presentation only. The original New chat action owns
   // resets; changing the matching result must not discard an existing thread.
-  if(!frame){
-    createFrame(activeTitle);frame.dataset.title=activeTitle;
-  }
-  window.MatchAppChatResize?.sync?.();
   document.addEventListener('keydown',escapeKey);
+  // Paint the panel first; page-wide work (body scroll lock restyles the whole
+  // document, chat iframe, resize sync) runs once the 150ms fade has finished.
+  var openEpoch=epoch;
+  requestAnimationFrame(function(){setTimeout(function(){
+   if(!open||epoch!==openEpoch)return;
+   document.body?.classList.add('ma-jonas-modal-open');
+   if(!frame){createFrame(activeTitle);frame.dataset.title=activeTitle;}
+   window.MatchAppChatResize?.sync?.();
+  },170)});
  }
+ (function(){var prev=window.MatchAppHandleBack;window.MatchAppHandleBack=function(){if(open){closePanel();return true}return typeof prev==='function'?prev():false};})();
  function closePanel(){
   if(!open)return;
   open=false;stopConversation();

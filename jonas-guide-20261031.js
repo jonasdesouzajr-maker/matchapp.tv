@@ -59,7 +59,7 @@
     if(c.classList.contains('crit-chip')){c.classList.toggle('ma-tap-on',!c.classList.contains('is-on'));c.classList.toggle('ma-tap-off',c.classList.contains('is-on'))}
     c.classList.add('ma-press');if(c.matches('.crit-chip,.jh-suggestion,.ma-guide-pills a,.ma-cinema-dock a'))fx.tap();
   },{capture:true,passive:true});
-  ['pointerup','pointercancel'].forEach(function(t){document.addEventListener(t,function(){var p=document.querySelectorAll('.ma-press');for(var i=0;i<p.length;i++)p[i].classList.remove('ma-press')},{capture:true,passive:true})});
+  ['pointerup','pointercancel'].forEach(function(t){document.addEventListener(t,function(){var p=document.querySelectorAll('.ma-press');setTimeout(function(){for(var i=0;i<p.length;i++)p[i].classList.remove('ma-press')},90)},{capture:true,passive:true})});
 
   /* Jonas open/close + match found cues */
   document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('.jh-close,#ma-jonas-home-close,[aria-label*="Fechar"],[aria-label*="Close"]');if(t&&t.closest('#ma-jonas-home-panel,#ma-ambient-panel'))fx.close();},true);
