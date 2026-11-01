@@ -33,6 +33,10 @@ test('adult About credits use TMDB’s approved asset and keep the required noti
    dom.window.MATCH_LANG = lang;
    document.dispatchEvent(new dom.window.Event('matchapp:langchange'));
    assert.equal(credit.lang, lang);
+   const tv = document.getElementById('tvmaze-credit');
+   assert.equal(tv.lang,lang);assert.ok(tv.querySelector('a[href="https://www.tvmaze.com/api"]'));
+   assert.ok(tv.querySelector('a[href="https://creativecommons.org/licenses/by-sa/4.0/"]'));
+   assert.equal(tv.querySelector('[data-tvmaze-label]').textContent==='TV data from',lang==='en');
    assert.match(credit.textContent, /JustWatch/);
    assert.equal(credit.textContent === english, lang === 'en');
    assert.equal(notice.textContent, 'This product uses the TMDB API but is not endorsed or certified by TMDB.');

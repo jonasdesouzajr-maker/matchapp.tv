@@ -1,6 +1,37 @@
 // Keep every public page on the canonical MatchApp brand without localizing the product name.
 const fs=require('node:fs'),path=require('node:path'),{Buffer}=require('node:buffer'),{JSDOM}=require('jsdom');
 const ROOT=path.join(__dirname,'..');
+// Page-source defaults, not a CMP. Only a real consent provider may grant consent.
+const MARKER='data-ma-consent-defaults';
+const SCRIPT=`<script ${MARKER}="20261101-1">
+(function(w){
+  var q=w.dataLayer=w.dataLayer||[];
+  var g=w.gtag=w.gtag||function(){q.push(arguments);};
+  if(!q.some(function(x){return x&&x[0]==='consent'&&x[1]==='default';})){
+    g('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:2000,region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+  }
+  try{if(w.localStorage.getItem('match_cookie_choice')==='essential')g('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});}catch(_){}
+})(window);
+</script>`;
+function firstGoogleTag(doc){
+  return [...doc.scripts].find(node=>{
+    if(node.namespaceURI!=='http://www.w3.org/1999/xhtml'||node.closest('svg,math,template'))return false;
+    if(!/^(?:|module|(?:text|application)\/(?:java|ecma)script)$/i.test(node.getAttribute('type')||''))return false;
+    return /(?:googletagmanager\.com\/(?:gtm|gtag\/js)|pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js)/.test(node.getAttribute('src')||'') || /googletagmanager\.com\/gtm\.js/.test(node.textContent);
+  });
+}
+function consentSourceEdit(dom,html){
+  const doc=dom.window.document;
+  if(doc.querySelector('script['+MARKER+']'))return null;
+  const first=firstGoogleTag(doc);
+  if(!first)return null;
+  const at=dom.nodeLocation(first)?.startOffset;
+  if(!Number.isInteger(at))throw new Error('Consent defaults require a located Google tag');
+  const eol=html.includes('\r\n')?'\r\n':'\n';
+  return [at,at,SCRIPT.replace(/\n/g,eol)+eol];
+}
+
+
 const ADULT='MatchApp Ai',KIDS='MatchApp Ai KIDS';
 const mark='<img class="matchapp-wordmark ma-playai-mark" src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" alt="" width="48" height="48" decoding="async" style="width:48px;height:48px;object-fit:contain;border:0;border-radius:0;box-shadow:none;background:transparent;vertical-align:middle"><span class="ma-playai-wordmark" data-ma-pill-exclude translate="no" style="display:inline-block;vertical-align:middle;margin-left:12px;font-family:\'Playfair Display\',Georgia,serif;font-weight:700;font-size:clamp(22px,4.6vw,30px);letter-spacing:.04em;line-height:1;white-space:nowrap;color:#E6C36A;text-shadow:0 1px 12px rgba(230,195,106,.28)">MatchApp <span style="color:#f8f1e0">Ai</span></span>';
 const kidsMark='<span class="matchapp-wordmark kids-wordmark" role="img" aria-label="MatchApp Ai KIDS">MatchApp Ai KIDS</span>';
@@ -40,6 +71,7 @@ function cinemaAssets(html, relativePath) {
     }
     if(!root?.startTag||!head?.startTag||!head.endTag||!body?.startTag)return html;
     const eol=html.includes('\r\n')?'\r\n':'\n',edits=[],insertions=new Map();
+    const consentEdit=consentSourceEdit(dom,html);if(consentEdit)edits.push(consentEdit);
     const family=rel==='index.html'?'home':rel==='explore.html'?'explore':'pages',found={system:false,family:false,script:false};
     const escaped=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const insert=(at,text)=>insertions.set(at,(insertions.get(at)||'')+text);
@@ -177,6 +209,7 @@ function referenceRuntimeAssetURL(url){
  if(['reference-system.js','reference-density.js','settings.js'].includes(file))entries.push(['perf','20261027-1']);
  if(['reference-support.css','reference-support.js'].includes(file))entries.push(['compactfooter','20261027-1']);
  if(['app.js','catalog-media.js','matchapp-ia.js','ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['guestcountry','20261027-1']);
+ if(file==='jonas-adult-page.js')entries.push(['subtle','20261101-1']);
  return withQueryParams(url,entries);
 }
 function versionReferenceRuntimeAssets(html){
@@ -257,6 +290,7 @@ function finalizeBrand(ownedPaths){
    html=html.replace(/<img\b[^>]*class=(["'])[^"']*\bmatchapp-wordmark\b[^"']*\1[^>]*>/gi,kidsMark);
   }
   const dom=new JSDOM(html,{includeNodeLocations:true}),doc=dom.window.document,edits=[];
+  if(!kids){const consentEdit=consentSourceEdit(dom,html);if(consentEdit)edits.push(consentEdit);}
   const replace=(el,text)=>{const at=dom.nodeLocation(el);if(at)edits.push([at.startOffset,at.endOffset,text]);};
   const brand=doc.querySelector('body > header a[href="/"],body > header a[href="/kids/"],.hub-header .hub-brand,.kids-brand');
   // The shared adult text lockup is already canonical; keep its styling hooks.
@@ -303,5 +337,5 @@ function finalizeBrand(ownedPaths){
  }
  return count;
 }
-module.exports={canonicalFavicons,FAVICON_LINKS,CRITICAL_STYLE_PRELOADS,versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
+module.exports={MARKER,SCRIPT,firstGoogleTag,consentSourceEdit,canonicalFavicons,FAVICON_LINKS,CRITICAL_STYLE_PRELOADS,versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
 if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');
