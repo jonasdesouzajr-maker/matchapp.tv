@@ -202,6 +202,7 @@ internal class NativeNewsBridge(
             if (current(value) && loading && expectedLoad == loadGeneration) fail(value, "load_timeout")
         }.also { handler.postDelayed(it, 20_000) }
         try {
+            android.util.Log.i("MatchAppAds", "native requestAd debug=${BuildConfig.DEBUG}")
             AdLoader.Builder(activity, BuildConfig.ADMOB_NATIVE_NEWS_ID)
                 .forNativeAd { loaded ->
                     android.util.Log.i("MatchAppAds", "native onAdLoaded")
@@ -303,7 +304,13 @@ internal class NativeNewsBridge(
     private fun emitAvailability(value: Document) {
         when {
             unavailableReason.isNotEmpty() -> emit(value, "unavailable", unavailableReason)
-            !eligible(value) -> emit(value, "unavailable", if (!hasValue) "first_value_required" else "consent_or_entitlement")
+            !eligible(value) -> emit(value, "unavailable", when {
+                !foreground -> "activity_not_foreground"
+                accountContext == null -> "account_unknown"
+                !hasValue -> "first_value_required"
+                !web.isShown || web.windowVisibility != View.VISIBLE -> "webview_not_visible"
+                else -> "consent_or_entitlement"
+            })
             loading -> emit(value, "loading")
             host.isVisible && adView?.isVisible == true -> emit(value, "ready")
             ad != null -> emit(value, "hidden", "awaiting_visible_slot")
@@ -316,6 +323,9 @@ internal class NativeNewsBridge(
         if (destroyed || !current(value) || (value.lastStatus == status && value.lastReason == reason)) return
         value.lastStatus = status
         value.lastReason = reason
+        // State transitions only: enough to diagnose a missing load without account IDs,
+        // credentials, article contents or ad response data in logcat.
+        android.util.Log.i("MatchAppAds", "native state=$status reason=$reason")
         val payload = JSONObject().put("requestId", value.id).put("status", status).put("reason", reason)
             .put("enabled", installed).put("eligible", eligible(value) && unavailableReason.isEmpty())
             .put("heightCss", NativeNewsPolicy.HEIGHT_CSS).put("minWidthCss", NativeNewsPolicy.MIN_WIDTH_CSS)

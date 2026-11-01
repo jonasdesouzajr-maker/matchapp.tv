@@ -1,0 +1,10 @@
+{
+  "asset": "/native-news-slot.js?v=20261101-2",
+  "template": "tools/refresh-news-rss.js:NEWS_NATIVE_ASSETS",
+  "pages": [
+    "index.html",
+    "ebooks/index.html",
+    "news/index.html"
+  ],
+  "generatorParity": true
+}

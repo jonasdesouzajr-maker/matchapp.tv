@@ -95,6 +95,9 @@ class MainActivity : AppCompatActivity() {
     private var growthReferrer: GrowthInstallReferrer? = null
     private var growthCanRestore = false
     private var lastUrl = HOME
+    private var publicPageRetry: Runnable? = null
+    private var publicPageRetryUrl: String? = null
+    private var publicPageRetryAttempts = 0
     private var pageUiState: String? = null
     private var pendingPageUiState: String? = null
     private data class ScrollRestore(val url: String, val x: Int, val y: Int, var ownedByPage: Boolean = false)
@@ -225,9 +228,9 @@ class MainActivity : AppCompatActivity() {
             databaseEnabled = true
             loadsImagesAutomatically = true
             mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
-            // Always cold-load current production HTML/assets when the Android
-            // activity starts; normal caching resumes after the first page finishes.
-            cacheMode = WebSettings.LOAD_NO_CACHE
+            // Respect HTTP freshness for versioned public assets. Match/Ask
+            // documents and an explicit manual Retry retain their cold-load path.
+            cacheMode = WebSettings.LOAD_DEFAULT
             mediaPlaybackRequiresUserGesture = false
             setSupportMultipleWindows(true)
             javaScriptCanOpenWindowsAutomatically = true
@@ -551,6 +554,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        publicPageRetry?.let { web.removeCallbacks(it) }
+        publicPageRetry = null
         growthReferrer?.close()
         growthReferrer = null
         finishIntro(immediate = true)
@@ -793,6 +798,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun retry() {
+        publicPageRetry?.let { web.removeCallbacks(it) }
+        publicPageRetry = null
+        publicPageRetryUrl = null
+        publicPageRetryAttempts = 0
         if (!isDebugSmokeUrl(lastUrl) && !isOnline()) {
             showOffline(true)
             return
@@ -1127,6 +1136,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            publicPageRetry?.let { view.removeCallbacks(it) }
+            publicPageRetry = null
+            if (url != publicPageRetryUrl) {
+                publicPageRetryUrl = null
+                publicPageRetryAttempts = 0
+            }
             mainFrameFailed = false
             errorNotice.hide()
             lastPermissionInteractionAt = 0L
@@ -1154,7 +1169,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
-            if (!mainFrameFailed) view.visibility = View.VISIBLE
+            if (!mainFrameFailed) {
+                view.visibility = View.VISIBLE
+                publicPageRetryUrl = null
+                publicPageRetryAttempts = 0
+            }
             if (pendingNativeError) {
                 reportNativeError()
                 web.postDelayed({ reportNativeError() }, 2500)
@@ -1182,6 +1201,35 @@ class MainActivity : AppCompatActivity() {
                 if (!isOnline()) showOffline(true)
                 else errorNotice.show(startupStrings().getString(R.string.error_notice_generic), startupStrings().getString(R.string.offline_retry)) { retry() }
             }
+        }
+
+        override fun onReceivedHttpError(view: WebView, request: WebResourceRequest, response: WebResourceResponse) {
+            val url = request.url.toString()
+            if (!request.isForMainFrame || lastUrl != url || response.statusCode !in setOf(429, 503) ||
+                !PublicPageRetryPolicy.publicDocument(url)) return
+            mainFrameFailed = true
+            view.visibility = View.INVISIBLE
+            splashKeep = false
+            finishStartupTransition(immediate = true)
+            val retryAfter = response.responseHeaders?.entries?.firstOrNull { it.key.equals("Retry-After", true) }?.value
+            val delay = PublicPageRetryPolicy.delayMillis(url, request.method, response.statusCode,
+                retryAfter, publicPageRetryAttempts, System.currentTimeMillis())
+            publicPageRetry?.let { view.removeCallbacks(it) }
+            publicPageRetry = null
+            if (delay == null) {
+                refresh.isRefreshing = false
+                errorNotice.show(startupStrings().getString(R.string.error_notice_generic), startupStrings().getString(R.string.offline_retry)) { retry() }
+                return
+            }
+            publicPageRetryUrl = url
+            publicPageRetryAttempts += 1
+            publicPageRetry = Runnable {
+                publicPageRetry = null
+                if (!isFinishing && !isDestroyed && lastUrl == url) {
+                    view.settings.cacheMode = WebSettings.LOAD_DEFAULT
+                    view.loadUrl(url)
+                }
+            }.also { view.postDelayed(it, delay + kotlin.random.Random.nextLong(0L, 251L)) }
         }
     }
 
@@ -1761,7 +1809,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=66"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=68"
         const val APP_UA = "MatchAppTVAndroid/1.1.68 MatchAppAiAndroid/1.1.68 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"

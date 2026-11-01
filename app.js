@@ -9,8 +9,40 @@ console.log("Mastercode 103: Quota fallback hardening (logged-in RPC outage)");
 const SUPABASE_URL = 'https://zkymvqrmbabngsqblyye.supabase.co'; 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q';
 
+// Account surfaces and the embedded Jonas conversation use the same client.
+// A second GoTrueClient competing for the same storage can steal its session
+// lock during startup. Reuse the live parent owner before creating anything.
+function sharedMatchAuthClient() {
+    let client = window.supabaseClient, parentClient = false;
+    try {
+        if (!client && window.top !== window && window.top.location.origin === window.location.origin &&
+            !/^\/(kids|private-voice)(\/|$)/.test(window.top.location.pathname)) {
+            client = window.top.supabaseClient;
+            parentClient = !!client;
+        }
+    } catch (_) { /* Cross-origin embeddings keep their own isolated client. */ }
+    if (!client && window.supabase) client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{experimental:{passkey:true},flowType:(window.MatchAppNativeAuth && typeof window.MatchAppNativeAuth.openOAuth==='function')?'pkce':'implicit'}});
+    if (!parentClient && client?.auth?.getSession && !client.auth.__matchappSessionFlight) {
+        const getSession = client.auth.getSession.bind(client.auth);
+        let flight = null;
+        // Coalesce concurrent reads without caching a settled session or
+        // replacing Supabase's locking, refresh or persistent-storage rules.
+        client.auth.getSession = function () {
+            if (!flight) {
+                const current = Promise.resolve().then(getSession).finally(() => {
+                    if (flight === current) flight = null;
+                });
+                flight = current;
+            }
+            return flight;
+        };
+        Object.defineProperty(client.auth, '__matchappInvalidateSessionRead', { value: () => { flight = null; } });
+        Object.defineProperty(client.auth, '__matchappSessionFlight', { value: true });
+    }
+    return client || null;
+}
 let supabaseClient = null;
-try { if (window.supabase) supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{experimental:{passkey:true},flowType:(window.MatchAppNativeAuth && typeof window.MatchAppNativeAuth.openOAuth==='function')?'pkce':'implicit'}}); } catch (e) {}
+try { supabaseClient = sharedMatchAuthClient(); } catch (e) {}
 window.supabaseClient = supabaseClient;
 
 let globalMatchTitle = ""; let globalMatchPoster = ""; let globalPlatform = ""; let isUserLoggedIn = false; window.isUserLoggedIn = false;
@@ -2127,6 +2159,7 @@ window.eventMatch = function (query) {
 
 let authReturnFocus = null;
 window.openAuthModal = function() {
+    if (window.isUserLoggedIn) { window.closeAuthModal?.(); return; }
     const modal = document.getElementById('main-auth-modal');
     if (!modal) { location.href = '/?signIn=1'; return; }
     authReturnFocus = document.activeElement;
@@ -2415,12 +2448,22 @@ async function loginWithOAuthProvider(provider, label) {
         showError('Sign-in is temporarily unavailable. Please check your connection.');
         return;
     }
+    if (window.__maOAuthPending) return;
+    window.__maOAuthPending = true;
     // Google blocks embedded WebView OAuth. Installed Android uses the system
     // account chooser in a trusted browser and returns through verified App Links.
     // PKCE verifier remains in the app WebView's first-party Supabase auth storage.
     const nativeGoogle = provider === 'google' &&
         typeof window.MatchAppNativeAuth?.openOAuth === 'function';
     try {
+        // Wait for restoration before opening another provider flow. A stale
+        // visible sign-in control must never restart an authenticated session.
+        const current = await supabaseClient.auth.getSession?.();
+        if (current?.error) throw current.error;
+        if (current?.data?.session?.user?.id) {
+            window.closeAuthModal?.();
+            return;
+        }
         const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider,
             options: {
@@ -2438,6 +2481,8 @@ async function loginWithOAuthProvider(provider, label) {
         }
     } catch (error) {
         showError(error?.message || 'Could not start Google sign-in. Try again.');
+    } finally {
+        window.__maOAuthPending = false;
     }
 }
 window.loginWithGoogle = () => loginWithOAuthProvider('google','Google');
@@ -2913,13 +2958,16 @@ async function claimRegistrationWelcomeBonus(user) {
 
 let profileAuthEvent = 0;
 if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'function') {
-    supabaseClient.auth.onAuthStateChange((event, session) => {
+    const profileAuthSubscription = supabaseClient.auth.onAuthStateChange((event, session) => {
+        // An account/token event supersedes any read begun for the old identity.
+        supabaseClient.auth.__matchappInvalidateSessionRead?.();
         const authEvent=++profileAuthEvent;
         ++profileHydrationEpoch;
         if (session && session.user) {
             setProfileLoadState('loading',session.user.id);
             isUserLoggedIn = true;
             window.isUserLoggedIn = true;
+            window.closeAuthModal?.();
             const regBtn = document.getElementById('nav-reg-btn');
             const outBtn = document.getElementById('nav-logout-btn');
             const profTab = document.getElementById('profile-link-tab');
@@ -2973,6 +3021,12 @@ if (supabaseClient?.auth && typeof supabaseClient.auth.onAuthStateChange === 'fu
         document.dispatchEvent(new CustomEvent('matchapp:authchange', {
             detail: { signedIn: window.isUserLoggedIn }
         }));
+    });
+    if (window.top !== window) window.addEventListener('pagehide', function releaseFrameAuth(event) {
+        if (event.persisted) return;
+        ++profileAuthEvent; ++profileHydrationEpoch;
+        profileAuthSubscription?.data?.subscription?.unsubscribe();
+        window.removeEventListener('pagehide', releaseFrameAuth);
     });
 }
 

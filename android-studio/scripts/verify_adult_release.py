@@ -23,7 +23,7 @@ assert "targetSdk = 36" in gradle and "versionCode = 68" in gradle
 assert 'versionName = "1.1.68"' in gradle
 assert 'package="tv.matchapp.app"' not in manifest
 assert "package com.jonas.papercup" in activity
-assert "appBuild=66" in activity
+assert "appBuild=68" in activity
 assert "isKidsUri(target)" in activity
 assert "child.post { child.destroy() }" in activity
 assert 'applicationId = "tv.matchapp.kids"' in kids

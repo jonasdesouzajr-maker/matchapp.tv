@@ -1,0 +1,885 @@
+{
+  "note": "Local production HTML/assets rendered in fresh guest Chromium; native user-agent coverage is not physical Android testing. No live-provider or signed-in claim.",
+  "results": [
+    {
+      "width": 320,
+      "native": false,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.22",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+        "gridTemplateColumns": "76.1562px 76.1562px 76.1562px 76.1562px 76.1562px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.56",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "76.1562px 76.1562px 76.1562px 76.1562px 76.1562px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.22",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "76.1562px 76.1562px 76.1562px 76.1562px 76.1562px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "native": true,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.22",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+        "gridTemplateColumns": "76.1562px 76.1562px 76.1562px 76.1562px 76.1562px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.56",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "76.1562px 76.1562px 76.1562px 76.1562px 76.1562px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.22",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "76.1562px 76.1562px 76.1562px 76.1562px 76.1562px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "native": false,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.22",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+        "gridTemplateColumns": "77.2656px 77.2656px 77.2656px 77.2656px 77.2656px 77.2656px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.56",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "77.2656px 77.2656px 77.2656px 77.2656px 77.2656px 77.2656px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.22",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "77.2656px 77.2656px 77.2656px 77.2656px 77.2656px 77.2656px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "native": true,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.22",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+        "gridTemplateColumns": "77.2656px 77.2656px 77.2656px 77.2656px 77.2656px 77.2656px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.56",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "77.2656px 77.2656px 77.2656px 77.2656px 77.2656px 77.2656px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.22",
+          "filter": "blur(1.5px) saturate(1.15)",
+          "transform": "matrix3d(1.11574, -0.0966645, -0.0135853, 1.13211e-05, 0.0976144, 1.10488, 0.155281, -0.000129401, 0, -0.139173, 0.990268, -0.000825223, 0, 0, 0, 1)",
+          "gridTemplateColumns": "77.2656px 77.2656px 77.2656px 77.2656px 77.2656px 77.2656px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 800,
+      "native": false,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.28",
+        "filter": "blur(2px) saturate(1.18)",
+        "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+        "gridTemplateColumns": "93.7969px 93.7969px 93.7969px 93.7969px 93.8125px 93.7969px 93.7969px 93.7969px 93.7969px 93.7969px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.7",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "93.7969px 93.7969px 93.7969px 93.7969px 93.8125px 93.7969px 93.7969px 93.7969px 93.7969px 93.7969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.28",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "93.7969px 93.7969px 93.7969px 93.7969px 93.8125px 93.7969px 93.7969px 93.7969px 93.7969px 93.7969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 800,
+      "native": true,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.28",
+        "filter": "blur(2px) saturate(1.18)",
+        "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+        "gridTemplateColumns": "93.7969px 93.7969px 93.7969px 93.7969px 93.8125px 93.7969px 93.7969px 93.7969px 93.7969px 93.7969px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.7",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "93.7969px 93.7969px 93.7969px 93.7969px 93.8125px 93.7969px 93.7969px 93.7969px 93.7969px 93.7969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.28",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "93.7969px 93.7969px 93.7969px 93.7969px 93.8125px 93.7969px 93.7969px 93.7969px 93.7969px 93.7969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "native": false,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.28",
+        "filter": "blur(2px) saturate(1.18)",
+        "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+        "gridTemplateColumns": "105.969px 105.969px 105.984px 105.969px 105.969px 105.984px 105.969px 105.984px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.7",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "105.969px 105.969px 105.984px 105.969px 105.969px 105.984px 105.969px 105.984px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.28",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "105.969px 105.969px 105.984px 105.969px 105.969px 105.984px 105.969px 105.984px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1440,
+      "native": true,
+      "styleLink": "/patches/subtle-background-20261101.css?v=20261101-4",
+      "nativeClass": false,
+      "initial": {
+        "opacity": "0.28",
+        "filter": "blur(2px) saturate(1.18)",
+        "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+        "gridTemplateColumns": "105.969px 105.969px 105.984px 105.969px 105.969px 105.984px 105.969px 105.984px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px"
+      },
+      "before": {
+        "grid": {
+          "opacity": "0.7",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "105.969px 105.969px 105.984px 105.969px 105.969px 105.984px 105.969px 105.984px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      },
+      "after": {
+        "grid": {
+          "opacity": "0.28",
+          "filter": "blur(2px) saturate(1.18)",
+          "transform": "matrix3d(1.09581, -0.094691, -0.0149976, 9.37349e-06, 0.0958713, 1.08232, 0.171423, -0.000107139, 0, -0.156434, 0.987688, -0.000617305, 0, 0, 0, 1)",
+          "gridTemplateColumns": "105.969px 105.969px 105.984px 105.969px 105.969px 105.984px 105.969px 105.984px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px 105.969px"
+        },
+        "text": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "4px 12px",
+          "border": "0px",
+          "minHeight": "44px",
+          "display": "inline-flex",
+          "radius": "999px",
+          "background": "rgba(28, 18, 36, 0.75)"
+        },
+        "art": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "svg": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "canvas": {
+          "fontSize": "21px",
+          "fontWeight": "400",
+          "padding": "0px",
+          "border": "0px",
+          "minHeight": "0px",
+          "display": "inline",
+          "radius": "0px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "vignette": "radial-gradient(at 50% 40%, rgba(13, 8, 32, 0.15), rgba(13, 8, 32, 0.45) 70%)"
+      },
+      "horizontalOverflow": false
+    }
+  ]
+}

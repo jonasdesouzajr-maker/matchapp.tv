@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "repository": "jonasdesouzajr-maker/matchapp.tv",
+  "pull_request": 435,
+  "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+  "observed_at_utc": "2026-11-01T10:39:00Z",
+  "source": "Connected GitHub API readback",
+  "branch_protection": {
+    "required_status_checks": "unavailable",
+    "reason": "HTTP 403 Resource not accessible by integration",
+    "rulesets": []
+  },
+  "checks": [
+    {
+      "id": 124822030821,
+      "name": "CodeQL",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/runs/124822030821"
+    },
+    {
+      "id": 124821506795,
+      "name": "Cloudflare Pages",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://dash.cloudflare.com/?to=/ee95b470b42ed2e8cebab958dc080c59/pages/view/matchapp/d8ca959d-0784-49e6-994b-099cc061da6c"
+    },
+    {
+      "id": 124821484185,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532946/job/124821484185"
+    },
+    {
+      "id": 124821483760,
+      "name": "Vercel Preview Comments",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://vercel.com/github"
+    },
+    {
+      "id": 124821482560,
+      "name": "Complete matching and AI audit",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532995/job/124821482560"
+    },
+    {
+      "id": 124821482450,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532942/job/124821482450"
+    },
+    {
+      "id": 124821432838,
+      "name": "github-advanced-security",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297534134/job/124821432838"
+    },
+    {
+      "id": 124821426918,
+      "name": "analyze",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532990/job/124821426918"
+    },
+    {
+      "id": 124821426654,
+      "name": "Verify immutable AdSense contract",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532993/job/124821426654"
+    },
+    {
+      "id": 124821415404,
+      "name": "Verify immutable AdSense contract",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297529372/job/124821415404"
+    },
+    {
+      "id": 124821412516,
+      "name": "Supabase Preview",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://supabase.com/dashboard/project/zkymvqrmbabngsqblyye/branches"
+    }
+  ],
+  "commit_statuses": [
+    {
+      "context": "Vercel",
+      "state": "success",
+      "target_url": "https://vercel.com/jonasdesouzajr-9232/matchapp.tv/HG9hnEowwArACP3RXqKD7jqFpvh4"
+    }
+  ],
+  "runs": [
+    {
+      "id": 41297534134,
+      "name": "Code scanning AI findings on PR #435",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "dynamic",
+      "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+      "html_url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297534134"
+    },
+    {
+      "id": 41297532993,
+      "name": "AdSense Immutable Lock",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+      "html_url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532993"
+    },
+    {
+      "id": 41297532990,
+      "name": "Independent CodeQL Security Scan",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+      "html_url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532990"
+    },
+    {
+      "id": 41297532946,
+      "name": "Validate Android apps",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+      "html_url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532946"
+    },
+    {
+      "id": 41297532942,
+      "name": "Validate website",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+      "html_url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532942"
+    },
+    {
+      "id": 41297532995,
+      "name": "Matching and AI Audit",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+      "html_url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297532995"
+    },
+    {
+      "id": 41297529372,
+      "name": "AdSense Immutable Lock",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+      "html_url": "https://github.com/jonasdesouzajr-maker/matchapp.tv/actions/runs/41297529372"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 13079688673,
+      "name": "MatchApp-Ai-Android-Jonas-Ambient-DEBUG-APK"
+    },
+    {
+      "id": 13079299754,
+      "name": "MatchApp-Ai-adult-1.1.68-code68-UNSIGNED-AAB",
+      "zip_sha256": "f0c2ceb228c9a8175b269dcea6d16c44fb7a6bb809dbea2c59ee77312fa174e7"
+    },
+    {
+      "id": 13080082502,
+      "name": "matching-ai-audit",
+      "zip_sha256": "51f599eb91fee0b97dc1e56385a68b71c67aaa6450ca34aecbfc53634878ea4d"
+    }
+  ],
+  "previous_main": {
+    "sha": "481f7202500f8503f23893fdc4c08a0591a3d3bc",
+    "pages_run": 41294678999,
+    "pages_conclusion": "success",
+    "smoke_run": 41295035455,
+    "smoke_conclusion": "success"
+  },
+  "historical_failed_pages": {
+    "run_id": 41291101900,
+    "sha": "85654eb15dbd4e109690446ea5ecf26c95568072",
+    "deployment": "success",
+    "failed_step": "Request one live smoke for the deployed SHA",
+    "reason": "Smoke dispatch delivery confirmation timed out; actual smoke subsequently succeeded",
+    "matching_smoke_run": 41291576517,
+    "matching_smoke_conclusion": "success",
+    "rerun_performed": false
+  }
+}

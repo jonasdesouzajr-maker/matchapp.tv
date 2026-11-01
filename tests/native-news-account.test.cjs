@@ -349,7 +349,7 @@ test('only native standalone News loads the pinned shared client; SDK failure st
     assert.equal(f.calls.create.length, 1);
     assert.equal(f.calls.create[0][0], app.match(/const SUPABASE_URL = '([^']+)'/)[1]);
     assert.equal(f.calls.create[0][1], app.match(/const SUPABASE_ANON_KEY = '([^']+)'/)[1]);
-    assert.deepEqual(f.calls.create[0][2], { auth: { detectSessionInUrl: false } }, 'no custom storage, login, callback or refresh engine');
+    assert.deepEqual(f.calls.create[0][2], { auth: { detectSessionInUrl: false, experimental: { passkey: true }, flowType: 'implicit' } }, 'shared browser flow keeps default storage and the account passkey opt-in');
     assert.equal(f.w.supabaseClient, f.client);
     assert.equal(f.native.hasValue, true);
   } finally { f.close(); }
@@ -409,3 +409,35 @@ test('page restoration rechecks identity and explicit disposal releases subscrip
   } finally { f.close(); }
 });
 
+
+test('standalone News owns one coalesced session reader shared by its Jonas frame', async () => {
+  const f = fixture(), pending = deferred();
+  try {
+    f.boot(); await f.advance();
+    const before = f.calls.session;
+    f.controls.sessionRead = () => pending.promise;
+    const app = read('app.js');
+    const boot = app.slice(app.indexOf('function sharedMatchAuthClient()'), app.indexOf('let globalMatchTitle'));
+    const child = { top: f.w, location: { origin: 'https://matchapp.tv', pathname: '/discover.html' } };
+    vm.runInNewContext(boot, { window: child, SUPABASE_URL: 'unused', SUPABASE_ANON_KEY: 'unused' });
+    assert.equal(child.supabaseClient, f.client);
+    assert.equal(child.supabaseClient.auth.__matchappSessionFlight, true);
+    const first = child.supabaseClient.auth.getSession(), second = child.supabaseClient.auth.getSession();
+    await flush();
+    assert.equal(first, second); assert.equal(f.calls.session, before + 1);
+    pending.resolve(session(A));
+    assert.equal((await first).data.session.user.id, A);
+  } finally { f.close(); }
+});
+
+
+test('standalone News preserves native PKCE before the same client is reused by Google sign-in', async () => {
+  const f = fixture({ client: false });
+  try {
+    f.w.MatchAppNativeAuth = { openOAuth() {} };
+    f.installSdk(); f.boot(); await f.advance();
+    assert.equal(f.calls.create.length, 1);
+    assert.deepEqual(f.calls.create[0][2], { auth: { detectSessionInUrl: false, experimental: { passkey: true }, flowType: 'pkce' } });
+    assert.equal(await f.w.MatchAppNativeNewsAccount.ready, true);
+  } finally { f.close(); }
+});

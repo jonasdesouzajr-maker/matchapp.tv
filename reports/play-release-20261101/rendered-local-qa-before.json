@@ -1,0 +1,950 @@
+{
+  "base": "http://127.0.0.1:45365",
+  "note": "Fresh guest local static build; external endpoints may be unavailable under cloud network policy. No physical tablet validation.",
+  "results": [
+    {
+      "url": "/",
+      "styleActive": true,
+      "wall": null,
+      "grid": null,
+      "pills": [
+        {
+          "text": "Your profile →",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "League of Legends Worlds 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Kota Dussehra Mela (Fair) 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "39th Tokyo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Día de Muertos 2026 in Mexico City",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Mexico City Grand Prix Weekend 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "CCXP26",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "50th São Paulo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        }
+      ],
+      "overflow": false,
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "screenshot": "home-320.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://zkymvqrmbabngsqblyye.supabase.co/rest/v1/site_hits: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://zkymvqrmbabngsqblyye.supabase.co/auth/v1/settings: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/news/",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.56",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "images": 60,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "screenshot": "news-320.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/explore.html",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.56",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "images": 60,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "screenshot": "explore-320.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/aFgOkTM035yGTiuzv7GqYGi0Pwm.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/",
+      "styleActive": true,
+      "wall": null,
+      "grid": null,
+      "pills": [
+        {
+          "text": "Your profile →",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "League of Legends Worlds 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Kota Dussehra Mela (Fair) 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "39th Tokyo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Día de Muertos 2026 in Mexico City",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Mexico City Grand Prix Weekend 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "CCXP26",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "50th São Paulo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        }
+      ],
+      "overflow": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "home-390.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://zkymvqrmbabngsqblyye.supabase.co/rest/v1/site_hits: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://zkymvqrmbabngsqblyye.supabase.co/auth/v1/settings: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/news/",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.56",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "images": 72,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "news-390.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/explore.html",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.56",
+        "filter": "blur(1.5px) saturate(1.15)",
+        "images": 72,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "explore-390.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/aFgOkTM035yGTiuzv7GqYGi0Pwm.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/",
+      "styleActive": true,
+      "wall": null,
+      "grid": null,
+      "pills": [
+        {
+          "text": "Your profile →",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "League of Legends Worlds 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Kota Dussehra Mela (Fair) 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "39th Tokyo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Día de Muertos 2026 in Mexico City",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Mexico City Grand Prix Weekend 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "CCXP26",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "50th São Paulo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        }
+      ],
+      "overflow": false,
+      "viewport": {
+        "width": 800,
+        "height": 1280
+      },
+      "screenshot": "home-800.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://zkymvqrmbabngsqblyye.supabase.co/rest/v1/site_hits: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/1S8gnT06MDkAmHmzDLSVughE0t0.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/1S8gnT06MDkAmHmzDLSVughE0t0.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://zkymvqrmbabngsqblyye.supabase.co/auth/v1/settings: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/news/",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.7",
+        "filter": "blur(2px) saturate(1.18)",
+        "images": 120,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 800,
+        "height": 1280
+      },
+      "screenshot": "news-800.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/explore.html",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.7",
+        "filter": "blur(2px) saturate(1.18)",
+        "images": 150,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 800,
+        "height": 1280
+      },
+      "screenshot": "explore-800.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/aFgOkTM035yGTiuzv7GqYGi0Pwm.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/",
+      "styleActive": true,
+      "wall": null,
+      "grid": null,
+      "pills": [
+        {
+          "text": "Your profile →",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "League of Legends Worlds 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Kota Dussehra Mela (Fair) 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "39th Tokyo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Día de Muertos 2026 in Mexico City",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "Mexico City Grand Prix Weekend 2026",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "CCXP26",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "text": "50th São Paulo International Film Festival",
+          "classes": "",
+          "display": "inline-flex",
+          "radius": "999px",
+          "padding": "4px 12px",
+          "background": "rgba(28, 18, 36, 0.75)",
+          "border": "1px",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        }
+      ],
+      "overflow": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "home-1440.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/1KTYMK7N2vRe8PowCyb799DbDRR.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/bqSgt3OZDvHnOfoZEr7l0jVrSqB.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://zkymvqrmbabngsqblyye.supabase.co/rest/v1/site_hits: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/Ac8ruycRXzgcsndTZFK6ouGA0FA.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/gtUqzLLaarxvNWzKeBepwWfTfm8.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/ewelBEOwfr8EIjnrc6Drov67xe1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/s6HrSQwSwtzLlJYq2yeur3J5iR9.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w780/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w342/scl6uVD0YZc46WZHgXbEcaH2zYw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/1S8gnT06MDkAmHmzDLSVughE0t0.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w185/wlb6vunPuBjboYnmy4r3NlKZWji.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/news/",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.7",
+        "filter": "blur(2px) saturate(1.18)",
+        "images": 140,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "news-1440.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://www.googletagmanager.com/gtm.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "url": "/explore.html",
+      "styleActive": true,
+      "wall": {
+        "display": "block",
+        "after": "radial-gradient(60% 45% at 50% 42%, rgba(230, 195, 106, 0.08), rgba(230, 195, 106, 0) 70%), linear-gradient(rgba(13, 8, 32, 0.22) 0%, rgba(13, 8, 32, 0.18) 38%, rgba(13, 8, 32, 0.2) 62%, rgba(13, 8, 32, 0.32) 100%), radial-gradient(120% 95% at 50% 45%, rgba(13, 8, 32, 0) 45%, rgba(13, 8, 32, 0.38) 100%), linear-gradient(rgba(36, 18, 70, 0.22), rgba(36, 18, 70, 0.22))"
+      },
+      "grid": {
+        "opacity": "0.7",
+        "filter": "blur(2px) saturate(1.18)",
+        "images": 176,
+        "decoded": 0
+      },
+      "pills": [],
+      "overflow": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "explore-1440.png",
+      "failedRequests": [
+        "https://fonts.googleapis.com/css2: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/3bhkrj58Vtu7enYsRolD1fZdja1.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qJ2tW6WMUDux911r6m7haRef0WH.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/ggFHVNu6YYI5L9pCfOacjizRGt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/rTc7ZXdroqjkKivFPvCPX0Ru7uw.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/qcj2z13G0KjaIgc01ifiUKu7W07.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/1vct3vbSYpsQonrbvhaLCA8jVgt.jpg: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "https://image.tmdb.org/t/p/w154/aFgOkTM035yGTiuzv7GqYGi0Pwm.jpg: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "pageErrors": []
+    },
+    {
+      "jonasShortPanel": {
+        "#ma-jonas-home-panel": {
+          "visible": true,
+          "top": 217.796875,
+          "bottom": 388.703125,
+          "height": 170.90625,
+          "overflow": "hidden",
+          "flexShrink": "1"
+        },
+        ".jh-greeting": {
+          "visible": true,
+          "top": 43.890625,
+          "bottom": 164.890625,
+          "height": 121,
+          "overflow": "visible",
+          "flexShrink": "1"
+        },
+        ".jh-form": {
+          "visible": true,
+          "top": 285.796875,
+          "bottom": 329.796875,
+          "height": 44,
+          "overflow": "visible",
+          "flexShrink": "0"
+        }
+      }
+    }
+  ]
+}

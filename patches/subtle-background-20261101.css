@@ -1,18 +1,20 @@
-/* Browser-only atmosphere: preserve the locked artwork, density, geometry and blur. */
-html[data-ma-subtle-browser="true"] body:not(.kids-body) .poster-wall .poster-wall-grid {
+/* Adult atmosphere: preserve the locked artwork, density, geometry and blur. */
+/* Nested important rules keep this requested pass above legacy visual owners. */
+@layer ma-reference.refinement.subtle-background {
+html[data-ma-subtle-active="true"] body:not(.kids-body) .poster-wall .poster-wall-grid {
   opacity: 0.28 !important;
 }
 @media (max-width: 700px) {
-  html[data-ma-subtle-browser="true"] body:not(.kids-body) .poster-wall .poster-wall-grid {
+  html[data-ma-subtle-active="true"] body:not(.kids-body) .poster-wall .poster-wall-grid {
     opacity: 0.22 !important;
   }
 }
-html[data-ma-subtle-browser="true"] body:not(.kids-body) .poster-wall::after {
+html[data-ma-subtle-active="true"] body:not(.kids-body) .poster-wall::after {
   background: radial-gradient(ellipse at 50% 40%, rgba(13,8,32,0.15), rgba(13,8,32,0.45) 70%) !important;
 }
 
 /* Text links only: do not resize artwork links or existing controls; inherit font scale. */
-html[data-ma-subtle-browser="true"] body:not(.kids-body) :is(.card, .tile, .poster, .result-card, .global-event, .marquee-item, .premium-card) a:not([class*="btn"]):not([class*="button"]):not([class*="pill"]):not(.gold-btn):not([data-ma-control-pill]):not(:has(img,picture,svg,video,canvas)) {
+html[data-ma-subtle-active="true"] body:not(.kids-body) :is(.card, .tile, .poster, .result-card, .global-event, .marquee-item, .premium-card) a:not([class*="btn"]):not([class*="button"]):not([class*="pill"]):not(.gold-btn):not([data-ma-control-pill]):not(:has(img,picture,svg,video,canvas)) {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
@@ -26,4 +28,5 @@ html[data-ma-subtle-browser="true"] body:not(.kids-body) :is(.card, .tile, .post
   border: 0 !important;
   color: #f6e7c4 !important;
   text-decoration: none !important;
+}
 }

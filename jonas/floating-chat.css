@@ -38,6 +38,7 @@ body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-content{
  padding:19px 16px 14px!important;overscroll-behavior:contain
 }
 body.ma-jonas-inline #ma-jonas-home.is-chat-stage .jh-greeting{
+ flex-shrink:0;
  padding:15px 16px;border-radius:19px 19px 19px 7px;
  background:linear-gradient(155deg,#423052,#30213e);border:1px solid #eed09b30;
  font-size:14px;line-height:1.55;color:#f5eafb;box-shadow:0 7px 18px #0002

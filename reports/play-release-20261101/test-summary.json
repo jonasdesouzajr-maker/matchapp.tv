@@ -1,0 +1,10 @@
+{
+  "tests": 3358,
+  "pass": 3358,
+  "fail": 0,
+  "cancelled": 0,
+  "skipped": 0,
+  "todo": 0,
+  "source_sha": "ceab55a856dc611419316e6b1dc6a49c7accfd2c",
+  "command": "npm test"
+}

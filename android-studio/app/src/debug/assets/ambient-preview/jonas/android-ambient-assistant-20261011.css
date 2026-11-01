@@ -95,6 +95,11 @@ html body #ma-ambient-panel .ja-hello{
  flex:0 0 auto!important;max-height:22%!important;min-height:0!important;
  padding:8px 14px!important;overflow:auto!important;line-height:1.55!important;white-space:normal!important;
 }
+/* Short-screen legacy styles must not hide the opening message. Keep its
+   existing bounded scroll region while the original iframe owns the composer. */
+@layer ma-reference.refinement.jonas-greeting {
+ html body:not(.kids-body) #ma-ambient-panel:not([hidden]) .ja-hello{display:block!important}
+}
 html body #ma-ambient-panel iframe{
  display:block!important;flex:1 1 auto!important;min-height:0!important;width:100%!important;
  border:0!important;position:relative!important;
@@ -103,7 +108,7 @@ html body #ma-ambient-panel iframe{
 @media(max-height:480px){
  html body #ma-ambient-panel .ja-panel-head{min-height:52px!important;padding:5px 12px!important}
  html body #ma-ambient-panel .ja-face-wrap{width:44px!important;height:44px!important}
- html body #ma-ambient-panel .ja-hello{display:none!important}
+ html body #ma-ambient-panel .ja-hello{max-height:22%!important;overflow-y:auto!important;flex-shrink:0!important}
 }
 @media(prefers-reduced-motion:reduce){
  html body #ma-ambient-panel{animation:none!important}

@@ -1,0 +1,11 @@
+{
+  "project": "zkymvqrmbabngsqblyye",
+  "function": "gemini-proxy",
+  "deployed_version": 126,
+  "status": "ACTIVE",
+  "verify_jwt": false,
+  "bundle_sha256": "1a6084dd9dbf1169b012a6497959eb7e752400b1857d30c397f64dfbb482b2d2",
+  "checked_on": "2026-11-01",
+  "comparison": "All eight deployed source files exactly equal repository source at ceab55a856dc611419316e6b1dc6a49c7accfd2c; SITE GUIDE prompt is present.",
+  "action": "No redundant deployment performed."
+}

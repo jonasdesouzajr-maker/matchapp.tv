@@ -53,6 +53,21 @@ test('Android page state captures full multiselect choices without passwords, dr
  }finally{f.dom.window.close();}
 });
 
+test('a static Jonas destination cannot replace the explicitly chosen native language with its authored English',()=>{
+ const f=pageFixture();try{
+  f.w.history.replaceState(null,'','/jonas/');
+  f.w.document.documentElement.lang='en';
+  f.w.MATCH_LANG='en';
+  f.w.localStorage.setItem('match_lang','pt-BR');
+  f.w.eval(state);
+  assert.equal(f.messages.at(-1).lang,'pt-BR');
+  assert.equal(f.w.localStorage.getItem('match_lang'),'pt-BR');
+  f.w.localStorage.setItem('match_lang','ja');
+  f.w.MatchAppNativePageCapture.capture();
+  assert.equal(f.messages.at(-1).lang,'ja');
+ }finally{f.dom.window.close();}
+});
+
 test('recreation restores allowed filter options and scroll through the existing criteria owner without generating a result',()=>{
  const f=pageFixture();try{
   f.w.__MATCHAPP_NATIVE_RESTORE__={version:1,url:f.w.location.href,filters:{'q-platform':['Max','unlisted'],'login-password':['overwritten']},scrollX:0,scrollY:480};

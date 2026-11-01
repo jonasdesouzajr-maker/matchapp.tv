@@ -76,6 +76,10 @@
     const d = w.document, timers = new Set();
     let client = null, subscription = null, disposed = false, starting = false, revision = 0, readTimer = null;
     let owner, observedOwner, resetPending = false; // undefined = unhydrated; null = verified signed-out.
+    let readyResolve, accountReady;
+    function prepareReady() { accountReady = new Promise(resolve => { readyResolve = resolve; }); }
+    function settleReady(value) { const resolve = readyResolve; readyResolve = null; resolve?.(value); }
+    prepareReady();
     function later(fn, ms) {
       const id = w.setTimeout(() => { timers.delete(id); fn(); }, ms);
       timers.add(id); return id;
@@ -106,6 +110,7 @@
     }
     function schedule(event, session) {
       if (disposed || !client) return;
+      client.auth.__matchappInvalidateSessionRead?.();
       const current = ++revision, next = identity(session);
       if (readTimer !== null) cancel(readTimer);
       const previous = observedOwner === undefined ? owner : observedOwner;
@@ -146,7 +151,7 @@
           if (error) reject(error); else resolve();
         }
         function loaded() { finish(typeof w.supabase?.createClient === 'function' ? null : new Error('sdk_unavailable')); }
-        function failed() { finish(new Error('sdk_unavailable')); }
+        function failed() { if (!existing) script.remove?.(); finish(new Error('sdk_unavailable')); }
         script.addEventListener('load', loaded, { once: true }); script.addEventListener('error', failed, { once: true });
         timeout = later(failed, 8000);
         if (!existing) { script.src = NEWS_AUTH_SDK; script.async = true; (d.head || d.documentElement).appendChild(script); }
@@ -154,21 +159,42 @@
     }
     async function start() {
       if (disposed || starting) return;
+      if (!readyResolve) prepareReady();
       starting = true;
       try {
         client = w.supabaseClient;
         if (!client) {
           await loadSdk();
           if (disposed) return;
-          client = w.supabaseClient || w.supabase.createClient(NEWS_AUTH_URL, NEWS_AUTH_KEY, { auth: { detectSessionInUrl: false } });
+          client = w.supabaseClient || w.supabase.createClient(NEWS_AUTH_URL, NEWS_AUTH_KEY, { auth: { detectSessionInUrl: false, experimental: { passkey: true }, flowType: typeof w.MatchAppNativeAuth?.openOAuth === 'function' ? 'pkce' : 'implicit' } });
         }
         if (typeof client?.auth?.getSession !== 'function' || typeof client.auth.onAuthStateChange !== 'function' ||
             typeof client.from !== 'function' || typeof client.rpc !== 'function') throw new Error('client_unavailable');
+        // This standalone page owns the client in the parent window. Install
+        // its read coalescer here so Jonas never attaches a frame-owned closure
+        // to a longer-lived parent client. schedule() invalidates old identities.
+        if (!client.auth.__matchappSessionFlight) {
+          const getSession = client.auth.getSession.bind(client.auth);
+          let flight = null;
+          client.auth.getSession = function () {
+            if (!flight) {
+              const current = Promise.resolve().then(getSession).finally(() => {
+                if (flight === current) flight = null;
+              });
+              flight = current;
+            }
+            return flight;
+          };
+          Object.defineProperty(client.auth, '__matchappInvalidateSessionRead', { value: () => { flight = null; } });
+          Object.defineProperty(client.auth, '__matchappSessionFlight', { value: true });
+        }
         w.supabaseClient = client;
         subscription = client.auth.onAuthStateChange(schedule)?.data?.subscription;
         schedule();
+        settleReady(true);
       } catch (_) {
         if (!disposed) unknown('error');
+        settleReady(false);
       } finally {
         starting = false;
       }
@@ -177,9 +203,16 @@
       if (client) schedule();
       else if (typeof w.supabase?.createClient === 'function') start();
     }
-    const controller = Object.freeze({ dispose() {
+    const controller = Object.freeze({
+      get ready() { return accountReady; },
+      retry() {
+        if (disposed) return Promise.resolve(false);
+        if (!starting) { prepareReady(); start(); }
+        return accountReady;
+      },
+      dispose() {
       if (disposed) return;
-      disposed = true; ++revision;
+      disposed = true; ++revision; settleReady(false);
       timers.forEach(id => w.clearTimeout(id)); timers.clear();
       subscription?.unsubscribe(); w.removeEventListener('pageshow', resume);
     } });
@@ -426,12 +459,26 @@
       for (const name of ['focusin', 'beforetoggle', 'toggle', 'fullscreenchange']) listen(d, name, invalidate, true);
       if (w.visualViewport) for (const name of ['resize', 'scroll']) listen(w.visualViewport, name, invalidate, { passive: true });
       if (typeof w.MutationObserver === 'function') {
+        function faceAnimationOnly(record) {
+          if (record.type !== 'attributes' || record.attributeName !== 'class') return false;
+          const target = record.target;
+          if (target.closest?.('.ja-premium-face')) return true;
+          const before = String(record.oldValue || '').split(/\s+/).filter(Boolean);
+          const after = String(target.getAttribute?.('class') || '').split(/\s+/).filter(Boolean);
+          const layer = target.tagName === 'IMG' && target.parentElement?.matches('.ma-life') &&
+            (before.includes('ma-lf') || after.includes('ma-lf'));
+          const host = before.includes('ma-life') || after.includes('ma-life');
+          if (!layer && !host) return false;
+          const animationClasses = layer ? ['on'] : ['ma-smiling', 'ma-talking', 'ma-thinking'];
+          const stableClasses = classes => classes.filter(name => !animationClasses.includes(name)).sort().join(' ');
+          return stableClasses(before) === stableClasses(after);
+        }
         observer = new w.MutationObserver(records => {
           // Ambient Jonas face blinks swap classes inside its avatar every few
           // seconds; they never change geometry, so they must not flash the ad.
-          if (records.some(record => !slot || (record.target !== slot && !slot.contains(record.target) && !(record.type === 'attributes' && record.attributeName === 'class' && record.target.closest?.('.ja-premium-face'))))) invalidate();
+          if (records.some(record => !slot || (record.target !== slot && !slot.contains(record.target) && !faceAnimationOnly(record)))) invalidate();
         });
-        observer.observe(d.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'open', 'aria-hidden', 'aria-modal', 'style', 'class'] });
+        observer.observe(d.body, { subtree: true, childList: true, attributes: true, attributeOldValue: true, attributeFilter: ['hidden', 'open', 'aria-hidden', 'aria-modal', 'style', 'class'] });
       }
     }
     const controller = Object.freeze({ refresh: () => queueHello(true), confirmValue, dispose, get requestId() { return requestId; } });

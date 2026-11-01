@@ -1,0 +1,1 @@
+{"sdk":"@supabase/supabase-js@2.105.0 UMD","createdClients":1,"concurrentReads":20,"sdkSessionReadsFor20Requests":1,"sharedSameOriginFrame":true,"deferredAuthSessionRead":true,"providerCalls":0,"status":"passed"}

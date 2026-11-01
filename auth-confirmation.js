@@ -101,7 +101,7 @@
         let session = null;
         // The SDK automatically consumes implicit tokens or exchanges PKCE
         // codes; getSession waits for its initialization to finish.
-        if (!hasError && (hasResponse || legacySignup) && client?.auth?.getSession) {
+        if (!hasError && (hasResponse || legacySignup || directSignIn) && client?.auth?.getSession) {
             try {
                 const result = await client.auth.getSession();
                 session = result?.data?.session || null;

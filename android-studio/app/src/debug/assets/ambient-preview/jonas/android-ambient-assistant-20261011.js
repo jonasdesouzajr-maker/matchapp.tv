@@ -9,10 +9,81 @@
  // Only the Android app launches this script; explicit local QA opt-in never affects website users.
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
- var asset='/jonas/android-ambient-assistant-20261011.css?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1',frame=null,panel=null,root=null,bubble=null;
+ var asset='/jonas/android-ambient-assistant-20261011.css?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1&greeting=20261101-2',frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0,parkedBeforeChat=null;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
+ var frameAccountEpoch=0,accountStatus=null;
+ var accountCopy={
+  en:['Connecting to your conversation…','Account connection is unavailable. Try again.','Try again'],
+  pt:['Conectando à sua conversa…','A conexão com a conta está indisponível. Tente novamente.','Tentar novamente'],
+  es:['Conectando con tu conversación…','La conexión con la cuenta no está disponible. Inténtalo de nuevo.','Reintentar'],
+  fr:['Connexion à votre conversation…','La connexion au compte est indisponible. Réessayez.','Réessayer'],
+  de:['Verbindung zu deinem Gespräch…','Die Kontoverbindung ist nicht verfügbar. Versuche es erneut.','Erneut versuchen'],
+  it:['Connessione alla conversazione…',"La connessione all’account non è disponibile. Riprova.",'Riprova'],
+  tr:['Sohbetinize bağlanılıyor…','Hesap bağlantısı kullanılamıyor. Tekrar deneyin.','Tekrar dene'],
+  ru:['Подключаемся к беседе…','Не удалось подключиться к аккаунту. Повторите попытку.','Повторить'],
+  ar:['جارٍ الاتصال بمحادثتك…','الاتصال بالحساب غير متاح. حاول مجددًا.','إعادة المحاولة'],
+  hi:['आपकी बातचीत से कनेक्ट हो रहा है…','खाते से कनेक्शन उपलब्ध नहीं है। फिर कोशिश करें।','फिर कोशिश करें'],
+  id:['Menghubungkan percakapan Anda…','Koneksi akun tidak tersedia. Coba lagi.','Coba lagi'],
+  ja:['会話に接続しています…','アカウントに接続できません。もう一度お試しください。','再試行'],
+  ko:['대화에 연결하는 중…','계정에 연결할 수 없습니다. 다시 시도하세요.','다시 시도'],
+  zh:['正在连接你的对话…','暂时无法连接账户，请重试。','重试']
+ };
+ function conversationAccountCopy(){return accountCopy[String(selectedLanguage()).toLowerCase().split('-')[0]]||accountCopy.en}
+ function needsNewsAccount(){return /^\/news\/(?:index\.html)?$/.test(location.pathname)&&typeof window.MatchAppNativeNews?.postMessage==='function'}
+ function parentOwnsAccount(){
+  return /^\/(?:index\.html)?$|^\/ebooks\/(?:index\.html)?$/.test(location.pathname)||
+   typeof window.ensureCompactMatchSession==='function'||typeof window.sharedMatchAuthClient==='function'||
+   Array.from(document.scripts).some(function(script){try{return new URL(script.src,location.href).pathname==='/app.js'}catch(_){return false}});
+ }
+ function awaitParentAccount(retry){
+  return new Promise(function(resolve){
+   var finished=false,timer=setTimeout(function(){finish(false)},10000);
+   function finish(value){if(finished)return;finished=true;clearTimeout(timer);document.removeEventListener('DOMContentLoaded',loaded);resolve(value===true)}
+   function connect(){
+    if(!needsNewsAccount()){
+     if(!parentOwnsAccount()){finish(true);return}
+     if(window.supabaseClient){finish(true);return}
+     // The page's original runtime must own account initialization. A failed
+     // parser/SDK boot is recovered by an explicit page retry, never a child client.
+     if(retry)location.reload();
+     finish(false);return;
+    }
+    if(window.supabaseClient&&typeof window.ensureCompactMatchSession==='function'){finish(true);return}
+    var owner=window.MatchAppNativeNewsAccount;
+    if(!owner){finish(false);return}
+    var pending=retry&&typeof owner.retry==='function'?owner.retry():owner.ready;
+    Promise.resolve(pending).then(function(value){finish(value===true&&!!window.supabaseClient)},function(){finish(false)});
+   }
+   function loaded(){setTimeout(connect,0)}
+   // Native Jonas can appear while parser/deferred account scripts are pending.
+   // Other native pages without a parent runtime may own one client in the frame.
+   if(retry&&!needsNewsAccount()&&parentOwnsAccount()&&!window.supabaseClient){location.reload();finish(false);return}
+   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loaded,{once:true});
+   else connect();
+  });
+ }
+ function ensureFrameSource(candidate,title,retry){
+  if(typeof window.MatchAppNativeNews?.postMessage!=='function'){candidate.src=frameUrl(title);return}
+  var attempt=++frameAccountEpoch;
+  candidate.style.display='none';
+  if(accountStatus)accountStatus.remove();
+  var status=document.createElement('div'),message=document.createElement('p'),button=document.createElement('button');
+  accountStatus=status;status.className='ja-account-status';status.dataset.state='loading';status.setAttribute('role','status');
+  status.style.cssText='flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px;text-align:center';
+  message.textContent=conversationAccountCopy()[0];button.type='button';button.className='gold-btn';button.textContent=conversationAccountCopy()[2];button.hidden=true;
+  button.style.cssText='min-height:44px;padding:10px 18px';button.style.setProperty('display','none','important');
+  status.append(message,button);panel.appendChild(status);
+  button.addEventListener('click',function(){ensureFrameSource(candidate,title,true)});
+  awaitParentAccount(retry).then(function(available){
+   if(attempt!==frameAccountEpoch||frame!==candidate||!open||!candidate.isConnected)return;
+   if(!available){status.dataset.state='error';message.textContent=conversationAccountCopy()[1];button.textContent=conversationAccountCopy()[2];button.hidden=false;button.style.setProperty('display','inline-flex','important');return}
+   status.remove();if(accountStatus===status)accountStatus=null;
+   candidate.style.removeProperty('display');candidate.src=frameUrl(title);
+  });
+ }
+
  var labels={
   en:{hello:"Hi, I'm Jonas. How can I help?",subject:'I can tell you more about this title.',close:'Close Jonas chat',open:'Talk to Jonas',state:'Your conversation stays over this page'},
   pt:{hello:"Olá, sou o Jonas. Como posso ajudar?",subject:'Posso contar mais sobre este título.',close:'Fechar conversa com Jonas',open:'Conversar com Jonas',state:'Sua conversa fica sobre esta página'},
@@ -278,8 +349,8 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   ready=false;
   frame=document.createElement('iframe');frame.id='ma-ambient-chat-frame';
   frame.title='Jonas — MatchApp Ai';frame.allow='microphone';frame.referrerPolicy='same-origin';
-  frame.src=frameUrl(title);frame.addEventListener('load',onFrameLoad);
-  panel.appendChild(frame);
+  frame.addEventListener('load',onFrameLoad);
+  panel.appendChild(frame);ensureFrameSource(frame,title,false);
  }
  function readPanelViewport(){
   var v=window.visualViewport;
@@ -324,6 +395,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   // Opening/closing is presentation only. The original New chat action owns
   // resets; changing the matching result must not discard an existing thread.
   if(!frame){createFrame(activeTitle);frame.dataset.title=activeTitle;}
+  else if(!frame.getAttribute('src'))ensureFrameSource(frame,activeTitle,false);
   document.addEventListener('keydown',escapeKey);
   // Paint the panel first; page-wide work (body scroll lock restyles the whole
   // document, resize sync) runs once the 150ms fade has finished.
@@ -337,7 +409,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  (function(){var prev=window.MatchAppHandleBack;window.MatchAppHandleBack=function(){if(open){closePanel();return true}return typeof prev==='function'?prev():false};})();
  function closePanel(){
   if(!open)return;
-  open=false;stopConversation();
+  open=false;++frameAccountEpoch;stopConversation();
   document.body?.classList.remove('ma-jonas-modal-open');
   panel.hidden=true;panel.style.removeProperty('display');root.hidden=false;
   bubble.setAttribute('aria-expanded','false');bubble.ariaLabel=locale().open;
@@ -445,7 +517,8 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   bubble.addEventListener('click',function(){if(skipClick){skipClick=false;return}if(open)closePanel();else openPanel()});
   panel.querySelector('.ja-close').addEventListener('click',closePanel);
   window.addEventListener('resize',function(){if(root.dataset.jonasDefaultDock==='1'){defaultPosition();return}var r=root.getBoundingClientRect();if(root.style.left)setPosition(r.left,r.top)},{passive:true});
-  window.addEventListener('pagehide',stopConversation);
+  window.addEventListener('pagehide',function(){++frameAccountEpoch;stopConversation()});
+  window.addEventListener('pageshow',function(){if(open&&frame&&!frame.getAttribute('src'))ensureFrameSource(frame,activeTitle,false)});
   document.addEventListener('matchapp:langchange',function(){
    // The same-origin chat must use the same explicit language immediately.
    // Cancel any prior-language turn before accepting another microphone turn.
@@ -454,6 +527,10 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
    panel.querySelector('.ja-hello').textContent=locale().hello;
    panel.querySelector('.ja-head-text span').textContent=locale().state;
    panel.querySelector('.ja-close').ariaLabel=locale().close;
+   if(accountStatus){
+    accountStatus.querySelector('p').textContent=conversationAccountCopy()[accountStatus.dataset.state==='error'?1:0];
+    accountStatus.querySelector('button').textContent=conversationAccountCopy()[2];
+   }
    try{frame?.contentWindow?.setLanguage?.(selectedLanguage())}catch(_){}
   });
   routeNative();restore();
