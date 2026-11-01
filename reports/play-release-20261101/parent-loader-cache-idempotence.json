@@ -1,0 +1,6 @@
+{
+  "operation": "Read-only canonical asset finalizer, one and two passes",
+  "checked": 1619,
+  "idempotent": true,
+  "generatorsRun": 0
+}
