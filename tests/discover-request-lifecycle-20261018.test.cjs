@@ -464,3 +464,29 @@ test('duplicate queued submissions share one answer and debit and language chang
     }finally{answer.resolve({answer:'First answer',results:[],_live:true});dom.window.close();}
   }
 });
+
+for(const answer of [null,'   ',23,{message:'not a reply'}])test('unusable provider answer stays uncharged: '+JSON.stringify(answer),async()=>{
+  const {dom,w,events}=await boot();
+  try{
+    w.eval(functionSource('repairTruncatedJSON')+'\n'+functionSource('parseAIResponse'));
+    w.askAIConversational=async()=>w.parseAIResponse({candidates:[{content:{parts:[{text:JSON.stringify({answer,results:[]})}]}}]});
+    await w.askAndRender('Who directed Interstellar?');
+    assert.equal(events.filter(e=>e.type==='debit').length,0);
+    assert.match(w.document.querySelector('.chat-assistant').textContent,/No live answer/);
+  }finally{dom.window.close();}
+});
+
+test('provider failure and offline recovery stay free; the next usable reply debits once after it arrives',async()=>{
+  const {dom,w,events}=await boot(),answer=deferred();
+  try{
+    w.askAIConversational=async()=>{throw new Error('Transport failure');};
+    await w.askAndRender('Who directed Interstellar?');
+    assert.equal(events.filter(e=>e.type==='debit').length,0);
+    w.askAIConversational=()=>answer.promise;
+    const pending=w.askAndRender('Who directed Inception?');await Promise.resolve();
+    assert.equal(events.filter(e=>e.type==='debit').length,0,'pending output never spends allowance');
+    answer.resolve({answer:'Christopher Nolan directed Inception.',results:[],_live:true});await pending;
+    assert.equal(events.filter(e=>e.type==='debit').length,1);
+    assert.match(w.document.querySelector('.chat-assistant:last-child').textContent,/Christopher Nolan/);
+  }finally{answer.resolve({answer:'Christopher Nolan.',results:[],_live:true});dom.window.close();}
+});

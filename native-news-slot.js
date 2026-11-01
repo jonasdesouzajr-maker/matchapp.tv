@@ -106,6 +106,7 @@
     }
     function schedule(event, session) {
       if (disposed || !client) return;
+      client.auth.__matchappInvalidateSessionRead?.();
       const current = ++revision, next = identity(session);
       if (readTimer !== null) cancel(readTimer);
       const previous = observedOwner === undefined ? owner : observedOwner;
@@ -164,6 +165,24 @@
         }
         if (typeof client?.auth?.getSession !== 'function' || typeof client.auth.onAuthStateChange !== 'function' ||
             typeof client.from !== 'function' || typeof client.rpc !== 'function') throw new Error('client_unavailable');
+        // This standalone page owns the client in the parent window. Install
+        // its read coalescer here so Jonas never attaches a frame-owned closure
+        // to a longer-lived parent client. schedule() invalidates old identities.
+        if (!client.auth.__matchappSessionFlight) {
+          const getSession = client.auth.getSession.bind(client.auth);
+          let flight = null;
+          client.auth.getSession = function () {
+            if (!flight) {
+              const current = Promise.resolve().then(getSession).finally(() => {
+                if (flight === current) flight = null;
+              });
+              flight = current;
+            }
+            return flight;
+          };
+          Object.defineProperty(client.auth, '__matchappInvalidateSessionRead', { value: () => { flight = null; } });
+          Object.defineProperty(client.auth, '__matchappSessionFlight', { value: true });
+        }
         w.supabaseClient = client;
         subscription = client.auth.onAuthStateChange(schedule)?.data?.subscription;
         schedule();

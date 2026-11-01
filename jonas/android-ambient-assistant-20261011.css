@@ -103,7 +103,7 @@ html body #ma-ambient-panel iframe{
 @media(max-height:480px){
  html body #ma-ambient-panel .ja-panel-head{min-height:52px!important;padding:5px 12px!important}
  html body #ma-ambient-panel .ja-face-wrap{width:44px!important;height:44px!important}
- html body #ma-ambient-panel .ja-hello{display:none!important}
+ html body #ma-ambient-panel .ja-hello{max-height:22%!important;overflow-y:auto!important;flex-shrink:0!important}
 }
 @media(prefers-reduced-motion:reduce){
  html body #ma-ambient-panel{animation:none!important}

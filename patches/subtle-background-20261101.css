@@ -13,7 +13,7 @@ html body:not(.kids-body) .poster-wall::after {
 }
 
 /* Ensure text over images and bare links get proper pill/button treatment. */
-html body:not(.kids-body) :is(.card, .tile, .poster, .result-card, .global-event, .marquee-item, .premium-card) a:not([class*="btn"]):not([class*="button"]):not([class*="pill"]):not(.gold-btn):not([data-ma-control-pill]) {
+html body:not(.kids-body) :is(.card, .tile, .poster, .result-card, .global-event, .marquee-item, .premium-card) a:not([class*="btn"]):not([class*="button"]):not([class*="pill"]):not(.gold-btn):not([data-ma-control-pill]):not(:has(img,picture,video)) {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;

@@ -409,3 +409,23 @@ test('page restoration rechecks identity and explicit disposal releases subscrip
   } finally { f.close(); }
 });
 
+
+test('standalone News owns one coalesced session reader shared by its Jonas frame', async () => {
+  const f = fixture(), pending = deferred();
+  try {
+    f.boot(); await f.advance();
+    const before = f.calls.session;
+    f.controls.sessionRead = () => pending.promise;
+    const app = read('app.js');
+    const boot = app.slice(app.indexOf('function sharedMatchAuthClient()'), app.indexOf('let globalMatchTitle'));
+    const child = { top: f.w, location: { origin: 'https://matchapp.tv', pathname: '/discover.html' } };
+    vm.runInNewContext(boot, { window: child, SUPABASE_URL: 'unused', SUPABASE_ANON_KEY: 'unused' });
+    assert.equal(child.supabaseClient, f.client);
+    assert.equal(child.supabaseClient.auth.__matchappSessionFlight, true);
+    const first = child.supabaseClient.auth.getSession(), second = child.supabaseClient.auth.getSession();
+    await flush();
+    assert.equal(first, second); assert.equal(f.calls.session, before + 1);
+    pending.resolve(session(A));
+    assert.equal((await first).data.session.user.id, A);
+  } finally { f.close(); }
+});
