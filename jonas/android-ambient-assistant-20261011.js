@@ -281,34 +281,39 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   frame.src=frameUrl(title);frame.addEventListener('load',onFrameLoad);
   panel.appendChild(frame);
  }
- function syncPanelViewport(){
-  if(!panel||!open)return;
+ function readPanelViewport(){
   var v=window.visualViewport;
-  panel.style.setProperty('--ja-view-left',Math.round(v?.offsetLeft||0)+'px');
-  var top=v?.offsetTop||0,height=v?.height||window.innerHeight;
+  var left=v?.offsetLeft||0,top=v?.offsetTop||0,height=v?.height||window.innerHeight,width=v?.width||window.innerWidth;
   var header=root?.closest('#ma-reference-header'),bottom=header?.getBoundingClientRect().bottom||0;
   if(bottom>top){var reserved=Math.min(height,Math.max(0,bottom-top)+8);top+=reserved;height-=reserved;}
-  panel.style.setProperty('--ja-view-top',Math.round(top)+'px');
-  panel.style.setProperty('--ja-view-width',Math.round(v?.width||window.innerWidth)+'px');
-  panel.style.setProperty('--ja-view-height',Math.round(height)+'px');
+  return [Math.round(left),Math.round(top),Math.round(width),Math.round(height)];
+ }
+ function syncPanelViewport(pre){
+  if(!panel||!open)return;
+  // All reads happen before any style write (pre is read before openPanel mutates the DOM).
+  var m=Array.isArray(pre)?pre:readPanelViewport();
+  panel.style.setProperty('--ja-view-left',m[0]+'px');
+  panel.style.setProperty('--ja-view-top',m[1]+'px');
+  panel.style.setProperty('--ja-view-width',m[2]+'px');
+  panel.style.setProperty('--ja-view-height',m[3]+'px');
  }
  window.addEventListener('resize',syncPanelViewport,{passive:true});
  window.visualViewport?.addEventListener('resize',syncPanelViewport,{passive:true});
  window.visualViewport?.addEventListener('scroll',syncPanelViewport,{passive:true});
  function openPanel(){
   if(open)return;
+  var preViewport=readPanelViewport();
   parkedBeforeChat=['z-index','visibility','pointer-events'].map(function(key){return [key,root.style.getPropertyValue(key),root.style.getPropertyPriority(key)]});
   root.dataset.jonasPositionHeld='1';
   open=true;epoch++;if(!frame)activeTitle=contextTitle();
-  document.body?.classList.add('ma-jonas-modal-open');
-  panel.hidden=false;syncPanelViewport();panel.querySelector('.ja-hello').textContent=greeting();
+  panel.hidden=false;syncPanelViewport(preViewport);panel.querySelector('.ja-hello').textContent=greeting();
   // The conversation is viewport-anchored. Keep the same movable launcher
   // at its existing position so the user can tap it again to close.
   panel.style.removeProperty('--ja-origin-x');
   panel.style.removeProperty('--ja-origin-y');
   panel.querySelector('.ja-head-text span').textContent=locale().state;
   panel.querySelector('.ja-close').ariaLabel=locale().close;
-  panel.querySelector('.ja-close').focus({preventScroll:true});
+  var closeBtn=panel.querySelector('.ja-close');requestAnimationFrame(function(){if(open)closeBtn.focus({preventScroll:true})});
   root.hidden=false;root.style.setProperty('z-index','2147483400','important');
   root.style.setProperty('visibility','visible','important');root.style.setProperty('pointer-events','auto','important');
   bubble.setAttribute('aria-expanded','true');bubble.ariaLabel=locale().close;
@@ -317,12 +322,18 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   spokenGreeting(epoch);
   // Opening/closing is presentation only. The original New chat action owns
   // resets; changing the matching result must not discard an existing thread.
-  if(!frame){
-    createFrame(activeTitle);frame.dataset.title=activeTitle;
-  }
-  window.MatchAppChatResize?.sync?.();
   document.addEventListener('keydown',escapeKey);
+  // Paint the panel first; page-wide work (body scroll lock restyles the whole
+  // document, chat iframe, resize sync) runs once the 150ms fade has finished.
+  var openEpoch=epoch;
+  requestAnimationFrame(function(){setTimeout(function(){
+   if(!open||epoch!==openEpoch)return;
+   document.body?.classList.add('ma-jonas-modal-open');
+   if(!frame){createFrame(activeTitle);frame.dataset.title=activeTitle;}
+   window.MatchAppChatResize?.sync?.();
+  },170)});
  }
+ (function(){var prev=window.MatchAppHandleBack;window.MatchAppHandleBack=function(){if(open){closePanel();return true}return typeof prev==='function'?prev():false};})();
  function closePanel(){
   if(!open)return;
   open=false;stopConversation();

@@ -17,7 +17,7 @@
  /* 1. Genuine controls that are only a text link with a hairline edge. */
  function polishPills(root){
   (root||document).querySelectorAll('a[data-ma-control-pill],button[data-ma-control-pill]').forEach(function(el){
-   if(el.classList.contains('ma-pill-polish')||el.hasAttribute('data-ma-pill-exclude'))return;
+   if(el.__maPP||el.classList.contains('ma-pill-polish')||el.hasAttribute('data-ma-pill-exclude'))return;el.__maPP=1;
    if(el.closest('[data-ma-pill-exclude],ins.adsbygoogle,[data-ad-slot],.ma-reference-dock,.ma-cinema-dock,footer,.streaming-links,.seo-footer-links,.ma-home-legal-row,.ma-home-legal-meta,.mp-footer-actions,#ma-ambient-panel .ja-panel-head,#ma-jonas-home-panel .jh-head,.poster-wall,article,[class*="card"],[class*="step"],[class*="chapter"],[class*="tour"],[class*="crumb"],[aria-label*="readcrumb"],[class*="format"],[class*="edition"]'))return;
    if(el.matches('.ja-close,.jh-close,.ma-chat-grip,.ma-ui-grip,.gold-btn,[class*="pill"],[class*="notification-button"]'))return;
    var text=(el.textContent||'').trim();if(!text||text.length>40)return;
@@ -86,7 +86,7 @@
 
  var queued=false;
  function dedupeBrand(){
-  var top=document.querySelector('#ma-reference-header img[src*="matchapp-ai-mark"]');if(!top||!top.getBoundingClientRect().width)return;
+  var top=document.querySelector('#ma-reference-header img[src*="matchapp-ai-mark"]');if(!top)return;if(dedupeBrand.top!==top){if(!top.getBoundingClientRect().width)return;dedupeBrand.top=top;}
   document.querySelectorAll('.matchapp-brand-bar .matchapp-brand-link').forEach(function(a){if(!a.closest('#ma-reference-header')&&a.querySelector('img.ma-playai-mark'))a.classList.add('ma-ui-dup-brand');});
  }
  function run(){queued=false;if(isKids())return;dedupeBrand();polishPills();fixClose();watchHidden();scanResizable();}
@@ -165,7 +165,7 @@
   })();
  }
  function tick(){
-  document.querySelectorAll(SEL).forEach(function(h){if(h.offsetWidth)setup(h)});
+  document.querySelectorAll(SEL).forEach(function(h){if(h.__maLife||h.offsetWidth)setup(h)});
   hosts=hosts.filter(function(L){return L.h.isConnected});
   var th=thinking()||!!window.__maFaceForceThink,anyTalk=false;
   hosts.forEach(function(L){

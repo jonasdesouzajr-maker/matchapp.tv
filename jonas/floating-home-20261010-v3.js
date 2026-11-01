@@ -198,13 +198,15 @@
    }
   }
  }
- function syncConversationViewport(){
+ function readViewport(){var v=window.visualViewport;return [Math.round(v?.offsetLeft||0),Math.round(v?.offsetTop||0),Math.round(v?.width||window.innerWidth),Math.round(v?.height||window.innerHeight)]}
+ function syncConversationViewport(pre){
   if(!opened&&!root.classList.contains('is-chat-stage')&&!panel.classList.contains('ma-header-jonas-conversation'))return;
-  var v=window.visualViewport;
-  root.style.setProperty('--ja-view-left',Math.round(v?.offsetLeft||0)+'px');
-  root.style.setProperty('--ja-view-top',Math.round(v?.offsetTop||0)+'px');
-  root.style.setProperty('--ja-view-width',Math.round(v?.width||window.innerWidth)+'px');
-  root.style.setProperty('--ja-view-height',Math.round(v?.height||window.innerHeight)+'px');
+  // Reads are batched before style writes (pre) so opening Jonas forces one layout, not several.
+  var m=Array.isArray(pre)?pre:readViewport();
+  root.style.setProperty('--ja-view-left',m[0]+'px');
+  root.style.setProperty('--ja-view-top',m[1]+'px');
+  root.style.setProperty('--ja-view-width',m[2]+'px');
+  root.style.setProperty('--ja-view-height',m[3]+'px');
  }
  window.addEventListener('resize',syncConversationViewport,{passive:true});
  window.visualViewport?.addEventListener('resize',syncConversationViewport,{passive:true});
@@ -215,6 +217,7 @@
    stageFloating=root.classList.contains('is-floating');
    var r=root.getBoundingClientRect();stagePosition={left:r.left,top:r.top};
    var launcherRect=bubble.getBoundingClientRect();
+   var preViewport=readViewport();
    launcherStyle=['display','visibility','position','top','left','right','bottom','width','height','transform','z-index','pointer-events'].map(function(key){return [key,bubble.style.getPropertyValue(key),bubble.style.getPropertyPriority(key)]});
    bubble.style.setProperty('display','block','important');bubble.style.setProperty('visibility','visible','important');bubble.style.setProperty('z-index','2147483400','important');bubble.style.setProperty('pointer-events','auto','important');
    if(!headerMode()){
@@ -225,7 +228,7 @@
    if(headerMode()){panel.classList.add('ma-header-jonas-conversation');mountHeader();}
    else {if(root.parentElement!==document.body)document.body.appendChild(root);root.classList.add('is-chat-stage');}
    panel.setAttribute('aria-modal','false');
-   syncConversationViewport();
+   syncConversationViewport(preViewport);
    ['top','bottom','left','right'].forEach(function(key){root.style.removeProperty(key)});
    ['top','bottom','left','right'].forEach(function(key){panel.style.removeProperty(key)});
    document.body.classList.add('ma-jonas-chat-open');
@@ -260,7 +263,8 @@
      }
     });
    }
-   close.focus({preventScroll:true});
+   // Focus after the first paint so the panel shows without an extra forced layout.
+   requestAnimationFrame(function(){if(opened)close.focus({preventScroll:true})});
    root.dispatchEvent(new CustomEvent('matchapp:jonas-open'));
   }else{
    bubble.focus({preventScroll:true});
