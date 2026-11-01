@@ -158,6 +158,7 @@ internal class NativeRewardedBridge(
 
     private fun load(value: Pending, claim: VerifiedRewardClaim) {
         try {
+            android.util.Log.i("MatchAppAds", "rewarded requestAd debug=${BuildConfig.DEBUG}")
             RewardedAd.load(activity, BuildConfig.ADMOB_REWARDED_ID, AdRequest.Builder().build(),
                 object : RewardedAdLoadCallback() {
                     override fun onAdLoaded(ad: RewardedAd) {
@@ -293,6 +294,7 @@ internal class NativeRewardedBridge(
     private fun emit(id: String, status: String, reason: String = "", earned: Boolean = false) {
         if (destroyed || activity.isFinishing || activity.isDestroyed ||
             !RewardedRequestPolicy.isAdultDocument(web.url.orEmpty())) return
+        android.util.Log.i("MatchAppAds", "rewarded state=$status reason=$reason")
         val detail = JSONObject().put("requestId", id).put("status", status)
             .put("reason", reason).put("rewardEarned", earned).put("serverVerified", false)
         val expectedDocument = JSONObject.quote(web.url.orEmpty())

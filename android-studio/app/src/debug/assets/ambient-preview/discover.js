@@ -117,7 +117,7 @@ function parseAIResponse(data) {
             '| model:', data._servedByModel, '\nFirst 400 chars:', String(raw).slice(0, 400));
         throw new Error('Bad AI format');
     }
-    if (!parsed.answer) throw new Error('Empty AI answer');
+    if (typeof parsed.answer !== 'string' || !parsed.answer.trim()) throw new Error('Empty AI answer');
     parsed.results = parsed.results || [];
     parsed._live = true;
     return parsed;

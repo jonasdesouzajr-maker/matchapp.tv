@@ -25,8 +25,12 @@
         return typeof value === 'string' && value.length <= 128 && allowed.indexOf(value) >= 0;
       }).slice(0, 40);
     });
+    // Static destinations may still have their authored <html lang="en">.
+    // A navigation checkpoint must never replace the user's explicit choice.
+    var savedLanguage = '';
+    try { savedLanguage = localStorage.getItem('match_lang') || ''; } catch (_) {}
     var state = {version:1,url:location.href,filters:filters,scrollX:Math.round(window.scrollX || 0),
-      scrollY:Math.round(window.scrollY || 0),lang:String(window.MATCH_LANG || document.documentElement.lang || '')};
+      scrollY:Math.round(window.scrollY || 0),lang:String(savedLanguage || window.MATCH_LANG || document.documentElement.lang || '')};
     try { window.MatchAppNativePageState.postMessage(JSON.stringify(state)); } catch (_) {}
   }
 
