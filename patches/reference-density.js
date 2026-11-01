@@ -162,6 +162,8 @@
     if(record.type==='attributes'){
      // Repeated owners may write an unchanged class/style; it cannot alter layout.
      if(record.oldValue===record.target.getAttribute(record.attributeName))return false;
+     // Transient interaction classes (tap feedback, Jonas open/close, resize drag) never change grid density.
+     if(record.attributeName==='class'){var before=(record.oldValue||'').split(/\s+/),after=(record.target.getAttribute('class')||'').split(/\s+/),diff=before.filter(function(c){return after.indexOf(c)<0}).concat(after.filter(function(c){return before.indexOf(c)<0})).filter(Boolean);if(diff.length&&diff.every(function(c){return /^(ma-press|ma-tap-on|ma-tap-off|ma-jonas-modal-open|ma-jonas-chat-open|ma-chat-resizing)$/.test(c)}))return false;}
      if(record.attributeName==='style'&&record.target!==document.documentElement)return visibilitySignature(record.oldValue)!==visibilitySignature(record.target.getAttribute('style'));
      return true;
     }
