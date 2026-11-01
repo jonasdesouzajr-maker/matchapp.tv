@@ -91,3 +91,11 @@ a.ma-press,summary.ma-press,[role=button].ma-press,button.ma-press{filter:bright
 /* 14. Cheaper layouts: skip rendering work for off-screen blocks (content stays in DOM). */
 .poster-wall{contain:layout paint style}
 .seo-footer,#billboard,#spotify-videos,#cooking-home{content-visibility:auto;contain-intrinsic-size:auto 560px}
+
+/* 2026-10-31b: Jonas panel: one compact, horizontally scrolling pill row so the composer always fits above it. */
+html body :is(#ma-ambient-panel,#ma-jonas-home-panel) .ma-guide-pills{display:flex!important;flex:0 0 auto!important;flex-wrap:nowrap!important;gap:6px!important;overflow-x:auto!important;overflow-y:hidden!important;max-height:none!important;margin:4px 0 6px!important;padding:2px 10px!important;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 18px),transparent)}
+html body :is(#ma-ambient-panel,#ma-jonas-home-panel) .ma-guide-pills::-webkit-scrollbar{display:none}
+html body :is(#ma-ambient-panel,#ma-jonas-home-panel) .ma-guide-pills>:is(a,button){flex:0 0 auto!important;width:auto!important;min-height:32px!important;height:32px!important;padding:0 14px!important;white-space:nowrap!important;font-size:12.5px!important;scroll-snap-align:start}
+html body #ma-ambient-panel #ma-ambient-chat-frame{flex:1 1 auto!important;min-height:150px!important}
+html body #ma-jonas-home-panel .jh-content{min-height:0!important}
+html body #ma-jonas-home-panel .jh-form{position:sticky!important;bottom:0!important;z-index:3!important;background:#21162f!important;box-shadow:0 -8px 12px -6px #21162f}

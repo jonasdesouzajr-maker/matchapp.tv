@@ -27,7 +27,7 @@
   }catch(e){}
   return false;
  };
- if(!document.querySelector('link[href*="ui-premium-polish-20261031.css"]')){var l=document.createElement('link');l.rel='stylesheet';l.href='/ui-premium-polish-20261031.css?v=4';(document.head||document.documentElement).appendChild(l);}
+ if(!document.querySelector('link[href*="ui-premium-polish-20261031.css"]')){var l=document.createElement('link');l.rel='stylesheet';l.href='/ui-premium-polish-20261031.css?v=5';(document.head||document.documentElement).appendChild(l);}
 })();
 
 /* ===== t307u/t308u: instant selection, cinematic loader, Android immersive layer ===== */

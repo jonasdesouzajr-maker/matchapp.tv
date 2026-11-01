@@ -74,3 +74,5 @@ html.matchapp-ambient-frame body.ai-chat-page .discover-head #chat-log strong[ro
  display:block;margin:0 0 8px;padding:6px 8px;border-radius:8px;
  font:600 11px/1.4 system-ui,sans-serif;white-space:normal;
 }
+/* 2026-10-31b: keep the real composer pinned visible at the bottom of the embedded chat. */
+html.matchapp-ambient-frame body.ai-chat-page .discover-head>.newsearch-row{position:sticky!important;bottom:0!important;z-index:5!important}
