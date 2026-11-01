@@ -459,12 +459,26 @@
       for (const name of ['focusin', 'beforetoggle', 'toggle', 'fullscreenchange']) listen(d, name, invalidate, true);
       if (w.visualViewport) for (const name of ['resize', 'scroll']) listen(w.visualViewport, name, invalidate, { passive: true });
       if (typeof w.MutationObserver === 'function') {
+        function faceAnimationOnly(record) {
+          if (record.type !== 'attributes' || record.attributeName !== 'class') return false;
+          const target = record.target;
+          if (target.closest?.('.ja-premium-face')) return true;
+          const before = String(record.oldValue || '').split(/\s+/).filter(Boolean);
+          const after = String(target.getAttribute?.('class') || '').split(/\s+/).filter(Boolean);
+          const layer = target.tagName === 'IMG' && target.parentElement?.matches('.ma-life') &&
+            (before.includes('ma-lf') || after.includes('ma-lf'));
+          const host = before.includes('ma-life') || after.includes('ma-life');
+          if (!layer && !host) return false;
+          const animationClasses = layer ? ['on'] : ['ma-smiling', 'ma-talking', 'ma-thinking'];
+          const stableClasses = classes => classes.filter(name => !animationClasses.includes(name)).sort().join(' ');
+          return stableClasses(before) === stableClasses(after);
+        }
         observer = new w.MutationObserver(records => {
           // Ambient Jonas face blinks swap classes inside its avatar every few
           // seconds; they never change geometry, so they must not flash the ad.
-          if (records.some(record => !slot || (record.target !== slot && !slot.contains(record.target) && !(record.type === 'attributes' && record.attributeName === 'class' && record.target.closest?.('.ja-premium-face'))))) invalidate();
+          if (records.some(record => !slot || (record.target !== slot && !slot.contains(record.target) && !faceAnimationOnly(record)))) invalidate();
         });
-        observer.observe(d.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'open', 'aria-hidden', 'aria-modal', 'style', 'class'] });
+        observer.observe(d.body, { subtree: true, childList: true, attributes: true, attributeOldValue: true, attributeFilter: ['hidden', 'open', 'aria-hidden', 'aria-modal', 'style', 'class'] });
       }
     }
     const controller = Object.freeze({ refresh: () => queueHello(true), confirmValue, dispose, get requestId() { return requestId; } });

@@ -1,0 +1,133 @@
+{
+  "note": "Actual production HTML/JS/CSS from local static server in fresh guest Chromium; external services unavailable, no tablet or AI-response claim.",
+  "results": [
+    {
+      "width": 320,
+      "height": 480,
+      "panel": {
+        "top": 186.59375,
+        "bottom": 388.703125,
+        "left": 8,
+        "right": 312,
+        "height": 202.109375,
+        "width": 304
+      },
+      "greeting": {
+        "top": 247.59375,
+        "bottom": 271.59375,
+        "left": 17,
+        "right": 303,
+        "height": 24,
+        "width": 286,
+        "display": "block",
+        "overflow": "auto",
+        "text": "Hi, I'm Jonas. How can I help?"
+      },
+      "composer": {
+        "top": 291.59375,
+        "bottom": 335.59375,
+        "left": 34,
+        "right": 112.171875,
+        "height": 44,
+        "width": 78.171875
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "panel": {
+        "top": 169.796875,
+        "bottom": 388.703125,
+        "left": 8,
+        "right": 382,
+        "height": 218.90625,
+        "width": 374
+      },
+      "greeting": {
+        "top": 231.03125,
+        "bottom": 255.03125,
+        "left": 17,
+        "right": 373,
+        "height": 24,
+        "width": 356,
+        "display": "block",
+        "overflow": "auto",
+        "text": "Hi, I'm Jonas. How can I help?"
+      },
+      "composer": {
+        "top": 275.03125,
+        "bottom": 319.03125,
+        "left": 34,
+        "right": 182.171875,
+        "height": 44,
+        "width": 148.171875
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 800,
+      "height": 480,
+      "panel": {
+        "top": 125,
+        "bottom": 388.703125,
+        "left": 372,
+        "right": 792,
+        "height": 263.703125,
+        "width": 420
+      },
+      "greeting": {
+        "top": 197.875,
+        "bottom": 221.875,
+        "left": 381,
+        "right": 783,
+        "height": 24,
+        "width": 402,
+        "display": "block",
+        "overflow": "auto",
+        "text": "Hi, I'm Jonas. How can I help?"
+      },
+      "composer": {
+        "top": 241.875,
+        "bottom": 285.875,
+        "left": 38,
+        "right": 228.171875,
+        "height": 44,
+        "width": 190.171875
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "panel": {
+        "top": 140.703125,
+        "bottom": 700.703125,
+        "left": 852,
+        "right": 1272,
+        "height": 560,
+        "width": 420
+      },
+      "greeting": {
+        "top": 253.703125,
+        "bottom": 277.703125,
+        "left": 861,
+        "right": 1263,
+        "height": 24,
+        "width": 402,
+        "display": "block",
+        "overflow": "auto",
+        "text": "Hi, I'm Jonas. How can I help?"
+      },
+      "composer": {
+        "top": 357.59375,
+        "bottom": 401.59375,
+        "left": 38,
+        "right": 228.171875,
+        "height": 44,
+        "width": 190.171875
+      },
+      "horizontalOverflow": false
+    }
+  ]
+}

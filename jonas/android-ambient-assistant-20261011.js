@@ -9,7 +9,7 @@
  // Only the Android app launches this script; explicit local QA opt-in never affects website users.
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
- var asset='/jonas/android-ambient-assistant-20261011.css?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1&greeting=20261101-1',frame=null,panel=null,root=null,bubble=null;
+ var asset='/jonas/android-ambient-assistant-20261011.css?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1&greeting=20261101-2',frame=null,panel=null,root=null,bubble=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0,parkedBeforeChat=null;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';

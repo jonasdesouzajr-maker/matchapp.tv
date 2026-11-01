@@ -141,6 +141,30 @@ test('rounded transparent corners do not suppress an otherwise safe native reser
   } finally { f.close(); }
 });
 
+test('the actual ma-life face blink and expression classes do not flash a ready native ad', async () => {
+  const f = await fixture();
+  try {
+    const face = f.d.createElement('div'); face.className = 'ma-life';
+    const blink = f.d.createElement('img'); blink.className = 'ma-lf ma-lf-blink';
+    face.append(blink); f.d.body.append(face); await tick();
+    f.emit('available'); await f.advance(); f.setSlot(100); f.w.dispatchEvent(new f.w.Event('scroll')); await f.advance(); f.emit('ready');
+    const slot = f.d.querySelector('[data-native-news-slot]'), hides = () => f.messages.filter(m => m.type === 'hide').length;
+    const initial = hides();
+    for (const [element, name] of [[blink, 'on'], [face, 'ma-smiling'], [face, 'ma-thinking'], [face, 'ma-talking']]) {
+      element.classList.add(name); await tick(); await f.advance(40);
+      element.classList.remove(name); await tick(); await f.advance(40);
+    }
+    assert.equal(hides(), initial, 'opacity/expression changes preserve the stable native placement');
+    assert.equal(slot.dataset.nativeNewsState, 'ready');
+    face.classList.add('layout-changed'); await tick();
+    assert.ok(hides() > initial, 'unrecognized face classes still invalidate geometry');
+    assert.equal(slot.dataset.nativeNewsState, 'neutral');
+    await f.advance(); f.emit('ready');
+    blink.style.display = 'none'; await tick();
+    assert.equal(slot.dataset.nativeNewsState, 'neutral', 'style changes still run the obstruction guard');
+  } finally { f.close(); }
+});
+
 test('small overlapping fixed controls, zoom and gold-frame collisions also fail closed', async () => {
   const f = await fixture();
   try {

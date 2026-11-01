@@ -95,6 +95,11 @@ html body #ma-ambient-panel .ja-hello{
  flex:0 0 auto!important;max-height:22%!important;min-height:0!important;
  padding:8px 14px!important;overflow:auto!important;line-height:1.55!important;white-space:normal!important;
 }
+/* Short-screen legacy styles must not hide the opening message. Keep its
+   existing bounded scroll region while the original iframe owns the composer. */
+@layer ma-reference.refinement.jonas-greeting {
+ html body:not(.kids-body) #ma-ambient-panel:not([hidden]) .ja-hello{display:block!important}
+}
 html body #ma-ambient-panel iframe{
  display:block!important;flex:1 1 auto!important;min-height:0!important;width:100%!important;
  border:0!important;position:relative!important;
