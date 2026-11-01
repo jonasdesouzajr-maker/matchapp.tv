@@ -24,6 +24,7 @@ async function publish(rows){
     fetch:async url=>({ok:true,status:200,text:async()=>String(url).includes('entertainment_and_arts')?`<rss><channel>${rows}</channel></rss>`:'<rss><channel/></rss>'}),
     require(name){
       if(name==='node:fs')return filesystem;
+      if(name==='../news-images.js')return require('../news-images.js');
       if(name==='../news-monetization.js')return {eligibleArticle:()=>false,offers:[],offersMarkup:()=>''};
       if(name==='./finalize-brand.js')return require('../tools/finalize-brand.js');
       assert.ok(['node:path','node:crypto'].includes(name));return require(name);

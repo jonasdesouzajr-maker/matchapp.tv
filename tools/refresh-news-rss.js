@@ -5,6 +5,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const crypto=require('node:crypto');
 const newsCommerce=require('../news-monetization.js');
+const newsImages=require('../news-images.js');
 const {cinemaAssets}=require('./finalize-brand.js');
 
 const ROOT=path.join(__dirname,'..');
@@ -527,7 +528,9 @@ ${imageMeta}
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
-<link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
+<link rel="stylesheet" href="/news-ui.css?v=20261101-images1">
+<link rel="stylesheet" href="/news-images.css?v=20261101-1" data-news-image-styles>
+<script defer src="/news-images.js?v=20261101-1"></script>
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
 ${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261024-1&amp;repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
@@ -546,6 +549,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main style="max-width:780px;margin:40px auto;padding:20px">
   <article class="premium-card" style="padding:24px"${commerceAttributes(i)}>
     <p style="color:#E5C158;font-weight:800"><span data-news-ui="latest">Latest News</span> · <span data-news-ui-event="${esc(i.event_type)}">${esc(i.event_type)}</span></p>
+    ${newsImages.markup(i,language)}
     <h1 data-news-source-title lang="${esc(language)}" dir="auto" translate="no">${t}</h1>
     <p data-news-ui="sourceNote" data-news-source="${src}">${esc(i.description)}</p>${commerceSlot(i,language)}
     <div style="margin:18px 0;padding:14px;border:1px solid rgba(229,193,88,.25);border-radius:12px">
@@ -565,8 +569,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 function hub(items,generated){
   const options=newsCommerce.offersMarkup(newsCommerce.offers,'','en');
-  const cards=items.slice(0,24).map(i=>`<article style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px"${commerceAttributes(i)}>
+  const cards=items.slice(0,24).map(i=>`<article data-news-story-card data-news-category="${esc(i.category||'news')}" style="padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px"${commerceAttributes(i)}>
     <p style="font-size:12px;color:#E5C158"><bdi>${esc(i.source)}</bdi> · <span data-news-ui-event="${esc(i.event_type)}">${esc(i.event_type)}</span> · <time data-news-ui-date="numeric" datetime="${esc(i.published_at)}">${esc(new Date(i.published_at).toLocaleDateString('en-US'))}</time></p>
+    ${newsImages.markup(i,'en')}
     <h2 style="font-size:19px" data-news-source-title lang="${esc(i.language==='pt'?'pt-BR':i.language||'en')}" dir="auto" translate="no"><a href="${esc(i.matchapp_url)}">${esc(i.title)}</a></h2>
 ${commerceSlot(i,'en')}
     <p><a href="${esc(i.landing_url)}" data-news-ui="openLatest">Open in Latest News →</a></p>
@@ -649,7 +654,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/style.css?v=187">
 <link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
-<link rel="stylesheet" href="/news-ui.css?v=20261019-newsui1">
+<link rel="stylesheet" href="/news-ui.css?v=20261101-images1">
+<link rel="stylesheet" href="/news-images.css?v=20261101-1" data-news-image-styles>
+<script defer src="/news-images.js?v=20261101-1"></script>
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
 ${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261024-1&amp;repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
