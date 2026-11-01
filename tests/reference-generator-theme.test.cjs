@@ -78,9 +78,9 @@ function bodyWithoutJonasRepair(body,expectRepair){
   for(const script of copy.querySelectorAll('script[src^="/patches/jonas-adult-page.js?"]')){
     const src=script.getAttribute('src'),pins=new URL(src,'https://matchapp.tv').searchParams.getAll('subtle');
     if(expectRepair||pins.length){
-      assert.deepEqual(pins,['20261101-1'],'one current browser visual pin');
-      assert.ok(src.endsWith('&subtle=20261101-1'),'the browser pin preserves every previous parameter');
-      script.setAttribute('src',src.slice(0,-'&subtle=20261101-1'.length));
+      assert.deepEqual(pins,['20261101-4'],'one current browser visual pin');
+      assert.ok(src.endsWith('&subtle=20261101-4'),'the browser pin preserves every previous parameter');
+      script.setAttribute('src',src.slice(0,-'&subtle=20261101-4'.length));
     }
   }
   for(const script of copy.querySelectorAll('script[src^="/patches/jonas-adult-page.js?"]')){
