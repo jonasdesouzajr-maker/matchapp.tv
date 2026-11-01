@@ -160,7 +160,7 @@
 
 
     <!-- NATIVE I18N (defer = runs before DOMContentLoaded, no English flash) -->
-    <script defer src="/i18n.js?v=20261001-canonicalai-profilept1&amp;billing=20261017-2&amp;fastlang=20261014-premiere2&amp;polish=20261020-ui1&amp;discovery=20261024-1&amp;homesearch=20261031-1"></script>
+    <script defer src="/i18n.js?v=20261001-canonicalai-profilept1&amp;billing=20261017-2&amp;fastlang=20261014-premiere2&amp;polish=20261020-ui1&amp;discovery=20261024-1&amp;homesearch=20261031-1&amp;plannerlinks=20261101-1"></script>
 <script defer src="/polish-i18n.js?v=191"></script>
 <script defer src="/event-i18n.js?v=187"></script>
 <script defer src="/page-locale.js?v=187"></script>
@@ -2223,7 +2223,7 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         var existing = inner.querySelector(':scope > details.seo-fold'); if (existing) { paint(existing.querySelector(':scope > summary')); return; }
         var lede = inner.querySelector('.seo-footer-lede'), start = lede ? lede.nextElementSibling : inner.firstElementChild;
         var legal = inner.querySelector('.seo-footer-legal'), move = [];
-        for (var n = start; n && n !== legal; n = n.nextElementSibling) { if (n.id !== 'ma-donate-support') move.push(n); }
+        for (var n = start; n && n !== legal; n = n.nextElementSibling) { if (n.id !== 'ma-donate-support' && n.id !== 'home-discovery-tools') move.push(n); }
         if (!move.length) return;
         var d = document.createElement('details'); d.className = 'seo-fold';
         var sum = document.createElement('summary'); sum.className = 'seo-fold-summary'; paint(sum);
@@ -3466,6 +3466,16 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
 
             <h2 class="seo-footer-h" data-i18n="polish.footerTitle">Find where to watch, in seconds</h2>
             <p class="seo-footer-lede" data-i18n="home.discoveryNote">MatchApp Ai recommends movies and series and links to official viewing services when available. Availability, prices and subscription requirements depend on the service and your country.</p>
+
+            <section id="home-discovery-tools" aria-labelledby="home-discovery-tools-heading">
+                <h3 id="home-discovery-tools-heading" class="seo-footer-sub" data-i18n="home.toolsTitle">Plan your evening</h3>
+                <p data-i18n="home.toolsNote">Check when a movie ends or how many episodes fit before bedtime. For a short play break, learn how to match pairs in Lumina Match.</p>
+                <nav class="streaming-links" data-i18n-aria="home.toolsTitle" aria-label="Plan your evening">
+                    <a href="/watch-night/" hreflang="en" data-i18n="home.plannerEnglish">Movie end time calculator (English)</a>
+                    <a href="/pt-br/noite-de-filme/" hreflang="pt-BR" data-i18n="home.plannerPortuguese">Movie night planner (Português do Brasil)</a>
+                    <a href="/lumina-match/" data-i18n="home.memoryGame">Lumina Match: memory card game guide</a>
+                </nav>
+            </section>
 
             <h3 class="seo-footer-sub" data-i18n="footer.movies">🎬 Movies &amp; TV Streaming Platforms We Match Across</h3>
             <nav class="streaming-links" aria-label="Global streaming platforms">

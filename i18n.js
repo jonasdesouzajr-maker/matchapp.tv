@@ -2359,6 +2359,28 @@ Object.entries({
   "zh": "MatchApp Ai推荐电影和剧集，并在可用时提供官方观看服务的链接。可用性、价格和订阅要求取决于服务及您所在的国家。"
 }).forEach(([lang,copy])=>{ I18N[lang]['home.discoveryNote']=copy; });
 
+// Crawlable links to existing browser tools; destination languages are explicit.
+Object.entries({
+  en: ['Plan your evening', 'Check when a movie ends or how many episodes fit before bedtime. For a short play break, learn how to match pairs in Lumina Match.', 'Movie end time calculator (English)', 'Movie night planner (Português do Brasil)', 'Lumina Match: memory card game guide'],
+  'pt-BR': ['Planeje sua noite', 'Calcule que horas o filme termina ou quantos episódios cabem antes de dormir. Para uma pausa rápida, aprenda a combinar pares no Lumina Match.', 'Calculadora do fim do filme (inglês)', 'Planejador de sessão (português do Brasil)', 'Lumina Match: guia do jogo da memória'],
+  es: ['Planifica tu noche', 'Calcula a qué hora termina una película o cuántos episodios caben antes de dormir. Para una pausa breve, aprende a encontrar parejas en Lumina Match.', 'Calculadora de fin de película (inglés)', 'Planificador de cine en casa (portugués de Brasil)', 'Lumina Match: guía del juego de memoria'],
+  fr: ['Organisez votre soirée', 'Calculez la fin d’un film ou le nombre d’épisodes à regarder avant de dormir. Pour une courte pause, apprenez à retrouver les paires dans Lumina Match.', 'Calcul de la fin d’un film (anglais)', 'Planificateur de soirée cinéma (portugais du Brésil)', 'Lumina Match : guide du jeu de mémoire'],
+  de: ['Plane deinen Abend', 'Berechne, wann ein Film endet oder wie viele Folgen vor dem Schlafengehen passen. Lerne für eine kurze Spielpause, in Lumina Match Paare zu finden.', 'Film-Endzeit berechnen (Englisch)', 'Filmabend planen (brasilianisches Portugiesisch)', 'Lumina Match: Anleitung zum Karten-Memory'],
+  it: ['Organizza la tua serata', 'Calcola quando finisce un film o quanti episodi puoi vedere prima di dormire. Per una breve pausa, impara a trovare le coppie in Lumina Match.', 'Calcolatore della fine del film (inglese)', 'Pianifica una serata cinema (portoghese brasiliano)', 'Lumina Match: guida al gioco di memoria'],
+  tr: ['Akşamını planla', 'Bir filmin ne zaman biteceğini veya yatmadan önce kaç bölüm izleyebileceğini hesapla. Kısa bir oyun molası için Lumina Match’te çiftleri bulmayı öğren.', 'Film bitiş saati hesaplayıcı (İngilizce)', 'Film gecesi planlayıcı (Brezilya Portekizcesi)', 'Lumina Match: hafıza kartı oyunu rehberi'],
+  ru: ['Спланируйте вечер', 'Рассчитайте, когда закончится фильм или сколько серий поместится до сна. Для короткого перерыва узнайте, как находить пары в Lumina Match.', 'Расчёт времени окончания фильма (английский)', 'Планировщик киновечера (бразильский португальский)', 'Lumina Match: руководство по игре на память'],
+  ar: ['خطط لأمسيتك', 'احسب وقت انتهاء الفيلم أو عدد الحلقات التي يمكنك مشاهدتها قبل النوم. ولاستراحة لعب قصيرة، تعلّم العثور على الأزواج في Lumina Match.', 'حاسبة وقت انتهاء الفيلم (الإنجليزية)', 'مخطط ليلة الأفلام (البرتغالية البرازيلية)', 'Lumina Match: دليل لعبة بطاقات الذاكرة'],
+  hi: ['अपनी शाम की योजना बनाएँ', 'फ़िल्म कब खत्म होगी या सोने से पहले कितने एपिसोड देख सकते हैं, यह निकालें। खेल के छोटे विराम के लिए Lumina Match में जोड़े मिलाना सीखें।', 'फ़िल्म खत्म होने के समय का कैलकुलेटर (अंग्रेज़ी)', 'मूवी नाइट प्लानर (ब्राज़ीली पुर्तगाली)', 'Lumina Match: मेमोरी कार्ड गेम की गाइड'],
+  id: ['Rencanakan malammu', 'Hitung kapan film berakhir atau berapa episode yang muat sebelum tidur. Untuk jeda bermain singkat, pelajari cara mencocokkan pasangan di Lumina Match.', 'Kalkulator waktu selesai film (bahasa Inggris)', 'Perencana malam film (bahasa Portugis Brasil)', 'Lumina Match: panduan permainan kartu memori'],
+  ja: ['今夜の予定を立てる', '映画の終了時刻や、寝る前に何話見られるかを計算しましょう。短いゲーム休憩には、Lumina Matchでペアを見つける遊び方を確認できます。', '映画の終了時刻計算（英語）', '映画鑑賞プランナー（ブラジルポルトガル語）', 'Lumina Match：神経衰弱ゲームガイド'],
+  ko: ['저녁 시간을 계획하세요', '영화가 끝나는 시간이나 잠들기 전 볼 수 있는 에피소드 수를 계산하세요. 짧게 게임을 즐기려면 Lumina Match에서 카드 짝을 찾는 방법을 알아보세요.', '영화 종료 시간 계산기 (영어)', '영화 감상 계획 도구 (브라질 포르투갈어)', 'Lumina Match: 카드 기억력 게임 안내'],
+  zh: ['规划你的夜晚', '计算电影的结束时间，或睡前能看几集。想短暂玩一会儿，可以了解如何在Lumina Match中寻找成对的卡牌。', '电影结束时间计算器（英语）', '观影计划工具（巴西葡萄牙语）', 'Lumina Match：记忆卡牌游戏指南']
+}).forEach(([lang, copy]) => {
+  ['toolsTitle', 'toolsNote', 'plannerEnglish', 'plannerPortuguese', 'memoryGame'].forEach((key, index) => {
+    I18N[lang]['home.' + key] = copy[index];
+  });
+});
+
 function t(key, lang) {
     const L = lang || window.MATCH_LANG || 'en';
     return (I18N[L] && I18N[L][key]) || I18N['en'][key] || '';

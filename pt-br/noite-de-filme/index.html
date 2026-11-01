@@ -55,6 +55,24 @@
     "@type": "WebSite",
     "name": "MatchApp Ai",
     "url": "https://matchapp.tv/"
+  },
+  "image": "https://matchapp.tv/watch-night/share-pt-br.png",
+  "isAccessibleForFree": true,
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "Planejador de sessão",
+    "url": "https://matchapp.tv/pt-br/noite-de-filme/",
+    "inLanguage": "pt-BR",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web browser",
+    "isAccessibleForFree": true,
+    "description": "Calcule que horas o filme termina ou quantos episódios cabem antes de dormir. Inclua as pausas e envie o plano da sessão para quem vai assistir com você.",
+    "featureList": [
+      "Cálculo do horário de término do filme",
+      "Contagem de episódios completos",
+      "Tempo reservado para pausas",
+      "Compartilhamento do plano da sessão"
+    ]
   }
 }</script>
   <script type="application/json" id="planner-strings">{
@@ -90,7 +108,7 @@
   <main class="wn-wrap">
     <header class="wn-hero">
       <p class="wn-kicker">Planejador gratuito de sessão</p>
-      <h1>O que dá tempo de assistir hoje?</h1>
+      <h1>Planeje sua sessão: o que dá tempo de assistir hoje?</h1>
       <p class="wn-intro">Quer escolher um filme para hoje à noite sem passar da hora de dormir? Descubra quando a sessão termina ou quantos episódios cabem no tempo que você tem. Depois, envie o plano para quem vai assistir com você.</p>
     </header>
     <section class="wn-card" aria-labelledby="wn-calc">
@@ -121,7 +139,16 @@
     </section>
     <section class="wn-section" aria-labelledby="wn-next-title">
       <h2 id="wn-next-title">Agora, escolham o que assistir</h2><p>Assistindo a dois? Usem o Match Together para encontrar algo de que ambos gostem. Se já escolheram o filme, consultem onde ele está disponível. O catálogo depende do país, e a duração pode variar conforme a versão.</p>
-      <nav class="wn-links" aria-label="Encontre o próximo título"><a class="wn-pill" href="/together.html?lang=pt-BR">Escolher a dois</a><a class="wn-pill" href="/where-to-watch/">Encontrar onde assistir</a><a class="wn-pill" href="/br/">Ver o guia de streaming no Brasil</a></nav>
+      <nav class="wn-links" aria-label="Encontre o próximo título"><a class="wn-pill" href="/?lang=pt-BR#search-box">Encontrar filme por humor</a><a class="wn-pill" href="/together.html?lang=pt-BR">Escolher a dois</a><a class="wn-pill" href="/where-to-watch/">Encontrar onde assistir</a><a class="wn-pill" href="/br/">Ver o guia de streaming no Brasil</a></nav>
+    </section>
+    <section class="wn-section" aria-labelledby="wn-planning-questions">
+      <h2 id="wn-planning-questions">Como planejar o que assistir hoje</h2>
+      <h3>Como calcular que horas o filme acaba?</h3>
+      <p>Some a duração informada e o total de pausas ao horário de início. Um filme que começa às 20h, dura 95 minutos e tem 10 minutos de pausas termina às 21h45. Inclua preparação, trailers ou anúncios previstos nas pausas; a calculadora não mede esses intervalos automaticamente.</p>
+      <h3>Quantos episódios dá para ver antes de dormir?</h3>
+      <p>Desconte as pausas do tempo disponível, divida pela duração de um episódio e arredonde para baixo. Com 150 minutos disponíveis e 10 de pausas, cabem três episódios de 45 minutos e sobram cinco minutos. Confira a duração de cada episódio quando houver diferenças.</p>
+      <h3>Podemos usar o plano para assistir juntos?</h3>
+      <p>Compartilhar plano envia os mesmos horários à outra pessoa. O Match Together ajuda a comparar preferências e encontrar um título. Nenhuma das ferramentas sincroniza a reprodução do vídeo: abram o título no serviço oficial e confiram o acesso no país de cada pessoa.</p>
     </section>
   </main>
   <footer class="wn-wrap"><nav class="wn-links" aria-label="Navegação do planejador"><a class="wn-pill" href="/?lang=pt-BR">Início do MatchApp Ai</a><a class="wn-pill" href="/privacidade.html">Privacidade</a></nav></footer>
