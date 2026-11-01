@@ -414,6 +414,16 @@
     }
     function visibleElement(el) {
       if (!el?.isConnected || el.hidden || el.closest('[hidden],[aria-hidden="true"]')) return false;
+      if (typeof el.checkVisibility === 'function') {
+        try { if (!el.checkVisibility({ visibilityProperty: true, opacityProperty: true })) return false; } catch (_) {}
+      }
+      // Some WebViews retain layout boxes for closed details content. Only
+      // the first direct summary is rendered; every closed ancestor must agree.
+      for (let parent = el.parentElement; parent; parent = parent.parentElement) {
+        if (parent.tagName !== 'DETAILS' || parent.open) continue;
+        const summary = Array.from(parent.children).find(child => child.tagName === 'SUMMARY');
+        if (!summary?.contains(el)) return false;
+      }
       const style = w.getComputedStyle(el);
       return style.display !== 'none' && style.visibility !== 'hidden' && style.visibility !== 'collapse' && Number(style.opacity || 1) > .01 && el.getClientRects().length > 0;
     }
