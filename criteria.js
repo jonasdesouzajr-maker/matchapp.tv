@@ -438,7 +438,20 @@
                 return;
             }
             if (btn.dataset.clear) { clearField(f.key, sel); return; }
-            if (btn.dataset.value != null) toggle(f.key, btn.dataset.value, sel);
+            if (btn.dataset.value != null && !ev.isTrusted) { toggle(f.key, btn.dataset.value, sel); return; }
+            if (btn.dataset.value != null) {
+                // Real taps only (scripted clicks above stay synchronous): instant selected look, then the real toggle after the next paint.
+                // toggle() still decides the final state; the forced re-render below
+                // replaces this optimistic class if the pick was rejected.
+                const on = !btn.classList.contains('is-on');
+                btn.classList.toggle('is-on', on);
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+                const value = btn.dataset.value;
+                let done = false;
+                const run = () => { if (done) return; done = true; host.__criteriaMarkup = ''; toggle(f.key, value, sel); };
+                if (typeof requestAnimationFrame === 'function') requestAnimationFrame(() => setTimeout(run, 0));
+                setTimeout(run, 120);
+            }
         });
 
         if (reconcileField(sel, f.key)) save();
