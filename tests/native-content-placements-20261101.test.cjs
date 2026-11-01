@@ -12,12 +12,13 @@ async function fixture({route='/',height=1000,width=800,contentWidth=600,header=
   (route==='/explore.html'?explore:route.startsWith('/ebooks')?book:home+'<section class="after">Original next content</section>')+
   '<nav id="sticky-dock" style="position:fixed"></nav><div id="locked-ad"><ins data-ad-slot="2595698117"></ins></div></body></html>';
  const w=new JSDOM(html,{url:'https://matchapp.tv'+route,runScripts:'outside-only',pretendToBeVisual:true}).window,d=w.document;
- const messages=[],pending=new Map();let serial=0,now=1000,anchorBottom=2000,titleY=100,slotY=null,overlay=null,slotWidth=contentWidth,controlGap=32;
+ const messages=[],pending=new Map(),rectangles=new Map();let serial=0,now=1000,anchorBottom=2000,titleY=100,slotY=null,overlay=null,slotWidth=contentWidth,controlGap=32;
  Object.defineProperty(w,'innerWidth',{value:width,configurable:true});Object.defineProperty(w,'innerHeight',{value:height,configurable:true});
  w.Date.now=()=>now;w.requestAnimationFrame=fn=>{const id=++serial;pending.set(id,{at:now+16,fn});return id;};w.cancelAnimationFrame=id=>pending.delete(id);
  w.setTimeout=(fn,delay=0)=>{const id=++serial;pending.set(id,{at:now+delay,fn});return id;};w.clearTimeout=id=>pending.delete(id);
  const box=(x,y,rw,rh)=>({x,y,width:rw,height:rh,left:x,top:y,right:x+rw,bottom:y+rh});const left=(width-contentWidth)/2;
  w.Element.prototype.getBoundingClientRect=function(){
+  if(rectangles.has(this))return box(...rectangles.get(this));
   if(this.matches('[data-native-news-slot]'))return box((width-slotWidth)/2,slotY??anchorBottom+32,slotWidth,360);
   if(this.id==='sticky-header')return box(0,0,width,header);
   if(this.id==='sticky-dock')return box(0,height-dock,width,dock);
@@ -46,6 +47,7 @@ async function fixture({route='/',height=1000,width=800,contentWidth=600,header=
  return {w,d,messages,emit,advance,confirm,scroll,card,original,handler,ad,storage,
   slots:()=>messages.filter(m=>m.type==='slot'),slot:()=>d.querySelector('[data-native-news-slot]'),
   setAnchor:bottom=>{anchorBottom=bottom;},setWidth:value=>{slotWidth=value;},setGap:value=>{controlGap=value;},setOverlay:value=>{overlay=value;},
+  setRect:(element,rect)=>rectangles.set(element,rect),
   close:()=>{w.MatchAppNativeNewsSlot?.dispose();w.close();}};
 }
 
@@ -167,6 +169,33 @@ test('32px control separation, complete viewport, fixed overlays and modal gates
  }
 });
 
+test('rendered-visibility API excludes non-rendered boxes while rendered open overlays still block',async()=>{
+ const f=await fixture({route:'/explore.html',width:384,height:715,contentWidth:352,header:230,dock:80});try{
+  const panel=f.d.createElement('aside');panel.style.position='fixed';f.d.body.append(panel);f.setRect(panel,[-264,418,360,238]);
+  const options=[];panel.checkVisibility=value=>{options.push(value);return false;};
+  assert.equal(panel.getClientRects().length,1);assert.equal(f.w.getComputedStyle(panel).display,'block');
+  f.emit();await f.advance();assert.ok(f.slot(),'non-rendered offcanvas box cannot split the available viewport');f.scroll();await f.advance();assert.ok(f.slots().length>0);
+  assert.ok(options.length>0);assert.ok(options.every(value=>value.visibilityProperty===true&&value.opacityProperty===true));
+  const before=f.slots().length;panel.checkVisibility=()=>true;f.w.dispatchEvent(new f.w.Event('resize'));await f.advance();assert.equal(f.slots().length,before);assert.equal(f.messages.at(-1).type,'hide');
+ }finally{f.close();}
+});
+
+test('older WebViews ignore closed details content across every ancestor but preserve the visible first summary',async()=>{
+ for(const visibility of ['absent','throws']){
+  const f=await fixture({route:'/explore.html',width:384,height:715,contentWidth:352,header:230,dock:80});try{
+   Object.defineProperty(f.w.Element.prototype,'checkVisibility',{configurable:true,value:visibility==='throws'?()=>{throw new TypeError('unsupported visibility options');}:undefined});
+   const details=f.d.createElement('details');details.style.position='fixed';details.innerHTML='<summary>App controls</summary><summary style="position:fixed">Second summary is closed content</summary><div class="ma-cinema-tools-content" style="position:fixed"><button>Hidden menu action</button><details open style="position:fixed"><summary>Nested summary</summary></details></div>';
+   f.d.body.append(details);const summary=details.firstElementChild,panel=details.querySelector('.ma-cinema-tools-content'),nested=panel.querySelector('details');
+   f.setRect(details,[8,180,140,24]);f.setRect(summary,[8,180,140,24]);f.setRect(details.children[1],[20,300,180,32]);f.setRect(panel,[-264,418,360,238]);f.setRect(panel.querySelector('button'),[20,300,180,32]);f.setRect(nested,[20,300,180,32]);f.setRect(nested.firstElementChild,[20,300,180,32]);
+   assert.equal(panel.getClientRects().length,1);assert.equal(f.w.getComputedStyle(panel).display,'block');assert.equal(nested.open,true);assert.equal(details.open,false);
+   f.emit();await f.advance();assert.ok(f.slot(),visibility+' closed details content has no rendered obstruction');f.scroll();await f.advance();assert.ok(f.slots().length>0);
+   const closed=f.slots().length;details.open=true;await f.advance();assert.equal(f.slots().length,closed,'open menu blocks native creative');assert.equal(f.messages.at(-1).type,'hide');
+   details.open=false;await f.advance();assert.ok(f.slots().length>closed,'closing the menu restores safe geometry');
+   const restored=f.slots().length;f.setRect(summary,[20,300,140,32]);f.setRect(details,[20,300,140,32]);f.w.dispatchEvent(new f.w.Event('resize'));await f.advance();assert.equal(f.slots().length,restored,'the first direct summary remains a real visible control');assert.equal(f.messages.at(-1).type,'hide');
+  }finally{f.close();}
+ }
+});
+
 test('account reset and document teardown invalidate native capability and current result without moving the reservation',async()=>{
  const f=await fixture();try{await f.confirm();f.emit();await f.advance();const slot=f.slot(),old=f.w.MatchAppNativeNewsSlot.requestId;f.scroll();await f.advance();
   f.d.dispatchEvent(new f.w.CustomEvent('matchapp:authchange'));await f.advance();const before=f.slots().length;assert.notEqual(f.w.MatchAppNativeNewsSlot.requestId,old);f.emit({requestId:old});await f.advance();assert.equal(f.slots().length,before);
@@ -176,8 +205,8 @@ test('account reset and document teardown invalidate native capability and curre
 
 test('only the four approved native hooks and the News generator carry the current matching asset pins',()=>{
  for(const file of ['index.html','ebooks/index.html','explore.html','news/index.html']){
-  const dom=new JSDOM(read(file));try{const d=dom.window.document;assert.equal(d.querySelector('[data-native-news-slot]'),null);assert.equal(d.querySelector('script[src^="/native-news-slot.js"]').getAttribute('src'),'/native-news-slot.js?v=20261101-placements1');assert.equal(d.querySelector('link[href^="/native-news-slot.css"]').getAttribute('href'),'/native-news-slot.css?v=20261101-placements1');}finally{dom.window.close();}
+  const dom=new JSDOM(read(file));try{const d=dom.window.document;assert.equal(d.querySelector('[data-native-news-slot]'),null);assert.equal(d.querySelector('script[src^="/native-news-slot.js"]').getAttribute('src'),'/native-news-slot.js?v=20261101-placements2');assert.equal(d.querySelector('link[href^="/native-news-slot.css"]').getAttribute('href'),'/native-news-slot.css?v=20261101-placements2');}finally{dom.window.close();}
  }
- assert.ok(read('tools/refresh-news-rss.js').includes('href="/native-news-slot.css?v=20261101-placements1"'));assert.ok(read('tools/refresh-news-rss.js').includes('src="/native-news-slot.js?v=20261101-placements1"'));
+ assert.ok(read('tools/refresh-news-rss.js').includes('href="/native-news-slot.css?v=20261101-placements2"'));assert.ok(read('tools/refresh-news-rss.js').includes('src="/native-news-slot.js?v=20261101-placements2"'));
  assert.equal(api.scope({get top(){return this;},location:{origin:'https://matchapp.tv',pathname:'/explore.html'},document:{documentElement:{dataset:{}}}}),'explore');
 });
