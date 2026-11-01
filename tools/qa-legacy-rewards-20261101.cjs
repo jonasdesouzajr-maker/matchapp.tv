@@ -1,17 +1,28 @@
 'use strict';
 // Local fixture only: real Chromium clicks and current page styles, mocked
 // account/SSV/native contracts, no live ad requests, spending or credits.
-const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),os=require('node:os');
+const {JSDOM}=require('jsdom');
 const {chromium}=require('playwright'),api=require('../match-tokens.js');
-const root=path.resolve(__dirname,'..'),out=process.env.MATCHAPP_REWARDS_QA_OUT||'/tmp/matchapp-rewards-frontend-20261101';
+const root=path.resolve(__dirname,'..'),out=process.env.MATCHAPP_REWARDS_QA_OUT||fs.mkdtempSync(path.join(os.tmpdir(),'matchapp-rewards-frontend-20261101-'));
 const mime={'.html':'text/html','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.png':'image/png','.woff2':'font/woff2'};
 const server=http.createServer((req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost');let file=path.resolve(root,'.'+decodeURIComponent(url.pathname));
     if(file!==root&&!file.startsWith(root+path.sep))return res.writeHead(403).end();
-    if(fs.statSync(file).isDirectory())file=path.join(file,'index.html');
+    if(url.pathname.endsWith('/'))file=path.join(file,'index.html');
     let body=fs.readFileSync(file);
-    if(file.endsWith('.html'))body=body.toString().replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi,'').replace(/<iframe\b[^>]*>[\s\S]*?<\/iframe\s*>/gi,'').replace('</body>','<script src="/patches/reference-dialogs.js"></script><script src="/patches/reference-pills.js"></script><script src="/match-tokens.js"></script></body>');
+    if(file.endsWith('.html')){
+      const parsed=new JSDOM(body.toString());
+      try{
+        const document=parsed.window.document;
+        document.querySelectorAll('script,iframe').forEach(node=>node.remove());
+        for(const src of ['/patches/reference-dialogs.js','/patches/reference-pills.js','/match-tokens.js']){
+          const script=document.createElement('script');script.setAttribute('src',src);document.body.append(script);
+        }
+        body=parsed.serialize();
+      }finally{parsed.window.close();}
+    }
     res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'});res.end(body);
   }catch(_){res.writeHead(404).end();}
 });

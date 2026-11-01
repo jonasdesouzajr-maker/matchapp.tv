@@ -1,0 +1,141 @@
+{
+  "scope": "Reviewed legacy rewards support applied with admission OFF. This is not public reward activation, genuine SSV proof, signing or Play publication.",
+  "project": "zkymvqrmbabngsqblyye",
+  "migration": {
+    "version": "20261101124542",
+    "name": "legacy_rewards_only"
+  },
+  "file": "supabase/migrations/20261101124542_legacy_rewards_only.sql",
+  "sha256": "cfeb111873e55bdfabf8fb5f905ea360243d7078dfb96dd1e464db9937a66308",
+  "before": {
+    "captured_at": "2026-11-01T12:40:11.664051+00:00",
+    "master_config": {
+      "ok": true,
+      "enabled": false,
+      "policy_version": "match-tokens-v1",
+      "rewards_enabled": false,
+      "play_product_ids": [
+        "matchapp_pro"
+      ],
+      "stripe_product_ids": [
+        "prod_VSP0LagMpQQHIj"
+      ]
+    },
+    "missing_functions": [],
+    "baseline_captured_at": "2026-11-01T12:28:14.524905+00:00",
+    "baseline_table_count": 72,
+    "changed_function_acls": [],
+    "changed_table_controls": [],
+    "baseline_function_count": 140,
+    "master_config_unchanged": true,
+    "changed_reward_definitions": 0,
+    "changed_protected_definitions": []
+  },
+  "afterProtected": {
+    "captured_at": "2026-11-01T12:45:52.637566+00:00",
+    "master_config": {
+      "ok": true,
+      "enabled": false,
+      "policy_version": "match-tokens-v1",
+      "rewards_enabled": false,
+      "play_product_ids": [
+        "matchapp_pro"
+      ],
+      "stripe_product_ids": [
+        "prod_VSP0LagMpQQHIj"
+      ]
+    },
+    "missing_functions": [],
+    "baseline_captured_at": "2026-11-01T12:28:14.524905+00:00",
+    "baseline_table_count": 72,
+    "changed_function_acls": [],
+    "changed_table_controls": [],
+    "baseline_function_count": 140,
+    "master_config_unchanged": true,
+    "changed_reward_definitions": 2,
+    "changed_protected_definitions": []
+  },
+  "afterRewardSurface": {
+    "captured_at": "2026-11-01T12:45:51.911177+00:00",
+    "master_config": {
+      "enabled": false,
+      "rewards_enabled": false,
+      "play_product_ids": [
+        "matchapp_pro"
+      ],
+      "stripe_product_ids": [
+        "prod_VSP0LagMpQQHIj"
+      ]
+    },
+    "function_count": 8,
+    "reward_qa_rows": 0,
+    "claims_by_target": {
+      "match_tokens": 1
+    },
+    "function_failures": [],
+    "latest_migrations": [
+      {
+        "name": "legacy_rewards_only",
+        "version": "20261101124542"
+      },
+      {
+        "name": "lumina_campaign_progress",
+        "version": "20261028075206"
+      },
+      {
+        "name": "lumina_browser_friends_and_progress",
+        "version": "20261027222612"
+      },
+      {
+        "name": "private_ui_error_counts",
+        "version": "20261027141009"
+      },
+      {
+        "name": "harden_public_rpc_and_owner_policy_plans",
+        "version": "20261024082202"
+      }
+    ],
+    "private_table_count": 3,
+    "credit_target_column": {
+      "type": "text",
+      "default": "'match_tokens'::text",
+      "not_null": true
+    },
+    "observed_history_rows": 0,
+    "private_table_failures": [],
+    "public_rollout_enabled": false,
+    "credit_target_constraint": true,
+    "immutable_target_trigger": true,
+    "old_claims_with_wrong_target": 0
+  },
+  "securityAdvisors": [
+    {
+      "name": "rls_enabled_no_policy",
+      "level": "INFO",
+      "count": 60,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "level": "WARN",
+      "count": 8,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable"
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "level": "WARN",
+      "count": 29,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    }
+  ],
+  "intentionalNewAdvisoryContext": "Three private tables deny all direct role access and intentionally have no RLS policy. Authenticated SECURITY DEFINER legacy_reward_status accepts no user ID and scopes the private lookup exclusively to auth.uid(); service-only controls remain revoked from browsers. Generic advisor warnings do not replace the explicit ACL/ownership review. Pre-existing public RPC/password warnings were not changed.",
+  "liveCreditCallsMade": 0,
+  "manualBalanceOrEntitlementChanges": false,
+  "publicAdmissionEnabled": false
+}

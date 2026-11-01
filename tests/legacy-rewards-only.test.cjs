@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {randomUUID,randomBytes,generateKeyPairSync,sign}=require('node:crypto');
 const {PGlite}=require('@electric-sql/pglite');
 const root=path.join(__dirname,'..'),read=name=>fs.readFileSync(path.join(root,name),'utf8');
-const MIGRATION='supabase/migrations/20261101114421_legacy_rewards_only.sql';
+const MIGRATION='supabase/migrations/20261101124542_legacy_rewards_only.sql';
 const unit='ca-app-pub-9541435081010948/2802190985';
 
 describe('independent legacy Extra Matches rewards',()=>{
