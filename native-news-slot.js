@@ -408,6 +408,10 @@
       if (surface !== 'news') { slot.classList.add('ma-native-content-slot'); slot.dataset.nativePlacement = surface; }
       // Critical reservation is synchronous, including when the optional stylesheet fails.
       slot.style.cssText = 'box-sizing:border-box;grid-column:1 / -1;width:min(100%,640px);height:' + slotHeight + 'px;min-height:' + slotHeight + 'px;max-height:' + slotHeight + 'px;margin:' + (surface === 'news' ? 16 : CONTROL_GAP) + 'px auto;position:relative';
+      if (surface !== 'news') {
+        slot.style.setProperty('margin-top', CONTROL_GAP + 'px', 'important');
+        slot.style.setProperty('margin-bottom', CONTROL_GAP + 'px', 'important');
+      }
       fallback = d.createElement('p'); fallback.className = 'ma-native-news-neutral'; slot.append(fallback);
       translate(); showFallback(); slotAnchor = anchor; anchor.after(slot); overlayDirty = true;
       return true;

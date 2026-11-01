@@ -54,7 +54,8 @@ async function fixture({route='/',height=1000,width=800,contentWidth=600,header=
 test('Home, Books and Explore mount once outside complete content/actions and never mutate paid/web inventory',async()=>{
  for(const route of ['/','/ebooks/','/explore.html']){
   const f=await fixture({route});try{
-   await f.confirm();f.emit();await f.advance();const slot=f.slot();assert.ok(slot,route);assert.equal(slot.style.height,'360px');assert.equal(slot.style.margin,'32px auto');
+   await f.confirm();f.emit();await f.advance();const slot=f.slot();assert.ok(slot,route);assert.equal(slot.style.height,'360px');
+   for(const edge of ['top','bottom']){assert.equal(slot.style.getPropertyValue('margin-'+edge),'32px');assert.equal(slot.style.getPropertyPriority('margin-'+edge),'important');}
    const anchor=route==='/explore.html'?f.d.getElementById('explore-topics'):f.card();assert.equal(slot.previousElementSibling,anchor);assert.ok(!anchor.contains(slot));assert.ok(anchor.contains(f.original));
    if(route==='/explore.html')assert.ok(slot.nextElementSibling.matches('.ref-explore-more'));
    assert.equal(f.slots().length,0,'below viewport insertion cannot request native inventory');f.scroll();await f.advance();assert.ok(f.slots().length>0,route+' stable full rectangle');
@@ -205,8 +206,8 @@ test('account reset and document teardown invalidate native capability and curre
 
 test('only the four approved native hooks and the News generator carry the current matching asset pins',()=>{
  for(const file of ['index.html','ebooks/index.html','explore.html','news/index.html']){
-  const dom=new JSDOM(read(file));try{const d=dom.window.document;assert.equal(d.querySelector('[data-native-news-slot]'),null);assert.equal(d.querySelector('script[src^="/native-news-slot.js"]').getAttribute('src'),'/native-news-slot.js?v=20261101-placements2');assert.equal(d.querySelector('link[href^="/native-news-slot.css"]').getAttribute('href'),'/native-news-slot.css?v=20261101-placements2');}finally{dom.window.close();}
+  const dom=new JSDOM(read(file));try{const d=dom.window.document;assert.equal(d.querySelector('[data-native-news-slot]'),null);assert.equal(d.querySelector('script[src^="/native-news-slot.js"]').getAttribute('src'),'/native-news-slot.js?v=20261101-placements3');assert.equal(d.querySelector('link[href^="/native-news-slot.css"]').getAttribute('href'),'/native-news-slot.css?v=20261101-placements3');}finally{dom.window.close();}
  }
- assert.ok(read('tools/refresh-news-rss.js').includes('href="/native-news-slot.css?v=20261101-placements2"'));assert.ok(read('tools/refresh-news-rss.js').includes('src="/native-news-slot.js?v=20261101-placements2"'));
+ assert.ok(read('tools/refresh-news-rss.js').includes('href="/native-news-slot.css?v=20261101-placements3"'));assert.ok(read('tools/refresh-news-rss.js').includes('src="/native-news-slot.js?v=20261101-placements3"'));
  assert.equal(api.scope({get top(){return this;},location:{origin:'https://matchapp.tv',pathname:'/explore.html'},document:{documentElement:{dataset:{}}}}),'explore');
 });
