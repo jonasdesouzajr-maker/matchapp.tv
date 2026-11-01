@@ -1018,7 +1018,11 @@ async function doMatch(root){
   if(note){const message=matchNote(p,pick);note.hidden=!message;paintNote(note,()=>matchNote(p,pick));}
   queueReading(pick.book.id,'seen');readingClaims.delete(matchOwner+':'+pick.book.id);reservedId='';
   renderResult(root,pick.book,p,pick.relaxed,pick.audio||null,pick.magazine===true,pick);
-  void cloudSync();
+  void cloudSync().then(synced=>{
+   if(synced&&matchOwner===readingOwner&&matchEpoch===readingEpoch&&window.MatchAppTokens?.enabled===false){
+    try{void Promise.resolve(window.MatchAppTokens.refreshAfterValue?.()).catch(()=>{});}catch(_){}
+   }
+  });
   try{window.MatchAppTokens?.confirmResult?.('ebook',root.querySelector('[data-ebook-result]'),tokenContext?.runId);}catch(_){}
  }catch(e){
   await window.MatchAppTokens?.noteUnconfirmed?.('ebook',tokenContext?.runId);

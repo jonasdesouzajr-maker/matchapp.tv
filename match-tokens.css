@@ -85,6 +85,13 @@ html body.page-home #result-box .match-result-toolbar.ma-token-active-toolbar { 
 .ma-token-dialog .ma-token-button:focus-visible { outline: 3px solid #f6d991; outline-offset: 3px; }
 .ma-token-dialog .ma-token-button:disabled { opacity: .6; cursor: default; }
 .ma-token-dialog .ma-token-footnote { margin: 14px 0 0; font-size: 13px; color: #c5b2d1; }
+/* Independent rewards inherit the viewer's existing accessibility setting. */
+.ma-token-scrim[data-legacy-rewards] { z-index: 2147483410; }
+.ma-token-dialog[data-legacy-rewards] { z-index: 2147483411; font-size: calc(16px * var(--font-scale, 1)); }
+.ma-token-dialog[data-legacy-rewards] .ma-token-button { font-size: calc(16px * var(--font-scale, 1)); }
+.ma-token-dialog[data-legacy-rewards] h2 { font-size: calc(clamp(23px, 5vw, 28px) * var(--font-scale, 1)); }
+.ma-token-dialog[data-legacy-rewards] .ma-token-button--close { font-size: calc(24px * var(--font-scale, 1)); }
+.ma-token-dialog[data-legacy-rewards] .ma-token-footnote { font-size: calc(13px * var(--font-scale, 1)); }
 .ma-token-reading-status { min-height: 64px; padding-top: 8px; }
 /* Existing promotion mechanisms remain intact while the server flag is off.
  * These selectors retire only the explicitly superseded adult offers. */

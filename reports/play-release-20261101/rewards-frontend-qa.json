@@ -1,0 +1,54 @@
+{
+  "scope": "Local mocked browser contracts only; current Home HTML/CSS, shared notice-dialog owner and text-pill runtime, real trusted Chromium clicks, Tab/Shift+Tab containment, Escape/close/focus return, redraw focus, 130% font scale, reduced motion. No live SSV, ads, tablet or account proof.",
+  "pass": true,
+  "browser_cases": 56,
+  "languages": [
+    "en",
+    "pt-BR",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "tr",
+    "ru",
+    "ar",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "zh"
+  ],
+  "viewports": [
+    {
+      "width": 320,
+      "height": 740
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 820,
+      "height": 1180
+    },
+    {
+      "width": 1280,
+      "height": 800
+    }
+  ],
+  "unit_tests": {
+    "passed": 116,
+    "failed": 0,
+    "log": "/tmp/matchapp-rewards-frontend-20261101-tests.log"
+  },
+  "browser_evidence": "/tmp/matchapp-rewards-frontend-20261101/",
+  "revision_base": "066f8e591f6cbe69d54c742c0610eb64bd362a59",
+  "sources_sha256": {
+    "match-tokens.js": "e40b4ca068fb64af70e904d3e4ac9c33dbcfcdfce9502129ff07c66ed8bef034",
+    "match-tokens.css": "e39dba0371bb85306091ad38e62c02c9bda057da3e082ce46bc774a8d1c604d2",
+    "ebooks/ebook-matcher.js": "fcc78e0f4df5193408d5adcc9d8ea5c3df1a26537d0f2340ba7448c571487bd2",
+    "tests/legacy-rewards-frontend.test.cjs": "4f97386bf94de0fc8e8cbb658a22f13f1c273d76f264a4b828c98f2e0648bea1",
+    "tools/qa-legacy-rewards-20261101.cjs": "41a86540a6d008e10ec4f8c07607b8a5552d5516b611e560064e26a86f816c92"
+  },
+  "protected_inventory": "All seven protected AdSense checks passed. HTML edits add only changed-asset cache pins; removing the new pin reproduces previous bytes. No content generator, native edit, flag activation, real ad request or balance grant was performed."
+}

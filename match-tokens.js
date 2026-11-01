@@ -10,6 +10,24 @@
   'use strict';
   const VERSION='match-tokens-v1';
   const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+  const LEGACY_VERSION='legacy-rewards-v1';
+  const legacyKeys=["balance","daily","extras","title","empty","available","refreshNote","reward","rewardNote","watch","credited","signInNote","first","entry"];
+  const legacyRows={
+    "en":{"balance":"{count} matches available","daily":"{remaining} of {limit} included actions left","extras":"{count} Extra Matches","title":"Optional Extra Matches","empty":"Your included allowance and Extra Matches are used up. Your result stays here.","available":"Your current allowance is unchanged.","refreshNote":"Your current allowance is unchanged. Earned Extra Matches stay in your existing balance.","reward":"Watch an optional ad for 3 Extra Matches","rewardNote":"Optional. Extra Matches are added only after the server verifies completion.","watch":"Watch now · +3 Extra Matches","credited":"3 Extra Matches added to your account.","signInNote":"Sign in to check eligibility for optional Extra Matches.","first":"Get a Match or e-book result before rewards are available.","entry":"Optional ad · +3 Extra Matches"},
+    "pt-BR":{"balance":"{count} matches disponíveis","daily":"{remaining} de {limit} ações incluídas restantes","extras":"{count} Matches Extras","title":"Matches Extras opcionais","empty":"Sua cota incluída e seus Matches Extras acabaram. Seu resultado continua aqui.","available":"Sua cota atual permanece igual.","refreshNote":"Sua cota atual permanece igual. Matches Extras ganhos ficam no seu saldo existente.","reward":"Assistir a um anúncio opcional por 3 Matches Extras","rewardNote":"Opcional. Matches Extras são adicionados somente após o servidor verificar a conclusão.","watch":"Assistir agora · +3 Matches Extras","credited":"3 Matches Extras adicionados à sua conta.","signInNote":"Entre para verificar sua elegibilidade para Matches Extras opcionais.","first":"Obtenha um resultado de Match ou e-book antes de acessar recompensas.","entry":"Anúncio opcional · +3 Matches Extras"},
+    "es":{"balance":"{count} matches disponibles","daily":"Quedan {remaining} de {limit} acciones incluidas","extras":"{count} Matches Extra","title":"Matches Extra opcionales","empty":"Tu cuota incluida y tus Matches Extra se han agotado. Tu resultado sigue aquí.","available":"Tu cuota actual no cambia.","refreshNote":"Tu cuota actual no cambia. Los Matches Extra ganados se conservan en tu saldo existente.","reward":"Ver un anuncio opcional por 3 Matches Extra","rewardNote":"Opcional. Los Matches Extra se añaden solo cuando el servidor verifica que se completó.","watch":"Ver ahora · +3 Matches Extra","credited":"Se añadieron 3 Matches Extra a tu cuenta.","signInNote":"Inicia sesión para comprobar si puedes obtener Matches Extra opcionales.","first":"Obtén un resultado de Match o e-book antes de acceder a las recompensas.","entry":"Anuncio opcional · +3 Matches Extra"},
+    "fr":{"balance":"{count} matchs disponibles","daily":"{remaining} actions incluses restantes sur {limit}","extras":"{count} matchs supplémentaires","title":"Matchs supplémentaires facultatifs","empty":"Votre quota inclus et vos matchs supplémentaires sont épuisés. Votre résultat reste ici.","available":"Votre quota actuel ne change pas.","refreshNote":"Votre quota actuel ne change pas. Les matchs supplémentaires gagnés restent dans votre solde existant.","reward":"Regarder une publicité facultative pour 3 matchs supplémentaires","rewardNote":"Facultatif. Les matchs supplémentaires sont ajoutés après vérification de la lecture complète par le serveur.","watch":"Regarder · +3 matchs supplémentaires","credited":"3 matchs supplémentaires ajoutés à votre compte.","signInNote":"Connectez-vous pour vérifier votre accès aux matchs supplémentaires facultatifs.","first":"Obtenez un résultat Match ou e-book avant de pouvoir accéder aux récompenses.","entry":"Publicité facultative · +3 matchs supplémentaires"},
+    "de":{"balance":"{count} Matches verfügbar","daily":"{remaining} von {limit} enthaltenen Aktionen übrig","extras":"{count} zusätzliche Matches","title":"Optionale zusätzliche Matches","empty":"Dein enthaltenes Kontingent und deine zusätzlichen Matches sind aufgebraucht. Dein Ergebnis bleibt hier.","available":"Dein aktuelles Kontingent bleibt unverändert.","refreshNote":"Dein aktuelles Kontingent bleibt unverändert. Verdiente zusätzliche Matches bleiben in deinem bestehenden Guthaben.","reward":"Optionalen Werbespot für 3 zusätzliche Matches ansehen","rewardNote":"Freiwillig. Zusätzliche Matches werden erst gutgeschrieben, wenn der Server den Abschluss bestätigt.","watch":"Jetzt ansehen · +3 zusätzliche Matches","credited":"Deinem Konto wurden 3 zusätzliche Matches gutgeschrieben.","signInNote":"Melde dich an, um deine Berechtigung für optionale zusätzliche Matches zu prüfen.","first":"Erhalte zuerst ein Match- oder E-Book-Ergebnis, bevor Belohnungen verfügbar sind.","entry":"Optionaler Werbespot · +3 zusätzliche Matches"},
+    "it":{"balance":"{count} match disponibili","daily":"Restano {remaining} azioni incluse su {limit}","extras":"{count} match extra","title":"Match extra facoltativi","empty":"La quota inclusa e i match extra sono esauriti. Il tuo risultato resta qui.","available":"La tua quota attuale non cambia.","refreshNote":"La tua quota attuale non cambia. I match extra guadagnati restano nel saldo esistente.","reward":"Guarda un annuncio facoltativo per 3 match extra","rewardNote":"Facoltativo. I match extra vengono aggiunti solo dopo che il server ha verificato il completamento.","watch":"Guarda ora · +3 match extra","credited":"3 match extra aggiunti al tuo account.","signInNote":"Accedi per verificare l’idoneità ai match extra facoltativi.","first":"Ottieni un risultato Match o e-book prima di accedere ai premi.","entry":"Annuncio facoltativo · +3 match extra"},
+    "tr":{"balance":"{count} eşleşme kullanılabilir","daily":"Dahil olan {limit} işlemden {remaining} kaldı","extras":"{count} ek eşleşme","title":"İsteğe bağlı ek eşleşmeler","empty":"Dahil olan hakkınız ve ek eşleşmeleriniz bitti. Sonucunuz burada kalır.","available":"Mevcut hakkınız değişmez.","refreshNote":"Mevcut hakkınız değişmez. Kazanılan ek eşleşmeler mevcut bakiyenizde kalır.","reward":"3 ek eşleşme için isteğe bağlı reklam izle","rewardNote":"İsteğe bağlıdır. Ek eşleşmeler yalnızca sunucu tamamlandığını doğruladıktan sonra eklenir.","watch":"Şimdi izle · +3 ek eşleşme","credited":"Hesabınıza 3 ek eşleşme eklendi.","signInNote":"İsteğe bağlı ek eşleşmelere uygunluğunuzu kontrol etmek için giriş yapın.","first":"Ödüllere erişmeden önce bir Match veya e-kitap sonucu alın.","entry":"İsteğe bağlı reklam · +3 ek eşleşme"},
+    "ru":{"balance":"Доступно подборок: {count}","daily":"Осталось {remaining} из {limit} включённых действий","extras":"Дополнительных подборок: {count}","title":"Дополнительные подборки по желанию","empty":"Включённый лимит и дополнительные подборки закончились. Ваш результат остаётся здесь.","available":"Ваш текущий лимит не меняется.","refreshNote":"Ваш текущий лимит не меняется. Заработанные дополнительные подборки остаются на существующем балансе.","reward":"Посмотреть рекламу по желанию за 3 дополнительные подборки","rewardNote":"Необязательно. Дополнительные подборки начисляются только после подтверждения полного просмотра сервером.","watch":"Смотреть · +3 дополнительные подборки","credited":"На ваш аккаунт начислены 3 дополнительные подборки.","signInNote":"Войдите, чтобы проверить доступность дополнительных подборок по желанию.","first":"Получите результат Match или поиска электронной книги, прежде чем будут доступны награды.","entry":"Реклама по желанию · +3 дополнительные подборки"},
+    "ar":{"balance":"ترشيحات متاحة: {count}","daily":"متبقي {remaining} من أصل {limit} من الاستخدامات المشمولة","extras":"ترشيحات إضافية: {count}","title":"ترشيحات إضافية اختيارية","empty":"نفدت حصتك المشمولة والترشيحات الإضافية. تظل نتيجتك هنا.","available":"حصتك الحالية لا تتغير.","refreshNote":"حصتك الحالية لا تتغير. تظل الترشيحات الإضافية المكتسبة في رصيدك الحالي.","reward":"شاهد إعلانًا اختياريًا مقابل 3 ترشيحات إضافية","rewardNote":"اختياري. تُضاف الترشيحات الإضافية فقط بعد أن يتحقق الخادم من اكتمال المشاهدة.","watch":"شاهد الآن · +3 ترشيحات إضافية","credited":"أُضيفت 3 ترشيحات إضافية إلى حسابك.","signInNote":"سجّل الدخول للتحقق من أهليتك للترشيحات الإضافية الاختيارية.","first":"احصل على نتيجة من Match أو بحث الكتب الإلكترونية قبل إتاحة المكافآت.","entry":"إعلان اختياري · +3 ترشيحات إضافية"},
+    "hi":{"balance":"{count} मैच उपलब्ध","daily":"शामिल {limit} उपयोगों में से {remaining} बाकी","extras":"{count} अतिरिक्त मैच","title":"वैकल्पिक अतिरिक्त मैच","empty":"आपका शामिल कोटा और अतिरिक्त मैच समाप्त हो गए हैं। आपका परिणाम यहीं रहेगा।","available":"आपका मौजूदा कोटा नहीं बदलेगा।","refreshNote":"आपका मौजूदा कोटा नहीं बदलेगा। कमाए गए अतिरिक्त मैच आपके मौजूदा बैलेंस में रहेंगे।","reward":"3 अतिरिक्त मैच के लिए वैकल्पिक विज्ञापन देखें","rewardNote":"वैकल्पिक है। सर्वर से पूरा देखे जाने की पुष्टि होने पर ही अतिरिक्त मैच जोड़े जाते हैं।","watch":"अभी देखें · +3 अतिरिक्त मैच","credited":"आपके खाते में 3 अतिरिक्त मैच जोड़े गए।","signInNote":"वैकल्पिक अतिरिक्त मैच की पात्रता जाँचने के लिए साइन इन करें।","first":"रिवॉर्ड उपलब्ध होने से पहले Match या ई-बुक का परिणाम पाएँ।","entry":"वैकल्पिक विज्ञापन · +3 अतिरिक्त मैच"},
+    "id":{"balance":"{count} match tersedia","daily":"Tersisa {remaining} dari {limit} penggunaan yang termasuk","extras":"{count} match tambahan","title":"Match tambahan opsional","empty":"Kuota yang termasuk dan match tambahan Anda telah habis. Hasil Anda tetap di sini.","available":"Kuota Anda saat ini tidak berubah.","refreshNote":"Kuota Anda saat ini tidak berubah. Match tambahan yang diperoleh tetap ada di saldo Anda.","reward":"Tonton iklan opsional untuk 3 match tambahan","rewardNote":"Opsional. Match tambahan hanya ditambahkan setelah server memverifikasi bahwa iklan selesai ditonton.","watch":"Tonton sekarang · +3 match tambahan","credited":"3 match tambahan ditambahkan ke akun Anda.","signInNote":"Masuk untuk memeriksa kelayakan match tambahan opsional.","first":"Dapatkan hasil Match atau e-book sebelum hadiah tersedia.","entry":"Iklan opsional · +3 match tambahan"},
+    "ja":{"balance":"利用可能なマッチ：{count}回","daily":"含まれる{limit}回のうち残り{remaining}回","extras":"追加マッチ：{count}回","title":"任意の追加マッチ","empty":"基本の利用枠と追加マッチを使い切りました。結果はここに残ります。","available":"現在の利用枠は変わりません。","refreshNote":"現在の利用枠は変わりません。獲得した追加マッチは既存の残高に残ります。","reward":"任意の広告を見て追加マッチ3回を獲得","rewardNote":"任意です。サーバーが視聴完了を確認した後にのみ追加マッチが付与されます。","watch":"今すぐ見る · 追加マッチ+3回","credited":"アカウントに追加マッチ3回が付与されました。","signInNote":"ログインして任意の追加マッチの利用条件を確認してください。","first":"特典を利用するには、まずMatchまたは電子書籍の結果を取得してください。","entry":"任意の広告 · 追加マッチ+3回"},
+    "ko":{"balance":"매치 {count}회 이용 가능","daily":"기본 제공 {limit}회 중 {remaining}회 남음","extras":"추가 매치 {count}회","title":"선택형 추가 매치","empty":"기본 제공 횟수와 추가 매치를 모두 사용했습니다. 결과는 여기에 그대로 남습니다.","available":"현재 기본 제공 횟수는 바뀌지 않습니다.","refreshNote":"현재 기본 제공 횟수는 바뀌지 않습니다. 획득한 추가 매치는 기존 잔액에 유지됩니다.","reward":"선택형 광고를 보고 추가 매치 3회 받기","rewardNote":"선택 사항입니다. 서버가 광고 시청 완료를 확인한 후에만 추가 매치가 지급됩니다.","watch":"지금 보기 · 추가 매치 +3회","credited":"계정에 추가 매치 3회가 지급되었습니다.","signInNote":"로그인하여 선택형 추가 매치 이용 자격을 확인하세요.","first":"보상을 이용하려면 먼저 Match 또는 전자책 결과를 받아야 합니다.","entry":"선택형 광고 · 추가 매치 +3회"},
+    "zh":{"balance":"可用匹配次数：{count}","daily":"内含{limit}次操作，剩余{remaining}次","extras":"额外匹配次数：{count}","title":"自选额外匹配","empty":"内含额度和额外匹配次数已用完。当前结果会保留在这里。","available":"当前额度保持不变。","refreshNote":"当前额度保持不变。获得的额外匹配次数会保留在现有余额中。","reward":"观看自选广告，获取3次额外匹配","rewardNote":"完全自愿。只有服务器确认观看完成后，才会增加额外匹配次数。","watch":"立即观看 · +3次额外匹配","credited":"账户已增加3次额外匹配。","signInNote":"登录以查看是否符合自选额外匹配的条件。","first":"获得Match或电子书籍结果后，才可使用奖励功能。","entry":"自选广告 · +3次额外匹配"}
+  };
   const keys=['balance','daily','extras','unlimited','options','title','empty','available','refreshNote','reward','rewardNote','preparing','ready','watch','verifying','credited','unavailable','signIn','signInNote','checkin','pro','keep','refresh','close','loading','failed','cancelAd','reset','guest','first','askLimit','copied','shareFailed'];
   const rows={
     en:['{count} Match tokens','{remaining} of {limit} daily tokens left','{count} earned or purchased tokens','Unlimited One Match · Pro','View token options','Choose how to keep matching','Your available Match tokens are used up. Your current result stays here.','You can keep matching with your available tokens.','Daily tokens refresh automatically. Earned and purchased balances are kept.','Watch an optional ad for 3 tokens','Optional. Tokens are added only after completion is verified.','Preparing your optional ad…','Your ad is ready. Choose Watch now to continue.','Watch now · +3 tokens','We are checking your reward. You can keep using this page.','3 tokens added to your account.','No optional ad is available here right now.','Sign in','Sign in to sync tokens and check reward eligibility.','Daily check-in','See Pro options','Keep my current result','Refresh balance','Close','Checking your balance…','Your balance could not be checked. Please try again.','Cancel ad preparation','Daily tokens refresh at {time}.','Guest balance is stored in this browser.','Find your first One Match recommendation to begin.','Your Ask AI allowance is used for today. Your existing Ask AI credits remain separate from Match tokens.','Link copied.','Sharing is unavailable right now.'],
@@ -41,6 +59,18 @@
     if(typeof data.next_reset_at!=='string'||!Number.isFinite(Date.parse(data.next_reset_at)))return null;
     return {...data,rewarded_available:data.rewarded_available===true};
   }
+  function legacyWallet(data){
+    if(data?.ok!==true||data.policy_version!==LEGACY_VERSION||data.credit_target!=='extra_matches'||
+       data.authenticated!==true||typeof data.enabled!=='boolean')return null;
+    for(const key of ['daily_limit','daily_remaining','bonus_tokens','purchased_matches','remaining','available_total'])if(count(data[key])===null)return null;
+    if(![3,5,10,50].includes(data.daily_limit)||data.daily_remaining>data.daily_limit||data.bonus_tokens!==0||data.remaining!==data.daily_remaining||
+       data.available_total!==data.remaining+data.purchased_matches||data.unlimited!==false||
+       typeof data.pro_active!=='boolean'||typeof data.ad_free!=='boolean'||typeof data.first_match_pending!=='boolean'||
+       typeof data.rewarded_available!=='boolean'||typeof data.next_reset_at!=='string'||!Number.isFinite(Date.parse(data.next_reset_at)))return null;
+    if(data.rewarded_available&&(!data.enabled||data.ad_free||data.pro_active||data.first_match_pending||data.available_total!==0))return null;
+    return {...data};
+  }
+  function legacyText(lang,key,args={}){let value=legacyRows[lang]?.[key]||text(lang,key,args);for(const [name,replacement]of Object.entries(args))value=value.replaceAll('{'+name+'}',String(replacement));return value;}
   function uuid(w){if(w.crypto?.randomUUID)return w.crypto.randomUUID();if(!w.crypto?.getRandomValues)return '';const b=w.crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;const h=Array.from(b,v=>v.toString(16).padStart(2,'0')).join('');return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);}
   function trusted(w,event){return event?.isTrusted===true&&(!w.navigator.userActivation||w.navigator.userActivation.isActive===true);}
   function guestStatus(w){
@@ -57,13 +87,21 @@
     if(!w?.document||!adult(w)||w.MatchAppTokens)return null;
     const d=w.document;
     let enabled=false,knownPolicy=false,currentWallet=null,accountId='',epoch=0,readFlight=null,view=null,returnFocus=null;
-    let hasValue=false,awaitingFirstReveal=false,notice='loading',action='match',gateSurface=surface(),busy=false,claim=null,adPhase='',rewardTimer=null,reconcileFlight=null,preparationId=0;
+    let legacyRewardsEnabled=false,legacyRewardWallet=null,noticeTarget='match_tokens',settledReward=null;
+    let hasValue=false,awaitingFirstReveal=false,notice='loading',action='match',gateSurface=surface(),busy=false,claim=null,adPhase='',rewardTimer=null,reconcileFlight=null,preparationId=0,rewardsSuspended=false;
     const debits=new Map(),unconfirmed=new Map(),legacyLabels=new WeakMap(),legacyTabs=new WeakMap();
     function surface(){return /^\/ebooks(?:\/|$)/.test(w.location.pathname)?'ebook':'one_match';}
     function contextKey(chosen=surface(),runId=w.__matchappMatchRunId){return chosen+':'+String(runId??'current');}
     function createContext(chosen){return {surface:chosen==='ebook'?'ebook':'one_match',runId:uuid(w)};}
     function node(tag,className,content){const el=d.createElement(tag);if(className)el.className=className;if(content!==undefined)el.textContent=content;return el;}
-    function label(key,args){return text(locale(w),key,args);}
+    function legacySurface(){return w.top===w&&(/^\/(?:index\.html)?$/.test(w.location.pathname)||/^\/ebooks\/(?:index\.html)?$/.test(w.location.pathname))&&typeof w.MatchAppNativeRewards?.postMessage==='function';}
+    function legacyMode(){return !enabled&&legacyRewardsEnabled&&legacySurface();}
+    function rewardTarget(){return claim?.creditTarget||(notice==='credited'?noticeTarget:legacyMode()||(!enabled&&view?.legacy)?'extra_matches':'match_tokens');}
+    function label(key,args){return rewardTarget()==='extra_matches'?legacyText(locale(w),key,args):text(locale(w),key,args);}
+    function rewardBalance(){return claim?.wallet||(notice==='credited'&&settledReward?settledReward.wallet:rewardTarget()==='extra_matches'?legacyRewardWallet:currentWallet);}
+    function freshRewardBalance(){return claim?.creditTarget==='extra_matches'||(!claim&&legacyMode())?legacyRewardWallet:currentWallet;}
+    function hasRewardValue(){return rewardTarget()==='extra_matches'?legacyRewardWallet?.first_match_pending===false:hasValue;}
+    function rewardPolicyEnabled(){return enabled||legacyMode();}
     function alert(key){try{w.showToast?.(label(key),key==='failed');}catch(_){}}
     async function bounded(promise){let timer;try{return await Promise.race([promise,new Promise((_,reject)=>{timer=w.setTimeout(()=>reject(Error('token_timeout')),12000);})]);}finally{w.clearTimeout(timer);}}
     async function session(){if(!w.supabaseClient?.auth)return null;const r=await bounded(w.ensureCompactMatchSession?w.ensureCompactMatchSession():w.supabaseClient.auth.getSession());if(r.error)throw Error('session_unavailable');return r.data?.session||null;}
@@ -72,6 +110,7 @@
     function applyPolicy(data){
       if(data?.ok!==true||data.policy_version!==VERSION||typeof data.enabled!=='boolean')return false;
       knownPolicy=true;enabled=data.enabled;d.documentElement.toggleAttribute('data-match-tokens-enabled',enabled);
+      if(enabled){legacyRewardsEnabled=false;legacyRewardWallet=null;}
       if(enabled)d.documentElement.dataset.matchTokenPolicy=VERSION;else delete d.documentElement.dataset.matchTokenPolicy;
       const oldBadge=d.getElementById('quota-badge');if(oldBadge)oldBadge.inert=enabled;
       for(const id of ['btn-vip_monthly','btn-vip_annual','btn-business']){
@@ -102,24 +141,55 @@
       else{const valid=wallet(data);if(!valid)return false;currentWallet=valid;if(!fromDebit&&!awaitingFirstReveal)hasValue=hasValue||!valid.first_match_pending;}
       paintBalances();draw();return true;
     }
+    function assignLegacy(data){
+      const value=legacyWallet(data);if(!value)return false;
+      legacyRewardWallet=value;legacyRewardsEnabled=value.enabled&&!enabled;
+      paintLegacyEntry();draw();return true;
+    }
+    function assignReward(data,target){
+      if(target==='extra_matches')return assignLegacy(data)?legacyRewardWallet:null;
+      if(target!=='match_tokens'||data?.ok!==true||data.policy_version!==VERSION||typeof data.enabled!=='boolean')return null;
+      // A prepared token promise remains reconcilable after its public policy
+      // is paused. Reading that promise must not turn the paid wallet on.
+      const value=wallet({...data,enabled:true});if(!value||!assign(data))return null;
+      return {...value,enabled:data.enabled};
+    }
     async function refresh({quiet=true}={}){
+      if(rewardsSuspended)return null;
       if(readFlight)return readFlight;
-      const current=epoch;
+      let current=epoch;
       const flight=(async()=>{
         try{
           const auth=await session();if(current!==epoch)return null;
           const id=auth?.user?.id||'';
-          if(accountId!==id){accountId=id;currentWallet=null;hasValue=false;awaitingFirstReveal=false;debits.clear();unconfirmed.clear();}
+          if(accountId!==id){
+            if(claim)post('cancel');stopRewardTimer();++preparationId;current=++epoch;
+            accountId=id;currentWallet=null;legacyRewardWallet=null;legacyRewardsEnabled=false;settledReward=null;noticeTarget='match_tokens';
+            claim=null;adPhase='';busy=false;notice='loading';hasValue=false;awaitingFirstReveal=false;debits.clear();unconfirmed.clear();
+            if(view?.legacy)view.scrim.hidden=true;restoreLegacyParent();
+          }
           const data=await rpc('match_token_status');if(current!==epoch)return null;
           if(!assign(data))throw Error('wallet_invalid');
-          if(notice==='loading'||notice==='failed'){notice=defaultNotice();draw();}
+          let rewardReadFailed=false;
+          if(!enabled&&accountId&&legacySurface()){
+            try{const rewardStatus=await rpc('legacy_reward_status');if(current!==epoch)return null;if(!assignLegacy(rewardStatus))throw Error('reward_status_invalid');}
+            catch(_){if(current!==epoch)return null;rewardReadFailed=true;legacyRewardsEnabled=false;legacyRewardWallet=null;paintLegacyEntry();if(view?.legacy){notice='failed';draw();}}
+          }else{legacyRewardsEnabled=false;legacyRewardWallet=null;paintLegacyEntry();}
+          if(!rewardReadFailed&&(notice==='loading'||notice==='failed')){notice=defaultNotice();draw();}
           return currentWallet;
-        }catch(_){if(current===epoch){currentWallet=null;notice='failed';paintBalances();draw();if(!quiet)alert('failed');}return null;}
+        }catch(_){if(current===epoch){currentWallet=null;legacyRewardWallet=null;legacyRewardsEnabled=false;notice='failed';paintBalances();draw();if(!quiet)alert('failed');}return null;}
       })();
       readFlight=flight;
       try{return await flight;}finally{if(readFlight===flight)readFlight=null;}
     }
-    function balanceText(){if(!currentWallet)return label('loading');return currentWallet.unlimited?label('unlimited'):label('balance',{count:new Intl.NumberFormat(locale(w)).format(currentWallet.available_total)});}
+    async function refreshAfterValue(){
+      if(enabled||!legacySurface())return null;
+      const current=epoch;
+      if(readFlight)await readFlight;
+      if(current!==epoch)return null;
+      return refresh();
+    }
+    function balanceText(value=currentWallet,target='match_tokens'){const copy=(key,args)=>target==='extra_matches'?legacyText(locale(w),key,args):text(locale(w),key,args);if(!value)return copy('loading');return value.unlimited?copy('unlimited'):copy('balance',{count:new Intl.NumberFormat(locale(w)).format(value.available_total)});}
     function balanceButton(chosen=surface()){const el=node('button','ma-token-balance no-depth');el.type='button';el.setAttribute('data-match-token-balance','');el.addEventListener('click',event=>{if(trusted(w,event)){action='match';gateSurface=chosen;open(event);}});return el;}
     function paintBalances(){try{paintBalanceView();}catch(_){}}
     function paintBalanceView(){
@@ -129,8 +199,25 @@
       if(toolbar)toolbar.classList.toggle('ma-token-active-toolbar',enabled);
       const corner=toolbar?.querySelector('.ma-token-corner');if(corner)corner.hidden=!enabled;
       for(const button of d.querySelectorAll('[data-match-token-balance]')){
-        button.hidden=!enabled||!hasValue;button.textContent=balanceText();button.setAttribute('aria-label',balanceText()+'. '+label('options'));
+        button.hidden=!enabled||!hasValue;button.textContent=balanceText();button.setAttribute('aria-label',balanceText()+'. '+text(locale(w),'options'));
       }
+      paintLegacyEntry();
+    }
+    function paintLegacyEntry(){
+      const eligible=legacyMode()&&accountId&&legacyRewardWallet?.rewarded_available===true&&
+        legacyRewardWallet.available_total===0&&legacyRewardWallet.first_match_pending===false;
+      const host=surface()==='ebook'?d.querySelector('#ebook-matcher-root .ebook-match-row'):
+        d.querySelector('#out-of-matches-modal .oom-sheet');
+      for(const entry of d.querySelectorAll('[data-legacy-reward-entry]')){
+        entry.hidden=!eligible||entry.parentElement!==host;entry.style.display=entry.hidden?'none':'flex';
+        const control=entry.querySelector('button');if(control){control.textContent=legacyText(locale(w),'entry');control.disabled=busy;}
+      }
+      if(!eligible||!host||host.querySelector('[data-legacy-reward-entry]'))return;
+      const entry=node('div','ma-legacy-reward-entry');entry.setAttribute('data-legacy-reward-entry','');
+      entry.style.cssText='display:flex;max-width:100%;margin-block:12px';
+      const control=node('button','ma-token-balance no-depth',legacyText(locale(w),'entry'));control.type='button';control.style.font='inherit';
+      control.addEventListener('click',event=>{if(!trusted(w,event)||!legacyMode()||!legacyRewardWallet?.rewarded_available)return;action='match';gateSurface=surface();open(event);});
+      entry.append(control);host.append(entry);
     }
     function stopRewardTimer(){if(rewardTimer!==null){w.clearTimeout(rewardTimer);rewardTimer=null;}}
     function post(type,record=claim,extra={}){if(!record||typeof w.MatchAppNativeRewards?.postMessage!=='function')return false;try{w.MatchAppNativeRewards.postMessage(JSON.stringify({type,requestId:record.requestId,...extra}));return true;}catch(_){return false;}}
@@ -143,26 +230,30 @@
         try{await reward('cancel',{claimNonce:previous.nonce});}catch(_){}
       }else{post('cancel',previous);busy=false;notice='verifying';void reconcile();}
     }
-    function close(){if(!view)return;view.scrim.hidden=true;if(!claim&&adPhase==='preparing'){++preparationId;busy=false;adPhase='';}if(claim&&!claim.shown&&!claim.showRequested)void cancelPreparation();if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});}
-    function button(key,handler,quiet=false){const el=node('button','ma-token-button no-depth'+(quiet?' ma-token-button--quiet':''),label(key));el.type='button';el.addEventListener('click',event=>{if(trusted(w,event))handler(event);});return el;}
-    function draw(){try{drawView();}catch(_){}}
-    function defaultNotice(){return claim?adPhase==='ready'?'ready':'verifying':accountId?currentWallet?.rewarded_available&&typeof w.MatchAppNativeRewards?.postMessage==='function'?'rewardNote':'refreshNote':'signInNote';}
+    function restoreLegacyParent(){if(view?.legacyParent){view.legacyParent.inert=view.legacyParentInert;view.legacyParent=null;}}
+    function close(){if(!view)return;view.scrim.hidden=true;restoreLegacyParent();if(!claim&&adPhase==='preparing'){++preparationId;busy=false;adPhase='';}if(claim&&!claim.shown&&!claim.showRequested)void cancelPreparation();if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});}
+    function button(key,handler,quiet=false){const el=node('button','ma-token-button no-depth'+(quiet?' ma-token-button--quiet':''),label(key));el.type='button';el.dataset.tokenAction=key;el.addEventListener('click',event=>{if(trusted(w,event))handler(event);});return el;}
+    function draw(){try{paintLegacyEntry();drawView();}catch(_){}}
+    function defaultNotice(){return claim?adPhase==='ready'?'ready':'verifying':accountId?freshRewardBalance()?.rewarded_available&&typeof w.MatchAppNativeRewards?.postMessage==='function'?'rewardNote':'refreshNote':'signInNote';}
     function drawView(){
       if(!view)return;
+      const visibleWallet=rewardBalance(),target=rewardTarget();
+      const focused=d.activeElement,retainFocus=view.legacy&&!view.scrim.hidden&&view.dialog.contains(focused),focusKey=focused?.dataset?.tokenAction;
+      view.dialog.toggleAttribute('data-legacy-rewards',view.legacy===true);view.scrim.toggleAttribute('data-legacy-rewards',view.legacy===true);
       view.dialog.lang=locale(w);view.dialog.dir=locale(w)==='ar'?'rtl':'ltr';view.title.textContent=label('title');view.close.setAttribute('aria-label',label('close'));
-      const exhausted=currentWallet&&!currentWallet.unlimited&&currentWallet.available_total===0;
+      const exhausted=visibleWallet&&!visibleWallet.unlimited&&visibleWallet.available_total===0;
       view.intro.textContent=label(action==='ask_ai'?'askLimit':exhausted?'empty':'available');view.ledger.replaceChildren();view.actions.replaceChildren();
-      if(currentWallet){
-        view.ledger.append(node('strong','',balanceText()));
-        if(!currentWallet.unlimited){
+      if(visibleWallet){
+        view.ledger.append(node('strong','',balanceText(visibleWallet,target)));
+        if(!visibleWallet.unlimited){
           const number=v=>new Intl.NumberFormat(locale(w)).format(v);
-          view.ledger.append(node('p','',label('daily',{remaining:number(currentWallet.daily_remaining),limit:number(currentWallet.daily_limit)})));
-          view.ledger.append(node('p','',label('extras',{count:number(currentWallet.bonus_tokens+currentWallet.purchased_matches)})));
+          view.ledger.append(node('p','',label('daily',{remaining:number(visibleWallet.daily_remaining),limit:number(visibleWallet.daily_limit)})));
+          view.ledger.append(node('p','',label('extras',{count:number(visibleWallet.bonus_tokens+visibleWallet.purchased_matches)})));
         }
       }else view.ledger.append(node('p','',label('loading')));
       view.notice.textContent=label(notice);view.footnote.textContent=label(accountId?'refreshNote':'guest');
-      if(currentWallet?.next_reset_at&&!currentWallet.unlimited){const time=new Intl.DateTimeFormat(locale(w),{hour:'numeric',minute:'2-digit',timeZoneName:'short'}).format(new Date(currentWallet.next_reset_at));view.footnote.textContent+=' '+label('reset',{time});}
-      if(action==='match'&&exhausted&&accountId&&currentWallet.rewarded_available&&typeof w.MatchAppNativeRewards?.postMessage==='function'&&hasValue){
+      if(target==='match_tokens'&&visibleWallet?.next_reset_at&&!visibleWallet.unlimited){const time=new Intl.DateTimeFormat(locale(w),{hour:'numeric',minute:'2-digit',timeZoneName:'short'}).format(new Date(visibleWallet.next_reset_at));view.footnote.textContent+=' '+label('reset',{time});}
+      if(action==='match'&&exhausted&&accountId&&visibleWallet.rewarded_available&&typeof w.MatchAppNativeRewards?.postMessage==='function'&&hasRewardValue()&&rewardPolicyEnabled()){
         const rewardGroup=node('div','ma-token-reward-actions');
         const control=button(adPhase==='ready'?'watch':adPhase==='preparing'?'preparing':'reward',event=>adPhase==='ready'?showReward(event):prepareReward(event));
         control.classList.add('ma-token-reward');control.disabled=busy||Boolean(claim&&adPhase!=='ready');
@@ -171,10 +262,14 @@
         rewardGroup.append(control,cancelSlot);view.actions.append(rewardGroup);
       }
       if(!accountId){const control=button('signIn',()=>{close();w.openAuthModal?.();},true);control.disabled=busy;view.actions.append(control);}
-      if(accountId&&typeof w.openDailyCheckin==='function'){const control=button('checkin',()=>{close();w.openDailyCheckin();},true);control.disabled=busy;view.actions.append(control);}
-      if(action==='match'&&typeof w.MatchAppPro?.open==='function'){const control=button('pro',event=>{close();w.MatchAppPro.open(event);},true);control.disabled=busy;view.actions.append(control);}
+      if(enabled&&accountId&&typeof w.openDailyCheckin==='function'){const control=button('checkin',()=>{close();w.openDailyCheckin();},true);control.disabled=busy;view.actions.append(control);}
+      if(enabled&&action==='match'&&typeof w.MatchAppPro?.open==='function'){const control=button('pro',event=>{close();w.MatchAppPro.open(event);},true);control.disabled=busy;view.actions.append(control);}
       const refreshControl=button('refresh',()=>{notice='loading';draw();void refresh({quiet:false}).then(()=>{if(claim)void reconcile();});},true);refreshControl.disabled=busy;view.actions.append(refreshControl);
       view.actions.append(button('keep',close,true));
+      if(retainFocus&&!view.dialog.contains(d.activeElement)){
+        const next=[...view.dialog.querySelectorAll('button:not(:disabled)')].find(el=>el.dataset.tokenAction===focusKey)||view.close;
+        next.focus({preventScroll:true});
+      }
     }
     function mount(){
       if(view)return;
@@ -183,16 +278,19 @@
       const intro=node('p','ma-token-intro'),ledger=node('div','ma-token-ledger'),status=node('p','ma-token-notice');status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.setAttribute('aria-atomic','true');
       const actions=node('div','ma-token-actions'),footnote=node('p','ma-token-footnote');dialog.append(heading,intro,ledger,status,actions,footnote);scrim.append(dialog);d.body.append(scrim);view={scrim,dialog,title,close:dismiss,intro,ledger,notice:status,actions,footnote};
       scrim.addEventListener('click',event=>{if(event.target===scrim)close();});
-      dialog.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();close();return;}if(event.key!=='Tab')return;const controls=[...dialog.querySelectorAll('button:not(:disabled)')];if(event.shiftKey&&d.activeElement===controls[0]){event.preventDefault();controls.at(-1)?.focus();}else if(!event.shiftKey&&d.activeElement===controls.at(-1)){event.preventDefault();controls[0]?.focus();}});
+      dialog.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();if(view.legacy)event.stopPropagation();close();return;}if(event.key!=='Tab')return;const controls=[...dialog.querySelectorAll('button:not(:disabled)')];if(event.shiftKey&&d.activeElement===controls[0]){event.preventDefault();controls.at(-1)?.focus();}else if(!event.shiftKey&&d.activeElement===controls.at(-1)){event.preventDefault();controls[0]?.focus();}});
     }
     function open(event){
-      if(!enabled||!hasValue||(event&&!trusted(w,event)))return false;
+      if(!rewardPolicyEnabled()||!hasRewardValue()||(event&&!trusted(w,event)))return false;
       mount();returnFocus=d.activeElement;view.scrim.hidden=false;
+      view.legacy=!enabled;
+      if(view.legacy&&!view.legacyParent){const parent=d.getElementById('out-of-matches-modal');if(parent){view.legacyParent=parent;view.legacyParentInert=parent.inert;parent.inert=true;}}
+      noticeTarget=claim?.creditTarget||(legacyMode()?'extra_matches':'match_tokens');settledReward=null;
       notice=defaultNotice();
       draw();view.close.focus({preventScroll:true});return true;
     }
     function handleLimit(kind,status,requested='match'){
-      if(!enabled)return false;action=requested;
+      if(!enabled){if(requested==='match'&&legacySurface()){gateSurface=surface();paintLegacyEntry();void refresh();}return false;}action=requested;
       if(!accountId){currentWallet=guestStatus(w);hasValue=hasValue||!currentWallet.first_match_pending;}
       if(!hasValue){alert('first');return true;}
       open();return true;
@@ -254,7 +352,16 @@
     }
     function confirmResult(chosen=surface(),host=null,run=w.__matchappMatchRunId){
       try{w.MatchAppNativeNewsSlot?.confirmValue?.(chosen,host,run);}catch(_){}
-      if(!enabled)return;
+      if(!enabled){
+        if(legacySurface()){
+          void refresh();
+          if(chosen==='one_match'&&typeof w.matchPolicy?.flush==='function'){
+            const current=epoch;
+            try{void bounded(Promise.resolve(w.matchPolicy.flush())).then(()=>{if(current===epoch)void refreshAfterValue();}).catch(()=>{});}catch(_){}
+          }
+        }
+        return;
+      }
       const firstValue=!hasValue;
       hasValue=true;awaitingFirstReveal=false;
       if(!accountId){try{w.localStorage.setItem('match_token_first_value_v1','1');}catch(_){}currentWallet=guestStatus(w);}
@@ -265,7 +372,8 @@
       if(firstValue)try{d.dispatchEvent(new w.CustomEvent('matchapp:firstvalue',{detail:{surface:chosen==='ebook'?'ebook':'one_match'}}));}catch(_){}
     }
     async function prepareReward(event){
-      if(!trusted(w,event)||busy||claim||!enabled||!hasValue||!accountId||!currentWallet?.rewarded_available||currentWallet.unlimited||currentWallet.available_total!==0)return;
+      const currentBalance=freshRewardBalance();
+      if(rewardsSuspended||!trusted(w,event)||busy||claim||!rewardPolicyEnabled()||!hasRewardValue()||!accountId||!currentBalance?.rewarded_available||currentBalance.unlimited||currentBalance.available_total!==0)return;
       if(typeof w.MatchAppNativeRewards?.postMessage!=='function')return;
       const current=epoch,preparation=++preparationId,preparingAccount=accountId;busy=true;notice='preparing';adPhase='preparing';draw();
       try{
@@ -273,50 +381,70 @@
         const requestId=uuid(w);if(!requestId)throw Error('request_unavailable');
         const result=await reward('create',{requestId,surface:gateSurface});
         if(current!==epoch||preparation!==preparationId){
-          if(accountId===preparingAccount&&/^[a-f0-9]{64}$/.test(result.claimNonce||''))try{await reward('cancel',{claimNonce:result.claimNonce});}catch(_){}
+          if(accountId===preparingAccount&&result.claimStatus!=='prepared'&&/^[a-f0-9]{64}$/.test(result.claimNonce||''))try{await reward('cancel',{claimNonce:result.claimNonce});}catch(_){}
           return;
         }
-        if(!/^[a-f0-9]{64}$/.test(result.claimNonce||'')||result.rewardAmount!==3||!Number.isFinite(result.expiresAt)||result.expiresAt<Date.now()+90000||!assign(result.wallet))throw Error('claim_invalid');
-        claim={requestId,nonce:result.claimNonce,expiresAt:result.expiresAt,userId:accountId,shown:false,showRequested:false,polls:0};
+        const target=result.creditTarget===undefined&&enabled?'match_tokens':result.creditTarget;
+        const status=result.claimStatus===undefined&&target==='match_tokens'?'created':result.claimStatus;
+        if(!/^[a-f0-9]{64}$/.test(result.claimNonce||'')||result.rewardAmount!==3||!Number.isFinite(result.expiresAt)||
+           !['created','prepared','credited','expired','cancelled'].includes(status)||(status==='created'&&result.expiresAt<Date.now()+90000))throw Error('claim_invalid');
+        const promiseWallet=assignReward(result.wallet,target);if(!promiseWallet)throw Error('claim_invalid');
+        claim={requestId,nonce:result.claimNonce,expiresAt:result.expiresAt,userId:accountId,creditTarget:target,wallet:promiseWallet,shown:false,showRequested:false,polls:0};noticeTarget=target;
+        if(status!=='created'){
+          // A recovered promise may already have been presented by an earlier
+          // document. Reconcile it; never prepare or show it a second time.
+          claim.showRequested=true;busy=false;adPhase='verifying';notice='verifying';draw();void reconcile();return;
+        }
         if(!post('prepare',claim,{claimNonce:claim.nonce,accessToken:auth.access_token}))throw Error('bridge_unavailable');
         stopRewardTimer();rewardTimer=w.setTimeout(()=>{if(current===epoch&&adPhase==='preparing'){notice='unavailable';busy=false;void cancelPreparation();draw();}},22000);
       }catch(_){if(current===epoch){notice='unavailable';busy=false;adPhase='';if(claim&&!claim.shown&&!claim.showRequested)void cancelPreparation();draw();}}
     }
     function showReward(event){
-      if(!trusted(w,event)||busy||adPhase!=='ready'||!claim||claim.userId!==accountId||Date.now()>=claim.expiresAt||currentWallet?.available_total!==0||currentWallet?.unlimited)return;
+      const currentBalance=freshRewardBalance();
+      if(rewardsSuspended||!trusted(w,event)||busy||adPhase!=='ready'||!claim||claim.userId!==accountId||Date.now()>=claim.expiresAt||currentBalance?.available_total!==0||currentBalance?.unlimited)return;
       // Native independently checks current UMP consent and the physical
       // foreground gesture. Never await or auto-show after a ready callback.
       claim.showRequested=true;if(post('show')){busy=true;adPhase='showing';notice='verifying';draw();}else{claim.showRequested=false;notice='unavailable';draw();}
     }
     async function reconcile(){
-      if(reconcileFlight||!claim||claim.userId!==accountId)return reconcileFlight;
+      if(rewardsSuspended||reconcileFlight||!claim||claim.userId!==accountId)return reconcileFlight;
       const record=claim,current=epoch;
       const flight=(async()=>{
         try{
           const auth=await session();if(current!==epoch||!auth||auth.user.id!==record.userId)return;
           const result=await reward('status',{claimNonce:record.nonce});if(current!==epoch||claim!==record)return;
-          if(result.claimNonce!==record.nonce||!['created','prepared','credited','expired','cancelled'].includes(result.status)||!assign(result.wallet))throw Error('reward_status_invalid');
-          if(result.credited===true&&result.status==='credited'){notice='credited';adPhase='';claim=null;stopRewardTimer();}
+          const target=result.creditTarget===undefined&&record.creditTarget==='match_tokens'?'match_tokens':result.creditTarget;
+          if(result.claimNonce!==record.nonce||target!==record.creditTarget||!['created','prepared','credited','expired','cancelled'].includes(result.status))throw Error('reward_status_invalid');
+          const promiseWallet=assignReward(result.wallet,target);if(!promiseWallet)throw Error('reward_status_invalid');record.wallet=promiseWallet;
+          if(result.credited===true&&result.status==='credited'){
+            notice='credited';noticeTarget=target;settledReward={target,wallet:promiseWallet};adPhase='';claim=null;stopRewardTimer();
+            if(target==='extra_matches'){
+              // Refresh the original read-only badge after authoritative SSV
+              // fulfillment; never add a balance or change a debit locally.
+              try{void Promise.resolve(w.refreshQuotaStatus?.()).catch(()=>{});w.closeOutOfMatches?.();}catch(_){}
+            }
+          }
           else if(['expired','cancelled'].includes(result.status)){notice='unavailable';adPhase='';claim=null;stopRewardTimer();}
-          else{notice='verifying';adPhase='verifying';
+          else if(record.shown||record.showRequested||!['preparing','ready'].includes(adPhase)){
+            notice='verifying';adPhase='verifying';
             if(record.polls<4){const delay=[1500,4500,10000,20000][record.polls++];stopRewardTimer();rewardTimer=w.setTimeout(()=>{void reconcile();},delay);}
           }
-        }catch(_){if(current===epoch)notice='verifying';}
-        finally{if(current===epoch){busy=false;draw();}}
+        }catch(_){if(current===epoch&&(record.shown||record.showRequested||!['preparing','ready'].includes(adPhase)))notice='verifying';}
+        finally{if(current===epoch){busy=adPhase==='preparing'&&claim===record;draw();}}
       })();
       reconcileFlight=flight;
       try{return await flight;}finally{if(reconcileFlight===flight)reconcileFlight=null;}
     }
     function rewardEvent(event){
-      const value=event.detail;if(!claim||!value||value.requestId!==claim.requestId||claim.userId!==accountId)return;
-      if(value.status==='ready'){stopRewardTimer();claim.showRequested=false;adPhase='ready';busy=false;notice='ready';draw();return;}
-      if(value.status==='loading'){adPhase='preparing';notice='preparing';busy=true;draw();return;}
+      const value=event.detail;if(rewardsSuspended||!claim||!value||value.requestId!==claim.requestId||claim.userId!==accountId)return;
+      if(value.status==='ready'){if(claim.shown||claim.showRequested||adPhase!=='preparing')return;stopRewardTimer();claim.showRequested=false;adPhase='ready';busy=false;notice='ready';draw();return;}
+      if(value.status==='loading'){if(claim.shown||claim.showRequested||adPhase!=='preparing')return;adPhase='preparing';notice='preparing';busy=true;draw();return;}
       if(value.status==='showing'){claim.shown=true;adPhase='showing';busy=true;draw();return;}
       if(['earned','dismissed'].includes(value.status)){if(value.status==='earned')claim.shown=true;stopRewardTimer();notice='verifying';adPhase='verifying';busy=false;draw();void reconcile();return;}
       if(['failed','unavailable','cancelled'].includes(value.status)){stopRewardTimer();busy=false;notice='unavailable';if(claim.shown||claim.showRequested)void reconcile();else void cancelPreparation();draw();}
     }
     function authChanged(){
-      const previous=claim;if(previous)post('cancel',previous);stopRewardTimer();++epoch;accountId='';currentWallet=null;hasValue=false;awaitingFirstReveal=false;claim=null;adPhase='';busy=false;readFlight=null;reconcileFlight=null;debits.clear();unconfirmed.clear();notice='loading';paintBalances();draw();
+      const previous=claim;if(previous)post('cancel',previous);stopRewardTimer();++epoch;accountId='';currentWallet=null;legacyRewardWallet=null;legacyRewardsEnabled=false;settledReward=null;noticeTarget='match_tokens';hasValue=false;awaitingFirstReveal=false;claim=null;adPhase='';busy=false;readFlight=null;reconcileFlight=null;debits.clear();unconfirmed.clear();notice='loading';if(view?.legacy)view.scrim.hidden=true;restoreLegacyParent();paintBalances();draw();
       // Existing Supabase auth callbacks own the session lock. Read after that
       // callback returns, rather than making RPCs inside its locked turn.
       w.setTimeout(()=>{void refresh();},0);
@@ -331,18 +459,23 @@
     function initialize(){void refresh();paintBalances();}
     d.addEventListener('matchapp:newmatch',paintBalances);
     d.addEventListener('matchapp:authchange',authChanged);
-    for(const event of ['matchapp:langchange','matchapp:languagechange'])d.addEventListener(event,()=>{paintBalances();draw();});
+    for(const event of ['matchapp:langchange','matchapp:languagechange'])d.addEventListener(event,()=>{paintBalances();draw();if(legacySurface())Promise.resolve().then(paintLegacyEntry);});
     for(const event of ['matchapp:matchbalancechange','matchapp:prostatus'])d.addEventListener(event,()=>{void refresh();});
     w.addEventListener('matchapp:rewarded',rewardEvent);
-    const resume=()=>{if(claim)void reconcile();if(enabled)void refresh();};
+    const resume=()=>{rewardsSuspended=false;if(claim)void reconcile();if(enabled||legacySurface())void refresh();};
+    w.addEventListener('pagehide',()=>{
+      rewardsSuspended=true;++epoch;++preparationId;readFlight=null;reconcileFlight=null;stopRewardTimer();busy=false;
+      if(view)view.scrim.hidden=true;restoreLegacyParent();
+      if(claim){if(!claim.shown&&!claim.showRequested)void cancelPreparation();else{post('cancel');adPhase='verifying';notice='verifying';}}
+    });
     d.addEventListener('visibilitychange',()=>{if(d.visibilityState==='visible')resume();});w.addEventListener('pageshow',resume);
     w.addEventListener('storage',event=>{if(['match_dailyCount','match_lastDate','match_guestBonusMatches','match_lang'].includes(event.key)){if(!accountId&&enabled)currentWallet=guestStatus(w);paintBalances();draw();}});
-    const api=Object.freeze({createContext,beforeLookup,consume,noteUnconfirmed,confirmResult,handleLimit,open,close,refresh,ordinaryShare,
+    const api=Object.freeze({createContext,beforeLookup,consume,noteUnconfirmed,confirmResult,handleLimit,open,close,refresh,refreshAfterValue,ordinaryShare,
       updateStatus:()=>{if(enabled&&!accountId)currentWallet=guestStatus(w);paintBalances();return enabled;},
       renderCorner:()=>{paintBalances();return enabled;},
       isAdFree:()=>enabled&&currentWallet?.ad_free===true,isPro:()=>enabled&&currentWallet?.pro_active===true&&currentWallet?.unlimited===true,
       get enabled(){return enabled;},get retireLegacyPromotions(){return enabled;},get hasValue(){return hasValue;}});
     w.MatchAppTokens=api;if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',initialize,{once:true});else initialize();return api;
   }
-  return Object.freeze({VERSION,languages,keys,rows,text,locale,adult,policy,wallet,uuid,trusted,guestStatus,boot});
+  return Object.freeze({VERSION,LEGACY_VERSION,languages,keys,rows,legacyKeys,legacyRows,text,legacyText,locale,adult,policy,wallet,legacyWallet,uuid,trusted,guestStatus,boot});
 });
