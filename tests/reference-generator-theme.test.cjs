@@ -3,7 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {createRequire}=require('node:module');
 const {JSDOM}=require('jsdom');
-const {CRITICAL_STYLE_PRELOADS,cinemaAssets,versionFrameStylesheet,versionReferenceRuntimeAssets}=require('../tools/finalize-brand.js');
+const {CRITICAL_STYLE_PRELOADS,cinemaAssets,versionFrameStylesheet,versionReferenceRuntimeAssets,MARKER,SCRIPT,firstGoogleTag}=require('../tools/finalize-brand.js');
 const ROOT=path.join(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(ROOT,file),'utf8');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -71,10 +71,18 @@ function cjsTemplates(file,stop,expression,theme){
   });
 }
 
-// Strip only the explicitly versioned masthead assets, then the prior Jonas
+// Strip only the explicitly versioned browser/masthead assets, then the prior Jonas
 // repair pin. Every other byte of the body must remain identical.
 function bodyWithoutJonasRepair(body,expectRepair){
   const copy=body.cloneNode(true);
+  for(const script of copy.querySelectorAll('script[src^="/patches/jonas-adult-page.js?"]')){
+    const src=script.getAttribute('src'),pins=new URL(src,'https://matchapp.tv').searchParams.getAll('subtle');
+    if(expectRepair||pins.length){
+      assert.deepEqual(pins,['20261101-1'],'one current browser visual pin');
+      assert.ok(src.endsWith('&subtle=20261101-1'),'the browser pin preserves every previous parameter');
+      script.setAttribute('src',src.slice(0,-'&subtle=20261101-1'.length));
+    }
+  }
   for(const script of copy.querySelectorAll('script[src^="/patches/jonas-adult-page.js?"]')){
     const src=script.getAttribute('src'),pins=new URL(src,'https://matchapp.tv').searchParams.getAll('refined');
     if(pins.length){
@@ -119,7 +127,17 @@ function assertPresentationOnly(raw,themed,route){
     assert.equal(d.querySelector('link[href^="/patches/reference-home.css"],link[href^="/patches/reference-explore.css"]'),null);
     assert.equal(bodyWithoutJonasRepair(d.body,true),bodyWithoutJonasRepair(beforeDoc.body,false),'all source records, controls, artwork, ad geometry and paths stay identical');
     const validOwnedPreload=node=>node.matches('link[rel="preload"][as="style"][data-cinema-preload="critical-style"]')&&CRITICAL_STYLE_PRELOADS.includes(node.getAttribute('href'));
-    const originalHead=doc=>[...doc.head.children].filter(node=>!validOwnedPreload(node)&&!node.matches('style[data-cinema-layer],link[href^="/patches/reference-system.css?"],link[href^="/patches/reference-pages.css?"],script[src^="/patches/reference-system.js?"]')).map(node=>versionReferenceRuntimeAssets(versionFrameStylesheet(node.outerHTML)));
+    const tag=firstGoogleTag(d),defaults=d.querySelectorAll('script['+MARKER+']');
+    assert.equal(defaults.length,tag?1:0,'only tagged pages receive one consent initializer');
+    if(tag){
+      assert.equal(defaults[0].outerHTML,SCRIPT,'the added initializer is the canonical denied-only source');
+      assert.ok([...d.scripts].indexOf(defaults[0])<[...d.scripts].indexOf(tag),'consent defaults precede Google tags');
+    }
+    const charset=d.querySelector('meta[charset]'),priorCharset=beforeDoc.querySelector('meta[charset]');
+    assert.equal(charset.outerHTML,priorCharset.outerHTML,'moving a late charset must retain its exact declaration');
+    const charsetEnd=themed.indexOf(charset.outerHTML)+charset.outerHTML.length;
+    assert.ok(Buffer.byteLength(themed.slice(0,charsetEnd))<=1024,'the consent initializer cannot push the charset outside the HTML encoding limit');
+    const originalHead=doc=>[...doc.head.children].filter(node=>!validOwnedPreload(node)&&!node.matches('meta[charset],script['+MARKER+'],style[data-cinema-layer],link[href^="/patches/reference-system.css?"],link[href^="/patches/reference-pages.css?"],script[src^="/patches/reference-system.js?"]')).map(node=>versionReferenceRuntimeAssets(versionFrameStylesheet(node.outerHTML)));
     assert.deepEqual(originalHead(d),originalHead(beforeDoc),'metadata, analytics, original styles and source scripts stay identical');
     assert.equal(d.documentElement.lang,beforeDoc.documentElement.lang);
     assert.equal(cinemaAssets(themed,route),themed,'repeated finalization cannot duplicate the theme');
