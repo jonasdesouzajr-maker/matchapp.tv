@@ -427,7 +427,9 @@
       if (w.visualViewport) for (const name of ['resize', 'scroll']) listen(w.visualViewport, name, invalidate, { passive: true });
       if (typeof w.MutationObserver === 'function') {
         observer = new w.MutationObserver(records => {
-          if (records.some(record => !slot || (record.target !== slot && !slot.contains(record.target)))) invalidate();
+          // Ambient Jonas face blinks swap classes inside its avatar every few
+          // seconds; they never change geometry, so they must not flash the ad.
+          if (records.some(record => !slot || (record.target !== slot && !slot.contains(record.target) && !(record.type === 'attributes' && record.attributeName === 'class' && record.target.closest?.('.ja-premium-face'))))) invalidate();
         });
         observer.observe(d.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'open', 'aria-hidden', 'aria-modal', 'style', 'class'] });
       }
