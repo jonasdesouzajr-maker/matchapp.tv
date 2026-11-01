@@ -15,6 +15,12 @@
  var l=document.createElement('link');l.id='ma-ui-fixes-20261023-css';l.rel='stylesheet';l.href='/ui-fixes-20261023.css?v=20261024-1&repair=20261023-1&masthead=20261025-1&refined=20261025-4';(document.head||document.documentElement).appendChild(l);
  var s=document.createElement('script');s.id='ma-ui-fixes-20261023-js';s.defer=true;s.src='/ui-fixes-20261023.js?v=20261024-1&masthead=20261025-1';(document.head||document.documentElement).appendChild(s);
 })();
+/* Subtle background + image pills 2026-11-01 (all adult pages). */
+(function(){
+ 'use strict';
+ if(/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)||document.getElementById('ma-subtle-bg-20261101'))return;
+ var s=document.createElement('script');s.id='ma-subtle-bg-20261101';s.defer=true;s.src='/patches/subtle-background-20261101.js?v=20261101-1';(document.head||document.documentElement).appendChild(s);
+})();
 /* Jonas guide (2026-10-31): pills, Back closes overlays. Adult pages only. */
 (function(){
  if(!/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)&&!/\/(callback|confirm)\.html$/.test(location.pathname)&&!document.getElementById('ma-guide-20261031')){var g=document.createElement('script');g.id='ma-guide-20261031';g.defer=true;g.src='/jonas-guide-20261031.js?v=7';(document.head||document.documentElement).appendChild(g);}
