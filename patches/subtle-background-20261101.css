@@ -1,29 +1,29 @@
-/* Subtle background pass 2026-11-01. Lower density and opacity of poster walls so pages feel less cramped, more atmospheric. Adult pages only. */
-html body:not(.kids-body) .poster-wall .poster-wall-grid {
+/* Browser-only atmosphere: preserve the locked artwork, density, geometry and blur. */
+html[data-ma-subtle-browser="true"] body:not(.kids-body) .poster-wall .poster-wall-grid {
   opacity: 0.28 !important;
-  filter: blur(1px) saturate(1.05) !important;
 }
 @media (max-width: 700px) {
-  html body:not(.kids-body) .poster-wall .poster-wall-grid {
+  html[data-ma-subtle-browser="true"] body:not(.kids-body) .poster-wall .poster-wall-grid {
     opacity: 0.22 !important;
   }
 }
-html body:not(.kids-body) .poster-wall::after {
+html[data-ma-subtle-browser="true"] body:not(.kids-body) .poster-wall::after {
   background: radial-gradient(ellipse at 50% 40%, rgba(13,8,32,0.15), rgba(13,8,32,0.45) 70%) !important;
 }
 
-/* Ensure text over images and bare links get proper pill/button treatment. */
-html body:not(.kids-body) :is(.card, .tile, .poster, .result-card, .global-event, .marquee-item, .premium-card) a:not([class*="btn"]):not([class*="button"]):not([class*="pill"]):not(.gold-btn):not([data-ma-control-pill]) {
+/* Text links only: do not resize artwork links or existing controls; inherit font scale. */
+html[data-ma-subtle-browser="true"] body:not(.kids-body) :is(.card, .tile, .poster, .result-card, .global-event, .marquee-item, .premium-card) a:not([class*="btn"]):not([class*="button"]):not([class*="pill"]):not(.gold-btn):not([data-ma-control-pill]):not(:has(img,picture,svg,video,canvas)) {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  min-height: 32px;
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
   padding: 4px 12px !important;
   border-radius: 999px !important;
   background: rgba(28,18,36,0.75) !important;
-  border: 1px solid rgba(230,195,106,0.4) !important;
+  border: 0 !important;
   color: #f6e7c4 !important;
   text-decoration: none !important;
-  font-weight: 600;
-  font-size: 12px;
 }

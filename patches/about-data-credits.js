@@ -5,6 +5,8 @@
     if (!credit) return;
 
     const english = credit.textContent;
+    const tvmaze = document.querySelector('[data-tvmaze-label]');
+    const tvmazeLabels = {en:'TV data from',pt:'Dados de TV de',es:'Datos de televisión de',fr:'Données TV fournies par',de:'TV-Daten von',it:'Dati TV forniti da',tr:'TV verilerinin kaynağı:',ru:'Источник данных о телепередачах:',ar:'بيانات التلفزيون من',hi:'टीवी डेटा का स्रोत:',id:'Data TV dari',ja:'テレビ番組データの提供元：',ko:'TV 데이터 제공:',zh:'电视节目数据来源：'};
     const labels = {
         pt: 'Este produto usa a API do TMDB. O TMDB não endossa nem certifica o produto. O JustWatch fornece os dados regionais de streaming exibidos por meio do TMDB.',
         es: 'Este producto utiliza la API de TMDB. TMDB no lo avala ni lo certifica. JustWatch proporciona los datos de disponibilidad regional a través de TMDB.',
@@ -30,6 +32,11 @@
         credit.lang = localized ? (lang === 'pt' ? 'pt-BR' : lang) : 'en';
         credit.dir = lang === 'ar' ? 'rtl' : 'ltr';
         credit.textContent = localized ? labels[lang] : english;
+        if (tvmaze) {
+            tvmaze.textContent = tvmazeLabels[lang] || tvmazeLabels.en;
+            tvmaze.parentElement.lang = credit.lang;
+            tvmaze.parentElement.dir = credit.dir;
+        }
     }
 
     update();

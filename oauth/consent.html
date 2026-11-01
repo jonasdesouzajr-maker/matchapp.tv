@@ -1,8 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag & Consent Mode v2 -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied',
+        'analytics_storage': 'denied', 'functionality_storage': 'granted', 'personalization_storage': 'granted',
+        'security_storage': 'granted', 'wait_for_update': 500
+      });
+      gtag('set', 'ads_data_redaction', true); gtag('set', 'url_passthrough', true);
+    </script>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script data-ma-consent-defaults="20261101-1">
+(function(w){
+  var q=w.dataLayer=w.dataLayer||[];
+  var g=w.gtag=w.gtag||function(){q.push(arguments);};
+  if(!q.some(function(x){return x&&x[0]==='consent'&&x[1]==='default';})){
+    g('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:2000,region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+  }
+  try{if(w.localStorage.getItem('match_cookie_choice')==='essential')g('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});}catch(_){}
+})(window);
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -19,17 +40,7 @@
 <meta name="description" content="Confirm sign-in consent for MatchApp.">
 <link rel="canonical" href="https://matchapp.tv/oauth/consent.html">
 
-    <!-- Google Tag & Consent Mode v2 -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied',
-        'analytics_storage': 'denied', 'functionality_storage': 'granted', 'personalization_storage': 'granted',
-        'security_storage': 'granted', 'wait_for_update': 500
-      });
-      gtag('set', 'ads_data_redaction', true); gtag('set', 'url_passthrough', true);
-    </script>
+
 <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="/style.css?v=125">
 
