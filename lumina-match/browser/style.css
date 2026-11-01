@@ -9,6 +9,14 @@ body{overflow-x:hidden}
 button{font:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 #app{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(12px,3vw,24px)}
+#app[data-screen="home"] {
+  background: url('lumina-field-bg.jpg') center/cover no-repeat fixed;
+  background-color: #0f0c1d;
+}
+#app[data-screen="home"] .screen {
+  position: relative;
+  background: transparent;
+}
 #app[data-screen="game"]{justify-content:flex-start}
 .screen{width:100%;max-width:480px;text-align:center}
 h1{font-size:clamp(42px,11vw,56px);font-weight:300;letter-spacing:2px;line-height:1.15;overflow-wrap:anywhere}
