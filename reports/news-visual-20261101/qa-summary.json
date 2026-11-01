@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-01",
+  "initialBase": "066f8e591f6cbe69d54c742c0610eb64bd362a59",
+  "branch": "codex/news-visual-20261101",
+  "scope": "Full local production /news/ with fresh guest state, PT interface and source headlines intact. External source images may be unavailable under cloud policy. No physical-device or real publisher-image success claim.",
+  "checks": {
+    "unitTests": {
+      "passed": 3384,
+      "failed": 0,
+      "skipped": 0
+    },
+    "siteAudit": "passed",
+    "build": "passed",
+    "sourceTitlesLinksDatesAndSchema": "unchanged"
+  },
+  "rendered": [
+    {
+      "width": 320,
+      "height": 800,
+      "fontScale": 1,
+      "rootFont": "16px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    },
+    {
+      "width": 320,
+      "height": 800,
+      "fontScale": 1.5,
+      "rootFont": "24px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "fontScale": 1,
+      "rootFont": "16px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "fontScale": 1.5,
+      "rootFont": "24px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    },
+    {
+      "width": 800,
+      "height": 1280,
+      "fontScale": 1,
+      "rootFont": "16px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    },
+    {
+      "width": 800,
+      "height": 1280,
+      "fontScale": 1.5,
+      "rootFont": "24px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "fontScale": 1,
+      "rootFont": "16px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "fontScale": 1.5,
+      "rootFont": "24px",
+      "cards": 24,
+      "decodedImages": 24,
+      "labelledIllustrations": 24,
+      "horizontalOverflow": false,
+      "titleGlyphBounds": "passed",
+      "actionSeparation": "passed",
+      "errorRecovery": "local404 -> same labelled topic illustration; source link and headline unchanged"
+    }
+  ],
+  "reproduce": "node tools/qa-news-images-20261101.cjs",
+  "physicalDevice": "Pending exact deployed-marker check after review and integration.",
+  "publication": "Not deployed or published by this worktree."
+}
