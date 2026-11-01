@@ -199,7 +199,7 @@
   }
  }
  function readViewport(){var v=window.visualViewport;return [Math.round(v?.offsetLeft||0),Math.round(v?.offsetTop||0),Math.round(v?.width||window.innerWidth),Math.round(v?.height||window.innerHeight)]}
- function syncConversationViewport(pre){
+ function syncConversationViewport(){var pre=arguments[0];
   if(!opened&&!root.classList.contains('is-chat-stage')&&!panel.classList.contains('ma-header-jonas-conversation'))return;
   // Reads are batched before style writes (pre) so opening Jonas forces one layout, not several.
   var m=Array.isArray(pre)?pre:readViewport();

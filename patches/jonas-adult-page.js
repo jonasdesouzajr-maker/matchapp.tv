@@ -1,12 +1,11 @@
 /* One persistent adult companion; Home and native Android retain their existing owner. */
 (function(){
  'use strict';
- if(!/^\/kids(\/|$)/.test(location.pathname)&&!document.getElementById('ma-guide-20261031')){var g=document.createElement('script');g.id='ma-guide-20261031';g.defer=true;g.src='/jonas-guide-20261031.js?v=6';(document.head||document.documentElement).appendChild(g);}
  if(window.top!==window||/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)||/\/(callback|confirm)\.html$/.test(location.pathname)||/^\/(?:index\.html)?$/.test(location.pathname)||/MatchAppAiAndroid\//.test(navigator.userAgent))return;
  if(window.__matchappAmbientJonas||document.getElementById('matchapp-ambient-jonas-script'))return;
  window.__MATCHAPP_AMBIENT_WEB__=true;
  var script=document.createElement('script');script.id='matchapp-ambient-jonas-script';script.defer=true;
- script.src='/jonas/android-ambient-assistant-20261011.js?perf=20261031-1&v=corner20261020-1&voicepair=20261014-1&instant=20261015-1&stellar=20261020-1&header=20261020-1&resize=20261022-1&repair=20261023-1';
+ script.src='/jonas/android-ambient-assistant-20261011.js?v=corner20261020-1&voicepair=20261014-1&instant=20261015-1&stellar=20261020-1&header=20261020-1&resize=20261022-1&repair=20261023-1&perf=20261031-2';
  document.head.appendChild(script);
 })();
 /* UI fixes 2026-10-23: pills, poster wall, logo, chat resize and close (all adult pages, web and Android). */
@@ -15,4 +14,8 @@
  if(/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)||document.getElementById('ma-ui-fixes-20261023-css'))return;
  var l=document.createElement('link');l.id='ma-ui-fixes-20261023-css';l.rel='stylesheet';l.href='/ui-fixes-20261023.css?v=20261024-1&repair=20261023-1&masthead=20261025-1&refined=20261025-4';(document.head||document.documentElement).appendChild(l);
  var s=document.createElement('script');s.id='ma-ui-fixes-20261023-js';s.defer=true;s.src='/ui-fixes-20261023.js?v=20261024-1&masthead=20261025-1';(document.head||document.documentElement).appendChild(s);
+})();
+/* Jonas guide (2026-10-31): pills, Back closes overlays. Adult pages only. */
+(function(){
+ if(!/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)&&!/\/(callback|confirm)\.html$/.test(location.pathname)&&!document.getElementById('ma-guide-20261031')){var g=document.createElement('script');g.id='ma-guide-20261031';g.defer=true;g.src='/jonas-guide-20261031.js?v=6';(document.head||document.documentElement).appendChild(g);}
 })();
