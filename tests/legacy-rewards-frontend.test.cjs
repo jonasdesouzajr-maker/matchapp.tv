@@ -5,6 +5,9 @@ const {JSDOM}=require('jsdom');
 const api=require('../match-tokens.js');
 const read=name=>fs.readFileSync(path.join(__dirname,'..',name),'utf8');
 const source=read('match-tokens.js'),app=read('app.js');
+const homeDom=new JSDOM(read('index.html'));
+const homeModal=homeDom.window.document.getElementById('out-of-matches-modal').outerHTML;
+homeDom.window.close();
 const settle=async()=>{for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));};
 const deferred=()=>{let resolve;const promise=new Promise(done=>{resolve=done;});return {promise,resolve};};
 const master={ok:true,enabled:false,policy_version:'match-tokens-v1',authenticated:false};
@@ -14,8 +17,7 @@ const legacy=(changes={})=>({ok:true,enabled:true,policy_version:'legacy-rewards
 const token=(changes={})=>({...legacy(),policy_version:'match-tokens-v1',credit_target:undefined,...changes});
 
 async function fixture({signedIn=true,native=true,url='https://matchapp.tv/',initial=legacy(),policy=master,lang='en',reward,rpc}={}){
-  const home=new JSDOM(read('index.html')).window.document.getElementById('out-of-matches-modal').outerHTML;
-  const w=new JSDOM('<html><body><a id="quota-badge"></a><main id="result-box"><div class="match-result-toolbar"></div><a id="provider" href="https://www.netflix.com/title/123">Stream original result</a></main>'+home+
+  const w=new JSDOM('<html><body><a id="quota-badge"></a><main id="result-box"><div class="match-result-toolbar"></div><a id="provider" href="https://www.netflix.com/title/123">Stream original result</a></main>'+homeModal+
     '<div id="ebook-matcher-root"><div class="ebook-match-row"><button id="original-ebook">Find a book</button></div></div><article><button id="btn-vip_monthly">VIP</button></article><div id="locked-ad"><ins data-ad-slot="2595698117"></ins></div></body></html>',
     {url,runScripts:'outside-only',pretendToBeVisual:true}).window;
   const handlers=new WeakMap(),calls=[],messages=[],quotaReads=[],toasts=[];
@@ -213,6 +215,7 @@ test('changed reward assets retain earlier URL pins on all routes and future fin
   }finally{dom.window.close();}}
   const {versionReferenceRuntimeAssets}=require('../tools/finalize-brand.js');
   for(const file of ['match-tokens.js','match-tokens.css','ebooks/ebook-matcher.js']){
-    const output=versionReferenceRuntimeAssets('<script src="/'+file+'?v=old&amp;kept=1"></script>');const value=new URL(new JSDOM(output).window.document.querySelector('script').getAttribute('src'),'https://matchapp.tv');assert.equal(value.searchParams.get('v'),'old');assert.equal(value.searchParams.get('kept'),'1');assert.deepEqual(value.searchParams.getAll('legacyrewards'),['20261101-1']);
+    const output=versionReferenceRuntimeAssets('<script src="/'+file+'?v=old&amp;kept=1"></script>'),dom=new JSDOM(output);
+    try{const value=new URL(dom.window.document.querySelector('script').getAttribute('src'),'https://matchapp.tv');assert.equal(value.searchParams.get('v'),'old');assert.equal(value.searchParams.get('kept'),'1');assert.deepEqual(value.searchParams.getAll('legacyrewards'),['20261101-1']);}finally{dom.window.close();}
   }
 });
