@@ -75,20 +75,8 @@
     try{document.dispatchEvent(new CustomEvent('matchapp:news-static-ready',{detail:{country,language,status}}));}catch(_){}
   }
 
-  function fallbackImage(source,title){
-    const src=esc(decodeEntities(source||'Trusted source').slice(0,28));
-    const text=esc(decodeEntities(title||'Entertainment News').slice(0,36));
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="480" height="270"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#130734"/><stop offset="1" stop-color="#402562"/></linearGradient></defs><rect width="480" height="270" fill="url(#g)"/><circle cx="240" cy="86" r="38" fill="none" stroke="#E5C158" stroke-width="5"/><path d="M220 86h40M240 66v40" stroke="#E5C158" stroke-width="5" stroke-linecap="round"/><text x="240" y="154" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="19" fill="#E5C158">${src}</text><text x="240" y="191" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#fff">${text}</text><text x="240" y="229" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#d9cfee">VERIFIED PUBLISHER</text></svg>`;
-    return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-  }
-
-  function publisherLogo(item){
-    try{
-      const home=safeUrl(item.source_home)||safeUrl(item.url);
-      if(!home)return null;
-      const origin=new URL(home).origin;
-      return `${origin}/favicon.ico`;
-    }catch(_){return null;}
+  function fallbackImage(_source,_title,item={}){
+    return window.MatchAppNewsImages?.fallback(item)||'/assets/news/topics/news.svg';
   }
 
   function formatDate(v){
@@ -136,26 +124,13 @@
     a.setAttribute('aria-label',`Open ${title} at ${sourceName}`);
     if(!original){a.removeAttribute('href');a.removeAttribute('target');}
 
-    const img=document.createElement('img');
-    img.loading='lazy';
-    img.decoding='async';
-    img.width=240;
-    img.height=135;
-    img.referrerPolicy='no-referrer';
-    img.alt=item.category==='sports'?`Sports news: ${title}`:item.category==='world'?`World news from ${sourceName}: ${title}`:item.category==='general'?`News from ${sourceName}: ${title}`:item.person?`${decodeEntities(item.person)} — ${decodeEntities(item.event_type||'entertainment news')}`:(seo.primary_keyword?`${decodeEntities(seo.primary_keyword)}: ${title}`:`Entertainment news: ${title}`);
-    const logo=publisherLogo(item);
-    const branded=()=>{img.classList.add('ma-news-source-logo');img.src=fallbackImage(sourceName,title);};
-    const useLogo=()=>{
-      if(logo&&img.dataset.logoTried!=='1'){
-        img.dataset.logoTried='1';
-        img.classList.add('ma-news-source-logo');
-        img.src=logo;
-      }else branded();
-    };
-    img.addEventListener('error',useLogo);
-    const articleImage=newsImage(item);
-    if(articleImage)img.src=articleImage;
-    else useLogo();
+    const media=window.MatchAppNewsImages?.create(window,item);
+    const img=media?.querySelector('img')||document.createElement('img');
+    if(!media){
+      img.loading='lazy';img.decoding='async';img.width=240;img.height=135;img.alt='';
+      img.referrerPolicy='no-referrer';img.src=newsImage(item)||fallbackImage(sourceName,title,item);
+      img.addEventListener('error',()=>{const replacement=fallbackImage(sourceName,title,item);if(img.getAttribute('src')!==replacement)img.src=replacement;});
+    }
 
     const body=document.createElement('div');
     body.className='ma-news-card-body';
@@ -171,7 +146,7 @@
     tag.className='ma-news-event';
     tag.textContent=decodeEntities(item.event_type||'Entertainment');
     body.append(source,h3,brief,tag);
-    a.append(img,body);
+    a.append(media||img,body);
     article.append(a);
 
     // Optional discovery owns only this reserved sibling slot. The existing

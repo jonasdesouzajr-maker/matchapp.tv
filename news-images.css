@@ -1,0 +1,20 @@
+/* News media only. Original stories and reserved ad containers keep their owners. */
+@layer ma-reference.refinement.news-images {
+ html body:not(.kids-body) .ma-news-media {
+  position:relative!important;display:block!important;min-width:0!important;
+  width:100%!important;max-width:100%!important;aspect-ratio:16/9;
+  margin:0!important;padding:0!important;overflow:hidden!important;border-radius:10px!important;
+  background:#1b1429!important;
+ }
+ html body:not(.kids-body) .ma-news-media > img {
+  display:block!important;width:100%!important;height:100%!important;max-width:100%!important;
+  margin:0!important;padding:0!important;aspect-ratio:16/9;object-fit:contain!important;
+ }
+ html body:not(.kids-body) .ma-news-media > [data-news-illustration-label] {
+  position:absolute!important;inset:auto 8px 8px auto!important;display:block!important;
+  max-width:calc(100% - 16px)!important;margin:0!important;padding:4px 8px!important;
+  border-radius:8px!important;background:rgba(15,10,24,.9)!important;color:#f6e7c4!important;
+  font-size:.6875rem!important;font-weight:600;line-height:1.35!important;overflow-wrap:anywhere!important;
+ }
+ html body:not(.kids-body) .ma-news-media > [data-news-illustration-label][hidden] {display:none!important}
+}

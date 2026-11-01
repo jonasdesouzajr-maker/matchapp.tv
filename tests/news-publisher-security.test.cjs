@@ -17,6 +17,7 @@ function definitions({filesystem=fs,fetcher=()=>{throw new Error('No upstream re
     console:{log(){},warn(){},error(){}},fetch:fetcher,
     require(name){
       if(name==='node:fs')return filesystem;
+      if(name==='../news-images.js')return require('../news-images.js');
       if(name==='../news-monetization.js')return {eligibleArticle:()=>false,offers:[],offersMarkup:()=>''};
       if(name==='./finalize-brand.js')return require('../tools/finalize-brand.js');
       assert.ok(['node:path','node:crypto'].includes(name),'unexpected renderer dependency: '+name);

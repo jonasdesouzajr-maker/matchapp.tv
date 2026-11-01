@@ -42,3 +42,23 @@
   html body.news-ui-page main > article.premium-card {padding:18px!important}
  }
 }
+
+/* Story cards grow with their full headline and user-selected font size. */
+@layer ma-reference.refinement.news-card-bounds {
+ html body.news-ui-page [data-native-news-feed] > [data-news-story-card] {
+  min-width:0!important;height:auto!important;box-sizing:border-box!important;
+  padding:clamp(14px,2vw,20px)!important;overflow:visible!important;
+ }
+ html body.news-ui-page [data-news-story-card] > [data-news-source-title] {
+  display:block!important;min-width:0!important;height:auto!important;max-height:none!important;
+  margin-block:14px 12px!important;padding-block:2px!important;
+  line-height:1.4!important;white-space:normal!important;overflow:visible!important;
+  overflow-wrap:anywhere!important;-webkit-line-clamp:unset!important;
+ }
+ html body.news-ui-page [data-news-story-card] > [data-news-source-title] > a {
+  white-space:normal!important;overflow-wrap:anywhere!important;line-height:inherit!important;
+ }
+ html body.news-ui-page [data-news-story-card] > p:first-child {
+  margin-block:0 12px!important;line-height:1.45!important;overflow-wrap:anywhere!important;
+ }
+}
