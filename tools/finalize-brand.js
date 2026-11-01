@@ -17,7 +17,21 @@ function firstGoogleTag(doc){
   return [...doc.scripts].find(node=>{
     if(node.namespaceURI!=='http://www.w3.org/1999/xhtml'||node.closest('svg,math,template'))return false;
     if(!/^(?:|module|(?:text|application)\/(?:java|ecma)script)$/i.test(node.getAttribute('type')||''))return false;
-    return /(?:googletagmanager\.com\/(?:gtm|gtag\/js)|pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js)/.test(node.getAttribute('src')||'') || /googletagmanager\.com\/gtm\.js/.test(node.textContent);
+    const src=node.getAttribute('src');
+    if(src!==null){
+      try{
+        const url=new URL(src,'https://matchapp.tv/');
+        if(!['https:','http:'].includes(url.protocol)||url.username||url.password||url.port)return false;
+        return (['www.googletagmanager.com','googletagmanager.com'].includes(url.hostname)&&['/gtm.js','/gtag/js'].includes(url.pathname)) ||
+          (url.hostname==='pagead2.googlesyndication.com'&&url.pathname==='/pagead/js/adsbygoogle.js');
+      }catch(_){return false;}
+    }
+    // Inline GTM bootstraps contain a literal script URL, not a script src attribute.
+    const bootstrap=node.textContent;
+    return bootstrap.includes('gtm.start')&&[
+      'https://www.googletagmanager.com/gtm.js?id=','http://www.googletagmanager.com/gtm.js?id=','//www.googletagmanager.com/gtm.js?id=',
+      'https://googletagmanager.com/gtm.js?id=','http://googletagmanager.com/gtm.js?id=','//googletagmanager.com/gtm.js?id='
+    ].some(marker=>bootstrap.includes(marker));
   });
 }
 function consentSourceEdit(dom,html){
@@ -209,7 +223,7 @@ function referenceRuntimeAssetURL(url){
  if(['reference-system.js','reference-density.js','settings.js'].includes(file))entries.push(['perf','20261027-1']);
  if(['reference-support.css','reference-support.js'].includes(file))entries.push(['compactfooter','20261027-1']);
  if(['app.js','catalog-media.js','matchapp-ia.js','ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['guestcountry','20261027-1']);
- if(file==='jonas-adult-page.js')entries.push(['subtle','20261101-1']);
+ if(file==='jonas-adult-page.js')entries.push(['subtle','20261101-4']);
  return withQueryParams(url,entries);
 }
 function versionReferenceRuntimeAssets(html){
