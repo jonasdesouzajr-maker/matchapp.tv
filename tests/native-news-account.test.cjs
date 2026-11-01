@@ -102,7 +102,7 @@ const authChanges = f => f.calls.notifications.filter(call => call[0] === 'match
 
 test('native account comparison preserves only the same owner, and unknown entitlement remains ad-free', () => {
   const source = read('android-studio/app/src/main/java/com/jonas/papercup/NativeNewsBridge.kt');
-  assert.match(source, /if \(resolved == accountContext\) return\s+accountContext = resolved\s+hasValue = false/);
+  assert.match(source, /if \(resolved == accountContext\) return\s+accountContext = resolved\s+hasValue = resolved != null && resolved == valueAccount/);
   assert.match(source, /accountContext != null && hasValue/);
   assert.match(nativeSync, /if \(window\.isUserLoggedIn !== true\)[\s\S]*?bridge\.setAdFree\(true\)/);
   assert.match(nativeSync, /document\.addEventListener\('matchapp:authchange'[\s\S]*?setNewsAccountContext\(''\)/);

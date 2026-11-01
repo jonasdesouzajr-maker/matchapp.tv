@@ -53,6 +53,8 @@ internal class NativeNewsBridge(
     private var sample: Sample? = null
     private var accountContext: String? = null
     private var hasValue = false
+    // Owner that earned the in-app first value; survives the transient '' context each page load sends.
+    private var valueAccount: String? = null
     private var generation = 0
     private var loadGeneration = 0
     private var loadAttempted = false
@@ -117,7 +119,7 @@ internal class NativeNewsBridge(
                 document?.takeIf { it.id == id && current(it) }?.let { value ->
                     when (message.getString("type")) {
                         "hide" -> invalidatePosition("page_obscured")
-                        "reset" -> { hasValue = false; clearAd(); sample = null; emit(value, "unavailable", "account_changed") }
+                        "reset" -> { hasValue = false; valueAccount = null; clearAd(); sample = null; emit(value, "unavailable", "account_changed") }
                         "dispose" -> { clearAd(); sample = null; emit(value, "disposed", "document_disposed"); document = null }
                     }
                 }
@@ -140,7 +142,7 @@ internal class NativeNewsBridge(
                 Document(id, url, generation, language).also { document = it }
             }
             if (value.language != language) { clearAd(); sample = null; value.language = language }
-            if (valueReported && accountContext != null) hasValue = true
+            if (valueReported && accountContext != null) { hasValue = true; valueAccount = accountContext }
             emitAvailability(value)
             handler.removeCallbacks(freshnessCheck)
             if (foreground) handler.post(freshnessCheck)
@@ -357,7 +359,7 @@ internal class NativeNewsBridge(
         val resolved = value.takeIf { NativeNewsPolicy.validAccount(it) }
         if (resolved == accountContext) return
         accountContext = resolved
-        hasValue = false
+        hasValue = resolved != null && resolved == valueAccount
         clearAd()
         sample = null
         document?.takeIf(::current)?.let { valueDocument ->
@@ -403,6 +405,7 @@ internal class NativeNewsBridge(
         onNavigation()
         accountContext = null
         hasValue = false
+        valueAccount = null
         cleanupInstallation()
     }
     private fun cleanupInstallation() {

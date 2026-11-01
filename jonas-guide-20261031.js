@@ -48,8 +48,8 @@
   function tone(f,d,v){if(!ANDROID||muted())return;try{if(bridge&&bridge.soundAllowed&&!bridge.soundAllowed())return;ac=ac||new (window.AudioContext||window.webkitAudioContext)();var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type='sine';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v||.04,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d+.02)}catch(_){}}
   var fx={tap:function(){buzz(8);tone(880,.06,.025)},open:function(){buzz(14);tone(660,.12,.03);setTimeout(function(){tone(990,.1,.025)},60)},close:function(){buzz(10);tone(520,.1,.025)},match:function(){buzz(30);[523,659,784,1047].forEach(function(f,i){setTimeout(function(){tone(f,.18,.035)},i*90)})}};
   window.MatchAppFxUi=fx;
-  var pf={};function prefetch(h){try{var u=new URL(h,location.href);if(u.origin!==location.origin||pf[u.pathname]||u.pathname===location.pathname)return;pf[u.pathname]=1;var l=document.createElement('link');l.rel='prefetch';l.href=u.pathname;document.head.appendChild(l)}catch(_){}}
-  function idlePrefetch(){['/explore.html','/ebooks/','/cooking/','/profile/'].forEach(function(p,i){setTimeout(function(){prefetch(p)},1500*i)})}
+  var pf={};function prefetch(h){return;try{var u=new URL(h,location.href);if(u.origin!==location.origin||pf[u.pathname]||u.pathname===location.pathname)return;pf[u.pathname]=1;var l=document.createElement('link');l.rel='prefetch';l.href=u.pathname;document.head.appendChild(l)}catch(_){}}
+  function idlePrefetch(){/* Cloudflare answers Sec-Purpose:prefetch for dynamic HTML with 503; idle prefetch only produced console errors. */}
   if(!navigator.connection||!navigator.connection.saveData)(window.requestIdleCallback||setTimeout)(idlePrefetch,{timeout:6000});
 
   /* --- Instant optimistic selection (visual only; app logic unchanged) --- */
