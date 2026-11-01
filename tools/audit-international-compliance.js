@@ -4,10 +4,12 @@ const fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const results=[];
 function flag(level,id,subject,details){results.push({level,id,subject,details})}
-const pages=['index.html','ebooks/index.html','privacy.html','cookies.html','pricing/pricing.html','terms.html'];
+const pages=['index.html','events-archive.html','ebooks/index.html','privacy.html','privacidade.html','cookies.html','pricing/pricing.html','terms.html'];
 for(const p of pages){
- const s=read(p),i=s.indexOf('googletagmanager.com/gtm.js'),d=s.indexOf("gtag('consent', 'default'");
- if(i>=0&&(d<0||d>i))flag('action-required','PRECONSENT_GTM',p,'GTM bootstrap precedes observed consent defaults; verify tag-level gating with real browser and CMP');
+ const s=read(p),i=s.indexOf('googletagmanager.com/gtm.js'),d=s.search(/\bgtag\s*\(\s*(['"])consent\1\s*,\s*(['"])default\2\s*,/);
+ // This is a source-order signal, not proof of the remote GTM container's behavior.
+ // Both formatted and minified inline calls must be recognized.
+ if(i>=0&&(d<0||d>i))flag('action-required','PRECONSENT_GTM',p,'No inline consent default observed before GTM; verify container consent initialization, tag-level gating and the real CMP');
 }
 const home=read('index.html'),legal=read('legal-kit.js');
 const bannerLoaded=home.includes('legal-kit.js')||(home.includes('settings.js')&&read('settings.js').includes('legal-kit.js'));

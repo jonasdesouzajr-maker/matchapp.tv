@@ -9,6 +9,9 @@ test('international compliance inventory runs and reports real pending evidence 
  assert.equal(report.findings.some(f=>f.id==='KIDS_ENTRY_TRACKER'),false,'Do not introduce Kids entry GTM/AdSense');
  assert.equal(report.findings.some(f=>f.id==='AFFILIATE_SCOPE'),false,'Amazon app/market safety guard must remain');
  assert.equal(report.findings.some(f=>f.id==='NON_AFFILIATE_GOOGLE_KEY'),false);
+ for(const page of ['index.html','events-archive.html','pricing/pricing.html']){
+  assert.equal(report.findings.some(f=>f.id==='PRECONSENT_GTM'&&f.subject===page),false,page+' already sets defaults before GTM, including minified calls');
+ }
  const doc=fs.readFileSync(path.join(root,'docs/INTERNATIONAL_COMPLIANCE_STATUS.md'),'utf8');
  assert.match(doc,/NOT LEGALLY CERTIFIED/);
  assert.match(doc,/consent|cookies/i);
