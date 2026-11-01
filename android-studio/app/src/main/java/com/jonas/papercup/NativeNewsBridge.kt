@@ -151,7 +151,7 @@ internal class NativeNewsBridge(
 
     private fun acceptSample(value: Document, message: JSONObject) {
         if (!onlyKeys(message, setOf("type", "requestId", "seq", "rect", "viewport", "visible", "unobscured", "lang")) ||
-            !NativeNewsPolicy.isNewsDocument(value.url) || message.opt("visible") !is Boolean ||
+            !NativeNewsPolicy.isAdDocument(value.url) || message.opt("visible") !is Boolean ||
             message.opt("unobscured") !is Boolean || message.optString("lang") != value.language) return
         val sequenceNumber = message.opt("seq") as? Number ?: return
         val sequence = sequenceNumber.toLong()
@@ -165,7 +165,7 @@ internal class NativeNewsBridge(
         val view = NativeNewsPolicy.Viewport(number(viewport, "width"), number(viewport, "height"),
             number(viewport, "offsetX"), number(viewport, "offsetY"), number(viewport, "scale"))
         if (!message.getBoolean("visible") || !message.getBoolean("unobscured") ||
-            !NativeNewsPolicy.fullyVisible(bounds, view) || !eligible(value) ||
+            !NativeNewsPolicy.fullyVisible(bounds, view, value.url) || !eligible(value) ||
             !NativeNewsPolicy.matchesNativeViewport(view, web.width, web.height, density())) {
             invalidatePosition("not_fully_visible")
             if (!eligible(value)) emitAvailability(value)
@@ -188,7 +188,7 @@ internal class NativeNewsBridge(
     private fun eligible(value: Document): Boolean = installed && !destroyed && foreground &&
         !activity.isFinishing && !activity.isDestroyed && current(value) &&
         accountContext != null && hasValue && web.isShown && web.windowVisibility == View.VISIBLE &&
-        NativeNewsPolicy.isNewsDocument(value.url) && runCatching { canRequestAds() }.getOrDefault(false)
+        NativeNewsPolicy.isAdDocument(value.url) && runCatching { canRequestAds() }.getOrDefault(false)
 
     private fun current(value: Document): Boolean = document === value && value.generation == generation && value.url == web.url.orEmpty()
 
@@ -239,11 +239,15 @@ internal class NativeNewsBridge(
         val creative = ad ?: return
         if (!eligible(value) || !positionSafe(placement)) { hide("not_fully_visible"); return }
         val width = (placement.bounds.width * density()).roundToInt()
-        val height = (NativeNewsPolicy.HEIGHT_CSS * density()).roundToInt()
+        val heightCss = NativeNewsPolicy.heightCss(value.url) ?: return
+        val height = (heightCss * density()).roundToInt()
         if (adView != null && renderedWidth != width) { fail(value, "viewport_changed"); return }
         if (adView == null) {
             val inset = (8 * density()).roundToInt()
-            val rendered = runCatching { NativeNewsAdView.create(activity, creative, value.language, width - inset * 2, height - inset * 2) }.getOrNull()
+            val rendered = runCatching {
+                NativeNewsAdView.create(activity, creative, value.language, width - inset * 2, height - inset * 2,
+                    compact = heightCss == NativeNewsPolicy.CONTENT_HEIGHT_CSS)
+            }.getOrNull()
             if (rendered == null) { fail(value, "creative_does_not_fit"); return }
             adView = rendered
             renderedWidth = width
@@ -321,6 +325,7 @@ internal class NativeNewsBridge(
 
     private fun emit(value: Document, status: String, reason: String = "") {
         if (destroyed || !current(value) || (value.lastStatus == status && value.lastReason == reason)) return
+        val heightCss = NativeNewsPolicy.heightCss(value.url) ?: return
         value.lastStatus = status
         value.lastReason = reason
         // State transitions only: enough to diagnose a missing load without account IDs,
@@ -328,7 +333,10 @@ internal class NativeNewsBridge(
         android.util.Log.i("MatchAppAds", "native state=$status reason=$reason")
         val payload = JSONObject().put("requestId", value.id).put("status", status).put("reason", reason)
             .put("enabled", installed).put("eligible", eligible(value) && unavailableReason.isEmpty())
-            .put("heightCss", NativeNewsPolicy.HEIGHT_CSS).put("minWidthCss", NativeNewsPolicy.MIN_WIDTH_CSS)
+            // Older APKs remain News-only; web code must require this capability
+            // before reserving any of the newly supported content placements.
+            .put("placementsVersion", 1)
+            .put("heightCss", heightCss).put("minWidthCss", NativeNewsPolicy.MIN_WIDTH_CSS)
             .put("maxWidthCss", NativeNewsPolicy.MAX_WIDTH_CSS)
         val script = "(function(){if(window.top===window&&location.href===${JSONObject.quote(value.url)}&&" +
             "window.MatchAppNativeNewsDocumentId===${JSONObject.quote(value.id)})" +

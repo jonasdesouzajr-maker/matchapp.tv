@@ -127,7 +127,8 @@ test('bootstrap denies inherited free entitlement before the new document native
     assert.equal(f.native.hasValue, true);
     assert.equal(f.native.adFree, false, 'only the later authoritative native sync enables a verified free account');
     const slot = read('native-news-slot.js');
-    assert.ok(slot.indexOf("const newsAccount = surface === 'news' ? bootNewsAccount(w)") < slot.indexOf('w.MatchAppNativeNewsSlot = controller; hello();'), 'bootstrap denial precedes the first News hello');
+    const bootstrap = slot.indexOf("const newsAccount = ['news', 'explore'].includes(surface) ? bootNewsAccount(w)");
+    assert.ok(bootstrap >= 0 && bootstrap < slot.indexOf('w.MatchAppNativeNewsSlot = controller; hello();'), 'standalone bootstrap denial precedes the first News/Explore hello');
   } finally { f.close(); }
 });
 
@@ -439,5 +440,43 @@ test('standalone News preserves native PKCE before the same client is reused by 
     assert.equal(f.calls.create.length, 1);
     assert.deepEqual(f.calls.create[0][2], { auth: { detectSessionInUrl: false, experimental: { passkey: true }, flowType: 'pkce' } });
     assert.equal(await f.w.MatchAppNativeNewsAccount.ready, true);
+  } finally { f.close(); }
+});
+
+test('Explore hydrates the stored owner before native entitlement can enable ads, including older APKs', async () => {
+  const f = fixture({ route: '/explore.html', client: false, bindNative: false });
+  try {
+    const controller = f.boot(); assert.ok(controller); assert.equal(f.w.MatchAppNativeNewsAccount, controller);
+    assert.equal(f.native.adFree, true); assert.equal(f.w.matchProfileState.status, 'loading'); assert.deepEqual(contexts(f), []);
+    f.installSdk(); f.scripts[0].dispatchEvent(new Event('load')); await f.advance();
+    assert.equal(await controller.ready, true); assert.equal(f.w.supabaseClient, f.client); assert.equal(f.calls.create.length, 1);
+    assert.equal(f.w.isUserLoggedIn, true); assert.equal(f.w.matchProfileState.userId, A); assert.equal(f.native.adFree, true);
+    f.bindNative(); await f.advance(450); assert.deepEqual(contexts(f), [A]); assert.equal(f.native.hasValue, true); assert.equal(f.native.adFree, false);
+    assert.deepEqual(f.calls.pro, ['pro_status']); assert.deepEqual(f.calls.profile, [A]);
+  } finally { f.close(); }
+});
+
+test('Explore pending, malformed and failed sessions never reinterpret a stored owner as a guest', async () => {
+  for (const failure of ['pending', 'malformed', 'error']) {
+    const f = fixture({ route: '/explore.html' }), pending = deferred();
+    try {
+      f.controls.sessionRead = () => failure === 'pending' ? pending.promise : Promise.resolve(failure === 'malformed' ? { data: {} } : { error: new Error('offline') });
+      f.boot(); await f.advance(); assert.equal(f.native.adFree, true); assert.deepEqual(contexts(f), []);
+      if (failure === 'pending') { await f.advance(8000); pending.resolve(session(A)); await f.advance(); }
+      assert.equal(f.w.matchProfileState.status, 'error'); assert.equal(f.w.isUserLoggedIn, false); assert.deepEqual(contexts(f), []); assert.deepEqual(f.calls.profile, []); assert.deepEqual(f.calls.pro, []);
+    } finally { f.close(); }
+  }
+});
+
+test('Explore prior free value cannot become a new ad-free account or unknown session entitlement', async () => {
+  const f = fixture({ route: '/explore.html' }), profile = deferred();
+  try {
+    f.boot(); await f.advance(); assert.equal(f.native.account, A); assert.equal(f.native.hasValue, true); assert.equal(f.native.adFree, false);
+    f.controls.profile = () => profile.promise; f.emit('SIGNED_IN', B); await f.advance();
+    assert.equal(f.native.adFree, true); assert.equal(f.native.account, null); assert.equal(f.native.hasValue, false);
+    profile.resolve({ data: { is_vip: false, is_business: false, is_ad_free: true }, error: null }); await f.advance();
+    assert.equal(f.native.account, B); assert.equal(f.native.adFree, true); assert.equal(f.native.hasValue, false);
+    f.controls.sessionRead = () => Promise.resolve({ data: {} }); f.w.dispatchEvent(new Event('pageshow')); await f.advance();
+    assert.equal(f.w.matchProfileState.status, 'error'); assert.equal(f.native.adFree, true); assert.ok(!contexts(f).includes('guest'));
   } finally { f.close(); }
 });

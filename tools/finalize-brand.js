@@ -224,7 +224,7 @@ function referenceRuntimeAssetURL(url){
  if(['reference-system.js','reference-density.js','settings.js'].includes(file))entries.push(['perf','20261027-1']);
  if(['reference-support.css','reference-support.js'].includes(file))entries.push(['compactfooter','20261027-1']);
  if(['app.js','catalog-media.js','matchapp-ia.js','ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['guestcountry','20261027-1']);
- if(file==='jonas-adult-page.js')entries.push(['subtle','20261101-4']);
+ if(file==='jonas-adult-page.js')entries.push(['account','20261101-2'],['subtle','20261101-4']);
  if(file==='ebook-matcher.js')entries.push(['legacyrewards','20261101-1']);
  return withQueryParams(url,entries);
 }

@@ -46,6 +46,36 @@ jobs:
           path: android-studio/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
+      - name: Build isolated adult QA APK without changing release identity
+        if: github.event_name == 'pull_request'
+        working-directory: android-studio
+        run: |
+          MATCHAPP_QA_INIT=$(mktemp --tmpdir="$RUNNER_TEMP" --suffix=.gradle matchapp-qa-package-XXXXXX)
+          MATCHAPP_QA_RELEASE_CHECK=$(mktemp "$RUNNER_TEMP/matchapp-qa-release-check-XXXXXX")
+          trap 'rm -f "$MATCHAPP_QA_INIT" "$MATCHAPP_QA_RELEASE_CHECK"' EXIT
+          sha256sum app/build/outputs/bundle/release/app-release.aab > "$MATCHAPP_QA_RELEASE_CHECK"
+          cat > "$MATCHAPP_QA_INIT" <<'GROOVY'
+          allprojects { project ->
+            project.plugins.withId('com.android.application') {
+              if (project.path == ':app') {
+                def components = project.extensions.getByName('androidComponents')
+                components.finalizeDsl { android ->
+                  android.buildTypes.getByName('debug').applicationIdSuffix = '.qa20261101'
+                }
+              }
+            }
+          }
+          GROOVY
+          ./gradlew :app:assembleDebug --no-daemon --stacktrace --init-script "$MATCHAPP_QA_INIT"
+          sha256sum --check "$MATCHAPP_QA_RELEASE_CHECK"
+      - name: Export isolated adult QA APK for existing QA app data
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: MatchApp-Ai-Android-Content-Placements-Isolated-QA-DEBUG-APK
+          path: android-studio/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
       - name: Verify unsigned adult AAB and create checksum
         working-directory: android-studio
         run: |
