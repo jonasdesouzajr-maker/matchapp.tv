@@ -92,6 +92,7 @@ test('reservation appears after the sixth original article before any request-el
     const slot = f.d.querySelector('[data-native-news-slot]'), feed = f.d.querySelector('[data-native-news-feed]');
     assert.ok(slot); assert.equal(feed.children[6], slot); assert.equal(slot.previousElementSibling, f.articles[5]); assert.equal(slot.nextElementSibling, f.articles[6]);
     assert.equal(slot.style.height, '480px'); assert.equal(slot.style.minHeight, '480px'); assert.equal(slot.style.maxHeight, '480px');
+    assert.equal(slot.style.marginTop, '16px'); assert.equal(slot.style.marginBottom, '16px'); assert.equal(slot.style.getPropertyPriority('margin-bottom'), '');
     assert.equal(f.messages.filter(m => m.type === 'slot').length, 0, 'a below-viewport reservation cannot request an ad');
     assert.deepEqual([...f.d.querySelectorAll('article')], f.articles); assert.equal(f.original.onclick, f.handler); assert.equal(f.original.href, f.originalHref); f.original.click(); assert.equal(f.clicks(), 1);
     assert.equal(f.d.activeElement, f.original); assert.equal(f.d.getElementById('locked-ad').outerHTML, f.ad); assert.deepEqual(Object.keys(f.w.localStorage), f.storageBefore);
