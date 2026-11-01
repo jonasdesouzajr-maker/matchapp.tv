@@ -161,6 +161,7 @@ internal class NativeRewardedBridge(
             RewardedAd.load(activity, BuildConfig.ADMOB_REWARDED_ID, AdRequest.Builder().build(),
                 object : RewardedAdLoadCallback() {
                     override fun onAdLoaded(ad: RewardedAd) {
+                        android.util.Log.i("MatchAppAds", "rewarded onAdLoaded")
                         if (!isCurrent(value)) {
                             finish(value, "cancelled", "context_changed")
                             return
@@ -182,6 +183,7 @@ internal class NativeRewardedBridge(
                     }
 
                     override fun onAdFailedToLoad(error: LoadAdError) {
+                        android.util.Log.i("MatchAppAds", "rewarded onAdFailedToLoad code=${error.code}")
                         finish(value, "unavailable", "no_fill_or_load_failed")
                     }
                 })

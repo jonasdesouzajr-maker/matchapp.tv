@@ -212,11 +212,13 @@ class AdMobController(
                     setAdSize(adaptiveSize)
                     adListener = object : AdListener() {
                         override fun onAdLoaded() {
+                            android.util.Log.i("MatchAppAds", "banner onAdLoaded")
                             if (generation != bannerGeneration || destroyed) return
                             bannerLoaded = true
                             updateShellVisibility()
                         }
                         override fun onAdFailedToLoad(error: LoadAdError) {
+                            android.util.Log.i("MatchAppAds", "banner onAdFailedToLoad code=${error.code}")
                             if (generation != bannerGeneration || destroyed) return
                             bannerLoaded = false
                             bannerRequestStarted = false

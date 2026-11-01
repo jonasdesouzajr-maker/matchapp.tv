@@ -66,7 +66,7 @@
  }
  function apply(panel,st,anim){
   var A=area(panel),B=bounds(panel,A),S=load(),mode=A.phone?'phone':'wide',cur=st||S[mode]||{};
-  var h=clamp(cur.h||(A.phone?snaps(B)[Math.min(1,snaps(B).length-1)]:Math.min(560,B.maxH)),B.minH,B.maxH);
+  var h=clamp(cur.h||(A.phone?snaps(B)[Math.min(1,snaps(B).length-1)]:Math.min(Math.max(560,Math.round(A.h*.72)),B.maxH)),B.minH,B.maxH);
   var w=A.phone?A.w:clamp(cur.w||420,B.minW,B.maxW);
   set(panel,'position','fixed');set(panel,'inset','auto');set(panel,'margin','0');set(panel,'transform','none');
   set(panel,'top',(A.bottom-h)+'px');set(panel,'left',(A.phone?A.left:A.right-w)+'px');

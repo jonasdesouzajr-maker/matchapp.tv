@@ -202,6 +202,7 @@ internal class NativeNewsBridge(
         try {
             AdLoader.Builder(activity, BuildConfig.ADMOB_NATIVE_NEWS_ID)
                 .forNativeAd { loaded ->
+                    android.util.Log.i("MatchAppAds", "native onAdLoaded")
                     if (!current(value) || expectedLoad != loadGeneration || !eligible(value)) {
                         loaded.destroy()
                         return@forNativeAd
@@ -215,6 +216,7 @@ internal class NativeNewsBridge(
                 }
                 .withAdListener(object : AdListener() {
                     override fun onAdFailedToLoad(error: LoadAdError) {
+                        android.util.Log.i("MatchAppAds", "native onAdFailedToLoad code=${error.code}")
                         if (current(value) && expectedLoad == loadGeneration) fail(value,
                             if (error.code == AdRequest.ERROR_CODE_NO_FILL) "no_fill" else "load_failed")
                     }
