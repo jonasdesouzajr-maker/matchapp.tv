@@ -1,4 +1,4 @@
-/* Native-only news geometry. The Android SDK owns every ad asset and ad request. */
+/* Native-only content geometry. The Android SDK owns every ad asset and ad request. */
 (function (root, factory) {
   'use strict';
   const api = factory();
@@ -10,7 +10,8 @@
   }
 })(typeof window === 'undefined' ? null : window, function () {
   'use strict';
-  const HEIGHT = 480, MIN_WIDTH = 280, MAX_WIDTH = 640, INSET = 8;
+  const HEIGHT = 480, CONTENT_HEIGHT = 360, MIN_WIDTH = 280, MAX_WIDTH = 640, INSET = 8, CONTROL_GAP = 32;
+  const CONTENT_LOAD_FAILURES = new Set(['no_fill', 'load_failed', 'load_timeout', 'sdk_unavailable', 'viewport_changed', 'creative_does_not_fit', 'creative_expired']);
   const FALLBACK = Object.freeze({
     en: 'Continue reading below.', pt: 'Continue a leitura abaixo.', es: 'Sigue leyendo abajo.',
     fr: 'Poursuivez votre lecture ci-dessous.', de: 'Lies unten weiter.', it: 'Continua a leggere qui sotto.',
@@ -25,6 +26,7 @@
       if (['/', '/index.html'].includes(route)) return 'home';
       if (['/ebooks/', '/ebooks/index.html'].includes(route)) return 'ebook';
       if (['/news/', '/news/index.html'].includes(route)) return 'news';
+      if (route === '/explore.html') return 'explore';
     } catch (_) {}
     return '';
   }
@@ -46,10 +48,10 @@
       return [hex.slice(0, 8), hex.slice(8, 12), hex.slice(12, 16), hex.slice(16, 20), hex.slice(20)].join('-');
     } catch (_) { return ''; }
   }
-  function viewport(w) {
+  function viewport(w, height = HEIGHT) {
     const visual = w.visualViewport;
     const value = { width: visual ? visual.width : w.innerWidth, height: visual ? visual.height : w.innerHeight, offsetX: visual ? visual.offsetLeft : 0, offsetY: visual ? visual.offsetTop : 0, scale: visual ? visual.scale : 1 };
-    if (!Object.values(value).every(Number.isFinite) || value.width < MIN_WIDTH + INSET * 2 || value.height < HEIGHT + INSET * 2 || value.width > 10000 || value.height > 10000 || Math.abs(value.scale - 1) > .001 || Math.abs(value.offsetX) > .5 || Math.abs(value.offsetY) > .5) return null;
+    if (!Object.values(value).every(Number.isFinite) || value.width < MIN_WIDTH + INSET * 2 || value.height < height + INSET * 2 || value.width > 10000 || value.height > 10000 || Math.abs(value.scale - 1) > .001 || Math.abs(value.offsetX) > .5 || Math.abs(value.offsetY) > .5) return null;
     return value;
   }
   function rectangle(el) {
@@ -57,17 +59,17 @@
     const rect = { x: value.x, y: value.y, width: value.width, height: value.height };
     return Object.values(rect).every(Number.isFinite) ? rect : null;
   }
-  function dimensions(value) {
-    return value?.heightCss === HEIGHT && value.minWidthCss === MIN_WIDTH && value.maxWidthCss === MAX_WIDTH;
+  function dimensions(value, height) {
+    return value?.heightCss === height && value.minWidthCss === MIN_WIDTH && value.maxWidthCss === MAX_WIDTH;
   }
 
-  // Standalone native News needs session context, not app.js's account/quota boot.
+  // Standalone native News/Explore need session context, not app.js's quota boot.
   // Keep the shared project's pinned SDK and default persistent session storage.
   const NEWS_AUTH_SDK = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js';
   const NEWS_AUTH_URL = 'https://zkymvqrmbabngsqblyye.supabase.co';
   const NEWS_AUTH_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q';
   function bootNewsAccount(w) {
-    if (scope(w) !== 'news' || typeof w.MatchAppNativeNews?.postMessage !== 'function' ||
+    if (!['news', 'explore'].includes(scope(w)) || typeof w.MatchAppNativeNews?.postMessage !== 'function' ||
         typeof w.MatchAppNativeExperience?.setAdFree !== 'function' ||
         typeof w.MatchAppNativeExperience?.setNewsAccountContext !== 'function') return null;
     // A page that already has the shared app account publisher needs no second one.
@@ -224,15 +226,17 @@
     const surface = w?.document && scope(w);
     if (!surface || typeof w.MatchAppNativeNews?.postMessage !== 'function') return null;
     if (w.MatchAppNativeNewsSlot) return w.MatchAppNativeNewsSlot;
+    const slotHeight = surface === 'news' ? HEIGHT : CONTENT_HEIGHT;
     let requestId = uuid(w);
     if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(requestId)) return null;
-    const newsAccount = surface === 'news' ? bootNewsAccount(w) : null;
+    const newsAccount = ['news', 'explore'].includes(surface) ? bootNewsAccount(w) : null;
     const d = w.document, listeners = [], pointers = new Set();
     let eligible = false, stopped = false, suspended = false, destroyed = false, seq = 0;
-    let slot = null, fallback = null, frame = null, timer = null, previous = '', stableFrames = 0;
+    let slot = null, slotAnchor = null, fallback = null, frame = null, timer = null, previous = '', stableFrames = 0;
     let lastHello = '', hiddenSent = true, settleUntil = 0, queuedHello = false;
     let overlayDirty = true, overlayElements = [], observer = null;
     let observedValue = false, valueEpoch = 0, valueCandidate = null, valueFrame = null, valueObserver = null, valuePosition = '';
+    let activeValue = null;
     w.MatchAppNativeNewsDocumentId = requestId;
     function post(type, detail = {}) {
       if (destroyed || !scope(w)) return false;
@@ -260,9 +264,19 @@
       showFallback(); previous = ''; stableFrames = 0;
       if (!hiddenSent) { post('hide'); hiddenSent = true; }
     }
+    function collapseContentSlot() {
+      if (surface !== 'news' && slot) { slot.hidden = true; slot.style.display = 'none'; }
+    }
     // A quota cache is not evidence that the person saw a result. This bit is
     // document/account-local and is set only by the successful render callback.
     function hasValue() { return observedValue; }
+    function accountIdentity() {
+      const state = w.matchProfileState;
+      if (state?.status === 'signedout' && w.isUserLoggedIn !== true && state.userId == null) return 'guest';
+      // A verified SDK owner can see a genuine result while its profile is
+      // still loading. Native retains entitlement ownership; slots wait below.
+      return w.isUserLoggedIn === true && ['loading', 'ready', 'error'].includes(state?.status) && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(state.userId || '') ? state.userId : '';
+    }
     function clearValuePending() {
       if (valueFrame !== null) w.cancelAnimationFrame(valueFrame);
       valueFrame = null; valueObserver?.disconnect(); valueObserver = null; valueCandidate = null; valuePosition = '';
@@ -284,18 +298,18 @@
           const expected = String(w.globalMatchTitle || '').trim(), poster = card.querySelector('#res-poster-img');
           if (!card.classList.contains('is-revealed') || !expected || poster?.dataset.matchappMediaTitle !== expected) return null;
         } else if (!card.matches('[data-ebook-result]') || !card.querySelector('.ebook-summary')?.textContent.trim() || !card.querySelector('[data-ebook-save]')?.getAttribute('data-ebook-save')) return null;
-        return { chosen, card, title, source, run, epoch: valueEpoch };
+        return { chosen, card, title, source, titleText: title.textContent.trim(), sourceHref: source.href, account: accountIdentity(), run, epoch: valueEpoch };
       } catch (_) { return null; }
     }
     function scheduleValue() {
-      if (!valueCandidate || valueFrame !== null || destroyed || suspended || observedValue) return;
+      if (!valueCandidate || valueFrame !== null || destroyed || suspended) return;
       valueFrame = w.requestAnimationFrame(() => { valueFrame = null; checkValue(); });
     }
     function checkValue() {
       const value = valueCandidate;
-      if (!value || value.epoch !== valueEpoch || destroyed || suspended || observedValue) return;
+      if (!value || value.epoch !== valueEpoch || destroyed || suspended) return;
       const current = proof(value.chosen, value.card, value.run);
-      if (!current || current.title !== value.title || current.source !== value.source) { clearValuePending(); return; }
+      if (!current || !current.account || current.account !== value.account || current.title !== value.title || current.source !== value.source || current.titleText !== value.titleText || current.sourceHref !== value.sourceHref) { clearValuePending(); return; }
       if (d.visibilityState !== 'visible' || !visibleElement(value.card) || !visibleElement(value.title) || d.fullscreenElement) { valuePosition = ''; return; }
       for (const modal of d.querySelectorAll('dialog[open],[aria-modal="true"],[role="dialog"]')) if (visibleElement(modal)) { valuePosition = ''; return; }
       const rect = rectangle(value.title), visual = w.visualViewport;
@@ -305,13 +319,13 @@
       if (!hit || (hit !== value.title && !value.title.contains(hit))) { valuePosition = ''; return; }
       const key = [rect.x, rect.y, rect.width, rect.height].map(n => Math.round(n * 2) / 2).join(':');
       if (key !== valuePosition) { valuePosition = key; scheduleValue(); return; }
-      observedValue = true; clearValuePending(); hello(true);
+      activeValue = current; observedValue = true; clearValuePending(); hello(true); invalidate();
     }
     function confirmValue(chosen, host, run) {
-      if (destroyed || suspended || observedValue) return false;
+      if (destroyed || suspended) return false;
       const value = proof(chosen, host, run);
-      if (!value) return false;
-      clearValuePending(); valueCandidate = value;
+      if (!value?.account) return false;
+      clearValuePending(); activeValue = null; hide(); clearSchedule(); valueCandidate = value;
       if (typeof w.IntersectionObserver === 'function') {
         valueObserver = new w.IntersectionObserver(scheduleValue, { threshold: [0, .5, 1] });
         valueObserver.observe(value.title);
@@ -330,24 +344,72 @@
       Promise.resolve().then(() => { queuedHello = false; hello(force); });
     }
     function schedule(delay = 0) {
-      if (surface !== 'news' || destroyed || suspended || stopped || !eligible || frame !== null || timer !== null) return;
+      if (destroyed || suspended || stopped || !eligible || frame !== null || timer !== null) return;
       if (delay) timer = w.setTimeout(() => { timer = null; schedule(); }, delay);
       else frame = w.requestAnimationFrame(() => { frame = null; sample(); });
     }
+    function currentValue() {
+      if (surface === 'news' || surface === 'explore') return true;
+      const value = activeValue, chosen = surface === 'home' ? 'one_match' : 'ebook';
+      const current = value?.chosen === chosen && value.epoch === valueEpoch && proof(chosen, value.card, value.run);
+      if (!current || !current.account || current.account !== value.account || current.title !== value.title || current.source !== value.source || current.titleText !== value.titleText || current.sourceHref !== value.sourceHref || !visibleElement(current.card)) { activeValue = null; return false; }
+      return ['ready', 'signedout'].includes(w.matchProfileState?.status);
+    }
+    function placementAnchor() {
+      if (surface === 'home' || surface === 'ebook') return currentValue() ? activeValue.card : null;
+      if (surface === 'explore') {
+        const topics = d.getElementById('explore-topics'), next = topics?.nextElementSibling, more = next === slot ? slot.nextElementSibling : next;
+        return topics && more?.matches('.ref-explore-more') && visibleElement(topics) ? topics : null;
+      }
+      const feed = d.querySelector('[data-native-news-feed]'), articles = feed && Array.from(feed.children).filter(el => el.tagName === 'ARTICLE');
+      return articles?.length >= 7 ? articles[5] : null;
+    }
+    function readOverlays() {
+      if (overlayDirty) {
+        overlayElements = Array.from(d.body.querySelectorAll('*')).filter(el => {
+          if (el === slot || slot?.contains(el)) return false;
+          const style = w.getComputedStyle(el);
+          return style.position === 'fixed' || style.position === 'sticky' || (style.position === 'absolute' && Number(style.zIndex) > 0);
+        });
+        overlayDirty = false;
+      }
+      return overlayElements;
+    }
+    function fitsContentViewport(view) {
+      if (surface === 'news') return true;
+      let bands = [[INSET, view.height - INSET]];
+      for (const el of readOverlays()) {
+        if (!visibleElement(el) || !['fixed', 'sticky'].includes(w.getComputedStyle(el).position)) continue;
+        const rect = rectangle(el);
+        if (!rect || rect.width < Math.min(view.width, MAX_WIDTH) / 2 || rect.height <= 0 || rect.x >= view.width || rect.x + rect.width <= 0) continue;
+        const start = rect.y - INSET, end = rect.y + rect.height + INSET;
+        bands = bands.flatMap(([top, bottom]) => end <= top || start >= bottom ? [[top, bottom]] :
+          [[top, Math.min(bottom, start)], [Math.max(top, end), bottom]].filter(([a, b]) => b > a));
+      }
+      return bands.some(([top, bottom]) => bottom - top >= slotHeight);
+    }
     function mount(view) {
-      if (slot) return true;
-      const feed = d.querySelector('[data-native-news-feed]');
-      if (!feed) return false;
-      const articles = Array.from(feed.children).filter(el => el.tagName === 'ARTICLE');
-      if (articles.length < 7) return false;
-      const feedRect = rectangle(feed), anchor = articles[5], anchorRect = rectangle(anchor);
+      if (!currentValue() || !fitsContentViewport(view)) return false;
+      if (slot) {
+        if (!slot.isConnected || !slotAnchor?.isConnected || (surface !== 'news' && slotAnchor !== placementAnchor())) return false;
+        if (slot.hidden) {
+          const anchorRect = rectangle(slotAnchor);
+          if (!anchorRect || anchorRect.y + anchorRect.height < view.height + CONTROL_GAP) return false;
+          slot.hidden = false; slot.style.removeProperty('display'); overlayDirty = true;
+        }
+        return true;
+      }
+      const anchor = placementAnchor();
+      if (!anchor) return false;
+      const container = surface === 'news' ? anchor.parentElement : anchor, containerRect = rectangle(container), anchorRect = rectangle(anchor);
       // Delayed consent must not insert inventory into content already being read.
-      if (!feedRect || !anchorRect || feedRect.width < MIN_WIDTH || anchorRect.y + anchorRect.height < view.height + 32) return false;
+      if (!containerRect || !anchorRect || containerRect.width < MIN_WIDTH || anchorRect.y + anchorRect.height < view.height + CONTROL_GAP) return false;
       slot = d.createElement('div'); slot.className = 'ma-native-news-slot'; slot.dataset.nativeNewsSlot = '';
+      if (surface !== 'news') { slot.classList.add('ma-native-content-slot'); slot.dataset.nativePlacement = surface; }
       // Critical reservation is synchronous, including when the optional stylesheet fails.
-      slot.style.cssText = 'box-sizing:border-box;grid-column:1 / -1;width:min(100%,640px);height:480px;min-height:480px;max-height:480px;margin:16px auto;position:relative';
+      slot.style.cssText = 'box-sizing:border-box;grid-column:1 / -1;width:min(100%,640px);height:' + slotHeight + 'px;min-height:' + slotHeight + 'px;max-height:' + slotHeight + 'px;margin:' + (surface === 'news' ? 16 : CONTROL_GAP) + 'px auto;position:relative';
       fallback = d.createElement('p'); fallback.className = 'ma-native-news-neutral'; slot.append(fallback);
-      translate(); showFallback(); anchor.after(slot); overlayDirty = true;
+      translate(); showFallback(); slotAnchor = anchor; anchor.after(slot); overlayDirty = true;
       return true;
     }
     function visibleElement(el) {
@@ -358,15 +420,7 @@
     function unobscured(rect) {
       if (d.fullscreenElement || typeof d.elementFromPoint !== 'function') return false;
       for (const modal of d.querySelectorAll('dialog[open],[aria-modal="true"],[role="dialog"]')) if (visibleElement(modal)) return false;
-      if (overlayDirty) {
-        overlayElements = Array.from(d.body.querySelectorAll('*')).filter(el => {
-          if (el === slot || slot.contains(el)) return false;
-          const style = w.getComputedStyle(el);
-          return style.position === 'fixed' || style.position === 'sticky' || (style.position === 'absolute' && Number(style.zIndex) > 0);
-        });
-        overlayDirty = false;
-      }
-      for (const el of overlayElements) {
+      for (const el of readOverlays()) {
         if (!visibleElement(el)) continue;
         const other = rectangle(el);
         if (other && other.width > 0 && other.height > 0 && other.x < rect.x + rect.width && other.x + other.width > rect.x && other.y < rect.y + rect.height && other.y + other.height > rect.y) return false;
@@ -382,14 +436,30 @@
       }
       return true;
     }
+    function separatedControls(rect) {
+      if (surface === 'news') return true;
+      const anchorRect = rectangle(slotAnchor), next = slot.nextElementSibling;
+      if (!anchorRect || rect.y - (anchorRect.y + anchorRect.height) < CONTROL_GAP - .5) return false;
+      if (next && visibleElement(next)) {
+        const after = rectangle(next);
+        if (after && after.y < rect.y + rect.height + CONTROL_GAP - .5) return false;
+      }
+      for (const control of d.querySelectorAll('button,a[href],input,select,textarea,summary,[role="button"]')) {
+        if (slot.contains(control) || !visibleElement(control)) continue;
+        const other = rectangle(control);
+        if (other && other.width > 0 && other.height > 0 && other.x < rect.x + rect.width + CONTROL_GAP && other.x + other.width > rect.x - CONTROL_GAP && other.y < rect.y + rect.height + CONTROL_GAP - .5 && other.y + other.height > rect.y - CONTROL_GAP + .5) return false;
+      }
+      return true;
+    }
     function sample() {
       if (destroyed || suspended || stopped || !eligible) return;
-      const view = viewport(w);
+      if (!currentValue()) { hide(); collapseContentSlot(); return; }
+      const view = viewport(w, slotHeight);
       if (!view || d.visibilityState !== 'visible' || pointers.size) { hide(); return; }
       if (Date.now() < settleUntil) { hide(); schedule(250); return; }
-      if (!mount(view)) return;
+      if (!mount(view)) { hide(); return; }
       const rect = rectangle(slot);
-      if (!rect || rect.width < MIN_WIDTH || rect.width > MAX_WIDTH + .5 || Math.abs(rect.height - HEIGHT) > .5 || rect.x < INSET || rect.y < INSET || rect.x + rect.width > view.width - INSET || rect.y + rect.height > view.height - INSET || !unobscured(rect)) { hide(); schedule(250); return; }
+      if (!rect || rect.width < MIN_WIDTH || rect.width > MAX_WIDTH + .5 || Math.abs(rect.height - slotHeight) > .5 || rect.x < INSET || rect.y < INSET || rect.x + rect.width > view.width - INSET || rect.y + rect.height > view.height - INSET || !unobscured(rect) || !separatedControls(rect)) { hide(); schedule(250); return; }
       const key = [rect.x, rect.y, rect.width, rect.height, view.width, view.height].map(n => Math.round(n * 2) / 2).join(':');
       if (key !== previous) { previous = key; stableFrames = 1; if (!hiddenSent) { post('hide'); hiddenSent = true; showFallback(); } schedule(); return; }
       if (++stableFrames < 2) { schedule(); return; }
@@ -405,7 +475,14 @@
       const value = event.detail;
       if (destroyed || suspended || !value || value.requestId !== requestId || typeof value.enabled !== 'boolean' || typeof value.eligible !== 'boolean') return;
       if (!['available', 'loading', 'ready', 'unavailable', 'hidden', 'disposed'].includes(value.status)) return;
-      if (!value.enabled || !value.eligible || !dimensions(value)) { eligible = false; hide(); clearSchedule(); return; }
+      // fail() reports eligible:false after an owned native load/creative
+      // failure. Stop requests but retain the visible reservation to avoid CLS.
+      if (surface !== 'news' && value.enabled && value.status === 'unavailable' && CONTENT_LOAD_FAILURES.has(value.reason) && dimensions(value, slotHeight) && value.placementsVersion === 1 && slot && !slot.hidden && seq > 0 && currentValue()) {
+        eligible = false; stopped = true; hide(); clearSchedule(); return;
+      }
+      if (!value.enabled || !value.eligible || !dimensions(value, slotHeight)) { eligible = false; hide(); collapseContentSlot(); clearSchedule(); return; }
+      // Older Android builds only own News. They must not reserve new boxes.
+      if (surface !== 'news' && value.placementsVersion !== 1) { eligible = false; hide(); collapseContentSlot(); clearSchedule(); return; }
       eligible = true;
       if (value.status === 'unavailable') { stopped = true; hide(); clearSchedule(); return; }
       if (value.status === 'disposed') { eligible = false; hide(); clearSchedule(); return; }
@@ -415,8 +492,8 @@
     }
     function resetAccount() {
       if (destroyed) return;
-      ++valueEpoch; observedValue = false; clearValuePending();
-      post('reset'); hide(); clearSchedule(); eligible = false; stopped = false; lastHello = ''; seq = 0; pointers.clear();
+      ++valueEpoch; observedValue = false; activeValue = null; clearValuePending();
+      post('reset'); hide(); collapseContentSlot(); clearSchedule(); eligible = false; stopped = false; lastHello = ''; seq = 0; pointers.clear();
       requestId = uuid(w); w.MatchAppNativeNewsDocumentId = requestId;
       if (!requestId) { suspended = true; return; }
       // The existing auth callback clears token state; wait until it has returned.
@@ -424,8 +501,8 @@
     }
     function suspend() {
       if (destroyed || suspended) return;
-      ++valueEpoch; observedValue = false; clearValuePending();
-      hide(); post('dispose'); clearSchedule(); eligible = false; suspended = true;
+      ++valueEpoch; observedValue = false; activeValue = null; clearValuePending();
+      hide(); collapseContentSlot(); post('dispose'); clearSchedule(); eligible = false; suspended = true;
     }
     function resume() {
       if (destroyed) return;
@@ -450,7 +527,7 @@
       for (const name of ['scroll', 'resize']) listen(w, name, scheduleValue, { passive: true, capture: true });
       for (const name of ['visibilitychange', 'animationend', 'transitionend', 'toggle', 'focusout']) listen(d, name, scheduleValue, true);
     }
-    if (surface === 'news') {
+    {
       listen(w, 'scroll', invalidate, { passive: true, capture: true });
       listen(w, 'resize', invalidate, { passive: true });
       listen(d, 'visibilitychange', () => { if (d.visibilityState === 'visible') { hello(true); invalidate(); } else { hide(); clearSchedule(); } });
@@ -484,5 +561,5 @@
     const controller = Object.freeze({ refresh: () => queueHello(true), confirmValue, dispose, get requestId() { return requestId; } });
     w.MatchAppNativeNewsSlot = controller; hello(); return controller;
   }
-  return Object.freeze({ boot, bootNewsAccount, scope, language, viewport, languages: Object.freeze(Object.keys(FALLBACK)), fallback: FALLBACK, height: HEIGHT, minWidth: MIN_WIDTH, maxWidth: MAX_WIDTH });
+  return Object.freeze({ boot, bootNewsAccount, scope, language, viewport, languages: Object.freeze(Object.keys(FALLBACK)), fallback: FALLBACK, height: HEIGHT, contentHeight: CONTENT_HEIGHT, minWidth: MIN_WIDTH, maxWidth: MAX_WIDTH });
 });

@@ -31,7 +31,7 @@
   zh:['正在连接你的对话…','暂时无法连接账户，请重试。','重试']
  };
  function conversationAccountCopy(){return accountCopy[String(selectedLanguage()).toLowerCase().split('-')[0]]||accountCopy.en}
- function needsNewsAccount(){return /^\/news\/(?:index\.html)?$/.test(location.pathname)&&typeof window.MatchAppNativeNews?.postMessage==='function'}
+ function needsNewsAccount(){return /^\/(?:news\/(?:index\.html)?|explore\.html)$/.test(location.pathname)&&typeof window.MatchAppNativeNews?.postMessage==='function'}
  function parentOwnsAccount(){
   return /^\/(?:index\.html)?$|^\/ebooks\/(?:index\.html)?$/.test(location.pathname)||
    typeof window.ensureCompactMatchSession==='function'||typeof window.sharedMatchAuthClient==='function'||

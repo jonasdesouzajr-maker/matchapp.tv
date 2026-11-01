@@ -28,7 +28,8 @@ internal object NativeNewsAdView {
         setStroke(density.roundToInt().coerceAtLeast(1), Color.rgb(181, 149, 75))
     }
 
-    fun create(context: Context, ad: NativeAd, language: String, widthPx: Int, heightPx: Int): NativeAdView? {
+    fun create(context: Context, ad: NativeAd, language: String, widthPx: Int, heightPx: Int,
+        compact: Boolean = false): NativeAdView? {
         if (language !in NativeNewsPolicy.languages || ad.headline.isNullOrBlank() ||
             ad.callToAction.isNullOrBlank() || ad.headline.orEmpty().length > 400 ||
             ad.callToAction.orEmpty().length > 100) return null
@@ -115,7 +116,9 @@ internal object NativeNewsAdView {
 
         val media = ad.mediaContent
         if (media != null) {
-            val mediaWidth = min(widthPx - dp(16), dp(320))
+            // Only the new content placements use compact media. News retains its
+            // original 320dp media limit and every required asset remains measured.
+            val mediaWidth = min(widthPx - dp(16), dp(if (compact) 240 else 320))
             val mediaHeight = (mediaWidth * 9.0 / 16.0).roundToInt()
             if (media.hasVideoContent() && (mediaWidth < dp(120) || mediaHeight < dp(120) || mediaWidth < 256)) {
                 native.destroy()

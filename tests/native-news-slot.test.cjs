@@ -24,6 +24,7 @@ async function fixture({ route = '/news/', origin = 'https://matchapp.tv', bridg
   d.elementFromPoint = () => overlay || d.querySelector('[data-native-news-slot]') || d.querySelector('#res-title,.ebook-result-copy h3');
   w.fetch = () => { calls.push('fetch'); throw Error('No web request is permitted'); };
   w.MatchAppTokens = { enabled: true, hasValue };
+  w.isUserLoggedIn = false; w.matchProfileState = { status: 'signedout', userId: null };
   w.MatchAppNativeRewards = { postMessage: () => calls.push('reward') };
   w.MATCHAPP_IS_AD_FREE = true; // Existing WebView shell suppresses web ads for every account.
   if (bridge) w.MatchAppNativeNews = { postMessage: raw => { const value = JSON.parse(raw); if (value.type === 'hello') assert.equal(w.MatchAppNativeNewsDocumentId, value.requestId); messages.push(value); } };

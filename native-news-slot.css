@@ -27,6 +27,7 @@
   overflow-wrap: anywhere;
 }
 .ma-native-news-slot[data-native-news-state="ready"] > .ma-native-news-neutral { visibility: hidden; }
+.ma-native-news-slot.ma-native-content-slot { block-size: 360px; min-block-size: 360px; max-block-size: 360px; margin-block: 32px; }
 @media (forced-colors: active) {
   .ma-native-news-slot { border-color: CanvasText; background: Canvas; }
   .ma-native-news-slot > .ma-native-news-neutral { color: CanvasText; }

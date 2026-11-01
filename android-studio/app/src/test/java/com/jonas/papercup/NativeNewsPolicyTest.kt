@@ -19,6 +19,61 @@ class NativeNewsPolicyTest {
         assertFalse(NativeNewsPolicy.isReporterDocument("https://matchapp.tv/profile/profile.html"))
     }
 
+    @Test fun permitsOnlyTheFourExplicitAdultContentDestinations() {
+        for (path in listOf("/", "/index.html", "/ebooks/", "/ebooks/index.html",
+            "/news/", "/news/index.html", "/explore.html")) {
+            val url = "https://matchapp.tv$path?lang=pt#content"
+            assertTrue(url, NativeNewsPolicy.isAdDocument(url))
+            assertTrue(url, NativeNewsPolicy.isReporterDocument(url))
+        }
+        assertTrue(NativeNewsPolicy.isAdDocument("https://MATCHAPP.TV:443/explore.html"))
+        // The content-slot expansion is independent of the opt-in rewarded flow.
+        assertFalse(RewardedRequestPolicy.isAdultDocument("https://matchapp.tv/explore.html"))
+    }
+
+    @Test fun rejectsOtherSurfacesOriginsAndNoncanonicalContentAliases() {
+        for (url in listOf("https://matchapp.tv", "https://matchapp.tv/explore/",
+            "https://matchapp.tv/explore/index.html", "https://matchapp.tv/Explore.html",
+            "https://matchapp.tv/kids/", "https://matchapp.tv/discover.html",
+            "https://matchapp.tv/profile/profile.html", "https://matchapp.tv/contact.html",
+            "https://matchapp.tv/together.html", "https://matchapp.tv/news/articles/title/",
+            "https://matchapp.tv/ebooks//", "https://matchapp.tv//explore.html",
+            "https://matchapp.tv/%65xplore.html", "https://matchapp.tv/ebooks%2F",
+            "https://matchapp.tv/news/../explore.html", "https://matchapp.tv/./explore.html",
+            "https://www.matchapp.tv/explore.html", "https://matchapp.tv.evil/explore.html",
+            "http://matchapp.tv/explore.html", "https://matchapp.tv:8443/explore.html",
+            "https://user@matchapp.tv/explore.html", "not a URL")) {
+            assertFalse(url, NativeNewsPolicy.isAdDocument(url))
+            assertFalse(url, NativeNewsPolicy.isReporterDocument(url))
+        }
+    }
+
+    @Test fun derivesTheReservationHeightFromTheCanonicalDocument() {
+        val compact = rect.copy(height = 360.0)
+        for (path in listOf("/", "/index.html", "/ebooks/", "/ebooks/index.html", "/explore.html")) {
+            val url = "https://matchapp.tv$path"
+            assertEquals(url, 360, NativeNewsPolicy.heightCss(url))
+            assertTrue(url, NativeNewsPolicy.validSample(compact, viewport, url))
+            assertTrue(url, NativeNewsPolicy.fullyVisible(compact, viewport, url))
+            assertFalse(url, NativeNewsPolicy.validSample(rect, viewport, url))
+            assertFalse(url, NativeNewsPolicy.fullyVisible(compact.copy(height = 320.0), viewport, url))
+            assertFalse(url, NativeNewsPolicy.fullyVisible(compact.copy(y = 353.0), viewport, url))
+        }
+        for (path in listOf("/news/", "/news/index.html")) {
+            val url = "https://matchapp.tv$path"
+            assertEquals(url, 480, NativeNewsPolicy.heightCss(url))
+            assertTrue(url, NativeNewsPolicy.fullyVisible(rect, viewport, url))
+            assertFalse(url, NativeNewsPolicy.validSample(compact, viewport, url))
+        }
+        // Existing callers retain the original News geometry by default.
+        assertFalse(NativeNewsPolicy.validSample(compact, viewport))
+        assertFalse(NativeNewsPolicy.fullyVisible(compact, viewport))
+        val unsupported = "https://matchapp.tv/kids/"
+        assertNull(NativeNewsPolicy.heightCss(unsupported))
+        assertFalse(NativeNewsPolicy.validSample(compact, viewport, unsupported))
+        assertFalse(NativeNewsPolicy.fullyVisible(rect, viewport, unsupported))
+    }
+
     @Test fun requiresACompleteFixedReservationInsideTheGoldSafeArea() {
         assertTrue(NativeNewsPolicy.fullyVisible(rect, viewport))
         assertFalse(NativeNewsPolicy.fullyVisible(rect.copy(width = 248.0), viewport))

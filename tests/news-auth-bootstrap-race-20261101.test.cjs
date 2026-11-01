@@ -25,8 +25,9 @@ function scene(route='/news/'){
   close(){w.MatchAppNativeNewsAccount?.dispose();timers.clear();dom.window.close()}
  };
 }
-test('an early native News tap keeps greeting immediate and delays iframe auth until one parent client exists',async()=>{
- const f=scene();try{
+test('early native News and Explore taps keep greeting immediate and wait for one parent account client',async()=>{
+ for(const route of ['/news/','/explore.html']){
+ const f=scene(route);try{
   assert.equal(f.w.document.querySelector('#ma-ambient-panel').hidden,false);
   assert.match(f.w.document.querySelector('.ja-hello').textContent,/Jonas/);
   assert.equal(f.frame().getAttribute('src'),null);
@@ -36,9 +37,11 @@ test('an early native News tap keeps greeting immediate and delays iframe auth u
   f.frame().contentWindow.eval("const SUPABASE_URL='unused',SUPABASE_ANON_KEY='unused';"+boot);
   assert.equal(f.frame().contentWindow.supabaseClient,f.client);assert.equal(f.counts().creates,1);
  }finally{f.close()}
+ }
 });
-test('failed parent SDK bootstrap shows retry and never lets the iframe take over; retry restores one client',async()=>{
- const f=scene();try{
+test('failed News and Explore parent SDK bootstrap shows retry without child takeover and restores one client',async()=>{
+ for(const route of ['/news/','/explore.html']){
+ const f=scene(route);try{
   f.boot();f.loaded();await f.advance(8000);
   assert.equal(await f.w.MatchAppNativeNewsAccount.ready,false);
   assert.equal(f.frame().getAttribute('src'),null);assert.equal(f.counts().creates,0);
@@ -51,6 +54,7 @@ test('failed parent SDK bootstrap shows retry and never lets the iframe take ove
   assert.match(f.frame().getAttribute('src'),/^\/discover\.html/);
   assert.equal(f.w.document.querySelector('.ja-account-status'),null);
  }finally{f.close()}
+ }
 });
 test('a missing parent bootstrap reaches a finite retry state without starting iframe auth',async()=>{
  const f=scene();try{
@@ -119,11 +123,20 @@ test('failed native Home or ebook parent boot exposes finite explicit page retry
  }
 });
 test('a native page without a parent account runtime permits exactly one child-owned client after parsing',async()=>{
- const f=scene('/explore.html');try{
+ const f=scene('/about.html');try{
   assert.equal(f.frame().getAttribute('src'),null);
   f.sdk();f.loaded();await f.advance();assert.match(f.frame().getAttribute('src'),/^\/discover\.html/);
   const child=f.frame().contentWindow;child.supabase=f.w.supabase;
   child.eval("const SUPABASE_URL='unused',SUPABASE_ANON_KEY='unused';"+boot);
   assert.equal(child.supabaseClient,f.client);assert.equal(f.w.supabaseClient,undefined);assert.equal(f.counts().creates,1);
  }finally{f.close()}
+});
+
+test('shared ambient child URL versions standalone-account readiness while native navigation stays fresh',()=>{
+ const parent=fs.readFileSync(path.join(root,'patches/jonas-adult-page.js'),'utf8');
+ const url=parent.match(/script\.src='([^']*android-ambient-assistant-20261011\.js[^']*)'/)[1];
+ assert.deepEqual(new URL(url,'https://matchapp.tv').searchParams.getAll('account'),['20261101-2']);
+ const native=fs.readFileSync(path.join(root,'android-studio/app/src/main/java/com/jonas/papercup/MainActivity.kt'),'utf8');
+ assert.ok(native.includes("script.src = '/jonas/android-ambient-assistant-20261011.js?live=' + Date.now()"));
+ assert.equal(fs.readFileSync(path.join(root,'android-studio/app/src/debug/assets/ambient-preview/jonas/android-ambient-assistant-20261011.js'),'utf8'),ambient);
 });
