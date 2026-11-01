@@ -182,6 +182,7 @@ const ANDROID_QA_ASSETS=new Set(['reference-system.css','reference-system.js','r
 const MATCH_REPAIR_ASSETS=new Set(['app.js','catalog-media.js','omdb-ratings.js','discover.js','android-ambient-assistant-20261011.js','android-ambient-embed-20261011.css','discovery-avatar-stage-20261010.js','floating-home-20261010-v3.js','chat-resize-20261022.js','ui-fixes-20261023.css','jonas-adult-page.js','final-wiring.js','build-meta.js']);
 function referenceRuntimeAssetURL(url){
  const pins={
+  'match-tokens.js':['legacyrewards','20261101-1'],'match-tokens.css':['legacyrewards','20261101-1'],
   'viewer-country.js':['guestcountry','20261027-1'],'locale-details.js':['guestcountry','20261027-1'],
   'catalog-media.js':['posters','20261020-1'],'poster-wall.js':['posters','20261020-1'],'trending-rail.js':['posters','20261020-1'],'profile.js':['posters','20261020-1'],'portfolio-history.js':['posters','20261020-1'],'settings.js':['posters','20261020-1'],'title-captions.js':['posters','20261020-1'],
   'app.js':['art','20261020-source1'],'ebook-matcher.js':['art','20261020-source1'],'book-details-20261011.js':['art','20261020-source1'],'reading-ai.js':['art','20261020-source1'],
@@ -210,6 +211,7 @@ function referenceRuntimeAssetURL(url){
  if(['reference-support.css','reference-support.js'].includes(file))entries.push(['compactfooter','20261027-1']);
  if(['app.js','catalog-media.js','matchapp-ia.js','ebook-matcher.js','reading-ai.js'].includes(file))entries.push(['guestcountry','20261027-1']);
  if(file==='jonas-adult-page.js')entries.push(['subtle','20261101-1']);
+ if(file==='ebook-matcher.js')entries.push(['legacyrewards','20261101-1']);
  return withQueryParams(url,entries);
 }
 function versionReferenceRuntimeAssets(html){
