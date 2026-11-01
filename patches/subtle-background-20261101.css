@@ -1,4 +1,6 @@
 /* Subtle background pass 2026-11-01. Lower density and opacity of poster walls so pages feel less cramped, more atmospheric. Adult pages only. */
+/* Nested important rules keep this requested pass above legacy visual owners. */
+@layer ma-reference.refinement.subtle-background {
 html body:not(.kids-body) .poster-wall .poster-wall-grid {
   opacity: 0.28 !important;
   filter: blur(1px) saturate(1.05) !important;
@@ -26,4 +28,5 @@ html body:not(.kids-body) :is(.card, .tile, .poster, .result-card, .global-event
   text-decoration: none !important;
   font-weight: 600;
   font-size: 12px;
+}
 }

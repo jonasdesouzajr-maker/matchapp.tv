@@ -19,7 +19,7 @@
 (function(){
  'use strict';
  if(/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)||document.getElementById('ma-subtle-bg-20261101-script'))return;
- var s=document.createElement('script');s.id='ma-subtle-bg-20261101-script';s.defer=true;s.src='/patches/subtle-background-20261101.js?v=20261101-2';(document.head||document.documentElement).appendChild(s);
+ var s=document.createElement('script');s.id='ma-subtle-bg-20261101-script';s.defer=true;s.src='/patches/subtle-background-20261101.js?v=20261101-3';(document.head||document.documentElement).appendChild(s);
 })();
 /* Jonas guide (2026-10-31): pills, Back closes overlays. Adult pages only. */
 (function(){

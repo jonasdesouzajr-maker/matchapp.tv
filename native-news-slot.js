@@ -76,6 +76,10 @@
     const d = w.document, timers = new Set();
     let client = null, subscription = null, disposed = false, starting = false, revision = 0, readTimer = null;
     let owner, observedOwner, resetPending = false; // undefined = unhydrated; null = verified signed-out.
+    let readyResolve, accountReady;
+    function prepareReady() { accountReady = new Promise(resolve => { readyResolve = resolve; }); }
+    function settleReady(value) { const resolve = readyResolve; readyResolve = null; resolve?.(value); }
+    prepareReady();
     function later(fn, ms) {
       const id = w.setTimeout(() => { timers.delete(id); fn(); }, ms);
       timers.add(id); return id;
@@ -147,7 +151,7 @@
           if (error) reject(error); else resolve();
         }
         function loaded() { finish(typeof w.supabase?.createClient === 'function' ? null : new Error('sdk_unavailable')); }
-        function failed() { finish(new Error('sdk_unavailable')); }
+        function failed() { if (!existing) script.remove?.(); finish(new Error('sdk_unavailable')); }
         script.addEventListener('load', loaded, { once: true }); script.addEventListener('error', failed, { once: true });
         timeout = later(failed, 8000);
         if (!existing) { script.src = NEWS_AUTH_SDK; script.async = true; (d.head || d.documentElement).appendChild(script); }
@@ -155,13 +159,14 @@
     }
     async function start() {
       if (disposed || starting) return;
+      if (!readyResolve) prepareReady();
       starting = true;
       try {
         client = w.supabaseClient;
         if (!client) {
           await loadSdk();
           if (disposed) return;
-          client = w.supabaseClient || w.supabase.createClient(NEWS_AUTH_URL, NEWS_AUTH_KEY, { auth: { detectSessionInUrl: false } });
+          client = w.supabaseClient || w.supabase.createClient(NEWS_AUTH_URL, NEWS_AUTH_KEY, { auth: { detectSessionInUrl: false, experimental: { passkey: true }, flowType: typeof w.MatchAppNativeAuth?.openOAuth === 'function' ? 'pkce' : 'implicit' } });
         }
         if (typeof client?.auth?.getSession !== 'function' || typeof client.auth.onAuthStateChange !== 'function' ||
             typeof client.from !== 'function' || typeof client.rpc !== 'function') throw new Error('client_unavailable');
@@ -186,8 +191,10 @@
         w.supabaseClient = client;
         subscription = client.auth.onAuthStateChange(schedule)?.data?.subscription;
         schedule();
+        settleReady(true);
       } catch (_) {
         if (!disposed) unknown('error');
+        settleReady(false);
       } finally {
         starting = false;
       }
@@ -196,9 +203,16 @@
       if (client) schedule();
       else if (typeof w.supabase?.createClient === 'function') start();
     }
-    const controller = Object.freeze({ dispose() {
+    const controller = Object.freeze({
+      get ready() { return accountReady; },
+      retry() {
+        if (disposed) return Promise.resolve(false);
+        if (!starting) { prepareReady(); start(); }
+        return accountReady;
+      },
+      dispose() {
       if (disposed) return;
-      disposed = true; ++revision;
+      disposed = true; ++revision; settleReady(false);
       timers.forEach(id => w.clearTimeout(id)); timers.clear();
       subscription?.unsubscribe(); w.removeEventListener('pageshow', resume);
     } });
