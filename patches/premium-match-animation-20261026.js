@@ -76,9 +76,7 @@
       }
       // Existing deliberate-action and result cues already use playMatchAppSound
       // and the sole feedback owner's sound/haptic toggles. Do not double them.
-      let syncQueued = false;
-      // Coalesce and run after paint: class/style churn elsewhere (e.g. opening Jonas) must not force a synchronous layout here.
-      const observer = new MutationObserver(() => { if (syncQueued) return; syncQueued = true; requestAnimationFrame(() => setTimeout(() => { syncQueued = false; sync(); }, 0)); });
+      const observer = new MutationObserver(sync);
       [box, document.getElementById('result-box'), document.body, document.documentElement].filter(Boolean).forEach(el =>
         observer.observe(el, {attributes: true, attributeFilter: ['style', 'hidden', 'class']}));
       document.addEventListener('visibilitychange', sync);

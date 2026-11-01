@@ -288,7 +288,8 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   if(bottom>top){var reserved=Math.min(height,Math.max(0,bottom-top)+8);top+=reserved;height-=reserved;}
   return [Math.round(left),Math.round(top),Math.round(width),Math.round(height)];
  }
- function syncPanelViewport(pre){
+ var pendingPanelViewport=null;
+ function syncPanelViewport(){var pre=pendingPanelViewport;pendingPanelViewport=null;
   if(!panel||!open)return;
   // All reads happen before any style write (pre is read before openPanel mutates the DOM).
   var m=Array.isArray(pre)?pre:readPanelViewport();
@@ -306,7 +307,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   parkedBeforeChat=['z-index','visibility','pointer-events'].map(function(key){return [key,root.style.getPropertyValue(key),root.style.getPropertyPriority(key)]});
   root.dataset.jonasPositionHeld='1';
   open=true;epoch++;if(!frame)activeTitle=contextTitle();
-  panel.hidden=false;syncPanelViewport(preViewport);panel.querySelector('.ja-hello').textContent=greeting();
+  panel.hidden=false;pendingPanelViewport=preViewport;syncPanelViewport();panel.querySelector('.ja-hello').textContent=greeting();
   // The conversation is viewport-anchored. Keep the same movable launcher
   // at its existing position so the user can tap it again to close.
   panel.style.removeProperty('--ja-origin-x');
@@ -322,14 +323,14 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   spokenGreeting(epoch);
   // Opening/closing is presentation only. The original New chat action owns
   // resets; changing the matching result must not discard an existing thread.
+  if(!frame){createFrame(activeTitle);frame.dataset.title=activeTitle;}
   document.addEventListener('keydown',escapeKey);
   // Paint the panel first; page-wide work (body scroll lock restyles the whole
-  // document, chat iframe, resize sync) runs once the 150ms fade has finished.
+  // document, resize sync) runs once the 150ms fade has finished.
   var openEpoch=epoch;
   requestAnimationFrame(function(){setTimeout(function(){
    if(!open||epoch!==openEpoch)return;
    document.body?.classList.add('ma-jonas-modal-open');
-   if(!frame){createFrame(activeTitle);frame.dataset.title=activeTitle;}
    window.MatchAppChatResize?.sync?.();
   },170)});
  }
