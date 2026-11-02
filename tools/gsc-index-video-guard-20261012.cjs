@@ -2,7 +2,7 @@
 'use strict';
 // Search Console regressions: do not expose private/low-value content just to
 // turn an intentional "noindex" warning green. Keep submitted pages indexable.
-// Ensure published VideoObject data always declares a usable source/embed URL.
+// Ensure published VideoObject data declares a description and usable source/embed URL.
 const fs=require('node:fs'),path=require('node:path');
 const ROOT=path.resolve(__dirname,'..');
 const abs=p=>path.join(ROOT,p);
@@ -12,6 +12,7 @@ function videoIssues(object,label,issues){
  if(Array.isArray(object)){for(const item of object)videoIssues(item,label,issues);return}
  const type=object['@type'];
  if(type==='VideoObject'||(Array.isArray(type)&&type.includes('VideoObject'))){
+  if(typeof object.description!=='string'||!object.description.trim())issues.push(label+': VideoObject missing nonblank text description');
   const content=validUrl(object.contentUrl),embed=validUrl(object.embedUrl);
   if(!(content||embed))issues.push(label+': VideoObject missing valid contentUrl or embedUrl');
   // contentUrl must be the actual media file, never a YouTube watch page.

@@ -371,8 +371,8 @@ function enrichSeo(){
     if(sameAs.length)entity.sameAs=sameAs;
     if(PICK.distributor)entity.productionCompany={'@type':'Organization',name:PICK.distributor};
     const graph=[entity];
-    if(PICK.previewId&&PICK.auto!==true)graph.push({'@type':'VideoObject',name:PICK.title+' — official trailer',uploadDate:'2026-08-26',thumbnailUrl:'https://i.ytimg.com/vi/'+PICK.previewId+'/hqdefault.jpg',contentUrl:'https://www.youtube.com/watch?v='+PICK.previewId,embedUrl:'https://www.youtube-nocookie.com/embed/'+PICK.previewId});
-    graph.push({'@type':'VideoObject',name:'American Horror Story: 13 — Official Trailer | FX',uploadDate:'2026-09-10',thumbnailUrl:'https://i.ytimg.com/vi/'+AHS.trailerId+'/hqdefault.jpg',contentUrl:'https://www.youtube.com/watch?v='+AHS.trailerId,embedUrl:'https://www.youtube-nocookie.com/embed/'+AHS.trailerId});
+    if(PICK.previewId&&PICK.auto!==true)graph.push({'@type':'VideoObject',name:PICK.title+' — official trailer',description:'Official trailer for '+PICK.title+' ('+PICK.year+').',uploadDate:'2026-08-26',thumbnailUrl:'https://i.ytimg.com/vi/'+PICK.previewId+'/hqdefault.jpg',embedUrl:'https://www.youtube-nocookie.com/embed/'+PICK.previewId});
+    graph.push({'@type':'VideoObject',name:'American Horror Story: 13 — Official Trailer | FX',description:'Official FX trailer for American Horror Story season 13, the horror anthology series created by Ryan Murphy and Brad Falchuk.',uploadDate:'2026-09-10',thumbnailUrl:'https://i.ytimg.com/vi/'+AHS.trailerId+'/hqdefault.jpg',embedUrl:'https://www.youtube-nocookie.com/embed/'+AHS.trailerId});
     const node=document.createElement('script');node.id='weekly-pick-schema';node.type='application/ld+json';
     node.textContent=JSON.stringify({'@context':'https://schema.org','@graph':graph});
     document.head.appendChild(node);
