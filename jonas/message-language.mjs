@@ -22,7 +22,7 @@ export async function detectMessageLanguage(message, fallback) {
     const text = String(message || '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{M}'’]+/gu, ' ').trim();
     const exact = greetings.get(text);
     if (exact) return exact;
-    if (!text || (!text.includes(' ') && !/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(text))) return fallback;
+    if (!text || (!text.includes(' ') && !/[\p{Script=Cyrillic}\p{Script=Arabic}\p{Script=Devanagari}\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(text))) return fallback;
     try {
         const {detectAll} = await import('./vendor/tinyld-1.3.4.mjs');
         const [first, second] = detectAll(text.slice(0, 600), {only: supported});

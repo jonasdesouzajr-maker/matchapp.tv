@@ -131,6 +131,7 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
     window.MatchAppVoiceControls=Object.freeze({stop:()=>{
       cancelled=true;
       try{recognition?.abort()}catch(_){}
+      if(listening&&nativeVoiceAvailable())try{window.MatchAppNativeVoice.stop?.()}catch(_){}
       recognition=null;
       finish();
     }});
@@ -198,6 +199,12 @@ function initVoiceInput(inputId,micBtnId,onFinalTranscript){
   });
 
   micBtn.addEventListener('click',()=>{
+    if(listening&&nativeVoiceAvailable()){
+      cancelled=true;
+      try{window.MatchAppNativeVoice.stop?.()}catch(_){}
+      finish();
+      return;
+    }
     if(listening&&recognition){
       try{recognition.stop();}catch(_){}
       if(!enhanced)finish();

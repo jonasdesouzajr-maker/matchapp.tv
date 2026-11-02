@@ -2263,7 +2263,13 @@ async function runAskAndRender(question, opts) {
             else payload = await askAIConversational(question, history, replyLanguage);
         }
     }
-    catch (e) { cookingUnavailable = cookingIntent; payload = cookingIntent ? {answer: window.MatchAppBooksLocale?.get?.('ui.cookingUnavailable',replyLanguage) || (/^pt/i.test(replyLanguage) ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.'), results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable, opts?.landingContext, replyLanguage); source = 'fallback'; }
+    catch (e) { cookingUnavailable = cookingIntent; payload = cookingIntent ? {answer: window.MatchAppBooksLocale?.t?.('ui.cookingUnavailable') || (/^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.'), results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable, opts?.landingContext, replyLanguage); source = 'fallback'; }
+    // UI-language fallback notices normally repaint on a settings change. A reply
+    // in a different message language keeps its own text, including on replay.
+    if (cookingUnavailable && replyLanguage !== responseLanguage) {
+        payload.answer = window.MatchAppBooksLocale?.get?.('ui.cookingUnavailable',replyLanguage) || discoverRecoveryText('unavailable',{},replyLanguage);
+        cookingUnavailable = false;
+    }
     if(!currentRequest()){await abandon();return;}
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
@@ -2486,7 +2492,7 @@ async function runAskAndRender(question, opts) {
     }
 
     if(!currentRequest()){await abandon();return;}
-    if(cookingUnavailable && replyLanguage === responseLanguage && bubble?.textEl)window.MatchAppBooksLocale?.bind?.(bubble.textEl,'ui.cookingUnavailable');
+    if(cookingUnavailable && bubble?.textEl)window.MatchAppBooksLocale?.bind?.(bubble.textEl,'ui.cookingUnavailable');
     const baseIndex = DISCOVER_ITEMS.length;
     let newItems = preparedRecommendations!==null?preparedRecommendations:(bookIntent ? [] : (payload.results || []))
         .filter(item => item && item.title && (!wantsTitleRecommendations||!isDiscoverDisliked(item, true)));

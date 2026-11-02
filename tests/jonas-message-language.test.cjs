@@ -27,3 +27,20 @@ test('Jonas messages detect all supported languages without reading the device o
     assert.equal(await detectMessageLanguage('Dune', 'pt-BR'), 'pt-BR');
     assert.equal(await detectMessageLanguage('2001', 'en'), 'en');
 });
+
+test('the tablet microphone stops on a second tap and ignores a late transcript', () => {
+    const {JSDOM} = require('jsdom');
+    const fs = require('node:fs');
+    const dom = new JSDOM('<textarea id="discover-new-input"></textarea><button id="mic-btn-discover"></button>', {url:'https://matchapp.tv/discover.html', runScripts:'outside-only'});
+    try {
+        const w=dom.window, calls=[];
+        w.MatchAppNativeVoice={start:()=>calls.push('start'),stop:()=>calls.push('stop')};
+        w.eval(fs.readFileSync(require.resolve('../voice-input.js'),'utf8'));
+        w.initVoiceInput('discover-new-input','mic-btn-discover',()=>calls.push('submit'));
+        const mic=w.document.getElementById('mic-btn-discover');
+        mic.click();mic.click();w.matchAppNativeVoiceResult('Late words');
+        mic.click();w.MatchAppVoiceControls.stop();w.matchAppNativeVoiceResult('Late words');
+        assert.deepEqual(calls,['start','stop','start','stop']);
+        assert.equal(w.document.getElementById('discover-new-input').value,'');
+    } finally {dom.window.close();}
+});

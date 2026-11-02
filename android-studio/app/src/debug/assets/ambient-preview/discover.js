@@ -190,7 +190,7 @@ function discoverRecommendationSummary(results,language){
   return titles.length?copy.fresh.replace('{titles}',titles.join(' · ')):copy.empty;
 }
 
-async function askAIConversational(question, history) {
+async function askAIConversational(question, history, replyLanguage) {
     if (!window.supabaseClient) {
         const err = new Error('No backend');
         err.aiUnavailable = true;
@@ -201,11 +201,11 @@ async function askAIConversational(question, history) {
     // client sends structured params rather than a pre-built prompt string.
     const country = window.MatchAppCatalogMedia?.regionCode?.() || localStorage.getItem('match_user_country') || '';
     const age = localStorage.getItem('match_user_age') || '';
-    const lang = window.MATCH_LANG || 'en';
+    const lang = replyLanguage || window.MATCH_LANG || 'en';
     // Nickname so the AI can address the user by name. Optional by design —
     // an empty string simply means the AI stays neutral rather than guessing.
     const nickname = (typeof window.getUserNickname === 'function') ? window.getUserNickname() : '';
-    const displayQuestion=question+'\n\nResponse language: '+lang+'. Use this selected language for the answer and every result description, regardless of the question language.';
+    const displayQuestion=question+'\n\nResponse language: '+lang+'. Use this language for the answer and every result description.';
     const recommendationsOnly=discoverRecommendationRequest(question);
     const excludedTitles=recommendationsOnly?discoverExcludedTitles(160,6000,{reading:typeof detectBookIntent==='function'&&detectBookIntent(question)}):[];
     const body = { mode: 'discover', question:displayQuestion, lang, country, age, nickname, history: history || [], recommendationsOnly, excludedTitles };
@@ -282,7 +282,7 @@ async function askAIConversational(question, history) {
 
 // Outage and source-verification messages follow the explicitly selected app
 // language, even when the user's question or the original title is English.
-function discoverRecoveryText(key, values = {}) {
+function discoverRecoveryText(key, values = {}, replyLanguage) {
     const keys=['directed','source','unavailable','factsUnavailable','books','audio','author','sourceLink','readingLink','emptyHint'];
     const rows={
         en:[
@@ -454,7 +454,7 @@ function discoverRecoveryText(key, values = {}) {
             '请输入问题，或点击麦克风向MatchApp Ai提问。'
         ]
     };
-    const language=String(window.MATCH_LANG||'en').toLowerCase().split(/[-_]/)[0];
+    const language=String(replyLanguage||window.MATCH_LANG||'en').toLowerCase().split(/[-_]/)[0];
     return String((rows[language]||rows.en)[keys.indexOf(key)]||'').replace(/\{(\w+)\}/g,(_,name)=>String(values[name]??''));
 }
 
@@ -492,7 +492,7 @@ const EDITORIAL_FILM_CREDITS=Object.freeze([
     Object.freeze({title:'Spirited Away',year:'2001',director:'Hayao Miyazaki',
       source:'https://www.ghibli.jp/works/chihiro/',publisher:'Studio Ghibli'})
 ]);
-async function sourceVerifiedFilmFacts(question) {
+async function sourceVerifiedFilmFacts(question, replyLanguage) {
     if(!isFactualMediaQuestion(question))return null;
     const requested=requestedMovieTitle(question);
     if(!requested)return null;
@@ -501,7 +501,7 @@ async function sourceVerifiedFilmFacts(question) {
     const year=String(question).match(/\b(?:19|20)\d{2}\b/)?.[0]||'';
     const publisher=EDITORIAL_FILM_CREDITS.find(x=>norm(x.title)===norm(requested) && (!year||x.year===year));
     if(publisher) {
-        const answer=[discoverRecoveryText('directed',publisher),discoverRecoveryText('source',{source:publisher.publisher}),discoverRecoveryText('unavailable')].join(' ');
+        const answer=[discoverRecoveryText('directed',publisher,replyLanguage),discoverRecoveryText('source',{source:publisher.publisher},replyLanguage),discoverRecoveryText('unavailable',{},replyLanguage)].join(' ');
         return {answer,results:[],_live:false,verifiedSource:publisher.source};
     }
     if(typeof window.tmdbLookup!=='function'||typeof window.tmdbRelated!=='function')return null;
@@ -514,7 +514,7 @@ async function sourceVerifiedFilmFacts(question) {
         const info=await window.tmdbRelated(movie.tmdbId,'movie');
         const director=String(info?.director?.name||'').trim();
         if(!director || !/^\d{4}$/.test(String(movie.year||'')))return null;
-        const answer=[discoverRecoveryText('directed',{title:movie.title,year:movie.year,director}),discoverRecoveryText('source',{source:'The Movie Database (TMDB)'}),discoverRecoveryText('unavailable')].join(' ');
+        const answer=[discoverRecoveryText('directed',{title:movie.title,year:movie.year,director},replyLanguage),discoverRecoveryText('source',{source:'The Movie Database (TMDB)'},replyLanguage),discoverRecoveryText('unavailable',{},replyLanguage)].join(' ');
         return {answer,results:[],_live:false,verifiedSource:'https://www.themoviedb.org/movie/'+movie.tmdbId};
     }catch(_){return null;}
 }
@@ -528,11 +528,11 @@ function stripQuestionWords(q) {
             .trim();
 }
 
-async function fallbackSearch(question, aiWasDown, landingContext) {
+async function fallbackSearch(question, aiWasDown, landingContext, replyLanguage) {
     // Keyword search cannot establish an editorial mood, title similarity or
     // regional provider availability. The scoped catalogue recovery below may
     // still use the exact landing tags, through the existing safety policy.
-    if (landingContext) return {answer: discoverRecoveryText('unavailable'), results: [], _live: false};
+    if (landingContext) return {answer: discoverRecoveryText('unavailable',{},replyLanguage), results: [], _live: false};
     if (detectBookIntent(question)) {
         // Use a bibliographically identified book, never an invented audio edition.
         // The real Bookworms source cards provide official Apple/Audible searches,
@@ -541,15 +541,15 @@ async function fallbackSearch(question, aiWasDown, landingContext) {
         const norm=x=>String(x||'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
         const q=norm(question);
         const named=listed.find(x=>x?.title&&q.includes(norm(x.title))&&norm(x.title).length>4);
-        const identity=named?discoverRecoveryText('author',named):'';
+        const identity=named?discoverRecoveryText('author',named,replyLanguage):'';
         const audiobook=window.MatchAppReadingAI?.intent?.(question)==='audiobook';
-        const answer=(identity?identity+'. ':'')+discoverRecoveryText('unavailable')+' '+discoverRecoveryText(audiobook?'audio':'books');
+        const answer=(identity?identity+'. ':'')+discoverRecoveryText('unavailable',{},replyLanguage)+' '+discoverRecoveryText(audiobook?'audio':'books',{},replyLanguage);
         return {answer,results:[],_live:false};
     }
     if(isFactualMediaQuestion(question)) {
-        const source=await sourceVerifiedFilmFacts(question);
+        const source=await sourceVerifiedFilmFacts(question, replyLanguage);
         if(source)return source;
-        const answer=discoverRecoveryText('factsUnavailable');
+        const answer=discoverRecoveryText('factsUnavailable',{},replyLanguage);
         return {answer,results:[],_live:false};
     }
     const audioIntent = detectAudioIntent(question);
@@ -590,12 +590,12 @@ async function fallbackSearch(question, aiWasDown, landingContext) {
         } catch (e) { /* try next media type */ }
     }
 
-    const offlineNote = (typeof t === 'function') ? t('discover.offlineNote') : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
-    const noResults = (typeof t === 'function') ? t('discover.noResults') : `We couldn't find a confident match for "${question}". Try rephrasing with a title, topic or person.`;
+    const offlineNote = (typeof t === 'function') ? t('discover.offlineNote',replyLanguage) : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
+    const noResults = (typeof t === 'function') ? t('discover.noResults',replyLanguage) : `We couldn't find a confident match for "${question}". Try rephrasing with a title, topic or person.`;
     // When the AI itself was unreachable, saying "try rephrasing" blames the
     // user for a question that was probably fine, and sends them off rewording
     // it repeatedly to no effect. Say what actually happened instead.
-    const aiDown = (typeof t === 'function') ? t('discover.aiDown')
+    const aiDown = (typeof t === 'function') ? t('discover.aiDown',replyLanguage)
         : "Our AI concierge couldn't be reached just now — this is on our side, not your question. Please try again in a moment.";
 
     const emptyMessage = aiWasDown ? aiDown : noResults;
@@ -688,6 +688,7 @@ function pickVoiceForLang(voices, lang) {
 }
 
 window.readAloud = function(text, btn) {
+    const language=btn?.closest?.('.chat-answer-row')?.querySelector('.chat-answer-text')?.lang || window.MatchAppJonasLocale?.speech?.() || window.MATCH_LANG || 'en';
     // Only the approved Jonas provider voices may play here.
     // This also animates his face during manually requested read-aloud.
     if(window.MatchAppJonasStage?.speak) {
@@ -701,7 +702,7 @@ window.readAloud = function(text, btn) {
         const narration=window.MatchAppJonasNarration;
         const transcript=narration?.prepare?.(btn?.closest('.chat-answer-row')?.querySelector('.chat-answer-text'),text);
         window.MatchAppJonasStage.speak(text,{
-            autoListen:false,
+            autoListen:false, language,
             onProgress:p=>narration?.advance?.(p,transcript),
             onComplete:()=>narration?.finish?.(transcript)
         }).finally(()=>{narration?.finish?.(transcript);btn?.classList.remove('speaking')});
@@ -712,7 +713,7 @@ window.readAloud = function(text, btn) {
     if(btn?.classList.contains('speaking')){service.stop();btn.classList.remove('speaking');return;}
     service.unlock?.();
     document.querySelectorAll('.discover-speak.speaking').forEach(b=>b.classList.remove('speaking'));
-    service.speak(String(text||'').slice(0,650),window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{
+    service.speak(String(text||'').slice(0,650),language,{
       onStart:()=>btn?.classList.add('speaking'),
       onEnd:()=>btn?.classList.remove('speaking'),
       onError:()=>btn?.classList.remove('speaking')
@@ -1961,7 +1962,7 @@ window.openThread = function (id) {
             appendUserBubble(turn.text);
         }
         else {
-            const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true });
+            const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true, replyLanguage:turn.replyLanguage });
             if (turn.musicVideoId && bubble) {
                 bubble.wrap.dataset.musicVideoId = turn.musicVideoId;
                 window.MatchAppMusicReleases?.paintCard(turn.musicVideoId, bubble.grid);
@@ -2035,6 +2036,7 @@ function appendAssistantBubble(text, results, opts) {
 
     const p = document.createElement('p');
     p.className = 'chat-answer-text';
+    if(opts?.replyLanguage){p.lang=opts.replyLanguage;p.dir=opts.replyLanguage==='ar'?'rtl':'ltr';}
     row.appendChild(p);
 
     const speak = document.createElement('button');
@@ -2145,20 +2147,26 @@ async function runAskAndRender(question, opts) {
     const responseLanguage = window.MATCH_LANG || 'en';
     const requestVersion = discoverThreadVersion;
     question = question.trim();
+    const previous = currentThread?.turns?.slice().reverse().find(turn => turn.replyLanguage)?.replyLanguage;
+    let replyLanguage = previous || responseLanguage;
+    if (window.MatchAppMessageLanguage) {
+        replyLanguage = await window.MatchAppMessageLanguage.detect(question, replyLanguage);
+    }
+    if (requestVersion !== discoverThreadVersion || responseLanguage !== (window.MATCH_LANG || 'en')) return;
     // Short greetings are conversation, not an entertainment title query.
     // Respond immediately, do not consume credits or query provider catalogues.
     const helloOnly=/^(?:hi|hello|hey|hey there|hi there|hola|olá|ola|oi|bom dia|boa tarde|boa noite|bonjour|salut|hallo|guten tag|ciao|buongiorno|merhaba|привет|здравствуйте|مرحبا|أهلا|नमस्ते|halo|hai|こんにちは|こんばんは|おはよう|안녕하세요|안녕|你好|您好)[\s!?.،。！]*$/iu;
     if(helloOnly.test(question)){
-        const reply=window.MatchAppJonasLocale?.t?.('greeting')||"Hi, I'm Jonas. What would you like to discover?";
+        const reply=window.MatchAppJonasLocale?.catalog?.[replyLanguage]?.greeting||window.MatchAppJonasLocale?.t?.('greeting')||"Hi, I'm Jonas. What would you like to discover?";
         if(!currentThread)currentThread={id:newThreadId(),title:question.slice(0,60),turns:[],createdAt:Date.now(),updatedAt:Date.now()};
         appendUserBubble(question);
-        appendAssistantBubble(reply,[],{instant:true});
-        currentThread.turns.push({role:'user',text:question,ts:Date.now()},{role:'assistant',text:reply,results:[],ts:Date.now()});
+        appendAssistantBubble(reply,[],{instant:true,replyLanguage});
+        currentThread.turns.push({role:'user',text:question,ts:Date.now()},{role:'assistant',text:reply,results:[],replyLanguage,ts:Date.now()});
         currentThread.updatedAt=Date.now();persistCurrentThread();
         const empty=document.getElementById('discover-empty');if(empty)empty.style.display='none';
         if(voiceOrigin) {
-            if(window.MatchAppJonasStage?.speak) window.MatchAppJonasStage.speak(reply,{autoListen:true});
-            else window.MatchAppJonasSpeech?.speak?.(reply,window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{});
+            if(window.MatchAppJonasStage?.speak) window.MatchAppJonasStage.speak(reply,{autoListen:true,language:replyLanguage});
+            else window.MatchAppJonasSpeech?.speak?.(reply,replyLanguage,{});
         }
         return;
     }
@@ -2166,7 +2174,7 @@ async function runAskAndRender(question, opts) {
     // locate XXX/pornographic content, and never charge for that refusal.
     if (window.MatchAppContentSafety?.isPornographicRequest?.(question)) {
         appendUserBubble(question);
-        const lang = String(window.MATCH_LANG || 'en');
+        const lang = String(replyLanguage);
         const answer = /^pt/.test(lang)
           ? 'O MatchApp não recomenda conteúdo pornográfico. Posso ajudar com revistas, livros, filmes e audiolivros convencionais.'
           : /^es/.test(lang)
@@ -2245,17 +2253,23 @@ async function runAskAndRender(question, opts) {
         // AI guesses as if they were verified programme recommendations.
         if (window.MatchAppVerifiedDocumentaries?.matches?.(question)) {
             payload = await window.MatchAppVerifiedDocumentaries.resolve(question, {
-                lang: window.MATCH_LANG || 'en',
+                lang: replyLanguage,
                 country: window.MatchAppCatalogMedia?.regionCode?.() || localStorage.getItem('match_user_country') || ''
             });
             source = 'verified-documentary-series';
         } else {
-            musicPayload = await window.MatchAppMusicReleases?.query(question, history);
+            musicPayload = await window.MatchAppMusicReleases?.query(question, history, replyLanguage);
             if (musicPayload) payload = musicPayload;
-            else payload = await askAIConversational(question, history);
+            else payload = await askAIConversational(question, history, replyLanguage);
         }
     }
-    catch (e) { cookingUnavailable = cookingIntent; payload = cookingIntent ? {answer: window.MatchAppBooksLocale?.t?.('ui.cookingUnavailable') || (/^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.'), results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable, opts?.landingContext); source = 'fallback'; }
+    catch (e) { cookingUnavailable = cookingIntent; payload = cookingIntent ? {answer: window.MatchAppBooksLocale?.t?.('ui.cookingUnavailable') || (/^pt/i.test(window.MATCH_LANG||'') ? 'A IA está indisponível agora. Explore abaixo as receitas e os vídeos originais dos criadores.' : 'AI is unavailable right now. Explore the original cooking sources and videos below.'), results:[], _live:false} : await fallbackSearch(question, !!e.aiUnavailable, opts?.landingContext, replyLanguage); source = 'fallback'; }
+    // UI-language fallback notices normally repaint on a settings change. A reply
+    // in a different message language keeps its own text, including on replay.
+    if (cookingUnavailable && replyLanguage !== responseLanguage) {
+        payload.answer = window.MatchAppBooksLocale?.get?.('ui.cookingUnavailable',replyLanguage) || discoverRecoveryText('unavailable',{},replyLanguage);
+        cookingUnavailable = false;
+    }
     if(!currentRequest()){await abandon();return;}
 
     // Final bounded recovery: if AI parsing, the Edge Function, or the keyless
@@ -2274,7 +2288,7 @@ async function runAskAndRender(question, opts) {
             payload.results = local;
             payload._live = false;
             source = source === 'ai' ? 'catalog-recovery' : source + '+catalog';
-            const offlineNote = (typeof t === 'function') ? t('discover.offlineNote') : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
+            const offlineNote = (typeof t === 'function') ? t('discover.offlineNote',replyLanguage) : "Our AI concierge is temporarily offline, so here's what our catalog found for you:";
             payload.answer = `${offlineNote} “${question}”`;
         }
     }
@@ -2333,7 +2347,7 @@ async function runAskAndRender(question, opts) {
         if(!currentRequest()){await abandon();return;}
         const blockedProse=discoverAnswerContainsExcludedTitle(payload.answer,priorKeys);
         if(preparedRecommendations.length!==candidates.length||blockedProse){
-            payload.answer=discoverRecommendationSummary(preparedRecommendations,responseLanguage);
+            payload.answer=discoverRecommendationSummary(preparedRecommendations,replyLanguage);
             payload._preferenceFiltered=true;
         }
         payload.results=preparedRecommendations;
@@ -2378,7 +2392,7 @@ async function runAskAndRender(question, opts) {
     const offlineBadge = document.getElementById('discover-offline-badge');
     if (offlineBadge) offlineBadge.style.display = payload._live || musicPayload || payload?._docVerified ? 'none' : 'inline-flex';
 
-    const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false });
+    const bubble = appendAssistantBubble(payload.answer, bookIntent ? [] : (payload.results || []), { instant: false, replyLanguage });
     responseRevealed=!!bubble;
     if(responseRevealed)preparedRecommendations?.forEach(item=>window.matchPolicy?.remember?.({...item,reason:'Ask AI'},'ai'));
     if(payload?._live !== true && !musicPayload && !payload?._docVerified && bubble?.wrap){
@@ -2427,7 +2441,7 @@ async function runAskAndRender(question, opts) {
             // Reading claims may be won by another device after the prompt was
             // sent. Narrate only the source cards this response actually owns.
             const accepted=[...bubble.wrap.querySelectorAll('.reading-ai-card h4')].map(heading=>({title:heading.textContent.trim()}));
-            payload.answer=discoverRecommendationSummary(accepted,responseLanguage);
+            payload.answer=discoverRecommendationSummary(accepted,replyLanguage);
             bubble.textEl.textContent=payload.answer;
             bubble.speakBtn.onclick=()=>window.readAloud(payload.answer,bubble.speakBtn);
         }else window.MatchAppReadingAI?.render?.(question,bubble.wrap,{allowKnown:true});
@@ -2458,7 +2472,7 @@ async function runAskAndRender(question, opts) {
                 }
                 const transcript=narration?.prepare?.(bubble.textEl,fullReply,ambient?audibleReply.length:650);
                 window.MatchAppJonasStage.speak(audibleReply,{
-                    autoListen:true,
+                    autoListen:true, language:replyLanguage,
                     onProgress:p=>narration?.advance?.(p,transcript),
                     onComplete:()=>narration?.finish?.(transcript)
                 }).catch(()=>narration?.finish?.(transcript));
@@ -2514,7 +2528,7 @@ async function runAskAndRender(question, opts) {
     }
 
     if(!currentRequest()){await abandon();return;}
-    requestThread.turns.push({ role: 'assistant', text: payload.answer, results: newItems, ts: Date.now() });
+    requestThread.turns.push({ role: 'assistant', text: payload.answer, results: newItems, replyLanguage, ts: Date.now() });
     requestThread.updatedAt = Date.now();
     persistCurrentThread();
     refreshAiWorkspaceStatus();
