@@ -2,17 +2,45 @@
 (function(){
  'use strict';
  if(window.__maGuide20261031||/^\/kids(\/|$)/.test(location.pathname))return;window.__maGuide20261031=true;
- var pt=function(){return /^pt/i.test(document.documentElement.lang||navigator.language||'')};
- var LINKS=[['/', 'Início','Home'],['/explore.html','Explorar','Explore'],['/ebooks/','Livros','Books'],['/cooking/','Receitas','Recipes'],['/guides/choose-what-to-watch/','Guia','Guide'],['/events-archive.html','Eventos','Events'],['/profile/','Perfil','Profile']];
+ var destinations=['/','/explore.html','/ebooks/','/cooking/','/guides/choose-what-to-watch/','/events-archive.html','/profile/'];
+ // The first label names the navigation region. The rest follow destinations in order.
+ var labels={
+  en:['Go to','Home','Explore','Books','Recipes','Guide','Events','Profile'],
+  pt:['Ir para','Início','Explorar','Livros','Receitas','Guia','Eventos','Perfil'],
+  es:['Ir a','Inicio','Explorar','Libros','Recetas','Guía','Eventos','Perfil'],
+  fr:['Aller à','Accueil','Explorer','Livres','Recettes','Guide','Événements','Profil'],
+  de:['Gehe zu','Startseite','Entdecken','Bücher','Rezepte','Leitfaden','Veranstaltungen','Profil'],
+  it:['Vai a','Home','Esplora','Libri','Ricette','Guida','Eventi','Profilo'],
+  tr:['Şuraya git','Ana sayfa','Keşfet','Kitaplar','Tarifler','Rehber','Etkinlikler','Profil'],
+  ru:['Перейти к','Главная','Обзор','Книги','Рецепты','Путеводитель','События','Профиль'],
+  ar:['انتقل إلى','الرئيسية','استكشف','الكتب','الوصفات','الدليل','الفعاليات','الملف الشخصي'],
+  hi:['यहाँ जाएँ','होम','एक्सप्लोर करें','किताबें','रेसिपी','गाइड','कार्यक्रम','प्रोफ़ाइल'],
+  id:['Buka','Beranda','Jelajahi','Buku','Resep','Panduan','Acara','Profil'],
+  ja:['移動先','ホーム','見つける','本','レシピ','ガイド','イベント','プロフィール'],
+  ko:['바로가기','홈','둘러보기','도서','레시피','가이드','이벤트','프로필'],
+  zh:['前往','首页','探索','图书','食谱','指南','活动','个人资料']
+ };
  function pills(panel){
-  if(!panel||panel.querySelector('.ma-guide-pills'))return;
-  var nav=document.createElement('nav');nav.className='ma-guide-pills';nav.setAttribute('aria-label',pt()?'Ir para':'Go to');
-  LINKS.forEach(function(l){if(l[0]===location.pathname)return;var a=document.createElement('a');a.href=l[0];a.textContent=pt()?l[1]:l[2];nav.appendChild(a)});
+  if(!panel)return;
+  var lang=(document.documentElement.lang||'en').toLowerCase().split('-')[0];
+  var copy=labels[lang]||labels.en;
+  var nav=panel.querySelector('.ma-guide-pills');
+  if(nav&&nav.lang===lang)return;
+  if(!nav){nav=document.createElement('nav');nav.className='ma-guide-pills';}
+  nav.lang=lang;nav.setAttribute('aria-label',copy[0]);
+  destinations.forEach(function(href,i){
+   if(href===location.pathname)return;
+   var link=nav.querySelector('a[href="'+href+'"]');
+   if(!link){link=document.createElement('a');link.href=href;nav.appendChild(link);}
+   link.textContent=copy[i+1];
+  });
+  if(nav.parentNode)return;
   var anchor=panel.querySelector('.jh-full');var row=anchor&&anchor.parentNode!==panel?anchor.parentNode:anchor;if(row&&row.parentNode){row.parentNode.insertBefore(nav,row);}else{panel.appendChild(nav);}
  }
  var SEL='#ma-jonas-home-panel,#ma-ambient-panel';
  function scan(){document.querySelectorAll(SEL).forEach(function(p){if(!p.hidden)pills(p)})}
  document.addEventListener('click',function(){setTimeout(scan,350)},true);
+ document.addEventListener('matchapp:langchange',scan);
  function visible(e){if(!e||e.hidden)return false;var r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'}
  window.MatchAppHandleBack=function(){
   try{
@@ -89,10 +117,31 @@
   }
 
   /* --- Sound toggle pill inside the Jonas guide (Android only) --- */
-  function addToggle(){if(!ANDROID)return;var nav=document.querySelector('.ma-guide-pills');if(!nav||nav.querySelector('.ma-fx-toggle'))return;var pt=/^pt/i.test(root.lang||navigator.language||'');
-    var b=document.createElement('button');b.type='button';b.className='ma-fx-toggle';
-    function label(){b.textContent=muted()?(pt?'🔇 Sons desligados':'🔇 Sounds off'):(pt?'🔊 Sons ligados':'🔊 Sounds on');b.setAttribute('aria-pressed',String(!muted()))}
-    b.addEventListener('click',function(){try{localStorage.setItem('ma.fx.muted',muted()?'0':'1')}catch(_){}label();fx.tap()});label();nav.appendChild(b)}
+  var soundLabels={
+    en:['Sounds on','Sounds off'],pt:['Sons ligados','Sons desligados'],es:['Sonidos activados','Sonidos desactivados'],
+    fr:['Sons activés','Sons désactivés'],de:['Töne an','Töne aus'],it:['Suoni attivi','Suoni disattivati'],
+    tr:['Sesler açık','Sesler kapalı'],ru:['Звуки включены','Звуки выключены'],ar:['الأصوات مفعّلة','الأصوات متوقفة'],
+    hi:['ध्वनि चालू','ध्वनि बंद'],id:['Suara aktif','Suara nonaktif'],ja:['サウンド オン','サウンド オフ'],
+    ko:['소리 켜짐','소리 꺼짐'],zh:['声音已开启','声音已关闭']
+  };
+  function labelSound(b){
+    var lang=(root.lang||'en').toLowerCase().split('-')[0],off=muted();
+    var text=(off?'🔇 ':'🔊 ')+(soundLabels[lang]||soundLabels.en)[off?1:0];
+    if(b.textContent!==text)b.textContent=text;
+    b.setAttribute('aria-pressed',String(!off));
+  }
+  function addToggle(){
+    if(!ANDROID)return;
+    document.querySelectorAll('.ma-guide-pills').forEach(function(nav){
+      var b=nav.querySelector('.ma-fx-toggle');
+      if(!b){b=document.createElement('button');b.type='button';b.className='ma-fx-toggle';
+        b.addEventListener('click',function(){try{localStorage.setItem('ma.fx.muted',muted()?'0':'1')}catch(_){}addToggle();fx.tap()});
+        nav.appendChild(b);
+      }
+      labelSound(b);
+    });
+  }
+  document.addEventListener('matchapp:langchange',addToggle);
 
   function tick(){watch();addToggle()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',tick);else tick();
