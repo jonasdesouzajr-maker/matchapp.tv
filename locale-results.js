@@ -116,7 +116,7 @@
     if (typeof window.askAIConversational !== 'function' || window.askAIConversational.__locale) return;
     const prev = window.askAIConversational;
     window.askAIConversational = async function (question, history) {
-      const parsed = await prev(question, history);
+      const parsed = await prev.apply(this, arguments);
       if (!parsed || lang() === 'en') return parsed;
       if (parsed._live === true) return parsed; // This response already uses the selected language.
       // Offline answer is explanatory source text. Keep it instead of guessing a replacement.

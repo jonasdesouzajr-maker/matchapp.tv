@@ -39,6 +39,16 @@ const words={
 'zh':['准备聆听','Jonas 正在说话','正在聆听，请说话','正在思考你的问题']
 };
 function labels(){const l=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();return words[l.split('-')[0]]||words.en}
+function syncComposerLabels(){
+ const locale=window.MatchAppJonasLocale;
+ if(!locale)return;
+ for(const [selector,key] of [['#mic-btn-discover','mic'],['.composer-send','send']]){
+  const button=document.querySelector(selector);
+  if(button){const label=locale.t(key);button.setAttribute('aria-label',label);button.title=label;}
+ }
+}
+syncComposerLabels();
+document.addEventListener('matchapp:langchange',syncComposerLabels);
 function change(state){el.dataset.state=state;status.textContent=labels()[{idle:0,speaking:1,listening:2,thinking:3}[state]??0];mic.setAttribute('aria-pressed',String(state==='listening'))}
 function showFrame(name){
  if(frame===name)return;
@@ -125,7 +135,7 @@ function speak(text,opts){
  const service=window.MatchAppJonasSpeech;
  if(!service?.speak){change('idle');return Promise.resolve(false)}
  change('thinking');
- return service.speak(x,window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{
+ return service.speak(x,opts?.language||window.MatchAppJonasLocale?.speech?.()||window.MATCH_LANG||'en',{
   onStart:beginSpeaking,
   onLevel:v=>{
    if(!Number.isFinite(v))return;

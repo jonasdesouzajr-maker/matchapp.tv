@@ -59,7 +59,7 @@
   function patchConversation(){
     if (typeof window.askAIConversational !== 'function' || window.askAIConversational.__humanPatched) return false;
     const original = window.askAIConversational;
-    const wrapped = async function(question, history){ return humanize(await original.call(this, question, history), history); };
+    const wrapped = async function(question, history){ return humanize(await original.apply(this, arguments), history); };
     wrapped.__humanPatched = true;
     wrapped.__original = original;
     window.askAIConversational = wrapped;

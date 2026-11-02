@@ -85,7 +85,7 @@ async function hardenPayload(payload,question){
 }
 function patchAI(){
  const fn=window.askAIConversational;if(typeof fn!=='function'||fn.__integrityPatched)return false;
- const wrapped=async function(question,history){const payload=await fn.call(this,question,history);return hardenPayload(payload,question)};
+ const wrapped=async function(question,history){const payload=await fn.apply(this,arguments);return hardenPayload(payload,question)};
  wrapped.__integrityPatched=true;wrapped.__original=fn;window.askAIConversational=wrapped;return true;
 }
 function rememberShown(title,extra={}){const k=key(title);if(!k||window.matchPolicy?.known?.().has(k))return;window.matchPolicy?.remember?.({title,...extra,reason:'Shown by MatchApp'},'shown');}

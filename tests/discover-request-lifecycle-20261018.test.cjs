@@ -490,3 +490,31 @@ test('provider failure and offline recovery stay free; the next usable reply deb
     assert.match(w.document.querySelector('.chat-assistant:last-child').textContent,/Christopher Nolan/);
   }finally{answer.resolve({answer:'Christopher Nolan.',results:[],_live:true});dom.window.close();}
 });
+
+test('typed and dictated turns switch reply language independently of the interface', async()=>{
+  const {dom,w,events}=await boot();
+  try {
+    const {detectMessageLanguage}=await import('../jonas/message-language.mjs');
+    w.MatchAppMessageLanguage={detect:detectMessageLanguage};
+    w.MATCH_LANG='pt-BR'; w.document.documentElement.lang='pt-BR';
+    w.MatchAppJonasStage={speak:async(text,opts)=>events.push({type:'spoken',language:opts.language})};
+    const requests=[];
+    w.askAIConversational=async(question,history,language)=>{
+      requests.push(language);
+      return {answer:language==='en'?'The director is Hayao Miyazaki.':'O diretor é Hayao Miyazaki.',results:[],_live:true};
+    };
+    await w.askAndRender('Who directed this film and when was it released?');
+    assert.deepEqual(requests,['en']);assert.equal(events.filter(e=>e.type==='spoken').length,0);
+    assert.equal(w.document.querySelector('.chat-answer-text').lang,'en');
+    await w.askAndRender('Você pode me contar um pouco mais sobre o diretor desse filme?',{voiceOrigin:true});
+    assert.deepEqual(requests,['en','pt-BR']);
+    assert.equal(events.find(e=>e.type==='spoken').language,'pt-BR');
+    await w.askAndRender('Who wrote the screenplay for this film?',{voiceOrigin:true});
+    assert.equal(requests.at(-1),'en');
+    assert.equal(events.filter(e=>e.type==='spoken').at(-1).language,'en');
+    await w.askAndRender('Dune');
+    assert.equal(requests.at(-1),'en');
+    assert.equal(w.currentThread.turns.at(-1).replyLanguage,'en');
+    assert.equal(w.MATCH_LANG,'pt-BR');assert.equal(w.document.documentElement.lang,'pt-BR');
+  } finally {dom.window.close();}
+});

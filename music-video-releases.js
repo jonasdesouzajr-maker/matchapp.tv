@@ -25,7 +25,7 @@
     const lang = () => String(window.MATCH_LANG || document.documentElement.lang || 'en').split('-')[0].toLowerCase();
     const copy = () => COPY[lang()] || COPY.en;
     const releaseMonth = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value));
-    const date = value => new Intl.DateTimeFormat(window.MATCH_LANG || document.documentElement.lang || 'en', {dateStyle:'medium',timeZone:'UTC'}).format(new Date(value));
+    const date = (value, language) => new Intl.DateTimeFormat(language || window.MATCH_LANG || document.documentElement.lang || 'en', {dateStyle:'medium',timeZone:'UTC'}).format(new Date(value));
     const fullViews = value => { const n=Number(value);return Number.isFinite(n)&&n>=0?new Intl.NumberFormat(window.MATCH_LANG || document.documentElement.lang || 'en').format(n):''; };
     const posterViews = value => { const n=Number(value),label=VIEW_LABEL[lang()]||VIEW_LABEL.en;if(!Number.isFinite(n)||n<0)return '— '+label;const formatted=new Intl.NumberFormat(window.MATCH_LANG || document.documentElement.lang || 'en',{notation:n>=10000?'compact':'standard',maximumFractionDigits:1}).format(n);return formatted+' '+label; };
     const shortVideoUrl = r => 'youtu.be/'+r.id;
@@ -46,7 +46,7 @@
             (/\b(videos?|clipes?|clips?)\b/.test(q) && /\b(latest|recent|newest|new|ultimos?|recentes?|novos?|mais novos?|nuevos?|recientes?)\b/.test(q)) ||
             (/\b(latest|newest|most recent|mais recentes|ultimos)\b/.test(q) && /\b(music videos?|videoclipes?)\b/.test(context));
     }
-    async function query(question, history=[]) {
+    async function query(question, history=[], replyLanguage) {
         if(!isVideoQuestion(question,history))return null;
         if(!/\b(latest|recent|recently|newest|new|ultimos?|recentes?|novos?|mais novos?|nuevos?|recientes?)\b/.test(normalize(question)))return null;
         const rows=await all(), q=normalize(question);
@@ -67,12 +67,27 @@
         // A daily verified snapshot is labelled honestly; it is not a live chart.
         const fresh=rows.filter(r=>{const age=Date.now()-Date.parse(r.verifiedAt+'T00:00:00Z');return age>=0 && age<=2*86400000;});
         const selected=matches.length===1 ? fresh.filter(r=>artistNames(r.artist).includes(matches[0])).sort((a,b)=>Date.parse(b.publishedAt)-Date.parse(a.publishedAt)).slice(0,6) : [];
-        const pt=lang()==='pt', es=lang()==='es';
-        const answer=selected.length ?
+        const output=String(replyLanguage||lang()).split('-')[0];
+        const pt=output==='pt', es=output==='es';
+        let answer=selected.length ?
             (pt?'Videoclipes oficiais verificados de ':es?'Videoclips oficiales verificados de ':'Verified official music videos by ')+matches[0]+
-            (pt?', do mais recente ao mais antigo. Catálogo verificado em ':es?', del más reciente al más antiguo. Catálogo verificado el ':', newest first. Catalog checked on ')+date(selected[0].verifiedAt+'T12:00:00Z')+
+            (pt?', do mais recente ao mais antigo. Catálogo verificado em ':es?', del más reciente al más antiguo. Catálogo verificado el ':', newest first. Catalog checked on ')+date(selected[0].verifiedAt+'T12:00:00Z',replyLanguage)+
             (pt?'. Consulte o canal oficial para lançamentos após essa verificação.':es?'. Consulta el canal oficial para estrenos posteriores.':'. Check the official channel for releases after that check.') :
             (pt?'Não consegui confirmar os videoclipes recentes desse artista. Diga o nome completo do artista ou consulte seu canal oficial; não vou apresentar vídeos antigos como recentes.':es?'No pude confirmar los videoclips recientes de ese artista. Indica su nombre completo o consulta su canal oficial.':'I could not confirm recent official videos for that artist. Please give the full artist name or check their official channel; older suggestions will not be presented as latest releases.');
+        const other = {
+            fr: ["Clips officiels vérifiés de {artist}, du plus récent au plus ancien. Catalogue vérifié le {date}.","Je n’ai pas pu vérifier de clips officiels récents. Précisez le nom de l’artiste ou consultez sa chaîne officielle."],
+            de: ["Bestätigte offizielle Musikvideos von {artist}, neueste zuerst. Katalog geprüft am {date}.","Ich konnte keine aktuellen offiziellen Musikvideos bestätigen. Nenne den vollständigen Namen oder schau auf dem offiziellen Kanal nach."],
+            it: ["Videoclip ufficiali verificati di {artist}, dal più recente. Catalogo verificato il {date}.","Non ho potuto verificare videoclip ufficiali recenti. Indica il nome completo dell’artista o visita il suo canale ufficiale."],
+            tr: ["{artist} için doğrulanmış resmî klipler, en yeniden en eskiye. Katalog {date} tarihinde kontrol edildi.","Güncel resmî klipleri doğrulayamadım. Sanatçının tam adını söyle veya resmî kanalına bak."],
+            ru: ["Проверенные официальные клипы {artist}, начиная с новых. Каталог проверен {date}.","Не удалось подтвердить недавние официальные клипы. Назовите полное имя исполнителя или загляните на его официальный канал."],
+            ar: ["أحدث المقاطع الرسمية التي تم التحقق منها للفنان {artist}، من الأحدث إلى الأقدم. راجعت الدليل بتاريخ {date}.","لم أتمكن من تأكيد مقاطع رسمية حديثة. اذكر اسم الفنان بالكامل أو تفقّد قناته الرسمية."],
+            hi: ["{artist} के सत्यापित आधिकारिक म्यूज़िक वीडियो, सबसे नए पहले। सूची की जाँच {date} को हुई थी।","हाल के आधिकारिक वीडियो की पुष्टि नहीं हो सकी। कलाकार का पूरा नाम बताएँ या उनका आधिकारिक चैनल देखें।"],
+            id: ["Video musik resmi {artist} yang terverifikasi, dari yang terbaru. Katalog diperiksa pada {date}.","Saya belum bisa memastikan video musik resmi terbaru. Sebutkan nama lengkap artis atau lihat kanal resminya."],
+            ja: ["{artist} の確認済み公式ミュージックビデオを新しい順に紹介します。カタログの確認日は {date} です。","最近の公式ミュージックビデオを確認できませんでした。アーティストの正式名を教えていただくか、公式チャンネルをご覧ください。"],
+            ko: ["{artist}의 확인된 공식 뮤직비디오를 최신순으로 소개합니다. 카탈로그 확인일은 {date}입니다.","최근 공식 뮤직비디오를 확인할 수 없어요. 정확한 아티스트 이름을 알려주시거나 공식 채널을 확인해 주세요."],
+            zh: ["以下是已核实的 {artist} 官方音乐视频，按从新到旧排列。目录核实日期为 {date}。","暂时无法核实近期的官方音乐视频。请提供艺人的全名，或查看其官方频道。"]
+        }[output];
+        if (other) answer = selected.length ? other[0].replace('{artist}',matches[0]).replace('{date}',date(selected[0].verifiedAt+'T12:00:00Z',replyLanguage)) : other[1];
         return {answer,results:selected.map(r=>({title:r.artist+' — '+r.title,type:'music video',_musicVideoId:r.id})),_live:false,_verifiedMusic:selected.length>0};
     }
     const get = async id => (await all()).find(r => r.id === id);

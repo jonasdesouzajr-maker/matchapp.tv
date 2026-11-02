@@ -59,7 +59,7 @@
   function patchConversation(){
     if (typeof window.askAIConversational !== 'function' || window.askAIConversational.__humanPatched) return false;
     const original = window.askAIConversational;
-    const wrapped = async function(question, history){ return humanize(await original.call(this, question, history), history); };
+    const wrapped = async function(question, history){ return humanize(await original.apply(this, arguments), history); };
     wrapped.__humanPatched = true;
     wrapped.__original = original;
     window.askAIConversational = wrapped;
@@ -71,7 +71,7 @@
       if(btn?.classList.contains('speaking')){window.MatchAppJonasSpeech.stop();btn.classList.remove('speaking');return;}
       document.querySelectorAll('.discover-speak.speaking').forEach(b=>b.classList.remove('speaking'));
       window.MatchAppJonasSpeech.unlock();
-      await window.MatchAppJonasSpeech.speak(String(textValue||'').slice(0,650),window.MatchAppJonasLocale?.speech?.()||lang(),{
+      await window.MatchAppJonasSpeech.speak(String(textValue||'').slice(0,650),btn?.closest?.('.chat-answer-row')?.querySelector('.chat-answer-text')?.lang||window.MatchAppJonasLocale?.speech?.()||lang(),{
        onStart(){btn?.classList.add('speaking')},
        onEnd(){btn?.classList.remove('speaking')},
        onError(){btn?.classList.remove('speaking');window.showToast?.('Voice temporarily unavailable. Please retry.',true)}
