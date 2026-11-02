@@ -78,6 +78,8 @@ jobs:
           sudo apt-get install -y --no-install-recommends librsvg2-bin
           rsvg-convert -w 1200 -h 630 assets/brand/matchapp-og.svg -o og-image-v3.png
           test -s og-image-v3.png
+      - name: Refresh changed first-party browser assets
+        run: node tools/stamp-browser-assets.cjs
       - name: Stamp exact deployment identity
         shell: bash
         run: |
