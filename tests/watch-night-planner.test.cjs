@@ -128,7 +128,7 @@ test('switching language carries only the validated plan and preserves unsent ed
 test('published English and pt-BR markup boots, computes and shares in its original language', async () => {
   for (const [language, slug] of [['en-US', 'watch-night'], ['pt-BR', 'pt-br/noite-de-filme']]) {
     const page = browser({ language, authoredCopy: true });
-    assert.ok(page.window.document.querySelector('script[defer][src="/watch-night/planner.js"]'));
+    assert.ok(page.window.document.querySelector('script[defer][src="/watch-night/planner.js?v=20261102-presets"]'));
     assert.equal(page.window.document.documentElement.lang.slice(0, 2), language.slice(0, 2));
     assert.match(page.value(), /140/);
     page.update({ mode: 'episodes', runtime: '45' });
@@ -136,5 +136,21 @@ test('published English and pt-BR markup boots, computes and shares in its origi
     assert.doesNotMatch(page.value(), /\{\w+\}/);
     await page.share();
     assert.equal(page.id('share-url').value, `https://matchapp.tv/${slug}/#p=1200.1350.10.45.1`);
+  }
+});
+
+test('both localized examples load the advertised times and focus the calculator', () => {
+  for (const language of ['en-GB', 'pt-BR']) {
+    const page = browser({ language });
+    try {
+      const examples = page.window.document.querySelectorAll('.wn-examples a[href^="#p="]');
+      assert.equal(examples.length, 2);
+      examples[0].click();
+      assert.match(page.value(), /^fits 90 .* 0$/);
+      examples[1].click();
+      assert.match(page.value(), /^episodes 2 .*next day 5$/);
+      assert.equal(page.window.document.activeElement, page.id('start-time'));
+      assert.equal(page.id('planner-language').hash, examples[1].hash);
+    } finally { page.window.close(); }
   }
 });

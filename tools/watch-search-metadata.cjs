@@ -3,6 +3,9 @@
 // A provider in one region must never be described as a worldwide offer.
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function metadata(title,info){
+ if(info.kind==='movie' && info.tmdbId===20453 && String(info.year)==='2009') {
+  return {title:'Where to Watch 3 Idiots (2009) in the UK | MatchApp Ai',description:'Check where to watch 3 Idiots in the UK, compare dated rental and streaming listings, and plan a movie night around the 2009 film’s 2h 51m runtime.'};
+ }
  const year=info.year?` (${info.year})`:'';
  const regions=Object.values(info.regions||{});
  const options=[['stream','streaming'],['rent','rental'],['buy','purchase']].filter(([key])=>regions.some(r=>r[key]?.length)).map(([,label])=>label);
