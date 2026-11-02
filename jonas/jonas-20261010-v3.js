@@ -8,7 +8,7 @@
   const POS_KEY = "matchapp-jonas-bubble-position-v1";
   const SAVED_KEY = "matchapp-jonas-saved-local-v1";
   let open = false, speaking = false, listening = false, recording = null;
-  let busy = false, controller = null, epoch = 0, messageHistory = [], lastReply = "";
+  let busy = false, controller = null, epoch = 0, messageHistory = [], lastReply = "", lastReplyLanguage = "";
   let audioAnimation = null, blinkClock = null, drag = null, ignoreClick = false;
   const shapes = ["aa", "oh", "ee", "rest"];
   const birthday = "October 10";
@@ -176,12 +176,12 @@
       ) || null;
     } catch { return null; }
   }
-  function useVoice(text, onDone) {
+  function useVoice(text, onDone, language = voiceLanguage()) {
     if(window.MatchAppJonasSpeech){
       const mine=++epoch;
       window.MatchAppJonasSpeech.unlock();
       speaking=true;
-      window.MatchAppJonasSpeech.speak(String(text).slice(0,650),voiceLanguage(),{
+      window.MatchAppJonasSpeech.speak(String(text).slice(0,650),language,{
         onStart(){if(mine!==epoch)return;bubble.classList.add('is-speaking');uiStatus('Jonas is speaking…')},
         onEnd(){if(mine!==epoch)return;speaking=false;bubble.classList.remove('is-speaking');uiStatus('Ready when you are');if(typeof onDone==='function'&&open)onDone()},
         onError(){if(mine===epoch)uiStatus('Voice temporarily unavailable. You can still type or use the microphone.')}
@@ -206,7 +206,7 @@
       window.matchAppNativeSpeechState = (active) => { if (!active) finish(); };
       document.addEventListener("matchapp:avatar-voice-unavailable", finish, { once: true });
       window.setTimeout(finish, Math.min(60000, 3000 + text.length * 95));
-      try { window.MatchAppNativeVoice.speak(String(text).slice(0, 4000), voiceLanguage()); }
+      try { window.MatchAppNativeVoice.speak(String(text).slice(0, 4000), language); }
       catch { finish(); uiStatus("Voice unavailable; the answer is still visible."); }
       return;
     }
@@ -216,7 +216,7 @@
     const myEpoch = ++epoch;
     try { speechSynthesis.cancel(); } catch {}
     const utter = new SpeechSynthesisUtterance(String(text).slice(0, 3000));
-    utter.lang = voiceLanguage();
+    utter.lang = language;
     utter.pitch = .89;
     utter.rate = .97;
     const approvedVoice = pickVoice(utter.lang);
@@ -285,13 +285,13 @@
     });
   }
   // Verified avatar metadata. The Play launch date remains unknown until published.
-  function avatarIdentityAnswer(question) {
+  function avatarIdentityAnswer(question, language = voiceLanguage()) {
     const q = String(question || "");
     const birthday = /(your|jonas.s|seu|do jonas).{0,55}(birthday|anivers[aá]rio|date of birth|nascimento)|quando (voc[eê]|jonas) nasceu/i.test(q);
     const creator = /(creator|criador).{0,55}(birthday|anivers[aá]rio|born|nasceu|nascimento)/i.test(q);
     const launch = /(your|jonas.s|app|matchapp ai|google play|official).{0,70}(launch|release|publication|released|published|lan[çc]amento|estreia|publica[çc][aã]o)|(data do lan[çc]amento|quando (o app|jonas) (foi )?lan[çc]ado)/i.test(q);
     if (!birthday && !creator && !launch) return null;
-    const pt = voiceLanguage().toLowerCase().startsWith("pt");
+    const pt = language.toLowerCase().startsWith("pt");
     const parts = [];
     if (birthday || creator) parts.push(pt
       ? "Meu aniversário simbólico é 10 de outubro. Meu criador nasceu em 10 de outubro de 1986 e completa 40 anos em 10 de outubro de 2026."
@@ -301,12 +301,15 @@
       : "My official Google Play launch date is not confirmed yet; I'll give the verified date after publication.");
     return parts.join(" ");
   }
-  async function send(message) {
+  async function send(message, spoken = false) {
     const text = String(message || "").trim().slice(0, 2000);
     if (!text || busy) return;
     // Browser edition uses the live site's authenticated, metered discovery
     // service. Never call the preview-only /api/ask endpoint or expose API keys.
     if (window.MATCHAPP_BROWSER && !window.MatchAppNativeAI) {
+      if (spoken) {
+        try { sessionStorage.setItem("matchapp_voice_origin_v1", JSON.stringify({inputId:"jonas-input", text, scope:"adult", at:Date.now()})); } catch {}
+      }
       window.location.assign("/discover.html?q=" + encodeURIComponent(text) + "&focus=start");
       return;
     }
@@ -315,16 +318,22 @@
     addEntry("user", text);
     messageHistory.push({ role: "user", content: text });
     messageHistory = messageHistory.slice(-12);
-    const verifiedIdentity = avatarIdentityAnswer(text);
+    busy = true; sendButton.disabled = true;
+    const detectedEpoch = epoch;
+    let replyLanguage = voiceLanguage();
+    if (window.MatchAppMessageLanguage) replyLanguage = await window.MatchAppMessageLanguage.detect(text, lastReplyLanguage || replyLanguage);
+    if (!open || detectedEpoch !== epoch) {busy = false;sendButton.disabled = false;return;}
+    lastReplyLanguage = replyLanguage;
+    const verifiedIdentity = avatarIdentityAnswer(text, replyLanguage);
     if (verifiedIdentity) {
       messageHistory.push({ role: "assistant", content: verifiedIdentity });
       messageHistory = messageHistory.slice(-12);
       lastReply = verifiedIdentity;
       addEntry("assistant", verifiedIdentity);
-      useVoice(verifiedIdentity);
+      busy = false; sendButton.disabled = false;
+      useVoice(verifiedIdentity, undefined, replyLanguage);
       return;
     }
-    busy = true; sendButton.disabled = true;
     uiStatus("Thinking…");
     const ctrl = new AbortController(); controller = ctrl;
     // MatchApp AI's existing model fallbacks can need up to 60 seconds under load.
@@ -332,11 +341,11 @@
     try {
       let data;
       if (window.MatchAppNativeAI && typeof window.MatchAppNativeAI.ask === "function") {
-        data = await askPackagedAI(messageHistory, voiceLanguage(), ctrl.signal);
+        data = await askPackagedAI(messageHistory, replyLanguage, ctrl.signal);
       } else {
         const response = await fetch("/api/ask", {
           method: "POST", headers: { "Content-Type": "application/json" }, signal: ctrl.signal,
-          body: JSON.stringify({ messages: messageHistory, locale: voiceLanguage() })
+          body: JSON.stringify({ messages: messageHistory, locale: replyLanguage })
         });
         data = await response.json();
         if (!response.ok) throw new Error(data.error || "Jonas is unavailable.");
@@ -347,7 +356,7 @@
       messageHistory = messageHistory.slice(-12);
       lastReply = reply;
       addEntry("assistant", reply);
-      useVoice(reply);
+      useVoice(reply, undefined, replyLanguage);
     } catch (error) {
       const note = error.name === "AbortError" ? "The request timed out. Try again." : error.message || "Jonas is unavailable.";
       messageHistory.pop();
@@ -356,7 +365,7 @@
       retry.type = "button";
       retry.className = "retry-ask";
       retry.textContent = "Try again";
-      retry.addEventListener("click", () => { retry.disabled = true; void send(text); });
+      retry.addEventListener("click", () => { retry.disabled = true; void send(text, spoken); });
       failed.appendChild(retry);
       uiStatus("Couldn't connect");
     } finally {
@@ -403,13 +412,13 @@
         submitted = true; listening = false; bubble.classList.remove("is-listening");
         setMicGlyph(false);
         try { recognition.stop(); } catch {}
-        void send(finalText);
+        void send(finalText, true);
       }
     };
     recognition.onerror = () => { listening = false; bubble.classList.remove("is-listening"); setMicGlyph(false); uiStatus("Mic unavailable. Please type instead."); };
     recognition.onend = () => {
       listening = false; bubble.classList.remove("is-listening"); setMicGlyph(false);
-      if (finalText && !submitted) { submitted = true; void send(finalText); }
+      if (finalText && !submitted) { submitted = true; void send(finalText, true); }
       else if (!submitted) uiStatus("Tap the microphone to try again.");
     };
     try {
@@ -525,7 +534,7 @@
     listening = false; bubble.classList.remove("is-listening");
     setMicGlyph(false); micButton.setAttribute("aria-label", "Start microphone");
     input.value = text;
-    if (text) void send(text);
+    if (text) void send(text, true);
     else uiStatus("I didn't catch that. Try again or type below.");
   };
   window.matchAppNativeVoiceError = (code) => {

@@ -73,14 +73,14 @@
   function wrapAsk() {
     if (typeof window.askAIConversational !== 'function' || window.askAIConversational.__guarantee) return;
     const prev = window.askAIConversational;
-    window.askAIConversational = async function (question, history) {
-      const lang = window.MATCH_LANG || 'en';
+    window.askAIConversational = async function (question, history, replyLanguage) {
+      const lang = replyLanguage || window.MATCH_LANG || 'en';
       const steered = lang === 'en' ? String(question || '') : String(question || '') + '\n\nRespond in ' + lang + '. Use localized official titles.';
       let parsed = null;
       // Propagate upstream outages to runAskAndRender's independently
       // source-checked fallback. Swallowing 429s here previously fabricated
       // "The Bear" for factual questions and hid official audiobook sources.
-      try { parsed = await prev(steered, history); }
+      try { parsed = await prev(steered, history, lang); }
       catch (error) { throw error; }
       if (!parsed) parsed = { answer: '', results: [] };
       const policy = window.matchPolicy;
