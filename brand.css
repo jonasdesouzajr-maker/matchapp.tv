@@ -612,3 +612,26 @@ html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-bran
  -webkit-mask-position:center 47%!important;mask-position:center 47%!important;
  -webkit-mask-repeat:no-repeat!important;mask-repeat:no-repeat!important;
 }
+
+/* Browser reading margins. Secondary pages consume the existing cinema gutter on the body.
+   Home and Explore have their own outer wrappers. Set the inset exactly once on each surface. */
+@layer ma-reference {
+  html.ma-reference.ma-browser-gutters {
+    --cinema-page-gutter: clamp(16px, 3vw, 32px);
+    --ma-browser-left: max(var(--cinema-page-gutter), env(safe-area-inset-left, 0px));
+    --ma-browser-right: max(var(--cinema-page-gutter), env(safe-area-inset-right, 0px));
+  }
+
+  html.ma-reference.ma-browser-gutters:not(#ma-reference-legacy) body:is(.page-home, .page-explore) > :is(main, .hub-shell),
+  html.ma-reference.ma-browser-gutters:not(#ma-reference-legacy) body.page-home > footer,
+  html.ma-reference.ma-browser-gutters #ma-reference-header .ma-reference-header-bar {
+    box-sizing: border-box !important;
+    padding-left: var(--ma-browser-left) !important;
+    padding-right: var(--ma-browser-right) !important;
+  }
+
+  html.ma-reference.ma-browser-gutters body.page-home header.home-hero {
+    padding-left: max(20px, var(--ma-browser-left)) !important;
+    padding-right: max(20px, var(--ma-browser-right)) !important;
+  }
+}
