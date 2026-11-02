@@ -145,6 +145,9 @@ function buildPage(title, info, entry, related, generated) {
         return `
             <article class="w2w-region" id="availability-${code.toLowerCase()}" data-availability-state="${observed.state}">
                 <h3>Where to watch in ${esc(REGION_NAMES[code] || code)}</h3>
+                ${code==='GB' && info.kind==='movie' && info.tmdbId===20453 && String(info.year)==='2009' ? `<p class="w2w-source-status"><strong>UK viewing check, 2 November 2026.</strong> JustWatch UK showed no offer for the 2009 Aamir Khan film when we checked. Apple TV UK lists the film and its 2h 51m runtime. A catalogue entry alone does not confirm a rental. Check the current UK offer before choosing a service.</p>
+                <p><a class="w2w-link" href="https://www.justwatch.com/uk/movie/3-idiots" rel="noopener" target="_blank">Check UK rental and streaming listings</a> · <a class="w2w-link" href="https://tv.apple.com/gb/movie/3-idiots/umc.cmc.7c2srvr0qpnqcxrdf23lhl9gi" rel="noopener" target="_blank">Check the Apple TV UK edition</a></p>
+                <p>A 7:30 p.m. start with one ten-minute break gives a 10:31 p.m. finish for this edition. <a class="w2w-link" href="/watch-night/#p=1170.1365.10.171.0">Try the 3 Idiots movie night plan</a></p>` : ''}
                 <p class="w2w-source-status">${esc(observed.answer)}</p>
                 ${rows.join('\n                ')}
                 ${httpsUrl(r.link) ? `<a class="w2w-link" href="${esc(httpsUrl(r.link))}" target="_blank" rel="noopener nofollow">See full options for ${esc(REGION_NAMES[code] || code)} →</a>` : ''}

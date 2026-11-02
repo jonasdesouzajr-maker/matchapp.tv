@@ -124,6 +124,16 @@
     event.preventDefault();
     render();
   });
+  document.querySelectorAll('.wn-examples a[href^="#p="]').forEach(example => {
+    example.addEventListener('click', event => {
+      if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (location.hash !== example.hash) history.replaceState(null, '', example.hash);
+      restore();
+      render();
+      field('start').focus();
+    });
+  });
   window.addEventListener('hashchange', () => { restore(); render(); });
   restore();
   render();

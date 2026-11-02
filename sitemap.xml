@@ -26,13 +26,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/watch-night/</loc>
-        <lastmod>2026-11-01T21:16:41+00:00</lastmod>
+        <lastmod>2026-11-02T13:20:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/pt-br/noite-de-filme/</loc>
-        <lastmod>2026-11-01T21:16:41+00:00</lastmod>
+        <lastmod>2026-11-02T13:20:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -740,7 +740,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/where-to-watch/3-idiots/</loc>
-        <lastmod>2026-11-01T10:37:05+00:00</lastmod>
+        <lastmod>2026-11-02T13:20:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -1616,13 +1616,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/worlds-2026/</loc>
-        <lastmod>2026-11-01T10:37:05+00:00</lastmod>
+        <lastmod>2026-11-02T13:20:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/events/kota-dussehra-2026/</loc>
-        <lastmod>2026-11-01T10:37:05+00:00</lastmod>
+        <lastmod>2026-11-02T13:20:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -1652,7 +1652,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/events/ccxp-2026/</loc>
-        <lastmod>2026-11-01T10:37:05+00:00</lastmod>
+        <lastmod>2026-11-02T13:20:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
