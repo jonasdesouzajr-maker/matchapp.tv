@@ -634,4 +634,14 @@ html body:not(.page-kids):not(.kids-body) .matchapp-brand-link:not(:has(.ma-bran
     padding-left: max(20px, var(--ma-browser-left)) !important;
     padding-right: max(20px, var(--ma-browser-right)) !important;
   }
+
+  /* The page already provides the phone gutter. Give the Ask input its card's full width. */
+  @media (max-width: 375px) {
+    html.ma-reference.ma-browser-gutters:not(#ma-reference-legacy) body.ai-chat-page main.wrap > .discover-head {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-inline: 0 !important;
+      box-sizing: border-box !important;
+    }
+  }
 }
