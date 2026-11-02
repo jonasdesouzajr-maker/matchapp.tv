@@ -6,7 +6,7 @@ const fs = require('node:fs');
 
 const root = 'https://matchapp.tv';
 const assets = [
-    '/brand.css', '/patches/jonas-adult-page.js', '/final-wiring.js', '/voice-input.js',
+    '/brand.css', '/patches/jonas-adult-page.js', '/final-wiring.js', '/settings.js', '/voice-input.js',
     '/discover.js', '/locale-results.js', '/match-guarantee.js', '/music-video-releases.js',
     '/human-conversation.js', '/human-conversation-male-only-20261010.js',
     '/human-conversation-cloud-20261010.js', '/production-hardening.js',
