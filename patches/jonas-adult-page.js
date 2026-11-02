@@ -23,5 +23,5 @@
 })();
 /* Jonas guide (2026-10-31): pills, Back closes overlays. Adult pages only. */
 (function(){
- if(!/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)&&!/\/(callback|confirm)\.html$/.test(location.pathname)&&!document.getElementById('ma-guide-20261031')){var g=document.createElement('script');g.id='ma-guide-20261031';g.defer=true;g.src='/jonas-guide-20261031.js?v=7';(document.head||document.documentElement).appendChild(g);}
+ if(!/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)&&!/\/(callback|confirm)\.html$/.test(location.pathname)&&!document.getElementById('ma-guide-20261031')){var g=document.createElement('script');g.id='ma-guide-20261031';g.defer=true;g.src='/jonas-guide-20261031.js?v=8';(document.head||document.documentElement).appendChild(g);}
 })();
