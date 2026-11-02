@@ -1,3 +1,8 @@
+/* Set the page gutter only in the top-level browser. The shared stylesheet is already loaded. */
+if (window.top === window && !window.MatchAppFx &&
+    !/MatchApp(?:TV|Ai(?:Kids)?)Android\/|\bwv\b/i.test(navigator.userAgent)) {
+  document.documentElement.classList.add('ma-browser-gutters');
+}
 /* One persistent adult companion; Home and native Android retain their existing owner. */
 (function(){
  'use strict';
