@@ -88,7 +88,7 @@ for(const i of titles){
   const fallback='https://www.google.com/search?q='+encodeURIComponent(i.title+' '+i.year+' where to watch');
   const regions=links[id]?.regions||{};
   const woody=i.title.includes('Woody Woodpecker')?'<p><strong>Woody Woodpecker / Pica-Pau / El Pájaro Loco</strong></p><p>Prefer dubbed cartoons? Choose the official language channel:</p><a class="watch" data-woody="pt" href="https://www.youtube.com/channel/UCiFg-2CjsG_xcSsHNjDeLpw">Português · Pica-Pau</a><a class="watch" data-woody="es" href="https://www.youtube.com/channel/UCHtZ2_7hd1zy9aCqrrcaqcQ">Español · El Pájaro Loco</a><a class="watch" data-woody="en" href="https://www.youtube.com/channel/UCB2aeGGPNj7l5Z71bYNqX-Q">English · Woody Woodpecker</a>':'';
-  const age=ageText(i),desc=metaDescription(i),keywords=keywordSet(i),bounds=ageBounds(i);
+  const age=ageText(i),desc=guideEditorial[id]?.searchDescription||metaDescription(i),keywords=keywordSet(i),bounds=ageBounds(i);
   const image=`${SITE}/kids/covers/${id}.svg`;
   const related=titles.filter(t=>t!==i&&((t.year&&i.year&&Math.floor(Number(t.year)/10)===Math.floor(Number(i.year)/10))||(t.cats||[]).some(c=>(i.cats||[]).includes(c)))).slice(0,8);
   const facts=uniq([`${typeLabel(i)}`,i.year?`Original release ${i.year}`:'',`Ages ${age}`,...(i.cats||[])]).map(x=>`<span>${escape(x)}</span>`).join('');
@@ -129,7 +129,7 @@ for(const i of titles){
       }
     ]
   };
-  fs.writeFileSync(path.join(dir,'index.html'),page(titleName(i),desc,url,body+editorialHtml(id),data,keywords,image));
+  fs.writeFileSync(path.join(dir,'index.html'),page(guideEditorial[id]?.searchTitle||titleName(i),desc,url,body+editorialHtml(id),data,keywords,image));
 }
 
 const classics=titles.filter(i=>i.year&&Number(i.year)<2010),hub=`${SITE}/kids/nostalgia/`;

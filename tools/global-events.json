@@ -815,6 +815,11 @@
         "label": "Venue hours from the CCXP press office",
         "url": "https://ccxp.com.br/imprensa/"
       }
-    ]
+    ],
+    "localizedGuide": {
+      "language": "pt-BR",
+      "path": "/pt-br/ccxp-2026/",
+      "label": "Guia em português"
+    }
   }
 ]
