@@ -1,6 +1,6 @@
 {
   "puffin-rock": {
-    "updatedAt": "2026-10-31",
+    "updatedAt": "2026-11-03",
     "source": {
       "label": "Cartoon Saloon’s Puffin Rock series and format guide",
       "url": "https://www.cartoonsaloon.ie/irish-animation-studio/tv-series/puffin-rock/"
@@ -25,10 +25,12 @@
           "This page is for the television series identified here as the 2015 release. A film, trailer or compilation with similar artwork is not necessarily that series. Use the regional viewing links to inspect the actual title, available episodes, audio and subtitles in your country. The official series site below supports the character and programme context; it does not establish current streaming rights in every market."
         ]
       }
-    ]
+    ],
+    "searchTitle": "Puffin Rock Age Range and Episode Length",
+    "searchDescription": "Puffin Rock was made for ages 2–5. Find out why MatchApp Ai lists it under ages 3–5, how long one island story lasts and where to check local viewing options."
   },
   "octonauts": {
-    "updatedAt": "2026-10-31",
+    "updatedAt": "2026-11-03",
     "source": {
       "label": "Brown Bag Films’ Octonauts production guide",
       "url": "https://www.brownbagfilms.com/our-work/octonauts"
@@ -52,7 +54,9 @@
           "The crew meets real kinds of sea creatures, and the writers worked with marine biologists. When the crew finds an animal in trouble, pause and ask what they still need to learn about it. At the end, see whether the rescue depended on where it lives, how it moves or what it eats. A child who prefers a quiet evening can skip the guessing and choose another story."
         ]
       }
-    ]
+    ],
+    "searchTitle": "Octonauts Age Range and Episode Length",
+    "searchDescription": "Octonauts is a preschool series. Compare MatchApp Ai’s 3–5 and 6–8 age bands, 11-minute missions and 22-minute adventures before choosing an episode."
   },
   "rugrats": {
     "updatedAt": "2026-10-16",
@@ -81,5 +85,28 @@
         ]
       }
     ]
+  },
+  "sarah-duck": {
+    "updatedAt": "2026-11-03",
+    "source": {
+      "label": "Karrot Animation’s introduction to Sarah & Duck",
+      "url": "https://karrotanimation.com/portfolio/sarah-and-duck-series-launch-trailer/"
+    },
+    "sections": [
+      {
+        "heading": "What age is Sarah & Duck for?",
+        "paragraphs": [
+          "Sarah & Duck follows a seven-year-old girl and her duck. Seven is Sarah’s age in the story. In the MatchApp Ai catalog, you can find the series in both the 3–5 and 6–8 age bands. These bands help you browse. Check the episode’s rating on your family’s viewing service."
+        ]
+      },
+      {
+        "heading": "Can we fit one episode in before bedtime?",
+        "paragraphs": [
+          "Karrot Animation lists seven-minute episodes. If you have ten minutes, start with one story and leave a few minutes to talk about it. Ask your child which ordinary thing turned into an adventure, or what Duck did differently from Sarah. A compilation may run longer than a single episode."
+        ]
+      }
+    ],
+    "searchTitle": "Sarah & Duck Age Range and Episode Length",
+    "searchDescription": "What age is Sarah & Duck for? Compare the 3–5 and 6–8 MatchApp Ai age bands and see how a seven-minute episode fits into a bedtime routine."
   }
 }

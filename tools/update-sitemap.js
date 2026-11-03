@@ -25,6 +25,7 @@ const CORE = [
     { loc: `${SITE}/guides/choose-what-to-watch/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/watch-night/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/pt-br/noite-de-filme/`, freq: 'monthly', pri: '0.8' },
+    { loc: `${SITE}/pt-br/ccxp-2026/`, freq: 'weekly', pri: '0.7' },
     { loc: `${SITE}/guides/streaming-device-discovery/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/explore.html`, freq: 'weekly', pri: '0.8' },
     { loc: `${SITE}/how-it-works.html`, freq: 'monthly', pri: '0.8' },

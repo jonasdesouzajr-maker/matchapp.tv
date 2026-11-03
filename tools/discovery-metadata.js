@@ -31,11 +31,11 @@ page('updates.html', 'What’s New in MatchApp Ai | App & Streaming Updates',
 page('cooking/index.html', 'Cooking Channels & Recipe Videos with AI | MatchApp Ai',
   'Find original recipe videos from Maangchi, Jamie Oliver, Rita Lobo and Chef John. Explore Korean and Brazilian cooking, and ask AI about techniques.',
   'original cooking channels, recipe videos, Korean cooking, Brazilian recipes, Maangchi recipes, Jamie Oliver recipes, Rita Lobo Panelinha, Food Wishes Chef John, receitas em vídeo, canais de culinária');
-page('anime.html', 'Anime Recommendations by Mood & Where to Watch | MatchApp Ai',
-  'Find anime recommendations by mood and genre, compare movies and series, and check where anime streams by country with MatchApp Ai.',
+page('anime.html', 'Anime Finder by Genre and Mood | MatchApp Ai',
+  'Find an anime film or series by genre and mood. Compare Frieren and Jujutsu Kaisen, then check where the exact title streams in your country.',
   'what anime should I watch, anime recommendations, where to watch anime, anime finder, Japanese animation, anime para assistir, onde assistir anime');
 page('together.html', 'Match Together – Movie Picker for Couples | MatchApp Ai',
-  'Choose a movie or series together by mood, time and streaming service. Sign in to invite a partner or friend; your guest can join without an account.',
+  'Thriller or comedy for date night? Pick a movie using both tastes. Sign in to invite a friend. A guest can join without an account.',
   'Match Together, what to watch together, what should we watch tonight, movie night decider, movies for couples, date night movies, what to watch with friends, pick a movie together, shared movie recommendations, o que assistir em casal');
 page('platforms/netflix/index.html', 'Netflix Top 10 & Recommendations by Mood | MatchApp Ai',
   'Explore Netflix Top 10 sources and movie or series recommendations by mood. Compare a dated chart snapshot with your preferences and regional viewing options.',
@@ -64,8 +64,8 @@ page('collections/documentary/index.html', 'Documentary Recommendations: What to
 page('collections/podcast/index.html', 'Podcast Recommendations: What to Listen To | MatchApp Ai',
   'Find curated podcasts for commutes, downtime and curious listening. Explore conversations and storytelling, then ask AI for your next podcast.',
   'podcast recommendations, podcast discovery, what podcast should I listen to, storytelling podcasts, podcasts para ouvir');
-page('collections/youtube-channel/index.html', 'YouTube Creator & Channel Recommendations | MatchApp Ai',
-  'Explore curated YouTube creators across entertainment and specialist topics. Find a channel to follow and ask AI for recommendations by interest.',
+page('collections/youtube-channel/index.html', 'Find Similar YouTube Channels by Interest | MatchApp Ai',
+  'Find YouTube channels like the ones you enjoy. Compare creators by topic and format, from movie satire to home cooking, and ask for a similar channel.',
   'YouTube channel recommendations, creator discovery, channels to follow, entertainment YouTube channels, canais para seguir');
 page('collections/youtube-shorts/index.html', 'Short Videos & YouTube Shorts to Discover | MatchApp Ai',
   'Explore curated short-form videos for a quick watch. Discover creators and ask MatchApp Ai for short entertainment that matches your interests.',
