@@ -1,1 +1,3 @@
-You can now choose Traditional Chinese on Android. Explore fills the screen on phones and tablets, with cards that fit longer labels. Its brief animations respect your motion settings.
+A refreshed Android discovery experience with layered cards and clearer spacing.
+Traditional Chinese joins the language options, alongside Korean.
+Updated MatchApp Ai branding and improved layouts for phones and tablets.

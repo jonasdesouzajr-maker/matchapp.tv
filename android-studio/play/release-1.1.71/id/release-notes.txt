@@ -1,1 +1,3 @@
-Kini Anda dapat memilih bahasa Mandarin dengan aksara tradisional di Android. Bagian Jelajahi tampil dalam layar penuh di ponsel dan tablet. Kartu menyesuaikan ukurannya dengan teks panjang, dan animasi singkat mengikuti preferensi gerakan Anda.
+Pengalaman penemuan Android diperbarui dengan kartu berlapis dan jarak yang lebih jelas.
+Bahasa Tionghoa dengan aksara tradisional ditambahkan ke pilihan bahasa bersama bahasa Korea.
+Identitas visual MatchApp Ai diperbarui dan tata letak ponsel serta tablet ditingkatkan.
