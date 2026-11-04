@@ -134,6 +134,8 @@ ${LOCALES.map(other => '<link rel="alternate" hreflang="'+other+'" href="'+ORIGI
 <script type="application/ld+json">${json(schemaFor(lang,copy,films))}</script><script id="hw-copy" type="application/json">${json(copy)}</script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 <script defer src="/viewer-country.js?v=guestcountry20261027"></script><script defer src="/halloween/config.js?v=${VERSION}"></script><script defer src="/halloween/guide.js?v=${VERSION}"></script>
+<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261024-1&repair=20261023-1"></script>
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head><body class="halloween-page channel-page"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="hw-layout"><header class="hw-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img class="matchapp-wordmark ma-playai-mark" width="48" height="48" alt="" src="/assets/brand/matchapp-ai-mark.svg">MatchApp Ai</a><details><summary>${escape(copy.language)} · ${escape(copy.name)}</summary><nav class="channel-language-list" aria-label="${escape(copy.language)}">${languages}</nav></details></header>
 <section class="hw-hero" aria-labelledby="hw-heading"><img class="hw-hero-image" src="/assets/halloween/midnight-cinema-1440.webp" srcset="/assets/halloween/midnight-cinema-720.webp 720w, /assets/halloween/midnight-cinema-1440.webp 1440w" sizes="(max-width: 720px) 100vw, 1440px" alt="${escape(copy.posterAlt)}" width="1440" height="960" fetchpriority="high" decoding="async"><div class="hw-hero-copy"><p class="hw-eyebrow">${escape(copy.eyebrow)}</p><h1 id="hw-heading">${escape(copy.heading)}</h1><p class="hw-tagline">${escape(copy.tagline)}</p><p>${escape(copy.intro)}</p><nav>${button('#watch-options',copy.promoCta)}${button('#movie-night',copy.tipsHeading)}<button type="button" class="hw-button" id="hw-share">${escape(copy.share)}</button></nav><p id="hw-share-status" role="status" aria-live="polite"></p></div></section>
@@ -144,6 +146,8 @@ ${LOCALES.map(other => '<link rel="alternate" hreflang="'+other+'" href="'+ORIGI
 <section class="hw-section hw-faq" aria-labelledby="hw-faq-heading"><h2 id="hw-faq-heading">${escape(copy.faqHeading)}</h2>${copy.faqs.map(faq => '<details><summary>'+escape(faq.question)+'</summary><p>'+escape(faq.answer)+'</p></details>').join('')}</section>
 <section class="hw-section" aria-labelledby="hw-related-heading"><h2 id="hw-related-heading">${escape(copy.exploreHeading)}</h2><nav class="hw-related" aria-label="${escape(copy.exploreHeading)}">${button(planner,copy.planner)}${button('/together.html',copy.together)}${button('/streaming/',copy.moreGuides)}${button('/',copy.home)}</nav></section>
 </main></body></html>\n`;
+  // Include the standard adult shell above so CI's global brand finalizer is
+  // idempotent; the shared helper owns its current asset version parameters.
   return cinemaAssets(versionBrandStylesheet(canonicalFavicons(html)), route(lang).slice(1)+'index.html');
 }
 
