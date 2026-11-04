@@ -2,10 +2,10 @@
 (function(root){
  'use strict';
  if(root.MatchAppBooksLocale)return;
- const languages=Object.freeze(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
+ const languages=Object.freeze(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW']);
  const dictionaries=Object.fromEntries(languages.map(code=>[code,Object.create(null)]));
  const bindings=new Set(),known=new WeakMap();let revision=0,reverseRevision=-1,reverse=null;
- function normalize(value){const raw=String(value||'').trim().replace(/_/g,'-').toLowerCase();if(raw==='pt'||raw.startsWith('pt-'))return'pt-BR';const base=raw.split('-')[0];return languages.includes(base)?base:'';}
+ function normalize(value){const raw=String(value||'').trim().replace(/_/g,'-').toLowerCase();if(raw==='pt'||raw.startsWith('pt-'))return'pt-BR';if(/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(raw))return'zh-TW';const base=raw.split('-')[0];return languages.includes(base)?base:'';}
  function lang(){let saved='';try{saved=root.localStorage?.getItem('match_lang')||'';}catch(_){}return normalize(saved)||normalize(root.MATCH_LANG)||normalize(root.document?.documentElement?.lang)||normalize(root.navigator?.language)||'en';}
  function get(key,locale){return dictionaries[normalize(locale)||lang()]?.[key];}
  function t(key,params){const text=get(key);return String(text===undefined?key:text).replace(/\{([\w]+)\}/g,(all,name)=>params&&params[name]!==undefined?String(params[name]):all);}

@@ -11,7 +11,7 @@ const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const readJson = file => JSON.parse(read(file));
 const clone = value => JSON.parse(JSON.stringify(value));
-const LANGUAGES = ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const LANGUAGES = ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 
 function fixture() {
   const service = {
@@ -272,7 +272,7 @@ test('Apple TV subscription and Store rental or purchase remain distinct access 
   }
 });
 
-test('all fourteen authored locales reach generated labels and SEO without fallback', () => {
+test('all fifteen authored locales reach generated labels and SEO without fallback', () => {
   const copy = readJson('data/streaming-directory-copy.json');
   assert.deepEqual(Object.keys(copy).sort(), [...LANGUAGES].sort());
   const keys = Object.keys(copy.en).sort();

@@ -135,7 +135,7 @@
         const rebelMoonAlias = title === 'Rebel Moon' && Number(hints.year) === 2023 && kind === 'movie';
         const lookupTitle = rebelMoonAlias ? 'Rebel Moon - Part One: A Child of Fire' : title;
         // Kids verifies English catalogue names independently of the UI language.
-        const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN'};
+        const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN', "zh-TW": "zh-TW"};
         const lang = hints.lang === 'en-US' ? 'en-US' : (locales[window.MATCH_LANG] || 'en-US');
         const cacheKey = `${title}::${hints.year || ''}::${kind}::${lang}`;
         if (hasCached(cacheKey)) return CACHE[cacheKey];
@@ -291,7 +291,7 @@
     window.tmdbRelated = async function (tmdbId, kind) {
         const empty = { director: null, related: [] };
         if (!Number.isSafeInteger(tmdbId) || tmdbId <= 0 || !['movie', 'tv'].includes(kind) || !window.supabaseClient) return empty;
-        const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN'};
+        const locales = {en:'en-US', 'pt-BR':'pt-BR', es:'es-ES', fr:'fr-FR', de:'de-DE', it:'it-IT', tr:'tr-TR', ru:'ru-RU', ar:'ar-SA', hi:'hi-IN', id:'id-ID', ja:'ja-JP', ko:'ko-KR', zh:'zh-CN', "zh-TW": "zh-TW"};
         const lang = locales[window.MATCH_LANG] || 'en-US';
         const cacheKey = `related::${tmdbId}::${kind}::${lang}`;
         if (hasCached(cacheKey)) return CACHE[cacheKey];

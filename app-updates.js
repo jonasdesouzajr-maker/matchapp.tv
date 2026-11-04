@@ -105,7 +105,7 @@ const nativeRefreshMessages={
  id:['Aktivitas tersimpan telah disegarkan di perangkat ini.','Layar saat ini tetap dipertahankan.','Penyegaran tidak tersedia.','Pembaruan aplikasi dipasang melalui Google Play.'],
  ja:['この端末に保存されたアクティビティを再表示しました。','現在の画面は保持されています。','画面を再読み込みできませんでした。','アプリのアップデートは Google Play からインストールします。'],
  ko:['이 기기에 저장된 활동을 새로 표시했습니다.','현재 화면이 유지됩니다.','화면을 새로 표시할 수 없습니다.','앱 업데이트는 Google Play에서 설치합니다.'],
- zh:['已重新显示此设备上保存的活动。','当前页面已保留。','暂时无法刷新。','应用更新通过 Google Play 安装。']
+ zh:['已重新显示此设备上保存的活动。','当前页面已保留。','暂时无法刷新。','应用更新通过 Google Play 安装。'], "zh-TW": ["已重新顯示此裝置上儲存的活動。","目前頁面已保留。","暫時無法重新整理。","應用更新透過 Google Play 安裝。"]
 };
 let nativeRefreshStatusTimer;
 function notifyNativeRefresh(result){

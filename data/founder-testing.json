@@ -208,5 +208,20 @@
     "privacy": "निजता नीति",
     "group": "परीक्षकों के समूह से जुड़ें",
     "groupNote": "पहली बार टेस्ट कर रहे हैं? अपने Google Play वाले Gmail खाते से इस गेम के समूह से जुड़ें। फिर यहाँ लौटकर Google Play पर बंद परीक्षण में शामिल हों।"
+  },
+  "zh-TW": {
+    "title": "參加 Android 遊戲測試",
+    "intro": "請選擇想在 Android 裝置上測試的遊戲。加入後請連續 14 天保留測試資格並保持安裝，在不同日期試玩，再告訴我哪些地方好用、哪些地方出了問題。",
+    "app": "遊戲",
+    "choose": "選擇遊戲",
+    "account": "你在 Google Play 使用的 Gmail 地址",
+    "consent": "我想參加所選遊戲的封閉測試。我同意將這個 Gmail 地址提供給 MatchApp Ai 和 Google Play，用於獲取測試許可權和接收邀請郵件。",
+    "instructions": "Gmail 將開啟一封發給 support@matchapp.tv 的草稿。請確認發件賬號後點選傳送，完成申請。測試免費。",
+    "send": "在 Gmail 開啟申請郵件",
+    "playNote": "已經在這款遊戲的測試名單上？用同一賬號開啟 Google Play，加入測試，然後安裝遊戲。",
+    "optin": "前往 Google Play 加入測試",
+    "privacy": "隱私政策",
+    "group": "加入測試群組",
+    "groupNote": "首次參加？請用 Google Play 的 Gmail 賬號加入這款遊戲的群組，然後回到這裡，在 Google Play 中確認加入封閉測試。"
   }
 }

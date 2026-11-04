@@ -27,7 +27,7 @@
     id: {verified:'Ketersediaan di wilayah Anda terverifikasi',check:'Periksa ketersediaan di negara Anda',terms:'Pastikan paket dan harga di layanan tersebut.',source:'Sumber: JustWatch melalui TMDB',open:'Buka di {platform}',search:'Cari di {platform}',watch:'Tonton di {platform}',listen:'Dengarkan di {platform}',sourceAction:'Buka sumber',guide:'Temukan tempat menontonnya'},
     ja: {verified:'お住まいの地域での配信を確認済み',check:'お住まいの国での配信状況を確認',terms:'料金とプランはサービスでご確認ください。',source:'出典：TMDB経由のJustWatch',open:'{platform}で開く',search:'{platform}で検索',watch:'{platform}で視聴',listen:'{platform}で聴く',sourceAction:'情報源を開く',guide:'視聴できるサービスを探す'},
     ko: {verified:'내 지역에서의 제공 여부 확인 완료',check:'내 국가의 제공 여부를 확인하세요',terms:'서비스에서 요금제와 가격을 확인하세요.',source:'출처: TMDB를 통한 JustWatch',open:'{platform}에서 열기',search:'{platform}에서 검색',watch:'{platform}에서 시청',listen:'{platform}에서 듣기',sourceAction:'출처 열기',guide:'시청할 수 있는 곳 찾기'},
-    zh: {verified:'已核实在你所在地区提供',check:'查看你所在国家的提供情况',terms:'请在服务平台确认套餐和价格。',source:'来源：通过TMDB获取的JustWatch信息',open:'在{platform}打开',search:'在{platform}搜索',watch:'在{platform}观看',listen:'在{platform}收听',sourceAction:'打开来源',guide:'查找观看平台'}
+    zh: {verified:'已核实在你所在地区提供',check:'查看你所在国家的提供情况',terms:'请在服务平台确认套餐和价格。',source:'来源：通过TMDB获取的JustWatch信息',open:'在{platform}打开',search:'在{platform}搜索',watch:'在{platform}观看',listen:'在{platform}收听',sourceAction:'打开来源',guide:'查找观看平台'}, "zh-TW": {"verified":"已核實在你所在地區提供","check":"檢視你所在國家的提供情況","terms":"請在服務平臺確認套餐和價格。","source":"來源：透過TMDB獲取的JustWatch資訊","open":"在{platform}開啟","search":"在{platform}搜尋","watch":"在{platform}觀看","listen":"在{platform}收聽","sourceAction":"開啟來源","guide":"查詢觀看平臺"}
   });
   const providers = [
     {key:'netflix',name:'Netflix',hosts:['netflix.com'],matches:['netflix','netflix standard with ads'],color:'#E50914',ink:'#FFFFFF'},
@@ -104,7 +104,7 @@
   action.classList.add('ma-result-primary','no-depth');
 
   function language() {
-    const value = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase().split('-')[0];
+    const value = (globalThis.MatchAppHanLocale?.normalize(String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase()) || String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase().split('-')[0]);
     return Object.prototype.hasOwnProperty.call(copy,value) ? value : 'en';
   }
   function region() {

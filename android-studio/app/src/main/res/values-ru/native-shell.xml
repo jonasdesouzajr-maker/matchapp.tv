@@ -6,4 +6,6 @@
     <string name="file_chooser_title">Выбрать фото</string>
     <string name="ad_privacy_choices">Настройки конфиденциальности</string>
     <string name="kids_separate_app">Детский режим доступен в отдельном приложении MatchApp Ai KIDS.</string>
+    <string name="google_browser_unavailable">Установите или включите браузер, чтобы продолжить через Google.</string>
+    <string name="avatar_sign_in_required">Войдите в MatchApp Ai, чтобы попробовать голосовой аватар.</string>
 </resources>

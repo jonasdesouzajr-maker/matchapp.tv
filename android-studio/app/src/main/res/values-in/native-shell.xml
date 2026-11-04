@@ -6,4 +6,6 @@
     <string name="file_chooser_title">Pilih foto</string>
     <string name="ad_privacy_choices">Pilihan privasi</string>
     <string name="kids_separate_app">Mode Anak tersedia di aplikasi MatchApp Ai KIDS yang terpisah.</string>
+    <string name="google_browser_unavailable">Instal atau aktifkan browser untuk melanjutkan dengan Google.</string>
+    <string name="avatar_sign_in_required">Masuk ke MatchApp Ai untuk mencoba avatar suara.</string>
 </resources>

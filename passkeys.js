@@ -16,7 +16,7 @@
     id:{signIn:'Masuk dengan Face ID / sidik jari / PIN',title:'Masuk lewat perangkat',add:'Tambahkan passkey'},
     ja:{signIn:'Face ID / 指紋 / PINでログイン',title:'デバイスでログイン',add:'パスキーを追加'},
     ko:{signIn:'Face ID / 지문 / PIN으로 로그인',title:'기기 로그인',add:'패스키 추가'},
-    zh:{signIn:'使用面容 / 指纹 / PIN 登录',title:'设备登录',add:'添加通行密钥'}
+    zh:{signIn:'使用面容 / 指纹 / PIN 登录',title:'设备登录',add:'添加通行密钥'}, "zh-TW": {"signIn":"使用面容 / 指紋 / PIN 登入","title":"裝置登入","add":"新增通行金鑰"}
   };
   let busy = false;
   let signedIn = false;

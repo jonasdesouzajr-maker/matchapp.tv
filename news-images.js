@@ -7,10 +7,10 @@
   else if(!root.MatchAppNewsImages){root.MatchAppNewsImages=api;api.init(root);}
 })(typeof window==='object'?window:globalThis,function(){
   'use strict';
-  const LABELS={en:'Illustration','pt-BR':'Ilustração',es:'Ilustración',fr:'Illustration',de:'Illustration',it:'Illustrazione',tr:'İllüstrasyon',ru:'Иллюстрация',ar:'رسم توضيحي',hi:'चित्रण',id:'Ilustrasi',ja:'イラスト',ko:'삽화',zh:'插图'};
+  const LABELS={en:'Illustration','pt-BR':'Ilustração',es:'Ilustración',fr:'Illustration',de:'Illustration',it:'Illustrazione',tr:'İllüstrasyon',ru:'Иллюстрация',ar:'رسم توضيحي',hi:'चित्रण',id:'Ilustrasi',ja:'イラスト',ko:'삽화',zh:'插图', "zh-TW": "插圖"};
   const esc=value=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const bound=new WeakSet(),started=new WeakSet();
-  function language(value){const base=String(value||'en').toLowerCase().split(/[-_]/)[0];return base==='pt'?'pt-BR':Object.hasOwn(LABELS,base)?base:'en';}
+  function language(value){const base=(globalThis.MatchAppHanLocale?.normalize(String(value||'en').toLowerCase()) || String(value||'en').toLowerCase().split(/[-_]/)[0]);return base==='pt'?'pt-BR':Object.hasOwn(LABELS,base)?base:'en';}
   function label(value){return LABELS[language(value)];}
   function topic(item={}){
     if(item.category==='sports')return 'sports';

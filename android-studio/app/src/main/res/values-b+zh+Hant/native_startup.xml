@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_setup_title">設定語音與附近的電影院</string>
+    <string name="permission_setup_body">開啟麥克風即可與 Jonas 交談。裝置的語音辨識服務可能會將音訊傳送至其伺服器以轉成文字。我們會將文字傳送給 AI 服務供應商以產生回覆。當你尋找附近的電影院時，我們會將你的大約位置和所選作品的名稱傳送給 Google 地圖。只有在你選擇使用相應功能時，才會開始錄音或查詢位置。兩項權限均可自由選擇，你也可以繼續使用文字交談。</string>
+    <string name="permission_setup_allow">選擇權限</string>
+    <string name="permission_setup_skip">暫時略過</string>
+    <string name="intro_skip">略過</string>
+</resources>

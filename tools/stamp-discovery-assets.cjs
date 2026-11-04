@@ -6,7 +6,7 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const revisions=new Map();
 function stampDiscoveryAssets(html) {
-  return html.replace(/(<script\b[^<>]*?\ssrc\s*=\s*)(["'])(\/(?:channels\/discovery|patches\/immersive-feedback-20261014)\.js)(?:\?([^"'#]*))?\2/g,
+  return html.replace(/(<script\b[^<>]*?\ssrc\s*=\s*)(["'])(\/(?:channels\/(?:discovery|labels)|patches\/immersive-feedback-20261014)\.js)(?:\?([^"'#]*))?\2/g,
     (tag,attribute,quote,url,query='')=>{
       if(!revisions.has(url)) {
         const bytes=fs.readFileSync(path.join(root,url));
@@ -40,6 +40,58 @@ function stampControlFlow(source,html=false) {
     });
 }
 
+
+// Release 71 changed locale bytes plus the three ancestors that load them.
+// Keep path comparisons and non-locale assets untouched; stamp actual requests.
+const localeManifest=require('./locale-assets-71.json');
+const localeAssets=new Set([...localeManifest.assets,...localeManifest.loaderAncestors]);
+function localePublicFile(file) {
+  return !excluded.has(file.split('/')[0]) && !/(^|\/)(?:callback|confirm)\.html$/i.test(file);
+}
+function stampLocaleUrl(raw,file,html=false) {
+  const decoded=raw.replace(/&amp;/g,'&');
+  let url;
+  try { url=new URL(decoded,'https://matchapp.tv/'+file); } catch (_) { return raw; }
+  if(!['matchapp.tv','www.matchapp.tv'].includes(url.hostname) || !localeAssets.has(url.pathname.slice(1))) return raw;
+  const hashAt=decoded.indexOf('#'),fragment=hashAt<0?'':decoded.slice(hashAt);
+  const body=hashAt<0?decoded:decoded.slice(0,hashAt),queryAt=body.indexOf('?');
+  const pathname=queryAt<0?body:body.slice(0,queryAt);
+  const params=queryAt<0?[]:body.slice(queryAt+1).split('&').filter(part=>!/^locale71(?:=|$)/.test(part));
+  // Put the marker first: '/asset.js?v='+version keeps its variable value,
+  // and preloads and scripts have identical URLs even if one already had it.
+  const stamped=pathname+'?locale71=1'+(params.length?'&'+params.join('&'):'')+fragment;
+  return html?stamped.replace(/&/g,'&amp;'):stamped;
+}
+function stampLocaleRuntime(source,file) {
+  if(!localePublicFile(file)) return source;
+  source=source.replace(/(\b[\w$.]+\.src\s*=\s*)(["'\x60])([^"'\x60\r\n]+)\2/g,
+    (match,prefix,quote,url)=>prefix+quote+stampLocaleUrl(url,file)+quote);
+  source=source.replace(/(\b(?:import\s*\(\s*|(?:import|from)\s+))(["'\x60])([^"'\x60\r\n]+)\2/g,
+    (match,prefix,quote,url)=>prefix+quote+stampLocaleUrl(url,file)+quote);
+  // These existing loaders branch on bare paths before adding their query.
+  // Change only the final URL after all of those branches have run.
+  const marker='/* locale71-loader */';
+  if(['settings.js','final-wiring.js'].includes(file) && !source.includes(marker)) {
+    const children=[...new Set([...source.matchAll(/\bjs\((["'])(\/[^"']+\.js)\1\)/g)]
+      .map(match=>match[2]).filter(url=>localeAssets.has(url.slice(1))))];
+    if(children.length) {
+      const loader=/(function js\(src\)\{[\s\S]*?)(document\.head\.appendChild\(s\))/;
+      if(!loader.test(source)) throw new Error('Locale loader contract changed: '+file);
+      source=source.replace(loader,(match,prefix,append)=>prefix+marker+'if('+JSON.stringify(children)+'.includes(src))s.src=s.src.replace("?","?locale71=1&");'+append);
+    }
+  }
+  return source;
+}
+function stampLocaleHtml(html,file='index.html') {
+  if(!localePublicFile(file)) return html;
+  const stamped=html.replace(/<(script|link)\b[^<>]*>/gi,(tag,kind)=>{
+    if(kind.toLowerCase()==='link' && !/\brel\s*=\s*(["'])(?:preload|modulepreload)\1/i.test(tag)) return tag;
+    const attribute=kind.toLowerCase()==='script'?/(\ssrc\s*=\s*)(["'])([^"']+)\2/i:/(\shref\s*=\s*)(["'])([^"']+)\2/i;
+    return tag.replace(attribute,(match,prefix,quote,url)=>prefix+quote+stampLocaleUrl(url,file,true)+quote);
+  });
+  return stampLocaleRuntime(stamped,file);
+}
+
 // This is a distribution step. Leave source fixtures, native bundles and separate products alone.
 const excluded=new Set(['android-studio','artifacts','kids','lumina-match','node_modules','oauth','private-voice','reelforge','reports','tests','tools']);
 function stampPublicHtml(dir=root,top=true,base=dir) {
@@ -48,18 +100,19 @@ function stampPublicHtml(dir=root,top=true,base=dir) {
     if(item.name.startsWith('.') || item.name==='node_modules' || (top && excluded.has(item.name))) continue;
     const file=path.join(dir,item.name);
     if(item.isDirectory()) { changed+=stampPublicHtml(file,false,base); continue; }
-    if(item.isFile() && (brandRuntime.has(path.relative(base,file).split(path.sep).join('/')) || path.relative(base,file).split(path.sep).join('/')==='patches/jonas-adult-page.js')) {
+    const relative=path.relative(base,file).split(path.sep).join('/');
+    if(item.isFile() && (brandRuntime.has(relative) || relative==='patches/jonas-adult-page.js' || localeAssets.has(relative))) {
       const source=fs.readFileSync(file,'utf8');
-      const stamped=stampControlFlow(stampBrandReferences(source));
+      const stamped=stampLocaleRuntime(stampControlFlow(stampBrandReferences(source)),relative);
       if(stamped!==source) { fs.writeFileSync(file,stamped); changed++; }
       continue;
     }
     if(!item.isFile() || !/\.html$/i.test(item.name) || /^(?:callback|confirm)\.html$/i.test(item.name)) continue;
     const html=fs.readFileSync(file,'utf8');
-    const stamped=stampControlFlow(stampBrandReferences(stampDiscoveryAssets(html),true),true);
+    const stamped=stampLocaleHtml(stampControlFlow(stampBrandReferences(stampDiscoveryAssets(html),true),true),relative);
     if(stamped!==html) { fs.writeFileSync(file,stamped); changed++; }
   }
   return changed;
 }
-module.exports={stampDiscoveryAssets,stampBrandReferences,stampControlFlow,stampPublicHtml};
+module.exports={stampDiscoveryAssets,stampBrandReferences,stampControlFlow,stampLocaleHtml,stampLocaleRuntime,stampPublicHtml};
 if(require.main===module)console.log('Updated discovery and native feedback script URLs in '+stampPublicHtml()+' published pages.');

@@ -13,10 +13,11 @@ test('tour reveals a control covered by the actual fixed header',()=>{
  rect={top:680,bottom:724};vm.runInNewContext('reveal()',context);
  assert.equal(scrolled,2,'bottom navigation clearance remains enforced');
 });
-test('guide locales cover all 14 site languages with every key',()=>{
+test('guide locales cover all 15 site language choices with every key',()=>{
  const ctx={window:{}};vm.runInNewContext(read('guided-coach-locales-20261022.js'),ctx);
  const L=ctx.window.MatchAppCoachLocales,K=ctx.window.MatchAppCoachLocaleKeys;
- assert.deepStrictEqual(Object.keys(L).sort(),['ar','de','en','es','fr','hi','id','it','ja','ko','pt-BR','ru','tr','zh'].sort());
+ assert.deepStrictEqual(Object.keys(L).sort(),['ar','de','en','es','fr','hi','id','it','ja','ko','pt-BR','ru','tr','zh','zh-TW'].sort());
+ assert.notStrictEqual(L['zh-TW'].start,L.zh.start,'Traditional Chinese guide keeps its own localized text');
  for(const [code,set] of Object.entries(L))for(const k of K)assert.ok(set[k]&&set[k].trim(),code+' '+k);
  for(const set of Object.values(L))assert.ok(!/MatchApp iA/.test(JSON.stringify(set)),'brand stays MatchApp Ai');
 });
@@ -24,7 +25,10 @@ test('guide is presentation-only, Kids-excluded and tap-driven',()=>{
  const js=read('guided-coach-20261022.js');
  assert.match(js,/\^\\\/kids/);
  assert.match(js,/e\.isTrusted/);
- assert.ok(!js.replace(/\[onclick\*="triggerMatch\(false\)"\]/g,'').includes('triggerMatch('),'never calls matching');
+ const selector='[onclick*="triggerMatch(false)"]';
+ const prefix='[onclick*="';
+ const references=[...js.matchAll(/\btriggerMatch\s*\(/g)];
+ assert.ok(references.every(({index})=>index>=prefix.length&&js.slice(index-prefix.length,index-prefix.length+selector.length)===selector),'never calls matching; only the existing control selector may reference it');
  assert.strictEqual((js.match(/preventDefault\(\)/g)||[]).length,1,'only the How it works entry is intercepted');
  assert.ok(!/adsbygoogle|ca-pub-/.test(js+read('guided-coach-20261022.css')));
  assert.match(read('guided-coach-20261022.css'),/prefers-reduced-motion/);

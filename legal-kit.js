@@ -54,7 +54,7 @@
       id: ['Privasi dan pengaturan cookie', 'Kontrol privasi Google tidak tersedia di halaman ini. Tidak ada perubahan persetujuan yang disimpan. Anda juga dapat mengelola data tersimpan melalui browser.'],
       ja: ['プライバシーとCookieの設定', 'このページではGoogleのプライバシー設定を利用できません。同意の変更は保存されていません。保存されたデータはブラウザでも管理できます。'],
       ko: ['개인정보 및 쿠키 설정', '이 페이지에서는 Google 개인정보 설정을 사용할 수 없습니다. 동의 변경 사항이 저장되지 않았습니다. 브라우저에서도 저장된 데이터를 관리할 수 있습니다.'],
-      zh: ['隐私和 Cookie 设置', '此页面暂时无法使用 Google 隐私控制。未保存任何同意设置更改。您也可以在浏览器中管理已存储的数据。']
+      zh: ['隐私和 Cookie 设置', '此页面暂时无法使用 Google 隐私控制。未保存任何同意设置更改。您也可以在浏览器中管理已存储的数据。'], "zh-TW": ["隱私和 Cookie 設定","此頁面暫時無法使用 Google 隱私控制。未儲存任何同意設定更改。您也可以在瀏覽器中管理已儲存的資料。"]
     };
     const link = document.createElement('a');
     link.id = 'ma-privacy-choices';
@@ -70,7 +70,7 @@
       let lang = window.MATCH_LANG || document.documentElement.lang || 'en';
       try { lang = localStorage.getItem('match_lang') || lang; } catch (_) {}
       lang = String(lang).replace(/_/g, '-');
-      current = copy[lang] || copy[lang.split('-')[0] === 'pt' ? 'pt-BR' : lang.split('-')[0]] || copy.en;
+      current = copy[lang] || copy[lang.split('-')[0] === 'pt' ? 'pt-BR' : (globalThis.MatchAppHanLocale?.normalize(lang) || lang.split('-')[0])] || copy.en;
       link.textContent = current[0];
       status.textContent = current[1];
     }

@@ -50,6 +50,7 @@ internal object NativeNewsAdView {
             "id" -> R.string.native_news_sponsored_id
             "ja" -> R.string.native_news_sponsored_ja
             "ko" -> R.string.native_news_sponsored_ko
+            "zh-TW" -> R.string.native_news_sponsored_zh_tw
             "zh" -> R.string.native_news_sponsored_zh
             else -> return null
         }

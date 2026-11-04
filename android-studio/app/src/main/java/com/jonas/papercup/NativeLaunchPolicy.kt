@@ -6,6 +6,17 @@ import java.security.MessageDigest
 
 /** Startup decisions use the installed package, never a website release or click. */
 internal object NativeLaunchPolicy {
+    private val chineseTag = Regex("^zh(?:-(Hans|Hant))?(?:-(CN|SG|TW|HK|MO))?$", RegexOption.IGNORE_CASE)
+
+    /** Stored Chinese editions are distinct; an explicit script takes precedence over region. */
+    fun appLanguageTag(value: String): String {
+        val match = chineseTag.matchEntire(value.replace('_', '-')) ?: return value
+        val (script, region) = match.destructured
+        val traditional = script.equals("Hant", true) ||
+            (script.isEmpty() && region.uppercase(java.util.Locale.ROOT) in setOf("TW", "HK", "MO"))
+        return if (traditional) "zh-TW" else "zh"
+    }
+
     enum class VoicePermissionAction { START, REQUEST, DENY }
 
     fun voicePermissionAction(granted: Boolean, setupComplete: Boolean): VoicePermissionAction = when {
@@ -38,7 +49,7 @@ internal object NativeLaunchPolicy {
                 it in setOf("api", "auth", "oauth", "private", "private-voice", "logout", "signout") ||
                     it in setOf("reset-password.html", "reset.html", "login.html", "signup.html", "signin.html", "billing-check.html")
             }) return null
-        val languages = setOf("en", "pt", "pt-BR", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh")
+        val languages = setOf("en", "pt", "pt-BR", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh", "zh-TW")
         val tabs = setOf("history", "watchlater", "seenit", "audio", "notforme", "activity", "profile", "settings", "saved", "seen", "favorites")
         val query = uri.rawQuery.orEmpty().split('&').mapNotNull { part ->
             val pair = part.split('=', limit = 2)
@@ -46,7 +57,7 @@ internal object NativeLaunchPolicy {
             val key = runCatching { URLDecoder.decode(pair[0], "UTF-8") }.getOrNull() ?: return@mapNotNull null
             val entry = runCatching { URLDecoder.decode(pair[1], "UTF-8") }.getOrNull() ?: return@mapNotNull null
             when {
-                key == "lang" && entry in languages -> "$key=$entry"
+                key == "lang" -> appLanguageTag(entry).takeIf { it in languages }?.let { "$key=$it" }
                 key == "tab" && entry in tabs -> "$key=$entry"
                 key == "appBuild" && entry.matches(Regex("[0-9]{1,9}")) -> "$key=$entry"
                 key == "utm_source" && entry == "android_app" -> "$key=$entry"

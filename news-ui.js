@@ -272,14 +272,60 @@
       attribution: 'MatchApp Ai 链接至原发布方，不转载文章正文。日期表示发布方提供的发布时间，或明确标注的发现时间。',
       moreNews: '更多娱乐、国际与体育新闻', backHome: '返回 MatchApp Ai',
       sourceNote: '由 {source} 报道。打开原始报道，了解完整背景与最新进展。', kidsMode: '儿童模式', kidsOpen: '打开儿童模式'
-    }
+    },
+    "zh-TW": {
+  "brandHome": "MatchApp Ai 首頁",
+  "backLatest": "← MatchApp Ai — 最新新聞",
+  "hubTitle": "最新娛樂、國際與體育新聞",
+  "hubIntro": "分別瀏覽娛樂、國際與體育標題。日期來自發布方；檢查資訊流不會讓舊報道變成新訊息。可選擇介面語言，標題保留來源語言。",
+  "howTitle": "MatchApp Ai 新聞如何運作",
+  "howIntro": "先看分類與日期。風暴或選舉屬於國際新聞，並非娛樂獎項。專輯、選角或首映公告是發現線索，不是評論，也不能證明你可以觀看。",
+  "howSources": "選電影前請確認所在國家的觀看方式：上映公告不代表已包含在訂閱中。演唱會或專輯日期應向藝人或場地方確認。完整報道及更正請檢視署名釋出方。",
+  "exploreLead": "探索新聞背後的電影、劇集與新作：",
+  "matcher": "尋找合適的娛樂內容",
+  "askAi": "詢問 MatchApp Ai",
+  "whereWatch": "在哪裡觀看",
+  "comparisonTitle": "標題背後的兩個選擇",
+  "albumComparison": "音樂之夜可比較新專輯與新版。Official Charts的10月2日英國發行表列有Blossoms的Songs From The Wedding Cake，以及Beatles於1965年推出的Rubber Soul的Super Deluxe版。想發現新歌可選錄音室專輯；想比較熟悉作品的混音和附加曲目可選再版。新發行日期不代表所有錄音都是新作，也不能證明榜單名次。付款前請核對版本。",
+  "filmComparison": "今晚看電影時，請區分已上映作品與公告。十月指南將女巫喜劇Hocus Pocus (1993)與帶歌曲的定格動畫奇幻片The Nightmare Before Christmas (1993)作比較。Disney指南提供美國廣播和串流背景，請核對自己的國家。Netflix宣佈Narnia: The Magician’s Nephew於2027年2月12日院線上映，4月2日上線Netflix。核查時它適合先讀原著，而非今晚立即觀看。日期可能變化。",
+  "guideChoice": "若規劃整晚，十月指南按所需時間與注意力比較電影、音樂和圖書。Roma指南解釋國家、語言、租賃及訂閱方式如何影響選擇。",
+  "romaGuide": "Roma：國家與觀看方式指南",
+  "guidesLead": "更多指南與探索：",
+  "octoberGuide": "2026年10月串流、音樂與圖書指南",
+  "septemberGuide": "9月30日趨勢指南",
+  "anime": "查詢動漫",
+  "feedLabel": "附有原始來源的最新娛樂、國際與體育新聞標題",
+  "latest": "最新新聞",
+  "eventEntertainment": "娛樂",
+  "eventObituary": "緬懷",
+  "eventCasting": "演員陣容",
+  "eventMusic": "音樂",
+  "eventRelease": "新作",
+  "eventAwards": "獎項",
+  "eventSports": "體育",
+  "eventWorld": "國際",
+  "openLatest": "在最新新聞中開啟 →",
+  "sourceLink": "原始來源 ↗",
+  "verifiedSource": "已核實的來源：",
+  "published": "原始釋出日期：",
+  "discovered": "新聞發現中的首次收錄時間：",
+  "readAt": "在 {source} 閱讀原始報道 ↗",
+  "openStory": "在 MatchApp Ai 中開啟此新聞 →",
+  "attribution": "MatchApp Ai 連結至原發布方，不轉載文章正文。日期表示釋出方提供的釋出時間，或明確標註的發現時間。",
+  "moreNews": "更多娛樂、國際與體育新聞",
+  "backHome": "返回 MatchApp Ai",
+  "sourceNote": "由 {source} 報道。開啟原始報道，瞭解完整背景與最新進展。",
+  "kidsMode": "兒童模式",
+  "kidsOpen": "開啟兒童模式"
+}
   };
   const LANGUAGES = Object.freeze(Object.keys(COPY));
   const KEYS = Object.freeze(Object.keys(COPY.en));
   for (const catalog of Object.values(COPY)) Object.freeze(catalog);
   Object.freeze(COPY);
   function normalizeLanguage(value) {
-    const code = String(value || '').replace(/_/g, '-').toLowerCase().split('-')[0];
+    const tag = String(value || '').replace(/_/g, '-').toLowerCase();
+    const code = globalThis.MatchAppHanLocale?.normalize(tag) || (/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(tag) ? 'zh-TW' : tag.split('-')[0]);
     return code === 'pt' ? 'pt-BR' : Object.prototype.hasOwnProperty.call(COPY, code) ? code : '';
   }
   function language(win) {

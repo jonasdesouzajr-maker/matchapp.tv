@@ -1,0 +1,3 @@
+Katmanlı kartlar ve daha belirgin aralıklarla yenilenen Android keşif deneyimi.
+Korecenin yanında dil seçeneklerine Geleneksel Çince eklendi.
+MatchApp Ai görsel kimliği güncellendi; telefon ve tablet düzenleri iyileştirildi.

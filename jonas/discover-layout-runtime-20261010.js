@@ -14,8 +14,8 @@
    const input=document.getElementById('discover-new-input');
    if(input){
     const key=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();
-    const placeholders={'pt':'Pergunte ao Jonas…','es':'Pregunta a Jonas…','fr':'Demandez à Jonas…','de':'Frag Jonas…','it':'Chiedi a Jonas…','tr':'Jonas’a sor…','ru':'Спросите Йонаса…','ar':'اسأل جوناس…','hi':'जोनास से पूछें…','id':'Tanya Jonas…','ja':'Jonasに聞く…','ko':'Jonas에게 물어봐…','zh':'问 Jonas…'};
-    const short=placeholders[key.split('-')[0]]||'Ask Jonas anything…';
+    const placeholders={'pt':'Pergunte ao Jonas…','es':'Pregunta a Jonas…','fr':'Demandez à Jonas…','de':'Frag Jonas…','it':'Chiedi a Jonas…','tr':'Jonas’a sor…','ru':'Спросите Йонаса…','ar':'اسأل جوناس…','hi':'जोनास से पूछें…','id':'Tanya Jonas…','ja':'Jonasに聞く…','ko':'Jonas에게 물어봐…','zh':'问 Jonas…','zh-TW':'想問 Jonas 什麼？'};
+    const short=placeholders[window.MatchAppHanLocale?.normalize?.(key)||(key==='zh-tw'?'zh-TW':key.split('-')[0])]||'Ask Jonas anything…';
     if(input.placeholder!==short)input.placeholder=short;
    }
   }
@@ -29,6 +29,7 @@
   }
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',settle,{once:true});else settle();
+ document.addEventListener('matchapp:langchange',settle);
  setTimeout(settle,400);
  setTimeout(settle,1200);
 })();

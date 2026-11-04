@@ -12,7 +12,7 @@ const baseStyle=read('style.css'),summaryStyle=read('matchapp-ia.css');
 const cssStart='/* ---------- Pricing first screen ---------- */',cssEnd='/* ---------- cookies / ads ---------- */';
 assert.equal(summaryStyle.split(cssStart).length,2);assert.equal(summaryStyle.split(cssEnd).length,2);
 const pricingStyle=summaryStyle.split(cssStart)[1].split(cssEnd)[0];
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const checkoutIds=['btn-vip_monthly','btn-vip_annual','btn-ad_free','btn-business'];
 const captionSelector='header.app-header.mh-topbox .mh-head > .mh-tagline';
 const settle=()=>new Promise(resolve=>setTimeout(resolve,0));
@@ -139,7 +139,7 @@ test('actual Pricing owner translates the tablet summary and primary plans on a 
   }finally{w.close();}
 });
 
-test('all 14 real language events repaint existing summary nodes without resetting billing choice, focus, prices or handlers',async()=>{
+test('all 15 real language events repaint existing summary nodes without resetting billing choice, focus, prices or handlers',async()=>{
   const {w,controls,calls,clicks}=await page({lang:'en'});
   try{
     await settle();

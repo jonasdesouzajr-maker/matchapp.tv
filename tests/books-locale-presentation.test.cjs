@@ -9,7 +9,7 @@ const {JSDOM}=require('jsdom');
 
 const repo=path.resolve(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(repo,file),'utf8');
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const fields=vm.runInNewContext('('+read('ebooks/ebook-matcher.js').match(/const FIELDS=(\{[\s\S]*?\n\});/)[1]+')');
 const choiceKeys=Object.entries(fields).flatMap(([field,choices])=>['field.'+field+'.label',...choices.map(([value])=>'field.'+field+'.'+value)]).sort();
 const choicesByKey=Object.fromEntries(Object.entries(fields).flatMap(([field,choices])=>choices.map(([value,icon,label])=>[field+'.'+value,{icon,label}])));
@@ -66,7 +66,7 @@ function assertSourceIdentity(root){
  assert.ok([...root.querySelectorAll('[data-ebook-saved-list] a')].some(a=>a.textContent.includes('Google Books')));
 }
 
-test('authored Books bundles provide the exact81 choice keys and complete interface keys in all14 languages',()=>{
+test('authored Books bundles provide the exact81 choice keys and complete interface keys in all supported languages',()=>{
  let choices,ui;
  vm.runInNewContext(read('ebooks/locale-choices.js'),{window:{MatchAppBooksLocale:{register(bundle){choices=bundle;}}}});
  vm.runInNewContext(read('ebooks/locale-interface.js'),{window:{MatchAppBooksLocale:{register(bundle){ui=bundle;}}}});
@@ -91,7 +91,7 @@ test('Text-node and attribute bindings translate params while preserving owners,
  button.click();assert.equal(clicked,1);
 });
 
-test('all14 hub translations repaint the same74 chips without preference, source, metadata or quota changes',async t=>{
+test('all supported hub translations repaint the same74 chips without preference, source, metadata or quota changes',async t=>{
  const f=scene('/ebooks/');t.after(f.close);const {w}=f,root=await f.mount();
  const chips=[...root.querySelectorAll('[data-ebook-field]')];assert.equal(chips.length,74);
  const chosen=root.querySelector('[data-ebook-field="mood"][data-ebook-value="cozy"]');let ownerClicks=0;chosen.addEventListener('click',()=>ownerClicks++);f.reset();chosen.click();
@@ -107,7 +107,7 @@ test('all14 hub translations repaint the same74 chips without preference, source
  f.reset();chosen.click();assert.equal(ownerClicks,2,'original direct click listener remains attached');assert.equal(f.calls.writes.length,1,'delegated chip persistence still runs once');assert.deepEqual(f.storage(),baseline);
 });
 
-test('all14 Home translations retain the same native select, option, change and saved-state owners',async t=>{
+test('all supported Home translations retain the same native select, option, change and saved-state owners',async t=>{
  const f=scene('/');t.after(f.close);const {w}=f,root=await f.mount();
  const selects=[...root.querySelectorAll('[data-ebook-select]')];assert.equal(selects.length,7);assert.equal(selects.reduce((sum,select)=>sum+select.options.length,0),74);
  const chosen=selects.find(select=>select.dataset.ebookSelect==='mood');let changes=0;chosen.addEventListener('change',()=>changes++);f.reset();chosen.value='cozy';chosen.dispatchEvent(new w.Event('change',{bubbles:true}));assert.equal(changes,1);assert.equal(f.calls.writes.length,1);assert.equal(f.calls.writes[0].key,'match_ebook_criteria_v1');
@@ -119,7 +119,7 @@ test('all14 Home translations retain the same native select, option, change and 
  f.reset();chosen.dispatchEvent(new w.Event('change',{bubbles:true}));assert.equal(changes,2);assert.equal(f.calls.writes.length,1);assert.deepEqual(f.storage(),baseline);
 });
 
-test('all14 result and unverified audio presentations repaint their original source and action owners without matching again',async t=>{
+test('all supported result and unverified audio presentations repaint their original source and action owners without matching again',async t=>{
  const f=scene('/ebooks/',{presentation:true});t.after(f.close);const {w}=f,root=await f.mount(),api=w.MatchAppBooksLocale;
  const p={mood:'hopeful',genre:'fantasy',pace:'balanced',length:'medium',era:'classic',access:'free',format:'ebook'};
  const baseline=f.storage(),book=JSON.stringify(sourceBook);

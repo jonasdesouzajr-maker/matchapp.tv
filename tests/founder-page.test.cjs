@@ -10,8 +10,8 @@ test('founder biography is crawlable, self-canonical, linked, and sitemap durabl
  assert.match(read('index.html'),/href="\/founder\/" data-founder-link/);assert.match(read('about.html'),/href="\/founder\/" data-founder-link/);assert.match(read('sitemap.xml'),/<loc>https:\/\/matchapp.tv\/founder\/<\/loc>/);assert.ok(read('tools/update-sitemap.js').includes('${SITE}/founder/'));
  for(const a of d.querySelectorAll('a[href^="/"]')){const url=new URL(a.href,'https://matchapp.tv');let f=url.pathname==='/'?'index.html':url.pathname.slice(1);if(f.endsWith('/'))f+='index.html';assert.ok(fs.existsSync(path.join(root,f)),f);}
 });
-test('all 14 authored locales update biography, portrait, mailto, metadata and schema without changing destinations',()=>{
- assert.equal(Object.keys(copy).length,14);
+test('all 15 authored locales update biography, portrait, mailto, metadata and schema without changing destinations',()=>{
+ assert.equal(Object.keys(copy).length,15);
  for(const [lang,t]of Object.entries(copy)){
  assert.deepEqual(Object.keys(t).sort(),Object.keys(copy.en).sort(),lang);
  const dom=new JSDOM(read('founder/index.html'),{url:'https://matchapp.tv/founder/',runScripts:'outside-only'}),w=dom.window,d=w.document;

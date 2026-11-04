@@ -10,7 +10,7 @@ const root = path.join(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const uiSource = read('news-ui.js');
 const ui = require('../news-ui.js');
-const languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
+const languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh', 'zh-TW'];
 const FIXTURE_NOW = Date.parse('2026-10-20T12:00:00.000Z');
 class FixtureDate extends Date {
   constructor(...args) { super(...(args.length ? args : [FIXTURE_NOW])); }
@@ -22,7 +22,7 @@ const expectedTitle = {
   de: 'Aktuelle Nachrichten aus Unterhaltung, Welt und Sport', it: 'Ultime notizie di spettacolo, mondo e sport',
   tr: 'Son eğlence, dünya ve spor haberleri', ru: 'Последние новости развлечений, мира и спорта', ar: 'آخر أخبار الترفيه والعالم والرياضة',
   hi: 'मनोरंजन, दुनिया और खेल की ताज़ा खबरें', id: 'Berita hiburan, dunia, dan olahraga terbaru', ja: 'エンタメ・世界・スポーツの最新ニュース',
-  ko: '최신 연예·세계·스포츠 뉴스', zh: '最新娱乐、国际与体育新闻'
+  ko: '최신 연예·세계·스포츠 뉴스', zh: '最新娱乐、国际与体育新闻', 'zh-TW':'最新娛樂、國際與體育新聞'
 };
 function templates() {
   const file = path.join(root, 'tools/refresh-news-rss.js'), source = read('tools/refresh-news-rss.js');
@@ -90,7 +90,7 @@ function assertOriginals(doc, original) {
   for (const [node, datetime] of original.datetimes) assert.equal(node.getAttribute('datetime'), datetime);
 }
 
-test('News has an authored complete 43-key catalog in all 14 supported languages', () => {
+test('News has an authored complete 43-key catalog in all 15 supported languages', () => {
   assert.deepEqual(ui.languages, languages); assert.equal(ui.keys.length, 43);
   assert.ok(Object.isFrozen(ui) && Object.isFrozen(ui.keys) && Object.isFrozen(ui.languages));
   for (const lang of languages) {
@@ -102,7 +102,7 @@ test('News has an authored complete 43-key catalog in all 14 supported languages
     }
     assert.equal(ui.text(lang, 'missing-key'), '', 'missing keys do not borrow another language');
   }
-  for (const [alias, expected] of [['pt', 'pt-BR'], ['pt_PT', 'pt-BR'], ['fr-CA', 'fr'], ['es-MX', 'es'], ['zh-Hant', 'zh']]) assert.equal(ui.normalizeLanguage(alias), expected);
+  for (const [alias, expected] of [['pt', 'pt-BR'], ['pt_PT', 'pt-BR'], ['fr-CA', 'fr'], ['es-MX', 'es'], ['zh-Hant', 'zh-TW'], ['zh-HK','zh-TW'], ['zh-Hans-TW','zh'], ['ko-KR','ko']]) assert.equal(ui.normalizeLanguage(alias), expected);
 });
 
 for (const lang of languages) test('News hub honors the saved ' + lang + ' language without changing source identity', () => {
@@ -121,7 +121,7 @@ for (const lang of languages) test('News hub honors the saved ' + lang + ' langu
   } finally { w.close(); }
 });
 
-test('the real language owner repaints News in place across all 14 languages and keeps focus, offers and source state', () => {
+test('the real language owner repaints News in place across all 15 languages and keeps focus, offers and source state', () => {
   const data = story(), { w, writes, transports } = windowFor(templates().hub([data], data.discovered_at), 'pt-BR');
   try {
     w.eval(read('i18n.js')); boot(w);
@@ -225,7 +225,11 @@ test('all committed generated News documents carry the durable header and labels
     const html = read(file);
     assert.match(html, /<body class="news-ui-page">/, file);
     assert.equal((html.match(/class="ma-brand-home-link"/g) || []).length, 1, file);
-    assert.equal((html.match(/src="\/news-ui\.js\?v=20261019-newsui1"/g) || []).length, 1, file);
+    const ui = [...html.matchAll(/src="(\/news-ui\.js\?[^"]+)"/g)];
+    assert.equal(ui.length, 1, file);
+    const params = new URL(ui[0][1].replace(/&amp;/g,'&'),'https://matchapp.tv').searchParams;
+    assert.equal(params.get('v'),'20261019-newsui1',file);
+    if (file === 'news/index.html') assert.equal(params.get('locale71'),'1',file);
     assert.match(html, /src="\/assets\/brand\/matchapp-ai-mark\.svg\?v=20261022-vector1"/); assert.doesNotMatch(html, /class="app-title-main"/);
     if (file !== 'news/index.html') {
       assert.match(html, /<h1 data-news-source-title lang="[^"]+" dir="auto" translate="no">/); assert.match(html, /meta name="robots" content="noindex,follow"/);

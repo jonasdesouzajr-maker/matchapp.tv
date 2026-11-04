@@ -12,5 +12,6 @@
   "id":{"podcast":["Ceritanya Developer Podcast","Riza Fahmi · Bahasa Indonesia","https://podcasts.apple.com/id/podcast/ceritanya-developer-podcast/id1364448110"]},
   "ja":{"podcast":["Rebuild 434: Agent Leadership (Matz)","Rebuild · 日本語","https://rebuild.fm/434/"]},
   "ko":{"video":["WEB1 - HTML & Internet","생활코딩 · 한국어","https://www.opentutorials.org/course/3084"]},
-  "zh":{"podcast":["2026 Agent 编程新趋势","捕蛇者说 · 中文","https://pythonhunter.org/episodes/ep59"]}
+  "zh":{"podcast":["2026 Agent 编程新趋势","捕蛇者说 · 中文","https://pythonhunter.org/episodes/ep59"]},
+  "zh-TW":{"book":["Pro Git 繁體中文版","Scott Chacon、Ben Straub · 繁體中文","https://git-scm.com/book/zh-tw/v2"]}
 }

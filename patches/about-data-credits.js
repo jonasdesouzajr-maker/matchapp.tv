@@ -6,7 +6,7 @@
 
     const english = credit.textContent;
     const tvmaze = document.querySelector('[data-tvmaze-label]');
-    const tvmazeLabels = {en:'TV data from',pt:'Dados de TV de',es:'Datos de televisión de',fr:'Données TV fournies par',de:'TV-Daten von',it:'Dati TV forniti da',tr:'TV verilerinin kaynağı:',ru:'Источник данных о телепередачах:',ar:'بيانات التلفزيون من',hi:'टीवी डेटा का स्रोत:',id:'Data TV dari',ja:'テレビ番組データの提供元：',ko:'TV 데이터 제공:',zh:'电视节目数据来源：'};
+    const tvmazeLabels = {en:'TV data from',pt:'Dados de TV de',es:'Datos de televisión de',fr:'Données TV fournies par',de:'TV-Daten von',it:'Dati TV forniti da',tr:'TV verilerinin kaynağı:',ru:'Источник данных о телепередачах:',ar:'بيانات التلفزيون من',hi:'टीवी डेटा का स्रोत:',id:'Data TV dari',ja:'テレビ番組データの提供元：',ko:'TV 데이터 제공:',zh:'电视节目数据来源：', "zh-TW": "電視節目資料來源："};
     const labels = {
         pt: 'Este produto usa a API do TMDB. O TMDB não endossa nem certifica o produto. O JustWatch fornece os dados regionais de streaming exibidos por meio do TMDB.',
         es: 'Este producto utiliza la API de TMDB. TMDB no lo avala ni lo certifica. JustWatch proporciona los datos de disponibilidad regional a través de TMDB.',
@@ -20,7 +20,7 @@
         id: 'Produk ini menggunakan API TMDB. TMDB tidak mendukung atau mengesahkan produk ini. JustWatch menyediakan informasi layanan streaming per wilayah melalui TMDB.',
         ja: 'この製品はTMDBのAPIを使用しています。TMDBによる推奨や認定は受けていません。地域ごとの配信情報はJustWatchが提供し、TMDBを通じて掲載しています。',
         ko: '이 제품은 TMDB API를 사용합니다. TMDB는 이 제품을 보증하거나 인증하지 않습니다. 지역별 스트리밍 정보는 JustWatch가 제공하며 TMDB를 통해 표시됩니다.',
-        zh: '本产品使用 TMDB API，未获得 TMDB 的认可或认证。各地区的流媒体播放信息由 JustWatch 提供，并通过 TMDB 展示。'
+        zh: '本产品使用 TMDB API，未获得 TMDB 的认可或认证。各地区的流媒体播放信息由 JustWatch 提供，并通过 TMDB 展示。', "zh-TW": "本產品使用 TMDB API，未獲得 TMDB 的認可或認證。各地區的串流播放資訊由 JustWatch 提供，並透過 TMDB 展示。"
     };
 
     function update() {

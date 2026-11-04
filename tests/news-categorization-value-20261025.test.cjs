@@ -67,12 +67,32 @@ test('hub gives decision guidance and directs to useful guides without repeated 
 });
 test('actual regional parser preserves source instants and labels missing, invalid and future dates as discovery only',async()=>{
  const source=fs.readFileSync(path.join(root,'supabase/functions/regional-news-rss/index.ts'),'utf8');
- const code=stripTypeScriptTypes(source.replace(/^import .*;\r?\n/,''),{mode:'strip'});
+ const code=stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm,''),{mode:'strip'});
  let handler;const rows=[['dated','Sun, 25 Oct 2026 10:00:00 GMT'],['missing',''],['invalid','not a date'],['future','Sun, 25 Oct 2099 10:00:00 GMT']];
  const xml='<rss>'+rows.map(([id,date])=>`<item><title>General world report ${id} &amp;lt;safe&amp;gt; - BBC</title><link>https://news.google.com/articles/${id}</link><pubDate>${date}</pubDate><source url="https://www.bbc.com">BBC</source></item>`).join('')+'</rss>';
- const ctx={URL,Response,crypto:require('node:crypto').webcrypto,TextEncoder,AbortSignal,setTimeout,clearTimeout,Intl,Date,console,Deno:{serve:fn=>{handler=fn;}},fetch:async()=>({ok:true,text:async()=>xml})};
+ const urls=[];
+ const {adultLanguageTag}=await import('../supabase/functions/_shared/adult-language.mjs');
+ const ctx={adultLanguageTag,URL,Response,crypto:require('node:crypto').webcrypto,TextEncoder,AbortSignal,setTimeout,clearTimeout,Intl,Date,console,Deno:{serve:fn=>{handler=fn;}},fetch:async url=>{urls.push(new URL(url));return {ok:true,text:async()=>xml};}};
  vm.runInNewContext(code,ctx);
  const r=await handler(new Request('https://test.invalid/?country=BR&language=pt'));const payload=await r.json();
+ for(const [lang,country,locale,edition] of [['zh-Hant','TW','zh-TW','zh-Hant'],['zh-HK','HK','zh-TW','zh-Hant'],['zh-Hans','CN','zh','zh-Hans'],['ko','KR','ko','ko']]){
+  urls.length=0;
+  const response=await handler(new Request('https://test.invalid/?country='+country+'&language='+lang));
+  const feed=await response.json();
+  assert.equal(feed.language,locale);
+  assert.equal(feed.items[0].country,country);
+  assert.equal(urls.length,2);
+  for(const url of urls){
+   assert.equal(url.searchParams.get('hl'),locale==='zh'?'zh-CN':locale);
+   assert.equal(url.searchParams.get('ceid'),country+':'+edition);
+   assert.equal(url.searchParams.get('gl'),country);
+  }
+  if(locale==='zh-TW'){
+   assert.equal(feed.items[0].event_type,'本地新聞');
+   assert.equal(feed.items[0].seo.locale,'zh-Hant-'+country);
+   assert.equal(feed.items[0].description,'請前往新聞來源閱讀完整報導。');
+  }
+ }
  assert.equal(payload.items.length,8);assert.equal(payload.language,'pt');
  for(const row of payload.items){assert.ok(row.title.includes('&lt;safe&gt;'),'XML entities decode once, without turning nested entities into markup');assert.equal(row.category,'general');assert.equal(row.language,'pt');assert.ok(['BR','GLOBAL'].includes(row.country));assert.ok(row.discovered_at);if(row.title.includes('dated')){assert.equal(row.published_at,'2026-10-25T10:00:00.000Z');assert.equal(row.timestamp_kind,'published');}else{assert.equal(row.published_at,null);assert.equal(row.timestamp_kind,'discovered');}}
 });

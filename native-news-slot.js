@@ -17,7 +17,7 @@
     fr: 'Poursuivez votre lecture ci-dessous.', de: 'Lies unten weiter.', it: 'Continua a leggere qui sotto.',
     tr: 'Aşağıda okumaya devam edin.', ru: 'Продолжайте чтение ниже.', ar: 'تابع القراءة أدناه.',
     hi: 'आगे पढ़ने के लिए नीचे जाएँ।', id: 'Lanjutkan membaca di bawah.', ja: '続きは下にあります。',
-    ko: '아래에서 계속 읽어보세요.', zh: '请在下方继续阅读。'
+    ko: '아래에서 계속 읽어보세요.', zh: '请在下方继续阅读。', "zh-TW": "請在下方繼續閱讀。"
   });
   function scope(w) {
     try {
@@ -34,7 +34,8 @@
     let saved = '';
     try { saved = w.localStorage.getItem('match_lang') || ''; } catch (_) {}
     for (const value of [w.MATCH_LANG, saved, w.document.documentElement.lang]) {
-      const lang = String(value || '').toLowerCase().split('-')[0];
+      if(value === 'zh-TW') return 'zh-TW';
+      const lang = (globalThis.MatchAppHanLocale?.normalize(String(value || '').toLowerCase()) || String(value || '').toLowerCase().split('-')[0]);
       if (Object.prototype.hasOwnProperty.call(FALLBACK, lang)) return lang;
     }
     return 'en';

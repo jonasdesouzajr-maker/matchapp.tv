@@ -6,6 +6,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const {JSDOM} = require('jsdom');
 const read = file => fs.readFileSync(path.join(__dirname,'..',file),'utf8');
+const hanLocale = read('i18n.js').replace(/\r\n/g,'\n').match(/\(function installHanLocale\(\)\{[\s\S]*?\n\}\)\(\);/)[0];
 const moduleSource = read('result-experience.js');
 const html = read('index.html');
 const resultMarkup = html.slice(html.indexOf('<article id="result-box"'),html.indexOf('</article>',html.indexOf('<article id="result-box"')) + 10);
@@ -25,6 +26,7 @@ function harness({language='en',country='BR',href='https://www.netflix.com/title
   const original = {action,handler,href:action.href,poster:w.document.getElementById('res-poster-img'),posterMarkup:w.document.getElementById('res-poster-img').outerHTML,ads:[...w.document.querySelectorAll('.ad-banner-container')].map(node=>node.outerHTML)};
   w.globalMatchTitle = 'Verified fixture title';
   w.currentMatchIdentity = {title:w.globalMatchTitle,tmdbId:123,year:2024,kind:'movie'};
+  w.eval(hanLocale);
   w.eval(moduleSource);
   const api = w.MatchAppResultExperience;
   const selected = {title:w.globalMatchTitle,year:2024,_tmdbId:123,_tmdbKind:'movie',platform:'Netflix',watchUrl:href};
@@ -165,9 +167,9 @@ test('every existing watch/audio platform receives an honest branded route with 
   }
 });
 
-test('all 14 languages have authored trust/action labels and both trust states reserve natural text height',async () => {
+test('all 15 languages have authored trust/action labels and both trust states reserve natural text height',async () => {
   const h = harness();
-  const langs = ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+  const langs = ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
   assert.deepEqual(Object.keys(h.api.labels).sort(),langs.sort());
   for(const language of langs) {
     h.w.MATCH_LANG = language === 'pt' ? 'pt-BR' : language;

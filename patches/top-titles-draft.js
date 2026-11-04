@@ -3,7 +3,7 @@
 (function(){
  'use strict';
  if(window.MatchTopTitlesDraft)return;
- var controllers=new WeakMap(),labels={en:['Previous titles','Next titles'],pt:['Títulos anteriores','Próximos títulos'],es:['Títulos anteriores','Títulos siguientes'],fr:['Titres précédents','Titres suivants'],de:['Vorherige Titel','Nächste Titel'],it:['Titoli precedenti','Titoli successivi'],tr:['Önceki yapımlar','Sonraki yapımlar'],ru:['Предыдущие произведения','Следующие произведения'],ar:['الأعمال السابقة','الأعمال التالية'],hi:['पिछले शीर्षक','अगले शीर्षक'],id:['Judul sebelumnya','Judul berikutnya'],ja:['前の作品','次の作品'],ko:['이전 작품','다음 작품'],zh:['上一组作品','下一组作品']};
+ var controllers=new WeakMap(),labels={en:['Previous titles','Next titles'],pt:['Títulos anteriores','Próximos títulos'],es:['Títulos anteriores','Títulos siguientes'],fr:['Titres précédents','Titres suivants'],de:['Vorherige Titel','Nächste Titel'],it:['Titoli precedenti','Titoli successivi'],tr:['Önceki yapımlar','Sonraki yapımlar'],ru:['Предыдущие произведения','Следующие произведения'],ar:['الأعمال السابقة','الأعمال التالية'],hi:['पिछले शीर्षक','अगले शीर्षक'],id:['Judul sebelumnya','Judul berikutnya'],ja:['前の作品','次の作品'],ko:['이전 작품','다음 작품'],zh:['上一组作品','下一组作品'], "zh-TW": ["上一組作品","下一組作品"]};
  function mount(vp){
   if(!vp)return null;
   if(controllers.has(vp)){controllers.get(vp).refreshChrome();return controllers.get(vp);}
@@ -24,7 +24,7 @@
   vp.classList.add('ma-top-titles-native');track.classList.add('is-marquee-flowing');
   function now(){return performance.now();}
   function reduced(){return document.documentElement.classList.contains('reduce-motion')||reducedQuery?.matches;}
-  function paint(){var lang=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0],copy=labels[lang]||labels.en;nav.querySelectorAll('button').forEach(function(button,i){button.setAttribute('aria-label',copy[i]);button.title=copy[i];});vp.style.setProperty('--top-title-direction',document.documentElement.dir==='rtl'?'rtl':'ltr');}
+  function paint(){var lang=(globalThis.MatchAppHanLocale?.normalize(String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase()) || String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0]),copy=labels[lang]||labels.en;nav.querySelectorAll('button').forEach(function(button,i){button.setAttribute('aria-label',copy[i]);button.title=copy[i];});vp.style.setProperty('--top-title-direction',document.documentElement.dir==='rtl'?'rtl':'ltr');}
   function stop(){cancelAnimationFrame(frame);frame=0;clearTimeout(idle);idle=0;last=0;vp.classList.remove('is-autoglide');}
   function focusHeld(){return vp.contains(document.activeElement)&&document.activeElement.matches(':focus-visible');}
   function modalOpen(){var b=document.body;return !!b&&(b.classList.contains('ma-jonas-modal-open')||b.classList.contains('ma-jonas-chat-open'));}

@@ -9,9 +9,10 @@ const base=process.env.MATCH_PROFILE_TEST_BASE||repo;
 const read=name=>fs.readFileSync(fs.existsSync(path.join(repo,name))?path.join(repo,name):path.join(base,name),'utf8');
 const source=read('taste-profile.js').replace(/\r\n/g,'\n');
 const helper=read('profile-details-i18n.js');
+const hanLocale=read('i18n.js').replace(/\r\n/g,'\n').match(/\(function installHanLocale\(\)\{[\s\S]*?\n\}\)\(\);/)[0];
 const copy=JSON.parse(source.match(/  const COPY = ([\s\S]*?);\n  function copy\(/)[1]);
 const questions=Function('return ('+source.match(/  const Q = (\[[\s\S]*?\n  \]);/)[1]+')')();
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const expectedContract=[
   {
     "id": "afterglow",
@@ -430,6 +431,7 @@ function fixture({lang='pt-BR',state={answers:{},done:false},withHelper=true}={}
   auth:{getUser:()=>{calls.auth++;return userReady;}},
   from:table=>({upsert:async row=>{calls.upserts.push({table,row:plain(row)});return {error:null};}})
  };
+ w.eval(hanLocale);
  if(withHelper)w.eval(helper);
  w.eval(source);
  const select=(language,event='matchapp:langchange')=>{
@@ -447,7 +449,7 @@ function setAnswers(w,answers){
  }
 }
 
-test('taste copy covers 69 UI keys in all 14 languages while preserving the canonical question contract',()=>{
+test('taste copy covers 69 UI keys in all 15 languages while preserving the canonical question contract',()=>{
  assert.deepEqual(Object.keys(copy),languages);
  const keys=Object.keys(copy.en);assert.equal(keys.length,69);
  const contract=questions.map(({id,map,multi,max,choices})=>({id,map,...(multi?{multi,max}:{}),choices:choices.map(({label,...choice})=>choice)}));

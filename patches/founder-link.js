@@ -49,7 +49,7 @@
   "zh": [
     "认识创始人",
     "帮助我们改进"
-  ],
+  ], "zh-TW": ["認識創始人","幫助我們改進"],
   "ar": [
     "تعرّف على المؤسس",
     "ساعدنا على التحسّن"
@@ -62,7 +62,7 @@
   function paint() {
     let saved = '';
     try { saved = localStorage.getItem('match_lang') || ''; } catch (_) {}
-    const lang = String(window.MATCH_LANG || saved || document.documentElement.lang || 'en').toLowerCase().split(/[-_]/)[0];
+    const lang = (globalThis.MatchAppHanLocale?.normalize(String(window.MATCH_LANG || saved || document.documentElement.lang || 'en').toLowerCase()) || String(window.MATCH_LANG || saved || document.documentElement.lang || 'en').toLowerCase().split(/[-_]/)[0]);
     const pair = Object.hasOwn(labels, lang) ? labels[lang] : labels.en;
     document.querySelectorAll('[data-founder-link]').forEach(link => { link.textContent = pair[0]; });
     document.querySelectorAll('[data-improve-link]').forEach(link => { link.textContent = pair[1]; });

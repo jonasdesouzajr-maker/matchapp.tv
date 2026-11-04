@@ -88,11 +88,11 @@
   fr:['Nouveau chat','Historique'],de:['Neuer Chat','Verlauf'],it:['Nuova chat','Cronologia'],
   tr:['Yeni sohbet','Geçmiş'],ru:['Новый чат','История'],ar:['محادثة جديدة','السجل'],
   hi:['नई चैट','इतिहास'],id:['Chat baru','Riwayat'],ja:['新しいチャット','履歴'],
-  ko:['새 채팅','기록'],zh:['新对话','历史']
+  ko:['새 채팅','기록'],zh:['新对话','历史'],'zh-TW':['新對話','聊天記錄']
  };
  function localizeHead(){
   let l=window.MATCH_LANG||document.documentElement.lang||navigator.language||'en';
-  if(/^pt/i.test(l))l='pt-BR';else l=l.split('-')[0];
+  if(/^pt/i.test(l))l='pt-BR';else l=window.MatchAppHanLocale?.normalize?.(l)||(l==='zh-TW'?l:l.split('-')[0]);
   const s=strings[l]||strings.en;
   const newChat=document.querySelector('.jonas-top-new'),history=document.querySelector('.jonas-top-history');
   if(newChat){newChat.setAttribute('aria-label',s[0]);newChat.querySelector('[data-jonas-head="new"]')?.replaceChildren(document.createTextNode(s[0]));}

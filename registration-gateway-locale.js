@@ -114,7 +114,7 @@
             "创建我的免费账户 →",
             "← 返回首页",
             "无需注册，也可以继续查找推荐内容和提问。"
-        ]
+        ], "zh-TW": ["建立免費的 MatchApp Ai 帳戶","隨時隨地使用 MatchApp Ai","建立免費帳戶，即可在不同裝置上檢視偏好設定、收藏的作品、歷史記錄、Match Together 活動和提醒。無需信用卡。","建立我的免費帳戶 →","← 返回首頁","無需註冊，也可以繼續查詢推薦內容和提問。"]
     };
     for (const [language, values] of Object.entries(copy)) {
         fields.forEach((field, index) => { I18N[language]['registrationGateway.' + field] = values[index]; });

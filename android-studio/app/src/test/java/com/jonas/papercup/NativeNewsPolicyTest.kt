@@ -108,7 +108,10 @@ class NativeNewsPolicyTest {
         assertFalse(NativeNewsPolicy.validRequestId("<script>alert(1)</script>"))
         assertTrue(NativeNewsPolicy.validAccount("guest"))
         assertFalse(NativeNewsPolicy.validAccount("unknown"))
-        assertEquals(14, NativeNewsPolicy.languages.size)
+        assertEquals(15, NativeNewsPolicy.languages.size)
         assertTrue("pt" in NativeNewsPolicy.languages)
+        assertTrue("zh" in NativeNewsPolicy.languages)
+        assertTrue("zh-TW" in NativeNewsPolicy.languages)
+        assertTrue("ko" in NativeNewsPolicy.languages)
     }
 }

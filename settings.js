@@ -36,12 +36,12 @@ const MATCHAPP_INSTALL_SETTINGS_COPY={
  id:{title:'Dapatkan aplikasi MatchApp Ai',android:'Di Android, gunakan aplikasi resmi Google Play alih-alih memasang dari browser.',play:'Unduh sekarang di Google Play',ios:'Tambahkan MatchApp Ai ke Layar Utama untuk akses sekali ketuk.',home:'Tambahkan ke Layar Utama',mac:'Buka MatchApp Ai seperti aplikasi di Mac.',dock:'Tambahkan ke Dock / App'},
  ja:{title:'MatchApp Ai アプリを入手',android:'Android ではブラウザ版のインストールではなく、公式 Google Play アプリをご利用ください。',play:'Google Play からダウンロード',ios:'MatchApp Ai をホーム画面に追加してワンタップで開けます。',home:'ホーム画面に追加',mac:'Mac で MatchApp Ai をアプリのように開けます。',dock:'Dock / アプリに追加'},
  ko:{title:'MatchApp Ai 앱 받기',android:'Android에서는 브라우저 설치 대신 공식 Google Play 앱을 사용하세요.',play:'Google Play에서 지금 다운로드',ios:'MatchApp Ai를 홈 화면에 추가해 한 번에 여세요.',home:'홈 화면에 추가',mac:'Mac에서 MatchApp Ai를 앱처럼 여세요.',dock:'Dock / 앱에 추가'},
- zh:{title:'获取 MatchApp Ai 应用',android:'Android 用户请使用 Google Play 官方应用，不要从浏览器安装。',play:'立即从 Google Play 下载',ios:'将 MatchApp Ai 添加到主屏幕，即可一键打开。',home:'添加到主屏幕',mac:'在 Mac 上像应用一样打开 MatchApp Ai。',dock:'添加到 Dock / 应用'}
+ zh:{title:'获取 MatchApp Ai 应用',android:'Android 用户请使用 Google Play 官方应用，不要从浏览器安装。',play:'立即从 Google Play 下载',ios:'将 MatchApp Ai 添加到主屏幕，即可一键打开。',home:'添加到主屏幕',mac:'在 Mac 上像应用一样打开 MatchApp Ai。',dock:'添加到 Dock / 应用'}, "zh-TW": {"title":"獲取 MatchApp Ai 應用","android":"Android 使用者請使用 Google Play 官方應用，不要從瀏覽器安裝。","play":"立即從 Google Play 下載","ios":"將 MatchApp Ai 新增到主螢幕，即可一鍵開啟。","home":"新增到主螢幕","mac":"在 Mac 上像應用一樣開啟 MatchApp Ai。","dock":"新增到 Dock / 應用"}
 };
 function matchAppSettingsInstallLocale(){
  const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').replace(/_/g,'-');
  if(/^pt/i.test(raw))return 'pt-BR';
- const base=raw.toLowerCase().split('-')[0];
+ const base=(globalThis.MatchAppHanLocale?.normalize(raw.toLowerCase()) || raw.toLowerCase().split('-')[0]);
  return MATCHAPP_INSTALL_SETTINGS_COPY[base]?base:'en';
 }
 function matchAppSettingsInstallPlatform(){

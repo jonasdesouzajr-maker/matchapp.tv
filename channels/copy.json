@@ -351,7 +351,7 @@
     "trailTitle": "다음에 볼 작품, 읽을 책, 들을 음악"
   },
   "zh": {
-    "name": "中文",
+    "name": "简体中文",
     "tech": "科技工作室",
     "trail": "从银幕到唱片和书页",
     "techIntro": "看神经网络如何辨认手写数字，创建自己的第一个 Git 分支，或听听软件发布出岔子之后的故事。",
@@ -376,5 +376,32 @@
     "pressNote": "把 Raspberry Pi 的硬件项目与 IEEE Spectrum 的工程报道放在一起读。哪一项设计限制改变了结果？",
     "techTitle": "用视频、播客和书籍学习科技",
     "trailTitle": "下一部看什么、读什么、听什么"
+  },
+  "zh-TW": {
+    "name": "繁體中文",
+    "tech": "科技工作室",
+    "trail": "從銀幕到音樂與書籍",
+    "techIntro": "用 Scratch 看懂迴圈、在 Git 建立第一個分支，或跟著手寫數字走進神經網路。科技工作室收錄教學影片、Podcast、書籍和有聲書。",
+    "trailIntro": "從里約的音樂俱樂部走進韓國的新創公司。替一部影集配上一張唱片，或暫時關掉螢幕，翻開一本小說。",
+    "video": "科技影片",
+    "podcast": "科技 Podcast",
+    "book": "程式設計書籍",
+    "audiobook": "科技有聲書",
+    "screen": "電影與影集",
+    "album": "電子音樂與巴薩諾瓦",
+    "fiction": "小說",
+    "language": "語言",
+    "note": "各發布方會列出支援的語言、字幕和地區版本。此處的 Apple 連結指向美國版。",
+    "videoNote": "先用 Scratch 看看迴圈怎樣執行，再看神經網路怎麼辨認數字。如果改變筆畫，結果會怎樣？",
+    "podcastNote": "先聽巴西Podcast聊 Git，再聽 Practical AI 的訪談，比較模型在實際工作中的用法。",
+    "bookNote": "在 Git 分支裡跟蹤一次修改。然後開啟 JavaScript 書籍，在瀏覽器裡試做練習。",
+    "audiobookNote": "可以選 The Phoenix Project 中虛構的軟體釋出危機，也可以聽基德爾走進硬體團隊的現場報道。",
+    "screenNote": "比較 Spotify 創業故事中的不同視角，再看看韓劇中的創業者如何推介專案。想換換心情，還有街頭美食與海上冒險。",
+    "albumNote": "看完 The Playlist 後聽聽 Computer World 短促的節拍。哪些聲音模仿機器，哪些讓你想到工作中的人？",
+    "fictionNote": "讀完里約俱樂部的故事，不妨選一本關於重新開始的小說。蒙哥馬利的女主人公挑戰家人，馮·阿尼姆則讓四位陌生人在義大利相遇。",
+    "press": "科技期刊",
+    "pressNote": "把 Raspberry Pi 的硬體專案與 IEEE Spectrum 的工程報道放在一起讀。哪一項設計限制改變了結果？",
+    "techTitle": "透過影片、Podcast 與書籍學程式設計",
+    "trailTitle": "看完一部影集，接著聽什麼、讀什麼？"
   }
 }

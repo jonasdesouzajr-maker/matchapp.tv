@@ -110,15 +110,15 @@
   "zh": [
     "从 Google Play 下载 MatchApp Ai",
     "在 Android 手机或平板电脑上使用 MatchApp Ai。打开 Google Play 官方页面下载应用。"
-  ]
+  ], "zh-TW": ["從 Google Play 下載 MatchApp Ai","在 Android 手機或平板電腦上使用 MatchApp Ai。開啟 Google Play 官方頁面下載應用。"]
 };
   function desktopPlayCopy(){
     const raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase().replace(/_/g,'-');
-    const lang=raw.startsWith('pt')?'pt-BR':raw.split('-')[0];
+    const lang=raw.startsWith('pt')?'pt-BR':(globalThis.MatchAppHanLocale?.normalize(raw) || raw.split('-')[0]);
     const text=DESKTOP_PLAY_COPY[lang]||DESKTOP_PLAY_COPY.en;
     return {title:text[0],body:text[1]};
   }
-  const CLOSE={en:'Close', 'pt-BR':'Fechar',es:'Cerrar',fr:'Fermer',de:'Schließen',it:'Chiudi',tr:'Kapat',ru:'Закрыть',ar:'إغلاق',hi:'बंद करें',id:'Tutup',ja:'閉じる',ko:'닫기',zh:'关闭'};
+  const CLOSE={en:'Close', 'pt-BR':'Fechar',es:'Cerrar',fr:'Fermer',de:'Schließen',it:'Chiudi',tr:'Kapat',ru:'Закрыть',ar:'إغلاق',hi:'बंद करें',id:'Tutup',ja:'閉じる',ko:'닫기',zh:'关闭', "zh-TW": "關閉"};
   const SESSION='matchapp_play_bubble_session_v1';
   let bubble=null,bubbleTimer=null,bubbleStarted=false;
   let session={count:0,next:0,stopped:false};
@@ -135,7 +135,7 @@
   function bubbleCopy(){
     if(!bubble)return;
     const raw=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();
-    const lang=raw.startsWith('pt')?'pt-BR':raw.split('-')[0],c=desktopPlayCopy();
+    const lang=raw.startsWith('pt')?'pt-BR':(globalThis.MatchAppHanLocale?.normalize(raw) || raw.split('-')[0]),c=desktopPlayCopy();
     bubble.lang=lang;bubble.dir=lang==='ar'?'rtl':'ltr';
     bubble.querySelector('strong').textContent=c.title;
     bubble.querySelector('p').textContent=c.body;

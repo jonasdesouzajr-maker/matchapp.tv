@@ -9,10 +9,12 @@ function fixture(lang='pt-BR',original='en'){
  w.matchTranslationUnavailable=()=> 'Tradução indisponível';
  w.eval(source);return {dom,w,p:w.document.getElementById('res-synopsis')};
 }
-test('all 14 supported languages have authored, explicit untranslated-source labels',()=>{
+test('all 15 supported languages have authored, explicit untranslated-source labels',()=>{
  const f=fixture(),labels=f.w.MatchAppSynopsisPresentation.labels;
- for(const code of ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'])assert.ok(labels[code].length>=(['zh','ja','ko'].includes(code)?4:10),code);
- assert.equal(Object.keys(labels).length,14);f.w.close();
+ const languages=['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
+ assert.deepEqual(Object.keys(labels).sort(),[...languages].sort());
+ for(const code of languages)assert.ok(labels[code].length>=(['zh','zh-TW','ja','ko'].includes(code)?4:10),code);
+ assert.equal(Object.keys(labels).length,15);f.w.close();
 });
 test('localized guide placeholder is replaced with the verified original synopsis, explicitly attributed',async()=>{
  const f=fixture();f.p.textContent='Guia para assistir · ▶ Ver onde assistir';

@@ -6,7 +6,18 @@ const path=require('node:path');
 const crypto=require('node:crypto');
 const newsCommerce=require('../news-monetization.js');
 const newsImages=require('../news-images.js');
+const {URLSearchParams}=require('node:url');
 const {cinemaAssets}=require('./finalize-brand.js');
+// Keep the News hub and newly generated articles on the localized runtime when feeds refresh.
+function newsAssets(html, path) {
+  return cinemaAssets(html, path).replace(/(src=")(\/(?:news-images|news-ui|news-monetization|native-news-slot|patches\/reference-system)\.js)(?:\?([^"]*))?"/g,
+    (_, src, script, query = '') => {
+      const params = new URLSearchParams(query.replace(/&amp;/g, '&'));
+      params.set('locale71', '1');
+      return src + script + '?' + params.toString().replace(/&/g, '&amp;') + '"';
+    });
+}
+
 
 const ROOT=path.join(__dirname,'..');
 const NEWS=path.join(ROOT,'news');
@@ -429,7 +440,7 @@ const LEGACY_BRAND_RE=new RegExp('MatchApp (?:'+LEGACY_BRAND_SUFFIXES.join('|')+
 function canonicalBrand(s){return String(s??'').replace(LEGACY_BRAND_RE,'MatchApp Ai');}
 
 const NEWS_COMMERCE_ASSETS='<link rel="stylesheet" href="/news-monetization.css?v=20261017-2">\n<script defer src="/news-monetization.js?v=20261017-2"></script>\n';
-const NEWS_NATIVE_ASSETS='<link rel="stylesheet" href="/native-news-slot.css?v=20261101-placements3">\n<script defer src="/native-news-slot.js?v=20261101-placements3"></script>\n';
+const NEWS_NATIVE_ASSETS='<link rel="stylesheet" href="/native-news-slot.css?v=20261101-placements3">\n<script defer src="/native-news-slot.js?v=20261101-placements3&amp;locale71=1"></script>\n';
 function commerceAttributes(item){
   if(!newsCommerce.eligibleArticle(item))return '';
   return ' data-news-commerce-card data-news-category="'+esc(item.category)+'" data-news-title="'+esc(item.title)+'" data-news-event="'+esc(item.event_type)+'" data-news-description="'+esc(item.description)+'" data-news-source-url="'+esc(item.url)+'"';
@@ -491,7 +502,7 @@ function page(i){
     ]
   };
 
-  return cinemaAssets(`<!doctype html>
+  return newsAssets(`<!doctype html>
 <html lang="${i.language==='pt'?'pt-BR':(i.language||'en')}">
 <head>
 <!-- Google Tag Manager -->
@@ -620,7 +631,7 @@ ${commerceSlot(i,'en')}
   const previewDescription = 'Source-linked entertainment, world and sports headlines, clearly dated and connected to practical discovery guides.';
   const previewImage = `${SITE}/og-image.jpg?v=20260928-brand-preview1`;
 
-  return cinemaAssets(`<!doctype html>
+  return newsAssets(`<!doctype html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->

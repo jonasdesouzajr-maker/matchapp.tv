@@ -4,7 +4,7 @@
   const copy=window.MATCHAPP_PARTNERSHIP_COPY;
   const supported=Object.keys(copy), select=document.getElementById('mp-language');
   let current='en';
-  function lang(){let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}return [saved,window.MATCH_LANG,new URLSearchParams(location.search).get('lang'),document.documentElement.lang,'en'].map(x=>String(x||'').toLowerCase().split('-')[0]).find(x=>supported.includes(x));}
+  function lang(){let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}return [saved,window.MATCH_LANG,new URLSearchParams(location.search).get('lang'),document.documentElement.lang,'en'].map(x=>(globalThis.MatchAppHanLocale?.normalize(x) || (/^zh(?:[-_]hant\b|(?:[-_](?:tw|hk|mo))\b)/i.test(x) ? 'zh-TW' : String(x||'').toLowerCase().split(/[-_]/)[0]))).find(x=>supported.includes(x));}
   function translate(){current=lang();const t=copy[current];document.documentElement.lang=current==='pt'?'pt-BR':current;document.documentElement.dir=current==='ar'?'rtl':'ltr';select.value=current;
     // These nodes have authored translations owned by this page. The generic
     // control localizer respects translate=no and must not repaint them using

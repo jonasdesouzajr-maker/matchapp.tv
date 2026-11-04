@@ -4,7 +4,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const {JSDOM}=require('jsdom');
 const read=file=>fs.readFileSync(file,'utf8');
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 async function boot(selected='en'){
  const dom=new JSDOM(read('cooking/index.html'),{url:'https://matchapp.tv/cooking/',runScripts:'outside-only',pretendToBeVisual:true});
  const w=dom.window;w.localStorage.setItem('match_lang',selected);w.MATCH_LANG='ja';
@@ -16,7 +16,7 @@ async function boot(selected='en'){
  if(w.document.readyState==='loading')await new Promise(resolve=>w.document.addEventListener('DOMContentLoaded',resolve,{once:true}));
  return{dom,w,original,baseline,finds:()=>finds,fetches:()=>fetches};
 }
-test('all14 authored cooking dictionaries have complete keys and interpolation parity',async()=>{
+test('all supported authored cooking dictionaries have complete keys and interpolation parity',async()=>{
  const x=await boot();try{
   const L=x.w.MatchCookingI18n,keys=Object.keys(L.copy.en);
   assert.equal(keys.length,55);assert.deepEqual(Array.from(L.languages),languages);
@@ -24,7 +24,7 @@ test('all14 authored cooking dictionaries have complete keys and interpolation p
    for(const key of keys){assert.equal(typeof dict[key],'string');assert(dict[key].trim(),lang+'/'+key);assert.deepEqual((dict[key].match(/\{\w+\}/g)||[]).sort(),(L.copy.en[key].match(/\{\w+\}/g)||[]).sort(),lang+'/'+key);}
    if(lang!=='en')assert.notEqual(dict.heading,L.copy.en.heading,lang+' cannot silently use English');
   }
-  assert.equal(x.w.document.querySelectorAll('#lang-switcher').length,1);assert.equal(x.w.document.querySelectorAll('#lang-switcher option').length,14);
+  assert.equal(x.w.document.querySelectorAll('#lang-switcher').length,1);assert.equal(x.w.document.querySelectorAll('#lang-switcher option').length,languages.length);
   for(const node of x.w.document.querySelectorAll('[data-cooking-i18n]'))assert(keys.includes(node.dataset.cookingI18n));
  }finally{x.dom.window.close();}
 });
@@ -58,7 +58,7 @@ test('storage preference wins over stale globals and repeated script boot never 
   assert.equal(x.fetches(),0);assert.equal(d.querySelectorAll('iframe').length,0);
  }finally{x.dom.window.close();}
 });
-test('all126 actual localized Ask AI links keep cooking intent while real watch requests stay excluded',async()=>{
+test('all localized Ask AI links keep cooking intent while real watch requests stay excluded',async()=>{
  const x=await boot();try{
   const {w}=x,d=w.document;let checked=0;
   for(const kind of ['recipes','channels']){
@@ -68,7 +68,7 @@ test('all126 actual localized Ask AI links keep cooking intent while real watch 
     for(const link of links){const prompt=new URL(link.href).searchParams.get('q');assert(x.original.isCooking(prompt),lang+'/'+kind+': '+prompt);checked++;}
    }
   }
-  assert.equal(checked,126);assert.equal(x.finds(),2);assert.equal(x.fetches(),0);
+  assert.equal(checked,9*languages.length);assert.equal(x.finds(),2);assert.equal(x.fetches(),0);
   for(const query of ['watch cooking shows','watch a movie about cooking','stream a cooking series','a documentary about Maangchi','assistir filmes de culinária','ver películas de cocina','Recommend a funny movie','unknown subject xyz','https://example.test/recipes/watch?v=abc'])assert.equal(x.original.isCooking(query),false,query);
   assert.equal(JSON.stringify({channels:x.original.channels,recipes:x.original.recipes}),x.baseline);
  }finally{x.dom.window.close();}

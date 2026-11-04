@@ -31,7 +31,7 @@ const SHARE_DIALOG_COPY = {"en":["📢 Share MatchApp Ai","Share this recommenda
     "id":["📢 Bagikan MatchApp Ai","Bagikan rekomendasi ini kepada teman melalui poster resmi, aplikasi sosial, atau pesan langsung.","📲 Bagikan sekarang","⬇️ Simpan gambar","📋 Salin keterangan","Atau kirimkan kepada seseorang","Pesan dan tautan sudah siap — pilih penerimanya.","Kontak tersimpan","Cara mengirim","Penerima","Kirim →","Simpan untuk lain kali","Nama (opsional)","Nama kontak","Tutup"],
     "ja":["📢 MatchApp Aiを共有","公式ポスターやSNS、ダイレクトメッセージで、このおすすめを友達に紹介しましょう。","📲 今すぐ共有","⬇️ 画像を保存","📋 キャプションをコピー","または誰かに送る","メッセージとリンクは準備済みです。送信先を選んでください。","保存済みの連絡先","送信方法","送信先","送信 →","次回のために保存","名前（任意）","連絡先の名前","閉じる"],
     "ko":["📢 MatchApp Ai 공유하기","공식 포스터, 소셜 앱 또는 다이렉트 메시지로 이 추천을 친구들과 공유하세요.","📲 지금 공유하기","⬇️ 이미지 저장","📋 문구 복사","또는 누군가에게 보내기","메시지와 링크가 준비되었어요. 받는 사람을 선택하세요.","저장된 연락처","보내는 방법","받는 사람","보내기 →","다음에 사용할 수 있도록 저장","이름 (선택 사항)","연락처 이름","닫기"],
-    "zh":["📢 分享MatchApp Ai","通过官方海报、社交应用或私信，与朋友分享这个推荐。","📲 立即分享","⬇️ 保存图片","📋 复制文案","或发送给某个人","消息和链接已准备好，请选择收件人。","已保存的联系人","发送方式","收件人","发送 →","保存以便下次使用","姓名（选填）","联系人姓名","关闭"]};
+    "zh":["📢 分享MatchApp Ai","通过官方海报、社交应用或私信，与朋友分享这个推荐。","📲 立即分享","⬇️ 保存图片","📋 复制文案","或发送给某个人","消息和链接已准备好，请选择收件人。","已保存的联系人","发送方式","收件人","发送 →","保存以便下次使用","姓名（选填）","联系人姓名","关闭"], "zh-TW": ["📢 分享MatchApp Ai","透過官方海報、社交應用或私信，與朋友分享這個推薦。","📲 立即分享","⬇️ 儲存圖片","📋 複製文案","或傳送給某個人","訊息和連結已準備好，請選擇收件人。","已儲存的聯絡人","傳送方式","收件人","傳送 →","儲存以便下次使用","姓名（選填）","聯絡人姓名","關閉"]};
 const shareDialogOriginals = new Map();
 
 function shareDialogLocale() {
@@ -39,7 +39,7 @@ function shareDialogLocale() {
     try { selected = window.matchResultLanguage?.() || ''; } catch (_) {}
     try { saved = localStorage.getItem('match_lang') || ''; } catch (_) {}
     for (const value of [selected, window.MATCH_LANG, saved, document.documentElement.lang]) {
-        const lang = String(value || '').toLowerCase().split(/[-_]/)[0];
+        const lang = (globalThis.MatchAppHanLocale?.normalize(String(value || '').toLowerCase()) || String(value || '').toLowerCase().split(/[-_]/)[0]);
         const key = lang === 'pt' ? 'pt-BR' : lang;
         if (SHARE_DIALOG_COPY[key]) return key;
     }

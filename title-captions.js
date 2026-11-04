@@ -27,7 +27,7 @@
    let record=approved;
    if(!record&&window.tmdbLookup)record=await window.tmdbLookup(title,{...hints,lang:'en-US'});
    if(!verified(record)||!Number.isSafeInteger(record.tmdbId)||!['movie','tv'].includes(record.kind))return title;
-   const locales={en:'en-US','pt-BR':'pt-BR',es:'es-ES',fr:'fr-FR',de:'de-DE',it:'it-IT',tr:'tr-TR',ru:'ru-RU',ar:'ar-SA',hi:'hi-IN',id:'id-ID',ja:'ja-JP',ko:'ko-KR',zh:'zh-CN'};
+   const locales={en:'en-US','pt-BR':'pt-BR',es:'es-ES',fr:'fr-FR',de:'de-DE',it:'it-IT',tr:'tr-TR',ru:'ru-RU',ar:'ar-SA',hi:'hi-IN',id:'id-ID',ja:'ja-JP',ko:'ko-KR',zh:'zh-CN', "zh-TW": "zh-TW"};
    try{const body={tmdb_id:record.tmdbId,kind:record.kind,lang:locales[language]||'en-US'}, {data,error}=await (window.requestTMDB?window.requestTMDB(body):window.supabaseClient.functions.invoke('tmdb-proxy',{body})),r=data?.results?.[0];
     if(!error&&r?.tmdbId===record.tmdbId&&r.kind===record.kind&&r.originalTitle===record.originalTitle&&r.year===record.year&&r.adult!==true&&typeof r.title==='string'&&r.title.trim())return r.title.trim();
    }catch(_){}return title;

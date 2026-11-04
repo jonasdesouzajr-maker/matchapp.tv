@@ -13,11 +13,11 @@ function promptFunction(source){const context=vm.createContext({DISCOVER_MAX:12}
 const prompt=promptFunction(current),baseline=promptFunction(current.replace(newLine,oldLine));
 const cookingBranch='This is a COOKING request.',visualBranch='This question asks for something to watch.';
 
-test('all126 real Recipe and channel Ask AI URLs select cooking while preserving the original question and source',t=>{
+test('all real Recipe and channel Ask AI URLs select cooking while preserving the original question and source',t=>{
  const dom=new JSDOM(read('cooking/index.html'),{url:'https://matchapp.tv/cooking/',runScripts:'outside-only'});t.after(()=>dom.window.close());const w=dom.window;
  for(const file of ['cooking/catalog.js','cooking/i18n.js','cooking/cooking.js'])w.eval(read(file));
  const langs=[...w.MatchCookingI18n.languages],ids=new Set();let checked=0,youtubeWatch=0;
- assert.equal(langs.length,14);
+ assert.equal(langs.length,15);assert(langs.includes('zh-TW'));
  for(const lang of langs){
   w.localStorage.setItem('match_lang',lang);w.MATCH_LANG='en';w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang}}));
   assert.equal(w.MatchCookingI18n.language(),lang);
@@ -36,7 +36,7 @@ test('all126 real Recipe and channel Ask AI URLs select cooking while preserving
    }
   }
  }
- assert.equal(ids.size,9);assert.equal(checked,126);assert.equal(youtubeWatch,28,'both reviewed YouTube /watch recipes exercised in every language');
+ assert.equal(ids.size,9);assert.equal(checked,langs.length*9);assert.equal(youtubeWatch,langs.length*2,'both reviewed YouTube /watch recipes exercised in every language');
 });
 
 test('actual movie, series, documentary and cooking-show wording retains the visual branch with source URLs',()=>{

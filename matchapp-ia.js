@@ -25,7 +25,49 @@ const COPY={
  id:{title:'Mau nonton apa malam ini?',sub:'Pilih suasana. Dapatkan satu judul dan tempat menontonnya.',match:'🎯 Temukan Match Sempurna Saya',ask:'✨ Tanya MatchApp Ai',mood:'Suasana',format:'Format',platform:'Platform',fine:'Atur lagi',find:'Cari tontonan',together:'Nonton bersama? Match Together',send:'Kirim',quota:'Aksi termasuk yang tersisa hari ini',askph:'Tanya mau nonton apa, di mana tersedia, atau tentang judul apa pun…',comfort:'Nyaman',funny:'Lucu',intense:'Intens',romance:'Romantis',smart:'Cerdas',scary:'Seram',short:'Yang singkat',surprise:'Kejutkan saya',any:'Apa saja',movie:'Film',series:'Serial',anime:'Anime',novela:'Novela',kids:'Anak',podcast:'Podcast',free:'Gratis',latest:'Judul terbaru',discover:'Tanya MatchApp Ai',pricingTitle:'Nonton dengan batas lebih sedikit.',pricingSub:'Satu aksi harian adalah Match atau Ask. Top-up tetap terpisah.',freePlan:'Gratis',account:'Akun',vip:'VIP',daily:'aksi AI termasuk per hari',monthly:'Bulanan',annual:'Tahunan',start:'Mulai',join:'Buat akun gratis'},
  ja:{title:'今夜は何を見る？',sub:'気分を選ぶだけ。1作品と視聴先を提案します。',match:'🎯 ぴったりのMatchを見つける',ask:'✨ MatchApp Aiに聞く',mood:'気分',format:'形式',platform:'サービス',fine:'細かく指定',find:'見るものを決める',together:'誰かと見る？ Match Together',send:'送信',quota:'今日の残りアクション',askph:'何を見るか、どこで見られるか、作品について質問…',comfort:'ほっこり',funny:'笑える',intense:'刺激的',romance:'ロマンス',smart:'知的',scary:'怖い',short:'短め',surprise:'おまかせ',any:'指定なし',movie:'映画',series:'シリーズ',anime:'アニメ',novela:'ノベラ',kids:'キッズ',podcast:'ポッドキャスト',free:'無料',latest:'最新タイトル',discover:'MatchApp Aiに質問',pricingTitle:'制限を減らして楽しむ。',pricingSub:'1日の1アクションはMatchまたはAsk。追加分は別です。',freePlan:'無料',account:'アカウント',vip:'VIP',daily:'1日のAIアクション',monthly:'月額',annual:'年額',start:'始める',join:'無料アカウント'},
  ko:{title:'오늘 밤 뭐 볼까요?',sub:'기분을 고르면 한 작품과 시청처를 알려드려요.',match:'🎯 완벽한 Match 찾기',ask:'✨ MatchApp Ai에게 묻기',mood:'기분',format:'형식',platform:'플랫폼',fine:'세부 설정',find:'볼거리 찾기',together:'함께 보나요? Match Together',send:'보내기',quota:'오늘 남은 포함 작업',askph:'무엇을 볼지, 어디서 보는지, 작품에 대해 물어보세요…',comfort:'편안한',funny:'웃긴',intense:'강렬한',romance:'로맨스',smart:'똑똑한',scary:'무서운',short:'짧은 것',surprise:'추천해줘',any:'상관없음',movie:'영화',series:'시리즈',anime:'애니',novela:'노벨라',kids:'키즈',podcast:'팟캐스트',free:'무료',latest:'최신 타이틀',discover:'MatchApp Ai에 질문',pricingTitle:'더 적은 제한으로 감상하세요.',pricingSub:'하루 1회 작업은 Match 또는 Ask입니다. 추가 구매는 별도입니다.',freePlan:'무료',account:'계정',vip:'VIP',daily:'일일 포함 AI 작업',monthly:'월간',annual:'연간',start:'시작',join:'무료 계정'},
- zh:{title:'今晚看什么？',sub:'选一个心情。得到一个片名和观看平台。',match:'🎯 找到我的完美匹配',ask:'✨ 问 MatchApp Ai',mood:'心情',format:'类型',platform:'平台',fine:'细调',find:'找点好看的',together:'和别人一起看？Match Together',send:'发送',quota:'今天剩余包含次数',askph:'问看什么、在哪里看，或任何片名相关问题…',comfort:'治愈',funny:'搞笑',intense:'刺激',romance:'浪漫',smart:'烧脑',scary:'恐怖',short:'短一点',surprise:'给我惊喜',any:'不限',movie:'电影',series:'剧集',anime:'动漫',novela:'肥皂剧',kids:'儿童',podcast:'播客',free:'免费',latest:'最新内容',discover:'问 MatchApp Ai',pricingTitle:'少一点限制，多一点观看。',pricingSub:'每日一次操作是 Match 或 Ask。加购额度分别计算。',freePlan:'免费',account:'账户',vip:'VIP',daily:'每日包含 AI 操作',monthly:'月付',annual:'年付',start:'开始',join:'免费注册'}
+ zh:{title:'今晚看什么？',sub:'选一个心情。得到一个片名和观看平台。',match:'🎯 找到我的完美匹配',ask:'✨ 问 MatchApp Ai',mood:'心情',format:'类型',platform:'平台',fine:'细调',find:'找点好看的',together:'和别人一起看？Match Together',send:'发送',quota:'今天剩余包含次数',askph:'问看什么、在哪里看，或任何片名相关问题…',comfort:'治愈',funny:'搞笑',intense:'刺激',romance:'浪漫',smart:'烧脑',scary:'恐怖',short:'短一点',surprise:'给我惊喜',any:'不限',movie:'电影',series:'剧集',anime:'动漫',novela:'肥皂剧',kids:'儿童',podcast:'播客',free:'免费',latest:'最新内容',discover:'问 MatchApp Ai',pricingTitle:'少一点限制，多一点观看。',pricingSub:'每日一次操作是 Match 或 Ask。加购额度分别计算。',freePlan:'免费',account:'账户',vip:'VIP',daily:'每日包含 AI 操作',monthly:'月付',annual:'年付',start:'开始',join:'免费注册'}, "zh-TW": {
+  "title": "今晚看什麼？",
+  "sub": "選一個心情。得到一個片名和觀看平臺。",
+  "match": "🎯 找到我的完美匹配",
+  "ask": "✨ 問 MatchApp Ai",
+  "mood": "心情",
+  "format": "型別",
+  "platform": "平臺",
+  "fine": "細調",
+  "find": "找點好看的",
+  "together": "和別人一起看？Match Together",
+  "send": "傳送",
+  "quota": "今天剩餘包含次數",
+  "askph": "問看什麼、在哪裡看，或任何片名相關問題…",
+  "comfort": "治癒",
+  "funny": "搞笑",
+  "intense": "刺激",
+  "romance": "浪漫",
+  "smart": "燒腦",
+  "scary": "恐怖",
+  "short": "短一點",
+  "surprise": "給我驚喜",
+  "any": "不限",
+  "movie": "電影",
+  "series": "劇集",
+  "anime": "動漫",
+  "novela": "肥皂劇",
+  "kids": "兒童",
+  "podcast": "播客",
+  "free": "免費",
+  "latest": "最新內容",
+  "discover": "問 MatchApp Ai",
+  "pricingTitle": "少一點限制，多一點觀看。",
+  "pricingSub": "每日一次操作是 Match 或 Ask。加購額度分別計算。",
+  "freePlan": "免費",
+  "account": "帳戶",
+  "vip": "VIP",
+  "daily": "每日包含 AI 操作",
+  "monthly": "月付",
+  "annual": "年付",
+  "start": "開始",
+  "join": "免費註冊"
+}
 };
 const TAB_HINTS={
  en:{match:'Match by mood, format & platform',ask:'Describe what you want in your own words'},
@@ -41,13 +83,13 @@ const TAB_HINTS={
  id:{match:'Cocokkan suasana, format & platform',ask:'Jelaskan dengan kata-katamu apa yang ingin ditonton'},
  ja:{match:'気分・形式・サービスでマッチ',ask:'見たいものを自由な言葉で伝える'},
  ko:{match:'기분·형식·플랫폼으로 매치',ask:'보고 싶은 것을 자유롭게 설명하세요'},
- zh:{match:'按心情、类型和平台匹配',ask:'用自己的话描述你想看什么'}
+ zh:{match:'按心情、类型和平台匹配',ask:'用自己的话描述你想看什么'}, "zh-TW": {"match":"按心情、型別和平臺匹配","ask":"用自己的話描述你想看什麼"}
 };
 function langKey(){
  const raw=String(window.MATCH_LANG||localStorage.getItem('match_lang')||document.documentElement.lang||'en').toLowerCase();
  if(raw.startsWith('pt'))return'pt-BR';if(raw.startsWith('es'))return'es';if(raw.startsWith('fr'))return'fr';if(raw.startsWith('de'))return'de';
  if(raw.startsWith('it'))return'it';if(raw.startsWith('tr'))return'tr';if(raw.startsWith('ru'))return'ru';if(raw.startsWith('ar'))return'ar';
- if(raw.startsWith('hi'))return'hi';if(raw.startsWith('id'))return'id';if(raw.startsWith('ja'))return'ja';if(raw.startsWith('ko'))return'ko';if(raw.startsWith('zh'))return'zh';return'en';
+ if(raw.startsWith('hi'))return'hi';if(raw.startsWith('id'))return'id';if(raw.startsWith('ja'))return'ja';if(raw.startsWith('ko'))return'ko';if (raw.startsWith('zh')) return globalThis.MatchAppHanLocale?.normalize(raw) || 'zh';return'en';
 }
 function c(){return COPY[langKey()]||COPY.en}
 function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n}
@@ -184,7 +226,7 @@ const PRICING_HEADER_COPY={
  id:['Cara kerja','Mode anak','Pengaturan','Negara','Bahasa','Suara','Tema','Mode santai','Check-in harian','Paket','Pasang aplikasi','Pengaturan','Yang baru'],
  ja:['使い方','キッズモード','設定','国','言語','音声','テーマ','リラックスモード','毎日のチェックイン','料金','アプリを入手','設定','新着情報'],
  ko:['사용 방법','키즈 모드','설정','국가','언어','소리','테마','휴식 모드','매일 체크인','요금제','앱 설치','설정','새 소식'],
- zh:['使用指南','儿童模式','设置','国家','语言','声音','主题','休闲模式','每日签到','套餐','安装应用','设置','最新消息']
+ zh:['使用指南','儿童模式','设置','国家','语言','声音','主题','休闲模式','每日签到','套餐','安装应用','设置','最新消息'], "zh-TW": ["使用指南","兒童模式","設定","國家","語言","聲音","主題","休閒模式","每日簽到","套餐","安裝應用","設定","最新訊息"]
 };
 const PRICING_MENU_TOASTS={
  "en":["Language options are available from Settings.","Sound on","Sound off","Sign in to use Lazy Mode."],
@@ -200,7 +242,7 @@ const PRICING_MENU_TOASTS={
  "id":["Pilihan bahasa tersedia di Pengaturan.","Suara aktif","Suara nonaktif","Masuk untuk menggunakan Mode santai."],
  "ja":["言語のオプションは設定で選べます。","サウンドON","サウンドOFF","リラックスモードを使うにはログインしてください。"],
  "ko":["언어 옵션은 설정에서 선택할 수 있어요.","소리 켜짐","소리 꺼짐","휴식 모드를 사용하려면 로그인하세요."],
- "zh":["语言选项位于设置中。","声音已开启","声音已关闭","请登录以使用休闲模式。"]
+ "zh":["语言选项位于设置中。","声音已开启","声音已关闭","请登录以使用休闲模式。"], "zh-TW": ["語言選項位於設定中。","聲音已開啟","聲音已關閉","請登入以使用休閒模式。"]
 };
 function menuToast(kind){
  const original={language:'Language options are available from Settings.',soundOn:'Sound on',soundOff:'Sound off',theme:'Theme',lazy:'Sign in to use Lazy Mode.'};
@@ -782,7 +824,32 @@ const PRICING_COPY={
     "business": "商业版",
     "businessDesc": "每天包含 50 次 AI 操作。",
     "viewOptions": "查看选项"
-  }
+  },
+  "zh-TW": {
+  "pageLabel": "MatchApp Ai 價格",
+  "noAccount": "無需帳戶",
+  "dailyAction": "每次 Match 或向 AI 提問都會使用一次每日操作額度",
+  "countryGuide": "根據您所在國家提供觀看指引",
+  "firstMatch": "首次 Match 無需登入",
+  "freeProfile": "免費個人資料",
+  "saveHistory": "儲存作品和歷史記錄",
+  "privateTaste": "私密偏好檔案",
+  "togetherFeatures": "Match Together 和帳戶功能",
+  "fewerLimits": "更少限制",
+  "includedActions": "所含操作額度可用於 Match 或向 AI 提問",
+  "vipAdFree": "VIP 有效期間免廣告",
+  "billingOptions": "按月或按年付費",
+  "note": "一次每日操作額度可用於一次 Match 或一次 AI 提問。額外 Match 不能購買 AI 提問，額外 AI 積分也不能購買 Match。",
+  "adFree": "免廣告",
+  "adFreeDesc": "去除廣告，不改變每日額度。",
+  "extraMatches": "額外 Match",
+  "extraMatchesDesc": "一次性充值 Match。",
+  "extraAsk": "額外 AI 積分",
+  "extraAskDesc": "為 AI 提問進行一次性充值。",
+  "business": "商業版",
+  "businessDesc": "每天包含 50 次 AI 操作。",
+  "viewOptions": "檢視選項"
+}
 };
 function pricingText(key){
  const labels=PRICING_COPY[langKey()];
@@ -870,7 +937,7 @@ function applyBrandLocale(){
   const home=brand.querySelector('.ma-brand-home-link');
   if(home)home.setAttribute('aria-label',name+' home');
   const tagline=brand.querySelector('.ma-brand-tagline');
-  if(tagline){const lines={en:'Your new Entertainment Ai','pt-BR':'Sua nova IA de entretenimento',es:'Tu nueva Ai de entretenimiento',fr:'Votre nouvelle Ai du divertissement',de:'Deine neue Entertainment-Ai',it:'La tua nuova Ai di intrattenimento',tr:'Yeni eğlence Ai’niz',ru:'Ваш новый ИИ для развлечений',ar:'ذكاؤك الجديد للترفيه',hi:'आपका नया मनोरंजन Ai',id:'Ai hiburan baru Anda',ja:'あなたの新しいエンタメAi',ko:'새로운 엔터테인먼트 Ai',zh:'你的全新娱乐 Ai'};tagline.textContent=lines[langKey()]||lines.en;}
+  if(tagline){const lines={en:'Your new Entertainment Ai','pt-BR':'Sua nova IA de entretenimento',es:'Tu nueva Ai de entretenimiento',fr:'Votre nouvelle Ai du divertissement',de:'Deine neue Entertainment-Ai',it:'La tua nuova Ai di intrattenimento',tr:'Yeni eğlence Ai’niz',ru:'Ваш новый ИИ для развлечений',ar:'ذكاؤك الجديد للترفيه',hi:'आपका नया मनोरंजन Ai',id:'Ai hiburan baru Anda',ja:'あなたの新しいエンタメAi',ko:'새로운 엔터테인먼트 Ai',zh:'你的全新娱乐 Ai', "zh-TW": "你的全新娛樂 Ai"};tagline.textContent=lines[langKey()]||lines.en;}
   const word=brand.querySelector('.ma-wordmark');if(word)word.setAttribute('translate','no');
  });
 }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cinema_maps_unavailable">請安裝或啟用 Google 地圖或瀏覽器，然後再試一次。</string>
+</resources>

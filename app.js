@@ -54,7 +54,7 @@ let isVIP = localStorage.getItem('match_isVIP') === 'true';
 const LANG_NAMES_FOR_PROMPT = {
     'en': 'English', 'pt-BR': 'Brazilian Portuguese', 'es': 'Spanish', 'fr': 'French',
     'de': 'German', 'it': 'Italian', 'tr': 'Turkish', 'ru': 'Russian', 'ar': 'Arabic',
-    'hi': 'Hindi', 'id': 'Indonesian', 'ja': 'Japanese', 'ko': 'Korean', 'zh': 'Chinese'
+    'hi': 'Hindi', 'id': 'Indonesian', 'ja': 'Japanese', 'ko': 'Korean', 'zh': 'Chinese', "zh-TW": "Traditional Chinese (Taiwan)"
 };
 
 // ----------------------------------------------------
@@ -3041,7 +3041,7 @@ async function fetchGeminiData(promptText, proposalMode = false) {
     if(Date.now()<Number(window.__matchappAIDownUntil||0))
         throw new Error('AI provider is temporarily quota-limited');
     if (!supabaseClient) throw new Error("Database not connected");
-    const { data, error } = await supabaseClient.functions.invoke('gemini-proxy', { body: { prompt: promptText, adultMatch: true, ...(proposalMode ? { mode: 'match_proposals' } : {}) } });
+    const { data, error } = await supabaseClient.functions.invoke('gemini-proxy', { body: { prompt: promptText, ...(window.MATCH_LANG === 'zh-TW' ? {lang: 'zh-TW'} : {}), adultMatch: true, ...(proposalMode ? { mode: 'match_proposals' } : {}) } });
     if (error || !data || !data.candidates) {
         if(Number(error?.context?.status||data?.status||0)===429)
             window.__matchappAIDownUntil=Date.now()+45000;

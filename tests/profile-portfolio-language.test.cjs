@@ -7,10 +7,11 @@ const {JSDOM,VirtualConsole}=require('jsdom');
 
 const repo=path.resolve(__dirname,'..');
 const base=process.env.MATCH_PROFILE_TEST_BASE||repo;
-const read=name=>fs.readFileSync(fs.existsSync(path.join(repo,name))?path.join(repo,name):path.join(base,name),'utf8');
+const read=name=>fs.readFileSync(fs.existsSync(path.join(repo,name))?path.join(repo,name):path.join(base,name),'utf8').replace(/\r\n/g,'\n');
+const hanLocale=read('i18n.js').replace(/\r\n/g,'\n').match(/\(function installHanLocale\(\)\{[\s\S]*?\n\}\)\(\);/)[0];
 const helper=read('profile-portfolio-i18n.js');
 const copy=JSON.parse(helper.match(/const COPY = ([\s\S]*?);\n  const bindings=/)[1]);
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const turn=()=>new Promise(resolve=>setImmediate(resolve));
 const deepFreeze=value=>{if(value&&typeof value==='object'){Object.values(value).forEach(deepFreeze);Object.freeze(value);}return value;};
 const records=()=>deepFreeze([
@@ -40,13 +41,13 @@ function fixture({lang='pt-BR',history=records(),activity=[],disliked=[],search=
  w.eval(profile.match(/function escapeHtml\(str\) \{[\s\S]*?\n\}/)[0]);
  w.eval(profile.split('/* MATCHAPP_PORTFOLIO_POSTERS_BEGIN */')[1].split('/* MATCHAPP_PORTFOLIO_POSTERS_END */')[0]);
  w.document.querySelectorAll('.portfolio-tab').forEach(button=>button.addEventListener('click',()=>w.switchPortfolioTab(button.id.slice(4))));
- w.eval(helper);w.eval(read('portfolio-history.js'));w.eval(read('final-audit.js'));
+ w.eval(hanLocale);w.eval(helper);w.eval(read('portfolio-history.js'));w.eval(read('final-audit.js'));
  const select=(language,event='matchapp:langchange')=>{w.localStorage.setItem('match_lang',language);if(event==='storage')w.dispatchEvent(new w.StorageEvent('storage',{key:'match_lang',newValue:language}));else w.document.dispatchEvent(new w.CustomEvent(event));};
  const snapshot=()=>Object.fromEntries(Object.keys(w.localStorage).filter(key=>key!=='match_lang').map(key=>[key,w.localStorage.getItem(key)]));
  return {dom,w,calls,errors,select,snapshot,history};
 }
 
-test('all 14 authored dictionaries cover the same 37 UI keys and preserve placeholders',()=>{
+test('all 15 authored dictionaries cover the same 37 UI keys and preserve placeholders',()=>{
  assert.deepEqual(Object.keys(copy),languages);
  const keys=Object.keys(copy.en);assert.equal(keys.length,37);
  for(const lang of languages){
@@ -166,10 +167,10 @@ test('storage read failures preserve renderability and use the existing app-sele
 test('profile loads the copy helper before its consumers and only the profile audit loader receives the new cache suffix',t=>{
  const html=new JSDOM(read('profile/profile.html'));t.after(()=>html.window.close());
  const sources=[...html.window.document.querySelectorAll('script[src]')].map(s=>s.getAttribute('src'));
- const helperAt=sources.indexOf('/profile-portfolio-i18n.js?v=20261018-1');
+ const helperAt=sources.indexOf('/profile-portfolio-i18n.js?v=20261018-1&locale71=1');
  const historyAt=sources.indexOf('/portfolio-history.js?v=20260924-ui2&portfolio=20261018-1&posters=20261020-1&androidqa=20261021-1');
  assert.ok(helperAt>=0&&historyAt>helperAt);
- assert.ok(sources.includes('/title-captions.js?v=20260929-avatar1&profilestate=20261026-1&profilelang=20261018-1&portfolio=20261018-1&posters=20261020-1&accountphoto=20261020-1&registry=20261026-1'));
+ assert.ok(sources.includes('/title-captions.js?v=20260929-avatar1&profilestate=20261026-1&profilelang=20261018-1&portfolio=20261018-1&posters=20261020-1&accountphoto=20261020-1&registry=20261026-1&locale71=1'));
  const loader=read('title-captions.js').slice(read('title-captions.js').indexOf('/* Site-wide final audit layer.'));
  for(const route of ['/profile/profile.html','/pricing/pricing.html']){
   const dom=new JSDOM('<!doctype html><html><head></head><body></body></html>',{url:'https://matchapp.tv'+route,runScripts:'outside-only'});t.after(()=>dom.window.close());dom.window.eval(loader);

@@ -16,11 +16,11 @@
         id:['Video musik resmi','Dirilis di YouTube','Album / musik film','Sutradara','Dibintangi','Tonton di YouTube','Sumber resmi','Terverifikasi'],
         ja:['公式ミュージックビデオ','YouTube公開日','アルバム／サウンドトラック','監督','出演','YouTubeで見る','公式情報','確認日'],
         ko:['공식 뮤직비디오','YouTube 공개일','앨범 / 사운드트랙','감독','출연','YouTube에서 보기','공식 출처','확인일'],
-        zh:['官方音乐视频','YouTube发布日期','专辑／原声带','导演','出演','在YouTube观看','官方来源','核实日期']
+        zh:['官方音乐视频','YouTube发布日期','专辑／原声带','导演','出演','在YouTube观看','官方来源','核实日期'], "zh-TW": ["官方音樂影片","YouTube釋出日期","專輯／原聲帶","導演","出演","在YouTube觀看","官方來源","核實日期"]
     };
     const VIEW_LABEL = {
         en:'views',pt:'visualizações',es:'visualizaciones',fr:'vues',de:'Aufrufe',it:'visualizzazioni',tr:'görüntüleme',
-        ru:'просмотров',ar:'مشاهدة',hi:'व्यूज़',id:'tayangan',ja:'再生',ko:'조회수',zh:'次观看'
+        ru:'просмотров',ar:'مشاهدة',hi:'व्यूज़',id:'tayangan',ja:'再生',ko:'조회수',zh:'次观看', "zh-TW": "次觀看"
     };
     const lang = () => String(window.MATCH_LANG || document.documentElement.lang || 'en').split('-')[0].toLowerCase();
     const copy = () => COPY[lang()] || COPY.en;
@@ -85,7 +85,7 @@
             id: ["Video musik resmi {artist} yang terverifikasi, dari yang terbaru. Katalog diperiksa pada {date}.","Saya belum bisa memastikan video musik resmi terbaru. Sebutkan nama lengkap artis atau lihat kanal resminya."],
             ja: ["{artist} の確認済み公式ミュージックビデオを新しい順に紹介します。カタログの確認日は {date} です。","最近の公式ミュージックビデオを確認できませんでした。アーティストの正式名を教えていただくか、公式チャンネルをご覧ください。"],
             ko: ["{artist}의 확인된 공식 뮤직비디오를 최신순으로 소개합니다. 카탈로그 확인일은 {date}입니다.","최근 공식 뮤직비디오를 확인할 수 없어요. 정확한 아티스트 이름을 알려주시거나 공식 채널을 확인해 주세요."],
-            zh: ["以下是已核实的 {artist} 官方音乐视频，按从新到旧排列。目录核实日期为 {date}。","暂时无法核实近期的官方音乐视频。请提供艺人的全名，或查看其官方频道。"]
+            zh: ["以下是已核实的 {artist} 官方音乐视频，按从新到旧排列。目录核实日期为 {date}。","暂时无法核实近期的官方音乐视频。请提供艺人的全名，或查看其官方频道。"], "zh-TW": ["以下是已核實的 {artist} 官方音樂影片，按從新到舊排列。目錄核實日期為 {date}。","暫時無法核實近期的官方音樂影片。請提供藝人的全名，或檢視其官方頻道。"]
         }[output];
         if (other) answer = selected.length ? other[0].replace('{artist}',matches[0]).replace('{date}',date(selected[0].verifiedAt+'T12:00:00Z',replyLanguage)) : other[1];
         return {answer,results:selected.map(r=>({title:r.artist+' — '+r.title,type:'music video',_musicVideoId:r.id})),_live:false,_verifiedMusic:selected.length>0};

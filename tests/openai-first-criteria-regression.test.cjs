@@ -2,6 +2,7 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
+const vm=require('node:vm');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const proxy=read('supabase/functions/gemini-proxy/index.ts');
 const openai=read('supabase/functions/gemini-proxy/openai-primary.ts');
@@ -12,7 +13,15 @@ test('OpenRouter, OpenAI and Groq are eligible only for adult Ask AI or tagged a
   assert.match(proxy,/import \{ callOpenAIPrimary \} from "\.\/openai-primary\.ts"/);
   assert.match(proxy,/const openAiEligible = body\?\.kidsMode !== true/);
   assert.match(proxy,/isDiscoverMode \|\| isRankMode \|\| \(body\?\.adultMatch === true/);
-  assert.match(app,/body: \{ prompt: promptText, adultMatch: true/);
+  const requests=[...app.matchAll(/body:\s*(\{\s*prompt:\s*promptText,.*\})\s*\}\);/g)];
+  assert.equal(requests.length,1,'one explicit adult match request body');
+  for(const language of ['en','zh','zh-TW','ko'])for(const proposalMode of [false,true]){
+    const body=vm.runInNewContext('('+requests[0][1]+')',{promptText:'verified request',window:{MATCH_LANG:language},proposalMode});
+    assert.equal(body.prompt,'verified request');
+    assert.equal(body.adultMatch,true,'locale metadata must preserve the adult gate');
+    assert.equal(body.mode,proposalMode?'match_proposals':undefined);
+    assert.equal(body.lang,language==='zh-TW'?'zh-TW':undefined);
+  }
   assert.match(openai,/store:false/);
   assert.match(openai,/model:OPENAI_MODEL/);
   assert.match(openai,/OPENAI_MODEL = "gpt-5\.6-luna"/);

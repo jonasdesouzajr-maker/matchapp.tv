@@ -121,7 +121,7 @@ const AUTH_VISUAL_LABELS=window.MatchAppAuthVisualLabels||{
                     id:['Alamat email','Buat kata sandi','Nama lengkap','Buat akun gratis','Tutup masuk','Kata sandi'],
                     ja:['メールアドレス','パスワードを作成','氏名','無料アカウントを作成','ログインを閉じる','パスワード'],
                     ko:['이메일 주소','비밀번호 만들기','이름','무료 계정 만들기','로그인 닫기','비밀번호'],
-                    zh:['电子邮箱','创建密码','姓名','创建免费账户','关闭登录','密码']
+                    zh:['电子邮箱','创建密码','姓名','创建免费账户','关闭登录','密码'], "zh-TW": ["電子郵箱","建立密碼","姓名","建立免費帳戶","關閉登入","密碼"]
                 };
 window.MatchAppAuthVisualLabels=AUTH_VISUAL_LABELS;
 function authVisualLanguage(){let language=window.MATCH_LANG||document.documentElement?.lang||'en';try{language=localStorage.getItem('match_lang')||language}catch(_){}const key=String(language).toLowerCase().split('-')[0];return key==='pt'?'pt-BR':key}

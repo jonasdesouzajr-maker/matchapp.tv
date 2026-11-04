@@ -20,7 +20,7 @@ test('the registration gateway follows the saved language and keeps its account 
         assert.equal(doc.documentElement.lang, 'pt-BR');
         assert.equal(doc.querySelector('h1').textContent, 'Leve o MatchApp Ai com você');
         const headings = new Set();
-        for (const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']) {
+        for (const lang of ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW']) {
             window.setLanguage(lang);
             headings.add(doc.querySelector('h1').textContent);
             assert.equal(doc.documentElement.dir, lang === 'ar' ? 'rtl' : 'ltr');
@@ -29,6 +29,6 @@ test('the registration gateway follows the saved language and keeps its account 
             assert.equal(doc.querySelector('.reg-join').getAttribute('href'), '/?openAuth=1');
             assert.equal(doc.querySelector('.reg-home').getAttribute('href'), '/#questionnaire-box');
         }
-        assert.equal(headings.size, 14);
+        assert.equal(headings.size, 15);
     } finally { dom.window.close(); }
 });

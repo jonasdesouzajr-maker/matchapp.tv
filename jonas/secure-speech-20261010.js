@@ -1,4 +1,4 @@
-/* Jonas speech: verified male cloud synthesis, all 14 site languages.
+/* Jonas speech: verified male cloud synthesis, all supported site languages.
    No provider keys in the browser. Only approved Cedar, ElevenLabs and Charon voices may speak.
    Always fail silent rather than falling back to an arbitrary female voice. */
 (function(){
@@ -6,7 +6,7 @@
  if(window.MatchAppJonasSpeech)return;
  var ENDPOINT='https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/jonas-speech';
  var audioContext=null,source=null,htmlAudio=null,abort=null,epoch=0,streamStop=null;
- var supported=new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
+ var supported=new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW']);
  // Fixed, provider-produced greetings contain no account or conversation data.
  // Reuse their exact recording instead of synthesizing the same sentence on
  // every opening. Other languages retain the same approved cloud voice pair.
@@ -31,7 +31,7 @@
    .catch(function(){greetingAudio.delete(language);return null});
   greetingAudio.set(language,pending);return pending;
  }
- function lang(raw){var saved='';try{saved=localStorage.getItem('match_lang')||''}catch(_){}var s=String(raw||window.MATCH_LANG||saved||document.documentElement.lang||navigator.language||'en');if(/^pt/i.test(s))return 'pt-BR';var base=s.split('-')[0].toLowerCase();return supported.has(base)?base:'en'}
+ function lang(raw){var saved='';try{saved=localStorage.getItem('match_lang')||''}catch(_){}var s=String(raw||window.MATCH_LANG||saved||document.documentElement.lang||navigator.language||'en');if(/^pt/i.test(s))return 'pt-BR';var han=window.MatchAppHanLocale?.normalize?.(s);if(han)return han;if(/^zh(?:[-_]|$)/i.test(s)){try{return new Intl.Locale(s.replace(/_/g,'-')).maximize().script==='Hant'?'zh-TW':'zh'}catch(_){}}var base=s.split('-')[0].toLowerCase();return supported.has(base)?base:'en'}
  function unlock(){
   try{
    context();

@@ -10,7 +10,7 @@ const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 const SPEECH_LANG_MAP = {
   'en':'en-US','pt-BR':'pt-BR','es':'es-ES','fr':'fr-FR','de':'de-DE',
   'it':'it-IT','tr':'tr-TR','ru':'ru-RU','ar':'ar-SA','hi':'hi-IN',
-  'id':'id-ID','ja':'ja-JP','ko':'ko-KR','zh':'zh-CN'
+  'id':'id-ID','ja':'ja-JP','ko':'ko-KR','zh':'zh-CN', "zh-TW": "zh-TW"
 };
 // The adult native shell uses Android app permissions, not browser site settings.
 // Keep denial actionable without opening settings, retrying permission, or blocking text.
@@ -28,7 +28,7 @@ const NATIVE_MIC_DENIED = {
   id:'Akses mikrofon diblokir. Anda tetap dapat mengetik. Untuk berbicara, izinkan mikrofon untuk MatchApp Ai di izin aplikasi Android.',
   ja:'マイクへのアクセスが拒否されています。文字入力は続けられます。音声を使うには、Android のアプリの権限で MatchApp Ai のマイクを許可してください。',
   ko:'마이크 접근이 차단되어 있습니다. 계속 입력할 수 있습니다. 음성을 사용하려면 Android 앱 권한에서 MatchApp Ai의 마이크를 허용하세요.',
-  zh:'麦克风访问已被阻止。你可以继续打字。要使用语音，请在 Android 的应用权限中允许 MatchApp Ai 使用麦克风。'
+  zh:'麦克风访问已被阻止。你可以继续打字。要使用语音，请在 Android 的应用权限中允许 MatchApp Ai 使用麦克风。', "zh-TW": "麥克風使用權限已被阻止。你可以繼續打字。要使用語音，請在 Android 的應用許可權中允許 MatchApp Ai 使用麥克風。"
 };
 
 const VOICE_ORIGIN_KEY='matchapp_voice_origin_v1';
@@ -70,7 +70,8 @@ function activeSpeechLang(){return SPEECH_LANG_MAP[window.MATCH_LANG] || 'en-US'
 function nativeMicrophoneDenied(){
   if(/^\/kids(?:\/|$)/.test(location.pathname)||window.MATCHAPP_ANDROID_KIDS_ONLY||
     /MatchApp(?:Ai|TV)?KidsAndroid\//i.test(window.navigator?.userAgent||'')||!nativeVoiceAvailable())return '';
-  const language=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().replace('_','-').split('-')[0];
+  const chosen=String(window.MATCH_LANG||document.documentElement.lang||'en');
+  const language=Object.hasOwn(NATIVE_MIC_DENIED,chosen)?chosen:(globalThis.MatchAppHanLocale?.normalize(chosen)||chosen.toLowerCase().replace('_','-').split('-')[0]);
   return NATIVE_MIC_DENIED[language]||NATIVE_MIC_DENIED.en;
 }
 

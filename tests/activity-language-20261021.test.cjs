@@ -2,12 +2,12 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
 const source=fs.readFileSync(path.join(__dirname,'..','activity.js'),'utf8');
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const types=['match','ai','save','remove','seen','share','purchase','platform','together','settings'];
 const now=Date.UTC(2026,9,21,12);
 const ages=[0,120000,7200000,86400000,259200000,120000,120000,120000,120000,120000];
 const records=types.map((type,index)=>({ts:now-ages[index]-index,type,detail:`Café <Title ${index}> — 作品`,meta:{source:'fixture',index}}));
-const justNow=['just now','agora mesmo','ahora mismo','à l’instant','gerade eben','proprio ora','az önce','только что','الآن','अभी-अभी','baru saja','たった今','방금','刚刚'];
+const justNow=['just now','agora mesmo','ahora mismo','à l’instant','gerade eben','proprio ora','az önce','только что','الآن','अभी-अभी','baru saja','たった今','방금','刚刚','剛剛'];
 function setup(entries=[]){
  const dom=new JSDOM('<!doctype html><html lang="en"><body><details id="activity-panel" open><select id="activity-filter"><option value="">All</option><option value="save">Saved</option><option value="ai">AI</option></select><div id="activity-list"></div><p id="activity-count"></p></details></body></html>',{url:'https://matchapp.tv/profile/profile.html',runScripts:'outside-only'});
  const w=dom.window;w.MATCH_LANG='en';w.Date.now=()=>now;
@@ -26,7 +26,7 @@ function language(w,lang,storage=false){
  else w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang}}));
 }
 
-test('Activity empty state and filter accessibility follow all14 selected languages without writing records',()=>{
+test('Activity empty state and filter accessibility follow all 15 selected languages without writing records',()=>{
  const t=setup(),{w,doc}=t,filter=doc.getElementById('activity-filter'),emptyCopies=new Set(),filterLabels=new Set();
  try{
   for(const lang of languages){
@@ -37,7 +37,7 @@ test('Activity empty state and filter accessibility follow all14 selected langua
    emptyCopies.add(copy);filterLabels.add(filter.getAttribute('aria-label'));
    if(lang==='pt-BR')assert.match(copy,/Nada por aqui ainda.*perguntas à IA/);
   }
-  assert.equal(emptyCopies.size,14);assert.equal(filterLabels.size,14);
+  assert.equal(emptyCopies.size,15);assert.equal(filterLabels.size,15);
   assert.equal(doc.getElementById('activity-filter'),filter);assert.equal(doc.getElementById('activity-panel').open,true);
   assert.equal(w.MATCH_LANG,'en','rendering does not overwrite the global language owner');
   language(w,'pt-PT',true);assert.equal(doc.getElementById('activity-list').lang,'pt-BR');
@@ -46,7 +46,7 @@ test('Activity empty state and filter accessibility follow all14 selected langua
  }finally{w.close();}
 });
 
-test('all14 Activity languages translate event labels, count, relative time and delete text while preserving original data and filter grouping',()=>{
+test('all 15 Activity languages translate event labels, count, relative time and delete text while preserving original data and filter grouping',()=>{
  const t=setup(records),{w,doc}=t,original=w.localStorage.getItem('match_activity'),filter=doc.getElementById('activity-filter');
  const english=[...doc.querySelectorAll('.activity-label')].map(node=>node.textContent),counts=new Set(),deleteLabels=new Set();
  try{
@@ -69,7 +69,7 @@ test('all14 Activity languages translate event labels, count, relative time and 
    assert.ok(count.textContent.includes(new w.Intl.NumberFormat(lang).format(10)));counts.add(count.textContent);deleteLabels.add(rows[0].querySelector('button').title);
    assert.equal(w.localStorage.getItem('match_activity'),original);assert.equal(doc.getElementById('activity-panel').open,true);
   });
-  assert.equal(counts.size,14);assert.equal(deleteLabels.size,14);
+  assert.equal(counts.size,15);assert.equal(deleteLabels.size,15);
   filter.value='save';w.renderActivity();assert.equal(doc.querySelectorAll('.activity-row').length,3);
   language(w,'pt-BR');assert.equal(filter.value,'save');
   assert.deepEqual([...doc.querySelectorAll('.activity-detail')].map(node=>node.textContent),records.slice(2,5).map(record=>record.detail));
@@ -93,7 +93,7 @@ test('Activity clear keeps explicit confirmation, cancel safety and localized to
    if(lang==='pt-BR'){assert.match(prompt,/Excluir todo.*não pode ser desfeita/);assert.equal(toast,'Histórico de atividades excluído.');}
   }finally{w.close();}
  }
- assert.equal(prompts.size,14);assert.equal(toasts.size,14);
+ assert.equal(prompts.size,15);assert.equal(toasts.size,15);
 });
 
 test('Activity per-entry removal and automatic capture retain their original contract after language repaint',()=>{

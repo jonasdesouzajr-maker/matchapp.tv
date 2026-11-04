@@ -8,13 +8,13 @@
   tr:['Geri','Ana sayfa','Seçimlere dön','Ana sayfaya git'],ru:['Назад','Главная','К выбору','На главную'],
   ar:['رجوع','الرئيسية','العودة للاختيارات','الذهاب للرئيسية'],hi:['वापस','होम','विकल्पों पर वापस','होम पर जाएं'],
   id:['Kembali','Beranda','Kembali ke pilihan','Ke beranda'],ja:['戻る','ホーム','選択に戻る','ホームへ'],
-  ko:['뒤로','홈','선택으로 돌아가기','홈으로'],zh:['返回','首页','返回选择','前往首页']
+  ko:['뒤로','홈','선택으로 돌아가기','홈으로'],zh:['返回','首页','返回选择','前往首页'], "zh-TW": ["返回","首頁","返回選擇","前往首頁"]
  };
  function locale(){
   let raw='';try{raw=localStorage.getItem('match_lang')||'';}catch(_){}
   raw=String(raw||window.MATCH_LANG||document.documentElement.lang||'en').replace('_','-').toLowerCase();
   if(raw.startsWith('pt'))return 'pt-BR';
-  return Object.keys(labels).find(key=>key.toLowerCase()===raw)||raw.split('-')[0];
+  return Object.keys(labels).find(key=>key.toLowerCase()===raw)||(globalThis.MatchAppHanLocale?.normalize(raw) || raw.split('-')[0]);
  }
  function sync(){
   const [back,home,choices,goHome]=labels[locale()]||labels.en;

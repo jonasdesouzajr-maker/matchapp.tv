@@ -45,7 +45,7 @@
     "id":{"genres":"Genre","streamingNow":"Streaming sekarang · {region}","cinemaNoStream":"Di bioskop · {region}. Streaming belum tercantum di wilayah ini.","notStreaming":"Streaming saat ini belum tercantum · {region}.","watchOptions":"Pilihan menonton · {region}","rent":"Sewa","buy":"Beli","watch":"Tonton","availability":"Ketersediaan","cinemaNow":"Di bioskop{date}","cinemaRelease":"Rilis bioskop · {date}","nearby":"Bioskop dan jadwal tayang di dekat saya","showtimes":"Rilis bioskop dan jadwal tayang","elsewhere":"Streaming di negara lain","notify":"🔔 Beri tahu saat tersedia untuk streaming · {region}","signIn":"Masuk untuk mengikuti ketersediaan streaming.","following":"✓ Anda akan diberi tahu · {region}","titleDetails":"Detail judul","country":"Negara","countries":"Negara","cast":"Pemeran","rated":"Rating usia {rating}","minutes":"{n} mnt","movie":"Film","series":"Serial","chooseCountry":"Pilih negara tempat menonton di bagian atas aplikasi untuk memeriksa ketersediaan lokal."},
     "ja":{"genres":"ジャンル","streamingNow":"配信中 · {region}","cinemaNoStream":"劇場公開中 · {region}。この地域では配信情報がまだありません。","notStreaming":"現在の配信情報はありません · {region}。","watchOptions":"視聴方法 · {region}","rent":"レンタル","buy":"購入","watch":"視聴","availability":"配信状況","cinemaNow":"劇場公開中{date}","cinemaRelease":"劇場公開日 · {date}","nearby":"近くの映画館と上映時間","showtimes":"劇場公開日と上映時間","elsewhere":"ほかの国で配信中","notify":"🔔 配信開始時に通知する · {region}","signIn":"配信状況をフォローするにはログインしてください。","following":"✓ 通知をお送りします · {region}","titleDetails":"作品の詳細","country":"製作国","countries":"製作国","cast":"キャスト","rated":"年齢区分 {rating}","minutes":"{n}分","movie":"映画","series":"シリーズ","chooseCountry":"地域での利用可否を確認するには、アプリ上部で視聴する国を選択してください。"},
     "ko":{"genres":"장르","streamingNow":"현재 스트리밍 중 · {region}","cinemaNoStream":"극장 상영 중 · {region}. 이 지역의 스트리밍 정보는 아직 없습니다.","notStreaming":"현재 스트리밍 정보가 없습니다 · {region}.","watchOptions":"시청 방법 · {region}","rent":"대여","buy":"구매","watch":"시청","availability":"이용 가능 여부","cinemaNow":"극장 상영 중{date}","cinemaRelease":"극장 개봉일 · {date}","nearby":"내 주변 영화관 및 상영 시간","showtimes":"극장 개봉일 및 상영 시간","elsewhere":"다른 국가에서 스트리밍 중","notify":"🔔 스트리밍 시작 시 알림 받기 · {region}","signIn":"스트리밍 이용 가능 여부를 확인하려면 로그인하세요.","following":"✓ 알림을 보내드립니다 · {region}","titleDetails":"작품 상세 정보","country":"제작 국가","countries":"제작 국가","cast":"출연진","rated":"연령 등급 {rating}","minutes":"{n}분","movie":"영화","series":"시리즈","chooseCountry":"지역별 이용 가능 여부를 확인하려면 앱 상단에서 시청 국가를 선택하세요."},
-    "zh":{"genres":"类型","streamingNow":"正在流媒体播放 · {region}","cinemaNoStream":"院线上映中 · {region}。该地区尚未列出流媒体播放信息。","notStreaming":"目前尚未列出流媒体播放信息 · {region}。","watchOptions":"观看方式 · {region}","rent":"租借","buy":"购买","watch":"观看","availability":"播放情况","cinemaNow":"院线上映中{date}","cinemaRelease":"院线上映日期 · {date}","nearby":"附近的电影院和场次","showtimes":"院线上映日期和场次","elsewhere":"其他国家的流媒体播放情况","notify":"🔔 流媒体上线时通知我 · {region}","signIn":"请登录以关注流媒体播放情况。","following":"✓ 届时将通知你 · {region}","titleDetails":"作品详情","country":"制作国家","countries":"制作国家","cast":"演员","rated":"年龄分级 {rating}","minutes":"{n}分钟","movie":"电影","series":"剧集","chooseCountry":"请在应用顶部选择观看所在国家，以查看当地的可用情况。"}
+    "zh":{"genres":"类型","streamingNow":"正在流媒体播放 · {region}","cinemaNoStream":"院线上映中 · {region}。该地区尚未列出流媒体播放信息。","notStreaming":"目前尚未列出流媒体播放信息 · {region}。","watchOptions":"观看方式 · {region}","rent":"租借","buy":"购买","watch":"观看","availability":"播放情况","cinemaNow":"院线上映中{date}","cinemaRelease":"院线上映日期 · {date}","nearby":"附近的电影院和场次","showtimes":"院线上映日期和场次","elsewhere":"其他国家的流媒体播放情况","notify":"🔔 流媒体上线时通知我 · {region}","signIn":"请登录以关注流媒体播放情况。","following":"✓ 届时将通知你 · {region}","titleDetails":"作品详情","country":"制作国家","countries":"制作国家","cast":"演员","rated":"年龄分级 {rating}","minutes":"{n}分钟","movie":"电影","series":"剧集","chooseCountry":"请在应用顶部选择观看所在国家，以查看当地的可用情况。"}, "zh-TW": {"genres":"型別","streamingNow":"正在串流播放 · {region}","cinemaNoStream":"院線上映中 · {region}。該地區尚未列出串流播放資訊。","notStreaming":"目前尚未列出串流播放資訊 · {region}。","watchOptions":"觀看方式 · {region}","rent":"租借","buy":"購買","watch":"觀看","availability":"播放情況","cinemaNow":"院線上映中{date}","cinemaRelease":"院線上映日期 · {date}","nearby":"附近的電影院和場次","showtimes":"院線上映日期和場次","elsewhere":"其他國家的串流播放情況","notify":"🔔 串流上線時通知我 · {region}","signIn":"請登入以關注串流播放情況。","following":"✓ 屆時將通知你 · {region}","titleDetails":"作品詳情","country":"製作國家","countries":"製作國家","cast":"演員","rated":"年齡分級 {rating}","minutes":"{n}分鐘","movie":"電影","series":"劇集","chooseCountry":"請在應用頂部選擇觀看所在國家，以檢視當地的可用情況。"}
   });
   const RESULT_GENRES=Object.freeze({
     "en":["Action","Adventure","Animation","Comedy","Crime","Documentary","Drama","Family","Fantasy","History","Horror","Music","Mystery","Romance","Science Fiction","TV Movie","Thriller","War","Western","Action & Adventure","Kids","News","Reality","Sci-Fi & Fantasy","Soap","Talk","War & Politics"],
@@ -61,7 +61,7 @@
     "id":["Aksi","Petualangan","Animasi","Komedi","Kejahatan","Dokumenter","Drama","Keluarga","Fantasi","Sejarah","Horor","Musik","Misteri","Romansa","Fiksi ilmiah","Film TV","Cerita seru","Perang","Koboi","Aksi dan petualangan","Anak-anak","Berita","Acara realitas","Fiksi ilmiah dan fantasi","Sinetron","Gelar wicara","Perang dan politik"],
     "ja":["アクション","アドベンチャー","アニメーション","コメディ","犯罪","ドキュメンタリー","ドラマ","ファミリー","ファンタジー","歴史","ホラー","音楽","ミステリー","ロマンス","SF","テレビ映画","スリラー","戦争","西部劇","アクション＆アドベンチャー","キッズ","ニュース","リアリティ","SF＆ファンタジー","連続ドラマ","トーク番組","戦争＆政治"],
     "ko":["액션","모험","애니메이션","코미디","범죄","다큐멘터리","드라마","가족","판타지","역사","공포","음악","미스터리","로맨스","SF","TV 영화","스릴러","전쟁","서부극","액션 및 모험","어린이","뉴스","리얼리티","SF 및 판타지","연속극","토크쇼","전쟁 및 정치"],
-    "zh":["动作","冒险","动画","喜剧","犯罪","纪录片","剧情","家庭","奇幻","历史","恐怖","音乐","悬疑","爱情","科幻","电视电影","惊悚","战争","西部","动作与冒险","儿童","新闻","真人秀","科幻与奇幻","肥皂剧","脱口秀","战争与政治"]
+    "zh":["动作","冒险","动画","喜剧","犯罪","纪录片","剧情","家庭","奇幻","历史","恐怖","音乐","悬疑","爱情","科幻","电视电影","惊悚","战争","西部","动作与冒险","儿童","新闻","真人秀","科幻与奇幻","肥皂剧","脱口秀","战争与政治"], "zh-TW": ["動作","冒險","動畫","喜劇","犯罪","紀錄片","劇情","家庭","奇幻","歷史","恐怖","音樂","懸疑","愛情","科幻","電視電影","驚悚","戰爭","西部","動作與冒險","兒童","新聞","真人秀","科幻與奇幻","肥皂劇","脫口秀","戰爭與政治"]
   });
 
   const RESULT_GENRE_INDEX=new Map();
@@ -74,7 +74,7 @@
     // result locale or ambient MATCH_LANG must not override that choice.
     for(const value of [saved,window.MATCH_LANG,document.documentElement.lang]){
       const raw=String(value||'').replace(/_/g,'-');
-      const lang=/^pt(?:-|$)/i.test(raw)?'pt-BR':raw.split('-')[0].toLowerCase();
+      const lang=/^pt(?:-|$)/i.test(raw)?'pt-BR':(globalThis.MatchAppHanLocale?.normalize(raw) || raw.split('-')[0].toLowerCase());
       if(Object.hasOwn(RESULT_COPY,lang))return lang;
     }
     return 'en';
@@ -341,7 +341,7 @@
     const mapped=COUNTRY_CODES[saved.toLowerCase()];
     if(mapped)return mapped;
     const lang=window.MATCH_LANG||'en';
-    const fallback={'pt-BR':'BR',es:'MX',fr:'FR',de:'DE',it:'IT',tr:'TR',ru:'RU',ar:'EG',hi:'IN',id:'ID',ja:'JP',ko:'KR',zh:'CN'};
+    const fallback={'pt-BR':'BR',es:'MX',fr:'FR',de:'DE',it:'IT',tr:'TR',ru:'RU',ar:'EG',hi:'IN',id:'ID',ja:'JP',ko:'KR',zh:'CN', "zh-TW": "TW"};
     return fallback[lang]||'US';
   }
   function countryName(code){

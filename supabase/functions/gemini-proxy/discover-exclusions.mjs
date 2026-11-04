@@ -1,3 +1,4 @@
+import { adultLanguageTag } from "../_shared/adult-language.mjs";
 // Adult recommendation preferences, independent of authentication or billing.
 // Explicit factual/title lookups opt out via recommendationsOnly:false.
 export const RECOMMENDATION_COPY=Object.freeze({
@@ -14,6 +15,7 @@ export const RECOMMENDATION_COPY=Object.freeze({
   id:{fresh:'Pilihan baru untuk dijelajahi: {titles}. Buka detail untuk memeriksa ketersediaan.',empty:'Tidak ada judul baru dalam jawaban ini setelah menerapkan pilihan yang Anda simpan dan kecualikan. Coba permintaan lain.'},
   ja:{fresh:'新しい候補：{titles}。詳細を開いて利用可否を確認してください。',empty:'保存済み・除外済みの選択を反映した結果、この回答には新しい作品が残りませんでした。別のリクエストを試してください。'},
   ko:{fresh:'새로 살펴볼 후보: {titles}. 상세 정보를 열어 이용 가능 여부를 확인하세요.',empty:'저장하거나 제외한 선택을 반영한 결과, 이 답변에는 새로운 작품이 남아 있지 않습니다. 다른 요청을 시도해 보세요.'},
+  'zh-TW':{fresh:'還有這些作品可以探索：{titles}。打開作品詳情即可查看供應情況。',empty:'排除已儲存或略過的作品後，這次沒有其他新作品。換個條件再試試吧。'},
   zh:{fresh:'可以探索的新选择：{titles}。打开详情查看可用情况。',empty:'应用你已保存和排除的选择后，此回答中没有剩余的新作品。请尝试其他请求。'}
 });
 
@@ -41,7 +43,8 @@ export function exclusionPrompt(titles){
 }
 
 export function recommendationSummary(results,language){
-  const base=String(language||'en').toLowerCase().split(/[-_]/)[0];
+  const tag=adultLanguageTag(language);
+  const base=tag==='zh-TW'?tag:tag.toLowerCase().split('-')[0];
   const copy=RECOMMENDATION_COPY[base==='pt'?'pt-BR':base]||RECOMMENDATION_COPY.en;
   const titles=(Array.isArray(results)?results:[]).map(row=>typeof row?.title==='string'?row.title.trim():'').filter(Boolean).slice(0,6);
   return titles.length?copy.fresh.replace('{titles}',titles.join(' · ')):copy.empty;

@@ -34,9 +34,9 @@ function localizedType(type){
   id:{series:'Serial TV',movie:'Film',music:'Musik',podcast:'Podcast',audiobook:'Buku Audio',video:'Video'},
   ja:{series:'TVシリーズ',movie:'映画',music:'音楽',podcast:'ポッドキャスト',audiobook:'オーディオブック',video:'動画'},
   ko:{series:'TV 시리즈',movie:'영화',music:'음악',podcast:'팟캐스트',audiobook:'오디오북',video:'비디오'},
-  zh:{series:'电视剧',movie:'电影',music:'音乐',podcast:'播客',audiobook:'有声书',video:'视频'}
+  zh:{series:'电视剧',movie:'电影',music:'音乐',podcast:'播客',audiobook:'有声书',video:'视频'}, "zh-TW": {"series":"電視劇","movie":"電影","music":"音樂","podcast":"播客","audiobook":"有聲書","video":"影片"}
  };
- const lang=language();const row=map[lang]||map[lang.split('-')[0]]||map.en;return row[type]||type;
+ const lang=language();const row=map[lang]||map[(globalThis.MatchAppHanLocale?.normalize(lang) || lang.split('-')[0])]||map.en;return row[type]||type;
 }
 function typeFromRaw(raw){const t=String(raw||'').toLowerCase();if(/podcast/.test(t))return'podcast';if(/audiobook/.test(t))return'audiobook';if(/music|song|album|playlist|single/.test(t))return'music';if(/movie|film/.test(t))return'movie';if(/series|tv|show|drama|anime|novela|documentary|reality/.test(t))return'series';return'video';}
 function isAudioType(type){return['music','podcast','audiobook'].includes(typeFromRaw(type));}
@@ -140,7 +140,7 @@ function repairDiscoverCard(card){
  if(card.dataset.integrityRemembered!=='1'){card.dataset.integrityRemembered='1';rememberShown(entry?.title||title,{posterUrl:card.querySelector('img')?.src||'',streamUrl:card.querySelector('.discover-play')?.href||''});}
 }
 function canMatch(criteria){const p=window.matchPolicy;if(!p)return false;return catalog().some(e=>{try{return p.matches(e,criteria)&&(!(typeof isBlockedEntry==='function')||!isBlockedEntry(e))}catch(_){return false}});}
-function recoveryText(){const l=language(),m={en:'No unseen title fits every filter at once. Keep the important choices and broaden one filter for a fresh result.','pt-BR':'Nenhum título ainda não mostrado combina com todos os filtros ao mesmo tempo. Mantenha as escolhas importantes e amplie um filtro para receber um resultado novo.',es:'Ningún título no mostrado encaja con todos los filtros a la vez. Mantén lo importante y amplía un filtro para obtener un resultado nuevo.',fr:'Aucun titre inédit ne correspond à tous les filtres à la fois. Gardez l’essentiel et élargissez un filtre pour un résultat nouveau.',de:'Kein noch nicht gezeigter Titel erfüllt gerade alle Filter. Behalte die wichtigen Vorgaben und erweitere einen Filter für ein neues Ergebnis.'};return m[l]||m[l.split('-')[0]]||m.en;}
+function recoveryText(){const l=language(),m={en:'No unseen title fits every filter at once. Keep the important choices and broaden one filter for a fresh result.','pt-BR':'Nenhum título ainda não mostrado combina com todos os filtros ao mesmo tempo. Mantenha as escolhas importantes e amplie um filtro para receber um resultado novo.',es:'Ningún título no mostrado encaja con todos los filtros a la vez. Mantén lo importante y amplía un filtro para obtener un resultado nuevo.',fr:'Aucun titre inédit ne correspond à tous les filtres à la fois. Gardez l’essentiel et élargissez un filtre pour un résultat nouveau.',de:'Kein noch nicht gezeigter Titel erfüllt gerade alle Filter. Behalte die wichtigen Vorgaben und erweitere einen Filter für ein neues Ergebnis.'};return m[l]||m[(globalThis.MatchAppHanLocale?.normalize(l) || l.split('-')[0])]||m.en;}
 function renderRecovery(reason){
  if(!document.body)return;let box=document.getElementById('match-fresh-recovery');if(!box){box=document.createElement('section');box.id='match-fresh-recovery';box.className='match-fresh-recovery';const host=document.getElementById('questionnaire-box')||document.querySelector('main')||document.body;host.appendChild(box);}
  const current=window.getMatchCriteria?.()||{},choices=[],tests=[{label:'Any platform',patch:{plat:[]}},{label:'Any mood & vibe',patch:{mood:[],vibe:[]}},{label:'Any decade',patch:{decade:[]}}];

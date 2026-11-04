@@ -84,13 +84,13 @@
     id: ['Beranda','Jelajahi','Pilihan','Daftarku','Profil','Cari','Judul unggulan','Lihat semua','Jelajahi lainnya','Temukan pilihan sempurnamu'],
     ja: ['ホーム','見つける','マッチ','マイリスト','プロフィール','検索','注目の作品','すべて見る','もっと見る','ぴったりの作品を見つけよう'],
     ko: ['홈','둘러보기','추천','내 목록','프로필','검색','인기 작품','모두 보기','더 둘러보기','나에게 딱 맞는 작품 찾기'],
-    zh: ['首页','探索','匹配','我的片单','个人资料','搜索','热门作品','查看全部','探索更多','找到你的完美之选']
+    zh: ['首页','探索','匹配','我的片单','个人资料','搜索','热门作品','查看全部','探索更多','找到你的完美之选'], "zh-TW": ["首頁","探索","匹配","我的片單","個人資料","搜尋","熱門作品","檢視全部","探索更多","找到你的完美之選"]
   };
   var extraLabels = {
     en:['App controls','Quick choices','How to use'],pt:['Controles do app','Escolhas rápidas','Como usar'],es:['Controles de la app','Opciones rápidas','Cómo usar'],
     fr:['Commandes de l’app','Choix rapides','Mode d’emploi'],de:['App-Steuerung','Schnellauswahl','So funktioniert’s'],it:['Controlli dell’app','Scelte rapide','Come si usa'],
     tr:['Uygulama kontrolleri','Hızlı seçimler','Nasıl kullanılır'],ru:['Управление приложением','Быстрый выбор','Как пользоваться'],ar:['أدوات التطبيق','خيارات سريعة','طريقة الاستخدام'],
-    hi:['ऐप नियंत्रण','त्वरित विकल्प','कैसे इस्तेमाल करें'],id:['Kontrol aplikasi','Pilihan cepat','Cara menggunakan'],ja:['アプリの操作','クイック選択','使い方'],ko:['앱 설정','빠른 선택','사용 방법'],zh:['应用控制','快捷选择','使用方法']
+    hi:['ऐप नियंत्रण','त्वरित विकल्प','कैसे इस्तेमाल करें'],id:['Kontrol aplikasi','Pilihan cepat','Cara menggunakan'],ja:['アプリの操作','クイック選択','使い方'],ko:['앱 설정','빠른 선택','사용 방법'],zh:['应用控制','快捷选择','使用方法'], "zh-TW": ["應用控制","快捷選擇","使用方法"]
   };
   Object.keys(labels).forEach(function(key){labels[key]=labels[key].concat(extraLabels[key]);});
   var names = ['home','explore','matches','list','profile','search','titles','all','more','matchTitle','controls','quick','help'];
@@ -107,7 +107,8 @@
   function link(href, key, cls) { var a = document.createElement('a'); a.href = href; a.className = cls || ''; copy(a,key); return a; }
   function language() {
     var value = window.MATCH_LANG || document.documentElement.lang || 'en';
-    return String(value).toLowerCase().split('-')[0];
+    var tag = String(value).toLowerCase().replace(/_/g, '-');
+    return window.MatchAppHanLocale?.normalize(tag) || (/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(tag) ? 'zh-TW' : tag.split('-')[0]);
   }
   function current() {
     var p = location.pathname;

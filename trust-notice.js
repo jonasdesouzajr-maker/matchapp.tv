@@ -19,20 +19,20 @@
     'id': 'MatchApp menyempurnakan desain dan pengalamannya setiap hari — sesekali mungkin masih ada kesalahan.',
     'ja': 'MatchAppはデザインと使い心地を毎日改善しています。まれに不具合が見つかることがあります。',
     'ko': 'MatchApp은 매일 디자인과 사용 경험을 개선하고 있어요. 가끔 오류가 보일 수 있어요.',
-    'zh': 'MatchApp 每天都在改进设计与使用体验，偶尔仍可能出现错误。'
+    'zh': 'MatchApp 每天都在改进设计与使用体验，偶尔仍可能出现错误。', "zh-TW": "MatchApp 每天都在改進設計與使用體驗，偶爾仍可能出現錯誤。"
   };
   const LABEL = {
     'en': 'Improvement notice', 'pt-BR': 'Aviso de melhorias', 'es': 'Aviso de mejoras', 'fr': 'Avis d’amélioration',
     'de': 'Hinweis zu Verbesserungen', 'it': 'Avviso sui miglioramenti', 'tr': 'İyileştirme bildirimi', 'ru': 'Уведомление об улучшениях',
-    'ar': 'إشعار التحسينات', 'hi': 'सुधार सूचना', 'id': 'Pemberitahuan pembaruan', 'ja': '改善のお知らせ', 'ko': '개선 안내', 'zh': '改进提示'
+    'ar': 'إشعار التحسينات', 'hi': 'सुधार सूचना', 'id': 'Pemberitahuan pembaruan', 'ja': '改善のお知らせ', 'ko': '개선 안내', 'zh': '改进提示', "zh-TW": "改進提示"
   };
   const LANGS = Object.keys(COPY);
   function norm(value) {
     const low = String(value || '').trim().toLowerCase();
     if (!low) return '';
     if (low.startsWith('pt')) return 'pt-BR';
-    if (low.startsWith('zh')) return 'zh';
-    return LANGS.find(l => l.toLowerCase() === low) || LANGS.find(l => l.split('-')[0] === low.split(/[-_]/)[0]) || '';
+    if (low.startsWith('zh')) return globalThis.MatchAppHanLocale?.normalize(low) || 'zh';
+    return LANGS.find(l => l.toLowerCase() === low) || LANGS.find(l => (globalThis.MatchAppHanLocale?.normalize(l) || l.split('-')[0]) === low.split(/[-_]/)[0]) || '';
   }
   function current(hint) {
     let l = norm(hint) || norm(document.documentElement.getAttribute('lang'));

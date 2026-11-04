@@ -110,7 +110,7 @@ function renderReadingDiscovery(root,p){
  localize(root);
  window.MatchAppActivatedScroll?.toStart(host) ?? host.scrollIntoView?.({behavior:'auto',block:'start'});
 }
-function lang(){if(window.MatchAppBooksLocale)return window.MatchAppBooksLocale.lang();let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}const raw=String(saved||window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();if(/^pt/.test(raw))return'pt-BR';const base=raw.split('-')[0];return ['en','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'].includes(base)?base:'en';}
+function lang(){if(window.MatchAppBooksLocale)return window.MatchAppBooksLocale.lang();let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}const raw=String(saved||window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();if(/^pt/.test(raw))return'pt-BR';if(/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(raw))return'zh-TW';const base=raw.split('-')[0];return ['en','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'].includes(base)?base:'en';}
 function tr(k){if(window.MatchAppBooksLocale)return window.MatchAppBooksLocale.t('ui.'+k);const l=LABELS[lang()]||LABELS.en;return l[k]||LABELS.en[k]||k;}
 function ui(key,english,params){if(window.MatchAppBooksLocale)return window.MatchAppBooksLocale.t('ui.'+key,params);return String(english).replace(/\{(\w+)\}/g,(all,name)=>params?.[name]===undefined?all:String(params[name]));}
 function choice(field,value){return window.MatchAppBooksLocale?window.MatchAppBooksLocale.choice(field,value):(FIELDS[field]?.find(row=>row[0]===value)?.[2]||String(value||''));}
@@ -758,9 +758,8 @@ function readingHistoryNotice(root){
   id:'Riwayat rekomendasi tidak dapat disinkronkan. Silakan coba lagi.',
   ja:'おすすめ履歴を同期できませんでした。もう一度お試しください。',
   ko:'추천 기록을 동기화하지 못했습니다. 다시 시도해 주세요.',
-  zh:'无法同步你的推荐记录，请重试。'};
- const selected=lang().toLowerCase().split('-')[0];
- const note=root.querySelector('[data-ebook-note]');if(note){note.hidden=false;paintNote(note,()=>window.MatchAppBooksLocale?tr('historyError'):messages[lang().toLowerCase().split('-')[0]]||messages.en);}
+  zh:'无法同步你的推荐记录，请重试。','zh-TW':'無法同步你的推薦記錄，請再試一次。'};
+ const note=root.querySelector('[data-ebook-note]');if(note){note.hidden=false;paintNote(note,()=>window.MatchAppBooksLocale?tr('historyError'):messages[lang()]||messages[lang().split('-')[0]]||messages.en);}
 }
 function optionButtons(field,current,p){
  return FIELDS[field].map(([value,icon,label])=>'<button type="button" class="ebook-chip'+(current===value?' is-on':'')+'" data-ebook-field="'+field+'" data-ebook-value="'+esc(value)+'" aria-pressed="'+(current===value?'true':'false')+'"'+(value!==current&&bookIncompatible(field,value,p)?' disabled aria-disabled="true" title="'+esc(ui('conflict','Conflicts with your selected mood or genre'))+'"':'')+'><span aria-hidden="true">'+icon+'</span>'+esc(choice(field,value))+'</button>').join('');

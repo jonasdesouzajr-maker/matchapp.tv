@@ -23,11 +23,11 @@
     id:{today:'Hari ini',ended:'Berakhir',ask:'Tanya MatchApp Ai',official:'Halaman resmi',day:'Hari internasional',about:'Tanya MatchApp Ai tentang hari ini',prompt:'Apa itu {title} dan bagaimana saya bisa merayakannya malam ini?'},
     ja:{today:'今日',ended:'終了',ask:'MatchApp Aiに聞く',official:'公式ページ',day:'国際デー',about:'この日についてMatchApp Aiに聞く',prompt:'{title}とは何ですか？今夜はどのように楽しめますか？'},
     ko:{today:'오늘',ended:'종료',ask:'MatchApp Ai에 물어보기',official:'공식 페이지',day:'국제 기념일',about:'이 기념일에 대해 MatchApp Ai에 물어보기',prompt:'{title}은 어떤 날이며 오늘 저녁에 어떻게 기념할 수 있나요?'},
-    zh:{today:'今天',ended:'已结束',ask:'询问MatchApp Ai',official:'官方网站',day:'国际日',about:'向MatchApp Ai询问这个纪念日',prompt:'{title}是什么日子？今晚可以怎样庆祝？'}
+    zh:{today:'今天',ended:'已结束',ask:'询问MatchApp Ai',official:'官方网站',day:'国际日',about:'向MatchApp Ai询问这个纪念日',prompt:'{title}是什么日子？今晚可以怎样庆祝？'}, "zh-TW": {"today":"今天","ended":"已結束","ask":"詢問MatchApp Ai","official":"官方網站","day":"國際日","about":"向MatchApp Ai詢問這個紀念日","prompt":"{title}是什麼日子？今晚可以怎樣慶祝？"}
   };
 
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
-  function normalizeLang(raw){var key=String(raw||'').trim().toLowerCase().replace(/_/g,'-').split('-')[0];if(key==='pt')key='pt-BR';return Object.prototype.hasOwnProperty.call(COPY,key)?key:'';}
+  function normalizeLang(raw){var key=(globalThis.MatchAppHanLocale?.normalize(String(raw||'').trim().toLowerCase().replace(/_/g,'-')) || String(raw||'').trim().toLowerCase().replace(/_/g,'-').split('-')[0]);if(key==='pt')key='pt-BR';return Object.prototype.hasOwnProperty.call(COPY,key)?key:'';}
   function langKey(){var saved='';try{saved=localStorage.getItem('match_lang');}catch(_){}
     return activeLanguage||normalizeLang(saved)||normalizeLang(window.MATCH_LANG)||normalizeLang(document.documentElement.lang)||'en';}
   function localize(data){var out={},key;for(key in data)if(Object.prototype.hasOwnProperty.call(data,key))out[key]=data[key];

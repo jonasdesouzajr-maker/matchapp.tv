@@ -96,12 +96,13 @@ test('only unsupported adult Android purchase buttons are disabled without repla
   }finally{w.close();}
 });
 
-test('the actual hub and language engine retain truthful Android controls in all 14 languages',async()=>{
+test('the actual hub and language engine retain truthful Android controls in all 15 language choices',async()=>{
   const w=page(read('pricing/pricing.html'),{ua:appUA});
   try{
     w.eval(i18n);w.eval(pricing);w.eval(read('pricing-locale.js'));w.eval(read('credits-ui.js'));
     await settle();
-    assert.equal(Object.keys(translations).length,14);
+    assert.deepEqual(Object.keys(translations).sort(),['ar','de','en','es','fr','hi','id','it','ja','ko','pt-BR','ru','tr','zh','zh-TW']);
+    assert.notEqual(unavailable('zh-TW'),unavailable('zh'));
     const pass=w.document.getElementById('btn-ad_free');
     const credits=Array.from(w.document.querySelectorAll('#purchase-hub [data-credit-pack]'));
     assert.equal(credits.length,4);
@@ -150,11 +151,12 @@ test('verified ownership takes priority and account changes keep Android purchas
       assert.equal(w.document.querySelector('[data-credit-pack]').textContent,unavailable(lang));
     }
     assert.equal(reads.length,1,'only the existing owned-product read is used');
+    w.setLanguage('zh-TW');
     session=null;
     w.document.dispatchEvent(new w.Event('matchapp:authchange'));await settle();
     assert.equal(button.dataset.adFreeOwned,undefined);
     assert.equal(button.dataset.androidPurchaseUnavailable,'true');
-    assert.equal(button.textContent,unavailable('zh'));
+    assert.equal(button.textContent,unavailable('zh-TW'));
     assert.equal(button.disabled,true);
     assert.deepEqual(profile,{ad_free_purchased:true,purchased_matches:9,credits:75});
     assert.equal(observers.size,0);

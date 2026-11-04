@@ -2,10 +2,11 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const {stripTypeScriptTypes}=require('node:module');
 const source=fs.readFileSync(require('node:path').join(__dirname,'../supabase/functions/jonas-speech/index.ts'),'utf8');
+const {adultLanguageTag}=require('../supabase/functions/_shared/adult-language.mjs');
 function server(openStatus=200,geminiStatus=200){
  const calls=[];let handler;
  const env={SUPABASE_URL:'https://example.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'test-service-role',OPENAI_API_KEY:'test-openai',GEMINI_API_KEY:'test-gemini'};
- const context=vm.createContext({Response,Request,AbortSignal,TextEncoder,Uint8Array,DataView,atob,btoa,crypto:require('node:crypto').webcrypto,console:{error(){}},
+ const context=vm.createContext({adultLanguageTag,Response,Request,AbortSignal,TextEncoder,Uint8Array,DataView,atob,btoa,crypto:require('node:crypto').webcrypto,console:{error(){}},
   createClient:()=>({rpc:async()=>({data:true,error:null})}),
   Deno:{env:{get:name=>env[name]},serve:fn=>handler=fn},
   fetch:async(url,options)=>{
@@ -14,7 +15,7 @@ function server(openStatus=200,geminiStatus=200){
    return new Response(JSON.stringify({candidates:[{content:{parts:[{inlineData:{data:btoa('a'.repeat(400))}}]}}]}),{status:geminiStatus});
   }});
  vm.runInContext(stripTypeScriptTypes(source.replace(/^import .*;\s*$/gm,'')),context);
- return {calls,request:()=>handler(new Request('https://example.test',{method:'POST',headers:{Origin:'https://matchapp.tv','Content-Type':'application/json'},body:JSON.stringify({text:'Olá, sou o Jonas.',lang:'pt-BR',voice:'female'})}))};
+ return {calls,request:(lang='pt-BR')=>handler(new Request('https://example.test',{method:'POST',headers:{Origin:'https://matchapp.tv','Content-Type':'application/json'},body:JSON.stringify({text:'Olá, sou o Jonas.',lang,voice:'female'})}))};
 }
 test('OpenAI always uses Cedar and refuses client voice overrides',async()=>{
  const s=server(),r=await s.request();assert.equal(r.status,200);
@@ -22,6 +23,12 @@ test('OpenAI always uses Cedar and refuses client voice overrides',async()=>{
  assert.match(s.calls[0].body.instructions,/pt-BR/);
  assert.equal(r.headers.get('X-Jonas-Voice'),'male-cedar');
  assert.equal(r.headers.get('Access-Control-Expose-Headers'),'X-Jonas-Voice');
+});
+test('Cedar receives distinct spoken locales for Traditional Chinese, Simplified Chinese and Korean',async()=>{
+ for(const [lang,locale] of [['zh-TW','zh-TW'],['zh-HK','zh-TW'],['zh-Hant','zh-TW'],['zh-Hans-HK','zh-CN'],['ko-KR','ko-KR']]){
+  const s=server(),r=await s.request(lang);assert.equal(r.status,200);
+  assert.ok(s.calls[0].body.instructions.includes('('+locale+')'),lang);
+ }
 });
 test('Gemini male Charon is only used after OpenAI fails, with truthful identity metadata',async()=>{
  const s=server(503),r=await s.request();assert.equal(r.status,200);

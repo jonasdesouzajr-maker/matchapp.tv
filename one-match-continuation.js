@@ -6,7 +6,7 @@
 })(typeof window !== 'undefined' ? window : globalThis, function () {
   'use strict';
   const fields = Object.freeze({category:'cat',mood:'mood',platform:'plat',genre:'genre',vibe:'vibe',decade:'decade',rating:'rating'});
-  const languages = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+  const languages = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
   const rows = {
     en:['Take these choices with you.','Continue in the Android app with these filters. Your web match stays here.','Get the Android app','Open app','Stay on the web','Your choices are ready.','Restore your filters, then choose when to find another match.','Restore choices','Your choices are restored. Find your next match when you are ready.','Some choices are unavailable. Your current filters are unchanged.'],
     'pt-BR':['Leve suas escolhas com você.','Continue no app Android com estes filtros. Seu match continua aqui na web.','Obter o app Android','Abrir app','Continuar na web','Suas escolhas estão prontas.','Restaure seus filtros e escolha quando buscar outro match.','Restaurar escolhas','Suas escolhas foram restauradas. Busque seu próximo match quando quiser.','Algumas escolhas estão indisponíveis. Seus filtros atuais não foram alterados.'],
@@ -21,7 +21,7 @@
     id:['Bawa pilihanmu bersama.','Lanjutkan dengan filter ini di aplikasi Android. Match webmu tetap di sini.','Dapatkan aplikasi Android','Buka aplikasi','Tetap di web','Pilihanmu sudah siap.','Pulihkan filter, lalu tentukan kapan mencari match berikutnya.','Pulihkan pilihan','Pilihanmu telah dipulihkan. Cari match berikutnya saat kamu siap.','Beberapa pilihan tidak tersedia. Filter saat ini tidak berubah.'],
     ja:['選んだ条件をアプリへ。','この条件でAndroidアプリを続けられます。ウェブの結果はここに残ります。','Androidアプリを入手','アプリを開く','ウェブを続ける','選んだ条件を引き継げます。','条件を復元してから、次の作品を探すタイミングを選べます。','条件を復元','条件を復元しました。準備ができたら次の作品を探せます。','一部の条件は利用できません。現在の条件は変更していません。'],
     ko:['선택한 조건을 가져가세요.','이 조건으로 Android 앱에서 계속하세요. 웹 추천 결과는 여기에 남습니다.','Android 앱 받기','앱 열기','웹에서 계속','선택한 조건이 준비됐어요.','필터를 복원한 뒤 다음 추천을 찾을 때를 선택하세요.','선택 복원','선택한 조건을 복원했어요. 준비되면 다음 추천을 찾아보세요.','일부 선택을 사용할 수 없어요. 현재 필터는 변경하지 않았어요.'],
-    zh:['把你的选择带到应用中。','使用这些筛选条件在 Android 应用中继续。网页推荐结果会保留在这里。','获取 Android 应用','打开应用','留在网页','你的选择已准备好。','恢复筛选条件，再决定何时寻找下一个推荐。','恢复选择','已恢复你的选择。准备好后即可寻找下一个推荐。','部分选项暂不可用。当前筛选条件未更改。']
+    zh:['把你的选择带到应用中。','使用这些筛选条件在 Android 应用中继续。网页推荐结果会保留在这里。','获取 Android 应用','打开应用','留在网页','你的选择已准备好。','恢复筛选条件，再决定何时寻找下一个推荐。','恢复选择','已恢复你的选择。准备好后即可寻找下一个推荐。','部分选项暂不可用。当前筛选条件未更改。'], "zh-TW": ["把你的選擇帶到應用中。","使用這些篩選條件在 Android 應用中繼續。網頁推薦結果會保留在這裡。","獲取 Android 應用","開啟應用","留在網頁","你的選擇已準備好。","恢復篩選條件，再決定何時尋找下一個推薦。","恢復選擇","已恢復你的選擇。準備好後即可尋找下一個推薦。","部分選項暫不可用。目前篩選條件未更改。"]
   };
   function parse(raw) {
     if (typeof raw !== 'string' || !raw || raw.length > 2400 || /%(?![\da-f]{2})/i.test(raw)) return null;
@@ -69,7 +69,8 @@
   function locale(w) {
     let saved='';try { saved=w.localStorage.getItem('match_lang')||''; } catch (_) {}
     const value=String(w.MATCH_LANG||saved||w.document.documentElement.lang||'en');
-    const lang=/^pt(?:-|$)/i.test(value)?'pt-BR':value.toLowerCase().split('-')[0];
+    const tag=value.toLowerCase().replace(/_/g,'-');
+    const lang=/^pt(?:-|$)/.test(tag)?'pt-BR':(w.MatchAppHanLocale?.normalize(tag) || (/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(tag)?'zh-TW':tag.split('-')[0]));
     return languages.includes(lang)?lang:'en';
   }
   function boot(w) {

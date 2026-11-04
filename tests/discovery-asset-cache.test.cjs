@@ -7,7 +7,7 @@ const {stampDiscoveryAssets,stampPublicHtml}=require('../tools/stamp-discovery-a
 const root=path.join(__dirname,'..');
 
 test('published script URLs track the actual feedback and shopping bytes while keeping existing query keys',()=>{
-  for(const url of ['/channels/discovery.js','/patches/immersive-feedback-20261014.js']) {
+  for(const url of ['/channels/labels.js','/channels/discovery.js','/patches/immersive-feedback-20261014.js']) {
     const revision=createHash('sha256').update(fs.readFileSync(path.join(root,url))).digest('hex').slice(0,12);
     const original='<script defer src="'+url+'?v=3&amp;dock=keep"></script>';
     const stamped=stampDiscoveryAssets(original);

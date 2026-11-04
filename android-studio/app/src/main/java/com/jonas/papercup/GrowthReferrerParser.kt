@@ -5,7 +5,7 @@ import java.net.URLEncoder
 
 /** Accept only our own, bounded recommendation context. Never accepts login credentials or arbitrary destinations. */
 internal object GrowthReferrerParser {
-    private val languages = setOf("en", "pt-BR", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh")
+    private val languages = setOf("en", "pt-BR", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh", "zh-TW")
     private val token = Regex("^[a-f0-9]{64}$")
     private val titlePath = Regex("^(?:/where-to-watch/[a-z0-9]+(?:-[a-z0-9]+)*/|/(?:en/(?:br|us|gb|pt)|pt/br)/watch/(?:movie|series)/[a-z0-9]+(?:-[a-z0-9]+)*-[1-9][0-9]*/)$")
     private val criteriaKeys = setOf("category", "mood", "platform", "genre", "vibe", "decade", "rating")
@@ -48,7 +48,7 @@ internal object GrowthReferrerParser {
             }
         } catch (_: IllegalArgumentException) { return null }
         if (values["utm_source"] != "matchapp_tv" || values["utm_medium"] != "web_to_app") return null
-        val language = values["lang"]?.takeIf { it in languages }
+        val language = values["lang"]?.let(NativeLaunchPolicy::appLanguageTag)?.takeIf { it in languages }
         val query = language?.let { "?lang=" + URLEncoder.encode(it, "UTF-8") }.orEmpty()
         return when (values["utm_campaign"]) {
             "one_match_after_aha" -> oneMatchDestination(values, query)

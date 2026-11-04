@@ -245,10 +245,10 @@ test('the legacy credit renderer still provides Ask packs without creating a Mat
   try{w.eval(fs.readFileSync(path.join(root,'credits-ui.js'),'utf8'));await settle();const button=w.document.querySelector('[data-pack="credits_25"]');assert.ok(button);button.click();assert.equal(purchase,'credits_25');assert.equal(w.document.getElementById('match-packs-section'),null);w.injectCreditsCTA();assert.equal(w.document.querySelector('.credits-inline-cta'),null);}finally{w.close();}
 });
 
-test('all 14 authored ad-free descriptions disclose the Android scope and remove unsupported speed/profile claims',()=>{
+test('all 15 authored ad-free descriptions disclose the Android scope and remove unsupported speed/profile claims',()=>{
   const source=fs.readFileSync(path.join(root,'i18n.js'),'utf8'),start=source.indexOf('const I18N ='),end=source.indexOf('\n};',start)+3;
   const translations=vm.runInNewContext(source.slice(start,end)+';I18N');
-  assert.equal(Object.keys(translations).length,14);
+  assert.deepEqual(Object.keys(translations).sort(),['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'].sort());
   for(const [lang,strings] of Object.entries(translations)){
     for(const key of ['pricing.adfree.f1','pricing.adfree.f2','pricing.adfree.f3','billing.alreadyOwned'])assert.ok(strings[key]?.trim(),lang+' '+key);
     assert.match(strings['pricing.adfree.f1'],/Android/);assert.ok(!/4\s*s|4秒|4초|4[- ]second|fast.track|profile unlock/i.test(strings['pricing.adfree.f2']+' '+strings['pricing.adfree.f3']));

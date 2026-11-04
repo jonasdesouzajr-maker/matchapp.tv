@@ -17,11 +17,21 @@ test('Jonas messages detect all supported languages without reading the device o
         id:'Film apa yang kamu rekomendasikan untuk saya tonton malam ini?',
         ja:'今夜見るのにおすすめの映画を教えてください。',
         ko:'오늘 저녁에 볼 만한 영화를 추천해 주세요.',
-        zh:'你能推荐一部适合今天晚上观看的电影吗？'
+        zh:'你能推荐一部适合今天晚上观看的电影吗？',
+        'zh-TW':'可以推薦一部適合今天晚上看的電影嗎？'
     };
     for (const [lang, text] of Object.entries(utterances)) {
         assert.equal(await detectMessageLanguage(text, lang==='en'?'pt-BR':'en'),lang,text);
     }
+    for (const tag of ['zh-TW','zh-Hant','zh_Hant_HK','zh-HK','zh-MO']) {
+        assert.equal(await detectMessageLanguage('你好', tag), 'zh-TW', tag);
+        assert.equal(await detectMessageLanguage('明天', tag), 'zh-TW', tag);
+        assert.equal(await detectMessageLanguage('谢谢', tag), 'zh', tag);
+    }
+    assert.equal(await detectMessageLanguage('謝謝！', 'zh-CN'), 'zh-TW');
+    assert.equal(await detectMessageLanguage('你好', 'zh-Hans-TW'), 'zh');
+    assert.equal(await detectMessageLanguage('요즘 볼 만한 한국 드라마 추천해 줘', 'zh-TW'), 'ko');
+    assert.equal(await detectMessageLanguage('映画を探しています', 'zh-TW'), 'ja');
     assert.equal(await detectMessageLanguage('Hey!', 'pt-BR'), 'en');
     assert.equal(await detectMessageLanguage('Bom dia!', 'en'), 'pt-BR');
     assert.equal(await detectMessageLanguage('Dune', 'pt-BR'), 'pt-BR');

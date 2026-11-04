@@ -22,13 +22,13 @@
     id:['Suka pilihan ini? Tunjukkan kepada teman.','Bagikan rekomendasi ini kepada teman.','📢 Bagikan Match ini'],
     ja:['このおすすめが気に入りましたか？友達にも紹介しましょう。','このおすすめを友達と共有しましょう。','📢 このおすすめを共有'],
     ko:['이 추천이 마음에 드나요? 친구에게도 알려 주세요.','이 추천을 친구들과 공유하세요.','📢 이 추천 공유하기'],
-    zh:['喜欢这个推荐吗？介绍给朋友吧。','与朋友分享这个推荐。','📢 分享这个推荐']
+    zh:['喜欢这个推荐吗？介绍给朋友吧。','与朋友分享这个推荐。','📢 分享这个推荐'], "zh-TW": ["喜歡這個推薦嗎？介紹給朋友吧。","與朋友分享這個推薦。","📢 分享這個推薦"]
   };
   function locale(){
     let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}
     for(const value of [window.MATCH_LANG,saved,document.documentElement.lang]){
       const lang=String(value||'').toLowerCase();
-      const key=lang.startsWith('pt')?'pt-BR':lang.split('-')[0];
+      const key=lang.startsWith('pt')?'pt-BR':(globalThis.MatchAppHanLocale?.normalize(lang) || lang.split('-')[0]);
       if(copy[key])return key;
     }
     return 'en';
