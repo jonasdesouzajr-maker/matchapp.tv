@@ -36,6 +36,41 @@ test('native navigation mirrors one localized owner and restores its original la
   assert.equal(w.document.body.style.paddingBottom,'12px');assert.equal(w.document.querySelector('nav').style.display,'');
   dom.window.close();
 });
+test('native destinations wait for style- and class-controlled modals to close',async()=>{
+  const nav='<nav class="ma-cinema-dock">'+keys.map((key,i)=>'<a href="#'+key+'" data-cinema-route="'+key+'" '+(i===0?'aria-current="page"':'')+'><span data-cinema-copy>'+key+'</span></a>').join('')+'</nav>';
+  const dom=new JSDOM(nav+'<div role="dialog" aria-modal="true" style="display:none"></div>',
+    {url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true});
+  try {
+    const w=dom.window,posts=[],receive=nativeBridge(w,posts);
+    w.matchMedia=()=>({matches:false});
+    const frame=()=>new Promise(resolve=>w.requestAnimationFrame(()=>w.requestAnimationFrame(resolve)));
+    const modal=w.document.querySelector('[role="dialog"]');
+    modal.getClientRects=()=>modal.style.display==='flex' ? [{}] : [];
+    const profile=w.document.querySelector('[data-cinema-route="profile"]');
+    let clicks=0;
+    profile.onclick=e=>{e.preventDefault();clicks++;};
+    w.eval(source);receive('shown');await frame();
+    // Home's auth, poster and feedback dialogs use display:flex to open.
+    modal.style.display='flex';
+    assert.equal(w.__maNativeDock.targetFor('activate:4'),null);
+    receive('activate:4');await frame();
+    assert.equal(clicks,0);assert.equal(posts.at(-1).visible,false);receive('hidden');
+    modal.style.display='none';await frame();
+    assert.equal(posts.at(-1).visible,true);receive('shown');
+
+    const panel=w.document.createElement('section');
+    panel.innerHTML='<div role="dialog" aria-modal="true"></div>';
+    const dynamic=panel.firstElementChild;
+    dynamic.getClientRects=()=>dynamic.classList.contains('open') ? [{}] : [];
+    w.document.body.append(panel);await frame();
+    receive('activate:4');dynamic.classList.add('open');await frame();
+    assert.equal(clicks,0);assert.equal(posts.at(-1).visible,false);receive('hidden');
+    panel.remove();await frame();
+    assert.equal(posts.at(-1).visible,true);receive('shown');
+    receive('activate:4');await tick();
+    assert.equal(clicks,1);
+  } finally {dom.window.close();}
+});
 test('Kids and outside origins retain their own navigation',()=>{
   for(const url of ['https://matchapp.tv/kids/','https://example.com/']){
     const dom=new JSDOM('<body></body>',{url,runScripts:'outside-only'});

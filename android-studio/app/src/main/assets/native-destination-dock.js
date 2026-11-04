@@ -13,6 +13,14 @@
     if(!suspended && window.document?.body?.isConnected && !timer) timer=requestAnimationFrame(publish);
   }
   const labelsObserver = new MutationObserver(schedule);
+  const dialogSelector = 'dialog,[role="dialog"]';
+  function blocked() {
+    return document.hidden || document.fullscreenElement || !nav || nav.hidden ||
+      document.body?.classList.contains('ma-jonas-modal-open') ||
+      document.body?.classList.contains('ma-jonas-chat-open') ||
+      [...document.querySelectorAll('dialog[open],[role="dialog"][aria-modal="true"]:not([hidden])')]
+        .some(el=>el.getClientRects().length);
+  }
   function publish() {
     timer = 0;
     if(suspended || !window.document?.body?.isConnected)return;
@@ -24,16 +32,13 @@
     }
     const links = slots.map(key=>nav?.querySelector('a[data-cinema-route="'+key+'"]'));
     const labels = links.map(a=>a?.querySelector('[data-cinema-copy]')?.textContent.trim() || '');
-    const blocked = document.hidden || document.fullscreenElement || document.body?.classList.contains('ma-jonas-modal-open') ||
-      document.body?.classList.contains('ma-jonas-chat-open') || (!nav || nav.hidden) ||
-      [...document.querySelectorAll('dialog[open],[role="dialog"][aria-modal="true"]:not([hidden])')].some(el=>el.getClientRects().length);
-    const payload = JSON.stringify({href:location.href, visible:!blocked && labels.every(Boolean), labels,
+    const payload = JSON.stringify({href:location.href, visible:!blocked() && labels.every(Boolean), labels,
       selected:links.findIndex(a=>a?.getAttribute('aria-current')==='page'), rtl:root.dir==='rtl',
       motion:!motion.matches && !root.classList.contains('reduce-motion')});
     if (payload !== sent) { sent=payload; bridge.postMessage(payload); }
   }
   function targetFor(message) {
-    if (document.hidden || !root.hasAttribute('data-native-dock') || !/^activate:[0-4]$/.test(message)) return null;
+    if (!root.hasAttribute('data-native-dock') || !/^activate:[0-4]$/.test(message) || blocked()) return null;
     const anchor=nav?.querySelector('a[data-cinema-route="'+slots[message.slice(-1)]+'"]');
     return anchor?.isConnected && anchor.getAttribute('aria-disabled')!=='true' ? anchor : null;
   }
@@ -67,10 +72,21 @@
     const body=document.body;
     new MutationObserver(schedule).observe(body,{childList:true,attributes:true,attributeFilter:['class']});
     new MutationObserver(schedule).observe(root,{attributes:true,attributeFilter:['lang','dir','class']});
+    // Existing dialogs open through style or class changes. Watch those writes
+    // on dialogs alone so unrelated animation and scroll styles stay cheap.
+    const dialogVisibility = new MutationObserver(schedule);
+    function watchDialogs() {
+      dialogVisibility.disconnect();
+      for(const el of body.querySelectorAll(dialogSelector))
+        dialogVisibility.observe(el,{attributes:true,attributeFilter:['style','class','open','aria-modal','aria-hidden','hidden']});
+    }
+    watchDialogs();
     new MutationObserver(records=>{
-      if(records.some(r=>r.target.matches?.('dialog,[role="dialog"]')||
-        [...r.addedNodes,...r.removedNodes].some(n=>n.matches?.('dialog,[role="dialog"]'))))schedule();
-    }).observe(body,{childList:true,subtree:true,attributes:true,attributeFilter:['open','aria-modal','aria-hidden','hidden']});
+      const changed=records.some(r=>r.type==='attributes'
+        ? r.oldValue==='dialog' || r.target.matches(dialogSelector)
+        : [...r.addedNodes,...r.removedNodes].some(n=>n.matches?.(dialogSelector) || n.querySelector?.(dialogSelector)));
+      if(changed){watchDialogs();schedule();}
+    }).observe(body,{childList:true,subtree:true,attributes:true,attributeFilter:['role'],attributeOldValue:true});
     publish();
   };
   if(document.body) bind(); else document.addEventListener('DOMContentLoaded',bind,{once:true});
