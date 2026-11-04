@@ -1,7 +1,7 @@
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
-const {cinemaAssets} = require('./finalize-brand.js');
+const {cinemaAssets,canonicalFavicons,versionBrandStylesheet} = require('./finalize-brand.js');
 const copy = require('../channels/copy.json');
 const shelves = require('../channels/shelves.json');
 const localMedia = require('../channels/local-media.json');
@@ -63,14 +63,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
 ${page==='trail'?'<script defer src="/viewer-country.js?v=guestcountry20261027"></script><script defer src="/ebooks/affiliate-links.js?v=retail1"></script><script defer src="/channels/shop.js?v=1"></script>':''}
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&amp;dock=20261020-1"></script>
 <script defer src="/channels/reader.js?v=1"></script><script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;subtle=20261101-4"></script>
 </head><body class="channel-page"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><main class="channel-layout"><header class="channel-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img width="48" height="48" alt="" src="/assets/brand/matchapp-ai-mark.svg">MatchApp Ai</a><details><summary>${esc(t.language)} · ${esc(t.name)}</summary><nav class="channel-language-list" aria-label="${esc(t.language)}">${others.map(([l,c])=>'<a class="channel-button" lang="'+l+'" hreflang="'+l+'" href="'+route(page,l)+'"'+(lang===l?' aria-current="page"':'')+'>'+esc(c.name)+'</a>').join('')}</nav></details></header>
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><main class="channel-layout"><header class="channel-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img class="matchapp-wordmark ma-playai-mark" width="48" height="48" alt="" src="/assets/brand/matchapp-ai-mark.svg">MatchApp Ai</a><details><summary>${esc(t.language)} · ${esc(t.name)}</summary><nav class="channel-language-list" aria-label="${esc(t.language)}">${others.map(([l,c])=>'<a class="channel-button" lang="'+l+'" hreflang="'+l+'" href="'+route(page,l)+'"'+(lang===l?' aria-current="page"':'')+'>'+esc(c.name)+'</a>').join('')}</nav></details></header>
 <div class="channel-hero"><h1>${esc(t[page])}</h1><p>${esc(description)}</p></div>
 <nav aria-label="${esc(t[page])}">${groups.map(g=>button('#'+g,t[g])).join('')}${button(route('trail',lang)+'#shop',shopCopy[lang].shop)}</nav><div class="channel-grid">${groups.map(section).join('')}</div>
 <p>${esc(t.note)}</p>${page==='trail'?shopPanel(lang):''}<nav>${button(route(peer,lang),t[peer])}${page==='trail'?button('/where-to-watch/',t.screen)+button('/music.html',t.album)+button('/ebooks/',t.fiction):''}${button('/discover.html','Jonas')}${button('/','MatchApp Ai')}</nav>
 </main></body></html>\n`;
-  return cinemaAssets(html,route(page,lang).slice(1)+'index.html');
+  return cinemaAssets(versionBrandStylesheet(canonicalFavicons(html)),route(page,lang).slice(1)+'index.html');
 }
 function build() {
   const urls=[];
