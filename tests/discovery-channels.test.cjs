@@ -5,6 +5,7 @@ const path = require('node:path');
 const {JSDOM} = require('jsdom');
 const {route,pages,render} = require('../tools/build-discovery-channels.cjs');
 const copy = require('../channels/copy.json');
+const localMedia = require('../channels/local-media.json');
 const root = path.join(__dirname,'..');
 const read = rel => fs.readFileSync(path.join(root,rel),'utf8');
 
@@ -23,6 +24,10 @@ test('all 28 discovery routes have static content, reciprocal alternates and a s
     assert.equal(doc.querySelector('[rel=canonical]').href,url);
     assert.ok(sitemap.includes('<loc>'+url+'</loc>'));
     for(const other of Object.keys(copy)) assert.equal(doc.querySelector('[hreflang="'+other+'"]').href,'https://matchapp.tv'+route(page,other));
+    if(page==='tech') {
+      const [section,entry]=Object.entries(localMedia[lang])[0];
+      assert.equal(doc.getElementById(section).querySelector('a').href,entry[2]);
+    }
     const graph=JSON.parse(doc.querySelector('[type="application/ld+json"]').textContent);
     assert.equal(graph.mainEntity.numberOfItems,doc.querySelectorAll('article li').length);
     for(const group of groups) assert.ok(doc.getElementById(group).querySelectorAll('a').length>=2);

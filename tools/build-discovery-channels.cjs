@@ -4,6 +4,7 @@ const path = require('node:path');
 const {cinemaAssets} = require('./finalize-brand.js');
 const copy = require('../channels/copy.json');
 const shelves = require('../channels/shelves.json');
+const localMedia = require('../channels/local-media.json');
 const root = path.join(__dirname, '..');
 const origin = 'https://matchapp.tv';
 const pages = {tech:['video','podcast','book','audiobook','press'], trail:['screen','album','fiction']};
@@ -13,7 +14,9 @@ function route(page, lang) {
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const gitLocales = {'pt-BR':'pt-br',es:'es',fr:'fr',de:'de',ja:'ja',ko:'ko',ru:'ru',tr:'tr',zh:'zh'};
 function picks(section, lang) {
-  return shelves[section].map(([title, byline, href]) => {
+  const local = localMedia[lang][section];
+  const entries = local ? [local, ...shelves[section]] : shelves[section];
+  return entries.map(([title, byline, href]) => {
     if (title === 'Pro Git' && gitLocales[lang]) href=href.replace('/en/', '/'+gitLocales[lang]+'/');
     if (title === 'CS50x · Scratch · YouTube' && ['pt-BR','es'].includes(lang)) {
       const pt = lang === 'pt-BR';
@@ -53,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><main class="channel-layout"><header class="channel-header"><a class="matchapp-brand-link" href="/" aria-label="MatchApp Ai"><img width="48" height="48" alt="" src="/assets/brand/matchapp-ai-mark.svg">MatchApp Ai</a><details><summary>${esc(t.language)} · ${esc(t.name)}</summary><nav class="channel-language-list" aria-label="${esc(t.language)}">${others.map(([l,c])=>'<a class="channel-button" lang="'+l+'" hreflang="'+l+'" href="'+route(page,l)+'"'+(lang===l?' aria-current="page"':'')+'>'+esc(c.name)+'</a>').join('')}</nav></details></header>
 <div class="channel-hero"><h1>${esc(t[page])}</h1><p>${esc(description)}</p></div>
 <nav aria-label="${esc(t[page])}">${groups.map(g=>button('#'+g,t[g])).join('')}</nav><div class="channel-grid">${groups.map(section).join('')}</div>
-<p>${esc(t.note)}</p><nav>${button(route(peer,lang),t[peer])}${button('/discover.html','Jonas')}${button('/','MatchApp Ai')}</nav>
+<p>${esc(t.note)}</p><nav>${button(route(peer,lang),t[peer])}${page==='trail'?button('/where-to-watch/',t.screen)+button('/music.html',t.album)+button('/ebooks/',t.fiction):''}${button('/discover.html','Jonas')}${button('/','MatchApp Ai')}</nav>
 </main></body></html>\n`;
   return cinemaAssets(html,route(page,lang).slice(1)+'index.html');
 }
