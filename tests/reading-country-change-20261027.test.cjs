@@ -20,7 +20,7 @@ async function boot({format='ebook',client,top=false}={}){
   const w=dom.window,coordinator=installGuestReservations(w);
   w.MATCH_LANG='en';w.MATCHAPP_EBOOK_CATALOG=[book];
   w.MATCHAPP_TOP_EBOOKS=top?[{...book,market:'GLOBAL',source:'Fixture source',sourceUrl:'https://example.test/reading'}]:[];
-  w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLMediaElement.prototype.pause=()=>{};
+  w.matchMedia=query=>({matches:query!=='(display-mode: standalone)'});w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLMediaElement.prototype.pause=()=>{};
   w.fetch=async()=>{throw Error('Cover requests are outside country-change regression');};
   w.localStorage.setItem('match_user_country','United States');
   w.localStorage.setItem('match_user_region','California');
@@ -29,6 +29,7 @@ async function boot({format='ebook',client,top=false}={}){
   let debits=0;
   w.checkDailyLimit=async()=>{debits++;return true;};
   w.eval(read('viewer-country.js'));
+  w.eval(read('ebooks/affiliate-links.js'));
   w.eval(read('ebooks/ebook-matcher.js'));
   w.document.dispatchEvent(new w.Event('DOMContentLoaded'));await settle();
   const root=w.document.getElementById('ebook-matcher-root');

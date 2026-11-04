@@ -20,14 +20,14 @@ const book=(id,genres,moods,access=['free','paid'])=>({
  id,title:id,author:'Known Writer',year:1885,genres,moods,pace:'balanced',
  length:'medium',era:'classic',access,summary:'A real catalogued reading profile.'
 });
-async function setup(criteria={},items=null,magazines=null){
+async function setup(criteria={},items=null,magazines=null,installed=false){
  const dom=new JSDOM('<!doctype html><html lang="en"><body class="page-home"><main><div id="questionnaire-box"></div><section id="ebook-matcher-root"></section></main></body></html>',{
   url:'https://matchapp.tv/',runScripts:'outside-only'
  });
  const w=dom.window;
  installGuestReservations(w);
  w.MATCH_LANG='en';w.MATCHAPP_TOP_EBOOKS=[];
- w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=()=>{};
+ w.matchMedia=query=>({matches:query==='(display-mode: standalone)'?installed:true});w.HTMLElement.prototype.scrollIntoView=()=>{};
  w.fetch=async()=>{throw Error('Cover network unavailable in isolated test')};
  w.localStorage.setItem('match_ebook_criteria_v1',JSON.stringify({...base,...criteria}));
  if(items===null)w.eval(read('ebooks/catalog.js'));else w.MATCHAPP_EBOOK_CATALOG=items;
@@ -36,6 +36,7 @@ async function setup(criteria={},items=null,magazines=null){
   buyLinks:m=>[{name:'Official publisher',url:m.issues}]
  };
  let credits=0;w.checkDailyLimit=async()=>{credits++;return true};
+ w.eval(read('ebooks/affiliate-links.js'));
  w.eval(read('ebooks/ebook-matcher.js'));
  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  await new Promise(resolve=>setTimeout(resolve,0));
@@ -80,6 +81,16 @@ test('Bookworms uses the chosen country despite a different browser language',as
   assert(urls.some(url=>url.startsWith('https://www.amazon.co.uk/')));
   assert(!urls.some(url=>/amazon\.com\.br|books\.apple\.com\/us\/|barnesandnoble/.test(url)));
  }finally{h.dom.window.close()}
+});
+test('installed reading surfaces retain official bookstores while withholding Amazon',async()=>{
+ const h=await setup({},[book('Installed reading fixture',['classics'],['curious'])],null,true);
+ try{
+  h.w.localStorage.setItem('match_user_country','United Kingdom');
+  h.w.eval(read('viewer-country.js'));await h.w.MatchAppEbooks.match();
+  const urls=[...h.result().querySelectorAll('a[href]')].map(a=>new URL(a.href));
+  assert(urls.some(u=>u.hostname==='books.apple.com'&&u.pathname.startsWith('/gb/')));
+  assert(!urls.some(u=>u.hostname.includes('amazon.')));
+ }finally{h.dom.window.close();}
 });
 test('an unknown country offers the guest picker and never requests a US cover storefront',async()=>{
  const h=await setup({},[book('Unknown country book',['classics'],['curious'])]);
