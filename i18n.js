@@ -2945,6 +2945,18 @@ function detectLanguage() {
     return 'en';
 }
 
+// Optional page-owned guidance is plain text; the existing locale owner handles
+// initial rendering, deliberate language changes and cross-tab preference updates.
+Object.entries(window.MatchAppDiscoverEditorialCopy || {}).forEach(([lang, copy]) => {
+    if (!I18N[lang]) return;
+    Object.entries(copy).forEach(([key, value]) => { I18N[lang]['dc.guide.' + key] = value; });
+});
+
+Object.entries(window.MatchAppDiscoverQuotaCopy || {}).forEach(([lang, copy]) => {
+    if (!I18N[lang]) return;
+    Object.entries(copy).forEach(([key, value]) => { I18N[lang]['dc.quota.' + key] = value; });
+});
+
 /* ---------- Application ---------- */
 // Discovery describes provider links, not a promise of licensed playback on MatchApp Ai.
 Object.entries({

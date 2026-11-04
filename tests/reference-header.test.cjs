@@ -11,7 +11,7 @@ const read=file=>fs.readFileSync(path.join(repo,file),'utf8');
 const saved='{"x":0.79,"y":0.66}';
 const positionKeys=['matchapp-jonas-position-v2','matchapp-jonas-inline-position-v1','matchapp_jonas_ambient_position_v1'];
 const headerPositionKey='matchapp-jonas-header-drag-v1';
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const launcher='<div id="ma-jonas-home" style="position:fixed;left:200px;top:300px;transform:translate3d(8px,9px,0)">'+
  '<button type="button" id="ma-jonas-home-bubble" class="jh-bubble"><span class="jh-portrait"><img alt=""></span></button>'+
  '<section id="ma-jonas-home-panel" class="jh-popover" hidden role="dialog">'+
@@ -156,22 +156,22 @@ test('flow reservation follows the measured header height after a resize',async 
  assert.equal(w.document.getElementById('ma-reference-header-space').style.height,'142px');assert.equal(w.document.documentElement.style.getPropertyValue('--ma-reference-header-height'),'142px');
 });
 
-test('header tools use the explicitly selected language in all fourteen locales',t=>{
+test('header tools use the explicitly selected language in all fifteen locales',t=>{
  const f=scene();t.after(f.close);const {w}=f;f.start();
  const summary=w.document.querySelector('.ma-reference-header-tools>summary');assert.ok(summary);
  const labels=new Set();
  for(const lang of languages){w.localStorage.setItem('match_lang',lang);w.MATCH_LANG=lang;w.document.documentElement.lang=lang;w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang}}));const label=summary.getAttribute('aria-label');assert.ok(label?.trim(),lang);assert.equal(summary.title,label);labels.add(label);}
- assert.equal(labels.size,14);unchangedPositions(w);
+ assert.equal(labels.size,languages.length);unchangedPositions(w);
 });
 
-test('the visible assistant invitation activates the same launcher and follows all fourteen selected languages',t=>{
+test('the visible assistant invitation activates the same launcher and follows all fifteen selected languages',t=>{
  const f=scene();t.after(f.close);const {w}=f;f.start();
  const root=w.document.getElementById('ma-jonas-home'),bubble=w.document.getElementById('ma-jonas-home-bubble');let clicks=0;bubble.addEventListener('click',()=>clicks++);
  const caption=root.querySelector(':scope > .ma-reference-jonas-caption');assert.ok(caption);assert.equal(caption.tagName,'LABEL');assert.equal(caption.htmlFor,bubble.id);
  assert.equal(caption.querySelector('strong').textContent,'Jonas · AI assistant');assert.equal(caption.querySelector('span').textContent,'Tap to talk');
  caption.click();assert.equal(clicks,1,'the invitation must use the original conversation action');
  const labels=new Set();for(const lang of languages){w.localStorage.setItem('match_lang',lang);w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang}}));const text=caption.textContent;assert.ok(text.trim());labels.add(text);assert.equal(bubble.getAttribute('aria-label'),caption.querySelector('strong').textContent);assert.ok(bubble.getAttribute('aria-describedby').split(' ').includes(caption.querySelector('span').id));assert.equal(caption.dir,lang==='ar'?'rtl':'ltr');}
- assert.equal(labels.size,14);w.localStorage.setItem('match_lang','pt-BR');w.document.dispatchEvent(new w.Event('matchapp:langchange'));assert.equal(caption.querySelector('strong').textContent,'Jonas · assistente de IA');assert.equal(caption.querySelector('span').textContent,'Toque para conversar');
+ assert.equal(labels.size,languages.length);w.localStorage.setItem('match_lang','pt-BR');w.document.dispatchEvent(new w.Event('matchapp:langchange'));assert.equal(caption.querySelector('strong').textContent,'Jonas · assistente de IA');assert.equal(caption.querySelector('span').textContent,'Toque para conversar');
  w.MatchAppReferenceHeader.claim(root);assert.equal(root.querySelectorAll('.ma-reference-jonas-caption').length,1);assert.equal(root.querySelectorAll('.jh-bubble').length,1);unchangedPositions(w);
 });
 
@@ -287,4 +287,37 @@ test('masthead copy follows all chosen languages and survives a late canonical h
  }
  const late=w.document.createElement('header');late.className='app-header';late.innerHTML='<div class="mh-head"><a class="ma-brand-lockup" href="/">MatchApp Ai</a></div><button>Original</button>';w.document.body.appendChild(late);await flush(w);
  assert.equal(w.document.querySelectorAll('.ma-masthead-intro').length,1);assert.equal(intro.parentElement,late.querySelector('.mh-head'));
+});
+
+test('header preserves Traditional Chinese aliases before and after the shared locale helper loads',t=>{
+  for(const shared of [false,true]) {
+    const f=scene();t.after(f.close);const {w}=f;
+    if(shared)w.eval(read('i18n.js'));
+    f.start();
+    const intro=w.document.querySelector('.ma-masthead-intro');
+    const caption=w.document.querySelector('.ma-reference-jonas-caption');
+    assert.ok(intro);assert.ok(caption);
+    const cases=[
+      ['zh-TW','zh-TW'],['zh_Hant_HK','zh-TW'],['zh-Hant-CN','zh-TW'],['zh-HK','zh-TW'],['zh-MO','zh-TW'],
+      ['zh-Hans-TW','zh'],['zh-CN','zh'],['pt-BR','pt'],['pt_BR','pt']
+    ];
+    for(const [selected,expected] of cases) {
+      w.localStorage.setItem('match_lang',selected);w.MATCH_LANG='en';w.document.documentElement.lang='en';
+      w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang:selected}}));
+      assert.equal(intro.lang,expected,selected+' shared='+shared);
+      if(expected==='zh-TW') {
+        assert.equal(intro.firstElementChild.textContent,'找到適合你的娛樂。');
+        assert.equal(caption.querySelector('strong').textContent,'喬納斯 · AI助手');
+        assert.equal(caption.querySelector('span').textContent,'輕點開始對話');
+      } else if(expected==='zh') {
+        assert.equal(intro.firstElementChild.textContent,'找到适合你的娱乐。');
+        assert.equal(caption.querySelector('strong').textContent,'乔纳斯 · AI助手');
+      } else {
+        assert.equal(caption.querySelector('strong').textContent,'Jonas · assistente de IA');
+        assert.equal(caption.querySelector('span').textContent,'Toque para conversar');
+      }
+    }
+    unchangedPositions(w);
+    assert.equal(w.localStorage.getItem('match_history'),JSON.stringify([{title:'Saved title'}]));
+  }
 });

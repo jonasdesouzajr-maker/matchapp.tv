@@ -106,7 +106,15 @@
     return true;
   }
   function chooseLauncher(){return document.getElementById('ma-ambient-jonas')||document.getElementById('ma-jonas-home');}
-  function currentLanguage(){var selected='';try{selected=localStorage.getItem('match_lang')||'';}catch(_){}return String(selected||window.MATCH_LANG||html.lang||'en').toLowerCase().split('-')[0];}
+  function currentLanguage(){
+    var selected='';try{selected=localStorage.getItem('match_lang')||'';}catch(_){}
+    var value=String(selected||window.MATCH_LANG||html.lang||'en').trim().replace(/_/g,'-');
+    var han=window.MatchAppHanLocale&&window.MatchAppHanLocale.normalize(value);
+    if(han)return han;
+    var parts=value.toLowerCase().split('-');
+    if(parts[0]==='zh')return parts.indexOf('hans')!==-1?'zh':parts.some(function(part){return ['hant','tw','hk','mo'].indexOf(part)!==-1;})?'zh-TW':'zh';
+    return parts[0];
+  }
   function ensureCaption(root){
     var bubble=root.querySelector('.ja-bubble,.jh-bubble');if(!bubble)return;
     if(!bubble.id)bubble.id=root.id+'-launcher';
