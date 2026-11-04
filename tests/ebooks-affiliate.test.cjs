@@ -24,20 +24,12 @@ test('affiliate tracking is never leaked to other Amazon marketplaces',()=>{
   assert.equal(aff.isAffiliateLink(link.href),false);
  }
 });
-test('native Android remains untagged until its separate affiliate app approval',()=>{
- const aff=affiliate('Mozilla/5.0 MatchAppAiAndroid/1.1.28');
- const link=new URL(aff.amazonSearchUrl(book,'BR'));
- assert.equal(link.hostname,'www.amazon.com.br');
- assert.equal(link.searchParams.has('tag'),false);
-});
-test('unapproved installed PWAs and television browsers do not receive affiliate tags',()=>{
- for(const options of [{pwaStandalone:true},{iosStandalone:true}]){
-  const link=new URL(affiliate('Mozilla/5.0',options).amazonSearchUrl(book,'BR'));
-  assert.equal(link.searchParams.has('tag'),false,'installed PWA must await retailer approval');
- }
- for(const ua of ['Mozilla/5.0 SmartTV','Mozilla/5.0 (Linux; Android TV)','Mozilla/5.0 Roku','Mozilla/5.0 HbbTV']){
-  const link=new URL(affiliate(ua).amazonSearchUrl(book,'BR'));
-  assert.equal(link.searchParams.has('tag'),false,'TV app not an approved affiliate surface');
+test('unapproved native, installed, embedded and TV surfaces do not receive Amazon retailer links',()=>{
+ for(const [ua,options] of [['Mozilla MatchAppAiAndroid/1.1.68',{}],['Android; wv) Chrome',{}],['Mozilla WebView',{}],['Mozilla', {pwaStandalone:true}],['Mozilla', {iosStandalone:true}],['SmartTV',{}],['Mozilla/5.0 (Linux; Android TV)',{}],['Roku',{}],['HbbTV',{}]]){
+  const aff=affiliate(ua,options);
+  assert.equal(aff.amazonSearchUrl(book,'BR'),'');
+  assert.equal(aff.amazonMagazineSearchUrl({title:'Example'},'BR'),'');
+  assert.equal(aff.amazonRetailSearchUrl('tripod','BR'),'');
  }
 });
 test('affiliate recognition is strict and disclosures are available in PT and English',()=>{
