@@ -7,11 +7,15 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.SystemClock
 import android.provider.Settings
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.webkit.WebView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.webkit.JavaScriptReplyProxy
 import androidx.webkit.WebViewCompat
 import androidx.webkit.WebViewFeature
@@ -29,6 +33,20 @@ class NativeDestinationDock(
         R.drawable.ic_dock_list, R.drawable.ic_dock_profile)
     private val script by lazy { web.context.assets.open("native-destination-dock.js").bufferedReader().use { it.readText() } }
     private val explore = NativeExploreSheet(bar.context)
+    private val exploreActionId = View.generateViewId()
+    private val exploreAccessibility = object : AccessibilityDelegateCompat() {
+        override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
+            super.onInitializeAccessibilityNodeInfo(host, info)
+            // Material removes ACTION_CLICK from selected tabs after this callback.
+            // A separate chooser action remains available to accessibility services.
+            if (host.isSelected) info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                exploreActionId, bar.menu.getItem(1).title))
+        }
+        override fun performAccessibilityAction(host: View, action: Int, args: Bundle?): Boolean {
+            return if (action == exploreActionId) host.performClick()
+                else super.performAccessibilityAction(host, action, args)
+        }
+    }
     private var language = "en"
     private var syncing = false
     private var keyboard = false
@@ -68,7 +86,7 @@ class NativeDestinationDock(
         }
         fun showExplore() {
             explore.show(language, bar.layoutDirection == View.LAYOUT_DIRECTION_RTL,
-                bar.menu.getItem(1).title.toString()) { key, locale ->
+                bar.menu.getItem(1).title.toString(), pressMotion == true) { key, locale ->
                 if (!requested || keyboard || documentUrl != web.url) return@show
                 when (key) {
                     "matches" -> sendCommand("activate:2")
@@ -179,6 +197,9 @@ class NativeDestinationDock(
     fun setKeyboard(visible: Boolean) { keyboard=visible; render() }
 
     private fun render() {
+        // Menu title updates can rebuild Material's selected item view.
+        // Restore Explore's chooser action on the current view after every update.
+        bar.findViewById<View>(2)?.let { ViewCompat.setAccessibilityDelegate(it, exploreAccessibility) }
         bar.visibility=if(requested && !keyboard) View.VISIBLE else View.GONE
     }
 

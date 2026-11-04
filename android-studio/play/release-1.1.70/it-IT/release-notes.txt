@@ -1,0 +1,1 @@
+Esplora apre una schermata Android nativa con schede in rilievo, transizioni fluide ed effetti al tocco. Le etichette lunghe restano nei pulsanti senza sovrapporsi alla sezione successiva. Rispetta le preferenze di movimento ridotto e le animazioni Android.

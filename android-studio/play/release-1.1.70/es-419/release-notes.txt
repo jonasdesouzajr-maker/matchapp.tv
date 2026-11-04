@@ -1,0 +1,1 @@
+Explorar abre una pantalla nativa de Android, con tarjetas en capas, transiciones suaves y respuesta al tocar. Los textos largos caben en los botones sin superponerse a la sección siguiente. Respeta el movimiento reducido y los ajustes de animación de Android.

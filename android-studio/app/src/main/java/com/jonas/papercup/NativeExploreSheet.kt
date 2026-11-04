@@ -1,12 +1,18 @@
 package com.jonas.papercup
 
+import android.animation.AnimatorInflater
+import android.animation.ValueAnimator
 import android.app.Dialog
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
+import android.provider.Settings
 import android.graphics.drawable.GradientDrawable
 import android.view.Gravity
+import android.view.animation.DecelerateInterpolator
+import android.view.accessibility.AccessibilityManager
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.FrameLayout
@@ -17,8 +23,8 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.card.MaterialCardView
 import org.json.JSONObject
 import kotlin.math.roundToInt
@@ -39,7 +45,7 @@ class NativeExploreSheet(private val context: Context) {
 
     fun close() { dialog?.dismiss() }
 
-    fun show(lang: String, rtl: Boolean, exploreLabel: String, select: (String, String) -> Unit) {
+    fun show(lang: String, rtl: Boolean, exploreLabel: String, motion: Boolean, select: (String, String) -> Unit) {
         if (dialog?.isShowing == true) return
         val code = lang.substringBefore('-').lowercase(java.util.Locale.ROOT)
         val locale = when {
@@ -49,7 +55,11 @@ class NativeExploreSheet(private val context: Context) {
         }
         val copy = copies.getJSONObject(locale)
         val wide = context.resources.configuration.smallestScreenWidthDp >= 600
-        val sheet: Dialog = if (wide) Dialog(context, android.R.style.Theme_Material_NoActionBar) else BottomSheetDialog(context)
+        val systemMotion = if (Build.VERSION.SDK_INT >= 26) ValueAnimator.areAnimatorsEnabled() else
+            Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) > 0
+        val animate = motion && systemMotion &&
+            !(context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isTouchExplorationEnabled
+        val sheet = Dialog(context, android.R.style.Theme_Material_NoActionBar)
         dialog = sheet
         sheet.setOnDismissListener { if (dialog === sheet) dialog = null }
         val panel = LinearLayout(context).apply {
@@ -58,37 +68,35 @@ class NativeExploreSheet(private val context: Context) {
             setPadding(dp(if (wide) 28 else 18), dp(if (wide) 24 else 10), dp(if (wide) 28 else 18), dp(24))
             ViewCompat.setAccessibilityPaneTitle(this, exploreLabel)
         }
-        val scroll = ScrollView(context).apply { isFillViewport = wide }
+        val scroll = ScrollView(context).apply { isFillViewport = true; clipToPadding = false }
         val backdrop = GradientDrawable(GradientDrawable.Orientation.TL_BR,
             intArrayOf(0xFF3B284C.toInt(), 0xFF211B30.toInt(), 0xFF17151F.toInt()))
-        if (wide) {
-            scroll.background = backdrop
-            val frame = FrameLayout(context)
-            val width = minOf(dp(650), context.resources.displayMetrics.widthPixels)
-            frame.addView(panel, FrameLayout.LayoutParams(width, LayoutParams.WRAP_CONTENT, Gravity.CENTER))
-            scroll.addView(frame)
-            ViewCompat.setOnApplyWindowInsetsListener(scroll) { view, insets ->
-                val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
-                view.setPadding(bars.left,bars.top,bars.right,bars.bottom)
-                insets
-            }
-        } else {
-            backdrop.cornerRadius = dp(25).toFloat()
-            panel.background = backdrop
-            scroll.addView(panel)
-            panel.addView(View(context).apply {
-                background = GradientDrawable().apply { setColor(0xFFA79AAC.toInt()); cornerRadius = dp(3).toFloat() }
-            }, LinearLayout.LayoutParams(dp(36),dp(4)).apply { gravity = Gravity.CENTER_HORIZONTAL })
+        scroll.background = backdrop
+        val frame = FrameLayout(context)
+        val width = minOf(dp(if (wide) 880 else 650), context.resources.displayMetrics.widthPixels)
+        val split = wide && context.resources.configuration.screenWidthDp >= 720 && context.resources.configuration.fontScale <= 1.15f
+        frame.addView(panel, FrameLayout.LayoutParams(width, LayoutParams.WRAP_CONTENT, Gravity.TOP or Gravity.CENTER_HORIZONTAL).apply {
+            topMargin = dp(if (wide) 56 else 20)
+        })
+        scroll.addView(frame)
+        ViewCompat.setOnApplyWindowInsetsListener(scroll) { view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+            view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            insets
         }
         val header = LinearLayout(context).apply { gravity = Gravity.CENTER_VERTICAL }
-        if (wide) header.addView(ImageView(context).apply {
-            setImageResource(R.drawable.matchapp_launcher_orbit)
+        header.addView(ImageView(context).apply {
+            setImageResource(R.mipmap.ic_launcher)
+            elevation = dp(9).toFloat()
+            outlineProvider = android.view.ViewOutlineProvider.BACKGROUND
+            background = GradientDrawable().apply { setColor(0xFF271536.toInt()); cornerRadius = dp(19).toFloat() }
+            clipToOutline = true
             importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
-        }, LinearLayout.LayoutParams(dp(96),dp(96)))
+        }, LinearLayout.LayoutParams(dp(if (wide) 88 else 64),dp(if (wide) 88 else 64)).apply { marginEnd = dp(16) })
         val headings = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
             setPaddingRelative(0,dp(12),dp(8),dp(12))
-            addView(label(exploreLabel, 14f, true, 0xFFF1D29A.toInt()))
+            addView(label("MatchApp Ai · $exploreLabel", 13f, true, 0xFFF1D29A.toInt()))
             addView(label(copy.getString("heading"), if (wide) 30f else 22f, true, 0xFFFFF7EC.toInt()))
         }
         header.addView(headings, LinearLayout.LayoutParams(0,LayoutParams.WRAP_CONTENT,1f))
@@ -101,13 +109,17 @@ class NativeExploreSheet(private val context: Context) {
             contentDescription = copy.getString("close")
             setOnClickListener { close() }
         }, LinearLayout.LayoutParams(dp(48),dp(48)))
-        panel.addView(header)
-        fun card(key: String, titleKey: String, hintKey: String?, icon: Int, color: Int) {
+        panel.addView(header, LinearLayout.LayoutParams(-1,-2).apply { bottomMargin = dp(16) })
+        var cardIndex = 0
+        fun card(key: String, titleKey: String, hintKey: String?, icon: Int, color: Int,
+                 host: LinearLayout = panel, tile: Boolean = false, primary: Boolean = false) {
             val title = copy.getString(titleKey)
             val hint = hintKey?.let(copy::getString)
             val item = MaterialCardView(context).apply {
                 radius = dp(if (wide) 21 else 16).toFloat()
-                cardElevation = dp(3).toFloat()
+                cardElevation = dp(6).toFloat()
+                cameraDistance = 9000 * context.resources.displayMetrics.density
+                if (animate) stateListAnimator = AnimatorInflater.loadStateListAnimator(context, R.animator.explore_press_depth)
                 setCardBackgroundColor(color)
                 strokeWidth = 0
                 rippleColor = ColorStateList.valueOf(0x44FFF0CC)
@@ -117,33 +129,58 @@ class NativeExploreSheet(private val context: Context) {
                 setOnClickListener { close(); select(key, locale) }
             }
             val row = LinearLayout(context).apply {
-                gravity = Gravity.CENTER_VERTICAL
-                minimumHeight = dp(if (wide) 83 else if (hint == null) 48 else 64)
-                setPadding(dp(if (wide) 22 else 15),dp(10),dp(15),dp(10))
+                gravity = if (tile) Gravity.START else Gravity.CENTER_VERTICAL
+                orientation = if (tile) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
+                background = GradientDrawable(GradientDrawable.Orientation.TL_BR,
+                    intArrayOf(0x16FFFFFF,0x03FFFFFF,0x16000000))
+                minimumHeight = dp(if (tile) 208 else if (primary) 132 else if (hint == null) 60 else 92)
+                setPadding(dp(if (wide) 22 else 17),dp(if (primary) 24 else 14),dp(17),dp(if (primary) 24 else 14))
                 importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
             }
-            row.addView(ImageView(context).apply { setImageResource(icon) }, LinearLayout.LayoutParams(dp(30),dp(30)))
+            row.addView(ImageView(context).apply {
+                setImageResource(icon)
+                setPadding(dp(10),dp(10),dp(10),dp(10))
+                background = GradientDrawable(GradientDrawable.Orientation.TL_BR,
+                    intArrayOf(0x305F466F,0x15000000)).apply { cornerRadius = dp(16).toFloat() }
+            }, LinearLayout.LayoutParams(dp(49),dp(49)))
             val captions = LinearLayout(context).apply {
                 orientation = LinearLayout.VERTICAL
-                setPaddingRelative(dp(15),0,0,0)
-                addView(label(title,if (wide) 20f else 16f,true,0xFFFFF6EC.toInt()))
-                if (hint != null) addView(label(hint,if (wide) 15f else 13f,false,0xFFDFD3E3.toInt()))
+                setPaddingRelative(dp(if (tile) 0 else 15),dp(if (tile) 15 else 0),0,0)
+                addView(label(title,if (primary) 24f else if (wide) 20f else 18f,true,0xFFFFF6EC.toInt()))
+                if (hint != null) addView(label(hint,if (wide) 15f else 14f,false,0xFFDFD3E3.toInt()))
             }
-            row.addView(captions,LinearLayout.LayoutParams(0,LayoutParams.WRAP_CONTENT,1f))
+            row.addView(captions,if (tile) LinearLayout.LayoutParams(-1,-2) else LinearLayout.LayoutParams(0,-2,1f))
+            row.addView(ImageView(context).apply {
+                setImageResource(R.drawable.ic_explore_arrow)
+                importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+            }, LinearLayout.LayoutParams(dp(20),dp(20)).apply { marginStart = dp(10); if (tile) { gravity = Gravity.END; topMargin = dp(12) } })
             item.addView(row)
-            panel.addView(item,LinearLayout.LayoutParams(-1,-2).apply { topMargin = dp(if (wide) 12 else 7) })
+            host.addView(item,if (tile) LinearLayout.LayoutParams(0,-1,1f).apply {
+                if (key == "trail") marginStart = dp(14)
+            } else LinearLayout.LayoutParams(-1,-2).apply { topMargin = dp(12) })
+            if (animate) {
+                item.alpha = 0f
+                item.translationY = dp(15).toFloat()
+                item.animate().alpha(1f).translationY(0f).setStartDelay(40L * cardIndex)
+                    .setDuration(240L).setInterpolator(DecelerateInterpolator()).start()
+            }
+            cardIndex++
         }
-        card("matches","pick","matchHint",R.drawable.ic_dock_matches,0xFF4E3742.toInt())
-        card("tech","tech","techHint",R.drawable.ic_dock_explore,0xFF433453.toInt())
-        card("trail","trail","trailHint",R.drawable.ic_dock_list,0xFF293E42.toInt())
+        card("matches","pick","matchHint",R.drawable.ic_dock_matches,0xFF4E3742.toInt(),primary = true)
+        val discoveries = if (split) LinearLayout(context).also { row ->
+            row.orientation = LinearLayout.HORIZONTAL
+            panel.addView(row,LinearLayout.LayoutParams(-1,-2).apply { topMargin = dp(14) })
+        } else panel
+        card("tech","tech","techHint",R.drawable.ic_dock_explore,0xFF433453.toInt(),discoveries,split)
+        card("trail","trail","trailHint",R.drawable.ic_dock_list,0xFF293E42.toInt(),discoveries,split)
         card("all","all",null,R.drawable.ic_dock_home,0xFF353040.toInt())
         sheet.setContentView(scroll)
-        if (sheet is BottomSheetDialog) {
-            sheet.setOnShowListener {
-                sheet.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)?.setBackgroundColor(Color.TRANSPARENT)
-                sheet.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-            }
-        } else sheet.window?.setLayout(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
+        sheet.window?.let { window ->
+            WindowCompat.setDecorFitsSystemWindows(window,false)
+            WindowInsetsControllerCompat(window,scroll).isAppearanceLightStatusBars = false
+            WindowInsetsControllerCompat(window,scroll).isAppearanceLightNavigationBars = false
+        }
         sheet.show()
+        sheet.window?.setLayout(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
     }
 }

@@ -1,0 +1,1 @@
+Entdecken öffnet einen nativen Android-Bildschirm mit räumlichen Karten, sanften Übergängen und Druckeffekten. Lange Beschriftungen passen in die Schaltflächen, ohne den nächsten Abschnitt zu überdecken. Reduzierte Bewegung und Android-Animationseinstellungen werden berücksichtigt.
