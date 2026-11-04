@@ -73,8 +73,11 @@ class NativeExploreSheet(private val context: Context) {
             intArrayOf(0xFF3B284C.toInt(), 0xFF211B30.toInt(), 0xFF17151F.toInt()))
         scroll.background = backdrop
         val frame = FrameLayout(context)
-        val width = minOf(dp(650), context.resources.displayMetrics.widthPixels)
-        frame.addView(panel, FrameLayout.LayoutParams(width, LayoutParams.WRAP_CONTENT, Gravity.CENTER))
+        val width = minOf(dp(if (wide) 880 else 650), context.resources.displayMetrics.widthPixels)
+        val split = wide && context.resources.configuration.screenWidthDp >= 720 && context.resources.configuration.fontScale <= 1.15f
+        frame.addView(panel, FrameLayout.LayoutParams(width, LayoutParams.WRAP_CONTENT, Gravity.TOP or Gravity.CENTER_HORIZONTAL).apply {
+            topMargin = dp(if (wide) 56 else 20)
+        })
         scroll.addView(frame)
         ViewCompat.setOnApplyWindowInsetsListener(scroll) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
@@ -108,7 +111,8 @@ class NativeExploreSheet(private val context: Context) {
         }, LinearLayout.LayoutParams(dp(48),dp(48)))
         panel.addView(header, LinearLayout.LayoutParams(-1,-2).apply { bottomMargin = dp(16) })
         var cardIndex = 0
-        fun card(key: String, titleKey: String, hintKey: String?, icon: Int, color: Int) {
+        fun card(key: String, titleKey: String, hintKey: String?, icon: Int, color: Int,
+                 host: LinearLayout = panel, tile: Boolean = false, primary: Boolean = false) {
             val title = copy.getString(titleKey)
             val hint = hintKey?.let(copy::getString)
             val item = MaterialCardView(context).apply {
@@ -125,11 +129,12 @@ class NativeExploreSheet(private val context: Context) {
                 setOnClickListener { close(); select(key, locale) }
             }
             val row = LinearLayout(context).apply {
-                gravity = Gravity.CENTER_VERTICAL
+                gravity = if (tile) Gravity.START else Gravity.CENTER_VERTICAL
+                orientation = if (tile) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
                 background = GradientDrawable(GradientDrawable.Orientation.TL_BR,
                     intArrayOf(0x16FFFFFF,0x03FFFFFF,0x16000000))
-                minimumHeight = dp(if (hint == null) 60 else 92)
-                setPadding(dp(if (wide) 22 else 17),dp(14),dp(17),dp(14))
+                minimumHeight = dp(if (tile) 208 else if (primary) 132 else if (hint == null) 60 else 92)
+                setPadding(dp(if (wide) 22 else 17),dp(if (primary) 24 else 14),dp(17),dp(if (primary) 24 else 14))
                 importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
             }
             row.addView(ImageView(context).apply {
@@ -140,17 +145,19 @@ class NativeExploreSheet(private val context: Context) {
             }, LinearLayout.LayoutParams(dp(49),dp(49)))
             val captions = LinearLayout(context).apply {
                 orientation = LinearLayout.VERTICAL
-                setPaddingRelative(dp(15),0,0,0)
-                addView(label(title,if (wide) 20f else 18f,true,0xFFFFF6EC.toInt()))
+                setPaddingRelative(dp(if (tile) 0 else 15),dp(if (tile) 15 else 0),0,0)
+                addView(label(title,if (primary) 24f else if (wide) 20f else 18f,true,0xFFFFF6EC.toInt()))
                 if (hint != null) addView(label(hint,if (wide) 15f else 14f,false,0xFFDFD3E3.toInt()))
             }
-            row.addView(captions,LinearLayout.LayoutParams(0,LayoutParams.WRAP_CONTENT,1f))
+            row.addView(captions,if (tile) LinearLayout.LayoutParams(-1,-2) else LinearLayout.LayoutParams(0,-2,1f))
             row.addView(ImageView(context).apply {
                 setImageResource(R.drawable.ic_explore_arrow)
                 importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
-            }, LinearLayout.LayoutParams(dp(20),dp(20)).apply { marginStart = dp(10) })
+            }, LinearLayout.LayoutParams(dp(20),dp(20)).apply { marginStart = dp(10); if (tile) { gravity = Gravity.END; topMargin = dp(12) } })
             item.addView(row)
-            panel.addView(item,LinearLayout.LayoutParams(-1,-2).apply { topMargin = dp(12) })
+            host.addView(item,if (tile) LinearLayout.LayoutParams(0,-1,1f).apply {
+                if (key == "trail") marginStart = dp(14)
+            } else LinearLayout.LayoutParams(-1,-2).apply { topMargin = dp(12) })
             if (animate) {
                 item.alpha = 0f
                 item.translationY = dp(15).toFloat()
@@ -159,9 +166,13 @@ class NativeExploreSheet(private val context: Context) {
             }
             cardIndex++
         }
-        card("matches","pick","matchHint",R.drawable.ic_dock_matches,0xFF4E3742.toInt())
-        card("tech","tech","techHint",R.drawable.ic_dock_explore,0xFF433453.toInt())
-        card("trail","trail","trailHint",R.drawable.ic_dock_list,0xFF293E42.toInt())
+        card("matches","pick","matchHint",R.drawable.ic_dock_matches,0xFF4E3742.toInt(),primary = true)
+        val discoveries = if (split) LinearLayout(context).also { row ->
+            row.orientation = LinearLayout.HORIZONTAL
+            panel.addView(row,LinearLayout.LayoutParams(-1,-2).apply { topMargin = dp(14) })
+        } else panel
+        card("tech","tech","techHint",R.drawable.ic_dock_explore,0xFF433453.toInt(),discoveries,split)
+        card("trail","trail","trailHint",R.drawable.ic_dock_list,0xFF293E42.toInt(),discoveries,split)
         card("all","all",null,R.drawable.ic_dock_home,0xFF353040.toInt())
         sheet.setContentView(scroll)
         sheet.window?.let { window ->
