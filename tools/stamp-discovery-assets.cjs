@@ -30,6 +30,16 @@ function stampBrandReferences(source,html=false) {
   });
 }
 
+function stampControlFlow(source,html=false) {
+  return source.replace(/(["'])(\/(?:ui-fixes-20261023\.css|patches\/jonas-adult-page\.js))(?:\?([^"'#\s)]*))?\1/g,
+    (match,quote,url,query='')=>{
+      const params=new URLSearchParams(query.replace(/&amp;/g,'&'));
+      params.set('flow','20261104-1');
+      const search=html?params.toString().replace(/&/g,'&amp;'):params.toString();
+      return quote+url+'?'+search+quote;
+    });
+}
+
 // This is a distribution step. Leave source fixtures, native bundles and separate products alone.
 const excluded=new Set(['android-studio','artifacts','kids','lumina-match','node_modules','oauth','private-voice','reelforge','reports','tests','tools']);
 function stampPublicHtml(dir=root,top=true,base=dir) {
@@ -38,18 +48,18 @@ function stampPublicHtml(dir=root,top=true,base=dir) {
     if(item.name.startsWith('.') || item.name==='node_modules' || (top && excluded.has(item.name))) continue;
     const file=path.join(dir,item.name);
     if(item.isDirectory()) { changed+=stampPublicHtml(file,false,base); continue; }
-    if(item.isFile() && brandRuntime.has(path.relative(base,file).split(path.sep).join('/'))) {
+    if(item.isFile() && (brandRuntime.has(path.relative(base,file).split(path.sep).join('/')) || path.relative(base,file).split(path.sep).join('/')==='patches/jonas-adult-page.js')) {
       const source=fs.readFileSync(file,'utf8');
-      const stamped=stampBrandReferences(source);
+      const stamped=stampControlFlow(stampBrandReferences(source));
       if(stamped!==source) { fs.writeFileSync(file,stamped); changed++; }
       continue;
     }
     if(!item.isFile() || !/\.html$/i.test(item.name) || /^(?:callback|confirm)\.html$/i.test(item.name)) continue;
     const html=fs.readFileSync(file,'utf8');
-    const stamped=stampBrandReferences(stampDiscoveryAssets(html),true);
+    const stamped=stampControlFlow(stampBrandReferences(stampDiscoveryAssets(html),true),true);
     if(stamped!==html) { fs.writeFileSync(file,stamped); changed++; }
   }
   return changed;
 }
-module.exports={stampDiscoveryAssets,stampBrandReferences,stampPublicHtml};
+module.exports={stampDiscoveryAssets,stampBrandReferences,stampControlFlow,stampPublicHtml};
 if(require.main===module)console.log('Updated discovery and native feedback script URLs in '+stampPublicHtml()+' published pages.');
