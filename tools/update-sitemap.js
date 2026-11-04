@@ -18,7 +18,11 @@ const { randomUUID } = require('crypto');
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
 
+const channelCopy = require('../channels/copy.json');
 const CORE = [
+    ...['tech', 'catalog-trails'].flatMap(section => Object.keys(channelCopy).map(lang => ({
+        loc: SITE + '/' + section + '/' + (lang === 'en' ? '' : lang.toLowerCase() + '/'), freq:'monthly', pri:'0.7'
+    }))),
     { loc: `${SITE}/founder/`, freq: 'monthly', pri: '0.6' },
     { loc: `${SITE}/sponsor/`, freq: "monthly", pri: "0.5" },
     { loc: `${SITE}/streaming/`, freq: "monthly", pri: "0.7" },

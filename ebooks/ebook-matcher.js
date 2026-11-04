@@ -192,8 +192,15 @@ function storeLinks(book){
 }
 function freeLinks(book){
  if(!book.access.includes('free'))return[];
+ const verified={
+  'pro-git':['Pro Git','https://git-scm.com/book/en/v2.html'],
+  'eloquent-javascript':['Eloquent JavaScript','https://eloquentjavascript.net/'],
+  'blue-castle':['Project Gutenberg','https://www.gutenberg.org/ebooks/67979'],
+  'enchanted-april':['Project Gutenberg','https://www.gutenberg.org/ebooks/16389']
+ };
  const query=q(book);
  return[
+  ...(Object.hasOwn(verified,book.id)?[verified[book.id]]:[]),
   ['Project Gutenberg','https://www.gutenberg.org/ebooks/search/?query='+query],
   ['Standard Ebooks','https://standardebooks.org/ebooks?query='+query],
   ['Open Library','https://openlibrary.org/search?q='+query+'&mode=ebooks']
