@@ -88,3 +88,7 @@ verify_jwt = false
 # Public, origin-checked founder support. Limits apply before Stripe session creation.
 [functions.founder-support]
 verify_jwt = false
+
+# Private catalog evaluation validates the dedicated GitHub workflow OIDC token in the handler.
+[functions.catalog-vibe-lab]
+verify_jwt = false

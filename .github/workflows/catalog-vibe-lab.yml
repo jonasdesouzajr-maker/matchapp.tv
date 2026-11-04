@@ -1,0 +1,35 @@
+name: Private catalog mood evaluation
+on:
+  workflow_dispatch:
+  push:
+    branches: [labs/catalog-vibe]
+    paths:
+      - 'supabase/functions/catalog-vibe-lab/**'
+      - '.github/workflows/catalog-vibe-lab.yml'
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Compare the fixed English and Brazilian Portuguese briefs
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import {appendFileSync} from 'node:fs';
+          const url=new URL(process.env.ACTIONS_ID_TOKEN_REQUEST_URL);
+          url.searchParams.set('audience','matchapp-catalog-vibe-lab');
+          const identity=await fetch(url,{headers:{authorization:'Bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});
+          if(!identity.ok)throw Error('Unable to authenticate the evaluation job');
+          const jwt=(await identity.json()).value;
+          const response=await fetch('https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/catalog-vibe-lab',{
+            method:'POST',headers:{authorization:'Bearer '+jwt},signal:AbortSignal.timeout(85000)
+          });
+          const report=await response.json();
+          if(!response.ok)throw Error(report.error||('Lab HTTP '+response.status));
+          console.log(JSON.stringify(report));
+          const rows=report.briefs.flatMap((b,i)=>b.results.map(r=>[i+1,r.format,r.expected,r.en,r.ptBR,r.bothExpected?'yes':'no'].join(' | ')));
+          appendFileSync(process.env.GITHUB_STEP_SUMMARY,'## Private EN / pt-BR catalog evaluation\n\n'+report.model+' · '+report.works+' public works\n\nBrief | Format | Editorial target | English | pt-BR | Both on target\n--- | --- | --- | --- | --- | ---\n'+rows.join('\n')+'\n');
+          NODE
