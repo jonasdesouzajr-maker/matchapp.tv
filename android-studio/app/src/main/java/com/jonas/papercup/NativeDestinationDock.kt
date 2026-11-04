@@ -32,6 +32,13 @@ class NativeDestinationDock(
         R.drawable.ic_dock_list, R.drawable.ic_dock_profile)
     private val script by lazy { web.context.assets.open("native-destination-dock.js").bufferedReader().use { it.readText() } }
     private val explore = NativeExploreSheet(bar.context)
+    private val exploreAccessibility = object : AccessibilityDelegateCompat() {
+        override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
+            super.onInitializeAccessibilityNodeInfo(host, info)
+            info.isClickable = true
+            info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK)
+        }
+    }
     private var language = "en"
     private var syncing = false
     private var keyboard = false
@@ -59,19 +66,6 @@ class NativeDestinationDock(
         bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         bar.isItemHorizontalTranslationEnabled = false
         icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
-        // Explore opens a native destination chooser even when its tab is selected.
-        // Material normally removes the click action from a selected navigation item.
-        bar.post {
-            bar.findViewById<View>(2)?.let { target ->
-                ViewCompat.setAccessibilityDelegate(target, object : AccessibilityDelegateCompat() {
-                    override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
-                        super.onInitializeAccessibilityNodeInfo(host, info)
-                        info.isClickable = true
-                        info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK)
-                    }
-                })
-            }
-        }
         fun sendCommand(message: String) {
             if (!requested || keyboard || documentUrl != web.url) return
             explorePending = message == "explore:1"
@@ -195,6 +189,9 @@ class NativeDestinationDock(
     fun setKeyboard(visible: Boolean) { keyboard=visible; render() }
 
     private fun render() {
+        // Menu title updates can rebuild Material's selected item view.
+        // Restore Explore's chooser action on the current view after every update.
+        bar.findViewById<View>(2)?.let { ViewCompat.setAccessibilityDelegate(it, exploreAccessibility) }
         bar.visibility=if(requested && !keyboard) View.VISIBLE else View.GONE
     }
 
