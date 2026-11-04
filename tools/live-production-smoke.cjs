@@ -208,6 +208,27 @@ async function aiQuestion(page,question,expected,label){
     record('home responsive and original visible posters '+device.name,
       home.scrollWidth<=home.width+16 && !home.wrongFit && home.artworks>0 && home.valid>0,
       JSON.stringify(home));
+    const labelFlow=await page.evaluate(()=>{
+      const issues=[];
+      for(const node of document.querySelectorAll('.streaming-links > a,.ma-cinema-hero-footer > a,.ma-cinema-hero-footer > button')){
+        const control=node.getBoundingClientRect();
+        if(!control.height||!node.checkVisibility({checkVisibilityCSS:true}))continue;
+        const range=document.createRange();range.selectNodeContents(node);
+        const text=range.getBoundingClientRect();
+        if(text.height&&(text.top<control.top-1||text.bottom>control.bottom+1||
+          text.left<control.left-1||text.right>control.right+1))
+          issues.push({text:node.textContent.trim().slice(0,100),height:control.height,textHeight:text.height});
+      }
+      const tools=document.querySelector('#home-discovery-tools'),fold=document.querySelector('.seo-fold');
+      if(tools&&fold){
+        const links=[...tools.querySelectorAll('a')].filter(a=>a.getBoundingClientRect().height);
+        if(links.length&&fold.getBoundingClientRect().top<Math.max(...links.map(a=>a.getBoundingClientRect().bottom))-1)
+          issues.push({text:'Streaming guides cover the planning links'});
+      }
+      return issues;
+    });
+    record('Visible button labels stay inside their controls and before the next fold '+device.name,
+      labelFlow.length===0,JSON.stringify(labelFlow));
     // The brand uses the owner's October 13 approved artwork beside the wordmark.
     // Check actual production computed layout on every viewport, including 320px.
     const identity=await page.evaluate(()=>{
