@@ -176,6 +176,10 @@
       legacy.setAttribute('data-ma-reference-brand-only','true');
     });
   }
+  function placeIntro(original){
+    var parent=original.querySelector('.mh-head') || (original.id==='ref-explore-header' ? original : chrome);
+    parent.appendChild(intro);
+  }
   function measure(){
     frame=0;if(!header||!space)return;
     var height=Math.ceil(header.getBoundingClientRect().height);
@@ -200,7 +204,7 @@
       help=document.createElement('span');help.id='ma-reference-header-move-help';help.className='ma-reference-header-move-help';slot.append(returnButton,help);
       original.classList.add('ma-reference-header-original');compactOriginal(original);chrome.appendChild(original);
       intro=document.createElement('p');intro.className='ma-masthead-intro';intro.setAttribute('data-ma-pill-exclude','');intro.innerHTML='<span class="ma-masthead-story"></span><span class="ma-masthead-formats"></span>';
-      (original.querySelector('.mh-head')||chrome).appendChild(intro);bar.append(chrome,slot);header.appendChild(bar);
+      placeIntro(original);bar.append(chrome,slot);header.appendChild(bar);
       document.body.prepend(space,header);
       if('ResizeObserver'in window){resizeObserver=new ResizeObserver(schedule);resizeObserver.observe(header);}
       html.setAttribute('data-ma-jonas-header','active');
@@ -215,7 +219,7 @@
     if(!header){mount();return;}
     if(chrome.firstElementChild?.classList.contains('ma-reference-header-fallback')){
       var late=findOriginal();
-      if(late){late.classList.add('ma-reference-header-original');compactOriginal(late);chrome.replaceChildren(late);(late.querySelector('.mh-head')||chrome).appendChild(intro);labelTools();schedule();}
+      if(late){late.classList.add('ma-reference-header-original');compactOriginal(late);chrome.replaceChildren(late);placeIntro(late);labelTools();schedule();}
     }
     consolidateFallbackBrand();
     var launcher=chooseLauncher();if(launcher){if(!owns(launcher)||launcher.parentElement!==(floating?document.body:slot))claim(launcher);else syncLaunchers(launcher);}

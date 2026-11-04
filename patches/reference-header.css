@@ -9,7 +9,7 @@ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header {
  position:fixed!important;z-index:30000!important;inset:0 0 auto!important;width:100%!important;max-width:none!important;
  margin:0!important;padding:env(safe-area-inset-top,0px) max(8px,env(safe-area-inset-right,0px)) 0 max(8px,env(safe-area-inset-left,0px))!important;
  box-sizing:border-box!important;border:0!important;border-bottom:1px solid color-mix(in srgb,var(--cinema-gold,#dcaf57) 26%,transparent)!important;border-radius:0!important;
- background:linear-gradient(105deg,rgba(13,8,32,.72),rgba(13,8,32,.56) 60%,rgba(13,8,32,.76))!important;box-shadow:0 5px 20px #0003!important;
+ background:radial-gradient(ellipse at 6% 5%,rgba(117,73,80,.32),transparent 57%),linear-gradient(108deg,rgba(24,15,37,.96),rgba(20,14,35,.88) 55%,rgba(43,25,58,.83))!important;box-shadow:0 5px 22px #10081d38!important;
  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);contain:none!important;overflow:visible!important;transform:none!important;
 }
 html.ma-reference #ma-reference-header-space {display:block!important;width:100%!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;pointer-events:none;}
@@ -155,16 +155,16 @@ html.ma-reference:not(.kids-mode) body .matchapp-brand-bar.matchapp-brand-bar .m
 html.ma-reference:not(.kids-mode) body .matchapp-brand-bar.matchapp-brand-bar .matchapp-brand-link.matchapp-brand-link .ma-playai-wordmark {margin-left:clamp(10px,calc(.6vw + 7px),14px)!important;font-size:clamp(20px,calc(1.4vw + 15px),32px)!important;}
 @media (prefers-reduced-motion:reduce) {html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-word-ai {animation:none!important;} html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-reference-header-brand>span),html.ma-reference:not(.kids-mode) body .matchapp-brand-bar.matchapp-brand-bar .matchapp-brand-link.matchapp-brand-link .ma-playai-wordmark {animation:none!important;background-position:160% 0,0 0!important;}}
 
-@media (max-width:374px){html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox#mh-topbox {flex-shrink:0!important;max-width:none!important;min-width:max-content!important;} html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-ai,.ma-reference-header-brand>span) {font-size:15px!important;letter-spacing:.012em!important;} html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-home-link,.ma-reference-header-brand) {padding-left:6px!important;padding-right:6px!important;} html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-orb-stage,.ma-brand-orb,.ma-reference-header-brand>img) {width:38px!important;height:38px!important;min-width:38px!important;max-width:38px!important;min-height:38px!important;max-height:38px!important;flex-basis:38px!important;}}
+@media (max-width:374px){html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox#mh-topbox {flex-shrink:1!important;max-width:100%!important;min-width:0!important;} html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-ai,.ma-reference-header-brand>span) {font-size:15px!important;letter-spacing:.012em!important;} html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-home-link,.ma-reference-header-brand) {padding-left:6px!important;padding-right:6px!important;} html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-orb-stage,.ma-brand-orb,.ma-reference-header-brand>img) {width:38px!important;height:38px!important;min-width:38px!important;max-width:38px!important;min-height:38px!important;max-height:38px!important;flex-basis:38px!important;}}
 html.ma-reference:not(.kids-mode) #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.mh-head,.header-brand-area,.ma-brand-lockup,.ma-brand-home-link,.ma-reference-header-brand,.ma-brand-copy) {max-width:none!important;flex-shrink:0!important;overflow:visible!important;}
 /* At narrow widths the unsplit wordmark may exceed its grid column. Keep the
    controls in that column so they cannot cover Jonas's caption. */
-@media(max-width:374px){html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox .ma-cinema-header-actions {justify-self:start!important;width:calc(100vw - var(--ma-jonas-launcher-width) - 24px)!important;justify-content:flex-end!important;}}
+@media(max-width:374px){html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox .ma-cinema-header-actions {justify-self:start!important;width:100%!important;max-width:100%!important;justify-content:flex-start!important;}}
 }
 
 /* 2026-10-25: owner-requested full-bleed masthead. Keep every original control. */
 @layer ma-reference {
-html.ma-reference #ma-reference-header .ma-reference-header-bar {padding-block:10px!important;gap:12px!important;}
+html.ma-reference #ma-reference-header .ma-reference-header-bar {padding:clamp(12px,1.25vw,20px) clamp(8px,2vw,30px)!important;gap:clamp(12px,2vw,32px)!important;}
 html.ma-reference #ma-reference-header .ma-reference-header-chrome {display:grid!important;gap:7px!important;}
 html.ma-reference #ma-reference-header .ma-masthead-intro {display:flex!important;flex-direction:column!important;gap:4px!important;min-width:0!important;margin:7px 0 0!important;padding:0 4px!important;border:0!important;background:none!important;box-shadow:none!important;text-align:start!important;}
 html.ma-reference #ma-reference-header .ma-masthead-intro > span {display:block!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;white-space:normal!important;overflow-wrap:break-word!important;}
@@ -177,20 +177,52 @@ html.ma-reference #ma-reference-header::after {content:none!important;}
 html.ma-reference #ma-reference-header .ma-reference-header-original::after {content:none!important;}
 html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-home-link,.ma-reference-header-brand) {padding-inline:4px!important;gap:9px!important;max-width:100%!important;}
 html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.mh-head,.header-brand-area,.ma-brand-lockup,.ma-brand-copy) {min-width:0!important;max-width:100%!important;}
-html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span) {font-size:clamp(17px,2.1vw + 9px,28px)!important;line-height:1.15!important;}
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span) {font-size:clamp(32px,3.8vw,58px)!important;line-height:1.09!important;}
 html.ma-reference #ma-reference-header-slot {padding-block:0!important;}
 html.ma-reference #ma-reference-header-slot .ma-reference-jonas-caption {background:rgba(13,8,32,.58)!important;border-color:rgba(230,195,106,.25)!important;}
 @media(max-width:699px){
- html.ma-reference {--ma-jonas-launcher-width:112px;--ma-jonas-launcher-size:72px;}
- html.ma-reference #ma-reference-header .ma-reference-header-bar {padding-block:9px!important;gap:8px!important;}
- html.ma-reference #ma-reference-header-slot {min-height:118px!important;align-self:center!important;}
+ html.ma-reference {--ma-jonas-launcher-width:clamp(78px,22vw,102px);--ma-jonas-launcher-size:clamp(48px,14vw,64px);}
+ html.ma-reference #ma-reference-header .ma-reference-header-bar {padding:12px clamp(4px,1.8vw,12px)!important;gap:10px!important;}
+ html.ma-reference #ma-reference-header-slot {min-height:90px!important;align-self:center!important;}
  html.ma-reference #ma-reference-header-slot :is(#ma-ambient-jonas,#ma-jonas-home) {grid-template-columns:minmax(0,1fr)!important;row-gap:5px!important;}
- html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-orb-stage,.ma-brand-orb,.ma-reference-header-brand>img) {width:36px!important;height:36px!important;min-width:36px!important;max-width:36px!important;min-height:36px!important;max-height:36px!important;flex-basis:36px!important;}
- html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span) {font-size:clamp(18px,5.4vw,25px)!important;letter-spacing:0!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-orb-stage,.ma-brand-orb,.ma-reference-header-brand>img) {width:var(--ma-comet-size)!important;height:var(--ma-comet-size)!important;min-width:var(--ma-comet-size)!important;max-width:var(--ma-comet-size)!important;min-height:var(--ma-comet-size)!important;max-height:var(--ma-comet-size)!important;flex-basis:var(--ma-comet-size)!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span) {font-size:clamp(23px,7.35vw,44px)!important;line-height:1.09!important;letter-spacing:-.018em!important;}
  html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox {min-width:0!important;max-width:100%!important;}
  html.ma-reference #ma-reference-header .ma-masthead-formats {letter-spacing:.06em!important;}
  html.ma-reference #ma-reference-header-slot .ma-reference-jonas-caption {padding:3px 4px!important;border:0!important;min-height:34px!important;font-size:max(11px,.6875rem)!important;}
  html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox .ma-cinema-header-actions {justify-self:start!important;width:auto!important;justify-content:flex-start!important;}
+}
+/* The same brand hierarchy serves Home, Explore and the editorial shells. */
+html.ma-reference #ma-reference-header {--ma-comet-size:clamp(44px,12.4vw,62px);}
+html.ma-reference #ma-reference-header .ma-masthead-intro {margin:3px 0 0!important;padding-inline:4px!important;gap:2px!important;}
+html.ma-reference #ma-reference-header .ma-masthead-story {font-weight:600!important;}
+html.ma-reference #ma-reference-header .ma-cinema-header-actions:has(#matchapp-viewer-country-control) {display:flex!important;align-items:center!important;flex-wrap:wrap!important;justify-content:flex-start!important;gap:6px!important;min-width:0!important;max-width:100%!important;}
+html.ma-reference #ma-reference-header #matchapp-viewer-country-control {flex:1 1 6rem!important;inline-size:auto!important;margin:0!important;max-inline-size:13rem!important;}
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.ma-masthead-intro {grid-column:1 / -1!important;grid-row:2!important;}
+html.ma-reference #ma-reference-header-slot .ma-reference-jonas-caption :is(strong,span) {display:block!important;min-height:0!important;padding:0!important;line-height:1.2!important;}
+html.ma-reference #ma-reference-header-slot .ma-reference-jonas-caption {gap:4px!important;}
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-brand-orb-stage,.ma-brand-orb,.ma-reference-header-brand>img,.hub-brand>img:first-child,.ebook-hub-brand>img:first-child) {width:var(--ma-comet-size)!important;height:var(--ma-comet-size)!important;min-width:var(--ma-comet-size)!important;max-width:var(--ma-comet-size)!important;min-height:var(--ma-comet-size)!important;max-height:var(--ma-comet-size)!important;flex:0 0 var(--ma-comet-size)!important;object-fit:contain!important;border-radius:22%!important;filter:none!important;}
+html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.hub-brand,.ebook-hub-brand,.journey-brand) :is(.ma-playai-wordmark,.ebook-text-wordmark,.ebook-brand-match,.ebook-brand-app,.ebook-brand-ai) {font-size:clamp(32px,3.8vw,58px)!important;line-height:1.09!important;}
+@media(max-width:699px){
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header {grid-template-columns:44px 44px minmax(0,1fr)!important;row-gap:6px!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.hub-brand {grid-column:1 / -1!important;grid-row:1!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.ma-cinema-search {grid-column:1!important;grid-row:3!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #ref-explore-header>.ref-explore-tools {grid-column:2!important;grid-row:3!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox#mh-topbox#mh-topbox .ma-cinema-header-actions:has(#matchapp-viewer-country-control) {display:grid!important;grid-template-columns:44px 44px minmax(0,1fr)!important;justify-self:stretch!important;inline-size:100%!important;max-inline-size:100%!important;gap:5px!important;}
+ html.ma-reference #ma-reference-header #mh-topbox #matchapp-viewer-country-control {grid-column:3!important;inline-size:100%!important;max-inline-size:none!important;}
+ html.ma-reference #ma-reference-header #mh-topbox #matchapp-viewer-country {max-width:100%!important;min-width:0!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.hub-brand,.ebook-hub-brand,.journey-brand) :is(.ma-playai-wordmark,.ebook-text-wordmark,.ebook-brand-match,.ebook-brand-app,.ebook-brand-ai) {font-size:clamp(23px,7.35vw,44px)!important;letter-spacing:-.018em!important;}
+}
+@media(max-width:374px){
+ html.ma-reference {--ma-jonas-launcher-width:64px;--ma-jonas-launcher-size:48px;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-bar {padding-inline:4px!important;gap:7px!important;}
+ html.ma-reference #ma-reference-header {--ma-comet-size:40px;}
+ html.ma-reference #ma-reference-header #ma-reference-header-slot .ma-reference-jonas-caption {max-inline-size:100%!important;font-size:11px!important;}
+}
+@media(min-width:700px) and (max-width:1099px){
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox#mh-topbox#mh-topbox.ma-cinema-header-compact {grid-template-columns:minmax(0,1fr)!important;row-gap:9px!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox .mh-head {grid-area:1 / 1!important;}
+ html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header #mh-topbox .ma-cinema-header-actions {grid-area:2 / 1!important;justify-self:start!important;inline-size:min(100%,32rem)!important;}
 }
 @media(min-width:700px){
  html.ma-reference #ma-reference-header .ma-masthead-intro {flex-direction:row!important;align-items:baseline!important;flex-wrap:wrap!important;column-gap:16px!important;}

@@ -186,7 +186,8 @@
     const doc=root.document;
     // The navigation deck is inside a closed app-controls menu on phones.
     // Keep this small row visible beside Jonas, after the existing masthead.
-    const target=doc.querySelector('#ma-reference-header .ma-reference-header-chrome')||
+    const target=doc.querySelector('#ma-reference-header #mh-topbox .ma-cinema-header-actions')||
+      doc.querySelector('#ma-reference-header .ma-reference-header-chrome')||
       doc.querySelector('#mh-topbox,header.app-header,header.ebook-page-top,header.hub-header');
     if(!target)return false;
     let row=doc.getElementById('matchapp-viewer-country-control');

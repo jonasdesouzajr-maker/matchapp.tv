@@ -54,3 +54,7 @@ Preserve the complete company picture with proportional fitting and the existing
 localized Skip behavior. The current task authorizes publishing after the
 applicable artifact, device and Console checks; source changes alone do not
 establish Play publication.
+
+## Owner brand and masthead update — November 4, 2026
+
+Jonas approved the Play comet artwork for the adult website, install icons and Google Search brand signals. The adult masthead gives the existing animated MatchApp Ai wordmark more space, groups the original controls and retains the draggable Jonas launcher. The separate Kids product keeps its own identity.
