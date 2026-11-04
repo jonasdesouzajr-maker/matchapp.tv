@@ -4,6 +4,16 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { JSDOM } = require('jsdom');
+const vm = require('node:vm');
+const hanLocale = fs.readFileSync(path.join(__dirname, '..', 'i18n.js'), 'utf8').replace(/\r\n/g,'\n').match(/\(function installHanLocale\(\)\{[\s\S]*?\n\}\)\(\);/)[0];
+const localeContext = {window:{}};
+vm.runInNewContext(hanLocale, localeContext);
+const previousHanLocale = globalThis.MatchAppHanLocale;
+globalThis.MatchAppHanLocale = localeContext.window.MatchAppHanLocale;
+test.after(() => {
+  if (previousHanLocale === undefined) delete globalThis.MatchAppHanLocale;
+  else globalThis.MatchAppHanLocale = previousHanLocale;
+});
 const api = require('../news-monetization.js');
 const source = fs.readFileSync(path.join(__dirname, '..', 'news-monetization.js'), 'utf8');
 const NOW = Date.parse('2026-10-17T12:00:00Z');
@@ -27,6 +37,7 @@ function harness({ lang = 'en', country = 'US', route = '/news/', item = article
   let calls = 0, requests = 0;
   original.anchor.addEventListener('click', event => { event.preventDefault(); calls++; });
   w.fetch = () => { requests++; throw new Error('News commerce must not make requests.'); };
+  w.eval(hanLocale);
   w.eval(source);
   w.MatchAppNewsMonetization.init(w);
   return { dom, w, doc, card, original, api: w.MatchAppNewsMonetization, calls: () => calls, requests: () => requests };
@@ -135,8 +146,8 @@ test('unknown country never silently shows a foreign offer and published offer w
   local.window.close();
 });
 
-test('all fourteen supported languages have authored context and offer copy', () => {
-  const expected = { en: 'Explore Netflix', pt: 'Explorar Netflix', es: 'Explorar Netflix', fr: 'Explorer Netflix', de: 'Netflix entdecken', it: 'Esplora Netflix', tr: 'Netflix kataloğunu keşfet', ru: 'Открыть каталог Netflix', ar: 'استكشف Netflix', hi: 'Netflix पर विकल्प देखें', id: 'Jelajahi Netflix', ja: 'Netflixをチェック', ko: 'Netflix 둘러보기', zh: '浏览Netflix' };
+test('all fifteen supported languages have authored context and offer copy', () => {
+  const expected = { en: 'Explore Netflix', pt: 'Explorar Netflix', es: 'Explorar Netflix', fr: 'Explorer Netflix', de: 'Netflix entdecken', it: 'Esplora Netflix', tr: 'Netflix kataloğunu keşfet', ru: 'Открыть каталог Netflix', ar: 'استكشف Netflix', hi: 'Netflix पर विकल्प देखें', id: 'Jelajahi Netflix', ja: 'Netflixをチェック', ko: 'Netflix 둘러보기', zh: '浏览Netflix', 'zh-TW': '瀏覽Netflix' };
   assert.deepEqual([...api.languages].sort(), Object.keys(expected).sort());
   for (const [lang, label] of Object.entries(expected)) {
     const link = api.contextFor(article(), 'US', lang, NOW);
@@ -226,7 +237,7 @@ test('three official trials require the exact reviewed market, renewal price and
   assert.equal(api.validOffers(api.offers, 'IN', NOW).length, 0, 'a nearby country or interface language supplies no trial');
 });
 
-test('trial disclosures and exact renewal amounts are authored in all fourteen languages', () => {
+test('trial disclosures and exact renewal amounts are authored in all fifteen languages', () => {
   for (const lang of api.languages) {
     for (const country of ['BR', 'MX', 'GB']) {
       const record = api.offers.find(o => o.country === country), dom = new JSDOM(api.offersMarkup(api.offers, country, lang, NOW)), doc = dom.window.document;

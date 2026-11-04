@@ -1,7 +1,7 @@
 'use strict';
 const{test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const dir=path.join(__dirname,'..'),read=n=>fs.readFileSync(path.join(dir,n),'utf8');
-const expected=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const expected=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 test('the premium walkthrough has complete authored text in every supported locale',()=>{
  const env={window:{}};vm.runInNewContext(read('onboarding-tour-locales-20261010.js'),env);
  const result=env.window.MatchAppGuideLocales;

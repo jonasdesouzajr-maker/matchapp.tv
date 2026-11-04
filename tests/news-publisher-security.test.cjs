@@ -20,7 +20,7 @@ function definitions({filesystem=fs,fetcher=()=>{throw new Error('No upstream re
       if(name==='../news-images.js')return require('../news-images.js');
       if(name==='../news-monetization.js')return {eligibleArticle:()=>false,offers:[],offersMarkup:()=>''};
       if(name==='./finalize-brand.js')return require('../tools/finalize-brand.js');
-      assert.ok(['node:path','node:crypto'].includes(name),'unexpected renderer dependency: '+name);
+      assert.ok(['node:path','node:crypto','node:url'].includes(name),'unexpected renderer dependency: '+name);
       return require(name);
     }
   });

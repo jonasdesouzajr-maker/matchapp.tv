@@ -25,7 +25,10 @@ test('guide is presentation-only, Kids-excluded and tap-driven',()=>{
  const js=read('guided-coach-20261022.js');
  assert.match(js,/\^\\\/kids/);
  assert.match(js,/e\.isTrusted/);
- assert.ok(!js.replace(/\[onclick\*="triggerMatch\(false\)"\]/g,'').includes('triggerMatch('),'never calls matching');
+ const selector='[onclick*="triggerMatch(false)"]';
+ const prefix='[onclick*="';
+ const references=[...js.matchAll(/\btriggerMatch\s*\(/g)];
+ assert.ok(references.every(({index})=>index>=prefix.length&&js.slice(index-prefix.length,index-prefix.length+selector.length)===selector),'never calls matching; only the existing control selector may reference it');
  assert.strictEqual((js.match(/preventDefault\(\)/g)||[]).length,1,'only the How it works entry is intercepted');
  assert.ok(!/adsbygoogle|ca-pub-/.test(js+read('guided-coach-20261022.css')));
  assert.match(read('guided-coach-20261022.css'),/prefers-reduced-motion/);

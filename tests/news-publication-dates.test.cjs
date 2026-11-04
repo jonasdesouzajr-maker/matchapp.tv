@@ -27,7 +27,7 @@ async function publish(rows){
       if(name==='../news-images.js')return require('../news-images.js');
       if(name==='../news-monetization.js')return {eligibleArticle:()=>false,offers:[],offersMarkup:()=>''};
       if(name==='./finalize-brand.js')return require('../tools/finalize-brand.js');
-      assert.ok(['node:path','node:crypto'].includes(name));return require(name);
+      assert.ok(['node:path','node:crypto','node:url'].includes(name));return require(name);
     }
   });
   return {files,writes,warnings,errors,exitCode};

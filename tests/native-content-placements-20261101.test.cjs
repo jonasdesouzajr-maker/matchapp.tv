@@ -206,8 +206,8 @@ test('account reset and document teardown invalidate native capability and curre
 
 test('only the four approved native hooks and the News generator carry the current matching asset pins',()=>{
  for(const file of ['index.html','ebooks/index.html','explore.html','news/index.html']){
-  const dom=new JSDOM(read(file));try{const d=dom.window.document;assert.equal(d.querySelector('[data-native-news-slot]'),null);assert.equal(d.querySelector('script[src^="/native-news-slot.js"]').getAttribute('src'),'/native-news-slot.js?v=20261101-placements3');assert.equal(d.querySelector('link[href^="/native-news-slot.css"]').getAttribute('href'),'/native-news-slot.css?v=20261101-placements3');}finally{dom.window.close();}
+  const dom=new JSDOM(read(file));try{const d=dom.window.document;assert.equal(d.querySelector('[data-native-news-slot]'),null);assert.equal(d.querySelector('script[src^="/native-news-slot.js"]').getAttribute('src'),'/native-news-slot.js?v=20261101-placements3&locale71=1');assert.equal(d.querySelector('link[href^="/native-news-slot.css"]').getAttribute('href'),'/native-news-slot.css?v=20261101-placements3');}finally{dom.window.close();}
  }
- assert.ok(read('tools/refresh-news-rss.js').includes('href="/native-news-slot.css?v=20261101-placements3"'));assert.ok(read('tools/refresh-news-rss.js').includes('src="/native-news-slot.js?v=20261101-placements3"'));
+ assert.ok(read('tools/refresh-news-rss.js').includes('href="/native-news-slot.css?v=20261101-placements3"'));assert.ok(read('tools/refresh-news-rss.js').includes('src="/native-news-slot.js?v=20261101-placements3&amp;locale71=1"'));
  assert.equal(api.scope({get top(){return this;},location:{origin:'https://matchapp.tv',pathname:'/explore.html'},document:{documentElement:{dataset:{}}}}),'explore');
 });

@@ -70,7 +70,8 @@ function activeSpeechLang(){return SPEECH_LANG_MAP[window.MATCH_LANG] || 'en-US'
 function nativeMicrophoneDenied(){
   if(/^\/kids(?:\/|$)/.test(location.pathname)||window.MATCHAPP_ANDROID_KIDS_ONLY||
     /MatchApp(?:Ai|TV)?KidsAndroid\//i.test(window.navigator?.userAgent||'')||!nativeVoiceAvailable())return '';
-  const language=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().replace('_','-').split('-')[0];
+  const chosen=String(window.MATCH_LANG||document.documentElement.lang||'en');
+  const language=Object.hasOwn(NATIVE_MIC_DENIED,chosen)?chosen:(globalThis.MatchAppHanLocale?.normalize(chosen)||chosen.toLowerCase().replace('_','-').split('-')[0]);
   return NATIVE_MIC_DENIED[language]||NATIVE_MIC_DENIED.en;
 }
 

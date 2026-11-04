@@ -29,8 +29,8 @@ test('dated October editorial is crawlable, source-backed and distinct from old 
   }
  }finally{dom.window.close()}
 });
-test('all fourteen app languages have authored editorial copy and preserve exact title links',()=>{
- const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+test('all fifteen app locales have authored editorial copy and preserve exact title links',()=>{
+ const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
  assert.deepEqual(Object.keys(data.copy),languages);
  for(const lang of languages){
   const dom=new JSDOM(read(route.slice(1)+'index.html'),{url:'https://matchapp.tv'+route,runScripts:'outside-only'});
