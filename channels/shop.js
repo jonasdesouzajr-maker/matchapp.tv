@@ -13,10 +13,20 @@
     if(href){link.href=href;link.removeAttribute('aria-disabled');}
     else {link.removeAttribute('href');link.setAttribute('aria-disabled','true');}
   }
+  const normalize=text=>text.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().trim();
+  function editorialCategory(term) {
+    const text=normalize(term);
+    if(/kindle|e-?book|audiobook|audiolivro|audiolibro|audible|streaming|subscription|assinatura|有声书|電子書|电子书|오디오북/iu.test(text)) return '';
+    if(/\bpro git\b/iu.test(text))return 'print';
+    if(/headphones?|headsets?|fone(?:s)? de ouvido|auriculares|casque filaire|kopfhorer|cuffie|kulakl[ıi]k|наушник|سماعات|हेडफ़ोन|ヘッドホン|イヤホン|헤드폰|헤드셋|耳机/iu.test(text))return 'headphones';
+    if(/\busb\b/iu.test(text) && /microphone|microfone|microfono|mikrofon|\bmic\b|микрофон|ميكروفون|माइक्रो|マイク|마이크|麦克风/iu.test(text))return 'mic';
+    return presets.find(b=>text===normalize(b.textContent))?.dataset.shopPreset || '';
+  }
   function update(){
     const term=input.value.trim();
     const preset=presets.find(b=>b.textContent===term);
-    const href=api?.amazonRetailSearchUrl(term,store.value,preset?.dataset.shopPreset);
+    const category=preset?.dataset.shopPreset || editorialCategory(term);
+    const href=api?.amazonRetailSearchUrl(term,store.value,category,!!preset);
     setLink(amazon,href);
     const words=term.normalize('NFKC').match(/[\p{L}\p{M}\p{N}]+/gu);
     setLink(mercado,words?'https://lista.mercadolivre.com.br/'+encodeURIComponent(words.join('-')):'');

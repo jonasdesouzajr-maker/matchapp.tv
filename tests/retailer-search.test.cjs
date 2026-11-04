@@ -24,7 +24,9 @@ test('only contextual Amazon BR web links are sponsored; Mercado Livre and gener
  assert.equal(new URL(a.href).searchParams.get('tag'),'matchapp06-20');assert.equal(new URL(a.href).searchParams.get('i'),'stripbooks');assert.ok(a.relList.contains('sponsored'));
  assert.equal(d.querySelector('[data-shop-disclosure]').hidden,false);assert.equal(d.querySelector('[data-shop-paid]').hidden,false);
  assert.equal(new URL(ml.href).hostname,'lista.mercadolivre.com.br');assert.ok(!ml.href.includes('tag='));
- input.value='headphones /?tag=other & #music';input.dispatchEvent(new dom.window.Event('input'));
+ input.value='headphones Sony WH-1000XM5';input.dispatchEvent(new dom.window.Event('input'));
+ assert.equal(new URL(a.href).searchParams.get('tag'),'matchapp06-20');assert.equal(new URL(a.href).searchParams.get('k'),input.value);
+ input.value='coffee filters /?tag=other & #music';input.dispatchEvent(new dom.window.Event('input'));
  assert.equal(new URL(a.href).searchParams.get('k'),input.value);assert.equal(new URL(a.href).searchParams.has('tag'),false);assert.equal(d.querySelector('[data-shop-disclosure]').hidden,true);
  store.value='US';store.dispatchEvent(new dom.window.Event('change'));d.querySelector('[data-shop-preset=mic]').click();
  assert.equal(new URL(a.href).hostname,'www.amazon.com');assert.equal(new URL(a.href).searchParams.has('tag'),false);

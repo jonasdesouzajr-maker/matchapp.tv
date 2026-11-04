@@ -36,14 +36,14 @@ function amazonMagazineSearchUrl(magazine,market){
 }
 // Only a visitor on the published adult website may generate a new paid referral.
 const retailStores=Object.freeze({...DOMAINS,DE:'amazon.de',ES:'amazon.es',FR:'amazon.fr',IT:'amazon.it',IN:'amazon.in'});
-function amazonRetailSearchUrl(term,market,preset){
+function amazonRetailSearchUrl(term,market,preset,translatePreset=false){
  const domain=Object.hasOwn(retailStores,market)&&retailStores[market];
  const query=String(term||'').trim().slice(0,120);
  if(!query||!domain)return '';
  const url=new URL('https://www.'+domain+'/s');
  const editorial=['print','headphones','mic'].includes(preset);
  const brTerms={print:'Pro Git Scott Chacon livro impresso',headphones:'fone de ouvido com fio',mic:'microfone USB'};
- url.searchParams.set('k',editorial&&market==='BR'?brTerms[preset]:query);
+ url.searchParams.set('k',translatePreset&&editorial&&market==='BR'?brTerms[preset]:query);
  if(preset==='print')url.searchParams.set('i','stripbooks');
  if(market==='BR'&&editorial&&root.location?.origin==='https://matchapp.tv'&&!unapprovedAppContext()&&
     !/; wv\)|WebView/i.test(root.navigator?.userAgent||'')&&!root.MatchAppNativeAI){
