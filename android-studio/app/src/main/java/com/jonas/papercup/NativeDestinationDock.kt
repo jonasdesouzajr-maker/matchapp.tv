@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.SystemClock
 import android.provider.Settings
 import android.view.View
@@ -32,11 +33,18 @@ class NativeDestinationDock(
         R.drawable.ic_dock_list, R.drawable.ic_dock_profile)
     private val script by lazy { web.context.assets.open("native-destination-dock.js").bufferedReader().use { it.readText() } }
     private val explore = NativeExploreSheet(bar.context)
+    private val exploreActionId = View.generateViewId()
     private val exploreAccessibility = object : AccessibilityDelegateCompat() {
         override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
             super.onInitializeAccessibilityNodeInfo(host, info)
-            info.isClickable = true
-            info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK)
+            // Material removes ACTION_CLICK from selected tabs after this callback.
+            // A separate chooser action remains available to accessibility services.
+            if (host.isSelected) info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                exploreActionId, bar.menu.getItem(1).title))
+        }
+        override fun performAccessibilityAction(host: View, action: Int, args: Bundle?): Boolean {
+            return if (action == exploreActionId) host.performClick()
+                else super.performAccessibilityAction(host, action, args)
         }
     }
     private var language = "en"
