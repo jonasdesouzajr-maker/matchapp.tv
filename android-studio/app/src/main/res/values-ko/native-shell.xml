@@ -6,4 +6,6 @@
     <string name="file_chooser_title">사진 선택</string>
     <string name="ad_privacy_choices">개인정보 설정</string>
     <string name="kids_separate_app">키즈 모드는 별도의 MatchApp Ai KIDS 앱에서 이용할 수 있습니다.</string>
+    <string name="google_browser_unavailable">Google로 계속하려면 브라우저를 설치하거나 사용 설정하세요.</string>
+    <string name="avatar_sign_in_required">음성 아바타를 사용해 보려면 MatchApp Ai에 로그인하세요.</string>
 </resources>

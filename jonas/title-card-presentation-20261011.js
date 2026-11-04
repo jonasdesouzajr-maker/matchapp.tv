@@ -52,7 +52,7 @@
     let meta=await api.lookup(name,{priority:true});
     if(!meta&&api.lookupLive)meta=await api.lookupLive(name,{priority:true});
     let verifiedAlias='';
-    const locale=({en:'en-US','pt-BR':'pt-BR',es:'es-ES',fr:'fr-FR',de:'de-DE',it:'it-IT',tr:'tr-TR',ru:'ru-RU',ar:'ar-SA',hi:'hi-IN',id:'id-ID',ja:'ja-JP',ko:'ko-KR',zh:'zh-CN'})[window.MATCH_LANG];
+    const locale=({en:'en-US','pt-BR':'pt-BR',es:'es-ES',fr:'fr-FR',de:'de-DE',it:'it-IT',tr:'tr-TR',ru:'ru-RU',ar:'ar-SA',hi:'hi-IN',id:'id-ID',ja:'ja-JP',ko:'ko-KR',zh:'zh-CN','zh-TW':'zh-TW'})[window.MatchAppHanLocale?.normalize?.(window.MATCH_LANG)||window.MATCH_LANG];
     // The ordinary lookup establishes English identities. A spoken localized
     // name may need one regional search, followed by details pinned to its ID.
     // Never accept a translated spelling as proof of a different poster.

@@ -9,16 +9,16 @@
   else api.boot(root);
 })(typeof window!=='undefined'?window:globalThis,function(){
   'use strict';
-  const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
-  const labels={en:'Sponsored', 'pt-BR':'Patrocinado',es:'Patrocinado',fr:'Sponsorisé',de:'Gesponsert',it:'Sponsorizzato',tr:'Sponsorlu',ru:'Реклама',ar:'محتوى برعاية',hi:'प्रायोजित',id:'Bersponsor',ja:'広告',ko:'광고',zh:'赞助内容'};
+  const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
+  const labels={en:'Sponsored', 'pt-BR':'Patrocinado',es:'Patrocinado',fr:'Sponsorisé',de:'Gesponsert',it:'Sponsorizzato',tr:'Sponsorlu',ru:'Реклама',ar:'محتوى برعاية',hi:'प्रायोजित',id:'Bersponsor',ja:'広告',ko:'광고',zh:'赞助内容', "zh-TW": "贊助內容"};
   const campaigns=Object.freeze([]);
   const destinations=Object.freeze([]);
   const REVIEW_AGE_MS=7*86400000;
   function locale(w){
     let saved='';try{saved=w.localStorage.getItem('match_lang')||'';}catch(_){}
     for(const value of [w.MATCH_LANG,saved,w.document.documentElement.lang]){
-      const normalized=String(value||'').toLowerCase();
-      const lang=languages.find(l=>l.toLowerCase()===normalized)||(normalized.startsWith('pt')?'pt-BR':languages.find(l=>l===normalized.split('-')[0]));
+      const normalized=String(value||'').toLowerCase().replace(/_/g,'-');
+      const lang=w.MatchAppHanLocale?.normalize(normalized)||(/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(normalized)?'zh-TW':languages.find(l=>l.toLowerCase()===normalized)||(normalized.startsWith('pt')?'pt-BR':languages.find(l=>l===normalized.split('-')[0])));
       if(lang)return lang;
     }
     return 'en';

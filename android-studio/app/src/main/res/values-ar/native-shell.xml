@@ -6,4 +6,6 @@
     <string name="file_chooser_title">اختر صورة</string>
     <string name="ad_privacy_choices">خيارات الخصوصية</string>
     <string name="kids_separate_app">يتوفر وضع الأطفال في تطبيق MatchApp Ai KIDS المنفصل.</string>
+    <string name="google_browser_unavailable">ثبِّت متصفحًا أو فعِّله للمتابعة باستخدام Google.</string>
+    <string name="avatar_sign_in_required">سجّل الدخول إلى MatchApp Ai لتجربة الصورة الرمزية الصوتية.</string>
 </resources>

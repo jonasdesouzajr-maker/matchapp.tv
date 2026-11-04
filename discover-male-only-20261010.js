@@ -428,7 +428,7 @@ function typewriterReveal(el, text, speedMs) {
 const TTS_LANG_MAP = {
     'en': 'en-US', 'pt-BR': 'pt-BR', 'es': 'es-ES', 'fr': 'fr-FR', 'de': 'de-DE',
     'it': 'it-IT', 'tr': 'tr-TR', 'ru': 'ru-RU', 'ar': 'ar-SA', 'hi': 'hi-IN',
-    'id': 'id-ID', 'ja': 'ja-JP', 'ko': 'ko-KR', 'zh': 'zh-CN'
+    'id': 'id-ID', 'ja': 'ja-JP', 'ko': 'ko-KR', 'zh': 'zh-CN', "zh-TW": "zh-TW"
 };
 
 function ttsTargetLang(lang) {
@@ -439,6 +439,7 @@ function voiceMatchesLang(voice, lang) {
     const target = ttsTargetLang(lang).toLowerCase();
     const base = target.split('-')[0];
     const actual = voice.lang.toLowerCase();
+    if (base === 'zh') return (globalThis.MatchAppHanLocale?.normalize(actual) || actual) === (globalThis.MatchAppHanLocale?.normalize(target) || target);
     return actual === target || actual.startsWith(target + '-') || actual.split('-')[0] === base;
 }
 function pickVoiceForLang(voices, lang) {
@@ -530,7 +531,7 @@ function justWatchLocale() {
     if (named[country]) return named[country];
     if (/^[A-Za-z]{2}$/.test(country)) return country.toLowerCase();
     const lang = window.MATCH_LANG || 'en';
-    return ({ 'pt-BR': 'br', es: 'mx', fr: 'fr', de: 'de', it: 'it', tr: 'tr', ru: 'ru', ar: 'eg', hi: 'in', id: 'id', ja: 'jp', ko: 'kr', zh: 'cn' })[lang] || 'us';
+    return ({ 'pt-BR': 'br', es: 'mx', fr: 'fr', de: 'de', it: 'it', tr: 'tr', ru: 'ru', ar: 'eg', hi: 'in', id: 'id', ja: 'jp', ko: 'kr', zh: 'cn', "zh-TW": "tw" })[lang] || 'us';
 }
 
 function discoverWatchUrl(item) {
@@ -1434,13 +1435,13 @@ const AI_COST_COPY = {
   "left": "每个问题消耗 1 次 AI 操作 · 今天还剩 {remaining}/{limit} 次",
   "credits": "今日 AI 操作已用完——现在每个问题消耗 1 个 Ask AI 点数（剩余 {credits} 个）",
   "none": "今天没有剩余的 AI 操作——请购买 Ask AI 点数或明天再来"
- }
+ }, "zh-TW": {"left":"每個問題消耗 1 次 AI 操作 · 今天還剩 {remaining}/{limit} 次","credits":"今日 AI 操作已用完——現在每個問題消耗 1 個 Ask AI 點數（剩餘 {credits} 個）","none":"今天沒有剩餘的 AI 操作——請購買 Ask AI 點數或明天再來"}
 };
 var lastAiCostState = null;
 function aiCostLang() {
     const low = String(window.MATCH_LANG || document.documentElement.getAttribute('lang') || 'en').toLowerCase();
     if (low.startsWith('pt')) return 'pt-BR';
-    if (low.startsWith('zh')) return 'zh';
+    if (low.startsWith('zh')) return globalThis.MatchAppHanLocale?.normalize(low) || 'zh';
     const keys = Object.keys(AI_COST_COPY);
     return keys.find(k => k.toLowerCase() === low) || keys.find(k => k.split('-')[0] === low.split('-')[0]) || 'en';
 }

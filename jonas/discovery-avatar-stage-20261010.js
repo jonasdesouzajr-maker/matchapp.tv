@@ -36,9 +36,10 @@ const words={
 'ar':['جاهز للاستماع','يوناس يتحدث','أستمع إليك الآن','أفكر في سؤالك'],
 'hi':['सुनने के लिए तैयार','जोनास बोल रहा है','सुन रहा हूँ... बोलिए','आपके प्रश्न पर विचार कर रहा हूँ'],
 'id':['Siap mendengarkan','Jonas sedang berbicara','Mendengarkan... silakan bicara','Sedang memikirkan pertanyaan Anda'],
-'zh':['准备聆听','Jonas 正在说话','正在聆听，请说话','正在思考你的问题']
+'zh':['准备聆听','Jonas 正在说话','正在聆听，请说话','正在思考你的问题'],
+'zh-TW':['準備好了，請說','Jonas 正在說話','我在聽，請說','正在想你的問題']
 };
-function labels(){const l=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();return words[l.split('-')[0]]||words.en}
+function labels(){const l=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en').toLowerCase();return words[window.MatchAppHanLocale?.normalize?.(l)||(l==='zh-tw'?'zh-TW':l.split('-')[0])]||words.en}
 function syncComposerLabels(){
  const locale=window.MatchAppJonasLocale;
  if(!locale)return;

@@ -18,11 +18,13 @@
   id:['Buka','Beranda','Jelajahi','Buku','Resep','Panduan','Acara','Profil'],
   ja:['移動先','ホーム','見つける','本','レシピ','ガイド','イベント','プロフィール'],
   ko:['바로가기','홈','둘러보기','도서','레시피','가이드','이벤트','프로필'],
-  zh:['前往','首页','探索','图书','食谱','指南','活动','个人资料']
+  zh:['前往','首页','探索','图书','食谱','指南','活动','个人资料'],
+  'zh-TW':['前往','首頁','探索','書籍','食譜','指南','活動','個人資料']
  };
+ function guideLocale(tag){return window.MatchAppHanLocale?.normalize?.(tag)||(tag==='zh-TW'?tag:tag.toLowerCase().split('-')[0])}
  function pills(panel){
   if(!panel)return;
-  var lang=(document.documentElement.lang||'en').toLowerCase().split('-')[0];
+  var lang=guideLocale(document.documentElement.lang||'en');
   var copy=labels[lang]||labels.en;
   var nav=panel.querySelector('.ma-guide-pills');
   if(nav&&nav.lang===lang)return;
@@ -122,10 +124,10 @@
     fr:['Sons activés','Sons désactivés'],de:['Töne an','Töne aus'],it:['Suoni attivi','Suoni disattivati'],
     tr:['Sesler açık','Sesler kapalı'],ru:['Звуки включены','Звуки выключены'],ar:['الأصوات مفعّلة','الأصوات متوقفة'],
     hi:['ध्वनि चालू','ध्वनि बंद'],id:['Suara aktif','Suara nonaktif'],ja:['サウンド オン','サウンド オフ'],
-    ko:['소리 켜짐','소리 꺼짐'],zh:['声音已开启','声音已关闭']
+    ko:['소리 켜짐','소리 꺼짐'],zh:['声音已开启','声音已关闭'],'zh-TW':['音效已開啟','音效已關閉']
   };
   function labelSound(b){
-    var lang=(root.lang||'en').toLowerCase().split('-')[0],off=muted();
+    var tag=root.lang||'en',lang=window.MatchAppHanLocale?.normalize?.(tag)||(tag==='zh-TW'?tag:tag.toLowerCase().split('-')[0]),off=muted();
     var text=(off?'🔇 ':'🔊 ')+(soundLabels[lang]||soundLabels.en)[off?1:0];
     if(b.textContent!==text)b.textContent=text;
     b.setAttribute('aria-pressed',String(!off));

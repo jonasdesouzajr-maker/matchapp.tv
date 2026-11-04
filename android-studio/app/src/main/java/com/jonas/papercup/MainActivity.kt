@@ -954,7 +954,7 @@ class MainActivity : AppCompatActivity() {
             JSONObject().put("version", 1).put("url", currentUrl).put("filters", filters)
                 .put("scrollX", input.optInt("scrollX").coerceIn(0, 1000000))
                 .put("scrollY", input.optInt("scrollY").coerceIn(0, 1000000))
-                .put("lang", input.optString("lang").takeIf { it in APP_LANGUAGES }.orEmpty())
+                .put("lang", NativeLaunchPolicy.appLanguageTag(input.optString("lang")).takeIf { it in APP_LANGUAGES }.orEmpty())
                 .toString()
         }.getOrNull()
     }
@@ -1008,7 +1008,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startupStrings(language: String? = startupPrefs.getString(PREF_APP_LANGUAGE, null)): android.content.Context {
-        val selected = language?.takeIf { it in APP_LANGUAGES } ?: return this
+        val selected = language?.let(NativeLaunchPolicy::appLanguageTag)?.takeIf { it in APP_LANGUAGES } ?: return this
         val configuration = android.content.res.Configuration(resources.configuration)
         configuration.setLocale(Locale.forLanguageTag(selected))
         return createConfigurationContext(configuration)
@@ -1419,6 +1419,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun nativeSpeechTag(tag: String?): String = when (NativeLaunchPolicy.appLanguageTag(tag.orEmpty())) {
+        "zh-TW" -> "zh-TW"
+        "zh" -> "zh-CN"
+        else -> tag?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) } ?: "en-US"
+    }
+
     private fun speakVoiceText(text: String?, languageTag: String?) {
         val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
         if (current == null ||
@@ -1436,9 +1442,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         pendingVoiceUtterance = null
-        val tag = languageTag
-            ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
-            ?: "en-US"
+        val tag = nativeSpeechTag(languageTag)
         val locale = Locale.forLanguageTag(tag)
         // Fail closed instead of speaking using Android's default (often female) TTS.
         if (locale.language.isBlank() || !chooseJonasVoice(engine, locale)) {
@@ -1585,7 +1589,7 @@ class MainActivity : AppCompatActivity() {
                         addCategory(Intent.CATEGORY_BROWSABLE)
                     })
                 } catch (_: ActivityNotFoundException) {
-                    errorNotice.show("Install or enable a browser to continue with Google.")
+                    errorNotice.show(startupStrings().getString(R.string.google_browser_unavailable))
                 }
             }
         }
@@ -1685,7 +1689,7 @@ class MainActivity : AppCompatActivity() {
                         JSONObject("{\"token\":" + encoded + "}").optString("token", "")
                     }.getOrDefault("")
                     if (token.length !in 100..6000) {
-                        errorNotice.show("Sign in with your MatchApp account to test Avatar AI.")
+                        errorNotice.show(startupStrings().getString(R.string.avatar_sign_in_required))
                         return@evaluateJavascript
                     }
                     startActivity(
@@ -1736,9 +1740,7 @@ class MainActivity : AppCompatActivity() {
                     sendVoiceError("not-allowed")
                     return@runOnUiThread
                 }
-                val lang = languageTag
-                    ?.takeIf { it.matches(Regex("^[A-Za-z]{2,3}(-[A-Za-z]{2,4})?$")) }
-                    ?: "en-US"
+                val lang = nativeSpeechTag(languageTag)
                 startInlineRecognition(lang)
             }
         }
@@ -1770,7 +1772,7 @@ class MainActivity : AppCompatActivity() {
                 type = "image/*"
             }
             return try {
-                fileChooser.launch(Intent.createChooser(intent, getString(R.string.file_chooser_title)))
+                fileChooser.launch(Intent.createChooser(intent, startupStrings().getString(R.string.file_chooser_title)))
                 true
             } catch (_: ActivityNotFoundException) {
                 filePathCallback = null
@@ -1824,8 +1826,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=70"
-        const val APP_UA = "MatchAppTVAndroid/1.1.70 MatchAppAiAndroid/1.1.70 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=71"
+        const val APP_UA = "MatchAppTVAndroid/1.1.71 MatchAppAiAndroid/1.1.71 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"
@@ -1840,7 +1842,7 @@ class MainActivity : AppCompatActivity() {
         private const val STATE_SCROLL_X = "matchapp_scroll_x_v1"
         private const val STATE_SCROLL_Y = "matchapp_scroll_y_v1"
         private val PAGE_FILTER_IDS = setOf("q-category", "q-mood", "q-platform", "q-genre", "q-vibe", "q-decade", "q-rating")
-        private val APP_LANGUAGES = setOf("en", "pt", "pt-BR", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh")
+        private val APP_LANGUAGES = setOf("en", "pt", "pt-BR", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh", "zh-TW")
         private const val APP_MODE_JS = """
             (function(){
               window.MATCHAPP_IS_AD_FREE = true;

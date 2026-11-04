@@ -51,7 +51,7 @@ test('payment destinations are strict provider origins with no credential or red
 });
 
 test('every supported language has authored plan, renewal, cancellation, pending and offer-phase copy',()=>{
-  assert.equal(api.languages.length,14);
+  assert.equal(api.languages.length,15);
   for(const language of api.languages){
     assert.equal(api.rows[language].length,api.keys.length,language);
     assert.ok(api.rows[language].every(value=>typeof value==='string'&&value.trim()));
@@ -228,7 +228,7 @@ test('native retention requires a real paid monthly discount and ongoing renewal
   assert.equal(api.playOffers([{...nativeOffer,offerId:null,pricingPhases:[last]}]).length,1,'ordinary base-plan quotes remain valid');
 });
 
-test('all fourteen native cancellation panels wait for the exact Play quote and a separate trusted acceptance',async()=>{
+test('all fifteen native cancellation panels wait for the exact Play quote and a separate trusted acceptance',async()=>{
   const active={...free,entitled:true,provider:'play',expiresAt:Date.now()+86400000,canManage:true};
   for(const lang of api.languages){
     const f=await fixture({native:true,lang,invoke:async()=>({data:active})});
@@ -313,7 +313,7 @@ test('pending retention never confirms a discount and stale-account callbacks ca
   }finally{f.w.close();}
 });
 
-test('verified existing recurring plans block new Pro and retain web management in all fourteen languages',async()=>{
+test('verified existing recurring plans block new Pro and retain web management in all fifteen languages',async()=>{
   const legacy={...free,hasLegacySubscription:true,provider:'stripe',canManage:true};
   assert.equal(api.legacySubscription(legacy),true);
   for(const bad of [{...legacy,ok:false},{...legacy,hasLegacySubscription:'true'},{...legacy,canManage:false},{...legacy,provider:'play'}])assert.equal(api.legacySubscription(bad),false);

@@ -15,7 +15,7 @@ const copy={
  id:{install:'Unduh aplikasi',update:'Perbarui aplikasi',installed:'Terpasang',safe:'Aplikasi web aman \u00b7 HTTPS \u00b7 pemeriksaan keamanan browser'},
  ja:{install:'\u30a2\u30d7\u30ea\u3092\u5165\u624b',update:'\u30a2\u30d7\u30ea\u3092\u66f4\u65b0',installed:'\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u6e08\u307f',safe:'\u5b89\u5168\u306aWeb\u30a2\u30d7\u30ea \u00b7 HTTPS \u00b7 \u30d6\u30e9\u30a6\u30b6\u306e\u5b89\u5168\u78ba\u8a8d\u304c\u9069\u7528\u3055\u308c\u307e\u3059'},
  ko:{install:'\uc571 \ub2e4\uc6b4\ub85c\ub4dc',update:'\uc571 \uc5c5\ub370\uc774\ud2b8',installed:'\uc124\uce58\ub428',safe:'\uc548\uc804\ud55c \uc6f9 \uc571 \u00b7 HTTPS \u00b7 \ube0c\ub77c\uc6b0\uc800 \ubcf4\uc548 \uac80\uc0ac\uac00 \uc801\uc6a9\ub429\ub2c8\ub2e4'},
- zh:{install:'\u4e0b\u8f7d\u5e94\u7528',update:'\u66f4\u65b0\u5e94\u7528',installed:'\u5df2\u5b89\u88c5',safe:'\u5b89\u5168\u7684\u7f51\u9875\u5e94\u7528 \u00b7 HTTPS \u00b7 \u6d4f\u89c8\u5668\u5b89\u5168\u68c0\u67e5\u9002\u7528'}
+ zh:{install:'\u4e0b\u8f7d\u5e94\u7528',update:'\u66f4\u65b0\u5e94\u7528',installed:'\u5df2\u5b89\u88c5',safe:'\u5b89\u5168\u7684\u7f51\u9875\u5e94\u7528 \u00b7 HTTPS \u00b7 \u6d4f\u89c8\u5668\u5b89\u5168\u68c0\u67e5\u9002\u7528'}, "zh-TW": {"install":"下載應用","update":"更新應用","installed":"已安裝","safe":"安全的網頁應用 · HTTPS · 瀏覽器安全檢查適用"}
 };
 const lang=()=>String(window.MATCH_LANG||document.documentElement.lang||'en');
 const text=()=>copy[lang()]||copy[lang().split('-')[0]]||copy.en;

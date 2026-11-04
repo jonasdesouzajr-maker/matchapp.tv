@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const keys=('detail.year|detail.pages|detail.ratings|detail.noRating|detail.audioWork|detail.sourceEdition|detail.sourceWork|detail.sourceSearch|detail.cover|reading.chooseCountry|reading.historyUnavailable|reading.publisherIcon|reading.magazineLabel|reading.originalIssues|reading.officialArticles|reading.amazonAvailability|reading.publisherSubscription|reading.magazineNote|reading.bookPreview|reading.freeEditions|reading.audioSearchUnverified|reading.amazonEdition|reading.koboSearch|reading.audioLabel|reading.ebookLabel|reading.by|reading.audioNote|reading.ebookNote|reading.sourcesAria|reading.magazineHeading|reading.audioHeading|reading.ebookHeading|reading.sourceNote|reading.sourceEnglish|audio.search|affiliate.disclosure|affiliate.paid').split('|');
 function fixture(markup='<main id="host"></main>'){
  const dom=new JSDOM('<!doctype html><html lang="en"><body>'+markup+'</body></html>',{url:'https://matchapp.tv/ebooks/',runScripts:'outside-only'}),w=dom.window;
@@ -10,7 +10,7 @@ function fixture(markup='<main id="host"></main>'){
  const select=lang=>{w.localStorage.setItem('match_lang',lang);w.MATCH_LANG='en';w.document.dispatchEvent(new w.CustomEvent('matchapp:langchange',{detail:{lang}}));};
  return {dom,w,select};
 }
-test('all 14 reading detail dictionaries have the exact authored key and interpolation contract',t=>{
+test('all supported reading detail dictionaries have the exact authored key and interpolation contract',t=>{
  const f=fixture();t.after(()=>f.dom.window.close());const {w}=f,api=w.MatchAppReadingDetailsCopy;
  const vars={year:1925,count:1234,rating:'4.3',source:'Apple Books',title:'Exact source title',author:'Exact source author',provider:'Kobo'};
  for(const lang of languages){
@@ -22,7 +22,7 @@ test('all 14 reading detail dictionaries have the exact authored key and interpo
   }
   if(lang!=='en')assert.notEqual(api.text('reading.sourceNote'),w.MatchAppBooksLocale.get('reading.sourceNote','en'),lang+' has its own explanation');
  }
- w.localStorage.setItem('match_lang','pt-PT');assert.equal(api.language(),'pt-BR');w.localStorage.setItem('match_lang','zh-Hant');assert.equal(api.language(),'zh');
+ w.localStorage.setItem('match_lang','pt-PT');assert.equal(api.language(),'pt-BR');w.localStorage.setItem('match_lang','zh-Hant');assert.equal(api.language(),'zh-TW');w.localStorage.setItem('match_lang','zh-Hans-TW');assert.equal(api.language(),'zh');
  assert.equal(w.document.documentElement.lang,'en','display helper never mutates canonical language/dir');
  assert.equal(w.document.querySelectorAll('select,input').length,0,'copy bundle adds no language control');
 });
@@ -148,7 +148,7 @@ test('Ask AI book, audio and magazine source cards retain identity, links and or
  assert(anchors.some(a=>a.rel.includes('sponsored')),'existing Amazon BR disclosure/link policy remains');
  assert(!w.document.getElementById('audio').querySelector('[data-reading-affiliate]'),'audio searches stay untagged');
 });
-test('audio search labels and affiliate copy follow all14 saved choices without changing provider URLs or market flags',t=>{
+test('audio search labels and affiliate copy follow all supported saved choices without changing provider URLs or market flags',t=>{
  const f=fixture();t.after(()=>f.dom.window.close());const {w}=f;
  w.eval(read('ebooks/audiobooks.js'));w.eval(read('ebooks/affiliate-links.js'));const book={title:'Exact Source Work',author:'Mira Example'};
  const original=w.MatchAppAudiobooks.sourceSearches(book,'GB').map(({label,...record})=>record),affiliate=w.MatchAppEbookAffiliate.amazonSearchUrl(book,'BR');

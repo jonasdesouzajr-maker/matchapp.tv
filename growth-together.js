@@ -160,7 +160,7 @@ function render(){
  const live=node('p','', 'growth-subtle');live.id='growth-announcement';live.setAttribute('role','status');live.setAttribute('aria-live','polite');
  const toolbar=node('div',undefined,'growth-toolbar');toolbar.append(paragraph('MatchApp Ai','growth-eyebrow'));
  const language=node('select');language.className='growth-language';language.setAttribute('aria-label',copy.get().language);
- const languageNames={en:'English','pt-BR':'Português (Brasil)',es:'Español',fr:'Français',de:'Deutsch',it:'Italiano',tr:'Türkçe',ru:'Русский',ar:'العربية',hi:'हिन्दी',id:'Bahasa Indonesia',ja:'日本語',ko:'한국어',zh:'中文'};
+ const languageNames={en:'English','pt-BR':'Português (Brasil)',es:'Español',fr:'Français',de:'Deutsch',it:'Italiano',tr:'Türkçe',ru:'Русский',ar:'العربية',hi:'हिन्दी',id:'Bahasa Indonesia',ja:'日本語',ko:'한국어',zh:'中文', "zh-TW": "繁體中文"};
  for(const [value,name]of Object.entries(languageNames)){const option=node('option',name);option.value=value;language.append(option);}language.value=copy.lang();
  language.addEventListener('change',()=>{if(typeof w.setLanguage==='function')w.setLanguage(language.value);});toolbar.append(language);root.append(toolbar);
  const panel=node('section',undefined,'growth-panel');root.append(panel);

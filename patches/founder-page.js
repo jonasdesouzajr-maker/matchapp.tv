@@ -3,7 +3,7 @@
  const copy=window.MATCHAPP_FOUNDER_COPY,root=document.querySelector('.ma-founder-page');if(!root||!copy)return;
  function paint(){
   let saved='';try{saved=localStorage.getItem('match_lang')||'';}catch(_){}
-  const code=String(window.MATCH_LANG||saved||document.documentElement.lang||'en').split('-')[0].toLowerCase(),t=copy[code];if(!t)return;
+  const code=(globalThis.MatchAppHanLocale?.normalize(window.MATCH_LANG||saved||document.documentElement.lang||'en') || (/^zh(?:[-_]hant\b|(?:[-_](?:tw|hk|mo))\b)/i.test(window.MATCH_LANG||saved||document.documentElement.lang||'en') ? 'zh-TW' : String(window.MATCH_LANG||saved||document.documentElement.lang||'en'||'').toLowerCase().split(/[-_]/)[0])),t=copy[code];if(!t)return;
   document.querySelectorAll('[data-founder]').forEach(n=>{if(t[n.dataset.founder]!==undefined)n.textContent=t[n.dataset.founder];});
   const langInput=document.querySelector('.mf-contribution input[name="lang"]');
   if(langInput)langInput.value=code==='pt'?'pt-BR':code;

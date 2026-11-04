@@ -6,4 +6,6 @@
     <string name="file_chooser_title">फ़ोटो चुनें</string>
     <string name="ad_privacy_choices">गोपनीयता के विकल्प</string>
     <string name="kids_separate_app">किड्स मोड अलग MatchApp Ai KIDS ऐप में उपलब्ध है।</string>
+    <string name="google_browser_unavailable">Google के साथ जारी रखने के लिए कोई ब्राउज़र इंस्टॉल या चालू करें।</string>
+    <string name="avatar_sign_in_required">वॉइस अवतार आज़माने के लिए MatchApp Ai में साइन इन करें।</string>
 </resources>

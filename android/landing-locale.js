@@ -254,6 +254,24 @@
     "2026年10月娱乐指南",
     "寻找动漫",
     "询问 MatchApp Ai"
+  ],
+  "zh-TW": [
+    "Android 版 MatchApp Ai | 電影、影集與 Google Play",
+    "Android 版 MatchApp Ai",
+    "按心情尋找電影或影集，一起挑選，並瞭解在哪裡觀看。從 Google Play 下載官方 Android 應用。",
+    "從 Google Play 下載",
+    "繼續使用網站",
+    "隱私",
+    "尋找下一部作品",
+    "選擇心情、形式、平臺和年代，縮小電影與影集的候選範圍。想了解某部作品或探索不同心情時，可以向 Jonas 尋求幫助。",
+    "一起挑選",
+    "使用 Match Together 比較兩個人的喜好，並透過 MatchApp 賬戶儲存發現的作品，留待以後觀看。",
+    "安裝前須知",
+    "MatchApp Ai 是內容發現服務。觀看需前往原始提供商，其訂閱、價格和地區可用性適用。應用需要網際網路連線，可能包含廣告和可選購買。",
+    "Google Play 安裝的是 Android 應用。瀏覽器快捷方式開啟的是網站。Kids Mode 獨立於這款成人版 Android 應用。",
+    "2026年10月娛樂指南",
+    "尋找動漫",
+    "詢問 MatchApp Ai"
   ]
 };
   for (const [language, values] of Object.entries(copy)) {

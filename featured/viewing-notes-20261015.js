@@ -130,6 +130,15 @@ zh:{heading:'播放前如何选择',check:'核对版本和观看条件',note:'Ma
  '如果你想看有固定人物、篇幅较长的浪漫喜剧剧情连续剧，A Gata Comeu 是可考虑的选择。岛上的处境让 Jô 和 Fábio 走近，但应期待人物关系的发展，而非短篇生存惊悚片。从第一章开始，更容易理解关系的变化。',
  'Memória Globo 适合了解人物和制作背景，Globoplay 则用于核对目前的观看条件。档案可以证实作者身份，却不能保证你所在国家的订阅包含全部章节。',
  '打开播放列表或付费前，请核对作品名、1985年制作版本与 Ivani Ribeiro。检查章节顺序、语言、无障碍功能和当地年龄分级。时间不多时，可以先看一章，判断节奏是否适合你的日常安排；完整连续剧所需时间与一部电影不同。'
+ ]},
+"zh-TW":{heading:'播放前如何選擇',check:'核對版本和觀看條件',note:'MatchApp Ai 原創觀看指南 · 2026年10月15日。這是選片建議，並非觀看全部影集後撰寫的影評。',ahs:[
+ '如果你想看令人不安的恐怖作品，並願意持續追劇，可以考慮 American Horror Story: 13。若想和朋友輕鬆度過一晚，先討論每個人對刺激性題材的接受程度。熟悉的演員或熱門預告片並不意味著恐怖季適合所有人。',
+ '參考 FX 上這一季的演員和分集頁面。迴歸演員可能飾演不同人物，因此也要核對角色名。從中間開始觀看前，請先讀分集簡介。僅憑季數，無法判斷故事是否需要了解此前的內容。',
+ '請選擇 American Horror Story 第13季，而非另一部劇 American Horror Stories。檢查實際可看的集數、當地年齡分級、音軌及字幕。FX 和 Hulu 資訊針對美國服務；訂閱前應另外核實當地 Disney+ 的供應情況。'
+ ],agata:[
+ '如果你想看有固定人物、篇幅較長的浪漫喜劇劇情連續劇，A Gata Comeu 是可考慮的選擇。島上的處境讓 Jô 和 Fábio 走近，但應期待人物關係的發展，而非短篇生存驚悚片。從第一章開始，更容易理解關係的變化。',
+ 'Memória Globo 適合瞭解人物和製作背景，Globoplay 則用於核對目前的觀看條件。檔案可以證實作者身份，卻不能保證你所在國家的訂閱包含全部章節。',
+ '開啟播放列表或付費前，請核對作品名、1985年製作版本與 Ivani Ribeiro。檢查章節順序、語言、無障礙功能和當地年齡分級。時間不多時，可以先看一章，判斷節奏是否適合你的日常安排；完整連續劇所需時間與一部電影不同。'
  ]}
 };
 function apply() {
@@ -138,7 +147,7 @@ function apply() {
  let raw=window.MATCH_LANG||document.documentElement.lang||'en';
  try{raw=localStorage.getItem('match_lang')||raw}catch(_){}
  raw=String(raw).toLowerCase().replace(/_/g,'-');
- const key=raw.startsWith('pt')?'pt-BR':raw.split('-')[0];
+ const key=/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(raw)?'zh-TW':raw.startsWith('pt')?'pt-BR':raw.split('-')[0];
  const row=copy[key]||copy.en;
  host.lang=copy[key]?key:'en';host.dir=key==='ar'?'rtl':'ltr';
  host.querySelectorAll('[data-viewing-copy]').forEach(el=>{

@@ -9,8 +9,8 @@ const localMedia = require('../channels/local-media.json');
 const root = path.join(__dirname,'..');
 const read = rel => fs.readFileSync(path.join(root,rel),'utf8');
 
-test('all 28 discovery routes have static content, reciprocal alternates and a self-canonical',()=>{
-  assert.equal(Object.keys(copy).length,14);
+test('all localized discovery routes have static content, reciprocal alternates and a self-canonical',()=>{
+  assert.ok(copy['zh-TW'] && copy.zh && copy.ko);
   const sitemap = read('sitemap.xml');
   for(const [page,groups] of Object.entries(pages)) for(const [lang,t] of Object.entries(copy)) {
     const url = 'https://matchapp.tv'+route(page,lang);
@@ -41,10 +41,12 @@ test('Jonas suggests only same-site channel destinations and keeps language, for
   for(const [q,lang,group] of [
     ['Suggest a tech audiobook','en','audiobook'],['Um podcast de tecnologia','pt-BR','podcast'],
     ['Quiero un libro de tecnología','es','book'],['プログラミングの動画','ja','video'],['推荐科技有声书','zh','audiobook'],
-    ['기술 팟캐스트','ko','podcast'],['كتب عن البرمجة','ar','book'],['तकनीक की किताब','hi','book'],
+    ['推薦科技有聲書','zh-TW','audiobook'],['程式設計影片','zh-TW','video'],['기술 팟캐스트','ko','podcast'],['كتب عن البرمجة','ar','book'],['तकनीक की किताब','hi','book'],
     ['книги о технологиях','ru','book'],['Technik Hörbuch','de','audiobook'],['podcast di tecnologia','it','podcast'],
     ['podcast sur la technologie','fr','podcast'],['teknoloji sesli kitap','tr','audiobook'],['buku teknologi','id','book']
   ])assert.equal(channels.linkFor(q,lang).getAttribute('href'),route('tech',lang)+'#'+group);
+  for(const alias of ['zh-Hant','zh-HK','zh-MO','zh-Hant-HK']) assert.equal(channels.linkFor('科技有聲書',alias).getAttribute('href'),'/tech/zh-tw/#audiobook');
+  assert.equal(channels.linkFor('科技有声书','zh-Hans-TW').getAttribute('href'),'/tech/zh/#audiobook');
   assert.equal(channels.linkFor('find a romantic movie','en'),null);
   assert.equal(channels.linkForKey('javascript:alert(1)','en'),null);
   assert.equal(channels.isNavigation('open the tech channel'),true);

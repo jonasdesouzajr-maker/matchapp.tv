@@ -139,5 +139,15 @@ window.MatchAppChannelLabels = {
     "audiobook": "科技有声书",
     "press": "科技期刊",
     "shop": "搜索商品"
+  },
+  "zh-TW": {
+    "tech": "科技工作室",
+    "trail": "從銀幕到音樂與書籍",
+    "video": "科技影片",
+    "podcast": "科技 Podcast",
+    "book": "程式設計書籍",
+    "audiobook": "科技有聲書",
+    "press": "科技期刊",
+    "shop": "搜尋商品"
   }
 };

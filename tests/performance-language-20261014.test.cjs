@@ -27,9 +27,9 @@ test('Explore translates every authored navigation/card and preserves destinatio
  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  const links=[...w.document.querySelectorAll('a')].map(a=>a.getAttribute('href'));
  const expectedKeys=['title','intro','explore','awaited','premiere','weekly','curated','books','recipes','news','events','taylor','ask','more','askDescription','friends','donate'];
- const expectedTitles={en:'Explore more','pt-BR':'Explore mais',es:'Explora más',fr:'Explorer plus',de:'Mehr entdecken',it:'Esplora altro',tr:'Daha fazlası',ru:'Откройте больше',ar:'اكتشف المزيد',hi:'और खोजें',id:'Jelajahi lainnya',ja:'もっと見る',ko:'더 둘러보기',zh:'探索更多'};
+ const expectedTitles={en:'Explore more','pt-BR':'Explore mais',es:'Explora más',fr:'Explorer plus',de:'Mehr entdecken',it:'Esplora altro',tr:'Daha fazlası',ru:'Откройте больше',ar:'اكتشف المزيد',hi:'और खोजें',id:'Jelajahi lainnya',ja:'もっと見る',ko:'더 둘러보기',zh:'探索更多','zh-TW':'探索更多'};
  const english=new Map();
- assert.equal(Object.keys(w.languages).length,14,'all supported languages must be exercised');
+ assert.equal(Object.keys(w.languages).length,15,'all supported languages must be exercised');
  for(const lang of Object.keys(w.languages)){
   w.setLanguage(lang);w.MatchCinemaShell.paint();
   for(const node of w.document.querySelectorAll('[data-hub-copy]')){

@@ -1,12 +1,12 @@
 /* Shared, in-flow error notices. No message text or user data enters diagnostics. */
 (function(){'use strict';
 if(window.MatchAppErrors)return;
-const CLOSE={en:'Close message',pt:'Fechar mensagem',es:'Cerrar mensaje',fr:'Fermer le message',de:'Meldung schließen',it:'Chiudi messaggio',tr:'Mesajı kapat',ru:'Закрыть сообщение',ar:'إغلاق الرسالة',hi:'संदेश बंद करें',id:'Tutup pesan',ja:'メッセージを閉じる',ko:'메시지 닫기',zh:'关闭消息'};
-const RETRY={en:'Something went wrong. Please try again.',pt:'Algo deu errado. Tente novamente.',es:'Algo salió mal. Inténtalo de nuevo.',fr:'Une erreur est survenue. Réessayez.',de:'Etwas ist schiefgelaufen. Bitte versuche es erneut.',it:'Qualcosa è andato storto. Riprova.',tr:'Bir sorun oluştu. Lütfen tekrar deneyin.',ru:'Произошла ошибка. Попробуйте ещё раз.',ar:'حدث خطأ. يرجى المحاولة مرة أخرى.',hi:'कुछ गलत हुआ। कृपया फिर से कोशिश करें।',id:'Terjadi kesalahan. Silakan coba lagi.',ja:'エラーが発生しました。もう一度お試しください。',ko:'오류가 발생했습니다. 다시 시도해 주세요.',zh:'出现错误。请重试。'};
+const CLOSE={en:'Close message',pt:'Fechar mensagem',es:'Cerrar mensaje',fr:'Fermer le message',de:'Meldung schließen',it:'Chiudi messaggio',tr:'Mesajı kapat',ru:'Закрыть сообщение',ar:'إغلاق الرسالة',hi:'संदेश बंद करें',id:'Tutup pesan',ja:'メッセージを閉じる',ko:'메시지 닫기',zh:'关闭消息', "zh-TW": "關閉訊息"};
+const RETRY={en:'Something went wrong. Please try again.',pt:'Algo deu errado. Tente novamente.',es:'Algo salió mal. Inténtalo de nuevo.',fr:'Une erreur est survenue. Réessayez.',de:'Etwas ist schiefgelaufen. Bitte versuche es erneut.',it:'Qualcosa è andato storto. Riprova.',tr:'Bir sorun oluştu. Lütfen tekrar deneyin.',ru:'Произошла ошибка. Попробуйте ещё раз.',ar:'حدث خطأ. يرجى المحاولة مرة أخرى.',hi:'कुछ गलत हुआ। कृपया फिर से कोशिश करें।',id:'Terjadi kesalahan. Silakan coba lagi.',ja:'エラーが発生しました。もう一度お試しください。',ko:'오류가 발생했습니다. 다시 시도해 주세요.',zh:'出现错误。请重试。', "zh-TW": "出現錯誤。請重試。"};
 const CODES=new Set(['ui-error','runtime-error','unhandled-rejection','match-recovery','kids-quota','kids-history','kids-service']);
 const sent=new Set();let total=0;
 const decorations=new WeakMap();
-function language(){return String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0]}
+function language(){return (globalThis.MatchAppHanLocale?.normalize(String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase()) || String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0])}
 function kids(){return location.pathname.startsWith('/kids/')||document.documentElement.classList.contains('kids-mode')}
 function page(){const p=location.pathname;return kids()?'kids':p.startsWith('/ebooks')?'reading':p.includes('discover')?'chat':p.includes('profile')?'profile':p.includes('explore')?'explore':p==='/'||p==='/index.html'?'home':'other'}
 function report(code){

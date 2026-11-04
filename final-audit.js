@@ -186,12 +186,12 @@
     id:['Foto akun Anda','Profil pribadi MatchApp Ai','Lengkapi profil Anda','Masuk untuk menyinkronkan profil Anda di berbagai perangkat','Identitas terlindungi','Lengkapi informasi identitas Anda','Sinkronisasi antarperangkat'],
     ja:['アカウントの写真','MatchApp Ai の個人プロフィール','プロフィールを完成させてください','ログインしてデバイス間でプロフィールを同期','本人情報は保護されています','本人情報を入力してください','デバイス間で同期'],
     ko:['계정 사진','MatchApp Ai 개인 프로필','프로필을 완성하세요','로그인하여 기기 간에 프로필을 동기화하세요','신원 정보 보호 중','신원 정보를 입력하세요','기기 간 동기화'],
-    zh:['您的账号照片','MatchApp Ai 私人资料','完善您的个人资料','登录以在设备间同步您的资料','身份信息已受保护','请完善身份信息','跨设备同步']
+    zh:['您的账号照片','MatchApp Ai 私人资料','完善您的个人资料','登录以在设备间同步您的资料','身份信息已受保护','请完善身份信息','跨设备同步'], "zh-TW": ["您的賬號照片","MatchApp Ai 私人資料","完善您的個人資料","登入以在裝置間同步您的資料","身份資訊已受保護","請完善身份資訊","跨裝置同步"]
   };
   function profileLabels(){
     let language='en';try{language=localStorage.getItem('match_lang')||window.MATCH_LANG||'en';}catch(_){language=window.MATCH_LANG||'en';}
     language=String(language).replace(/_/g,'-').toLowerCase();
-    language=language==='pt'||language.startsWith('pt-')?'pt-BR':language.split('-')[0];
+    language=language==='pt'||language.startsWith('pt-')?'pt-BR':(globalThis.MatchAppHanLocale?.normalize(language) || language.split('-')[0]);
     const row=profileLabelRows[language]||profileLabelRows.en;
     return Object.fromEntries(['avatar','privateProfile','complete','signIn','protected','setup','sync'].map((name,index)=>[name,row[index]]));
   }

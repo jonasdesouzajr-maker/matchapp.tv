@@ -13,7 +13,7 @@
  // Home retains the original legal/CMP/action nodes. Only repeated chrome is
  // consolidated; service notices remain available in a native disclosure.
  const home=donate&&doc.querySelector('body.page-home .seo-footer');let homeUI=null,legalObserver=null;
- function homeLanguage(){let saved='';try{saved=root.localStorage.getItem('match_lang')||'';}catch(_){}for(const value of[saved,root.MATCH_LANG,doc.documentElement.lang]){const key=String(value||'').toLowerCase().replace(/_/g,'-').split('-')[0];if(Object.prototype.hasOwnProperty.call(copy.homeFooter,key))return key;}return 'en';}
+ function homeLanguage(){let saved='';try{saved=root.localStorage.getItem('match_lang')||'';}catch(_){}for(const value of[saved,root.MATCH_LANG,doc.documentElement.lang]){const key=value==='zh-TW'?'zh-TW':(globalThis.MatchAppHanLocale?.normalize(value)||String(value||'').toLowerCase().replace(/_/g,'-').split('-')[0]);if(Object.prototype.hasOwnProperty.call(copy.homeFooter,key))return key;}return 'en';}
  function consolidateLegal(){
   if(!homeUI)return false;if(homeUI.bar)return true;
   const bar=doc.querySelector('.ma-legal-bar'),privacy=bar&&bar.querySelector('#ma-privacy-choices');if(!privacy)return false;
@@ -84,7 +84,7 @@
   id:['Informasi layanan','Yang baru','MatchApp Ai adalah layanan penemuan independen, tanpa afiliasi, dukungan resmi, atau sponsor dari platform streaming yang tercantum di sini. Semua merek dagang milik pemiliknya masing-masing. Ketersediaan bergantung pada wilayah dan langganan. Dilarang menggandakan perangkat lunak ini atau sistem AI-nya tanpa izin.','Dukungan:','Hak cipta dilindungi.'],
   ja:['サービスについて','新着情報','MatchApp Aiは独立したコンテンツ発見サービスであり、ここに掲載された配信プラットフォームとの提携関係や、各社による推奨・協賛はありません。商標はそれぞれの権利者に帰属します。利用できるコンテンツは地域や契約によって異なります。本ソフトウェアおよびAIシステムの無断複製は禁止されています。','サポート：','無断転載を禁じます。'],
   ko:['서비스 안내','새로운 소식','MatchApp Ai는 독립적인 콘텐츠 탐색 서비스이며, 여기에 나열된 스트리밍 플랫폼과 제휴하거나 이들의 승인 또는 후원을 받지 않습니다. 모든 상표는 각 소유자에게 귀속됩니다. 이용 가능 여부는 지역과 구독에 따라 다릅니다. 이 소프트웨어 및 AI 시스템의 무단 복제를 금지합니다.','지원:','모든 권리 보유.'],
-  zh:['服务信息','最新动态','MatchApp Ai 是独立的内容发现服务，与此处列出的流媒体平台没有关联，也未获得其认可或赞助。所有商标均属于各自的所有者。内容可用性因地区和订阅而异。禁止未经授权复制本软件或其 AI 系统。','支持：','保留所有权利。']
+  zh:['服务信息','最新动态','MatchApp Ai 是独立的内容发现服务，与此处列出的流媒体平台没有关联，也未获得其认可或赞助。所有商标均属于各自的所有者。内容可用性因地区和订阅而异。禁止未经授权复制本软件或其 AI 系统。','支持：','保留所有权利。'], "zh-TW": ["服務資訊","最新動態","MatchApp Ai 是獨立的內容發現服務，與此處列出的串流平臺沒有關聯，也未獲得其認可或贊助。所有商標均屬於各自的所有者。內容可用性因地區和訂閱而異。禁止未經授權複製本軟體或其 AI 系統。","支援：","保留所有權利。"]
  },
  donate:{
   en:{'ma-donate-kicker':'Independent ideas. Shared possibilities.','ma-donate-title':'Be part of what comes next','ma-donate-desc':'Built independently. Made for your everyday discoveries. Voluntary support helps keep MatchApp Ai reliable and makes room for thoughtful improvements.','ma-donate-pill':'Help me grow the business'},

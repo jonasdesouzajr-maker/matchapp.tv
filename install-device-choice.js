@@ -16,7 +16,7 @@ const LABELS={
  id:{phone:'Tambahkan ke ponsel',tablet:'Tambahkan ke tablet'},
  ja:{phone:'スマホに追加',tablet:'タブレットに追加'},
  ko:{phone:'휴대전화에 추가',tablet:'태블릿에 추가'},
- zh:{phone:'添加到手机',tablet:'添加到平板'}
+ zh:{phone:'添加到手机',tablet:'添加到平板'}, "zh-TW": {"phone":"新增到手機","tablet":"新增到平板"}
 };
 const SHEET={
  en:{titlePhone:'Add MatchApp to your phone',titleTablet:'Add MatchApp to your tablet',subtitle:'Choose how you want MatchApp on this device.',appTitle:'Install MatchApp Ai',appBody:'Full app-style install when supported: its own window, app launcher entry and automatic web updates.',protected:'Protected install · no sideloading',shortcutTitle:'Create shortcut',shortcutBody:'A lightweight home-screen link that opens MatchApp in your browser.',shortcutNote:'Shortcut availability is controlled by your browser. Some browsers replace shortcut-only with the full app install for installable PWAs.',notNow:'Not now',shortcutHow:'Shortcut instructions',androidShortcut:'Open your browser menu (⋮), choose “Add to Home screen”, then choose “Create shortcut” if your browser offers it.',iosShortcut:'iPhone and iPad do not expose a separate shortcut-only home-screen mode for an installable web app. “Add to Home Screen” installs MatchApp as an app instead.',genericShortcut:'Open your browser menu and choose “Add to Home screen” or “Create shortcut” if that option is available.',done:'Got it'},

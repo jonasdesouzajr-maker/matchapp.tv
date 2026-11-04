@@ -16,12 +16,12 @@ const labels={
 'id':['Beranda','Bicara ke Jonas','Tren','Bersama','Profil','Anak-anak'],
 'ja':['ホーム','Jonasと話す','人気作品','一緒に','プロフィール','キッズ'],
 'ko':['홈','Jonas와 대화','인기 콘텐츠','함께','프로필','키즈'],
-'zh':['首页','与 Jonas 聊天','热门趋势','一起观看','个人资料','儿童']
+'zh':['首页','与 Jonas 聊天','热门趋势','一起观看','个人资料','儿童'], "zh-TW": ["首頁","與 Jonas 聊天","熱門趨勢","一起觀看","個人資料","兒童"]
 };
 function chosen(){
  const v=String(window.MATCH_LANG||document.querySelector('#lang-switcher-host select')?.value
  ||document.documentElement.lang||'en').toLowerCase();
- return v.startsWith('pt')?'pt':v.split('-')[0];
+ return v.startsWith('pt')?'pt':(globalThis.MatchAppHanLocale?.normalize(v) || v.split('-')[0]);
 }
 function paint(){
  const nav=document.querySelector('#mh-topbox .ma-luxe-shortcuts');

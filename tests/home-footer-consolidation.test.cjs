@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8'),source=read('index.html'),copy=require('../patches/reference-support.js');
-const labels={en:['Service information','What’s new'],'pt-BR':['Sobre o serviço','Novidades'],es:['Información del servicio','Novedades'],fr:['À propos du service','Nouveautés'],de:['Über den Dienst','Neuigkeiten'],it:['Informazioni sul servizio','Novità'],tr:['Hizmet bilgileri','Yenilikler'],ru:['О сервисе','Что нового'],ar:['معلومات الخدمة','ما الجديد'],hi:['सेवा की जानकारी','नया क्या है'],id:['Informasi layanan','Yang baru'],ja:['サービスについて','新着情報'],ko:['서비스 안내','새로운 소식'],zh:['服务信息','最新动态']};
+const labels={'zh-TW':['服務資訊','最新動態'],en:['Service information','What’s new'],'pt-BR':['Sobre o serviço','Novidades'],es:['Información del servicio','Novedades'],fr:['À propos du service','Nouveautés'],de:['Über den Dienst','Neuigkeiten'],it:['Informazioni sul servizio','Novità'],tr:['Hizmet bilgileri','Yenilikler'],ru:['О сервисе','Что нового'],ar:['معلومات الخدمة','ما الجديد'],hi:['सेवा की जानकारी','नया क्या है'],id:['Informasi layanan','Yang baru'],ja:['サービスについて','新着情報'],ko:['서비스 안내','새로운 소식'],zh:['服务信息','最新动态']};
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 function mount(saved='pt-BR'){
  const dom=new JSDOM(source,{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window,d=w.document;
@@ -26,9 +26,9 @@ test('saved PT wins before hydration; late legal boot consolidates duplicates wh
  before.updates.click();assert.equal(updates,1);assert(canonical.status.hidden);canonical.privacy.click();assert.equal(canonical.status.hidden,false,'the original CMP fallback click handler remains active');assert.equal(w.localStorage.getItem('match_cookie_choice'),null,'presentation creates no advertising consent');
  d.getElementById('ma-donate-pill').click();assert.equal(d.getElementById('ma-donate-panel').hidden,false);d.querySelector('[data-donate-value="25"]').click();assert.equal(d.getElementById('ma-donate-amount').value,'25');assert.equal(d.querySelector('[data-donate-value="25"]').getAttribute('aria-pressed'),'true');intact(f,canonical);
 });
-test('all14 languages update the same disclosure/action/rights nodes without closing either fold or resetting support selection',async t=>{
+test('all 15 language choices update the same disclosure/action/rights nodes without closing either fold or resetting support selection',async t=>{
  const f=mount('en');t.after(()=>f.w.close());const canonical=f.legal();f.boot();await tick();const{w,d,before}=f,details=d.querySelector('.ma-home-service-info'),summary=details.querySelector('summary');details.open=true;before.guide.open=true;
- d.getElementById('ma-donate-pill').click();d.querySelector('[data-donate-value="10"]').click();const originals=[summary,...before.legal.children];assert.equal(Object.keys(copy.homeFooter).length,14);
+ d.getElementById('ma-donate-pill').click();d.querySelector('[data-donate-value="10"]').click();const originals=[summary,...before.legal.children];assert.equal(Object.keys(copy.homeFooter).length,15);
  for(const[lang,label]of Object.entries(labels)){
   w.localStorage.setItem('match_lang',lang);w.MATCH_LANG='en';d.documentElement.lang='en';d.dispatchEvent(new w.Event('matchapp:langchange'));await tick();assert.equal(summary.textContent,label[0],lang);assert.equal(before.updates.textContent,label[1],lang);assert(details.open);assert(before.guide.open);assert.equal(d.querySelector('.ma-home-service-info'),details);assert.deepEqual([summary,...before.legal.children],originals);assert(before.legal.textContent.length>100);assert.equal(d.getElementById('ma-donate-amount').value,'10');assert.equal(d.getElementById('ma-donate-panel').hidden,false);intact(f,canonical);
  }

@@ -259,8 +259,12 @@ test('account reset cancels pending proof and cannot resurrect an old visible re
   } finally { f.close(); }
 });
 
-test('Home and ebooks report prior value without creating any ad UI across all fourteen languages', async () => {
-  assert.equal(api.languages.length, 14);
+test('Home and ebooks report prior value without creating any ad UI across all fifteen language choices', async () => {
+  assert.equal(api.languages.length, 15);
+  assert.ok(['ko', 'zh', 'zh-TW'].every(lang => api.languages.includes(lang)));
+  assert.match(api.fallback.ko, /[가-힣]/u);
+  assert.match(api.fallback['zh-TW'], /繼續閱讀/u);
+  assert.match(api.fallback.zh, /继续阅读/u);
   for (const route of ['/', '/ebooks/']) {
     const f = await fixture({ route });
     try {

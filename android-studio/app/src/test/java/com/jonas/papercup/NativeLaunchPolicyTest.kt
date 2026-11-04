@@ -73,6 +73,17 @@ class NativeLaunchPolicyTest {
         }
     }
 
+    @Test fun checkpointPreservesChineseScriptSelectionAcrossRegionAliases() {
+        for (tag in listOf("zh-TW", "zh-Hant", "zh-HK", "zh-MO", "zh-Hant-CN", "zh_Hant_TW")) {
+            assertEquals("zh-TW", NativeLaunchPolicy.appLanguageTag(tag))
+            assertEquals("https://matchapp.tv/?lang=zh-TW", NativeLaunchPolicy.checkpointUrl("https://matchapp.tv/?lang=$tag"))
+        }
+        for (tag in listOf("zh", "zh-CN", "zh-SG", "zh-Hans-TW")) {
+            assertEquals("zh", NativeLaunchPolicy.appLanguageTag(tag))
+        }
+        assertEquals("https://matchapp.tv/", NativeLaunchPolicy.checkpointUrl("https://matchapp.tv/?lang=zh-TW-private"))
+    }
+
     @Test fun unsafeCurrentDestinationsCannotCreateOrRestoreADurableCheckpoint() {
         for (url in listOf(null, "", "https://accounts.google.com/", "https://matchapp.tv/callback.html",
             "https://matchapp.tv/?code=fixture", "https://matchapp.tv/#access_token=fixture", "https://matchapp.tv/purchase.html",

@@ -2,9 +2,10 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {stripTypeScriptTypes}=require('node:module');
 const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const {adultLanguageTag}=require('../supabase/functions/_shared/adult-language.mjs');
 function service(upstream,allowed=true){
  let handler,reservations=0;const calls=[];
- const ctx={Response,Request,ReadableStream,AbortSignal,TextEncoder,Uint8Array,DataView,atob,btoa,crypto:require('node:crypto').webcrypto,console:{error(){}},
+ const ctx={adultLanguageTag,Response,Request,ReadableStream,AbortSignal,TextEncoder,Uint8Array,DataView,atob,btoa,crypto:require('node:crypto').webcrypto,console:{error(){}},
   createClient:()=>({rpc:async()=>{reservations++;return{data:allowed,error:null}}}),
   Deno:{env:{get:key=>({SUPABASE_URL:'https://example.test',SUPABASE_SERVICE_ROLE_KEY:'server-only',OPENAI_API_KEY:'test-openai',GEMINI_API_KEY:'test-gemini'})[key]},serve:fn=>handler=fn},
   fetch:async(url,opts)=>{calls.push(JSON.parse(opts.body));return upstream(url)}};

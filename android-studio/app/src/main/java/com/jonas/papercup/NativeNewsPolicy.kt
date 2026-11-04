@@ -11,7 +11,7 @@ internal object NativeNewsPolicy {
     const val MAX_WIDTH_CSS = 640
     const val SAFE_INSET_CSS = 8
     const val MAX_SAMPLE_AGE_MS = 750L
-    val languages = setOf("en", "pt", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh")
+    val languages = setOf("en", "pt", "es", "fr", "de", "it", "tr", "ru", "ar", "hi", "id", "ja", "ko", "zh", "zh-TW")
     private val idPattern = Regex("^[A-Za-z0-9_-]{16,64}$")
     private val accountPattern = Regex("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
     private val adPaths = setOf("/", "/index.html", "/ebooks/", "/ebooks/index.html",

@@ -2,8 +2,8 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const api=require('../pro-plan.js');
 
-test('native billing failure copy names the existing refresh action without an app-version diagnosis in all fourteen locales',()=>{
-  assert.equal(api.languages.length,14);
+test('native billing failure copy names the existing refresh action without an app-version diagnosis in all fifteen locales',()=>{
+  assert.equal(api.languages.length,15);
   const versionClaim=/\bversion\b|versão|versión|App-Version|sürüm|верси|إصدار|الإصدار|संस्करण|versi aplikasi|バージョン|버전|版本/iu;
   for(const language of api.languages){
     const message=api.text(language,'nativeUnavailable');

@@ -4,7 +4,7 @@
 (function(){
 'use strict';
 
-const LANGS=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const LANGS=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 /* ---------------------------------------------------------------------------
    THE FEATURED TITLE.
 
@@ -62,7 +62,7 @@ const PICK_COPY={
 'id':{desc:'Antártida (2026) adalah film thriller Brasil arahan Bruno Safadi dengan naskah Claudia Jouvin. Pada malam pertama musim dingin di stasiun riset Brasil di Antarktika, seorang ilmuwan muda diserang — dan semua pria di pangkalan itu menjadi tersangka sementara penyelidikan berlangsung di dalam. Tayang di bioskop Brasil sejak 17 September 2026.',cinema:'🎬 Sedang tayang di bioskop',showtimes:'🏟️ Bioskop terdekat',where:'▶ Tempat menonton',eyebrow:'Film pilihan minggu ini',director:'Sutradara',runtime:'mnt',preview:'Trailer resmi',sourceNote:'Data, pemeran dan tanggal rilis dicocokkan dengan IMDb dan pengumuman distributor.'},
 'ja':{desc:'『アンタルチダ』（2026）はブルーノ・サファディ監督、クラウディア・ジョヴァン脚本のブラジル製サスペンス。南極のブラジル観測基地で越冬シーズン初日の夜、若い科学者が襲われ、基地の男たち全員が容疑者になる。ブラジルでは2026年9月17日から劇場公開。',cinema:'🎬 劇場公開中',showtimes:'🏟️ 近くの映画館',where:'▶ 視聴方法',eyebrow:'今週の注目作品',director:'監督',runtime:'分',preview:'公式予告編',sourceNote:'作品情報・キャスト・公開日はIMDbと配給元発表で確認。'},
 'ko':{desc:'《안타르티다》(2026)는 브루노 사파디 감독, 클라우디아 주벤 각본의 브라질 스릴러다. 남극의 브라질 연구기지에서 결빙기 첫날 밤 젊은 과학자가 습격당하고, 기지의 모든 남자가 용의자가 된다. 2026년 9월 17일 브라질 극장 개봉.',cinema:'🎬 극장 상영 중',showtimes:'🏟️ 근처 극장',where:'▶ 시청처',eyebrow:'이번 주의 추천 영화',director:'감독',runtime:'분',preview:'공식 예고편',sourceNote:'정보·출연·개봉일은 IMDb와 배급사 발표로 확인했습니다.'},
-'zh':{desc:'《南极》（2026）是布鲁诺·萨法迪执导、克劳迪娅·乔文编剧的巴西悬疑片。南极一座巴西科考站越冬季的第一个夜晚，一名年轻女科学家遭到袭击，站内所有男性都成了嫌疑人。巴西影院自2026年9月17日起上映。',cinema:'🎬 正在影院上映',showtimes:'🏟️ 附近影院',where:'▶ 在哪里看',eyebrow:'本周主推影片',director:'导演',runtime:'分钟',preview:'官方预告片',sourceNote:'资料、演员和上映日期均对照 IMDb 与发行方公告核实。'}
+'zh':{desc:'《南极》（2026）是布鲁诺·萨法迪执导、克劳迪娅·乔文编剧的巴西悬疑片。南极一座巴西科考站越冬季的第一个夜晚，一名年轻女科学家遭到袭击，站内所有男性都成了嫌疑人。巴西影院自2026年9月17日起上映。',cinema:'🎬 正在影院上映',showtimes:'🏟️ 附近影院',where:'▶ 在哪里看',eyebrow:'本周主推影片',director:'导演',runtime:'分钟',preview:'官方预告片',sourceNote:'资料、演员和上映日期均对照 IMDb 与发行方公告核实。'}, "zh-TW": {"desc":"《南極》（2026）是布魯諾·薩法迪執導、克勞迪婭·喬文編劇的巴西懸疑片。南極一座巴西科考站越冬季的第一個夜晚，一名年輕女科學家遭到襲擊，站內所有男性都成了嫌疑人。巴西影院自2026年9月17日起上映。","cinema":"🎬 正在影院上映","showtimes":"🏟️ 附近影院","where":"▶ 在哪裡看","eyebrow":"本週主推影片","director":"導演","runtime":"分鐘","preview":"官方預告片","sourceNote":"資料、演員和上映日期均對照 IMDb 與發行方公告核實。"}
 };
 const AUTO_SOURCE_NOTE={
 'en':'Title facts and current availability refresh automatically from verified TMDB and JustWatch-backed metadata.',
@@ -78,7 +78,7 @@ const AUTO_SOURCE_NOTE={
 'id':'Fakta judul dan ketersediaan terbaru diperbarui otomatis dari metadata TMDB dan JustWatch yang terverifikasi.',
 'ja':'作品情報と現在の配信状況は、確認済みのTMDB・JustWatchメタデータから自動更新されます。',
 'ko':'작품 정보와 현재 시청 가능 여부는 검증된 TMDB 및 JustWatch 메타데이터에서 자동으로 갱신됩니다.',
-'zh':'作品资料和当前观看渠道会根据已验证的 TMDB 与 JustWatch 元数据自动更新。'
+'zh':'作品资料和当前观看渠道会根据已验证的 TMDB 与 JustWatch 元数据自动更新。', "zh-TW": "作品資料和目前觀看渠道會根據已驗證的 TMDB 與 JustWatch 後設資料自動更新。"
 };
 function pickCopy(){
   const code=lang(),base={...(PICK_COPY[code]||PICK_COPY.en)};
@@ -202,10 +202,35 @@ const COPY={
  year:'年份',network:'电视网',episodes:'集',rating:'年龄分级',watch:'▶ 在 Globoplay 观看',save:'⭐ 保存到稍后观看',notForMe:'👎 不适合我',preview:'Globoplay 官方预告',sources:'已核实来源',sourceNote:'作品信息和观看可用性已通过 Globoplay 与 Memória Globo 核实。',
  ahsDesc:'American Horror Story 第13季将于2026年9月24日在美国 FX 和 Hulu 首播，并在拉丁美洲通过 Disney+ 提供。',ahsTrailer:'FX 官方预告片',premieres:'首播',us:'FX 与 Hulu（美国）',latam:'Disney+（拉丁美洲）',ahsEpisodes:'13集',openWeekly:'打开本周 MatchApp 精选',openAhs:'打开 AHS13 首播',
  saved:'已保存到稍后观看。',disliked:'已标记为不适合我。'
+},
+"zh-TW": {
+  "weeklyHeading": "本週 MatchApp Ai 精選",
+  "weeklyEyebrow": "本週經典推薦",
+  "agataDesc": "Ivani Ribeiro 編劇的1985年 TV Globo 浪漫喜劇劇情劇。一次海上旅行讓一行人被困孤島後，Jô Penteado 與教師 Fábio Coutinho 的感情逐漸升溫。這部160集的經典作品可在 Globoplay 觀看。",
+  "year": "年份",
+  "network": "電視網",
+  "episodes": "集",
+  "rating": "年齡分級",
+  "watch": "▶ 在 Globoplay 觀看",
+  "save": "⭐ 儲存到稍後觀看",
+  "notForMe": "👎 不適合我",
+  "preview": "Globoplay 官方預告",
+  "sources": "已核實來源",
+  "sourceNote": "作品資訊和觀看可用性已透過 Globoplay 與 Memória Globo 核實。",
+  "ahsDesc": "American Horror Story 第13季將於2026年9月24日在美國 FX 和 Hulu 首播，並在拉丁美洲透過 Disney+ 提供。",
+  "ahsTrailer": "FX 官方預告片",
+  "premieres": "首播",
+  "us": "FX 與 Hulu（美國）",
+  "latam": "Disney+（拉丁美洲）",
+  "ahsEpisodes": "13集",
+  "openWeekly": "開啟本週 MatchApp 精選",
+  "openAhs": "開啟 AHS13 首播",
+  "saved": "已儲存到稍後觀看。",
+  "disliked": "已標記為不適合我。"
 }
 };
 
-function lang(){const raw=(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();if(raw.startsWith('pt'))return'pt-BR';const base=raw.split('-')[0];return LANGS.includes(base)?base:'en';}
+function lang(){const raw=(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();if(raw.startsWith('pt'))return'pt-BR';const base=(globalThis.MatchAppHanLocale?.normalize(raw) || raw.split('-')[0]);return LANGS.includes(base)?base:'en';}
 function c(){return COPY[lang()]||COPY.en;}
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 function fmtDate(iso){try{return new Intl.DateTimeFormat(lang(),{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'}).format(new Date(iso+'T12:00:00Z'));}catch(_){return iso;}}

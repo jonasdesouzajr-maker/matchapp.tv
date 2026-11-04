@@ -7,7 +7,7 @@ const names=source.match(/const LANG_NAMES: Record<string, string> = \{[\s\S]*?\
 const helpers=['mediaIntentQuestion','detectBookIntent','detectAudioIntent','buildDiscoverPrompt'].map(extract).join('\n');
 const ctx=vm.createContext({DISCOVER_MAX:12});
 vm.runInContext(stripTypeScriptTypes(names+'\n'+helpers)+'\nthis.prompt=buildDiscoverPrompt;this.languages=LANG_NAMES;',ctx);
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 
 test('every selected adult language has the permanent Jonas identity before the conversation',()=>{
  for(const lang of languages){
@@ -25,6 +25,21 @@ test('every selected adult language has the permanent Jonas identity before the 
  }
 });
 
+test('Traditional Chinese constrains new answers and synopses despite earlier Simplified history',()=>{
+ const history=[{role:'assistant',text:'请问你想看什么电影？'}];
+ const prompt=ctx.prompt('請推薦一部電影','zh-TW','HK','',history,false);
+ assert.match(prompt,/Use Traditional Chinese characters throughout the answer and synopses/);
+ assert.match(prompt,/synopsis in Traditional Chinese/);
+ assert.match(ctx.prompt('请推荐电影','zh','CN','',[],false),/synopsis in Simplified Chinese/);
+ assert.doesNotMatch(ctx.prompt('請推薦電影','zh-TW','TW','',[],true),/Traditional Chinese|Simplified Chinese/);
+});
+
+test('explicit Traditional Chinese and Korean requests reach the corresponding media prompts',()=>{
+ for(const [language,examples] of [
+  ['zh-TW',[['推薦一部韓劇','something to watch'],['推薦有聲書','narrated-book request'],['播客推薦','podcasts, music or playlists'],['找一份食譜','COOKING request'],['推薦一本雜誌','MAGAZINE request']]],
+  ['ko',[['영화 추천해 줘','something to watch'],['오디오북을 찾아줘','narrated-book request'],['팟캐스트 추천','podcasts, music or playlists'],['요리법을 알려줘','COOKING request'],['잡지를 추천해 줘','MAGAZINE request']]]
+ ])for(const [question,expected] of examples)assert.ok(ctx.prompt(question,language,'US','',[],false).includes(expected),question);
+});
 test('ordinary adult entertainment requests retain their format, sources and response schema',()=>{
  for(const [question,marker] of [
   ['Recommend a documentary to watch','This question asks for something to watch.'],

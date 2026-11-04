@@ -3,7 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..');
 const guides=['choose-what-to-watch','streaming-device-discovery'];
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const source=fs.readFileSync(path.join(root,'patches/seo-guide-locale.js'),'utf8');
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 const payload=(guide,lang)=>JSON.parse(fs.readFileSync(path.join(root,'assets/i18n/seo',guide,lang+'.json'),'utf8'));
@@ -45,7 +45,7 @@ function change(h,lang){
 }
 function schema(d){return [...d.querySelectorAll('script[type="application/ld+json"]')].flatMap(n=>{const v=JSON.parse(n.textContent);return v['@graph']||[v];});}
 for(const guide of guides){
- test(guide+' has complete authored copy and English crawlable source for all14 languages',()=>{
+ test(guide+' has complete authored copy and English crawlable source for every supported language',()=>{
   const d=new JSDOM(fs.readFileSync(path.join(root,'guides',guide,'index.html'),'utf8')).window.document;
   const rows=bindings(d),keys=rows.map(r=>r.key).sort();
   assert.ok(keys.length>=75);
@@ -83,7 +83,7 @@ for(const guide of guides){
     }
    }
    assert.deepEqual([...h.d.querySelectorAll('script[type="application/ld+json"]')].map(n=>n.textContent),originalSchemas);
-   assert.equal(h.requests.length,13,'English uses the static source; other languages load once');
+   assert.equal(h.requests.length,languages.length-1,'English uses the static source; other languages load once');
    for(const request of h.requests){
     assert.equal(request.options.credentials,'omit');
     assert.equal(request.options.redirect,'error');
@@ -98,7 +98,7 @@ test('saved Portuguese choice overrides ambient language and query; selector per
   assert.equal(h.d.documentElement.lang,'pt-BR');
   const select=h.d.querySelector('#seo-guide-language');
   assert.equal(select.value,'pt-BR');
-  assert.equal(select.options.length,14);
+  assert.equal(select.options.length,languages.length);
   assert.equal(h.d.querySelector('label[for="seo-guide-language"]').textContent,'Idioma');
   select.value='ja';select.dispatchEvent(new h.w.Event('change',{bubbles:true}));
   await tick();await tick();
@@ -166,3 +166,10 @@ test('incomplete translation fails visibly in selected language, keeps unnamed l
    assert.equal(h.requests.length,1,'revalidated copy remains shared within the page');
   } finally {h.close();}
  });
+
+for(const [saved,expected] of [['zh-Hant-HK','zh-TW'],['zh-HK','zh-TW'],['zh-Hans-TW','zh'],['ko-KR','ko']]){
+ test('editorial guide selects the right script for '+saved,async()=>{
+  const h=await mount(guides[0],saved);
+  try { assert.equal(h.d.documentElement.lang,expected); assert.equal(h.d.title,payload(guides[0],expected).copy.c000); assert.equal(h.w.localStorage.getItem('match_lang'),saved); } finally { h.close(); }
+ });
+}

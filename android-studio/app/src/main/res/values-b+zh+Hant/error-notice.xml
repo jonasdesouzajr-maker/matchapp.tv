@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_notice_close">關閉訊息</string>
+    <string name="error_notice_generic">發生錯誤，請再試一次。</string>
+</resources>

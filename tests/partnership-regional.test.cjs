@@ -5,7 +5,7 @@ const baseCopy=JSON.parse(read('data/partnership-copy.json')),directoryCopy=JSON
 const copy=Object.fromEntries(Object.entries(baseCopy).map(([lang,t])=>[lang,{...t,...directoryCopy[lang]}]));
 const directory=JSON.parse(read('data/regional-services.json'));
 test('new page copy is authored for all app languages and every rendered key exists',()=>{
- assert.equal(Object.keys(copy).length,14);
+ assert.equal(Object.keys(copy).length,15);
  for(const lang of Object.keys(copy))assert.deepEqual(Object.keys(copy[lang]).sort(),Object.keys(copy.en).sort(),lang);
  for(const file of ['sponsor/index.html','streaming/index.html']){
   const dom=new JSDOM(read(file));for(const el of dom.window.document.querySelectorAll('[data-mp]'))for(const lang of Object.keys(copy))assert(copy[lang][el.dataset.mp],lang+':'+el.dataset.mp);

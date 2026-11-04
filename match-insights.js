@@ -25,14 +25,14 @@
     'id': { why: 'Kenapa pilihan ini:', choices: 'memenuhi semua pilihanmu ({n})', taste: 'dipilih sesuai seleramu', mood: 'suasana yang sama dengan {title}, yang kamu sukai', format: 'jenis tontonan yang sama dengan {title}, yang kamu sukai', verified: 'ditemukan lewat sumber terverifikasi di luar koleksi pilihan kami', poolMany: '{n} judul dari koleksi kami cocok dengan pilihanmu.', poolFew: 'Hanya {n} judul dari koleksi kami yang cocok — MatchApp juga mencari di sumber terverifikasi.', poolNone: 'Tidak ada judul dari koleksi kami yang memenuhi semuanya — MatchApp akan mencari di sumber terverifikasi.', loosen: 'Melepas “{filter}” akan membuka {n}.', askAi: '🤖 Tanya AI tentang judul ini' },
     'ja': { why: 'この作品を選んだ理由：', choices: '選んだ条件（{n}件）をすべて満たしています', taste: 'あなたの好みに合わせて選びました', mood: 'お気に入りの「{title}」と同じ雰囲気', format: 'お気に入りの「{title}」と同じタイプの作品', verified: '厳選リスト以外の確認済みソースから見つけました', poolMany: '厳選リストの{n}作品が条件に合っています。', poolFew: '条件に合う厳選作品は{n}件だけです。MatchAppは確認済みソースも検索します。', poolNone: 'すべての条件に合う厳選作品はありません。MatchAppが確認済みソースを検索します。', loosen: '「{filter}」を外すと{n}件になります。', askAi: '🤖 この作品についてAIに聞く' },
     'ko': { why: '이 추천의 이유:', choices: '선택한 조건 {n}개를 모두 충족해요', taste: '취향에 맞춰 골랐어요', mood: '좋아요를 누른 {title}와 같은 분위기', format: '좋아요를 누른 {title}와 같은 종류의 작품', verified: '엄선 목록 밖의 검증된 출처에서 찾았어요', poolMany: '엄선 목록에서 {n}개 작품이 조건에 맞아요.', poolFew: '엄선 목록에서 {n}개만 맞아요. MatchApp이 검증된 출처도 검색해요.', poolNone: '모든 조건에 맞는 엄선 작품이 없어요. MatchApp이 검증된 출처에서 찾아볼게요.', loosen: '“{filter}”을(를) 빼면 {n}개가 열려요.', askAi: '🤖 이 작품에 대해 AI에게 묻기' },
-    'zh': { why: '推荐理由：', choices: '符合你的全部 {n} 项选择', taste: '根据你的口味挑选', mood: '与你喜欢的《{title}》氛围相同', format: '与你喜欢的《{title}》属于同类作品', verified: '来自精选片单以外的已验证来源', poolMany: '精选片单中有 {n} 部作品符合你的选择。', poolFew: '精选片单中只有 {n} 部符合——MatchApp 也会在已验证来源中搜索。', poolNone: '精选片单中没有完全符合的作品——MatchApp 将在已验证来源中搜索。', loosen: '去掉“{filter}”可增加 {n} 部。', askAi: '🤖 向 AI 询问这部作品' }
+    'zh': { why: '推荐理由：', choices: '符合你的全部 {n} 项选择', taste: '根据你的口味挑选', mood: '与你喜欢的《{title}》氛围相同', format: '与你喜欢的《{title}》属于同类作品', verified: '来自精选片单以外的已验证来源', poolMany: '精选片单中有 {n} 部作品符合你的选择。', poolFew: '精选片单中只有 {n} 部符合——MatchApp 也会在已验证来源中搜索。', poolNone: '精选片单中没有完全符合的作品——MatchApp 将在已验证来源中搜索。', loosen: '去掉“{filter}”可增加 {n} 部。', askAi: '🤖 向 AI 询问这部作品' }, "zh-TW": {"why":"推薦理由：","choices":"符合你的全部 {n} 項選擇","taste":"根據你的口味挑選","mood":"與你喜歡的《{title}》氛圍相同","format":"與你喜歡的《{title}》屬於同類作品","verified":"來自精選片單以外的已驗證來源","poolMany":"精選片單中有 {n} 部作品符合你的選擇。","poolFew":"精選片單中只有 {n} 部符合——MatchApp 也會在已驗證來源中搜尋。","poolNone":"精選片單中沒有完全符合的作品——MatchApp 將在已驗證來源中搜尋。","loosen":"去掉“{filter}”可增加 {n} 部。","askAi":"🤖 向 AI 詢問這部作品"}
   };
   const LANGS = Object.keys(T);
   function lang() {
     const low = String(window.MATCH_LANG || document.documentElement.getAttribute('lang') || 'en').toLowerCase();
     if (low.startsWith('pt')) return 'pt-BR';
-    if (low.startsWith('zh')) return 'zh';
-    return LANGS.find(l => l.toLowerCase() === low) || LANGS.find(l => l.split('-')[0] === low.split('-')[0]) || 'en';
+    if (low.startsWith('zh')) return globalThis.MatchAppHanLocale?.normalize(low) || 'zh';
+    return LANGS.find(l => l.toLowerCase() === low) || LANGS.find(l => (globalThis.MatchAppHanLocale?.normalize(l) || l.split('-')[0]) === low.split('-')[0]) || 'en';
   }
   function t(key, vars) {
     let s = (T[lang()] && T[lang()][key]) || T.en[key] || '';
@@ -53,7 +53,7 @@
   "id": "MatchApp memeriksa katalog terverifikasi di luar pilihan editorial untuk pilihan ini.",
   "ja": "この条件では、MatchAppが編集部の厳選リスト以外の確認済みカタログも調べます。",
   "ko": "이 조건에 대해 MatchApp이 편집 추천 목록 밖의 검증된 카탈로그도 확인합니다.",
-  "zh": "对于这些条件，MatchApp 还会查询编辑精选之外的已核实目录。"
+  "zh": "对于这些条件，MatchApp 还会查询编辑精选之外的已核实目录。", "zh-TW": "對於這些條件，MatchApp 還會查詢編輯精選之外的已核實目錄。"
 };
   for(const [language,copy] of Object.entries(sourceCopy))T[language].sourceSearch=copy;
   const FIELDS = { cat: 'q-category', plat: 'q-platform', genre: 'q-genre', mood: 'q-mood', vibe: 'q-vibe', rating: 'q-rating', decade: 'q-decade' };

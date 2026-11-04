@@ -17,8 +17,8 @@
   function language(){
     let raw='';
     try{raw=String(window.MATCH_LANG||document.documentElement.lang||localStorage.getItem('match_lang')||navigator.language||'en');}catch(_){raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');}
-    const base=raw.toLowerCase().split('-')[0];
-    return ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'].includes(base)?base:'en';
+    const base=(globalThis.MatchAppHanLocale?.normalize(raw.toLowerCase()) || raw.toLowerCase().split('-')[0]);
+    return ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'].includes(base)?base:'en';
   }
 
   async function country(){
@@ -77,7 +77,7 @@
   }
 
   function choose(items,cc,lang){
-    const compatible=items.filter(i=>String(i.language||lang).toLowerCase().split('-')[0]===lang);
+    const compatible=items.filter(i=>(globalThis.MatchAppHanLocale?.normalize(i.language||lang) || String(i.language||lang).toLowerCase().split('-')[0])===lang);
     const local=compatible.filter(i=>String(i.country||'').toUpperCase()===cc).slice(0,MAX_LOCAL);
     const used=new Set(local.map(i=>i.id));
     const global=compatible.filter(i=>!used.has(i.id)&&String(i.country||'').toUpperCase()==='GLOBAL').slice(0,MAX_GLOBAL);
@@ -114,7 +114,7 @@
       const requested=new URLSearchParams(location.search).get('news')||'';
       const fallback=staticCards.filter(el=>{
         if(liveCards.some(x=>x.dataset.newsId===el.dataset.newsId))return false;
-        const ownLang=String(el.dataset.newsLanguage||'').toLowerCase().split('-')[0];
+        const ownLang=globalThis.MatchAppHanLocale?.normalize(el.dataset.newsLanguage) || String(el.dataset.newsLanguage||'').toLowerCase().split('-')[0];
         if(ownLang&&ownLang!==lang)return false;
         if(el.dataset.newsScope==='local'&&String(el.dataset.newsCountry||'').toUpperCase()!==cc)return false;
         return true;

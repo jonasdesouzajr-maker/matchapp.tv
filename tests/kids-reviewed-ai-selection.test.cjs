@@ -47,7 +47,8 @@ async function handler(answers){
  const latency=require('../supabase/functions/gemini-proxy/latency-config.mjs');
  const exclusions=require('../supabase/functions/gemini-proxy/discover-exclusions.mjs');
  const selection=require('../supabase/functions/gemini-proxy/kids-selection.mjs');
- const c=vm.createContext({Request,Response,URL,Headers,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto,atob,
+ const {adultLanguageTag}=require('../supabase/functions/_shared/adult-language.mjs');
+ const c=vm.createContext({adultLanguageTag,Request,Response,URL,Headers,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto,atob,
   console:{info(){},warn(){},error(){}},...latency,...exclusions,...selection,
   createClient:()=>({rpc:async()=>({data:{allowed:true}})}),
   callOpenAIPrimary:async()=>null,callOpenRouterFirst:async()=>null,callGroqBackup:async()=>null,

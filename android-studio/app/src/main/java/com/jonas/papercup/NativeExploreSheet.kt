@@ -47,8 +47,10 @@ class NativeExploreSheet(private val context: Context) {
 
     fun show(lang: String, rtl: Boolean, exploreLabel: String, motion: Boolean, select: (String, String) -> Unit) {
         if (dialog?.isShowing == true) return
-        val code = lang.substringBefore('-').lowercase(java.util.Locale.ROOT)
+        val selectedLanguage = NativeLaunchPolicy.appLanguageTag(lang)
+        val code = selectedLanguage.substringBefore('-').lowercase(java.util.Locale.ROOT)
         val locale = when {
+            selectedLanguage == "zh-TW" -> "zh-TW"
             code == "pt" -> "pt-BR"
             copies.has(code) -> code
             else -> "en"

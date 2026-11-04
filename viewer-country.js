@@ -88,7 +88,7 @@
     id:'Pilih negara tempat menonton di bagian atas aplikasi untuk memeriksa ketersediaan lokal.',
     ja:'地域での利用可否を確認するには、アプリ上部で視聴する国を選択してください。',
     ko:'지역별 이용 가능 여부를 확인하려면 앱 상단에서 시청 국가를 선택하세요.',
-    zh:'请在应用顶部选择观看所在国家，以查看当地的可用情况。'
+    zh:'请在应用顶部选择观看所在国家，以查看当地的可用情况。', "zh-TW": "請在應用頂部選擇觀看所在國家，以檢視當地的可用情況。"
   });
   const COUNTRY_LABELS=Object.freeze({
     en:['Viewing country','Choose country'], 'pt-BR':['País onde você assiste','Escolha o país'],
@@ -97,12 +97,12 @@
     tr:['İzlediğiniz ülke','Ülke seçin'], ru:['Страна просмотра','Выберите страну'],
     ar:['بلد المشاهدة','اختر البلد'], hi:['देखने का देश','देश चुनें'],
     id:['Negara tempat menonton','Pilih negara'], ja:['視聴する国','国を選択'],
-    ko:['시청 국가','국가 선택'], zh:['观看所在国家','选择国家']
+    ko:['시청 국가','국가 선택'], zh:['观看所在国家','选择国家'], "zh-TW": ["觀看所在國家","選擇國家"]
   });
   const preferenceKey='matchapp_viewer_country';
   let sessionCountry='',lastCountry='',picker=null;
   function languageKey(language){
-    const base=String(language||'en').toLowerCase().split(/[-_]/)[0];
+    const base=(globalThis.MatchAppHanLocale?.normalize(String(language||'en').toLowerCase()) || String(language||'en').toLowerCase().split(/[-_]/)[0]);
     return base==='pt'?'pt-BR':base;
   }
   function chooseCountryMessage(language){

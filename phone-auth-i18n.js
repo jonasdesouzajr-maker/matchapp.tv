@@ -11,7 +11,7 @@ window.MATCH_PHONE_AUTH_STRINGS = {
   id:{entry:"Daftar / masuk dengan telepon",title:"Lanjutkan dengan telepon Anda",help:"Masukkan nomor ponsel beserta kode negara, misalnya +62 812 3456 7890.",send:"Kirim kode",sent:"Kami mengirim kode 6 digit melalui SMS.",code:"Kode 6 digit",verify:"Verifikasi & lanjutkan",change:"Gunakan nomor lain",resend:"Kirim ulang kode",wait:n=>`Kirim ulang dalam ${n} dtk`,badPhone:"Masukkan nomor ponsel yang valid dengan kode negara, diawali +.",badCode:"Masukkan kode 6 digit dari SMS.",sending:"Mengirim kode…",verifying:"Memeriksa kode…",success:"Telepon terverifikasi. Anda sudah masuk."},
   ja:{entry:"電話番号で登録 / ログイン",title:"電話番号で続行",help:"国番号を含む携帯番号を入力してください。例: +81 90 1234 5678",send:"コードを送信",sent:"SMSで6桁のコードを送信しました。",code:"6桁のコード",verify:"確認して続行",change:"別の番号を使う",resend:"コードを再送信",wait:n=>`${n}秒後に再送信`,badPhone:"国番号を含み、+で始まる有効な携帯番号を入力してください。",badCode:"SMSで届いた6桁のコードを入力してください。",sending:"コードを送信中…",verifying:"コードを確認中…",success:"電話番号を確認しました。ログイン済みです。"},
   ko:{entry:"전화번호로 가입 / 로그인",title:"전화번호로 계속하기",help:"국가 코드를 포함한 휴대폰 번호를 입력하세요. 예: +82 10 1234 5678",send:"코드 보내기",sent:"SMS로 6자리 코드를 보냈습니다.",code:"6자리 코드",verify:"확인하고 계속하기",change:"다른 번호 사용",resend:"코드 다시 보내기",wait:n=>`${n}초 후 다시 보내기`,badPhone:"국가 코드를 포함하고 +로 시작하는 올바른 휴대폰 번호를 입력하세요.",badCode:"SMS로 받은 6자리 코드를 입력하세요.",sending:"코드를 보내는 중…",verifying:"코드를 확인하는 중…",success:"전화번호가 확인되었습니다. 로그인되었습니다."},
-  zh:{entry:"使用手机号注册 / 登录",title:"使用手机号继续",help:"请输入包含国家/地区代码的手机号，例如 +86 138 0013 8000。",send:"发送验证码",sent:"我们已通过短信发送 6 位验证码。",code:"6 位验证码",verify:"验证并继续",change:"使用其他号码",resend:"重新发送验证码",wait:n=>`${n} 秒后重新发送`,badPhone:"请输入以 + 开头并包含国家/地区代码的有效手机号。",badCode:"请输入短信中的 6 位验证码。",sending:"正在发送验证码…",verifying:"正在验证验证码…",success:"手机号已验证。你已登录。"}
+  zh:{entry:"使用手机号注册 / 登录",title:"使用手机号继续",help:"请输入包含国家/地区代码的手机号，例如 +86 138 0013 8000。",send:"发送验证码",sent:"我们已通过短信发送 6 位验证码。",code:"6 位验证码",verify:"验证并继续",change:"使用其他号码",resend:"重新发送验证码",wait:n=>`${n} 秒后重新发送`,badPhone:"请输入以 + 开头并包含国家/地区代码的有效手机号。",badCode:"请输入短信中的 6 位验证码。",sending:"正在发送验证码…",verifying:"正在验证验证码…",success:"手机号已验证。你已登录。"}, "zh-TW": {entry:"使用手機號註冊 / 登入",title:"使用手機號繼續",help:"請輸入包含國家/地區程式碼的手機號，例如 +86 138 0013 8000。",send:"傳送驗證碼",sent:"我們已透過簡訊傳送 6 位驗證碼。",code:"6 位驗證碼",verify:"驗證並繼續",change:"使用其他號碼",resend:"重新傳送驗證碼",wait:n=>`${n} 秒後重新傳送`,badPhone:"請輸入以 + 開頭幷包含國家/地區程式碼的有效手機號。",badCode:"請輸入簡訊中的 6 位驗證碼。",sending:"正在傳送驗證碼…",verifying:"正在驗證驗證碼…",success:"手機號已驗證。你已登入。"}
 };
 
 // Additional labels for the optional first-registration name and SMS entry link.
@@ -92,7 +92,7 @@ const MATCHAPP_PHONE_NEW_FIELDS={
     "请输入全名；如果已有账号，可以留空。",
     "我已有短信验证码",
     "暂时无法使用短信登录，请使用邮箱或稍后重试。"
-  ]
+  ], "zh-TW": ["全名（首次註冊）","新使用者請輸入全名，已有賬號可留空。","請輸入全名；如果已有賬號，可以留空。","我已有簡訊驗證碼","暫時無法使用簡訊登入，請使用郵箱或稍後重試。"]
 };
 for(const [locale,values] of Object.entries(MATCHAPP_PHONE_NEW_FIELDS)){
   Object.assign(window.MATCH_PHONE_AUTH_STRINGS[locale]||{},Object.fromEntries(['name','nameHelp','badName','haveCode','noProvider'].map((k,i)=>[k,values[i]])));

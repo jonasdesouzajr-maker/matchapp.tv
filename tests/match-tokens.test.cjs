@@ -46,8 +46,10 @@ test('strict public policy and wallet validation cannot promote legacy balances 
   assert.equal(api.wallet(publicPolicy),null,'public anonymous policy contains no server wallet');
 });
 
-test('all 14 languages author every token, consent, pending and separate Ask AI message',()=>{
-  assert.equal(api.languages.length,14);
+test('all 15 language choices author every token, consent, pending and separate Ask AI message',()=>{
+  assert.equal(api.languages.length,15);
+  assert.ok(['ko','zh','zh-TW'].every(lang=>api.languages.includes(lang)));
+  assert.notEqual(api.text('zh-TW','rewardNote'),api.text('zh','rewardNote'));
   for(const lang of api.languages){
     assert.equal(api.rows[lang].length,api.keys.length,lang);assert.ok(api.rows[lang].every(v=>typeof v==='string'&&v.trim()));
     assert.ok(api.text(lang,'askLimit').includes('Ask AI'));

@@ -773,15 +773,70 @@
     "identityEnter": "登录",
     "identityLockedHelp": "你的核心身份信息已锁定，并将永久用于指导 AI 推荐。",
     "identityLockedAlert": "为保持 AI 推荐的一致性，核心身份信息已永久锁定。"
-  }
+  },
+  "zh-TW": {
+  "regionLabel": "州或地區",
+  "countryPrompt": "選擇國家",
+  "regionPrompt": "選擇州或地區",
+  "preferencesTitle": "帳戶偏好與隱私",
+  "preferencesHelp": "上方的身份資訊將在註冊後永久鎖定。這些偏好設定可以在以後更改。",
+  "languageLabel": "首選語言",
+  "termsConsent": "我同意{link}。必選。",
+  "termsLink": "條款",
+  "privacyConsent": "我已閱讀{link}。必選。",
+  "privacyLink": "隱私政策",
+  "marketing": "我希望接收MatchApp Ai產品及新聞的可選更新。以後可以更改此選項。",
+  "lockNote": "🔒 姓名、國家、出生日期和星座僅在確認儲存後才會永久鎖定到此帳戶。",
+  "errBirthdate": "請輸入DD/MM/YYYY格式的有效出生日期。",
+  "errIdentity": "請檢查姓名、國家、出生日期和星座。",
+  "errSession": "會話已過期。儲存前請重新登入。",
+  "errTerms": "儲存前請接受條款和隱私政策。",
+  "errConnection": "連線已中斷。重試前請檢查已儲存的資料。",
+  "errRegistration": "無法儲存註冊資訊。您仍可編輯已輸入的內容，請重試。",
+  "successTitle": "資料儲存成功！",
+  "successBody": "已儲存的資訊將用於個性化您今後在MatchApp Ai中的選擇。您的帳戶已就緒！",
+  "successOpening": "正在自動開啟您的首頁…",
+  "successHome": "立即前往我的首頁 →",
+  "nameRequired": "請輸入全名（最多200個字元）。",
+  "countryRequired": "請從列表中選擇國家。",
+  "regionRequired": "請選擇所選國家的州或地區。",
+  "birthdateRequired": "請輸入DD/MM/YYYY格式的有效出生日期。",
+  "signRequired": "請選擇星座。",
+  "consentRequired": "請接受條款和隱私政策以完成註冊。",
+  "accountUnavailable": "帳戶連線不可用。您輸入的內容已保留。",
+  "signInRequired": "儲存註冊資訊前請登入。",
+  "registrationSaved": "註冊資訊已儲存。資料已鎖定，可在您的帳戶中使用。",
+  "activityTitle": "歷史記錄",
+  "activitySubtitle": "私密 · 跨裝置儲存",
+  "activityOpen": "展開以載入活動記錄。",
+  "activitySignIn": "登入後檢視歷史記錄。",
+  "activityEmpty": "使用MatchApp Ai時，您的活動將顯示在這裡。",
+  "activityUnavailable": "暫時無法檢視歷史記錄。您已儲存的帳戶資料未被更改。",
+  "deleteTitle": "刪除此帳戶",
+  "deleteBody": "這將從MatchApp Ai中刪除您的身份資訊、歷史記錄和購買記錄。72小時後可使用同一郵箱重新註冊。",
+  "deleteRequest": "請求刪除",
+  "deleteConfirm": "要刪除您的MatchApp Ai帳戶嗎？72小時後可使用同一郵箱重新建立。",
+  "deleteSignIn": "請先登入。",
+  "deleteScheduled": "已安排刪除。72小時後可再次使用同一郵箱。",
+  "deleteFailed": "無法自動完成刪除。請傳送郵件至support@matchapp.tv，我們將關閉帳戶。",
+  "ageSummary": "AI 檔案：{age} 歲",
+  "ageValue": "{age} 歲",
+  "identityLoading": "正在載入已儲存的身份資訊…",
+  "identityUnavailable": "無法驗證已儲存的身份資訊。你的資料仍然受到保護。請重試。",
+  "identitySignIn": "登入以恢復已儲存的身份資訊。",
+  "identityRetry": "重試",
+  "identityEnter": "登入",
+  "identityLockedHelp": "你的核心身份資訊已鎖定，並將永久用於指導 AI 推薦。",
+  "identityLockedAlert": "為保持 AI 推薦的一致性，核心身份資訊已永久鎖定。"
+}
 };
   const bindings=new WeakMap();
   const marker='data-profile-details-copy';
   function normalize(value){
     const code=String(value||'').trim().replace(/_/g,'-').toLowerCase();
     if(code==='pt'||code.startsWith('pt-'))return 'pt-BR';
-    if(code==='zh'||code.startsWith('zh-'))return 'zh';
-    const base=code.split('-')[0];
+    if(code==='zh'||code.startsWith('zh-'))return globalThis.MatchAppHanLocale?.normalize(code)||'zh';
+    const base=(globalThis.MatchAppHanLocale?.normalize(code) || code.split('-')[0]);
     return Object.prototype.hasOwnProperty.call(COPY,base)?base:'';
   }
   function language(){

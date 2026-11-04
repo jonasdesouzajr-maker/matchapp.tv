@@ -6,4 +6,6 @@
     <string name="file_chooser_title">Scegli una foto</string>
     <string name="ad_privacy_choices">Opzioni sulla privacy</string>
     <string name="kids_separate_app">La modalità bambini è disponibile nella app separata MatchApp Ai KIDS.</string>
+    <string name="google_browser_unavailable">Installa o attiva un browser per continuare con Google.</string>
+    <string name="avatar_sign_in_required">Accedi a MatchApp Ai per provare l’avatar vocale.</string>
 </resources>

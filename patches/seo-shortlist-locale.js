@@ -1,7 +1,7 @@
 /* Authored translations for the film/TV shortlist and its explicit choices only. */
 (function (w, d) {
   'use strict';
-  var languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
+  var languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh', 'zh-TW'];
   var messages = {
     en: ['Loading this selection in your language…', 'This translation could not be loaded. Please try again.', 'Try again'],
     'pt-BR': ['Carregando esta seleção no seu idioma…', 'Não foi possível carregar esta tradução. Tente novamente.', 'Tentar novamente'],
@@ -16,7 +16,8 @@
     id: ['Memuat pilihan ini dalam bahasa Anda…', 'Terjemahan ini tidak dapat dimuat. Silakan coba lagi.', 'Coba lagi'],
     ja: ['選択した言語でおすすめを読み込んでいます…', '翻訳を読み込めませんでした。もう一度お試しください。', '再試行'],
     ko: ['선택한 언어로 추천 목록을 불러오는 중…', '번역을 불러오지 못했습니다. 다시 시도해 주세요.', '다시 시도'],
-    zh: ['正在以您选择的语言加载此精选列表…', '无法加载此翻译，请重试。', '重试']
+    zh: ['正在以您选择的语言加载此精选列表…', '无法加载此翻译，请重试。', '重试'],
+    "zh-TW": ['正在以您選擇的語言載入此精選列表…', '無法載入此翻譯，請重試。', '重試']
   };
   var records = [];
   var controls = [];
@@ -30,6 +31,7 @@
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();
     if (code === 'pt' || code.indexOf('pt-') === 0) return 'pt-BR';
+    if (/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(code)) return 'zh-TW';
     code = code.split('-')[0];
     return languages.indexOf(code) !== -1 ? code : 'en';
   }

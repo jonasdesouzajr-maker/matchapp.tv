@@ -7,4 +7,6 @@
     <string name="file_chooser_title">Choose a photo</string>
     <string name="ad_privacy_choices">Privacy choices</string>
     <string name="kids_separate_app">Kids Mode is available in the separate MatchApp Ai KIDS app.</string>
+    <string name="google_browser_unavailable">Install or enable a browser to continue with Google.</string>
+    <string name="avatar_sign_in_required">Sign in to MatchApp Ai to try the voice avatar.</string>
 </resources>

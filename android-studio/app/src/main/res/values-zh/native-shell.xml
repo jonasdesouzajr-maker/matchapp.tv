@@ -6,4 +6,6 @@
     <string name="file_chooser_title">选择照片</string>
     <string name="ad_privacy_choices">隐私选项</string>
     <string name="kids_separate_app">儿童模式可在独立的 MatchApp Ai KIDS 应用中使用。</string>
+    <string name="google_browser_unavailable">请安装或启用浏览器以继续使用 Google 登录。</string>
+    <string name="avatar_sign_in_required">请登录 MatchApp Ai，体验语音虚拟形象。</string>
 </resources>

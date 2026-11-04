@@ -111,8 +111,8 @@ test('one reserved Android invitation follows a useful result and preserves exis
   }finally{f.w.close();}
 });
 
-test('all fourteen chosen languages update invitation, restoration and status copy',async()=>{
-  assert.equal(api.languages.length,14);
+test('all fifteen chosen languages update invitation, restoration and status copy',async()=>{
+  assert.equal(api.languages.length,15);
   const f=await fixture({fragment:'#ma-continue='+encodeURIComponent(api.serialize(choices))});
   try{
     const w=f.w,d=w.document;

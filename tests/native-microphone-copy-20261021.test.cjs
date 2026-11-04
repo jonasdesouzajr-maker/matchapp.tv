@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
 const source=fs.readFileSync(path.join(__dirname,'../voice-input.js'),'utf8');
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 function scene({lang='en',htmlLang='en',native=true,kids=false,inputId='discover-new-input',route,ua,kidsOnly=false}={}){
  const dom=new JSDOM('<html lang="'+htmlLang+'"><body><textarea id="'+inputId+'" placeholder="Type here">Unsent draft</textarea><button id="mic" type="button">Mic</button></body></html>',{
   url:'https://matchapp.tv'+(route||(kids?'/kids/':'/discover.html')),runScripts:'outside-only'
@@ -19,7 +19,7 @@ function scene({lang='en',htmlLang='en',native=true,kids=false,inputId='discover
  w.eval(source);w.initVoiceInput(inputId,'mic',value=>calls.submit.push(value));
  return {dom,w,calls,input:w.document.getElementById(inputId),mic:w.document.getElementById('mic')};
 }
-test('adult native denial has fourteen authored locale messages and retains typing without settings or permission retries',()=>{
+test('adult native denial has fifteen authored locale messages and retains typing without settings or permission retries',()=>{
  const messages=new Set();
  for(const lang of languages){
   const s=scene({lang,htmlLang:'en'});
@@ -35,7 +35,7 @@ test('adult native denial has fourteen authored locale messages and retains typi
    assert.equal(s.input.value,'Unsent draft and typing still works');assert.equal(s.calls.start.length,1);
   }finally{s.dom.window.close();}
  }
- assert.equal(messages.size,14,'all supported locales have distinct authored copy');
+ assert.equal(messages.size,15,'all supported locales have distinct authored copy');
 });
 test('native denial follows the selected app language at error time, including regional aliases',()=>{
  const s=scene({lang:'pt-BR',htmlLang:'de'});

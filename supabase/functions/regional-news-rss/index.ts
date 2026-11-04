@@ -1,7 +1,9 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
-const ALLOWED_LANGS=new Set(['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
-const EDITION:any={en:['en-US','en'],pt:['pt-BR','pt-419'],es:['es-419','es-419'],fr:['fr','fr'],de:['de','de'],it:['it','it'],tr:['tr','tr'],ru:['ru','ru'],ar:['ar','ar'],hi:['hi','hi'],id:['id','id'],ja:['ja','ja'],ko:['ko','ko'],zh:['zh-CN','zh-Hans']};
+import { adultLanguageTag } from "../_shared/adult-language.mjs";
+
+const ALLOWED_LANGS=new Set(['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW']);
+const EDITION:any={en:['en-US','en'],pt:['pt-BR','pt-419'],es:['es-419','es-419'],fr:['fr','fr'],de:['de','de'],it:['it','it'],tr:['tr','tr'],ru:['ru','ru'],ar:['ar','ar'],hi:['hi','hi'],id:['id','id'],ja:['ja','ja'],ko:['ko','ko'],zh:['zh-CN','zh-Hans'],'zh-TW':['zh-TW','zh-Hant']};
 const LABELS:any={
   en:{local:'Local news',global:'Global news',seoLocal:'news today',seoGlobal:'global news today',open:'Open the news source for the full report.'},
   pt:{local:'Notícias locais',global:'Notícias globais',seoLocal:'notícias hoje',seoGlobal:'notícias do mundo hoje',open:'Abra a fonte da notícia para ler a reportagem completa.'},
@@ -16,6 +18,7 @@ const LABELS:any={
   id:{local:'Berita lokal',global:'Berita global',seoLocal:'berita hari ini',seoGlobal:'berita dunia hari ini',open:'Buka sumber berita untuk membaca laporan lengkap.'},
   ja:{local:'国内ニュース',global:'世界ニュース',seoLocal:'今日のニュース',seoGlobal:'今日の世界ニュース',open:'ニュース元を開いて全文をご確認ください。'},
   ko:{local:'지역 뉴스',global:'세계 뉴스',seoLocal:'오늘 뉴스',seoGlobal:'오늘의 세계 뉴스',open:'전체 기사를 보려면 뉴스 출처를 여세요.'},
+  'zh-TW':{local:'本地新聞',global:'國際新聞',seoLocal:'今日新聞',seoGlobal:'今日國際新聞',open:'請前往新聞來源閱讀完整報導。'},
   zh:{local:'本地新闻',global:'全球新闻',seoLocal:'今日新闻',seoGlobal:'今日全球新闻',open:'打开新闻来源，阅读完整报道。'}
 };
 const clean=(v:any)=>String(v??'').replace(/\s+/g,' ').trim();
@@ -79,7 +82,7 @@ async function pull(scope:'local'|'global',cc:string,l:string){
     if(source&&title.endsWith(' - '+source))title=title.slice(0,-(' - '+source).length).trim();
     const key=title.toLowerCase();if(seen.has(key))continue;seen.add(key);
     const id='regional-'+await sha(scope+'|'+url),global=scope==='global',labels=LABELS[l]||LABELS.en;
-    out.push({id,source,source_home:sourceHome,url,title,description:labels.open,image:null,published_at:publicationTime(published,now),discovered_at:new Date(now).toISOString(),timestamp_kind:publicationTime(published,now)?'published':'discovered',country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?labels.global:labels.local,breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal),locale:global?l:(l+'-'+cc),intent:global?'global top news':'local top news',keywords:[title,global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal)]}});
+    out.push({id,source,source_home:sourceHome,url,title,description:labels.open,image:null,published_at:publicationTime(published,now),discovered_at:new Date(now).toISOString(),timestamp_kind:publicationTime(published,now)?'published':'discovered',country:global?'GLOBAL':cc,language:l,category:'general',event_type:global?labels.global:labels.local,breaking:false,provider:'Regional RSS',scope,seo:{primary_keyword:global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal),locale:global?l:(l==='zh-TW'?'zh-Hant':l)+'-'+cc,intent:global?'global top news':'local top news',keywords:[title,global?labels.seoGlobal:(countryName(cc,l)+' '+labels.seoLocal)]}});
     if(out.length>=(global?5:6))break;
   }
   if(!out.length){
@@ -94,7 +97,8 @@ Deno.serve(async req=>{
   if(req.method==='OPTIONS')return new Response(null,{status:204,headers:cors(o)});
   if(req.method!=='GET')return new Response('Method not allowed',{status:405,headers:cors(o)});
   const u=new URL(req.url),cc=clean(u.searchParams.get('country')||'US').toUpperCase();
-  const raw=clean(u.searchParams.get('language')||'en').toLowerCase().split('-')[0],l=ALLOWED_LANGS.has(raw)?raw:'en';
+  const tag=adultLanguageTag(u.searchParams.get('language'));
+  const raw=tag==='zh-TW'?tag:tag.toLowerCase().split('-')[0],l=ALLOWED_LANGS.has(raw)?raw:'en';
   if(!/^[A-Z]{2}$/.test(cc))return Response.json({ok:false,error:'invalid country'},{status:400,headers:cors(o)});
   const warnings:string[]=[];let local:any[]=[],global:any[]=[];
   try{local=await pull('local',cc,l)}catch(e){warnings.push('local:'+String((e as Error)?.message||e).slice(0,80))}

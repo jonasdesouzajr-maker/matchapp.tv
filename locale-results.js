@@ -4,7 +4,7 @@
   const NAMES = {
     en: 'English', 'pt-BR': 'Brazilian Portuguese', es: 'Spanish', fr: 'French',
     de: 'German', it: 'Italian', tr: 'Turkish', ru: 'Russian', ar: 'Arabic',
-    hi: 'Hindi', id: 'Indonesian', ja: 'Japanese', ko: 'Korean', zh: 'Simplified Chinese'
+    hi: 'Hindi', id: 'Indonesian', ja: 'Japanese', ko: 'Korean', zh: 'Simplified Chinese', "zh-TW": "Traditional Chinese (Taiwan)"
   };
   // Use the same registry as onCategoryChange/platformsFor. A second, partial
   // copy treated missing providers as empty catalogues and disabled every chip.

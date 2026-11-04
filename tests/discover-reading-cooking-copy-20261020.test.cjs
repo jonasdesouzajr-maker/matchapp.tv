@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto');
 const {JSDOM}=require('jsdom'),read=file=>fs.readFileSync(file,'utf8');
-const files=['discover.js','discover-male-only-20261010.js'],languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const files=['discover.js','discover-male-only-20261010.js'],languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 const newKeys=['ui.cookingUnavailable','ui.cookingSources','ui.cookingBrowse','ui.verifyReading','ui.cookingSpecialty.maangchi','ui.cookingSpecialty.jamie','ui.cookingSpecialty.panelinha','ui.cookingSpecialty.foodwishes'];
 function fixture(){
  const dom=new JSDOM('<html lang="en"><body><textarea id="draft">Unsaved question</textarea><main id="answer"></main><p id="actual-prose">A real AI answer with source facts.</p></body></html>',{url:'https://matchapp.tv/discover.html',runScripts:'outside-only'}),w=dom.window,calls={fetch:0,credit:0,source:0};
@@ -15,7 +15,7 @@ function readingBlock(source){const start=source.indexOf('    if (bubble?.wrap &
 function fallbackBody(source){const line=source.split('\n').find(line=>line.trim().startsWith('catch (e) { cookingUnavailable = cookingIntent;'));assert(line);return line.trim().slice('catch (e) {'.length,-1);}
 const fallbackBind="if(cookingUnavailable && bubble?.textEl)window.MatchAppBooksLocale?.bind?.(bubble.textEl,'ui.cookingUnavailable');";
 
-test('exactly8 new UI keys exist in all14 languages and all95 original English values remain byte-identical',()=>{
+test('exactly8 new UI keys exist in all 15 languages and all95 original English values remain byte-identical',()=>{
  let bundle;vm.runInNewContext(read('ebooks/locale-interface.js'),{window:{MatchAppBooksLocale:{register(v){bundle=v;}}}});
  assert.deepEqual(Object.keys(bundle).sort(),languages.slice().sort());
  const original=Object.fromEntries(Object.entries(bundle.en).filter(([key])=>!newKeys.includes(key)).sort(([a],[b])=>a.localeCompare(b)));
@@ -32,7 +32,7 @@ test('both runtime files keep their requested source/binding blocks identical',(
  const binding=source=>{const start=source.indexOf("        if(window.MatchAppBooksLocale?.bind){",source.indexOf('    if (bubble?.wrap && bookIntent) {'));return source.slice(start,source.indexOf('\n        bubble.wrap.appendChild(route);',start));};
  assert.equal(binding(sources[0]),binding(sources[1]));assert(sources.every(source=>source.includes(fallbackBind)));
 });
-for(const file of files)test(file+' real Books/Recipes route blocks repaint all14 without replacing anchors, fields or original source names',t=>{
+for(const file of files)test(file+' real Books/Recipes route blocks repaint all 15 without replacing anchors, fields or original source names',t=>{
  const f=fixture();t.after(()=>f.dom.window.close());const {w}=f,source=read(file),question='Help with recipes. Original source: https://www.youtube.com/watch?v=ATN7ZGO-PPU';
  w.question=question;w.cookingIntent=true;w.bookIntent=true;w.bubble={wrap:w.document.getElementById('answer'),textEl:w.document.getElementById('actual-prose')};w.MatchAppReadingAI={intent:()=> 'audiobook'};
  if(file==='discover.js')w.discoverRecoveryText=()=> '📚🎧📰 Verify e-books, audiobooks and magazines';

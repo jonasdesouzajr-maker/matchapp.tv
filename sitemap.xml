@@ -85,6 +85,12 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/tech/zh-tw/</loc>
+        <lastmod>2026-11-04T10:53:50+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/catalog-trails/</loc>
         <lastmod>2026-11-04T10:53:50+00:00</lastmod>
         <changefreq>monthly</changefreq>
@@ -164,6 +170,12 @@
     </url>
     <url>
         <loc>https://matchapp.tv/catalog-trails/zh/</loc>
+        <lastmod>2026-11-04T10:53:50+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/catalog-trails/zh-tw/</loc>
         <lastmod>2026-11-04T10:53:50+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

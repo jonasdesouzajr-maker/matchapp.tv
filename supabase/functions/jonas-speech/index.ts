@@ -1,11 +1,12 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { adultLanguageTag } from "../_shared/adult-language.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.105.0";
 const PROJECT = Deno.env.get("SUPABASE_URL") || "";
 const SERVICE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 const admin = createClient(PROJECT,SERVICE,{auth:{persistSession:false,autoRefreshToken:false}});
 const ALLOWED = new Set(["https://matchapp.tv","https://www.matchapp.tv"]);
-const languages = new Set(["en","pt-BR","es","fr","de","it","tr","ru","ar","hi","id","ja","ko","zh"]);
-const localeMap:Record<string,string>={"en":"en-US","pt-BR":"pt-BR","es":"es-ES","fr":"fr-FR","de":"de-DE","it":"it-IT","tr":"tr-TR","ru":"ru-RU","ar":"ar-SA","hi":"hi-IN","id":"id-ID","ja":"ja-JP","ko":"ko-KR","zh":"zh-CN"};
+const languages = new Set(["en","pt-BR","es","fr","de","it","tr","ru","ar","hi","id","ja","ko","zh","zh-TW"]);
+const localeMap:Record<string,string>={"en":"en-US","pt-BR":"pt-BR","es":"es-ES","fr":"fr-FR","de":"de-DE","it":"it-IT","tr":"tr-TR","ru":"ru-RU","ar":"ar-SA","hi":"hi-IN","id":"id-ID","ja":"ja-JP","ko":"ko-KR","zh":"zh-CN","zh-TW":"zh-TW"};
 const result=(body:unknown,status:number,origin:string)=>Response.json(body,{status,headers:{"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Headers":"content-type,authorization,apikey","Access-Control-Allow-Methods":"POST,OPTIONS","Vary":"Origin","Cache-Control":"no-store"}});
 async function fingerprint(value:string){
  const secret=SERVICE.slice(-40);
@@ -117,7 +118,8 @@ Deno.serve(async(req:Request)=>{
  let body:any;
  try{if(Number(req.headers.get("content-length")||0)>3500)return result({error:"too_long"},413,origin);body=await req.json();}catch{return result({error:"invalid_json"},400,origin)}
  const text=typeof body?.text==="string"?body.text.trim():"";
- const language=typeof body?.lang==="string"&&languages.has(body.lang)?body.lang:"en";
+ const requestedLanguage=adultLanguageTag(body?.lang);
+ const language=languages.has(requestedLanguage)?requestedLanguage:"en";
  if(!text||text.length>650||/[\u0000-\u0008\u000b\u000e-\u001f]/.test(text))return result({error:"invalid_text"},400,origin);
  const bearer=String(req.headers.get("authorization")||"").replace(/^Bearer\s+/i,"").trim();
  let userId="";

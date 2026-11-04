@@ -197,12 +197,26 @@
    '家长购买的Kids充值余额仅用于Kids模式，不会减少或增加成人匹配或向AI提问的余额。',
    'Kids匹配积分','仅在Kids独立的每日额度用完后使用。','Kids匹配',
    'Kids向AI提问积分','仅在Kids独立的每日额度用完后，用于Kids向AI提问。','Kids向AI提问','为Kids购买'
+  ],
+  "zh-TW":[
+   '應用內購買',
+   '成人與Kids的額度相互獨立。每個體驗先使用各自的每日額度，再使用各自的充值餘額。',
+   '購買型別','★ 額外匹配','✦ 向AI提問積分',
+   '購買更多匹配次數',
+   '僅用於成人匹配。額外匹配次數不會過期，也不會消耗向AI提問積分或Kids餘額。',
+   '額外匹配','購買匹配次數','購買向AI提問積分',
+   '1積分 = 1次AI提問。積分僅用於向AI提問，不能購買匹配次數。這些是成人積分，不會影響Kids餘額。',
+   '向AI提問積分','購買積分','最受歡迎','最划算',
+   '🌟 Kids積分','MatchApp Kids積分',
+   '家長購買的Kids充值餘額僅用於Kids模式，不會減少或增加成人匹配或向AI提問的餘額。',
+   'Kids匹配積分','僅在Kids獨立的每日額度用完後使用。','Kids匹配',
+   'Kids向AI提問積分','僅在Kids獨立的每日額度用完後，用於Kids向AI提問。','Kids向AI提問','為Kids購買'
   ]
  };
  function render(){
   const hub=document.getElementById('purchase-hub');if(!hub)return;
   const raw=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase();
-  const lang=/^pt(?:-|$)/.test(raw)?'pt-BR':raw.split('-')[0];
+  const lang=/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(raw)?'zh-TW':/^pt(?:-|$)/.test(raw)?'pt-BR':raw.split('-')[0];
   const text=labels[lang]||labels.en;
   const set=(selector,value)=>hub.querySelectorAll(selector).forEach(el=>{el.textContent=value});
   const action=(selector,value)=>hub.querySelectorAll(selector).forEach(el=>{

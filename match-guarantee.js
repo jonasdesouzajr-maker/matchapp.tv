@@ -1,13 +1,13 @@
 /* Never-empty Match inside the user's criteria. Device language. Never a mismatched genre. */
 (function () {
   'use strict';
-  const SUPPORTED = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+  const SUPPORTED = ['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
   function bootLang() {
     let current = window.MATCH_LANG || localStorage.getItem('match_lang') || '';
     if (current) { window.MATCH_LANG = current; document.documentElement.lang = current; return; }
     const nav = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en');
     const low = nav.toLowerCase();
-    let mapped = low.startsWith('pt') ? 'pt-BR' : (SUPPORTED.find(s => s === low.split('-')[0] || s.startsWith(low.split('-')[0])) || 'en');
+    let mapped = globalThis.MatchAppHanLocale?.normalize(low) || (low.startsWith('pt') ? 'pt-BR' : (SUPPORTED.find(s => s === low.split('-')[0] || s.startsWith(low.split('-')[0])) || 'en'));
     window.MATCH_LANG = mapped;
     try { localStorage.setItem('match_lang', mapped); } catch (_) {}
     document.documentElement.lang = mapped;

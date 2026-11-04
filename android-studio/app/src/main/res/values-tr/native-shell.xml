@@ -6,4 +6,6 @@
     <string name="file_chooser_title">Fotoğraf seç</string>
     <string name="ad_privacy_choices">Gizlilik seçenekleri</string>
     <string name="kids_separate_app">Çocuk Modu, ayrı MatchApp Ai KIDS uygulamasında kullanılabilir.</string>
+    <string name="google_browser_unavailable">Google ile devam etmek için bir tarayıcı yükleyin veya etkinleştirin.</string>
+    <string name="avatar_sign_in_required">Sesli avatarı denemek için MatchApp Ai hesabınızda oturum açın.</string>
 </resources>

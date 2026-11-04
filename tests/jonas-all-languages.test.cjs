@@ -16,7 +16,7 @@ function fixture(lang){
 }
 test('every supported top-box language has localized Jonas UI and a BCP47 voice code',()=>{
  const i18n=read('i18n.js');const matched=i18n.match(/const I18N_LANGS = \{([\s\S]*?)\n\s*\};/);assert.ok(matched);
- const expected=[...matched[1].matchAll(/'([^']+)':\s*\{/g)].map(m=>m[1]);
+ const expected=[...matched[1].matchAll(/(['"])([^'"]+)\1:\s*\{/g)].map(m=>m[2]);
  const d=fixture('en');
  assert.deepEqual([...d.w.MatchAppJonasLocale.codes],expected);
  for(const language of expected){
@@ -36,7 +36,7 @@ test('every supported top-box language has localized Jonas UI and a BCP47 voice 
  d.dom.window.close();
 });
 test('speech and recognition track selected top-box language, and do not start on drag',()=>{
- for(const code of ['es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','pt-BR']){
+ for(const code of ['es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW','pt-BR']){
   const {dom,w,doc,state}=fixture(code);
   doc.getElementById('ma-jonas-home-bubble').click();
   assert.equal(state.said.length,1,code);
@@ -47,4 +47,22 @@ test('speech and recognition track selected top-box language, and do not start o
   doc.getElementById('ma-jonas-home-close').click();
   dom.window.close();
  }
+});
+
+test('Jonas preserves the selected Chinese script for recognition and the speech request',async()=>{
+ const {dom,w}=fixture('zh-TW');
+ try {
+  w.requestIdleCallback=()=>{};
+  const requests=[];
+  w.fetch=async(url,options)=>{requests.push({url,body:JSON.parse(options.body)});return {ok:false,status:503}};
+  w.AbortController=AbortController;
+  w.eval(read('jonas/secure-speech-20261010.js'));
+  for(const [tag,expected,speech] of [['zh-TW','zh-TW','zh-TW'],['zh-Hant-HK','zh-TW','zh-TW'],['zh-MO','zh-TW','zh-TW'],['zh-Hans-TW','zh','zh-CN']]){
+   w.MATCH_LANG=tag;
+   assert.equal(w.MatchAppJonasLocale.lang(),expected,tag);
+   assert.equal(w.MatchAppJonasLocale.speech(),speech,tag);
+   await w.MatchAppJonasSpeech.speak('今天看什麼？',tag);
+   assert.equal(requests.at(-1).body.lang,expected,tag);
+  }
+ } finally {dom.window.close();}
 });

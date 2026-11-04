@@ -7,7 +7,7 @@ const {JSDOM} = require('jsdom');
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'patches/seo-shortlist-locale.js'), 'utf8');
 const contract = require('../tools/film-tv-shortlists.json');
-const languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
+const languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh', 'zh-TW'];
 const payload = lang => JSON.parse(fs.readFileSync(path.join(root, 'assets/i18n/shortlists', lang + '.json'), 'utf8'));
 const english = payload('en').copy;
 const tick = () => new Promise(resolve => setImmediate(resolve));
@@ -46,7 +46,7 @@ async function change(h, lang, event = 'matchapp:langchange') {
   await tick(); await tick();
 }
 
-test('all fourteen authored shortlist translations contain the complete UI and selection reasons', () => {
+test('all authored shortlist translations contain the complete UI and selection reasons', () => {
   const expected = {...Object.fromEntries(Object.entries(contract.ui).map(([key, value]) => ['ui.' + key, value])),
     ...Object.fromEntries(Object.entries(contract.reasons).map(([key, value]) => ['reason.' + key, value]))};
   assert.deepEqual(english, expected, 'English must remain identical to the crawlable authored contract');
@@ -107,7 +107,7 @@ test('runtime paints all locales while preserving exact works, URLs, schema and 
       assert.equal(h.d.getElementById('match').hasAttribute('inert'), false);
       assert.equal(h.d.getElementById('already-inert').hasAttribute('inert'), true);
     }
-    assert.equal(h.requests.length, 13, 'English comes from HTML, translated assets are cached once each');
+    assert.equal(h.requests.length, languages.length - 1, 'English comes from HTML, translated assets are cached once each');
     for (const {options} of h.requests) {
       assert.equal(options.credentials, 'omit'); assert.equal(options.mode, 'same-origin'); assert.equal(options.redirect, 'error');
     }

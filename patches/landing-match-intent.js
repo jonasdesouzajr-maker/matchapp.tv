@@ -88,7 +88,7 @@
       moods: ['紧张刺激', '鼓舞人心', '温馨舒适', '幽默搞笑', '轻松愉快', '阴暗冷峻', '史诗冒险', '烧脑', '令人心碎', '浪漫', '怀旧'],
       formats: ['推荐一部电影。', '推荐一部电视剧。', '推荐一部韩剧。', '推荐一部动画电影或动画剧集。', '推荐一部可以观看的纪录片。'],
       netflix: '推荐一部Netflix上的电影或电视剧。'
-    }
+    }, "zh-TW": {"screen":"推薦一部電影或電視劇。","mood":"氛圍：","similar":"尋找與《{title}》相似的作品。","country":"請確認在我所選的國家是否可以觀看。","moods":["緊張刺激","鼓舞人心","溫馨舒適","幽默搞笑","輕鬆愉快","陰暗冷峻","史詩冒險","燒腦","令人心碎","浪漫","懷舊"],"formats":["推薦一部電影。","推薦一部電視劇。","推薦一部韓劇。","推薦一部動畫電影或動畫劇集。","推薦一部可以觀看的紀錄片。"],"netflix":"推薦一部Netflix上的電影或電視劇。"}
   };
 
   function language() {
@@ -96,7 +96,7 @@
     try { saved = w.localStorage.getItem('match_lang'); } catch (_) {}
     var code = String(saved || w.MATCH_LANG || d.documentElement.lang || 'en').toLowerCase().replace(/_/g, '-');
     if (code === 'pt' || code.indexOf('pt-') === 0) return 'pt-BR';
-    code = code.split('-')[0];
+    code = (globalThis.MatchAppHanLocale?.normalize(code) || code.split('-')[0]);
     return Object.prototype.hasOwnProperty.call(copy, code) ? code : 'en';
   }
 

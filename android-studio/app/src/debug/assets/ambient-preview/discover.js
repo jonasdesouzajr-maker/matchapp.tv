@@ -182,9 +182,9 @@ function discoverRecommendationSummary(results,language){
   id:{fresh:'Pilihan baru untuk dijelajahi: {titles}. Buka detail untuk memeriksa ketersediaan.',empty:'Tidak ada judul baru dalam jawaban ini setelah menerapkan pilihan yang Anda simpan dan kecualikan. Coba permintaan lain.'},
   ja:{fresh:'新しい候補：{titles}。詳細を開いて利用可否を確認してください。',empty:'保存済み・除外済みの選択を反映した結果、この回答には新しい作品が残りませんでした。別のリクエストを試してください。'},
   ko:{fresh:'새로 살펴볼 후보: {titles}. 상세 정보를 열어 이용 가능 여부를 확인하세요.',empty:'저장하거나 제외한 선택을 반영한 결과, 이 답변에는 새로운 작품이 남아 있지 않습니다. 다른 요청을 시도해 보세요.'},
-  zh:{fresh:'可以探索的新选择：{titles}。打开详情查看可用情况。',empty:'应用你已保存和排除的选择后，此回答中没有剩余的新作品。请尝试其他请求。'}
+  zh:{fresh:'可以探索的新选择：{titles}。打开详情查看可用情况。',empty:'应用你已保存和排除的选择后，此回答中没有剩余的新作品。请尝试其他请求。'}, "zh-TW": {"fresh":"可以探索的新選擇：{titles}。開啟詳情檢視可用情況。","empty":"應用你已儲存和排除的選擇後，此回答中沒有剩餘的新作品。請嘗試其他請求。"}
 });
-  const base=String(language||'en').toLowerCase().split(/[-_]/)[0];
+  const base=(globalThis.MatchAppHanLocale?.normalize(String(language||'en').toLowerCase()) || String(language||'en').toLowerCase().split(/[-_]/)[0]);
   const copy=RECOMMENDATION_COPY[base==='pt'?'pt-BR':base]||RECOMMENDATION_COPY.en;
   const titles=(Array.isArray(results)?results:[]).map(row=>typeof row?.title==='string'?row.title.trim():'').filter(Boolean).slice(0,6);
   return titles.length?copy.fresh.replace('{titles}',titles.join(' · ')):copy.empty;
@@ -452,9 +452,9 @@ function discoverRecoveryText(key, values = {}, replyLanguage) {
             '已核实的电影及导演原始来源 ↗',
             '📚🎧📰 核查电子书、有声书和杂志',
             '请输入问题，或点击麦克风向MatchApp Ai提问。'
-        ]
+        ], "zh-TW": ["《{title}》（{year}年）的導演是{director}。","已核實的原始來源：{source}。","AI聊天暫時不可用。","AI聊天暫時不可用，且無法獨立核實這些電影資訊。請稍後重試。","請使用下方書店和出版社的官方連結核查版本及可用性。商店搜尋結果本身並不能確認特定版本或收聽權利。","請檢視下方Apple Books和Audible的官方搜尋，再使用Match E-books Ai核實有聲書的確切版本，然後再購買或收聽。商店搜尋結果本身並不能確認特定版本或收聽權利。","《{title}》— 作者：{author}","已核實的電影及導演原始來源 ↗","📚🎧📰 核查電子書、有聲書和雜誌","請輸入問題，或點選麥克風向MatchApp Ai提問。"]
     };
-    const language=String(replyLanguage||window.MATCH_LANG||'en').toLowerCase().split(/[-_]/)[0];
+    const language=(globalThis.MatchAppHanLocale?.normalize(String(replyLanguage||window.MATCH_LANG||'en').toLowerCase()) || String(replyLanguage||window.MATCH_LANG||'en').toLowerCase().split(/[-_]/)[0]);
     return String((rows[language]||rows.en)[keys.indexOf(key)]||'').replace(/\{(\w+)\}/g,(_,name)=>String(values[name]??''));
 }
 
@@ -660,7 +660,7 @@ function typewriterReveal(el, text, speedMs) {
 const TTS_LANG_MAP = {
     'en': 'en-US', 'pt-BR': 'pt-BR', 'es': 'es-ES', 'fr': 'fr-FR', 'de': 'de-DE',
     'it': 'it-IT', 'tr': 'tr-TR', 'ru': 'ru-RU', 'ar': 'ar-SA', 'hi': 'hi-IN',
-    'id': 'id-ID', 'ja': 'ja-JP', 'ko': 'ko-KR', 'zh': 'zh-CN'
+    'id': 'id-ID', 'ja': 'ja-JP', 'ko': 'ko-KR', 'zh': 'zh-CN', "zh-TW": "zh-TW"
 };
 
 function ttsTargetLang(lang) {
@@ -671,6 +671,7 @@ function voiceMatchesLang(voice, lang) {
     const target = ttsTargetLang(lang).toLowerCase();
     const base = target.split('-')[0];
     const actual = voice.lang.toLowerCase();
+    if (base === 'zh') return (globalThis.MatchAppHanLocale?.normalize(actual) || actual) === (globalThis.MatchAppHanLocale?.normalize(target) || target);
     return actual === target || actual.startsWith(target + '-') || actual.split('-')[0] === base;
 }
 function pickVoiceForLang(voices, lang) {
@@ -1795,13 +1796,13 @@ const AI_COST_COPY = {
   "left": "每个问题消耗 1 次 AI 操作 · 今天还剩 {remaining}/{limit} 次",
   "credits": "今日 AI 操作已用完——现在每个问题消耗 1 个 Ask AI 点数（剩余 {credits} 个）",
   "none": "今天没有剩余的 AI 操作——请购买 Ask AI 点数或明天再来"
- }
+ }, "zh-TW": {"left":"每個問題消耗 1 次 AI 操作 · 今天還剩 {remaining}/{limit} 次","credits":"今日 AI 操作已用完——現在每個問題消耗 1 個 Ask AI 點數（剩餘 {credits} 個）","none":"今天沒有剩餘的 AI 操作——請購買 Ask AI 點數或明天再來"}
 };
 var lastAiCostState = null;
 function aiCostLang() {
     const low = String(window.MATCH_LANG || document.documentElement.getAttribute('lang') || 'en').toLowerCase();
     if (low.startsWith('pt')) return 'pt-BR';
-    if (low.startsWith('zh')) return 'zh';
+    if (low.startsWith('zh')) return globalThis.MatchAppHanLocale?.normalize(low) || 'zh';
     const keys = Object.keys(AI_COST_COPY);
     return keys.find(k => k.toLowerCase() === low) || keys.find(k => k.split('-')[0] === low.split('-')[0]) || 'en';
 }

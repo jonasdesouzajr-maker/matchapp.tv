@@ -6,7 +6,18 @@ const path=require('node:path');
 const crypto=require('node:crypto');
 const newsCommerce=require('../news-monetization.js');
 const newsImages=require('../news-images.js');
+const {URLSearchParams}=require('node:url');
 const {cinemaAssets}=require('./finalize-brand.js');
+// Keep the News hub and newly generated articles on the localized runtime when feeds refresh.
+function newsAssets(html, path) {
+  return cinemaAssets(html, path).replace(/(src=")(\/(?:news-images|news-ui|news-monetization|native-news-slot|patches\/reference-system)\.js)(?:\?([^"]*))?"/g,
+    (_, src, script, query = '') => {
+      const params = new URLSearchParams(query.replace(/&amp;/g, '&'));
+      params.set('locale71', '1');
+      return src + script + '?' + params.toString().replace(/&/g, '&amp;') + '"';
+    });
+}
+
 
 const ROOT=path.join(__dirname,'..');
 const NEWS=path.join(ROOT,'news');
@@ -491,7 +502,7 @@ function page(i){
     ]
   };
 
-  return cinemaAssets(`<!doctype html>
+  return newsAssets(`<!doctype html>
 <html lang="${i.language==='pt'?'pt-BR':(i.language||'en')}">
 <head>
 <!-- Google Tag Manager -->
@@ -620,7 +631,7 @@ ${commerceSlot(i,'en')}
   const previewDescription = 'Source-linked entertainment, world and sports headlines, clearly dated and connected to practical discovery guides.';
   const previewImage = `${SITE}/og-image.jpg?v=20260928-brand-preview1`;
 
-  return cinemaAssets(`<!doctype html>
+  return newsAssets(`<!doctype html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->

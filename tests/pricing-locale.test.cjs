@@ -4,9 +4,9 @@ const {JSDOM}=require('jsdom');
 const root=path.join(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const localeSource=read('pricing-locale.js');
-const LANGUAGES=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
-const TITLES={en:'In-App Purchases','pt-BR':'Compras no app',es:'Compras en la app',fr:'Achats dans l’application',de:'In-App-Käufe',it:'Acquisti nell’app',tr:'Uygulama içi satın alımlar',ru:'Покупки в приложении',ar:'المشتريات داخل التطبيق',hi:'ऐप में खरीदारी',id:'Pembelian dalam aplikasi',ja:'アプリ内購入',ko:'앱 내 구매',zh:'应用内购买'};
-const BUY_KIDS={en:'Buy for Kids','pt-BR':'Comprar para Kids',es:'Comprar para Kids',fr:'Acheter pour Kids',de:'Für Kids kaufen',it:'Acquista per Kids',tr:'Kids için satın al',ru:'Купить для Kids',ar:'الشراء لـKids',hi:'Kids के लिए खरीदें',id:'Beli untuk Kids',ja:'Kids用に購入',ko:'Kids용 구매',zh:'为Kids购买'};
+const LANGUAGES=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
+const TITLES={en:'In-App Purchases','pt-BR':'Compras no app',es:'Compras en la app',fr:'Achats dans l’application',de:'In-App-Käufe',it:'Acquisti nell’app',tr:'Uygulama içi satın alımlar',ru:'Покупки в приложении',ar:'المشتريات داخل التطبيق',hi:'ऐप में खरीदारी',id:'Pembelian dalam aplikasi',ja:'アプリ内購入',ko:'앱 내 구매',zh:'应用内购买',"zh-TW":'應用內購買'};
+const BUY_KIDS={en:'Buy for Kids','pt-BR':'Comprar para Kids',es:'Comprar para Kids',fr:'Acheter pour Kids',de:'Für Kids kaufen',it:'Acquista per Kids',tr:'Kids için satın al',ru:'Купить для Kids',ar:'الشراء لـKids',hi:'Kids के लिए खरीदें',id:'Beli untuk Kids',ja:'Kids用に購入',ko:'Kids용 구매',zh:'为Kids购买',"zh-TW":'為Kids購買'};
 const PACKS='[data-match-pack],[data-credit-pack],[data-kids-match-pack],[data-kids-credit-pack]';
 const OWNED_COPY=[
  ['#purchase-hub-title',0],['#purchase-hub-title + p',1],['#purchase-tab-matches',3],['#purchase-tab-credits',4],
@@ -102,7 +102,7 @@ test('purchase labels follow Brazilian Portuguese and English without replacing 
  dom.window.close();
 });
 
-test('all three actual purchase tabs follow 14 real language events while retaining separate pools, prices, selection and handlers',async()=>{
+test('all three actual purchase tabs follow all real language events while retaining separate pools, prices, selection and handlers',async()=>{
  const copy=authoredCopy();
  assert.deepEqual(Object.keys(copy),LANGUAGES);
  for(const lang of LANGUAGES){
@@ -140,13 +140,13 @@ test('all three actual purchase tabs follow 14 real language events while retain
    assert.equal(marketNote.outerHTML,marketNoteBefore,'a separate market-owned paragraph is not the hub introduction');
    assertNoAccountChanges(w,calls);
   }
-  assert.equal(events,14);
+  assert.equal(events,LANGUAGES.length);
   checkout.click();assert.equal(handlerCalls,1,'the original attached handler remains callable without a real checkout');
   assertNoAccountChanges(w,calls);
  }finally{w.close();}
 });
 
-test('14 hub translations retain real native unavailable and owned presentation while translating the Kids controls',async()=>{
+test('All hub translations retain real native unavailable and owned presentation while translating the Kids controls',async()=>{
  const copy=authoredCopy(),{w,hub,calls}=await actualHub({native:true});
  try{
   const pass=w.document.getElementById('btn-ad_free');

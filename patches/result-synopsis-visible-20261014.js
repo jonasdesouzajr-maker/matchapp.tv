@@ -13,11 +13,11 @@
   tr:'Özgün özet (çevrilmemiş)',ru:'Оригинальное описание (без перевода)',
   ar:'الملخص الأصلي (غير مترجم)',hi:'मूल सारांश (अनुवादित नहीं)',
   id:'Sinopsis asli (belum diterjemahkan)',ja:'原文のあらすじ（未翻訳）',
-  ko:'원문 줄거리(번역되지 않음)',zh:'原文简介（未翻译）'
+  ko:'원문 줄거리(번역되지 않음)',zh:'原文简介（未翻译）', "zh-TW": "原文簡介（未翻譯）"
  };
  var synopsis=document.getElementById('res-synopsis'),task=null;
  if(!synopsis)return;
- function lang(){var code=String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0];return labels[code]?code:'en'}
+ function lang(){var code=(globalThis.MatchAppHanLocale?.normalize(String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase()) || String(window.MATCH_LANG||document.documentElement.lang||'en').toLowerCase().split('-')[0]);return labels[code]?code:'en'}
  function t(key){try{return String(window.t?.(key)||'').trim()}catch(_){return ''}}
  function placeholder(value){
   var text=String(value||'').trim(),guide=t('global.guide'),stream=t('res.findwhere');

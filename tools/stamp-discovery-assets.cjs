@@ -6,7 +6,7 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const revisions=new Map();
 function stampDiscoveryAssets(html) {
-  return html.replace(/(<script\b[^<>]*?\ssrc\s*=\s*)(["'])(\/(?:channels\/discovery|patches\/immersive-feedback-20261014)\.js)(?:\?([^"'#]*))?\2/g,
+  return html.replace(/(<script\b[^<>]*?\ssrc\s*=\s*)(["'])(\/(?:channels\/(?:discovery|labels)|patches\/immersive-feedback-20261014)\.js)(?:\?([^"'#]*))?\2/g,
     (tag,attribute,quote,url,query='')=>{
       if(!revisions.has(url)) {
         const bytes=fs.readFileSync(path.join(root,url));

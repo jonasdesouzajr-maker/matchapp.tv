@@ -9,7 +9,7 @@ test('Jonas guide relabels existing links in every app language and skips the cu
     const {window}=dom,doc=window.document;
     doc.documentElement.classList.add('matchapp-ai-android');
     window.eval(script);
-    const expected={en:'Books','pt-BR':'Livros',es:'Libros',fr:'Livres',de:'Bücher',it:'Libri',tr:'Kitaplar',ru:'Книги',ar:'الكتب',hi:'किताबें',id:'Buku',ja:'本',ko:'도서',zh:'图书'};
+    const expected={en:'Books','pt-BR':'Livros',es:'Libros',fr:'Livres',de:'Bücher',it:'Libri',tr:'Kitaplar',ru:'Книги',ar:'الكتب',hi:'किताबें',id:'Buku',ja:'本',ko:'도서',zh:'图书','zh-TW':'書籍'};
     let original;
     for(const [lang,books] of Object.entries(expected)){
       doc.documentElement.lang=lang;

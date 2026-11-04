@@ -13,10 +13,11 @@ test('tour reveals a control covered by the actual fixed header',()=>{
  rect={top:680,bottom:724};vm.runInNewContext('reveal()',context);
  assert.equal(scrolled,2,'bottom navigation clearance remains enforced');
 });
-test('guide locales cover all 14 site languages with every key',()=>{
+test('guide locales cover all 15 site language choices with every key',()=>{
  const ctx={window:{}};vm.runInNewContext(read('guided-coach-locales-20261022.js'),ctx);
  const L=ctx.window.MatchAppCoachLocales,K=ctx.window.MatchAppCoachLocaleKeys;
- assert.deepStrictEqual(Object.keys(L).sort(),['ar','de','en','es','fr','hi','id','it','ja','ko','pt-BR','ru','tr','zh'].sort());
+ assert.deepStrictEqual(Object.keys(L).sort(),['ar','de','en','es','fr','hi','id','it','ja','ko','pt-BR','ru','tr','zh','zh-TW'].sort());
+ assert.notStrictEqual(L['zh-TW'].start,L.zh.start,'Traditional Chinese guide keeps its own localized text');
  for(const [code,set] of Object.entries(L))for(const k of K)assert.ok(set[k]&&set[k].trim(),code+' '+k);
  for(const set of Object.values(L))assert.ok(!/MatchApp iA/.test(JSON.stringify(set)),'brand stays MatchApp Ai');
 });

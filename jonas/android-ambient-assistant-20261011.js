@@ -28,9 +28,10 @@
   id:['Menghubungkan percakapan Anda…','Koneksi akun tidak tersedia. Coba lagi.','Coba lagi'],
   ja:['会話に接続しています…','アカウントに接続できません。もう一度お試しください。','再試行'],
   ko:['대화에 연결하는 중…','계정에 연결할 수 없습니다. 다시 시도하세요.','다시 시도'],
-  zh:['正在连接你的对话…','暂时无法连接账户，请重试。','重试']
+  zh:['正在连接你的对话…','暂时无法连接账户，请重试。','重试'],
+  'zh-TW':['正在連線到你的對話…','暫時無法連線到帳戶，請再試一次。','再試一次']
  };
- function conversationAccountCopy(){return accountCopy[String(selectedLanguage()).toLowerCase().split('-')[0]]||accountCopy.en}
+ function conversationAccountCopy(){return accountCopy[copyLanguage()]||accountCopy.en}
  function needsNewsAccount(){return /^\/(?:news\/(?:index\.html)?|explore\.html)$/.test(location.pathname)&&typeof window.MatchAppNativeNews?.postMessage==='function'}
  function parentOwnsAccount(){
   return /^\/(?:index\.html)?$|^\/ebooks\/(?:index\.html)?$/.test(location.pathname)||
@@ -98,10 +99,12 @@
   id:{hello:"Halo, saya Jonas. Apa yang ingin kamu temukan?",subject:'Saya bisa menjelaskan judul ini lebih lanjut.',close:'Tutup obrolan',open:'Bicara dengan Jonas',state:'Halaman Anda tetap terbuka'},
   ja:{hello:"こんにちは、ジョナスです。今日は何を見つけましょうか？",subject:'この作品について詳しく説明できます。',close:'チャットを閉じる',open:'ジョナスと話す',state:'元のページは開いたままです'},
   ko:{hello:"안녕하세요, 저는 조나스예요. 무엇을 찾아볼까요?",subject:'이 작품에 대해 더 자세히 알려드릴게요.',close:'채팅 닫기',open:'조나스와 대화',state:'현재 페이지는 그대로 유지됩니다'},
-  zh:{hello:"你好，我是乔纳斯。今天想发现什么？",subject:'我可以进一步介绍这部作品。',close:'关闭聊天',open:'与乔纳斯交谈',state:'当前页面将保持打开'}
+  zh:{hello:"你好，我是乔纳斯。今天想发现什么？",subject:'我可以进一步介绍这部作品。',close:'关闭聊天',open:'与乔纳斯交谈',state:'当前页面将保持打开'},
+  'zh-TW':{hello:'嗨，我是 Jonas。今天想找點什麼？',subject:'我可以再多介紹一下這部作品。',close:'關閉聊天',open:'和 Jonas 聊聊',state:'目前的頁面會保持開啟'}
  };
  function selectedLanguage(){var saved='';try{saved=localStorage.getItem('match_lang')||''}catch(_){}return window.MATCH_LANG||saved||document.documentElement.lang||'en'}
- function locale(){var s=String(selectedLanguage()).toLowerCase();return labels[s.split('-')[0]]||labels.en}
+ function copyLanguage(){var tag=String(selectedLanguage());return window.MatchAppHanLocale?.normalize?.(tag)||(tag==='zh-TW'?tag:tag.toLowerCase().split('-')[0])}
+ function locale(){return labels[copyLanguage()]||labels.en}
  function clamp(x,low,high){return Math.max(low,Math.min(high,x))}
  function viewport(){return {width:Math.max(1,window.innerWidth),height:Math.max(1,window.visualViewport?.height||window.innerHeight)}}
  function safeBounds(){if(window.MatchAppJonasPlacement)return window.MatchAppJonasPlacement.bounds(78,78);var v=viewport(),inset=16;return {minX:inset,minY:inset,maxX:Math.max(inset,v.width-78-inset),maxY:Math.max(inset,v.height-78-inset)}}

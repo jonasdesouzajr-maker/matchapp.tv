@@ -548,14 +548,53 @@
     "allowAgain": "再次允许",
     "allowedAgain": "可以再次推荐“{title}”。",
     "allowFailed": "无法更新此条目。请重试。"
-  }
+  },
+  "zh-TW": {
+  "historyTab": "歷史記錄",
+  "watchLaterTab": "稍後觀看",
+  "seenTab": "已看過",
+  "audioTab": "音訊庫",
+  "notForMe": "不適合我",
+  "itemCount": "條目數：{count}",
+  "saved": "稍後觀看",
+  "seen": "已觀看",
+  "loved": "非常喜歡",
+  "rated": "已評分",
+  "matched": "已推薦",
+  "askAI": "詢問AI",
+  "inHistory": "在你的歷史記錄中",
+  "untitled": "無標題",
+  "findWatch": "查詢觀看平臺",
+  "remove": "移除",
+  "removeHistory": "從歷史記錄中移除",
+  "removeAria": "從歷史記錄中移除{title}",
+  "confirmTitle": "從歷史記錄中移除？",
+  "confirmCopy": "要從你的MatchApp Ai私人歷史記錄中移除“{title}”嗎？",
+  "thisTitle": "此作品",
+  "cancel": "取消",
+  "removeFailed": "無法更新你的歷史記錄。請重試。",
+  "removed": "已從你的私人歷史記錄中移除。",
+  "historyEmptyTitle": "你的私人歷史記錄為空。",
+  "historyEmptyCopy": "推薦作品、詢問AI找到的作品、已儲存和已觀看的作品會保留在此處，直到你將其移除。",
+  "rematchPrompt": "此作品已儲存到歷史記錄。要獲取新的推薦嗎？",
+  "sameCriteria": "相同條件",
+  "newCriteria": "新條件",
+  "shownReason": "由MatchApp Ai展示",
+  "notForMeIntro": "你拒絕的作品會在所有已登入裝置上保持排除狀態，直到你再次允許推薦。",
+  "notForMeEmptyTitle": "這裡還沒有內容。",
+  "notForMeEmptyCopy": "標記為“不適合我”的作品會從未來的推薦中排除，並顯示在這裡。",
+  "excluded": "已從未來的推薦中排除",
+  "allowAgain": "再次允許",
+  "allowedAgain": "可以再次推薦“{title}”。",
+  "allowFailed": "無法更新此條目。請重試。"
+}
 };
   const bindings=new WeakMap();
   const marker='data-profile-portfolio-copy';
   function normalize(value){
     const code=String(value||'').trim().replace(/_/g,'-').toLowerCase();
     if(code==='pt'||code.startsWith('pt-'))return 'pt-BR';
-    const base=code.split('-')[0];
+    const base=(globalThis.MatchAppHanLocale?.normalize(code) || code.split('-')[0]);
     return Object.prototype.hasOwnProperty.call(COPY,base)?base:'';
   }
   function language(){

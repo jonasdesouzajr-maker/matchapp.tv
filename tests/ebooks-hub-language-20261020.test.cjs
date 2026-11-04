@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=file=>fs.readFileSync(path.join(root,file),'utf8');
-const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 function fixture(){
  const dom=new JSDOM(read('ebooks/index.html'),{url:'https://matchapp.tv/ebooks/',runScripts:'outside-only'}),w=dom.window;
  w.localStorage.setItem('match_lang','fr');w.localStorage.setItem('match_user_country','br');w.MATCH_LANG='en';
@@ -12,7 +12,7 @@ function fixture(){
  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
  return {dom,w,get hydrated(){return hydrated;}};
 }
-test('hub authors every static and dynamic key in all14 selected languages without fallback',()=>{
+test('hub authors every static and dynamic key in all supported selected languages without fallback',()=>{
  let bundle;
  const stub={MatchAppBooksLocale:{register(value){bundle=value;}},document:{querySelector(){return null;},querySelectorAll(){return[];},readyState:'complete'}};
  stub.MatchAppBooksLocale.paint=()=>{};

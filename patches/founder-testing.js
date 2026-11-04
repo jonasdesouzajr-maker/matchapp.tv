@@ -18,7 +18,7 @@
   function syncLanguage() {
     let saved = '';
     try { saved = localStorage.getItem('match_lang') || ''; } catch {}
-    const code = String(window.MATCH_LANG || saved || document.documentElement.lang).toLowerCase().split('-')[0];
+    const code = (globalThis.MatchAppHanLocale?.normalize(window.MATCH_LANG || saved || document.documentElement.lang) || (/^zh(?:[-_]hant\b|(?:[-_](?:tw|hk|mo))\b)/i.test(window.MATCH_LANG || saved || document.documentElement.lang) ? 'zh-TW' : String(window.MATCH_LANG || saved || document.documentElement.lang||'').toLowerCase().split(/[-_]/)[0]));
     if (!copy[code]) return;
     language = code;
     section.querySelectorAll('[data-tester-copy]').forEach(node => {

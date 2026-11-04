@@ -37,7 +37,8 @@ test('prose-only excluded recommendations cannot reach speech, including unspace
     ['The Godfather','The Godfather would be ideal tonight.','en'],
     ['千と千尋の神隠し','千と千尋の神隠しがおすすめです。','ja'],
     ['기생충','기생충을 추천합니다.','ko'],
-    ['霸王别姬','我推荐霸王别姬。','zh']
+    ['霸王别姬','我推荐霸王别姬。','zh'],
+    ['霸王別姬','我推薦霸王別姬。','zh-TW']
   ]){
     const result=api.filterDiscoverRecommendations({answer,results:[]},{recommendationsOnly:true,excludedTitles:[title],language});
     assert(!result.answer.includes(title),language);
@@ -57,16 +58,18 @@ test('explicit title facts, legacy callers and Kids retain their response and re
   ])assert.equal(api.filterDiscoverRecommendations(facts,options),facts);
 });
 
-test('all fourteen languages have authored summaries and never claim source verification',async()=>{
+test('all supported languages have authored summaries and never claim source verification',async()=>{
   const api=await helpers;
-  const langs=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
-  assert.equal(new Set(langs.map(lang=>api.recommendationSummary([],lang))).size,14);
+  const langs=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
+  assert.equal(new Set(langs.map(lang=>api.recommendationSummary([],lang))).size,langs.length);
   for(const lang of langs){
     const fresh=api.recommendationSummary([{title:'Exact source title'}],lang);
     assert(fresh.includes('Exact source title'),lang);
     assert(fresh.length>25,lang);
     assert(!fresh.includes('{titles}'),lang);
   }
+  for(const lang of ['zh_TW','zh-HK','zh-Hant-HK','zh-MO'])assert.equal(api.recommendationSummary([],lang),api.RECOMMENDATION_COPY['zh-TW'].empty);
+  assert.equal(api.recommendationSummary([],'zh-Hans-TW'),api.RECOMMENDATION_COPY.zh.empty);
   assert.equal(api.recommendationSummary([],'es-MX'),api.RECOMMENDATION_COPY.es.empty);
 });
 

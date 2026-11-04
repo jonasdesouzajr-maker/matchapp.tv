@@ -53,12 +53,12 @@ const walkthroughCopy={
  id:['Ketuk di sini','Lanjut','Kembali','Selesai','Tutup','Pilih kategori dan suasana. Pilihan membuka filter format, layanan, genre dan periode.','Buka kartu bacaan. Pilih e-book, buku audio atau majalah dan filter untuk sampul asli serta tautan resmi.','Ketik atau gunakan mikrofon, lalu tekan Kirim. Panduan tidak membuka keyboard secara otomatis.','Geser poster dan ketuk judul untuk informasi serta tempat menonton.','Buka pengalaman anak terpisah dengan konten yang ditinjau sesuai usia.','Ketuk avatar untuk profil dan preferensi, atau masuk.'],
  ja:['ここをタップ','次へ','戻る','完了','閉じる','カテゴリと気分を選ぶと、形式、サービス、ジャンル、年代のフィルターが開きます。','読書カードで電子書籍、オーディオブック、雑誌と条件を選び、元の表紙と公式リンクを確認できます。','入力またはマイクを使い、送信を押します。ガイドはキーボードを自動で開きません。','ポスターをスワイプし、作品をタップして情報や視聴先を確認します。','年齢に応じて確認された独立したキッズモードを開きます。','アバターをタップしてプロフィールや設定を開くか、ログインします。'],
  ko:['여기를 누르세요','다음','뒤로','완료','닫기','카테고리와 기분을 선택하면 형식, 서비스, 장르, 시대 필터가 열립니다.','독서 카드에서 전자책, 오디오북 또는 잡지와 조건을 선택해 원본 표지와 공식 링크를 확인하세요.','입력하거나 마이크를 사용한 뒤 보내기를 누르세요. 안내는 키보드를 자동으로 열지 않습니다.','포스터를 넘기고 작품을 눌러 정보와 시청처를 확인하세요.','연령별 검토를 거친 별도의 키즈 모드를 여세요.','프로필과 취향 설정을 보려면 아바타를 누르거나 로그인하세요.'],
- zh:['点击这里','下一步','返回','完成','关闭','选择类别和心情后，会展开类型、平台、题材和年代筛选。','打开阅读卡片，选择电子书、有声书或杂志及条件，查看原始封面和官方链接。','输入或使用麦克风，然后点击发送。指南不会自动打开键盘。','滑动海报并点击作品，查看详细信息和观看平台。','打开独立儿童模式，内容已按年龄审核。','点击头像打开个人资料和偏好，或登录。']
+ zh:['点击这里','下一步','返回','完成','关闭','选择类别和心情后，会展开类型、平台、题材和年代筛选。','打开阅读卡片，选择电子书、有声书或杂志及条件，查看原始封面和官方链接。','输入或使用麦克风，然后点击发送。指南不会自动打开键盘。','滑动海报并点击作品，查看详细信息和观看平台。','打开独立儿童模式，内容已按年龄审核。','点击头像打开个人资料和偏好，或登录。'], "zh-TW": ["點選這裡","下一步","返回","完成","關閉","選擇類別和心情後，會展開型別、平臺、題材和年代篩選。","開啟閱讀卡片，選擇電子書、有聲書或雜誌及條件，檢視原始封面和官方連結。","輸入或使用麥克風，然後點選傳送。指南不會自動開啟鍵盤。","滑動海報並點選作品，檢視詳細資訊和觀看平臺。","開啟獨立兒童模式，內容已按年齡稽核。","點選頭像開啟個人資料和偏好，或登入。"]
 };
 const tr=()=>{
  const language=String(window.MATCH_LANG||document.documentElement.lang||'en').trim();
  const codes=window.MatchAppGuideLocales;
- if(codes)return codes[language]||codes[language.split('-')[0]]||codes.en;
+ if(codes)return codes[language]||codes[(globalThis.MatchAppHanLocale?.normalize(language) || language.split('-')[0])]||codes.en;
  // Preserve the English self-contained guide for offline and isolated tests;
  // the localized asset is always loaded before this file in production.
  return copy[language]||copy.en;

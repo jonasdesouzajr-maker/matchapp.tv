@@ -15,4 +15,5 @@
     <string name="native_news_sponsored_ja" translatable="false">スポンサー</string>
     <string name="native_news_sponsored_ko" translatable="false">스폰서</string>
     <string name="native_news_sponsored_zh" translatable="false">赞助内容</string>
+    <string name="native_news_sponsored_zh_tw" translatable="false">贊助內容</string>
 </resources>

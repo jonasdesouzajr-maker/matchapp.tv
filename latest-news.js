@@ -65,10 +65,10 @@
   function selectedLanguage(){
     let raw='';
     try{raw=String(window.MATCH_LANG||document.documentElement.lang||localStorage.getItem('match_lang')||navigator.language||'en');}catch(_){raw=String(window.MATCH_LANG||document.documentElement.lang||navigator.language||'en');}
-    const base=raw.toLowerCase().split('-')[0];
-    return ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'].includes(base)?base:'en';
+    const base=(globalThis.MatchAppHanLocale?.normalize(raw.toLowerCase()) || raw.toLowerCase().split('-')[0]);
+    return ['en','pt','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'].includes(base)?base:'en';
   }
-  function itemLanguage(item){return String(item?.language||'').toLowerCase().split('-')[0];}
+  function itemLanguage(item){return globalThis.MatchAppHanLocale?.normalize(item?.language) || String(item?.language||'').toLowerCase().split('-')[0];}
   function languageMatches(item,language){const own=itemLanguage(item);return !own||own===language;}
 
   function signalStaticReady(country='',language=selectedLanguage(),status='ready'){
@@ -86,7 +86,7 @@
 
   function publicationLabel(item){
     if(item.published_at&&Number.isFinite(Date.parse(item.published_at)))return formatDate(item.published_at);
-    const missing={en:'Publication date unavailable',pt:'Data de publicação indisponível',es:'Fecha de publicación no disponible',fr:'Date de publication indisponible',de:'Veröffentlichungsdatum unbekannt',it:'Data di pubblicazione non disponibile',tr:'Yayın tarihi bilinmiyor',ru:'Дата публикации неизвестна',ar:'تاريخ النشر غير متاح',hi:'प्रकाशन की तारीख उपलब्ध नहीं',id:'Tanggal publikasi tidak tersedia',ja:'公開日不明',ko:'발행일 확인 불가',zh:'发布日期不详'};
+    const missing={en:'Publication date unavailable',pt:'Data de publicação indisponível',es:'Fecha de publicación no disponible',fr:'Date de publication indisponible',de:'Veröffentlichungsdatum unbekannt',it:'Data di pubblicazione non disponibile',tr:'Yayın tarihi bilinmiyor',ru:'Дата публикации неизвестна',ar:'تاريخ النشر غير متاح',hi:'प्रकाशन की तारीख उपलब्ध नहीं',id:'Tanggal publikasi tidak tersedia',ja:'公開日不明',ko:'발행일 확인 불가',zh:'发布日期不详', "zh-TW": "釋出日期不詳"};
     return missing[selectedLanguage()]||missing.en;
   }
 

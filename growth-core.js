@@ -1,5 +1,5 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.MatchAppGrowthCore=api;})(typeof window!=='undefined'?window:globalThis,function(){'use strict';
-const LANGS=Object.freeze(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
+const LANGS=Object.freeze(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW']);
 const TOKEN=/^[a-f0-9]{64}$/;
 function safeSource(value,id,kind,country){try{const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password||!['themoviedb.org','www.themoviedb.org'].includes(u.hostname))return '';if(!['movie','tv'].includes(kind)||!Number.isSafeInteger(Number(id))||Number(id)<=0||!/^[A-Z]{2}$/.test(country))return '';if(!new RegExp('^/'+kind+'/'+Number(id)+'(?:-[^/]+)?/watch$').test(u.pathname)||u.searchParams.get('locale')!==country)return '';return u.href;}catch(_){return '';}}
 function poster(value){try{const u=new URL(value);return u.protocol==='https:'&&u.hostname==='image.tmdb.org'&&!u.username&&!u.password?u.href:'';}catch(_){return '';}}

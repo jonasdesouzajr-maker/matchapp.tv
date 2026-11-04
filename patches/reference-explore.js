@@ -17,7 +17,7 @@
     id: ['Jelajahi lainnya','Temukan kisah, orang, dan pengalaman yang layak untuk waktu Anda.','Jelajahi sekarang','Paling dinanti','Panduan penayangan','Pilihan minggu ini','Dipilih untuk Anda','Buku','Resep','Berita','Acara','Taylor','Tanya AI','Lebih banyak pilihan','Panduan MatchApp Ai Anda','Temukan film, buku, resep, atau pengalaman berikutnya. Jelajahi topik atau minta inspirasi dari Jonas.','Jelajahi bersama Jonas.'],
     ja: ['もっと見る','あなたの時間を豊かにする物語、人々、体験を見つけましょう。','今すぐ探す','注目の新作','プレミアガイド','今週のおすすめ','あなたへのセレクション','本','レシピ','ニュース','イベント','テイラー','AIに聞く','さらに発見する','MatchApp Ai ガイド','次の映画、本、レシピ、体験を見つけましょう。テーマを探したり、ジョナスにヒントを聞いたりできます。','ジョナスと発見する。'],
     ko: ['더 둘러보기','당신의 시간을 채울 이야기, 사람, 경험을 발견하세요.','지금 둘러보기','가장 기대되는 작품','첫 공개 안내','이번 주의 선택','당신을 위한 추천','책','레시피','뉴스','행사','테일러','AI에게 묻기','더 많은 발견','MatchApp Ai 안내','다음 영화, 책, 레시피, 경험을 찾아보세요. 주제를 둘러보거나 조나스에게 영감을 얻으세요.','조나스와 발견하기.'],
-    zh: ['探索更多','发现值得花时间的故事、人物和体验。','立即探索','最受期待','首映指南','本周精选','为你精选','书籍','食谱','新闻','活动','泰勒','问 AI','发现更多精彩','你的 MatchApp Ai 指南','寻找下一部电影、一本书、一份食谱或一次体验。探索主题，或向乔纳斯寻求灵感。','与乔纳斯一起探索。']
+    zh: ['探索更多','发现值得花时间的故事、人物和体验。','立即探索','最受期待','首映指南','本周精选','为你精选','书籍','食谱','新闻','活动','泰勒','问 AI','发现更多精彩','你的 MatchApp Ai 指南','寻找下一部电影、一本书、一份食谱或一次体验。探索主题，或向乔纳斯寻求灵感。','与乔纳斯一起探索。'], "zh-TW": ["探索更多","發現值得花時間的故事、人物和體驗。","立即探索","最受期待","首映指南","本週精選","為你精選","書籍","食譜","新聞","活動","泰勒","問 AI","發現更多精彩","你的 MatchApp Ai 指南","尋找下一部電影、一本書、一份食譜或一次體驗。探索主題，或向喬納斯尋求靈感。","與喬納斯一起探索。"]
   };
   var extraCopy = {
     en:{friends:'Friends',donate:'Help me grow the business'},pt:{friends:'Amigos',donate:'Ajude meu negócio a crescer'},
@@ -26,10 +26,10 @@
     tr:{friends:'Arkadaşlar',donate:'İşimi büyütmeme destek ol'},ru:{friends:'Друзья',donate:'Помогите мне развивать своё дело'},
     ar:{friends:'الأصدقاء',donate:'ساعدني على تنمية مشروعي'},hi:{friends:'दोस्त',donate:'मेरा व्यवसाय बढ़ाने में मदद करें'},
     id:{friends:'Teman',donate:'Bantu saya mengembangkan usaha ini'},ja:{friends:'友達',donate:'事業の成長を応援する'},
-    ko:{friends:'친구',donate:'사업 성장을 응원해 주세요'},zh:{friends:'好友',donate:'助我发展这项事业'}
+    ko:{friends:'친구',donate:'사업 성장을 응원해 주세요'},zh:{friends:'好友',donate:'助我发展这项事业'}, "zh-TW": {"friends":"好友","donate":"助我發展這項事業"}
   };
   function locale() {
-    var chosen = String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase().split('-')[0];
+    var chosen = (globalThis.MatchAppHanLocale?.normalize(String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase()) || String(window.MATCH_LANG || document.documentElement.lang || 'en').toLowerCase().split('-')[0]);
     return Object.prototype.hasOwnProperty.call(copy, chosen) ? chosen : null;
   }
   function paint() {

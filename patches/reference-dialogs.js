@@ -17,7 +17,7 @@
     id: ['Pemberitahuan', 'Konfirmasi tindakan', 'OK', 'Batal', 'Konfirmasi'],
     ja: ['お知らせ', '操作の確認', 'OK', 'キャンセル', '確認'],
     ko: ['알림', '작업 확인', '확인', '취소', '계속'],
-    zh: ['提示', '确认操作', '确定', '取消', '确认']
+    zh: ['提示', '确认操作', '确定', '取消', '确认'], "zh-TW": ["提示","確認操作","確定","取消","確認"]
   };
   var queue = [], active = null, transitioning = false;
   var dialog, title, message, cancel, confirm;

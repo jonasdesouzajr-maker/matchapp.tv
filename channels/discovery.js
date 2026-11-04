@@ -2,24 +2,26 @@
 (function () {
   'use strict';
   const labels = window.MatchAppChannelLabels;
-  const topics = /(?:\btech(?:nology|nologies|nological)?\b|\bAI\b|\bGit\b|DevOps|CS50|Scratch|JavaScript|programming|coding|computer science|neural network|tecnolog|tecnolog[ií]a|tecnologia|programa[çc]|programm|technique|technik|technolog|teknoloji|yapay zek[aâ]|технолог|программирован|нейросет|تقنية|تقني|تكنولوجيا|برمجة|टेक|तकनीक|प्रोग्रामिंग|teknologi|pemrograman|テクノロジー|技術|プログラミング|기술|테크|프로그래밍|科技|技术|编程)/iu;
+  const topics = /(?:\btech(?:nology|nologies|nological)?\b|\bAI\b|\bGit\b|DevOps|CS50|Scratch|JavaScript|programming|coding|computer science|neural network|tecnolog|tecnolog[ií]a|tecnologia|programa[çc]|programm|technique|technik|technolog|teknoloji|yapay zek[aâ]|технолог|программирован|нейросет|تقنية|تقني|تكنولوجيا|برمجة|टेक|तकनीक|प्रोग्रामिंग|teknologi|pemrograman|テクノロジー|技術|プログラミング|기술|테크|프로그래밍|科技|技术|技術|编程|程式設計)/iu;
   const formats = {
-    audiobook:/audi[o -]?(?:book|livr|libr)|livres? audio|hörbüch|hörbuch|sesli kitap|аудиокниг|كتب صوتية|كتاب صوتي|ऑडियोबुक|buku audio|オーディオブック|오디오북|有声书/iu,
-    press:/magazine|revista|presse|périodique|zeitschrift|rivist|dergi|журнал|مجلة|पत्रिका|majalah|雑誌|잡지|期刊|杂志/iu,
-    podcast:/podcast|pódcast|подкаст|بودكاست|पॉडकास्ट|ポッドキャスト|팟캐스트|播客/iu,
-    book:/\bbooks?\b|e-?books?|livr[eo]|libro|bücher|buch|kitap|книг|كتاب|كتب|किताब|पुस्तक|buku|書籍|本|책|书籍|书/iu,
-    video:/video|vid[eé]o|YouTube|vídeo|видео|فيديو|वीडियो|動画|동영상|영상|视频/iu
+    audiobook:/audi[o -]?(?:book|livr|libr)|livres? audio|hörbüch|hörbuch|sesli kitap|аудиокниг|كتب صوتية|كتاب صوتي|ऑडियोबुक|buku audio|オーディオブック|오디오북|有声书|有聲書/iu,
+    press:/magazine|revista|presse|périodique|zeitschrift|rivist|dergi|журнал|مجلة|पत्रिका|majalah|雑誌|잡지|期刊|杂志|雜誌/iu,
+    podcast:/podcast|pódcast|подкаст|بودكاست|पॉडकास्ट|ポッドキャスト|팟캐스트|播客|播客節目/iu,
+    book:/\bbooks?\b|e-?books?|livr[eo]|libro|bücher|buch|kitap|книг|كتاب|كتب|किताब|पुस्तक|buku|書籍|本|책|书籍|书|書籍|書/iu,
+    video:/video|vid[eé]o|YouTube|vídeo|видео|فيديو|वीडियो|動画|동영상|영상|视频|影片/iu
   };
   function language(code) {
-    const short = String(code||'en').toLowerCase().split(/[-_]/)[0];
+    const normalized = String(code||'en').toLowerCase().replace(/_/g,'-');
+    if (/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(normalized)) return 'zh-TW';
+    const short = normalized.split('-')[0];
     return short === 'pt' ? 'pt-BR' : Object.hasOwn(labels,short) ? short : 'en';
   }
   function destination(key,lang) {
     const group = key === 'trail' || key === 'shop' ? 'catalog-trails' : 'tech';
     return '/'+group+'/'+(lang === 'en'?'':lang.toLowerCase()+'/')+(key==='shop' || Object.hasOwn(formats,key)?'#'+key:'');
   }
-  const merchant = /(?:amazon|mercado li[vb]re|mercado livre|アマゾン|아마존|亚马逊|أمازون|अमेज़न)/iu;
-  const shopping = /(?:shop|buy|purchase|search|find|look for|comprar?|buscar?|pesquis|procure|acheter|cherch|kauf|such|acquist|cerca|satın|ara\b|купить|найти|поищи|شراء|ابحث|खरीद|खोज|beli|cari|購入|探|検索|구매|검색|찾|购买|买|搜索|查找)/iu;
+  const merchant = /(?:amazon|mercado li[vb]re|mercado livre|アマゾン|아마존|亚马逊|亞馬遜|أمازون|अमेज़न)/iu;
+  const shopping = /(?:shop|buy|purchase|search|find|look for|comprar?|buscar?|pesquis|procure|acheter|cherch|kauf|such|acquist|cerca|satın|ara\b|купить|найти|поищи|شراء|ابحث|खरीद|खोज|beli|cari|購入|探|検索|구매|검색|찾|购买|买|搜索|查找|購買|買|搜尋)/iu;
   function shopQuery(question) {
     const text=String(question||'').trim();
     if(!merchant.test(text)||/prime video|amazon prime|prime gaming|prime music|amazon music|web services|kindle unlimited/iu.test(text))return '';
@@ -47,7 +49,7 @@
     if(retailerIntent(question)||Object.values(labels).some(t=>t.shop.toLocaleLowerCase()===command))return 'shop';
     if(!topics.test(question)) return '';
     for(const [key,re] of Object.entries(formats)) if(re.test(question)) return key;
-    return /channel|studio|canal|estúdio|estudio|chaîne|kanal|studio|kanal[ıi]|канал|استوديو|قناة|स्टूडियो|चैनल|saluran|スタジオ|チャンネル|채널|스튜디오|频道|工作室/iu.test(question) ? 'tech' : '';
+    return /channel|studio|canal|estúdio|estudio|chaîne|kanal|studio|kanal[ıi]|канал|استوديو|قناة|स्टूडियो|चैनल|saluran|スタジオ|チャンネル|채널|스튜디오|频道|頻道|工作室/iu.test(question) ? 'tech' : '';
   }
   function linkForKey(key,lang,query) {
     if(key !== 'tech' && key !== 'shop' && !Object.hasOwn(formats,key)) return null;

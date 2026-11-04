@@ -136,14 +136,15 @@
             count:'记录：{count} 条 · 会保留到你主动移除。', justNow:'刚刚',
             deleteEntry:'删除此记录', filter:'筛选活动',
             clearConfirm:'要删除全部活动历史吗？此操作无法撤销。', cleared:'活动历史已删除。'
-        }
+        }, "zh-TW": {"types":{"match":"推薦","ai":"AI 提問","save":"已儲存","remove":"已移除","seen":"已標記為看過","share":"已分享","purchase":"購買","platform":"已開啟","together":"Match Together","settings":"設定"},"empty":"這裡還沒有記錄。推薦、AI 提問和已儲存的內容會一直保留，直到你將其移除。","count":"記錄：{count} 條 · 會保留到你主動移除。","justNow":"剛剛","deleteEntry":"刪除此記錄","filter":"篩選活動","clearConfirm":"要刪除全部活動歷史嗎？此操作無法撤銷。","cleared":"活動歷史已刪除。"}
     };
 
     function language() {
         const normalize = value => {
             const code = String(value || '').trim().replace(/_/g, '-').toLowerCase();
             if (code === 'pt' || code.startsWith('pt-')) return 'pt-BR';
-            const base = code.split('-')[0];
+            if (code === 'zh-tw') return 'zh-TW';
+            const base = (globalThis.MatchAppHanLocale?.normalize(code) || code.split('-')[0]);
             return Object.prototype.hasOwnProperty.call(COPY, base) ? base : '';
         };
         let saved = '';

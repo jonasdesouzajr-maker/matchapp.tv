@@ -2,7 +2,7 @@
   'use strict';
   const MATCHAPP_HOME_ROUTE=location.pathname==='/'||location.pathname==='/index.html';
 
-  const LANGS = new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh']);
+  const LANGS = new Set(['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW']);
   const INSTALL_HINTS = {
     en:{download:'download app',update:'install update',installed:'app installed'},
     'pt-BR':{download:'baixar app',update:'instalar atualização',installed:'app instalado'},
@@ -17,7 +17,7 @@
     id:{download:'unduh aplikasi',update:'pasang pembaruan',installed:'aplikasi terpasang'},
     ja:{download:'アプリを入手',update:'更新をインストール',installed:'インストール済み'},
     ko:{download:'앱 다운로드',update:'업데이트 설치',installed:'앱 설치됨'},
-    zh:{download:'下载应用',update:'安装更新',installed:'应用已安装'}
+    zh:{download:'下载应用',update:'安装更新',installed:'应用已安装'}, "zh-TW": {"download":"下載應用","update":"安裝更新","installed":"應用已安裝"}
   };
 
   const MALE_NAME_HINTS = {
@@ -34,12 +34,12 @@
     id:['male','pria','ardi','dimas','bayu','agus'],
     ja:['male','男性','otoya','ichiro','takumi','daichi'],
     ko:['male','남성','injoon','minsu','hyunwoo'],
-    zh:['male','男','yunxi','yunyang','kangkang','xiaoming']
+    zh:['male','男','yunxi','yunyang','kangkang','xiaoming'], "zh-TW": ["male","男","yunxi","yunyang","kangkang","xiaoming"]
   };
   const FEMALE_HINTS = ['female','femin','mulher','mujer','femme','weiblich','donna','жен','امرأة','महिला','wanita','女性','여성','女'];
   const NATURAL_HINTS = ['natural','neural','enhanced','premium','online','google','microsoft','siri'];
 
-  function localeBase(lang){ return String(lang||'en').toLowerCase().split('-')[0]; }
+  function localeBase(lang){ return (globalThis.MatchAppHanLocale?.normalize(String(lang||'en').toLowerCase()) || String(lang||'en').toLowerCase().split('-')[0]); }
   function maleTokens(lang){ return MALE_NAME_HINTS[lang] || MALE_NAME_HINTS[localeBase(lang)] || MALE_NAME_HINTS.en; }
   function voiceScore(v, lang){
     const name = `${v.name||''} ${v.voiceURI||''}`.toLowerCase();

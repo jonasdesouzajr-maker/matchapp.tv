@@ -7,17 +7,17 @@
 
   const AI_LABELS={
     en:'AI','pt-BR':'IA',pt:'IA',es:'IA',fr:'IA',de:'KI',it:'IA',tr:'YZ',ru:'ИИ',
-    ar:'ذكاء اصطناعي',hi:'AI',id:'AI',ja:'AI',ko:'AI',zh:'AI'
+    ar:'ذكاء اصطناعي',hi:'AI',id:'AI',ja:'AI',ko:'AI',zh:'AI', "zh-TW": "AI"
   };
   const LOGOUT_LABELS={
     en:'Log out','pt-BR':'Sair',pt:'Sair',es:'Cerrar sesión',fr:'Se déconnecter',de:'Abmelden',
-    it:'Esci',tr:'Çıkış yap',ru:'Выйти',ar:'تسجيل الخروج',hi:'लॉग आउट',id:'Keluar',ja:'ログアウト',ko:'로그아웃',zh:'退出登录'
+    it:'Esci',tr:'Çıkış yap',ru:'Выйти',ar:'تسجيل الخروج',hi:'लॉग आउट',id:'Keluar',ja:'ログアウト',ko:'로그아웃',zh:'退出登录', "zh-TW": "登出"
   };
 
   function lang(){
     const raw=String(window.MATCH_LANG||document.documentElement.lang||'en');
     if(AI_LABELS[raw]) return raw;
-    const base=raw.toLowerCase().split('-')[0];
+    const base=(globalThis.MatchAppHanLocale?.normalize(raw.toLowerCase()) || raw.toLowerCase().split('-')[0]);
     return Object.keys(AI_LABELS).find(k=>k.toLowerCase()===base)||'en';
   }
 

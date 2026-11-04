@@ -5,8 +5,8 @@
   var guide = script && script.getAttribute('data-seo-guide');
   if (!/^(choose-what-to-watch|streaming-device-discovery)$/.test(guide || '')) return;
   var copyVersion = guide === 'choose-what-to-watch' ? '20261027-1' : '20261018-1';
-  var languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
-  var names = ['English', 'Português (Brasil)', 'Español', 'Français', 'Deutsch', 'Italiano', 'Türkçe', 'Русский', 'العربية', 'हिन्दी', 'Bahasa Indonesia', '日本語', '한국어', '中文'];
+  var languages = ['en', 'pt-BR', 'es', 'fr', 'de', 'it', 'tr', 'ru', 'ar', 'hi', 'id', 'ja', 'ko', 'zh', 'zh-TW'];
+  var names = ['English', 'Português (Brasil)', 'Español', 'Français', 'Deutsch', 'Italiano', 'Türkçe', 'Русский', 'العربية', 'हिन्दी', 'Bahasa Indonesia', '日本語', '한국어', '简体中文', '繁體中文'];
   var ui = {
     en: ['Language', 'Loading this guide in your language…', 'This translation could not be loaded. Please try again.', 'Try again'],
     'pt-BR': ['Idioma', 'Carregando este guia no seu idioma…', 'Não foi possível carregar esta tradução. Tente novamente.', 'Tentar novamente'],
@@ -21,7 +21,8 @@
     id: ['Bahasa', 'Memuat panduan ini dalam bahasa Anda…', 'Terjemahan ini tidak dapat dimuat. Silakan coba lagi.', 'Coba lagi'],
     ja: ['言語', '選択した言語でガイドを読み込んでいます…', '翻訳を読み込めませんでした。もう一度お試しください。', '再試行'],
     ko: ['언어', '선택한 언어로 가이드를 불러오는 중…', '번역을 불러오지 못했습니다. 다시 시도해 주세요.', '다시 시도'],
-    zh: ['语言', '正在以您选择的语言加载本指南…', '无法加载此翻译，请重试。', '重试']
+    zh: ['语言', '正在以您选择的语言加载本指南…', '无法加载此翻译，请重试。', '重试'],
+    "zh-TW": ['語言', '正在以您選擇的語言載入本指南…', '無法載入此翻譯，請重試。', '重試']
   };
   var root = d.documentElement;
   var records = [];
@@ -35,6 +36,7 @@
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();
     if (code === 'pt' || code.indexOf('pt-') === 0) return 'pt-BR';
+    if (/^zh-(?:hant(?:-|$)|(?:tw|hk|mo)(?:-|$))/.test(code)) return 'zh-TW';
     code = code.split('-')[0];
     return languages.indexOf(code) !== -1 ? code : 'en';
   }

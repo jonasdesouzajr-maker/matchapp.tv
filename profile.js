@@ -684,7 +684,7 @@ window.testVoiceSample = function() {
         'id': "Hai! Saya concierge AI MatchApp Anda. Begini suara saya nanti.",
         'ja': "こんにちは！MatchAppのAIコンシェルジュです。こんな声でお話しします。",
         'ko': "안녕하세요! 저는 MatchApp Ai 컨시어지입니다. 이런 목소리로 안내해 드릴게요.",
-        'zh': "你好！我是你的 MatchApp Ai 管家，我的声音听起来是这样的。"
+        'zh': "你好！我是你的 MatchApp Ai 管家，我的声音听起来是这样的。", "zh-TW": "你好！我是你的 MatchApp Ai 管家，我的聲音聽起來是這樣的。"
     };
     speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(sampleByLang[window.MATCH_LANG] || sampleByLang.en);

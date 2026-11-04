@@ -67,7 +67,7 @@ test('sponsorship is inserted only before reveal, has authored attribution, and 
   const call=app.indexOf('window.MatchAppSponsoredMatch?.present?.()');
   assert.ok(call>0&&call<app.indexOf("resultBox.style.display = 'block';",call));
   assert.ok(!source.includes('fetch('));assert.ok(!source.includes('setTimeout('));assert.ok(!source.includes('MutationObserver'));
-  assert.equal(api.languages.length,14);for(const lang of api.languages)assert.ok(api.labels[lang]);
+  assert.equal(api.languages.length,15);for(const lang of api.languages)assert.ok(api.labels[lang]);
   const w=new JSDOM('',{url:'https://matchapp.tv/kids/'}).window;try{assert.equal(api.boot(w),null);}finally{w.close();}
   const css=fs.readFileSync(path.join(__dirname,'../sponsored-match.css'),'utf8');assert.match(css,/min-height: 340px/);assert.match(css,/border-radius: 24px/);assert.match(css,/prefers-reduced-motion: reduce/);
 });
