@@ -160,7 +160,7 @@ async function aiQuestion(page,question,expected,label){
     record('Focused Home and Explore destinations '+device.name,focused.titles&&focused.explore&&focused.hidden,JSON.stringify(focused));
     // The approved persistent navigation replaces the removed inline Worlds
     // duplicate. Click its real Explore route and verify the original topics
-    // plus the new locale-aware public Lumina guide.
+    // plus the locale-aware Lumina, Tech Studio and Catalog Trails destinations.
     try{
       await page.locator('nav.ma-cinema-dock a[data-cinema-route="explore"][href="/explore.html"]').click();
       await page.waitForURL(/\/explore\.html(?:\?|$)/,{timeout:15000});
@@ -173,9 +173,10 @@ async function aiQuestion(page,question,expected,label){
       const primary=['/ebooks/#ebook-matcher-root','/cooking/','/news/','/events-archive.html','/music.html#swifties-spotify','/discover.html'];
       const secondary=['/music.html','/together.html','/friends.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/how-it-works.html'];
       record('Signature Explore navigation opens all approved topics '+device.name,
-        destinations.visible&&destinations.primary.length===6&&destinations.secondary.length===7&&
+        destinations.visible&&destinations.primary.length===primary.length&&destinations.secondary.length===secondary.length+3&&
         primary.every(href=>destinations.primary.includes(href))&&secondary.every(href=>destinations.secondary.includes(href))&&
-        destinations.secondary.some(href=>/^\/lumina-match\/(?:(?:pt-br|es|fr|de|it|tr|ru|ar|hi|id|ja|ko|zh)\/)?$/.test(href)),
+        ['lumina-match','tech','catalog-trails'].every(section=>destinations.secondary.some(href=>
+          new RegExp('^/'+section+'/(?:(?:pt-br|es|fr|de|it|tr|ru|ar|hi|id|ja|ko|zh)/)?$').test(href))),
         JSON.stringify({...destinations,path:new URL(page.url()).pathname}));
     }catch(error){
       record('Signature Explore navigation '+device.name,false,String(error.message||error).slice(0,280));

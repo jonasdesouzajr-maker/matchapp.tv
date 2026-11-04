@@ -324,12 +324,14 @@
     if (window.MatchAppMessageLanguage) replyLanguage = await window.MatchAppMessageLanguage.detect(text, lastReplyLanguage || replyLanguage);
     if (!open || detectedEpoch !== epoch) {busy = false;sendButton.disabled = false;return;}
     lastReplyLanguage = replyLanguage;
-    const verifiedIdentity = avatarIdentityAnswer(text, replyLanguage);
+    const channelNavigation = window.MatchAppChannels?.isNavigation(text) && window.MatchAppChannels.linkForKey(window.MatchAppChannels.selection(text)||'tech', replyLanguage, window.MatchAppChannels.shopQuery(text));
+    const verifiedIdentity = channelNavigation?.textContent || avatarIdentityAnswer(text, replyLanguage);
     if (verifiedIdentity) {
       messageHistory.push({ role: "assistant", content: verifiedIdentity });
       messageHistory = messageHistory.slice(-12);
       lastReply = verifiedIdentity;
-      addEntry("assistant", verifiedIdentity);
+      const entry = addEntry("assistant", verifiedIdentity);
+      if (channelNavigation) entry.appendChild(channelNavigation);
       busy = false; sendButton.disabled = false;
       useVoice(verifiedIdentity, undefined, replyLanguage);
       return;
@@ -355,7 +357,9 @@
       messageHistory.push({ role: "assistant", content: reply.slice(0, 2000) });
       messageHistory = messageHistory.slice(-12);
       lastReply = reply;
-      addEntry("assistant", reply);
+      const entry = addEntry("assistant", reply);
+      const channel = window.MatchAppChannels?.linkFor(text, replyLanguage);
+      if (channel) entry.appendChild(channel);
       useVoice(reply, undefined, replyLanguage);
     } catch (error) {
       const note = error.name === "AbortError" ? "The request timed out. Try again." : error.message || "Jonas is unavailable.";

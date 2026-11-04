@@ -186,7 +186,8 @@ function main() {
 
     const awareness = readList('awareness-urls.json').map(loc => ({loc,freq:'weekly',pri:'0.6'}));
 
-    const all = [...CORE, ...seo, ...lumina, ...watch, ...kids, ...events, ...roku, ...plusSbt, ...news, ...awareness];
+    const channels = readList('discovery-channel-urls.json').map(loc => ({loc, freq:'monthly', pri:'0.7'}));
+    const all = [...channels, ...CORE, ...seo, ...lumina, ...watch, ...kids, ...events, ...roku, ...plusSbt, ...news, ...awareness];
     const seen = new Set();
     const unique = all.filter(u => (seen.has(u.loc) ? false : seen.add(u.loc)));
 

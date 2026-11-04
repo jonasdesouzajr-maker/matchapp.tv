@@ -5,6 +5,7 @@
 (function(root){
 'use strict';
 const RAW=[
+ ['raspberry-pi-official','Raspberry Pi Official Magazine','Raspberry Pi','https://magazine.raspberrypi.com/','https://magazine.raspberrypi.com/issues','https://magazine.raspberrypi.com/subscribe','technology,science','practical,curious','GB','Hardware builds and programming projects with components, diagrams and step-by-step instructions.'],
  ['time','TIME','TIME','https://time.com/','https://time.com/vault/','https://time.com/subscribe/','history,contemporary','curious,reflective','GLOBAL','World reporting, society, culture and the people shaping current events.'],
  ['national-geographic','National Geographic','National Geographic','https://www.nationalgeographic.com/','https://www.nationalgeographic.com/magazine/','https://www.nationalgeographic.com/subscribe/magazines/','nature,science,history','curious,awe,adventurous','GLOBAL','Photography-rich reporting on wildlife, Earth, archaeology and exploration.'],
  ['the-economist','The Economist','The Economist','https://www.economist.com/','https://www.economist.com/weeklyedition','https://subscribe.economist.com/','economics,business,technology','cerebral,curious,reflective','GLOBAL','International economics, business, politics and science reporting.'],

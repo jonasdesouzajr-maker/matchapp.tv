@@ -34,10 +34,11 @@ test('one top-box trigger replaces duplicate Explore shortcut and leaves Kids li
   assert.equal((home.match(/class="ma-luxe-shortcut ma-discovery-cta"/g)||[]).length,0);
   assert.match(home, /href="\/kids\/" class="ma-luxe-shortcut ma-browser-kids"/);
 });
-test('all nine Worlds routes resolve to the existing site files', ()=>{
+test('all eleven Worlds routes resolve to the existing site files', ()=>{
   const dom = setup();
   const links=[...dom.window.document.querySelectorAll('.ma-world-card')];
-  assert.equal(links.length,9);
+  assert.equal(links.length,11);
+  for (const route of ['/tech/','/catalog-trails/']) assert.ok(links.some(a=>a.getAttribute('href')===route),route);
   for(const anchor of links){
     const u=new URL(anchor.href);
     const p=decodeURIComponent(u.pathname);

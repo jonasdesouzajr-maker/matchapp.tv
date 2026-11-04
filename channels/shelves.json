@@ -1,0 +1,148 @@
+{
+  "video": [
+    [
+      "CS50x · Week 0: Scratch",
+      "Harvard CS50",
+      "https://cs50.harvard.edu/x/weeks/0/"
+    ],
+    [
+      "CS50x · Scratch · YouTube",
+      "Harvard CS50 · EN",
+      "https://www.youtube.com/watch?v=UuIEbpQms8o"
+    ],
+    [
+      "But what is a neural network?",
+      "3Blue1Brown",
+      "https://www.3blue1brown.com/lessons/neural-networks/"
+    ]
+  ],
+  "podcast": [
+    [
+      "Git e Github · Hipsters #109",
+      "Hipsters Ponto Tech · pt-BR",
+      "https://www.hipsters.tech/git-e-github-hipsters-109/"
+    ],
+    [
+      "Practical AI",
+      "Practical AI · EN",
+      "https://practicalai.show/"
+    ]
+  ],
+  "book": [
+    [
+      "Pro Git",
+      "Scott Chacon · Ben Straub",
+      "https://git-scm.com/book/en/v2.html"
+    ],
+    [
+      "Eloquent JavaScript",
+      "Marijn Haverbeke",
+      "https://eloquentjavascript.net/"
+    ]
+  ],
+  "audiobook": [
+    [
+      "The Phoenix Project",
+      "Gene Kim · Kevin Behr · George Spafford · EN",
+      "https://books.apple.com/us/audiobook/the-phoenix-project-a-novel-about-it-devops/id981293333"
+    ],
+    [
+      "The Soul of a New Machine",
+      "Tracy Kidder · EN",
+      "https://books.apple.com/us/audiobook/the-soul-of-a-new-machine/id1443129757"
+    ]
+  ],
+  "screen": [
+    [
+      "The Playlist",
+      "Netflix · 2022",
+      "https://www.netflix.com/title/81186296"
+    ],
+    [
+      "Start-Up",
+      "Netflix · 2020",
+      "https://www.netflix.com/title/81290293"
+    ],
+    [
+      "High Score",
+      "Netflix · 2020",
+      "https://www.netflix.com/title/81019087"
+    ],
+    [
+      "The Social Dilemma",
+      "Netflix · 2020",
+      "https://www.netflix.com/title/81254224"
+    ],
+    [
+      "Girls from Ipanema / Coisa Mais Linda",
+      "Netflix · 2019",
+      "https://www.netflix.com/title/80208298"
+    ],
+    [
+      "Street Food: Latin America",
+      "Netflix · 2020",
+      "https://www.netflix.com/title/81249660"
+    ],
+    [
+      "The Sea Beast",
+      "Netflix · 2022",
+      "https://www.netflix.com/title/81018682"
+    ],
+    [
+      "The Boy Who Harnessed the Wind",
+      "Netflix · 2019",
+      "https://www.netflix.com/title/80200047"
+    ],
+    [
+      "Violet Evergarden",
+      "Netflix · 2018",
+      "https://www.netflix.com/title/80182123"
+    ],
+    [
+      "The Queen of Flow / La reina del flow",
+      "Netflix · 2018",
+      "https://www.netflix.com/title/81022683"
+    ]
+  ],
+  "album": [
+    [
+      "Computer World (Remastered)",
+      "Kraftwerk · Apple Music",
+      "https://music.apple.com/us/album/computer-world-remastered/830083942"
+    ],
+    [
+      "Home Computer",
+      "Kraftwerk · Apple Music",
+      "https://music.apple.com/us/song/830083955"
+    ],
+    [
+      "Getz/Gilberto",
+      "Stan Getz · João Gilberto · Apple Music",
+      "https://music.apple.com/us/album/getz-gilberto/1422655717"
+    ]
+  ],
+  "fiction": [
+    [
+      "The Blue Castle",
+      "L. M. Montgomery · Project Gutenberg · EN",
+      "https://www.gutenberg.org/ebooks/67979"
+    ],
+    [
+      "The Enchanted April",
+      "Elizabeth von Arnim · Project Gutenberg · EN",
+      "https://www.gutenberg.org/ebooks/16389"
+    ]
+  ],
+  "press": [
+    [
+      "Raspberry Pi Official Magazine",
+      "Raspberry Pi · EN",
+      "https://magazine.raspberrypi.com/issues"
+    ],
+    [
+      "IEEE Spectrum",
+      "IEEE · EN",
+      "https://spectrum.ieee.org/magazine/"
+    ]
+  ]
+}
