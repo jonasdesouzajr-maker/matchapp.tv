@@ -7,7 +7,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Technology podcasts",
     "book": "Programming books",
     "audiobook": "Technology audiobooks",
-    "press": "Technology journalism"
+    "press": "Technology journalism",
+    "shop": "Shop the catalog"
   },
   "pt-BR": {
     "tech": "Estúdio de tecnologia",
@@ -16,7 +17,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Podcasts de tecnologia",
     "book": "Livros de programação",
     "audiobook": "Audiolivros de tecnologia",
-    "press": "Jornalismo de tecnologia"
+    "press": "Jornalismo de tecnologia",
+    "shop": "Buscar produtos"
   },
   "es": {
     "tech": "Estudio de tecnología",
@@ -25,7 +27,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Pódcasts de tecnología",
     "book": "Libros de programación",
     "audiobook": "Audiolibros de tecnología",
-    "press": "Periodismo tecnológico"
+    "press": "Periodismo tecnológico",
+    "shop": "Buscar productos"
   },
   "fr": {
     "tech": "Studio des technologies",
@@ -34,7 +37,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Podcasts sur la technologie",
     "book": "Livres de programmation",
     "audiobook": "Livres audio sur la technologie",
-    "press": "Presse technologique"
+    "press": "Presse technologique",
+    "shop": "Chercher des produits"
   },
   "de": {
     "tech": "Technikstudio",
@@ -43,7 +47,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Technik-Podcasts",
     "book": "Programmierbücher",
     "audiobook": "Technik-Hörbücher",
-    "press": "Technikjournalismus"
+    "press": "Technikjournalismus",
+    "shop": "Produkte suchen"
   },
   "it": {
     "tech": "Studio di tecnologia",
@@ -52,7 +57,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Podcast di tecnologia",
     "book": "Libri di programmazione",
     "audiobook": "Audiolibri di tecnologia",
-    "press": "Giornalismo tecnologico"
+    "press": "Giornalismo tecnologico",
+    "shop": "Cerca prodotti"
   },
   "tr": {
     "tech": "Teknoloji stüdyosu",
@@ -61,7 +67,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Teknoloji podcastleri",
     "book": "Programlama kitapları",
     "audiobook": "Teknoloji sesli kitapları",
-    "press": "Teknoloji yayınları"
+    "press": "Teknoloji yayınları",
+    "shop": "Ürün ara"
   },
   "ru": {
     "tech": "Студия технологий",
@@ -70,7 +77,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Подкасты о технологиях",
     "book": "Книги по программированию",
     "audiobook": "Аудиокниги о технологиях",
-    "press": "Технологические журналы"
+    "press": "Технологические журналы",
+    "shop": "Поиск товаров"
   },
   "ar": {
     "tech": "استوديو التقنية",
@@ -79,7 +87,8 @@ window.MatchAppChannelLabels = {
     "podcast": "بودكاست التقنية",
     "book": "كتب البرمجة",
     "audiobook": "كتب صوتية عن التقنية",
-    "press": "صحافة التقنية"
+    "press": "صحافة التقنية",
+    "shop": "البحث عن منتجات"
   },
   "hi": {
     "tech": "टेक स्टूडियो",
@@ -88,7 +97,8 @@ window.MatchAppChannelLabels = {
     "podcast": "टेक्नोलॉजी पॉडकास्ट",
     "book": "प्रोग्रामिंग की किताबें",
     "audiobook": "टेक्नोलॉजी ऑडियोबुक",
-    "press": "टेक्नोलॉजी पत्रिकाएँ"
+    "press": "टेक्नोलॉजी पत्रिकाएँ",
+    "shop": "उत्पाद खोजें"
   },
   "id": {
     "tech": "Studio teknologi",
@@ -97,7 +107,8 @@ window.MatchAppChannelLabels = {
     "podcast": "Podcast teknologi",
     "book": "Buku pemrograman",
     "audiobook": "Buku audio teknologi",
-    "press": "Jurnalisme teknologi"
+    "press": "Jurnalisme teknologi",
+    "shop": "Cari produk"
   },
   "ja": {
     "tech": "テクノロジースタジオ",
@@ -106,7 +117,8 @@ window.MatchAppChannelLabels = {
     "podcast": "テクノロジーのポッドキャスト",
     "book": "プログラミングの本",
     "audiobook": "技術のオーディオブック",
-    "press": "技術ジャーナリズム"
+    "press": "技術ジャーナリズム",
+    "shop": "商品を探す"
   },
   "ko": {
     "tech": "테크 스튜디오",
@@ -115,7 +127,8 @@ window.MatchAppChannelLabels = {
     "podcast": "기술 팟캐스트",
     "book": "프로그래밍 책",
     "audiobook": "기술 오디오북",
-    "press": "기술 저널리즘"
+    "press": "기술 저널리즘",
+    "shop": "상품 찾기"
   },
   "zh": {
     "tech": "科技工作室",
@@ -124,6 +137,7 @@ window.MatchAppChannelLabels = {
     "podcast": "科技播客",
     "book": "编程书籍",
     "audiobook": "科技有声书",
-    "press": "科技期刊"
+    "press": "科技期刊",
+    "shop": "搜索商品"
   }
 };

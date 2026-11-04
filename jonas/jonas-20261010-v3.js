@@ -324,7 +324,7 @@
     if (window.MatchAppMessageLanguage) replyLanguage = await window.MatchAppMessageLanguage.detect(text, lastReplyLanguage || replyLanguage);
     if (!open || detectedEpoch !== epoch) {busy = false;sendButton.disabled = false;return;}
     lastReplyLanguage = replyLanguage;
-    const channelNavigation = window.MatchAppChannels?.isNavigation(text) && window.MatchAppChannels.linkForKey('tech', replyLanguage);
+    const channelNavigation = window.MatchAppChannels?.isNavigation(text) && window.MatchAppChannels.linkForKey(window.MatchAppChannels.selection(text)||'tech', replyLanguage, window.MatchAppChannels.shopQuery(text));
     const verifiedIdentity = channelNavigation?.textContent || avatarIdentityAnswer(text, replyLanguage);
     if (verifiedIdentity) {
       messageHistory.push({ role: "assistant", content: verifiedIdentity });

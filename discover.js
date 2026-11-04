@@ -1962,7 +1962,7 @@ window.openThread = function (id) {
             appendUserBubble(turn.text);
         }
         else {
-            const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true, replyLanguage:turn.replyLanguage, channelKey:turn.channelKey });
+            const bubble = appendAssistantBubble(turn.text, turn.results || [], { instant: true, replyLanguage:turn.replyLanguage, channelKey:turn.channelKey,shopQuery:turn.shopQuery });
             if (turn.musicVideoId && bubble) {
                 bubble.wrap.dataset.musicVideoId = turn.musicVideoId;
                 window.MatchAppMusicReleases?.paintCard(turn.musicVideoId, bubble.grid);
@@ -2049,7 +2049,7 @@ function appendAssistantBubble(text, results, opts) {
     row.appendChild(speak);
 
     wrap.appendChild(row);
-    const channel = opts?.channelKey && window.MatchAppChannels?.linkForKey(opts.channelKey, opts.replyLanguage);
+    const channel = opts?.channelKey && window.MatchAppChannels?.linkForKey(opts.channelKey, opts.replyLanguage, opts.shopQuery);
     if (channel) wrap.appendChild(channel);
 
     const grid = document.createElement('div');
@@ -2158,13 +2158,14 @@ async function runAskAndRender(question, opts) {
     // Short greetings are conversation, not an entertainment title query.
     // Respond immediately, do not consume credits or query provider catalogues.
     const helloOnly=/^(?:hi|hello|hey|hey there|hi there|hola|olá|ola|oi|bom dia|boa tarde|boa noite|bonjour|salut|hallo|guten tag|ciao|buongiorno|merhaba|привет|здравствуйте|مرحبا|أهلا|नमस्ते|halo|hai|こんにちは|こんばんは|おはよう|안녕하세요|안녕|你好|您好)[\s!?.،。！]*$/iu;
-    const channelNavigation=window.MatchAppChannels?.isNavigation(question);
+    const channelNavigation=window.MatchAppChannels?.isNavigation(question) && (window.MatchAppChannels.selection(question)||'tech');
+    const shopQuery=channelNavigation==='shop' ? window.MatchAppChannels.shopQuery(question) : '';
     if(helloOnly.test(question)||channelNavigation){
-        const reply=channelNavigation ? window.MatchAppChannels.linkForKey('tech',replyLanguage).textContent : window.MatchAppJonasLocale?.catalog?.[replyLanguage]?.greeting||window.MatchAppJonasLocale?.t?.('greeting')||"Hi, I'm Jonas. What would you like to discover?";
+        const reply=channelNavigation ? window.MatchAppChannels.linkForKey(channelNavigation,replyLanguage).textContent : window.MatchAppJonasLocale?.catalog?.[replyLanguage]?.greeting||window.MatchAppJonasLocale?.t?.('greeting')||"Hi, I'm Jonas. What would you like to discover?";
         if(!currentThread)currentThread={id:newThreadId(),title:question.slice(0,60),turns:[],createdAt:Date.now(),updatedAt:Date.now()};
         appendUserBubble(question);
-        appendAssistantBubble(reply,[],{instant:true,replyLanguage,channelKey:channelNavigation?'tech':undefined});
-        currentThread.turns.push({role:'user',text:question,ts:Date.now()},{role:'assistant',text:reply,results:[],replyLanguage,...(channelNavigation?{channelKey:'tech'}:{}),ts:Date.now()});
+        appendAssistantBubble(reply,[],{instant:true,replyLanguage,channelKey:channelNavigation||undefined,shopQuery});
+        currentThread.turns.push({role:'user',text:question,ts:Date.now()},{role:'assistant',text:reply,results:[],replyLanguage,...(channelNavigation?{channelKey:channelNavigation,...(shopQuery?{shopQuery}:{})}:{}),ts:Date.now()});
         currentThread.updatedAt=Date.now();persistCurrentThread();
         const empty=document.getElementById('discover-empty');if(empty)empty.style.display='none';
         if(voiceOrigin) {

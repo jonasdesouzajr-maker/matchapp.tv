@@ -18,3 +18,10 @@
 .channel-page .channel-byline {font-size:.88em;color:#d0c7db}
 .channel-page details[open] .channel-language-list {margin-block:.6rem}
 .channel-page summary {list-style:revert}
+.channel-page .channel-shop {margin-block:1.25rem;padding:clamp(1rem,3vw,1.6rem);border-radius:1.25rem;background:#211c2d;scroll-margin-top:6rem}
+.channel-page .channel-shop .shop-fields {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.8rem;margin-block:.8rem}
+.channel-page .channel-shop label {display:grid;gap:.3rem}
+.channel-page .channel-shop input,.channel-page .channel-shop select {width:100%;min-height:44px;box-sizing:border-box;padding:.65rem 1rem;border:0;border-radius:1.4rem;color:inherit;background:#322a42;font:inherit}
+.channel-page .channel-shop button {font:inherit;border:0;color:#f0d295}
+.channel-page .channel-shop [aria-disabled=true] {opacity:.62;cursor:default}
+.channel-page .channel-shop [hidden] {display:none}
