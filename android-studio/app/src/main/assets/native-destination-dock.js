@@ -33,7 +33,7 @@
     const links = slots.map(key=>nav?.querySelector('a[data-cinema-route="'+key+'"]'));
     const labels = links.map(a=>a?.querySelector('[data-cinema-copy]')?.textContent.trim() || '');
     const payload = JSON.stringify({href:location.href, visible:!blocked() && labels.every(Boolean), labels,
-      selected:links.findIndex(a=>a?.getAttribute('aria-current')==='page'), rtl:root.dir==='rtl',
+      selected:links.findIndex(a=>a?.getAttribute('aria-current')==='page'), rtl:root.dir==='rtl', lang:root.lang||'en',
       motion:!motion.matches && !root.classList.contains('reduce-motion')});
     if (payload !== sent) { sent=payload; bridge.postMessage(payload); }
   }

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- A clear play/star silhouette for Android themed icons, inside the 66dp safe circle. -->
+<!-- The OS applies its own color to the play ribbon and four-point comet. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp" android:height="108dp"
-    android:viewportWidth="108" android:viewportHeight="108">
-    <path android:fillColor="#00000000" android:strokeColor="#FFFFFFFF"
-        android:strokeWidth="2.4" android:pathData="M54,24 A30,30 0,1 1,54,84 A30,30 0,1 1,54,24" />
-    <path android:fillColor="#00000000" android:strokeColor="#FFFFFFFF"
-        android:strokeWidth="4.2" android:strokeLineJoin="round" android:strokeLineCap="round"
-        android:pathData="M43,59 L43,37 L56,45 M63,49 L72,54 Q75,56 72,58 L44,74 L44,65" />
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#00000000" android:strokeColor="#FFFFFFFF" android:strokeWidth="5"
+        android:strokeLineJoin="round" android:strokeLineCap="round"
+        android:pathData="M38,60 V37 Q38,32 43,35 L59,44 M69,50 L77,55 Q81,58 76,61 L43,78 Q38,81 38,76 V68"/>
     <path android:fillColor="#FFFFFFFF"
-        android:pathData="M64,32 L66,40 L72,38 L68,44 L76,46 L67,49 L68,55 L62,50 C55,62 43,69 35,65 C28,61 33,53 37,49 C34,54 33,60 37,61 C44,64 55,56 61,47 L55,44 L62,43 Z" />
+        android:pathData="M31,51 C23,70 42,74 64,52 L69,45 C60,56 46,65 35,64 C29,64 28,59 31,51 Z M68,27 Q69,37 77,39 Q82,40 84,40 Q71,43 69,50 Q68,53 68,55 Q66,44 58,42 L52,40 Q65,38 68,27 Z"/>
 </vector>

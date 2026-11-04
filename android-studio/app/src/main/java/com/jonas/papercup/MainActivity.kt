@@ -559,6 +559,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        if (::destinationDock.isInitialized) destinationDock.onDocumentChanged()
         publicPageRetry?.let { web.removeCallbacks(it) }
         publicPageRetry = null
         growthReferrer?.close()

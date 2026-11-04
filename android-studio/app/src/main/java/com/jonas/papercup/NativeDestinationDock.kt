@@ -28,6 +28,8 @@ class NativeDestinationDock(
     private val icons = listOf(R.drawable.ic_dock_home, R.drawable.ic_dock_explore, R.drawable.ic_dock_matches,
         R.drawable.ic_dock_list, R.drawable.ic_dock_profile)
     private val script by lazy { web.context.assets.open("native-destination-dock.js").bufferedReader().use { it.readText() } }
+    private val explore = NativeExploreSheet(bar.context)
+    private var language = "en"
     private var syncing = false
     private var keyboard = false
     private var requested = false
@@ -53,12 +55,32 @@ class NativeDestinationDock(
         bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         bar.isItemHorizontalTranslationEnabled = false
         icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
-        fun activate(id: Int) {
+        fun sendAction(id: Int) {
             if (!requested || keyboard || documentUrl != web.url) return
             val message = "activate:${id-1}"
             pendingHaptic = message
             tappedAt = SystemClock.elapsedRealtime()
             documentReply?.postMessage(message)
+        }
+        fun activate(id: Int) {
+            if (!requested || keyboard || documentUrl != web.url) return
+            if (id != 2) {
+                sendAction(id)
+                return
+            }
+            explore.show(language, bar.layoutDirection == View.LAYOUT_DIRECTION_RTL,
+                bar.menu.getItem(1).title.toString()) { key, locale ->
+                if (!requested || keyboard || documentUrl != web.url) return@show
+                when (key) {
+                    "matches" -> sendAction(3)
+                    "all" -> sendAction(2)
+                    "tech", "trail" -> {
+                        val group = if (key == "tech") "tech" else "catalog-trails"
+                        val edition = if (locale == "en") "" else locale.lowercase(java.util.Locale.ROOT) + "/"
+                        web.loadUrl("https://matchapp.tv/$group/$edition")
+                    }
+                }
+            }
         }
         bar.setOnItemSelectedListener { item ->
             if (syncing) true else { activate(item.itemId); false }
@@ -89,6 +111,7 @@ class NativeDestinationDock(
             documentUrl=href
             documentReply=reply
             if (requested) {
+                language = data.optString("lang","en").take(16)
                 bar.layoutDirection=if(data.optBoolean("rtl")) View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
                 syncing=true
                 try {
@@ -131,6 +154,7 @@ class NativeDestinationDock(
     }
 
     fun onDocumentChanged() {
+        explore.close()
         requested=false
         documentUrl=null
         documentReply=null
