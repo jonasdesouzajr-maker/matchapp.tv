@@ -30,7 +30,7 @@
     if(/^(?:search|look on|browse|buscar?|pesquis(?:ar|e)|procure|cherche[rz]?|cerca|busca|suche|cari|ابحث)(?:\s+(?:on|in|no|na|en|sur|auf|di|في))?$/iu.test(before)){
       return after.replace(/^(?:for|por|pour|per|nach|untuk|عن)\s+/iu,'').replace(/[.!?。！]+$/u,'').trim().slice(0,120);
     }
-    if(!after && shopping.test(before)){
+    if(shopping.test(before) && (!after || /^[.!?。！？؟]+$/u.test(after))){
       const command=before.match(/^(?:search(?: for)?|find|buy|look for|buscar?|comprar?|pesquis(?:ar|e)|procure|acheter|trouve[rz]?|busca|cerca|compra|cari|beli|найти|купить|ابحث عن)\s+(.+?)\s+(?:on|in|at|no|na|en|sur|su|di|на|في)$/iu);
       return command?.[1]?.slice(0,120)||'';
     }

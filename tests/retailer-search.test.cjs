@@ -56,7 +56,7 @@ test('Jonas carries only an explicit product phrase to the local shopping page',
  const dom=view('en'),w=dom.window;
  for(const name of ['labels','discovery']) w.eval(read('channels/'+name+'.js'));
  const api=w.MatchAppChannels;
- for(const [text,term] of [['Search Amazon for wired headphones','wired headphones'],['Buscar no Mercado Livre por microfone USB','microfone USB'],['Find a keyboard on Amazon','a keyboard'],['Quero comprar uma frigideira na Amazon','uma frigideira'],['Please find running shoes on Amazon','running shoes']]) {
+ for(const [text,term] of [['Search Amazon for wired headphones','wired headphones'],['Buscar no Mercado Livre por microfone USB','microfone USB'],['Find a keyboard on Amazon','a keyboard'],['Quero comprar uma frigideira na Amazon','uma frigideira'],['Please find running shoes on Amazon','running shoes'],['Please find running shoes on Amazon!','running shoes'],['Buscar Fone WH-1000XM5 no Mercado Livre?','Fone WH-1000XM5']]) {
   assert.equal(api.selection(text),'shop');assert.equal(api.isNavigation(text),true);assert.equal(api.shopQuery(text),term);
   const link=api.linkFor(text,'pt-BR');assert.equal(link.getAttribute('href'),'/catalog-trails/pt-br/#shop');
   link.addEventListener('click',e=>e.preventDefault());link.click();assert.equal(w.sessionStorage.getItem('matchapp_shop_query'),term);
