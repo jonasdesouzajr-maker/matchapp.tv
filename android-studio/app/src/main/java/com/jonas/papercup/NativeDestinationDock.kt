@@ -68,7 +68,7 @@ class NativeDestinationDock(
         }
         fun showExplore() {
             explore.show(language, bar.layoutDirection == View.LAYOUT_DIRECTION_RTL,
-                bar.menu.getItem(1).title.toString()) { key, locale ->
+                bar.menu.getItem(1).title.toString(), pressMotion == true) { key, locale ->
                 if (!requested || keyboard || documentUrl != web.url) return@show
                 when (key) {
                     "matches" -> sendCommand("activate:2")

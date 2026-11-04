@@ -1,0 +1,1 @@
+Keşfet, katmanlı kartlar, yumuşak geçişler ve dokunma efektleriyle yerel bir Android ekranı açar. Uzun düğme metinleri sonraki bölümün üzerine taşmaz. Azaltılmış hareket ve Android animasyon ayarlarına uyar.

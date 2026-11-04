@@ -1,0 +1,1 @@
+Explorer ouvre un écran Android natif avec des cartes en relief, une entrée fluide et des effets au toucher. Les libellés longs tiennent dans les boutons sans chevaucher la section suivante. Les préférences de mouvement réduit sont respectées.

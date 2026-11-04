@@ -50,9 +50,9 @@ These existing native modules are **live WebView shells**, not divergent forks o
 
 Both Android modules remain WebView shells over live production:
 
-- Standard app (`:app`) candidate version: **1.1.69**, package `com.jonas.papercup`.
+- Standard app (`:app`) candidate version: **1.1.70**, package `com.jonas.papercup`.
 - Standard app version code: **69**. Recheck all uploaded Play codes before signing/submission; repository version alone does not establish that code 69 is unused.
-- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=69`
+- Standard app launch: `https://matchapp.tv/?utm_source=android_app&appBuild=70`
 - October 4 Play compliance repair: the adult release remains `compileSdk 36` / `targetSdk 36` and declares only the canonical verified App Links host `matchapp.tv`; `www.matchapp.tv` is intentionally excluded because it redirects to the apex domain and Android domain verification does not follow that redirect.
 - Kids app (`:kidsapp`) remains a separate, unchanged package; its independent release is outside this adult candidate.
 - The adult shell preserves its eligible current screen on launcher reentry and supports bounded presentation recovery after process death. Pull-to-refresh is disabled; the adult manual refresh preserves the current document and uses the existing local read-only adapter. Installed binary updates come through Google Play.
@@ -65,7 +65,7 @@ Both Android modules remain WebView shells over live production:
 
 Because these apps intentionally render the live web experience, the latest approved MatchApp UI/content/features do **not** need to be copied into Android source. Native Android files are changed only when routing, permissions, WebView behavior, package identity, or Android-specific presentation requires it.
 
-This candidate carries the approved launcher/intro artwork and native News integration. Follow the current [release preflight](play/RELEASE_PREFLIGHT.md): run the static guard, adult JVM tests, adult debug/release builds and Kids compilation; use the existing registered upload identity and physical-device QA. No emulator work or new testing track is part of this release. The CI artifact `MatchApp-Ai-adult-1.1.69-code69-UNSIGNED-AAB` is not Play-ready. Historical version, emulator and coordinated Kids-release instructions below are superseded by this current adult-only preflight.
+This candidate carries the approved launcher/intro artwork and native News integration. Follow the current [release preflight](play/RELEASE_PREFLIGHT.md): run the static guard, adult JVM tests, adult debug/release builds and Kids compilation; use the existing registered upload identity and physical-device QA. No emulator work or new testing track is part of this release. The CI artifact `MatchApp-Ai-adult-1.1.70-code70-UNSIGNED-AAB` is not Play-ready. Historical version, emulator and coordinated Kids-release instructions below are superseded by this current adult-only preflight.
 
 ## October 7, 2026 adult Play publication candidate
 

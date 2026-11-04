@@ -1,0 +1,1 @@
+Jelajahi membuka layar Android native dengan kartu berlapis, transisi halus, dan efek saat ditekan. Label tombol yang panjang tidak menutupi bagian berikutnya. Mengikuti preferensi pengurangan gerakan dan pengaturan animasi Android.

@@ -1,0 +1,1 @@
+Explore opens as a native Android screen, with layered discovery cards, gentle entrance motion and press feedback. Longer button labels fit without overlapping the next section. Respects reduced-motion and Android animation settings.

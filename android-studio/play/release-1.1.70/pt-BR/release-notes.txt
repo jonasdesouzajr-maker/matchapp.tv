@@ -1,0 +1,1 @@
+Explorar agora abre uma tela nativa do Android, com cartões em camadas, transições suaves e efeitos ao tocar. Textos longos cabem nos botões sem sobrepor a seção seguinte. Respeita o movimento reduzido e os ajustes de animação do Android.
