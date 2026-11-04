@@ -1,0 +1,2 @@
+/* Public, anonymous endpoint configuration already shipped by app.js. No service-role or provider secret. */
+window.MatchAppHalloweenConfig = {"url":"https://zkymvqrmbabngsqblyye.supabase.co/functions/v1/tmdb-proxy","publicKey":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpreW12cXJtYmFibmdzcWJseXllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4MDUyNDIsImV4cCI6MjEwMjM4MTI0Mn0._yEVFMfwVU6GBqQ8m3ljfOgA0HSLEDiKMOfYae6ZD8Q"};

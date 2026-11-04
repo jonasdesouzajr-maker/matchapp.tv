@@ -181,6 +181,96 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://matchapp.tv/halloween/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/pt-br/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/es/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/fr/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/de/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/it/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/tr/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/ru/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/ar/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/hi/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/id/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/ja/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/ko/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/zh/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://matchapp.tv/halloween/zh-tw/</loc>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://matchapp.tv/founder/</loc>
         <lastmod>2026-11-01T10:37:05+00:00</lastmod>
         <changefreq>monthly</changefreq>
@@ -206,13 +296,13 @@
     </url>
     <url>
         <loc>https://matchapp.tv/watch-night/</loc>
-        <lastmod>2026-11-03T09:09:22+00:00</lastmod>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://matchapp.tv/pt-br/noite-de-filme/</loc>
-        <lastmod>2026-11-03T09:09:22+00:00</lastmod>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -266,7 +356,7 @@
     </url>
     <url>
         <loc>https://matchapp.tv/</loc>
-        <lastmod>2026-11-04T18:13:39+00:00</lastmod>
+        <lastmod>2026-11-04T22:19:38+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>

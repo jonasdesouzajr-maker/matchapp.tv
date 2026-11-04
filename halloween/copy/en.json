@@ -1,0 +1,110 @@
+{
+  "name": "English",
+  "language": "Language",
+  "seoTitle": "20 Halloween movies: where to watch worldwide",
+  "description": "Find 20 Halloween movie picks, from playful ghosts to intense horror. Choose your country for streaming, rental and purchase options, plus movie-night ideas.",
+  "eyebrow": "MatchApp Ai · AFTER DARK",
+  "heading": "Halloween after dark",
+  "tagline": "20 films. Every shade of spooky.",
+  "intro": "Turn down the lights and find your kind of fright. Explore 20 editorial picks, choose your viewing country and check where each movie is available.",
+  "promoCta": "Enter the Halloween cinema",
+  "promoNote": "Movie nights, worldwide viewing options and a little midnight magic.",
+  "posterAlt": "Original Halloween artwork: a moonlit cinema in a misty forest with glowing pumpkins.",
+  "guideHeading": "20 Halloween movies for your next movie night",
+  "country": "Where are you watching?",
+  "chooseCountry": "Choose your country",
+  "countryNote": "Your viewing country is separate from your language. Streaming catalogs and plans vary by location; no movie is promised everywhere.",
+  "all": "All 20 picks",
+  "cozy": "Playful chills",
+  "eerie": "Creeping suspense",
+  "intense": "Intense horror",
+  "filterLabel": "Choose your scare level",
+  "editorial": "Our editorial selection, not a live popularity ranking. Scare levels describe tone, not official age ratings; check local classifications before watching with children.",
+  "watch": "Check current options",
+  "checking": "Checking this film…",
+  "stream": "Streaming · a plan or ads may apply",
+  "rent": "Rent separately",
+  "buy": "Buy separately",
+  "offers": "Open regional viewing offers",
+  "chooseFirst": "Choose a country to see local viewing options.",
+  "noOffers": "This source returned no viewing offers for your country. That does not prove the film is unavailable elsewhere.",
+  "unavailable": "The availability check could not finish. Try again or open the title source.",
+  "checked": "Source checked",
+  "stale": "Check current options to refresh this older source snapshot.",
+  "source": "Title source",
+  "attribution": "Viewing data: JustWatch via TMDB. Offers, plans and prices can change; confirm with the provider before subscribing or paying.",
+  "minutes": "min",
+  "cast": "Cast",
+  "facts": "Film details",
+  "trailer": "Watch preview",
+  "rating": "TMDB audience score",
+  "votes": "votes",
+  "originalTitle": "Original title",
+  "countryOfOrigin": "Production countries",
+  "share": "Share this movie night",
+  "copied": "Guide link copied.",
+  "shareFailed": "Copy this page’s address to share the guide.",
+  "visibleCount": "{count} movie picks",
+  "tipsHeading": "Make a night of it",
+  "tipsIntro": "Three do-it-yourself Halloween movie nights. These are ideas you can host, not ticketed events or synchronized streaming sessions.",
+  "tips": [
+    {
+      "title": "The pumpkin-light double bill",
+      "text": "Pair Hocus Pocus with The Nightmare Before Christmas for songs, mischief and a lighter mood. Add a snack break and check each viewer’s local age guidance first."
+    },
+    {
+      "title": "The haunted-house mystery",
+      "text": "Choose The Others or The Sixth Sense, keep the room softly lit, and save predictions for the end. First-time viewers deserve a spoiler-free evening."
+    },
+    {
+      "title": "The headphones-at-midnight challenge",
+      "text": "Try A Quiet Place for tension built around sound, or Get Out for a discussion afterward. Agree on everyone’s comfort level, keep the volume comfortable and pause whenever needed."
+    }
+  ],
+  "faqHeading": "Plan your Halloween watchlist",
+  "faqs": [
+    {
+      "question": "Where can I stream Halloween movies in my country?",
+      "answer": "Select your country above. Each film shows the regional offers returned by the source, with streaming separated from rentals and purchases. Use Check current options for a new lookup; then confirm the offer on the provider’s site."
+    },
+    {
+      "question": "Does a streaming listing mean the film is free?",
+      "answer": "No. Streaming can require a subscription or include advertising; rentals and purchases usually cost extra. An existing subscription may not include every listed channel or add-on."
+    },
+    {
+      "question": "Which picks are less frightening?",
+      "answer": "Start with Playful chills for fantasy, comedy and gentler spooky imagery. That filter is an editorial mood guide, not an age certification. Check the local rating and content notes for your viewers."
+    },
+    {
+      "question": "Can friends in different countries watch the same film?",
+      "answer": "Each person should select their own country and check access before choosing a time. This guide helps with planning and links to viewing sources; it does not synchronize video playback."
+    }
+  ],
+  "exploreHeading": "Keep the night going",
+  "planner": "Plan the running time",
+  "together": "Find a film together",
+  "moreGuides": "Explore streaming guides",
+  "home": "Back to MatchApp Ai",
+  "why": {
+    "nightmare": "A stop-motion collision of Halloween and Christmas, ideal when you want memorable songs and handmade gothic detail more than outright terror.",
+    "hocus": "Three resurrected witches turn a small-town Halloween into a mischievous chase. Choose it for playful performances and nostalgic autumn atmosphere.",
+    "hocus2": "Return to Salem for another witch-filled Halloween, with a new trio of teenagers at the center of the mayhem. Pair it with the original for a double bill.",
+    "coco": "A music-filled journey through family memory and the Land of the Dead. It celebrates Día de Muertos, a distinct tradition, and offers a warm change of pace between spooky films.",
+    "frankenweenie": "A boy’s attempt to bring back his dog becomes a black-and-white tribute to classic monster cinema. Expect affection, macabre humor and themes of loss.",
+    "monster": "A neighborhood house seems to have an appetite of its own. Its animated adventure mixes childhood curiosity with surprisingly sharp scares.",
+    "hubie": "An earnest Halloween volunteer finds himself inside a town-wide mystery. Choose this broad comedy when the group wants costumes and chaos with more laughs than dread.",
+    "bridge": "Halloween decorations spring to life as a father and daughter confront a supernatural threat. A lively choice for viewers who enjoy monster-filled adventure and comedy.",
+    "fearstreet": "Teenagers face a curse with slasher-movie energy and a 1990s setting. This first chapter is a strong pick for an intense trilogy night with adult horror fans.",
+    "hishouse": "A refugee couple’s new home becomes a place of haunting memories and supernatural fear. Choose it for horror that has as much emotional weight as atmosphere.",
+    "conjuring": "A family’s rural home becomes the center of a paranormal investigation. Its patient setup and escalating supernatural scares suit a classic haunted-house night.",
+    "shining": "Isolation, a vast hotel and a family under pressure build an unsettling descent. Best for viewers who enjoy lingering dread and ambiguous details to discuss afterward.",
+    "it": "A group of young friends confronts a shape-shifting terror in their town. The bond between the children gives its darker set pieces an emotional center.",
+    "beetlejuice": "A recently deceased couple meets an outrageously troublesome spirit. Choose its eccentric comedy, handmade creatures and gothic production design for a playful spooky night.",
+    "scream": "A masked killer stalks a town whose teenagers know horror-movie rules. Its mixture of mystery, sharp jokes and bloody suspense rewards genre-savvy viewers.",
+    "quiet": "A family must live quietly around creatures that hunt by sound. Watch for how everyday gestures become tense decisions, then compare your favorite silent moments.",
+    "getout": "A weekend meeting with a girlfriend’s family becomes increasingly unsettling. Its social satire and careful clues make it a strong choice for a post-film conversation.",
+    "others": "A mother protects her children in a dim, secluded house where strange events gather. Choose its atmosphere and patient mystery, and avoid trailers if you want fewer clues.",
+    "sixth": "A child’s troubling experiences draw a psychologist into an intimate supernatural mystery. Keep the conversation spoiler-free until everyone has watched it.",
+    "ready": "A bride’s wedding-night game takes a deadly turn. Its fast pace, dark comedy and graphic violence make it a pick for viewers who want a more savage finale."
+  }
+}

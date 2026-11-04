@@ -1,0 +1,110 @@
+{
+  "name": "Bahasa Indonesia",
+  "language": "Bahasa",
+  "seoTitle": "20 film Halloween: tempat menonton di berbagai negara",
+  "description": "Temukan 20 pilihan film Halloween, dari hantu jenaka hingga horor intens. Pilih negara untuk melihat opsi streaming, sewa, dan beli, serta ide malam film.",
+  "eyebrow": "MatchApp Ai · SETELAH GELAP",
+  "heading": "Halloween setelah gelap",
+  "tagline": "20 film. Beragam rasa seram.",
+  "intro": "Redupkan lampu dan temukan ketegangan yang cocok untukmu. Jelajahi 20 pilihan redaksi, pilih negara tempat menonton, dan cek ketersediaan tiap film.",
+  "promoCta": "Masuk ke bioskop Halloween",
+  "promoNote": "Malam film, pilihan menonton di berbagai negara, dan sedikit keajaiban tengah malam.",
+  "posterAlt": "Ilustrasi Halloween orisinal: bioskop bermandikan cahaya bulan di hutan berkabut dengan labu-labu menyala.",
+  "guideHeading": "20 film Halloween untuk malam film berikutnya",
+  "country": "Kamu menonton dari negara mana?",
+  "chooseCountry": "Pilih negaramu",
+  "countryNote": "Negara tempat menonton diatur terpisah dari bahasa. Katalog dan paket layanan berbeda menurut lokasi; tidak semua film tersedia di setiap negara.",
+  "all": "Semua 20 pilihan",
+  "cozy": "Seram yang seru",
+  "eerie": "Ketegangan perlahan",
+  "intense": "Horor intens",
+  "filterLabel": "Pilih tingkat keseraman",
+  "editorial": "Pilihan ini disusun redaksi, bukan peringkat popularitas langsung. Tingkat keseraman menggambarkan suasana, bukan klasifikasi usia resmi; cek klasifikasi setempat sebelum menonton bersama anak-anak.",
+  "watch": "Cek pilihan terkini",
+  "checking": "Memeriksa film ini…",
+  "stream": "Streaming · mungkin perlu paket atau memuat iklan",
+  "rent": "Sewa dengan biaya terpisah",
+  "buy": "Beli dengan biaya terpisah",
+  "offers": "Buka pilihan menonton di wilayahmu",
+  "chooseFirst": "Pilih negara untuk melihat pilihan menonton setempat.",
+  "noOffers": "Sumber ini tidak memberikan pilihan menonton untuk negaramu. Itu tidak membuktikan bahwa filmnya tidak tersedia di layanan lain.",
+  "unavailable": "Pemeriksaan ketersediaan belum berhasil. Coba lagi atau buka sumber informasi film.",
+  "checked": "Sumber diperiksa",
+  "stale": "Cek pilihan terkini untuk memperbarui data lama ini.",
+  "source": "Sumber informasi film",
+  "attribution": "Data menonton: JustWatch melalui TMDB. Ketersediaan, paket, dan harga dapat berubah; pastikan di layanan terkait sebelum berlangganan atau membayar.",
+  "minutes": "mnt",
+  "cast": "Pemeran",
+  "facts": "Detail film",
+  "trailer": "Tonton cuplikan",
+  "rating": "Skor penonton TMDB",
+  "votes": "suara",
+  "originalTitle": "Judul asli",
+  "countryOfOrigin": "Negara produksi",
+  "share": "Bagikan malam film ini",
+  "copied": "Tautan panduan disalin.",
+  "shareFailed": "Salin alamat halaman ini untuk membagikan panduan.",
+  "visibleCount": "{count} film pilihan",
+  "tipsHeading": "Buat malamnya lebih berkesan",
+  "tipsIntro": "Tiga ide malam film Halloween yang bisa kamu adakan sendiri. Ini adalah ide acara pribadi, bukan acara bertiket atau layanan pemutaran tersinkron.",
+  "tips": [
+    {
+      "title": "Dua film ditemani cahaya labu",
+      "text": "Pasangkan Hocus Pocus dengan The Nightmare Before Christmas untuk lagu, keusilan, dan suasana yang lebih ringan. Sisipkan jeda camilan dan periksa dulu panduan usia setempat untuk setiap penonton."
+    },
+    {
+      "title": "Misteri rumah berhantu",
+      "text": "Pilih The Others atau The Sixth Sense, gunakan pencahayaan lembut, dan simpan tebakan sampai film selesai. Penonton baru berhak menikmati malam tanpa bocoran cerita."
+    },
+    {
+      "title": "Tantangan headphone tengah malam",
+      "text": "Coba A Quiet Place untuk ketegangan yang bertumpu pada suara, atau Get Out untuk bahan obrolan setelahnya. Sepakati batas kenyamanan bersama, jaga volume tetap nyaman, dan jeda kapan saja bila perlu."
+    }
+  ],
+  "faqHeading": "Rencanakan daftar tontonan Halloween",
+  "faqs": [
+    {
+      "question": "Di mana saya bisa streaming film Halloween di negara saya?",
+      "answer": "Pilih negara di atas. Setiap film menampilkan pilihan wilayah yang diberikan sumber, dengan streaming dipisahkan dari sewa dan pembelian. Gunakan Cek pilihan terkini untuk pencarian baru, lalu pastikan penawarannya di situs layanan."
+    },
+    {
+      "question": "Apakah tercantum sebagai streaming berarti gratis?",
+      "answer": "Tidak. Streaming dapat memerlukan langganan atau menyertakan iklan; sewa dan pembelian biasanya berbayar terpisah. Langganan yang sudah kamu punya belum tentu mencakup semua kanal atau layanan tambahan yang tercantum."
+    },
+    {
+      "question": "Pilihan mana yang tidak terlalu menakutkan?",
+      "answer": "Mulailah dari Seram yang seru untuk fantasi, komedi, dan gambaran seram yang lebih ringan. Filter ini adalah panduan suasana dari redaksi, bukan sertifikasi usia. Periksa klasifikasi setempat dan catatan konten sesuai penontonnya."
+    },
+    {
+      "question": "Bisakah teman di negara berbeda menonton film yang sama?",
+      "answer": "Masing-masing perlu memilih negaranya sendiri dan memastikan akses sebelum menentukan waktu. Panduan ini membantu perencanaan dan memberi tautan ke sumber menonton; panduan ini tidak menyinkronkan pemutaran video."
+    }
+  ],
+  "exploreHeading": "Lanjutkan malamnya",
+  "planner": "Rencanakan durasi menonton",
+  "together": "Temukan film bersama",
+  "moreGuides": "Jelajahi panduan streaming",
+  "home": "Kembali ke MatchApp Ai",
+  "why": {
+    "nightmare": "Pertemuan Halloween dan Natal dalam animasi stop-motion. Cocok saat kamu lebih menginginkan lagu berkesan dan detail gotik buatan tangan daripada teror yang benar-benar menakutkan.",
+    "hocus": "Tiga penyihir yang hidup kembali mengubah Halloween di kota kecil menjadi pengejaran penuh keusilan. Pilih untuk akting yang jenaka dan suasana musim gugur yang nostalgis.",
+    "hocus2": "Kembali ke Salem pada Halloween yang dipenuhi penyihir, dengan tiga remaja baru di tengah kekacauan. Pasangkan dengan film pertamanya untuk dua tontonan berturut-turut.",
+    "coco": "Perjalanan penuh musik melintasi ingatan keluarga dan Negeri Orang Mati. Film ini merayakan Día de Muertos, tradisi yang berbeda dari Halloween, dan memberi jeda hangat di antara film-film seram.",
+    "frankenweenie": "Upaya seorang anak menghidupkan kembali anjingnya menjadi penghormatan hitam-putih untuk sinema monster klasik. Ada kasih sayang, humor kelam, dan tema kehilangan.",
+    "monster": "Sebuah rumah di lingkungan sekitar tampaknya punya nafsu makan sendiri. Petualangan animasi ini memadukan rasa ingin tahu masa kecil dengan kejutan yang cukup tajam.",
+    "hubie": "Seorang relawan Halloween yang tulus mendadak terlibat misteri seisi kota. Pilih komedi heboh ini jika kelompokmu lebih menginginkan kostum, kekacauan, dan tawa daripada rasa takut.",
+    "bridge": "Dekorasi Halloween hidup ketika seorang ayah dan putrinya menghadapi ancaman gaib. Pilihan ramai untuk penonton yang menyukai petualangan penuh monster dan komedi.",
+    "fearstreet": "Para remaja menghadapi kutukan dengan energi film slasher dan latar 1990-an. Bab pertama ini cocok untuk memulai malam trilogi intens bersama penggemar horor dewasa.",
+    "hishouse": "Rumah baru sepasang pengungsi dipenuhi kenangan yang menghantui dan ketakutan gaib. Pilih untuk horor yang bobot emosinya sama kuat dengan atmosfernya.",
+    "conjuring": "Rumah sebuah keluarga di pedesaan menjadi pusat penyelidikan paranormal. Pembukaan yang sabar dan teror gaib yang terus meningkat cocok untuk malam rumah berhantu klasik.",
+    "shining": "Keterasingan, hotel luas, dan keluarga di bawah tekanan membangun kejatuhan yang mengusik. Cocok bagi penonton yang menyukai rasa takut berkepanjangan dan detail ambigu untuk dibahas sesudahnya.",
+    "it": "Sekelompok sahabat muda melawan teror yang dapat berubah wujud di kota mereka. Ikatan antaranak memberi pusat emosi pada adegan-adegan yang lebih gelap.",
+    "beetlejuice": "Pasangan yang baru meninggal bertemu roh pembuat masalah luar biasa. Pilih komedinya yang eksentrik, makhluk buatan tangan, dan tata artistik gotik untuk malam seram yang jenaka.",
+    "scream": "Pembunuh bertopeng mengintai kota yang para remajanya paham aturan film horor. Campuran misteri, lelucon tajam, dan ketegangan berdarah memanjakan penonton yang akrab dengan genre ini.",
+    "quiet": "Sebuah keluarga harus hidup senyap di dekat makhluk yang berburu lewat suara. Perhatikan bagaimana gerakan sehari-hari berubah menjadi keputusan menegangkan, lalu bandingkan momen sunyi favoritmu.",
+    "getout": "Akhir pekan untuk bertemu keluarga kekasih berubah semakin meresahkan. Satire sosial dan petunjuk yang ditata cermat menjadikannya pilihan bagus untuk obrolan setelah film.",
+    "others": "Seorang ibu melindungi anak-anaknya di rumah redup dan terpencil, sementara kejadian aneh bermunculan. Nikmati suasana dan misterinya yang perlahan; hindari trailer jika ingin lebih sedikit petunjuk.",
+    "sixth": "Pengalaman mengganggu seorang anak menarik psikolog ke dalam misteri gaib yang intim. Jaga obrolan bebas bocoran sampai semua orang selesai menontonnya.",
+    "ready": "Permainan malam pernikahan seorang pengantin perempuan berubah mematikan. Tempo cepat, komedi gelap, dan kekerasan grafis cocok bagi penonton yang menginginkan penutup lebih ganas."
+  }
+}
