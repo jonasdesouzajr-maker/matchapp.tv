@@ -179,7 +179,7 @@ function storeLinks(book){
  const m=market(), query=q(book);
  const amazon={BR:'amazon.com.br',GB:'amazon.co.uk',CA:'amazon.ca',AU:'amazon.com.au',JP:'amazon.co.jp',PT:'amazon.es',US:'amazon.com'}[m];
  const affiliate=window.MatchAppEbookAffiliate;
- const kindle=amazon?(affiliate?affiliate.amazonSearchUrl(book,m):'https://www.'+amazon+'/s?k='+query+'&i=digital-text'):'';
+ const kindle=amazon?(affiliate?.amazonSearchUrl(book,m)||''):'';
  const kobo={BR:'br/pt',GB:'gb/en',CA:'ca/en',AU:'au/en',JP:'jp/ja',PT:'pt/pt',US:'us/en'}[m];
  const links=[
   ...(kindle?[['Kindle',kindle]]:[]),

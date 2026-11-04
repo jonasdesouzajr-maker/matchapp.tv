@@ -6,7 +6,7 @@
  var KNOWN='.ebook-chips,.ebook-result-actions,.matchapp-exclusion-chips,.taste-chips,.filter-chips,.genre-chips,.mood-chips,.platform-chips,.chip-group,.chips,.button-group,.btn-group,.quick-options,.quick-choices,.ma-quick,.settings-actions,.result-actions,.res-actions,.share-actions,.cooking-actions,.theme-actions';
  var CONTROL='button,a[href],label,[role="button"]';
  var AD='.adsbygoogle,.premium-ad-frame,.premium-ad-slot,.sidebar-ad,.sidebar-ad-left,.sidebar-ad-right,.ad-slot,.ad-container,.ads-container,[data-ad-slot],[data-ad-client],[data-admob],.sponsored-match,.sponsored-unit,.sponsored-card,[data-sponsored],[rel~="sponsored"]';
- var EXCLUDED=AD+',header,.ebook-page-top,.adult-page-nav,.ma-cinema-dock,#ma-jonas-home,#ma-ambient-jonas,#ma-ambient-panel,.ja-panel,.jh-popover,.ja-bubble,.jh-bubble,.marquee-wrapper,.marquee-track,.events-viewport,.journey-chapter-links,.carousel,[aria-roledescription="carousel"],.swiper,.swiper-wrapper,.theme-grid,.theme-choice,.profile-hub-grid,.profile-hub,.profile-tabs,.portfolio-tabs,.taste-tabs,[role="tablist"],[role="tab"],.ref-primary-topics,.ref-secondary-topics,.ref-editorial-banners,.ref-explore-tools,.ma-cinema-tools,.ma-luxe-shortcuts,.mh-deck,.tg-pref-grid';
+ var EXCLUDED=AD+',.poster-wall,.ma-sheen-decoration,header,.ebook-page-top,.adult-page-nav,.ma-cinema-dock,#ma-jonas-home,#ma-ambient-jonas,#ma-ambient-panel,.ja-panel,.jh-popover,.ja-bubble,.jh-bubble,.marquee-wrapper,.marquee-track,.events-viewport,.journey-chapter-links,.carousel,[aria-roledescription="carousel"],.swiper,.swiper-wrapper,.theme-grid,.theme-choice,.profile-hub-grid,.profile-hub,.profile-tabs,.portfolio-tabs,.taste-tabs,[role="tablist"],[role="tab"],.ref-primary-topics,.ref-secondary-topics,.ref-editorial-banners,.ref-explore-tools,.ma-cinema-tools,.ma-luxe-shortcuts,.mh-deck,.tg-pref-grid';
  var RICH='img,picture,video,iframe,canvas,article,figure,h1,h2,h3,h4,dl,table,select,textarea,input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"])';
  var states=new Map(),pending=0,resize=null,observer=null,measure=null,bookOpen=Object.create(null),dirty=false;
  function enabled(){return document.documentElement.classList.contains('ma-reference')&&!/^\/kids(?:\/|$)/.test(location.pathname)&&document.body&&!document.body.matches('.page-kids,.kids-body,[data-kids-mode="true"]');}
@@ -113,8 +113,12 @@
    sizeClosed();
   });
  }
+ var lastScroll=-Infinity;
  function flush(){
-  pending=0;if(document.hidden){dirty=true;return;}dirty=false;if(!enabled()){Array.from(states.keys()).forEach(clear);return;}
+  pending=0;
+  var remaining=130-(performance.now()-lastScroll);
+  if(remaining>0){pending=setTimeout(flush,remaining);return;}
+  if(document.hidden){dirty=true;return;}dirty=false;if(!enabled()){Array.from(states.keys()).forEach(clear);return;}
   foldBooks();
   var candidates=new Set(Array.from(document.querySelectorAll(KNOWN)));
   var controls=document.querySelectorAll(CONTROL);
@@ -155,6 +159,7 @@
  }
  function start(){
   if(!enabled())return;
+  window.addEventListener('scroll',function(){lastScroll=performance.now();},{passive:true});
   if(window.ResizeObserver){resize=new ResizeObserver(function(entries){var changed=false;entries.forEach(function(entry){var state=states.get(entry.target);if(state&&Math.abs(entry.contentRect.width-state.observedWidth)>1){state.observedWidth=entry.contentRect.width;changed=true;}});if(changed)schedule();});}
   observer=new MutationObserver(function(records){
    if(records.some(function(record){
@@ -163,7 +168,7 @@
      // Repeated owners may write an unchanged class/style; it cannot alter layout.
      if(record.oldValue===record.target.getAttribute(record.attributeName))return false;
      // Transient interaction classes (tap feedback, Jonas open/close, resize drag) never change grid density.
-     if(record.attributeName==='class'){var before=(record.oldValue||'').split(/\s+/),after=(record.target.getAttribute('class')||'').split(/\s+/),diff=before.filter(function(c){return after.indexOf(c)<0}).concat(after.filter(function(c){return before.indexOf(c)<0})).filter(Boolean);if(diff.length&&diff.every(function(c){return /^(ma-press|ma-tap-on|ma-tap-off|ma-jonas-modal-open|ma-jonas-chat-open|ma-chat-resizing)$/.test(c)}))return false;}
+     if(record.attributeName==='class'){var before=(record.oldValue||'').split(/\s+/),after=(record.target.getAttribute('class')||'').split(/\s+/),diff=before.filter(function(c){return after.indexOf(c)<0}).concat(after.filter(function(c){return before.indexOf(c)<0})).filter(Boolean);if(diff.length&&diff.every(function(c){return /^(ma-sheen-live|ma-sheen|ma-dock-activated|ma-press|ma-tap-on|ma-tap-off|ma-jonas-modal-open|ma-jonas-chat-open|ma-chat-resizing)$/.test(c)}))return false;}
      if(record.attributeName==='style'&&record.target!==document.documentElement)return visibilitySignature(record.oldValue)!==visibilitySignature(record.target.getAttribute('style'));
      return true;
     }

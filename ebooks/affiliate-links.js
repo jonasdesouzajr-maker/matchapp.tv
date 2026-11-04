@@ -15,6 +15,7 @@ function unapprovedAppContext(){
  return false;
 }
 function amazonSearchUrl(book,market){
+ if(!retailAvailable())return '';
  const m=String(market||'US').toUpperCase();
  const url=new URL('https://www.'+(DOMAINS[m]||DOMAINS.US)+'/s');
  url.searchParams.set('k',String(book.title||'')+' '+String(book.author||''));
@@ -27,7 +28,7 @@ function amazonSearchUrl(book,market){
 // and digital magazine products may be excluded from commission eligibility.
 function amazonMagazineSearchUrl(magazine,market){
  // Do not link to Amazon at all from unapproved native/installed apps.
- if(unapprovedAppContext())return '';
+ if(!retailAvailable())return '';
  const m=String(market||'US').toUpperCase();
  const url=new URL('https://www.'+(DOMAINS[m]||DOMAINS.US)+'/s');
  url.searchParams.set('k',String(magazine.title||'')+' magazine');
@@ -36,19 +37,21 @@ function amazonMagazineSearchUrl(magazine,market){
 }
 // Only a visitor on the published adult website may generate a new paid referral.
 const retailStores=Object.freeze({...DOMAINS,DE:'amazon.de',ES:'amazon.es',FR:'amazon.fr',IT:'amazon.it',IN:'amazon.in'});
-function amazonRetailSearchUrl(term,market,preset,translatePreset=false){
- const domain=Object.hasOwn(retailStores,market)&&retailStores[market];
- const query=String(term||'').trim().slice(0,120);
- if(!query||!domain)return '';
- const url=new URL('https://www.'+domain+'/s');
- const editorial=['print','headphones','mic'].includes(preset);
- const brTerms={print:'Pro Git Scott Chacon livro impresso',headphones:'fone de ouvido com fio',mic:'microfone USB'};
- url.searchParams.set('k',translatePreset&&editorial&&market==='BR'?brTerms[preset]:query);
- if(preset==='print')url.searchParams.set('i','stripbooks');
- if(market==='BR'&&editorial&&root.location?.origin==='https://matchapp.tv'&&!unapprovedAppContext()&&
-    !/; wv\)|WebView/i.test(root.navigator?.userAgent||'')&&!root.MatchAppNativeAI){
-   url.searchParams.set('tag',BR_TAG);
- }
+function retailAvailable() {
+ return !unapprovedAppContext() && !/; wv\)|WebView/i.test(root.navigator?.userAgent||'') && !root.MatchAppNativeAI;
+}
+const brRetailTerms = Object.freeze({
+ print:'Pro Git Scott Chacon livro impresso', headphones:'fone de ouvido com fio', mic:'microfone USB',
+ popcorn:'pipoqueira', game:'jogo de tabuleiro para família', pack:'mochila de viagem'
+});
+function amazonRetailSearchUrl(term, market, preset, translatePreset = false) {
+ const query = String(term || '').trim().slice(0,120);
+ if (!query || !Object.hasOwn(retailStores,market) || !retailAvailable()) return '';
+ const url = new URL('https://www.' + retailStores[market] + '/s');
+ const translated = translatePreset && market === 'BR' && Object.hasOwn(brRetailTerms,preset);
+ url.searchParams.set('k', translated ? brRetailTerms[preset] : query);
+ if (preset === 'print') url.searchParams.set('i','stripbooks');
+ if (market === 'BR' && root.location?.origin === 'https://matchapp.tv') url.searchParams.set('tag',BR_TAG);
  return url.href;
 }
 function isAffiliateLink(href){
@@ -64,5 +67,5 @@ function disclosure(locale){
   'As an Amazon Associate I earn from qualifying purchases. Como associado da Amazon, eu ganho com compras qualificadas.';
 }
 function paidLabel(locale){return root.MatchAppReadingDetailsCopy?.text?.('affiliate.paid')||(/^pt/i.test(String(locale||''))?'publicidade':'paid link')}
-root.MatchAppEbookAffiliate=Object.freeze({amazonSearchUrl,amazonMagazineSearchUrl,amazonRetailSearchUrl,isAffiliateLink,disclosure,paidLabel});
+root.MatchAppEbookAffiliate=Object.freeze({amazonSearchUrl,amazonMagazineSearchUrl,amazonRetailSearchUrl,retailAvailable,isAffiliateLink,disclosure,paidLabel});
 })(window);

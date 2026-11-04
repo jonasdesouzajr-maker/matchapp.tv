@@ -68,6 +68,8 @@ import java.util.Locale
 class MainActivity : AppCompatActivity() {
 
     private lateinit var web: WebView
+    private lateinit var destinationDock: NativeDestinationDock
+    private val nativeFx = NativeFxBridge()
     private lateinit var refresh: SwipeRefreshLayout
     private lateinit var errorNotice: NativeErrorNotice
     private var pendingNativeError = false
@@ -162,6 +164,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.enableEdgeToEdge(window)
 
         web = findViewById(R.id.web)
+        destinationDock = NativeDestinationDock(findViewById(R.id.native_dock), web, nativeFx::vibratePattern).also { it.install() }
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
@@ -254,7 +257,7 @@ class MainActivity : AppCompatActivity() {
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
         web.addJavascriptInterface(NativeAuthBridge(), "MatchAppNativeAuth")
-        web.addJavascriptInterface(NativeFxBridge(), "MatchAppFx")
+        web.addJavascriptInterface(nativeFx, "MatchAppFx")
         nativeRewardedBridge = NativeRewardedBridge(
             this, web,
             { adMobController?.canRequestRewarded() == true },
@@ -360,7 +363,9 @@ class MainActivity : AppCompatActivity() {
                 )
                 // adjustResize already reduces the WebView for the keyboard.
                 // Do not reserve the IME height or its navigation area twice.
-                val bottomSafe = if (insets.isVisible(WindowInsetsCompat.Type.ime())) 0 else safe.bottom
+                val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
+                if (target === content) destinationDock.setKeyboard(imeVisible)
+                val bottomSafe = if (imeVisible) 0 else safe.bottom
                 view.setPadding(left + safe.left, top + safe.top, right + safe.right, bottom + bottomSafe)
                 insets
             }
@@ -1128,6 +1133,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageCommitVisible(view: WebView, url: String?) {
+            destinationDock.attach(url)
             // Home can spend seconds parsing head resources. The assistant's
             // persistent bubble must be available before onPageFinished.
             injectAppMode(view)
@@ -1136,6 +1142,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            destinationDock.onDocumentChanged()
             publicPageRetry?.let { view.removeCallbacks(it) }
             publicPageRetry = null
             if (url != publicPageRetryUrl) {
@@ -1169,6 +1176,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
+            if (!mainFrameFailed) destinationDock.attach(url)
             if (!mainFrameFailed) {
                 view.visibility = View.VISIBLE
                 publicPageRetryUrl = null
@@ -1586,7 +1594,10 @@ class MainActivity : AppCompatActivity() {
     private inner class NativeFxBridge {
         @JavascriptInterface
         fun vibrate(ms: Int) {
-            val d = ms.coerceIn(1, 40).toLong()
+            vibratePattern(longArrayOf(0, ms.coerceIn(1, 40).toLong()))
+        }
+
+        fun vibratePattern(timings: LongArray) {
             runOnUiThread {
                 runCatching {
                     val v = if (android.os.Build.VERSION.SDK_INT >= 31) {
@@ -1597,10 +1608,13 @@ class MainActivity : AppCompatActivity() {
                     }
                     if (!v.hasVibrator()) return@runCatching
                     if (android.os.Build.VERSION.SDK_INT >= 26) {
-                        v.vibrate(android.os.VibrationEffect.createOneShot(d, android.os.VibrationEffect.DEFAULT_AMPLITUDE))
+                        val effect = if (timings.size == 2)
+                            VibrationEffect.createOneShot(timings[1], VibrationEffect.DEFAULT_AMPLITUDE)
+                        else VibrationEffect.createWaveform(timings, -1)
+                        v.vibrate(effect)
                     } else {
                         @Suppress("DEPRECATION")
-                        v.vibrate(d)
+                        if (timings.size == 2) v.vibrate(timings[1]) else v.vibrate(timings, -1)
                     }
                 }
             }

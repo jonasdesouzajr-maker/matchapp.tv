@@ -12,7 +12,7 @@
   var track=vp.querySelector('#marquee-track'),root=vp.closest('#trending-rail');if(!track||!root)return null;
   var frame=0,idle=0,last=0,glidePosition=0,seam=0,holdUntil=0,autoWriteUntil=0,suppressUntil=0,visible=true,hover=false,touch=false,pointer=null,disposed=false;
   var reducedQuery=window.matchMedia?.('(prefers-reduced-motion: reduce)'),hoverQuery=window.matchMedia?.('(hover:hover) and (pointer:fine)');
-  var HOLD=2200,SPEED=25;
+  var HOLD=2200,SPEED=25,verticalUntil=0,verticalResume=0;
   var desktopQuery=window.matchMedia?.('(min-width:1100px)');
   function nativeApp(){return window.MATCHAPP_ANDROID===true||/MatchApp(?:Ai|TV)Android\//i.test(navigator.userAgent||'')||typeof window.MatchAppNativeExperience?.setNewsAccountContext==='function'||typeof window.MatchAppNativeAuth?.openOAuth==='function';}
   function desktopControls(){var tablet=/Android|iPad|iPhone|iPod/i.test(navigator.userAgent||'')||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);return!nativeApp()&&!tablet&&!!hoverQuery?.matches&&(desktopQuery?desktopQuery.matches:innerWidth>=1100);}
@@ -28,7 +28,7 @@
   function stop(){cancelAnimationFrame(frame);frame=0;clearTimeout(idle);idle=0;last=0;vp.classList.remove('is-autoglide');}
   function focusHeld(){return vp.contains(document.activeElement)&&document.activeElement.matches(':focus-visible');}
   function modalOpen(){var b=document.body;return !!b&&(b.classList.contains('ma-jonas-modal-open')||b.classList.contains('ma-jonas-chat-open'));}
-  function paused(){return disposed||modalOpen()||document.hidden||!visible||hover||touch||pointer||focusHeld()||reduced()||now()<holdUntil;}
+  function paused(){return disposed||modalOpen()||document.hidden||!visible||hover||touch||pointer||focusHeld()||reduced()||now()<holdUntil||now()<verticalUntil;}
   function normalize(){
    if(!seam||touch||pointer)return;
    var max=vp.scrollWidth-vp.clientWidth;
@@ -37,7 +37,8 @@
   }
   function schedule(){
    stop();if(modalOpen()){idle=setTimeout(schedule,600);return;}if(disposed||document.hidden||!visible||hover||touch||pointer||focusHeld()||reduced()||vp.scrollWidth<=vp.clientWidth)return;
-   if(now()<holdUntil){idle=setTimeout(schedule,Math.max(20,holdUntil-now()+20));return;}
+   var resumeAt=Math.max(holdUntil,verticalUntil);
+   if(now()<resumeAt){idle=setTimeout(schedule,Math.max(20,resumeAt-now()+20));return;}
    normalize();glidePosition=vp.scrollLeft;vp.classList.add('is-autoglide');frame=requestAnimationFrame(flow);
   }
   function flow(time){
@@ -89,6 +90,17 @@
   vp.addEventListener('touchstart',function(){touch=true;hold();},{passive:true});
   ['touchend','touchcancel'].forEach(function(type){vp.addEventListener(type,function(){touch=false;hold();},{passive:true});});
   vp.addEventListener('wheel',hold,{passive:true});
+  function verticalScroll(){
+   if(!visible||disposed)return;
+   verticalUntil=now()+180;
+   if(frame)stop();
+   if(!verticalResume)verticalResume=setTimeout(function resume(){
+    var wait=verticalUntil-now();
+    if(wait>0){verticalResume=setTimeout(resume,wait);return;}
+    verticalResume=0;schedule();
+   },185);
+  }
+  window.addEventListener('scroll',verticalScroll,{passive:true});
   // Native scroll events from our own RAF may be delivered after a delayed
   // frame. They must never restart the idle clock; user gestures stop the RAF
   // synchronously before their native scroll/inertia events arrive.
@@ -116,7 +128,7 @@
   if('IntersectionObserver'in window){var observer=new IntersectionObserver(function(entries){visible=!!entries[0]?.isIntersecting;if(visible)schedule();else stop();},{threshold:.12});observer.observe(vp);}
   var mutation=new MutationObserver(function(){requestAnimationFrame(measure);});mutation.observe(track,{childList:true});
   if('ResizeObserver'in window){var resize=new ResizeObserver(measure);resize.observe(vp);}else window.addEventListener('resize',measure,{passive:true});
-  var api={nudge:nudge,hold:hold,refreshChrome:refreshChrome,snapshot:function(){return{owner:vp.dataset.topTitlesOwner,scrollLeft:vp.scrollLeft,seam:seam,autoFrame:!!frame,idleTimer:!!idle,paused:!!paused(),reduced:!!reduced(),visible:visible,hover:hover,touch:touch,focusHeld:!!focusHeld(),holdMs:Math.max(0,Math.round(holdUntil-now())),physicalDirection:'right',nativeApp:!!nativeApp(),arrows:nav.hidden?0:nav.querySelectorAll('button').length};},destroy:function(){disposed=true;stop();mutation.disconnect();observer?.disconnect();resize?.disconnect();}};
+  var api={nudge:nudge,hold:hold,refreshChrome:refreshChrome,snapshot:function(){return{owner:vp.dataset.topTitlesOwner,scrollLeft:vp.scrollLeft,seam:seam,autoFrame:!!frame,idleTimer:!!idle,paused:!!paused(),reduced:!!reduced(),visible:visible,hover:hover,touch:touch,focusHeld:!!focusHeld(),holdMs:Math.max(0,Math.round(holdUntil-now())),physicalDirection:'right',nativeApp:!!nativeApp(),arrows:nav.hidden?0:nav.querySelectorAll('button').length};},destroy:function(){disposed=true;clearTimeout(verticalResume);window.removeEventListener('scroll',verticalScroll);stop();mutation.disconnect();observer?.disconnect();resize?.disconnect();}};
   controllers.set(vp,api);vp.__railHold=hold;
   window.addEventListener('pagehide',stop);window.addEventListener('pageshow',schedule);
   refreshChrome();paint();measure();return api;

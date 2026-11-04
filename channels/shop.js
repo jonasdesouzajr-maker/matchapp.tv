@@ -22,11 +22,18 @@
     if(/\busb\b/iu.test(text) && /microphone|microfone|microfono|mikrofon|\bmic\b|микрофон|ميكروفون|माइक्रो|マイク|마이크|麦克风/iu.test(text))return 'mic';
     return presets.find(b=>text===normalize(b.textContent))?.dataset.shopPreset || '';
   }
+  const brief=panel.querySelector('[data-shop-brief]');
+  const available=api?.retailAvailable() === true;
+  store.closest('label').hidden=amazon.hidden=!available;
   function update(){
-    const term=input.value.trim();
+    const typed=input.value.trim();
+    const term=window.MatchAppContentSafety?.isExplicit(typed) ? '' : typed;
     const preset=presets.find(b=>b.textContent===term);
     const category=preset?.dataset.shopPreset || editorialCategory(term);
     const href=api?.amazonRetailSearchUrl(term,store.value,category,!!preset);
+    const related=presets.find(button=>button.dataset.shopPreset===category);
+    brief.hidden=!term;
+    brief.textContent=term ? (related?.dataset.shopTip || brief.dataset.template).replace('{product}',()=>term) : '';
     setLink(amazon,href);
     const words=term.normalize('NFKC').match(/[\p{L}\p{M}\p{N}]+/gu);
     setLink(mercado,words?'https://lista.mercadolivre.com.br/'+encodeURIComponent(words.join('-')):'');

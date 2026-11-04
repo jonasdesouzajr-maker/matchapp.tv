@@ -6501,13 +6501,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (reg) reg.addEventListener('click', () => track('signup_intent', { source: 'header' }));
 
     // Scroll depth tells you whether the SEO footer is ever actually reached.
-    let depths = { 25: false, 50: false, 75: false, 100: false };
-    window.addEventListener('scroll', () => {
-        const pct = Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100);
-        Object.keys(depths).forEach(d => {
-            if (!depths[d] && pct >= d) { depths[d] = true; track('scroll_depth', { percent: Number(d) }); }
-        });
-    }, { passive: true });
+    const milestones = [25, 50, 75, 100];
+    let timer = 0, furthest = 0;
+    function reportDepth() {
+        timer = 0;
+        const height = document.body.scrollHeight;
+        if (!height) return;
+        const percent = Math.round(furthest / height * 100);
+        while (milestones.length && percent >= milestones[0]) {
+            track('scroll_depth', { percent: milestones.shift() });
+        }
+        furthest = 0;
+        if (!milestones.length) window.removeEventListener('scroll', sampleDepth);
+    }
+    function sampleDepth() {
+        furthest = Math.max(furthest, window.scrollY + window.innerHeight);
+        if (!timer) timer = setTimeout(reportDepth, 240);
+    }
+    window.addEventListener('scroll', sampleDepth, { passive: true });
 });
 // ----------------------------------------------------
 // SPOTLIGHT — upcoming premiere countdown + save

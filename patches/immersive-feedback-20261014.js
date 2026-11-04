@@ -35,9 +35,13 @@
  function reduced(){try{return document.documentElement.classList.contains('reduce-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches}catch(_){return true}}
  function haptics(){try{return localStorage.getItem('match_hapticsEnabled')!=='false'&&!reduced()}catch(_){return false}}
  function speaking(){return !!(window.speechSynthesis?.speaking||document.querySelector('#ma-jonas-home.jh-speaking,#ma-ambient-jonas[data-speaking="1"],#ma-ambient-panel[data-speaking="1"]'))}
- function vibrate(pattern){
+ function vibrate(pattern,nativeMessage){
   if(!haptics()||document.hidden||Date.now()-lastHaptic<85)return;
-  lastHaptic=Date.now();try{navigator.vibrate?.(pattern)}catch(_){}
+  lastHaptic=Date.now();
+  try{if(navigator.vibrate && navigator.vibrate(pattern)!==false)return;}catch(_){}
+  if(nativeMessage)window.MatchAppDestinationDock?.postMessage(JSON.stringify({
+   href:location.href,dockHaptic:nativeMessage,timings:Array.isArray(pattern)?pattern:[pattern]
+  }));
  }
  function context(){
   if(!allowed())return null;
@@ -160,11 +164,14 @@
   if(!el)return;
   if(el.matches('.sound-toggle-btn')){intent=null;wrapExisting();setTimeout(function(){if(!allowed()){release();clearPendingPurchase();}},0);return;}
   if(el.closest('.adsbygoogle,[data-ad-slot]')||el.matches(':disabled,[aria-disabled="true"]')){intent={at:Date.now(),played:true,kind:'tap'};return;}
+  controlFeedback(el);
+ }
+ function controlFeedback(el,nativeMessage){
   wrapExisting();var nav=dockSignature(el),kind=nav?nav.cue:kindFor(el),mic=kind==='mic';
   intent={id:++serial,at:Date.now(),kind:kind,played:false};var token=intent.id;
   if(!mic&&!el.matches('a[href]')&&flushPurchase()){intent.played=true;return;}
   if(nav){
-   vibrate(nav.haptic);
+   vibrate(nav.haptic,nativeMessage);
    // Start within this deliberate gesture before the browser follows the
    // unchanged href. The consumed intent suppresses legacy duplicate cues.
    play(kind);return;
@@ -182,6 +189,12 @@
  function init(){
   if(ready)return;ready=true;wrapExisting();
   try{var stored=JSON.parse(sessionStorage.getItem(pendingPurchaseKey)||'null');if(stored&&receiptKey(stored))pendingPurchase=stored;}catch(_){}
+  window.MatchAppDestinationDock?.addEventListener('message',function(event){
+   var anchor=window.__maNativeDock?.targetFor?.(event.data);
+   if(!anchor||!dockSignature(anchor))return;
+   gestureSeen=true;
+   controlFeedback(anchor,event.data);
+  });
   document.addEventListener('click',onClick,{capture:true,passive:true});
   document.addEventListener('change',onChange,{passive:true});
  }

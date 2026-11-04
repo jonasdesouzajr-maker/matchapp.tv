@@ -24,14 +24,14 @@
     const text=String(question||'').trim();
     if(!merchant.test(text)||/prime video|amazon prime|prime gaming|prime music|amazon music|web services|kindle unlimited/iu.test(text))return '';
     const at=text.match(merchant);
-    const before=text.slice(0,at.index).trim(),after=text.slice(at.index+at[0].length).trim();
+    const before=text.slice(0,at.index).trim().replace(/^(?:please|could you|can you|I want to|I'd like to|eu quero|quero|por favor[,]?)\s+/iu,''),after=text.slice(at.index+at[0].length).trim();
     if(!shopping.test(text))return '';
     // Hand off only the product phrase from explicit retail commands.
     if(/^(?:search|look on|browse|buscar?|pesquis(?:ar|e)|procure|cherche[rz]?|cerca|busca|suche|cari|ابحث)(?:\s+(?:on|in|no|na|en|sur|auf|di|في))?$/iu.test(before)){
       return after.replace(/^(?:for|por|pour|per|nach|untuk|عن)\s+/iu,'').replace(/[.!?。！]+$/u,'').trim().slice(0,120);
     }
     if(!after && shopping.test(before)){
-      const command=before.match(/^(?:search(?: for)?|find|buy|look for|buscar?|comprar?|pesquis(?:ar|e)|procure|acheter|cerca|compra|cari|beli|найти|купить|ابحث عن)\s+(.+?)\s+(?:on|in|at|no|na|en|sur|su|di|на|في)$/iu);
+      const command=before.match(/^(?:search(?: for)?|find|buy|look for|buscar?|comprar?|pesquis(?:ar|e)|procure|acheter|trouve[rz]?|busca|cerca|compra|cari|beli|найти|купить|ابحث عن)\s+(.+?)\s+(?:on|in|at|no|na|en|sur|su|di|на|في)$/iu);
       return command?.[1]?.slice(0,120)||'';
     }
     return '';
@@ -39,8 +39,12 @@
   function retailerIntent(question) {
     return merchant.test(question) && shopping.test(question) && !/prime video|amazon prime|prime gaming|prime music|amazon music|web services|kindle unlimited/iu.test(question);
   }
+  function commandText(question) {
+    return question.trim().toLocaleLowerCase().replace(/[.!?。！？，،]+$/u,'').trim();
+  }
   function selection(question) {
-    if(retailerIntent(question)||Object.values(labels).some(t=>t.shop.toLocaleLowerCase()===question.trim().toLocaleLowerCase()))return 'shop';
+    const command=commandText(question);
+    if(retailerIntent(question)||Object.values(labels).some(t=>t.shop.toLocaleLowerCase()===command))return 'shop';
     if(!topics.test(question)) return '';
     for(const [key,re] of Object.entries(formats)) if(re.test(question)) return key;
     return /channel|studio|canal|estúdio|estudio|chaîne|kanal|studio|kanal[ıi]|канал|استوديو|قناة|स्टूडियो|चैनल|saluran|スタジオ|チャンネル|채널|스튜디오|频道|工作室/iu.test(question) ? 'tech' : '';
@@ -76,7 +80,7 @@
     linkFor(question,lang) { return linkForKey(selection(question),lang,shopQuery(question)); },
     // Exact destination commands are navigation. Recommendations still use the metered chat.
     isNavigation(question) {
-      const value = question.trim().toLocaleLowerCase().replace(/[.!?。！？，،]+$/u,'').trim();
+      const value = commandText(question);
       const names=Object.values(labels).map(t=>t.tech.toLocaleLowerCase());
       if(names.includes(value) || Object.values(labels).some(t=>t.shop.toLocaleLowerCase()===value) || shopQuery(question)) return true;
       return /^(?:(?:please )?(?:open|show|take me to) (?:the )?tech (?:channel|studio)|(?:abra|abrir|mostre) (?:o )?(?:canal de tecnologia|estúdio de tecnologia)|(?:abre|abrir) (?:el )?(?:canal de tecnología|estudio de tecnología))$/iu.test(value);

@@ -22,7 +22,9 @@
     "albumNote": "Listen for the clipped rhythms of Computer World after The Playlist. Which sounds imitate machines and which suggest people at work?",
     "fictionNote": "Pair the Rio club story with a novel about starting over. Montgomery’s heroine challenges her family, while von Arnim sends four strangers to Italy.",
     "press": "Technology journalism",
-    "pressNote": "Read a hardware tutorial from Raspberry Pi, then compare an engineering story in IEEE Spectrum. Look for the design constraint that shaped the result."
+    "pressNote": "Read a hardware tutorial from Raspberry Pi, then compare an engineering story in IEEE Spectrum. Look for the design constraint that shaped the result.",
+    "techTitle": "Learn technology with videos, podcasts and books",
+    "trailTitle": "What to watch, read and listen to next"
   },
   "pt-BR": {
     "name": "Português (Brasil)",
@@ -47,7 +49,9 @@
     "albumNote": "Ouça as batidas curtas de Computer World depois de The Playlist. Quais sons imitam máquinas e quais lembram pessoas trabalhando?",
     "fictionNote": "Combine a história do clube carioca com um romance sobre recomeços. A protagonista de Montgomery desafia a família, enquanto von Arnim leva quatro desconhecidas à Itália.",
     "press": "Jornalismo de tecnologia",
-    "pressNote": "Leia um projeto de hardware da Raspberry Pi e compare com uma reportagem da IEEE Spectrum. Que limitação técnica mudou o resultado?"
+    "pressNote": "Leia um projeto de hardware da Raspberry Pi e compare com uma reportagem da IEEE Spectrum. Que limitação técnica mudou o resultado?",
+    "techTitle": "Aprenda tecnologia com vídeos, podcasts e livros",
+    "trailTitle": "O que assistir, ler e ouvir depois"
   },
   "es": {
     "name": "Español",
@@ -72,7 +76,9 @@
     "albumNote": "Escucha los ritmos entrecortados de Computer World después de The Playlist. ¿Qué sonidos imitan máquinas y cuáles recuerdan al trabajo humano?",
     "fictionNote": "Combina el club de Río con una novela sobre empezar de nuevo. La protagonista de Montgomery desafía a su familia y von Arnim lleva a cuatro desconocidas a Italia.",
     "press": "Periodismo tecnológico",
-    "pressNote": "Lee un proyecto de Raspberry Pi y compáralo con un reportaje de IEEE Spectrum. ¿Qué limitación técnica influyó en el resultado?"
+    "pressNote": "Lee un proyecto de Raspberry Pi y compáralo con un reportaje de IEEE Spectrum. ¿Qué limitación técnica influyó en el resultado?",
+    "techTitle": "Aprende tecnología con vídeos, podcasts y libros",
+    "trailTitle": "Qué ver, leer y escuchar después"
   },
   "fr": {
     "name": "Français",
@@ -97,7 +103,9 @@
     "albumNote": "Après The Playlist, écoutez les rythmes saccadés de Computer World. Quels sons évoquent une machine ou des personnes au travail ?",
     "fictionNote": "Prolongez l’histoire du club de Rio avec un roman sur un nouveau départ. L’héroïne de Montgomery défie sa famille et von Arnim envoie quatre inconnues en Italie.",
     "press": "Presse technologique",
-    "pressNote": "Lisez un projet matériel de Raspberry Pi, puis une enquête d’IEEE Spectrum. Quelle contrainte a orienté la conception ?"
+    "pressNote": "Lisez un projet matériel de Raspberry Pi, puis une enquête d’IEEE Spectrum. Quelle contrainte a orienté la conception ?",
+    "techTitle": "Apprendre la tech en vidéo, en podcast et en livre",
+    "trailTitle": "Que regarder, lire ou écouter ensuite ?"
   },
   "de": {
     "name": "Deutsch",
@@ -122,7 +130,9 @@
     "albumNote": "Höre nach The Playlist die kurzen Rhythmen von Computer World. Welche Klänge erinnern an Maschinen, welche an Menschen bei der Arbeit?",
     "fictionNote": "Ergänze die Geschichte des Clubs in Rio um einen Roman über einen Neuanfang. Montgomerys Heldin widersetzt sich ihrer Familie, bei von Arnim reisen vier Fremde nach Italien.",
     "press": "Technikjournalismus",
-    "pressNote": "Vergleiche ein Hardwareprojekt von Raspberry Pi mit einem Bericht in IEEE Spectrum. Welche technische Grenze hat den Entwurf beeinflusst?"
+    "pressNote": "Vergleiche ein Hardwareprojekt von Raspberry Pi mit einem Bericht in IEEE Spectrum. Welche technische Grenze hat den Entwurf beeinflusst?",
+    "techTitle": "Technik lernen mit Videos, Podcasts und Büchern",
+    "trailTitle": "Filme, Bücher und Musik passend zur Serie entdecken"
   },
   "it": {
     "name": "Italiano",
@@ -147,7 +157,9 @@
     "albumNote": "Dopo The Playlist ascolta i ritmi spezzati di Computer World. Quali suoni ricordano le macchine e quali il lavoro umano?",
     "fictionNote": "Affianca alla storia del locale di Rio un romanzo sui nuovi inizi. L’eroina di Montgomery sfida la famiglia, mentre von Arnim porta quattro sconosciute in Italia.",
     "press": "Giornalismo tecnologico",
-    "pressNote": "Confronta un progetto hardware di Raspberry Pi con un reportage di IEEE Spectrum. Quale vincolo ha influito sul risultato?"
+    "pressNote": "Confronta un progetto hardware di Raspberry Pi con un reportage di IEEE Spectrum. Quale vincolo ha influito sul risultato?",
+    "techTitle": "Impara la tecnologia con video, podcast e libri",
+    "trailTitle": "Cosa guardare, leggere e ascoltare dopo una serie"
   },
   "tr": {
     "name": "Türkçe",
@@ -172,7 +184,9 @@
     "albumNote": "The Playlist’ten sonra Computer World’ün kesik ritimlerini dinleyin. Hangi sesler makineleri, hangileri çalışan insanları çağrıştırıyor?",
     "fictionNote": "Rio’daki kulübün öyküsünü yeni başlangıçlar üzerine bir romanla tamamlayın. Montgomery’nin kahramanı ailesine karşı çıkar; von Arnim dört yabancıyı İtalya’ya götürür.",
     "press": "Teknoloji yayınları",
-    "pressNote": "Raspberry Pi donanım projesini IEEE Spectrum’daki bir mühendislik yazısıyla karşılaştırın. Hangi teknik kısıt sonucu değiştirdi?"
+    "pressNote": "Raspberry Pi donanım projesini IEEE Spectrum’daki bir mühendislik yazısıyla karşılaştırın. Hangi teknik kısıt sonucu değiştirdi?",
+    "techTitle": "Video, podcast ve kitaplarla teknoloji öğrenin",
+    "trailTitle": "Sırada ne izlemeli, okumalı ve dinlemeli?"
   },
   "ru": {
     "name": "Русский",
@@ -197,7 +211,9 @@
     "albumNote": "После The Playlist послушайте отрывистые ритмы Computer World. Какие звуки напоминают машины, а какие — людей за работой?",
     "fictionNote": "Дополните историю клуба в Рио романом о новом начале. Героиня Монтгомери бросает вызов семье, а фон Арним отправляет четырёх незнакомок в Италию.",
     "press": "Технологические журналы",
-    "pressNote": "Сравните проект Raspberry Pi с репортажем IEEE Spectrum. Какое техническое ограничение повлияло на результат?"
+    "pressNote": "Сравните проект Raspberry Pi с репортажем IEEE Spectrum. Какое техническое ограничение повлияло на результат?",
+    "techTitle": "Изучайте технологии по видео, подкастам и книгам",
+    "trailTitle": "Что посмотреть, почитать и послушать дальше"
   },
   "ar": {
     "name": "العربية",
@@ -222,7 +238,9 @@
     "albumNote": "بعد The Playlist استمع إلى إيقاعات Computer World المتقطّعة. أيّ الأصوات تحاكي الآلات وأيّها يوحي بأناس يعملون؟",
     "fictionNote": "اتبع قصة نادي ريو برواية عن بداية جديدة. تتحدّى بطلة مونتغمري عائلتها، بينما تجمع فون أرنيم أربع غريبات في إيطاليا.",
     "press": "صحافة التقنية",
-    "pressNote": "اقرأ مشروعاً عملياً من Raspberry Pi ثم قارنه بتقرير هندسي من IEEE Spectrum. أيّ قيد تقني أثّر في النتيجة؟"
+    "pressNote": "اقرأ مشروعاً عملياً من Raspberry Pi ثم قارنه بتقرير هندسي من IEEE Spectrum. أيّ قيد تقني أثّر في النتيجة؟",
+    "techTitle": "تعلّم التقنية بالفيديو والبودكاست والكتب",
+    "trailTitle": "ماذا تشاهد أو تقرأ أو تسمع بعد مسلسلك؟"
   },
   "hi": {
     "name": "हिन्दी",
@@ -247,7 +265,9 @@
     "albumNote": "The Playlist के बाद Computer World की छोटी, कटी हुई धुनें सुनें। किन आवाज़ों में मशीन और किनमें काम करते लोग सुनाई देते हैं?",
     "fictionNote": "रियो के क्लब की कहानी के बाद नई शुरुआत पर एक उपन्यास पढ़ें। मोंटगोमरी की नायिका परिवार को चुनौती देती है और फ़ॉन आर्निम चार अनजान महिलाओं को इटली ले जाती हैं।",
     "press": "टेक्नोलॉजी पत्रिकाएँ",
-    "pressNote": "Raspberry Pi का हार्डवेयर प्रोजेक्ट पढ़ें और IEEE Spectrum की रिपोर्ट से तुलना करें। किस तकनीकी सीमा ने डिज़ाइन बदला?"
+    "pressNote": "Raspberry Pi का हार्डवेयर प्रोजेक्ट पढ़ें और IEEE Spectrum की रिपोर्ट से तुलना करें। किस तकनीकी सीमा ने डिज़ाइन बदला?",
+    "techTitle": "वीडियो, पॉडकास्ट और किताबों से टेक्नोलॉजी सीखें",
+    "trailTitle": "अब क्या देखें, पढ़ें और सुनें?"
   },
   "id": {
     "name": "Bahasa Indonesia",
@@ -272,7 +292,9 @@
     "albumNote": "Setelah The Playlist, dengarkan irama patah-patah Computer World. Bunyi mana yang meniru mesin dan mana yang mengingatkan pada orang bekerja?",
     "fictionNote": "Pasangkan kisah klub Rio dengan novel tentang awal baru. Tokoh Montgomery menantang keluarganya, sementara von Arnim membawa empat orang asing ke Italia.",
     "press": "Jurnalisme teknologi",
-    "pressNote": "Bandingkan proyek perangkat keras Raspberry Pi dengan laporan teknik di IEEE Spectrum. Kendala apa yang memengaruhi hasilnya?"
+    "pressNote": "Bandingkan proyek perangkat keras Raspberry Pi dengan laporan teknik di IEEE Spectrum. Kendala apa yang memengaruhi hasilnya?",
+    "techTitle": "Belajar teknologi lewat video, podcast, dan buku",
+    "trailTitle": "Apa yang bisa ditonton, dibaca, dan didengarkan selanjutnya?"
   },
   "ja": {
     "name": "日本語",
@@ -297,7 +319,9 @@
     "albumNote": "The Playlist の後は Computer World の歯切れのよいリズムを。どの音が機械を、どの音が働く人を思わせるでしょうか。",
     "fictionNote": "リオのクラブの物語には、人生の再出発を描く小説を。モンゴメリの主人公は家族に逆らい、フォン・アルニムの四人はイタリアで出会います。",
     "press": "技術ジャーナリズム",
-    "pressNote": "Raspberry Pi の工作記事と IEEE Spectrum の技術報道を読み比べましょう。どんな設計上の制約が結果を変えたでしょうか。"
+    "pressNote": "Raspberry Pi の工作記事と IEEE Spectrum の技術報道を読み比べましょう。どんな設計上の制約が結果を変えたでしょうか。",
+    "techTitle": "動画・ポッドキャスト・本で学ぶテクノロジー",
+    "trailTitle": "次に観たい作品・読みたい本・聴きたい音楽"
   },
   "ko": {
     "name": "한국어",
@@ -322,7 +346,9 @@
     "albumNote": "The Playlist를 본 뒤 Computer World의 끊어지는 리듬을 들어 보세요. 어느 소리가 기계를, 어느 소리가 일하는 사람을 떠올리게 하나요?",
     "fictionNote": "리우 클럽 이야기 다음에는 새로운 출발을 다룬 소설을 읽어 보세요. 몽고메리의 주인공은 가족에 맞서고 폰 아르님은 낯선 네 사람을 이탈리아로 이끕니다.",
     "press": "기술 저널리즘",
-    "pressNote": "Raspberry Pi의 하드웨어 프로젝트와 IEEE Spectrum의 기술 기사를 비교해 보세요. 어떤 설계 제약이 결과를 바꿨나요?"
+    "pressNote": "Raspberry Pi의 하드웨어 프로젝트와 IEEE Spectrum의 기술 기사를 비교해 보세요. 어떤 설계 제약이 결과를 바꿨나요?",
+    "techTitle": "영상·팟캐스트·책으로 배우는 기술",
+    "trailTitle": "다음에 볼 작품, 읽을 책, 들을 음악"
   },
   "zh": {
     "name": "中文",
@@ -347,6 +373,8 @@
     "albumNote": "看完 The Playlist 后听听 Computer World 短促的节拍。哪些声音模仿机器，哪些让你想到工作中的人？",
     "fictionNote": "读完里约俱乐部的故事，不妨选一本关于重新开始的小说。蒙哥马利的女主人公挑战家人，冯·阿尼姆则让四位陌生人在意大利相遇。",
     "press": "科技期刊",
-    "pressNote": "把 Raspberry Pi 的硬件项目与 IEEE Spectrum 的工程报道放在一起读。哪一项设计限制改变了结果？"
+    "pressNote": "把 Raspberry Pi 的硬件项目与 IEEE Spectrum 的工程报道放在一起读。哪一项设计限制改变了结果？",
+    "techTitle": "用视频、播客和书籍学习科技",
+    "trailTitle": "下一部看什么、读什么、听什么"
   }
 }

@@ -211,10 +211,40 @@
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!bubble)scheduleBubble();});
     window.addEventListener('resize',()=>{if(bubble&&(busy()||!fitBubble(bubble)))dismissBubble();else if(!bubble)scheduleBubble();});
     document.fonts?.addEventListener?.('loadingdone',()=>{if(bubble&&!fitBubble(bubble))dismissBubble();});
+    // Decorative animation and poster hydration do not change the invitation's
+    // available space. Only remeasure when its header, dock or viewport changes.
+    const chromeSelector='.app-header,#ma-reference-header,.ma-cinema-dock,.ma-reference-dock';
+    const dialogSelector='dialog,[role="dialog"]';
+    let frame=0;
+    function checkBubble(){
+      if(!bubble || frame)return;
+      frame=requestAnimationFrame(()=>{
+        frame=0;
+        if(bubble && (installed() || busy() || !fitBubble(bubble)))dismissBubble(installed());
+      });
+    }
+    function dialogChanged(){
+      if(bubble && busy())dismissBubble();
+      else checkBubble();
+    }
+    const chromeResize=typeof ResizeObserver==='function'?new ResizeObserver(checkBubble):null;
+    document.querySelectorAll(chromeSelector).forEach(node=>chromeResize?.observe(node));
     new MutationObserver(records=>{
-      if(!bubble?.isConnected)return;
-      const outside=records.some(record=>record.target!==bubble&&!bubble.contains(record.target));
-      if(installed()||busy()||(outside&&!fitBubble(bubble)))dismissBubble(installed());
+      for(const record of records){
+        if(bubble && (record.target===bubble || bubble.contains(record.target)))continue;
+        if(record.type==='attributes'){
+          if(bubble && (record.target.matches(dialogSelector)||record.target.querySelector(dialogSelector)))dialogChanged();
+          else if(record.target.matches(chromeSelector))checkBubble();
+          continue;
+        }
+        for(const node of record.addedNodes){
+          if(node.nodeType!==1)continue;
+          if(node.matches(chromeSelector)){chromeResize?.observe(node);checkBubble();}
+          node.querySelectorAll(chromeSelector).forEach(el=>{chromeResize?.observe(el);checkBubble();});
+          if(bubble && (node.matches(dialogSelector)||node.querySelector(dialogSelector)))dialogChanged();
+        }
+        for(const node of record.removedNodes)if(node.nodeType===1 && node.matches(chromeSelector))checkBubble();
+      }
     }).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open','hidden','aria-expanded','style','class']});
   }
   function copy(kind,visit){
