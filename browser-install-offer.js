@@ -223,21 +223,25 @@
         if(bubble && (installed() || busy() || !fitBubble(bubble)))dismissBubble(installed());
       });
     }
+    function dialogChanged(){
+      if(bubble && busy())dismissBubble();
+      else checkBubble();
+    }
     const chromeResize=typeof ResizeObserver==='function'?new ResizeObserver(checkBubble):null;
     document.querySelectorAll(chromeSelector).forEach(node=>chromeResize?.observe(node));
     new MutationObserver(records=>{
       for(const record of records){
         if(bubble && (record.target===bubble || bubble.contains(record.target)))continue;
         if(record.type==='attributes'){
-          if(record.target.matches(chromeSelector+','+dialogSelector) ||
-             (bubble && record.target.querySelector(dialogSelector)))checkBubble();
+          if(bubble && (record.target.matches(dialogSelector)||record.target.querySelector(dialogSelector)))dialogChanged();
+          else if(record.target.matches(chromeSelector))checkBubble();
           continue;
         }
         for(const node of record.addedNodes){
           if(node.nodeType!==1)continue;
           if(node.matches(chromeSelector)){chromeResize?.observe(node);checkBubble();}
           node.querySelectorAll(chromeSelector).forEach(el=>{chromeResize?.observe(el);checkBubble();});
-          if(bubble && (node.matches(dialogSelector)||node.querySelector(dialogSelector)))checkBubble();
+          if(bubble && (node.matches(dialogSelector)||node.querySelector(dialogSelector)))dialogChanged();
         }
         for(const node of record.removedNodes)if(node.nodeType===1 && node.matches(chromeSelector))checkBubble();
       }

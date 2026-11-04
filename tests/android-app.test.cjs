@@ -164,7 +164,9 @@ test('adult Android keeps fullscreen media immersive and gives normal content on
  assert.match(insets,/WindowInsetsCompat\.Type\.systemBars\(\) or WindowInsetsCompat\.Type\.displayCutout\(\)/);
  assert.match(insets,/setPadding\(left \+ safe\.left, top \+ safe\.top, right \+ safe\.right, bottom \+ bottomSafe\)/);
  assert.ok(insets.indexOf('val left = target.paddingLeft')<insets.indexOf('setOnApplyWindowInsetsListener(target)'), 'insets never accumulate over their previous padding');
- assert.match(insets,/if \(insets\.isVisible\(WindowInsetsCompat\.Type\.ime\(\)\)\) 0 else safe\.bottom/);
+ assert.match(insets,/val imeVisible = insets\.isVisible\(WindowInsetsCompat\.Type\.ime\(\)\)/);
+ assert.match(insets,/if \(imeVisible\) 0 else safe\.bottom/);
+ assert.match(insets,/if \(target === content\) destinationDock\.setKeyboard\(imeVisible\)/);
  assert.doesNotMatch(insets,/fullscreenHost|introHost|setAdSize|ad_shell|Type\.ime\(\)\.bottom/);
  assert.match(read('android-studio/app/src/main/AndroidManifest.xml'),/android:windowSoftInputMode="adjustResize"/);
 });
