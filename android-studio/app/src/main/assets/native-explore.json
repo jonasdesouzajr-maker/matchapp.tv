@@ -1,0 +1,156 @@
+{
+  "en": {
+    "heading": "Where do you want to start?",
+    "matchHint": "Pick a film or series for tonight.",
+    "techHint": "Watch, read or listen to something about technology.",
+    "trailHint": "Pair a screen story with a book or a record.",
+    "all": "See all topics",
+    "close": "Close",
+    "tech": "Tech Studio",
+    "trail": "The catalog listening room",
+    "pick": "Find tonight’s match"
+  },
+  "pt-BR": {
+    "heading": "Por onde você quer começar?",
+    "matchHint": "Escolha um filme ou uma série para hoje.",
+    "techHint": "Assista, leia ou ouça algo sobre tecnologia.",
+    "trailHint": "Combine uma história da tela com um livro ou disco.",
+    "all": "Ver todos os temas",
+    "close": "Fechar",
+    "tech": "Estúdio de tecnologia",
+    "trail": "Entre telas, discos e livros",
+    "pick": "Escolher o que assistir"
+  },
+  "es": {
+    "heading": "¿Por dónde quieres empezar?",
+    "matchHint": "Elige una película o serie para esta noche.",
+    "techHint": "Mira, lee o escucha algo sobre tecnología.",
+    "trailHint": "Combina una historia de la pantalla con un libro o un disco.",
+    "all": "Ver todos los temas",
+    "close": "Cerrar",
+    "tech": "Estudio de tecnología",
+    "trail": "Entre pantallas, discos y libros",
+    "pick": "Elegir qué ver"
+  },
+  "fr": {
+    "heading": "Par où voulez-vous commencer ?",
+    "matchHint": "Choisissez un film ou une série pour ce soir.",
+    "techHint": "Explorez la tech en vidéo, en livre ou en podcast.",
+    "trailHint": "Associez une histoire à l’écran à un livre ou à un disque.",
+    "all": "Voir tous les thèmes",
+    "close": "Fermer",
+    "tech": "Studio des technologies",
+    "trail": "D’une œuvre à l’autre",
+    "pick": "Choisir quoi regarder"
+  },
+  "de": {
+    "heading": "Womit möchtest du anfangen?",
+    "matchHint": "Wähle einen Film oder eine Serie für heute Abend.",
+    "techHint": "Entdecke Technik in Videos, Büchern und Podcasts.",
+    "trailHint": "Ergänze eine Geschichte auf dem Bildschirm durch ein Buch oder Album.",
+    "all": "Alle Themen ansehen",
+    "close": "Schließen",
+    "tech": "Technikstudio",
+    "trail": "Von der Serie zum Buch",
+    "pick": "Etwas zum Anschauen finden"
+  },
+  "it": {
+    "heading": "Da dove vuoi iniziare?",
+    "matchHint": "Scegli un film o una serie per stasera.",
+    "techHint": "Scopri la tecnologia in video, libri e podcast.",
+    "trailHint": "Abbina una storia sullo schermo a un libro o a un disco.",
+    "all": "Vedi tutti i temi",
+    "close": "Chiudi",
+    "tech": "Studio di tecnologia",
+    "trail": "Tra schermi, dischi e libri",
+    "pick": "Scegli cosa guardare"
+  },
+  "tr": {
+    "heading": "Nereden başlamak istersin?",
+    "matchHint": "Bu akşam için bir film veya dizi seç.",
+    "techHint": "Teknolojiyi video, kitap ve podcast ile keşfet.",
+    "trailHint": "Bir ekran hikâyesini bir kitap veya albümle eşleştir.",
+    "all": "Tüm konuları gör",
+    "close": "Kapat",
+    "tech": "Teknoloji stüdyosu",
+    "trail": "Ekrandan plağa ve kitaba",
+    "pick": "İzleyecek bir şey bul"
+  },
+  "ru": {
+    "heading": "С чего хотите начать?",
+    "matchHint": "Выберите фильм или сериал на вечер.",
+    "techHint": "Узнавайте о технологиях из видео, книг и подкастов.",
+    "trailHint": "Подберите к экранной истории книгу или альбом.",
+    "all": "Все темы",
+    "close": "Закрыть",
+    "tech": "Студия технологий",
+    "trail": "От экрана к пластинке и книге",
+    "pick": "Выбрать, что посмотреть"
+  },
+  "ar": {
+    "heading": "من أين تريد أن تبدأ؟",
+    "matchHint": "اختر فيلمًا أو مسلسلًا لهذه الليلة.",
+    "techHint": "استكشف التقنية في مقاطع الفيديو والكتب والبودكاست.",
+    "trailHint": "اربط قصة على الشاشة بكتاب أو ألبوم.",
+    "all": "عرض جميع المواضيع",
+    "close": "إغلاق",
+    "tech": "استوديو التقنية",
+    "trail": "بين الشاشة والموسيقى والكتاب",
+    "pick": "اختر ما ستشاهده"
+  },
+  "hi": {
+    "heading": "आप कहाँ से शुरुआत करना चाहेंगे?",
+    "matchHint": "आज शाम के लिए कोई फ़िल्म या सीरीज़ चुनें।",
+    "techHint": "वीडियो, किताबों और पॉडकास्ट से तकनीक जानें।",
+    "trailHint": "किसी कहानी के साथ एक किताब या एल्बम चुनें।",
+    "all": "सभी विषय देखें",
+    "close": "बंद करें",
+    "tech": "टेक स्टूडियो",
+    "trail": "पर्दे, संगीत और किताबों के बीच",
+    "pick": "आज क्या देखें"
+  },
+  "id": {
+    "heading": "Mau mulai dari mana?",
+    "matchHint": "Pilih film atau serial untuk malam ini.",
+    "techHint": "Jelajahi teknologi lewat video, buku, dan podcast.",
+    "trailHint": "Padukan cerita di layar dengan buku atau album.",
+    "all": "Lihat semua topik",
+    "close": "Tutup",
+    "tech": "Studio teknologi",
+    "trail": "Dari layar ke musik dan buku",
+    "pick": "Pilih tontonan"
+  },
+  "ja": {
+    "heading": "何から始めますか？",
+    "matchHint": "今夜観る映画やドラマを選びましょう。",
+    "techHint": "動画、本、ポッドキャストでテクノロジーを学べます。",
+    "trailHint": "映像の物語に合う本やアルバムを見つけましょう。",
+    "all": "すべてのテーマを見る",
+    "close": "閉じる",
+    "tech": "テクノロジースタジオ",
+    "trail": "映像から音楽、本へ",
+    "pick": "今夜の作品を探す"
+  },
+  "ko": {
+    "heading": "어디에서 시작할까요?",
+    "matchHint": "오늘 밤 볼 영화나 시리즈를 골라 보세요.",
+    "techHint": "영상, 책, 팟캐스트로 기술을 만나보세요.",
+    "trailHint": "화면 속 이야기와 어울리는 책이나 앨범을 찾아보세요.",
+    "all": "모든 주제 보기",
+    "close": "닫기",
+    "tech": "테크 스튜디오",
+    "trail": "화면에서 음악과 책으로",
+    "pick": "오늘 볼 작품 찾기"
+  },
+  "zh": {
+    "heading": "想从哪里开始？",
+    "matchHint": "选一部今晚想看的电影或剧集。",
+    "techHint": "通过视频、书籍和播客了解科技。",
+    "trailHint": "为屏幕上的故事搭配一本书或一张专辑。",
+    "all": "查看所有主题",
+    "close": "关闭",
+    "tech": "科技工作室",
+    "trail": "从银幕到唱片和书页",
+    "pick": "找找今晚看什么"
+  }
+}

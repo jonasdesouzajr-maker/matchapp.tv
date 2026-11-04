@@ -33,12 +33,12 @@
     const links = slots.map(key=>nav?.querySelector('a[data-cinema-route="'+key+'"]'));
     const labels = links.map(a=>a?.querySelector('[data-cinema-copy]')?.textContent.trim() || '');
     const payload = JSON.stringify({href:location.href, visible:!blocked() && labels.every(Boolean), labels,
-      selected:links.findIndex(a=>a?.getAttribute('aria-current')==='page'), rtl:root.dir==='rtl',
+      selected:links.findIndex(a=>a?.getAttribute('aria-current')==='page'), rtl:root.dir==='rtl', lang:root.lang||'en',
       motion:!motion.matches && !root.classList.contains('reduce-motion')});
     if (payload !== sent) { sent=payload; bridge.postMessage(payload); }
   }
   function targetFor(message) {
-    if (!root.hasAttribute('data-native-dock') || !/^activate:[0-4]$/.test(message) || blocked()) return null;
+    if (!root.hasAttribute('data-native-dock') || !/^(?:activate:[0-4]|explore:1)$/.test(message) || blocked()) return null;
     const anchor=nav?.querySelector('a[data-cinema-route="'+slots[message.slice(-1)]+'"]');
     return anchor?.isConnected && anchor.getAttribute('aria-disabled')!=='true' ? anchor : null;
   }
@@ -47,6 +47,10 @@
   // same reply synchronously before the existing anchor handles navigation.
   bridge.addEventListener('message', event => {
     const anchor=targetFor(event.data);
+    if (anchor && event.data==='explore:1') {
+      bridge.postMessage(JSON.stringify({href:location.href, openExplore:true}));
+      return;
+    }
     if (anchor) setTimeout(()=>{ if (targetFor(event.data)===anchor) anchor.click(); },0);
   });
   bridge.onmessage = event => {
