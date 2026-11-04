@@ -26,7 +26,7 @@ class PublicPageRetryPolicyTest {
             "https://matchapp.tv.evil/news/", "https://evil.matchapp.tv/news/",
             "http://matchapp.tv/news/", "https://user@matchapp.tv/news/",
             "https://matchapp.tv:8443/news/")) assertNull(url, delay(url = url))
-        assertEquals(1_000L, delay(url = "https://matchapp.tv/?utm_source=android_app&appBuild=68"))
+        assertEquals(1_000L, delay(url = "https://matchapp.tv/?utm_source=android_app&appBuild=69"))
     }
 
     @Test fun honorsRetryAfterWithoutRetryingBeforeALongServerCooldown() {

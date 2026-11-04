@@ -9,7 +9,7 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "app/src/main/res"
-ART = ROOT / "play/refresh-20261030/artwork"
+ART = ROOT / "play/refresh-20261104/artwork"
 
 
 def rgba_png(path, expected_size):
@@ -60,6 +60,7 @@ def rgba_png(path, expected_size):
 
 
 play_path = ART / "matchapp-ai-play-512.png"
+assert play_path.read_bytes() == (ROOT / "play/icon-512.png").read_bytes(), "Staged Play icon differs from the current artwork"
 play = rgba_png(play_path, (512, 512))
 assert play_path.stat().st_size <= 1024 * 1024, "Play listing icon exceeds 1024 KB"
 assert all(a == 255 for row in play for a in row[3::4]), "Play icon must be full-bleed, without a baked transparent outer mask"

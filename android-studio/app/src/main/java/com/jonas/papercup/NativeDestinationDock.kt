@@ -38,6 +38,7 @@ class NativeDestinationDock(
     private var documentUrl: String? = null
     private var documentReply: JavaScriptReplyProxy? = null
     private var pendingHaptic: String? = null
+    private var explorePending = false
     private var tappedAt = 0L
     private val density = bar.resources.displayMetrics.density
     private val origins = setOf("https://matchapp.tv", "https://www.matchapp.tv")
@@ -55,25 +56,23 @@ class NativeDestinationDock(
         bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         bar.isItemHorizontalTranslationEnabled = false
         icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
-        fun sendAction(id: Int) {
+        fun sendCommand(message: String) {
             if (!requested || keyboard || documentUrl != web.url) return
-            val message = "activate:${id-1}"
+            explorePending = message == "explore:1"
             pendingHaptic = message
             tappedAt = SystemClock.elapsedRealtime()
             documentReply?.postMessage(message)
         }
         fun activate(id: Int) {
-            if (!requested || keyboard || documentUrl != web.url) return
-            if (id != 2) {
-                sendAction(id)
-                return
-            }
+            sendCommand(if (id == 2) "explore:1" else "activate:" + (id - 1))
+        }
+        fun showExplore() {
             explore.show(language, bar.layoutDirection == View.LAYOUT_DIRECTION_RTL,
                 bar.menu.getItem(1).title.toString()) { key, locale ->
                 if (!requested || keyboard || documentUrl != web.url) return@show
                 when (key) {
-                    "matches" -> sendAction(3)
-                    "all" -> sendAction(2)
+                    "matches" -> sendCommand("activate:2")
+                    "all" -> sendCommand("activate:1")
                     "tech", "trail" -> {
                         val group = if (key == "tech") "tech" else "catalog-trails"
                         val edition = if (locale == "en") "" else locale.lowercase(java.util.Locale.ROOT) + "/"
@@ -91,6 +90,13 @@ class NativeDestinationDock(
             val data=message.data?.takeIf { it.length<=8192 }?.let { runCatching { JSONObject(it) }.getOrNull() } ?: return@addWebMessageListener
             val href=data.optString("href")
             if (view.url!=href || !allowed(href)) return@addWebMessageListener
+            if (data.optBoolean("openExplore")) {
+                if (!explorePending || !requested || keyboard || documentUrl != href ||
+                    SystemClock.elapsedRealtime() - tappedAt > 1000) return@addWebMessageListener
+                explorePending = false
+                showExplore()
+                return@addWebMessageListener
+            }
             if (data.has("dockHaptic")) {
                 // A freshly navigated WebView may deny vibrate() until its own surface is touched.
                 // Permit one bounded pattern only for the current physical menu activation.
@@ -159,6 +165,7 @@ class NativeDestinationDock(
         documentUrl=null
         documentReply=null
         pendingHaptic=null
+        explorePending=false
         render()
         web.animate().cancel()
         web.scaleX=1f; web.scaleY=1f; web.translationY=0f

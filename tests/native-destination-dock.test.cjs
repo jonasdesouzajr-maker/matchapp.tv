@@ -30,6 +30,10 @@ test('native navigation mirrors one localized owner and restores its original la
   receive('shown');
   let clicks=0;
   w.document.querySelector('[data-cinema-route="matches"]').onclick=e=>{e.preventDefault();clicks++;};
+  let exploreClicks=0;
+  w.document.querySelector('[data-cinema-route="explore"]').onclick=e=>{e.preventDefault();exploreClicks++;};
+  receive('explore:1');await tick();assert.equal(posts.at(-1).openExplore,true);assert.equal(exploreClicks,0);
+  receive('activate:1');await tick();assert.equal(exploreClicks,1);
   receive('activate:2');await tick();assert.equal(clicks,1);
   assert.equal(w.document.querySelector('nav').style.display,'none');
   receive('hidden');receive('activate:2');await tick();assert.equal(clicks,1);
@@ -53,6 +57,7 @@ test('native destinations wait for style- and class-controlled modals to close',
     // Home's auth, poster and feedback dialogs use display:flex to open.
     modal.style.display='flex';
     assert.equal(w.__maNativeDock.targetFor('activate:4'),null);
+    receive('explore:1');assert.equal(posts.some(p=>p.openExplore),false);
     receive('activate:4');await frame();
     assert.equal(clicks,0);assert.equal(posts.at(-1).visible,false);receive('hidden');
     modal.style.display='none';await frame();
