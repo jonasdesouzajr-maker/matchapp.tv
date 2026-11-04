@@ -66,13 +66,26 @@ test('standalone country resolver handles storage failures and has no language-d
 });
 
 test('choose-country guidance is authored for every supported interface language',()=>{
-  const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
-  const labels=languages.map(lang=>country.chooseCountryMessage(lang));
-  assert.equal(new Set(labels).size,14);
-  assert(labels.every(message=>typeof message==='string'&&message.length>20));
-  assert.equal(country.chooseCountryMessage('pt-PT'),labels[1]);
-  assert.equal(country.chooseCountryMessage('zh-Hant'),labels[13]);
-  assert.equal(country.chooseCountryMessage('not-supported'),labels[0]);
+  // Load the real locale owner in this test's browser realm. A standalone run
+  // must not rely on another test having installed the Han helper on Node globals.
+  const dom=new JSDOM('',{url:'https://matchapp.tv/',runScripts:'outside-only'});
+  try{
+    const w=dom.window;
+    w.eval(read('i18n.js'));
+    w.eval(read('viewer-country.js'));
+    const localizedCountry=w.MatchAppCountry;
+    const languages=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
+    const labels=languages.map(lang=>localizedCountry.chooseCountryMessage(lang));
+    assert.equal(new Set(labels).size,15);
+    assert(labels.every(message=>typeof message==='string'&&message.length>20));
+    assert.equal(localizedCountry.chooseCountryMessage('pt-PT'),labels[1]);
+    for(const tag of ['zh-TW','zh-Hant','zh-Hant-CN','zh-HK','zh-MO'])
+      assert.equal(localizedCountry.chooseCountryMessage(tag),labels[14],tag);
+    for(const tag of ['zh','zh-Hans','zh-Hans-TW','zh-CN'])
+      assert.equal(localizedCountry.chooseCountryMessage(tag),labels[13],tag);
+    assert.notEqual(labels[13],labels[14]);
+    assert.equal(localizedCountry.chooseCountryMessage('not-supported'),labels[0]);
+  }finally{dom.window.close();}
 });
 
 test('Ask AI reading cards use the chosen country independently of browser language and book origin',()=>{
