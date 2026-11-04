@@ -14,12 +14,12 @@ const normalizer=vm.createContext({URLSearchParams});vm.runInContext(finalizer.s
 test('all four reading loader emissions preserve prior URLs and the current audio cover and country keys',()=>{
  for(const file of ['index.html','ebooks/index.html']){
   const urls=scripts(read(file)).filter(url=>url.split('?')[0]==='/ebooks/ebook-matcher.js');
-  assert.deepEqual(urls,[matcherBefore+'&audiocover='+version+'&guestcountry='+countryVersion+'&legacyrewards=20261101-1'],file);
+  assert.deepEqual(urls,[matcherBefore+'&audiocover='+version+'&guestcountry='+countryVersion+'&legacyrewards=20261101-1&shelves=20261104'],file);
  }
  const reading=scripts(read('discover.html')).filter(url=>url.split('?')[0]==='/ebooks/reading-ai.js');
- assert.deepEqual(reading,[readingBefore+'&audiocover='+version+'&guestcountry='+countryVersion]);
+ assert.deepEqual(reading,[readingBefore+'&audiocover='+version+'&guestcountry='+countryVersion+'&shelves=20261104']);
  const source=read('ebooks/reading-ai.js'),lazy=[...source.matchAll(/script\.src='([^']*\/ebooks\/ebook-matcher\.js\?[^']+)'/g)];
- assert.equal(lazy.length,1);assert.equal(lazy[0][1],lazyBefore+'&audiocover='+version+'&guestcountry='+countryVersion);
+ assert.equal(lazy.length,1);assert.equal(lazy[0][1],lazyBefore+'&audiocover='+version+'&guestcountry='+countryVersion+'&shelves=20261104');
  assert(source.includes("script.dataset.readingStateOnly='1'"),'the existing state-only lazy mode remains in place');
 });
 
