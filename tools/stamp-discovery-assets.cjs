@@ -19,7 +19,7 @@ function stampDiscoveryAssets(html) {
 }
 
 // Keep preloads, CSS imports and dynamically assigned image URLs on the same edition.
-const brandRuntime=new Set(['patches/reference-system.css','patches/reference-system.js','patches/reference-header.js','brand-corrections.js','matchapp-ia.js','page-shell.js','daily-checkin.js','settings.js','manifest.json']);
+const brandRuntime=new Set(['patches/reference-system.css','patches/reference-system.js','patches/reference-header.js','brand-corrections.js','matchapp-ia.js','page-shell.js','daily-checkin.js','settings.js','manifest.json','manifest-pt-br.json']);
 function stampBrandReferences(source,html=false) {
   const paths=/(["'])(\/(?:patches\/reference-(?:system|header)\.(?:css|js)|(?:viewer-country|brand-corrections|matchapp-ia|page-shell|daily-checkin|settings)\.js|assets\/brand\/matchapp-ai-(?:mark\.svg|install-(?:192|512)\.png)))(?:\?([^"'#\s)]*))?\1/g;
   return source.replace(paths,(match,quote,url,query='')=>{
