@@ -1,0 +1,16 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <set android:ordering="together">
+            <objectAnimator android:propertyName="scaleX" android:valueTo="0.95" android:valueType="floatType" android:duration="80" />
+            <objectAnimator android:propertyName="scaleY" android:valueTo="0.95" android:valueType="floatType" android:duration="80" />
+            <objectAnimator android:propertyName="rotationX" android:valueTo="5" android:valueType="floatType" android:duration="80" />
+        </set>
+    </item>
+    <item>
+        <set android:ordering="together">
+            <objectAnimator android:propertyName="scaleX" android:valueTo="1" android:valueType="floatType" android:duration="145" />
+            <objectAnimator android:propertyName="scaleY" android:valueTo="1" android:valueType="floatType" android:duration="145" />
+            <objectAnimator android:propertyName="rotationX" android:valueTo="0" android:valueType="floatType" android:duration="145" />
+        </set>
+    </item>
+</selector>

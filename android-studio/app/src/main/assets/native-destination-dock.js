@@ -1,0 +1,74 @@
+/* Mirror the current document's five existing navigation actions in native Material controls. */
+(function () {
+  'use strict';
+  const bridge = window.MatchAppDestinationDock;
+  if (window.top !== window || !bridge || window.__maNativeDock ||
+      location.protocol !== 'https:' || !['matchapp.tv','www.matchapp.tv'].includes(location.hostname) ||
+      /^\/(kids|oauth|private-voice|lumina-match|reelforge)(\/|$)/.test(location.pathname)) return;
+  const root = document.documentElement;
+  const slots = ['home','explore','matches','list','profile'];
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  let nav, timer, sent, restore, suspended=false;
+  function schedule() {
+    if(!suspended && window.document?.body?.isConnected && !timer) timer=requestAnimationFrame(publish);
+  }
+  const labelsObserver = new MutationObserver(schedule);
+  function publish() {
+    timer = 0;
+    if(suspended || !window.document?.body?.isConnected)return;
+    const current = document.querySelector('nav.ma-cinema-dock');
+    if (current !== nav) {
+      labelsObserver.disconnect();
+      nav = current;
+      if (nav) labelsObserver.observe(nav,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['aria-current','hidden']});
+    }
+    const links = slots.map(key=>nav?.querySelector('a[data-cinema-route="'+key+'"]'));
+    const labels = links.map(a=>a?.querySelector('[data-cinema-copy]')?.textContent.trim() || '');
+    const blocked = document.hidden || document.fullscreenElement || document.body?.classList.contains('ma-jonas-modal-open') ||
+      document.body?.classList.contains('ma-jonas-chat-open') || (!nav || nav.hidden) ||
+      [...document.querySelectorAll('dialog[open],[role="dialog"][aria-modal="true"]:not([hidden])')].some(el=>el.getClientRects().length);
+    const payload = JSON.stringify({href:location.href, visible:!blocked && labels.every(Boolean), labels,
+      selected:links.findIndex(a=>a?.getAttribute('aria-current')==='page'), rtl:root.dir==='rtl',
+      motion:!motion.matches && !root.classList.contains('reduce-motion')});
+    if (payload !== sent) { sent=payload; bridge.postMessage(payload); }
+  }
+  // Keeping the web anchors preserves same-page handlers, history and the existing feedback owner.
+  window.__maNativeDock = {activate(index) {
+    if(!root.hasAttribute('data-native-dock') || !slots[index])return;
+    nav?.querySelector('a[data-cinema-route="'+slots[index]+'"]')?.click();
+  }};
+  bridge.onmessage = event => {
+    const shown=event.data==='shown';
+    root.toggleAttribute('data-native-dock',shown);
+    if(shown && nav && !restore){
+      const values=[[nav,'display','none'],[document.body,'padding-bottom','8px']].map(([el,key,value])=>{
+        const saved=[el.style.getPropertyValue(key),el.style.getPropertyPriority(key)];
+        el.style.setProperty(key,value,'important');
+        return ()=>el.style.setProperty(key,...saved);
+      });
+      restore=()=>values.forEach(reset=>reset());
+    } else if(!shown && restore){restore();restore=null;}
+  };
+  const style=document.createElement('style');
+  style.textContent='html[data-native-dock] body > nav.ma-cinema-dock{display:none!important}'+
+    'html[data-native-dock] body.ma-has-cinema-dock{--ma-reference-dock-clearance:8px!important}'+
+    'html[data-native-dock] body.ma-has-cinema-dock:has(>nav.ma-cinema-dock){padding-bottom:8px!important}'+
+    '@media(prefers-reduced-motion:no-preference){html.matchapp-ai-android:not(.reduce-motion) :is(.marquee-item,.channel-button,.gold-btn):active{transform:perspective(560px) rotateX(3deg) scale(.98);transform-origin:center bottom}}';
+  document.head.append(style);
+  const bind = () => {
+    const body=document.body;
+    new MutationObserver(schedule).observe(body,{childList:true,attributes:true,attributeFilter:['class']});
+    new MutationObserver(schedule).observe(root,{attributes:true,attributeFilter:['lang','dir','class']});
+    new MutationObserver(records=>{
+      if(records.some(r=>r.target.matches?.('dialog,[role="dialog"]')||
+        [...r.addedNodes,...r.removedNodes].some(n=>n.matches?.('dialog,[role="dialog"]'))))schedule();
+    }).observe(body,{childList:true,subtree:true,attributes:true,attributeFilter:['open','aria-modal','aria-hidden','hidden']});
+    publish();
+  };
+  if(document.body) bind(); else document.addEventListener('DOMContentLoaded',bind,{once:true});
+  window.addEventListener('pagehide',()=>{suspended=true;cancelAnimationFrame(timer);timer=0;});
+  window.addEventListener('pageshow',()=>{suspended=false;sent=null;schedule();});
+  for(const event of ['hashchange','popstate'])window.addEventListener(event,schedule);
+  for(const event of ['visibilitychange','fullscreenchange','matchapp:langchange','matchapp:settingschanged'])document.addEventListener(event,schedule);
+  motion.addEventListener?.('change',schedule);
+})();

@@ -1,7 +1,7 @@
 {
   "en": {
     "shop": "Shop the catalog",
-    "intro": "Choose a store and search for a physical product. The retailer handles checkout.",
+    "intro": "Search for any product. You choose the retailer and complete your purchase there.",
     "store": "Amazon storefront",
     "choose": "Choose a store",
     "product": "Product to search for",
@@ -9,15 +9,27 @@
     "print": "Pro Git in print",
     "headphones": "Wired headphones",
     "mic": "USB microphone",
-    "guide": "For Pro Git, compare the edition and binding. For podcasts, check the headphone plug against your device. A USB microphone for a desk needs a connector your computer supports.",
+    "guide": "Turn a movie night, a game night or a weekend away into a shopping list. Pick an idea or type your own.",
     "amazon": "Search Amazon",
     "ml": "Search Mercado Livre Brasil",
     "paid": "Paid link",
-    "disclosure": "As an Amazon Associate I earn from qualifying purchases."
+    "disclosure": "As an Amazon Associate I earn from qualifying purchases.",
+    "popcorn": "Popcorn maker",
+    "game": "Family board game",
+    "pack": "Travel backpack",
+    "brief": "For “{product}”, compare two listings for the same version and quantity. Check what is included and compare the total with delivery or recurring fees.",
+    "tips": {
+      "print": "Check the printing and binding. A used copy may match the edition you want.",
+      "headphones": "Check the plug against your device, especially if it has only USB-C.",
+      "mic": "Check the connector and whether the cable and desk stand are included.",
+      "popcorn": "Compare batch size with the number of bowls you serve, then check which parts are washable.",
+      "game": "Match the minimum player count and typical play time to your group.",
+      "pack": "Measure your airline’s under-seat limit and compare it with the bag’s packed dimensions."
+    }
   },
   "pt-BR": {
     "shop": "Buscar produtos",
-    "intro": "Escolha uma loja e procure um produto físico. A compra é concluída na loja.",
+    "intro": "Busque qualquer produto. Você escolhe a loja e finaliza a compra por lá.",
     "store": "Loja da Amazon",
     "choose": "Escolha uma loja",
     "product": "Produto que você procura",
@@ -25,15 +37,27 @@
     "print": "Pro Git impresso",
     "headphones": "Fone de ouvido com fio",
     "mic": "Microfone USB",
-    "guide": "Para ler Pro Git em papel, compare a edição e a encadernação. Para ouvir podcasts, confira se o plugue do fone serve no seu aparelho. Para gravar na mesa, verifique se o computador aceita o conector do microfone USB.",
+    "guide": "Noite de cinema, jogo em família ou viagem de fim de semana? Escolha uma ideia ou digite o que procura.",
     "amazon": "Buscar na Amazon",
     "ml": "Buscar no Mercado Livre Brasil",
     "paid": "Publicidade",
-    "disclosure": "Como associado da Amazon, eu ganho com compras qualificadas."
+    "disclosure": "Como associado da Amazon, eu ganho com compras qualificadas.",
+    "popcorn": "Pipoqueira",
+    "game": "Jogo de tabuleiro para família",
+    "pack": "Mochila de viagem",
+    "brief": "Para comparar ofertas de “{product}”, confira se a versão e a quantidade são as mesmas. Veja o que vem incluído e compare o total com frete ou cobranças recorrentes.",
+    "tips": {
+      "print": "Confira a edição e a encadernação. Um exemplar usado pode ser da edição que você procura.",
+      "headphones": "Confira se o plugue serve no seu aparelho, sobretudo se ele só tiver USB-C.",
+      "mic": "Veja qual é o conector e se o cabo e o suporte de mesa vêm juntos.",
+      "popcorn": "Compare a capacidade com o número de porções que costuma servir e veja quais peças são laváveis.",
+      "game": "Confira o número mínimo de jogadores e se a duração de uma partida combina com o seu grupo.",
+      "pack": "Compare as medidas da mochila cheia com o limite da companhia aérea para bagagem sob o assento."
+    }
   },
   "es": {
     "shop": "Buscar productos",
-    "intro": "Elige una tienda y busca un producto físico. La compra se completa en la tienda.",
+    "intro": "Busca cualquier producto. Elige la tienda y completa allí tu compra.",
     "store": "Tienda de Amazon",
     "choose": "Elige una tienda",
     "product": "Producto que buscas",
@@ -41,15 +65,27 @@
     "print": "Pro Git en papel",
     "headphones": "Auriculares con cable",
     "mic": "Micrófono USB",
-    "guide": "Para leer Pro Git en papel, compara la edición y la encuadernación. Para escuchar pódcasts, comprueba el conector de los auriculares. Para grabar en el escritorio, el micrófono USB debe ser compatible con tu ordenador.",
+    "guide": "¿Noche de cine, juegos en familia o una escapada? Elige una idea o escribe lo que buscas.",
     "amazon": "Buscar en Amazon",
     "ml": "Buscar en Mercado Livre Brasil",
     "paid": "Publicidad",
-    "disclosure": "Como afiliado de Amazon, obtengo ingresos por las compras que cumplen los requisitos."
+    "disclosure": "Como afiliado de Amazon, obtengo ingresos por las compras que cumplen los requisitos.",
+    "popcorn": "Palomitera",
+    "game": "Juego de mesa familiar",
+    "pack": "Mochila de viaje",
+    "brief": "Para comparar ofertas de «{product}», comprueba que la versión y la cantidad coincidan. Revisa qué incluye cada una y el total con envío o cuotas periódicas.",
+    "tips": {
+      "print": "Comprueba la edición y la encuadernación. Un ejemplar usado puede ser de la edición que buscas.",
+      "headphones": "Comprueba si la clavija sirve para tu dispositivo, sobre todo si solo tiene USB-C.",
+      "mic": "Revisa el conector y si incluye cable y soporte de mesa.",
+      "popcorn": "Compara la capacidad con las raciones que sirves y comprueba qué piezas son lavables.",
+      "game": "Comprueba el mínimo de jugadores y si la duración de una partida encaja con tu grupo.",
+      "pack": "Compara las medidas de la mochila llena con el límite de la aerolínea para llevarla bajo el asiento."
+    }
   },
   "fr": {
     "shop": "Chercher des produits",
-    "intro": "Choisissez une boutique et recherchez un produit physique. L’achat se termine chez le vendeur.",
+    "intro": "Recherchez le produit de votre choix. Vous choisissez le magasin et y effectuez votre achat.",
     "store": "Boutique Amazon",
     "choose": "Choisir une boutique",
     "product": "Produit recherché",
@@ -57,15 +93,27 @@
     "print": "Pro Git en version papier",
     "headphones": "Casque filaire",
     "mic": "Microphone USB",
-    "guide": "Pour lire Pro Git sur papier, comparez l’édition et la reliure. Pour écouter des podcasts, vérifiez la prise du casque. Pour enregistrer à votre bureau, choisissez un micro USB dont le connecteur convient à votre ordinateur.",
+    "guide": "Soirée cinéma, jeu en famille ou escapade ? Choisissez une idée ou saisissez votre recherche.",
     "amazon": "Chercher sur Amazon",
     "ml": "Chercher sur Mercado Livre Brasil",
     "paid": "Lien rémunéré",
-    "disclosure": "En tant que partenaire Amazon, je perçois une commission sur les achats remplissant les conditions requises."
+    "disclosure": "En tant que partenaire Amazon, je perçois une commission sur les achats remplissant les conditions requises.",
+    "popcorn": "Machine à pop-corn",
+    "game": "Jeu de société familial",
+    "pack": "Sac à dos de voyage",
+    "brief": "Pour « {product} », comparez deux offres de même version et quantité. Vérifiez le contenu et le total avec la livraison ou les frais récurrents.",
+    "tips": {
+      "print": "Vérifiez l’édition et la reliure. Un exemplaire d’occasion peut correspondre à l’édition recherchée.",
+      "headphones": "Vérifiez la prise de votre appareil, surtout s’il ne dispose que de l’USB-C.",
+      "mic": "Vérifiez le connecteur et la présence du câble et du pied de table.",
+      "popcorn": "Comparez la capacité au nombre de portions et vérifiez quelles pièces sont lavables.",
+      "game": "Vérifiez le nombre minimal de joueurs et la durée habituelle d’une partie.",
+      "pack": "Comparez les dimensions du sac rempli aux limites de la compagnie pour le rangement sous le siège."
+    }
   },
   "de": {
     "shop": "Produkte suchen",
-    "intro": "Wähle einen Shop und suche nach einem physischen Produkt. Den Kauf schließt du beim Händler ab.",
+    "intro": "Suche nach einem beliebigen Produkt. Du wählst den Händler und kaufst direkt dort.",
     "store": "Amazon-Shop",
     "choose": "Shop auswählen",
     "product": "Gesuchtes Produkt",
@@ -73,15 +121,27 @@
     "print": "Pro Git als gedrucktes Buch",
     "headphones": "Kabelgebundene Kopfhörer",
     "mic": "USB-Mikrofon",
-    "guide": "Vergleiche bei Pro Git Ausgabe und Einband. Prüfe für Podcasts, ob der Kopfhörerstecker zu deinem Gerät passt. Achte bei einem USB-Mikrofon für den Schreibtisch auf den Anschluss deines Computers.",
+    "guide": "Filmabend, Spieleabend oder Wochenendtrip? Wähle eine Idee oder gib deinen eigenen Suchbegriff ein.",
     "amazon": "Bei Amazon suchen",
     "ml": "Bei Mercado Livre Brasil suchen",
     "paid": "Werbelink",
-    "disclosure": "Als Amazon-Partner verdiene ich an qualifizierten Verkäufen."
+    "disclosure": "Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.",
+    "popcorn": "Popcornmaschine",
+    "game": "Familienspiel",
+    "pack": "Reiserucksack",
+    "brief": "Vergleiche für „{product}“ zwei Angebote mit derselben Ausführung und Menge. Prüfe den Lieferumfang und den Gesamtpreis mit Versand oder laufenden Kosten.",
+    "tips": {
+      "print": "Prüfe Auflage und Einband. Auch ein gebrauchtes Exemplar kann die gesuchte Ausgabe sein.",
+      "headphones": "Prüfe den Anschluss deines Geräts, besonders wenn es nur USB-C hat.",
+      "mic": "Prüfe den Anschluss und ob Kabel und Tischständer beiliegen.",
+      "popcorn": "Vergleiche die Füllmenge mit der gewünschten Portionszahl und prüfe, welche Teile waschbar sind.",
+      "game": "Prüfe die Mindestzahl der Mitspieler und wie lange eine Runde dauert.",
+      "pack": "Vergleiche den gepackten Rucksack mit den Maßen, die deine Airline unter dem Sitz erlaubt."
+    }
   },
   "it": {
     "shop": "Cerca prodotti",
-    "intro": "Scegli un negozio e cerca un prodotto fisico. L’acquisto si conclude presso il rivenditore.",
+    "intro": "Cerca qualsiasi prodotto. Scegli il negozio e concludi lì l’acquisto.",
     "store": "Negozio Amazon",
     "choose": "Scegli un negozio",
     "product": "Prodotto da cercare",
@@ -89,15 +149,27 @@
     "print": "Pro Git in edizione cartacea",
     "headphones": "Cuffie con cavo",
     "mic": "Microfono USB",
-    "guide": "Per Pro Git su carta confronta edizione e rilegatura. Per ascoltare podcast verifica lo spinotto delle cuffie. Per registrare alla scrivania controlla che il computer accetti il connettore del microfono USB.",
+    "guide": "Una serata cinema, una partita in famiglia o un fine settimana fuori? Scegli un’idea o scrivi cosa cerchi.",
     "amazon": "Cerca su Amazon",
     "ml": "Cerca su Mercado Livre Brasil",
     "paid": "Link pubblicitario",
-    "disclosure": "In qualità di affiliato Amazon ricevo un guadagno dagli acquisti idonei."
+    "disclosure": "In qualità di affiliato Amazon ricevo un guadagno dagli acquisti idonei.",
+    "popcorn": "Macchina per popcorn",
+    "game": "Gioco da tavolo per famiglie",
+    "pack": "Zaino da viaggio",
+    "brief": "Per «{product}», confronta due offerte con la stessa versione e quantità. Controlla cosa includono e il totale con spedizione o costi ricorrenti.",
+    "tips": {
+      "print": "Controlla edizione e rilegatura. Anche una copia usata può essere dell’edizione che cerchi.",
+      "headphones": "Controlla l’attacco del dispositivo, soprattutto se ha solo USB-C.",
+      "mic": "Verifica il connettore e se il cavo e il supporto da tavolo sono inclusi.",
+      "popcorn": "Confronta la capacità con il numero di porzioni e verifica quali parti sono lavabili.",
+      "game": "Verifica il numero minimo di giocatori e la durata di una partita.",
+      "pack": "Confronta le dimensioni dello zaino pieno con i limiti della compagnia per il bagaglio sotto il sedile."
+    }
   },
   "tr": {
     "shop": "Ürün ara",
-    "intro": "Mağaza seçip fiziksel bir ürün arayın. Satın alma işlemi satıcının sitesinde tamamlanır.",
+    "intro": "İstediğiniz ürünü arayın. Mağazayı siz seçer, alışverişi orada tamamlarsınız.",
     "store": "Amazon mağazası",
     "choose": "Mağaza seçin",
     "product": "Aranan ürün",
@@ -105,15 +177,27 @@
     "print": "Pro Git basılı kitap",
     "headphones": "Kablolu kulaklık",
     "mic": "USB mikrofon",
-    "guide": "Pro Git’in basılı sürümü için baskıyı ve cildi karşılaştırın. Podcast dinlemek için kulaklık fişinin cihaza uyduğuna bakın. Masada kayıt yaparken USB mikrofonun bağlantısını bilgisayarınızla karşılaştırın.",
+    "guide": "Film gecesi, ailece oyun veya hafta sonu gezisi için bir fikir seçin ya da aradığınız ürünü yazın.",
     "amazon": "Amazon’da ara",
     "ml": "Mercado Livre Brasil’de ara",
     "paid": "Reklam bağlantısı",
-    "disclosure": "Amazon iş ortağı olarak uygun satın alımlardan gelir elde ederim."
+    "disclosure": "Amazon iş ortağı olarak uygun satın alımlardan gelir elde ederim.",
+    "popcorn": "Patlamış mısır makinesi",
+    "game": "Aile kutu oyunu",
+    "pack": "Seyahat sırt çantası",
+    "brief": "“{product}” için aynı sürüm ve miktardaki iki ilanı karşılaştırın. İçeriği ve kargo ya da düzenli ücretlerle birlikte toplam maliyeti kontrol edin.",
+    "tips": {
+      "print": "Baskıyı ve cilt türünü kontrol edin. İkinci el bir kitap da aradığınız baskı olabilir.",
+      "headphones": "Özellikle cihazda yalnızca USB-C varsa kulaklık fişinin uyumunu kontrol edin.",
+      "mic": "Bağlantı türünü ve pakete kablo ile masa standının dahil olup olmadığını kontrol edin.",
+      "popcorn": "Kapasiteyi servis edeceğiniz porsiyon sayısıyla karşılaştırın ve hangi parçaların yıkanabildiğine bakın.",
+      "game": "En az kaç kişi gerektiğine ve bir oyunun ne kadar sürdüğüne bakın.",
+      "pack": "Dolu çantanın ölçülerini havayolunun koltuk altı bagaj sınırıyla karşılaştırın."
+    }
   },
   "ru": {
     "shop": "Поиск товаров",
-    "intro": "Выберите магазин и найдите физический товар. Заказ оформляется у продавца.",
+    "intro": "Ищите любой товар. Вы сами выбираете магазин и оформляете покупку на его сайте.",
     "store": "Магазин Amazon",
     "choose": "Выберите магазин",
     "product": "Какой товар найти",
@@ -121,15 +205,27 @@
     "print": "Печатная книга Pro Git",
     "headphones": "Проводные наушники",
     "mic": "USB-микрофон",
-    "guide": "Для бумажной версии Pro Git сравните издания и переплёты. Для подкастов проверьте, подходит ли штекер наушников к устройству. Для записи за столом уточните, есть ли на компьютере нужный разъём для USB-микрофона.",
+    "guide": "Киновечер, настольные игры или поездка на выходные? Выберите идею или введите свой запрос.",
     "amazon": "Искать на Amazon",
     "ml": "Искать на Mercado Livre Brasil",
     "paid": "Рекламная ссылка",
-    "disclosure": "Как партнёр Amazon я получаю комиссию за покупки, соответствующие условиям программы."
+    "disclosure": "Как партнёр Amazon я получаю комиссию за покупки, соответствующие условиям программы.",
+    "popcorn": "Аппарат для попкорна",
+    "game": "Семейная настольная игра",
+    "pack": "Дорожный рюкзак",
+    "brief": "Для «{product}» сравните два предложения одной версии и в одинаковом количестве. Проверьте комплектацию и итоговую цену с доставкой или регулярными платежами.",
+    "tips": {
+      "print": "Сверьте издание и переплёт. Нужное издание может найтись и среди подержанных книг.",
+      "headphones": "Проверьте разъём устройства, особенно если у него есть только USB-C.",
+      "mic": "Проверьте разъём и входят ли в комплект кабель и настольная подставка.",
+      "popcorn": "Сопоставьте объём с числом порций и уточните, какие части можно мыть.",
+      "game": "Проверьте минимальное число игроков и обычную длительность партии.",
+      "pack": "Сравните размеры наполненного рюкзака с ограничениями авиакомпании для багажа под сиденьем."
+    }
   },
   "ar": {
     "shop": "البحث عن منتجات",
-    "intro": "اختر متجراً وابحث عن منتج مادي. يتم الشراء لدى البائع.",
+    "intro": "ابحث عن أي منتج. اختر المتجر وأكمل الشراء لديه.",
     "store": "متجر Amazon",
     "choose": "اختر متجراً",
     "product": "المنتج المطلوب",
@@ -137,15 +233,27 @@
     "print": "كتاب Pro Git الورقي",
     "headphones": "سماعات سلكية",
     "mic": "ميكروفون USB",
-    "guide": "عند شراء Pro Git ورقياً قارن الطبعة والتجليد. لسماع البودكاست تأكد من توافق قابس السماعة مع جهازك. وللتسجيل على المكتب تأكد أن الحاسوب يدعم موصل ميكروفون USB.",
+    "guide": "ليلة سينما أم لعبة عائلية أم رحلة قصيرة؟ اختر فكرة أو اكتب ما تبحث عنه.",
     "amazon": "ابحث في Amazon",
     "ml": "ابحث في Mercado Livre Brasil",
     "paid": "رابط إعلاني",
-    "disclosure": "بصفتي شريكاً في Amazon أحصل على عمولة من المشتريات المؤهلة."
+    "disclosure": "بصفتي شريكاً في Amazon أحصل على عمولة من المشتريات المؤهلة.",
+    "popcorn": "آلة صنع الفشار",
+    "game": "لعبة لوحية عائلية",
+    "pack": "حقيبة ظهر للسفر",
+    "brief": "عند مقارنة عروض «{product}»، اختر عرضين للإصدار والكمية نفسيهما. تحقّق مما يشمله كل عرض ومن الإجمالي مع التوصيل أو الرسوم الدورية.",
+    "tips": {
+      "print": "تحقّق من الطبعة ونوع التجليد. قد تجد الطبعة المطلوبة في نسخة مستعملة.",
+      "headphones": "تحقّق من توافق القابس مع جهازك، خصوصًا إذا لم يكن فيه سوى منفذ USB-C.",
+      "mic": "تحقّق من نوع الموصّل وما إذا كان الكابل وحامل المكتب ضمن العبوة.",
+      "popcorn": "قارن السعة بعدد الحصص التي تقدّمها وتحقّق من الأجزاء القابلة للغسل.",
+      "game": "تحقّق من الحد الأدنى لعدد اللاعبين ومن مدة الجولة المناسبة لمجموعتك.",
+      "pack": "قارن أبعاد الحقيبة بعد ملئها بالحد الذي تسمح به شركة الطيران تحت المقعد."
+    }
   },
   "hi": {
     "shop": "उत्पाद खोजें",
-    "intro": "कोई स्टोर चुनें और भौतिक उत्पाद खोजें। खरीदारी विक्रेता के स्टोर पर पूरी होती है।",
+    "intro": "कोई भी उत्पाद खोजें। दुकान आप चुनते हैं और खरीदारी वहीं पूरी करते हैं।",
     "store": "Amazon स्टोर",
     "choose": "स्टोर चुनें",
     "product": "कौन सा उत्पाद चाहिए",
@@ -153,15 +261,27 @@
     "print": "Pro Git की मुद्रित प्रति",
     "headphones": "वायर्ड हेडफ़ोन",
     "mic": "USB माइक्रोफ़ोन",
-    "guide": "Pro Git की मुद्रित प्रति लेते समय संस्करण और बाइंडिंग देखें। पॉडकास्ट के लिए जाँचें कि हेडफ़ोन का प्लग आपके डिवाइस में लगता है। डेस्क पर रिकॉर्डिंग के लिए USB माइक्रोफ़ोन का कनेक्टर कंप्यूटर से मिलाएँ।",
+    "guide": "फ़िल्म की शाम, परिवार के साथ खेल या सप्ताहांत की यात्रा? कोई सुझाव चुनें या अपनी खोज लिखें।",
     "amazon": "Amazon पर खोजें",
     "ml": "Mercado Livre Brasil पर खोजें",
     "paid": "विज्ञापन लिंक",
-    "disclosure": "Amazon सहयोगी के तौर पर मुझे पात्र खरीदारी से कमीशन मिलता है।"
+    "disclosure": "Amazon सहयोगी के तौर पर मुझे पात्र खरीदारी से कमीशन मिलता है।",
+    "popcorn": "पॉपकॉर्न मेकर",
+    "game": "परिवार के लिए बोर्ड गेम",
+    "pack": "यात्रा का बैकपैक",
+    "brief": "“{product}” के लिए एक ही संस्करण और मात्रा वाले दो विकल्प देखें। जाँचें कि क्या शामिल है और डिलीवरी या नियमित शुल्क जोड़ने पर कुल कितना होगा।",
+    "tips": {
+      "print": "संस्करण और जिल्द देखें। पुरानी प्रति भी आपका मनचाहा संस्करण हो सकती है।",
+      "headphones": "अपने डिवाइस का पोर्ट देखें, खासकर अगर उसमें सिर्फ़ USB-C है।",
+      "mic": "कनेक्टर देखें और जाँचें कि केबल और डेस्क स्टैंड साथ मिलते हैं या नहीं।",
+      "popcorn": "क्षमता की तुलना ज़रूरी परोसों की संख्या से करें और देखें कि कौन-से हिस्से धोए जा सकते हैं।",
+      "game": "न्यूनतम खिलाड़ियों की संख्या और एक खेल की अवधि अपने समूह के हिसाब से देखें।",
+      "pack": "भरे हुए बैग का आकार एयरलाइन की सीट के नीचे रखने की सीमा से मिलाएँ।"
+    }
   },
   "id": {
     "shop": "Cari produk",
-    "intro": "Pilih toko dan cari produk fisik. Pembelian diselesaikan di toko penjual.",
+    "intro": "Cari produk apa saja. Pilih toko dan selesaikan pembelian di sana.",
     "store": "Toko Amazon",
     "choose": "Pilih toko",
     "product": "Produk yang dicari",
@@ -169,15 +289,27 @@
     "print": "Pro Git edisi cetak",
     "headphones": "Headphone berkabel",
     "mic": "Mikrofon USB",
-    "guide": "Untuk Pro Git cetak, bandingkan edisi dan jilidnya. Untuk mendengarkan podcast, periksa kecocokan colokan headphone. Untuk merekam di meja, pastikan komputer mendukung konektor mikrofon USB.",
+    "guide": "Malam film, permainan keluarga, atau liburan akhir pekan? Pilih ide atau ketik pencarian sendiri.",
     "amazon": "Cari di Amazon",
     "ml": "Cari di Mercado Livre Brasil",
     "paid": "Tautan iklan",
-    "disclosure": "Sebagai mitra Amazon, saya memperoleh komisi dari pembelian yang memenuhi syarat."
+    "disclosure": "Sebagai mitra Amazon, saya memperoleh komisi dari pembelian yang memenuhi syarat.",
+    "popcorn": "Mesin popcorn",
+    "game": "Permainan papan keluarga",
+    "pack": "Ransel perjalanan",
+    "brief": "Untuk “{product}”, bandingkan dua penawaran dengan versi dan jumlah yang sama. Periksa isinya serta total biaya termasuk ongkir atau biaya berkala.",
+    "tips": {
+      "print": "Periksa edisi dan jilidnya. Buku bekas pun bisa merupakan edisi yang Anda cari.",
+      "headphones": "Periksa colokan perangkat, terutama jika perangkat hanya memiliki USB-C.",
+      "mic": "Periksa konektor serta apakah kabel dan dudukan meja sudah termasuk.",
+      "popcorn": "Bandingkan kapasitas dengan jumlah porsi dan periksa bagian yang dapat dicuci.",
+      "game": "Periksa jumlah minimum pemain dan lama permainan yang cocok untuk kelompok Anda.",
+      "pack": "Bandingkan ukuran tas setelah diisi dengan batas maskapai untuk bagasi di bawah kursi."
+    }
   },
   "ja": {
     "shop": "商品を探す",
-    "intro": "ストアを選んで実物の商品を検索します。購入手続きは販売店で行います。",
+    "intro": "どんな商品でも検索できます。お店を選び、購入手続きはそのお店で行います。",
     "store": "Amazon ストア",
     "choose": "ストアを選択",
     "product": "探したい商品",
@@ -185,15 +317,27 @@
     "print": "Pro Git の紙の本",
     "headphones": "有線ヘッドホン",
     "mic": "USB マイク",
-    "guide": "紙の Pro Git は版と製本を比較しましょう。ポッドキャスト用ならヘッドホンのプラグが端末に合うかを確認。卓上で録音するなら USB マイクの端子をパソコンに接続できるか調べましょう。",
+    "guide": "映画の夜、家族で遊ぶ日、週末の旅行。候補を選ぶか、探したい商品を入力してください。",
     "amazon": "Amazon で検索",
     "ml": "Mercado Livre Brasil で検索",
     "paid": "広告リンク",
-    "disclosure": "Amazon アソシエイトとして、対象の購入による収入を得ています。"
+    "disclosure": "Amazon アソシエイトとして、対象の購入による収入を得ています。",
+    "popcorn": "ポップコーンメーカー",
+    "game": "家族向けボードゲーム",
+    "pack": "旅行用リュック",
+    "brief": "「{product}」は、同じ仕様と数量の候補を二つ比べましょう。付属品と、送料や継続料金を含む総額を確認してください。",
+    "tips": {
+      "print": "版と装丁を確認しましょう。探している版が古書で見つかることもあります。",
+      "headphones": "端子が機器に合うか確認しましょう。USB-Cしかない機器は特に注意してください。",
+      "mic": "端子の種類と、ケーブルや卓上スタンドが付属するかを確認しましょう。",
+      "popcorn": "一度に作れる量が人数に合うか、どの部品を洗えるかを確認しましょう。",
+      "game": "遊ぶ人数が最低人数を満たすか、所要時間が予定に合うかを確認しましょう。",
+      "pack": "荷物を詰めた寸法と、航空会社の座席下手荷物のサイズ制限を比べましょう。"
+    }
   },
   "ko": {
     "shop": "상품 찾기",
-    "intro": "스토어를 선택하고 실물 상품을 검색하세요. 구매는 판매처에서 진행합니다.",
+    "intro": "어떤 상품이든 검색하세요. 매장을 고른 뒤 해당 매장에서 구매를 완료하세요.",
     "store": "Amazon 스토어",
     "choose": "스토어 선택",
     "product": "찾을 상품",
@@ -201,15 +345,27 @@
     "print": "Pro Git 종이책",
     "headphones": "유선 헤드폰",
     "mic": "USB 마이크",
-    "guide": "Pro Git 종이책은 판과 제본을 비교하세요. 팟캐스트용 헤드폰은 플러그가 기기에 맞는지 확인하세요. 책상에서 녹음할 USB 마이크는 컴퓨터가 지원하는 단자인지 살펴보세요.",
+    "guide": "영화 보는 밤, 가족 게임, 주말여행을 준비하시나요? 아이디어를 고르거나 직접 검색하세요.",
     "amazon": "Amazon에서 검색",
     "ml": "Mercado Livre Brasil에서 검색",
     "paid": "광고 링크",
-    "disclosure": "Amazon 제휴 파트너로서 적격 구매에 따른 수수료를 받습니다."
+    "disclosure": "Amazon 제휴 파트너로서 적격 구매에 따른 수수료를 받습니다.",
+    "popcorn": "팝콘 기계",
+    "game": "가족용 보드게임",
+    "pack": "여행용 백팩",
+    "brief": "‘{product}’ 상품은 같은 버전과 수량으로 두 판매 조건을 비교하세요. 구성품을 확인하고 배송비나 정기 요금을 포함한 총액을 살펴보세요.",
+    "tips": {
+      "print": "판본과 제본을 확인하세요. 찾는 판본이 중고로 나올 수도 있어요.",
+      "headphones": "기기에 맞는 단자인지 확인하세요. USB-C만 있는 기기라면 특히 중요해요.",
+      "mic": "단자 종류와 케이블 및 책상용 거치대가 포함되는지 확인하세요.",
+      "popcorn": "한 번에 만드는 양이 필요한 인분에 맞는지, 어느 부품을 씻을 수 있는지 확인하세요.",
+      "game": "최소 인원과 한 판에 걸리는 시간이 모임에 맞는지 확인하세요.",
+      "pack": "짐을 넣은 가방의 크기를 항공사의 좌석 아래 수하물 규격과 비교하세요."
+    }
   },
   "zh": {
     "shop": "搜索商品",
-    "intro": "选择商店并搜索实体商品。购买在零售商处完成。",
+    "intro": "可以搜索任何商品。选好商店后，在商店完成购买。",
     "store": "Amazon 商店",
     "choose": "选择商店",
     "product": "要找的商品",
@@ -217,10 +373,22 @@
     "print": "Pro Git 纸质书",
     "headphones": "有线耳机",
     "mic": "USB 麦克风",
-    "guide": "买纸质 Pro Git 时，比较版次和装订。听播客前，确认耳机插头与设备兼容。在桌前录音时，先看看电脑是否支持 USB 麦克风的接口。",
+    "guide": "准备电影之夜、家庭游戏或周末旅行？选一个灵感，或输入想找的商品。",
     "amazon": "在 Amazon 搜索",
     "ml": "在 Mercado Livre Brasil 搜索",
     "paid": "广告链接",
-    "disclosure": "作为 Amazon 联盟会员，我会从符合条件的购买中获得佣金。"
+    "disclosure": "作为 Amazon 联盟会员，我会从符合条件的购买中获得佣金。",
+    "popcorn": "爆米花机",
+    "game": "家庭桌游",
+    "pack": "旅行背包",
+    "brief": "比较“{product}”时，先找两个版本和数量相同的选项。核对包含的物品，再比较含运费或周期性费用的总价。",
+    "tips": {
+      "print": "核对版次和装帧，二手书也可能正是你需要的版本。",
+      "headphones": "核对设备接口，尤其是设备只有 USB-C 接口时。",
+      "mic": "检查接口类型，并确认是否附带线缆和桌面支架。",
+      "popcorn": "比较单次容量和所需份数，再确认哪些部件可以水洗。",
+      "game": "查看最低玩家人数和每局时长，判断是否适合一起玩的伙伴。",
+      "pack": "把装满后的背包尺寸与航空公司座椅下方行李的尺寸限制进行比较。"
+    }
   }
 }

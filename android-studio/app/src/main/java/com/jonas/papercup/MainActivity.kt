@@ -68,6 +68,7 @@ import java.util.Locale
 class MainActivity : AppCompatActivity() {
 
     private lateinit var web: WebView
+    private lateinit var destinationDock: NativeDestinationDock
     private lateinit var refresh: SwipeRefreshLayout
     private lateinit var errorNotice: NativeErrorNotice
     private var pendingNativeError = false
@@ -162,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.enableEdgeToEdge(window)
 
         web = findViewById(R.id.web)
+        destinationDock = NativeDestinationDock(findViewById(R.id.native_dock), web).also { it.install() }
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
@@ -360,7 +362,9 @@ class MainActivity : AppCompatActivity() {
                 )
                 // adjustResize already reduces the WebView for the keyboard.
                 // Do not reserve the IME height or its navigation area twice.
-                val bottomSafe = if (insets.isVisible(WindowInsetsCompat.Type.ime())) 0 else safe.bottom
+                val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
+                if (target === content) destinationDock.setKeyboard(imeVisible)
+                val bottomSafe = if (imeVisible) 0 else safe.bottom
                 view.setPadding(left + safe.left, top + safe.top, right + safe.right, bottom + bottomSafe)
                 insets
             }
@@ -1128,6 +1132,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageCommitVisible(view: WebView, url: String?) {
+            destinationDock.attach(url)
             // Home can spend seconds parsing head resources. The assistant's
             // persistent bubble must be available before onPageFinished.
             injectAppMode(view)
@@ -1136,6 +1141,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            destinationDock.onDocumentChanged()
             publicPageRetry?.let { view.removeCallbacks(it) }
             publicPageRetry = null
             if (url != publicPageRetryUrl) {
@@ -1169,6 +1175,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
+            if (!mainFrameFailed) destinationDock.attach(url)
             if (!mainFrameFailed) {
                 view.visibility = View.VISIBLE
                 publicPageRetryUrl = null

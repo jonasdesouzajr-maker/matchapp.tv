@@ -12,10 +12,11 @@ function view(lang='pt-BR',ua='Mozilla/5.0',host='https://matchapp.tv',standalon
  w.matchMedia=()=>({matches:standalone});
  w.MatchAppCountry={regionCode:()=>''};
  w.eval(read('ebooks/affiliate-links.js'));
+ w.eval(read('content-safety.js'));
  w.eval(read('channels/shop.js'));
  return dom;
 }
-test('only contextual Amazon BR web links are sponsored; Mercado Livre and general searches stay independent',()=>{
+test('custom and suggested product searches carry only the BR web tag, with buying guidance',()=>{
  const dom=view(),d=dom.window.document;
  const input=d.querySelector('[data-shop-query]'),store=d.querySelector('#shop select'),a=d.querySelector('[data-shop-amazon]'),ml=d.querySelector('[data-shop-mercado]');
  assert.equal(a.hasAttribute('href'),false);assert.equal(ml.hasAttribute('href'),false);
@@ -27,7 +28,16 @@ test('only contextual Amazon BR web links are sponsored; Mercado Livre and gener
  input.value='headphones Sony WH-1000XM5';input.dispatchEvent(new dom.window.Event('input'));
  assert.equal(new URL(a.href).searchParams.get('tag'),'matchapp06-20');assert.equal(new URL(a.href).searchParams.get('k'),input.value);
  input.value='coffee filters /?tag=other & #music';input.dispatchEvent(new dom.window.Event('input'));
- assert.equal(new URL(a.href).searchParams.get('k'),input.value);assert.equal(new URL(a.href).searchParams.has('tag'),false);assert.equal(d.querySelector('[data-shop-disclosure]').hidden,true);
+ assert.equal(new URL(a.href).searchParams.get('k'),input.value);assert.deepEqual(new URL(a.href).searchParams.getAll('tag'),['matchapp06-20']);
+ assert.ok(d.querySelector('[data-shop-brief]').textContent.includes(input.value));
+ assert.equal(d.querySelector('[data-shop-disclosure]').hidden,false);
+ for(const id of ['popcorn','game','pack']){
+  const preset=d.querySelector('[data-shop-preset='+id+']');preset.click();
+  assert.ok(d.querySelector('[data-shop-brief]').textContent===preset.dataset.shopTip);
+  assert.equal(new URL(a.href).searchParams.get('tag'),'matchapp06-20');
+ }
+ input.value='pornhub';input.dispatchEvent(new dom.window.Event('input'));
+ assert.equal(a.hasAttribute('href'),false);assert.equal(ml.hasAttribute('href'),false);
  store.value='US';store.dispatchEvent(new dom.window.Event('change'));d.querySelector('[data-shop-preset=mic]').click();
  assert.equal(new URL(a.href).hostname,'www.amazon.com');assert.equal(new URL(a.href).searchParams.has('tag'),false);
  dom.window.close();
@@ -35,7 +45,9 @@ test('only contextual Amazon BR web links are sponsored; Mercado Livre and gener
 test('Android, standalone and preview visitors can shop without an unapproved ID',()=>{
  for(const [ua,host,standalone] of [['MatchAppAiAndroid/1.1.68','https://matchapp.tv',false],['Mozilla Android; wv) Chrome','https://matchapp.tv',false],['Mozilla','https://matchapp.tv',true],['Mozilla','https://preview.example',false]]){
   const dom=view('en',ua,host,standalone),api=dom.window.MatchAppEbookAffiliate;
-  assert.equal(new URL(api.amazonRetailSearchUrl('USB mic','BR','mic')).searchParams.has('tag'),false);
+  const href=api.amazonRetailSearchUrl('USB mic','BR','mic');
+  if(host==='https://matchapp.tv') { assert.equal(href,''); assert.equal(dom.window.document.querySelector('[data-shop-amazon]').hidden,true); }
+  else assert.equal(new URL(href).searchParams.has('tag'),false);
   assert.equal(api.amazonRetailSearchUrl('speaker','XX','mic'),'');
   dom.window.close();
  }
@@ -44,7 +56,7 @@ test('Jonas carries only an explicit product phrase to the local shopping page',
  const dom=view('en'),w=dom.window;
  for(const name of ['labels','discovery']) w.eval(read('channels/'+name+'.js'));
  const api=w.MatchAppChannels;
- for(const [text,term] of [['Search Amazon for wired headphones','wired headphones'],['Buscar no Mercado Livre por microfone USB','microfone USB'],['Find a keyboard on Amazon','a keyboard']]) {
+ for(const [text,term] of [['Search Amazon for wired headphones','wired headphones'],['Buscar no Mercado Livre por microfone USB','microfone USB'],['Find a keyboard on Amazon','a keyboard'],['Quero comprar uma frigideira na Amazon','uma frigideira'],['Please find running shoes on Amazon','running shoes']]) {
   assert.equal(api.selection(text),'shop');assert.equal(api.isNavigation(text),true);assert.equal(api.shopQuery(text),term);
   const link=api.linkFor(text,'pt-BR');assert.equal(link.getAttribute('href'),'/catalog-trails/pt-br/#shop');
   link.addEventListener('click',e=>e.preventDefault());link.click();assert.equal(w.sessionStorage.getItem('matchapp_shop_query'),term);

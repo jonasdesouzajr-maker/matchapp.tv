@@ -22,6 +22,14 @@
                 android:layout_height="match_parent" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/native_dock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:visibility="gone"
+            android:importantForAccessibility="yes" />
+
         <LinearLayout
             android:id="@+id/ad_shell"
             android:layout_width="match_parent"
