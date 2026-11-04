@@ -12,6 +12,9 @@ import android.provider.Settings
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.webkit.WebView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.webkit.JavaScriptReplyProxy
 import androidx.webkit.WebViewCompat
 import androidx.webkit.WebViewFeature
@@ -56,6 +59,19 @@ class NativeDestinationDock(
         bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         bar.isItemHorizontalTranslationEnabled = false
         icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
+        // Explore opens a native destination chooser even when its tab is selected.
+        // Material normally removes the click action from a selected navigation item.
+        bar.post {
+            bar.findViewById<View>(2)?.let { target ->
+                ViewCompat.setAccessibilityDelegate(target, object : AccessibilityDelegateCompat() {
+                    override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
+                        super.onInitializeAccessibilityNodeInfo(host, info)
+                        info.isClickable = true
+                        info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK)
+                    }
+                })
+            }
+        }
         fun sendCommand(message: String) {
             if (!requested || keyboard || documentUrl != web.url) return
             explorePending = message == "explore:1"
