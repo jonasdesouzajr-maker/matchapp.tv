@@ -1792,6 +1792,7 @@ html body.page-home #mh-topbox .mh-deck>.sound-toggle-btn,html body.page-home #m
 <script defer src="/lumina-match/guide.js?v=20261029-seo1"></script>
 <script defer src="/channels/labels.js?v=2&amp;assetrev=183e587d4ea9"></script>
 <script defer src="/channels/discovery.js?v=3&amp;assetrev=e06e462e4371"></script>
+    <link rel="stylesheet" href="/halloween/promo.css?v=20261104-1">
 </head>
 <body class="page-home ma-watch-focused">
     <!-- Google Tag Manager (noscript) -->
@@ -2424,12 +2425,28 @@ html body.page-home #daily-match-checkin { padding: 11px 12px !important; }
         
 <section class="container">
 
+                <!-- Web-only Halloween feature. Automatically removed November 18, 2026 at 00:00 Sao Paulo. -->
+                <section id="ma-halloween-promo" hidden aria-labelledby="ma-halloween-heading" data-ma-pill-exclude>
+                    <img class="hw-promo-art" data-src="/assets/halloween/midnight-cinema-1440.webp" data-srcset="/assets/halloween/midnight-cinema-720.webp 720w, /assets/halloween/midnight-cinema-1440.webp 1440w" sizes="(max-width: 600px) 100vw, 900px" width="1440" height="960" alt="" decoding="async" fetchpriority="low">
+                    <div class="hw-promo-copy">
+                        <span class="hw-promo-eyebrow" data-hw-promo="eyebrow">MatchApp Ai · AFTER DARK</span>
+                        <h2 id="ma-halloween-heading" data-hw-promo="heading">Halloween after dark</h2>
+                        <p class="hw-promo-tagline" data-hw-promo="tagline">20 films. Every shade of spooky.</p>
+                        <p class="hw-promo-note" data-hw-promo="promoNote">Movie nights, worldwide viewing options and a little midnight magic.</p>
+                        <a class="hw-promo-cta" href="/halloween/"><span data-hw-promo="promoCta">Enter the Halloween cinema</span><span aria-hidden="true">↗</span></a>
+                    </div>
+                </section>
+                <script src="/halloween/promo-copy.js?v=20261104-1"></script>
+                <script src="/halloween/promo.js?v=20261104-1"></script>
+
                 <!-- Primary H1. The homepage had none at all, which left Google
                      without its strongest on-page topical signal. Visible and
                      genuinely descriptive rather than hidden. -->
                 <header class="home-hero" aria-label="MatchApp">
                     <h1 class="home-h1" data-i18n="home.h1">What Should I Watch Tonight?</h1>
                 </header>
+
+
 
                 <div class="marquee-wrapper" id="trending-rail" aria-label="Latest titles trending right now">
                     <div class="marquee-viewport" id="marquee-viewport">

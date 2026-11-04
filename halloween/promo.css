@@ -1,0 +1,17 @@
+/* All declarations belong to this web-only card. */
+#ma-halloween-promo[hidden]{display:none!important}
+#ma-halloween-promo{order:-1}
+#ma-halloween-promo{position:relative;isolation:isolate;display:grid;align-items:center;box-sizing:border-box;width:100%;min-height:250px;margin:12px auto 16px;overflow:hidden;border:0;border-radius:24px;background:#110d1d;box-shadow:0 16px 38px #05030c55;color:#fff5e9;text-align:start}
+#ma-halloween-promo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0d0919ed 0%,#0d0919c2 35%,#0d091922 70%,transparent 100%);pointer-events:none}
+#ma-halloween-promo[dir=rtl]::after{background:linear-gradient(270deg,#0d0919ed,#0d091999 65%,#0d091933)}
+#ma-halloween-promo .hw-promo-art{position:absolute;inset:0;z-index:-2;display:block;width:100%;height:100%;object-fit:cover;object-position:center 54%;border-radius:inherit}
+#ma-halloween-promo .hw-promo-copy{box-sizing:border-box;position:relative;max-width:62%;padding:clamp(20px,4vw,34px);text-align:start}
+#ma-halloween-promo .hw-promo-eyebrow{display:block;font:700 .72rem/1.4 system-ui,sans-serif;letter-spacing:.12em;color:#edc984;margin:0 0 8px;text-transform:uppercase}
+#ma-halloween-promo h2{font:750 clamp(1.7rem,4.4vw,2.9rem)/1.08 'Outfit',system-ui,sans-serif;margin:0 0 9px;letter-spacing:-.025em;color:#fff4df;text-wrap:balance;text-shadow:0 3px 16px #0d0919}
+#ma-halloween-promo .hw-promo-tagline{font:650 clamp(.95rem,1.8vw,1.08rem)/1.45 system-ui,sans-serif;color:#f0d9b1;margin:0 0 6px}
+#ma-halloween-promo .hw-promo-note{font:450 .88rem/1.5 system-ui,sans-serif;margin:0 0 16px;color:#e1d5e8}
+#ma-halloween-promo .hw-promo-cta{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;gap:10px;min-height:46px;padding:11px 19px;max-width:100%;border:0;border-radius:999px;background:linear-gradient(120deg,#f2d58e,#d6a959);box-shadow:0 4px 16px #0003;color:#211421;font:750 .87rem/1.35 system-ui,sans-serif;text-decoration:none;text-align:center;white-space:normal}
+#ma-halloween-promo .hw-promo-cta:hover{background:linear-gradient(120deg,#ffdfa0,#e9b865)}
+#ma-halloween-promo .hw-promo-cta:focus-visible{outline:3px solid #d5b2ff;outline-offset:4px}
+@media(max-width:600px){#ma-halloween-promo{min-height:315px;border-radius:20px}#ma-halloween-promo .hw-promo-art{object-position:65% 50%}#ma-halloween-promo::after,#ma-halloween-promo[dir=rtl]::after{background:linear-gradient(0deg,#0d0919f5,#0d0919b8 54%,#0d091922)}#ma-halloween-promo .hw-promo-copy{align-self:end;max-width:100%;padding:22px 20px}#ma-halloween-promo h2{max-width:15ch}#ma-halloween-promo .hw-promo-note{max-width:36ch}#ma-halloween-promo .hw-promo-cta{min-height:48px}}
+@media(forced-colors:active){#ma-halloween-promo{border:1px solid CanvasText}#ma-halloween-promo::after{background:Canvas}#ma-halloween-promo .hw-promo-cta{border:1px solid ButtonText}}
