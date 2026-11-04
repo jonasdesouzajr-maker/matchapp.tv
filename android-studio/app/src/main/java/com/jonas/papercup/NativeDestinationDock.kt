@@ -11,6 +11,7 @@ import android.provider.Settings
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.webkit.WebView
+import androidx.webkit.JavaScriptReplyProxy
 import androidx.webkit.WebViewCompat
 import androidx.webkit.WebViewFeature
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,6 +29,7 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
     private var pressMotion: Boolean? = null
     private var previousRoute: String? = null
     private var documentUrl: String? = null
+    private var documentReply: JavaScriptReplyProxy? = null
     private val density = bar.resources.displayMetrics.density
     private val origins = setOf("https://matchapp.tv", "https://www.matchapp.tv")
 
@@ -45,8 +47,8 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
         bar.isItemHorizontalTranslationEnabled = false
         icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
         fun activate(id: Int) {
-            if (requested && documentUrl == web.url)
-                web.evaluateJavascript("window.__maNativeDock?.activate(${id-1})", null)
+            if (requested && !keyboard && documentUrl == web.url)
+                documentReply?.postMessage("activate:${id-1}")
         }
         bar.setOnItemSelectedListener { item ->
             if (syncing) true else { activate(item.itemId); false }
@@ -63,6 +65,7 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
                 (0 until labels.length()).all { labels.optString(it).length in 1..80 } &&
                 bar.resources.configuration.fontScale<=1.35f
             documentUrl=href
+            documentReply=reply
             if (requested) {
                 bar.layoutDirection=if(data.optBoolean("rtl")) View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
                 syncing=true
@@ -108,6 +111,7 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
     fun onDocumentChanged() {
         requested=false
         documentUrl=null
+        documentReply=null
         render()
         web.animate().cancel()
         web.scaleX=1f; web.scaleY=1f; web.translationY=0f

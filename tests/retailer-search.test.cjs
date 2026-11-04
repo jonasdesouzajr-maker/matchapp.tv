@@ -64,7 +64,11 @@ test('Jonas carries only an explicit product phrase to the local shopping page',
  for(const q of ['Where to watch movies on Amazon Prime Video?','search Amazon Music','What is the Amazon rainforest?'])assert.equal(api.selection(q),'');
  const copy=require('../channels/shop-copy.json');
  for(const [lang,t] of Object.entries(copy)){
-  assert.equal(api.isNavigation(t.shop),true);
+  for(const command of [t.shop,t.shop+'!',t.shop+'。']) {
+   assert.equal(api.isNavigation(command),true);
+   assert.equal(api.selection(command),'shop');
+   assert.ok(api.linkFor(command,lang).getAttribute('href').endsWith('/#shop'));
+  }
   assert.ok(read('/catalog-trails/'+(lang==='en'?'':lang.toLowerCase()+'/')+'index.html').includes(t.disclosure));
  }
  dom.window.close();

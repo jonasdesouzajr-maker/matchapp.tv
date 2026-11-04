@@ -160,6 +160,9 @@
   if(!el)return;
   if(el.matches('.sound-toggle-btn')){intent=null;wrapExisting();setTimeout(function(){if(!allowed()){release();clearPendingPurchase();}},0);return;}
   if(el.closest('.adsbygoogle,[data-ad-slot]')||el.matches(':disabled,[aria-disabled="true"]')){intent={at:Date.now(),played:true,kind:'tap'};return;}
+  controlFeedback(el);
+ }
+ function controlFeedback(el){
   wrapExisting();var nav=dockSignature(el),kind=nav?nav.cue:kindFor(el),mic=kind==='mic';
   intent={id:++serial,at:Date.now(),kind:kind,played:false};var token=intent.id;
   if(!mic&&!el.matches('a[href]')&&flushPurchase()){intent.played=true;return;}
@@ -182,6 +185,12 @@
  function init(){
   if(ready)return;ready=true;wrapExisting();
   try{var stored=JSON.parse(sessionStorage.getItem(pendingPurchaseKey)||'null');if(stored&&receiptKey(stored))pendingPurchase=stored;}catch(_){}
+  window.MatchAppDestinationDock?.addEventListener('message',function(event){
+   var anchor=window.__maNativeDock?.targetFor?.(event.data);
+   if(!anchor||!dockSignature(anchor))return;
+   gestureSeen=true;
+   controlFeedback(anchor);
+  });
   document.addEventListener('click',onClick,{capture:true,passive:true});
   document.addEventListener('change',onChange,{passive:true});
  }

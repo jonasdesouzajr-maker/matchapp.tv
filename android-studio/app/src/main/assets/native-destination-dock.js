@@ -32,12 +32,20 @@
       motion:!motion.matches && !root.classList.contains('reduce-motion')});
     if (payload !== sent) { sent=payload; bridge.postMessage(payload); }
   }
-  // Keeping the web anchors preserves same-page handlers, history and the existing feedback owner.
-  window.__maNativeDock = {activate(index) {
-    if(!root.hasAttribute('data-native-dock') || !slots[index])return;
-    nav?.querySelector('a[data-cinema-route="'+slots[index]+'"]')?.click();
-  }};
+  function targetFor(message) {
+    if (document.hidden || !root.hasAttribute('data-native-dock') || !/^activate:[0-4]$/.test(message)) return null;
+    const anchor=nav?.querySelector('a[data-cinema-route="'+slots[message.slice(-1)]+'"]');
+    return anchor?.isConnected && anchor.getAttribute('aria-disabled')!=='true' ? anchor : null;
+  }
+  window.__maNativeDock = {targetFor};
+  // Only Android's menu listeners send activation replies. The feedback owner hears the
+  // same reply synchronously before the existing anchor handles navigation.
+  bridge.addEventListener('message', event => {
+    const anchor=targetFor(event.data);
+    if (anchor) setTimeout(()=>{ if (targetFor(event.data)===anchor) anchor.click(); },0);
+  });
   bridge.onmessage = event => {
+    if (event.data!=='shown' && event.data!=='hidden') return;
     const shown=event.data==='shown';
     root.toggleAttribute('data-native-dock',shown);
     if(shown && nav && !restore){

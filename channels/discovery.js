@@ -39,8 +39,12 @@
   function retailerIntent(question) {
     return merchant.test(question) && shopping.test(question) && !/prime video|amazon prime|prime gaming|prime music|amazon music|web services|kindle unlimited/iu.test(question);
   }
+  function commandText(question) {
+    return question.trim().toLocaleLowerCase().replace(/[.!?。！？，،]+$/u,'').trim();
+  }
   function selection(question) {
-    if(retailerIntent(question)||Object.values(labels).some(t=>t.shop.toLocaleLowerCase()===question.trim().toLocaleLowerCase()))return 'shop';
+    const command=commandText(question);
+    if(retailerIntent(question)||Object.values(labels).some(t=>t.shop.toLocaleLowerCase()===command))return 'shop';
     if(!topics.test(question)) return '';
     for(const [key,re] of Object.entries(formats)) if(re.test(question)) return key;
     return /channel|studio|canal|estúdio|estudio|chaîne|kanal|studio|kanal[ıi]|канал|استوديو|قناة|स्टूडियो|चैनल|saluran|スタジオ|チャンネル|채널|스튜디오|频道|工作室/iu.test(question) ? 'tech' : '';
@@ -76,7 +80,7 @@
     linkFor(question,lang) { return linkForKey(selection(question),lang,shopQuery(question)); },
     // Exact destination commands are navigation. Recommendations still use the metered chat.
     isNavigation(question) {
-      const value = question.trim().toLocaleLowerCase().replace(/[.!?。！？，،]+$/u,'').trim();
+      const value = commandText(question);
       const names=Object.values(labels).map(t=>t.tech.toLocaleLowerCase());
       if(names.includes(value) || Object.values(labels).some(t=>t.shop.toLocaleLowerCase()===value) || shopQuery(question)) return true;
       return /^(?:(?:please )?(?:open|show|take me to) (?:the )?tech (?:channel|studio)|(?:abra|abrir|mostre) (?:o )?(?:canal de tecnologia|estúdio de tecnologia)|(?:abre|abrir) (?:el )?(?:canal de tecnología|estudio de tecnología))$/iu.test(value);
