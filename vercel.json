@@ -1,4 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "buildCommand": "npm run build && node tools/stamp-discovery-assets.cjs"
 }
