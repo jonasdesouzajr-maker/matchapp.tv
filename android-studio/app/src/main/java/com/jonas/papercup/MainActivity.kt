@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var web: WebView
     private lateinit var destinationDock: NativeDestinationDock
+    private val nativeFx = NativeFxBridge()
     private lateinit var refresh: SwipeRefreshLayout
     private lateinit var errorNotice: NativeErrorNotice
     private var pendingNativeError = false
@@ -163,7 +164,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.enableEdgeToEdge(window)
 
         web = findViewById(R.id.web)
-        destinationDock = NativeDestinationDock(findViewById(R.id.native_dock), web).also { it.install() }
+        destinationDock = NativeDestinationDock(findViewById(R.id.native_dock), web, nativeFx::vibratePattern).also { it.install() }
         refresh = findViewById(R.id.refresh)
         offline = findViewById(R.id.offline)
         fullscreenHost = findViewById(R.id.fullscreen)
@@ -256,7 +257,7 @@ class MainActivity : AppCompatActivity() {
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
         web.addJavascriptInterface(NativeAuthBridge(), "MatchAppNativeAuth")
-        web.addJavascriptInterface(NativeFxBridge(), "MatchAppFx")
+        web.addJavascriptInterface(nativeFx, "MatchAppFx")
         nativeRewardedBridge = NativeRewardedBridge(
             this, web,
             { adMobController?.canRequestRewarded() == true },
@@ -1593,7 +1594,10 @@ class MainActivity : AppCompatActivity() {
     private inner class NativeFxBridge {
         @JavascriptInterface
         fun vibrate(ms: Int) {
-            val d = ms.coerceIn(1, 40).toLong()
+            vibratePattern(longArrayOf(0, ms.coerceIn(1, 40).toLong()))
+        }
+
+        fun vibratePattern(timings: LongArray) {
             runOnUiThread {
                 runCatching {
                     val v = if (android.os.Build.VERSION.SDK_INT >= 31) {
@@ -1604,10 +1608,13 @@ class MainActivity : AppCompatActivity() {
                     }
                     if (!v.hasVibrator()) return@runCatching
                     if (android.os.Build.VERSION.SDK_INT >= 26) {
-                        v.vibrate(android.os.VibrationEffect.createOneShot(d, android.os.VibrationEffect.DEFAULT_AMPLITUDE))
+                        val effect = if (timings.size == 2)
+                            VibrationEffect.createOneShot(timings[1], VibrationEffect.DEFAULT_AMPLITUDE)
+                        else VibrationEffect.createWaveform(timings, -1)
+                        v.vibrate(effect)
                     } else {
                         @Suppress("DEPRECATION")
-                        v.vibrate(d)
+                        if (timings.size == 2) v.vibrate(timings[1]) else v.vibrate(timings, -1)
                     }
                 }
             }

@@ -48,7 +48,7 @@ test('only native menu activations produce one shared signature before navigatio
   const dom=new JSDOM('<body><nav class="ma-cinema-dock"><a href="#matches" data-cinema-route="matches" data-ma-dock-destination="matches"><span data-cinema-copy>Matches</span></a></nav></body>',
     {url:'https://matchapp.tv/explore.html',runScripts:'outside-only',pretendToBeVisual:true});
   try {
-    const w=dom.window,receive=nativeBridge(w,[]),cues=[],haptics=[];
+    const w=dom.window,posts=[],receive=nativeBridge(w,posts),cues=[],haptics=[];
     w.matchMedia=()=>({matches:false});
     w.navigator.vibrate=pattern=>haptics.push(Array.from(pattern));
     const param=()=>({setValueAtTime(){},exponentialRampToValueAtTime(){}});
@@ -73,6 +73,11 @@ test('only native menu activations produce one shared signature before navigatio
     w.localStorage.setItem('match_hapticsEnabled','false');
     receive('activate:2');await tick();
     assert.deepEqual(counts,[0,9,9]);assert.equal(haptics.length,1);
-    receive('hidden');receive('activate:2');await tick();assert.equal(counts.length,3);
+    now+=200;w.localStorage.setItem('match_hapticsEnabled','true');
+    w.navigator.vibrate=()=>false;
+    receive('activate:2');await tick();
+    const fallbacks=posts.filter(p=>p.dockHaptic);
+    assert.deepEqual(fallbacks,[{href:w.location.href,dockHaptic:'activate:2',timings:[6,18,6]}]);
+    receive('hidden');receive('activate:2');await tick();assert.equal(counts.length,4);
   } finally {dom.window.close();}
 });

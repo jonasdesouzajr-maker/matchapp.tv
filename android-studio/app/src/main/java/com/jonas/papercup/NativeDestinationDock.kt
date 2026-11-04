@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
+import android.os.SystemClock
 import android.provider.Settings
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -19,7 +20,11 @@ import com.google.android.material.navigation.NavigationBarView
 import org.json.JSONObject
 
 /** Native touch targets reuse the current page's navigation and translated labels. */
-class NativeDestinationDock(private val bar: BottomNavigationView, private val web: WebView) {
+class NativeDestinationDock(
+    private val bar: BottomNavigationView,
+    private val web: WebView,
+    private val playHaptic: (LongArray) -> Unit
+) {
     private val icons = listOf(R.drawable.ic_dock_home, R.drawable.ic_dock_explore, R.drawable.ic_dock_matches,
         R.drawable.ic_dock_list, R.drawable.ic_dock_profile)
     private val script by lazy { web.context.assets.open("native-destination-dock.js").bufferedReader().use { it.readText() } }
@@ -30,6 +35,8 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
     private var previousRoute: String? = null
     private var documentUrl: String? = null
     private var documentReply: JavaScriptReplyProxy? = null
+    private var pendingHaptic: String? = null
+    private var tappedAt = 0L
     private val density = bar.resources.displayMetrics.density
     private val origins = setOf("https://matchapp.tv", "https://www.matchapp.tv")
 
@@ -47,8 +54,11 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
         bar.isItemHorizontalTranslationEnabled = false
         icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
         fun activate(id: Int) {
-            if (requested && !keyboard && documentUrl == web.url)
-                documentReply?.postMessage("activate:${id-1}")
+            if (!requested || keyboard || documentUrl != web.url) return
+            val message = "activate:${id-1}"
+            pendingHaptic = message
+            tappedAt = SystemClock.elapsedRealtime()
+            documentReply?.postMessage(message)
         }
         bar.setOnItemSelectedListener { item ->
             if (syncing) true else { activate(item.itemId); false }
@@ -59,6 +69,18 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
             val data=message.data?.takeIf { it.length<=8192 }?.let { runCatching { JSONObject(it) }.getOrNull() } ?: return@addWebMessageListener
             val href=data.optString("href")
             if (view.url!=href || !allowed(href)) return@addWebMessageListener
+            if (data.has("dockHaptic")) {
+                // A freshly navigated WebView may deny vibrate() until its own surface is touched.
+                // Permit one bounded pattern only for the current physical menu activation.
+                if (data.optString("dockHaptic") != pendingHaptic || documentUrl != href ||
+                    SystemClock.elapsedRealtime() - tappedAt > 1000) return@addWebMessageListener
+                pendingHaptic = null
+                val pattern = data.optJSONArray("timings") ?: return@addWebMessageListener
+                if (pattern.length() !in setOf(1,3)) return@addWebMessageListener
+                val timings = LongArray(pattern.length()) { pattern.optLong(it) }
+                if (timings.all { it in 1L..40L }) playHaptic(longArrayOf(0L) + timings)
+                return@addWebMessageListener
+            }
             val labels=data.optJSONArray("labels") ?: return@addWebMessageListener
             val active=data.optInt("selected",-1)
             requested=data.optBoolean("visible") && labels.length()==icons.size && active in icons.indices &&
@@ -112,6 +134,7 @@ class NativeDestinationDock(private val bar: BottomNavigationView, private val w
         requested=false
         documentUrl=null
         documentReply=null
+        pendingHaptic=null
         render()
         web.animate().cancel()
         web.scaleX=1f; web.scaleY=1f; web.translationY=0f
