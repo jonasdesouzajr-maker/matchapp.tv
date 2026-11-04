@@ -25,6 +25,8 @@ function stampBrandReferences(source,html=false) {
   return source.replace(paths,(match,quote,url,query='')=>{
     const params=new URLSearchParams(query.replace(/&amp;/g,'&'));
     params.set('comet','20261104-1');
+    // Refresh the header and its loader together without expiring other brand assets.
+    if (/^\/patches\/reference-(?:system|header)\.js$/.test(url)) params.set('headerlocale','20261104-1');
     const suffix=html?params.toString().replace(/&/g,'&amp;'):params.toString();
     return quote+url+'?'+suffix+quote;
   });

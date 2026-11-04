@@ -1708,11 +1708,11 @@ function renderAiQuotaStatus(status) {
     const paidCredits = Math.max(0, Number(status.credits) || 0);
     const pct = limit > 0 ? Math.max(0, Math.min(100, (used / limit) * 100)) : 0;
 
-    if (value) value.textContent = limit ? (remaining + ' of ' + limit + ' daily left') : 'Ready';
+    if (value) value.textContent = limit ? aiQuotaLeftLabel(remaining, limit) : 'Ready';
     if (fill) fill.style.width = pct + '%';
     if (credits) {
         credits.textContent = status.anon
-            ? (remaining > 0 ? 'Guest allowance · 2 social-share bonuses total available to try.' : paidCredits > 0 ? paidCredits + ' free share AI prompt' + (paidCredits===1?'':'s') + ' available.' : (window.MatchAppGuestShare?.remainingShares?.() > 0 ? 'Share your last AI reply above to unlock +1 prompt.' : 'Guest preview complete · register free for +10 Matches and +10 AI prompts.'))
+            ? (remaining > 0 ? discoverLabel('dc.quota.guest', 'Guest allowance · 2 social-share bonuses total available to try.') : paidCredits > 0 ? paidCredits + ' free share AI prompt' + (paidCredits===1?'':'s') + ' available.' : (window.MatchAppGuestShare?.remainingShares?.() > 0 ? 'Share your last AI reply above to unlock +1 prompt.' : 'Guest preview complete · register free for +10 Matches and +10 AI prompts.'))
             : (paidCredits + ' Ask AI credit' + (paidCredits === 1 ? '' : 's') + ' available after your included allowance.');
     }
     if (newChat) {
@@ -1720,6 +1720,7 @@ function renderAiQuotaStatus(status) {
         newChat.disabled = locked;
         newChat.title = locked ? 'No AI allowance or Ask AI credits remaining' : 'Start a new conversation';
     }
+    lastAiQuotaShowsGuestAllowance = Boolean(status.anon && remaining > 0);
     lastAiCostState = { remaining, limit, paidCredits };
     paintAiSendCost();
 }
@@ -1799,6 +1800,8 @@ const AI_COST_COPY = {
  }, "zh-TW": {"left":"每個問題消耗 1 次 AI 操作 · 今天還剩 {remaining}/{limit} 次","credits":"今日 AI 操作已用完——現在每個問題消耗 1 個 Ask AI 點數（剩餘 {credits} 個）","none":"今天沒有剩餘的 AI 操作——請購買 Ask AI 點數或明天再來"}
 };
 var lastAiCostState = null;
+// This flag records only which already-rendered History label needs translation.
+var lastAiQuotaShowsGuestAllowance = false;
 function aiCostLang() {
     const low = String(window.MATCH_LANG || document.documentElement.getAttribute('lang') || 'en').toLowerCase();
     if (low.startsWith('pt')) return 'pt-BR';
@@ -1806,6 +1809,19 @@ function aiCostLang() {
     const keys = Object.keys(AI_COST_COPY);
     return keys.find(k => k.toLowerCase() === low) || keys.find(k => k.split('-')[0] === low.split('-')[0]) || 'en';
 }
+function aiQuotaLeftLabel(remaining, limit) {
+    return discoverLabel('dc.quota.left', '{remaining} of {limit} daily left')
+        .replace(/\{remaining\}/g, String(remaining)).replace(/\{limit\}/g, String(limit));
+}
+function paintAiQuotaCopy() {
+    const state = lastAiCostState;
+    if (!state) return;
+    const value = document.getElementById('ai-usage-value');
+    if (value && state.limit) value.textContent = aiQuotaLeftLabel(state.remaining, state.limit);
+    const credits = document.getElementById('ai-credit-line');
+    if (credits && lastAiQuotaShowsGuestAllowance) credits.textContent = discoverLabel('dc.quota.guest', 'Guest allowance · 2 social-share bonuses total available to try.');
+}
+
 function paintAiSendCost() {
     try {
         const st = lastAiCostState;
@@ -1839,7 +1855,7 @@ function paintAiSendCost() {
         el.hidden = false;
     } catch (_) {}
 }
-document.addEventListener('matchapp:langchange', () => setTimeout(paintAiSendCost, 0));
+document.addEventListener('matchapp:langchange', () => setTimeout(() => { paintAiSendCost(); paintAiQuotaCopy(); }, 0));
 
 async function refreshAiWorkspaceStatus() {
     let status = null;
