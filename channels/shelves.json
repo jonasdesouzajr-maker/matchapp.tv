@@ -92,6 +92,16 @@
       "The Boy Who Harnessed the Wind",
       "Netflix · 2019",
       "https://www.netflix.com/title/80200047"
+    ],
+    [
+      "Violet Evergarden",
+      "Netflix · 2018",
+      "https://www.netflix.com/title/80182123"
+    ],
+    [
+      "The Queen of Flow / La reina del flow",
+      "Netflix · 2018",
+      "https://www.netflix.com/title/81022683"
     ]
   ],
   "album": [
@@ -121,6 +131,18 @@
       "The Enchanted April",
       "Elizabeth von Arnim · Project Gutenberg · EN",
       "https://www.gutenberg.org/ebooks/16389"
+    ]
+  ],
+  "press": [
+    [
+      "Raspberry Pi Official Magazine",
+      "Raspberry Pi · EN",
+      "https://magazine.raspberrypi.com/issues"
+    ],
+    [
+      "IEEE Spectrum",
+      "IEEE · EN",
+      "https://spectrum.ieee.org/magazine/"
     ]
   ]
 }

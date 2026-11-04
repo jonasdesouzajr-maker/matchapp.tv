@@ -5,6 +5,7 @@
   const topics = /(?:\btech(?:nology|nologies|nological)?\b|\bAI\b|\bGit\b|DevOps|CS50|Scratch|JavaScript|programming|coding|computer science|neural network|tecnolog|tecnolog[ií]a|tecnologia|programa[çc]|programm|technique|technik|technolog|teknoloji|yapay zek[aâ]|технолог|программирован|нейросет|تقنية|تقني|تكنولوجيا|برمجة|टेक|तकनीक|प्रोग्रामिंग|teknologi|pemrograman|テクノロジー|技術|プログラミング|기술|테크|프로그래밍|科技|技术|编程)/iu;
   const formats = {
     audiobook:/audi[o -]?(?:book|livr|libr)|livres? audio|hörbüch|hörbuch|sesli kitap|аудиокниг|كتب صوتية|كتاب صوتي|ऑडियोबुक|buku audio|オーディオブック|오디오북|有声书/iu,
+    press:/magazine|revista|presse|périodique|zeitschrift|rivist|dergi|журнал|مجلة|पत्रिका|majalah|雑誌|잡지|期刊|杂志/iu,
     podcast:/podcast|pódcast|подкаст|بودكاست|पॉडकास्ट|ポッドキャスト|팟캐스트|播客/iu,
     book:/\bbooks?\b|e-?books?|livr[eo]|libro|bücher|buch|kitap|книг|كتاب|كتب|किताब|पुस्तक|buku|書籍|本|책|书籍|书/iu,
     video:/video|vid[eé]o|YouTube|vídeo|видео|فيديو|वीडियो|動画|동영상|영상|视频/iu

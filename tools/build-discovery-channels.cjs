@@ -6,7 +6,7 @@ const copy = require('../channels/copy.json');
 const shelves = require('../channels/shelves.json');
 const root = path.join(__dirname, '..');
 const origin = 'https://matchapp.tv';
-const pages = {tech:['video','podcast','book','audiobook'], trail:['screen','album','fiction']};
+const pages = {tech:['video','podcast','book','audiobook','press'], trail:['screen','album','fiction']};
 function route(page, lang) {
   return '/' + (page === 'tech' ? 'tech' : 'catalog-trails') + '/' + (lang === 'en' ? '' : lang.toLowerCase() + '/');
 }
