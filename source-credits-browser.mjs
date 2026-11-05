@@ -6,7 +6,8 @@ import { SOURCE_CREDIT_COPY } from './source-credits-copy.mjs?v=20261105-1';
 
 const BADGES=Object.freeze({
   books:{url:'https://toolbox.marketingtools.apple.com/api/assets/featured-content/books/badges/badge-2/en-us.svg',width:140.9502,height:40},
-  music:{url:'https://toolbox.marketingtools.apple.com/api/assets/featured-content/music/badges/badge-2/en-us.svg',width:140.62,height:41}
+  music:{url:'https://toolbox.marketingtools.apple.com/api/assets/featured-content/music/badges/badge-2/en-us.svg',width:140.62,height:41},
+  itunes:{url:'/assets/apple-promotional/itunes-store-get-en-us.svg',width:139.86,height:41}
 });
 const RECORDS=new WeakMap(),BOUND=new WeakSet();
 
@@ -45,12 +46,13 @@ function itemSource(value){
     // Apple Music and iTunes purchase offers are distinct. In particular, do
     // not relabel an app=itunes purchase link as an Apple Music subscription.
     const purchase=(u.searchParams.get('app')||'').toLowerCase()==='itunes';
-    return {url:exact,service:purchase?'iTunes Store':'Apple Music',badge:purchase?null:BADGES.music};
+    return {url:exact,service:purchase?'iTunes Store':'Apple Music',badge:purchase?BADGES.itunes:BADGES.music};
   }
   if(u.hostname==='itunes.apple.com'&&numericItem&&/\/(?:album|song|audiobook|book|movie|tv-season|tv-episode|podcast|music-video)\//i.test(path)){
-    // The approved iTunes badge archive is documented but is not replaced by
-    // invented artwork or a badge for a different service.
-    return {url:exact,service:'iTunes Store',badge:null};
+    // Current iTunes badge guidance covers music. Legacy Books, podcast and
+    // movie/TV routes retain their exact text link without an unverified badge.
+    const musicPurchase=/\/(?:album|song|music-video)\//i.test(path);
+    return {url:exact,service:'iTunes Store',badge:musicPurchase?BADGES.itunes:null};
   }
   if(u.hostname==='podcasts.apple.com'&&numericItem&&/\/podcast\//i.test(path)){
     return {url:exact,service:'Apple Podcasts',badge:null};
