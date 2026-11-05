@@ -1,0 +1,330 @@
+{
+  "edition": "2026-11-05",
+  "checkedAt": "2026-11-05",
+  "country": "US",
+  "sourcePolicy": "Dated editorial snapshot; no live ranking, search-volume, audience-growth or worldwide-availability claim.",
+  "sources": {
+    "netflixMovies": {
+      "url": "https://www.netflix.com/tudum/top10/united-states",
+      "start": "2026-10-26",
+      "end": "2026-11-01"
+    },
+    "netflixTv": {
+      "url": "https://www.netflix.com/tudum/top10/united-states/tv",
+      "start": "2026-10-26",
+      "end": "2026-11-01"
+    },
+    "justwatchMovies": {
+      "url": "https://www.justwatch.com/us/streaming-charts?ct=daily",
+      "snapshot": "2026-11-05"
+    },
+    "justwatchTv": {
+      "url": "https://www.justwatch.com/us/streaming-charts?ct=daily&t=shows",
+      "snapshot": "2026-11-05"
+    },
+    "billboard": {
+      "url": "https://ca.billboard.com/charts/hot-100/2026-11-07",
+      "chartDate": "2026-11-07",
+      "comparison": "https://ca.billboard.com/charts/hot-100/2026-10-31"
+    },
+    "applePodcasts": {
+      "url": "https://podcasts.apple.com/us/charts",
+      "snapshot": "2026-11-05"
+    },
+    "spotifyPodcasts": {
+      "url": "https://podcastcharts.byspotify.com/us/top-podcasts",
+      "snapshot": "2026-11-05"
+    },
+    "pwOverall": {
+      "url": "https://www.publishersweekly.com/pw/nielsen/top100.html",
+      "chartDate": "2026-11-02"
+    },
+    "pwFiction": {
+      "url": "https://www2.publishersweekly.com/pw/nielsen/hardcoverfiction.html",
+      "chartDate": "2026-11-02"
+    },
+    "pwPaperback": {
+      "url": "https://www2.publishersweekly.com/pw/nielsen/tradepaper.html",
+      "chartDate": "2026-11-02"
+    },
+    "audible": {
+      "url": "https://www.ctinsider.com/entertainment/article/us-audiobooks-top-10-22509365.php",
+      "weekEnding": "2026-10-30"
+    }
+  },
+  "items": [
+    {
+      "id": "surviving-hurricane-otis",
+      "group": "movies",
+      "title": "Surviving Hurricane Otis",
+      "source": "netflixMovies",
+      "status": "popular",
+      "rank": 1
+    },
+    {
+      "id": "gladiator-ii",
+      "group": "movies",
+      "title": "Gladiator II",
+      "source": "netflixMovies",
+      "status": "popular",
+      "rank": 2
+    },
+    {
+      "id": "animals",
+      "group": "movies",
+      "title": "Animals",
+      "source": "netflixMovies",
+      "status": "popular",
+      "rank": 5
+    },
+    {
+      "id": "kpop-demon-hunters",
+      "group": "movies",
+      "title": "KPop Demon Hunters",
+      "source": "netflixMovies",
+      "status": "popular",
+      "rank": 8
+    },
+    {
+      "id": "green-room",
+      "group": "movies",
+      "title": "Green Room",
+      "source": "justwatchMovies",
+      "status": "rising",
+      "rank": 6,
+      "previous": 7,
+      "details": "https://www.justwatch.com/us/movie/green-room"
+    },
+    {
+      "id": "remarried-empress",
+      "group": "tv",
+      "title": "The Remarried Empress",
+      "source": "justwatchTv",
+      "status": "interest",
+      "details": "https://thewaltdisneycompany.com/news/remarried-empress-early-premiere/"
+    },
+    {
+      "id": "matthew-perry",
+      "group": "tv",
+      "title": "The One About Matthew Perry",
+      "source": "netflixTv",
+      "status": "new",
+      "rank": 1,
+      "details": "https://www.netflix.com/tudum/articles/the-one-about-matthew-perry-release-date-news"
+    },
+    {
+      "id": "nobody-wants-this",
+      "group": "tv",
+      "title": "Nobody Wants This: Season 3",
+      "source": "netflixTv",
+      "status": "popular",
+      "rank": 2,
+      "details": "https://www.netflix.com/tudum/articles/nobody-wants-this-season-3-news-cast-release-date"
+    },
+    {
+      "id": "from",
+      "group": "tv",
+      "title": "From",
+      "source": "netflixTv",
+      "status": "popular"
+    },
+    {
+      "id": "diplomat",
+      "group": "tv",
+      "title": "The Diplomat",
+      "source": "justwatchTv",
+      "status": "interest"
+    },
+    {
+      "id": "choosin-texas",
+      "group": "music",
+      "title": "Choosin’ Texas",
+      "creator": "Ella Langley",
+      "source": "billboard",
+      "status": "popular",
+      "rank": 1
+    },
+    {
+      "id": "housewife",
+      "group": "music",
+      "title": "Housewife",
+      "creator": "Tate McRae",
+      "source": "billboard",
+      "status": "popular",
+      "rank": 2
+    },
+    {
+      "id": "boston",
+      "group": "music",
+      "title": "Boston",
+      "creator": "Stella Lefty",
+      "source": "billboard",
+      "status": "rising",
+      "rank": 3,
+      "previous": 6
+    },
+    {
+      "id": "been-by-now",
+      "group": "music",
+      "title": "Been By Now",
+      "creator": "Morgan Wallen",
+      "source": "billboard",
+      "status": "rising",
+      "rank": 4,
+      "previous": 7
+    },
+    {
+      "id": "dracula-song",
+      "group": "music",
+      "title": "Dracula",
+      "creator": "Tame Impala & JENNIE",
+      "source": "billboard",
+      "status": "rising",
+      "rank": 5,
+      "previous": 8
+    },
+    {
+      "id": "nicole-kidman",
+      "group": "music",
+      "title": "Nicole Kidman",
+      "creator": "ADELA",
+      "source": "billboard",
+      "status": "rising",
+      "rank": 6,
+      "previous": 9
+    },
+    {
+      "id": "the-daily",
+      "group": "podcasts",
+      "title": "The Daily",
+      "creator": "The New York Times",
+      "source": "applePodcasts",
+      "status": "popular",
+      "rank": 1
+    },
+    {
+      "id": "crime-junkie",
+      "group": "podcasts",
+      "title": "Crime Junkie",
+      "creator": "Audiochuck",
+      "source": "applePodcasts",
+      "status": "popular",
+      "rank": 3,
+      "details": "https://podcasts.apple.com/us/podcast/crime-junkie/id1322200189"
+    },
+    {
+      "id": "bear-brook",
+      "group": "podcasts",
+      "title": "Bear Brook",
+      "creator": "NHPR",
+      "source": "applePodcasts",
+      "status": "popular",
+      "rank": 7,
+      "details": "https://podcasts.apple.com/us/podcast/bear-brook/id1423306695"
+    },
+    {
+      "id": "good-hang",
+      "group": "podcasts",
+      "title": "Good Hang with Amy Poehler",
+      "creator": "The Ringer",
+      "source": "spotifyPodcasts",
+      "status": "popular",
+      "details": "https://www.theringer.com/podcasts/good-hang-with-amy-poehler"
+    },
+    {
+      "id": "fight-or-flight",
+      "group": "books",
+      "title": "Fight or Flight",
+      "creator": "Jeff Kinney",
+      "source": "pwOverall",
+      "status": "new",
+      "rank": 1
+    },
+    {
+      "id": "miss-wolcotts-ghost",
+      "group": "books",
+      "title": "Miss Wolcott’s Ghost",
+      "creator": "Louise Penny",
+      "source": "pwFiction",
+      "status": "new",
+      "rank": 1
+    },
+    {
+      "id": "married-little-christmas",
+      "group": "books",
+      "title": "A Married Little Christmas",
+      "creator": "Abby Jimenez",
+      "source": "pwFiction",
+      "status": "new",
+      "rank": 4,
+      "details": "https://www.hachettebookgroup.com/titles/abby-jimenez/a-married-little-christmas-deluxe-edition/9781538780046/"
+    },
+    {
+      "id": "christmas-staycation",
+      "group": "books",
+      "title": "Christmas Staycation",
+      "creator": "Meghan Quinn",
+      "source": "pwPaperback",
+      "status": "new",
+      "rank": 1
+    },
+    {
+      "id": "family-cross",
+      "group": "books",
+      "title": "The Family Cross",
+      "creator": "James Patterson",
+      "source": "pwFiction",
+      "status": "new",
+      "rank": 3
+    },
+    {
+      "id": "chain-reaction",
+      "group": "books",
+      "title": "Chain Reaction",
+      "creator": "Lee Child and Andrew Child",
+      "source": "pwFiction",
+      "status": "new",
+      "rank": 5,
+      "details": "https://www.penguinrandomhouse.com/books/829786/chain-reaction-by-lee-child-and-andrew-child/"
+    },
+    {
+      "id": "dungeon-crawler-carl",
+      "group": "books",
+      "title": "Dungeon Crawler Carl",
+      "creator": "Matt Dinniman",
+      "source": "pwPaperback",
+      "status": "popular",
+      "rank": 2
+    },
+    {
+      "id": "parade-of-horribles",
+      "group": "books",
+      "title": "A Parade of Horribles",
+      "creator": "Matt Dinniman",
+      "source": "pwFiction",
+      "status": "rising",
+      "rank": 20,
+      "previous": 23,
+      "details": "https://www.penguinrandomhouse.com/books/812017/a-parade-of-horribles-by-matt-dinniman/hardcover/"
+    },
+    {
+      "id": "court-splintered-harmony",
+      "group": "audiobooks",
+      "title": "A Court of Splintered Harmony",
+      "creator": "Sarah J. Maas",
+      "source": "audible",
+      "status": "popular",
+      "rank": 1,
+      "details": "https://www.audible.com/pd/A-Court-of-Splintered-Harmony-Audiobook/B0GR6QBFPK"
+    },
+    {
+      "id": "dracula-audio",
+      "group": "audiobooks",
+      "title": "Bram Stoker’s Dracula",
+      "creator": "Bram Stoker; Robyn Ahern",
+      "source": "audible",
+      "status": "popular",
+      "rank": 3
+    }
+  ]
+}

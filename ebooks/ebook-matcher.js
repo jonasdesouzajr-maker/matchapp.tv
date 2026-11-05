@@ -814,11 +814,26 @@ function audioLinksHTML(audio){
    esc(ui('searchAudio','Search {provider} audio editions',{provider:item.provider}))+' ↗</a>').join('')+'</div>'+
   (audio?.free?'<p class="ebook-rights">'+esc(tr('audioRights'))+'</p>':'');
 }
+function creditAudioPreview(host,audio){
+ const edition=audio?.apple;
+ if(!edition?.verified||!edition.previewUrl||window.MATCHAPP_ANDROID||window.MatchAppNativeStartup||
+   window.MatchAppNativeAuth||window.MatchAppNativeExperience||window.MatchAppNativePageState||
+   /MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(navigator.userAgent||'')||
+   document.documentElement.classList.contains('matchapp-android')||
+   new URLSearchParams(location.search||'').get('utm_source')==='android_app'||
+   /^\/kids(?:\/|$)/i.test(location.pathname||''))return;
+ const player=host.querySelector('.ebook-audio-preview');if(!player)return;
+ // Use only the same verified edition that already owns this audio player.
+ // The asynchronous presentation helper does not search or replace an edition.
+ import('/source-credits-browser.mjs?v=20261105-1')
+  .then(module=>module.mountApplePreview(player,{url:edition.url,title:edition.title})).catch(()=>{});
+}
 function paintAudio(root,book,audio){
  const host=root.querySelector('[data-ebook-audio-options]');
  const wrapper=root.querySelector('[data-ebook-audio]');
  if(!host||!wrapper||!audio)return;
  host.innerHTML=audioLinksHTML(audio);localize(root);
+ creditAudioPreview(host,audio);
  wrapper.querySelector('[data-ebook-check-audio]')?.remove();localize(root);
  analytics('audiobook_sources_checked',{ebook_id:book.id,verified:Number(!!audio.apple)+Number(!!audio.free),country:market()});
 }
@@ -1109,7 +1124,7 @@ function bind(root){
    try{
     const audio=await window.MatchAppAudiobooks.verify(book,market(),'any');
     if(countryRevision===(root.dataset.readingCountryRevision||'0')&&root.contains(host)){
-     host.innerHTML=audioLinksHTML(audio);localize(root);
+     host.innerHTML=audioLinksHTML(audio);localize(root);creditAudioPreview(host,audio);
     }
    }finally{savedAudio.textContent=tr('audioVerify');savedAudio.disabled=false}
    return;

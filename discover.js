@@ -1474,12 +1474,18 @@ async function hydrateDiscoverCard(item, idx) {
             video.controls = true; video.preload = 'metadata'; video.playsInline = true; video.src = previewUrl;
             video.setAttribute('aria-label', item.title + ' preview');
             previewHost.append(label, video);
+            let originalSource = null;
             if (/^https:\/\//.test(storeUrl)) {
                 const source = document.createElement('a'); source.href = storeUrl; source.target = '_blank'; source.rel = 'noopener noreferrer';
                 source.className = 'matchapp-title-page-btn'; source.textContent = discoverLabel('discover.titlePage','Open title page');
                 previewHost.appendChild(source);
+                originalSource = source;
             }
             previewHost.hidden = false;
+            const credit = window.MatchAppCatalogMedia?.renderApplePreviewCredit?.(video, {url:storeUrl,title:item.title});
+            // Keep the original link unless the browser-only, exact-item
+            // source presentation mounted successfully. Never reset playback.
+            credit?.then(node=>{if(node)originalSource?.remove();});
         } else {
             let titlePage = '';
             if (Number.isSafeInteger(Number(meta?.tmdbId)) && ['movie','tv'].includes(meta?.kind)) {

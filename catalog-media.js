@@ -1157,6 +1157,18 @@
   }
 
   function ensurePlayerHost(anchor,id){if(!anchor)return null;let host=document.getElementById(id);if(host)return host;host=document.createElement('section');host.id=id;host.className='matchapp-media-preview';host.hidden=true;anchor.insertAdjacentElement('afterend',host);return host;}
+  function renderApplePreviewCredit(player,options){
+    // This source presentation repair is restricted to adult browsers. Native
+    // and Kids retain their existing player, markup and loading behavior.
+    if(window.MATCHAPP_ANDROID||window.MatchAppNativeStartup||window.MatchAppNativeAuth||
+      window.MatchAppNativeExperience||window.MatchAppNativePageState||
+      /MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(navigator.userAgent||'')||
+      document.documentElement.classList.contains('matchapp-android')||
+      new URLSearchParams(location.search||'').get('utm_source')==='android_app'||
+      /^\/kids(?:\/|$)/i.test(location.pathname||''))return;
+    return import('/source-credits-browser.mjs?v=20261105-1')
+      .then(module=>module.mountApplePreview(player,options)).catch(()=>null);
+  }
   function renderPreview(host,meta,{kids=false,title=''}={}){
     if(!host)return;
     const previewSignature=kids?[
@@ -1177,7 +1189,7 @@
     if(!meta||(kids&&meta.kids_approved!==true))return;
     const label=document.createElement('div');label.className='matchapp-media-preview-label';label.textContent=(typeof window.t==='function'&&window.t('discover.preview'))||'Preview';
     if(meta.preview_kind==='video'&&TRUSTED_EMBED.test(String(meta.preview_embed_url||''))){const frame=document.createElement('iframe');frame.src=meta.preview_embed_url;frame.title=`${title||meta.title} preview`;frame.loading='lazy';frame.allow='accelerometer; autoplay; encrypted-media; picture-in-picture; web-share';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';host.append(label,frame);host.hidden=false;return;}
-    if(meta.preview_kind==='audio'&&TRUSTED_AUDIO.test(String(meta.preview_url||''))){const audio=document.createElement('audio');audio.controls=true;audio.preload='none';audio.src=meta.preview_url;audio.setAttribute('aria-label',`${title||meta.title} audio preview`);host.append(label,audio);host.hidden=false;return;}
+    if(meta.preview_kind==='audio'&&TRUSTED_AUDIO.test(String(meta.preview_url||''))){const audio=document.createElement('audio');audio.controls=true;audio.preload='none';audio.src=meta.preview_url;audio.setAttribute('aria-label',`${title||meta.title} audio preview`);host.append(label,audio);host.hidden=false;if(!kids)renderApplePreviewCredit(audio,{url:meta.source_page_url||meta.availability?.store_url||meta.availability?.source_page_url,title:title||meta.title});return;}
     // Never embed a guessed/unrelated preview. If the verified metadata has no
     // playable preview, show a clean title-page button instead.
     const page=sourcePage(meta);
@@ -1643,7 +1655,7 @@
       queueKidsEnrich();
     });
   }
-  window.MatchAppCatalogMedia=Object.freeze({hardenWithin,localizeResultFacts,localizeResultLabels,resultFact,recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,resolveCountryCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
+  window.MatchAppCatalogMedia=Object.freeze({hardenWithin,localizeResultFacts,localizeResultLabels,resultFact,recoverAdultPoster,posterVariants,lookup,lookupLive,refreshExact,resolvePoster,normalise,localPoster,enrichMain,enrichKids,enrichTrendingRail,renderPreview,renderApplePreviewCredit,renderAvailability,availability,streamingElsewhere,viewingTarget,providerLinks,providerSearch,showtimesUrl,sourcePage,regionCode,resolveCountryCode,countryName,titleKeysForGenres,availableGenres,syncGenreFilter});
   document.dispatchEvent(new Event('matchapp:catalog-media-ready'));
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
