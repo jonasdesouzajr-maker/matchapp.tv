@@ -439,6 +439,8 @@ async function aiQuestion(page,question,expected,label){
         title:document.querySelector('h1')?.textContent.trim()
       }));
       await guidePage.locator('.channel-header summary').click();
+      await guidePage.locator('.channel-header details[open] .channel-language-list a').last()
+        .waitFor({state:'visible',timeout:10000});
       const languages=await guidePage.locator('.channel-language-list a').evaluateAll(links=>
         links.length===15&&links.every(link=>link.getClientRects().length>0&&link.textContent.trim()));
       await guidePage.locator('.channel-header summary').click();
